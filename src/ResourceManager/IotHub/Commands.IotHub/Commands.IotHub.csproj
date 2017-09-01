@@ -145,10 +145,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Microsoft.Azure.Commands.IotHub.format.ps1xml">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <None Include="..\AzureRM.IotHub.psd1">
       <Link>AzureRM.IotHub.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

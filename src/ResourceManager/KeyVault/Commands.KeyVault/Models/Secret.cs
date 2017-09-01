@@ -43,6 +43,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 secret.Attributes.Created,
                 secret.Attributes.Updated,
                 secret.ContentType,
+                secret.Attributes.RecoveryLevel,
                 secret.Tags);
         }
 

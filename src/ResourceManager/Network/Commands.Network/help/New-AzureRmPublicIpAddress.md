@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+Module Name: AzureRM.Network
 ms.assetid: 8D84F81A-F6B5-413D-B349-50947FCD5CFC
-online version:
+online version: 
 schema: 2.0.0
 ---
 
@@ -13,7 +14,7 @@ Creates a public IP address.
 ## SYNTAX
 
 ```
-New-AzureRmPublicIpAddress [-Name <String>] -ResourceGroupName <String> [-Location <String>]
+New-AzureRmPublicIpAddress [-Name <String>] -ResourceGroupName <String> [-Location <String>] [-Sku <String>]
  -AllocationMethod <String> [-IpAddressVersion <String>] [-DomainNameLabel <String>] [-ReverseFqdn <String>]
  [-IdleTimeoutInMinutes <Int32>] [-Tag <Hashtable>] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -33,7 +34,6 @@ $dnsPrefix.$location.cloudapp.azure.com pointing to the public IP address of thi
 public IP address is immediately allocated to this resource as the -AllocationMethod is specified
 as 'Static'. If it is specified as 'Dynamic', a public IP address gets allocated only when you
 start (or create) the associated resource (like a VM or load balancer).
-
 
 ### 2: Create a public IP address with a reverse FQDN
 ```
@@ -55,7 +55,7 @@ The acceptable values for this parameter are: Static or Dynamic.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 Accepted values: Dynamic, Static
 
 Required: True
@@ -71,7 +71,7 @@ Specifies the relative DNS name for a public IP address.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -86,7 +86,7 @@ Forces the command to run without asking for user confirmation.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -101,7 +101,7 @@ Specifies the idle time-out, in minutes.
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -116,7 +116,7 @@ Specifies the version of the IP address.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 Accepted values: IPv4, IPv6
 
 Required: False
@@ -132,7 +132,7 @@ Specifies the region in which to create a public IP address.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -162,7 +162,7 @@ Specifies the name of the resource group in which to create a public IP address.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -177,7 +177,23 @@ Specifies a reverse fully qualified domain name (FQDN).
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Sku
+The public IP Sku name.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+Accepted values: Basic, Standard
 
 Required: False
 Position: Named
@@ -194,7 +210,7 @@ Key-value pairs in the form of a hash table. For example:
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named

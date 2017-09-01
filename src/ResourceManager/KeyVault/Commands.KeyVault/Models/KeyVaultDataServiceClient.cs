@@ -679,7 +679,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             return certificateBundle;
         }
 
-        public CertificateBundle DeleteCertificate(string vaultName, string certName)
+        public DeletedCertificateBundle DeleteCertificate(string vaultName, string certName)
         {
             if (string.IsNullOrEmpty(vaultName))
                 throw new ArgumentNullException(nameof(vaultName));
@@ -688,7 +688,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
 
-            CertificateBundle certBundle;
+            DeletedCertificateBundle certBundle;
 
             try
             {
@@ -700,6 +700,25 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             }
 
             return certBundle;
+        }
+
+        public void PurgeCertificate(string vaultName, string certName)
+        {
+            if ( string.IsNullOrEmpty( vaultName ) )
+                throw new ArgumentNullException( "vaultName" );
+            if ( string.IsNullOrEmpty( certName ) )
+                throw new ArgumentNullException( "certName" );
+
+            string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
+
+            try
+            {
+                this.keyVaultClient.PurgeDeletedCertificateAsync( vaultAddress, certName ).GetAwaiter( ).GetResult( );
+            }
+            catch (Exception ex)
+            {
+                throw GetInnerException( ex );
+            }
         }
 
         public CertificateOperation GetCertificateOperation(string vaultName, string certificateName)
@@ -1567,6 +1586,85 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             }
 
             return new Secret(recoveredSecret, this.vaultUriHelper);
+        }
+
+        public DeletedCertificateBundle GetDeletedCertificate( string vaultName, string certName )
+        {
+            if ( string.IsNullOrEmpty( vaultName ) )
+                throw new ArgumentNullException( nameof(vaultName) );
+            if ( string.IsNullOrEmpty( certName ) )
+                throw new ArgumentNullException( nameof(certName) );
+
+            string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
+
+            DeletedCertificateBundle deletedCertificate;
+            try
+            {
+                deletedCertificate = this.keyVaultClient.GetDeletedCertificateAsync( vaultAddress, certName ).GetAwaiter( ).GetResult( );
+            }
+            catch ( KeyVaultErrorException ex )
+            {
+                if ( ex.Response.StatusCode == HttpStatusCode.NotFound )
+                    return null;
+                else
+                    throw;
+            }
+            catch ( Exception ex )
+            {
+                throw GetInnerException( ex );
+            }
+
+            return deletedCertificate;
+        }
+
+        public IEnumerable<DeletedCertificateIdentityItem> GetDeletedCertificates( KeyVaultObjectFilterOptions options )
+        {
+            if ( options == null )
+                throw new ArgumentNullException( nameof( options ) );
+            if ( string.IsNullOrEmpty( options.VaultName ) )
+                throw new ArgumentException( KeyVaultProperties.Resources.InvalidVaultName );
+
+            string vaultAddress = this.vaultUriHelper.CreateVaultAddress(options.VaultName);
+
+            try
+            {
+                IPage<DeletedCertificateItem> result;
+
+                if ( string.IsNullOrEmpty( options.NextLink ) )
+                    result = this.keyVaultClient.GetDeletedCertificatesAsync( vaultAddress ).GetAwaiter( ).GetResult( );
+                else
+                    result = this.keyVaultClient.GetDeletedCertificatesNextAsync( options.NextLink ).GetAwaiter( ).GetResult( );
+
+                options.NextLink = result.NextPageLink;
+                return ( result == null ) ? new List<DeletedCertificateIdentityItem>( ) :
+                    result.Select( ( deletedItem ) => new DeletedCertificateIdentityItem( deletedItem, this.vaultUriHelper ) );
+            }
+            catch ( Exception ex )
+            {
+                throw GetInnerException( ex );
+            }
+        }
+
+        public CertificateBundle RecoverCertificate( string vaultName, string certName )
+        {
+            if ( string.IsNullOrEmpty( vaultName ) )
+                throw new ArgumentNullException( nameof( vaultName ) );
+            if ( string.IsNullOrEmpty( certName ) )
+                throw new ArgumentNullException( nameof( certName ) );
+
+            string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
+
+            CertificateBundle recoveredCertificate;
+            try
+            {
+                recoveredCertificate = this.keyVaultClient.RecoverDeletedCertificateAsync( vaultAddress, certName ).GetAwaiter( ).GetResult( );
+            }
+            catch ( Exception ex )
+            {
+                throw GetInnerException( ex );
+            }
+
+            return recoveredCertificate;
         }
 
         private VaultUriHelper vaultUriHelper;
