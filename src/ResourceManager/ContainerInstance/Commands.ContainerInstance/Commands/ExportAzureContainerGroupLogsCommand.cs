@@ -12,7 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.IO;
 using System.Management.Automation;
+using System.Text;
 using Microsoft.Azure.Management.ContainerInstance;
 
 namespace Microsoft.Azure.Commands.ContainerInstance
@@ -20,8 +22,8 @@ namespace Microsoft.Azure.Commands.ContainerInstance
     /// <summary>
     /// Get-AzureRmContainerGroupLogs
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, ContainerLogsNoun), OutputType(typeof(string))]
-    public class GetAzureContainerGroupLogsCommand : ContainerInstanceCmdletBase
+    [Cmdlet("Export", ContainerLogsNoun), OutputType(typeof(string))]
+    public class ExportAzureContainerGroupLogsCommand : ContainerInstanceCmdletBase
     {
         [Parameter(
             Position = 0,
@@ -45,11 +47,22 @@ namespace Microsoft.Azure.Commands.ContainerInstance
         [ValidateNotNullOrEmpty]
         public string ContainerName { get; set; }
 
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The directory to save the logs.")]
+        [ValidateNotNullOrEmpty]
+        [Alias("Dir")]
+        public string Directory { get; set; }
+
         public override void ExecuteCmdlet()
         {
             var containerName = this.ContainerName ?? this.Name;
             var log = this.ContainerClient.ContainerLogs.List(this.ResourceGroupName, this.Name, containerName)?.Content;
-            this.WriteObject(log);
+
+            var logFilePath = Path.GetFullPath(Path.Combine(this.Directory, $"{containerName}_log"));
+            File.WriteAllText(logFilePath, log, Encoding.UTF8);
+
+            this.WriteVerbose($"Logs saved in {logFilePath}");
         }
     }
 }

@@ -22,7 +22,7 @@ using Microsoft.Azure.Commands.ContainerInstance.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.ContainerInstance;
 using Microsoft.Azure.Management.ContainerInstance.Models;
-using Microsoft.Azure.Management.ResourceManager;
+using Microsoft.Azure.Management.Internal.Resources;
 
 namespace Microsoft.Azure.Commands.ContainerInstance
 {

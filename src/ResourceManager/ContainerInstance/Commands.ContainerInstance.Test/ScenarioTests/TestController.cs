@@ -18,7 +18,7 @@ using System.IO;
 using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Management.ContainerInstance;
-using Microsoft.Azure.Management.ResourceManager;
+using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -32,6 +32,8 @@ namespace Microsoft.Azure.Commands.ContainerInstance.Test.ScenarioTests
         public ContainerInstanceManagementClient ContainerInstanceClient { get; private set; }
 
         public ResourceManagementClient ResourceClient { get; private set; }
+
+        public Management.ResourceManager.ResourceManagementClient OldResourceClient { get; private set; }
 
         public TestController()
         {
@@ -93,8 +95,9 @@ namespace Microsoft.Azure.Commands.ContainerInstance.Test.ScenarioTests
         private void SetupManagementClients(MockContext context)
         {
             this.ResourceClient = this.GetResourceManagementClient(context);
+            this.OldResourceClient = this.GetOldResourceManagementClient(context);
             this.ContainerInstanceClient = this.GetContainerInstanceManagementClient(context);
-            this.helper.SetupManagementClients(this.ResourceClient, this.ContainerInstanceClient);
+            this.helper.SetupManagementClients(this.ResourceClient, this.OldResourceClient, this.ContainerInstanceClient);
         }
 
         private ContainerInstanceManagementClient GetContainerInstanceManagementClient(MockContext context)
@@ -105,6 +108,11 @@ namespace Microsoft.Azure.Commands.ContainerInstance.Test.ScenarioTests
         private ResourceManagementClient GetResourceManagementClient(MockContext context)
         {
             return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private Management.ResourceManager.ResourceManagementClient GetOldResourceManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<Management.ResourceManager.ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
     }
 }

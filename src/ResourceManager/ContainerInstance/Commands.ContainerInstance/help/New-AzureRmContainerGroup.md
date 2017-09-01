@@ -16,7 +16,7 @@ Creates a container group.
 New-AzureRmContainerGroup [-ResourceGroupName] <String> [-Name] <String> -Image <String> [-Location <String>]
  [-OsType <String>] [-Cpu <Double>] [-Memory <Double>] [-IpAddressType <String>] [-Port <Int32>]
  [-Command <String[]>] [-EnvironmentVariables <Hashtable>] [-RegistryServer <String>]
- [-RegistryUsername <String>] [-RegistryPassword <SecureString>] [-Tags <Hashtable>]
+ [-RegistryUsername <String>] [-RegistryPassword <SecureString>] [-Tag <Hashtable>]
 ```
 
 ## DESCRIPTION
@@ -34,7 +34,7 @@ PS C:\> New-AzureRmContainerGroup -ResourceGroupName MyResourceGroup -Name MyCon
   "Name": "MyContainer",
   "Type": "Microsoft.ContainerInstance/containerGroups",
   "Location": "westus",
-  "Tags": null,
+  "Tag": null,
   "ProvisioningState": "Creating",
   "Containers": [
     {
@@ -81,7 +81,7 @@ PS C:\> New-AzureRmContainerGroup -ResourceGroupName MyResourceGroup -Name MyCon
   "Name": "MyContainer",
   "Type": "Microsoft.ContainerInstance/containerGroups",
   "Location": "westus",
-  "Tags": null,
+  "Tag": null,
   "ProvisioningState": "Creating",
   "Containers": [
     {
@@ -129,7 +129,7 @@ PS C:\> New-AzureRmContainerGroup -ResourceGroupName MyResourceGroup -Name MyCon
   "Name": "MyContainer",
   "Type": "Microsoft.ContainerInstance/containerGroups",
   "Location": "westus",
-  "Tags": null,
+  "Tag": null,
   "ProvisioningState": "Creating",
   "Containers": [
     {
@@ -183,7 +183,7 @@ PS C:\> New-AzureRmContainerGroup -ResourceGroupName MyResourceGroup -Name MyCon
   "Name": "MyContainer",
   "Type": "Microsoft.ContainerInstance/containerGroups",
   "Location": "westus",
-  "Tags": null,
+  "Tag": null,
   "ProvisioningState": "Creating",
   "Containers": [
     {
@@ -439,13 +439,12 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Tags
-{{Fill Tags Description}}
+### -Tag
+{{Fill Tag Description}}
 
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: Tag
 
 Required: False
 Position: Named
