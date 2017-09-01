@@ -31,12 +31,9 @@
     - Updated New-AzureRMLoadBalancerRuleConfig: Added optional parameter DisableOutboundSNAT
     - Updated Add-AzureRMLoadBalancerRuleConfig: Added optional parameter DisableOutboundSNAT
     - Updated Set-AzureRMLoadBalancerRuleConfig: Added optional parameter DisableOutboundSNAT
-
-## Version 4.3.2
-* New-AzureRmVirtualNetworkGateway: Added IkeV2 P2S support. New optional parameter added
-	- VpnClientProtocol
-* Set-AzureRmVirtualNetworkGateway: Added IkeV2 P2S support. New optional parameter added
-	- VpnClientProtocol
+* Added support for IkeV2 P2S
+	- New-AzureRmVirtualNetworkGateway: Added optional parameter -VpnClienProtocol
+	- Set-AzureRmVirtualNetworkGateway: Added optional parameter -VpnClienProtocol
 	
 ## Version 4.3.1
 
