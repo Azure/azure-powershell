@@ -45,7 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\GetAzureContainerGroupCommand.cs" />
-    <Compile Include="Commands\GetAzureContainerGroupLogsCommand.cs" />
+    <Compile Include="Commands\ExportAzureContainerGroupLogsCommand.cs" />
     <Compile Include="Commands\NewAzureContainerGroupCommand.cs" />
     <Compile Include="Commands\RemoveAzureContainerGroupCommand.cs" />
     <Compile Include="Models\ContainerGroupCreationParameters.cs" />
@@ -57,10 +57,6 @@
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.ContainerInstance, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.ContainerInstance.1.0.0-preview\lib\net452\Microsoft.Azure.Management.ContainerInstance.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Azure.Management.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ResourceManager.1.6.0-preview\lib\net452\Microsoft.Azure.Management.ResourceManager.dll</HintPath>
-      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>

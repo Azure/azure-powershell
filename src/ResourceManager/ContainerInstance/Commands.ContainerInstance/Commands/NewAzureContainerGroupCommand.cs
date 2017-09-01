@@ -69,12 +69,14 @@ namespace Microsoft.Azure.Commands.ContainerInstance
             Mandatory = false,
             HelpMessage = "The required CPU cores. Default: 1")]
         [ValidateNotNullOrEmpty]
+        [ValidateRange(1, 16)]
         public double? Cpu { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "The required memory in GB. Default: 1.5")]
         [ValidateNotNullOrEmpty]
+        [ValidateRange(0, 64)]
         public double? Memory { get; set; }
 
         [Parameter(
@@ -125,8 +127,7 @@ namespace Microsoft.Azure.Commands.ContainerInstance
         [Parameter(
            Mandatory = false,
            ValueFromPipelineByPropertyName = true)]
-        [Alias("Tag")]
-        public Hashtable Tags { get; set; }
+        public Hashtable Tag { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -137,7 +138,7 @@ namespace Microsoft.Azure.Commands.ContainerInstance
                     Name = this.Name,
                     ResourceGroupName = this.ResourceGroupName,
                     Location = this.Location ?? this.GetResourceGroupLocation(this.ResourceGroupName),
-                    Tags = TagsConversionHelper.CreateTagDictionary(this.Tags, validate: true),
+                    Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true),
                     OsType = this.OsType ?? ContainerGroupCreationParameters.DefaultOsType,
                     IpAddressType = this.IpAddressType,
                     Port = this.Port ?? ContainerGroupCreationParameters.DefaultPort,

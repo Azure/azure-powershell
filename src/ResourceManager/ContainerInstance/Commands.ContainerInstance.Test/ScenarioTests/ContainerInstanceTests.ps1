@@ -46,7 +46,7 @@ function Test-AzureRmContainerGroup
         Assert-AreEqual $retrievedContainerGroupList.Count 1
         Assert-ContainerGroup $containerGroupCreated $retrievedContainerGroupList[0]
 
-        Remove-AzureRmContainerGroup -ResourceGroupName $resourceGroupName -Name $containerGroupName
+        $retrievedContainerGroup | Remove-AzureRmContainerGroup
     }
     finally
     {
@@ -72,8 +72,9 @@ function Test-AzureRmContainerGroupLogs
         New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
         $containerGroupCreated = New-AzureRmContainerGroup -ResourceGroupName $resourceGroupName -Name $containerGroupName -Image $image -OsType $osType -IpAddressType "public"
 
-        $logs = Get-AzureRmContainerGroupLogs -ResourceGroupName $resourceGroupName -Name $containerGroupName
-        Assert-NotNull $logs
+        Export-AzureRmContainerGroupLogs -ResourceGroupName $resourceGroupName -Name $containerGroupName -Dir "."
+        $log = $containerGroupName + "_log"
+        Assert-True {Test-Path $log}
 
         Remove-AzureRmContainerGroup -ResourceGroupName $resourceGroupName -Name $containerGroupName
     }
