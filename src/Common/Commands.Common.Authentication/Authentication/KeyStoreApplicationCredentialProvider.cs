@@ -14,7 +14,6 @@
 
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.Rest.Azure.Authentication;
-using Microsoft.WindowsAzure.Commands.Common;
 using System.Security;
 using System.Threading.Tasks;
 

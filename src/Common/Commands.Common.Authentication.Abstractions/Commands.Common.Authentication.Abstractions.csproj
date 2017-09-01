@@ -103,6 +103,7 @@
     <Compile Include="AzureAccount.cs" />
     <Compile Include="AzureRmProfileProvider.cs" />
     <Compile Include="AzureSMProfileProvider.cs" />
+    <Compile Include="DiskDataStore.cs" />
     <Compile Include="Extensions\AzureAccountExtensions.cs" />
     <Compile Include="AzureEnvironmentConstants.cs" />
     <Compile Include="Extensions\AzureContextExtensions.cs" />
@@ -155,6 +156,7 @@
     <Compile Include="Settings\UserAgentSettings.cs" />
     <Compile Include="Settings\HandlerSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\FileUtilities.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
