@@ -38,7 +38,7 @@ Param(
 )
 
 $VerbosePreference = "Continue"
-$ErrorActionPreference = “Stop”
+$ErrorActionPreference = "Stop"
 
 ########################################################################################################################
 # Section1:  Log-in to Azure and select appropriate subscription. 

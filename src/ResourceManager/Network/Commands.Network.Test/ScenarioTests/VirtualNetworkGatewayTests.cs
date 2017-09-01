@@ -63,6 +63,12 @@ namespace Commands.Network.Test.ScenarioTests
         public void TestVirtualNetworkGatewayP2SVpnProfile()
         {
             NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-VirtualNetworkGatewayGenerateVpnProfile -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void VirtualNetworkGatewayIkeV2Test()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkGatewayIkeV2");
         }
     }
 }
