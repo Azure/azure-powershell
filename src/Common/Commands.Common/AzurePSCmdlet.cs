@@ -671,7 +671,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 base.ProcessRecord();
                 ExecuteCmdlet();
             }
-            catch (Exception ex)
+            catch (Exception ex) when (!IsTerminatingError(ex))
             {
                 WriteExceptionError(ex);
             }
@@ -696,6 +696,17 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         {
             Dispose(true);
             GC.SuppressFinalize(this);
+        }
+
+        public virtual bool IsTerminatingError(Exception ex)
+        {
+            var pipelineStoppedEx = ex as PipelineStoppedException;
+            if (pipelineStoppedEx != null && pipelineStoppedEx.InnerException == null)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }
