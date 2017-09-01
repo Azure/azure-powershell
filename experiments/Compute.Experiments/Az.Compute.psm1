@@ -26,36 +26,36 @@
 
 function New-AzVm {
     param (
-        [Parameter(Mandatory = $true)] [string] $Name, 
-        [Parameter(Mandatory = $true)] [string] $ResourceGroup, 
+        [Parameter(Mandatory = $true)] [string] $Name,
+        [Parameter(Mandatory = $true)] [string] $ResourceGroup,
 
         # Generate a random as a hash of the name so it will be idempotent (tack on resource group?).
         [Parameter(DontShow)]
-        $Random = $(Get-Hash $Name), 
+        $Random = $(Get-Hash $Name),
 
-        [string] $Location = "", 
+        [string] $Location = "",
 
-        [string] $Image = "WinServer2016", 
-        [string] $Size = "Standard_DS1_v2", 
+        [string] $Image = "WinServer2016",
+        [string] $Size = "Standard_DS1_v2",
 
-        [string] $VnetName = "$($Name)Vnet", 
-        [string] $SubnetAddressPrefix = "192.168.1.0/24", 
-        [string] $VnetAddressPrefix = "192.168.0.0/16", 
+        [string] $VnetName = "$($Name)Vnet",
+        [string] $SubnetAddressPrefix = "192.168.1.0/24",
+        [string] $VnetAddressPrefix = "192.168.0.0/16",
 
-        [string] $PublicIpName = "$($Name)PublicIp", 
-        [string] $PublicIpDnsLabel = "$Name-$Random".ToLower(), 
-        [string] $PublicIpAllocationMethod = "Static", 
-        [int] $PublicIpIdleTimeoutInMinutes = 4, 
+        [string] $PublicIpName = "$($Name)PublicIp",
+        [string] $PublicIpDnsLabel = "$Name-$Random".ToLower(),
+        [string] $PublicIpAllocationMethod = "Static",
+        [int] $PublicIpIdleTimeoutInMinutes = 4,
 
-        [string] $NsgName = "$($Name)Nsg", 
-        [int[]] $NsgOpenPorts = $null, 
+        [string] $NsgName = "$($Name)Nsg",
+        [int[]] $NsgOpenPorts = $null,
 
         [string] $NicName = "$($Name)Nic"
 
         # Storage - OS Disk Size.
         # Compute: "this goes above and beyond the 80% scenario".
     )
-    
+
     try {
 
         # Build credentials.
@@ -98,11 +98,16 @@ function New-AzVm {
         $pip = Use-Pip -Name $PublicIpName -ResourceGroup $ResourceGroup -Location $Location -DnsLabel $PublicIpDnsLabel -AllocationMethod $PublicIpAllocationMethod -IdleTimeoutInMinutes $PublicIpIdleTimeoutInMinutes;
 
         Write-Info "Ensuring NSG...";
-        $nsg = Use-Nsg -Name $PublicIpName -ResourceGroup $ResourceGroup -Location $Location -OpenPorts $NsgOpenPorts;
-        $Global:nsg = $nsg;
+        $nsg = Use-Nsg -Name $NsgName -ResourceGroup $ResourceGroup -Location $Location -OpenPorts $NsgOpenPorts;
 
         Write-Info "Ensuring NIC...";
-        $nic = Use-Nic -Name $NicName -ResourceGroup $ResourceGroup -Location $Location -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id -NetworkSecurityGroupId $nsg.Id;
+        $nic = Use-Nic `
+            -Name $NicName `
+            -ResourceGroup $ResourceGroup `
+            -Location $Location `
+            -SubnetId $vnet.Subnets[0].Id `
+            -PublicIpAddressId $pip.Id `
+            -NetworkSecurityGroupId $nsg.Id;
 
         # TODO: Add disk options (https://docs.microsoft.com/en-us/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-from-managed-os-disks?toc=%2fpowershell%2fmodule%2ftoc.json)?
         # https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/set-azurermvmosdisk?view=azurermps-4.2.0
@@ -139,12 +144,12 @@ Export-ModuleMember -Function New-AzVm
 
 function Use-ResourceGroup {
     param (
-        [Parameter(Mandatory=$true)] [string] $ResourceGroup, 
+        [Parameter(Mandatory=$true)] [string] $ResourceGroup,
         [Parameter(Mandatory=$true)] [string] $Location
     )
-    
+
     $rg = Get-AzureRmResourceGroup | Where-Object { $_.ResourceGroupName -eq $ResourceGroup } | Select-Object -First 1 -Wait;
-    
+
     if($rg -eq $null) {
         return New-AzureRmResourceGroup -Name $ResourceGroup -Location $Location;
     } else {
@@ -154,13 +159,13 @@ function Use-ResourceGroup {
 
 function Use-Vnet {
     param (
-        [Parameter(Mandatory=$true)] [string] $Name, 
-        [Parameter(Mandatory=$true)] [string] $ResourceGroup, 
-        [Parameter(Mandatory=$true)] [string] $Location, 
-        [Parameter(Mandatory=$true)] [string] $SubnetAddressPrefix, 
+        [Parameter(Mandatory=$true)] [string] $Name,
+        [Parameter(Mandatory=$true)] [string] $ResourceGroup,
+        [Parameter(Mandatory=$true)] [string] $Location,
+        [Parameter(Mandatory=$true)] [string] $SubnetAddressPrefix,
         [Parameter(Mandatory=$true)] [string] $VnetAddressPrefix
     )
-    
+
     $vnet = Get-AzureRmVirtualNetwork | Where-Object { $_.Name -eq $Name } | Select-Object -First 1 -Wait;
 
     if($vnet -eq $null) {
@@ -176,14 +181,14 @@ function Use-Vnet {
 
 function Use-Pip {
     param (
-        [Parameter(Mandatory=$true)] [string] $Name, 
-        [Parameter(Mandatory=$true)] [string] $ResourceGroup, 
-        [Parameter(Mandatory=$true)] [string] $Location, 
-        [Parameter(Mandatory=$true)] [string] $DnsLabel, 
-        [Parameter(Mandatory=$true)] [string] $AllocationMethod, 
+        [Parameter(Mandatory=$true)] [string] $Name,
+        [Parameter(Mandatory=$true)] [string] $ResourceGroup,
+        [Parameter(Mandatory=$true)] [string] $Location,
+        [Parameter(Mandatory=$true)] [string] $DnsLabel,
+        [Parameter(Mandatory=$true)] [string] $AllocationMethod,
         [Parameter(Mandatory=$true)] [int] $IdleTimeoutInMinutes
     )
-    
+
     $pip = Get-AzureRmPublicIpAddress | Where-Object { $_.Name -eq $Name } | Select-Object -First 1 -Wait;
 
     if($pip -eq $null) {
@@ -196,12 +201,12 @@ function Use-Pip {
 
 function Use-Nsg {
     param (
-        [Parameter(Mandatory=$true)] [string] $Name, 
-        [Parameter(Mandatory=$true)] [string] $ResourceGroup, 
-        [Parameter(Mandatory=$true)] [string] $Location, 
+        [Parameter(Mandatory=$true)] [string] $Name,
+        [Parameter(Mandatory=$true)] [string] $ResourceGroup,
+        [Parameter(Mandatory=$true)] [string] $Location,
         [Parameter(Mandatory=$true)] [int[]] $OpenPorts
     )
-    
+
     $nsg = Get-AzureRmNetworkSecurityGroup | Where-Object { $_.Name -eq $Name } | Select-Object -First 1 -Wait;
 
     if($nsg -eq $null) {
@@ -212,7 +217,7 @@ function Use-Nsg {
         {
             $nsgRule = New-AzureRmNetworkSecurityRuleConfig -Name myNetworkSecurityGroupRuleRDP -Protocol Tcp -Direction Inbound -Priority $priority -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange $port -Access Allow;
             $rules.Add($nsgRule);
-            
+
             $priority--;
         }
 
@@ -225,14 +230,14 @@ function Use-Nsg {
 
 function Use-Nic {
     param (
-        [Parameter(Mandatory=$true)] [string] $Name, 
-        [Parameter(Mandatory=$true)] [string] $ResourceGroup, 
-        [Parameter(Mandatory=$true)] [string] $Location, 
-        [Parameter(Mandatory=$true)] [string] $SubnetId, 
-        [Parameter(Mandatory=$true)] [string] $PublicIpAddressId, 
+        [Parameter(Mandatory=$true)] [string] $Name,
+        [Parameter(Mandatory=$true)] [string] $ResourceGroup,
+        [Parameter(Mandatory=$true)] [string] $Location,
+        [Parameter(Mandatory=$true)] [string] $SubnetId,
+        [Parameter(Mandatory=$true)] [string] $PublicIpAddressId,
         [Parameter(Mandatory=$true)] [psobject] $NetworkSecurityGroupId
     )
-    
+
     $nic = Get-AzureRmNetworkInterface | Where-Object { $_.Name -eq $Name } | Select-Object -First 1 -Wait;
 
     if($nic -eq $null) {
