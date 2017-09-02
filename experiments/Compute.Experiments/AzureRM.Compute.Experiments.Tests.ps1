@@ -10,7 +10,9 @@ $clientSecret = ConvertTo-SecureString $credentials.clientSecret -AsPlainText -F
 $pscredentials = New-Object System.Management.Automation.PSCredential($credentials.applicationId, $clientSecret)
 Login-AzureRmAccount -ServicePrincipal -Credential $pscredentials -TenantId $credentials.tenantId | Out-Null
 
-New-AzVm
+$vm = New-AzVm
+
+$vm
 
 # clean-up
-Remove-AzureRmResourceGroup -Name $resourceGroupName
+Remove-AzureRmResourceGroup -ResourceId $vm.resourceId

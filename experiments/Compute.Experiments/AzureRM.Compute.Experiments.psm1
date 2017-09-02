@@ -4,12 +4,15 @@ function New-AzVm {
 
     PROCESS {
         # Images
+        <#
         Write-Host "Load images..."
         $jsonImages = Get-Content -Path "images.json" | ConvertFrom-Json
         Write-Host "done"
+        #>
 
         # an array of @{ Type = ...; Name = ...; Image = ... }
-        $images = $jsonImages.outputs.aliases.value.psobject.Properties | ForEach-Object {
+        # $images = $jsonImages.outputs.aliases.value.psobject.Properties | ForEach-Object {
+        $images = $staticImages.psobject.Properties | ForEach-Object {
             # e.g. "Linux"
             $type = $_.Name
             $_.Value.psobject.Properties | ForEach-Object {
@@ -25,7 +28,7 @@ function New-AzVm {
         }
 
         # Find VM Image
-        $vmImageName = "Win2012R2Datacenter"
+        $vmImageName = "openSUSE-Leap" # "Win2012R2Datacenter"
         $vmImage = $images | Where-Object { $_.Name -eq $vmImageName } | Select-Object -First 1
 
         Write-Host $vmImage
@@ -38,7 +41,7 @@ function New-AzVm {
 
         # Resource Group
         $resourceGroupName = "resourceGroupTest"
-        New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+        $resource = New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
 
         # Virtual Network
         $virtualNetworkName = "virtualNetworkTest"
@@ -106,17 +109,20 @@ function New-AzVm {
         $vmComputer = $vm.Name
         $vmComputerPassword = "E5v7e9!@%f";
         $vmComputerUser = "special";
+        $password = ConvertTo-SecureString $vmComputerPassword -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($vmComputerUser, $password);
         switch ($vmImage.Type) {
             "Windows" {
-                $password = ConvertTo-SecureString $vmComputerPassword -AsPlainText -Force;
-                $cred = New-Object System.Management.Automation.PSCredential ($vmComputerUser, $password);
                 $vmConfig = $vmConfig | Set-AzureRmVMOperatingSystem `
                     -Windows `
                     -ComputerName $vmComputer `
                     -Credential $cred
             }
             "Linux" {
-
+                $vmConfig = $vmConfig | Set-AzureRmVMOperatingSystem `
+                    -Linux `
+                    -ComputerName $vmComputer `
+                    -Credential $cred
             }
         }
 
@@ -130,8 +136,90 @@ function New-AzVm {
                 -Version $vmImageImage.version `
             | Add-AzureRmVMNetworkInterface -Id $networkInterface.Id
 
-        New-AzureRmVm -ResourceGroupName $resourceGroupName -Location $location -VM $vmConfig
+        New-PsObject @{
+            ResourceId = $resource.ResourceId;
+            Response = New-AzureRmVm -ResourceGroupName $resourceGroupName -Location $location -VM $vmConfig
+        }
     }
+}
+
+function New-PsObject {
+    param([hashtable] $property)
+
+    New-Object psobject -Property $property
+}
+
+$staticImages = New-PsObject @{
+    Linux = New-PsObject @{
+        CentOS = New-PsObject @{
+            publisher = "OpenLogic";
+            offer = "CentOS";
+            sku = "7.3";
+            version = "latest";
+        };
+        CoreOS = New-PsObject @{
+            publisher = "CoreOS";
+            offer = "CoreOS";
+            sku = "Stable";
+            version = "latest";
+        };
+        Debian = New-PsObject @{
+            publisher = "credativ";
+            offer = "Debian";
+            sku = "8";
+            version = "latest";
+        };
+        "openSUSE-Leap" = New-PsObject @{
+            publisher = "SUSE";
+            offer = "openSUSE-Leap";
+            sku = "42.2";
+            version = "latest";
+        };
+        RHEL = New-PsObject @{
+            publisher = "RedHat";
+            offer = "RHEL";
+            sku = "7.3";
+            version = "latest";
+        };
+        SLES = New-PsObject @{
+            publisher = "SUSE";
+            offer = "SLES";
+            sku = "12-SP2";
+            version = "latest";
+        };
+        UbuntuLTS = New-PsObject @{
+            publisher = "Canonical";
+            offer = "UbuntuServer";
+            sku = "16.04-LTS";
+            version = "latest";
+        };
+    };
+    Windows = New-PsObject @{
+        Win2016Datacenter = New-PsObject @{
+            publisher = "MicrosoftWindowsServer";
+            offer = "WindowsServer";
+            sku = "2016-Datacenter";
+            version = "latest";
+        };
+        Win2012R2Datacenter = New-PsObject @{
+            publisher = "MicrosoftWindowsServer";
+            offer = "WindowsServer";
+            sku = "2012-R2-Datacenter";
+            version = "latest";
+        };
+        Win2012Datacenter = New-PsObject @{
+            publisher = "MicrosoftWindowsServer";
+            offer = "WindowsServer";
+            sku = "2012-Datacenter";
+            version = "latest";
+        };
+        Win2008R2SP1 = New-PsObject @{
+            publisher = "MicrosoftWindowsServer";
+            offer = "WindowsServer";
+            sku = "2008-R2-SP1";
+            version = "latest";
+        };
+    };
 }
 
 Export-ModuleMember -Function New-AzVm
