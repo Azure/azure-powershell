@@ -1,30 +1,13 @@
 function New-AzVm {
     [CmdletBinding()]
-    param ()
+    param (
+        [PSCredential] $credential,
+        [string] $name = "vmTest"
+    )
 
     PROCESS {
-        # Images
-        <#
-        Write-Host "Load images..."
-        $jsonImages = Get-Content -Path "images.json" | ConvertFrom-Json
-        Write-Host "done"
-        #>
-
-        # an array of @{ Type = ...; Name = ...; Image = ... }
-        # $images = $jsonImages.outputs.aliases.value.psobject.Properties | ForEach-Object {
-        $images = $staticImages.psobject.Properties | ForEach-Object {
-            # e.g. "Linux"
-            $type = $_.Name
-            $_.Value.psobject.Properties | ForEach-Object {
-                New-Object -TypeName psobject -Property @{
-                    # e.g. "Linux"
-                    Type = $type;
-                    # e.g. "CentOs"
-                    Name = $_.Name;
-                    # e.g. @{ publisher = "OpenLogic"; offer = "CentOS"; sku = "7.3"; version = "latest" }
-                    Image = $_.Value
-                }
-            }
+        if (-not $credential) {
+            $credential = Get-Credential
         }
 
         # Find VM Image
@@ -104,25 +87,21 @@ function New-AzVm {
 
         # VM
         # $vmCredentials = Get-Credential
-        $vm = @{ Name = "vmTest"; Size = "Standard_DS2" }
+        $vm = @{ Name = $name; Size = "Standard_DS2" }
         $vmConfig = New-AzureRmVMConfig -VMName $vm.Name -VMSize $vm.Size
         $vmComputer = $vm.Name
-        $vmComputerPassword = "E5v7e9!@%f";
-        $vmComputerUser = "special";
-        $password = ConvertTo-SecureString $vmComputerPassword -AsPlainText -Force;
-        $cred = New-Object System.Management.Automation.PSCredential ($vmComputerUser, $password);
         switch ($vmImage.Type) {
             "Windows" {
                 $vmConfig = $vmConfig | Set-AzureRmVMOperatingSystem `
                     -Windows `
                     -ComputerName $vmComputer `
-                    -Credential $cred
+                    -Credential $credential
             }
             "Linux" {
                 $vmConfig = $vmConfig | Set-AzureRmVMOperatingSystem `
                     -Linux `
                     -ComputerName $vmComputer `
-                    -Credential $cred
+                    -Credential $credential
             }
         }
 
@@ -220,6 +199,24 @@ $staticImages = New-PsObject @{
             version = "latest";
         };
     };
+}
+
+# Images
+# an array of @{ Type = ...; Name = ...; Image = ... }
+# $images = $jsonImages.outputs.aliases.value.psobject.Properties | ForEach-Object {
+$images = $staticImages.psobject.Properties | ForEach-Object {
+    # e.g. "Linux"
+    $type = $_.Name
+    $_.Value.psobject.Properties | ForEach-Object {
+        New-Object -TypeName psobject -Property @{
+            # e.g. "Linux"
+            Type = $type;
+            # e.g. "CentOs"
+            Name = $_.Name;
+            # e.g. @{ publisher = "OpenLogic"; offer = "CentOS"; sku = "7.3"; version = "latest" }
+            Image = $_.Value
+        }
+    }
 }
 
 Export-ModuleMember -Function New-AzVm

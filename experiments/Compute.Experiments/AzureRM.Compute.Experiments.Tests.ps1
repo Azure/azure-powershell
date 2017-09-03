@@ -10,7 +10,13 @@ $clientSecret = ConvertTo-SecureString $credentials.clientSecret -AsPlainText -F
 $pscredentials = New-Object System.Management.Automation.PSCredential($credentials.applicationId, $clientSecret)
 Login-AzureRmAccount -ServicePrincipal -Credential $pscredentials -TenantId $credentials.tenantId | Out-Null
 
-$vm = New-AzVm
+$vmComputerPassword = $credentials.vmPassword;
+$vmComputerUser = $credentials.vmUser;
+$password = ConvertTo-SecureString $vmComputerPassword -AsPlainText -Force;
+$vmCredential = New-Object System.Management.Automation.PSCredential ($vmComputerUser, $password);
+
+# $vm = New-AzVm
+$vm = New-AzVm -Credential $vmCredential
 
 $vm
 
