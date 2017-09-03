@@ -342,7 +342,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
                 VirtualStore[path] = string.Empty;
             }
 
-            return new LockingMemoryStream(Encoding.Default.GetBytes(virtualStore[path]), false, () => readLocks[path]--);
+            return new LockingMemoryStream(Encoding.UTF8.GetBytes(virtualStore[path]), false, () => readLocks[path]--);
         }
 
         public Stream OpenForExclusiveWrite(string path)
@@ -370,13 +370,13 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
                 VirtualStore[path] = string.Empty;
             }
             byte[] buffer = new byte[16384];
-            var copyBytes = Encoding.Default.GetBytes(VirtualStore[path]);
+            var copyBytes = Encoding.UTF8.GetBytes(VirtualStore[path]);
             for (int i = 0; i < copyBytes.Length && i < buffer.Length; ++i) buffer[i] = copyBytes[i];
             return new LockingMemoryStream(buffer, true,
                 () =>
                 {
                     writeLocks[path] = false;
-                    virtualStore[path] = Encoding.Default.GetString(buffer);
+                    virtualStore[path] = Encoding.UTF8.GetString(buffer);
                 }
              );
         }

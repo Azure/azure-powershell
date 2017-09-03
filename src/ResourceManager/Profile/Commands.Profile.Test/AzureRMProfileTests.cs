@@ -682,6 +682,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
         public void SavingProfileWorks()
         {
             string expected = @"{
+  ""DefaultContextKey"": ""Default"",
   ""EnvironmentTable"": {
     ""testCloud"": {
       ""Name"": ""testCloud"",
@@ -801,7 +802,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             profile.EnvironmentTable[environment.Name] = environment;
             profile.DefaultContext.TokenCache = new AuthenticationStoreTokenCache(new AzureTokenCache { CacheData = new byte[] { 1, 2, 3, 4, 5, 6, 8, 9, 0 } });
             profile.Save();
-            string actual = dataStore.ReadFileAsText(path);
+            string actual = dataStore.ReadFileAsText(path).Substring(1).TrimEnd(new[] { '\0' });
             Assert.Equal(expected, actual);
         }
 

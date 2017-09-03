@@ -574,7 +574,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please provide tenant or subscription..
+        ///   Looks up a localized string similar to Please provide a valid tenant or a valid subscription..
         /// </summary>
         internal static string SubscriptionOrTenantRequired {
             get {

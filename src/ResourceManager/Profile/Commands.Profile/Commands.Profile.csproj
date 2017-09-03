@@ -71,6 +71,7 @@
     <Compile Include="AutoSave\DisableAzureRmContextAutosave.cs" />
     <Compile Include="AutoSave\EnableAzureRmContextAutosave.cs" />
     <Compile Include="Common\AzureContextModificationCmdlet.cs" />
+    <Compile Include="Common\AzureProfileConstants.cs" />
     <Compile Include="Common\AzureRmProfileConstants.cs" />
     <Compile Include="Common\ContextModificationScope.cs" />
     <Compile Include="Context\ClearAzureRmContext.cs" />

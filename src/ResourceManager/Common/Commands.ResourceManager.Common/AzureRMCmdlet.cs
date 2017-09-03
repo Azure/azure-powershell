@@ -222,7 +222,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             WriteWarning(Resources.ARMDataCollectionMessage);
 
             _dataCollectionProfile.EnableAzureDataCollection = true;
-            SaveDataCollectionProfile();
         }
 
         protected override void InitializeQosEvent()

@@ -25,7 +25,6 @@ using System.Management.Automation;
 using System.Reflection;
 using System.Security;
 using Microsoft.Azure.Commands.Profile.Properties;
-using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
 using Microsoft.Azure.Commands.Profile.Common;
 
 namespace Microsoft.Azure.Commands.Profile
@@ -269,15 +268,13 @@ namespace Microsoft.Azure.Commands.Profile
                 var result = invoker.Invoke();
                 
                 bool autoSaveEnabled = AzureSession.Instance.ARMContextSaveMode == ContextSaveMode.CurrentUser;
-                foreach (var output in result)
+                var autosaveVariable = System.Environment.GetEnvironmentVariable(AzureProfileConstants.AzureAutosaveVariable);
+                bool localAutosave;
+                if(bool.TryParse(autosaveVariable, out localAutosave))
                 {
-                    bool localAutosave;
-                    if (bool.TryParse(output.ToString(), out localAutosave))
-                    {
-                        autoSaveEnabled = localAutosave;
-                        break;
-                    }
+                    autoSaveEnabled = localAutosave;
                 }
+
                 InitializeProfileProvider(autoSaveEnabled);
 #if DEBUG
             }

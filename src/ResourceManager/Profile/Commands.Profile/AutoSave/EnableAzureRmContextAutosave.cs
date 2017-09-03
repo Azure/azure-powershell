@@ -79,25 +79,47 @@ namespace Microsoft.Azure.Commands.Profile.Context
             FileUtilities.DataStore = session.DataStore;
             session.ARMContextSaveMode = ContextSaveMode.CurrentUser;
             var diskCache = session.TokenCache as ProtectedFileTokenCache;
-            if (diskCache == null)
+            try
             {
-                var memoryCache = session.TokenCache as AuthenticationStoreTokenCache;
-                FileUtilities.EnsureDirectoryExists(session.TokenCacheDirectory);
-
-                diskCache = new ProtectedFileTokenCache(tokenPath, store);
-                if (memoryCache != null && memoryCache.Count > 0)
+                if (diskCache == null)
                 {
-                    diskCache.Deserialize(memoryCache.Serialize());
+                    var memoryCache = session.TokenCache as AuthenticationStoreTokenCache;
+                    try
+                    {
+                        FileUtilities.EnsureDirectoryExists(session.TokenCacheDirectory);
+
+                        diskCache = new ProtectedFileTokenCache(tokenPath, store);
+                        if (memoryCache != null && memoryCache.Count > 0)
+                        {
+                            diskCache.Deserialize(memoryCache.Serialize());
+                        }
+
+                        session.TokenCache = diskCache;
+                    }
+                    catch
+                    {
+                        // leave the token cache alone if there are file system errors
+                    }
                 }
 
-                session.TokenCache = diskCache;
-            }
+                if (writeAutoSaveFile)
+                {
+                    try
+                    {
+                        FileUtilities.EnsureDirectoryExists(session.ProfileDirectory);
+                        string autoSavePath = Path.Combine(session.ProfileDirectory, ContextAutosaveSettings.AutoSaveSettingsFile);
+                        session.DataStore.WriteFile(autoSavePath, JsonConvert.SerializeObject(result));
+                    }
+                    catch
+                    {
+                        // do not fail for file system errors in writing the autosave setting
+                    }
 
-            if (writeAutoSaveFile)
+                }
+            }
+            catch
             {
-                FileUtilities.EnsureDirectoryExists(session.ProfileDirectory);
-                string autoSavePath = Path.Combine(session.ProfileDirectory, ContextAutosaveSettings.AutoSaveSettingsFile);
-                session.DataStore.WriteFile(autoSavePath, JsonConvert.SerializeObject(result));
+                // do not throw if there are file system erroer
             }
         }
 

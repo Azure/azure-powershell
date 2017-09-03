@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             {
                 CacheDirectory = profileDirectory,
                 ContextDirectory = profileDirectory,
-                Mode = ContextSaveMode.CurrentUser,
+                Mode = ContextSaveMode.Process,
                 CacheFile = "TokenCache.dat",
                 ContextFile = "AzureRmContext.json"
             };

@@ -131,7 +131,6 @@ namespace Microsoft.WindowsAzure.Commands.Common
             WriteWarning(Resources.RDFEDataCollectionMessage);
 
             _dataCollectionProfile.EnableAzureDataCollection = true;
-            SaveDataCollectionProfile();
         }
 
         protected override void InitializeQosEvent()

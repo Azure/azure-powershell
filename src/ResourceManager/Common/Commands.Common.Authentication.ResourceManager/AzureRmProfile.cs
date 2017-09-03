@@ -118,17 +118,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
 
             if (store.FileExists(ProfilePath))
             {
-                string contents = store.ReadFileAsText(ProfilePath);
+                string contents = GetJsonText(store.ReadFileAsText(ProfilePath));
                 LegacyAzureRmProfile oldProfile;
                 AzureRmProfile profile = null;
-                if (!SafeDeserializeObject<LegacyAzureRmProfile>(contents, out oldProfile)
-                    || !oldProfile.TryConvert(out profile)
-                    || !SafeDeserializeObject<AzureRmProfile>(contents, out profile, new AzureRmProfileConverter()))
+                if ((SafeDeserializeObject<LegacyAzureRmProfile>(contents, out oldProfile)
+                     && oldProfile.TryConvert(out profile))
+                    || SafeDeserializeObject<AzureRmProfile>(contents, out profile, new AzureRmProfileConverter()))
                 {
-                    return;
+                    Initialize(profile);
                 }
-
-                Initialize(profile);
             }
         }
 
@@ -583,6 +581,22 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         public void Dispose()
         {
             Dispose(true);
+        }
+
+        static string GetJsonText(string text)
+        {
+            string result = string.Empty;
+            if (text != null)
+            {
+                int i = text.IndexOf('{');
+
+                if ( i >= 0 && i < text.Length)
+                {
+                    result = text.Substring(i);
+                }
+            }
+
+            return result;
         }
     }
 }

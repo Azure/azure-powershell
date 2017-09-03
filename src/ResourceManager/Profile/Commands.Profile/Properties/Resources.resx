@@ -312,7 +312,7 @@
     <value>Subscription {0} was not found in tenant {1}. Please verify that the subscription exists in this tenant.</value>
   </data>
   <data name="SubscriptionOrTenantRequired" xml:space="preserve">
-    <value>Please provide tenant or subscription.</value>
+    <value>Please provide a valid tenant or a valid subscription.</value>
   </data>
   <data name="TenantAuthFailed" xml:space="preserve">
     <value>Could not authenticate with tenant {0}. Please ensure that your account has access to this tenant and log in with Login-AzureRmAccount</value>
