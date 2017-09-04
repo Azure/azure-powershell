@@ -80,7 +80,7 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
         }
 
         public AzureBgpPeering NewAzureBGPPeering(Guid serviceKey, PeerAddressTypeValues peerAddressType, string advertisedPublicPrefixes, UInt32 customerAsn, UInt32 peerAsn, string primaryPeerSubnet, string routingRegistryName, string secondaryPeerSubnet,
-            UInt32 vlanId, BgpPeeringAccessType accessType, string sharedKey = null, UInt32 legacyMode = 0)
+            UInt32 vlanId, BgpPeeringAccessType accessType, string sharedKey = null, UInt32 legacyMode)
         {
             ExpressRouteOperationStatusResponse result = null;
 
