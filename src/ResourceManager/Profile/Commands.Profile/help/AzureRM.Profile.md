@@ -17,9 +17,18 @@ Adds an authenticated account to use for Azure Resource Manager cmdlet requests.
 ### [Add-AzureRmEnvironment](Add-AzureRmEnvironment.md)
 Adds endpoints and metadata for an instance of Azure Resource Manager.
 
+### [Clear-AzureRmContext](Clear-AzureRmContext.md)
+{{Fill in the Synopsis}}
+
+### [Disable-AzureRmContextAutosave](Disable-AzureRmContextAutosave.md)
+{{Fill in the Synopsis}}
+
 ### [Disable-AzureRmDataCollection](Disable-AzureRmDataCollection.md)
 Opts out of collecting data to improve the AzurePowerShell cmdlets. 
 Data is not collected unless you explicitly opt in.
+
+### [Enable-AzureRmContextAutosave](Enable-AzureRmContextAutosave.md)
+{{Fill in the Synopsis}}
 
 ### [Enable-AzureRmDataCollection](Enable-AzureRmDataCollection.md)
 Enables Azure PowerShell to collect data to improve the user experience with AzurePowerShell cmdlets.
@@ -41,11 +50,23 @@ Gets tenants that are authorized for the current user.
 ### [Import-AzureRmContext](Import-AzureRmContext.md)
 Loads Azure authentication information from a file.
 
+### [Remove-AzureRmContext](Remove-AzureRmContext.md)
+{{Fill in the Synopsis}}
+
 ### [Remove-AzureRmEnvironment](Remove-AzureRmEnvironment.md)
 Removes endpoints and metadata for connecting to a given Azure instance.
 
+### [Rename-AzureRmContext](Rename-AzureRmContext.md)
+{{Fill in the Synopsis}}
+
+### [Resolve-AzureRmError](Resolve-AzureRmError.md)
+Display detailed information about PowerShell errors, with extended details for Azure PowerShell errors.
+
 ### [Save-AzureRmContext](Save-AzureRmContext.md)
 Saves the current authentication information for use in other PowerShell sessions.
+
+### [Select-AzureRmContext](Select-AzureRmContext.md)
+{{Fill in the Synopsis}}
 
 ### [Send-Feedback](Send-Feedback.md)
 Sends feedback to the Azure PowerShell team via a set of guided prompts.

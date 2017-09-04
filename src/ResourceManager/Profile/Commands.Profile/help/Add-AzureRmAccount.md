@@ -13,52 +13,32 @@ Adds an authenticated account to use for Azure Resource Manager cmdlet requests.
 
 ### UserWithSubscriptionId (Default)
 ```
-Add-AzureRmAccount [-Environment <AzureEnvironment>] [-EnvironmentName <String>] [[-Credential] <PSCredential>]
- [-TenantId <String>] [-SubscriptionId <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UserWithSubscriptionName
-```
-Add-AzureRmAccount [-Environment <AzureEnvironment>] [-EnvironmentName <String>] [[-Credential] <PSCredential>]
- [-TenantId <String>] -SubscriptionName <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+Add-AzureRmAccount [-Environment <String>] [[-Credential] <PSCredential>] [-TenantId <String>]
+ [-Subscription <String>] [-ContextName <String>] [-Force] [-Scope <ContextModificationScope>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ServicePrincipalWithSubscriptionId
 ```
-Add-AzureRmAccount [-Environment <AzureEnvironment>] [-EnvironmentName <String>] [-Credential] <PSCredential>
- [-ServicePrincipal] -TenantId <String> [-SubscriptionId <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ServicePrincipalWithSubscriptionName
-```
-Add-AzureRmAccount [-Environment <AzureEnvironment>] [-EnvironmentName <String>] [-Credential] <PSCredential>
- [-ServicePrincipal] -TenantId <String> -SubscriptionName <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+Add-AzureRmAccount [-Environment <String>] [-Credential] <PSCredential> [-ServicePrincipal] -TenantId <String>
+ [-Subscription <String>] [-ContextName <String>] [-Force] [-Scope <ContextModificationScope>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ServicePrincipalCertificateWithSubscriptionId
 ```
-Add-AzureRmAccount [-Environment <AzureEnvironment>] [-EnvironmentName <String>]
- -CertificateThumbprint <String> -ApplicationId <String> [-ServicePrincipal] -TenantId <String>
- [-SubscriptionId <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ServicePrincipalCertificateWithSubscriptionName
-```
-Add-AzureRmAccount [-Environment <AzureEnvironment>] [-EnvironmentName <String>]
- -CertificateThumbprint <String> -ApplicationId <String> [-ServicePrincipal] -TenantId <String>
- -SubscriptionName <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+Add-AzureRmAccount [-Environment <String>] -CertificateThumbprint <String> -ApplicationId <String>
+ [-ServicePrincipal] -TenantId <String> [-Subscription <String>] [-ContextName <String>] [-Force]
+ [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### AccessTokenWithSubscriptionId
 ```
-Add-AzureRmAccount [-Environment <AzureEnvironment>] [-EnvironmentName <String>] [-TenantId <String>]
- -AccessToken <String> -AccountId <String> [-SubscriptionId <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### AccessTokenWithSubscriptionName
-```
-Add-AzureRmAccount [-Environment <AzureEnvironment>] [-EnvironmentName <String>] [-TenantId <String>]
- -AccessToken <String> -AccountId <String> -SubscriptionName <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+Add-AzureRmAccount [-Environment <String>] [-TenantId <String>] -AccessToken <String>
+ [-GraphAccessToken <String>] [-KeyVaultAccessToken <String>] -AccountId <String> [-Subscription <String>]
+ [-ContextName <String>] [-Force] [-Scope <ContextModificationScope>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -134,7 +114,7 @@ Specifies an access token.
 
 ```yaml
 Type: String
-Parameter Sets: AccessTokenWithSubscriptionId, AccessTokenWithSubscriptionName
+Parameter Sets: AccessTokenWithSubscriptionId
 Aliases: 
 
 Required: True
@@ -149,7 +129,7 @@ Account Id for access token
 
 ```yaml
 Type: String
-Parameter Sets: AccessTokenWithSubscriptionId, AccessTokenWithSubscriptionName
+Parameter Sets: AccessTokenWithSubscriptionId
 Aliases: 
 
 Required: True
@@ -164,7 +144,7 @@ SPN
 
 ```yaml
 Type: String
-Parameter Sets: ServicePrincipalCertificateWithSubscriptionId, ServicePrincipalCertificateWithSubscriptionName
+Parameter Sets: ServicePrincipalCertificateWithSubscriptionId
 Aliases: 
 
 Required: True
@@ -179,10 +159,23 @@ Certificate Hash (Thumbprint)
 
 ```yaml
 Type: String
-Parameter Sets: ServicePrincipalCertificateWithSubscriptionId, ServicePrincipalCertificateWithSubscriptionName
+Parameter Sets: ServicePrincipalCertificateWithSubscriptionId
 Aliases: 
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ContextName
+Name of the default context from this login```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -197,7 +190,7 @@ The PSCredential object provides the user ID and password for organizational ID 
 
 ```yaml
 Type: PSCredential
-Parameter Sets: UserWithSubscriptionId, UserWithSubscriptionName
+Parameter Sets: UserWithSubscriptionId
 Aliases: 
 
 Required: False
@@ -209,7 +202,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: PSCredential
-Parameter Sets: ServicePrincipalWithSubscriptionId, ServicePrincipalWithSubscriptionName
+Parameter Sets: ServicePrincipalWithSubscriptionId
 Aliases: 
 
 Required: True
@@ -219,11 +212,37 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credeetnails, tenant and subscription used for communication with azure```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Environment
 Environment containing the account to log into
 
 ```yaml
-Type: AzureEnvironment
+Type: String
+Parameter Sets: (All)
+Aliases: EnvironmentName
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Force
+Overwrite the existing context with the same name, if any.```yaml
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
 
@@ -234,13 +253,35 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnvironmentName
-Specifies the Azure environment.
-Valid values are: AzureCloud, AzureChinaCloud, AzureUSGovernment.
-The default is AzureCloud.
-
-```yaml
+### -GraphAccessToken
+AccessToken for Graph Service```yaml
 Type: String
+Parameter Sets: AccessTokenWithSubscriptionId
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyVaultAccessToken
+AccessToken for KeyVault Service```yaml
+Type: String
+Parameter Sets: AccessTokenWithSubscriptionId
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Scope
+Determines the scope of context changes, for example, wheher changes apply only to the cusrrent process, or to all sessions started by this user```yaml
+Type: ContextModificationScope
 Parameter Sets: (All)
 Aliases: 
 
@@ -256,7 +297,7 @@ Indicates that this account authenticates by providing service principal credent
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: ServicePrincipalWithSubscriptionId, ServicePrincipalWithSubscriptionName, ServicePrincipalCertificateWithSubscriptionId, ServicePrincipalCertificateWithSubscriptionName
+Parameter Sets: ServicePrincipalWithSubscriptionId, ServicePrincipalCertificateWithSubscriptionId
 Aliases: 
 
 Required: True
@@ -266,31 +307,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SubscriptionId
-Specifies the ID of the subscription.
-If you do not specify this parameter, the first subscription from the subscription list is used.
-
-```yaml
+### -Subscription
+Subscription Name or ID```yaml
 Type: String
-Parameter Sets: UserWithSubscriptionId, ServicePrincipalWithSubscriptionId, ServicePrincipalCertificateWithSubscriptionId, AccessTokenWithSubscriptionId
-Aliases: 
+Parameter Sets: (All)
+Aliases: SubscriptionName, SubscriptionId
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -SubscriptionName
-Subscription Name
-
-```yaml
-Type: String
-Parameter Sets: UserWithSubscriptionName, ServicePrincipalWithSubscriptionName, ServicePrincipalCertificateWithSubscriptionName, AccessTokenWithSubscriptionName
-Aliases: 
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -302,7 +325,7 @@ Optional tenant name or ID
 
 ```yaml
 Type: String
-Parameter Sets: UserWithSubscriptionId, UserWithSubscriptionName, AccessTokenWithSubscriptionId, AccessTokenWithSubscriptionName
+Parameter Sets: UserWithSubscriptionId, AccessTokenWithSubscriptionId
 Aliases: Domain
 
 Required: False
@@ -314,7 +337,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: String
-Parameter Sets: ServicePrincipalWithSubscriptionId, ServicePrincipalWithSubscriptionName, ServicePrincipalCertificateWithSubscriptionId, ServicePrincipalCertificateWithSubscriptionName
+Parameter Sets: ServicePrincipalWithSubscriptionId, ServicePrincipalCertificateWithSubscriptionId
 Aliases: Domain
 
 Required: True
@@ -360,11 +383,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### String
-
 Parameter 'SubscriptionId' accepts value of type 'String' from the pipeline
 
 ### String
-
 Parameter 'SubscriptionName' accepts value of type 'String' from the pipeline
 
 ## OUTPUTS

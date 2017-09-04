@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         /// Gets or sets the global profile for ARM cmdlets.
         /// </summary>
         [Parameter(Mandatory =false, HelpMessage="The credeetnails, tenant and subscription used for communication with azure")]
-        [Alias("AzureContext", "AzureCredential")]
+        [Alias("AzureRmContext", "AzureCredential")]
         public IAzureContextContainer DefaultProfile
         {
             get

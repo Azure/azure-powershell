@@ -13,12 +13,14 @@ Loads Azure authentication information from a file.
 
 ### InMemoryProfile
 ```
-Import-AzureRmContext [-AzureContext] <AzureRMProfile> [-WhatIf] [-Confirm]
+Import-AzureRmContext [-AzureContext] <AzureRmProfile> [-Scope <ContextModificationScope>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ProfileFromDisk
 ```
-Import-AzureRmContext [-Path] <String> [-WhatIf] [-Confirm]
+Import-AzureRmContext [-Path] <String> [-Scope <ContextModificationScope>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,11 +60,8 @@ This example selects a context from a JSON file that is passed through to the cm
 ## PARAMETERS
 
 ### -AzureContext
-Specifies the Azure context from which this cmdlet reads.
-If you do not specify a context, this cmdlet reads from the local default context.
-
-```yaml
-Type: AzureRMProfile
+Specifies the Azure context from which this cmdlet reads. If you do not specify a context, this cmdlet reads from the local default context.```yaml
+Type: AzureRmProfile
 Parameter Sets: InMemoryProfile
 Aliases: Profile
 
@@ -73,10 +72,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Path
-Specifies the path to context information saved by using Save-AzureRMContext.
+### -DefaultProfile
+The credeetnails, tenant and subscription used for communication with azure```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
 
-```yaml
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Path
+Specifies the path to context information saved by using Save-AzureRMContext.```yaml
 Type: String
 Parameter Sets: ProfileFromDisk
 Aliases: 
@@ -88,47 +98,56 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -Scope
+Determines the scope of context changes, for example, wheher changes apply only to the cusrrent process, or to all sessions started by this user```yaml
+Type: ContextModificationScope
+Parameter Sets: (All)
+Aliases: 
 
-```yaml
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
+Shows what would happen if the cmdlet runs. The cmdlet is not run.```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Common.Authentication.Models.AzureRMProfile
 System.String
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Profile.Models.PSAzureProfile
-
 
 ## NOTES
 

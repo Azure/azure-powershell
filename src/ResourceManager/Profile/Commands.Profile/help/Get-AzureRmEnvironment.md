@@ -12,7 +12,7 @@ Get endpoints and metadata for an instance of Azure services.
 ## SYNTAX
 
 ```
-Get-AzureRmEnvironment [[-Name] <String>] [<CommonParameters>]
+Get-AzureRmEnvironment [[-Name] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -102,6 +102,19 @@ AzureKeyVaultServiceEndpointResourceId            : https://vault.usgovcloudapi.
 This example shows how to get the endpoints and metadata for the AzureUSGovernment environment.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credeetnails, tenant and subscription used for communication with azure```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 Specifies the name of the Azure instance to get.

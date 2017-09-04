@@ -144,12 +144,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         {
             DebugMessages = new ConcurrentQueue<string>();
 
-            //TODO: Inject from CI server
-            _metricHelper = new MetricHelper(_dataCollectionProfile);
-            _metricHelper.AddTelemetryClient(new TelemetryClient
-            {
-                InstrumentationKey = "7df6ff70-8353-4672-80d6-568517fed090"
-            });
         }
 
 
@@ -258,6 +252,20 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// </summary>
         protected override void BeginProcessing()
         {
+            var profile = _dataCollectionProfile;
+            //TODO: Inject from CI server
+            lock (lockObject)
+            {
+                if (_metricHelper == null)
+                {
+                    _metricHelper = new MetricHelper(profile);
+                    _metricHelper.AddTelemetryClient(new TelemetryClient
+                    {
+                        InstrumentationKey = "7df6ff70-8353-4672-80d6-568517fed090"
+                    });
+                }
+            }
+
             InitializeQosEvent();
             LogCmdletStartInvocationInfo();
             SetupDebuggingTraces();

@@ -4,42 +4,36 @@ online version:
 schema: 2.0.0
 ---
 
-# Save-AzureRmContext
+# Clear-AzureRmContext
 
 ## SYNOPSIS
-Saves the current authentication information for use in other PowerShell sessions.
+{{Fill in the Synopsis}}
 
 ## SYNTAX
 
 ```
-Save-AzureRmContext [[-Profile] <AzureRmProfile>] [-Path] <String> [-Force]
+Clear-AzureRmContext [-Scope <ContextModificationScope>] [-PassThrough] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Save-AzureRmContext cmdlet saves the current authentication information for use in other PowerShell sessions.
+{{Fill in the Description}}
 
 ## EXAMPLES
 
-### Example 1: Saving the current session's context
+### Example 1
 ```
-PS C:\> Add-AzureRmAccount
-PS C:\> Save-AzureRmContext -Path C:\test.json
-```
-
-This example saves the current session's Azure context to the JSON file provided.
-
-### Example 2: Saving a given context
-```
-PS C:\> Save-AzureRmContext -Profile (Add-AzureRmAccount) -Path C:\test.json
+PS C:\> {{ Add example code here }}
 ```
 
-This example saves the Azure context that is passed through to the cmdlet to the JSON file provided.
+{{ Add example description here }}
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credeetnails, tenant and subscription used for communication with azure```yaml
+The credeetnails, tenant and subscription used for communication with azure
+
+```yaml
 Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
@@ -52,7 +46,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Overwrite the given file if it exists
+Delete all users and groups from the global scope without prompting
 
 ```yaml
 Type: SwitchParameter
@@ -66,34 +60,34 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Path
-Specifies the path of the file to which to save authentication information.
+### -PassThrough
+Return a value indicating success or failure
 
 ```yaml
-Type: String
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
 
-Required: True
-Position: 1
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Profile
-Specifies the Azure context from which this cmdlet reads.
-If you do not specify a context, this cmdlet reads from the local default context.
+### -Scope
+Clear the context only for the current PowerShell session, or for all sessions.
 
 ```yaml
-Type: AzureRmProfile
+Type: ContextModificationScope
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Process, CurrentUser
 
 Required: False
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -133,11 +127,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Common.Authentication.Models.AzureRMProfile
+### None
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Profile.Models.PSAzureProfile
+### System.Boolean
 
 ## NOTES
 

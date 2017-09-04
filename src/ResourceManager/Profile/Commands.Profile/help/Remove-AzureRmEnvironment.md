@@ -12,7 +12,8 @@ Removes endpoints and metadata for connecting to a given Azure instance.
 ## SYNTAX
 
 ```
-Remove-AzureRmEnvironment [-Name] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzureRmEnvironment [-Name] <String> [-Scope <ContextModificationScope>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -76,6 +77,19 @@ This example shows how to create an environment using Add-AzureRmEnvironment, an
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credeetnails, tenant and subscription used for communication with azure```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of the environment to remove.
 
@@ -88,6 +102,19 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Scope
+Determines the scope of context changes, for example, wheher changes apply only to the cusrrent process, or to all sessions started by this user```yaml
+Type: ContextModificationScope
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -13,7 +13,8 @@ Data is not collected unless you explicitly opt in.
 ## SYNTAX
 
 ```
-Disable-AzureRmDataCollection [-WhatIf] [-Confirm] [<CommonParameters>]
+Disable-AzureRmDataCollection [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,6 +38,19 @@ PS C:\> Disable-AzureRmDataCollection
 This example shows how to disable data collection for the current user. 
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credeetnails, tenant and subscription used for communication with azure```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
