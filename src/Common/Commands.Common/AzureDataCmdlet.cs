@@ -92,46 +92,15 @@ namespace Microsoft.WindowsAzure.Commands.Common
                 return result;
             }
         }
+
+        protected override string DataCollectionWarning
+        {
+            get
+            {
+                return Resources.ARMDataCollectionMessage;
+            }
+        }
 #endif
-
-        protected override void SaveDataCollectionProfile()
-        {
-            if (_dataCollectionProfile == null)
-            {
-                InitializeDataCollectionProfile();
-            }
-
-            string fileFullPath = Path.Combine(AzureSession.Instance.ProfileDirectory, AzurePSDataCollectionProfile.DefaultFileName);
-            try
-            {
-                var contents = JsonConvert.SerializeObject(_dataCollectionProfile);
-                if (!AzureSession.Instance.DataStore.DirectoryExists(AzureSession.Instance.ProfileDirectory))
-                {
-                    AzureSession.Instance.DataStore.CreateDirectory(AzureSession.Instance.ProfileDirectory);
-                }
-
-                AzureSession.Instance.DataStore.WriteFile(fileFullPath, contents);
-                WriteWarning(string.Format(Resources.DataCollectionSaveFileInformation, fileFullPath));
-            }
-            catch
-            {
-                // do not throw if the profile cannot be written
-            }
-        }
-
-        protected override void SetDataCollectionProfileIfNotExists()
-        {
-            InitializeDataCollectionProfile();
-
-            if (_dataCollectionProfile.EnableAzureDataCollection.HasValue)
-            {
-                return;
-            }
-
-            WriteWarning(Resources.RDFEDataCollectionMessage);
-
-            _dataCollectionProfile.EnableAzureDataCollection = true;
-        }
 
         protected override void InitializeQosEvent()
         {

@@ -20,14 +20,10 @@ using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Rest;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Newtonsoft.Json;
 using System;
 using System.Globalization;
-using System.IO;
 using System.Linq;
 using System.Management.Automation;
-using System.Management.Automation.Host;
-using System.Threading;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
@@ -72,6 +68,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
         }
 
+        protected override string DataCollectionWarning
+        {
+            get
+            {
+                return Resources.ARMDataCollectionMessage;
+            }
+        }
         /// <summary>
         /// Return a default context safely if it is available, without throwing if it is not setup
         /// </summary>
@@ -183,45 +186,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         {
             ConfirmAction(force, continueMessage, actionName, string.Format(Resources.ResourceIdConfirmTarget,
                 resourceId), action, promptForContinuation);
-        }
-
-        protected override void SaveDataCollectionProfile()
-        {
-            if (_dataCollectionProfile == null)
-            {
-                InitializeDataCollectionProfile();
-            }
-
-            string fileFullPath = Path.Combine(AzureSession.Instance.ProfileDirectory, AzurePSDataCollectionProfile.DefaultFileName);
-            try
-            {
-                var contents = JsonConvert.SerializeObject(_dataCollectionProfile);
-                if (!AzureSession.Instance.DataStore.DirectoryExists(AzureSession.Instance.ProfileDirectory))
-                {
-                    AzureSession.Instance.DataStore.CreateDirectory(AzureSession.Instance.ProfileDirectory);
-                }
-
-                AzureSession.Instance.DataStore.WriteFile(fileFullPath, contents);
-                WriteWarning(string.Format(Resources.DataCollectionSaveFileInformation, fileFullPath));
-            }
-            catch
-            {
-                // do not throw on errors writing to the data store
-            }
-        }
-
-        protected override void SetDataCollectionProfileIfNotExists()
-        {
-            InitializeDataCollectionProfile();
-
-            if (_dataCollectionProfile.EnableAzureDataCollection.HasValue)
-            {
-                return;
-            }
-
-            WriteWarning(Resources.ARMDataCollectionMessage);
-
-            _dataCollectionProfile.EnableAzureDataCollection = true;
         }
 
         protected override void InitializeQosEvent()

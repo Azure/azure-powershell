@@ -107,6 +107,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             return result;
         }
 
+        static void InitializeDataCollection(IAzureSession session)
+        {
+            session.RegisterComponent(DataCollectionController.RegistryKey, () => DataCollectionController.Create(session));
+        }
+
         static IAzureSession CreateInstance(IDataStore dataStore = null)
         {
             string profilePath = Path.Combine(
@@ -132,6 +137,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             session.TokenCacheDirectory = autoSave.CacheDirectory;
             session.TokenCacheFile = autoSave.CacheFile;
             session.TokenCache = InitializeTokenCache(dataStore, session.TokenCacheDirectory, session.TokenCacheFile, autoSave.Mode);
+            InitializeDataCollection(session);
             return session;
         }
 

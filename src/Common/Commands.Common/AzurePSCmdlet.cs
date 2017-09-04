@@ -17,15 +17,12 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.Common;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
-using System.Net.Http.Headers;
-using System.Reflection;
 using System.Text;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
@@ -41,7 +38,39 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         public ConcurrentQueue<string> DebugMessages { get; private set; }
 
         private RecordingTracingInterceptor _httpTracingInterceptor;
-        protected static AzurePSDataCollectionProfile _dataCollectionProfile = null;
+        private object lockObject = new object();
+        private AzurePSDataCollectionProfile _cachedProfile = null;
+
+        protected AzurePSDataCollectionProfile _dataCollectionProfile
+        {
+            get
+            {
+                lock(lockObject)
+                {
+                    DataCollectionController controller;
+                    if (_cachedProfile == null && AzureSession.Instance.TryGetComponent(DataCollectionController.RegistryKey, out controller))
+                    {
+                        _cachedProfile = controller.GetProfile(() => WriteWarning(DataCollectionWarning));
+                    }
+                    else if (_cachedProfile == null)
+                    {
+                        _cachedProfile = new AzurePSDataCollectionProfile(true);
+                        WriteWarning(DataCollectionWarning);
+                    }
+
+                    return _cachedProfile;
+                }
+            }
+
+            set
+            {
+                lock(lockObject)
+                {
+                    _cachedProfile = value;
+                }
+            }
+        }
+
         protected static string _errorRecordFolderPath = null;
         protected static string _sessionId = Guid.NewGuid().ToString();
         protected const string _fileTimeStampSuffixFormat = "yyyy-MM-dd-THH-mm-ss-fff";
@@ -106,6 +135,8 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// </summary>
         protected abstract IAzureContext DefaultContext { get; }
 
+        protected abstract string DataCollectionWarning { get; }
+
         /// <summary>
         /// Initializes AzurePSCmdlet properties.
         /// </summary>
@@ -114,100 +145,19 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             DebugMessages = new ConcurrentQueue<string>();
 
             //TODO: Inject from CI server
-            _metricHelper = new MetricHelper();
+            _metricHelper = new MetricHelper(_dataCollectionProfile);
             _metricHelper.AddTelemetryClient(new TelemetryClient
             {
                 InstrumentationKey = "7df6ff70-8353-4672-80d6-568517fed090"
             });
         }
 
-        /// <summary>
-        /// Initialize the data collection profile
-        /// </summary>
-        protected static void InitializeDataCollectionProfile()
-        {
-            if (_dataCollectionProfile != null && _dataCollectionProfile.EnableAzureDataCollection.HasValue)
-            {
-                return;
-            }
-
-            // Get the value of the environment variable for Azure PS data collection setting.
-            string value = Environment.GetEnvironmentVariable(AzurePSDataCollectionProfile.EnvironmentVariableName);
-            if (!string.IsNullOrWhiteSpace(value))
-            {
-                if (string.Equals(value, bool.FalseString, StringComparison.OrdinalIgnoreCase))
-                {
-                    // Disable data collection only if it is explicitly set to 'false'.
-                    _dataCollectionProfile = new AzurePSDataCollectionProfile(false);
-                }
-                else if (string.Equals(value, bool.TrueString, StringComparison.OrdinalIgnoreCase))
-                {
-                    // Enable data collection only if it is explicitly set to 'true'.
-                    _dataCollectionProfile = new AzurePSDataCollectionProfile(true);
-                }
-            }
-
-            // If the environment value is null or empty, or not correctly set, try to read the setting from default file location.
-            if (_dataCollectionProfile == null)
-            {
-                // If it exists, remove the old AzureDataCollectionProfile.json file
-                string oldFileFullPath = Path.Combine(AzurePowerShell.ProfileDirectory,
-                    AzurePSDataCollectionProfile.OldDefaultFileName);
-                try
-                {
-                    if (AzureSession.Instance.DataStore.FileExists(oldFileFullPath))
-                    {
-                        AzureSession.Instance.DataStore.DeleteFile(oldFileFullPath);
-                    }
-                }
-                catch
-                {
-                    // do not throw if the old file cannot be deleted
-                }
-
-                // Try and read from the new AzurePSDataCollectionProfile.json file
-                string fileFullPath = Path.Combine(AzurePowerShell.ProfileDirectory,
-                    AzurePSDataCollectionProfile.DefaultFileName);
-                try
-                {
-                    if (AzureSession.Instance.DataStore.FileExists(fileFullPath))
-                    {
-                        string contents = AzureSession.Instance.DataStore.ReadFileAsText(fileFullPath);
-                        _dataCollectionProfile =
-                            JsonConvert.DeserializeObject<AzurePSDataCollectionProfile>(contents);
-                    }
-                }
-                catch
-                {
-                    // do not throw if the data collection profile cannot be serialized
-                }
-            }
-
-            // If the environment variable or file content is not set, create a new profile object.
-            if (_dataCollectionProfile == null)
-            {
-                _dataCollectionProfile = new AzurePSDataCollectionProfile();
-            }
-        }
-
-        /// <summary>
-        /// Get the data collection profile
-        /// </summary>
-        protected static AzurePSDataCollectionProfile GetDataCollectionProfile()
-        {
-            if (_dataCollectionProfile == null)
-            {
-                InitializeDataCollectionProfile();
-            }
-
-            return _dataCollectionProfile;
-        }
 
         /// <summary>
         /// Check whether the data collection is opted in from user
         /// </summary>
         /// <returns>true if allowed</returns>
-        public static bool IsDataCollectionAllowed()
+        public bool IsDataCollectionAllowed()
         {
             if (_dataCollectionProfile != null &&
                 _dataCollectionProfile.EnableAzureDataCollection.HasValue &&
@@ -218,11 +168,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
             return false;
         }
-
-        /// <summary>
-        /// Save the current data collection profile JSON data into the default file path
-        /// </summary>
-        protected abstract void SaveDataCollectionProfile();
 
         protected bool CheckIfInteractive()
         {
@@ -254,10 +199,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             return interactive;
         }
 
-        /// <summary>
-        /// Prompt for the current data collection profile
-        /// </summary>
-        protected abstract void SetDataCollectionProfileIfNotExists();
 
         protected virtual void LogCmdletStartInvocationInfo()
         {
@@ -317,7 +258,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// </summary>
         protected override void BeginProcessing()
         {
-            SetDataCollectionProfileIfNotExists();
             InitializeQosEvent();
             LogCmdletStartInvocationInfo();
             SetupDebuggingTraces();

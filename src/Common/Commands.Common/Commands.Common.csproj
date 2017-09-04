@@ -123,6 +123,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DiskDataStore.cs" />
+    <Compile Include="DataCollectionController.cs" />
     <Compile Include="Serialization\LegacyAzureAccount.cs" />
     <Compile Include="Serialization\LegacyAzureEnvironment.cs" />
     <Compile Include="Serialization\LegacyAzureSubscription.cs" />

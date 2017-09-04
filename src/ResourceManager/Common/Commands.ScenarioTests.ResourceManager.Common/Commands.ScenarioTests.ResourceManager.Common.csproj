@@ -150,6 +150,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EnvironmentSetupHelper.cs" />
+    <Compile Include="Extensions\TestModelExtensions.cs" />
     <Compile Include="Mocks\MockClientFactory.cs" />
     <Compile Include="Mocks\MockCommandRuntime.cs" />
     <Compile Include="Mocks\MockDeploymentClientFactory.cs" />

@@ -554,14 +554,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         public bool TryCopyProfile(AzureRmProfile other)
         {
             this.Clear();
-            foreach (var environment in other.EnvironmentTable)
+            foreach (var environment in other.EnvironmentTable.Where((e) => !AzureEnvironment.PublicEnvironments.ContainsKey(e.Key)))
             {
                 this.EnvironmentTable.Add(environment.Key, environment.Value);
             }
 
             foreach (var context in other.Contexts)
             {
-                this.Contexts.Add(context.Key, context.Value);
+                TryAddContext(context.Key, context.Value);
             }
 
             this.CopyPropertiesFrom(other);
