@@ -25,6 +25,8 @@ using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using Xunit;
+using System.IO;
+using System.Text;
 
 namespace Microsoft.Azure.Commands.HDInsight.Test
 {
@@ -230,6 +232,34 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void GetJobOutput()
+        {
+            string sampleOutput = "1";
+            // Update HDInsight Management properties for Job.
+            SetupManagementClientForJobTests();
+            var jobId = "jobid_1984120_001";
+            var cmdlet = GetJobOutputCommandDefinition();
+            cmdlet.JobId = jobId;
+
+            MemoryStream jobOutput = new MemoryStream(Encoding.UTF8.GetBytes(sampleOutput));
+
+            var reader = new StreamReader(jobOutput);
+            var text = reader.ReadToEnd();
+            jobOutput.Seek(0, SeekOrigin.Begin);
+
+            hdinsightJobManagementMock.Setup(c => c.GetJobOutput(It.IsAny<string>(),It.IsAny<IStorageAccess>()))
+                .Returns(jobOutput)
+                .Verifiable();
+
+            cmdlet.ExecuteCmdlet();
+            commandRuntimeMock.VerifyAll();
+            commandRuntimeMock.Verify(
+                f =>
+                    f.WriteObject(It.Is<string>(Output => Output.Equals(text))));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ListJobs()
         {
             // Update HDInsight Management properties for Job.
@@ -372,6 +402,20 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
         public GetAzureHDInsightJobCommand GetJobCommandDefinition()
         {
             var cmdlet = new GetAzureHDInsightJobCommand
+            {
+                CommandRuntime = commandRuntimeMock.Object,
+                HDInsightJobClient = hdinsightJobManagementMock.Object,
+                HDInsightManagementClient = hdinsightManagementMock.Object,
+                HttpCredential = new PSCredential("httpuser", string.Format("Password1!").ConvertToSecureString()),
+                ClusterName = ClusterName
+            };
+
+            return cmdlet;
+        }
+
+        public GetAzureHDInsightJobOutputCommand GetJobOutputCommandDefinition()
+        {
+            var cmdlet = new GetAzureHDInsightJobOutputCommand
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 HDInsightJobClient = hdinsightJobManagementMock.Object,
