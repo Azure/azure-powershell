@@ -22,6 +22,7 @@ using Microsoft.Azure.Commands.AnalysisServices.Dataplane.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.WindowsAzure.Commands.Common;
+using System;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 {
@@ -85,14 +86,12 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
             }
         }
 
-        protected override void SaveDataCollectionProfile()
+        protected override string DataCollectionWarning
         {
-            // No data collection for this commandlet 
-        }
-
-        protected override void SetDataCollectionProfileIfNotExists()
-        {
-            // No data collection for this commandlet 
+            get
+            {
+                return Resources.ARMDataCollectionMessage;
+            }
         }
 
         protected override void BeginProcessing()
