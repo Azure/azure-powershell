@@ -79,7 +79,9 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credeetnails, tenant and subscription used for communication with azure```yaml
+The credeetnails, tenant and subscription used for communication with azure
+
+```yaml
 Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
@@ -92,7 +94,9 @@ Accept wildcard characters: False
 ```
 
 ### -ExtendedProperty
-Additional context properties```yaml
+Additional context properties
+
+```yaml
 Type: System.Collections.Generic.IDictionary`2[System.String,System.String]
 Parameter Sets: (All)
 Aliases: 
@@ -105,7 +109,9 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Overwrite the existing context with the same name, if any.```yaml
+Overwrite the existing context with the same name, if any.
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
@@ -118,7 +124,9 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the context```yaml
+Name of the context
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
@@ -131,7 +139,9 @@ Accept wildcard characters: False
 ```
 
 ### -Scope
-Determines the scope of context changes, for example, wheher changes apply only to the cusrrent process, or to all sessions started by this user```yaml
+Determines the scope of context changes, for example, wheher changes apply only to the cusrrent process, or to all sessions started by this user.
+
+```yaml
 Type: ContextModificationScope
 Parameter Sets: (All)
 Aliases: 
@@ -144,7 +154,9 @@ Accept wildcard characters: False
 ```
 
 ### -Subscription
-Subscription Name or Id```yaml
+Subscription Name or Id
+
+```yaml
 Type: String
 Parameter Sets: Subscription
 Aliases: SubscriptionId, SubscriptionName
@@ -157,7 +169,9 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionObject
-A subscription object```yaml
+A subscription object
+
+```yaml
 Type: PSAzureSubscription
 Parameter Sets: SubscriptionObject
 Aliases: 
@@ -170,7 +184,9 @@ Accept wildcard characters: False
 ```
 
 ### -Tenant
-Tenant name or ID```yaml
+Tenant name or ID
+
+```yaml
 Type: String
 Parameter Sets: Subscription
 Aliases: Domain, TenantId
@@ -183,7 +199,9 @@ Accept wildcard characters: False
 ```
 
 ### -TenantObject
-A Tenant Object```yaml
+A Tenant Object
+
+```yaml
 Type: PSAzureTenant
 Parameter Sets: TenantObject
 Aliases: 

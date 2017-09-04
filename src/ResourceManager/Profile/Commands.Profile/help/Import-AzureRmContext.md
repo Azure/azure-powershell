@@ -60,7 +60,9 @@ This example selects a context from a JSON file that is passed through to the cm
 ## PARAMETERS
 
 ### -AzureContext
-Specifies the Azure context from which this cmdlet reads. If you do not specify a context, this cmdlet reads from the local default context.```yaml
+Specifies the Azure context from which this cmdlet reads. If you do not specify a context, this cmdlet reads from the local default context.
+
+```yaml
 Type: AzureRmProfile
 Parameter Sets: InMemoryProfile
 Aliases: Profile
@@ -73,7 +75,9 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credeetnails, tenant and subscription used for communication with azure```yaml
+The credeetnails, tenant and subscription used for communication with azure
+
+```yaml
 Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
@@ -86,7 +90,9 @@ Accept wildcard characters: False
 ```
 
 ### -Path
-Specifies the path to context information saved by using Save-AzureRMContext.```yaml
+Specifies the path to context information saved by using Save-AzureRMContext.
+
+```yaml
 Type: String
 Parameter Sets: ProfileFromDisk
 Aliases: 
@@ -99,7 +105,9 @@ Accept wildcard characters: False
 ```
 
 ### -Scope
-Determines the scope of context changes, for example, wheher changes apply only to the cusrrent process, or to all sessions started by this user```yaml
+Determines the scope of context changes, for example, wheher changes apply only to the cusrrent process, or to all sessions started by this user.
+
+```yaml
 Type: ContextModificationScope
 Parameter Sets: (All)
 Aliases: 
@@ -112,7 +120,9 @@ Accept wildcard characters: False
 ```
 
 ### -Confirm
-Prompts you for confirmation before running the cmdlet.```yaml
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
@@ -125,7 +135,9 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.```yaml
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi

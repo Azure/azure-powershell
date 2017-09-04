@@ -168,7 +168,9 @@ Get details of the specified error.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credeetnails, tenant and subscription used for communication with azure```yaml
+The credeetnails, tenant and subscription used for communication with azure
+
+```yaml
 Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential

@@ -47,7 +47,9 @@ In this example we are logging into our account with an Azure subscription using
 ## PARAMETERS
 
 ### -DefaultProfile
-The credeetnails, tenant and subscription used for communication with azure```yaml
+The credeetnails, tenant and subscription used for communication with azure
+
+```yaml
 Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
@@ -60,7 +62,9 @@ Accept wildcard characters: False
 ```
 
 ### -ListAvailable
-List all available contexts in the current session.```yaml
+List all available contexts in the current session.
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: ListAllContexts
 Aliases: 
@@ -73,7 +77,9 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the context```yaml
+The name of the context
+
+```yaml
 Type: String
 Parameter Sets: GetSingleContext
 Aliases: 

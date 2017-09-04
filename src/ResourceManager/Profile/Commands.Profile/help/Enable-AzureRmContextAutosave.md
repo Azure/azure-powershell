@@ -26,7 +26,7 @@ Allow the azure credential, account and subscription information to be saved and
 PS C:\> Enable-AzureRmContextAutosave
 ```
 
-{{ Add example description here }}
+Turn on credential autosave for the current user.  Whenever a powershell window is opened, your current context will be remembered without logging in.
 
 ## PARAMETERS
 

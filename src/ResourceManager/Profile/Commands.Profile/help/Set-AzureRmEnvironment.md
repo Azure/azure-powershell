@@ -195,7 +195,9 @@ Accept wildcard characters: False
 ```
 
 ### -DataLakeAudience
-The audience for tokens authenticating with the AD Data Lake services Endpoint.```yaml
+The audience for tokens authenticating with the AD Data Lake services Endpoint.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: DataLakeEndpointResourceId, DataLakeResourceId
@@ -208,7 +210,9 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credeetnails, tenant and subscription used for communication with azure```yaml
+The credeetnails, tenant and subscription used for communication with azure.
+
+```yaml
 Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
@@ -341,7 +345,9 @@ Accept wildcard characters: False
 ```
 
 ### -Scope
-Determines the scope of context changes, for example, wheher changes apply only to the cusrrent process, or to all sessions started by this user```yaml
+Determines the scope of context changes, for example, wheher changes apply only to the cusrrent process, or to all sessions started by this user.
+
+```yaml
 Type: ContextModificationScope
 Parameter Sets: (All)
 Aliases: 

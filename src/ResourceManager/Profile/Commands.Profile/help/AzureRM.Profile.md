@@ -18,17 +18,17 @@ Adds an authenticated account to use for Azure Resource Manager cmdlet requests.
 Adds endpoints and metadata for an instance of Azure Resource Manager.
 
 ### [Clear-AzureRmContext](Clear-AzureRmContext.md)
-{{Fill in the Synopsis}}
+Remove all Azure credentials, account, and subscription information.
 
 ### [Disable-AzureRmContextAutosave](Disable-AzureRmContextAutosave.md)
-{{Fill in the Synopsis}}
+Turn off autosaving Azure credentials.  Your login information will be forgotten the next time you open a PowerShell window
 
 ### [Disable-AzureRmDataCollection](Disable-AzureRmDataCollection.md)
 Opts out of collecting data to improve the AzurePowerShell cmdlets. 
 Data is not collected unless you explicitly opt in.
 
 ### [Enable-AzureRmContextAutosave](Enable-AzureRmContextAutosave.md)
-{{Fill in the Synopsis}}
+Allow the azure credential, account and subscription information to be saved and automatically loaded when you open a PowerShell window. 
 
 ### [Enable-AzureRmDataCollection](Enable-AzureRmDataCollection.md)
 Enables Azure PowerShell to collect data to improve the user experience with AzurePowerShell cmdlets.
@@ -51,13 +51,13 @@ Gets tenants that are authorized for the current user.
 Loads Azure authentication information from a file.
 
 ### [Remove-AzureRmContext](Remove-AzureRmContext.md)
-{{Fill in the Synopsis}}
+Remove a context from the set of available contexts
 
 ### [Remove-AzureRmEnvironment](Remove-AzureRmEnvironment.md)
 Removes endpoints and metadata for connecting to a given Azure instance.
 
 ### [Rename-AzureRmContext](Rename-AzureRmContext.md)
-{{Fill in the Synopsis}}
+Rename an Azure context.  By default contexts are named by user account and subscription.
 
 ### [Resolve-AzureRmError](Resolve-AzureRmError.md)
 Display detailed information about PowerShell errors, with extended details for Azure PowerShell errors.
@@ -66,7 +66,7 @@ Display detailed information about PowerShell errors, with extended details for 
 Saves the current authentication information for use in other PowerShell sessions.
 
 ### [Select-AzureRmContext](Select-AzureRmContext.md)
-{{Fill in the Synopsis}}
+Select a subscription to target (or account, tenant) in Azure PowerShell cmdlets.
 
 ### [Send-Feedback](Send-Feedback.md)
 Sends feedback to the Azure PowerShell team via a set of guided prompts.

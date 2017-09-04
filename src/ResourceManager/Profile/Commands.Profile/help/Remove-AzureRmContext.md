@@ -7,7 +7,7 @@ schema: 2.0.0
 # Remove-AzureRmContext
 
 ## SYNOPSIS
-Remove a context from the set of contexts
+Remove a context from the set of available contexts
 
 ## SYNTAX
 
