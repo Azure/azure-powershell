@@ -7,7 +7,7 @@ schema: 2.0.0
 # Disable-AzureRmContextAutosave
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Turn off autosaving Azure credentials.  Your login information will be forgotten the next time you open a PowerShell window
 
 ## SYNTAX
 
@@ -17,16 +17,16 @@ Disable-AzureRmContextAutosave [-Scope <ContextModificationScope>] [-DefaultProf
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Turn off autosaving Azure credentials.  Your login information will be forgotten the next time you open a PowerShell window
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Disable-AzureRmContextAutosave
 ```
 
-{{ Add example description here }}
+Disable autosave for the current user.
 
 ## PARAMETERS
 

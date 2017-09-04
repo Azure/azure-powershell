@@ -7,7 +7,7 @@ schema: 2.0.0
 # Select-AzureRmContext
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Select a subscription to target (or account, tenant) in Azure PowerShell cmdlets
 
 ## SYNTAX
 
@@ -17,21 +17,22 @@ Select-AzureRmContext [-Scope <ContextModificationScope>] [-DefaultProfile <IAzu
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Select a  subscription to target (or account or tenant) in Azure PowerShell cmdlets.  After this cmdlet, future cmdlets will target the 
+selected context.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Select-AzureRmContext "Work"
 ```
 
-{{ Add example description here }}
+Target future Azure PowerShell cmdlets at the account, tenant, and subscription in the 'Work' context.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credeetnails, tenant and subscription used for communication with azure
+The credentials, tenant and subscription used for communication with azure
 
 ```yaml
 Type: IAzureContextContainer

@@ -7,7 +7,7 @@ schema: 2.0.0
 # Enable-AzureRmContextAutosave
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Allow the azure credential, account and subscription information to be saved and automatically loaded when you open a PowerShell window. 
 
 ## SYNTAX
 
@@ -17,13 +17,13 @@ Enable-AzureRmContextAutosave [-Scope <ContextModificationScope>] [-DefaultProfi
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Allow the azure credential, account and subscription information to be saved and automatically loaded when you open a PowerShell window. 
 
 ## EXAMPLES
 
-### Example 1
+### Enable autosaving credentials for the current user
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Enable-AzureRmContextAutosave
 ```
 
 {{ Add example description here }}
@@ -31,7 +31,7 @@ PS C:\> {{ Add example code here }}
 ## PARAMETERS
 
 ### -DefaultProfile
-The credeetnails, tenant and subscription used for communication with azure
+The credentials, tenant and subscription used for communication with azure
 
 ```yaml
 Type: IAzureContextContainer

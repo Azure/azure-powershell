@@ -7,7 +7,7 @@ schema: 2.0.0
 # Remove-AzureRmContext
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Remove a context from the set of contexts
 
 ## SYNTAX
 
@@ -17,16 +17,16 @@ Remove-AzureRmContext [-Force] [-PassThrough] [-Scope <ContextModificationScope>
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Remove an azure context from the set of contexts
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzureRmContext -Name Default
 ```
 
-{{ Add example description here }}
+Remove the context named default
 
 ## PARAMETERS
 

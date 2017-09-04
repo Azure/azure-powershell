@@ -7,7 +7,7 @@ schema: 2.0.0
 # Rename-AzureRmContext
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Rename an Azure context.  By default contexts are named by user account and subscription.
 
 ## SYNTAX
 
@@ -18,16 +18,17 @@ Rename-AzureRmContext [-Force] [-PassThrough] [-Scope <ContextModificationScope>
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Rename an Azure context.  By default contexts are named by user account and subscription.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Rename-AzureRmContext -SourceName "My context" -TargetName "Work"
 ```
 
-{{ Add example description here }}
+Rename the context named "My context" to "Work".  After this command, you will be able to target the context using 
+```Select-AzureRmContext Work```
 
 ## PARAMETERS
 

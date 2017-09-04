@@ -7,7 +7,7 @@ schema: 2.0.0
 # Clear-AzureRmContext
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Remove all Azure credentials, account, and subscription information.
 
 ## SYNTAX
 
@@ -17,16 +17,16 @@ Clear-AzureRmContext [-Scope <ContextModificationScope>] [-PassThrough] [-Force]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Remove all Azure Credentials, account, and subscription information.
 
 ## EXAMPLES
 
-### Example 1
+### Clear global context
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Clear-AzureRmContext
 ```
 
-{{ Add example description here }}
+Remove all account, subscription, and credential information form the current user.
 
 ## PARAMETERS
 
