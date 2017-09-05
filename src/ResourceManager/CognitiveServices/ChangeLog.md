@@ -19,6 +19,10 @@
 -->
 ## Current Release
 
+## Version 0.8.5
+* Integrate with Cognitive Services Management SDK version 2.0.0.
+* Get-AzureRmCognitiveServicesAccount now can correctly support paging.
+
 ## Version 0.8.4
 
 ## Version 0.8.3
