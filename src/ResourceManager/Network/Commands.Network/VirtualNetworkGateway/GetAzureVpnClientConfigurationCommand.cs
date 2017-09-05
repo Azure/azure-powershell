@@ -23,7 +23,7 @@ using MNM = Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmVpnClientConfiguration"), OutputType(typeof(MNM.PSVpnProfile))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmVpnClientConfiguration", SupportsShouldProcess = true), OutputType(typeof(MNM.PSVpnProfile))]
     public class GetAzureVpnClientConfigurationCommand : VirtualNetworkGatewayBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -49,20 +49,23 @@ namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
             // Just get the package URL if the package exists
             // There may be a required Json serialize for the package URL to conform to REST-API
             // The try-catch below handles the case till the change is made and deployed to PROD
-            string serializedPackageUrl = this.NetworkClient.GetVpnProfilePackageUrl(this.ResourceGroupName, this.Name);
-            string packageUrl = string.Empty;
-            try
+            if (ShouldProcess("AzureRmVpnClientConfiguration", VerbsCommon.Get))
             {
-                packageUrl = JsonConvert.DeserializeObject<string>(serializedPackageUrl);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-                packageUrl = serializedPackageUrl;
-            }
+                string serializedPackageUrl = this.NetworkClient.GetVpnProfilePackageUrl(this.ResourceGroupName, this.Name);
+                string packageUrl = string.Empty;
+                try
+                {
+                    packageUrl = JsonConvert.DeserializeObject<string>(serializedPackageUrl);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    packageUrl = serializedPackageUrl;
+                }
 
-            MNM.PSVpnProfile vpnProfile = new MNM.PSVpnProfile() { VpnProfileSASUrl = packageUrl };
-            WriteObject(vpnProfile);
+                MNM.PSVpnProfile vpnProfile = new MNM.PSVpnProfile() { VpnProfileSASUrl = packageUrl };
+                WriteObject(vpnProfile);
+            }
         }
     }
 }

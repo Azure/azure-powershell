@@ -24,7 +24,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmVpnClientConfiguration"), OutputType(typeof(PSVpnProfile))]
+    [Cmdlet(VerbsCommon.New, "AzureRmVpnClientConfiguration", SupportsShouldProcess = true), OutputType(typeof(PSVpnProfile))]
     public class NewAzureVpnClientConfigurationCommand : VirtualNetworkGatewayBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -77,84 +77,87 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-            
-            PSVpnClientParameters vpnClientParams = new PSVpnClientParameters();
 
-            vpnClientParams.ProcessorArchitecture = string.IsNullOrWhiteSpace(this.ProcessorArchitecture) ? 
-                MNM.ProcessorArchitecture.Amd64.ToString() :
-                this.ProcessorArchitecture;
-
-            vpnClientParams.AuthenticationMethod = string.IsNullOrWhiteSpace(this.AuthenticationMethod)
-                ? MNM.AuthenticationMethod.EAPTLS.ToString()
-                : this.AuthenticationMethod;
-
-            // Read the radius server root certificate if present
-            if (!string.IsNullOrWhiteSpace(this.RadiusRootCertificateFile))
+            if (ShouldProcess("AzureVpnClientConfiguration", VerbsCommon.New))
             {
-                if (File.Exists(this.RadiusRootCertificateFile))
-                {
-                    try
-                    {
-                        X509Certificate2 radiusRootCertificate = new X509Certificate2(this.RadiusRootCertificateFile);
-                        vpnClientParams.RadiusServerAuthCertificate = Convert.ToBase64String(radiusRootCertificate.Export(X509ContentType.Cert));
-                    }
-                    catch (Exception)
-                    {
-                        WriteWarning("Invalid radius root certificate specified at path " + this.RadiusRootCertificateFile);
-                    }
-                }
-                else
-                {
-                    WriteWarning("Cannot find radius root certificate with path " + this.RadiusRootCertificateFile);
-                }
-            }
+                PSVpnClientParameters vpnClientParams = new PSVpnClientParameters();
 
-            // Read the radius server root certificate if present
-            if (this.ClientRootCertificateFileList != null)
-            {
-                foreach (string clientRootCertPath in this.ClientRootCertificateFileList)
+                vpnClientParams.ProcessorArchitecture = string.IsNullOrWhiteSpace(this.ProcessorArchitecture) ?
+                    MNM.ProcessorArchitecture.Amd64.ToString() :
+                    this.ProcessorArchitecture;
+
+                vpnClientParams.AuthenticationMethod = string.IsNullOrWhiteSpace(this.AuthenticationMethod)
+                    ? MNM.AuthenticationMethod.EAPTLS.ToString()
+                    : this.AuthenticationMethod;
+
+                // Read the radius server root certificate if present
+                if (!string.IsNullOrWhiteSpace(this.RadiusRootCertificateFile))
                 {
-                    vpnClientParams.ClientRootCertificates = new List<string>();
-                    if (File.Exists(clientRootCertPath))
+                    if (File.Exists(this.RadiusRootCertificateFile))
                     {
                         try
                         {
-                            X509Certificate2 clientRootCertificate = new X509Certificate2(clientRootCertPath);
-                            vpnClientParams.ClientRootCertificates.Add(
-                                Convert.ToBase64String(clientRootCertificate.Export(X509ContentType.Cert)));
+                            X509Certificate2 radiusRootCertificate = new X509Certificate2(this.RadiusRootCertificateFile);
+                            vpnClientParams.RadiusServerAuthCertificate = Convert.ToBase64String(radiusRootCertificate.Export(X509ContentType.Cert));
                         }
                         catch (Exception)
                         {
-                            WriteWarning("Invalid cer file specified for client root certificate with path " +
-                                         clientRootCertPath);
+                            WriteWarning("Invalid radius root certificate specified at path " + this.RadiusRootCertificateFile);
                         }
                     }
                     else
                     {
-                        WriteWarning("Cannot find client root certificate with path " +
-                                     clientRootCertPath);
+                        WriteWarning("Cannot find radius root certificate with path " + this.RadiusRootCertificateFile);
                     }
                 }
-            }
 
-            var vnetVpnClientParametersModel = Mapper.Map<MNM.VpnClientParameters>(vpnClientParams);
+                // Read the radius server root certificate if present
+                if (this.ClientRootCertificateFileList != null)
+                {
+                    foreach (string clientRootCertPath in this.ClientRootCertificateFileList)
+                    {
+                        vpnClientParams.ClientRootCertificates = new List<string>();
+                        if (File.Exists(clientRootCertPath))
+                        {
+                            try
+                            {
+                                X509Certificate2 clientRootCertificate = new X509Certificate2(clientRootCertPath);
+                                vpnClientParams.ClientRootCertificates.Add(
+                                    Convert.ToBase64String(clientRootCertificate.Export(X509ContentType.Cert)));
+                            }
+                            catch (Exception)
+                            {
+                                WriteWarning("Invalid cer file specified for client root certificate with path " +
+                                             clientRootCertPath);
+                            }
+                        }
+                        else
+                        {
+                            WriteWarning("Cannot find client root certificate with path " +
+                                         clientRootCertPath);
+                        }
+                    }
+                }
 
-            // There may be a required Json serialize for the package URL to conform to REST-API
-            // The try-catch below handles the case till the change is made and deployed to PROD
-            string serializedPackageUrl = this.NetworkClient.GenerateVpnProfile(this.ResourceGroupName, this.Name, vnetVpnClientParametersModel);
-            string packageUrl = string.Empty;
-            try
-            {
-                packageUrl = JsonConvert.DeserializeObject<string>(serializedPackageUrl);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-                packageUrl = serializedPackageUrl;
-            }
+                var vnetVpnClientParametersModel = Mapper.Map<MNM.VpnClientParameters>(vpnClientParams);
 
-            PSVpnProfile vpnProfile = new PSVpnProfile() {VpnProfileSASUrl = packageUrl};
-            WriteObject(vpnProfile);
+                // There may be a required Json serialize for the package URL to conform to REST-API
+                // The try-catch below handles the case till the change is made and deployed to PROD
+                string serializedPackageUrl = this.NetworkClient.GenerateVpnProfile(this.ResourceGroupName, this.Name, vnetVpnClientParametersModel);
+                string packageUrl = string.Empty;
+                try
+                {
+                    packageUrl = JsonConvert.DeserializeObject<string>(serializedPackageUrl);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    packageUrl = serializedPackageUrl;
+                }
+
+                PSVpnProfile vpnProfile = new PSVpnProfile() { VpnProfileSASUrl = packageUrl };
+                WriteObject(vpnProfile);
+            }
         }
     }
 }

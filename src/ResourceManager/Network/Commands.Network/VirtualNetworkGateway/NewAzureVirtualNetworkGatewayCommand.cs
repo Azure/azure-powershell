@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet(VerbsCommon.New, 
         "AzureRmVirtualNetworkGateway", 
         SupportsShouldProcess = true,
-         DefaultParameterSetName = VirtualNetworkGatewayParameterSets.Empty),
+        DefaultParameterSetName = VirtualNetworkGatewayParameterSets.Default),
         OutputType(typeof(PSVirtualNetworkGateway))]
     public class NewAzureVirtualNetworkGatewayCommand : VirtualNetworkGatewayBaseCmdlet
     {
@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = VirtualNetworkGatewayParameterSets.Empty,
+            ParameterSetName = VirtualNetworkGatewayParameterSets.Default,
             HelpMessage = "P2S External Radius server secret.")]
         [Parameter(
             Mandatory = true,

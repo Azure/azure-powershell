@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Set, 
         "AzureRmVirtualNetworkGatewayVpnClientConfig",
-         DefaultParameterSetName = VirtualNetworkGatewayParameterSets.Empty), 
+         DefaultParameterSetName = VirtualNetworkGatewayParameterSets.Default), 
         OutputType(typeof(PSVirtualNetworkGateway))]
     public class SetAzureVirtualNetworkGatewayVpnClientConfigCommand : VirtualNetworkGatewayBaseCmdlet
     {
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = VirtualNetworkGatewayParameterSets.Empty,
+            ParameterSetName = VirtualNetworkGatewayParameterSets.Default,
             HelpMessage = "P2S External Radius server secret.")]
         [Parameter(
             Mandatory = true,
