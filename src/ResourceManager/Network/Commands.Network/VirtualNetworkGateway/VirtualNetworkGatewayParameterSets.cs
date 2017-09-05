@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
 {
     public class VirtualNetworkGatewayParameterSets
     {
-        public const string Empty = @"Empty";
+        public const string Default = @"Default";
 
         public const string RadiusServerConfiguration = @"RadiusServerConfiguration";
     }

@@ -255,7 +255,8 @@ Accept wildcard characters: False
 ```
 
 ### -RadiusServerAddress
-P2S External Radius server address.```yaml
+P2S External Radius server address.
+```yaml
 Type: String
 Parameter Sets: RadiusServerConfiguration
 Aliases: 
@@ -268,7 +269,8 @@ Accept wildcard characters: False
 ```
 
 ### -RadiusServerSecret
-P2S External Radius server secret.```yaml
+P2S External Radius server secret.
+```yaml
 Type: SecureString
 Parameter Sets: Empty
 Aliases: 
