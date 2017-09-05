@@ -2,6 +2,7 @@ function New-AzVm {
     [CmdletBinding()]
     param (
         [PSCredential] $credential,
+        [string] $imageName = "Win2012R2Datacenter",
         [string] $name = "vmTest"
     )
 
@@ -11,7 +12,7 @@ function New-AzVm {
         }
 
         # Find VM Image
-        $vmImageName = "openSUSE-Leap" # "Win2012R2Datacenter"
+        $vmImageName = $imageName
         $vmImage = $images | Where-Object { $_.Name -eq $vmImageName } | Select-Object -First 1
 
         Write-Host $vmImage
