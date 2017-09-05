@@ -39,7 +39,7 @@ This example saves the Azure context that is passed through to the cmdlet to the
 ## PARAMETERS
 
 ### -DefaultProfile
-The credeetnails, tenant and subscription used for communication with azure
+The credentials, tenant, and subscription used for communication with azure.
 
 ```yaml
 Type: IAzureContextContainer

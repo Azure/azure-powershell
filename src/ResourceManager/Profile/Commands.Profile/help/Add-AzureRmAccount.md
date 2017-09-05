@@ -170,7 +170,9 @@ Accept wildcard characters: False
 ```
 
 ### -ContextName
-Name of the default context from this login```yaml
+Name of the default context from this login
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
@@ -213,7 +215,9 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credeetnails, tenant and subscription used for communication with azure```yaml
+The credeetnails, tenant and subscription used for communication with azure
+
+```yaml
 Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
@@ -241,7 +245,9 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Overwrite the existing context with the same name, if any.```yaml
+Overwrite the existing context with the same name, if any.
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
@@ -254,7 +260,9 @@ Accept wildcard characters: False
 ```
 
 ### -GraphAccessToken
-AccessToken for Graph Service```yaml
+AccessToken for Graph Service
+
+```yaml
 Type: String
 Parameter Sets: AccessTokenWithSubscriptionId
 Aliases: 
@@ -267,7 +275,9 @@ Accept wildcard characters: False
 ```
 
 ### -KeyVaultAccessToken
-AccessToken for KeyVault Service```yaml
+AccessToken for KeyVault Service
+
+```yaml
 Type: String
 Parameter Sets: AccessTokenWithSubscriptionId
 Aliases: 
@@ -280,7 +290,9 @@ Accept wildcard characters: False
 ```
 
 ### -Scope
-Determines the scope of context changes, for example, wheher changes apply only to the cusrrent process, or to all sessions started by this user```yaml
+Determines the scope of context changes, for example, wheher changes apply only to the cusrrent process, or to all sessions started by this user.
+
+```yaml
 Type: ContextModificationScope
 Parameter Sets: (All)
 Aliases: 
@@ -308,7 +320,9 @@ Accept wildcard characters: False
 ```
 
 ### -Subscription
-Subscription Name or ID```yaml
+Subscription Name or ID
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: SubscriptionName, SubscriptionId

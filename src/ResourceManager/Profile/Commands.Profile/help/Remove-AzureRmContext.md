@@ -31,7 +31,7 @@ Remove the context named default
 ## PARAMETERS
 
 ### -DefaultProfile
-The credeetnails, tenant and subscription used for communication with azure
+The credentials, tenant and subscription used for communication with azure.
 
 ```yaml
 Type: IAzureContextContainer
