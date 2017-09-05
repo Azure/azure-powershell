@@ -12,8 +12,19 @@ Removes a container group.
 
 ## SYNTAX
 
+### RemoveContainerGroupByResourceGroupAndNameParamSet
 ```
-Remove-AzureRmContainerGroup [-ResourceGroupName] <String> [-Name] <String>
+Remove-AzureRmContainerGroup [-ResourceGroupName] <String> [-Name] <String> [-WhatIf] [-Confirm]
+```
+
+### RemoveContainerGroupByPSContainerGroupParamSet
+```
+Remove-AzureRmContainerGroup -InputObject <PSContainerGroup> [-WhatIf] [-Confirm]
+```
+
+### RemoveContainerGroupByResourceIdParamSet
+```
+Remove-AzureRmContainerGroup -ResourceId <String> [-WhatIf] [-Confirm]
 ```
 
 ## DESCRIPTION
@@ -35,14 +46,51 @@ PS C:\> Get-AzureRmContainerGroup -ResourceGroupName MyResourceGroup -Name MyCon
 
 This command removes a container group by piping.
 
+### Example 3: Removes a container group by resource Id.
+```
+PS C:\> Find-AzureRmResource -ResourceGroupEquals MyResourceGroup -ResourceNameEquals MyContainer | Remove-AzureRmContainerGroup
+```
+
+This command removes a container group by resource Id.
+
 ## PARAMETERS
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+The container group to remove.
+
+```yaml
+Type: PSContainerGroup
+Parameter Sets: RemoveContainerGroupByPSContainerGroupParamSet
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
 
 ### -Name
 The container group name.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: RemoveContainerGroupByResourceGroupAndNameParamSet
 Aliases: 
 
 Required: True
@@ -57,7 +105,7 @@ The resource group name.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: RemoveContainerGroupByResourceGroupAndNameParamSet
 Aliases: 
 
 Required: True
@@ -67,18 +115,18 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -ResourceId
+The resource id.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
+Type: String
+Parameter Sets: RemoveContainerGroupByResourceIdParamSet
+Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -101,6 +149,7 @@ Accept wildcard characters: False
 ## INPUTS
 
 ### System.String
+Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup
 
 
 ## OUTPUTS
