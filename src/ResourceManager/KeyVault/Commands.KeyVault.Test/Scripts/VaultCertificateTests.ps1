@@ -615,3 +615,141 @@ function Test_UpdateCertificateTags
     Assert-AreEqual $retrievedCertificate.Tags.ContainsKey("City") $true
     Assert-AreEqual $retrievedCertificate.Tags["City"] "Redmond"
 }
+
+
+<#
+.SYNOPSIS
+Tests getting a previously deleted certificate
+#>
+
+function Test_GetDeletedCertificate
+{
+    $keyVault = Get-KeyVault
+    $certificateName = Get-CertificateName 'getdeletedcertificate'
+
+    $createdCert = CreateAKVCertificate $keyVault $certificateName
+    Assert-NotNull $createdCert
+
+    $global:createdCertificates += $certificateName
+
+    $createdCertificate | Remove-AzureKeyVaultCertificate -Force -Confirm:$false
+
+    Wait-ForDeletedCertificate $keyVault $certificateName
+
+    $deletedCertificate = Get-AzureKeyVaultCertificate -VaultName $keyVault.VaultName -Name $certificateName -InRemovedState
+    Assert-NotNull $deletedCertificate
+    Assert-NotNull $deletedCertificate.DeletedDate
+    Assert-NotNull $deletedCertificate.ScheduledPurgeDate
+}
+
+
+<#
+.SYNOPSIS
+Tests listing all previously deleted certificates
+#>
+function Test_GetDeletedCertificates
+{
+    $keyVault = Get-KeyVault
+    $certificateName = Get-CertificateName 'getdeletedcertificates'
+    $createdCert = CreateAKVCertificate $keyVault $certificateName
+    Assert-NotNull $createdCert
+
+    $global:createdCertificates += $certificateName
+
+    $createdCertificate | Remove-AzureKeyVaultCertificate -Force -Confirm:$false
+
+    Wait-ForDeletedCertificate $keyVault $certificateName
+
+    $deletedCerts = Get-AzureKeyVaultCertificate -VaultName $keyVault.VaultName -InRemovedState
+    Assert-True {$deletedCerts.Count -ge 1}
+    Assert-True {$deletedCerts.Name -contains $key.Name}
+}
+
+<#
+.SYNOPSIS
+Tests recovering a previously deleted certificate.
+#>
+
+function Test_UndoRemoveCertificate
+{
+    $keyVault = Get-KeyVault
+    $certificateName = Get-CertificateName 'undoremovedcert'
+    $createdCert = CreateAKVCertificate $keyVault $certificateName
+    Assert-NotNull $createdCert
+
+    $global:createdCertificates += $certificateName
+
+    $createdCertificate | Remove-AzureKeyVaultCertificate -Force -Confirm:$false
+
+    Wait-ForDeletedCertificate $keyVault $certificateName
+
+    $recoveredCert = Undo-AzureKeyVaultCertificateRemoval -VaultName $keyVault.VaultName -Name $certificateName
+
+    Assert-NotNull $recoveredCert
+    Assert-AreEqual $recoveredCert.Name $createdCert.Name
+    Assert-AreEqual $recoveredCert.Version $createdCert.Version
+    #Assert-KeyAttributes $recoveredKey.Attributes 'RSA' $false $expires $nbf $ops $tags 
+}
+
+<#
+.SYNOPSIS
+Tests purging a deleted certificate.
+#>
+
+function Test_RemoveDeletedCertificate
+{
+    $keyVault = Get-KeyVault
+    $certificateName = Get-CertificateName 'undoremovedcert'
+    $createdCert = CreateAKVCertificate $keyVault $certificateName
+    Assert-NotNull $createdCert
+
+    $global:createdCertificates += $certificateName
+
+    $createdCertificate | Remove-AzureKeyVaultCertificate -Force -Confirm:$false
+
+    Wait-ForDeletedCertificate $keyVault $certificateName
+
+    Remove-AzureKeyVaultCertificate -VaultName $keyVault.VaultName -Name $certificateName -InRemovedState -Force -Confirm:$false
+}
+
+<#
+.SYNOPSIS
+Tests purging an active certificate
+#>
+function Test_RemoveNonExistDeletedCertificate
+{
+    $keyVault = Get-KeyVault
+    $certName = Get-CertificateName 'purgeactivecert'
+
+    $createdCert = CreateAKVCertificate $keyVault $certName
+    Assert-NotNull $createdCert
+
+    $global:createdCertificates += $certName
+
+    Assert-Throws {Remove-AzureKeyVaultCertificate -VaultName $keyVault.VaultName -Name $certName -InRemovedState -Force -Confirm:$false}
+}
+
+<#
+.SYNOPSIS
+Tests pipeline commands to remove multiple deleted certificates
+#>
+
+function Test_PipelineRemoveDeletedCertificates
+{
+    $rootCertName = 'piperemovecert'
+    $keyVault = Get-KeyVault
+    $certName = Get-CertificateName $rootCertName + '1' 
+    $createdCert1 = CreateAKVCertificate $keyVault $certName
+    Assert-NotNull $createdCert1
+
+    $certName = Get-CertificateName $rootCertName + '2'
+    $createdCert2 = CreateAKVCertificate $keyVault $certName
+    Assert-NotNull $createdCert2
+
+    Get-AzureKeyVaultCertificate $keyVault |  Where-Object {$_.CertificateName -like $rootCertName + '*'}  | Remove-AzureKeyVaultCertificate -Force -Confirm:$false
+    Wait-Seconds 30
+    Get-AzureKeyVaultCertificate $keyVault -InRemovedState |  Where-Object {$_.CertificateName -like $rootCertName + '*'}  | Remove-AzureKeyVaultCertificate -Force -Confirm:$false -InRemovedState
+
+    $certs = Get-AzureKeyVaultCertificate $keyVault -InRemovedState |  Where-Object {$_.CertificateName -like $rootCertName + '*'} 
+    Assert-AreEqual $keys.Count 0
+}

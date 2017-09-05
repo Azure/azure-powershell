@@ -172,6 +172,10 @@ ClientBin/
 *.dbproj.schemaview
 node_modules/
 .pshproj
+/tools/*.xml
+/tools/BuildPackagesTask/*.dll
+/tools/BuildPackagesTask/*.xml
+/restore.config
 
 # RIA/Silverlight projects
 Generated_Code/

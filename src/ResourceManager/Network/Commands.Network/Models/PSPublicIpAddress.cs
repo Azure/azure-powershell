@@ -20,6 +20,8 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
         public string PublicIpAllocationMethod { get; set; }
 
+        public PSPublicIpAddressSku Sku { get; set; }
+
         public PSIPConfiguration IpConfiguration { get; set; }
 
         public PSPublicIpAddressDnsSettings DnsSettings { get; set; }
