@@ -89,16 +89,33 @@ function New-AzVm {
         # Create!
 
         Write-Info "Ensuring resource group...";
-        $rg = Use-ResourceGroup -ResourceGroup $ResourceGroup -Location $Location;
+        $rg = Use-ResourceGroup `
+            -ResourceGroup $ResourceGroup `
+            -Location $Location;
 
         Write-Info "Ensuring Vnet...";
-        $vnet = Use-Vnet -Name $VnetName -ResourceGroup $ResourceGroup -Location $Location -SubnetAddressPrefix $SubnetAddressPrefix -VnetAddressPrefix $VnetAddressPrefix;
+        $vnet = Use-Vnet `
+            -Name $VnetName `
+            -ResourceGroup $ResourceGroup `
+            -Location $Location `
+            -SubnetAddressPrefix $SubnetAddressPrefix `
+            -VnetAddressPrefix $VnetAddressPrefix;
 
         Write-Info "Ensuring public IP...";
-        $pip = Use-Pip -Name $PublicIpName -ResourceGroup $ResourceGroup -Location $Location -DnsLabel $PublicIpDnsLabel -AllocationMethod $PublicIpAllocationMethod -IdleTimeoutInMinutes $PublicIpIdleTimeoutInMinutes;
+        $pip = Use-Pip `
+            -Name $PublicIpName `
+            -ResourceGroup $ResourceGroup `
+            -Location $Location `
+            -DnsLabel $PublicIpDnsLabel `
+            -AllocationMethod $PublicIpAllocationMethod `
+            -IdleTimeoutInMinutes $PublicIpIdleTimeoutInMinutes;
 
         Write-Info "Ensuring NSG...";
-        $nsg = Use-Nsg -Name $NsgName -ResourceGroup $ResourceGroup -Location $Location -OpenPorts $NsgOpenPorts;
+        $nsg = Use-Nsg `
+            -Name $NsgName `
+            -ResourceGroup $ResourceGroup `
+            -Location $Location `
+            -OpenPorts $NsgOpenPorts;
 
         Write-Info "Ensuring NIC...";
         $nic = Use-Nic `
@@ -113,10 +130,14 @@ function New-AzVm {
         # https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/set-azurermvmosdisk?view=azurermps-4.2.0
 
         # Create a virtual machine configuration
-        $vmConfig = New-AzureRmVMConfig -VMName $Name -VMSize  $Size | `
-            Set-AzureRmVMOperatingSystem -Windows -ComputerName $Name -Credential $creds | `
-            Set-AzureRmVMSourceImage -PublisherName MicrosoftWindowsServer -Offer WindowsServer -Skus 2016-Datacenter -Version latest | `
-            Add-AzureRmVMNetworkInterface -Id $nic.Id
+        $vmConfig = New-AzureRmVMConfig -VMName $Name -VMSize  $Size `
+            | Set-AzureRmVMOperatingSystem -Windows -ComputerName $Name -Credential $creds `
+            | Set-AzureRmVMSourceImage `
+                -PublisherName MicrosoftWindowsServer `
+                -Offer WindowsServer `
+                -Skus 2016-Datacenter `
+                -Version latest `
+            | Add-AzureRmVMNetworkInterface -Id $nic.Id
 
         # Create a virtual machine
         $vm = New-AzureRmVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
@@ -148,7 +169,9 @@ function Use-ResourceGroup {
         [Parameter(Mandatory=$true)] [string] $Location
     )
 
-    $rg = Get-AzureRmResourceGroup | Where-Object { $_.ResourceGroupName -eq $ResourceGroup } | Select-Object -First 1 -Wait;
+    $rg = Get-AzureRmResourceGroup `
+        | Where-Object { $_.ResourceGroupName -eq $ResourceGroup } `
+        | Select-Object -First 1 -Wait;
 
     if($rg -eq $null) {
         return New-AzureRmResourceGroup -Name $ResourceGroup -Location $Location;
@@ -170,10 +193,17 @@ function Use-Vnet {
 
     if($vnet -eq $null) {
         # Create a subnet configuration.
-        $subnetConfig = New-AzureRmVirtualNetworkSubnetConfig -Name "$($Name)Subnet" -AddressPrefix $SubnetAddressPrefix;
+        $subnetConfig = New-AzureRmVirtualNetworkSubnetConfig `
+            -Name "$($Name)Subnet" `
+            -AddressPrefix $SubnetAddressPrefix;
 
         # Create a virtual network.
-        return New-AzureRmVirtualNetwork -ResourceGroupName $ResourceGroup -Location $Location -Name $Name -AddressPrefix $VnetAddressPrefix -Subnet $subnetConfig
+        return New-AzureRmVirtualNetwork `
+            -ResourceGroupName $ResourceGroup `
+            -Location $Location `
+            -Name $Name `
+            -AddressPrefix $VnetAddressPrefix `
+            -Subnet $subnetConfig
     } else {
         return $vnet;
     }
@@ -193,7 +223,13 @@ function Use-Pip {
 
     if($pip -eq $null) {
         # Create a public IP address and specify a DNS name.
-        return New-AzureRmPublicIpAddress -ResourceGroupName $ResourceGroup -Location $Location -Name $Name -DomainNameLabel $DnsLabel -AllocationMethod $AllocationMethod -IdleTimeoutInMinutes $IdleTimeoutInMinutes;
+        return New-AzureRmPublicIpAddress `
+            -ResourceGroupName $ResourceGroup `
+            -Location $Location `
+            -Name $Name `
+            -DomainNameLabel $DnsLabel `
+            -AllocationMethod $AllocationMethod `
+            -IdleTimeoutInMinutes $IdleTimeoutInMinutes;
     } else {
         return $pip;
     }
@@ -210,19 +246,33 @@ function Use-Nsg {
     $nsg = Get-AzureRmNetworkSecurityGroup | Where-Object { $_.Name -eq $Name } | Select-Object -First 1 -Wait;
 
     if($nsg -eq $null) {
-        $rules = New-Object "System.Collections.Generic.List[Microsoft.Azure.Commands.Network.Models.PSSecurityRule]";
+        $rules = New-Object `
+            "System.Collections.Generic.List[Microsoft.Azure.Commands.Network.Models.PSSecurityRule]";
         $priority = 1000;
 
         foreach($port in $OpenPorts)
         {
-            $nsgRule = New-AzureRmNetworkSecurityRuleConfig -Name myNetworkSecurityGroupRuleRDP -Protocol Tcp -Direction Inbound -Priority $priority -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange $port -Access Allow;
+            $nsgRule = New-AzureRmNetworkSecurityRuleConfig `
+                -Name myNetworkSecurityGroupRuleRDP `
+                -Protocol Tcp `
+                -Direction Inbound `
+                -Priority $priority `
+                -SourceAddressPrefix * `
+                -SourcePortRange * `
+                -DestinationAddressPrefix * `
+                -DestinationPortRange $port `
+                -Access Allow;
             $rules.Add($nsgRule);
 
             $priority--;
         }
 
         # Create an NSG.
-        return New-AzureRmNetworkSecurityGroup -ResourceGroupName $ResourceGroup -Location $Location -Name $Name -SecurityRules $rules;
+        return New-AzureRmNetworkSecurityGroup `
+            -ResourceGroupName $ResourceGroup `
+            -Location $Location `
+            -Name $Name `
+            -SecurityRules $rules;
     } else {
         return $nsg;
     }
@@ -242,7 +292,13 @@ function Use-Nic {
 
     if($nic -eq $null) {
         # Create a virtual network card and associate with public IP address and NSG
-        return New-AzureRmNetworkInterface -Name $Name -ResourceGroupName $resourceGroup -Location $location -SubnetId $SubnetId -PublicIpAddressId $PublicIpAddressId -NetworkSecurityGroupId $NetworkSecurityGroupId.ToString();
+        return New-AzureRmNetworkInterface `
+            -Name $Name `
+            -ResourceGroupName $resourceGroup `
+            -Location $location `
+            -SubnetId $SubnetId `
+            -PublicIpAddressId $PublicIpAddressId `
+            -NetworkSecurityGroupId $NetworkSecurityGroupId.ToString();
     } else {
         return $nic;
     }

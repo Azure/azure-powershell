@@ -23,11 +23,8 @@ function New-AzVm {
             throw "Unknown image: " + $ImageName
         }
 
-        # Location
-        # $Location = (Get-AzureRmLocation | Select-Object -First 1 -Wait).Location
-
         # Resource Group
-        $resource = New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location
+        $resourceGroup = Set-ResourceGroup -Name $ResourceGroupName -Location $Location
 
         # Virtual Network
         $virtualNetworkAddressPrefix = "192.168.0.0/16"
@@ -87,20 +84,20 @@ function New-AzVm {
             -NetworkSecurityGroupId $securityGroup.Id
 
         # VM
-        $vm = @{ Name = $Name; Size = "Standard_DS2" }
-        $vmConfig = New-AzureRmVMConfig -VMName $vm.Name -VMSize $vm.Size
-        $vmComputer = $vm.Name
+        $vmSize = "Standard_DS2"
+        $vmConfig = New-AzureRmVMConfig -VMName $Name -VMSize $vmSize
+        $vmComputerName = $Name + "Computer"
         switch ($vmImage.Type) {
             "Windows" {
                 $vmConfig = $vmConfig | Set-AzureRmVMOperatingSystem `
                     -Windows `
-                    -ComputerName $vmComputer `
+                    -ComputerName $vmComputerName `
                     -Credential $Credential
             }
             "Linux" {
                 $vmConfig = $vmConfig | Set-AzureRmVMOperatingSystem `
                     -Linux `
-                    -ComputerName $vmComputer `
+                    -ComputerName $vmComputerName `
                     -Credential $Credential
             }
         }
@@ -114,13 +111,31 @@ function New-AzVm {
                 -Version $vmImageImage.version `
             | Add-AzureRmVMNetworkInterface -Id $networkInterface.Id
 
+        $response = New-AzureRmVm `
+            -ResourceGroupName $ResourceGroupName `
+            -Location $Location `
+            -VM $vmConfig
+
         New-PsObject @{
-            ResourceId = $resource.ResourceId;
-            Response = New-AzureRmVm `
-                -ResourceGroupName $ResourceGroupName `
-                -Location $Location `
-                -VM $vmConfig
+            ResourceId = $resourceGroup.ResourceId;
+            Response = $response
         }
+    }
+}
+
+function Set-ResourceGroup {
+    param(
+        [parameter(Mandatory = $true)][string]$Name,
+        [parameter(Mandatory = $true)][string]$Location
+    )
+
+    $resourceGroup = Get-AzureRmResourceGroup `
+        | Where-Object { $_.ResourceGroupName -eq $Name } `
+        | Select-Object -First 1 -Wait;
+    if ($resourceGroup) {
+        $resourceGroup;
+    } else {
+        New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location
     }
 }
 
