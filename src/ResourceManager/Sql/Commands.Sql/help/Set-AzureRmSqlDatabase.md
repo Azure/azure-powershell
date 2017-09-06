@@ -20,9 +20,7 @@ Set-AzureRmSqlDatabase [-DatabaseName] <String> [-MaxSizeBytes <Int64>] [-Editio
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmSqlDatabase** cmdlet sets properties for an Azure SQL database.
-In addition, you can specify the *ElasticPoolName* parameter to move a database into an elastic pool.
-If a database is already in an elastic pool, you can use the *RequestedServiceObjectiveName* parameter to assign a performance level.
+The **Set-AzureRmSqlDatabase** cmdlet sets properties for a database in Azure SQL Database. This cmdlet can modify the service tier (*Edition*), performance level (*RequestedServiceObjectiveName*), and storage max size (*MaxSizeBytes*) for the database.  In addition, you can specify the *ElasticPoolName* parameter to move a database into an elastic pool. If a database is already in an elastic pool, you can use the *RequestedServiceObjectiveName* parameter to move the database out of an elastic pool and into a performance level for single databases.
 
 ## EXAMPLES
 
@@ -75,6 +73,31 @@ Tags                          :
 ```
 
 This command adds a database named Database01 to the elastic pool named ElasticPool01 hosted on the server named Server01.
+
+### Example 3: Modify the storage max size of a database
+```
+PS C:\>Set-AzureRmSqlDatabase -ResourceGroupName "ResourceGroup01" -DatabaseName "Database01" -ServerName "Server01" -MaxSizeBytes 1099511627776
+ResourceGroupName             : ResourceGroup01
+ServerName                    : Server01
+DatabaseName                  : Database01
+Location                      : Central US
+DatabaseId                    : a1e6bd1a-735a-4d48-8b98-afead5ef1218
+Edition                       : Standard
+CollationName                 : SQL_Latin1_General_CP1_CI_AS
+CatalogCollation              : 
+MaxSizeBytes                  : 1099511627776
+Status                        : Online
+CreationDate                  : 8/24/2017 9:00:37 AM
+CurrentServiceObjectiveId     : 789681b8-ca10-4eb0-bdf2-e0b050601b40
+CurrentServiceObjectiveName   : S3
+RequestedServiceObjectiveId   : 789681b8-ca10-4eb0-bdf2-e0b050601b40
+RequestedServiceObjectiveName : 
+ElasticPoolName               : 
+EarliestRestoreDate           : 
+Tags                          :
+```
+
+This command updates a database named Database01 to set its max size to 1 TB.
 
 ## PARAMETERS
 
