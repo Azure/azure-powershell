@@ -138,33 +138,26 @@ namespace Microsoft.Azure.Commands.ContainerInstance.Models
 
             if (!string.IsNullOrEmpty(this.RegistryServer))
             {
-                if (string.IsNullOrEmpty(this.RegistryUsername))
+                if (string.IsNullOrEmpty(this.RegistryUsername) || string.IsNullOrEmpty(this.RegistryPassword))
                 {
-                    throw new ArgumentException("Please specify RegistryUsername");
-                }
-
-                if (string.IsNullOrEmpty(this.RegistryPassword))
-                {
-                    throw new ArgumentException("Please specify RegistryPassword");
+                    throw new ArgumentException("Please specify valid RegistryCredential");
                 }
             }
             else if (this.ContainerImage.Contains(ContainerGroupCreationParameters.AcrServerSuffix))
             {
-                if (string.IsNullOrEmpty(this.RegistryPassword))
+                if (string.IsNullOrEmpty(this.RegistryUsername) || string.IsNullOrEmpty(this.RegistryPassword))
                 {
-                    throw new ArgumentException("Please specify RegistryPassword");
+                    throw new ArgumentException("Please specify valid RegistryCredential");
                 }
 
                 var acrServer = ParseRegistryServer();
-                var acrUsername = ParseRegistryUsername();
 
-                if (string.IsNullOrEmpty(acrServer) || string.IsNullOrEmpty(acrUsername))
+                if (string.IsNullOrEmpty(acrServer))
                 {
-                    throw new ArgumentException("Failed to Azure Container Registry server or username, please specify RegistryServer and RegistryUsername explicitly");
+                    throw new ArgumentException("Failed to Azure Container Registry server, please specify RegistryServer explicitly");
                 }
 
                 this.RegistryServer = acrServer;
-                this.RegistryUsername = acrUsername;
             }
         }
 
@@ -176,22 +169,6 @@ namespace Microsoft.Azure.Commands.ContainerInstance.Models
             var parsedImage = this.ContainerImage
                 .ToLowerInvariant()
                 .Split(new char[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
-            if (parsedImage.Any())
-            {
-                return parsedImage[0];
-            }
-
-            return null;
-        }
-
-        /// <summary>
-        /// Parse ACR username.
-        /// </summary>
-        private string ParseRegistryUsername()
-        {
-            var parsedImage = this.ContainerImage
-                .ToLowerInvariant()
-                .Split(new string[] { ContainerGroupCreationParameters.AcrServerSuffix }, StringSplitOptions.RemoveEmptyEntries);
             if (parsedImage.Any())
             {
                 return parsedImage[0];

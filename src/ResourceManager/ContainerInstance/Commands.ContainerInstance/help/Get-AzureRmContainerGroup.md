@@ -12,7 +12,7 @@ Gets container groups.
 
 ## SYNTAX
 
-### ListAllContainerGroupParamSet (Default)
+### ListContainerGroupParamSet (Default)
 ```
 Get-AzureRmContainerGroup [[-ResourceGroupName] <String>]
 ```
@@ -22,9 +22,9 @@ Get-AzureRmContainerGroup [[-ResourceGroupName] <String>]
 Get-AzureRmContainerGroup [-ResourceGroupName] <String> [-Name] <String>
 ```
 
-### ListContainerGroupInResourceGroupParamSet
+### GetContainerGroupByResourceIdParamSet
 ```
-Get-AzureRmContainerGroup [-ResourceGroupName] <String>
+Get-AzureRmContainerGroup -ResourceId <String>
 ```
 
 ## DESCRIPTION
@@ -34,60 +34,29 @@ The **Get-AzureRmContainerGroup** cmdlet gets a specified container group or all
 
 ### Example 1: Gets a specified container group
 ```
-PS C:\> Get-AzureRmContainerGroup -ResourceGroupName "MyResourceGroup" -Name "MyContainer"
+PS C:\> Get-AzureRmContainerGroup -ResourceGroupName demo -Name mycontainer
 
-{
-  "ResourceGroupName": "MyResourceGroup",
-  "Id": "/subscriptions/ae43b1e3-c35d-4c8c-bc0d-f148b4c52b78/resourceGroups/MyResourceGroup/providers/Microsoft.ContainerInstance/containerGroups/MyContainer",
-  "Name": "MyContainer",
-  "Type": "Microsoft.ContainerInstance/containerGroups",
-  "Location": "westus",
-  "Tags": null,
-  "ProvisioningState": "Succeeded",
-  "Containers": [
-    {
-      "Name": "MyContainer",
-      "Image": "myimage",
-      "Command": [],
-      "Ports": [
-        8003
-      ],
-      "EnvironmentVariables": {},
-      "CurrentState": {
-        "state": "Running",
-        "startTime": "2017-08-05T01:11:48Z",
-        "exitCode": null,
-        "finishTime": null,
-        "detailStatus": ""
-      },
-      "PreviousState": null,
-      "Events": [],
-      "Cpu": 1.0,
-      "MemoryInGb": 1.5,
-      "CpuLimit": null,
-      "MemoryLimitInGb": null,
-      "VolumeMounts": null
-    }
-  ],
-  "ImageRegistryCredentials": null,
-  "RestartPolicy": null,
-  "IpAddress": "13.64.237.171",
-  "Ports": [
-    {
-      "protocol": "TCP",
-      "port": 8003
-    }
-  ],
-  "OsType": "Linux",
-  "Volumes": null
-}
+ResourceGroupName        : demo
+Id                       : /subscriptions/ae43b1e3-c35d-4c8c-bc0d-f148b4c52b78/resourceGroups/demo/providers/Microsoft.ContainerInstance/containerGroups/mycontainer
+Name                     : mycontainer
+Type                     : Microsoft.ContainerInstance/containerGroups
+Location                 : westus
+Tags                     :
+ProvisioningState        : Succeeded
+Containers               : {mycontainer}
+ImageRegistryCredentials :
+RestartPolicy            :
+IpAddress                : 13.88.10.240
+Ports                    : {8000}
+OsType                   : Linux
+Volumes                  :
 ```
 
-The command gets the specified container group. The default output is in JSON format.
+The command gets the specified container group.
 
 ### Example 2: Gets container groups in a resource group
 ```
-PS C:\> Get-AzureRmContainerGroup -ResourceGroupName "MyResourceGroup" | Format-Table
+PS C:\> Get-AzureRmContainerGroup -ResourceGroupName demo
 
 ResourceGroupName Name                     Location   OsType  Image                         IP                   Resources        ProvisioningState
 ----------------- ----                     --------   ------  -----                         --                   ---------        -----------------
@@ -95,11 +64,11 @@ demo              container1               west us    Linux   alpine:latest     
 demo              container2               west us    Linux   alpine:latest                 104.42.228.253:8001  1 cores/1 gb             Succeeded
 ```
 
-The command gets the container groups in the resource group `MyResourceGroup` and output in table format.
+The command gets the container groups in the resource group `demo`.
 
 ### Example 3: Gets container groups in the current subscription
 ```
-PS C:\> Get-AzureRmContainerGroup | Format-Table
+PS C:\> Get-AzureRmContainerGroup
 
 ResourceGroupName Name                     Location   OsType  Image                         IP                   Resources        ProvisioningState
 ----------------- ----                     --------   ------  -----                         --                   ---------        -----------------
@@ -107,7 +76,29 @@ demo1             container1               west us    Linux   alpine:latest     
 demo2             container2               west us    Linux   alpine:latest                 104.42.228.253:8001  1 cores/1 gb             Succeeded
 ```
 
-The command gets the container groups in the current subscription and output in table format.
+The command gets the container groups in the current subscription.
+
+### Example 4: Gets container groups using resource Id.
+```
+PS C:\> Find-AzureRmResource -ResourceGroupEquals demo -ResourceNameEquals mycontainer | Get-AzureRmContainerGroup
+
+ResourceGroupName        : demo
+Id                       : /subscriptions/ae43b1e3-c35d-4c8c-bc0d-f148b4c52b78/resourceGroups/demo/providers/Microsoft.ContainerInstance/containerGroups/mycontainer
+Name                     : mycontainer
+Type                     : Microsoft.ContainerInstance/containerGroups
+Location                 : westus
+Tags                     :
+ProvisioningState        : Succeeded
+Containers               : {mycontainer}
+ImageRegistryCredentials :
+RestartPolicy            :
+IpAddress                : 13.88.10.240
+Ports                    : {8000}
+OsType                   : Linux
+Volumes                  :
+```
+
+The command gets the container group with the resource Id.
 
 ## PARAMETERS
 
@@ -131,7 +122,7 @@ The resource Group Name.
 
 ```yaml
 Type: String
-Parameter Sets: ListAllContainerGroupParamSet
+Parameter Sets: ListContainerGroupParamSet
 Aliases: 
 
 Required: False
@@ -143,11 +134,26 @@ Accept wildcard characters: False
 
 ```yaml
 Type: String
-Parameter Sets: GetContainerGroupInResourceGroupParamSet, ListContainerGroupInResourceGroupParamSet
+Parameter Sets: GetContainerGroupInResourceGroupParamSet
 Aliases: 
 
 Required: True
 Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+The resource id.
+
+```yaml
+Type: String
+Parameter Sets: GetContainerGroupByResourceIdParamSet
+Aliases: 
+
+Required: True
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

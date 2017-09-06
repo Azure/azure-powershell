@@ -197,7 +197,7 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.ContainerInstance.Test.ScenarioTests.ContainerInstanceTests\TestContainerGroupCommands.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.ContainerInstance.Test.ScenarioTests.ContainerInstanceTests\TestGetContainerGroupLogs.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ContainerInstance.Test.ScenarioTests.ContainerInstanceTests\TestContainerInstanceLog.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

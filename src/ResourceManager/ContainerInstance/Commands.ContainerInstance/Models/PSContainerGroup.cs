@@ -15,8 +15,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using AutoMapper;
 using Microsoft.Azure.Management.ContainerInstance.Models;
-using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.ContainerInstance.Models
 {
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.ContainerInstance.Models
         /// <summary>
         /// Gets or sets the ports.
         /// </summary>
-        public IList<Port> Ports { get; set; }
+        public IList<PSPort> Ports { get; set; }
 
         /// <summary>
         /// Gets or sets the OS type.
@@ -121,18 +121,10 @@ namespace Microsoft.Azure.Commands.ContainerInstance.Models
                 ImageRegistryCredentials = containerGroup?.ImageRegistryCredentials,
                 RestartPolicy = containerGroup?.RestartPolicy,
                 IpAddress = containerGroup?.IpAddress?.Ip,
-                Ports = containerGroup?.IpAddress?.Ports,
+                Ports = containerGroup?.IpAddress?.Ports?.Select(p => Mapper.Map<PSPort>(p)).ToList(),
                 OsType = containerGroup?.OsType,
                 Volumes = containerGroup?.Volumes
             };
-        }
-
-        /// <summary>
-        /// Convert to a json string.
-        /// </summary>
-        public string ToJson()
-        {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
     }
 }

@@ -57,9 +57,9 @@ function Test-AzureRmContainerGroup
 
 <#
 .SYNOPSIS
-Test Get-AzureRmContainerGroupLogs
+Test Get-AzureRmContainerInstanceLog
 #>
-function Test-AzureRmContainerGroupLogs
+function Test-AzureRmContainerInstanceLog
 {
     $resourceGroupName = Get-RandomResourceGroupName
     $containerGroupName = Get-RandomContainerGroupName
@@ -71,10 +71,10 @@ function Test-AzureRmContainerGroupLogs
     {
         New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
         $containerGroupCreated = New-AzureRmContainerGroup -ResourceGroupName $resourceGroupName -Name $containerGroupName -Image $image -OsType $osType -IpAddressType "public"
+        $containerInstanceName = $containerGroupName
 
-        Export-AzureRmContainerGroupLogs -ResourceGroupName $resourceGroupName -Name $containerGroupName -Dir "."
-        $log = $containerGroupName + "_log"
-        Assert-True {Test-Path $log}
+        $log = $containerGroupCreated | Get-AzureRmContainerInstanceLog -Name $containerInstanceName
+        Assert-NotNull $log
 
         Remove-AzureRmContainerGroup -ResourceGroupName $resourceGroupName -Name $containerGroupName
     }

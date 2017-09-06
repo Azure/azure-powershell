@@ -14,9 +14,11 @@
 
 using System.Collections.Generic;
 using System.Management.Automation;
+using AutoMapper;
 using Microsoft.Azure.Commands.ContainerInstance.Models;
 using Microsoft.Azure.Management.ContainerInstance;
 using Microsoft.Azure.Management.ContainerInstance.Models;
+using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.ContainerInstance
@@ -24,20 +26,14 @@ namespace Microsoft.Azure.Commands.ContainerInstance
     /// <summary>
     /// Get-AzureRmContainerGroup.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, ContainerGroupNoun, DefaultParameterSetName = ListAllContainerGroupParamSet)]
+    [Cmdlet(VerbsCommon.Get, ContainerGroupNoun, DefaultParameterSetName = ListContainerGroupParamSet)]
     [OutputType(typeof(PSContainerGroup))]
     public class GetAzureContainerGroupCommand : ContainerInstanceCmdletBase
     {
         protected const string GetContainerGroupInResourceGroupParamSet = "GetContainerGroupInResourceGroupParamSet";
-        protected const string ListContainerGroupInResourceGroupParamSet = "ListContainerGroupInResourceGroupParamSet";
-        protected const string ListAllContainerGroupParamSet = "ListAllContainerGroupParamSet";
+        protected const string GetContainerGroupByResourceIdParamSet = "GetContainerGroupByResourceIdParamSet";
+        protected const string ListContainerGroupParamSet = "ListContainerGroupParamSet";
 
-        [Parameter(
-            Position = 0,
-            Mandatory = false,
-            ParameterSetName = ListAllContainerGroupParamSet,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource Group Name.")]
         [Parameter(
             Position = 0,
             Mandatory = true,
@@ -46,8 +42,8 @@ namespace Microsoft.Azure.Commands.ContainerInstance
             HelpMessage = "The resource Group Name.")]
         [Parameter(
             Position = 0,
-            Mandatory = true,
-            ParameterSetName = ListContainerGroupInResourceGroupParamSet,
+            Mandatory = false,
+            ParameterSetName = ListContainerGroupParamSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource Group Name.")]
         [ValidateNotNullOrEmpty]
@@ -62,21 +58,41 @@ namespace Microsoft.Azure.Commands.ContainerInstance
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        public override void ExecuteCmdlet()
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = GetContainerGroupByResourceIdParamSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource id.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
+        protected override void ExecuteCmdletInternal()
         {
+            ContainerInstanceCmdletBase.InitializeAutoMapper();
+
             if (!string.IsNullOrEmpty(this.ResourceGroupName) && !string.IsNullOrEmpty(this.Name))
             {
                 var psContainerGroup = PSContainerGroup.FromContainerGroup(
                     this.ContainerClient.ContainerGroups.Get(this.ResourceGroupName, this.Name));
                 this.WriteObject(psContainerGroup);
             }
+            else if (!string.IsNullOrEmpty(this.ResourceId))
+            {
+                var resource = this.ResourceClient.Resources.GetById(this.ResourceId, this.ResourceClient.ApiVersion);
+                if (resource != null)
+                {
+                    var psContainerGroup = PSContainerGroup.FromContainerGroup(
+                        this.ContainerClient.ContainerGroups.Get(resource.ResourceGroupName, resource.Name));
+                    this.WriteObject(psContainerGroup);
+                }
+            }
             else
             {
-                var psContainerGroups = new List<PSContainerGroup>();
+                var psContainerGroups = new List<PSContainerGroupList>();
                 var containerGroups = this.ListContainerGroups();
                 foreach (var containerGroup in containerGroups)
                 {
-                    psContainerGroups.Add(PSContainerGroup.FromContainerGroup(containerGroup));
+                    psContainerGroups.Add(Mapper.Map<PSContainerGroupList>(PSContainerGroup.FromContainerGroup(containerGroup)));
                 }
 
                 while (!string.IsNullOrEmpty(containerGroups.NextPageLink))
@@ -84,7 +100,7 @@ namespace Microsoft.Azure.Commands.ContainerInstance
                     containerGroups = this.ListContainerGroupsNext(containerGroups.NextPageLink);
                     foreach (var containerGroup in containerGroups)
                     {
-                        psContainerGroups.Add(PSContainerGroup.FromContainerGroup(containerGroup));
+                        psContainerGroups.Add(Mapper.Map<PSContainerGroupList>(PSContainerGroup.FromContainerGroup(containerGroup)));
                     }
                 }
 

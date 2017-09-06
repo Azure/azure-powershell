@@ -14,17 +14,17 @@ Removes a container group.
 
 ### RemoveContainerGroupByResourceGroupAndNameParamSet
 ```
-Remove-AzureRmContainerGroup [-ResourceGroupName] <String> [-Name] <String> [-WhatIf] [-Confirm]
+Remove-AzureRmContainerGroup [-ResourceGroupName] <String> [-Name] <String> [-PassThru] [-WhatIf] [-Confirm]
 ```
 
 ### RemoveContainerGroupByPSContainerGroupParamSet
 ```
-Remove-AzureRmContainerGroup -InputObject <PSContainerGroup> [-WhatIf] [-Confirm]
+Remove-AzureRmContainerGroup -InputObject <PSContainerGroup> [-PassThru] [-WhatIf] [-Confirm]
 ```
 
 ### RemoveContainerGroupByResourceIdParamSet
 ```
-Remove-AzureRmContainerGroup -ResourceId <String> [-WhatIf] [-Confirm]
+Remove-AzureRmContainerGroup -ResourceId <String> [-PassThru] [-WhatIf] [-Confirm]
 ```
 
 ## DESCRIPTION
@@ -97,6 +97,21 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PassThru
+{{Fill PassThru Description}}
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

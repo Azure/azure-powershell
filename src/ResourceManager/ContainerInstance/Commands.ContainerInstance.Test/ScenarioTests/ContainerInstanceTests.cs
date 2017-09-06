@@ -38,9 +38,9 @@ namespace Microsoft.Azure.Commands.ContainerInstance.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetContainerGroupLogs()
+        public void TestContainerInstanceLog()
         {
-            TestController.NewInstance.RunPowerShellTest("Test-AzureRmContainerGroupLogs");
+            TestController.NewInstance.RunPowerShellTest("Test-AzureRmContainerInstanceLog");
         }
     }
 }
