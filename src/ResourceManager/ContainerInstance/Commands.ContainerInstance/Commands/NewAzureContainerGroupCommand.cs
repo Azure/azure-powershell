@@ -175,7 +175,8 @@ namespace Microsoft.Azure.Commands.ContainerInstance
 
                 if (!string.IsNullOrWhiteSpace(this.Command))
                 {
-                    var commandTokens = PSParser.Tokenize(this.Command, out Collection<PSParseError> errors);
+                    Collection<PSParseError> errors;
+                    var commandTokens = PSParser.Tokenize(this.Command, out errors);
                     if (errors.Any())
                     {
                         throw new ArgumentException($"Invalid 'Command' parameter: {string.Join("; ", errors.Select(err => err.Message))}");
