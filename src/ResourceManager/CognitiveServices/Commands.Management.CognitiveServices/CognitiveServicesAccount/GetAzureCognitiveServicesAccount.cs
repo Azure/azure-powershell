@@ -15,7 +15,8 @@
 using Microsoft.Azure.Commands.Management.CognitiveServices.Models;
 using Microsoft.Azure.Management.CognitiveServices;
 using Microsoft.Azure.Management.CognitiveServices.Models;
-using System.Globalization;
+using Microsoft.Rest.Azure;
+using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.CognitiveServices
@@ -62,13 +63,13 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             {
                 if (string.IsNullOrEmpty(this.ResourceGroupName))
                 {
-                    var cognitiveServicesAccounts = this.CognitiveServicesClient.Accounts.List();
+                    var cognitiveServicesAccounts = GetWithPaging(this.CognitiveServicesClient.Accounts.List());
 
                     WriteCognitiveServicesAccountList(cognitiveServicesAccounts);
                 }
                 else if (string.IsNullOrEmpty(this.Name))
                 {
-                    var cognitiveServicesAccounts = this.CognitiveServicesClient.Accounts.ListByResourceGroup(this.ResourceGroupName);
+                    var cognitiveServicesAccounts = GetWithPaging(this.CognitiveServicesClient.Accounts.ListByResourceGroup(this.ResourceGroupName));
                     if (cognitiveServicesAccounts == null)
                     {
                         WriteWarningWithTimestamp("Received empty accounts list");
@@ -84,6 +85,19 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                     WriteCognitiveServicesAccount(cognitiveServicesAccount);
                 }
             });
+        }
+
+        private IEnumerable<CognitiveServicesAccount> GetWithPaging(IPage<CognitiveServicesAccount> firstPage)
+        {
+            var cognitiveServicesAccounts = new List<CognitiveServicesAccount>(firstPage);
+            IPage<CognitiveServicesAccount> nextPage = null;
+            for (var nextLink = firstPage.NextPageLink; !string.IsNullOrEmpty(nextLink); nextLink = nextPage.NextPageLink)
+            {
+                nextPage = this.CognitiveServicesClient.Accounts.ListNext(nextLink);
+                cognitiveServicesAccounts.AddRange(nextPage);
+            }
+
+            return cognitiveServicesAccounts;
         }
     }
 }
