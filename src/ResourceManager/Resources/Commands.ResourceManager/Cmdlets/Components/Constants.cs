@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// <summary>
         /// The default policy API version.
         /// </summary>
-        public static readonly string PolicyApiVersion = "2016-12-01";
+        public static readonly string PolicyApiVersion = "2017-06-01-preview";
 
         /// <summary>
         /// The default providers API version.
@@ -109,6 +109,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// The policy definition resource type.
         /// </summary>
         public static readonly string MicrosoftAuthorizationPolicyDefinitionType = Constants.MicrosoftAuthorizationNamespace + "/policydefinitions";
+
+        /// <summary>
+        /// The policy set definition resource type.
+        /// </summary>
+        public static readonly string MicrosoftAuthorizationPolicySetDefinitionType = Constants.MicrosoftAuthorizationNamespace + "/policysetdefinitions";
 
         /// <summary>
         /// The policy definition resource type.
