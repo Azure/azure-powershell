@@ -18,6 +18,12 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Added support for endpoint services to Virtual Network Subnets
+    - Updated Add-AzureRmVirtualSubnetConfig: Added optional parameter -ServiceEndpoint
+    - Updated New-AzureRmVirtualSubnetConfig: Added optional parameter -ServiceEndpoint
+    - Updated Set-AzureRmVirtualSubnetConfig: Added optional parameter -ServiceEndpoint
+* Added cmdlet to list endpoint services available in the location
+    - Get-AzureRmVirtualNetworkAvailableEndpointService
 
 ## Version 4.3.1
 
