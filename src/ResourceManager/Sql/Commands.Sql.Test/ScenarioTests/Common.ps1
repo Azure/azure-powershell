@@ -339,6 +339,15 @@ function Get-FailoverGroupName
 
 <#
 .SYNOPSIS
+Gets valid virtual network rule name
+#>
+function Get-VirtualNetworkRuleName
+{
+    return getAssetName
+}
+
+<#
+.SYNOPSIS
 Gets the location for a provider, if not found return East US
 #>
 function Get-ProviderLocation($provider)
@@ -386,18 +395,6 @@ function Create-ResourceGroupForTest ($location = "westcentralus")
 function Remove-ResourceGroupForTest ($rg)
 {
 	Remove-AzureRmResourceGroup -Name $rg.ResourceGroupName -Force
-}
-
-<#
-	.SYNOPSIS
-	Gets the server credential
-#>
-function Create-ServerForTest ($resourceGroup, $location = "westcentralus")
-{
-	$serverLogin = "testusername"
-	$serverPassword = "t357ingP@s5w0rd!"
-	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
-	return $credentials
 }
 
 <#

@@ -135,6 +135,15 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             }
         }
 
+        public string RMNetworkModule
+        {
+            get
+            {
+                return Path.Combine(this.PackageDirectory,
+                                     @"ResourceManager\AzureResourceManager\AzureRM.Network\AzureRM.Network.psd1");
+            }
+        }
+
         public string GetRMModulePath(string psd1FileName)
         {
             string basename = Path.GetFileNameWithoutExtension(psd1FileName);

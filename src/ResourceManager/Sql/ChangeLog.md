@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Adding support for Virtual Network Rules
+	- Adding Get-AzureRmSqlServerVirtualNetworkRule cmdlet which gets the virtual network rules by a specific rule name or a list of virtual network rules in an Azure Sql server.
+	- Adding Set-AzureRmSqlServerVirtualNetworkRule cmdlet which changes the virtual network that the rule points to.
+	- Adding Remove-AzureRmSqlServerVirtualNetworkRule cmdlet which removes a virtual network rule for an Azure Sql server.
+	- Adding New-AzureRmSqlServerVirtualNetworkRule cmdlet which creates a new virtual network rule for an Azure Sql server.
 
 ## Version 3.3.1
 

@@ -47,7 +47,7 @@
 * Marked parameter -ProbeEnabled as obsolete
     - Add-AzureRmApplicationGatewayBackendHttpSettings
     - New-AzureRmApplicationGatewayBackendHttpSettings
-    - Set-AzureRmApplicationGatewayBackendHttpSettings 
+    - Set-AzureRmApplicationGatewayBackendHttpSettings
 
 ## Version 4.2.1
 

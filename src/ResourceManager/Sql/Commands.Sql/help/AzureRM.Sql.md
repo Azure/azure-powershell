@@ -384,4 +384,4 @@ Returns information about Azure SQL Sync Agents.
 Removes an Azure SQL Sync Agent.
 
 ### [Get-AzureRmSqlSyncAgentLinkedDatabase](Get-AzureRmSqlSyncAgentLinkedDatabase.md)
-Returns information about SQL Server databases linked by a sync agent.
+Returns information about SQL Server databases linked by a sync agent

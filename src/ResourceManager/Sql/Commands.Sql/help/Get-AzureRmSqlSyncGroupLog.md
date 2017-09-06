@@ -80,7 +80,6 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
-
 ### -SyncGroupName
 The sync group name.
 
