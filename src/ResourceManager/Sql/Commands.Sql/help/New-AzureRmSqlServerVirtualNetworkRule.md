@@ -7,7 +7,7 @@ schema: 2.0.0
 # New-AzureRmSqlServerVirtualNetworkRule
 
 ## SYNOPSIS
-Creates an Azure SQL Server Virtual Network Rule. Virtual Network Rules are used to connect the Azure SQL Server to a specific Virtual Network in order to restrict the access on the Azure SQL Server to only be available within the Virtual Network. 
+Creates an Azure SQL Server Virtual Network Rule. 
 
 ## SYNTAX
 
@@ -17,8 +17,7 @@ New-AzureRmSqlServerVirtualNetworkRule -VirtualNetworkRuleName <String> -Virtual
 ```
 
 ## DESCRIPTION
-This command creates an Azure SQL Server Virtual Network Rule.
-
+Creates an Azure SQL Server Virtual Network Rule. Virtual Network Rules are used to connect the Azure SQL Server to a specific Virtual Network in order to restrict the access on the Azure SQL Server to only be available within the Virtual Network. 
 ## EXAMPLES
 
 ### Example 1
