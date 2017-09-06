@@ -179,6 +179,25 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [Parameter(HelpMessage = "Destination CloudBlob object", Mandatory = true, ParameterSetName = FileToBlobParameterSet)]
         public CloudBlob DestCloudBlob { get; set; }
 
+        [Parameter(HelpMessage = "Premium Page Blob Tier", Mandatory = false, ParameterSetName = ContainerNameParameterSet)]
+        [Parameter(HelpMessage = "Premium Page Blob Tier", Mandatory = false, ParameterSetName = BlobParameterSet)]
+        [Parameter(HelpMessage = "Premium Page Blob Tier", Mandatory = false, ParameterSetName = BlobToBlobParameterSet)]
+        [Parameter(HelpMessage = "Premium Page Blob Tier", Mandatory = false, ParameterSetName = ContainerParameterSet)]
+        public PremiumPageBlobTier PremiumPageBlobTier
+        {
+            get
+            {
+                return pageBlobTier.Value;
+            }
+
+            set
+            {
+                pageBlobTier = value;
+            }
+        }
+
+        private PremiumPageBlobTier? pageBlobTier = null;
+
         [Alias("SrcContext", "SourceContext")]
         [Parameter(HelpMessage = "Source Azure Storage Context Object", ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ContainerNameParameterSet)]
         [Parameter(HelpMessage = "Source Azure Storage Context Object", ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, ParameterSetName = BlobParameterSet)]
@@ -363,6 +382,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         private void StartCopyBlob(IStorageBlobManagement destChannel, CloudBlob srcCloudBlob, CloudBlob destCloudBlob)
         {
             ValidateBlobType(srcCloudBlob);
+            ValidateBlobTier(srcCloudBlob.BlobType, pageBlobTier);
 
             Func<long, Task> taskGenerator = (taskId) => StartCopyAsync(taskId, destChannel, srcCloudBlob, destCloudBlob);
             RunTask(taskGenerator);
@@ -546,7 +566,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
             if (!destExist || this.ConfirmOverwrite(srcUri.AbsoluteUri.ToString(), destBlob.Uri.ToString()))
             {
-                string copyId = await destChannel.StartCopyAsync(destBlob, srcUri, null, null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken).ConfigureAwait(false);
+                string copyId;
+                if (pageBlobTier == null)
+                {
+                    copyId = await destChannel.StartCopyAsync(destBlob, srcUri, null, null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken).ConfigureAwait(false);
+                }
+                else
+                {
+                    copyId = await destChannel.StartCopyAsync((CloudPageBlob)destBlob, srcUri, pageBlobTier.Value, null, null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken).ConfigureAwait(false);
+                }
                 this.OutputStream.WriteVerbose(taskId, String.Format(Resources.CopyDestinationBlobPending, destBlob.Name, destBlob.Container.Name, copyId));
                 this.WriteCloudBlobObject(taskId, destChannel, destBlob);
             }
