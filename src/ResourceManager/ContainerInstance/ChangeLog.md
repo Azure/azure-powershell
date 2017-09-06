@@ -22,4 +22,4 @@
     - New-AzureRmContainerGroup
     - Get-AzureRmContainerGroup
     - Remove-AzureRmContainerGroup
-    - Export-AzureRmContainerGroupLogs
+    - Get-AzureRmContainerInstanceLog
