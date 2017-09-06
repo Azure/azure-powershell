@@ -335,6 +335,15 @@
     <Compile Include="NetworkInterface\IpConfiguration\NewAzureNetworkInterfaceIpConfigCommand.cs" />
     <Compile Include="NetworkInterface\IpConfiguration\RemoveAzureNetworkInterfaceIpConfigCommand.cs" />
     <Compile Include="NetworkInterface\IpConfiguration\SetAzureNetworkInterfaceIpConfigCommand.cs" />
+    <Compile Include="NetworkSecurityGroup\GetAzureRMNetworkSecurityGroupCommand.cs" />
+    <Compile Include="NetworkSecurityGroup\NetworkSecurityRule\AddAzureRmNetworkSecurityRuleConfigCommand.cs" />
+    <Compile Include="NetworkSecurityGroup\NetworkSecurityRule\GetAzureNetworkSecurityRuleConfigCommand.cs" />
+    <Compile Include="NetworkSecurityGroup\NetworkSecurityRule\NewAzureRmNetworkSecurityRuleConfigCommand.cs" />
+    <Compile Include="NetworkSecurityGroup\NetworkSecurityRule\RemoveAzureRmNetworkSecurityRuleConfigCommand.cs" />
+    <Compile Include="NetworkSecurityGroup\NetworkSecurityRule\SetAzureRmNetworkSecurityRuleConfigCommand.cs" />
+    <Compile Include="NetworkSecurityGroup\NewAzureRMNetworkSecurityGroupCommand.cs" />
+    <Compile Include="NetworkSecurityGroup\RemoveAzureRMNetworkSecurityGroupCommand.cs" />
+    <Compile Include="NetworkSecurityGroup\SetAzureRMNetworkSecurityGroupCommand.cs" />
     <Compile Include="NetworkWatcher\TestAzureNetworkWatcherConnectivityCommand.cs" />
     <Compile Include="ProviderWideCmdlets\GetAzureBgpServiceCommunityCommand.cs" />
     <Compile Include="NetworkWatcher\GetAzureNetworkWatcherCommand.cs" />
@@ -487,17 +496,6 @@
     <Compile Include="NetworkInterface\NetworkInterfaceBaseCmdlet.cs" />
     <Compile Include="NetworkInterface\NewAzureNetworkInterfaceCommand.cs" />
     <Compile Include="NetworkInterface\SetAzureNetworkInterfaceCommand.cs" />
-    <Compile Include="NetworkSecurityGroup\GetAzureNetworkSecurityGroupCommand.cs" />
-    <Compile Include="NetworkSecurityGroup\NetworkSecurityGroupBaseCmdlet.cs" />
-    <Compile Include="NetworkSecurityGroup\NetworkSecurityRule\NewAzureNetworkSecurityRuleConfigCommand.cs" />
-    <Compile Include="NetworkSecurityGroup\NetworkSecurityRule\GetAzureNetworkSecurityRuleConfigCommand.cs" />
-    <Compile Include="NetworkSecurityGroup\NetworkSecurityRule\RemoveAzureNetworkSecurityRuleConfigCommand.cs" />
-    <Compile Include="NetworkSecurityGroup\NetworkSecurityRule\SetAzureNetworkSecurityRuleConfigCommand.cs" />
-    <Compile Include="NetworkSecurityGroup\NetworkSecurityRule\AddAzureNetworkSecurityRuleConfigCommand.cs" />
-    <Compile Include="NetworkSecurityGroup\NetworkSecurityRule\AzureNetworkSecurityRuleConfigBase.cs" />
-    <Compile Include="NetworkSecurityGroup\NewAzureNetworkSecurityGroupCommand.cs" />
-    <Compile Include="NetworkSecurityGroup\RemoveAzureNetworkSecurityGroupCommand.cs" />
-    <Compile Include="NetworkSecurityGroup\SetAzureNetworkSecurityGroupCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <DependentUpon>Resources.resx</DependentUpon>
