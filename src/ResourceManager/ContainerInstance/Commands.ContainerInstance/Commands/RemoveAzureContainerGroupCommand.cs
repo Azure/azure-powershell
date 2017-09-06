@@ -15,6 +15,7 @@
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ContainerInstance.Models;
 using Microsoft.Azure.Management.ContainerInstance;
+using Microsoft.Azure.Management.ContainerInstance.Models;
 using Microsoft.Azure.Management.Internal.Resources;
 
 namespace Microsoft.Azure.Commands.ContainerInstance
@@ -63,21 +64,34 @@ namespace Microsoft.Azure.Commands.ContainerInstance
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
-        public override void ExecuteCmdlet()
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
+
+        protected override void ExecuteCmdletInternal()
         {
             if (ShouldProcess(Name, "Remove Container Group"))
             {
+                ContainerGroup containerGroupDeleted = null;
                 if (this.InputObject != null)
                 {
-                    this.ContainerClient.ContainerGroups.Delete(this.InputObject.ResourceGroupName, this.InputObject.Name);
+                    containerGroupDeleted = this.ContainerClient.ContainerGroups.Delete(this.InputObject.ResourceGroupName, this.InputObject.Name);
                 }
                 else if (!string.IsNullOrEmpty(this.ResourceGroupName) && !string.IsNullOrEmpty(this.Name))
                 {
-                    this.ContainerClient.ContainerGroups.Delete(this.ResourceGroupName, this.Name);
+                    containerGroupDeleted = this.ContainerClient.ContainerGroups.Delete(this.ResourceGroupName, this.Name);
                 }
                 else if (!string.IsNullOrEmpty(this.ResourceId))
                 {
-                    this.ResourceClient.Resources.DeleteById(this.ResourceId, this.ResourceClient.ApiVersion);
+                    var resource = this.ResourceClient.Resources.GetById(this.ResourceId, this.ResourceClient.ApiVersion);
+                    if (resource != null)
+                    {
+                        containerGroupDeleted = this.ContainerClient.ContainerGroups.Delete(resource.ResourceGroupName, resource.Name);
+                    }
+                }
+
+                if (containerGroupDeleted != null && this.PassThru.IsPresent)
+                {
+                    this.WriteObject(containerGroupDeleted);
                 }
             }
         }

@@ -2,43 +2,9 @@
 <Configuration>
   <ViewDefinitions>
     <View>
-      <Name>Microsoft.Azure.Commands.ContainerInstance.Models.PSContainer</Name>
+      <Name>Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroupList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.ContainerInstance.Models.PSContainer</TypeName>
-      </ViewSelectedBy>
-      <CustomControl>
-        <CustomEntries>
-          <CustomEntry>
-            <CustomItem>
-              <ExpressionBinding>
-                <ScriptBlock>$_.ToJson()</ScriptBlock>
-              </ExpressionBinding>
-            </CustomItem>
-          </CustomEntry>
-        </CustomEntries>
-      </CustomControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup</TypeName>
-      </ViewSelectedBy>
-      <CustomControl>
-        <CustomEntries>
-          <CustomEntry>
-            <CustomItem>
-              <ExpressionBinding>
-                <ScriptBlock>$_.ToJson()</ScriptBlock>
-              </ExpressionBinding>
-            </CustomItem>
-          </CustomEntry>
-        </CustomEntries>
-      </CustomControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup</TypeName>
+        <TypeName>Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroupList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>

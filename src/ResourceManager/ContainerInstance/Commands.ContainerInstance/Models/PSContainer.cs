@@ -14,8 +14,8 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using AutoMapper;
 using Microsoft.Azure.Management.ContainerInstance.Models;
-using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.ContainerInstance.Models
 {
@@ -52,17 +52,17 @@ namespace Microsoft.Azure.Commands.ContainerInstance.Models
         /// <summary>
         /// Gets or sets the current state.
         /// </summary>
-        public ContainerState CurrentState { get; set; }
+        public PSContainerState CurrentState { get; set; }
 
         /// <summary>
         /// Gets or sets the previous state.
         /// </summary>
-        public ContainerState PreviousState { get; set; }
+        public PSContainerState PreviousState { get; set; }
 
         /// <summary>
         /// Gets or sets the events.
         /// </summary>
-        public IList<ContainerEvent> Events { get; set; }
+        public IList<PSContainerEvent> Events { get; set; }
 
         /// <summary>
         /// Gets or sets the CPU.
@@ -101,23 +101,15 @@ namespace Microsoft.Azure.Commands.ContainerInstance.Models
                 Command = container?.Command,
                 Ports = container?.Ports?.Select(p => p.Port).ToList(),
                 EnvironmentVariables = container?.EnvironmentVariables?.ToDictionary(e => e.Name, e => e.Value),
-                CurrentState = container?.InstanceView?.CurrentState,
-                PreviousState = container?.InstanceView?.PreviousState,
-                Events = container?.InstanceView?.Events,
+                CurrentState = Mapper.Map<PSContainerState>(container?.InstanceView?.CurrentState),
+                PreviousState = Mapper.Map<PSContainerState>(container?.InstanceView?.PreviousState),
+                Events = container?.InstanceView?.Events?.Select(e => Mapper.Map<PSContainerEvent>(e)).ToList(),
                 Cpu = container?.Resources?.Requests?.Cpu,
                 MemoryInGb = container?.Resources?.Requests?.MemoryInGB,
                 CpuLimit = container?.Resources?.Limits?.Cpu,
                 MemoryLimitInGb = container?.Resources?.Limits?.MemoryInGB,
                 VolumeMounts = container?.VolumeMounts
             };
-        }
-
-        /// <summary>
-        /// Convert to a json string.
-        /// </summary>
-        public string ToJson()
-        {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
     }
 }

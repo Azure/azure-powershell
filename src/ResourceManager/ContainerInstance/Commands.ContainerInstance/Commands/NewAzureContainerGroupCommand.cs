@@ -12,9 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Management.Automation;
-using System.Security;
 using Microsoft.Azure.Commands.ContainerInstance.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.ContainerInstance.Models;
@@ -27,25 +29,47 @@ namespace Microsoft.Azure.Commands.ContainerInstance
     [Cmdlet(VerbsCommon.New, ContainerGroupNoun, SupportsShouldProcess = true), OutputType(typeof(PSContainerGroup))]
     public class NewAzureContainerGroupCommand : ContainerInstanceCmdletBase
     {
+        protected const string CreateContainerGroupBaseParamSet = "CreateContainerGroupBaseParamSet";
+        protected const string CreateContainerGroupWithRegistryParamSet = "CreateContainerGroupWithRegistryParamSet";
+
         [Parameter(
-           Mandatory = true,
-           Position = 0,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The resource group name.")]
+            Mandatory = true,
+            Position = 0,
+            ParameterSetName = CreateContainerGroupBaseParamSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource group name.")]
+        [Parameter(
+            Mandatory = true,
+            Position = 0,
+            ParameterSetName = CreateContainerGroupWithRegistryParamSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
-           Mandatory = true,
-           Position = 1,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The container group name.")]
+            Mandatory = true,
+            Position = 1,
+            ParameterSetName = CreateContainerGroupBaseParamSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The container group name.")]
+        [Parameter(
+            Mandatory = true,
+            Position = 1,
+            ParameterSetName = CreateContainerGroupWithRegistryParamSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The container group name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(
-           Mandatory = true,
-           HelpMessage = "The container image.")]
+            Mandatory = true,
+            ParameterSetName = CreateContainerGroupBaseParamSet,
+            HelpMessage = "The container image.")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = CreateContainerGroupWithRegistryParamSet,
+            HelpMessage = "The container image.")]
         [ValidateNotNullOrEmpty]
         public string Image { get; set; }
 
@@ -70,14 +94,15 @@ namespace Microsoft.Azure.Commands.ContainerInstance
             HelpMessage = "The required CPU cores. Default: 1")]
         [ValidateNotNullOrEmpty]
         [ValidateRange(1, 16)]
-        public double? Cpu { get; set; }
+        public int? Cpu { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "The required memory in GB. Default: 1.5")]
         [ValidateNotNullOrEmpty]
         [ValidateRange(0, 64)]
-        public double? Memory { get; set; }
+        [Alias("Memory")]
+        public double? MemoryInGB { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -90,46 +115,43 @@ namespace Microsoft.Azure.Commands.ContainerInstance
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The port to open.")]
+            HelpMessage = "The port to open. Default: 80")]
         [ValidateNotNullOrEmpty]
         public int? Port { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The command to run in the container. e.g. @(\"executable\",\"param1\",\"param2\")")]
+            HelpMessage = "The command to run in the container.")]
         [ValidateNotNullOrEmpty]
-        public string[] Command { get; set; }
+        public string Command { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "The container environment variables.")]
         [ValidateNotNullOrEmpty]
-        public Hashtable EnvironmentVariables { get; set; }
+        public Hashtable EnvironmentVariable { get; set; }
 
         [Parameter(
             Mandatory = false,
+            ParameterSetName = CreateContainerGroupWithRegistryParamSet,
             HelpMessage = "The custom container registry login server.")]
         [ValidateNotNullOrEmpty]
-        public string RegistryServer { get; set; }
+        [Alias("RegistryServer")]
+        public string RegistryServerDomain { get; set; }
 
         [Parameter(
-            Mandatory = false,
-            HelpMessage = "The custom container registry username.")]
+            Mandatory = true,
+            ParameterSetName = CreateContainerGroupWithRegistryParamSet,
+            HelpMessage = "The custom container registry credential.")]
         [ValidateNotNullOrEmpty]
-        public string RegistryUsername { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "The custom container registry password.")]
-        [ValidateNotNullOrEmpty]
-        public SecureString RegistryPassword { get; set; }
+        public PSCredential RegistryCredential { get; set; }
 
         [Parameter(
            Mandatory = false,
            ValueFromPipelineByPropertyName = true)]
         public Hashtable Tag { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ExecuteCmdletInternal()
         {
             if (this.ShouldProcess(this.Name, "Create Container Group"))
             {
@@ -143,14 +165,23 @@ namespace Microsoft.Azure.Commands.ContainerInstance
                     IpAddressType = this.IpAddressType,
                     Port = this.Port ?? ContainerGroupCreationParameters.DefaultPort,
                     ContainerImage = this.Image,
-                    ContainerCommand = this.Command,
-                    EnvironmentVariables = this.ConvertHashtableToDictionary(this.EnvironmentVariables),
+                    EnvironmentVariables = this.ConvertHashtableToDictionary(this.EnvironmentVariable),
                     Cpu = this.Cpu ?? ContainerGroupCreationParameters.DefaultCpu,
-                    MemoryInGb = this.Memory ?? ContainerGroupCreationParameters.DefaultMemory,
-                    RegistryServer = this.RegistryServer,
-                    RegistryUsername = this.RegistryUsername,
-                    RegistryPassword = ContainerGroupCreationParameters.ConvertToString(this.RegistryPassword)
+                    MemoryInGb = this.MemoryInGB ?? ContainerGroupCreationParameters.DefaultMemory,
+                    RegistryServer = this.RegistryServerDomain,
+                    RegistryUsername = this.RegistryCredential?.UserName,
+                    RegistryPassword = ContainerGroupCreationParameters.ConvertToString(this.RegistryCredential?.Password)
                 };
+
+                if (!string.IsNullOrWhiteSpace(this.Command))
+                {
+                    var commandTokens = PSParser.Tokenize(this.Command, out Collection<PSParseError> errors);
+                    if (errors.Any())
+                    {
+                        throw new ArgumentException($"Invalid 'Command' parameter: {string.Join("; ", errors.Select(err => err.Message))}");
+                    }
+                    creationParameter.ContainerCommand = commandTokens.Select(token => token.Content).ToList();
+                }
 
                 creationParameter.Validate();
 
