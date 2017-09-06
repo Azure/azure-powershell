@@ -502,6 +502,9 @@
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkGatewayTests\TestVirtualNetworkGatewayCRUD.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkGatewayTests\TestVirtualNetworkGatewayP2SVpnProfile.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkGatewayTests\VirtualNetworkGatewayActiveActiveFeatureTest.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
