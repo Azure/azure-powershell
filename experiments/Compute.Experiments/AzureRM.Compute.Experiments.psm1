@@ -1,56 +1,61 @@
 function New-AzVm {
     [CmdletBinding()]
     param (
-        [PSCredential] $credential,
-        [string] $imageName = "Win2012R2Datacenter",
-        [string] $name = "vmTest"
+        [Parameter()][PSCredential] $Credential,
+        [Parameter()][string] $Name = "VM",
+        [Parameter()][string] $ImageName = "Win2012R2Datacenter",
+        [Parameter()][string] $ResourceGroupName = $Name + "ResourceGroup",
+        [Parameter()][string] $Location = "eastus",
+        [Parameter()][string] $VirtualNetworkName = $Name + "VirtualNetwork",
+        [Parameter()][string] $PublicIpAddressName = $Name + "PublicIpAddress",
+        [Parameter()][string] $SecurityGroupName = $Name + "SecurityGroup",
+        [Parameter()][string] $NetworkInterfaceName = $Name + "NetworkInterface"
     )
 
     PROCESS {
-        if (-not $credential) {
-            $credential = Get-Credential
+        if (-not $Credential) {
+            $Credential = Get-Credential
         }
 
         # Find VM Image
-        $vmImageName = $imageName
-        $vmImage = $images | Where-Object { $_.Name -eq $vmImageName } | Select-Object -First 1
+        $vmImage = $images | Where-Object { $_.Name -eq $ImageName } | Select-Object -First 1
+        if (-not $vmImage) {
+            throw "Unknown image: " + $ImageName
+        }
 
         Write-Host $vmImage
 
         # Location
         Write-Host "Load locations..."
-        $location = (Get-AzureRmLocation | Select-Object -First 1 -Wait).Location
-        $location = "eastus"
+        # $Location = (Get-AzureRmLocation | Select-Object -First 1 -Wait).Location
         Write-Host "done"
 
         # Resource Group
-        $resourceGroupName = "resourceGroupTest"
-        $resource = New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+        $resource = New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location
 
         # Virtual Network
-        $virtualNetworkName = "virtualNetworkTest"
         $virtualNetworkAddressPrefix = "192.168.0.0/16"
-        $subnet = @{ Name = "subnetTest"; AddressPrefix = "192.168.1.0/24" }
-        $subnetConfig = New-AzureRmVirtualNetworkSubnetConfig -Name $subnet.Name -AddressPrefix $subnet.AddressPrefix
+        $subnet = @{ Name = $Name + "Subnet"; AddressPrefix = "192.168.1.0/24" }
+        $subnetConfig = New-AzureRmVirtualNetworkSubnetConfig `
+            -Name $subnet.Name `
+            -AddressPrefix $subnet.AddressPrefix
         $virtualNetwork = New-AzureRmVirtualNetwork `
-            -ResourceGroupName $resourceGroupName `
-            -Location $location `
-            -Name $virtualNetworkName `
+            -ResourceGroupName $ResourceGroupName `
+            -Location $Location `
+            -Name $VirtualNetworkName `
             -AddressPrefix $virtualNetworkAddressPrefix `
             -Subnet $subnetConfig
 
         # Piblic IP
-        $publicIpAddressName = "publicIpAddressTest"
         $publicIpAddress = New-AzureRmPublicIpAddress `
-            -ResourceGroupName $resourceGroupName `
-            -Location $location `
+            -ResourceGroupName $ResourceGroupName `
+            -Location $Location `
             -AllocationMethod Static `
-            -Name $publicIpAddressName
+            -Name $PublicIpAddressName
 
         # Security Group (it may have several rules(ports))
-        $securityGroupName = "securityGroupTest"
         $securityRule = @{
-            Name = "securityRuleTest";
+            Name = $Name + "SecurityRule";
             Protocol = "Tcp";
             Priority = 1000;
             Access = "Allow";
@@ -71,24 +76,22 @@ function New-AzVm {
             -DestinationPortRange $securityRule.DestinationPortRange `
             -DestinationAddressPrefix $securityRule.DestinationAddressPrefix
         $securityGroup = New-AzureRmNetworkSecurityGroup `
-            -ResourceGroupName $resourceGroupName `
-            -Location $location `
-            -Name $securityGroupName `
+            -ResourceGroupName $ResourceGroupName `
+            -Location $Location `
+            -Name $SecurityGroupName `
             -SecurityRules $securityRuleConfig
 
         # Network Interface
-        $networkInterfaceName = "networkInterfaceTest"
         $networkInterface = New-AzureRmNetworkInterface `
-            -ResourceGroupName $resourceGroupName `
-            -Location $location `
-            -Name $networkInterfaceName `
+            -ResourceGroupName $ResourceGroupName `
+            -Location $Location `
+            -Name $NetworkInterfaceName `
             -PublicIpAddressId $publicIpAddress.Id `
             -SubnetId $virtualNetwork.Subnets[0].Id `
             -NetworkSecurityGroupId $securityGroup.Id
 
         # VM
-        # $vmCredentials = Get-Credential
-        $vm = @{ Name = $name; Size = "Standard_DS2" }
+        $vm = @{ Name = $Name; Size = "Standard_DS2" }
         $vmConfig = New-AzureRmVMConfig -VMName $vm.Name -VMSize $vm.Size
         $vmComputer = $vm.Name
         switch ($vmImage.Type) {
@@ -96,13 +99,13 @@ function New-AzVm {
                 $vmConfig = $vmConfig | Set-AzureRmVMOperatingSystem `
                     -Windows `
                     -ComputerName $vmComputer `
-                    -Credential $credential
+                    -Credential $Credential
             }
             "Linux" {
                 $vmConfig = $vmConfig | Set-AzureRmVMOperatingSystem `
                     -Linux `
                     -ComputerName $vmComputer `
-                    -Credential $credential
+                    -Credential $Credential
             }
         }
 
@@ -118,7 +121,10 @@ function New-AzVm {
 
         New-PsObject @{
             ResourceId = $resource.ResourceId;
-            Response = New-AzureRmVm -ResourceGroupName $resourceGroupName -Location $location -VM $vmConfig
+            Response = New-AzureRmVm `
+                -ResourceGroupName $ResourceGroupName `
+                -Location $Location `
+                -VM $vmConfig
         }
     }
 }
