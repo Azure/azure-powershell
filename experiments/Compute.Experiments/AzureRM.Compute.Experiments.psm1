@@ -23,12 +23,8 @@ function New-AzVm {
             throw "Unknown image: " + $ImageName
         }
 
-        Write-Host $vmImage
-
         # Location
-        Write-Host "Load locations..."
         # $Location = (Get-AzureRmLocation | Select-Object -First 1 -Wait).Location
-        Write-Host "done"
 
         # Resource Group
         $resource = New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location
@@ -110,7 +106,6 @@ function New-AzVm {
         }
 
         $vmImageImage = $vmImage.Image
-        Write-Host $vmImageImage
         $vmConfig = $vmConfig `
             | Set-AzureRmVMSourceImage `
                 -PublisherName $vmImageImage.publisher `

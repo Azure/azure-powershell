@@ -12,7 +12,7 @@
 RootModule = ".\AzureRM.Compute.Experiments.psm1"
 
 # Version number of this module.
-ModuleVersion = '1.0'
+ModuleVersion = '1.0.1'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -30,7 +30,7 @@ CompanyName = 'Microsoft'
 Copyright = 'Microsoft'
 
 # Description of the functionality provided by this module
-# Description = ''
+Description = 'Azure Compute'
 
 # Minimum version of the Windows PowerShell engine required by this module
 PowerShellVersion = '5.0'
@@ -52,9 +52,9 @@ PowerShellVersion = '5.0'
 
 # Modules that must be imported into the global environment prior to importing this module
 RequiredModules = @(
-    @{ ModuleName = 'AzureRM.Resources'; ModuleVersion = '4.3.1'; },
-    @{ ModuleName = 'AzureRM.Network'; ModuleVersion = '4.3.1'; },
-    @{ ModuleName = 'AzureRM.Compute'; ModuleVersion = '3.3.1'; }
+    @{ ModuleName = "AzureRM.Resources"; ModuleVersion = "4.3.1"; },
+    @{ ModuleName = "AzureRM.Network"; ModuleVersion = "4.3.1"; },
+    @{ ModuleName = "AzureRM.Compute"; ModuleVersion = "3.3.1"; }
 )
 
 # Assemblies that must be loaded prior to importing this module
