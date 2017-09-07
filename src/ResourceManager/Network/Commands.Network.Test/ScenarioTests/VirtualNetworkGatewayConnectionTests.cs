@@ -47,7 +47,7 @@ namespace Commands.Network.Test.ScenarioTests
             NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkGatewayConnectionWithBgpCRUD");
         }
 
-        [Fact]
+        [Fact(Skip = "Investigate OutOfMemoryException for private repository")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualNetworkGatewayConnectionwithIpsecPoliciesCRUD()
         {
