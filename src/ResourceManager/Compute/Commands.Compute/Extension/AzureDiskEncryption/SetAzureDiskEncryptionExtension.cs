@@ -174,13 +174,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             HelpMessage = "Skip backup creation for Linux VMs")]
         public SwitchParameter SkipVmBackup { get; set; }
 
-        [Parameter(
-            Mandatory = false,
-            Position = 16,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Set if updating settings for a premium storage VM.")] // TODO: Parameter introduced only for testing. Pls make sure it doesn't make it into prod.
-        public SwitchParameter PremiumStorage { get; set; }
-
         private OperatingSystemTypes? currentOSType = null;
 
         private void ValidateInputParameters()
@@ -317,7 +310,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             AzureOperationResponse<VirtualMachine> updateResult;
 
             // The 2nd pass. If something goes wrong here, try to revert to encryptionSettingsBackup.
-            if (!PremiumStorage.IsPresent || encryptionSettingsBackup.Enabled != true)
+            if (encryptionSettingsBackup.Enabled != true)
             {
                 updateResult = this.ComputeClient.ComputeManagementClient.VirtualMachines.CreateOrUpdateWithHttpMessagesAsync(
                     this.ResourceGroupName,
