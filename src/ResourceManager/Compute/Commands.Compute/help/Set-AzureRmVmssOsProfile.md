@@ -149,7 +149,7 @@ Accept wildcard characters: False
 
 ### -PublicKey
 Specifies the Secure Shell (SSH) public key object.
-You can use the Add-AzureRmVMSshPublicKey cmdlet to create the object.
+You can use the Add-AzureRmVmssSshPublicKey cmdlet to create the object.
 
 ```yaml
 Type: SshPublicKey[]
