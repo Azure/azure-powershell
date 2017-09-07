@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             TestUtilities.GetCurrentMethodName());
         }
 
-        [Fact(Skip = "Investigate OutOfMemoryException for private repository")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDeleteNodeFileByTask()
         {

@@ -26,14 +26,14 @@ namespace Commands.Network.Test.ScenarioTests
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
-        [Fact(Skip = "Investigate OutOfMemoryException for private repository")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetTopology()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-GetTopology");
         }
 
-        [Fact(Skip = "Investigate OutOfMemoryException for private repository")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetSecurityGroupView()
         {
@@ -54,7 +54,7 @@ namespace Commands.Network.Test.ScenarioTests
             NetworkResourcesController.NewInstance.RunPsTest("Test-VerifyIPFlow");
         }
 
-        [Fact(Skip = "Investigate OutOfMemoryException for private repository")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPacketCapture()
         {
@@ -75,7 +75,7 @@ namespace Commands.Network.Test.ScenarioTests
             NetworkResourcesController.NewInstance.RunPsTest("Test-FlowLog");
         }
 
-        [Fact(Skip = "Investigate OutOfMemoryException for private repository")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestConnectivityCheck()
         {
