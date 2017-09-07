@@ -9,7 +9,7 @@
 @{
 
 # Script module or binary module file associated with this manifest.
- RootModule = '.\Microsoft.Azure.Commands.Profile.dll'
+#RootModule = @()
 
 # Version number of this module.
 ModuleVersion = '3.3.2'
@@ -66,7 +66,7 @@ TypesToProcess = '.\Microsoft.Azure.Commands.Profile.types.ps1xml'
 FormatsToProcess = '.\Microsoft.Azure.Commands.Profile.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-#NestedModules = @('')
+NestedModules = '.\Microsoft.Azure.Commands.Profile.dll'
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @()
