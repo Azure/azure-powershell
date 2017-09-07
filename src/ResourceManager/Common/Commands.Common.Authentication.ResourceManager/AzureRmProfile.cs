@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         /// </summary>
         public AzureRmProfile()
         {
-            EnvironmentTable = new Dictionary<string, IAzureEnvironment>(StringComparer.CurrentCultureIgnoreCase);
+            EnvironmentTable = new ConcurrentDictionary<string, IAzureEnvironment>(StringComparer.CurrentCultureIgnoreCase);
 
             // Adding predefined environments
             foreach (var env in AzureEnvironment.PublicEnvironments)

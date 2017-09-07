@@ -44,6 +44,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         {
             _profile = profile;
             var context = _profile.DefaultContext;
+            _cache = AzureSession.Instance.TokenCache;
             if (_profile != null && context != null &&
                 context.TokenCache != null)
             {
