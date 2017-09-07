@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Profile.Context
                                 client.TrySetDefaultContext(name);
                                 var context = new PSAzureContext(profile.DefaultContext);
                                 context.Name = profile.DefaultContextKey;
-                                WriteObject(new PSAzureContext(profile.DefaultContext));
+                                WriteObject(context);
                             });
                         }
                     });

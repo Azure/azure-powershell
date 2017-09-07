@@ -16,16 +16,8 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
-using System.IO;
 using System.Management.Automation;
-using System.Reflection;
-using System.Security;
-using Microsoft.Azure.Commands.Profile.Properties;
-using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
 using Microsoft.Azure.Commands.Profile.Common;
 using System.Linq;
 
@@ -37,7 +29,7 @@ namespace Microsoft.Azure.Commands.Profile
     [Cmdlet(VerbsCommon.Remove, "AzureRmAccount", DefaultParameterSetName = ContextNameParameterSet, SupportsShouldProcess=true)]
     [Alias("Logout-AzAccount", "Logout-AzureRmAccount")]
     [OutputType(typeof(PSAzureRmAccount))]
-    public class RemoveAzureRMAccountCommand : AzureContextModificationCmdlet, IModuleAssemblyInitializer
+    public class RemoveAzureRMAccountCommand : AzureContextModificationCmdlet
     {
         private const string UserIdParameterSet = "UserId";
         private const string ServicePrincipalParameterSet = "ServicePrincipal";
@@ -137,48 +129,6 @@ namespace Microsoft.Azure.Commands.Profile
                     WriteObject(new PSAzureRmAccount(azureAccount));
                 }
             }
-        }
-
-        /// <summary>
-        /// Load global aliases for ARM
-        /// </summary>
-        public void OnImport()
-        {
-#if DEBUG
-            try
-            {
-#endif
-                AzureSessionInitializer.InitializeAzureSession();
-#if DEBUG
-                if (!TestMockSupport.RunningMocked)
-                {
-#endif
-                    AzureSession.Instance.DataStore = new DiskDataStore();
-#if DEBUG
-                }
-#endif
-                var invoker = System.Management.Automation.PowerShell.Create(RunspaceMode.CurrentRunspace);
-                invoker.AddScript(File.ReadAllText(FileUtilities.GetContentFilePath(
-                    Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
-                    "AzureRmProfileStartup.ps1")));
-                var result = invoker.Invoke();
-                
-                bool autoSaveEnabled = AzureSession.Instance.ARMContextSaveMode == ContextSaveMode.CurrentUser;
-                foreach (var output in result)
-                {
-                    if (bool.TryParse(output.ToString(), out autoSaveEnabled))
-                    {
-                        break;
-                    }
-                }
-                InitializeProfileProvider(autoSaveEnabled);
-#if DEBUG
-            }
-            catch (Exception) when (TestMockSupport.RunningMocked)
-            {
-                // This will throw exception for tests, ignore.
-            }
-#endif
         }
     }
 }
