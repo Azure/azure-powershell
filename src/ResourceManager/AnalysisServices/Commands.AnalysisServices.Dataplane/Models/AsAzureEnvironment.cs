@@ -35,7 +35,8 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
         {
             AdAuthorityBaseUrl,
             RestartEndpointFormat,
-            LogfileEndpointFormat
+            LogfileEndpointFormat,
+            SyncEndpoint
         }
     }
 }
