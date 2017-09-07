@@ -339,4 +339,7 @@
     <value>Using autosave setting from session variable '{0}'='{1}'.</value>
     <comment>{0} = variable name; {1} = variable value</comment>
   </data>
+  <data name="InvalidEndpointProvided" xml:space="preserve">
+    <value>Endpoint provided is invalid. Please check the value and retry again with the correct value.</value>
+  </data>
 </root>

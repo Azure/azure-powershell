@@ -277,6 +277,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Endpoint provided is invalid. Please check the value and retry again with the correct value..
+        /// </summary>
+        internal static string InvalidEndpointProvided {
+            get {
+                return ResourceManager.GetString("InvalidEndpointProvided", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The provided subscription ID &quot;{0}&quot; is not a valid Guid..
         /// </summary>
         internal static string InvalidSubscriptionId {
