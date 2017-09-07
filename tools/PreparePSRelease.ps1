@@ -22,8 +22,6 @@ $ErrorActionPreference = "Stop"
 .\ARMSyncVersion.ps1 $Folder
 .\ARMIncrementVersion.ps1 "$PSScriptRoot\..\src\Storage" -Major $Major.IsPresent -Minor $Minor.IsPresent -Patch $Patch.IsPresent
 .\ARMSyncVersion.ps1 "$PSScriptRoot\..\src\Storage"
-.\StackIncrementVersion $Folder -Major $Major.IsPresent -Minor $Minor.IsPresent -Patch $Patch.IsPresent
-.\StackSyncVersion.ps1 $Folder
 .\ARMIncrementVersion.ps1 "$PSScriptRoot\AzureRM" -Major $Major.IsPresent -Minor $Minor.IsPresent -Patch $Patch.IsPresent
 .\ARMIncrementVersion.ps1 "$PSScriptRoot\..\src\StackAdmin" -Major $Major.IsPresent -Minor $Minor.IsPresent -Patch $Patch.IsPresent
 .\ARMSyncVersion.ps1 $PSScriptRoot\..\src\StackAdmin
