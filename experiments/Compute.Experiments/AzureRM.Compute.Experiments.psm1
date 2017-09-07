@@ -139,6 +139,86 @@ function Set-ResourceGroup {
     }
 }
 
+class Common {
+    [string] $Location;
+    [string] $ResourceGroupName;
+
+    [void] Update([string] $location, [string] $resourceGroupName) {
+        if (-not $this.Location) {
+            $this.Location = $location
+        }
+        if (-not $this.ResourceGroupName) {
+            $this.ResourceGroupName = $resourceGroupName
+        }
+    }
+}
+
+class VirtualNetwork {
+    [string] $Name;
+
+    [bool] UpdateCommon([Common] $common) {
+        if ($this.Name) {
+            $virtualNetwork = Get-AzureRMVirtualNetwork `
+                | Where-Object { $_.Name -eq $Name } `
+                | Select-Object -First 1 -Wait;
+            $common.Update($virtualNetwork.Location, $virtualNetwork.ResourceGroupName)
+            return $true
+        }
+        return $false
+    }
+}
+
+class PublicIpAddress {
+    [string] $Name;
+
+    [bool] UpdateCommon([Common] $common) {
+        if ($this.Name) {
+            $virtualNetwork = Get-AzureRMPublicIpAddress `
+                | Where-Object { $_.Name -eq $Name } `
+                | Select-Object -First 1 -Wait;
+            $common.Update($virtualNetwork.Location, $virtualNetwork.ResourceGroupName)
+            return $true
+        }
+        return $false
+    }
+}
+
+class SecurityGroup {
+    [string] $Name;
+
+    [bool] UpdateCommon([Common] $common) {
+        if ($this.Name) {
+            $virtualNetwork = Get-AzureRMSecurityGroup `
+                | Where-Object { $_.Name -eq $Name } `
+                | Select-Object -First 1 -Wait;
+            $common.Update($virtualNetwork.Location, $virtualNetwork.ResourceGroupName);
+            return $true;
+        }
+        return $false;
+    }
+}
+
+class NetworkInterface {
+    [string] $Name;
+    [VirtualNetwork] $VirtualNetwork;
+    [PublicIpAddress] $PublicIpAddress;
+    [SecurityGroup] $SecurityGroupName;
+
+    [bool] UpdateCommon([Common] $common) {
+        if ($this.Name) {
+            $networkInterface = Get-AzureRMNetworkInterface `
+                | Where-Object { $_.Name -eq $Name } `
+                | Select-Object -First 1 -Wait;
+            $common.Update($networkInterface.Location, $networkInterface.ResourceGroupName);
+            return $true;
+        } else {
+            return $this.VirtualNetwork.UpdateCommon($common) `
+                -or $this.PublicIpAddress.UpdateCommon($common) `
+                -or $this.SecurityGroup.UpdateCommon($common);
+        }
+    }
+}
+
 function New-PsObject {
     param([hashtable] $property)
 
