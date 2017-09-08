@@ -34,11 +34,10 @@ namespace Microsoft.Azure.Commands.Profile.Context
         public object GetDynamicParameters()
         {
             var parameters = new RuntimeDefinedParameterDictionary();
-            AzureRmProfile localProfile = DefaultProfile as AzureRmProfile;
-            if (localProfile != null)
+            RuntimeDefinedParameter namedParameter;
+            if (TryGetExistingContextNameParameter("Name", out namedParameter))
             {
-                var nameParameter = GetExistingContextNameParameter("Name");
-                parameters.Add(nameParameter.Name, nameParameter);
+                parameters.Add(namedParameter.Name, namedParameter);
             }
 
             return parameters;

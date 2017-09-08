@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Profile
                         ErrorCategory.AuthenticationError,
                         null));
             }
-            if (ListAvailable.IsPresent)
+            else if (ListAvailable.IsPresent)
             {
                 var profile = DefaultProfile as AzureRmProfile;
                 if (profile != null && profile.Contexts != null)
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.Profile
         {
             var parameters = new RuntimeDefinedParameterDictionary();
             AzureRmProfile localProfile = DefaultProfile as AzureRmProfile;
-            if (localProfile != null)
+            if (localProfile != null && localProfile.Contexts != null && localProfile.Contexts.Count > 0)
             {
                 var nameParameter = new RuntimeDefinedParameter(
                 "Name", typeof(string),

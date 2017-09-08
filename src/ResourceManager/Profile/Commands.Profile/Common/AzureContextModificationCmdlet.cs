@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Profile.Common
 {
     public class AzureContextModificationCmdlet : AzureRMCmdlet
     {
-        [Parameter(Mandatory =false, HelpMessage="Determines the scope of context changes, for example, wheher changes apply only to the cusrrent process, or to all sessions started by this user")]
+        [Parameter(Mandatory = false, HelpMessage = "Determines the scope of context changes, for example, wheher changes apply only to the cusrrent process, or to all sessions started by this user")]
         public ContextModificationScope Scope { get; set; }
 
 
@@ -69,28 +69,23 @@ namespace Microsoft.Azure.Commands.Profile.Common
             {
                 scope = Scope;
             }
-            else if (SessionState != null && SessionState.PSVariable != null )
+            try
             {
-                try
+                var autoSaveSetting = Environment.GetEnvironmentVariable(AzureRmProfileConstants.ProfileAutoSaveVariable);
+                bool autoSaveEnabled = false;
+                if (autoSaveSetting != null && bool.TryParse(autoSaveSetting, out autoSaveEnabled) && autoSaveEnabled)
                 {
-                    var autoSaveVariable = SessionState.PSVariable.Get(AzureRmProfileConstants.ProfileAutoSaveVariable);
-                    string autoSaveSetting = autoSaveVariable == null? null : autoSaveVariable.Value as string;
-                    if (autoSaveVariable != null && autoSaveSetting != null 
-                            && (string.Equals(autoSaveSetting, AzureRmProfileConstants.AutoSaveDisabled, StringComparison.OrdinalIgnoreCase) ||
-                                string.Equals(autoSaveSetting, "False", StringComparison.OrdinalIgnoreCase)))
-                        {
-                            scope = ContextModificationScope.Process;
-                            WriteDebugWithTimestamp(string.Format(Resources.UsingAutoSaveSettins, AzureRmProfileConstants.ProfileAutoSaveVariable, autoSaveSetting));
-                        }
-                    else
-                    {
-                        WriteDebugWithTimestamp(string.Format(Resources.CouldNotRetrieveAutosaveSetting, AzureRmProfileConstants.ProfileAutoSaveVariable));
-                    }
+                    scope = ContextModificationScope.Process;
+                    WriteDebugWithTimestamp(string.Format(Resources.UsingAutoSaveSettins, AzureRmProfileConstants.ProfileAutoSaveVariable, autoSaveSetting));
                 }
-                catch (Exception exception)
+                else
                 {
-                    WriteDebugWithTimestamp(string.Format(Resources.ErrorRetrievingAutosaveSetting, AzureRmProfileConstants.ProfileAutoSaveVariable, exception));
+                    WriteDebugWithTimestamp(string.Format(Resources.CouldNotRetrieveAutosaveSetting, AzureRmProfileConstants.ProfileAutoSaveVariable));
                 }
+            }
+            catch (Exception exception)
+            {
+                WriteDebugWithTimestamp(string.Format(Resources.ErrorRetrievingAutosaveSetting, AzureRmProfileConstants.ProfileAutoSaveVariable, exception));
             }
 
             return scope;
@@ -130,16 +125,25 @@ namespace Microsoft.Azure.Commands.Profile.Common
 #endif
         }
 
-        internal RuntimeDefinedParameter GetExistingContextNameParameter(string name)
+        internal  bool TryGetExistingContextNameParameter(string name, out RuntimeDefinedParameter runtimeParameter)
         {
-            return new RuntimeDefinedParameter(
-                name, typeof(string),
-                new Collection<Attribute>()
-                {
+            var result = false;
+            var profile = DefaultProfile as AzureRmProfile;
+            runtimeParameter = null;
+            if (profile != null && profile.Contexts != null && profile.Contexts.Any())
+            {
+                runtimeParameter =  new RuntimeDefinedParameter(
+                    name, typeof(string),
+                    new Collection<Attribute>()
+                    {
                     new ParameterAttribute { Position =0, Mandatory=true, HelpMessage="The name of the context" },
-                    new ValidateSetAttribute((DefaultProfile as AzureRmProfile).Contexts.Keys.ToArray())
-                }
-            );
+                    new ValidateSetAttribute(profile.Contexts.Keys.ToArray())
+                    }
+                );
+                result = true;
+            }
+
+            return result;
         }
     }
 }

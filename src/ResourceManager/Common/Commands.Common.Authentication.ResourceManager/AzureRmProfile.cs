@@ -15,7 +15,6 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common;
@@ -23,7 +22,6 @@ using System.Xml.Serialization;
 using Microsoft.Azure.Commands.ResourceManager.Common.Serialization;
 using System.Collections.Concurrent;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
-using System.Text;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Models
 {
@@ -58,7 +56,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             get
             {
                 IAzureContext result = null;
-                if (this.Contexts.ContainsKey(DefaultContextKey))
+                if (!string.IsNullOrEmpty(DefaultContextKey) && Contexts != null && Contexts.ContainsKey(DefaultContextKey))
                 {
                     result = this.Contexts[DefaultContextKey];
                 }
@@ -417,7 +415,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             bool result = Contexts.Remove(name);
             if (string.Equals(name, DefaultContextKey))
             {
-                DefaultContextKey = Contexts.Keys.FirstOrDefault();
+                DefaultContextKey = Contexts.Keys.FirstOrDefault() ?? "Default";
             }
 
             return result;

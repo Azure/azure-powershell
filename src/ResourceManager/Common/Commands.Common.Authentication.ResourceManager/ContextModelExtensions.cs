@@ -80,16 +80,19 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager
 
         public static void CopyFrom(this IAzureContext context, IAzureContext other)
         {
-            context.Account = new AzureAccount();
-            context.Account.CopyFrom(other.Account);
-            context.Environment = new AzureEnvironment();
-            context.Environment.CopyFrom(other.Environment);
-            context.Subscription = new AzureSubscription();
-            context.Subscription.CopyFrom(other.Subscription);
-            context.Tenant = new AzureTenant();
-            context.Tenant.CopyFrom(other.Tenant);
-            context.CopyPropertiesFrom(other);
-            context.TokenCache = AzureSession.Instance.TokenCache;
+            if (context != null && other != null)
+            {
+                context.Account = new AzureAccount();
+                context.Account.CopyFrom(other.Account);
+                context.Environment = new AzureEnvironment();
+                context.Environment.CopyFrom(other.Environment);
+                context.Subscription = new AzureSubscription();
+                context.Subscription.CopyFrom(other.Subscription);
+                context.Tenant = new AzureTenant();
+                context.Tenant.CopyFrom(other.Tenant);
+                context.CopyPropertiesFrom(other);
+                context.TokenCache = AzureSession.Instance.TokenCache;
+            }
         }
 
         public static IAzureEnvironment Merge(this IAzureEnvironment environment1, IAzureEnvironment environment2)

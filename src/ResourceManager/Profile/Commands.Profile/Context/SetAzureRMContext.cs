@@ -38,6 +38,8 @@ namespace Microsoft.Azure.Commands.Profile
         private const string ContextParameterSet = "Context";
         private const string SubscriptionObjectParameterSet = "SubscriptionObject";
         private const string TenantObjectParameterSet = "TenantObject";
+        private const string TenantNameParameterSet = "TenantNameOnly";
+
 
         [Parameter(ParameterSetName = ContextParameterSet, Mandatory = true, HelpMessage = "Context", ValueFromPipeline = true, Position = 0)]
         public PSAzureContext Context { get; set; }
@@ -50,11 +52,13 @@ namespace Microsoft.Azure.Commands.Profile
 
         [Parameter(ParameterSetName = SubscriptionParameterSet, Mandatory = false,
                     HelpMessage = "Tenant name or ID")]
+        [Parameter(ParameterSetName = TenantNameParameterSet, Mandatory = true,
+                    HelpMessage = "Tenant name or ID")]
         [Alias("Domain", "TenantId")]
         [ValidateNotNullOrEmpty]
         public string Tenant { get; set; }
 
-        [Parameter(ParameterSetName = SubscriptionParameterSet, Mandatory = false,
+        [Parameter(ParameterSetName = SubscriptionParameterSet, Mandatory = true,
                     HelpMessage = "Subscription Name or Id", Position = 0)]
         [Alias("SubscriptionId", "SubscriptionName")]
         [ValidateNotNullOrEmpty]
@@ -93,7 +97,7 @@ namespace Microsoft.Azure.Commands.Profile
                 {
                     throw new ArgumentException("You must supply a valid tenant object with a valid Id or a valid tenant id string. Please check the input tenant value and try again.");
                 }
-                if (ShouldProcess(string.Format(Resources.ChangingContextTenant, tenantId),
+                if (DefaultContext != null && ShouldProcess(string.Format(Resources.ChangingContextTenant, tenantId),
                     Resources.TenantChangeWarning, string.Empty))
                 {
                     SetContextWithOverwritePrompt((profile, client, name) =>
@@ -107,7 +111,7 @@ namespace Microsoft.Azure.Commands.Profile
             {
                 var tenantId = Tenant ?? TenantObject?.Directory;
                 var subscriptionId = Subscription ?? SubscriptionObject?.Id ?? SubscriptionObject?.Name;
-                if (!string.IsNullOrWhiteSpace(subscriptionId))
+                if (DefaultContext != null && !string.IsNullOrWhiteSpace(subscriptionId))
                 {
                     if (ShouldProcess(string.Format(Resources.ChangingContextSubscription, subscriptionId),
                            Resources.SubscriptionChangeWarning, string.Empty))
@@ -131,7 +135,8 @@ namespace Microsoft.Azure.Commands.Profile
             return ParameterSetName == TenantObjectParameterSet
                 || (ParameterSetName == SubscriptionParameterSet
                 && MyInvocation != null
-                && !MyInvocation.BoundParameters.ContainsKey(nameof(Subscription)));
+                && !MyInvocation.BoundParameters.ContainsKey(nameof(Subscription))
+                && MyInvocation.BoundParameters.ContainsKey(nameof(Tenant)));
         }
 
         private void CompleteContextProcessing(IProfileOperations profile)
@@ -149,27 +154,30 @@ namespace Microsoft.Azure.Commands.Profile
                                context.Subscription.State));
             }
 
-            if (MyInvocation.BoundParameters.ContainsKey(nameof(ExtendedProperty)))
+            if (context != null)
             {
-                foreach (var property in ExtendedProperty)
+                if (MyInvocation.BoundParameters.ContainsKey(nameof(ExtendedProperty)))
                 {
-                    if (ShouldProcess(string.Format(Resources.ContextNameTarget, Name ?? "default"),
-                        string.Format(Resources.SetPropertyAction, property.Key, property.Value)))
+                    foreach (var property in ExtendedProperty)
                     {
-                        context.SetProperty(property.Key, property.Value);
+                        if (ShouldProcess(string.Format(Resources.ContextNameTarget, Name ?? "default"),
+                            string.Format(Resources.SetPropertyAction, property.Key, property.Value)))
+                        {
+                            context.SetProperty(property.Key, property.Value);
+                        }
                     }
                 }
-            }
 
-            var psContext = new PSAzureContext(context);
-            string name = Name;
-            if (string.IsNullOrWhiteSpace(name))
-            {
-                profile.TryFindContext(context, out name);
-            }
+                var psContext = new PSAzureContext(context);
+                string name = Name;
+                if (string.IsNullOrWhiteSpace(name))
+                {
+                    profile.TryFindContext(context, out name);
+                }
 
-            psContext.Name = name;
-            WriteObject(psContext);
+                psContext.Name = name;
+                WriteObject(psContext);
+            }
         }
 
         bool CheckForExistingContext(AzureRmProfile profile, string name)

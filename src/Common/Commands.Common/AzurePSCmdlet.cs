@@ -363,36 +363,54 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         protected void WriteVerboseWithTimestamp(string message, params object[] args)
         {
-            WriteVerbose(string.Format("{0:T} - {1}", DateTime.Now, string.Format(message, args)));
+            if (CommandRuntime != null)
+            {
+                WriteVerbose(string.Format("{0:T} - {1}", DateTime.Now, string.Format(message, args)));
+            }
         }
 
         protected void WriteVerboseWithTimestamp(string message)
         {
-            WriteVerbose(string.Format("{0:T} - {1}", DateTime.Now, message));
+            if (CommandRuntime != null)
+            {
+                WriteVerbose(string.Format("{0:T} - {1}", DateTime.Now, message));
+            }
         }
 
         protected void WriteWarningWithTimestamp(string message)
         {
-            WriteWarning(string.Format("{0:T} - {1}", DateTime.Now, message));
+            if (CommandRuntime != null)
+            {
+                WriteWarning(string.Format("{0:T} - {1}", DateTime.Now, message));
+            }
         }
 
         protected void WriteDebugWithTimestamp(string message, params object[] args)
         {
-            WriteDebug(string.Format("{0:T} - {1}", DateTime.Now, string.Format(message, args)));
+            if (CommandRuntime != null)
+            {
+                WriteDebug(string.Format("{0:T} - {1}", DateTime.Now, string.Format(message, args)));
+            }
         }
 
         protected void WriteDebugWithTimestamp(string message)
         {
-            WriteDebug(string.Format("{0:T} - {1}", DateTime.Now, message));
+            if (CommandRuntime != null)
+            {
+                WriteDebug(string.Format("{0:T} - {1}", DateTime.Now, message));
+            }
         }
 
         protected void WriteErrorWithTimestamp(string message)
         {
-            WriteError(
+            if (CommandRuntime != null)
+            {
+                WriteError(
                 new ErrorRecord(new Exception(string.Format("{0:T} - {1}", DateTime.Now, message)),
                 string.Empty,
                 ErrorCategory.NotSpecified,
                 null));
+            }
         }
 
         /// <summary>
