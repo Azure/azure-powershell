@@ -58,6 +58,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
             }
 
             this.Endpoints = endpointList;
+            this.MigrationState = account.MigrationState;
         }
 
         public static PSStorageService Create(StorageManagementClient client,

@@ -817,10 +817,14 @@ function Test-MigrationAbortAzureStorageAccount
     Get-AzureStorageAccount -StorageAccountName $storageName;
 
     Move-AzureStorageAccount -Prepare -StorageAccountName $storageName;
-    Get-AzureStorageAccount -StorageAccountName $storageName;
+    $result = Get-AzureStorageAccount -StorageAccountName $storageName;
+    Assert-AreEqual "Prepared" $result.MigrationState;
+    $resultOut = $result | Out-String;
 
     Move-AzureStorageAccount -Abort -StorageAccountName $storageName;
-    Get-AzureStorageAccount -StorageAccountName $storageName;
+    $result = Get-AzureStorageAccount -StorageAccountName $storageName;
+    Assert-Null $result.MigrationState;
+    $resultOut = $result | Out-String;
 
     # Cleanup
     Remove-AzureStorageAccount -StorageAccountName $storageName;
@@ -1039,53 +1043,53 @@ function Run-InitiateMaintenanceTest
     # or 400 with error message like "User initiated maintenance on the virtual machine was
     # successfully completed". Both are expected reponses.
     # To continue script, $ErrorActionPreference should be set to 'SilentlyContinue'.
-	$tempErrorActionPreference = $ErrorActionPreference;
+    $tempErrorActionPreference = $ErrorActionPreference;
     $ErrorActionPreference = 'SilentlyContinue';
-	
-	# Setup
-	$location = "Central US EUAP";
-	$imgName = Get-DefaultImage $location;
+    
+    # Setup
+    $location = "Central US EUAP";
+    $imgName = Get-DefaultImage $location;
 
-	$storageName = 'pstest' + (getAssetName);
-	New-AzureStorageAccount -StorageAccountName $storageName -Location $location;
+    $storageName = 'pstest' + (getAssetName);
+    New-AzureStorageAccount -StorageAccountName $storageName -Location $location;
 
-	# Associate the new storage account with the current subscription
-	Set-CurrentStorageAccountName $storageName;
+    # Associate the new storage account with the current subscription
+    Set-CurrentStorageAccountName $storageName;
 
-	$vmName = "psvm01";
-	$svcName = 'pstest' + (Get-CloudServiceName);
-	$userName = "pstestuser";
-	$password = $PLACEHOLDER;
+    $vmName = "psvm01";
+    $svcName = 'pstest' + (Get-CloudServiceName);
+    $userName = "pstestuser";
+    $password = $PLACEHOLDER;
 
-	# Test
-	New-AzureService -ServiceName $svcName -Location $location;
+    # Test
+    New-AzureService -ServiceName $svcName -Location $location;
 
-	try
-	{
-		New-AzureQuickVM -Windows -ImageName $imgName -Name $vmName -ServiceName $svcName -AdminUsername $userName -Password $password;
+    try
+    {
+        New-AzureQuickVM -Windows -ImageName $imgName -Name $vmName -ServiceName $svcName -AdminUsername $userName -Password $password;
         #Start-Sleep -s 300; #Uncomment this line for record mode testing.
 
-		# Get VM
-		$vm = Get-AzureVM -ServiceName $svcName -Name $vmName;
-		Assert-NotNull $vm;
-		Assert-NotNull $vm.MaintenanceStatus;
+        # Get VM
+        $vm = Get-AzureVM -ServiceName $svcName -Name $vmName;
+        Assert-NotNull $vm;
+        Assert-NotNull $vm.MaintenanceStatus;
 
-		# Test Initiate Maintenance
-		$result = Restart-AzureVM -InitiateMaintenance -ServiceName $svcName -Name $vmName;
+        # Test Initiate Maintenance
+        $result = Restart-AzureVM -InitiateMaintenance -ServiceName $svcName -Name $vmName;
 
-		$vm = Get-AzureVM -ServiceName $svcName -Name $vmName
-		Assert-NotNull $vm.MaintenanceStatus; 
+        $vm = Get-AzureVM -ServiceName $svcName -Name $vmName
+        Assert-NotNull $vm.MaintenanceStatus; 
     }
     catch
     {
-	    Assert-True {$result.Result.Contains("User initiated maintenance on the Virtual Machine was successfully completed.")};
+        Assert-True {$result.Result.Contains("User initiated maintenance on the Virtual Machine was successfully completed.")};
         $vm = Get-AzureVM -ServiceName $svcName -Name $vmName
         Assert-NotNull $vm.MaintenanceStatus;
-	}
-	finally
-	{
-		# Cleanup
-		Cleanup-CloudService $srcName;
-		$ErrorActionPreference = $tempErrorActionPreference;
-	}
+    }
+    finally
+    {
+        # Cleanup
+        Cleanup-CloudService $srcName;
+        $ErrorActionPreference = $tempErrorActionPreference;
+    }
 }
