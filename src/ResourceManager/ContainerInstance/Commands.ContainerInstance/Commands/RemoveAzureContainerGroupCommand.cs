@@ -23,7 +23,8 @@ namespace Microsoft.Azure.Commands.ContainerInstance
     /// <summary>
     /// Remove-AzureRmContainerGroup
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, ContainerGroupNoun, SupportsShouldProcess = true), OutputType(typeof(PSContainerGroup))]
+    [Cmdlet(VerbsCommon.Remove, ContainerGroupNoun, SupportsShouldProcess = true, DefaultParameterSetName = RemoveContainerGroupByResourceGroupAndNameParamSet)]
+    [OutputType(typeof(PSContainerGroup))]
     public class RemoveAzureContainerGroupCommand : ContainerInstanceCmdletBase
     {
         protected const string RemoveContainerGroupByResourceGroupAndNameParamSet = "RemoveContainerGroupByResourceGroupAndNameParamSet";
@@ -34,7 +35,6 @@ namespace Microsoft.Azure.Commands.ContainerInstance
             Position = 0,
             Mandatory = true,
             ParameterSetName = RemoveContainerGroupByResourceGroupAndNameParamSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
@@ -43,7 +43,6 @@ namespace Microsoft.Azure.Commands.ContainerInstance
             Position = 1,
             Mandatory = true,
             ParameterSetName = RemoveContainerGroupByResourceGroupAndNameParamSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The container group name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
