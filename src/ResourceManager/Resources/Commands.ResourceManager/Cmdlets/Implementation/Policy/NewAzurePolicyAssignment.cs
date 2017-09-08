@@ -36,6 +36,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         protected const string PolicyParameterObjectParameterSetName = "Policy assignment with parameters via policy parameter object";
         protected const string PolicyParameterStringParameterSetName = "Policy assignment with parameters via policy parameter string";
+        protected const string PolicySetParameterObjectParameterSetName = "Policy assignment with parameters via policy set parameter object";
+        protected const string PolicySetParameterStringParameterSetName = "Policy assignment with parameters via policy set parameter string";
         protected const string ParameterlessPolicyParameterSetName = "Policy assignment without parameters";
 
         /// <summary>
@@ -53,6 +55,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public string Scope { get; set; }
 
         /// <summary>
+        /// Gets or sets the policy assignment not scopes parameter
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The not scopes for policy assignment.")]
+        [ValidateNotNullOrEmpty]
+        public string[] NotScopes { get; set; }
+
+        /// <summary>
         /// Gets or sets the policy assignment display name parameter
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The description for policy assignment.")]
@@ -62,14 +71,26 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the policy assignment policy definition parameter.
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The policy definition object.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The policy definition object.")]
         [Parameter(ParameterSetName = ParameterlessPolicyParameterSetName,
-            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The policy definition object.")]
+            Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The policy definition object.")]
         [Parameter(ParameterSetName = PolicyParameterObjectParameterSetName,
             Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The policy definition object.")]
         [Parameter(ParameterSetName = PolicyParameterStringParameterSetName,
             Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The policy definition object.")]
         public PSObject PolicyDefinition { get; set; }
+
+        /// <summary>
+        /// Gets or sets the policy assignment policy set definition parameter.
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The policy set definition object.")]
+        [Parameter(ParameterSetName = ParameterlessPolicyParameterSetName,
+            Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The policy set definition object.")]
+        [Parameter(ParameterSetName = PolicySetParameterObjectParameterSetName,
+            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The policy set definition object.")]
+        [Parameter(ParameterSetName = PolicySetParameterStringParameterSetName,
+            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The policy set definition object.")]
+        public PSObject PolicySetDefinition { get; set; }
 
         /// <summary>
         /// Gets or sets the policy assignment policy parameter object.
@@ -92,9 +113,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         protected override void OnProcessRecord()
         {
             base.OnProcessRecord();
-            if (this.PolicyDefinition.Properties["policyDefinitionId"] == null)
+            if (this.PolicyDefinition !=null && this.PolicyDefinition.Properties["policyDefinitionId"] == null)
             {
                 throw new PSInvalidOperationException("The supplied PolicyDefinition object is invalid.");
+            }
+            if (this.PolicySetDefinition != null && this.PolicySetDefinition.Properties["policySetDefinitionId"] == null)
+            {
+                throw new PSInvalidOperationException("The supplied PolicySetDefinition object is invalid.");
             }
             string resourceId = GetResourceId();
 
@@ -144,42 +169,57 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 Properties = new PolicyAssignmentProperties
                 {
                     DisplayName = this.DisplayName ?? null,
-                    PolicyDefinitionId = this.PolicyDefinition.Properties["policyDefinitionId"].Value.ToString(),
                     Scope = this.Scope,
+                    NotScopes = this.NotScopes ?? null,
                     Parameters = this.GetParameters()
                 }
             };
+
+            if(this.PolicyDefinition != null)
+            {
+                policyassignmentObject.Properties.PolicyDefinitionId = this.PolicyDefinition.Properties["policyDefinitionId"].Value.ToString();
+            }
+
+            if(this.PolicySetDefinition != null)
+            {
+                policyassignmentObject.Properties.PolicySetDefinitionId = this.PolicySetDefinition.Properties["policySetDefinitionId"].Value.ToString();
+            }
 
             return policyassignmentObject.ToJToken();
         }
 
         object IDynamicParameters.GetDynamicParameters()
         {
+            PSObject parameters = null;
             if (this.PolicyDefinition != null)
             {
-                var parameters = this.PolicyDefinition.GetPSObjectProperty("Properties.parameters") as PSObject;
-                if (parameters != null)
+                parameters = this.PolicyDefinition.GetPSObjectProperty("Properties.parameters") as PSObject;
+            }
+            else if(this.PolicySetDefinition != null)
+            {
+                parameters = this.PolicySetDefinition.GetPSObjectProperty("Properties.parameters") as PSObject;
+            }
+            if (parameters != null)
+            {
+                foreach (var param in parameters.Properties)
                 {
-                    foreach (var param in parameters.Properties)
+                    var type = (param.Value as PSObject).Properties["type"];
+                    var typeString = type != null ? type.Value.ToString() : string.Empty;
+                    var description = (param.Value as PSObject).GetPSObjectProperty("metadata.description");
+                    var helpString = description != null ? description.ToString() : string.Format("The {0} policy parameter.", param.Name);
+                    var dp = new RuntimeDefinedParameter
                     {
-                        var type = (param.Value as PSObject).Properties["type"];
-                        var typeString = type != null ? type.Value.ToString() : string.Empty;
-                        var description = (param.Value as PSObject).GetPSObjectProperty("metadata.description");
-                        var helpString = description != null ? description.ToString() : string.Format("The {0} policy parameter.", param.Name);
-                        var dp = new RuntimeDefinedParameter
-                        {
-                            Name = param.Name,
-                            ParameterType = typeString.Equals("array", StringComparison.OrdinalIgnoreCase) ? typeof(string[]) : typeof(string)
-                        };
-                        dp.Attributes.Add(new ParameterAttribute
-                        {
-                            ParameterSetName = ParameterlessPolicyParameterSetName,
-                            Mandatory = true,
-                            ValueFromPipelineByPropertyName = false,
-                            HelpMessage = helpString
-                        });
-                        this.dynamicParameters.Add(param.Name, dp);
-                    }
+                        Name = param.Name,
+                        ParameterType = typeString.Equals("array", StringComparison.OrdinalIgnoreCase) ? typeof(string[]) : typeof(string)
+                    };
+                    dp.Attributes.Add(new ParameterAttribute
+                    {
+                        ParameterSetName = ParameterlessPolicyParameterSetName,
+                        Mandatory = true,
+                        ValueFromPipelineByPropertyName = false,
+                        HelpMessage = helpString
+                    });
+                    this.dynamicParameters.Add(param.Name, dp);
                 }
             }
 
