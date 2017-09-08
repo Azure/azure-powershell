@@ -47,9 +47,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the policy assignment scope parameter.
         /// </summary>
-        [Parameter(ParameterSetName = SetAzurePolicyAssignmentCmdlet.PolicyAssignmentNameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The policy assignment name.")]
+        [Parameter(ParameterSetName = SetAzurePolicyAssignmentCmdlet.PolicyAssignmentNameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The policy assignment scope.")]
         [ValidateNotNullOrEmpty]
         public string Scope { get; set; }
+
+        /// <summary>
+        /// Gets or sets the policy assignment not scopes parameter.
+        /// </summary>
+        [Parameter(ParameterSetName = SetAzurePolicyAssignmentCmdlet.PolicyAssignmentNameParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The policy assignment not scopes.")]
+        [ValidateNotNullOrEmpty]
+        public string[] NotScopes { get; set; }
 
         /// <summary>
         /// Gets or sets the policy assignment id parameter
@@ -113,6 +120,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         ? resource.Properties["displayName"].ToString()
                         : null),
                     Scope = resource.Properties["scope"].ToString(),
+                    NotScopes = this.NotScopes != null ? this.NotScopes : resource.Properties["notScopes"].ToString().Split(','),
                     PolicyDefinitionId = resource.Properties["policyDefinitionId"].ToString()
                 }
             };

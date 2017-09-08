@@ -29,6 +29,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy
         public string Scope { get; set; }
 
         /// <summary>
+        /// The not scopes array.
+        /// </summary>
+        [JsonProperty(Required = Required.Default)]
+        public string[] NotScopes { get; set; }
+
+        /// <summary>
         /// The display name.
         /// </summary>
         [JsonProperty(Required = Required.Default)]
@@ -37,8 +43,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy
         /// <summary>
         /// The policy definition id.
         /// </summary>
-        [JsonProperty(Required = Required.Always)]
+        [JsonProperty(Required = Required.Default)]
         public string PolicyDefinitionId { get; set; }
+
+        /// <summary>
+        /// The policy set definition id.
+        /// </summary>
+        [JsonProperty(Required = Required.Default)]
+        public string PolicySetDefinitionId { get; set; }
 
         /// <summary>
         /// The parameter values.
