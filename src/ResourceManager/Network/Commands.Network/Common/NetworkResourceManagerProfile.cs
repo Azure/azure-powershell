@@ -98,10 +98,12 @@ namespace Microsoft.Azure.Commands.Network
                 // PublicIpAddress
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSPublicIpAddress, MNM.PublicIPAddress>();
+                cfg.CreateMap<CNM.PSPublicIpAddressSku, MNM.PublicIPAddressSku>();
                 cfg.CreateMap<CNM.PSPublicIpAddressDnsSettings, MNM.PublicIPAddressDnsSettings>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.PublicIPAddress, CNM.PSPublicIpAddress>();
+                cfg.CreateMap<MNM.PublicIPAddressSku, CNM.PSPublicIpAddressSku>();
                 cfg.CreateMap<MNM.PublicIPAddressDnsSettings, CNM.PSPublicIpAddressDnsSettings>();
 
                 // NetworkInterface
@@ -215,9 +217,11 @@ namespace Microsoft.Azure.Commands.Network
                 // LoadBalancer
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSLoadBalancer, MNM.LoadBalancer>();
+                cfg.CreateMap<CNM.PSLoadBalancerSku, MNM.LoadBalancerSku>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.LoadBalancer, CNM.PSLoadBalancer>();
+                cfg.CreateMap<MNM.LoadBalancerSku, CNM.PSLoadBalancerSku>();
 
                 // FrontendIpConfiguration
                 // CNM to MNM
