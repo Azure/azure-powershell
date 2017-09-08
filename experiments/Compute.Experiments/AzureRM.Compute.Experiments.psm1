@@ -4,17 +4,54 @@ function New-AzVm {
         [Parameter()][PSCredential] $Credential,
         [Parameter()][string] $Name = "VM",
         [Parameter()][string] $ImageName = "Win2012R2Datacenter",
-        [Parameter()][string] $ResourceGroupName = $Name + "ResourceGroup",
+        [Parameter()][string] $ResourceGroupName,
         [Parameter()][string] $Location = "eastus",
-        [Parameter()][string] $VirtualNetworkName = $Name + "VirtualNetwork",
-        [Parameter()][string] $PublicIpAddressName = $Name + "PublicIpAddress",
-        [Parameter()][string] $SecurityGroupName = $Name + "SecurityGroup",
-        [Parameter()][string] $NetworkInterfaceName = $Name + "NetworkInterface"
+        [Parameter()][string] $VirtualNetworkName,
+        [Parameter()][string] $PublicIpAddressName,
+        [Parameter()][string] $SecurityGroupName,
+        [Parameter()][string] $NetworkInterfaceName
     )
 
     PROCESS {
+        $rgi = [ResourceGroup]::new($ResourceGroupName)
+        $nii = [NetworkInterface]::new(
+            $NetworkInterfaceName,
+            [VirtualNetwork]::new($VirtualNetworkName),
+            [PublicIpAddress]::new($PublicIpAddressName),
+            [SecurityGroup]::new($SecurityGroupName)
+        );
+        $vmi = [VirtualMachine]::new($null, $nii, $rgi);
+
+        $locationi = [Location]::new();
+        if (-not $Location) {
+            $vmi.UpdateLocation($locationi);
+            if (-not $locationi.Value) {
+                $locationi.Value = "eastus";
+            }
+        } else {
+            $locationi.Value = $Location;
+        }
+
+        # Resource Group
+        $resourceGroup = $rgi.GetOrCreate($Name + "ResourceGroup", $locationi.Value);
+
         if (-not $Credential) {
             $Credential = Get-Credential
+        }
+        if (-not $ResourceGroupName) {
+            $ResourceGroupName = $Name + "ResourceGroup";
+        }
+        if (-not $VirtualNetworkName) {
+            $VirtualNetworkName = $Name + "VirtualNetwork";
+        }
+        if (-not $PublicIpAddressName) {
+            $PublicIpAddressName = $Name + "PublicIpAddress";
+        }
+        if (-not $SecurityGroupName) {
+            $SecurityGroupName = $Name + "SecurityGroup";
+        }
+        if (-not $NetworkInterfaceName) {
+            $NetworkInterfaceName = $Name + "NetworkInterface"
         }
 
         # Find VM Image
@@ -24,7 +61,7 @@ function New-AzVm {
         }
 
         # Resource Group
-        $resourceGroup = Set-ResourceGroup -Name $ResourceGroupName -Location $Location
+        # $resourceGroup = Set-ResourceGroup -Name $ResourceGroupName -Location $Location
 
         # Virtual Network
         $virtualNetworkAddressPrefix = "192.168.0.0/16"
@@ -139,83 +176,133 @@ function Set-ResourceGroup {
     }
 }
 
-class Common {
-    [string] $Location;
-    [string] $ResourceGroupName;
+class Location {
+    [int] $Priority;
+    [string] $Value;
 
-    [void] Update([string] $location, [string] $resourceGroupName) {
-        if (-not $this.Location) {
-            $this.Location = $location
-        }
-        if (-not $this.ResourceGroupName) {
-            $this.ResourceGroupName = $resourceGroupName
-        }
+    Location() {
+        $this.Priority = 0;
+        $this.Value = $null;
     }
 }
 
-class VirtualNetwork {
+class AzureObject {
     [string] $Name;
+    [AzureObject[]] $Children;
+    [int] $Priority;
 
-    [bool] UpdateCommon([Common] $common) {
-        if ($this.Name) {
-            $virtualNetwork = Get-AzureRMVirtualNetwork `
-                | Where-Object { $_.Name -eq $Name } `
-                | Select-Object -First 1 -Wait;
-            $common.Update($virtualNetwork.Location, $virtualNetwork.ResourceGroupName)
-            return $true
+    AzureObject([string] $name, [AzureObject[]] $children) {
+        $this.Name = $name;
+        $this.Children = $children;
+        $this.Priority = 0;
+        foreach ($child in $this.Children) {
+            if ($this.Priority -lt $child.Priority) {
+                $this.Priority = $child.Priority;
+            }
         }
-        return $false
+        $this.Priority++;
     }
-}
 
-class PublicIpAddress {
-    [string] $Name;
+    # This function should be called only when $this.Name is not $null.
+    [object] GetInfo() {
+        return $null;
+    }
 
-    [bool] UpdateCommon([Common] $common) {
-        if ($this.Name) {
-            $virtualNetwork = Get-AzureRMPublicIpAddress `
-                | Where-Object { $_.Name -eq $Name } `
-                | Select-Object -First 1 -Wait;
-            $common.Update($virtualNetwork.Location, $virtualNetwork.ResourceGroupName)
-            return $true
+    [object] Create([string] $name, [string] $location) {
+        return $null;
+    }
+
+    [void] UpdateLocation([Location] $location) {
+        if ($this.Priority -gt $location.Priority) {
+            if ($this.Name) {
+                $location.Value = $this.GetInfo().Location;
+                $location.Priority = $this.Priority;
+            } else {
+                foreach ($child in $this.Children) {
+                    $child.UpdateLocation($location);
+                }
+            }
         }
-        return $false
     }
-}
 
-class SecurityGroup {
-    [string] $Name;
-
-    [bool] UpdateCommon([Common] $common) {
+    [object] GetOrCreate([string] $name, [string] $location) {
         if ($this.Name) {
-            $virtualNetwork = Get-AzureRMSecurityGroup `
-                | Where-Object { $_.Name -eq $Name } `
-                | Select-Object -First 1 -Wait;
-            $common.Update($virtualNetwork.Location, $virtualNetwork.ResourceGroupName);
-            return $true;
-        }
-        return $false;
-    }
-}
-
-class NetworkInterface {
-    [string] $Name;
-    [VirtualNetwork] $VirtualNetwork;
-    [PublicIpAddress] $PublicIpAddress;
-    [SecurityGroup] $SecurityGroupName;
-
-    [bool] UpdateCommon([Common] $common) {
-        if ($this.Name) {
-            $networkInterface = Get-AzureRMNetworkInterface `
-                | Where-Object { $_.Name -eq $Name } `
-                | Select-Object -First 1 -Wait;
-            $common.Update($networkInterface.Location, $networkInterface.ResourceGroupName);
-            return $true;
+            return $this.GetInfo();
         } else {
-            return $this.VirtualNetwork.UpdateCommon($common) `
-                -or $this.PublicIpAddress.UpdateCommon($common) `
-                -or $this.SecurityGroup.UpdateCommon($common);
+            $result = $this.Create($name, $location);
+            $this.Name = $name;
+            return $result;
         }
+    }
+}
+
+class ResourceGroup: AzureObject {
+    ResourceGroup([string] $name): base($name, @()) {
+    }
+
+    [object] GetInfo() {
+        return Get-AzureRmResourceGroup -Name $this.Name;
+    }
+
+    [object] Create([string] $name, [string] $location) {
+        return New-AzureRmResourceGroup -Name $name -Location $location;
+    }
+}
+
+class Resource1: AzureObject {
+    Resource1([string] $name): base($name, @([ResourceGroup]::new($null))) {
+    }
+}
+
+class VirtualNetwork: Resource1 {
+    VirtualNetwork([string] $name): base($name) {
+    }
+
+    [object] GetInfo() {
+        return Get-AzureRmVirtualNetwork -Name $this.Name;
+    }
+}
+
+class PublicIpAddress: Resource1 {
+    PublicIpAddress([string] $name): base($name) {
+    }
+
+    [object] GetInfo() {
+        return Get-AzureRMPublicIpAddress -Name $this.Name;
+    }
+}
+
+class SecurityGroup: Resource1 {
+    SecurityGroup([string] $name): base($name) {
+    }
+
+    [object] GetInfo() {
+        return Get-AzureRMSecurityGroup -Name $this.Name;
+    }
+}
+
+class NetworkInterface: AzureObject {
+    NetworkInterface(
+        [string] $name,
+        [VirtualNetwork] $virtualNetwork,
+        [PublicIpAddress] $publicIpAddress,
+        [SecurityGroup] $securityGroup
+    ): base($name, @($virtualNetwork, $publicIpAddress, $securityGroup)) {
+    }
+
+    [object] GetInfo() {
+        return Get-AzureRMNetworkInterface -Name $this.Name;
+    }
+}
+
+class VirtualMachine: AzureObject {
+    VirtualMachine(
+        [string] $name, [NetworkInterface] $networkInterface, [ResourceGroup] $resourceGroup
+    ): base($name, @($networkInterface, $resourceGroup)) {
+    }
+
+    [object] GetInfo() {
+        return Get-AzureRMVirtualMachine -Name $this.Name;
     }
 }
 
