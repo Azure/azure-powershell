@@ -42,6 +42,9 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public const string VMDataDiskLun = "The virtual machine data disk's Lun.";
         public const string VMDataDiskCreateOption = "The virtual machine data disk's create option.";
 
+        public const string VMManagedDiskId = "The virtual machine managed disk's Id.";
+        public const string VMManagedDiskAccountType = "The virtual machine managed disk's account type.";
+
         public const string VMNetworkInterfaceName = "The virtual machine network interface's name.";
         public const string VMNetworkInterfaceID = "The virtual machine network interface's ID.";
         public const string VMPublicIPAddressName = "The virtual machine public IP address's name.";
