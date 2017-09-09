@@ -128,14 +128,14 @@ if (($scope -eq 'All') -or ($scope -eq 'AzureRM')) {
     # Update AzureRM module    
     if ($Profile -eq "Stack")
     {
-        $modulePath += "$PSScriptRoot\..\src\StackAdmin\AzureRM"
+        $modulePath = "$PSScriptRoot\..\src\StackAdmin\AzureRM"
         Write-Host "Updating AzureRM module from $modulePath"
         Create-ModulePsm1 -ModulePath $modulePath -TemplatePath $templateLocation
         Write-Host "Updated AzureRM module"
-        $modulePath += "$PSScriptRoot\..\src\StackAdmin\AzureStack"
+        $modulePath = "$PSScriptRoot\..\src\StackAdmin\AzureStack"
         Write-Host "Updating AzureRM module from $modulePath"
         Create-ModulePsm1 -ModulePath $modulePath -TemplatePath $templateLocation
-        Write-Host "Updated Azure module"
+        Write-Host "Updated AzureStack module"
     }
     else {
         $modulePath = "$PSScriptRoot\AzureRM"
