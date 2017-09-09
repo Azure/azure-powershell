@@ -33,7 +33,7 @@ function New-AzVm {
         }
 
         # Resource Group
-        $resourceGroup = $rgi.GetOrCreate($Name + "ResourceGroup", $locationi.Value);
+        $resourceGroup = $rgi.GetOrCreate($Name + "ResourceGroup", $locationi.Value, $null);
 
         if (-not $Credential) {
             $Credential = Get-Credential
@@ -208,7 +208,7 @@ class AzureObject {
         return $null;
     }
 
-    [object] Create([string] $name, [string] $location) {
+    [object] Create([string] $name, [string] $location, [string] $resourceGroupName) {
         return $null;
     }
 
@@ -225,11 +225,11 @@ class AzureObject {
         }
     }
 
-    [object] GetOrCreate([string] $name, [string] $location) {
+    [object] GetOrCreate([string] $name, [string] $location, [string] $resourceGroupName) {
         if ($this.Name) {
             return $this.GetInfo();
         } else {
-            $result = $this.Create($name, $location);
+            $result = $this.Create($name, $location, $resourceGroupName);
             $this.Name = $name;
             return $result;
         }
@@ -244,7 +244,7 @@ class ResourceGroup: AzureObject {
         return Get-AzureRmResourceGroup -Name $this.Name;
     }
 
-    [object] Create([string] $name, [string] $location) {
+    [object] Create([string] $name, [string] $location, [string] $resourceGroupName) {
         return New-AzureRmResourceGroup -Name $name -Location $location;
     }
 }
@@ -260,6 +260,18 @@ class VirtualNetwork: Resource1 {
 
     [object] GetInfo() {
         return Get-AzureRmVirtualNetwork -Name $this.Name;
+    }
+
+    [object] Create([string] $name, [string] $location, [string] $resourceGroupName) {
+        $subnetConfig = New-AzureRmVirtualNetworkSubnetConfig `
+            -Name "Subnet" `
+            -AddressPrefix "192.168.1.0/24"
+        return New-AzureRmVirtualNetwork `
+            -ResourceGroupName $resourceGroupName `
+            -Location $location `
+            -Name $name `
+            -AddressPrefix "192.168.0.0/16" `
+            -Subnet $subnetConfig
     }
 }
 
