@@ -140,6 +140,9 @@ Gets the VMImage publishers.
 ### [Get-AzureRmVMImageSku](Get-AzureRmVMImageSku.md)
 Gets VMImage SKUs.
 
+### [Get-AzureRmVMRunCommandDocument](Get-AzureRmVMRunCommandDocument.md)
+Get run command document.
+
 ### [Get-AzureRmVMSize](Get-AzureRmVMSize.md)
 Gets available virtual machine sizes.
 
@@ -163,6 +166,9 @@ Grants an access to a disk.
 
 ### [Grant-AzureRmSnapshotAccess](Grant-AzureRmSnapshotAccess.md)
 Grants an access to a snapshot.
+
+### [Invoke-AzureRmVMRunCommand](Invoke-AzureRmVMRunCommand.md)
+Run command on the VM.
 
 ### [New-AzureRmAvailabilitySet](New-AzureRmAvailabilitySet.md)
 Creates an Azure availability set.
