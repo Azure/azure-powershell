@@ -13,10 +13,11 @@ function New-AzVm {
     )
 
     PROCESS {
-        $rgi = [ResourceGroup]::new($ResourceGroupName)
+        $rgi = [ResourceGroup]::new($ResourceGroupName);
+        $vni = [VirtualNetwork]::new($VirtualNetworkName);
         $nii = [NetworkInterface]::new(
             $NetworkInterfaceName,
-            [VirtualNetwork]::new($VirtualNetworkName),
+            $vni,
             [PublicIpAddress]::new($PublicIpAddressName),
             [SecurityGroup]::new($SecurityGroupName)
         );
@@ -34,6 +35,10 @@ function New-AzVm {
 
         # Resource Group
         $resourceGroup = $rgi.GetOrCreate($Name + "ResourceGroup", $locationi.Value, $null);
+        $virtualNetwork = $vni.GetOrCreate(
+            $Name + "VirtualNetwork",
+            $locationi.Value,
+            $resourceGroup.ResourceGroupName);
 
         if (-not $Credential) {
             $Credential = Get-Credential
@@ -64,6 +69,7 @@ function New-AzVm {
         # $resourceGroup = Set-ResourceGroup -Name $ResourceGroupName -Location $Location
 
         # Virtual Network
+        <#
         $virtualNetworkAddressPrefix = "192.168.0.0/16"
         $subnet = @{ Name = $Name + "Subnet"; AddressPrefix = "192.168.1.0/24" }
         $subnetConfig = New-AzureRmVirtualNetworkSubnetConfig `
@@ -75,6 +81,7 @@ function New-AzVm {
             -Name $VirtualNetworkName `
             -AddressPrefix $virtualNetworkAddressPrefix `
             -Subnet $subnetConfig
+            #>
 
         # Piblic IP
         $publicIpAddress = New-AzureRmPublicIpAddress `
