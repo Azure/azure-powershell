@@ -183,6 +183,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutosaveTests.cs" />
     <Compile Include="AzureRmProfileTests.cs" />
     <Compile Include="ClientFactoryTests.cs" />
     <Compile Include="CommonDataCmdletTests.cs" />
@@ -195,6 +196,7 @@
     <Compile Include="ProtectedFileProviderTests.cs" />
     <Compile Include="PSSerializationTests.cs" />
     <Compile Include="RPRegistrationDelegatingHandlerTests.cs" />
+    <Compile Include="SessionInitializationTests.cs" />
     <Compile Include="SubscriptionCmdletTests.cs" />
     <Compile Include="SendFeedbackTests.cs" />
     <Compile Include="TelemetryTests.cs" />

@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Profile
                     });
                 });
             }
-            else
+            else if (AzureContext != null)
             {
                 ConfirmAction(Resources.ProcessImportContextFromObject, Resources.ImportContextTarget, () =>
                 {
@@ -84,24 +84,27 @@ namespace Microsoft.Azure.Commands.Profile
 
             if (executionComplete)
             {
-                if (AzureRmProfileProvider.Instance.Profile == null)
+                var profile = DefaultProfile as AzureRmProfile;
+                if (profile == null)
                 {
-                    WriteExceptionError( new ArgumentException(Resources.AzureProfileMustNotBeNull));
+                    WriteExceptionError(new ArgumentException(Resources.AzureProfileMustNotBeNull));
                 }
-
-                if (AzureRmProfileProvider.Instance.Profile.DefaultContext != null &&
-                    AzureRmProfileProvider.Instance.Profile.DefaultContext.Subscription != null &&
-                    AzureRmProfileProvider.Instance.Profile.DefaultContext.Subscription.State != null &&
-                    !AzureRmProfileProvider.Instance.Profile.DefaultContext.Subscription.State.Equals(
-                    "Enabled",
-                    StringComparison.OrdinalIgnoreCase))
+                else
                 {
-                    WriteWarning(string.Format(
-                                   Microsoft.Azure.Commands.Profile.Properties.Resources.SelectedSubscriptionNotActive,
-                                   AzureRmProfileProvider.Instance.Profile.DefaultContext.Subscription.State));
-                }
+                    if (profile.DefaultContext != null &&
+                        profile.DefaultContext.Subscription != null &&
+                        profile.DefaultContext.Subscription.State != null &&
+                        !profile.DefaultContext.Subscription.State.Equals(
+                        "Enabled",
+                        StringComparison.OrdinalIgnoreCase))
+                    {
+                        WriteWarning(string.Format(
+                                       Microsoft.Azure.Commands.Profile.Properties.Resources.SelectedSubscriptionNotActive,
+                                       profile.DefaultContext.Subscription.State));
+                    }
 
-                WriteObject((PSAzureProfile)AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>());
+                    WriteObject((PSAzureProfile)profile);
+                }
             }
         }
     }

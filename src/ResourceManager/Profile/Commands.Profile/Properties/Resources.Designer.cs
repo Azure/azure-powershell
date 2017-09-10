@@ -142,6 +142,51 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Remove all accounts and subscriptions for the current process..
+        /// </summary>
+        internal static string ClearContextProcessMessage {
+            get {
+                return ResourceManager.GetString("ClearContextProcessMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current process context.
+        /// </summary>
+        internal static string ClearContextProcessTarget {
+            get {
+                return ResourceManager.GetString("ClearContextProcessTarget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove all accounts and subscriptions in all sessions for the current user?.
+        /// </summary>
+        internal static string ClearContextUserContinueMessage {
+            get {
+                return ResourceManager.GetString("ClearContextUserContinueMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove all accounts and subscriptions for all sessiosn started by the current user.
+        /// </summary>
+        internal static string ClearContextUserProcessMessage {
+            get {
+                return ResourceManager.GetString("ClearContextUserProcessMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All contexts for the current user.
+        /// </summary>
+        internal static string ClearContextUserTarget {
+            get {
+                return ResourceManager.GetString("ClearContextUserTarget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Could not authenticate your user account {0} with the common tenant. Please login again using Login-AzureRmAccount..
         /// </summary>
         internal static string CommonTenantAuthFailed {

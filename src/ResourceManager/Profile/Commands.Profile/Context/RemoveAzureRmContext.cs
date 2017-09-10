@@ -64,7 +64,9 @@ namespace Microsoft.Azure.Commands.Profile.Context
                                     var removedContext = profile.Contexts[name];
                                     if (client.TryRemoveContext(name) && PassThrough.IsPresent)
                                     {
-                                        WriteObject(new PSAzureContext(removedContext));
+                                        var outContext = new PSAzureContext(removedContext);
+                                        outContext.Name = name;
+                                        WriteObject(outContext);
                                     }
                                 }
                             });

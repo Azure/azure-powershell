@@ -559,7 +559,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
 
             foreach (var context in other.Contexts)
             {
-                TryAddContext(context.Key, context.Value);
+                TrySetContext(context.Key, context.Value);
             }
 
             this.CopyPropertiesFrom(other);

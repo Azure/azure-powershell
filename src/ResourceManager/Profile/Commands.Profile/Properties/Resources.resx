@@ -342,4 +342,19 @@
   <data name="InvalidEndpointProvided" xml:space="preserve">
     <value>Endpoint provided is invalid. Please check the value and retry again with the correct value.</value>
   </data>
+  <data name="ClearContextProcessMessage" xml:space="preserve">
+    <value>Remove all accounts and subscriptions for the current process.</value>
+  </data>
+  <data name="ClearContextProcessTarget" xml:space="preserve">
+    <value>Current process context</value>
+  </data>
+  <data name="ClearContextUserContinueMessage" xml:space="preserve">
+    <value>Remove all accounts and subscriptions in all sessions for the current user?</value>
+  </data>
+  <data name="ClearContextUserProcessMessage" xml:space="preserve">
+    <value>Remove all accounts and subscriptions for all sessiosn started by the current user</value>
+  </data>
+  <data name="ClearContextUserTarget" xml:space="preserve">
+    <value>All contexts for the current user</value>
+  </data>
 </root>

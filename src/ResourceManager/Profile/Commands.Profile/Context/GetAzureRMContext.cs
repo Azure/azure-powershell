@@ -60,7 +60,8 @@ namespace Microsoft.Azure.Commands.Profile
                         ErrorCategory.AuthenticationError,
                         null));
             }
-            else if (ListAvailable.IsPresent)
+
+            if (ListAvailable.IsPresent)
             {
                 var profile = DefaultProfile as AzureRmProfile;
                 if (profile != null && profile.Contexts != null)

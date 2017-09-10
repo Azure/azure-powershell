@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Profile
     /// <summary>
     /// Cmdlet to change current Azure context.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmContext", DefaultParameterSetName = SubscriptionParameterSet,
+    [Cmdlet(VerbsCommon.Set, "AzureRmContext", DefaultParameterSetName = ContextParameterSet,
         SupportsShouldProcess = true)]
     [Alias("Select-AzureRmSubscription")]
     [OutputType(typeof(PSAzureContext))]
@@ -133,10 +133,7 @@ namespace Microsoft.Azure.Commands.Profile
         bool TenantOnlyParameters()
         {
             return ParameterSetName == TenantObjectParameterSet
-                || (ParameterSetName == SubscriptionParameterSet
-                && MyInvocation != null
-                && !MyInvocation.BoundParameters.ContainsKey(nameof(Subscription))
-                && MyInvocation.BoundParameters.ContainsKey(nameof(Tenant)));
+                || ParameterSetName == TenantNameParameterSet;
         }
 
         private void CompleteContextProcessing(IProfileOperations profile)

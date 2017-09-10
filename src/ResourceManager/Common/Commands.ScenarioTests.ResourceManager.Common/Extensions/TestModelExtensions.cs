@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.Extensions
         /// <returns>True if the two caches contain the same data, otherwise false</returns>
         public static bool IsEqual(this IAzureTokenCache cache, IAzureTokenCache other)
         {
-            bool result = cache == null && other == null;
+            bool result = (cache == null && other == null) || (cache != null && cache.CacheData == null && other != null && other.CacheData == null);
             if (cache != null && other != null && cache.CacheData != null && other.CacheData != null && cache.CacheData.Length == other.CacheData.Length)
             {
                 result = true;

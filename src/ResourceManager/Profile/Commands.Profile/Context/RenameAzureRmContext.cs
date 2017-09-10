@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Profile.Context
                 var sourceName = MyInvocation.BoundParameters[SourceParameterName] as string;
                 var targetName = MyInvocation.BoundParameters[TargetParameterName] as string;
                 var defaultProfile = DefaultProfile as AzureRmProfile;
-                if (!string.IsNullOrWhiteSpace(sourceName) && !string.IsNullOrWhiteSpace(targetName) && defaultProfile != null)
+                if (!string.IsNullOrWhiteSpace(sourceName) && !string.IsNullOrWhiteSpace(targetName) && defaultProfile != null && !string.Equals(sourceName, targetName, StringComparison.OrdinalIgnoreCase))
                 {
                     ConfirmAction(
                         Force.IsPresent, 
@@ -71,12 +71,17 @@ namespace Microsoft.Azure.Commands.Profile.Context
 
                             ModifyContext((profile, client) =>
                             {
-                                if (profile.Contexts.ContainsKey(sourceName))
+                                var defaultContextName = profile.DefaultContextKey;
+                                if (profile.Contexts.ContainsKey(sourceName) && (!profile.Contexts.ContainsKey(targetName) || client.TryRemoveContext(targetName)))
                                 {
-                                    var sourceContext = profile.Contexts[sourceName];
-                                    if (client.TryRenameContext(sourceName, targetName) && PassThrough.IsPresent)
+                                    if (client.TryRenameContext(sourceName, targetName) 
+                                        && (!string.Equals(targetName, defaultContextName, StringComparison.OrdinalIgnoreCase) 
+                                            || client.TrySetDefaultContext(targetName)) 
+                                        && PassThrough.IsPresent)
                                     {
-                                        WriteObject(new PSAzureContext(profile.DefaultContext));
+                                        var outContext = new PSAzureContext(profile.Contexts[targetName]);
+                                        outContext.Name = targetName;
+                                        WriteObject(outContext);
                                     }
                                 }
                             });

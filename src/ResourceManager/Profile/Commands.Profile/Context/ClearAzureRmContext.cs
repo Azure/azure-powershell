@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Profile.Common;
+using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using System.IO;
 using System.Management.Automation;
@@ -39,28 +40,37 @@ namespace Microsoft.Azure.Commands.Profile.Context
            switch(Scope)
             {
                 case ContextModificationScope.Process:
-                    ConfirmAction("Remove all accounts and subscriptions for the current process", "Current process context", 
+                    ConfirmAction(Resources.ClearContextProcessMessage, Resources.ClearContextProcessTarget, 
                         () => 
                         {
                             bool result = false;
-                            if (AzureRmProfileProvider.Instance != null)
+                            if (AzureSession.Instance.TokenCache != null)
                             {
-                                AzureRmProfileProvider.Instance.ResetDefaultProfile();
+                                AzureSession.Instance.TokenCache.Clear();
+                            }
+                            if (DefaultProfile != null)
+                            {
+                                DefaultProfile.Clear();
                                 result = true;
                             }
-                            else if (PassThrough.IsPresent)
+                            if (PassThrough.IsPresent)
                             {
                                 WriteObject(result);
                             }
                         });
                     break;
                 case ContextModificationScope.CurrentUser:
-                    ConfirmAction(Force.IsPresent, "Remove all accounts and subscriptiosn in all sessions for the current user.", "Remove all accounts and subscriptions for all sessiosn started by the current user", "All contexts for the current user", 
+                    ConfirmAction(Force.IsPresent, Resources.ClearContextUserContinueMessage, 
+                        Resources.ClearContextUserProcessMessage, Resources.ClearContextUserTarget, 
                         () => 
                         {
                             bool result = false;
                             var session = AzureSession.Instance;
                             var contextFilePath = Path.Combine(session.ARMProfileDirectory, session.ARMProfileFile);
+                            if (session.TokenCache != null)
+                            {
+                                session.TokenCache.Clear();
+                            }
                             if (session.DataStore.FileExists(contextFilePath))
                             {
                                 session.DataStore.DeleteFile(contextFilePath);

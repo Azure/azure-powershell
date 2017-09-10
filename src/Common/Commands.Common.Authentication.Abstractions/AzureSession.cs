@@ -17,6 +17,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Diagnostics;
+using System.Collections.Concurrent;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
@@ -28,10 +29,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         static IAzureSession _instance;
         static bool _initialized = false;
         static ReaderWriterLockSlim sessionLock = new ReaderWriterLockSlim(LockRecursionPolicy.SupportsRecursion);
+        private IDictionary<ComponentKey, object> _componentRegistry = new ConcurrentDictionary<ComponentKey, object>(new ComponentKeyComparer());
 
-        private ReaderWriterLockSlim _registryLock = new ReaderWriterLockSlim(LockRecursionPolicy.SupportsRecursion);
-        private IDictionary<ComponentKey, object> _componentRegistry = new Dictionary<ComponentKey, object>(new ComponentKeyComparer());
-        
         /// <summary>
         /// Gets or sets Azure client factory.
         /// </summary>
@@ -151,10 +150,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 sessionLock.EnterWriteLock();
                 try
                 {
-                    if (!_initialized || overwrite)
+                    if (overwrite || !_initialized)
                     {
-                        _initialized = true;
                         _instance = instanceCreator();
+                        _initialized = true;
                     }
                 }
                 finally
@@ -207,33 +206,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         public bool TryGetComponent<T>(string componentName, out T component) where T : class
         {
-            try
+            var key = new ComponentKey(componentName, typeof(T));
+            component = null;
+            if (_componentRegistry.ContainsKey(key))
             {
-                _registryLock.EnterReadLock();
-                try
-                {
-                    var key = new ComponentKey(componentName, typeof(T));
-                    component = null;
-                    if (_componentRegistry.ContainsKey(key))
-                    {
-                        component = _componentRegistry[key] as T;
-                    }
+                component = _componentRegistry[key] as T;
+            }
 
-                    return component != null;
-                }
-                finally
-                {
-                    _registryLock.ExitReadLock();
-                }
-            }
-            catch (LockRecursionException lockException)
-            {
-                throw new InvalidOperationException(Abstractions.Properties.Resources.RegistryLockReadRecursion, lockException);
-            }
-            catch (ObjectDisposedException disposedException)
-            {
-                throw new InvalidOperationException(Abstractions.Properties.Resources.RegistryLockReadDisposed, disposedException);
-            }
+            return component != null;
         }
 
         public void RegisterComponent<T>(string componentName, Func<T> componentInitializer) where T : class
@@ -274,26 +254,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         void ChangeRegistry(Action changeAction)
         {
-            try
-            {
-                _registryLock.EnterWriteLock();
-                try
-                {
                     changeAction();
-                }
-                finally
-                {
-                    _registryLock.ExitWriteLock();
-                }
-            }
-            catch (LockRecursionException lockException)
-            {
-                throw new InvalidOperationException(Abstractions.Properties.Resources.RegistryLockWriteRecursion, lockException);
-            }
-            catch (ObjectDisposedException disposedException)
-            {
-                throw new InvalidOperationException(Abstractions.Properties.Resources.RegistryLockWriteDisposed, disposedException);
-            }
         }
 
         private class ComponentKey : IComparable<ComponentKey>, IEquatable<ComponentKey>
@@ -337,7 +298,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
             public int CompareTo(ComponentKey other)
             {
-               if ( other == null)
+                if (other == null)
                 {
                     return 1;
                 }
@@ -358,7 +319,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         {
             public int Compare(ComponentKey x, ComponentKey y)
             {
-                if (x == null )
+                if (x == null)
                 {
                     throw new ArgumentNullException(nameof(x));
                 }
