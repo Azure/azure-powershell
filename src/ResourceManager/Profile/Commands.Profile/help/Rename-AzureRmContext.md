@@ -22,13 +22,21 @@ Rename an Azure context.  By default contexts are named by user account and subs
 
 ## EXAMPLES
 
-### Example 1
+### Rename a context using named parameters
 ```
-PS C:\> Rename-AzureRmContext -SourceName "My context" -TargetName "Work"
+PS C:\> Rename-AzureRmContext -SourceName "[user1@contoso.org; 12345-6789-2345-3567890]" -TargetName "Work"
+```
+
+Rename the context for 'user1@contoso.org' with subscription '12345-6789-2345-3567890' to 'Work'.  After this command, you will be able to target the context using 
+'Select-AzureRmContext Work'.  Note that you can tab through the values for 'SourceName' using tab completion.
+
+### Rename a context using positional parameters
+```
+PS C:\> Rename-AzureRmContext "My context" "Work"
 ```
 
 Rename the context named "My context" to "Work".  After this command, you will be able to target the context using 
-```Select-AzureRmContext Work```
+Select-AzureRmContext Work
 
 ## PARAMETERS
 

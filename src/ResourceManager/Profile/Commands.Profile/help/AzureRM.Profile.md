@@ -50,6 +50,9 @@ Gets tenants that are authorized for the current user.
 ### [Import-AzureRmContext](Import-AzureRmContext.md)
 Loads Azure authentication information from a file.
 
+### [Remove-AzureRmAccount](Remove-AzureRmAccount.md)
+Removes account credentials and associated subscriptions and tenants.
+
 ### [Remove-AzureRmContext](Remove-AzureRmContext.md)
 Remove a context from the set of available contexts
 
