@@ -254,7 +254,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 
         public void RemoveUserAgent(string name)
         {
-            throw new NotImplementedException();
+            this._userAgents?.RemoveWhere(p => string.Equals(p.Product.Name, name, StringComparison.OrdinalIgnoreCase));
         }
     }
 }
