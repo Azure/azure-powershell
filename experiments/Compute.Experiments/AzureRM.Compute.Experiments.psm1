@@ -293,6 +293,7 @@ class VirtualMachine: AzureObject {
             -VM $vmConfig
     }
 }
+
 function New-PsObject {
     param([hashtable] $property)
 
