@@ -231,18 +231,6 @@ class SecurityGroup: Resource1 {
     }
 
     [object] Create([string] $name, [string] $location, [string] $resourceGroupName) {
-        $securityRule = @{
-            Name = $name;
-            Protocol = "Tcp";
-            Priority = 1000;
-            Access = "Allow";
-            Direction = "Inbound";
-            SourcePortRange = "*";
-            SourceAddressPrefix = "*";
-            DestinationPortRange = 3389;
-            DestinationAddressPrefix = "*";
-        }
-
         $securityRuleConfig = New-AzureRmNetworkSecurityRuleConfig `
             -Name $name `
             -Protocol "Tcp" `
