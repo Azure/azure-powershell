@@ -1742,6 +1742,48 @@ namespace Microsoft.Azure.Commands.Automation.Common
             return filteredParameters;
         }
 
+        private IDictionary<string, string> ProcessRunbookParameters(IEnumerable<KeyValuePair<string, RunbookParameter>> runbookParameters,
+            IDictionary<string, object> parameters)
+        {
+            parameters = parameters ?? new Dictionary<string, object>();
+
+            var filteredParameters = new Dictionary<string, string>();
+
+            foreach (var runbookParameter in runbookParameters)
+            {
+                if (parameters.ContainsKey(runbookParameter.Key))
+                {
+                    object paramValue = parameters[runbookParameter.Key];
+                    try
+                    {
+                        filteredParameters.Add(runbookParameter.Key, PowerShellJsonConverter.Serialize(paramValue));
+                    }
+                    catch (JsonSerializationException)
+                    {
+                        throw new ArgumentException(
+                            string.Format(
+                                CultureInfo.CurrentCulture, Resources.RunbookParameterCannotBeSerializedToJson,
+                                runbookParameter.Key));
+                    }
+                }
+                else if (runbookParameter.Value.IsMandatory)
+                {
+                    throw new ArgumentException(
+                        string.Format(
+                            CultureInfo.CurrentCulture, Resources.RunbookParameterValueRequired, runbookParameter.Key));
+                }
+            }
+
+            if (filteredParameters.Count != parameters.Count)
+            {
+                throw new ArgumentException(
+                    string.Format(CultureInfo.CurrentCulture, Resources.InvalidRunbookParameters));
+            }
+
+            return filteredParameters;
+        }
+
+        
         private AutomationManagement.Models.Schedule GetScheduleModel(string resourceGroupName, string automationAccountName, string scheduleName)
         {
             AutomationManagement.Models.Schedule scheduleModel;
