@@ -61,9 +61,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         public static readonly string ResourcesApiVersion = "2016-09-01";
 
         /// <summary>
-        /// The default policy API version.
+        /// The default policy definition API version.
         /// </summary>
-        public static readonly string PolicyApiVersion = "2017-06-01-preview";
+        public static readonly string PolicyDefinitionApiVersion = "2016-12-01";
+
+        /// <summary>
+        /// The default policy set definition API version.
+        /// </summary>
+        public static readonly string PolicySetDefintionApiVersion = "2017-06-01-preview";
+
+        /// <summary>
+        /// The default policy assignment API version.
+        /// </summary>
+        public static readonly string PolicyAssignmentApiVersion = "2017-06-01-preview";
 
         /// <summary>
         /// The default providers API version.

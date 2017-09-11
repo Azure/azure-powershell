@@ -81,6 +81,38 @@ function Test-PolicyAssignmentCRUD
 
 <#
 .SYNOPSIS
+Tests Policy set definition CRUD operations
+#>
+function Test-PolicySetDefinitionCRUD
+{
+	# Setup
+	$policySetDefName = Get-ResourceName
+	$policyDefName = Get-ResourceName
+
+	# Test
+	$policyDefinition = New-AzureRMPolicyDefinition -Name $policyDefName -Policy "$TestOutputRoot\SamplePolicyDefinition.json"
+	$policySet = "[{""policyDefinitionId"":""" + $policyDefinition.PolicyDefinitionId + """}]"
+	$actual = New-AzureRMPolicySetDefinition -Name $policySetDefName -PolicyDefinitions $policySet
+	$expected = Get-AzureRMPolicySetDefinition -Name $policySetDefName
+	Assert-AreEqual $expected.Name $actual.Name
+	Assert-AreEqual $expected.PolicySetDefinitionId $actual.PolicySetDefinitionId
+	Assert-NotNull($actual.Properties.PolicyDefinitions)
+
+	$actual = Set-AzureRMPolicySetDefinition -Name $policySetDefName -DisplayName testDisplay -Description testDescription
+	$expected = Get-AzureRMPolicySetDefinition -Name $policySetDefName
+	Assert-AreEqual $expected.Properties.DisplayName $actual.Properties.DisplayName
+	Assert-AreEqual $expected.Properties.Description $actual.Properties.Description
+
+	$list = Get-AzureRMPolicySetDefinition
+	Assert-True { $list.Count -ge 1}
+
+	$remove = Remove-AzureRMPolicySetDefinition -Name $policySetDefName -Force
+	Assert-AreEqual True $remove
+
+}
+
+<#
+.SYNOPSIS
 Tests Policy definition creation with parameters
 #>
 function Test-PolicyDefinitionWithParameters
