@@ -307,15 +307,22 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 Tags = vmParameters.Tags
             };
 
-            AzureOperationResponse<VirtualMachine> updateResult;
+            AzureOperationResponse<VirtualMachine> updateResult = null;
 
             // The 2nd pass. If something goes wrong here, try to revert to encryptionSettingsBackup.
             if (encryptionSettingsBackup.Enabled != true)
             {
-                updateResult = this.ComputeClient.ComputeManagementClient.VirtualMachines.CreateOrUpdateWithHttpMessagesAsync(
-                    this.ResourceGroupName,
-                    vmParameters.Name,
-                    parameters).GetAwaiter().GetResult();
+                try
+                {
+                    updateResult = this.ComputeClient.ComputeManagementClient.VirtualMachines.CreateOrUpdateWithHttpMessagesAsync(
+                        this.ResourceGroupName,
+                        vmParameters.Name,
+                        parameters).GetAwaiter().GetResult();
+                } catch (Exception e)
+                {
+                    revertVm(encryptionSettingsBackup);
+                    throw e;
+                }
 
                 if (!updateResult.Response.IsSuccessStatusCode)
                 {
@@ -324,6 +331,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             }
             else
             {
+
                 // For premium storage VMs, stop-update-start
                 // stop vm
                 this.ComputeClient.ComputeManagementClient.VirtualMachines
@@ -346,14 +354,28 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                     Location = vmParameters.Location,
                     Tags = vmParameters.Tags
                 };
-                updateResult = this.ComputeClient.ComputeManagementClient.VirtualMachines.CreateOrUpdateWithHttpMessagesAsync(
-                    this.ResourceGroupName,
-                    vmParameters.Name,
-                    parameters).GetAwaiter().GetResult();
+                AzureOperationResponse<Azure.Management.Compute.Models.OperationStatusResponse> startOp = null;
+                try
+                {
+                    updateResult = this.ComputeClient.ComputeManagementClient.VirtualMachines.CreateOrUpdateWithHttpMessagesAsync(
+                        this.ResourceGroupName,
+                        vmParameters.Name,
+                        parameters).GetAwaiter().GetResult();
 
-                // start vm
-                var startOp = this.ComputeClient.ComputeManagementClient.VirtualMachines
-                    .StartWithHttpMessagesAsync(this.ResourceGroupName, this.VMName).GetAwaiter().GetResult();
+                    // start vm
+                    startOp = this.ComputeClient.ComputeManagementClient.VirtualMachines
+                        .StartWithHttpMessagesAsync(ResourceGroupName, this.VMName).GetAwaiter().GetResult();
+                } catch (Exception e)
+                {
+                    // in case of error: stop-revert-start
+                    this.ComputeClient.ComputeManagementClient.VirtualMachines
+                        .DeallocateWithHttpMessagesAsync(this.ResourceGroupName, this.VMName).GetAwaiter()
+                        .GetResult();
+                    revertVm(encryptionSettingsBackup);
+                    this.ComputeClient.ComputeManagementClient.VirtualMachines
+                        .StartWithHttpMessagesAsync(this.ResourceGroupName, this.VMName).GetAwaiter().GetResult();
+                    throw e;
+                }
                 if (!updateResult.Response.IsSuccessStatusCode || !startOp.Response.IsSuccessStatusCode)
                 {
                     // in case of error: stop-revert-start
