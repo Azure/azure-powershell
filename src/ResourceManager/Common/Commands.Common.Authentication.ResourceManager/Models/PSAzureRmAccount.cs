@@ -13,9 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Profile.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Profile.Models
 {
@@ -67,6 +69,24 @@ namespace Microsoft.Azure.Commands.Profile.Models
         public PSAzureRmAccount(IAzureAccount other)
         {
             this.CopyFrom(other);
+        }
+
+        /// <summary>
+        /// Populate the account from a PSObject
+        /// </summary>
+        /// <param name="other"></param>
+        public PSAzureRmAccount(PSObject other)
+        {
+            if (other == null || other.Properties == null)
+            {
+                throw new ArgumentNullException(nameof(other));
+            }
+
+            Id = other.GetProperty<string>(nameof(Id));
+            Type = other.GetProperty<string>(nameof(Type));
+            Credential = other.GetProperty<string>(nameof(Credential));
+            TenantMap.Populate(nameof(TenantMap), other);
+            this.PopulateExtensions(other);
         }
 
         /// <summary>

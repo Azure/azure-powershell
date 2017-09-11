@@ -108,8 +108,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         void AddUserAgent(string productName, string productVersion);
 
         /// <summary>
-        /// The set of User agent values added to all clients created from this factory
+        /// Remove the given user agent string
         /// </summary>
-        HashSet<ProductInfoHeaderValue> UserAgents { get; set; }
+        /// <param name="name">Name</param>
+        void RemoveUserAgent(string name);
+
+        ProductInfoHeaderValue[] UserAgents { get; }
     }
 }
