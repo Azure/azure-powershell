@@ -35,18 +35,7 @@ function New-AzVm {
         }
 
         $resourceGroup = $rgi.GetOrCreate($Name + "ResourceGroup", $locationi.Value, $null);
-        $virtualNetwork = $vni.GetOrCreate(
-            $Name + "VirtualNetwork",
-            $locationi.Value,
-            $resourceGroup.ResourceGroupName);
-        $publicIpAddress = $piai.GetOrCreate(
-            $Name + "PublicIpAddress",
-            $locationi.Value,
-            $resourceGroup.ResourceGroupName);
-        $securityGroup = $sgi.GetOrCreate(
-            $Name + "SecurityGroup",
-            $locationi.Value,
-            $resourceGroup.ResourceGroupName)
+        $networkInterface = $nii.GetOrCreate($Name, $locationi.Value, $resourceGroup.ResourceGroupName);
 
         if (-not $Credential) {
             $Credential = Get-Credential
@@ -54,33 +43,12 @@ function New-AzVm {
         if (-not $ResourceGroupName) {
             $ResourceGroupName = $Name + "ResourceGroup";
         }
-        if (-not $VirtualNetworkName) {
-            $VirtualNetworkName = $Name + "VirtualNetwork";
-        }
-        if (-not $PublicIpAddressName) {
-            $PublicIpAddressName = $Name + "PublicIpAddress";
-        }
-        if (-not $SecurityGroupName) {
-            $SecurityGroupName = $Name + "SecurityGroup";
-        }
-        if (-not $NetworkInterfaceName) {
-            $NetworkInterfaceName = $Name + "NetworkInterface"
-        }
 
         # Find VM Image
         $vmImage = $images | Where-Object { $_.Name -eq $ImageName } | Select-Object -First 1
         if (-not $vmImage) {
             throw "Unknown image: " + $ImageName
         }
-
-        # Network Interface
-        $networkInterface = New-AzureRmNetworkInterface `
-            -ResourceGroupName $ResourceGroupName `
-            -Location $Location `
-            -Name $NetworkInterfaceName `
-            -PublicIpAddressId $publicIpAddress.Id `
-            -SubnetId $virtualNetwork.Subnets[0].Id `
-            -NetworkSecurityGroupId $securityGroup.Id
 
         # VM
         $vmSize = "Standard_DS2"
@@ -295,16 +263,36 @@ class SecurityGroup: Resource1 {
 }
 
 class NetworkInterface: AzureObject {
+    [VirtualNetwork] $VirtualNetwork;
+    [PublicIpAddress] $PublicIpAddress;
+    [SecurityGroup] $SecurityGroup;
+
     NetworkInterface(
         [string] $name,
         [VirtualNetwork] $virtualNetwork,
         [PublicIpAddress] $publicIpAddress,
         [SecurityGroup] $securityGroup
     ): base($name, @($virtualNetwork, $publicIpAddress, $securityGroup)) {
+        $this.VirtualNetwork = $virtualNetwork;
+        $this.PublicIpAddress = $publicIpAddress;
+        $this.SecurityGroup = $securityGroup;
     }
 
     [object] GetInfo() {
         return Get-AzureRMNetworkInterface -Name $this.Name;
+    }
+
+    [object] Create([string] $name, [string] $location, [string] $resourceGroupName) {
+        $xpublicIpAddress = $this.PublicIpAddress.GetOrCreate($name, $location, $resourceGroupName);
+        $xvirtualNetwork = $this.VirtualNetwork.GetOrCreate($name, $location, $resourceGroupName);
+        $xsecurityGroup = $this.SecurityGroup.GetOrCreate($name, $location, $resourceGroupName);
+        return New-AzureRmNetworkInterface `
+            -ResourceGroupName $resourceGroupName `
+            -Location $location `
+            -Name $name `
+            -PublicIpAddressId $xpublicIpAddress.Id `
+            -SubnetId $xvirtualNetwork.Subnets[0].Id `
+            -NetworkSecurityGroupId $xsecurityGroup.Id
     }
 }
 
