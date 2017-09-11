@@ -69,11 +69,13 @@
   <ItemGroup>
     <Compile Include="Account\RemoveAzureRmAccount.cs" />
     <Compile Include="AutoSave\DisableAzureRmContextAutosave.cs" />
+    <Compile Include="AutoSave\GetAzureRmContextAutosaveSetting.cs" />
     <Compile Include="AutoSave\EnableAzureRmContextAutosave.cs" />
     <Compile Include="Common\AzureContextModificationCmdlet.cs" />
     <Compile Include="Common\AzureProfileConstants.cs" />
     <Compile Include="Common\AzureRmProfileConstants.cs" />
     <Compile Include="Common\ContextModificationScope.cs" />
+    <Compile Include="Common\ScopeHelpers.cs" />
     <Compile Include="Context\ClearAzureRmContext.cs" />
     <Compile Include="Context\RemoveAzureRmContext.cs" />
     <Compile Include="Context\RenameAzureRmContext.cs" />
@@ -165,13 +167,10 @@
     <ItemGroup>
       <MarkdownFiles Include="$(ProjectDir)help\*.*" />
     </ItemGroup>
-    <ItemGroup>  
-        <OutFiles Include="$(OutDir)\**\*.*"/>  
-    </ItemGroup>  
-    <Copy  
-            SourceFiles="@(OutFiles)"  
-            DestinationFiles="@(OutFiles->'..\..\..\Stack\$(Configuration)\ResourceManager\AzureResourceManager\AzureRM.Profile\%(RecursiveDir)%(Filename)%(Extension)')"  
-     />  
+    <ItemGroup>
+      <OutFiles Include="$(OutDir)\**\*.*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(OutFiles)" DestinationFiles="@(OutFiles->'..\..\..\Stack\$(Configuration)\ResourceManager\AzureResourceManager\AzureRM.Profile\%(RecursiveDir)%(Filename)%(Extension)')" />
     <Copy SourceFiles="@(MarkdownFiles)" DestinationFolder="$(OutputPath)\help\" ContinueOnError="false" />
   </Target>
 </Project>

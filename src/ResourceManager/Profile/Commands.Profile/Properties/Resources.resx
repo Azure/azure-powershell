@@ -162,7 +162,7 @@
     <comment>{0} = context name</comment>
   </data>
   <data name="CouldNotRetrieveAutosaveSetting" xml:space="preserve">
-    <value>No autosave setting detected in variable {0}.  Using default autosave setting (autosave enabled).</value>
+    <value>No autosave setting detected in environment variable '{0}'. </value>
     <comment>{0} = variable name</comment>
   </data>
   <data name="CurrentTenantInUse" xml:space="preserve">
@@ -181,7 +181,7 @@
     <value>Allow Azure PowerShell cmdlets to send data to Microsoft to improve the customer experience</value>
   </data>
   <data name="ErrorRetrievingAutosaveSetting" xml:space="preserve">
-    <value>Unable to retrieve variable value '{0}' to determine AutoSaveSetting, received exception '{1}' setting AutoSave to true.</value>
+    <value>Unable to retrieve variable value '{0}' to determine AutoSaveSetting, received exception '{1}'.</value>
     <comment>{0} = variable name; {1} = exception</comment>
   </data>
   <data name="FileNotFound" xml:space="preserve">
@@ -335,8 +335,8 @@
   <data name="UnknownEnvironment" xml:space="preserve">
     <value>Unable to find environment with name '{0}'</value>
   </data>
-  <data name="UsingAutoSaveSettins" xml:space="preserve">
-    <value>Using autosave setting from session variable '{0}'='{1}'.</value>
+  <data name="AutosaveSettingFromEnvironment" xml:space="preserve">
+    <value>Using autosave setting from environment variable '{0}'='{1}'.</value>
     <comment>{0} = variable name; {1} = variable value</comment>
   </data>
   <data name="InvalidEndpointProvided" xml:space="preserve">
@@ -356,5 +356,24 @@
   </data>
   <data name="ClearContextUserTarget" xml:space="preserve">
     <value>All contexts for the current user</value>
+  </data>
+  <data name="AutosaveDisabledForContextParameter" xml:space="preserve">
+    <value>Turning Autosave off because an AzureRmContext was passed as a parameter.</value>
+  </data>
+  <data name="AutosaveSettingFinalValue" xml:space="preserve">
+    <value>Using Autosave scope '{0}'</value>
+    <comment>{0} = CurrentUser | Process</comment>
+  </data>
+  <data name="AutosaveSettingFromFile" xml:space="preserve">
+    <value>Read context save mode from file '{0}', Mode = '{1}'.</value>
+    <comment>{0} = autosave settings file name, {1} = CurrentUser | Process</comment>
+  </data>
+  <data name="AutosaveSettingFromScope" xml:space="preserve">
+    <value>Setting Autosave scope to '{0}' as specified in the cmdlet parameters.</value>
+    <comment>{0} = CurrentUser | Process</comment>
+  </data>
+  <data name="AutosaveSettingFromSession" xml:space="preserve">
+    <value>Autosave setting from startup session: '{0}'</value>
+    <comment>{0} = CurrentUser | Process</comment>
   </data>
 </root>

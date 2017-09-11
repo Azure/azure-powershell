@@ -88,6 +88,60 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Turning Autosave off because an AzureRmContext was passed as a parameter..
+        /// </summary>
+        internal static string AutosaveDisabledForContextParameter {
+            get {
+                return ResourceManager.GetString("AutosaveDisabledForContextParameter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Using Autosave scope &apos;{0}&apos;.
+        /// </summary>
+        internal static string AutosaveSettingFinalValue {
+            get {
+                return ResourceManager.GetString("AutosaveSettingFinalValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Using autosave setting from environment variable &apos;{0}&apos;=&apos;{1}&apos;..
+        /// </summary>
+        internal static string AutosaveSettingFromEnvironment {
+            get {
+                return ResourceManager.GetString("AutosaveSettingFromEnvironment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Read context save mode from file &apos;{0}&apos;, Mode = &apos;{1}&apos;..
+        /// </summary>
+        internal static string AutosaveSettingFromFile {
+            get {
+                return ResourceManager.GetString("AutosaveSettingFromFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Setting Autosave scope to &apos;{0}&apos; as specified in the cmdlet parameters..
+        /// </summary>
+        internal static string AutosaveSettingFromScope {
+            get {
+                return ResourceManager.GetString("AutosaveSettingFromScope", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Autosave setting from startup session: &apos;{0}&apos;.
+        /// </summary>
+        internal static string AutosaveSettingFromSession {
+            get {
+                return ResourceManager.GetString("AutosaveSettingFromSession", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Selected profile must not be null..
         /// </summary>
         internal static string AzureProfileMustNotBeNull {
@@ -223,7 +277,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No autosave setting detected in variable {0}.  Using default autosave setting (autosave enabled)..
+        ///   Looks up a localized string similar to No autosave setting detected in environment variable &apos;{0}&apos;. .
         /// </summary>
         internal static string CouldNotRetrieveAutosaveSetting {
             get {
@@ -277,7 +331,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unable to retrieve variable value &apos;{0}&apos; to determine AutoSaveSetting, received exception &apos;{1}&apos; setting AutoSave to true..
+        ///   Looks up a localized string similar to Unable to retrieve variable value &apos;{0}&apos; to determine AutoSaveSetting, received exception &apos;{1}&apos;..
         /// </summary>
         internal static string ErrorRetrievingAutosaveSetting {
             get {
@@ -696,15 +750,6 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static string UnknownEnvironment {
             get {
                 return ResourceManager.GetString("UnknownEnvironment", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Using autosave setting from session variable &apos;{0}&apos;=&apos;{1}&apos;..
-        /// </summary>
-        internal static string UsingAutoSaveSettins {
-            get {
-                return ResourceManager.GetString("UsingAutoSaveSettins", resourceCulture);
             }
         }
     }

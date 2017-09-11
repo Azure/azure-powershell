@@ -46,13 +46,13 @@ namespace Microsoft.Azure.Commands.Profile
         public  string Username { get; set; }
 
         [Parameter(ParameterSetName = ServicePrincipalParameterSet,
-                   Mandatory = true, HelpMessage = "ServicePrincipal id (globally unique id)", Position = 0)]
+                   Mandatory = true, HelpMessage = "ServicePrincipal id (globally unique id)")]
         [ValidateNotNullOrEmpty]
         [Alias("SPN", "ServicePrincipal")]
         public string ApplicationId { get; set; }
 
         [Parameter(ParameterSetName = ServicePrincipalParameterSet,
-                  Mandatory = true, HelpMessage = "Tenant id (globally unique id)", Position = 1)]
+                  Mandatory = true, HelpMessage = "Tenant id (globally unique id)")]
         [ValidateNotNullOrEmpty]
         public string TenantId { get; set; }
 
