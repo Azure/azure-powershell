@@ -44,22 +44,6 @@ function New-AzVm {
     }
 }
 
-function Set-ResourceGroup {
-    param(
-        [parameter(Mandatory = $true)][string]$Name,
-        [parameter(Mandatory = $true)][string]$Location
-    )
-
-    $resourceGroup = Get-AzureRmResourceGroup `
-        | Where-Object { $_.ResourceGroupName -eq $Name } `
-        | Select-Object -First 1 -Wait;
-    if ($resourceGroup) {
-        $resourceGroup;
-    } else {
-        New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location
-    }
-}
-
 class Location {
     [int] $Priority;
     [string] $Value;
