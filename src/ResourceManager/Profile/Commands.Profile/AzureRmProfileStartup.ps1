@@ -18,4 +18,5 @@
 	"Save-AzureRmProfile" = "Save-AzureRmContext";
 	"Select-AzureRmProfile" = "Import-AzureRmContext";
 	"Resolve-Error" = "Resolve-AzureRmError";
-}.GetEnumerator() | Select @{Name='Name'; Expression={$_.Key}}, @{Name='Value'; Expression={$_.Value}} | New-Alias -Description "AzureAlias"
+}.GetEnumerator() | Select @{Name='Name'; Expression={$_.Key}}, @{Name='Value'; Expression={$_.Value}} | New-Alias -Description "AzureAlias" | Out-Null
+

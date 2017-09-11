@@ -24,7 +24,10 @@ param(
     [Parameter(Mandatory = $false, Position = 4)]
     [string] $repositoryLocation,
     [Parameter(Mandatory = $false, Position = 5)]
-    [string] $nugetExe
+    [string] $nugetExe,
+    [Parameter(Mandatory=$false)]
+    [ValidateSet("Latest", "Stack")]
+    [string] $Profile = "Latest"
 )
 
 function Get-TargetModules
@@ -34,13 +37,18 @@ function Get-TargetModules
     (
       [string]$buildConfig,
       [string]$Scope,
-      [bool]$PublishLocal
+      [bool]$PublishLocal,
+      [string] $Profile = "Latest"
     )
 
     PROCESS 
     {
         $targets = @()
         $packageFolder = "$PSScriptRoot\..\src\Package"
+        if ($Profile -eq "Stack")
+        {
+            $packageFolder = "$PSScriptRoot\..\src\Stack"
+        }
     
         if($isNetCore -eq "true") {
             $resourceManagerRootFolder = "$packageFolder\$buildConfig\ResourceManager"
@@ -56,11 +64,11 @@ function Get-TargetModules
           }
         }
 
-        if ((($Scope -eq 'All') -or ($Scope -eq 'AzureStorage')) -and ($isNetCore -eq "false")) {
+        if ((($Scope -eq 'All') -or ($Scope -eq 'AzureStorage')) -and ($isNetCore -eq "false") ) {
           $targets += "$packageFolder\$buildConfig\Storage\Azure.Storage"
         } 
 
-        if ((($Scope -eq 'All') -or ($Scope -eq 'ServiceManagement')) -and ($isNetCore -eq "false")) {
+        if ((($Scope -eq 'All') -or ($Scope -eq 'ServiceManagement')) -and ($isNetCore -eq "false") -and ($Profile -ne "Stack")) {
           $targets += "$packageFolder\$buildConfig\ServiceManagement\Azure"
         } 
 
@@ -84,6 +92,11 @@ function Get-TargetModules
         }
 
         if (($Scope -eq 'All') -or ($Scope -eq 'AzureRM')) {
+            if ($Profile -eq "Stack")
+            {
+                $targets += "$PSScriptRoot\..\src\StackAdmin\AzureRM"
+                $targets += "$PSScriptRoot\..\src\StackAdmin\AzureStack"
+            }
             if($isNetCore -eq "false") {
                 # Publish AzureRM module    
                 $targets += "$PSScriptRoot\AzureRM"
@@ -298,27 +311,36 @@ Write-Host "Publishing $scope package(and its dependencies)"
 Get-PackageProvider -Name NuGet -Force
 
 $packageFolder = "$PSScriptRoot\..\src\Package"
-
-$repo = Get-PSRepository | where { $_.SourceLocation -eq $repositoryLocation }
-if ($repo -ne $null) {
-    $repoName = $repo.Name
-} else {
-    $repoName = $(New-Guid).ToString()
-    Register-PSRepository -Name $repoName -SourceLocation $repositoryLocation -PublishLocation $repositoryLocation/package -InstallationPolicy Trusted
+if ($Profile -eq "Stack")
+{
+    $packageFolder = "$PSScriptRoot\..\src\Stack"
 }
 
 $publishToLocal = test-path $repositoryLocation
 [string]$tempRepoPath = "$PSScriptRoot\..\src\package"
 if ($publishToLocal)
 {
-    $tempRepoPath = (Join-Path $repositoryLocation -ChildPath "package")
+    if ($Profile -eq "Stack"){
+        $tempRepoPath = (Join-Path $repositoryLocation -ChildPath "stack")
+    }
+    else {
+       $tempRepoPath = (Join-Path $repositoryLocation -ChildPath "package")
+       
+    }
 }
+
 $tempRepoName = ([System.Guid]::NewGuid()).ToString()
-Register-PSRepository -Name $tempRepoName -SourceLocation $tempRepoPath -PublishLocation $tempRepoPath -InstallationPolicy Trusted -PackageManagementProvider NuGet
+$repo = Get-PSRepository | Where-Object { $_.SourceLocation -eq $tempRepoPath }
+if ($repo -ne $null) {
+    $tempRepoName = $repo.Name
+} else {
+    Register-PSRepository -Name $tempRepoName -SourceLocation $tempRepoPath -PublishLocation $tempRepoPath -InstallationPolicy Trusted -PackageManagementProvider NuGet
+}
+
 $env:PSModulePath="$env:PSModulePath;$tempRepoPath"
 
 try {
-    $modulesInScope = Get-TargetModules -buildConfig $buildConfig -Scope $scope -PublishLocal $publishToLocal
+    $modulesInScope = Get-TargetModules -buildConfig $buildConfig -Scope $scope -PublishLocal $publishToLocal -Profile $Profile
     foreach ($modulePath in $modulesInScope) {
         # filter out AzureRM.Profile which always gets published first 
         # And "Azure.Storage" which is built out as test dependencies  

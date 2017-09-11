@@ -11,19 +11,36 @@ Sets the tenant, subscription, and environment for cmdlets to use in the current
 
 ## SYNTAX
 
-### SubscriptionName (Default)
+### Subscription (Default)
 ```
-Set-AzureRmContext [-SubscriptionName <String>] [-TenantId <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzureRmContext [-Tenant <String>] [-Subscription <String>]
+ [-ExtendedProperty <System.Collections.Generic.IDictionary`2[System.String,System.String]>] [-Name <String>]
+ [-Force] [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### Context
 ```
-Set-AzureRmContext -Context <PSAzureContext> [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzureRmContext -Context <PSAzureContext>
+ [-ExtendedProperty <System.Collections.Generic.IDictionary`2[System.String,System.String]>] [-Name <String>]
+ [-Force] [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### SubscriptionId
+### TenantObject
 ```
-Set-AzureRmContext [-TenantId <String>] [-SubscriptionId <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzureRmContext -TenantObject <PSAzureTenant>
+ [-ExtendedProperty <System.Collections.Generic.IDictionary`2[System.String,System.String]>] [-Name <String>]
+ [-Force] [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### SubscriptionObject
+```
+Set-AzureRmContext -SubscriptionObject <PSAzureSubscription>
+ [-ExtendedProperty <System.Collections.Generic.IDictionary`2[System.String,System.String]>] [-Name <String>]
+ [-Force] [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -61,48 +78,138 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -SubscriptionId
-Specifies the subscription ID for the context that this cmdlet sets for the current session.
+### -DefaultProfile
+The credentials, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: String
-Parameter Sets: SubscriptionId
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExtendedProperty
+Additional context properties
+
+```yaml
+Type: System.Collections.Generic.IDictionary`2[System.String,System.String]
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SubscriptionName
-Specifies the subscription name for the context that this cmdlet sets for the current session.
+### -Force
+Overwrite the existing context with the same name, if any.
 
 ```yaml
-Type: String
-Parameter Sets: SubscriptionName
+Type: SwitchParameter
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TenantId
-Specifies the ID of the tenant for for the context that this cmdlet sets for the current session.
+### -Name
+Name of the context
 
 ```yaml
 Type: String
-Parameter Sets: SubscriptionName, SubscriptionId
-Aliases: Domain
+Parameter Sets: (All)
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Scope
+Determines the scope of context changes, for example, wheher changes apply only to the cusrrent process, or to all sessions started by this user.
+
+```yaml
+Type: ContextModificationScope
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Subscription
+Subscription Name or Id
+
+```yaml
+Type: String
+Parameter Sets: Subscription
+Aliases: SubscriptionId, SubscriptionName
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionObject
+A subscription object
+
+```yaml
+Type: PSAzureSubscription
+Parameter Sets: SubscriptionObject
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Tenant
+Tenant name or ID
+
+```yaml
+Type: String
+Parameter Sets: Subscription
+Aliases: Domain, TenantId
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TenantObject
+A Tenant Object
+
+```yaml
+Type: PSAzureTenant
+Parameter Sets: TenantObject
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -142,7 +249,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### PSAzureContext
-
 Parameter 'Context' accepts value of type 'PSAzureContext' from the pipeline
 
 ## OUTPUTS
