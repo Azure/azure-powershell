@@ -11,8 +11,14 @@ Gets the metadata used to authenticate Azure Resource Manager requests.
 
 ## SYNTAX
 
+### GetSingleContext (Default)
 ```
-Get-AzureRmContext [<CommonParameters>]
+Get-AzureRmContext [-DefaultProfile <IAzureContextContainer>] [-Name <String>] [<CommonParameters>]
+```
+
+### ListAllContexts
+```
+Get-AzureRmContext [-ListAvailable] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,6 +45,51 @@ CurrentStorageAccount :
 In this example we are logging into our account with an Azure subscription using Add-AzureRmAccount, and then we are getting the context of the current session by calling Get-AzureRmContext.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credeetnails, tenant and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ListAvailable
+List all available contexts in the current session.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: ListAllContexts
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the context
+
+```yaml
+Type: String
+Parameter Sets: GetSingleContext
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
