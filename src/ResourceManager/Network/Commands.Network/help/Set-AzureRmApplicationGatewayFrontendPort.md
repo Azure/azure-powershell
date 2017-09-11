@@ -27,8 +27,7 @@ application gateway.
 ## EXAMPLES
 
 ### Example 1: Set an application gateway front-end port to 80
-
-```powershell
+```
 PS C:\> $AppGw = Get-AzureRmApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
 PS C:\> $AppGw = Set-AzureRmApplicationGatewayFrontendPort -ApplicationGateway $AppGw -Name "FrontEndPort01" -Port 80
 ```
