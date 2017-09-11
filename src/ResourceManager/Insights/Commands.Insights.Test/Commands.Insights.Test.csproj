@@ -134,6 +134,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActivityLogAlerts\ActivityLogAlertsUtilities.cs" />
+    <Compile Include="ActivityLogAlerts\DisableAzureRmActivityLogAlertTests.cs" />
     <Compile Include="Alerts\AddAzureRmMetricAlertRuleTests.cs" />
     <Compile Include="Alerts\AddAzureRmLogAlertRuleTests.cs" />
     <Compile Include="Alerts\AddAzureRmWebtestAlertRuleTests.cs" />
@@ -150,6 +152,12 @@
     <Compile Include="Autoscale\NewAzureRmAutoscaleRuleTests.cs" />
     <Compile Include="Autoscale\NewAzureRmAutoscaleWebhookTests.cs" />
     <Compile Include="Autoscale\RemoveAzureRmAutoscaleSettingTests.cs" />
+    <Compile Include="ActivityLogAlerts\SetAzureRmActivityLogAlertTests.cs" />
+    <Compile Include="ActivityLogAlerts\EnableAzureRmActivityLogAlertTests.cs" />
+    <Compile Include="ActivityLogAlerts\GetAzureRmActivityLogAlertTests.cs" />
+    <Compile Include="ActivityLogAlerts\NewAzureRmActionGroupTests.cs" />
+    <Compile Include="ActivityLogAlerts\NewAzureRmActivityLogAlertConditionTests.cs" />
+    <Compile Include="ActivityLogAlerts\RemoveAzureRmActivityLogAlertTests.cs" />
     <None Include="Diagnostics\RemoveDiagnosticSettingCommandTests.cs" />
     <Compile Include="CustomPrinterTests.cs" />
     <Compile Include="Diagnostics\SetDiagnosticSettingCommandTests.cs" />
@@ -161,6 +169,7 @@
     <Compile Include="Metrics\GetAzureRmMetricDefinitionTests.cs" />
     <Compile Include="Metrics\GetAzureRmMetricTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScenarioTests\ActivityLogAlertsTests.cs" />
     <Compile Include="ScenarioTests\AzureRmLogProfileTests.cs" />
     <Compile Include="ScenarioTests\AzureRmDiagnosticSettingTests.cs" />
     <Compile Include="ScenarioTests\AlertsTests.cs" />
@@ -201,6 +210,9 @@
   <ItemGroup>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
+    <None Include="ScenarioTests\ActivityLogAlertsTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="ScenarioTests\AzureRmLogProfileTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -224,6 +236,9 @@
     </None>
     <None Include="ScenarioTests\UsageMetricsTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.ActivityLogAlertsTests\TestSetGetListUpdateRemoveActivityLogAlert.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.ActivityLogsTests\TestGetAzureSubscriptionIdLogMaxEvents.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

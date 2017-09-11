@@ -54,6 +54,14 @@
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActivityLogAlert\ActivityLogAlertUtilities.cs" />
+    <Compile Include="ActivityLogAlert\DisableAzureRmActivityLogAlertCommand.cs" />
+    <Compile Include="ActivityLogAlert\SetAzureRmActivityLogAlertCommand.cs" />
+    <Compile Include="ActivityLogAlert\GetAzureRmActivityLogAlertCommand.cs" />
+    <Compile Include="ActivityLogAlert\NewAzureRmActionGroupCommand.cs" />
+    <Compile Include="ActivityLogAlert\NewAzureRmActivityLogAlertConditionCommand.cs" />
+    <Compile Include="ActivityLogAlert\RemoveAzureRmActivityLogAlertCommand.cs" />
+    <Compile Include="ActivityLogAlert\EnableAzureRmActivityLogAlertCommand.cs" />
     <Compile Include="Alerts\AddAzureRmAlertRuleCommandBase.cs" />
     <Compile Include="Alerts\AddAzureRmMetricAlertRuleCommand.cs" />
     <Compile Include="Alerts\AddAzureRmLogAlertRuleCommand.cs" />
@@ -87,6 +95,7 @@
     <Compile Include="OutputClasses\CustomPrinter.cs" />
     <Compile Include="OutputClasses\IPSEventData.cs" />
     <Compile Include="OutputClasses\IPSRuleCondition.cs" />
+    <Compile Include="OutputClasses\PSActivityLogAlertResource.cs" />
     <Compile Include="OutputClasses\PSAddAlertRuleOperationResponse.cs" />
     <Compile Include="OutputClasses\PSAddAutoscaleSettingOperationResponse.cs" />
     <Compile Include="OutputClasses\PSAlertRuleResource.cs" />
