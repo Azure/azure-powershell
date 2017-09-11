@@ -26,35 +26,35 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, "Scenario")]
         public void TestGetAzureRmDiagnosticSetting()
         {
             TestsController.NewInstance.RunPsTest("Test-GetAzureRmDiagnosticSetting");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, "Scenario")]
         public void TestSetAzureRmDiagnosticSetting()
         {
             TestsController.NewInstance.RunPsTest("Test-SetAzureRmDiagnosticSetting");
         }
 
         [Fact] //(Skip = "TODO: fixing this test after introducing Swagger specs")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, "Scenario")]
         public void TestSetAzureRmDiagnosticSettingWithRetention()
         {
             TestsController.NewInstance.RunPsTest("Test-SetAzureRmDiagnosticSettingWithRetention");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, "Scenario")]
         public void TestSetAzureRmDiagnosticSettingCategoriesOnly()
         {
             TestsController.NewInstance.RunPsTest("Test-SetAzureRmDiagnosticSetting-CategoriesOnly");
         }
 
         [Fact] //(Skip = "TODO: fixing this test after introducing Swagger specs")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, "Scenario")]
         public void TestSetAzureRmDiagnosticSettingTimeGrainsOnly()
         {
             TestsController.NewInstance.RunPsTest("Test-SetAzureRmDiagnosticSetting-TimegrainsOnly");
