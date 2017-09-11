@@ -22,7 +22,7 @@ function New-AzVm {
             $vni,
             $piai,
             $sgi);
-        $vmi = [VirtualMachine]::new($null, $nii, $rgi);
+        $vmi = [VirtualMachine]::new($null, $nii, $rgi, $Credential, $ImageName, $images);
 
         $locationi = [Location]::new();
         if (-not $Location) {
@@ -35,57 +35,11 @@ function New-AzVm {
         }
 
         $resourceGroup = $rgi.GetOrCreate($Name + "ResourceGroup", $locationi.Value, $null);
-        $networkInterface = $nii.GetOrCreate($Name, $locationi.Value, $resourceGroup.ResourceGroupName);
-
-        if (-not $Credential) {
-            $Credential = Get-Credential
-        }
-        if (-not $ResourceGroupName) {
-            $ResourceGroupName = $Name + "ResourceGroup";
-        }
-
-        # Find VM Image
-        $vmImage = $images | Where-Object { $_.Name -eq $ImageName } | Select-Object -First 1
-        if (-not $vmImage) {
-            throw "Unknown image: " + $ImageName
-        }
-
-        # VM
-        $vmSize = "Standard_DS2"
-        $vmConfig = New-AzureRmVMConfig -VMName $Name -VMSize $vmSize
-        $vmComputerName = $Name + "Computer"
-        switch ($vmImage.Type) {
-            "Windows" {
-                $vmConfig = $vmConfig | Set-AzureRmVMOperatingSystem `
-                    -Windows `
-                    -ComputerName $vmComputerName `
-                    -Credential $Credential
-            }
-            "Linux" {
-                $vmConfig = $vmConfig | Set-AzureRmVMOperatingSystem `
-                    -Linux `
-                    -ComputerName $vmComputerName `
-                    -Credential $Credential
-            }
-        }
-
-        $vmImageImage = $vmImage.Image
-        $vmConfig = $vmConfig `
-            | Set-AzureRmVMSourceImage `
-                -PublisherName $vmImageImage.publisher `
-                -Offer $vmImageImage.offer `
-                -Skus $vmImageImage.sku `
-                -Version $vmImageImage.version `
-            | Add-AzureRmVMNetworkInterface -Id $networkInterface.Id
-
-        $response = New-AzureRmVm `
-            -ResourceGroupName $ResourceGroupName `
-            -Location $Location `
-            -VM $vmConfig
+        $vmResponse = $vmi.Create($Name, $locationi.Value, $resourceGroup.ResourceGroupName);
 
         New-PsObject @{
             ResourceId = $resourceGroup.ResourceId;
-            Response = $response
+            Response = $vmResponse
         }
     }
 }
@@ -285,15 +239,74 @@ class NetworkInterface: AzureObject {
 }
 
 class VirtualMachine: AzureObject {
+    [NetworkInterface] $NetworkInterface;
+    [pscredential] $Credential;
+    [string] $ImageName;
+    [object] $Images;
+
     VirtualMachine(
         [string] $name,
         [NetworkInterface] $networkInterface,
-        [ResourceGroup] $resourceGroup
-    ): base($name, @($networkInterface, $resourceGroup)) {
+        [ResourceGroup] $resourceGroup,
+        [PSCredential] $credential,
+        [string] $imageName,
+        [object] $images):
+        base($name, @($networkInterface, $resourceGroup)) {
+
+        $this.Credential = $credential;
+        $this.ImageName = $imageName;
+        $this.NetworkInterface = $networkInterface;
+        $this.Images = $images;
     }
 
     [object] GetInfo() {
         return Get-AzureRMVirtualMachine -Name $this.Name;
+    }
+
+    [object] Create([string] $name, [string] $location, [string] $resourceGroupName) {
+        $networkInterfaceInstance = $this.NetworkInterface.GetOrCreate( `
+            $name, $location, $resourceGroupName);
+
+        if (-not $this.Credential) {
+            $this.Credential = Get-Credential
+        }
+
+        $vmImage = $this.Images | Where-Object { $_.Name -eq $this.ImageName } | Select-Object -First 1
+        if (-not $vmImage) {
+            throw "Unknown image: " + $this.ImageName
+        }
+
+        $vmSize = "Standard_DS2"
+        $vmConfig = New-AzureRmVMConfig -VMName $Name -VMSize $vmSize
+        $vmComputerName = $Name + "Computer"
+        switch ($vmImage.Type) {
+            "Windows" {
+                $vmConfig = $vmConfig | Set-AzureRmVMOperatingSystem `
+                    -Windows `
+                    -ComputerName $vmComputerName `
+                    -Credential $this.Credential
+            }
+            "Linux" {
+                $vmConfig = $vmConfig | Set-AzureRmVMOperatingSystem `
+                    -Linux `
+                    -ComputerName $vmComputerName `
+                    -Credential $this.Credential
+            }
+        }
+
+        $vmImageImage = $vmImage.Image
+        $vmConfig = $vmConfig `
+            | Set-AzureRmVMSourceImage `
+                -PublisherName $vmImageImage.publisher `
+                -Offer $vmImageImage.offer `
+                -Skus $vmImageImage.sku `
+                -Version $vmImageImage.version `
+            | Add-AzureRmVMNetworkInterface -Id $networkInterfaceInstance.Id
+
+        return New-AzureRmVm `
+            -ResourceGroupName $resourceGroupName `
+            -Location $location `
+            -VM $vmConfig
     }
 }
 function New-PsObject {
