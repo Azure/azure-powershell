@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, "Scenario")]
         public void TestGetUsageMetrics()
         {
             TestsController.NewInstance.RunPsTest("Test-GetUsageMetrics");

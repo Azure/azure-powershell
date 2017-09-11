@@ -26,14 +26,14 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, "Scenario")]
         public void TestGetMetrics()
         {
             TestsController.NewInstance.RunPsTest("Test-GetMetrics");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, "Scenario")]
         public void TestGetMetricDefinitions()
         {
             TestsController.NewInstance.RunPsTest("Test-GetMetricDefinitions");

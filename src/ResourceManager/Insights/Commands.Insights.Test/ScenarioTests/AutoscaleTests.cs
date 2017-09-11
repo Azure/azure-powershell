@@ -26,49 +26,49 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, "Scenario")]
         public void TestAddAzureRmAutoscaleSetting()
         {
             TestsController.NewInstance.RunPsTest("Test-AddAzureRmAutoscaleSetting");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, "Scenario")]
         public void TestGetAzureRmAutoscaleSetting()
         {
             TestsController.NewInstance.RunPsTest("Test-GetAzureRmAutoscaleSetting");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, "Scenario")]
         public void TestGetAzureRmAutoscaleSettingByName()
         {
             TestsController.NewInstance.RunPsTest("Test-GetAzureRmAutoscaleSettingByName");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, "Scenario")]
         public void TestRemoveAzureRmAutoscaleSetting()
         {
             TestsController.NewInstance.RunPsTest("Test-RemoveAzureRmAutoscaleSetting");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, "Scenario")]
         public void TestGetAzureRmAutoscaleHistory()
         {
             TestsController.NewInstance.RunPsTest("Test-GetAzureRmAutoscaleHistory");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, "Scenario")]
         public void TestNewAzureRmAutoscaleNotification()
         {
             TestsController.NewInstance.RunPsTest("Test-NewAzureRmAutoscaleNotification");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, "Scenario")]
         public void TestNewAzureRmAutoscaleWebhook()
         {
             TestsController.NewInstance.RunPsTest("Test-NewAzureRmAutoscaleWebhook");

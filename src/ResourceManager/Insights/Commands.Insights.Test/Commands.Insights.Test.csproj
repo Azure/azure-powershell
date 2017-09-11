@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\..\..\packages\xunit.runner.visualstudio.2.1.0\build\net20\xunit.runner.visualstudio.props" Condition="Exists('..\..\..\packages\xunit.runner.visualstudio.2.1.0\build\net20\xunit.runner.visualstudio.props')" />
+  <Import Project="..\..\..\packages\xunit.runner.visualstudio.2.3.0-beta2-build1317\build\net20\xunit.runner.visualstudio.props" Condition="Exists('..\..\..\packages\xunit.runner.visualstudio.2.3.0-beta2-build1317\build\net20\xunit.runner.visualstudio.props')" />
   <Import Project="..\..\..\packages\xunit.core.2.1.0\build\portable-net45+win8+wp8+wpa81\xunit.core.props" Condition="Exists('..\..\..\packages\xunit.core.2.1.0\build\portable-net45+win8+wp8+wpa81\xunit.core.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -62,29 +62,40 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Monitor">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Monitor.0.16.0-preview\lib\net452\Microsoft.Azure.Management.Monitor.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Monitor.0.16.1-preview\lib\net452\Microsoft.Azure.Management.Monitor.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Test.Framework">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Test.Framework.1.0.6179.26854-prerelease\lib\net45\Microsoft.Azure.Test.Framework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Test.HttpRecorder">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Test.HttpRecorder.1.6.7-preview\lib\net45\Microsoft.Azure.Test.HttpRecorder.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Test.HttpRecorder.1.7.0\lib\net45\Microsoft.Azure.Test.HttpRecorder.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Bcl.Build">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.Tasks.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.3\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms, Version=2.28.3.860, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.3\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.5\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.8\lib\net452\Microsoft.Rest.ClientRuntime.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.3.3.5\lib\net45\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.3.3.8\lib\net452\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication">
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.2.3.1\lib\net452\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure.TestFramework">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.TestFramework.1.5.0-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.TestFramework.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.TestFramework.1.7.2\lib\net452\Microsoft.Rest.ClientRuntime.Azure.TestFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Moq, Version=4.2.1510.2205, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
@@ -105,19 +116,20 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
     <Reference Include="xunit.abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\xunit.abstractions.2.0.0\lib\net35\xunit.abstractions.dll</HintPath>
+      <HintPath>..\..\..\packages\xunit.abstractions.2.0.0\lib\portable-net45+win+wpa81+wp80+monotouch+monoandroid+Xamarin.iOS\xunit.abstractions.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="xunit.assert, Version=2.1.0.3179, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+    <Reference Include="xunit.assert">
       <HintPath>..\..\..\packages\xunit.assert.2.1.0\lib\portable-net45+win8+wp8+wpa81\xunit.assert.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="xunit.core, Version=2.1.0.3179, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+    <Reference Include="xunit.core">
       <HintPath>..\..\..\packages\xunit.extensibility.core.2.1.0\lib\portable-net45+win8+wp8+wpa81\xunit.core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="xunit.execution.desktop, Version=2.1.0.3179, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+    <Reference Include="xunit.execution.desktop">
       <HintPath>..\..\..\packages\xunit.extensibility.execution.2.1.0\lib\net45\xunit.execution.desktop.dll</HintPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
@@ -291,19 +303,7 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.AutoscaleTests\TestRemoveAzureRmAutoscaleSetting.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.ActivityLogsTests\TestGetAzureCorrelationIdLog.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.ActivityLogsTests\TestGetAzureResourceGroupLog.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.ActivityLogsTests\TestGetAzureResourceLog.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.ActivityLogsTests\TestGetAzureResourceProviderLog.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.ActivityLogsTests\TestGetAzureSubscriptionIdLog.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.ActivityLogsTests\TestGetAzureLogAllParameters.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.MetricsTests\TestGetMetrics.json">

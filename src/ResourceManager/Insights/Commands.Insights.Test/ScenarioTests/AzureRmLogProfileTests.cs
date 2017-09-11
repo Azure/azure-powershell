@@ -26,21 +26,21 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
         }
 
         [Fact] //(Skip = "TODO: fixing this test after introducing Swagger specs")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, "Scenario")]
         public void TestGetAzureRmLogProfile()
         {
             TestsController.NewInstance.RunPsTest("Test-GetAzureRmLogProfile");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, "Scenario")]
         public void TestAddAzureRmLogProfile()
         {
             TestsController.NewInstance.RunPsTest("Test-AddAzureRmLogProfile");
         }
 
         [Fact] //(Skip = "TODO: fixing this test after introducing Swagger specs")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, "Scenario")]
         public void TestAddAzureRmLogProfileWithRetention()
         {
             TestsController.NewInstance.RunPsTest("Test-AddAzureRmLogProfileWithRetention");
