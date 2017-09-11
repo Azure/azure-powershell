@@ -18,6 +18,12 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fixed help documents for cmdlets fixed in the earlier release.
+* Added 3 new cmdlets to support staged rollout of DSC node configurations.
+	- Start-AzureRmAutomationDscNodeConfigurationDeployment
+	- Stop-AzureRmAutomationDscNodeConfigurationDeployment
+	- Get-AzureRmAutomationDscNodeConfigurationDeployment
+	- Get-AzureRmAutomationDscNodeConfigurationDeploymentSchedule
 
 ## Version 3.3.1
 
