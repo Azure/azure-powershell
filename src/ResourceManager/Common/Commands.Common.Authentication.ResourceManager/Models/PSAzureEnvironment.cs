@@ -13,8 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Profile.Common;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Profile.Models
 {
@@ -69,6 +72,42 @@ namespace Microsoft.Azure.Commands.Profile.Models
         public PSAzureEnvironment(IAzureEnvironment environment)
         {
             this.CopyFrom(environment);
+        }
+
+        /// <summary>
+        /// For conversion from serialized PSObjects
+        /// </summary>
+        /// <param name="other"></param>
+        public PSAzureEnvironment(PSObject other)
+        {
+            if (other == null || other.Properties == null)
+            {
+                throw new ArgumentNullException(nameof(other));
+            }
+
+            Name = other.GetProperty<string>(nameof(Name));
+            EnableAdfsAuthentication = other.GetProperty<bool>(nameof(EnableAdfsAuthentication));
+            OnPremise = other.GetProperty<bool>(nameof(OnPremise));
+            ActiveDirectoryAuthority = other.GetProperty<string>(nameof(ActiveDirectoryAuthority));
+            ActiveDirectoryServiceEndpointResourceId = other.GetProperty<string>(nameof(ActiveDirectoryServiceEndpointResourceId));
+            AdTenant = other.GetProperty<string>(nameof(AdTenant));
+            AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix = other.GetProperty<string>(nameof(AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix));
+            AzureDataLakeStoreFileSystemEndpointSuffix = other.GetProperty<string>(nameof(AzureDataLakeStoreFileSystemEndpointSuffix));
+            AzureKeyVaultDnsSuffix = other.GetProperty<string>(nameof(AzureKeyVaultDnsSuffix));
+            AzureKeyVaultServiceEndpointResourceId = other.GetProperty<string>(nameof(AzureKeyVaultServiceEndpointResourceId));
+            DataLakeEndpointResourceId = other.GetProperty<string>(nameof(DataLakeEndpointResourceId));
+            GalleryUrl = other.GetProperty<string>(nameof(GalleryUrl));
+            GraphEndpointResourceId = other.GetProperty<string>(nameof(GraphEndpointResourceId));
+            GraphUrl = other.GetProperty<string>(nameof(GraphUrl));
+            ManagementPortalUrl = other.GetProperty<string>(nameof(ManagementPortalUrl));
+            PublishSettingsFileUrl = other.GetProperty<string>(nameof(PublishSettingsFileUrl));
+            ResourceManagerUrl = other.GetProperty<string>(nameof(ResourceManagerUrl));
+            ServiceManagementUrl = other.GetProperty<string>(nameof(ServiceManagementUrl));
+            SqlDatabaseDnsSuffix = other.GetProperty<string>(nameof(SqlDatabaseDnsSuffix));
+            StorageEndpointSuffix = other.GetProperty<string>(nameof(StorageEndpointSuffix));
+            TrafficManagerDnsSuffix = other.GetProperty<string>(nameof(TrafficManagerDnsSuffix));
+            VersionProfiles.Populate(nameof(VersionProfiles), other);
+            this.PopulateExtensions(other);
         }
 
         /// <summary>

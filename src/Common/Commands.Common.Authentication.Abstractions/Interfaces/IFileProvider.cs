@@ -12,33 +12,34 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
+using System;
+using System.IO;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
     /// <summary>
-    /// Representation of an azure account with credentials
+    /// Interface that allows abstracting away file access - allows for using specially protected files, or files from alternate sources
     /// </summary>
-    public interface IAzureAccount : IExtensibleModel
+    public interface IFileProvider : IDisposable
     {
         /// <summary>
-        /// The displayable id for the account
+        /// The fully-qualified path to the file
         /// </summary>
-        string Id { get; set; }
+        string FilePath { get; }
 
         /// <summary>
-        /// The account credential
+        /// The stream of the files contents
         /// </summary>
-        string Credential { get; set; }
+        Stream Stream { get; }
 
         /// <summary>
-        /// The account type
+        /// A reader for the file
         /// </summary>
-        string Type { get; set; }
+        StreamReader CreateReader();
 
         /// <summary>
-        /// The mapping between tenants the account has permission to access and the account identifier in each tenant
+        /// A writer for the file
         /// </summary>
-        IDictionary<string, string> TenantMap { get; }
+        StreamWriter CreateWriter();
     }
 }

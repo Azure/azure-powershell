@@ -12,33 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-
 namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
     /// <summary>
-    /// Representation of an azure account with credentials
+    /// Constants for use with the autosave mode for the context
     /// </summary>
-    public interface IAzureAccount : IExtensibleModel
+    public static class ContextSaveMode
     {
-        /// <summary>
-        /// The displayable id for the account
-        /// </summary>
-        string Id { get; set; }
-
-        /// <summary>
-        /// The account credential
-        /// </summary>
-        string Credential { get; set; }
-
-        /// <summary>
-        /// The account type
-        /// </summary>
-        string Type { get; set; }
-
-        /// <summary>
-        /// The mapping between tenants the account has permission to access and the account identifier in each tenant
-        /// </summary>
-        IDictionary<string, string> TenantMap { get; }
+        public const string Process = "Process", CurrentUser = "CurrentUser";
     }
 }
