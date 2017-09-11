@@ -58,6 +58,33 @@ function Test-RaNegativeScenarios
 
 <#
 .SYNOPSIS
+Tests verifies delete scenario for RoleAssignments by using PSRoleAssignment Object
+#>
+function Test-RaDeleteByPSRoleAssignment
+{
+    # Setup
+    $definitionName = 'Reader'
+    $users = Get-AzureRmADUser | Select-Object -First 1 -Wait
+    $subscription = Get-AzureRmSubscription
+    $resourceGroups = Get-AzureRmResourceGroup | Select-Object -Last 1 -Wait
+    $scope = '/subscriptions/'+ $subscription[0].Id +'/resourceGroups/' + $resourceGroups[0].ResourceGroupName
+    Assert-AreEqual 1 $users.Count "There should be at least one user to run the test."
+    
+    # Test
+    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("fa1a4d3b-2cca-406b-8956-6b6b32377641")
+    $newAssignment = New-AzureRmRoleAssignment `
+                        -ObjectId $users[0].Id.Guid `
+                        -RoleDefinitionName $definitionName `
+                        -Scope $scope 
+
+    Remove-AzureRmRoleAssignment $newAssignment
+
+    # Assert
+    VerifyRoleAssignmentDeleted $newAssignment
+}
+
+<#
+.SYNOPSIS
 Tests verifies creation and deletion of a RoleAssignments by Scope
 #>
 function Test-RaByScope
