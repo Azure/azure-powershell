@@ -15,12 +15,13 @@ function New-AzVm {
     PROCESS {
         $rgi = [ResourceGroup]::new($ResourceGroupName);
         $vni = [VirtualNetwork]::new($VirtualNetworkName);
+        $piai = [PublicIpAddress]::new($PublicIpAddressName);
+        $sgi = [SecurityGroup]::new($SecurityGroupName);
         $nii = [NetworkInterface]::new(
             $NetworkInterfaceName,
             $vni,
-            [PublicIpAddress]::new($PublicIpAddressName),
-            [SecurityGroup]::new($SecurityGroupName)
-        );
+            $piai,
+            $sgi);
         $vmi = [VirtualMachine]::new($null, $nii, $rgi);
 
         $locationi = [Location]::new();
@@ -33,12 +34,19 @@ function New-AzVm {
             $locationi.Value = $Location;
         }
 
-        # Resource Group
         $resourceGroup = $rgi.GetOrCreate($Name + "ResourceGroup", $locationi.Value, $null);
         $virtualNetwork = $vni.GetOrCreate(
             $Name + "VirtualNetwork",
             $locationi.Value,
             $resourceGroup.ResourceGroupName);
+        $publicIpAddress = $piai.GetOrCreate(
+            $Name + "PublicIpAddress",
+            $locationi.Value,
+            $resourceGroup.ResourceGroupName);
+        $securityGroup = $sgi.GetOrCreate(
+            $Name + "SecurityGroup",
+            $locationi.Value,
+            $resourceGroup.ResourceGroupName)
 
         if (-not $Credential) {
             $Credential = Get-Credential
@@ -64,59 +72,6 @@ function New-AzVm {
         if (-not $vmImage) {
             throw "Unknown image: " + $ImageName
         }
-
-        # Resource Group
-        # $resourceGroup = Set-ResourceGroup -Name $ResourceGroupName -Location $Location
-
-        # Virtual Network
-        <#
-        $virtualNetworkAddressPrefix = "192.168.0.0/16"
-        $subnet = @{ Name = $Name + "Subnet"; AddressPrefix = "192.168.1.0/24" }
-        $subnetConfig = New-AzureRmVirtualNetworkSubnetConfig `
-            -Name $subnet.Name `
-            -AddressPrefix $subnet.AddressPrefix
-        $virtualNetwork = New-AzureRmVirtualNetwork `
-            -ResourceGroupName $ResourceGroupName `
-            -Location $Location `
-            -Name $VirtualNetworkName `
-            -AddressPrefix $virtualNetworkAddressPrefix `
-            -Subnet $subnetConfig
-            #>
-
-        # Piblic IP
-        $publicIpAddress = New-AzureRmPublicIpAddress `
-            -ResourceGroupName $ResourceGroupName `
-            -Location $Location `
-            -AllocationMethod Static `
-            -Name $PublicIpAddressName
-
-        # Security Group (it may have several rules(ports))
-        $securityRule = @{
-            Name = $Name + "SecurityRule";
-            Protocol = "Tcp";
-            Priority = 1000;
-            Access = "Allow";
-            Direction = "Inbound";
-            SourcePortRange = "*";
-            SourceAddressPrefix = "*";
-            DestinationPortRange = 3389;
-            DestinationAddressPrefix = "*";
-        }
-        $securityRuleConfig = New-AzureRmNetworkSecurityRuleConfig `
-            -Name $securityRule.Name `
-            -Protocol $securityRule.Protocol `
-            -Priority $securityRule.Priority `
-            -Access $securityRule.Access `
-            -Direction $securityRule.Direction `
-            -SourcePortRange $securityRule.SourcePortRange `
-            -SourceAddressPrefix $securityRule.SourceAddressPrefix `
-            -DestinationPortRange $securityRule.DestinationPortRange `
-            -DestinationAddressPrefix $securityRule.DestinationAddressPrefix
-        $securityGroup = New-AzureRmNetworkSecurityGroup `
-            -ResourceGroupName $ResourceGroupName `
-            -Location $Location `
-            -Name $SecurityGroupName `
-            -SecurityRules $securityRuleConfig
 
         # Network Interface
         $networkInterface = New-AzureRmNetworkInterface `
@@ -289,6 +244,14 @@ class PublicIpAddress: Resource1 {
     [object] GetInfo() {
         return Get-AzureRMPublicIpAddress -Name $this.Name;
     }
+
+    [object] Create([string] $name, [string] $location, [string] $resourceGroupName) {
+        return New-AzureRmPublicIpAddress `
+            -ResourceGroupName $resourceGroupName `
+            -Location $location `
+            -AllocationMethod Static `
+            -Name $name
+    }
 }
 
 class SecurityGroup: Resource1 {
@@ -297,6 +260,37 @@ class SecurityGroup: Resource1 {
 
     [object] GetInfo() {
         return Get-AzureRMSecurityGroup -Name $this.Name;
+    }
+
+    [object] Create([string] $name, [string] $location, [string] $resourceGroupName) {
+        $securityRule = @{
+            Name = $name;
+            Protocol = "Tcp";
+            Priority = 1000;
+            Access = "Allow";
+            Direction = "Inbound";
+            SourcePortRange = "*";
+            SourceAddressPrefix = "*";
+            DestinationPortRange = 3389;
+            DestinationAddressPrefix = "*";
+        }
+
+        $securityRuleConfig = New-AzureRmNetworkSecurityRuleConfig `
+            -Name $name `
+            -Protocol "Tcp" `
+            -Priority 1000 `
+            -Access "Allow" `
+            -Direction "Inbound" `
+            -SourcePortRange "*" `
+            -SourceAddressPrefix "*" `
+            -DestinationPortRange 3389 `
+            -DestinationAddressPrefix "*"
+
+        return New-AzureRmNetworkSecurityGroup `
+            -ResourceGroupName $resourceGroupName `
+            -Location $location `
+            -Name $name `
+            -SecurityRules $securityRuleConfig
     }
 }
 
@@ -316,7 +310,9 @@ class NetworkInterface: AzureObject {
 
 class VirtualMachine: AzureObject {
     VirtualMachine(
-        [string] $name, [NetworkInterface] $networkInterface, [ResourceGroup] $resourceGroup
+        [string] $name,
+        [NetworkInterface] $networkInterface,
+        [ResourceGroup] $resourceGroup
     ): base($name, @($networkInterface, $resourceGroup)) {
     }
 
@@ -324,7 +320,6 @@ class VirtualMachine: AzureObject {
         return Get-AzureRMVirtualMachine -Name $this.Name;
     }
 }
-
 function New-PsObject {
     param([hashtable] $property)
 
