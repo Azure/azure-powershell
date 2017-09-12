@@ -16,6 +16,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using AutoMapper;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
@@ -157,6 +158,28 @@ namespace Microsoft.Azure.Commands.ContainerInstance
         {
             var resourceGroup = this.ResourceClient.ResourceGroups.Get(resourceGroupName);
             return resourceGroup?.Location;
+        }
+
+        /// <summary>
+        /// Parse resource group from resource id.
+        /// </summary>
+        /// <param name="resourceId">A resource id.</param>
+        public string ParseResourceGroupFromResourceId(string resourceId)
+        {
+            if (string.IsNullOrEmpty(resourceId))
+            {
+                throw new ArgumentNullException("resourceId");
+            }
+
+            Regex r = new Regex(@"(.*?)/resourcegroups/(?<rgname>\S+)/providers/(.*?)", RegexOptions.IgnoreCase);
+            Match m = r.Match(resourceId);
+
+            if (!m.Success)
+            {
+                throw new ArgumentException("Invalid format of resourceId");
+            }
+
+            return m.Groups["rgname"].Value;
         }
 
         /// <summary>
