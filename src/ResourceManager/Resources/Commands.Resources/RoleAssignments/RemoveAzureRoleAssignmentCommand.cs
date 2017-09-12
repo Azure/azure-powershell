@@ -150,9 +150,19 @@ namespace Microsoft.Azure.Commands.Resources
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
-        public override void ExecuteCmdlet()
+		[ValidateNotNullOrEmpty]
+		[Parameter(Position = 0, Mandatory = true, ParameterSetName = ParameterSet.RoleAssignment, HelpMessage = "Role definition.")]
+		public PSRoleAssignment RoleAssignment { get; set; }
+
+		public override void ExecuteCmdlet()
         {
             IEnumerable<PSRoleAssignment> roleAssignments = null;
+			if (RoleAssignment != null) {
+				Scope = RoleAssignment.Scope;
+				ObjectId = RoleAssignment.ObjectId;
+				RoleDefinitionName = RoleAssignment.RoleDefinitionName;
+			}
+
             FilterRoleAssignmentsOptions options = new FilterRoleAssignmentsOptions()
             {
                 Scope = Scope,

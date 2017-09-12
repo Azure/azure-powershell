@@ -671,6 +671,9 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.RoleAssignmentTests\RaUserPermissions_Setup.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.RoleAssignmentTests\RaDeleteByPSRoleAssignment.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.RoleAssignmentTests\RaUserPermissions_Test.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

@@ -520,7 +520,7 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
         public PSADCredential CreateAppPasswordCredential(string appObjectId, PasswordCredential credential)
         {
             ValidatePasswordCredential(credential);
-
+			
             var passwordCredsList = GetAppPasswordCredentials(appObjectId);
 
             // Add new PasswordCredential to existing KeyCredential list
