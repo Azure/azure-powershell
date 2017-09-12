@@ -78,11 +78,11 @@ namespace Microsoft.Azure.Commands.ContainerInstance
             }
             else if (!string.IsNullOrEmpty(this.ResourceId))
             {
-                var resource = this.ResourceClient.Resources.GetById(this.ResourceId, this.ResourceClient.ApiVersion);
+                var resource = this.ResourceClient.Resources.GetById(this.ResourceId, this.ContainerClient.ApiVersion);
                 if (resource != null)
                 {
                     var psContainerGroup = PSContainerGroup.FromContainerGroup(
-                        this.ContainerClient.ContainerGroups.Get(resource.ResourceGroupName, resource.Name));
+                        this.ContainerClient.ContainerGroups.Get(this.ParseResourceGroupFromResourceId(this.ResourceId), resource.Name));
                     this.WriteObject(psContainerGroup);
                 }
             }

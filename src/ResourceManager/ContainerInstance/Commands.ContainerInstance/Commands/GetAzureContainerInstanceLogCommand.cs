@@ -82,13 +82,9 @@ namespace Microsoft.Azure.Commands.ContainerInstance
                 && string.IsNullOrWhiteSpace(containerGroupName)
                 && !string.IsNullOrWhiteSpace(this.ResourceId))
             {
-                var resource = this.ResourceClient.Resources.GetById(this.ResourceId, this.ResourceClient.ApiVersion);
-                if (resource != null)
-                {
-                    var containerGroup = this.ContainerClient.ContainerGroups.Get(resource.ResourceGroupName, resource.Name);
-                    resourceGroupName = resource.ResourceGroupName;
-                    containerGroupName = containerGroup?.Name;
-                }
+                var resource = this.ResourceClient.Resources.GetById(this.ResourceId, this.ContainerClient.ApiVersion);
+                resourceGroupName = this.ParseResourceGroupFromResourceId(this.ResourceId);
+                containerGroupName = resource?.Name;
             }
 
             var containerName = this.Name ?? containerGroupName;

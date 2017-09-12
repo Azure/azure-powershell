@@ -81,10 +81,10 @@ namespace Microsoft.Azure.Commands.ContainerInstance
                 }
                 else if (!string.IsNullOrEmpty(this.ResourceId))
                 {
-                    var resource = this.ResourceClient.Resources.GetById(this.ResourceId, this.ResourceClient.ApiVersion);
+                    var resource = this.ResourceClient.Resources.GetById(this.ResourceId, this.ContainerClient.ApiVersion);
                     if (resource != null)
                     {
-                        containerGroupDeleted = this.ContainerClient.ContainerGroups.Delete(resource.ResourceGroupName, resource.Name);
+                        containerGroupDeleted = this.ContainerClient.ContainerGroups.Delete(this.ParseResourceGroupFromResourceId(this.ResourceId), resource.Name);
                     }
                 }
 
