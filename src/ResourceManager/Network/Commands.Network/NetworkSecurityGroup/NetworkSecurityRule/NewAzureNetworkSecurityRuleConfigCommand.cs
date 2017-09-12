@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
 using Microsoft.Azure.Commands.Network.Models;
 using System.Management.Automation;
 
@@ -30,6 +32,27 @@ namespace Microsoft.Azure.Commands.Network
         {
 
             base.Execute();
+
+            if (!string.IsNullOrWhiteSpace(this.SourceAddressPrefix) && (this.SourceApplicationSecurityGroup != null))
+            {
+                throw new ArgumentException($"{nameof(SourceAddressPrefix)} and {nameof(SourceApplicationSecurityGroup)} cannot be used simultaneously.");
+            }
+
+            if (!string.IsNullOrWhiteSpace(this.SourceAddressPrefix) && (this.SourceApplicationSecurityGroupId != null))
+            {
+                throw new ArgumentException($"{nameof(SourceAddressPrefix)} and {nameof(SourceApplicationSecurityGroupId)} cannot be used simultaneously.");
+            }
+
+            if (!string.IsNullOrWhiteSpace(this.DestinationAddressPrefix) && (this.DestinationApplicationSecurityGroup != null))
+            {
+                throw new ArgumentException($"{nameof(DestinationAddressPrefix)} and {nameof(DestinationApplicationSecurityGroup)} cannot be used simultaneously.");
+            }
+
+            if (!string.IsNullOrWhiteSpace(this.DestinationAddressPrefix) && (this.DestinationApplicationSecurityGroupId != null))
+            {
+                throw new ArgumentException($"{nameof(DestinationAddressPrefix)} and {nameof(DestinationApplicationSecurityGroupId)} cannot be used simultaneously.");
+            }
+
             var rule = new PSSecurityRule();
 
             rule.Name = this.Name;
@@ -43,7 +66,11 @@ namespace Microsoft.Azure.Commands.Network
             rule.Priority = this.Priority;
             rule.Direction = this.Direction;
 
+            SetSourceApplicationSecurityGroupInRule(rule);
+            SetDestinationApplicationSecurityGroupInRule(rule);
+
             WriteObject(rule);
         }
+
     }
 }

@@ -12,7 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Network.Models;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
@@ -68,6 +70,26 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "The application security group set as source for the rule. It cannot be used with 'SourceAddressPrefix' parameter.")]
+        public List<PSApplicationSecurityGroup> SourceApplicationSecurityGroup { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The application security group set as destination for the rule. It cannot be used with 'DestinationAddressPrefix' parameter.")]
+        public List<PSApplicationSecurityGroup> DestinationApplicationSecurityGroup { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The application security group set as source for the rule. It cannot be used with 'SourceAddressPrefix' parameter.")]
+        public List<string> SourceApplicationSecurityGroupId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The application security group set as destination for the rule. It cannot be used with 'DestinationAddressPrefix' parameter.")]
+        public List<string> DestinationApplicationSecurityGroupId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "The description of the rule")]
         [ValidateNotNullOrEmpty]
         [ValidateSet(
@@ -91,5 +113,53 @@ namespace Microsoft.Azure.Commands.Network
             MNM.SecurityRuleDirection.Outbound,
             IgnoreCase = true)]
         public string Direction { get; set; }
+
+        protected void SetDestinationApplicationSecurityGroupInRule(PSSecurityRule rule)
+        {
+            if ((this.DestinationApplicationSecurityGroup != null) || (this.DestinationApplicationSecurityGroupId != null))
+            {
+                rule.DestinationApplicationSecurityGroups = new List<PSApplicationSecurityGroup>();
+            }
+
+            if (this.DestinationApplicationSecurityGroup != null)
+            {
+                foreach (var psApplicationSecurityGroup in this.DestinationApplicationSecurityGroup)
+                {
+                    rule.DestinationApplicationSecurityGroups.Add(psApplicationSecurityGroup);
+                }
+            }
+
+            if (this.DestinationApplicationSecurityGroupId != null)
+            {
+                foreach (var psApplicationSecurityGroupId in this.DestinationApplicationSecurityGroupId)
+                {
+                    rule.DestinationApplicationSecurityGroups.Add(new PSApplicationSecurityGroup { Id = psApplicationSecurityGroupId });
+                }
+            }
+        }
+
+        protected void SetSourceApplicationSecurityGroupInRule(PSSecurityRule rule)
+        {
+            if ((this.SourceApplicationSecurityGroup != null) || (this.SourceApplicationSecurityGroupId != null))
+            {
+                rule.SourceApplicationSecurityGroups = new List<PSApplicationSecurityGroup>();
+            }
+
+            if (this.SourceApplicationSecurityGroup != null)
+            {
+                foreach (var psApplicationSecurityGroup in this.SourceApplicationSecurityGroup)
+                {
+                    rule.SourceApplicationSecurityGroups.Add(psApplicationSecurityGroup);
+                }
+            }
+
+            if (this.SourceApplicationSecurityGroupId != null)
+            {
+                foreach (var psApplicationSecurityGroupId in this.SourceApplicationSecurityGroupId)
+                {
+                    rule.SourceApplicationSecurityGroups.Add(new PSApplicationSecurityGroup { Id = psApplicationSecurityGroupId });
+                }
+            }
+        }
     }
 }

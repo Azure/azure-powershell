@@ -38,6 +38,26 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
+            if (!string.IsNullOrWhiteSpace(this.SourceAddressPrefix) && (this.SourceApplicationSecurityGroup != null))
+            {
+                throw new ArgumentException($"{nameof(SourceAddressPrefix)} and {nameof(SourceApplicationSecurityGroup)} cannot be used simultaneously.");
+            }
+
+            if (!string.IsNullOrWhiteSpace(this.SourceAddressPrefix) && (this.SourceApplicationSecurityGroupId != null))
+            {
+                throw new ArgumentException($"{nameof(SourceAddressPrefix)} and {nameof(SourceApplicationSecurityGroupId)} cannot be used simultaneously.");
+            }
+
+            if (!string.IsNullOrWhiteSpace(this.DestinationAddressPrefix) && (this.DestinationApplicationSecurityGroup != null))
+            {
+                throw new ArgumentException($"{nameof(DestinationAddressPrefix)} and {nameof(DestinationApplicationSecurityGroup)} cannot be used simultaneously.");
+            }
+
+            if (!string.IsNullOrWhiteSpace(this.DestinationAddressPrefix) && (this.DestinationApplicationSecurityGroupId != null))
+            {
+                throw new ArgumentException($"{nameof(DestinationAddressPrefix)} and {nameof(DestinationApplicationSecurityGroupId)} cannot be used simultaneously.");
+            }
+
             // Verify if the subnet exists in the NetworkSecurityGroup
             var rule = this.NetworkSecurityGroup.SecurityRules.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
@@ -55,6 +75,9 @@ namespace Microsoft.Azure.Commands.Network
             rule.Access = this.Access;
             rule.Priority = this.Priority;
             rule.Direction = this.Direction;
+
+            SetSourceApplicationSecurityGroupInRule(rule);
+            SetDestinationApplicationSecurityGroupInRule(rule);
 
             WriteObject(this.NetworkSecurityGroup);
         }

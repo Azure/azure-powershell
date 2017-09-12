@@ -114,6 +114,20 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "ApplicationGatewayBackendAddressPools")]
         public List<PSApplicationGatewayBackendAddressPool> ApplicationGatewayBackendAddressPool { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "SetByResourceId",
+            HelpMessage = "ApplicationSecurityGroupId")]
+        public List<string> ApplicationSecurityGroupId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "SetByResource",
+            HelpMessage = "PSApplicationSecurityGroup")]
+        public List<PSApplicationSecurityGroup> ApplicationSecurityGroup { get; set; }
+
         public override void Execute()
         {        
             if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResource))
