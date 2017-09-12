@@ -83,6 +83,7 @@ CmdletsToExport = 'Get-AzureRmUsage', 'Get-AzureRmMetricDefinition',
                'Add-AzureRmMetricAlertRule', 'Add-AzureRmLogAlertRule', 
                'Add-AzureRmWebtestAlertRule', 'Get-AzureRmAlertHistory', 
                'Get-AzureRmAlertRule', 'New-AzureRmAlertRuleEmail', 
+               'New-AzureRmAlertRuleWebhook', 'Remove-AzureRmAlertRule',
                'New-AzureRmActionGroupReceiver', 'Set-AzureRmActionGroup', 'Get-AzureRmActionGroup', 'Remove-AzureRmActionGroup'
                
 
