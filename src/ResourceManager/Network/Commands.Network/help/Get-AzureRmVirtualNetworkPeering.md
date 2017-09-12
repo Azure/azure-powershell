@@ -25,10 +25,10 @@ The **Get-AzureRmVirtualNetworkPeering** cmdlet gets the virtual network peering
 
 ### Example 1: Get a peering between two virtual networks
 ```
-PS C:\>Get-AzureRmVirtualNetworkPeering -Name "LinkToVNet2" -VirtualNetwork "MyVirtualNetwork" -ResourceGroupName "MyResourceGroup"
-```
+# Get virtual network peering named myVnet1TomyVnet2 located in myVirtualNetwork in the resource group named myResourceGroup.
 
-This command gets a previously created virtual network peering named LinkToVNet2 located in MyVirtualNetwork in the resource group named MyResourceGroup.
+Get-AzureRmVirtualNetworkPeering -Name "myVnet1TomyVnet2" -VirtualNetwork "myVnet" -ResourceGroupName "myResourceGroup"
+```
 
 ## PARAMETERS
 
