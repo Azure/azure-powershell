@@ -105,7 +105,7 @@ Accept wildcard characters: False
 ```
 
 ### -Scope
-Determines the scope of context changes, for example, wheher changes apply only to the cusrrent process, or to all sessions started by this user.
+Determines the scope of context changes, for example, whether changes apply only to the current process, or to all sessions started by this user.
 
 ```yaml
 Type: ContextModificationScope
@@ -156,11 +156,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Common.Authentication.Models.AzureRMProfile
-System.String
+Contains the set of credentials, accounts, and subscriptions that are used to communicate with Azure.
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Profile.Models.PSAzureProfile
+Contains the set of credentials, accounts, and subscriptions that can be used to communicate with Azure.
 
 ## NOTES
 

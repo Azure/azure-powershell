@@ -369,7 +369,7 @@ Accept wildcard characters: False
 ```
 
 ### -Scope
-Determines the scope of context changes, for example, wheher changes apply only to the cusrrent process, or to all sessions started by this user
+Determines the scope of context changes, for example, whether changes apply only to the current process, or to all sessions started by this user.
 
 ```yaml
 Type: ContextModificationScope

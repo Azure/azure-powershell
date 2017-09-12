@@ -40,7 +40,7 @@ Gets the metadata used to authenticate Azure Resource Manager requests.
 
 ### [Get-AzureRmContextAutosaveSetting](Get-AzureRmContextAutosaveSetting.md)
 Display metadata about the context autosave feature, including whterh the context is 
-automaticallys aved, and where saved context and credential information cna be found.
+automatically saved, and where saved context and credential information can be found.
 
 ### [Get-AzureRmEnvironment](Get-AzureRmEnvironment.md)
 Get endpoints and metadata for an instance of Azure services.

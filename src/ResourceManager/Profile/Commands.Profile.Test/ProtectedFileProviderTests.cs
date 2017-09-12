@@ -107,9 +107,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             {
 
                 Assert.Contains(protectedFile, Assert.Throws<UnauthorizedAccessException>(() => ProtectedFileProvider.CreateFileProvider(protectedFile, FileProtection.SharedRead, store.Object).Stream).Message);
-                store.Verify(d => d.OpenForSharedRead(It.IsAny<string>()), Times.Exactly(4));
+                store.Verify(d => d.OpenForSharedRead(It.IsAny<string>()), Times.Exactly(ProtectedFileProvider.MaxTries + 1));
                 Assert.Contains(protectedFile, Assert.Throws<UnauthorizedAccessException>(() => ProtectedFileProvider.CreateFileProvider(protectedFile, FileProtection.ExclusiveWrite, store.Object).Stream).Message);
-                store.Verify(d => d.OpenForExclusiveWrite(It.IsAny<string>()), Times.Exactly(4));
+                store.Verify(d => d.OpenForExclusiveWrite(It.IsAny<string>()), Times.Exactly(ProtectedFileProvider.MaxTries + 1));
             }
             finally
             {

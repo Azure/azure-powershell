@@ -71,7 +71,7 @@ In this example, all currently available contexts are displayed.  The user may s
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, tenant and subscription used for communication with azure
+The credentials, account, tenant and subscription used for communication with azure
 
 ```yaml
 Type: IAzureContextContainer

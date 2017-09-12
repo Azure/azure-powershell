@@ -18,8 +18,8 @@ Get-AzureRmContextAutosaveSetting [-Scope <ContextModificationScope>]
 ```
 
 ## DESCRIPTION
-Display metadata about the context autosave feature, including whterh the context is 
-automaticallys aved, and where saved context and credential information cna be found.
+Display metadata about the context autosave feature, including whether the context is 
+automatically saved, and where saved context and credential information can be found.
 
 ## EXAMPLES
 
@@ -56,7 +56,7 @@ to the default location.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, tenant and subscription used for communication with azure
+The credentials, account, tenant and subscription used for communication with azure
 
 ```yaml
 Type: IAzureContextContainer
@@ -71,7 +71,7 @@ Accept wildcard characters: False
 ```
 
 ### -Scope
-Determines the scope of context changes, for example, wheher changes apply only to the cusrrent process, or to all sessions started by this user
+Determines the scope of context changes, for example, whether changes apply only to the current process, or to all sessions started by this user.
 
 ```yaml
 Type: ContextModificationScope

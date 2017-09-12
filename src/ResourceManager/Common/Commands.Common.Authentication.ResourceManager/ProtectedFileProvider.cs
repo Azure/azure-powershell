@@ -33,8 +33,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager
     /// </summary>
     public abstract class ProtectedFileProvider : IFileProvider, IDisposable
     {
-        const int MaxTries = 3;
-        static readonly TimeSpan RetryInterval = TimeSpan.FromSeconds(5);
+        public const int MaxTries = 30;
+        static readonly TimeSpan RetryInterval = TimeSpan.FromMilliseconds(500);
         protected Stream _stream;
         object _initializationLock = new object();
         public string FilePath { get; set; }
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager
                 catch (IOException)
                 {
                     tries++;
-                    // TestMockSupport.Delay(RetryInterval);
+                    TestMockSupport.Delay(RetryInterval);
                 }
             }
             while (tries <= MaxTries && stream == null);

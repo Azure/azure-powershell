@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Profile.Common
     /// </summary>
     public class AzureContextModificationCmdlet : AzureRMCmdlet
     {
-        [Parameter(Mandatory = false, HelpMessage = "Determines the scope of context changes, for example, wheher changes apply only to the cusrrent process, or to all sessions started by this user")]
+        [Parameter(Mandatory = false, HelpMessage = "Determines the scope of context changes, for example, whether changes apply only to the current process, or to all sessions started by this user.")]
         public ContextModificationScope Scope { get; set; }
 
 
