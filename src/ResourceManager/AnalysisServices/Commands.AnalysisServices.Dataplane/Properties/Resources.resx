@@ -148,6 +148,9 @@
     <value>Synchronization failed. Check above </value>
   </data>
   <data name="SyncASPollStatusFailureMessage" xml:space="preserve">
-    <value>Failed to get the status of the sync operation. ServerName: {0}, RootActivityId: {1}, Date (UTC): {2}.</value>
+    <value>Failed to get the status of the sync operation. ServerName: {0}, RootActivityId: {1}, Date (UTC): {2}. Details: {3}</value>
+  </data>
+  <data name="PostSyncRequestFailureMessage" xml:space="preserve">
+    <value>Failed to send sync request to specified server. ServerName: {0}, CorrelationId: {1}, Date (UTC): {2}, Details: {3}.</value>
   </data>
 </root>

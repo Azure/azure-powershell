@@ -4,16 +4,17 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
 {
     public sealed class ScaleOutServerDatabaseSyncDetails
     {
-        internal static ScaleOutServerDatabaseSyncDetails FromResult(ScaleOutServerDatabaseSyncResult result)
+        internal static ScaleOutServerDatabaseSyncDetails FromResult(ScaleOutServerDatabaseSyncResult result, string correlationId)
         {
             var details = new ScaleOutServerDatabaseSyncDetails
             {
+                CorrelationId = correlationId,
                 OperationId = result.OperationId,
                 Database = result.Database,
                 UpdatedAt = result.UpdatedAt,
                 StartedAt = result.StartedAt,
                 Details = result.Details,
-                SyncState = DatabaseSyncState.Failed
+                SyncState = DatabaseSyncState.Invalid
             };
 
             if (result.SyncState == DatabaseSyncState.Completed)
@@ -23,6 +24,8 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
 
             return details;
         }
+
+        public string CorrelationId { get; set; }
 
         public string OperationId { get; set; }
 

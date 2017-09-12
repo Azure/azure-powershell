@@ -68,7 +68,7 @@ FunctionsToExport = '*'
 CmdletsToExport = 'Add-AzureAnalysisServicesAccount',
                 'Restart-AzureAnalysisServicesInstance',
                 'Export-AzureAnalysisServicesInstanceLog',
-                'Synchronize-AzureAnalysisServicesInstance'
+                'Sync-AzureAnalysisServicesInstance'
   
 # Variables to export from this module  
 VariablesToExport = '*'  

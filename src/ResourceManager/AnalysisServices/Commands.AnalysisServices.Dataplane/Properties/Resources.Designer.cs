@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -115,6 +115,15 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed to send sync request to specified server. ServerName: {0}, CorrelationId: {1}, Date (UTC): {2}, Details: {3}..
+        /// </summary>
+        internal static string PostSyncRequestFailureMessage {
+            get {
+                return ResourceManager.GetString("PostSyncRequestFailureMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Restart Analysis Services Server.
         /// </summary>
         internal static string RestartingAnalysisServicesServer {
@@ -124,7 +133,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed to get the status of the sync operation. ServerName: {0}, RootActivityId: {1}, Date (UTC): {2}..
+        ///   Looks up a localized string similar to Failed to get the status of the sync operation. ServerName: {0}, RootActivityId: {1}, Date (UTC): {2}. Details: {3}.
         /// </summary>
         internal static string SyncASPollStatusFailureMessage {
             get {

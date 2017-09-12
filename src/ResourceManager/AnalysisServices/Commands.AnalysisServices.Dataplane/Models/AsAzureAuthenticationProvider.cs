@@ -73,6 +73,10 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
                         resourceRedirectUri,
                         promptBehavior);
                 }
+
+                asAzureContext.Account.Id = result.UserInfo.DisplayableId;
+                asAzureContext.Account.Tenant = result.TenantId;
+                asAzureContext.Account.UniqueId = result.UserInfo.UniqueId;
             }
             else
             {
