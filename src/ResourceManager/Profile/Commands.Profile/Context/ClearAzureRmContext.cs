@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
@@ -26,11 +27,11 @@ namespace Microsoft.Azure.Commands.Profile.Context
     [OutputType(typeof(bool))]
     public class ClearAzureRmContext : AzureRMCmdlet
     {
-        [Parameter(Mandatory = false, HelpMessage ="Clear the context only for the current PowerShell session, or for all sessions.")]
+        [Parameter(Mandatory = true, HelpMessage ="Clear the context only for the current PowerShell session, or for all sessions.")]
         public ContextModificationScope Scope { get; set; } = ContextModificationScope.Process;
 
         [Parameter(Mandatory = false, HelpMessage="Return a value indicating success or failure")]
-        public SwitchParameter PassThrough { get; set; }
+        public SwitchParameter PassThru { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Delete all users and groups from the global scope without prompting")]
         public SwitchParameter Force { get; set; }
@@ -44,16 +45,13 @@ namespace Microsoft.Azure.Commands.Profile.Context
                         () => 
                         {
                             bool result = false;
-                            if (AzureSession.Instance.TokenCache != null)
+                            var profile = DefaultProfile as AzureRmProfile;
+                            if (profile != null)
                             {
-                                AzureSession.Instance.TokenCache.Clear();
-                            }
-                            if (DefaultProfile != null)
-                            {
-                                DefaultProfile.Clear();
+                                profile.Clear();
                                 result = true;
                             }
-                            if (PassThrough.IsPresent)
+                            if (PassThru.IsPresent)
                             {
                                 WriteObject(result);
                             }
@@ -81,7 +79,7 @@ namespace Microsoft.Azure.Commands.Profile.Context
                                 }
                             }
 
-                            if (PassThrough.IsPresent)
+                            if (PassThru.IsPresent)
                             {
                                 WriteObject(result);
                             }

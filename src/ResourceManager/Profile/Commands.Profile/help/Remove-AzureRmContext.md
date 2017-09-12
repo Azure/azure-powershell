@@ -11,8 +11,15 @@ Remove a context from the set of available contexts
 
 ## SYNTAX
 
+### Input Object (Default)
 ```
-Remove-AzureRmContext [-Force] [-PassThrough] [-Scope <ContextModificationScope>]
+Remove-AzureRmContext -InputObject <PSAzureContext> [-Force] [-PassThru] [-Scope <ContextModificationScope>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### Named Context
+```
+Remove-AzureRmContext [-Force] [-PassThru] [-Scope <ContextModificationScope>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-Name] <String> [<CommonParameters>]
 ```
 
@@ -60,14 +67,29 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+A context object, normally passed through the pipeline.
+
+```yaml
+Type: PSAzureContext
+Parameter Sets: Input Object
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the context
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Named Context
 Aliases: 
-Accepted values: Default
+Accepted values: [contrib@AzureSDKTeam.onmicrosoft.com, 0b1f6471-1bf0-4dda-aec3-cb9272f09590], [markcowl@microsoft.com, 00977cdb-163f-435f-9c32-39ec8ae61f4d]
 
 Required: True
 Position: 0
@@ -76,7 +98,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThrough
+### -PassThru
 Return the removed context
 
 ```yaml

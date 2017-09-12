@@ -21,7 +21,7 @@ Turn off autosaving Azure credentials.  Your login information will be forgotten
 
 ## EXAMPLES
 
-### Example 1
+### Disable autosaving the context
 ```
 PS C:\> Disable-AzureRmContextAutosave
 ```
@@ -31,7 +31,7 @@ Disable autosave for the current user.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credeetnails, tenant and subscription used for communication with azure
+The credentials, tenant and subscription used for communication with azure
 
 ```yaml
 Type: IAzureContextContainer
@@ -102,6 +102,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Common.Authentication.ContextAutosaveSettings
+Information about the current Autosave settings, including whether Autosave is enabled for the current user, and where context and credential files are saved.
 
 ## NOTES
 

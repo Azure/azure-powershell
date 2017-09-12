@@ -11,8 +11,15 @@ Rename an Azure context.  By default contexts are named by user account and subs
 
 ## SYNTAX
 
+### Input Object (Default)
 ```
-Rename-AzureRmContext [-Force] [-PassThrough] [-Scope <ContextModificationScope>]
+Rename-AzureRmContext -InputObject <PSAzureContext> [-Force] [-PassThru] [-Scope <ContextModificationScope>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-TargetName] <String> [<CommonParameters>]
+```
+
+### Context Name
+```
+Rename-AzureRmContext [-Force] [-PassThru] [-Scope <ContextModificationScope>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SourceName] <String> [-TargetName] <String>
  [<CommonParameters>]
 ```
@@ -41,7 +48,7 @@ Select-AzureRmContext Work
 ## PARAMETERS
 
 ### -DefaultProfile
-The credeetnails, tenant and subscription used for communication with azure
+The credentials, tenant and subscription used for communication with azure
 
 ```yaml
 Type: IAzureContextContainer
@@ -70,8 +77,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThrough
-Return the renamed context
+### -InputObject
+A context object, normally passed through the pipeline.
+
+```yaml
+Type: PSAzureContext
+Parameter Sets: Input Object
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -PassThru
+Return the renamed context.
 
 ```yaml
 Type: SwitchParameter
@@ -106,9 +128,9 @@ The name of the context
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Context Name
 Aliases: 
-Accepted values: Default
+Accepted values: [contrib@AzureSDKTeam.onmicrosoft.com, 0b1f6471-1bf0-4dda-aec3-cb9272f09590], [markcowl@microsoft.com, 00977cdb-163f-435f-9c32-39ec8ae61f4d]
 
 Required: True
 Position: 0

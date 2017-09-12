@@ -22,22 +22,26 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Profile.Context
 {
-    [Cmdlet(VerbsCommon.Rename, "AzureRmContext", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Rename, "AzureRmContext", SupportsShouldProcess = true, DefaultParameterSetName = InputObjectParameterSet)]
     [OutputType(typeof(PSAzureContext))]
     public class RenameAzureRmContext : AzureContextModificationCmdlet, IDynamicParameters
     {
-        const string SourceParameterName = "SourceName", TargetParameterName = "TargetName";
+        const string SourceParameterName = "SourceName", TargetParameterName = "TargetName", InputObjectParameterSet = "Input Object", NameParameterSet = "Context Name";
+        [Parameter(Mandatory = true, ParameterSetName = InputObjectParameterSet, ValueFromPipeline = true, HelpMessage = "A context object, normally passed through the pipeline.")]
+        [ValidateNotNullOrEmpty]
+        public PSAzureContext InputObject { get; set; }
+
         [Parameter( Mandatory=false, HelpMessage="Rename the context even if the target context already exists")]
         public SwitchParameter Force { get; set; }
 
         [Parameter(Mandatory=false, HelpMessage="Return the renamed context")]
-        public SwitchParameter PassThrough { get; set; }
+        public SwitchParameter PassThru { get; set; }
 
         public object GetDynamicParameters()
         {
             var parameters = new RuntimeDefinedParameterDictionary();
             RuntimeDefinedParameter sourceNameParameter;
-            if (TryGetExistingContextNameParameter(SourceParameterName, out sourceNameParameter))
+            if (TryGetExistingContextNameParameter(SourceParameterName, NameParameterSet, out sourceNameParameter))
             {
                 parameters.Add(sourceNameParameter.Name, sourceNameParameter);
                 var attributes = new Collection<Attribute>()
@@ -54,9 +58,18 @@ namespace Microsoft.Azure.Commands.Profile.Context
 
         public override void ExecuteCmdlet()
         {
-            if (MyInvocation.BoundParameters.ContainsKey(SourceParameterName) && MyInvocation.BoundParameters.ContainsKey(TargetParameterName))
+            string sourceName = null;
+            if (ParameterSetName == InputObjectParameterSet)
             {
-                var sourceName = MyInvocation.BoundParameters[SourceParameterName] as string;
+                sourceName = InputObject?.Name;
+            }
+            else if (MyInvocation.BoundParameters.ContainsKey(SourceParameterName))
+            {
+                sourceName = MyInvocation.BoundParameters[SourceParameterName] as string;
+            }
+
+            if (!string.IsNullOrWhiteSpace(sourceName) && MyInvocation.BoundParameters.ContainsKey(TargetParameterName))
+            {
                 var targetName = MyInvocation.BoundParameters[TargetParameterName] as string;
                 var defaultProfile = DefaultProfile as AzureRmProfile;
                 if (!string.IsNullOrWhiteSpace(sourceName) && !string.IsNullOrWhiteSpace(targetName) && defaultProfile != null && !string.Equals(sourceName, targetName, StringComparison.OrdinalIgnoreCase))
@@ -77,7 +90,7 @@ namespace Microsoft.Azure.Commands.Profile.Context
                                     if (client.TryRenameContext(sourceName, targetName) 
                                         && (!string.Equals(targetName, defaultContextName, StringComparison.OrdinalIgnoreCase) 
                                             || client.TrySetDefaultContext(targetName)) 
-                                        && PassThrough.IsPresent)
+                                        && PassThru.IsPresent)
                                     {
                                         var outContext = new PSAzureContext(profile.Contexts[targetName]);
                                         outContext.Name = targetName;

@@ -170,7 +170,7 @@ Accept wildcard characters: False
 ```
 
 ### -ContextName
-Name of the default context from this login
+Name of the default context from this login.  You will be able to select this context by this name after login.
 
 ```yaml
 Type: String
@@ -296,6 +296,7 @@ Determines the scope of context changes, for example, wheher changes apply only 
 Type: ContextModificationScope
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Process, CurrentUser
 
 Required: False
 Position: Named
@@ -405,6 +406,7 @@ Parameter 'SubscriptionName' accepts value of type 'String' from the pipeline
 ## OUTPUTS
 
 ### PSAzureProfile
+Credentials, subscription, account, and tenant information for the logged in user.
 
 ## NOTES
 

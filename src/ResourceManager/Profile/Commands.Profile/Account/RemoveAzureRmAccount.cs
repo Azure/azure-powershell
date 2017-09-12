@@ -112,7 +112,11 @@ namespace Microsoft.Azure.Commands.Profile
 
                 if (ShouldProcess(string.Format("Log out principal '{0}'", azureAccount.Id), "log out"))
                 {
-                    AzureSession.Instance.AuthenticationFactory.RemoveUser(azureAccount, AzureSession.Instance.TokenCache);
+                    if (GetContextModificationScope() == ContextModificationScope.CurrentUser)
+                    {
+                        AzureSession.Instance.AuthenticationFactory.RemoveUser(azureAccount, AzureSession.Instance.TokenCache);
+                    }
+
                     if (AzureRmProfileProvider.Instance.Profile != null)
                     {
 

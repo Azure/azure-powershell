@@ -12,7 +12,7 @@ Remove all Azure credentials, account, and subscription information.
 ## SYNTAX
 
 ```
-Clear-AzureRmContext [-Scope <ContextModificationScope>] [-PassThrough] [-Force]
+Clear-AzureRmContext -Scope <ContextModificationScope> [-PassThru] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -23,15 +23,15 @@ Remove all Azure Credentials, account, and subscription information.
 
 ### Clear global context
 ```
-PS C:\> Clear-AzureRmContext
+PS C:\> Clear-AzureRmContext -Scope CurrentUser
 ```
 
-Remove all account, subscription, and credential information form the current user.
+Remove all account, subscription, and credential information for any powershell session.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credeetnails, tenant and subscription used for communication with azure
+The credentials, tenant and subscription used for communication with azure
 
 ```yaml
 Type: IAzureContextContainer
@@ -60,7 +60,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThrough
+### -PassThru
 Return a value indicating success or failure
 
 ```yaml
@@ -84,7 +84,7 @@ Parameter Sets: (All)
 Aliases: 
 Accepted values: Process, CurrentUser
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -132,6 +132,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### System.Boolean
+True if the context was successfully cleared, false otherwise.
 
 ## NOTES
 

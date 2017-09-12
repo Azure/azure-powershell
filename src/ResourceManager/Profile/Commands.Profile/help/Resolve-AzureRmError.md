@@ -168,7 +168,7 @@ Get details of the specified error.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credeetnails, tenant and subscription used for communication with azure
+The credentials, tenant and subscription used for communication with azure
 
 ```yaml
 Type: IAzureContextContainer
@@ -222,10 +222,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Profile.Errors.AzureErrorRecord
+Information about a powershell error that does not involve an excpetion.
 
 ### Microsoft.Azure.Commands.Profile.Errors.AzureExceptionRecord
+Information about an error including detailed information on the exception that raised the error.
 
 ### Microsoft.Azure.Commands.Profile.Errors.AzureRestExceptionRecord
+Information about errors in cleint/server communications.  This will often contain important information about the error from the server.
 
 ## NOTES
 

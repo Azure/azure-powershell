@@ -11,17 +11,9 @@ Sets the tenant, subscription, and environment for cmdlets to use in the current
 
 ## SYNTAX
 
-### Subscription (Default)
+### Context (Default)
 ```
-Set-AzureRmContext [-Tenant <String>] [-Subscription <String>]
- [-ExtendedProperty <System.Collections.Generic.IDictionary`2[System.String,System.String]>] [-Name <String>]
- [-Force] [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### Context
-```
-Set-AzureRmContext -Context <PSAzureContext>
+Set-AzureRmContext [-Context] <PSAzureContext>
  [-ExtendedProperty <System.Collections.Generic.IDictionary`2[System.String,System.String]>] [-Name <String>]
  [-Force] [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -29,7 +21,7 @@ Set-AzureRmContext -Context <PSAzureContext>
 
 ### TenantObject
 ```
-Set-AzureRmContext -TenantObject <PSAzureTenant>
+Set-AzureRmContext [-TenantObject] <PSAzureTenant>
  [-ExtendedProperty <System.Collections.Generic.IDictionary`2[System.String,System.String]>] [-Name <String>]
  [-Force] [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -37,7 +29,23 @@ Set-AzureRmContext -TenantObject <PSAzureTenant>
 
 ### SubscriptionObject
 ```
-Set-AzureRmContext -SubscriptionObject <PSAzureSubscription>
+Set-AzureRmContext [-SubscriptionObject] <PSAzureSubscription>
+ [-ExtendedProperty <System.Collections.Generic.IDictionary`2[System.String,System.String]>] [-Name <String>]
+ [-Force] [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### Subscription
+```
+Set-AzureRmContext [-Tenant <String>] [-Subscription] <String>
+ [-ExtendedProperty <System.Collections.Generic.IDictionary`2[System.String,System.String]>] [-Name <String>]
+ [-Force] [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### TenantNameOnly
+```
+Set-AzureRmContext -Tenant <String>
  [-ExtendedProperty <System.Collections.Generic.IDictionary`2[System.String,System.String]>] [-Name <String>]
  [-Force] [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -72,7 +80,7 @@ Parameter Sets: Context
 Aliases: 
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -145,6 +153,7 @@ Determines the scope of context changes, for example, wheher changes apply only 
 Type: ContextModificationScope
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Process, CurrentUser
 
 Required: False
 Position: Named
@@ -161,8 +170,8 @@ Type: String
 Parameter Sets: Subscription
 Aliases: SubscriptionId, SubscriptionName
 
-Required: False
-Position: Named
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -177,7 +186,7 @@ Parameter Sets: SubscriptionObject
 Aliases: 
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -198,6 +207,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+```yaml
+Type: String
+Parameter Sets: TenantNameOnly
+Aliases: Domain, TenantId
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -TenantObject
 A Tenant Object
 
@@ -207,7 +228,7 @@ Parameter Sets: TenantObject
 Aliases: 
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
