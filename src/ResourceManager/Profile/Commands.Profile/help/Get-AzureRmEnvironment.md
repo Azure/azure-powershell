@@ -104,7 +104,7 @@ This example shows how to get the endpoints and metadata for the AzureUSGovernme
 ## PARAMETERS
 
 ### -DefaultProfile
-The credeetnails, tenant and subscription used for communication with azure.
+The credentials, account, tenant and subscription used for communication with azure.
 
 ```yaml
 Type: IAzureContextContainer

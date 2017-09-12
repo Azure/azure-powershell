@@ -42,7 +42,7 @@ Remove-AzureRmAccount [-AzureContext] <PSAzureContext> [-Scope <ContextModificat
 ```
 
 ## DESCRIPTION
-Remove all credentials, and contexts (subscription and tenant information) associated witht he given account.  After 
+Remove all credentials, and contexts (subscription and tenant information) associated with the given account.  After 
 executing this cmdlet, you will need to login again using Add-AzureRmAccount
 
 ## EXAMPLES
@@ -59,7 +59,7 @@ Logs out the account associated with the current context.
 PS C:\> Get-AzureRmContext "Work" | Remove-AzureRmAccount -Scope CurrentUser
 ```
 
-Logs out the account associated with the given context (named 'Work'). Because this uses the 'CurrewntUser' scope, all credentials and 
+Logs out the account associated with the given context (named 'Work'). Because this uses the 'CurrentUser' scope, all credentials and 
 contexts will be permanently deleted.
 
 ### Log out a particular user
@@ -147,7 +147,7 @@ Accept wildcard characters: False
 ```
 
 ### -Scope
-Determines the scope of context changes, for example, whether changes apply only to the cusrrent process, or to all sessions started by this user
+Determines the scope of context changes, for example, whether changes apply only to the current process, or to all sessions started by this user.
 
 ```yaml
 Type: ContextModificationScope

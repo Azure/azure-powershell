@@ -40,7 +40,7 @@ This example shows how to disable data collection for the current user.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credeetnails, tenant and subscription used for communication with azure.
+The credentials, account, tenant and subscription used for communication with azure.
 
 ```yaml
 Type: IAzureContextContainer
