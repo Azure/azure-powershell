@@ -10,17 +10,16 @@ schema: 2.0.0
 Display metadata about the context autosave feature, including whterh the context is 
 automaticallys aved, and where saved context and credential information cna be found.
 
-
 ## SYNTAX
 
 ```
 Get-AzureRmContextAutosaveSetting [-Scope <ContextModificationScope>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 Display metadata about the context autosave feature, including whterh the context is 
 automaticallys aved, and where saved context and credential information cna be found.
-
 
 ## EXAMPLES
 
@@ -57,7 +56,7 @@ to the default location.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credeetnails, tenant and subscription used for communication with azure
+The credentials, tenant and subscription used for communication with azure
 
 ```yaml
 Type: IAzureContextContainer
@@ -87,15 +86,17 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### None
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Common.Authentication.ContextAutosaveSettings
-
+Information about the current Autosave settings, including whether Autosave is enabled for the current user, and where context and credential files are saved.
 
 ## NOTES
 

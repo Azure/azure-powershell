@@ -8,7 +8,7 @@ Locale: en-US
 
 # AzureRM.Profile Module
 ## Description
-{{Manually Enter Description Here}}
+Manages credentials and common configuration for all Azure modules.
 
 ## AzureRM.Profile Cmdlets
 ### [Add-AzureRmAccount](Add-AzureRmAccount.md)
@@ -55,7 +55,7 @@ Gets tenants that are authorized for the current user.
 Loads Azure authentication information from a file.
 
 ### [Remove-AzureRmAccount](Remove-AzureRmAccount.md)
-Removes account credentials and associated subscriptions and tenants.
+Remove all credentials and contexts associated with this account.
 
 ### [Remove-AzureRmContext](Remove-AzureRmContext.md)
 Remove a context from the set of available contexts
@@ -73,7 +73,7 @@ Display detailed information about PowerShell errors, with extended details for 
 Saves the current authentication information for use in other PowerShell sessions.
 
 ### [Select-AzureRmContext](Select-AzureRmContext.md)
-Select a subscription to target (or account, tenant) in Azure PowerShell cmdlets.
+Select a subscription to target (or account, tenant) in Azure PowerShell cmdlets
 
 ### [Send-Feedback](Send-Feedback.md)
 Sends feedback to the Azure PowerShell team via a set of guided prompts.

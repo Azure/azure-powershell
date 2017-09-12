@@ -102,6 +102,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Common.Authentication.ContextAutosaveSettings
+Information about the current Autosave settings, including whether Autosave is enabled for the current user, and where context and credential files are saved.
 
 ## NOTES
 

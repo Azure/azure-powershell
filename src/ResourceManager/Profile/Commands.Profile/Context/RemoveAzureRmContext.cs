@@ -17,25 +17,31 @@ using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.Profile.Properties;
 using System;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Profile.Context
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmContext", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmContext", SupportsShouldProcess = true, DefaultParameterSetName = InputObjectParameterSet)]
     [OutputType(typeof(PSAzureContext))]
     public class RemoveAzureRmContext : AzureContextModificationCmdlet, IDynamicParameters
     {
+        const string NamedContextParameterSet = "Named Context", InputObjectParameterSet = "Input Object";
+        [Parameter(Mandatory = true, ParameterSetName = InputObjectParameterSet, ValueFromPipeline = true, HelpMessage = "A context object, normally passed through the pipeline.")]
+        [ValidateNotNullOrEmpty]
+        public PSAzureContext InputObject { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Remove context even if it is the defualt")]
         public SwitchParameter Force { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Return the removed context")]
-        public SwitchParameter PassThrough { get; set; }
+        public SwitchParameter PassThru { get; set; }
 
         public object GetDynamicParameters()
         {
             var parameters = new RuntimeDefinedParameterDictionary();
             RuntimeDefinedParameter namedParameter;
-            if (TryGetExistingContextNameParameter("Name", out namedParameter))
+            if (TryGetExistingContextNameParameter("Name", NamedContextParameterSet, out namedParameter))
             {
                 parameters.Add(namedParameter.Name, namedParameter);
             }
@@ -45,34 +51,40 @@ namespace Microsoft.Azure.Commands.Profile.Context
 
         public override void ExecuteCmdlet()
         {
-            if (MyInvocation.BoundParameters.ContainsKey("Name"))
+            string name = null;
+            if (ParameterSetName == InputObjectParameterSet)
             {
-                string name = MyInvocation.BoundParameters["Name"] as string;
-                if (name != null)
-                {
-                    var defaultProfile = DefaultProfile as AzureRmProfile;
-                    ConfirmAction(Force.IsPresent,
-                        string.Format(Resources.RemoveDefaultContextQuery, name),
-                        string.Format(Resources.RemoveContextMessage, name),
-                        Resources.RemoveContextTarget,
-                        () =>
+                name = InputObject?.Name;
+            }
+            else if (MyInvocation.BoundParameters.ContainsKey("Name"))
+            {
+                name = MyInvocation.BoundParameters["Name"] as string;
+            }
+
+            if (!string.IsNullOrWhiteSpace(name))
+            {
+                var defaultProfile = DefaultProfile as AzureRmProfile;
+                ConfirmAction(Force.IsPresent,
+                    string.Format(Resources.RemoveDefaultContextQuery, name),
+                    string.Format(Resources.RemoveContextMessage, name),
+                    Resources.RemoveContextTarget,
+                    () =>
+                    {
+                        ModifyContext((profile, client) =>
                         {
-                            ModifyContext((profile, client) =>
+                            if (profile.Contexts.ContainsKey(name))
                             {
-                                if (profile.Contexts.ContainsKey(name))
+                                var removedContext = profile.Contexts[name];
+                                if (client.TryRemoveContext(name) && PassThru.IsPresent)
                                 {
-                                    var removedContext = profile.Contexts[name];
-                                    if (client.TryRemoveContext(name) && PassThrough.IsPresent)
-                                    {
-                                        var outContext = new PSAzureContext(removedContext);
-                                        outContext.Name = name;
-                                        WriteObject(outContext);
-                                    }
+                                    var outContext = new PSAzureContext(removedContext);
+                                    outContext.Name = name;
+                                    WriteObject(outContext);
                                 }
-                            });
-                        },
-                        () => string.Equals(defaultProfile.DefaultContextKey, name, StringComparison.OrdinalIgnoreCase));
-                }
+                            }
+                        });
+                    },
+                    () => string.Equals(defaultProfile.DefaultContextKey, name, StringComparison.OrdinalIgnoreCase));
             }
         }
     }

@@ -29,6 +29,7 @@ using Microsoft.Azure.Commands.ScenarioTest.Extensions;
 using Microsoft.Azure.Commands.Profile.Context;
 using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
+using Microsoft.Azure.Commands.Profile.Common;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
 {
@@ -227,7 +228,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             cmdlet.CommandRuntime = commandRuntimeMock;
             cmdlet.DefaultProfile = profile;
             cmdlet.Force = true;
-            cmdlet.PassThrough = true;
+            cmdlet.PassThru = true;
             cmdlet.MyInvocation.BoundParameters.Add("Name", profile.DefaultContextKey);
             cmdlet.InvokeBeginProcessing();
             cmdlet.ExecuteCmdlet();
@@ -254,7 +255,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             var defaultContextKey = profile.DefaultContextKey;
             cmdlet.CommandRuntime = commandRuntimeMock;
             cmdlet.DefaultProfile = profile;
-            cmdlet.PassThrough = true;
+            cmdlet.PassThru = true;
             cmdlet.MyInvocation.BoundParameters.Add("Name", removedContextKey);
             cmdlet.InvokeBeginProcessing();
             cmdlet.ExecuteCmdlet();
@@ -280,7 +281,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             var contextCount = profile.Contexts.Count;
             cmdlet.CommandRuntime = commandRuntimeMock;
             cmdlet.DefaultProfile = profile;
-            cmdlet.PassThrough = true;
+            cmdlet.PassThru = true;
             cmdlet.MyInvocation.BoundParameters.Add("Name", removedContextKey);
             cmdlet.InvokeBeginProcessing();
             cmdlet.ExecuteCmdlet();
@@ -301,7 +302,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             var contextCount = profile.Contexts.Count;
             cmdlet.CommandRuntime = commandRuntimeMock;
             cmdlet.DefaultProfile = profile;
-            cmdlet.PassThrough = true;
+            cmdlet.PassThru = true;
             cmdlet.MyInvocation.BoundParameters.Add("Name", removedContextKey);
             cmdlet.InvokeBeginProcessing();
             cmdlet.ExecuteCmdlet();
@@ -403,7 +404,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             cmdlet.DefaultProfile = profile;
             cmdlet.MyInvocation.BoundParameters.Add("SourceName", profile.DefaultContextKey);
             cmdlet.MyInvocation.BoundParameters.Add("TargetName", newContextName);
-            cmdlet.PassThrough = true;
+            cmdlet.PassThru = true;
             cmdlet.InvokeBeginProcessing();
             cmdlet.ExecuteCmdlet();
             cmdlet.InvokeEndProcessing();
@@ -436,7 +437,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             cmdlet.DefaultProfile = profile;
             cmdlet.MyInvocation.BoundParameters.Add("SourceName", contextNameToRename);
             cmdlet.MyInvocation.BoundParameters.Add("TargetName", newContextName);
-            cmdlet.PassThrough = true;
+            cmdlet.PassThru = true;
             cmdlet.InvokeBeginProcessing();
             cmdlet.ExecuteCmdlet();
             cmdlet.InvokeEndProcessing();
@@ -470,7 +471,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             cmdlet.DefaultProfile = profile;
             cmdlet.MyInvocation.BoundParameters.Add("SourceName", contextNameToRename);
             cmdlet.MyInvocation.BoundParameters.Add("TargetName", newContextName);
-            cmdlet.PassThrough = true;
+            cmdlet.PassThru = true;
             cmdlet.Force = true;
             cmdlet.InvokeBeginProcessing();
             cmdlet.ExecuteCmdlet();
@@ -504,7 +505,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             cmdlet.DefaultProfile = profile;
             cmdlet.MyInvocation.BoundParameters.Add("SourceName", "This context does not exist");
             cmdlet.MyInvocation.BoundParameters.Add("TargetName", contextNameToRename);
-            cmdlet.PassThrough = true;
+            cmdlet.PassThru = true;
             cmdlet.InvokeBeginProcessing();
             cmdlet.ExecuteCmdlet();
             cmdlet.InvokeEndProcessing();
@@ -534,7 +535,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             cmdlet.DefaultProfile = profile;
             cmdlet.MyInvocation.BoundParameters.Add("SourceName", contextNameToRename);
             cmdlet.MyInvocation.BoundParameters.Add("TargetName", newContextName);
-            cmdlet.PassThrough = true;
+            cmdlet.PassThru = true;
             cmdlet.InvokeBeginProcessing();
             cmdlet.ExecuteCmdlet();
             cmdlet.InvokeEndProcessing();
@@ -560,7 +561,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             cmdlet.DefaultProfile = profile;
             cmdlet.MyInvocation.BoundParameters.Add("SourceName", "Default");
             cmdlet.MyInvocation.BoundParameters.Add("TargetName", "target context");
-            cmdlet.PassThrough = true;
+            cmdlet.PassThru = true;
             cmdlet.InvokeBeginProcessing();
             cmdlet.ExecuteCmdlet();
             cmdlet.InvokeEndProcessing();
@@ -580,7 +581,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             var defaultContext = profile.DefaultContext;
             cmdlet.CommandRuntime = commandRuntimeMock;
             cmdlet.DefaultProfile = profile;
-            cmdlet.PassThrough = true;
+            cmdlet.Scope = ContextModificationScope.Process;
+            cmdlet.PassThru = true;
             cmdlet.InvokeBeginProcessing();
             cmdlet.ExecuteCmdlet();
             cmdlet.InvokeEndProcessing();
@@ -602,7 +604,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             var profile = new AzureRmProfile();
             cmdlet.CommandRuntime = commandRuntimeMock;
             cmdlet.DefaultProfile = profile;
-            cmdlet.PassThrough = true;
+            cmdlet.PassThru = true;
+            cmdlet.Scope = ContextModificationScope.Process;
             cmdlet.InvokeBeginProcessing();
             cmdlet.ExecuteCmdlet();
             cmdlet.InvokeEndProcessing();

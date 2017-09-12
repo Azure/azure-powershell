@@ -48,7 +48,7 @@ This example shows how to get a specific authorized tenant of an Azure account.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credeetnails, tenant and subscription used for communication with azure
+The credentials, tenant and subscription used for communication with azure
 
 ```yaml
 Type: IAzureContextContainer

@@ -111,6 +111,7 @@ Determines the scope of context changes, for example, wheher changes apply only 
 Type: ContextModificationScope
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Process, CurrentUser
 
 Required: False
 Position: Named

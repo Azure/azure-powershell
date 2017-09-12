@@ -13,7 +13,7 @@ Gets the metadata used to authenticate Azure Resource Manager requests.
 
 ### GetSingleContext (Default)
 ```
-Get-AzureRmContext [-DefaultProfile <IAzureContextContainer>] [-Name <String>] [<CommonParameters>]
+Get-AzureRmContext [-DefaultProfile <IAzureContextContainer>] [[-Name] <String>] [<CommonParameters>]
 ```
 
 ### ListAllContexts
@@ -44,10 +44,34 @@ CurrentStorageAccount :
 
 In this example we are logging into our account with an Azure subscription using Add-AzureRmAccount, and then we are getting the context of the current session by calling Get-AzureRmContext.
 
+
+### Example 2: Listing all available contexts
+```
+PS C:\> Get-AzureRmContext -ListAvailable
+
+Name                  : Test
+Environment           : AzureCloud
+Account               : test@outlook.com
+TenantId              : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+SubscriptionId        : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
+SubscriptionName      : Test Subscription
+CurrentStorageAccount :
+
+Name                  : Production
+Environment           : AzureCloud
+Account               : prod@outlook.com
+TenantId              : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+SubscriptionId        : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
+SubscriptionName      : Production Subscription
+CurrentStorageAccount :
+```
+
+In this example, all currently available contexts are displayed.  The user may select one of these contexts using Select-AzureRmContext.
+
 ## PARAMETERS
 
 ### -DefaultProfile
-The credeetnails, tenant and subscription used for communication with azure
+The credentials, tenant and subscription used for communication with azure
 
 ```yaml
 Type: IAzureContextContainer
@@ -83,9 +107,10 @@ The name of the context
 Type: String
 Parameter Sets: GetSingleContext
 Aliases: 
+Accepted values: [contrib@AzureSDKTeam.onmicrosoft.com, 0b1f6471-1bf0-4dda-aec3-cb9272f09590], [markcowl@microsoft.com, 00977cdb-163f-435f-9c32-39ec8ae61f4d]
 
 Required: False
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

@@ -154,5 +154,33 @@ namespace Microsoft.Azure.Commands.Profile.Common
 
             return result;
         }
+
+        /// <summary>
+        /// Generate a runtime parameter with ValidateSet matching the current context
+        /// </summary>
+        /// <param name="name">The name of the parameter</param>
+        /// <param name="runtimeParameter">The returned runtime parameter for context, with appropriate validate set</param>
+        /// <returns>True if one or more contexts were found, otherwise false</returns>
+        protected bool TryGetExistingContextNameParameter(string name, string parameterSetName, out RuntimeDefinedParameter runtimeParameter)
+        {
+            var result = false;
+            var profile = DefaultProfile as AzureRmProfile;
+            runtimeParameter = null;
+            if (profile != null && profile.Contexts != null && profile.Contexts.Any())
+            {
+                runtimeParameter = new RuntimeDefinedParameter(
+                    name, typeof(string),
+                    new Collection<Attribute>()
+                    {
+                    new ParameterAttribute { Position =0, Mandatory=true, HelpMessage="The name of the context", ParameterSetName = parameterSetName },
+                    new ValidateSetAttribute(profile.Contexts.Keys.ToArray())
+                    }
+                );
+                result = true;
+            }
+
+            return result;
+        }
+
     }
 }

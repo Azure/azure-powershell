@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.Profile.Properties;
@@ -20,15 +19,21 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Profile.Context
 {
-    [Cmdlet(VerbsCommon.Select, "AzureRmContext", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Select, "AzureRmContext", SupportsShouldProcess = true, DefaultParameterSetName = InputObjectParameterSet)]
     [OutputType(typeof(PSAzureContext))]
     public class SelectAzureRmContext : AzureContextModificationCmdlet, IDynamicParameters
     {
+        public const string InputObjectParameterSet = "Input Object";
+        public const string ContextNameParameterSet = "Context Name";
+        [Parameter(Mandatory =true, ParameterSetName = InputObjectParameterSet, ValueFromPipeline =true, HelpMessage ="A context object, normally passed through the pipeline.")]
+        [ValidateNotNullOrEmpty]
+        public PSAzureContext InputObject { get; set; }
+
         public object GetDynamicParameters()
         {
             var parameters = new RuntimeDefinedParameterDictionary();
             RuntimeDefinedParameter nameParameter;
-            if (TryGetExistingContextNameParameter("Name", out nameParameter))
+            if (TryGetExistingContextNameParameter("Name", ContextNameParameterSet, out nameParameter))
             {
                 parameters.Add(nameParameter.Name, nameParameter);
             }
@@ -38,12 +43,21 @@ namespace Microsoft.Azure.Commands.Profile.Context
 
         public override void ExecuteCmdlet()
         {
-            if (MyInvocation.BoundParameters.ContainsKey("Name"))
+            string name = null;
+            if (ParameterSetName == InputObjectParameterSet)
+            {
+                    name = InputObject?.Name;
+            }
+            else if (MyInvocation.BoundParameters.ContainsKey("Name"))
+            {
+                name = MyInvocation.BoundParameters["Name"] as string;
+            }
+
+            if (!string.IsNullOrWhiteSpace(name))
             {
                 ConfirmAction(Resources.SelectContextPrompt, "Context",
                     () =>
                     {
-                        string name = MyInvocation.BoundParameters["Name"] as string;
                         if (name != null)
                         {
                             ModifyContext((profile, client) =>

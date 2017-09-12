@@ -78,7 +78,7 @@ This example shows how to create an environment using Add-AzureRmEnvironment, an
 ## PARAMETERS
 
 ### -DefaultProfile
-The credeetnails, tenant and subscription used for communication with azure.
+The credentials, tenant and subscription used for communication with azure.
 
 ```yaml
 Type: IAzureContextContainer
@@ -114,6 +114,7 @@ Determines the scope of context changes, for example, wheher changes apply only 
 Type: ContextModificationScope
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Process, CurrentUser
 
 Required: False
 Position: Named
