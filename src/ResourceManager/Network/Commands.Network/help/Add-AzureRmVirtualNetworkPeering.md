@@ -49,7 +49,7 @@ Add-AzureRmVirtualNetworkPeering -Name 'myVnet2ToMyVnet1' -VirtualNetwork $vnet2
 ```
 Note that a peering link must be created from vnet1 to vnet2 and vice versa in order for peering to work.
 
-### Example 1: Create a peering between two virtual networks in different regions
+### Example 2: Create a peering between two virtual networks in different regions
 ```
 # Variables for common values used throughout the script.
 $rgName='myResourceGroup'
