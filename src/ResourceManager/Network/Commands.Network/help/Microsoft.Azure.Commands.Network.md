@@ -1,16 +1,16 @@
 ---
-Module Name: AzureRM.Network
-Module Guid: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
-Download Help Link: {{Please enter FwLink manually}}
-Help Version: {{Please enter version of help manually (X.X.X.X) format}}
-Locale: en-US
+Module Name: Microsoft.Azure.Commands.Network
+Module Guid: {{ Update Module Guid }}
+Download Help Link: {{ Update Download Link }}
+Help Version: {{ Update Help Version }}
+Locale: {{ Update Locale }}
 ---
 
-# AzureRM.Network Module
+# Microsoft.Azure.Commands.Network Module
 ## Description
-This topic displays help topics for the Azure Network Cmdlets.
+{{Manually Enter Description Here}}
 
-## AzureRM.Network Cmdlets
+## Microsoft.Azure.Commands.Network Cmdlets
 ### [Add-AzureRmApplicationGatewayAuthenticationCertificate](Add-AzureRmApplicationGatewayAuthenticationCertificate.md)
 Adds an authentication certificate to an application gateway.
 
@@ -160,9 +160,6 @@ Gets an array of URL path mappings to a backend server pool.
 
 ### [Get-AzureRmApplicationGatewayWebApplicationFirewallConfiguration](Get-AzureRmApplicationGatewayWebApplicationFirewallConfiguration.md)
 Gets the WAF configuration of an application gateway.
-
-### [Get-AzureRmApplicationSecurityGroup](Get-AzureRmApplicationSecurityGroup.md)
-Gets an application security group.
 
 ### [Get-AzureRmBgpServiceCommunity](Get-AzureRmBgpServiceCommunity.md)
 {{Manually Enter Get-AzureRmBgpServiceCommunity Description Here}}
@@ -377,9 +374,6 @@ Creates an array of URL path mappings to a backend server pool.
 ### [New-AzureRmApplicationGatewayWebApplicationFirewallConfiguration](New-AzureRmApplicationGatewayWebApplicationFirewallConfiguration.md)
 Creates a WAF configuration for an application gateway.
 
-### [New-AzureRmApplicationSecurityGroup](New-AzureRmApplicationSecurityGroup.md)
-Creates an application security group.
-
 ### [New-AzureRmExpressRouteCircuit](New-AzureRmExpressRouteCircuit.md)
 Creates an Azure express route circuit.
 
@@ -517,9 +511,6 @@ Removes an SSL policy from an Azure application gateway.
 
 ### [Remove-AzureRmApplicationGatewayUrlPathMapConfig](Remove-AzureRmApplicationGatewayUrlPathMapConfig.md)
 Removes URL path mappings to a backend server pool.
-
-### [Remove-AzureRmApplicationSecurityGroup](Remove-AzureRmApplicationSecurityGroup.md)
-Removes an application security group.
 
 ### [Remove-AzureRmExpressRouteCircuit](Remove-AzureRmExpressRouteCircuit.md)
 Removes an ExpressRoute circuit.
@@ -673,9 +664,6 @@ Sets configuration for an array of URL path mappings to a backend server pool.
 
 ### [Set-AzureRmApplicationGatewayWebApplicationFirewallConfiguration](Set-AzureRmApplicationGatewayWebApplicationFirewallConfiguration.md)
 Modifies the WAF configuration of an application gateway.
-
-### [Set-AzureRmApplicationSecurityGroup](Set-AzureRmApplicationSecurityGroup.md)
-Sets the goal state of an application security group.
 
 ### [Set-AzureRmExpressRouteCircuit](Set-AzureRmExpressRouteCircuit.md)
 Modifies an ExpressRoute circuit.
