@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzureRmContainerInstanceLog
 
 ## SYNOPSIS
-Export the logs of a container instance in a container group.
+Get the logs of a container instance in a container group.
 
 ## SYNTAX
 
@@ -29,7 +29,7 @@ Get-AzureRmContainerInstanceLog -ResourceId <String> [-Name <String>] [-Tail <In
 ```
 
 ## DESCRIPTION
-The **Export-AzureRmContainerGroupLogs** cmdlet exports the logs of a container in a container group.
+The **Get-AzureRmContainerInstanceLog** cmdlet gets the logs of a container in a container group.
 
 ## EXAMPLES
 
