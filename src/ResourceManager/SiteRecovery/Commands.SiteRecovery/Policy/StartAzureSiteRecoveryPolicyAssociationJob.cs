@@ -25,6 +25,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// </summary>
     [Cmdlet(VerbsLifecycle.Start, "AzureRmSiteRecoveryPolicyAssociationJob", DefaultParameterSetName = ASRParameterSets.EnterpriseToAzure)]
     [OutputType(typeof(ASRJob))]
+    [ObsoleteAttribute("'Start-AzureRmSiteRecoveryPolicyAssociationJob' cmdlet is mark as obsolete and will be " +
+        "depricated in upcoming breaking changes build. Please use the New cmdlet " +
+        "'New-AzureRmRecoveryServicesAsrProtectionContainerMapping' module 'AzureRM.RecoveryServices.SiteRecovery'.",
+        false)]
     public class StartAzureSiteRecoveryPolicyAssociationJob : SiteRecoveryCmdletBase
     {
         #region Parameters

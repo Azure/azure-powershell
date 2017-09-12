@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using Microsoft.Azure.Management.SiteRecoveryVault.Models;
 using System.Management.Automation;
 
@@ -21,6 +22,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// Used to initiate a vault create operation.
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRmSiteRecoveryVault")]
+    [Obsolete("'New-AzureRmSiteRecoveryVault' cmdlet is mark as obsolete and " +
+        "will be depricated in upcoming breaking changes build. Please use the New cmdlet " +
+        "'New-AzureRmRecoveryServicesVault' module 'AzureRM.RecoveryServices.SiteRecovery'.",
+        false)]
     public class CreateAzureSiteRecoveryVault : SiteRecoveryCmdletBase
     {
         #region Parameters

@@ -12,8 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.SiteRecovery.Models;
+using System;
 using System.Management.Automation;
+using Microsoft.Azure.Management.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
@@ -21,6 +22,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// Removes Azure Site Recovery Policy.
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureRmSiteRecoveryPolicy")]
+    [ObsoleteAttribute("'Remove-AzureRmSiteRecoveryPolicy' cmdlet is mark as obsolete and will be " +
+        "depricated in upcoming breaking changes build. Please use the New cmdlet " +
+        "'Remove-AzureRmRecoveryServicesAsrPolicy' module 'AzureRM.RecoveryServices.SiteRecovery'.",
+        false)]
     public class RemoveAzureSiteRecoveryPolicy : SiteRecoveryCmdletBase
     {
         #region Parameters

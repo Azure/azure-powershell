@@ -23,6 +23,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// </summary>
     [Cmdlet(VerbsData.Update, "AzureRmSiteRecoveryProtectionDirection", DefaultParameterSetName = ASRParameterSets.ByPEObject)]
     [OutputType(typeof(ASRJob))]
+    [ObsoleteAttribute("'Update-AzureRmSiteRecoveryProtectionDirection' cmdlet is mark as obsolete " +
+        "and will be depricated in upcoming breaking changes build. Please use the New cmdlet " +
+        "'Update-AzureRmRecoveryServicesAsrProtectionDirection' module 'AzureRM.RecoveryServices.SiteRecovery'.",
+        false)]
     public class UpdateAzureRmSiteRecoveryProtection : SiteRecoveryCmdletBase
     {
         /// <summary>

@@ -21,8 +21,10 @@ using System.Linq.Expressions;
 using System.Runtime.Serialization;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties;
 using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Microsoft.Rest.Azure;
@@ -161,7 +163,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             }
 
             resourceProviderNamespace = dictionary[ARMResourceTypeConstants.Providers];
-            resourceType = dictionary.ContainsKey("SiteRecoveryVault") ? "SiteRecoveryVault"
+            resourceType = dictionary.ContainsKey("SiteRecoveryVault")
+                ? "SiteRecoveryVault"
                 : "RecoveryServicesVault";
         }
 
@@ -211,11 +214,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             var result = new List<T>();
 
             foreach (var page in pages)
+            foreach (var item in page)
             {
-                foreach (var item in page)
-                {
-                    result.Add(item);
-                }
+                result.Add(item);
             }
 
             return result;
@@ -242,15 +243,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             string serializedValue;
 
             using (var memoryStream = new MemoryStream())
-                using (var reader = new StreamReader(memoryStream))
-                {
-                    var serializer = new DataContractSerializer(typeof(T));
-                    serializer.WriteObject(
-                        memoryStream,
-                        value);
-                    memoryStream.Position = 0;
-                    serializedValue = reader.ReadToEnd();
-                }
+            using (var reader = new StreamReader(memoryStream))
+            {
+                var serializer = new DataContractSerializer(typeof(T));
+                serializer.WriteObject(
+                    memoryStream,
+                    value);
+                memoryStream.Position = 0;
+                serializedValue = reader.ReadToEnd();
+            }
 
             return serializedValue;
         }
@@ -450,6 +451,64 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     asrVaultCreds.ResourceNamespace;
                 PSRecoveryServicesClient.asrVaultCreds.ARMResourceType =
                     asrVaultCreds.ARMResourceType;
+            }
+        }
+
+        /// <summary>
+        ///     Validate the email addresses.
+        /// </summary>
+        /// <param name="emails">list of email addresses.</param>
+        public static void ValidateCustomEmails(string[] emails)
+        {
+            var emailPattern = "^[a-zA-Z0-9\\\".!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9]" +
+                "(?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9]" +
+                "(?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$";
+            var rgx = new Regex(emailPattern);
+
+            if (emails.Length > 20)
+            {
+                throw new InvalidOperationException(
+                    string.Format(Resources.EmailsCountExceeded));
+            }
+
+            foreach (var email in emails)
+            {
+                if (email.Length > 254)
+                {
+                    throw new InvalidOperationException(
+                        string.Format(Resources.EmailLengthExceeded));
+                }
+
+                if (!rgx.IsMatch(email))
+                {
+                    throw new InvalidOperationException(
+                        string.Format(Resources.EmailFormatInvalid));
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Validate the ipaddress or host name.
+        /// </summary>
+        /// <param name="server">ip or hostname.</param>
+        public static void ValidateIpOrHostName(string server)
+        {
+            var ipRegEx = "^([0-9]+).(([0-9]+)|.)*$";
+            var ipReg = new Regex(ipRegEx);
+
+            // Checking for ipv4
+            if (ipReg.IsMatch(server))
+            {
+                var ipAddressRegEX = "^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]).){3}" +
+                    "([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$";
+
+                var ipAddressReg = new Regex(ipAddressRegEX);
+
+                if (!ipAddressReg.IsMatch(server))
+                {
+                    throw new InvalidOperationException(
+                        string.Format(Resources.InvalidIpAddress));
+                }
             }
         }
 

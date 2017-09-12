@@ -27,6 +27,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmSiteRecoveryVaultSettingsFile", DefaultParameterSetName = ASRParameterSets.ByParam)]
     [OutputType(typeof(VaultSettingsFilePath))]
+    [ObsoleteAttribute("'Get-AzureRmSiteRecoveryVaultSettingsFile' cmdlet is mark as obsolete " +
+        "and will be depricated in upcoming breaking changes build. Please use the New cmdlet " +
+        "'Get-AzureRmRecoveryServicesAsrVaultSettingsFile'  module 'AzureRM.RecoveryServices.SiteRecovery'.",
+        false)]
     public class GetAzureSiteRecoveryVaultSettingsFile : SiteRecoveryCmdletBase
     {
         /// <summary>

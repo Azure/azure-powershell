@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.dll-Help.xml
+Module Name: AzureRM.RecoveryServices.SiteRecovery
 online version: 
 schema: 2.0.0
 ---
@@ -33,10 +34,38 @@ The **Get-AzureRmRecoveryServicesAsrPolicy** cmdlet gets the list of configured 
 
 ### Example 1
 ```
-PS C:\> $Policy = Get-AzureRmRecoveryServicesAsrPolicy -Name $PolicyName
+PS C:\> $Policy = Get-AzureRmRecoveryServicesAsrPolicy
 ```
 
-Retruns the replication policy with the specified name.
+Retuns the list of replication policies
+
+### Example 2
+```
+PS C:\>  Get-AzureRmRecoveryServicesAsrPolicy -Name abc
+
+FriendlyName                : abc
+Name                        : abc
+ID                          : /Subscriptions/xxxxxxxxxxxx/resourceGroups/xxxxxxxxxxxx/providers/Microsoft.RecoveryServices/vaults/xxxxxxxxxxxx/replicationPolicies/abc
+Type                        : Microsoft.RecoveryServices/vaults/replicationPolicies
+ReplicationProvider         : HyperVReplicaAzure
+ReplicationProviderSettings : Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRHyperVReplicaAzurePolicyDetails
+```
+
+Retuns replication policy with name.
+
+### Example 3
+```
+PS C:\> Get-AzureRmRecoveryServicesAsrPolicy -FriendlyName abc
+
+FriendlyName                : abc
+Name                        : abc
+ID                          : /Subscriptions/xxxxxxxxxxxx/resourceGroups/xxxxxxxxxxxx/providers/Microsoft.RecoveryServices/vaults/xxxxxxxxxxxx/replicationPolicies/abc
+Type                        : Microsoft.RecoveryServices/vaults/replicationPolicies
+ReplicationProvider         : HyperVReplicaAzure
+ReplicationProviderSettings : Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRHyperVReplicaAzurePolicyDetails
+```
+
+Retuns replication policy with friendly name.
 
 ## PARAMETERS
 

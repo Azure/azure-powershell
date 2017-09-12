@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
@@ -21,6 +22,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmSiteRecoveryVaultSettings")]
     [OutputType(typeof(ASRVaultSettings))]
+    [ObsoleteAttribute("'Get-AzureRmSiteRecoveryVaultSettings' cmdlet is mark as obsolete and will" +
+        " be depricated in upcoming breaking changes build. Please use the New cmdlet " +
+        "'Get-AzureRmRecoveryServicesAsrVaultContext' module 'AzureRM.RecoveryServices.SiteRecovery'.",
+        false)]
     public class GetAzureSiteRecoveryVaultSettings : SiteRecoveryCmdletBase
     {
         /// <summary>

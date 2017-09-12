@@ -22,6 +22,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// Remove Azure Site Recovery Recovery Plan.
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureRmSiteRecoveryRecoveryPlan", DefaultParameterSetName = ASRParameterSets.ByObject)]
+    [ObsoleteAttribute("'Remove-AzureRmSiteRecoveryRecoveryPlan' cmdlet is mark as obsolete and " +
+        "will be depricated in upcoming breaking changes build. Please use the New cmdlet " +
+        "'Remove-AzureRmRecoveryServicesAsrRecoveryPlan' module 'AzureRM.RecoveryServices.SiteRecovery'.",
+        false)]
     public class RemoveAzureRmSiteRecoveryRecoveryPlan : SiteRecoveryCmdletBase
     {
         #region Parameters

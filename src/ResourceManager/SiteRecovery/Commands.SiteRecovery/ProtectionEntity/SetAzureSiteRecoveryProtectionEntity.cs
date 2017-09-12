@@ -23,6 +23,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// </summary>
     [Cmdlet(VerbsCommon.Set, "AzureRmSiteRecoveryProtectionEntity", DefaultParameterSetName = ASRParameterSets.DisableDR, SupportsShouldProcess = true)]
     [OutputType(typeof(ASRJob))]
+    [ObsoleteAttribute("'Set-AzureRmSiteRecoveryProtectionEntity' cmdlet is mark as obsolete and " +
+        "will be depricated in upcoming breaking changes build. Please use the New cmdlet " +
+        "'Set-AzureRmRecoveryServicesAsrReplicationProtectedItem' module 'AzureRM.RecoveryServices.SiteRecovery'.",
+        false)]
     public class SetAzureSiteRecoveryProtectionEntity : SiteRecoveryCmdletBase
     {
         #region Parameters

@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.dll-Help.xml
+Module Name: AzureRM.RecoveryServices.SiteRecovery
 online version: 
 schema: 2.0.0
 ---
@@ -31,6 +32,27 @@ The **Get-AzureRmRecoveryServicesAsrProtectionContainerMapping** cmdlet gets inf
 ### Example 1
 ```
 PS C:\> $ProtectionContainerMappings = Get-AzureRmRecoveryServicesAsrProtectionContainerMapping -ProtectionContainer $Container
+```
+
+List of protection container mappings for container.
+
+### Example 2
+```
+PS C:\> $ProtectionContainerMappings = Get-AzureRmRecoveryServicesAsrProtectionContainerMapping -ProtectionContainer $Container -Name $PrimaryProtectionContainerMapping
+
+Name                                  : pcmmapping
+ID                                    : /Subscriptions/xxxxxxxxxxxx/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationFabrics/d011a5abf48190235963ee3a88ad188ee6bca8a4c6cd0c8d7ce5d439aa77ffd9/replica
+                                        tionProtectionContainers/cloud_5dc96260-9f00-42e4-aca7-24ad27fc2078/replicationProtectionContainerMappings/pcmmapping
+Health                                : Normal
+HealthErrorDetails                    : {}
+PolicyFriendlyName                    : V2aTestPolicy
+PolicyId                              : /Subscriptions/xxxxxxxxxxxx/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationPolicies/V2aTestPolicy
+SourceFabricFriendlyName              : V2A-W2K12-400
+SourceProtectionContainerFriendlyName : V2A-W2K12-400
+State                                 : Paired
+TargetFabricFriendlyName              : Microsoft Azure
+TargetProtectionContainerFriendlyName : Microsoft Azure
+TargetProtectionContainerId           : Microsoft Azure
 ```
 
 Gets all protection container mappings for the specified protection container.

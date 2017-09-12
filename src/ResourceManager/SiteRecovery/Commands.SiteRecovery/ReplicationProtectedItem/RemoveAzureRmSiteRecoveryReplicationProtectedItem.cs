@@ -26,6 +26,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureRmSiteRecoveryReplicationProtectedItem", DefaultParameterSetName = ASRParameterSets.DisableDR, SupportsShouldProcess = true)]
     [OutputType(typeof(ASRJob))]
+    [ObsoleteAttribute("'Remove-AzureRmSiteRecoveryReplicationProtectedItem' cmdlet is mark" +
+        " as obsolete and will be depricated in upcoming breaking changes build. Please use the " +
+        "New cmdlet 'Remove-AzureRmRecoveryServicesAsrReplicationProtectedItem' module 'AzureRM.RecoveryServices.SiteRecovery'.",
+        false)]
     public class RemoveAzureRmSiteRecoveryReplicationProtectedItem : SiteRecoveryCmdletBase
     {
         /// <summary>

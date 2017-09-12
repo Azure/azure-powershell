@@ -14,6 +14,8 @@
 
 using System;
 using System.Management.Automation;
+using System.Collections.ObjectModel;
+using Microsoft.Azure.Management.RecoveryServices.Models;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
@@ -40,8 +42,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             ParameterSetName = ASRParameterSets.ARSVault,
             Mandatory = true,
             ValueFromPipeline = true)]
+        [Parameter(
+            ParameterSetName = ASRParameterSets.ARSVaultACS,
+            Mandatory = true,
+            ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ARSVault Vault { get; set; }
+
+        /// <summary>
+        /// Gets or sets Authentication type.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.ARSVaultACS, Mandatory = true)]
+        [Obsolete("This parameter is obsolete.  Will be removed in future release.", false)]
+        public SwitchParameter UseACSAuthentication
+        {
+            get { return useACSAuthentication; }
+            set { useACSAuthentication = value; }
+        }
 
         /// <summary>
         ///     ProcessRecord of the command.
@@ -57,7 +74,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 switch (this.ParameterSetName)
                 {
                     case ASRParameterSets.ARSVault:
-                        this.SetARSVaultContext(this.Vault);
+                        this.SetARSVaultContext(this.Vault, AuthType.AAD);
+                        break;
+                    case ASRParameterSets.ARSVaultACS:
+                        this.SetARSVaultContext(this.Vault, AuthType.ACS);
                         break;
                     default:
                         throw new PSInvalidOperationException(Resources.InvalidParameterSet);
@@ -68,20 +88,30 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Set Azure Recovery Services Vault context.
         /// </summary>
-        private void SetARSVaultContext(
-            ARSVault arsVault)
+        /// <param name="arsVault">Azure recovery services vault.</param>
+        /// <param name="authType">Authentication type used to set vault context.</param>
+        private void SetARSVaultContext(ARSVault arsVault, string authType)
         {
             try
             {
                 using (var powerShell = System.Management.Automation.PowerShell.Create())
                 {
-                    var result = powerShell
-                        .AddCommand("Get-AzureRmRecoveryServicesVaultSettingsFile")
-                        .AddParameter(
-                            "Vault",
-                            arsVault)
-                        .Invoke();
-
+                    Collection<PSObject> result;
+                    if (string.IsNullOrEmpty(authType) || authType == AuthType.AAD)
+                    {
+                        result = powerShell
+                         .AddCommand("Get-AzureRmRecoveryServicesVaultSettingsFile")
+                         .AddParameter("Vault", arsVault)
+                         .Invoke();
+                    }
+                    else
+                    {
+                        result = powerShell
+                         .AddCommand("Get-AzureRmRecoveryServicesVaultSettingsFile")
+                         .AddParameter("Vault", arsVault)
+                         .AddParameter("useACSAuthentication", null)
+                         .Invoke();
+                    }
                     var vaultSettingspath = (string)result[0]
                         .Members["FilePath"]
                         .Value;
@@ -102,5 +132,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 this.WriteDebug(e.Message);
             }
         }
+        /// <summary>
+        ///     Gets or sets flag to use ACS authentication.
+        /// </summary>
+        private bool useACSAuthentication;
     }
 }

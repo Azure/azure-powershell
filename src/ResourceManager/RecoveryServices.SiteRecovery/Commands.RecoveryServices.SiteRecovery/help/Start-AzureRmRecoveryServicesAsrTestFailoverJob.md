@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.dll-Help.xml
+Module Name: AzureRM.RecoveryServices.SiteRecovery
 online version: 
 schema: 2.0.0
 ---
@@ -15,42 +16,44 @@ Starts a test failover operation.
 ```
 Start-AzureRmRecoveryServicesAsrTestFailoverJob -ReplicationProtectedItem <ASRReplicationProtectedItem>
  -Direction <String> [-DataEncryptionPrimaryCertFile <String>] [-DataEncryptionSecondaryCertFile <String>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-RecoveryPoint <ASRRecoveryPoint>] [-RecoveryTag <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByRPObject
 ```
 Start-AzureRmRecoveryServicesAsrTestFailoverJob -RecoveryPlan <ASRRecoveryPlan> -Direction <String>
- [-DataEncryptionPrimaryCertFile <String>] [-DataEncryptionSecondaryCertFile <String>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DataEncryptionPrimaryCertFile <String>] [-DataEncryptionSecondaryCertFile <String>] [-RecoveryTag <String>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByRPObjectWithVMNetwork
 ```
 Start-AzureRmRecoveryServicesAsrTestFailoverJob -RecoveryPlan <ASRRecoveryPlan> -Direction <String>
  -VMNetwork <ASRNetwork> [-DataEncryptionPrimaryCertFile <String>] [-DataEncryptionSecondaryCertFile <String>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-RecoveryTag <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByRPObjectWithAzureVMNetworkId
 ```
 Start-AzureRmRecoveryServicesAsrTestFailoverJob -RecoveryPlan <ASRRecoveryPlan> -Direction <String>
  -AzureVMNetworkId <String> [-DataEncryptionPrimaryCertFile <String>]
- [-DataEncryptionSecondaryCertFile <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DataEncryptionSecondaryCertFile <String>] [-RecoveryTag <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByRPIObjectWithVMNetwork
 ```
 Start-AzureRmRecoveryServicesAsrTestFailoverJob -ReplicationProtectedItem <ASRReplicationProtectedItem>
  -Direction <String> -VMNetwork <ASRNetwork> [-DataEncryptionPrimaryCertFile <String>]
- [-DataEncryptionSecondaryCertFile <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DataEncryptionSecondaryCertFile <String>] [-RecoveryPoint <ASRRecoveryPoint>] [-RecoveryTag <String>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByRPIObjectWithAzureVMNetworkId
 ```
 Start-AzureRmRecoveryServicesAsrTestFailoverJob -ReplicationProtectedItem <ASRReplicationProtectedItem>
  -Direction <String> -AzureVMNetworkId <String> [-DataEncryptionPrimaryCertFile <String>]
- [-DataEncryptionSecondaryCertFile <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DataEncryptionSecondaryCertFile <String>] [-RecoveryPoint <ASRRecoveryPoint>] [-RecoveryTag <String>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -77,6 +80,21 @@ Parameter Sets: ByRPObjectWithAzureVMNetworkId, ByRPIObjectWithAzureVMNetworkId
 Aliases: 
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -148,6 +166,37 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -RecoveryPoint
+Specifies a custom recovery point to test failover the protected machine to.
+
+```yaml
+Type: ASRRecoveryPoint
+Parameter Sets: ByRPIObject, ByRPIObjectWithVMNetwork, ByRPIObjectWithAzureVMNetworkId
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecoveryTag
+Specifies the recovery tag to test failover to
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+Accepted values: Latest, LatestAvailable, LatestAvailableApplicationConsistent
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ReplicationProtectedItem
 Specifies an ASR replication protected item.
 
@@ -172,21 +221,6 @@ Parameter Sets: ByRPObjectWithVMNetwork, ByRPIObjectWithVMNetwork
 Aliases: 
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

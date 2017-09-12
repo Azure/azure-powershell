@@ -28,6 +28,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmSiteRecoveryPolicy", DefaultParameterSetName = ASRParameterSets.Default)]
     [OutputType(typeof(IEnumerable<ASRPolicy>))]
+    [ObsoleteAttribute("'Get-AzureRmSiteRecoveryPolicy' cmdlet is mark as obsolete and will be " +
+        "depricated in upcoming breaking changes build. Please use the New cmdlet " +
+        "'Get-AzureRmRecoveryServicesAsrPolicy' module 'AzureRM.RecoveryServices.SiteRecovery'.",
+        false)]
     public class GetAzureSiteRecoveryPolicy : SiteRecoveryCmdletBase
     {
         #region Parameters

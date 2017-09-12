@@ -25,6 +25,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// </summary>
     [Cmdlet(VerbsLifecycle.Start, "AzureRmSiteRecoveryTestFailoverJob", DefaultParameterSetName = ASRParameterSets.ByPEObject)]
     [OutputType(typeof(ASRJob))]
+    [ObsoleteAttribute("'Start-AzureRmSiteRecoveryTestFailoverJob' cmdlet is mark as obsolete and" +
+        " will be depricated in upcoming breaking changes build. Please use the New cmdlet " +
+        "'Start-AzureRmRecoveryServicesAsrTestFailoverJob' module 'AzureRM.RecoveryServices.SiteRecovery'.",
+        false)]
     public class StartAzureRmSiteRecoveryTestFailoverJob : SiteRecoveryCmdletBase
     {
         #region local parameters

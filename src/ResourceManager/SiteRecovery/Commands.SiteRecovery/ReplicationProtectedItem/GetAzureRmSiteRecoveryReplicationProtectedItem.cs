@@ -27,6 +27,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmSiteRecoveryReplicationProtectedItem", DefaultParameterSetName = ASRParameterSets.ByObject)]
     [OutputType(typeof(IEnumerable<ASRReplicationProtectedItem>))]
+    [ObsoleteAttribute("'Get-AzureRmSiteRecoveryReplicationProtectedItem' cmdlet is mark as " +
+        "obsolete and will be depricated in upcoming breaking changes build. Please use the " +
+        "New cmdlet 'Get-AzureRmRecoveryServicesAsrReplicationProtectedItem' module 'AzureRM.RecoveryServices.SiteRecovery'.",
+        false)]
     public class GetAzureRmSiteRecoveryReplicationProtectedItem : SiteRecoveryCmdletBase
     {
         #region Parameters

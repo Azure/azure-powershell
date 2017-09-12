@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.dll-Help.xml
+Module Name: AzureRM.RecoveryServices.SiteRecovery
 online version: 
 schema: 2.0.0
 ---
@@ -11,13 +12,7 @@ Enables replication for an ASR protectable item by creating a replication protec
 
 ## SYNTAX
 
-### DisableDR (Default)
-```
-New-AzureRmRecoveryServicesAsrReplicationProtectedItem [-WaitForCompletion] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### EnterpriseToEnterprise
+### EnterpriseToEnterprise (Default)
 ```
 New-AzureRmRecoveryServicesAsrReplicationProtectedItem -ProtectableItem <ASRProtectableItem> -Name <String>
  -ProtectionContainerMapping <ASRProtectionContainerMapping> [-WaitForCompletion] [-WhatIf] [-Confirm]
@@ -39,6 +34,16 @@ New-AzureRmRecoveryServicesAsrReplicationProtectedItem -ProtectableItem <ASRProt
  [<CommonParameters>]
 ```
 
+### VMwareToAzure
+```
+New-AzureRmRecoveryServicesAsrReplicationProtectedItem -ProtectableItem <ASRProtectableItem> -Name <String>
+ -ProtectionContainerMapping <ASRProtectionContainerMapping> -RecoveryAzureStorageAccountId <String>
+ -Account <ASRRunAsAccount> [-LogStorageAccountId <String>] [-IncludeDiskIds <String[]>]
+ -ProcessServer <ASRProcessServer> [-RecoveryAzureNetworkId <String>] [-RecoveryAzureSubnetId <String>]
+ -RecoveryResourceGroupId <String> [-ReplicationGroupName <String>] [-WaitForCompletion] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **New-AzureRmRecoveryServicesAsrReplicationProtectedItem** cmdlet creates a new replication protected item.
 Use this cmdlet to enable replication for an ASR protectable item.
@@ -52,14 +57,81 @@ PS C:\> $currentJob = New-AzureRmRecoveryServicesAsrReplicationProtectedItem -Pr
 
 Starts the replication protected item creation operation for the specified ASR protectable item and returns the ASR job used to track the operation.
 
+### Example 2
+```
+PS C:\>$job = New-AzureRmRecoveryServicesAsrReplicationProtectedItem -ProtectableItem $pi -Name $rpiName -ProtectionContainerMapping $pcm -RecoveryAzureStorageAccountId $RecoveryAzureStorageAccountId -RecoveryResourceGroupId  $RecoveryResourceGroupId -ProcessServer $fabric.fabricSpecificDetails.ProcessServers[0] -Account $fabric.fabricSpecificDetails.RunAsAccounts[0]
+```
+
+Starts the replication protected item creation operation for the specified ASR protectable item and returns the ASR job used to track the operation.
+
 ## PARAMETERS
 
-### -Name
-Specifies a name for the ASR replication protected item.
+### -Account
+The run as account to be used to push install the Mobility service if needed. Must be one from the list of run as accounts in the ASR fabric.
+
+```yaml
+Type: ASRRunAsAccount
+Parameter Sets: VMwareToAzure
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts  for confirmation before starting the operation.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IncludeDiskIds
+The list of disks to include for replication. By default all disks are included.
+
+```yaml
+Type: String[]
+Parameter Sets: VMwareToAzure
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LogStorageAccountId
+Vm log azure storage account Id.
 
 ```yaml
 Type: String
-Parameter Sets: EnterpriseToEnterprise, EnterpriseToAzure, HyperVSiteToAzure
+Parameter Sets: VMwareToAzure
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Specifies a name for the ASR replication protected item. The name must be unique within the vault.
+
+```yaml
+Type: String
+Parameter Sets: (All)
 Aliases: 
 
 Required: True
@@ -101,12 +173,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProcessServer
+The Process Server to use to replicate this machine. Use the list of process servers in the ASR fabric corresponding to the Configuration server to specify one.
+
+```yaml
+Type: ASRProcessServer
+Parameter Sets: VMwareToAzure
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ProtectableItem
 Specifies the ASR protectable item object for which replication is being enabled.
 
 ```yaml
 Type: ASRProtectableItem
-Parameter Sets: EnterpriseToEnterprise, EnterpriseToAzure, HyperVSiteToAzure
+Parameter Sets: (All)
 Aliases: 
 
 Required: True
@@ -121,10 +208,25 @@ Specifies the ASR protection container mapping object corresponding to the repli
 
 ```yaml
 Type: ASRProtectionContainerMapping
-Parameter Sets: EnterpriseToEnterprise, EnterpriseToAzure, HyperVSiteToAzure
+Parameter Sets: (All)
 Aliases: 
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecoveryAzureNetworkId
+The ID of the Azure virtual network to recover the machine to in the event of a failover.
+
+```yaml
+Type: String
+Parameter Sets: VMwareToAzure
+Aliases: 
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -136,10 +238,25 @@ Specifies the ID of the Azure storage account to replicate to.
 
 ```yaml
 Type: String
-Parameter Sets: EnterpriseToAzure, HyperVSiteToAzure
+Parameter Sets: EnterpriseToAzure, HyperVSiteToAzure, VMwareToAzure
 Aliases: 
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecoveryAzureSubnetId
+The ID of the subnet within the recovery Azure virtual network to which the failed over virtual machine should be attached in the event of a failover.
+
+```yaml
+Type: String
+Parameter Sets: VMwareToAzure
+Aliases: 
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -151,10 +268,25 @@ Specifies the ARM identifier of the resource group in which the virtual machine 
 
 ```yaml
 Type: String
-Parameter Sets: EnterpriseToAzure, HyperVSiteToAzure
+Parameter Sets: EnterpriseToAzure, HyperVSiteToAzure, VMwareToAzure
 Aliases: 
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReplicationGroupName
+Specifies the replication group name to use to create multi-VM consistent recovery points. By default each replication protected item is created in a group of its own and multi-VM consistent recovery points are not generated. Use this option only if you need to create multi-VM consistent recovery points across a group of machines by protecting all machines to the same replication group. 
+
+```yaml
+Type: String
+Parameter Sets: VMwareToAzure
+Aliases: 
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -168,21 +300,6 @@ Specifies that the cmdlet should wait for completion of the operation before ret
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts  for confirmation before starting the operation.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
 
 Required: False
 Position: Named

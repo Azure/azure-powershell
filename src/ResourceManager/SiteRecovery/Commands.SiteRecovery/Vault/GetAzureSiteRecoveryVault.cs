@@ -12,10 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.SiteRecoveryVault.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Management.SiteRecoveryVault.Models;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
@@ -24,6 +25,11 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmSiteRecoveryVault")]
     [OutputType(typeof(List<ASRVault>))]
+    [Obsolete("'Get-AzureRmSiteRecoveryVaultSettings' cmdlet is mark as obsolete and will" +
+        " be depricated in upcoming breaking changes build. Please use the New cmdlet " +
+        "'Get-AzureRmRecoveryServicesAsrVaultContext' module 'AzureRM.RecoveryServices.SiteRecovery'.",
+        false)]
+
     public class GetAzureSiteRecoveryVaults : SiteRecoveryCmdletBase
     {
         #region Parameters

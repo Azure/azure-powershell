@@ -13,7 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties;
 using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
@@ -41,9 +43,55 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string protectionContainerName;
 
         /// <summary>
-        ///     Gets or sets Name of the PE.
+        ///     Gets or sets RunAsAccount.
         /// </summary>
-        public string protectionEntityName;
+        [Parameter(ParameterSetName = ASRParameterSets.VMwareToAzureRPI)]
+        [Parameter(ParameterSetName = ASRParameterSets.VMwareToVMwareRPI, Mandatory = true)]
+        [ValidateNotNullOrEmpty]
+        public ASRRunAsAccount Account { get; set; }
+
+        /// <summary>
+        ///     Gets or sets DataStore.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.VMwareToAzureRPI, Mandatory = true)]
+        [ValidateNotNullOrEmpty]
+        public ASRDataStore DataStore { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Master Target Server.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.VMwareToAzureRPI)]
+        [ValidateNotNullOrEmpty]
+        public ASRMasterTargetServer MasterTarget { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Process Server.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.VMwareToAzureRPI, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.VMwareToVMwareRPI, Mandatory = true)]
+        [ValidateNotNullOrEmpty]
+        public ASRProcessServer ProcessServer { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Policy.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.VMwareToAzureRPI, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.VMwareToVMwareRPI, Mandatory = true)]
+        [ValidateNotNullOrEmpty]
+        public ASRProtectionContainerMapping ProtectionContainerMapping { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Recovery Azure Log Storage Account Id.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.VMwareToVMwareRPI)]
+        [ValidateNotNullOrEmpty]
+        public string LogStorageAccountId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Recovery Azure Storage Account Name of the Policy for V2A scenarios.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.VMwareToVMwareRPI)]
+        public string RecoveryAzureStorageAccountId { get; set; }
 
         /// <summary>
         ///     Gets or sets Recovery Plan object.
@@ -62,6 +110,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             ParameterSetName = ASRParameterSets.ByRPIObject,
             Mandatory = true,
             ValueFromPipeline = true)]
+        [Parameter(
+            ParameterSetName = ASRParameterSets.VMwareToAzureRPI,
+            Mandatory = true,
+            ValueFromPipeline = true)]
+        [Parameter(
+            ParameterSetName = ASRParameterSets.VMwareToVMwareRPI,
+            Mandatory = true,
+            ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ASRReplicationProtectedItem ReplicationProtectedItem { get; set; }
 
@@ -72,15 +128,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             ParameterSetName = ASRParameterSets.ByRPObject,
             Mandatory = true)]
         [Parameter(
-            ParameterSetName = ASRParameterSets.ByPEObject,
-            Mandatory = true)]
-        [Parameter(
             ParameterSetName = ASRParameterSets.ByRPIObject,
             Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.VMwareToAzureRPI, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.VMwareToVMwareRPI, Mandatory = true)]
         [ValidateSet(
             Constants.PrimaryToRecovery,
             Constants.RecoveryToPrimary)]
         public string Direction { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Retention Volume.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.VMwareToAzureRPI, Mandatory = true)]
+        [ValidateNotNullOrEmpty]
+        public ASRRetentionVolume RetentionVolume { get; set; }
 
         /// <summary>
         ///     ProcessRecord of the command.
@@ -96,6 +158,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 switch (this.ParameterSetName)
                 {
                     case ASRParameterSets.ByRPIObject:
+                    case ASRParameterSets.VMwareToAzureRPI:
+                    case ASRParameterSets.VMwareToVMwareRPI:
                         this.protectionContainerName = Utilities.GetValueFromArmId(
                             this.ReplicationProtectedItem.ID,
                             ARMResourceTypeConstants.ReplicationProtectionContainers);
@@ -105,6 +169,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         this.SetRPIReprotect();
                         break;
                     case ASRParameterSets.ByRPObject:
+                    case ASRParameterSets.VMwareToAzureAndVMwareToVMwareRP:
                         this.SetRPReprotect();
                         break;
                 }
@@ -139,7 +204,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         replicationProtectedItemResponse.Properties.ProtectableItemId,
                         ARMResourceTypeConstants.ProtectableItems));
 
-            var aSRProtectableItem = new ASRProtectableItem(protectableItemResponse);
+            var asrProtectableItem = new ASRProtectableItem(protectableItemResponse);
 
             if (0 ==
                 string.Compare(
@@ -151,17 +216,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 {
                     var reprotectInput = new HyperVReplicaAzureReprotectInput
                     {
-                        HvHostVmId = aSRProtectableItem.FabricObjectId,
-                        VmName = aSRProtectableItem.FriendlyName,
-                        OsType = (string.Compare(
-                                      aSRProtectableItem.OS,
-                                      "Windows") ==
-                                  0) ||
-                                 (string.Compare(
-                                      aSRProtectableItem.OS,
-                                      "Linux") ==
-                                  0) ? aSRProtectableItem.OS : "Windows",
-                        VHDId = aSRProtectableItem.OSDiskId
+                        HvHostVmId = asrProtectableItem.FabricObjectId,
+                        VmName = asrProtectableItem.FriendlyName,
+                        OsType = string.Compare(
+                                asrProtectableItem.OS,
+                                "Windows") ==
+                            0 ||
+                            string.Compare(
+                                asrProtectableItem.OS,
+                                "Linux") ==
+                            0
+                                ? asrProtectableItem.OS
+                                : "Windows",
+                        VHDId = asrProtectableItem.OSDiskId
                     };
 
                     var providerSpecificDetails =
@@ -172,6 +239,79 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         providerSpecificDetails.RecoveryAzureStorageAccount;
 
                     input.Properties.ProviderSpecificDetails = reprotectInput;
+                }
+            }
+            else if (string.Compare(
+                    this.ReplicationProtectedItem.ReplicationProvider,
+                    Constants.InMageAzureV2,
+                    StringComparison.OrdinalIgnoreCase) ==
+                0)
+            {
+                // Validate the Direction as RecoveryToPrimary.
+                if (this.Direction == Constants.RecoveryToPrimary)
+                {
+                    // Set the InMage Provider specific input in the Reprotect Input.
+                    var reprotectInput = new InMageReprotectInput
+                    {
+                        ProcessServerId = this.ProcessServer.Id,
+                        MasterTargetId = this.MasterTarget != null
+                            ? this.MasterTarget.Id
+                            : this.ProcessServer
+                                .Id, // Assumption: PS and MT may or may not be same.
+                        RunAsAccountId = this.Account != null ? this.Account.AccountId : null,
+                        RetentionDrive = this.RetentionVolume.VolumeName,
+                        DatastoreName = this.DataStore.SymbolicName,
+                        ProfileId = this.ProtectionContainerMapping.PolicyId,
+                        DiskExclusionInput = new InMageDiskExclusionInput
+                        {
+                            VolumeOptions = new List<InMageVolumeExclusionOptions>(),
+                            DiskSignatureOptions = null
+                        },
+                        DisksToInclude = null
+                    };
+
+                    // excluding the azure temporary storage.
+                    reprotectInput.DiskExclusionInput.VolumeOptions.Add(
+                        new InMageVolumeExclusionOptions
+                        {
+                            VolumeLabel = Constants.TemporaryStorage,
+                            OnlyExcludeIfSingleVolume = Constants.Yes
+                        });
+
+                    input.Properties.ProviderSpecificDetails = reprotectInput;
+                }
+                else
+                {
+                    // PrimaryToRecovery Direction is Invalid for InMageAzureV2.
+                    new ArgumentException(Resources.InvalidDirectionForAzureToVMWare);
+                }
+            }
+            else if (string.Compare(
+                    this.ReplicationProtectedItem.ReplicationProvider,
+                    Constants.InMage,
+                    StringComparison.OrdinalIgnoreCase) ==
+                0)
+            {
+                // Validate the Direction as RecoveryToPrimary.
+                if (this.Direction == Constants.RecoveryToPrimary)
+                {
+                    // Set the InMageAzureV2 Provider specific input in the Reprotect Input.
+                    var reprotectInput = new InMageAzureV2ReprotectInput
+                    {
+                        ProcessServerId = this.ProcessServer.Id,
+                        MasterTargetId = this.ProcessServer.Id, // Assumption: PS and MT are same. 
+                        RunAsAccountId = this.Account.AccountId,
+                        PolicyId = this.ProtectionContainerMapping.PolicyId,
+                        StorageAccountId = this.RecoveryAzureStorageAccountId,
+                        LogStorageAccountId = this.LogStorageAccountId,
+                        DisksToInclude = null
+                    };
+                    input.Properties.ProviderSpecificDetails = reprotectInput;
+                }
+                else
+                {
+                    // PrimaryToRecovery Direction is Invalid for InMage.
+                    new ArgumentException(Resources.InvalidDirectionForVMWareToAzure);
                 }
             }
 
@@ -192,6 +332,30 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         private void SetRPReprotect()
         {
+            // Check if the Recovery Plan contains any InMageAzureV2 and InMage Replication Provider Entities.
+            var rp = this.RecoveryServicesClient.GetAzureSiteRecoveryRecoveryPlan(
+                this.RecoveryPlan
+                    .Name);
+            foreach (var replicationProvider in rp.Properties.ReplicationProviders)
+            {
+                if (string.Compare(
+                        replicationProvider,
+                        Constants.InMageAzureV2,
+                        StringComparison.OrdinalIgnoreCase) ==
+                    0 ||
+                    string.Compare(
+                        replicationProvider,
+                        Constants.InMage,
+                        StringComparison.OrdinalIgnoreCase) ==
+                    0)
+                {
+                    throw new InvalidOperationException(
+                        string.Format(
+                            Resources.UnsupportedReplicationProviderForReprotect,
+                            replicationProvider));
+                }
+            }
+
             var response =
                 this.RecoveryServicesClient.UpdateAzureSiteRecoveryProtection(
                     this.RecoveryPlan.Name);

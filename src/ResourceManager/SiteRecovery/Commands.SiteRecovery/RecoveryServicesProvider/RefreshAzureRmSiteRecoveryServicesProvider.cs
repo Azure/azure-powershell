@@ -22,6 +22,11 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// Retrieves Azure Site Recovery Services Provider.
     /// </summary>
     [Cmdlet(VerbsData.Update, "AzureRmSiteRecoveryServicesProvider", DefaultParameterSetName = ASRParameterSets.Default)]
+    [ObsoleteAttribute("'Update-AzureRmSiteRecoveryServicesProvider' cmdlet is mark as obsolete and" +
+        " will be depricated in upcoming breaking changes build. Please use the New cmdlet " +
+        "'Update-AzureRmRecoveryServicesAsrServicesProvider' module 'AzureRM.RecoveryServices.SiteRecovery'.",
+        false)]
+
     public class UpdateAzureRmSiteRecoveryServicesProvider : SiteRecoveryCmdletBase
     {
         #region Parameters

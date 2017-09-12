@@ -25,6 +25,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureRmSiteRecoveryProtectionContainerMapping", DefaultParameterSetName = ASRParameterSets.ByObject, SupportsShouldProcess = true)]
     [OutputType(typeof(ASRJob))]
+    [ObsoleteAttribute("'Remove-AzureRmSiteRecoveryProtectionContainerMapping' cmdlet is mark as " +
+        "obsolete and will be depricated in upcoming breaking changes build. Please use the New cmdlet " +
+        "'Remove-AzureRmRecoveryServicesAsrProtectionContainerMapping' module 'AzureRM.RecoveryServices.SiteRecovery'.",
+        false)]
     public class RemoveAzureRmSiteRecoveryProtectionContainerMapping : SiteRecoveryCmdletBase
     {
 

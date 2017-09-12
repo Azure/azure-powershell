@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.RecoveryServices.ARM.dll-Help.xml
+Module Name: AzureRM.RecoveryServices
 ms.assetid: 9591E150-54DA-48B7-8656-3891833FE61E
 online version: 
 schema: 2.0.0
@@ -22,10 +23,12 @@ The **New-AzureRmRecoveryServicesVault** cmdlet creates a new Recovery Services 
 
 ## EXAMPLES
 
-### 1:
+### Example 1
+```
+PS C:\> New-AzureRmRecoveryServicesVault -Name "vaultName" -ResourceGroupName "rg" -Location "eastasia"
 ```
 
-```
+Create recovery service vault in resource group and given location.
 
 ## PARAMETERS
 
