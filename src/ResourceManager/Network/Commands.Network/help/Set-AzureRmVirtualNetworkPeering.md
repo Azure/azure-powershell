@@ -24,67 +24,51 @@ The **Set-AzureRmVirtualNetworkPeering** cmdlet configures a virtual network pee
 
 ### Example 1: Change forwarded traffic configuration of a virtual network peering
 ```
-PS C:\>$LinkToVNet2 = Get-AzureRmVirtualNetworkPeering -VirtualNetworkName "VirtualNetwork17" -ResourceGroupName "ResourceGroup001" -Name "LinkToVNet2"
-PS C:\> $LinkToVNet2.AllowForwardedTraffic = $True
-PS C:\> Set-AzureRmVirtualNetworkPeering -VirtualNetworkPeering $LinkToVNet2
+# Get the virtual network peering you want to update information for
+Get-AzureRmVirtualNetworkPeering -VirtualNetworkName "myVnet1" -ResourceGroupName "ResourceGroup" -Name "myVnet1ToMyVnet2"
+
+# Change value of AllowForwardedTraffic property
+$myVnet1ToMyVnet2.AllowForwardedTraffic = $True
+
+# Update the peering with changes made
+Set-AzureRmVirtualNetworkPeering -VirtualNetworkPeering $myVnet1ToMyVnet2
 ```
-
-This example changes the forwarded traffic configuration to $True from the default value $False on a previously established VNet peering link.
-
-The first command gets the link named LinkToVNet2 in ResourceGroup001 in the virtual network named VirtualNetwork17 by using the Get-AzureRmVirtualNetworkPeering cmdlet.
-The command stores the result in the $LinkToVNet2 variable.
-
-The second command changes the **AllowForwardedTraffic** property to $True.
-
-The final command updates the settings for the LinkToVNet2 virtual network peering to the value in $LinkToVNet2.
 
 ### Example 2: Change virtual network access of a virtual network peering
 ```
-PS C:\>$LinkToVNet2 = Get-AzureRmVirtualNetworkPeering -VirtualNetworkName "VirtualNetwork17" -ResourceGroupName "ResourceGroup001" -Name "LinkToVNet2"
-PS C:\> $LinkToVNet2.AllowVirtualNetworkAccess = $False
-PS C:\> Set-AzureRmVirtualNetworkPeering -VirtualNetworkPeering $LinkToVNet2
+# Get the virtual network peering
+$myVnet1TomyVnet2 = Get-AzureRmVirtualNetworkPeering -VirtualNetworkName "myVnet1" -ResourceGroupName "myResourceGroup" -Name "myVnet1TomyVnet2"
+
+# Change AllowVirtualNetworkAccess property
+$myVnet1TomyVnet2.AllowVirtualNetworkAccess = $False
+
+# Update virtual network peering
+Set-AzureRmVirtualNetworkPeering -VirtualNetworkPeering $myVnet1TomyVnet2
 ```
-
-This example changes the virtual network access property configuration to $False from the default value $True on a previously established VNet peering link.
-
-The first command gets the link named LinkToVNet2 in ResourceGroup001 in the virtual network named VirtualNetwork17 by using **Get-AzureRmVirtualNetworkPeering**.
-The command stores the result in the $LinkToVNet2 variable.
-
-The second command changes the **AllowVirtualNetworkAccess** property to $False.
-
-The final command updates the settings for the LinkToVNet2 virtual network peering to the value in $LinkToVNet2.
 
 ### Example 3: Change gateway transit property configuration of a virtual network peering
 ```
-PS C:\>$LinkToVNet2 = Get-AzureRmVirtualNetworkPeering -VirtualNetworkName "VirtualNetwork17" -ResourceGroupName "001ResourceGroup" -Name "LinkToVNet2"
-PS C:\> $LinkToVNet2.AllowGatewayTransit = $True
-PS C:\> Set-AzureRmVirtualNetworkPeering -VirtualNetworkPeering $LinkToVNet2
+# Get the virtual network peering
+$myVnet1TomyVnet2 = Get-AzureRmVirtualNetworkPeering -VirtualNetworkName "myVnet1" -ResourceGroupName "myResourceGroup" -Name "myVnet1TomyVnet2"
+
+# Change AllowGatewayTransit property
+$myVnet1TomyVnet2.AllowGatewayTransit = $True
+
+# Update the virtual network peering
+Set-AzureRmVirtualNetworkPeering -VirtualNetworkPeering $myVnet1TomyVnet2
 ```
-
-This changes the gateway transit property configuration to $True from the default value $False on a previously established VNet peering link.
-
-The first command gets the link named LinkToVNet2 in ResourceGroup001 in the virtual network named VirtualNetwork17 by using **Get-AzureRmVirtualNetworkPeering**.
-The command stores the result in the $LinkToVNet2 variable.
-
-The second command changes the **AllowGatewayTransit** property to $True.
-
-The final command updates the settings for the LinkToVNet2 virtual network peering to the value in $LinkToVNet2.
 
 ### Example 4: Use remote gateways in virtual network peering
 ```
-PS C:\>$LinkToVNet2 = Get-AzureRmVirtualNetworkPeering -VirtualNetworkName "VirtualNetwork17" -ResourceGroupName "ResourceGroup001" -Name "LinkToVNet2"
-PS C:\> $LinkToVNet2.UseRemoteGateways = $True
-PS C:\> Set-AzureRmVirtualNetworkPeering -VirtualNetworkPeering $LinkToVNet2
+# Get the virtual network peering 
+$myVnet1TomyVnet2 = Get-AzureRmVirtualNetworkPeering -VirtualNetworkName "myVnet1" -ResourceGroupName "ResourceGroup001" -Name "myVnet1TomyVnet2"
+
+# Change the UseRemoteGateways property
+$myVnet1TomyVnet2.UseRemoteGateways = $True
+
+# Update the virtual network peering
+Set-AzureRmVirtualNetworkPeering -VirtualNetworkPeering $LinkToVNet2
 ```
-
-This changes the remote gateway configuration to $True from the default value $False on a previously established VNet peering link.
-
-The first command gets the link named LinkToVNet2 in ResourceGroup001 in the virtual network named VirtualNetwork17 by using **Get-AzureRmVirtualNetworkPeering**.
-The command stores the result in the $LinkToVNet2 variable.
-
-The second command changes the **UseRemoteGateways** property to $True.
-
-The final command updates the settings for the LinkToVNet2 virtual network peering to the value in $LinkToVNet2.
 
 By changing this property to $True, your peer's VNet gateway can be used.
 However, the peer VNet must have a gateway configured and **AllowGatewayTransit** must have a value of $True.
