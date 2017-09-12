@@ -15,6 +15,7 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
 
     public class PSSecurityRule : PSChildResource
@@ -48,5 +49,11 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         [JsonProperty(Order = 1)]
         public string ProvisioningState { get; set; }
+
+        [JsonProperty(Order = 1)]
+        public List<PSApplicationSecurityGroup> SourceApplicationSecurityGroups { get; set; }
+
+        [JsonProperty(Order = 1)]
+        public List<PSApplicationSecurityGroup> DestinationApplicationSecurityGroups { get; set; }
     }
 }

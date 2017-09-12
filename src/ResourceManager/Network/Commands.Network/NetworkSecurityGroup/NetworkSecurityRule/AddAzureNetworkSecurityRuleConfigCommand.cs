@@ -46,6 +46,26 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ArgumentException("Rule with the specified name already exists");
             }
 
+            if (!string.IsNullOrWhiteSpace(this.SourceAddressPrefix) && (this.SourceApplicationSecurityGroup != null))
+            {
+                throw new ArgumentException($"{nameof(SourceAddressPrefix)} and {nameof(SourceApplicationSecurityGroup)} cannot be used simultaneously.");
+            }
+
+            if (!string.IsNullOrWhiteSpace(this.SourceAddressPrefix) && (this.SourceApplicationSecurityGroupId != null))
+            {
+                throw new ArgumentException($"{nameof(SourceAddressPrefix)} and {nameof(SourceApplicationSecurityGroupId)} cannot be used simultaneously.");
+            }
+
+            if (!string.IsNullOrWhiteSpace(this.DestinationAddressPrefix) && (this.DestinationApplicationSecurityGroup != null))
+            {
+                throw new ArgumentException($"{nameof(DestinationAddressPrefix)} and {nameof(DestinationApplicationSecurityGroup)} cannot be used simultaneously.");
+            }
+
+            if (!string.IsNullOrWhiteSpace(this.DestinationAddressPrefix) && (this.DestinationApplicationSecurityGroupId != null))
+            {
+                throw new ArgumentException($"{nameof(DestinationAddressPrefix)} and {nameof(DestinationApplicationSecurityGroupId)} cannot be used simultaneously.");
+            }
+
             rule = new PSSecurityRule();
 
             rule.Name = this.Name;
@@ -58,6 +78,9 @@ namespace Microsoft.Azure.Commands.Network
             rule.Access = this.Access;
             rule.Priority = this.Priority;
             rule.Direction = this.Direction;
+
+            SetSourceApplicationSecurityGroupInRule(rule);
+            SetDestinationApplicationSecurityGroupInRule(rule);
 
             this.NetworkSecurityGroup.SecurityRules.Add(rule);
 

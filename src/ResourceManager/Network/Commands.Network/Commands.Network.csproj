@@ -175,6 +175,11 @@
     <Compile Include="ApplicationGateway\UrlPathMap\NewAzureApplicationGatewayUrlPathMapConfigCommand.cs" />
     <Compile Include="ApplicationGateway\UrlPathMap\RemoveAzureApplicationGatewayUrlPathMapConfigCommand.cs" />
     <Compile Include="ApplicationGateway\UrlPathMap\SetAzureApplicationGatewayUrlPathMapConfigCommand.cs" />
+    <Compile Include="ApplicationSecurityGroup\ApplicationSecurityGroupBaseCmdlet.cs" />
+    <Compile Include="ApplicationSecurityGroup\GetAzureApplicationSecurityGroupCommand.cs" />
+    <Compile Include="ApplicationSecurityGroup\NewAzureRMApplicationSecurityGroupCommand.cs" />
+    <Compile Include="ApplicationSecurityGroup\RemoveAzureRMApplicationSecurityGroupCommand.cs" />
+    <Compile Include="ApplicationSecurityGroup\SetAzureRMApplicationSecurityGroupCommand.cs" />
     <Compile Include="Common\ListNextLink.cs" />
     <Compile Include="Common\NetworkBaseCmdlet.cs" />
     <Compile Include="Common\NetworkClient.cs" />
@@ -356,6 +361,7 @@
     <Compile Include="NetworkWatcher\PacketCapture\StopAzureNetworkWatcherPacketCaptureCommand.cs" />
     <Compile Include="NetworkWatcher\RemoveAzureNetworkWatcherCommand.cs" />
     <Compile Include="ProviderWideCmdlets\GetAzureExpressRouteServiceProviderCommand.cs" />
+    <Compile Include="Models\PSApplicationSecurityGroup.cs" />
     <Compile Include="Usage\GetAzureNetworkUsageCommand.cs" />
     <Compile Include="VirtualNetworkGatewayConnection\NewAzureRmIpsecPolicyCommand.cs" />
     <Compile Include="RouteFilter\GetAzureRouteFilterCommand.cs" />
