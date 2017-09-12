@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.RecoveryServices.ARM.dll-Help.xml
+Module Name: AzureRM.RecoveryServices
 ms.assetid: 466F6B7C-BA7E-4DFD-8504-5A196A335231
 online version: 
 schema: 2.0.0
@@ -21,10 +22,12 @@ The **Remove-AzureRmRecoveryServicesVault** cmdlet deletes a Recovery Services v
 
 ## EXAMPLES
 
-### 1:
+### Example 1
+```
+PS C:\> Remove-AzureRmRecoveryServicesVault -Vault $vault
 ```
 
-```
+Deletes a Recovery Services vault.
 
 ## PARAMETERS
 

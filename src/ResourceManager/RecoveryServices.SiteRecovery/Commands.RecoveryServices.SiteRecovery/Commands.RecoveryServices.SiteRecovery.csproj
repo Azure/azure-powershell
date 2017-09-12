@@ -46,9 +46,18 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.RecoveryServices.SiteRecovery, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.RecoveryServices.SiteRecovery.1.0.1-preview\lib\net452\Microsoft.Azure.Management.RecoveryServices.SiteRecovery.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.RecoveryServices.SiteRecovery.1.0.2-preview\lib\net452\Microsoft.Azure.Management.RecoveryServices.SiteRecovery.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.10\lib\net452\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.3.3.10\lib\net452\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" />
     <Reference Include="Security.Cryptography">
       <HintPath>Utilities\Security.Cryptography.dll</HintPath>
     </Reference>
@@ -56,6 +65,10 @@
     <Reference Include="System.Web.Extensions" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlertSetting\SetAzureRmRecoveryServicesAsrAlertSetting.cs" />
+    <Compile Include="AlertSetting\GetAzureRmRecoveryServicesAsrAlertSetting.cs" />
+    <Compile Include="Common\PSAsrAlertSettingClient.cs" />
+    <Compile Include="Common\PSAsrEventClient.cs" />
     <Compile Include="Common\PSAsrNetworkClient.cs" />
     <Compile Include="Common\PSAsrNetworkMappingClient.cs" />
     <Compile Include="Common\PSAsrClient.cs" />
@@ -71,18 +84,26 @@
     <Compile Include="Common\PSAsrFabricClient.cs" />
     <Compile Include="Common\PSAsrStorageClassificationClient.cs" />
     <Compile Include="Common\AsrCmdletBase.cs" />
+    <Compile Include="Common\PSAsrVCenterClient.cs" />
+    <Compile Include="Event\GetAzureRmRecoveryServicesAsrEvent.cs" />
     <Compile Include="Fabrics\GetAzureRmRecoveryServicesAsrFabric.cs" />
     <Compile Include="Fabrics\NewAzureRmRecoveryServicesAsrFabric.cs" />
     <Compile Include="Fabrics\RemoveAzureRmRecoveryServicesAsrFabric.cs" />
+    <Compile Include="Fabrics\StartAzureRmRecoveryServicesAsrSwitchProcessServer.cs" />
     <Compile Include="Job\StopAzureRmRecoveryServicesAsrJob.cs" />
+    <Compile Include="Models\PSAlertSetting.cs" />
     <Compile Include="Models\PSConstants.cs" />
+    <Compile Include="Models\PSEvent.cs" />
+    <Compile Include="Models\PSFabricDetails.cs" />
     <Compile Include="Models\PSNetworkObjects.cs" />
     <Compile Include="Models\PSRecoveryPlanObjects.cs" />
+    <Compile Include="Models\PSvCenter.cs" />
     <Compile Include="Network\GetAzureRmRecoveryServicesAsrNetworkMapping.cs" />
     <Compile Include="Network\GetAzureRmRecoveryServicesAsrNetwork.cs" />
     <Compile Include="Network\UpdateAzureRmRecoveryServicesAsrNetworkMapping.cs" />
     <Compile Include="Policy\UpdateAzureRmRecoveryServicesAsrPolicy.cs" />
     <Compile Include="ProtectableItem\GetAzureRmRecoveryServicesAsrProtectableItem.cs" />
+    <Compile Include="ProtectableItem\NewAzureRmRecoveryServicesAsrProtectableItem.cs" />
     <Compile Include="ProtectionContainerMapping\GetAzureRmRecoveryServicesAsrProtectionContainerMapping.cs" />
     <Compile Include="ProtectionContainerMapping\NewAzureRmRecoveryServicesAsrProtectionContainerMapping.cs" />
     <Compile Include="ProtectionContainerMapping\RemoveAzureRmRecoveryServicesAsrProtectionContainerMapping.cs" />
@@ -97,8 +118,11 @@
     <Compile Include="ReplicationProtectedItem\StartAzureRmRecoveryServicesAsrApplyRecoveryPoint.cs" />
     <Compile Include="ReplicationProtectedItem\StartAzureRmRecoveryServicesAsrCommitFailoverJob.cs" />
     <Compile Include="ReplicationProtectedItem\StartAzureRmRecoveryServicesAsrPlannedFailoverJob.cs" />
+    <Compile Include="ReplicationProtectedItem\StartAzureRmRecoveryServicesAsrResynchronizeReplication.cs" />
+    <Compile Include="ReplicationProtectedItem\StartAzureRmRecoveryServicesAsrTestFailoverCleanupJob.cs" />
     <Compile Include="ReplicationProtectedItem\StartAzureRmRecoveryServicesAsrTestFailoverJob.cs" />
     <Compile Include="ReplicationProtectedItem\StartAzureRmRecoveryServicesAsrUnPlannedFailover.cs" />
+    <Compile Include="ReplicationProtectedItem\UpdateAzureRmRecoveryServicesAsrMobilityService.cs" />
     <Compile Include="ReplicationProtectedItem\UpdateAzureRmRecoveryServicesAsrProtectionDirection.cs" />
     <Compile Include="Network\NewAzureRmRecoveryServicesAsrNetworkMapping.cs" />
     <Compile Include="Network\RemoveAzureRmRecoveryServicesAsrNetworkMapping.cs" />
@@ -133,6 +157,10 @@
     <Compile Include="Vault\SetAzureRmRecoveryServicesAsrVaultSettings.cs" />
     <Compile Include="Vault\GetAzureRmRecoveryServicesAsrVaultSettings.cs" />
     <Compile Include="Vault\ImportAzureRmRecoveryServicesAsrVaultSettingsFile.cs" />
+    <Compile Include="vCenter\GetAzureRmRecoveryServicesAsrvCenter.cs" />
+    <Compile Include="vCenter\NewAzureRmRecoveryServicesAsrvCenter.cs" />
+    <Compile Include="vCenter\RemoveAzureRmRecoveryServicesAsrvCenter.cs" />
+    <Compile Include="vCenter\UpdateAzureRmRecoveryServicesAsrvCenter.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

@@ -23,6 +23,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRmSiteRecoveryNetworkMapping")]
     [OutputType(typeof(ASRJob))]
+    [ObsoleteAttribute("'New-AzureRmSiteRecoveryNetworkMapping' cmdlet is mark as obsolete and will" +
+        " be depricated in upcoming breaking changes build. Please use the New cmdlet " +
+        "'New-AzureRmRecoveryServicesAsrNetworkMapping' module 'AzureRM.RecoveryServices.SiteRecovery'.",
+        false)]
     public class NewAzureRmSiteRecoveryNetworkMapping : SiteRecoveryCmdletBase
     {
         #region Parameters

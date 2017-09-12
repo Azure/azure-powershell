@@ -12,6 +12,11 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmSiteRecoveryStorageClassificationMapping", DefaultParameterSetName = ASRParameterSets.Default)]
     [OutputType(typeof(IEnumerable<ASRStorageClassificationMapping>))]
+    [ObsoleteAttribute("'Get-AzureRmSiteRecoveryStorageClassificationMapping' cmdlet is mark as " +
+        "obsolete and will be depricated in upcoming breaking changes build. Please use the New " +
+        "cmdlet 'Get-AzureRmRecoveryServicesAsrStorageClassificationMapping'" +
+        " module 'AzureRM.RecoveryServices.SiteRecovery'.",
+        false)]
     public class GetAzureRmSiteRecoveryStorageClassificationMapping : SiteRecoveryCmdletBase
     {
         #region Parameters

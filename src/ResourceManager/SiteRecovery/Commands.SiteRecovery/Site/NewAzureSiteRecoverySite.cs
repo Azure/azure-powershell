@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using Microsoft.Azure.Management.SiteRecovery.Models;
 using System.Management.Automation;
 
@@ -21,6 +22,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// Creates Azure Site Recovery Policy object in memory.
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRmSiteRecoverySite", DefaultParameterSetName = ASRParameterSets.Default)]
+    [Obsolete("'New-AzureRmSiteRecoverySite' cmdlet is mark as obsolete and will be " +
+        "depricated in upcoming breaking changes build. Please use the New cmdlet " +
+        "'New-AzureRmRecoveryServicesAsrFabric' module 'AzureRM.RecoveryServices.SiteRecovery'.",
+        false)]
     public class NewAzureSiteRecoverySite : SiteRecoveryCmdletBase
     {
         #region Parameters

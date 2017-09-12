@@ -15,6 +15,7 @@
 using System;
 using System.IO;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties;
 using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
@@ -91,6 +92,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 switch (this.ParameterSetName)
                 {
                     case ASRParameterSets.ByPEObject:
+                    case ASRParameterSets.VMwareToAzure:
                         this.fabricName = Utilities.GetValueFromArmId(
                             this.ReplicationProtectedItem.ID,
                             ARMResourceTypeConstants.ReplicationFabrics);
@@ -132,6 +134,28 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     };
                 input.Properties.ProviderSpecificDetails =
                     hyperVReplicaAzureApplyRecoveryPointInput;
+            }
+            else if (string.Compare(
+                    this.ReplicationProtectedItem.ReplicationProvider,
+                    Constants.InMageAzureV2,
+                    StringComparison.OrdinalIgnoreCase) ==
+                0)
+            {
+                // Create the InMageAzureV2 specific Apply Recovery Point Input.
+                var inMageAzureV2ApplyRecoveryPointInput =
+                    new InMageAzureV2ApplyRecoveryPointInput();
+                input.Properties.ProviderSpecificDetails = inMageAzureV2ApplyRecoveryPointInput;
+            }
+            else if (string.Compare(
+                    this.ReplicationProtectedItem.ReplicationProvider,
+                    Constants.InMage,
+                    StringComparison.OrdinalIgnoreCase) ==
+                0)
+            {
+                throw new InvalidOperationException(
+                    string.Format(
+                        Resources.UnsupportedReplicationProviderForApplyRecoveryPoint,
+                        this.ReplicationProtectedItem.ReplicationProvider));
             }
 
             var response = this.RecoveryServicesClient.StartAzureSiteRecoveryApplyRecoveryPoint(

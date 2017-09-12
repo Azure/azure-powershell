@@ -92,10 +92,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 switch (this.ParameterSetName)
                 {
                     case ASRParameterSets.EnterpriseToAzure:
-                        this.EnterpriseToAzureAssociation();
+                    case ASRParameterSets.VMwareToAzure:
+                        this.EnterpriseToAzureAndVMwareToAzureAssociation();
                         break;
                     case ASRParameterSets.EnterpriseToEnterprise:
-                        this.EnterpriseToEnterpriseAssociation();
+                    case ASRParameterSets.VMWareToVMWare:
+                        this.EnterpriseToEnterpriseAndVMwareToVMwareAssociation();
                         break;
                 }
             }
@@ -114,7 +116,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 TargetProtectionContainerId = targetProtectionContainerId
             };
 
-            var input = new CreateProtectionContainerMappingInput { Properties = inputProperties };
+            var input = new CreateProtectionContainerMappingInput {Properties = inputProperties};
 
             var response = this.RecoveryServicesClient.ConfigureProtection(
                 Utilities.GetValueFromArmId(
@@ -133,11 +135,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Associates Azure Policy with enterprise based protection containers
         /// </summary>
-        private void EnterpriseToAzureAssociation()
+        private void EnterpriseToAzureAndVMwareToAzureAssociation()
         {
             if (string.Compare(
                     this.Policy.ReplicationProvider,
                     Constants.HyperVReplicaAzure,
+                    StringComparison.OrdinalIgnoreCase) !=
+                0 &&
+                string.Compare(
+                    this.Policy.ReplicationProvider,
+                    Constants.InMageAzureV2,
                     StringComparison.OrdinalIgnoreCase) !=
                 0)
             {
@@ -153,18 +160,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Associates Policy with enterprise based protection containers
         /// </summary>
-        private void EnterpriseToEnterpriseAssociation()
+        private void EnterpriseToEnterpriseAndVMwareToVMwareAssociation()
         {
-            if ((string.Compare(
-                     this.Policy.ReplicationProvider,
-                     Constants.HyperVReplica2012,
-                     StringComparison.OrdinalIgnoreCase) !=
-                 0) &&
-                (string.Compare(
-                     this.Policy.ReplicationProvider,
-                     Constants.HyperVReplica2012R2,
-                     StringComparison.OrdinalIgnoreCase) !=
-                 0))
+            if (string.Compare(
+                    this.Policy.ReplicationProvider,
+                    Constants.HyperVReplica2012,
+                    StringComparison.OrdinalIgnoreCase) !=
+                0 &&
+                string.Compare(
+                    this.Policy.ReplicationProvider,
+                    Constants.HyperVReplica2012R2,
+                    StringComparison.OrdinalIgnoreCase) !=
+                0 &&
+                string.Compare(
+                    this.Policy.ReplicationProvider,
+                    Constants.InMage,
+                    StringComparison.OrdinalIgnoreCase) !=
+                0)
             {
                 throw new InvalidOperationException(
                     string.Format(

@@ -24,6 +24,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// Updates Azure Site Recovery Recovery Plan object in memory.
     /// </summary>
     [Cmdlet(VerbsData.Edit, "AzureRmSiteRecoveryRecoveryPlan", DefaultParameterSetName = ASRParameterSets.AppendGroup)]
+    [ObsoleteAttribute("'Edit-AzureRmSiteRecoveryRecoveryPlan' cmdlet is mark as obsolete and " +
+        "will be depricated in upcoming breaking changes build. Please use the New cmdlet " +
+        "'Edit-AzureRmRecoveryServicesAsrRecoveryPlan' module 'AzureRM.RecoveryServices.SiteRecovery'.",
+        false)]
     public class EditAzureRmSiteRecoveryRecoveryPlan : SiteRecoveryCmdletBase
     {
         #region Parameters

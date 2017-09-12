@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{95C16AED-FD57-42A0-86C3-2CF4300A4817}"
 EndProject
@@ -9,6 +9,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.RecoveryServices.SiteRecovery", "Commands.RecoveryServices.SiteRecovery\Commands.RecoveryServices.SiteRecovery.csproj", "{7C879645-31EE-4A78-AD81-5512300FA105}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.RecoveryServices.SiteRecovery.Test", "Commands.RecoveryServices.SiteRecovery.Test\Commands.RecoveryServices.SiteRecovery.Test.csproj", "{6C7D3D81-37AB-445E-8081-78A1FEC0A774}"
+	ProjectSection(ProjectDependencies) = postProject
+		{604260DC-B392-4CF4-81EC-34B14591E2D2} = {604260DC-B392-4CF4-81EC-34B14591E2D2}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ScenarioTests.ResourceManager.Common", "..\Common\Commands.ScenarioTests.ResourceManager.Common\Commands.ScenarioTests.ResourceManager.Common.csproj", "{3436A126-EDC9-4060-8952-9A1BE34CDD95}"
 EndProject

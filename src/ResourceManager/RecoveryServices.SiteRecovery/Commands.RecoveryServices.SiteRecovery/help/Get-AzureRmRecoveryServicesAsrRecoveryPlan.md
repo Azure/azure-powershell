@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.dll-Help.xml
+Module Name: AzureRM.RecoveryServices.SiteRecovery
 online version: 
 schema: 2.0.0
 ---

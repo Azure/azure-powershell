@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using Microsoft.Azure.Management.SiteRecovery.Models;
 using System.Management.Automation;
 
@@ -22,6 +23,11 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureRmSiteRecoverySite", SupportsShouldProcess = true,
         DefaultParameterSetName = ASRParameterSets.Default)]
+    [Obsolete("'Remove-AzureRmSiteRecoverySite' cmdlet is mark as obsolete and will be " +
+        "depricated in upcoming breaking changes build. Please use the New cmdlet " +
+        "'Remove-AzureRmRecoveryServicesAsrFabric' module 'AzureRM.RecoveryServices.SiteRecovery'.",
+        false)]
+
     public class RemoveAzureSiteRecoverySite : SiteRecoveryCmdletBase
     {
         #region Parameters

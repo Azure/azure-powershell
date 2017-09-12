@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.dll-Help.xml
+Module Name: AzureRM.RecoveryServices.SiteRecovery
 online version: 
 schema: 2.0.0
 ---
@@ -14,9 +15,11 @@ Updates an Azure Site Recovery replication policy.
 ```
 Update-AzureRmRecoveryServicesAsrPolicy -InputObject <ASRPolicy> [-ReplicationMethod <String>]
  [-ReplicationFrequencyInSeconds <String>] [-NumberOfRecoveryPointsToRetain <Int32>]
- [-ApplicationConsistentSnapshotFrequencyInHours <Int32>] [-Compression <String>] [-ReplicationPort <UInt16>]
+ [-RecoveryPointRetentionInHours <Int32>] [-ApplicationConsistentSnapshotFrequencyInHours <Int32>]
+ [-ApplicationConsistentSnapshotFrequencyInMinutes <Int32>] [-Compression <String>] [-ReplicationPort <UInt16>]
  [-Authentication <String>] [-ReplicationStartTime <TimeSpan>] [-ReplicaDeletion <String>]
- [-RecoveryAzureStorageAccountId <String>] [-Encryption <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-RecoveryAzureStorageAccountId <String>] [-Encryption <String>] [-RPOWarningThresholdInMinutes <Int32>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,12 +51,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ApplicationConsistentSnapshotFrequencyInMinutes
+ApplicationConsistentSnapshotFrequencyInMinutes
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Authentication
 Specifies the type of authentication used.
-Valid values are:
-
-- Certificate
--  Kerberos
 
 ```yaml
 Type: String
@@ -84,6 +98,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Encryption
 Specifies if encryption should be enabled or disabled.
 
@@ -102,6 +131,7 @@ Accept wildcard characters: False
 
 ### -InputObject
 Input object for the cmdlet: Specifies the ASR replication policy object corresponding to the replication policy to be updated.
+
 
 ```yaml
 Type: ASRPolicy
@@ -130,8 +160,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RPOWarningThresholdInMinutes
+The RPO threshold value in minutes to warn on.
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -RecoveryAzureStorageAccountId
 Specifies the Azure storage account ID of the replication target. Used as the target storage account for replication if an alternate is not provided while enabling replication using the New-AzureRmRecoveryServicesASRReplicationProtectedItem cmdlet.
+
 
 ```yaml
 Type: String
@@ -184,10 +230,6 @@ Accept wildcard characters: False
 
 ### -ReplicationMethod
 Specifies the replication method.
-Valid values are:
-
-- Online
-- Offline
 
 ```yaml
 Type: String
@@ -233,13 +275,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: cf
+Aliases: wi
 
 Required: False
 Position: Named
@@ -248,13 +290,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+### -RecoveryPointRetentionInHours
+Retain the recovery points fir given time in hours.
 
 ```yaml
-Type: SwitchParameter
+Type: Int32
 Parameter Sets: (All)
-Aliases: wi
+Aliases: 
 
 Required: False
 Position: Named

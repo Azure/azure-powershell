@@ -12,8 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.SiteRecovery.Models;
+using System;
 using System.Management.Automation;
+using Microsoft.Azure.Management.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
@@ -22,6 +23,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// </summary>
     [Cmdlet(VerbsLifecycle.Stop, "AzureRmSiteRecoveryJob", DefaultParameterSetName = ASRParameterSets.ByObject)]
     [OutputType(typeof(ASRJob))]
+    [ObsoleteAttribute("'Stop-AzureRmSiteRecoveryJob' cmdlet is mark as obsolete and will be " +
+        "depricated in upcoming breaking changes build. Please use the New cmdlet " +
+        "'Stop-AzureRmRecoveryServicesAsrJob' module 'AzureRM.RecoveryServices.SiteRecovery'.",
+        false)]
     public class StopAzureSiteRecoveryJob : SiteRecoveryCmdletBase
     {
         #region Parameters

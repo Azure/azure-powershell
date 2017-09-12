@@ -25,6 +25,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmSiteRecoveryJob", DefaultParameterSetName = ASRParameterSets.ByParam)]
     [OutputType(typeof(IEnumerable<ASRJob>))]
+    [ObsoleteAttribute("'Get-AzureRmSiteRecoveryJob' cmdlet is mark as obsolete and will be " +
+        "depricated in upcoming breaking changes build. Please use the New cmdlet " +
+        "'Get-AzureRmRecoveryServicesAsrJob' module 'AzureRM.RecoveryServices.SiteRecovery'.",
+        false)]
     public class GetAzureSiteRecoveryJob : SiteRecoveryCmdletBase
     {
         #region Parameters

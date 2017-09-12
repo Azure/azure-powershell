@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.dll-Help.xml
+Module Name: AzureRM.RecoveryServices.SiteRecovery
 online version: 
 schema: 2.0.0
 ---
@@ -37,6 +38,34 @@ PS C:\> $fabrics = Get-AzureRmRecoveryServicesAsrFabric
 ```
 
 Returns all the Azure Site Recovery fabrics in the vault.
+
+### Example 2
+```
+PS C:\> $fabric = Get-AzureRmRecoveryServicesAsrFabric -Name xxxx
+
+Name                  : xxxx
+FriendlyName          : XXXXXXXXXX
+ID                    : /Subscriptions/XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/XXXXXXXXXXXXX/replicationFabrics/XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+FabricType            : VMware
+SiteIdentifier        : XXXXXXXXxxxxxxxxxxx
+FabricSpecificDetails : Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRVMWareSpecificDetails
+```
+
+Return azure site recovery fabric with name xxxx.
+
+### Example 3
+```
+PS C:\> $fabric = Get-AzureRmRecoveryServicesAsrFabric -FriendlyName XXXXXXXXXX
+
+Name                  : xxxx
+FriendlyName          : XXXXXXXXXX
+ID                    : /Subscriptions/XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/XXXXXXXXXXXXX/replicationFabrics/XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+FabricType            : VMware
+SiteIdentifier        : XXXXXXXXxxxxxxxxxxx
+FabricSpecificDetails : Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRVMWareSpecificDetails
+```
+
+Return azure site recovery fabric with friendly name xxxx.
 
 ## PARAMETERS
 

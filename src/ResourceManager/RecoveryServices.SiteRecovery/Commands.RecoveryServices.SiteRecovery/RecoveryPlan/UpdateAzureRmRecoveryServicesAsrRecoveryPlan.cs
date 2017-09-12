@@ -120,7 +120,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     // otherwise assign respective values
                     ReplicationProtectedItems =
                         asrRecoveryPlanGroup.ReplicationProtectedItems == null
-                            ? new List<RecoveryPlanProtectedItem>() : asrRecoveryPlanGroup
+                            ? new List<RecoveryPlanProtectedItem>()
+                            : asrRecoveryPlanGroup
                                 .ReplicationProtectedItems.Select(
                                     item =>
                                     {
@@ -131,21 +132,36 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                                         if (item.Properties.ProviderSpecificDetails.GetType() ==
                                             typeof(HyperVReplicaAzureReplicationDetails))
                                         {
-                                            VmId = ((HyperVReplicaAzureReplicationDetails)item
+                                            VmId = ((HyperVReplicaAzureReplicationDetails) item
                                                 .Properties.ProviderSpecificDetails).VmId;
                                         }
                                         else if (item.Properties.ProviderSpecificDetails
-                                                     .GetType() ==
-                                                 typeof(HyperVReplicaReplicationDetails))
+                                                .GetType() ==
+                                            typeof(HyperVReplicaReplicationDetails))
                                         {
-                                            VmId = ((HyperVReplicaReplicationDetails)item.Properties
+                                            VmId = ((HyperVReplicaReplicationDetails) item
+                                                .Properties
                                                 .ProviderSpecificDetails).VmId;
                                         }
                                         else if (item.Properties.ProviderSpecificDetails
-                                                     .GetType() ==
-                                                 typeof(HyperVReplicaBlueReplicationDetails))
+                                                .GetType() ==
+                                            typeof(HyperVReplicaBlueReplicationDetails))
                                         {
-                                            VmId = ((HyperVReplicaBlueReplicationDetails)item
+                                            VmId = ((HyperVReplicaBlueReplicationDetails) item
+                                                .Properties.ProviderSpecificDetails).VmId;
+                                        }
+                                        else if (item.Properties.ProviderSpecificDetails
+                                                .GetType() ==
+                                            typeof(InMageAzureV2ReplicationDetails))
+                                        {
+                                            VmId = ((InMageAzureV2ReplicationDetails) item
+                                                .Properties.ProviderSpecificDetails).VmId;
+                                        }
+                                        else if (item.Properties.ProviderSpecificDetails
+                                                .GetType() ==
+                                            typeof(InMageReplicationDetails))
+                                        {
+                                            VmId = ((InMageReplicationDetails) item
                                                 .Properties.ProviderSpecificDetails).VmId;
                                         }
 

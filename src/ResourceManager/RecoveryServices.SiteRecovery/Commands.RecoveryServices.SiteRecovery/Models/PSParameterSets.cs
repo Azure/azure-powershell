@@ -39,6 +39,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         internal const string ARSVault = "AzureRecoveryServicesVault";
 
+        /// <summary>
+        ///     Handle ARS Vault.
+        /// </summary>
+        internal const string ARSVaultACS = "AzureRecoveryServicesVaultACS";
+
         /// </summary>
         /// Handle ASR Vault.
         /// </summary>
@@ -280,9 +285,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         internal const string ByServerObject = "ByServerObject";
 
         /// <summary>
+        ///     When only Server Object is passed to the command.
+        /// </summary>
+        internal const string ByTime = "ByTime";
+
+        /// <summary>
+        ///     When only Object type is passed to the command.
+        /// </summary>
+        internal const string ByType = "ByType";
+
+        /// <summary>
         ///     When nothing is passed to the command.
         /// </summary>
         internal const string Default = "Default";
+
+        /// <summary>
+        ///     Disable
+        /// </summary>
+        internal const string Disable = "Disable";
 
         /// <summary>
         ///     Disable DR
@@ -353,5 +373,61 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Remove replication protected items from RP
         /// </summary>
         internal const string RemoveReplicationProtectedItems = "RemoveReplicationProtectedItems";
+
+        /// <summary>
+        ///     Set alerts to send to owners.
+        /// </summary>
+        internal const string SendToOwners = "SendToOwners";
+
+        /// <summary>
+        ///     Set alerts to send to owners.
+        /// </summary>
+        internal const string Set = "Set";
+
+        /// <summary>
+        ///     Set email addresses.
+        /// </summary>
+        internal const string SetEmail = "SetEmail";
+
+        /// <summary>
+        ///     Mapping for VMware to Azure.
+        /// </summary>
+        internal const string VMwareToAzure = "VMwareToAzure";
+
+        /// <summary>
+        ///     Mapping for both VMware to Azure and VMware to VMware.
+        /// </summary>
+        internal const string VMwareToAzureAndVMwareToVMware = "VMwareToAzureAndVMwareToVMware";
+
+        /// <summary>
+        ///     Mapping for both VMware to Azure and VMware to VMware for RP.
+        /// </summary>
+        internal const string VMwareToAzureAndVMwareToVMwareRP = "VMwareToAzureAndVMwareToVMwareRP";
+
+        /// <summary>
+        ///     Mapping for both VMware to Azure and VMware to VMware for RPI.
+        /// </summary>
+        internal const string VMwareToAzureAndVMwareToVMwareRPI =
+            "VMwareToAzureAndVMwareToVMwareRPI";
+
+        /// <summary>
+        ///     Mapping for VMware to Azure for RP.
+        /// </summary>
+        internal const string VMwareToAzureRP = "VMwareToAzureRP";
+
+        /// <summary>
+        ///     Mapping for VMware to Azure for RPI.
+        /// </summary>
+        internal const string VMwareToAzureRPI = "VMwareToAzureRPI";
+
+        /// <summary>
+        ///     Mapping for VMware to Vmware.
+        /// </summary>
+        internal const string VMWareToVMWare = "VMWareToVMWare";
+
+        /// <summary>
+        ///     Mapping for VMware to VMware for RPI.
+        /// </summary>
+        internal const string VMwareToVMwareRPI = "VMwareToVMwareRPI";
     }
 }

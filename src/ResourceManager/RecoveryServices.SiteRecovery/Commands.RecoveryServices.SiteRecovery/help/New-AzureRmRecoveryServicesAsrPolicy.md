@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.dll-Help.xml
+Module Name: AzureRM.RecoveryServices.SiteRecovery
 online version: 
 schema: 2.0.0
 ---
@@ -28,6 +29,13 @@ New-AzureRmRecoveryServicesAsrPolicy -Name <String> -ReplicationProvider <String
  [<CommonParameters>]
 ```
 
+### VMwareToAzureAndVMwareToVMware
+```
+New-AzureRmRecoveryServicesAsrPolicy -Name <String> -ReplicationProvider <String>
+ [-RecoveryPointRetentionInHours <Int32>] [-ApplicationConsistentSnapshotFrequencyInMinutes <Int32>]
+ [-RPOWarningThresholdInMinutes <Int32>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **New-AzureRmRecoveryServicesAsrPolicy** cmdlet creates an Azure Site Recovery replication policy.
 The replication policy is used to specify replication settings such as the replication frequency and number of recovery points.
@@ -36,7 +44,54 @@ The replication policy is used to specify replication settings such as the repli
 
 ### Example 1
 ```
-PS C:\> $currentJob = New-AzureRmRecoveryServicesAsrProtectionContainerMapping -Name $PolicyName -Policy $ProtectionProfile -PrimaryProtectionContainer $PrimaryContainer -RecoveryProtectionContainer $RecoveryContainer
+PS C:\> New-AzureRmRecoveryServicesAsrPolicy -Name "abc" -ReplicationProvider HyperVReplicaAzure -ReplicationFrequencyInSeconds 30 -NumberOfRecoveryPointsToRetain 10
+```
+
+Starts the replication policy creation operation using the specified parameters and returns the ASR job used to track the operation.
+
+### Example 2
+```
+PS C:\> New-AzureRmRecoveryServicesAsrPolicy -Name "abc122" -ReplicationProvider HyperVReplica2012R2 -ReplicationFrequencyInSeconds 300 -ReplicationPort 211
+
+Name             : 1c609a5b-324e-461c-866f-ad58f944df25
+ID               : /Subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourceGroups/xxxxxxxxxxxx/providers/Microsoft.RecoveryServices/vaults/xxxxxxxxxxxx/replicationJobs/1c609a5b-324e-461c-866f-ad58f944df25
+Type             :
+JobType          : AddProtectionProfile
+DisplayName      : Create replication policy
+ClientRequestId  : b10c83ee-fee2-42d4-ad1d-dfc3e166faab ActivityId: 67e8453c-fae0-465f-801c-dfa2e6e6ee23
+State            : Succeeded
+StateDescription : Completed
+StartTime        : 8/29/2017 10:18:10 AM
+EndTime          : 8/29/2017 10:18:11 AM
+TargetObjectId   : bb8e8c57-221d-5668-9d82-b15a3e19a6a3
+TargetObjectType : ProtectionProfile
+TargetObjectName : abc122
+AllowedActions   :
+Tasks            : {Prerequisites check for creating the replication policy, Creating the replication policy}
+Errors           : {}
+```
+
+Starts the replication policy creation operation using the specified parameters and returns the ASR job used to track the operation.
+
+### Example 3
+```
+PS C:\> New-AzureRmRecoveryServicesAsrPolicy -Name $policyName1 -ReplicationProvider InMageAzureV2 -RecoveryPoints 40  -RPOWarningThresholdInMinutes 5 -ApplicationConsistentSnapshotFrequencyInMinutes 15
+Name             : ed69e451-878b-4f19-9c0f-73184be05eaf
+ID               : /Subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourceGroups/xxxxxxxxxxxx/providers/Microsoft.RecoveryServices/vaults/xxxxxxxxxxxx/replicationJobs/ed69e451-878b-4f19-9c0f-73184be05eaf
+Type             :
+JobType          :
+DisplayName      :
+ClientRequestId  : d8922fa2-303c-4eb4-b556-e07969ea6fba ActivityId: 9e946cdf-2351-44c2-9aef-70ef2eab29b4
+State            : NotStarted
+StateDescription : NotStarted
+StartTime        :
+EndTime          :
+TargetObjectId   :
+TargetObjectType :
+TargetObjectName :
+AllowedActions   :
+Tasks            : {}
+Errors           : {}
 ```
 
 Starts the replication policy creation operation using the specified parameters and returns the ASR job used to track the operation.
@@ -48,7 +103,22 @@ Specifies the frequency(in hours) at which to create application consistent reco
 
 ```yaml
 Type: Int32
-Parameter Sets: (All)
+Parameter Sets: EnterpriseToAzure, EnterpriseToEnterprise
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ApplicationConsistentSnapshotFrequencyInMinutes
+Specifies the frequency(in minutes) at which to create application consistent recovery points.
+
+```yaml
+Type: Int32
+Parameter Sets: VMwareToAzureAndVMwareToVMware
 Aliases: 
 
 Required: False
@@ -94,6 +164,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Encryption
 Specifies if encryption should be enabled or disabled.
 
@@ -130,8 +215,23 @@ Specifies the number recovery points to retain.
 
 ```yaml
 Type: Int32
-Parameter Sets: (All)
+Parameter Sets: EnterpriseToAzure, EnterpriseToEnterprise
 Aliases: RecoveryPoints
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RPOWarningThresholdInMinutes
+The RPO threshold value in minutes to warn on.
+
+```yaml
+Type: Int32
+Parameter Sets: VMwareToAzureAndVMwareToVMware
+Aliases: 
 
 Required: False
 Position: Named
@@ -181,7 +281,7 @@ Valid values are:
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: EnterpriseToAzure, EnterpriseToEnterprise
 Aliases: 
 Accepted values: 30, 300, 900
 
@@ -229,17 +329,12 @@ Accept wildcard characters: False
 
 ### -ReplicationProvider
 Specifies the replication provider.
-Valid values are:
-
-- HyperVReplica2012R2
-- HyperVReplica2012
-- HyperVReplicaAzure
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
-Accepted values: HyperVReplica2012R2, HyperVReplica2012, HyperVReplicaAzure
+Accepted values: HyperVReplica2012R2, HyperVReplica2012, HyperVReplicaAzure, InMageAzureV2, InMage
 
 Required: True
 Position: Named
@@ -254,23 +349,8 @@ It must be no later than 24-hours from the start of the job.
 
 ```yaml
 Type: TimeSpan
-Parameter Sets: (All)
+Parameter Sets: EnterpriseToAzure, EnterpriseToEnterprise
 Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
 
 Required: False
 Position: Named
@@ -286,6 +366,21 @@ Shows what would happen if the cmdlet runs. The cmdlet is not run.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecoveryPointRetentionInHours
+Retain the recovery points fir given time in hours.
+
+```yaml
+Type: Int32
+Parameter Sets: VMwareToAzureAndVMwareToVMware
+Aliases: 
 
 Required: False
 Position: Named

@@ -12,10 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.SiteRecovery.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Management.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
@@ -24,6 +25,11 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmSiteRecoveryNetwork", DefaultParameterSetName = ASRParameterSets.Default)]
     [OutputType(typeof(IEnumerable<ASRNetwork>))]
+    [ObsoleteAttribute("'Get-AzureRmSiteRecoveryNetwork' cmdlet is mark as obsolete and will" +
+        " be depricated in upcoming breaking changes build. Please use the New cmdlet " +
+        "'Get-AzureRmRecoveryServicesAsrNetwork' module 'AzureRM.RecoveryServices.SiteRecovery' ",
+        false)]
+
     public class GetAzureRmSiteRecoveryNetwork : SiteRecoveryCmdletBase
     {
         #region Parameters

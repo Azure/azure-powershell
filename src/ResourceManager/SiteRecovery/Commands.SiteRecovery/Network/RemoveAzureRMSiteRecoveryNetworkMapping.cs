@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using Microsoft.Azure.Management.SiteRecovery.Models;
 using System.Management.Automation;
 
@@ -22,6 +23,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureRmSiteRecoveryNetworkMapping")]
     [OutputType(typeof(ASRJob))]
+    [ObsoleteAttribute("'Remove-AzureRmSiteRecoveryNetworkMapping' cmdlet is mark as obsolete and " +
+        "will be depricated in upcoming breaking changes build. Please use the New cmdlet " +
+        "'Remove-AzureRmRecoveryServicesAsrNetworkMapping' module 'AzureRM.RecoveryServices.SiteRecovery'.",
+        false)]
     public class RemoveAzureRmSiteRecoveryNetworkMapping : SiteRecoveryCmdletBase
     {
         #region Parameters

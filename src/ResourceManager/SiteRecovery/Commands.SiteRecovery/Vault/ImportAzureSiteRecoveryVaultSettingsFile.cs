@@ -26,6 +26,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// </summary>
     [Cmdlet(VerbsData.Import, "AzureRmSiteRecoveryVaultSettingsFile")]
     [OutputType(typeof(ASRVaultSettings))]
+    [ObsoleteAttribute("'Import-AzureRmSiteRecoveryVaultSettingsFile' cmdlet is mark as obsolete " +
+        "and will be depricated in upcoming breaking changes build. Please use the New cmdlet " +
+        "'Import-AzureRmRecoveryServicesAsrVaultSettingsFile'  module 'AzureRM.RecoveryServices.SiteRecovery'.",
+        false)]
     public class ImportAzureSiteRecoveryVaultSettingsFile : SiteRecoveryCmdletBase
     {
         #region Parameters

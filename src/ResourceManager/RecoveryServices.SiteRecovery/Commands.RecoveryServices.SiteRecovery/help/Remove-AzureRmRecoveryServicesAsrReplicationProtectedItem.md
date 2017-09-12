@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.dll-Help.xml
+Module Name: AzureRM.RecoveryServices.SiteRecovery
 online version: 
 schema: 2.0.0
 ---
@@ -30,6 +31,21 @@ PS C:\> $currentJob = Remove-AzureRmRecoveryServicesAsrReplicationProtectedItem 
 Starts the disable replication operation for the specified replication protected item and returns the ASR job used to track the operation.
 
 ## PARAMETERS
+
+### -Confirm
+Specify if confirmation is required. Set the value of the confirm parameter to $false in order to skip confirmation.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Force
 Force the command to run without providing an additional warning.
@@ -68,21 +84,6 @@ Indicates that the cmdlet should wait for the operation to complete before retur
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Specify if confirmation is required. Set the value of the confirm parameter to $false in order to skip confirmation.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
 
 Required: False
 Position: Named

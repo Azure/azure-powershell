@@ -27,6 +27,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// Updates Azure Site Recovery Policy.
     /// </summary>
     [Cmdlet(VerbsData.Update, "AzureRmSiteRecoveryPolicy", DefaultParameterSetName = ASRParameterSets.Default)]
+    [ObsoleteAttribute("'Update-AzureRmSiteRecoveryPolicy' cmdlet is mark as obsolete and will be " +
+        "depricated in upcoming breaking changes build. Please use the New cmdlet " +
+        "'Update-AzureRmRecoveryServicesAsrPolicy' module 'AzureRM.RecoveryServices.SiteRecovery'.",
+        false)]
     public class UpdateAzureRmSiteRecoveryPolicy : SiteRecoveryCmdletBase
     {
         #region Private

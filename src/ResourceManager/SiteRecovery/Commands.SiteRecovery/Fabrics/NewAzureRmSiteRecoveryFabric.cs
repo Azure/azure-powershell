@@ -27,6 +27,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRmSiteRecoveryFabric", DefaultParameterSetName = ASRParameterSets.Default)]
     [OutputType(typeof(ASRJob))]
+    [ObsoleteAttribute("'New-AzureRmSiteRecoveryFabric' cmdlet is mark as obsolete and will be " +
+        "depricated in upcoming breaking changes build. Please use the New cmdlet " +
+        "'New-AzureRmRecoveryServicesAsrFabric' module 'AzureRM.RecoveryServices.SiteRecovery'.",
+        false)]
     public class NewAzureRmSiteRecoveryFabric : SiteRecoveryCmdletBase
     {
         #region Parameters

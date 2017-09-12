@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.RecoveryServices.ARM.dll-Help.xml
+Module Name: AzureRM.RecoveryServices
 ms.assetid: 56074606-28A6-4F91-A56C-4C8A9A31543F
 online version: 
 schema: 2.0.0
@@ -15,13 +16,13 @@ Gets the Azure Site Recovery vault settings file.
 ### ForSite
 ```
 Get-AzureRmRecoveryServicesVaultSettingsFile [-Vault] <ARSVault> -SiteIdentifier <String>
- -SiteFriendlyName <String> [[-Path] <String>] [-SiteRecovery] [<CommonParameters>]
+ -SiteFriendlyName <String> [[-Path] <String>] [-UseACSAuthentication] [-SiteRecovery] [<CommonParameters>]
 ```
 
 ### ByDefault
 ```
-Get-AzureRmRecoveryServicesVaultSettingsFile [-Vault] <ARSVault> [[-Path] <String>] [-SiteRecovery]
- [<CommonParameters>]
+Get-AzureRmRecoveryServicesVaultSettingsFile [-Vault] <ARSVault> [[-Path] <String>] [-UseACSAuthentication]
+ [-SiteRecovery] [<CommonParameters>]
 ```
 
 ### ForBackupVaultType
@@ -47,6 +48,20 @@ The first command gets the vault named TestVault, and then stores it in the $Vau
 The second command sets the $CredsPath variable to C:\Downloads.
 
 The last command gets the vault credentials file for $Vault01 using the credentials in $CredsPath for Azure Backup.
+
+### Example 2:
+```
+PS C:\> $Credsfilename = Get-AzureRmRecoveryServicesVaultSettingsFile -SiteIdentifier -Vault $Vault01
+```
+
+The command gets the vault credentials file for $Vault01 of vault type siteRecovery.
+
+### Example 3: Register a Windows Server or DPM machine for Azure Backup
+```
+PS C:\> $Credsfilename = Get-AzureRmRecoveryServicesVaultSettingsFile -SiteIdentifier -Vault $Vault01 -UseACSAuthentication
+```
+
+The command gets the vault credentials file for $Vault01 using ACS authentication mechanism.
 
 ## PARAMETERS
 
@@ -140,6 +155,22 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -UseACSAuthentication
+Parameter to use Azure Access Control Service authentication mechanishm to get vaultSetting file.
+By default AAD authentication is used.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: ForSite, ByDefault
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

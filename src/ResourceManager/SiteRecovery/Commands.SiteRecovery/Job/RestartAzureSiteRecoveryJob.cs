@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.SiteRecovery.Models;
+using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
@@ -22,6 +23,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// </summary>
     [Cmdlet(VerbsLifecycle.Restart, "AzureRmSiteRecoveryJob", DefaultParameterSetName = ASRParameterSets.ByObject)]
     [OutputType(typeof(ASRJob))]
+    [ObsoleteAttribute("'Restart-AzureRmSiteRecoveryJob' cmdlet is mark as obsolete and will be " +
+        "depricated in upcoming breaking changes build. Please use the New cmdlet " +
+        "'Restart-AzureRmRecoveryServicesAsrJob' module 'AzureRM.RecoveryServices.SiteRecovery'.",
+        false)]
     public class RestartAzureSiteRecoveryJob : SiteRecoveryCmdletBase
     {
         #region Parameters

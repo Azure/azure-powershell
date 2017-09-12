@@ -12,8 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.SiteRecovery.Models;
+using System;
 using System.Management.Automation;
+using Microsoft.Azure.Management.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
@@ -22,6 +23,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// </summary>
     [Cmdlet(VerbsLifecycle.Start, "AzureRmSiteRecoveryCommitFailoverJob", DefaultParameterSetName = ASRParameterSets.ByRPIObject)]
     [OutputType(typeof(ASRJob))]
+    [ObsoleteAttribute("'Start-AzureRmSiteRecoveryCommitFailoverJob' cmdlet is mark as obsolete " +
+        "and will be depricated in upcoming breaking changes build. Please use the New cmdlet " +
+        "'Start-AzureRmRecoveryServicesAsrCommitFailoverJob' module 'AzureRM.RecoveryServices.SiteRecovery'.",
+        false)]
     public class StartAzureRmSiteRecoveryCommitFailoverJob : SiteRecoveryCmdletBase
     {
         /// <summary>

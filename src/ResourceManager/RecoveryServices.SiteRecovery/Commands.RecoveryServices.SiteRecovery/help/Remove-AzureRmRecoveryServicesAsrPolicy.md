@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.dll-Help.xml
+Module Name: AzureRM.RecoveryServices.SiteRecovery
 online version: 
 schema: 2.0.0
 ---
@@ -29,21 +30,6 @@ Starts the deletion of the specified replication policy and returns the ASR job 
 
 ## PARAMETERS
 
-### -InputObject
-The input object to the cmdlet: The ASR replication policy object corresponding to the replication policy to be deleted.
-
-```yaml
-Type: ASRPolicy
-Parameter Sets: (All)
-Aliases: Policy
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -56,6 +42,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+The input object to the cmdlet: The ASR replication policy object corresponding to the replication policy to be deleted.
+
+```yaml
+Type: ASRPolicy
+Parameter Sets: (All)
+Aliases: Policy
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

@@ -1,0 +1,955 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL2NhbmFyeWV4cHJvdXRlL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHM/YXBpLXZlcnNpb249MjAxNi0wNi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "89722a88-82bc-4e4d-beb4-648e9d2e1d24"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1590.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.10586",
+          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.2.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"location\": \"southeastasia\",\r\n      \"name\": \"IbizaV2ATest\",\r\n      \"etag\": \"W/\\\"datetime'2017-02-23T07%3A17%3A38.2866453Z'\\\"\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\"\r\n      },\r\n      \"id\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n      \"sku\": {\r\n        \"name\": \"RS0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"location\": \"southeastasia\",\r\n      \"name\": \"SrilathaVault\",\r\n      \"etag\": \"W/\\\"datetime'2017-02-23T07%3A17%3A38.6426618Z'\\\"\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\"\r\n      },\r\n      \"id\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/SrilathaVault\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n      \"sku\": {\r\n        \"name\": \"RS0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"location\": \"southeastasia\",\r\n      \"name\": \"ubuntu\",\r\n      \"etag\": \"W/\\\"datetime'2017-02-23T07%3A17%3A38.9596794Z'\\\"\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\"\r\n      },\r\n      \"id\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/ubuntu\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n      \"sku\": {\r\n        \"name\": \"RS0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "1153"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "d6334efe-4640-4919-9cc1-8376c4cc93dd"
+        ],
+        "x-ms-client-request-id": [
+          "89722a88-82bc-4e4d-beb4-648e9d2e1d24"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14998"
+        ],
+        "x-ms-correlation-request-id": [
+          "d6334efe-4640-4919-9cc1-8376c4cc93dd"
+        ],
+        "x-ms-routing-request-id": [
+          "AUSTRALIAEAST:20170912T044149Z:d6334efe-4640-4919-9cc1-8376c4cc93dd"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 12 Sep 2017 04:41:49 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationPolicies/V2aTestv2avm1?api-version=2016-08-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL2NhbmFyeWV4cHJvdXRlL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvSWJpemFWMkFUZXN0L3JlcGxpY2F0aW9uUG9saWNpZXMvVjJhVGVzdHYyYXZtMT9hcGktdmVyc2lvbj0yMDE2LTA4LTEw",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"providerSpecificInput\": {\r\n      \"instanceType\": \"InMageAzureV2\",\r\n      \"recoveryPointThresholdInMinutes\": 5,\r\n      \"recoveryPointHistory\": 2400,\r\n      \"crashConsistentFrequencyInMinutes\": 5,\r\n      \"appConsistentFrequencyInMinutes\": 15,\r\n      \"multiVmSyncStatus\": \"Enable\"\r\n    }\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "319"
+        ],
+        "x-ms-client-request-id": [
+          "66a02936-2800-477e-ba53-e2c4a9ba8efa-2017-09-12 04:41:50Z-P"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1505187710041)\\/\",\"NotAfterTimestamp\":\"\\/Date(1505792510041)\\/\",\"ClientRequestId\":\"66a02936-2800-477e-ba53-e2c4a9ba8efa-2017-09-12 04:41:50Z-P\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"5PzQ1GJMtJu0zot0d+tRJczKw0V0xSmAOHCFr+3s3yQ=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1590.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.10586",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/1.0.2.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationJobs/974c0bb1-c609-4f0b-9e48-977d23861348?api-version=2016-08-10"
+        ],
+        "x-ms-request-id": [
+          "66a02936-2800-477e-ba53-e2c4a9ba8efa-2017-09-12 04:41:50Z-P 9/12/2017 4:41:54 AM"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-client-request-id": [
+          "66a02936-2800-477e-ba53-e2c4a9ba8efa-2017-09-12 04:41:50Z-P"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "594070c4-294a-4233-a2dd-799733f9d83d"
+        ],
+        "x-ms-routing-request-id": [
+          "AUSTRALIAEAST:20170912T044154Z:594070c4-294a-4233-a2dd-799733f9d83d"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 12 Sep 2017 04:41:54 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationPolicies/V2aTestv2avm1/operationresults/974c0bb1-c609-4f0b-9e48-977d23861348?api-version=2016-08-10"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationJobs/974c0bb1-c609-4f0b-9e48-977d23861348?api-version=2016-08-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL2NhbmFyeWV4cHJvdXRlL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvSWJpemFWMkFUZXN0L3JlcGxpY2F0aW9uSm9icy85NzRjMGJiMS1jNjA5LTRmMGItOWU0OC05NzdkMjM4NjEzNDg/YXBpLXZlcnNpb249MjAxNi0wOC0xMA==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e44b459d-9018-4acf-b856-ffc873ef4e23-2017-09-12 04:41:55Z-P"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1505187715089)\\/\",\"NotAfterTimestamp\":\"\\/Date(1505792515089)\\/\",\"ClientRequestId\":\"e44b459d-9018-4acf-b856-ffc873ef4e23-2017-09-12 04:41:55Z-P\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"URbnA1jeGx7mZLqH1geWII0zNDjrJ1UN4YdJ1nQQxtg=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1590.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.10586",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/1.0.2.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationJobs/974c0bb1-c609-4f0b-9e48-977d23861348\",\r\n  \"name\": \"974c0bb1-c609-4f0b-9e48-977d23861348\",\r\n  \"properties\": {\r\n    \"activityId\": \"66a02936-2800-477e-ba53-e2c4a9ba8efa-2017-09-12 04:41:50Z-P ActivityId: 594070c4-294a-4233-a2dd-799733f9d83d\",\r\n    \"scenarioName\": \"AddProtectionProfile\",\r\n    \"friendlyName\": \"Create replication policy\",\r\n    \"state\": \"InProgress\",\r\n    \"stateDescription\": \"InProgress\",\r\n    \"tasks\": [\r\n      {\r\n        \"taskId\": \"AddProtectionProfilePreflightsCheckTask\",\r\n        \"name\": \"AddProtectionProfilePreflightsCheckTask\",\r\n        \"startTime\": \"2017-09-12T04:41:55.5242392Z\",\r\n        \"endTime\": \"0001-01-01T00:00:00\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Prerequisites check for creating the replication policy\",\r\n        \"state\": \"InProgress\",\r\n        \"stateDescription\": \"InProgress\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"AddProtectionProfileTask\",\r\n        \"name\": \"AddProtectionProfileTask\",\r\n        \"startTime\": \"0001-01-01T00:00:00\",\r\n        \"endTime\": \"0001-01-01T00:00:00\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Creating the replication policy\",\r\n        \"state\": \"NotStarted\",\r\n        \"stateDescription\": \"NotStarted\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      }\r\n    ],\r\n    \"errors\": [],\r\n    \"startTime\": \"2017-09-12T04:41:54.233118Z\",\r\n    \"allowedActions\": [\r\n      \"Cancel\"\r\n    ],\r\n    \"targetObjectId\": \"3640215f-6a1a-5f67-bbac-1f0dcddbc45e\",\r\n    \"targetObjectName\": \"V2aTestv2avm1\",\r\n    \"targetInstanceType\": \"ProtectionProfile\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"AsrJobDetails\",\r\n      \"affectedObjectDetails\": {}\r\n    }\r\n  },\r\n  \"status\": \"InProgress\",\r\n  \"error\": null,\r\n  \"startTime\": \"2017-09-12T04:41:54.233118Z\",\r\n  \"endTime\": null\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "1723"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationJobs/974c0bb1-c609-4f0b-9e48-977d23861348"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0",
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-client-request-id": [
+          "e44b459d-9018-4acf-b856-ffc873ef4e23-2017-09-12 04:41:55Z-P"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14999"
+        ],
+        "x-ms-correlation-request-id": [
+          "4f6f9e3e-057e-4e8e-b215-7983432ec008"
+        ],
+        "x-ms-routing-request-id": [
+          "AUSTRALIAEAST:20170912T044155Z:4f6f9e3e-057e-4e8e-b215-7983432ec008"
+        ],
+        "Date": [
+          "Tue, 12 Sep 2017 04:41:55 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationJobs/974c0bb1-c609-4f0b-9e48-977d23861348?api-version=2016-08-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL2NhbmFyeWV4cHJvdXRlL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvSWJpemFWMkFUZXN0L3JlcGxpY2F0aW9uSm9icy85NzRjMGJiMS1jNjA5LTRmMGItOWU0OC05NzdkMjM4NjEzNDg/YXBpLXZlcnNpb249MjAxNi0wOC0xMA==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d52f840b-e1cc-4f59-8464-e9b652afd05b-2017-09-12 04:41:55Z-P"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1505187715995)\\/\",\"NotAfterTimestamp\":\"\\/Date(1505792515995)\\/\",\"ClientRequestId\":\"d52f840b-e1cc-4f59-8464-e9b652afd05b-2017-09-12 04:41:55Z-P\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"d2X3LQ/LxNmon5y4wxv2qFRe8yYSbFYLpDxajKd5ubc=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1590.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.10586",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/1.0.2.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationJobs/974c0bb1-c609-4f0b-9e48-977d23861348\",\r\n  \"name\": \"974c0bb1-c609-4f0b-9e48-977d23861348\",\r\n  \"properties\": {\r\n    \"activityId\": \"66a02936-2800-477e-ba53-e2c4a9ba8efa-2017-09-12 04:41:50Z-P ActivityId: 594070c4-294a-4233-a2dd-799733f9d83d\",\r\n    \"scenarioName\": \"AddProtectionProfile\",\r\n    \"friendlyName\": \"Create replication policy\",\r\n    \"state\": \"Succeeded\",\r\n    \"stateDescription\": \"Completed\",\r\n    \"tasks\": [\r\n      {\r\n        \"taskId\": \"AddProtectionProfilePreflightsCheckTask\",\r\n        \"name\": \"AddProtectionProfilePreflightsCheckTask\",\r\n        \"startTime\": \"2017-09-12T04:41:55.5711786Z\",\r\n        \"endTime\": \"2017-09-12T04:41:55.779594Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Prerequisites check for creating the replication policy\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"AddProtectionProfileTask\",\r\n        \"name\": \"AddProtectionProfileTask\",\r\n        \"startTime\": \"2017-09-12T04:41:55.779594Z\",\r\n        \"endTime\": \"2017-09-12T04:41:55.779594Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Creating the replication policy\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      }\r\n    ],\r\n    \"errors\": [],\r\n    \"startTime\": \"2017-09-12T04:41:54.233118Z\",\r\n    \"endTime\": \"2017-09-12T04:41:55Z\",\r\n    \"allowedActions\": [],\r\n    \"targetObjectId\": \"3640215f-6a1a-5f67-bbac-1f0dcddbc45e\",\r\n    \"targetObjectName\": \"V2aTestv2avm1\",\r\n    \"targetInstanceType\": \"ProtectionProfile\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"AsrJobDetails\",\r\n      \"affectedObjectDetails\": {}\r\n    }\r\n  },\r\n  \"status\": \"Succeeded\",\r\n  \"error\": null,\r\n  \"startTime\": \"2017-09-12T04:41:54.233118Z\",\r\n  \"endTime\": \"2017-09-12T04:41:55Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "1791"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationJobs/974c0bb1-c609-4f0b-9e48-977d23861348"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0",
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-client-request-id": [
+          "d52f840b-e1cc-4f59-8464-e9b652afd05b-2017-09-12 04:41:55Z-P"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14998"
+        ],
+        "x-ms-correlation-request-id": [
+          "9ff86d0f-f049-482e-853b-abf88aded70f"
+        ],
+        "x-ms-routing-request-id": [
+          "AUSTRALIAEAST:20170912T044156Z:9ff86d0f-f049-482e-853b-abf88aded70f"
+        ],
+        "Date": [
+          "Tue, 12 Sep 2017 04:41:55 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationPolicies/V2aTestv2avm1?api-version=2016-08-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL2NhbmFyeWV4cHJvdXRlL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvSWJpemFWMkFUZXN0L3JlcGxpY2F0aW9uUG9saWNpZXMvVjJhVGVzdHYyYXZtMT9hcGktdmVyc2lvbj0yMDE2LTA4LTEw",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e18619e7-28b9-4e90-9212-ce5cbc5c8dac-2017-09-12 04:41:56Z-P"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1505187716598)\\/\",\"NotAfterTimestamp\":\"\\/Date(1505792516598)\\/\",\"ClientRequestId\":\"e18619e7-28b9-4e90-9212-ce5cbc5c8dac-2017-09-12 04:41:56Z-P\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"H0zDtK4o59+duv7dIelWAU8NEk4RhEwO4lH/E2dZdUI=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1590.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.10586",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/1.0.2.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationPolicies/V2aTestv2avm1\",\r\n  \"name\": \"V2aTestv2avm1\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/replicationPolicies\",\r\n  \"properties\": {\r\n    \"friendlyName\": \"V2aTestv2avm1\",\r\n    \"providerSpecificDetails\": {\r\n      \"instanceType\": \"InMageAzureV2\",\r\n      \"crashConsistentFrequencyInMinutes\": 5,\r\n      \"recoveryPointThresholdInMinutes\": 5,\r\n      \"recoveryPointHistory\": 2400,\r\n      \"appConsistentFrequencyInMinutes\": 15,\r\n      \"multiVmSyncStatus\": \"Enabled\"\r\n    }\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "541"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "e18619e7-28b9-4e90-9212-ce5cbc5c8dac-2017-09-12 04:41:56Z-P 9/12/2017 4:41:56 AM"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0",
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-client-request-id": [
+          "e18619e7-28b9-4e90-9212-ce5cbc5c8dac-2017-09-12 04:41:56Z-P"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14997"
+        ],
+        "x-ms-correlation-request-id": [
+          "ecdbbfce-3231-4f81-91f9-2fbae12798ed"
+        ],
+        "x-ms-routing-request-id": [
+          "AUSTRALIAEAST:20170912T044156Z:ecdbbfce-3231-4f81-91f9-2fbae12798ed"
+        ],
+        "Date": [
+          "Tue, 12 Sep 2017 04:41:56 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationPolicies/V2aTestv2avm1-failback?api-version=2016-08-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL2NhbmFyeWV4cHJvdXRlL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvSWJpemFWMkFUZXN0L3JlcGxpY2F0aW9uUG9saWNpZXMvVjJhVGVzdHYyYXZtMS1mYWlsYmFjaz9hcGktdmVyc2lvbj0yMDE2LTA4LTEw",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"providerSpecificInput\": {\r\n      \"instanceType\": \"InMage\",\r\n      \"recoveryPointThresholdInMinutes\": 5,\r\n      \"recoveryPointHistory\": 2400,\r\n      \"appConsistentFrequencyInMinutes\": 15,\r\n      \"multiVmSyncStatus\": \"Enable\"\r\n    }\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "265"
+        ],
+        "x-ms-client-request-id": [
+          "327f47c0-bd50-4480-bc5d-8ea09f66777b-2017-09-12 04:41:57Z-P"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1505187717287)\\/\",\"NotAfterTimestamp\":\"\\/Date(1505792517287)\\/\",\"ClientRequestId\":\"327f47c0-bd50-4480-bc5d-8ea09f66777b-2017-09-12 04:41:57Z-P\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"PjuR7XdBQXutR+NVrtndEbzPdSUfcL1TcTxLGRie6OI=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1590.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.10586",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/1.0.2.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationJobs/8446c334-92f7-4c6d-a3d1-8e7bed6397bf?api-version=2016-08-10"
+        ],
+        "x-ms-request-id": [
+          "327f47c0-bd50-4480-bc5d-8ea09f66777b-2017-09-12 04:41:57Z-P 9/12/2017 4:41:58 AM"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-client-request-id": [
+          "327f47c0-bd50-4480-bc5d-8ea09f66777b-2017-09-12 04:41:57Z-P"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "x-ms-correlation-request-id": [
+          "82860d4e-bcf6-41dd-a75f-607019d35dd4"
+        ],
+        "x-ms-routing-request-id": [
+          "AUSTRALIAEAST:20170912T044158Z:82860d4e-bcf6-41dd-a75f-607019d35dd4"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 12 Sep 2017 04:41:57 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationPolicies/V2aTestv2avm1-failback/operationresults/8446c334-92f7-4c6d-a3d1-8e7bed6397bf?api-version=2016-08-10"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationJobs/8446c334-92f7-4c6d-a3d1-8e7bed6397bf?api-version=2016-08-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL2NhbmFyeWV4cHJvdXRlL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvSWJpemFWMkFUZXN0L3JlcGxpY2F0aW9uSm9icy84NDQ2YzMzNC05MmY3LTRjNmQtYTNkMS04ZTdiZWQ2Mzk3YmY/YXBpLXZlcnNpb249MjAxNi0wOC0xMA==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "02585656-8011-4c48-88e7-e5947249a79f-2017-09-12 04:41:58Z-P"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1505187718659)\\/\",\"NotAfterTimestamp\":\"\\/Date(1505792518659)\\/\",\"ClientRequestId\":\"02585656-8011-4c48-88e7-e5947249a79f-2017-09-12 04:41:58Z-P\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"hKfdNfoGrQLeEQ1mnzWR24HfN+KIYOBlAbp/DD0l75M=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1590.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.10586",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/1.0.2.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationJobs/8446c334-92f7-4c6d-a3d1-8e7bed6397bf\",\r\n  \"name\": \"8446c334-92f7-4c6d-a3d1-8e7bed6397bf\",\r\n  \"properties\": {\r\n    \"activityId\": \"327f47c0-bd50-4480-bc5d-8ea09f66777b-2017-09-12 04:41:57Z-P ActivityId: 82860d4e-bcf6-41dd-a75f-607019d35dd4\",\r\n    \"scenarioName\": \"AddProtectionProfile\",\r\n    \"friendlyName\": \"Create replication policy\",\r\n    \"state\": \"Succeeded\",\r\n    \"stateDescription\": \"Completed\",\r\n    \"tasks\": [\r\n      {\r\n        \"taskId\": \"AddProtectionProfilePreflightsCheckTask\",\r\n        \"name\": \"AddProtectionProfilePreflightsCheckTask\",\r\n        \"startTime\": \"2017-09-12T04:41:58.7758412Z\",\r\n        \"endTime\": \"2017-09-12T04:41:58.8212191Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Prerequisites check for creating the replication policy\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"AddProtectionProfileTask\",\r\n        \"name\": \"AddProtectionProfileTask\",\r\n        \"startTime\": \"2017-09-12T04:41:58.8212191Z\",\r\n        \"endTime\": \"0001-01-01T00:00:00\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Creating the replication policy\",\r\n        \"state\": \"InProgress\",\r\n        \"stateDescription\": \"InProgress\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      }\r\n    ],\r\n    \"errors\": [],\r\n    \"startTime\": \"2017-09-12T04:41:58.1036312Z\",\r\n    \"endTime\": \"2017-09-12T04:41:59Z\",\r\n    \"allowedActions\": [],\r\n    \"targetObjectId\": \"ce2d17c1-9718-52ac-88dd-faa6281731c6\",\r\n    \"targetObjectName\": \"V2aTestv2avm1-failback\",\r\n    \"targetInstanceType\": \"ProtectionProfile\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"AsrJobDetails\",\r\n      \"affectedObjectDetails\": {}\r\n    }\r\n  },\r\n  \"status\": \"Succeeded\",\r\n  \"error\": null,\r\n  \"startTime\": \"2017-09-12T04:41:58.1036312Z\",\r\n  \"endTime\": \"2017-09-12T04:41:59Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "1797"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationJobs/8446c334-92f7-4c6d-a3d1-8e7bed6397bf"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0",
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-client-request-id": [
+          "02585656-8011-4c48-88e7-e5947249a79f-2017-09-12 04:41:58Z-P"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14996"
+        ],
+        "x-ms-correlation-request-id": [
+          "a1fecd4b-87ef-47dc-a2e8-359fd41aebc7"
+        ],
+        "x-ms-routing-request-id": [
+          "AUSTRALIAEAST:20170912T044158Z:a1fecd4b-87ef-47dc-a2e8-359fd41aebc7"
+        ],
+        "Date": [
+          "Tue, 12 Sep 2017 04:41:58 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationJobs/8446c334-92f7-4c6d-a3d1-8e7bed6397bf?api-version=2016-08-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL2NhbmFyeWV4cHJvdXRlL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvSWJpemFWMkFUZXN0L3JlcGxpY2F0aW9uSm9icy84NDQ2YzMzNC05MmY3LTRjNmQtYTNkMS04ZTdiZWQ2Mzk3YmY/YXBpLXZlcnNpb249MjAxNi0wOC0xMA==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a20ef431-c3d1-4a73-a29f-5589ba9009de-2017-09-12 04:41:59Z-P"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1505187719262)\\/\",\"NotAfterTimestamp\":\"\\/Date(1505792519262)\\/\",\"ClientRequestId\":\"a20ef431-c3d1-4a73-a29f-5589ba9009de-2017-09-12 04:41:59Z-P\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"Gch1K3WUSWDQurrcD7MQT0PPcxEp01vRpANBjMljaa8=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1590.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.10586",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/1.0.2.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationJobs/8446c334-92f7-4c6d-a3d1-8e7bed6397bf\",\r\n  \"name\": \"8446c334-92f7-4c6d-a3d1-8e7bed6397bf\",\r\n  \"properties\": {\r\n    \"activityId\": \"327f47c0-bd50-4480-bc5d-8ea09f66777b-2017-09-12 04:41:57Z-P ActivityId: 82860d4e-bcf6-41dd-a75f-607019d35dd4\",\r\n    \"scenarioName\": \"AddProtectionProfile\",\r\n    \"friendlyName\": \"Create replication policy\",\r\n    \"state\": \"Succeeded\",\r\n    \"stateDescription\": \"Completed\",\r\n    \"tasks\": [\r\n      {\r\n        \"taskId\": \"AddProtectionProfilePreflightsCheckTask\",\r\n        \"name\": \"AddProtectionProfilePreflightsCheckTask\",\r\n        \"startTime\": \"2017-09-12T04:41:58.7758412Z\",\r\n        \"endTime\": \"2017-09-12T04:41:58.9618711Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Prerequisites check for creating the replication policy\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"AddProtectionProfileTask\",\r\n        \"name\": \"AddProtectionProfileTask\",\r\n        \"startTime\": \"2017-09-12T04:41:58.9618711Z\",\r\n        \"endTime\": \"2017-09-12T04:41:58.9618711Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Creating the replication policy\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      }\r\n    ],\r\n    \"errors\": [],\r\n    \"startTime\": \"2017-09-12T04:41:58.1036312Z\",\r\n    \"endTime\": \"2017-09-12T04:41:59Z\",\r\n    \"allowedActions\": [],\r\n    \"targetObjectId\": \"ce2d17c1-9718-52ac-88dd-faa6281731c6\",\r\n    \"targetObjectName\": \"V2aTestv2avm1-failback\",\r\n    \"targetInstanceType\": \"ProtectionProfile\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"AsrJobDetails\",\r\n      \"affectedObjectDetails\": {}\r\n    }\r\n  },\r\n  \"status\": \"Succeeded\",\r\n  \"error\": null,\r\n  \"startTime\": \"2017-09-12T04:41:58.1036312Z\",\r\n  \"endTime\": \"2017-09-12T04:41:59Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "1804"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationJobs/8446c334-92f7-4c6d-a3d1-8e7bed6397bf"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0",
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-client-request-id": [
+          "a20ef431-c3d1-4a73-a29f-5589ba9009de-2017-09-12 04:41:59Z-P"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14995"
+        ],
+        "x-ms-correlation-request-id": [
+          "f2a2d386-e17b-4a7b-90db-d51cb5c6f265"
+        ],
+        "x-ms-routing-request-id": [
+          "AUSTRALIAEAST:20170912T044159Z:f2a2d386-e17b-4a7b-90db-d51cb5c6f265"
+        ],
+        "Date": [
+          "Tue, 12 Sep 2017 04:41:59 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationPolicies/V2aTestv2avm1-failback?api-version=2016-08-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL2NhbmFyeWV4cHJvdXRlL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvSWJpemFWMkFUZXN0L3JlcGxpY2F0aW9uUG9saWNpZXMvVjJhVGVzdHYyYXZtMS1mYWlsYmFjaz9hcGktdmVyc2lvbj0yMDE2LTA4LTEw",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c3504920-a0f9-4abd-8678-2862adb7e3fe-2017-09-12 04:41:59Z-P"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1505187719852)\\/\",\"NotAfterTimestamp\":\"\\/Date(1505792519852)\\/\",\"ClientRequestId\":\"c3504920-a0f9-4abd-8678-2862adb7e3fe-2017-09-12 04:41:59Z-P\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"KfDDYZfd2elHPZLl2Rpn4MlOILMXIkZgtsHW8DxA/88=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1590.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.10586",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/1.0.2.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationPolicies/V2aTestv2avm1-failback\",\r\n  \"name\": \"V2aTestv2avm1-failback\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/replicationPolicies\",\r\n  \"properties\": {\r\n    \"friendlyName\": \"V2aTestv2avm1-failback\",\r\n    \"providerSpecificDetails\": {\r\n      \"instanceType\": \"InMage\",\r\n      \"recoveryPointThresholdInMinutes\": 5,\r\n      \"recoveryPointHistory\": 2400,\r\n      \"appConsistentFrequencyInMinutes\": 15,\r\n      \"multiVmSyncStatus\": \"Enabled\"\r\n    }\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "523"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "c3504920-a0f9-4abd-8678-2862adb7e3fe-2017-09-12 04:41:59Z-P 9/12/2017 4:41:59 AM"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0",
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-client-request-id": [
+          "c3504920-a0f9-4abd-8678-2862adb7e3fe-2017-09-12 04:41:59Z-P"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14994"
+        ],
+        "x-ms-correlation-request-id": [
+          "aba2012c-cc0f-477e-ae00-c2d13eefc525"
+        ],
+        "x-ms-routing-request-id": [
+          "AUSTRALIAEAST:20170912T044200Z:aba2012c-cc0f-477e-ae00-c2d13eefc525"
+        ],
+        "Date": [
+          "Tue, 12 Sep 2017 04:41:59 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationPolicies/V2aTestv2avm1?api-version=2016-08-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL2NhbmFyeWV4cHJvdXRlL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvSWJpemFWMkFUZXN0L3JlcGxpY2F0aW9uUG9saWNpZXMvVjJhVGVzdHYyYXZtMT9hcGktdmVyc2lvbj0yMDE2LTA4LTEw",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "9487aba6-9148-4249-8469-14fff8e1e2c7-2017-09-12 04:42:00Z-P"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1505187720552)\\/\",\"NotAfterTimestamp\":\"\\/Date(1505792520552)\\/\",\"ClientRequestId\":\"9487aba6-9148-4249-8469-14fff8e1e2c7-2017-09-12 04:42:00Z-P\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"OdgaROyS+nZ/mY1NPascEVjTsutw3DSmwcuFLMXaJk4=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1590.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.10586",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/1.0.2.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationJobs/e6acc6a5-6627-4bf0-8b6f-5da4c08804b0?api-version=2016-08-10"
+        ],
+        "x-ms-request-id": [
+          "9487aba6-9148-4249-8469-14fff8e1e2c7-2017-09-12 04:42:00Z-P 9/12/2017 4:42:01 AM"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-client-request-id": [
+          "9487aba6-9148-4249-8469-14fff8e1e2c7-2017-09-12 04:42:00Z-P"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1197"
+        ],
+        "x-ms-correlation-request-id": [
+          "c59c1b81-ee20-4df8-9b9c-f8ecd5dfdf1d"
+        ],
+        "x-ms-routing-request-id": [
+          "AUSTRALIAEAST:20170912T044201Z:c59c1b81-ee20-4df8-9b9c-f8ecd5dfdf1d"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 12 Sep 2017 04:42:00 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationPolicies/V2aTestv2avm1/operationresults/e6acc6a5-6627-4bf0-8b6f-5da4c08804b0?api-version=2016-08-10"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationJobs/e6acc6a5-6627-4bf0-8b6f-5da4c08804b0?api-version=2016-08-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL2NhbmFyeWV4cHJvdXRlL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvSWJpemFWMkFUZXN0L3JlcGxpY2F0aW9uSm9icy9lNmFjYzZhNS02NjI3LTRiZjAtOGI2Zi01ZGE0YzA4ODA0YjA/YXBpLXZlcnNpb249MjAxNi0wOC0xMA==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "4b579f78-2f86-472c-b820-d8da50de6972-2017-09-12 04:42:01Z-P"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1505187721730)\\/\",\"NotAfterTimestamp\":\"\\/Date(1505792521730)\\/\",\"ClientRequestId\":\"4b579f78-2f86-472c-b820-d8da50de6972-2017-09-12 04:42:01Z-P\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"cPAeOjHLZ/rlyh5kOc8aLiyAQTJyf6rtBp7CgctuqCI=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1590.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.10586",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/1.0.2.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationJobs/e6acc6a5-6627-4bf0-8b6f-5da4c08804b0\",\r\n  \"name\": \"e6acc6a5-6627-4bf0-8b6f-5da4c08804b0\",\r\n  \"properties\": {\r\n    \"activityId\": \"9487aba6-9148-4249-8469-14fff8e1e2c7-2017-09-12 04:42:00Z-P ActivityId: c59c1b81-ee20-4df8-9b9c-f8ecd5dfdf1d\",\r\n    \"scenarioName\": \"RemoveProtectionProfile\",\r\n    \"friendlyName\": \"Remove the replication policy\",\r\n    \"state\": \"Failed\",\r\n    \"stateDescription\": \"Failed\",\r\n    \"tasks\": [\r\n      {\r\n        \"taskId\": \"RemoveProtectionProfilePreflightsCheckTask\",\r\n        \"name\": \"RemoveProtectionProfilePreflightsCheckTask\",\r\n        \"startTime\": \"2017-09-12T04:42:01.9355209Z\",\r\n        \"endTime\": \"2017-09-12T04:42:01.9355209Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Checking prerequisites for replication policy removal\",\r\n        \"state\": \"Failed\",\r\n        \"stateDescription\": \"Failed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": [\r\n          {\r\n            \"serviceErrorDetails\": {\r\n              \"code\": \"15023\",\r\n              \"message\": \"The protection group could not be  deleted.\",\r\n              \"possibleCauses\": \"There are protection units configured for protection using this profile.\",\r\n              \"recommendedAction\": \"Remove the protection unit configurations which are using this profile, then retry the operation.\",\r\n              \"activityId\": \"9487aba6-9148-4249-8469-14fff8e1e2c7-2017-09-12 04:42:00Z-P ActivityId: c59c1b81-ee20-4df8-9b9c-f8ecd5dfdf1d\"\r\n            },\r\n            \"providerErrorDetails\": {\r\n              \"errorCode\": 0,\r\n              \"errorMessage\": null,\r\n              \"errorId\": \"e44bb75e-4b9a-4b8c-ab08-d75f8549b7d6\",\r\n              \"possibleCauses\": \"\",\r\n              \"recommendedAction\": \"\"\r\n            },\r\n            \"errorLevel\": \"Error\",\r\n            \"creationTime\": \"2017-09-12T04:42:01.8213356Z\",\r\n            \"taskId\": \"RemoveProtectionProfilePreflightsCheckTask\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"taskId\": \"RemoveProtectionProfileTask\",\r\n        \"name\": \"RemoveProtectionProfileTask\",\r\n        \"startTime\": \"0001-01-01T00:00:00\",\r\n        \"endTime\": \"0001-01-01T00:00:00\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Removing the replication policy\",\r\n        \"state\": \"Other\",\r\n        \"stateDescription\": \"Skipped\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      }\r\n    ],\r\n    \"errors\": [\r\n      {\r\n        \"serviceErrorDetails\": {\r\n          \"code\": \"15023\",\r\n          \"message\": \"The protection group could not be  deleted.\",\r\n          \"possibleCauses\": \"There are protection units configured for protection using this profile.\",\r\n          \"recommendedAction\": \"Remove the protection unit configurations which are using this profile, then retry the operation.\",\r\n          \"activityId\": \"9487aba6-9148-4249-8469-14fff8e1e2c7-2017-09-12 04:42:00Z-P ActivityId: c59c1b81-ee20-4df8-9b9c-f8ecd5dfdf1d\"\r\n        },\r\n        \"providerErrorDetails\": {\r\n          \"errorCode\": 0,\r\n          \"errorMessage\": null,\r\n          \"errorId\": \"e44bb75e-4b9a-4b8c-ab08-d75f8549b7d6\",\r\n          \"possibleCauses\": \"\",\r\n          \"recommendedAction\": \"\"\r\n        },\r\n        \"errorLevel\": \"Error\",\r\n        \"creationTime\": \"2017-09-12T04:42:01.8213356Z\",\r\n        \"taskId\": \"RemoveProtectionProfilePreflightsCheckTask\"\r\n      }\r\n    ],\r\n    \"startTime\": \"2017-09-12T04:42:01.1194463Z\",\r\n    \"endTime\": \"2017-09-12T04:42:01Z\",\r\n    \"allowedActions\": [\r\n      \"Restart\"\r\n    ],\r\n    \"targetObjectId\": \"3640215f-6a1a-5f67-bbac-1f0dcddbc45e\",\r\n    \"targetObjectName\": \"V2aTestv2avm1\",\r\n    \"targetInstanceType\": \"ProtectionProfile\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"AsrJobDetails\",\r\n      \"affectedObjectDetails\": {}\r\n    }\r\n  },\r\n  \"status\": \"Failed\",\r\n  \"error\": {\r\n    \"code\": \"15023\",\r\n    \"message\": \"The protection group could not be  deleted.\",\r\n    \"details\": null\r\n  },\r\n  \"startTime\": \"2017-09-12T04:42:01.1194463Z\",\r\n  \"endTime\": \"2017-09-12T04:42:01Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "3273"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationJobs/e6acc6a5-6627-4bf0-8b6f-5da4c08804b0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0",
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-client-request-id": [
+          "4b579f78-2f86-472c-b820-d8da50de6972-2017-09-12 04:42:01Z-P"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14993"
+        ],
+        "x-ms-correlation-request-id": [
+          "8612b0d5-fe52-456d-8e3d-ec4a25b18a22"
+        ],
+        "x-ms-routing-request-id": [
+          "AUSTRALIAEAST:20170912T044202Z:8612b0d5-fe52-456d-8e3d-ec4a25b18a22"
+        ],
+        "Date": [
+          "Tue, 12 Sep 2017 04:42:01 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationPolicies/V2aTestv2avm1-failback?api-version=2016-08-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL2NhbmFyeWV4cHJvdXRlL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvSWJpemFWMkFUZXN0L3JlcGxpY2F0aW9uUG9saWNpZXMvVjJhVGVzdHYyYXZtMS1mYWlsYmFjaz9hcGktdmVyc2lvbj0yMDE2LTA4LTEw",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "5baf9545-a729-4bc2-8588-33394a9e8bba-2017-09-12 04:42:02Z-P"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1505187722387)\\/\",\"NotAfterTimestamp\":\"\\/Date(1505792522387)\\/\",\"ClientRequestId\":\"5baf9545-a729-4bc2-8588-33394a9e8bba-2017-09-12 04:42:02Z-P\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"IlISwoa6Gbq6P3VdlWjcakvhKH7/+izRY1agFq7aF3s=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1590.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.10586",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/1.0.2.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationJobs/0211af51-1b52-4a65-9bb8-d5d99564d46a?api-version=2016-08-10"
+        ],
+        "x-ms-request-id": [
+          "5baf9545-a729-4bc2-8588-33394a9e8bba-2017-09-12 04:42:02Z-P 9/12/2017 4:42:02 AM"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-client-request-id": [
+          "5baf9545-a729-4bc2-8588-33394a9e8bba-2017-09-12 04:42:02Z-P"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1196"
+        ],
+        "x-ms-correlation-request-id": [
+          "f7525147-68eb-46fb-85e6-58a7bd9f777b"
+        ],
+        "x-ms-routing-request-id": [
+          "AUSTRALIAEAST:20170912T044202Z:f7525147-68eb-46fb-85e6-58a7bd9f777b"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 12 Sep 2017 04:42:02 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationPolicies/V2aTestv2avm1-failback/operationresults/0211af51-1b52-4a65-9bb8-d5d99564d46a?api-version=2016-08-10"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationJobs/0211af51-1b52-4a65-9bb8-d5d99564d46a?api-version=2016-08-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL2NhbmFyeWV4cHJvdXRlL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvSWJpemFWMkFUZXN0L3JlcGxpY2F0aW9uSm9icy8wMjExYWY1MS0xYjUyLTRhNjUtOWJiOC1kNWQ5OTU2NGQ0NmE/YXBpLXZlcnNpb249MjAxNi0wOC0xMA==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1939d320-54af-4c30-8898-356ade8a79b9-2017-09-12 04:42:03Z-P"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1505187723163)\\/\",\"NotAfterTimestamp\":\"\\/Date(1505792523163)\\/\",\"ClientRequestId\":\"1939d320-54af-4c30-8898-356ade8a79b9-2017-09-12 04:42:03Z-P\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"ihLLztc3TNAfL+ffufYGld6b6wUe6wW5EAeS4cm88kk=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1590.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.10586",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/1.0.2.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationJobs/0211af51-1b52-4a65-9bb8-d5d99564d46a\",\r\n  \"name\": \"0211af51-1b52-4a65-9bb8-d5d99564d46a\",\r\n  \"properties\": {\r\n    \"activityId\": \"5baf9545-a729-4bc2-8588-33394a9e8bba-2017-09-12 04:42:02Z-P ActivityId: f7525147-68eb-46fb-85e6-58a7bd9f777b\",\r\n    \"scenarioName\": null,\r\n    \"friendlyName\": null,\r\n    \"state\": \"NotStarted\",\r\n    \"stateDescription\": \"NotStarted\",\r\n    \"tasks\": [],\r\n    \"errors\": [],\r\n    \"allowedActions\": [],\r\n    \"targetObjectId\": null,\r\n    \"targetObjectName\": null,\r\n    \"targetInstanceType\": \"ProtectionEntity\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"AsrJobDetails\",\r\n      \"affectedObjectDetails\": {}\r\n    }\r\n  },\r\n  \"status\": \"NotStarted\",\r\n  \"error\": null,\r\n  \"startTime\": null,\r\n  \"endTime\": null\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "750"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationJobs/0211af51-1b52-4a65-9bb8-d5d99564d46a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0",
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-client-request-id": [
+          "1939d320-54af-4c30-8898-356ade8a79b9-2017-09-12 04:42:03Z-P"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14992"
+        ],
+        "x-ms-correlation-request-id": [
+          "e983f327-5d8f-4b17-96e5-c9e50ae802d3"
+        ],
+        "x-ms-routing-request-id": [
+          "AUSTRALIAEAST:20170912T044203Z:e983f327-5d8f-4b17-96e5-c9e50ae802d3"
+        ],
+        "Date": [
+          "Tue, 12 Sep 2017 04:42:02 GMT"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "7c943c1b-5122-4097-90c8-861411bdd574"
+  }
+}

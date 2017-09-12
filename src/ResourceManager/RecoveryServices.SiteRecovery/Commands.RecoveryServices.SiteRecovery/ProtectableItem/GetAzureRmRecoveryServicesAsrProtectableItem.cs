@@ -118,14 +118,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         this.ProtectionContainer.ID,
                         ARMResourceTypeConstants.ReplicationFabrics),
                     this.ProtectionContainer.Name);
-            var protectableItem = protectableItemListResponse.SingleOrDefault(
-                t => string.Compare(
-                         t.Properties.FriendlyName,
-                         this.FriendlyName,
-                         StringComparison.OrdinalIgnoreCase) ==
-                     0);
 
-            if (protectableItem != null)
+            var friendlyNameListResponse = protectableItemListResponse.FindAll(
+                t => string.Compare(
+                    t.Properties.FriendlyName,
+                    this.FriendlyName,
+                    StringComparison.OrdinalIgnoreCase) ==
+                    0);
+
+            foreach (var protectableItem in friendlyNameListResponse)
             {
                 var protectableItemResponse = this.RecoveryServicesClient
                     .GetAzureSiteRecoveryProtectableItem(

@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.dll-Help.xml
+Module Name: AzureRM.RecoveryServices.SiteRecovery
 online version: 
 schema: 2.0.0
 ---
@@ -30,21 +31,6 @@ Starts the deletion of specified storage classification mapping and returns the 
 
 ## PARAMETERS
 
-### -InputObject
-The input object to the cmdlet: The ASR storage classification mapping object corresponding to the ASR storage classification mapping to be deleted.
-
-```yaml
-Type: ASRStorageClassificationMapping
-Parameter Sets: (All)
-Aliases: StorageClassificationMapping
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -57,6 +43,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+The input object to the cmdlet: The ASR storage classification mapping object corresponding to the ASR storage classification mapping to be deleted.
+
+```yaml
+Type: ASRStorageClassificationMapping
+Parameter Sets: (All)
+Aliases: StorageClassificationMapping
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

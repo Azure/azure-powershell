@@ -25,6 +25,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     [Cmdlet(VerbsCommon.Remove, "AzureRmSiteRecoveryServer", SupportsShouldProcess = true,
         DefaultParameterSetName = ASRParameterSets.Default)]
     [OutputType(typeof(IEnumerable<ASRServer>))]
+    [Obsolete("'Remove-AzureRmSiteRecoveryServer' cmdlet is mark as obsolete and will be " +
+        "depricated in upcoming breaking changes build. Please use the New cmdlet " +
+        "'Remove-AzureRmRecoveryServicesAsrServicesProvider' module 'AzureRM.RecoveryServices.SiteRecovery'.",
+        false)]
     public class RemoveAzureSiteRecoveryServer : SiteRecoveryCmdletBase
     {
         #region Parameters

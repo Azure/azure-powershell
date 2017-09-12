@@ -24,6 +24,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// </summary>
     [Cmdlet(VerbsLifecycle.Start, "AzureRmSiteRecoveryPolicyDissociationJob", DefaultParameterSetName = ASRParameterSets.EnterpriseToAzure)]
     [OutputType(typeof(ASRJob))]
+    [ObsoleteAttribute("'Start-AzureRmSiteRecoveryPolicyDissociationJob' cmdlet is mark as obsolete and will be " +
+        "depricated in upcoming breaking changes build. Please use the New cmdlet " +
+        "'Remove-AzureRmRecoveryServicesAsrProtectionContainerMapping' module 'AzureRM.RecoveryServices.SiteRecovery'.",
+        false)]
     public class StartAzureSiteRecoveryPolicyDissociationJob : SiteRecoveryCmdletBase
     {
 

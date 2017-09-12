@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.dll-Help.xml
+Module Name: AzureRM.RecoveryServices.SiteRecovery
 online version: 
 schema: 2.0.0
 ---
@@ -15,14 +16,15 @@ Starts an unplanned failover operation.
 ```
 Start-AzureRmRecoveryServicesAsrUnplannedFailoverJob -ReplicationProtectedItem <ASRReplicationProtectedItem>
  -Direction <String> [-PerformSourceSideAction] [-DataEncryptionPrimaryCertFile <String>]
- [-DataEncryptionSecondaryCertFile <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DataEncryptionSecondaryCertFile <String>] [-RecoveryPoint <ASRRecoveryPoint>] [-RecoveryTag <String>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByRPObject
 ```
 Start-AzureRmRecoveryServicesAsrUnplannedFailoverJob -RecoveryPlan <ASRRecoveryPlan> -Direction <String>
  [-PerformSourceSideAction] [-DataEncryptionPrimaryCertFile <String>]
- [-DataEncryptionSecondaryCertFile <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DataEncryptionSecondaryCertFile <String>] [-RecoveryTag <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,6 +41,21 @@ PS C:\> $currentJob = Start-AzureRmRecoveryServicesAsrUnplannedFailoverJob -Reco
 Starts the unplanned failover operation for the specified recovery plan using the specified parameters and returns the ASR job used to track the operation.
 
 ## PARAMETERS
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DataEncryptionPrimaryCertFile
 Specifies the primary certificate file.
@@ -120,6 +137,37 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -RecoveryPoint
+Specifies a custom recovery point to failover the protected machine to.
+
+```yaml
+Type: ASRRecoveryPoint
+Parameter Sets: ByRPIObject
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecoveryTag
+Specifies the recovery tag to test failover to
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+Accepted values: Latest, LatestAvailable, LatestAvailableApplicationConsistent
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ReplicationProtectedItem
 Specifies the ASR replication protected item object corresponding to the replication protected item on which the failover operation is to be performed.
 
@@ -132,21 +180,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -182,5 +215,3 @@ Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRReplicationProtectedIt
 ## RELATED LINKS
 
 [Get-AzureRmRecoveryServicesAsrJob](./Get-AzureRmRecoveryServicesAsrJob.md)
-
-
