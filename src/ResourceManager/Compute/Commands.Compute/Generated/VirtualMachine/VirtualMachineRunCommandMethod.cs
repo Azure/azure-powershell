@@ -132,12 +132,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         parameters.Script = new List<string>();
                         PathIntrinsics currentPath = SessionState.Path;
                         var filePath = new System.IO.FileInfo(currentPath.GetUnresolvedProviderPathFromPSPath(this.ScriptPath.ToString()));
-                        string line;
-                        var file = new System.IO.StreamReader(filePath.FullName);
-                        while ((line = file.ReadLine()) != null)
-                        {
-                            parameters.Script.Add(line);
-                        }
+                        string fileContent = WindowsAzure.Commands.Common.FileUtilities.DataStore.ReadFileAsText(filePath.FullName);
+                        parameters.Script = fileContent.Split(new string[] { "\r\n", "\n", "\r" }, StringSplitOptions.RemoveEmptyEntries);
                     }
                     if (this.Parameter != null)
                     {
@@ -192,7 +188,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false)]
         [AllowNull]
-        public System.IO.FileInfo ScriptPath { get; set; }
+        public string ScriptPath { get; set; }
 
         [Parameter(
             Mandatory = false)]
