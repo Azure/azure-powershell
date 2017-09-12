@@ -19,6 +19,7 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
@@ -118,11 +119,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     }
 
     [Cmdlet(VerbsCommon.Get, "AzureRmVMRunCommandDocument", DefaultParameterSetName = "DefaultParameter")]
-    [OutputType(typeof(RunCommandDocument))]
+    [OutputType(typeof(PSRunCommandDocument))]
     public partial class GetAzureRmVMRunCommandDocument : ComputeAutomationBaseCmdlet
     {
         protected override void ProcessRecord()
         {
+            AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
             ExecuteClientAction(() =>
             {
                 string location = this.Location;
@@ -131,7 +133,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 if (!string.IsNullOrEmpty(location) && !string.IsNullOrEmpty(commandId))
                 {
                     var result = VirtualMachineRunCommandsClient.Get(location, commandId);
-                    WriteObject(result);
+                    var psObject = new PSRunCommandDocument();
+                    Mapper.Map<RunCommandDocument, PSRunCommandDocument>(result, psObject);
+                    WriteObject(psObject);
                 }
                 else if (!string.IsNullOrEmpty(location))
                 {
@@ -147,7 +151,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         }
                         nextPageLink = pageResult.NextPageLink;
                     }
-                    WriteObject(resultList, true);
+                    var psObject = new List<PSRunCommandDocumentBase>();
+                    foreach (var r in resultList)
+                    {
+                        psObject.Add(Mapper.Map<RunCommandDocumentBase, PSRunCommandDocumentBase>(r));
+                    }
+                    WriteObject(psObject, true);
                 }
             });
         }

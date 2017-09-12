@@ -103,12 +103,9 @@ function Test-VirtualMachineSetRunCommand
 
         $param = @{"first" = "var1";"second" = "var2"};
 
-        #$path = 'F:\hylee-ps\run\src\ResourceManager\Compute\Commands.Compute.Test\bin\Debug\ScenarioTests\test.ps1'
         $path = 'ScenarioTests\test.ps1';
         
-        $result = Invoke-AzureRmVMRunCommand -ResourceGroupName $rgname -Name $vmname -CommandId $commandId;
-        #$result = Invoke-AzureRmVMRunCommand -ResourceGroupName $rgname -Name $vmname -CommandId $commandId -ScriptPath $path -Parameter $param;
-        #$vm | Invoke-AzureRmVMRunCommand -CommandId $commandId -ScriptPath $path -Parameter $param;
+        $result = Invoke-AzureRmVMRunCommand -ResourceGroupName $rgname -Name $vmname -CommandId $commandId -ScriptPath $path -Parameter $param;
         $result_output = $result | Out-String;
 
         # Remove All VMs
