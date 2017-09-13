@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the policy rule parameter
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The rule for policy definition. This can either be a path to a file name containing the rule, or the rule as string.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The rule for policy definition. This can either be a path to a file name or uri containing the rule, or the rule as string.")]
         [ValidateNotNullOrEmpty]
         public string Policy { get; set; }
 
@@ -84,6 +84,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The metadata for policy definition. This can either be a path to a file name containing the metadata, or the metadata as string.")]
         [ValidateNotNullOrEmpty]
         public string Metadata { get; set; }
+
+        /// <summary>
+        /// Gets or sets the policy definition parameters parameter
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The parameters declaration for policy definition. This can either be a path to a file name or uri containing the parameters declaration, or the parameters declaration as string.")]
+        [ValidateNotNullOrEmpty]
+        public string Parameter { get; set; }
 
         /// <summary>
         /// Executes the cmdlet.
@@ -153,6 +160,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 policyDefinitionObject.Properties.Metadata = resource.Properties["metaData"] == null 
                     ? null
                     : JObject.Parse(resource.Properties["metaData"].ToString());
+            }
+            if (!string.IsNullOrEmpty(this.Parameter))
+            {
+                policyDefinitionObject.Properties.Parameters = JObject.Parse(GetObjectFromParameter(this.Parameter).ToString());
+            }
+            else
+            {
+                policyDefinitionObject.Properties.Parameters = resource.Properties["parameters"] == null
+                    ? null
+                    : JObject.Parse(resource.Properties["parameters"].ToString());
             }
             return policyDefinitionObject.ToJToken();
         }

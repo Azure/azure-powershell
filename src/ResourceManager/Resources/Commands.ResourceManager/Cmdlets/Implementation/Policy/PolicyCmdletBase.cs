@@ -19,6 +19,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.WindowsAzure.Commands.Common;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Newtonsoft.Json.Linq;
+    using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
+    using System;
     using System.IO;
     using System.Linq;
     using System.Management.Automation;
@@ -62,6 +64,27 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         protected JToken GetObjectFromParameter(string parameter)
         {
+            Uri outUri = null;
+            if (Uri.TryCreate(parameter, UriKind.Absolute, out outUri))
+            {
+                if (outUri.Scheme != Uri.UriSchemeHttp && outUri.Scheme != Uri.UriSchemeHttps)
+                {
+                    throw new PSInvalidOperationException(ProjectResources.InvalidUriScheme);
+                }
+                else if (!Uri.IsWellFormedUriString(outUri.AbsoluteUri, UriKind.Absolute))
+                {
+                    throw new PSInvalidOperationException(string.Format(ProjectResources.InvalidUriString, parameter));
+                }
+                else
+                {
+                    string contents = GeneralUtilities.DownloadFile(outUri.AbsoluteUri);
+                    if(string.IsNullOrEmpty(contents))
+                    {
+                        throw new PSInvalidOperationException(string.Format(ProjectResources.InvalidUriContent, parameter));
+                    }
+                    return JToken.FromObject(contents);
+                }
+            }
             string filePath = this.TryResolvePath(parameter);
 
             return File.Exists(filePath)
