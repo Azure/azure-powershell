@@ -349,7 +349,9 @@ Accept wildcard characters: False
 ```
 
 ### -PremiumPageBlobTier
-Premium Page Blob Tier```yaml
+Premium Page Blob Tier
+
+```yaml
 Type: PremiumPageBlobTier
 Parameter Sets: ContainerName, BlobInstance, BlobInstanceToBlobInstance, ContainerInstance
 Aliases: 

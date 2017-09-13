@@ -286,7 +286,9 @@ Accept wildcard characters: False
 ```
 
 ### -PremiumPageBlobTier
-Page Blob Tier```yaml
+Page Blob Tier
+
+```yaml
 Type: PremiumPageBlobTier
 Parameter Sets: (All)
 Aliases: 
