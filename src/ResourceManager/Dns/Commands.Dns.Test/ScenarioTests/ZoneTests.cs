@@ -33,6 +33,20 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestZoneCrudPrivateResolutionVnet()
+        {
+            DnsTestsBase.NewInstance.RunPowerShellTest("Test-ZoneCrudPrivateResolutionVnet");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestZoneCrudPrivateRegistrationVnet()
+        {
+            DnsTestsBase.NewInstance.RunPowerShellTest("Test-ZoneCrudPrivateRegistrationVnet");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestZoneCrudTrimsDot()
         {
             DnsTestsBase.NewInstance.RunPowerShellTest("Test-ZoneCrudTrimsDot");

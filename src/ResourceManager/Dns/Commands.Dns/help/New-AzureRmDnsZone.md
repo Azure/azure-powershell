@@ -18,13 +18,13 @@ New-AzureRmDnsZone -Name <String> -ResourceGroupName <String> [-Tag <Hashtable>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmDnsZone** cmdlet creates a new Domain Name System (DNS) zone in the specified
-resource group. You must specify a unique DNS zone name for the *Name* parameter or the cmdlet will
-return an error. After the zone is created, use the New-AzureRmDnsRecordSet cmdlet to create record
-sets in the zone.
+The **New-AzureRmDnsZone** cmdlet creates a new Domain Name System (DNS) zone in the specified resource group.
+You must specify a unique DNS zone name for the *Name* parameter or the cmdlet will return an error.
+After the zone is created, use the New-AzureRmDnsRecordSet cmdlet to create record sets in the zone.
 
-You can use the *Confirm* parameter and $ConfirmPreference Windows PowerShell variable to control
-whether the cmdlet prompts you for confirmation.
+TODO: Add note about private DNS zone here
+
+You can use the *Confirm* parameter and $ConfirmPreference Windows PowerShell variable to control whether the cmdlet prompts you for confirmation.
 
 ## EXAMPLES
 
@@ -33,8 +33,7 @@ whether the cmdlet prompts you for confirmation.
 PS C:\>$Zone = New-AzureRmDnsZone -Name "myzone.com" -ResourceGroupName "MyResourceGroup"
 ```
 
-This command creates a new DNS zone named myzone.com in the specified resource group, and then
-stores it in the $Zone variable.
+This command creates a new DNS zone named myzone.com in the specified resource group, and then stores it in the $Zone variable.
 
 ## PARAMETERS
 
@@ -69,9 +68,8 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Key-value pairs in the form of a hash table. For example:
-
-@{key0="value0";key1=$null;key2="value2"}
+Specifies an array of tags to associate with the DNS zone.
+Tags are name-value pairs represented as hash tables, for example, @(@{"Name"="dept"; "Value"="shopping"}, @{"Name"="env"; "Value"="production"})
 
 ```yaml
 Type: Hashtable
@@ -115,20 +113,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ZoneType
+Specifies the type of the DNS zone.  Zones without a type or with a type of Public are made available on the public DNS serving plane for use in the DNS hierarcy.  Zones with a type of Private are only visible from with the set of associated virtual networks (this is in preview).
+
+```yaml
+Type: Microsoft.Azure.Commands.Dns.DnsZone.ZoneType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### None
-
 You cannot pipe input to this cmdlet.
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Dns.DnsZone
-
-This cmdlet returns a Microsoft.Azure.Commands.Dns.DnsZone object that represents the new DNS zone.
+This cmdlet returns an object that represents the new DNS zone.
 
 ## NOTES
 You can use the *Confirm* parameter to control whether this cmdlet prompts you for confirmation.
