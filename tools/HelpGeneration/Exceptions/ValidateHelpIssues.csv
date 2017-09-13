@@ -575,3 +575,7 @@ Commands.Websites,Reset-AzureRmWebAppPublishingProfile.md,No synopsis found
 Commands.Websites,Reset-AzureRmWebAppSlotPublishingProfile.md,No synopsis found
 Commands.Websites,Restart-AzureRmWebAppSlot.md,No synopsis found
 Commands.Websites,Restore-AzureRmWebAppBackup.md,No synopsis found
+AzureRM.Resources,Get-AzureRmPolicySetDefinition.md,No examples found
+AzureRM.Resources,New-AzureRmPolicySetDefinition.md,No examples found
+AzureRM.Resources,Remove-AzureRmPolicySetDefinition.md,No examples found
+AzureRM.Resources,Set-AzureRmPolicySetDefinition.md,No examples found
