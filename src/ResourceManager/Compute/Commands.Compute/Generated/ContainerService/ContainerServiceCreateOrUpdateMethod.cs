@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
             ExecuteClientAction(() =>
             {
-                if (ShouldProcess(this.ResourceGroupName, VerbsCommon.New))
+                if (ShouldProcess(this.Name, VerbsCommon.New))
                 {
                     string resourceGroupName = this.ResourceGroupName;
                     string containerServiceName = this.Name;
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
             ExecuteClientAction(() =>
             {
-                if (ShouldProcess(this.ResourceGroupName, VerbsData.Update))
+                if (ShouldProcess(this.Name, VerbsData.Update))
                 {
                     string resourceGroupName = this.ResourceGroupName;
                     string containerServiceName = this.Name;
