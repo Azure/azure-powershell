@@ -120,6 +120,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         protected override void OnProcessRecord()
         {
             base.OnProcessRecord();
+            if(this.PolicyDefinition !=null && this.PolicySetDefinition !=null)
+            {
+                throw new PSInvalidOperationException("Only one of PolicyDefinition or PolicySetDefinition can be specified, not both.");
+            }
             if (this.PolicyDefinition !=null && this.PolicyDefinition.Properties["policyDefinitionId"] == null)
             {
                 throw new PSInvalidOperationException("The supplied PolicyDefinition object is invalid.");
@@ -187,10 +191,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             {
                 policyassignmentObject.Properties.PolicyDefinitionId = this.PolicyDefinition.Properties["policyDefinitionId"].Value.ToString();
             }
-
-            if(this.PolicySetDefinition != null)
+            else if(this.PolicySetDefinition != null)
             {
-                policyassignmentObject.Properties.PolicySetDefinitionId = this.PolicySetDefinition.Properties["policySetDefinitionId"].Value.ToString();
+                policyassignmentObject.Properties.PolicyDefinitionId = this.PolicySetDefinition.Properties["policySetDefinitionId"].Value.ToString();
             }
 
             return policyassignmentObject.ToJToken();

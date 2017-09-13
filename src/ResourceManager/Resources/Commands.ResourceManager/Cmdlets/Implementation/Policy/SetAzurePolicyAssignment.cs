@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         ? resource.Properties["description"].ToString()
                         : null),
                     Scope = resource.Properties["scope"].ToString(),
-                    NotScopes = this.NotScope == null || resource.Properties["NotScopes"] == null ? null : resource.Properties["NotScopes"].ToString().Split(','),
+                    NotScopes = this.NotScope ?? (resource.Properties["NotScopes"] == null ? null : resource.Properties["NotScopes"].ToString().Split(',')),
                     PolicyDefinitionId = resource.Properties["policyDefinitionId"].ToString()
                 }
             };

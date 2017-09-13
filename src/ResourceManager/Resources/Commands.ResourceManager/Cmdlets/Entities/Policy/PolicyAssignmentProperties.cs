@@ -59,12 +59,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy
         public string PolicyDefinitionId { get; set; }
 
         /// <summary>
-        /// The policy set definition id.
-        /// </summary>
-        [JsonProperty(Required = Required.Default)]
-        public string PolicySetDefinitionId { get; set; }
-
-        /// <summary>
         /// The parameter values.
         /// </summary>
         [JsonProperty(Required = Required.Default)]
