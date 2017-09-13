@@ -104,12 +104,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         [Parameter(ParameterSetName = PolicyParameterObjectParameterSetName,
             Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The policy parameter object.")]
+        [Parameter(ParameterSetName = PolicySetParameterObjectParameterSetName,
+            Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The policy parameter object.")]
         public Hashtable PolicyParameterObject { get; set; }
 
         /// <summary>
         /// Gets or sets the policy assignment policy parameter file path or policy parameter string.
         /// </summary>
         [Parameter(ParameterSetName = PolicyParameterStringParameterSetName, 
+            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The policy parameter file path or policy parameter string.")]
+        [Parameter(ParameterSetName = PolicySetParameterStringParameterSetName,
             Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The policy parameter file path or policy parameter string.")]
         [ValidateNotNullOrEmpty]
         public string PolicyParameter { get; set; }
