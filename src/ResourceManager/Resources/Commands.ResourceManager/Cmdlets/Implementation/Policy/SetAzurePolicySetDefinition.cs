@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The policy set definition. This can either be a path to a file name containing the policy definitions, or the policy set definition as string.")]
         [ValidateNotNullOrEmpty]
-        public string PolicyDefinitions { get; set; }
+        public string PolicyDefinition { get; set; }
 
         /// <summary>
         /// Executes the cmdlet.
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         : null)
                 }
             };
-            if (!string.IsNullOrEmpty(this.PolicyDefinitions))
+            if (!string.IsNullOrEmpty(this.PolicyDefinition))
             {
                 policySetDefinitionObject.Properties.PolicyDefinitions = JArray.Parse(GetPolicyDefinitionsObject().ToString());
             }
@@ -170,11 +170,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         protected JToken GetPolicyDefinitionsObject()
         {
-            string policyFilePath = this.TryResolvePath(this.PolicyDefinitions);
+            string policyFilePath = this.TryResolvePath(this.PolicyDefinition);
 
             return File.Exists(policyFilePath)
                 ? JToken.FromObject(FileUtilities.DataStore.ReadFileAsText(policyFilePath))
-                : JToken.FromObject(this.PolicyDefinitions);
+                : JToken.FromObject(this.PolicyDefinition);
         }
     }
 }
