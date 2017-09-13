@@ -19,6 +19,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common.XmlSchema.ServiceConfigur
 using Microsoft.WindowsAzure.Commands.Utilities.Properties;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {

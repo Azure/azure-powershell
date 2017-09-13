@@ -35,6 +35,7 @@ namespace Microsoft.WindowsAzure.Commands.Websites
     using Microsoft.Azure.Commands.Common.Authentication;
     using Hyak.Common;
     using Common;
+    using Azure.Commands.Common.Authentication.Abstractions;
 
     /// <summary>
     /// Creates a new azure website.

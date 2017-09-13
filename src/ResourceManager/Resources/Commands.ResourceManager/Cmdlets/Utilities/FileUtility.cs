@@ -14,6 +14,7 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
 {
+    using Commands.Common.Authentication.Abstractions;
     using Microsoft.Azure.Commands.Common.Authentication;
     using System;
     using System.IO;

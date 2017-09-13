@@ -25,6 +25,7 @@ using System.Management.Automation;
 using System.Diagnostics;
 using System.Security;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
 {
