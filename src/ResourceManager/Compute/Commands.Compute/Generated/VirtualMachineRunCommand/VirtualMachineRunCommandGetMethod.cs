@@ -19,6 +19,7 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
@@ -115,5 +116,67 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                  new string[] { "Location", "CommandId" },
                  new object[] { location, commandId });
         }
+    }
+
+    [Cmdlet(VerbsCommon.Get, "AzureRmVMRunCommandDocument", DefaultParameterSetName = "DefaultParameter")]
+    [OutputType(typeof(PSRunCommandDocument))]
+    public partial class GetAzureRmVMRunCommandDocument : ComputeAutomationBaseCmdlet
+    {
+        protected override void ProcessRecord()
+        {
+            AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
+            ExecuteClientAction(() =>
+            {
+                string location = this.Location;
+                string commandId = this.CommandId;
+
+                if (!string.IsNullOrEmpty(location) && !string.IsNullOrEmpty(commandId))
+                {
+                    var result = VirtualMachineRunCommandsClient.Get(location, commandId);
+                    var psObject = new PSRunCommandDocument();
+                    Mapper.Map<RunCommandDocument, PSRunCommandDocument>(result, psObject);
+                    WriteObject(psObject);
+                }
+                else if (!string.IsNullOrEmpty(location))
+                {
+                    var result = VirtualMachineRunCommandsClient.List(location);
+                    var resultList = result.ToList();
+                    var nextPageLink = result.NextPageLink;
+                    while (!string.IsNullOrEmpty(nextPageLink))
+                    {
+                        var pageResult = VirtualMachineRunCommandsClient.ListNext(nextPageLink);
+                        foreach (var pageItem in pageResult)
+                        {
+                            resultList.Add(pageItem);
+                        }
+                        nextPageLink = pageResult.NextPageLink;
+                    }
+                    var psObject = new List<PSRunCommandDocumentBase>();
+                    foreach (var r in resultList)
+                    {
+                        psObject.Add(Mapper.Map<RunCommandDocumentBase, PSRunCommandDocumentBase>(r));
+                    }
+                    WriteObject(psObject, true);
+                }
+            });
+        }
+
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Position = 1,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false)]
+        [AllowNull]
+        public string Location { get; set; }
+
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Position = 2,
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false)]
+        [AllowNull]
+        public string CommandId { get; set; }
     }
 }

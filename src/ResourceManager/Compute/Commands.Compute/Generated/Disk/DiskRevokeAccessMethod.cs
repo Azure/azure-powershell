@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
             ExecuteClientAction(() =>
             {
-                if (ShouldProcess(this.ResourceGroupName, VerbsSecurity.Revoke))
+                if (ShouldProcess(this.DiskName, VerbsSecurity.Revoke))
                 {
                     string resourceGroupName = this.ResourceGroupName;
                     string diskName = this.DiskName;
