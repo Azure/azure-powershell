@@ -92,7 +92,7 @@ function Test-PolicySetDefinitionCRUD
 	# Test
 	$policyDefinition = New-AzureRMPolicyDefinition -Name $policyDefName -Policy "$TestOutputRoot\SamplePolicyDefinition.json"
 	$policySet = "[{""policyDefinitionId"":""" + $policyDefinition.PolicyDefinitionId + """}]"
-	$actual = New-AzureRMPolicySetDefinition -Name $policySetDefName -PolicyDefinitions $policySet
+	$actual = New-AzureRMPolicySetDefinition -Name $policySetDefName -PolicyDefinition $policySet
 	$expected = Get-AzureRMPolicySetDefinition -Name $policySetDefName
 	Assert-AreEqual $expected.Name $actual.Name
 	Assert-AreEqual $expected.PolicySetDefinitionId $actual.PolicySetDefinitionId
