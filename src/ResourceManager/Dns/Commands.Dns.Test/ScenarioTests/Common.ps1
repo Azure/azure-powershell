@@ -23,6 +23,15 @@ function Get-ResourceGroupName
 
 <#
 .SYNOPSIS
+Gets valid resource group name
+#>
+function Get-VirtualNetworkName
+{
+    return getAssetName
+}
+
+<#
+.SYNOPSIS
 Gets valid resource name
 #>
 function Get-ResourceName
@@ -70,6 +79,18 @@ function TestSetup-CreateResourceGroup
     $resourceGroup = New-AzureRmResourceGroup -Name $resourceGroupName -location $rglocation
 	return $resourceGroup
 }
+
+<#
+.SYNOPSIS
+Creates a resource group to use in tests
+#>
+function TestSetup-CreateVirtualNetwork ($resourceGroup)
+{
+    $virtualNetworkName = Get-VirtualNetworkName
+    $virtualNetwork = New-AzureRmVirtualNetwork -Name $virtualNetworkName -resourceGroupName $resourceGroup.ResourceGroupName -location "WestUS" -AddressPrefix "192.168.1.0/24"
+	return $virtualNetwork
+}
+
 
 function Get-RandomZoneName
 {
