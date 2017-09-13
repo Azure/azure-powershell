@@ -16,8 +16,12 @@ Creates a network security rule configuration.
 ```
 New-AzureRmNetworkSecurityRuleConfig -Name <String> [-Description <String>] [-Protocol <String>]
  [-SourcePortRange <String>] [-DestinationPortRange <String>] [-SourceAddressPrefix <String>]
- [-DestinationAddressPrefix <String>] [-Access <String>] [-Priority <Int32>] [-Direction <String>]
- [<CommonParameters>]
+ [-DestinationAddressPrefix <String>]
+ [-SourceApplicationSecurityGroup <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationSecurityGroup]>]
+ [-DestinationApplicationSecurityGroup <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationSecurityGroup]>]
+ [-SourceApplicationSecurityGroupId <System.Collections.Generic.List`1[System.String]>]
+ [-DestinationApplicationSecurityGroupId <System.Collections.Generic.List`1[System.String]>] [-Access <String>]
+ [-Priority <Int32>] [-Direction <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -89,6 +93,32 @@ You can use tags such as VirtualNetwork, AzureLoadBalancer, and Internet.
 
 ```yaml
 Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DestinationApplicationSecurityGroup
+The application security group set as destination for the rule. It cannot be used with 'DestinationAddressPrefix' parameter.```yaml
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationSecurityGroup]
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DestinationApplicationSecurityGroupId
+The application security group set as destination for the rule. It cannot be used with 'DestinationAddressPrefix' parameter.```yaml
+Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
 Aliases: 
 
@@ -203,6 +233,32 @@ You can also use tags such as VirtualNetwork, AzureLoadBalancer and Internet.
 
 ```yaml
 Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SourceApplicationSecurityGroup
+The application security group set as source for the rule. It cannot be used with 'SourceAddressPrefix' parameter.```yaml
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationSecurityGroup]
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SourceApplicationSecurityGroupId
+The application security group set as source for the rule. It cannot be used with 'SourceAddressPrefix' parameter.```yaml
+Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
 Aliases: 
 
