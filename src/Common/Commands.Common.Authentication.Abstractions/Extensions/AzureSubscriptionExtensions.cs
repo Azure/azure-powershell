@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <param name="other"></param>
         public static void CopyFrom(this IAzureSubscription subscription, IAzureSubscription other)
         {
-            if (other != null)
+            if (subscription != null && other != null)
             {
                 subscription.Id = other.Id;
                 subscription.Name = other.Name;
