@@ -60,11 +60,25 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public string Policy { get; set; }
 
         /// <summary>
+        /// Gets or sets the policy definition metadata parameter
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The metadata for policy definition. This can either be a path to a file name containing the metadata, or the metadata as string.")]
+        [ValidateNotNullOrEmpty]
+        public string Metadata { get; set; }
+
+        /// <summary>
         /// Gets or sets the policy definition parameters parameter
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The parameters declaration for policy definition. This can either be a path to a file name containing the parameters declaration, or the parameters declaration as string.")]
         [ValidateNotNullOrEmpty]
         public string Parameter { get; set; }
+
+        /// <summary>
+        /// Gets or sets the policy definition mode parameter.
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The mode of the policy definition.")]
+        [ValidateNotNullOrEmpty]
+        public PolicyDefinitionMode Mode { get; set; }
 
         /// <summary>
         /// Executes the cmdlet.
@@ -121,8 +135,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 {
                     Description = this.Description ?? null,
                     DisplayName = this.DisplayName ?? null,
-                    PolicyRule = JObject.Parse(this.GetPolicyRuleObject().ToString()),
-                    Parameters = this.Parameter == null ? null : JObject.Parse(this.GetParametersObject().ToString())
+                    PolicyRule = JObject.Parse(this.GetObjectFromParameter(this.Policy).ToString()),
+                    Metadata = this.Metadata == null ? null : JObject.Parse(this.GetObjectFromParameter(this.Metadata).ToString()),
+                    Parameters = this.Parameter == null ? null : JObject.Parse(this.GetParametersObject().ToString()),
+                    Mode = this.Mode
                 }
             };
 
@@ -130,15 +146,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         }
 
         /// <summary>
-        /// Gets the policy rule object
+        /// Gets the JToken object from parameter
         /// </summary>
-        private JToken GetPolicyRuleObject()
+        protected JToken GetObjectFromParameter(string parameter)
         {
-            string policyFilePath = this.TryResolvePath(this.Policy);
+            string filePath = this.TryResolvePath(parameter);
 
-            return File.Exists(policyFilePath)
-                ? JToken.FromObject(FileUtilities.DataStore.ReadFileAsText(policyFilePath))
-                : JToken.FromObject(this.Policy);
+            return File.Exists(filePath)
+                ? JToken.FromObject(FileUtilities.DataStore.ReadFileAsText(filePath))
+                : JToken.FromObject(parameter);
         }
 
         /// <summary>

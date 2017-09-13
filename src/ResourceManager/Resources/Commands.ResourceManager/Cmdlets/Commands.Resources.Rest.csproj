@@ -75,6 +75,7 @@
     <Compile Include="Entities\Operations\AzureAsyncOperationResource.cs" />
     <Compile Include="Entities\Policy\PolicyAssignment.cs" />
     <Compile Include="Entities\Policy\PolicyAssignmentProperties.cs" />
+    <Compile Include="Entities\Policy\PolicyDefinitionMode.cs" />
     <Compile Include="Entities\Policy\PolicySetDefinition.cs" />
     <Compile Include="Entities\Policy\PolicyDefinition.cs" />
     <Compile Include="Entities\Policy\PolicySetDefinitionProperties.cs" />

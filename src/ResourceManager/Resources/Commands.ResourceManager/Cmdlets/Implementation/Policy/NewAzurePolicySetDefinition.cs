@@ -130,13 +130,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets the policy definitions object
         /// </summary>
-        private JToken GetPolicyDefinitionsObject()
+        private JArray GetPolicyDefinitionsObject()
         {
             string policyFilePath = this.TryResolvePath(this.PolicyDefinition);
 
             return File.Exists(policyFilePath)
-                ? JToken.FromObject(FileUtilities.DataStore.ReadFileAsText(policyFilePath))
-                : JToken.FromObject(this.PolicyDefinition);
+                ? JArray.Parse(JToken.FromObject(FileUtilities.DataStore.ReadFileAsText(policyFilePath)).ToString())
+                : JArray.Parse(JToken.FromObject(this.PolicyDefinition).ToString());
         }
 
         /// <summary>
