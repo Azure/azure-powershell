@@ -64,9 +64,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the policy assignment display name parameter
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The description for policy assignment.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The display name for policy assignment.")]
         [ValidateNotNullOrEmpty]
         public string DisplayName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the policy assignment description parameter
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The description for policy assignment.")]
+        [ValidateNotNullOrEmpty]
+        public string Description { get; set; }
 
         /// <summary>
         /// Gets or sets the policy assignment policy definition parameter.
@@ -169,6 +176,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 Properties = new PolicyAssignmentProperties
                 {
                     DisplayName = this.DisplayName ?? null,
+                    Description = this.Description ?? null,
                     Scope = this.Scope,
                     NotScopes = this.NotScope ?? null,
                     Parameters = this.GetParameters()

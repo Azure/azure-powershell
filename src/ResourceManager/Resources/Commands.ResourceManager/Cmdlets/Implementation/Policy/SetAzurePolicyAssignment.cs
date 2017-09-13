@@ -74,6 +74,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public string DisplayName { get; set; }
 
         /// <summary>
+        /// Gets or sets the policy assignment description parameter
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The description for policy assignment.")]
+        [ValidateNotNullOrEmpty]
+        public string Description { get; set; }
+
+        /// <summary>
         /// Executes the cmdlet.
         /// </summary>
         protected override void OnProcessRecord()
@@ -118,6 +125,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 {
                     DisplayName = this.DisplayName ?? (resource.Properties["displayName"] != null
                         ? resource.Properties["displayName"].ToString()
+                        : null),
+                    Description = this.Description ?? (resource.Properties["description"] != null
+                        ? resource.Properties["description"].ToString()
                         : null),
                     Scope = resource.Properties["scope"].ToString(),
                     NotScopes = this.NotScope == null || resource.Properties["NotScopes"] == null ? null : resource.Properties["NotScopes"].ToString().Split(','),
