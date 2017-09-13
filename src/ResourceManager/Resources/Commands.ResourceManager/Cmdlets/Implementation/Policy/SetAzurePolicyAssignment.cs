@@ -17,7 +17,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
+    using Microsoft.WindowsAzure.Commands.Common;
     using Newtonsoft.Json.Linq;
+    using System.Collections;
     using System.Management.Automation;
     using System.Threading.Tasks;
 
@@ -81,6 +83,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public string Description { get; set; }
 
         /// <summary>
+        /// Gets or sets the policy sku object.
+        /// </summary>
+        [Alias("SkuObject")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents sku properties.")]
+        [ValidateNotNullOrEmpty]
+        public Hashtable Sku { get; set; }
+
+        /// <summary>
         /// Executes the cmdlet.
         /// </summary>
         protected override void OnProcessRecord()
@@ -121,6 +131,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             var policyAssignmentObject = new PolicyAssignment
             {
                 Name = this.Name ?? ResourceIdUtility.GetResourceName(this.Id),
+                Sku = this.Sku != null
+                    ? this.Sku.ToDictionary(addValueLayer: false).ToJson().FromJson<PolicySku>()
+                    : (resource.Sku == null ? null : resource.Sku.ToString().FromJson<PolicySku>()),
                 Properties = new PolicyAssignmentProperties
                 {
                     DisplayName = this.DisplayName ?? (resource.Properties["displayName"] != null
