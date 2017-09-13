@@ -41,6 +41,18 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy
         public string DisplayName { get; set; }
 
         /// <summary>
+        /// The description.
+        /// </summary>
+        [JsonProperty(Required = Required.Default)]
+        public string Description { get; set; }
+
+        /// <summary>
+        /// The policy assignment metadata.
+        /// </summary>
+        [JsonProperty(Required = Required.Default)]
+        public JObject Metadata { get; set; }
+
+        /// <summary>
         /// The policy definition id.
         /// </summary>
         [JsonProperty(Required = Required.Default)]

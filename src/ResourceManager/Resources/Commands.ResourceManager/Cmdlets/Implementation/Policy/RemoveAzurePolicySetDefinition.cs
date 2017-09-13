@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             this.ConfirmAction(
                 this.Force,
                 string.Format("Are you sure you want to delete the following policy set definition: {0}", resourceId),
-                "Deleting the policy definition...",
+                "Deleting the policy set definition...",
                 resourceId,
                 () =>
                 {
