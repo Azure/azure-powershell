@@ -11,6 +11,7 @@ Sets properties for an Azure environment.
 
 ## SYNTAX
 
+### Name (Default)
 ```
 Set-AzureRmEnvironment [-Name] <String> [[-PublishSettingsFileUrl] <String>] [[-ServiceEndpoint] <String>]
  [[-ManagementPortalUrl] <String>] [[-StorageEndpoint] <String>] [[-ActiveDirectoryEndpoint] <String>]
@@ -20,7 +21,16 @@ Set-AzureRmEnvironment [-Name] <String> [[-PublishSettingsFileUrl] <String>] [[-
  [[-TrafficManagerDnsSuffix] <String>] [[-SqlDatabaseDnsSuffix] <String>]
  [[-AzureDataLakeStoreFileSystemEndpointSuffix] <String>]
  [[-AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix] <String>] [-EnableAdfsAuthentication]
- [[-AdTenant] <String>] [[-GraphAudience] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-AdTenant] <String>] [[-GraphAudience] <String>] [[-DataLakeAudience] <String>]
+ [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ARMEndpoint
+```
+Set-AzureRmEnvironment [-Name] <String> [[-StorageEndpoint] <String>] [-ARMEndpoint] <String>
+ [[-AzureKeyVaultDnsSuffix] <String>] [[-DataLakeAudience] <String>] [-Scope <ContextModificationScope>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -91,7 +101,7 @@ Specifies the base authority for Azure Active Directory authentication.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Name
 Aliases: AdEndpointUrl, ActiveDirectory, ActiveDirectoryAuthority
 
 Required: False
@@ -106,7 +116,7 @@ Specifies the audience for tokens that authenticate requests to Azure Resource M
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Name
 Aliases: 
 
 Required: False
@@ -121,11 +131,26 @@ Specifies the default Active Directory tenant.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Name
 Aliases: 
 
 Required: False
 Position: 17
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ARMEndpoint
+The Azure Resource Manager endpoint.
+
+```yaml
+Type: String
+Parameter Sets: ARMEndpoint
+Aliases: ArmUrl
+
+Required: True
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -136,7 +161,7 @@ Dns Suffix of Azure Data Lake Analytics job and catalog services
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Name
 Aliases: 
 
 Required: False
@@ -152,7 +177,7 @@ Example: azuredatalake.net
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Name
 Aliases: 
 
 Required: False
@@ -182,7 +207,7 @@ Specifies the audience for access tokens that authorize requests for Key Vault s
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Name
 Aliases: 
 
 Required: False
@@ -192,12 +217,42 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -DataLakeAudience
+The audience for tokens authenticating with the AD Data Lake services Endpoint.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: DataLakeEndpointResourceId, DataLakeResourceId
+
+Required: False
+Position: 19
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EnableAdfsAuthentication
 Indicates that Active Directory Federation Services (ADFS) on-premise authentication is allowed.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: Name
 Aliases: OnPremise
 
 Required: False
@@ -212,7 +267,7 @@ Specifies the endpoint for the Azure Resource Manager gallery of deployment temp
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Name
 Aliases: Gallery, GalleryUrl
 
 Required: False
@@ -227,7 +282,7 @@ The audience for tokens authenticating with the AD Graph Endpoint.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Name
 Aliases: GraphEndpointResourceId, GraphResourceId
 
 Required: False
@@ -242,7 +297,7 @@ Specifies the URL for Graph (Active Directory metadata) requests.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Name
 Aliases: Graph, GraphUrl
 
 Required: False
@@ -257,7 +312,7 @@ Specifies the URL for the Management Portal.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Name
 Aliases: 
 
 Required: False
@@ -287,7 +342,7 @@ Specifies the URL from which .publishsettings files can be downloaded.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Name
 Aliases: 
 
 Required: False
@@ -302,7 +357,7 @@ Specifies the URL for Azure Resource Manager requests.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Name
 Aliases: ResourceManager, ResourceManagerUrl
 
 Required: False
@@ -312,12 +367,28 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Scope
+Determines the scope of context changes, for example, wheher changes apply only to the cusrrent process, or to all sessions started by this user.
+
+```yaml
+Type: ContextModificationScope
+Parameter Sets: (All)
+Aliases: 
+Accepted values: Process, CurrentUser
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ServiceEndpoint
 Specifies the endpoint for Service Management (RDFE) requests.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Name
 Aliases: ServiceManagement, ServiceManagementUrl
 
 Required: False
@@ -332,7 +403,7 @@ Specifies the domain-name suffix for Azure SQL Database servers.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Name
 Aliases: 
 
 Required: False
@@ -362,7 +433,7 @@ Specifies the domain-name suffix for Azure Traffic Manager services.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Name
 Aliases: 
 
 Required: False

@@ -48,9 +48,14 @@ namespace Microsoft.Azure.Commands.Profile
         {
             base.BeginProcessing();
             var profile = DefaultProfile as AzureRmProfile;
-            if (profile == null)
+            if (profile == null )
             {
                 throw new InvalidOperationException(Resources.RmProfileNull);
+            }
+
+            if (DefaultContext == null || DefaultContext.Account == null)
+            {
+                throw new InvalidOperationException(Resources.ContextCannotBeNull);
             }
 
             _client = new RMProfileClient(profile);

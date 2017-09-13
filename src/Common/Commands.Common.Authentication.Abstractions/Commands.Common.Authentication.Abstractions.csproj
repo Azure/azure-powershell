@@ -58,7 +58,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.Rest.ClientRuntime.2.3.8\lib\net452\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <HintPath>..\..\packages\Microsoft.Rest.ClientRuntime.2.3.9\lib\net452\Microsoft.Rest.ClientRuntime.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -103,6 +103,7 @@
     <Compile Include="AzureAccount.cs" />
     <Compile Include="AzureRmProfileProvider.cs" />
     <Compile Include="AzureSMProfileProvider.cs" />
+    <Compile Include="ContextSaveMode.cs" />
     <Compile Include="Extensions\AzureAccountExtensions.cs" />
     <Compile Include="AzureEnvironmentConstants.cs" />
     <Compile Include="Extensions\AzureContextExtensions.cs" />
@@ -118,6 +119,7 @@
     <Compile Include="Interfaces\IAccessToken.cs" />
     <Compile Include="Interfaces\IExtensibleSettings.cs" />
     <Compile Include="Interfaces\IExtensibleModel.cs" />
+    <Compile Include="Interfaces\IFileProvider.cs" />
     <Compile Include="Interfaces\IHyakAuthenticationFactory.cs" />
     <Compile Include="Interfaces\IAzureSession.cs" />
     <Compile Include="Interfaces\IAuthenticationFactory.cs" />

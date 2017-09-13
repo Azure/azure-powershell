@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Profile.dll-Help.xml
-online version:
+online version: 
 schema: 2.0.0
 ---
 
@@ -13,16 +13,17 @@ Get subscriptions that the current account can access.
 
 ### ListByIdInTenant (Default)
 ```
-Get-AzureRmSubscription [-SubscriptionId <String>] [-TenantId <String>] [<CommonParameters>]
+Get-AzureRmSubscription [-SubscriptionId <String>] [-TenantId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ListByNameInTenant
 ```
-Get-AzureRmSubscription [-SubscriptionName <String>] [-TenantId <String>] [<CommonParameters>]
+Get-AzureRmSubscription [-SubscriptionName <String>] [-TenantId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-
 The Get-AzureRmSubscription cmdlet gets the subscription ID, subscription
 name, and home tenant for subscriptions that the current account can
 access.
@@ -88,13 +89,28 @@ subscription (Contoso Subscription 1) by default.
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, tenant and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 Specifies the ID of the subscription to get.
 
 ```yaml
 Type: String
 Parameter Sets: ListByIdInTenant
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -109,7 +125,7 @@ Specifies the name of the subscription to get.
 ```yaml
 Type: String
 Parameter Sets: ListByNameInTenant
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -124,7 +140,7 @@ Specifies the ID of the tenant that contains subscriptions to get.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -134,11 +150,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction,
--ErrorVariable, -InformationAction, -InformationVariable, -OutVariable,
--OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and
--WarningVariable. For more information, see
-[about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -149,3 +161,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction,
 ## NOTES
 
 ## RELATED LINKS
+
