@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+* LocationCompleterAttribute added and available for cmdlets which use the -Location parameter
+    - Use this feature by adding LocationCompleter(string[] validResourceTypes) onto the Location parameter
 
 ## Version 3.3.1
 
