@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
+Module Name: AzureRM.Resources
 ms.assetid: BA40BD11-8167-48D7-AC71-72B2FD9924F2
 online version: 
 schema: 2.0.0
@@ -14,23 +15,39 @@ Creates a policy assignment.
 
 ### Policy assignment without parameters (Default)
 ```
-New-AzureRmPolicyAssignment -Name <String> -Scope <String> [-DisplayName <String>] -PolicyDefinition <PSObject>
- [-ApiVersion <String>] [-Pre] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [<CommonParameters>]
+New-AzureRmPolicyAssignment -Name <String> -Scope <String> [-NotScope <String[]>] [-DisplayName <String>]
+ [-PolicyDefinition <PSObject>] [-PolicySetDefinition <PSObject>] [-ApiVersion <String>] [-Pre]
+ [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
 ```
 
 ### Policy assignment with parameters via policy parameter object
 ```
-New-AzureRmPolicyAssignment -Name <String> -Scope <String> [-DisplayName <String>] -PolicyDefinition <PSObject>
- -PolicyParameterObject <Hashtable> [-ApiVersion <String>] [-Pre] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+New-AzureRmPolicyAssignment -Name <String> -Scope <String> [-NotScope <String[]>] [-DisplayName <String>]
+ -PolicyDefinition <PSObject> [-PolicySetDefinition <PSObject>] -PolicyParameterObject <Hashtable>
+ [-ApiVersion <String>] [-Pre] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
+ [<CommonParameters>]
 ```
 
 ### Policy assignment with parameters via policy parameter string
 ```
-New-AzureRmPolicyAssignment -Name <String> -Scope <String> [-DisplayName <String>] -PolicyDefinition <PSObject>
- -PolicyParameter <String> [-ApiVersion <String>] [-Pre] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+New-AzureRmPolicyAssignment -Name <String> -Scope <String> [-NotScope <String[]>] [-DisplayName <String>]
+ -PolicyDefinition <PSObject> [-PolicySetDefinition <PSObject>] -PolicyParameter <String>
+ [-ApiVersion <String>] [-Pre] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
+ [<CommonParameters>]
+```
+
+### Policy assignment with parameters via policy set parameter object
+```
+New-AzureRmPolicyAssignment -Name <String> -Scope <String> [-NotScope <String[]>] [-DisplayName <String>]
+ [-PolicyDefinition <PSObject>] -PolicySetDefinition <PSObject> [-ApiVersion <String>] [-Pre]
+ [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+```
+
+### Policy assignment with parameters via policy set parameter string
+```
+New-AzureRmPolicyAssignment -Name <String> -Scope <String> [-NotScope <String[]>] [-DisplayName <String>]
+ [-PolicyDefinition <PSObject>] -PolicySetDefinition <PSObject> [-ApiVersion <String>] [-Pre]
+ [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -142,12 +159,37 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -NotScope
+The not scopes for policy assignment.```yaml
+Type: String[]
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -PolicyDefinition
 Specifies a policy, as a **PSObject** object that contains the policy rule.
 
 ```yaml
 Type: PSObject
-Parameter Sets: (All)
+Parameter Sets: Policy assignment without parameters, Policy assignment with parameters via policy set parameter object, Policy assignment with parameters via policy set parameter string
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: PSObject
+Parameter Sets: Policy assignment with parameters via policy parameter object, Policy assignment with parameters via policy parameter string
 Aliases: 
 
 Required: True
@@ -184,6 +226,31 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PolicySetDefinition
+The policy set definition object.```yaml
+Type: PSObject
+Parameter Sets: Policy assignment without parameters, Policy assignment with parameters via policy parameter object, Policy assignment with parameters via policy parameter string
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: PSObject
+Parameter Sets: Policy assignment with parameters via policy set parameter object, Policy assignment with parameters via policy set parameter string
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

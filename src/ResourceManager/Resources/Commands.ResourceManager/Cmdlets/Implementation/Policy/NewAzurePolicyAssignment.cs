@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The not scopes for policy assignment.")]
         [ValidateNotNullOrEmpty]
-        public string[] NotScopes { get; set; }
+        public string[] NotScope { get; set; }
 
         /// <summary>
         /// Gets or sets the policy assignment display name parameter
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 {
                     DisplayName = this.DisplayName ?? null,
                     Scope = this.Scope,
-                    NotScopes = this.NotScopes ?? null,
+                    NotScopes = this.NotScope ?? null,
                     Parameters = this.GetParameters()
                 }
             };

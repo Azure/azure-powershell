@@ -51,11 +51,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public string Description { get; set; }
 
         /// <summary>
-        /// Gets or sets the policy definitions parameter
+        /// Gets or sets the policy definition parameter
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The policy set definition. This can either be a path to a file name containing the policy definitions, or the policy set definition as string.")]
         [ValidateNotNullOrEmpty]
-        public string PolicyDefinitions { get; set; }
+        public string PolicyDefinition { get; set; }
 
         /// <summary>
         /// Gets or sets the policy definition parameters parameter
@@ -132,11 +132,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         private JToken GetPolicyDefinitionsObject()
         {
-            string policyFilePath = this.TryResolvePath(this.PolicyDefinitions);
+            string policyFilePath = this.TryResolvePath(this.PolicyDefinition);
 
             return File.Exists(policyFilePath)
                 ? JToken.FromObject(FileUtilities.DataStore.ReadFileAsText(policyFilePath))
-                : JToken.FromObject(this.PolicyDefinitions);
+                : JToken.FromObject(this.PolicyDefinition);
         }
 
         /// <summary>
