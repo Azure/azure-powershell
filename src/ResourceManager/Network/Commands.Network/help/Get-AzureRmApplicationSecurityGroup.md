@@ -14,12 +14,12 @@ Gets an application security group.
 
 ### NoExpand
 ```
-Get-AzureRmApplicationSecurityGroup [-Name <String>] [-ResourceGroupName <String>]
+Get-AzureRmApplicationSecurityGroup [-Name <String>] [-ResourceGroupName <String>] [<CommonParameters>]
 ```
 
 ### Expand
 ```
-Get-AzureRmApplicationSecurityGroup -Name <String> -ResourceGroupName <String>
+Get-AzureRmApplicationSecurityGroup -Name <String> -ResourceGroupName <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -90,15 +90,16 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### System.String
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSApplicationSecurityGroup
-
 
 ## NOTES
 

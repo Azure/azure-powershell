@@ -21,6 +21,7 @@ Set-AzureRmNetworkInterfaceIpConfig -Name <String> -NetworkInterface <PSNetworkI
  [-LoadBalancerBackendAddressPool <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSBackendAddressPool]>]
  [-LoadBalancerInboundNatRule <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSInboundNatRule]>]
  [-ApplicationGatewayBackendAddressPool <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendAddressPool]>]
+ [-ApplicationSecurityGroup <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationSecurityGroup]>]
  [<CommonParameters>]
 ```
 
@@ -32,7 +33,7 @@ Set-AzureRmNetworkInterfaceIpConfig -Name <String> -NetworkInterface <PSNetworkI
  [-LoadBalancerBackendAddressPoolId <System.Collections.Generic.List`1[System.String]>]
  [-LoadBalancerInboundNatRuleId <System.Collections.Generic.List`1[System.String]>]
  [-ApplicationGatewayBackendAddressPoolId <System.Collections.Generic.List`1[System.String]>]
- [<CommonParameters>]
+ [-ApplicationSecurityGroupId <System.Collections.Generic.List`1[System.String]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -81,6 +82,32 @@ Accept wildcard characters: False
 Specifies a collection of application gateway backend address pool references to which this network interface IP configuration belongs.
 
 ```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: SetByResourceId
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ApplicationSecurityGroup
+PSApplicationSecurityGroup```yaml
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationSecurityGroup]
+Parameter Sets: SetByResource
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ApplicationSecurityGroupId
+ApplicationSecurityGroupId```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: SetByResourceId
 Aliases: 

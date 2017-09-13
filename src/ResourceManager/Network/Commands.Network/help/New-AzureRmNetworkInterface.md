@@ -39,10 +39,10 @@ New-AzureRmNetworkInterface -Name <String> -ResourceGroupName <String> -Location
  [-LoadBalancerBackendAddressPoolId <System.Collections.Generic.List`1[System.String]>]
  [-LoadBalancerInboundNatRuleId <System.Collections.Generic.List`1[System.String]>]
  [-ApplicationGatewayBackendAddressPoolId <System.Collections.Generic.List`1[System.String]>]
- [-PrivateIpAddress <String>] [-IpConfigurationName <String>]
- [-DnsServer <System.Collections.Generic.List`1[System.String]>] [-InternalDnsNameLabel <String>]
- [-EnableIPForwarding] [-EnableAcceleratedNetworking] [-Tag <Hashtable>] [-Force] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ApplicationSecurityGroupId <System.Collections.Generic.List`1[System.String]>] [-PrivateIpAddress <String>]
+ [-IpConfigurationName <String>] [-DnsServer <System.Collections.Generic.List`1[System.String]>]
+ [-InternalDnsNameLabel <String>] [-EnableIPForwarding] [-EnableAcceleratedNetworking] [-Tag <Hashtable>]
+ [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResource
@@ -52,6 +52,7 @@ New-AzureRmNetworkInterface -Name <String> -ResourceGroupName <String> -Location
  [-LoadBalancerBackendAddressPool <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSBackendAddressPool]>]
  [-LoadBalancerInboundNatRule <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSInboundNatRule]>]
  [-ApplicationGatewayBackendAddressPool <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendAddressPool]>]
+ [-ApplicationSecurityGroup <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationSecurityGroup]>]
  [-PrivateIpAddress <String>] [-IpConfigurationName <String>]
  [-DnsServer <System.Collections.Generic.List`1[System.String]>] [-InternalDnsNameLabel <String>]
  [-EnableIPForwarding] [-EnableAcceleratedNetworking] [-Tag <Hashtable>] [-Force] [-WhatIf] [-Confirm]
@@ -109,6 +110,32 @@ Accept wildcard characters: False
 Specifies the ID of a **ApplicationGatewayBackendAddressPool** object.
 
 ```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: SetByResourceId
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ApplicationSecurityGroup
+ApplicationSecurityGroup```yaml
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationSecurityGroup]
+Parameter Sets: SetByResource
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ApplicationSecurityGroupId
+ApplicationSecurityGroupId```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: SetByResourceId
 Aliases: 
