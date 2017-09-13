@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// Creates the policy definition.
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRmPolicyDefinition"), OutputType(typeof(PSObject))]
-    public class NewAzurePolicyDefinitionCmdlet : PolicyDefinitionCmdletBase
+    public class NewAzurePolicyDefinitionCmdlet : PolicyCmdletBase
     {
         /// <summary>
         /// Gets or sets the policy definition name parameter.
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             var activity = string.Format("PUT {0}", managementUri.PathAndQuery);
             var result = this.GetLongRunningOperationTracker(activityName: activity, isResourceCreateOrUpdate: true)
                 .WaitOnOperation(operationResult: operationResult);
-            this.WriteObject(this.GetOutputObjects(JObject.Parse(result)), enumerateCollection: true);
+            this.WriteObject(this.GetOutputObjects("PolicyDefinitionId", JObject.Parse(result)), enumerateCollection: true);
         }
 
         /// <summary>
@@ -137,36 +137,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     DisplayName = this.DisplayName ?? null,
                     PolicyRule = JObject.Parse(this.GetObjectFromParameter(this.Policy).ToString()),
                     Metadata = this.Metadata == null ? null : JObject.Parse(this.GetObjectFromParameter(this.Metadata).ToString()),
-                    Parameters = this.Parameter == null ? null : JObject.Parse(this.GetParametersObject().ToString()),
+                    Parameters = this.Parameter == null ? null : JObject.Parse(this.GetObjectFromParameter(this.Parameter).ToString()),
                     Mode = this.Mode
                 }
             };
 
             return policyDefinitionObject.ToJToken();
-        }
-
-        /// <summary>
-        /// Gets the JToken object from parameter
-        /// </summary>
-        protected JToken GetObjectFromParameter(string parameter)
-        {
-            string filePath = this.TryResolvePath(parameter);
-
-            return File.Exists(filePath)
-                ? JToken.FromObject(FileUtilities.DataStore.ReadFileAsText(filePath))
-                : JToken.FromObject(parameter);
-        }
-
-        /// <summary>
-        /// Gets the parameters object
-        /// </summary>
-        private JToken GetParametersObject()
-        {
-            string parametersFilePath = this.TryResolvePath(this.Parameter);
-
-            return File.Exists(parametersFilePath)
-                ? JToken.FromObject(FileUtilities.DataStore.ReadFileAsText(parametersFilePath))
-                : JToken.FromObject(this.Parameter);
         }
     }
 }

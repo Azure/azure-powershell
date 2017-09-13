@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// Sets the policy definition.
     /// </summary>
     [Cmdlet(VerbsCommon.Set, "AzureRmPolicyDefinition", DefaultParameterSetName = SetAzurePolicyDefinitionCmdlet.PolicyDefinitionNameParameterSet), OutputType(typeof(PSObject))]
-    public class SetAzurePolicyDefinitionCmdlet : PolicyDefinitionCmdletBase
+    public class SetAzurePolicyDefinitionCmdlet : PolicyCmdletBase
     {
         /// <summary>
         /// The policy Id parameter set.
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             var result = this.GetLongRunningOperationTracker(activityName: activity, isResourceCreateOrUpdate: true)
                 .WaitOnOperation(operationResult: operationResult);
 
-            this.WriteObject(this.GetOutputObjects(JObject.Parse(result)), enumerateCollection: true);
+            this.WriteObject(this.GetOutputObjects("PolicyDefinitionId", JObject.Parse(result)), enumerateCollection: true);
         }
 
         /// <summary>
@@ -181,18 +181,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 subscriptionId.ToString(),
                 Constants.MicrosoftAuthorizationPolicyDefinitionType,
                 this.Name);
-        }
-
-        /// <summary>
-        /// Gets the JToken object from parameter
-        /// </summary>
-        protected JToken GetObjectFromParameter(string parameter)
-        {
-            string filePath = this.TryResolvePath(parameter);
-
-            return File.Exists(filePath)
-                ? JToken.FromObject(FileUtilities.DataStore.ReadFileAsText(filePath))
-                : JToken.FromObject(parameter);
         }
     }
 }

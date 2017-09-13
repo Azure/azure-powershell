@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// Creates a policy assignment.
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRmPolicyAssignment", DefaultParameterSetName = ParameterlessPolicyParameterSetName), OutputType(typeof(PSObject))]
-    public class NewAzurePolicyAssignmentCmdlet : PolicyAssignmentCmdletBase, IDynamicParameters
+    public class NewAzurePolicyAssignmentCmdlet : PolicyCmdletBase, IDynamicParameters
     {
         protected RuntimeDefinedParameterDictionary dynamicParameters = new RuntimeDefinedParameterDictionary();
 
@@ -115,6 +115,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public string PolicyParameter { get; set; }
 
         /// <summary>
+        /// Gets or sets the policy sku object.
+        /// </summary>
+        [Alias("SkuObject")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents sku properties. Defaults to Free Sku: Name = A0, Tier = Free")]
+        [ValidateNotNullOrEmpty]
+        public Hashtable Sku { get; set; }
+
+        /// <summary>
         /// Executes the cmdlet.
         /// </summary>
         protected override void OnProcessRecord()
@@ -155,7 +163,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             var result = this.GetLongRunningOperationTracker(activityName: activity, isResourceCreateOrUpdate: true)
                 .WaitOnOperation(operationResult: operationResult);
 
-            this.WriteObject(this.GetOutputObjects(JObject.Parse(result)), enumerateCollection: true);
+            this.WriteObject(this.GetOutputObjects("PolicyAssignmentId", JObject.Parse(result)), enumerateCollection: true);
         }
 
         /// <summary>
@@ -177,6 +185,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             var policyassignmentObject = new PolicyAssignment
             {
                 Name = this.Name,
+                Sku = this.Sku == null? new PolicySku { Name = "A0", Tier = "Free" } : this.Sku.ToDictionary(addValueLayer: false).ToJson().FromJson<PolicySku>(),
                 Properties = new PolicyAssignmentProperties
                 {
                     DisplayName = this.DisplayName ?? null,

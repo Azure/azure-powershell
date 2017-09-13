@@ -16,16 +16,36 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.Azure.Commands.ResourceManager.Common;
+    using Microsoft.WindowsAzure.Commands.Common;
+    using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Newtonsoft.Json.Linq;
+    using System.IO;
     using System.Linq;
     using System.Management.Automation;
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Base class for policy assignment cmdlets.
+    /// Base class for policy cmdlets.
     /// </summary>
-    public abstract class PolicyAssignmentCmdletBase : ResourceManagerCmdletBase
+    public abstract class PolicyCmdletBase : ResourceManagerCmdletBase
     {
+        /// <summary>
+        /// Converts the resource object to specified resource type object.
+        /// </summary>
+        /// <param name="resources">The policy definition resource object.</param>
+        protected PSObject[] GetOutputObjects(string resourceType, params JToken[] resources)
+        {
+            return resources
+                .CoalesceEnumerable()
+                .Where(resource => resource != null)
+                .SelectArray(resource =>
+                {
+                    var psobject = resource.ToResource().ToPsObject();
+                    psobject.Properties.Add(new PSNoteProperty(resourceType, psobject.Properties["ResourceId"].Value));
+                    return psobject;
+                });
+        }
+
         /// <summary>
         /// Gets the next set of resources using the <paramref name="nextLink"/>
         /// </summary>
@@ -38,20 +58,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         }
 
         /// <summary>
-        /// Converts the resource object to policy definition object.
+        /// Gets the JToken object from parameter
         /// </summary>
-        /// <param name="resources">The policy definition resource object.</param>
-        protected PSObject[] GetOutputObjects(params JToken[] resources)
+        protected JToken GetObjectFromParameter(string parameter)
         {
-            return resources
-                .CoalesceEnumerable()
-                .Where(resource => resource != null)
-                .SelectArray(resource =>
-                {
-                    var psobject = resource.ToResource().ToPsObject();
-                    psobject.Properties.Add(new PSNoteProperty("PolicyAssignmentId", psobject.Properties["ResourceId"].Value));
-                    return psobject;
-                });
+            string filePath = this.TryResolvePath(parameter);
+
+            return File.Exists(filePath)
+                ? JToken.FromObject(FileUtilities.DataStore.ReadFileAsText(filePath))
+                : JToken.FromObject(parameter);
         }
     }
 }

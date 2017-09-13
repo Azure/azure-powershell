@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// Sets the policy assignment.
     /// </summary>
     [Cmdlet(VerbsCommon.Set, "AzureRmPolicyAssignment", DefaultParameterSetName = SetAzurePolicyAssignmentCmdlet.PolicyAssignmentNameParameterSet), OutputType(typeof(PSObject))]
-    public class SetAzurePolicyAssignmentCmdlet : PolicyAssignmentCmdletBase
+    public class SetAzurePolicyAssignmentCmdlet : PolicyCmdletBase
     {
         /// <summary>
         /// The policy Id parameter set.
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             var result = this.GetLongRunningOperationTracker(activityName: activity, isResourceCreateOrUpdate: true)
                 .WaitOnOperation(operationResult: operationResult);
 
-            this.WriteObject(this.GetOutputObjects(JObject.Parse(result)), enumerateCollection: true);
+            this.WriteObject(this.GetOutputObjects("PolicyAssignmentId", JObject.Parse(result)), enumerateCollection: true);
         }
 
         /// <summary>
