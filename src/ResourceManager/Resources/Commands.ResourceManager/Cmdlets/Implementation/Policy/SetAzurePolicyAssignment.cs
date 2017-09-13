@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 Name = this.Name ?? ResourceIdUtility.GetResourceName(this.Id),
                 Sku = this.Sku != null
                     ? this.Sku.ToDictionary(addValueLayer: false).ToJson().FromJson<PolicySku>()
-                    : (resource.Sku == null ? null : resource.Sku.ToString().FromJson<PolicySku>()),
+                    : (resource.Sku == null ? new PolicySku { Name = "A0", Tier = "Free" } : resource.Sku.ToJson().FromJson<PolicySku>()),
                 Properties = new PolicyAssignmentProperties
                 {
                     DisplayName = this.DisplayName ?? (resource.Properties["displayName"] != null

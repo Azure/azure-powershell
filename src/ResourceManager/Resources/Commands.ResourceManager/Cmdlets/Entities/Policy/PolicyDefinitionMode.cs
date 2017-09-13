@@ -20,11 +20,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy
     public enum PolicyDefinitionMode
     {
         /// <summary>
-        /// The policy definition mode is not specified.
-        /// </summary>
-        NotSpecified,
-
-        /// <summary>
         /// The policy definition mode is indexed.
         /// </summary>
         Indexed,

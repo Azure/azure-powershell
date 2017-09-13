@@ -56,6 +56,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy
         /// The mode.
         /// </summary>
         [JsonProperty(Required = Required.Default)]
-        public PolicyDefinitionMode Mode { get; set; }
+        public PolicyDefinitionMode? Mode { get; set; }
     }
 }
