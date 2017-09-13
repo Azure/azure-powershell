@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Creates the policy definition.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmPolicySetDefinition"), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.New, "AzureRmPolicySetDefinition", SupportsShouldProcess = true), OutputType(typeof(PSObject))]
     public class NewAzurePolicySetDefinitionCmdlet : PolicySetDefinitionCmdletBase
     {
         /// <summary>
