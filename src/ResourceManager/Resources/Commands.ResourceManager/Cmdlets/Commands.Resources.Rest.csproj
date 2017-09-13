@@ -81,6 +81,7 @@
     <Compile Include="Entities\Policy\PolicySetDefinitionProperties.cs" />
     <Compile Include="Entities\Policy\PolicyDefinitionProperties.cs" />
     <Compile Include="Entities\Policy\PolicyRule.cs" />
+    <Compile Include="Entities\Policy\PolicySku.cs" />
     <Compile Include="Entities\Providers\ResourceProviderDefinition.cs" />
     <Compile Include="Entities\Providers\ResourceTypeDefinition.cs" />
     <Compile Include="Entities\ProvisioningState\ProvisioningState.cs" />
@@ -109,7 +110,7 @@
     <Compile Include="Implementation\Locations\GetAzureLocationCmdlet.cs" />
     <Compile Include="Implementation\Policy\GetAzurePolicySetDefinition.cs" />
     <Compile Include="Implementation\Policy\NewAzurePolicySetDefinition.cs" />
-    <Compile Include="Implementation\Policy\PolicySetDefinitionCmdletBase.cs" />
+    <Compile Include="Implementation\Policy\PolicyCmdletBase.cs" />
     <Compile Include="Implementation\Policy\RemoveAzurePolicySetDefinition.cs" />
     <Compile Include="Implementation\Policy\SetAzurePolicySetDefinition.cs" />
     <Compile Include="Implementation\ResourceGroups\FindAzureResourceGroupCmdlet.cs" />
@@ -138,8 +139,6 @@
     <Compile Include="Implementation\Policy\GetAzurePolicyDefinition.cs" />
     <Compile Include="Implementation\Policy\NewAzurePolicyAssignment.cs" />
     <Compile Include="Implementation\Policy\NewAzurePolicyDefinition.cs" />
-    <Compile Include="Implementation\Policy\PolicyAssignmentCmdletBase.cs" />
-    <Compile Include="Implementation\Policy\PolicyDefinitionCmdletBase.cs" />
     <Compile Include="Implementation\Policy\RemoveAzurePolicyAssignment.cs" />
     <Compile Include="Implementation\Policy\RemoveAzurePolicyDefinition.cs" />
     <Compile Include="Implementation\Policy\SetAzurePolicyAssignment.cs" />

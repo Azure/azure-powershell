@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     [Cmdlet(VerbsCommon.Remove, "AzureRmPolicyAssignment", SupportsShouldProcess = true, 
         DefaultParameterSetName = RemoveAzurePolicyAssignmentCmdlet.PolicyAssignmentNameParameterSet), 
         OutputType(typeof(bool))]
-    public class RemoveAzurePolicyAssignmentCmdlet : PolicyAssignmentCmdletBase
+    public class RemoveAzurePolicyAssignmentCmdlet : PolicyCmdletBase
     {
         /// <summary>
         /// The policy assignment Id parameter set.

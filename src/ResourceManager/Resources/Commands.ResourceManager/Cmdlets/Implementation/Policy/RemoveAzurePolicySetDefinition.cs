@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     [Cmdlet(VerbsCommon.Remove, "AzureRmPolicySetDefinition", SupportsShouldProcess = true,
         DefaultParameterSetName = RemoveAzurePolicySetDefinitionCmdlet.PolicySetDefinitionNameParameterSet), 
         OutputType(typeof(bool))]
-    public class RemoveAzurePolicySetDefinitionCmdlet : PolicySetDefinitionCmdletBase
+    public class RemoveAzurePolicySetDefinitionCmdlet : PolicyCmdletBase
     {
         /// <summary>
         /// The policy Id parameter set.

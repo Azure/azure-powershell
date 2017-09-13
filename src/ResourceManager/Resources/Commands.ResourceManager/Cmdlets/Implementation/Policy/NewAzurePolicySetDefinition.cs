@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// Creates the policy definition.
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRmPolicySetDefinition", SupportsShouldProcess = true), OutputType(typeof(PSObject))]
-    public class NewAzurePolicySetDefinitionCmdlet : PolicySetDefinitionCmdletBase
+    public class NewAzurePolicySetDefinitionCmdlet : PolicyCmdletBase
     {
         /// <summary>
         /// Gets or sets the policy set definition name parameter.
@@ -49,6 +49,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The description for policy set definition.")]
         [ValidateNotNullOrEmpty]
         public string Description { get; set; }
+
+        /// <summary>
+        /// Gets or sets the policy set definition metadata parameter
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The metadata for policy set definition. This can either be a path to a file name containing the metadata, or the metadata as string.")]
+        [ValidateNotNullOrEmpty]
+        public string Metadata { get; set; }
 
         /// <summary>
         /// Gets or sets the policy definition parameter
@@ -92,7 +99,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             var activity = string.Format("PUT {0}", managementUri.PathAndQuery);
             var result = this.GetLongRunningOperationTracker(activityName: activity, isResourceCreateOrUpdate: true)
                 .WaitOnOperation(operationResult: operationResult);
-            this.WriteObject(this.GetOutputObjects(JObject.Parse(result)), enumerateCollection: true);
+            this.WriteObject(this.GetOutputObjects("PolicySetDefinitionId", JObject.Parse(result)), enumerateCollection: true);
         }
 
         /// <summary>
@@ -119,36 +126,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 {
                     Description = this.Description ?? null,
                     DisplayName = this.DisplayName ?? null,
-                    PolicyDefinitions = this.GetPolicyDefinitionsObject(),
-                    Parameters = this.Parameter == null ? null : JObject.Parse(this.GetParametersObject().ToString())
+                    PolicyDefinitions = JArray.Parse(this.GetObjectFromParameter(this.PolicyDefinition).ToString()),
+                    Metadata = this.Metadata == null ? null : JObject.Parse(this.GetObjectFromParameter(this.Metadata).ToString()),
+                    Parameters = this.Parameter == null ? null : JObject.Parse(this.GetObjectFromParameter(this.Parameter).ToString())
                 }
             };
 
             return policySetDefinitionObject.ToJToken();
-        }
-
-        /// <summary>
-        /// Gets the policy definitions object
-        /// </summary>
-        private JArray GetPolicyDefinitionsObject()
-        {
-            string policyFilePath = this.TryResolvePath(this.PolicyDefinition);
-
-            return File.Exists(policyFilePath)
-                ? JArray.Parse(FileUtilities.DataStore.ReadFileAsText(policyFilePath))
-                : JArray.Parse(this.PolicyDefinition);
-        }
-
-        /// <summary>
-        /// Gets the parameters object
-        /// </summary>
-        private JToken GetParametersObject()
-        {
-            string parametersFilePath = this.TryResolvePath(this.Parameter);
-
-            return File.Exists(parametersFilePath)
-                ? JToken.FromObject(FileUtilities.DataStore.ReadFileAsText(parametersFilePath))
-                : JToken.FromObject(this.Parameter);
         }
     }
 }

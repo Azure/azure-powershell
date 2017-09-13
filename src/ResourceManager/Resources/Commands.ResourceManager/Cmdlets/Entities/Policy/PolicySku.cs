@@ -12,31 +12,26 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Newtonsoft.Json;
+
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy
 {
-    using Newtonsoft.Json;
-
     /// <summary>
-    /// The policy assignment object.
+    /// The policy sku object.
     /// </summary>
-    public class PolicyAssignment
+    public class PolicySku
     {
         /// <summary>
-        /// The policy assignment properties.
+        /// Gets or sets the <c>sku</c> name.
         /// </summary>
         [JsonProperty(Required = Required.Always)]
-        public PolicyAssignmentProperties Properties { get; set; }
-
-        /// <summary>
-        /// The policy assignment name.
-        /// </summary>
-        [JsonProperty(Required = Required.Default)]
         public string Name { get; set; }
 
         /// <summary>
-        /// The policy sku.
+        /// Gets or sets the <c>sku</c> tier.
         /// </summary>
-        [JsonProperty(Required = Required.Always)]
-        public PolicySku Sku { get; set; }
+        [JsonProperty(Required = Required.Default)]
+        public string Tier { get; set; }
     }
 }
+
