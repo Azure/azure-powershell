@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 {
                     Description = this.Description ?? null,
                     DisplayName = this.DisplayName ?? null,
-                    PolicyDefinitions = JArray.Parse(this.GetPolicyDefinitionsObject().ToString()),
+                    PolicyDefinitions = this.GetPolicyDefinitionsObject(),
                     Parameters = this.Parameter == null ? null : JObject.Parse(this.GetParametersObject().ToString())
                 }
             };
@@ -135,8 +135,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             string policyFilePath = this.TryResolvePath(this.PolicyDefinition);
 
             return File.Exists(policyFilePath)
-                ? JArray.Parse(JToken.FromObject(FileUtilities.DataStore.ReadFileAsText(policyFilePath)).ToString())
-                : JArray.Parse(JToken.FromObject(this.PolicyDefinition).ToString());
+                ? JArray.Parse(FileUtilities.DataStore.ReadFileAsText(policyFilePath))
+                : JArray.Parse(this.PolicyDefinition);
         }
 
         /// <summary>

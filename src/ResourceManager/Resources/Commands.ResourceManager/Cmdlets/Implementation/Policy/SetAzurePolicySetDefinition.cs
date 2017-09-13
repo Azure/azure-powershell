@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             };
             if (!string.IsNullOrEmpty(this.PolicyDefinition))
             {
-                policySetDefinitionObject.Properties.PolicyDefinitions = JArray.Parse(GetPolicyDefinitionsObject().ToString());
+                policySetDefinitionObject.Properties.PolicyDefinitions = GetPolicyDefinitionsObject();
             }
             else
             {
@@ -167,15 +167,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         }
 
         /// <summary>
-        /// Gets the policy rule object
+        /// Gets the policy definitions object
         /// </summary>
-        protected JToken GetPolicyDefinitionsObject()
+        private JArray GetPolicyDefinitionsObject()
         {
             string policyFilePath = this.TryResolvePath(this.PolicyDefinition);
 
             return File.Exists(policyFilePath)
-                ? JToken.FromObject(FileUtilities.DataStore.ReadFileAsText(policyFilePath))
-                : JToken.FromObject(this.PolicyDefinition);
+                ? JArray.Parse(FileUtilities.DataStore.ReadFileAsText(policyFilePath))
+                : JArray.Parse(this.PolicyDefinition);
         }
     }
 }
