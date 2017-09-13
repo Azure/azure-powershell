@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzureRmDisk
 
 ## SYNOPSIS
-Gets the properties of a disk.
+Gets the properties of a Managed disk.
 
 ## SYNTAX
 
@@ -16,7 +16,7 @@ Get-AzureRmDisk [[-ResourceGroupName] <String>] [[-DiskName] <String>] [<CommonP
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmDisk** cmdlet gets the properties of a disk.
+The **Get-AzureRmDisk** cmdlet gets the properties of a Managed disk.
 
 ## EXAMPLES
 
