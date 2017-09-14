@@ -119,6 +119,18 @@ function Test-SetGetListUpdateRemoveActivityLogAlert
 			}
 			"BadRequest"
 
+		Assert-ThrowsContains 
+			{
+				$updated = Disable-AzureRmActivityLogAlert -ResourceId $actual.Id
+
+				Assert-NotNull $updated
+				Assert-AreEqual $alertName $updated.Name
+				Assert-AreEqual $location $updated.Location
+				Assert-NotNull $updated.Tags
+				Assert-False { $updated.Enabled }
+			}
+			"BadRequest"
+
          Assert-ThrowsContains 
 			{
 				$updated = Enable-AzureRmActivityLogAlert -ResourceGroupName $resourceGroupName -Name $alertName -Tag $dict
@@ -143,11 +155,26 @@ function Test-SetGetListUpdateRemoveActivityLogAlert
 			}
 			"BadRequest"
 
+		Assert-ThrowsContains 
+			{
+				$updated = Enable-AzureRmActivityLogAlert -ResourceId $actual.Id
+
+				Assert-NotNull $updated
+				Assert-AreEqual $alertName $updated.Name
+				Assert-AreEqual $location $updated.Location
+				Assert-NotNull $updated.Tags
+				Assert-False { $updated.Enabled }
+			}
+			"BadRequest"
+
 		# Write-Verbose " ****** Removing the ActivityLogAlert using pileline"
 		Get-AzureRmActivityLogAlert -ResourceGroup $resourceGroupName -Name $alertName | Remove-AzureRmActivityLogAlert
 
 		Write-Verbose " ****** Removing (again) the ActivityLogAlert"
 		Remove-AzureRmActivityLogAlert -ResourceGroupName $resourceGroupName -Name $alertName
+
+		Write-Verbose " ****** Removing (again) the ActivityLogAlert using ResourceId param"
+		Remove-AzureRmActivityLogAlert -ResourceId $actual.Id
     }
     finally
     {

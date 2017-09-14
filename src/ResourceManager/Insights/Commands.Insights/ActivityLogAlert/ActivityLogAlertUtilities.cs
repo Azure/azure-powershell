@@ -33,17 +33,38 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
 
             activityLogAlertName = inputObject.Name;
 
-            // TODO: this could be done via regular expressions
-            // Remove leading '/'
-            string id = inputObject.Id.Trim().Trim('/');
-            var segments = id.Split('/');
-            if (segments.Length < 4 || !string.Equals(segments[0], "subscriptions", System.StringComparison.OrdinalIgnoreCase) || !string.Equals(segments[2], "resourcegroups", System.StringComparison.OrdinalIgnoreCase))
+            try
             {
-                throw new PSArgumentException(message: "Invalid activity log alert resource Id", paramName: "ActivityLogAlert");
+                Management.Internal.Resources.Utilities.Models.ResourceIdentifier resourceIdentifier = new Management.Internal.Resources.Utilities.Models.ResourceIdentifier(inputObject.Id);
+
+                // Retrieve only the resource group name from the Id
+                resourceGroupName = resourceIdentifier.ResourceGroupName;
+            }
+            catch (System.ArgumentException ex)
+            {
+                throw new PSArgumentException(message: "Invalid activity log alert resource Id: " + ex.Message, paramName: "ActivityLogAlert");
+            }
+        }
+
+        public static void ProcessPipeObject(string resourceId, out string resourceGroupName, out string activityLogAlertName)
+        {
+            if (string.IsNullOrWhiteSpace(resourceId))
+            {
+                throw new PSArgumentException(message: "Activity log alert Id cannot be null", paramName: "ActivityLogAlert");
             }
 
-            // Retrieve only the resource group name from the Id
-            resourceGroupName = segments[3];
+            try
+            {
+                Management.Internal.Resources.Utilities.Models.ResourceIdentifier resourceIdentifier = new Management.Internal.Resources.Utilities.Models.ResourceIdentifier(resourceId);
+
+                // Retrieve only the resource group name from the Id
+                resourceGroupName = resourceIdentifier.ResourceGroupName;
+                activityLogAlertName = resourceIdentifier.ResourceName;
+            }
+            catch (System.ArgumentException ex)
+            {
+                throw new PSArgumentException(message: "Invalid activity log alert resource Id: " + ex.Message, paramName: "ActivityLogAlert");
+            }
         }
     }
 }

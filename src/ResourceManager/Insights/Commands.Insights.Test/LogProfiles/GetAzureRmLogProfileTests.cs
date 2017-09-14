@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.LogProfiles
 
         public GetAzureRmLogProfileTests(ITestOutputHelper output)
         {
-            //XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             insightsLogProfileOperationsMock = new Mock<ILogProfilesOperations>();
             MonitorClientMock = new Mock<MonitorManagementClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();

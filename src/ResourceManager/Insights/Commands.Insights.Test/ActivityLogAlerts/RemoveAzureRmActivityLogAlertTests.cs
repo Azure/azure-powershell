@@ -38,8 +38,8 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActivityLogAlerts
 
         public RemoveAzureRmActivityLogAlertTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             TestExecutionHelpers.SetUpSessionAndProfile();
-            //ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             insightsOperationsMock = new Mock<IActivityLogAlertsOperations>();
             monitorClientMock = new Mock<MonitorManagementClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActivityLogAlerts
 
             cmdlet.Name = null;
             cmdlet.ResourceGroupName = null;
-            var resource = new ActivityLogAlertResource(location: "Global", scopes: null, condition: null, name: "alert1", actions: null, id: "subscriptions/32323/resourcegroups/Default-Web-EastUS")
+            var resource = new ActivityLogAlertResource(location: "Global", scopes: null, condition: null, name: "andy0307rule", actions: null, id: "subscriptions/07c0b09d-9f69-4e6e-8d05-f59f67299cb2/resourceGroups/Default-ActivityLogAlerts/providers/microsoft.insights/activityLogAlerts/andy0307rule")
             {
                 Enabled = false
             };
@@ -87,10 +87,10 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActivityLogAlerts
             cmdlet.InputObject = new OutputClasses.PSActivityLogAlertResource(resource);
             cmdlet.ExecuteCmdlet();
 
-            Assert.Equal(Utilities.ResourceGroup, this.resourceGroup);
-            Assert.Equal("alert1", this.name);
+            Assert.Equal("Default-ActivityLogAlerts", this.resourceGroup);
+            Assert.Equal("andy0307rule", this.name);
 
-            resource = new ActivityLogAlertResource(location: "Global", scopes: null, condition: null, name: "alert1", actions: null, id: "//subscriptions/32323/resourcegroups/Default-Web-EastUS/")
+            resource = new ActivityLogAlertResource(location: "Global", scopes: null, condition: null, name: "andy0307rule", actions: null, id: "//subscriptions/07c0b09d-9f69-4e6e-8d05-f59f67299cb2/resourceGroups/Default-ActivityLogAlerts/providers/microsoft.insights/activityLogAlerts/andy0307rule")
             {
                 Enabled = false
             };
@@ -98,8 +98,15 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActivityLogAlerts
             cmdlet.InputObject = new OutputClasses.PSActivityLogAlertResource(resource);
             cmdlet.ExecuteCmdlet();
 
-            Assert.Equal(Utilities.ResourceGroup, this.resourceGroup);
-            Assert.Equal("alert1", this.name);
+            Assert.Equal("Default-ActivityLogAlerts", this.resourceGroup);
+            Assert.Equal("andy0307rule", this.name);
+
+            cmdlet.InputObject = null;
+            cmdlet.ResourceId = "/subscriptions/07c0b09d-9f69-4e6e-8d05-f59f67299cb2/resourceGroups/Default-ActivityLogAlerts/providers/microsoft.insights/activityLogAlerts/andy0307rule";
+            cmdlet.ExecuteCmdlet();
+
+            Assert.Equal("Default-ActivityLogAlerts", this.resourceGroup);
+            Assert.Equal("andy0307rule", this.name);
         }
     }
 }

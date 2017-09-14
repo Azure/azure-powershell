@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
     /// <summary>
     /// Create an Activity Log Alert condition
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmActivityLogAlertCondition", SupportsShouldProcess = true), OutputType(typeof(ActivityLogAlertLeafCondition))]
+    [Cmdlet(VerbsCommon.New, "AzureRmActivityLogAlertCondition"), OutputType(typeof(ActivityLogAlertLeafCondition))]
     public class NewAzureRmActivityLogAlertConditionCommand : AzureRMCmdlet
     {
         #region Cmdlet parameters
@@ -40,12 +40,6 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
         [ValidateNotNullOrEmpty]
         public new string Equals { get; set; }
 
-        /// <summary>
-        /// Gets or sets the Force flag of the cmdlet
-        /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The force parameter required by the implementation of ShouldProcess")]
-        public SwitchParameter Force { get; set; }
-
         #endregion
 
         /// <summary>
@@ -53,15 +47,10 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(
-                    target: "Create an activity log alert condition in memory",
-                    action: "Create an activity log alert condition in memory"))
-            {
-                WriteObject(
-                    new ActivityLogAlertLeafCondition(
-                        field: this.Field,
-                        equals: this.Equals));
-            }
+            WriteObject(
+                new ActivityLogAlertLeafCondition(
+                    field: this.Field,
+                    equals: this.Equals));
         }
     }
 }

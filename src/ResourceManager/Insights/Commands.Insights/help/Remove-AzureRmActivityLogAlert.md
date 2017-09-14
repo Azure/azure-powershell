@@ -13,7 +13,7 @@ Removes an activity log alert.
 ## SYNTAX
 
 ```
-Remove-AzureRmActivityLogAlert [-InputObject <PSActivityLogAlertResource>] [-ResourceGroupName <String> -Name <String>] [<CommonParameters>]
+Remove-AzureRmActivityLogAlert [-InputObject <PSActivityLogAlertResource>] [-ResourceId <String>] [-ResourceGroupName <String> -Name <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,6 +41,15 @@ RequestId                                                                       
 ```
 
 Removes an activity log alert using a PSActivityLogAlertResource as input.
+
+### Example 3: Remove the ActivityLogAlert using the ResourceId parameter
+```
+
+PS C:\>Find-AzureRmResource -ResourceGroupEquals "myResourceGroup" -ResourceNameEquals "myLogAlert" | Remove-AzureRmActivityLogAlert
+
+```
+
+This command removes the ActivityLogAlert using the ResourceId parameter from the pipe.
 
 ## PARAMETERS
 
@@ -89,8 +98,23 @@ Accept pipeline input: True (FromPipeline)
 Accept wildcard characters: False
 ```
 
+### -ResourceId
+Sets the ResourceId tags property of the call to extract the required name, resource group name properties.
+
+```yaml
+Type: System.String
+Parameter Sets: RemoveActivityLogAlertFromResourceIdParamGroup
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### CommonParameters
-This cmdlet supports the common parameters: -Force, -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

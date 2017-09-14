@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
     /// <summary>
     /// Create an Activity Log Alert Action Group
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmActionGroup", SupportsShouldProcess = true), OutputType(typeof(ActivityLogAlertActionGroup))]
+    [Cmdlet(VerbsCommon.New, "AzureRmActionGroup"), OutputType(typeof(ActivityLogAlertActionGroup))]
     public class NewAzureRmActionGroupCommand : AzureRMCmdlet
     {
         #region Cmdlet parameters
@@ -41,12 +41,6 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
         [ValidateNotNullOrEmpty]
         public Dictionary<string, string> WebhookProperty { get; set; }
 
-        /// <summary>
-        /// Gets or sets the Force flag of the cmdlet
-        /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The force parameter required by the implementation of ShouldProcess")]
-        public SwitchParameter Force { get; set; }
-
         #endregion
 
         /// <summary>
@@ -54,15 +48,10 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(
-                    target: "Create an action group spec in memory",
-                    action: "Create an action group spec in memory"))
-            {
-                WriteObject(
+            WriteObject(
                 new ActivityLogAlertActionGroup(
                     actionGroupId: this.ActionGroupId,
                     webhookProperties: this.WebhookProperty));
-            }
         }
     }
 }
