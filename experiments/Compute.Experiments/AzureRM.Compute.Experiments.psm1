@@ -8,7 +8,7 @@ function New-AzVm {
         [Parameter()][string] $Location,
         [Parameter()][string] $VirtualNetworkName,
         [Parameter()][string] $PublicIpAddressName,
-        [Parameter()][string] $SecurityGroupName,
+        [Parameter()][string] $SecurityGroupName
         # [Parameter()][string] $NetworkInterfaceName
     )
 
