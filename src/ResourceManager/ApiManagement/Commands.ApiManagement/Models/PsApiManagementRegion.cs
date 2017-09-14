@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
             }
 
             Location = regionResource.Location;
-            Sku = Mapper.Map<SkuType, PsApiManagementSku>(regionResource.SkuType);
+            Sku = ApiManagementClient.Mapper.Map<SkuType, PsApiManagementSku>(regionResource.SkuType);
             Capacity = regionResource.SkuUnitCount ?? 1;
             StaticIPs = regionResource.StaticIPs.ToArray();
 

@@ -44,13 +44,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
             Id = apiServiceResource.Id;
             Name = apiServiceResource.Name;
             Location = apiServiceResource.Location;
-            Sku = Mapper.Map<SkuType, PsApiManagementSku>(apiServiceResource.SkuProperties.SkuType);
+            Sku = ApiManagementClient.Mapper.Map<SkuType, PsApiManagementSku>(apiServiceResource.SkuProperties.SkuType);
             Capacity = apiServiceResource.SkuProperties.Capacity ?? 1;
             ProvisioningState = apiServiceResource.Properties.ProvisioningState;
             RuntimeUrl = apiServiceResource.Properties.ProxyEndpoint;
             PortalUrl = apiServiceResource.Properties.ManagementPortalEndpoint;
             StaticIPs = apiServiceResource.Properties.StaticIPs.ToArray();
-            VpnType = Mapper.Map<VirtualNetworkType, PsApiManagementVpnType>(apiServiceResource.Properties.VpnType);
+            VpnType = ApiManagementClient.Mapper.Map<VirtualNetworkType, PsApiManagementVpnType>(apiServiceResource.Properties.VpnType);
 
             if (apiServiceResource.Properties.AdditionalRegions != null)
             {

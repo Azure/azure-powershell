@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
     {
         public PSImage ToPSImage ()
         {
-            return AutoMapper.Mapper.Map<PSImage>(this);
+            return ComputeAutomationAutoMapperProfile.Mapper.Map<PSImage>(this);
         }
     }
 }

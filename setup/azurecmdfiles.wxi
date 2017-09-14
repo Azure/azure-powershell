@@ -135,9 +135,6 @@
                         <Component Id="cmpBEA6E3263480C18705DC2E3B15E3C1CF" Guid="*">
                             <File Id="fil7E95F218EFC39408F9F2DB3FD01A124C" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.ApiManagement\AutoMapper.dll" />
                         </Component>
-                        <Component Id="cmp957D146263F021CE3EF1CBADBF06D2C4" Guid="*">
-                            <File Id="fil3B64A78FBE060D1999F5155A4FC7A5A6" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.ApiManagement\AutoMapper.Net4.dll" />
-                        </Component>
                         <Component Id="cmp5FB922E1DB9224DAB3732AEA3ECC0388" Guid="*">
                             <File Id="fil5213407D51829D166CAC13B03BB3E5D9" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.ApiManagement\AzureRM.ApiManagement.psd1" />
                         </Component>
@@ -667,9 +664,6 @@
                     <Directory Id="dir470D08462380F56397F9D0288EEA2E52" Name="AzureRM.Compute">
                         <Component Id="cmpD2516E302D41812368A84BD6010FB066" Guid="*">
                             <File Id="filEBA6A8A31DD00604D785E38F8379CCC0" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Compute\AutoMapper.dll" />
-                        </Component>
-                        <Component Id="cmp22A6F693AF6FBFD6498C688650850591" Guid="*">
-                            <File Id="filA6AB6542AE249CFD2B0A551B0685C0C6" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Compute\AutoMapper.Net4.dll" />
                         </Component>
                         <Component Id="cmp594709EB2E69BD7173BC8833BE2061B4" Guid="*">
                             <File Id="filEF7117E1317C1E3E14DF115DF4490BA3" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Compute\AzureRM.Compute.psd1" />
@@ -1899,9 +1893,6 @@
                         <Component Id="cmp33F39A22183184A6B41F85DF085BAD29" Guid="*">
                             <File Id="fil55AEBBBFEF03FD95E26F163516FF2E54" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Network\AutoMapper.dll" />
                         </Component>
-                        <Component Id="cmp70B60DBD32D61BCA5715AB2D64131358" Guid="*">
-                            <File Id="filF785DC83C86073F482446C70517349AF" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Network\AutoMapper.Net4.dll" />
-                        </Component>
                         <Component Id="cmp6E3EAD7F12BD99ACB19E0249804739D9" Guid="*">
                             <File Id="fil073D08239CE53D9BDD13AB4040BF2180" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Network\AzureRM.Network.psd1" />
                         </Component>
@@ -2431,9 +2422,6 @@
                     <Directory Id="dirA007D7300D25D1CF390258A1977A481D" Name="AzureRM.RecoveryServices.SiteRecovery">
                         <Component Id="cmp0771616382C276888CCCCAEDE5A4A116" Guid="*">
                             <File Id="fil3A2FA9FED44014FB034C65AE36153CCE" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.RecoveryServices.SiteRecovery\AutoMapper.dll" />
-                        </Component>
-                        <Component Id="cmpCCE9F48369C0A7D8A62E453BBDD3BA60" Guid="*">
-                            <File Id="fil9F99200863B45D3C4CAA2165474C1154" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.RecoveryServices.SiteRecovery\AutoMapper.Net4.dll" />
                         </Component>
                         <Component Id="cmpAC48F0FFA8AD61A159AE77B4461BF0A1" Guid="*">
                             <File Id="filF5C89CCF397E88A4026855A0D2C52D03" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.RecoveryServices.SiteRecovery\AzureRM.RecoveryServices.psd1" />
@@ -5378,7 +5366,6 @@
             <ComponentRef Id="cmp4239E298007039D73447BCF1C811AFFF" />
             <ComponentRef Id="cmp52FA0519C93110702BAA6D4D39EED5A4" />
             <ComponentRef Id="cmpBEA6E3263480C18705DC2E3B15E3C1CF" />
-            <ComponentRef Id="cmp957D146263F021CE3EF1CBADBF06D2C4" />
             <ComponentRef Id="cmp5FB922E1DB9224DAB3732AEA3ECC0388" />
             <ComponentRef Id="cmp2E3A58C9336220FF001B6912E569A1C3" />
             <ComponentRef Id="cmp1C7906F849294A53D53A70383F55445E" />
@@ -5551,7 +5538,6 @@
             <ComponentRef Id="cmp3D82D19F427B152BB3BB2BAD217958C2" />
             <ComponentRef Id="cmpFDA0979F65585F21A39465A3177C778A" />
             <ComponentRef Id="cmpD2516E302D41812368A84BD6010FB066" />
-            <ComponentRef Id="cmp22A6F693AF6FBFD6498C688650850591" />
             <ComponentRef Id="cmp594709EB2E69BD7173BC8833BE2061B4" />
             <ComponentRef Id="cmpCC409403AF670A9E0538AC743C61BD66" />
             <ComponentRef Id="cmp8F649774D57C8E90EC765D8FCE36E32A" />
@@ -5950,7 +5936,6 @@
             <ComponentRef Id="cmpE3675757E9A4594575D644697F2511CE" />
             <ComponentRef Id="cmp40E1A281AD8C136D20FD0CC6C3A5D54C" />
             <ComponentRef Id="cmp33F39A22183184A6B41F85DF085BAD29" />
-            <ComponentRef Id="cmp70B60DBD32D61BCA5715AB2D64131358" />
             <ComponentRef Id="cmp6E3EAD7F12BD99ACB19E0249804739D9" />
             <ComponentRef Id="cmp7422E480DBC8B16B0BF2E5387A594B0B" />
             <ComponentRef Id="cmp02E49F28BB0FA3174A478847B857A4D0" />
@@ -6123,7 +6108,6 @@
             <ComponentRef Id="cmp4C0352326E88F3944C388E2F8F24D0BA" />
             <ComponentRef Id="cmpCA10090D9DBBEA0C6A7D6462DB2D0611" />
             <ComponentRef Id="cmp0771616382C276888CCCCAEDE5A4A116" />
-            <ComponentRef Id="cmpCCE9F48369C0A7D8A62E453BBDD3BA60" />
             <ComponentRef Id="cmpAC48F0FFA8AD61A159AE77B4461BF0A1" />
             <ComponentRef Id="cmp7046713066487041F1101B42659052B1" />
             <ComponentRef Id="cmp7BAA312BC377A7444310E7C0C5B732EE" />

@@ -115,7 +115,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     {
         protected override void ProcessRecord()
         {
-            AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
             ExecuteClientAction(() =>
             {
                 string resourceGroupName = this.ResourceGroupName;
@@ -136,7 +135,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 var psObject = new List<PSVirtualMachineScaleSetSku>();
                 foreach (var r in resultList)
                 {
-                    psObject.Add(Mapper.Map<VirtualMachineScaleSetSku, PSVirtualMachineScaleSetSku>(r));
+                    psObject.Add(ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSetSku, PSVirtualMachineScaleSetSku>(r));
                 }
                 WriteObject(psObject, true);
             });

@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
     {
         public PSVirtualMachineScaleSet ToPSVirtualMachineScaleSet ()
         {
-            return AutoMapper.Mapper.Map<PSVirtualMachineScaleSet>(this);
+            return ComputeAutomationAutoMapperProfile.Mapper.Map<PSVirtualMachineScaleSet>(this);
         }
     }
 }

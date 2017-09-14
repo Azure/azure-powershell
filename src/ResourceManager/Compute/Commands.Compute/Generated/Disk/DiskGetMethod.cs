@@ -140,7 +140,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     {
         protected override void ProcessRecord()
         {
-            AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
             ExecuteClientAction(() =>
             {
                 string resourceGroupName = this.ResourceGroupName;
@@ -150,7 +149,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     var result = DisksClient.Get(resourceGroupName, diskName);
                     var psObject = new PSDisk();
-                    Mapper.Map<Disk, PSDisk>(result, psObject);
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<Disk, PSDisk>(result, psObject);
                     WriteObject(psObject);
                 }
                 else if (!string.IsNullOrEmpty(resourceGroupName))
@@ -170,7 +169,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     var psObject = new List<PSDiskList>();
                     foreach (var r in resultList)
                     {
-                        psObject.Add(Mapper.Map<Disk, PSDiskList>(r));
+                        psObject.Add(ComputeAutomationAutoMapperProfile.Mapper.Map<Disk, PSDiskList>(r));
                     }
                     WriteObject(psObject, true);
                 }
@@ -191,7 +190,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     var psObject = new List<PSDiskList>();
                     foreach (var r in resultList)
                     {
-                        psObject.Add(Mapper.Map<Disk, PSDiskList>(r));
+                        psObject.Add(ComputeAutomationAutoMapperProfile.Mapper.Map<Disk, PSDiskList>(r));
                     }
                     WriteObject(psObject, true);
                 }
