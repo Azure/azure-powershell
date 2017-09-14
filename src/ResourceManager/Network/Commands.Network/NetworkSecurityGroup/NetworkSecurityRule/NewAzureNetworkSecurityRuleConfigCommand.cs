@@ -19,7 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmNetworkSecurityRuleConfig"), OutputType(typeof(PSSecurityRule))]
+    [Cmdlet(VerbsCommon.New, "AzureRmNetworkSecurityRuleConfig", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSSecurityRule))]
     public class NewAzureNetworkSecurityRuleConfigCommand : AzureNetworkSecurityRuleConfigBase
     {
         [Parameter(
@@ -30,7 +30,6 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
-
             base.Execute();
 
             if (!string.IsNullOrWhiteSpace(this.SourceAddressPrefix) && (this.SourceApplicationSecurityGroup != null))

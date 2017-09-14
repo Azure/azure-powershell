@@ -19,7 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Add, "AzureRmNetworkSecurityRuleConfig"), OutputType(typeof(PSNetworkSecurityGroup))]
+    [Cmdlet(VerbsCommon.Add, "AzureRmNetworkSecurityRuleConfig", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSNetworkSecurityGroup))]
     public class AddAzureNetworkSecurityRuleConfigCommand : AzureNetworkSecurityRuleConfigBase
     {
         [Parameter(
