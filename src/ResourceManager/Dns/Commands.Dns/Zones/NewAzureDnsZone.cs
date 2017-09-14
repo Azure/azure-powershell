@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Dns
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
         
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The type of the zone, public or private.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The type of the zone, public or private. This property cannot be changed for a zone")]
         [ValidateNotNullOrEmpty]
         public ZoneType? ZoneType  { get; set; }
         

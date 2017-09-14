@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Dns.dll-Help.xml
+Module Name: AzureRM.Dns
 ms.assetid: E37ADC54-A37B-41BF-BE94-9E4052C234BB
-online version:
+online version: 
 schema: 2.0.0
 ---
 
@@ -14,7 +15,9 @@ Updates the properties of a DNS zone.
 
 ### Fields
 ```
-Set-AzureRmDnsZone -Name <String> -ResourceGroupName <String> [-Tag <Hashtable>] [-WhatIf] [-Confirm]
+Set-AzureRmDnsZone -Name <String> -ResourceGroupName <String> [-Tag <Hashtable>]
+ [-ResolutionVirtualNetworkIds <System.Collections.Generic.List`1[System.String]>]
+ [-RegistrationVirtualNetworkIds <System.Collections.Generic.List`1[System.String]>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -73,7 +76,7 @@ Specifies the name of the DNS zone to update.
 ```yaml
 Type: String
 Parameter Sets: Fields
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -90,12 +93,38 @@ You can suppress this behavior with the *Overwrite* parameter, which updates the
 ```yaml
 Type: SwitchParameter
 Parameter Sets: Object
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RegistrationVirtualNetworkIds
+The list of virtual networks that will register VM hostnames records in this DNS zone, only available for private zones.```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: Fields
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResolutionVirtualNetworkIds
+The list of virtual networks able to resolve records in this DNS zone, only available for private zones.```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: Fields
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -108,7 +137,7 @@ Alternatively, you can specify the zone using a DnsZone object with the *Zone* p
 ```yaml
 Type: String
 Parameter Sets: Fields
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -141,7 +170,7 @@ Alternatively, you can specify the zone using the *ZoneName* and *ResourceGroupN
 ```yaml
 Type: DnsZone
 Parameter Sets: Object
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -180,36 +209,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AssociatedVnet
-Specified the list of virtual networks in which the DNS zone is visible.  Only applicable to Private DNS Zones. 
-
-```yaml
-Type: Array of Virtual Network IDs
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RegisteringVnet
-Specified the list of virtual networks that register hostnames in this DNS zone.  Only applicable to Private DNS Zones. 
-
-```yaml
-Type: Array of Virtual Network IDs
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -229,7 +228,6 @@ By default, the cmdlet prompts you for confirmation if the $ConfirmPreference Wi
 
 If you specify *Confirm* or *Confirm:$True*, this cmdlet prompts you for confirmation before it runs.
 If you specify *Confirm:$False*, the cmdlet does not prompt you for confirmation. 
-
 
 ## RELATED LINKS
 
