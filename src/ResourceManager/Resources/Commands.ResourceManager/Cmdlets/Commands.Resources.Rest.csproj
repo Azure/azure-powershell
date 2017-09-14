@@ -65,6 +65,17 @@
     <Compile Include="Components\ResourceIdUtility.cs" />
     <Compile Include="Components\ResourceManagerClientHelper.cs" />
     <Compile Include="Components\TagsHelper.cs" />
+    <Compile Include="Entities\Applications\ApplicationArtifact.cs" />
+    <Compile Include="Entities\Applications\ApplicationArtifactType.cs" />
+    <Compile Include="Entities\Applications\ApplicationArtifactName.cs" />
+    <Compile Include="Entities\Applications\ApplicationPackageSupportUrls.cs" />
+    <Compile Include="Entities\Applications\ApplicationPackageCustomerSupport.cs" />
+    <Compile Include="Entities\Applications\ApplicationProviderAuthorization.cs" />
+    <Compile Include="Entities\Applications\ApplicationDefinition.cs" />
+    <Compile Include="Entities\Applications\Application.cs" />
+    <Compile Include="Entities\Applications\ApplicationDefinitionProperties.cs" />
+    <Compile Include="Entities\Applications\ApplicationProperties.cs" />
+    <Compile Include="Entities\Applications\ApplicationLockLevel.cs" />
     <Compile Include="Entities\Authorization\Permission.cs" />
     <Compile Include="Entities\ErrorResponses\ErrorResponseMessage.cs" />
     <Compile Include="Entities\ErrorResponses\ErrorResponseMessageException.cs" />
@@ -104,6 +115,8 @@
     <Compile Include="Implementation\Features\GetAzureProviderFeatureCmdlet.cs" />
     <Compile Include="Implementation\Features\RegisterAzureProviderFeatureCmdlet.cs" />
     <Compile Include="Implementation\Locations\GetAzureLocationCmdlet.cs" />
+    <Compile Include="Implementation\ManagedApplications\NewAzureManagedApplication.cs" />
+    <Compile Include="Implementation\ManagedApplications\ManagedApplicationCmdletBase.cs" />
     <Compile Include="Implementation\ResourceGroups\FindAzureResourceGroupCmdlet.cs" />
     <Compile Include="Implementation\ResourceGroups\ExportAzureResourceGroupCmdlet.cs" />
     <Compile Include="Implementation\Providers\GetAzureProviderCmdlet.cs" />
