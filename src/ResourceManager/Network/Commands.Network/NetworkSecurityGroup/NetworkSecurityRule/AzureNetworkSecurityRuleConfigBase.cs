@@ -70,21 +70,25 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            ParameterSetName = "SetByResource",
             HelpMessage = "The application security group set as source for the rule. It cannot be used with 'SourceAddressPrefix' parameter.")]
         public List<PSApplicationSecurityGroup> SourceApplicationSecurityGroup { get; set; }
 
         [Parameter(
             Mandatory = false,
+            ParameterSetName = "SetByResource",
             HelpMessage = "The application security group set as destination for the rule. It cannot be used with 'DestinationAddressPrefix' parameter.")]
         public List<PSApplicationSecurityGroup> DestinationApplicationSecurityGroup { get; set; }
 
         [Parameter(
             Mandatory = false,
+            ParameterSetName = "SetByResourceId",
             HelpMessage = "The application security group set as source for the rule. It cannot be used with 'SourceAddressPrefix' parameter.")]
         public List<string> SourceApplicationSecurityGroupId { get; set; }
 
         [Parameter(
             Mandatory = false,
+            ParameterSetName = "SetByResourceId",
             HelpMessage = "The application security group set as destination for the rule. It cannot be used with 'DestinationAddressPrefix' parameter.")]
         public List<string> DestinationApplicationSecurityGroupId { get; set; }
 

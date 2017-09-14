@@ -13,12 +13,21 @@ Creates a network security rule configuration.
 
 ## SYNTAX
 
+### SetByResource (Default)
 ```
 New-AzureRmNetworkSecurityRuleConfig -Name <String> [-Description <String>] [-Protocol <String>]
  [-SourcePortRange <String>] [-DestinationPortRange <String>] [-SourceAddressPrefix <String>]
  [-DestinationAddressPrefix <String>]
  [-SourceApplicationSecurityGroup <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationSecurityGroup]>]
  [-DestinationApplicationSecurityGroup <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationSecurityGroup]>]
+ [-Access <String>] [-Priority <Int32>] [-Direction <String>] [<CommonParameters>]
+```
+
+### SetByResourceId
+```
+New-AzureRmNetworkSecurityRuleConfig -Name <String> [-Description <String>] [-Protocol <String>]
+ [-SourcePortRange <String>] [-DestinationPortRange <String>] [-SourceAddressPrefix <String>]
+ [-DestinationAddressPrefix <String>]
  [-SourceApplicationSecurityGroupId <System.Collections.Generic.List`1[System.String]>]
  [-DestinationApplicationSecurityGroupId <System.Collections.Generic.List`1[System.String]>] [-Access <String>]
  [-Priority <Int32>] [-Direction <String>] [<CommonParameters>]
@@ -106,7 +115,7 @@ Accept wildcard characters: False
 ### -DestinationApplicationSecurityGroup
 The application security group set as destination for the rule. It cannot be used with 'DestinationAddressPrefix' parameter.```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationSecurityGroup]
-Parameter Sets: (All)
+Parameter Sets: SetByResource
 Aliases: 
 
 Required: False
@@ -119,7 +128,7 @@ Accept wildcard characters: False
 ### -DestinationApplicationSecurityGroupId
 The application security group set as destination for the rule. It cannot be used with 'DestinationAddressPrefix' parameter.```yaml
 Type: System.Collections.Generic.List`1[System.String]
-Parameter Sets: (All)
+Parameter Sets: SetByResourceId
 Aliases: 
 
 Required: False
@@ -246,7 +255,7 @@ Accept wildcard characters: False
 ### -SourceApplicationSecurityGroup
 The application security group set as source for the rule. It cannot be used with 'SourceAddressPrefix' parameter.```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationSecurityGroup]
-Parameter Sets: (All)
+Parameter Sets: SetByResource
 Aliases: 
 
 Required: False
@@ -259,7 +268,7 @@ Accept wildcard characters: False
 ### -SourceApplicationSecurityGroupId
 The application security group set as source for the rule. It cannot be used with 'SourceAddressPrefix' parameter.```yaml
 Type: System.Collections.Generic.List`1[System.String]
-Parameter Sets: (All)
+Parameter Sets: SetByResourceId
 Aliases: 
 
 Required: False
