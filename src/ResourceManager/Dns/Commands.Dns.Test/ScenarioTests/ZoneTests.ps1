@@ -167,7 +167,6 @@ function Test-ZoneCrudPrivateRegistrationVnet
 	$zoneName = Get-RandomZoneName
     $resourceGroup = TestSetup-CreateResourceGroup
 	$virtualNetwork = TestSetup-CreateVirtualNetwork $resourceGroup
-	sleep 60
 
 	$createdZone = New-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Tags @{tag1="value1"} -ZoneType Private -RegistrationVirtualNetworkIds @($virtualNetwork.Id)
 	Assert-NotNull $createdZone
