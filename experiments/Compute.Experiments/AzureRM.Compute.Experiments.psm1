@@ -1,15 +1,18 @@
+<#
+.ExternalHelp AzureRM.Compute.Experiments-help.xml
+#>
 function New-AzVm {
     [CmdletBinding()]
     param (
+        [Parameter(Mandatory=$true)][string] $Name = "VM",
         [Parameter()][PSCredential] $Credential,
-        [Parameter()][string] $Name = "VM",
         [Parameter()][string] $ImageName = "Win2012R2Datacenter",
         [Parameter()][string] $ResourceGroupName,
-        [Parameter()][string] $Location = "eastus",
+        [Parameter()][string] $Location,
         [Parameter()][string] $VirtualNetworkName,
         [Parameter()][string] $PublicIpAddressName,
-        [Parameter()][string] $SecurityGroupName,
-        [Parameter()][string] $NetworkInterfaceName
+        [Parameter()][string] $SecurityGroupName
+        # [Parameter()][string] $NetworkInterfaceName
     )
 
     PROCESS {
@@ -18,7 +21,7 @@ function New-AzVm {
         $piai = [PublicIpAddress]::new($PublicIpAddressName);
         $sgi = [SecurityGroup]::new($SecurityGroupName);
         $nii = [NetworkInterface]::new(
-            $NetworkInterfaceName,
+            $null, # $NetworkInterfaceName,
             $vni,
             $piai,
             $sgi);
@@ -39,7 +42,7 @@ function New-AzVm {
 
         New-PsObject @{
             ResourceId = $resourceGroup.ResourceId;
-            Response = $vmResponse
+            Response = $vmResponse;
         }
     }
 }
