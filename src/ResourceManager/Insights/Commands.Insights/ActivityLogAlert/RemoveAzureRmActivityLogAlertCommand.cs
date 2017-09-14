@@ -26,6 +26,7 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
     {
         internal const string RemoveActivityLogAlertDeafultParamGroup = "Default parameters for remove an activity log alert";
         internal const string RemoveActivityLogAlertFromPipeParamGroup = "Parameters to remove an activity log alerts taking value from the pipe";
+        internal const string RemoveActivityLogAlertFromResourceIdParamGroup = "Parameters to remove an activity log alerts taking the value of ResourceId from the pipe";
 
         #region Parameter declaration
 
@@ -51,10 +52,11 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
         public PSActivityLogAlertResource InputObject { get; set; }
 
         /// <summary>
-        /// Gets or sets the Force flag of the cmdlet
+        /// Gets or sets the ResourceId parameter of the cmdlet
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The force parameter required by the implementation of ShouldProcess")]
-        public SwitchParameter Force { get; set; }
+        [Parameter(ParameterSetName = RemoveActivityLogAlertFromResourceIdParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource Id from the pipe by property name")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
 
         #endregion
 
@@ -75,6 +77,13 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
                 {
                     ActivityLogAlertUtilities.ProcessPipeObject(
                         inputObject: this.InputObject,
+                        resourceGroupName: out resourceGroupName,
+                        activityLogAlertName: out activityLogAlertName);
+                }
+                else if (this.MyInvocation.BoundParameters.ContainsKey("ResourceId") || !string.IsNullOrWhiteSpace(this.ResourceId))
+                {
+                    ActivityLogAlertUtilities.ProcessPipeObject(
+                        resourceId: this.ResourceId,
                         resourceGroupName: out resourceGroupName,
                         activityLogAlertName: out activityLogAlertName);
                 }

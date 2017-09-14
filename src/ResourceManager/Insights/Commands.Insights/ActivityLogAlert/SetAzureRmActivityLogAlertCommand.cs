@@ -15,7 +15,6 @@
 using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Management.Monitor.Management;
 using Microsoft.Azure.Management.Monitor.Management.Models;
-using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 
@@ -91,12 +90,6 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The tags of the activity log alert resource")]
         [ValidateNotNullOrEmpty]
         public Dictionary<string, string> Tag { get; set; }
-
-        /// <summary>
-        /// Gets or sets the Force flag of the cmdlet
-        /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The force parameter required by the implementation of ShouldProcess")]
-        public SwitchParameter Force { get; set; }
 
         #endregion
 

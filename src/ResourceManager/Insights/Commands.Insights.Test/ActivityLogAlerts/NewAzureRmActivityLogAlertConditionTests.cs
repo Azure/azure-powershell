@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActivityLogAlerts
 
         public NewAzureRmActivityLogAlertConditionTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            //ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             commandRuntimeMock = new Mock<ICommandRuntime>();
             Cmdlet = new NewAzureRmActivityLogAlertConditionCommand()
             {

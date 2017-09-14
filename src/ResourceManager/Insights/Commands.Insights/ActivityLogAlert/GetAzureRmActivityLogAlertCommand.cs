@@ -26,19 +26,23 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
     [Cmdlet(VerbsCommon.Get, "AzureRmActivityLogAlert"), OutputType(typeof(List<PSActivityLogAlertResource>))]
     public class GetAzureRmActivityLogAlertCommand : ManagementCmdletBase
     {
+        internal const string GetActivityLogAlertDeafultParamGroup = "Default parameters for get an activity log alert";
+        internal const string GetActivityLogAlertHelperParamGroup = "Parameters to make sure the resource group is given when the name is given";
+
         #region Cmdlet parameters
 
         /// <summary>
         /// Gets or sets the ResourceGroupName parameter of the cmdlet
         /// </summary>
-        [Parameter(Position = 0, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
+        [Parameter(ParameterSetName = GetActivityLogAlertDeafultParamGroup, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
+        [Parameter(ParameterSetName = GetActivityLogAlertHelperParamGroup, Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets the rule name parameter of the cmdlet
         /// </summary>
-        [Parameter(Position = 1, ValueFromPipelineByPropertyName = true, HelpMessage = "The activity log alert name")]
+        [Parameter(ParameterSetName = GetActivityLogAlertDeafultParamGroup, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The activity log alert name")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -58,10 +62,6 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
                     output = this.MonitorManagementClient.ActivityLogAlerts.ListBySubscriptionId()
                         .Select(e => new PSActivityLogAlertResource(e))
                         .ToList();
-                }
-                else
-                {
-                    throw new PSArgumentException("Resource group name cannot be null or empty when name is not");
                 }
             }
             else

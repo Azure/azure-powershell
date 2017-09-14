@@ -13,7 +13,7 @@ Disables an activity log alert and sets its tags.
 ## SYNTAX
 
 ```
-Disable-AzureRmActivityLogAlert [-InputObject <PSActivityLogAlertResource>] [-Name <String> -ResourceGroupName <String> 
+Disable-AzureRmActivityLogAlert [-InputObject <PSActivityLogAlertResource>] [-ResourceId <String>] [-Name <String> -ResourceGroupName <String> 
  [-Tag <System.Collections.Generic.Dictionary`1[<string>, <string>]>]] [<CommonParameters>]
 ```
 
@@ -52,6 +52,16 @@ PS C:\>Disable-AzureRmActivityLogAlert -InputObject $obj
 ```
 
 This command changes the tags property of the activity log alert called alert1. For this it uses a PSActivityLogAlertResource object as input argument.
+
+### Example 4: Disable the ActivityLogAlert using the ResourceId parameter
+```
+
+PS C:\>Find-AzureRmResource -ResourceGroupEquals "myResourceGroup" -ResourceNameEquals "myLogAlert" | Disable-AzureRmActivityLogAlert
+
+```
+
+This command disables the ActivityLogAlert using the ResourceId parameter from the pipe.
+
 
 ## PARAMETERS
 
@@ -115,8 +125,23 @@ Accept pipeline input: True (FromPipeline)
 Accept wildcard characters: False
 ```
 
+### -ResourceId
+Sets the ResourceId tags property of the call to extract the required name, resource group name properties.
+
+```yaml
+Type: System.String
+Parameter Sets: DisableActivityLogAlertFromResourceIdParamGroup
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### CommonParameters
-This cmdlet supports the common parameters: -Force, -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -26,21 +26,21 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, "Scenario")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzureLogAllParameters()
         {
             TestsController.NewInstance.RunPsTest("Test-GetAzureLogAllParameters");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, "Scenario")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzureSubscriptionIdLogMaxEvents()
         {
             TestsController.NewInstance.RunPsTest("Test-GetAzureSubscriptionIdLogMaxEvents");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, "Scenario")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzureSubscriptionIdLogPaged()
         {
             TestsController.NewInstance.RunPsTest("Test-GetAzureSubscriptionIdLogPaged");

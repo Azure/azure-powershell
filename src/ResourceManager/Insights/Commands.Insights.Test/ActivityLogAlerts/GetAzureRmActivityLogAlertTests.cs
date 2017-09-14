@@ -40,8 +40,8 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActivityLogAlerts
 
         public GetAzureRmActivityLogAlertTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             TestExecutionHelpers.SetUpSessionAndProfile();
-            //ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             insightsOperationsMock = new Mock<IActivityLogAlertsOperations>();
             insightsManagementClientMock = new Mock<MonitorManagementClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
@@ -106,11 +106,6 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActivityLogAlerts
 
             Assert.Equal(Utilities.ResourceGroup, this.resourceGroup);
             Assert.Equal(Utilities.Name, this.name);
-
-            // Error
-            cmdlet.ResourceGroupName = "   ";
-            cmdlet.Name = Utilities.Name;
-            Assert.Throws<PSArgumentException>(() => cmdlet.ExecuteCmdlet());
         }
     }
 }
