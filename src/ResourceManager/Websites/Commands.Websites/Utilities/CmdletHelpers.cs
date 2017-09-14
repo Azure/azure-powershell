@@ -191,6 +191,11 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             {
                 sku = "D";
             }
+            else if (string.Equals("PremiumV2", tier, StringComparison.OrdinalIgnoreCase))
+            {
+                sku = "P" + workerSize + "V2";
+                return sku;
+            }
             else
             {
                 sku = string.Empty + tier[0];
@@ -206,6 +211,11 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             if (string.Equals("Shared", tier, StringComparison.OrdinalIgnoreCase))
             {
                 sku = "D";
+            }
+            else if (string.Equals("PremiumV2", tier, StringComparison.OrdinalIgnoreCase))
+            {
+                sku = "P" + WorkerSizes[workerSize] + "V2";
+                return sku;
             }
             else
             {
