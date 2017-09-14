@@ -62,5 +62,12 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         {
             ResourcesController.NewInstance.RunPsTest("Test-PolicySetDefinitionCRUD");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPolicyDefinitionWithUri()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-PolicyDefinitionWithUri");
+        }
     }
 }
