@@ -22,20 +22,22 @@ function Test-PolicyDefinitionCRUD
 	$policyName = Get-ResourceName
 
 	# Test
-	$actual = New-AzureRMPolicyDefinition -Name $policyName -Policy "$TestOutputRoot\SamplePolicyDefinition.json"
+	$actual = New-AzureRMPolicyDefinition -Name $policyName -Policy "$TestOutputRoot\SamplePolicyDefinition.json" -Mode Indexed
 	$expected = Get-AzureRMPolicyDefinition -Name $policyName
 	Assert-AreEqual $expected.Name $actual.Name
 	Assert-AreEqual $expected.PolicyDefinitionId $actual.PolicyDefinitionId
 	Assert-NotNull($actual.Properties.PolicyRule)
+	Assert-AreEqual $expected.Properties.Mode $actual.Properties.Mode
 
-	$actual = Set-AzureRMPolicyDefinition -Name $policyName -DisplayName testDisplay -Description testDescription -Policy ".\SamplePolicyDefinition.json"
+	$actual = Set-AzureRMPolicyDefinition -Name $policyName -DisplayName testDisplay -Description testDescription -Policy ".\SamplePolicyDefinition.json" -Metadata "{""test"":""test""}"
 	$expected = Get-AzureRMPolicyDefinition -Name $policyName
 	Assert-AreEqual $expected.Properties.DisplayName $actual.Properties.DisplayName
 	Assert-AreEqual $expected.Properties.Description $actual.Properties.Description
+	Assert-NotNull($actual.Properties.Metadata)
 
 	New-AzureRMPolicyDefinition -Name test2 -Policy "{""if"":{""source"":""action"",""equals"":""blah""},""then"":{""effect"":""deny""}}"
 	$list = Get-AzureRMPolicyDefinition
-	Assert-AreEqual 2 @($list).Count
+	Assert-True { $list.Count -ge 2}
 
 	$remove = Remove-AzureRMPolicyDefinition -Name $policyName -Force
 	Assert-AreEqual True $remove
