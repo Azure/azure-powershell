@@ -674,9 +674,6 @@ Sets configuration for an array of URL path mappings to a backend server pool.
 ### [Set-AzureRmApplicationGatewayWebApplicationFirewallConfiguration](Set-AzureRmApplicationGatewayWebApplicationFirewallConfiguration.md)
 Modifies the WAF configuration of an application gateway.
 
-### [Set-AzureRmApplicationSecurityGroup](Set-AzureRmApplicationSecurityGroup.md)
-Sets the goal state for an application security group.
-
 ### [Set-AzureRmExpressRouteCircuit](Set-AzureRmExpressRouteCircuit.md)
 Modifies an ExpressRoute circuit.
 
