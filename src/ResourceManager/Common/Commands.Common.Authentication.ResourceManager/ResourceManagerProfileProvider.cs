@@ -15,6 +15,8 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
@@ -34,6 +36,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         public override void SetTokenCacheForProfile(IAzureContextContainer profile)
         {
             base.SetTokenCacheForProfile(profile);
+            if (profile.HasTokenCache())
+            {
+                var cache = TokenCache.DefaultShared;
+                cache.Deserialize(profile.GetTokenCache().CacheData);
+                AzureSession.Instance.TokenCache = new AuthenticationStoreTokenCache(cache);
+            }
         }
 
         public override T GetProfile<T>()
@@ -61,6 +69,5 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         {
             SetInstance(() => new ResourceManagerProfileProvider(), overwrite);
         }
-
     }
 }

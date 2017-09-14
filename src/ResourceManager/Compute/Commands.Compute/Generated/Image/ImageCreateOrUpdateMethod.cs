@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
             ExecuteClientAction(() =>
             {
-                if (ShouldProcess(this.ResourceGroupName, VerbsCommon.New))
+                if (ShouldProcess(this.ImageName, VerbsCommon.New))
                 {
                     string resourceGroupName = this.ResourceGroupName;
                     string imageName = this.ImageName;
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
             ExecuteClientAction(() =>
             {
-                if (ShouldProcess(this.ResourceGroupName, VerbsData.Update))
+                if (ShouldProcess(this.ImageName, VerbsData.Update))
                 {
                     string resourceGroupName = this.ResourceGroupName;
                     string imageName = this.ImageName;
