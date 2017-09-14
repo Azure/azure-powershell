@@ -180,7 +180,6 @@
     <Compile Include="ApplicationSecurityGroup\GetAzureRMApplicationSecurityGroupListCommand.cs" />
     <Compile Include="ApplicationSecurityGroup\NewAzureRMApplicationSecurityGroupCommand.cs" />
     <Compile Include="ApplicationSecurityGroup\RemoveAzureRMApplicationSecurityGroupCommand.cs" />
-    <Compile Include="ApplicationSecurityGroup\SetAzureRMApplicationSecurityGroupCommand.cs" />
     <Compile Include="Common\ListNextLink.cs" />
     <Compile Include="Common\NetworkBaseCmdlet.cs" />
     <Compile Include="Common\NetworkClient.cs" />

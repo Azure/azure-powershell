@@ -303,7 +303,6 @@ CmdletsToExport = 'Add-AzureRmApplicationGatewayAuthenticationCertificate',
                'Get-AzureRmVirtualNetworkUsageList',
                'Get-AzureRmVirtualNetworkAvailableEndpointService',
                'New-AzureRmApplicationSecurityGroup',
-               'Set-AzureRmApplicationSecurityGroup',
                'Remove-AzureRmApplicationSecurityGroup',
                'Get-AzureRmApplicationSecurityGroup'
 
