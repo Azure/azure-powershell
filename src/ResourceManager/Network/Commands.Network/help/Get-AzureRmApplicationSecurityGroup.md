@@ -12,14 +12,8 @@ Gets an application security group.
 
 ## SYNTAX
 
-### NoExpand
 ```
-Get-AzureRmApplicationSecurityGroup [-Name <String>] [-ResourceGroupName <String>] [<CommonParameters>]
-```
-
-### Expand
-```
-Get-AzureRmApplicationSecurityGroup -Name <String> -ResourceGroupName <String> [<CommonParameters>]
+Get-AzureRmApplicationSecurityGroup [-ResourceGroupName <String>] [-Name <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,22 +35,10 @@ The resource name.
 
 ```yaml
 Type: String
-Parameter Sets: NoExpand
+Parameter Sets: (All)
 Aliases: ResourceName
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: String
-Parameter Sets: Expand
-Aliases: ResourceName
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -68,22 +50,10 @@ The resource group name.
 
 ```yaml
 Type: String
-Parameter Sets: NoExpand
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: String
-Parameter Sets: Expand
-Aliases: 
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
