@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Management.DataLake.Analytics.Models;
 using System;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
 {
@@ -21,15 +22,21 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
     ///    A wrapper for all ADLA supported data sources.
     ///    This object is returned from a GET
     /// </summary>
-    [Obsolete("This class will be deprecated in a future release.")]
-    public class PSStorageAccountInfoProperties
+    public class PSDataLakeAnalyticsAccountBasic : DataLakeAnalyticsAccountBasic
     {
-        public string AccessKey { get; set; }
-        public string Suffix { get; set; }
-        public PSStorageAccountInfoProperties(string accessKey, string suffix)
-        {
-            AccessKey = accessKey;
-            Suffix = suffix;
-        }
+        public PSDataLakeAnalyticsAccountBasic(DataLakeAnalyticsAccountBasic baseAccount) :
+            base(
+                baseAccount.Location,
+                baseAccount.Id,
+                baseAccount.Name,
+                baseAccount.Type,
+                baseAccount.Tags,
+                baseAccount.ProvisioningState,
+                baseAccount.State,
+                baseAccount.CreationTime,
+                baseAccount.LastModifiedTime,
+                baseAccount.Endpoint,
+                baseAccount.AccountId)
+        { }
     }
 }
