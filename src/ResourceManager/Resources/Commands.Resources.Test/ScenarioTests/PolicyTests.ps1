@@ -46,6 +46,28 @@ function Test-PolicyDefinitionCRUD
 
 <#
 .SYNOPSIS
+Tests Policy definition with uri
+#>
+function Test-PolicyDefinitionWithUri
+{
+	# Setup
+	$policyName = Get-ResourceName
+
+	# Test
+	$actual = New-AzureRMPolicyDefinition -Name $policyName -Policy "https://raw.githubusercontent.com/vivsriaus/armtemplates/master/policyDef.json" -Mode All
+	$expected = Get-AzureRMPolicyDefinition -Name $policyName
+	Assert-AreEqual $expected.Name $actual.Name
+	Assert-AreEqual $expected.PolicyDefinitionId $actual.PolicyDefinitionId
+	Assert-NotNull($actual.Properties.PolicyRule)
+	Assert-AreEqual $expected.Properties.Mode $actual.Properties.Mode
+
+	$remove = Remove-AzureRMPolicyDefinition -Name $policyName -Force
+	Assert-AreEqual True $remove
+
+}
+
+<#
+.SYNOPSIS
 Tests Policy assignment CRUD operations
 #>
 function Test-PolicyAssignmentCRUD
