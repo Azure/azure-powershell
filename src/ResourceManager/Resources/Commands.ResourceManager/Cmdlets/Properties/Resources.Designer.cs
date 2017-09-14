@@ -313,6 +313,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The provided file {0} doesn&apos;t exist.
+        /// </summary>
+        internal static string InvalidFilePath {
+            get {
+                return ResourceManager.GetString("InvalidFilePath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid format of the resource group identifier. Expected &apos;subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}&apos;..
         /// </summary>
         internal static string InvalidFormatOfResourceGroupId {
@@ -392,7 +401,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
                 return ResourceManager.GetString("InvalidUriContent", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Please make sure the uri starts with http:// or https://..
         /// </summary>
@@ -401,7 +410,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
                 return ResourceManager.GetString("InvalidUriScheme", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to The specified uri string {0} is invalid..
         /// </summary>
@@ -410,7 +419,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
                 return ResourceManager.GetString("InvalidUriString", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Invoking the &apos;{0}&apos; action on the resource..
         /// </summary>
