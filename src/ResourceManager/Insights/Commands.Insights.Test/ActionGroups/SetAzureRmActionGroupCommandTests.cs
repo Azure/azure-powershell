@@ -32,6 +32,10 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActionGroups
     public class AddAzureRmActionGroupTests
     {
         private const string Location = "Global";
+
+        private const string ResourceId =
+            "/subscriptions/7de05d20-f39f-44d8-83ca-e7d2f12118b0/resourceGroups/testResourceGroup/providers/microsoft.insights/actionGroups/ActionGroupName";
+
         private readonly SetAzureRmActionGroupCommand cmdlet;
         private readonly Mock<MonitorManagementClient> insightsManagementClientMock;
         private readonly Mock<IActionGroupsOperations> insightsOperationsMock;
@@ -54,9 +58,12 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActionGroups
             };
 
             response = new AzureOperationResponse<ActionGroupResource>()
-            {
-                Body = new ActionGroupResource()
-            };
+                       {
+                           Body =
+                               ActionGroupsUtilities.CreateActionGroupResource(
+                                   name: "ActionGroupName",
+                                   shortName: "AgShortName")
+                       };
 
             insightsOperationsMock.Setup(f => f.CreateOrUpdateWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<ActionGroupResource>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))
                 .Returns(Task.FromResult(response))
