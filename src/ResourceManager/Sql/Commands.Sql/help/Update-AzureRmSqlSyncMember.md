@@ -62,21 +62,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MemberDatabaseCredential
-The credential (username and password) of the Azure SQL Database.
-
-```yaml
-Type: PSCredential
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DatabaseName
 The name of the Azure SQL Database.
 
@@ -89,6 +74,21 @@ Required: True
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -MemberDatabaseCredential
+The credential (username and password) of the Azure SQL Database.
+
+```yaml
+Type: PSCredential
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
