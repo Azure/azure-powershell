@@ -12,22 +12,26 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.DataLake.Analytics.Models;
+using Microsoft.Azure.Management.DataLake.Store.Models;
 using System;
 
-namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
+namespace Microsoft.Azure.Commands.DataLakeStore.Models
 {
-    /// <summary>
-    ///    A wrapper for all ADLA supported data sources.
-    ///    This object is returned from a GET
-    /// </summary>
-    [Obsolete("This class will be deprecated in a future release.")]
-    public class PSDataLakeStoreAccountInfoProperties
+    public class PSDataLakeStoreAccountBasic : DataLakeStoreAccountBasic
     {
-        public string Suffix { get; set; }
-        public PSDataLakeStoreAccountInfoProperties(string suffix)
-        {
-            Suffix = suffix;
-        }
+        public PSDataLakeStoreAccountBasic (DataLakeStoreAccountBasic baseAccount) :
+            base(
+                baseAccount.Location,
+                baseAccount.Id,
+                baseAccount.Name,
+                baseAccount.Type,
+                baseAccount.Tags,
+                baseAccount.ProvisioningState,
+                baseAccount.State,
+                baseAccount.CreationTime,
+                baseAccount.LastModifiedTime,
+                baseAccount.Endpoint,
+                baseAccount.AccountId)
+        { }
     }
 }

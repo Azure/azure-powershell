@@ -358,11 +358,11 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
             }
 
             JobType jobType;
-            JobProperties properties;
+            CreateJobProperties properties;
             if (USql)
             {
                 jobType = JobType.USql;
-                var sqlIpProperties = new USqlJobProperties
+                var sqlIpProperties = new CreateUSqlJobProperties
                 {
                     Script = Script
                 };
@@ -388,40 +388,53 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                 throw new CloudException(Resources.InvalidJobType);
             }
 
-            var jobInfo = new JobInformation
-            (
-                jobId: DataLakeAnalyticsClient.JobIdQueue.Count == 0 ? Guid.NewGuid() : DataLakeAnalyticsClient.JobIdQueue.Dequeue(),
-                name: Name,
-                properties: properties,
-                type: jobType,
-                degreeOfParallelism: DegreeOfParallelism,
-                priority: Priority
-            );
-
-            if (ParameterSetName.Equals(USqlJobParameterSetNameAndRecurrence) ||
-                    ParameterSetName.Equals(USqlJobParameterSetNameAndPipeline) ||
-                    ParameterSetName.Equals(USqlJobWithScriptPathAndRecurrence) ||
-                    ParameterSetName.Equals(USqlJobWithScriptPathAndPipeline))
+            if (CompileOnly)
             {
-                jobInfo.Related = new JobRelationshipProperties
+                var buildJobParameters = new BuildJobParameters
                 {
-                    RecurrenceId = RecurrenceId,
-                    RecurrenceName = RecurrenceName
+                    Type = jobType,
+                    Name = Name,
+                    Properties = properties
                 };
 
-                if (ParameterSetName.Equals(USqlJobParameterSetNameAndPipeline) ||
-                    ParameterSetName.Equals(USqlJobWithScriptPathAndPipeline))
-                {
-                    jobInfo.Related.PipelineId = PipelineId;
-                    jobInfo.Related.PipelineName = PipelineName;
-                    jobInfo.Related.PipelineUri = PipelineUri;
-                    jobInfo.Related.RunId = RunId;
-                }
+                WriteObject(DataLakeAnalyticsClient.BuildJob(Account, buildJobParameters));
             }
+            else
+            {
+                var jobId = DataLakeAnalyticsClient.JobIdQueue.Count == 0 ? Guid.NewGuid() : DataLakeAnalyticsClient.JobIdQueue.Dequeue();
 
-            WriteObject(CompileOnly
-                ? DataLakeAnalyticsClient.BuildJob(Account, jobInfo)
-                : DataLakeAnalyticsClient.SubmitJob(Account, jobInfo));
+                var createJobParameters = new CreateJobParameters
+                {
+                    Type = jobType,
+                    Name = Name,
+                    DegreeOfParallelism = DegreeOfParallelism,
+                    Priority = Priority,
+                    Properties = properties,
+                };
+
+                if (ParameterSetName.Equals(USqlJobParameterSetNameAndRecurrence) ||
+                        ParameterSetName.Equals(USqlJobParameterSetNameAndPipeline) ||
+                        ParameterSetName.Equals(USqlJobWithScriptPathAndRecurrence) ||
+                        ParameterSetName.Equals(USqlJobWithScriptPathAndPipeline))
+                {
+                    createJobParameters.Related = new JobRelationshipProperties
+                    {
+                        RecurrenceId = RecurrenceId,
+                        RecurrenceName = RecurrenceName
+                    };
+
+                    if (ParameterSetName.Equals(USqlJobParameterSetNameAndPipeline) ||
+                        ParameterSetName.Equals(USqlJobWithScriptPathAndPipeline))
+                    {
+                        createJobParameters.Related.PipelineId = PipelineId;
+                        createJobParameters.Related.PipelineName = PipelineName;
+                        createJobParameters.Related.PipelineUri = PipelineUri;
+                        createJobParameters.Related.RunId = RunId;
+                    }
+                }
+
+                WriteObject(DataLakeAnalyticsClient.SubmitJob(Account, jobId, createJobParameters));
+            }
         }
     }
 }
