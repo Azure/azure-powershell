@@ -21,6 +21,8 @@ using Microsoft.Azure.Management.Monitor.Models;
 
 namespace Microsoft.Azure.Commands.Insights
 {
+    using System.Linq;
+
     /// <summary>
     /// Static class contaning common functions
     /// </summary>
@@ -72,6 +74,27 @@ namespace Microsoft.Azure.Commands.Insights
                     records.Add(fullDetails ? (IPSEventData)new PSEventData(current) : (IPSEventData)new PSEventDataNoDetails(current));
                 }
             }
+        }
+
+        public static string GetResourceGroupFromId(string resourceId)
+        {
+            const string resourceGroup = "resourceGroups";
+
+            var startIndex = resourceId.IndexOf(resourceGroup, StringComparison.OrdinalIgnoreCase) + resourceGroup.Length + 1;
+            var endIndex = resourceId.IndexOf("/", startIndex, StringComparison.OrdinalIgnoreCase);
+
+            return resourceId.Substring(startIndex, endIndex - startIndex);
+        }
+
+        public static string GetResourceNameFromId(string resourceId)
+        {
+            if (string.IsNullOrWhiteSpace(resourceId))
+            {
+                return null;
+            }
+
+            var parts = resourceId.Split('/');
+            return parts.LastOrDefault();
         }
     }
 }

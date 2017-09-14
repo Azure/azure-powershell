@@ -33,6 +33,8 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
     {
         private const string ByPropertyName = "ByPropertyName";
 
+        private const string ByResourceId = "ByResourceId";
+
         private const string ByInputObject = "ByInputObject";
 
         #region Cmdlet parameters
@@ -42,7 +44,7 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
         /// </summary>
         [Parameter(ParameterSetName = ByPropertyName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroup { get; set; }
+        public string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets the action group name parameter.
@@ -55,6 +57,7 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
         /// Gets or sets the action group short name parameter.
         /// </summary>
         [Parameter(ParameterSetName = ByPropertyName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The action group short name")]
+        [Parameter(ParameterSetName = ByResourceId, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The action group short name")]
         [ValidateNotNullOrEmpty]
         public string ShortName { get; set; }
 
@@ -62,20 +65,30 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
         /// Gets or sets the list of email receivers.
         /// </summary>
         [Parameter(ParameterSetName = ByPropertyName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of receivers")]
+        [Parameter(ParameterSetName = ByResourceId, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of receivers")]
         public List<PSActionGroupReceiverBase> Receiver { get; set; }
 
         /// <summary>
         /// Gets or sets the DisableGroup flag.
         /// </summary>
         [Parameter(ParameterSetName = ByPropertyName, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Whether or not the action group should be enabled")]
+        [Parameter(ParameterSetName = ByResourceId, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Whether or not the action group should be enabled")]
         public SwitchParameter DisableGroup { get; set; }
 
         /// <summary>
         /// Gets or sets the Tags of the activity log alert resource
         /// </summary>
         [Parameter(ParameterSetName = ByPropertyName, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The tags of the action group resource")]
+        [Parameter(ParameterSetName = ByResourceId, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Whether or not the action group should be enabled")]
         [ValidateNotNullOrEmpty]
-        public IDictionary<string, string> Tags { get; set; }
+        public IDictionary<string, string> Tag { get; set; }
+
+        /// <summary>
+        /// Gets or sets the resource id parameter.
+        /// </summary>
+        [Parameter(ParameterSetName = ByResourceId, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource id")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
 
         [Parameter(ParameterSetName = ByInputObject, Mandatory = true, ValueFromPipeline = true, HelpMessage = "The action group resource")]
         public PSActionGroupResource InputObject { get; set; }
@@ -89,19 +102,24 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
         {
             if (
                 ShouldProcess(
-                    target: string.Format("Add/update action group: {0} from resource group: {1}", this.Name, this.ResourceGroup),
+                    target: string.Format("Add/update action group: {0} from resource group: {1}", this.Name, this.ResourceGroupName),
                     action: "Add/update action group"))
             {
                 if (ParameterSetName == ByInputObject)
                 {
-                    this.ResourceGroup = this.InputObject.ResourceGroup;
+                    this.ResourceGroupName = this.InputObject.ResourceGroupName;
                     this.ShortName = this.InputObject.GroupShortName;
                     this.DisableGroup = !this.InputObject.Enabled;
-                    this.Tags = this.InputObject.Tags;
+                    this.Tag = this.InputObject.Tags;
                     this.Receiver = new List<PSActionGroupReceiverBase>();
                     this.Receiver.AddRange(this.InputObject.EmailReceivers);
                     this.Receiver.AddRange(this.InputObject.SmsReceivers);
                     this.Receiver.AddRange(this.InputObject.WebhookReceivers);
+                }
+                else if (ParameterSetName == ByResourceId)
+                {
+                    this.ResourceGroupName = Utilities.GetResourceGroupFromId(this.ResourceId);
+                    this.Name = Utilities.GetResourceNameFromId(this.ResourceId);
                 }
 
                 IList<EmailReceiver> emailReceivers =
@@ -118,7 +136,7 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
                                                       Location = "Global",
                                                       GroupShortName = this.ShortName,
                                                       Enabled = !this.DisableGroup.IsPresent || !this.DisableGroup,
-                                                      Tags = this.Tags,
+                                                      Tags = this.Tag,
                                                       EmailReceivers = emailReceivers,
                                                       SmsReceivers = smsReceivers,
                                                       WebhookReceivers = webhookReceivers
@@ -127,10 +145,9 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
                 WriteObject(
                     new PSActionGroupResource(
                         this.MonitorManagementClient.ActionGroups.CreateOrUpdate(
-                            resourceGroupName: this.ResourceGroup,
+                            resourceGroupName: this.ResourceGroupName,
                             actionGroupName: this.Name,
-                            actionGroup: actionGroup),
-                        this.ResourceGroup));
+                            actionGroup: actionGroup)));
             }
         }
     }

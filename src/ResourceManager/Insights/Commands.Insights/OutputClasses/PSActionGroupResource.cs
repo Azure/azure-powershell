@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
     public class PSActionGroupResource : Resource
     {
         /// <summary>Gets or sets resource group</summary>
-        public string ResourceGroup { get; set; }
+        public string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets the short name of the action group. This will be used
@@ -65,8 +65,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
 
         /// <summary>Initializes a new instance of the PSActionGroup class.</summary>
         /// <param name="actionGroupResource">the action group resource</param>
-        /// <param name="resourceGroup">resource group of the action group</param>
-        public PSActionGroupResource(ActionGroupResource actionGroupResource, string resourceGroup)
+        public PSActionGroupResource(ActionGroupResource actionGroupResource)
             : base(
                 location: actionGroupResource.Location,
                 id: actionGroupResource.Id,
@@ -74,7 +73,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
                 type: actionGroupResource.Type,
                 tags: actionGroupResource.Tags)
         {
-            this.ResourceGroup = resourceGroup;
+            this.ResourceGroupName = Utilities.GetResourceGroupFromId(actionGroupResource.Id);
             GroupShortName = actionGroupResource.GroupShortName;
             Enabled = actionGroupResource.Enabled;
             EmailReceivers = actionGroupResource.EmailReceivers?.Select(o => new PSEmailReceiver(o)).ToList();

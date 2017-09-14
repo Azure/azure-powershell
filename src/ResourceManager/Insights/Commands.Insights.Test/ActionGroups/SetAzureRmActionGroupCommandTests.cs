@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActionGroups
         public void SetActionGroupCommandParametersProcessing()
         {
             cmdlet.Name = "ActionGroupName";
-            cmdlet.ResourceGroup = Utilities.ResourceGroup;
+            cmdlet.ResourceGroupName = Utilities.ResourceGroup;
             cmdlet.ShortName = "AgShortName";
             cmdlet.Receiver = new List<PSActionGroupReceiverBase>
             {
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActionGroups
             Assert.Null(this.createOrUpdatePrms.Tags);
 
             cmdlet.DisableGroup = true;
-            cmdlet.Tags = new Dictionary<string, string>();
+            cmdlet.Tag = new Dictionary<string, string>();
             cmdlet.ExecuteCmdlet();
 
             Assert.False(this.createOrUpdatePrms.Enabled);

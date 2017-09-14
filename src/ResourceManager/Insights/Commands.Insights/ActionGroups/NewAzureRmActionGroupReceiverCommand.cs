@@ -24,24 +24,16 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
     /// <summary>
     /// Create an ActionGroup receiver
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmActionGroupReceiver"), OutputType(typeof(PSActionGroupReceiverBase))]
+    [Cmdlet(VerbsCommon.New, "AzureRmActionGroupReceiver"), OutputType(typeof(PSActionGroupReceiverBase)), CmdletBinding(DefaultParameterSetName = NewEmailReceiver)]
     public class NewAzureRmActionGroupReceiverCommand : AzureRMCmdlet
     {
-        private const string EmailReceiver = "Email";
+        private const string NewEmailReceiver = "NewEmailReceiver";
 
-        private const string SmsReceiver = "Sms";
+        private const string NewSmsReceiver = "NewSmsReceiver";
 
-        private const string WebhookReceiver = "Webhook";
+        private const string NewWebhookReceiver = "NewWebhookReceiver";
 
         #region Cmdlet parameters
-
-        /// <summary>
-        /// Gets or sets the Type parameter
-        /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The type of the receiver")]
-        [ValidateNotNullOrEmpty]
-        [ValidateSet(EmailReceiver, SmsReceiver, WebhookReceiver, IgnoreCase = true)]
-        public string Type { get; set; }
 
         /// <summary>
         /// Gets or sets the Name parameter
@@ -51,30 +43,48 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
         public string Name { get; set; }
 
         /// <summary>
+        /// Gets or sets email receiver SwitchParameter
+        /// </summary>
+        [Parameter(ParameterSetName = NewEmailReceiver, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Create a email receiver")]
+        public SwitchParameter EmailReceiver { get; set; }
+
+        /// <summary>
         /// Gets or sets the EmailAddress parameter
         /// </summary>
-        [Parameter(ParameterSetName = EmailReceiver, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The address of the email receiver")]
+        [Parameter(ParameterSetName = NewEmailReceiver, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The address of the email receiver")]
         [ValidateNotNullOrEmpty]
         public string EmailAddress { get; set; }
 
         /// <summary>
+        /// Gets or sets sms receiver SwitchParameter
+        /// </summary>
+        [Parameter(ParameterSetName = NewSmsReceiver, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Create a sms receiver")]
+        public SwitchParameter SmsReceiver { get; set; }
+
+        /// <summary>
         /// Gets or sets the CountryCode parameter
         /// </summary>
-        [Parameter(ParameterSetName = SmsReceiver, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The country code of the sms receiver")]
+        [Parameter(ParameterSetName = NewSmsReceiver, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The country code of the sms receiver")]
         [ValidateNotNullOrEmpty]
         public string CountryCode { get; set; } = "1";
 
         /// <summary>
         /// Gets or sets the CountryCode parameter
         /// </summary>
-        [Parameter(ParameterSetName = SmsReceiver, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The phone number of the sms receiver")]
+        [Parameter(ParameterSetName = NewSmsReceiver, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The phone number of the sms receiver")]
         [ValidateNotNullOrEmpty]
         public string PhoneNumber { get; set; }
 
         /// <summary>
+        /// Gets or sets webhook receiver SwitchParameter
+        /// </summary>
+        [Parameter(ParameterSetName = NewWebhookReceiver, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Create a webhook receiver")]
+        public SwitchParameter WebhookReceiver { get; set; }
+
+        /// <summary>
         /// Gets or sets the EmailAddress parameter
         /// </summary>
-        [Parameter(ParameterSetName = WebhookReceiver, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The address of the webhook receiver")]
+        [Parameter(ParameterSetName = NewWebhookReceiver, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The address of the webhook receiver")]
         [ValidateNotNullOrEmpty]
         public string ServiceUri { get; set; }
 
@@ -86,15 +96,15 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
         public override void ExecuteCmdlet()
         {
             PSActionGroupReceiverBase receiverBase = null;
-            if (Type.Equals(EmailReceiver, StringComparison.OrdinalIgnoreCase))
+            if (this.EmailReceiver.IsPresent)
             {
                 receiverBase = new PSEmailReceiver { Name = Name, EmailAddress = EmailAddress };
             }
-            else if (Type.Equals(SmsReceiver, StringComparison.OrdinalIgnoreCase))
+            else if (this.SmsReceiver.IsPresent)
             {
                 receiverBase = new PSSmsReceiver { Name = Name, CountryCode = CountryCode, PhoneNumber = PhoneNumber };
             }
-            else if (Type.Equals(WebhookReceiver, StringComparison.OrdinalIgnoreCase))
+            else if (this.WebhookReceiver.IsPresent)
             {
                 receiverBase = new PSWebhookReceiver { Name = Name, ServiceUri = ServiceUri };
             }

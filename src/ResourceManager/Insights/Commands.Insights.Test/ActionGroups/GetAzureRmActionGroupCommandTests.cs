@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActionGroups
             cmdlet.ExecuteCmdlet();
 
             // Get by resource group
-            cmdlet.ResourceGroup = Utilities.ResourceGroup;
+            cmdlet.ResourceGroupName = Utilities.ResourceGroup;
             cmdlet.ExecuteCmdlet();
 
             Assert.Equal(Utilities.ResourceGroup, this.resourceGroup);
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActionGroups
             Assert.Equal(Utilities.Name, this.name);
 
             // Error
-            cmdlet.ResourceGroup = "   ";
+            cmdlet.ResourceGroupName = "   ";
             cmdlet.Name = Utilities.Name;
             Assert.Throws<PSArgumentException>(() => cmdlet.ExecuteCmdlet());
         }

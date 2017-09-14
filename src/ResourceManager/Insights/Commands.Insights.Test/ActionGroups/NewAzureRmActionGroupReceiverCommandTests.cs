@@ -20,6 +20,9 @@ using Microsoft.Azure.Commands.Insights.ActionGroups;
 
 namespace Microsoft.Azure.Commands.Insights.Test.ActionGroups
 {
+    using System;
+
+    using Microsoft.Azure.Commands.Insights.OutputClasses;
     using Microsoft.Azure.Management.Monitor.Management.Models;
 
     public class NewAzureRmActionGroupReceiverTests
@@ -41,30 +44,59 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActionGroups
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewAzureRmReceiverCommandEmailParametersProcessing()
         {
-            Cmdlet.Type = "email";
+            Cmdlet.EmailReceiver = true;
             Cmdlet.Name = "email1";
             Cmdlet.EmailAddress = "foo@email.com";
             Cmdlet.ExecuteCmdlet();
+
+            Func<PSEmailReceiver, bool> verify = r =>
+            {
+                Assert.Equal("foo@email.com", r.EmailAddress);
+                Assert.Equal("email1", r.Name);
+                return true;
+            };
+
+            this.commandRuntimeMock.Verify(o => o.WriteObject(It.Is<PSEmailReceiver>(r => verify(r))), Times.Once);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewAzureRmReceiverCommandSmsParametersProcessing()
         {
-            Cmdlet.Type = "sms";
+            Cmdlet.SmsReceiver = true;
             Cmdlet.Name = "sms1";
             Cmdlet.CountryCode = "1";
             Cmdlet.PhoneNumber = "4254251234";
+            Cmdlet.ExecuteCmdlet();
+
+            Func<PSSmsReceiver, bool> verify = r =>
+            {
+                Assert.Equal("1", r.CountryCode);
+                Assert.Equal("4254251234", r.PhoneNumber);
+                Assert.Equal("sms1", r.Name);
+                return true;
+            };
+
+            this.commandRuntimeMock.Verify(o => o.WriteObject(It.Is<PSSmsReceiver>(r => verify(r))), Times.Once);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewAzureRmReceiverCommandWebhookParametersProcessing()
         {
-            Cmdlet.Type = "webhook";
+            Cmdlet.WebhookReceiver = true;
             Cmdlet.Name = "webhook1";
             Cmdlet.ServiceUri = "http://test.com";
             Cmdlet.ExecuteCmdlet();
+
+            Func<PSWebhookReceiver, bool> verify = r =>
+            {
+                Assert.Equal("http://test.com", r.ServiceUri);
+                Assert.Equal("webhook1", r.Name);
+                return true;
+            };
+
+            this.commandRuntimeMock.Verify(o => o.WriteObject(It.Is<PSWebhookReceiver>(r => verify(r))), Times.Once);
         }
     }
 }

@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActionGroups
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveActionGroupCommandParametersProcessing()
         {
-            cmdlet.ResourceGroup = Utilities.ResourceGroup;
+            cmdlet.ResourceGroupName = Utilities.ResourceGroup;
             cmdlet.Name = "group1";
             cmdlet.ExecuteCmdlet();
 

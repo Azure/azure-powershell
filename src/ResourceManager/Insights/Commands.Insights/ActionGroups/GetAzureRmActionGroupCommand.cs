@@ -25,22 +25,27 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
     /// <summary>
     /// Gets an Azure Action Group.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmActionGroup")]
+    [Cmdlet(VerbsCommon.Get, "AzureRmActionGroup"), OutputType(typeof(PSActionGroupResource))]
     public class GetAzureRmActionGroupCommand : ManagementCmdletBase
     {
+        private const string ByName = "ByName";
+
+        private const string BySubscriptionOrResourceGroup = "BySubscriptionOrResourceGroup";
+
         #region Cmdlet parameters
-        
+
         /// <summary>
         /// Gets or sets the resource group parameter.
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
+        [Parameter(ParameterSetName = BySubscriptionOrResourceGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
+        [Parameter(ParameterSetName = ByName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroup { get; set; }
+        public string ResourceGroupName { get; set; }
         
         /// <summary>
         /// Gets or sets the action group name parameter.
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The action group name")]
+        [Parameter(ParameterSetName = ByName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The action group name")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -53,7 +58,7 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
         {
             IEnumerable<ActionGroupResource> apiResult;
 
-            if (string.IsNullOrWhiteSpace(this.ResourceGroup))
+            if (string.IsNullOrWhiteSpace(this.ResourceGroupName))
             {
                 if (string.IsNullOrWhiteSpace(this.Name))
                 {
@@ -66,19 +71,19 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
             }
             else if (string.IsNullOrWhiteSpace(this.Name))
             {
-                apiResult = this.MonitorManagementClient.ActionGroups.ListByResourceGroup(resourceGroupName: this.ResourceGroup);
+                apiResult = this.MonitorManagementClient.ActionGroups.ListByResourceGroup(resourceGroupName: this.ResourceGroupName);
             }
             else
             {
                 apiResult = new[]
                 {
                     this.MonitorManagementClient.ActionGroups.Get(
-                        resourceGroupName: this.ResourceGroup,
+                        resourceGroupName: this.ResourceGroupName,
                         actionGroupName: this.Name)
                 };
             }
 
-            var output = apiResult.Select(ag => new PSActionGroupResource(ag, this.ResourceGroup)).ToList();
+            var output = apiResult.Select(ag => new PSActionGroupResource(ag)).ToList();
             WriteObject(sendToPipeline: output, enumerateCollection: true);
         }
     }

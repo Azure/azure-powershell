@@ -19,13 +19,17 @@ using Microsoft.Azure.Commands.Insights.OutputClasses;
 
 namespace Microsoft.Azure.Commands.Insights.ActionGroups
 {
+    using System;
+
     /// <summary>
     /// Gets an Azure Action Group.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmActionGroup", SupportsShouldProcess = true), OutputType(typeof(PSActionGroupResource))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmActionGroup", SupportsShouldProcess = true), OutputType(typeof(AzureOperationResponse))]
     public class RemoveAzureRmActionGroupCommand : ManagementCmdletBase
     {
         private const string ByPropertyName = "ByPropertyName";
+
+        private const string ByResourceId = "ByResourceId";
 
         private const string ByInputObject = "ByInputObject";
 
@@ -36,7 +40,7 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
         /// </summary>
         [Parameter(ParameterSetName = ByPropertyName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroup { get; set; }
+        public string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets the action group name parameter.
@@ -44,6 +48,13 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
         [Parameter(ParameterSetName = ByPropertyName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The action group name")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets the resource id parameter.
+        /// </summary>
+        [Parameter(ParameterSetName = ByResourceId, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource id")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
 
         [Parameter(ParameterSetName = ByInputObject, Mandatory = true, ValueFromPipeline = true, HelpMessage = "The action group resource")]
         public PSActionGroupResource InputObject { get; set; }
@@ -56,18 +67,23 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
         protected override void ProcessRecordInternal()
         {
             if (ShouldProcess(
-                target: string.Format("Delete action group: {0} from resource group: {1}", this.Name, this.ResourceGroup),
+                target: string.Format("Delete action group: {0} from resource group: {1}", this.Name, this.ResourceGroupName),
                 action: "Delete action group"))
             {
                 if (ParameterSetName == ByInputObject)
                 {
-                    this.ResourceGroup = InputObject.ResourceGroup;
+                    this.ResourceGroupName = InputObject.ResourceGroupName;
                     this.Name = InputObject.Name;
+                }
+                else if (ParameterSetName == ByResourceId)
+                {
+                    this.ResourceGroupName = Utilities.GetResourceGroupFromId(this.ResourceId);
+                    this.Name = Utilities.GetResourceNameFromId(this.ResourceId);
                 }
 
                 var result =
                     this.MonitorManagementClient.ActionGroups.DeleteWithHttpMessagesAsync(
-                        resourceGroupName: this.ResourceGroup,
+                        resourceGroupName: this.ResourceGroupName,
                         actionGroupName: this.Name).Result;
 
                 var response = new AzureOperationResponse
