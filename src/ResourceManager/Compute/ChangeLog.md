@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Run Command feature:
+    - New cmdlet: 'Invoke-AzureRmVMRunCommand' invokes a run command on a VM
+    - New cmdlet: 'Get-AzureRmVMRunCommandDocument' shows available run command documents
+* Add 'StorageAccountType' parameter to Set-AzureRmDataDisk
 
 ## Version 3.3.1
 * 

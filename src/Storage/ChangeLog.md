@@ -18,6 +18,15 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Upgrade to Azure Storage Client Library 8.4.0 and Azure Storage DataMovement Library 0.6.1
+* Add PremiumPageBlobTier Support in Upload and Copy Blob API
+    - Set-AzureStorageBlobContent
+	- Start-AzureStorageBlobCopy
+* Refine the Console Output Format of AzureStorageContainer, AzureStorageBlob, AzureStorageQueue, AzureStorageTable
+    - Get-AzureStorageContainer
+    - Get-AzureStorageBlob
+    - Get-AzureStorageQueue
+    - Get-AzureStorageTable
 
 ## Version 3.3.1
 
