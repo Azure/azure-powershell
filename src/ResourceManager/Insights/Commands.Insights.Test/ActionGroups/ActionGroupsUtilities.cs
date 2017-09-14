@@ -51,6 +51,8 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActionGroups
                 enabled: true,
                 name: name,
                 groupShortName: shortName,
+                id:
+                    $"/subscriptions/7de05d20-f39f-44d8-83ca-e7d2f12118b0/resourceGroups/testResourceGroup/providers/microsoft.insights/actionGroups/{name}",
                 emailReceivers: new List<EmailReceiver> { CreateEmailReceiver("email", "test@email.com") },
                 smsReceivers: new List<SmsReceiver> { CreateSmsReceiver("sms", "4254251234") },
                 webhookReceivers: new List<WebhookReceiver> { CreateWebhookReceiver("webhook", "http://test.com") });
