@@ -2,7 +2,7 @@
 .ExternalHelp AzureRM.Compute.Experiments-help.xml
 #>
 function New-AzVm {
-    [CmdletBinding()]
+    [CmdletBinding(SupportsShouldProcess = $true)]
     param (
         [Parameter(Mandatory=$true, Position=0)][string] $Name = "VM",
         [Parameter()][PSCredential] $Credential,
@@ -42,12 +42,14 @@ function New-AzVm {
             $locationi.Value = $Location;
         }
 
-        $resourceGroup = $rgi.GetOrCreate($Name + "ResourceGroup", $locationi.Value, $null);
-        $vmResponse = $vmi.Create($Name, $locationi.Value, $resourceGroup.ResourceGroupName);
+        if ($PSCmdlet.ShouldProcess($Name, "Creating a virtual machine")) {
+            $resourceGroup = $rgi.GetOrCreate($Name + "ResourceGroup", $locationi.Value, $null);
+            $vmResponse = $vmi.Create($Name, $locationi.Value, $resourceGroup.ResourceGroupName);
 
-        New-PsObject @{
-            ResourceId = $resourceGroup.ResourceId;
-            Response = $vmResponse;
+            New-PsObject @{
+                ResourceId = $resourceGroup.ResourceId;
+                Response = $vmResponse;
+            }
         }
     }
 }
