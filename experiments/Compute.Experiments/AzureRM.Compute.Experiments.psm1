@@ -4,7 +4,7 @@
 function New-AzVm {
     [CmdletBinding()]
     param (
-        [Parameter(Mandatory=$true)][string] $Name = "VM",
+        [Parameter(Mandatory=$true, Position=0)][string] $Name = "VM",
         [Parameter()][PSCredential] $Credential,
         [Parameter()][string] $ImageName = "Win2012R2Datacenter",
         [Parameter()][string] $ResourceGroupName,
@@ -12,21 +12,26 @@ function New-AzVm {
         [Parameter()][string] $VirtualNetworkName,
         [Parameter()][string] $PublicIpAddressName,
         [Parameter()][string] $SecurityGroupName
-        # [Parameter()][string] $NetworkInterfaceName
     )
 
     PROCESS {
         $rgi = [ResourceGroup]::new($ResourceGroupName);
+
         $vni = [VirtualNetwork]::new($VirtualNetworkName);
         $piai = [PublicIpAddress]::new($PublicIpAddressName);
         $sgi = [SecurityGroup]::new($SecurityGroupName);
+
+        # we don't allow to reuse NetworkInterface so $name is $null.
         $nii = [NetworkInterface]::new(
-            $null, # $NetworkInterfaceName,
+            $null,
             $vni,
             $piai,
             $sgi);
+
+        # the purpouse of the New-AzVm cmdlet is to create (not get) a VM so $name is $null.
         $vmi = [VirtualMachine]::new($null, $nii, $rgi, $Credential, $ImageName, $images);
 
+        # infer a location
         $locationi = [Location]::new();
         if (-not $Location) {
             $vmi.UpdateLocation($locationi);
