@@ -67,7 +67,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             Uri outUri = null;
             if (Uri.TryCreate(parameter, UriKind.Absolute, out outUri))
             {
-                if (outUri.Scheme != Uri.UriSchemeHttp && outUri.Scheme != Uri.UriSchemeHttps)
+                if(outUri.Scheme == Uri.UriSchemeFile)
+                {
+                    string filePath = this.TryResolvePath(parameter);
+                    if(File.Exists(filePath))
+                    {
+                        return JToken.FromObject(FileUtilities.DataStore.ReadFileAsText(filePath));
+                    }
+                    else
+                    {
+                        throw new PSInvalidOperationException(string.Format(ProjectResources.InvalidFilePath, parameter));
+                    }
+                }
+                else if (outUri.Scheme != Uri.UriSchemeHttp && outUri.Scheme != Uri.UriSchemeHttps)
                 {
                     throw new PSInvalidOperationException(ProjectResources.InvalidUriScheme);
                 }
@@ -85,10 +97,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     return JToken.FromObject(contents);
                 }
             }
-            string filePath = this.TryResolvePath(parameter);
 
-            return File.Exists(filePath)
-                ? JToken.FromObject(FileUtilities.DataStore.ReadFileAsText(filePath))
+            //for non absolute file paths
+            string path = this.TryResolvePath(parameter);
+
+            return File.Exists(path)
+                ? JToken.FromObject(FileUtilities.DataStore.ReadFileAsText(path))
                 : JToken.FromObject(parameter);
         }
     }
