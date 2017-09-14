@@ -1,3 +1,6 @@
+<#
+.ExternalHelp AzureRM.Compute.Experiments-help.xml
+#>
 function New-AzVm {
     [CmdletBinding()]
     param (
