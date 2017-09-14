@@ -25,7 +25,7 @@ function TestImportWithRequestObject
     $dbName = $DatabaseName1 + "-import1"
     Write-Output "Importing from Blob: $BlobName"
 
-    $Request = Start-AzureSqlDatabaseImport -SqlConnectionContext $context -StorageContainerName $container.Name -StorageContext $StgCtx `
+    $Request = Start-AzureSqlDatabaseImport -SqlConnectionContext $context -StorageContainer $container `
         -DatabaseName $dbName -BlobName $BlobName
     Assert {$Request} "Failed to initiate the first import opertaion"
     $id = ($Request.RequestGuid)
@@ -79,21 +79,21 @@ function TestImportWithRequestObjectAndOptionalParameters
     $dbName = $DatabaseName1 + "Options-edition"
     Write-Output "Database name: $dbName"
     TestImportCommandHelper `
-        { Start-AzureSqlDatabaseImport -SqlConnectionContext $context -StorageContainerName $container.Name -StorageContext $StgCtx `
+        { Start-AzureSqlDatabaseImport -SqlConnectionContext $context -StorageContainer $container `
                 -DatabaseName $dbName -BlobName $BlobName -Edition "Business" }
                 
     Write-Output "Running test for import with optional size parameter"
     $dbName = $DatabaseName1 + "Options-size"
     Write-Output "Database name: $dbName"
     TestImportCommandHelper `
-        { Start-AzureSqlDatabaseImport -SqlConnectionContext $context -StorageContainerName $container.Name -StorageContext $StgCtx `
+        { Start-AzureSqlDatabaseImport -SqlConnectionContext $context -StorageContainer $container `
                 -DatabaseName $dbName -BlobName $BlobName -DatabaseMaxSize 5 }
                 
     Write-Output "Running test for import with optional edition and size parameter"
     $dbName = $DatabaseName1 + "Options-edition"
     Write-Output "Database name: $dbName"
     TestImportCommandHelper `
-        { Start-AzureSqlDatabaseImport -SqlConnectionContext $context -StorageContainerName $container.Name -StorageContext $StgCtx `
+        { Start-AzureSqlDatabaseImport -SqlConnectionContext $context -StorageContainer $container `
                 -DatabaseName $dbName -BlobName $BlobName -Edition "Business" -DatabaseMaxSize 20 }
 }
 
