@@ -70,6 +70,9 @@ namespace Microsoft.AzureStack.Commands
         /// </summary>
         protected override void ExecuteCore()
         {
+            // note: this command should be deprecated
+            WriteWarning("Get-AzureRmOffer cmdlet will be deprecated and moved to a different module in a future release.");
+
             if (this.Managed.IsPresent)
             {
                  this.WriteWarning("The switch parameter Managed will be deprecated in a future release. Please use the cmdlet Get-AzsManagedOffer instead");
