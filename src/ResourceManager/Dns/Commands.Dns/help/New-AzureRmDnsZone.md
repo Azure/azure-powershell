@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Dns.dll-Help.xml
+Module Name: AzureRM.Dns
 ms.assetid: B78F3E8B-C7D2-458C-AB23-06F584FE97E0
-online version:
+online version: 
 schema: 2.0.0
 ---
 
@@ -13,7 +14,9 @@ Creates a new DNS zone.
 ## SYNTAX
 
 ```
-New-AzureRmDnsZone -Name <String> -ResourceGroupName <String> [-Tag <Hashtable>] [-WhatIf] [-Confirm]
+New-AzureRmDnsZone -Name <String> -ResourceGroupName <String> [-ZoneType <ZoneType>] [-Tag <Hashtable>]
+ [-ResolutionVirtualNetworkIds <System.Collections.Generic.List`1[System.String]>]
+ [-RegistrationVirtualNetworkIds <System.Collections.Generic.List`1[System.String]>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -43,9 +46,35 @@ Specifies the name of the DNS zone to create.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RegistrationVirtualNetworkIds
+The list of virtual networks that will register VM hostnames records in this DNS zone, only available for private zones.```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResolutionVirtualNetworkIds
+The list of virtual networks able to resolve records in this DNS zone, only available for private zones.```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -58,7 +87,7 @@ Specifies the resource group in which to create the zone.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -79,6 +108,21 @@ Aliases: Tags
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ZoneType
+Specifies the type of the DNS zone.  Zones without a type or with a type of Public are made available on the public DNS serving plane for use in the DNS hierarcy.  Zones with a type of Private are only visible from with the set of associated virtual networks (this is in preview).
+
+```yaml
+Type: ZoneType
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
@@ -105,21 +149,6 @@ Shows what would happen if the cmdlet runs. The cmdlet is not run.Shows what wou
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ZoneType
-Specifies the type of the DNS zone.  Zones without a type or with a type of Public are made available on the public DNS serving plane for use in the DNS hierarcy.  Zones with a type of Private are only visible from with the set of associated virtual networks (this is in preview).
-
-```yaml
-Type: Microsoft.Azure.Commands.Dns.DnsZone.ZoneType
-Parameter Sets: (All)
-Aliases:
 
 Required: False
 Position: Named

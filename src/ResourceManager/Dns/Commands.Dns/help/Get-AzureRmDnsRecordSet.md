@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Dns.dll-Help.xml
+Module Name: AzureRM.Dns
 ms.assetid: 40179CF3-7896-4C45-BC18-4CB653B245B6
 online version: 
 schema: 2.0.0
