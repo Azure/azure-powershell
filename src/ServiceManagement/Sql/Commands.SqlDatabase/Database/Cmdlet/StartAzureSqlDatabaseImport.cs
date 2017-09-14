@@ -33,13 +33,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
     public class StartAzureSqlDatabaseImport : SqlDatabaseCmdletBase
     {
         #region Parameter Set names
-
-        /// <summary>
-        /// The name of the parameter set that uses the Azure Storage Container object
-        /// </summary>
-        internal const string ByContainerObjectParameterSet =
-            "ByContainerObject";
-
+        
         /// <summary>
         /// The name of the parameter set that uses the storage container name
         /// </summary>
@@ -58,15 +52,6 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
             "This can be an Azure SQL Server connection context that uses username with password.")]
         [ValidateNotNullOrEmpty]
         public ISqlServerConnectionInformation SqlConnectionContext { get; set; }
-
-        /// <summary>
-        /// Gets or sets the storage container object containing the blob
-        /// </summary>
-        [Parameter(Mandatory = true, Position = 1,
-            ParameterSetName = ByContainerObjectParameterSet,
-            HelpMessage = "The Azure Storage Container to place the blob in.")]
-        [ValidateNotNull]
-        public AzureStorageContainer StorageContainer { get; set; }
 
         /// <summary>
         /// Gets or sets the storage context
@@ -89,9 +74,6 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
         /// <summary>
         /// Gets or sets the name for the imported database
         /// </summary>
-        [Parameter(Mandatory = true, Position = 2,
-            ParameterSetName = ByContainerObjectParameterSet,
-            HelpMessage = "The name for the imported database")]
         [Parameter(Mandatory = true, Position = 3,
             ParameterSetName = ByContainerNameParameterSet,
             HelpMessage = "The name for the imported database")]
@@ -101,9 +83,6 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
         /// <summary>
         /// Gets or sets name of the blob to use for the import
         /// </summary>
-        [Parameter(Mandatory = true, Position = 3,
-            ParameterSetName = ByContainerObjectParameterSet,
-            HelpMessage = "The name of the blob to use for the import")]
         [Parameter(Mandatory = true, Position = 4,
             ParameterSetName = ByContainerNameParameterSet,
             HelpMessage = "The name of the blob to use for the import")]
@@ -214,17 +193,6 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
                         blobUri =
                             this.StorageContext.BlobEndPoint +
                             this.StorageContainerName + "/" +
-                            this.BlobName;
-                        break;
-
-                    case ByContainerObjectParameterSet:
-                        accessKey =
-                            System.Convert.ToBase64String(
-                                this.StorageContainer.CloudBlobContainer.ServiceClient.Credentials.ExportKey());
-
-                        blobUri =
-                            this.StorageContainer.Context.BlobEndPoint +
-                            this.StorageContainer.Name + "/" +
                             this.BlobName;
                         break;
 

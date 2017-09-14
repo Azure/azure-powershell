@@ -24,7 +24,7 @@ function TestExportWithRequestObject
     $BlobName = $DatabaseName1 + ".bacpac"
     Write-Output "Exporting to Blob:  $BlobName"
 
-    $Request = Start-AzureSqlDatabaseExport -SqlConnectionContext $context -StorageContainer $container `
+    $Request = Start-AzureSqlDatabaseExport -SqlConnectionContext $context -StorageContainerName $container.Name -StorageContext $StgCtx `
         -DatabaseName $DatabaseName1 -BlobName $BlobName
     Assert {$Request} "Failed to initiate the first export operation"
     $id = ($Request.RequestGuid)
