@@ -17,7 +17,7 @@ Creates a new Azure Event Grid Event Subscription to a topic, Azure resource, Az
 New-AzureRmEventGridSubscription [-EventSubscriptionName] <String> [-Endpoint] <String>
  [[-ResourceGroupName] <String>] [[-TopicName] <String>] [[-EndpointType] <String>]
  [[-SubjectBeginsWith] <String>] [[-SubjectEndsWith] <String>] [-SubjectCaseSensitive]
- [[-IncludedEventType] <String[]>] [[-Label] <String[]>] [-WhatIf] [-Confirm]
+ [[-IncludedEventType] <String[]>] [[-Label] <String[]>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdEventSubscriptionParameterSet
@@ -25,6 +25,7 @@ New-AzureRmEventGridSubscription [-EventSubscriptionName] <String> [-Endpoint] <
 New-AzureRmEventGridSubscription [-ResourceId] <String> [-EventSubscriptionName] <String> [-Endpoint] <String>
  [[-EndpointType] <String>] [[-SubjectBeginsWith] <String>] [[-SubjectEndsWith] <String>]
  [-SubjectCaseSensitive] [[-IncludedEventType] <String[]>] [[-Label] <String[]>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### EventSubscriptionInputObjectSet
@@ -32,6 +33,7 @@ New-AzureRmEventGridSubscription [-ResourceId] <String> [-EventSubscriptionName]
 New-AzureRmEventGridSubscription [-InputObject] <PSTopic> [-EventSubscriptionName] <String>
  [-Endpoint] <String> [[-EndpointType] <String>] [[-SubjectBeginsWith] <String>] [[-SubjectEndsWith] <String>]
  [-SubjectCaseSensitive] [[-IncludedEventType] <String[]>] [[-Label] <String[]>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -82,11 +84,10 @@ Creates a new event subscription \`EventSubscription1\` to the currently selecte
 
 ### Example 6
 ```
-PS C:\> New-AzureRmEventGridSubscription -ResourceId "/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/TestRG/providers/Microsoft.EventHub/namespaces/ContosoNamespace/eventhubs/EH1" -Endpoint https://requestb.in/19qlscd1 -EventSubscriptionName EventSubscription1 
+PS C:\> New-AzureRmEventGridSubscription -ResourceId "/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/TestRG/providers/Microsoft.EventHub/namespaces/ContosoNamespace/eventhubs/EH1" -Endpoint https://requestb.in/19qlscd1 -EventSubscriptionName EventSubscription1
 ```
 
 Creates a new event subscription \`EventSubscription1\` to an EventHub namespace with the specified webhhok destination endpoint https://requestb.in/19qlscd1. This event subscription uses default filters.
-
 
 ## PARAMETERS
 
@@ -307,6 +308,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### System.String
@@ -314,11 +318,9 @@ Microsoft.Azure.Commands.EventGrid.Models.PSTopic
 System.Management.Automation.SwitchParameter
 System.String[]
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.EventGrid.Models.PSEventSubscription
-
 
 ## NOTES
 

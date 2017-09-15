@@ -23,11 +23,11 @@ Gets the shared access keys used to publish events to an Event Grid topic.
 ### [Get-AzureRmEventGridTopicType](Get-AzureRmEventGridTopicType.md)
 Gets the details about the topic types supported by Azure Event Grid.
 
-### [New-AzureRmEventGridTopic](New-AzureRmEventGridTopic.md)
-Creates a new Azure Event Grid Topic.
-
 ### [New-AzureRmEventGridSubscription](New-AzureRmEventGridSubscription.md)
 Creates a new Azure Event Grid Event Subscription to a topic, Azure resource, Azure subscription or Resource Group.
+
+### [New-AzureRmEventGridTopic](New-AzureRmEventGridTopic.md)
+Creates a new Azure Event Grid Topic.
 
 ### [New-AzureRmEventGridTopicKey](New-AzureRmEventGridTopicKey.md)
 Regenerates the shared access key for an Azure Event Grid Topic.
