@@ -30,7 +30,7 @@ CompanyName = 'Microsoft'
 Copyright = 'Microsoft'
 
 # Description of the functionality provided by this module
-Description = 'Azure Compute'
+Description = 'Azure Compute experiments for VM creation'
 
 # Minimum version of the Windows PowerShell engine required by this module
 PowerShellVersion = '5.0'
