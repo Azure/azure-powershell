@@ -123,7 +123,10 @@ class ResourceGroup: AzureObject {
     }
 
     [object] Create([string] $name, [string] $location, [string] $resourceGroupName) {
-        return New-AzureRmResourceGroup -Name $name -Location $location;
+        return New-AzureRmResourceGroup `
+            -Name $name `
+            -Location $location `
+            -WarningAction SilentlyContinue;
     }
 }
 
@@ -149,7 +152,8 @@ class VirtualNetwork: Resource1 {
             -Location $location `
             -Name $name `
             -AddressPrefix "192.168.0.0/16" `
-            -Subnet $subnetConfig
+            -Subnet $subnetConfig `
+            -WarningAction SilentlyContinue
     }
 }
 
@@ -166,7 +170,8 @@ class PublicIpAddress: Resource1 {
             -ResourceGroupName $resourceGroupName `
             -Location $location `
             -AllocationMethod Static `
-            -Name $name
+            -Name $name `
+            -WarningAction SilentlyContinue
     }
 }
 
@@ -194,7 +199,8 @@ class SecurityGroup: Resource1 {
             -ResourceGroupName $resourceGroupName `
             -Location $location `
             -Name $name `
-            -SecurityRules $securityRuleConfig
+            -SecurityRules $securityRuleConfig `
+            -WarningAction SilentlyContinue
     }
 }
 
@@ -228,7 +234,8 @@ class NetworkInterface: AzureObject {
             -Name $name `
             -PublicIpAddressId $xpublicIpAddress.Id `
             -SubnetId $xvirtualNetwork.Subnets[0].Id `
-            -NetworkSecurityGroupId $xsecurityGroup.Id
+            -NetworkSecurityGroupId $xsecurityGroup.Id `
+            -WarningAction SilentlyContinue
     }
 }
 
@@ -300,7 +307,8 @@ class VirtualMachine: AzureObject {
         return New-AzureRmVm `
             -ResourceGroupName $resourceGroupName `
             -Location $location `
-            -VM $vmConfig
+            -VM $vmConfig `
+            -WarningAction SilentlyContinue
     }
 }
 
