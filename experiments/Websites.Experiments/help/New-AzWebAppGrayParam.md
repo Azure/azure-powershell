@@ -25,10 +25,10 @@ values for parameters that are not provided.  Using -Auto indicates that further
 
 ### Example 1
 ```
-PS C:\> New-AzWebAppGrayParam
+PS C:\> New-AzWebAppGrayParam -Location "East US"
 ```
 
-Create a web application using defaults for all values, including name
+Create a web application with detailed prompts for parameter values that are not provided, including simple defaults.
 
 ## PARAMETERS
 

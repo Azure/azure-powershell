@@ -1,0 +1,306 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<helpItems xmlns="http://msh" schema="maml">
+
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<command:details><command:name>New-AzWebApp</command:name>
+<command:verb>New</command:verb>
+<command:noun>AzWebApp</command:noun>
+<maml:description><maml:para>Create a new Azure AppService website and attach it to a git repository.
+</maml:para>
+</maml:description>
+</command:details>
+<maml:description><maml:para>Create a new Azure AppService website and attach it to a git repository.
+</maml:para>
+</maml:description>
+<command:syntax><command:syntaxItem><maml:name>New-AzWebApp</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="Name"><maml:name>WebAppName</maml:name>
+<maml:Description><maml:para>The name of the Website. The website will automatically use this value as the subdomain for the created website.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="Group"><maml:name>ResourceGroupName</maml:name>
+<maml:Description><maml:para>The name of the resource group for the Website.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="Plan"><maml:name>AppServicePlan</maml:name>
+<maml:Description><maml:para>The name or id of the AppService Plan to use with this WebApp.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none"><maml:name>GitRepositoryPath</maml:name>
+<maml:Description><maml:para>The path to a github repository where remotes should be added.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>AddRemote</maml:name>
+<maml:Description><maml:para>Add a remote to local github repo.
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Auto</maml:name>
+<maml:Description><maml:para>Accept default values for all settings not provided, withotu prompting.
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+</command:syntaxItem>
+</command:syntax>
+<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>AddRemote</maml:name>
+<maml:Description><maml:para>Add a remote to local github repo.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="Plan"><maml:name>AppServicePlan</maml:name>
+<maml:Description><maml:para>The name or id of the AppService Plan to use with this WebApp.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Auto</maml:name>
+<maml:Description><maml:para>Accept default values for all settings not provided, withotu prompting.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none"><maml:name>GitRepositoryPath</maml:name>
+<maml:Description><maml:para>The path to a github repository where remotes should be added.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="Group"><maml:name>ResourceGroupName</maml:name>
+<maml:Description><maml:para>The name of the resource group for the Website.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="Name"><maml:name>WebAppName</maml:name>
+<maml:Description><maml:para>The name of the Website. The website will automatically use this value as the subdomain for the created website.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+</command:parameters>
+<command:inputTypes><command:inputType><dev:type><maml:name>None</maml:name>
+</dev:type>
+<maml:description><maml:para>
+</maml:para>
+</maml:description>
+</command:inputType>
+</command:inputTypes>
+<command:returnValues><command:returnValue><dev:type><maml:name>Microsoft.Azure.Management.WebSites.Models.Site</maml:name>
+</dev:type>
+<maml:description><maml:para>Details about the created website, including URL and github repo url.
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
+<maml:alertSet><maml:alert><maml:para>
+</maml:para>
+</maml:alert>
+</maml:alertSet>
+<command:examples><command:example><maml:title>Example 1: Create a website with prompts for settings</maml:title>
+<dev:code>PS C:\&gt; New-AzWebApp contosoWebApp</dev:code>
+<dev:remarks><maml:para>Creates a web application.  The user will be prompted for the appservice to use and other settings.
+</maml:para>
+</dev:remarks>
+</command:example>
+<command:example><maml:title>Example 2: Create a website with default settings</maml:title>
+<dev:code>PS C:\&gt; New-AzWebApp contosoWebApp -Auto</dev:code>
+<dev:remarks><maml:para>Creates a web application using default settings.
+</maml:para>
+</dev:remarks>
+</command:example>
+</command:examples>
+<command:relatedLinks></command:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<command:details><command:name>New-AzWebAppGrayParam</command:name>
+<command:verb>New</command:verb>
+<command:noun>AzWebAppGrayParam</command:noun>
+<maml:description><maml:para>Create an Azure Website using Azure App Service.
+</maml:para>
+</maml:description>
+</command:details>
+<maml:description><maml:para>Create an Azure Website using Azure App Service. This cmdlet uses the 'Gray Parameter' experience, which will prompt the user with default  values for parameters that are not provided.  Using -Auto indicates that further prompting for defaults should not occur.
+</maml:para>
+</maml:description>
+<command:syntax><command:syntaxItem><maml:name>New-AzWebAppGrayParam</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="Name"><maml:name>WebAppName</maml:name>
+<maml:Description><maml:para>The name of the website.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="Group"><maml:name>ResourceGroupName</maml:name>
+<maml:Description><maml:para>The name of the resource group to create the website in.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="Plan"><maml:name>AppServicePlan</maml:name>
+<maml:Description><maml:para>The AppService Plan to use for thsi website.  If not provided, the website will create an app service plan, or join an existing free AppService plan.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none"><maml:name>GitRepositoryPath</maml:name>
+<maml:Description><maml:para>The path to a github repository containingg the application for the website.  A remote for pushign to the website will be added to this repository.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>AddRemote</maml:name>
+<maml:Description><maml:para>Add a remote github repository to the given github repo.
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Auto</maml:name>
+<maml:Description><maml:para>Skip parameter prompting for remaining parameters.
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+</command:syntaxItem>
+</command:syntax>
+<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>AddRemote</maml:name>
+<maml:Description><maml:para>Add a remote github repository to the given github repo.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="Plan"><maml:name>AppServicePlan</maml:name>
+<maml:Description><maml:para>The AppService Plan to use for thsi website.  If not provided, the website will create an app service plan, or join an existing free AppService plan.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Auto</maml:name>
+<maml:Description><maml:para>Skip parameter prompting for remaining parameters.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none"><maml:name>GitRepositoryPath</maml:name>
+<maml:Description><maml:para>The path to a github repository containingg the application for the website.  A remote for pushign to the website will be added to this repository.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="Group"><maml:name>ResourceGroupName</maml:name>
+<maml:Description><maml:para>The name of the resource group to create the website in.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="Name"><maml:name>WebAppName</maml:name>
+<maml:Description><maml:para>The name of the website.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+</command:parameters>
+<command:inputTypes><command:inputType><dev:type><maml:name>None</maml:name>
+</dev:type>
+<maml:description><maml:para>
+</maml:para>
+</maml:description>
+</command:inputType>
+</command:inputTypes>
+<command:returnValues><command:returnValue><dev:type><maml:name>Microsoft.Azure.Management.WebSites.Models.Site</maml:name>
+</dev:type>
+<maml:description><maml:para>Details about the created website, including its URL.
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
+<maml:alertSet><maml:alert><maml:para>
+</maml:para>
+</maml:alert>
+</maml:alertSet>
+<command:examples><command:example><maml:title>Example 1</maml:title>
+<dev:code>PS C:\&gt; New-AzWebAppGrayParam -Location "East US"</dev:code>
+<dev:remarks><maml:para>Create a web application with detailed prompts for parameter values that are not provided, including simple defaults.
+</maml:para>
+</dev:remarks>
+</command:example>
+</command:examples>
+<command:relatedLinks></command:relatedLinks>
+</command:command>
+</helpItems>

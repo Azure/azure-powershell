@@ -124,6 +124,9 @@ function New-AzWebAppJustDoIt
     END {}
 }
 
+<#
+.ExternalHelp help\AzureRM.Websites.Experiments-help.xml 
+#>
 function New-AzWebApp
 {
     [CmdletBinding()]
@@ -561,6 +564,9 @@ function Get-WebSitesClient
     return $client
 }
 
+<#
+.ExternalHelp help\AzureRM.Websites.Experiments-help.xml 
+#>
 function New-AzWebAppGrayParam
 {
     [CmdletBinding()]        
