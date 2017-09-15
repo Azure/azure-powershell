@@ -12,7 +12,9 @@ Synchronizes a specified database on the specified instance of Analysis Services
 
 ## SYNTAX 
 
-```Sync-AzureAnalysisServicesInstance [-Instance] <String> [-Database] <String> [-Passthru]```
+```
+Sync-AzureAnalysisServicesInstance [-Instance] <String> [-Database] <String> [-Passthru]
+```
 
 ## DESCRIPTION 
 
@@ -22,7 +24,9 @@ The Sync-AzureAnalysisServicesInstance cmdlet synchronizes a specified database 
 
 ### Example 1
 
-```PS C:\>Sync-AzureAnalysisServicesInstance -Instance asazure://westus.asazure.windows.net/contoso -Database SalesOrders```
+```
+PS C:\>Sync-AzureAnalysisServicesInstance -Instance asazure://westus.asazure.windows.net/contoso -Database SalesOrders
+```
 
 This command will synchronize the database named SalesOrders in the server named 'contoso' in the environment westus.asazure.windows.net provided the user has logged-in to this enviroment using Add-AzureAnalysisServicesAccount command.
 
@@ -31,8 +35,9 @@ This command will synchronize the database named SalesOrders in the server named
 ### -Instance
 
 Name of the Analysis Services server instance to restart
-```
-yamlType: String
+
+```yaml
+Type: String
 Parameter Sets: (All)
 Aliases: 
 Required: True
@@ -45,8 +50,9 @@ Accept wildcard characters: False
 ### -Database
 
 Identity of the database to be synchronized
-```
-yamlType: String
+
+```yaml
+Type: String
 Parameter Sets: (All)
 Aliases: 
 Required: True
@@ -54,13 +60,15 @@ Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+```
 
 ### -PassThru
 
 Specifying this will return true if the command was successful.
-```
-yamlType: Switch
-ParameterParameter Sets: (All)
+
+```yaml
+Type: Switch
+Parameter Sets: (All)
 Aliases: 
 Required: False
 Position: Named
