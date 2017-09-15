@@ -13,14 +13,15 @@
 // ----------------------------------------------------------------------------------
 
 using Newtonsoft.Json;
+using System;
 
 namespace Microsoft.WindowsAzure.Commands.Common
 {
     public class AzurePSDataCollectionProfile
     {
-        public const string EnvironmentVariableName = "Azure_PS_Data_Collection";
-        public static string OldDefaultFileName = "AzureDataCollectionProfile.json";
-        public static string DefaultFileName = "AzurePSDataCollectionProfile.json";
+        public const string EnvironmentVariableName = "Azure_PS_Data_Collection",
+            OldDefaultFileName = "AzureDataCollectionProfile.json",
+            DefaultFileName = "AzurePSDataCollectionProfile.json";
 
         public AzurePSDataCollectionProfile()
         {
@@ -33,6 +34,5 @@ namespace Microsoft.WindowsAzure.Commands.Common
 
         [JsonProperty(PropertyName = "enableAzureDataCollection")]
         public bool? EnableAzureDataCollection { get; set; }
-
     }
 }

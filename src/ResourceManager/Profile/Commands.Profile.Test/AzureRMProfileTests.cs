@@ -625,7 +625,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
         {
             var dataStore = new MockDataStore();
             AzureSession.Instance.DataStore = dataStore;
-            var profilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, AzureSession.Instance.ProfileFile);
+            var profilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, AzureSession.Instance.ARMProfileFile);
             var currentProfile = new AzureRmProfile(profilePath);
             var tenantId = Guid.NewGuid().ToString();
             var environment = new AzureEnvironment
@@ -682,6 +682,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
         public void SavingProfileWorks()
         {
             string expected = @"{
+  ""DefaultContextKey"": ""Default"",
   ""EnvironmentTable"": {
     ""testCloud"": {
       ""Name"": ""testCloud"",
@@ -767,7 +768,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
   },
   ""ExtendedProperties"": {}
 }";
-            var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, AzureSession.Instance.ProfileFile);
+            var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, AzureSession.Instance.ARMProfileFile);
             var dataStore = new MockDataStore();
             AzureSession.Instance.DataStore = dataStore;
             AzureRmProfile profile = new AzureRmProfile(path);
@@ -801,7 +802,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             profile.EnvironmentTable[environment.Name] = environment;
             profile.DefaultContext.TokenCache = new AuthenticationStoreTokenCache(new AzureTokenCache { CacheData = new byte[] { 1, 2, 3, 4, 5, 6, 8, 9, 0 } });
             profile.Save();
-            string actual = dataStore.ReadFileAsText(path);
+            string actual = dataStore.ReadFileAsText(path).Substring(1).TrimEnd(new[] { '\0' });
             Assert.Equal(expected, actual);
         }
 
@@ -850,7 +851,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
     }
   }
 }";
-            var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, AzureSession.Instance.ProfileFile);
+            var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, AzureSession.Instance.ARMProfileFile);
             var dataStore = new MockDataStore();
             AzureSession.Instance.DataStore = dataStore;
             dataStore.WriteFile(path, contents);

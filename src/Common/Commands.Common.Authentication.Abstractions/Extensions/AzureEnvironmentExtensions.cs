@@ -366,7 +366,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 
         public static void CopyFrom(this IAzureEnvironment environment, IAzureEnvironment other)
         {
-            if (other != null)
+            if (environment != null && other != null)
             {
                 environment.Name = other.Name;
                 environment.OnPremise = other.OnPremise;
