@@ -804,6 +804,10 @@
                 <Label>DnsSettings</Label>
                 <PropertyName>DnsSettingsText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>Zones</Label>
+                <PropertyName>Zones</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
