@@ -12,7 +12,7 @@
 RootModule = ".\AzureRM.Compute.Experiments.psm1"
 
 # Version number of this module.
-ModuleVersion = '1.0.6'
+ModuleVersion = '1.0.7'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
