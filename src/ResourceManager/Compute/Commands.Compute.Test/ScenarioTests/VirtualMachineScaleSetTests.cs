@@ -78,5 +78,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineScaleSetNetworking");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetRollingUpgrade()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineScaleSetRollingUpgrade");
+        }
     }
 }

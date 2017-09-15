@@ -55,7 +55,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 4
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -102,7 +102,7 @@ Parameter Sets: FriendMethod
 Aliases: 
 
 Required: True
-Position: 5
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

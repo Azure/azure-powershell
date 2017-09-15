@@ -64,7 +64,7 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.2.0.0\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Compute">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.16.2.0\lib\net452\Microsoft.Azure.Management.Compute.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.16.3.0\lib\net452\Microsoft.Azure.Management.Compute.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Network, Version=14.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.14.0.0-preview\lib\net452\Microsoft.Azure.Management.Network.dll</HintPath>
@@ -165,6 +165,7 @@
     <Compile Include="Common\ComputeTestController.cs" />
     <Compile Include="ScenarioTests\AddVhdTests.cs" />
     <Compile Include="ScenarioTests\AEMExtensionTests.cs" />
+    <Compile Include="ScenarioTests\AvailabilityZoneTests.cs" />
     <Compile Include="ScenarioTests\ChefExtensionTests.cs" />
     <Compile Include="ScenarioTests\ComputeCloudExceptionTests.cs" />
     <Compile Include="ScenarioTests\ContainerServiceTests.cs" />
@@ -250,6 +251,9 @@
     <Content Include="ConfigFiles\DiagnosticsExtensionPublicConfig.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="ScenarioTests\AvailabilityZoneTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="ScenarioTests\DiskRPTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

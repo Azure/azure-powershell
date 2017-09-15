@@ -111,6 +111,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
             Mapper.CreateMap<TO.PSRunCommandDocument, FROM.RunCommandDocument>();
             Mapper.CreateMap<FROM.RunCommandDocumentBase, TO.PSRunCommandDocumentBase>();
             Mapper.CreateMap<TO.PSRunCommandDocumentBase, FROM.RunCommandDocumentBase>();
+            Mapper.CreateMap<FROM.RollingUpgradeStatusInfo, TO.PSRollingUpgradeStatusInfo>();
+            Mapper.CreateMap<TO.PSRollingUpgradeStatusInfo, FROM.RollingUpgradeStatusInfo>();
             Mapper.CreateMap<FROM.VirtualMachineScaleSet, TO.PSVirtualMachineScaleSet>();
             Mapper.CreateMap<TO.PSVirtualMachineScaleSet, FROM.VirtualMachineScaleSet>();
             Mapper.CreateMap<FROM.VirtualMachineScaleSetInstanceView, TO.PSVirtualMachineScaleSetInstanceView>();
@@ -125,6 +127,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
             Mapper.CreateMap<TO.PSVirtualMachineCaptureResult, FROM.VirtualMachineCaptureResult>();
             Mapper.CreateMap<FROM.VirtualMachine, TO.PSVirtualMachine>();
             Mapper.CreateMap<TO.PSVirtualMachine, FROM.VirtualMachine>();
+            Mapper.CreateMap<FROM.VirtualMachineInstanceView, TO.PSVirtualMachineInstanceView>();
+            Mapper.CreateMap<TO.PSVirtualMachineInstanceView, FROM.VirtualMachineInstanceView>();
             Mapper.CreateMap<FROM.RunCommandResult, TO.PSRunCommandResult>();
             Mapper.CreateMap<TO.PSRunCommandResult, FROM.RunCommandResult>();
 

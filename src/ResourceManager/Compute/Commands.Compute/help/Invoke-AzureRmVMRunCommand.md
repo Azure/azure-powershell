@@ -14,12 +14,12 @@ Run command on the VM.
 ### DefaultParameter (Default)
 ```
 Invoke-AzureRmVMRunCommand [-ResourceGroupName] <String> [-VMName] <String> -CommandId <String>
- [-ScriptPath <FileInfo>] [-Parameter <Hashtable>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ScriptPath <String>] [-Parameter <Hashtable>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### VMParameter
 ```
-Invoke-AzureRmVMRunCommand -CommandId <String> [-ScriptPath <FileInfo>] [-Parameter <Hashtable>]
+Invoke-AzureRmVMRunCommand -CommandId <String> [-ScriptPath <String>] [-Parameter <Hashtable>]
  [-VM] <PSVirtualMachine> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -86,7 +86,7 @@ Accept wildcard characters: False
 Path of the script to be executed.  When this value is given, the given script will override the default script of the command.
 
 ```yaml
-Type: FileInfo
+Type: String
 Parameter Sets: (All)
 Aliases: 
 
@@ -106,7 +106,7 @@ Parameter Sets: VMParameter
 Aliases: VMProfile
 
 Required: True
-Position: 2
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False

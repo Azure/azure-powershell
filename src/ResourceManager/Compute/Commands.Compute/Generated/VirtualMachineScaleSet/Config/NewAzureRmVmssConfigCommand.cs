@@ -108,6 +108,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+        public string[] Zone { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
         public string PlanName { get; set; }
 
         [Parameter(
@@ -128,7 +133,17 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
-        public RecoveryMode? RecoveryPolicyMode { get; set; }
+        public RollingUpgradePolicy RollingUpgradePolicy { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public bool? AutoOSUpgrade { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public string HealthProbeId { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -142,7 +157,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = false)]
+        public SwitchParameter AssignIdentity { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+        [Obsolete("This parameter is obsolete.  Use AssignIdentity parameter instead.", false)]
         public ResourceIdentityType? IdentityType { get; set; }
 
         protected override void ProcessRecord()
@@ -163,9 +184,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             // UpgradePolicy
             Microsoft.Azure.Management.Compute.Models.UpgradePolicy vUpgradePolicy = null;
-
-            // RecoveryPolicy
-            Microsoft.Azure.Management.Compute.Models.RecoveryPolicy vRecoveryPolicy = null;
 
             // VirtualMachineProfile
             Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetVMProfile vVirtualMachineProfile = null;
@@ -245,13 +263,22 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vUpgradePolicy.Mode = this.UpgradePolicyMode;
             }
 
-            if (this.RecoveryPolicyMode != null)
+            if (this.RollingUpgradePolicy != null)
             {
-                if (vRecoveryPolicy == null)
+                if (vUpgradePolicy == null)
                 {
-                    vRecoveryPolicy = new Microsoft.Azure.Management.Compute.Models.RecoveryPolicy();
+                    vUpgradePolicy = new Microsoft.Azure.Management.Compute.Models.UpgradePolicy();
                 }
-                vRecoveryPolicy.Mode = this.RecoveryPolicyMode;
+                vUpgradePolicy.RollingUpgradePolicy = this.RollingUpgradePolicy;
+            }
+
+            if (this.AutoOSUpgrade != null)
+            {
+                if (vUpgradePolicy == null)
+                {
+                    vUpgradePolicy = new Microsoft.Azure.Management.Compute.Models.UpgradePolicy();
+                }
+                vUpgradePolicy.AutomaticOSUpgrade = this.AutoOSUpgrade;
             }
 
             if (this.OsProfile != null)
@@ -270,6 +297,23 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     vVirtualMachineProfile = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetVMProfile();
                 }
                 vVirtualMachineProfile.StorageProfile = this.StorageProfile;
+            }
+
+            if (this.HealthProbeId != null)
+            {
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetVMProfile();
+                }
+                if (vVirtualMachineProfile.NetworkProfile == null)
+                {
+                    vVirtualMachineProfile.NetworkProfile = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetNetworkProfile();
+                }
+                if (vVirtualMachineProfile.NetworkProfile.HealthProbe == null)
+                {
+                    vVirtualMachineProfile.NetworkProfile.HealthProbe = new Microsoft.Azure.Management.Compute.Models.ApiEntityReference();
+                }
+                vVirtualMachineProfile.NetworkProfile.HealthProbe.Id = this.HealthProbeId;
             }
 
             if (this.NetworkInterfaceConfiguration != null)
@@ -320,6 +364,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vVirtualMachineProfile.LicenseType = this.LicenseType;
             }
 
+            if (this.AssignIdentity.IsPresent)
+            {
+                if (vIdentity == null)
+                {
+                    vIdentity = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetIdentity();
+                }
+                vIdentity.Type = ResourceIdentityType.SystemAssigned;
+            }
+
             if (this.IdentityType != null)
             {
                 if (vIdentity == null)
@@ -329,17 +382,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vIdentity.Type = this.IdentityType;
             }
 
-
             var vVirtualMachineScaleSet = new PSVirtualMachineScaleSet
             {
                 Overprovision = this.Overprovision,
                 SinglePlacementGroup = this.SinglePlacementGroup,
+                Zones = this.Zone,
                 Location = this.Location,
                 Tags = (this.Tag == null) ? null : this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value),
                 Sku = vSku,
                 Plan = vPlan,
                 UpgradePolicy = vUpgradePolicy,
-                RecoveryPolicy = vRecoveryPolicy,
                 VirtualMachineProfile = vVirtualMachineProfile,
                 Identity = vIdentity,
             };

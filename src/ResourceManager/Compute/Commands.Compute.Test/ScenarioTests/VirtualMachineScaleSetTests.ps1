@@ -108,7 +108,7 @@ function Test-VirtualMachineScaleSet-Common($IsManaged)
         $ipCfg = New-AzureRmVmssIPConfig -Name 'test' -SubnetId $subnetId;
         Assert-False { $ipCfg.Primary };
 
-        $vmss = New-AzureRmVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'automatic' -NetworkInterfaceConfiguration $netCfg -Overprovision $false `
+        $vmss = New-AzureRmVmssConfig -Location $loc -Zone "1" -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'automatic' -NetworkInterfaceConfiguration $netCfg -Overprovision $false `
             | Add-AzureRmVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
             | Set-AzureRmVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
             | Add-AzureRmVmssExtension -Name $extname -Publisher $publisher -Type $exttype -TypeHandlerVersion $extver -AutoUpgradeMinorVersion $true `
@@ -138,6 +138,9 @@ function Test-VirtualMachineScaleSet-Common($IsManaged)
         Assert-AreEqual $true $vmss.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].Primary;
         Assert-AreEqual $subnetId `
             $vmss.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].Subnet.Id;
+
+        Assert-AreEqual "1" $vmss.Zones
+        $vmss.Zones = $null
 
         $vmss = New-AzureRmVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
 
@@ -436,7 +439,7 @@ function Test-VirtualMachineScaleSetLB
         $backendAddressPool = New-AzureRmLoadBalancerBackendAddressPoolConfig -Name $backendAddressPoolName
         $probe = New-AzureRmLoadBalancerProbeConfig -Name $probeName -RequestPath healthcheck.aspx -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2
         $inboundNatPool = New-AzureRmLoadBalancerInboundNatPoolConfig -Name $inboundNatPoolName -FrontendIPConfigurationId `
-            $frontend.Id -Protocol Tcp -FrontendPortRangeStart 3360 -FrontendPortRangeEnd 3362 -BackendPort 3370;
+            $frontend.Id -Protocol Tcp -FrontendPortRangeStart 3360 -FrontendPortRangeEnd 3364 -BackendPort 3370;
         $lbrule = New-AzureRmLoadBalancerRuleConfig -Name $lbruleName `
             -FrontendIPConfiguration $frontend -BackendAddressPool $backendAddressPool `
             -Probe $probe -Protocol Tcp -FrontendPort 80 -BackendPort 80 `
@@ -801,7 +804,7 @@ function Test-VirtualMachineScaleSetIdentity
         $extname2 = 'csetest2';
 
         $ipCfg = New-AzureRmVmssIPConfig -Name 'test' -SubnetId $subnetId;
-        $vmss = New-AzureRmVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'Manual' -NetworkInterfaceConfiguration $netCfg -IdentityType "SystemAssigned"`
+        $vmss = New-AzureRmVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'Manual' -NetworkInterfaceConfiguration $netCfg -AssignIdentity `
             | Add-AzureRmVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
             | Set-AzureRmVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
             | Set-AzureRmVmssStorageProfile -Name 'test' -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
@@ -926,6 +929,122 @@ function Test-VirtualMachineScaleSetNetworking
         Assert-NotNull $result.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations;
         Assert-AreEqual $result.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].PublicIPAddressConfiguration.Name $ipName;
 
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Virtual Machine Scale Set Rolling Upgraade
+#>
+function Test-VirtualMachineScaleSetRollingUpgrade
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+
+    try
+    {
+        # Common
+        $loc = 'southcentralus';
+        New-AzureRMResourceGroup -Name $rgname -Location $loc -Force;
+
+        # SRP
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_GRS';
+        New-AzureRMStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        $stoaccount = Get-AzureRMStorageAccount -ResourceGroupName $rgname -Name $stoname;
+
+        # NRP
+        $subnet = New-AzureRMVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzureRMVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzureRMVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+        $pubip = New-AzureRMPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
+        $pubip = Get-AzureRMPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
+
+
+        # Create LoadBalancer
+        $frontendName = Get-ResourceName
+        $backendAddressPoolName = Get-ResourceName
+        $probeName = Get-ResourceName
+        $inboundNatPoolName = Get-ResourceName
+        $lbruleName = Get-ResourceName
+        $lbName = Get-ResourceName
+
+        $frontend = New-AzureRmLoadBalancerFrontendIpConfig -Name $frontendName -PublicIpAddress $pubip
+        $backendAddressPool = New-AzureRmLoadBalancerBackendAddressPoolConfig -Name $backendAddressPoolName
+        $probe = New-AzureRmLoadBalancerProbeConfig -Name $probeName -RequestPath healthcheck.aspx -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2
+        $inboundNatPool = New-AzureRmLoadBalancerInboundNatPoolConfig -Name $inboundNatPoolName -FrontendIPConfigurationId `
+            $frontend.Id -Protocol Tcp -FrontendPortRangeStart 3360 -FrontendPortRangeEnd 3368 -BackendPort 3370;
+        $lbrule = New-AzureRmLoadBalancerRuleConfig -Name $lbruleName `
+            -FrontendIPConfiguration $frontend -BackendAddressPool $backendAddressPool `
+            -Probe $probe -Protocol Tcp -FrontendPort 80 -BackendPort 80 `
+            -IdleTimeoutInMinutes 15 -EnableFloatingIP -LoadDistribution SourceIP;
+        $actualLb = New-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $loc `
+            -FrontendIpConfiguration $frontend -BackendAddressPool $backendAddressPool `
+            -Probe $probe -LoadBalancingRule $lbrule -InboundNatPool $inboundNatPool;
+        $expectedLb = Get-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname
+
+        # New VMSS Parameters
+        $vmssName = 'vmss' + $rgname;
+        $vmssType = 'Microsoft.Compute/virtualMachineScaleSets';
+
+        $adminUsername = 'Foo12';
+        $adminPassword = $PLACEHOLDER;
+
+        $imgRef = Get-DefaultCRPImage -loc $loc;
+        $storageUri = "https://" + $stoname + ".blob.core.windows.net/"
+        $vhdContainer = "https://" + $stoname + ".blob.core.windows.net/" + $vmssName;
+
+        $extname = 'csetest';
+        $publisher = 'Microsoft.Compute';
+        $exttype = 'BGInfo';
+        $extver = '2.1';
+
+        $extname2 = 'csetest2';
+
+        $ipCfg = New-AzureRmVmssIPConfig -Name 'test' `
+            -LoadBalancerInboundNatPoolsId $expectedLb.InboundNatPools[0].Id `
+            -LoadBalancerBackendAddressPoolsId $expectedLb.BackendAddressPools[0].Id `
+            -SubnetId $subnetId;
+
+        $vmss = New-AzureRmVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'Rolling' -NetworkInterfaceConfiguration $netCfg -HealthProbeId $expectedLb.Probes[0].Id `
+            | Add-AzureRmVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
+            | Set-AzureRmVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
+            | Set-AzureRmVmssStorageProfile -Name 'test' -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
+            -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion $imgRef.Version `
+            -ImageReferencePublisher $imgRef.PublisherName -VhdContainer $vhdContainer `
+            | Add-AzureRmVmssExtension -Name $extname -Publisher $publisher -Type $exttype -TypeHandlerVersion $extver -AutoUpgradeMinorVersion $true `
+            | Set-AzureRmVmssRollingUpgradePolicy -MaxBatchInstancePercent 90 -MaxUnhealthyInstancePercent 50 -MaxUnhealthyUpgradedInstancePercent 30 -PauseTimeBetweenBatches 10 `
+
+        Assert-AreEqual 90 $vmss.UpgradePolicy.RollingUpgradePolicy.MaxBatchInstancePercent;
+        Assert-AreEqual 50 $vmss.UpgradePolicy.RollingUpgradePolicy.MaxUnhealthyInstancePercent;
+        Assert-AreEqual 30 $vmss.UpgradePolicy.RollingUpgradePolicy.MaxUnhealthyUpgradedInstancePercent;
+        Assert-AreEqual 10 $vmss.UpgradePolicy.RollingUpgradePolicy.PauseTimeBetweenBatches;
+        $vmss.UpgradePolicy.RollingUpgradePolicy = $null;
+
+        Assert-ThrowsContains { New-AzureRmVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss; } `
+            "is not registered for feature Microsoft.Network/AllowVmssHealthProbe";
+        $vmss.VirtualMachineProfile.NetworkProfile.HealthProbe = $null;
+        Assert-ThrowsContains { New-AzureRmVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss; } `
+            "health probe was not provided";
+        $vmss.UpgradePolicy.Mode=[Microsoft.Azure.Management.Compute.Models.UpgradeMode]::Automatic;
+        $result = New-AzureRmVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
+
+        $vmssResult = Get-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+
+        Assert-ThrowsContains { Start-AzureRmVmssRollingOSUpgrade -ResourceGroupName $rgname -VMScaleSetName $vmssName } `
+            "unless the VM Scale Set has upgradePolicy.mode set to Rolling";
+
+        Assert-ThrowsContains { Stop-AzureRmVmssRollingUpgrade -ResourceGroupName $rgname -VMScaleSetName $vmssName -Force } `
+            "There is no ongoing Rolling Upgrade to cancel.";
+
+        Assert-ThrowsContains { Get-AzureRmVmssRollingUpgrade -ResourceGroupName $rgname -VMScaleSetName $vmssName } `
+            "The entity was not found";
     }
     finally
     {

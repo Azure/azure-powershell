@@ -152,6 +152,9 @@ Gets the settings for a SQL Server extension on a virtual machine.
 ### [Get-AzureRmVmss](Get-AzureRmVmss.md)
 Gets the properties of a VMSS.
 
+### [Get-AzureRmVmssRollingUpgrade](Get-AzureRmVmssRollingUpgrade.md)
+Gets the status of the latest virtual machine scale set rolling upgrade.
+
 ### [Get-AzureRmVmssSku](Get-AzureRmVmssSku.md)
 Gets the available SKUs for the VMSS.
 
@@ -434,6 +437,9 @@ Sets the virtual machine scale set boot diagnostics profile.
 ### [Set-AzureRmVmssOsProfile](Set-AzureRmVmssOsProfile.md)
 Sets the VMSS operating system profile properties.
 
+### [Set-AzureRmVmssRollingUpgradePolicy](Set-AzureRmVmssRollingUpgradePolicy.md)
+Sets the VMSS rolling upgrade policy properties.
+
 ### [Set-AzureRmVmssStorageProfile](Set-AzureRmVmssStorageProfile.md)
 Sets the storage profile properties for the VMSS.
 
@@ -446,11 +452,17 @@ Starts an Azure virtual machine.
 ### [Start-AzureRmVmss](Start-AzureRmVmss.md)
 Starts the VMSS or a set of virtual machines within the VMSS.
 
+### [Start-AzureRmVmssRollingOSUpgrade](Start-AzureRmVmssRollingOSUpgrade.md)
+Starts a rolling upgrade to move all virtual machine scale set instances to the latest available Platform Image OS version. Instances which are already running the latest available OS version are not affected.
+
 ### [Stop-AzureRmVM](Stop-AzureRmVM.md)
 Stops an Azure virtual machine.
 
 ### [Stop-AzureRmVmss](Stop-AzureRmVmss.md)
 Stops the VMSS or a set of virtual machines within the VMSS.
+
+### [Stop-AzureRmVmssRollingUpgrade](Stop-AzureRmVmssRollingUpgrade.md)
+Cancels the current virtual machine scale set rolling upgrade.
 
 ### [Test-AzureRmVMAEMExtension](Test-AzureRmVMAEMExtension.md)
 Checks the configuration of the AEM extension.
