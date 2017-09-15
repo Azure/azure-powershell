@@ -462,3 +462,43 @@ function Test-MinMaxAccountName
     }
 }
 
+<#
+.SYNOPSIS
+Test  Test-GetWithPaging
+#>
+function Test-GetWithPaging
+{
+	# Setup
+    $rgname = Get-CognitiveServicesManagementTestResourceName
+	$loc = 'West US'
+	
+	try
+    {
+		$TotalCount = 100
+        # Test
+        New-AzureRmResourceGroup -Name $rgname -Location $loc
+
+		# 100 Face
+		For($i = 0; $i -lt $TotalCount ; $i++)
+		{
+			New-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name "facepaging_wu_$i" -Type 'Face' -SkuName 'S0' -Location $loc -Force;
+		}
+
+		# 100 Emotion
+		For($i = 0; $i -lt $TotalCount ; $i++)
+		{
+			New-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name "emotionpaging_wu_$i" -Type 'Emotion' -SkuName 'S0' -Location $loc -Force;
+		}
+
+		$accounts = Get-AzureRmCognitiveServicesAccount
+		Assert-AreEqual 200 $accounts.Count
+
+		$accounts = Get-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname
+		Assert-AreEqual 200 $accounts.Count
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

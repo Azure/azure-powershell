@@ -175,6 +175,9 @@
     <None Include="SessionRecords\CognitiveServices.Test.ScenarioTests.CognitiveServicesAccountTests\TestGetAccounts.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\CognitiveServices.Test.ScenarioTests.CognitiveServicesAccountTests\TestGetWithPaging.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\CognitiveServices.Test.ScenarioTests.CognitiveServicesAccountTests\TestMinMaxAccountNames.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
