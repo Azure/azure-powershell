@@ -313,11 +313,12 @@ function Add-Remote
             $ErrorActionPreference = 'Stop'
             # Get app-level deployment credentials
             $xml = [xml](Get-AzureRmWebAppPublishingProfile -Name $WebApp.Name -ResourceGroupName $WebApp.ResourceGroup -OutputFile null)
-            $username = $xml.SelectNodes("//publishProfile[@publishMethod=`"MSDeploy`"]/@userName").value
-            $password = $xml.SelectNodes("//publishProfile[@publishMethod=`"MSDeploy`"]/@userPWD").value
+            $username = [System.Uri]::EscapeDataString($xml.SelectNodes("//publishProfile[@publishMethod=`"MSDeploy`"]/@userName").value)
+            $password = [System.Uri]::EscapeDataString($xml.SelectNodes("//publishProfile[@publishMethod=`"MSDeploy`"]/@userPWD").value)
             $remoteName = "azure"
+			$url = ("https://$username" + ':' + "$password@$($WebApp.EnabledHostNames[1])")
             # Add the Azure remote to a local Git respository 
-            $command = "git -C $GitRepositoryPath remote add $remoteName 'https://${username}:$password@$($WebApp.EnabledHostNames[0])'" + " 2> $gitOutput"
+            $command = "git -C $GitRepositoryPath remote add $remoteName $url"
             Invoke-Expression -Command $command | Out-Null
             if ($gitOutPut) {
                 $repoAdded = $false
