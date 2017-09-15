@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 
-    public class SiteRecoveryAutoMapperProfile : Profile
+    public class SiteRecoveryAutoMapperProfile : AutoMapper.Profile
     {
         private static readonly Lazy<bool> initialize;
 

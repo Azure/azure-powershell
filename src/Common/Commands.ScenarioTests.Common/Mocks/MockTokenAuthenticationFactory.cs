@@ -117,7 +117,11 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
         
         public ServiceClientCredentials GetServiceClientCredentials(IAzureContext context, string targetEndpoint)
         {
-            throw new NotImplementedException();
+            return new Microsoft.Rest.TokenCredentials(Token.AccessToken);
+        }
+
+        public void RemoveUser(IAzureAccount account, IAzureTokenCache tokenCache)
+        {
         }
     }
 }
