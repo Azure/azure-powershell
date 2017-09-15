@@ -62,7 +62,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="AzureRM.Websites.Experiments.psd1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="AzureRM.Websites.Experiments.psm1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
