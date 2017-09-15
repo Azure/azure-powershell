@@ -399,6 +399,52 @@ function Test-AnalysisServicesServerRestart
 	}
 }
 
+
+<#
+.SYNOPSIS
+Tests Analysis Services server Login and synchronize single database.
+In order to run this test successfully, Following environment variables need to be set.
+ASAZURE_TEST_ROLLOUT e.x. value 'aspaaswestusloop1.asazure-int.windows.net'
+ASAZURE_TESTUSER e.x. value 'aztest0@asazure.ccsctp.net'
+ASAZURE_TESTUSER_PWD e.x. value 'samplepwd'
+ASAZURE_TESTDATABASE e.x. value 'adventureworks'
+#>
+function Test-AnalysisServicesServerSynchronizeSingle
+{
+    param
+	(
+		$rolloutEnvironment = $env.ASAZURE_TEST_ROLLOUT
+	)
+	try
+	{
+		# Creating server
+        $location = Get-Location
+        $resourceGroupName = Get-ResourceGroupName
+        $serverName = Get-AnalysisServicesServerName
+        New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+
+        $serverCreated = New-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location -Sku 'S1' -Administrators $env.ASAZURE_TESTUSER
+        Assert-True {$serverCreated.ProvisioningState -like "Succeeded"}
+        Assert-True {$serverCreated.State -like "Succeeded"}
+
+        $asAzureProfile = Login-AzureAsAccount -RolloutEnvironment $rolloutEnvironment
+        Assert-NotNull $asAzureProfile "Login-AzureAsAccount $rolloutEnvironment must not return null"
+
+        $secpasswd = ConvertTo-SecureString $env.ASAZURE_TESTUSER_PWD -AsPlainText -Force
+        $cred = New-Object System.Management.Automation.PSCredential ($env.ASAZURE_TESTUSER, $secpasswd)
+
+		Synchronize-AzureAsInstance -Instance $serverName -Database $env.ASAZURE_TESTDATABASE -PassThru
+		
+		Assert-NotNull $asAzureProfile "Login-AzureAsAccount $rolloutEnvironment must not return null"
+	}
+	finally
+	{
+		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
+		Invoke-HandledCmdlet -Command {Remove-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+	}
+}
+
 <#
 .SYNOPSIS
 Tests Analysis Services server Login with SPN. In order to run this test successfully:

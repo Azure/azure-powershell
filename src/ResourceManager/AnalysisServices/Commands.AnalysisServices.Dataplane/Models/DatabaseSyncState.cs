@@ -12,31 +12,26 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using System.Runtime.Serialization;
 
-namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
+namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
 {
-    [Serializable]
-    public class AsAzureEnvironment
+    [DataContract]
+    public enum DatabaseSyncState
     {
-        public AsAzureEnvironment(string Name)
-        {
-            this.Name = Name;
-            this.Endpoints = new Hashtable();
-        }
+        [EnumMember]
+        Invalid = -1,
 
-        public string Name { get; set; }
+        [EnumMember]
+        Replicating = 0,
 
-        public Hashtable Endpoints { get; set; }
+        [EnumMember]
+        Rehydrating = 1,
 
-        public enum AsRolloutEndpoints
-        {
-            AdAuthorityBaseUrl,
-            RestartEndpointFormat,
-            LogfileEndpointFormat,
-            SyncEndpoint
-        }
+        [EnumMember]
+        Completed = 2,
+
+        [EnumMember]
+        Failed = 3,
     }
 }

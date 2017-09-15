@@ -13,6 +13,7 @@
 # ----------------------------------------------------------------------------------
 
 @{
-    "Login-AzureAsAccount" = "Restart-AzureAnalysisServicesInstance";
-    "Restart-AzureAsInstance" = "Set-AzureRmContext";
+    "Login-AzureAsAccount" = "Add-AzureAnalysisServicesAccount";
+    "Restart-AzureAsInstance" = "Restart-AzureAnalysisServicesInstance";
+	"Sync-AzureAsInstance" = "Sync-AzureAnalysisServicesInstance";
 }.GetEnumerator() | Select @{Name='Name'; Expression={$_.Key}}, @{Name='Value'; Expression={$_.Value}} | New-Alias -Description "AzureAlias"

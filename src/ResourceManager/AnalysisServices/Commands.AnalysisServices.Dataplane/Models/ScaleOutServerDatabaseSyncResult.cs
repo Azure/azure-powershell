@@ -13,30 +13,29 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections;
-using System.Collections.Generic;
+using System.Runtime.Serialization;
 
-namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
+namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
 {
-    [Serializable]
-    public class AsAzureEnvironment
+    [DataContract]
+    sealed class ScaleOutServerDatabaseSyncResult
     {
-        public AsAzureEnvironment(string Name)
-        {
-            this.Name = Name;
-            this.Endpoints = new Hashtable();
-        }
+        [DataMember]
+        public string OperationId { get; set; }
 
-        public string Name { get; set; }
+        [DataMember(Name = "database")]
+        public string Database { get; set; }
 
-        public Hashtable Endpoints { get; set; }
+        [DataMember(Name = "UpdatedAt")]
+        public DateTime UpdatedAt { get; set; }
 
-        public enum AsRolloutEndpoints
-        {
-            AdAuthorityBaseUrl,
-            RestartEndpointFormat,
-            LogfileEndpointFormat,
-            SyncEndpoint
-        }
+        [DataMember(Name = "StartedAt")]
+        public DateTime StartedAt { get; set; }
+
+        [DataMember(Name = "syncstate")]
+        public DatabaseSyncState SyncState { get; set; }
+
+        [DataMember(Name = "details")]
+        public string Details { get; set; }
     }
 }

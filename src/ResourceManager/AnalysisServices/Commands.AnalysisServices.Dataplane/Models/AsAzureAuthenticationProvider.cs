@@ -54,7 +54,9 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
                 AsAzureClientSession.TokenCache);
 
             AuthenticationResult result = null;
-            if (password == null && asAzureContext.Account.Type == AsAzureAccount.AccountType.User)
+            string accountType = string.IsNullOrEmpty(asAzureContext.Account.Type) ? AsAzureAccount.AccountType.User : asAzureContext.Account.Type;
+
+            if (password == null && accountType == AsAzureAccount.AccountType.User)
             {
                 if (asAzureContext.Account.Id != null)
                 {
@@ -73,10 +75,14 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
                         resourceRedirectUri,
                         promptBehavior);
                 }
+
+                asAzureContext.Account.Id = result.UserInfo.DisplayableId;
+                asAzureContext.Account.Tenant = result.TenantId;
+                asAzureContext.Account.UniqueId = result.UserInfo.UniqueId;
             }
             else
             {
-                if (asAzureContext.Account.Type == AsAzureAccount.AccountType.User)
+                if (accountType == AsAzureAccount.AccountType.User)
                 {
                     UserCredential userCredential = new UserCredential(asAzureContext.Account.Id, password);
                     result = authenticationContext.AcquireToken(resourceUri, clientId, userCredential);
@@ -85,7 +91,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
                     asAzureContext.Account.Tenant = result.TenantId;
                     asAzureContext.Account.UniqueId = result.UserInfo.UniqueId;
                 }
-                else if (asAzureContext.Account.Type == AsAzureAccount.AccountType.ServicePrincipal)
+                else if (accountType == AsAzureAccount.AccountType.ServicePrincipal)
                 {
                     if (string.IsNullOrEmpty(asAzureContext.Account.CertificateThumbprint))
                     {

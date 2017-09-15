@@ -13,30 +13,21 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 
-namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
-{
-    [Serializable]
-    public class AsAzureEnvironment
+namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
+{ 
+    [DataContract]
+    sealed class ClusterResolutionResult
     {
-        public AsAzureEnvironment(string Name)
-        {
-            this.Name = Name;
-            this.Endpoints = new Hashtable();
-        }
+        [DataMember(Name = "clusterFQDN")]
+        public string ClusterFQDN { get; set; }
 
-        public string Name { get; set; }
+        [DataMember(Name = "coreServerName")]
+        public string CoreServerName { get; set; }
 
-        public Hashtable Endpoints { get; set; }
-
-        public enum AsRolloutEndpoints
-        {
-            AdAuthorityBaseUrl,
-            RestartEndpointFormat,
-            LogfileEndpointFormat,
-            SyncEndpoint
-        }
+        [DataMember(Name = "tenantId")]
+        public string TenantId { get; set; }
     }
 }
