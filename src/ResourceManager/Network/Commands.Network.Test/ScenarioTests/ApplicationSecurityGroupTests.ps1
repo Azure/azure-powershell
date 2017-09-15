@@ -1,5 +1,4 @@
 ﻿# ----------------------------------------------------------------------------------
-#
 # Copyright Microsoft Corporation
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -120,13 +119,11 @@ function Test-ApplicationSecurityGroupCollections
 
 <#
 .SYNOPSIS
+Creates a new security rule containing application security group
 #>
 function Test-ApplicationSecurityGroupInNewSecurityRule
 {
-    param
-    (
-        $useIds
-    )
+    param([bool] $useIds = $false)
 
     $rgLocation = Get-ProviderLocation ResourceManagement
     $resourceTypeParent = "Microsoft.Network/ApplicationSecurityGroups"
@@ -206,13 +203,11 @@ function Test-ApplicationSecurityGroupInNewSecurityRule
 
 <#
 .SYNOPSIS
+Adds a new security rule containing application security groups to an existing network security group.
 #>
 function Test-ApplicationSecurityGroupInAddedSecurityRule
 {
-    param
-    (
-        $useIds
-    )
+    param([bool] $useIds = $false)
 
     $rgLocation = Get-ProviderLocation ResourceManagement
     $resourceTypeParent = "Microsoft.Network/ApplicationSecurityGroups"
@@ -287,13 +282,11 @@ function Test-ApplicationSecurityGroupInAddedSecurityRule
 
 <#
 .SYNOPSIS
+Sets a new goal state of a security rule containing application security groups.
 #>
 function Test-ApplicationSecurityGroupInSetSecurityRule
 {
-    param
-    (
-        $useIds
-    )
+    param([bool] $useIds = $false)
 
     $rgLocation = Get-ProviderLocation ResourceManagement
     $resourceTypeParent = "Microsoft.Network/ApplicationSecurityGroups"
@@ -359,6 +352,7 @@ function Test-ApplicationSecurityGroupInSetSecurityRule
 
 <#
 .SYNOPSIS
+Creates a network interface with its default IP config associated with application security groups.
 #>
 function Test-ApplicationSecurityGroupInNewNetworkInterface
 {
@@ -397,6 +391,186 @@ function Test-ApplicationSecurityGroupInNewNetworkInterface
         Assert-AreEqual 2 @($nic.IpConfigurations.ApplicationSecurityGroups).Count
         Assert-IsTrue @($nic.IpConfigurations.ApplicationSecurityGroups.Id) -contains $asg2.Id
         Assert-IsTrue @($nic.IpConfigurations.ApplicationSecurityGroups.Id) -contains $asg3.Id
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgName
+    }
+}
+
+<#
+.SYNOPSIS
+Creates a network interface containing IP configs already associated with application security groups.
+#>
+function Test-ApplicationSecurityGroupInNewNetworkInterfaceIpConfig
+{
+    param([bool] $useIds = $false)
+
+    $rgLocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/ApplicationSecurityGroups"
+    $location = Get-ProviderLocation $resourceTypeParent
+
+    $rgName = Get-ResourceGroupName
+
+    $asgName1 = Get-ResourceName
+    $asgName2 = Get-ResourceName
+
+    $ipConfigName1 = Get-ResourceName
+    $ipConfigName2 = Get-ResourceName
+
+    $vnetName = Get-ResourceName
+    $subnetName = Get-ResourceName
+    $nicName = Get-ResourceName
+
+    try
+    {
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgName -Location $location -Tags @{ testtag = "ASG tag" }
+
+        $asg1 = New-AzureRmApplicationSecurityGroup -ResourceGroupName $rgName -Name $asgName1 -Location $rgLocation
+        $asg2 = New-AzureRmApplicationSecurityGroup -ResourceGroupName $rgName -Name $asgName2 -Location $rgLocation
+
+        $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
+        $vnet = New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+
+        if ($useIds)
+        {
+            $ipConfig1 = New-AzureRmNetworkInterfaceIpConfig -Name $ipConfigName1 -Subnet $vnet.Subnets[0] -ApplicationSecurityGroupId $asg1.Id -Primary
+            $ipConfig2 = New-AzureRmNetworkInterfaceIpConfig -Name $ipConfigName2 -Subnet $vnet.Subnets[0] -ApplicationSecurityGroupId $asg1.Id
+        }
+        else
+        {
+            $ipConfig1 = New-AzureRmNetworkInterfaceIpConfig -Name $ipConfigName1 -Subnet $vnet.Subnets[0] -ApplicationSecurityGroup $asg1 -Primary
+            $ipConfig2 = New-AzureRmNetworkInterfaceIpConfig -Name $ipConfigName2 -Subnet $vnet.Subnets[0] -ApplicationSecurityGroup $asg1
+        }
+
+        $nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $location -IpConfiguration @($ipConfig1, $ipConfig2)
+
+        Assert-AreEqual 1 @($nic.IpConfigurations[0].ApplicationSecurityGroups).Count
+        Assert-AreEqual $asg1.Id @($nic.IpConfigurations[0].ApplicationSecurityGroups).Id
+
+        Assert-AreEqual 1 @($nic.IpConfigurations[1].ApplicationSecurityGroups).Count
+        Assert-AreEqual $asg1.Id @($nic.IpConfigurations[1].ApplicationSecurityGroups).Id
+
+        if ($useIds)
+        {
+            $ipConfig1 = New-AzureRmNetworkInterfaceIpConfig -Name $ipConfigName1 -Subnet $vnet.Subnets[0] -ApplicationSecurityGroupId ($asg1.Id, $asg2.Id) -Primary
+            $ipConfig2 = New-AzureRmNetworkInterfaceIpConfig -Name $ipConfigName2 -Subnet $vnet.Subnets[0] -ApplicationSecurityGroupId ($asg1.Id, $asg2.Id)
+        }
+        else
+        {
+            $ipConfig1 = New-AzureRmNetworkInterfaceIpConfig -Name $ipConfigName1 -Subnet $vnet.Subnets[0] -ApplicationSecurityGroup ($asg1, $asg2) -Primary
+            $ipConfig2 = New-AzureRmNetworkInterfaceIpConfig -Name $ipConfigName2 -Subnet $vnet.Subnets[0] -ApplicationSecurityGroup ($asg1, $asg2)
+        }
+
+        $nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $location -IpConfiguration @($ipConfig1, $ipConfig2) -Force
+
+        Assert-AreEqual 1 @($nic.IpConfigurations[0].ApplicationSecurityGroups).Count
+        Assert-IsTrue @($nic.IpConfigurations[0].ApplicationSecurityGroups).Id -contains $asg1.Id
+        Assert-IsTrue @($nic.IpConfigurations[0].ApplicationSecurityGroups).Id -contains $asg2.Id
+
+        Assert-AreEqual 1 @($nic.IpConfigurations[1].ApplicationSecurityGroups).Count
+        Assert-IsTrue @($nic.IpConfigurations[1].ApplicationSecurityGroups).Id -contains $asg1.Id
+        Assert-IsTrue @($nic.IpConfigurations[1].ApplicationSecurityGroups).Id -contains $asg2.Id
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgName
+    }
+}
+
+<#
+.SYNOPSIS
+Adds an application security groups to existing IP configs and to the new ones being added.
+#>
+function Test-ApplicationSecurityGroupInAddedNetworkInterfaceIpConfig
+{
+    param([bool] $useIds = $false)
+
+    $rgLocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/ApplicationSecurityGroups"
+    $location = Get-ProviderLocation $resourceTypeParent
+
+    $rgName = Get-ResourceGroupName
+
+    $asgName1 = Get-ResourceName
+    $asgName2 = Get-ResourceName
+
+    $ipConfigName1 = Get-ResourceName
+    $ipConfigName2 = Get-ResourceName
+
+    $vnetName = Get-ResourceName
+    $subnetName = Get-ResourceName
+    $nicName = Get-ResourceName
+
+    try
+    {
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgName -Location $location -Tags @{ testtag = "ASG tag" }
+
+        $asg1 = New-AzureRmApplicationSecurityGroup -ResourceGroupName $rgName -Name $asgName1 -Location $rgLocation
+        $asg2 = New-AzureRmApplicationSecurityGroup -ResourceGroupName $rgName -Name $asgName2 -Location $rgLocation
+
+        $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
+        $vnet = New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+
+        $nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $location  -Subnet $vnet.Subnets[0]
+
+        if ($useIds)
+        {
+			$ipconfigSet = Set-AzureRmNetworkInterfaceIpConfig -NetworkInterface $nic -Name $nic.IpConfigurations[0].Name -SubnetId $vnet.Subnets[0].Id -ApplicationSecurityGroupId $asg1.Id -Primary
+            $ipConfig1 = Add-AzureRmNetworkInterfaceIpConfig -NetworkInterface $nic -Name $ipConfigName1 -SubnetId $vnet.Subnets[0].Id -ApplicationSecurityGroupId $asg1.Id  | Set-AzureRmNetworkInterface
+            $ipConfig2 = Add-AzureRmNetworkInterfaceIpConfig -NetworkInterface $nic -Name $ipConfigName2 -SubnetId $vnet.Subnets[0].Id -ApplicationSecurityGroupId $asg1.Id  | Set-AzureRmNetworkInterface
+        }
+        else
+        {
+			$ipconfigSet = Set-AzureRmNetworkInterfaceIpConfig -NetworkInterface $nic -Name $nic.IpConfigurations[0].Name -Subnet $vnet.Subnets[0] -ApplicationSecurityGroup $asg1 -Primary
+            $ipConfig1 = Add-AzureRmNetworkInterfaceIpConfig -NetworkInterface $nic -Name $ipConfigName1 -Subnet $vnet.Subnets[0] -ApplicationSecurityGroup $asg1  | Set-AzureRmNetworkInterface
+            $ipConfig2 = Add-AzureRmNetworkInterfaceIpConfig -NetworkInterface $nic -Name $ipConfigName2 -Subnet $vnet.Subnets[0] -ApplicationSecurityGroup $asg1  | Set-AzureRmNetworkInterface
+        }
+
+		$nic = Get-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName
+
+		Assert-AreEqual 3 @($nic.IpConfigurations).Count
+
+        Assert-AreEqual 1 @($nic.IpConfigurations[0].ApplicationSecurityGroups).Count
+        Assert-AreEqual 1 @($nic.IpConfigurations[1].ApplicationSecurityGroups).Count
+        Assert-AreEqual 1 @($nic.IpConfigurations[2].ApplicationSecurityGroups).Count
+
+        Assert-AreEqual $asg1.Id @($nic.IpConfigurations[0].ApplicationSecurityGroups).Id
+        Assert-AreEqual $asg1.Id @($nic.IpConfigurations[1].ApplicationSecurityGroups).Id
+        Assert-AreEqual $asg1.Id @($nic.IpConfigurations[2].ApplicationSecurityGroups).Id
+
+        $nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $location  -Subnet $vnet.Subnets[0] -Force
+
+        if ($useIds)
+        {
+			$ipconfigSet = Set-AzureRmNetworkInterfaceIpConfig -NetworkInterface $nic -Name $nic.IpConfigurations[0].Name -SubnetId $vnet.Subnets[0].Id -ApplicationSecurityGroupId @($asg1.Id, $asg2.Id) -Primary
+            $ipConfig1 = Add-AzureRmNetworkInterfaceIpConfig -NetworkInterface $nic -Name $ipConfigName1 -SubnetId $vnet.Subnets[0].Id -ApplicationSecurityGroupId @($asg1.Id, $asg2.Id) | Set-AzureRmNetworkInterface
+            $ipConfig2 = Add-AzureRmNetworkInterfaceIpConfig -NetworkInterface $nic -Name $ipConfigName2 -SubnetId $vnet.Subnets[0].Id -ApplicationSecurityGroupId @($asg1.Id, $asg2.Id) | Set-AzureRmNetworkInterface
+        }
+        else
+        {
+			$ipconfigSet = Set-AzureRmNetworkInterfaceIpConfig -NetworkInterface $nic -Name $nic.IpConfigurations[0].Name -Subnet $vnet.Subnets[0] -ApplicationSecurityGroup @($asg1, $asg2) -Primary
+            $ipConfig1 = Add-AzureRmNetworkInterfaceIpConfig -NetworkInterface $nic -Name $ipConfigName1 -Subnet $vnet.Subnets[0] -ApplicationSecurityGroup @($asg1, $asg2) | Set-AzureRmNetworkInterface
+            $ipConfig2 = Add-AzureRmNetworkInterfaceIpConfig -NetworkInterface $nic -Name $ipConfigName2 -Subnet $vnet.Subnets[0] -ApplicationSecurityGroup @($asg1, $asg2) | Set-AzureRmNetworkInterface
+        }
+
+		$nic = Get-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName
+
+		Assert-AreEqual 3 @($nic.IpConfigurations).Count
+
+        Assert-AreEqual 2 @($nic.IpConfigurations[0].ApplicationSecurityGroups).Count
+        Assert-AreEqual 2 @($nic.IpConfigurations[1].ApplicationSecurityGroups).Count
+        Assert-AreEqual 2 @($nic.IpConfigurations[2].ApplicationSecurityGroups).Count
+
+        Assert-IsTrue @($nic.IpConfigurations[0].ApplicationSecurityGroups).Id -contains $asg1.Id
+        Assert-IsTrue @($nic.IpConfigurations[1].ApplicationSecurityGroups).Id -contains $asg1.Id
+        Assert-IsTrue @($nic.IpConfigurations[2].ApplicationSecurityGroups).Id -contains $asg1.Id
+
+        Assert-IsTrue @($nic.IpConfigurations[0].ApplicationSecurityGroups).Id -contains $asg2.Id
+        Assert-IsTrue @($nic.IpConfigurations[1].ApplicationSecurityGroups).Id -contains $asg2.Id
+        Assert-IsTrue @($nic.IpConfigurations[2].ApplicationSecurityGroups).Id -contains $asg2.Id
     }
     finally
     {

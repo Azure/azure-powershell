@@ -212,7 +212,9 @@
     <None Include="ScenarioTests\ApplicationGatewayTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="ScenarioTests\ApplicationSecurityGroupTests.ps1" />
+    <None Include="ScenarioTests\ApplicationSecurityGroupTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="ScenarioTests\AvailableEndpointServicesTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
