@@ -10,7 +10,6 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
     using System;
-    using System.Reflection;
     
     
     /// <summary>
@@ -20,7 +19,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -40,7 +39,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources", typeof(Resources).GetTypeInfo().Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -314,6 +313,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The provided file {0} doesn&apos;t exist.
+        /// </summary>
+        internal static string InvalidFilePath {
+            get {
+                return ResourceManager.GetString("InvalidFilePath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid format of the resource group identifier. Expected &apos;subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}&apos;..
         /// </summary>
         internal static string InvalidFormatOfResourceGroupId {
@@ -382,6 +390,33 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         internal static string InvalidTemplateIdentity {
             get {
                 return ResourceManager.GetString("InvalidTemplateIdentity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The uri {0} is inaccessible, or the content is invalid..
+        /// </summary>
+        internal static string InvalidUriContent {
+            get {
+                return ResourceManager.GetString("InvalidUriContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please make sure the uri starts with http:// or https://..
+        /// </summary>
+        internal static string InvalidUriScheme {
+            get {
+                return ResourceManager.GetString("InvalidUriScheme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The specified uri string {0} is invalid..
+        /// </summary>
+        internal static string InvalidUriString {
+            get {
+                return ResourceManager.GetString("InvalidUriString", resourceCulture);
             }
         }
         

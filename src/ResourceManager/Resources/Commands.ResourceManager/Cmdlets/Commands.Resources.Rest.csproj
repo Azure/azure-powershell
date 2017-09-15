@@ -68,6 +68,7 @@
     <Compile Include="Entities\Applications\ApplicationArtifact.cs" />
     <Compile Include="Entities\Applications\ApplicationArtifactType.cs" />
     <Compile Include="Entities\Applications\ApplicationArtifactName.cs" />
+    <Compile Include="Entities\Applications\ApplicationKind.cs" />
     <Compile Include="Entities\Applications\ApplicationPackageSupportUrls.cs" />
     <Compile Include="Entities\Applications\ApplicationPackageCustomerSupport.cs" />
     <Compile Include="Entities\Applications\ApplicationProviderAuthorization.cs" />
@@ -115,6 +116,13 @@
     <Compile Include="Implementation\Features\GetAzureProviderFeatureCmdlet.cs" />
     <Compile Include="Implementation\Features\RegisterAzureProviderFeatureCmdlet.cs" />
     <Compile Include="Implementation\Locations\GetAzureLocationCmdlet.cs" />
+    <Compile Include="Implementation\ManagedApplications\GetAzureManagedApplication.cs" />
+    <Compile Include="Implementation\ManagedApplications\GetAzureManagedApplicationDefinition.cs" />
+    <Compile Include="Implementation\ManagedApplications\RemoveAzureManagedApplication.cs" />
+    <Compile Include="Implementation\ManagedApplications\RemoveAzureManagedApplicationDefinition.cs" />
+    <Compile Include="Implementation\ManagedApplications\SetAzureManagedApplicationDefinition.cs" />
+    <Compile Include="Implementation\ManagedApplications\SetAzureManagedApplication.cs" />
+    <Compile Include="Implementation\ManagedApplications\NewAzureManagedApplicationDefinition.cs" />
     <Compile Include="Implementation\ManagedApplications\NewAzureManagedApplication.cs" />
     <Compile Include="Implementation\ManagedApplications\ManagedApplicationCmdletBase.cs" />
     <Compile Include="Implementation\ResourceGroups\FindAzureResourceGroupCmdlet.cs" />

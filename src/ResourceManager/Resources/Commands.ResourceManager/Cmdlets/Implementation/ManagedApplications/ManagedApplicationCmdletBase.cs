@@ -17,9 +17,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.Azure.Commands.ResourceManager.Common;
     using Newtonsoft.Json.Linq;
+    using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
     using System.Linq;
     using System.Management.Automation;
     using System.Threading.Tasks;
+    using System;
+    using Microsoft.WindowsAzure.Commands.Utilities.Common;
+    using System.IO;
+    using Microsoft.WindowsAzure.Commands.Common;
+    using System.Collections.Generic;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application;
 
     /// <summary>
     /// Base class for policy assignment cmdlets.
@@ -38,10 +45,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         }
 
         /// <summary>
-        /// Converts the resource object to policy definition object.
+        /// Converts the resource object to specified resource type object.
         /// </summary>
         /// <param name="resources">The policy definition resource object.</param>
-        protected PSObject[] GetOutputObjects(params JToken[] resources)
+        protected PSObject[] GetOutputObjects(string resourceType, params JToken[] resources)
         {
             return resources
                 .CoalesceEnumerable()
@@ -49,9 +56,94 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 .SelectArray(resource =>
                 {
                     var psobject = resource.ToResource().ToPsObject();
-                    psobject.Properties.Add(new PSNoteProperty("ApplicationId", psobject.Properties["ResourceId"].Value));
+                    psobject.Properties.Add(new PSNoteProperty(resourceType, psobject.Properties["ResourceId"].Value));
                     return psobject;
                 });
+        }
+
+        /// <summary>
+        /// Gets a resource.
+        /// </summary>
+        protected async Task<JObject> GetExistingResource(string resourceId, string apiVersion)
+        {
+            return await this
+                .GetResourcesClient()
+                .GetResource<JObject>(
+                    resourceId: resourceId,
+                    apiVersion: apiVersion,
+                    cancellationToken: this.CancellationToken.Value)
+                .ConfigureAwait(continueOnCapturedContext: false);
+        }
+
+        /// <summary>
+        /// Gets the authorization object
+        /// </summary>
+        protected JToken GetAuthorizationObject(string[] authorizations)
+        {
+            List<ApplicationProviderAuthorization> lstAuth = new List<ApplicationProviderAuthorization>();
+            if (authorizations != null)
+            {
+                foreach (string s in authorizations)
+                {
+                    string[] auth = s.Split(':');
+                    if (auth != null)
+                    {
+                        lstAuth.Add(new ApplicationProviderAuthorization
+                        {
+                            PrincipalId = auth[0],
+                            RoleDefinitionId = auth[1]
+                        });
+                    }
+                }
+            }
+            return lstAuth.ToJToken();
+        }
+
+        /// <summary>
+        /// Gets the JToken object from parameter
+        /// </summary>
+        protected JToken GetObjectFromParameter(string parameter)
+        {
+            Uri outUri = null;
+            if (Uri.TryCreate(parameter, UriKind.Absolute, out outUri))
+            {
+                if (outUri.Scheme == Uri.UriSchemeFile)
+                {
+                    string filePath = this.TryResolvePath(parameter);
+                    if (File.Exists(filePath))
+                    {
+                        return JToken.FromObject(FileUtilities.DataStore.ReadFileAsText(filePath));
+                    }
+                    else
+                    {
+                        throw new PSInvalidOperationException(string.Format(ProjectResources.InvalidFilePath, parameter));
+                    }
+                }
+                else if (outUri.Scheme != Uri.UriSchemeHttp && outUri.Scheme != Uri.UriSchemeHttps)
+                {
+                    throw new PSInvalidOperationException(ProjectResources.InvalidUriScheme);
+                }
+                else if (!Uri.IsWellFormedUriString(outUri.AbsoluteUri, UriKind.Absolute))
+                {
+                    throw new PSInvalidOperationException(string.Format(ProjectResources.InvalidUriString, parameter));
+                }
+                else
+                {
+                    string contents = GeneralUtilities.DownloadFile(outUri.AbsoluteUri);
+                    if (string.IsNullOrEmpty(contents))
+                    {
+                        throw new PSInvalidOperationException(string.Format(ProjectResources.InvalidUriContent, parameter));
+                    }
+                    return JToken.FromObject(contents);
+                }
+            }
+
+            //for non absolute file paths
+            string path = this.TryResolvePath(parameter);
+
+            return File.Exists(path)
+                ? JToken.FromObject(FileUtilities.DataStore.ReadFileAsText(path))
+                : JToken.FromObject(parameter);
         }
     }
 }
