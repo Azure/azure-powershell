@@ -302,20 +302,17 @@ Gets a subnet in a virtual network.
 ### [Get-AzureRmVirtualNetworkUsageList](Get-AzureRmVirtualNetworkUsageList.md)
 Gets virtual network current usage.
 
+### [Get-AzureRmVpnClientConfiguration](Get-AzureRmVpnClientConfiguration.md)
+Allows users to easily download the Vpn Profile package that was generated using the New-AzureRmVpnClientConfiguration commandlet.
+
 ### [Get-AzureRmVpnClientPackage](Get-AzureRmVpnClientPackage.md)
 Gets information about a VPN client package.
-
-### [Get-AzureRmVpnClientConfiguration](Get-AzureRmVpnClientConfiguration.md)
-Gets URL to download a previously generated VpnClient package generated using the New-AzureRmVpnClientConfiguration command.
 
 ### [Get-AzureRmVpnClientRevokedCertificate](Get-AzureRmVpnClientRevokedCertificate.md)
 Gets information about VPN client-revocation certificates.
 
 ### [Get-AzureRmVpnClientRootCertificate](Get-AzureRmVpnClientRootCertificate.md)
 Gets information about VPN root certificates.
-
-### [Move-AzureRmExpressRouteCircuit](Move-AzureRmExpressRouteCircuit.md)
-Moves an ExpressRoute circuit from the classic deployment model to the Resource Manager deployment model.
 
 ### [Move-AzureRmExpressRouteCircuit](Move-AzureRmExpressRouteCircuit.md)
 Moves an ExpressRoute circuit from the classic deployment model to the Resource Manager deployment model.
