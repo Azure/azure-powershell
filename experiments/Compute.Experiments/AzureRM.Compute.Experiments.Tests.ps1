@@ -15,6 +15,8 @@ $vmComputerUser = $credentials.vmUser;
 $password = ConvertTo-SecureString $vmComputerPassword -AsPlainText -Force;
 $vmCredential = New-Object System.Management.Automation.PSCredential ($vmComputerUser, $password);
 
+New-AzVm -Name MyVM -Credential $vmCredential -WhatIf
+
 # $vm = New-AzVm
 # $vm = New-AzVm -Credential $vmCredential
 $vm = New-AzVm -Name MyVM -Credential $vmCredential

@@ -1,14 +1,14 @@
 ---
 external help file: AzureRM.Compute.Experiments-help.xml
 Module Name: AzureRM.Compute.Experiments
-online version: 
+online version:
 schema: 2.0.0
 ---
 
 # New-AzVm
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Creates a virtual machine and all required resources.
 
 ## SYNTAX
 
@@ -19,26 +19,26 @@ New-AzVm [-Name] <String> [[-Credential] <PSCredential>] [[-ImageName] <String>]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The cmdlet creates a virtual machine and all required resources in Azure.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzVm -Name MyCoolVM
 ```
 
-{{ Add example description here }}
+Creates a virtual machine with name `MyCoolVM`.
 
 ## PARAMETERS
 
 ### -Credential
-{{Fill Credential Description}}
+Specifies the user name and password for the virtual machine as a PSCredential object.
 
 ```yaml
 Type: PSCredential
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -48,12 +48,12 @@ Accept wildcard characters: False
 ```
 
 ### -ImageName
-{{Fill ImageName Description}}
+A name of virtual machine image.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -63,12 +63,12 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-{{Fill Location Description}}
+Specifies a location for the virtual machine.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 4
@@ -78,12 +78,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-{{Fill Name Description}}
+A name of a virtual machine.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -93,12 +93,12 @@ Accept wildcard characters: False
 ```
 
 ### -PublicIpAddressName
-{{Fill PublicIpAddressName Description}}
+Specifies a name of PublicIPAddress object to assign to a network interface.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 6
@@ -108,12 +108,12 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-{{Fill ResourceGroupName Description}}
+Specifies the name of a resource group.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
@@ -123,12 +123,12 @@ Accept wildcard characters: False
 ```
 
 ### -SecurityGroupName
-{{Fill SecurityGroupName Description}}
+Specifies a Network Security Group name.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 7
@@ -138,12 +138,12 @@ Accept wildcard characters: False
 ```
 
 ### -VirtualNetworkName
-{{Fill VirtualNetworkName Description}}
+Specifies a Virtual Network name.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 5
