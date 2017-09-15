@@ -83,7 +83,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestApplicationSecurityGroupInaddedNetworkInterfaceIpConfig()
+        public void TestApplicationSecurityGroupInAddedNetworkInterfaceIpConfig()
         {
             NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-ApplicationSecurityGroupInAddedNetworkInterfaceIpConfig"));
             NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-ApplicationSecurityGroupInAddedNetworkInterfaceIpConfig -useIds $True"));
