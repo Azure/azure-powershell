@@ -131,9 +131,6 @@ Test Virtual Machine Scale Set Disk Encryption Extension
 #>
 function Test-DisableVirtualMachineScaleSetDiskEncryption
 {
-    # Setup
-    $rgname = Get-ComputeTestResourceName
-
     try
     {
         # Common

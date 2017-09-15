@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
     public partial class VirtualMachineScaleSetExtensionTests
     {
-        [Fact]
+        [Fact(Skip = "TODO: only works for live mode")]
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestVirtualMachineScaleSetDiskEncryptionExtension()
         {
