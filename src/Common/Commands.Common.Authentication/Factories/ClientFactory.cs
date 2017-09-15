@@ -28,6 +28,7 @@ using System.Threading;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 {
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1001:TypesThatOwnDisposableFieldsShouldBeDisposable")]
     public class ClientFactory : IClientFactory
     {
         private static readonly char[] uriPathSeparator = { '/' };
@@ -36,12 +37,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         private OrderedDictionary _handlers;
         private ReaderWriterLockSlim _actionsLock;
         private ReaderWriterLockSlim _handlersLock;
+        private ConcurrentDictionary<ProductInfoHeaderValue, string> _userAgents { get; set; }
 
         public ClientFactory()
         {
             _actions = new Dictionary<Type, IClientAction>();
             _actionsLock = new ReaderWriterLockSlim();
-            UserAgents = new HashSet<ProductInfoHeaderValue>();
+            _userAgents = new ConcurrentDictionary<ProductInfoHeaderValue, string>();
             _handlers = new OrderedDictionary();
             _handlersLock = new ReaderWriterLockSlim();
         }
@@ -85,7 +87,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
             TClient client = (TClient)constructor.Invoke(parameters);
 
-            foreach (ProductInfoHeaderValue userAgent in UserAgents)
+            foreach (ProductInfoHeaderValue userAgent in _userAgents.Keys)
             {
                 client.UserAgent.Add(userAgent);
             }
@@ -188,7 +190,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
             TClient client = (TClient)constructor.Invoke(parameters);
 
-            foreach (ProductInfoHeaderValue userAgent in UserAgents)
+            foreach (ProductInfoHeaderValue userAgent in _userAgents.Keys)
             {
                 client.UserAgent.Add(userAgent);
             }
@@ -337,7 +339,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         /// <param name="productVersion">Product version.</param>
         public void AddUserAgent(string productName, string productVersion)
         {
-            UserAgents.Add(new ProductInfoHeaderValue(productName, productVersion));
+            _userAgents.TryAdd(new ProductInfoHeaderValue(productName, productVersion), productName);
         }
 
         /// <summary>
@@ -349,7 +351,19 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             AddUserAgent(productName, "");
         }
 
-        public HashSet<ProductInfoHeaderValue> UserAgents { get; set; }
+        public ProductInfoHeaderValue[] UserAgents
+        {
+            get
+            {
+                ProductInfoHeaderValue[] result = null;
+                if (_userAgents != null && _userAgents.Keys != null)
+                {
+                    result = _userAgents.Keys.ToArray();
+                }
+
+                return result;
+            }
+        }
 
         public DelegatingHandler[] GetCustomHandlers()
         {
@@ -378,6 +392,19 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             finally
             {
                 _handlersLock.ExitReadLock();
+            }
+        }
+
+        public void RemoveUserAgent(string name)
+        {
+            if (_userAgents != null && _userAgents.Keys != null)
+            {
+                var agents = _userAgents.Keys.Where((k) => k.Product != null && string.Equals(k.Product.Name, name, StringComparison.OrdinalIgnoreCase));
+                foreach (var agent in agents)
+                {
+                    string value;
+                    _userAgents.TryRemove(agent, out value);
+                }
             }
         }
     }

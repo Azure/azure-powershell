@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
             ExecuteClientAction(() =>
             {
-                if (ShouldProcess(this.ResourceGroupName, VerbsData.ConvertTo))
+                if (ShouldProcess(this.VMName, VerbsData.ConvertTo))
                 {
                     string resourceGroupName = this.ResourceGroupName;
                     string vmName = this.VMName;

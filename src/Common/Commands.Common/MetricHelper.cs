@@ -52,9 +52,11 @@ namespace Microsoft.WindowsAzure.Commands.Common
         /// <summary>
         /// Lock used to synchronize mutation of the tracing interceptors.
         /// </summary>
-        private static readonly object _lock = new object();
+        private readonly object _lock = new object();
 
-        private static string _hashMacAddress = string.Empty;
+        private string _hashMacAddress = string.Empty;
+
+        private AzurePSDataCollectionProfile _profile;
 
         public string HashMacAddress
         {
@@ -86,8 +88,9 @@ namespace Microsoft.WindowsAzure.Commands.Common
             set { lock(_lock) { _hashMacAddress = value; } }
         }
 
-        public MetricHelper() : this(new NetworkHelper())
+        public MetricHelper(AzurePSDataCollectionProfile profile) : this(new NetworkHelper())
         {
+            _profile = profile;
         }
 
         public MetricHelper(INetworkHelper network)
@@ -247,7 +250,9 @@ namespace Microsoft.WindowsAzure.Commands.Common
 
         public bool IsMetricTermAccepted()
         {
-            return AzurePSCmdlet.IsDataCollectionAllowed();
+            return _profile != null 
+                && _profile.EnableAzureDataCollection.HasValue 
+                && _profile.EnableAzureDataCollection.Value;
         }
 
         public void FlushMetric()
