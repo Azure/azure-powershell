@@ -306,7 +306,6 @@ CmdletsToExport = 'Add-AzureRmApplicationGatewayAuthenticationCertificate',
                'Remove-AzureRmApplicationSecurityGroup',
                'Get-AzureRmApplicationSecurityGroup'
 
-
 # Variables to export from this module
 # VariablesToExport = @()
 
