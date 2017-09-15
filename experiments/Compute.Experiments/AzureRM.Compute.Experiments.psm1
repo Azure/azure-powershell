@@ -315,7 +315,7 @@ class VirtualMachine: AzureObject {
         }
 
         $vmConfig = New-AzureRmVMConfig -VMName $p.Name -VMSize $this.Size;
-        $vmComputerName = $p.Name + "Computer";
+        $vmComputerName = $p.Name;
         switch ($vmImage.Type) {
             "Windows" {
                 $vmConfig = $vmConfig | Set-AzureRmVMOperatingSystem `
