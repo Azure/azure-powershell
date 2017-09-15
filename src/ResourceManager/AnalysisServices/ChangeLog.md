@@ -19,6 +19,8 @@
 -->
 ## Current Release
 
+## Version 0.4.4
+
 ## Version 0.4.3
 * Fixed bug in Set-AzureRmAnalysisServciesServer
     - When admin was not provided, the admin will be removed.

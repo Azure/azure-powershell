@@ -380,6 +380,14 @@ function Initialize-TemporaryState
             }
         )
     }
+    if ($global:softDeleteEnabled -eq $true )
+    {
+        $vaultProperties.Add("enableSoftDelete", $global:softDeleteEnabled)
+        $vaultProperties.accessPolicies.permissions.keys = @("all", "purge")
+        $vaultProperties.accessPolicies.permissions.secrets = @("all", "purge")
+        $vaultProperties.accessPolicies.permissions.certificates = @("all", "purge")
+    }
+
     $keyVault = New-AzureRmResource @vaultId `
                 -PropertyObject $vaultProperties `
                 -Location $global:location `
