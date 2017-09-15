@@ -33,6 +33,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
         protected INetworkHelper _networkHelper;
         private const int FlushTimeoutInMilli = 5000;
         private const string DEFAULT_PSVERSION = "3.0.0.0";
+        private const string EVENT_NAME = "cmdletInvocation";
 
         /// <summary>
         /// The collection of telemetry clients.
@@ -190,7 +191,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
                 {
                     var pageViewTelemetry = new PageViewTelemetry
                     {
-                        Name = "cmdletInvocation",
+                        Name = EVENT_NAME,
                         Duration = qos.Duration,
                         Timestamp = qos.StartTime
                     };
