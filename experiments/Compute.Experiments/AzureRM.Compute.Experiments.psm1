@@ -10,6 +10,7 @@ function New-AzVm {
         [Parameter()][string] $Location,
 
         [Parameter()][string] $VirtualNetworkName,
+        [Parameter()][string] $SubnetName,
         [Parameter()][string] $PublicIpAddressName,
         [Parameter()][string] $SecurityGroupName,
 
@@ -22,13 +23,14 @@ function New-AzVm {
         $rgi = [ResourceGroup]::new($ResourceGroupName);
 
         $vni = [VirtualNetwork]::new($VirtualNetworkName);
+        $subnet = [Subnet]::new($SubnetName, $vni);
         $piai = [PublicIpAddress]::new($PublicIpAddressName);
         $sgi = [SecurityGroup]::new($SecurityGroupName);
 
         # we don't allow to reuse NetworkInterface so $name is $null.
         $nii = [NetworkInterface]::new(
             $null,
-            $vni,
+            $subnet,
             $piai,
             $sgi);
 
@@ -142,8 +144,11 @@ class AzureObject {
         if ($this.Name) {
             return $this.GetInfo();
         } else {
+            Write-Host "{"
+            Write-Host $this
             $result = $this.Create($p);
             $this.Name = $p.Name;
+            Write-Host "}"
             return $result;
         }
     }
@@ -179,9 +184,10 @@ class VirtualNetwork: Resource1 {
     }
 
     [object] Create([CreateParams] $p) {
+        <#
         $subnetConfig = New-AzureRmVirtualNetworkSubnetConfig `
-            -Name "Subnet" `
-            -AddressPrefix "192.168.1.0/24"
+           -Name "Subnet" `
+           -AddressPrefix "192.168.1.0/24"
         return New-AzureRmVirtualNetwork `
             -ResourceGroupName $p.ResourceGroupName `
             -Location $p.Location `
@@ -189,6 +195,13 @@ class VirtualNetwork: Resource1 {
             -AddressPrefix "192.168.0.0/16" `
             -Subnet $subnetConfig `
             -WarningAction SilentlyContinue
+        #>
+        return New-AzureRmVirtualNetwork `
+            -ResourceGroupName $p.ResourceGroupName `
+            -Location $p.Location `
+            -Name $p.Name `
+            -AddressPrefix "192.168.0.0/16" `
+            -WarningAction SilentlyContinue;
     }
 }
 
@@ -215,7 +228,7 @@ class SecurityGroup: Resource1 {
     }
 
     [object] GetInfo() {
-        return Get-AzureRMSecurityGroup -Name $this.Name;
+        return Get-AzureRMSecurityGroup -Name $this.Name
     }
 
     [object] Create([CreateParams] $p) {
@@ -229,7 +242,6 @@ class SecurityGroup: Resource1 {
             -SourceAddressPrefix "*" `
             -DestinationPortRange 3389 `
             -DestinationAddressPrefix "*"
-
         return New-AzureRmNetworkSecurityGroup `
             -ResourceGroupName $p.ResourceGroupName `
             -Location $p.Location `
@@ -239,18 +251,49 @@ class SecurityGroup: Resource1 {
     }
 }
 
-class NetworkInterface: AzureObject {
+class Subnet: AzureObject {
     [VirtualNetwork] $VirtualNetwork;
+
+    Subnet([string] $name, [VirtualNetwork] $virtualNetwork):
+        base($name, @($virtualNetwork)) {
+        $this.VirtualNetwork = $virtualNetwork;
+    }
+
+    [object] GetInfo() {
+        Write-Host "sn.GetInfo {"
+        $virutalNetworkInfo = $this.VirtualNetwork.GetInfo();
+        Write-Host "}"
+        return $virutalNetworkInfo | Get-AzureRmVirtualNetworkSubnetConfig -Name $this.Name;
+    }
+
+    [object] Create([CreateParams] $p) {
+        Write-Host "sn.Create {"
+        $virtualNetworkInfo = $this.VirtualNetwork.GetOrCreate($p);
+        Set-AzureRmVirtualNetworkSubnetConfig `
+            -VirtualNetwork $virtualNetworkInfo `
+            -Name $p.Name `
+            -AddressPrefix "192.168.1.0/24";
+        Set-AzureRmVirtualNetwork -VirtualNetwork $virtualNetworkInfo
+        $result = Get-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $virtualNetworkInfo -Name $p.Name
+        Write-Host $virtualNetworkInfo
+        Write-Host $result
+        Write-Host "} sn.Create"
+        return $result;
+    }
+}
+
+class NetworkInterface: AzureObject {
+    [Subnet] $Subnet;
     [PublicIpAddress] $PublicIpAddress;
     [SecurityGroup] $SecurityGroup;
 
     NetworkInterface(
         [string] $name,
-        [VirtualNetwork] $virtualNetwork,
+        [Subnet] $subnet,
         [PublicIpAddress] $publicIpAddress,
         [SecurityGroup] $securityGroup
-    ): base($name, @($virtualNetwork, $publicIpAddress, $securityGroup)) {
-        $this.VirtualNetwork = $virtualNetwork;
+    ): base($name, @($subnet, $publicIpAddress, $securityGroup)) {
+        $this.Subnet = $subnet;
         $this.PublicIpAddress = $publicIpAddress;
         $this.SecurityGroup = $securityGroup;
     }
@@ -260,16 +303,19 @@ class NetworkInterface: AzureObject {
     }
 
     [object] Create([CreateParams] $p) {
-        $xpublicIpAddress = $this.PublicIpAddress.GetOrCreate($p);
-        $xvirtualNetwork = $this.VirtualNetwork.GetOrCreate($p);
-        $xsecurityGroup = $this.SecurityGroup.GetOrCreate($p);
+        $publicIpAddressInfo = $this.PublicIpAddress.GetOrCreate($p);
+        $subnetInfo = $this.Subnet.GetOrCreate($p);
+        Write-Host "sn: {"
+        Write-Host $subnetInfo
+        Write-Host "} sn"
+        $securityGroupInfo = $this.SecurityGroup.GetOrCreate($p);
         return New-AzureRmNetworkInterface `
             -ResourceGroupName $p.ResourceGroupName `
             -Location $p.Location `
             -Name $p.Name `
-            -PublicIpAddressId $xpublicIpAddress.Id `
-            -SubnetId $xvirtualNetwork.Subnets[0].Id `
-            -NetworkSecurityGroupId $xsecurityGroup.Id `
+            -PublicIpAddressId $publicIpAddressInfo.Id `
+            -SubnetId $subnetInfo.Id `
+            -NetworkSecurityGroupId $securityGroupInfo.Id `
             -WarningAction SilentlyContinue
     }
 }

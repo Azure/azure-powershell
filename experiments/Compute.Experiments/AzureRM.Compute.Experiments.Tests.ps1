@@ -19,7 +19,7 @@ New-AzVm -Name MyVM -Credential $vmCredential -WhatIf
 
 # $vm = New-AzVm
 # $vm = New-AzVm -Credential $vmCredential
-$vm = New-AzVm -Name MyVM -Credential $vmCredential
+$vm = New-AzVm -Name MyVMA -Credential $vmCredential
 
 $vm
 
