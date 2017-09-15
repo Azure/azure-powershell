@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Properties;
 using System;
 
@@ -26,7 +27,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         /// </summary>
         /// <param name="profile">The profile to change the context for</param>
         /// <param name="newContext">The new context, with no token cache information.</param>
-        public static void SetContextWithCache(this IAzureContextContainer profile, IAzureContext newContext)
+        public static void SetContextWithCache(this IAzureContextContainer profile, IAzureContext newContext, string name = null)
         {
             if (profile == null)
             {
@@ -44,7 +45,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
 
             newContext.TokenCache = AzureSession.Instance.TokenCache;
-            profile.DefaultContext = newContext;
+
+            var rmProfile = profile as AzureRmProfile;
+            if (rmProfile != null)
+            {
+                rmProfile.TrySetDefaultContext(name, newContext);
+            }
+            else
+            {
+                profile.DefaultContext = newContext;
+            }
         }
     }
 }

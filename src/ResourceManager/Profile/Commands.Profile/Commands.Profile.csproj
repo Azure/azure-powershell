@@ -67,6 +67,19 @@
     <Reference Include="System.Web.Extensions" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account\RemoveAzureRmAccount.cs" />
+    <Compile Include="AutoSave\DisableAzureRmContextAutosave.cs" />
+    <Compile Include="AutoSave\GetAzureRmContextAutosaveSetting.cs" />
+    <Compile Include="AutoSave\EnableAzureRmContextAutosave.cs" />
+    <Compile Include="Common\AzureContextModificationCmdlet.cs" />
+    <Compile Include="Common\AzureProfileConstants.cs" />
+    <Compile Include="Common\AzureRmProfileConstants.cs" />
+    <Compile Include="Common\ContextModificationScope.cs" />
+    <Compile Include="Common\ScopeHelpers.cs" />
+    <Compile Include="Context\ClearAzureRmContext.cs" />
+    <Compile Include="Context\RemoveAzureRmContext.cs" />
+    <Compile Include="Context\RenameAzureRmContext.cs" />
+    <Compile Include="Context\SelectAzureRmContext.cs" />
     <Compile Include="DataCollection\DisableAzureRMDataCollection.cs" />
     <Compile Include="DataCollection\EnableAzureRMDataCollection.cs" />
     <Compile Include="Environment\RemoveAzureRMEnvironment.cs" />
@@ -82,14 +95,8 @@
     <Compile Include="Errors\ResolveError.cs" />
     <Compile Include="Feedback\SendFeedback.cs" />
     <Compile Include="Models\AzureRmProfileExtensions.cs" />
+    <Compile Include="Models\MetadataResponse.cs" />
     <Compile Include="Models\ModelExtensions.cs" />
-    <Compile Include="Models\PSAzureContext.cs" />
-    <Compile Include="Models\PSAzureEnvironment.cs" />
-    <Compile Include="Models\PSAzureFeedback.cs" />
-    <Compile Include="Models\PSAzureProfile.cs" />
-    <Compile Include="Models\PSAzureRmAccount.cs" />
-    <Compile Include="Models\PSAzureSubscription.cs" />
-    <Compile Include="Models\PSAzureTenant.cs" />
     <Compile Include="Models\RMProfileClient.cs" />
     <Compile Include="Models\SimpleAccessToken.cs" />
     <Compile Include="Subscription\GetAzureRMSubscription.cs" />
@@ -105,6 +112,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Tenant\GetAzureRMTenant.cs" />
+    <Compile Include="Utilities\EnvironmentHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Microsoft.Azure.Commands.Profile.format.ps1xml">
@@ -118,6 +126,10 @@
     <None Include="AzureRmProfileStartup.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Content Include="Microsoft.Azure.Commands.Profile.types.ps1xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
   </ItemGroup>
@@ -155,6 +167,10 @@
     <ItemGroup>
       <MarkdownFiles Include="$(ProjectDir)help\*.*" />
     </ItemGroup>
+    <ItemGroup>
+      <OutFiles Include="$(OutDir)\**\*.*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(OutFiles)" DestinationFiles="@(OutFiles->'..\..\..\Stack\$(Configuration)\ResourceManager\AzureResourceManager\AzureRM.Profile\%(RecursiveDir)%(Filename)%(Extension)')" />
     <Copy SourceFiles="@(MarkdownFiles)" DestinationFolder="$(OutputPath)\help\" ContinueOnError="false" />
   </Target>
 </Project>

@@ -74,7 +74,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             }
 
             foreach (var baseDirectory in cmdletProbingDirs.Where(s => !s.Contains("ServiceManagement") && 
-                                                                        Directory.Exists(Path.GetFullPath(s))))
+                                                                        !s.Contains("Stack") && Directory.Exists(Path.GetFullPath(s))))
             {
                 List<string> probingDirectories = new List<string>();
 

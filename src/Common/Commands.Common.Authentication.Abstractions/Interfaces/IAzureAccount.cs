@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         string Type { get; set; }
 
         /// <summary>
-        /// The mapping between tenants the accoutn has permission to access and the accout identifier in each tenant
+        /// The mapping between tenants the account has permission to access and the account identifier in each tenant
         /// </summary>
         IDictionary<string, string> TenantMap { get; }
     }
