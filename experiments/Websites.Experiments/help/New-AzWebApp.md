@@ -13,7 +13,7 @@ Create a new Azure AppService website and attach it to a git repository.
 
 ```
 New-AzWebApp [[-WebAppName] <String>] [[-ResourceGroupName] <String>] [[-AppServicePlan] <String>] [-Auto]
- [-AddRemote] [[-GitRepositoryPath] <String>]
+ [-AddRemote] [[-GitRepositoryPath] <String>] [-WhatIf] [-Confirm] [-Location <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,7 +34,6 @@ PS C:\> New-AzWebApp contosoWebApp -Auto
 ```
 
 Creates a web application using default settings.
-
 
 ## PARAMETERS
 
@@ -98,6 +97,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Location
+{{Fill Location Description}}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group for the Website.
 
@@ -128,16 +142,47 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### None
-
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Management.WebSites.Models.Site
 Details about the created website, including URL and github repo url.
-
 
 ## NOTES
 

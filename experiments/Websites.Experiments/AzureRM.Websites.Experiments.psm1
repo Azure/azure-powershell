@@ -129,7 +129,7 @@ function New-AzWebAppJustDoIt
 #>
 function New-AzWebApp
 {
-    [CmdletBinding()]
+    [CmdletBinding(SupportsShouldProcess=$true)]
     [OutputType([Microsoft.Azure.Management.WebSites.Models.Site])]
     param(
     [string][Parameter(Mandatory=$false)][alias("Name")]$WebAppName,
@@ -212,7 +212,8 @@ function New-AzWebApp
         [string]$appName = Get-WebAppName `
                             -ProvidedParameters $PSBoundParameters `
                             -WebSitesClient $webSitesClient
-        Write-Progress `
+ 	if ($PSCmdlet.ShouldProcess($appName, "Create an Azure Web App")) {
+       Write-Progress `
             -Activity $mainActivity `
             -CurrentOperation "Getting Resource Group information."  
         [hashtable]$groupInfo = Get-ResourceGroupInfo `
@@ -274,7 +275,8 @@ function New-AzWebApp
         
         if (($PSBoundParameters.ContainsKey('AddRemote') -or $PSBoundParameters.ContainsKey('Auto')) -and $webapp) { 
             Add-Remote -ProvidedParameters $PSBoundParameters -WebApp $webapp -GitRepositoryPath $GitRepositoryPath                   
-        }            
+        }  
+	  }          
     }
 
     END {}
@@ -569,7 +571,7 @@ function Get-WebSitesClient
 #>
 function New-AzWebAppGrayParam
 {
-    [CmdletBinding()]        
+    [CmdletBinding(SupportsShouldProcess=$true)]        
     [OutputType([Microsoft.Azure.Management.WebSites.Models.Site])]
     param(
     [string][Parameter(Mandatory=$false)][alias("Name")]$WebAppName,
@@ -628,6 +630,8 @@ function New-AzWebAppGrayParam
             -Activity $mainActivity `
             -CurrentOperation "Getting App Name information."   
         [string]$appName = Get-WebAppNameGrayParam $PSBoundParameters $webSitesClient
+	if ($PSCmdlet.ShouldProcess($appName, "Create an Azure Web App")) {
+
         Write-Progress `
             -Activity $mainActivity `
             -CurrentOperation "Getting Resource Group information." 
@@ -678,7 +682,8 @@ function New-AzWebAppGrayParam
          
         Write-Output $webapp 
 
-        Add-RemoteGrayParam -ProvidedParameters $PSBoundParameters -WebApp $webapp -GitRepositoryPath $GitRepositoryPath            
+        Add-RemoteGrayParam -ProvidedParameters $PSBoundParameters -WebApp $webapp -GitRepositoryPath $GitRepositoryPath   
+	  }         
     }
 
     END {}

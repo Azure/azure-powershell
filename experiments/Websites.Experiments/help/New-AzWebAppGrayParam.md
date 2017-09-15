@@ -13,13 +13,13 @@ Create an Azure Website using Azure App Service.
 
 ```
 New-AzWebAppGrayParam [[-WebAppName] <String>] [[-ResourceGroupName] <String>] [[-AppServicePlan] <String>]
- [-Auto] [-AddRemote] [[-GitRepositoryPath] <String>] [-Location <string>]
+ [-Auto] [-AddRemote] [[-GitRepositoryPath] <String>] [-WhatIf] [-Confirm] -Location <String>
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 Create an Azure Website using Azure App Service. This cmdlet uses the 'Gray Parameter' experience, which will prompt the user with default 
 values for parameters that are not provided.  Using -Auto indicates that further prompting for defaults should not occur.
-
 
 ## EXAMPLES
 
@@ -92,6 +92,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Location
+{{Fill Location Description}}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group to create the website in.
 
@@ -122,16 +137,47 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### None
-
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Management.WebSites.Models.Site
 Details about the created website, including its URL.
-
 
 ## NOTES
 
