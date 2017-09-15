@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = "SetByResource",
-            HelpMessage = "PSApplicationSecurityGroup")]
+            HelpMessage = "ApplicationSecurityGroup")]
         public List<PSApplicationSecurityGroup> ApplicationSecurityGroup { get; set; }
 
         public override void Execute()
