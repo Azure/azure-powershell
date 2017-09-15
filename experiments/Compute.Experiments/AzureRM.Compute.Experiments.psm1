@@ -5,13 +5,17 @@ function New-AzVm {
     [CmdletBinding(SupportsShouldProcess = $true)]
     param (
         [Parameter(Mandatory=$true, Position=0)][string] $Name = "VM",
-        [Parameter()][PSCredential] $Credential,
-        [Parameter()][string] $ImageName = "Win2012R2Datacenter",
+
         [Parameter()][string] $ResourceGroupName,
         [Parameter()][string] $Location,
+
         [Parameter()][string] $VirtualNetworkName,
         [Parameter()][string] $PublicIpAddressName,
-        [Parameter()][string] $SecurityGroupName
+        [Parameter()][string] $SecurityGroupName,
+
+        [Parameter()][PSCredential] $Credential,
+        [Parameter()][string] $ImageName = "Win2012R2Datacenter",
+        [Parameter()][string] $Size = "Standard_DS1_v2"
     )
 
     PROCESS {
@@ -29,7 +33,14 @@ function New-AzVm {
             $sgi);
 
         # the purpouse of the New-AzVm cmdlet is to create (not get) a VM so $name is $null.
-        $vmi = [VirtualMachine]::new($null, $nii, $rgi, $Credential, $ImageName, $images);
+        $vmi = [VirtualMachine]::new(
+            $null,
+            $nii,
+            $rgi,
+            $Credential,
+            $ImageName,
+            $images,
+            $Size);
 
         # infer a location
         $locationi = [Location]::new();
@@ -48,11 +59,21 @@ function New-AzVm {
             $resourceGroup = $rgi.GetOrCreate($createParams);
             $vmResponse = $vmi.Create($createParams);
 
-            New-PsObject @{
-                ResourceId = $resourceGroup.ResourceId;
-                Response = $vmResponse;
-            }
+            return [PSAzureVm]::new(
+                $resourceGroup.ResourceId,
+                $Name
+            );
         }
+    }
+}
+
+class PSAzureVm {
+    [string] $ResourceGroupId;
+    [string] $Name;
+
+    PSAzureVm([string] $resourceGroupId, [string] $name) {
+        $this.ResourceGroupId = $resourceGroupId;
+        $this.Name = $name;
     }
 }
 
@@ -258,6 +279,7 @@ class VirtualMachine: AzureObject {
     [pscredential] $Credential;
     [string] $ImageName;
     [object] $Images;
+    [string] $Size;
 
     VirtualMachine(
         [string] $name,
@@ -265,13 +287,15 @@ class VirtualMachine: AzureObject {
         [ResourceGroup] $resourceGroup,
         [PSCredential] $credential,
         [string] $imageName,
-        [object] $images):
+        [object] $images,
+        [string] $size):
         base($name, @($networkInterface, $resourceGroup)) {
 
         $this.Credential = $credential;
         $this.ImageName = $imageName;
         $this.NetworkInterface = $networkInterface;
         $this.Images = $images;
+        $this.Size = $size;
     }
 
     [object] GetInfo() {
@@ -282,29 +306,28 @@ class VirtualMachine: AzureObject {
         $networkInterfaceInstance = $this.NetworkInterface.GetOrCreate($p);
 
         if (-not $this.Credential) {
-            $this.Credential = Get-Credential
+            $this.Credential = Get-Credential;
         }
 
-        $vmImage = $this.Images | Where-Object { $_.Name -eq $this.ImageName } | Select-Object -First 1
+        $vmImage = $this.Images | Where-Object { $_.Name -eq $this.ImageName } | Select-Object -First 1;
         if (-not $vmImage) {
-            throw "Unknown image: " + $this.ImageName
+            throw "Unknown image: " + $this.ImageName;
         }
 
-        $vmSize = "Standard_DS2"
-        $vmConfig = New-AzureRmVMConfig -VMName $p.Name -VMSize $vmSize
-        $vmComputerName = $p.Name + "Computer"
+        $vmConfig = New-AzureRmVMConfig -VMName $p.Name -VMSize $this.Size;
+        $vmComputerName = $p.Name + "Computer";
         switch ($vmImage.Type) {
             "Windows" {
                 $vmConfig = $vmConfig | Set-AzureRmVMOperatingSystem `
                     -Windows `
                     -ComputerName $vmComputerName `
-                    -Credential $this.Credential
+                    -Credential $this.Credential;
             }
             "Linux" {
                 $vmConfig = $vmConfig | Set-AzureRmVMOperatingSystem `
                     -Linux `
                     -ComputerName $vmComputerName `
-                    -Credential $this.Credential
+                    -Credential $this.Credential;
             }
         }
 
