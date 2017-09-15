@@ -61,6 +61,7 @@
                             Condition=" '$(Scope)' == 'ServiceManagement'"/>
     <CmdletSolutionsToBuild Include=".\src\Storage\Storage.sln"
                             Condition=" '$(Scope)' == 'AzureStorage' "/>
+    <ExperimentalCmdletSolutionsToBuild Include=".\experiments\Websites.Experiments\Microsoft.Azure.Commands.Websites.Experiments.sln"/>
     <SetupSln Include=".\setup\azurepowershell.sln" />
     <StaticAnalysis Include=".\tools\StaticAnalysis\StaticAnalysis.sln" />
     <LocalBuildTasks Include="$(LibraryToolsFolder)\BuildPackagesTask\Microsoft.Azure.Build.Tasks.sln" />
@@ -140,8 +141,8 @@
     <NuGetRestoreConfigFile>$(MSBuildProjectDirectory)\restore.config</NuGetRestoreConfigFile>
     <NuGetRestoreConfigSwitch>-ConfigFile &quot;$(NuGetRestoreConfigFile)&quot;</NuGetRestoreConfigSwitch>
     <NuGetRestorePackageSetting>-PackagesDirectory $(LibraryNugetPackageFolder)</NuGetRestorePackageSetting>
+    <NuGetExperimentalCmdletPackages>-PackagesDirectory ".\experiments\Websites.Experiments\packages" </NuGetExperimentalCmdletPackages>
     <NuGetLocalBuildTaskPackages>-PackagesDirectory $(LibraryToolsFolder)\BuildPackagesTask\packages</NuGetLocalBuildTaskPackages>
-
     <PowerShellCommand Condition=" '$(PowerShellCommand)' == '' ">C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe</PowerShellCommand>
   </PropertyGroup>
 
@@ -171,6 +172,8 @@
     <!-- Restore packages for static analysis-->
     <Exec Command="$(NuGetCommand) restore %(StaticAnalysis.FullPath) $(NuGetRestoreConfigSwitch) $(NuGetRestorePackageSetting)"
           ContinueOnError="false" />
+    <Exec Command="$(NuGetCommand) restore %(ExperimentalCmdletSolutionsToBuild.FullPath) $(NuGetRestoreConfigSwitch) $(NuGetExperimentalCmdletPackages)"
+          ContinueOnError="false" />
     <!-- Restore packages for local build tasks-->
     <Exec Command="$(NuGetCommand) restore %(LocalBuildTasks.FullPath) $(NuGetRestoreConfigSwitch) $(NuGetLocalBuildTaskPackages)"
             ContinueOnError="false" />
@@ -196,7 +199,14 @@
       Targets="Build"
       Properties="Configuration=$(Configuration);Platform=Any CPU"
       BuildInParallel="$(BuildInParallel)"
-      ContinueOnError="false" />     
+      ContinueOnError="false" />
+    
+    <MSBuild
+      Projects="@(ExperimentalCmdletSolutionsToBuild)"
+      Targets="Build"
+      Properties="Configuration=$(Configuration);Platform=Any CPU"
+      BuildInParallel="$(BuildInParallel)"
+      ContinueOnError="false" />
 
     <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\GenerateHelp.ps1 -ValidateMarkdownHelp -GenerateMamlHelp -BuildConfig $(Configuration) &quot;"
     	ContinueOnError="false"
@@ -322,7 +332,7 @@
     <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\UpdateModules.ps1 $(Configuration) $(Scope) &quot;"/>
     <!-- Copying shortcut to be signed -->
     <Copy SourceFiles="$(LibraryRoot)tools\AzureRM\AzureRM.psd1"
-          DestinationFolder="$(LibrarySourceFolder)\Package\$(Configuration)" Condition= " '$(NetCore)' == 'false' "/>
+         DestinationFolder="$(LibrarySourceFolder)\Package\$(Configuration)" Condition= " '$(NetCore)' == 'false' "/>
     <Copy SourceFiles="$(LibraryRoot)tools\AzureRM\AzureRM.psm1"
           DestinationFolder="$(LibrarySourceFolder)\Package\$(Configuration)" Condition= " '$(NetCore)' == 'false' "/>
     <Copy SourceFiles="$(LibraryRoot)tools\AzureRM.Netcore\AzureRM.Netcore.psd1"
@@ -397,6 +407,7 @@
           DestinationFolder="$(LibraryRoot)tools\AzureRM" Condition= " '$(NetCore)' == 'false' "/>
     <Copy SourceFiles="$(LibrarySourceFolder)\Package\$(Configuration)\AzureRM.Netcore.psd1"
           DestinationFolder="$(LibraryRoot)tools\AzureRM" Condition= " '$(NetCore)' == 'true' "/>
+    
   </Target>
 
   <Target Name="CodeSignInstaller">
@@ -460,6 +471,9 @@
   <!-- Run checkin tests for each pull request -->
   <Target Name="Test" DependsOnTargets="BeforeRunTests">
     <Message Importance="high" Text="Running check in tests..." />
+    <!-- Run unit tests for AppService experimental cmdlets -->
+    <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;Import-Module $(MSBuildProjectDirectory)\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1; Import-Module $(MSBuildProjectDirectory)\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Resources.psd1; Import-Module $(MSBuildProjectDirectory)\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Websites\AzureRM.Websites.psd1; Import-Module $(MSBuildProjectDirectory)\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Websites.Experiments\AzureRM.Websites.Experiments.psd1; $(MSBuildProjectDirectory)\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Websites.Experiments\Run-UnitTests.ps1&quot;"
+          ContinueOnError="false"/>
     <CallTarget Targets="InvokeXUnit"/>
   </Target>
 
