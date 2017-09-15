@@ -125,7 +125,7 @@ function New-AzWebAppJustDoIt
 }
 
 <#
-.ExternalHelp help\AzureRM.Websites.Experiments-help.xml 
+.ExternalHelp AzureRM.Websites.Experiments-help.xml 
 #>
 function New-AzWebApp
 {
@@ -567,7 +567,7 @@ function Get-WebSitesClient
 }
 
 <#
-.ExternalHelp help\AzureRM.Websites.Experiments-help.xml 
+.ExternalHelp AzureRM.Websites.Experiments-help.xml 
 #>
 function New-AzWebAppGrayParam
 {

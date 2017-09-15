@@ -223,10 +223,12 @@ function Change-RMModule
           ren $nupkgPath $zipPath
           Write-Output "Expanding $zipPath"
           Expand-Archive $zipPath -DestinationPath $dirPath
-          Write-Output "Adding PSM1 dependency to $unzippedManifest"
-          Add-PSM1Dependency -Path $unzippedManifest
-          Write-Output "Removing module manifest dependencies for $unzippedManifest"
-          Remove-ModuleDependencies -Path $unzippedManifest
+          if (!($moduleName.Contains("Experiment"))) {
+              Write-Output "Adding PSM1 dependency to $unzippedManifest"
+              Add-PSM1Dependency -Path $unzippedManifest
+              Write-Output "Removing module manifest dependencies for $unzippedManifest"
+              Remove-ModuleDependencies -Path $unzippedManifest
+          }
 
           Remove-Item -Path $zipPath -Force
           Write-Output "Repackaging $dirPath"
