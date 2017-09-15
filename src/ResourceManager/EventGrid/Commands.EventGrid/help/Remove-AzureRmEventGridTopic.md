@@ -37,13 +37,6 @@ Removes the Event Grid topic \`Topic1\` in resource group \`MyResourceGroupName\
 
 ### Example 2
 ```
-PS C:\> Get-AzureRmEventGridTopic -ResourceGroup MyResourceGroupName -Name Topic1 | Remove-AzureRmEventGridTopic
-```
-
-Removes the Event Grid topic \`Topic1\` in resource group \`MyResourceGroupName\`.
-
-### Example 3
-```
 PS C:\> Get-AzureRmResource -ResourceId "/subscriptions/$subscriptionId/resourceGroups/MyResourceGroupName/providers/Microsoft.EventGrid/topics/Topic1" | Remove-AzureRmEventGridTopic
 ```
 

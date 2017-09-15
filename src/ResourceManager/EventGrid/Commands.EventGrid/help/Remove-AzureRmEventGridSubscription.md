@@ -58,7 +58,7 @@ Removes the event subscription \`EventSubscription1\` to the default Azure subsc
 
 ### Example 4
 ```
-PS C:\> Get-AzureRmResource -ResourceId "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/$namespaceName" | Remove-AzureRmEventGridSubscription
+PS C:\> Get-AzureRmResource -ResourceId "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/$namespaceName" | Remove-AzureRmEventGridSubscription -EventSubscriptionName EventSubscription1
 ```
 
 Removes the event subscription \`EventSubscription1\` to an Event Hub namespace.
