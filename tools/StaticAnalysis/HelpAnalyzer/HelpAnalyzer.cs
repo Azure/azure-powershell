@@ -203,7 +203,7 @@ namespace StaticAnalysis.HelpAnalyzer
                     return;
                 }
 
-                var cmdletFiles = cmdletResult.Select(c => c.ToString().Substring(2));
+                var cmdletFiles = cmdletResult.Where(i => i != null && !string.IsNullOrWhiteSpace(i.ToString()) && i.ToString().Length > 2).Select(c => c.ToString().Substring(2));
                 if (cmdletFiles.Any())
                 {
                     List<CmdletHelpMetadata> allCmdlets = new List<CmdletHelpMetadata>();
