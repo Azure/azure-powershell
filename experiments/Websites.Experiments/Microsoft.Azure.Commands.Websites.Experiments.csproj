@@ -73,9 +73,6 @@
     <None Include="help\New-AzWebAppGrayParam.md" >
     <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="help\New-AzWebAppJustDoIt.md" >
-    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="packages.config" />
     <None Include="Run-UnitTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
