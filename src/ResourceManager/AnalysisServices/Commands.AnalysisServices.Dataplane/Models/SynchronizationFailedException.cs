@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using Microsoft.Azure.Commands.AnalysisServices.Dataplane.Properties;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models

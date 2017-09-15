@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "Name of the Azure Analysis Services server to synchronize. E.x. asazure://westus.asazure.windows.net/contososerver",
+            HelpMessage = "Name of the Azure Analysis Services server to synchronize. E.x. asazure://westus.asazure.windows.net/contososerver:rw",
             Position = 0,
             ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
@@ -164,7 +164,10 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
                     throw new SynchronizationFailedException(serializedDetails);
                 }
 
-                WriteObject(syncResult, true);
+                if (PassThru.IsPresent)
+                {
+                    WriteObject(syncResult, true);
+                }
             }
         }
 

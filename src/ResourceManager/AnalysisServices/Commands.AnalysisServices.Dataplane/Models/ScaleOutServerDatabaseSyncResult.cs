@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Runtime.Serialization;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
-{ 
+{
     [DataContract]
     sealed class ScaleOutServerDatabaseSyncResult
     {

@@ -42,6 +42,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Database
+
+Identity of the database to be synchronized
+```
+yamlType: String
+Parameter Sets: (All)
+Aliases: 
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+
 ### -PassThru
 
 Specifying this will return true if the command was successful.
