@@ -76,6 +76,9 @@ namespace Microsoft.Azure.Commands.EventGrid
         [ValidateNotNullOrEmpty]
         public string TopicName { get; set; }
 
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.ShouldProcess(this.EventSubscriptionName, $"Remove event subscription {this.EventSubscriptionName}"))
@@ -98,6 +101,10 @@ namespace Microsoft.Azure.Commands.EventGrid
                 }
 
                 this.Client.DeleteEventSubscription(scope, this.EventSubscriptionName);
+                if (this.PassThru)
+                {
+                    this.WriteObject(true);
+                }
             }
         }
     }

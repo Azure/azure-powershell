@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzureRmEventGridSubscription
 
 ## SYNOPSIS
-Create a new Azure Event Grid Event Subscription to a topic, Azure resource, Azure subscription or Resource Group.
+Creates a new Azure Event Grid Event Subscription to a topic, Azure resource, Azure subscription or Resource Group.
 
 ## SYNTAX
 
