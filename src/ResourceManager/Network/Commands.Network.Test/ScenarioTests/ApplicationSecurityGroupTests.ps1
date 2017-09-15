@@ -518,20 +518,20 @@ function Test-ApplicationSecurityGroupInAddedNetworkInterfaceIpConfig
 
         if ($useIds)
         {
-			$ipconfigSet = Set-AzureRmNetworkInterfaceIpConfig -NetworkInterface $nic -Name $nic.IpConfigurations[0].Name -SubnetId $vnet.Subnets[0].Id -ApplicationSecurityGroupId $asg1.Id -Primary
+            $ipconfigSet = Set-AzureRmNetworkInterfaceIpConfig -NetworkInterface $nic -Name $nic.IpConfigurations[0].Name -SubnetId $vnet.Subnets[0].Id -ApplicationSecurityGroupId $asg1.Id -Primary
             $ipConfig1 = Add-AzureRmNetworkInterfaceIpConfig -NetworkInterface $nic -Name $ipConfigName1 -SubnetId $vnet.Subnets[0].Id -ApplicationSecurityGroupId $asg1.Id  | Set-AzureRmNetworkInterface
             $ipConfig2 = Add-AzureRmNetworkInterfaceIpConfig -NetworkInterface $nic -Name $ipConfigName2 -SubnetId $vnet.Subnets[0].Id -ApplicationSecurityGroupId $asg1.Id  | Set-AzureRmNetworkInterface
         }
         else
         {
-			$ipconfigSet = Set-AzureRmNetworkInterfaceIpConfig -NetworkInterface $nic -Name $nic.IpConfigurations[0].Name -Subnet $vnet.Subnets[0] -ApplicationSecurityGroup $asg1 -Primary
+            $ipconfigSet = Set-AzureRmNetworkInterfaceIpConfig -NetworkInterface $nic -Name $nic.IpConfigurations[0].Name -Subnet $vnet.Subnets[0] -ApplicationSecurityGroup $asg1 -Primary
             $ipConfig1 = Add-AzureRmNetworkInterfaceIpConfig -NetworkInterface $nic -Name $ipConfigName1 -Subnet $vnet.Subnets[0] -ApplicationSecurityGroup $asg1  | Set-AzureRmNetworkInterface
             $ipConfig2 = Add-AzureRmNetworkInterfaceIpConfig -NetworkInterface $nic -Name $ipConfigName2 -Subnet $vnet.Subnets[0] -ApplicationSecurityGroup $asg1  | Set-AzureRmNetworkInterface
         }
 
-		$nic = Get-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName
+        $nic = Get-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName
 
-		Assert-AreEqual 3 @($nic.IpConfigurations).Count
+        Assert-AreEqual 3 @($nic.IpConfigurations).Count
 
         Assert-AreEqual 1 @($nic.IpConfigurations[0].ApplicationSecurityGroups).Count
         Assert-AreEqual 1 @($nic.IpConfigurations[1].ApplicationSecurityGroups).Count
@@ -545,20 +545,20 @@ function Test-ApplicationSecurityGroupInAddedNetworkInterfaceIpConfig
 
         if ($useIds)
         {
-			$ipconfigSet = Set-AzureRmNetworkInterfaceIpConfig -NetworkInterface $nic -Name $nic.IpConfigurations[0].Name -SubnetId $vnet.Subnets[0].Id -ApplicationSecurityGroupId @($asg1.Id, $asg2.Id) -Primary
+            $ipconfigSet = Set-AzureRmNetworkInterfaceIpConfig -NetworkInterface $nic -Name $nic.IpConfigurations[0].Name -SubnetId $vnet.Subnets[0].Id -ApplicationSecurityGroupId @($asg1.Id, $asg2.Id) -Primary
             $ipConfig1 = Add-AzureRmNetworkInterfaceIpConfig -NetworkInterface $nic -Name $ipConfigName1 -SubnetId $vnet.Subnets[0].Id -ApplicationSecurityGroupId @($asg1.Id, $asg2.Id) | Set-AzureRmNetworkInterface
             $ipConfig2 = Add-AzureRmNetworkInterfaceIpConfig -NetworkInterface $nic -Name $ipConfigName2 -SubnetId $vnet.Subnets[0].Id -ApplicationSecurityGroupId @($asg1.Id, $asg2.Id) | Set-AzureRmNetworkInterface
         }
         else
         {
-			$ipconfigSet = Set-AzureRmNetworkInterfaceIpConfig -NetworkInterface $nic -Name $nic.IpConfigurations[0].Name -Subnet $vnet.Subnets[0] -ApplicationSecurityGroup @($asg1, $asg2) -Primary
+            $ipconfigSet = Set-AzureRmNetworkInterfaceIpConfig -NetworkInterface $nic -Name $nic.IpConfigurations[0].Name -Subnet $vnet.Subnets[0] -ApplicationSecurityGroup @($asg1, $asg2) -Primary
             $ipConfig1 = Add-AzureRmNetworkInterfaceIpConfig -NetworkInterface $nic -Name $ipConfigName1 -Subnet $vnet.Subnets[0] -ApplicationSecurityGroup @($asg1, $asg2) | Set-AzureRmNetworkInterface
             $ipConfig2 = Add-AzureRmNetworkInterfaceIpConfig -NetworkInterface $nic -Name $ipConfigName2 -Subnet $vnet.Subnets[0] -ApplicationSecurityGroup @($asg1, $asg2) | Set-AzureRmNetworkInterface
         }
 
-		$nic = Get-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName
+        $nic = Get-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName
 
-		Assert-AreEqual 3 @($nic.IpConfigurations).Count
+        Assert-AreEqual 3 @($nic.IpConfigurations).Count
 
         Assert-AreEqual 2 @($nic.IpConfigurations[0].ApplicationSecurityGroups).Count
         Assert-AreEqual 2 @($nic.IpConfigurations[1].ApplicationSecurityGroups).Count
