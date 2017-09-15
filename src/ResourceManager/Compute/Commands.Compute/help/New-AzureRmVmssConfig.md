@@ -20,8 +20,9 @@ New-AzureRmVmssConfig [[-Overprovision] <Boolean>] [[-Location] <String>] [[-Tag
  [[-Extension] <VirtualMachineScaleSetExtension[]>] [-SinglePlacementGroup <Boolean>] [-Zone <String[]>]
  [-PlanName <String>] [-PlanPublisher <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>]
  [-RollingUpgradePolicy <RollingUpgradePolicy>] [-AutoOSUpgrade <Boolean>] [-HealthProbeId <String>]
- [-BootDiagnostic <BootDiagnostics>] [-LicenseType <String>] [-IdentityType <ResourceIdentityType>]
- [-AssignIdentity] [-RecoveryPolicyMode <RecoveryMode>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-BootDiagnostic <BootDiagnostics>] [-LicenseType <String>] [-AssignIdentity]
+ [-IdentityType <ResourceIdentityType>] [-RecoveryPolicyMode <RecoveryMode>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -67,7 +68,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
