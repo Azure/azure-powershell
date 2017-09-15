@@ -337,6 +337,8 @@
           DestinationFolder="$(LibrarySourceFolder)\Package\$(Configuration)" Condition= " '$(NetCore)' == 'false' "/>
     <Copy SourceFiles="$(LibraryRoot)tools\AzureRM.Netcore\AzureRM.Netcore.psd1"
           DestinationFolder="$(LibrarySourceFolder)\Package\$(Configuration)" Condition= " '$(NetCore)' == 'true' "/>
+    <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot; $(LibraryRoot)\experiments\Compute.Experiments\copy-dev.ps1 -Config $(Config) &quot;"
+        ContinueOnError="ErrorAndContinue" />
 
     <ItemGroup>
       <DelaySignedAssembliesToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\Microsoft*Azure*Commands*.dll" />
