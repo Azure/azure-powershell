@@ -1,1 +1,0 @@
--NoExit -Command "Import-Module D:\azps\\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1;Import-Module D:\azps\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Network/AzureRM.Network.psd1;$VerbosePreference='Continue'"
