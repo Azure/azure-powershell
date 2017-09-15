@@ -47,6 +47,9 @@
   "src/ResourceManager/Dns/": [
     ".\\src\\ResourceManager\\Dns\\Commands.Dns.Test\\bin\\Debug\\Microsoft.Azure.Commands.Dns.Test.dll"
   ],
+  "src/ResourceManager/EventGrid/": [
+    ".\\src\\ResourceManager\\EventGrid\\Commands.EventGrid.Test\\bin\\Debug\\Microsoft.Azure.Commands.EventGrid.Test.dll"
+  ],
   "src/ResourceManager/EventHub/": [
     ".\\src\\ResourceManager\\EventHub\\Commands.EventHub.Test\\bin\\Debug\\Microsoft.Azure.Commands.EventHubs.Test.dll"
   ],
