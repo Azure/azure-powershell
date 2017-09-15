@@ -14,13 +14,13 @@ Removes an Azure Event Grid Topic.
 
 ### TopicNameParameterSet (Default)
 ```
-Remove-AzureRmEventGridTopic [-ResourceGroupName] <String> [-Name] <String> [-WhatIf] [-Confirm]
+Remove-AzureRmEventGridTopic [-ResourceGroupName] <String> [-Name] <String> [-PassThru] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ResourceIdEventSubscriptionParameterSet
 ```
-Remove-AzureRmEventGridTopic [-ResourceId] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzureRmEventGridTopic [-ResourceId] <String> [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -56,6 +56,21 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns the status of the Remove operation. By default, this cmdlet does not generate any output.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
