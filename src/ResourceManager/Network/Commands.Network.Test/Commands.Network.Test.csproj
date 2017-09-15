@@ -286,6 +286,12 @@
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.ExpressRouteCircuitTests\TestExpressRouteBgpServiceCommunitiesGet.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.LoadBalancerTests\TestLoadBalancerCRUDInternalHighlyAvailableBasicSku.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.LoadBalancerTests\TestLoadBalancerCRUDInternalHighlyAvailableStandardSku.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.LoadBalancerTests\TestSetLoadBalancerCRUDInternalBasicSku.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -296,6 +302,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.LoadBalancerTests\TestSetLoadBalancerCRUDPublicStandardSku.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.NetworkSecurityGroupTests\TestNetworkSecurityGroupMultiValuedRules.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.NetworkWatcherAPITests\TestFlowLog.json">
@@ -530,6 +539,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkTests\TestVirtualNetworkCRUD.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkTests\TestVirtualNetworkCRUDWithDDoSProtection.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkTests\TestVirtualNetworkPeeringCRUD.json">
