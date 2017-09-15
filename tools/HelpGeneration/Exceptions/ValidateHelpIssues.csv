@@ -575,3 +575,11 @@ Commands.Websites,Reset-AzureRmWebAppPublishingProfile.md,No synopsis found
 Commands.Websites,Reset-AzureRmWebAppSlotPublishingProfile.md,No synopsis found
 Commands.Websites,Restart-AzureRmWebAppSlot.md,No synopsis found
 Commands.Websites,Restore-AzureRmWebAppBackup.md,No synopsis found
+AzureRM.Resources,Get-AzureRmManagedApplicationDefinition.md,No examples found
+AzureRM.Resources,New-AzureRmManagedApplicationDefinition.md,No examples found
+AzureRM.Resources,Remove-AzureRmManagedApplicationDefinition.md,No examples found
+AzureRM.Resources,Set-AzureRmManagedApplicationDefinition.md,No examples found
+AzureRM.Resources,Get-AzureRmManagedApplication.md,No examples found
+AzureRM.Resources,New-AzureRmManagedApplication.md,No examples found
+AzureRM.Resources,Remove-AzureRmManagedApplication.md,No examples found
+AzureRM.Resources,Set-AzureRmManagedApplication.md,No examples found
