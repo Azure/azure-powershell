@@ -7,7 +7,7 @@ schema: 2.0.0
 # New-AzWebApp
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Create a new Azure AppService website and attach it to a git repository.
 
 ## SYNTAX
 
@@ -28,7 +28,8 @@ PS C:\> New-AzWebApp contosoWebApp
 
 Creates a web application.  The user will be prompted for the appservice to use and other settings.
 
-## Example 1: Create a website with default settings
+## Example 2: Create a website with default settings
+```
 PS C:\> New-AzWebApp contosoWebApp -Auto
 ```
 

@@ -33,7 +33,7 @@ Create a web application using defaults for all values, including name
 ## PARAMETERS
 
 ### -AddRemote
-{{Fill AddRemote Description}}
+Add a remote github repository to the given github repo.
 
 ```yaml
 Type: SwitchParameter
