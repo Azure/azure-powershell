@@ -50,6 +50,9 @@ namespace Microsoft.Azure.Commands.EventGrid
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.ShouldProcess(this.Name, $"Remove topic {this.Name} in resource group {this.ResourceGroupName}"))
@@ -68,6 +71,10 @@ namespace Microsoft.Azure.Commands.EventGrid
                 }
 
                 this.Client.DeleteTopic(resourceGroupName, topicName);
+                if (this.PassThru)
+                {
+                    this.WriteObject(true);
+                }
             }
         }
     }
