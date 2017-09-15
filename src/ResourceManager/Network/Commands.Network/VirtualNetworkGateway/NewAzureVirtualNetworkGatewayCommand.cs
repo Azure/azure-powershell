@@ -27,11 +27,11 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, 
-        "AzureRmVirtualNetworkGateway", 
-        SupportsShouldProcess = true,
-        DefaultParameterSetName = VirtualNetworkGatewayParameterSets.Default),
-        OutputType(typeof(PSVirtualNetworkGateway))]
+    [Cmdlet(VerbsCommon.New,
+         "AzureRmVirtualNetworkGateway",
+         SupportsShouldProcess = true,
+         DefaultParameterSetName = VirtualNetworkGatewayParameterSets.Default),
+     OutputType(typeof(PSVirtualNetworkGateway))]
     public class NewAzureVirtualNetworkGatewayCommand : VirtualNetworkGatewayBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -68,9 +68,9 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The type of this virtual network gateway: Vpn, ExoressRoute")]
         [ValidateSet(
-        MNM.VirtualNetworkGatewayType.Vpn,
-        MNM.VirtualNetworkGatewayType.ExpressRoute,
-        IgnoreCase = true)]
+            MNM.VirtualNetworkGatewayType.Vpn,
+            MNM.VirtualNetworkGatewayType.ExpressRoute,
+            IgnoreCase = true)]
         public string GatewayType { get; set; }
 
         [Parameter(
@@ -78,9 +78,9 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The type of the Vpn:PolicyBased/RouteBased")]
         [ValidateSet(
-        MNM.VpnType.PolicyBased,
-        MNM.VpnType.RouteBased,
-        IgnoreCase = true)]
+            MNM.VpnType.PolicyBased,
+            MNM.VpnType.RouteBased,
+            IgnoreCase = true)]
         public string VpnType { get; set; }
 
         [Parameter(
@@ -99,20 +99,20 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Gateway Sku Tier")]
         [ValidateSet(
-        MNM.VirtualNetworkGatewaySkuTier.Basic,
-        MNM.VirtualNetworkGatewaySkuTier.Standard,
-        MNM.VirtualNetworkGatewaySkuTier.HighPerformance,
-        MNM.VirtualNetworkGatewaySkuTier.UltraPerformance,
-        MNM.VirtualNetworkGatewaySkuTier.VpnGw1,
-        MNM.VirtualNetworkGatewaySkuTier.VpnGw2,
-        MNM.VirtualNetworkGatewaySkuTier.VpnGw3,
-        IgnoreCase = true)]
+            MNM.VirtualNetworkGatewaySkuTier.Basic,
+            MNM.VirtualNetworkGatewaySkuTier.Standard,
+            MNM.VirtualNetworkGatewaySkuTier.HighPerformance,
+            MNM.VirtualNetworkGatewaySkuTier.UltraPerformance,
+            MNM.VirtualNetworkGatewaySkuTier.VpnGw1,
+            MNM.VirtualNetworkGatewaySkuTier.VpnGw2,
+            MNM.VirtualNetworkGatewaySkuTier.VpnGw3,
+            IgnoreCase = true)]
         public string GatewaySku { get; set; }
 
         [Parameter(
-             Mandatory = false,
-             ValueFromPipelineByPropertyName = true,
-             ParameterSetName = "SetByResource",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "SetByResource",
             HelpMessage = "GatewayDefaultSite")]
         public PSLocalNetworkGateway GatewayDefaultSite { get; set; }
 
@@ -169,18 +169,13 @@ namespace Microsoft.Azure.Commands.Network
         public SwitchParameter Force { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = VirtualNetworkGatewayParameterSets.RadiusServerConfiguration,
             HelpMessage = "P2S External Radius server address.")]
         [ValidateNotNullOrEmpty]
         public string RadiusServerAddress { get; set; }
 
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = VirtualNetworkGatewayParameterSets.Default,
-            HelpMessage = "P2S External Radius server secret.")]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -198,9 +193,9 @@ namespace Microsoft.Azure.Commands.Network
             string continueMsg = Properties.Resources.CreatingResourceMessage;
             bool force = true;
             if (!string.IsNullOrEmpty(GatewaySku)
-                && GatewaySku.Equals(MNM.VirtualNetworkGatewaySkuTier.UltraPerformance,StringComparison.InvariantCultureIgnoreCase))
+                && GatewaySku.Equals(MNM.VirtualNetworkGatewaySkuTier.UltraPerformance, StringComparison.InvariantCultureIgnoreCase))
             {
-                warningMsg = string.Format(Properties.Resources.UltraPerformaceGatewayWarning,this.Name);
+                warningMsg = string.Format(Properties.Resources.UltraPerformaceGatewayWarning, this.Name);
                 force = false;
             }
             else
@@ -223,7 +218,7 @@ namespace Microsoft.Azure.Commands.Network
                     WriteObject(virtualNetworkGateway);
                 },
                 () => present);
-            
+
         }
 
         private PSVirtualNetworkGateway CreateVirtualNetworkGateway()
@@ -302,8 +297,8 @@ namespace Microsoft.Azure.Commands.Network
                 vnetGateway.GatewayDefaultSite = null;
             }
 
-            if (this.VpnClientAddressPool != null || 
-                this.VpnClientRootCertificates != null || 
+            if (this.VpnClientAddressPool != null ||
+                this.VpnClientRootCertificates != null ||
                 this.VpnClientRevokedCertificates != null ||
                 this.RadiusServerAddress != null)
             {

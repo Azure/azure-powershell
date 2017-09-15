@@ -13,18 +13,19 @@ Sets the VPN client address pool for a virtual network gateway.
 
 ## SYNTAX
 
-### Empty (Default)
+### Default (Default)
 ```
 Set-AzureRmVirtualNetworkGatewayVpnClientConfig -VirtualNetworkGateway <PSVirtualNetworkGateway>
- -VpnClientAddressPool <System.Collections.Generic.List`1[System.String]> [-RadiusServerSecret <SecureString>]
- [<CommonParameters>]
+ -VpnClientAddressPool <System.Collections.Generic.List`1[System.String]>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RadiusServerConfiguration
 ```
 Set-AzureRmVirtualNetworkGatewayVpnClientConfig -VirtualNetworkGateway <PSVirtualNetworkGateway>
- -VpnClientAddressPool <System.Collections.Generic.List`1[System.String]> -RadiusServerAddress <String>
- -RadiusServerSecret <SecureString> [<CommonParameters>]
+ -VpnClientAddressPool <System.Collections.Generic.List`1[System.String]> [-RadiusServerAddress <String>]
+ -RadiusServerSecret <SecureString> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -60,23 +61,23 @@ The second command in the example then uses the **Set-AzureRmVirtualNetworkGatew
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -RadiusServerAddress
 P2S External Radius server address.```yaml
 Type: String
 Parameter Sets: RadiusServerConfiguration
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -RadiusServerSecret
-P2S External Radius server secret.```yaml
-Type: SecureString
-Parameter Sets: Empty
 Aliases: 
 
 Required: False
@@ -86,7 +87,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-```yaml
+### -RadiusServerSecret
+P2S External Radius server secret.```yaml
 Type: SecureString
 Parameter Sets: RadiusServerConfiguration
 Aliases: 
@@ -126,6 +128,36 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

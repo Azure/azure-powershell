@@ -77,8 +77,8 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-
-            if (ShouldProcess("AzureVpnClientConfiguration", VerbsCommon.New))
+            string shouldProcessMessage = string.Format("Execute AzureRmVpnClientConfiguration for ResourceGroupName {0} VirtualNetworkGateway {1}", Name, ResourceGroupName);
+            if (ShouldProcess(shouldProcessMessage, VerbsCommon.New))
             {
                 PSVpnClientParameters vpnClientParams = new PSVpnClientParameters();
 
@@ -161,4 +161,3 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
-
