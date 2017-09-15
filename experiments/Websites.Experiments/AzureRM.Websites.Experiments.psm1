@@ -1037,7 +1037,7 @@ function Get-LocationFromUser
     return $location
 }
 
-Export-ModuleMember -Cmdlet New-AzWebAppJustDoIt
+
 Export-ModuleMember -Cmdlet New-AzWebApp
 Export-ModuleMember -Cmdlet New-AzWebAppGrayParam
 

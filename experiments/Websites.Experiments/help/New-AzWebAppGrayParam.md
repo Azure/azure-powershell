@@ -7,26 +7,28 @@ schema: 2.0.0
 # New-AzWebAppGrayParam
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Create an Azure Website using Azure App Service. 
 
 ## SYNTAX
 
 ```
 New-AzWebAppGrayParam [[-WebAppName] <String>] [[-ResourceGroupName] <String>] [[-AppServicePlan] <String>]
- [-Auto] [-AddRemote] [[-GitRepositoryPath] <String>]
+ [-Auto] [-AddRemote] [[-GitRepositoryPath] <String>] [-Location <string>]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Create an Azure Website using Azure App Service. This cmdlet uses the 'Gray Parameter' experience, which will prompt the user with default 
+values for parameters that are not provided.  Using -Auto indicates that further prompting for defaults should not occur.
+
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzWebAppGrayParam
 ```
 
-{{ Add example description here }}
+Create a web application using defaults for all values, including name
 
 ## PARAMETERS
 
@@ -46,7 +48,7 @@ Accept wildcard characters: False
 ```
 
 ### -AppServicePlan
-{{Fill AppServicePlan Description}}
+The ApPService Plan to use for thsi website.  If not provided, the website will create an app service plan, or join an existing free AppService plan.
 
 ```yaml
 Type: String
@@ -61,7 +63,7 @@ Accept wildcard characters: False
 ```
 
 ### -Auto
-{{Fill Auto Description}}
+Skip parameter prompting for remaining parameters.
 
 ```yaml
 Type: SwitchParameter
@@ -76,7 +78,7 @@ Accept wildcard characters: False
 ```
 
 ### -GitRepositoryPath
-{{Fill GitRepositoryPath Description}}
+The path to a github repository containingg the application for the website.  A remote for pushign to the website will be added to this repository.
 
 ```yaml
 Type: String
@@ -91,7 +93,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-{{Fill ResourceGroupName Description}}
+The name of the resource group to create the website in.
 
 ```yaml
 Type: String
@@ -106,7 +108,7 @@ Accept wildcard characters: False
 ```
 
 ### -WebAppName
-{{Fill WebAppName Description}}
+The name of the website.
 
 ```yaml
 Type: String
@@ -128,6 +130,7 @@ Accept wildcard characters: False
 ## OUTPUTS
 
 ### Microsoft.Azure.Management.WebSites.Models.Site
+Details about the created website, including its URL.
 
 
 ## NOTES

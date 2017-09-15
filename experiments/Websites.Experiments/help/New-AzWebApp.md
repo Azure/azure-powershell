@@ -17,21 +17,28 @@ New-AzWebApp [[-WebAppName] <String>] [[-ResourceGroupName] <String>] [[-AppServ
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Create a new Azure AppService website and attach it to a git repository.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Create a website with prompts for settings
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzWebApp contosoWebApp
 ```
 
-{{ Add example description here }}
+Creates a web application.  The user will be prompted for the appservice to use and other settings.
+
+## Example 1: Create a website with default settings
+PS C:\> New-AzWebApp contosoWebApp -Auto
+```
+
+Creates a web application using default settings.
+
 
 ## PARAMETERS
 
 ### -AddRemote
-{{Fill AddRemote Description}}
+Add a remote to local github repo.
 
 ```yaml
 Type: SwitchParameter
@@ -46,7 +53,7 @@ Accept wildcard characters: False
 ```
 
 ### -AppServicePlan
-{{Fill AppServicePlan Description}}
+The name or id of the AppService Plan to use with this WebApp.
 
 ```yaml
 Type: String
@@ -61,7 +68,7 @@ Accept wildcard characters: False
 ```
 
 ### -Auto
-{{Fill Auto Description}}
+Accept default values for all settings not provided, withotu prompting.
 
 ```yaml
 Type: SwitchParameter
@@ -76,7 +83,7 @@ Accept wildcard characters: False
 ```
 
 ### -GitRepositoryPath
-{{Fill GitRepositoryPath Description}}
+The path to a github repository where remotes should be added.
 
 ```yaml
 Type: String
@@ -91,7 +98,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-{{Fill ResourceGroupName Description}}
+The name of the resource group for the Website.
 
 ```yaml
 Type: String
@@ -106,7 +113,7 @@ Accept wildcard characters: False
 ```
 
 ### -WebAppName
-{{Fill WebAppName Description}}
+The name of the Website. The website will automatically use this value as the subdomain for the created website.
 
 ```yaml
 Type: String
@@ -128,6 +135,7 @@ Accept wildcard characters: False
 ## OUTPUTS
 
 ### Microsoft.Azure.Management.WebSites.Models.Site
+Details about the created website, including URL and github repo url.
 
 
 ## NOTES
