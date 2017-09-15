@@ -22,6 +22,15 @@
     - New cmdlet: 'Invoke-AzureRmVMRunCommand' invokes a run command on a VM
     - New cmdlet: 'Get-AzureRmVMRunCommandDocument' shows available run command documents
 * Add 'StorageAccountType' parameter to Set-AzureRmDataDisk
+* Availability Zone support for virtual machine, VM scale set, and disk
+    - New paramter: 'Zone' is added to New-AzureRmVM, New-AzureRmVMConfig, New-AzureRmVmssConfig, New-AzureRmDiskConfig
+* VM scale set rolling upgrade feature:
+    - New cmdlet: 'Start-AzureRmVmssRollingOSUpgrade' invokes OS rolling upgrade of VM scale set
+    - New cmdlet: 'Set-AzureRmVmssRollingUpgradePolicy' sets upgrade policy for VM scale set rolling upgrade.
+    - New cmdlet: 'Stop-AzureRmVmssRollingUpgrade' cancels rolling upgrade of VM scale set
+    - New cmdlet: 'Get-AzureRmVmssRollingUpgrade' shows the status of VM scale set rolling upgrade.
+* AssignIdentity switch parameter is introduced for system assigned identity.
+    - New parameter: 'AssignIdentity' is added to New-AzureRmVMConfig, New-AzureRmVmssConfig and Update-AzureRmVM
 
 ## Version 3.3.1
 * 

@@ -90,6 +90,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             "VirtualMachineRunCommandGet",
             "VirtualMachineRunCommandList",
             "VirtualMachineRunCommandListNext",
+            "VirtualMachineScaleSetRollingUpgradeCancel",
+            "VirtualMachineScaleSetRollingUpgradeGetLatest",
+            "VirtualMachineScaleSetRollingUpgradeStartOSUpgrade",
             "VirtualMachineScaleSetCreateOrUpdate",
             "VirtualMachineScaleSetDeallocate",
             "VirtualMachineScaleSetDelete",
@@ -107,6 +110,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             "VirtualMachineScaleSetReimageAll",
             "VirtualMachineScaleSetRestart",
             "VirtualMachineScaleSetStart",
+            "VirtualMachineScaleSetUpdate",
             "VirtualMachineScaleSetUpdateInstances",
             "VirtualMachineScaleSetVMDeallocate",
             "VirtualMachineScaleSetVMDelete",
@@ -126,6 +130,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             "VirtualMachineDelete",
             "VirtualMachineGeneralize",
             "VirtualMachineGet",
+            "VirtualMachineInstanceView",
             "VirtualMachineList",
             "VirtualMachineListAll",
             "VirtualMachineListAllNext",
@@ -300,6 +305,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     case "VirtualMachineRunCommandListNext":
                         ExecuteVirtualMachineRunCommandListNextMethod(argumentList);
                         break;
+                    case "VirtualMachineScaleSetRollingUpgradeCancel":
+                        ExecuteVirtualMachineScaleSetRollingUpgradeCancelMethod(argumentList);
+                        break;
+                    case "VirtualMachineScaleSetRollingUpgradeGetLatest":
+                        ExecuteVirtualMachineScaleSetRollingUpgradeGetLatestMethod(argumentList);
+                        break;
+                    case "VirtualMachineScaleSetRollingUpgradeStartOSUpgrade":
+                        ExecuteVirtualMachineScaleSetRollingUpgradeStartOSUpgradeMethod(argumentList);
+                        break;
                     case "VirtualMachineScaleSetCreateOrUpdate":
                         ExecuteVirtualMachineScaleSetCreateOrUpdateMethod(argumentList);
                         break;
@@ -350,6 +364,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         break;
                     case "VirtualMachineScaleSetStart":
                         ExecuteVirtualMachineScaleSetStartMethod(argumentList);
+                        break;
+                    case "VirtualMachineScaleSetUpdate":
+                        ExecuteVirtualMachineScaleSetUpdateMethod(argumentList);
                         break;
                     case "VirtualMachineScaleSetUpdateInstances":
                         ExecuteVirtualMachineScaleSetUpdateInstancesMethod(argumentList);
@@ -407,6 +424,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         break;
                     case "VirtualMachineGet":
                         ExecuteVirtualMachineGetMethod(argumentList);
+                        break;
+                    case "VirtualMachineInstanceView":
+                        ExecuteVirtualMachineInstanceViewMethod(argumentList);
                         break;
                     case "VirtualMachineList":
                         ExecuteVirtualMachineListMethod(argumentList);
@@ -495,6 +515,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 case "VirtualMachineRunCommandGet": return CreateVirtualMachineRunCommandGetDynamicParameters();
                 case "VirtualMachineRunCommandList": return CreateVirtualMachineRunCommandListDynamicParameters();
                 case "VirtualMachineRunCommandListNext": return CreateVirtualMachineRunCommandListNextDynamicParameters();
+                case "VirtualMachineScaleSetRollingUpgradeCancel": return CreateVirtualMachineScaleSetRollingUpgradeCancelDynamicParameters();
+                case "VirtualMachineScaleSetRollingUpgradeGetLatest": return CreateVirtualMachineScaleSetRollingUpgradeGetLatestDynamicParameters();
+                case "VirtualMachineScaleSetRollingUpgradeStartOSUpgrade": return CreateVirtualMachineScaleSetRollingUpgradeStartOSUpgradeDynamicParameters();
                 case "VirtualMachineScaleSetCreateOrUpdate": return CreateVirtualMachineScaleSetCreateOrUpdateDynamicParameters();
                 case "VirtualMachineScaleSetDeallocate": return CreateVirtualMachineScaleSetDeallocateDynamicParameters();
                 case "VirtualMachineScaleSetDelete": return CreateVirtualMachineScaleSetDeleteDynamicParameters();
@@ -512,6 +535,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 case "VirtualMachineScaleSetReimageAll": return CreateVirtualMachineScaleSetReimageAllDynamicParameters();
                 case "VirtualMachineScaleSetRestart": return CreateVirtualMachineScaleSetRestartDynamicParameters();
                 case "VirtualMachineScaleSetStart": return CreateVirtualMachineScaleSetStartDynamicParameters();
+                case "VirtualMachineScaleSetUpdate": return CreateVirtualMachineScaleSetUpdateDynamicParameters();
                 case "VirtualMachineScaleSetUpdateInstances": return CreateVirtualMachineScaleSetUpdateInstancesDynamicParameters();
                 case "VirtualMachineScaleSetVMDeallocate": return CreateVirtualMachineScaleSetVMDeallocateDynamicParameters();
                 case "VirtualMachineScaleSetVMDelete": return CreateVirtualMachineScaleSetVMDeleteDynamicParameters();
@@ -531,6 +555,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 case "VirtualMachineDelete": return CreateVirtualMachineDeleteDynamicParameters();
                 case "VirtualMachineGeneralize": return CreateVirtualMachineGeneralizeDynamicParameters();
                 case "VirtualMachineGet": return CreateVirtualMachineGetDynamicParameters();
+                case "VirtualMachineInstanceView": return CreateVirtualMachineInstanceViewDynamicParameters();
                 case "VirtualMachineList": return CreateVirtualMachineListDynamicParameters();
                 case "VirtualMachineListAll": return CreateVirtualMachineListAllDynamicParameters();
                 case "VirtualMachineListAllNext": return CreateVirtualMachineListAllNextDynamicParameters();

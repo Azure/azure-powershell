@@ -61,6 +61,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+        public string[] Zone { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
         public Hashtable Tag { get; set; }
 
         [Parameter(
@@ -206,6 +211,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             var vDisk = new PSDisk
             {
+                Zones = this.Zone,
                 OsType = this.OsType,
                 DiskSizeGB = this.DiskSizeGB,
                 Location = this.Location,

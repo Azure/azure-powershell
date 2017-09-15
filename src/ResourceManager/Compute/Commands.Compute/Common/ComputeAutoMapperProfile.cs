@@ -160,7 +160,8 @@ namespace Microsoft.Azure.Commands.Compute
                 cfg.CreateMap<FROM.VirtualMachine, TO.PSVirtualMachine>()
                     .ForMember(c => c.AvailabilitySetReference, o => o.MapFrom(r => r.AvailabilitySet))
                     .ForMember(c => c.Extensions, o => o.MapFrom(r => r.Resources))
-                    .ForMember(c => c.OSProfile, o => o.MapFrom(r => r.OsProfile));
+                    .ForMember(c => c.OSProfile, o => o.MapFrom(r => r.OsProfile))
+                    .ForMember(c => c.Zones, o => o.MapFrom(r => r.Zones));
 
                 cfg.CreateMap<AzureOperationResponse<FROM.VirtualMachine>, TO.PSVirtualMachine>()
                     .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode));
