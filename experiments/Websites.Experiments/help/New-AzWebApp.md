@@ -28,7 +28,7 @@ PS C:\> New-AzWebApp contosoWebApp
 
 Creates a web application.  The user will be prompted for the appservice to use and other settings.
 
-## Example 2: Create a website with default settings
+### Example 2: Create a website with default settings
 ```
 PS C:\> New-AzWebApp contosoWebApp -Auto
 ```

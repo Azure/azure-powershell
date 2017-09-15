@@ -48,7 +48,7 @@ Accept wildcard characters: False
 ```
 
 ### -AppServicePlan
-The ApPService Plan to use for thsi website.  If not provided, the website will create an app service plan, or join an existing free AppService plan.
+The AppService Plan to use for thsi website.  If not provided, the website will create an app service plan, or join an existing free AppService plan.
 
 ```yaml
 Type: String
