@@ -137,3 +137,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
+[New-AzureRmApplicationSecurityGroup](./New-AzureRmApplicationSecurityGroup.md)
+
+[Get-AzureRmApplicationSecurityGroup](./Get-AzureRmApplicationSecurityGroup.md)
