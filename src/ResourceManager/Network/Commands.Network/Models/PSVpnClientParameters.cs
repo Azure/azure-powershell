@@ -14,8 +14,16 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
+    using System.Collections.Generic;
+
     public class PSVpnClientParameters
     {
         public string ProcessorArchitecture { get; set; }
+
+        public string AuthenticationMethod { get; set; }
+
+        public string RadiusServerAuthCertificate { get; set; }
+
+        public List<string> ClientRootCertificates { get; set; }
     }
 }

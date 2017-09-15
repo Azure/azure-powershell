@@ -20,11 +20,17 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
+using System.Security;
+using Microsoft.Azure.Commands.Network.VirtualNetworkGateway;
+using Microsoft.WindowsAzure.Commands.Common;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmVirtualNetworkGateway", SupportsShouldProcess = true),
+    [Cmdlet(VerbsCommon.New, 
+        "AzureRmVirtualNetworkGateway", 
+        SupportsShouldProcess = true,
+        DefaultParameterSetName = VirtualNetworkGatewayParameterSets.Default),
         OutputType(typeof(PSVirtualNetworkGateway))]
     public class NewAzureVirtualNetworkGatewayCommand : VirtualNetworkGatewayBaseCmdlet
     {
@@ -162,6 +168,27 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
         public SwitchParameter Force { get; set; }
 
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = VirtualNetworkGatewayParameterSets.RadiusServerConfiguration,
+            HelpMessage = "P2S External Radius server address.")]
+        [ValidateNotNullOrEmpty]
+        public string RadiusServerAddress { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = VirtualNetworkGatewayParameterSets.Default,
+            HelpMessage = "P2S External Radius server secret.")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = VirtualNetworkGatewayParameterSets.RadiusServerConfiguration,
+            HelpMessage = "P2S External Radius server secret.")]
+        [ValidateNotNullOrEmpty]
+        public SecureString RadiusServerSecret { get; set; }
+
         public override void Execute()
         {
             base.Execute();
@@ -275,7 +302,10 @@ namespace Microsoft.Azure.Commands.Network
                 vnetGateway.GatewayDefaultSite = null;
             }
 
-            if (this.VpnClientAddressPool != null || this.VpnClientRootCertificates != null || this.VpnClientRevokedCertificates != null)
+            if (this.VpnClientAddressPool != null || 
+                this.VpnClientRootCertificates != null || 
+                this.VpnClientRevokedCertificates != null ||
+                this.RadiusServerAddress != null)
             {
                 vnetGateway.VpnClientConfiguration = new PSVpnClientConfiguration();
 
@@ -309,6 +339,18 @@ namespace Microsoft.Azure.Commands.Network
                 if (this.VpnClientRevokedCertificates != null)
                 {
                     vnetGateway.VpnClientConfiguration.VpnClientRevokedCertificates = this.VpnClientRevokedCertificates;
+                }
+
+                if ((this.RadiusServerAddress != null && this.RadiusServerSecret == null) ||
+                    (this.RadiusServerAddress == null && this.RadiusServerSecret != null))
+                {
+                    throw new ArgumentException("Both radius server address and secret must be specified if external radius is being configured");
+                }
+
+                if (this.RadiusServerAddress != null)
+                {
+                    vnetGateway.VpnClientConfiguration.RadiusServerAddress = this.RadiusServerAddress;
+                    vnetGateway.VpnClientConfiguration.RadiusServerSecret = SecureStringExtensions.ConvertToString(this.RadiusServerSecret);
                 }
             }
             else
