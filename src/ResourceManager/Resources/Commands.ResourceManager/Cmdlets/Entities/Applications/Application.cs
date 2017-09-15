@@ -14,6 +14,7 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application
 {
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Collections;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
     using Newtonsoft.Json;
 
@@ -45,5 +46,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application
         /// </summary>
         [JsonProperty(Required = Required.Default)]
         public ResourcePlan Plan { get; set; }
+
+        /// <summary>
+        /// The application kind.
+        /// </summary>
+        [JsonProperty(Required = Required.Default)]
+        public ApplicationKind Kind { get; set; }
+
+        /// <summary>
+        /// Gets or sets the tags.
+        /// </summary>
+        [JsonProperty(Required = Required.Default)]
+        public InsensitiveDictionary<string> Tags { get; set; }
     }
 }

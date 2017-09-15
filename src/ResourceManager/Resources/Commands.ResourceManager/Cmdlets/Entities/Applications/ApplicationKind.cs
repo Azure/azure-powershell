@@ -14,36 +14,19 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application
 {
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Collections;
-    using Newtonsoft.Json;
-
     /// <summary>
-    /// The application definition object.
+    /// The application kind.
     /// </summary>
-    public class ApplicationDefinition
+    public enum ApplicationKind
     {
         /// <summary>
-        /// The application defintion name.
+        /// The application kind is service catalog.
         /// </summary>
-        [JsonProperty(Required = Required.Default)]
-        public string Name { get; set; }
+        ServiceCatalog,
 
         /// <summary>
-        /// Gets or sets the application definition location.
+        /// The application kind is marketplace.
         /// </summary>
-        [JsonProperty(Required = Required.Default)]
-        public string Location { get; set; }
-
-        /// <summary>
-        /// The application definition properties.
-        /// </summary>
-        [JsonProperty(Required = Required.Default)]
-        public ApplicationDefinitionProperties Properties { get; set; }
-
-        /// <summary>
-        /// Gets or sets the tags.
-        /// </summary>
-        [JsonProperty(Required = Required.Default)]
-        public InsensitiveDictionary<string> Tags { get; set; }
+        MarketPlace
     }
 }

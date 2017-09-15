@@ -23,75 +23,64 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Newtonsoft.Json.Linq;
     using System;
     using System.Collections;
+    using System.Collections.Generic;
     using System.IO;
     using System.Management.Automation;
     using WindowsAzure.Commands.Common;
 
     /// <summary>
-    /// Creates the managed application.
+    /// Creates the managed application definition.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmManagedApplication", SupportsShouldProcess = true), OutputType(typeof(PSObject))]
-    public class NewAzureManagedApplicationCmdlet : ManagedApplicationCmdletBase
+    [Cmdlet(VerbsCommon.Set, "AzureRmManagedApplicationDefinition", SupportsShouldProcess = true), OutputType(typeof(PSObject))]
+    public class SetAzureManagedApplicationDefinitionCmdlet : ManagedApplicationCmdletBase
     {
         /// <summary>
-        /// Gets or sets the managed application name parameter.
+        /// Gets or sets the managed application definition name parameter.
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The managed application name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The managed application definition name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the managed application resource group parameter
+        /// Gets or sets the managed application definition resource group parameter
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         /// <summary>
-        /// Gets or sets the managed application managed resource group parameter
+        /// Gets or sets the managed application definition display name parameter.
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The managed resource group name.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The managed application definition display name.")]
         [ValidateNotNullOrEmpty]
-        public string ManagedResourceGroupName { get; set; }
+        public string DisplayName { get; set; }
 
         /// <summary>
-        /// Gets or sets the managed application managed application definition id parameter
+        /// Gets or sets the managed application definition description parameter.
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The managed resource group name.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The managed application definition description.")]
         [ValidateNotNullOrEmpty]
-        public string ManagedApplicationDefinitionId { get; set; }
+        public string Description { get; set; }
 
         /// <summary>
-        /// Gets or sets the location.
+        /// Gets or sets the managed application definition package file uri.
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "The resource location.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The managed application definition package file uri.")]
         [ValidateNotNullOrEmpty]
-        public string Location { get; set; }
+        public string PackageFileUri { get; set; }
 
         /// <summary>
-        /// Gets or sets the managed application parameters parameter
+        /// Gets or sets the managed application definition authorization.
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The JSON formatted string of parameters for managed application. This can either be a path to a file name or uri containing the parameters, or the parameters as string.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The managed application definition authorization. Comma separated authorization pairs in a format of <principalId>:<roleDefinitionId>")]
         [ValidateNotNullOrEmpty]
-        public string Parameter { get; set; }
+        public string[] Authorization { get; set; }
 
         /// <summary>
-        /// Gets or sets the kind.
+        /// Gets or sets the tags.
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "The managed application kind. One of marketplace or servicecatalog")]
-        [ValidateNotNullOrEmpty]
-        public ApplicationKind Kind { get; set; }
-
-        /// <summary>
-        /// Gets or sets the plan object.
-        /// </summary>
-        [Alias("PlanObject")]
-        [Parameter(Mandatory = false, HelpMessage = "A hash table which represents managed application plan properties.")]
-        [ValidateNotNullOrEmpty]
-        public Hashtable Plan { get; set; }
-
         [Alias("Tags")]
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A hashtable which represents resource tags.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
         /// <summary>
@@ -108,7 +97,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 .PutResource(
                     resourceId: resourceId,
                     apiVersion: apiVersion,
-                    resource: this.GetResource(),
+                    resource: this.GetResource(resourceId, apiVersion),
                     cancellationToken: this.CancellationToken.Value,
                     odataQuery: null)
                 .Result;
@@ -122,7 +111,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             var activity = string.Format("PUT {0}", managementUri.PathAndQuery);
             var result = this.GetLongRunningOperationTracker(activityName: activity, isResourceCreateOrUpdate: true)
                 .WaitOnOperation(operationResult: operationResult);
-            this.WriteObject(this.GetOutputObjects("ManagedApplicationId", JObject.Parse(result)), enumerateCollection: true);
+            this.WriteObject(this.GetOutputObjects("ManagedApplicationDefinitionId", JObject.Parse(result)), enumerateCollection: true);
         }
 
         /// <summary>
@@ -131,34 +120,41 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         private string GetResourceId()
         {
             var subscriptionId = DefaultContext.Subscription.Id;
-            return string.Format("/subscriptions/{0}/resourcegroups/{1}/providers/{2}/{3}",
+            return string.Format("/subscriptions/{0}/providers/{1}/{2}",
                 subscriptionId.ToString(),
-                this.ResourceGroupName,
-                Constants.MicrosoftApplicationType,
+                Constants.MicrosoftApplicationDefinitionType,
                 this.Name);
         }
 
         /// <summary>
         /// Constructs the resource
         /// </summary>
-        private JToken GetResource()
+        private JToken GetResource(string resourceId, string apiVersion)
         {
-            var applicationObject = new Application
+            var resource = this.GetExistingResource(resourceId, apiVersion).Result.ToResource();
+
+            var applicationDefinitionObject = new ApplicationDefinition
             {
                 Name = this.Name,
-                Location = this.Location,
-                Plan = this.Plan.ToDictionary(addValueLayer: false).ToJson().FromJson<ResourcePlan>(),
-                Kind = this.Kind,
-                Properties = new ApplicationProperties
+                Location = resource.Location,
+                Properties = new ApplicationDefinitionProperties
                 {
-                    ManagedResourceGroupId = string.Format("/subscriptions/{0}/resourcegroups/{1}", Guid.Parse(DefaultContext.Subscription.Id), this.ManagedResourceGroupName),
-                    ApplicationDefinitionId =this.ManagedApplicationDefinitionId ?? null,
-                    Parameters = this.Parameter == null ? null : JObject.Parse(this.GetObjectFromParameter(this.Parameter).ToString())
+                    LockLevel = (ApplicationLockLevel) Enum.Parse(typeof(ApplicationLockLevel), resource.Properties["lockLevel"].ToString(), true),
+                    Description = this.Description ?? (resource.Properties["description"] != null
+                        ? resource.Properties["description"].ToString()
+                        : null),
+                    DisplayName = this.DisplayName ?? (resource.Properties["displayName"] != null
+                        ? resource.Properties["displayName"].ToString()
+                        : null),
+                    PackageFileUri = this.PackageFileUri ?? null,
+                    Authorizations = this.Authorization != null
+                        ? JArray.Parse(this.GetAuthorizationObject(this.Authorization).ToString()).ToJson().FromJson<ApplicationProviderAuthorization[]>()
+                        : JArray.Parse(resource.Properties["authorizations"].ToString()).ToJson().FromJson<ApplicationProviderAuthorization[]>()
                 },
-                Tags = TagsHelper.GetTagsDictionary(this.Tag)
+                Tags = TagsHelper.GetTagsDictionary(this.Tag) ?? resource.Tags
             };
 
-            return applicationObject.ToJToken();
+            return applicationDefinitionObject.ToJToken();
         }
     }
 }

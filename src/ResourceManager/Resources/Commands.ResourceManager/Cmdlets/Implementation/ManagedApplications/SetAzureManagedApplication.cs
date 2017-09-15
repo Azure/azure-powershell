@@ -30,8 +30,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Creates the managed application.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmManagedApplication", SupportsShouldProcess = true), OutputType(typeof(PSObject))]
-    public class NewAzureManagedApplicationCmdlet : ManagedApplicationCmdletBase
+    [Cmdlet(VerbsCommon.Set, "AzureRmManagedApplication", SupportsShouldProcess = true), OutputType(typeof(PSObject))]
+    public class SetAzureManagedApplicationCmdlet : ManagedApplicationCmdletBase
     {
         /// <summary>
         /// Gets or sets the managed application name parameter.
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the managed application managed resource group parameter
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The managed resource group name.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The managed resource group name.")]
         [ValidateNotNullOrEmpty]
         public string ManagedResourceGroupName { get; set; }
 
@@ -62,13 +62,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public string ManagedApplicationDefinitionId { get; set; }
 
         /// <summary>
-        /// Gets or sets the location.
-        /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "The resource location.")]
-        [ValidateNotNullOrEmpty]
-        public string Location { get; set; }
-
-        /// <summary>
         /// Gets or sets the managed application parameters parameter
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The JSON formatted string of parameters for managed application. This can either be a path to a file name or uri containing the parameters, or the parameters as string.")]
@@ -78,9 +71,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the kind.
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "The managed application kind. One of marketplace or servicecatalog")]
+        [Parameter(Mandatory = false, HelpMessage = "The managed application kind. One of marketplace or servicecatalog")]
         [ValidateNotNullOrEmpty]
-        public ApplicationKind Kind { get; set; }
+        public string Kind { get; set; }
 
         /// <summary>
         /// Gets or sets the plan object.
@@ -90,8 +83,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateNotNullOrEmpty]
         public Hashtable Plan { get; set; }
 
+        /// <summary>
+        /// Gets or sets the tags.
+        /// </summary>
         [Alias("Tags")]
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A hashtable which represents resource tags.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
         /// <summary>
@@ -108,7 +104,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 .PutResource(
                     resourceId: resourceId,
                     apiVersion: apiVersion,
-                    resource: this.GetResource(),
+                    resource: this.GetResource(resourceId, apiVersion),
                     cancellationToken: this.CancellationToken.Value,
                     odataQuery: null)
                 .Result;
@@ -131,9 +127,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         private string GetResourceId()
         {
             var subscriptionId = DefaultContext.Subscription.Id;
-            return string.Format("/subscriptions/{0}/resourcegroups/{1}/providers/{2}/{3}",
+            return string.Format("/subscriptions/{0}/providers/{1}/{2}",
                 subscriptionId.ToString(),
-                this.ResourceGroupName,
                 Constants.MicrosoftApplicationType,
                 this.Name);
         }
@@ -141,21 +136,28 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Constructs the resource
         /// </summary>
-        private JToken GetResource()
+        private JToken GetResource(string resourceId, string apiVersion)
         {
+            var resource = this.GetExistingResource(resourceId, apiVersion).Result.ToResource();
+
             var applicationObject = new Application
             {
                 Name = this.Name,
-                Location = this.Location,
-                Plan = this.Plan.ToDictionary(addValueLayer: false).ToJson().FromJson<ResourcePlan>(),
-                Kind = this.Kind,
+                Location = resource.Location,
+                Plan = this.Plan == null
+                    ? resource.Plan
+                    : this.Plan.ToDictionary(addValueLayer: false).ToJson().FromJson<ResourcePlan>(),
                 Properties = new ApplicationProperties
                 {
-                    ManagedResourceGroupId = string.Format("/subscriptions/{0}/resourcegroups/{1}", Guid.Parse(DefaultContext.Subscription.Id), this.ManagedResourceGroupName),
-                    ApplicationDefinitionId =this.ManagedApplicationDefinitionId ?? null,
-                    Parameters = this.Parameter == null ? null : JObject.Parse(this.GetObjectFromParameter(this.Parameter).ToString())
+                    ManagedResourceGroupId = string.IsNullOrEmpty(this.ManagedResourceGroupName)
+                        ? resource.Properties["managedResourceGroupId"].ToString()
+                        : string.Format("/subscriptions/{0}/resourcegroups/{1}", Guid.Parse(DefaultContext.Subscription.Id), this.ManagedResourceGroupName),
+                    ApplicationDefinitionId =this.ManagedApplicationDefinitionId ?? resource.Properties["managedApplicationDefinitionId"].ToString(),
+                    Parameters = this.Parameter == null 
+                    ? (resource.Properties["parameters"] != null ? JObject.Parse(resource.Properties["parameters"].ToString()) : null)
+                    : JObject.Parse(this.GetObjectFromParameter(this.Parameter).ToString())
                 },
-                Tags = TagsHelper.GetTagsDictionary(this.Tag)
+                Tags = TagsHelper.GetTagsDictionary(this.Tag) ?? resource.Tags
             };
 
             return applicationObject.ToJToken();

@@ -110,7 +110,11 @@ CmdletsToExport = 'Get-AzureRmProviderOperation', 'Remove-AzureRmRoleAssignment'
                'Set-AzureRmPolicyDefinition', 'Remove-AzureRmResource', 
                'Remove-AzureRmResourceLock', 'Set-AzureRmResource', 
                'New-AzureRmResource', 'Set-AzureRmResourceLock', 
-               'Get-AzureRmResource'
+               'Get-AzureRmResource', 'Get-AzureRmManagedApplicationDefinition', 
+               'New-AzureRmManagedApplicationDefinition', 'Set-AzureRmManagedApplicationDefinition', 
+               'Remove-AzureRmManagedApplicationDefinition', 'Get-AzureRmManagedApplication', 
+               'New-AzureRmManagedApplication', 'Set-AzureRmManagedApplication', 
+               'Remove-AzureRmManagedApplication'
 
 # Variables to export from this module
 # VariablesToExport = @()
