@@ -63,6 +63,10 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.16.3.0\lib\net452\Microsoft.Azure.Management.Compute.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.Azure.Management.KeyVault, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.KeyVault.2.3.0-preview\lib\net452\Microsoft.Azure.Management.KeyVault.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.Azure.Management.Network, Version=14.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.14.0.0-preview\lib\net452\Microsoft.Azure.Management.Network.dll</HintPath>
       <Private>True</Private>
@@ -221,6 +225,13 @@
     <Compile Include="Extension\SqlServer\RemoveAzureVMSqlServerExtensionCommand.cs" />
     <Compile Include="Extension\SqlServer\SetAzureVMSqlServerExtensionCommand.cs" />
     <Compile Include="Extension\SqlServer\VirtualMachineSqlServerExtensionContext.cs" />
+    <Compile Include="Extension\VirtualMachineScaleSetExtensionBaseCmdlet.cs" />
+    <Compile Include="Extension\VmssDiskEncryption\AzureVmssDiskEncryptionExtensionContext.cs" />
+    <Compile Include="Extension\VmssDiskEncryption\AzureVmssDiskEncryptionExtensionPublicSettings.cs" />
+    <Compile Include="Extension\VmssDiskEncryption\GetAzureVmssDiskEncryptionStatus.cs" />
+    <Compile Include="Extension\VmssDiskEncryption\DisableAzureVmssDiskEncryption.cs" />
+    <Compile Include="Extension\VmssDiskEncryption\GetAzureVmssVMDiskEncryptionStatus.cs" />
+    <Compile Include="Extension\VmssDiskEncryption\SetAzureVmssDiskEncryptionExtension.cs" />
     <Compile Include="Generated\**\*.cs" />
     <Compile Include="Manual\*.cs" />
     <Compile Include="Images\GetAzureVMImageCommand.cs" />
@@ -250,8 +261,11 @@
     <Compile Include="Models\PSVirtualMachineInstanceView.cs" />
     <Compile Include="Models\PSVirtualMachineList.cs" />
     <Compile Include="Models\PSVirtualMachineListStatus.cs" />
+    <Compile Include="Models\PSVirtualMachineScaleSetExtension.cs" />
     <Compile Include="Models\PSVirtualMachineSize.cs" />
     <Compile Include="Common\LocationStringExtensions.cs" />
+    <Compile Include="Models\PSVmssDiskEncryptionStatusContext.cs" />
+    <Compile Include="Models\PSVmssVMDiskEncryptionStatusContext.cs" />
     <Compile Include="Models\UploadParameters.cs" />
     <Compile Include="Models\VhdDownloadContext.cs" />
     <Compile Include="Models\VhdDownloaderModel.cs" />

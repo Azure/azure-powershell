@@ -210,6 +210,9 @@ namespace Microsoft.Azure.Commands.Compute
 
                 cfg.CreateMap<TO.PSVirtualMachine, TO.PSVirtualMachineList>();
                 cfg.CreateMap<TO.PSVirtualMachineList, TO.PSVirtualMachine>();
+
+                cfg.CreateMap<TO.PSVmssDiskEncryptionStatusContext, TO.PSVmssDiskEncryptionStatusContextList>();
+                cfg.CreateMap<TO.PSVmssVMDiskEncryptionStatusContext, TO.PSVmssVMDiskEncryptionStatusContextList>();
             });
 
         }

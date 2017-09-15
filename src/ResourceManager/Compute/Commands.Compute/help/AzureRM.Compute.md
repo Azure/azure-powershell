@@ -65,6 +65,9 @@ Converts a virtual machine with blob-based disks to a virtual machine with manag
 ### [Disable-AzureRmVMDiskEncryption](Disable-AzureRmVMDiskEncryption.md)
 Disables encryption on an IaaS virtual machine.
 
+### [Disable-AzureRmVmssDiskEncryption](Disable-AzureRmVmssDiskEncryption.md)
+Disables disk encryption on a VM scale set.
+
 ### [Get-AzureRmAvailabilitySet](Get-AzureRmAvailabilitySet.md)
 Gets Azure availability sets in a resource group.
 
@@ -152,14 +155,20 @@ Gets the settings for a SQL Server extension on a virtual machine.
 ### [Get-AzureRmVmss](Get-AzureRmVmss.md)
 Gets the properties of a VMSS.
 
+### [Get-AzureRmVmssDiskEncryptionStatus](Get-AzureRmVmssDiskEncryptionStatus.md)
+Shows the disk encryption status of a VM scale set.
+
 ### [Get-AzureRmVmssRollingUpgrade](Get-AzureRmVmssRollingUpgrade.md)
-Gets the status of the latest virtual machine scale set rolling upgrade.
+Shows the status of the latest virtual machine scale set rolling upgrade.
 
 ### [Get-AzureRmVmssSku](Get-AzureRmVmssSku.md)
 Gets the available SKUs for the VMSS.
 
 ### [Get-AzureRmVmssVM](Get-AzureRmVmssVM.md)
 Gets the properties of a VMSS virtual machine.
+
+### [Get-AzureRmVmssVMDiskEncryptionStatus](Get-AzureRmVmssVMDiskEncryptionStatus.md)
+Shows the disk encryption status of VMs in a VM scale set.
 
 ### [Get-AzureRmVMUsage](Get-AzureRmVMUsage.md)
 Gets the virtual machine core count usage for a location.
@@ -434,6 +443,9 @@ Sets specific actions on a specified VMSS.
 ### [Set-AzureRmVmssBootDiagnostic](Set-AzureRmVmssBootDiagnostic.md)
 Sets the virtual machine scale set boot diagnostics profile.
 
+### [Set-AzureRmVmssDiskEncryptionExtension](Set-AzureRmVmssDiskEncryptionExtension.md)
+Enables disk encryption on a VM scale set.
+
 ### [Set-AzureRmVmssOsProfile](Set-AzureRmVmssOsProfile.md)
 Sets the VMSS operating system profile properties.
 
@@ -453,7 +465,7 @@ Starts an Azure virtual machine.
 Starts the VMSS or a set of virtual machines within the VMSS.
 
 ### [Start-AzureRmVmssRollingOSUpgrade](Start-AzureRmVmssRollingOSUpgrade.md)
-Starts a rolling upgrade to move all virtual machine scale set instances to the latest available Platform Image OS version. Instances which are already running the latest available OS version are not affected.
+Starts a rolling upgrade to move all virtual machine scale set instances to the latest available Platform Image OS version.
 
 ### [Stop-AzureRmVM](Stop-AzureRmVM.md)
 Stops an Azure virtual machine.
