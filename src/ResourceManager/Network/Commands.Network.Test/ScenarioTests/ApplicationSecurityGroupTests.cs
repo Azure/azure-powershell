@@ -47,6 +47,7 @@ namespace Commands.Network.Test.ScenarioTests
         public void TestApplicationSecurityGroupInNewSecurityRule()
         {
             NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-ApplicationSecurityGroupInNewSecurityRule"));
+            NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-ApplicationSecurityGroupInNewSecurityRule -useIds $True"));
         }
 
         [Fact]
@@ -54,6 +55,7 @@ namespace Commands.Network.Test.ScenarioTests
         public void TestApplicationSecurityGroupInAddedSecurityRule()
         {
             NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-ApplicationSecurityGroupInAddedSecurityRule"));
+            NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-ApplicationSecurityGroupInAddedSecurityRule -useIds $True"));
         }
 
         [Fact]
@@ -61,6 +63,7 @@ namespace Commands.Network.Test.ScenarioTests
         public void TestApplicationSecurityGroupInSetSecurityRule()
         {
             NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-ApplicationSecurityGroupInSetSecurityRule"));
+            NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-ApplicationSecurityGroupInSetSecurityRule -useIds $True"));
         }
 
         [Fact]
@@ -68,6 +71,22 @@ namespace Commands.Network.Test.ScenarioTests
         public void TestApplicationSecurityGroupInNewNetworkInterface()
         {
             NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-ApplicationSecurityGroupInNewNetworkInterface"));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestApplicationSecurityGroupInNewNetworkInterfaceIpConfig()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-ApplicationSecurityGroupInNewNetworkInterfaceIpConfig"));
+            NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-ApplicationSecurityGroupInNewNetworkInterfaceIpConfig -useIds $True"));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestApplicationSecurityGroupInaddedNetworkInterfaceIpConfig()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-ApplicationSecurityGroupInAddedNetworkInterfaceIpConfig"));
+            NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-ApplicationSecurityGroupInAddedNetworkInterfaceIpConfig -useIds $True"));
         }
     }
 }
