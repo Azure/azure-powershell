@@ -284,6 +284,14 @@
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.ApplicationGatewayTests\TestAvailableWafRuleSets.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.ApplicationSecurityGroupTests\TestApplicationSecurityGroupCollections.json" />
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.ApplicationSecurityGroupTests\TestApplicationSecurityGroupCRUD.json" />
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.ApplicationSecurityGroupTests\TestApplicationSecurityGroupInAddedNetworkInterfaceIpConfig.json" />
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.ApplicationSecurityGroupTests\TestApplicationSecurityGroupInAddedSecurityRule.json" />
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.ApplicationSecurityGroupTests\TestApplicationSecurityGroupInNewNetworkInterface.json" />
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.ApplicationSecurityGroupTests\TestApplicationSecurityGroupInNewNetworkInterfaceIpConfig.json" />
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.ApplicationSecurityGroupTests\TestApplicationSecurityGroupInNewSecurityRule.json" />
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.ApplicationSecurityGroupTests\TestApplicationSecurityGroupInSetSecurityRule.json" />
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.AvailableEndpointServicesTests\TestAvailableEndpointServicesList.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

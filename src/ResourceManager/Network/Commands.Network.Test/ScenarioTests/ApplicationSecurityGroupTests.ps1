@@ -34,7 +34,6 @@ function Test-ApplicationSecurityGroupCRUD
         Assert-AreEqual $rgName $asgNew.ResourceGroupName
         Assert-AreEqual $asgName $asgNew.Name
         Assert-NotNull $asgNew.Location
-        Assert-NotNull $asgNew.ResourceGuid
         Assert-NotNull $asgNew.Etag
 
         # Get the application security group
@@ -42,16 +41,11 @@ function Test-ApplicationSecurityGroupCRUD
         Assert-AreEqual $rgName $asgGet.ResourceGroupName
         Assert-AreEqual $asgName $asgGet.Name
         Assert-NotNull $asgGet.Location
-        Assert-NotNull $asgGet.ResourceGuid
         Assert-NotNull $asgGet.Etag
 
         # Remove the application security group
         $asgDelete = Remove-AzureRmApplicationSecurityGroup -Name $asgName -ResourceGroupName $rgName -PassThru -Force
-        Assert-AreEqual $rgName $asgDelete.ResourceGroupName
-        Assert-AreEqual $asgName $asgDelete.Name
-        Assert-NotNull $asgDelete.Location
-        Assert-NotNull $asgDelete.ResourceGuid
-        Assert-NotNull $asgDelete.Etag
+        Assert-AreEqual $true $asgDelete
     }
     finally
     {
@@ -171,28 +165,28 @@ function Test-ApplicationSecurityGroupInNewSecurityRule
         Assert-AreEqual 4 @($nsg.SecurityRules).Count
 
         $securityRule = @($nsg.SecurityRules) | Where-Object Name -eq $securityRuleNames[0]
-        Assert-AreEqual $null $securityRule.SourceAddressPrefix
-        Assert-AreEqual $null $securityRule.DestinationAddressPrefix
+        Assert-Null $securityRule.SourceAddressPrefix
+        Assert-Null $securityRule.DestinationAddressPrefix
         Assert-AreEqual $asg.Id $securityRule.SourceApplicationSecurityGroups.Id
         Assert-AreEqual $asg.Id $securityRule.DestinationApplicationSecurityGroups.Id
 
         $securityRule = @($nsg.SecurityRules) | Where-Object Name -eq $securityRuleNames[1]
-        Assert-AreEqual $null $securityRule.SourceAddressPrefix
+        Assert-Null $securityRule.SourceAddressPrefix
         Assert-AreEqual "*" $securityRule.DestinationAddressPrefix
         Assert-AreEqual $asg.Id $securityRule.SourceApplicationSecurityGroups.Id
-        Assert-AreEqual $null $securityRule.DestinationApplicationSecurityGroups
+        Assert-Null $securityRule.DestinationApplicationSecurityGroups
 
         $securityRule = @($nsg.SecurityRules) | Where-Object Name -eq $securityRuleNames[2]
         Assert-AreEqual "*" $securityRule.SourceAddressPrefix
-        Assert-AreEqual $null $securityRule.DestinationAddressPrefix
-        Assert-AreEqual $null $securityRule.SourceApplicationSecurityGroups
+        Assert-Null $securityRule.DestinationAddressPrefix
+        Assert-Null $securityRule.SourceApplicationSecurityGroups
         Assert-AreEqual $asg.Id $securityRule.DestinationApplicationSecurityGroups.Id
 
         $securityRule = @($nsg.SecurityRules) | Where-Object Name -eq $securityRuleNames[3]
         Assert-AreEqual "*" $securityRule.SourceAddressPrefix
         Assert-AreEqual "*" $securityRule.DestinationAddressPrefix
-        Assert-AreEqual $null $securityRule.SourceApplicationSecurityGroups
-        Assert-AreEqual $null $securityRule.DestinationApplicationSecurityGroups
+        Assert-Null $securityRule.SourceApplicationSecurityGroups
+        Assert-Null $securityRule.DestinationApplicationSecurityGroups
     }
     finally
     {
@@ -250,28 +244,28 @@ function Test-ApplicationSecurityGroupInAddedSecurityRule
         Assert-AreEqual 4 @($securityRules).Count
 
         $securityRule = @($securityRules) | Where-Object Name -eq $securityRuleNames[0]
-        Assert-AreEqual $null $securityRule.SourceAddressPrefix
-        Assert-AreEqual $null $securityRule.DestinationAddressPrefix
+        Assert-Null $securityRule.SourceAddressPrefix
+        Assert-Null $securityRule.DestinationAddressPrefix
         Assert-AreEqual $asg.Id $securityRule.SourceApplicationSecurityGroups.Id
         Assert-AreEqual $asg.Id $securityRule.DestinationApplicationSecurityGroups.Id
 
         $securityRule = @($securityRules) | Where-Object Name -eq $securityRuleNames[1]
-        Assert-AreEqual $null $securityRule.SourceAddressPrefix
+        Assert-Null $securityRule.SourceAddressPrefix
         Assert-AreEqual "*" $securityRule.DestinationAddressPrefix
         Assert-AreEqual $asg.Id $securityRule.SourceApplicationSecurityGroups.Id
-        Assert-AreEqual $null $securityRule.DestinationApplicationSecurityGroups
+        Assert-Null $securityRule.DestinationApplicationSecurityGroups
 
         $securityRule = @($securityRules) | Where-Object Name -eq $securityRuleNames[2]
         Assert-AreEqual "*" $securityRule.SourceAddressPrefix
-        Assert-AreEqual $null $securityRule.DestinationAddressPrefix
-        Assert-AreEqual $null $securityRule.SourceApplicationSecurityGroups
+        Assert-Null $securityRule.DestinationAddressPrefix
+        Assert-Null $securityRule.SourceApplicationSecurityGroups
         Assert-AreEqual $asg.Id $securityRule.DestinationApplicationSecurityGroups.Id
 
         $securityRule = @($securityRules) | Where-Object Name -eq $securityRuleNames[3]
         Assert-AreEqual "*" $securityRule.SourceAddressPrefix
         Assert-AreEqual "*" $securityRule.DestinationAddressPrefix
-        Assert-AreEqual $null $securityRule.SourceApplicationSecurityGroups
-        Assert-AreEqual $null $securityRule.DestinationApplicationSecurityGroups
+        Assert-Null $securityRule.SourceApplicationSecurityGroups
+        Assert-Null $securityRule.DestinationApplicationSecurityGroups
     }
     finally
     {
@@ -326,21 +320,21 @@ function Test-ApplicationSecurityGroupInSetSecurityRule
         $securityRules = Get-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg
 
         $securityRule = @($securityRules) | Where-Object Name -eq $securityRuleNames[0]
-        Assert-AreEqual $null $securityRule.SourceAddressPrefix
-        Assert-AreEqual $null $securityRule.DestinationAddressPrefix
+        Assert-Null $securityRule.SourceAddressPrefix
+        Assert-Null $securityRule.DestinationAddressPrefix
         Assert-AreEqual $asg.Id $securityRule.SourceApplicationSecurityGroups.Id
         Assert-AreEqual $asg.Id $securityRule.DestinationApplicationSecurityGroups.Id
 
         $securityRule = @($securityRules) | Where-Object Name -eq $securityRuleNames[1]
-        Assert-AreEqual $null $securityRule.SourceAddressPrefix
+        Assert-Null $securityRule.SourceAddressPrefix
         Assert-AreEqual "*" $securityRule.DestinationAddressPrefix
         Assert-AreEqual $asg.Id $securityRule.SourceApplicationSecurityGroups.Id
-        Assert-AreEqual $null $securityRule.DestinationApplicationSecurityGroups
+        Assert-Null $securityRule.DestinationApplicationSecurityGroups
 
         $securityRule = @($securityRules) | Where-Object Name -eq $securityRuleNames[2]
         Assert-AreEqual "*" $securityRule.SourceAddressPrefix
-        Assert-AreEqual $null $securityRule.DestinationAddressPrefix
-        Assert-AreEqual $null $securityRule.SourceApplicationSecurityGroups
+        Assert-Null $securityRule.DestinationAddressPrefix
+        Assert-Null $securityRule.SourceApplicationSecurityGroups
         Assert-AreEqual $asg.Id $securityRule.DestinationApplicationSecurityGroups.Id
     }
     finally
@@ -389,8 +383,8 @@ function Test-ApplicationSecurityGroupInNewNetworkInterface
         $nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $location -Subnet $vnet.Subnets[0] -ApplicationSecurityGroup @($asg2, $asg3) -Force
 
         Assert-AreEqual 2 @($nic.IpConfigurations.ApplicationSecurityGroups).Count
-        Assert-IsTrue @($nic.IpConfigurations.ApplicationSecurityGroups.Id) -contains $asg2.Id
-        Assert-IsTrue @($nic.IpConfigurations.ApplicationSecurityGroups.Id) -contains $asg3.Id
+        Assert-AreEqual $true (@($nic.IpConfigurations.ApplicationSecurityGroups.Id) -contains $asg2.Id)
+        Assert-AreEqual $true (@($nic.IpConfigurations.ApplicationSecurityGroups.Id) -contains $asg3.Id)
     }
     finally
     {
@@ -435,8 +429,8 @@ function Test-ApplicationSecurityGroupInNewNetworkInterfaceIpConfig
 
         if ($useIds)
         {
-            $ipConfig1 = New-AzureRmNetworkInterfaceIpConfig -Name $ipConfigName1 -Subnet $vnet.Subnets[0] -ApplicationSecurityGroupId $asg1.Id -Primary
-            $ipConfig2 = New-AzureRmNetworkInterfaceIpConfig -Name $ipConfigName2 -Subnet $vnet.Subnets[0] -ApplicationSecurityGroupId $asg1.Id
+            $ipConfig1 = New-AzureRmNetworkInterfaceIpConfig -Name $ipConfigName1 -SubnetId $vnet.Subnets[0].Id -ApplicationSecurityGroupId $asg1.Id -Primary
+            $ipConfig2 = New-AzureRmNetworkInterfaceIpConfig -Name $ipConfigName2 -SubnetId $vnet.Subnets[0].Id -ApplicationSecurityGroupId $asg1.Id
         }
         else
         {
@@ -454,8 +448,8 @@ function Test-ApplicationSecurityGroupInNewNetworkInterfaceIpConfig
 
         if ($useIds)
         {
-            $ipConfig1 = New-AzureRmNetworkInterfaceIpConfig -Name $ipConfigName1 -Subnet $vnet.Subnets[0] -ApplicationSecurityGroupId ($asg1.Id, $asg2.Id) -Primary
-            $ipConfig2 = New-AzureRmNetworkInterfaceIpConfig -Name $ipConfigName2 -Subnet $vnet.Subnets[0] -ApplicationSecurityGroupId ($asg1.Id, $asg2.Id)
+            $ipConfig1 = New-AzureRmNetworkInterfaceIpConfig -Name $ipConfigName1 -SubnetId $vnet.Subnets[0].Id -ApplicationSecurityGroupId ($asg1.Id, $asg2.Id) -Primary
+            $ipConfig2 = New-AzureRmNetworkInterfaceIpConfig -Name $ipConfigName2 -SubnetId $vnet.Subnets[0].Id -ApplicationSecurityGroupId ($asg1.Id, $asg2.Id)
         }
         else
         {
@@ -465,13 +459,13 @@ function Test-ApplicationSecurityGroupInNewNetworkInterfaceIpConfig
 
         $nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $location -IpConfiguration @($ipConfig1, $ipConfig2) -Force
 
-        Assert-AreEqual 1 @($nic.IpConfigurations[0].ApplicationSecurityGroups).Count
-        Assert-IsTrue @($nic.IpConfigurations[0].ApplicationSecurityGroups).Id -contains $asg1.Id
-        Assert-IsTrue @($nic.IpConfigurations[0].ApplicationSecurityGroups).Id -contains $asg2.Id
+        Assert-AreEqual 2 @($nic.IpConfigurations[0].ApplicationSecurityGroups).Count
+        Assert-AreEqual $true (@($nic.IpConfigurations[0].ApplicationSecurityGroups).Id -contains $asg1.Id)
+        Assert-AreEqual $true (@($nic.IpConfigurations[0].ApplicationSecurityGroups).Id -contains $asg2.Id)
 
-        Assert-AreEqual 1 @($nic.IpConfigurations[1].ApplicationSecurityGroups).Count
-        Assert-IsTrue @($nic.IpConfigurations[1].ApplicationSecurityGroups).Id -contains $asg1.Id
-        Assert-IsTrue @($nic.IpConfigurations[1].ApplicationSecurityGroups).Id -contains $asg2.Id
+        Assert-AreEqual 2 @($nic.IpConfigurations[1].ApplicationSecurityGroups).Count
+        Assert-AreEqual $true (@($nic.IpConfigurations[1].ApplicationSecurityGroups).Id -contains $asg1.Id)
+        Assert-AreEqual $true (@($nic.IpConfigurations[1].ApplicationSecurityGroups).Id -contains $asg2.Id)
     }
     finally
     {
@@ -564,13 +558,13 @@ function Test-ApplicationSecurityGroupInAddedNetworkInterfaceIpConfig
         Assert-AreEqual 2 @($nic.IpConfigurations[1].ApplicationSecurityGroups).Count
         Assert-AreEqual 2 @($nic.IpConfigurations[2].ApplicationSecurityGroups).Count
 
-        Assert-IsTrue @($nic.IpConfigurations[0].ApplicationSecurityGroups).Id -contains $asg1.Id
-        Assert-IsTrue @($nic.IpConfigurations[1].ApplicationSecurityGroups).Id -contains $asg1.Id
-        Assert-IsTrue @($nic.IpConfigurations[2].ApplicationSecurityGroups).Id -contains $asg1.Id
+        Assert-AreEqual $true (@($nic.IpConfigurations[0].ApplicationSecurityGroups).Id -contains $asg1.Id)
+        Assert-AreEqual $true (@($nic.IpConfigurations[1].ApplicationSecurityGroups).Id -contains $asg1.Id)
+        Assert-AreEqual $true (@($nic.IpConfigurations[2].ApplicationSecurityGroups).Id -contains $asg1.Id)
 
-        Assert-IsTrue @($nic.IpConfigurations[0].ApplicationSecurityGroups).Id -contains $asg2.Id
-        Assert-IsTrue @($nic.IpConfigurations[1].ApplicationSecurityGroups).Id -contains $asg2.Id
-        Assert-IsTrue @($nic.IpConfigurations[2].ApplicationSecurityGroups).Id -contains $asg2.Id
+        Assert-AreEqual $true (@($nic.IpConfigurations[0].ApplicationSecurityGroups).Id -contains $asg2.Id)
+        Assert-AreEqual $true (@($nic.IpConfigurations[1].ApplicationSecurityGroups).Id -contains $asg2.Id)
+        Assert-AreEqual $true (@($nic.IpConfigurations[2].ApplicationSecurityGroups).Id -contains $asg2.Id)
     }
     finally
     {
