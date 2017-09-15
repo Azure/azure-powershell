@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using Microsoft.Azure.Commands.AnalysisServices.Dataplane.Properties;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
@@ -14,5 +16,11 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
             : base(Resources.SynchronizationFailedException, e)
         {
         }
+
+        public SynchronizationFailedException(string messageDetails)
+            : base(messageDetails)
+        {
+        }
+
     }
 }

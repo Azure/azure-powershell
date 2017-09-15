@@ -13,28 +13,37 @@ using Microsoft.Azure.Commands.AnalysisServices.Dataplane.Properties;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 {
     /// <summary>
     /// Cmdlet to log into an Analysis Services environment
     /// </summary>
-    [Cmdlet("Sync", "AzureAnalysisServicesInstance", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsData.Sync, "AzureAnalysisServicesInstance", SupportsShouldProcess = true)]
     [Alias("Sync-AzureAsInstance")]
     [OutputType(typeof(ScaleOutServerDatabaseSyncDetails[]))]
     public class SynchronizeAzureAzureAnalysisServer: AzurePSCmdlet
     {
         private static TimeSpan DefaultPollingInterval = TimeSpan.FromSeconds(30);
 
-        private static TimeSpan DefaultRetryIntervalForPolling = TimeSpan.FromSeconds(1); 
+        private static TimeSpan DefaultRetryIntervalForPolling = TimeSpan.FromSeconds(10);
+
+        private static string RootActivityIdHeaderName = "x-ms-root-activity-id";
+
+        private static string CurrentUtcDateHeaderName = "x-ms-current-utc-date";
 
         private string serverName;
 
         private Guid correlationId;
 
+        private string syncRequestRootActivityId;
+
+        private string syncRequestTimeStamp;
+
         [Parameter(
             Mandatory = true,
-            HelpMessage = "Name of the Azure Analysis Services server to synchronize",
+            HelpMessage = "Name of the Azure Analysis Services server to synchronize. E.x. asazure://westus.asazure.windows.net/contososerver",
             Position = 0,
             ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
@@ -42,15 +51,15 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "One or more databases that need to be replicated",
+            HelpMessage = "Identity of the database need to be synchronized",
             Position = 1,
             ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string[] Databases { get; set; }
+        public string Database { get; set; }
 
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
-
+        
         protected override IAzureContext DefaultContext
         {
             get
@@ -66,6 +75,9 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 
         public SynchronizeAzureAzureAnalysisServer(): this(new AsAzureHttpClient(() => new HttpClient()), new TokenCacheItemProvider())
         {
+            this.syncRequestRootActivityId = string.Empty;
+            this.correlationId = Guid.Empty;
+            this.syncRequestTimeStamp = string.Empty;
         }
 
         public SynchronizeAzureAzureAnalysisServer(IAsAzureHttpClient AsAzureHttpClient, ITokenCacheItemProvider TokenCacheItemProvider)
@@ -99,19 +111,31 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
         {
             if (ShouldProcess(Instance, Resources.SynchronizingAnalysisServicesServer))
             {
+                correlationId = Guid.NewGuid();
+                WriteObject(string.Format("Sending sync request for database '{0}' to server '{1}'. Correlation Id: '{2}'.", Database, Instance, correlationId.ToString()));
+
                 var context = AsAzureClientSession.Instance.Profile.Context;
-                AsAzureClientSession.Instance.Login(context, null);
-                string accessToken = this.TokenCacheItemProvider.GetTokenFromTokenCache(AsAzureClientSession.TokenCache, context.Account.UniqueId);
+
+                string accessToken = this.TokenCacheItemProvider.GetTokenFromTokenCache(AsAzureClientSession.TokenCache, context.Account.UniqueId, context.Environment.Name);
+
                 Uri syncBaseUri = new Uri(string.Format("{0}{1}{2}", Uri.UriSchemeHttps, Uri.SchemeDelimiter, context.Environment.Name));
 
-                WriteObject(string.Format("Successfully authenticated for '{0}' environment.", context.Environment.Name));
+                WriteProgress(new ProgressRecord(0, "Sync-AzureAnalysisServicesInstance.", string.Format("Successfully authenticated for '{0}' environment.", context.Environment.Name)));
 
-                correlationId = Guid.NewGuid();
+                UriBuilder resolvedUriBuilder = new UriBuilder(syncBaseUri);
+                var clusterResolveResult = ClusterResolve(syncBaseUri, accessToken, serverName);
+                resolvedUriBuilder.Host = clusterResolveResult.ClusterFQDN;
 
-                ScaleOutServerDatabaseSyncDetails[] syncResults = null;
+                if (!clusterResolveResult.CoreServerName.Equals(serverName) || !clusterResolveResult.CoreServerName.EndsWith(":rw"))
+                {
+                    throw new SynchronizationFailedException("Sync request can only be sent to the management endpoint");
+                }
+
+                serverName = clusterResolveResult.CoreServerName.Split(new char[] { ':' }, 2)[0];
+                ScaleOutServerDatabaseSyncDetails syncResult = null;
                 try
                 {
-                    syncResults = Task.WhenAll(Databases.Select(databaseName => SynchronizeDatabaseAsync(context, syncBaseUri, databaseName, accessToken))).GetAwaiter().GetResult();
+                    syncResult = SynchronizeDatabaseAsync(context, resolvedUriBuilder.Uri, Database, accessToken).GetAwaiter().GetResult();
                 }
                 catch (AggregateException aex)
                 {
@@ -125,7 +149,22 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
                     WriteExceptionError(ex);
                 }
 
-                WriteObject(syncResults, true);
+                if (syncResult == null)
+                {
+                    throw new SynchronizationFailedException(string.Format(Resources.SyncASPollStatusUnknownMessage.FormatInvariant(
+                        serverName,
+                        correlationId,
+                        DateTime.Now.ToString(CultureInfo.InvariantCulture),
+                        string.Format("RootActivityId: {0}, Date Time UTC: {1}", syncRequestRootActivityId, syncRequestTimeStamp))));
+                }
+
+                if (syncResult.SyncState != DatabaseSyncState.Completed)
+                {
+                    var serializedDetails = JsonConvert.SerializeObject(syncResult);
+                    throw new SynchronizationFailedException(serializedDetails);
+                }
+
+                WriteObject(syncResult, true);
             }
         }
 
@@ -148,16 +187,14 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
                 serverName = uriResult.PathAndQuery.Trim('/');
                 if (string.Compare(AsAzureClientSession.Instance.Profile.Context.Environment.Name, uriResult.DnsSafeHost, StringComparison.InvariantCultureIgnoreCase) != 0)
                 {
-                    AsAzureClientSession.Instance.SetCurrentContext(
-                        new AsAzureAccount(),
-                        AsAzureClientSession.Instance.Profile.CreateEnvironment(uriResult.DnsSafeHost));
+                    throw new PSInvalidOperationException(string.Format(Resources.NotLoggedInMessage, Instance));
                 }
             }
             else
             {
                 var currentContext = AsAzureClientSession.Instance.Profile.Context;
                 if (currentContext != null
-                    && AsAzureClientSession.AsAzureRolloutEnvironmentMapping.ContainsKey(currentContext.Environment.Name))
+                    && !AsAzureClientSession.AsAzureRolloutEnvironmentMapping.ContainsKey(currentContext.Environment.Name))
                 {
                     throw new PSInvalidOperationException(string.Format(Resources.InvalidServerName, serverName));
                 }
@@ -192,19 +229,20 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
             // No data collection for this commandlet
         }
 
-        private static ErrorRecord GenerateErrorRecordFromSyncDetails(Exception e, IEnumerable<ScaleOutServerDatabaseSyncDetails> syncResults)
-        {
-            var errorRecord = new ErrorRecord(e, "SynchronizeDatabasesUnsuccessful", ErrorCategory.OperationTimeout, syncResults);
-
-            return errorRecord;
-        }
-
+        /// <summary>
+        /// Worker Method for the synchronize request.
+        /// </summary>
+        /// <param name="context">The AS azure context</param>
+        /// <param name="syncBaseUri">Base Uri for sync</param>
+        /// <param name="databaseName">Database name</param>
+        /// <param name="accessToken">Access token</param>
+        /// <param name="maxNumberOfAttempts">Max number of retries for get command</param>
+        /// <returns></returns>
         private async Task<ScaleOutServerDatabaseSyncDetails> SynchronizeDatabaseAsync(
             AsAzureContext context, 
             Uri syncBaseUri, 
             string databaseName, 
-            string accessToken, 
-            int maxNumberOfAttempts = 3)
+            string accessToken)
         {
             return await Task.Run(async () =>
                 {
@@ -225,8 +263,8 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
                                         SyncState = DatabaseSyncState.Invalid,
                                         Details = Resources.PostSyncRequestFailureMessage.FormatInvariant(
                                                                     this.serverName,
-                                                                    string.Empty,
-                                                                    timestampNow.ToString(CultureInfo.InvariantCulture),
+                                                                    this.syncRequestRootActivityId,
+                                                                    this.syncRequestTimeStamp,
                                                                     string.Format(e.Message)),
                                         UpdatedAt = timestampNow,
                                         StartedAt = timestampNow
@@ -236,38 +274,49 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
                     Uri pollingUrl = pollingUrlAndRetryAfter.Item1;
                     var retryAfter = pollingUrlAndRetryAfter.Item2;
 
+                    ScaleOutServerDatabaseSyncDetails syncResult = null;
+
                     try
                     {
                         ScaleOutServerDatabaseSyncResult result =   await this.PollSyncStatusWithRetryAsync(
                                 databaseName,
                                 accessToken,
                                 pollingUrl,
-                                retryAfter.Delta ?? DefaultPollingInterval,
-                                maxNumberOfAttempts: maxNumberOfAttempts);
-                        return ScaleOutServerDatabaseSyncDetails.FromResult(result, correlationId.ToString());
+                                retryAfter.Delta ?? DefaultPollingInterval);
+                        syncResult = ScaleOutServerDatabaseSyncDetails.FromResult(result, correlationId.ToString());
                     }
                     catch (Exception e)
                     {
                         var timestampNow = DateTime.Now;
 
                         // Append exception message to sync details and return
-                        var details = new ScaleOutServerDatabaseSyncDetails
+                        syncResult = new ScaleOutServerDatabaseSyncDetails
                             {
+                                CorrelationId = correlationId.ToString(),
                                 Database = databaseName,
                                 SyncState = DatabaseSyncState.Invalid,
                                 Details = Resources.SyncASPollStatusFailureMessage.FormatInvariant(
                                     serverName,
                                     string.Empty,
                                     timestampNow.ToString(CultureInfo.InvariantCulture),
-                                    string.Format(e.Message)),
+                                    string.Format(e.StackTrace)),
                                 UpdatedAt = timestampNow,
                                 StartedAt = timestampNow
                             };
-                        return details;
                     }
+
+                    return syncResult;
                 });
         }
 
+        /// <summary>
+        /// Method that will post a sync request and get back the result
+        /// </summary>
+        /// <param name="context">The AS azure context</param>
+        /// <param name="syncBaseUri">Base Uri for sync</param>
+        /// <param name="databaseName">Database name</param>
+        /// <param name="accessToken">Access token</param>
+        /// <returns></returns>
         private async Task<Tuple<Uri, RetryConditionHeaderValue>> PostSyncRequestAsync(
             AsAzureContext context,
             Uri syncBaseUri, 
@@ -275,7 +324,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
             string accessToken)
         {
             var synchronize = string.Format((string)context.Environment.Endpoints[AsAzureEnvironment.AsRolloutEndpoints.SyncEndpoint], serverName, databaseName);
-            WriteCommandDetail(string.Format("Synchronize database {0}", databaseName) + string.Format("Submitting sync request to server", serverName));
+            WriteInformation(new InformationRecord(string.Format("Synchronize database {0}", databaseName) + string.Format("Submitting sync request to server", serverName), string.Empty));
 
             return await Task.Run(async () =>
             {
@@ -286,18 +335,30 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
                     accessToken,
                     correlationId))
                 {
+                    this.syncRequestRootActivityId = message.Headers.Contains(RootActivityIdHeaderName) ? message.Headers.GetValues(RootActivityIdHeaderName).FirstOrDefault() : string.Empty;
+                    this.syncRequestTimeStamp = message.Headers.Contains(CurrentUtcDateHeaderName) ? message.Headers.GetValues(CurrentUtcDateHeaderName).FirstOrDefault() : string.Empty;
+
                     message.EnsureSuccessStatusCode();
+
                     var pollingUrl = message.Headers.Location;
                     var retryAfter = message.Headers.RetryAfter;
 
-                    //WriteProgress(new ProgressRecord(0, string.Format("Synchronize database {0}", databaseName), string.Format("Successfully submitted sync request. StatusCode: {0}", message.StatusCode.ToString())));
-                    WriteCommandDetail(string.Format("Synchronize database {0}. ", databaseName) + string.Format("Successfully submitted sync request. StatusCode: {0}", message.StatusCode.ToString()));
+                    WriteInformation(new InformationRecord(string.Format("Synchronize database {0}. Successfully submitted sync request. StatusCode: {1}", databaseName, message.StatusCode.ToString()), string.Empty));
                     return new Tuple<Uri, RetryConditionHeaderValue>(pollingUrl, retryAfter);
                 }
             });
         }
 
-        private async Task<ScaleOutServerDatabaseSyncResult> PollSyncStatusWithRetryAsync(string databaseName, string accessToken, Uri pollingUrl, TimeSpan pollingInterval, int maxNumberOfAttempts = 3)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="databaseName">Database name</param>
+        /// <param name="accessToken">Access token</param>
+        /// <param name="pollingUrl">URL for polling</param>
+        /// <param name="pollingInterval">Polling interval set by the post response</param>
+        /// <param name="maxNumberOfAttempts">Max number of attempts for each poll before the attempt is declared a failure</param>
+        /// <returns></returns>
+        private async Task<ScaleOutServerDatabaseSyncResult> PollSyncStatusWithRetryAsync(string databaseName, string accessToken, Uri pollingUrl, TimeSpan pollingInterval, int maxNumberOfAttempts = 2000)
         {
             return await Task.Run(async () =>
             {
@@ -305,14 +366,13 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
                 var syncCompleted = false;
                 do
                 {
-                    var pollingSuceeded = false;
                     var retryCount = 0;
                     while (retryCount < maxNumberOfAttempts)
                     {
                         // Wait for specified polling interval other than retries.
                         if (retryCount == 0)
                         {
-                            //WriteProgress(new ProgressRecord(0, string.Format("Synchronize database {0}", databaseName), string.Format("Attempt #{0}. Waiting for {1} seconds to get sync results...", retryCount, pollingInterval.TotalSeconds)));
+                            WriteInformation(new InformationRecord(string.Format("Synchronize database {0}. Attempt #{1}. Waiting for {2} seconds to get sync results...", databaseName, retryCount, pollingInterval.TotalSeconds), string.Empty));
                             await Task.Delay(pollingInterval);
                         }
                         else
@@ -330,41 +390,33 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
                             syncCompleted = !message.StatusCode.Equals(HttpStatusCode.SeeOther);
                             if (syncCompleted)
                             {
+                                string errorResponse = string.Empty;
                                 if (message.IsSuccessStatusCode)
                                 {
-                                    response = JsonConvert.DeserializeObject<ScaleOutServerDatabaseSyncResult>(await message.Content.ReadAsStringAsync());
-                                    //WriteProgress(new ProgressRecord(0, string.Format("Synchronize database {0}", databaseName), string.Format("Attempt #{0}, sucessfully fetch sync results...", retryCount)));
+                                    var responseString = await message.Content.ReadAsStringAsync();
+                                    response = JsonConvert.DeserializeObject<ScaleOutServerDatabaseSyncResult>(responseString);
                                     break;
-                                }
-
-                                retryCount++;
-                                if (retryCount >= maxNumberOfAttempts)
-                                {
-                                    response = new ScaleOutServerDatabaseSyncResult()
-                                                   {
-                                                       Database = databaseName,
-                                                       SyncState = DatabaseSyncState.Invalid,
-                                                       Details =
-                                                           Resources
-                                                               .SyncASPollStatusFailureMessage
-                                                               .FormatInvariant(
-                                                                   this
-                                                                       .serverName,
-                                                                   message
-                                                                       .Headers
-                                                                       .GetValues(
-                                                                           "x-ms-root-activity-id")
-                                                                       .SingleOrDefault(),
-                                                                   message
-                                                                       .Headers
-                                                                       .GetValues(
-                                                                           "x-ms-current-utc-date")
-                                                                       .SingleOrDefault())
-                                                   };
                                 }
                                 else
                                 {
-                                    // WriteWarning(string.Format("Synchronize database {0}.", databaseName) + string.Format("Attempt #{0}, failed to get sync status. StatusCode: {1}. Retrying...", retryCount, pollingInterval.TotalSeconds));
+                                    errorResponse = await message.Content.ReadAsStringAsync();
+                                    retryCount++;
+                                    if (retryCount >= maxNumberOfAttempts)
+                                    {
+                                        //if (response == null)
+                                        //{
+                                        //    response = new ScaleOutServerDatabaseSyncResult()
+                                        //    {
+                                        //        Database = databaseName,
+                                        //        SyncState = DatabaseSyncState.Invalid,
+                                        //        Details = errorResponse
+                                        //    };
+                                        //}
+                                    }
+                                    else
+                                    {
+                                        //WriteWarning(string.Format("Synchronize database {0}.", databaseName) + string.Format("Attempt #{0}, failed to get sync status. StatusCode: {1}. Retrying...", retryCount, pollingInterval.TotalSeconds));
+                                    }
                                 }
                             }
                             else
@@ -379,6 +431,26 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 
                 return response;
             });
+        }
+
+        private ClusterResolutionResult ClusterResolve(Uri rolloutUri, string accessToken, string serverName)
+        {
+            var resolveEndpoint = "/webapi/clusterResolve";
+            var content = new StringContent($"ServerName={serverName}");
+            content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/x-www-form-urlencoded");
+
+            this.AsAzureHttpClient.resetHttpClient();
+            using (HttpResponseMessage message = AsAzureHttpClient.CallPostAsync(
+                rolloutUri,
+                resolveEndpoint,
+                accessToken,
+                content).Result)
+            {
+                message.EnsureSuccessStatusCode();
+                var rawResult = message.Content.ReadAsStringAsync().Result;
+                ClusterResolutionResult result = JsonConvert.DeserializeObject<ClusterResolutionResult>(rawResult);
+                return result;
+            }
         }
     }
 }

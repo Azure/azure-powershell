@@ -1,4 +1,5 @@
 ﻿using System;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
 {
@@ -13,14 +14,9 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
                 Database = result.Database,
                 UpdatedAt = result.UpdatedAt,
                 StartedAt = result.StartedAt,
-                Details = result.Details,
-                SyncState = DatabaseSyncState.Invalid
+                Details = result.Details != null ? JsonConvert.SerializeObject(result.Details) : string.Empty,
+                SyncState = result.SyncState
             };
-
-            if (result.SyncState == DatabaseSyncState.Completed)
-            {
-                details.SyncState = DatabaseSyncState.Completed;
-            }
 
             return details;
         }

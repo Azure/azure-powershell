@@ -100,6 +100,7 @@
     <Compile Include="Models\AsAzureAuthenticationProvider.cs" />
     <Compile Include="Models\DatabaseSyncState.cs" />
     <Compile Include="Models\ScaleOutServerDatabaseSyncDetail.cs" />
+    <Compile Include="Models\ClusterResolutionResult.cs" />
     <Compile Include="Models\ScaleOutServerDatabaseSyncResult.cs" />
     <Compile Include="Models\SynchronizationFailedException.cs" />
     <Compile Include="Models\TokenCacheItemProvider.cs" />

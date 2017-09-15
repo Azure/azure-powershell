@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Run Login-AzureAsAccount to login to Analysis Services server.
+        ///   Looks up a localized string similar to Run Login-AzureAsAccount to login to Analysis Services server {0}.
         /// </summary>
         internal static string NotLoggedInMessage {
             get {
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed to send sync request to specified server. ServerName: {0}, CorrelationId: {1}, Date (UTC): {2}, Details: {3}..
+        ///   Looks up a localized string similar to Failed to send sync request to specified server. ServerName: {0}, RootActivityId: {1}, Date (UTC): {2}, Details: {3}..
         /// </summary>
         internal static string PostSyncRequestFailureMessage {
             get {
@@ -142,7 +142,16 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Synchronization failed. Check above .
+        ///   Looks up a localized string similar to Failed to get the status of the synchronization request for the specified database. ServerName: {0}, RootActivityId: {1}, Date (UTC): {2}, Details: {3}..
+        /// </summary>
+        internal static string SyncASPollStatusUnknownMessage {
+            get {
+                return ResourceManager.GetString("SyncASPollStatusUnknownMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Synchronization failed with an exception..
         /// </summary>
         internal static string SynchronizationFailedException {
             get {

@@ -108,6 +108,22 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
             return _profile;
         }
 
+        public AsAzureProfile Login(AsAzureContext asAzureContext)
+        {
+            var resourceUri = new UriBuilder(Uri.UriSchemeHttps, GetResourceUriSuffix(asAzureContext.Environment.Name)).ToString();
+            resourceUri = resourceUri.TrimEnd('/');
+            _asAzureAuthenticationProvider.GetAadAuthenticatedToken(asAzureContext, null, PromptBehavior.RefreshSession, AsAzureClientId, resourceUri, RedirectUri);
+
+            _profile.Context.TokenCache = AsAzureClientSession.TokenCache.Serialize();
+
+            if (!_profile.Environments.ContainsKey(asAzureContext.Environment.Name))
+            {
+                _profile.Environments.Add(asAzureContext.Environment.Name, asAzureContext.Environment);
+            }
+
+            return _profile;
+        }
+
         public static string GetAuthorityUrlForEnvironment(AsAzureEnvironment environment)
         {
             var environmentKey = AsAzureRolloutEnvironmentMapping.Keys.FirstOrDefault(s => environment.Name.Contains(s));
