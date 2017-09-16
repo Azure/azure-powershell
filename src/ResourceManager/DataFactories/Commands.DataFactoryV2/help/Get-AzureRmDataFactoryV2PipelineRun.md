@@ -47,7 +47,7 @@ Get-AzureRmDataFactoryV2PipelineRun [-ResourceGroupName] <String> [-DataFactoryN
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzureRmDataFactoryV2PipelineRun
 ```
 
 {{ Add example description here }}
