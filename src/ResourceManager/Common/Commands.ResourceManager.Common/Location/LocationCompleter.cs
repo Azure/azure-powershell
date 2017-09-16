@@ -14,47 +14,67 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common.Location
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Management.Automation;
-    using Microsoft.Azure.Management.Internal.Resources;
-    using Microsoft.Azure.Management.Internal.Resources.Utilities;
     using Commands.Common.Authentication.Abstractions;
     using Commands.Common.Authentication;
     using Internal.Subscriptions;
-    using Internal.Subscriptions.Models;
-    using System.Linq;
+    using Properties;
     using Management.Internal.Resources.Models;
+    using Management.Internal.Resources;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Management.Automation;
+    using Rest;
+
 
     /// <summary>
     /// This attribute will allow the user to autocomplete the -Location parameter of a cmdlet with valid locations (as determined by the list of ResourceTypes given)
     /// </summary>
     public class LocationCompleterAttribute : ArgumentCompleterAttribute
     {
-        private static Dictionary<string, ICollection<string>> _resourceTypeLocationDictionary = new Dictionary<string, ICollection<string>>(StringComparer.OrdinalIgnoreCase);
+        private static IDictionary<int, IDictionary<string, ICollection<string>>> _resourceTypeLocationDictionary = new Dictionary<int, IDictionary<string, ICollection<string>>>();
 
         private static readonly object _lock = new object();
 
-        protected static Dictionary<string, ICollection<string>> ResourceTypeLocationDictionary
+        protected static IDictionary<string, ICollection<string>> ResourceTypeLocationDictionary
         {
             get
             {
                 lock (_lock)
                 {
-                    if (_resourceTypeLocationDictionary.Count < 1)
+                    IAzureContext defaultContext = AzureRmProfileProvider.Instance.Profile.DefaultContext;
+                    var contextHash = HashContext(defaultContext);
+
+                    if (!_resourceTypeLocationDictionary.ContainsKey(contextHash))
                     {
-                        IAzureContext defaultContext = AzureRmProfileProvider.Instance.Profile.DefaultContext;
-
-                        var client = new ResourceManagementClient(
-                            defaultContext.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager),
-                            AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(defaultContext, AzureEnvironment.Endpoint.ResourceManager));
-                        client.SubscriptionId = defaultContext.Subscription.Id;
-                        var allProviders = client.Providers.List().ToList();
-
-                        _resourceTypeLocationDictionary = CreateLocationDictionary(allProviders);
+                        try
+                        {
+                            IResourceManagementClient client = AzureSession.Instance.ClientFactory.CreateCustomArmClient<ResourceManagementClient>(
+                                defaultContext.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager),
+                                AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(defaultContext, AzureEnvironment.Endpoint.ResourceManager),
+                                AzureSession.Instance.ClientFactory.GetCustomHandlers());
+                            client.SubscriptionId = defaultContext.Subscription.Id;
+                            var allProviders = client.Providers.ListAsync();
+                            if (allProviders.Wait(TimeSpan.FromSeconds(5)))
+                                _resourceTypeLocationDictionary[contextHash] = CreateLocationDictionary(allProviders.Result.ToList());
+                            else
+                            {
+                                _resourceTypeLocationDictionary[contextHash] = new Dictionary<string, ICollection<string>>();
+#if DEBUG
+                                throw new Exception(Resources.TimeOutForProviderList);
+#endif
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            _resourceTypeLocationDictionary[contextHash] = new Dictionary<string, ICollection<string>>();
+#if DEBUG
+                            throw ex;
+#endif
+                        }
                     }
 
-                    return _resourceTypeLocationDictionary;
+                    return _resourceTypeLocationDictionary[contextHash];
                 }
             }
         }
@@ -65,7 +85,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Location
         /// </summary>
         /// <param name="resourceTypes"></param>
         public LocationCompleterAttribute(string[] resourceTypes) : base(CreateScriptBlock(resourceTypes))
-        { }
+        {
+        }
 
         private static string[] FindLocations(string[] resourceTypes)
         {
@@ -78,16 +99,29 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Location
         /// <param name="resourceTypes"></param>
         /// <param name="resourceTypeLocationDictionary"></param>
         /// <returns></returns>
-        public static string[] FindLocations(string[] resourceTypes, Dictionary<string, ICollection<string>> resourceTypeLocationDictionary)
+        public static string[] FindLocations(string[] resourceTypes, IDictionary<string, ICollection<string>> resourceTypeLocationDictionary)
         {
+            if (resourceTypeLocationDictionary == null)
+            {
+                resourceTypeLocationDictionary = new Dictionary<string, ICollection<string>>();
+            }
+
+            if (resourceTypes == null)
+            {
+                resourceTypes = new string[0];
+            }
+
             List<string> validResourceTypes = new List<string>();
             foreach (string resourceType in resourceTypes)
             {
-                if (resourceTypeLocationDictionary.ContainsKey(resourceType))
-                    validResourceTypes.Add(resourceType);
+                if (resourceType != null)
+                {
+                    if (resourceTypeLocationDictionary.ContainsKey(resourceType))
+                        validResourceTypes.Add(resourceType);
 #if DEBUG
-                else throw new Exception("ResourceType name: " + resourceType + " is invalid.");
+                    else throw new Exception(String.Format(Resources.InvalidResourceType, resourceType));
 #endif
+                }
             }
             
             string[] distinctLocations;
@@ -96,13 +130,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Location
                 distinctLocations = resourceTypeLocationDictionary[validResourceTypes[0]].ToArray();
                 foreach (string resourceType in validResourceTypes)
                 {
-                    distinctLocations = distinctLocations.Intersect(resourceTypeLocationDictionary[resourceType]).ToArray();
+                    distinctLocations = distinctLocations.Intersect(resourceTypeLocationDictionary[resourceType].ToArray(), new LocationEqualityComparer()).ToArray();
                 }
             }
 #if DEBUG
-            else throw new Exception("No valid ResourceType given to LocationCompleter.");
+            else throw new Exception(Resources.NoValidProviderFound);
 
-            if (distinctLocations.Length < 1) throw new Exception("No locations exist for all of the given ResourceTypes.");
+            if (distinctLocations.Length < 1) throw new Exception(Resources.NoValidLocationsFound);
 #endif 
             return distinctLocations;
         }
@@ -112,40 +146,56 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Location
         /// </summary>
         /// <param name="allProviders"></param>
         /// <returns></returns>
-        public static Dictionary<string, ICollection<string>> CreateLocationDictionary(List<Provider> allProviders)
+        public static IDictionary<string, ICollection<string>> CreateLocationDictionary(List<Provider> allProviders)
         {
-            Dictionary<string, ICollection<string>> resourceTypeLocationDictionary = new Dictionary<string, ICollection<string>>(StringComparer.OrdinalIgnoreCase);
+            IDictionary<string, ICollection<string>> resourceTypeLocationDictionary = new Dictionary<string, ICollection<string>>(StringComparer.OrdinalIgnoreCase);
             
             foreach (var provider in allProviders)
             {
                 foreach (var resourceType in provider.ResourceTypes)
                 {
-                    resourceTypeLocationDictionary.Add(provider.NamespaceProperty + "/" + resourceType.ResourceType, resourceType.Locations);
+                    resourceTypeLocationDictionary.Add(String.Format("{0}/{1}", provider.NamespaceProperty, resourceType.ResourceType), resourceType.Locations);
                 }
             }
+
             return resourceTypeLocationDictionary;
         }
 
         private static ScriptBlock CreateScriptBlock(string[] resourceTypes)
         {
             string[] locationList = FindLocations(resourceTypes);
+            string scriptStart = String.Format("param($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameter)\n [string[]] $locations = ");
 
-            string script =
-                "param($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameter)" + Environment.NewLine +
-                    "[string[]] $locations = ";
-
-            foreach (string location in locationList)
+            string[] scriptLocationList = new string[locationList.Length];
+            for (int i = 0; i < locationList.Length; i++)
             {
-                const string quote = "\"";
-                script += "'" + quote + location + quote + "'" + ",";
+                scriptLocationList[i] += String.Format("'\"{0}\"',", locationList[i]);
             }
-            script = script.TrimEnd(',');
 
-            script += Environment.NewLine + "$locations | ForEach-Object { New-Object System.Management.Automation.CompletionResult ($_)}";
-
-            ScriptBlock scriptBlock = ScriptBlock.Create(script);
-
+            scriptLocationList[locationList.Length - 1] = scriptLocationList[locationList.Length - 1].TrimEnd(',');
+            string scriptEnd = String.Format("\n$locations | ForEach-Object {{ New-Object System.Management.Automation.CompletionResult ($_)}}");
+            ScriptBlock scriptBlock = ScriptBlock.Create(scriptStart + String.Join("", scriptLocationList) + scriptEnd);
             return scriptBlock;
+        }
+
+        private static int HashContext(IAzureContext context)
+        {
+            return new string[] { context.Account.Id, context.Environment.Name, context.Subscription.Id, context.Tenant.Id }.GetHashCode();
+        }
+
+        class LocationEqualityComparer : IEqualityComparer<string>
+        {
+            public bool Equals(string location1, string location2)
+            {
+                string strippedLocation1 = location1.Replace(" ", "").Replace("-", "").ToLower();
+                string strippedLocation2 = location2.Replace(" ", "").Replace("-", "").ToLower();
+                return strippedLocation1.Equals(strippedLocation2);
+            }
+
+            public int GetHashCode(string item)
+            {
+                return item.Replace(" ", "").Replace("-", "").ToLower().GetHashCode();
+            }
         }
     }
 }

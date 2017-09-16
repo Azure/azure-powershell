@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             var resourceTypeLocationDictionary = SetMockDictionary();
 
             var ex = Assert.Throws<Exception>(() => LocationCompleterAttribute.FindLocations(new string[] { "Microsoft.InvalidResourceType/operations" }, resourceTypeLocationDictionary));
-            Assert.Equal(ex.Message, "ResourceType name: Microsoft.InvalidResourceType/operations is invalid.");
+            Assert.Equal(ex.Message, "ResourceType name: 'Microsoft.InvalidResourceType/operations' is invalid.");
         }
 
         [Fact]
@@ -95,14 +95,43 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.Equal(LocationCompleterAttribute.FindLocations(new string[] { "Microsoft.Mock/mock3", "Microsoft.Mock/mock4" }, resourceTypeLocationDictionary), new string[] { "westus" });
         }
 
-        public Dictionary<string, ICollection<string>> SetMockDictionary()
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ReturnsFullOverlapForMultipleResourceTypes()
         {
-            Dictionary<string, ICollection<string>> resourceTypeLocationDictionary = new Dictionary<string, ICollection<string>>(StringComparer.OrdinalIgnoreCase);
+            var resourceTypeLocationDictionary = SetMockDictionary();
+
+            Assert.Equal(LocationCompleterAttribute.FindLocations(new string[] { "Microsoft.Mock/mock5", "Microsoft.Mock/mock6" }, resourceTypeLocationDictionary), new string[] { "eastus", "china" });
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void LocationListRecognizesDifferentFormats()
+        {
+            var resourceTypeLocationDictionary = SetMockDictionary();
+
+            Assert.Equal(LocationCompleterAttribute.FindLocations(new string[] { "Microsoft.Mock/mock3", "Microsoft.Mock/mock7" }, resourceTypeLocationDictionary), new string[] { "westus", "centralus" });
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ReturnsLocationForLowercaseProvider()
+        {
+            var resourceTypeLocationDictionary = SetMockDictionary();
+
+            Assert.Equal(LocationCompleterAttribute.FindLocations(new string[] { "microsofT.mock/mock2" }, resourceTypeLocationDictionary), new string[] { "westus" });
+        }
+
+        public IDictionary<string, ICollection<string>> SetMockDictionary()
+        {
+            IDictionary<string, ICollection<string>> resourceTypeLocationDictionary = new Dictionary<string, ICollection<string>>(StringComparer.OrdinalIgnoreCase);
             resourceTypeLocationDictionary.Add("Microsoft.Mock/mock1", new List<string>());
             resourceTypeLocationDictionary.Add("Microsoft.Mock/mock2", new List<string>() { "westus" });
             resourceTypeLocationDictionary.Add("Microsoft.Mock/mock3", new List<string>() { "westus", "centralus" });
             resourceTypeLocationDictionary.Add("Microsoft.Mock/mock4", new List<string>() { "westus", "eastus" });
             resourceTypeLocationDictionary.Add("Microsoft.Mock/mock5", new List<string>() { "eastus", "china" });
+            resourceTypeLocationDictionary.Add("Microsoft.Mock/mock6", new List<string>() { "eastus", "china" });
+            resourceTypeLocationDictionary.Add("Microsoft.Mock/mock7", new List<string>() { "West US", "Central-US" });
             return resourceTypeLocationDictionary;
         }
 
