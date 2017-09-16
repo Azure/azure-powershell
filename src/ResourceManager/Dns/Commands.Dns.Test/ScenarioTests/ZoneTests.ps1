@@ -90,7 +90,7 @@ function Test-ZoneCrudPrivateResolutionVnet
 	$virtualNetwork = TestSetup-CreateVirtualNetwork $resourceGroup
 	sleep 60
 
-	$createdZone = New-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Tags @{tag1="value1"} -ZoneType Private -ResolutionVirtualNetworkIds @($virtualNetwork.Id)
+	$createdZone = New-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Tags @{tag1="value1"} -ZoneType Private -ResolutionVirtualNetworkId @($virtualNetwork.Id)
 	Assert-NotNull $createdZone
 	Assert-NotNull $createdZone.Etag
 	Assert-AreEqual $zoneName $createdZone.Name 
@@ -115,7 +115,7 @@ function Test-ZoneCrudPrivateResolutionVnet
 	Assert-AreEqual $createdZone.ResolutionVirtualNetworkIds.Count $retrievedZone.ResolutionVirtualNetworkIds.Count
 	Assert-AreEqual $createdZone.RegistrationVirtualNetworkIds.Count $retrievedZone.RegistrationVirtualNetworkIds.Count
 
-	$updatedZone = Set-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Tags @{tag1="value1";tag2="value2"} -ResolutionVirtualNetworkIds @() 
+	$updatedZone = Set-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Tags @{tag1="value1";tag2="value2"} -ResolutionVirtualNetworkId @() 
 	Assert-NotNull $updatedZone
 	Assert-NotNull $updatedZone.Etag
 	Assert-AreEqual $zoneName $updatedZone.Name 
@@ -168,7 +168,7 @@ function Test-ZoneCrudPrivateRegistrationVnet
     $resourceGroup = TestSetup-CreateResourceGroup
 	$virtualNetwork = TestSetup-CreateVirtualNetwork $resourceGroup
 
-	$createdZone = New-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Tags @{tag1="value1"} -ZoneType Private -RegistrationVirtualNetworkIds @($virtualNetwork.Id)
+	$createdZone = New-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Tags @{tag1="value1"} -ZoneType Private -RegistrationVirtualNetworkId @($virtualNetwork.Id)
 	Assert-NotNull $createdZone
 	Assert-NotNull $createdZone.Etag
 	Assert-AreEqual $zoneName $createdZone.Name 
@@ -193,7 +193,7 @@ function Test-ZoneCrudPrivateRegistrationVnet
 	Assert-AreEqual $createdZone.ResolutionVirtualNetworkIds.Count $retrievedZone.ResolutionVirtualNetworkIds.Count
 	Assert-AreEqual $createdZone.RegistrationVirtualNetworkIds.Count $retrievedZone.RegistrationVirtualNetworkIds.Count
 
-	$updatedZone = Set-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Tags @{tag1="value1";tag2="value2"} -RegistrationVirtualNetworkIds @() 
+	$updatedZone = Set-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Tags @{tag1="value1";tag2="value2"} -RegistrationVirtualNetworkId @() 
 	Assert-NotNull $updatedZone
 	Assert-NotNull $updatedZone.Etag
 	Assert-AreEqual $zoneName $updatedZone.Name 

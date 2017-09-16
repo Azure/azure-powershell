@@ -40,11 +40,11 @@ namespace Microsoft.Azure.Commands.Dns
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of virtual networks able to resolve records in this DNS zone, only available for private zones.", ParameterSetName = "Fields")]
         [ValidateNotNull]
-        public List<string> ResolutionVirtualNetworkIds { get; set; }
+        public List<string> ResolutionVirtualNetworkId { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of virtual networks that will register VM hostnames records in this DNS zone, only available for private zones.", ParameterSetName = "Fields")]
         [ValidateNotNull]
-        public List<string> RegistrationVirtualNetworkIds { get; set; }
+        public List<string> RegistrationVirtualNetworkId { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The zone object to set.", ParameterSetName = "Object")]
         [ValidateNotNullOrEmpty]
@@ -72,14 +72,14 @@ namespace Microsoft.Azure.Commands.Dns
                 zoneToUpdate.Etag = "*";
 
                 // Change mutable fields if value is passed
-                if (this.RegistrationVirtualNetworkIds != null)
+                if (this.RegistrationVirtualNetworkId != null)
                 {
-                    zoneToUpdate.RegistrationVirtualNetworkIds = this.RegistrationVirtualNetworkIds;
+                    zoneToUpdate.RegistrationVirtualNetworkIds = this.RegistrationVirtualNetworkId;
                 }
 
-                if (this.ResolutionVirtualNetworkIds != null)
+                if (this.ResolutionVirtualNetworkId != null)
                 {
-                    zoneToUpdate.ResolutionVirtualNetworkIds = this.ResolutionVirtualNetworkIds;
+                    zoneToUpdate.ResolutionVirtualNetworkIds = this.ResolutionVirtualNetworkId;
                 }
 
                 zoneToUpdate.Tags = this.Tag;
