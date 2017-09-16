@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
     [Cmdlet(VerbsCommon.Get, "AzureRmActivityLogAlert"), OutputType(typeof(List<PSActivityLogAlertResource>))]
     public class GetAzureRmActivityLogAlertCommand : ManagementCmdletBase
     {
-        internal const string GetActivityLogAlertDeafultParamGroup = "Default parameters for get an activity log alert";
+        internal const string GetActivityLogAlertDefaultParamGroup = "Default parameters for get an activity log alert";
         internal const string GetActivityLogAlertHelperParamGroup = "Parameters to make sure the resource group is given when the name is given";
 
         #region Cmdlet parameters
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
         /// <summary>
         /// Gets or sets the ResourceGroupName parameter of the cmdlet
         /// </summary>
-        [Parameter(ParameterSetName = GetActivityLogAlertDeafultParamGroup, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
+        [Parameter(ParameterSetName = GetActivityLogAlertDefaultParamGroup, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
         [Parameter(ParameterSetName = GetActivityLogAlertHelperParamGroup, Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
         /// <summary>
         /// Gets or sets the rule name parameter of the cmdlet
         /// </summary>
-        [Parameter(ParameterSetName = GetActivityLogAlertDeafultParamGroup, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The activity log alert name")]
+        [Parameter(ParameterSetName = GetActivityLogAlertDefaultParamGroup, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The activity log alert name")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
