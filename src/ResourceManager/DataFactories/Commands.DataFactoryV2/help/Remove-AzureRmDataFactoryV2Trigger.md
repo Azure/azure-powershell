@@ -35,7 +35,7 @@ Remove-AzureRmDataFactoryV2Trigger [-ResourceId] <String> [-Force] [-WhatIf] [-C
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzureRmDataFactoryV2Trigger
 ```
 
 {{ Add example description here }}

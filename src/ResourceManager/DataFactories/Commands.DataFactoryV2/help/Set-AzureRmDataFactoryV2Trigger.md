@@ -30,7 +30,7 @@ Set-AzureRmDataFactoryV2Trigger [-DefinitionFile] <String> [-ResourceId] <String
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Set-AzureRmDataFactoryV2Trigger
 ```
 
 {{ Add example description here }}

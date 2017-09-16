@@ -35,7 +35,7 @@ Start-AzureRmDataFactoryV2Trigger [-ResourceId] <String> [-Force] [-WhatIf] [-Co
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Start-AzureRmDataFactoryV2Trigger
 ```
 
 {{ Add example description here }}

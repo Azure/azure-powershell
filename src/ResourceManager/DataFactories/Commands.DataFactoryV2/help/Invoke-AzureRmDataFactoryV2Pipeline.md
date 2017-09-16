@@ -41,7 +41,7 @@ Invoke-AzureRmDataFactoryV2Pipeline [-ResourceGroupName] <String> [-DataFactoryN
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Invoke-AzureRmDataFactoryV2Pipeline
 ```
 
 {{ Add example description here }}

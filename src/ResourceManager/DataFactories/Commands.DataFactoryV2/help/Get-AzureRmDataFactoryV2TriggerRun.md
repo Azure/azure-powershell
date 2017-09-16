@@ -31,7 +31,7 @@ Get-AzureRmDataFactoryV2TriggerRun [-Name] <String> [-TriggerRunStartedAfter] <D
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzureRmDataFactoryV2TriggerRun 
 ```
 
 {{ Add example description here }}

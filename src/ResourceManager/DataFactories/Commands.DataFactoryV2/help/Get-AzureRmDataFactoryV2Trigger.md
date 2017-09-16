@@ -29,7 +29,7 @@ Get-AzureRmDataFactoryV2Trigger [[-Name] <String>] [-DataFactory] <PSDataFactory
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzureRmDataFactoryV2Trigger
 ```
 
 {{ Add example description here }}
