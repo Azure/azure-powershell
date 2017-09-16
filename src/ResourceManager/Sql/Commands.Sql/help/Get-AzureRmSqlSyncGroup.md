@@ -52,7 +52,7 @@ HubDatabaseUserName         : myAccount
 HubDatabasePassword         : 
 SyncState                   : NotReady
 LastSyncTime                : 1/1/0001 12:00:00 AM
-Schema                      :  
+Schema                      : 
 ```
 
 This command gets information about all the Azure SQL Database Sync Groups assigned to an Azure SQL Database.
@@ -72,7 +72,7 @@ HubDatabaseUserName         : myAccount
 HubDatabasePassword         : 
 SyncState                   : NotReady
 LastSyncTime                : 1/1/0001 12:00:00 AM
-Schema                      :  
+Schema                      : 
 ```
 
 This command gets information about the Azure SQL Database Sync Group with name "SyncGroup01"
