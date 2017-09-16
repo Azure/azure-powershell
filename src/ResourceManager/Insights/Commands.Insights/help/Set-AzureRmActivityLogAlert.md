@@ -13,9 +13,10 @@ Creates a new or sets an existing activity log alert.
 ## SYNTAX
 
 ```
-Set-AzureRmActivityLogAlert -Location <String> -Name <String> -ResourceGroupName <String>
+Set-AzureRmActivityLogAlert [-InputObject <PSActivityLogAlertResource>] [-ResourceId <String> [-Location <String>] [-Scope <System.Collections.Generic.List`1[System.String]>] [-Condition <System.Collections.Generic.List`1[ActivityLogAlertLeafCondition]>]
+ [-Action <System.Collections.Generic.List`1[ActivityLogAlertActionGroup]>] [-DisableAlert] [-Description <String>] [-Tag <System.Collections.Generic.Dictionary`1[<string>, <string>]>]] -Location <String> -Name <String> -ResourceGroupName <String>
  -Scope <System.Collections.Generic.List`1[System.String]> -Condition <System.Collections.Generic.List`1[ActivityLogAlertLeafCondition]>
- -Action <System.Collections.Generic.List`1[ActivityLogAlertActionGroup]> [-DisableAlert] [-Description <String>] [-Tag <System.Collections.Generic.Dictionary`1[<string>, <string>]>]
+ -Action <System.Collections.Generic.List`1[ActivityLogAlertActionGroup]> [-DisableAlert] [-Description <String>] [-Tag <System.Collections.Generic.Dictionary`1[<string>, <string>]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,7 +43,7 @@ PS C:\>Set-AzureRmActivityLogAlert -Location $location -Name $alertName -Resourc
 The first four commands create leaf condition and and action group.
 The final command creates an Activity Log Alert using the condition and the action group.
 
-### Example 1: Create an Activity Log Alert disabled
+### Example 2: Create an Activity Log Alert disabled
 ```
 PS C:\>$location = 'Global'
 PS C:\>$alertName = 'myAlert'
@@ -59,6 +60,27 @@ PS C:\>Set-AzureRmActivityLogAlert -Location $location -Name $alertName -Resourc
 The first four commands create leaf condition and and action group.
 The final command creates an Activity Log Alert using the condition and the action group, but it creates the alert disabled.
 
+### Example 3: Set an activity log alert based using a value from the pipe or the InputObject parameter
+```
+PS C:\>Get-AzureRmActivityLogAlert -Name $alertName -ResourceGroupName $resourceGroupName | Set-AzureRmActivityLogAlert
+PS C:\>$alert = Get-AzureRmActivityLogAlert -Name $alertName -ResourceGroupName $resourceGroupName
+PS C:\>$alert.Description = 'Changing the description'
+PS C:\>$alert.Enabled = $false
+PS C:\>Set-AzureRmActivityLogAlert -InputObject $alert
+
+```
+
+The first command is similar to a nop, it sets the alert with the same values it already contained
+The rest of the commands retrieve the alert rule, change the description and disable it, then use the InputObject parameter to persist those changes
+
+### Example 4: Set an activity log alert based using the ResourceId value from the pipe
+```
+PS C:\>Find-AzureRmResource -ResourceGroupEquals "myResourceGroup" -ResourceNameEquals "myLogAlert" | Set-AzureRmActivityLogAlert -DisableAlert
+
+```
+
+If the given log alert rule exists this command disables it.
+
 ## PARAMETERS
 
 ### -Location
@@ -66,10 +88,10 @@ The location where the activity log alert will exist.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SetActivityLogAlertDefaultParamGroup, SetActivityLogAlertFromResourceIdParamGroup
 Aliases: 
 
-Required: True
+Required: True for SetActivityLogAlertDefaultParamGroup, False for SetActivityLogAlertFromResourceIdParamGroup
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -81,7 +103,7 @@ The name of the activity log alert.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SetActivityLogAlertDefaultParamGroup
 Aliases: 
 
 Required: True
@@ -96,7 +118,7 @@ The name of the resource group where the alert resource is going to exist.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SetActivityLogAlertDefaultParamGroup
 Aliases: 
 
 Required: True
@@ -111,10 +133,10 @@ The list of scopes for the activity log alert.
 
 ```yaml
 Type: <System.Collections.Generic.List`1[System.String]>
-Parameter Sets: (All)
+Parameter Sets: SetActivityLogAlertDefaultParamGroup, SetActivityLogAlertFromResourceIdParamGroup
 Aliases: 
 
-Required: True
+Required: True for SetActivityLogAlertDefaultParamGroup, False for SetActivityLogAlertFromResourceIdParamGroup
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -129,7 +151,7 @@ Type: <System.Collections.Generic.List`1[ActivityLogAlertLeafCondition]>
 Parameter Sets: (All)
 Aliases: 
 
-Required: True
+Required: True for SetActivityLogAlertDefaultParamGroup, False for SetActivityLogAlertFromResourceIdParamGroup
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -141,10 +163,10 @@ The list of action groups for the activity log alert.
 
 ```yaml
 Type: <System.Collections.Generic.List`1[ActivityLogAlertActionGroup]>
-Parameter Sets: (All)
+Parameter Sets: SetActivityLogAlertDefaultParamGroup, SetActivityLogAlertFromResourceIdParamGroup
 Aliases: 
 
-Required: True
+Required: True for SetActivityLogAlertDefaultParamGroup, False for SetActivityLogAlertFromResourceIdParamGroup
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -156,7 +178,7 @@ Allows the user to create a disabled the activity log alert. If not given, the a
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: SetActivityLogAlertDefaultParamGroup, SetActivityLogAlertFromResourceIdParamGroup
 Aliases: 
 
 Required: False
@@ -171,10 +193,10 @@ The description of the alert resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SetActivityLogAlertDefaultParamGroup, SetActivityLogAlertFromResourceIdParamGroup
 Aliases: 
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -186,10 +208,40 @@ Sets the tags property of the activity log alert resource.
 
 ```yaml
 Type: System.Collections.Generic.Dictionary`1[<string>, <string>]
-Parameter Sets: (All)
+Parameter Sets: SetActivityLogAlertDefaultParamGroup, SetActivityLogAlertFromResourceIdParamGroup
 Aliases: 
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -InputObject
+Sets the InputObject tags property of the call to extract the required name, and resource group name properties.
+
+```yaml
+Type: Microsoft.Azure.Commands.Insights.OutputClasses.PSActivityLogAlertResource
+Parameter Sets: SetActivityLogAlertFromPipeParamGroup
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (FromPipeline)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+Sets the ResourceId tags property of the call to extract the required name, resource group name properties.
+
+```yaml
+Type: System.String
+Parameter Sets: SetActivityLogAlertFromResourceIdParamGroup
+Aliases: 
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

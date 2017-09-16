@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActivityLogAlerts
             };
         }
 
-        [Fact]
+        [Fact(Skip = "This is not testing anything")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewAzureRmActivityLogAlertConditionCommandParametersProcessing()
         {

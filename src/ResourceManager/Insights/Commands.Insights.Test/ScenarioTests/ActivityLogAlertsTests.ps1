@@ -167,7 +167,13 @@ function Test-SetGetListUpdateRemoveActivityLogAlert
 			}
 			"BadRequest"
 
-		# Write-Verbose " ****** Removing the ActivityLogAlert using pileline"
+		Write-Verbose " ****** NOP: setting an activity log alert using the value from the pipe (InputObject)"
+		Get-AzureRmActivityLogAlert -ResourceGroup $resourceGroupName -Name $alertName | Set-AzureRmActivityLogAlert
+
+		Write-Verbose " ****** Disabling an activity log alert using the value of ResourceId plus another parameter"
+		Set-AzureRmActivityLogAlert -ResourceId '/subscriptions/07c0b09d-9f69-4e6e-8d05-f59f67299cb2/resourceGroups/Default-ActivityLogAlerts/providers/microsoft.insights/activityLogAlerts/andy0307rule' -DisableAlert
+
+		Write-Verbose " ****** Removing the ActivityLogAlert using pileline"
 		Get-AzureRmActivityLogAlert -ResourceGroup $resourceGroupName -Name $alertName | Remove-AzureRmActivityLogAlert
 
 		Write-Verbose " ****** Removing (again) the ActivityLogAlert"
