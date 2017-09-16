@@ -1,0 +1,3190 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourcegroups/onesdk5522?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNThlY2I1YzItOTA2OS00ZGUwLTllNTEtMzgwZDY5YmUzMjI4L3Jlc291cmNlZ3JvdXBzL29uZXNkazU1MjI/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"location\": \"East US\"\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "29"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522\",\r\n  \"name\": \"onesdk5522\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "173"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1196"
+        ],
+        "x-ms-request-id": [
+          "1354c0ec-04ec-47a8-bd53-c4e5e038d161"
+        ],
+        "x-ms-correlation-request-id": [
+          "1354c0ec-04ec-47a8-bd53-c4e5e038d161"
+        ],
+        "x-ms-routing-request-id": [
+          "JAPANEAST:20170915T054453Z:1354c0ec-04ec-47a8-bd53-c4e5e038d161"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Sep 2017 05:44:52 GMT"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295?api-version=2017-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNThlY2I1YzItOTA2OS00ZGUwLTllNTEtMzgwZDY5YmUzMjI4L3Jlc291cmNlR3JvdXBzL29uZXNkazU1MjIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhRmFjdG9yeS9mYWN0b3JpZXMvb25lc2RrMjk1P2FwaS12ZXJzaW9uPTIwMTctMDktMDEtcHJldmlldw==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\"\r\n  },\r\n  \"location\": \"East US\",\r\n  \"tags\": {}\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "97"
+        ],
+        "x-ms-client-request-id": [
+          "853dc3fd-4c83-4c36-b7d0-c543155d4542"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2555.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16290",
+          "Microsoft.Azure.Management.DataFactory.DataFactoryManagementClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"onesdk295\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"loggingStorageAccountKey\": \"**********\",\r\n    \"createTime\": \"2017-09-15T05:44:59.6382886Z\",\r\n    \"version\": \"2017-09-01-preview\"\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\",\r\n    \"principalId\": \"7703cfb4-5334-48a0-a207-63292ceb95f8\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\"\r\n  },\r\n  \"id\": \"/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295\",\r\n  \"type\": \"Microsoft.DataFactory/factories\",\r\n  \"location\": \"East US\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "531"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "71fe9810-2cfe-41a1-8585-25b6e5a9620f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "x-ms-correlation-request-id": [
+          "7d434328-814c-454a-9bef-b0ef04527fc8"
+        ],
+        "x-ms-routing-request-id": [
+          "JAPANEAST:20170915T054501Z:7d434328-814c-454a-9bef-b0ef04527fc8"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Sep 2017 05:45:00 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir?api-version=2017-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNThlY2I1YzItOTA2OS00ZGUwLTllNTEtMzgwZDY5YmUzMjI4L3Jlc291cmNlR3JvdXBzL29uZXNkazU1MjIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhRmFjdG9yeS9mYWN0b3JpZXMvb25lc2RrMjk1L2ludGVncmF0aW9uUnVudGltZXMvbWFuYWdlZC1kZWRpY2F0ZWQtdGVzdC1pcj9hcGktdmVyc2lvbj0yMDE3LTA5LTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "76d2290c-6d41-49c1-bcc2-8090db7ec7ec"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2555.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16290",
+          "Microsoft.Azure.Management.DataFactory.DataFactoryManagementClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"Code\": \"NotFound\",\r\n  \"Message\": \"The document could not be retrieved because it does not exist.\",\r\n  \"Target\": \"/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationruntimes/managed-dedicated-test-ir\",\r\n  \"Details\": null,\r\n  \"Error\": null\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "309"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "aebab923-6534-48c7-b577-31a7ebcfd898"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "13982"
+        ],
+        "x-ms-correlation-request-id": [
+          "f3841377-d2b4-425c-b131-fa2ca74d9d11"
+        ],
+        "x-ms-routing-request-id": [
+          "JAPANEAST:20170915T054501Z:f3841377-d2b4-425c-b131-fa2ca74d9d11"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Sep 2017 05:45:01 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir?api-version=2017-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNThlY2I1YzItOTA2OS00ZGUwLTllNTEtMzgwZDY5YmUzMjI4L3Jlc291cmNlR3JvdXBzL29uZXNkazU1MjIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhRmFjdG9yeS9mYWN0b3JpZXMvb25lc2RrMjk1L2ludGVncmF0aW9uUnVudGltZXMvbWFuYWdlZC1kZWRpY2F0ZWQtdGVzdC1pcj9hcGktdmVyc2lvbj0yMDE3LTA5LTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "09e03af7-909f-476d-a4c8-98ec6c0c0ca9"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2555.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16290",
+          "Microsoft.Azure.Management.DataFactory.DataFactoryManagementClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationruntimes/managed-dedicated-test-ir\",\r\n  \"name\": \"managed-dedicated-test-ir\",\r\n  \"properties\": {\r\n    \"type\": \"Managed\",\r\n    \"typeProperties\": {\r\n      \"computeProperties\": {\r\n        \"location\": \"East US\",\r\n        \"nodeSize\": \"Standard_A4_v2\",\r\n        \"numberOfNodes\": 1,\r\n        \"maxParallelExecutionsPerNode\": 1\r\n      },\r\n      \"ssisProperties\": {\r\n        \"catalogInfo\": {\r\n          \"catalogServerEndpoint\": \"yandongtestsvr.database.windows.net\",\r\n          \"catalogAdminUserName\": \"yanzhang\",\r\n          \"catalogAdminPassword\": {\r\n            \"type\": \"SecureString\",\r\n            \"value\": \"**********\"\r\n          },\r\n          \"catalogPricingTier\": \"S1\"\r\n        }\r\n      }\r\n    },\r\n    \"description\": \"Managed dedicated integration runtime\",\r\n    \"state\": \"Initial\"\r\n  },\r\n  \"etag\": \"0100cc15-0000-0000-0000-59bb68dd0000\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "735"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "71953450-4beb-4882-83ff-93d1a9d135a9"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "13980"
+        ],
+        "x-ms-correlation-request-id": [
+          "9a4b6514-e82e-4aae-ac1b-0f435e0d97ce"
+        ],
+        "x-ms-routing-request-id": [
+          "JAPANEAST:20170915T054503Z:9a4b6514-e82e-4aae-ac1b-0f435e0d97ce"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Sep 2017 05:45:02 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir?api-version=2017-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNThlY2I1YzItOTA2OS00ZGUwLTllNTEtMzgwZDY5YmUzMjI4L3Jlc291cmNlR3JvdXBzL29uZXNkazU1MjIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhRmFjdG9yeS9mYWN0b3JpZXMvb25lc2RrMjk1L2ludGVncmF0aW9uUnVudGltZXMvbWFuYWdlZC1kZWRpY2F0ZWQtdGVzdC1pcj9hcGktdmVyc2lvbj0yMDE3LTA5LTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "8563ad1a-67a5-473b-9b23-940952d1de5a"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2555.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16290",
+          "Microsoft.Azure.Management.DataFactory.DataFactoryManagementClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationruntimes/managed-dedicated-test-ir\",\r\n  \"name\": \"managed-dedicated-test-ir\",\r\n  \"properties\": {\r\n    \"type\": \"Managed\",\r\n    \"typeProperties\": {\r\n      \"computeProperties\": {\r\n        \"location\": \"East US\",\r\n        \"nodeSize\": \"Standard_A4_v2\",\r\n        \"numberOfNodes\": 1,\r\n        \"maxParallelExecutionsPerNode\": 1\r\n      },\r\n      \"ssisProperties\": {\r\n        \"catalogInfo\": {\r\n          \"catalogServerEndpoint\": \"yandongtestsvr.database.windows.net\",\r\n          \"catalogAdminUserName\": \"yanzhang\",\r\n          \"catalogAdminPassword\": {\r\n            \"type\": \"SecureString\",\r\n            \"value\": \"**********\"\r\n          },\r\n          \"catalogPricingTier\": \"S1\"\r\n        }\r\n      }\r\n    },\r\n    \"description\": \"Managed dedicated integration runtime\",\r\n    \"state\": \"Initial\"\r\n  },\r\n  \"etag\": \"0100cc15-0000-0000-0000-59bb68dd0000\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "735"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "06cc745d-3cbf-4920-8468-a62875b6f467"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "13979"
+        ],
+        "x-ms-correlation-request-id": [
+          "8ba5ed79-82eb-4379-a33f-9122d483ac62"
+        ],
+        "x-ms-routing-request-id": [
+          "JAPANEAST:20170915T054503Z:8ba5ed79-82eb-4379-a33f-9122d483ac62"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Sep 2017 05:45:02 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir?api-version=2017-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNThlY2I1YzItOTA2OS00ZGUwLTllNTEtMzgwZDY5YmUzMjI4L3Jlc291cmNlR3JvdXBzL29uZXNkazU1MjIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhRmFjdG9yeS9mYWN0b3JpZXMvb25lc2RrMjk1L2ludGVncmF0aW9uUnVudGltZXMvbWFuYWdlZC1kZWRpY2F0ZWQtdGVzdC1pcj9hcGktdmVyc2lvbj0yMDE3LTA5LTAxLXByZXZpZXc=",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"type\": \"Managed\",\r\n    \"typeProperties\": {\r\n      \"computeProperties\": {\r\n        \"location\": \"East US\",\r\n        \"nodeSize\": \"Standard_A4_v2\",\r\n        \"numberOfNodes\": 1,\r\n        \"maxParallelExecutionsPerNode\": 1\r\n      },\r\n      \"ssisProperties\": {\r\n        \"catalogInfo\": {\r\n          \"catalogServerEndpoint\": \"yandongtestsvr.database.windows.net\",\r\n          \"catalogAdminUserName\": \"yanzhang\",\r\n          \"catalogAdminPassword\": {\r\n            \"type\": \"SecureString\",\r\n            \"value\": \"Passw0rd1\"\r\n          },\r\n          \"catalogPricingTier\": \"S1\"\r\n        }\r\n      }\r\n    },\r\n    \"description\": \"Managed dedicated integration runtime\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "683"
+        ],
+        "x-ms-client-request-id": [
+          "a1d73c95-f5aa-4a6a-8456-b44fcadc6d54"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2555.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16290",
+          "Microsoft.Azure.Management.DataFactory.DataFactoryManagementClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationruntimes/managed-dedicated-test-ir\",\r\n  \"name\": \"managed-dedicated-test-ir\",\r\n  \"properties\": {\r\n    \"type\": \"Managed\",\r\n    \"typeProperties\": {\r\n      \"computeProperties\": {\r\n        \"location\": \"East US\",\r\n        \"nodeSize\": \"Standard_A4_v2\",\r\n        \"numberOfNodes\": 1,\r\n        \"maxParallelExecutionsPerNode\": 1\r\n      },\r\n      \"ssisProperties\": {\r\n        \"catalogInfo\": {\r\n          \"catalogServerEndpoint\": \"yandongtestsvr.database.windows.net\",\r\n          \"catalogAdminUserName\": \"yanzhang\",\r\n          \"catalogAdminPassword\": {\r\n            \"type\": \"SecureString\",\r\n            \"value\": \"**********\"\r\n          },\r\n          \"catalogPricingTier\": \"S1\"\r\n        }\r\n      }\r\n    },\r\n    \"description\": \"Managed dedicated integration runtime\",\r\n    \"state\": \"Initial\"\r\n  },\r\n  \"etag\": \"0100cc15-0000-0000-0000-59bb68dd0000\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "735"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "f78b0a94-2876-4620-bb2d-3de0c092a80a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1197"
+        ],
+        "x-ms-correlation-request-id": [
+          "8315afce-5a8a-4bae-b09b-977e2bfe522d"
+        ],
+        "x-ms-routing-request-id": [
+          "JAPANEAST:20170915T054502Z:8315afce-5a8a-4bae-b09b-977e2bfe522d"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Sep 2017 05:45:01 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start?api-version=2017-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNThlY2I1YzItOTA2OS00ZGUwLTllNTEtMzgwZDY5YmUzMjI4L3Jlc291cmNlR3JvdXBzL29uZXNkazU1MjIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhRmFjdG9yeS9mYWN0b3JpZXMvb25lc2RrMjk1L2ludGVncmF0aW9uUnVudGltZXMvbWFuYWdlZC1kZWRpY2F0ZWQtdGVzdC1pci9zdGFydD9hcGktdmVyc2lvbj0yMDE3LTA5LTAxLXByZXZpZXc=",
+      "RequestMethod": "POST",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a36db64a-bf49-485c-afe3-50a91893270e"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2555.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16290",
+          "Microsoft.Azure.Management.DataFactory.DataFactoryManagementClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "d22bacd4-1b5f-43cb-b7c1-73da2dc85ba9"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1196"
+        ],
+        "x-ms-correlation-request-id": [
+          "ebb9645f-3335-40a4-810c-b33e60b7e3bf"
+        ],
+        "x-ms-routing-request-id": [
+          "JAPANEAST:20170915T054507Z:ebb9645f-3335-40a4-810c-b33e60b7e3bf"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Sep 2017 05:45:06 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNThlY2I1YzItOTA2OS00ZGUwLTllNTEtMzgwZDY5YmUzMjI4L3Jlc291cmNlR3JvdXBzL29uZXNkazU1MjIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhRmFjdG9yeS9mYWN0b3JpZXMvb25lc2RrMjk1L2ludGVncmF0aW9uUnVudGltZXMvbWFuYWdlZC1kZWRpY2F0ZWQtdGVzdC1pci9zdGFydC9vcGVyYXRpb25yZXN1bHRzLzEyNWY3YTYzYjAwMTRhYzI4N2FmZWJkNDc2ZGYyNDU0P2FwaS12ZXJzaW9uPTIwMTctMDktMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2555.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16290",
+          "Microsoft.Azure.Management.DataFactory.DataFactoryManagementClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "4fb0349a-23ff-43bd-84b2-a207df1b567a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "13961"
+        ],
+        "x-ms-correlation-request-id": [
+          "5234889a-4a60-48f3-bd3e-6d80f1064726"
+        ],
+        "x-ms-routing-request-id": [
+          "JAPANEAST:20170915T054538Z:5234889a-4a60-48f3-bd3e-6d80f1064726"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Sep 2017 05:45:38 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNThlY2I1YzItOTA2OS00ZGUwLTllNTEtMzgwZDY5YmUzMjI4L3Jlc291cmNlR3JvdXBzL29uZXNkazU1MjIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhRmFjdG9yeS9mYWN0b3JpZXMvb25lc2RrMjk1L2ludGVncmF0aW9uUnVudGltZXMvbWFuYWdlZC1kZWRpY2F0ZWQtdGVzdC1pci9zdGFydC9vcGVyYXRpb25yZXN1bHRzLzEyNWY3YTYzYjAwMTRhYzI4N2FmZWJkNDc2ZGYyNDU0P2FwaS12ZXJzaW9uPTIwMTctMDktMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2555.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16290",
+          "Microsoft.Azure.Management.DataFactory.DataFactoryManagementClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "a0000311-e217-454b-8056-5f2bcb2e6c76"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14210"
+        ],
+        "x-ms-correlation-request-id": [
+          "b0df9237-9126-4824-8f0a-0e1c7d7700b5"
+        ],
+        "x-ms-routing-request-id": [
+          "JAPANEAST:20170915T054609Z:b0df9237-9126-4824-8f0a-0e1c7d7700b5"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Sep 2017 05:46:08 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNThlY2I1YzItOTA2OS00ZGUwLTllNTEtMzgwZDY5YmUzMjI4L3Jlc291cmNlR3JvdXBzL29uZXNkazU1MjIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhRmFjdG9yeS9mYWN0b3JpZXMvb25lc2RrMjk1L2ludGVncmF0aW9uUnVudGltZXMvbWFuYWdlZC1kZWRpY2F0ZWQtdGVzdC1pci9zdGFydC9vcGVyYXRpb25yZXN1bHRzLzEyNWY3YTYzYjAwMTRhYzI4N2FmZWJkNDc2ZGYyNDU0P2FwaS12ZXJzaW9uPTIwMTctMDktMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2555.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16290",
+          "Microsoft.Azure.Management.DataFactory.DataFactoryManagementClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "bd21dc8d-7895-4635-a8f6-44e5ce1d11f7"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14185"
+        ],
+        "x-ms-correlation-request-id": [
+          "fc73f512-7b31-4daa-b2d3-667c43441bb5"
+        ],
+        "x-ms-routing-request-id": [
+          "JAPANEAST:20170915T054639Z:fc73f512-7b31-4daa-b2d3-667c43441bb5"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Sep 2017 05:46:39 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNThlY2I1YzItOTA2OS00ZGUwLTllNTEtMzgwZDY5YmUzMjI4L3Jlc291cmNlR3JvdXBzL29uZXNkazU1MjIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhRmFjdG9yeS9mYWN0b3JpZXMvb25lc2RrMjk1L2ludGVncmF0aW9uUnVudGltZXMvbWFuYWdlZC1kZWRpY2F0ZWQtdGVzdC1pci9zdGFydC9vcGVyYXRpb25yZXN1bHRzLzEyNWY3YTYzYjAwMTRhYzI4N2FmZWJkNDc2ZGYyNDU0P2FwaS12ZXJzaW9uPTIwMTctMDktMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2555.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16290",
+          "Microsoft.Azure.Management.DataFactory.DataFactoryManagementClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "ad402d0d-6a82-4f62-8c76-2a941d0afcb6"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14170"
+        ],
+        "x-ms-correlation-request-id": [
+          "b170257b-6c7e-455e-9814-aff5dbbb25e0"
+        ],
+        "x-ms-routing-request-id": [
+          "JAPANEAST:20170915T054710Z:b170257b-6c7e-455e-9814-aff5dbbb25e0"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Sep 2017 05:47:09 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNThlY2I1YzItOTA2OS00ZGUwLTllNTEtMzgwZDY5YmUzMjI4L3Jlc291cmNlR3JvdXBzL29uZXNkazU1MjIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhRmFjdG9yeS9mYWN0b3JpZXMvb25lc2RrMjk1L2ludGVncmF0aW9uUnVudGltZXMvbWFuYWdlZC1kZWRpY2F0ZWQtdGVzdC1pci9zdGFydC9vcGVyYXRpb25yZXN1bHRzLzEyNWY3YTYzYjAwMTRhYzI4N2FmZWJkNDc2ZGYyNDU0P2FwaS12ZXJzaW9uPTIwMTctMDktMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2555.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16290",
+          "Microsoft.Azure.Management.DataFactory.DataFactoryManagementClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "f0d6e67b-c548-4db6-975b-435db73264e0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14156"
+        ],
+        "x-ms-correlation-request-id": [
+          "aae85799-abdd-4de5-bbb7-31a5efdc2e34"
+        ],
+        "x-ms-routing-request-id": [
+          "JAPANEAST:20170915T054740Z:aae85799-abdd-4de5-bbb7-31a5efdc2e34"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Sep 2017 05:47:40 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNThlY2I1YzItOTA2OS00ZGUwLTllNTEtMzgwZDY5YmUzMjI4L3Jlc291cmNlR3JvdXBzL29uZXNkazU1MjIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhRmFjdG9yeS9mYWN0b3JpZXMvb25lc2RrMjk1L2ludGVncmF0aW9uUnVudGltZXMvbWFuYWdlZC1kZWRpY2F0ZWQtdGVzdC1pci9zdGFydC9vcGVyYXRpb25yZXN1bHRzLzEyNWY3YTYzYjAwMTRhYzI4N2FmZWJkNDc2ZGYyNDU0P2FwaS12ZXJzaW9uPTIwMTctMDktMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2555.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16290",
+          "Microsoft.Azure.Management.DataFactory.DataFactoryManagementClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "96aa2e05-3830-40fb-b47d-ad2a383bf919"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14142"
+        ],
+        "x-ms-correlation-request-id": [
+          "659c5048-2b25-49b9-8410-11290a53be43"
+        ],
+        "x-ms-routing-request-id": [
+          "JAPANEAST:20170915T054811Z:659c5048-2b25-49b9-8410-11290a53be43"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Sep 2017 05:48:11 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNThlY2I1YzItOTA2OS00ZGUwLTllNTEtMzgwZDY5YmUzMjI4L3Jlc291cmNlR3JvdXBzL29uZXNkazU1MjIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhRmFjdG9yeS9mYWN0b3JpZXMvb25lc2RrMjk1L2ludGVncmF0aW9uUnVudGltZXMvbWFuYWdlZC1kZWRpY2F0ZWQtdGVzdC1pci9zdGFydC9vcGVyYXRpb25yZXN1bHRzLzEyNWY3YTYzYjAwMTRhYzI4N2FmZWJkNDc2ZGYyNDU0P2FwaS12ZXJzaW9uPTIwMTctMDktMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2555.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16290",
+          "Microsoft.Azure.Management.DataFactory.DataFactoryManagementClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "cc244b83-b5e2-4c4b-97fd-45fa18ea2a74"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14122"
+        ],
+        "x-ms-correlation-request-id": [
+          "01253d3e-9e8c-45ef-9eb5-5e703cedcef6"
+        ],
+        "x-ms-routing-request-id": [
+          "JAPANEAST:20170915T054841Z:01253d3e-9e8c-45ef-9eb5-5e703cedcef6"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Sep 2017 05:48:40 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNThlY2I1YzItOTA2OS00ZGUwLTllNTEtMzgwZDY5YmUzMjI4L3Jlc291cmNlR3JvdXBzL29uZXNkazU1MjIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhRmFjdG9yeS9mYWN0b3JpZXMvb25lc2RrMjk1L2ludGVncmF0aW9uUnVudGltZXMvbWFuYWdlZC1kZWRpY2F0ZWQtdGVzdC1pci9zdGFydC9vcGVyYXRpb25yZXN1bHRzLzEyNWY3YTYzYjAwMTRhYzI4N2FmZWJkNDc2ZGYyNDU0P2FwaS12ZXJzaW9uPTIwMTctMDktMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2555.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16290",
+          "Microsoft.Azure.Management.DataFactory.DataFactoryManagementClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "55e3b7a0-5bd4-4bf0-9da6-30c1c1d397aa"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14106"
+        ],
+        "x-ms-correlation-request-id": [
+          "868936ff-c929-4ab7-8361-3e45944b8738"
+        ],
+        "x-ms-routing-request-id": [
+          "JAPANEAST:20170915T054911Z:868936ff-c929-4ab7-8361-3e45944b8738"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Sep 2017 05:49:11 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNThlY2I1YzItOTA2OS00ZGUwLTllNTEtMzgwZDY5YmUzMjI4L3Jlc291cmNlR3JvdXBzL29uZXNkazU1MjIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhRmFjdG9yeS9mYWN0b3JpZXMvb25lc2RrMjk1L2ludGVncmF0aW9uUnVudGltZXMvbWFuYWdlZC1kZWRpY2F0ZWQtdGVzdC1pci9zdGFydC9vcGVyYXRpb25yZXN1bHRzLzEyNWY3YTYzYjAwMTRhYzI4N2FmZWJkNDc2ZGYyNDU0P2FwaS12ZXJzaW9uPTIwMTctMDktMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2555.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16290",
+          "Microsoft.Azure.Management.DataFactory.DataFactoryManagementClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "ba2052c7-accf-4514-bfaf-515598f5d6ec"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14091"
+        ],
+        "x-ms-correlation-request-id": [
+          "40cf12be-8e45-4c05-8db6-bab5f8dd313e"
+        ],
+        "x-ms-routing-request-id": [
+          "JAPANEAST:20170915T054942Z:40cf12be-8e45-4c05-8db6-bab5f8dd313e"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Sep 2017 05:49:42 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNThlY2I1YzItOTA2OS00ZGUwLTllNTEtMzgwZDY5YmUzMjI4L3Jlc291cmNlR3JvdXBzL29uZXNkazU1MjIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhRmFjdG9yeS9mYWN0b3JpZXMvb25lc2RrMjk1L2ludGVncmF0aW9uUnVudGltZXMvbWFuYWdlZC1kZWRpY2F0ZWQtdGVzdC1pci9zdGFydC9vcGVyYXRpb25yZXN1bHRzLzEyNWY3YTYzYjAwMTRhYzI4N2FmZWJkNDc2ZGYyNDU0P2FwaS12ZXJzaW9uPTIwMTctMDktMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2555.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16290",
+          "Microsoft.Azure.Management.DataFactory.DataFactoryManagementClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "eddf1b57-66a9-433e-a040-98d88c4f54e0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14115"
+        ],
+        "x-ms-correlation-request-id": [
+          "a5331de1-0bd9-4c0e-aa77-ef9207939e29"
+        ],
+        "x-ms-routing-request-id": [
+          "JAPANEAST:20170915T055012Z:a5331de1-0bd9-4c0e-aa77-ef9207939e29"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Sep 2017 05:50:11 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNThlY2I1YzItOTA2OS00ZGUwLTllNTEtMzgwZDY5YmUzMjI4L3Jlc291cmNlR3JvdXBzL29uZXNkazU1MjIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhRmFjdG9yeS9mYWN0b3JpZXMvb25lc2RrMjk1L2ludGVncmF0aW9uUnVudGltZXMvbWFuYWdlZC1kZWRpY2F0ZWQtdGVzdC1pci9zdGFydC9vcGVyYXRpb25yZXN1bHRzLzEyNWY3YTYzYjAwMTRhYzI4N2FmZWJkNDc2ZGYyNDU0P2FwaS12ZXJzaW9uPTIwMTctMDktMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2555.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16290",
+          "Microsoft.Azure.Management.DataFactory.DataFactoryManagementClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "27547600-81d2-4e9d-8c64-c9eaa73808c9"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14096"
+        ],
+        "x-ms-correlation-request-id": [
+          "224a1b56-9921-414f-8988-ed9fc425b4ee"
+        ],
+        "x-ms-routing-request-id": [
+          "JAPANEAST:20170915T055043Z:224a1b56-9921-414f-8988-ed9fc425b4ee"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Sep 2017 05:50:42 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNThlY2I1YzItOTA2OS00ZGUwLTllNTEtMzgwZDY5YmUzMjI4L3Jlc291cmNlR3JvdXBzL29uZXNkazU1MjIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhRmFjdG9yeS9mYWN0b3JpZXMvb25lc2RrMjk1L2ludGVncmF0aW9uUnVudGltZXMvbWFuYWdlZC1kZWRpY2F0ZWQtdGVzdC1pci9zdGFydC9vcGVyYXRpb25yZXN1bHRzLzEyNWY3YTYzYjAwMTRhYzI4N2FmZWJkNDc2ZGYyNDU0P2FwaS12ZXJzaW9uPTIwMTctMDktMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2555.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16290",
+          "Microsoft.Azure.Management.DataFactory.DataFactoryManagementClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "4a21d279-5cd0-4c32-8e62-6b1ee62aedec"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14077"
+        ],
+        "x-ms-correlation-request-id": [
+          "1ab8d271-dc26-4178-a3db-9ff37cdb7e82"
+        ],
+        "x-ms-routing-request-id": [
+          "JAPANEAST:20170915T055113Z:1ab8d271-dc26-4178-a3db-9ff37cdb7e82"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Sep 2017 05:51:13 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNThlY2I1YzItOTA2OS00ZGUwLTllNTEtMzgwZDY5YmUzMjI4L3Jlc291cmNlR3JvdXBzL29uZXNkazU1MjIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhRmFjdG9yeS9mYWN0b3JpZXMvb25lc2RrMjk1L2ludGVncmF0aW9uUnVudGltZXMvbWFuYWdlZC1kZWRpY2F0ZWQtdGVzdC1pci9zdGFydC9vcGVyYXRpb25yZXN1bHRzLzEyNWY3YTYzYjAwMTRhYzI4N2FmZWJkNDc2ZGYyNDU0P2FwaS12ZXJzaW9uPTIwMTctMDktMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2555.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16290",
+          "Microsoft.Azure.Management.DataFactory.DataFactoryManagementClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "ee6b6a69-bf71-4056-be24-5dc5623a2655"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14063"
+        ],
+        "x-ms-correlation-request-id": [
+          "b6e8703e-908a-4ee7-9b31-8ef735767f3a"
+        ],
+        "x-ms-routing-request-id": [
+          "JAPANEAST:20170915T055143Z:b6e8703e-908a-4ee7-9b31-8ef735767f3a"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Sep 2017 05:51:43 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNThlY2I1YzItOTA2OS00ZGUwLTllNTEtMzgwZDY5YmUzMjI4L3Jlc291cmNlR3JvdXBzL29uZXNkazU1MjIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhRmFjdG9yeS9mYWN0b3JpZXMvb25lc2RrMjk1L2ludGVncmF0aW9uUnVudGltZXMvbWFuYWdlZC1kZWRpY2F0ZWQtdGVzdC1pci9zdGFydC9vcGVyYXRpb25yZXN1bHRzLzEyNWY3YTYzYjAwMTRhYzI4N2FmZWJkNDc2ZGYyNDU0P2FwaS12ZXJzaW9uPTIwMTctMDktMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2555.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16290",
+          "Microsoft.Azure.Management.DataFactory.DataFactoryManagementClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "90c48eba-9590-4b31-a80b-2a9c2fed9b41"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14047"
+        ],
+        "x-ms-correlation-request-id": [
+          "545d0299-d72b-4f80-abed-be8aa89bf193"
+        ],
+        "x-ms-routing-request-id": [
+          "JAPANEAST:20170915T055214Z:545d0299-d72b-4f80-abed-be8aa89bf193"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Sep 2017 05:52:13 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNThlY2I1YzItOTA2OS00ZGUwLTllNTEtMzgwZDY5YmUzMjI4L3Jlc291cmNlR3JvdXBzL29uZXNkazU1MjIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhRmFjdG9yeS9mYWN0b3JpZXMvb25lc2RrMjk1L2ludGVncmF0aW9uUnVudGltZXMvbWFuYWdlZC1kZWRpY2F0ZWQtdGVzdC1pci9zdGFydC9vcGVyYXRpb25yZXN1bHRzLzEyNWY3YTYzYjAwMTRhYzI4N2FmZWJkNDc2ZGYyNDU0P2FwaS12ZXJzaW9uPTIwMTctMDktMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2555.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16290",
+          "Microsoft.Azure.Management.DataFactory.DataFactoryManagementClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "17e06c57-1a11-4319-81b8-256db0ade551"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14021"
+        ],
+        "x-ms-correlation-request-id": [
+          "4edb0781-e4c8-4612-b1ca-0ca399e5c648"
+        ],
+        "x-ms-routing-request-id": [
+          "JAPANEAST:20170915T055244Z:4edb0781-e4c8-4612-b1ca-0ca399e5c648"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Sep 2017 05:52:44 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNThlY2I1YzItOTA2OS00ZGUwLTllNTEtMzgwZDY5YmUzMjI4L3Jlc291cmNlR3JvdXBzL29uZXNkazU1MjIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhRmFjdG9yeS9mYWN0b3JpZXMvb25lc2RrMjk1L2ludGVncmF0aW9uUnVudGltZXMvbWFuYWdlZC1kZWRpY2F0ZWQtdGVzdC1pci9zdGFydC9vcGVyYXRpb25yZXN1bHRzLzEyNWY3YTYzYjAwMTRhYzI4N2FmZWJkNDc2ZGYyNDU0P2FwaS12ZXJzaW9uPTIwMTctMDktMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2555.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16290",
+          "Microsoft.Azure.Management.DataFactory.DataFactoryManagementClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "21987209-e999-4b35-8881-00fda6a6c45f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14006"
+        ],
+        "x-ms-correlation-request-id": [
+          "60bf14ea-ff55-4124-83db-eabd5a943661"
+        ],
+        "x-ms-routing-request-id": [
+          "JAPANEAST:20170915T055315Z:60bf14ea-ff55-4124-83db-eabd5a943661"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Sep 2017 05:53:14 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNThlY2I1YzItOTA2OS00ZGUwLTllNTEtMzgwZDY5YmUzMjI4L3Jlc291cmNlR3JvdXBzL29uZXNkazU1MjIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhRmFjdG9yeS9mYWN0b3JpZXMvb25lc2RrMjk1L2ludGVncmF0aW9uUnVudGltZXMvbWFuYWdlZC1kZWRpY2F0ZWQtdGVzdC1pci9zdGFydC9vcGVyYXRpb25yZXN1bHRzLzEyNWY3YTYzYjAwMTRhYzI4N2FmZWJkNDc2ZGYyNDU0P2FwaS12ZXJzaW9uPTIwMTctMDktMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2555.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16290",
+          "Microsoft.Azure.Management.DataFactory.DataFactoryManagementClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "d4efe50e-f742-43ce-9435-62b6a95f6f3e"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "13986"
+        ],
+        "x-ms-correlation-request-id": [
+          "a367c5fd-2a09-4f42-8943-f039a430ad47"
+        ],
+        "x-ms-routing-request-id": [
+          "JAPANEAST:20170915T055345Z:a367c5fd-2a09-4f42-8943-f039a430ad47"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Sep 2017 05:53:44 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNThlY2I1YzItOTA2OS00ZGUwLTllNTEtMzgwZDY5YmUzMjI4L3Jlc291cmNlR3JvdXBzL29uZXNkazU1MjIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhRmFjdG9yeS9mYWN0b3JpZXMvb25lc2RrMjk1L2ludGVncmF0aW9uUnVudGltZXMvbWFuYWdlZC1kZWRpY2F0ZWQtdGVzdC1pci9zdGFydC9vcGVyYXRpb25yZXN1bHRzLzEyNWY3YTYzYjAwMTRhYzI4N2FmZWJkNDc2ZGYyNDU0P2FwaS12ZXJzaW9uPTIwMTctMDktMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2555.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16290",
+          "Microsoft.Azure.Management.DataFactory.DataFactoryManagementClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "5fa806a2-6784-475f-bf06-82416087a43d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "13968"
+        ],
+        "x-ms-correlation-request-id": [
+          "6ad85804-245a-46a1-8bea-0c5094beb12d"
+        ],
+        "x-ms-routing-request-id": [
+          "JAPANEAST:20170915T055416Z:6ad85804-245a-46a1-8bea-0c5094beb12d"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Sep 2017 05:54:15 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNThlY2I1YzItOTA2OS00ZGUwLTllNTEtMzgwZDY5YmUzMjI4L3Jlc291cmNlR3JvdXBzL29uZXNkazU1MjIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhRmFjdG9yeS9mYWN0b3JpZXMvb25lc2RrMjk1L2ludGVncmF0aW9uUnVudGltZXMvbWFuYWdlZC1kZWRpY2F0ZWQtdGVzdC1pci9zdGFydC9vcGVyYXRpb25yZXN1bHRzLzEyNWY3YTYzYjAwMTRhYzI4N2FmZWJkNDc2ZGYyNDU0P2FwaS12ZXJzaW9uPTIwMTctMDktMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2555.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16290",
+          "Microsoft.Azure.Management.DataFactory.DataFactoryManagementClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "ac5aafe0-f829-4125-9771-05d900bd09e3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "13950"
+        ],
+        "x-ms-correlation-request-id": [
+          "faab4a2f-8634-456f-b1b3-85390fa7fef5"
+        ],
+        "x-ms-routing-request-id": [
+          "JAPANEAST:20170915T055446Z:faab4a2f-8634-456f-b1b3-85390fa7fef5"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Sep 2017 05:54:46 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNThlY2I1YzItOTA2OS00ZGUwLTllNTEtMzgwZDY5YmUzMjI4L3Jlc291cmNlR3JvdXBzL29uZXNkazU1MjIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhRmFjdG9yeS9mYWN0b3JpZXMvb25lc2RrMjk1L2ludGVncmF0aW9uUnVudGltZXMvbWFuYWdlZC1kZWRpY2F0ZWQtdGVzdC1pci9zdGFydC9vcGVyYXRpb25yZXN1bHRzLzEyNWY3YTYzYjAwMTRhYzI4N2FmZWJkNDc2ZGYyNDU0P2FwaS12ZXJzaW9uPTIwMTctMDktMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2555.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16290",
+          "Microsoft.Azure.Management.DataFactory.DataFactoryManagementClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "84f63e23-1ef4-464a-abd3-66799e4bf313"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "13994"
+        ],
+        "x-ms-correlation-request-id": [
+          "a5b81c5c-91e5-4834-be34-cc6f420a3856"
+        ],
+        "x-ms-routing-request-id": [
+          "JAPANEAST:20170915T055516Z:a5b81c5c-91e5-4834-be34-cc6f420a3856"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Sep 2017 05:55:16 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNThlY2I1YzItOTA2OS00ZGUwLTllNTEtMzgwZDY5YmUzMjI4L3Jlc291cmNlR3JvdXBzL29uZXNkazU1MjIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhRmFjdG9yeS9mYWN0b3JpZXMvb25lc2RrMjk1L2ludGVncmF0aW9uUnVudGltZXMvbWFuYWdlZC1kZWRpY2F0ZWQtdGVzdC1pci9zdGFydC9vcGVyYXRpb25yZXN1bHRzLzEyNWY3YTYzYjAwMTRhYzI4N2FmZWJkNDc2ZGYyNDU0P2FwaS12ZXJzaW9uPTIwMTctMDktMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2555.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16290",
+          "Microsoft.Azure.Management.DataFactory.DataFactoryManagementClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "80027227-a4a1-467b-92df-375c19246666"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "13978"
+        ],
+        "x-ms-correlation-request-id": [
+          "bc57b97f-e6d6-4c75-84ec-15b59f351e01"
+        ],
+        "x-ms-routing-request-id": [
+          "JAPANEAST:20170915T055547Z:bc57b97f-e6d6-4c75-84ec-15b59f351e01"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Sep 2017 05:55:46 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNThlY2I1YzItOTA2OS00ZGUwLTllNTEtMzgwZDY5YmUzMjI4L3Jlc291cmNlR3JvdXBzL29uZXNkazU1MjIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhRmFjdG9yeS9mYWN0b3JpZXMvb25lc2RrMjk1L2ludGVncmF0aW9uUnVudGltZXMvbWFuYWdlZC1kZWRpY2F0ZWQtdGVzdC1pci9zdGFydC9vcGVyYXRpb25yZXN1bHRzLzEyNWY3YTYzYjAwMTRhYzI4N2FmZWJkNDc2ZGYyNDU0P2FwaS12ZXJzaW9uPTIwMTctMDktMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2555.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16290",
+          "Microsoft.Azure.Management.DataFactory.DataFactoryManagementClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "19f09518-cbfd-4939-8c16-2aae0d06f77b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "13961"
+        ],
+        "x-ms-correlation-request-id": [
+          "dea884ed-518e-4153-955d-4454da756ea1"
+        ],
+        "x-ms-routing-request-id": [
+          "JAPANEAST:20170915T055617Z:dea884ed-518e-4153-955d-4454da756ea1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Sep 2017 05:56:17 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNThlY2I1YzItOTA2OS00ZGUwLTllNTEtMzgwZDY5YmUzMjI4L3Jlc291cmNlR3JvdXBzL29uZXNkazU1MjIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhRmFjdG9yeS9mYWN0b3JpZXMvb25lc2RrMjk1L2ludGVncmF0aW9uUnVudGltZXMvbWFuYWdlZC1kZWRpY2F0ZWQtdGVzdC1pci9zdGFydC9vcGVyYXRpb25yZXN1bHRzLzEyNWY3YTYzYjAwMTRhYzI4N2FmZWJkNDc2ZGYyNDU0P2FwaS12ZXJzaW9uPTIwMTctMDktMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2555.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16290",
+          "Microsoft.Azure.Management.DataFactory.DataFactoryManagementClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "b13ffc5e-11b3-400c-bc3a-5287c9859e68"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "13941"
+        ],
+        "x-ms-correlation-request-id": [
+          "ba7b237c-623d-4158-949e-1b505676ba57"
+        ],
+        "x-ms-routing-request-id": [
+          "JAPANEAST:20170915T055647Z:ba7b237c-623d-4158-949e-1b505676ba57"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Sep 2017 05:56:47 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNThlY2I1YzItOTA2OS00ZGUwLTllNTEtMzgwZDY5YmUzMjI4L3Jlc291cmNlR3JvdXBzL29uZXNkazU1MjIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhRmFjdG9yeS9mYWN0b3JpZXMvb25lc2RrMjk1L2ludGVncmF0aW9uUnVudGltZXMvbWFuYWdlZC1kZWRpY2F0ZWQtdGVzdC1pci9zdGFydC9vcGVyYXRpb25yZXN1bHRzLzEyNWY3YTYzYjAwMTRhYzI4N2FmZWJkNDc2ZGYyNDU0P2FwaS12ZXJzaW9uPTIwMTctMDktMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2555.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16290",
+          "Microsoft.Azure.Management.DataFactory.DataFactoryManagementClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "12c3fb10-e4bf-4900-b4fa-5b38b89af0db"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "13933"
+        ],
+        "x-ms-correlation-request-id": [
+          "90409195-7923-46bf-9114-6f37fa401578"
+        ],
+        "x-ms-routing-request-id": [
+          "JAPANEAST:20170915T055718Z:90409195-7923-46bf-9114-6f37fa401578"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Sep 2017 05:57:17 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNThlY2I1YzItOTA2OS00ZGUwLTllNTEtMzgwZDY5YmUzMjI4L3Jlc291cmNlR3JvdXBzL29uZXNkazU1MjIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhRmFjdG9yeS9mYWN0b3JpZXMvb25lc2RrMjk1L2ludGVncmF0aW9uUnVudGltZXMvbWFuYWdlZC1kZWRpY2F0ZWQtdGVzdC1pci9zdGFydC9vcGVyYXRpb25yZXN1bHRzLzEyNWY3YTYzYjAwMTRhYzI4N2FmZWJkNDc2ZGYyNDU0P2FwaS12ZXJzaW9uPTIwMTctMDktMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2555.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16290",
+          "Microsoft.Azure.Management.DataFactory.DataFactoryManagementClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "93e6a76e-dbdc-4c40-913b-16fc488d3ef5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "13925"
+        ],
+        "x-ms-correlation-request-id": [
+          "96d3fe0f-034f-40fc-a38b-820b9fe48398"
+        ],
+        "x-ms-routing-request-id": [
+          "JAPANEAST:20170915T055748Z:96d3fe0f-034f-40fc-a38b-820b9fe48398"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Sep 2017 05:57:47 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNThlY2I1YzItOTA2OS00ZGUwLTllNTEtMzgwZDY5YmUzMjI4L3Jlc291cmNlR3JvdXBzL29uZXNkazU1MjIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhRmFjdG9yeS9mYWN0b3JpZXMvb25lc2RrMjk1L2ludGVncmF0aW9uUnVudGltZXMvbWFuYWdlZC1kZWRpY2F0ZWQtdGVzdC1pci9zdGFydC9vcGVyYXRpb25yZXN1bHRzLzEyNWY3YTYzYjAwMTRhYzI4N2FmZWJkNDc2ZGYyNDU0P2FwaS12ZXJzaW9uPTIwMTctMDktMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2555.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16290",
+          "Microsoft.Azure.Management.DataFactory.DataFactoryManagementClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "163ac346-d4f8-4628-b0b6-ebfe0c5e1f7d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "13907"
+        ],
+        "x-ms-correlation-request-id": [
+          "54b92e25-fa8f-4b76-9198-576ab6eb6819"
+        ],
+        "x-ms-routing-request-id": [
+          "JAPANEAST:20170915T055818Z:54b92e25-fa8f-4b76-9198-576ab6eb6819"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Sep 2017 05:58:18 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNThlY2I1YzItOTA2OS00ZGUwLTllNTEtMzgwZDY5YmUzMjI4L3Jlc291cmNlR3JvdXBzL29uZXNkazU1MjIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhRmFjdG9yeS9mYWN0b3JpZXMvb25lc2RrMjk1L2ludGVncmF0aW9uUnVudGltZXMvbWFuYWdlZC1kZWRpY2F0ZWQtdGVzdC1pci9zdGFydC9vcGVyYXRpb25yZXN1bHRzLzEyNWY3YTYzYjAwMTRhYzI4N2FmZWJkNDc2ZGYyNDU0P2FwaS12ZXJzaW9uPTIwMTctMDktMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2555.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16290",
+          "Microsoft.Azure.Management.DataFactory.DataFactoryManagementClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "01dae15b-b0c4-476c-984b-92f757541c1b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "13886"
+        ],
+        "x-ms-correlation-request-id": [
+          "d5841c60-9220-43b9-aaf8-66aacd8e7b05"
+        ],
+        "x-ms-routing-request-id": [
+          "JAPANEAST:20170915T055849Z:d5841c60-9220-43b9-aaf8-66aacd8e7b05"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Sep 2017 05:58:49 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNThlY2I1YzItOTA2OS00ZGUwLTllNTEtMzgwZDY5YmUzMjI4L3Jlc291cmNlR3JvdXBzL29uZXNkazU1MjIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhRmFjdG9yeS9mYWN0b3JpZXMvb25lc2RrMjk1L2ludGVncmF0aW9uUnVudGltZXMvbWFuYWdlZC1kZWRpY2F0ZWQtdGVzdC1pci9zdGFydC9vcGVyYXRpb25yZXN1bHRzLzEyNWY3YTYzYjAwMTRhYzI4N2FmZWJkNDc2ZGYyNDU0P2FwaS12ZXJzaW9uPTIwMTctMDktMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2555.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16290",
+          "Microsoft.Azure.Management.DataFactory.DataFactoryManagementClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "eecb915c-b075-4dfe-a40a-fbd6b146597e"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "13879"
+        ],
+        "x-ms-correlation-request-id": [
+          "a72d7b85-16c4-4662-a44e-ed88bff97553"
+        ],
+        "x-ms-routing-request-id": [
+          "JAPANEAST:20170915T055919Z:a72d7b85-16c4-4662-a44e-ed88bff97553"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Sep 2017 05:59:18 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNThlY2I1YzItOTA2OS00ZGUwLTllNTEtMzgwZDY5YmUzMjI4L3Jlc291cmNlR3JvdXBzL29uZXNkazU1MjIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhRmFjdG9yeS9mYWN0b3JpZXMvb25lc2RrMjk1L2ludGVncmF0aW9uUnVudGltZXMvbWFuYWdlZC1kZWRpY2F0ZWQtdGVzdC1pci9zdGFydC9vcGVyYXRpb25yZXN1bHRzLzEyNWY3YTYzYjAwMTRhYzI4N2FmZWJkNDc2ZGYyNDU0P2FwaS12ZXJzaW9uPTIwMTctMDktMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2555.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16290",
+          "Microsoft.Azure.Management.DataFactory.DataFactoryManagementClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "268e1084-7d83-4e65-abcd-b24d07a0ff29"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "13869"
+        ],
+        "x-ms-correlation-request-id": [
+          "b9e9af6c-1c1a-42c2-a81b-9c14a422775d"
+        ],
+        "x-ms-routing-request-id": [
+          "JAPANEAST:20170915T055950Z:b9e9af6c-1c1a-42c2-a81b-9c14a422775d"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Sep 2017 05:59:49 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNThlY2I1YzItOTA2OS00ZGUwLTllNTEtMzgwZDY5YmUzMjI4L3Jlc291cmNlR3JvdXBzL29uZXNkazU1MjIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhRmFjdG9yeS9mYWN0b3JpZXMvb25lc2RrMjk1L2ludGVncmF0aW9uUnVudGltZXMvbWFuYWdlZC1kZWRpY2F0ZWQtdGVzdC1pci9zdGFydC9vcGVyYXRpb25yZXN1bHRzLzEyNWY3YTYzYjAwMTRhYzI4N2FmZWJkNDc2ZGYyNDU0P2FwaS12ZXJzaW9uPTIwMTctMDktMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2555.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16290",
+          "Microsoft.Azure.Management.DataFactory.DataFactoryManagementClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "12f668a9-da91-4cf8-bbe4-462efb752175"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "13931"
+        ],
+        "x-ms-correlation-request-id": [
+          "47b85ed4-7856-4630-aa09-fcaa7c15f5eb"
+        ],
+        "x-ms-routing-request-id": [
+          "JAPANEAST:20170915T060020Z:47b85ed4-7856-4630-aa09-fcaa7c15f5eb"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Sep 2017 06:00:20 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNThlY2I1YzItOTA2OS00ZGUwLTllNTEtMzgwZDY5YmUzMjI4L3Jlc291cmNlR3JvdXBzL29uZXNkazU1MjIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhRmFjdG9yeS9mYWN0b3JpZXMvb25lc2RrMjk1L2ludGVncmF0aW9uUnVudGltZXMvbWFuYWdlZC1kZWRpY2F0ZWQtdGVzdC1pci9zdGFydC9vcGVyYXRpb25yZXN1bHRzLzEyNWY3YTYzYjAwMTRhYzI4N2FmZWJkNDc2ZGYyNDU0P2FwaS12ZXJzaW9uPTIwMTctMDktMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2555.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16290",
+          "Microsoft.Azure.Management.DataFactory.DataFactoryManagementClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "4f706aa1-3b9a-465a-bc39-40eb2a2c74b7"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "13914"
+        ],
+        "x-ms-correlation-request-id": [
+          "8ccb174b-4b42-41c4-93c0-3e03e0f4eb60"
+        ],
+        "x-ms-routing-request-id": [
+          "JAPANEAST:20170915T060051Z:8ccb174b-4b42-41c4-93c0-3e03e0f4eb60"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Sep 2017 06:00:50 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNThlY2I1YzItOTA2OS00ZGUwLTllNTEtMzgwZDY5YmUzMjI4L3Jlc291cmNlR3JvdXBzL29uZXNkazU1MjIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhRmFjdG9yeS9mYWN0b3JpZXMvb25lc2RrMjk1L2ludGVncmF0aW9uUnVudGltZXMvbWFuYWdlZC1kZWRpY2F0ZWQtdGVzdC1pci9zdGFydC9vcGVyYXRpb25yZXN1bHRzLzEyNWY3YTYzYjAwMTRhYzI4N2FmZWJkNDc2ZGYyNDU0P2FwaS12ZXJzaW9uPTIwMTctMDktMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2555.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16290",
+          "Microsoft.Azure.Management.DataFactory.DataFactoryManagementClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "9a5fdfd4-93b7-4054-afba-106f37fd086b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "13905"
+        ],
+        "x-ms-correlation-request-id": [
+          "6fda40af-77ce-4b59-b2c5-b79c1e79ab43"
+        ],
+        "x-ms-routing-request-id": [
+          "JAPANEAST:20170915T060121Z:6fda40af-77ce-4b59-b2c5-b79c1e79ab43"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Sep 2017 06:01:20 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNThlY2I1YzItOTA2OS00ZGUwLTllNTEtMzgwZDY5YmUzMjI4L3Jlc291cmNlR3JvdXBzL29uZXNkazU1MjIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhRmFjdG9yeS9mYWN0b3JpZXMvb25lc2RrMjk1L2ludGVncmF0aW9uUnVudGltZXMvbWFuYWdlZC1kZWRpY2F0ZWQtdGVzdC1pci9zdGFydC9vcGVyYXRpb25yZXN1bHRzLzEyNWY3YTYzYjAwMTRhYzI4N2FmZWJkNDc2ZGYyNDU0P2FwaS12ZXJzaW9uPTIwMTctMDktMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2555.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16290",
+          "Microsoft.Azure.Management.DataFactory.DataFactoryManagementClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "fbc4bba1-6aa8-4200-9f00-afc5e36a06ad"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "13893"
+        ],
+        "x-ms-correlation-request-id": [
+          "255a6ebf-e3a6-4637-89c4-f7d405b22025"
+        ],
+        "x-ms-routing-request-id": [
+          "JAPANEAST:20170915T060151Z:255a6ebf-e3a6-4637-89c4-f7d405b22025"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Sep 2017 06:01:51 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNThlY2I1YzItOTA2OS00ZGUwLTllNTEtMzgwZDY5YmUzMjI4L3Jlc291cmNlR3JvdXBzL29uZXNkazU1MjIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhRmFjdG9yeS9mYWN0b3JpZXMvb25lc2RrMjk1L2ludGVncmF0aW9uUnVudGltZXMvbWFuYWdlZC1kZWRpY2F0ZWQtdGVzdC1pci9zdGFydC9vcGVyYXRpb25yZXN1bHRzLzEyNWY3YTYzYjAwMTRhYzI4N2FmZWJkNDc2ZGYyNDU0P2FwaS12ZXJzaW9uPTIwMTctMDktMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2555.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16290",
+          "Microsoft.Azure.Management.DataFactory.DataFactoryManagementClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "806a66c1-17d9-4f5b-b290-6f764bc8986c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "13888"
+        ],
+        "x-ms-correlation-request-id": [
+          "a6d7518f-0f4f-4e63-a320-73e2f21df067"
+        ],
+        "x-ms-routing-request-id": [
+          "JAPANEAST:20170915T060222Z:a6d7518f-0f4f-4e63-a320-73e2f21df067"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Sep 2017 06:02:22 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNThlY2I1YzItOTA2OS00ZGUwLTllNTEtMzgwZDY5YmUzMjI4L3Jlc291cmNlR3JvdXBzL29uZXNkazU1MjIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhRmFjdG9yeS9mYWN0b3JpZXMvb25lc2RrMjk1L2ludGVncmF0aW9uUnVudGltZXMvbWFuYWdlZC1kZWRpY2F0ZWQtdGVzdC1pci9zdGFydC9vcGVyYXRpb25yZXN1bHRzLzEyNWY3YTYzYjAwMTRhYzI4N2FmZWJkNDc2ZGYyNDU0P2FwaS12ZXJzaW9uPTIwMTctMDktMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2555.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16290",
+          "Microsoft.Azure.Management.DataFactory.DataFactoryManagementClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "ec4567d1-9af3-4b86-a018-7d567d261c02"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "13875"
+        ],
+        "x-ms-correlation-request-id": [
+          "5ea84550-0620-4a03-a282-11ac0bb33fa5"
+        ],
+        "x-ms-routing-request-id": [
+          "JAPANEAST:20170915T060252Z:5ea84550-0620-4a03-a282-11ac0bb33fa5"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Sep 2017 06:02:51 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNThlY2I1YzItOTA2OS00ZGUwLTllNTEtMzgwZDY5YmUzMjI4L3Jlc291cmNlR3JvdXBzL29uZXNkazU1MjIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhRmFjdG9yeS9mYWN0b3JpZXMvb25lc2RrMjk1L2ludGVncmF0aW9uUnVudGltZXMvbWFuYWdlZC1kZWRpY2F0ZWQtdGVzdC1pci9zdGFydC9vcGVyYXRpb25yZXN1bHRzLzEyNWY3YTYzYjAwMTRhYzI4N2FmZWJkNDc2ZGYyNDU0P2FwaS12ZXJzaW9uPTIwMTctMDktMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2555.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16290",
+          "Microsoft.Azure.Management.DataFactory.DataFactoryManagementClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "8a36aab2-4ccf-4e90-bfd8-fa49a9065f11"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "13867"
+        ],
+        "x-ms-correlation-request-id": [
+          "b422d45d-eb63-4159-9839-1bca03363d43"
+        ],
+        "x-ms-routing-request-id": [
+          "JAPANEAST:20170915T060322Z:b422d45d-eb63-4159-9839-1bca03363d43"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Sep 2017 06:03:22 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/start/operationresults/125f7a63b0014ac287afebd476df2454?api-version=2017-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNThlY2I1YzItOTA2OS00ZGUwLTllNTEtMzgwZDY5YmUzMjI4L3Jlc291cmNlR3JvdXBzL29uZXNkazU1MjIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhRmFjdG9yeS9mYWN0b3JpZXMvb25lc2RrMjk1L2ludGVncmF0aW9uUnVudGltZXMvbWFuYWdlZC1kZWRpY2F0ZWQtdGVzdC1pci9zdGFydC9vcGVyYXRpb25yZXN1bHRzLzEyNWY3YTYzYjAwMTRhYzI4N2FmZWJkNDc2ZGYyNDU0P2FwaS12ZXJzaW9uPTIwMTctMDktMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2555.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16290",
+          "Microsoft.Azure.Management.DataFactory.DataFactoryManagementClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"managed-dedicated-test-ir\",\r\n  \"properties\": {\r\n    \"dataFactoryName\": \"onesdk295\",\r\n    \"state\": \"Started\",\r\n    \"iRType\": \"Managed\",\r\n    \"type\": \"Managed\",\r\n    \"dataFactoryLocation\": null,\r\n    \"resourceUri\": null,\r\n    \"typeProperties\": {\r\n      \"nodes\": [\r\n        {\r\n          \"nodeId\": \"tvm-3657382398_1-20170915t054808z\",\r\n          \"status\": \"Unavailable\",\r\n          \"errors\": [\r\n            {\r\n              \"time\": \"2017-09-15T06:03:29.3651478Z\",\r\n              \"code\": \"AzureSqlConnectionFailure\",\r\n              \"parameters\": [],\r\n              \"message\": \"Sql Error Number: 18456\"\r\n            }\r\n          ]\r\n        }\r\n      ],\r\n      \"otherErrors\": [],\r\n      \"state\": \"Started\",\r\n      \"createTime\": \"2017-09-15T05:45:04.6456922Z\"\r\n    }\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "497"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "9040c33a-c983-498d-abc3-1e8f5d7012de"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "13766"
+        ],
+        "x-ms-correlation-request-id": [
+          "efffd222-39df-40ad-bed0-04cdb01b51b3"
+        ],
+        "x-ms-routing-request-id": [
+          "JAPANEAST:20170915T060354Z:efffd222-39df-40ad-bed0-04cdb01b51b3"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Sep 2017 06:03:53 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes?api-version=2017-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNThlY2I1YzItOTA2OS00ZGUwLTllNTEtMzgwZDY5YmUzMjI4L3Jlc291cmNlR3JvdXBzL29uZXNkazU1MjIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhRmFjdG9yeS9mYWN0b3JpZXMvb25lc2RrMjk1L2ludGVncmF0aW9uUnVudGltZXM/YXBpLXZlcnNpb249MjAxNy0wOS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "f8f2ac4b-f6f0-4e7c-b81a-f12a2d37f90d"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2555.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16290",
+          "Microsoft.Azure.Management.DataFactory.DataFactoryManagementClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationruntimes/managed-dedicated-test-ir\",\r\n      \"name\": \"managed-dedicated-test-ir\",\r\n      \"properties\": {\r\n        \"type\": \"Managed\",\r\n        \"typeProperties\": {\r\n          \"computeProperties\": {\r\n            \"location\": \"East US\",\r\n            \"nodeSize\": \"Standard_A4_v2\",\r\n            \"numberOfNodes\": 1,\r\n            \"maxParallelExecutionsPerNode\": 1\r\n          },\r\n          \"ssisProperties\": {\r\n            \"catalogInfo\": {\r\n              \"catalogServerEndpoint\": \"yandongtestsvr.database.windows.net\",\r\n              \"catalogAdminUserName\": \"yanzhang\",\r\n              \"catalogAdminPassword\": {\r\n                \"type\": \"SecureString\",\r\n                \"value\": \"**********\"\r\n              },\r\n              \"catalogPricingTier\": \"S1\"\r\n            }\r\n          }\r\n        },\r\n        \"description\": \"Managed dedicated integration runtime\",\r\n        \"state\": \"Started\"\r\n      },\r\n      \"etag\": \"01002216-0000-0000-0000-59bb6d330000\"\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "747"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "5ea52ae2-020c-40be-b3b5-8934a8f0965d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "13765"
+        ],
+        "x-ms-correlation-request-id": [
+          "8b3891db-c4fd-46b9-9faa-3d7abf6914f3"
+        ],
+        "x-ms-routing-request-id": [
+          "JAPANEAST:20170915T060354Z:8b3891db-c4fd-46b9-9faa-3d7abf6914f3"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Sep 2017 06:03:53 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/stop?api-version=2017-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNThlY2I1YzItOTA2OS00ZGUwLTllNTEtMzgwZDY5YmUzMjI4L3Jlc291cmNlR3JvdXBzL29uZXNkazU1MjIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhRmFjdG9yeS9mYWN0b3JpZXMvb25lc2RrMjk1L2ludGVncmF0aW9uUnVudGltZXMvbWFuYWdlZC1kZWRpY2F0ZWQtdGVzdC1pci9zdG9wP2FwaS12ZXJzaW9uPTIwMTctMDktMDEtcHJldmlldw==",
+      "RequestMethod": "POST",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "3ed177eb-4bfc-4c50-b564-e338c39d1d88"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2555.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16290",
+          "Microsoft.Azure.Management.DataFactory.DataFactoryManagementClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "fbadd322-36e0-407d-8f6f-8d95c4b8516a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1191"
+        ],
+        "x-ms-correlation-request-id": [
+          "b7e99745-4722-42a9-ac97-f38df4718a7f"
+        ],
+        "x-ms-routing-request-id": [
+          "JAPANEAST:20170915T060357Z:b7e99745-4722-42a9-ac97-f38df4718a7f"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Sep 2017 06:03:56 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/stop/operationresults/4d14277ce99f48fcb753b05b118fa4bf?api-version=2017-09-01-preview"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/stop/operationresults/4d14277ce99f48fcb753b05b118fa4bf?api-version=2017-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNThlY2I1YzItOTA2OS00ZGUwLTllNTEtMzgwZDY5YmUzMjI4L3Jlc291cmNlR3JvdXBzL29uZXNkazU1MjIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhRmFjdG9yeS9mYWN0b3JpZXMvb25lc2RrMjk1L2ludGVncmF0aW9uUnVudGltZXMvbWFuYWdlZC1kZWRpY2F0ZWQtdGVzdC1pci9zdG9wL29wZXJhdGlvbnJlc3VsdHMvNGQxNDI3N2NlOTlmNDhmY2I3NTNiMDViMTE4ZmE0YmY/YXBpLXZlcnNpb249MjAxNy0wOS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2555.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16290",
+          "Microsoft.Azure.Management.DataFactory.DataFactoryManagementClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "ebd6a397-79c9-43b3-ab0f-d8f71b645349"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "13754"
+        ],
+        "x-ms-correlation-request-id": [
+          "0e185d74-101e-48e7-8232-243b16cdc9d5"
+        ],
+        "x-ms-routing-request-id": [
+          "JAPANEAST:20170915T060428Z:0e185d74-101e-48e7-8232-243b16cdc9d5"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Sep 2017 06:04:27 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/stop/operationresults/4d14277ce99f48fcb753b05b118fa4bf?api-version=2017-09-01-preview"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir/stop/operationresults/4d14277ce99f48fcb753b05b118fa4bf?api-version=2017-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNThlY2I1YzItOTA2OS00ZGUwLTllNTEtMzgwZDY5YmUzMjI4L3Jlc291cmNlR3JvdXBzL29uZXNkazU1MjIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhRmFjdG9yeS9mYWN0b3JpZXMvb25lc2RrMjk1L2ludGVncmF0aW9uUnVudGltZXMvbWFuYWdlZC1kZWRpY2F0ZWQtdGVzdC1pci9zdG9wL29wZXJhdGlvbnJlc3VsdHMvNGQxNDI3N2NlOTlmNDhmY2I3NTNiMDViMTE4ZmE0YmY/YXBpLXZlcnNpb249MjAxNy0wOS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2555.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16290",
+          "Microsoft.Azure.Management.DataFactory.DataFactoryManagementClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "null",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "4"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "210a7772-399d-49d9-9b9e-e436d13ee8fc"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "13742"
+        ],
+        "x-ms-correlation-request-id": [
+          "3774a954-6f98-4042-810d-780f8be0a7e9"
+        ],
+        "x-ms-routing-request-id": [
+          "JAPANEAST:20170915T060458Z:3774a954-6f98-4042-810d-780f8be0a7e9"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Sep 2017 06:04:58 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295/integrationRuntimes/managed-dedicated-test-ir?api-version=2017-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNThlY2I1YzItOTA2OS00ZGUwLTllNTEtMzgwZDY5YmUzMjI4L3Jlc291cmNlR3JvdXBzL29uZXNkazU1MjIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhRmFjdG9yeS9mYWN0b3JpZXMvb25lc2RrMjk1L2ludGVncmF0aW9uUnVudGltZXMvbWFuYWdlZC1kZWRpY2F0ZWQtdGVzdC1pcj9hcGktdmVyc2lvbj0yMDE3LTA5LTAxLXByZXZpZXc=",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "75df396b-af75-4cfd-b205-ab2491af2a91"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2555.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16290",
+          "Microsoft.Azure.Management.DataFactory.DataFactoryManagementClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "68992f9b-a827-4272-9c0d-08d53d03f68f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1190"
+        ],
+        "x-ms-correlation-request-id": [
+          "4779634c-e7d9-4a68-9b1a-653d9c6344d2"
+        ],
+        "x-ms-routing-request-id": [
+          "JAPANEAST:20170915T060459Z:4779634c-e7d9-4a68-9b1a-653d9c6344d2"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Sep 2017 06:04:58 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/58ecb5c2-9069-4de0-9e51-380d69be3228/resourceGroups/onesdk5522/providers/Microsoft.DataFactory/factories/onesdk295?api-version=2017-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNThlY2I1YzItOTA2OS00ZGUwLTllNTEtMzgwZDY5YmUzMjI4L3Jlc291cmNlR3JvdXBzL29uZXNkazU1MjIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhRmFjdG9yeS9mYWN0b3JpZXMvb25lc2RrMjk1P2FwaS12ZXJzaW9uPTIwMTctMDktMDEtcHJldmlldw==",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "8a254d4b-e14c-4d5a-927f-5d3ff33a7e3e"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2555.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16290",
+          "Microsoft.Azure.Management.DataFactory.DataFactoryManagementClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "23b5bd58-9e4f-4ac3-8ea0-37b612af8505"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1189"
+        ],
+        "x-ms-correlation-request-id": [
+          "264b1a54-5975-453e-9f3b-345ae54258df"
+        ],
+        "x-ms-routing-request-id": [
+          "JAPANEAST:20170915T060503Z:264b1a54-5975-453e-9f3b-345ae54258df"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Sep 2017 06:05:02 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {
+    "Test-ManagedDedicated-IntegrationRuntime": [
+      "onesdk295",
+      "onesdk5522"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "58ecb5c2-9069-4de0-9e51-380d69be3228"
+  }
+}
