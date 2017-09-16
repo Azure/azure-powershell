@@ -431,6 +431,28 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         }
 
         /// <summary>
+        /// Checks if collection has more than one element
+        /// </summary>
+        /// <typeparam name="T">Type of the collection.</typeparam>
+        /// <param name="collection">Collection.</param>
+        /// <returns></returns>
+        public static bool HasMoreThanOneElement<T>(ICollection<T> collection)
+        {
+            return collection != null && collection.Count > 1;
+        }
+
+        /// <summary>
+        /// Checks if collection has only one element
+        /// </summary>
+        /// <typeparam name="T">Type of the collection.</typeparam>
+        /// <param name="collection">Collection.</param>
+        /// <returns></returns>
+        public static bool HasSingleElement<T>(ICollection<T> collection)
+        {
+            return collection != null && collection.Count == 1;
+        }
+
+        /// <summary>
         /// Clear the current storage account from the context - guarantees that only one storage account will be active 
         /// at a time.
         /// </summary>

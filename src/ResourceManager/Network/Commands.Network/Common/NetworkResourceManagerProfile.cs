@@ -20,7 +20,8 @@ namespace Microsoft.Azure.Commands.Network
     using System.Collections.Generic;
     using CNM = Microsoft.Azure.Commands.Network.Models;
     using MNM = Microsoft.Azure.Management.Network.Models;
-    
+    using Microsoft.WindowsAzure.Commands.Utilities.Common;
+
     public class NetworkResourceManagerProfile : Profile
     {
         public override string ProfileName
@@ -68,14 +69,13 @@ namespace Microsoft.Azure.Commands.Network
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.IPAddressAvailabilityResult, CNM.PSIPAddressAvailabilityResult>();
-
+                
                 // Avaliable endpoint services
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSEndpointServiceResult, MNM.EndpointServiceResult>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.EndpointServiceResult, CNM.PSEndpointServiceResult>();
-
 
                 // VirtualNetwork Peering
                 cfg.CreateMap<CNM.PSVirtualNetworkPeering, MNM.VirtualNetworkPeering>();
@@ -274,10 +274,58 @@ namespace Microsoft.Azure.Commands.Network
 
                 // NetworkSecrityRule
                 // CNM to MNM
-                cfg.CreateMap<CNM.PSSecurityRule, MNM.SecurityRule>();
+                cfg.CreateMap<CNM.PSSecurityRule, MNM.SecurityRule>()
+                    .AfterMap((src, dest) =>
+                    {
+                        if (GeneralUtilities.HasSingleElement(src.SourcePortRange))
+                        {
+                            dest.SourcePortRange = src.SourcePortRange[0];
+                        }
+                        else
+                        {
+                            dest.SourcePortRanges = src.SourcePortRange;
+                            dest.SourcePortRange = null;
+                        }
 
-                // MNM to CNM
-                cfg.CreateMap<MNM.SecurityRule, CNM.PSSecurityRule>();
+                        if (GeneralUtilities.HasSingleElement(src.DestinationPortRange))
+                        {
+                            dest.DestinationPortRange = src.DestinationPortRange[0];
+                        }
+                        else
+                        {
+                            dest.DestinationPortRanges = src.DestinationPortRange;
+                            dest.DestinationPortRange = null;
+                        }
+
+                        if (GeneralUtilities.HasSingleElement(src.SourceAddressPrefix))
+                        {
+                            dest.SourceAddressPrefix = src.SourceAddressPrefix[0];
+                        }
+                        else
+                        {
+                            dest.SourceAddressPrefixes = src.SourceAddressPrefix;
+                            dest.SourceAddressPrefix = null;
+                        }
+
+                        if (GeneralUtilities.HasSingleElement(src.DestinationAddressPrefix))
+                        {
+                            dest.DestinationAddressPrefix = src.DestinationAddressPrefix[0];
+                        }
+                        else
+                        {
+                            dest.DestinationAddressPrefixes = src.DestinationAddressPrefix;
+                            dest.DestinationAddressPrefix = null;
+                        }
+                    });
+
+                cfg.CreateMap<MNM.SecurityRule, CNM.PSSecurityRule>()
+                    .AfterMap((src, dest) =>
+                    {
+                        dest.SourcePortRange = GeneralUtilities.HasMoreThanOneElement(src.SourcePortRanges) ? src.SourcePortRanges : (!string.IsNullOrWhiteSpace(src.SourcePortRange) ? new List<string> { src.SourcePortRange } : new List<string>());
+                        dest.DestinationPortRange = GeneralUtilities.HasMoreThanOneElement(src.DestinationPortRanges) ? src.DestinationPortRanges : (!string.IsNullOrWhiteSpace(src.DestinationPortRange) ? new List <string> { src.DestinationPortRange } : new List<string>());
+                        dest.SourceAddressPrefix = GeneralUtilities.HasMoreThanOneElement(src.SourceAddressPrefixes) ? src.SourceAddressPrefixes : (!string.IsNullOrWhiteSpace(src.SourceAddressPrefix)? new List<string> { src.SourceAddressPrefix } : new List<string>());
+                        dest.DestinationAddressPrefix = GeneralUtilities.HasMoreThanOneElement(src.DestinationAddressPrefixes) ? src.DestinationAddressPrefixes : (!string.IsNullOrWhiteSpace(src.DestinationAddressPrefix) ? new List<string> { src.DestinationAddressPrefix } : new List<string>());
+                    });
 
                 // RouteTable
                 // CNM to MNM
@@ -304,12 +352,61 @@ namespace Microsoft.Azure.Commands.Network
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSEffectiveNetworkSecurityGroup, MNM.EffectiveNetworkSecurityGroup>();
                 cfg.CreateMap<CNM.PSEffectiveNetworkSecurityGroupAssociation, MNM.EffectiveNetworkSecurityGroupAssociation>();
-                cfg.CreateMap<CNM.PSEffectiveSecurityRule, MNM.EffectiveNetworkSecurityRule>();
+                cfg.CreateMap<CNM.PSEffectiveSecurityRule, MNM.EffectiveNetworkSecurityRule>()
+                    .AfterMap((src, dest) =>
+                     {
+                         if (GeneralUtilities.HasSingleElement(src.SourcePortRange))
+                         {
+                             dest.SourcePortRange = src.SourcePortRange[0];
+                         }
+                         else
+                         {
+                             dest.SourcePortRanges = src.SourcePortRange;
+                             dest.SourcePortRange = null;
+                         }
 
+                         if (GeneralUtilities.HasSingleElement(src.DestinationPortRange))
+                         {
+                             dest.DestinationPortRange = src.DestinationPortRange[0];
+                         }
+                         else
+                         {
+                             dest.DestinationPortRanges = src.DestinationPortRange;
+                             dest.DestinationPortRange = null;
+                         }
+
+                         if (GeneralUtilities.HasSingleElement(src.SourceAddressPrefix))
+                         {
+                             dest.SourceAddressPrefix = src.SourceAddressPrefix[0];
+                         }
+                         else
+                         {
+                             dest.SourceAddressPrefixes = src.SourceAddressPrefix;
+                             dest.SourceAddressPrefix = null;
+                         }
+
+                         if (GeneralUtilities.HasSingleElement(src.DestinationAddressPrefix))
+                         {
+                             dest.DestinationAddressPrefix = src.DestinationAddressPrefix[0];
+                         }
+                         else
+                         {
+                             dest.DestinationAddressPrefixes = src.DestinationAddressPrefix;
+                             dest.DestinationAddressPrefix = null;
+                         }
+                     });
+                
                 // MNM to CNM
                 cfg.CreateMap<MNM.EffectiveNetworkSecurityGroup, CNM.PSEffectiveNetworkSecurityGroup>();
                 cfg.CreateMap<MNM.EffectiveNetworkSecurityGroupAssociation, CNM.PSEffectiveNetworkSecurityGroupAssociation>();
-                cfg.CreateMap<MNM.EffectiveNetworkSecurityRule, CNM.PSEffectiveSecurityRule>();
+                cfg.CreateMap<MNM.EffectiveNetworkSecurityRule, CNM.PSEffectiveSecurityRule>()
+                    .AfterMap((src, dest) =>
+                    {
+                        dest.SourcePortRange = GeneralUtilities.HasMoreThanOneElement(src.SourcePortRanges) ? src.SourcePortRanges : (!string.IsNullOrWhiteSpace(src.SourcePortRange) ? new List<string> { src.SourcePortRange } : new List<string>());
+                        dest.DestinationPortRange = GeneralUtilities.HasMoreThanOneElement(src.DestinationPortRanges) ? src.DestinationPortRanges : (!string.IsNullOrWhiteSpace(src.DestinationPortRange) ? new List<string> { src.DestinationPortRange } : new List<string>());
+                        dest.SourceAddressPrefix = GeneralUtilities.HasMoreThanOneElement(src.SourceAddressPrefixes) ? src.SourceAddressPrefixes : (!string.IsNullOrWhiteSpace(src.SourceAddressPrefix) ? new List<string> { src.SourceAddressPrefix } : new List<string>());
+                        dest.DestinationAddressPrefix = GeneralUtilities.HasMoreThanOneElement(src.DestinationAddressPrefixes) ? src.DestinationAddressPrefixes : (!string.IsNullOrWhiteSpace(src.DestinationAddressPrefix) ? new List<string> { src.DestinationAddressPrefix } : new List<string>());
+                    });
 
                 // ExpressRouteCircuit
                 // CNM to MNM
