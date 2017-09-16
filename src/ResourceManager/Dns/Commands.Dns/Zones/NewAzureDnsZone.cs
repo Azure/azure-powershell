@@ -43,13 +43,13 @@ namespace Microsoft.Azure.Commands.Dns
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of virtual networks able to resolve records in this DNS zone, only available for private zones.", ParameterSetName = "Fields")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of virtual networks able to resolve records in this DNS zone, only available for private zones.")]
         [ValidateNotNull]
-        public List<string> ResolutionVirtualNetworkIds { get; set; }
+        public List<string> ResolutionVirtualNetworkId { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of virtual networks that will register VM hostnames records in this DNS zone, only available for private zones.", ParameterSetName = "Fields")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of virtual networks that will register VM hostnames records in this DNS zone, only available for private zones.")]
         [ValidateNotNull]
-        public List<string> RegistrationVirtualNetworkIds { get; set; }
+        public List<string> RegistrationVirtualNetworkId { get; set; }
 
 
         public override void ExecuteCmdlet()
@@ -72,8 +72,8 @@ namespace Microsoft.Azure.Commands.Dns
                     this.ResourceGroupName,
                     this.Tag,
                     this.ZoneType != null ? this.ZoneType.Value : Management.Dns.Models.ZoneType.Public,
-                    this.RegistrationVirtualNetworkIds,
-                    this.ResolutionVirtualNetworkIds);
+                    this.RegistrationVirtualNetworkId,
+                    this.ResolutionVirtualNetworkId);
                 this.WriteVerbose(ProjectResources.Success);
                 this.WriteVerbose(string.Format(ProjectResources.Success_NewZone, this.Name, this.ResourceGroupName));
                 this.WriteObject(result);

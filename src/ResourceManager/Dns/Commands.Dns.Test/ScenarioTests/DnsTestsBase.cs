@@ -39,25 +39,19 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
     {
         private LegacyTest.CSMTestEnvironmentFactory csmTestFactory;
 
-
         private readonly EnvironmentSetupHelper helper;
-
-
+ 
         public ResourceManagementClient ResourceManagementClient { get; private set; }
 
         public SubscriptionClient SubscriptionClient { get; private set; }
 
-
         public GalleryClient GalleryClient { get; private set; }
 
-
         public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
-
 
         public DnsManagementClient DnsClient { get; private set; }
 
         public NetworkManagementClient NetworkManagementClient { get; private set; }
-
 
         public static DnsTestsBase NewInstance
         {
@@ -67,12 +61,10 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
             }
         }
 
-
         protected DnsTestsBase()
         {
             this.helper = new EnvironmentSetupHelper();
         }
-
 
         protected void SetupManagementClients(MockContext context) 
         {
@@ -156,6 +148,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
                     helper.RMProfileModule,
                     helper.RMResourceModule,
                     helper.GetRMModulePath("AzureRM.Dns.psd1"),
+                    helper.GetRMModulePath("AzureRM.Network.psd1"),
                     "AzureRM.Resources.ps1");
 
                 try
