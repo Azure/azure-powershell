@@ -75,26 +75,5 @@ namespace Microsoft.Azure.Commands.Insights
                 }
             }
         }
-
-        public static string GetResourceGroupFromId(string resourceId)
-        {
-            const string resourceGroup = "resourceGroups";
-
-            var startIndex = resourceId.IndexOf(resourceGroup, StringComparison.OrdinalIgnoreCase) + resourceGroup.Length + 1;
-            var endIndex = resourceId.IndexOf("/", startIndex, StringComparison.OrdinalIgnoreCase);
-
-            return resourceId.Substring(startIndex, endIndex - startIndex);
-        }
-
-        public static string GetResourceNameFromId(string resourceId)
-        {
-            if (string.IsNullOrWhiteSpace(resourceId))
-            {
-                return null;
-            }
-
-            var parts = resourceId.Split('/');
-            return parts.LastOrDefault();
-        }
     }
 }

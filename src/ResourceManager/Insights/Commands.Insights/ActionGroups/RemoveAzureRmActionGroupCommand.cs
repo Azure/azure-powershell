@@ -21,6 +21,8 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
 {
     using System;
 
+    using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+
     /// <summary>
     /// Gets an Azure Action Group.
     /// </summary>
@@ -77,8 +79,9 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
                 }
                 else if (ParameterSetName == ByResourceId)
                 {
-                    this.ResourceGroupName = Utilities.GetResourceGroupFromId(this.ResourceId);
-                    this.Name = Utilities.GetResourceNameFromId(this.ResourceId);
+                    ResourceIdentifier resourceId = new ResourceIdentifier(this.ResourceId);
+                    this.ResourceGroupName = resourceId.ResourceGroupName;
+                    this.Name = resourceId.ResourceName;
                 }
 
                 var result =

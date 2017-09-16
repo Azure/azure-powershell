@@ -23,6 +23,7 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
     using System.Collections;
     using System.Linq;
 
+    using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
     using Microsoft.Azure.Management.Monitor.Management;
 
     /// <summary>
@@ -118,8 +119,9 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
                 }
                 else if (ParameterSetName == ByResourceId)
                 {
-                    this.ResourceGroupName = Utilities.GetResourceGroupFromId(this.ResourceId);
-                    this.Name = Utilities.GetResourceNameFromId(this.ResourceId);
+                    ResourceIdentifier resourceId = new ResourceIdentifier(this.ResourceId);
+                    this.ResourceGroupName = resourceId.ResourceGroupName;
+                    this.Name = resourceId.ResourceName;
                 }
 
                 IList<EmailReceiver> emailReceivers =

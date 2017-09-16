@@ -19,8 +19,6 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Insights.ActionGroups
 {
-    using System;
-
     /// <summary>
     /// Create an ActionGroup receiver
     /// </summary>
@@ -45,7 +43,7 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
         /// <summary>
         /// Gets or sets email receiver SwitchParameter
         /// </summary>
-        [Parameter(ParameterSetName = NewEmailReceiver, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Create a email receiver")]
+        [Parameter(ParameterSetName = NewEmailReceiver, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Create a email receiver")]
         public SwitchParameter EmailReceiver { get; set; }
 
         /// <summary>
@@ -58,7 +56,7 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
         /// <summary>
         /// Gets or sets sms receiver SwitchParameter
         /// </summary>
-        [Parameter(ParameterSetName = NewSmsReceiver, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Create a sms receiver")]
+        [Parameter(ParameterSetName = NewSmsReceiver, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Create a sms receiver")]
         public SwitchParameter SmsReceiver { get; set; }
 
         /// <summary>
@@ -78,7 +76,7 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
         /// <summary>
         /// Gets or sets webhook receiver SwitchParameter
         /// </summary>
-        [Parameter(ParameterSetName = NewWebhookReceiver, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Create a webhook receiver")]
+        [Parameter(ParameterSetName = NewWebhookReceiver, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Create a webhook receiver")]
         public SwitchParameter WebhookReceiver { get; set; }
 
         /// <summary>
@@ -96,15 +94,15 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
         public override void ExecuteCmdlet()
         {
             PSActionGroupReceiverBase receiverBase = null;
-            if (this.EmailReceiver.IsPresent)
+            if (this.ParameterSetName == NewEmailReceiver)
             {
                 receiverBase = new PSEmailReceiver { Name = Name, EmailAddress = EmailAddress };
             }
-            else if (this.SmsReceiver.IsPresent)
+            else if (this.ParameterSetName == NewSmsReceiver)
             {
                 receiverBase = new PSSmsReceiver { Name = Name, CountryCode = CountryCode, PhoneNumber = PhoneNumber };
             }
-            else if (this.WebhookReceiver.IsPresent)
+            else if (this.ParameterSetName == NewWebhookReceiver)
             {
                 receiverBase = new PSWebhookReceiver { Name = Name, ServiceUri = ServiceUri };
             }
