@@ -36,11 +36,13 @@ namespace Microsoft.Azure.Management.Internal.Network.Version2017_03_01.Models
         /// that is applied.</param>
         /// <param name="effectiveSecurityRules">A collection of effective
         /// security rules.</param>
-        public EffectiveNetworkSecurityGroup(SubResource networkSecurityGroup = default(SubResource), EffectiveNetworkSecurityGroupAssociation association = default(EffectiveNetworkSecurityGroupAssociation), IList<EffectiveNetworkSecurityRule> effectiveSecurityRules = default(IList<EffectiveNetworkSecurityRule>))
+        /// <param name="tagMap">Tag map.</param>
+        public EffectiveNetworkSecurityGroup(SubResource networkSecurityGroup = default(SubResource), EffectiveNetworkSecurityGroupAssociation association = default(EffectiveNetworkSecurityGroupAssociation), IList<EffectiveNetworkSecurityRule> effectiveSecurityRules = default(IList<EffectiveNetworkSecurityRule>), IDictionary<string, List<string>> tagMap = default(IDictionary<string, List<string>>))
         {
             NetworkSecurityGroup = networkSecurityGroup;
             Association = association;
             EffectiveSecurityRules = effectiveSecurityRules;
+            TagMap = tagMap;
             CustomInit();
         }
 
@@ -66,5 +68,10 @@ namespace Microsoft.Azure.Management.Internal.Network.Version2017_03_01.Models
         [JsonProperty(PropertyName = "effectiveSecurityRules")]
         public IList<EffectiveNetworkSecurityRule> EffectiveSecurityRules { get; set; }
 
+        /// <summary>
+        /// Gets or sets the tag map.
+        /// </summary>
+        [JsonProperty(PropertyName = "tagMap")]
+        public IDictionary<string, List<string>> TagMap { get; set; }
     }
 }
