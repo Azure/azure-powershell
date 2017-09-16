@@ -19,6 +19,8 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
     using System.Collections.Generic;
     using System.Linq;
 
+    using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+
     /// <summary>
     /// Wraps around an Action Group.
     /// </summary>
@@ -73,7 +75,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
                 type: actionGroupResource.Type,
                 tags: actionGroupResource.Tags)
         {
-            this.ResourceGroupName = Utilities.GetResourceGroupFromId(actionGroupResource.Id);
+            this.ResourceGroupName = new ResourceIdentifier(actionGroupResource.Id).ResourceGroupName;
             GroupShortName = actionGroupResource.GroupShortName;
             Enabled = actionGroupResource.Enabled;
             EmailReceivers = actionGroupResource.EmailReceivers?.Select(o => new PSEmailReceiver(o)).ToList();

@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActionGroups
 
     using Microsoft.Azure.Commands.Insights.OutputClasses;
     using Microsoft.Azure.Management.Monitor.Management.Models;
+    using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
     public class NewAzureRmActionGroupReceiverTests
     {
@@ -44,6 +45,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActionGroups
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewAzureRmReceiverCommandEmailParametersProcessing()
         {
+            Cmdlet.SetParameterSet("NewEmailReceiver");
             Cmdlet.EmailReceiver = true;
             Cmdlet.Name = "email1";
             Cmdlet.EmailAddress = "foo@email.com";
@@ -63,6 +65,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActionGroups
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewAzureRmReceiverCommandSmsParametersProcessing()
         {
+            Cmdlet.SetParameterSet("NewSmsReceiver");
             Cmdlet.SmsReceiver = true;
             Cmdlet.Name = "sms1";
             Cmdlet.CountryCode = "1";
@@ -84,6 +87,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActionGroups
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewAzureRmReceiverCommandWebhookParametersProcessing()
         {
+            Cmdlet.SetParameterSet("NewWebhookReceiver");
             Cmdlet.WebhookReceiver = true;
             Cmdlet.Name = "webhook1";
             Cmdlet.ServiceUri = "http://test.com";
