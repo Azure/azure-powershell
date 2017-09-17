@@ -15,9 +15,12 @@ Sets the goal state for a network security rule configuration.
 
 ```
 Set-AzureRmNetworkSecurityRuleConfig -Name <String> -NetworkSecurityGroup <PSNetworkSecurityGroup>
- [-Description <String>] [-Protocol <String>] [-SourcePortRange <String>] [-DestinationPortRange <String>]
- [-SourceAddressPrefix <String>] [-DestinationAddressPrefix <String>] [-Access <String>] [-Priority <Int32>]
- [-Direction <String>] [<CommonParameters>]
+ [-Description <String>] [-Protocol <String>]
+ [-SourcePortRange <System.Collections.Generic.List`1[System.String]>]
+ [-DestinationPortRange <System.Collections.Generic.List`1[System.String]>]
+ [-SourceAddressPrefix <System.Collections.Generic.List`1[System.String]>]
+ [-DestinationAddressPrefix <System.Collections.Generic.List`1[System.String]>] [-Access <String>]
+ [-Priority <Int32>] [-Direction <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -84,7 +87,7 @@ The acceptable values for this parameter are:
 You can use tags such as VirtualNetwork, AzureLoadBalancer, and Internet.
 
 ```yaml
-Type: String
+Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
 Aliases: 
 
@@ -104,7 +107,7 @@ The acceptable values for this parameter are:
 - A wildcard character (*) to match any port
 
 ```yaml
-Type: String
+Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
 Aliases: 
 
@@ -213,7 +216,7 @@ The acceptable values for this parameter are:
 You can also use tags such as VirtualNetwork, AzureLoadBalancer and Internet.
 
 ```yaml
-Type: String
+Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
 Aliases: 
 
@@ -233,7 +236,7 @@ The acceptable values for this parameter are:
 - A wildcard character (*) to match any port
 
 ```yaml
-Type: String
+Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
 Aliases: 
 
