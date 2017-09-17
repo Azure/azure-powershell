@@ -34,6 +34,9 @@
 * Added support for IkeV2 P2S
     - Updated New-AzureRmVirtualNetworkGateway: Added optional parameter -VpnClientProtocol, defaults to [ "SSTP", "IkeV2" ]
     - Updated Set-AzureRmVirtualNetworkGateway: Added optional parameter -VpnClientProtocol
+* Added new commands for VpnDeviceConfiguration Scripts
+    - Get-AzureRmVirtualNetworkGatewaySupportedVpnDevices
+    - Get-AzureRmVirtualNetworkGatewayConnectionVpnDeviceConfigScript
 	
 ## Version 4.3.1
 
