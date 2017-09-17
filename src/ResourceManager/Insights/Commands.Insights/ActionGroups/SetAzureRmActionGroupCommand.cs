@@ -59,6 +59,7 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
         /// </summary>
         [Parameter(ParameterSetName = ByPropertyName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The action group short name")]
         [Parameter(ParameterSetName = ByResourceId, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The action group short name")]
+        [Parameter(ParameterSetName = ByInputObject, Mandatory = false, HelpMessage = "The action group short name")]
         [ValidateNotNullOrEmpty]
         public string ShortName { get; set; }
 
@@ -74,13 +75,15 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
         /// </summary>
         [Parameter(ParameterSetName = ByPropertyName, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Whether or not the action group should be enabled")]
         [Parameter(ParameterSetName = ByResourceId, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Whether or not the action group should be enabled")]
+        [Parameter(ParameterSetName = ByInputObject, Mandatory = false, HelpMessage = "Whether or not the action group should be enabled")]
         public SwitchParameter DisableGroup { get; set; }
 
         /// <summary>
         /// Gets or sets the Tags of the activity log alert resource
         /// </summary>
         [Parameter(ParameterSetName = ByPropertyName, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The tags of the action group resource")]
-        [Parameter(ParameterSetName = ByResourceId, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Whether or not the action group should be enabled")]
+        [Parameter(ParameterSetName = ByResourceId, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The tags of the action group resource")]
+        [Parameter(ParameterSetName = ByInputObject, Mandatory = false, ValueFromPipeline = true, HelpMessage = "The tags of the action group resource")]
         [ValidateNotNullOrEmpty]
         public IDictionary<string, string> Tag { get; set; }
 
@@ -109,9 +112,18 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
                 if (ParameterSetName == ByInputObject)
                 {
                     this.ResourceGroupName = this.InputObject.ResourceGroupName;
-                    this.ShortName = this.InputObject.GroupShortName;
-                    this.DisableGroup = !this.InputObject.Enabled;
-                    this.Tag = this.InputObject.Tags;
+                    if (this.ShortName == null)
+                    {
+                        this.ShortName = this.InputObject.GroupShortName;
+                    }
+                    if (!this.DisableGroup.IsPresent)
+                    {
+                        this.DisableGroup = !this.InputObject.Enabled;
+                    }
+                    if (this.Tag == null)
+                    {
+                        this.Tag = this.InputObject.Tags;
+                    }
                     this.Receiver = new List<PSActionGroupReceiverBase>();
                     this.Receiver.AddRange(this.InputObject.EmailReceivers);
                     this.Receiver.AddRange(this.InputObject.SmsReceivers);
