@@ -13,7 +13,8 @@ Gets an application security group.
 ## SYNTAX
 
 ```
-Get-AzureRmApplicationSecurityGroup [-ResourceGroupName <String>] [-Name <String>] [<CommonParameters>]
+Get-AzureRmApplicationSecurityGroup [-ResourceGroupName <String>] [-Name <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,6 +30,19 @@ PS C:\> Get-AzureRmApplicationSecurityGroup -Name "MyApplicationSecurityGroup" -
 The command above returns the application security group named as `MyApplicationSecurityGroup` that belongs to the resource group `MyResourceGroup`.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 The resource name.

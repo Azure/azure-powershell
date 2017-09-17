@@ -16,21 +16,28 @@ Adds a network security rule configuration to a network security group.
 ### SetByResource (Default)
 ```
 Add-AzureRmNetworkSecurityRuleConfig -Name <String> -NetworkSecurityGroup <PSNetworkSecurityGroup>
- [-Description <String>] [-Protocol <String>] [-SourcePortRange <String>] [-DestinationPortRange <String>]
- [-SourceAddressPrefix <String>] [-DestinationAddressPrefix <String>]
+ [-Description <String>] [-Protocol <String>]
+ [-SourcePortRange <System.Collections.Generic.List`1[System.String]>]
+ [-DestinationPortRange <System.Collections.Generic.List`1[System.String]>]
+ [-SourceAddressPrefix <System.Collections.Generic.List`1[System.String]>]
+ [-DestinationAddressPrefix <System.Collections.Generic.List`1[System.String]>]
  [-SourceApplicationSecurityGroup <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationSecurityGroup]>]
  [-DestinationApplicationSecurityGroup <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationSecurityGroup]>]
- [-Access <String>] [-Priority <Int32>] [-Direction <String>] [<CommonParameters>]
+ [-Access <String>] [-Priority <Int32>] [-Direction <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### SetByResourceId
 ```
 Add-AzureRmNetworkSecurityRuleConfig -Name <String> -NetworkSecurityGroup <PSNetworkSecurityGroup>
- [-Description <String>] [-Protocol <String>] [-SourcePortRange <String>] [-DestinationPortRange <String>]
- [-SourceAddressPrefix <String>] [-DestinationAddressPrefix <String>]
+ [-Description <String>] [-Protocol <String>]
+ [-SourcePortRange <System.Collections.Generic.List`1[System.String]>]
+ [-DestinationPortRange <System.Collections.Generic.List`1[System.String]>]
+ [-SourceAddressPrefix <System.Collections.Generic.List`1[System.String]>]
+ [-DestinationAddressPrefix <System.Collections.Generic.List`1[System.String]>]
  [-SourceApplicationSecurityGroupId <System.Collections.Generic.List`1[System.String]>]
  [-DestinationApplicationSecurityGroupId <System.Collections.Generic.List`1[System.String]>] [-Access <String>]
- [-Priority <Int32>] [-Direction <String>] [<CommonParameters>]
+ [-Priority <Int32>] [-Direction <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -68,6 +75,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Description
 Specifies a description of a network security rule configuration.
 
@@ -94,7 +114,7 @@ The acceptable values for this parameter are:
 You can use tags such as VirtualNetwork, AzureLoadBalancer, and Internet.
 
 ```yaml
-Type: String
+Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
 Aliases: 
 
@@ -140,7 +160,7 @@ The acceptable values for this parameter are:
 - A wildcard character (*) to match any port
 
 ```yaml
-Type: String
+Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
 Aliases: 
 
@@ -250,7 +270,7 @@ The acceptable values for this parameter are:
 You can also use tags such as VirtualNetwork, AzureLoadBalancer and Internet.
 
 ```yaml
-Type: String
+Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
 Aliases: 
 
@@ -292,7 +312,7 @@ Specifies a source port or range.
 This value is expressed as an integer, as a range between 0 and 65535, or as a wildcard character (*) to match any source port.
 
 ```yaml
-Type: String
+Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
 Aliases: 
 

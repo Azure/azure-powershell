@@ -48,25 +48,25 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "Source Port Range rule")]
         [ValidateNotNullOrEmpty]
-        public string SourcePortRange { get; set; }
+        public List<string> SourcePortRange { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "Destination Port Range rule")]
         [ValidateNotNullOrEmpty]
-        public string DestinationPortRange { get; set; }
+        public List<string> DestinationPortRange { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "Source Address Prefix  rule")]
         [ValidateNotNullOrEmpty]
-        public string SourceAddressPrefix { get; set; }
+        public List<string> SourceAddressPrefix { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "Destination Address Prefix rule")]
         [ValidateNotNullOrEmpty]
-        public string DestinationAddressPrefix { get; set; }
+        public List<string> DestinationAddressPrefix { get; set; }
 
         [Parameter(
             Mandatory = false,

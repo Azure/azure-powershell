@@ -17,6 +17,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+    using System.Collections.Generic;
 
     public class PSSecurityRule : PSChildResource
     {
@@ -27,16 +28,16 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string Protocol { get; set; }
 
         [JsonProperty(Order = 1)]
-        public string SourcePortRange { get; set; }
+        public IList<string> SourcePortRange { get; set; }
 
         [JsonProperty(Order = 1)]
-        public string DestinationPortRange { get; set; }
+        public IList<string> DestinationPortRange { get; set; }
 
         [JsonProperty(Order = 1)]
-        public string SourceAddressPrefix { get; set; }
+        public IList<string> SourceAddressPrefix { get; set; }
 
         [JsonProperty(Order = 1)]
-        public string DestinationAddressPrefix { get; set; }
+        public IList<string> DestinationAddressPrefix { get; set; }
 
         [JsonProperty(Order = 1)]
         public string Access { get; set; }
