@@ -14,7 +14,8 @@ Creates an application security group.
 
 ```
 New-AzureRmApplicationSecurityGroup -ResourceGroupName <String> -Name <String> -Location <String>
- [-Tag <Hashtable>] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable>] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,6 +31,19 @@ PS C:\> New-AzureRmPublicIpAddress -ResourceGroupName "MyResourceGroup" -Name "M
 This example creates an application security group with no associations. Once it is created, IP configurations in the network interface can be included in the group. Security rules may refer to the group as its source or destination. 
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Force
 Do not ask for confirmation if you want to overwrite a resource

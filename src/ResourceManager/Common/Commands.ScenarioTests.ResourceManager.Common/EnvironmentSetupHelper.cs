@@ -65,7 +65,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             TestExecutionHelpers.SetUpSessionAndProfile();
             var datastore = new MemoryDataStore();
             AzureSession.Instance.DataStore = datastore;
-            var rmprofile = new AzureRmProfile(Path.Combine(AzureSession.Instance.ARMProfileDirectory, AzureSession.Instance.ARMProfileFile));
+            var rmprofile = new AzureRmProfile(Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.ProfileFile));
             rmprofile.EnvironmentTable.Add("foo", new AzureEnvironment(AzureEnvironment.PublicEnvironments.Values.FirstOrDefault()));
             rmprofile.DefaultContext = new AzureContext(new AzureSubscription(), new AzureAccount(), rmprofile.EnvironmentTable["foo"], new AzureTenant());
             rmprofile.DefaultContext.Subscription.SetEnvironment("foo");
@@ -132,6 +132,15 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             {
                 return Path.Combine(this.PackageDirectory,
                                      @"Storage\Azure.Storage\Azure.Storage.psd1");
+            }
+        }
+
+        public string RMNetworkModule
+        {
+            get
+            {
+                return Path.Combine(this.PackageDirectory,
+                                     @"ResourceManager\AzureResourceManager\AzureRM.Network\AzureRM.Network.psd1");
             }
         }
 
@@ -256,12 +265,12 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         private void SetAuthenticationFactory(AzureModule mode, TestEnvironment environment)
         {
 #if !NETSTANDARD
-            if(environment.AuthorizationContext.Certificate != null)
+            if (environment.AuthorizationContext.Certificate != null)
             {
                 AzureSession.Instance.AuthenticationFactory = new MockCertificateAuthenticationFactory(environment.UserName,
                     environment.AuthorizationContext.Certificate);
             }
-            else if(environment.AuthorizationContext.TokenCredentials.ContainsKey(TokenAudience.Management))
+            else if (environment.AuthorizationContext.TokenCredentials.ContainsKey(TokenAudience.Management))
             {
                 var httpMessage = new HttpRequestMessage();
                 environment.AuthorizationContext.TokenCredentials[TokenAudience.Management]
