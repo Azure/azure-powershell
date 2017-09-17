@@ -46,22 +46,22 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ArgumentException("Rule with the specified name already exists");
             }
 
-            if (!string.IsNullOrWhiteSpace(this.SourceAddressPrefix) && (this.SourceApplicationSecurityGroup != null))
+            if ((this.SourceAddressPrefix != null) && (this.SourceAddressPrefix.Count > 0) && (this.SourceApplicationSecurityGroup != null) && (this.SourceApplicationSecurityGroup.Count > 0))
             {
                 throw new ArgumentException($"{nameof(SourceAddressPrefix)} and {nameof(SourceApplicationSecurityGroup)} cannot be used simultaneously.");
             }
 
-            if (!string.IsNullOrWhiteSpace(this.SourceAddressPrefix) && (this.SourceApplicationSecurityGroupId != null))
+            if ((this.SourceAddressPrefix != null) && (this.SourceAddressPrefix.Count > 0) && (this.SourceApplicationSecurityGroupId != null) && (this.SourceApplicationSecurityGroupId.Count > 0))
             {
                 throw new ArgumentException($"{nameof(SourceAddressPrefix)} and {nameof(SourceApplicationSecurityGroupId)} cannot be used simultaneously.");
             }
 
-            if (!string.IsNullOrWhiteSpace(this.DestinationAddressPrefix) && (this.DestinationApplicationSecurityGroup != null))
+            if ((this.DestinationAddressPrefix != null) && (this.DestinationAddressPrefix.Count > 0) && (this.DestinationApplicationSecurityGroup != null) && (this.DestinationApplicationSecurityGroup.Count > 0))
             {
                 throw new ArgumentException($"{nameof(DestinationAddressPrefix)} and {nameof(DestinationApplicationSecurityGroup)} cannot be used simultaneously.");
             }
 
-            if (!string.IsNullOrWhiteSpace(this.DestinationAddressPrefix) && (this.DestinationApplicationSecurityGroupId != null))
+            if ((this.DestinationAddressPrefix != null) && (this.DestinationAddressPrefix.Count > 0) && (this.DestinationApplicationSecurityGroupId != null) && (this.DestinationApplicationSecurityGroupId.Count > 0))
             {
                 throw new ArgumentException($"{nameof(DestinationAddressPrefix)} and {nameof(DestinationApplicationSecurityGroupId)} cannot be used simultaneously.");
             }
