@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Models\DnsClient.cs" />
     <Compile Include="Models\DnsBaseCmdlet.cs" />
+    <Compile Include="Models\DnsHelpers.cs" />
     <Compile Include="Models\DnsRecordSet.cs" />
     <Compile Include="Models\DnsZone.cs" />
     <Compile Include="Records\GetAzureDnsRescordSet.cs" />
@@ -91,7 +92,7 @@
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.Dns, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Dns.1.7.2-preview\lib\net45\Microsoft.Azure.Management.Dns.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Dns.1.11.0-preview\lib\net452\Microsoft.Azure.Management.Dns.dll</HintPath>
     </Reference>
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">

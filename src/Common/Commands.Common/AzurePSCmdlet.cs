@@ -522,6 +522,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
             try
             {
+                _metricHelper.SetPSHost(this.Host);
                 _metricHelper.LogQoSEvent(_qosEvent, IsUsageMetricEnabled, IsErrorMetricEnabled);
                 _metricHelper.FlushMetric();
                 WriteDebug("Finish sending metric.");
