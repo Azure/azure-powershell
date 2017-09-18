@@ -220,11 +220,11 @@ function Test-RaValidateInputParameters ($cmdName)
     Assert-Throws { &$cmdName -Scope $scope -ObjectId $groups[0].Id.Guid -RoleDefinitionName $definitionName } $invalidScope
     
     # Check if ResourceType is valid
-    Assert-AreEqual $resource.ResourceType "Microsoft.KeyVault/vaults"
-    
+    Assert-AreEqual $resource.ResourceType "Microsoft.ServiceBus/namespaces"
+    $subscription = Get-AzureRmSubscription | Select-Object -Last 1 -Wait
     # Below invalid resource type should not return 'Not supported api version'.
     $resource.ResourceType = "Microsoft.KeyVault/"
-    $invalidResourceType = "Scope '/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/zzzzlastgroupzz/providers/Microsoft.KeyVault/zzzzlastgroupzz' should have even number of parts."
+    $invalidResourceType = "Scope '/subscriptions/"+$subscription.Id+"/resourceGroups/"+$resource.ResourceGroupName+"/providers/Microsoft.KeyVault/"+$resource.ResourceGroupName+"' should have even number of parts."
     Assert-Throws { &$cmdName `
                         -ObjectId $groups[0].Id.Guid `
                         -RoleDefinitionName $definitionName `
@@ -240,7 +240,7 @@ Tests verifies creation and deletion of a RoleAssignments for Service principal 
 function Test-RaByServicePrincipal
 {
     # Setup
-    $definitionName = 'Reader'
+    $definitionName = 'Contributor'
     $servicePrincipals = Get-AzureRmADServicePrincipal | Select-Object -Last 1 -Wait
     $subscription = Get-AzureRmSubscription
     $resourceGroups = Get-AzureRmResourceGroup | Select-Object -Last 1 -Wait
