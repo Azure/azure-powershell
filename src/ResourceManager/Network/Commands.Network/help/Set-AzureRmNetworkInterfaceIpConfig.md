@@ -61,6 +61,26 @@ The first two commands get a virtual network called myvnet and a subnet called m
     configuration ipconfig1 to 10.0.0.11. Finally, the last command updates the network interface ensuring the changes
     have been made successfully.
     
+### 2: Associating an IP configuration with an applicaiton security groupp
+```
+$vnet = Get-AzureRmVirtualNetwork -Name myvnet -ResourceGroupName myrg
+$subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name mysubnet -VirtualNetwork $vnet
+$asg = Get-ApplicationSecurityGroup -Name myasg -ResourceGroupName myrg
+
+$nic = Get-AzureRmNetworkInterface -Name nic1 -ResourceGroupName myrg
+
+$nic | Set-AzureRmNetworkInterfaceIpConfig -Name ipconfig1 -PrivateIpAddress 10.0.0.11 -Subnet $subnet -ApplicationSecurityGroup $asg
+    -Primary
+
+$nic | Set-AzureRmNetworkInterface
+```
+
+In this example, the variable $asg contains a reference to an application security group.
+    The fourth command gets the network interface nic1 associated with the IP
+    configuration that needs to be updated. The Set-AzureRmNetworkInterfaceIpConfig sets the private IP address of the primary IP
+    configuration ipconfig1 to 10.0.0.11 and creates an association with the retrieved application security group.
+    Finally, the last command updates the network interface ensuring the changes
+    have been made successfully.
 
 ## PARAMETERS
 
@@ -95,7 +115,9 @@ Accept wildcard characters: False
 ```
 
 ### -ApplicationSecurityGroup
-PSApplicationSecurityGroup```yaml
+Specifies a collection of application security group references to which this network interface IP configuration belongs.
+
+```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationSecurityGroup]
 Parameter Sets: SetByResource
 Aliases: 
@@ -108,7 +130,9 @@ Accept wildcard characters: False
 ```
 
 ### -ApplicationSecurityGroupId
-ApplicationSecurityGroupId```yaml
+Specifies a collection of application security group references to which this network interface IP configuration belongs.
+
+```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: SetByResourceId
 Aliases: 
@@ -121,7 +145,9 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.```yaml
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
 Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential

@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Network.Automation
     {
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The resource group name of application security group.",
+            HelpMessage = "The resource group name of the application security group.",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }

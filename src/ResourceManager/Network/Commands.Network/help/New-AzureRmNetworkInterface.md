@@ -122,7 +122,9 @@ Accept wildcard characters: False
 ```
 
 ### -ApplicationSecurityGroup
-ApplicationSecurityGroup```yaml
+Specifies a collection of application security group references to which the network interface IP configuration should belong to.
+
+```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationSecurityGroup]
 Parameter Sets: SetByResource
 Aliases: 
@@ -135,7 +137,9 @@ Accept wildcard characters: False
 ```
 
 ### -ApplicationSecurityGroupId
-ApplicationSecurityGroupId```yaml
+Specifies a collection of application security group references to which the network interface IP configuration should belong to.
+
+```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: SetByResourceId
 Aliases: 
@@ -148,7 +152,9 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.```yaml
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
 Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential

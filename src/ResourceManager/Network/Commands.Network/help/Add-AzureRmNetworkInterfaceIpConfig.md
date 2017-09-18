@@ -42,10 +42,21 @@ The **Add-AzureRmNetworkInterfaceIpConfig** cmdlet adds a network interface IP c
 
 ## EXAMPLES
 
-### 1:
+### Example 1: Add a new IP configuration with an application security group
+```
+$subnet = New-AzureRmVirtualNetworkSubnetConfig -Name MySubnet -AddressPrefix 10.0.1.0/24
+$vnet = New-AzureRmvirtualNetwork -Name MyVNET -ResourceGroupName MyResourceGroup -Location "West US" -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+
+$nic = New-AzureRmNetworkInterface -Name MyNetworkInterface -ResourceGroupName MyResourceGroup -Location "West US"  -Subnet $vnet.Subnets[0]
+
+$asg = New-AzureRmApplicationSecurityGroup -ResourceGroupName MyResourceGroup -Name MyASG -Location "West US"
+
+$nic | Set-AzureRmNetworkInterfaceIpConfig -Name $nic.IpConfigurations[0].Name -Subnet $vnet.Subnets[0] -ApplicationSecurityGroup $asg | Set-AzureRmNetworkInterface
+
+$nic | Add-AzureRmNetworkInterfaceIpConfig -Name MyNewIpConfig -Subnet $vnet.Subnets[0] -ApplicationSecurityGroup $asg  | Set-AzureRmNetworkInterface
 ```
 
-```
+In this example, we create a new network interface MyNetworkInterface that belongs to a subnet in the new virtual network MyVNET. We also create an empty application security group MyASG to associate with the IP configurations in the network interface. Once both objects are created, we link the default IP configuration to the MyASG object. At last, we create a new IP configuration in the network interface also linked to the application security group object.
 
 ## PARAMETERS
 
@@ -80,7 +91,9 @@ Accept wildcard characters: False
 ```
 
 ### -ApplicationSecurityGroup
-PSApplicationSecurityGroup```yaml
+Specifies a collection of application security group references to which this network interface IP configuration belongs.
+
+```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationSecurityGroup]
 Parameter Sets: SetByResource
 Aliases: 
@@ -93,7 +106,9 @@ Accept wildcard characters: False
 ```
 
 ### -ApplicationSecurityGroupId
-ApplicationSecurityGroupId```yaml
+Specifies a collection of application security group references to which this network interface IP configuration belongs.
+
+```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: SetByResourceId
 Aliases: 
@@ -106,7 +121,9 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.```yaml
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
 Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
