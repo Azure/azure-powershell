@@ -32,11 +32,15 @@ Perform these operations in the following order:
 ### Example 1: Create a data factory
 ```
 PS C:\> Set-AzureRmDataFactoryV2 -ResourceGroupName "ADF" -Name "WikiADF" -Location "WestUS"
-          DataFactoryName   : WikiADF
-          ResourceGroupName : ADF
-          Location          : WestUS
-          Tags              : {}
-          Properties        : Microsoft.WindowsAzure.Commands.Utilities.PSDataFactoryConfiguration
+
+    DataFactoryName   : WikiADF
+    DataFactoryId     : /subscriptions/3e8e61b5-9a7d-4952-bfae-545ab997b9ea/resourceGroups/adf/providers/Microsoft.DataFactory/factories/wikiadf
+    ResourceGroupName : ADF
+    Location          : EastUS
+    Tags              : {}
+    Identity          : Microsoft.Azure.Management.DataFactory.Models.FactoryIdentity
+    ProvisioningState : Succeeded
+
 ```
 
 This command creates a data factory named WikiADF in the resource group named ADF in the WestUS location.
@@ -162,7 +166,6 @@ System.Collections.Hashtable
 Keywords: azure, azurerm, arm, resource, management, manager, data, factories
 
 ## RELATED LINKS
-
 [Get-AzureRmDataFactoryV2]()
 
 [Remove-AzureRmDataFactoryV2]()

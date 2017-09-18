@@ -35,13 +35,6 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestManagedDedicatedIntegrationRuntime()
-        {
-            RunPowerShellTest("Test-ManagedDedicated-IntegrationRuntime");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManagedElasticIntegrationRuntime()
         {
             RunPowerShellTest("Test-ManagedElastic-IntegrationRuntime");

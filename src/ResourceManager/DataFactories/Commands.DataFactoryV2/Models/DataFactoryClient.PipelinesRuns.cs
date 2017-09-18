@@ -124,7 +124,6 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                     activityRunFilter.PipelineRunId,
                     activityRunFilter.RunStartedAfter,
                     activityRunFilter.RunStartedBefore,
-                    activityRunFilter.PipelineName, 
                     activityRunFilter.Status,
                     activityRunFilter.ActivityName,
                     activityRunFilter.LinkedServiceName);

@@ -32,43 +32,36 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         public string PipelineRunId { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.ByFactoryObject, Position = 2, Mandatory = true,
-            HelpMessage = Constants.HelpPipelineName)]
-        [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 3, Mandatory = true,
-            HelpMessage = Constants.HelpPipelineName)]
-        [ValidateNotNullOrEmpty]
-        public string PipelineName { get; set; }
-
-        [Parameter(ParameterSetName = ParameterSetNames.ByFactoryObject, Position = 3, Mandatory = true,
             HelpMessage = Constants.HelpRunStartedAfter)]
-        [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 4, Mandatory = true,
+        [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 3, Mandatory = true,
             HelpMessage = Constants.HelpRunStartedAfter)]
         [ValidateNotNullOrEmpty]
         public DateTime RunStartedAfter { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.ByFactoryObject, Position = 4, Mandatory = true,
+        [Parameter(ParameterSetName = ParameterSetNames.ByFactoryObject, Position = 3, Mandatory = true,
             HelpMessage = Constants.HelpRunStartedBefore)]
-        [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 5, Mandatory = true,
+        [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 4, Mandatory = true,
             HelpMessage = Constants.HelpRunStartedBefore)]
         [ValidateNotNullOrEmpty]
         public DateTime RunStartedBefore { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.ByFactoryObject, Position = 5, Mandatory = false,
+        [Parameter(ParameterSetName = ParameterSetNames.ByFactoryObject, Position = 4, Mandatory = false,
             HelpMessage = Constants.HelpActivityName)]
-        [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 6, Mandatory = false,
+        [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 5, Mandatory = false,
             HelpMessage = Constants.HelpActivityName)]
         [ValidateNotNullOrEmpty]
         public string ActivityName { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.ByFactoryObject, Position = 6, Mandatory = false,
+        [Parameter(ParameterSetName = ParameterSetNames.ByFactoryObject, Position = 5, Mandatory = false,
             HelpMessage = Constants.HelpRunStatus)]
-        [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 7, Mandatory = false,
+        [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 6, Mandatory = false,
             HelpMessage = Constants.HelpRunStatus)]
         [ValidateNotNullOrEmpty]
         public string Status { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.ByFactoryObject, Position = 7, Mandatory = false,
+        [Parameter(ParameterSetName = ParameterSetNames.ByFactoryObject, Position = 6, Mandatory = false,
             HelpMessage = Constants.HelpLinkedServiceName)]
-        [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 8, Mandatory = false,
+        [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 7, Mandatory = false,
             HelpMessage = Constants.HelpLinkedServiceName)]
         [ValidateNotNullOrEmpty]
         public string LinkedServiceName { get; set; }
@@ -86,7 +79,6 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 ResourceGroupName = ResourceGroupName,
                 DataFactoryName = DataFactoryName,
                 PipelineRunId = PipelineRunId,
-                PipelineName = PipelineName,
                 RunStartedAfter = RunStartedAfter,
                 RunStartedBefore = RunStartedBefore,
                 ActivityName = ActivityName,

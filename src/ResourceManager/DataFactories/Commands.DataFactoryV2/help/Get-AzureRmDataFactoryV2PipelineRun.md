@@ -8,13 +8,14 @@ schema: 2.0.0
 # Get-AzureRmDataFactoryV2PipelineRun
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets information about pipeline runs.
 
 ## SYNTAX
 
-### ByFactoryName (Default)
+### ByFactoryNameByRunId (Default)
 ```
-Get-AzureRmDataFactoryV2PipelineRun
+Get-AzureRmDataFactoryV2PipelineRun [-ResourceGroupName] <String> [-DataFactoryName] <String>
+ [-PipelineRunId] <String>
 ```
 
 ### ByFactoryObjectByRunId
@@ -28,12 +29,6 @@ Get-AzureRmDataFactoryV2PipelineRun [-DataFactory] <PSDataFactory> [-LastUpdated
  [-LastUpdatedBefore] <DateTime> [[-PipelineName] <String>]
 ```
 
-### ByFactoryNameByRunId
-```
-Get-AzureRmDataFactoryV2PipelineRun [-ResourceGroupName] <String> [-DataFactoryName] <String>
- [-PipelineRunId] <String>
-```
-
 ### ByFactoryNameByPipeline
 ```
 Get-AzureRmDataFactoryV2PipelineRun [-ResourceGroupName] <String> [-DataFactoryName] <String>
@@ -41,16 +36,30 @@ Get-AzureRmDataFactoryV2PipelineRun [-ResourceGroupName] <String> [-DataFactoryN
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Get-AzureRmDataFactoryV2PipelineRun** command returns information about runs for the specified pipeline. If PipelineRunId is specified it will show details for the run with that ID. If the PipelineRunId is not specified then it will show information about all runs for the specified pipeline that happened between the values of LastUpdatedAfter and LastUpdatedBefore.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Get information for a pipline run
 ```
-PS C:\> Get-AzureRmDataFactoryV2PipelineRun
+PS C:\> Get-AzureRmDataFactoryV2PipelineRun -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -PipelineRunId "61eb095a-fe23-4591-8a97-fade6c65ca72"
+
+    ResourceGroupName : ADF
+    DataFactoryName   : WikiADF
+    RunId             : 61eb095a-fe23-4591-8a97-fade6c65ca72
+    PipelineName      : DPWikisample
+    LastUpdated       : 9/14/2017 12:21:02 AM
+    Parameters        : {[url, http://adfsamplewebapi.azurewebsites.net/api/execute/sample]}
+    RunStart          : 9/14/2017 12:20:54 AM
+    RunEnd            : 9/14/2017 12:21:02 AM
+    DurationInMs      : 8246
+    Status            : Succeeded
+    Message           :
+
 ```
 
-{{ Add example description here }}
+This command gets details about the pipeline run with id "61eb095a-fe23-4591-8a97-fade6c65ca72".
+
 
 ## PARAMETERS
 
@@ -174,4 +183,7 @@ Microsoft.Azure.Commands.DataFactoryV2.Models.PSPipelineRun
 ## NOTES
 
 ## RELATED LINKS
+[Invoke-AzureRmDataFactoryV2Pipeline]()
+
+[Get-AzureRmDataFactoryV2ActivityRun]()
 

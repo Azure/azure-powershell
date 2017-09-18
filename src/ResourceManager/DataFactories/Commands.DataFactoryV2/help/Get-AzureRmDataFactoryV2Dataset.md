@@ -32,29 +32,25 @@ If you do not specify a name, this cmdlet gets information about all the dataset
 ### Example 1: Get information about all datasets
 ```
 PS C:\> Get-AzureRmDataFactoryV2Dataset -ResourceGroupName "ADF" -DataFactoryName "WikiADF"
-          DatasetName         : DACuratedWikiData
-          ResourceGroupName : ADF
-          DataFactoryName   : WikiADF
-          Availability      : Microsoft.DataFactories.Availability
-          Location          :
-          Policy            :
-          Structure         : {}
 
-          DatasetName         : DAWikipediaClickEvents
-          ResourceGroupName : ADF
-          DataFactoryName   : WikiADF
-          Availability      : Microsoft.DataFactories.Availability
-          Location          :
-          Policy            :
-          Structure         : {}
+    DatasetName       : DACuratedWikiData
+    ResourceGroupName : ADF
+    DataFactoryName   : WikiADF
+    Structure         :
+    Properties        : Microsoft.Azure.Management.DataFactory.Models.AzureBlobDataset
 
-          DatasetName         : DAWikiAggregatedData
-          ResourceGroupName : ADF
-          DataFactoryName   : WikiADF
-          Availability      : Microsoft.DataFactories.Availability
-          Location          :
-          Policy            :
-          Structure         : {}
+    DatasetName       : DAWikipediaClickEvents
+    ResourceGroupName : ADF
+    DataFactoryName   : WikiADF
+    Structure         :
+    Properties        : Microsoft.Azure.Management.DataFactory.Models.AzureBlobDataset
+
+    DatasetName       : DAWikiAggregatedData
+    ResourceGroupName : ADF
+    DataFactoryName   : WikiADF
+    Structure         :
+    Properties        : Microsoft.Azure.Management.DataFactory.Models.AzureBlobDataset
+
 ```
 
 This command gets information about all datasets in the data factory named WikiADF.
@@ -62,29 +58,16 @@ This command gets information about all datasets in the data factory named WikiA
 ### Example 2: Get information about a specific dataset
 ```
 PS C:\> Get-AzureRmDataFactoryV2Dataset -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "DAWikipediaClickEvents"
-          DatasetName         : DAWikipediaClickEvents
-          ResourceGroupName : ADF
-          DataFactoryName   : WikiADF
-          Availability      : Microsoft.DataFactories.Availability
-          Location          : Microsoft.DataFactories.AzureBlobLocation
-          Policy            : Microsoft.DataFactories.Policy
-          Structure         : {}
+
+    DatasetName       : DAWikipediaClickEvents
+    ResourceGroupName : ADF
+    DataFactoryName   : WikiADF
+    Structure         :
+    Properties        : Microsoft.Azure.Management.DataFactory.Models.AzureBlobDataset
+
 ```
 
 This command gets information about the dataset named DAWikipediaClickEvents in the data factory named WikiADF.
-
-### Example 3: Get the location for a specific dataset
-```
-PS C:\> (Get-AzureRmDataFactoryV2Dataset -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "DAWikipediaClickEvents").Location
-          BlobPath          : wikidatagateway/wikisampledatain/
-          FilenamePrefix    :
-          Format            :
-          LinkedServiceName : LinkedServiceWikipediaClickEvents
-          PartitionBy       : {}
-```
-
-This command gets information for the dataset named DAWikipediaClickEvents in the data factory named WikiADF, and then uses standard dot notation to view the Location associated with that dataset.
-Alternatively, assign the output of the Get-AzureRmDataFactoryV2Dataset cmdlet to a variable, and then use dot notation to view the Location property associated with the dataset object stored in that variable.
 
 ## PARAMETERS
 
@@ -168,6 +151,6 @@ Microsoft.Azure.Commands.DataFactoryV2.Models.PSDataset
 Keywords: azure, azurerm, arm, resource, management, manager, data, factories
 
 ## RELATED LINKS
-[New-AzureRmDataFactoryV2Dataset]()
+[Set-AzureRmDataFactoryV2Dataset]()
 
 [Remove-AzureRmDataFactoryV2Dataset]()

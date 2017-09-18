@@ -135,8 +135,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
             if (!DataFactoryCommonUtilities.IsSucceededProvisioningState(dataFactory.ProvisioningState))
             {
-                string errorMessage = dataFactory.ErrorMessage;
-                throw new ProvisioningFailedException(errorMessage);
+                throw new ProvisioningFailedException(Resources.DataFactoryProvisioningError);
             }
 
             return dataFactory;

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzureRmDataFactoryV2Trigger
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Removes a trigger from a data factory.
 
 ## SYNTAX
 
@@ -29,16 +29,21 @@ Remove-AzureRmDataFactoryV2Trigger [-ResourceId] <String> [-Force] [-WhatIf] [-C
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Remove-AzureRmDataFactoryV2Trigger** cmdlet removes a trigger from a data factory. If the _Force_ parameter is specified, the cmdlet will not prompt before removing the trigger.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Remove a trigger
 ```
-PS C:\> Remove-AzureRmDataFactoryV2Trigger
+Remove-AzureRmDataFactoryV2Trigger -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "ScheduledTrigger"
+
+Confirm
+Are you sure you want to remove trigger 'ScheduledTrigger' in data factory 'TestFactory'?
+[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
+True
 ```
 
-{{ Add example description here }}
+Remove a trigger called "ScheduledTrigger" from the data factory "WikiADF".
 
 ## PARAMETERS
 
@@ -176,4 +181,11 @@ System.String
 ## NOTES
 
 ## RELATED LINKS
+[Get-AzureRmDataFactoryV2Trigger]()
+
+[Set-AzureRmDataFactoryV2Trigger]()
+
+[Start-AzureRmDataFactoryV2Trigger]()
+
+[Stop-AzureRmDataFactoryV2Trigger]()
 

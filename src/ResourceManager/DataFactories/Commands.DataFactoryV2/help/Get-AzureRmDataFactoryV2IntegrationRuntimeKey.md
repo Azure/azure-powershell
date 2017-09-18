@@ -33,11 +33,11 @@ Get keys for an integration runtime. The keys are used to register an integratio
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Get integration runtime keys
 ```
 PS C:\> Get-AzureRmDataFactoryV2IntegrationRuntimeKey -ResourceGroupName 'rg-test-dfv2' -DataFactoryName 'test-df-eu2' -Name 'test-selfhost-ir'
 
-AuthKey1                                                 AuthKey2       
+AuthKey1                                                 AuthKey2
 --------                                                 --------
 IR@89895504-f647-48fd-8dd3-42fa556d67e3******            IR@89895504-f647-48fd-8dd3-42fa556d67e3****
 ```
@@ -135,5 +135,4 @@ Microsoft.Azure.Commands.DataFactoryV2.Models.PSIntegrationRuntime
 ## NOTES
 
 ## RELATED LINKS
-
 [New-AzureRmDataFactoryV2IntegrationRuntimeKey]()

@@ -96,10 +96,5 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Models
         {
             get { return dataFactory.ProvisioningState; }
         }
-
-        public string ErrorMessage
-        {
-            get { return dataFactory.ErrorMessage; }
-        }
     }
 }

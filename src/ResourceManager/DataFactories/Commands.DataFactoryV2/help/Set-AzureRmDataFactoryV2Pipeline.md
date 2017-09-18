@@ -44,10 +44,13 @@ If you confirm to overwrite the existing pipeline, the pipeline definition is al
 ### Example 1: Create a pipeline
 ```
 PS C:\> Set-AzureRmDataFactoryV2Pipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF" -File "C:\DPWikisample.json"
-          PipelineName      : DPWikisample
-          ResourceGroupName : ADF
-          DataFactoryName   : WikiADF11
-          Properties        : Microsoft.DataFactories.PipelineProperties
+
+    PipelineName      : DPWikisample
+    ResourceGroupName : ADF
+    DataFactoryName   : WikiADF11
+    Activities        : {MyCopyActivity_0_0, MyCopyActivity_1_0}
+    Parameters        : {[OutputBlobName, Microsoft.Azure.Management.DataFactory.Models.ParameterSpecification]}
+
 ```
 
 This command creates a pipeline named DPWikisample in the data factory named ADF.
@@ -193,7 +196,6 @@ Accept wildcard characters: False
 Keywords: azure, azurerm, arm, resource, management, manager, data, factories
 
 ## RELATED LINKS
-
 [Get-AzureRmDataFactoryV2Pipeline]()
 
 [Remove-AzureRmDataFactoryV2Pipeline]()

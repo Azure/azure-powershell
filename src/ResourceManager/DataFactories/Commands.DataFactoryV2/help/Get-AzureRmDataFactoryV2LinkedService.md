@@ -31,31 +31,22 @@ If you do not specify a name, this cmdlet gets information about all the linked 
 
 ### Example 1: Get information about all linked services
 ```
-PS C:\> Get-AzureRmDataFactoryV2LinkedService -ResourceGroupName "ADF" -DataFactoryName "WikiADF" | Format-List PS C:\>$df = Get-AzureRmDataFactoryV2 -ResourceGroupName ADF -Name WikiADFGet-AzureRmDataFactoryV2LinkedService -DataFactory $df | format-list
-          LinkedServiceName : HDILinkedService
-          ResourceGroupName : ADF
-          DataFactoryName   : WikiADF
-          Properties        : Microsoft.DataFactories.HDInsightBYOCLinkedService
+PS C:\> Get-AzureRmDataFactoryV2LinkedService -ResourceGroupName "ADF" -DataFactoryName "WikiADF" | Format-List
 
-          LinkedServiceName : LinkedServiceCuratedWikiData
-          ResourceGroupName : ADF
-          DataFactoryName   : WikiADF
-          Properties        : Microsoft.DataFactories.AzureStorageLinkedService
+    LinkedServiceName : LinkedServiceCuratedWikiData
+    ResourceGroupName : ADF
+    DataFactoryName   : WikiADF
+    Properties        : Microsoft.Azure.Management.DataFactory.Models.AzureStorageLinkedService
 
-          LinkedServiceName : LinkedServiceHDIStorage
-          ResourceGroupName : ADF
-          DataFactoryName   : WikiADF
-          Properties        : Microsoft.DataFactories.AzureStorageLinkedService
+    LinkedServiceName : LinkedServiceHDIStorage
+    ResourceGroupName : ADF
+    DataFactoryName   : WikiADF
+    Properties        : Microsoft.Azure.Management.DataFactory.Models.AzureStorageLinkedService
 
-          LinkedServiceName : LinkedServiceWikiAggregatedData
-          ResourceGroupName : ADF
-          DataFactoryName   : WikiADF
-          Properties        : Microsoft.DataFactories.AzureSqlLinkedService
-
-          LinkedServiceName : LinkedServiceWikipediaClickEvents
-          ResourceGroupName : ADF
-          DataFactoryName   : WikiADF
-          Properties        : Microsoft.DataFactories.AzureStorageLinkedService
+    LinkedServiceName : LinkedServiceWikipediaClickEvents
+    ResourceGroupName : ADF
+    DataFactoryName   : WikiADF
+    Properties        : Microsoft.Azure.Management.DataFactory.Models.AzureStorageLinkedService
 ```
 
 This command gets information about all linked services in the data factory named WikiADF, and then passes the linked services to the Format-List cmdlet by using the pipeline operator.
@@ -66,13 +57,15 @@ You can use either one of the following ways:
 
 ### Example 2: Get information about a specific linked service
 ```
-PS C:\> Get-AzureRmDataFactoryV2LinkedService -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "HDILinkedService"
-          LinkedServiceName   ResourceGroupName     DataFactoryName              Properties
-          -----------------   -----------------     ---------------              ----------
-          HDILinkedService    ADF                   WikiADF                      Microsoft.DataFactories.HDInsightBYOCAsset
+PS C:\> Get-AzureRmDataFactoryV2LinkedService -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "LinkedServiceCuratedWikiData"
+
+    LinkedServiceName : LinkedServiceCuratedWikiData
+    ResourceGroupName : ADF
+    DataFactoryName   : WikiADF
+    Properties        : Microsoft.Azure.Management.DataFactory.Models.AzureStorageLinkedService
 ```
 
-This command gets information about the linked service named HDILinkedService in the data factory named WikiADF.
+This command gets information about the linked service named LinkedServiceCuratedWikiData in the data factory named WikiADF.
 
 ### Example 3: Get information about a specific linked service by specifying the DataFactory parameter
 ```
@@ -165,7 +158,6 @@ Microsoft.Azure.Commands.DataFactoryV2.Models.PSLinkedService
 Keywords: azure, azurerm, arm, resource, management, manager, data, factories
 
 ## RELATED LINKS
-
-[New-AzureRmDataFactoryV2LinkedService]()
+[Set-AzureRmDataFactoryV2LinkedService]()
 
 [Remove-AzureRmDataFactoryV2LinkedService]()

@@ -20,7 +20,7 @@ using Microsoft.Azure.Commands.DataFactoryV2.Models;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
-    [Cmdlet(VerbsCommon.Get, Constants.PipelineRun, DefaultParameterSetName = ParameterSetNames.ByFactoryName),
+    [Cmdlet(VerbsCommon.Get, Constants.PipelineRun, DefaultParameterSetName = ParameterSetNames.ByFactoryNameByRunId),
         OutputType(typeof(List<PSPipelineRun>), typeof(PSPipelineRun))]
     public class GetAzureDataFactoryPipelineRunCommand : DataFactoryBaseCmdlet
     {
