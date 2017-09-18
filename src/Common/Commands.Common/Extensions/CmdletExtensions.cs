@@ -219,13 +219,13 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         public static void EnableDataCollection(this AzurePSCmdlet cmdlt)
         {
-            FieldInfo dynField = (typeof(AzurePSCmdlet)).GetField("_dataCollectionProfile", BindingFlags.NonPublic | BindingFlags.Static);
+            PropertyInfo dynField = (typeof(AzurePSCmdlet)).GetProperty("_dataCollectionProfile", BindingFlags.NonPublic | BindingFlags.Instance);
             dynField.SetValue(cmdlt, new AzurePSDataCollectionProfile(true));
         }
 
         public static void DisableDataCollection(this AzurePSCmdlet cmdlt)
         {
-            FieldInfo dynField = (typeof(AzurePSCmdlet)).GetField("_dataCollectionProfile", BindingFlags.NonPublic | BindingFlags.Static);
+            PropertyInfo dynField = (typeof(AzurePSCmdlet)).GetProperty("_dataCollectionProfile", BindingFlags.NonPublic | BindingFlags.Instance);
             dynField.SetValue(cmdlt, new AzurePSDataCollectionProfile(false));
         }
 

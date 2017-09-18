@@ -75,6 +75,13 @@ namespace Microsoft.Azure.Commands.Compute
         [AllowNull]
         public int? DiskSizeInGB { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = HelpMessages.VMManagedDiskAccountType)]
+        [ValidateNotNullOrEmpty]
+        public StorageAccountTypes? StorageAccountType { get; set; }
+
         public override void ExecuteCmdlet()
         {
             var storageProfile = this.VM.StorageProfile;
@@ -101,6 +108,22 @@ namespace Microsoft.Azure.Commands.Compute
                 if (this.DiskSizeInGB != null)
                 {
                     dataDisk.DiskSizeGB = this.DiskSizeInGB;
+                }
+                if (this.StorageAccountType != null)
+                {
+                    if (dataDisk.ManagedDisk == null)
+                    {
+                        ThrowTerminatingError
+                            (new ErrorRecord(
+                                new InvalidOperationException(Properties.Resources.NotManagedDisk),
+                                string.Empty,
+                                ErrorCategory.InvalidData,
+                                null));
+                    }
+                    else
+                    {
+                        dataDisk.ManagedDisk.StorageAccountType = this.StorageAccountType;
+                    }
                 }
             }
 

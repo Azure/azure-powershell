@@ -63,6 +63,16 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "A list of P2S VPN client tunneling protocols")]
+        [ValidateSet(
+            MNM.VpnClientProtocol.SSTP,
+            MNM.VpnClientProtocol.IkeV2)]
+        [ValidateNotNullOrEmpty]
+        public List<string> VpnClientProtocol { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "A list of VPN client root certificates to use for VPN client authentication. Connecting VPN clients must present certificates generated from one of these root certificates.")]
         public List<PSVpnClientRootCertificate> VpnClientRootCertificates { get; set; }
 
@@ -156,6 +166,11 @@ namespace Microsoft.Azure.Commands.Network
             {
                 this.VirtualNetworkGateway.VpnClientConfiguration.VpnClientAddressPool = new PSAddressSpace();
                 this.VirtualNetworkGateway.VpnClientConfiguration.VpnClientAddressPool.AddressPrefixes = this.VpnClientAddressPool;
+            }
+
+            if (this.VpnClientProtocol != null)
+            {
+                this.VirtualNetworkGateway.VpnClientConfiguration.VpnClientProtocols = this.VpnClientProtocol;
             }
 
             if (this.VpnClientRootCertificates != null)

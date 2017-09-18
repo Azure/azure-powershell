@@ -317,6 +317,9 @@ Moves an ExpressRoute circuit from the classic deployment model to the Resource 
 ### [Move-AzureRmExpressRouteCircuit](Move-AzureRmExpressRouteCircuit.md)
 Moves an ExpressRoute circuit from the classic deployment model to the Resource Manager deployment model.
 
+### [New-AzureRmApplicationGateway](New-AzureRmApplicationGateway.md)
+Creates an application gateway.
+
 ### [New-AzureRmApplicationGatewayAuthenticationCertificate](New-AzureRmApplicationGatewayAuthenticationCertificate.md)
 Creates an authentication certificate for an application gateway.
 
