@@ -177,6 +177,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
 
         public Task AbortCopyAsync(CloudFile file, string copyId, AccessCondition accessCondition, FileRequestOptions requestOptions, OperationContext operationContext, CancellationToken cancellationToken)
         {
+            // Workaround for XSCL 8.4.0 issue: File abort copy fail with null reference. Will remove the line with the issue fixed.
+            CloudFileShare share = file.Share;
             return file.AbortCopyAsync(copyId, accessCondition, requestOptions, operationContext, cancellationToken);
         }
     }
