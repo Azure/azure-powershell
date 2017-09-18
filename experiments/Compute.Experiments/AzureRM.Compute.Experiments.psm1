@@ -5,27 +5,35 @@ function New-AzVm {
     [CmdletBinding(SupportsShouldProcess = $true)]
     param (
         [Parameter(Mandatory=$true, Position=0)][string] $Name = "VM",
+        [Parameter(Mandatory=$true)][PSCredential] $Credential,
 
         [Parameter()][string] $ResourceGroupName,
         [Parameter()][string] $Location,
 
         [Parameter()][string] $VirtualNetworkName,
-        [Parameter()][string] $SubnetName,
-        [Parameter()][string] $PublicIpAddressName,
-        [Parameter()][string] $SecurityGroupName,
+        [Parameter()][string] $AddressPrefix = "192.168.0.0/16",
 
-        [Parameter()][PSCredential] $Credential,
-        [Parameter()][string] $ImageName = "Win2012R2Datacenter",
+        [Parameter()][string] $SubnetName,
+        [Parameter()][string] $SubnetAddressPrefix = "192.168.1.0/24",
+
+        [Parameter()][string] $PublicIpAddressName,
+        [Parameter()][string] $DomainNameLabel = $Name,
+        [Parameter()][string] $AllocationMethod = "Static",
+
+        [Parameter()][string] $SecurityGroupName,
+        [Parameter()][int[]] $OpenPorts = @(3389, 5985),
+
+        [Parameter()][string] $ImageName = "Win2016Datacenter",
         [Parameter()][string] $Size = "Standard_DS1_v2"
     )
 
     PROCESS {
         $rgi = [ResourceGroup]::new($ResourceGroupName);
 
-        $vni = [VirtualNetwork]::new($VirtualNetworkName);
-        $subnet = [Subnet]::new($SubnetName, $vni);
-        $piai = [PublicIpAddress]::new($PublicIpAddressName);
-        $sgi = [SecurityGroup]::new($SecurityGroupName);
+        $vni = [VirtualNetwork]::new($VirtualNetworkName, $AddressPrefix);
+        $subnet = [Subnet]::new($SubnetName, $vni, $SubnetAddressPrefix);
+        $piai = [PublicIpAddress]::new($PublicIpAddressName, $DomainNameLabel, $AllocationMethod);
+        $sgi = [SecurityGroup]::new($SecurityGroupName, $OpenPorts);
 
         # we don't allow to reuse NetworkInterface so $name is $null.
         $nii = [NetworkInterface]::new(
@@ -144,11 +152,8 @@ class AzureObject {
         if ($this.Name) {
             return $this.GetInfo();
         } else {
-            Write-Host "{"
-            Write-Host $this
             $result = $this.Create($p);
             $this.Name = $p.Name;
-            Write-Host "}"
             return $result;
         }
     }
@@ -176,7 +181,10 @@ class Resource1: AzureObject {
 }
 
 class VirtualNetwork: Resource1 {
-    VirtualNetwork([string] $name): base($name) {
+    [string] $AddressPrefix;
+
+    VirtualNetwork([string] $name, [string] $addressPrefix): base($name) {
+        $this.AddressPrefix = $addressPrefix;
     }
 
     [object] GetInfo() {
@@ -184,29 +192,26 @@ class VirtualNetwork: Resource1 {
     }
 
     [object] Create([CreateParams] $p) {
-        <#
-        $subnetConfig = New-AzureRmVirtualNetworkSubnetConfig `
-           -Name "Subnet" `
-           -AddressPrefix "192.168.1.0/24"
         return New-AzureRmVirtualNetwork `
             -ResourceGroupName $p.ResourceGroupName `
             -Location $p.Location `
             -Name $p.Name `
-            -AddressPrefix "192.168.0.0/16" `
-            -Subnet $subnetConfig `
-            -WarningAction SilentlyContinue
-        #>
-        return New-AzureRmVirtualNetwork `
-            -ResourceGroupName $p.ResourceGroupName `
-            -Location $p.Location `
-            -Name $p.Name `
-            -AddressPrefix "192.168.0.0/16" `
+            -AddressPrefix $this.AddressPrefix `
             -WarningAction SilentlyContinue;
     }
 }
 
 class PublicIpAddress: Resource1 {
-    PublicIpAddress([string] $name): base($name) {
+    [string] $DomainNameLabel;
+    [string] $AllocationMethod;
+
+    PublicIpAddress(
+        [string] $name,
+        [string] $domainNameLabel,
+        [string] $allocationMethod
+    ): base($name) {
+        $this.DomainNameLabel = $domainNameLabel;
+        $this.AllocationMethod = $allocationMethod;
     }
 
     [object] GetInfo() {
@@ -218,13 +223,17 @@ class PublicIpAddress: Resource1 {
             -ResourceGroupName $p.ResourceGroupName `
             -Location $p.Location `
             -Name $p.Name `
+            -DomainNameLabel  $this.DnsLabel `
             -AllocationMethod Static `
             -WarningAction SilentlyContinue
     }
 }
 
 class SecurityGroup: Resource1 {
-    SecurityGroup([string] $name): base($name) {
+    [int[]] $OpenPorts;
+
+    SecurityGroup([string] $name, [int[]] $OpenPorts): base($name) {
+        $this.OpenPorts = $OpenPorts;
     }
 
     [object] GetInfo() {
@@ -232,52 +241,52 @@ class SecurityGroup: Resource1 {
     }
 
     [object] Create([CreateParams] $p) {
-        $securityRuleConfig = New-AzureRmNetworkSecurityRuleConfig `
-            -Name $p.Name `
-            -Protocol "Tcp" `
-            -Priority 1000 `
-            -Access "Allow" `
-            -Direction "Inbound" `
-            -SourcePortRange "*" `
-            -SourceAddressPrefix "*" `
-            -DestinationPortRange 3389 `
-            -DestinationAddressPrefix "*"
+        $rules = New-Object "System.Collections.Generic.List[Microsoft.Azure.Commands.Network.Models.PSSecurityRule]";
+        foreach ($port in $this.OpenPorts) {
+            $name = $p.Name + $port;
+            $securityRuleConfig = New-AzureRmNetworkSecurityRuleConfig `
+                -Name $name `
+                -Protocol "Tcp" `
+                -Priority 1000 `
+                -Access "Allow" `
+                -Direction "Inbound" `
+                -SourcePortRange "*" `
+                -SourceAddressPrefix "*" `
+                -DestinationPortRange $port `
+                -DestinationAddressPrefix "*";
+        }
         return New-AzureRmNetworkSecurityGroup `
             -ResourceGroupName $p.ResourceGroupName `
             -Location $p.Location `
             -Name $p.Name `
-            -SecurityRules $securityRuleConfig `
+            -SecurityRules $rules `
             -WarningAction SilentlyContinue
     }
 }
 
 class Subnet: AzureObject {
     [VirtualNetwork] $VirtualNetwork;
+    [string] $SubnetAddressPrefix;
 
-    Subnet([string] $name, [VirtualNetwork] $virtualNetwork):
+    Subnet([string] $name, [VirtualNetwork] $virtualNetwork, [string] $subnetAddressPrefix):
         base($name, @($virtualNetwork)) {
         $this.VirtualNetwork = $virtualNetwork;
+        $this.SubnetAddressPrefix = $subnetAddressPrefix;
     }
 
     [object] GetInfo() {
-        Write-Host "sn.GetInfo {"
         $virutalNetworkInfo = $this.VirtualNetwork.GetInfo();
-        Write-Host "}"
         return $virutalNetworkInfo | Get-AzureRmVirtualNetworkSubnetConfig -Name $this.Name;
     }
 
     [object] Create([CreateParams] $p) {
-        Write-Host "sn.Create {"
         $virtualNetworkInfo = $this.VirtualNetwork.GetOrCreate($p);
-        Set-AzureRmVirtualNetworkSubnetConfig `
+        Add-AzureRmVirtualNetworkSubnetConfig `
             -VirtualNetwork $virtualNetworkInfo `
             -Name $p.Name `
-            -AddressPrefix "192.168.1.0/24";
-        Set-AzureRmVirtualNetwork -VirtualNetwork $virtualNetworkInfo
+            -AddressPrefix $this.SubnetAddressPrefix;
+        $virtualNetworkInfo = Set-AzureRmVirtualNetwork -VirtualNetwork $virtualNetworkInfo
         $result = Get-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $virtualNetworkInfo -Name $p.Name
-        Write-Host $virtualNetworkInfo
-        Write-Host $result
-        Write-Host "} sn.Create"
         return $result;
     }
 }
@@ -305,9 +314,6 @@ class NetworkInterface: AzureObject {
     [object] Create([CreateParams] $p) {
         $publicIpAddressInfo = $this.PublicIpAddress.GetOrCreate($p);
         $subnetInfo = $this.Subnet.GetOrCreate($p);
-        Write-Host "sn: {"
-        Write-Host $subnetInfo
-        Write-Host "} sn"
         $securityGroupInfo = $this.SecurityGroup.GetOrCreate($p);
         return New-AzureRmNetworkInterface `
             -ResourceGroupName $p.ResourceGroupName `
