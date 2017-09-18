@@ -35,7 +35,7 @@ The following cmdlets were affected this release:
 ```powershell
 
 # Old
-# New-AzureRmApiManagementBackendProxy [other required parameters] -Password "plain-text string" -Password "plain-text string"
+# New-AzureRmApiManagementBackendProxy [other required parameters] -UserName "plain-text string" -Password "plain-text string"
 
 # New
 # New-AzureRmApiManagementBackendProxy [other required parameters] -Credentials $PSCredentialVariable
