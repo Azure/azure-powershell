@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+Module Name: AzureRM.Network
 ms.assetid: 06DAD751-3A43-4EF6-94C5-AA7AC1A67FC8
 online version: 
 schema: 2.0.0
@@ -113,7 +114,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### PSVirtualNetworkPeering
-
 Parameter 'VirtualNetworkPeering' accepts value of type 'PSVirtualNetworkPeering' from the pipeline
 
 ## OUTPUTS

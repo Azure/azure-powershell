@@ -35,10 +35,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             this.KeyType = keyType;
             this.KeyOps = keyOps;
             this.Tags = tags;
+            this.PurgeDisabled = false;
         }
 
         internal KeyAttributes(bool? enabled, DateTime? expires, DateTime? notBefore, string keyType, 
-            string[] keyOps, DateTime? created, DateTime? updated, bool purgeDisabled, IDictionary<string, string> tags)
+            string[] keyOps, DateTime? created, DateTime? updated, string deletionRecoveryLevel, IDictionary<string, string> tags)
         {
             this.Enabled = enabled;
             this.Expires = expires;
@@ -47,8 +48,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             this.KeyOps = keyOps;
             this.Created = created;
             this.Updated = updated;
-            this.PurgeDisabled = purgeDisabled;
+            this.RecoveryLevel = deletionRecoveryLevel;
             this.Tags = (tags == null) ? null : tags.ConvertToHashtable();
+            this.PurgeDisabled = false;
         }
 
         public bool? Enabled { get; set; }
@@ -65,7 +67,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         public DateTime? Updated { get; private set; }
 
+        /// <summary>
+        /// Obsolete flag indicating that the key is protected against purge.
+        /// </summary>
+        /// <remarks>
+        /// Deprecated, will be removed in the next PowerShell release.
+        /// </remarks>
         public bool PurgeDisabled { get; private set; }
+
+        public string RecoveryLevel { get; private set; }
 
         public Hashtable Tags { get; set; }
         public string TagsTable

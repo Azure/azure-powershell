@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+Module Name: AzureRM.Network
 ms.assetid: 5D887302-7678-44C0-86F3-CEF2EF8A0991
 online version: 
 schema: 2.0.0
@@ -56,7 +57,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### PSApplicationGateway
-
 Parameter 'ApplicationGateway' accepts value of type 'PSApplicationGateway' from the pipeline
 
 ## OUTPUTS
