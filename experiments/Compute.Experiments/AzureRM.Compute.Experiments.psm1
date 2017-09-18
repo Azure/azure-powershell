@@ -254,6 +254,7 @@ class SecurityGroup: Resource1 {
                 -SourceAddressPrefix "*" `
                 -DestinationPortRange $port `
                 -DestinationAddressPrefix "*";
+            $rules.Add($securityRuleConfig);
         }
         return New-AzureRmNetworkSecurityGroup `
             -ResourceGroupName $p.ResourceGroupName `
