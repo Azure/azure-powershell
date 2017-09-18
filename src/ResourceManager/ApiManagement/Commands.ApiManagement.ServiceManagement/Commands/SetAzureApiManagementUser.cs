@@ -58,6 +58,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "User password. This parameter is optional.")]
+        [Obsolete("Set-AzureRmApiManagementUser: The parameter \"Password\" is being changed from a string to a SecureString in an upcoming breaking change release.")]
         public String Password { get; set; }
 
         [Parameter(
@@ -82,7 +83,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         public override void ExecuteApiManagementCmdlet()
         {
+#pragma warning disable 0618
             Client.UserSet(Context, UserId, FirstName, LastName, Password, Email, State, Note);
+#pragma warning restore 0618
 
             if (PassThru)
             {
