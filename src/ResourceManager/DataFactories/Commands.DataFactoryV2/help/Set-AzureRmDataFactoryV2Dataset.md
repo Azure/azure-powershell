@@ -42,66 +42,18 @@ If you confirm to overwrite the existing dataset, the dataset definition is also
 
 ### Example 1: Create a dataset
 ```
-PS C:\> Set-AzureRmDataFactoryV2Dataset -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "DAWikipediaClickEvents" -File "C:\\samples\\WikiSample\\DA_WikipediaClickEvents.json"
-          DatasetName         : DAWikipediaClickEvents
-          ResourceGroupName : ADF
-          DataFactoryName   : WikiADF
-          Availability      : Microsoft.DataFactories.Availability
-          Location          : Microsoft.DataFactories.AzureBlobLocation
-          Policy            : Microsoft.DataFactories.Policy
-          Structure         : {}
+PS C:\> Set-AzureRmDataFactoryV2Dataset -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "DAWikipediaClickEvents" -DefinitionFile "C:\\samples\\WikiSample\\DA_WikipediaClickEvents.json"
+
+    DatasetName       : DAWikipediaClickEvents
+    ResourceGroupName : ADF
+    DataFactoryName   : WikiADF
+    Structure         :
+    Properties        : Microsoft.Azure.Management.DataFactory.Models.AzureBlobDataset
+
 ```
 
 This command creates a dataset named DA_WikipediaClickEvents in the data factory named WikiADF.
 The command bases the dataset on information in the DAWikipediaClickEvents.json file.
-
-### Example 2: View availability for a new dataset
-```
-PS C:\> $Dataset = Set-AzureRmDataFactoryV2Dataset -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "DAWikipediaClickEvents" -File "C:\\samples\\WikiSample\\DA_WikipediaClickEvents.json"PS C:\> $Dataset.Availability
-          AnchorDateTime :
-          Frequency      : Hour
-          Interval       : 1
-          Offset         :
-          WaitOnExternal : Microsoft.DataFactories.WaitOnExternal
-```
-
-The first command creates a dataset named DA_WikipediaClickEvents, as in a previous example, and then assigns that dataset to the $Dataset variable.
-
-The second command uses standard dot notation to display details about the Availability property of the dataset.
-
-### Example 3: View location for a new dataset
-```
-PS C:\> $Dataset = Set-AzureRmDataFactoryV2Dataset -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "DAWikipediaClickEvents" -File "C:\\samples\\WikiSample\\DA_WikipediaClickEvents.json"PS C:\> $Dataset.Location
-          BlobPath          : wikidatagateway/wikisampledatain/
-          FilenamePrefix    :
-          Format            :
-          LinkedServiceName : LinkedServiceWikipediaClickEvents
-          PartitionBy       : {}
-```
-
-The first command creates a dataset named DA_WikipediaClickEvents, as in a previous example, and then assigns that dataset to the $Dataset variable.
-
-The second command displays details about the Location property of the dataset.
-
-### Example 4: View validation rules for a new dataset
-```
-PS C:\> $Dataset = Set-AzureRmDataFactoryV2Dataset -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "DAWikipediaClickEvents" -File "C:\\samples\\WikiSample\\DA_WikipediaClickEvents.json"PS C:\> $Dataset.Policy.Validation | Format-List $dataset.Location
-
-          BlobPath          : wikidatagateway/wikisampledatain/
-          FilenamePrefix    :
-          Format            :
-          LinkedServiceName : LinkedServiceWikipediaClickEvents
-          PartitionBy       : {}
-
-          MinimumRows   :
-          MinimumSizeMB : 1
-```
-
-The first command creates a dataset named DA_WikipediaClickEvents, as in a previous example, and then assigns that dataset to the $Dataset variable.
-
-The second command gets details about the validation rules for the dataset, and then passes them to the Format-List cmdlet by using the pipeline operator.
-That Windows PowerShell cmdlet formats the results.
-For more information, type Get-Help Format-List.
 
 ## PARAMETERS
 
@@ -242,7 +194,6 @@ Accept wildcard characters: False
 Keywords: azure, azurerm, arm, resource, management, manager, data, factories
 
 ## RELATED LINKS
-
 [Get-AzureRmDataFactoryV2Dataset]()
 
 [Remove-AzureRmDataFactoryV2Dataset]()

@@ -48,11 +48,12 @@ The Set-AzureRmDataFactoryV2IntegrationRuntime cmdlet updates an integration run
 PS C:\> Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName 'rg-test-dfv2' -DataFactoryName 'test-df-eu2' -Name 'test-selfhost-ir' `
                                             -Description 'New description'
 
-Id                : /subscriptions/b3ee3a7f-7614-4644-ad07-afa832620b4b/resourceGroups/rg-test-dfv2/providers/Microsoft.DataFactory/factories/test-df-eu2/integrationruntimes/test-selfhost-ir
-ResourceGroupName : rg-test-dfv2
-DataFactoryName   : test-df-eu2
-Name              : test-selfhost-ir
-Description       : New description
+    Id                : /subscriptions/b3ee3a7f-7614-4644-ad07-afa832620b4b/resourceGroups/rg-test-dfv2/providers/Microsoft.DataFactory/factories/test-df-eu2/integrationruntimes/test-selfhost-ir
+    ResourceGroupName : rg-test-dfv2
+    DataFactoryName   : test-df-eu2
+    Name              : test-selfhost-ir
+    Description       : New description
+
 ```
 
 The cmdlet updates the description of integration runtime named 'test-selfhost-ir'.
@@ -358,5 +359,4 @@ Microsoft.Azure.Commands.DataFactoryV2.Models.PSIntegrationRuntime
 ## NOTES
 
 ## RELATED LINKS
-
-[New-AzureRmDataFactoryV2IntegrationRuntime]()
+[Set-AzureRmDataFactoryV2IntegrationRuntime]()

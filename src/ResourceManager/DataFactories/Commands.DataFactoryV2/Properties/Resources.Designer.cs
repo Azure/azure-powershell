@@ -118,6 +118,15 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Creation of data factory &apos;{0}&apos; failed..
+        /// </summary>
+        internal static string DataFactoryProvisioningError {
+            get {
+                return ResourceManager.GetString("DataFactoryProvisioningError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing data factory &apos;{0}&apos; in resource group &apos;{1}&apos;..
         /// </summary>
         internal static string DataFactoryRemoving {

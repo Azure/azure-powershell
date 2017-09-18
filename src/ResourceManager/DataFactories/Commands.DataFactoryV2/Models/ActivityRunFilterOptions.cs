@@ -20,8 +20,6 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
     {
         public string PipelineRunId { get; set; }
 
-        public string PipelineName { get; set; }
-
         public DateTime RunStartedAfter { get; set; }
 
         public DateTime RunStartedBefore { get; set; }

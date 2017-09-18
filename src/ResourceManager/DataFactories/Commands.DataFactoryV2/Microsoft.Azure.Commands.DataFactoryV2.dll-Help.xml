@@ -96,17 +96,22 @@
       <command:example>
         <maml:title>Example 1: Get all data factories</maml:title>
         <dev:code>PS C:\&gt; Get-AzureRmDataFactoryV2 -ResourceGroupName "ADF"
-          DataFactoryName   : WikiADF
-          ResourceGroupName : ADF
-          Location          : WestUS
-          Tags              : {}
-          Properties        : Microsoft.WindowsAzure.Commands.Utilities.PSDataFactoryConfiguration
 
-          DataFactoryName   : WikiADF2
-          ResourceGroupName : ADF
-          Location          : westus
-          Tags              : {}
-          Properties        : Microsoft.WindowsAzure.Commands.Utilities.PSDataFactoryConfiguration</dev:code>
+    DataFactoryName   : WikiADF
+    DataFactoryId     : /subscriptions/3e8e61b5-9a7d-4952-bfae-545ab997b9ea/resourceGroups/adf/providers/Microsoft.DataFactory/factories/wikiadf
+    ResourceGroupName : ADF
+    Location          : EastUS
+    Tags              : {}
+    Identity          : Microsoft.Azure.Management.DataFactory.Models.FactoryIdentity
+    ProvisioningState : Succeeded
+
+    DataFactoryName   : WikiADF2
+    DataFactoryId     : /subscriptions/3e8e61b5-9a7d-4952-bfae-545ab997b9ea/resourceGroups/adf/providers/Microsoft.DataFactory/factories/wikiadf2
+    ResourceGroupName : ADF
+    Location          : EastUS
+    Tags              : {}
+    Identity          :
+    ProvisioningState : Succeeded</dev:code>
         <dev:remarks>
           <maml:para>Displays information about all data factories in the Azure subscription.</maml:para>
         </dev:remarks>
@@ -114,11 +119,15 @@
       <command:example>
         <maml:title>Example 2: Get a specific data factory</maml:title>
         <dev:code>PS C:\&gt; $DataFactory = Get-AzureRmDataFactoryV2 -ResourceGroupName "ADF" -Name "WikiADF"
-          DataFactoryName   : WikiADF
-          ResourceGroupName : ADF
-          Location          : westus
-          Tags              : {}
-          Properties        : Microsoft.WindowsAzure.Commands.Utilities.PSDataFactoryConfiguration</dev:code>
+
+    DataFactoryName   : WikiADF
+    DataFactoryId     : /subscriptions/3e8e61b5-9a7d-4952-bfae-545ab997b9ea/resourceGroups/adf/providers/Microsoft.DataF
+                        actory/factories/wikiadf
+    ResourceGroupName : ADF
+    Location          : EastUS
+    Tags              : {}
+    Identity          : Microsoft.Azure.Management.DataFactory.Models.FactoryIdentity
+    ProvisioningState : Succeeded</dev:code>
         <dev:remarks>
           <maml:para>This command displays information about the data factory named WikiADF in the subscription for the resource group named ADF, and then stores it in the $DataFactory variable. Specify the DataFactory parameter in subsequent cmdlets to use the data factory stored in $DataFactory.</maml:para>
         </dev:remarks>
@@ -126,7 +135,7 @@
     </command:examples>
     <command:relatedLinks>
       <maml:navigationLink>
-        <maml:linkText>New-AzureRmDataFactoryV2</maml:linkText>
+        <maml:linkText>Set-AzureRmDataFactoryV2</maml:linkText>
         <maml:uri></maml:uri>
       </maml:navigationLink>
       <maml:navigationLink>
@@ -141,11 +150,11 @@
       <command:verb>Get</command:verb>
       <command:noun>AzureRmDataFactoryV2ActivityRun</command:noun>
       <maml:description>
-        <maml:para>{{Fill in the Synopsis}}</maml:para>
+        <maml:para>Gets information about activity runs for a pipeline run.</maml:para>
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>{{Fill in the Description}}</maml:para>
+      <maml:para>The Get-AzureRmDataFactoryV2ActivityRun cmdlet gets information about runs in Azure Data Factory for the specified pipeline run that happened in the given timeframe. Additionally, you can specify filters for activity name, linked service name which executed the run and the status of the run.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -175,33 +184,21 @@
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
-          <maml:name>PipelineName</maml:name>
+          <maml:name>RunStartedAfter</maml:name>
           <maml:Description>
-            <maml:para>The pipeline name.</maml:para>
+            <maml:para>The time at or after which the pipeline run started to execute.</maml:para>
           </maml:Description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
           <dev:type>
-            <maml:name>String</maml:name>
+            <maml:name>DateTime</maml:name>
             <maml:uri />
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none">
-          <maml:name>RunStartedAfter</maml:name>
-          <maml:Description>
-            <maml:para>The time at or after which the pipeline run started to execute in ISO8601 format.</maml:para>
-          </maml:Description>
-          <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
-          <dev:type>
-            <maml:name>DateTime</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none">
           <maml:name>RunStartedBefore</maml:name>
           <maml:Description>
-            <maml:para>The time at or before which the pipeline run started to execute in ISO8601 format.</maml:para>
+            <maml:para>The time at or before which the pipeline run started to execute.</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
           <dev:type>
@@ -210,7 +207,7 @@
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="5" aliases="none">
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none">
           <maml:name>ActivityName</maml:name>
           <maml:Description>
             <maml:para>The name of the activity.</maml:para>
@@ -222,7 +219,7 @@
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="6" aliases="none">
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="5" aliases="none">
           <maml:name>Status</maml:name>
           <maml:Description>
             <maml:para>The status of the pipeline run.</maml:para>
@@ -234,7 +231,7 @@
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="7" aliases="none">
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="6" aliases="none">
           <maml:name>LinkedServiceName</maml:name>
           <maml:Description>
             <maml:para>The linked service name.</maml:para>
@@ -286,33 +283,21 @@
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
-          <maml:name>PipelineName</maml:name>
+          <maml:name>RunStartedAfter</maml:name>
           <maml:Description>
-            <maml:para>The pipeline name.</maml:para>
+            <maml:para>The time at or after which the pipeline run started to execute.</maml:para>
           </maml:Description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
           <dev:type>
-            <maml:name>String</maml:name>
+            <maml:name>DateTime</maml:name>
             <maml:uri />
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none">
-          <maml:name>RunStartedAfter</maml:name>
-          <maml:Description>
-            <maml:para>The time at or after which the pipeline run started to execute in ISO8601 format.</maml:para>
-          </maml:Description>
-          <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
-          <dev:type>
-            <maml:name>DateTime</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none">
           <maml:name>RunStartedBefore</maml:name>
           <maml:Description>
-            <maml:para>The time at or before which the pipeline run started to execute in ISO8601 format.</maml:para>
+            <maml:para>The time at or before which the pipeline run started to execute.</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
           <dev:type>
@@ -321,7 +306,7 @@
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="5" aliases="none">
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none">
           <maml:name>ActivityName</maml:name>
           <maml:Description>
             <maml:para>The name of the activity.</maml:para>
@@ -333,7 +318,7 @@
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="6" aliases="none">
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="5" aliases="none">
           <maml:name>Status</maml:name>
           <maml:Description>
             <maml:para>The status of the pipeline run.</maml:para>
@@ -345,7 +330,7 @@
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="7" aliases="none">
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="6" aliases="none">
           <maml:name>LinkedServiceName</maml:name>
           <maml:Description>
             <maml:para>The linked service name.</maml:para>
@@ -360,7 +345,7 @@
       </command:syntaxItem>
     </command:syntax>
     <command:parameters>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="5" aliases="none">
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none">
         <maml:name>ActivityName</maml:name>
         <maml:Description>
           <maml:para>The name of the activity.</maml:para>
@@ -396,22 +381,10 @@
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="7" aliases="none">
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="6" aliases="none">
         <maml:name>LinkedServiceName</maml:name>
         <maml:Description>
           <maml:para>The linked service name.</maml:para>
-        </maml:Description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>None</dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
-        <maml:name>PipelineName</maml:name>
-        <maml:Description>
-          <maml:para>The pipeline name.</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -444,10 +417,10 @@
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none">
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
         <maml:name>RunStartedAfter</maml:name>
         <maml:Description>
-          <maml:para>The time at or after which the pipeline run started to execute in ISO8601 format.</maml:para>
+          <maml:para>The time at or after which the pipeline run started to execute.</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
         <dev:type>
@@ -456,10 +429,10 @@
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none">
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none">
         <maml:name>RunStartedBefore</maml:name>
         <maml:Description>
-          <maml:para>The time at or before which the pipeline run started to execute in ISO8601 format.</maml:para>
+          <maml:para>The time at or before which the pipeline run started to execute.</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
         <dev:type>
@@ -468,7 +441,7 @@
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="6" aliases="none">
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="5" aliases="none">
         <maml:name>Status</maml:name>
         <maml:Description>
           <maml:para>The status of the pipeline run.</maml:para>
@@ -508,14 +481,37 @@
     </maml:alertSet>
     <command:examples>
       <command:example>
-        <maml:title>Example 1</maml:title>
-        <dev:code>PS C:\&gt; Get-AzureRmDataFactoryV2ActivityRun -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -PipelineName "DPWikisample"</dev:code>
+        <maml:title>Example 1: Get all activity runs for a pipeline run</maml:title>
+        <dev:code>PS C:\&gt; Get-AzureRmDataFactoryV2ActivityRun -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -PipelineRunId "f288712d-fb08-4cb8-96ef-82d3b9b30621" -RunStartedAfter "2017-09-01" -RunStartedBefore "2017-09-30"
+
+    ResourceGroupName : ADF
+    DataFactoryName   : WikiADF
+    ActivityName      : MyWebActivity
+    PipelineRunId     : f288712d-fb08-4cb8-96ef-82d3b9b30621
+    PipelineName      : DPWikisample
+    Input             : {method, url, headers, body...}
+    Output            : {operationstatus}
+    LinkedServiceName :
+    ActivityRunStart  : 9/14/2017 12:20:57 AM
+    ActivityRunEnd    : 9/14/2017 12:21:00 AM
+    DurationInMs      : 2768
+    Status            : Succeeded
+    Error             : {errorCode, message, failureType, target}</dev:code>
         <dev:remarks>
-          <maml:para>{{ Add example description here }}</maml:para>
+          <maml:para>This command gets details about all activity runs in the pipeline run with ID "f288712d-fb08-4cb8-96ef-82d3b9b30621" which happened between "2017-09-01" and "2017-09-30".</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
-    <command:relatedLinks />
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Invoke-AzureRmDataFactoryV2Pipeline</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Get-AzureRmDataFactoryV2PipelineRun</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -676,29 +672,24 @@
       <command:example>
         <maml:title>Example 1: Get information about all datasets</maml:title>
         <dev:code>PS C:\&gt; Get-AzureRmDataFactoryV2Dataset -ResourceGroupName "ADF" -DataFactoryName "WikiADF"
-          DatasetName         : DACuratedWikiData
-          ResourceGroupName : ADF
-          DataFactoryName   : WikiADF
-          Availability      : Microsoft.DataFactories.Availability
-          Location          :
-          Policy            :
-          Structure         : {}
 
-          DatasetName         : DAWikipediaClickEvents
-          ResourceGroupName : ADF
-          DataFactoryName   : WikiADF
-          Availability      : Microsoft.DataFactories.Availability
-          Location          :
-          Policy            :
-          Structure         : {}
+    DatasetName       : DACuratedWikiData
+    ResourceGroupName : ADF
+    DataFactoryName   : WikiADF
+    Structure         :
+    Properties        : Microsoft.Azure.Management.DataFactory.Models.AzureBlobDataset
 
-          DatasetName         : DAWikiAggregatedData
-          ResourceGroupName : ADF
-          DataFactoryName   : WikiADF
-          Availability      : Microsoft.DataFactories.Availability
-          Location          :
-          Policy            :
-          Structure         : {}</dev:code>
+    DatasetName       : DAWikipediaClickEvents
+    ResourceGroupName : ADF
+    DataFactoryName   : WikiADF
+    Structure         :
+    Properties        : Microsoft.Azure.Management.DataFactory.Models.AzureBlobDataset
+
+    DatasetName       : DAWikiAggregatedData
+    ResourceGroupName : ADF
+    DataFactoryName   : WikiADF
+    Structure         :
+    Properties        : Microsoft.Azure.Management.DataFactory.Models.AzureBlobDataset</dev:code>
         <dev:remarks>
           <maml:para>This command gets information about all datasets in the data factory named WikiADF.</maml:para>
         </dev:remarks>
@@ -706,33 +697,20 @@
       <command:example>
         <maml:title>Example 2: Get information about a specific dataset</maml:title>
         <dev:code>PS C:\&gt; Get-AzureRmDataFactoryV2Dataset -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "DAWikipediaClickEvents"
-          DatasetName         : DAWikipediaClickEvents
-          ResourceGroupName : ADF
-          DataFactoryName   : WikiADF
-          Availability      : Microsoft.DataFactories.Availability
-          Location          : Microsoft.DataFactories.AzureBlobLocation
-          Policy            : Microsoft.DataFactories.Policy
-          Structure         : {}</dev:code>
+
+    DatasetName       : DAWikipediaClickEvents
+    ResourceGroupName : ADF
+    DataFactoryName   : WikiADF
+    Structure         :
+    Properties        : Microsoft.Azure.Management.DataFactory.Models.AzureBlobDataset</dev:code>
         <dev:remarks>
           <maml:para>This command gets information about the dataset named DAWikipediaClickEvents in the data factory named WikiADF.</maml:para>
-        </dev:remarks>
-      </command:example>
-      <command:example>
-        <maml:title>Example 3: Get the location for a specific dataset</maml:title>
-        <dev:code>PS C:\&gt; (Get-AzureRmDataFactoryV2Dataset -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "DAWikipediaClickEvents").Location
-          BlobPath          : wikidatagateway/wikisampledatain/
-          FilenamePrefix    :
-          Format            :
-          LinkedServiceName : LinkedServiceWikipediaClickEvents
-          PartitionBy       : {}</dev:code>
-        <dev:remarks>
-          <maml:para>This command gets information for the dataset named DAWikipediaClickEvents in the data factory named WikiADF, and then uses standard dot notation to view the Location associated with that dataset. Alternatively, assign the output of the Get-AzureRmDataFactoryV2Dataset cmdlet to a variable, and then use dot notation to view the Location property associated with the dataset object stored in that variable.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
     <command:relatedLinks>
       <maml:navigationLink>
-        <maml:linkText>New-AzureRmDataFactoryV2Dataset</maml:linkText>
+        <maml:linkText>Set-AzureRmDataFactoryV2Dataset</maml:linkText>
         <maml:uri></maml:uri>
       </maml:navigationLink>
       <maml:navigationLink>
@@ -1034,7 +1012,7 @@
     </command:examples>
     <command:relatedLinks>
       <maml:navigationLink>
-        <maml:linkText>New-AzureRmDataFactoryV2IntegrationRuntime</maml:linkText>
+        <maml:linkText>Set-AzureRmDataFactoryV2IntegrationRuntime</maml:linkText>
         <maml:uri></maml:uri>
       </maml:navigationLink>
       <maml:navigationLink>
@@ -1215,10 +1193,10 @@
     </maml:alertSet>
     <command:examples>
       <command:example>
-        <maml:title>Example 1</maml:title>
+        <maml:title>Example 1: Get integration runtime keys</maml:title>
         <dev:code>PS C:\&gt; Get-AzureRmDataFactoryV2IntegrationRuntimeKey -ResourceGroupName 'rg-test-dfv2' -DataFactoryName 'test-df-eu2' -Name 'test-selfhost-ir'
 
-AuthKey1                                                 AuthKey2       
+AuthKey1                                                 AuthKey2
 --------                                                 --------
 IR@89895504-f647-48fd-8dd3-42fa556d67e3******            IR@89895504-f647-48fd-8dd3-42fa556d67e3****</dev:code>
         <dev:remarks>
@@ -1405,7 +1383,7 @@ IR@89895504-f647-48fd-8dd3-42fa556d67e3******            IR@89895504-f647-48fd-8
     </maml:alertSet>
     <command:examples>
       <command:example>
-        <maml:title>Example 1</maml:title>
+        <maml:title>Example 1: Get integration runtime metric</maml:title>
         <dev:code>PS C:\&gt; Get-AzureRmDataFactoryV2IntegrationRuntimeMetric -ResourceGroupName 'rg-test-dfv2' -DataFactoryName 'test-df-eu2' -Name 'test-selfhost-ir'
 
 IntegrationRuntimeName ResourceGroupName DataFactoryName   Nodes   
@@ -1581,31 +1559,22 @@ test-selfhost-ir       rg-test-dfv2      test-df-eu2       {Node_1}</dev:code>
     <command:examples>
       <command:example>
         <maml:title>Example 1: Get information about all linked services</maml:title>
-        <dev:code>PS C:\&gt; Get-AzureRmDataFactoryV2LinkedService -ResourceGroupName "ADF" -DataFactoryName "WikiADF" | Format-List PS C:\&gt;$df = Get-AzureRmDataFactoryV2 -ResourceGroupName ADF -Name WikiADFGet-AzureRmDataFactoryV2LinkedService -DataFactory $df | format-list
-          LinkedServiceName : HDILinkedService
-          ResourceGroupName : ADF
-          DataFactoryName   : WikiADF
-          Properties        : Microsoft.DataFactories.HDInsightBYOCLinkedService
+        <dev:code>PS C:\&gt; Get-AzureRmDataFactoryV2LinkedService -ResourceGroupName "ADF" -DataFactoryName "WikiADF" | Format-List
 
-          LinkedServiceName : LinkedServiceCuratedWikiData
-          ResourceGroupName : ADF
-          DataFactoryName   : WikiADF
-          Properties        : Microsoft.DataFactories.AzureStorageLinkedService
+    LinkedServiceName : LinkedServiceCuratedWikiData
+    ResourceGroupName : ADF
+    DataFactoryName   : WikiADF
+    Properties        : Microsoft.Azure.Management.DataFactory.Models.AzureStorageLinkedService
 
-          LinkedServiceName : LinkedServiceHDIStorage
-          ResourceGroupName : ADF
-          DataFactoryName   : WikiADF
-          Properties        : Microsoft.DataFactories.AzureStorageLinkedService
+    LinkedServiceName : LinkedServiceHDIStorage
+    ResourceGroupName : ADF
+    DataFactoryName   : WikiADF
+    Properties        : Microsoft.Azure.Management.DataFactory.Models.AzureStorageLinkedService
 
-          LinkedServiceName : LinkedServiceWikiAggregatedData
-          ResourceGroupName : ADF
-          DataFactoryName   : WikiADF
-          Properties        : Microsoft.DataFactories.AzureSqlLinkedService
-
-          LinkedServiceName : LinkedServiceWikipediaClickEvents
-          ResourceGroupName : ADF
-          DataFactoryName   : WikiADF
-          Properties        : Microsoft.DataFactories.AzureStorageLinkedService</dev:code>
+    LinkedServiceName : LinkedServiceWikipediaClickEvents
+    ResourceGroupName : ADF
+    DataFactoryName   : WikiADF
+    Properties        : Microsoft.Azure.Management.DataFactory.Models.AzureStorageLinkedService</dev:code>
         <dev:remarks>
           <maml:para>This command gets information about all linked services in the data factory named WikiADF, and then passes the linked services to the Format-List cmdlet by using the pipeline operator. That Windows PowerShell cmdlet formats the results. For more information, type Get-Help Format-List.</maml:para>
           <maml:para>You can use either one of the following ways:</maml:para>
@@ -1613,12 +1582,14 @@ test-selfhost-ir       rg-test-dfv2      test-df-eu2       {Node_1}</dev:code>
       </command:example>
       <command:example>
         <maml:title>Example 2: Get information about a specific linked service</maml:title>
-        <dev:code>PS C:\&gt; Get-AzureRmDataFactoryV2LinkedService -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "HDILinkedService"
-          LinkedServiceName   ResourceGroupName     DataFactoryName              Properties
-          -----------------   -----------------     ---------------              ----------
-          HDILinkedService    ADF                   WikiADF                      Microsoft.DataFactories.HDInsightBYOCAsset</dev:code>
+        <dev:code>PS C:\&gt; Get-AzureRmDataFactoryV2LinkedService -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "LinkedServiceCuratedWikiData"
+
+    LinkedServiceName : LinkedServiceCuratedWikiData
+    ResourceGroupName : ADF
+    DataFactoryName   : WikiADF
+    Properties        : Microsoft.Azure.Management.DataFactory.Models.AzureStorageLinkedService</dev:code>
         <dev:remarks>
-          <maml:para>This command gets information about the linked service named HDILinkedService in the data factory named WikiADF.</maml:para>
+          <maml:para>This command gets information about the linked service named LinkedServiceCuratedWikiData in the data factory named WikiADF.</maml:para>
         </dev:remarks>
       </command:example>
       <command:example>
@@ -1632,7 +1603,7 @@ test-selfhost-ir       rg-test-dfv2      test-df-eu2       {Node_1}</dev:code>
     </command:examples>
     <command:relatedLinks>
       <maml:navigationLink>
-        <maml:linkText>New-AzureRmDataFactoryV2LinkedService</maml:linkText>
+        <maml:linkText>Set-AzureRmDataFactoryV2LinkedService</maml:linkText>
         <maml:uri></maml:uri>
       </maml:navigationLink>
       <maml:navigationLink>
@@ -1799,11 +1770,19 @@ test-selfhost-ir       rg-test-dfv2      test-df-eu2       {Node_1}</dev:code>
     <command:examples>
       <command:example>
         <maml:title>Example 1: Get information about all pipelines</maml:title>
-        <dev:code>PS C:\&gt; Get-AzureRmDataFactoryV2Pipeline -ResourceGroupName "ADF" -DataFactoryName "WikiADF" PS C:\&gt;$df = Get-AzureRmDataFactoryV2 -ResourceGroupName ADF -Name WikiADFGet-AzureRmDataFactoryV2Pipeline -DataFactory $df
-          PipelineName        ResourceGroupName      DataFactoryName             Properties
-          ------------        -----------------      ---------------             ----------
-          DPWikisample        ADF                    WikiADF                     Microsoft.DataFactories.PipelineProperties
-          DPTwittersample     ADF                    WikiADF                     Microsoft.DataFactories.PipelineProperties</dev:code>
+        <dev:code>PS C:\&gt; Get-AzureRmDataFactoryV2Pipeline -ResourceGroupName "ADF" -DataFactoryName "WikiADF" 
+
+    PipelineName      : DPWikisample
+    ResourceGroupName : ADF
+    DataFactoryName   : WikiADF
+    Activities        : {MyWebActivity}
+    Parameters        : {[url, Microsoft.Azure.Management.DataFactory.Models.ParameterSpecification]}
+
+    PipelineName      : DPTwittersample
+    ResourceGroupName : ADF
+    DataFactoryName   : WikiADF
+    Activities        : {MyCopyActivity_0_0, MyCopyActivity_1_0}
+    Parameters        : {[OutputBlobName, Microsoft.Azure.Management.DataFactory.Models.ParameterSpecification]}</dev:code>
         <dev:remarks>
           <maml:para>This command gets information about all pipelines in the data factory named WikiADF. You can either one of the following example commands. The second one uses a DataFactory object as a parameter.</maml:para>
         </dev:remarks>
@@ -1811,66 +1790,63 @@ test-selfhost-ir       rg-test-dfv2      test-df-eu2       {Node_1}</dev:code>
       <command:example>
         <maml:title>Example 2: Get information about a specific pipeline</maml:title>
         <dev:code>PS C:\&gt; Get-AzureRmDataFactoryV2Pipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF" | Format-List
-          PipelineName      : DPWikisample
-          ResourceGroupName : ADF
-          DataFactoryName   : WikiADF
-          Properties        : Microsoft.DataFactories.PipelineProperties</dev:code>
+
+    PipelineName      : DPWikisample
+    ResourceGroupName : ADF
+    DataFactoryName   : WikiADF
+    Activities        : {MyCopyActivity_0_0, MyCopyActivity_1_0}
+    Parameters        : {[OutputBlobName, Microsoft.Azure.Management.DataFactory.Models.ParameterSpecification]}</dev:code>
         <dev:remarks>
           <maml:para>This command gets information about the pipeline named DPWikisample in the data factory named WikiADF. The command passes that information to the Format-List cmdlet by using the pipeline operator. That Windows PowerShell cmdlet formats the results. For more information, type Get-Help Format-List.</maml:para>
         </dev:remarks>
       </command:example>
       <command:example>
         <maml:title>Example 3: Get the properties for a specific pipeline</maml:title>
-        <dev:code>PS C:\&gt; (Get-AzureRmDataFactoryV2Pipeline -ResourceGroupName "ADF" -Name DPWikisample -DataFactoryName "WikiADF").Properties
-          Activities  : {WikiHiveActivity, BlobToSqlCopyActivity}
-          Description : DP Wikipedia Sample Pipelines
-          End         : 6/6/2014 8:00:00 AM
-          IsPaused    :
-          RuntimeInfo : Microsoft.DataFactories.PipelineRuntimeInfo
-          Start       : 6/5/2014 8:00:00 PM</dev:code>
-        <dev:remarks>
-          <maml:para>This command gets information for the pipeline named DPWikisample in the data factory named WikiADF, and then uses standard dot notation to view the Properties property associated with that pipeline.</maml:para>
-        </dev:remarks>
-      </command:example>
-      <command:example>
-        <maml:title>Example 4: Get the activities for a specific pipeline</maml:title>
-        <dev:code>PS C:\&gt; (Get-AzureRmDataFactoryV2Pipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF").Properties.Activities
-          Transformation    : Microsoft.DataFactories.HDInsightActivityProperties
-          Description       :
-          Inputs            : {DAWikipediaClickEvents}
-          LinkedServiceName : HDILinkedService
-          Name              : WikiHiveActivity
-          Outputs           : {DACuratedWikiData}
-          Policy            : Microsoft.DataFactories.ActivityPolicy
+        <dev:code>PS C:\&gt; (Get-AzureRmDataFactoryV2Pipeline -ResourceGroupName "ADF" -Name DPWikisample -DataFactoryName "WikiADF").Activities
 
-          Transformation    : Microsoft.DataFactories.CopyActivityProperties
-          Description       :
-          Inputs            : {DACuratedWikiData}
-          LinkedServiceName : HDILinkedService
-          Name              : BlobToSqlCopyActivity
-          Outputs           : {DAWikiAggregatedData}
-          Policy            : Microsoft.DataFactories.ActivityPolicy</dev:code>
+    Source                          : Microsoft.Azure.Management.DataFactory.Models.BlobSource
+    Sink                            : Microsoft.Azure.Management.DataFactory.Models.BlobSink
+    Translator                      :
+    EnableStaging                   :
+    StagingSettings                 :
+    ParallelCopies                  :
+    CloudDataMovementUnits          :
+    EnableSkipIncompatibleRow       :
+    RedirectIncompatibleRowSettings :
+    Inputs                          : {}
+    Outputs                         : {}
+    LinkedServiceName               :
+    Policy                          :
+    Name                            : MyCopyActivity_0_0
+    Description                     :
+    DependsOn                       :
+
+    Source                          : Microsoft.Azure.Management.DataFactory.Models.BlobSource
+    Sink                            : Microsoft.Azure.Management.DataFactory.Models.BlobSink
+    Translator                      :
+    EnableStaging                   :
+    StagingSettings                 :
+    ParallelCopies                  :
+    CloudDataMovementUnits          :
+    EnableSkipIncompatibleRow       :
+    RedirectIncompatibleRowSettings :
+    Inputs                          : {}
+    Outputs                         : {}
+    LinkedServiceName               :
+    Policy                          :
+    Name                            : MyCopyActivity_1_0
+    Description                     :
+    DependsOn                       : {Microsoft.Azure.Management.DataFactory.Models.ActivityDependency}</dev:code>
         <dev:remarks>
           <maml:para>This command gets information for the pipeline named DPWikisample in the data factory named WikiADF, and then uses standard dot notation to view the Activities property associated with that pipeline.</maml:para>
         </dev:remarks>
       </command:example>
       <command:example>
-        <maml:title>Example 5: Get the runtime information for a specific pipeline</maml:title>
-        <dev:code>PS C:\&gt; (Get-AzureRmDataFactoryV2Pipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF").Properties.RuntimeInfo
-          DeploymentTime
-          --------------
-          6/5/2014 10:36:46 PM</dev:code>
-        <dev:remarks>
-          <maml:para>This command gets information for the pipeline named DPWikisample in the data factory named WikiADF, and then uses standard dot notation to view the RuntimeInfo property associated with that pipeline.</maml:para>
-        </dev:remarks>
-      </command:example>
-      <command:example>
         <maml:title>Example 6: Get information about inputs for the first activity</maml:title>
-        <dev:code>PS C:\&gt; (Get-AzureRmDataFactoryV2Pipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF11").Properties.Activities[0].Inputs | Format-List
-          EndTime   :
-          Length    :
-          Name      : DAWikipediaClickEvents
-          StartTime :</dev:code>
+        <dev:code>PS C:\&gt; (Get-AzureRmDataFactoryV2Pipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF11").Activities[0].Inputs | Format-List
+
+    ReferenceName : dsIn
+    Parameters    :</dev:code>
         <dev:remarks>
           <maml:para>This command gets information for the pipeline named DPWikisample in the data factory named WikiADF, and then uses standard dot notation to view the Activities property associated with that pipeline. The command displays the Inputs property of the first element of the Activities array by using the Format-List cmdlet.</maml:para>
         </dev:remarks>
@@ -1897,11 +1873,11 @@ test-selfhost-ir       rg-test-dfv2      test-df-eu2       {Node_1}</dev:code>
       <command:verb>Get</command:verb>
       <command:noun>AzureRmDataFactoryV2PipelineRun</command:noun>
       <maml:description>
-        <maml:para>{{Fill in the Synopsis}}</maml:para>
+        <maml:para>Gets information about pipeline runs.</maml:para>
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>{{Fill in the Description}}</maml:para>
+      <maml:para>The Get-AzureRmDataFactoryV2PipelineRun command returns information about runs for the specified pipeline. If PipelineRunId is specified it will show details for the run with that ID. If the PipelineRunId is not specified then it will show information about all runs for the specified pipeline that happened between the values of LastUpdatedAfter and LastUpdatedBefore.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -2198,14 +2174,35 @@ test-selfhost-ir       rg-test-dfv2      test-df-eu2       {Node_1}</dev:code>
     </maml:alertSet>
     <command:examples>
       <command:example>
-        <maml:title>Example 1</maml:title>
-        <dev:code>PS C:\&gt; Get-AzureRmDataFactoryV2PipelineRun</dev:code>
+        <maml:title>Example 1: Get information for a pipline run</maml:title>
+        <dev:code>PS C:\&gt; Get-AzureRmDataFactoryV2PipelineRun -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -PipelineRunId "61eb095a-fe23-4591-8a97-fade6c65ca72"
+
+    ResourceGroupName : ADF
+    DataFactoryName   : WikiADF
+    RunId             : 61eb095a-fe23-4591-8a97-fade6c65ca72
+    PipelineName      : DPWikisample
+    LastUpdated       : 9/14/2017 12:21:02 AM
+    Parameters        : {[url, http://adfsamplewebapi.azurewebsites.net/api/execute/sample]}
+    RunStart          : 9/14/2017 12:20:54 AM
+    RunEnd            : 9/14/2017 12:21:02 AM
+    DurationInMs      : 8246
+    Status            : Succeeded
+    Message           :</dev:code>
         <dev:remarks>
-          <maml:para>{{ Add example description here }}</maml:para>
+          <maml:para>This command gets details about the pipeline run with id "61eb095a-fe23-4591-8a97-fade6c65ca72".</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
-    <command:relatedLinks />
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Invoke-AzureRmDataFactoryV2Pipeline</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Get-AzureRmDataFactoryV2ActivityRun</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -2213,11 +2210,11 @@ test-selfhost-ir       rg-test-dfv2      test-df-eu2       {Node_1}</dev:code>
       <command:verb>Get</command:verb>
       <command:noun>AzureRmDataFactoryV2Trigger</command:noun>
       <maml:description>
-        <maml:para>{{Fill in the Synopsis}}</maml:para>
+        <maml:para>Gets information about triggers in a data factory.</maml:para>
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>{{Fill in the Description}}</maml:para>
+      <maml:para>The Get-AzureRmDataFactoryV2Trigger cmdlet gets information about triggers in a data factory. If you specify the name of a trigger, the cmdlet gets information about that trigger. If you do not specify a name, the cmdlet gets information about all triggers in the data factory.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -2364,14 +2361,56 @@ test-selfhost-ir       rg-test-dfv2      test-df-eu2       {Node_1}</dev:code>
     </maml:alertSet>
     <command:examples>
       <command:example>
-        <maml:title>Example 1</maml:title>
-        <dev:code>PS C:\&gt; Get-AzureRmDataFactoryV2Trigger</dev:code>
+        <maml:title>Example 1: Get information about a specific trigger</maml:title>
+        <dev:code>PS C:\&gt; Get-AzureRmDataFactoryV2Trigger -ResourceGroupName "ADF" -DataFactoryName "WikiADF"
+
+    TriggerName       : ScheduledTrigger
+    ResourceGroupName : ADF
+    DataFactoryName   : WikiADF
+    Properties        : Microsoft.Azure.Management.DataFactory.Models.ScheduleTrigger
+    RuntimeState      : Stopped
+
+    TriggerName       : ScheduledTrigger2
+    ResourceGroupName : ADF
+    DataFactoryName   : WikiADF
+    Properties        : Microsoft.Azure.Management.DataFactory.Models.ScheduleTrigger
+    RuntimeState      : Stopped</dev:code>
         <dev:remarks>
-          <maml:para>{{ Add example description here }}</maml:para>
+          <maml:para>Gets a list of all triggers that have been created in the data factory "WikiADF".</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>Example 2: Get information about all triggers</maml:title>
+        <dev:code>Get-AzureRmDataFactoryV2Trigger -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -TriggerName "ScheduledTrigger"
+
+    TriggerName       : ScheduledTrigger
+    ResourceGroupName : ADF
+    DataFactoryName   : WikiADF
+    Properties        : Microsoft.Azure.Management.DataFactory.Models.ScheduleTrigger
+    RuntimeState      : Stopped</dev:code>
+        <dev:remarks>
+          <maml:para>Gets a single trigger called "ScheduledTrigger" in the data factory "WikiADF".</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
-    <command:relatedLinks />
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Set-AzureRmDataFactoryV2Trigger</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Start-AzureRmDataFactoryV2Trigger</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Stop-AzureRmDataFactoryV2Trigger</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Remove-AzureRmDataFactoryV2Trigger</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -2379,11 +2418,11 @@ test-selfhost-ir       rg-test-dfv2      test-df-eu2       {Node_1}</dev:code>
       <command:verb>Get</command:verb>
       <command:noun>AzureRmDataFactoryV2TriggerRun</command:noun>
       <maml:description>
-        <maml:para>{{Fill in the Synopsis}}</maml:para>
+        <maml:para>Returns information about trigger runs.</maml:para>
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>{{Fill in the Description}}</maml:para>
+      <maml:para>The Get-AzureRmDataFactoryV2TriggerRun command returns detailed information about trigger runs for the specified trigger in the given timeframe.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -2602,14 +2641,31 @@ test-selfhost-ir       rg-test-dfv2      test-df-eu2       {Node_1}</dev:code>
     </maml:alertSet>
     <command:examples>
       <command:example>
-        <maml:title>Example 1</maml:title>
-        <dev:code>PS C:\&gt; Get-AzureRmDataFactoryV2TriggerRun</dev:code>
+        <maml:title>Example 1: Get information about trigger run</maml:title>
+        <dev:code>PS C:\&gt; Get-AzureRmDataFactoryV2TriggerRun -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -TriggerName "WikiTrigger" -TriggerRunStartedAfter "2017-09-01" -TriggerRunStartedBefore "2019-09-30"
+
+    ResourceGroupName   : ADF
+    DataFactoryName     : WikiADF
+    TriggerName         : WikiTrigger
+    TriggerRunId        : 08586958400454144995526033731
+    TriggerType         : ScheduleTrigger
+    TriggerRunTimestamp : 9/18/2017 8:34:00 PM
+    Status              : Succeeded</dev:code>
         <dev:remarks>
-          <maml:para>{{ Add example description here }}</maml:para>
+          <maml:para>This command shows information about runs for "WikiTrigger" in the factory "WikiADF" which started between "2017-09-01" and "2019-09-30".</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
-    <command:relatedLinks />
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Start-AzureRmDataFactoryV2Trigger</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Stop-AzureRmDataFactoryV2Trigger</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -2617,11 +2673,11 @@ test-selfhost-ir       rg-test-dfv2      test-df-eu2       {Node_1}</dev:code>
       <command:verb>Invoke</command:verb>
       <command:noun>AzureRmDataFactoryV2Pipeline</command:noun>
       <maml:description>
-        <maml:para>{{Fill in the Synopsis}}</maml:para>
+        <maml:para>Invokes a pipeline to start a run for it.</maml:para>
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>{{Fill in the Description}}</maml:para>
+      <maml:para>The Invoke-AzureRmDataFactoryV2Pipeline command starts a run on the specified pipeline and returns a ID for that run. This guid can be passed to Get-AzureRmDataFactoryV2PipelineRun or Get-AzureRmDataFactoryV2ActivityRun to obtain further details about this run.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -2994,14 +3050,24 @@ test-selfhost-ir       rg-test-dfv2      test-df-eu2       {Node_1}</dev:code>
     </maml:alertSet>
     <command:examples>
       <command:example>
-        <maml:title>Example 1</maml:title>
-        <dev:code>PS C:\&gt; Invoke-AzureRmDataFactoryV2Pipeline</dev:code>
+        <maml:title>Example 1: Invoke a pipeline to start a run</maml:title>
+        <dev:code>PS C:\&gt; Invoke-AzureRmDataFactoryV2Pipeline -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -PipelineName "DPWikisample"
+867d9d9f-1efc-4fee-974d-d8e6320bfbcb</dev:code>
         <dev:remarks>
-          <maml:para>{{ Add example description here }}</maml:para>
+          <maml:para>This command will start a run for "DPWikisample" pipeline in the "WikiADF" factory.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
-    <command:relatedLinks />
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Get-AzureRmDataFactoryV2PipelineRun</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Get-AzureRmDataFactoryV2ActivityRun</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -3370,7 +3436,7 @@ test-selfhost-ir       rg-test-dfv2      test-df-eu2       {Node_1}</dev:code>
     </maml:alertSet>
     <command:examples>
       <command:example>
-        <maml:title>Example 1</maml:title>
+        <maml:title>Example 1: Generate a new key for an integration runtime</maml:title>
         <dev:code>PS C:\&gt; New-AzureRmDataFactoryV2IntegrationRuntimeKey -ResourceGroupName 'rg-test-dfv2' -DataFactoryName 'test-df-eu2' -Name 'test-selfhost-ir' -KeyName authKey2
 
 AuthKey1 AuthKey2
@@ -3581,7 +3647,7 @@ AuthKey1 AuthKey2
     </maml:alertSet>
     <command:examples>
       <command:example>
-        <maml:title>Example 1</maml:title>
+        <maml:title>Example 1: Encrypt creadentials in a linked service</maml:title>
         <dev:code>PS C:\&gt; New-AzureRmDataFactoryV2LinkedServiceEncryptCredential -ResourceGroupName resourceGroup -DataFactoryName myDataFactory -IntegrationRuntimeName myIR -File D:\sql.json</dev:code>
         <dev:remarks>
           <maml:para>This command encrypts credential in file D:\sql.json with the integration runtime named myIR.</maml:para>
@@ -4540,7 +4606,7 @@ AuthKey1 AuthKey2
     </command:examples>
     <command:relatedLinks>
       <maml:navigationLink>
-        <maml:linkText>New-AzureRmDataFactoryV2IntegrationRuntime</maml:linkText>
+        <maml:linkText>Set-AzureRmDataFactoryV2IntegrationRuntime</maml:linkText>
         <maml:uri></maml:uri>
       </maml:navigationLink>
       <maml:navigationLink>
@@ -4904,7 +4970,7 @@ AuthKey1 AuthKey2
     </maml:alertSet>
     <command:examples>
       <command:example>
-        <maml:title>Example 1</maml:title>
+        <maml:title>Example 1: Remove a node from an integration runtime</maml:title>
         <dev:code>PS C:\&gt; Remove-AzureRmDataFactoryV2IntegrationRuntimeNode -ResourceGroupName 'rg-test-dfv2' -DataFactoryName 'test-df-eu2' -Name 'test-selfhost-ir' -NodeName 'Node_1'</dev:code>
         <dev:remarks>
           <maml:para>This command removes an node named 'Node_1' in the integration runtime named 'test-selfhost-ir' in the subscription for the resource group named 'rg-test-dfv2' and data factory named 'test-df-eu2'.</maml:para>
@@ -5581,11 +5647,11 @@ AuthKey1 AuthKey2
       <command:verb>Remove</command:verb>
       <command:noun>AzureRmDataFactoryV2Trigger</command:noun>
       <maml:description>
-        <maml:para>{{Fill in the Synopsis}}</maml:para>
+        <maml:para>Removes a trigger from a data factory.</maml:para>
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>{{Fill in the Description}}</maml:para>
+      <maml:para>The Remove-AzureRmDataFactoryV2Trigger cmdlet removes a trigger from a data factory. If the Force parameter is specified, the cmdlet will not prompt before removing the trigger.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -5882,14 +5948,36 @@ AuthKey1 AuthKey2
     </maml:alertSet>
     <command:examples>
       <command:example>
-        <maml:title>Example 1</maml:title>
-        <dev:code>PS C:\&gt; Remove-AzureRmDataFactoryV2Trigger</dev:code>
+        <maml:title>Example 1: Remove a trigger</maml:title>
+        <dev:code>Remove-AzureRmDataFactoryV2Trigger -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "ScheduledTrigger"
+
+Confirm
+Are you sure you want to remove trigger 'ScheduledTrigger' in data factory 'TestFactory'?
+[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
+True</dev:code>
         <dev:remarks>
-          <maml:para>{{ Add example description here }}</maml:para>
+          <maml:para>Remove a trigger called "ScheduledTrigger" from the data factory "WikiADF".</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
-    <command:relatedLinks />
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Get-AzureRmDataFactoryV2Trigger</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Set-AzureRmDataFactoryV2Trigger</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Start-AzureRmDataFactoryV2Trigger</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Stop-AzureRmDataFactoryV2Trigger</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -6106,11 +6194,14 @@ AuthKey1 AuthKey2
       <command:example>
         <maml:title>Example 1: Create a data factory</maml:title>
         <dev:code>PS C:\&gt; Set-AzureRmDataFactoryV2 -ResourceGroupName "ADF" -Name "WikiADF" -Location "WestUS"
-          DataFactoryName   : WikiADF
-          ResourceGroupName : ADF
-          Location          : WestUS
-          Tags              : {}
-          Properties        : Microsoft.WindowsAzure.Commands.Utilities.PSDataFactoryConfiguration</dev:code>
+
+    DataFactoryName   : WikiADF
+    DataFactoryId     : /subscriptions/3e8e61b5-9a7d-4952-bfae-545ab997b9ea/resourceGroups/adf/providers/Microsoft.DataFactory/factories/wikiadf
+    ResourceGroupName : ADF
+    Location          : EastUS
+    Tags              : {}
+    Identity          : Microsoft.Azure.Management.DataFactory.Models.FactoryIdentity
+    ProvisioningState : Succeeded</dev:code>
         <dev:remarks>
           <maml:para>This command creates a data factory named WikiADF in the resource group named ADF in the WestUS location.</maml:para>
         </dev:remarks>
@@ -6414,59 +6505,15 @@ AuthKey1 AuthKey2
     <command:examples>
       <command:example>
         <maml:title>Example 1: Create a dataset</maml:title>
-        <dev:code>PS C:\&gt; Set-AzureRmDataFactoryV2Dataset -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "DAWikipediaClickEvents" -File "C:\\samples\\WikiSample\\DA_WikipediaClickEvents.json"
-          DatasetName         : DAWikipediaClickEvents
-          ResourceGroupName : ADF
-          DataFactoryName   : WikiADF
-          Availability      : Microsoft.DataFactories.Availability
-          Location          : Microsoft.DataFactories.AzureBlobLocation
-          Policy            : Microsoft.DataFactories.Policy
-          Structure         : {}</dev:code>
+        <dev:code>PS C:\&gt; Set-AzureRmDataFactoryV2Dataset -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "DAWikipediaClickEvents" -DefinitionFile "C:\\samples\\WikiSample\\DA_WikipediaClickEvents.json"
+
+    DatasetName       : DAWikipediaClickEvents
+    ResourceGroupName : ADF
+    DataFactoryName   : WikiADF
+    Structure         :
+    Properties        : Microsoft.Azure.Management.DataFactory.Models.AzureBlobDataset</dev:code>
         <dev:remarks>
           <maml:para>This command creates a dataset named DA_WikipediaClickEvents in the data factory named WikiADF. The command bases the dataset on information in the DAWikipediaClickEvents.json file.</maml:para>
-        </dev:remarks>
-      </command:example>
-      <command:example>
-        <maml:title>Example 2: View availability for a new dataset</maml:title>
-        <dev:code>PS C:\&gt; $Dataset = Set-AzureRmDataFactoryV2Dataset -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "DAWikipediaClickEvents" -File "C:\\samples\\WikiSample\\DA_WikipediaClickEvents.json"PS C:\&gt; $Dataset.Availability
-          AnchorDateTime :
-          Frequency      : Hour
-          Interval       : 1
-          Offset         :
-          WaitOnExternal : Microsoft.DataFactories.WaitOnExternal</dev:code>
-        <dev:remarks>
-          <maml:para>The first command creates a dataset named DA_WikipediaClickEvents, as in a previous example, and then assigns that dataset to the $Dataset variable.</maml:para>
-          <maml:para>The second command uses standard dot notation to display details about the Availability property of the dataset.</maml:para>
-        </dev:remarks>
-      </command:example>
-      <command:example>
-        <maml:title>Example 3: View location for a new dataset</maml:title>
-        <dev:code>PS C:\&gt; $Dataset = Set-AzureRmDataFactoryV2Dataset -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "DAWikipediaClickEvents" -File "C:\\samples\\WikiSample\\DA_WikipediaClickEvents.json"PS C:\&gt; $Dataset.Location
-          BlobPath          : wikidatagateway/wikisampledatain/
-          FilenamePrefix    :
-          Format            :
-          LinkedServiceName : LinkedServiceWikipediaClickEvents
-          PartitionBy       : {}</dev:code>
-        <dev:remarks>
-          <maml:para>The first command creates a dataset named DA_WikipediaClickEvents, as in a previous example, and then assigns that dataset to the $Dataset variable.</maml:para>
-          <maml:para>The second command displays details about the Location property of the dataset.</maml:para>
-        </dev:remarks>
-      </command:example>
-      <command:example>
-        <maml:title>Example 4: View validation rules for a new dataset</maml:title>
-        <dev:code>PS C:\&gt; $Dataset = Set-AzureRmDataFactoryV2Dataset -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "DAWikipediaClickEvents" -File "C:\\samples\\WikiSample\\DA_WikipediaClickEvents.json"PS C:\&gt; $Dataset.Policy.Validation | Format-List $dataset.Location
-
-          BlobPath          : wikidatagateway/wikisampledatain/
-          FilenamePrefix    :
-          Format            :
-          LinkedServiceName : LinkedServiceWikipediaClickEvents
-          PartitionBy       : {}
-
-          MinimumRows   :
-          MinimumSizeMB : 1</dev:code>
-        <dev:remarks>
-          <maml:para>The first command creates a dataset named DA_WikipediaClickEvents, as in a previous example, and then assigns that dataset to the $Dataset variable.</maml:para>
-          <maml:para>The second command gets details about the validation rules for the dataset, and then passes them to the Format-List cmdlet by using the pipeline operator. That Windows PowerShell cmdlet formats the results. For more information, type Get-Help Format-List.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
@@ -7332,11 +7379,11 @@ AuthKey1 AuthKey2
         <dev:code>PS C:\&gt; Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName 'rg-test-dfv2' -DataFactoryName 'test-df-eu2' -Name 'test-selfhost-ir' `
                                             -Description 'New description'
 
-Id                : /subscriptions/b3ee3a7f-7614-4644-ad07-afa832620b4b/resourceGroups/rg-test-dfv2/providers/Microsoft.DataFactory/factories/test-df-eu2/integrationruntimes/test-selfhost-ir
-ResourceGroupName : rg-test-dfv2
-DataFactoryName   : test-df-eu2
-Name              : test-selfhost-ir
-Description       : New description</dev:code>
+    Id                : /subscriptions/b3ee3a7f-7614-4644-ad07-afa832620b4b/resourceGroups/rg-test-dfv2/providers/Microsoft.DataFactory/factories/test-df-eu2/integrationruntimes/test-selfhost-ir
+    ResourceGroupName : rg-test-dfv2
+    DataFactoryName   : test-df-eu2
+    Name              : test-selfhost-ir
+    Description       : New description</dev:code>
         <dev:remarks>
           <maml:para>The cmdlet updates the description of integration runtime named 'test-selfhost-ir'.</maml:para>
         </dev:remarks>
@@ -7344,7 +7391,7 @@ Description       : New description</dev:code>
     </command:examples>
     <command:relatedLinks>
       <maml:navigationLink>
-        <maml:linkText>New-AzureRmDataFactoryV2IntegrationRuntime</maml:linkText>
+        <maml:linkText>Set-AzureRmDataFactoryV2IntegrationRuntime</maml:linkText>
         <maml:uri></maml:uri>
       </maml:navigationLink>
     </command:relatedLinks>
@@ -7636,10 +7683,11 @@ Description       : New description</dev:code>
       <command:example>
         <maml:title>Example 1: Create a linked service</maml:title>
         <dev:code>PS C:\&gt; Set-AzureRmDataFactoryV2LinkedService -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "LinkedServiceCuratedWikiData" -File "C:\\samples\\WikiSample\\LinkedServiceCuratedWikiData.json" | Format-List
-          LinkedServiceName : LinkedServiceCuratedWikiData
-          ResourceGroupName : ADF
-          DataFactoryName   : WikiADF
-          Properties        : Microsoft.DataFactories.AzureStorageLinkedService</dev:code>
+
+    LinkedServiceName : LinkedServiceCuratedWikiData
+    ResourceGroupName : ADF
+    DataFactoryName   : WikiADF
+    Properties        : Microsoft.Azure.Management.DataFactory.Models.AzureStorageLinkedService</dev:code>
         <dev:remarks>
           <maml:para>This command creates a linked service named LinkedServiceCuratedWikiData in the data factory named WikiADF. This linked service links an Azure blob store specified in the file to the data factory named WikiADF. The command passes the result to the Format-List cmdlet by using the pipeline operator. That Windows PowerShell cmdlet formats the results. For more information, type Get-Help Format-List.</maml:para>
         </dev:remarks>
@@ -7944,10 +7992,12 @@ Description       : New description</dev:code>
       <command:example>
         <maml:title>Example 1: Create a pipeline</maml:title>
         <dev:code>PS C:\&gt; Set-AzureRmDataFactoryV2Pipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF" -File "C:\DPWikisample.json"
-          PipelineName      : DPWikisample
-          ResourceGroupName : ADF
-          DataFactoryName   : WikiADF11
-          Properties        : Microsoft.DataFactories.PipelineProperties</dev:code>
+
+    PipelineName      : DPWikisample
+    ResourceGroupName : ADF
+    DataFactoryName   : WikiADF11
+    Activities        : {MyCopyActivity_0_0, MyCopyActivity_1_0}
+    Parameters        : {[OutputBlobName, Microsoft.Azure.Management.DataFactory.Models.ParameterSpecification]}</dev:code>
         <dev:remarks>
           <maml:para>This command creates a pipeline named DPWikisample in the data factory named ADF. The command bases the pipeline on information in the DPWikisample.json file. This file includes information about activities such as Copy Activity and HDInsight Activity in the pipeline.</maml:para>
         </dev:remarks>
@@ -7974,11 +8024,11 @@ Description       : New description</dev:code>
       <command:verb>Set</command:verb>
       <command:noun>AzureRmDataFactoryV2Trigger</command:noun>
       <maml:description>
-        <maml:para>{{Fill in the Synopsis}}</maml:para>
+        <maml:para>Creates a trigger in a data factory.</maml:para>
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>{{Fill in the Description}}</maml:para>
+      <maml:para>The Set-AzureRmDataFactoryV2Trigger cmdlet creates a trigger in a data factory. If you specify a name for a trigger that already exists, the cmdlet prompts for confirmation before replacing the trigger. If you specify the Force parameter, the cmdlet replaces the existing trigger without prompting for confirmation. Triggers are created in the 'Stopped' state, meaning that they will not immediately begin invoking pipelines that they reference.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -8251,14 +8301,37 @@ Description       : New description</dev:code>
     </maml:alertSet>
     <command:examples>
       <command:example>
-        <maml:title>Example 1</maml:title>
-        <dev:code>PS C:\&gt; Set-AzureRmDataFactoryV2Trigger</dev:code>
+        <maml:title>Example 1: Create a trigger</maml:title>
+        <dev:code>PS C:\&gt; Set-AzureRmDataFactoryV2Trigger -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "ScheduledTrigger" -DefinitionFile ".\scheduledTrigger.json"
+
+    TriggerName       : ScheduledTrigger
+    ResourceGroupName : ADF
+    DataFactoryName   : WikiADF
+    Properties        : Microsoft.Azure.Management.DataFactory.Models.ScheduleTrigger
+    RuntimeState      : Stopped</dev:code>
         <dev:remarks>
-          <maml:para>{{ Add example description here }}</maml:para>
+          <maml:para>Create a new trigger called "ScheduledTrigger" in the data factory "WikiADF". The trigger is created in the 'Stopped' state, meaning that it will not be immediately started. A trigger can be started using the `Start-AzureRmDataFactoryV2Trigger` cmdlet.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
-    <command:relatedLinks />
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Get-AzureRmDataFactoryV2Trigger</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Start-AzureRmDataFactoryV2Trigger</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Stop-AzureRmDataFactoryV2Trigger</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Remove-AzureRmDataFactoryV2Trigger</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -8608,11 +8681,11 @@ Description       : New description</dev:code>
       <command:verb>Start</command:verb>
       <command:noun>AzureRmDataFactoryV2Trigger</command:noun>
       <maml:description>
-        <maml:para>{{Fill in the Synopsis}}</maml:para>
+        <maml:para>Starts a trigger in a data factory.</maml:para>
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>{{Fill in the Description}}</maml:para>
+      <maml:para>The Start-AzureRmDataFactoryV2Trigger cmdlet starts a trigger in a data factory. If the trigger is in the 'Stopped' state, the cmdlet will start the trigger and it will eventually invoke pipelines based on its definition. If the trigger is already in the 'Started' state, this cmdlet will have no effect. If the Force parameter is specified, the cmdlet will not prompt before starting the trigger.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -8909,14 +8982,36 @@ Description       : New description</dev:code>
     </maml:alertSet>
     <command:examples>
       <command:example>
-        <maml:title>Example 1</maml:title>
-        <dev:code>PS C:\&gt; Start-AzureRmDataFactoryV2Trigger</dev:code>
+        <maml:title>Example 1: Start a trigger</maml:title>
+        <dev:code>Start-AzureRmDataFactoryV2Trigger -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -TriggerName "ScheduledTrigger"
+
+Confirm
+Are you sure you want to start trigger 'ScheduledTrigger' in data factory 'WikiADF'?
+[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
+True</dev:code>
         <dev:remarks>
-          <maml:para>{{ Add example description here }}</maml:para>
+          <maml:para>Starts a trigger called "ScheduledTrigger" in the data factory "WikiADF".</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
-    <command:relatedLinks />
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Get-AzureRmDataFactoryV2Trigger</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Set-AzureRmDataFactoryV2Trigger</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Stop-AzureRmDataFactoryV2Trigger</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Remove-AzureRmDataFactoryV2Trigger</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -9290,11 +9385,11 @@ Description       : New description</dev:code>
       <command:verb>Stop</command:verb>
       <command:noun>AzureRmDataFactoryV2Trigger</command:noun>
       <maml:description>
-        <maml:para>{{Fill in the Synopsis}}</maml:para>
+        <maml:para>Stops a trigger in a data factory.</maml:para>
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>{{Fill in the Description}}</maml:para>
+      <maml:para>The Stop-AzureRmDataFactoryV2Trigger cmdlet stops a trigger in a data factory. If the trigger is in the 'Started' state, the cmdlet will stop the trigger and it will no longer invoke pipelines. If the trigger is already in the 'Stopped' state, this cmdlet will have no effect. If the Force parameter is specified, the cmdlet will not prompt before stopping the trigger.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -9591,14 +9686,36 @@ Description       : New description</dev:code>
     </maml:alertSet>
     <command:examples>
       <command:example>
-        <maml:title>Example 1</maml:title>
-        <dev:code>PS C:\&gt; Stop-AzureRmDataFactoryV2Trigger</dev:code>
+        <maml:title>Example 1: Stop a trigger</maml:title>
+        <dev:code>Stop-AzureRmDataFactoryV2Trigger -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -TriggerName "ScheduledTrigger"
+
+Confirm
+Are you sure you want to stop trigger 'ScheduledTrigger' in data factory 'TestFactory'?
+[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
+True</dev:code>
         <dev:remarks>
-          <maml:para>{{ Add example description here }}</maml:para>
+          <maml:para>Stops a trigger called "ScheduledTrigger" in the data factory "WikiADF".</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
-    <command:relatedLinks />
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Get-AzureRmDataFactoryV2Trigger</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Set-AzureRmDataFactoryV2Trigger</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Start-AzureRmDataFactoryV2Trigger</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Remove-AzureRmDataFactoryV2Trigger</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -9907,7 +10024,7 @@ Description       : New description</dev:code>
     </maml:alertSet>
     <command:examples>
       <command:example>
-        <maml:title>Example 1</maml:title>
+        <maml:title>Example 1: Sync an integration runtime credential</maml:title>
         <dev:code>PS C:\&gt; Sync-AzureRmDataFactoryV2IntegrationRuntimeCredential -ResourceGroupName 'rg-test-dfv2' -DataFactoryName 'test-df-eu2' -Name 'test-selfhost-ir'</dev:code>
         <dev:remarks>
           <maml:para>The cmdlet will synchronize credentials among integration runtime nodes.</maml:para>

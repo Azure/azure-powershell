@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzureRmDataFactoryV2TriggerRun
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Returns information about trigger runs.
 
 ## SYNTAX
 
@@ -25,16 +25,25 @@ Get-AzureRmDataFactoryV2TriggerRun [-Name] <String> [-TriggerRunStartedAfter] <D
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Get-AzureRmDataFactoryV2TriggerRun** command returns detailed information about trigger runs for the specified trigger in the given timeframe.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Get information about trigger run
 ```
-PS C:\> Get-AzureRmDataFactoryV2TriggerRun 
+PS C:\> Get-AzureRmDataFactoryV2TriggerRun -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -TriggerName "WikiTrigger" -TriggerRunStartedAfter "2017-09-01" -TriggerRunStartedBefore "2019-09-30"
+
+    ResourceGroupName   : ADF
+    DataFactoryName     : WikiADF
+    TriggerName         : WikiTrigger
+    TriggerRunId        : 08586958400454144995526033731
+    TriggerType         : ScheduleTrigger
+    TriggerRunTimestamp : 9/18/2017 8:34:00 PM
+    Status              : Succeeded
+
 ```
 
-{{ Add example description here }}
+This command shows information about runs for "WikiTrigger" in the factory "WikiADF" which started between "2017-09-01" and "2019-09-30".
 
 ## PARAMETERS
 
@@ -143,4 +152,7 @@ Microsoft.Azure.Commands.DataFactoryV2.Models.PSTriggerRun
 ## NOTES
 
 ## RELATED LINKS
+[Start-AzureRmDataFactoryV2Trigger]()
+
+[Stop-AzureRmDataFactoryV2Trigger]()
 

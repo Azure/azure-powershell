@@ -8,35 +8,52 @@ schema: 2.0.0
 # Get-AzureRmDataFactoryV2ActivityRun
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets information about activity runs for a pipeline run.
 
 ## SYNTAX
 
 ### ByFactoryName (Default)
 ```
-Get-AzureRmDataFactoryV2ActivityRun [-PipelineRunId] <String> [-PipelineName] <String>
- [-RunStartedAfter] <DateTime> [-RunStartedBefore] <DateTime> [[-ActivityName] <String>] [[-Status] <String>]
+Get-AzureRmDataFactoryV2ActivityRun [-PipelineRunId] <String> [-RunStartedAfter] <DateTime>
+ [-RunStartedBefore] <DateTime> [[-ActivityName] <String>] [[-Status] <String>]
  [[-LinkedServiceName] <String>] [-ResourceGroupName] <String> [-DataFactoryName] <String>
 ```
 
 ### ByFactoryObject
 ```
-Get-AzureRmDataFactoryV2ActivityRun [-PipelineRunId] <String> [-PipelineName] <String>
- [-RunStartedAfter] <DateTime> [-RunStartedBefore] <DateTime> [[-ActivityName] <String>] [[-Status] <String>]
+Get-AzureRmDataFactoryV2ActivityRun [-PipelineRunId] <String> [-RunStartedAfter] <DateTime>
+ [-RunStartedBefore] <DateTime> [[-ActivityName] <String>] [[-Status] <String>]
  [[-LinkedServiceName] <String>] [-DataFactory] <PSDataFactory>
 ```
 
+
 ## DESCRIPTION
-{{Fill in the Description}}
+
+The **Get-AzureRmDataFactoryV2ActivityRun** cmdlet gets information about runs in Azure Data Factory for the specified pipeline run that happened in the given timeframe. Additionally, you can specify filters for activity name, linked service name which executed the run and the status of the run.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Get all activity runs for a pipeline run
 ```
-PS C:\> Get-AzureRmDataFactoryV2ActivityRun -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -PipelineName "DPWikisample"
+PS C:\> Get-AzureRmDataFactoryV2ActivityRun -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -PipelineRunId "f288712d-fb08-4cb8-96ef-82d3b9b30621" -RunStartedAfter "2017-09-01" -RunStartedBefore "2017-09-30"
+
+    ResourceGroupName : ADF
+    DataFactoryName   : WikiADF
+    ActivityName      : MyWebActivity
+    PipelineRunId     : f288712d-fb08-4cb8-96ef-82d3b9b30621
+    PipelineName      : DPWikisample
+    Input             : {method, url, headers, body...}
+    Output            : {operationstatus}
+    LinkedServiceName :
+    ActivityRunStart  : 9/14/2017 12:20:57 AM
+    ActivityRunEnd    : 9/14/2017 12:21:00 AM
+    DurationInMs      : 2768
+    Status            : Succeeded
+    Error             : {errorCode, message, failureType, target}
+
 ```
 
-{{ Add example description here }}
+This command gets details about all activity runs in the pipeline run with ID "f288712d-fb08-4cb8-96ef-82d3b9b30621" which happened between "2017-09-01" and "2017-09-30".
 
 ## PARAMETERS
 
@@ -49,7 +66,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 5
+Position: 4
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -94,22 +111,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 7
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PipelineName
-The pipeline name.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 2
+Position: 6
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -146,7 +148,22 @@ Accept wildcard characters: False
 ```
 
 ### -RunStartedAfter
-The time at or after which the pipeline run started to execute in ISO8601 format.
+The time at or after which the pipeline run started to execute.
+
+```yaml
+Type: DateTime
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RunStartedBefore
+The time at or before which the pipeline run started to execute.
 
 ```yaml
 Type: DateTime
@@ -155,21 +172,6 @@ Aliases:
 
 Required: True
 Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RunStartedBefore
-The time at or before which the pipeline run started to execute in ISO8601 format.
-
-```yaml
-Type: DateTime
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 4
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -184,7 +186,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 6
+Position: 5
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -205,4 +207,7 @@ Microsoft.Azure.Commands.DataFactoryV2.Models.PSActivityRun
 ## NOTES
 
 ## RELATED LINKS
+[Invoke-AzureRmDataFactoryV2Pipeline]()
+
+[Get-AzureRmDataFactoryV2PipelineRun]()
 

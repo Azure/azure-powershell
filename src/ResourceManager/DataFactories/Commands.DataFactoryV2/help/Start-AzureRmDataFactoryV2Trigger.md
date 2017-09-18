@@ -8,7 +8,8 @@ schema: 2.0.0
 # Start-AzureRmDataFactoryV2Trigger
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+
+Starts a trigger in a data factory.
 
 ## SYNTAX
 
@@ -29,16 +30,25 @@ Start-AzureRmDataFactoryV2Trigger [-ResourceId] <String> [-Force] [-WhatIf] [-Co
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+
+The **Start-AzureRmDataFactoryV2Trigger** cmdlet starts a trigger in a data factory. If the trigger is in the 'Stopped' state, the cmdlet will start the trigger and it will eventually invoke pipelines based on its definition. If the trigger is already in the 'Started' state, this cmdlet will have no effect. If the _Force_ parameter is specified, the cmdlet will not prompt before starting the trigger. 
+
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Start a trigger
+
 ```
-PS C:\> Start-AzureRmDataFactoryV2Trigger
+Start-AzureRmDataFactoryV2Trigger -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -TriggerName "ScheduledTrigger"
+
+Confirm
+Are you sure you want to start trigger 'ScheduledTrigger' in data factory 'WikiADF'?
+[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
+True
 ```
 
-{{ Add example description here }}
+Starts a trigger called "ScheduledTrigger" in the data factory "WikiADF".
+
 
 ## PARAMETERS
 
@@ -178,4 +188,10 @@ Microsoft.Azure.Commands.DataFactoryV2.Models.PSTrigger
 ## NOTES
 
 ## RELATED LINKS
+[Get-AzureRmDataFactoryV2Trigger]()
 
+[Set-AzureRmDataFactoryV2Trigger]()
+
+[Stop-AzureRmDataFactoryV2Trigger]()
+
+[Remove-AzureRmDataFactoryV2Trigger]()

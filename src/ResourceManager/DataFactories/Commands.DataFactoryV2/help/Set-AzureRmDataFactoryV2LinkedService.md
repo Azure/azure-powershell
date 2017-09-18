@@ -41,10 +41,12 @@ Perform these operations in the following order:
 ### Example 1: Create a linked service
 ```
 PS C:\> Set-AzureRmDataFactoryV2LinkedService -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "LinkedServiceCuratedWikiData" -File "C:\\samples\\WikiSample\\LinkedServiceCuratedWikiData.json" | Format-List
-          LinkedServiceName : LinkedServiceCuratedWikiData
-          ResourceGroupName : ADF
-          DataFactoryName   : WikiADF
-          Properties        : Microsoft.DataFactories.AzureStorageLinkedService
+
+    LinkedServiceName : LinkedServiceCuratedWikiData
+    ResourceGroupName : ADF
+    DataFactoryName   : WikiADF
+    Properties        : Microsoft.Azure.Management.DataFactory.Models.AzureStorageLinkedService
+
 ```
 
 This command creates a linked service named LinkedServiceCuratedWikiData in the data factory named WikiADF.
@@ -192,7 +194,6 @@ Accept wildcard characters: False
 Keywords: azure, azurerm, arm, resource, management, manager, data, factories
 
 ## RELATED LINKS
-
 [Get-AzureRmDataFactoryV2LinkedService]()
 
 [Remove-AzureRmDataFactoryV2LinkedService]()

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzureRmDataFactoryV2Trigger
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets information about triggers in a data factory.
 
 ## SYNTAX
 
@@ -23,16 +23,43 @@ Get-AzureRmDataFactoryV2Trigger [[-Name] <String>] [-DataFactory] <PSDataFactory
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Get-AzureRmDataFactoryV2Trigger** cmdlet gets information about triggers in a data factory. If you specify the name of a trigger, the cmdlet gets information about that trigger. If you do not specify a name, the cmdlet gets information about all triggers in the data factory.
+
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Get information about a specific trigger
 ```
-PS C:\> Get-AzureRmDataFactoryV2Trigger
+PS C:\> Get-AzureRmDataFactoryV2Trigger -ResourceGroupName "ADF" -DataFactoryName "WikiADF"
+
+    TriggerName       : ScheduledTrigger
+    ResourceGroupName : ADF
+    DataFactoryName   : WikiADF
+    Properties        : Microsoft.Azure.Management.DataFactory.Models.ScheduleTrigger
+    RuntimeState      : Stopped
+
+    TriggerName       : ScheduledTrigger2
+    ResourceGroupName : ADF
+    DataFactoryName   : WikiADF
+    Properties        : Microsoft.Azure.Management.DataFactory.Models.ScheduleTrigger
+    RuntimeState      : Stopped
 ```
 
-{{ Add example description here }}
+Gets a list of all triggers that have been created in the data factory "WikiADF".
+
+### Example 2: Get information about all triggers
+
+```
+Get-AzureRmDataFactoryV2Trigger -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -TriggerName "ScheduledTrigger"
+
+    TriggerName       : ScheduledTrigger
+    ResourceGroupName : ADF
+    DataFactoryName   : WikiADF
+    Properties        : Microsoft.Azure.Management.DataFactory.Models.ScheduleTrigger
+    RuntimeState      : Stopped
+```
+
+Gets a single trigger called "ScheduledTrigger" in the data factory "WikiADF".
 
 ## PARAMETERS
 
@@ -111,4 +138,10 @@ Microsoft.Azure.Commands.DataFactoryV2.Models.PSTrigger
 ## NOTES
 
 ## RELATED LINKS
+[Set-AzureRmDataFactoryV2Trigger]()
 
+[Start-AzureRmDataFactoryV2Trigger]()
+
+[Stop-AzureRmDataFactoryV2Trigger]()
+
+[Remove-AzureRmDataFactoryV2Trigger]()

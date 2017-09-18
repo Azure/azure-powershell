@@ -35,7 +35,7 @@ The cmdlet New-AzureRmDataFactoryV2IntegrationRuntimeKey regenerates the integra
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Generate a new key for an integration runtime
 ```
 PS C:\> New-AzureRmDataFactoryV2IntegrationRuntimeKey -ResourceGroupName 'rg-test-dfv2' -DataFactoryName 'test-df-eu2' -Name 'test-selfhost-ir' -KeyName authKey2
 
@@ -199,5 +199,4 @@ Microsoft.Azure.Commands.DataFactoryV2.Models.PSIntegrationRuntime
 ## NOTES
 
 ## RELATED LINKS
-
 [Get-AzureRmDataFactoryV2IntegrationRuntimeKey]()

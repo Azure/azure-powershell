@@ -27,17 +27,23 @@ If you do not specify a name, this cmdlet gets information about all of the data
 ### Example 1: Get all data factories
 ```
 PS C:\> Get-AzureRmDataFactoryV2 -ResourceGroupName "ADF"
-          DataFactoryName   : WikiADF
-          ResourceGroupName : ADF
-          Location          : WestUS
-          Tags              : {}
-          Properties        : Microsoft.WindowsAzure.Commands.Utilities.PSDataFactoryConfiguration
 
-          DataFactoryName   : WikiADF2
-          ResourceGroupName : ADF
-          Location          : westus
-          Tags              : {}
-          Properties        : Microsoft.WindowsAzure.Commands.Utilities.PSDataFactoryConfiguration
+    DataFactoryName   : WikiADF
+    DataFactoryId     : /subscriptions/3e8e61b5-9a7d-4952-bfae-545ab997b9ea/resourceGroups/adf/providers/Microsoft.DataFactory/factories/wikiadf
+    ResourceGroupName : ADF
+    Location          : EastUS
+    Tags              : {}
+    Identity          : Microsoft.Azure.Management.DataFactory.Models.FactoryIdentity
+    ProvisioningState : Succeeded
+
+    DataFactoryName   : WikiADF2
+    DataFactoryId     : /subscriptions/3e8e61b5-9a7d-4952-bfae-545ab997b9ea/resourceGroups/adf/providers/Microsoft.DataFactory/factories/wikiadf2
+    ResourceGroupName : ADF
+    Location          : EastUS
+    Tags              : {}
+    Identity          :
+    ProvisioningState : Succeeded
+
 ```
 
 Displays information about all data factories in the Azure subscription.
@@ -45,11 +51,16 @@ Displays information about all data factories in the Azure subscription.
 ### Example 2: Get a specific data factory
 ```
 PS C:\> $DataFactory = Get-AzureRmDataFactoryV2 -ResourceGroupName "ADF" -Name "WikiADF"
-          DataFactoryName   : WikiADF
-          ResourceGroupName : ADF
-          Location          : westus
-          Tags              : {}
-          Properties        : Microsoft.WindowsAzure.Commands.Utilities.PSDataFactoryConfiguration
+
+    DataFactoryName   : WikiADF
+    DataFactoryId     : /subscriptions/3e8e61b5-9a7d-4952-bfae-545ab997b9ea/resourceGroups/adf/providers/Microsoft.DataF
+                        actory/factories/wikiadf
+    ResourceGroupName : ADF
+    Location          : EastUS
+    Tags              : {}
+    Identity          : Microsoft.Azure.Management.DataFactory.Models.FactoryIdentity
+    ProvisioningState : Succeeded
+
 ```
 
 This command displays information about the data factory named WikiADF in the subscription for the resource group named ADF, and then stores it in the $DataFactory variable.
@@ -103,7 +114,7 @@ Microsoft.Azure.Commands.DataFactoryV2.Models.PSDataFactory
 Keywords: azure, azurerm, arm, resource, management, manager, data, factories
 
 ## RELATED LINKS
-[New-AzureRmDataFactoryV2]()
+[Set-AzureRmDataFactoryV2]()
 
 [Remove-AzureRmDataFactoryV2]()
 

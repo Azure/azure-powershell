@@ -45,14 +45,6 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             var castErrorException = exception as ErrorResponseException;
             if (castErrorException != null)
             {
-                if (castErrorException.Body != null 
-                    && string.IsNullOrWhiteSpace(castErrorException.Body.Code) 
-                    && string.IsNullOrWhiteSpace(castErrorException.Body.Message) 
-                    && castErrorException.Body.Error != null)
-                {
-                    castErrorException.Body = castErrorException.Body.Error;
-                }
-
                 if (castErrorException.Body == null && !string.IsNullOrWhiteSpace(castErrorException.Response.Content))
                 {
                     castErrorException.Body = new ErrorResponse(string.Empty, castErrorException.Response.Content);

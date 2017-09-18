@@ -33,7 +33,7 @@ The Get-AzureRmDataFactoryV2IntegrationRuntimeMetric cmdlet gets metric data abo
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Get integration runtime metric
 ```
 PS C:\> Get-AzureRmDataFactoryV2IntegrationRuntimeMetric -ResourceGroupName 'rg-test-dfv2' -DataFactoryName 'test-df-eu2' -Name 'test-selfhost-ir'
 
@@ -135,6 +135,5 @@ Microsoft.Azure.Commands.DataFactoryV2.Models.PSIntegrationRuntime
 ## NOTES
 
 ## RELATED LINKS
-
 [Get-AzureRmDataFactoryV2IntegrationRuntime]()
 

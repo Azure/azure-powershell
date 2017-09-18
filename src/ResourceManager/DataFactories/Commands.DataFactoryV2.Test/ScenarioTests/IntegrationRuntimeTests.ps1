@@ -87,63 +87,6 @@ function Test-SelfHosted-IntegrationRuntime
 
 <#
 .SYNOPSIS
-Create an managed dedicated integration runtime and then do operations.
-Delete the created integration runtime after test finishes.
-#>
-function Test-ManagedDedicated-IntegrationRuntime
-{
-    $dfname = Get-DataFactoryName
-    $rgname = Get-ResourceGroupName
-    $rglocation = Get-ProviderLocation ResourceManagement
-    $dflocation = Get-ProviderLocation DataFactoryManagement
-        
-    New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Force
-
-    try
-    {
-        Set-AzureRmDataFactoryV2 -ResourceGroupName $rgname `
-            -Name $dfname `
-            -Location $dflocation `
-            -Force
-     
-        $irname = "managed-dedicated-test-ir"
-        $description = "Managed dedicated integration runtime"
-   
-        $secpasswd = ConvertTo-SecureString "Passw0rd1" -AsPlainText -Force
-        $mycreds = New-Object System.Management.Automation.PSCredential("yanzhang", $secpasswd)
-        $actual = Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname `
-            -DataFactoryName $dfname `
-            -Name $irname `
-            -Description $description `
-            -Type Managed `
-            -Location 'East US' `
-            -NodeSize Standard_A4_v2 `
-            -NodeCount 1 `
-            -CatalogServerEndpoint 'yandongtestsvr.database.windows.net' `
-            -CatalogAdminCredential $mycreds `
-            -CatalogPricingTier 'S1' `
-            -MaxParallelExecutionsPerNode 1 `
-            -Force
-
-        $expected = Get-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname `
-            -DataFactoryName $dfname `
-            -Name $irname
-        Assert-AreEqual $actual.Name $expected.Name
-
-        Start-AzureRmDataFactoryV2IntegrationRuntime -ResourceId $actual.Id -Force
-        $status = Get-AzureRmDataFactoryV2IntegrationRuntime -ResourceId $actual.Id -Status
-        Stop-AzureRmDataFactoryV2IntegrationRuntime -ResourceId $actual.Id -Force
-
-        Remove-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname -DataFactoryName $dfname -Name $irname -Force
-    }
-    finally
-    {
-        Clean-DataFactory $rgname $dfname
-    }
-}
-
-<#
-.SYNOPSIS
 Create an managed elastic integration runtime and then do operations.
 Delete the created integration runtime after test finishes.
 #>

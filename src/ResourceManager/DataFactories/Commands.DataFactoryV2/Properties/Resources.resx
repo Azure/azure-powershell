@@ -344,4 +344,7 @@ Are you sure you want to continue?</value>
   <data name="TriggerStopping" xml:space="preserve">
     <value>Stopping trigger '{0}' in data factory '{1}'.</value>
   </data>
+  <data name="DataFactoryProvisioningError" xml:space="preserve">
+    <value>Creation of data factory '{0}' failed.</value>
+  </data>
 </root>

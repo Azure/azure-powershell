@@ -185,7 +185,6 @@ System.String
 Keywords: azure, azurerm, arm, resource, management, manager, data, factories
 
 ## RELATED LINKS
-
 [Get-AzureRmDataFactoryV2Pipeline]()
 
 [Set-AzureRmDataFactoryV2Pipeline]()

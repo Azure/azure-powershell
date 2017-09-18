@@ -29,7 +29,7 @@ The New-AzureRmDataFactoryV2LinkedServiceEncryptCredential cmdlet encrypt creden
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Encrypt creadentials in a linked service
 ```
 PS C:\> New-AzureRmDataFactoryV2LinkedServiceEncryptCredential -ResourceGroupName resourceGroup -DataFactoryName myDataFactory -IntegrationRuntimeName myIR -File D:\sql.json
 ```

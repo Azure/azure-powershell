@@ -178,8 +178,7 @@ Microsoft.Azure.Commands.DataFactoryV2.Models.PSIntegrationRuntime
 Keywords: azure, azurerm, arm, resource, management, manager, data, factories, copy, activities, integration runtime
 
 ## RELATED LINKS
-
-[New-AzureRmDataFactoryV2IntegrationRuntime]()
+[Set-AzureRmDataFactoryV2IntegrationRuntime]()
 
 [Get-AzureRmDataFactoryV2IntegrationRuntime]()
 

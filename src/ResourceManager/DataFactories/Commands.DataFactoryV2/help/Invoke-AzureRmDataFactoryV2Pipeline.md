@@ -8,7 +8,7 @@ schema: 2.0.0
 # Invoke-AzureRmDataFactoryV2Pipeline
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+  Invokes a pipeline to start a run for it.
 
 ## SYNTAX
 
@@ -35,16 +35,17 @@ Invoke-AzureRmDataFactoryV2Pipeline [-ResourceGroupName] <String> [-DataFactoryN
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Invoke-AzureRmDataFactoryV2Pipeline** command starts a run on the specified pipeline and returns a ID for that run. This guid can be passed to **Get-AzureRmDataFactoryV2PipelineRun** or **Get-AzureRmDataFactoryV2ActivityRun** to obtain further details about this run.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Invoke a pipeline to start a run
 ```
-PS C:\> Invoke-AzureRmDataFactoryV2Pipeline
+PS C:\> Invoke-AzureRmDataFactoryV2Pipeline -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -PipelineName "DPWikisample"
+867d9d9f-1efc-4fee-974d-d8e6320bfbcb
 ```
 
-{{ Add example description here }}
+This command will start a run for "DPWikisample" pipeline in the "WikiADF" factory.
 
 ## PARAMETERS
 
@@ -184,4 +185,7 @@ System.Collections.Hashtable
 ## NOTES
 
 ## RELATED LINKS
+[Get-AzureRmDataFactoryV2PipelineRun]()
+
+[Get-AzureRmDataFactoryV2ActivityRun]()
 

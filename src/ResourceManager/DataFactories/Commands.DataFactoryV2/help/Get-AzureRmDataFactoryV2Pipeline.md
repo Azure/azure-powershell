@@ -31,11 +31,20 @@ If you do not specify a name, this cmdlet gets information about all the pipelin
 
 ### Example 1: Get information about all pipelines
 ```
-PS C:\> Get-AzureRmDataFactoryV2Pipeline -ResourceGroupName "ADF" -DataFactoryName "WikiADF" PS C:\>$df = Get-AzureRmDataFactoryV2 -ResourceGroupName ADF -Name WikiADFGet-AzureRmDataFactoryV2Pipeline -DataFactory $df
-          PipelineName        ResourceGroupName      DataFactoryName             Properties
-          ------------        -----------------      ---------------             ----------
-          DPWikisample        ADF                    WikiADF                     Microsoft.DataFactories.PipelineProperties
-          DPTwittersample     ADF                    WikiADF                     Microsoft.DataFactories.PipelineProperties
+PS C:\> Get-AzureRmDataFactoryV2Pipeline -ResourceGroupName "ADF" -DataFactoryName "WikiADF" 
+
+    PipelineName      : DPWikisample
+    ResourceGroupName : ADF
+    DataFactoryName   : WikiADF
+    Activities        : {MyWebActivity}
+    Parameters        : {[url, Microsoft.Azure.Management.DataFactory.Models.ParameterSpecification]}
+
+    PipelineName      : DPTwittersample
+    ResourceGroupName : ADF
+    DataFactoryName   : WikiADF
+    Activities        : {MyCopyActivity_0_0, MyCopyActivity_1_0}
+    Parameters        : {[OutputBlobName, Microsoft.Azure.Management.DataFactory.Models.ParameterSpecification]}
+
 ```
 
 This command gets information about all pipelines in the data factory named WikiADF.
@@ -45,10 +54,12 @@ The second one uses a DataFactory object as a parameter.
 ### Example 2: Get information about a specific pipeline
 ```
 PS C:\> Get-AzureRmDataFactoryV2Pipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF" | Format-List
-          PipelineName      : DPWikisample
-          ResourceGroupName : ADF
-          DataFactoryName   : WikiADF
-          Properties        : Microsoft.DataFactories.PipelineProperties
+
+    PipelineName      : DPWikisample
+    ResourceGroupName : ADF
+    DataFactoryName   : WikiADF
+    Activities        : {MyCopyActivity_0_0, MyCopyActivity_1_0}
+    Parameters        : {[OutputBlobName, Microsoft.Azure.Management.DataFactory.Models.ParameterSpecification]}
 ```
 
 This command gets information about the pipeline named DPWikisample in the data factory named WikiADF.
@@ -58,56 +69,53 @@ For more information, type Get-Help Format-List.
 
 ### Example 3: Get the properties for a specific pipeline
 ```
-PS C:\> (Get-AzureRmDataFactoryV2Pipeline -ResourceGroupName "ADF" -Name DPWikisample -DataFactoryName "WikiADF").Properties
-          Activities  : {WikiHiveActivity, BlobToSqlCopyActivity}
-          Description : DP Wikipedia Sample Pipelines
-          End         : 6/6/2014 8:00:00 AM
-          IsPaused    :
-          RuntimeInfo : Microsoft.DataFactories.PipelineRuntimeInfo
-          Start       : 6/5/2014 8:00:00 PM
-```
+PS C:\> (Get-AzureRmDataFactoryV2Pipeline -ResourceGroupName "ADF" -Name DPWikisample -DataFactoryName "WikiADF").Activities
 
-This command gets information for the pipeline named DPWikisample in the data factory named WikiADF, and then uses standard dot notation to view the Properties property associated with that pipeline.
+    Source                          : Microsoft.Azure.Management.DataFactory.Models.BlobSource
+    Sink                            : Microsoft.Azure.Management.DataFactory.Models.BlobSink
+    Translator                      :
+    EnableStaging                   :
+    StagingSettings                 :
+    ParallelCopies                  :
+    CloudDataMovementUnits          :
+    EnableSkipIncompatibleRow       :
+    RedirectIncompatibleRowSettings :
+    Inputs                          : {}
+    Outputs                         : {}
+    LinkedServiceName               :
+    Policy                          :
+    Name                            : MyCopyActivity_0_0
+    Description                     :
+    DependsOn                       :
 
-### Example 4: Get the activities for a specific pipeline
-```
-PS C:\> (Get-AzureRmDataFactoryV2Pipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF").Properties.Activities
-          Transformation    : Microsoft.DataFactories.HDInsightActivityProperties
-          Description       :
-          Inputs            : {DAWikipediaClickEvents}
-          LinkedServiceName : HDILinkedService
-          Name              : WikiHiveActivity
-          Outputs           : {DACuratedWikiData}
-          Policy            : Microsoft.DataFactories.ActivityPolicy
+    Source                          : Microsoft.Azure.Management.DataFactory.Models.BlobSource
+    Sink                            : Microsoft.Azure.Management.DataFactory.Models.BlobSink
+    Translator                      :
+    EnableStaging                   :
+    StagingSettings                 :
+    ParallelCopies                  :
+    CloudDataMovementUnits          :
+    EnableSkipIncompatibleRow       :
+    RedirectIncompatibleRowSettings :
+    Inputs                          : {}
+    Outputs                         : {}
+    LinkedServiceName               :
+    Policy                          :
+    Name                            : MyCopyActivity_1_0
+    Description                     :
+    DependsOn                       : {Microsoft.Azure.Management.DataFactory.Models.ActivityDependency}
 
-          Transformation    : Microsoft.DataFactories.CopyActivityProperties
-          Description       :
-          Inputs            : {DACuratedWikiData}
-          LinkedServiceName : HDILinkedService
-          Name              : BlobToSqlCopyActivity
-          Outputs           : {DAWikiAggregatedData}
-          Policy            : Microsoft.DataFactories.ActivityPolicy
 ```
 
 This command gets information for the pipeline named DPWikisample in the data factory named WikiADF, and then uses standard dot notation to view the Activities property associated with that pipeline.
 
-### Example 5: Get the runtime information for a specific pipeline
-```
-PS C:\> (Get-AzureRmDataFactoryV2Pipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF").Properties.RuntimeInfo
-          DeploymentTime
-          --------------
-          6/5/2014 10:36:46 PM
-```
-
-This command gets information for the pipeline named DPWikisample in the data factory named WikiADF, and then uses standard dot notation to view the RuntimeInfo property associated with that pipeline.
-
 ### Example 6: Get information about inputs for the first activity
 ```
-PS C:\> (Get-AzureRmDataFactoryV2Pipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF11").Properties.Activities[0].Inputs | Format-List
-          EndTime   :
-          Length    :
-          Name      : DAWikipediaClickEvents
-          StartTime :
+PS C:\> (Get-AzureRmDataFactoryV2Pipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF11").Activities[0].Inputs | Format-List
+
+    ReferenceName : dsIn
+    Parameters    :
+
 ```
 
 This command gets information for the pipeline named DPWikisample in the data factory named WikiADF, and then uses standard dot notation to view the Activities property associated with that pipeline.
@@ -194,7 +202,6 @@ Microsoft.Azure.Commands.DataFactoryV2.Models.PSPipeline
 Keywords: azure, azurerm, arm, resource, management, manager, data, factories
 
 ## RELATED LINKS
-
 [Set-AzureRmDataFactoryV2Pipeline]()
 
 [Remove-AzureRmDataFactoryV2Pipeline]()

@@ -8,7 +8,8 @@ schema: 2.0.0
 # Stop-AzureRmDataFactoryV2Trigger
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+
+Stops a trigger in a data factory.
 
 ## SYNTAX
 
@@ -29,16 +30,25 @@ Stop-AzureRmDataFactoryV2Trigger [-ResourceId] <String> [-Force] [-WhatIf] [-Con
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+
+The **Stop-AzureRmDataFactoryV2Trigger** cmdlet stops a trigger in a data factory. If the trigger is in the 'Started' state, the cmdlet will stop the trigger and it will no longer invoke pipelines. If the trigger is already in the 'Stopped' state, this cmdlet will have no effect. If the _Force_ parameter is specified, the cmdlet will not prompt before stopping the trigger.
+
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Stop a trigger
+
 ```
-PS C:\> Stop-AzureRmDataFactoryV2Trigger
+Stop-AzureRmDataFactoryV2Trigger -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -TriggerName "ScheduledTrigger"
+
+Confirm
+Are you sure you want to stop trigger 'ScheduledTrigger' in data factory 'TestFactory'?
+[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
+True
 ```
 
-{{ Add example description here }}
+Stops a trigger called "ScheduledTrigger" in the data factory "WikiADF".
+
 
 ## PARAMETERS
 
@@ -178,4 +188,10 @@ Microsoft.Azure.Commands.DataFactoryV2.Models.PSTrigger
 ## NOTES
 
 ## RELATED LINKS
+[Get-AzureRmDataFactoryV2Trigger]()
 
+[Set-AzureRmDataFactoryV2Trigger]()
+
+[Start-AzureRmDataFactoryV2Trigger]()
+
+[Remove-AzureRmDataFactoryV2Trigger]()

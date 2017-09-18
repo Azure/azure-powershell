@@ -34,7 +34,7 @@ The Sync-AzureRmDataFactoryV2IntegrationRuntimeCredential cmdlet synchronizes on
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Sync an integration runtime credential
 ```
 PS C:\> Sync-AzureRmDataFactoryV2IntegrationRuntimeCredential -ResourceGroupName 'rg-test-dfv2' -DataFactoryName 'test-df-eu2' -Name 'test-selfhost-ir'
 ```
