@@ -124,7 +124,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.```yaml
+The credentials, account, tenant, and subscription used for communication with azure.
+```yaml
 Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
@@ -344,7 +345,8 @@ Accept wildcard characters: False
 ```
 
 ### -VpnClientProtocol
-The list of P2S VPN client tunneling protocols```yaml
+The list of P2S VPN client tunneling protocols
+```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
 Aliases: 

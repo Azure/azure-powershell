@@ -72,7 +72,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.```yaml
+The credentials, account, tenant, and subscription used for communication with azure.
+```yaml
 Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
@@ -170,7 +171,8 @@ Accept wildcard characters: False
 ```
 
 ### -RadiusServerAddress
-P2S External Radius server address.```yaml
+P2S External Radius server address.
+```yaml
 Type: String
 Parameter Sets: RadiusServerConfiguration
 Aliases: 
@@ -183,7 +185,8 @@ Accept wildcard characters: False
 ```
 
 ### -RadiusServerSecret
-P2S External Radius server secret.```yaml
+P2S External Radius server secret.
+```yaml
 Type: SecureString
 Parameter Sets: RadiusServerConfiguration
 Aliases: 
@@ -228,7 +231,8 @@ Accept wildcard characters: False
 ```
 
 ### -VpnClientProtocol
-A list of P2S VPN client tunneling protocols```yaml
+A list of P2S VPN client tunneling protocols
+```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
 Aliases: 
