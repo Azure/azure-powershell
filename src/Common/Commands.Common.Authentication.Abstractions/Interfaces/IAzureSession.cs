@@ -44,14 +44,19 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         IAzureTokenCache TokenCache { get; set; }
 
         /// <summary>
-        /// Gets or sets profile directory.
-        /// </summary>
-        string ProfileDirectory { get; set; }
-
-        /// <summary>
         /// Gets or sets token cache file path.
         /// </summary>
         string TokenCacheFile { get; set; }
+
+        /// <summary>
+        /// The directory containing the disk token cache
+        /// </summary>
+        string TokenCacheDirectory { get; set; }
+
+        /// <summary>
+        /// Gets or sets profile directory.
+        /// </summary>
+        string ProfileDirectory { get; set; }
 
         /// <summary>
         /// Gets or sets profile file name.
@@ -77,6 +82,49 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// The file name of the ARM Profile file
         /// </summary>
         string ARMProfileFile { get; set; }
+
+        /// <summary>
+        /// The scope of context persistece, for now "Process" or "CurrentUser"
+        /// </summary>
+        string ARMContextSaveMode { get; set; }
+
+        /// <summary>
+        /// Try to get the shared component registered in this session with the given type and name
+        /// </summary>
+        /// <typeparam name="T">The type of the custom component</typeparam>
+        /// <param name="componentName">The name of the custom component</param>
+        /// <param name="component">If the component is found, the registered component, otherwise null</param>
+        /// <returns>True if the component is found, False otherwise</returns>
+        bool TryGetComponent<T>(string componentName, out T component) where T : class;
+
+        /// <summary>
+        /// Register the given shared component in this session, if it is not already registered
+        /// </summary>
+        /// <typeparam name="T">The type of the shared component</typeparam>
+        /// <param name="componentName">The name of the shared component</param>
+        /// <param name="componentInitializer"></param>
+        void RegisterComponent<T>(string componentName, Func<T> componentInitializer) where T : class;
+
+        /// <summary>
+        /// Register the given shared componente
+        /// </summary>
+        /// <typeparam name="T">The type of the shared component</typeparam>
+        /// <param name="componentName">The name of the shared component</param>
+        /// <param name="componentInitializer">The initializer for the component</param>
+        /// <param name="overwrite">Whether to overwrite an existing component with the new one</param>
+        void RegisterComponent<T>(string componentName, Func<T> componentInitializer, bool overwrite) where T: class;
+
+        /// <summary>
+        /// Remove the provided component from the shared components registry
+        /// </summary>
+        /// <typeparam name="T">The type of the component</typeparam>
+        /// <param name="componentName">The component name</param>
+        void UnregisterComponent<T>(string componentName) where T: class;
+
+        /// <summary>
+        /// Remove all components from the session shared component registry
+        /// </summary>
+        void ClearComponents();
 
         /// <summary>
         /// The trace level for authentication
