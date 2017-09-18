@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Commands.Resources
         public SwitchParameter PassThru { get; set; }
 
 		[ValidateNotNullOrEmpty]
-		[Parameter(Position = 0, Mandatory = true, ParameterSetName = ParameterSet.RoleAssignment, HelpMessage = "Role definition.")]
+		[Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleAssignment, HelpMessage = "Role Assignment.")]
 		public PSRoleAssignment RoleAssignment { get; set; }
 
 		public override void ExecuteCmdlet()
