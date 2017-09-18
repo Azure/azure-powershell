@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
             {
                 var currentContext = AsAzureClientSession.Instance.Profile.Context;
                 if (currentContext != null
-                    && !AsAzureClientSession.AsAzureRolloutEnvironmentMapping.ContainsKey(currentContext.Environment.Name))
+                    && AsAzureClientSession.AsAzureRolloutEnvironmentMapping.ContainsKey(currentContext.Environment.Name))
                 {
                     throw new PSInvalidOperationException(string.Format(Resources.InvalidServerName, serverName));
                 }
@@ -338,7 +338,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
             string accessToken)
         {
             var synchronize = string.Format((string)context.Environment.Endpoints[AsAzureEnvironment.AsRolloutEndpoints.SyncEndpoint], this.clusterResolveResult.CoreServerName, databaseName);
-            WriteInformation(new InformationRecord(string.Format("Synchronize database {0}", databaseName) + string.Format("Submitting sync request to server", serverName), string.Empty));
 
             return await Task.Run(async () =>
             {
@@ -347,7 +346,8 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
                     syncBaseUri,
                     synchronize,
                     accessToken,
-                    correlationId))
+                    correlationId,
+                    null))
                 {
                     this.syncRequestRootActivityId = message.Headers.Contains(RootActivityIdHeaderName) ? message.Headers.GetValues(RootActivityIdHeaderName).FirstOrDefault() : string.Empty;
                     this.syncRequestTimeStamp = message.Headers.Contains(CurrentUtcDateHeaderName) ? message.Headers.GetValues(CurrentUtcDateHeaderName).FirstOrDefault() : string.Empty;
@@ -357,7 +357,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
                     var pollingUrl = message.Headers.Location;
                     var retryAfter = message.Headers.RetryAfter;
 
-                    WriteInformation(new InformationRecord(string.Format("Synchronize database {0}. Successfully submitted sync request. StatusCode: {1}", databaseName, message.StatusCode.ToString()), string.Empty));
                     return new Tuple<Uri, RetryConditionHeaderValue>(pollingUrl, retryAfter);
                 }
             });
@@ -372,7 +371,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
         /// <param name="pollingInterval">Polling interval set by the post response</param>
         /// <param name="maxNumberOfAttempts">Max number of attempts for each poll before the attempt is declared a failure</param>
         /// <returns></returns>
-        private async Task<ScaleOutServerDatabaseSyncResult> PollSyncStatusWithRetryAsync(string databaseName, string accessToken, Uri pollingUrl, TimeSpan pollingInterval, int maxNumberOfAttempts = 2000)
+        private async Task<ScaleOutServerDatabaseSyncResult> PollSyncStatusWithRetryAsync(string databaseName, string accessToken, Uri pollingUrl, TimeSpan pollingInterval, int maxNumberOfAttempts = 3)
         {
             return await Task.Run(async () =>
             {
@@ -386,7 +385,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
                         // Wait for specified polling interval other than retries.
                         if (retryCount == 0)
                         {
-                            WriteInformation(new InformationRecord(string.Format("Synchronize database {0}. Attempt #{1}. Waiting for {2} seconds to get sync results...", databaseName, retryCount, pollingInterval.TotalSeconds), string.Empty));
+                            // WriteInformation(new InformationRecord(string.Format("Synchronize database {0}. Attempt #{1}. Waiting for {2} seconds to get sync results...", databaseName, retryCount, pollingInterval.TotalSeconds), string.Empty));
                             await Task.Delay(pollingInterval);
                         }
                         else
@@ -404,7 +403,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
                             syncCompleted = !message.StatusCode.Equals(HttpStatusCode.SeeOther);
                             if (syncCompleted)
                             {
-                                string errorResponse = string.Empty;
                                 if (message.IsSuccessStatusCode)
                                 {
                                     var responseString = await message.Content.ReadAsStringAsync();
@@ -413,23 +411,24 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
                                 }
                                 else
                                 {
-                                    errorResponse = await message.Content.ReadAsStringAsync();
                                     retryCount++;
-                                    if (retryCount >= maxNumberOfAttempts)
+                                    if (response == null)
                                     {
-                                        if (response == null)
+                                        response = new ScaleOutServerDatabaseSyncResult()
                                         {
-                                            response = new ScaleOutServerDatabaseSyncResult()
-                                            {
-                                                Database = databaseName,
-                                                SyncState = DatabaseSyncState.Invalid,
-                                                Details = errorResponse
-                                            };
-                                        }
+                                            Database = databaseName,
+                                            SyncState = DatabaseSyncState.Invalid
+                                        };
+
+                                        response.Details = string.Format(
+                                            "Http Error code: {0}. {1}", 
+                                            message.StatusCode.ToString(), 
+                                            message.Content != null ? await message.Content.ReadAsStringAsync() : string.Empty);
                                     }
-                                    else
+
+                                    if (message.StatusCode >= (HttpStatusCode)400 && message.StatusCode <= (HttpStatusCode)499)
                                     {
-                                        //WriteWarning(string.Format("Synchronize database {0}.", databaseName) + string.Format("Attempt #{0}, failed to get sync status. StatusCode: {1}. Retrying...", retryCount, pollingInterval.TotalSeconds));
+                                        break;   
                                     }
                                 }
                             }
