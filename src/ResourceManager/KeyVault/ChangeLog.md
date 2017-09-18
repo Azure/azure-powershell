@@ -18,16 +18,16 @@
         - Additional information about change #1
 -->
 ## Current Release
+* New/updated Cmdlets to support soft-delete for KeyVault certificates
+  * Get-AzureKeyVaultCertificate
+  * Remove-AzureKeyVaultCertificate
+  * Undo-AzureKeyVaultCertificateRemoval
 
 ## Version 3.3.1
 
 ## Version 3.3.0
 
 ## Version 3.2.1
-* New/updated Cmdlets to support soft-delete for KeyVault certificates
-  * Get-AzureKeyVaultCertificate
-  * Remove-AzureKeyVaultCertificate
-  * Undo-AzureKeyVaultCertificateRemoval
 
 ## Version 3.2.0
 * Remove email address from the directory query when -UserPrincipalName is specified to the Set-AzureRMKeyVaultAccessPolicy and Remove-AzureRMKeyVaultAccessPolicy cmdlets.
