@@ -14,6 +14,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using Microsoft.Azure.Management.Dns.Models;
 
 namespace Microsoft.Azure.Commands.Dns
 {
@@ -46,6 +47,21 @@ namespace Microsoft.Azure.Commands.Dns
         /// Name servers provisioned for this zone
         /// </summary>
         public List<string> NameServers { get; set; }
+
+        /// <summary>
+        /// Type of this Zone
+        /// </summary>
+        public ZoneType ZoneType { get; set; }
+
+        /// <summary>
+        /// Virtual Networks whose names will be registered on this zone
+        /// </summary>
+        public List<string>  RegistrationVirtualNetworkIds { get; set; }
+
+        /// <summary>
+        /// Virtual Networks that will have this zone in their resolution scope
+        /// </summary>
+        public List<string> ResolutionVirtualNetworkIds { get; set; } 
 
         /// <summary>
         /// Gets or sets the number of records for this zone
