@@ -96,6 +96,11 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "EnableFloatingIP")]
         public SwitchParameter EnableFloatingIP { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "DisableOutboundSNAT")]
+        public SwitchParameter DisableOutboundSNAT { get; set; }
+
         public override void Execute()
         {
             

@@ -89,9 +89,12 @@
     <Compile Include="Commands\RemoveAzureKeyVaultCertificateOperation.cs" />
     <Compile Include="Commands\SetAzureKeyVaultCertificateIssuer.cs" />
     <Compile Include="Commands\SetAzureKeyVaultCertificatePolicy.cs" />
+    <Compile Include="Commands\UndoAzureKeyVaultCertificateRemoval.cs" />
     <Compile Include="Commands\UndoAzureKeyVaultRemoval.cs" />
     <Compile Include="Commands\UndoAzureKeyVaultKeyRemoval.cs" />
     <Compile Include="Commands\UndoAzureKeyVaultSecretRemoval.cs" />
+    <Compile Include="Models\DeletedCertificateIdentityItem.cs" />
+    <Compile Include="Models\DeletedKeyVaultCertificate.cs" />
     <Compile Include="Models\PSDeletedVault.cs" />
     <Compile Include="Models\CertificateIdentityItem.cs" />
     <Compile Include="Commands\Constants.cs" />
@@ -178,11 +181,11 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.ActiveDirectory.GraphClient.2.1.0\lib\portable-net4+sl5+win+wpa+wp8\Microsoft.Azure.ActiveDirectory.GraphClient.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.KeyVault, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.KeyVault.2.3.0-preview\lib\net452\Microsoft.Azure.KeyVault.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.KeyVault.2.3.2\lib\net452\Microsoft.Azure.KeyVault.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.KeyVault.WebKey, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.KeyVault.WebKey.2.0.6\lib\net452\Microsoft.Azure.KeyVault.WebKey.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.KeyVault.WebKey.2.0.7\lib\net452\Microsoft.Azure.KeyVault.WebKey.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.KeyVault, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">

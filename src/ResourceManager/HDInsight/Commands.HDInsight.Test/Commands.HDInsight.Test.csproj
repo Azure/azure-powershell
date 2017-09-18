@@ -56,7 +56,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Management.HDInsight.Job">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.HDInsight.Job.2.0.3\lib\net40\Microsoft.Azure.Management.HDInsight.Job.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.HDInsight.Job.2.0.4\lib\net40\Microsoft.Azure.Management.HDInsight.Job.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Storage.2.4.0-preview\lib\net40\Microsoft.Azure.Management.Storage.dll</HintPath>

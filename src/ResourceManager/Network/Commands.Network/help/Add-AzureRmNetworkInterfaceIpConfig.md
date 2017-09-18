@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+Module Name: AzureRM.Network
 ms.assetid: 7610228A-61F9-41B8-A42A-CD7C793BB33F
 online version: 
 schema: 2.0.0
@@ -283,7 +284,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### PSNetworkInterface
-
 Parameter 'NetworkInterface' accepts value of type 'PSNetworkInterface' from the pipeline
 
 ## OUTPUTS

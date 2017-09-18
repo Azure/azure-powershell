@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+Module Name: AzureRM.Network
 ms.assetid: 614B0634-154A-449A-83E7-051DEF5A3BEE
 online version: 
 schema: 2.0.0
@@ -59,7 +60,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### PSLoadBalancer
-
 Parameter 'LoadBalancer' accepts value of type 'PSLoadBalancer' from the pipeline
 
 ## OUTPUTS

@@ -25,8 +25,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 "WebSocketsEnabled",
                 "Use32BitWorkerProcess",
                 "AutoSwapSlotName",
-                "NumberOfWorkers",
-                "AlwaysOn"
+                "NumberOfWorkers"
             };
 
         private static readonly Regex AppWithSlotNameRegex = new Regex(@"^(?<siteName>[^\(]+)\((?<slotName>[^\)]+)\)$");

@@ -118,6 +118,11 @@ function Validate-MarkdownHelp
                             if ($content[$idx+1] -notcontains "## SYNTAX")
                             {
                                 $idx++
+                                if ($idx -ge $content.Length)
+                                {
+                                    Write-Error "Could not find SYNTAX header in file $($file.Name)"
+                                    return
+                                }
                             }
                             elseif ($content[$idx] -contains "{{Fill in the Synopsis}}")
                             {
@@ -147,6 +152,11 @@ function Validate-MarkdownHelp
                             if ($content[$idx+1] -notcontains "## EXAMPLES")
                             {
                                 $idx++
+                                if ($idx -ge $content.Length)
+                                {
+                                    Write-Error "Could not find EXAMPLES header in file $($file.Name)"
+                                    return
+                                }
                             }
                             elseif ($content[$idx] -contains "{{Fill in the Description}}")
                             {
@@ -167,9 +177,14 @@ function Validate-MarkdownHelp
                     "## EXAMPLES"
                     {
                         # Move the index to the start of the PowerShell code
-                        while ($content[$idx] -notcontains "``````")
+                        while ($content[$idx] -notcontains "``````" -and $content[$idx] -notcontains "``````powershell")
                         {
                             $idx++
+                            if ($idx -ge $content.Length)
+                            {
+                                Write-Error "Could not find start of PowerShell example in file $($file.Name)"
+                                return
+                            }
                         }
 
                         # Check for the platyPS example template

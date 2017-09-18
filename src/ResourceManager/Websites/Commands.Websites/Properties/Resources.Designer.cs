@@ -10,7 +10,6 @@
 
 namespace Microsoft.Azure.Commands.WebApps.Properties {
     using System;
-    using System.Reflection;
     
     
     /// <summary>
@@ -23,7 +22,7 @@ namespace Microsoft.Azure.Commands.WebApps.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Resources {
+    internal class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -40,7 +39,7 @@ namespace Microsoft.Azure.Commands.WebApps.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.WebApps.Properties.Resources", typeof(Resources).GetTypeInfo().Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.WebApps.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -58,6 +57,24 @@ namespace Microsoft.Azure.Commands.WebApps.Properties {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to use the complete deployment mode? Resources in the resource group &apos;{0}&apos; which are not included in the template will be deleted..
+        /// </summary>
+        internal static string ConfirmOnCompleteDeploymentMode {
+            get {
+                return ResourceManager.GetString("ConfirmOnCompleteDeploymentMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creating Deployment.
+        /// </summary>
+        internal static string CreateDeployment {
+            get {
+                return ResourceManager.GetString("CreateDeployment", resourceCulture);
             }
         }
         
@@ -130,6 +147,15 @@ namespace Microsoft.Azure.Commands.WebApps.Properties {
         internal static string RemovingWebsite {
             get {
                 return ResourceManager.GetString("RemovingWebsite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The DeploymentDebug setting has been enabled. This can potentially log secrets like passwords used in resource property or listKeys operations when you retrieve the deployment operations through Get-AzureRmResourceGroupDeploymentOperation.
+        /// </summary>
+        internal static string WarnOnDeploymentDebugSetting {
+            get {
+                return ResourceManager.GetString("WarnOnDeploymentDebugSetting", resourceCulture);
             }
         }
     }

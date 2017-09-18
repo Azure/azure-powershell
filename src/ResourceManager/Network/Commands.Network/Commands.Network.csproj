@@ -215,6 +215,8 @@
     <Compile Include="Models\PSApplicationGatewayAvailableSslOptions.cs" />
     <Compile Include="Models\PSEndpointServiceResult.cs" />
     <Compile Include="Models\PSServiceEndpoint.cs" />
+    <Compile Include="Models\PSLoadBalancerSku.cs" />
+    <Compile Include="Models\PSPublicIpAddressSku.cs" />
     <Compile Include="Models\PSVirtualNetworkUsage.cs" />
     <Compile Include="Models\PSApplicationGatewayBackendHealth.cs" />
     <Compile Include="Models\PSApplicationGatewayBackendHealthHttpSettings.cs" />
