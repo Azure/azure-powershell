@@ -1,7 +1,7 @@
-Import-Module .\..\..\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1
-Import-Module .\..\..\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Resources.psd1
-Import-Module .\..\..\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Network\AzureRM.Network.psd1
-Import-Module .\..\..\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Compute\AzureRM.Compute.psd1
+Import-Module AzureRM.Profile -MinimumVersion 3.3.2
+Import-Module AzureRM.Resources -MinimumVersion 4.3.2
+Import-Module AzureRM.Network -MinimumVersion 4.3.2
+Import-Module AzureRM.Compute -MinimumVersion 3.3.2
 Import-Module .\..\..\experiments\Compute.Experiments\AzureRM.Compute.Experiments.psd1
 
 # Login
