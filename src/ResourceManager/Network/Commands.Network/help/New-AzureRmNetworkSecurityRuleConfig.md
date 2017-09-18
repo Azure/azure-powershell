@@ -81,7 +81,9 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.```yaml
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
 Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
@@ -131,7 +133,9 @@ Accept wildcard characters: False
 ```
 
 ### -DestinationApplicationSecurityGroup
-The application security group set as destination for the rule. It cannot be used with 'DestinationAddressPrefix' parameter.```yaml
+The application security group set as destination for the rule. It cannot be used with 'DestinationAddressPrefix' parameter.
+
+```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationSecurityGroup]
 Parameter Sets: SetByResource
 Aliases: 
@@ -144,7 +148,9 @@ Accept wildcard characters: False
 ```
 
 ### -DestinationApplicationSecurityGroupId
-The application security group set as destination for the rule. It cannot be used with 'DestinationAddressPrefix' parameter.```yaml
+The application security group set as destination for the rule. It cannot be used with 'DestinationAddressPrefix' parameter.
+
+```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: SetByResourceId
 Aliases: 
@@ -271,7 +277,9 @@ Accept wildcard characters: False
 ```
 
 ### -SourceApplicationSecurityGroup
-The application security group set as source for the rule. It cannot be used with 'SourceAddressPrefix' parameter.```yaml
+The application security group set as source for the rule. It cannot be used with 'SourceAddressPrefix' parameter.
+
+```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationSecurityGroup]
 Parameter Sets: SetByResource
 Aliases: 
@@ -284,7 +292,9 @@ Accept wildcard characters: False
 ```
 
 ### -SourceApplicationSecurityGroupId
-The application security group set as source for the rule. It cannot be used with 'SourceAddressPrefix' parameter.```yaml
+The application security group set as source for the rule. It cannot be used with 'SourceAddressPrefix' parameter.
+
+```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: SetByResourceId
 Aliases: 

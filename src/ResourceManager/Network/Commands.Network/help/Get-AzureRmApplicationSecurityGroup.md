@@ -22,17 +22,34 @@ The **Get-AzureRmApplicationSecurityGroup** cmdlet gets an application security 
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Retrieve all application security groups.
 ```
-PS C:\> Get-AzureRmApplicationSecurityGroup -Name "MyApplicationSecurityGroup" -ResourceGroup "MyResourceGroup"
+PS C:\> Get-AzureRmApplicationSecurityGroup
 ```
 
-The command above returns the application security group named as `MyApplicationSecurityGroup` that belongs to the resource group `MyResourceGroup`.
+The command above returns the all application security groups in the subscription.
+
+### Example 2: Retrieve application security groups in a resource group.
+```
+PS C:\> Get-AzureRmApplicationSecurityGroup -ResourceGroupName MyResourceGroup
+```
+
+The command above returns all application security groups that belong to the resource group MyResourceGroup.
+
+### Example 3: Retrieve a specific application security group.
+```
+PS C:\> Get-AzureRmApplicationSecurityGroup -ResourceGroupName MyResourceGroup -Name MyApplicationSecurityGroup
+```
+
+The command above returns the application security group MyApplicationSecurityGroup under the resource group MyResourceGroup.
+
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.```yaml
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
 Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential

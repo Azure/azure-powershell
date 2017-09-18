@@ -56,6 +56,20 @@ Add-AzureRmNetworkSecurityRuleConfig -Name rdp-rule -Description "Allow RDP" -Ac
 
 The first command retrieves an Azure network security group named "nsg1" from resource group "rg1". The second command dds a network security rule named "rdp-rule" that allows traffic from internet on port 3389 to the retrieved network security group object. Persists the modified Azure network security group.
 
+### 1: Adding a new security rule with application security groups
+```
+$srcAsg = New-AzureRmApplicationSecurityGroup -ResourceGroupName MyResourceGroup -Name srcAsg -Location "West US"
+$destAsg = New-AzureRmApplicationSecurityGroup -ResourceGroupName MyResourceGroup -Name destAsg -Location "West US"
+
+Get-AzureRmNetworkSecurityGroup -Name  nsg1 -ResourceGroupName rg1 |
+Add-AzureRmNetworkSecurityRuleConfig -Name rdp-rule -Description "Allow RDP" -Access
+    Allow -Protocol Tcp -Direction Inbound -Priority 100 -SourceApplicationSecurityGroup
+    $srcAsg -SourcePortRange * -DestinationApplicationSecurityGroup $destAsg -DestinationPortRange 3389 |
+Set-AzureRmNetworkSecurityGroup
+```
+
+First, we create two new application security groups. Then, we retrieve an Azure network security group named "nsg1" from resource group "rg1". and add a network security rule named "rdp-rule" to it. The rule allows traffic from all the IP configurations in the application security group "srcAsg" to all the IP configurations in "destAsg" on port 3389. After adding the rule, we persist the modified Azure network security group.
+
 ## PARAMETERS
 
 ### -Access
@@ -76,7 +90,9 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.```yaml
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
 Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
@@ -126,7 +142,9 @@ Accept wildcard characters: False
 ```
 
 ### -DestinationApplicationSecurityGroup
-The application security group set as destination for the rule. It cannot be used with 'DestinationAddressPrefix' parameter.```yaml
+The application security group set as destination for the rule. It cannot be used with 'DestinationAddressPrefix' parameter.
+
+```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationSecurityGroup]
 Parameter Sets: SetByResource
 Aliases: 
@@ -139,7 +157,9 @@ Accept wildcard characters: False
 ```
 
 ### -DestinationApplicationSecurityGroupId
-The application security group set as destination for the rule. It cannot be used with 'DestinationAddressPrefix' parameter.```yaml
+The application security group set as destination for the rule. It cannot be used with 'DestinationAddressPrefix' parameter.
+
+```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: SetByResourceId
 Aliases: 
@@ -282,7 +302,9 @@ Accept wildcard characters: False
 ```
 
 ### -SourceApplicationSecurityGroup
-The application security group set as source for the rule. It cannot be used with 'SourceAddressPrefix' parameter.```yaml
+The application security group set as source for the rule. It cannot be used with 'SourceAddressPrefix' parameter.
+
+```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationSecurityGroup]
 Parameter Sets: SetByResource
 Aliases: 
@@ -295,7 +317,9 @@ Accept wildcard characters: False
 ```
 
 ### -SourceApplicationSecurityGroupId
-The application security group set as source for the rule. It cannot be used with 'SourceAddressPrefix' parameter.```yaml
+The application security group set as source for the rule. It cannot be used with 'SourceAddressPrefix' parameter.
+
+```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: SetByResourceId
 Aliases: 

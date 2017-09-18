@@ -28,12 +28,14 @@ The **New-AzureRmApplicationSecurityGroup** cmdlet creates an application securi
 PS C:\> New-AzureRmPublicIpAddress -ResourceGroupName "MyResourceGroup" -Name "MyApplicationSecurityGroup" -Location "West US"
 ```
 
-This example creates an application security group with no associations. Once it is created, IP configurations in the network interface can be included in the group. Security rules may refer to the group as its source or destination. 
+This example creates an application security group with no associations. Once it is created, IP configurations in the network interface can be included in the group. Security rules may also refer to the group as their sources or destinations.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.```yaml
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
 Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
@@ -46,7 +48,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Do not ask for confirmation if you want to overwrite a resource
+Do not ask for confirmation if you want to overwrite a resource.
 
 ```yaml
 Type: SwitchParameter
@@ -76,7 +78,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of application security group.
+The name of the application security group.
 
 ```yaml
 Type: String
@@ -91,7 +93,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The resource group name of application security group.
+The resource group name of the application security group.
 
 ```yaml
 Type: String

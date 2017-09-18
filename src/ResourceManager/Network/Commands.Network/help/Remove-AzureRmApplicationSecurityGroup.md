@@ -32,7 +32,9 @@ This command deletes an application security group named MyApplicationSecurityGr
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.```yaml
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
 Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
@@ -60,7 +62,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of application security group.
+The name of the application security group.
 
 ```yaml
 Type: String
@@ -75,7 +77,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-{{Fill PassThru Description}}
+Returns an object representing the item with which you are working. By default, this cmdlet does not generate any output.
 
 ```yaml
 Type: SwitchParameter
@@ -90,7 +92,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The resource group name of application security group.
+The resource group name of the application security group.
 
 ```yaml
 Type: String

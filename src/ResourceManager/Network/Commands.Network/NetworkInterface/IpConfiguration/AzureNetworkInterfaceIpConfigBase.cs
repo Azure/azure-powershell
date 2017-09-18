@@ -118,14 +118,14 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = "SetByResourceId",
-            HelpMessage = "ApplicationSecurityGroupId")]
+            HelpMessage = "Specifies a collection of application security group references to which this network interface IP configuration belongs.")]
         public List<string> ApplicationSecurityGroupId { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = "SetByResource",
-            HelpMessage = "ApplicationSecurityGroup")]
+            HelpMessage = "Specifies a collection of application security group references to which this network interface IP configuration belongs.")]
         public List<PSApplicationSecurityGroup> ApplicationSecurityGroup { get; set; }
 
         public override void Execute()
