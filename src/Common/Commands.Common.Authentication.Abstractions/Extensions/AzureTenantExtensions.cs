@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <param name="other"></param>
         public static void CopyFrom(this IAzureTenant tenant, IAzureTenant other)
         {
-            if (other != null)
+            if (tenant != null && other != null)
             {
                 tenant.Id = other.Id;
                 tenant.Directory = other.Directory;

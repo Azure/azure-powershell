@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
             ExecuteClientAction(() =>
             {
-                if (ShouldProcess(this.ResourceGroupName, VerbsLifecycle.Stop)
+                if (ShouldProcess(this.VMScaleSetName, VerbsLifecycle.Stop)
                     && (this.Force.IsPresent ||
                         this.ShouldContinue(Properties.Resources.ResourceStoppingConfirmation,
                                             "Stop-AzureRmVmss operation")))
