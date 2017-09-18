@@ -117,6 +117,14 @@
               <ListItem>
                 <Label>VirtualNetworkPeerings</Label>
                 <PropertyName>VirtualNetworkPeeringsText</PropertyName>
+              </ListItem> 
+              <ListItem>
+                <Label>EnableDDoSProtection</Label>
+                <PropertyName>EnableDDoSProtectionText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>EnableVmProtection</Label>
+                <PropertyName>EnableVmProtectionText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -1011,6 +1019,10 @@
               <ListItem>
                 <Label>EffectiveSecurityRules</Label>
                 <PropertyName>EffectiveSecurityRulesText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>TagMap</Label>
+                <PropertyName>TagMapText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
