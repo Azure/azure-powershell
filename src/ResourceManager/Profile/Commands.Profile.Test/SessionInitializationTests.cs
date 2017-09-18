@@ -60,7 +60,35 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             AzureSession.Instance.ARMContextSaveMode = ContextSaveMode.Process;
             AzureSession.Instance.AuthenticationFactory = new MockTokenAuthenticationFactory();
             AzureSession.Instance.TokenCache = new AuthenticationStoreTokenCache(new AzureTokenCache());
-            Environment.SetEnvironmentVariable("Azure_PS_Data_Collection", "false");
+            Environment.SetEnvironmentVariable("Azure_PS_Data_Collection", "");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void DataCollectionSettingPreventsFileWrite()
+        {
+            try
+            {
+                Environment.SetEnvironmentVariable("Azure_PS_Data_Collection", "true");
+                var store = SetupStore();
+                store.Setup(f => f.FileExists(It.IsAny<string>())).Returns(false);
+                store.Setup(f => f.WriteFile(It.IsAny<string>(), It.IsAny<string>())).Throws(new IOException("Cannot access file"));
+                store.Setup(f => f.WriteFile(It.IsAny<string>(), It.IsAny<byte[]>())).Throws(new IOException("Cannot access file"));
+                store.Setup(f => f.WriteFile(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<Encoding>())).Throws(new IOException("Cannot access file"));
+                AzureSessionInitializer.CreateOrReplaceSession(store.Object);
+                var session = AzureSession.Instance;
+                Assert.NotNull(session);
+                Assert.Equal(ContextSaveMode.Process, session.ARMContextSaveMode);
+                Assert.NotNull(session.TokenCache);
+                Assert.Equal(typeof(AuthenticationStoreTokenCache), session.TokenCache.GetType());
+                Assert.NotNull(AzureRmProfileProvider.Instance);
+                Assert.Equal(typeof(ResourceManagerProfileProvider), AzureRmProfileProvider.Instance.GetType());
+                store.Verify(f => f.WriteFile(It.IsAny<string>(), It.IsAny<string>()), Times.Never);
+            }
+            finally
+            {
+                ResetState();
+            }
         }
 
         [Fact]
