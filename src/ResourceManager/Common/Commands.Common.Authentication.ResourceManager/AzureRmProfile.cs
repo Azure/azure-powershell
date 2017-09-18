@@ -562,6 +562,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                 TrySetContext(context.Key, context.Value);
             }
 
+            this.TrySetDefaultContext(other.DefaultContext);
             this.CopyPropertiesFrom(other);
             return true;
         }
