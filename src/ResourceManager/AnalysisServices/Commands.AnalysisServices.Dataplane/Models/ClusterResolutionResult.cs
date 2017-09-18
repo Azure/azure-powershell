@@ -19,7 +19,7 @@ using System.Runtime.Serialization;
 namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
 { 
     [DataContract]
-    sealed class ClusterResolutionResult
+    public sealed class ClusterResolutionResult
     {
         [DataMember(Name = "clusterFQDN")]
         public string ClusterFQDN { get; set; }
