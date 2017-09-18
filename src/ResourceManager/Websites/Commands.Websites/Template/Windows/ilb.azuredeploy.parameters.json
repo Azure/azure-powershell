@@ -1,0 +1,24 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json",
+    "contentVersion": "1.0.0.0",
+  "parameters": {
+    "aseName": {
+      "value": "{aseName}"
+    },
+    "aseLocation": {
+      "value": "{location}"
+    },
+    "existingVnetResourceId": {
+      "value": "/subscriptions/{subscription}/resourceGroups/{resourcegroup}/providers/Microsoft.Network/virtualNetworks/{vnet}"
+    },
+    "subnetName": {
+      "value": "{subnet}"
+    },
+    "internalLoadBalancingMode": {
+      "value": 3
+    },
+    "dnsSuffix": {
+      "value": "{dnssuffix}"
+    }
+  }
+}

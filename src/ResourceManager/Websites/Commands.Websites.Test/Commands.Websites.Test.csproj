@@ -138,6 +138,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ScenarioTests\AppServiceEnvironmentTest.cs" />
     <Compile Include="ScenarioTests\AppServicePlanTests.cs" />
     <Compile Include="ScenarioTests\WebAppBackupRestoreTests.cs" />
     <Compile Include="ScenarioTests\SSLBindingTests.cs" />
@@ -157,6 +158,7 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="ScenarioTests\AppServiceEnvironmentTest.ps1" />
     <None Include="ScenarioTests\Common.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -329,6 +331,8 @@
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.AppServiceEnvironment\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

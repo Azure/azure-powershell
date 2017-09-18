@@ -141,4 +141,13 @@
   <data name="RemovingWebAppSSLBinding" xml:space="preserve">
     <value>Are you sure you want to remove the web app ssl binding for hostname '{0}'</value>
   </data>
+  <data name="ConfirmOnCompleteDeploymentMode" xml:space="preserve">
+    <value>Are you sure you want to use the complete deployment mode? Resources in the resource group '{0}' which are not included in the template will be deleted.</value>
+  </data>
+  <data name="CreateDeployment" xml:space="preserve">
+    <value>Creating Deployment</value>
+  </data>
+  <data name="WarnOnDeploymentDebugSetting" xml:space="preserve">
+    <value>The DeploymentDebug setting has been enabled. This can potentially log secrets like passwords used in resource property or listKeys operations when you retrieve the deployment operations through Get-AzureRmResourceGroupDeploymentOperation</value>
+  </data>
 </root>
