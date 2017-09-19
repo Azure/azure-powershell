@@ -73,6 +73,18 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
+        
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "A switch parameter which represents if DDoS protection is enabled or not.")]
+        public SwitchParameter EnableDDoSProtection { get; set; }
+
+        [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "A switch parameter which represents if Vm protection is enabled or not.")]
+        public SwitchParameter EnableVmProtection { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -113,6 +125,8 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             vnet.Subnets = this.Subnet;
+            vnet.EnableDDoSProtection = this.EnableDDoSProtection;
+            vnet.EnableVmProtection = this.EnableVmProtection;
 
             // Map to the sdk object
             var vnetModel = Mapper.Map<MNM.VirtualNetwork>(vnet);
