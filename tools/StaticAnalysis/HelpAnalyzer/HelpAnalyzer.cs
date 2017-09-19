@@ -168,6 +168,8 @@ namespace StaticAnalysis.HelpAnalyzer
                     HelpFile = service + "/folder",
                     ProblemId = MissingHelpFile
                 });
+
+		        return;
             }
 
             var helpFiles = Directory.EnumerateFiles(helpFolder, "*.md").Select(f => Path.GetFileNameWithoutExtension(f)).ToList();
@@ -194,7 +196,14 @@ namespace StaticAnalysis.HelpAnalyzer
                                     " -FileName " + psd1FileName +
                                     " -BindingVariable ModuleMetadata; $ModuleMetadata.NestedModules");
                 var cmdletResult = powershell.Invoke();
-                var cmdletFiles = cmdletResult.Select(c => c.ToString().Substring(2));
+
+                // used for webapp experimental cmdlets. Reason: no nested modules.
+                if (cmdletResult == null)
+                {
+                    return;
+                }
+
+                var cmdletFiles = cmdletResult.Where(i => i != null && !string.IsNullOrWhiteSpace(i.ToString()) && i.ToString().Length > 2).Select(c => c.ToString().Substring(2));
                 if (cmdletFiles.Any())
                 {
                     List<CmdletHelpMetadata> allCmdlets = new List<CmdletHelpMetadata>();

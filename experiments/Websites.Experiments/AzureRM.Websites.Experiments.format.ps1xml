@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Configuration>
+  <ViewDefinitions>
+    <View>
+      <Name>Microsoft.Azure.Management.WebSites.Models.Site</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Management.WebSites.Models.Site</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <PropertyName>SiteName</PropertyName>
+              </ListItem>
+              <ListItem>                
+                <PropertyName>ResourceGroup</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>AppServicePlan</Label>
+                <ScriptBlock>($_.ServerFarmId.split('/'))[($_.ServerFarmId.split('/')).Count - 1]</ScriptBlock>
+              </ListItem>
+	      <ListItem>                
+                <PropertyName>Location</PropertyName>
+              </ListItem>
+	      <ListItem> 
+		<Label>Uri</Label>               
+                <PropertyName>DefaultHostName</PropertyName>
+              </ListItem>
+	      <ListItem> 
+		<Label>ScmUri</Label>               
+                <ScriptBlock>($_.EnabledHostNames[1])</ScriptBlock>
+              </ListItem>
+	      <ListItem> 
+		<Label>Next Steps</Label>               
+                <Text>Learn how to deploy the files for your web app to Azure App Service following this link https://docs.microsoft.com/en-us/azure/app-service-web/web-sites-deploy</Text>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+  </ViewDefinitions>
+</Configuration>
