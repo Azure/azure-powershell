@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the policy definition parameter
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The policy set definition. This can either be a path to a file name containing the policy definitions, or the policy set definition as string.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The policy definition. This can either be a path to a file name containing the policy definitions, or the policy set definition as string.")]
         [ValidateNotNullOrEmpty]
         public string PolicyDefinition { get; set; }
 
@@ -77,29 +77,33 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         protected override void OnProcessRecord()
         {
             base.OnProcessRecord();
-            string resourceId = GetResourceId();
 
-            var apiVersion = string.IsNullOrWhiteSpace(this.ApiVersion) ? Constants.PolicySetDefintionApiVersion : this.ApiVersion;
+            if(this.ShouldProcess(this.Name, "Create Policy Set Definition"))
+            {
+                string resourceId = GetResourceId();
 
-            var operationResult = this.GetResourcesClient()
-                .PutResource(
-                    resourceId: resourceId,
-                    apiVersion: apiVersion,
-                    resource: this.GetResource(),
-                    cancellationToken: this.CancellationToken.Value,
-                    odataQuery: null)
-                .Result;
+                var apiVersion = string.IsNullOrWhiteSpace(this.ApiVersion) ? Constants.PolicySetDefintionApiVersion : this.ApiVersion;
 
-            var managementUri = this.GetResourcesClient()
-              .GetResourceManagementRequestUri(
-                  resourceId: resourceId,
-                  apiVersion: apiVersion,
-                  odataQuery: null);
+                var operationResult = this.GetResourcesClient()
+                    .PutResource(
+                        resourceId: resourceId,
+                        apiVersion: apiVersion,
+                        resource: this.GetResource(),
+                        cancellationToken: this.CancellationToken.Value,
+                        odataQuery: null)
+                    .Result;
 
-            var activity = string.Format("PUT {0}", managementUri.PathAndQuery);
-            var result = this.GetLongRunningOperationTracker(activityName: activity, isResourceCreateOrUpdate: true)
-                .WaitOnOperation(operationResult: operationResult);
-            this.WriteObject(this.GetOutputObjects("PolicySetDefinitionId", JObject.Parse(result)), enumerateCollection: true);
+                var managementUri = this.GetResourcesClient()
+                  .GetResourceManagementRequestUri(
+                      resourceId: resourceId,
+                      apiVersion: apiVersion,
+                      odataQuery: null);
+
+                var activity = string.Format("PUT {0}", managementUri.PathAndQuery);
+                var result = this.GetLongRunningOperationTracker(activityName: activity, isResourceCreateOrUpdate: true)
+                    .WaitOnOperation(operationResult: operationResult);
+                this.WriteObject(this.GetOutputObjects("PolicySetDefinitionId", JObject.Parse(result)), enumerateCollection: true);
+            }
         }
 
         /// <summary>
