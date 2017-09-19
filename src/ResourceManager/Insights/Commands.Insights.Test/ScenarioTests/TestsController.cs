@@ -149,12 +149,10 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
         {
             if (HttpMockServer.Mode == HttpRecorderMode.Record)
             {
+                // This allows the use of a particular subscription if the user is associated to several
                 // "TEST_CSM_ORGID_AUTHENTICATION=SubscriptionId=<subscription-id>"
                 string subId = Environment.GetEnvironmentVariable("TEST_CSM_ORGID_AUTHENTICATION");
-                subId = string.IsNullOrWhiteSpace(subId) ? "07c0b09d-9f69-4e6e-8d05-f59f67299cb2" : subId.Split('=')[1];
-
-                // ;AADTenant=72f988bf-86f1-41af-91ab-2d7cd011db47;UserId=gucalder@microsoft.com");
-                RestTestFramework.TestEnvironment environment = new RestTestFramework.TestEnvironment(connectionString: "SubscriptionId=" + subId);
+                RestTestFramework.TestEnvironment environment = new RestTestFramework.TestEnvironment(connectionString: subId);
                 this.MonitorClient = this.GetMonitorClient(context: context, env: environment);
                 this.MonitorManagementClient = this.GetInsightsManagementClient(context: context, env: environment);
             }

@@ -50,6 +50,8 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
         /// Gets or sets the Tags of the activity log alert resource
         /// </summary>
         [Parameter(ParameterSetName = DisableActivityLogAlertDeafultParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The tags of the activity log alert resource")]
+        [Parameter(ParameterSetName = DisableActivityLogAlertFromPipeParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The tags of the activity log alert resource")]
+        [Parameter(ParameterSetName = DisableActivityLogAlertFromResourceIdParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The tags of the activity log alert resource")]
         [ValidateNotNullOrEmpty]
         public Dictionary<string, string> Tag { get; set; }
 
@@ -90,7 +92,7 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
                         resourceGroupName: out resourceGroupName,
                         activityLogAlertName: out activityLogAlertName);
 
-                    tags = this.InputObject.Tags;
+                    tags = this.MyInvocation.BoundParameters.ContainsKey("Tag") || this.Tag != null ? this.Tag : this.InputObject.Tags;
                 }
                 else if (this.MyInvocation.BoundParameters.ContainsKey("ResourceId") || !string.IsNullOrWhiteSpace(this.ResourceId))
                 {
