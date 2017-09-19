@@ -292,7 +292,7 @@ CmdletsToExport = 'Add-AzureRmApplicationGatewayAuthenticationCertificate',
                'Get-AzureRmVirtualNetworkGatewayAdvertisedRoute', 
                'Get-AzureRmVirtualNetworkGatewayLearnedRoute', 
                'Get-AzureRmNetworkUsage',
-               'Get-AzureRmVirtualNetworkGatewaySupportedVpnDevices',
+               'Get-AzureRmVirtualNetworkGatewaySupportedVpnDevice',
                'Get-AzureRmVirtualNetworkGatewayConnectionVpnDeviceConfigScript'
 
 # Variables to export from this module

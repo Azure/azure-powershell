@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-AzureRmVirtualNetworkGatewaySupportedVpnDevices
+# Get-AzureRmVirtualNetworkGatewaySupportedVpnDevice
 
 ## SYNOPSIS
 This commandlet returns a list of supported VPN device brands, models, and firmware versions.
@@ -13,7 +13,7 @@ This commandlet returns a list of supported VPN device brands, models, and firmw
 ## SYNTAX
 
 ```
-Get-AzureRmVirtualNetworkGatewaySupportedVpnDevices [-Name <String>] -ResourceGroupName <String>
+Get-AzureRmVirtualNetworkGatewaySupportedVpnDevice [-Name <String>] -ResourceGroupName <String>
  [-DefaultProfile <IAzureContextContainer>]
 ```
 
@@ -24,7 +24,7 @@ This commandlet returns a list of supported VPN device brands, models, and firmw
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmVirtualNetworkGatewaySupportedVpnDevices -ResourceGroupName TestRG -Name TestGateway 
+PS C:\> Get-AzureRmVirtualNetworkGatewaySupportedVpnDevice -ResourceGroupName TestRG -Name TestGateway 
 <?xml version="1.0" encoding="utf-8"?>
 <RpVpnDeviceList version="1.0">
   <Vendor name="Cisco-Test">
@@ -38,13 +38,13 @@ PS C:\> Get-AzureRmVirtualNetworkGatewaySupportedVpnDevices -ResourceGroupName T
 
 Returns list of supported VPN device brands, models and firmware versions:
 <?xml version="1.0" encoding="utf-8"?>
-"<RpVpnDeviceList version="1.0">
+<RpVpnDeviceList version="1.0">
   <Vendor name="Cisco-Test">
     <DeviceFamily name="IOS-Test">
        <FirmwareVersion name="20" />
     </DeviceFamily>
   </Vendor>
-</RpVpnDeviceList>"
+</RpVpnDeviceList>
 
 ## PARAMETERS
 
