@@ -463,6 +463,10 @@ function Test-NewADApplication
     # Assert
     Assert-NotNull $application
 
+    $apps =  Get-AzureRmADApplication 
+    Assert-NotNull $apps
+    Assert-True { $apps.Count -ge 0 }
+
 	# Get Application by ObjectId
 	$app1 =  Get-AzureRmADApplication -ObjectId $application.ObjectId
 	Assert-NotNull $app1
