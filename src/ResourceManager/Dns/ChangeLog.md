@@ -18,7 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
-
+    * Support for Private DNS Zones (Public Preview feature)
+        - Adds ability to create DNS Zones that are visible only within associated virtual networks
 ## Version 3.3.1
 
 ## Version 3.3.0
