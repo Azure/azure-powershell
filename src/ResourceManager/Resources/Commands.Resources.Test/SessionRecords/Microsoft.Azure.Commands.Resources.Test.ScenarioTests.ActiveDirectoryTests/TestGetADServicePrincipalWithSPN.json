@@ -4,16 +4,16 @@
       "RequestUri": "/1273adef-00a3-4086-a51a-dbcce1857d36/applications?api-version=1.6",
       "EncodedRequestUri": "LzEyNzNhZGVmLTAwYTMtNDA4Ni1hNTFhLWRiY2NlMTg1N2QzNi9hcHBsaWNhdGlvbnM/YXBpLXZlcnNpb249MS42",
       "RequestMethod": "POST",
-      "RequestBody": "{\r\n  \"availableToOtherTenants\": false,\r\n  \"displayName\": \"adApplication562\",\r\n  \"homepage\": \"http://adApplication562/home\",\r\n  \"identifierUris\": [\r\n    \"http://adApplication562/home\"\r\n  ],\r\n  \"replyUrls\": [\r\n    \"http://adApplication562/home\"\r\n  ]\r\n}",
+      "RequestBody": "{\r\n  \"availableToOtherTenants\": false,\r\n  \"displayName\": \"adApplication3594\",\r\n  \"homepage\": \"http://adApplication3594/home\",\r\n  \"identifierUris\": [\r\n    \"http://adApplication3594/home\"\r\n  ],\r\n  \"replyUrls\": [\r\n    \"http://adApplication3594/home\"\r\n  ]\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "250"
+          "254"
         ],
         "x-ms-client-request-id": [
-          "927ac848-0b72-4cf5-b256-b4350aeb3e43"
+          "e380f0ac-4954-4a14-9aef-d272872441f0"
         ],
         "accept-language": [
           "en-US"
@@ -25,10 +25,10 @@
           "Microsoft.Azure.Graph.RBAC.Version1_6.GraphRbacManagementClient/1.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/$metadata#directoryObjects/Microsoft.DirectoryServices.Application/@Element\",\r\n  \"odata.type\": \"Microsoft.DirectoryServices.Application\",\r\n  \"objectType\": \"Application\",\r\n  \"objectId\": \"b2ac048f-234d-4092-85c9-07553087249d\",\r\n  \"deletionTimestamp\": null,\r\n  \"acceptMappedClaims\": null,\r\n  \"addIns\": [],\r\n  \"appId\": \"e8e980bb-6c7a-46f3-a0f0-0aebc0b7c1da\",\r\n  \"appRoles\": [],\r\n  \"availableToOtherTenants\": false,\r\n  \"displayName\": \"adApplication562\",\r\n  \"errorUrl\": null,\r\n  \"groupMembershipClaims\": null,\r\n  \"homepage\": \"http://adApplication562/home\",\r\n  \"identifierUris\": [\r\n    \"http://adApplication562/home\"\r\n  ],\r\n  \"keyCredentials\": [],\r\n  \"knownClientApplications\": [],\r\n  \"logoutUrl\": null,\r\n  \"oauth2AllowImplicitFlow\": false,\r\n  \"oauth2AllowUrlPathMatching\": false,\r\n  \"oauth2Permissions\": [\r\n    {\r\n      \"adminConsentDescription\": \"Allow the application to access adApplication562 on behalf of the signed-in user.\",\r\n      \"adminConsentDisplayName\": \"Access adApplication562\",\r\n      \"id\": \"be6ce080-4471-4c96-be21-8e2a109ff223\",\r\n      \"isEnabled\": true,\r\n      \"type\": \"User\",\r\n      \"userConsentDescription\": \"Allow the application to access adApplication562 on your behalf.\",\r\n      \"userConsentDisplayName\": \"Access adApplication562\",\r\n      \"value\": \"user_impersonation\"\r\n    }\r\n  ],\r\n  \"oauth2RequirePostResponse\": false,\r\n  \"optionalClaims\": null,\r\n  \"passwordCredentials\": [],\r\n  \"publicClient\": null,\r\n  \"recordConsentConditions\": null,\r\n  \"replyUrls\": [\r\n    \"http://adApplication562/home\"\r\n  ],\r\n  \"requiredResourceAccess\": [],\r\n  \"samlMetadataUrl\": null,\r\n  \"tokenEncryptionKeyId\": null\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/$metadata#directoryObjects/Microsoft.DirectoryServices.Application/@Element\",\r\n  \"odata.type\": \"Microsoft.DirectoryServices.Application\",\r\n  \"objectType\": \"Application\",\r\n  \"objectId\": \"ec7a1432-a8c2-48ff-839d-9fcb7a11c4a9\",\r\n  \"deletionTimestamp\": null,\r\n  \"acceptMappedClaims\": null,\r\n  \"addIns\": [],\r\n  \"appId\": \"638f589d-67ae-4aa7-974c-7c61fe1f8071\",\r\n  \"appRoles\": [],\r\n  \"availableToOtherTenants\": false,\r\n  \"displayName\": \"adApplication3594\",\r\n  \"errorUrl\": null,\r\n  \"groupMembershipClaims\": null,\r\n  \"homepage\": \"http://adApplication3594/home\",\r\n  \"identifierUris\": [\r\n    \"http://adApplication3594/home\"\r\n  ],\r\n  \"keyCredentials\": [],\r\n  \"knownClientApplications\": [],\r\n  \"logoutUrl\": null,\r\n  \"oauth2AllowImplicitFlow\": false,\r\n  \"oauth2AllowUrlPathMatching\": false,\r\n  \"oauth2Permissions\": [\r\n    {\r\n      \"adminConsentDescription\": \"Allow the application to access adApplication3594 on behalf of the signed-in user.\",\r\n      \"adminConsentDisplayName\": \"Access adApplication3594\",\r\n      \"id\": \"1119cd70-7d38-4ad1-a4ab-b48a140da65c\",\r\n      \"isEnabled\": true,\r\n      \"type\": \"User\",\r\n      \"userConsentDescription\": \"Allow the application to access adApplication3594 on your behalf.\",\r\n      \"userConsentDisplayName\": \"Access adApplication3594\",\r\n      \"value\": \"user_impersonation\"\r\n    }\r\n  ],\r\n  \"oauth2RequirePostResponse\": false,\r\n  \"optionalClaims\": null,\r\n  \"passwordCredentials\": [],\r\n  \"publicClient\": null,\r\n  \"recordConsentConditions\": null,\r\n  \"replyUrls\": [\r\n    \"http://adApplication3594/home\"\r\n  ],\r\n  \"requiredResourceAccess\": [],\r\n  \"samlMetadataUrl\": null,\r\n  \"tokenEncryptionKeyId\": null\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "1439"
+          "1447"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
@@ -40,19 +40,19 @@
           "no-cache"
         ],
         "ocp-aad-diagnostics-server-name": [
-          "DRh1E8KpzyDQ2JIEbQFJYUEDvVJ2kaqlg9shn22LEv0="
+          "7akEoJBB3jXdCcddmuqIriGupZolWpVIrAvUTJndNgo="
         ],
         "request-id": [
-          "8fb467fe-fec7-40ce-a36e-b7df51c0213e"
+          "59a8d8b6-447e-4733-9cbd-7898be1b7c56"
         ],
         "client-request-id": [
-          "29c10e0b-3559-4cce-be53-cd0c07867ead"
+          "4e012c64-eda7-4085-938a-81e7e8372761"
         ],
         "x-ms-dirapi-data-contract-version": [
           "1.6"
         ],
         "ocp-aad-session-key": [
-          "4kcROjzsACpgpwWgUQG6OzRh-OgB8H6nLun1rw4kZQxkvPhoDLjSq2R1OK26e7gPjyRYNCtoVzDBmIZBIickha7gG4zbNDl-I7qvLbIJatcAC8E9r0uAC7C47yZqAHL9knbkL-me6PIzwdrfhu3Izsr83292ZzV27XlrDv6vPvsUto2NqiIS16BoR7tpSyL3mkL1vILuyD1NsBJi_OrUmQ.dx0moFlC7pCk4aA0-5FrdqpeoRVErdX_wlQLdQjlqwQ"
+          "3nUnod-hzl8XEVeQ4Jbx2PL7tvlP7RRjHvwLQYaJIxA4il6TvFSDziK7H2SJ6gePI4x5Rwju06yGPczO26_jXZSiBEKyP0qak7gsEEaoJaMVKl67rTKScqhd0iuqKYbmtNShdJtxvZH2Rv989kgPK1NkEr7uvdStkR44kptnKdRV7vyVILI8cWfaeywlPznfRbNWS4hb_8rosvvno4wrrg.526jCyT4jycNQJ3zNOCK8fi-qlaNfjygrLZq6FLSJm8"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -67,13 +67,13 @@
           "*"
         ],
         "Duration": [
-          "3417509"
+          "2635307"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Location": [
-          "https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/directoryObjects/b2ac048f-234d-4092-85c9-07553087249d/Microsoft.DirectoryServices.Application"
+          "https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/directoryObjects/ec7a1432-a8c2-48ff-839d-9fcb7a11c4a9/Microsoft.DirectoryServices.Application"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -86,7 +86,7 @@
           "ASP.NET"
         ],
         "Date": [
-          "Tue, 19 Sep 2017 01:14:11 GMT"
+          "Tue, 19 Sep 2017 01:32:09 GMT"
         ]
       },
       "StatusCode": 201
@@ -95,7 +95,7 @@
       "RequestUri": "/1273adef-00a3-4086-a51a-dbcce1857d36/servicePrincipals?api-version=1.6",
       "EncodedRequestUri": "LzEyNzNhZGVmLTAwYTMtNDA4Ni1hNTFhLWRiY2NlMTg1N2QzNi9zZXJ2aWNlUHJpbmNpcGFscz9hcGktdmVyc2lvbj0xLjY=",
       "RequestMethod": "POST",
-      "RequestBody": "{\r\n  \"appId\": \"e8e980bb-6c7a-46f3-a0f0-0aebc0b7c1da\",\r\n  \"accountEnabled\": true\r\n}",
+      "RequestBody": "{\r\n  \"appId\": \"638f589d-67ae-4aa7-974c-7c61fe1f8071\",\r\n  \"accountEnabled\": true\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -104,7 +104,7 @@
           "82"
         ],
         "x-ms-client-request-id": [
-          "e513c6dc-28ed-4d5c-9fef-d03e4129455a"
+          "aaa6dcfd-235c-446f-8c8d-5cca22215572"
         ],
         "accept-language": [
           "en-US"
@@ -116,10 +116,10 @@
           "Microsoft.Azure.Graph.RBAC.Version1_6.GraphRbacManagementClient/1.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/$metadata#directoryObjects/Microsoft.DirectoryServices.ServicePrincipal/@Element\",\r\n  \"odata.type\": \"Microsoft.DirectoryServices.ServicePrincipal\",\r\n  \"objectType\": \"ServicePrincipal\",\r\n  \"objectId\": \"49d283fc-31a3-4f99-b617-2c5dc055ba7b\",\r\n  \"deletionTimestamp\": null,\r\n  \"accountEnabled\": true,\r\n  \"addIns\": [],\r\n  \"alternativeNames\": [],\r\n  \"appDisplayName\": \"adApplication562\",\r\n  \"appId\": \"e8e980bb-6c7a-46f3-a0f0-0aebc0b7c1da\",\r\n  \"appOwnerTenantId\": \"1273adef-00a3-4086-a51a-dbcce1857d36\",\r\n  \"appRoleAssignmentRequired\": false,\r\n  \"appRoles\": [],\r\n  \"displayName\": \"adApplication562\",\r\n  \"errorUrl\": null,\r\n  \"homepage\": \"http://adApplication562/home\",\r\n  \"keyCredentials\": [],\r\n  \"logoutUrl\": null,\r\n  \"oauth2Permissions\": [\r\n    {\r\n      \"adminConsentDescription\": \"Allow the application to access adApplication562 on behalf of the signed-in user.\",\r\n      \"adminConsentDisplayName\": \"Access adApplication562\",\r\n      \"id\": \"be6ce080-4471-4c96-be21-8e2a109ff223\",\r\n      \"isEnabled\": true,\r\n      \"type\": \"User\",\r\n      \"userConsentDescription\": \"Allow the application to access adApplication562 on your behalf.\",\r\n      \"userConsentDisplayName\": \"Access adApplication562\",\r\n      \"value\": \"user_impersonation\"\r\n    }\r\n  ],\r\n  \"passwordCredentials\": [],\r\n  \"preferredTokenSigningKeyThumbprint\": null,\r\n  \"publisherName\": \"rbacCliTestDirectory\",\r\n  \"replyUrls\": [\r\n    \"http://adApplication562/home\"\r\n  ],\r\n  \"samlMetadataUrl\": null,\r\n  \"servicePrincipalNames\": [\r\n    \"e8e980bb-6c7a-46f3-a0f0-0aebc0b7c1da\",\r\n    \"http://adApplication562/home\"\r\n  ],\r\n  \"servicePrincipalType\": \"Application\",\r\n  \"tags\": [],\r\n  \"tokenEncryptionKeyId\": null\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/$metadata#directoryObjects/Microsoft.DirectoryServices.ServicePrincipal/@Element\",\r\n  \"odata.type\": \"Microsoft.DirectoryServices.ServicePrincipal\",\r\n  \"objectType\": \"ServicePrincipal\",\r\n  \"objectId\": \"de602899-ad15-410f-af50-ea104aa852a7\",\r\n  \"deletionTimestamp\": null,\r\n  \"accountEnabled\": true,\r\n  \"addIns\": [],\r\n  \"alternativeNames\": [],\r\n  \"appDisplayName\": \"adApplication3594\",\r\n  \"appId\": \"638f589d-67ae-4aa7-974c-7c61fe1f8071\",\r\n  \"appOwnerTenantId\": \"1273adef-00a3-4086-a51a-dbcce1857d36\",\r\n  \"appRoleAssignmentRequired\": false,\r\n  \"appRoles\": [],\r\n  \"displayName\": \"adApplication3594\",\r\n  \"errorUrl\": null,\r\n  \"homepage\": \"http://adApplication3594/home\",\r\n  \"keyCredentials\": [],\r\n  \"logoutUrl\": null,\r\n  \"oauth2Permissions\": [\r\n    {\r\n      \"adminConsentDescription\": \"Allow the application to access adApplication3594 on behalf of the signed-in user.\",\r\n      \"adminConsentDisplayName\": \"Access adApplication3594\",\r\n      \"id\": \"1119cd70-7d38-4ad1-a4ab-b48a140da65c\",\r\n      \"isEnabled\": true,\r\n      \"type\": \"User\",\r\n      \"userConsentDescription\": \"Allow the application to access adApplication3594 on your behalf.\",\r\n      \"userConsentDisplayName\": \"Access adApplication3594\",\r\n      \"value\": \"user_impersonation\"\r\n    }\r\n  ],\r\n  \"passwordCredentials\": [],\r\n  \"preferredTokenSigningKeyThumbprint\": null,\r\n  \"publisherName\": \"rbacCliTestDirectory\",\r\n  \"replyUrls\": [\r\n    \"http://adApplication3594/home\"\r\n  ],\r\n  \"samlMetadataUrl\": null,\r\n  \"servicePrincipalNames\": [\r\n    \"638f589d-67ae-4aa7-974c-7c61fe1f8071\",\r\n    \"http://adApplication3594/home\"\r\n  ],\r\n  \"servicePrincipalType\": \"Application\",\r\n  \"tags\": [],\r\n  \"tokenEncryptionKeyId\": null\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "1482"
+          "1491"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
@@ -131,19 +131,19 @@
           "no-cache"
         ],
         "ocp-aad-diagnostics-server-name": [
-          "LY/yJbtWyuhbIWwwzINxuwIEezUchbj+/ceSqG17f24="
+          "7akEoJBB3jXdCcddmuqIriGupZolWpVIrAvUTJndNgo="
         ],
         "request-id": [
-          "891afdea-8353-4c2e-b98b-37f3adb65537"
+          "5079b4ba-4ca8-44c7-8d11-4a0c6e507cf4"
         ],
         "client-request-id": [
-          "3f7444c4-398b-4a13-b62a-3fd2774887d9"
+          "b19857fc-d622-45a1-9936-149b2eda345b"
         ],
         "x-ms-dirapi-data-contract-version": [
           "1.6"
         ],
         "ocp-aad-session-key": [
-          "KdjtpSrDMOW7Swwd6JgYkeomzluYSso5j-nl86XEb_ujfVntA1OCM_rn_MmzG-Er0bdevpER-cwZ-2y0QM-jGnd-XfTvk71ZDRdLqjwppg8ycDMCTzJKcc9jno_EEP6s6QXrlpnrA-IGG5Blc7WHNVXBlLbN1vQFvJRfcflhwpgKLZZ1KU43LxbDTxwKmuyJXOsIBy62W1LH9MOsag3I3w.8LLCc_nvWQDsSZ9j-XJHNLf9D2dgmEUpblecXVBdyYc"
+          "mloaVODP39Q34kfKTzDc8p2inFQ-iVJrXCLhWcGss5wsK4uLoS8YfPSXpbYo1tccmCTanh1vbWZsA2j5M-U4XH_fx57Eykwhiabca7nXiQlNZ8cMEvFUJonSWXeVbJ-rA1RW-AzklYus-hc1i7LofXJ2d_CXomF556X-SROPiKldU39C_FscgYebqSXVTc-68POi2eY40q7XONCu1w8ntg.XDvTyLGVyEHBmGoi8b43Xlnzkg70fn-solOr8I1b-xw"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -158,13 +158,13 @@
           "*"
         ],
         "Duration": [
-          "2844609"
+          "10103552"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Location": [
-          "https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/directoryObjects/49d283fc-31a3-4f99-b617-2c5dc055ba7b/Microsoft.DirectoryServices.ServicePrincipal"
+          "https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/directoryObjects/de602899-ad15-410f-af50-ea104aa852a7/Microsoft.DirectoryServices.ServicePrincipal"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -177,19 +177,19 @@
           "ASP.NET"
         ],
         "Date": [
-          "Tue, 19 Sep 2017 01:14:11 GMT"
+          "Tue, 19 Sep 2017 01:32:10 GMT"
         ]
       },
       "StatusCode": 201
     },
     {
-      "RequestUri": "/1273adef-00a3-4086-a51a-dbcce1857d36/servicePrincipals?$filter=servicePrincipalNames/any(c:%20c%20eq%20'http:%2F%2FadApplication562%2Fhome')&api-version=1.6",
-      "EncodedRequestUri": "LzEyNzNhZGVmLTAwYTMtNDA4Ni1hNTFhLWRiY2NlMTg1N2QzNi9zZXJ2aWNlUHJpbmNpcGFscz8kZmlsdGVyPXNlcnZpY2VQcmluY2lwYWxOYW1lcy9hbnkoYzolMjBjJTIwZXElMjAnaHR0cCUzQSUyRiUyRmFkQXBwbGljYXRpb241NjIlMkZob21lJykmYXBpLXZlcnNpb249MS42",
+      "RequestUri": "/1273adef-00a3-4086-a51a-dbcce1857d36/servicePrincipals?$filter=servicePrincipalNames/any(c:%20c%20eq%20'http:%2F%2FadApplication3594%2Fhome')&api-version=1.6",
+      "EncodedRequestUri": "LzEyNzNhZGVmLTAwYTMtNDA4Ni1hNTFhLWRiY2NlMTg1N2QzNi9zZXJ2aWNlUHJpbmNpcGFscz8kZmlsdGVyPXNlcnZpY2VQcmluY2lwYWxOYW1lcy9hbnkoYzolMjBjJTIwZXElMjAnaHR0cCUzQSUyRiUyRmFkQXBwbGljYXRpb24zNTk0JTJGaG9tZScpJmFwaS12ZXJzaW9uPTEuNg==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "f41783ee-edc3-4df5-8d16-7aab21078d79"
+          "a5661b85-c4d5-4097-b3b9-94975f00321d"
         ],
         "accept-language": [
           "en-US"
@@ -201,10 +201,10 @@
           "Microsoft.Azure.Graph.RBAC.Version1_6.GraphRbacManagementClient/1.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/$metadata#directoryObjects/Microsoft.DirectoryServices.ServicePrincipal\",\r\n  \"value\": [\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.ServicePrincipal\",\r\n      \"objectType\": \"ServicePrincipal\",\r\n      \"objectId\": \"49d283fc-31a3-4f99-b617-2c5dc055ba7b\",\r\n      \"deletionTimestamp\": null,\r\n      \"accountEnabled\": true,\r\n      \"addIns\": [],\r\n      \"alternativeNames\": [],\r\n      \"appDisplayName\": \"adApplication562\",\r\n      \"appId\": \"e8e980bb-6c7a-46f3-a0f0-0aebc0b7c1da\",\r\n      \"appOwnerTenantId\": \"1273adef-00a3-4086-a51a-dbcce1857d36\",\r\n      \"appRoleAssignmentRequired\": false,\r\n      \"appRoles\": [],\r\n      \"displayName\": \"adApplication562\",\r\n      \"errorUrl\": null,\r\n      \"homepage\": \"http://adApplication562/home\",\r\n      \"keyCredentials\": [],\r\n      \"logoutUrl\": null,\r\n      \"oauth2Permissions\": [\r\n        {\r\n          \"adminConsentDescription\": \"Allow the application to access adApplication562 on behalf of the signed-in user.\",\r\n          \"adminConsentDisplayName\": \"Access adApplication562\",\r\n          \"id\": \"be6ce080-4471-4c96-be21-8e2a109ff223\",\r\n          \"isEnabled\": true,\r\n          \"type\": \"User\",\r\n          \"userConsentDescription\": \"Allow the application to access adApplication562 on your behalf.\",\r\n          \"userConsentDisplayName\": \"Access adApplication562\",\r\n          \"value\": \"user_impersonation\"\r\n        }\r\n      ],\r\n      \"passwordCredentials\": [],\r\n      \"preferredTokenSigningKeyThumbprint\": null,\r\n      \"publisherName\": \"rbacCliTestDirectory\",\r\n      \"replyUrls\": [\r\n        \"http://adApplication562/home\"\r\n      ],\r\n      \"samlMetadataUrl\": null,\r\n      \"servicePrincipalNames\": [\r\n        \"http://adApplication562/home\",\r\n        \"e8e980bb-6c7a-46f3-a0f0-0aebc0b7c1da\"\r\n      ],\r\n      \"servicePrincipalType\": \"Application\",\r\n      \"tags\": [],\r\n      \"tokenEncryptionKeyId\": null\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/$metadata#directoryObjects/Microsoft.DirectoryServices.ServicePrincipal\",\r\n  \"value\": [\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.ServicePrincipal\",\r\n      \"objectType\": \"ServicePrincipal\",\r\n      \"objectId\": \"de602899-ad15-410f-af50-ea104aa852a7\",\r\n      \"deletionTimestamp\": null,\r\n      \"accountEnabled\": true,\r\n      \"addIns\": [],\r\n      \"alternativeNames\": [],\r\n      \"appDisplayName\": \"adApplication3594\",\r\n      \"appId\": \"638f589d-67ae-4aa7-974c-7c61fe1f8071\",\r\n      \"appOwnerTenantId\": \"1273adef-00a3-4086-a51a-dbcce1857d36\",\r\n      \"appRoleAssignmentRequired\": false,\r\n      \"appRoles\": [],\r\n      \"displayName\": \"adApplication3594\",\r\n      \"errorUrl\": null,\r\n      \"homepage\": \"http://adApplication3594/home\",\r\n      \"keyCredentials\": [],\r\n      \"logoutUrl\": null,\r\n      \"oauth2Permissions\": [\r\n        {\r\n          \"adminConsentDescription\": \"Allow the application to access adApplication3594 on behalf of the signed-in user.\",\r\n          \"adminConsentDisplayName\": \"Access adApplication3594\",\r\n          \"id\": \"1119cd70-7d38-4ad1-a4ab-b48a140da65c\",\r\n          \"isEnabled\": true,\r\n          \"type\": \"User\",\r\n          \"userConsentDescription\": \"Allow the application to access adApplication3594 on your behalf.\",\r\n          \"userConsentDisplayName\": \"Access adApplication3594\",\r\n          \"value\": \"user_impersonation\"\r\n        }\r\n      ],\r\n      \"passwordCredentials\": [],\r\n      \"preferredTokenSigningKeyThumbprint\": null,\r\n      \"publisherName\": \"rbacCliTestDirectory\",\r\n      \"replyUrls\": [\r\n        \"http://adApplication3594/home\"\r\n      ],\r\n      \"samlMetadataUrl\": null,\r\n      \"servicePrincipalNames\": [\r\n        \"http://adApplication3594/home\",\r\n        \"638f589d-67ae-4aa7-974c-7c61fe1f8071\"\r\n      ],\r\n      \"servicePrincipalType\": \"Application\",\r\n      \"tags\": [],\r\n      \"tokenEncryptionKeyId\": null\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "1485"
+          "1494"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
@@ -216,19 +216,19 @@
           "no-cache"
         ],
         "ocp-aad-diagnostics-server-name": [
-          "DRh1E8KpzyDQ2JIEbQFJYUEDvVJ2kaqlg9shn22LEv0="
+          "Wvx7TZ/eEDk0k41ajYvQwgwehU+KM5tQhOMjjNrsD6E="
         ],
         "request-id": [
-          "b309852d-e8c1-4660-b7db-a6027e13ed36"
+          "ac03e2bd-a521-44d2-bea5-24706ff9127f"
         ],
         "client-request-id": [
-          "36f0e0d0-af37-4723-b484-3df9dd551c38"
+          "d1b4894c-1de8-44ec-b21e-295ec5c8ef58"
         ],
         "x-ms-dirapi-data-contract-version": [
           "1.6"
         ],
         "ocp-aad-session-key": [
-          "kaix6Nmi0lewqnecKntQz8xq1NFwful3Cr5W5Jrn8RIEbhJF1BSh04juDTUUFthHYx5MlZV-IxxdArd-bdM-b9VK7KTggZr8qGmaP6H5FvoROoQc4jfXS7gdBxKPj4T61SJ7zoHZKdprDXmnpSdDN-lO6OlaT_jCqZS_rGc5u6-mkxHjbhJ8v-4X4pWNBYHjf1CONsYUYYRBtXf2jfB0jw.zQXWshS5lfxMdp0CBfDReas8ptWUasoeM2fcw-FYq1U"
+          "MY1N_7hV_FKhpLOcKiun6LV1K-cgMXSPB4fPm4qj0WLH72444UITGOCD5MuMrgdIfDhqGSeWcQ3OADFJ9Q7ir4ywgfq3EUJ6qbrt6mH2dzh3xOBUiWkyHmSiwRrgiB190s3KyfsiGK-58WjPO5vjyhiov3DsT4LU-oTldIHCNs_W02DxrkjAkHcfBZ8MEELFzMYsIJ8AADj6aWR6wQfy1g.A3jhidZDQ1msu8l3SS6LK75CR9AxglbdCs67lnVPLlk"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -243,7 +243,7 @@
           "*"
         ],
         "Duration": [
-          "538224"
+          "548858"
         ],
         "Cache-Control": [
           "no-cache"
@@ -259,19 +259,19 @@
           "ASP.NET"
         ],
         "Date": [
-          "Tue, 19 Sep 2017 01:14:11 GMT"
+          "Tue, 19 Sep 2017 01:32:10 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/1273adef-00a3-4086-a51a-dbcce1857d36/servicePrincipals/49d283fc-31a3-4f99-b617-2c5dc055ba7b?api-version=1.6",
-      "EncodedRequestUri": "LzEyNzNhZGVmLTAwYTMtNDA4Ni1hNTFhLWRiY2NlMTg1N2QzNi9zZXJ2aWNlUHJpbmNpcGFscy80OWQyODNmYy0zMWEzLTRmOTktYjYxNy0yYzVkYzA1NWJhN2I/YXBpLXZlcnNpb249MS42",
+      "RequestUri": "/1273adef-00a3-4086-a51a-dbcce1857d36/servicePrincipals/de602899-ad15-410f-af50-ea104aa852a7?api-version=1.6",
+      "EncodedRequestUri": "LzEyNzNhZGVmLTAwYTMtNDA4Ni1hNTFhLWRiY2NlMTg1N2QzNi9zZXJ2aWNlUHJpbmNpcGFscy9kZTYwMjg5OS1hZDE1LTQxMGYtYWY1MC1lYTEwNGFhODUyYTc/YXBpLXZlcnNpb249MS42",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "b277e29f-4dd4-4412-94cc-1d402a6dee02"
+          "c9228db6-c23a-4e06-8793-c1afc06f174c"
         ],
         "accept-language": [
           "en-US"
@@ -292,19 +292,19 @@
           "no-cache"
         ],
         "ocp-aad-diagnostics-server-name": [
-          "DBkxAUtc39ZvuCNWglbQ4rJ9IJ8Cx3hNqz0KjpmFlzw="
+          "7akEoJBB3jXdCcddmuqIriGupZolWpVIrAvUTJndNgo="
         ],
         "request-id": [
-          "c565d9a8-6e29-478a-b126-4b56100fcf7f"
+          "98faf472-5665-47b1-a839-28026c4c9c4f"
         ],
         "client-request-id": [
-          "389117a8-6f1e-473a-9efe-f7cd83e1bf4f"
+          "4cafaa1d-0745-4047-bd64-0471c48ea45a"
         ],
         "x-ms-dirapi-data-contract-version": [
           "1.6"
         ],
         "ocp-aad-session-key": [
-          "1rU4tUq7qPKUkj4eISXHz1IxivCb34BjM8AQ8jSTQsARmBYWzUb-az7SNQazjsiK1byrbFOhnLLGcrv_oxUc5_yVyiEQ2uOls8-rrenzJLc2eDoPTuZx_9hgtRdGOosDatjAgg_OV7Z3YJqzcEo2CPNAMVPSNF0sZoxjiMGzsIhjhQCQjxuFtOERe_R6bzRuWFMg0Ja7MziEYsdu96b1Yg.HT3if3fY-88UfFCmRNhysNmQAHi0Y_UyMmxAEbxzbnc"
+          "P0nNTdBKWO4In3v-qRwJNYo4ulIk5RBsOMGnPuvqeGxKoqcacyUaVdV34u92ZXnOQeh_sBWc01vGK8Hi2ot_m1qrgT25xm_f5tjqO1llwc6neOtojN7GNO4g26x_teFi0FaQFSka9nBzxyIcRgh34AFzNvnfjlthrrG9gaPR39DpQdv6SW56b-j5_8ixGNzofrg4psKXCi9_m5Xqtpf5ww.EaN0Oy_9Glt5i_x4VIpDsrdFAkWSknA159w7_gc6gzA"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -319,7 +319,7 @@
           "*"
         ],
         "Duration": [
-          "2586692"
+          "3528272"
         ],
         "Cache-Control": [
           "no-cache"
@@ -335,19 +335,19 @@
           "ASP.NET"
         ],
         "Date": [
-          "Tue, 19 Sep 2017 01:14:11 GMT"
+          "Tue, 19 Sep 2017 01:32:11 GMT"
         ]
       },
       "StatusCode": 204
     },
     {
-      "RequestUri": "/1273adef-00a3-4086-a51a-dbcce1857d36/applications/b2ac048f-234d-4092-85c9-07553087249d?api-version=1.6",
-      "EncodedRequestUri": "LzEyNzNhZGVmLTAwYTMtNDA4Ni1hNTFhLWRiY2NlMTg1N2QzNi9hcHBsaWNhdGlvbnMvYjJhYzA0OGYtMjM0ZC00MDkyLTg1YzktMDc1NTMwODcyNDlkP2FwaS12ZXJzaW9uPTEuNg==",
+      "RequestUri": "/1273adef-00a3-4086-a51a-dbcce1857d36/applications/ec7a1432-a8c2-48ff-839d-9fcb7a11c4a9?api-version=1.6",
+      "EncodedRequestUri": "LzEyNzNhZGVmLTAwYTMtNDA4Ni1hNTFhLWRiY2NlMTg1N2QzNi9hcHBsaWNhdGlvbnMvZWM3YTE0MzItYThjMi00OGZmLTgzOWQtOWZjYjdhMTFjNGE5P2FwaS12ZXJzaW9uPTEuNg==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "fcb41e3d-fb7c-4e02-b7d1-c263b94c5600"
+          "7189b9d3-883f-42e2-a883-a4bf9557f3ac"
         ],
         "accept-language": [
           "en-US"
@@ -368,19 +368,19 @@
           "no-cache"
         ],
         "ocp-aad-diagnostics-server-name": [
-          "PXXRDCG9m0vYZ/6DUxYwere/1dqM/aTVOrbbSwrIoQ0="
+          "/QkbbxZfyhW9slqPlub3XcBNO9jE7EivLDzFDO23uzo="
         ],
         "request-id": [
-          "cac7fffa-9cef-4298-85ef-a6a220383051"
+          "7b31deda-0b12-4a63-938c-38bd9031db11"
         ],
         "client-request-id": [
-          "f87c617b-c2bb-4db1-8560-1951f2f7be72"
+          "e7a10bba-a6ae-4a09-bcc3-7c83988f2779"
         ],
         "x-ms-dirapi-data-contract-version": [
           "1.6"
         ],
         "ocp-aad-session-key": [
-          "sAHsBDLO9uMSoayYj-0fuGQryB-b9ffQ2utAo2QgZgi5usTcMqgdr_z7BZnDH8I91MdWv2Ji2KDgArg85uHGBQq7TwLaeYFi8yuzi4Zz9lutyuWJDJyoMaHsXEXaLlXztOamoYREQgqpK_eTJ954gqDnsusI3D3iZ_FIRQLXMBCdDHzPBUaAcpJXnA7Jf2w4zCFC1eFIpr-Y5FpurO5kRQ.UU0exGbJbmHtLY_40kvqcTV3ctyEjYF-FQbj9Pc8HbU"
+          "dLKZbP3sdFyAQeRtz8e2_uCVGKfGWDqd6ZBSQYQMMOzKIq7SO6fnVJKmTW8kb7Lj9JN5gaX461KRxZaPT2nf9XREuqeNmlNS0C3rohSe-wJ51QtueJi1VQG1zE6779QlLy5xvDHWckgsnRvajJKzOLD65r9Jhh6y24MVUDLSsYkyB8Jv_zikkzKXQNlpxdeG2Si1F9g2FELVqp1nrXRmMg.kgNB7RBM3jHKIKmkaBw4nDVqvdVxIDjtnO9uGGUsQrs"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -395,7 +395,7 @@
           "*"
         ],
         "Duration": [
-          "2971703"
+          "1289053"
         ],
         "Cache-Control": [
           "no-cache"
@@ -411,7 +411,7 @@
           "ASP.NET"
         ],
         "Date": [
-          "Tue, 19 Sep 2017 01:14:12 GMT"
+          "Tue, 19 Sep 2017 01:32:11 GMT"
         ]
       },
       "StatusCode": 204
@@ -419,7 +419,7 @@
   ],
   "Names": {
     "CreateNewAdApp": [
-      "adApplication562"
+      "adApplication3594"
     ]
   },
   "Variables": {
