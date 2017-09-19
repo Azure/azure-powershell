@@ -61,6 +61,20 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Azure PowerShell collects usage data in order to improve your experience.
+        ///The data is anonymous and does not include commandline argument values.
+        ///The data is collected by Microsoft.
+        ///
+        ///Use the Disable-AzureRmDataCollection cmdlet to turn the feature Off. The cmdlet can be found in the AzureRM.Profile module.  To disable data collection: PS &gt; Disable-AzureRmDataCollection.
+        ///Use the Enable-AzureRmDataCollection cmdlet to turn the feature On. The cmdlet can be found in the AzureRM.Profile module.  To enable  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string ARMDataCollectionMessage {
+            get {
+                return ResourceManager.GetString("ARMDataCollectionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Confirm.
         /// </summary>
         internal static string Confirm {
