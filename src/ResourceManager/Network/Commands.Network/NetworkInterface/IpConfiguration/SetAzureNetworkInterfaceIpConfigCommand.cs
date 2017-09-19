@@ -85,6 +85,15 @@ namespace Microsoft.Azure.Commands.Network
                         this.ApplicationGatewayBackendAddressPoolId.Add(appgwBepool.Id);
                     }
                 }
+
+                if (this.ApplicationSecurityGroup != null)
+                {
+                    this.ApplicationSecurityGroupId = new List<string>();
+                    foreach (var asg in this.ApplicationSecurityGroup)
+                    {
+                        this.ApplicationSecurityGroupId.Add(asg.Id);
+                    }
+                }
             }
 
             ipconfig.Subnet = null;
@@ -141,6 +150,16 @@ namespace Microsoft.Azure.Commands.Network
                     ipconfig.ApplicationGatewayBackendAddressPools.Add(new PSApplicationGatewayBackendAddressPool { Id = appgwBepoolId });
                 }
             }
+
+            if (this.ApplicationSecurityGroupId != null)
+            {
+                ipconfig.ApplicationSecurityGroups = new List<PSApplicationSecurityGroup>();
+                foreach (var asgId in this.ApplicationSecurityGroupId)
+                {
+                    ipconfig.ApplicationSecurityGroups.Add(new PSApplicationSecurityGroup { Id = asgId });
+                }
+            }
+
             ipconfig.PrivateIpAddressVersion = this.PrivateIpAddressVersion;
             ipconfig.Primary = this.Primary.IsPresent;
             WriteObject(this.NetworkInterface);
