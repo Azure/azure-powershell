@@ -51,6 +51,7 @@ ProcessorArchitecture = 'None'
 RequiredModules = @(@{ModuleName="AzureRM.Profile"; RequiredVersion="3.3.2"},
   @{ModuleName="Azure.Storage"; RequiredVersion="1.0.5.4"}  
   @{ModuleName="AzureRM.Compute"; RequiredVersion="3.2.1"},
+  @{ModuleName="AzureRM.Dns"; RequiredVersion="3.3.2"},
   @{ModuleName="AzureRM.KeyVault"; RequiredVersion="3.3.2"},
   @{ModuleName="AzureRM.Network"; RequiredVersion="1.0.5.4"},
   @{ModuleName="AzureRM.Resources"; RequiredVersion="4.3.2"},
