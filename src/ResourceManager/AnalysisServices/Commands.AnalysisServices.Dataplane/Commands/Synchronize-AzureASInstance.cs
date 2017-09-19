@@ -90,8 +90,16 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 
         public ITokenCacheItemProvider TokenCacheItemProvider { get; private set; }
 
-        public SynchronizeAzureAzureAnalysisServer() : this(new AsAzureHttpClient(() => new HttpClient()), new TokenCacheItemProvider())
+        public SynchronizeAzureAzureAnalysisServer()
         {
+            this.AsAzureHttpClient = new AsAzureHttpClient(() =>
+            {
+                HttpClientHandler httpClientHandler = new HttpClientHandler();
+                httpClientHandler.AllowAutoRedirect = false;
+                return new HttpClient(httpClientHandler);
+            });
+
+            this.TokenCacheItemProvider = new TokenCacheItemProvider();
             this.syncRequestRootActivityId = string.Empty;
             this.correlationId = Guid.Empty;
             this.syncRequestTimeStamp = string.Empty;
@@ -219,6 +227,8 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
             {
                 this.AsAzureHttpClient = new AsAzureHttpClient(() =>
                 {
+                    HttpClientHandler httpClientHandler = new HttpClientHandler();
+                    httpClientHandler.AllowAutoRedirect = false;
                     return new HttpClient();
                 });
             }
