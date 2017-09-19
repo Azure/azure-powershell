@@ -14,13 +14,14 @@ Gets the properties of a VMSS.
 
 ### DefaultParameter (Default)
 ```
-Get-AzureRmVmss [[-ResourceGroupName] <String>] [[-VMScaleSetName] <String>] [<CommonParameters>]
+Get-AzureRmVmss [[-ResourceGroupName] <String>] [[-VMScaleSetName] <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### FriendMethod
 ```
 Get-AzureRmVmss [[-ResourceGroupName] <String>] [[-VMScaleSetName] <String>] [-InstanceView]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,6 +41,19 @@ This command gets the properties of the VMSS named VMSS001 that belongs to the r
 Since the command does not specify the *InstanceView* switch parameter, the cmdlet gets the model view of the virtual machine.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -InstanceView
 Indicates that this cmdlet gets only the instance view of the virtual machine.

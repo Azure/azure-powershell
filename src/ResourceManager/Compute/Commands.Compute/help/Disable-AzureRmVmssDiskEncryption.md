@@ -13,8 +13,8 @@ Disables disk encryption on a VM scale set.
 
 ```
 Disable-AzureRmVmssDiskEncryption [-ResourceGroupName] <String> [-VMScaleSetName] <String>
- [[-ExtensionName] <String>] [-VolumeType <String>] [-SequenceVersion <String>] [-Force] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [[-ExtensionName] <String>] [-VolumeType <String>] [-ForceUpdate] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,6 +30,19 @@ PS C:\> Disable-AzureRmVmssDiskEncryption -ResourceGroupName "Group001" -VMScale
 Disables disk encryption on the VM scale set named VMSS001 that belongs to the resource group named Group001.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ExtensionName
 The extension name.
@@ -62,6 +75,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ForceUpdate
+Generate a tag for force update.  This should be given to perform repeated encryption operations on the same VM.```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The resource group name.
 
@@ -72,22 +98,6 @@ Aliases:
 
 Required: True
 Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -SequenceVersion
-Sequence version of encryption operation.
-This must be incremented to perform repeated encryption operations on the same VM
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

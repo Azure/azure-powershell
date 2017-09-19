@@ -169,13 +169,13 @@ CmdletsToExport = 'Remove-AzureRmAvailabilitySet', 'Get-AzureRmAvailabilitySet',
                'Set-AzureRmVmssRollingUpgradePolicy',
                'Set-AzureRmVmssDiskEncryptionExtension',
                'Disable-AzureRmVmssDiskEncryption',
-               'Get-AzureRmVmssDiskEncryptionStatus', 'Get-AzureRmVmssVMDiskEncryptionStatus'
+               'Get-AzureRmVmssDiskEncryption', 'Get-AzureRmVmssVMDiskEncryption'
 
 # Variables to export from this module
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = @()
+AliasesToExport = @('Get-AzureRmVmssDiskEncryptionStatus', 'Get-AzureRmVmssVMDiskEncryptionStatus')
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
