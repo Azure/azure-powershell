@@ -63,7 +63,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application
         /// <summary>
         /// The package zip blob uri.
         /// </summary>
-        [JsonProperty(Required = Required.Always)]
+        [JsonProperty(Required = Required.Default)]
         public string PackageFileUri { get; set; }
+
+        /// <summary>
+        /// The create ui definition json.
+        /// </summary>
+        [JsonProperty(Required = Required.Default)]
+        public JObject CreateUiDefinition { get; set; }
+
+        /// <summary>
+        /// The main template json.
+        /// </summary>
+        [JsonProperty(Required = Required.Default)]
+        public JObject MainTemplate { get; set; }
     }
 }

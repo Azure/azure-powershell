@@ -17,15 +17,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
-    using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Newtonsoft.Json.Linq;
     using System.Collections;
-    using System.Collections.Generic;
-    using System.IO;
     using System.Management.Automation;
-    using WindowsAzure.Commands.Common;
 
     /// <summary>
     /// Creates the managed application definition.
@@ -84,6 +79,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public string PackageFileUri { get; set; }
 
         /// <summary>
+        /// Gets or sets the managed application definition create ui definition file path or create ui definition as string.
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The managed application definition create ui definition.")]
+        [ValidateNotNullOrEmpty]
+        public string CreateUiDefinition { get; set; }
+
+        /// <summary>
+        /// Gets or sets the managed application definition main template file path or main template as string.
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The managed application definition main template.")]
+        [ValidateNotNullOrEmpty]
+        public string MainTemplate { get; set; }
+
+        /// <summary>
         /// Gets or sets the managed application definition authorization.
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The managed application definition authorization. Comma separated authorization pairs in a format of <principalId>:<roleDefinitionId>")]
@@ -100,6 +109,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         protected override void OnProcessRecord()
         {
             base.OnProcessRecord();
+            if (!string.IsNullOrEmpty(this.PackageFileUri))
+            {
+                if(!string.IsNullOrEmpty(this.MainTemplate) || !string.IsNullOrEmpty(this.CreateUiDefinition))
+                {
+                    throw new PSInvalidOperationException("If PackageFileUri is specified, MainTemplate and CreateUiDefinition cannot have a value.");
+                }
+            }
+            else
+            {
+                if(string.IsNullOrEmpty(this.MainTemplate) || string.IsNullOrEmpty(this.CreateUiDefinition))
+                {
+                    throw new PSInvalidOperationException("If PackageFileUri is not specified, both MainTemplate and CreateUiDefinition should have a valid value.");
+                }
+            }
             string resourceId = GetResourceId();
 
             var apiVersion = string.IsNullOrWhiteSpace(this.ApiVersion) ? Constants.ApplicationApiVersion : this.ApiVersion;
@@ -157,6 +180,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 },
                 Tags = TagsHelper.GetTagsDictionary(this.Tag)
             };
+
+            if (!string.IsNullOrEmpty(this.MainTemplate) && !string.IsNullOrEmpty(this.CreateUiDefinition))
+            {
+                applicationDefinitionObject.Properties.MainTemplate = JObject.Parse(this.GetObjectFromParameter(this.MainTemplate).ToString());
+                applicationDefinitionObject.Properties.CreateUiDefinition = JObject.Parse(this.GetObjectFromParameter(this.CreateUiDefinition).ToString());
+            }
 
             return applicationDefinitionObject.ToJToken();
         }

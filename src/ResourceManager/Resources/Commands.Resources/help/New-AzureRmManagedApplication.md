@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzureRmManagedApplication
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Creates an Azure managed application.
 
 ## SYNTAX
 
@@ -20,16 +20,16 @@ New-AzureRmManagedApplication -Name <String> -ResourceGroupName <String> -Manage
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **New-AzureRmManagedApplication** cmdlet creates an Azure Managed Application.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\>New-AzureRmManagedApplication -Name "myManagedApplication" -ResourceGroupName myRG -ManagedResourceGroupName myManagedRG -ManagedApplicationDefinitionId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.Solutions/applicationDefinitions/myAppDef" -Location eastus2euap -Kind ServiceCatalog
 ```
 
-{{ Add example description here }}
+This command creates a managed application
 
 ## PARAMETERS
 
