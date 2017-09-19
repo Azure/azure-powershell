@@ -192,6 +192,11 @@ namespace Microsoft.Azure.Commands.Profile
             {
                 azureAccount.Id = ApplicationId;
             }
+             
+            if (!string.IsNullOrWhiteSpace(CertificateThumbprint))
+            {
+                azureAccount.SetThumbprint(CertificateThumbprint);
+            }
 
             if (!string.IsNullOrEmpty(TenantId))
             {
