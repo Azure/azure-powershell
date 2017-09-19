@@ -13,9 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Dns.Models;
-using Microsoft.Azure.Management.Dns.Models;
 using System.Collections;
-using System.Collections.Generic;
 using System.Management.Automation;
 using ProjectResources = Microsoft.Azure.Commands.Dns.Properties.Resources;
 
@@ -34,23 +32,10 @@ namespace Microsoft.Azure.Commands.Dns
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group in which to create the zone.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
-        
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The type of the zone, public or private. This property cannot be changed for a zone")]
-        [ValidateNotNullOrEmpty]
-        public ZoneType? ZoneType  { get; set; }
-        
+
         [Alias("Tags")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents resource tags.")]
         public Hashtable Tag { get; set; }
-
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of virtual networks able to resolve records in this DNS zone, only available for private zones.")]
-        [ValidateNotNull]
-        public List<string> ResolutionVirtualNetworkId { get; set; }
-
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of virtual networks that will register VM hostnames records in this DNS zone, only available for private zones.")]
-        [ValidateNotNull]
-        public List<string> RegistrationVirtualNetworkId { get; set; }
-
 
         public override void ExecuteCmdlet()
         {
@@ -67,13 +52,7 @@ namespace Microsoft.Azure.Commands.Dns
                 this.Name,
             () =>
             {
-                DnsZone result = this.DnsClient.CreateDnsZone(
-                    this.Name,
-                    this.ResourceGroupName,
-                    this.Tag,
-                    this.ZoneType != null ? this.ZoneType.Value : Management.Dns.Models.ZoneType.Public,
-                    this.RegistrationVirtualNetworkId,
-                    this.ResolutionVirtualNetworkId);
+                DnsZone result = this.DnsClient.CreateDnsZone(this.Name, this.ResourceGroupName, this.Tag);
                 this.WriteVerbose(ProjectResources.Success);
                 this.WriteVerbose(string.Format(ProjectResources.Success_NewZone, this.Name, this.ResourceGroupName));
                 this.WriteObject(result);
