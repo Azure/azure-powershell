@@ -13,14 +13,31 @@ Sets the goal state for a network security rule configuration.
 
 ## SYNTAX
 
+### SetByResource (Default)
 ```
 Set-AzureRmNetworkSecurityRuleConfig -Name <String> -NetworkSecurityGroup <PSNetworkSecurityGroup>
  [-Description <String>] [-Protocol <String>]
  [-SourcePortRange <System.Collections.Generic.List`1[System.String]>]
  [-DestinationPortRange <System.Collections.Generic.List`1[System.String]>]
  [-SourceAddressPrefix <System.Collections.Generic.List`1[System.String]>]
- [-DestinationAddressPrefix <System.Collections.Generic.List`1[System.String]>] [-Access <String>]
- [-Priority <Int32>] [-Direction <String>] [<CommonParameters>]
+ [-DestinationAddressPrefix <System.Collections.Generic.List`1[System.String]>]
+ [-SourceApplicationSecurityGroup <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationSecurityGroup]>]
+ [-DestinationApplicationSecurityGroup <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationSecurityGroup]>]
+ [-Access <String>] [-Priority <Int32>] [-Direction <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### SetByResourceId
+```
+Set-AzureRmNetworkSecurityRuleConfig -Name <String> -NetworkSecurityGroup <PSNetworkSecurityGroup>
+ [-Description <String>] [-Protocol <String>]
+ [-SourcePortRange <System.Collections.Generic.List`1[System.String]>]
+ [-DestinationPortRange <System.Collections.Generic.List`1[System.String]>]
+ [-SourceAddressPrefix <System.Collections.Generic.List`1[System.String]>]
+ [-DestinationAddressPrefix <System.Collections.Generic.List`1[System.String]>]
+ [-SourceApplicationSecurityGroupId <System.Collections.Generic.List`1[System.String]>]
+ [-DestinationApplicationSecurityGroupId <System.Collections.Generic.List`1[System.String]>] [-Access <String>]
+ [-Priority <Int32>] [-Direction <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -60,6 +77,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Description
 Specifies a description for a rule configuration.
 The maximum size is 140 characters.
@@ -89,6 +121,36 @@ You can use tags such as VirtualNetwork, AzureLoadBalancer, and Internet.
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DestinationApplicationSecurityGroup
+The application security group set as destination for the rule. It cannot be used with 'DestinationAddressPrefix' parameter.
+
+```yaml
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationSecurityGroup]
+Parameter Sets: SetByResource
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DestinationApplicationSecurityGroupId
+The application security group set as destination for the rule. It cannot be used with 'DestinationAddressPrefix' parameter.
+
+```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: SetByResourceId
 Aliases: 
 
 Required: False
@@ -218,6 +280,36 @@ You can also use tags such as VirtualNetwork, AzureLoadBalancer and Internet.
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SourceApplicationSecurityGroup
+The application security group set as source for the rule. It cannot be used with 'SourceAddressPrefix' parameter.
+
+```yaml
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationSecurityGroup]
+Parameter Sets: SetByResource
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SourceApplicationSecurityGroupId
+The application security group set as source for the rule. It cannot be used with 'SourceAddressPrefix' parameter.
+
+```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: SetByResourceId
 Aliases: 
 
 Required: False
