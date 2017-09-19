@@ -150,18 +150,18 @@ namespace Microsoft.Azure.Commands.Resources
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
-		[ValidateNotNullOrEmpty]
-		[Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleAssignment, HelpMessage = "Role Assignment.")]
-		public PSRoleAssignment RoleAssignment { get; set; }
+        [ValidateNotNullOrEmpty]
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.RoleAssignment, HelpMessage = "Role Assignment.")]
+        public PSRoleAssignment InputObject { get; set; }
 
-		public override void ExecuteCmdlet()
+        public override void ExecuteCmdlet()
         {
             IEnumerable<PSRoleAssignment> roleAssignments = null;
-			if (RoleAssignment != null) {
-				Scope = RoleAssignment.Scope;
-				ObjectId = RoleAssignment.ObjectId;
-				RoleDefinitionName = RoleAssignment.RoleDefinitionName;
-			}
+            if (InputObject != null) {
+                Scope = InputObject.Scope;
+                ObjectId = InputObject.ObjectId;
+                RoleDefinitionName = InputObject.RoleDefinitionName;
+            }
 
             FilterRoleAssignmentsOptions options = new FilterRoleAssignmentsOptions()
             {
