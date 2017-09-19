@@ -23,8 +23,8 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 
 namespace Microsoft.Azure.Commands.EventGrid
 {
-    [Cmdlet(VerbsData.Update, EventGridTopicVerb, SupportsShouldProcess = true, DefaultParameterSetName = TopicNameParameterSet), OutputType(typeof(PSTopic))]
-    public class UpdateAzureEventGridTopic : AzureEventGridCmdletBase
+    [Cmdlet(VerbsCommon.Set, EventGridTopicVerb, SupportsShouldProcess = true, DefaultParameterSetName = TopicNameParameterSet), OutputType(typeof(PSTopic))]
+    public class SetAzureEventGridTopic : AzureEventGridCmdletBase
     {
         [Parameter(
             Mandatory = true,
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         {
             Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(this.Tag, true);
 
-            if (this.ShouldProcess(this.Name, $"Update topic {this.Name} in Resource Group {this.ResourceGroupName}"))
+            if (this.ShouldProcess(this.Name, $"Set topic {this.Name} in Resource Group {this.ResourceGroupName}"))
             {
                 string resourceGroupName = string.Empty;
                 string topicName = string.Empty;
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.EventGrid
                     throw new Exception($"Cannot find an existing topic {topicName} in resource group {resourceGroupName}");
                 }
 
-                Topic topic = this.Client.UpdateTopic(resourceGroupName, topicName, existingTopic.Location, tagDictionary);
+                Topic topic = this.Client.ReplaceTopic(resourceGroupName, topicName, existingTopic.Location, tagDictionary);
                 PSTopic psTopic = new PSTopic(topic);
                 this.WriteObject(psTopic);
             }

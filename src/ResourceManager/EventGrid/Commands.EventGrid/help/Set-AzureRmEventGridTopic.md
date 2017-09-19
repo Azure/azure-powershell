@@ -5,42 +5,42 @@ online version:
 schema: 2.0.0
 ---
 
-# Update-AzureRmEventGridTopic
+# Set-AzureRmEventGridTopic
 
 ## SYNOPSIS
-Update the properties of an Event Grid topic.
+Set the properties of an Event Grid topic.
 
 ## SYNTAX
 
 ### TopicNameParameterSet (Default)
 ```
-Update-AzureRmEventGridTopic [-ResourceGroupName] <String> [-Name] <String> [-Tag] <Hashtable> [-WhatIf]
+Set-AzureRmEventGridTopic [-ResourceGroupName] <String> [-Name] <String> [-Tag] <Hashtable> [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdEventSubscriptionParameterSet
 ```
-Update-AzureRmEventGridTopic [-ResourceId] <String> [-Tag] <Hashtable> [-WhatIf] [-Confirm]
+Set-AzureRmEventGridTopic [-ResourceId] <String> [-Tag] <Hashtable> [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### TopicInputObjectParameterSet
 ```
-Update-AzureRmEventGridTopic [-InputObject] <PSTopic> [-Tag] <Hashtable> [-WhatIf] [-Confirm]
+Set-AzureRmEventGridTopic [-InputObject] <PSTopic> [-Tag] <Hashtable> [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update the properties of an Event Grid topic. This can be used to update the tags of an Event Grid topic.
+Set the properties of an Event Grid topic. This can be used to replace the tags of an Event Grid topic.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Update-AzureRmEventGridTopic -ResourceGroup MyResourceGroupName -Name Topic1 -Tag @{ Department="Finance"; Environment="Test" }
+PS C:\> Set-AzureRmEventGridTopic -ResourceGroup MyResourceGroupName -Name Topic1 -Tag @{ Department="Finance"; Environment="Test" }
 ```
 
-Updates the Event Grid topic \`Topic1\` in resource group \`MyResourceGroupName\` to replace the tags with the specified tags "Department" and "Environment".
+Sets the properties of the Event Grid topic \`Topic1\` in resource group \`MyResourceGroupName\` to replace the tags with the specified tags "Department" and "Environment".
 
 ## PARAMETERS
 

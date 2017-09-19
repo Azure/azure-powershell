@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             return this.Client.Topics.CreateOrUpdate(resourceGroupName, topicName, topic);
         }
 
-        public Topic UpdateTopic(string resourceGroupName, string topicName, string location, Dictionary<string, string> tags)
+        public Topic ReplaceTopic(string resourceGroupName, string topicName, string location, Dictionary<string, string> tags)
         {
             var topic = new Topic();
             topic.Location = location;

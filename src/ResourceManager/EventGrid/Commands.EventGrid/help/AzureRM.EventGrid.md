@@ -1,9 +1,9 @@
 ---
 Module Name: AzureRM.EventGrid
-Module Guid: {{ Update Module Guid }}
-Download Help Link: {{ Update Download Link }}
-Help Version: {{ Update Help Version }}
-Locale: {{ Update Locale }}
+Module Guid: 53BF7132-5BB4-46EB-AC05-61A49A6CD5EB
+Download Help Link: None_Azure
+Help Version: 1.0.0.0
+Locale: en-US
 ---
 
 # AzureRM.EventGrid Module
@@ -38,6 +38,6 @@ Removes an Azure Event Grid event subscription.
 ### [Remove-AzureRmEventGridTopic](Remove-AzureRmEventGridTopic.md)
 Removes an Azure Event Grid Topic.
 
-### [Update-AzureRmEventGridTopic](Update-AzureRmEventGridTopic.md)
-Update the properties of an Event Grid topic.
+### [Set-AzureRmEventGridTopic](Set-AzureRmEventGridTopic.md)
+Set the properties of an Event Grid topic.
 
