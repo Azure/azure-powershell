@@ -161,6 +161,9 @@ Gets an array of URL path mappings to a backend server pool.
 ### [Get-AzureRmApplicationGatewayWebApplicationFirewallConfiguration](Get-AzureRmApplicationGatewayWebApplicationFirewallConfiguration.md)
 Gets the WAF configuration of an application gateway.
 
+### [Get-AzureRmApplicationSecurityGroup](Get-AzureRmApplicationSecurityGroup.md)
+Gets an application security group.
+
 ### [Get-AzureRmBgpServiceCommunity](Get-AzureRmBgpServiceCommunity.md)
 {{Manually Enter Get-AzureRmBgpServiceCommunity Description Here}}
 
@@ -377,6 +380,9 @@ Creates an array of URL path mappings to a backend server pool.
 ### [New-AzureRmApplicationGatewayWebApplicationFirewallConfiguration](New-AzureRmApplicationGatewayWebApplicationFirewallConfiguration.md)
 Creates a WAF configuration for an application gateway.
 
+### [New-AzureRmApplicationSecurityGroup](New-AzureRmApplicationSecurityGroup.md)
+Creates an application security group.
+
 ### [New-AzureRmExpressRouteCircuit](New-AzureRmExpressRouteCircuit.md)
 Creates an Azure express route circuit.
 
@@ -517,6 +523,9 @@ Removes an SSL policy from an Azure application gateway.
 
 ### [Remove-AzureRmApplicationGatewayUrlPathMapConfig](Remove-AzureRmApplicationGatewayUrlPathMapConfig.md)
 Removes URL path mappings to a backend server pool.
+
+### [Remove-AzureRmApplicationSecurityGroup](Remove-AzureRmApplicationSecurityGroup.md)
+Removes an application security group.
 
 ### [Remove-AzureRmExpressRouteCircuit](Remove-AzureRmExpressRouteCircuit.md)
 Removes an ExpressRoute circuit.
