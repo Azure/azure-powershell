@@ -86,6 +86,15 @@ namespace Microsoft.Azure.Commands.Network
                         this.ApplicationGatewayBackendAddressPoolId.Add(appgwBepool.Id);
                     }
                 }
+
+                if (this.ApplicationSecurityGroup != null)
+                {
+                    this.ApplicationSecurityGroupId = new List<string>();
+                    foreach (var asg in this.ApplicationSecurityGroup)
+                    {
+                        this.ApplicationSecurityGroupId.Add(asg.Id);
+                    }
+                }
             }
 
             var ipconfig = new PSNetworkInterfaceIPConfiguration();
@@ -137,6 +146,15 @@ namespace Microsoft.Azure.Commands.Network
                 foreach (var appgwBepoolId in this.ApplicationGatewayBackendAddressPoolId)
                 {
                     ipconfig.ApplicationGatewayBackendAddressPools.Add(new PSApplicationGatewayBackendAddressPool { Id = appgwBepoolId });
+                }
+            }
+
+            if (this.ApplicationSecurityGroupId != null)
+            {
+                ipconfig.ApplicationSecurityGroups = new List<PSApplicationSecurityGroup>();
+                foreach (var asgId in this.ApplicationSecurityGroupId)
+                {
+                    ipconfig.ApplicationSecurityGroups.Add(new PSApplicationSecurityGroup { Id = asgId });
                 }
             }
 

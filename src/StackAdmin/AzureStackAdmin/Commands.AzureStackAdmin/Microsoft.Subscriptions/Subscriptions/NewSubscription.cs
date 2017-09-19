@@ -90,10 +90,8 @@ namespace Microsoft.AzureStack.Commands
         /// </summary>
         protected override void ExecuteCore()
         {
-            if (this.MyInvocation.InvocationName.Equals("New-AzureRmTenantSubscription", StringComparison.OrdinalIgnoreCase))
-            {
-                this.WriteWarning("Alias New-AzureRmTenantSubscription will be deprecated in a future release. Please use the cmdlet name New-AzsSubscription instead");
-            }
+            // note: this command should be deprecated
+            WriteWarning("New-AzsSubscription cmdlet will be deprecated and moved to a different module in a future release.");
 
             if (ShouldProcess(this.SubscriptionId, VerbsCommon.New))
             {
