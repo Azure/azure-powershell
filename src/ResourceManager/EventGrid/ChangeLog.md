@@ -24,8 +24,8 @@
         - Creates a new Azure Event Grid Topic.
     - Get-AzureRmEventGridTopic
         - Gets the details of an Event Grid topic, or gets a list of all Event Grid topics in the current Azure subscription.
-    - Update-AzureRmEventGridTopic
-        - Update the properties of an Event Grid topic.
+    - Set-AzureRmEventGridTopic
+        - Set the properties of an Event Grid topic.
     - Remove-AzureRmEventGridTopic
         - Removes an Azure Event Grid Topic.
     - New-AzureRmEventGridTopicKey

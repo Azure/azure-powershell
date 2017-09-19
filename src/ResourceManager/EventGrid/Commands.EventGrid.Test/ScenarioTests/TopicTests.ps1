@@ -118,18 +118,18 @@ function TopicUpdateTests {
     $result = New-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName -Location $location
     Assert-True {$result.ProvisioningState -eq "Succeeded"}
 
-    Write-Debug "Updating the created topic $topicName"
-    $updatedTopic = Update-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName -Tag @{ Dept = "IT2"; Environment = "Test2" }
+    Write-Debug "Calling Set-AzureRmEventGridTopic on the created topic $topicName"
+    $updatedTopic = Set-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName -Tag @{ Dept = "IT2"; Environment = "Test2" }
     Assert-True {$updatedTopic.Count -eq 1}
     Assert-True {$updatedTopic.TopicName -eq $topicName} "Topic updated earlier is not found."
 
-    Write-Debug "Updating the created topic $topicName"
-    $updatedTopic = Update-AzureRmEventGridTopic -ResourceId "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.EventGrid/topics/$topicName" -Tag @{ Dept = "IT3"; Environment = "Test3" }
+    Write-Debug "Calling Set-AzureRmEventGridTopic on the created topic $topicName"
+    $updatedTopic = Set-AzureRmEventGridTopic -ResourceId "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.EventGrid/topics/$topicName" -Tag @{ Dept = "IT3"; Environment = "Test3" }
     Assert-True {$updatedTopic.Count -eq 1}
     Assert-True {$updatedTopic.TopicName -eq $topicName} "Topic updated earlier is not found."
 
-    Write-Debug "Updating the created topic $topicName"
-    $updatedTopic = Get-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName | Update-AzureRmEventGridTopic -Tag @{ Dept="IT4"; Environment="Test4" }
+    Write-Debug "Calling Set-AzureRmEventGridTopic on the created topic $topicName"
+    $updatedTopic = Get-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName | Set-AzureRmEventGridTopic -Tag @{ Dept="IT4"; Environment="Test4" }
     Assert-True {$updatedTopic.Count -eq 1}
     Assert-True {$updatedTopic.TopicName -eq $topicName} "Topic updated earlier is not found."
 
