@@ -22,7 +22,8 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
     /// <summary>
     /// Create an ActionGroup receiver
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmActionGroupReceiver"), OutputType(typeof(PSActionGroupReceiverBase)), CmdletBinding(DefaultParameterSetName = NewEmailReceiver)]
+    [Cmdlet(VerbsCommon.New, "AzureRmActionGroupReceiver", DefaultParameterSetName = NewEmailReceiver)]
+    [OutputType(typeof(PSActionGroupReceiverBase))]
     public class NewAzureRmActionGroupReceiverCommand : AzureRMCmdlet
     {
         private const string NewEmailReceiver = "NewEmailReceiver";
