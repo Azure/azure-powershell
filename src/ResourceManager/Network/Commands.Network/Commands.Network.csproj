@@ -358,7 +358,7 @@
     <Compile Include="ProviderWideCmdlets\GetAzureExpressRouteServiceProviderCommand.cs" />
     <Compile Include="Usage\GetAzureNetworkUsageCommand.cs" />
     <Compile Include="VirtualNetworkGatewayConnection\GetAzureRmVirtualNetworkGatewayConnectionVpnDeviceConfigScript.cs" />
-    <Compile Include="VirtualNetworkGatewayConnection\GetAzureRmVirtualNetworkGatewaySupportedVpnDevices.cs" />
+    <Compile Include="VirtualNetworkGatewayConnection\GetAzureRmVirtualNetworkGatewaySupportedVpnDevice.cs" />
     <Compile Include="VirtualNetworkGatewayConnection\NewAzureRmIpsecPolicyCommand.cs" />
     <Compile Include="RouteFilter\GetAzureRouteFilterCommand.cs" />
     <Compile Include="RouteFilter\NewAzureRouteFilterCommand.cs" />

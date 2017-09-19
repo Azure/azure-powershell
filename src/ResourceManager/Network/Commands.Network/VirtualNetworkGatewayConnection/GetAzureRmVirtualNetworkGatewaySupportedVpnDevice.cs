@@ -17,8 +17,8 @@ using Microsoft.Azure.Management.Network;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmVirtualNetworkGatewaySupportedVpnDevices"), OutputType(typeof(string))]
-    public class GetAzureRmVirtualNetworkGatewaySupportedVpnDevices : VirtualNetworkGatewayConnectionBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, "AzureRmVirtualNetworkGatewaySupportedVpnDevice"), OutputType(typeof(string))]
+    public class GetAzureRmVirtualNetworkGatewaySupportedVpnDevice : VirtualNetworkGatewayConnectionBaseCmdlet
     {
         [Alias("ResourceName")]
         [Parameter(

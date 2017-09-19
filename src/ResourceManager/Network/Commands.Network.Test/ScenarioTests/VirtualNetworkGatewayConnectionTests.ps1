@@ -521,7 +521,7 @@ function Test-VirtualNetworkGatewayConnectionVpnDeviceConfigurations
       $connection = Get-AzureRmVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName
       
 	  # List supported vpn devices
-	  $supportedVpnDevices = Get-AzureRmVirtualNetworkGatewaySupportedVpnDevices -ResourceGroupName $rgname -name $rname
+	  $supportedVpnDevices = Get-AzureRmVirtualNetworkGatewaySupportedVpnDevice -ResourceGroupName $rgname -name $rname
 
 	  $supportedDevicesXml = [xml]$supportedVpnDevices
 	  $vendorNode = $supportedDevicesXml.SelectSingleNode("//Vendor")
