@@ -96,7 +96,8 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 
         protected override void BeginProcessing()
         {
-            base.BeginProcessing();
+            this._dataCollectionProfile = new AzurePSDataCollectionProfile(false);
+
             if (string.IsNullOrEmpty(RolloutEnvironment))
             {
                 RolloutEnvironment = AsAzureClientSession.GetDefaultEnvironmentName();
@@ -110,6 +111,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
             {
                 AsEnvironment = AsAzureClientSession.Instance.Profile.CreateEnvironment(RolloutEnvironment);
             }
+            base.BeginProcessing();
         }
 
         protected override void InitializeQosEvent()
