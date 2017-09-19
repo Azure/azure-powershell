@@ -30,9 +30,30 @@ namespace Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void EventGrid_TopicsCRUD()
+        public void EventGrid_TopicsCreateGetAndDelete()
         {
             EventGridController.NewInstance.RunPsTest("TopicTests");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void EventGrid_TopicsUpdate()
+        {
+            EventGridController.NewInstance.RunPsTest("TopicUpdateTests");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void EventGrid_TopicsGetKey()
+        {
+            EventGridController.NewInstance.RunPsTest("TopicGetKeyTests");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void EventGrid_TopicsNewKey()
+        {
+            EventGridController.NewInstance.RunPsTest("TopicNewKeyTests");
         }
     }
 }

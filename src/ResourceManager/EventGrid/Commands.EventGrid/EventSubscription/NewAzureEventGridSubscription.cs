@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         VerbsCommon.New,
         EventGridEventSubscriptionVerb,
         SupportsShouldProcess = true,
-        DefaultParameterSetName = CustomTopicEventSubscriptionParameterSet),
+        DefaultParameterSetName = ResourceGroupNameParameterSet),
      OutputType(typeof(PSEventSubscription))]
     public class NewAzureEventGridSubscription : AzureEventGridCmdletBase
     {

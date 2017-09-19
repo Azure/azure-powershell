@@ -14,7 +14,7 @@
 
 <#
 .SYNOPSIS
-Tests EventGrid Topic CRUD operations.
+Tests EventGrid Topic Create, Get and List operations.
 #>
 function TopicTests {
     # Setup
@@ -38,39 +38,12 @@ function TopicTests {
     Write-Debug " Creating a new EventGrid Topic: $topicName in resource group $resourceGroupName"
     Write-Debug "Topic: $topicName"
     $result = New-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName -Location $location
-
-    # Assert
     Assert-True {$result.ProvisioningState -eq "Succeeded"}
 
     Write-Debug "Getting the created topic within the resource group"
     $createdTopic = Get-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName
     Assert-True {$createdTopic.Count -eq 1}
-
     Assert-True {$createdTopic.TopicName -eq $topicName} "Topic created earlier is not found."
-
-    # Get the keys of the topic
-    $sharedAccessKeys = Get-AzureRmEventGridTopicKey -ResourceGroup $resourceGroupName -Name $topicName
-    Assert-True {$sharedAccessKeys.Count -eq 1}
-
-    # Get the keys of the topic using ResourceID parameter set
-    $sharedAccessKeys = Get-AzureRmEventGridTopicKey -ResourceId "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.EventGrid/topics/$topicName"
-    Assert-True {$sharedAccessKeys.Count -eq 1}
-
-    # Get the keys of the topic using the Topic Input object
-    $sharedAccessKeys = Get-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName | Get-AzureRmEventGridTopicKey
-    Assert-True {$sharedAccessKeys.Count -eq 1}
-
-    # Regenerate "key1"
-    $sharedAccessKeys = New-AzureRmEventGridTopicKey -ResourceGroup $resourceGroupName -TopicName $topicName -KeyName "key1"
-    Assert-True {$sharedAccessKeys.Count -eq 1}
-
-    # Regenerate "key2" using the ResourceId parameter set
-    $sharedAccessKeys = New-AzureRmEventGridTopicKey -ResourceId "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.EventGrid/topics/$topicName" -KeyName "key2"
-    Assert-True {$sharedAccessKeys.Count -eq 1}
-
-    # Regenerate "key2" using the Topic Input object
-    $sharedAccessKeys = Get-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName | New-AzureRmEventGridTopicKey -KeyName "key2"
-    Assert-True {$sharedAccessKeys.Count -eq 1}
 
     Write-Debug "Creating a second EventGrid topic: $topicName2 in resource group $secondResourceGroup"
     $result = New-AzureRmEventGridTopic -ResourceGroup $secondResourceGroup -Name $topicName2 -Location $location -Tag @{ Dept = "IT"; Environment = "Test" }
@@ -84,18 +57,6 @@ function TopicTests {
     $createdTopic = Get-AzureRmEventGridTopic -ResourceId "/subscriptions/$subscriptionId/resourceGroups/$secondResourceGroup/providers/Microsoft.EventGrid/topics/$topicName3"
     Assert-True {$createdTopic.Count -eq 1}
     Assert-True {$createdTopic.TopicName -eq $topicName3} "Topic created earlier is not found."
-
-    Write-Debug "Updating the created topic $topicName2"
-    $updatedTopic = Update-AzureRmEventGridTopic -ResourceGroup $secondResourceGroup -Name $topicName2 -Tag @{ Dept = "IT2"; Environment = "Test2" }
-    Assert-True {$updatedTopic.Count -eq 1}
-    Assert-True {$updatedTopic.TopicName -eq $topicName2} "Topic updated earlier is not found."
-
-    Write-Debug "Updating the created topic $topicName3"
-    $updatedTopic = Update-AzureRmEventGridTopic -ResourceId "/subscriptions/$subscriptionId/resourceGroups/$secondResourceGroup/providers/Microsoft.EventGrid/topics/$topicName3" -Tag @{ Dept = "IT2"; Environment = "Test2" }
-    Assert-True {$updatedTopic.Count -eq 1}
-    Assert-True {$updatedTopic.TopicName -eq $topicName3} "Topic updated earlier is not found."
-
-    # TODO: Verify updated tags after service side issue is fixed.
 
     Write-Debug "Listing all the topics created in the resourceGroup $secondResourceGroup"
     $allCreatedTopics = Get-AzureRmEventGridTopic -ResourceGroup $secondResourceGroup
@@ -113,17 +74,10 @@ function TopicTests {
     Write-Debug " Creating a new EventGrid Topic: $topicName4 in resource group $resourceGroupName"
     $result = New-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName4 -Location $location
 
-    Write-Debug "Updating the created topic $topicName4"
-    $updatedTopic = Get-AzureRmEventGridTopic -ResourceGroup $secondResourceGroup -Name $topicName4 | Update-AzureRmEventGridTopic -Tag @{ Dept="IT3"; Environment="Test3" }
-    Assert-True {$updatedTopic.Count -eq 1}
-    Assert-True {$updatedTopic.TopicName -eq $topicName4} "Topic updated earlier is not found."
-
     Write-Debug " Deleting topic: $topicName4 using the InputObject parameter set"
-    Get-AzureRmEventGridTopic -ResourceGroup $secondResourceGroup -Name $topicName4 | Remove-AzureRmEventGridTopic
+    Get-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName4 | Remove-AzureRmEventGridTopic
 
-    Write-Debug " Deleting topic: $topicName3 using the ResourceID parameter set"
-    $subscriptionId = Get-SubscriptionId
-
+    Write-Debug " Deleting topic: $topicName2 using the ResourceID parameter set"
     # Offline playback of tests is failing if I use Get-AzureRmResource, hence temporarily commenting this out
     # Get-AzureRmResource -ResourceId "/subscriptions/$subscriptionId/resourceGroups/$secondResourceGroup/providers/Microsoft.EventGrid/topics/$topicName3" | Remove-AzureRmEventGridTopic
     Remove-AzureRmEventGridTopic -ResourceId "/subscriptions/$subscriptionId/resourceGroups/$secondResourceGroup/providers/Microsoft.EventGrid/topics/$topicName2"
@@ -142,4 +96,124 @@ function TopicTests {
 
     Write-Debug " Deleting resourcegroup $secondResourceGroup"
     Remove-AzureRmResourceGroup -Name $secondResourceGroup -Force
+}
+
+<#
+.SYNOPSIS
+Tests EventGrid Topic Update operations.
+#>
+function TopicUpdateTests {
+    # Setup
+    $location = Get-LocationForEventGrid
+    $topicName = Get-TopicName
+    $resourceGroupName = Get-ResourceGroupName
+    $subscriptionId = Get-SubscriptionId
+
+    Write-Debug "Creating resource group"
+    Write-Debug "ResourceGroup name : $resourceGroupName"
+    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force
+
+    Write-Debug " Creating a new EventGrid Topic: $topicName in resource group $resourceGroupName"
+    Write-Debug "Topic: $topicName"
+    $result = New-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName -Location $location
+    Assert-True {$result.ProvisioningState -eq "Succeeded"}
+
+    Write-Debug "Updating the created topic $topicName"
+    $updatedTopic = Update-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName -Tag @{ Dept = "IT2"; Environment = "Test2" }
+    Assert-True {$updatedTopic.Count -eq 1}
+    Assert-True {$updatedTopic.TopicName -eq $topicName} "Topic updated earlier is not found."
+
+    Write-Debug "Updating the created topic $topicName"
+    $updatedTopic = Update-AzureRmEventGridTopic -ResourceId "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.EventGrid/topics/$topicName" -Tag @{ Dept = "IT3"; Environment = "Test3" }
+    Assert-True {$updatedTopic.Count -eq 1}
+    Assert-True {$updatedTopic.TopicName -eq $topicName} "Topic updated earlier is not found."
+
+    Write-Debug "Updating the created topic $topicName"
+    $updatedTopic = Get-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName | Update-AzureRmEventGridTopic -Tag @{ Dept="IT4"; Environment="Test4" }
+    Assert-True {$updatedTopic.Count -eq 1}
+    Assert-True {$updatedTopic.TopicName -eq $topicName} "Topic updated earlier is not found."
+
+    # TODO: Verify updated tags after service side issue is fixed.
+
+    Write-Debug " Deleting topic: $topicName"
+    Remove-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName
+
+    Write-Debug " Deleting resourcegroup $resourceGroupName"
+    Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+}
+
+<#
+.SYNOPSIS
+Tests EventGrid Topic Key retrieval related operations.
+#>
+function TopicGetKeyTests {
+    # Setup
+    $location = Get-LocationForEventGrid
+    $topicName = Get-TopicName
+    $resourceGroupName = Get-ResourceGroupName
+    $subscriptionId = Get-SubscriptionId
+
+    Write-Debug "Creating resource group"
+    Write-Debug "ResourceGroup name : $resourceGroupName"
+    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force
+
+    Write-Debug " Creating a new EventGrid Topic: $topicName in resource group $resourceGroupName"
+    $result = New-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName -Location $location    
+    Assert-True {$result.ProvisioningState -eq "Succeeded"}
+
+    # Get the keys of the topic
+    $sharedAccessKeys = Get-AzureRmEventGridTopicKey -ResourceGroup $resourceGroupName -Name $topicName
+    Assert-True {$sharedAccessKeys.Count -eq 1}
+
+    # Get the keys of the topic using ResourceID parameter set
+    $sharedAccessKeys = Get-AzureRmEventGridTopicKey -ResourceId "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.EventGrid/topics/$topicName"
+    Assert-True {$sharedAccessKeys.Count -eq 1}
+
+    # Get the keys of the topic using the Topic Input object
+    $sharedAccessKeys = Get-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName | Get-AzureRmEventGridTopicKey
+    Assert-True {$sharedAccessKeys.Count -eq 1}
+
+    Write-Debug " Deleting topic: $topicName"
+    Remove-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName
+
+    Write-Debug " Deleting resourcegroup $resourceGroupName"
+    Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+}
+
+<#
+.SYNOPSIS
+Tests EventGrid Topic Key regeneration related operations.
+#>
+function TopicNewKeyTests {
+    # Setup
+    $location = Get-LocationForEventGrid
+    $topicName = Get-TopicName
+    $resourceGroupName = Get-ResourceGroupName
+    $subscriptionId = Get-SubscriptionId
+
+    Write-Debug "Creating resource group"
+    Write-Debug "ResourceGroup name : $resourceGroupName"
+    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force
+
+    Write-Debug " Creating a new EventGrid Topic: $topicName in resource group $resourceGroupName"
+    $result = New-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName -Location $location    
+    Assert-True {$result.ProvisioningState -eq "Succeeded"}
+
+    # Regenerate "key1"
+    $sharedAccessKeys = New-AzureRmEventGridTopicKey -ResourceGroup $resourceGroupName -TopicName $topicName -KeyName "key1"
+    Assert-True {$sharedAccessKeys.Count -eq 1}
+
+    # Regenerate "key2" using the ResourceId parameter set
+    $sharedAccessKeys = New-AzureRmEventGridTopicKey -ResourceId "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.EventGrid/topics/$topicName" -KeyName "key2"
+    Assert-True {$sharedAccessKeys.Count -eq 1}
+
+    # Regenerate "key2" using the Topic Input object
+    $sharedAccessKeys = Get-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName | New-AzureRmEventGridTopicKey -KeyName "key2"
+    Assert-True {$sharedAccessKeys.Count -eq 1}
+
+    Write-Debug " Deleting topic: $topicName"
+    Remove-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName
+
+    Write-Debug " Deleting resourcegroup $resourceGroupName"
+    Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
 }
