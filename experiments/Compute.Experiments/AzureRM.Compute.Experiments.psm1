@@ -68,11 +68,26 @@ function New-AzVm {
         $createParams = [CreateParams]::new($Name, $locationi.Value, $Name);
 
         if ($PSCmdlet.ShouldProcess($Name, "Creating a virtual machine")) {
-            return New-AzVmInternal -ResourceGroup $rgi -VirtualMachine $vmi -CreateParams $createParams -ErrorAction Stop;
+            if ($AsJob) {
+                $script = {
+                    param($rgi, $vmi, $createParams)
+                    New-AzVmInternal `
+                        -ResourceGroup $rgi `
+                        -VirtualMachine $vmi `
+                        -CreateParams $createParams `
+                        -ErrorAction Stop
+                }
+                return Start-Job -ScriptBlock $script -ArgumentList @($rgi, $vmi, $createParams)
+            } else {
+                return New-AzVmInternal `
+                    -ResourceGroup $rgi `
+                    -VirtualMachine $vmi `
+                    -CreateParams $createParams `
+                    -ErrorAction Stop
+            }
         }
     }
 }
-
 function New-AzVmInternal {
     param (
         [ResourceGroup] $ResourceGroup,

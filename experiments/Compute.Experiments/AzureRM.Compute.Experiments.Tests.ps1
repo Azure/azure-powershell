@@ -1,7 +1,7 @@
-Import-Module AzureRM.Profile -MinimumVersion 3.3.2
-Import-Module AzureRM.Resources -MinimumVersion 4.3.2
-Import-Module AzureRM.Network -MinimumVersion 4.3.2
-Import-Module AzureRM.Compute -MinimumVersion 3.3.2
+# Import-Module AzureRM.Profile -MinimumVersion 3.3.2
+# Import-Module AzureRM.Resources -MinimumVersion 4.3.2
+# Import-Module AzureRM.Network -MinimumVersion 4.3.2
+# Import-Module AzureRM.Compute -MinimumVersion 3.3.2
 Import-Module .\..\..\experiments\Compute.Experiments\AzureRM.Compute.Experiments.psd1
 
 # Login
@@ -16,6 +16,14 @@ $password = ConvertTo-SecureString $vmComputerPassword -AsPlainText -Force;
 $vmCredential = New-Object System.Management.Automation.PSCredential ($vmComputerUser, $password);
 
 New-AzVm -Name MyVM -Credential $vmCredential -WhatIf
+
+$job = New-AzVm -Name MyVMA -Credential $vmCredential -AsJob
+
+$vm = Receive-Job $job
+
+$vm
+
+exit
 
 # $vm = New-AzVm
 # $vm = New-AzVm -Credential $vmCredential
