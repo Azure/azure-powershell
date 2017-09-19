@@ -31,22 +31,40 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Creates the managed application definition.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmManagedApplicationDefinition", SupportsShouldProcess = true), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmManagedApplicationDefinition", DefaultParameterSetName = SetAzureManagedApplicationDefinitionCmdlet.ManagedApplicationDefinitionNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSObject))]
     public class SetAzureManagedApplicationDefinitionCmdlet : ManagedApplicationCmdletBase
     {
         /// <summary>
+        /// The managed application Id parameter set.
+        /// </summary>
+        internal const string ManagedApplicationDefinitionIdParameterSet = "The managed application definition Id parameter set.";
+
+        /// <summary>
+        /// The managed application name parameter set.
+        /// </summary>
+        internal const string ManagedApplicationDefinitionNameParameterSet = "The managed application definition name parameter set.";
+
+        /// <summary>
         /// Gets or sets the managed application definition name parameter.
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The managed application definition name.")]
+        [Parameter(ParameterSetName = SetAzureManagedApplicationDefinitionCmdlet.ManagedApplicationDefinitionNameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The managed application definition name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the managed application definition resource group parameter
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name.")]
+        [Parameter(ParameterSetName = SetAzureManagedApplicationDefinitionCmdlet.ManagedApplicationDefinitionNameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the managed application definition id parameter
+        /// </summary>
+        [Alias("ResourceId")]
+        [Parameter(ParameterSetName = SetAzureManagedApplicationDefinitionCmdlet.ManagedApplicationDefinitionIdParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The fully qualified managed application definition Id, including the subscription. e.g. /subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}")]
+        [ValidateNotNullOrEmpty]
+        public string Id { get; set; }
 
         /// <summary>
         /// Gets or sets the managed application definition display name parameter.
@@ -91,7 +109,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             base.OnProcessRecord();
             if (this.ShouldProcess(this.Name, "Update Managed Application Definition"))
             {
-                string resourceId = GetResourceId();
+                string resourceId = this.Id ?? GetResourceId();
 
                 var apiVersion = string.IsNullOrWhiteSpace(this.ApiVersion) ? Constants.ApplicationApiVersion : this.ApiVersion;
 
