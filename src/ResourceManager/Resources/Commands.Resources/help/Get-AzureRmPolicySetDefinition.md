@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzureRmPolicySetDefinition
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets policy set definitions.
 
 ## SYNTAX
 
@@ -28,16 +28,23 @@ Get-AzureRmPolicySetDefinition -Id <String> [-ApiVersion <String>] [-Pre] [<Comm
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Get-AzureRmPolicySetDefinition** cmdlet gets all the policy set definitions or a specific policy set definition identified by name or ID.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Get all policy set definition
 ```
-PS C:\> {{ Add example code here }}
+PS C:\>Get-AzureRmPolicySetDefinition
 ```
 
-{{ Add example description here }}
+This command gets all the policy set definitions.
+
+### Example 2: Get policy set definition by name
+```
+PS C:\>Get-AzureRmPolicySetDefinition -Name "VMPolicyDefinition"
+```
+
+This command gets the policy set definition named VMPolicyDefinition.
 
 ## PARAMETERS
 

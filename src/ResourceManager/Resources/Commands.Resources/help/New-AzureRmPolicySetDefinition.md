@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzureRmPolicySetDefinition
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Creates a policy set definition.
 
 ## SYNTAX
 
@@ -18,16 +18,16 @@ New-AzureRmPolicySetDefinition -Name <String> [-DisplayName <String>] [-Descript
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **New-AzureRmPolicySetDefinition** cmdlet creates a policy set definition.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Create a policy set definition by using a policy set file
 ```
-PS C:\> {{ Add example code here }}
+PS C:\>New-AzureRmPolicySetDefinition -Name "VMPolicyDefinition" -PolicyDefinition C:\VMPolicySet.json
 ```
 
-{{ Add example description here }}
+This command creates a policy set definition named VMPolicyDefinition that contains the policy definitions specified in C:\VMPolicy.json.
 
 ## PARAMETERS
 
