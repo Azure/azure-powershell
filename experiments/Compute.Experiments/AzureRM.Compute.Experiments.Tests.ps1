@@ -1,8 +1,9 @@
-# Import-Module AzureRM.Profile -MinimumVersion 3.3.2
-# Import-Module AzureRM.Resources -MinimumVersion 4.3.2
-# Import-Module AzureRM.Network -MinimumVersion 4.3.2
-# Import-Module AzureRM.Compute -MinimumVersion 3.3.2
-Import-Module .\..\..\experiments\Compute.Experiments\AzureRM.Compute.Experiments.psd1
+# $build = "..\build\"
+# $out = $build + "AzureRM.Compute.Experiments\"
+# Copy-Item .\AzureRM.Compute.Experiments.psd1 $out
+# Copy-Item .\AzureRM.Compute.Experiments.psm1 $out
+
+$env:PSModulePath = $env:PSModulePath + ";" + $build
 
 # Login
 $credentials = Get-Content -Path "C:\Users\sergey\Desktop\php-test.json" | ConvertFrom-Json
@@ -17,20 +18,26 @@ $vmCredential = New-Object System.Management.Automation.PSCredential ($vmCompute
 
 New-AzVm -Name MyVM -Credential $vmCredential -WhatIf
 
-$job = New-AzVm -Name MyVMA -Credential $vmCredential -AsJob
+# $job = New-AzVm -Name MyVMA -Credential $vmCredential -AsJob
+# Receive-Job $job
 
+# exit
+
+# $vm = New-AzVm
+# $vm = New-AzVm -Credential $vmCredential
+# $vm = New-AzVm -Name MyVMA -Credential $vmCredential
+# $vm = New-AzVm -Name MyVMA
+
+$vm
+
+Write-Host "<async>"
+
+$job = New-AzVm -Name MyVMA2 -Credential $vmCredential -AsJob
 $vm = Receive-Job $job
 
 $vm
 
-exit
-
-# $vm = New-AzVm
-# $vm = New-AzVm -Credential $vmCredential
-$vm = New-AzVm -Name MyVMA -Credential $vmCredential
-# $vm = New-AzVm -Name MyVMA
-
-$vm
+Write-Host "</async>"
 
 # clean-up
 Remove-AzureRmResourceGroup -ResourceId $vm.ResourceGroupId
