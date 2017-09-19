@@ -29,7 +29,8 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
     /// <summary>
     /// Gets an Azure Action Group.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmActionGroup", SupportsShouldProcess = true), OutputType(typeof(PSActionGroupResource)), CmdletBinding(DefaultParameterSetName = ByPropertyName)]
+    [Cmdlet(VerbsCommon.Set, "AzureRmActionGroup", DefaultParameterSetName = ByPropertyName, SupportsShouldProcess = true)]
+    [OutputType(typeof(PSActionGroupResource))]
     public class SetAzureRmActionGroupCommand : ManagementCmdletBase
     {
         private const string ByPropertyName = "ByPropertyName";
