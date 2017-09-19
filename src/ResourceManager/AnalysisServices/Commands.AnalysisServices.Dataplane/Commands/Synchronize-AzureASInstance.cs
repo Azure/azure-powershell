@@ -25,6 +25,7 @@ using System.Threading.Tasks;
 using Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models;
 using Microsoft.Azure.Commands.AnalysisServices.Dataplane.Properties;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -234,15 +235,12 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
         {
             // No data collection for this commandlet
         }
-
-        protected override void SetDataCollectionProfileIfNotExists()
+        protected override string DataCollectionWarning
         {
-            // No data collection for this commandlet 
-        }
-
-        protected override void SaveDataCollectionProfile()
-        {
-            // No data collection for this commandlet
+            get
+            {
+                return Resources.ARMDataCollectionMessage;
+            }
         }
 
         /// <summary>
