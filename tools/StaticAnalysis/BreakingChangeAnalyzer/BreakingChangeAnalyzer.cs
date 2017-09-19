@@ -85,6 +85,10 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                 foreach (var directory in probingDirectories)
                 {
                     var service = Path.GetFileName(directory);
+                    if (service.ToLower().EndsWith("experiments"))
+                    {
+                        return;
+                    }
 
                     var manifestFiles = Directory.EnumerateFiles(directory, "*.psd1").ToList();
 
