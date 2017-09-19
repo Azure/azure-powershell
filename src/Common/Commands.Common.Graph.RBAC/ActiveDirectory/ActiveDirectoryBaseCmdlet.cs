@@ -75,17 +75,6 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
             }
         }
         
-        private Exception ParseResponse(GraphErrorException graphEx) {
-            int exceptionMessageIndex = graphEx.Response.Content.IndexOf("\"value\":", StringComparison.CurrentCultureIgnoreCase);
-            if (exceptionMessageIndex > 0) 
-            {
-                string substring = graphEx.Response.Content.Substring(exceptionMessageIndex+9);
-                // the start index is added 9, so as to remove the delimiter \"value\":\
-                string exceptionDetails = substring.Substring(0,substring.IndexOf("\"}"));
-                return new Exception(exceptionDetails);
-            }
-            return null;
-        }
 
         private Exception ParseResponse(GraphErrorException graphEx) {
             int exceptionMessageIndex = graphEx.Response.Content.IndexOf("\"value\":", StringComparison.CurrentCultureIgnoreCase);
