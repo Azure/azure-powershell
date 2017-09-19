@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
     /// <summary>
     /// Gets an Azure Action Group.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmActionGroup", SupportsShouldProcess = true), OutputType(typeof(AzureOperationResponse))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmActionGroup", SupportsShouldProcess = true), OutputType(typeof(AzureOperationResponse)), CmdletBinding(DefaultParameterSetName = ByPropertyName)]
     public class RemoveAzureRmActionGroupCommand : ManagementCmdletBase
     {
         private const string ByPropertyName = "ByPropertyName";
