@@ -24,6 +24,12 @@ New-AzureRmEventGridTopicKey [-KeyName] <String> [-InputObject] <PSTopic> [-What
  [<CommonParameters>]
 ```
 
+### ResourceIdEventSubscriptionParameterSet
+```
+New-AzureRmEventGridTopicKey [-KeyName] <String> [-ResourceId] <String> [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Regenerates the shared access key for an Azure Event Grid Topic.
 
@@ -46,7 +52,9 @@ Regenerate the key corresponding to key \'key1'\ of Event Grid topic \`Topic1\` 
 ## PARAMETERS
 
 ### -InputObject
-EventGrid Topic object.```yaml
+EventGrid Topic object.
+
+```yaml
 Type: PSTopic
 Parameter Sets: TopicInputObjectParameterSet
 Aliases: 
@@ -63,7 +71,19 @@ The name of the key that needs to be regenerated
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: TopicNameParameterSet, ResourceIdEventSubscriptionParameterSet
+Aliases: 
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: TopicInputObjectParameterSet
 Aliases: 
 
 Required: True
@@ -80,6 +100,21 @@ Resource group name.
 Type: String
 Parameter Sets: TopicNameParameterSet
 Aliases: ResourceGroup
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+Resource Identifier representing the Event Grid Topic.
+
+```yaml
+Type: String
+Parameter Sets: ResourceIdEventSubscriptionParameterSet
+Aliases: 
 
 Required: True
 Position: 0

@@ -14,6 +14,7 @@
 
 using System.Management.Automation;
 using Microsoft.Azure.Commands.EventGrid.Models;
+using Microsoft.Azure.Commands.EventGrid.Utilities;
 using Microsoft.Azure.Management.EventGrid.Models;
 
 namespace Microsoft.Azure.Commands.EventGrid
@@ -48,10 +49,16 @@ namespace Microsoft.Azure.Commands.EventGrid
             HelpMessage = "The name of the key that needs to be regenerated")]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
+            ValueFromPipelineByPropertyName = false,
             Position = 1,
             HelpMessage = "The name of the key that needs to be regenerated",
             ParameterSetName = TopicInputObjectParameterSet)]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            Position = 1,
+            HelpMessage = "The name of the key that needs to be regenerated",
+            ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
         public string KeyName { get; set; }
 
@@ -63,6 +70,14 @@ namespace Microsoft.Azure.Commands.EventGrid
         [ValidateNotNullOrEmpty]
         public PSTopic InputObject { get; set; }
 
+        [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            Position = 0,
+            HelpMessage = "Resource Identifier representing the Event Grid Topic.",
+            ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.ShouldProcess(this.TopicName, $"Regenerate key {this.KeyName} for topic {this.TopicName} in Resource Group {this.ResourceGroupName}"))
@@ -70,7 +85,11 @@ namespace Microsoft.Azure.Commands.EventGrid
                 string resourceGroupName;
                 string topicName;
 
-                if (this.InputObject != null)
+                if (!string.IsNullOrEmpty(this.ResourceId))
+                {
+                    EventGridUtils.GetResourceGroupNameAndTopicName(this.ResourceId, out resourceGroupName, out topicName);
+                }
+                else if (this.InputObject != null)
                 {
                     resourceGroupName = this.InputObject.ResourceGroupName;
                     topicName = this.InputObject.TopicName;

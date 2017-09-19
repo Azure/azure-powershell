@@ -22,6 +22,11 @@ Get-AzureRmEventGridTopicKey [-ResourceGroupName] <String> [-Name] <String> [<Co
 Get-AzureRmEventGridTopicKey [-InputObject] <PSTopic> [<CommonParameters>]
 ```
 
+### ResourceIdEventSubscriptionParameterSet
+```
+Get-AzureRmEventGridTopicKey [-ResourceId] <String> [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Gets the shared access keys used to publish events to an Event Grid topic.
 
@@ -44,7 +49,9 @@ Gets the shared access keys of Event Grid topic \`Topic1\` in resource group \`M
 ## PARAMETERS
 
 ### -InputObject
-EventGrid Topic object.```yaml
+EventGrid Topic object.
+
+```yaml
 Type: PSTopic
 Parameter Sets: TopicInputObjectParameterSet
 Aliases: 
@@ -78,6 +85,21 @@ Resource Group Name.
 Type: String
 Parameter Sets: TopicNameParameterSet
 Aliases: ResourceGroup
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+Resource Identifier representing the Event Grid Topic.
+
+```yaml
+Type: String
+Parameter Sets: ResourceIdEventSubscriptionParameterSet
+Aliases: 
 
 Required: True
 Position: 0

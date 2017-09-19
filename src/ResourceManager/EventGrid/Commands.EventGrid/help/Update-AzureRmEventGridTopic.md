@@ -24,6 +24,12 @@ Update-AzureRmEventGridTopic [-ResourceId] <String> [-Tag] <Hashtable> [-WhatIf]
  [<CommonParameters>]
 ```
 
+### TopicInputObjectParameterSet
+```
+Update-AzureRmEventGridTopic [-InputObject] <PSTopic> [-Tag] <Hashtable> [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Update the properties of an Event Grid topic. This can be used to update the tags of an Event Grid topic.
 
@@ -37,6 +43,21 @@ PS C:\> Update-AzureRmEventGridTopic -ResourceGroup MyResourceGroupName -Name To
 Updates the Event Grid topic \`Topic1\` in resource group \`MyResourceGroupName\` to replace the tags with the specified tags "Department" and "Environment".
 
 ## PARAMETERS
+
+### -InputObject
+EventGrid Topic object.
+
+```yaml
+Type: PSTopic
+Parameter Sets: TopicInputObjectParameterSet
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
 
 ### -Name
 EventGrid Topic Name.
@@ -88,7 +109,19 @@ Hashtables which represents resource Tag.
 
 ```yaml
 Type: Hashtable
-Parameter Sets: (All)
+Parameter Sets: TopicNameParameterSet, ResourceIdEventSubscriptionParameterSet
+Aliases: 
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: Hashtable
+Parameter Sets: TopicInputObjectParameterSet
 Aliases: 
 
 Required: True

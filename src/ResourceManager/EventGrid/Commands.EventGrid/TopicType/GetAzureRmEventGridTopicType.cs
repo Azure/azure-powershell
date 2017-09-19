@@ -32,14 +32,12 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            Position = 1,
             HelpMessage = "If specified, the response will include the event types supported by a topic type.")]
-        public SwitchParameter IncludeEventTypes { get; set; }
+        public SwitchParameter IncludeEventTypeData { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            bool includeEventTypes = this.IncludeEventTypes.IsPresent;
+            bool includeEventTypes = this.IncludeEventTypeData.IsPresent;
 
             if (string.IsNullOrEmpty(this.Name))
             {

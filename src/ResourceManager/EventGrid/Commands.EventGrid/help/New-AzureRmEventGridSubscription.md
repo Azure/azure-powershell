@@ -15,9 +15,9 @@ Creates a new Azure Event Grid Event Subscription to a topic, Azure resource, Az
 ### CustomTopicEventSubscriptionParameterSet (Default)
 ```
 New-AzureRmEventGridSubscription [-EventSubscriptionName] <String> [-Endpoint] <String>
- [[-ResourceGroupName] <String>] [[-TopicName] <String>] [[-EndpointType] <String>]
- [[-SubjectBeginsWith] <String>] [[-SubjectEndsWith] <String>] [-SubjectCaseSensitive]
- [[-IncludedEventType] <String[]>] [[-Label] <String[]>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ResourceGroupName] <String> [-TopicName] <String> [[-EndpointType] <String>] [[-SubjectBeginsWith] <String>]
+ [[-SubjectEndsWith] <String>] [-SubjectCaseSensitive] [[-IncludedEventType] <String[]>] [[-Label] <String[]>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdEventSubscriptionParameterSet
@@ -34,6 +34,14 @@ New-AzureRmEventGridSubscription [-InputObject] <PSTopic> [-EventSubscriptionNam
  [-Endpoint] <String> [[-EndpointType] <String>] [[-SubjectBeginsWith] <String>] [[-SubjectEndsWith] <String>]
  [-SubjectCaseSensitive] [[-IncludedEventType] <String[]>] [[-Label] <String[]>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+```
+
+### ResourceGroupNameParameterSet
+```
+New-AzureRmEventGridSubscription [-EventSubscriptionName] <String> [-Endpoint] <String>
+ [[-ResourceGroupName] <String>] [[-EndpointType] <String>] [[-SubjectBeginsWith] <String>]
+ [[-SubjectEndsWith] <String>] [-SubjectCaseSensitive] [[-IncludedEventType] <String[]>] [[-Label] <String[]>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -97,7 +105,19 @@ This can be a webhook URL or the Azure resource ID of an EventHub.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: CustomTopicEventSubscriptionParameterSet, ResourceIdEventSubscriptionParameterSet, ResourceGroupNameParameterSet
+Aliases: 
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: EventSubscriptionInputObjectSet
 Aliases: 
 
 Required: True
@@ -113,7 +133,20 @@ This can be webhook or eventhub
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: CustomTopicEventSubscriptionParameterSet, ResourceIdEventSubscriptionParameterSet, ResourceGroupNameParameterSet
+Aliases: 
+Accepted values: webhook, eventhub
+
+Required: False
+Position: 4
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: EventSubscriptionInputObjectSet
 Aliases: 
 Accepted values: webhook, eventhub
 
@@ -129,7 +162,19 @@ The name of the event subscription
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: CustomTopicEventSubscriptionParameterSet, ResourceIdEventSubscriptionParameterSet, ResourceGroupNameParameterSet
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: EventSubscriptionInputObjectSet
 Aliases: 
 
 Required: True
@@ -144,11 +189,23 @@ Filter that specifies a list of event types to include.If not specified, all eve
 
 ```yaml
 Type: String[]
-Parameter Sets: (All)
+Parameter Sets: CustomTopicEventSubscriptionParameterSet, ResourceIdEventSubscriptionParameterSet, ResourceGroupNameParameterSet
 Aliases: 
 
 Required: False
-Position: 8
+Position: 7
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String[]
+Parameter Sets: EventSubscriptionInputObjectSet
+Aliases: 
+
+Required: False
+Position: 7
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -174,11 +231,23 @@ Labels for the event subscription
 
 ```yaml
 Type: String[]
-Parameter Sets: (All)
+Parameter Sets: CustomTopicEventSubscriptionParameterSet, ResourceIdEventSubscriptionParameterSet, ResourceGroupNameParameterSet
 Aliases: 
 
 Required: False
-Position: 9
+Position: 8
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String[]
+Parameter Sets: EventSubscriptionInputObjectSet
+Aliases: 
+
+Required: False
+Position: 8
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -190,6 +259,18 @@ The resource group of the topic.
 ```yaml
 Type: String
 Parameter Sets: CustomTopicEventSubscriptionParameterSet
+Aliases: ResourceGroup
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: ResourceGroupNameParameterSet
 Aliases: ResourceGroup
 
 Required: False
@@ -220,7 +301,19 @@ If not specified, events with all subject prefixes will be included.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: CustomTopicEventSubscriptionParameterSet, ResourceIdEventSubscriptionParameterSet, ResourceGroupNameParameterSet
+Aliases: 
+
+Required: False
+Position: 5
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: EventSubscriptionInputObjectSet
 Aliases: 
 
 Required: False
@@ -240,9 +333,9 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 7
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -252,7 +345,19 @@ If not specified, events with all subject suffixes will be included.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: CustomTopicEventSubscriptionParameterSet, ResourceIdEventSubscriptionParameterSet, ResourceGroupNameParameterSet
+Aliases: 
+
+Required: False
+Position: 6
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: EventSubscriptionInputObjectSet
 Aliases: 
 
 Required: False
@@ -270,7 +375,7 @@ Type: String
 Parameter Sets: CustomTopicEventSubscriptionParameterSet
 Aliases: 
 
-Required: False
+Required: True
 Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)

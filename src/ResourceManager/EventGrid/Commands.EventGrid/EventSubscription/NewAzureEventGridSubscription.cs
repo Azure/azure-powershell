@@ -53,12 +53,18 @@ namespace Microsoft.Azure.Commands.EventGrid
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
+            Position = 0,
+            HelpMessage = EventGridConstants.EventSubscriptionName,
+            ParameterSetName = ResourceGroupNameParameterSet)]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = EventGridConstants.EventSubscriptionName,
             ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
+            ValueFromPipelineByPropertyName = false,
             Position = 1,
             HelpMessage = EventGridConstants.EventSubscriptionName,
             ParameterSetName = EventSubscriptionInputObjectParameterSet)]
@@ -70,6 +76,12 @@ namespace Microsoft.Azure.Commands.EventGrid
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = EventGridConstants.EndpointHelp,
+            ParameterSetName = ResourceGroupNameParameterSet)]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            Position = 1,
+            HelpMessage = EventGridConstants.EndpointHelp,
             ParameterSetName = CustomTopicEventSubscriptionParameterSet)]
         [Parameter(
             Mandatory = true,
@@ -79,7 +91,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
+            ValueFromPipelineByPropertyName = false,
             Position = 2,
             HelpMessage = EventGridConstants.EndpointHelp,
             ParameterSetName = EventSubscriptionInputObjectParameterSet)]
@@ -87,17 +99,23 @@ namespace Microsoft.Azure.Commands.EventGrid
         public string Endpoint { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 2,
             HelpMessage = "The resource group of the topic.",
             ParameterSetName = CustomTopicEventSubscriptionParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            Position = 2,
+            HelpMessage = EventGridConstants.ResourceGroupName,
+            ParameterSetName = ResourceGroupNameParameterSet)]
         [ValidateNotNullOrEmpty]
         [Alias(AliasResourceGroup)]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 3,
             HelpMessage = "The name of the topic to which the event subscription should be created.",
@@ -116,10 +134,16 @@ namespace Microsoft.Azure.Commands.EventGrid
             ValueFromPipelineByPropertyName = true,
             Position = 3,
             HelpMessage = EventGridConstants.EndpointTypeHelp,
-            ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
+            ParameterSetName = ResourceGroupNameParameterSet)]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            Position = 3,
+            HelpMessage = EventGridConstants.EndpointTypeHelp,
+            ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = false,
             Position = 3,
             HelpMessage = EventGridConstants.EndpointTypeHelp,
             ParameterSetName = EventSubscriptionInputObjectParameterSet)]
@@ -138,10 +162,16 @@ namespace Microsoft.Azure.Commands.EventGrid
             ValueFromPipelineByPropertyName = true,
             Position = 4,
             HelpMessage = EventGridConstants.SubjectBeginsWithHelp,
-            ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
+            ParameterSetName = ResourceGroupNameParameterSet)]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            Position = 4,
+            HelpMessage = EventGridConstants.SubjectBeginsWithHelp,
+            ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = false,
             Position = 4,
             HelpMessage = EventGridConstants.SubjectBeginsWithHelp,
             ParameterSetName = EventSubscriptionInputObjectParameterSet)]
@@ -159,10 +189,16 @@ namespace Microsoft.Azure.Commands.EventGrid
             ValueFromPipelineByPropertyName = true,
             Position = 5,
             HelpMessage = EventGridConstants.SubjectEndsWithHelp,
-            ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
+            ParameterSetName = ResourceGroupNameParameterSet)]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            Position = 5,
+            HelpMessage = EventGridConstants.SubjectEndsWithHelp,
+            ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = false,
             Position = 5,
             HelpMessage = EventGridConstants.SubjectEndsWithHelp,
             ParameterSetName = EventSubscriptionInputObjectParameterSet)]
@@ -171,20 +207,18 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            Position = 7,
             HelpMessage = EventGridConstants.SubjectCaseSensitiveHelp,
             ParameterSetName = CustomTopicEventSubscriptionParameterSet)]
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            Position = 6,
+            HelpMessage = EventGridConstants.SubjectCaseSensitiveHelp,
+            ParameterSetName = ResourceGroupNameParameterSet)]
+        [Parameter(
+            Mandatory = false,
             HelpMessage = EventGridConstants.SubjectCaseSensitiveHelp,
             ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            Position = 6,
             HelpMessage = EventGridConstants.SubjectCaseSensitiveHelp,
             ParameterSetName = EventSubscriptionInputObjectParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -193,19 +227,25 @@ namespace Microsoft.Azure.Commands.EventGrid
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            Position = 8,
+            Position = 7,
             HelpMessage = EventGridConstants.IncludedEventTypesHelp,
             ParameterSetName = CustomTopicEventSubscriptionParameterSet)]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            Position = 7,
+            Position = 6,
+            HelpMessage = EventGridConstants.IncludedEventTypesHelp,
+            ParameterSetName = ResourceGroupNameParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            Position = 6,
             HelpMessage = EventGridConstants.IncludedEventTypesHelp,
             ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            Position = 7,
+            ValueFromPipelineByPropertyName = false,
+            Position = 6,
             HelpMessage = EventGridConstants.IncludedEventTypesHelp,
             ParameterSetName = EventSubscriptionInputObjectParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -214,19 +254,25 @@ namespace Microsoft.Azure.Commands.EventGrid
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            Position = 9,
+            Position = 8,
             HelpMessage = EventGridConstants.LabelsHelp,
             ParameterSetName = CustomTopicEventSubscriptionParameterSet)]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            Position = 8,
+            Position = 7,
+            HelpMessage = EventGridConstants.LabelsHelp,
+            ParameterSetName = ResourceGroupNameParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            Position = 7,
             HelpMessage = EventGridConstants.LabelsHelp,
             ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            Position = 8,
+            ValueFromPipelineByPropertyName = false,
+            Position = 7,
             HelpMessage = EventGridConstants.LabelsHelp,
             ParameterSetName = EventSubscriptionInputObjectParameterSet)]
         [ValidateNotNullOrEmpty]

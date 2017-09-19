@@ -14,7 +14,12 @@ Gets the details of an Event Grid topic, or gets a list of all Event Grid topics
 
 ### TopicNameParameterSet (Default)
 ```
-Get-AzureRmEventGridTopic [[-ResourceGroupName] <String>] [[-Name] <String>] [<CommonParameters>]
+Get-AzureRmEventGridTopic [-ResourceGroupName] <String> [-Name] <String> [<CommonParameters>]
+```
+
+### ResourceGroupNameParameterSet
+```
+Get-AzureRmEventGridTopic [[-ResourceGroupName] <String>] [<CommonParameters>]
 ```
 
 ### ResourceIdEventSubscriptionParameterSet
@@ -67,7 +72,7 @@ Type: String
 Parameter Sets: TopicNameParameterSet
 Aliases: TopicName
 
-Required: False
+Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -80,6 +85,18 @@ Resource Group Name.
 ```yaml
 Type: String
 Parameter Sets: TopicNameParameterSet
+Aliases: ResourceGroup
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: ResourceGroupNameParameterSet
 Aliases: ResourceGroup
 
 Required: False

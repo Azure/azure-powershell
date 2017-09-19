@@ -30,7 +30,7 @@ function TopicTypeTests_Operations {
     Assert-True {$returnedTopicTypes1[0].EventTypes -eq $null}
 
     Write-Debug "Getting topic type info for Storage, with event types"
-    $returnedTopicTypes2 = Get-AzureRmEventGridTopicType -Name $storage -IncludeEventTypes
+    $returnedTopicTypes2 = Get-AzureRmEventGridTopicType -Name $storage -IncludeEventTypeData
     Assert-True {$returnedTopicTypes2.Count -eq 1}
     Assert-True {$returnedTopicTypes2[0].TopicTypeName -eq $storage}
     Assert-True {$returnedTopicTypes2[0].EventTypes -ne $null}

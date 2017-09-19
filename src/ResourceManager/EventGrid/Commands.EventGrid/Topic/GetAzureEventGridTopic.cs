@@ -33,20 +33,28 @@ namespace Microsoft.Azure.Commands.EventGrid
     public class GetAzureRmEventGridTopic : AzureEventGridCmdletBase
     {
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = "Resource Group Name.",
             ParameterSetName = TopicNameParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            Position = 0,
+            HelpMessage = "Resource Group Name.",
+            ParameterSetName = ResourceGroupNameParameterSet)]
+        [ValidateNotNullOrEmpty]
         [Alias(AliasResourceGroup)]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "EventGrid Topic Name.",
             ParameterSetName = TopicNameParameterSet)]
+        [ValidateNotNullOrEmpty]
         [Alias("TopicName")]
         public string Name { get; set; }
 
@@ -60,17 +68,22 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         public override void ExecuteCmdlet()
         {
-            string resourceGroupName;
-            string topicName;
+            string resourceGroupName = string.Empty;
+            string topicName = string.Empty;
 
             if (!string.IsNullOrEmpty(this.ResourceId))
             {
                 EventGridUtils.GetResourceGroupNameAndTopicName(this.ResourceId, out resourceGroupName, out topicName);
             }
-            else
+            else if (!string.IsNullOrEmpty(this.Name))
             {
+                // If Name is provided, ResourceGroup should be non-empty as well
                 resourceGroupName = this.ResourceGroupName;
                 topicName = this.Name;
+            }
+            else if (!string.IsNullOrEmpty(this.ResourceGroupName))
+            {
+                resourceGroupName = this.ResourceGroupName;
             }
                 
             if (!string.IsNullOrEmpty(resourceGroupName) && !string.IsNullOrEmpty(topicName))
