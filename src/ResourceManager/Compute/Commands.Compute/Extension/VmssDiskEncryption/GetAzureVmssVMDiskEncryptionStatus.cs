@@ -26,8 +26,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 {
     [Cmdlet(
         VerbsCommon.Get,
-        ProfileNouns.AzureVmssVMDiskEncryptionStatus),
-    OutputType(typeof(PSVmssVMDiskEncryptionStatusContext))]
+        ProfileNouns.AzureVmssVMDiskEncryption),
+        Alias(ProfileNouns.GetAzureRmVmssVMDiskEncryptionAlias),
+        OutputType(typeof(PSVmssVMDiskEncryptionStatusContext))]
     public class GetAzureVmssVMDiskEncryptionStatusCommand : VirtualMachineScaleSetExtensionBaseCmdlet
     {
         [Parameter(

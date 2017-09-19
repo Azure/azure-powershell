@@ -14,8 +14,8 @@ Creates a virtual machine.
 
 ```
 New-AzureRmVM [-ResourceGroupName] <String> [-Location] <String> [-VM] <PSVirtualMachine> [[-Zone] <String[]>]
- [-DisableBginfoExtension] [-Tags <Hashtable>] [-LicenseType <String>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DisableBginfoExtension] [-Tags <Hashtable>] [-LicenseType <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -137,6 +137,19 @@ This script assumes that you are already logged into your Azure account.
 You can confirm your login status by using the **Get-AzureSubscription** cmdlet.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DisableBginfoExtension
 Indicates that this cmdlet does not install the **BG Info** extension on the virtual machine.

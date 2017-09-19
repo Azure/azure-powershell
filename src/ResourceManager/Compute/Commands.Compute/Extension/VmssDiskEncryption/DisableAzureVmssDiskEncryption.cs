@@ -65,9 +65,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Sequence version of encryption operation. This must be incremented to perform repeated encryption operations on the same VM")]
+            HelpMessage = "Generate a tag for force update.  This should be given to perform repeated encryption operations on the same VM.")]
         [ValidateNotNullOrEmpty]
-        public string SequenceVersion { get; set; }
+        public SwitchParameter ForceUpdate { get; set; }
 
         [Parameter(HelpMessage = "To force the removal of the extension from the virtual machine.")]
         [ValidateNotNullOrEmpty]
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                         {
                             ext.Settings = GetDisalbeEncryptionSetting();
                             ext.ProtectedSettings = null;
-                            ext.ForceUpdateTag = this.SequenceVersion ?? Guid.NewGuid().ToString();
+                            ext.ForceUpdateTag = this.ForceUpdate.IsPresent ? Guid.NewGuid().ToString() : null;
 
                             VirtualMachineScaleSetExtension result = this.VirtualMachineScaleSetExtensionsClient.CreateOrUpdate(
                                 this.ResourceGroupName,

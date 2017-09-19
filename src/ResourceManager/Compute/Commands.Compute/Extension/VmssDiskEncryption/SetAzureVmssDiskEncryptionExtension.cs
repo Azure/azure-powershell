@@ -98,9 +98,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Sequence version of encryption operation. This must be incremented to perform repeated encryption operations on the same VM")]
+            HelpMessage = "Generate a tag for force update.  This should be given to perform repeated encryption operations on the same VM.")]
         [ValidateNotNullOrEmpty]
-        public string SequenceVersion { get; set; }
+        public SwitchParameter ForceUpdate { get; set; }
 
         [Alias("HandlerVersion", "Version")]
         [Parameter(
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                     TypeHandlerVersion = (this.TypeHandlerVersion) ?? AzureVmssDiskEncryptionExtensionContext.ExtensionDefaultVersion,
                     Settings = SettingString,
                     AutoUpgradeMinorVersion = !DisableAutoUpgradeMinorVersion.IsPresent,
-                    ForceUpdateTag = SequenceVersion ?? Guid.NewGuid().ToString(),
+                    ForceUpdateTag = this.ForceUpdate.IsPresent ? Guid.NewGuid().ToString() : null
                 };
 
             }
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                     TypeHandlerVersion = (this.TypeHandlerVersion) ?? AzureVmssDiskEncryptionExtensionContext.LinuxExtensionDefaultVersion,
                     Settings = SettingString,
                     AutoUpgradeMinorVersion = !DisableAutoUpgradeMinorVersion.IsPresent,
-                    ForceUpdateTag = SequenceVersion ?? Guid.NewGuid().ToString(),
+                    ForceUpdateTag = this.ForceUpdate.IsPresent ? Guid.NewGuid().ToString() : null
                 };
             }
 

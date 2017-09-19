@@ -14,9 +14,10 @@ Enables disk encryption on a VM scale set.
 ```
 Set-AzureRmVmssDiskEncryptionExtension [-ResourceGroupName] <String> [-VMScaleSetName] <String>
  [-DiskEncryptionKeyVaultUrl] <String> [-DiskEncryptionKeyVaultId] <String> [-KeyEncryptionKeyUrl <String>]
- [-KeyEncryptionKeyVaultId <String>] [-KeyEncryptionAlgorithm <String>] [-VolumeType <String>]
- [-SequenceVersion <String>] [-TypeHandlerVersion <String>] [-ExtensionName <String>] [-Passphrase <String>]
- [-Force] [-DisableAutoUpgradeMinorVersion] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-KeyEncryptionKeyVaultId <String>] [-KeyEncryptionAlgorithm <String>] [-VolumeType <String>] [-ForceUpdate]
+ [-TypeHandlerVersion <String>] [-ExtensionName <String>] [-Passphrase <String>] [-Force]
+ [-DisableAutoUpgradeMinorVersion] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,6 +41,19 @@ PS C:\> Set-AzureRmVmssDiskEncryptionExtension -ResourceGroupName $RGName -VMSca
 This command enables encryption on all disks of all VMs in the VM scale set.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DisableAutoUpgradeMinorVersion
 Disable auto-upgrade of minor version
@@ -117,6 +131,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ForceUpdate
+Generate a tag for force update.  This should be given to perform repeated encryption operations on the same VM.```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -KeyEncryptionAlgorithm
 KeyEncryption Algorithm used to encrypt the volume encryption key
 
@@ -189,22 +216,6 @@ Aliases:
 
 Required: True
 Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -SequenceVersion
-Sequence version of encryption operation.
-This must be incremented to perform repeated encryption operations on the same VM
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

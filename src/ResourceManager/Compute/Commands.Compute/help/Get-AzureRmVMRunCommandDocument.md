@@ -12,7 +12,8 @@ Get run command document.
 ## SYNTAX
 
 ```
-Get-AzureRmVMRunCommandDocument [-Location] <String> [[-CommandId] <String>] [<CommonParameters>]
+Get-AzureRmVMRunCommandDocument [-Location] <String> [[-CommandId] <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,6 +52,19 @@ Required: False
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -155,7 +155,7 @@ Gets the settings for a SQL Server extension on a virtual machine.
 ### [Get-AzureRmVmss](Get-AzureRmVmss.md)
 Gets the properties of a VMSS.
 
-### [Get-AzureRmVmssDiskEncryptionStatus](Get-AzureRmVmssDiskEncryptionStatus.md)
+### [Get-AzureRmVmssDiskEncryption](Get-AzureRmVmssDiskEncryption.md)
 Shows the disk encryption status of a VM scale set.
 
 ### [Get-AzureRmVmssRollingUpgrade](Get-AzureRmVmssRollingUpgrade.md)
@@ -167,7 +167,7 @@ Gets the available SKUs for the VMSS.
 ### [Get-AzureRmVmssVM](Get-AzureRmVmssVM.md)
 Gets the properties of a VMSS virtual machine.
 
-### [Get-AzureRmVmssVMDiskEncryptionStatus](Get-AzureRmVmssVMDiskEncryptionStatus.md)
+### [Get-AzureRmVmssVMDiskEncryption](Get-AzureRmVmssVMDiskEncryption.md)
 Shows the disk encryption status of VMs in a VM scale set.
 
 ### [Get-AzureRmVMUsage](Get-AzureRmVMUsage.md)
