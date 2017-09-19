@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
                 correlationId = Guid.NewGuid();
                 WriteObject(string.Format("Sending sync request for database '{0}' to server '{1}'. Correlation Id: '{2}'.", Database, Instance, correlationId.ToString()));
                 var context = AsAzureClientSession.Instance.Profile.Context;
-
+                AsAzureClientSession.Instance.Login(context);
                 WriteProgress(new ProgressRecord(0, "Sync-AzureAnalysisServicesInstance.", string.Format("Authenticating user for '{0}' environment.", context.Environment.Name)));
                 var clusterResolveResult = ClusterResolve(context, serverName);
                 if (!clusterResolveResult.CoreServerName.Equals(serverName) || !clusterResolveResult.CoreServerName.EndsWith(":rw"))
