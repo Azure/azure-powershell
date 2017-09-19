@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
         /// <summary>
         /// Gets or sets the Location parameter of the cmdlet
         /// </summary>
-        [Parameter(ParameterSetName = SetActivityLogAlertDefaultParamGroup, Mandatory = true, ValueFromPipeline = true, HelpMessage = "The location of the activity log rule resource")]
+        [Parameter(ParameterSetName = SetActivityLogAlertDefaultParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The location of the activity log rule resource")]
         [Parameter(ParameterSetName = SetActivityLogAlertFromResourceIdParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The location of the activity log rule resource")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
@@ -43,21 +43,22 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
         /// <summary>
         /// Gets or sets the alert name parameter of the cmdlet
         /// </summary>
-        [Parameter(ParameterSetName = SetActivityLogAlertDefaultParamGroup, Mandatory = true, ValueFromPipeline = true, HelpMessage = "The activity log rule name")]
+        [Parameter(ParameterSetName = SetActivityLogAlertDefaultParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The activity log rule name")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
         /// Gets or set the resource group name
         /// </summary>
-        [Parameter(ParameterSetName = SetActivityLogAlertDefaultParamGroup, Mandatory = true, ValueFromPipeline = true, HelpMessage = "The resource group name of the activity log rule resource")]
+        [Parameter(ParameterSetName = SetActivityLogAlertDefaultParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name of the activity log rule resource")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets the scopes of the activity log alert
         /// </summary>
-        [Parameter(ParameterSetName = SetActivityLogAlertDefaultParamGroup, Mandatory = true, ValueFromPipeline = true, HelpMessage = "The list scopes")]
+        [Parameter(ParameterSetName = SetActivityLogAlertDefaultParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The list scopes")]
+        [Parameter(ParameterSetName = SetActivityLogAlertFromPipeParamGroup, Mandatory = false, HelpMessage = "The list scopes")]
         [Parameter(ParameterSetName = SetActivityLogAlertFromResourceIdParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list scopes")]
         [ValidateNotNullOrEmpty]
         public List<string> Scope { get; set; }
@@ -65,7 +66,8 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
         /// <summary>
         /// Gets or sets the conditions of the activity log alert
         /// </summary>
-        [Parameter(ParameterSetName = SetActivityLogAlertDefaultParamGroup, Mandatory = true, ValueFromPipeline = true, HelpMessage = "The list of leaf conditions of the activity log alert")]
+        [Parameter(ParameterSetName = SetActivityLogAlertDefaultParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of leaf conditions of the activity log alert")]
+        [Parameter(ParameterSetName = SetActivityLogAlertFromPipeParamGroup, Mandatory = false, HelpMessage = "The list of leaf conditions of the activity log alert")]
         [Parameter(ParameterSetName = SetActivityLogAlertFromResourceIdParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of leaf conditions of the activity log alert")]
         [ValidateNotNullOrEmpty]
         public List<ActivityLogAlertLeafCondition> Condition { get; set; }
@@ -73,7 +75,8 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
         /// <summary>
         /// Gets or sets the actions of the activity log alert
         /// </summary>
-        [Parameter(ParameterSetName = SetActivityLogAlertDefaultParamGroup, Mandatory = true, ValueFromPipeline = true, HelpMessage = "The list actions of the activity log alert")]
+        [Parameter(ParameterSetName = SetActivityLogAlertDefaultParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The list actions of the activity log alert")]
+        [Parameter(ParameterSetName = SetActivityLogAlertFromPipeParamGroup, Mandatory = false, HelpMessage = "The list actions of the activity log alert")]
         [Parameter(ParameterSetName = SetActivityLogAlertFromResourceIdParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list actions of the activity log alert")]
         [ValidateNotNullOrEmpty]
         public List<ActivityLogAlertActionGroup> Action { get; set; }
@@ -89,8 +92,8 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
         /// <summary>
         /// Gets or set the alert description
         /// </summary>
-        [Parameter(ParameterSetName = SetActivityLogAlertDefaultParamGroup, Mandatory = false, ValueFromPipeline = true, HelpMessage = "The description of the activity log rule resource")]
-        [Parameter(ParameterSetName = SetActivityLogAlertFromPipeParamGroup, Mandatory = false, ValueFromPipeline = true, HelpMessage = "The description of the activity log rule resource")]
+        [Parameter(ParameterSetName = SetActivityLogAlertDefaultParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The description of the activity log rule resource")]
+        [Parameter(ParameterSetName = SetActivityLogAlertFromPipeParamGroup, Mandatory = false, HelpMessage = "The description of the activity log rule resource")]
         [Parameter(ParameterSetName = SetActivityLogAlertFromResourceIdParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The description of the activity log rule resource")]
         [ValidateNotNullOrEmpty]
         public string Description { get; set; }
@@ -98,8 +101,8 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
         /// <summary>
         /// Gets or sets the Tags of the activity log alert resource
         /// </summary>
-        [Parameter(ParameterSetName = SetActivityLogAlertDefaultParamGroup, Mandatory = false, ValueFromPipeline = true, HelpMessage = "The tags of the activity log alert resource")]
-        [Parameter(ParameterSetName = SetActivityLogAlertFromPipeParamGroup, Mandatory = false, ValueFromPipeline = true, HelpMessage = "The tags of the activity log alert resource")]
+        [Parameter(ParameterSetName = SetActivityLogAlertDefaultParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The tags of the activity log alert resource")]
+        [Parameter(ParameterSetName = SetActivityLogAlertFromPipeParamGroup, Mandatory = false, HelpMessage = "The tags of the activity log alert resource")]
         [Parameter(ParameterSetName = SetActivityLogAlertFromResourceIdParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The tags of the activity log alert resource")]
         [ValidateNotNullOrEmpty]
         public Dictionary<string, string> Tag { get; set; }
@@ -143,11 +146,7 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
                         resourceGroupName: out resourceGroupName,
                         activityLogAlertName: out activityLogAlertName);
 
-                    requestBody = this.InputObject;
-                    if (this.MyInvocation.BoundParameters.ContainsKey("Tag") || this.Tag != null)
-                    {
-                        requestBody.Tags = this.Tag;
-                    }
+                    requestBody = this.UpdateActivityLogAlertResource(this.InputObject);
                 }
                 else if (this.MyInvocation.BoundParameters.ContainsKey("ResourceId") || !string.IsNullOrWhiteSpace(this.ResourceId))
                 {
@@ -182,34 +181,7 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
                     {
                         WriteVerboseWithTimestamp("ResourceId detected: given activity log alert found, modifying its values with the parameters.");
 
-                        // There was an ActivityLogAlert already there, just modify what can be modifed
-                        // NOTE: Location remains unchanged, the value of the Location parameter is ignored
-                        if (this.MyInvocation.BoundParameters.ContainsKey("Scope") || this.Scope != null)
-                        {
-                            requestBody.Scopes = this.Scope;
-                        }
-
-                        if (this.MyInvocation.BoundParameters.ContainsKey("Condition") || this.Condition != null)
-                        {
-                            requestBody.Condition = new ActivityLogAlertAllOfCondition(this.Condition);
-                        }
-
-                        if (this.MyInvocation.BoundParameters.ContainsKey("Action") || this.Action != null)
-                        {
-                            requestBody.Actions = new ActivityLogAlertActionList(this.Action);
-                        }
-
-                        requestBody.Enabled = !this.DisableAlert.IsPresent;
-
-                        if (this.MyInvocation.BoundParameters.ContainsKey("Description") || this.Description != null)
-                        {
-                            requestBody.Description = this.Description;
-                        }
-
-                        if (this.MyInvocation.BoundParameters.ContainsKey("Tag") || this.Tag != null)
-                        {
-                            requestBody.Tags = this.Tag;
-                        }
+                        requestBody = this.UpdateActivityLogAlertResource(requestBody);
                     }
                 }
                 else
@@ -227,6 +199,43 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
                         activityLogAlertName: activityLogAlertName,
                         activityLogAlert: requestBody));
             }
+        }
+
+        private ActivityLogAlertResource UpdateActivityLogAlertResource(ActivityLogAlertResource requestBody)
+        {
+            // There was an ActivityLogAlert already there, just modify what can be modifed
+            // NOTE: Location remains unchanged, the value of the Location parameter is ignored
+            if (this.MyInvocation.BoundParameters.ContainsKey("Scope") || this.Scope != null)
+            {
+                requestBody.Scopes = this.Scope;
+            }
+
+            if (this.MyInvocation.BoundParameters.ContainsKey("Condition") || this.Condition != null)
+            {
+                requestBody.Condition = new ActivityLogAlertAllOfCondition(this.Condition);
+            }
+
+            if (this.MyInvocation.BoundParameters.ContainsKey("Action") || this.Action != null)
+            {
+                requestBody.Actions = new ActivityLogAlertActionList(this.Action);
+            }
+
+            if (this.DisableAlert.IsPresent)
+            {
+                requestBody.Enabled = false;
+            }
+
+            if (this.MyInvocation.BoundParameters.ContainsKey("Description") || this.Description != null)
+            {
+                requestBody.Description = this.Description;
+            }
+
+            if (this.MyInvocation.BoundParameters.ContainsKey("Tag") || this.Tag != null)
+            {
+                requestBody.Tags = this.Tag;
+            }
+
+            return requestBody;
         }
 
         private ActivityLogAlertResource CreateActivityLogAlertResource(string name, string location)

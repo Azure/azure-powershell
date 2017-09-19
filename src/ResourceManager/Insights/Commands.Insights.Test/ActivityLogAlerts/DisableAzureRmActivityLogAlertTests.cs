@@ -80,16 +80,14 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActivityLogAlerts
         {
             cmdlet.ResourceGroupName = Utilities.ResourceGroup;
             cmdlet.Name = "alert1";
-            cmdlet.Tag = new Dictionary<string, string> { { "key2", "value2" } };
             cmdlet.ExecuteCmdlet();
 
             Assert.Equal(Utilities.ResourceGroup, this.resourceGroup);
             Assert.Equal("alert1", this.name);
             Assert.NotNull(this.body);
             Assert.False(this.body.Enabled);
-            Assert.NotNull(this.body.Tags);
+            Assert.Null(this.body.Tags);
 
-            cmdlet.Tag = null;
             cmdlet.ExecuteCmdlet();
 
             Assert.NotNull(this.body);

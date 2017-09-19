@@ -13,7 +13,8 @@ Creates a new or sets an existing activity log alert.
 ## SYNTAX
 
 ```
-Set-AzureRmActivityLogAlert [-InputObject <PSActivityLogAlertResource>] [-ResourceId <String> [-Location <String>] [-Scope <System.Collections.Generic.List`1[System.String]>] [-Condition <System.Collections.Generic.List`1[ActivityLogAlertLeafCondition]>]
+Set-AzureRmActivityLogAlert [-InputObject <PSActivityLogAlertResource> [-Scope <System.Collections.Generic.List`1[System.String]>] [-Condition <System.Collections.Generic.List`1[ActivityLogAlertLeafCondition]>]
+ [-Action <System.Collections.Generic.List`1[ActivityLogAlertActionGroup]>] [-DisableAlert] [-Description <String>] [-Tag <System.Collections.Generic.Dictionary`1[<string>, <string>]>]] [-ResourceId <String> [-Location <String>] [-Scope <System.Collections.Generic.List`1[System.String]>] [-Condition <System.Collections.Generic.List`1[ActivityLogAlertLeafCondition]>]
  [-Action <System.Collections.Generic.List`1[ActivityLogAlertActionGroup]>] [-DisableAlert] [-Description <String>] [-Tag <System.Collections.Generic.Dictionary`1[<string>, <string>]>]] -Location <String> -Name <String> -ResourceGroupName <String>
  -Scope <System.Collections.Generic.List`1[System.String]> -Condition <System.Collections.Generic.List`1[ActivityLogAlertLeafCondition]>
  -Action <System.Collections.Generic.List`1[ActivityLogAlertActionGroup]> [-DisableAlert] [-Description <String>] [-Tag <System.Collections.Generic.Dictionary`1[<string>, <string>]>] [<CommonParameters>]
@@ -133,10 +134,10 @@ The list of scopes for the activity log alert.
 
 ```yaml
 Type: <System.Collections.Generic.List`1[System.String]>
-Parameter Sets: SetActivityLogAlertDefaultParamGroup, SetActivityLogAlertFromResourceIdParamGroup
+Parameter Sets: (All)
 Aliases: 
 
-Required: True for SetActivityLogAlertDefaultParamGroup, False for SetActivityLogAlertFromResourceIdParamGroup
+Required: True for SetActivityLogAlertDefaultParamGroup, False for SetActivityLogAlertFromPipeParamGroup and SetActivityLogAlertFromResourceIdParamGroup
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -151,7 +152,7 @@ Type: <System.Collections.Generic.List`1[ActivityLogAlertLeafCondition]>
 Parameter Sets: (All)
 Aliases: 
 
-Required: True for SetActivityLogAlertDefaultParamGroup, False for SetActivityLogAlertFromResourceIdParamGroup
+Required: True for SetActivityLogAlertDefaultParamGroup, False for SetActivityLogAlertFromPipeParamGroup and SetActivityLogAlertFromResourceIdParamGroup
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -163,10 +164,10 @@ The list of action groups for the activity log alert.
 
 ```yaml
 Type: <System.Collections.Generic.List`1[ActivityLogAlertActionGroup]>
-Parameter Sets: SetActivityLogAlertDefaultParamGroup, SetActivityLogAlertFromResourceIdParamGroup
+Parameter Sets: (All)
 Aliases: 
 
-Required: True for SetActivityLogAlertDefaultParamGroup, False for SetActivityLogAlertFromResourceIdParamGroup
+Required: True for SetActivityLogAlertDefaultParamGroup, False for SetActivityLogAlertFromPipeParamGroup and SetActivityLogAlertFromResourceIdParamGroup
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -178,7 +179,7 @@ Allows the user to create a disabled the activity log alert. If not given, the a
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: SetActivityLogAlertDefaultParamGroup, SetActivityLogAlertFromResourceIdParamGroup
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
@@ -193,7 +194,7 @@ The description of the alert resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetActivityLogAlertDefaultParamGroup, SetActivityLogAlertFromResourceIdParamGroup
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
@@ -208,7 +209,7 @@ Sets the tags property of the activity log alert resource.
 
 ```yaml
 Type: System.Collections.Generic.Dictionary`1[<string>, <string>]
-Parameter Sets: SetActivityLogAlertDefaultParamGroup, SetActivityLogAlertFromResourceIdParamGroup
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
