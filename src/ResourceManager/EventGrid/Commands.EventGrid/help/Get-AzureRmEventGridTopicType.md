@@ -13,7 +13,7 @@ Gets the details about the topic types supported by Azure Event Grid.
 ## SYNTAX
 
 ```
-Get-AzureRmEventGridTopicType [[-Name] <String>] [-IncludeEventTypes] [<CommonParameters>]
+Get-AzureRmEventGridTopicType [[-Name] <String>] [-IncludeEventTypeData] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,14 +40,14 @@ Gets information about the StorageAccounts topic type.
 
 ### Example 3
 ```
-PS C:\> Get-AzureRmEventGridTopicType -Name "Microsoft.Storage.StorageAccounts" -IncludeEventTypes
+PS C:\> Get-AzureRmEventGridTopicType -Name "Microsoft.Storage.StorageAccounts" -IncludeEventTypeData
 ```
 
 Gets information about the StorageAccounts topic type, including the event types supported by StorageAccounts.
 
 ## PARAMETERS
 
-### -IncludeEventTypes
+### -IncludeEventTypeData
 If specified, the response will include the event types supported by a topic type.
 
 ```yaml
@@ -56,9 +56,9 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 1
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

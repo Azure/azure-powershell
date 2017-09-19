@@ -97,18 +97,12 @@ namespace Microsoft.Azure.Commands.EventGrid
         public PSTopic InputObject { get; set; }
 
         [Parameter(Mandatory = false,
-            ValueFromPipeline = true,
-            Position = 3,
             HelpMessage = "Include the full endpoint URL of the event subscription destination.",
             ParameterSetName = EventSubscriptionTopicNameParameterSet)]
         [Parameter(Mandatory = false,
-            ValueFromPipeline = true,
-            Position = 3,
             HelpMessage = "Include the full endpoint URL of the event subscription destination.",
             ParameterSetName = EventSubscriptionTopicTypeNameParameterSet)]
         [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            Position = 2,
             HelpMessage = "If specified, include the full endpoint URL of the event subscription destination in the response.",
             ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
         public SwitchParameter IncludeFullEndpointUrl { get; set; }
@@ -116,7 +110,6 @@ namespace Microsoft.Azure.Commands.EventGrid
         public override void ExecuteCmdlet()
         {
             string scope;
-            string eventSubscriptionName;
             bool includeFullEndpointUrl = this.IncludeFullEndpointUrl.IsPresent;
 
             if (!string.IsNullOrEmpty(this.EventSubscriptionName))
@@ -127,25 +120,21 @@ namespace Microsoft.Azure.Commands.EventGrid
                 {
                     // Retrieve the event subscription for the specified topic
                     scope = this.InputObject.Id;
-                    eventSubscriptionName = this.EventSubscriptionName;
-                    this.RetrieveAndWriteEventSubscription(scope, eventSubscriptionName, includeFullEndpointUrl);
                 }
                 else if (string.IsNullOrEmpty(this.ResourceId))
                 {
                     // ResourceID not specified, retrieve the event subscription for either the 
                     // subscription, or resource group, or custom topic depending on which of the parameters are provided.
                     scope = EventGridUtils.GetScope(this.DefaultContext.Subscription.Id, this.ResourceGroupName, this.TopicName);
-                    eventSubscriptionName = this.EventSubscriptionName;
-                    this.RetrieveAndWriteEventSubscription(scope, eventSubscriptionName, includeFullEndpointUrl);
                 }
                 else
                 {
                     // Since both a ResourceId and EventSubscriptionName are specified, we need to retrieve 
                     // only this particular event subscription corresponding to this resource ID.
                     scope = this.ResourceId;
-                    eventSubscriptionName = this.EventSubscriptionName;
-                    this.RetrieveAndWriteEventSubscription(scope, eventSubscriptionName, includeFullEndpointUrl);
                 }
+
+                this.RetrieveAndWriteEventSubscription(scope, this.EventSubscriptionName, includeFullEndpointUrl);
             }
             else
             {

@@ -101,8 +101,6 @@ namespace Microsoft.Azure.Commands.EventGrid.Test.ScenarioTests
                 SetupManagementClients(context);
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
 
-                //string eventHubModule = Path.Combine(this.helper.PackageDirectory,
-                //                    @"ResourceManager\AzureResourceManager\AzureRM.EventHub\AzureRM.EventHub.psd1");
                 string callingClassName = callingClassType
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
                                         .Last();

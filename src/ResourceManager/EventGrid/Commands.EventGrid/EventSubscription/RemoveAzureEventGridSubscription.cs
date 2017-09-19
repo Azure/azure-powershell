@@ -22,7 +22,8 @@ namespace Microsoft.Azure.Commands.EventGrid
         VerbsCommon.Remove,
         EventGridEventSubscriptionVerb,
         DefaultParameterSetName = EventSubscriptionNameParameterSet,
-        SupportsShouldProcess = true)]
+        SupportsShouldProcess = true),
+     OutputType(typeof(bool))]
     public class RemoveAzureRmEventGridSubscription : AzureEventGridCmdletBase
     {
         [Parameter(Mandatory = true,
@@ -52,7 +53,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             HelpMessage = EventGridConstants.EventSubscriptionName,
             ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
         [Parameter(Mandatory = true,
-            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = false,
             Position = 1,
             HelpMessage = EventGridConstants.EventSubscriptionName,
             ParameterSetName = EventSubscriptionInputObjectParameterSet)]
@@ -93,7 +94,7 @@ namespace Microsoft.Azure.Commands.EventGrid
                 {
                     scope = this.InputObject.Id;
                 }
-                else 
+                else
                 {
                     // ResourceID not specified, build the scope for the event subscription for either the 
                     // subscription, or resource group, or custom topic depending on which of the parameters are provided.

@@ -54,6 +54,14 @@ namespace Microsoft.Azure.Commands.EventGrid
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
+        [Parameter(Mandatory = true,
+            ValueFromPipeline = true,
+            Position = 0,
+            HelpMessage = "EventGrid Topic object.",
+            ParameterSetName = TopicInputObjectParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public PSTopic InputObject { get; set; }
+
         [Parameter(
             Mandatory = true,
             Position = 2,
@@ -66,6 +74,12 @@ namespace Microsoft.Azure.Commands.EventGrid
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Hashtable which represents resource Tags.",
             ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
+        [Parameter(
+            Mandatory = true,
+            Position = 1,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = "Hashtable which represents resource Tags.",
+            ParameterSetName = TopicInputObjectParameterSet)]
         public Hashtable Tag { get; set; }
 
         public override void ExecuteCmdlet()
@@ -85,6 +99,11 @@ namespace Microsoft.Azure.Commands.EventGrid
                 {
                     resourceGroupName = this.ResourceGroupName;
                     topicName = this.Name;
+                }
+                else if (this.InputObject != null)
+                {
+                    resourceGroupName = this.InputObject.ResourceGroupName;
+                    topicName = this.InputObject.TopicName;
                 }
 
                 Topic existingTopic = this.Client.GetTopic(resourceGroupName, topicName);

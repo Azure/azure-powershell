@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
+using Microsoft.Azure.Commands.EventGrid.Models;
 using Microsoft.Azure.Commands.EventGrid.Utilities;
 
 namespace Microsoft.Azure.Commands.EventGrid
@@ -21,7 +22,8 @@ namespace Microsoft.Azure.Commands.EventGrid
         VerbsCommon.Remove,
         EventGridTopicVerb,
         DefaultParameterSetName = TopicNameParameterSet,
-        SupportsShouldProcess = true)]
+        SupportsShouldProcess = true),
+    OutputType(typeof(bool))]
     public class RemoveAzureRmEventGridTopic : AzureEventGridCmdletBase
     {
         [Parameter(Mandatory = true,
@@ -50,6 +52,14 @@ namespace Microsoft.Azure.Commands.EventGrid
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
+        [Parameter(Mandatory = true,
+            ValueFromPipeline = true,
+            Position = 0,
+            HelpMessage = "EventGrid Topic object.",
+            ParameterSetName = TopicInputObjectParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public PSTopic InputObject { get; set; }
+
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
@@ -68,6 +78,11 @@ namespace Microsoft.Azure.Commands.EventGrid
                 else if (!string.IsNullOrEmpty(this.ResourceId))
                 {
                     EventGridUtils.GetResourceGroupNameAndTopicName(this.ResourceId, out resourceGroupName, out topicName);
+                }
+                else if (this.InputObject != null)
+                {
+                    resourceGroupName = this.InputObject.ResourceGroupName;
+                    topicName = this.InputObject.TopicName;
                 }
 
                 this.Client.DeleteTopic(resourceGroupName, topicName);

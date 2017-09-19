@@ -122,7 +122,9 @@ Gets the list of all event subscriptions created for the specific resource group
 ## PARAMETERS
 
 ### -EventSubscriptionName
-The name of the event subscription```yaml
+The name of the event subscription
+
+```yaml
 Type: String
 Parameter Sets: EventSubscriptionTopicNameParameterSet, ResourceIdEventSubscriptionParameterSet
 Aliases: 
@@ -139,25 +141,13 @@ Include the full endpoint URL of the event subscription destination.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: EventSubscriptionTopicNameParameterSet, EventSubscriptionTopicTypeNameParameterSet
+Parameter Sets: EventSubscriptionTopicNameParameterSet, ResourceIdEventSubscriptionParameterSet, EventSubscriptionTopicTypeNameParameterSet
 Aliases: 
 
 Required: False
-Position: 3
+Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: ResourceIdEventSubscriptionParameterSet
-Aliases: 
-
-Required: False
-Position: 3
-Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -14,13 +14,11 @@
 
 using System.Management.Automation;
 using Microsoft.Azure.Commands.EventGrid.Models;
+using Microsoft.Azure.Commands.EventGrid.Utilities;
 using Microsoft.Azure.Management.EventGrid.Models;
 
 namespace Microsoft.Azure.Commands.EventGrid
 {
-    /// <summary>
-    /// 'Remove-AzureRmEventGridNamespace' Cmdlet deletes the specified EventGrid Namespace
-    /// </summary>
     [Cmdlet(VerbsCommon.Get, EventGridTopicKeyVerb, DefaultParameterSetName = TopicNameParameterSet), OutputType(typeof(TopicSharedAccessKeys))]
     public class GetAzureRmEventGridTopicKeys : AzureEventGridCmdletBase
     {
@@ -50,12 +48,24 @@ namespace Microsoft.Azure.Commands.EventGrid
         [ValidateNotNullOrEmpty]
         public PSTopic InputObject { get; set; }
 
+        [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            Position = 0,
+            HelpMessage = "Resource Identifier representing the Event Grid Topic.",
+            ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
         public override void ExecuteCmdlet()
         {
             string resourceGroupName;
             string topicName;
 
-            if (this.InputObject != null)
+            if (!string.IsNullOrEmpty(this.ResourceId))
+            {
+                EventGridUtils.GetResourceGroupNameAndTopicName(this.ResourceId, out resourceGroupName, out topicName);
+            }
+            else if (this.InputObject != null)
             {
                 resourceGroupName = this.InputObject.ResourceGroupName;
                 topicName = this.InputObject.TopicName;

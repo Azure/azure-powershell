@@ -23,6 +23,11 @@ Remove-AzureRmEventGridTopic [-ResourceGroupName] <String> [-Name] <String> [-Pa
 Remove-AzureRmEventGridTopic [-ResourceId] <String> [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### TopicInputObjectParameterSet
+```
+Remove-AzureRmEventGridTopic [-InputObject] <PSTopic> [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Removes an Azure Event Grid Topic.
 
@@ -43,6 +48,21 @@ PS C:\> Get-AzureRmResource -ResourceId "/subscriptions/$subscriptionId/resource
 Removes the Event Grid topic \`Topic1\` in resource group \`MyResourceGroupName\`.
 
 ## PARAMETERS
+
+### -InputObject
+EventGrid Topic object.
+
+```yaml
+Type: PSTopic
+Parameter Sets: TopicInputObjectParameterSet
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
 
 ### -Name
 EventGrid Topic Name.
