@@ -13,8 +13,7 @@ Enables an activity log alert and sets its Tags.
 ## SYNTAX
 
 ```
-Enable-AzureRmActivityLogAlert [-InputObject <PSActivityLogAlertResource>] [-ResourceId <String>] [-Name <String> -ResourceGroupName <String> 
- [-Tag <System.Collections.Generic.Dictionary`1[<string>, <string>]>]] [<CommonParameters>]
+Enable-AzureRmActivityLogAlert [-InputObject <PSActivityLogAlertResource>] [-ResourceId <String>] [-Name <String> -ResourceGroupName <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,30 +29,16 @@ PS C:\>Enable-AzureRmActivityLogAlert -Name "alert1" -ResourceGroupName "Default
 
 This command enables the activity log alert called alert1 in the resource group Default-ActivityLogsAlerts.
 
-### Example 2: Change the tags for an activity log alert
-```
-
-PS C:\>$dict = New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"
-PS C:\>$dict.Add('key1', 'value1')
-
-PS C:\>Enable-AzureRmActivityLogAlert -Name "alert1" -ResourceGroupName "Default-ActivityLogsAlerts" -Tag $dict
-```
-
-This command changes the tags property of the activity log alert called alert1 and enables it.
-
-### Example 3: Change the tags and state of an activity log alert using a PSActivityLogAlertResource object as input
+### Example 2: Enable an activity log alert using a PSActivityLogAlertResource object as input
 ```
 
 PS C:\>$obj = Get-AzureRmActivityLogAlert -ResourceGroup "Default-activityLogAlerts" -Name "alert1"
-PS C:\>$dict = New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"
-PS C:\>$dict.Add('key1', 'value1')
-PS C:\>$obj.Tags = $dict
 PS C:\>Enable-AzureRmActivityLogAlert -InputObject $obj
 ```
 
-This command changes the tags property of the activity log alert called alert1 and enables it. For this it uses a PSActivityLogAlertResource object as input argument.
+This command enables an activity log alert called alert1. For this it uses a PSActivityLogAlertResource object as input argument.
 
-### Example 4: Enable the ActivityLogAlert using the ResourceId parameter
+### Example 3: Enable the ActivityLogAlert using the ResourceId parameter
 ```
 
 PS C:\>Find-AzureRmResource -ResourceGroupEquals "myResourceGroup" -ResourceNameEquals "myLogAlert" | Enable-AzureRmActivityLogAlert
@@ -88,21 +73,6 @@ Parameter Sets: EnableActivityLogAlertDeafultParamGroup
 Aliases: 
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Tag
-Sets the tags property of the activity log alert resource.
-
-```yaml
-Type: System.Collections.Generic.Dictionary`1[<string>, <string>]
-Parameter Sets: EnableActivityLogAlertDeafultParamGroup
-Aliases: 
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

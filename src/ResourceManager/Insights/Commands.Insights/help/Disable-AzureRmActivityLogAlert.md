@@ -13,8 +13,7 @@ Disables an activity log alert and sets its tags.
 ## SYNTAX
 
 ```
-Disable-AzureRmActivityLogAlert [-InputObject <PSActivityLogAlertResource>] [-ResourceId <String>] [-Name <String> -ResourceGroupName <String> 
- [-Tag <System.Collections.Generic.Dictionary`1[<string>, <string>]>]] [<CommonParameters>]
+Disable-AzureRmActivityLogAlert [-InputObject <PSActivityLogAlertResource>] [-ResourceId <String>] [-Name <String> -ResourceGroupName <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,30 +29,18 @@ PS C:\>Disable-AzureRmActivityLogAlert -Name "alert1" -ResourceGroupName "Defaul
 
 This command disables the activity log alert called alert1 in the resource group Default-ActivityLogsAlerts.
 
-### Example 2: Change the tags for an activity log alert
-```
-
-PS C:\>$dict = New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"
-PS C:\>$dict.Add('key1', 'value1')
-
-PS C:\>Disable-AzureRmActivityLogAlert -Name "alert1" -ResourceGroupName "Default-ActivityLogsAlerts" -Tag $dict
-```
-
 This command changes the tags property of the activity log alert called alert1 and disables it.
 
-### Example 3: Change the tags and state of an activity log alert using a PSActivityLogAlertResource object as input
+### Example 2: Disable an activity log alert using a PSActivityLogAlertResource object as input
 ```
 
 PS C:\>$obj = Get-AzureRmActivityLogAlert -ResourceGroup "Default-activityLogAlerts" -Name "alert1"
-PS C:\>$dict = New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"
-PS C:\>$dict.Add('key1', 'value1')
-PS C:\>$obj.Tags = $dict
 PS C:\>Disable-AzureRmActivityLogAlert -InputObject $obj
 ```
 
-This command changes the tags property of the activity log alert called alert1. For this it uses a PSActivityLogAlertResource object as input argument.
+This command disables an activity log alert called alert1. For this it uses a PSActivityLogAlertResource object as input argument.
 
-### Example 4: Disable the ActivityLogAlert using the ResourceId parameter
+### Example 3: Disable the ActivityLogAlert using the ResourceId parameter
 ```
 
 PS C:\>Find-AzureRmResource -ResourceGroupEquals "myResourceGroup" -ResourceNameEquals "myLogAlert" | Disable-AzureRmActivityLogAlert
@@ -89,21 +76,6 @@ Parameter Sets: DisableActivityLogAlertDeafultParamGroup
 Aliases: 
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Tag
-Sets the tags property of the activity log alert resource.
-
-```yaml
-Type: System.Collections.Generic.Dictionary`1[<string>, <string>]
-Parameter Sets: DisableActivityLogAlertDeafultParamGroup
-Aliases: 
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
