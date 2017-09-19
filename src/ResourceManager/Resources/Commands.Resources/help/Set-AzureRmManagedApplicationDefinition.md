@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzureRmManagedApplicationDefinition
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Updates managed application definition
 
 ## SYNTAX
 
@@ -19,16 +19,16 @@ Set-AzureRmManagedApplicationDefinition -Name <String> -ResourceGroupName <Strin
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Set-AzureRmManagedApplicationDefinition** cmdlet updates managed application definitions
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Update managed application definition description
 ```
-PS C:\> {{ Add example code here }}
+PS C:\>Set-AzureRmManagedApplicationDefinition -ResourceId "/subscriptions/mySubId/resourcegroups/myRG/Microsoft.Solutions/applicationDefinitions/myAppDef" -Description "Updated description here"
 ```
 
-{{ Add example description here }}
+This command updates the managed application definition description
 
 ## PARAMETERS
 

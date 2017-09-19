@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzureRmManagedApplicationDefinition
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Removes a managed application definition
 
 ## SYNTAX
 
@@ -25,16 +25,20 @@ Remove-AzureRmManagedApplicationDefinition -Id <String> [-Force] [-ApiVersion <S
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Remove-AzureRmManagedApplicationDefinition** cmdlet removes a managed application definition
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Remove managed application definition by resource ID
 ```
-PS C:\> {{ Add example code here }}
+PS C:\>$ApplicationDefinition = Get-AzureRmManagedApplicationDefinition -Name "myAppDef" -ResourceGroupName "myRG"
+PS C:\>Remove-AzureRmManagedApplicationDefinition -Id $ApplicationDefinition.ResourceId -Force
 ```
 
-{{ Add example description here }}
+The first command gets a managed application definition named myAppDef by using the Get-AzureRmManagedApplicationDefinition cmdlet.
+The command stores it in the $ApplicationDefinition variable.
+
+The second command removes the managed application definition identified by the **ResourceId** property of $ApplicationDefinition.
 
 ## PARAMETERS
 

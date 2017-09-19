@@ -25,23 +25,23 @@ Get-AzureRmManagedApplicationDefinition -Id <String> [-ApiVersion <String>] [-Pr
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmManagedApplicationDefinition** cmdlet gets managed application definitions under a resource group
+The **Get-AzureRmManagedApplicationDefinition** cmdlet gets managed application definitions
 
 ## EXAMPLES
 
-### Example 1: Get all managed applications definition under a resource group
+### Example 1: Get all managed application definitions under a resource group
 ```
 PS C:\>Get-AzureRmManagedApplicationDefinition -ResourceGroupName "MyRG"
 ```
 
-This command gets the Azure managed application definitions under resource group "MyRG"
+This command gets the managed application definitions under resource group "MyRG"
 
 ### Example 2: Get a managed application definition
 ```
 PS C:\>Get-AzureRmManagedApplicationDefinition -ResourceGroupName "MyRG" -Name "myManagedAppDef"
 ```
 
-This command gets the Azure managed application definition "myManagedAppDef" under resource group "MyRG"
+This command gets the managed application definition "myManagedAppDef" under resource group "MyRG"
 
 ## PARAMETERS
 
