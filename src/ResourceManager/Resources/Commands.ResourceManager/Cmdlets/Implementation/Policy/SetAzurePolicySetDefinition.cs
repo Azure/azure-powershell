@@ -83,29 +83,32 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         protected override void OnProcessRecord()
         {
             base.OnProcessRecord();
-            string resourceId = this.Id ?? this.GetResourceId();
-            var apiVersion = string.IsNullOrWhiteSpace(this.ApiVersion) ? Constants.PolicySetDefintionApiVersion : this.ApiVersion;
+            if (this.ShouldProcess(this.Name, "Update Policy Set Definition"))
+            {
+                string resourceId = this.Id ?? this.GetResourceId();
+                var apiVersion = string.IsNullOrWhiteSpace(this.ApiVersion) ? Constants.PolicySetDefintionApiVersion : this.ApiVersion;
 
-            var operationResult = this.GetResourcesClient()
-                        .PutResource(
-                            resourceId: resourceId,
-                            apiVersion: apiVersion,
-                            resource: this.GetResource(resourceId, apiVersion),
-                            cancellationToken: this.CancellationToken.Value,
-                            odataQuery: null)
-                        .Result;
+                var operationResult = this.GetResourcesClient()
+                            .PutResource(
+                                resourceId: resourceId,
+                                apiVersion: apiVersion,
+                                resource: this.GetResource(resourceId, apiVersion),
+                                cancellationToken: this.CancellationToken.Value,
+                                odataQuery: null)
+                            .Result;
 
-            var managementUri = this.GetResourcesClient()
-              .GetResourceManagementRequestUri(
-                  resourceId: resourceId,
-                  apiVersion: apiVersion,
-                  odataQuery: null);
+                var managementUri = this.GetResourcesClient()
+                  .GetResourceManagementRequestUri(
+                      resourceId: resourceId,
+                      apiVersion: apiVersion,
+                      odataQuery: null);
 
-            var activity = string.Format("PUT {0}", managementUri.PathAndQuery);
-            var result = this.GetLongRunningOperationTracker(activityName: activity, isResourceCreateOrUpdate: true)
-                .WaitOnOperation(operationResult: operationResult);
+                var activity = string.Format("PUT {0}", managementUri.PathAndQuery);
+                var result = this.GetLongRunningOperationTracker(activityName: activity, isResourceCreateOrUpdate: true)
+                    .WaitOnOperation(operationResult: operationResult);
 
-            this.WriteObject(this.GetOutputObjects("PolicySetDefinitionId", JObject.Parse(result)), enumerateCollection: true);
+                this.WriteObject(this.GetOutputObjects("PolicySetDefinitionId", JObject.Parse(result)), enumerateCollection: true);
+            }
         }
 
         /// <summary>

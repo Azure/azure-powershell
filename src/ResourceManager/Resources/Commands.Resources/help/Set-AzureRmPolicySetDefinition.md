@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzureRmPolicySetDefinition
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Modifies a policy set definition
 
 ## SYNTAX
 
@@ -25,16 +25,20 @@ Set-AzureRmPolicySetDefinition -Id <String> [-DisplayName <String>] [-Descriptio
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Set-AzureRmPolicySetDefinition** cmdlet modifies a policy definition.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Update the description of a policy set definition
 ```
-PS C:\> {{ Add example code here }}
+PS C:\>$PolicySetDefinition = Get-AzureRmPolicySetDefinition -ResourceId "/subscriptions/mySub/Microsoft.Authorization/policySetDefinitions/myPSSetDefinition"
+PS C:\> Set-AzureRmPolicySetDefinition -Id $PolicySetDefinition.ResourceId -Description "Updated policy to not allow virtual machine creation"
 ```
 
-{{ Add example description here }}
+The first command gets a policy set definition by using the Get-AzureRmPolicySetDefinition cmdlet.
+The command stores that object in the $PolicySetDefinition variable.
+
+The second command updates the description of the policy set definition identified by the **ResourceId** property of $PolicySetDefinition.
 
 ## PARAMETERS
 
