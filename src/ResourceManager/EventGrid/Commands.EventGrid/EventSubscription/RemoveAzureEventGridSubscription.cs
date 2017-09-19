@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.EventGrid
     [Cmdlet(
         VerbsCommon.Remove,
         EventGridEventSubscriptionVerb,
-        DefaultParameterSetName = EventSubscriptionNameParameterSet,
+        DefaultParameterSetName = ResourceGroupNameParameterSet,
         SupportsShouldProcess = true),
      OutputType(typeof(bool))]
     public class RemoveAzureRmEventGridSubscription : AzureEventGridCmdletBase
@@ -46,7 +46,12 @@ namespace Microsoft.Azure.Commands.EventGrid
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = EventGridConstants.EventSubscriptionName,
-            ParameterSetName = EventSubscriptionNameParameterSet)]
+            ParameterSetName = TopicNameParameterSet)]
+        [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            Position = 0,
+            HelpMessage = EventGridConstants.EventSubscriptionName,
+            ParameterSetName = ResourceGroupNameParameterSet)]
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
@@ -60,20 +65,25 @@ namespace Microsoft.Azure.Commands.EventGrid
         [ValidateNotNullOrEmpty]
         public string EventSubscriptionName { get; set; }
 
+        [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            Position = 1,
+            HelpMessage = EventGridConstants.ResourceGroupName,
+            ParameterSetName = TopicNameParameterSet)]
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = EventGridConstants.ResourceGroupName,
-            ParameterSetName = EventSubscriptionNameParameterSet)]
+            ParameterSetName = ResourceGroupNameParameterSet)]
         [ValidateNotNullOrEmpty]
         [Alias(AliasResourceGroup)]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = false,
+        [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 2,
             HelpMessage = EventGridConstants.TopicName,
-            ParameterSetName = EventSubscriptionNameParameterSet)]
+            ParameterSetName = TopicNameParameterSet)]
         [ValidateNotNullOrEmpty]
         public string TopicName { get; set; }
 

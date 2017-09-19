@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.EventGrid
     [Cmdlet(
         VerbsCommon.Get,
         EventGridTopicVerb,
-        DefaultParameterSetName = TopicNameParameterSet),
+        DefaultParameterSetName = ResourceGroupNameParameterSet),
      OutputType(typeof(PSTopic), typeof(List<PSTopicListInstance>))]
     public class GetAzureRmEventGridTopic : AzureEventGridCmdletBase
     {
