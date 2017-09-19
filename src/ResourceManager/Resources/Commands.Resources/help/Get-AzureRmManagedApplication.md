@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzureRmManagedApplication
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets managed applications
 
 ## SYNTAX
 
@@ -30,16 +30,23 @@ Get-AzureRmManagedApplication -Id <String> [-ApiVersion <String>] [-Pre]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Get-AzureRmManagedApplication** cmdlet gets managed applications
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Get all managed applications under a resource group
 ```
-PS C:\> {{ Add example code here }}
+PS C:\>Get-AzureRmManagedApplication -ResourceGroupName "MyRG"
 ```
 
-{{ Add example description here }}
+This command gets managed applications under resource group "MyRG"
+
+### Example 2: Get all managed applications
+```
+PS C:\>Get-AzureRmManagedApplication
+```
+
+This command get all managed applications under the current subscription
 
 ## PARAMETERS
 

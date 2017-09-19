@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzureRmManagedApplication
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Removes a managed application
 
 ## SYNTAX
 
@@ -25,16 +25,20 @@ Remove-AzureRmManagedApplication -Id <String> [-Force] [-ApiVersion <String>] [-
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Remove-AzureRmManagedApplication** cmdlet removes a managed application
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Remove managed application by resource ID
 ```
-PS C:\> {{ Add example code here }}
+PS C:\>$Application = Get-AzureRmManagedApplication -Name "myApp" -ResourceGroupName "myRG"
+PS C:\>Remove-AzureRmManagedApplication -Id $Application.ResourceId -Force
 ```
 
-{{ Add example description here }}
+The first command gets a managed application named myApp by using the Get-AzureRmManagedApplication cmdlet.
+The command stores it in the $Application variable.
+
+The second command removes the managed application identified by the **ResourceId** property of $Application.
 
 ## PARAMETERS
 

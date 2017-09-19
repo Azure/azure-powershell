@@ -109,43 +109,46 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         protected override void OnProcessRecord()
         {
             base.OnProcessRecord();
-            if (!string.IsNullOrEmpty(this.PackageFileUri))
+            if (this.ShouldProcess(this.Name, "Create Managed Application Definition"))
             {
-                if(!string.IsNullOrEmpty(this.MainTemplate) || !string.IsNullOrEmpty(this.CreateUiDefinition))
+                if (!string.IsNullOrEmpty(this.PackageFileUri))
                 {
-                    throw new PSInvalidOperationException("If PackageFileUri is specified, MainTemplate and CreateUiDefinition cannot have a value.");
+                    if (!string.IsNullOrEmpty(this.MainTemplate) || !string.IsNullOrEmpty(this.CreateUiDefinition))
+                    {
+                        throw new PSInvalidOperationException("If PackageFileUri is specified, MainTemplate and CreateUiDefinition cannot have a value.");
+                    }
                 }
-            }
-            else
-            {
-                if(string.IsNullOrEmpty(this.MainTemplate) || string.IsNullOrEmpty(this.CreateUiDefinition))
+                else
                 {
-                    throw new PSInvalidOperationException("If PackageFileUri is not specified, both MainTemplate and CreateUiDefinition should have a valid value.");
+                    if (string.IsNullOrEmpty(this.MainTemplate) || string.IsNullOrEmpty(this.CreateUiDefinition))
+                    {
+                        throw new PSInvalidOperationException("If PackageFileUri is not specified, both MainTemplate and CreateUiDefinition should have a valid value.");
+                    }
                 }
+                string resourceId = GetResourceId();
+
+                var apiVersion = string.IsNullOrWhiteSpace(this.ApiVersion) ? Constants.ApplicationApiVersion : this.ApiVersion;
+
+                var operationResult = this.GetResourcesClient()
+                    .PutResource(
+                        resourceId: resourceId,
+                        apiVersion: apiVersion,
+                        resource: this.GetResource(),
+                        cancellationToken: this.CancellationToken.Value,
+                        odataQuery: null)
+                    .Result;
+
+                var managementUri = this.GetResourcesClient()
+                  .GetResourceManagementRequestUri(
+                      resourceId: resourceId,
+                      apiVersion: apiVersion,
+                      odataQuery: null);
+
+                var activity = string.Format("PUT {0}", managementUri.PathAndQuery);
+                var result = this.GetLongRunningOperationTracker(activityName: activity, isResourceCreateOrUpdate: true)
+                    .WaitOnOperation(operationResult: operationResult);
+                this.WriteObject(this.GetOutputObjects("ManagedApplicationDefinitionId", JObject.Parse(result)), enumerateCollection: true);
             }
-            string resourceId = GetResourceId();
-
-            var apiVersion = string.IsNullOrWhiteSpace(this.ApiVersion) ? Constants.ApplicationApiVersion : this.ApiVersion;
-
-            var operationResult = this.GetResourcesClient()
-                .PutResource(
-                    resourceId: resourceId,
-                    apiVersion: apiVersion,
-                    resource: this.GetResource(),
-                    cancellationToken: this.CancellationToken.Value,
-                    odataQuery: null)
-                .Result;
-
-            var managementUri = this.GetResourcesClient()
-              .GetResourceManagementRequestUri(
-                  resourceId: resourceId,
-                  apiVersion: apiVersion,
-                  odataQuery: null);
-
-            var activity = string.Format("PUT {0}", managementUri.PathAndQuery);
-            var result = this.GetLongRunningOperationTracker(activityName: activity, isResourceCreateOrUpdate: true)
-                .WaitOnOperation(operationResult: operationResult);
-            this.WriteObject(this.GetOutputObjects("ManagedApplicationDefinitionId", JObject.Parse(result)), enumerateCollection: true);
         }
 
         /// <summary>

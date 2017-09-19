@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzureRmManagedApplication
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Updates managed application
 
 ## SYNTAX
 
@@ -20,16 +20,17 @@ Set-AzureRmManagedApplication -Name <String> -ResourceGroupName <String> [-Manag
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Set-AzureRmManagedApplication** cmdlet updates managed applications
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Update managed application definition description
 ```
-PS C:\> {{ Add example code here }}
+PS C:\>Set-AzureRmManagedApplication -ResourceId "/subscriptions/mySubId/resourcegroups/myRG/Microsoft.Solutions/applications/myApp" -Description "Updated description here"
 ```
 
-{{ Add example description here }}
+This command updates the managed application description
+
 
 ## PARAMETERS
 
