@@ -19,7 +19,7 @@ New-AzureRmVmssConfig [[-Overprovision] <Boolean>] [[-Location] <String>] [[-Tag
  [[-NetworkInterfaceConfiguration] <VirtualMachineScaleSetNetworkConfiguration[]>]
  [[-Extension] <VirtualMachineScaleSetExtension[]>] [-SinglePlacementGroup <Boolean>] [-Zone <String[]>]
  [-PlanName <String>] [-PlanPublisher <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>]
- [-RollingUpgradePolicy <RollingUpgradePolicy>] [-AutoOSUpgrade <Boolean>] [-HealthProbeId <String>]
+ [-RollingUpgradePolicy <RollingUpgradePolicy>] [-AutoOSUpgrade] [-HealthProbeId <String>]
  [-BootDiagnostic <BootDiagnostics>] [-LicenseType <String>] [-AssignIdentity]
  [-IdentityType <ResourceIdentityType>] [-RecoveryPolicyMode <RecoveryMode>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 Sets whether OS upgrades should automatically be applied to scale set instances in a rolling fashion when a newer version of the image becomes available.
 
 ```yaml
-Type: Boolean
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
 

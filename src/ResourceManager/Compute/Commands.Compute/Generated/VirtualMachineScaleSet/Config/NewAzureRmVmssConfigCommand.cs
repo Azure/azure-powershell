@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
-        public bool? AutoOSUpgrade { get; set; }
+        public SwitchParameter AutoOSUpgrade { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -272,13 +272,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vUpgradePolicy.RollingUpgradePolicy = this.RollingUpgradePolicy;
             }
 
-            if (this.AutoOSUpgrade != null)
+            if (this.AutoOSUpgrade.IsPresent)
             {
                 if (vUpgradePolicy == null)
                 {
                     vUpgradePolicy = new Microsoft.Azure.Management.Compute.Models.UpgradePolicy();
                 }
-                vUpgradePolicy.AutomaticOSUpgrade = this.AutoOSUpgrade;
+                vUpgradePolicy.AutomaticOSUpgrade = true;
             }
 
             if (this.OsProfile != null)
