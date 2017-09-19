@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzureRmPolicySetDefinition
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Removes a policy set definition.
 
 ## SYNTAX
 
@@ -25,16 +25,20 @@ Remove-AzureRmPolicySetDefinition -Id <String> [-Force] [-ApiVersion <String>] [
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Remove-AzureRmPolicySetDefinition** cmdlet removes a policy definition.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Remove policy set definition by resource ID
 ```
-PS C:\> {{ Add example code here }}
+PS C:\>$PolicySetDefinition = Get-AzureRmPolicySetDefinition -ResourceId "/subscriptions/mySub/Microsoft.Authorization/policySetDefinitions/myPSSetDefinition"
+PS C:\>Remove-AzureRmPolicySetDefinition -Id $PolicySetDefinition.ResourceId -Force
 ```
 
-{{ Add example description here }}
+The first command gets a policy set definition by using the Get-AzureRmPolicySetDefinition cmdlet.
+The command stores it in the $PolicySetDefinition variable.
+
+The second command removes the policy set definition identified by the **ResourceId** property of $PolicySetDefinition.
 
 ## PARAMETERS
 
