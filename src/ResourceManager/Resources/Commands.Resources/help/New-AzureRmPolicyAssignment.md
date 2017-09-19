@@ -160,7 +160,9 @@ Accept wildcard characters: False
 ```
 
 ### -NotScope
-The not scopes for policy assignment.```yaml
+The not scopes for policy assignment.
+
+```yaml
 Type: String[]
 Parameter Sets: (All)
 Aliases: 
@@ -230,7 +232,9 @@ Accept wildcard characters: False
 ```
 
 ### -PolicySetDefinition
-The policy set definition object.```yaml
+The policy set definition object.
+
+```yaml
 Type: PSObject
 Parameter Sets: Policy assignment without parameters, Policy assignment with parameters via policy parameter object, Policy assignment with parameters via policy parameter string
 Aliases: 

@@ -150,7 +150,9 @@ Accept wildcard characters: False
 ```
 
 ### -NotScope
-The policy assignment not scopes.```yaml
+The policy assignment not scopes.
+
+```yaml
 Type: String[]
 Parameter Sets: The policy assignment name parameter set.
 Aliases: 
