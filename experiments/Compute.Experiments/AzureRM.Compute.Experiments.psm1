@@ -24,7 +24,9 @@ function New-AzVm {
         [Parameter()][int[]] $OpenPorts = @(3389, 5985),
 
         [Parameter()][string] $ImageName = "Win2016Datacenter",
-        [Parameter()][string] $Size = "Standard_DS1_v2"
+        [Parameter()][string] $Size = "Standard_DS1_v2",
+
+        [Parameter()][switch] $AsJob
     )
 
     PROCESS {
@@ -66,15 +68,25 @@ function New-AzVm {
         $createParams = [CreateParams]::new($Name, $locationi.Value, $Name);
 
         if ($PSCmdlet.ShouldProcess($Name, "Creating a virtual machine")) {
-            $resourceGroup = $rgi.GetOrCreate($createParams);
-            $vmResponse = $vmi.Create($createParams);
-
-            return [PSAzureVm]::new(
-                $resourceGroup.ResourceId,
-                $Name
-            );
+            return New-AzVmInternal -ResourceGroup $rgi -VirtualMachine $vmi -CreateParams $createParams -ErrorAction Stop;
         }
     }
+}
+
+function New-AzVmInternal {
+    param (
+        [ResourceGroup] $ResourceGroup,
+        [VirtualMachine] $VirtualMachine,
+        [CreateParams] $createParams
+    )
+
+    $rg = $ResourceGroup.GetOrCreate($createParams);
+    $vmResponse = $VirtualMachine.Create($createParams);
+
+    return [PSAzureVm]::new(
+        $rg.ResourceId,
+        $VirtualMachine.Name
+    );
 }
 
 class PSAzureVm {
@@ -171,7 +183,8 @@ class ResourceGroup: AzureObject {
         return New-AzureRmResourceGroup `
             -Name $p.Name `
             -Location $p.Location `
-            -WarningAction SilentlyContinue;
+            -WarningAction SilentlyContinue `
+            -ErrorAction Stop;
     }
 }
 
@@ -184,11 +197,11 @@ class VirtualNetwork: Resource1 {
     [string] $AddressPrefix;
 
     VirtualNetwork([string] $name, [string] $addressPrefix): base($name) {
-        $this.AddressPrefix = $addressPrefix;
+        $this.AddressPrefix = $addressPrefix
     }
 
     [object] GetInfo() {
-        return Get-AzureRmVirtualNetwork -Name $this.Name;
+        return Get-AzureRmVirtualNetwork -Name $this.Name
     }
 
     [object] Create([CreateParams] $p) {
@@ -197,7 +210,8 @@ class VirtualNetwork: Resource1 {
             -Location $p.Location `
             -Name $p.Name `
             -AddressPrefix $this.AddressPrefix `
-            -WarningAction SilentlyContinue;
+            -WarningAction SilentlyContinue `
+            -ErrorAction Stop
     }
 }
 
@@ -223,9 +237,10 @@ class PublicIpAddress: Resource1 {
             -ResourceGroupName $p.ResourceGroupName `
             -Location $p.Location `
             -Name $p.Name `
-            -DomainNameLabel  $this.DnsLabel `
-            -AllocationMethod Static `
-            -WarningAction SilentlyContinue
+            -DomainNameLabel  $this.DomainNameLabel.ToLower() `
+            -AllocationMethod $this.AllocationMethod `
+            -WarningAction SilentlyContinue `
+            -ErrorAction Stop
     }
 }
 
@@ -241,27 +256,31 @@ class SecurityGroup: Resource1 {
     }
 
     [object] Create([CreateParams] $p) {
-        $rules = New-Object "System.Collections.Generic.List[Microsoft.Azure.Commands.Network.Models.PSSecurityRule]";
+        $rules = New-Object "System.Collections.Generic.List[Microsoft.Azure.Commands.Network.Models.PSSecurityRule]"
+        $priority = 1000
         foreach ($port in $this.OpenPorts) {
-            $name = $p.Name + $port;
+            $name = $p.Name + $port
             $securityRuleConfig = New-AzureRmNetworkSecurityRuleConfig `
                 -Name $name `
                 -Protocol "Tcp" `
-                -Priority 1000 `
+                -Priority $priority `
                 -Access "Allow" `
                 -Direction "Inbound" `
                 -SourcePortRange "*" `
                 -SourceAddressPrefix "*" `
                 -DestinationPortRange $port `
-                -DestinationAddressPrefix "*";
-            $rules.Add($securityRuleConfig);
+                -DestinationAddressPrefix "*" `
+                -ErrorAction Stop
+            $rules.Add($securityRuleConfig)
+            ++$priority
         }
         return New-AzureRmNetworkSecurityGroup `
             -ResourceGroupName $p.ResourceGroupName `
             -Location $p.Location `
             -Name $p.Name `
             -SecurityRules $rules `
-            -WarningAction SilentlyContinue
+            -WarningAction SilentlyContinue `
+            -ErrorAction Stop
     }
 }
 
@@ -286,7 +305,7 @@ class Subnet: AzureObject {
             -VirtualNetwork $virtualNetworkInfo `
             -Name $p.Name `
             -AddressPrefix $this.SubnetAddressPrefix;
-        $virtualNetworkInfo = Set-AzureRmVirtualNetwork -VirtualNetwork $virtualNetworkInfo
+        $virtualNetworkInfo = Set-AzureRmVirtualNetwork -VirtualNetwork $virtualNetworkInfo -ErrorAction Stop
         $result = Get-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $virtualNetworkInfo -Name $p.Name
         return $result;
     }
@@ -323,7 +342,8 @@ class NetworkInterface: AzureObject {
             -PublicIpAddressId $publicIpAddressInfo.Id `
             -SubnetId $subnetInfo.Id `
             -NetworkSecurityGroupId $securityGroupInfo.Id `
-            -WarningAction SilentlyContinue
+            -WarningAction SilentlyContinue `
+            -ErrorAction Stop
     }
 }
 
@@ -367,20 +387,22 @@ class VirtualMachine: AzureObject {
             throw "Unknown image: " + $this.ImageName;
         }
 
-        $vmConfig = New-AzureRmVMConfig -VMName $p.Name -VMSize $this.Size;
-        $vmComputerName = $p.Name;
+        $vmConfig = New-AzureRmVMConfig -VMName $p.Name -VMSize $this.Size -ErrorAction Stop
+        $vmComputerName = $p.Name
         switch ($vmImage.Type) {
             "Windows" {
                 $vmConfig = $vmConfig | Set-AzureRmVMOperatingSystem `
                     -Windows `
                     -ComputerName $vmComputerName `
-                    -Credential $this.Credential;
+                    -Credential $this.Credential `
+                    -ErrorAction Stop
             }
             "Linux" {
                 $vmConfig = $vmConfig | Set-AzureRmVMOperatingSystem `
                     -Linux `
                     -ComputerName $vmComputerName `
-                    -Credential $this.Credential;
+                    -Credential $this.Credential `
+                    -ErrorAction Stop
             }
         }
 
@@ -391,13 +413,17 @@ class VirtualMachine: AzureObject {
                 -Offer $vmImageImage.offer `
                 -Skus $vmImageImage.sku `
                 -Version $vmImageImage.version `
-            | Add-AzureRmVMNetworkInterface -Id $networkInterfaceInstance.Id
+                -ErrorAction Stop `
+            | Add-AzureRmVMNetworkInterface `
+                -Id $networkInterfaceInstance.Id `
+                -ErrorAction Stop
 
         return New-AzureRmVm `
             -ResourceGroupName $p.ResourceGroupName `
             -Location $p.Location `
             -VM $vmConfig `
-            -WarningAction SilentlyContinue
+            -WarningAction SilentlyContinue `
+            -ErrorAction Stop
     }
 }
 
