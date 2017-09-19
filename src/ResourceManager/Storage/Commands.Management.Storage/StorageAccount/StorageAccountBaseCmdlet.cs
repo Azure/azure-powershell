@@ -169,14 +169,14 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 accountEncryption.Services.File = new EncryptionService();
                 accountEncryption.Services.File.Enabled = false;
             }
+            if (storageEncryption)
+            {
+                accountEncryption.KeySource = "Microsoft.Storage";
+            }
             if (keyVaultEncryption)
             {
                 accountEncryption.KeySource = "Microsoft.Keyvault";
                 accountEncryption.KeyVaultProperties = new KeyVaultProperties(keyName, keyVersion, keyVaultUri);
-            }
-            else
-            {
-                accountEncryption.KeySource = "Microsoft.Storage";
             }
             return accountEncryption;
         }
