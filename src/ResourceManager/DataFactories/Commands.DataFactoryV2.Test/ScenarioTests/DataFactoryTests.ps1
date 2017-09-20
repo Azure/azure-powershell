@@ -70,7 +70,7 @@ function Test-DeleteDataFactoryWithDataFactoryParameter
     New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Force
 
     $df = Set-AzureRmDataFactoryV2 -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force        
-    Remove-AzureRmDataFactoryV2 -DataFactory $df -Force
+    Remove-AzureRmDataFactoryV2 -InputObject $df -Force
 }
 
 <#
