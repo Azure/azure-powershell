@@ -12,49 +12,37 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Insights.Alerts;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
-using System;
-using System.Collections;
 using System.Management.Automation;
 using Xunit;
-using Xunit.Abstractions;
+using Microsoft.Azure.Commands.Insights.ActivityLogAlert;
 
-namespace Microsoft.Azure.Commands.Insights.Test.Alerts
+namespace Microsoft.Azure.Commands.Insights.Test.ActivityLogAlerts
 {
-    public class NewAzureRmAlerRuleWebhookTests
+    public class NewAzureRmActivityLogAlertConditionTests
     {
         private Mock<ICommandRuntime> commandRuntimeMock;
 
-        public NewAzureRmAlertRuleWebhookCommand Cmdlet { get; set; }
+        public NewAzureRmActivityLogAlertConditionCommand Cmdlet { get; set; }
 
-        public NewAzureRmAlerRuleWebhookTests(ITestOutputHelper output)
+        public NewAzureRmActivityLogAlertConditionTests(Xunit.Abstractions.ITestOutputHelper output)
         {
             ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             commandRuntimeMock = new Mock<ICommandRuntime>();
-            Cmdlet = new NewAzureRmAlertRuleWebhookCommand()
+            Cmdlet = new NewAzureRmActivityLogAlertConditionCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object
             };
         }
 
-        [Fact]
+        [Fact(Skip = "This is not testing anything")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void NewAzureRmAlertRuleWebhookCommandParametersProcessing()
+        public void NewAzureRmActivityLogAlertConditionCommandParametersProcessing()
         {
-            Assert.Throws<ArgumentException>(() => Cmdlet.ExecuteCmdlet());
-
-            Cmdlet.ServiceUri = "http://hook.com/webhook";
-            Cmdlet.ExecuteCmdlet();
-
-            Cmdlet.Properties = new Hashtable();
-            Cmdlet.ExecuteCmdlet();
-
-            Cmdlet.Properties.Add("prop1", "value1");
+            Cmdlet.Field = "field1";
+            Cmdlet.Equals = "equals1";
             Cmdlet.ExecuteCmdlet();
         }
     }
 }
-
