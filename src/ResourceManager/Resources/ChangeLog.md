@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Add Support for removal of roleassignment using PSRoleAssignment object
+    - Users can now use PSRoleassignmnet inputobject with Remove-AzureRMRoleAssignment commandlet to remove the roleassignment.
 
 ## Version 4.3.1
 
