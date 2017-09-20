@@ -2229,3 +2229,51 @@ function Test-LoadBalancerCRUD-InternalStandardSku
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Tests creating new simple loadBalancer.
+#>
+function Test-LoadBalancerZones
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $subnetName = Get-ResourceName
+    $vnetName = Get-ResourceName
+    $frontendName = Get-ResourceName
+
+    $zones = "1";
+    $rglocation = Get-ProviderLocation ResourceManagement
+    # TODO: replace hardcoded location
+    # $resourceTypeParent = "Microsoft.Network/loadBalancers"
+    $location = "eastus2"; # = Get-ProviderLocation $resourceTypeParent
+
+    try
+     {
+      # Create the resource group
+      $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
+      $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
+      $vnet = New-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/8 -Subnet $subnet
+      $subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $vnet
+      $frontend = New-AzureRmLoadBalancerFrontendIpConfig -Name $frontendName -Subnet $subnet -Zone $zones
+
+      # Create loadBalancer
+      $actual = New-AzureRmLoadBalancer -ResourceGroupName $rgname -name $rname -location $location -frontendIpConfiguration $frontend;
+      $expected = Get-AzureRmLoadBalancer -ResourceGroupName $rgname -name $rname
+      Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
+      Assert-AreEqual $expected.Name $actual.Name
+      Assert-AreEqual $expected.Location $actual.Location
+      Assert-NotNull $expected.ResourceGuid
+      Assert-AreEqual "Succeeded" $expected.ProvisioningState
+      Assert-NotNull $expected.frontendIpConfigurations
+      Assert-NotNull $expected.frontendIpConfigurations[0]
+      Assert-NotNull $expected.frontendIpConfigurations[0].zones
+      Assert-AreEqual $zones $expected.frontendIpConfigurations[0].zones[0]
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
