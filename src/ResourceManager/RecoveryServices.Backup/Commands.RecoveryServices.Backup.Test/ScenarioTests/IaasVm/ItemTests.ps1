@@ -21,6 +21,14 @@ $vmName = "pstestv2vm1";
 $vmStorageAccountName = "pstestrg4762";
 $vmStorageAccountResourceGroup = "pstestrg";
 $vmUniqueName = "iaasvmcontainerv2;" + $vmResourceGroupName + ";" + $vmName;
+$itemUniqueName = "VM;" + $vmUniqueName;
+$fixedStartDate = Get-Date -Date "2017-09-15 09:30:00Z"
+$fixedStartDate = $fixedStartDate.ToUniversalTime()
+$fixedEndDate = Get-Date -Date "2017-09-16 23:30:00Z"
+$fixedEndDate = $fixedEndDate.ToUniversalTime()
+$waitEndDate = Get-Date -Date "2016-10-28 11:30:00Z"
+$waitEndDate = $waitEndDate.ToUniversalTime()
+
 
 function Test-GetItemScenario
 {
@@ -292,11 +300,15 @@ function Test-GetAzureVMRecoveryPointsScenario
 
 function Test-RestoreAzureVMRItemScenario
 {
-	# 1. Create / update and get vault
+	# 1. Create vault if it doesnot exist
     $vaultLocation = get_available_location;
-	$vault = New-AzureRmRecoveryServicesVault `
-		-Name $resourceName -ResourceGroupName $resourceGroupName -Location $vaultLocation;
-	
+	$vault = Get-AzureRmRecoveryServicesVault `
+		-Name $resourceName -ResourceGroupName $resourceGroupName 
+	if($vault -eq $null)
+	{
+		$vault = New-AzureRmRecoveryServicesVault `
+			-Name $resourceName -ResourceGroupName $resourceGroupName -Location $vaultLocation;
+	}
 	# 2. Set vault context
 	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
 
@@ -328,21 +340,19 @@ function Test-RestoreAzureVMRItemScenario
 		-Container $global:container -WorkloadType AzureVM;
 	
 	# 6. Trigger backup and wait for completion
-	$fixedExpiryDate = Get-Date;
-	$expiryDate = $fixedExpiryDate.AddDays(2).ToUniversalTime();
     $backupJob = Backup-AzureRmRecoveryServicesBackupItem `
-		-Item $item -ExpiryDateTimeUTC $expiryDate;
+		-Item $item;
 	$backupJob = Wait-AzureRmRecoveryServicesBackupJob -Job $backupJob;
 	
 	# 7. Get latest recovery point
-	$backupStartTime = $backupJob.StartTime.AddMinutes(-1);
-	$backupEndTime = $backupJob.EndTime.Value.AddMinutes(1);
+	$backupStartTime = $fixedStartDate;
+	$backupEndTime = $fixedEndDate;
 	$recoveryPoint = Get-AzureRmRecoveryServicesBackupRecoveryPoint `
 		-StartDate $backupStartTime -EndDate $backupEndTime -Item $item
 
 	# ACTION: Trigger restore and wait for completion
 	$restoreJob = Restore-AzureRMRecoveryServicesBackupItem `
-		-RecoveryPoint $recoveryPoint `
+		-RecoveryPoint $recoveryPoint[0] `
 		-StorageAccountName $vmStorageAccountName `
 		-StorageAccountResourceGroupName $vmStorageAccountResourceGroup
 	Wait-AzureRmRecoveryServicesBackupJob -Job $restoreJob;
