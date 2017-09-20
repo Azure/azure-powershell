@@ -18,6 +18,14 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Add PolicySetDefinition cmdlets
+    - New-AzureRmPolicySetDefinition cmdlet to create a policy set definition
+    - Get-AzureRmPolicySetDefinition cmdlet to list all policy set definitions or to get a specific policy set definition
+    - Remove-AzureRmPolicySetDefinition cmdlet to delete a policy set definition
+    - Set-AzureRmPolicySetDefinition cmdlet to update an existing policy set definition
+* Add -PolicySetDefinition, -Sku and -NotScope parameters to New-AzureRmPolicyAssignment and Set-AzureRmPolicyAssignment cmdlets
+* Add support to pass in policy url to New-AzureRmPolicyDefinition and Set-AzureRmPolicyDefinition cmdlets
+* Add -Mode parameter to New-AzureRmPolicyDefinition cmdlet
 
 ## Version 4.3.1
 
