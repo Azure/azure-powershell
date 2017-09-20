@@ -186,5 +186,10 @@ namespace Commands.Network.Test.ScenarioTests
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancerCRUD-InternalHighlyAvailableStandardSku");
         }
+
+        public void TestLoadBalancerZones()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancerZones");
+        }
     }
 }
