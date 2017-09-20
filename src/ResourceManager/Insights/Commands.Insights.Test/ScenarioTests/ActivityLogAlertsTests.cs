@@ -18,32 +18,18 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
 {
-    public class ActivityLogsTests : RMTestBase
+    public class ActivityLogAlertsTests : RMTestBase
     {
-        public ActivityLogsTests(Xunit.Abstractions.ITestOutputHelper output)
+        public ActivityLogAlertsTests(Xunit.Abstractions.ITestOutputHelper output)
         {
             //ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetAzureLogAllParameters()
+        public void TestSetGetListUpdateRemoveActivityLogAlert()
         {
-            TestsController.NewInstance.RunPsTest("Test-GetAzureLogAllParameters");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetAzureSubscriptionIdLogMaxEvents()
-        {
-            TestsController.NewInstance.RunPsTest("Test-GetAzureSubscriptionIdLogMaxEvents");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetAzureSubscriptionIdLogPaged()
-        {
-            TestsController.NewInstance.RunPsTest("Test-GetAzureSubscriptionIdLogPaged");
+            TestsController.NewInstance.RunPsTest("Test-SetGetListUpdateRemoveActivityLogAlert");
         }
     }
 }
