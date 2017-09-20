@@ -179,6 +179,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="NetworkResourcesController.cs" />
     <Compile Include="ScenarioTests\ApplicationGatewayTests.cs" />
+    <Compile Include="ScenarioTests\ApplicationSecurityGroupTests.cs" />
     <Compile Include="ScenarioTests\AvailableEndpointServicesTests.cs" />
     <Compile Include="ScenarioTests\MultiIpConfigOnNicTests.cs" />
     <Compile Include="ScenarioTests\ExpressRouteServiceProviderTests.cs" />
@@ -209,6 +210,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="ScenarioTests\ApplicationGatewayTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\ApplicationSecurityGroupTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\AvailableEndpointServicesTests.ps1">
@@ -280,10 +284,43 @@
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.ApplicationGatewayTests\TestAvailableWafRuleSets.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.ApplicationSecurityGroupTests\TestApplicationSecurityGroupCollections.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.ApplicationSecurityGroupTests\TestApplicationSecurityGroupCRUD.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.ApplicationSecurityGroupTests\TestApplicationSecurityGroupInAddedNetworkInterfaceIpConfig.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.ApplicationSecurityGroupTests\TestApplicationSecurityGroupInAddedSecurityRule.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.ApplicationSecurityGroupTests\TestApplicationSecurityGroupInNewNetworkInterface.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.ApplicationSecurityGroupTests\TestApplicationSecurityGroupInNewNetworkInterfaceIpConfig.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.ApplicationSecurityGroupTests\TestApplicationSecurityGroupInNewSecurityRule.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.ApplicationSecurityGroupTests\TestApplicationSecurityGroupInSetSecurityRule.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.AvailableEndpointServicesTests\TestAvailableEndpointServicesList.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.ExpressRouteCircuitTests\TestExpressRouteBgpServiceCommunitiesGet.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.LoadBalancerTests\TestLoadBalancerCRUDInternalHighlyAvailableBasicSku.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.LoadBalancerTests\TestLoadBalancerCRUDInternalHighlyAvailableStandardSku.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.LoadBalancerTests\TestLoadBalancerZones.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.LoadBalancerTests\TestSetLoadBalancerCRUDInternalBasicSku.json">
@@ -296,6 +333,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.LoadBalancerTests\TestSetLoadBalancerCRUDPublicStandardSku.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.NetworkSecurityGroupTests\TestNetworkSecurityGroupMultiValuedRules.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.NetworkWatcherAPITests\TestFlowLog.json">
@@ -439,6 +479,9 @@
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.PublicIpAddressTests\TestPublicIpAddressVmss.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.PublicIpAddressTests\TestPublicIpAddressZones.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.PublicIpAddressTests\TestPublicIpBasicSku.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -502,6 +545,9 @@
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkGatewayTests\TestVirtualNetworkGatewayCRUD.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkGatewayTests\TestVirtualNetworkGatewayP2SVpnProfile.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkGatewayTests\VirtualNetworkGatewayActiveActiveFeatureTest.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -530,6 +576,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkTests\TestVirtualNetworkCRUD.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkTests\TestVirtualNetworkCRUDWithDDoSProtection.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkTests\TestVirtualNetworkPeeringCRUD.json">
