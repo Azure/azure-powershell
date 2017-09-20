@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzureRmManagedApplicationDefinition
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Creates a managed application definition.
 
 ## SYNTAX
 
@@ -20,16 +20,16 @@ New-AzureRmManagedApplicationDefinition -Name <String> -ResourceGroupName <Strin
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **New-AzureRmManagedApplicationDefinition** cmdlet creates a managed application definition.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzureRmManagedApplicationDefinition -Name myAppDef -ResourceGroupName myRG -DisplayName "test" -Description "sample description" -Location westus -LockLevel ReadOnly -PackageFileUri https://sample.blob.core.windows.net/files/myPackage.zip -Authorization <principalId:roleDefinitionId>
 ```
 
-{{ Add example description here }}
+This command creates a managed application definition
 
 ## PARAMETERS
 
