@@ -79,5 +79,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <param name="targetEndpoint">The named endpoint the AutoRest client will target</param>
         /// <returns>AutoRest client crentials targeting the given context and endpoint</returns>
         ServiceClientCredentials GetServiceClientCredentials(IAzureContext context, string targetEndpoint);
+
+        /// <summary>
+        /// Remove any stored credentials for the given user
+        /// </summary>
+        /// <param name="account">The account to remove credentials for</param>
+        /// <param name="tokenCache">The TokenCache to remove credentials from</param>
+        void RemoveUser(IAzureAccount account, IAzureTokenCache tokenCache);
     }
 }
