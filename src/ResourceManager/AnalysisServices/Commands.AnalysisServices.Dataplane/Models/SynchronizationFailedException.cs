@@ -13,30 +13,26 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections;
-using System.Collections.Generic;
+using Microsoft.Azure.Commands.AnalysisServices.Dataplane.Properties;
 
-namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
+namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
 {
-    [Serializable]
-    public class AsAzureEnvironment
+    public class SynchronizationFailedException : Exception
     {
-        public AsAzureEnvironment(string Name)
+        public SynchronizationFailedException()
+            : base(Resources.SynchronizationFailedException)
         {
-            this.Name = Name;
-            this.Endpoints = new Hashtable();
         }
 
-        public string Name { get; set; }
-
-        public Hashtable Endpoints { get; set; }
-
-        public enum AsRolloutEndpoints
+        public SynchronizationFailedException(Exception e)
+            : base(Resources.SynchronizationFailedException, e)
         {
-            AdAuthorityBaseUrl,
-            RestartEndpointFormat,
-            LogfileEndpointFormat,
-            SyncEndpoint
         }
+
+        public SynchronizationFailedException(string messageDetails)
+            : base(messageDetails)
+        {
+        }
+
     }
 }
