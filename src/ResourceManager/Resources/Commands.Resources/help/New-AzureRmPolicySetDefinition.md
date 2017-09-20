@@ -109,7 +109,9 @@ Accept wildcard characters: False
 ```
 
 ### -PolicyDefinition
-The policy set definition. This can either be a path to a file name containing the policy definitions, or the policy set definition as string.```yaml
+The policy set definition. This can either be a path to a file name containing the policy definitions, or the policy set definition as string.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
