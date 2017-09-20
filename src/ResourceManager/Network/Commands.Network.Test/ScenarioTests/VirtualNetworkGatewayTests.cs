@@ -59,7 +59,7 @@ namespace Commands.Network.Test.ScenarioTests
             NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkGatewayBgpRouteApi");
         }
 
-        [Fact()]
+        [Fact(Skip ="Recorded with an older version of network, rerecord #4631")]
         public void TestVirtualNetworkGatewayP2SVpnProfile()
         {
             NetworkResourcesController.NewInstance.RunPsTest(string.Format(
