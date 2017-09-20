@@ -20,33 +20,33 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Removes the policy definition.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmPolicyDefinition", SupportsShouldProcess = true,
-        DefaultParameterSetName = RemoveAzurePolicyDefinitionCmdlet.PolicyDefinitionNameParameterSet), 
+    [Cmdlet(VerbsCommon.Remove, "AzureRmPolicySetDefinition", SupportsShouldProcess = true,
+        DefaultParameterSetName = RemoveAzurePolicySetDefinitionCmdlet.PolicySetDefinitionNameParameterSet), 
         OutputType(typeof(bool))]
-    public class RemoveAzurePolicyDefinitionCmdlet : PolicyCmdletBase
+    public class RemoveAzurePolicySetDefinitionCmdlet : PolicyCmdletBase
     {
         /// <summary>
         /// The policy Id parameter set.
         /// </summary>
-        internal const string PolicyDefinitionIdParameterSet = "The policy definition Id parameter set.";
+        internal const string PolicySetDefinitionIdParameterSet = "The policy set definition Id parameter set.";
 
         /// <summary>
         /// The policy name parameter set.
         /// </summary>
-        internal const string PolicyDefinitionNameParameterSet = "The policy definition name parameter set.";
+        internal const string PolicySetDefinitionNameParameterSet = "The policy set definition name parameter set.";
 
         /// <summary>
-        /// Gets or sets the policy definition name parameter.
+        /// Gets or sets the policy set definition name parameter.
         /// </summary>
-        [Parameter(ParameterSetName = RemoveAzurePolicyDefinitionCmdlet.PolicyDefinitionNameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The policy definition name.")]
+        [Parameter(ParameterSetName = RemoveAzurePolicySetDefinitionCmdlet.PolicySetDefinitionNameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The policy set definition name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the policy definition id parameter
+        /// Gets or sets the policy set definition id parameter
         /// </summary>
         [Alias("ResourceId")]
-        [Parameter(ParameterSetName = RemoveAzurePolicyDefinitionCmdlet.PolicyDefinitionIdParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The fully qualified policy definition Id, including the subscription. e.g. /subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}")]
+        [Parameter(ParameterSetName = RemoveAzurePolicySetDefinitionCmdlet.PolicySetDefinitionIdParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The fully qualified policy set definition Id, including the subscription. e.g. /subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}")]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
@@ -73,12 +73,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             base.OnProcessRecord();
             string resourceId = this.Id ?? this.GetResourceId();
-            var apiVersion = string.IsNullOrWhiteSpace(this.ApiVersion) ? Constants.PolicyDefinitionApiVersion : this.ApiVersion;
+            var apiVersion = string.IsNullOrWhiteSpace(this.ApiVersion) ? Constants.PolicySetDefintionApiVersion : this.ApiVersion;
 
             this.ConfirmAction(
                 this.Force,
-                string.Format("Are you sure you want to delete the following policy definition: {0}", resourceId),
-                "Deleting the policy definition...",
+                string.Format("Are you sure you want to delete the following policy set definition: {0}", resourceId),
+                "Deleting the policy set definition...",
                 resourceId,
                 () =>
                 {
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             var subscriptionId = DefaultContext.Subscription.Id;
             return string.Format("/subscriptions/{0}/providers/{1}/{2}",
                 subscriptionId.ToString(),
-                Constants.MicrosoftAuthorizationPolicyDefinitionType,
+                Constants.MicrosoftAuthorizationPolicySetDefinitionType,
                 this.Name);
         }
     }

@@ -14,29 +14,19 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy
 {
-    using Newtonsoft.Json;
-
     /// <summary>
-    /// The policy assignment object.
+    /// The policy definition mode.
     /// </summary>
-    public class PolicyAssignment
+    public enum PolicyDefinitionMode
     {
         /// <summary>
-        /// The policy assignment properties.
+        /// The policy definition mode is indexed.
         /// </summary>
-        [JsonProperty(Required = Required.Always)]
-        public PolicyAssignmentProperties Properties { get; set; }
+        Indexed,
 
         /// <summary>
-        /// The policy assignment name.
+        /// The policy definition mode is all.
         /// </summary>
-        [JsonProperty(Required = Required.Default)]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// The policy sku.
-        /// </summary>
-        [JsonProperty(Required = Required.Always)]
-        public PolicySku Sku { get; set; }
+        All
     }
 }
