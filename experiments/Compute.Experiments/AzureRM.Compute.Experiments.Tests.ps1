@@ -1,9 +1,9 @@
-# $build = "..\build\"
-# $out = $build + "AzureRM.Compute.Experiments\"
-# Copy-Item .\AzureRM.Compute.Experiments.psd1 $out
-# Copy-Item .\AzureRM.Compute.Experiments.psm1 $out
+$build = Resolve-Path "..\build\"
+$out = Join-Path $build "AzureRM.Compute.Experiments\"
+Copy-Item .\AzureRM.Compute.Experiments.psd1 $out
+Copy-Item .\AzureRM.Compute.Experiments.psm1 $out
 
-$env:PSModulePath = $env:PSModulePath + ";" + $build
+$env:PSModulePath = $env:PSModulePath + ";" + $build.ToString()
 
 # Login
 $credentials = Get-Content -Path "C:\Users\sergey\Desktop\php-test.json" | ConvertFrom-Json
@@ -25,19 +25,16 @@ New-AzVm -Name MyVM -Credential $vmCredential -WhatIf
 
 # $vm = New-AzVm
 # $vm = New-AzVm -Credential $vmCredential
-# $vm = New-AzVm -Name MyVMA -Credential $vmCredential
+$vm = New-AzVm -Name MyVMA1 -Credential $vmCredential -ResourceGroupName Crocodile
 # $vm = New-AzVm -Name MyVMA
 
 $vm
 
-Write-Host "<async>"
-
-$job = New-AzVm -Name MyVMA2 -Credential $vmCredential -AsJob
-$vm = Receive-Job $job
-
-$vm
-
-Write-Host "</async>"
+# Write-Host "<async>"
+# $job = New-AzVm -Name MyVMA3 -Credential $vmCredential -AsJob
+# $vm = Receive-Job $job -Wait
+# $vm
+# Write-Host "</async>"
 
 # clean-up
 Remove-AzureRmResourceGroup -ResourceId $vm.ResourceGroupId

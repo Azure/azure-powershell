@@ -40,14 +40,15 @@ function New-AzVm {
 
         $rgi = [ResourceGroup]::new($ResourceGroupName)
 
-        $vni = [VirtualNetwork]::new($VirtualNetworkName, $AddressPrefix)
+        $vni = [VirtualNetwork]::new($VirtualNetworkName, $rgi, $AddressPrefix)
         $subnet = [Subnet]::new($SubnetName, $vni, $SubnetAddressPrefix)
-        $piai = [PublicIpAddress]::new($PublicIpAddressName, $DomainNameLabel, $AllocationMethod)
-        $sgi = [SecurityGroup]::new($SecurityGroupName, $OpenPorts)
+        $piai = [PublicIpAddress]::new($PublicIpAddressName, $rgi, $DomainNameLabel, $AllocationMethod)
+        $sgi = [SecurityGroup]::new($SecurityGroupName, $rgi, $OpenPorts)
 
         # we don't allow to reuse NetworkInterface so $name is $null.
         $nii = [NetworkInterface]::new(
             $null,
+            $rgi,
             $subnet,
             $piai,
             $sgi)
@@ -55,28 +56,27 @@ function New-AzVm {
         # the purpouse of the New-AzVm cmdlet is to create (not get) a VM so $name is $null.
         $vmi = [VirtualMachine]::new(
             $null,
-            $nii,
             $rgi,
+            $nii,
             $Credential,
             $ImageName,
             $images,
-            $Size);
+            $Size)
 
         # infer a location
-        $locationi = [Location]::new();
+        $locationi = [Location]::new()
         if (-not $Location) {
-            $vmi.UpdateLocation($locationi, $context);
+            $vmi.UpdateLocation($locationi, $context)
             if (-not $locationi.Value) {
-                $locationi.Value = "eastus";
+                $locationi.Value = "eastus"
             }
         } else {
-            $locationi.Value = $Location;
+            $locationi.Value = $Location
         }
 
-        $createParams = [CreateParams]::new($Name, $locationi.Value, $Name, $context);
+        $createParams = [CreateParams]::new($Name, $locationi.Value, $context)
 
         if ($PSCmdlet.ShouldProcess($Name, "Creating a virtual machine")) {
-
             if ($AsJob) {
                 $boundParams = $PSCmdlet.MyInvocation.BoundParameters
                 $arguments = @{ 'AzureRmContext' = $context }
@@ -91,12 +91,13 @@ function New-AzVm {
                 }
                 return Start-Job $script -ArgumentList $arguments
             } else {
-                $rg = $rgi.GetOrCreate($createParams);
-                $vmResponse = $vmi.Create($createParams);
+                # Force to create Resource Group before anything else.
+                $rg = $rgi.GetOrCreate($createParams)
+                $vmResponse = $vmi.Create($createParams)
                 return [PSAzureVm]::new(
                     $rg.ResourceId,
                     $VirtualMachine.Name
-                );
+                )
             }
         }
     }
@@ -107,8 +108,8 @@ class PSAzureVm {
     [string] $Name;
 
     PSAzureVm([string] $resourceGroupId, [string] $name) {
-        $this.ResourceGroupId = $resourceGroupId;
-        $this.Name = $name;
+        $this.ResourceGroupId = $resourceGroupId
+        $this.Name = $name
     }
 }
 
@@ -117,26 +118,23 @@ class Location {
     [string] $Value;
 
     Location() {
-        $this.Priority = 0;
-        $this.Value = $null;
+        $this.Priority = 0
+        $this.Value = $null
     }
 }
 
 class CreateParams {
     [string] $Name;
     [string] $Location;
-    [string] $ResourceGroupName;
     [object] $Context;
 
     CreateParams(
         [string] $name,
         [string] $location,
-        [string] $resourceGroupName,
         [object] $context)
     {
         $this.Name = $name
         $this.Location = $location
-        $this.ResourceGroupName = $resourceGroupName
         $this.Context = $context
     }
 }
@@ -145,49 +143,71 @@ class AzureObject {
     [string] $Name;
     [AzureObject[]] $Children;
     [int] $Priority;
+    [object] $info = $null;
 
     AzureObject([string] $name, [AzureObject[]] $children) {
-        $this.Name = $name;
-        $this.Children = $children;
-        $this.Priority = 0;
+        $this.Name = $name
+        $this.Children = $children
+        $this.Priority = 0
         foreach ($child in $this.Children) {
             if ($this.Priority -lt $child.Priority) {
-                $this.Priority = $child.Priority;
+                $this.Priority = $child.Priority
             }
         }
-        $this.Priority++;
+        $this.Priority++
+    }
+
+    [object] GetInfoOrThrow([object] $context) {
+        return $null
+    }
+
+    [object] Create([CreateParams] $p) {
+        return $null
     }
 
     # This function should be called only when $this.Name is not $null.
     [object] GetInfo([object] $context) {
-        return $null;
-    }
-
-    [object] Create([CreateParams] $p) {
-        return $null;
+        if (!$this.Info) {
+            try {
+                $this.Info = $this.GetInfoOrThrow($context)
+            } catch {
+                # ignore all errors
+            }
+        }
+        return $this.Info;
     }
 
     [void] UpdateLocation([Location] $location, [object] $context) {
         if ($this.Priority -gt $location.Priority) {
             if ($this.Name) {
-                $location.Value = $this.GetInfo($context).Location;
-                $location.Priority = $this.Priority;
-            } else {
-                foreach ($child in $this.Children) {
-                    $child.UpdateLocation($location, $context);
+                $i = $this.GetInfo($context)
+                if ($i) {
+                    $location.Value = $i.Location
+                    $location.Priority = $this.Priority
+                    return;
                 }
+            }
+            foreach ($child in $this.Children) {
+                $child.UpdateLocation($location, $context)
             }
         }
     }
 
     [object] GetOrCreate([CreateParams] $p) {
-        if ($this.Name) {
-            return $this.GetInfo($p.Context);
-        } else {
-            $result = $this.Create($p);
-            $this.Name = $p.Name;
-            return $result;
+        $i = $this.GetInfo($p.Context)
+        if ($i) {
+            return $i
         }
+        if ($this.Name) {
+            $p = [CreateParams]::new(
+                $this.Name,
+                $p.Location,
+                $p.Context
+            )
+        }
+        $this.Info = $this.Create($p)
+        $this.Name = $p.Name
+        return $this.Info
     }
 }
 
@@ -195,8 +215,11 @@ class ResourceGroup: AzureObject {
     ResourceGroup([string] $name): base($name, @()) {
     }
 
-    [object] GetInfo([object] $context) {
-        return Get-AzureRmResourceGroup -Name $this.Name -AzureRmContext $context;
+    [object] GetInfoOrThrow([object] $context) {
+        return Get-AzureRmResourceGroup `
+            -Name $this.Name `
+            -AzureRmContext $context `
+            -ErrorAction Stop
     }
 
     [object] Create([CreateParams] $p) {
@@ -205,29 +228,54 @@ class ResourceGroup: AzureObject {
             -Location $p.Location `
             -AzureRmContext $p.Context `
             -WarningAction SilentlyContinue `
-            -ErrorAction Stop;
+            -ErrorAction Stop
     }
 }
 
 class Resource1: AzureObject {
-    Resource1([string] $name): base($name, @([ResourceGroup]::new($null))) {
+    [ResourceGroup] $ResourceGroup;
+
+    Resource1(
+        [string] $name,
+        [ResourceGroup] $resourceGroup,
+        [AzureObject[]] $children
+    ): base($name, @($children)) {
+        $this.ResourceGroup = $resourceGroup
+    }
+
+    Resource1(
+        [string] $name,
+        [ResourceGroup] $resourceGroup
+    ): base($name, @($resourceGroup)) {
+        $this.ResourceGroup = $resourceGroup
+    }
+
+    [string] GetResourceGroupName([CreateParams] $p) {
+        return $this.ResourceGroup.GetOrCreate($p).ResourceGroupName;
     }
 }
 
 class VirtualNetwork: Resource1 {
     [string] $AddressPrefix;
 
-    VirtualNetwork([string] $name, [string] $addressPrefix): base($name) {
+    VirtualNetwork(
+        [string] $name,
+        [ResourceGroup] $resourceGroup,
+        [string] $addressPrefix
+    ): base($name, $resourceGroup) {
         $this.AddressPrefix = $addressPrefix
     }
 
-    [object] GetInfo([object] $context) {
-        return Get-AzureRmVirtualNetwork -Name $this.Name -AzureRmContext $context
+    [object] GetInfoOrThrow([object] $context) {
+        return Get-AzureRmVirtualNetwork `
+            -Name $this.Name `
+            -AzureRmContext $context `
+            -ErrorAction Stop
     }
 
     [object] Create([CreateParams] $p) {
         return New-AzureRmVirtualNetwork `
-            -ResourceGroupName $p.ResourceGroupName `
+            -ResourceGroupName $this.GetResourceGroupName($p) `
             -Location $p.Location `
             -Name $p.Name `
             -AddressPrefix $this.AddressPrefix `
@@ -243,20 +291,24 @@ class PublicIpAddress: Resource1 {
 
     PublicIpAddress(
         [string] $name,
+        [ResourceGroup] $resourceGroup,
         [string] $domainNameLabel,
         [string] $allocationMethod
-    ): base($name) {
-        $this.DomainNameLabel = $domainNameLabel;
-        $this.AllocationMethod = $allocationMethod;
+    ): base($name, $resourceGroup) {
+        $this.DomainNameLabel = $domainNameLabel
+        $this.AllocationMethod = $allocationMethod
     }
 
-    [object] GetInfo([object] $context) {
-        return Get-AzureRMPublicIpAddress -Name $this.Name -AzureRmContext $context;
+    [object] GetInfoOrThrow([object] $context) {
+        return Get-AzureRMPublicIpAddress `
+            -Name $this.Name `
+            -AzureRmContext $context `
+            -ErrorAction Stop
     }
 
     [object] Create([CreateParams] $p) {
         return New-AzureRmPublicIpAddress `
-            -ResourceGroupName $p.ResourceGroupName `
+            -ResourceGroupName $this.GetResourceGroupName($p) `
             -Location $p.Location `
             -Name $p.Name `
             -DomainNameLabel  $this.DomainNameLabel.ToLower() `
@@ -270,16 +322,24 @@ class PublicIpAddress: Resource1 {
 class SecurityGroup: Resource1 {
     [int[]] $OpenPorts;
 
-    SecurityGroup([string] $name, [int[]] $OpenPorts): base($name) {
-        $this.OpenPorts = $OpenPorts;
+    SecurityGroup(
+        [string] $name,
+        [ResourceGroup] $resourceGroup,
+        [int[]] $OpenPorts
+    ): base($name, $resourceGroup) {
+        $this.OpenPorts = $OpenPorts
     }
 
-    [object] GetInfo([object] $context) {
-        return Get-AzureRMSecurityGroup -Name $this.Name -AzureRmContext $context
+    [object] GetInfoOrThrow([object] $context) {
+        return Get-AzureRMSecurityGroup `
+            -Name $this.Name `
+            -AzureRmContext $context `
+            -ErrorAction Stop
     }
 
     [object] Create([CreateParams] $p) {
-        $rules = New-Object "System.Collections.Generic.List[Microsoft.Azure.Commands.Network.Models.PSSecurityRule]"
+        $rules = New-Object `
+            "System.Collections.Generic.List[Microsoft.Azure.Commands.Network.Models.PSSecurityRule]"
         $priority = 1000
         foreach ($port in $this.OpenPorts) {
             $name = $p.Name + $port
@@ -298,7 +358,7 @@ class SecurityGroup: Resource1 {
             ++$priority
         }
         return New-AzureRmNetworkSecurityGroup `
-            -ResourceGroupName $p.ResourceGroupName `
+            -ResourceGroupName $this.GetResourceGroupName($p) `
             -Location $p.Location `
             -Name $p.Name `
             -SecurityRules $rules `
@@ -318,51 +378,61 @@ class Subnet: AzureObject {
         $this.SubnetAddressPrefix = $subnetAddressPrefix
     }
 
-    [object] GetInfo([object] $context) {
+    [object] GetInfoOrThrow([object] $context) {
         $virutalNetworkInfo = $this.VirtualNetwork.GetInfo($context)
-        return $virutalNetworkInfo | Get-AzureRmVirtualNetworkSubnetConfig -Name $this.Name
+        if (!$virutalNetworkInfo) {
+            return $null
+        }
+        return $virutalNetworkInfo `
+            | Get-AzureRmVirtualNetworkSubnetConfig -Name $this.Name -ErrorAction Stop
     }
 
     [object] Create([CreateParams] $p) {
-        $virtualNetworkInfo = $this.VirtualNetwork.GetOrCreate($p);
+        $virtualNetworkInfo = $this.VirtualNetwork.GetOrCreate($p)
         Add-AzureRmVirtualNetworkSubnetConfig `
             -VirtualNetwork $virtualNetworkInfo `
             -Name $p.Name `
-            -AddressPrefix $this.SubnetAddressPrefix;
+            -AddressPrefix $this.SubnetAddressPrefix
         $virtualNetworkInfo = Set-AzureRmVirtualNetwork `
             -VirtualNetwork $virtualNetworkInfo `
             -AzureRmContext $p.Context `
             -ErrorAction Stop
-        return Get-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $virtualNetworkInfo -Name $p.Name
+        return Get-AzureRmVirtualNetworkSubnetConfig `
+            -VirtualNetwork $virtualNetworkInfo `
+            -Name $p.Name
     }
 }
 
-class NetworkInterface: AzureObject {
+class NetworkInterface: Resource1 {
     [Subnet] $Subnet;
     [PublicIpAddress] $PublicIpAddress;
     [SecurityGroup] $SecurityGroup;
 
     NetworkInterface(
         [string] $name,
+        [ResourceGroup] $resourceGroup,
         [Subnet] $subnet,
         [PublicIpAddress] $publicIpAddress,
         [SecurityGroup] $securityGroup
-    ): base($name, @($subnet, $publicIpAddress, $securityGroup)) {
-        $this.Subnet = $subnet;
-        $this.PublicIpAddress = $publicIpAddress;
-        $this.SecurityGroup = $securityGroup;
+    ): base($name, $resourceGroup, @($subnet, $publicIpAddress, $securityGroup)) {
+        $this.Subnet = $subnet
+        $this.PublicIpAddress = $publicIpAddress
+        $this.SecurityGroup = $securityGroup
     }
 
-    [object] GetInfo([object] $context) {
-        return Get-AzureRMNetworkInterface -Name $this.Name -AzureRmContext $context;
+    [object] GetInfoOrThrow([object] $context) {
+        return Get-AzureRMNetworkInterface `
+            -Name $this.Name `
+            -AzureRmContext $context `
+            -ErrorAction Stop
     }
 
     [object] Create([CreateParams] $p) {
-        $publicIpAddressInfo = $this.PublicIpAddress.GetOrCreate($p);
-        $subnetInfo = $this.Subnet.GetOrCreate($p);
-        $securityGroupInfo = $this.SecurityGroup.GetOrCreate($p);
+        $publicIpAddressInfo = $this.PublicIpAddress.GetOrCreate($p)
+        $subnetInfo = $this.Subnet.GetOrCreate($p)
+        $securityGroupInfo = $this.SecurityGroup.GetOrCreate($p)
         return New-AzureRmNetworkInterface `
-            -ResourceGroupName $p.ResourceGroupName `
+            -ResourceGroupName $this.GetResourceGroupName($p) `
             -Location $p.Location `
             -Name $p.Name `
             -PublicIpAddressId $publicIpAddressInfo.Id `
@@ -374,7 +444,7 @@ class NetworkInterface: AzureObject {
     }
 }
 
-class VirtualMachine: AzureObject {
+class VirtualMachine: Resource1 {
     [NetworkInterface] $NetworkInterface;
     [pscredential] $Credential;
     [string] $ImageName;
@@ -383,31 +453,34 @@ class VirtualMachine: AzureObject {
 
     VirtualMachine(
         [string] $name,
-        [NetworkInterface] $networkInterface,
         [ResourceGroup] $resourceGroup,
+        [NetworkInterface] $networkInterface,
         [PSCredential] $credential,
         [string] $imageName,
         [object] $images,
         [string] $size):
-        base($name, @($networkInterface, $resourceGroup)) {
+        base($name, $resourceGroup, @($networkInterface)) {
 
-        $this.Credential = $credential;
-        $this.ImageName = $imageName;
-        $this.NetworkInterface = $networkInterface;
-        $this.Images = $images;
-        $this.Size = $size;
+        $this.Credential = $credential
+        $this.ImageName = $imageName
+        $this.NetworkInterface = $networkInterface
+        $this.Images = $images
+        $this.Size = $size
     }
 
-    [object] GetInfo([object] $context) {
-        return Get-AzureRMVirtualMachine -Name $this.Name -AzureRmContext $context;
+    [object] GetInfoOrThrow([object] $context) {
+        return Get-AzureRMVirtualMachine `
+            -Name $this.Name `
+            -AzureRmContext $context `
+            -ErrorAction Stop
     }
 
     [object] Create([CreateParams] $p) {
-        $networkInterfaceInstance = $this.NetworkInterface.GetOrCreate($p);
+        $networkInterfaceInstance = $this.NetworkInterface.GetOrCreate($p)
 
-        $vmImage = $this.Images | Where-Object { $_.Name -eq $this.ImageName } | Select-Object -First 1;
+        $vmImage = $this.Images | Where-Object { $_.Name -eq $this.ImageName } | Select-Object -First 1
         if (-not $vmImage) {
-            throw "Unknown image: " + $this.ImageName;
+            throw "Unknown image: " + $this.ImageName
         }
 
         $vmConfig = New-AzureRmVMConfig -VMName $p.Name -VMSize $this.Size -ErrorAction Stop
@@ -442,7 +515,7 @@ class VirtualMachine: AzureObject {
                 -ErrorAction Stop
 
         return New-AzureRmVm `
-            -ResourceGroupName $p.ResourceGroupName `
+            -ResourceGroupName $this.GetResourceGroupName($p) `
             -Location $p.Location `
             -VM $vmConfig `
             -AzureRmContext $p.Context `
