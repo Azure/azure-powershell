@@ -26,14 +26,21 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
     public interface ITokenCacheItemProvider
     {
         string GetTokenFromTokenCache(TokenCache tokenCache, string uniqueId);
+
+        string GetTokenFromTokenCache(TokenCache tokenCache, string uniqueId, string environmentName);
     }
 
     public class TokenCacheItemProvider : ITokenCacheItemProvider
     {
         public string GetTokenFromTokenCache(TokenCache tokenCache, string uniqueId)
         {
-            var tokenCacheItem  = tokenCache.ReadItems().FirstOrDefault(tokenItem => tokenItem.UniqueId.Equals(uniqueId));
+            return GetTokenFromTokenCache(tokenCache, uniqueId, null);
+        }
 
+        public string GetTokenFromTokenCache(TokenCache tokenCache, string uniqueId, string environmentName)
+        {
+            var tokenCacheItems = tokenCache.ReadItems().Where(tokenItem => tokenItem.UniqueId.Equals(uniqueId) && (string.IsNullOrEmpty(environmentName) || tokenItem.Resource.Contains(environmentName)));
+            var tokenCacheItem = tokenCacheItems.FirstOrDefault();
             if (tokenCacheItem == null || string.IsNullOrEmpty(tokenCacheItem.AccessToken))
             {
                 throw new PSInvalidOperationException(string.Format(Resources.NotLoggedInMessage, ""));
