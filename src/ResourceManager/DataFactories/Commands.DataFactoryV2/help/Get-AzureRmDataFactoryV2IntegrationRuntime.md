@@ -41,8 +41,8 @@ PS C:\> Get-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName rg-test-df
 
 	ResourceGroupName DataFactoryName Name                   Description
 	----------------- --------------- ----                   -----------
-	rg-test-dfv2      test-df-eu2     test-reserlved-ir      Reselved IR
-	rg-test-dfv2      test-df-eu2     test-dedicated-ir      Reselved IR
+	rg-test-dfv2      test-df-eu2     test-reserved-ir       Reserved IR
+	rg-test-dfv2      test-df-eu2     test-dedicated-ir      Reserved IR
 	rg-test-dfv2      test-df-eu2     test-selfhost-ir       selfhost IR
 ```
 
@@ -66,7 +66,7 @@ PS C:\> Get-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName rg-test-df
 	ResourceGroupName            : rg-test-dfv2
 	DataFactoryName              : test-df-eu2
 	Name                         : test-dedicated-ir
-	Description                  : Reselved IR
+	Description                  : Reserved IR
 ```
 
 This command displays information about the integration runtime named 'test-dedicated-ir' in the subscription for the resource group named 'rg-test-dfv2' and data factory named 'test-df-eu2'.
@@ -93,7 +93,7 @@ PS C:\> Get-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName rg-test-df
 	ResourceGroupName            : rg-test-dfv2
 	DataFactoryName              : test-df-eu2
 	Name                         : test-dedicated-ir
-	Description                  : Reselved IR
+	Description                  : Reserved IR
 ```
 
 This command displays information about the integration runtime named 'test-dedicated-ir' in the subscription for the resource group named 'rg-test-dfv2' and data factory named 'test-df-eu2'.
