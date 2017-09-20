@@ -31,7 +31,7 @@ Start-AzureRmDataFactoryV2Trigger [-ResourceId] <String> [-Force] [-WhatIf] [-Co
 
 ## DESCRIPTION
 
-The **Start-AzureRmDataFactoryV2Trigger** cmdlet starts a trigger in a data factory. If the trigger is in the 'Stopped' state, the cmdlet will start the trigger and it will eventually invoke pipelines based on its definition. If the trigger is already in the 'Started' state, this cmdlet will have no effect. If the _Force_ parameter is specified, the cmdlet will not prompt before starting the trigger. 
+The **Start-AzureRmDataFactoryV2Trigger** cmdlet starts a trigger in a data factory. If the trigger is in the 'Stopped' state, the cmdlet starts the trigger and it eventually invokes pipelines based on its definition. If the trigger is already in the 'Started' state, this cmdlet has no effect. If the Force parameter is specified, the cmdlet doesn't prompt before starting the trigger.
 
 
 ## EXAMPLES
@@ -83,7 +83,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Don't ask for confirmation.
+Runs the cmdlet without prompting for confirmation.
 
 ```yaml
 Type: SwitchParameter
@@ -158,8 +158,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+Shows what happens if the cmdlet runs, but doesn't run the cmdlet.
 
 ```yaml
 Type: SwitchParameter

@@ -30,16 +30,16 @@ Stop-AzureRmDataFactoryV2IntegrationRuntime [-Force] [-IntegrationRuntime] <PSIn
 ```
 
 ## DESCRIPTION
-The Stop-AzureRmDataFactoryV2IntegrationRuntime cmdlets stops a managed dedicated integration runtime in 'Started' state, which was started by the Start-AzureRmDataFactoryV2IntegrationRuntime cmdlet. The resources will be released and the state will transfer to 'Stopped'.
+The **Stop-AzureRmDataFactoryV2IntegrationRuntime** cmdlet stops a managed dedicated integration runtime in 'Started' state, which was started by the Start-AzureRmDataFactoryV2IntegrationRuntime cmdlet. The resources are released and the state transfers to 'Stopped'.
 
 ## EXAMPLES
 
-### Example 1: Stop a managed integration runtime which is in 'Started' state.
+### Example 1: Stop a managed integration runtime that is in 'Started' state.
 ```
 PS C:\> Stop-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName 'rg-test-dfv2' -DataFactoryName 'test-df' -Name 'test-reserlved-ir'
 ```
 
-The managed integration runtime 'test-reserlved-ir' is in 'Started' state. After running Stop-AzureRmDataFactoryV2IntegrationRuntime cmdlet, the resources will be released and  the state will transfer to 'Stopped'.
+The managed integration runtime 'test-reserlved-ir' is in 'Started' state. After running Stop-AzureRmDataFactoryV2IntegrationRuntime cmdlet, the resources are released and the state transfers to 'Stopped'.
 
 ## PARAMETERS
 
@@ -74,7 +74,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Don't ask for confirmation.
+Runs the cmdlet without prompting for confirmation.
 
 ```yaml
 Type: SwitchParameter
@@ -164,8 +164,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+Shows what happens if the cmdlet runs, but doesn't run the cmdlet.
 
 ```yaml
 Type: SwitchParameter

@@ -25,7 +25,7 @@ Set-AzureRmDataFactoryV2Trigger [-DefinitionFile] <String> [-ResourceId] <String
 
 ## DESCRIPTION
 
-The **Set-AzureRmDataFactoryV2Trigger** cmdlet creates a trigger in a data factory. If you specify a name for a trigger that already exists, the cmdlet prompts for confirmation before replacing the trigger. If you specify the _Force_ parameter, the cmdlet replaces the existing trigger without prompting for confirmation. Triggers are created in the 'Stopped' state, meaning that they will not immediately begin invoking pipelines that they reference.
+The **Set-AzureRmDataFactoryV2Trigger** cmdlet creates a trigger in a data factory. If you specify a name for a trigger that already exists, the cmdlet prompts for confirmation before replacing the trigger. If you specify the _Force_ parameter, the cmdlet replaces the existing trigger without prompting for confirmation. Triggers are created in the 'Stopped' state, meaning that they don't immediately begin invoking pipelines that they reference.
 
 ## EXAMPLES
 
@@ -41,7 +41,7 @@ PS C:\> Set-AzureRmDataFactoryV2Trigger -ResourceGroupName "ADF" -DataFactoryNam
 
 ```
 
-Create a new trigger called "ScheduledTrigger" in the data factory "WikiADF". The trigger is created in the 'Stopped' state, meaning that it will not be immediately started. A trigger can be started using the `Start-AzureRmDataFactoryV2Trigger` cmdlet.
+Create a new trigger called "ScheduledTrigger" in the data factory "WikiADF". The trigger is created in the 'Stopped' state, meaning that it doesn't immediately start. A trigger can be started using the `Start-AzureRmDataFactoryV2Trigger` cmdlet.
 
 ## PARAMETERS
 
@@ -91,7 +91,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Don't ask for confirmation.
+Runs the cmdlet without prompting for confirmation.
 
 ```yaml
 Type: SwitchParameter
@@ -151,8 +151,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+Shows what happens if the cmdlet runs, but doesn't run the cmdlet.
 
 ```yaml
 Type: SwitchParameter

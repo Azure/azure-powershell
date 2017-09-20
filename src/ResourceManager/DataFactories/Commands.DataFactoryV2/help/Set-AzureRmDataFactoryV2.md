@@ -18,7 +18,7 @@ Set-AzureRmDataFactoryV2 [-ResourceGroupName] <String> [-Name] <String> [-Locati
 ```
 
 ## DESCRIPTION
-The Set-AzureRmDataFactoryV2 cmdlet creates a data factory with the specified resource group name and location.
+The **Set-AzureRmDataFactoryV2** cmdlet creates a data factory with the specified resource group name and location.
 
 Perform these operations in the following order:
 
@@ -63,7 +63,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Don't ask for confirmation.
+Runs the cmdlet without prompting for confirmation.
 
 ```yaml
 Type: SwitchParameter
@@ -78,7 +78,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-The geographic region to create the data factory.
+The geographic region in which to create the data factory.
 
 ```yaml
 Type: String
@@ -138,8 +138,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+Shows what happens if the cmdlet runs, but doesn't run the cmdlet.
 
 ```yaml
 Type: SwitchParameter

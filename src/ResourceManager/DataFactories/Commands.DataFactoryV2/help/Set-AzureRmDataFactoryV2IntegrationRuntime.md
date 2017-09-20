@@ -151,7 +151,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Don't ask for confirmation.
+Runs the cmdlet without prompting for confirmation.
 
 ```yaml
 Type: SwitchParameter
@@ -317,7 +317,7 @@ Accept wildcard characters: False
 ```
 
 ### -VNetId
-The ID of the VNet which the integration runtime will join.
+The ID of the VNet that the integration runtime joins.
 
 ```yaml
 Type: String
@@ -332,8 +332,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+Shows what happens if the cmdlet runs, but doesn't run the cmdlet.
 
 ```yaml
 Type: SwitchParameter

@@ -30,7 +30,7 @@ Sync-AzureRmDataFactoryV2IntegrationRuntimeCredential [-Force] [-IntegrationRunt
 ```
 
 ## DESCRIPTION
-The Sync-AzureRmDataFactoryV2IntegrationRuntimeCredential cmdlet synchronizes on-premise credentials among integration runtime nodes, which forces the credentials to be identical in all ndoes.
+The **Sync-AzureRmDataFactoryV2IntegrationRuntimeCredential** cmdlet synchronizes on-premises credentials among integration runtime nodes, which forces the credentials to be identical in all nodes.
 
 ## EXAMPLES
 
@@ -39,7 +39,7 @@ The Sync-AzureRmDataFactoryV2IntegrationRuntimeCredential cmdlet synchronizes on
 PS C:\> Sync-AzureRmDataFactoryV2IntegrationRuntimeCredential -ResourceGroupName 'rg-test-dfv2' -DataFactoryName 'test-df-eu2' -Name 'test-selfhost-ir'
 ```
 
-The cmdlet will synchronize credentials among integration runtime nodes.
+The cmdlet synchronizes credentials among integration runtime nodes.
 
 ## PARAMETERS
 
@@ -74,7 +74,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Don't ask for confirmation.
+Runs the cmdlet without prompting for confirmation.
 
 ```yaml
 Type: SwitchParameter
@@ -149,8 +149,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+Shows what happens if the cmdlet runs, but doesn't run the cmdlet.
 
 ```yaml
 Type: SwitchParameter

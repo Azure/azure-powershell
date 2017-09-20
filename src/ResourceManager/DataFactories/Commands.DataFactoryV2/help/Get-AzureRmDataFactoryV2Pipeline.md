@@ -48,7 +48,7 @@ PS C:\> Get-AzureRmDataFactoryV2Pipeline -ResourceGroupName "ADF" -DataFactoryNa
 ```
 
 This command gets information about all pipelines in the data factory named WikiADF.
-You can either one of the following example commands.
+You can use either one of the following example commands.
 The second one uses a DataFactory object as a parameter.
 
 ### Example 2: Get information about a specific pipeline

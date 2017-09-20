@@ -31,7 +31,7 @@ Stop-AzureRmDataFactoryV2Trigger [-ResourceId] <String> [-Force] [-WhatIf] [-Con
 
 ## DESCRIPTION
 
-The **Stop-AzureRmDataFactoryV2Trigger** cmdlet stops a trigger in a data factory. If the trigger is in the 'Started' state, the cmdlet will stop the trigger and it will no longer invoke pipelines. If the trigger is already in the 'Stopped' state, this cmdlet will have no effect. If the _Force_ parameter is specified, the cmdlet will not prompt before stopping the trigger.
+The **Stop-AzureRmDataFactoryV2Trigger** cmdlet stops a trigger in a data factory. If the trigger is in the 'Started' state, the cmdlet stops the trigger and no longer invokes pipelines. If the trigger is already in the 'Stopped' state, this cmdlet has no effect. If the Force parameter is specified, the cmdlet doesn't prompt before stopping the trigger.
 
 
 ## EXAMPLES
@@ -83,7 +83,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Don't ask for confirmation.
+Runs the cmdlet without prompting for confirmation.
 
 ```yaml
 Type: SwitchParameter
@@ -158,8 +158,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+Shows what happens if the cmdlet runs, but doesn't run the cmdlet.
 
 ```yaml
 Type: SwitchParameter
