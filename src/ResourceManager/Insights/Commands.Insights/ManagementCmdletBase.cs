@@ -23,13 +23,11 @@ namespace Microsoft.Azure.Commands.Insights
     /// <summary>
     /// Base class for the Azure Insights SDK Cmdlets based on the MonitorManagementClient
     /// </summary>
-    public abstract class ManagementCmdletBase : MonitorCmdletBase, IDisposable
+    public abstract class ManagementCmdletBase : MonitorCmdletBase
     {
         #region General declarations
 
         private IMonitorManagementClient monitorManagementClient;
-
-        private bool disposed;
 
         /// <summary>
         /// Gets the monitorManagementClient to use in the Cmdlet
@@ -48,25 +46,6 @@ namespace Microsoft.Azure.Commands.Insights
                 return this.monitorManagementClient;
             }
             set { this.monitorManagementClient = value; }
-        }
-
-        /// <summary>
-        /// Dispose the resources
-        /// </summary>
-        /// <param name="disposing">Indicates whether the managed resources should be disposed or not</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (!this.disposed)
-            {
-                if (this.monitorManagementClient != null)
-                {
-                    this.monitorManagementClient.Dispose();
-                    this.monitorManagementClient = null;
-                }
-
-                this.disposed = true;
-            }
-            base.Dispose(disposing);
         }
 
         #endregion
