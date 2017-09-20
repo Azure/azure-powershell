@@ -35,7 +35,7 @@ Invoke-AzureRmDataFactoryV2Pipeline [-ResourceGroupName] <String> [-DataFactoryN
 ```
 
 ## DESCRIPTION
-The **Invoke-AzureRmDataFactoryV2Pipeline** command starts a run on the specified pipeline and returns a ID for that run. This guid can be passed to **Get-AzureRmDataFactoryV2PipelineRun** or **Get-AzureRmDataFactoryV2ActivityRun** to obtain further details about this run.
+The **Invoke-AzureRmDataFactoryV2Pipeline** command starts a run on the specified pipeline and returns a ID for that run. This GUID can be passed to **Get-AzureRmDataFactoryV2PipelineRun** or **Get-AzureRmDataFactoryV2ActivityRun** to obtain further details about this run.
 
 ## EXAMPLES
 
@@ -45,7 +45,7 @@ PS C:\> Invoke-AzureRmDataFactoryV2Pipeline -ResourceGroupName "ADF" -DataFactor
 867d9d9f-1efc-4fee-974d-d8e6320bfbcb
 ```
 
-This command will start a run for "DPWikisample" pipeline in the "WikiADF" factory.
+This command starts a run for "DPWikisample" pipeline in the "WikiADF" factory.
 
 ## PARAMETERS
 
@@ -155,8 +155,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+Shows what happens if the cmdlet runs, but doesn't run the cmdlet.
 
 ```yaml
 Type: SwitchParameter

@@ -43,7 +43,7 @@ PS C:\> Get-AzureRmDataFactoryV2TriggerRun -ResourceGroupName "ADF" -DataFactory
 
 ```
 
-This command shows information about runs for "WikiTrigger" in the factory "WikiADF" which started between "2017-09-01" and "2019-09-30".
+This command shows information about runs for "WikiTrigger" in the factory "WikiADF" that started between "2017-09-01" and "2019-09-30".
 
 ## PARAMETERS
 

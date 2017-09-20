@@ -85,7 +85,7 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 Specifies the name of an Azure resource group.
-This cmdlet gets information about data factories that belong to the group that this parameter specifies.
+This cmdlet gets information about data factories that belong to the group this parameter specifies.
 
 ```yaml
 Type: String

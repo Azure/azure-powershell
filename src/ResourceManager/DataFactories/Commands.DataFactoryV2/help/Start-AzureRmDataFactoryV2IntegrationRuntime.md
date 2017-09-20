@@ -30,7 +30,7 @@ Start-AzureRmDataFactoryV2IntegrationRuntime [-Force] [-IntegrationRuntime] <PSI
 ```
 
 ## DESCRIPTION
-The Start-AzureRmDataFactoryV2IntegrationRuntime cmdlet starts a managed dedicated integration runtime. The resource will be provisioned and the state will be 'Started' after the operation.
+The **Start-AzureRmDataFactoryV2IntegrationRuntime** cmdlet starts a managed dedicated integration runtime. The resource is provisioned and after the operation the state is 'Started'.
 
 ## EXAMPLES
 
@@ -57,10 +57,10 @@ PS C:\> Start-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName 'rg-test
     ResourceGroupName            : rg-test-dfv2
     DataFactoryName              : test-df-eu2
     Name                         : test-dedicated-ir
-    Description                  : Reselved IR
+    Description                  : Reserved IR
 ```
 
-This cmdlet will start a managed dedicated integration runtime named 'test-dedicated-ir'.
+This cmdlet starts a managed dedicated integration runtime named 'test-dedicated-ir'.
 
 ## PARAMETERS
 
@@ -95,7 +95,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Don't ask for confirmation.
+Runs the cmdlet without prompting for confirmation.
 
 ```yaml
 Type: SwitchParameter
@@ -170,8 +170,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+Shows what happens if the cmdlet runs, but doesn't run the cmdlet.
 
 ```yaml
 Type: SwitchParameter

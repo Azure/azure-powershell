@@ -29,7 +29,7 @@ Get-AzureRmDataFactoryV2ActivityRun [-PipelineRunId] <String> [-RunStartedAfter]
 
 ## DESCRIPTION
 
-The **Get-AzureRmDataFactoryV2ActivityRun** cmdlet gets information about runs in Azure Data Factory for the specified pipeline run that happened in the given timeframe. Additionally, you can specify filters for activity name, linked service name which executed the run and the status of the run.
+The **Get-AzureRmDataFactoryV2ActivityRun** cmdlet gets information about runs in Azure Data Factory for the specified pipeline run that happened in the given timeframe. Additionally, you can specify filters for activity name, linked service name that executed the run, and the status of the run.
 
 ## EXAMPLES
 
@@ -53,7 +53,7 @@ PS C:\> Get-AzureRmDataFactoryV2ActivityRun -ResourceGroupName "ADF" -DataFactor
 
 ```
 
-This command gets details about all activity runs in the pipeline run with ID "f288712d-fb08-4cb8-96ef-82d3b9b30621" which happened between "2017-09-01" and "2017-09-30".
+This command gets details about all activity runs in the pipeline run with ID "f288712d-fb08-4cb8-96ef-82d3b9b30621" that happened between "2017-09-01" and "2017-09-30".
 
 ## PARAMETERS
 

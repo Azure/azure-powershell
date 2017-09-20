@@ -36,7 +36,7 @@ Get-AzureRmDataFactoryV2PipelineRun [-ResourceGroupName] <String> [-DataFactoryN
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmDataFactoryV2PipelineRun** command returns information about runs for the specified pipeline. If PipelineRunId is specified it will show details for the run with that ID. If the PipelineRunId is not specified then it will show information about all runs for the specified pipeline that happened between the values of LastUpdatedAfter and LastUpdatedBefore.
+The **Get-AzureRmDataFactoryV2PipelineRun** command returns information about runs for the specified pipeline. If PipelineRunId is specified, it shows details for the run with that ID. If the PipelineRunId is not specified, then it shows information about all runs for the specified pipeline that happened between the values of LastUpdatedAfter and LastUpdatedBefore.
 
 ## EXAMPLES
 
@@ -58,7 +58,7 @@ PS C:\> Get-AzureRmDataFactoryV2PipelineRun -ResourceGroupName "ADF" -DataFactor
 
 ```
 
-This command gets details about the pipeline run with id "61eb095a-fe23-4591-8a97-fade6c65ca72".
+This command gets details about the pipeline run with ID "61eb095a-fe23-4591-8a97-fade6c65ca72".
 
 
 ## PARAMETERS

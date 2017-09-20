@@ -36,10 +36,10 @@ The Remove-AzureRmDataFactoryV2IntegrationRuntime cmdlet removes a integration r
 
 ### Example 1: Remove a integration runtime
 ```
-PS C:\> Remove-AzureRmDataFactoryV2IntegrationRuntime  -ResourceGroupName 'rg-test-dfv2' -DataFactoryName 'test-df' -Name 'test-reserlved-ir' -Confirm
+PS C:\> Remove-AzureRmDataFactoryV2IntegrationRuntime  -ResourceGroupName 'rg-test-dfv2' -DataFactoryName 'test-df' -Name 'test-reserved-ir' -Confirm
 ```
 
-This command removes the integration runtime named 'test-reserlved-ir' from the data factory named 'test-df'.
+This command removes the integration runtime named 'test-reserved-ir' from the data factory named 'test-df'.
 This command returns a value of $True.
 
 ## PARAMETERS
@@ -60,7 +60,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Don't ask for confirmation.
+Runs the cmdlet without prompting for confirmation.
 
 ```yaml
 Type: SwitchParameter
@@ -150,8 +150,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+Shows what happens if the cmdlet runs, but doesn't run the cmdlet.
 
 ```yaml
 Type: SwitchParameter
