@@ -34,12 +34,12 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         [Parameter(ParameterSetName = ParameterSetNames.ByInputObject, Position = 0, Mandatory = true, ValueFromPipeline = true,
             HelpMessage = Constants.TriggerName)]
         [ValidateNotNull]
-        public PSTrigger Trigger { get; set; }
+        public PSTrigger InputObject { get; set; }
 
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
         {
-            ByInputObject(Trigger);
+            ByInputObject(InputObject);
             ByResourceId();
 
             ConfirmAction(

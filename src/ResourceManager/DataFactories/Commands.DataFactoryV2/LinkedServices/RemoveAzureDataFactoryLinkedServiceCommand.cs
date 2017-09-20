@@ -33,12 +33,12 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         [Parameter(ParameterSetName = ParameterSetNames.ByInputObject, Position = 0, Mandatory = true, ValueFromPipeline = true,
             HelpMessage = Constants.HelpLinkedService)]
         [ValidateNotNull]
-        public PSLinkedService LinkedService { get; set; }
+        public PSLinkedService InputObject { get; set; }
 
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
         {
-            ByInputObject(LinkedService);
+            ByInputObject(InputObject);
             ByResourceId();
 
             ConfirmAction(

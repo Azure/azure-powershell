@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             ValueFromPipeline = true,
             HelpMessage = Constants.HelpIntegrationRuntimeObject)]
         [ValidateNotNull]
-        public PSIntegrationRuntime IntegrationRuntime { get; set; }
+        public PSIntegrationRuntime InputObject { get; set; }
 
         protected virtual void ByResourceId()
         {
@@ -74,8 +74,8 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         {
             if (ParameterSetName.Equals(ParameterSetNames.ByIntegrationRuntimeObject, StringComparison.OrdinalIgnoreCase))
             {
-                ResourceGroupName = IntegrationRuntime.ResourceGroupName;
-                DataFactoryName = IntegrationRuntime.DataFactoryName;
+                ResourceGroupName = InputObject.ResourceGroupName;
+                DataFactoryName = InputObject.DataFactoryName;
             }
         }
 

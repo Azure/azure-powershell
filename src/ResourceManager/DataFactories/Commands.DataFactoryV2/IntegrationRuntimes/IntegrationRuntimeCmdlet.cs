@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             if (ParameterSetName.Equals(ParameterSetNames.ByIntegrationRuntimeObject, StringComparison.OrdinalIgnoreCase))
             {
                 base.ByIntegrationRuntimeObject();
-                Name = IntegrationRuntime.Name;
+                Name = InputObject.Name;
             }
         }
     }

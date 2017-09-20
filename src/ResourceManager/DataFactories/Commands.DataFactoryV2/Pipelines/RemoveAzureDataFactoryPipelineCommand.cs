@@ -34,12 +34,12 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         [Parameter(ParameterSetName = ParameterSetNames.ByInputObject, Position = 0, Mandatory = true, ValueFromPipeline = true,
             HelpMessage = Constants.HelpPipeline)]
         [ValidateNotNull]
-        public PSPipeline  Pipeline { get; set; }
+        public PSPipeline InputObject { get; set; }
 
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
         {
-            ByInputObject(Pipeline);
+            ByInputObject(InputObject);
             ByResourceId();
 
             ConfirmAction(
