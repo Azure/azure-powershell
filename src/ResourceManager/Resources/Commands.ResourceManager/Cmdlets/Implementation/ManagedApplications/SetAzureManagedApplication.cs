@@ -119,15 +119,25 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 string resourceId = this.Id ?? GetResourceId();
 
                 var apiVersion = string.IsNullOrWhiteSpace(this.ApiVersion) ? Constants.ApplicationApiVersion : this.ApiVersion;
+                var resourceBody = this.GetResourceBody(resourceId, apiVersion);
 
-                var operationResult = this.GetResourcesClient()
-                    .PutResource(
-                        resourceId: resourceId,
-                        apiVersion: apiVersion,
-                        resource: this.GetResource(resourceId, apiVersion),
-                        cancellationToken: this.CancellationToken.Value,
-                        odataQuery: null)
-                    .Result;
+                var operationResult = this.ShouldUsePatchSemantics()
+                    ? this.GetResourcesClient()
+                        .PatchResource(
+                            resourceId: resourceId,
+                            apiVersion: apiVersion,
+                            resource: resourceBody,
+                            cancellationToken: this.CancellationToken.Value,
+                            odataQuery: null)
+                        .Result
+                    : this.GetResourcesClient()
+                        .PutResource(
+                            resourceId: resourceId,
+                            apiVersion: apiVersion,
+                            resource: resourceBody,
+                            cancellationToken: this.CancellationToken.Value,
+                            odataQuery: null)
+                        .Result;
 
                 var managementUri = this.GetResourcesClient()
                   .GetResourceManagementRequestUri(
@@ -148,11 +158,56 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         private string GetResourceId()
         {
             var subscriptionId = DefaultContext.Subscription.Id;
-            return string.Format("/subscriptions/{0}/providers/{1}/{2}",
+            return string.Format("/subscriptions/{0}/resourcegroups/{1}/providers/{2}/{3}",
                 subscriptionId.ToString(),
+                this.ResourceGroupName,
                 Constants.MicrosoftApplicationType,
                 this.Name);
         }
+
+        /// <summary>
+        /// Gets the resource body.
+        /// </summary>
+        private JToken GetResourceBody(string resourceId, string apiVersion)
+        {
+            if (this.ShouldUsePatchSemantics())
+            {
+                var resourceBody = this.GetPatchResourceBody();
+                return resourceBody == null ? null : resourceBody.ToJToken();
+            }
+            else
+            {
+                return this.GetResource(resourceId, apiVersion);
+            }
+        }
+
+        /// <summary>
+        /// Gets the resource body for PATCH calls
+        /// </summary>
+        private Resource<JToken> GetPatchResourceBody()
+        {
+            if(this.Tag == null)
+            {
+                return null;
+            }
+            else
+            {
+                Resource<JToken> resourceBody = new Resource<JToken>();
+                resourceBody.Tags = TagsHelper.GetTagsDictionary(this.Tag);
+                return resourceBody;
+            }
+        }
+
+        /// <summary>
+        /// Determines if the cmdlet should use <c>PATCH</c> semantics.
+        /// </summary>
+        private bool ShouldUsePatchSemantics()
+        {
+            return ((this.Tag != null) && this.Plan == null && this.Kind == null 
+                && this.ManagedApplicationDefinitionId == null && this.ManagedResourceGroupName ==null
+                && this.Parameter == null);
+        }
+
 
         /// <summary>
         /// Constructs the resource
@@ -173,7 +228,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     ManagedResourceGroupId = string.IsNullOrEmpty(this.ManagedResourceGroupName)
                         ? resource.Properties["managedResourceGroupId"].ToString()
                         : string.Format("/subscriptions/{0}/resourcegroups/{1}", Guid.Parse(DefaultContext.Subscription.Id), this.ManagedResourceGroupName),
-                    ApplicationDefinitionId =this.ManagedApplicationDefinitionId ?? resource.Properties["managedApplicationDefinitionId"].ToString(),
+                    ApplicationDefinitionId =this.ManagedApplicationDefinitionId ?? resource.Properties["applicationDefinitionId"].ToString(),
                     Parameters = this.Parameter == null 
                     ? (resource.Properties["parameters"] != null ? JObject.Parse(resource.Properties["parameters"].ToString()) : null)
                     : JObject.Parse(this.GetObjectFromParameter(this.Parameter).ToString())
