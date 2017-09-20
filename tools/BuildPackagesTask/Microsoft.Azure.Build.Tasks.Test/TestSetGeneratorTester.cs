@@ -388,7 +388,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                 "test3.dll"
             };
 
-            int expectedNumberFiles = 51;
+            int expectedNumberFiles = 52;
             HashSet<string> actual;
 
             //act
@@ -448,7 +448,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             //arrange
             HashSet<string> paths = new HashSet<string>() { };
             string mapFilePath = MapFilePath;
-            int expectedNumberFiles = 51;
+            int expectedNumberFiles = 52;
             HashSet<string> actual;
 
             //act
@@ -540,7 +540,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             };
 
             string mapFilePath = MapFilePath;
-            int expectedNumberFiles = 51;
+            int expectedNumberFiles = 52;
             HashSet<string> actual;
 
             //act
