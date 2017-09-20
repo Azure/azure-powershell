@@ -15,28 +15,41 @@
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy
 {
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
 
     /// <summary>
-    /// The policy assignment object.
+    /// The policy definition properties.
     /// </summary>
-    public class PolicyAssignment
+    public class PolicySetDefinitionProperties
     {
         /// <summary>
-        /// The policy assignment properties.
-        /// </summary>
-        [JsonProperty(Required = Required.Always)]
-        public PolicyAssignmentProperties Properties { get; set; }
-
-        /// <summary>
-        /// The policy assignment name.
+        /// The description.
         /// </summary>
         [JsonProperty(Required = Required.Default)]
-        public string Name { get; set; }
+        public string Description { get; set; }
 
         /// <summary>
-        /// The policy sku.
+        /// The display name.
+        /// </summary>
+        [JsonProperty(Required = Required.Default)]
+        public string DisplayName { get; set; }
+
+        /// <summary>
+        /// The policy set definition metadata.
+        /// </summary>
+        [JsonProperty(Required = Required.Default)]
+        public JObject Metadata { get; set; }
+
+        /// <summary>
+        /// The policy reference.
         /// </summary>
         [JsonProperty(Required = Required.Always)]
-        public PolicySku Sku { get; set; }
+        public JArray PolicyDefinitions { get; set; }
+
+        /// <summary>
+        /// The parameters declaration.
+        /// </summary>
+        [JsonProperty(Required = Required.Default)]
+        public JObject Parameters { get; set; }
     }
 }
