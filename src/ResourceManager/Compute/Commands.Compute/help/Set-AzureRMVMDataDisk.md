@@ -15,13 +15,15 @@ Modifies properties of a virtual machine data disk.
 ### ChangeWithName
 ```
 Set-AzureRmVMDataDisk [-VM] <PSVirtualMachine> [-Name] <String> [[-Caching] <CachingTypes>]
- [[-DiskSizeInGB] <Int32>] [-StorageAccountType <StorageAccountTypes>] [<CommonParameters>]
+ [[-DiskSizeInGB] <Int32>] [-StorageAccountType <StorageAccountTypes>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ChangeWithLun
 ```
 Set-AzureRmVMDataDisk [-VM] <PSVirtualMachine> [-Lun] <Int32> [[-Caching] <CachingTypes>]
- [[-DiskSizeInGB] <Int32>] [-StorageAccountType <StorageAccountTypes>] [<CommonParameters>]
+ [[-DiskSizeInGB] <Int32>] [-StorageAccountType <StorageAccountTypes>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -66,6 +68,21 @@ Required: False
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
