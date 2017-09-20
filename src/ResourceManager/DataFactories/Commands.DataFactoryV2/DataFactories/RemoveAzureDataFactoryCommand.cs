@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         [Parameter(ParameterSetName = ParameterSetNames.ByFactoryObject, Position = 0, Mandatory = true, ValueFromPipeline = true,
             HelpMessage = Constants.HelpFactoryObject)]
         [ValidateNotNullOrEmpty]
-        public PSDataFactory DataFactory { get; set; }
+        public PSDataFactory InputObject { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.ByResourceId, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.HelpResourceId)]
@@ -56,8 +56,8 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         {
             if (ParameterSetName.Equals(ParameterSetNames.ByFactoryObject, StringComparison.OrdinalIgnoreCase))
             {
-                Name = DataFactory.DataFactoryName;
-                ResourceGroupName = DataFactory.ResourceGroupName;
+                Name = InputObject.DataFactoryName;
+                ResourceGroupName = InputObject.ResourceGroupName;
             }
             else if (ParameterSetName.Equals(ParameterSetNames.ByResourceId, StringComparison.OrdinalIgnoreCase))
             {

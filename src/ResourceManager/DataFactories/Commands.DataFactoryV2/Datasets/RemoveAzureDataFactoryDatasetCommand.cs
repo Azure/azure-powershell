@@ -34,12 +34,12 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         [Parameter(ParameterSetName = ParameterSetNames.ByInputObject, Position = 0, Mandatory = true, ValueFromPipeline = true,
             HelpMessage = Constants.HelpDataset)]
         [ValidateNotNull]
-        public PSDataset Dataset { get; set; }
+        public PSDataset InputObject { get; set; }
 
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
         {
-            ByInputObject(Dataset);
+            ByInputObject(InputObject);
             ByResourceId();
 
             ConfirmAction(

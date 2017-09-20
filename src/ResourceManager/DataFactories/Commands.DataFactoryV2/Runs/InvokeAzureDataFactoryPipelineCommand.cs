@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         [Parameter(ParameterSetName = ParameterSetNames.ByPipelineObjectByParameterObject, Position = 0, Mandatory = true, ValueFromPipeline = true,
             HelpMessage = Constants.HelpFactoryObject)]
         [ValidateNotNull]
-        public PSPipeline Pipeline { get; set; }
+        public PSPipeline InputObject { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.ByFactoryNameByParameterFile, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.HelpResourceGroup)]
@@ -77,9 +77,9 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             if (ParameterSetName.Equals(ParameterSetNames.ByPipelineObjectByParameterFile, StringComparison.OrdinalIgnoreCase)
                 || ParameterSetName.Equals(ParameterSetNames.ByPipelineObjectByParameterObject, StringComparison.OrdinalIgnoreCase))
             {
-                DataFactoryName = Pipeline.DataFactoryName;
-                ResourceGroupName = Pipeline.ResourceGroupName;
-                PipelineName = Pipeline.Name;
+                DataFactoryName = InputObject.DataFactoryName;
+                ResourceGroupName = InputObject.ResourceGroupName;
+                PipelineName = InputObject.Name;
             }
 
             Dictionary<string, object> paramDictionary = null;

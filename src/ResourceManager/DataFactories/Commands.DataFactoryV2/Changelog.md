@@ -21,4 +21,3 @@
 ## Current Release
 * Azure DataFactory Powershell cmdlets for ADF V2 Private Preview
 
-## Version 0.1.0
