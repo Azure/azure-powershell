@@ -30,13 +30,19 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
 
         Task<HttpResponseMessage> CallPostAsync(Uri baseURI, string requestURL, string accessToken, HttpContent content = null);
 
+        Task<HttpResponseMessage> CallPostAsync(Uri baseURI, string requestURL, string accessToken, Guid correlationId, HttpContent content = null);
+
         Task<HttpResponseMessage> CallGetAsync(Uri baseURI, string requestURL, string accessToken);
+
+        Task<HttpResponseMessage> CallGetAsync(Uri baseURI, string requestURL, string accessToken, Guid correlationId);
 
         void resetHttpClient();
     }
 
     public class AsAzureHttpClient : IAsAzureHttpClient
     {
+        public const string ParentActivityId = "x-ms-parent-activity-id";
+
         public HttpClient HttpClient { get; set; }
 
         private Func<HttpClient> HttpClientProvider { get; set; } 
@@ -49,12 +55,22 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
 
         public async Task<HttpResponseMessage> CallGetAsync(Uri baseURI, string requestURL, string accessToken)
         {
-            return await CallAsync(HttpMethod.Get, baseURI, requestURL, accessToken);
+            return await CallGetAsync(baseURI, requestURL, accessToken, new Guid());
+        }
+
+        public async Task<HttpResponseMessage> CallGetAsync(Uri baseURI, string requestURL, string accessToken, Guid correlationId)
+        {
+            return await CallAsync(HttpMethod.Get, baseURI, requestURL, accessToken, correlationId);
         }
 
         public async Task<HttpResponseMessage> CallPostAsync(Uri baseURI, string requestURL, string accessToken, HttpContent content = null)
         {
-            return await CallAsync(HttpMethod.Post, baseURI, requestURL, accessToken, content);
+            return await CallPostAsync(baseURI, requestURL, accessToken, new Guid(), content);
+        }
+
+        public async Task<HttpResponseMessage> CallPostAsync(Uri baseURI, string requestURL, string accessToken, Guid correlationId, HttpContent content = null)
+        {
+            return await CallAsync(HttpMethod.Post, baseURI, requestURL, accessToken, correlationId, content);
         }
 
         public void resetHttpClient()
@@ -62,7 +78,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
             this.HttpClient = this.HttpClientProvider();
         }
 
-        private async Task<HttpResponseMessage> CallAsync(HttpMethod method, Uri baseURI, string requestURL, string accessToken, HttpContent content = null)
+        private async Task<HttpResponseMessage> CallAsync(HttpMethod method, Uri baseURI, string requestURL, string accessToken, Guid correlationId, HttpContent content = null)
         {
             using (HttpClient)
             {
@@ -71,6 +87,14 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
                     throw new PSArgumentNullException("accessToken", string.Format(Resources.NotLoggedInMessage, ""));
                 }
                 HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+
+                if (correlationId == null || correlationId == Guid.Empty)
+                {
+                    correlationId = new Guid();
+                }
+
+                HttpClient.DefaultRequestHeaders.Add(ParentActivityId, new List<string>() { correlationId.ToString() });
+
                 HttpClient.BaseAddress = baseURI;
                 if (method == HttpMethod.Get)
                 {

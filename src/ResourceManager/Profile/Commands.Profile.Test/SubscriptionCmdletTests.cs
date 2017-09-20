@@ -12,7 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.Resources.Test.ScenarioTests;
+using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
@@ -26,6 +28,9 @@ namespace Microsoft.Azure.Commands.Profile.Test
 
         public SubscriptionCmdletTests(ITestOutputHelper output)
         {
+            TestExecutionHelpers.SetUpSessionAndProfile();
+            ResourceManagerProfileProvider.InitializeResourceManagerProfile(true);
+
             xunitLogger = new XunitTracingInterceptor(output);
         }
 
