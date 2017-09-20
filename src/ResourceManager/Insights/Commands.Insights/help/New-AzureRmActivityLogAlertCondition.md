@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# New-AzureRmLeafCondition
+# New-AzureRmActivityLogAlertCondition
 
 ## SYNOPSIS
 Creates an new activity log alert condition object in memory.
