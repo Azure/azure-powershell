@@ -40,7 +40,7 @@ HubDatabaseUserName         : myAccount
 HubDatabasePassword         : 
 SyncState                   : NotReady
 LastSyncTime                : 1/1/0001 12:00:00 AM
-Schema                      :  
+Schema                      : 
 ```
 
 This command updates a sync group for an Azure SQL Database. "schema.json" is a file in the local disk. It contains the shema payload in json format. An example of the schema json is:
@@ -66,21 +66,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DatabaseName
-SQL Database name.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -DatabaseCredential
 The SQL authentication credential of the hub database.
 
@@ -93,6 +78,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DatabaseName
+SQL Database name.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
