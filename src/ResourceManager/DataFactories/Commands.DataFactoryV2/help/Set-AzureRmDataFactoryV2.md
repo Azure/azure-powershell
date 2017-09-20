@@ -78,7 +78,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-The geographic region in which to create the data factory.
+The data factory is created in this region.
 
 ```yaml
 Type: String
