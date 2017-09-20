@@ -320,6 +320,9 @@
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.LoadBalancerTests\TestLoadBalancerCRUDInternalHighlyAvailableStandardSku.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.LoadBalancerTests\TestLoadBalancerZones.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.LoadBalancerTests\TestSetLoadBalancerCRUDInternalBasicSku.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -476,6 +479,9 @@
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.PublicIpAddressTests\TestPublicIpAddressVmss.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.PublicIpAddressTests\TestPublicIpAddressZones.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.PublicIpAddressTests\TestPublicIpBasicSku.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -537,6 +543,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkGatewayTests\TestVirtualNetworkGatewayCRUD.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkGatewayTests\TestVirtualNetworkGatewayP2SVpnProfile.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkGatewayTests\VirtualNetworkGatewayActiveActiveFeatureTest.json">
