@@ -117,14 +117,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Add NeworkRule support to resource mode storage account cmdlets
-    - New-AzureRmStorageAccount
-    - Set-AzureRmStorageAccount
-    - Get-AzureStorageAccountNetworkRuleSet
-    - Update-AzureStorageAccountNetworkRuleSet
-    - Add-AzureStorageAccountNetworkRule
-    - Remove-AzureStorageAccountNetworkRule
-'
+        ReleaseNotes = 'Updated for common code changes'
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''
