@@ -656,7 +656,7 @@
                         "name": "Security"
                     }
                 ],
-				"addonFeatures": [
+                "addonFeatures": [
                     "DnsService" 
                 ],
                 "managementEndpoint": "[concat('https://',reference(concat(variables('lbIPName'),'-','0')).dnsSettings.fqdn,':',variables('nt0fabricHttpGatewayPort'))]",
