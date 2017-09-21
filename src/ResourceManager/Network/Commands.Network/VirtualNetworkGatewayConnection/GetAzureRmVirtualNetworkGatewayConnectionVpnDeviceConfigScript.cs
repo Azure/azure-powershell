@@ -65,21 +65,6 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
-            if (string.IsNullOrWhiteSpace(this.DeviceVendor))
-            {
-                throw new ArgumentException("Required parameter DeviceVendor cannot be null or empty.");
-            }
-
-            if (string.IsNullOrWhiteSpace(this.DeviceFamily))
-            {
-                throw new ArgumentException("Required parameter DeviceFamily cannot be null or empty.");
-            }
-
-            if (string.IsNullOrWhiteSpace(this.FirmwareVersion))
-            {
-                throw new ArgumentException("Required parameter FirmwareVersion cannot be null or empty.");
-            }
-
             MNM.VpnDeviceScriptParameters vpnDeviceScriptParameter = new MNM.VpnDeviceScriptParameters()
             {
                 DeviceFamily = this.DeviceFamily,
