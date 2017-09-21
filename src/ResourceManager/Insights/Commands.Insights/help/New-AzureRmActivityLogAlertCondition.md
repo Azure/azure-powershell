@@ -13,7 +13,7 @@ Creates an new activity log alert condition object in memory.
 ## SYNTAX
 
 ```
-New-AzureRmActivityLogAlertCondition -Field <String> -Equals <String> [<CommonParameters>]
+New-AzureRmActivityLogAlertCondition -Field <String> -Equal <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,7 +23,7 @@ The **New-AzureRmActivityLogAlertCondition** cmdlet creates new activity log ale
 
 ### Example 1: Create a new activity log alert condition object in memory.
 ```
-PS C:\>$condition = New-AzureRmActivityLogAlertCondition -Field "Requests" -Equals "OtherField"
+PS C:\>$condition = New-AzureRmActivityLogAlertCondition -Field "Requests" -Equal "OtherField"
 ```
 
 This command creates a new activity log alert condition object in memory.
@@ -45,7 +45,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Equals
+### -Equal
 Specifies the equals property for the leaf condition.
 
 ```yaml

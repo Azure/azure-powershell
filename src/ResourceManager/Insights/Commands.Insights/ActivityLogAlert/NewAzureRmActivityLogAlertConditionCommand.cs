@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The equals field of the leaf condition")]
         [ValidateNotNullOrEmpty]
-        public new string Equals { get; set; }
+        public string Equal { get; set; }
 
         #endregion
 
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
             WriteObject(
                 new ActivityLogAlertLeafCondition(
                     field: this.Field,
-                    equals: this.Equals));
+                    equals: this.Equal));
         }
     }
 }
