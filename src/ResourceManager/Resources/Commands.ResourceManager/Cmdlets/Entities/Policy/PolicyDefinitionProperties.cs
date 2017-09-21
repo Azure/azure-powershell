@@ -41,9 +41,21 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy
         public JObject PolicyRule { get; set; }
 
         /// <summary>
+        /// The policy definition metadata.
+        /// </summary>
+        [JsonProperty(Required = Required.Default)]
+        public JObject Metadata { get; set; }
+
+        /// <summary>
         /// The parameters declaration.
         /// </summary>
         [JsonProperty(Required = Required.Default)]
         public JObject Parameters { get; set; }
+
+        /// <summary>
+        /// The mode.
+        /// </summary>
+        [JsonProperty(Required = Required.Default)]
+        public PolicyDefinitionMode? Mode { get; set; }
     }
 }
