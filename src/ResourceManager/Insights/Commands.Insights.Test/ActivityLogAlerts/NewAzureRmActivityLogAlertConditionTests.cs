@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActivityLogAlerts
         public void NewAzureRmActivityLogAlertConditionCommandParametersProcessing()
         {
             Cmdlet.Field = "field1";
-            Cmdlet.Equals = "equals1";
+            Cmdlet.Equal = "equals1";
             Cmdlet.ExecuteCmdlet();
         }
     }

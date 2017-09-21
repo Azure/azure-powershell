@@ -28,13 +28,13 @@ function Test-SetGetListUpdateRemoveActivityLogAlert
 	try
 	{
 		Write-Verbose " ****** Creating a new LeafCondition object"
-		$condition1 = New-AzureRmActivityLogAlertCondition -Field 'field1' -Equals 'equals1'
+		$condition1 = New-AzureRmActivityLogAlertCondition -Field 'field1' -Equal 'equals1'
 
 		Assert-NotNull $condition1
 		Assert-AreEqual 'field1' $condition1.Field
 		Assert-AreEqual 'equals1' $condition1.Equals
 
-        $condition2 = New-AzureRmActivityLogAlertCondition -Field 'field2' -Equals 'equals2'
+        $condition2 = New-AzureRmActivityLogAlertCondition -Field 'field2' -Equal 'equals2'
 
 		Assert-NotNull $condition1
 		Assert-AreEqual 'field1' $condition1.Field
