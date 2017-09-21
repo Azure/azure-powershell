@@ -12,7 +12,7 @@
 
   
 # Version number of this module.  
-ModuleVersion = '1.2.11'  
+ModuleVersion = '1.3.0'  
   
 # ID used to uniquely identify this module  
 GUID = 'B433E830-B479-4F7F-9C80-9CC6C28E1B51'  
@@ -48,16 +48,16 @@ CLRVersion='4.0'
 ProcessorArchitecture = 'None'  
   
 # Modules that must be imported into the global environment prior to importing this module  
-RequiredModules = @(@{ModuleName="AzureRM.Profile"; RequiredVersion="3.3.2"},
-  @{ModuleName="Azure.Storage"; RequiredVersion="1.0.5.4"}  
-  @{ModuleName="AzureRM.Compute"; RequiredVersion="3.2.1"},
-  @{ModuleName="AzureRM.Dns"; RequiredVersion="3.3.2"},
-  @{ModuleName="AzureRM.KeyVault"; RequiredVersion="3.3.2"},
-  @{ModuleName="AzureRM.Network"; RequiredVersion="1.0.5.4"},
-  @{ModuleName="AzureRM.Resources"; RequiredVersion="4.3.2"},
-  @{ModuleName="AzureRM.Storage"; RequiredVersion="1.0.5.4"},
-  @{ModuleName="AzureRM.Tags"; RequiredVersion="3.3.2"},
-  @{ModuleName="AzureRM.UsageAggregates"; RequiredVersion="3.3.2"}) 
+RequiredModules = @(@{ModuleName="AzureRM.Profile"; RequiredVersion="3.4.0"},
+  @{ModuleName="Azure.Storage"; RequiredVersion="1.1.0.4"}  
+  @{ModuleName="AzureRM.Compute"; RequiredVersion="3.3.0"},
+  @{ModuleName="AzureRM.Dns"; RequiredVersion="3.4.0"},
+  @{ModuleName="AzureRM.KeyVault"; RequiredVersion="3.4.0"},
+  @{ModuleName="AzureRM.Network"; RequiredVersion="1.1.0.4"},
+  @{ModuleName="AzureRM.Resources"; RequiredVersion="4.4.0"},
+  @{ModuleName="AzureRM.Storage"; RequiredVersion="1.1.0.4"},
+  @{ModuleName="AzureRM.Tags"; RequiredVersion="3.4.0"},
+  @{ModuleName="AzureRM.UsageAggregates"; RequiredVersion="3.4.0"}) 
   
 # Assemblies that must be loaded prior to importing this module  
 RequiredAssemblies = @()  
