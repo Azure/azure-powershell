@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     {
                         parameters.Script = new List<string>();
                         PathIntrinsics currentPath = SessionState.Path;
-                        var filePath = new System.IO.FileInfo(currentPath.GetUnresolvedProviderPathFromPSPath(this.ScriptPath.ToString()));
+                        var filePath = new System.IO.FileInfo(currentPath.GetUnresolvedProviderPathFromPSPath(this.ScriptPath));
                         string fileContent = WindowsAzure.Commands.Common.FileUtilities.DataStore.ReadFileAsText(filePath.FullName);
                         parameters.Script = fileContent.Split(new string[] { "\r\n", "\n", "\r" }, StringSplitOptions.RemoveEmptyEntries);
                     }
