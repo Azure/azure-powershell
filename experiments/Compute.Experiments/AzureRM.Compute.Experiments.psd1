@@ -12,7 +12,7 @@
 RootModule = ".\AzureRM.Compute.Experiments.psm1"
 
 # Version number of this module.
-ModuleVersion = '1.0.7'
+ModuleVersion = '1.0.19'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -52,9 +52,9 @@ PowerShellVersion = '5.0'
 
 # Modules that must be imported into the global environment prior to importing this module
 RequiredModules = @(
-    @{ ModuleName = "AzureRM.Resources"; ModuleVersion = "4.3.1"; },
-    @{ ModuleName = "AzureRM.Network"; ModuleVersion = "4.3.1"; },
-    @{ ModuleName = "AzureRM.Compute"; ModuleVersion = "3.3.1"; }
+    @{ ModuleName = "AzureRM.Resources"; ModuleVersion = "4.3.2"; },
+    @{ ModuleName = "AzureRM.Network"; ModuleVersion = "4.3.2"; },
+    @{ ModuleName = "AzureRM.Compute"; ModuleVersion = "3.3.2"; }
 )
 
 # Assemblies that must be loaded prior to importing this module

@@ -1,8 +1,9 @@
-Import-Module .\..\..\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1
-Import-Module .\..\..\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Resources.psd1
-Import-Module .\..\..\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Network\AzureRM.Network.psd1
-Import-Module .\..\..\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Compute\AzureRM.Compute.psd1
-Import-Module .\..\..\experiments\Compute.Experiments\AzureRM.Compute.Experiments.psd1
+$build = Resolve-Path "..\build\"
+$out = Join-Path $build "AzureRM.Compute.Experiments\"
+Copy-Item .\AzureRM.Compute.Experiments.psd1 $out
+Copy-Item .\AzureRM.Compute.Experiments.psm1 $out
+
+$env:PSModulePath = $env:PSModulePath + ";" + $build.ToString()
 
 # Login
 $credentials = Get-Content -Path "C:\Users\sergey\Desktop\php-test.json" | ConvertFrom-Json
@@ -17,11 +18,23 @@ $vmCredential = New-Object System.Management.Automation.PSCredential ($vmCompute
 
 New-AzVm -Name MyVM -Credential $vmCredential -WhatIf
 
+# $job = New-AzVm -Name MyVMA -Credential $vmCredential -AsJob
+# Receive-Job $job
+
+# exit
+
 # $vm = New-AzVm
 # $vm = New-AzVm -Credential $vmCredential
-$vm = New-AzVm -Name MyVM -Credential $vmCredential
+$vm = New-AzVm -Name MyVMA1 -Credential $vmCredential -ResourceGroupName Crocodile
+# $vm = New-AzVm -Name MyVMA
 
 $vm
+
+# Write-Host "<async>"
+# $job = New-AzVm -Name MyVMA3 -Credential $vmCredential -AsJob
+# $vm = Receive-Job $job -Wait
+# $vm
+# Write-Host "</async>"
 
 # clean-up
 Remove-AzureRmResourceGroup -ResourceId $vm.ResourceGroupId
