@@ -92,7 +92,9 @@ function New-AzVm {
                 return Start-Job $script -ArgumentList $arguments
             } else {
                 $vm = $vmi.GetOrCreate($createParams)
-                return [PSAzureVm]::new($vm)
+                return [PSAzureVm]::new(
+                    $vm,
+                    $piai.DomainNameLabel + "." + locationi.Value + ".cloudapp.azure.com")
             }
         }
     }
@@ -100,9 +102,11 @@ function New-AzVm {
 
 class PSAzureVm {
     [Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine] $Vm;
+    [string] $Fqdn;
 
-    PSAzureVm([Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine] $vm) {
+    PSAzureVm([Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine] $vm, [string] $fqdn) {
         $this.Vm = $vm
+        $this.Fqdn = $fqdn
     }
 }
 
@@ -293,7 +297,7 @@ class PublicIpAddress: Resource1 {
         [string] $domainNameLabel,
         [string] $allocationMethod
     ): base($name, $resourceGroup) {
-        $this.DomainNameLabel = $domainNameLabel
+        $this.DomainNameLabel = $domainNameLabel.ToLower()
         $this.AllocationMethod = $allocationMethod
     }
 
@@ -314,7 +318,7 @@ class PublicIpAddress: Resource1 {
             -ResourceGroupName $this.GetResourceGroupName($p) `
             -Location $p.Location `
             -Name $this.Name `
-            -DomainNameLabel  $this.DomainNameLabel.ToLower() `
+            -DomainNameLabel  $this.DomainNameLabel `
             -AllocationMethod $this.AllocationMethod `
             -AzureRmContext $p.Context `
             -WarningAction SilentlyContinue `
