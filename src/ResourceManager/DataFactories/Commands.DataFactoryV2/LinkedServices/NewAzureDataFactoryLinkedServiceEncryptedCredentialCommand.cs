@@ -16,10 +16,12 @@ using System;
 using System.Management.Automation;
 using System.Security.Permissions;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System.Globalization;
+using Microsoft.Azure.Commands.DataFactoryV2.Properties;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
-    [Cmdlet(VerbsCommon.New, Constants.LinkedServiceEncryptedCredential, DefaultParameterSetName = ParameterSetNames.ByFactoryName),
+    [Cmdlet(VerbsCommon.New, Constants.LinkedServiceEncryptedCredential, DefaultParameterSetName = ParameterSetNames.ByFactoryName, SupportsShouldProcess = true),
         OutputType(typeof(string))]
     public class NewAzureDataFactoryLinkedServiceEncryptedCredentialCommand : DataFactoryContextBaseCmdlet
     {
@@ -38,6 +40,9 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         [Alias(Constants.File)]
         public string DefinitionFile { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = Constants.HelpDontAskConfirmation)]
+        public SwitchParameter Force { get; set; }
+
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
         {
@@ -53,8 +58,23 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             }
 
             string rawJsonContent = DataFactoryClient.ReadJsonFileContent(this.TryResolvePath(DefinitionFile));
+            string encrypted = null;
 
-            WriteObject(DataFactoryClient.IntegrationRuntimeEncryptCredential(ResourceGroupName, DataFactoryName, IntegrationRuntimeName, rawJsonContent));
+            ConfirmAction(
+                Force.IsPresent,
+                string.Format(
+                    CultureInfo.InvariantCulture,
+                    Resources.EncryptConfirm),
+                string.Format(
+                    CultureInfo.InvariantCulture,
+                    Resources.Encrypting),
+                DefinitionFile,
+                () =>
+                {
+                    encrypted = DataFactoryClient.IntegrationRuntimeEncryptCredential(ResourceGroupName, DataFactoryName, IntegrationRuntimeName, rawJsonContent);
+                });
+
+            WriteObject(encrypted);
         }
     }
 }

@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         [Parameter(ParameterSetName = ParameterSetNames.ByPipelineObjectByParameterObject, Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.HelpParametersForRun)]
         [ValidateNotNullOrEmpty]
-        public Hashtable Parameters { get; set; }
+        public Hashtable Parameter { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.ByFactoryNameByParameterFile, Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.HelpParameterFileForRun)]
@@ -83,15 +83,15 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             }
 
             Dictionary<string, object> paramDictionary = null;
-            if (Parameters == null && string.IsNullOrWhiteSpace(ParameterFile))
+            if (Parameter == null && string.IsNullOrWhiteSpace(ParameterFile))
             {
                 paramDictionary = new Dictionary<string, object>();
             }
-            else if (Parameters != null)
+            else if (Parameter != null)
             {
                 try
                 {
-                    paramDictionary = Parameters.Cast<DictionaryEntry>().ToDictionary(kvp => (string)kvp.Key, kvp => kvp.Value);
+                    paramDictionary = Parameter.Cast<DictionaryEntry>().ToDictionary(kvp => (string)kvp.Key, kvp => kvp.Value);
                 }
                 catch (InvalidCastException ex)
                 {

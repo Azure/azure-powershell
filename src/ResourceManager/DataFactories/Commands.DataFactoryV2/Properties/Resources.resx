@@ -347,4 +347,10 @@ Are you sure you want to continue?</value>
   <data name="DataFactoryProvisioningError" xml:space="preserve">
     <value>Creation of data factory '{0}' failed.</value>
   </data>
+  <data name="EncryptConfirm" xml:space="preserve">
+    <value>Are you sure you want to encrypt the connection string of the linked service?</value>
+  </data>
+  <data name="Encrypting" xml:space="preserve">
+    <value>Encrypting the connection string.</value>
+  </data>
 </root>

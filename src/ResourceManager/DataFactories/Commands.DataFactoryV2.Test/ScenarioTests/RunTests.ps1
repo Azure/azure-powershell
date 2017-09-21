@@ -42,7 +42,7 @@ function Test-Run
         $pipelineName = "samplePipeline"   
         Set-AzureRmDataFactoryV2Pipeline -ResourceGroupName $rgname -Name $pipelineName -DataFactoryName $dfname -File ".\Resources\pipeline.json" -Force
 
-        $Run = Invoke-AzureRmDataFactoryV2Pipeline -ResourceGroupName $rgname -PipelineName $pipelineName -DataFactoryName $dfname -parameters @{"OutputBlobName"="test";}
+        $Run = Invoke-AzureRmDataFactoryV2Pipeline -ResourceGroupName $rgname -PipelineName $pipelineName -DataFactoryName $dfname -Parameter @{"OutputBlobName"="test";}
         
         # Trying get activity run.
         Get-AzureRmDataFactoryV2ActivityRun -ResourceGroupName $rgname -DataFactoryName $dfname -PipelineRunId $Run -RunStartedBefore $endDate -RunStartedAfter $startDate

@@ -210,6 +210,24 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to encrypt the connection string of the linked service?.
+        /// </summary>
+        internal static string EncryptConfirm {
+            get {
+                return ResourceManager.GetString("EncryptConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Encrypting the connection string..
+        /// </summary>
+        internal static string Encrypting {
+            get {
+                return ResourceManager.GetString("Encrypting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to EndDateTime is not specified and is set to 48 hours from StartDateTime (by default). Please use -EndDateTime parameter in Get-AzureRmDataFactorySlice command if you want to specify EndDateTime..
         /// </summary>
         internal static string EndDateTimeNotSpecifiedForGetSlice {
