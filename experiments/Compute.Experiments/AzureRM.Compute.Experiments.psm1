@@ -17,7 +17,7 @@ function New-AzVm {
         [Parameter()][string] $SubnetAddressPrefix = "192.168.1.0/24",
 
         [Parameter()][string] $PublicIpAddressName = $Name,
-        [Parameter()][string] $DomainNameLabel = $Name,
+        [Parameter()][string] $DomainNameLabel = $ResourceGroupName + $Name,
         [Parameter()][string] $AllocationMethod = "Static",
 
         [Parameter()][string] $SecurityGroupName = $Name,
@@ -92,7 +92,7 @@ function New-AzVm {
                 return Start-Job $script -ArgumentList $arguments
             } else {
                 $vm = $vmi.GetOrCreate($createParams, [ProgressRange]::new(0.0, 1.0))
-                Write-Progress "Done." -PercentComplete 100 -Status "100% Complete:"
+                Write-Progress "Done." -Completed
                 return [PSAzureVm]::new(
                     $vm,
                     $piai.DomainNameLabel + "." + $locationi.Value + ".cloudapp.azure.com")
