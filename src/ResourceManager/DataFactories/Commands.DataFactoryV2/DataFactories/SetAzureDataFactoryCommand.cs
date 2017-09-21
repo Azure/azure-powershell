@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         [Parameter(Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The tags of the data factory.")]
-        public Hashtable Tags { get; set; }
+        public Hashtable Tag { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.HelpDontAskConfirmation)]
         public SwitchParameter Force { get; set; }
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 ResourceGroupName = ResourceGroupName,
                 DataFactoryName = Name,
                 Location = Location,
-                Tags = Tags,
+                Tags = Tag,
                 Force = Force.IsPresent,
                 ConfirmAction = ConfirmAction
             };
