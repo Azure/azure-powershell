@@ -14,8 +14,8 @@ Disables encryption on an IaaS virtual machine.
 
 ```
 Disable-AzureRmVMDiskEncryption [-ResourceGroupName] <String> [-VMName] <String> [[-VolumeType] <String>]
- [[-Name] <String>] [[-TypeHandlerVersion] <String>] [-Force] [-DisableAutoUpgradeMinorVersion] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [[-Name] <String>] [[-TypeHandlerVersion] <String>] [-Force] [-DisableAutoUpgradeMinorVersion]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,6 +45,21 @@ PS C:\> Disable-AzureRMVMDiskEncryption -ResourceGroupName "Group002" -VMName "V
 This command disables encryption for volumes of type data for the virtual machine named VM004 that belongs to the resource group named Group002.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DisableAutoUpgradeMinorVersion
 Indicates that this cmdlet disables auto-upgrade of the minor version of the extension.

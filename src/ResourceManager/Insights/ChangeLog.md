@@ -35,6 +35,15 @@
         - A new cmdlet to create or update an activity log alert.
     * New cmdlet Remove-AzureRmActivityLogAlert
         - A new cmdlet to remove one activity log alert.
+    * New cmdlet Set-AzureRmActionGroup
+        - A new cmdlet to create a new or update an existing action group.
+    * New cmdlet Get-AzureRmActionGroup
+        - A new cmdlet to retrieve one or more action groups.
+        - The action groups can be retrieved by name, resource group, or subscription.
+    * New cmdlet Remove-AzureRmActionGroup
+        - A new cmdlet to remove one action group.
+    * New cmdlet New-AzureRmActionGroupReceiver
+        - A new cmdlet to create an new action group receiver in memory.
 
 ## Version 3.3.1
 
