@@ -21,6 +21,8 @@ using Microsoft.Azure.Management.Monitor.Models;
 
 namespace Microsoft.Azure.Commands.Insights
 {
+    using System.Linq;
+
     /// <summary>
     /// Static class contaning common functions
     /// </summary>
