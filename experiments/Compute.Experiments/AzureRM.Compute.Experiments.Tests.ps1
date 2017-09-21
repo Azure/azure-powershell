@@ -37,4 +37,4 @@ $vm
 # Write-Host "</async>"
 
 # clean-up
-Remove-AzureRmResourceGroup -Name $vm.ResourceGroupName
+Remove-AzureRmResourceGroup -Name $vm.Vm.ResourceGroupName

@@ -94,7 +94,7 @@ function New-AzVm {
                 $vm = $vmi.GetOrCreate($createParams)
                 return [PSAzureVm]::new(
                     $vm,
-                    $piai.DomainNameLabel + "." + locationi.Value + ".cloudapp.azure.com")
+                    $piai.DomainNameLabel + "." + $locationi.Value + ".cloudapp.azure.com")
             }
         }
     }
@@ -102,10 +102,14 @@ function New-AzVm {
 
 class PSAzureVm {
     [Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine] $Vm;
+    [string] $Name;
+    [string] $ResourceGroupName;
     [string] $Fqdn;
 
     PSAzureVm([Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine] $vm, [string] $fqdn) {
         $this.Vm = $vm
+        $this.Name = $vm.Name
+        $this.ResourceGroupName = $vm.ResourceGroupName
         $this.Fqdn = $fqdn
     }
 }
