@@ -804,6 +804,10 @@
                 <Label>DnsSettings</Label>
                 <PropertyName>DnsSettingsText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>Zones</Label>
+                <PropertyName>Zones</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -947,6 +951,10 @@
               <ListItem>
                 <Label>LoadBalancerInboundNatRules</Label>
                 <PropertyName>LoadBalancerInboundNatRulesText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ApplicationSecurityGroups</Label>
+                <PropertyName>ApplicationSecurityGroupsText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -1139,6 +1147,14 @@
               <ListItem>
                 <Label>DestinationAddressPrefix</Label>
                 <PropertyName>DestinationAddressPrefix</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>SourceApplicationSecurityGroups</Label>
+                <PropertyName>SourceApplicationSecurityGroupsText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>DestinationApplicationSecurityGroups</Label>
+                <PropertyName>DestinationApplicationSecurityGroupsText</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>Access</Label>

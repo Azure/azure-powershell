@@ -163,6 +163,20 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = "SetByResourceId",
+            HelpMessage = "ApplicationSecurityGroupId")]
+        public List<string> ApplicationSecurityGroupId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "SetByResource",
+            HelpMessage = "ApplicationSecurityGroup")]
+        public List<PSApplicationSecurityGroup> ApplicationSecurityGroup { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "SetByResourceId",
             HelpMessage = "The private ip address of the Network Interface " +
                           "if static allocation is specified.")]
         [Parameter(
@@ -310,6 +324,15 @@ namespace Microsoft.Azure.Commands.Network
                             this.ApplicationGatewayBackendAddressPoolId.Add(appgwBepool.Id);
                         }
                     }
+
+                    if (this.ApplicationSecurityGroup != null)
+                    {
+                        this.ApplicationSecurityGroupId = new List<string>();
+                        foreach (var asg in this.ApplicationSecurityGroup)
+                        {
+                            this.ApplicationSecurityGroupId.Add(asg.Id);
+                        }
+                    }
                 }
 
                 var nicIpConfiguration = new PSNetworkInterfaceIPConfiguration();
@@ -358,6 +381,15 @@ namespace Microsoft.Azure.Commands.Network
                     foreach (var appgwBepoolId in this.ApplicationGatewayBackendAddressPoolId)
                     {
                         nicIpConfiguration.ApplicationGatewayBackendAddressPools.Add(new PSApplicationGatewayBackendAddressPool { Id = appgwBepoolId });
+                    }
+                }
+
+                if (this.ApplicationSecurityGroupId != null)
+                {
+                    nicIpConfiguration.ApplicationSecurityGroups = new List<PSApplicationSecurityGroup>();
+                    foreach (var id in this.ApplicationSecurityGroupId)
+                    {
+                        nicIpConfiguration.ApplicationSecurityGroups.Add(new PSApplicationSecurityGroup { Id = id });
                     }
                 }
 

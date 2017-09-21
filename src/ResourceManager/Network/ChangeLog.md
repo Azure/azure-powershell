@@ -24,6 +24,13 @@
     - Updated Set-AzureRmVirtualSubnetConfig: Added optional parameter -ServiceEndpoint
 * Added cmdlet to list endpoint services available in the location
     - Get-AzureRmVirtualNetworkAvailableEndpointService
+* Added the ability to configure external radius based P2S authentication to the following commandlets
+    - New-AzureVirtualNetworkGateway
+    - Set-AzureVirtualNetworkGateway
+    - Set-AzureRmVirtualNetworkGatewayVpnClientConfig
+* Added cmdlet to allow generation of VpnProfiles for external radius based P2S
+    - New-AzureRmVpnClientConfiguration
+	  - Get-AzureRmVpnClientConfiguration
 * Added support for SKU parameter to Public IP Addresses and Load Balancers
     - Updated New-AzureRMLoadBalancer: Added optional parameter -Sku
     - Updated New-AzureRMPublicIpAddress: Added optional parameter -Sku
@@ -49,6 +56,17 @@
     - Updated Add-AzureRmLoadBalancerRuleConfig: Added All as an acceptable value for Protocol parameter
     - Updated New-AzureRmLoadBalancerRuleConfig: Added All as an acceptable value for Protocol parameter
     - Updated Set-AzureRmLoadBalancerRuleConfig: Added All as an acceptable value for Protocol parameter
+* Added support for Application Security Groups
+    - Added New-AzureRmApplicationSecurityGroup
+    - Added Get-AzureRmApplicationSecurityGroup
+    - Added Remove-AzureRmApplicationSecurityGroup
+    - Updated New-AzureRmNetworkInterface: Added optional parameters ApplicationSecurityGroup and ApplicationSecurityGroupId
+    - Updated New-AzureRmNetworkInterfaceIpConfig: Added optional parameters ApplicationSecurityGroup and ApplicationSecurityGroupId
+    - Updated Add-AzureRmNetworkInterfaceIpConfig: Added optional parameters ApplicationSecurityGroup and ApplicationSecurityGroupId
+    - Updated Set-AzureRmNetworkInterfaceIpConfig: Added optional parameters ApplicationSecurityGroup and ApplicationSecurityGroupId
+    - Updated New-AzureRmNetworkSecurityRuleConfig: Added optional parameters SourceApplicationSecurityGroup, SourceApplicationSecurityGroupId, DestinationApplicationSecurityGroup, and DestinationApplicationSecurityGroupId
+    - Updated Add-AzureRmNetworkSecurityRuleConfig: Added optional parameters SourceApplicationSecurityGroup, SourceApplicationSecurityGroupId, DestinationApplicationSecurityGroup, and DestinationApplicationSecurityGroupId
+    - Updated Set-AzureRmNetworkSecurityRuleConfig: Added optional parameters SourceApplicationSecurityGroup, SourceApplicationSecurityGroupId, DestinationApplicationSecurityGroup, and DestinationApplicationSecurityGroupId
 	
 ## Version 4.3.1
 

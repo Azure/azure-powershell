@@ -462,6 +462,9 @@ function Test-NewADApplication
 
     # Assert
     Assert-NotNull $application
+    $apps =  Get-AzureRmADApplication 
+    Assert-NotNull $apps
+    Assert-True { $apps.Count -ge 0 }
 
     # Get Application by ObjectId
     $app1 =  Get-AzureRmADApplication -ObjectId $application.ObjectId
@@ -587,7 +590,7 @@ function Test-NewADServicePrincipalWithoutApp
 
 <#
 .SYNOPSIS
-Tests Creating and deleting service principal without an exisitng application.
+Tests Creating and deleting application using Password Credentials.
 #>
 function Test-CreateDeleteAppPasswordCredentials
 {    
@@ -636,6 +639,9 @@ function Test-CreateDeleteAppPasswordCredentials
     $cred3 = Get-AzureRmADAppCredential -ObjectId $application.ObjectId
     Assert-Null $cred3
 
+    $newApplication = Get-AzureRmADApplication -DisplayNameStartWith "PowershellTestingApp"
+    Assert-Throws { New-AzureRmADAppCredential -ApplicationId $newApplication.ApplicationId -Password "Somedummypwd"}
+
     # Remove App 
     Remove-AzureRmADApplication -ObjectId $application.ObjectId -Force
 }
@@ -643,7 +649,7 @@ function Test-CreateDeleteAppPasswordCredentials
 
 <#
 .SYNOPSIS
-Tests Creating and deleting service principal without an exisitng application.
+Tests Creating and deleting application using Service Principal Credentials.
 #>
 function Test-CreateDeleteSpPasswordCredentials
 {    
