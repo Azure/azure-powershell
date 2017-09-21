@@ -1,14 +1,14 @@
 ---
 Module Name: AzureRM.Compute.Experiments
-Module Guid: {{ Update Module Guid }}
-Download Help Link: {{ Update Download Link }}
-Help Version: {{ Update Help Version }}
-Locale: {{ Update Locale }}
+Module Guid: b5a94030-df85-43fa-b581-54069f88428f
+Download Help Link:
+Help Version: 
+Locale: 
 ---
 
 # AzureRM.Compute.Experiments Module
 ## Description
-{{Manually Enter Description Here}}
+Cmdlets experiments for user interface improvements in Virtual Machine creation.
 
 ## AzureRM.Compute.Experiments Cmdlets
 ### [New-AzVm](New-AzVm.md)
