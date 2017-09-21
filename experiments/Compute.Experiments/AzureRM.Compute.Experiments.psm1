@@ -91,19 +91,18 @@ function New-AzVm {
                 }
                 return Start-Job $script -ArgumentList $arguments
             } else {
-                return $vmi.GetOrCreate($createParams)
+                $vm = $vmi.GetOrCreate($createParams)
+                return [PSAzureVm]::new($vm)
             }
         }
     }
 }
 
 class PSAzureVm {
-    [string] $ResourceGroupId;
-    [string] $Name;
+    [Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine] $Vm;
 
-    PSAzureVm([string] $resourceGroupId, [string] $name) {
-        $this.ResourceGroupId = $resourceGroupId
-        $this.Name = $name
+    PSAzureVm([Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine] $vm) {
+        $this.Vm = $vm
     }
 }
 
