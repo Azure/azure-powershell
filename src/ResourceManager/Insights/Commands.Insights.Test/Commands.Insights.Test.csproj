@@ -136,6 +136,11 @@
   <ItemGroup>
     <Compile Include="ActivityLogAlerts\ActivityLogAlertsUtilities.cs" />
     <Compile Include="ActivityLogAlerts\DisableAzureRmActivityLogAlertTests.cs" />
+    <Compile Include="ActionGroups\ActionGroupsUtilities.cs" />
+    <Compile Include="ActionGroups\SetAzureRmActionGroupCommandTests.cs" />
+    <Compile Include="ActionGroups\GetAzureRmActionGroupCommandTests.cs" />
+    <Compile Include="ActionGroups\NewAzureRmActionGroupReceiverCommandTests.cs" />
+    <Compile Include="ActionGroups\RemoveAzureRmActionGroupCommandTests.cs" />
     <Compile Include="Alerts\AddAzureRmMetricAlertRuleTests.cs" />
     <Compile Include="Alerts\AddAzureRmLogAlertRuleTests.cs" />
     <Compile Include="Alerts\AddAzureRmWebtestAlertRuleTests.cs" />
@@ -170,6 +175,7 @@
     <Compile Include="Metrics\GetAzureRmMetricTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScenarioTests\ActivityLogAlertsTests.cs" />
+    <Compile Include="ScenarioTests\ActionGroupsTests.cs" />
     <Compile Include="ScenarioTests\AzureRmLogProfileTests.cs" />
     <Compile Include="ScenarioTests\AzureRmDiagnosticSettingTests.cs" />
     <Compile Include="ScenarioTests\AlertsTests.cs" />
@@ -211,6 +217,9 @@
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
     <None Include="ScenarioTests\ActivityLogAlertsTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\ActionGroupsTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\AzureRmLogProfileTests.ps1">
@@ -335,5 +344,10 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.ActionGroupsTests\TestAddGetListSetRemoveActionGroup.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

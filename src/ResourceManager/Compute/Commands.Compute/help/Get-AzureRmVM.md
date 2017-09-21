@@ -14,23 +14,24 @@ Gets the properties of a virtual machine.
 
 ### ListAllVirtualMachinesParamSet (Default)
 ```
-Get-AzureRmVM [-Status] [<CommonParameters>]
+Get-AzureRmVM [-Status] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ListVirtualMachineInResourceGroupParamSet
 ```
-Get-AzureRmVM [-ResourceGroupName] <String> [-Status] [<CommonParameters>]
+Get-AzureRmVM [-ResourceGroupName] <String> [-Status] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### GetVirtualMachineInResourceGroupParamSet
 ```
 Get-AzureRmVM [-ResourceGroupName] <String> [-Name] <String> [-Status] [-DisplayHint <DisplayHintType>]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ListNextLinkVirtualMachinesParamSet
 ```
-Get-AzureRmVM [-Status] [-NextLink] <Uri> [<CommonParameters>]
+Get-AzureRmVM [-Status] [-NextLink] <Uri> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -72,6 +73,21 @@ PS C:\> Get-AzureRmVM
 This command gets all the virtual machines in your subscription.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DisplayHint
 Determines how the virtual machine object is displayed.
