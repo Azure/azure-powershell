@@ -20,7 +20,7 @@ Remove-AzureRmDataFactoryV2Pipeline [-Name] <String> [-ResourceGroupName] <Strin
 
 ### ByInputObject
 ```
-Remove-AzureRmDataFactoryV2Pipeline [-Pipeline] <PSPipeline> [-Force] [-WhatIf] [-Confirm]
+Remove-AzureRmDataFactoryV2Pipeline [-InputObject] <PSPipeline> [-Force] [-WhatIf] [-Confirm]
 ```
 
 ### ByResourceId
@@ -108,8 +108,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Pipeline
-Specifies a PSPipeline object.
+### -InputObject
+Specifies a Pipeline object.
 This cmdlet removes the pipeline that this parameter specifies.
 
 ```yaml

@@ -14,7 +14,7 @@ Creates a data factory.
 
 ```
 Set-AzureRmDataFactoryV2 [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
-[[-Tags] <Hashtable>] [-Force] [-WhatIf] [-Confirm]
+[[-Tag] <Hashtable>] [-Force] [-WhatIf] [-Confirm]
 ```
 
 ## DESCRIPTION
@@ -122,7 +122,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Tags
+### -Tag
 The tags of the data factory.
 
 ```yaml

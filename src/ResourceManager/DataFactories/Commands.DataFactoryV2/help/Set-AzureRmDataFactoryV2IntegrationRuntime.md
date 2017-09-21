@@ -34,7 +34,7 @@ Set-AzureRmDataFactoryV2IntegrationRuntime [-Type <String>] [-Description <Strin
 Set-AzureRmDataFactoryV2IntegrationRuntime [-Type <String>] [-Description <String>] [-Location <String>]
  [-NodeSize <String>] [-NodeCount <Int32>] [-CatalogServerEndpoint <String>]
  [-CatalogAdminCredential <PSCredential>] [-CatalogPricingTier <String>] [-VNetId <String>] [-Subnet <String>]
- [-MaxParallelExecutionsPerNode <Int32>] [-Force] [-IntegrationRuntime] <PSIntegrationRuntime> [-WhatIf]
+ [-MaxParallelExecutionsPerNode <Int32>] [-Force] [-InputObject] <PSIntegrationRuntime> [-WhatIf]
  [-Confirm]
 ```
 
@@ -165,7 +165,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IntegrationRuntime
+### -InputObject
 The integration runtime object.
 
 ```yaml

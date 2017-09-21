@@ -15,13 +15,15 @@ Encrypt credential in linked service with specified integration runtime.
 ### ByFactoryName (Default)
 ```
 New-AzureRmDataFactoryV2LinkedServiceEncryptedCredential [-IntegrationRuntimeName] <String>
- [-DefinitionFile] <String> [-ResourceGroupName] <String> [-DataFactoryName] <String>
+ [-DefinitionFile] <String> [-Force] [-ResourceGroupName] <String> [-DataFactoryName] <String>
+ [-WhatIf] [-Confirm]
 ```
 
 ### ByFactoryObject
 ```
 New-AzureRmDataFactoryV2LinkedServiceEncryptedCredential [-IntegrationRuntimeName] <String>
- [-DefinitionFile] <String> [-DataFactory] <PSDataFactory>
+ [-DefinitionFile] <String> [-Force] [-DataFactory] <PSDataFactory>
+ [-WhatIf] [-Confirm]
 ```
 
 ## DESCRIPTION
@@ -83,6 +85,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Force
+Runs the cmdlet without prompting for confirmation.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -IntegrationRuntimeName
 The integration runtime name.
 
@@ -110,6 +127,36 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what happens if the cmdlet runs, but doesn't run the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

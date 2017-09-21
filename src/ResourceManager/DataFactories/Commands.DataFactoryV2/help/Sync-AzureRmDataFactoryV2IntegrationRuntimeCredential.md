@@ -25,7 +25,7 @@ Sync-AzureRmDataFactoryV2IntegrationRuntimeCredential [-Force] [-ResourceId] <St
 
 ### ByIntegrationRuntimeObject
 ```
-Sync-AzureRmDataFactoryV2IntegrationRuntimeCredential [-Force] [-IntegrationRuntime] <PSIntegrationRuntime>
+Sync-AzureRmDataFactoryV2IntegrationRuntimeCredential [-Force] [-InputObject] <PSIntegrationRuntime>
  [-WhatIf] [-Confirm]
 ```
 
@@ -88,7 +88,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IntegrationRuntime
+### -InputObject
 The integration runtime object.
 
 ```yaml

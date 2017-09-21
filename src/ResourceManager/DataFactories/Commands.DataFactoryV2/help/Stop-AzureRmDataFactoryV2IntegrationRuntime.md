@@ -25,7 +25,7 @@ Stop-AzureRmDataFactoryV2IntegrationRuntime [-Force] [-ResourceId] <String> [-Wh
 
 ### ByIntegrationRuntimeObject
 ```
-Stop-AzureRmDataFactoryV2IntegrationRuntime [-Force] [-IntegrationRuntime] <PSIntegrationRuntime> [-WhatIf]
+Stop-AzureRmDataFactoryV2IntegrationRuntime [-Force] [-InputObject] <PSIntegrationRuntime> [-WhatIf]
  [-Confirm]
 ```
 
@@ -88,7 +88,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IntegrationRuntime
+### -InputObject
 The integration runtime object.
 
 ```yaml

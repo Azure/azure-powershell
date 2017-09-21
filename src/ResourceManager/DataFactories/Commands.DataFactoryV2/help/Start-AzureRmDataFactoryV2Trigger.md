@@ -21,7 +21,7 @@ Start-AzureRmDataFactoryV2Trigger [-Name] <String> [-ResourceGroupName] <String>
 
 ### ByInputObject
 ```
-Start-AzureRmDataFactoryV2Trigger [-Trigger] <PSTrigger> [-Force] [-WhatIf] [-Confirm]
+Start-AzureRmDataFactoryV2Trigger [-InputObject] <PSTrigger> [-Force] [-WhatIf] [-Confirm]
 ```
 
 ### ByResourceId
@@ -142,8 +142,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Trigger
-TriggerName
+### -InputObject
+Trigger object to start.
 
 ```yaml
 Type: PSTrigger
