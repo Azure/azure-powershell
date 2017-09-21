@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 4.4.0
 * Add PolicySetDefinition cmdlets
     - New-AzureRmPolicySetDefinition cmdlet to create a policy set definition
     - Get-AzureRmPolicySetDefinition cmdlet to list all policy set definitions or to get a specific policy set definition
