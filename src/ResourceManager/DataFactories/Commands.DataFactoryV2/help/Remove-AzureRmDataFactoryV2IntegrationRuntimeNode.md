@@ -28,7 +28,7 @@ Remove-AzureRmDataFactoryV2IntegrationRuntimeNode -NodeName <String> [-Force] [-
 ### ByIntegrationRuntimeObject
 ```
 Remove-AzureRmDataFactoryV2IntegrationRuntimeNode -NodeName <String> [-Force]
- [-IntegrationRuntime] <PSIntegrationRuntime> [-WhatIf] [-Confirm]
+ [-InputObject] <PSIntegrationRuntime> [-WhatIf] [-Confirm]
 ```
 
 ## DESCRIPTION
@@ -90,7 +90,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IntegrationRuntime
+### -InputObject
 The integration runtime object.
 
 ```yaml

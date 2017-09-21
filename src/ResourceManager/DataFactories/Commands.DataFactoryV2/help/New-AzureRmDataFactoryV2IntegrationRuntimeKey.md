@@ -27,7 +27,7 @@ New-AzureRmDataFactoryV2IntegrationRuntimeKey -KeyName <String> [-Force] [-Resou
 ### ByIntegrationRuntimeObject
 ```
 New-AzureRmDataFactoryV2IntegrationRuntimeKey -KeyName <String> [-Force]
- [-IntegrationRuntime] <PSIntegrationRuntime> [-WhatIf] [-Confirm]
+ [-InputObject] <PSIntegrationRuntime> [-WhatIf] [-Confirm]
 ```
 
 ## DESCRIPTION
@@ -93,7 +93,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IntegrationRuntime
+### -InputObject
 The integration runtime object.
 
 ```yaml

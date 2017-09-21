@@ -20,7 +20,7 @@ Remove-AzureRmDataFactoryV2Trigger [-Name] <String> [-ResourceGroupName] <String
 
 ### ByInputObject
 ```
-Remove-AzureRmDataFactoryV2Trigger [-Trigger] <PSTrigger> [-Force] [-WhatIf] [-Confirm]
+Remove-AzureRmDataFactoryV2Trigger [-InputObject] <PSTrigger> [-Force] [-WhatIf] [-Confirm]
 ```
 
 ### ByResourceId
@@ -137,8 +137,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Trigger
-TriggerName
+### -InputObject
+The Trigger object to remove.
 
 ```yaml
 Type: PSTrigger

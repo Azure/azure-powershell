@@ -20,7 +20,7 @@ Remove-AzureRmDataFactoryV2LinkedService [-Name] <String> [-ResourceGroupName] <
 
 ### ByInputObject
 ```
-Remove-AzureRmDataFactoryV2LinkedService [-LinkedService] <PSLinkedService> [-Force] [-WhatIf] [-Confirm]
+Remove-AzureRmDataFactoryV2LinkedService [-InputObject] <PSLinkedService> [-Force] [-WhatIf] [-Confirm]
 ```
 
 ### ByResourceId
@@ -93,8 +93,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LinkedService
-Specifies the PSLinkedService object to remove.
+### -InputObject
+Specifies the LinkedService object to remove.
 
 ```yaml
 Type: PSLinkedService

@@ -20,18 +20,18 @@ Invoke-AzureRmDataFactoryV2Pipeline [-ResourceGroupName] <String> [-DataFactoryN
 
 ### ByPipelineObjectByParameterFile
 ```
-Invoke-AzureRmDataFactoryV2Pipeline [-Pipeline] <PSPipeline> [[-ParameterFile] <String>] [-WhatIf] [-Confirm]
+Invoke-AzureRmDataFactoryV2Pipeline [-InputObject] <PSPipeline> [[-ParameterFile] <String>] [-WhatIf] [-Confirm]
 ```
 
 ### ByPipelineObjectByParameterObject
 ```
-Invoke-AzureRmDataFactoryV2Pipeline [-Pipeline] <PSPipeline> [[-Parameters] <Hashtable>] [-WhatIf] [-Confirm]
+Invoke-AzureRmDataFactoryV2Pipeline [-InputObject] <PSPipeline> [[-Parameter] <Hashtable>] [-WhatIf] [-Confirm]
 ```
 
 ### ByFactoryNameByParameterObject
 ```
 Invoke-AzureRmDataFactoryV2Pipeline [-ResourceGroupName] <String> [-DataFactoryName] <String>
- [-PipelineName] <String> [[-Parameters] <Hashtable>] [-WhatIf] [-Confirm]
+ [-PipelineName] <String> [[-Parameter] <Hashtable>] [-WhatIf] [-Confirm]
 ```
 
 ## DESCRIPTION
@@ -94,7 +94,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Parameters
+### -Parameter
 Parameters for pipeline run.
 
 ```yaml
@@ -109,7 +109,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Pipeline
+### -InputObject
 The data factory object.
 
 ```yaml

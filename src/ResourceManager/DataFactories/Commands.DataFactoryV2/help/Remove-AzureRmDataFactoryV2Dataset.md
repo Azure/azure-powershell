@@ -20,7 +20,7 @@ Remove-AzureRmDataFactoryV2Dataset [-Name] <String> [-ResourceGroupName] <String
 
 ### ByInputObject
 ```
-Remove-AzureRmDataFactoryV2Dataset [-Dataset] <PSDataset> [-Force] [-WhatIf] [-Confirm]
+Remove-AzureRmDataFactoryV2Dataset [-InputObject] <PSDataset> [-Force] [-WhatIf] [-Confirm]
 ```
 
 ### ByResourceId
@@ -78,8 +78,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Dataset
-Specifies a PSDataset object to remove.
+### -InputObject
+Specifies a Dataset object to remove.
 
 ```yaml
 Type: PSDataset

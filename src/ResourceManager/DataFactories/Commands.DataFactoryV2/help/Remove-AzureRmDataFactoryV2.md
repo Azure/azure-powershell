@@ -19,7 +19,7 @@ Remove-AzureRmDataFactoryV2 [-ResourceGroupName] <String> [-Name] <String> [-For
 
 ### ByFactoryObject
 ```
-Remove-AzureRmDataFactoryV2 [-DataFactory] <PSDataFactory> [-Force] [-WhatIf] [-Confirm]
+Remove-AzureRmDataFactoryV2 [-InputObject] <PSDataFactory> [-Force] [-WhatIf] [-Confirm]
 ```
 
 ### ByResourceId
@@ -61,8 +61,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DataFactory
-Specifies the PSDataFactory object to remove.
+### -InputObject
+Specifies the DataFactory object to remove.
 
 ```yaml
 Type: PSDataFactory

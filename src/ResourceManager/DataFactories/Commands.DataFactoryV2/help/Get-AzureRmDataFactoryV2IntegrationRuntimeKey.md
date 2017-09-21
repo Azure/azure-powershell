@@ -25,7 +25,7 @@ Get-AzureRmDataFactoryV2IntegrationRuntimeKey [-ResourceId] <String>
 
 ### ByIntegrationRuntimeObject
 ```
-Get-AzureRmDataFactoryV2IntegrationRuntimeKey [-IntegrationRuntime] <PSIntegrationRuntime>
+Get-AzureRmDataFactoryV2IntegrationRuntimeKey [-InputObject] <PSIntegrationRuntime>
 ```
 
 ## DESCRIPTION
@@ -61,7 +61,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -IntegrationRuntime
+### -InputObject
 The integration runtime object.
 
 ```yaml
