@@ -91,7 +91,8 @@ function New-AzVm {
                 }
                 return Start-Job $script -ArgumentList $arguments
             } else {
-                $vm = $vmi.GetOrCreate($createParams)
+                $vm = $vmi.GetOrCreate($createParams, [ProgressRange]::new(0.0, 1.0))
+                Write-Progress "Done." -PercentComplete 100 -Status "100% Complete:"
                 return [PSAzureVm]::new(
                     $vm,
                     $piai.DomainNameLabel + "." + $locationi.Value + ".cloudapp.azure.com")
@@ -137,10 +138,21 @@ class CreateParams {
     }
 }
 
+class ProgressRange {
+    [double] $Start;
+    [double] $Size;
+
+    ProgressRange([double] $start, [double] $size) {
+        $this.Start = $start;
+        $this.Size = $size;
+    }
+}
+
 class AzureObject {
     [string] $Name;
     [AzureObject[]] $Children;
     [int] $Priority;
+    [int] $Size;
 
     [bool] $GetInfoCalled = $false;
     [object] $info = $null;
@@ -153,8 +165,10 @@ class AzureObject {
             if ($this.Priority -lt $child.Priority) {
                 $this.Priority = $child.Priority
             }
+            $this.Size += $child.Size
         }
         $this.Priority++
+        $this.Size++
     }
 
     [string] GetResourceType() {
@@ -197,15 +211,24 @@ class AzureObject {
         }
     }
 
-    [object] GetOrCreate([CreateParams] $p) {
+    [object] GetOrCreate([CreateParams] $p, [ProgressRange] $progressRange) {
         $i = $this.GetInfo($p.Context)
         if ($i) {
             return $i
         }
+        $size = $this.Children.Length + 1.0;
+        $pSizeI = $progressRange.Size / $size
+        $i = 0.0
         foreach ($child in $this.Children) {
-            $child.GetOrCreate($p) | Out-Null
+            $start = $progressRange.Start + $pSizeI * $i
+            $pc = [ProgressRange]::new($start, $pSizeI)
+            $child.GetOrCreate($p, $pc) | Out-Null
+            $i++
         }
-        Write-Host ("creating " + $this.GetResourceType() + ": " + $this.Name)
+        $message = "Creating '" + $this.Name + "' " + $this.GetResourceType() + "."
+        $percent = [convert]::ToInt32(($progressRange.Start + $pSizeI * $i) * 100)
+        Write-Progress $message -PercentComplete $percent -Status "$percent% Complete:"
+        Write-Verbose $message
         $this.Info = $this.Create($p)
         return $this.Info
     }
@@ -243,7 +266,7 @@ class Resource1: AzureObject {
         [string] $name,
         [ResourceGroup] $resourceGroup,
         [AzureObject[]] $children
-    ): base($name, @($children)) {
+    ): base($name, $children) {
         $this.ResourceGroup = $resourceGroup
     }
 
@@ -254,8 +277,8 @@ class Resource1: AzureObject {
         $this.ResourceGroup = $resourceGroup
     }
 
-    [string] GetResourceGroupName([CreateParams] $p) {
-        return $this.ResourceGroup.GetOrCreate($p).ResourceGroupName;
+    [string] GetResourceGroupName() {
+        return $this.ResourceGroup.Info.ResourceGroupName;
     }
 }
 
@@ -284,7 +307,7 @@ class VirtualNetwork: Resource1 {
 
     [object] Create([CreateParams] $p) {
         return New-AzureRmVirtualNetwork `
-            -ResourceGroupName $this.GetResourceGroupName($p) `
+            -ResourceGroupName $this.GetResourceGroupName() `
             -Location $p.Location `
             -Name $this.Name `
             -AddressPrefix $this.AddressPrefix `
@@ -322,7 +345,7 @@ class PublicIpAddress: Resource1 {
 
     [object] Create([CreateParams] $p) {
         return New-AzureRmPublicIpAddress `
-            -ResourceGroupName $this.GetResourceGroupName($p) `
+            -ResourceGroupName $this.GetResourceGroupName() `
             -Location $p.Location `
             -Name $this.Name `
             -DomainNameLabel  $this.DomainNameLabel `
@@ -377,7 +400,7 @@ class SecurityGroup: Resource1 {
             ++$priority
         }
         return New-AzureRmNetworkSecurityGroup `
-            -ResourceGroupName $this.GetResourceGroupName($p) `
+            -ResourceGroupName $this.GetResourceGroupName() `
             -Location $p.Location `
             -Name $this.Name `
             -SecurityRules $rules `
@@ -415,7 +438,7 @@ class Subnet: AzureObject {
     }
 
     [object] Create([CreateParams] $p) {
-        $virtualNetworkInfo = $this.VirtualNetwork.GetOrCreate($p)
+        $virtualNetworkInfo = $this.VirtualNetwork.Info
         try {
             return $this.GetInfoFromVirtualNetworkInfo($virtualNetworkInfo)
         } catch {
@@ -462,11 +485,11 @@ class NetworkInterface: Resource1 {
     }
 
     [object] Create([CreateParams] $p) {
-        $publicIpAddressInfo = $this.PublicIpAddress.GetOrCreate($p)
-        $subnetInfo = $this.Subnet.GetOrCreate($p)
-        $securityGroupInfo = $this.SecurityGroup.GetOrCreate($p)
+        $publicIpAddressInfo = $this.PublicIpAddress.Info
+        $subnetInfo = $this.Subnet.Info
+        $securityGroupInfo = $this.SecurityGroup.Info
         return New-AzureRmNetworkInterface `
-            -ResourceGroupName $this.GetResourceGroupName($p) `
+            -ResourceGroupName $this.GetResourceGroupName() `
             -Location $p.Location `
             -Name $this.Name `
             -PublicIpAddressId $publicIpAddressInfo.Id `
@@ -515,7 +538,7 @@ class VirtualMachine: Resource1 {
     }
 
     [object] Create([CreateParams] $p) {
-        $networkInterfaceInstance = $this.NetworkInterface.GetOrCreate($p)
+        $networkInterfaceInstance = $this.NetworkInterface.Info
 
         $vmImage = $this.Images | Where-Object { $_.Name -eq $this.ImageName } | Select-Object -First 1
         if (-not $vmImage) {
@@ -553,7 +576,7 @@ class VirtualMachine: Resource1 {
                 -Id $networkInterfaceInstance.Id `
                 -ErrorAction Stop
 
-        $rgName = $this.GetResourceGroupName($p)
+        $rgName = $this.GetResourceGroupName()
         New-AzureRmVm `
             -ResourceGroupName $rgName `
             -Location $p.Location `
