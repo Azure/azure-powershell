@@ -38,13 +38,10 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-            if (!string.IsNullOrEmpty(this.Name) && !string.IsNullOrEmpty(this.ResourceGroupName))
-            {
-                var supportedVpnDevices = NetworkClient.NetworkManagementClient.VirtualNetworkGateways
-                    .SupportedVpnDevices(this.ResourceGroupName, this.Name);
+            var supportedVpnDevices = NetworkClient.NetworkManagementClient.VirtualNetworkGateways
+                .SupportedVpnDevices(this.ResourceGroupName, this.Name);
 
-                WriteObject(supportedVpnDevices);
-            }
+            WriteObject(supportedVpnDevices);
         }
     }
 }
