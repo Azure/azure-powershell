@@ -25,7 +25,7 @@ $vmCredential = New-Object System.Management.Automation.PSCredential ($vmCompute
 
 # $vm = New-AzVm
 # $vm = New-AzVm -Credential $vmCredential
-$vm = New-AzVm -Name MyVMA8 -Credential $vmCredential -ResourceGroupName Something8
+$vm = New-AzVm -Name MyVMA0 -Credential $vmCredential -ResourceGroupName Something0
 # $vm = New-AzVm -Name MyVMA
 
 $vm

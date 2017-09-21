@@ -152,7 +152,7 @@ class AzureObject {
     [string] $Name;
     [AzureObject[]] $Children;
     [int] $Priority;
-    [int] $Size;
+    [int] $ObjectSize;
 
     [bool] $GetInfoCalled = $false;
     [object] $info = $null;
@@ -161,14 +161,14 @@ class AzureObject {
         $this.Name = $name
         $this.Children = $children
         $this.Priority = 0
+        $this.ObjectSize = 1
         foreach ($child in $this.Children) {
             if ($this.Priority -lt $child.Priority) {
                 $this.Priority = $child.Priority
             }
-            $this.Size += $child.Size
+            $this.ObjectSize += $child.ObjectSize
         }
         $this.Priority++
-        $this.Size++
     }
 
     [string] GetResourceType() {
@@ -216,17 +216,16 @@ class AzureObject {
         if ($i) {
             return $i
         }
-        $size = $this.Children.Length + 1.0;
-        $pSizeI = $progressRange.Size / $size
-        $i = 0.0
+        $pSize = $progressRange.Size / $this.ObjectSize
+        $offset = $progressRange.Start
         foreach ($child in $this.Children) {
-            $start = $progressRange.Start + $pSizeI * $i
-            $pc = [ProgressRange]::new($start, $pSizeI)
+            $pChildSize = $pSize * $child.ObjectSize
+            $pc = [ProgressRange]::new($offset, $pChildSize)
             $child.GetOrCreate($p, $pc) | Out-Null
-            $i++
+            $offset += $pChildSize
         }
         $message = "Creating '" + $this.Name + "' " + $this.GetResourceType() + "."
-        $percent = [convert]::ToInt32(($progressRange.Start + $pSizeI * $i) * 100)
+        $percent = [convert]::ToInt32($offset * 100)
         Write-Progress $message -PercentComplete $percent -Status "$percent% Complete:"
         Write-Verbose $message
         $this.Info = $this.Create($p)
