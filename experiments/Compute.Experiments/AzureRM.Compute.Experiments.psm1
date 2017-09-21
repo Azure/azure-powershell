@@ -410,7 +410,7 @@ class Subnet: AzureObject {
             return $this.GetInfoFromVirtualNetworkInfo($virtualNetworkInfo)
         } catch {
         }
-        Add-AzureRmVirtualNetworkSubnetConfig `
+        $virtualNetworkInfo = Add-AzureRmVirtualNetworkSubnetConfig `
             -VirtualNetwork $virtualNetworkInfo `
             -Name $this.Name `
             -AddressPrefix $this.SubnetAddressPrefix
