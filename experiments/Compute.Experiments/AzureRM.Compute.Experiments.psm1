@@ -202,6 +202,9 @@ class AzureObject {
         if ($i) {
             return $i
         }
+        foreach ($child in $this.Children) {
+            $child.GetOrCreate($p) | Out-Null
+        }
         Write-Host ("creating " + $this.GetResourceType() + ": " + $this.Name)
         $this.Info = $this.Create($p)
         return $this.Info
