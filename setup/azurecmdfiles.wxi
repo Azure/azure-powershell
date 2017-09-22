@@ -5490,7 +5490,6 @@
     </Fragment>
     <Fragment>
         <ComponentGroup Id="azurecmdfiles">
-            <ComponentRef Id="cmpDC507D3B034FD0F9887EC67302B6F5A0" />
             <ComponentRef Id="cmpD516927612BD0D0C5EDA5FAF0D0318B9" />
             <ComponentRef Id="cmp53362925A56A86586D120F4FA426D6CD" />
             <ComponentRef Id="cmp53002CE3F1D5F8C74FA6A0D73067CAAF" />
