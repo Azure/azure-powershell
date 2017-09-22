@@ -89,7 +89,9 @@ function New-AzVm {
                     [hashtable] $params = $args[0]
                     New-AzVm @params
                 }
-                return Start-Job $script -ArgumentList $arguments
+
+                $jobName = "Creating VM $Name"
+                return Start-Job -Name $jobName -ScriptBlock $script -ArgumentList $arguments
             } else {
                 $vm = $vmi.GetOrCreate($createParams, [ProgressRange]::new(0.0, 1.0))
                 Write-Progress "Done." -Completed
