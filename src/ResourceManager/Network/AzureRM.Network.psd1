@@ -300,10 +300,13 @@ CmdletsToExport = 'Add-AzureRmApplicationGatewayAuthenticationCertificate',
                'Get-AzureRmVirtualNetworkGatewayBgpPeerStatus', 
                'Get-AzureRmVirtualNetworkGatewayAdvertisedRoute', 
                'Get-AzureRmVirtualNetworkGatewayLearnedRoute', 
-               'Get-AzureRmNetworkUsage', 'Get-AzureRmVirtualNetworkUsageList', 
-               'Get-AzureRmVirtualNetworkAvailableEndpointService', 
-               'New-AzureRmApplicationSecurityGroup', 
-               'Remove-AzureRmApplicationSecurityGroup', 
+               'Get-AzureRmNetworkUsage',
+               'Get-AzureRmVirtualNetworkUsageList',
+               'Get-AzureRmVirtualNetworkAvailableEndpointService',
+               'Get-AzureRmVirtualNetworkGatewaySupportedVpnDevice',
+               'Get-AzureRmVirtualNetworkGatewayConnectionVpnDeviceConfigScript',
+               'New-AzureRmApplicationSecurityGroup',
+               'Remove-AzureRmApplicationSecurityGroup',
                'Get-AzureRmApplicationSecurityGroup'
 
 # Variables to export from this module
@@ -369,7 +372,7 @@ PrivateData = @{
     - Updated New-AzureRmNetworkSecurityRuleConfig: Updated SourcePortRange, DestinationPortRange, SourceAddressPrefix  parameter to accept a list of strings
     - Updated Set-AzureRmNetworkSecurityRuleConfig: Updated SourcePortRange, DestinationPortRange, SourceAddressPrefix parameter to accept a list of strings
     - Updated Add-AzureRmNetworkSecurityRuleConfig: Updated SourcePortRange, DestinationPortRange, SourceAddressPrefix parameter to accept a list of strings
-    - Updated New-AzureRmNetworkSecurityGroup : Updated SecurityRules parameter to accept SourcePortRange, DestinationPortRange, SourceAddressPrefix parameters which are list of strings in PSSecurityRule object
+    - Updated New-AzureRmNetworkSecurityGroup : Updated SecurityRules parameter to accept SourcePortRange, DestinationPortRange, SourceAddressPrefix parameters which are list of strings in PSSecurityRule object
     - Updated Get-AzureRmEffectiveNetworkSecurityGroup: Added parameter TagMap
     - Updated Get-AzureRmEffectiveNetworkSecurityGroup: Updated returned PSEffectiveSecurityRule object with SourcePortRange, DestinationPortRange, SourceAddressPrefix parameters which are list of strings.
 * Added support for DDoS protection for virtual networks
@@ -390,6 +393,9 @@ PrivateData = @{
     - Updated New-AzureRmNetworkSecurityRuleConfig: Added optional parameters SourceApplicationSecurityGroup, SourceApplicationSecurityGroupId, DestinationApplicationSecurityGroup, and DestinationApplicationSecurityGroupId
     - Updated Add-AzureRmNetworkSecurityRuleConfig: Added optional parameters SourceApplicationSecurityGroup, SourceApplicationSecurityGroupId, DestinationApplicationSecurityGroup, and DestinationApplicationSecurityGroupId
     - Updated Set-AzureRmNetworkSecurityRuleConfig: Added optional parameters SourceApplicationSecurityGroup, SourceApplicationSecurityGroupId, DestinationApplicationSecurityGroup, and DestinationApplicationSecurityGroupId
+* Added new commands for VpnDeviceConfiguration Scripts 
+    - Get-AzureRmVirtualNetworkGatewaySupportedVpnDevices 
+    - Get-AzureRmVirtualNetworkGatewayConnectionVpnDeviceConfigScript 
 	'
 
         # External dependent modules of this module
