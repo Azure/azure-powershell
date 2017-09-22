@@ -393,6 +393,9 @@ PrivateData = @{
     - Updated New-AzureRmNetworkSecurityRuleConfig: Added optional parameters SourceApplicationSecurityGroup, SourceApplicationSecurityGroupId, DestinationApplicationSecurityGroup, and DestinationApplicationSecurityGroupId
     - Updated Add-AzureRmNetworkSecurityRuleConfig: Added optional parameters SourceApplicationSecurityGroup, SourceApplicationSecurityGroupId, DestinationApplicationSecurityGroup, and DestinationApplicationSecurityGroupId
     - Updated Set-AzureRmNetworkSecurityRuleConfig: Added optional parameters SourceApplicationSecurityGroup, SourceApplicationSecurityGroupId, DestinationApplicationSecurityGroup, and DestinationApplicationSecurityGroupId
+* Added new commands for VpnDeviceConfiguration Scripts 
+    - Get-AzureRmVirtualNetworkGatewaySupportedVpnDevices 
+    - Get-AzureRmVirtualNetworkGatewayConnectionVpnDeviceConfigScript 
 	'
 
         # External dependent modules of this module
