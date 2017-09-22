@@ -36,14 +36,14 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             ValueFromPipelineByPropertyName = false,
             Mandatory = false,
             HelpMessage = "UserName used to connect to Backend Proxy. This parameter is optional.")]
-        [Obsolete("New-AzureRmApiManagementBackendProxy: The parameter \"UserName\" is being removed in a future release in favor of a new PSCredential parameter.")]
+        [Obsolete("New-AzureRmApiManagementBackendProxy: The parameter \"UserName\" is being removed in a future release in favor of a new PSCredential parameter (-Credential).")]
         public string UserName { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = false,
             Mandatory = false,
             HelpMessage = "Password used to connect to Backend Proxy. This parameter is optional.")]
-        [Obsolete("New-AzureRmApiManagementBackendProxy: The parameter \"Password\" is being removed in a future release in favor of a new PSCredential parameter.")]
+        [Obsolete("New-AzureRmApiManagementBackendProxy: The parameter \"Password\" is being removed in a future release in favor of a new PSCredential parameter (-Credential).")]
         public string Password { get; set; }
 
         public override void ExecuteApiManagementCmdlet()

@@ -30,7 +30,7 @@
 The following cmdlets were affected this release:
 
 **New-AzureRmApiManagementBackendProxy**
-- Parameters "UserName" and "Password" are being replaced in favor of a PSCredentail
+- Parameters "UserName" and "Password" are being replaced in favor of a PSCredential
 
 ```powershell
 
@@ -38,7 +38,7 @@ The following cmdlets were affected this release:
 # New-AzureRmApiManagementBackendProxy [other required parameters] -UserName "plain-text string" -Password "plain-text string"
 
 # New
-# New-AzureRmApiManagementBackendProxy [other required parameters] -Credentials $PSCredentialVariable
+# New-AzureRmApiManagementBackendProxy [other required parameters] -Credential $PSCredentialVariable
 ```
 
 **New-AzureRmApiManagementUser**

@@ -40,5 +40,5 @@ The following cmdlets were affected this release:
 # Set-AzureRmVMAccessExtension [other required parameters] -UserName "plain-text string" -Password "plain-text string"
 
 # New
-# Set-AzureRmVMAccessExtension [other required parameters] -Credentials $PSCredential
+# Set-AzureRmVMAccessExtension [other required parameters] -Credential $PSCredential
 ```
