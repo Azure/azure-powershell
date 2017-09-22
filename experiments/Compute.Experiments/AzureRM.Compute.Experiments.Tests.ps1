@@ -16,7 +16,7 @@ $vmComputerUser = $credentials.vmUser;
 $password = ConvertTo-SecureString $vmComputerPassword -AsPlainText -Force;
 $vmCredential = New-Object System.Management.Automation.PSCredential ($vmComputerUser, $password);
 
-New-AzVm -Name MyVM -Credential $vmCredential -WhatIf
+# New-AzVm -Name MyVM -Credential $vmCredential -WhatIf
 
 # $job = New-AzVm -Name MyVMA -Credential $vmCredential -AsJob
 # Receive-Job $job
@@ -25,7 +25,7 @@ New-AzVm -Name MyVM -Credential $vmCredential -WhatIf
 
 # $vm = New-AzVm
 # $vm = New-AzVm -Credential $vmCredential
-$vm = New-AzVm -Name MyVMA1 -Credential $vmCredential -ResourceGroupName Crocodile
+$vm = New-AzVm -Name MyVMA1 -Credential $vmCredential -ResourceGroupName Something1
 # $vm = New-AzVm -Name MyVMA
 
 $vm
@@ -37,4 +37,4 @@ $vm
 # Write-Host "</async>"
 
 # clean-up
-Remove-AzureRmResourceGroup -ResourceId $vm.ResourceGroupId
+Remove-AzureRmResourceGroup -Name $vm.Vm.ResourceGroupName
