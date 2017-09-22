@@ -14,7 +14,7 @@ Gets information about a custom script extension.
 
 ```
 Get-AzureRmVMCustomScriptExtension [-ResourceGroupName] <String> [-VMName] <String> [-Name] <String> [-Status]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,6 +37,21 @@ PS C:\> $VMCustomScriptExtension = Get-AzureRmVMCustomScriptExtension -ResourceG
 This command gets the instance view of the custom script extension named ContosoCustomScript for the virtual machine named VirtualMachine07.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 Specifies the name of the custom script extension about which this cmdlet gets information.

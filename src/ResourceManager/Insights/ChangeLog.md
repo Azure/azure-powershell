@@ -19,6 +19,17 @@
 -->
 ## Current Release
 
+## Version 3.4.0
+    * New cmdlet Set-AzureRmActionGroup
+        - A new cmdlet to create a new or update an existing action group.
+    * New cmdlet Get-AzureRmActionGroup
+        - A new cmdlet to retrieve one or more action groups.
+        - The action groups can be retrieved by name, resource group, or subscription.
+    * New cmdlet Remove-AzureRmActionGroup
+        - A new cmdlet to remove one action group.
+    * New cmdlet New-AzureRmActionGroupReceiver
+        - A new cmdlet to create an new action group receiver in memory.
+        
 ## Version 3.3.1
 
 ## Version 3.3.0
