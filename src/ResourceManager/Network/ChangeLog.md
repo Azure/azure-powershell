@@ -43,6 +43,9 @@
 * Added support for IkeV2 P2S
     - Updated New-AzureRmVirtualNetworkGateway: Added optional parameter -VpnClientProtocol, defaults to [ "SSTP", "IkeV2" ]
     - Updated Set-AzureRmVirtualNetworkGateway: Added optional parameter -VpnClientProtocol
+* Added new commands for VpnDeviceConfiguration Scripts
+    - Get-AzureRmVirtualNetworkGatewaySupportedVpnDevices
+    - Get-AzureRmVirtualNetworkGatewayConnectionVpnDeviceConfigScript
 * Added support for MultiValued rules in Network Security Rules and Effective Network Security Rules
     - Updated Add-AzureRmNetworkSecurityRuleConfig: Updated SourcePortRange, DestinationPortRange, SourceAddressPrefix parameters to accept a list of strings
     - Updated New-AzureRmNetworkSecurityRuleConfig: Updated SourcePortRange, DestinationPortRange, SourceAddressPrefix  parameter to accept a list of strings

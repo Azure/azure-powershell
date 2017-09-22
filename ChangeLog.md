@@ -97,6 +97,9 @@
         - Updated New-AzureRmNetworkSecurityRuleConfig: Added optional parameters SourceApplicationSecurityGroup, SourceApplicationSecurityGroupId, DestinationApplicationSecurityGroup, and DestinationApplicationSecurityGroupId
         - Updated Add-AzureRmNetworkSecurityRuleConfig: Added optional parameters SourceApplicationSecurityGroup, SourceApplicationSecurityGroupId, DestinationApplicationSecurityGroup, and DestinationApplicationSecurityGroupId
         - Updated Set-AzureRmNetworkSecurityRuleConfig: Added optional parameters SourceApplicationSecurityGroup, SourceApplicationSecurityGroupId, DestinationApplicationSecurityGroup, and DestinationApplicationSecurityGroupId
+    * Added new commands for VpnDeviceConfiguration Scripts 
+        - Get-AzureRmVirtualNetworkGatewaySupportedVpnDevices 
+        - Get-AzureRmVirtualNetworkGatewayConnectionVpnDeviceConfigScript 
 * Resources
     * Add PolicySetDefinition cmdlets
         - New-AzureRmPolicySetDefinition cmdlet to create a policy set definition
@@ -108,6 +111,16 @@
     * Add -Mode parameter to New-AzureRmPolicyDefinition cmdlet
     * Add Support for removal of roleassignment using PSRoleAssignment object
         - Users can now use PSRoleassignmnet inputobject with Remove-AzureRMRoleAssignment commandlet to remove the roleassignment.
+    * Add ManagedApplication cmdlets
+        - New-AzureRmManagedApplication cmdlet to create a managed application
+        - Get-AzureRmManagedApplication cmdlet to list all managed applications under a subscription or to get a specific managed application
+        - Remove-AzureRmManagedApplication cmdlet to delete a managed application
+        - Set-AzureRmManagedApplication cmdlet to update an existing managed application
+    * Add ManagedApplicationDefinition cmdlets
+        - New-AzureRmManagedApplicationDefinition cmdlet to create a managed application definition using a zip file uri or using mainTemplate and createUiDefinition json files
+        - Get-AzureRmManagedApplicationDefinition cmdlet to list all managed application definitions under a resource group or to get a specific managed application definition
+        - Remove-AzureRmManagedApplicationDefinition cmdlet to delete a managed application definition
+        - Set-AzureRmManagedApplicationDefinition cmdlet to update an existing managed application definition
 * Sql
     * Adding support for Virtual Network Rules
     	- Adding Get-AzureRmSqlServerVirtualNetworkRule cmdlet which gets the virtual network rules by a specific rule name or a list of virtual network rules in an Azure Sql server.
