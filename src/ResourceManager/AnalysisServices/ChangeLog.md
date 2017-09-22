@@ -19,6 +19,12 @@
 -->
 ## Current Release
 
+## Version 0.4.6
+* Added a new dataplane commandlet to allow synchronization of databases from read-write instance to read-only instances 
+    - Included help file for the commandlet
+    - Added in-memory tests and a scenario test (only live)
+* Fixed bugs in Add-AzureAsAccount commandlet 
+
 ## Version 0.4.4
 
 ## Version 0.4.3
