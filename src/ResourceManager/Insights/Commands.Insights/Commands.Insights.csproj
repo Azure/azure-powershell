@@ -43,22 +43,25 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.KeyVault.Core">
-      <HintPath>..\..\..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Microsoft.Azure.Management.Monitor">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Monitor.0.16.1-preview\lib\net452\Microsoft.Azure.Management.Monitor.dll</HintPath>
-      <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Storage, Version=8.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\WindowsAzure.Storage.8.1.1\lib\net452\Microsoft.WindowsAzure.Storage.dll</HintPath>
+    <Reference Include="Microsoft.Azure.KeyVault.Core">
+      <HintPath>..\..\..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Collections" />
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActivityLogAlert\ActivityLogAlertUtilities.cs" />
+    <Compile Include="ActivityLogAlert\DisableAzureRmActivityLogAlertCommand.cs" />
+    <Compile Include="ActivityLogAlert\SetAzureRmActivityLogAlertCommand.cs" />
+    <Compile Include="ActivityLogAlert\GetAzureRmActivityLogAlertCommand.cs" />
+    <Compile Include="ActivityLogAlert\NewAzureRmActionGroupCommand.cs" />
+    <Compile Include="ActivityLogAlert\NewAzureRmActivityLogAlertConditionCommand.cs" />
+    <Compile Include="ActivityLogAlert\RemoveAzureRmActivityLogAlertCommand.cs" />
+    <Compile Include="ActivityLogAlert\EnableAzureRmActivityLogAlertCommand.cs" />
     <Compile Include="ActionGroups\SetAzureRmActionGroupCommand.cs" />
     <Compile Include="ActionGroups\NewAzureRmActionGroupReceiverCommand.cs" />
     <Compile Include="ActionGroups\RemoveAzureRmActionGroupCommand.cs" />
@@ -96,6 +99,7 @@
     <Compile Include="OutputClasses\CustomPrinter.cs" />
     <Compile Include="OutputClasses\IPSEventData.cs" />
     <Compile Include="OutputClasses\IPSRuleCondition.cs" />
+    <Compile Include="OutputClasses\PSActivityLogAlertResource.cs" />
     <Compile Include="OutputClasses\PSActionGroupReceiverBase.cs" />
     <Compile Include="OutputClasses\PSActionGroupResource.cs" />
     <Compile Include="OutputClasses\PSActionGroupProperty.cs" />
