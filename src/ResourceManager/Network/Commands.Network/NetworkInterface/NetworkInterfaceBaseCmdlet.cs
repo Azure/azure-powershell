@@ -79,6 +79,11 @@ namespace Microsoft.Azure.Commands.Network
 
 		public void NullifyApplicationSecurityGroupIfAbsent(NetworkInterface nic)
 		{
+			if (nic.IpConfigurations == null)
+			{
+				return;
+			}
+
 			// Temporary - to be removed
 			foreach (var ipconfigModel in nic.IpConfigurations)
 			{

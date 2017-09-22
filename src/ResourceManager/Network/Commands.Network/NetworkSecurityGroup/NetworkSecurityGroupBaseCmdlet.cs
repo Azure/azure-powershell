@@ -67,6 +67,11 @@ namespace Microsoft.Azure.Commands.Network
 		// Temporary - to be removed
 		public void NullifyApplicationSecurityGroupsIfAbsent(NetworkSecurityGroup nsg)
 		{
+			if (nsg.SecurityRules == null)
+			{
+				return;
+			}
+
 			foreach (var rule in nsg.SecurityRules)
 			{
 				if (rule.SourceApplicationSecurityGroups != null && rule.SourceApplicationSecurityGroups.Count == 0)
