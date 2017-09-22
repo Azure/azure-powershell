@@ -133,6 +133,8 @@
     * Add -PolicySetDefinition, -Sku and -NotScope parameters to New-AzureRmPolicyAssignment and Set-AzureRmPolicyAssignment cmdlets
     * Add support to pass in policy url to New-AzureRmPolicyDefinition and Set-AzureRmPolicyDefinition cmdlets
     * Add -Mode parameter to New-AzureRmPolicyDefinition cmdlet
+    * Add Support for removal of roleassignment using PSRoleAssignment object
+        - Users can now use PSRoleassignmnet inputobject with Remove-AzureRMRoleAssignment commandlet to remove the roleassignment.
     * Add ManagedApplication cmdlets
         - New-AzureRmManagedApplication cmdlet to create a managed application
         - Get-AzureRmManagedApplication cmdlet to list all managed applications under a subscription or to get a specific managed application

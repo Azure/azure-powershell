@@ -159,6 +159,8 @@ PrivateData = @{
 * Add -PolicySetDefinition, -Sku and -NotScope parameters to New-AzureRmPolicyAssignment and Set-AzureRmPolicyAssignment cmdlets
 * Add support to pass in policy url to New-AzureRmPolicyDefinition and Set-AzureRmPolicyDefinition cmdlets
 * Add -Mode parameter to New-AzureRmPolicyDefinition cmdlet
+* Add Support for removal of roleassignment using PSRoleAssignment object
+    - Users can now use PSRoleassignmnet inputobject with Remove-AzureRMRoleAssignment commandlet to remove the roleassignment.
 * Add ManagedApplicationDefinition cmdlets
 * Add ManagedApplication cmdlets
 '
