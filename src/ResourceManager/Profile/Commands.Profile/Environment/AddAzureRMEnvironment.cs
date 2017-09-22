@@ -250,7 +250,7 @@ namespace Microsoft.Azure.Commands.Profile
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.Endpoint.StorageEndpointSuffix,
                                     nameof(StorageEndpoint));
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.Endpoint.ActiveDirectory,
-                                    nameof(ActiveDirectoryEndpoint));
+                                    nameof(ActiveDirectoryEndpoint), true);
 
                                 SetEndpointIfBound(newEnvironment,
                                     AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId,
