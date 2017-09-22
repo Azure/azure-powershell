@@ -13,8 +13,8 @@ This commandlet takes the connection resource, VPN device brand, model, firmware
 ## SYNTAX
 
 ```
-Get-AzureRmVirtualNetworkGatewayConnectionVpnDeviceConfigScript [-Name <String>] -ResourceGroupName <String>
- [-DeviceVendor <String>] [-DeviceFamily <String>] [-FirmwareVersion <String>]
+Get-AzureRmVirtualNetworkGatewayConnectionVpnDeviceConfigScript -Name <String> -ResourceGroupName <String>
+ -DeviceVendor <String> -DeviceFamily <String> -FirmwareVersion <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
 ```
 
@@ -25,11 +25,11 @@ This commandlet takes the connection resource, VPN device brand, model, firmware
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmVirtualNetworkGatewaySupportedVpnDevices -ResourceGroupName TestRG -Name TestGateway
+PS C:\> Get-AzureRmVirtualNetworkGatewaySupportedVpnDevice -ResourceGroupName TestRG -Name TestGateway
 PS C:\> Get-AzureRmVirtualNetworkGatewayConnectionVpnDeviceConfigScript -ResourceGroupName TestRG -Name TestConnection -DeviceVendor “Cisco-Test” -DeviceFamily “IOS-Test” -FirmwareVersion “20”
 ```
 
-The above example uses Get-AzureRmVirtualNetworkGatewaySupportedVpnDevices to get the supported VPN Device brands, models, and firmware versions.
+The above example uses Get-AzureRmVirtualNetworkGatewaySupportedVpnDevice to get the supported VPN Device brands, models, and firmware versions.
 Then uses one of the returned models information to generate a VPN Device configuration script for the VirtualNetworkGatewayConnection "TestConnection". The device used in this example has DeviceFamily "IOS-Test", DeviceVendor "Cisco-Test" and FirmwareVersion 20.
 
 ## PARAMETERS
@@ -57,7 +57,7 @@ Type: String
 Parameter Sets: (All)
 Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -72,7 +72,7 @@ Type: String
 Parameter Sets: (All)
 Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -87,7 +87,7 @@ Type: String
 Parameter Sets: (All)
 Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -102,7 +102,7 @@ Type: String
 Parameter Sets: (All)
 Aliases: ResourceName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

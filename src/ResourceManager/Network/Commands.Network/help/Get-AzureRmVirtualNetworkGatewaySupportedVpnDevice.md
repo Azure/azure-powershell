@@ -13,7 +13,7 @@ This commandlet returns a list of supported VPN device brands, models, and firmw
 ## SYNTAX
 
 ```
-Get-AzureRmVirtualNetworkGatewaySupportedVpnDevice [-Name <String>] -ResourceGroupName <String>
+Get-AzureRmVirtualNetworkGatewaySupportedVpnDevice -Name <String> -ResourceGroupName <String>
  [-DefaultProfile <IAzureContextContainer>]
 ```
 
@@ -64,14 +64,14 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The resource name.
+The virtual network gateway name.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: ResourceName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
