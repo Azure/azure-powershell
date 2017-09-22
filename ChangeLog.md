@@ -4,6 +4,13 @@
         - Included help file for the commandlet
         - Added in-memory tests and a scenario test (only live)
     * Fixed bugs in Add-AzureAsAccount commandlet 
+* Automation
+    * Fixed help documents for cmdlets fixed in the earlier release.
+    * Added 4 new cmdlets to support staged rollout of DSC node configurations.
+        - Start-AzureRmAutomationDscNodeConfigurationDeployment
+        - Stop-AzureRmAutomationDscNodeConfigurationDeployment
+        - Get-AzureRmAutomationDscNodeConfigurationDeployment
+        - Get-AzureRmAutomationDscNodeConfigurationDeploymentSchedule
 * CognitiveServices
     * Integrate with Cognitive Services Management SDK version 2.0.0.
     * Get-AzureRmCognitiveServicesAccount now can correctly support paging.

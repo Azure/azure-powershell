@@ -113,11 +113,11 @@ CmdletsToExport = 'Get-AzureRMAutomationHybridWorkerGroup',
                'Set-AzureRmAutomationRunbook', 'Import-AzureRmAutomationRunbook', 
                'Set-AzureRmAutomationSchedule', 'Set-AzureRmAutomationVariable', 
                'Set-AzureRmAutomationWebhook', 
-               'Start-AzureRmAutomationDscCompilationJob', 
-               'Get-AzureRmAutomationRegistrationInfo', 
+               'Start-AzureRmAutomationDscCompilationJob',
+               'Get-AzureRmAutomationRegistrationInfo',
                'Get-AzureRmAutomationDscConfiguration', 
                'Get-AzureRmAutomationDscNode', 
-               'Get-AzureRmAutomationDscOnboardingMetaconfig', 
+               'Get-AzureRmAutomationDscOnboardingMetaconfig',
                'Import-AzureRmAutomationDscConfiguration', 
                'New-AzureRmAutomationKey', 'Start-AzureRmAutomationRunbook', 
                'Stop-AzureRmAutomationJob', 'Suspend-AzureRmAutomationJob', 
@@ -125,7 +125,11 @@ CmdletsToExport = 'Get-AzureRMAutomationHybridWorkerGroup',
                'Set-AzureRmAutomationAccount', 'Remove-AzureRmAutomationAccount', 
                'New-AzureRmAutomationAccount', 'Get-AzureRmAutomationAccount', 
                'Set-AzureRmAutomationDscNode', 
-               'Unregister-AzureRmAutomationScheduledRunbook'
+               'Unregister-AzureRmAutomationScheduledRunbook',
+               'Start-AzureRmAutomationDscNodeConfigurationDeployment',
+               'Stop-AzureRmAutomationDscNodeConfigurationDeployment',
+               'Get-AzureRmAutomationDscNodeConfigurationDeploymentSchedule',
+               'Get-AzureRmAutomationDscNodeConfigurationDeployment'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -160,7 +164,12 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'Updated for common code changes'
+        ReleaseNotes = '* Fixed help documents for cmdlets fixed in the earlier release.
+	* Added 4 new cmdlets to support staged rollout of DSC node configurations.
+        - Start-AzureRmAutomationDscNodeConfigurationDeployment
+        - Stop-AzureRmAutomationDscNodeConfigurationDeployment
+        - Get-AzureRmAutomationDscNodeConfigurationDeployment
+        - Get-AzureRmAutomationDscNodeConfigurationDeploymentSchedule'
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''
