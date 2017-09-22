@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 3.4.0
     * New cmdlet Disable-AzureRmActivityLogAlert
         - A new cmdlet to disable an existing activity log alert.
         - Optionally the Tags are settable with this cmdlet too.
@@ -35,8 +37,6 @@
         - A new cmdlet to create or update an activity log alert.
     * New cmdlet Remove-AzureRmActivityLogAlert
         - A new cmdlet to remove one activity log alert.
-
-## Version 3.4.0
     * New cmdlet Set-AzureRmActionGroup
         - A new cmdlet to create a new or update an existing action group.
     * New cmdlet Get-AzureRmActionGroup
