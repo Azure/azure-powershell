@@ -94,7 +94,10 @@ namespace Microsoft.Azure.Commands.Network
 
             // Map to the sdk object
             var nsgModel = Mapper.Map<MNM.NetworkSecurityGroup>(nsg);
-            nsgModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
+
+			this.NullifyApplicationSecurityGroupsIfAbsent(nsgModel);
+
+			nsgModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
             // Execute the Create NetworkSecurityGroup call
             this.NetworkSecurityGroupClient.CreateOrUpdate(this.ResourceGroupName, this.Name, nsgModel);
