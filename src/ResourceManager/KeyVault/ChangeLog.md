@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 3.4.0
 * New/updated Cmdlets to support soft-delete for KeyVault certificates
   * Get-AzureKeyVaultCertificate
   * Remove-AzureKeyVaultCertificate
