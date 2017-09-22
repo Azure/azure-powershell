@@ -18,8 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
-* Add Support for removal of roleassignment using PSRoleAssignment object
-    - Users can now use PSRoleassignmnet inputobject with Remove-AzureRMRoleAssignment commandlet to remove the roleassignment.
+
+## Version 4.4.0
 * Add PolicySetDefinition cmdlets
     - New-AzureRmPolicySetDefinition cmdlet to create a policy set definition
     - Get-AzureRmPolicySetDefinition cmdlet to list all policy set definitions or to get a specific policy set definition
@@ -28,7 +28,9 @@
 * Add -PolicySetDefinition, -Sku and -NotScope parameters to New-AzureRmPolicyAssignment and Set-AzureRmPolicyAssignment cmdlets
 * Add support to pass in policy url to New-AzureRmPolicyDefinition and Set-AzureRmPolicyDefinition cmdlets
 * Add -Mode parameter to New-AzureRmPolicyDefinition cmdlet
-
+* Add Support for removal of roleassignment using PSRoleAssignment object
+    - Users can now use PSRoleassignmnet inputobject with Remove-AzureRMRoleAssignment commandlet to remove the roleassignment.
+    
 ## Version 4.3.1
 
 ## Version 4.3.0
