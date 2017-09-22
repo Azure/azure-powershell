@@ -97,6 +97,9 @@
         - Updated New-AzureRmNetworkSecurityRuleConfig: Added optional parameters SourceApplicationSecurityGroup, SourceApplicationSecurityGroupId, DestinationApplicationSecurityGroup, and DestinationApplicationSecurityGroupId
         - Updated Add-AzureRmNetworkSecurityRuleConfig: Added optional parameters SourceApplicationSecurityGroup, SourceApplicationSecurityGroupId, DestinationApplicationSecurityGroup, and DestinationApplicationSecurityGroupId
         - Updated Set-AzureRmNetworkSecurityRuleConfig: Added optional parameters SourceApplicationSecurityGroup, SourceApplicationSecurityGroupId, DestinationApplicationSecurityGroup, and DestinationApplicationSecurityGroupId
+    * Added new commands for VpnDeviceConfiguration Scripts 
+        - Get-AzureRmVirtualNetworkGatewaySupportedVpnDevices 
+        - Get-AzureRmVirtualNetworkGatewayConnectionVpnDeviceConfigScript 
 * Resources
     * Add PolicySetDefinition cmdlets
         - New-AzureRmPolicySetDefinition cmdlet to create a policy set definition
