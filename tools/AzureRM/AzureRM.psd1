@@ -67,6 +67,7 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '3.4.0';
                @{ModuleName = 'AzureRM.ContainerInstance'; RequiredVersion = '0.0.1'; },
                @{ModuleName = 'AzureRM.ContainerRegistry'; RequiredVersion = '0.2.6'; }, 
                @{ModuleName = 'AzureRM.DataFactories'; RequiredVersion = '3.4.0'; }, 
+               @{ModuleName = 'AzureRM.DataFactoryV2'; RequiredVersion = '0.2.0'; }, 
                @{ModuleName = 'AzureRM.DataLakeAnalytics'; RequiredVersion = '3.4.0'; }, 
                @{ModuleName = 'AzureRM.DataLakeStore'; RequiredVersion = '4.4.0'; }, 
                @{ModuleName = 'AzureRM.DevTestLabs'; RequiredVersion = '3.4.0'; }, 
