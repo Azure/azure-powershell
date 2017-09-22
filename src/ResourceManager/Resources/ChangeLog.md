@@ -18,8 +18,16 @@
         - Additional information about change #1
 -->
 ## Current Release
-
-## Version 4.4.0
+* Add ManagedApplication cmdlets
+    - New-AzureRmManagedApplication cmdlet to create a managed application
+    - Get-AzureRmManagedApplication cmdlet to list all managed applications under a subscription or to get a specific managed application
+    - Remove-AzureRmManagedApplication cmdlet to delete a managed application
+    - Set-AzureRmManagedApplication cmdlet to update an existing managed application
+* Add ManagedApplicationDefinition cmdlets
+    - New-AzureRmManagedApplicationDefinition cmdlet to create a managed application definition using a zip file uri or using mainTemplate and createUiDefinition json files
+    - Get-AzureRmManagedApplicationDefinition cmdlet to list all managed application definitions under a resource group or to get a specific managed application definition
+    - Remove-AzureRmManagedApplicationDefinition cmdlet to delete a managed application definition
+    - Set-AzureRmManagedApplicationDefinition cmdlet to update an existing managed application definition
 * Add PolicySetDefinition cmdlets
     - New-AzureRmPolicySetDefinition cmdlet to create a policy set definition
     - Get-AzureRmPolicySetDefinition cmdlet to list all policy set definitions or to get a specific policy set definition
