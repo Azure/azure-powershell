@@ -64,6 +64,28 @@ namespace Microsoft.Azure.Commands.Network
             return psNetworkSecurityGroup;
         }
 
+		// Temporary - to be removed
+		public void NullifyApplicationSecurityGroupsIfAbsent(NetworkSecurityGroup nsg)
+		{
+			if (nsg ==null || nsg.SecurityRules == null)
+			{
+				return;
+			}
+
+			foreach (var rule in nsg.SecurityRules)
+			{
+				if (rule.SourceApplicationSecurityGroups != null && rule.SourceApplicationSecurityGroups.Count == 0)
+				{
+					rule.SourceApplicationSecurityGroups = null;
+				}
+
+				if (rule.DestinationApplicationSecurityGroups != null && rule.DestinationApplicationSecurityGroups.Count == 0)
+				{
+					rule.DestinationApplicationSecurityGroups = null;
+				}
+			}
+		}
+
         public PSNetworkSecurityGroup ToPsNetworkSecurityGroup(NetworkSecurityGroup nsg)
         {
             var psNsg = Mapper.Map<PSNetworkSecurityGroup>(nsg);
