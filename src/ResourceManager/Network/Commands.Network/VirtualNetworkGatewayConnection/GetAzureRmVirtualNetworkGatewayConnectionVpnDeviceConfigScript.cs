@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Network
     {
         [Alias("ResourceName")]
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name of the connection for which the configuration is to be generated.")]
         [ValidateNotNullOrEmpty]
@@ -41,21 +41,21 @@ namespace Microsoft.Azure.Commands.Network
         public virtual string ResourceGroupName { get; set; }
         
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the VPN device vendor.")]
         [ValidateNotNullOrEmpty]
         public string DeviceVendor { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the VPN device model/family.")]
         [ValidateNotNullOrEmpty]
         public string DeviceFamily { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Firmware version of the VPN device.")]
         [ValidateNotNullOrEmpty]
