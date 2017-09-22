@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 0.0.1
 * Add PowerShell cmdlets for Azure Container Instance
     - New-AzureRmContainerGroup
     - Get-AzureRmContainerGroup

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 3.4.0
     * New cmdlet Set-AzureRmActionGroup
         - A new cmdlet to create a new or update an existing action group.
     * New cmdlet Get-AzureRmActionGroup

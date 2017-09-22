@@ -1,4 +1,133 @@
-﻿## 2017.08.10 - Version 4.3.1
+﻿## 2017.09.25 - Version 4.4.0
+* AnalysisServices
+    * Added a new dataplane commandlet to allow synchronization of databases from read-write instance to read-only instances 
+        - Included help file for the commandlet
+        - Added in-memory tests and a scenario test (only live)
+    * Fixed bugs in Add-AzureAsAccount commandlet 
+* CognitiveServices
+    * Integrate with Cognitive Services Management SDK version 2.0.0.
+    * Get-AzureRmCognitiveServicesAccount now can correctly support paging.
+* Compute
+    * Run Command feature:
+        - New cmdlet: 'Invoke-AzureRmVMRunCommand' invokes a run command on a VM
+        - New cmdlet: 'Get-AzureRmVMRunCommandDocument' shows available run command documents
+    * Add 'StorageAccountType' parameter to Set-AzureRmDataDisk
+    * Availability Zone support for virtual machine, VM scale set, and disk
+        - New paramter: 'Zone' is added to New-AzureRmVM, New-AzureRmVMConfig, New-AzureRmVmssConfig, New-AzureRmDiskConfig
+    * VM scale set rolling upgrade feature:
+        - New cmdlet: 'Start-AzureRmVmssRollingOSUpgrade' invokes OS rolling upgrade of VM scale set
+        - New cmdlet: 'Set-AzureRmVmssRollingUpgradePolicy' sets upgrade policy for VM scale set rolling upgrade.
+        - New cmdlet: 'Stop-AzureRmVmssRollingUpgrade' cancels rolling upgrade of VM scale set
+        - New cmdlet: 'Get-AzureRmVmssRollingUpgrade' shows the status of VM scale set rolling upgrade.
+    * AssignIdentity switch parameter is introduced for system assigned identity.
+        - New parameter: 'AssignIdentity' is added to New-AzureRmVMConfig, New-AzureRmVmssConfig and Update-AzureRmVM
+    * Vmss disk encryption feature:
+        - New cmdlet: 'Set-AzureRmVmssDiskEncryptionExtension' enables disk encryption on VM scale set
+        - New cmdlet: 'Disable-AzureRmVmssDiskEncryption' disables disk encryption on VM scale set
+        - New cmdlet: 'Get-AzureRmVmssDiskEncryptionStatus' shows the disk encryption status of a VM scale set
+        - New cmdelt: 'Get-AzureRmVmssVMDiskEncryptionStatus' shows the disk encryption status of VMs in a VM scale set
+* ContainerInstance
+    * Add PowerShell cmdlets for Azure Container Instance
+        - New-AzureRmContainerGroup
+        - Get-AzureRmContainerGroup
+        - Remove-AzureRmContainerGroup
+        - Get-AzureRmContainerInstanceLog
+* Insights
+        * New cmdlet Set-AzureRmActionGroup
+            - A new cmdlet to create a new or update an existing action group.
+        * New cmdlet Get-AzureRmActionGroup
+            - A new cmdlet to retrieve one or more action groups.
+            - The action groups can be retrieved by name, resource group, or subscription.
+        * New cmdlet Remove-AzureRmActionGroup
+            - A new cmdlet to remove one action group.
+        * New cmdlet New-AzureRmActionGroupReceiver
+            - A new cmdlet to create an new action group receiver in memory.
+* KeyVault
+    * New/updated Cmdlets to support soft-delete for KeyVault certificates
+      * Get-AzureKeyVaultCertificate
+      * Remove-AzureKeyVaultCertificate
+      * Undo-AzureKeyVaultCertificateRemoval
+* Network
+    * Added support for endpoint services to Virtual Network Subnets
+        - Updated Add-AzureRmVirtualSubnetConfig: Added optional parameter -ServiceEndpoint
+        - Updated New-AzureRmVirtualSubnetConfig: Added optional parameter -ServiceEndpoint
+        - Updated Set-AzureRmVirtualSubnetConfig: Added optional parameter -ServiceEndpoint
+    * Added cmdlet to list endpoint services available in the location
+        - Get-AzureRmVirtualNetworkAvailableEndpointService
+    * Added the ability to configure external radius based P2S authentication to the following commandlets
+        - New-AzureVirtualNetworkGateway
+        - Set-AzureVirtualNetworkGateway
+        - Set-AzureRmVirtualNetworkGatewayVpnClientConfig
+    * Added cmdlet to allow generation of VpnProfiles for external radius based P2S
+        - New-AzureRmVpnClientConfiguration
+    	  - Get-AzureRmVpnClientConfiguration
+    * Added support for SKU parameter to Public IP Addresses and Load Balancers
+        - Updated New-AzureRMLoadBalancer: Added optional parameter -Sku
+        - Updated New-AzureRMPublicIpAddress: Added optional parameter -Sku
+    * Added support for DisableOutboundSNAT to Load Balancer Rules
+        - Updated New-AzureRMLoadBalancerRuleConfig: Added optional parameter DisableOutboundSNAT
+        - Updated Add-AzureRMLoadBalancerRuleConfig: Added optional parameter DisableOutboundSNAT
+        - Updated Set-AzureRMLoadBalancerRuleConfig: Added optional parameter DisableOutboundSNAT
+    * Added support for IkeV2 P2S
+        - Updated New-AzureRmVirtualNetworkGateway: Added optional parameter -VpnClientProtocol, defaults to [ "SSTP", "IkeV2" ]
+        - Updated Set-AzureRmVirtualNetworkGateway: Added optional parameter -VpnClientProtocol
+    * Added support for MultiValued rules in Network Security Rules and Effective Network Security Rules
+        - Updated Add-AzureRmNetworkSecurityRuleConfig: Updated SourcePortRange, DestinationPortRange, SourceAddressPrefix parameters to accept a list of strings
+        - Updated New-AzureRmNetworkSecurityRuleConfig: Updated SourcePortRange, DestinationPortRange, SourceAddressPrefix  parameter to accept a list of strings
+        - Updated Set-AzureRmNetworkSecurityRuleConfig: Updated SourcePortRange, DestinationPortRange, SourceAddressPrefix parameter to accept a list of strings
+        - Updated Add-AzureRmNetworkSecurityRuleConfig: Updated SourcePortRange, DestinationPortRange, SourceAddressPrefix parameter to accept a list of strings
+        - Updated New-AzureRmNetworkSecurityGroup : Updated SecurityRules parameter to accept SourcePortRange, DestinationPortRange, SourceAddressPrefix parameters which are list of strings in PSSecurityRule object
+        - Updated Get-AzureRmEffectiveNetworkSecurityGroup: Added parameter TagMap
+        - Updated Get-AzureRmEffectiveNetworkSecurityGroup: Updated returned PSEffectiveSecurityRule object with SourcePortRange, DestinationPortRange, SourceAddressPrefix parameters which are list of strings.
+    * Added support for DDoS protection for virtual networks
+        - Updated New-AzureRmVirtualNetwork: Added switch parameters EnableDDoSProtection and EnableVmProtection
+        - Added properties EnableDDoSProtection and EnableVmProtection in PSVirtualNetwork object
+    * Added support for Highly Available Internal Load Balancer
+        - Updated Add-AzureRmLoadBalancerRuleConfig: Added All as an acceptable value for Protocol parameter
+        - Updated New-AzureRmLoadBalancerRuleConfig: Added All as an acceptable value for Protocol parameter
+        - Updated Set-AzureRmLoadBalancerRuleConfig: Added All as an acceptable value for Protocol parameter
+    * Added support for Application Security Groups
+        - Added New-AzureRmApplicationSecurityGroup
+        - Added Get-AzureRmApplicationSecurityGroup
+        - Added Remove-AzureRmApplicationSecurityGroup
+        - Updated New-AzureRmNetworkInterface: Added optional parameters ApplicationSecurityGroup and ApplicationSecurityGroupId
+        - Updated New-AzureRmNetworkInterfaceIpConfig: Added optional parameters ApplicationSecurityGroup and ApplicationSecurityGroupId
+        - Updated Add-AzureRmNetworkInterfaceIpConfig: Added optional parameters ApplicationSecurityGroup and ApplicationSecurityGroupId
+        - Updated Set-AzureRmNetworkInterfaceIpConfig: Added optional parameters ApplicationSecurityGroup and ApplicationSecurityGroupId
+        - Updated New-AzureRmNetworkSecurityRuleConfig: Added optional parameters SourceApplicationSecurityGroup, SourceApplicationSecurityGroupId, DestinationApplicationSecurityGroup, and DestinationApplicationSecurityGroupId
+        - Updated Add-AzureRmNetworkSecurityRuleConfig: Added optional parameters SourceApplicationSecurityGroup, SourceApplicationSecurityGroupId, DestinationApplicationSecurityGroup, and DestinationApplicationSecurityGroupId
+        - Updated Set-AzureRmNetworkSecurityRuleConfig: Added optional parameters SourceApplicationSecurityGroup, SourceApplicationSecurityGroupId, DestinationApplicationSecurityGroup, and DestinationApplicationSecurityGroupId
+* Resources
+    * Add PolicySetDefinition cmdlets
+        - New-AzureRmPolicySetDefinition cmdlet to create a policy set definition
+        - Get-AzureRmPolicySetDefinition cmdlet to list all policy set definitions or to get a specific policy set definition
+        - Remove-AzureRmPolicySetDefinition cmdlet to delete a policy set definition
+        - Set-AzureRmPolicySetDefinition cmdlet to update an existing policy set definition
+    * Add -PolicySetDefinition, -Sku and -NotScope parameters to New-AzureRmPolicyAssignment and Set-AzureRmPolicyAssignment cmdlets
+    * Add support to pass in policy url to New-AzureRmPolicyDefinition and Set-AzureRmPolicyDefinition cmdlets
+    * Add -Mode parameter to New-AzureRmPolicyDefinition cmdlet
+    * Add Support for removal of roleassignment using PSRoleAssignment object
+        - Users can now use PSRoleassignmnet inputobject with Remove-AzureRMRoleAssignment commandlet to remove the roleassignment.
+* Sql
+    * Adding support for Virtual Network Rules
+    	- Adding Get-AzureRmSqlServerVirtualNetworkRule cmdlet which gets the virtual network rules by a specific rule name or a list of virtual network rules in an Azure Sql server.
+    	- Adding Set-AzureRmSqlServerVirtualNetworkRule cmdlet which changes the virtual network that the rule points to.
+    	- Adding Remove-AzureRmSqlServerVirtualNetworkRule cmdlet which removes a virtual network rule for an Azure Sql server.
+    	- Adding New-AzureRmSqlServerVirtualNetworkRule cmdlet which creates a new virtual network rule for an Azure Sql server.
+* Websites
+    * Add PremiumV2 Tier for App Service Plans
+* Azure.Storage
+    * Upgrade to Azure Storage Client Library 8.4.0 and Azure Storage DataMovement Library 0.6.1
+    * Add PremiumPageBlobTier Support in Upload and Copy Blob API
+        - Set-AzureStorageBlobContent
+    	- Start-AzureStorageBlobCopy
+    * Refine the Console Output Format of AzureStorageContainer, AzureStorageBlob, AzureStorageQueue, AzureStorageTable
+        - Get-AzureStorageContainer
+        - Get-AzureStorageBlob
+        - Get-AzureStorageQueue
+        - Get-AzureStorageTable
+
+## 2017.08.10 - Version 4.3.1
   * Update to fix assembly signing issue
         
 ## 2017.08.07 - Version 4.3.0
