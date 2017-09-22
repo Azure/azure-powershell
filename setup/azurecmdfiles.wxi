@@ -2,9 +2,6 @@
 <Include xmlns="http://schemas.microsoft.com/wix/2006/wi">
     <Fragment>
         <DirectoryRef Id="PowerShellFolder">
-            <Component Id="cmpDC507D3B034FD0F9887EC67302B6F5A0" Guid="*">
-                <File Id="filBF2E03D229851ADE6748EBFCE4288A27" KeyPath="yes" Source="$(var.sourceDir)\PowerShellSetup.Test.dll" />
-            </Component>
             <Directory Id="dirB60B5B1F56FA5598EFFC960CA393FDCE" Name="ResourceManager">
                 <Directory Id="dir9E409EB63EF03736275B51044C819FD8" Name="AzureResourceManager">
                     <Directory Id="dirE5EE64AF112D660B2F38178FA55F7183" Name="Azure.AnalysisServices">
@@ -719,7 +716,10 @@
                         <Component Id="cmp779A0E3965601A707B4FB7EA41991F17" Guid="*">
                             <File Id="fil59D93D2015C3D1C5F7D257951BDB2A25" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Compute\Microsoft.Azure.Management.Compute.dll" />
                         </Component>
-                        <Component Id="cmpE7FBE654F66ADDB880F2EED62DDCBC95" Guid="*">
+                        <Component Id="cmp7AC2002EE4C365F7ED04A65EB2ECB865" Guid="*">
+                            <File Id="fil214F889EDCC4702A882998D16885E151" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Compute\Microsoft.Azure.Management.KeyVault.dll" />
+                         </Component>
+                         <Component Id="cmpE7FBE654F66ADDB880F2EED62DDCBC95" Guid="*">
                             <File Id="fil16AF569E99B99421052FC7DFD8E43BDB" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Compute\Microsoft.Azure.Management.Storage.dll" />
                         </Component>
                         <Component Id="cmpA5892A5B2CF39458BD6E319D74C3878C" Guid="*">
@@ -5722,6 +5722,7 @@
             <ComponentRef Id="cmp8067E53A2217014032225374FB64FDE7" />
             <ComponentRef Id="cmpCEE5FDE7A6F24B1A7B048897D0A4FB10" />
             <ComponentRef Id="cmp779A0E3965601A707B4FB7EA41991F17" />
+            <ComponentRef Id="cmp7AC2002EE4C365F7ED04A65EB2ECB865" />
             <ComponentRef Id="cmpE7FBE654F66ADDB880F2EED62DDCBC95" />
             <ComponentRef Id="cmpA5892A5B2CF39458BD6E319D74C3878C" />
             <ComponentRef Id="cmp3D87E7A369012515387799F3AE4D8DA9" />
