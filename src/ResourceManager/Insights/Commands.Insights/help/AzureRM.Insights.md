@@ -26,6 +26,15 @@ Adds or updates a metric-based alert rule.
 ### [Add-AzureRmWebtestAlertRule](Add-AzureRmWebtestAlertRule.md)
 Adds or updates a webtest alert rule.
 
+### [Disable-AzureRmActivityLogAlert](Disable-AzureRmActivityLogAlert.md)
+Disables an activity log alert resource and optionally sets its tags.
+
+### [Enable-AzureRmActivityLogAlert](Enable-AzureRmActivityLogAlert.md)
+Enables an activity log alert resource and optionally sets its tags.
+
+### [Get-AzureRmActivityLogAlert](Get-AzureRmActivityLogAlert.md)
+Gets an activity log alert resource.
+
 ### [Get-AzureRmAlertHistory](Get-AzureRmAlertHistory.md)
 Gets the history of alerts.
 
@@ -56,6 +65,12 @@ Gets metric definitions.
 ### [Get-AzureRmUsage](Get-AzureRmUsage.md)
 Gets the usage metrics for a resource.
 
+### [New-AzureRmActionGroup](New-AzureRmActionGroup.md)
+Creates a new action group reference in memory.
+
+### [New-AzureRmActivityLogAlertCondition](New-AzureRmActivityLogAlertCondition.md)
+Creates a new activity log alert condition in memory.
+
 ### [New-AzureRmAlertRuleEmail](New-AzureRmAlertRuleEmail.md)
 Creates an email action for an alert rule.
 
@@ -74,6 +89,9 @@ Creates an Autoscale rule.
 ### [New-AzureRmAutoscaleWebhook](New-AzureRmAutoscaleWebhook.md)
 Creates an Autoscale webhook.
 
+### [Remove-AzureRmActivityLogAlert](Remove-AzureRmActivityLogAlert.md)
+Removes an activity log alert.
+
 ### [Remove-AzureRmAlertRule](Remove-AzureRmAlertRule.md)
 Removes an alert rule.
 
@@ -83,6 +101,8 @@ Removes an Autoscale setting.
 ### [Remove-AzureRmLogProfile](Remove-AzureRmLogProfile.md)
 Removes a log profile.
 
+### [Set-AzureRmActivityLogAlert](Set-AzureRmActivityLogAlert.md)
+Creates or updates an activity log alert.
+
 ### [Set-AzureRmDiagnosticSetting](Set-AzureRmDiagnosticSetting.md)
 Sets the logs and metrics settings for the resource.
-
