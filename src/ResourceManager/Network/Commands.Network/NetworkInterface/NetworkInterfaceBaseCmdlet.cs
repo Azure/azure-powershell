@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.Network
 
 		public void NullifyApplicationSecurityGroupIfAbsent(NetworkInterface nic)
 		{
-			if (nic.IpConfigurations == null)
+			if (nic == null || nic.IpConfigurations == null)
 			{
 				return;
 			}
