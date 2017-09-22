@@ -67,6 +67,7 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '3.4.0';
                @{ModuleName = 'AzureRM.ContainerInstance'; RequiredVersion = '0.0.1'; },
                @{ModuleName = 'AzureRM.ContainerRegistry'; RequiredVersion = '0.2.6'; }, 
                @{ModuleName = 'AzureRM.DataFactories'; RequiredVersion = '3.4.0'; }, 
+               @{ModuleName = 'AzureRM.DataFactoryV2'; RequiredVersion = '0.2.0'; }, 
                @{ModuleName = 'AzureRM.DataLakeAnalytics'; RequiredVersion = '3.4.0'; }, 
                @{ModuleName = 'AzureRM.DataLakeStore'; RequiredVersion = '4.4.0'; }, 
                @{ModuleName = 'AzureRM.DevTestLabs'; RequiredVersion = '3.4.0'; }, 
@@ -189,6 +190,40 @@ PrivateData = @{
                 - Get-AzureRmContainerGroup
                 - Remove-AzureRmContainerGroup
                 - Get-AzureRmContainerInstanceLog
+        * DataFactories
+            * Add PowerShell cmdlets for Azure Data Factory version 2
+                - Set-AzureRmDataFactoryV2
+                - Get-AzureRmDataFactoryV2 
+                - Remove-AzureRmDataFactoryV2
+                - Set-AzureRmDataFactoryV2LinkedService 
+                - New-AzureRmDataFactoryV2LinkedServiceEncryptedCredential 
+                - Get-AzureRmDataFactoryV2LinkedService 
+                - Remove-AzureRmDataFactoryV2LinkedService
+                - Set-AzureRmDataFactoryV2Dataset 
+                - Get-AzureRmDataFactoryV2Dataset
+                - Remove-AzureRmDataFactoryV2Dataset
+                - Set-AzureRmDataFactoryV2Trigger 
+                - Get-AzureRmDataFactoryV2Trigger 
+                - Remove-AzureRmDataFactoryV2Trigger 
+                - Start-AzureRmDataFactoryV2Trigger 
+                - Stop-AzureRmDataFactoryV2Trigger 
+                - Set-AzureRmDataFactoryV2Pipeline 
+                - Get-AzureRmDataFactoryV2Pipeline 
+                - Remove-AzureRmDataFactoryV2Pipeline 
+                - Invoke-AzureRmDataFactoryV2Pipeline
+                - Get-AzureRmDataFactoryV2PipelineRun 
+                - Get-AzureRmDataFactoryV2ActivityRun
+                - Get-AzureRmDataFactoryV2IntegrationRuntimeKey
+                - Get-AzureRmDataFactoryV2IntegrationRuntime
+                - New-AzureRmDataFactoryV2IntegrationRuntimeKey
+                - Remove-AzureRmDataFactoryV2IntegrationRuntime
+                - Set-AzureRmDataFactoryV2IntegrationRuntime
+                - Start-AzureRmDataFactoryV2IntegrationRuntime
+                - Stop-AzureRmDataFactoryV2IntegrationRuntime
+                - Get-AzureRmDataFactoryV2IntegrationRuntimeMetric
+                - Remove-AzureRmDataFactoryV2IntegrationRuntimeNode
+                - Sync-AzureRmDataFactoryV2IntegrationRuntimeCredential
+                - Get-AzureRmDataFactoryV2TriggerRun
         * Insights
                 * New cmdlet Set-AzureRmActionGroup
                     - A new cmdlet to create a new or update an existing action group.
