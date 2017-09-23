@@ -1358,7 +1358,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     }).JobSchedule;
             }
 
-            return new NodeConfigurationDeployment(resourceGroupName, automationAccountName, nodeConfiguraionName, job);
+            return new NodeConfigurationDeployment(resourceGroupName, automationAccountName, nodeConfiguraionName, job, jobSchedule);
         }
 
         public NodeConfigurationDeployment GetNodeConfigurationDeployment(string resourceGroupName, string automationAccountName, Guid jobId)
@@ -1366,7 +1366,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             Requires.Argument("ResourceGroupName", resourceGroupName).NotNullOrEmpty();
             Requires.Argument("AutomationAccountName", automationAccountName).NotNullOrEmpty().ValidAutomationAccountName();
 
-            var nodesList = new List<IList<string>>();
+            var nodeLists = new List<IList<string>>();
             var nodesStatus = new List<IDictionary<string, string>>();
             Job job = null;
             string nodeConfigurationName = null;
@@ -1375,24 +1375,18 @@ namespace Microsoft.Azure.Commands.Automation.Common
             {
                 job = this.automationManagementClient.Jobs.Get(resourceGroupName, automationAccountName, jobId).Job;
 
-                nodeConfigurationName = PowerShellJsonConverter.Serialize(job.Properties.Parameters["NodeConfigurationName"]);
+                nodeConfigurationName = PowerShellJsonConverter
+                    .Deserialize(job.Properties.Parameters["NodeConfigurationName"]).ToString();
 
                 // Fetch Nodes from the Param List.
                 var nodesJsonArray = PowerShellJsonConverter.Serialize(job.Properties.Parameters["ListOfNodeNames"]);
-                var stringArray = Newtonsoft.Json.Linq.JArray.Parse(JsonConvert.DeserializeObject<string>(nodesJsonArray));
+                var stringArray =
+                    Newtonsoft.Json.Linq.JArray.Parse(JsonConvert.DeserializeObject<string>(nodesJsonArray));
 
-                foreach (var jt in stringArray)
-                {
-                    var nodes = new List<string>();
-                    foreach (var node in jt)
-                    {
-                        nodes.Add(node.ToString());
-                    }
-                    nodesList.Add(nodes);
-                }
+                nodeLists.AddRange(stringArray.Select(jt => jt.Select(node => node.ToString()).ToList()));
 
                 // Fetch the status of each node.
-                foreach (var nodeList in nodesList)
+                foreach (var nodeList in nodeLists)
                 {
                     IDictionary<string, string> dscNodeGroup = new Dictionary<string, string>();
                     foreach (var node in nodeList)
@@ -1401,13 +1395,17 @@ namespace Microsoft.Azure.Commands.Automation.Common
                         IEnumerable<Model.DscNode> dscNodes;
                         do
                         {
-                            dscNodes = this.ListDscNodesByName(resourceGroupName, automationAccountName, node, null, ref nextLink);
+                            dscNodes = this.ListDscNodesByName(resourceGroupName, automationAccountName, node, null,
+                                ref nextLink);
                         } while (!string.IsNullOrEmpty(nextLink));
-                        var dscNode = dscNodes.First();
-                        dscNodeGroup.Add(node, dscNode.Status);
+                        dscNodeGroup.Add(node, dscNodes.First().Status);
                     }
                     nodesStatus.Add(dscNodeGroup);
                 }
+            }
+            else
+            {
+                throw new ArgumentNullException(nameof(jobId), Resources.NoJobIdPassedToGetJobInformationCall);
             }
             return new NodeConfigurationDeployment(resourceGroupName, automationAccountName, nodeConfigurationName, job, nodesStatus);
         }
@@ -1474,19 +1472,12 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         public IEnumerable<NodeConfigurationDeploymentSchedule> ListNodeConfigurationDeploymentSchedules(string resourceGroupName, string automationAccountName, ref string nextLink)
         {
-            JobScheduleListResponse response;
             const string runbookName = "Deploy-NodeConfigurationToAutomationDscNodesV1";
 
-            if (string.IsNullOrEmpty(nextLink))
-            {
-                response = this.automationManagementClient.JobSchedules.List(resourceGroupName, automationAccountName);
-            }
-            else
-            {
-                response = this.automationManagementClient.JobSchedules.ListNext(nextLink);
-            }
+            var response = string.IsNullOrEmpty(nextLink) ? this.automationManagementClient.JobSchedules.List(resourceGroupName, automationAccountName) : this.automationManagementClient.JobSchedules.ListNext(nextLink);
 
             nextLink = response.NextLink;
+
             return response.JobSchedules.Where(js => string.Equals(js.Properties.Runbook.Name, runbookName, StringComparison.OrdinalIgnoreCase)).
                 Select(js => new NodeConfigurationDeploymentSchedule(resourceGroupName, automationAccountName, js));
         }

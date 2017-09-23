@@ -32,6 +32,19 @@ PS C:\> Start-AzureRmAutomationDscNodeConfigurationDeployment `
             -ResourceGroupName "ResourceGroup01" `
             -NodeName $nodes `
 
+Starting a node configuration deployment.
+Starting a node configuration deployment. It will override any existing node configurations assigned to the node.
+[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Yes
+
+ResourceGroupName     : ResourceGroup01
+AutomationAccountName : Contoso01
+JobId                 : 35b14eb4-52b7-4a1d-ad62-8e9f84adc657
+Job                   : Microsoft.Azure.Commands.Automation.Model.Job
+JobStatus             : New
+NodeStatus            :
+NodeConfigurationName : Config01.Node1
+JobSchedule           :
+JobScheduleId         : 00000000-0000-0000-0000-000000000000
 ```
 
 The above command deploys the DSC node configuration named "Config01.Node1" to the given two-dimensional array of Node Names. The deployment happens in a staged manner.
@@ -60,11 +73,13 @@ Starting a node configuration deployment. It will override any existing node con
 ResourceGroupName     : ResourceGroup01
 AutomationAccountName : Contoso01
 JobId                 : 00000000-0000-0000-0000-000000000000
-JobScheduleId         : e347dfc4-62fe-4ed6-adfb-55518c57b558
-JobSchedule           : Microsoft.Azure.Commands.Automation.Model.JobSchedule
 Job                   :
 JobStatus             :
-nodeStatus            :
+NodeStatus            :
+NodeConfigurationName : Config01.Node1
+JobSchedule           : Microsoft.Azure.Commands.Automation.Model.JobSchedule
+JobScheduleId         : 2b1d7738-093d-4ff7-b87b-e4b2321319e5
+
 ```
 
 The above command schedules a deployment of a DSC node configuration named "Config01.Node1" to the given two-dimensional array of Node Names. The deployment happens in a staged manner and will be executed based on the schedule.
@@ -214,3 +229,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzureRmAutomationDscNodeConfigurationDeployment](./Get-AzureRmAutomationDscNodeConfigurationDeployment.md)
 
 [Get-AzureRmAutomationDscNodeConfigurationDeploymentSchedule](./Get-AzureRmAutomationDscNodeConfigurationDeploymentSchedule.md)
+
+[New-AzureRmAutomationSchedule](./New-AzureRmAutomationSchedule.md)
