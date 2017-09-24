@@ -20,7 +20,22 @@
 ## Current Release
 
 ## Version 3.4.0
-
+* Start-Job Support for AzureRm cmdlets. 
+    * All AzureRmCmdlets add -AzureRmContext parameter, which can accept a context (output of a Context cmdlet). 
+      - Common pattern for jobs with context persistence DISABLED: ```Start-Job {param ($context) New-AzureRmVM -AzureRmContext $context [... other parameters]} -ArgumentList (Get-AzureRmContext)```
+      - Common pattern for jobs with context persistence ENABLED:```Start-Job {New-AzureRmVM [... other parameters]}```
+    * Persist login information across sessions, new cmdlets: 
+      - Enable-AzureRmContextAutosave - Enable login persistence across sessions. 
+      - Disable-AzureRmContextAutosave - Disable login persistence across sessions. 
+    * Manage context information, new cmdets 
+      - Select-AzureRmContext - Select the active named context. 
+      - Rename-AzureRmContext - Rename an exsiting context for easy reference. 
+      - Remove-AzureRmContext - Remove an existing context. 
+      - Remove-AzureRmAccount - Remove all credentials, subscriptions, and tenants associated with an account. 
+    * Manage context information, cmdlet changes: 
+      - Added Scope = (Process | CurrentUser) to all cmdlets that change credentials 
+      - Get-AzureRmContext - Added ListAvailable parameter to list all saved contexts
+      
 ## Version 3.3.1
 
 ## Version 3.3.0
