@@ -82,9 +82,9 @@ For detail descriptions and examples of the cmdlets, type
 ## Installation
 
 ### PowerShell Gallery
-1. Install [Windows Management Framework 5 with PowerShellGet cmdlets](https://msdn.microsoft.com/en-us/powershell/gallery/psgallery/psgallery_gettingstarted)
+1. Install [Windows Management Framework 5 with PowerShellGet cmdlets](https://msdn.microsoft.com/en-us/powershell/gallery/psgallery/psgallery_gettingstarted) for Windows 7 SP1, 8.1, Server 2008 SP1, Server 2012 and Server 2012 R2.
 2. In an elevated PowerShell session, run  ```Install-Module AzureRM```
-3. To install RDFE cmdlets, run ```Install-Module Azure```
+3. To install legacy RDFE cmdlets, run ```Install-Module Azure```
 
 ### Microsoft Web Platform Installer
 

@@ -64,6 +64,21 @@ namespace Microsoft.Azure.Commands.Automation.Common
         NodeConfiguration CreateNodeConfiguration(string resourceGroupName, string automationAccountName, string sourcePath, string nodeConfiguraionName, bool incrementNodeConfigurationBuild, bool overWrite);
 
         void DeleteNodeConfiguration(string resourceGroupName, string automationAccountName, string name, bool ignoreNodeMappings);
+
+        NodeConfigurationDeployment StartNodeConfigurationDeployment(string resourceGroupName,
+            string automationAccountName, string nodeConfiguraionName, string[][] nodeNames, Schedule schedule);
+
+        NodeConfigurationDeployment GetNodeConfigurationDeployment(string resourceGroupName, string automationAccountName, Guid jobId);
+
+        NodeConfigurationDeploymentSchedule GetNodeConfigurationDeploymentSchedule(string resourceGroupName, string automationAccountName, Guid JobScheduleId);
+
+        IEnumerable<NodeConfigurationDeployment> ListNodeConfigurationDeployment(string resourceGroupName, string automationAccountName,
+            DateTimeOffset? startTime, DateTimeOffset? endTime, string jobStatus, ref string nextLink);
+
+        IEnumerable<NodeConfigurationDeploymentSchedule> ListNodeConfigurationDeploymentSchedules(string resourceGroupName, string automationAccountName, ref string nextLink);
+
+        void StopNodeConfigurationDeployment(string resourceGroupName, string automationAccountName, Guid jobId);
+
         #endregion
 
         #region Configurations

@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+Module Name: AzureRM.Network
 ms.assetid: 443F6492-EFA7-4417-943A-3A8D47F8C83C
 online version: 
 schema: 2.0.0
@@ -61,11 +62,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### String
-
 Parameter 'GatewayVip' accepts value of type 'String' from the pipeline
 
 ### PSVirtualNetworkGateway
-
 Parameter 'VirtualNetworkGateway' accepts value of type 'PSVirtualNetworkGateway' from the pipeline
 
 ## OUTPUTS

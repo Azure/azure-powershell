@@ -511,6 +511,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Permanently removing Virtual Network Rule &apos;{0}&apos; for Azure Sql Server &apos;{1}&apos;.
+        /// </summary>
+        internal static string RemoveAzureSqlServerVirtualNetworkRuleDescription {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlServerVirtualNetworkRuleDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Virtual Network Rule &apos;{0}&apos; for Azure Sql Server  &apos;{1}&apos;?.
+        /// </summary>
+        internal static string RemoveAzureSqlServerVirtualNetworkRuleWarning {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlServerVirtualNetworkRuleWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove the Azure Sql Database Server &apos;{0}&apos;?.
         /// </summary>
         internal static string RemoveAzureSqlServerWarning {
@@ -651,6 +669,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string ServerUpgradeExists {
             get {
                 return ResourceManager.GetString("ServerUpgradeExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Virtual Network Rule with name: &apos;{0}&apos; already exists for server &apos;{1}&apos;.
+        /// </summary>
+        internal static string ServerVirtualNetworkRuleNameExists {
+            get {
+                return ResourceManager.GetString("ServerVirtualNetworkRuleNameExists", resourceCulture);
             }
         }
         

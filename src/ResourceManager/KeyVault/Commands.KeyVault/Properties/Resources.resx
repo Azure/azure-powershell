@@ -415,6 +415,15 @@ You can find the object ID using Azure Active Directory Module for Windows Power
     <value>Invalid Sas permission '{0}'.</value>
   </data>
   <data name="ADObjectAmbiguous" xml:space="preserve">
-    <value>The Email argument specified, &apos;{1}&apos;, matches multiple objects in the Azure Active Directory tenant &apos;{2}&apos;. Please use -UserPrincipalName to narrow down the filter to a single object. The TenantID displayed by the cmdlet 'Get-AzureRmContext' is the current subscription's Azure Active Directory.</value>
+    <value>The Email argument specified, '{1}', matches multiple objects in the Azure Active Directory tenant '{2}'. Please use -UserPrincipalName to narrow down the filter to a single object. The TenantID displayed by the cmdlet 'Get-AzureRmContext' is the current subscription's Azure Active Directory.</value>
+  </data>
+  <data name="RecoverCertificate" xml:space="preserve">
+    <value>Recover certificate</value>
+  </data>
+  <data name="RemoveDeletedCertificateWarning" xml:space="preserve">
+    <value>Are you sure you want to purge certificate '{0}'</value>
+  </data>
+  <data name="RemoveDeletedCertificateWhatIfMessage" xml:space="preserve">
+    <value>Purge certificate</value>
   </data>
 </root>

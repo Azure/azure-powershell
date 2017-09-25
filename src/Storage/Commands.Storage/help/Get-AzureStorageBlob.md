@@ -244,7 +244,7 @@ Parameter 'Context' accepts value of type 'IStorageContext' from the pipeline
 ### AzureStorageBlob
 
 ## NOTES
-* SYNOPSIS
+
 
 ## RELATED LINKS
 

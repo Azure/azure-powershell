@@ -188,7 +188,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <param name="other">The account to copy from (source)</param>
         public static void CopyFrom(this IAzureAccount account, IAzureAccount source)
         {
-            if (source != null)
+            if (account != null && source != null)
             {
                 account.Credential = source.Credential;
                 account.Id = source.Id;

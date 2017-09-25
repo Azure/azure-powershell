@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 keyBundle.Key.KeyOps.ToArray(),
                 keyBundle.Attributes.Created,
                 keyBundle.Attributes.Updated,
-                keyBundle.Attributes.PurgeDisabled,
+                keyBundle.Attributes.RecoveryLevel,
                 keyBundle.Tags);
         }
 

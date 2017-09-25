@@ -117,6 +117,14 @@
               <ListItem>
                 <Label>VirtualNetworkPeerings</Label>
                 <PropertyName>VirtualNetworkPeeringsText</PropertyName>
+              </ListItem> 
+              <ListItem>
+                <Label>EnableDDoSProtection</Label>
+                <PropertyName>EnableDDoSProtectionText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>EnableVmProtection</Label>
+                <PropertyName>EnableVmProtectionText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -652,6 +660,10 @@
                 <Label>RouteTable</Label>
                 <PropertyName>RouteTableText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>ServiceEndpoints</Label>
+                <PropertyName>ServiceEndpointText</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -791,6 +803,10 @@
               <ListItem>
                 <Label>DnsSettings</Label>
                 <PropertyName>DnsSettingsText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Zones</Label>
+                <PropertyName>Zones</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -936,6 +952,10 @@
                 <Label>LoadBalancerInboundNatRules</Label>
                 <PropertyName>LoadBalancerInboundNatRulesText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>ApplicationSecurityGroups</Label>
+                <PropertyName>ApplicationSecurityGroupsText</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -1007,6 +1027,10 @@
               <ListItem>
                 <Label>EffectiveSecurityRules</Label>
                 <PropertyName>EffectiveSecurityRulesText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>TagMap</Label>
+                <PropertyName>TagMapText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -1123,6 +1147,14 @@
               <ListItem>
                 <Label>DestinationAddressPrefix</Label>
                 <PropertyName>DestinationAddressPrefix</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>SourceApplicationSecurityGroups</Label>
+                <PropertyName>SourceApplicationSecurityGroupsText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>DestinationApplicationSecurityGroups</Label>
+                <PropertyName>DestinationApplicationSecurityGroupsText</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>Access</Label>

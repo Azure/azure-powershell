@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+Module Name: AzureRM.Network
 ms.assetid: F845ED42-A7C1-4CCC-9AD8-E9A91C3EEC7A
-online version:
+online version: 
 schema: 2.0.0
 ---
 
@@ -39,7 +40,7 @@ Forces the command to run without asking for user confirmation.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -54,7 +55,7 @@ The name of the Azure location where the ExpressRoute circuit resides.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -84,7 +85,7 @@ The name of the resource group that will contain the ExpressRoute circuit being 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -99,7 +100,7 @@ The Service Key used by the ExpressRoute circuit in the classic deployment model
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -116,7 +117,7 @@ Key-value pairs in the form of a hash table. For example:
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named

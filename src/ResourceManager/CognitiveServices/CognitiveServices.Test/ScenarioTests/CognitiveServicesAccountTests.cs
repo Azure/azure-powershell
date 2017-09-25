@@ -118,5 +118,12 @@ namespace CognitiveServices.Test.ScenarioTests
         {
             TestController.NewInstance.RunPsTest("Test-MinMaxAccountName");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetWithPaging()
+        {
+            TestController.NewInstance.RunPsTest("Test-GetWithPaging");
+        }
     }
 }
