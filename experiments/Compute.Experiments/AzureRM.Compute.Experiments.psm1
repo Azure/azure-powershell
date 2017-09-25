@@ -267,7 +267,7 @@ class Resource1: AzureObject {
         [string] $name,
         [ResourceGroup] $resourceGroup,
         [AzureObject[]] $children
-    ): base($name, $children) {
+    ): base($name, @($resourceGroup) + $children) {
         $this.ResourceGroup = $resourceGroup
     }
 
@@ -586,7 +586,7 @@ class VirtualMachine: Resource1 {
             -WarningAction SilentlyContinue `
             -ErrorAction Stop
 
-        return Get-AzureRmVM -ResourceGroupName $rgName -Name $this.Name
+        return $this.GetInfoOrThrow($p.Context)
     }
 }
 
