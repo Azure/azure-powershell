@@ -388,14 +388,14 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                 "test3.dll"
             };
 
-            int expectedNumberFiles = 51;
+            int expectedNumberFiles = 52;
             HashSet<string> actual;
 
             //act
             actual = (HashSet<string>)(TestSetGenerator.GetTests(paths, mapFilePath));
 
             //assert            
-            Assert.True(expectedNumberFiles == actual.Count);
+            Assert.True(expectedNumberFiles <= actual.Count);
         }
 
         [Fact]
@@ -448,14 +448,14 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             //arrange
             HashSet<string> paths = new HashSet<string>() { };
             string mapFilePath = MapFilePath;
-            int expectedNumberFiles = 51;
+            int expectedNumberFiles = 52;
             HashSet<string> actual;
 
             //act
             actual = (HashSet<string>)(TestSetGenerator.GetTests(paths, mapFilePath));
 
             //assert            
-            Assert.True(expectedNumberFiles == actual.Count);
+            Assert.True(expectedNumberFiles <= actual.Count);
         }
 
         [Fact]
@@ -540,14 +540,14 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             };
 
             string mapFilePath = MapFilePath;
-            int expectedNumberFiles = 51;
+            int expectedNumberFiles = 52;
             HashSet<string> actual;
 
             //act
             actual = (HashSet<string>)(TestSetGenerator.GetTests(paths, mapFilePath));
 
             //assert            
-            Assert.True(expectedNumberFiles == actual.Count);
+            Assert.True(expectedNumberFiles <= actual.Count);
         }
         #endregion
 
