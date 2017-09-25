@@ -190,7 +190,7 @@ Accept wildcard characters: False
 ```
 
 ### -TargetResourceId
-Specifies the ID of the resource the rule is monitoring.
+Specifies the ID of the resource the rule is monitoring. NOTE: This property cannot be updated for an existing alert rule.
 
 ```yaml
 Type: String

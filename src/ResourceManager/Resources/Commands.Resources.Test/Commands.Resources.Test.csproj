@@ -209,7 +209,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Compile Include="ScenarioTests\LocationTests.cs" />
+    <Compile Include="ScenarioTests\ManagedApplicationTests.cs" />
     <Compile Include="ScenarioTests\MoveResourceTest.cs" />
+    <Compile Include="ScenarioTests\ManagedApplicationDefinitionTests.cs" />
     <Compile Include="ScenarioTests\ProviderFeatureTests.cs" />
     <Compile Include="ScenarioTests\ProviderTests.cs" />
     <Compile Include="ScenarioTests\ResourcesController.cs" />
@@ -286,6 +288,9 @@
     <None Include="keyVaultTemplateParams.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SampleManagedApplicationParameters.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="sampleTemplateWithCrossResourceGroupDeployment.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -356,7 +361,13 @@
     <None Include="ScenarioTests\LocationTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="ScenarioTests\ManagedApplicationTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="ScenarioTests\MoveResourceTest.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\ManagedApplicationDefinitionTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\ResourceGroupTests.ps1">
@@ -425,6 +436,12 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.LocationTests\TestAzureLocation.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ManagedApplicationDefinitionTests\TestManagedApplicationDefinitionCRUD.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ManagedApplicationTests\TestManagedApplicationCRUD.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.MoveResourceTest\TestMoveAzureResource.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -438,6 +455,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.PolicyTests\TestPolicyDefinitionWithParameters.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.PolicyTests\TestPolicyDefinitionWithUri.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.PolicyTests\TestPolicySetDefinitionCRUD.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ProviderFeatureTests\TestAzureProviderFeature.json">
@@ -669,6 +692,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.RoleAssignmentTests\RaUserPermissions_Setup.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.RoleAssignmentTests\RaDeleteByPSRoleAssignment.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.RoleAssignmentTests\RaUserPermissions_Test.json">

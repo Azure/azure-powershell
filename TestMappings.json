@@ -35,7 +35,8 @@
     ".\\src\\ResourceManager\\ContainerRegistry\\Commands.ContainerRegistry.Test\\bin\\Debug\\Microsoft.Azure.Commands.ContainerRegistry.Test.dll"
   ],
   "src/ResourceManager/DataFactories/": [
-    ".\\src\\ResourceManager\\DataFactories\\Commands.DataFactories.Test\\bin\\Debug\\Microsoft.Azure.Commands.DataFactories.Test.dll"
+    ".\\src\\ResourceManager\\DataFactories\\Commands.DataFactories.Test\\bin\\Debug\\Microsoft.Azure.Commands.DataFactories.Test.dll",
+    ".\\src\\ResourceManager\\DataFactories\\Commands.DataFactoryV2.Test\\bin\\Debug\\Microsoft.Azure.Commands.DataFactoryV2.Test.dll"
   ],
   "src/ResourceManager/DataLakeAnalytics/": [
     ".\\src\\ResourceManager\\DataLakeAnalytics\\Commands.DataLakeAnalytics.Test\\bin\\Debug\\Microsoft.Azure.Commands.DataLakeAnalytics.Test.dll"
@@ -46,6 +47,9 @@
   "src/ResourceManager/DevTestLabs/": [],
   "src/ResourceManager/Dns/": [
     ".\\src\\ResourceManager\\Dns\\Commands.Dns.Test\\bin\\Debug\\Microsoft.Azure.Commands.Dns.Test.dll"
+  ],
+  "src/ResourceManager/EventGrid/": [
+    ".\\src\\ResourceManager\\EventGrid\\Commands.EventGrid.Test\\bin\\Debug\\Microsoft.Azure.Commands.EventGrid.Test.dll"
   ],
   "src/ResourceManager/EventHub/": [
     ".\\src\\ResourceManager\\EventHub\\Commands.EventHub.Test\\bin\\Debug\\Microsoft.Azure.Commands.EventHubs.Test.dll"

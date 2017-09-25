@@ -29,6 +29,8 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty(Order = 2)]
         public List<PSResourceId> InboundNatPools { get; set; }
 
+        public List<string> Zones { get; set; }
+
         [JsonIgnore]
         public string InboundNatRulesText
         {
