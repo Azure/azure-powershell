@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.9.3'
+ModuleVersion = '0.9.5'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -51,7 +51,7 @@ PowerShellVersion = '5.1'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.9.3'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.9.5'; })
 
 # Assemblies that must be loaded prior to importing this module
 # RequiredAssemblies = @()
@@ -215,6 +215,8 @@ CmdletsToExport = 'Add-AzureRmApplicationGatewayAuthenticationCertificate',
                'Remove-AzureRmVpnClientRootCertificate', 
                'Set-AzureRmVirtualNetworkGatewayVpnClientConfig', 
                'Get-AzureRmVpnClientPackage', 
+               'New-AzureRmVpnClientConfiguration', 
+               'Get-AzureRmVpnClientConfiguration', 
                'New-AzureRmVirtualNetworkGatewayIpConfig', 
                'Add-AzureRmVirtualNetworkGatewayIpConfig', 
                'Remove-AzureRmVirtualNetworkGatewayIpConfig', 
@@ -291,7 +293,12 @@ CmdletsToExport = 'Add-AzureRmApplicationGatewayAuthenticationCertificate',
                'Get-AzureRmVirtualNetworkGatewayBgpPeerStatus', 
                'Get-AzureRmVirtualNetworkGatewayAdvertisedRoute', 
                'Get-AzureRmVirtualNetworkGatewayLearnedRoute', 
-               'Get-AzureRmNetworkUsage'
+               'Get-AzureRmNetworkUsage',
+               'Get-AzureRmVirtualNetworkGatewaySupportedVpnDevice',
+               'Get-AzureRmVirtualNetworkGatewayConnectionVpnDeviceConfigScript',
+               'New-AzureRmApplicationSecurityGroup',
+               'Remove-AzureRmApplicationSecurityGroup',
+               'Get-AzureRmApplicationSecurityGroup'
 
 # Variables to export from this module
 # VariablesToExport = @()
