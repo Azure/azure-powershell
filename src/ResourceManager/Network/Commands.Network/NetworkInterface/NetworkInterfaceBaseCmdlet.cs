@@ -77,6 +77,23 @@ namespace Microsoft.Azure.Commands.Network
             return psNetworkInterface;
         }
 
+		public void NullifyApplicationSecurityGroupIfAbsent(NetworkInterface nic)
+		{
+			if (nic == null || nic.IpConfigurations == null)
+			{
+				return;
+			}
+
+			// Temporary - to be removed
+			foreach (var ipconfigModel in nic.IpConfigurations)
+			{
+				if (ipconfigModel.ApplicationSecurityGroups != null && ipconfigModel.ApplicationSecurityGroups.Count == 0)
+				{
+					ipconfigModel.ApplicationSecurityGroups = null;
+				}
+			}
+		}
+
         public PSNetworkInterface ToPsNetworkInterface(NetworkInterface nic)
         {
             var psNic = Mapper.Map<PSNetworkInterface>(nic);

@@ -18,7 +18,27 @@
         - Additional information about change #1
 -->
 ## Current Release
-
+* Add ManagedApplication cmdlets
+    - New-AzureRmManagedApplication cmdlet to create a managed application
+    - Get-AzureRmManagedApplication cmdlet to list all managed applications under a subscription or to get a specific managed application
+    - Remove-AzureRmManagedApplication cmdlet to delete a managed application
+    - Set-AzureRmManagedApplication cmdlet to update an existing managed application
+* Add ManagedApplicationDefinition cmdlets
+    - New-AzureRmManagedApplicationDefinition cmdlet to create a managed application definition using a zip file uri or using mainTemplate and createUiDefinition json files
+    - Get-AzureRmManagedApplicationDefinition cmdlet to list all managed application definitions under a resource group or to get a specific managed application definition
+    - Remove-AzureRmManagedApplicationDefinition cmdlet to delete a managed application definition
+    - Set-AzureRmManagedApplicationDefinition cmdlet to update an existing managed application definition
+* Add PolicySetDefinition cmdlets
+    - New-AzureRmPolicySetDefinition cmdlet to create a policy set definition
+    - Get-AzureRmPolicySetDefinition cmdlet to list all policy set definitions or to get a specific policy set definition
+    - Remove-AzureRmPolicySetDefinition cmdlet to delete a policy set definition
+    - Set-AzureRmPolicySetDefinition cmdlet to update an existing policy set definition
+* Add -PolicySetDefinition, -Sku and -NotScope parameters to New-AzureRmPolicyAssignment and Set-AzureRmPolicyAssignment cmdlets
+* Add support to pass in policy url to New-AzureRmPolicyDefinition and Set-AzureRmPolicyDefinition cmdlets
+* Add -Mode parameter to New-AzureRmPolicyDefinition cmdlet
+* Add Support for removal of roleassignment using PSRoleAssignment object
+    - Users can now use PSRoleassignmnet inputobject with Remove-AzureRMRoleAssignment commandlet to remove the roleassignment.
+    
 ## Version 4.3.1
 
 ## Version 4.3.0
