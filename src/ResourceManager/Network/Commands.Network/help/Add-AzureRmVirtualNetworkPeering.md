@@ -24,25 +24,53 @@ The **Add-AzureRmVirtualNetworkPeering** cmdlet creates a peering between two vi
 
 ## EXAMPLES
 
-### Example 1: Create a peering between two virtual networks
+### Example 1: Create a peering between two virtual networks in the same region
 ```
-PS C:\>$vnet1 = Get-AzureRmVirtualNetwork -ResourceGroupName "MyResourceGroup" -Name "vnet1"
-PS C:\> $vnet2 = Get-AzureRmVirtualNetwork -ResourceGroupName "MyResourceGroup" -Name "vnet2"
-PS C:\> Add-AzureRmVirtualNetworkPeering -Name "LinkToVNet2" -VirtualNetwork "MyVirtualNetwork" -RemoteVirtualNetworkId $vnet2.id
-PS C:\> Add-AzureRmVirtualNetworkPeering -Name "LinkToVNet1" -VirtualNetwork "MyVirtualNetwork" -RemoteVirtualNetworkId $vnet1.id
+# Variables for common values used throughout the script.
+$rgName='myResourceGroup'
+$location='eastus'
+
+# Create a resource group.
+New-AzureRmResourceGroup -Name $rgName  -Location $location
+
+# Create virtual network 1.
+$vnet1 = New-AzureRmVirtualNetwork -ResourceGroupName $rgName -Name 'myVnet1' -AddressPrefix '10.0.0.0/16' -Location $location
+
+# Create virtual network 2.
+$vnet2 = New-AzureRmVirtualNetwork -ResourceGroupName $rgName -Name 'myVnet2' -AddressPrefix '10.1.0.0/16' -Location $location
+
+# Peer VNet1 to VNet2.
+Add-AzureRmVirtualNetworkPeering -Name myVnet1ToMyVnet2' -VirtualNetwork $vnet1 -RemoteVirtualNetworkId $vnet2.Id
+
+# Peer VNet2 to VNet1.
+Add-AzureRmVirtualNetworkPeering -Name 'myVnet2ToMyVnet1' -VirtualNetwork $vnet2 -RemoteVirtualNetworkId $vnet1.Id
+
+
+```
+Note that a peering link must be created from vnet1 to vnet2 and vice versa in order for peering to work.
+
+### Example 2: Create a peering between two virtual networks in different regions
+```
+# Variables for common values used throughout the script.
+$rgName='myResourceGroup'
+
+# Create a resource group.
+New-AzureRmResourceGroup -Name $rgName  -Location westcentralus
+
+# Create virtual network 1.
+$vnet1 = New-AzureRmVirtualNetwork -ResourceGroupName $rgName -Name 'myVnet1' -AddressPrefix '10.0.0.0/16' -Location westcentralus
+
+# Create virtual network 2.
+$vnet2 = New-AzureRmVirtualNetwork -ResourceGroupName $rgName -Name 'myVnet2' -AddressPrefix '10.1.0.0/16' -Location candacentral
+
+# Peer VNet1 to VNet2.
+Add-AzureRmVirtualNetworkPeering -Name myVnet1ToMyVnet2' -VirtualNetwork $vnet1 -RemoteVirtualNetworkId $vnet2.Id
+
+# Peer VNet2 to VNet1.
+Add-AzureRmVirtualNetworkPeering -Name 'myVnet2ToMyVnet1' -VirtualNetwork $vnet2 -RemoteVirtualNetworkId $vnet1.Id
 ```
 
-The first command gets a virtual network object named vnet1, and then stores it in the $vnet1 variable.
-
-The second command gets a virtual network object named vnet2, and then stores it in the $vnet2 variable.
-
-The third command adds a virtual network peering link from vnet1 to vnet2.
-This link is named LinkToVnet2.
-
-The fourth command adds a link from vnet2 to vnet1 named LinkToVnet1.
-
-Note that vnet1 and vnet2 are assumed to already exist in this example.
-Also note that a link must be created from vnet1 to vnet2 and vice versa in order for peering to work.
+Here 'myVnet1' in US West Central is peered with 'myVnet2' in Canada Central.
 
 ## PARAMETERS
 

@@ -12,18 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Insights.Alerts;
-using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.Azure.Management.Monitor.Management;
 using Microsoft.Azure.Management.Monitor.Management.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
-using System;
 using System.Collections.Generic;
 using System.Management.Automation;
-using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
@@ -43,8 +39,8 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
 
         public AddAzureRmLogAlertRuleTests(ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             TestExecutionHelpers.SetUpSessionAndProfile();
-            // XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             insightsAlertRuleOperationsMock = new Mock<IAlertRulesOperations>();
             insightsManagementClientMock = new Mock<MonitorManagementClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();

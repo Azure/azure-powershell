@@ -13,8 +13,8 @@ Removes a DSC extension handler from a virtual machine in a resource group.
 ## SYNTAX
 
 ```
-Remove-AzureRmVMDscExtension [-ResourceGroupName] <String> [-VMName] <String> [[-Name] <String>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzureRmVMDscExtension [-ResourceGroupName] <String> [-VMName] <String> [[-Name] <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,6 +30,21 @@ PS C:\> Remove-AzureRmVMDscExtension -ResourceGroupName "ResourceGroup001" -VMNa
 This command removes the extension named DSC on virtual machine named VM07.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 Specifies the name of the DSC extension that this cmdlet removes.
