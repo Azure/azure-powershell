@@ -130,6 +130,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// </value>
         public AzureHDInsightSecurityProfile SecurityProfile { get; set; }
 
+        /// <summary>
+        /// Gets or sets the data disks groups properties for the cluster.
+        /// </summary>
+        public List<DataDisksGroupProperties> DataDisksGroupProperties { get; set; }
+
         public AzureHDInsightConfig()
         {
             ClusterType = Constants.Hadoop;
@@ -137,6 +142,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             Configurations = new Dictionary<string, Hashtable>();
             ScriptActions = new Dictionary<ClusterNodeType, List<AzureHDInsightScriptAction>>();
             ComponentVersion = new Dictionary<string, string>();
+            DataDisksGroupProperties = new List<DataDisksGroupProperties>();
         }
     }
 }
