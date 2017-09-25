@@ -58,6 +58,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
             env.Endpoints.Add(AsAzureEnvironment.AsRolloutEndpoints.AdAuthorityBaseUrl, AsAzureClientSession.GetAuthorityUrlForEnvironment(env));
             env.Endpoints.Add(AsAzureEnvironment.AsRolloutEndpoints.RestartEndpointFormat, AsAzureClientSession.RestartEndpointPathFormat);
             env.Endpoints.Add(AsAzureEnvironment.AsRolloutEndpoints.LogfileEndpointFormat, AsAzureClientSession.LogfileEndpointPathFormat);
+            env.Endpoints.Add(AsAzureEnvironment.AsRolloutEndpoints.SyncEndpoint, AsAzureClientSession.SynchronizeEndpointPathFormat);
             return env;
         }
     }

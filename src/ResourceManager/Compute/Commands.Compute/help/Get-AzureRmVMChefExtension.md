@@ -15,13 +15,13 @@ Gets information about a Chef extension.
 ### Linux
 ```
 Get-AzureRmVMChefExtension [-ResourceGroupName] <String> [-VMName] <String> [[-Name] <String>] [-Status]
- [-Linux] [<CommonParameters>]
+ [-Linux] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Windows
 ```
 Get-AzureRmVMChefExtension [-ResourceGroupName] <String> [-VMName] <String> [[-Name] <String>] [-Status]
- [-Windows] [<CommonParameters>]
+ [-Windows] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,6 +44,21 @@ PS C:\> Get-AzureRmVMChefExtension -ResourceGroupName "ResourceGroup002" -VMName
 This command gets the Chef extension from a Linux virtual machine named LinuxVM001 that belongs to the resource group named ResourceGroup002.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Linux
 Indicates that this cmdlet works on a Linux virtual machine.

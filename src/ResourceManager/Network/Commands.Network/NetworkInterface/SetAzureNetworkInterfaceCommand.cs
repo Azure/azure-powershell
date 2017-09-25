@@ -52,7 +52,10 @@ namespace Microsoft.Azure.Commands.Network
 
             // Map to the sdk object
             var networkInterfaceModel = Mapper.Map<MNM.NetworkInterface>(this.NetworkInterface);
-            networkInterfaceModel.Tags = TagsConversionHelper.CreateTagDictionary(this.NetworkInterface.Tag, validate: true);
+
+			this.NullifyApplicationSecurityGroupIfAbsent(networkInterfaceModel);
+
+			networkInterfaceModel.Tags = TagsConversionHelper.CreateTagDictionary(this.NetworkInterface.Tag, validate: true);
 
             this.NetworkInterfaceClient.CreateOrUpdate(this.NetworkInterface.ResourceGroupName, this.NetworkInterface.Name, networkInterfaceModel);
 

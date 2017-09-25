@@ -95,5 +95,10 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
         {
             throw new System.NotImplementedException();
         }
+
+        public void RemoveUser(IAzureAccount account, IAzureTokenCache tokenCache)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
