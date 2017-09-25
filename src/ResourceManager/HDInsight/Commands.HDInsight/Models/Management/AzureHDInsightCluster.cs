@@ -45,6 +45,14 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             {
                 ComponentVersion.Add(componentVersion.ToString());
             }
+            WorkerNodeDataDisksGroups = new List<DataDisksGroupProperties>();
+            if (cluster.Properties.ComputeProfile != null && cluster.Properties.ComputeProfile.Roles.Any())
+            {
+                foreach (var role in cluster.Properties.ComputeProfile.Roles)
+                {
+                    WorkerNodeDataDisksGroups.AddRange(role.DataDisksGroups);
+                }
+            }
             var clusterSecurityProfile = cluster.Properties.SecurityProfile;
             SecurityProfile = clusterSecurityProfile != null ? new AzureHDInsightSecurityProfile()
             {
@@ -178,6 +186,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// Version of a component service in the cluster
         /// </summary>
         public List<string> ComponentVersion { get; set; }
+
+        /// <summary>
+        /// Data Disks Properties for the worker role.
+        /// </summary>
+        public List<DataDisksGroupProperties> WorkerNodeDataDisksGroups { get; set; }
 		
         /// Gets or sets the security profile.
         /// </summary>
