@@ -579,12 +579,13 @@ class VirtualMachine: Resource1 {
 
         $rgName = $this.GetResourceGroupName()
         New-AzureRmVm `
-            -ResourceGroupName $rgName `
-            -Location $p.Location `
-            -VM $vmConfig `
-            -AzureRmContext $p.Context `
-            -WarningAction SilentlyContinue `
-            -ErrorAction Stop
+                -ResourceGroupName $rgName `
+                -Location $p.Location `
+                -VM $vmConfig `
+                -AzureRmContext $p.Context `
+                -WarningAction SilentlyContinue `
+                -ErrorAction Stop `
+            | Out-Null
 
         return $this.GetInfoOrThrow($p.Context)
     }
