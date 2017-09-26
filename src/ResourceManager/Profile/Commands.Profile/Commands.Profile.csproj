@@ -69,6 +69,7 @@
   <ItemGroup>
     <Compile Include="DataCollection\DisableAzureRMDataCollection.cs" />
     <Compile Include="DataCollection\EnableAzureRMDataCollection.cs" />
+    <Compile Include="Default\SetAzureRMDefault.cs" />
     <Compile Include="Environment\RemoveAzureRMEnvironment.cs" />
     <Compile Include="Environment\GetAzureRMEnvironment.cs" />
     <Compile Include="Environment\SetAzureRMEnvironment.cs" />

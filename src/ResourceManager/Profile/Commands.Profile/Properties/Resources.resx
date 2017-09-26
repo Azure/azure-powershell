@@ -144,6 +144,9 @@
     <value>Set current context using tenant: '{0}', subscription: '{1}'</value>
     <comment>{0} is tenant, {1} is subscription</comment>
   </data>
+  <data name="ChangingDefaultResourceGroup" xml:space="preserve">
+    <value>Default resource group changed to '{0}'</value>
+  </data>
   <data name="CommonTenantAuthFailed" xml:space="preserve">
     <value>Could not authenticate your user account {0} with the common tenant. Please login again using Login-AzureRmAccount.</value>
   </data>
@@ -158,6 +161,9 @@
   </data>
   <data name="DataCollectionEnabledWarning" xml:space="preserve">
     <value>Cmdlets will send data to Microsoft to help improve the customer experience</value>
+  </data>
+  <data name="DefaultResourceGroupChangeWarning" xml:space="preserve">
+    <value>Changing default resource group for the current context</value>
   </data>
   <data name="DisableDataCollection" xml:space="preserve">
     <value>Turn off data collection for Azure PowerShell cmdlets</value>

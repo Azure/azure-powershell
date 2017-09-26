@@ -10,7 +10,6 @@
 
 namespace Microsoft.Azure.Commands.Profile.Properties {
     using System;
-    using System.Reflection;
     
     
     /// <summary>
@@ -40,7 +39,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.Profile.Properties.Resources", typeof(Resources).GetTypeInfo().Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.Profile.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -134,6 +133,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Default resource group changed to &apos;{0}&apos;.
+        /// </summary>
+        internal static string ChangingDefaultResourceGroup {
+            get {
+                return ResourceManager.GetString("ChangingDefaultResourceGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Could not authenticate your user account {0} with the common tenant. Please login again using Login-AzureRmAccount..
         /// </summary>
         internal static string CommonTenantAuthFailed {
@@ -175,6 +183,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static string DataCollectionEnabledWarning {
             get {
                 return ResourceManager.GetString("DataCollectionEnabledWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Changing default resource group for the current context.
+        /// </summary>
+        internal static string DefaultResourceGroupChangeWarning {
+            get {
+                return ResourceManager.GetString("DefaultResourceGroupChangeWarning", resourceCulture);
             }
         }
         
