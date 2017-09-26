@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using System.Collections;
+using System.Collections.Generic;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
@@ -103,6 +104,12 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "A list of availability zones denoting the IP allocated for the resource needs to come from.",
+            ValueFromPipelineByPropertyName = true)]
+            public List<string> Zone { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
@@ -137,6 +144,7 @@ namespace Microsoft.Azure.Commands.Network
             publicIp.Location = this.Location;
             publicIp.PublicIpAllocationMethod = this.AllocationMethod;
             publicIp.PublicIpAddressVersion = this.IpAddressVersion;
+            publicIp.Zones = this.Zone;
 
             if (!string.IsNullOrEmpty(this.Sku))
             {

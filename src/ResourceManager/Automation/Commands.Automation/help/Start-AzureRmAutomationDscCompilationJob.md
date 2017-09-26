@@ -15,7 +15,7 @@ Compiles a DSC configuration in Automation.
 ```
 Start-AzureRmAutomationDscCompilationJob [-ConfigurationName] <String> [-Parameters <IDictionary>]
  [-ConfigurationData <IDictionary>] [-ResourceGroupName] <String> [-AutomationAccountName] <String>
- [<CommonParameters>]
+ [-IncrementNodeConfigurationBuild] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,6 +33,20 @@ The first command creates a dictionary of parameters, and stores them in the $Pa
 
 The second command compiles the DSC configuration named Config01.
 The command includes the values in $Params for DSC configuration parameters.
+
+### Example 2: Compile an Azure DSC configuration in Automation with a new Node Configuration build version.
+```
+PS C:\>$Params = @{"StringParam"="Hello World";"IntegerParam"=32}
+PS C:\> Start-AzureRmAutomationDscCompilationJob -ConfigurationName "Config01" -Parameters $Params -ResourceGroupName "ResourceGroup01" -IncrementNodeConfigurationBuild
+```
+
+Similar to the first example, the first command creates a dictionary of parameters, and stores them in the $Params variable.
+
+The second command compiles the DSC configuration named Config01.
+The command includes the values in $Params for DSC configuration parameters.
+
+It does not override the earlier existing Node Configuration by creating a new Node Configuration with the name Config01[<2>].<NodeName>. 
+The version number is incremented based on the existing version number already present.
 
 ## PARAMETERS
 
@@ -81,6 +95,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -IncrementNodeConfigurationBuild
+Creates a new Node Configuration build version.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Parameters
 Specifies a dictionary of parameters that this cmdlet uses to compile the DSC configuration.
 
@@ -108,6 +137,36 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

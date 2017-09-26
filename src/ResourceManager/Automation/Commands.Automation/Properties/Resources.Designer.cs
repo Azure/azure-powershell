@@ -781,6 +781,42 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Starting a node configuration deployment..
+        /// </summary>
+        internal static string StartAzureAutomationNodeConfigurationDescription {
+            get {
+                return ResourceManager.GetString("StartAzureAutomationNodeConfigurationDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Starting a node configuration deployment. It will override any existing node configurations assigned to the node..
+        /// </summary>
+        internal static string StartAzureAutomationNodeConfigurationWarning {
+            get {
+                return ResourceManager.GetString("StartAzureAutomationNodeConfigurationWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stop DSC node configuration deployment,.
+        /// </summary>
+        internal static string StopAzureAutomationNodeConfigurationDescription {
+            get {
+                return ResourceManager.GetString("StopAzureAutomationNodeConfigurationDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stopping node configuration deployment does not stop already assigned node configurations to nodes..
+        /// </summary>
+        internal static string StopAzureAutomationNodeConfigurationWarning {
+            get {
+                return ResourceManager.GetString("StopAzureAutomationNodeConfigurationWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unauthorized access to {0}..
         /// </summary>
         internal static string UnauthorizedAccess {
