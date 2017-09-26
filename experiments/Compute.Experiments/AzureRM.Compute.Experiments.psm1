@@ -18,7 +18,7 @@ function New-AzVm {
 
         [Parameter()][string] $PublicIpAddressName = $Name,
         [Parameter()][string] $DomainNameLabel = $ResourceGroupName + $Name,
-        [Parameter()][string] $AllocationMethod = "Static",
+        [Parameter()][ValidateSet("Static", "Dynamic")][string] $AllocationMethod = "Static",
 
         [Parameter()][string] $SecurityGroupName = $Name,
         [Parameter()][int[]] $OpenPorts = @(3389, 5985),
@@ -689,3 +689,30 @@ $images = $staticImages.psobject.Properties | ForEach-Object {
 }
 
 Export-ModuleMember -Function New-AzVm
+
+$locations = $null
+
+function Get-WordToCompleteList {
+    param($List, $WordToComplete)
+
+    return $List `
+        | Where-Object { $_ -like "$WordToComplete*" } `
+        | ForEach-Object { [System.Management.Automation.CompletionResult]::new($_) }
+}
+
+Register-ArgumentCompleter -CommandName New-AzVm -ParameterName Location -ScriptBlock {
+    param($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameter)
+
+    if (!$global:locations) {
+        $global:locations = Get-AzureRmLocation `
+            | ForEach-Object { $_.Location }
+    }
+    return Get-WordToCompleteList -List $global:locations -WordToComplete $wordToComplete
+}
+
+Register-ArgumentCompleter -CommandName New-AzVm -ParameterName ImageName -ScriptBlock {
+    param($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameter)
+
+    $list = $images | ForEach-Object { $_.Name }
+    return Get-WordToCompleteList -List $list -WordToComplete $wordToComplete
+}
