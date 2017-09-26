@@ -12,7 +12,8 @@ Gets the properties of a snapshot
 ## SYNTAX
 
 ```
-Get-AzureRmSnapshot [[-ResourceGroupName] <String>] [[-SnapshotName] <String>] [<CommonParameters>]
+Get-AzureRmSnapshot [[-ResourceGroupName] <String>] [[-SnapshotName] <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,6 +43,21 @@ PS C:\> Get-AzureRmSnapshot -ResourceGroupName "ResourceGroupName1" -SnapshotNam
 This command gets the properties of the snapshot named "SnapshotName1" in the resource group named "ResourceGroupName1"
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ResourceGroupName
 Specifies the name of a resource group.

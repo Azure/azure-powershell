@@ -135,6 +135,7 @@
     <Compile Include="Models.ResourceGroups\ResourceClient.ResourceManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models.ResourceGroups\ResourceClient.cs" />
+    <Compile Include="Utilities\Utility.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
@@ -188,6 +189,13 @@
     <ItemGroup>
       <MarkdownFiles Include="$(ProjectDir)help\*.*" />
     </ItemGroup>
+    <ItemGroup>  
+        <OutFiles Include="$(OutDir)\**\*.*"/>  
+    </ItemGroup>  
+    <Copy  
+            SourceFiles="@(OutFiles)"  
+            DestinationFiles="@(OutFiles->'..\..\..\Stack\$(Configuration)\ResourceManager\AzureResourceManager\AzureRM.Resources\%(RecursiveDir)%(Filename)%(Extension)')"  
+     />  	
     <Copy SourceFiles="@(MarkdownFiles)" DestinationFolder="$(OutputPath)\help\" ContinueOnError="false" />
   </Target>
 </Project>

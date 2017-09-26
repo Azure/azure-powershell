@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '3.3.1'
+ModuleVersion = '3.3.2'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -51,7 +51,7 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '3.3.1'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '3.3.2'; })
 
 # Assemblies that must be loaded prior to importing this module
 # RequiredAssemblies = @()
@@ -83,7 +83,9 @@ CmdletsToExport = 'Get-AzureRmUsage', 'Get-AzureRmMetricDefinition',
                'Add-AzureRmMetricAlertRule', 'Add-AzureRmLogAlertRule', 
                'Add-AzureRmWebtestAlertRule', 'Get-AzureRmAlertHistory', 
                'Get-AzureRmAlertRule', 'New-AzureRmAlertRuleEmail', 
-               'New-AzureRmAlertRuleWebhook', 'Remove-AzureRmAlertRule'
+               'New-AzureRmAlertRuleWebhook', 'Remove-AzureRmAlertRule',
+               'New-AzureRmActionGroupReceiver', 'Set-AzureRmActionGroup', 'Get-AzureRmActionGroup', 'Remove-AzureRmActionGroup'
+               
 
 # Variables to export from this module
 # VariablesToExport = @()

@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '4.3.1'
+ModuleVersion = '4.3.2'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -51,7 +51,7 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '3.3.1'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '3.3.2'; })
 
 # Assemblies that must be loaded prior to importing this module
 # RequiredAssemblies = @()
@@ -104,12 +104,12 @@ CmdletsToExport = 'Get-AzureRmProviderOperation', 'Remove-AzureRmRoleAssignment'
                'Get-AzureRmResourceLock', 'Invoke-AzureRmResourceAction', 
                'Find-AzureRmResource', 'Move-AzureRmResource', 
                'New-AzureRmResourceLock', 'Get-AzureRmPolicyAssignment', 
-               'Get-AzureRmPolicyDefinition', 'New-AzureRmPolicyAssignment', 
-               'New-AzureRmPolicyDefinition', 'Remove-AzureRmPolicyAssignment', 
-               'Remove-AzureRmPolicyDefinition', 'Set-AzureRmPolicyAssignment', 
-               'Set-AzureRmPolicyDefinition', 'Remove-AzureRmResource', 
-               'Remove-AzureRmResourceLock', 'Set-AzureRmResource', 
-               'New-AzureRmResource', 'Set-AzureRmResourceLock', 
+               'Get-AzureRmPolicyDefinition', 'Get-AzureRmPolicySetDefinition', 'New-AzureRmPolicyAssignment',
+               'New-AzureRmPolicyDefinition', 'New-AzureRmPolicySetDefinition', 'Remove-AzureRmPolicyAssignment',
+               'Remove-AzureRmPolicyDefinition', 'Remove-AzureRmPolicySetDefinition', 'Set-AzureRmPolicyAssignment',
+               'Set-AzureRmPolicyDefinition', 'Set-AzureRmPolicySetDefinition', 'Remove-AzureRmResource',
+               'Remove-AzureRmResourceLock', 'Set-AzureRmResource',
+               'New-AzureRmResource', 'Set-AzureRmResourceLock',
                'Get-AzureRmResource'
 
 # Variables to export from this module

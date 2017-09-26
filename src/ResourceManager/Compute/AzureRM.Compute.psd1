@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '3.3.1'
+ModuleVersion = '3.3.2'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -51,7 +51,7 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '3.3.1'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '3.3.2'; })
 
 # Assemblies that must be loaded prior to importing this module
 # RequiredAssemblies = @()
@@ -162,13 +162,20 @@ CmdletsToExport = 'Remove-AzureRmAvailabilitySet', 'Get-AzureRmAvailabilitySet',
                'New-AzureRmImageConfig', 'Set-AzureRmImageOsDisk', 
                'Add-AzureRmImageDataDisk', 'Remove-AzureRmImageDataDisk', 
                'ConvertTo-AzureRmVMManagedDisk', 'Set-AzureRmVmssBootDiagnostic', 
-               'Get-AzureRmComputeResourceSku'
+               'Get-AzureRmComputeResourceSku',
+               'Get-AzureRmVMRunCommandDocument', 'Invoke-AzureRmVMRunCommand',
+               'Start-AzureRmVmssRollingOSUpgrade', 'Stop-AzureRmVmssRollingUpgrade',
+               'Get-AzureRmVmssRollingUpgrade',
+               'Set-AzureRmVmssRollingUpgradePolicy',
+               'Set-AzureRmVmssDiskEncryptionExtension',
+               'Disable-AzureRmVmssDiskEncryption',
+               'Get-AzureRmVmssDiskEncryption', 'Get-AzureRmVmssVMDiskEncryption'
 
 # Variables to export from this module
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = @()
+AliasesToExport = @('Get-AzureRmVmssDiskEncryptionStatus', 'Get-AzureRmVmssVMDiskEncryptionStatus')
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

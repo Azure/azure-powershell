@@ -13,16 +13,16 @@
           "116"
         ],
         "x-ms-client-request-id": [
-          "4e414f37-79db-4e2d-8b80-2136087596ac"
+          "fd4c9777-a6ac-4576-9200-63f98c046e60"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2046.0",
-          "OSName/Windows_10_Enterprise",
+          "FxVersion/4.7.2102.0",
+          "OSName/Windows10Enterprise",
           "OSVersion/6.3.15063",
-          "Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient/3.4.0-preview"
+          "Microsoft.Azure.Graph.RBAC.Version1_6.GraphRbacManagementClient/1.0.0.0"
         ]
       },
       "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/$metadata#directoryObjects\",\r\n  \"value\": []\r\n}",
@@ -40,19 +40,19 @@
           "no-cache"
         ],
         "ocp-aad-diagnostics-server-name": [
-          "7fG4dxbq7nRDYyXcGY4G5ZqI759Ps6CZpKiJbHnrLiU="
+          "XZZhkzlE3oBkIQVB+wQnvi7mbmSLDUoik6doGquKkr4="
         ],
         "request-id": [
-          "aef40d4a-d701-480d-ac94-e034fad2aea3"
+          "03cd30b5-ba31-40cb-805a-eb19e12b2501"
         ],
         "client-request-id": [
-          "e0ec090e-bf0f-4d06-a14b-5540311fdd0b"
+          "c5670ea4-ae02-455b-9ee0-6b09afb9e3cb"
         ],
         "x-ms-dirapi-data-contract-version": [
           "1.6"
         ],
         "ocp-aad-session-key": [
-          "vNVchnhtwMsIFftofxz5902XkTirNGJN3dDDIpbQcPXz6miUqKdT7gDzMFWgmEk-Ttqa2avysKbUogkW7tCPcA7PnOfvjXP9vdEGi5qeuWScx04Tq7k9AYcbGVmsivMpx-wwYr9-w09FqS8ln9Mtng.YCQobYBbZPMjjC6dHtQJB2x56jL2DtMmSgrTJUjIuSc"
+          "HFJ71rPDlHJj9lYjsANc_IZ59LAI9ffT-Dj0-VWcd-bsvQM-EWD3mljHKxgC_KHSADiS2HJb_LogOanDKptNnL6tS3Cw_8_S6VnVWpySMGnzR3UohlFqvFweMF2-lTffW3idW7vJwJAgZcHul2icSTSu211f2W1qhsjkEH6UxMNVVYcoJ2X5jn8n6Kc9mF3IpEij_7ArYJyK0dSRy_OEkg.NDmJU3hGXgT1pXgcnqn-nAbmB_C0h2R4lV28p0Cq5cI"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -67,7 +67,7 @@
           "*"
         ],
         "Duration": [
-          "926132"
+          "1417766"
         ],
         "Cache-Control": [
           "no-cache"
@@ -83,7 +83,7 @@
           "ASP.NET"
         ],
         "Date": [
-          "Thu, 18 May 2017 23:07:45 GMT"
+          "Tue, 19 Sep 2017 01:32:52 GMT"
         ]
       },
       "StatusCode": 200
