@@ -161,6 +161,9 @@ Gets an array of URL path mappings to a backend server pool.
 ### [Get-AzureRmApplicationGatewayWebApplicationFirewallConfiguration](Get-AzureRmApplicationGatewayWebApplicationFirewallConfiguration.md)
 Gets the WAF configuration of an application gateway.
 
+### [Get-AzureRmApplicationSecurityGroup](Get-AzureRmApplicationSecurityGroup.md)
+Gets an application security group.
+
 ### [Get-AzureRmBgpServiceCommunity](Get-AzureRmBgpServiceCommunity.md)
 {{Manually Enter Get-AzureRmBgpServiceCommunity Description Here}}
 
@@ -302,6 +305,9 @@ Gets a subnet in a virtual network.
 ### [Get-AzureRmVirtualNetworkUsageList](Get-AzureRmVirtualNetworkUsageList.md)
 Gets virtual network current usage.
 
+### [Get-AzureRmVpnClientConfiguration](Get-AzureRmVpnClientConfiguration.md)
+Allows users to easily download the Vpn Profile package that was generated using the New-AzureRmVpnClientConfiguration commandlet.
+
 ### [Get-AzureRmVpnClientPackage](Get-AzureRmVpnClientPackage.md)
 Gets information about a VPN client package.
 
@@ -314,8 +320,8 @@ Gets information about VPN root certificates.
 ### [Move-AzureRmExpressRouteCircuit](Move-AzureRmExpressRouteCircuit.md)
 Moves an ExpressRoute circuit from the classic deployment model to the Resource Manager deployment model.
 
-### [Move-AzureRmExpressRouteCircuit](Move-AzureRmExpressRouteCircuit.md)
-Moves an ExpressRoute circuit from the classic deployment model to the Resource Manager deployment model.
+### [New-AzureRmApplicationGateway](New-AzureRmApplicationGateway.md)
+Creates an application gateway.
 
 ### [New-AzureRmApplicationGatewayAuthenticationCertificate](New-AzureRmApplicationGatewayAuthenticationCertificate.md)
 Creates an authentication certificate for an application gateway.
@@ -373,6 +379,9 @@ Creates an array of URL path mappings to a backend server pool.
 
 ### [New-AzureRmApplicationGatewayWebApplicationFirewallConfiguration](New-AzureRmApplicationGatewayWebApplicationFirewallConfiguration.md)
 Creates a WAF configuration for an application gateway.
+
+### [New-AzureRmApplicationSecurityGroup](New-AzureRmApplicationSecurityGroup.md)
+Creates an application security group.
 
 ### [New-AzureRmExpressRouteCircuit](New-AzureRmExpressRouteCircuit.md)
 Creates an Azure express route circuit.
@@ -461,6 +470,9 @@ Creates an IP Configuration for a Virtual Network Gateway
 ### [New-AzureRmVirtualNetworkSubnetConfig](New-AzureRmVirtualNetworkSubnetConfig.md)
 Creates a virtual network subnet configuration.
 
+### [New-AzureRmVpnClientConfiguration](New-AzureRmVpnClientConfiguration.md)
+This command allows the users to create the Vpn profile package based on pre-configured vpn settings on the VPN gateway, in addition to some additional settings that users may need to configure, for e.g. some root certificates.
+
 ### [New-AzureRmVpnClientRevokedCertificate](New-AzureRmVpnClientRevokedCertificate.md)
 Creates a new VPN client-revocation certificate.
 
@@ -511,6 +523,9 @@ Removes an SSL policy from an Azure application gateway.
 
 ### [Remove-AzureRmApplicationGatewayUrlPathMapConfig](Remove-AzureRmApplicationGatewayUrlPathMapConfig.md)
 Removes URL path mappings to a backend server pool.
+
+### [Remove-AzureRmApplicationSecurityGroup](Remove-AzureRmApplicationSecurityGroup.md)
+Removes an application security group.
 
 ### [Remove-AzureRmExpressRouteCircuit](Remove-AzureRmExpressRouteCircuit.md)
 Removes an ExpressRoute circuit.
