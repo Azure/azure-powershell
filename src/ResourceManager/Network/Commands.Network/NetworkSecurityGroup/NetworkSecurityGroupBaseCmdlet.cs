@@ -18,6 +18,8 @@ using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using System.Net;
+using System.Collections;
+using System.Collections.Generic;
 using Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
@@ -62,6 +64,39 @@ namespace Microsoft.Azure.Commands.Network
             psNetworkSecurityGroup.Tag = TagsConversionHelper.CreateTagHashtable(nsg.Tags);
 
             return psNetworkSecurityGroup;
+        }
+
+		// Temporary - to be removed
+		public void NullifyApplicationSecurityGroupsIfAbsent(NetworkSecurityGroup nsg)
+		{
+			if (nsg == null)
+			{
+				return;
+			}
+
+            this.NullifyApplicationSecurityRulesIfAbsent(nsg.DefaultSecurityRules);
+            this.NullifyApplicationSecurityRulesIfAbsent(nsg.SecurityRules);
+        }
+
+        public void NullifyApplicationSecurityRulesIfAbsent(IList<SecurityRule> rules)
+        {
+            if (rules == null)
+            {
+                return;
+            }
+
+            foreach (var rule in rules)
+            {
+                if (rule.SourceApplicationSecurityGroups != null && rule.SourceApplicationSecurityGroups.Count == 0)
+                {
+                    rule.SourceApplicationSecurityGroups = null;
+                }
+
+                if (rule.DestinationApplicationSecurityGroups != null && rule.DestinationApplicationSecurityGroups.Count == 0)
+                {
+                    rule.DestinationApplicationSecurityGroups = null;
+                }
+            }
         }
 
         public PSNetworkSecurityGroup ToPsNetworkSecurityGroup(NetworkSecurityGroup nsg)
