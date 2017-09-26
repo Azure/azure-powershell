@@ -4,6 +4,13 @@
         - Included help file for the commandlet
         - Added in-memory tests and a scenario test (only live)
     * Fixed bugs in Add-AzureAsAccount commandlet 
+* Automation
+    * Fixed help documents for cmdlets fixed in the earlier release.
+    * Added 4 new cmdlets to support staged rollout of DSC node configurations.
+        - Start-AzureRmAutomationDscNodeConfigurationDeployment
+        - Stop-AzureRmAutomationDscNodeConfigurationDeployment
+        - Get-AzureRmAutomationDscNodeConfigurationDeployment
+        - Get-AzureRmAutomationDscNodeConfigurationDeploymentSchedule
 * CognitiveServices
     * Integrate with Cognitive Services Management SDK version 2.0.0.
     * Get-AzureRmCognitiveServicesAccount now can correctly support paging.
@@ -33,6 +40,23 @@
         - Remove-AzureRmContainerGroup
         - Get-AzureRmContainerInstanceLog
 * Insights
+        * New cmdlet Disable-AzureRmActivityLogAlert
+            - A new cmdlet to disable an existing activity log alert.
+            - Optionally the Tags are settable with this cmdlet too.
+        * New cmdlet Enable-AzureRmActivityLogAlert
+            - A new cmdlet to enable an existing activity log alert.
+            - Optionally the Tags are settable with this cmdlet too.
+        * New cmdlet Get-AzureRmActivityLogAlert
+            - A new cmdlet to retrieve one or more activity log alerts.
+            - The alerts can be retrieved by name, resource group, or subscription.
+        * New cmdlet New-AzureRmActionGroup
+            - A new cmdlet to create an ActionGroup object in memory (no request involved.)
+        * New cmdlet New-AzureRmActivityLogAlertCondition
+            - A new cmdlet to create an activity log alert leaf condition object in memory (no request involved.)
+        * New cmdlet Set-AzureRmActivityLogAlert
+            - A new cmdlet to create or update an activity log alert.
+        * New cmdlet Remove-AzureRmActivityLogAlert
+            - A new cmdlet to remove one activity log alert.
         * New cmdlet Set-AzureRmActionGroup
             - A new cmdlet to create a new or update an existing action group.
         * New cmdlet Get-AzureRmActionGroup
@@ -97,6 +121,25 @@
         - Updated New-AzureRmNetworkSecurityRuleConfig: Added optional parameters SourceApplicationSecurityGroup, SourceApplicationSecurityGroupId, DestinationApplicationSecurityGroup, and DestinationApplicationSecurityGroupId
         - Updated Add-AzureRmNetworkSecurityRuleConfig: Added optional parameters SourceApplicationSecurityGroup, SourceApplicationSecurityGroupId, DestinationApplicationSecurityGroup, and DestinationApplicationSecurityGroupId
         - Updated Set-AzureRmNetworkSecurityRuleConfig: Added optional parameters SourceApplicationSecurityGroup, SourceApplicationSecurityGroupId, DestinationApplicationSecurityGroup, and DestinationApplicationSecurityGroupId
+    * Added new commands for VpnDeviceConfiguration Scripts 
+        - Get-AzureRmVirtualNetworkGatewaySupportedVpnDevices 
+        - Get-AzureRmVirtualNetworkGatewayConnectionVpnDeviceConfigScript 
+* Profile
+  * Start-Job Support for AzureRm cmdlets. 
+    * All AzureRmCmdlets add -AzureRmContext parameter, which can accept a context (output of a Context cmdlet). 
+      - Common pattern for jobs with context persistence DISABLED: ```Start-Job {param ($context) New-AzureRmVM -AzureRmContext $context [... other parameters]} -ArgumentList (Get-AzureRmContext)```
+      - Common pattern for jobs with context persistence ENABLED:```Start-Job {New-AzureRmVM [... other parameters]}```
+  * Persist login information across sessions, new cmdlets: 
+    - Enable-AzureRmContextAutosave - Enable login persistence across sessions. 
+    - Disable-AzureRmContextAutosave - Disable login persistence across sessions. 
+  * Manage context information, new cmdets 
+    - Select-AzureRmContext - Select the active named context. 
+    - Rename-AzureRmContext - Rename an exsiting context for easy reference. 
+    - Remove-AzureRmContext - Remove an existing context. 
+    - Remove-AzureRmAccount - Remove all credentials, subscriptions, and tenants associated with an account. 
+  * Manage context information, cmdlet changes: 
+    - Added Scope = (Process | CurrentUser) to all cmdlets that change credentials 
+    - Get-AzureRmContext - Added ListAvailable parameter to list all saved contexts
 * Resources
     * Add PolicySetDefinition cmdlets
         - New-AzureRmPolicySetDefinition cmdlet to create a policy set definition
@@ -106,6 +149,18 @@
     * Add -PolicySetDefinition, -Sku and -NotScope parameters to New-AzureRmPolicyAssignment and Set-AzureRmPolicyAssignment cmdlets
     * Add support to pass in policy url to New-AzureRmPolicyDefinition and Set-AzureRmPolicyDefinition cmdlets
     * Add -Mode parameter to New-AzureRmPolicyDefinition cmdlet
+    * Add Support for removal of roleassignment using PSRoleAssignment object
+        - Users can now use PSRoleassignmnet inputobject with Remove-AzureRMRoleAssignment commandlet to remove the roleassignment.
+    * Add ManagedApplication cmdlets
+        - New-AzureRmManagedApplication cmdlet to create a managed application
+        - Get-AzureRmManagedApplication cmdlet to list all managed applications under a subscription or to get a specific managed application
+        - Remove-AzureRmManagedApplication cmdlet to delete a managed application
+        - Set-AzureRmManagedApplication cmdlet to update an existing managed application
+    * Add ManagedApplicationDefinition cmdlets
+        - New-AzureRmManagedApplicationDefinition cmdlet to create a managed application definition using a zip file uri or using mainTemplate and createUiDefinition json files
+        - Get-AzureRmManagedApplicationDefinition cmdlet to list all managed application definitions under a resource group or to get a specific managed application definition
+        - Remove-AzureRmManagedApplicationDefinition cmdlet to delete a managed application definition
+        - Set-AzureRmManagedApplicationDefinition cmdlet to update an existing managed application definition
 * Sql
     * Adding support for Virtual Network Rules
     	- Adding Get-AzureRmSqlServerVirtualNetworkRule cmdlet which gets the virtual network rules by a specific rule name or a list of virtual network rules in an Azure Sql server.

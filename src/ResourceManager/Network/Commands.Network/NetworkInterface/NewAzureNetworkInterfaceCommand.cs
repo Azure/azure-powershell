@@ -419,7 +419,9 @@ namespace Microsoft.Azure.Commands.Network
 
             var networkInterfaceModel = Mapper.Map<MNM.NetworkInterface>(networkInterface);
 
-            networkInterfaceModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
+			this.NullifyApplicationSecurityGroupIfAbsent(networkInterfaceModel);
+
+			networkInterfaceModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
             this.NetworkInterfaceClient.CreateOrUpdate(this.ResourceGroupName, this.Name, networkInterfaceModel);
              

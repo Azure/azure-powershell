@@ -395,7 +395,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             actual = (HashSet<string>)(TestSetGenerator.GetTests(paths, mapFilePath));
 
             //assert            
-            Assert.True(expectedNumberFiles == actual.Count);
+            Assert.True(expectedNumberFiles <= actual.Count);
         }
 
         [Fact]
@@ -455,7 +455,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             actual = (HashSet<string>)(TestSetGenerator.GetTests(paths, mapFilePath));
 
             //assert            
-            Assert.True(expectedNumberFiles == actual.Count);
+            Assert.True(expectedNumberFiles <= actual.Count);
         }
 
         [Fact]
@@ -547,7 +547,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             actual = (HashSet<string>)(TestSetGenerator.GetTests(paths, mapFilePath));
 
             //assert            
-            Assert.True(expectedNumberFiles == actual.Count);
+            Assert.True(expectedNumberFiles <= actual.Count);
         }
         #endregion
 
