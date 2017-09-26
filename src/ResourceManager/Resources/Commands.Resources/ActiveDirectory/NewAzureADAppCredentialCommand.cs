@@ -12,10 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Resources;
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
 using System;
 using System.Management.Automation;
+using System.Runtime.InteropServices;
+using System.Security;
 
 namespace Microsoft.Azure.Commands.ActiveDirectory
 {
@@ -40,7 +43,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationIdWithPassword,
             HelpMessage = "The value for the password credential associated with the application that will be valid for one year by default.")]
         [ValidateNotNullOrEmpty]
-        public string Password { get; set; }
+        public SecureString Password { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationObjectIdWithCertValue,
             HelpMessage = "The base64 encoded value for the AsymmetricX509Cert associated with the application that will be valid for one year by default.")]
@@ -71,8 +74,8 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                     ObjectId = ActiveDirectoryClient.GetObjectIdFromApplicationId(ApplicationId);
                 }
 
-
-                if (!string.IsNullOrEmpty(Password))
+                string decodedPassword = Utilities.SecureStringToString(Password);
+                if (!string.IsNullOrEmpty(decodedPassword))
                 {
                     // Create object for password credential
                     var passwordCredential = new PasswordCredential()
@@ -80,7 +83,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                         EndDate = EndDate,
                         StartDate = StartDate,
                         KeyId = Guid.NewGuid().ToString(),
-                        Value = Password
+                        Value = decodedPassword
                     };
                     if (ShouldProcess(target: ObjectId, action: string.Format("Adding a new password to application with objectId {0}", ObjectId)))
                     {
