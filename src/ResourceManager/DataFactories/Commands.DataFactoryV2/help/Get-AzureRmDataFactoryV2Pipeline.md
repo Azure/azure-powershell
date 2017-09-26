@@ -15,11 +15,13 @@ Gets information about pipelines in Data Factory.
 ### ByFactoryName (Default)
 ```
 Get-AzureRmDataFactoryV2Pipeline [[-Name] <String>] [-ResourceGroupName] <String> [-DataFactoryName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByFactoryObject
 ```
 Get-AzureRmDataFactoryV2Pipeline [[-Name] <String>] [-DataFactory] <PSDataFactory>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,7 +46,6 @@ PS C:\> Get-AzureRmDataFactoryV2Pipeline -ResourceGroupName "ADF" -DataFactoryNa
     DataFactoryName   : WikiADF
     Activities        : {MyCopyActivity_0_0, MyCopyActivity_1_0}
     Parameters        : {[OutputBlobName, Microsoft.Azure.Management.DataFactory.Models.ParameterSpecification]}
-
 ```
 
 This command gets information about all pipelines in the data factory named WikiADF.
@@ -104,7 +105,6 @@ PS C:\> (Get-AzureRmDataFactoryV2Pipeline -ResourceGroupName "ADF" -Name DPWikis
     Name                            : MyCopyActivity_1_0
     Description                     :
     DependsOn                       : {Microsoft.Azure.Management.DataFactory.Models.ActivityDependency}
-
 ```
 
 This command gets information for the pipeline named DPWikisample in the data factory named WikiADF, and then uses standard dot notation to view the Activities property associated with that pipeline.
@@ -115,7 +115,6 @@ PS C:\> (Get-AzureRmDataFactoryV2Pipeline -ResourceGroupName "ADF" -Name "DPWiki
 
     ReferenceName : dsIn
     Parameters    :
-
 ```
 
 This command gets information for the pipeline named DPWikisample in the data factory named WikiADF, and then uses standard dot notation to view the Activities property associated with that pipeline.
@@ -155,6 +154,19 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of the pipeline about which to get information.
 
@@ -186,22 +198,24 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### System.String
 Microsoft.Azure.Commands.DataFactoryV2.Models.PSDataFactory
-
 
 ## OUTPUTS
 
 ### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.DataFactoryV2.Models.PSPipeline, Microsoft.Azure.Commands.DataFactoryV2, Version=0.1.9.0, Culture=neutral, PublicKeyToken=null]]
 Microsoft.Azure.Commands.DataFactoryV2.Models.PSPipeline
 
-
 ## NOTES
 Keywords: azure, azurerm, arm, resource, management, manager, data, factories
 
 ## RELATED LINKS
+
 [Set-AzureRmDataFactoryV2Pipeline]()
 
 [Remove-AzureRmDataFactoryV2Pipeline]()
