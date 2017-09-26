@@ -142,8 +142,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Location
 #endif
             for (int i = 0; i < distinctLocations.Length; i++)
             {
-                distinctLocations[i] = "\"" + distinctLocations[i] + "\"";                
-            } 
+                distinctLocations[i] = "\"" + distinctLocations[i] + "\"";
+            }
             return distinctLocations;
         }
 
