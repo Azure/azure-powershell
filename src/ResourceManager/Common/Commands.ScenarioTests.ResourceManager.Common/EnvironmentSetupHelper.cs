@@ -135,6 +135,15 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             }
         }
 
+        public string RMNetworkModule
+        {
+            get
+            {
+                return Path.Combine(this.PackageDirectory,
+                                     @"ResourceManager\AzureResourceManager\AzureRM.Network\AzureRM.Network.psd1");
+            }
+        }
+
         public string GetRMModulePath(string psd1FileName)
         {
             string basename = Path.GetFileNameWithoutExtension(psd1FileName);
@@ -256,12 +265,12 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         private void SetAuthenticationFactory(AzureModule mode, TestEnvironment environment)
         {
 #if !NETSTANDARD
-            if(environment.AuthorizationContext.Certificate != null)
+            if (environment.AuthorizationContext.Certificate != null)
             {
                 AzureSession.Instance.AuthenticationFactory = new MockCertificateAuthenticationFactory(environment.UserName,
                     environment.AuthorizationContext.Certificate);
             }
-            else if(environment.AuthorizationContext.TokenCredentials.ContainsKey(TokenAudience.Management))
+            else if (environment.AuthorizationContext.TokenCredentials.ContainsKey(TokenAudience.Management))
             {
                 var httpMessage = new HttpRequestMessage();
                 environment.AuthorizationContext.TokenCredentials[TokenAudience.Management]
