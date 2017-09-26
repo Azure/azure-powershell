@@ -147,6 +147,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ResourceType name: &apos;{0}&apos; is invalid..
+        /// </summary>
+        public static string InvalidResourceType {
+            get {
+                return ResourceManager.GetString("InvalidResourceType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid tag format. Expect @{tagName = $null} or @{tagName = &quot;tagValue&quot;}.
         /// </summary>
         public static string InvalidTagFormat {
@@ -161,6 +170,24 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties {
         public static string NoSubscriptionFound {
             get {
                 return ResourceManager.GetString("NoSubscriptionFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No locations exist for all of the given ResourceTypes..
+        /// </summary>
+        public static string NoValidLocationsFound {
+            get {
+                return ResourceManager.GetString("NoValidLocationsFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No valid ResourceType given to LocationCompleter..
+        /// </summary>
+        public static string NoValidProviderFound {
+            get {
+                return ResourceManager.GetString("NoValidProviderFound", resourceCulture);
             }
         }
         
@@ -292,6 +319,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties {
         public static string TenantNotFound {
             get {
                 return ResourceManager.GetString("TenantNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Provider.List() timed out.
+        /// </summary>
+        public static string TimeOutForProviderList {
+            get {
+                return ResourceManager.GetString("TimeOutForProviderList", resourceCulture);
             }
         }
     }
