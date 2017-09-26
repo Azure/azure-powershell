@@ -12,9 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Resources;
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
 using System.Management.Automation;
+using System.Security;
 
 namespace Microsoft.Azure.Commands.ActiveDirectory
 {
@@ -38,7 +40,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "New password for the user.")]
         [ValidateNotNullOrEmpty]
-        public string Password { get; set; }
+        public SecureString Password { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "It must be specified if the user should change the password on the next successful login. Only valid if password is updated otherwise it will be ignored.")]
         public SwitchParameter ForceChangePasswordNextLogin { get; set; }
@@ -46,11 +48,12 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         public override void ExecuteCmdlet()
         {
             PasswordProfile profile = null;
-            if(!string.IsNullOrEmpty(Password))
+            string decodedPassword = Utilities.SecureStringToString(Password);
+            if(!string.IsNullOrEmpty(decodedPassword))
             {
                 profile = new PasswordProfile
                 {
-                    Password = Password,
+                    Password = decodedPassword,
                     ForceChangePasswordNextLogin = ForceChangePasswordNextLogin.IsPresent ? true : false
                 };
             }
