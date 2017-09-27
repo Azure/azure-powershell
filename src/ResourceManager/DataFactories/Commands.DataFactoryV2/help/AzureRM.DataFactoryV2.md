@@ -1,8 +1,8 @@
 ---
 Module Name: AzureRM.DataFactoryV2
 Module Guid: e3c0f6bc-fe96-41a0-88f4-5e490a91f05d
-Download Help Link: {{ Update Download Link }}
-Help Version: {{ Update Help Version }}
+Download Help Link:
+Help Version:
 Locale: en-US
 ---
 
