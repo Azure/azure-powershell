@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Internal.Resources.Models;
+using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Profile.Default
@@ -28,7 +29,7 @@ namespace Microsoft.Azure.Commands.Profile.Default
     [Cmdlet(VerbsCommon.Set, "AzureRmDefault", DefaultParameterSetName = ResourceGroupNameParameterSet,
         SupportsShouldProcess = true)]
     [OutputType(typeof(ResourceGroup))]
-    public class GetAzureRMDefaultCommand : AzureRMCmdlet
+    public class SetAzureRMDefaultCommand : AzureRMCmdlet
     {
         private const string ResourceGroupNameParameterSet = "ResourceGroupName";
 
@@ -44,14 +45,24 @@ namespace Microsoft.Azure.Commands.Profile.Default
                                 AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(context, AzureEnvironment.Endpoint.ResourceManager),
                                 AzureSession.Instance.ClientFactory.GetCustomHandlers());
             client.SubscriptionId = context.Subscription.Id;
-            var defaultResourceGroup = client.ResourceGroups.Get(ResourceGroupName);
-            if (ShouldProcess(string.Format(Resources.ChangingDefaultResourceGroup, defaultResourceGroup.Name), Resources.DefaultResourceGroupChangeWarning))
+
+            if (ResourceGroupName != null)
             {
-                if (context.ExtendedProperties.ContainsKey("Default Resource Group"))
-                    context.ExtendedProperties.SetProperty("Default Resource Group", defaultResourceGroup.Name);
-                else context.ExtendedProperties.Add("Default Resource Group", defaultResourceGroup.Name);
+                var defaultResourceGroup = client.ResourceGroups.Get(ResourceGroupName);
+                if (ShouldProcess(Resources.DefaultResourceGroupTarget, String.Format(Resources.DefaultResourceGroupChangeWarning, defaultResourceGroup.Name)))
+                {
+                    if (context.ExtendedProperties.ContainsKey(Resources.DefaultResourceGroupKey))
+                    {
+                        context.ExtendedProperties.SetProperty(Resources.DefaultResourceGroupKey, defaultResourceGroup.Name);
+                    }
+
+                    else
+                    {
+                        context.ExtendedProperties.Add(Resources.DefaultResourceGroupKey, defaultResourceGroup.Name);
+                    }
+                }
+                WriteObject(defaultResourceGroup);
             }
-            WriteObject(defaultResourceGroup);
         }
     }
 }
