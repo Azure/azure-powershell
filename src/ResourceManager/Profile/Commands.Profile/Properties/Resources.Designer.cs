@@ -133,15 +133,6 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Default resource group changed to &apos;{0}&apos;.
-        /// </summary>
-        internal static string ChangingDefaultResourceGroup {
-            get {
-                return ResourceManager.GetString("ChangingDefaultResourceGroup", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Could not authenticate your user account {0} with the common tenant. Please login again using Login-AzureRmAccount..
         /// </summary>
         internal static string CommonTenantAuthFailed {
@@ -187,11 +178,38 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Changing default resource group for the current context.
+        ///   Looks up a localized string similar to Changing default resource group to &apos;{0}&apos;.
         /// </summary>
         internal static string DefaultResourceGroupChangeWarning {
             get {
                 return ResourceManager.GetString("DefaultResourceGroupChangeWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Default Resource Group.
+        /// </summary>
+        internal static string DefaultResourceGroupKey {
+            get {
+                return ResourceManager.GetString("DefaultResourceGroupKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing default resource group.
+        /// </summary>
+        internal static string DefaultResourceGroupRemovalWarning {
+            get {
+                return ResourceManager.GetString("DefaultResourceGroupRemovalWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current context.
+        /// </summary>
+        internal static string DefaultResourceGroupTarget {
+            get {
+                return ResourceManager.GetString("DefaultResourceGroupTarget", resourceCulture);
             }
         }
         
@@ -273,6 +291,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static string NoAccountProvided {
             get {
                 return ResourceManager.GetString("NoAccountProvided", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No Resource Group default set..
+        /// </summary>
+        internal static string NoDefaultResourceGroupSet {
+            get {
+                return ResourceManager.GetString("NoDefaultResourceGroupSet", resourceCulture);
             }
         }
         
