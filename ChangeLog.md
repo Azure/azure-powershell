@@ -1,4 +1,13 @@
-﻿## 2017.09.25 - Version 4.4.0
+﻿## 2017.10.6 - Version 4.5.0
+* MachineLearningCompute
+    * Added initial set of cmdlets for MachineLearningCompute
+        - Get-AzureRmMlOpCluster
+        - Get-AzureRmMlOpClusterKey
+        - New-AzureRmMlOpCluster
+        - Remove-AzureRmMlOpCluster
+        - Test-AzureRmMlOpClusterSystemServicesUpdateAvailability
+        - Update-AzureRmMlOpClusterSystemService
+## 2017.09.25 - Version 4.4.0
 * AnalysisServices
     * Added a new dataplane commandlet to allow synchronization of databases from read-write instance to read-only instances 
         - Included help file for the commandlet
@@ -71,6 +80,7 @@
       * Get-AzureKeyVaultCertificate
       * Remove-AzureKeyVaultCertificate
       * Undo-AzureKeyVaultCertificateRemoval
+
 * Network
     * Added support for endpoint services to Virtual Network Subnets
         - Updated Add-AzureRmVirtualSubnetConfig: Added optional parameter -ServiceEndpoint
