@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Resources;
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
+using System;
 using System.Management.Automation;
 using System.Security;
 
@@ -40,6 +41,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "New password for the user.")]
         [ValidateNotNullOrEmpty]
+        [Obsolete("Set-AzureRmADUser: The parameter \"Password\" is being changed from a string to a SecureString in an upcoming breaking change release.")]
         public SecureString Password { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "It must be specified if the user should change the password on the next successful login. Only valid if password is updated otherwise it will be ignored.")]
@@ -49,11 +51,15 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         {
             PasswordProfile profile = null;
             string decodedPassword = Utilities.SecureStringToString(Password);
-            if(!string.IsNullOrEmpty(decodedPassword))
+#pragma warning disable 0618
+            if (!string.IsNullOrEmpty(decodedPassword))
+#pragma warning restore 0618
             {
                 profile = new PasswordProfile
                 {
+#pragma warning disable 0618
                     Password = decodedPassword,
+#pragma warning restore 0618
                     ForceChangePasswordNextLogin = ForceChangePasswordNextLogin.IsPresent ? true : false
                 };
             }

@@ -511,6 +511,15 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No JobId passed. Please pass a valid JobId..
+        /// </summary>
+        internal static string NoJobIdPassedToGetJobInformationCall {
+            get {
+                return ResourceManager.GetString("NoJobIdPassedToGetJobInformationCall", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} File(s) written to output folder.
         /// </summary>
         internal static string NumberOfFilesWritten {
