@@ -48,7 +48,8 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             WorkerNodeDataDisksGroups = new List<DataDisksGroupProperties>();
             if (cluster.Properties.ComputeProfile != null && cluster.Properties.ComputeProfile.Roles.Any())
             {
-                foreach (var role in cluster.Properties.ComputeProfile.Roles)
+                var rolesWithDataDisksGroups = cluster.Properties.ComputeProfile.Roles.Where(x => x.DataDisksGroups != null);
+                foreach (var role in rolesWithDataDisksGroups)
                 {
                     WorkerNodeDataDisksGroups.AddRange(role.DataDisksGroups);
                 }
@@ -188,7 +189,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         public List<string> ComponentVersion { get; set; }
 
         /// <summary>
-        /// Data Disks Properties for the worker role.
+        /// Data Disks Group Properties for the Worker Role.
         /// </summary>
         public List<DataDisksGroupProperties> WorkerNodeDataDisksGroups { get; set; }
 		

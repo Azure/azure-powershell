@@ -136,7 +136,8 @@ namespace Microsoft.Azure.Commands.HDInsight
                     CertificateFileContents = CertificateFileContents,
                     CertificateFilePath = CertificateFilePath,
                     CertificatePassword = CertificatePassword,
-                    SecurityProfile = SecurityProfile
+                    SecurityProfile = SecurityProfile,
+                    DisksPerWorkerNode = DisksPerWorkerNode
                 };
                 foreach (
                     var storageAccount in
@@ -157,10 +158,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                 {
                     result.ComponentVersion.Add(component.Key, component.Value);
                 }
-                foreach (var dataDisksGroups in parameters.WorkerNodeDataDisksGroups.Where(d => d.DisksPerNode > 0))
-                {
-                    result.DataDisksGroupProperties.Add(dataDisksGroups);
-                }
+                
                 return result;
             }
             set
@@ -191,6 +189,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                 ObjectId = value.ObjectId;
                 CertificatePassword = value.CertificatePassword;
                 SecurityProfile = value.SecurityProfile;
+                DisksPerWorkerNode = value.DisksPerWorkerNode;
 
                 foreach (
                     var storageAccount in
@@ -210,10 +209,6 @@ namespace Microsoft.Azure.Commands.HDInsight
                 foreach (var component in value.ComponentVersion.Where(component => !parameters.ComponentVersion.ContainsKey(component.Key)))
                 {
                     parameters.ComponentVersion.Add(component.Key, component.Value);
-                }
-                foreach (var dataDisksGroups in value.DataDisksGroupProperties.Where(d => d.DisksPerNode > 0))
-                {
-                    this.parameters.WorkerNodeDataDisksGroups.Add(dataDisksGroups);
                 }
             }
         }
@@ -292,13 +287,6 @@ namespace Microsoft.Azure.Commands.HDInsight
             set { parameters.ComponentVersion = value; }
         }
 
-        [Parameter(HelpMessage = "Gets or sets the data disks groups for worker node role in the cluster.")]
-        public List<DataDisksGroupProperties> WorkerNodeDataDisksGroups
-        {
-            get { return parameters.WorkerNodeDataDisksGroups; }
-            set { parameters.WorkerNodeDataDisksGroups = value; }
-        }
-
         [Parameter(HelpMessage = "Gets or sets the virtual network guid for this HDInsight cluster.")]
         public string VirtualNetworkId
         {
@@ -362,6 +350,9 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         [Parameter(HelpMessage = "Gets or sets Security Profile which is used for creating secure cluster.")]
         public AzureHDInsightSecurityProfile SecurityProfile { get; set; }
+
+        [Parameter(HelpMessage = "Gets or sets the number of disks for worker node role in the cluster.")]
+        public int DisksPerWorkerNode { get; set; }
 
         #endregion
 
@@ -472,14 +463,13 @@ namespace Microsoft.Azure.Commands.HDInsight
                 };
             }
 
-            if (WorkerNodeDataDisksGroups != null)
+            if (DisksPerWorkerNode > 0)
             {
-                var dataDisksGroups = WorkerNodeDataDisksGroups;
-                this.parameters.WorkerNodeDataDisksGroups = new List<DataDisksGroupProperties>()
+                parameters.WorkerNodeDataDisksGroups = new List<DataDisksGroupProperties>()
                 {
                     new DataDisksGroupProperties()
                     {
-                        DisksPerNode = dataDisksGroups.First().DisksPerNode
+                        DisksPerNode = DisksPerWorkerNode
                     }
                 };
             }
