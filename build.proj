@@ -518,7 +518,17 @@
   <!-- Run checkin tests for each pull request -->
   <Target Name="Test" DependsOnTargets="BeforeRunTests">
     <Message Importance="high" Text="Running check in tests..." />
-    <CallTarget Targets="InvokeXUnit"/>
+
+    <!-- Azs.Commerce.Admin -->
+    <Exec Condition=" '$(Stack)' == 'true' " Command="$(PowerShellCommand) -NonInteractive -NoLogo -NoProfile -Command &quot;$(LibraryToolsFolder)\Run-UnitTests.ps1 -RootTestLocation $(LibrarySourceFolder)\StackAdmin\Azs.Commerce.Admin\Tests;Write-Host ' '&quot;" ContinueOnError="false"/>
+    
+    <!-- Azs.Fabric.Admin -->
+    <Exec Condition=" '$(Stack)' == 'true' " Command="$(PowerShellCommand) -NonInteractive -NoLogo -NoProfile -Command &quot;$(LibraryToolsFolder)\Run-UnitTests.ps1 -RootTestLocation $(LibrarySourceFolder)\StackAdmin\Azs.Fabric.Admin\Tests;Write-Host ' '&quot;" ContinueOnError="false"/>
+
+    <!-- Azs.InfrastructureInsights.Admin -->
+    <Exec Condition=" '$(Stack)' == 'true' " Command="$(PowerShellCommand) -NonInteractive -NoLogo -NoProfile -Command &quot;$(LibraryToolsFolder)\Run-UnitTests.ps1 -RootTestLocation $(LibrarySourceFolder)\StackAdmin\Azs.InfrastructureInsights.Admin\Tests;Write-Host ' '&quot;" ContinueOnError="false"/>
+
+    <CallTarget Condition=" '$(Scope)' == 'all' " Targets="InvokeXUnit"/>
   </Target>
 
   <!-- Run Full switch with scenario tests -->
