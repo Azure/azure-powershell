@@ -392,7 +392,9 @@ Accept wildcard characters: False
 ```
 
 ### -DisksPerWorkerNode
-Gets or sets the number of disks for worker node role in the cluster.```yaml
+Specifies the number of disks for worker node role in the cluster.
+
+```yaml
 Type: Int32
 Parameter Sets: (All)
 Aliases: 
