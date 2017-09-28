@@ -204,7 +204,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### IStorageContext
+
+Parameter 'Context' accepts value of type 'IStorageContext' from the pipeline
+
+### String
+
+Parameter 'ShareName' accepts value of type 'String' from the pipeline
+
 ## OUTPUTS
+
+### System.String
 
 ## NOTES
 * Keywords: common, azure, services, data, storage, blob, queue, table

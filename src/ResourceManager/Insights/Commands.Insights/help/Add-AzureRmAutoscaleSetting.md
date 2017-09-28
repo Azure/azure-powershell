@@ -183,6 +183,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Insights.OutputClasses.PSAddAutoscaleSettingOperationResponse
+
 ## NOTES
 
 ## RELATED LINKS

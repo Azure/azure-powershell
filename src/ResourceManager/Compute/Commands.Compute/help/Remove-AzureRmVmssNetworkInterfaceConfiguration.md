@@ -15,13 +15,13 @@ Removes a network interface configuration from a VMSS.
 ### NameParameterSet
 ```
 Remove-AzureRmVmssNetworkInterfaceConfiguration [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet>
- [-Name] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Name] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### IdParameterSet
 ```
 Remove-AzureRmVmssNetworkInterfaceConfiguration [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet>
- [-Id] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Id] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,8 +41,25 @@ The second command removes the network interface configuration named ContosoVmss
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Id
-Specifies the ID of the network interface configuration that this cmdlet removes.```yaml
+Specifies the ID of the network interface configuration that this cmdlet removes.
+
+```yaml
 Type: String
 Parameter Sets: IdParameterSet
 Aliases: 
@@ -119,7 +136,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### VirtualMachineScaleSet
+Parameter 'VirtualMachineScaleSet' accepts value of type 'VirtualMachineScaleSet' from the pipeline
+
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet
 
 ## NOTES
 

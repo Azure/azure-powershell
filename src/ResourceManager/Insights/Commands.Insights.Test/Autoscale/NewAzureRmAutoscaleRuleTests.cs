@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
 
         public NewAzureRmAutoscaleRuleTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            //ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             commandRuntimeMock = new Mock<ICommandRuntime>();
             Cmdlet = new NewAzureRmAutoscaleRuleCommand()
             {

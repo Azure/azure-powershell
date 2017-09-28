@@ -260,7 +260,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-Microsoft.Azure.Commands.Sql.ElasticPool.Model.AzureSqlElasticPoolModel
+### Microsoft.Azure.Commands.Sql.ElasticPool.Model.AzureSqlElasticPoolModel
 
 ## NOTES
 

@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+Module Name: AzureRM.Network
 ms.assetid: 29BB24C4-1EC9-47DE-A5B8-5EEA4525AE3A
 online version: 
 schema: 2.0.0
@@ -98,6 +99,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.String
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
 
 ## NOTES
 * Keywords: azure, azurerm, arm, resource, management, manager, network, networking

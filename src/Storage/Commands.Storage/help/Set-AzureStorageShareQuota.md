@@ -157,7 +157,21 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### IStorageContext
+
+Parameter 'Context' accepts value of type 'IStorageContext' from the pipeline
+
+### CloudFileShare
+
+Parameter 'Share' accepts value of type 'CloudFileShare' from the pipeline
+
+### String
+
+Parameter 'ShareName' accepts value of type 'String' from the pipeline
+
 ## OUTPUTS
+
+### Microsoft.WindowsAzure.Storage.File.FileShareProperties
 
 ## NOTES
 

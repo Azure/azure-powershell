@@ -151,7 +151,7 @@ Parameter Sets: (All)
 Aliases: SecretName
 
 Required: True
-Position: 1
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -216,7 +216,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 0
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -232,7 +232,7 @@ Parameter Sets: (All)
 Aliases: SecretVersion
 
 Required: False
-Position: 2
+Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -260,6 +260,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.KeyVault.Models.Secret
 
 Returns Microsoft.Azure.Commands.KeyVault.Models.Secret object if PassThru is specified. Otherwise, returns nothing.
 

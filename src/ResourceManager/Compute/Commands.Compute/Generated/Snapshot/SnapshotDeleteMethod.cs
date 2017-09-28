@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
             ExecuteClientAction(() =>
             {
-                if (ShouldProcess(this.ResourceGroupName, VerbsCommon.Remove)
+                if (ShouldProcess(this.SnapshotName, VerbsCommon.Remove)
                     && (this.Force.IsPresent ||
                         this.ShouldContinue(Properties.Resources.ResourceRemovalConfirmation,
                                             "Remove-AzureRmSnapshot operation")))
@@ -144,7 +144,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 3,
             Mandatory = false)]
         [AllowNull]
         public SwitchParameter Force { get; set; }

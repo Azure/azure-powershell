@@ -82,7 +82,9 @@ Accept wildcard characters: False
 ```
 
 ### -KeyVersion
-If the encryption type is User assigned, the user can rotate their key version with this parameter.```yaml
+If the encryption type is User assigned, the user can rotate their key version with this parameter.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 

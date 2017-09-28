@@ -87,7 +87,9 @@ Accept wildcard characters: False
 ```
 
 ### -SkuCapacity
-Namespace Sku Capacity.```yaml
+Namespace Sku Capacity.
+
+```yaml
 Type: Int32
 Parameter Sets: (All)
 Aliases:
@@ -185,7 +187,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-Microsoft.Azure.Commands.ServiceBus.Models.NamespaceAttributes
+### Microsoft.Azure.Commands.ServiceBus.Models.NamespaceAttributes
 
 ## NOTES
 

@@ -89,7 +89,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### IStorageContext
+
+Parameter 'Context' accepts value of type 'IStorageContext' from the pipeline
+
+### String
+
+Parameter 'Table' accepts value of type 'String' from the pipeline
+
 ## OUTPUTS
+
+### Microsoft.WindowsAzure.Storage.Table.SharedAccessTablePolicy
 
 ## NOTES
 

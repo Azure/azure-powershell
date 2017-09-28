@@ -593,7 +593,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-Microsoft.Azure.Commands.KeyVault.Models.ManagedStorageSasDefinition
+### Microsoft.Azure.Commands.KeyVault.Models.ManagedStorageSasDefinition
 
 ## NOTES
 

@@ -19,6 +19,12 @@
 -->
 ## Current Release
 
+## Version 4.4.0
+
+## Version 4.3.1
+
+## Version 4.3.0
+
 ## Version 4.2.1
 - Fix issue with non-interactive user authentication (link)[https://github.com/Azure/azure-powershell/issues/4299]
 

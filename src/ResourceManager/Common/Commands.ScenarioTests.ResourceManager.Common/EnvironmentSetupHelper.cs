@@ -15,7 +15,6 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Test;
@@ -25,16 +24,13 @@ using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Reflection;
-using System.Reflection.Emit;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
-using System.Management.Automation.Runspaces;
 using System.Net.Http;
-using System.Reflection;
 using System.Threading;
 
 #if !NETSTANDARD
@@ -111,16 +107,6 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             }
         }
 
-        // This ResourceManagerStartup.ps1 contains Get-AzureRmAuthorizationChangeLog script
-        public string RMResourceManagerStartup
-        {
-            get
-            {
-                return Path.Combine(this.PackageDirectory,
-                                    @"ResourceManager\AzureResourceManager\AzureRM.Resources\ResourceManagerStartup.ps1");
-            }
-        }
-
         public string RMInsightsModule
         {
             get
@@ -146,6 +132,15 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             {
                 return Path.Combine(this.PackageDirectory,
                                      @"Storage\Azure.Storage\Azure.Storage.psd1");
+            }
+        }
+
+        public string RMNetworkModule
+        {
+            get
+            {
+                return Path.Combine(this.PackageDirectory,
+                                     @"ResourceManager\AzureResourceManager\AzureRM.Network\AzureRM.Network.psd1");
             }
         }
 
@@ -270,12 +265,12 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         private void SetAuthenticationFactory(AzureModule mode, TestEnvironment environment)
         {
 #if !NETSTANDARD
-            if(environment.AuthorizationContext.Certificate != null)
+            if (environment.AuthorizationContext.Certificate != null)
             {
                 AzureSession.Instance.AuthenticationFactory = new MockCertificateAuthenticationFactory(environment.UserName,
                     environment.AuthorizationContext.Certificate);
             }
-            else if(environment.AuthorizationContext.TokenCredentials.ContainsKey(TokenAudience.Management))
+            else if (environment.AuthorizationContext.TokenCredentials.ContainsKey(TokenAudience.Management))
             {
                 var httpMessage = new HttpRequestMessage();
                 environment.AuthorizationContext.TokenCredentials[TokenAudience.Management]

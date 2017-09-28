@@ -69,7 +69,7 @@ Specifies the URL of the .zip file that contains the new version of a module tha
 ```yaml
 Type: Uri
 Parameter Sets: (All)
-Aliases: 
+Aliases: ContentLink
 
 Required: False
 Position: Named
@@ -129,6 +129,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Automation.Model.Module
 
 ## NOTES
 

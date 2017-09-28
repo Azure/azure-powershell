@@ -128,6 +128,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Guid
+
+Parameter 'JobId' accepts value of type 'Guid' from the pipeline
+
 ## OUTPUTS
 
 ### bool

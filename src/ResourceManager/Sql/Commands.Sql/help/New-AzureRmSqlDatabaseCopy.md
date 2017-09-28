@@ -210,9 +210,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-You can pipe instances of the **Database** object for the source database to this cmdlet.
-
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Sql.Replication.Model.AzureSqlDatabaseCopyModel
 
 This cmdlet returns a **Database** object that represents the copied database.
 

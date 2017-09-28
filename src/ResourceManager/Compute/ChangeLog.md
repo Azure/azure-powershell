@@ -18,8 +18,38 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 3.4.0
+* Run Command feature:
+    - New cmdlet: 'Invoke-AzureRmVMRunCommand' invokes a run command on a VM
+    - New cmdlet: 'Get-AzureRmVMRunCommandDocument' shows available run command documents
+* Add 'StorageAccountType' parameter to Set-AzureRmDataDisk
+* Availability Zone support for virtual machine, VM scale set, and disk
+    - New paramter: 'Zone' is added to New-AzureRmVM, New-AzureRmVMConfig, New-AzureRmVmssConfig, New-AzureRmDiskConfig
+* VM scale set rolling upgrade feature:
+    - New cmdlet: 'Start-AzureRmVmssRollingOSUpgrade' invokes OS rolling upgrade of VM scale set
+    - New cmdlet: 'Set-AzureRmVmssRollingUpgradePolicy' sets upgrade policy for VM scale set rolling upgrade.
+    - New cmdlet: 'Stop-AzureRmVmssRollingUpgrade' cancels rolling upgrade of VM scale set
+    - New cmdlet: 'Get-AzureRmVmssRollingUpgrade' shows the status of VM scale set rolling upgrade.
+* AssignIdentity switch parameter is introduced for system assigned identity.
+    - New parameter: 'AssignIdentity' is added to New-AzureRmVMConfig, New-AzureRmVmssConfig and Update-AzureRmVM
+* Vmss disk encryption feature:
+    - New cmdlet: 'Set-AzureRmVmssDiskEncryptionExtension' enables disk encryption on VM scale set
+    - New cmdlet: 'Disable-AzureRmVmssDiskEncryption' disables disk encryption on VM scale set
+    - New cmdlet: 'Get-AzureRmVmssDiskEncryptionStatus' shows the disk encryption status of a VM scale set
+    - New cmdelt: 'Get-AzureRmVmssVMDiskEncryptionStatus' shows the disk encryption status of VMs in a VM scale set
+
+## Version 3.3.1
+* 
+## Version 3.3.0
 * Set-AzureRmVMAEMExtension: Add support for new Premium Disk sizes
 * Set-AzureRmVMAEMExtension: Add support for M series
+* Add ForceUpdateTag parameter to Add-AzureRmVmssExtension
+* Add Primary parameter to New-AzureRmVmssIpConfig
+* Add EnableAcceleratedNetworking parameter to Add-AzureRmVmssNetworkInterfaceConfig
+* Add InstanceId to Set-AzureRmVmss
+* Expose MaintenanceRedeployStatus to Get-AzureRmVM -Status output
+* Expose Restriction and Capability to the table format of Get-AzureRmComputeResourceSku
 
 ## Version 3.2.1
 - Fix issue with VM DIsk and VM Disk snapshot create and update cmdlets, (link)[https://github.com/azure/azure-powershell/issues/4309]

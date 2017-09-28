@@ -98,6 +98,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### WebService
+
+Parameter 'MlWebService' accepts value of type 'WebService' from the pipeline
+
 ## OUTPUTS
 
 ### None

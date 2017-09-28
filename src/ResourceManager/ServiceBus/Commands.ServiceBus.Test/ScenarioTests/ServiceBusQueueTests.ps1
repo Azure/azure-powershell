@@ -67,11 +67,11 @@ function ServiceBusQueueTests
     
     Write-Debug " Create new Queue namespace"
     Write-Debug "NamespaceName : $namespaceName" 
-    $result = New-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -Location $location
-    Wait-Seconds 15
+    $result = New-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Location $location -Name $namespaceName
+    
 
     Write-Debug "Get the created namespace within the resource group"
-    $createdNamespace = Get-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName
+    $createdNamespace = Get-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName
 
     $found = 0
     
@@ -89,10 +89,10 @@ function ServiceBusQueueTests
 
 	Write-Debug "Create Queue"
 	$nameQueue = Get-QueueName
-	$result = New-AzureRmServiceBusQueue -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -QueueName $nameQueue -EnablePartitioning $False -MaxDeliveryCount 7
+	$result = New-AzureRmServiceBusQueue -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $nameQueue -EnablePartitioning $False -MaxDeliveryCount 7
 	Assert-True {$result.Name -eq $nameQueue} "In CreateQueue response Name not found"
 
-	$resultGetQueue = Get-AzureRmServiceBusQueue -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -QueueName $result.Name
+	$resultGetQueue = Get-AzureRmServiceBusQueue -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $result.Name
 	Assert-True {$resultGetQueue.Name -eq $result.Name} "In GetQueue response, QueueName not found"
 	
 	$resultGetQueue.EnableExpress = $True
@@ -100,15 +100,15 @@ function ServiceBusQueueTests
 	$resultGetQueue.MaxDeliveryCount = 5
 	$resultGetQueue.MaxSizeInMegabytes = 1024
 
-	$resltSetQueue = Set-AzureRmServiceBusQueue -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -QueueName $resultGetQueue.Name -QueueObj $resultGetQueue
+	$resltSetQueue = Set-AzureRmServiceBusQueue -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $resultGetQueue.Name -InputObject $resultGetQueue
 	Assert-True {$resltSetQueue.Name -eq $resultGetQueue.Name} "In GetQueue response, QueueName not found"
 
 	# Get all Queues
-	$ResulListQueue = Get-AzureRmServiceBusQueue -ResourceGroup $resourceGroupName -NamespaceName $namespaceName
+	$ResulListQueue = Get-AzureRmServiceBusQueue -ResourceGroupName $resourceGroupName -Namespace $namespaceName
 	Assert-True {$ResulListQueue.Count -gt 0} "no queues were found in ListQueue"
 
 	# Delete the created Queue
-	$ResultDeleteQueue = Remove-AzureRmServiceBusQueue -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -QueueName $ResulListQueue[0].Name
+	$ResultDeleteQueue = Remove-AzureRmServiceBusQueue -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $ResulListQueue[0].Name
 	Assert-True {$ResultDeleteQueue} "Queue not deleted"
 
 	# Cleanup
@@ -116,10 +116,10 @@ function ServiceBusQueueTests
 	Write-Debug " Delete the Queue"
 	for ($i = 0; $i -lt $ResulListQueue.Count; $i++)
 	{
-		$delete1 = Remove-AzureRmServiceBusQueue -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -QueueName $ResulListQueue[$i].Name		
+		$delete1 = Remove-AzureRmServiceBusQueue -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $ResulListQueue[$i].Name		
 	}
     Write-Debug " Delete namespaces"
-    Remove-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName
+    Remove-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName
 
 	Write-Debug " Delete resourcegroup"
 	Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
@@ -148,15 +148,15 @@ function ServiceBusQueueAuthTests
     # Create Queue Namespace 
     Write-Debug " Create new ServiceBus namespace"
     Write-Debug "Namespace name : $namespaceName"
-    $result = New-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -Location $location
-    Wait-Seconds 15
+    $result = New-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Location $location -Name $namespaceName
+    
     
 	# Assert
 	Assert-True {$result.ProvisioningState -eq "Succeeded"}
 
 	# Get Created NameSpace
     Write-Debug " Get the created namespace within the resource group"
-    $createdNamespace = Get-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName
+    $createdNamespace = Get-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName
     
 	# Assert
 	Assert-True {$createdNamespace.Count -eq 1}
@@ -167,7 +167,7 @@ function ServiceBusQueueAuthTests
         {
             $found = 1
             Assert-AreEqual $location.Replace(' ','') $createdNamespace[$i].Location.Replace(' ','')
-           # Assert-AreEqual $resourceGroupName $createdNamespace[$i].ResourceGroupName
+            #Assert-AreEqual $resourceGroupName $createdNamespace[$i].ResourceGroupName
             #Assert-AreEqual "Messaging" $createdNamespace[$i].NamespaceType
             break
         }
@@ -180,28 +180,28 @@ function ServiceBusQueueAuthTests
     Write-Debug " Create new Queue "    
 	$msgRetentionInDays = 3
 	$partionCount = 2
-    $result_Queue = New-AzureRmServiceBusQueue -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -QueueName $queueName -EnablePartitioning $TRUE
+    $result_Queue = New-AzureRmServiceBusQueue -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $queueName -EnablePartitioning $TRUE
 	
     Write-Debug "Get the created Queue"
-    $createdQueue = Get-AzureRmServiceBusQueue -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -QueueName $result_Queue.Name
+    $createdQueue = Get-AzureRmServiceBusQueue -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $result_Queue.Name
 
 	# Assert
     Assert-True {$createdQueue.Count -eq 1}
 
 	# Create Queue Authorization Rule
     Write-Debug "Create a Queue Authorization Rule"
-    $result = New-AzureRmServiceBusQueueAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -QueueName $queueName -AuthorizationRuleName $authRuleName -Rights @("Listen","Send")
+    $result = New-AzureRmServiceBusAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Queue $queueName -Name $authRuleName -Rights @("Listen","Send")
 
 	# Assert
     Assert-AreEqual $authRuleName $result.Name
     Assert-AreEqual 2 $result.Rights.Count
     Assert-True { $result.Rights -Contains "Listen" }
     Assert-True { $result.Rights -Contains "Send" }
-    Wait-Seconds 15
+    
 
 	# Get Created Queue Authorization Rule
     Write-Debug "Get created authorizationRule"
-    $createdAuthRule = Get-AzureRmServiceBusQueueAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -QueueName $queueName -AuthorizationRule $authRuleName
+    $createdAuthRule = Get-AzureRmServiceBusAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Queue $queueName -Name $authRuleName
 
 	# Assert
     Assert-AreEqual $authRuleName $createdAuthRule.Name
@@ -211,7 +211,7 @@ function ServiceBusQueueAuthTests
 
 	# Get all Queue Authorization Rules
     Write-Debug "Get All Queue AuthorizationRule"
-    $result = Get-AzureRmServiceBusQueueAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -QueueName $queueName
+    $result = Get-AzureRmServiceBusAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Queue $queueName
 	# Assert
     $found = 0
     for ($i = 0; $i -lt $result.Count; $i++)
@@ -230,8 +230,8 @@ function ServiceBusQueueAuthTests
 	# Update the Queue Authorization Rule
     Write-Debug "Update Queue AuthorizationRule"
 	$createdAuthRule.Rights.Add("Manage")
-    $updatedAuthRule = Set-AzureRmServiceBusQueueAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -QueueName $queueName -AuthorizationRuleName $authRuleName -AuthRuleObj $createdAuthRule
-    Wait-Seconds 15
+    $updatedAuthRule = Set-AzureRmServiceBusAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Queue $queueName -Name $authRuleName -InputObject $createdAuthRule
+    
 
 	# Assert
     Assert-AreEqual $authRuleName $updatedAuthRule.Name
@@ -241,7 +241,7 @@ function ServiceBusQueueAuthTests
     Assert-True { $updatedAuthRule.Rights -Contains "Manage" }
 	   
     # get the Updated Queue Authorization Rule
-    $updatedAuthRule = Get-AzureRmServiceBusQueueAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -QueueName $queueName -AuthorizationRuleName $authRuleName
+    $updatedAuthRule = Get-AzureRmServiceBusAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Queue $queueName -Name $authRuleName
     
 	# Assert
     Assert-AreEqual $authRuleName $updatedAuthRule.Name
@@ -252,7 +252,7 @@ function ServiceBusQueueAuthTests
 	
 	# Get the List Keys
     Write-Debug "Get Queue authorizationRules connectionStrings"
-    $namespaceListKeys = Get-AzureRmServiceBusQueueKey -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -QueueName $queueName -AuthorizationRuleName $authRuleName
+    $namespaceListKeys = Get-AzureRmServiceBusKey -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Queue $queueName -Name $authRuleName
 
     Assert-True {$namespaceListKeys.PrimaryConnectionString.Contains($updatedAuthRule.PrimaryKey)}
     Assert-True {$namespaceListKeys.SecondaryConnectionString.Contains($updatedAuthRule.SecondaryKey)}
@@ -260,18 +260,17 @@ function ServiceBusQueueAuthTests
 	# Regentrate the Keys 
 	$policyKey = "PrimaryKey"
 
-	$namespaceRegenerateKeys = New-AzureRmServiceBusQueueKey -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -QueueName $queueName -AuthorizationRuleName $authRuleName -RegenerateKey $policyKey
+	$namespaceRegenerateKeys = New-AzureRmServiceBusKey -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Queue $queueName -Name $authRuleName -RegenerateKey $policyKey
 	Assert-True {$namespaceRegenerateKeys.PrimaryKey -ne $namespaceListKeys.PrimaryKey}
 
 	$policyKey1 = "SecondaryKey"
 
-	$namespaceRegenerateKeys1 = New-AzureRmServiceBusQueueKey -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -QueueName $queueName -AuthorizationRuleName $authRuleName -RegenerateKey $policyKey1
+	$namespaceRegenerateKeys1 = New-AzureRmServiceBusKey -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Queue $queueName -Name $authRuleName -RegenerateKey $policyKey1
 	Assert-True {$namespaceRegenerateKeys1.SecondaryKey -ne $namespaceListKeys.SecondaryKey}
-
-
+	
 	# Cleanup
     Write-Debug "Delete the created Queue AuthorizationRule"
-    $result = Remove-AzureRmServiceBusQueueAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -QueueName $queueName -AuthorizationRuleName $authRuleName
+    $result = Remove-AzureRmServiceBusAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Queue $queueName -Name $authRuleName -Force
     
     
 	# Cleanup
@@ -279,18 +278,18 @@ function ServiceBusQueueAuthTests
 	Write-Debug " Delete the Queue"
 
 	Write-Debug "Get the created Queues"
-    $createdQueues = Get-AzureRmServiceBusQueue -ResourceGroup $resourceGroupName -NamespaceName $namespaceName 
+    $createdQueues = Get-AzureRmServiceBusQueue -ResourceGroupName $resourceGroupName -Namespace $namespaceName 
 	for ($i = 0; $i -lt $createdQueues.Count; $i++)
 	{
-		$delete1 = Remove-AzureRmServiceBusQueue -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -QueueName $createdQueues[$i].Name		
+		$delete1 = Remove-AzureRmServiceBusQueue -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $createdQueues[$i].Name		
 	}
     
 
     Write-Debug "Delete NameSpace"
-	 $createdNamespaces = Get-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName
+	 $createdNamespaces = Get-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName
 	for ($i = 0; $i -lt $createdNamespaces.Count; $i++)
 	{
-		Remove-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $createdNamespaces[$i].Name
+		Remove-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $createdNamespaces[$i].Name
 	}
 
 	Write-Debug " Delete resourcegroup"

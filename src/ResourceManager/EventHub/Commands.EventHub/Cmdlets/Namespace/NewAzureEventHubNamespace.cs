@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
     /// <summary>
     /// this commandlet will let you Create Eventhub namespace.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, EventHubNamespaceVerb, SupportsShouldProcess = true), OutputType(typeof(NamespaceAttributes))]
+    [Cmdlet(VerbsCommon.New, EventHubNamespaceVerb, SupportsShouldProcess = true, DefaultParameterSetName = NamespaceParameterSet), OutputType(typeof(NamespaceAttributes))]
     public class NewAzureEventHubNamespace : AzureEventHubsCmdletBase
     {
         /// <summary>
@@ -44,9 +44,19 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
-            HelpMessage = "EventHub Namespace Name.")]
+            HelpMessage = "EventHub Namespace Name.",
+            ParameterSetName = NamespaceParameterSet
+            )]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            Position = 1,
+            HelpMessage = "EventHub Namespace Name.",
+            ParameterSetName = AutoInflateParameterSet
+            )]
         [ValidateNotNullOrEmpty]
-        public string NamespaceName { get; set; }
+        [Alias(AliasNamespaceName)]
+        public string Name { get; set; }
 
         /// <summary>
         /// EventHub Namespace Location.
@@ -55,7 +65,16 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 2,
-            HelpMessage = "EventHub Namespace Location.")]
+            HelpMessage = "EventHub Namespace Location.",
+            ParameterSetName = NamespaceParameterSet
+            )]        
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            Position = 2,
+            HelpMessage = "EventHub Namespace Location.",
+            ParameterSetName = AutoInflateParameterSet
+            )]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
@@ -64,22 +83,39 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
         /// </summary>
         [Parameter(
           Mandatory = false,
+            Position = 3,
           ValueFromPipelineByPropertyName = true,
-          HelpMessage = "Namespace Sku Name.")]
+          HelpMessage = "Namespace Sku Name.",
+          ParameterSetName = NamespaceParameterSet
+            )]
         [ValidateSet(SKU.Basic,
           SKU.Standard,
           SKU.Premium,
           IgnoreCase = true)]
+        [Parameter(
+          Mandatory = false,
+            Position = 3,
+          ValueFromPipelineByPropertyName = true,
+          HelpMessage = "Namespace Sku Name.",
+          ParameterSetName = AutoInflateParameterSet
+            )]
         public string SkuName { get; set; }
-
 
         /// <summary>
         /// The eventhub throughput units.
         /// </summary>
         [Parameter(
           Mandatory = false,
+            Position = 4,
           ValueFromPipelineByPropertyName = true,
-          HelpMessage = "The eventhub throughput units.")]
+          HelpMessage = "The eventhub throughput units.",
+          ParameterSetName = NamespaceParameterSet
+            )]
+        [Parameter(Mandatory = false,
+            Position = 4,
+          ValueFromPipelineByPropertyName = true,
+          HelpMessage = "The eventhub throughput units.",
+          ParameterSetName = AutoInflateParameterSet)]
         public int? SkuCapacity { get; set; }
         
         /// <summary>
@@ -87,9 +123,42 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
         /// </summary>
         [Parameter(
             Mandatory = false,
+            Position = 5,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Hashtables which represents resource Tags.")]
+            HelpMessage = "Hashtables which represents resource Tags.",
+            ParameterSetName = NamespaceParameterSet
+            )]
+        [Parameter(
+            Mandatory = false,
+            Position = 5,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Hashtables which represents resource Tags.",
+            ParameterSetName = AutoInflateParameterSet
+            )]
         public Hashtable Tag { get; set; }
+
+        /// <summary>
+        /// Indicates whether AutoInflate is enabled.
+        /// </summary>
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "Indicates whether AutoInflate is enabled",
+            ParameterSetName = AutoInflateParameterSet
+            )]
+        public SwitchParameter EnableAutoInflate { get; set; }
+
+        /// <summary>
+        /// Upper limit of throughput units when AutoInflate is enabled.
+        /// </summary>
+        [Parameter(
+            Mandatory = false,
+            Position = 7,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Upper limit of throughput units when AutoInflate is enabled, value should be within 0 to 20 throughput units.",
+            ParameterSetName = AutoInflateParameterSet
+            )]
+        [ValidateRange(0,20)]
+        public int? MaximumThroughputUnits { get; set; }
 
         /// <summary>
         /// 
@@ -98,9 +167,12 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
         {
             // Create a new EventHub namespaces
             Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
-            if (ShouldProcess(target: NamespaceName, action: string.Format("Create a new EvetntHub-Namespace:{0} under Resource Group:{1}", NamespaceName, ResourceGroupName)))
+            if (ShouldProcess(target: Name, action: string.Format(Resources.CreateNamespace, Name, ResourceGroupName)))
             {
-                WriteObject(Client.BeginCreateNamespace(ResourceGroupName, NamespaceName, Location, SkuName, SkuCapacity, tagDictionary));
+                if(EnableAutoInflate.IsPresent)
+                WriteObject(Client.BeginCreateNamespace(ResourceGroupName, Name, Location, SkuName, SkuCapacity, tagDictionary, true, MaximumThroughputUnits));
+                else
+                WriteObject(Client.BeginCreateNamespace(ResourceGroupName, Name, Location, SkuName, SkuCapacity, tagDictionary, false, MaximumThroughputUnits));
             }
         }
     }

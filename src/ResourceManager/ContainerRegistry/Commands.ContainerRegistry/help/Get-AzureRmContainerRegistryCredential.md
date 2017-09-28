@@ -89,6 +89,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### PSContainerRegistry
+
+Parameter 'Registry' accepts value of type 'PSContainerRegistry' from the pipeline
+
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryCredential

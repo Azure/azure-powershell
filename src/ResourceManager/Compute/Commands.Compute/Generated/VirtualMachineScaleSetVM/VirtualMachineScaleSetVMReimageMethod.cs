@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
             ExecuteClientAction(() =>
             {
-                if (ShouldProcess(this.ResourceGroupName, VerbsCommon.Set))
+                if (ShouldProcess(this.VMScaleSetName, VerbsCommon.Set))
                 {
                     string resourceGroupName = this.ResourceGroupName;
                     string vmScaleSetName = this.VMScaleSetName;
@@ -194,14 +194,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 4,
             Mandatory = true)]
         [AllowNull]
         public SwitchParameter Reimage { get; set; }
 
         [Parameter(
             ParameterSetName = "FriendMethod",
-            Position = 4,
             Mandatory = true)]
         [AllowNull]
         public SwitchParameter ReimageAll { get; set; }

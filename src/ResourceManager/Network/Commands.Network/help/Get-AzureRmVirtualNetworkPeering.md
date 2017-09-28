@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+Module Name: AzureRM.Network
 ms.assetid: 463DDBA8-0F93-483D-A4B6-3B055968CDE8
 online version: 
 schema: 2.0.0
@@ -24,10 +25,10 @@ The **Get-AzureRmVirtualNetworkPeering** cmdlet gets the virtual network peering
 
 ### Example 1: Get a peering between two virtual networks
 ```
-PS C:\>Get-AzureRmVirtualNetworkPeering -Name "LinkToVNet2" -VirtualNetwork "MyVirtualNetwork" -ResourceGroupName "MyResourceGroup"
-```
+# Get virtual network peering named myVnet1TomyVnet2 located in myVirtualNetwork in the resource group named myResourceGroup.
 
-This command gets a previously created virtual network peering named LinkToVNet2 located in MyVirtualNetwork in the resource group named MyResourceGroup.
+Get-AzureRmVirtualNetworkPeering -Name "myVnet1TomyVnet2" -VirtualNetwork "myVnet" -ResourceGroupName "myResourceGroup"
+```
 
 ## PARAMETERS
 
@@ -82,6 +83,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkPeering
 
 ## NOTES
 

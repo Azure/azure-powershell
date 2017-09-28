@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+Module Name: AzureRM.Network
 ms.assetid: C9954E3D-8645-473E-A6D4-86278C2F6BC1
 online version: 
 schema: 2.0.0
@@ -66,6 +67,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuit
 
 ## NOTES
 

@@ -77,11 +77,11 @@ function ServiceBusSubscriptionTests
     
     Write-Debug " Create new Topic namespace"
     Write-Debug "NamespaceName : $namespaceName" 
-    $result = New-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -Location $location
-    Wait-Seconds 15
+    $result = New-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Location $location -Name $namespaceName
+     
 
     Write-Debug "Get the created namespace within the resource group"
-    $createdNamespace = Get-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName
+    $createdNamespace = Get-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName
    		
 		Assert-AreEqual $createdNamespace.Name $namespaceName
 		Assert-AreEqual $location.Replace(' ','') $createdNamespace.Location.Replace(' ','')            
@@ -90,38 +90,38 @@ function ServiceBusSubscriptionTests
 
 	Write-Debug "Create Topic"
 	$nameTopic = Get-TopicName
-	$result = New-AzureRmServiceBusTopic -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -TopicName $nameTopic -EnablePartitioning $TRUE
+	$result = New-AzureRmServiceBusTopic -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $nameTopic -EnablePartitioning $TRUE
 	Assert-True {$result.Name -eq $nameTopic} "In CreateTopic response Name not found"
 
-	$resultGetTopic = Get-AzureRmServiceBusTopic -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -TopicName $result.Name
+	$resultGetTopic = Get-AzureRmServiceBusTopic -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $result.Name
 	Assert-True {$resultGetTopic.Name -eq $result.Name} "In 'Get-AzureRmServiceBusTopic' response, Topic Name not found"
 	
 	$resultGetTopic.EnableExpress = $TRUE
 
-	$resltSetTopic = Set-AzureRmServiceBusTopic -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -TopicName $resultGetTopic.Name -TopicObj $resultGetTopic
+	$resltSetTopic = Set-AzureRmServiceBusTopic -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $resultGetTopic.Name -InputObject $resultGetTopic
 	Assert-True {$resltSetTopic.Name -eq $resultGetTopic.Name} "In GetTopic response, TopicName not found"
 
 	# Get all Topics
-	$ResulListTopic = Get-AzureRmServiceBusTopic -ResourceGroup $resourceGroupName -NamespaceName $namespaceName
+	$ResulListTopic = Get-AzureRmServiceBusTopic -ResourceGroupName $resourceGroupName -Namespace $namespaceName
 	Assert-True {$ResulListTopic.Count -gt 0} "no Topics were found in ListTopic"
 	
 	#Create Topic
 	$subName = Get-SubscriptionName
-	$resltNewSub = New-AzureRmServiceBusSubscription -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -TopicName $resultGetTopic.Name -SubscriptionName $subName
+	$resltNewSub = New-AzureRmServiceBusSubscription -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $resultGetTopic.Name -Name $subName
 
 	# Get Created Subscritpiton Name 
-	$resultGetSub = Get-AzureRmServiceBusSubscription -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -TopicName $resultGetTopic.Name -SubscriptionName $subName
+	$resultGetSub = Get-AzureRmServiceBusSubscription -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $resultGetTopic.Name -Name $subName
 		
     Assert-True {$resultGetSub.Name -eq $subName} "Subscription created earlier is not found."
 
 	# Update the subscription.
 	$resultGetSub.IsReadOnly = $True
-	$resultSetSub = Set-AzureRmServiceBusSubscription -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -TopicName $resultGetTopic.Name -SubscriptionObj $resultGetSub
+	$resultSetSub = Set-AzureRmServiceBusSubscription -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $resultGetTopic.Name -InputObject $resultGetSub
 		
 	Assert-True {$resultSetSub.Name -eq $resultGetSub.Name} "Subscription Updated earlier is not found."
 
 	# Delete the created/Updated Subscription
-	$ResultDeleteTopic = Remove-AzureRmServiceBusSubscription -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -TopicName $ResulListTopic[0].Name -SubscriptionName $resultSetSub.Name
+	$ResultDeleteTopic = Remove-AzureRmServiceBusSubscription -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $ResulListTopic[0].Name -Name $resultSetSub.Name
 	Assert-True {$ResultDeleteTopic} "Topic not deleted"
 		
 	# Cleanup
@@ -129,17 +129,17 @@ function ServiceBusSubscriptionTests
 	Write-Debug " Delete the Topic"
 	for ($i = 0; $i -lt $ResulListTopic.Count; $i++)
 	{
-		$delete1 = Remove-AzureRmServiceBusTopic -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -TopicName $ResulListTopic[$i].Name		
+		$delete1 = Remove-AzureRmServiceBusTopic -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $ResulListTopic[$i].Name		
 	}
 
 	Write-Debug "Delete NameSpace"
-	 $createdNamespaces = Get-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName
+	 $createdNamespaces = Get-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName
 	for ($i = 0; $i -lt $createdNamespaces.Count; $i++)
 	{
-		Remove-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $createdNamespaces[$i].Name
+		Remove-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $createdNamespaces[$i].Name
 	}
 
 	Write-Debug " Delete resourcegroup"
-	#Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+	Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
 
 }

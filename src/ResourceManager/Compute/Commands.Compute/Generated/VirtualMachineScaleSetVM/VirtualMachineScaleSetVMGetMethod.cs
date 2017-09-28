@@ -234,7 +234,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             ParameterSetName = "FriendMethod",
-            Position = 4,
             Mandatory = true)]
         [AllowNull]
         public SwitchParameter InstanceView { get; set; }

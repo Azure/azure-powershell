@@ -61,6 +61,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Insights.OutputClasses.PSServiceDiagnosticSettings
+
 ## NOTES
 
 ## RELATED LINKS

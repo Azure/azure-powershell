@@ -3120,7 +3120,7 @@ function Test-VirtualMachineIdentity
         $computerName = 'test';
         $vhdContainer = "https://$stoname.blob.core.windows.net/test";
 
-        $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize -IdentityType "SystemAssigned" `
+        $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize -AssignIdentity `
              | Add-AzureRmVMNetworkInterface -Id $nicId -Primary `
              | Set-AzureRmVMOSDisk -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage `
              | Set-AzureRmVMOperatingSystem -Windows -ComputerName $computerName -Credential $cred;
@@ -3217,7 +3217,7 @@ function Test-VirtualMachineIdentityUpdate
         $vms_output = $vms | Out-String;
         Write-Verbose($vms_output);
 
-        $st = $vm1 | Update-AzureRmVM -IdentityType "SystemAssigned"
+        $st = $vm1 | Update-AzureRmVM -AssignIdentity;
 
         # Get VM
         $vm1 = Get-AzureRmVM -Name $vmname -ResourceGroupName $rgname -DisplayHint "Expand";

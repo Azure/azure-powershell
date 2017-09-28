@@ -34,14 +34,15 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
             Position = 1,
             HelpMessage = "EventHub Namespace Name.")]
         [ValidateNotNullOrEmpty]
-        public string NamespaceName { get; set; }
+        [Alias(AliasNamespaceName)]
+        public string Name { get; set; }
 
         public override void ExecuteCmdlet()
         {
             // delete a EventHub namespace 
-            if(ShouldProcess(target:NamespaceName,action:string.Format("Delete NameSpace:{0} from ResourceGroup:{1}",NamespaceName,ResourceGroupName)))
+            if(ShouldProcess(target: Name, action:string.Format(Resources.RemoveNamespaces, Name, ResourceGroupName)))
             {
-                Client.BeginDeleteNamespace(ResourceGroupName, NamespaceName);
+                Client.BeginDeleteNamespace(ResourceGroupName, Name);
             }            
         }
     }

@@ -72,6 +72,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+        public SwitchParameter Primary { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
         public string PrivateIPAddressVersion { get; set; }
 
         [Parameter(
@@ -105,6 +110,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             var vIpConfigurations = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetIPConfiguration();
 
             vIpConfigurations.Name = this.Name;
+            vIpConfigurations.Primary = this.Primary;
             vIpConfigurations.PrivateIPAddressVersion = this.PrivateIPAddressVersion;
             vIpConfigurations.Id = this.Id;
 

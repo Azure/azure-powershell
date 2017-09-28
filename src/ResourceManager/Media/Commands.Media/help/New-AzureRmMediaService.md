@@ -227,6 +227,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Media.Models.PSMediaService
+
 ## NOTES
 
 ## RELATED LINKS

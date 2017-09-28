@@ -22,25 +22,61 @@ using Microsoft.Azure.Commands.AnalysisServices.Dataplane.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.WindowsAzure.Commands.Common;
+using System;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 {
     /// <summary>
     /// Cmdlet to log into an Analysis Services environment
     /// </summary>
-    [Cmdlet("Add", "AzureAnalysisServicesAccount", SupportsShouldProcess=true)]
+    [Cmdlet("Add", "AzureAnalysisServicesAccount", DefaultParameterSetName = "UserParameterSetName", SupportsShouldProcess =true)]
     [Alias("Login-AzureAsAccount")]
     [OutputType(typeof(AsAzureProfile))]
     public class AddAzureASAccountCommand : AzurePSCmdlet, IModuleAssemblyInitializer
     {
-        [Parameter(Position = 0, Mandatory = false, HelpMessage = "Name of the Azure Analysis Services environment to which to logon to")]
+        private const string UserParameterSet = "UserParameterSetName";
+        private const string ServicePrincipalWithPasswordParameterSet = "ServicePrincipalWithPasswordParameterSetName";
+        private const string ServicePrincipalWithCertificateParameterSet = "ServicePrincipalWithCertificateParameterSetName";
+
+        [Parameter(ParameterSetName = UserParameterSet,
+            Mandatory = false, HelpMessage = "Name of the Azure Analysis Services environment to which to logon to", Position = 0)]
+        [Parameter(ParameterSetName = ServicePrincipalWithPasswordParameterSet,
+            Mandatory = true, HelpMessage = "Name of the Azure Analysis Services environment to which to logon to")]
+        [Parameter(ParameterSetName = ServicePrincipalWithCertificateParameterSet,
+            Mandatory = true, HelpMessage = "Name of the Azure Analysis Services environment to which to logon to")]
         public string RolloutEnvironment { get; set; }
-        
-        [Parameter(Position = 1, Mandatory = false, HelpMessage = "Login credentials to the Azure Analysis Services environment")]
+
+        [Parameter(ParameterSetName = UserParameterSet,
+            Mandatory = false, HelpMessage = "Login credentials to the Azure Analysis Services environment", Position = 1)]
+        [Parameter(ParameterSetName = ServicePrincipalWithPasswordParameterSet,
+            Mandatory = true, HelpMessage = "Login credentials to the Azure Analysis Services environment")]
         public PSCredential Credential { get; set; }
 
+        [Parameter(ParameterSetName = ServicePrincipalWithPasswordParameterSet,
+            Mandatory = true)]
+        [Parameter(ParameterSetName = ServicePrincipalWithCertificateParameterSet,
+            Mandatory = true)]
+        public SwitchParameter ServicePrincipal { get; set; }
+
+        [Parameter(ParameterSetName = ServicePrincipalWithPasswordParameterSet,
+            Mandatory = true, HelpMessage = "Tenant name or ID")]
+        [Parameter(ParameterSetName = ServicePrincipalWithCertificateParameterSet,
+            Mandatory = true, HelpMessage = "Tenant name or ID")]
+        [ValidateNotNullOrEmpty]
+        public string TenantId { get; set; }
+
+        [Parameter(ParameterSetName = ServicePrincipalWithCertificateParameterSet,
+            Mandatory = true, HelpMessage = "The application ID.")]
+        [ValidateNotNullOrEmpty]
+        public string ApplicationId { get; set; }
+
+        [Parameter(ParameterSetName = ServicePrincipalWithCertificateParameterSet,
+            Mandatory = true, HelpMessage = "Certificate Hash (Thumbprint)")]
+        [ValidateNotNullOrEmpty]
+        public string CertificateThumbprint { get; set; }
+
         protected AsAzureEnvironment AsEnvironment;
-           
+
         protected override IAzureContext DefaultContext
         {
             get
@@ -50,19 +86,18 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
             }
         }
 
-        protected override void SaveDataCollectionProfile()
+        protected override string DataCollectionWarning
         {
-            // No data collection for this commandlet 
-        }
-
-        protected override void PromptForDataCollectionProfileIfNotExists()
-        {
-            // No data collection for this commandlet 
+            get
+            {
+                return Resources.ARMDataCollectionMessage;
+            }
         }
 
         protected override void BeginProcessing()
         {
-            base.BeginProcessing();
+            this._dataCollectionProfile = new AzurePSDataCollectionProfile(false);
+
             if (string.IsNullOrEmpty(RolloutEnvironment))
             {
                 RolloutEnvironment = AsAzureClientSession.GetDefaultEnvironmentName();
@@ -76,6 +111,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
             {
                 AsEnvironment = AsAzureClientSession.Instance.Profile.CreateEnvironment(RolloutEnvironment);
             }
+            base.BeginProcessing();
         }
 
         protected override void InitializeQosEvent()
@@ -83,15 +119,50 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
             // nothing to do here.
         }
 
+        protected override void SetupDebuggingTraces()
+        {
+            // nothing to do here.
+        }
+
+        protected override void TearDownDebuggingTraces()
+        {
+            // nothing to do here.
+        }
+
+        protected override void SetupHttpClientPipeline()
+        {
+            // nothing to do here.
+        }
+
+        protected override void TearDownHttpClientPipeline()
+        {
+            // nothing to do here.
+        }
+
         public override void ExecuteCmdlet()
         {
             AsAzureAccount azureAccount = new AsAzureAccount();
+            azureAccount.Type = ServicePrincipal ? AsAzureAccount.AccountType.ServicePrincipal : AsAzureAccount.AccountType.User;
 
             SecureString password = null;
             if (Credential != null)
             {
                 azureAccount.Id = Credential.UserName;
                 password = Credential.Password;
+            }
+
+            if (ServicePrincipal)
+            {
+                azureAccount.Tenant = TenantId;
+
+                if (!string.IsNullOrEmpty(ApplicationId))
+                {
+                    azureAccount.Id = ApplicationId;
+                }
+                if (!string.IsNullOrEmpty(CertificateThumbprint))
+                {
+                    azureAccount.CertificateThumbprint = CertificateThumbprint;
+                }
             }
 
             if (ShouldProcess(string.Format(Resources.LoginTarget, AsEnvironment.Name), "log in"))

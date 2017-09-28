@@ -252,6 +252,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleSettingResource]
+
 ## NOTES
 
 ## RELATED LINKS

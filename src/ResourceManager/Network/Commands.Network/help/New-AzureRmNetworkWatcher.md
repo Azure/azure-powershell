@@ -1,6 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-online version:
+Module Name: AzureRM.Network
+online version: 
 schema: 2.0.0
 ---
 
@@ -45,7 +46,7 @@ Location.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -75,7 +76,7 @@ The resource group name.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -92,7 +93,7 @@ Key-value pairs in the form of a hash table. For example:
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named

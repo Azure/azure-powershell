@@ -20,6 +20,9 @@
                 <PropertyName>Location</PropertyName>
               </ListItem>
               <ListItem>
+                <PropertyName>ResourceGroup</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>Sku </Label>
                 <ScriptBlock>"Name : " + $_.Sku.Name.ToString()  + " , Capacity : " +  $_.Sku.Capacity + " , Tier : " +  $_.Sku.Tier.ToString() </ScriptBlock>
               </ListItem>
@@ -27,7 +30,8 @@
                 <PropertyName>ProvisioningState</PropertyName>
               </ListItem>
               <ListItem>
-                <PropertyName>Status</PropertyName>
+                <Label>Status</Label>
+                <ScriptBlock>"Active"</ScriptBlock>
               </ListItem>
               <ListItem>
                 <PropertyName>CreatedAt</PropertyName>
@@ -39,7 +43,100 @@
                 <PropertyName>ServiceBusEndpoint</PropertyName>
               </ListItem>
               <ListItem>
-                <PropertyName>Enabled</PropertyName>
+                <Label>Enabled </Label>
+                <ScriptBlock>$True</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <PropertyName>IsAutoInflateEnabled</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>MaximumThroughputUnits</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>  
+    <View>
+      <Name>Microsoft.Azure.Commands.EventHub.Models.EventHubAttributes</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.EventHub.Models.EventHubAttributes</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Name</Label>
+                <PropertyName>Name</PropertyName>              
+            </ListItem>
+              <ListItem>
+                <Label>MessageRetentionInDays</Label>
+                <PropertyName>MessageRetentionInDays</PropertyName>
+            </ListItem>
+              <ListItem>
+                <Label>PartitionCount</Label>
+                <PropertyName>PartitionCount</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>PartitionIds</Label>
+                <PropertyName>PartitionIds</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Status</Label>
+                <PropertyName>Status</PropertyName>              
+            </ListItem>
+              <ListItem>
+                <Label>CreatedAt</Label>
+                <PropertyName>CreatedAt</PropertyName>              
+            </ListItem>
+              <ListItem>
+                <Label>UpdatedAt</Label>
+                <PropertyName>UpdatedAt</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>CaptureDescription</Label>
+                <PropertyName>CaptureDescription</PropertyName> 
+              </ListItem>
+              <ListItem>
+                <Label>CaptureDescription.Enabled </Label>
+                <ScriptBlock>$_.CaptureDescription.Enabled.ToString()</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>CaptureDescription.Encoding </Label>
+                <ScriptBlock>$_.CaptureDescription.Encoding.ToString()</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>CaptureDescription.Encoding </Label>
+                <ScriptBlock>$_.CaptureDescription.Encoding.ToString()</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>CaptureDescription.IntervalInSeconds </Label>
+                <ScriptBlock>$_.CaptureDescription.IntervalInSeconds.ToString()</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>CaptureDescription.SizeLimitInBytes </Label>
+                <ScriptBlock>$_.CaptureDescription.SizeLimitInBytes.ToString()</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>CaptureDescription.Destination</Label>
+                <ScriptBlock>$_.CaptureDescription.Destination</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>CaptureDescription.Destination.Name</Label>
+                <ScriptBlock>$_.CaptureDescription.Destination.Name</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>CaptureDescription.Destination.StorageAccountResourceId</Label>
+                <ScriptBlock>$_.CaptureDescription.Destination.StorageAccountResourceId</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>CaptureDescription.Destination.BlobContainer</Label>
+                <ScriptBlock>$_.CaptureDescription.Destination.BlobContainer</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>CaptureDescription.Destination.ArchiveNameFormat</Label>
+                <ScriptBlock>$_.CaptureDescription.Destination.ArchiveNameFormat</ScriptBlock>
               </ListItem>
             </ListItems>
           </ListEntry>

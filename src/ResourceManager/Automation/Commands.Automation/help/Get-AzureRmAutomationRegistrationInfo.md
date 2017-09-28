@@ -69,6 +69,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Automation.Model.AgentRegistration
+
 ## NOTES
 
 ## RELATED LINKS

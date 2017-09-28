@@ -91,6 +91,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchListSavedSearchResponse
+
+### Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchGetSavedSearchResponse
+
 ## NOTES
 
 ## RELATED LINKS

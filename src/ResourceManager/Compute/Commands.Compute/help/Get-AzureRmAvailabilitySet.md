@@ -13,7 +13,8 @@ Gets Azure availability sets in a resource group.
 ## SYNTAX
 
 ```
-Get-AzureRmAvailabilitySet [-ResourceGroupName] <String> [[-Name] <String>] [<CommonParameters>]
+Get-AzureRmAvailabilitySet [-ResourceGroupName] <String> [[-Name] <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,6 +38,21 @@ PS C:\> Get-AzureRmAvailabilitySet -ResourceGroupName "ResourceGroup11"
 This command gets all the availability sets in the resource group named ResourceGroup11.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 Specifies the name of an availability set that this cmdlet gets.
@@ -74,6 +90,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Compute.Models.PSAvailabilitySet
 
 ## NOTES
 

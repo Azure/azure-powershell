@@ -175,6 +175,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase
+
+### System.Collections.Generic.IList`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase]
+
 ## NOTES
 
 ## RELATED LINKS

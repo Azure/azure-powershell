@@ -20,6 +20,8 @@ using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Common.Properties;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
 {
@@ -52,7 +54,9 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
                 AsAzureClientSession.TokenCache);
 
             AuthenticationResult result = null;
-            if (password == null)
+            string accountType = string.IsNullOrEmpty(asAzureContext.Account.Type) ? AsAzureAccount.AccountType.User : asAzureContext.Account.Type;
+
+            if (password == null && accountType == AsAzureAccount.AccountType.User)
             {
                 if (asAzureContext.Account.Id != null)
                 {
@@ -71,16 +75,42 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
                         resourceRedirectUri,
                         promptBehavior);
                 }
+
+                asAzureContext.Account.Id = result.UserInfo.DisplayableId;
+                asAzureContext.Account.Tenant = result.TenantId;
+                asAzureContext.Account.UniqueId = result.UserInfo.UniqueId;
             }
             else
             {
-                UserCredential userCredential = new UserCredential(asAzureContext.Account.Id, password);
-                result = authenticationContext.AcquireToken(resourceUri, clientId, userCredential);
-            }
+                if (accountType == AsAzureAccount.AccountType.User)
+                {
+                    UserCredential userCredential = new UserCredential(asAzureContext.Account.Id, password);
+                    result = authenticationContext.AcquireToken(resourceUri, clientId, userCredential);
 
-            asAzureContext.Account.Id = result.UserInfo.DisplayableId;
-            asAzureContext.Account.Tenant = result.TenantId;
-            asAzureContext.Account.UniqueId = result.UserInfo.UniqueId;
+                    asAzureContext.Account.Id = result.UserInfo.DisplayableId;
+                    asAzureContext.Account.Tenant = result.TenantId;
+                    asAzureContext.Account.UniqueId = result.UserInfo.UniqueId;
+                }
+                else if (accountType == AsAzureAccount.AccountType.ServicePrincipal)
+                {
+                    if (string.IsNullOrEmpty(asAzureContext.Account.CertificateThumbprint))
+                    {
+                        ClientCredential credential = new ClientCredential(asAzureContext.Account.Id, password);
+                        result = authenticationContext.AcquireToken(resourceUri, credential);
+                    }
+                    else
+                    {
+                        DiskDataStore dataStore = new DiskDataStore();
+                        var certificate = dataStore.GetCertificate(asAzureContext.Account.CertificateThumbprint);
+                        if (certificate == null)
+                        {
+                            throw new ArgumentException(string.Format(Resources.CertificateNotFoundInStore, asAzureContext.Account.CertificateThumbprint));
+                        }
+
+                        result = authenticationContext.AcquireToken(resourceUri, new ClientAssertionCertificate(asAzureContext.Account.Id, certificate));
+                    }
+                }
+            }
 
             return result.AccessToken;
         }

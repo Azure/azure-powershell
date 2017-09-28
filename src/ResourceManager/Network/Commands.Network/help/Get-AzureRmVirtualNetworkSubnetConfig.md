@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+Module Name: AzureRM.Network
 ms.assetid: 7688CE56-0A25-4409-9676-BF1B67C3F05F
 online version: 
 schema: 2.0.0
@@ -70,7 +71,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### PSVirtualNetwork
+Parameter 'VirtualNetwork' accepts value of type 'PSVirtualNetwork' from the pipeline
+
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Network.Models.PSSubnet
 
 ## NOTES
 

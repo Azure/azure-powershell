@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+Module Name: AzureRM.Network
 ms.assetid: DBD40431-DD7A-42CB-83AA-568B1065A468
 online version: 
 schema: 2.0.0
@@ -75,7 +76,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### PSRouteTable
+Parameter 'RouteTable' accepts value of type 'PSRouteTable' from the pipeline
+
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Network.Models.PSRoute
 
 ## NOTES
 

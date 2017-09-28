@@ -14,24 +14,26 @@ Restarts an Azure virtual machine.
 
 ### RestartResourceGroupNameParameterSetName (Default)
 ```
-Restart-AzureRmVM [-ResourceGroupName] <String> [-Name] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+Restart-AzureRmVM [-ResourceGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PerformMaintenanceResourceGroupNameParameterSetName
 ```
-Restart-AzureRmVM [-ResourceGroupName] <String> [-Name] <String> [-PerformMaintenance] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Restart-AzureRmVM [-ResourceGroupName] <String> [-Name] <String> [-PerformMaintenance]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RestartIdParameterSetName
 ```
-Restart-AzureRmVM [-Id] <String> [-Name] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+Restart-AzureRmVM [-Id] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### PerformMaintenanceIdParameterSetName
 ```
-Restart-AzureRmVM [-Id] <String> [-Name] <String> [-PerformMaintenance] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Restart-AzureRmVM [-Id] <String> [-Name] <String> [-PerformMaintenance]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,8 +50,25 @@ This command restarts the virtual machine named VirtualMachine07 in ResourceGrou
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Id
-The resource group name.```yaml
+The resource group name.
+
+```yaml
 Type: String
 Parameter Sets: RestartIdParameterSetName, PerformMaintenanceIdParameterSetName
 Aliases: 
@@ -62,7 +81,9 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The virtual machine name.```yaml
+The virtual machine name.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
@@ -75,7 +96,9 @@ Accept wildcard characters: False
 ```
 
 ### -PerformMaintenance
-To perform the maintenance of virtual machine.```yaml
+To perform the maintenance of virtual machine.
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: PerformMaintenanceResourceGroupNameParameterSetName, PerformMaintenanceIdParameterSetName
 Aliases: 
@@ -138,6 +161,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Compute.Models.PSComputeLongRunningOperation
 
 ## NOTES
 

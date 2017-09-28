@@ -120,9 +120,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-None. You cannot pipe input to this cmdlet.
+### None
+
+You cannot pipe input to this cmdlet.
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Dns.DnsZone
 
 This cmdlet returns a Microsoft.Azure.Commands.Dns.DnsZone object that represents the new DNS zone.
 

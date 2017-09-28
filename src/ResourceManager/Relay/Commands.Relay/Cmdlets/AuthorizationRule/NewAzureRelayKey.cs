@@ -69,10 +69,8 @@ namespace Microsoft.Azure.Commands.Relay.Commands
         public string RegenerateKey { get; set; }
 
         public override void ExecuteCmdlet()
-        {
-            var regenKey = new RegenerateKeysParameters(RegenerateKey);
-
-
+        {         
+            
             // Generate new Namespace List Keys for the specified AuthorizationRule
             if (ParameterSetName == NamespaceAuthoRuleParameterSet)
             {

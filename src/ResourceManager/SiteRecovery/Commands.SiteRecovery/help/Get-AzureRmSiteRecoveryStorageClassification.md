@@ -105,7 +105,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### ASRFabric
+
+Parameter 'Fabric' accepts value of type 'ASRFabric' from the pipeline
+
+### ASRServer
+
+Parameter 'Server' accepts value of type 'ASRServer' from the pipeline
+
 ## OUTPUTS
+
+### System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.SiteRecovery.ASRStorageClassification]
 
 ## NOTES
 

@@ -171,7 +171,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-Microsoft.Azure.Commands.ServiceBus.Models.NamespaceAttributes
+### Microsoft.Azure.Commands.ServiceBus.Models.NamespaceAttributes
 
 ## NOTES
 

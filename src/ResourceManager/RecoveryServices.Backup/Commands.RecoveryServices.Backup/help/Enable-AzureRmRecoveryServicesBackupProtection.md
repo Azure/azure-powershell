@@ -135,7 +135,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### ItemBase
+
+Parameter 'Item' accepts value of type 'ItemBase' from the pipeline
+
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase
 
 ## NOTES
 

@@ -288,6 +288,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### BatchAccountContext
+
+Parameter 'BatchContext' accepts value of type 'BatchAccountContext' from the pipeline
+
+### PSNodeFile
+
+Parameter 'InputObject' accepts value of type 'PSNodeFile' from the pipeline
+
 ## OUTPUTS
 
 ## NOTES

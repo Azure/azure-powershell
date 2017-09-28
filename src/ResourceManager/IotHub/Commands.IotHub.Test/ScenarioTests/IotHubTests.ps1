@@ -38,7 +38,7 @@ function Test-AzureRmIotHubLifecycle
 	$resourceGroup = New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location 
 
 	Write-Debug " Create new eventHub " 
-	$namespaceName = "IotHubPSEHNamespaceTest"
+	$namespaceName = "IotHubPSEHNamespace1Test"
     $result = New-AzureRmEventHubNamespace -ResourceGroup $ResourceGroupName -NamespaceName $namespaceName -Location $Location
 
 	Wait-Seconds 15

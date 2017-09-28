@@ -61,7 +61,9 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-Return true upon successful deletion.```yaml
+Return true upon successful deletion.
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 

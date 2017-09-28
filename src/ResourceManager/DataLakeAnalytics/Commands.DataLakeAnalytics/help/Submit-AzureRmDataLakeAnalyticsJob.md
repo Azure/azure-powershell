@@ -309,6 +309,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### String
+
+Parameter 'Script' accepts value of type 'String' from the pipeline
+
 ## OUTPUTS
 
 ### JobInformation

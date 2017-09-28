@@ -39,19 +39,20 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "EventHub Namespace Name.")]
-        public string NamespaceName { get; set; }
+        [Alias(AliasNamespaceName)]
+        public string Name { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (!string.IsNullOrEmpty(ResourceGroupName) && !string.IsNullOrEmpty(NamespaceName))
+            if (!string.IsNullOrEmpty(ResourceGroupName) && !string.IsNullOrEmpty(Name))
             {
                 // Get EventHub namespace
-                NamespaceAttributes attributes = Client.GetNamespace(ResourceGroupName, NamespaceName);
+                NamespaceAttributes attributes = Client.GetNamespace(ResourceGroupName, Name);
                 WriteObject(attributes);
             }
-            else if (!string.IsNullOrEmpty(ResourceGroupName) && string.IsNullOrEmpty(NamespaceName))
+            else if (!string.IsNullOrEmpty(ResourceGroupName) && string.IsNullOrEmpty(Name))
             {
-                // List all EventHub namespace in given resource group 
+                // List all EventHub namespace in given resource group
                 IEnumerable< NamespaceAttributes> namespaceList = Client.ListNamespacesByResourceGroup(ResourceGroupName);
                 WriteObject(namespaceList.ToList(), true);
             }

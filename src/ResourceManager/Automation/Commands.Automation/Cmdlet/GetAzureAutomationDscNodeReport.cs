@@ -78,6 +78,8 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                 {
                    this.AutomationClient.GetLatestDscNodeReport(this.ResourceGroupName, this.AutomationAccountName, this.NodeId)
                 };
+
+                this.GenerateCmdletOutput(ret);
             }
             else if (this.ParameterSetName == AutomationCmdletParameterSets.ById)
             {
@@ -85,18 +87,23 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                 {
                     this.AutomationClient.GetDscNodeReportByReportId(this.ResourceGroupName, this.AutomationAccountName, this.NodeId, this.Id)
                 };
+
+                this.GenerateCmdletOutput(ret);
             }
             else
             {
-                ret = this.AutomationClient.ListDscNodeReports(
-                    this.ResourceGroupName,
-                    this.AutomationAccountName,
-                    this.NodeId,
-                    this.StartTime,
-                    this.EndTime);
-            }
+                var nextLink = string.Empty;
 
-            this.GenerateCmdletOutput(ret);
+                do
+                {
+                    ret = this.AutomationClient.ListDscNodeReports(this.ResourceGroupName, this.AutomationAccountName, this.NodeId, this.StartTime, this.EndTime, ref nextLink);
+                    if (ret != null)
+                    {
+                        this.GenerateCmdletOutput(ret);
+                    }
+
+                } while (!string.IsNullOrEmpty(nextLink));
+            }
         }
     }
 }

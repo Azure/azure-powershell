@@ -101,7 +101,9 @@ Accept wildcard characters: False
 ```
 
 ### -ObjectId
-The Azure Active Directory object id for the user or group to apply the policy to.```yaml
+The Azure Active Directory object id for the user or group to apply the policy to.
+
+```yaml
 Type: Guid
 Parameter Sets: (All)
 Aliases: 
@@ -114,7 +116,9 @@ Accept wildcard characters: False
 ```
 
 ### -ObjectType
-The Azure Active Directory object type for the object ID passed in.```yaml
+The Azure Active Directory object type for the object ID passed in.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 

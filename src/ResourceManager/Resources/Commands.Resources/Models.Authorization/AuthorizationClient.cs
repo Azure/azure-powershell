@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         }
 
         /// <summary>
-        /// Creates PoliciesClient using AzureContext instance.
+        /// Creates AuthorizationClient using AzureContext instance.
         /// </summary>
         /// <param name="context">The AzureContext instance</param>
         public AuthorizationClient(IAzureContext context)
@@ -84,7 +84,8 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 
         /// <summary>
         /// Filters the existing role Definitions.
-        /// If name is not provided, all role definitions are fetched.
+        /// If scopeAndBelow is true, Will fetch Roledefinitions with scopeAndBelow and provided name.
+        /// Otherwise  will fetch Roledefinitions with provided name
         /// </summary>
         /// <param name="name">The role name</param>
         /// <returns>The matched role Definitions</returns>
@@ -424,7 +425,16 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 
             ValidateRoleDefinition(roleDefinition);
 
-            PSRoleDefinition fetchedRoleDefinition = this.GetRoleDefinition(roleDefinitionId, roleDefinition.AssignableScopes.First());
+			PSRoleDefinition fetchedRoleDefinition = null;
+			foreach (String scope in roleDefinition.AssignableScopes)
+			{
+				fetchedRoleDefinition = this.GetRoleDefinition(roleDefinitionId, scope);
+				if (fetchedRoleDefinition != null)
+				{
+					break;
+				}
+			}
+
             if (fetchedRoleDefinition == null)
             {
                 throw new KeyNotFoundException(string.Format(ProjectResources.RoleDefinitionWithIdNotFound, roleDefinition.Id));
@@ -472,11 +482,11 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             try
             {
                 roleDef = AuthorizationManagementClient.RoleDefinitions.CreateOrUpdate(
-					roleDefinition.AssignableScopes.First(), roleDefinitionId.ToString(), parameters).ToPSRoleDefinition();
+                    roleDefinition.AssignableScopes.First(), roleDefinitionId.ToString(), parameters).ToPSRoleDefinition();
             }
             catch (CloudException ce)
             {
-                if (ce.Response.StatusCode == HttpStatusCode.Unauthorized && 
+                if (ce.Response.StatusCode == HttpStatusCode.Unauthorized &&
                     ce.Error.Code.Equals("TenantNotAllowed", StringComparison.InvariantCultureIgnoreCase))
                 {
                     throw new InvalidOperationException("The tenant is not currently authorized to create/update Custom role definition. Please refer to http://aka.ms/customrolespreview for more details");
@@ -509,6 +519,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             {
                 throw new ArgumentException(ProjectResources.InvalidActions);
             }
+
         }
 
         public static void ValidateScope(string scope, bool allowEmpty)

@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.EventHub.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using System;
 
 namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
 {
@@ -24,6 +25,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
     /// <para> If AuthorizationRule name provided, a single AuthorizationRule detials will be returned</para>
     /// <para> If AuthorizationRule name not provided, list of AuthorizationRules will be returned</para>
     /// </summary>
+    [ObsoleteAttribute("'Get-AzureRmEventHubNamespaceAuthorizationRule' cmdlet is mark as obsolete and will be depricated in upcoming breaking changes build. Please use the New cmdlet 'Get-AzureRmEventHubAuthorizationRule'", false)]
     [Cmdlet(VerbsCommon.Get, EventHubNamespaceAuthorizationRuleVerb), OutputType(typeof(List<SharedAccessAuthorizationRuleAttributes>))]
     public class GetAzureEventHubNamespaceAuthorizationRule : AzureEventHubsCmdletBase
     {

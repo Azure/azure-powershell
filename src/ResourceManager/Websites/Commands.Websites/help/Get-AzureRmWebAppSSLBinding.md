@@ -137,6 +137,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Site
+
+Parameter 'WebApp' accepts value of type 'Site' from the pipeline
+
 ## OUTPUTS
 
 ## NOTES

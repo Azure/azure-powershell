@@ -37,13 +37,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
-        [Fact(Skip = "Test is failing in CI build for no matching request found but passes locally.")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void RaAuthorizationChangeLog()
-        {
-           ResourcesController.NewInstance.RunPsTest("Test-RaAuthorizationChangeLog");
-        }
-
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaClassicAdmins()
@@ -63,6 +56,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         public void RaByScope()
         {
             ResourcesController.NewInstance.RunPsTest("Test-RaByScope");
+        }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RaDeleteByPSRoleAssignment()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-RaDeleteByPSRoleAssignment");
         }
 
         [Fact]
@@ -226,7 +226,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
                         if (resourceGroup != null)
                         {
-                            controllerAdmin.AuthorizationManagementClient.RoleAssignments.Delete(resourceGroup.Id, new Guid(roleAssignmentId).ToString());
+                            controllerAdmin.AuthorizationManagementClient.RoleAssignments.Delete(resourceGroup.Id, roleAssignmentId).ToString();
                         }                        
                     },
                     TestUtilities.GetCallingClass(),

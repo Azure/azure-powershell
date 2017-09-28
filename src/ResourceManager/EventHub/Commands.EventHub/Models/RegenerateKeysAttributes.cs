@@ -22,13 +22,13 @@ namespace Microsoft.Azure.Commands.EventHub.Models
 
     public class RegenerateKeysAttributes
     {
-        public RegenerateKeysAttributes(RegenerateKeysParameters RegenerateKeysResource)
+        public RegenerateKeysAttributes(RegenerateAccessKeyParameters RegenerateKeysResource)
         {
             if (RegenerateKeysResource != null)
             {
-                if (RegenerateKeysResource.Policykey.ToString() == "PrimaryKey")
+                if (RegenerateKeysResource.Key.ToString() == "PrimaryKey")
                     Policykey = "PrimaryKey";
-                if (RegenerateKeysResource.Policykey.ToString() == "SecondaryKey")
+                if (RegenerateKeysResource.Key.ToString() == "SecondaryKey")
                     Policykey = "SecondaryKey";
             };
         }

@@ -13,14 +13,14 @@ Updates a disk.
 
 ### DefaultParameter (Default)
 ```
-Update-AzureRmDisk [-ResourceGroupName] <String> [-DiskName] <String> [-DiskUpdate] <PSDiskUpdate> [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Update-AzureRmDisk [-ResourceGroupName] <String> [-DiskName] <String> [-DiskUpdate] <PSDiskUpdate>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FriendMethod
 ```
-Update-AzureRmDisk [-ResourceGroupName] <String> [-DiskName] <String> [-Disk] <PSDisk> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzureRmDisk [-ResourceGroupName] <String> [-DiskName] <String> [-Disk] <PSDisk>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -61,6 +61,21 @@ PS C:\> Update-AzureRmDisk -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk0
 These commands also update an existing disk with name 'Disk01' in resource group 'ResourceGroup01' to 10 GB disk size.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Disk
 Specifies a local disk object.
@@ -159,12 +174,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Management.Compute.Models.DiskUpdate
-Microsoft.Azure.Management.Compute.Models.Disk
+Microsoft.Azure.Commands.Compute.Automation.Models.PSDiskUpdate
+Microsoft.Azure.Commands.Compute.Automation.Models.PSDisk
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSDisk
 
 ## NOTES
 

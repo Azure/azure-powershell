@@ -49,7 +49,13 @@ namespace Microsoft.Azure.Commands.Relay.Models
             Id = authorizationrule.Id;
             Name = authorizationrule.Name;
             Type = authorizationrule.Type;
-            Rights = authorizationrule.Rights;
+
+            Rights = new List<string>();
+
+            foreach (AccessRights rights in authorizationrule.Rights)
+            {
+                Rights.Add(rights.ToString());
+            }            
         }
 
 

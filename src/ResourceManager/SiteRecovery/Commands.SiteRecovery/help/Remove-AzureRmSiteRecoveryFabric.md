@@ -90,6 +90,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### ASRFabric
+
+Parameter 'Fabric' accepts value of type 'ASRFabric' from the pipeline
+
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.SiteRecovery.ASRJob

@@ -14,13 +14,14 @@ Removes a virtual machine from Azure.
 
 ### ResourceGroupNameParameterSetName (Default)
 ```
-Remove-AzureRmVM [-Name] <String> [-Force] [-ResourceGroupName] <String> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzureRmVM [-Name] <String> [-Force] [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### IdParameterSetName
 ```
-Remove-AzureRmVM [-Name] <String> [-Force] [-Id] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzureRmVM [-Name] <String> [-Force] [-Id] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,6 +37,21 @@ PS C:\> Remove-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMach
 This command removes the virtual machine named VirtualMachine07 in the resource group ResourceGroup11.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Force
 Forces the command to run without asking for user confirmation.
@@ -53,7 +69,9 @@ Accept wildcard characters: False
 ```
 
 ### -Id
-The resource group name.```yaml
+The resource group name.
+
+```yaml
 Type: String
 Parameter Sets: IdParameterSetName
 Aliases: 
@@ -66,7 +84,9 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The resource name.```yaml
+The resource name.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: ResourceName, VMName
@@ -131,6 +151,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Compute.Models.PSComputeLongRunningOperation
 
 ## NOTES
 

@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+Module Name: AzureRM.Network
 online version: https://azure.microsoft.com/en-us/documentation/articles/application-gateway-create-probe-ps/#
 schema: 2.0.0
 ---
@@ -199,6 +200,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayProbe
 
 ## NOTES
 
