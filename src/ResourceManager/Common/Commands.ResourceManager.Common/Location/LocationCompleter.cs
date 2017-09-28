@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Location
     /// </summary>
     public class LocationCompleterAttribute : ArgumentCompleterAttribute
     {
-        private static IDictionary<int, IDictionary<string, ICollection<string>>> _resourceTypeLocationDictionary = new Dictionary<int, IDictionary<string, ICollection<string>>>();
+        private static IDictionary<int, IDictionary<string, ICollection<string>>> _resourceTypeLocationDictionary = new ConcurrentDictionary<int, IDictionary<string, ICollection<string>>>();
         private static readonly object _lock = new object();
 
         protected static IDictionary<string, ICollection<string>> ResourceTypeLocationDictionary
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Location
                                 }
                             else
                             {
-                                _resourceTypeLocationDictionary[contextHash] = new Dictionary<string, ICollection<string>>();
+                                _resourceTypeLocationDictionary[contextHash] = new ConcurrentDictionary<string, ICollection<string>>(StringComparer.OrdinalIgnoreCase);
 #if DEBUG
                                 throw new Exception(Resources.TimeOutForProviderList);
 #endif
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Location
                         }
                         catch (Exception ex)
                         {
-                            _resourceTypeLocationDictionary[contextHash] = new Dictionary<string, ICollection<string>>();
+                            _resourceTypeLocationDictionary[contextHash] = new ConcurrentDictionary<string, ICollection<string>>(StringComparer.OrdinalIgnoreCase);
 #if DEBUG
                             throw ex;
 #endif
@@ -175,7 +175,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Location
             return resourceTypeLocationDictionary;
         }
 
-        private static ScriptBlock CreateScriptBlock(string[] resourceTypes)
+        /// <summary>
+        /// Create ScriptBlock that registers the correct location for tab completetion of the -Location parameter
+        /// </summary>
+        /// <param name="resourceTypes"></param>
+        /// <returns></returns>
+        public static ScriptBlock CreateScriptBlock(string[] resourceTypes)
         {
             string scriptResourceTypeList = "{" + String.Join(",", resourceTypes) + "}";
             string script = "param($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameter)\n" +
