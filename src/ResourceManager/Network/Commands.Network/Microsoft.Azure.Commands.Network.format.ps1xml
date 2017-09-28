@@ -1518,6 +1518,10 @@
                 <Label>InboundNatPools</Label>
                 <PropertyName>InboundNatPoolsText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>Zones</Label>
+                <PropertyName>ZonesText</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
