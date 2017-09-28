@@ -165,6 +165,6 @@ namespace Microsoft.Azure.Commands.Automation.Common
         /// <summary>
         /// Parameter set for ByInputObject
         /// </summary>
-        internal const string ByInputObject = "ByByInputObject";
+        internal const string ByInputObject = "ByInputObject";
     }
 }

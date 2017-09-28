@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Resources;
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
+using System;
 using System.Management.Automation;
 using System.Security;
 
@@ -36,6 +37,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Password for the user.")]
         [ValidateNotNullOrEmpty]
+        [Obsolete("New-AzureRmADUser: The parameter \"Password\" is being changed from a string to a SecureString in an upcoming breaking change release.")]
         public SecureString Password { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "ImmutableId - to be specified only if you are using a federated domain for the user's user principal name (upn) property.")]
@@ -55,7 +57,9 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 DisplayName = DisplayName,
                 PasswordProfile = new PasswordProfile
                 {
+#pragma warning disable 0618
                     Password = decodedPassword,
+#pragma warning restore 0618
                     ForceChangePasswordNextLogin = ForceChangePasswordNextLogin.IsPresent ? true : false
                 },
                 UserPrincipalName = UserPrincipalName

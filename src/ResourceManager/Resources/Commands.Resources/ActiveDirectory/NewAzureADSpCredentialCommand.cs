@@ -45,6 +45,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SPNWithPassword,
             HelpMessage = "The value for the password credential associated with the servicePrincipal that will be valid for one year by default.")]
         [ValidateNotNullOrEmpty]
+        [Obsolete("New-AzureRmADSpCredential: The parameter \"Password\" is being changed from a string to a SecureString in an upcoming breaking change release.")]
         public SecureString Password { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SpObjectIdWithCertValue,
@@ -77,7 +78,9 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 }
 
                 string decodedPassword = Utilities.SecureStringToString(Password);
+#pragma warning disable 0618
                 if (!string.IsNullOrEmpty(decodedPassword))
+#pragma warning restore 0618
                 {
                     // Create object for password credential
                     var passwordCredential = new PasswordCredential()
@@ -85,7 +88,9 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                         EndDate = EndDate,
                         StartDate = StartDate,
                         KeyId = Guid.NewGuid().ToString(),
+#pragma warning disable 0618
                         Value = decodedPassword
+#pragma warning restore 0618
                     };
                     if (ShouldProcess(target: ObjectId, action: string.Format("Adding a new password to service principal with objectId {0}", ObjectId)))
                     {

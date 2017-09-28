@@ -34,7 +34,7 @@ PS C:\> Get-AzureRmAutomationDscNodeConfigurationDeploymentSchedule `
 
 ResourceGroupName     : ResourceGroup01
 AutomationAccountName : Contoso01
-JobScheduleId         : 4490617b-ffaf-4946-a660-efa4849db507
+JobScheduleId         : 2b1d7738-093d-4ff7-b87b-e4b2321319e5
 JobSchedule           : Microsoft.Azure.Commands.Automation.Model.JobSchedule
 RunbookName           : Deploy-NodeConfigurationToAutomationDscNodesV1
 
@@ -43,24 +43,35 @@ AutomationAccountName : Contoso01
 JobScheduleId         : e347dfc4-62fe-4ed6-adfb-55518c57b558
 JobSchedule           : Microsoft.Azure.Commands.Automation.Model.JobSchedule
 RunbookName           : Deploy-NodeConfigurationToAutomationDscNodesV1
+
 ```
 
-### Example 2: Get a the deployment schedules
+### Example 2: Get a deployment schedule
 ```
-PS C:\> $js= Get-AzureRmAutomationDscNodeConfigurationDeploymentSchedule -AutomationAccountName "Contoso01" `
--ResourceGroupName "ResourceGroup01" `
--JobScheduleId e347dfc4-62fe-4ed6-adfb-55518c57b558
+PS C:\> $js= Get-AzureRmAutomationDscNodeConfigurationDeploymentSchedule `
+                 -AutomationAccountName "Contoso01" `
+                 -ResourceGroupName "ResourceGroup01" `
+                 -JobScheduleId 2b1d7738-093d-4ff7-b87b-e4b2321319e5
+
+PS C:\> $js
+
+ResourceGroupName     : ResourceGroup01
+AutomationAccountName : Contoso01
+JobScheduleId         : 2b1d7738-093d-4ff7-b87b-e4b2321319e5
+JobSchedule           : Microsoft.Azure.Commands.Automation.Model.JobSche
+RunbookName           : Deploy-NodeConfigurationToAutomationDscNodesV1
 
 PS C:\> $js.JobSchedule
 
 ResourceGroupName     : ResourceGroup01
 RunOn                 :
 AutomationAccountName : Contoso01
-JobScheduleId         : e347dfc4-62fe-4ed6-adfb-55518c57b558
+JobScheduleId         : 2b1d7738-093d-4ff7-b87b-e4b2321319e5
 RunbookName           : Deploy-NodeConfigurationToAutomationDscNodesV1
 ScheduleName          : TestScheduleName
 Parameters            : {AutomationAccountName, NodeConfigurationName, ResourceGroupName, ListOfNodeNames}
 HybridWorker          :
+
 ```
 
 The above command deploys the DSC node configuration named "Config01.Node1" to the given two-dimensional array of Node Names. The deployment happens in a staged manner.
