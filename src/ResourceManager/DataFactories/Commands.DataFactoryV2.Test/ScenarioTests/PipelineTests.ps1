@@ -65,3 +65,49 @@ function Test-Pipeline
         Clean-DataFactory $rgname $dfname
     }
 }
+
+<#
+.SYNOPSIS
+Create a dataset and the linked service which it depends on. Then do a Get to compare the result are identical.
+Delete the created dataset after test finishes.
+#>
+function Test-PipelineWithResourceId
+{
+    $dfname = Get-DataFactoryName
+    $rgname = Get-ResourceGroupName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $dflocation = Get-ProviderLocation DataFactoryManagement
+
+    $endDate = [DateTime]::Parse("9/8/2014")
+    $startDate = $endDate.AddHours(-1)
+        
+    New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Force
+
+    try
+    {
+        $df = Set-AzureRmDataFactoryV2 -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
+
+        $lsName = "foo1"
+        Set-AzureRmDataFactoryV2LinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -File .\Resources\linkedService.json -Name $lsName -Force
+
+        Set-AzureRmDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name "dsIn" -File .\Resources\dataset-dsIn.json -Force
+        Set-AzureRmDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name "ds0_0" -File .\Resources\dataset-ds0_0.json -Force
+        Set-AzureRmDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name "ds1_0" -File .\Resources\dataset-ds1_0.json -Force
+
+        $pipelineName = "samplePipeline"   
+        $actual = Set-AzureRmDataFactoryV2Pipeline -ResourceGroupName $rgname -Name $pipelineName -DataFactoryName $dfname -File ".\Resources\pipeline.json" -Force
+        $precourceid = -join($df.DataFactoryId, "/pipelines/", $pipelineName)
+        
+        $expected = Get-AzureRmDataFactoryV2Pipeline -ResourceId $precourceid
+
+        Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
+        Assert-AreEqual $expected.DataFactoryName $actual.DataFactoryName
+        Assert-AreEqual $expected.Name $actual.Name
+
+        Remove-AzureRmDataFactoryV2Pipeline -ResourceId $precourceid -Force
+    }
+    finally
+    {
+        Clean-DataFactory $rgname $dfname
+    }
+}
