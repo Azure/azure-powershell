@@ -16,6 +16,43 @@
 .SYNOPSIS
 Nagative test. Get resources from an non-existing empty group.
 #>
+function Test-GetDataFactoriesInSubscription
+{	
+    $dfname1 = Get-DataFactoryName + "df1"
+    $dfname2 = Get-DataFactoryName + "df2"
+    $rgname1 = Get-ResourceGroupName + "rg1"
+    $rgname2 = Get-ResourceGroupName + "rg2"
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $dflocation = Get-ProviderLocation DataFactoryManagement
+    
+    New-AzureRmResourceGroup -Name $rgname1 -Location $rglocation -Force
+    New-AzureRmResourceGroup -Name $rgname2 -Location $rglocation -Force
+
+    try
+    {
+        Set-AzureRmDataFactoryV2 -ResourceGroupName $rgname1 -Name $dfname1 -Location $dflocation -Force
+        Set-AzureRmDataFactoryV2 -ResourceGroupName $rgname2 -Name $dfname2 -Location $dflocation -Force
+        $expected = Get-AzureRmDataFactoryV2
+
+        Assert-NotNull $expected
+        $foundDf1 = $false
+        $foundDf2 = $false
+        $expected|ForEach-Object {If ($_.DataFactoryName -eq $dfname1) {$foundDf1 = $true}}
+        $expected|ForEach-Object {If ($_.DataFactoryName -eq $dfname2) {$foundDf2 = $true}}
+        Assert-True { $foundDf1 }
+        Assert-True { $foundDf1 }
+    }
+    finally
+    {
+        Clean-DataFactory $rgname1 $dfname1
+        Clean-DataFactory $rgname2 $dfname2
+    }
+}
+
+<#
+.SYNOPSIS
+Nagative test. Get resources from an non-existing empty group.
+#>
 function Test-GetNonExistingDataFactory
 {	
     $dfname = Get-DataFactoryName

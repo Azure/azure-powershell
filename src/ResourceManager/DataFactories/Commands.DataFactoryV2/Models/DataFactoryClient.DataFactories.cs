@@ -21,6 +21,7 @@ using Microsoft.Azure.Commands.DataFactoryV2.Models;
 using Microsoft.Azure.Commands.DataFactoryV2.Properties;
 using Microsoft.Azure.Management.DataFactory;
 using Microsoft.Azure.Management.DataFactory.Models;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
@@ -58,28 +59,54 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             return dataFactories;
         }
 
+        public virtual List<PSDataFactory> ListDataFactoriesBySubscription(DataFactoryFilterOptions filterOptions)
+        {
+            var dataFactories = new List<PSDataFactory>();
+            IPage<Factory> response;
+
+            if (filterOptions.NextLink.IsNextPageLink())
+            {
+                response = this.DataFactoryManagementClient.Factories.ListNext(filterOptions.NextLink);
+            }
+            else
+            {
+                response = this.DataFactoryManagementClient.Factories.List();
+            }
+            filterOptions.NextLink = response != null ? response.NextPageLink : null;
+
+            if (response != null)
+            {
+                dataFactories.AddRange(response.Select(df => 
+                                                        {
+                                                            var parsedResourceId = new ResourceIdentifier(df.Id);
+                                                            var ResourceGroupName = parsedResourceId.ResourceGroupName;
+                                                            return new PSDataFactory(df, ResourceGroupName);
+                                                        }));
+            }
+
+            return dataFactories;
+        }
+
         public virtual List<PSDataFactory> FilterPSDataFactories(DataFactoryFilterOptions filterOptions)
         {
             if (filterOptions == null)
             {
                 throw new ArgumentNullException("filterOptions");
             }
-
             var dataFactories = new List<PSDataFactory>();
 
             if (filterOptions.DataFactoryName != null)
             {
-                PSDataFactory dataFactory = GetDataFactory(filterOptions.ResourceGroupName, filterOptions.DataFactoryName);
-                if (dataFactory != null)
-                {
-                    dataFactories.Add(dataFactory);
-                }
+                dataFactories.Add(GetDataFactory(filterOptions.ResourceGroupName, filterOptions.DataFactoryName));
+            }
+            else if (filterOptions.ResourceGroupName == null)
+            {
+                dataFactories.AddRange(ListDataFactoriesBySubscription(filterOptions));
             }
             else
             {
                 dataFactories.AddRange(ListDataFactories(filterOptions));
             }
-
             return dataFactories;
         }
 

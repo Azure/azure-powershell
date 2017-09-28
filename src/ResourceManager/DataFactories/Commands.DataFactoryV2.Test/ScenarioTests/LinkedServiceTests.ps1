@@ -49,6 +49,42 @@ function Test-LinkedService
 
 <#
 .SYNOPSIS
+Create a dataset and the linked service which it depends on. Then do a Get to compare the result are identical.
+Delete the created dataset after test finishes.
+#>
+function Test-LinkedServiceWithResourceId
+{
+    $dfname = Get-DataFactoryName
+    $rgname = Get-ResourceGroupName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $dflocation = Get-ProviderLocation DataFactoryManagement
+        
+    New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Force
+
+    try
+    {
+        $df = Set-AzureRmDataFactoryV2 -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
+
+        $linkedServicename = "foo1"
+        $actual = Set-AzureRmDataFactoryV2LinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -File .\Resources\linkedService.json -Name $linkedServicename -Force
+        $lsrecourceid = -join($df.DataFactoryId, "/linkedservices/", $linkedServicename)
+
+        $expected = Get-AzureRmDataFactoryV2LinkedService -ResourceId $lsrecourceid
+
+        Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
+        Assert-AreEqual $expected.DataFactoryName $actual.DataFactoryName
+        Assert-AreEqual $expected.Name $actual.Name
+
+        Remove-AzureRmDataFactoryV2LinkedService -ResourceId $lsrecourceid -Force
+    }
+    finally
+    {
+        Clean-DataFactory $rgname $dfname
+    }
+}
+
+<#
+.SYNOPSIS
 Create a linked service and then do a Get to compare the result are identical.
 Delete the created linked service after test finishes.
 Use -DataFactory parameter in all cmdlets.

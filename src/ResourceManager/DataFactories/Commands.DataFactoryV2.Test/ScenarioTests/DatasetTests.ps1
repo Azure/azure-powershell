@@ -53,6 +53,45 @@ function Test-Dataset
 .SYNOPSIS
 Create a dataset and the linked service which it depends on. Then do a Get to compare the result are identical.
 Delete the created dataset after test finishes.
+#>
+function Test-DatasetWithResourceId
+{
+    $dfname = Get-DataFactoryName
+    $rgname = Get-ResourceGroupName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $dflocation = Get-ProviderLocation DataFactoryManagement
+        
+    New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Force
+
+    try
+    {
+        $df = Set-AzureRmDataFactoryV2 -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
+
+        $linkedServicename = "foo1"
+        Set-AzureRmDataFactoryV2LinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -File .\Resources\linkedService.json -Name $linkedServicename -Force
+   
+        $dsname = "foo2"
+        $actual = Set-AzureRmDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $dsname -File .\Resources\dataset.json -Force
+        $dsrecourceid = -join($df.DataFactoryId, "/datasets/", $dsname)
+
+        $expected = Get-AzureRmDataFactoryV2Dataset -ResourceId $dsrecourceid
+
+        Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
+        Assert-AreEqual $expected.DataFactoryName $actual.DataFactoryName
+        Assert-AreEqual $expected.Name $actual.Name
+
+        Remove-AzureRmDataFactoryV2Dataset -ResourceId $dsrecourceid -Force
+    }
+    finally
+    {
+        Clean-DataFactory $rgname $dfname
+    }
+}
+
+<#
+.SYNOPSIS
+Create a dataset and the linked service which it depends on. Then do a Get to compare the result are identical.
+Delete the created dataset after test finishes.
 Use -DataFactory parameter in all cmdlets.
 #>
 function Test-DatasetWithDataFactoryParameter

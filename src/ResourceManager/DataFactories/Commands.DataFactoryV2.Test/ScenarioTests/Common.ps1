@@ -32,24 +32,6 @@ function Get-DataFactoryName
 
 <#
 .SYNOPSIS
-Gets valid data factory logging storage account name.
-#>
-function Get-DataFactoryLoggingStorageAccountName
-{
-    return "teststorageaccount"
-}
-
-<#
-.SYNOPSIS
-Gets valid data factory logging storage account key.
-#>
-function Get-DataFactoryLoggingStorageAccountKey
-{
-    return "fakestoragekey"
-}
-
-<#
-.SYNOPSIS
 Gets the default location for a provider
 #>
 function Get-ProviderLocation($provider)
@@ -66,6 +48,7 @@ function Clean-DataFactory($rgname, $dfname)
 {
     if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) {
         Remove-AzureRmDataFactoryV2 -ResourceGroupName $rgname -Name $dfname -Force
+        Remove-AzureRmResourceGroup -Name $rgname -Force
     }
 }
 

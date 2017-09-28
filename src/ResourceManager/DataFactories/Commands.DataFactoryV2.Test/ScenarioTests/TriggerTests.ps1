@@ -164,3 +164,41 @@ function Test-TriggerRun
         Clean-DataFactory $rgname $dfname
     }
 }
+
+<#
+.SYNOPSIS
+Create a dataset and the linked service which it depends on. Then do a Get to compare the result are identical.
+Delete the created dataset after test finishes.
+#>
+function Test-TriggerWithResourceId
+{
+    $dfname = Get-DataFactoryName
+    $rgname = Get-ResourceGroupName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $dflocation = Get-ProviderLocation DataFactoryManagement
+        
+    New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Force
+
+    try
+    {
+        $df = Set-AzureRmDataFactoryV2 -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
+     
+        $triggername = "foo"
+   
+        $actual = Set-AzureRmDataFactoryV2Trigger -ResourceGroupName $rgname -DataFactoryName $dfname -Name $triggername -File .\Resources\scheduletrigger.json -Force
+        $trresourceid = -join($df.DataFactoryId, "/triggers/", $triggername)
+        
+        $expected = Get-AzureRmDataFactoryV2Trigger -ResourceId $trresourceid
+
+        Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
+        Assert-AreEqual $expected.DataFactoryName $actual.DataFactoryName
+        Assert-AreEqual $expected.Name $triggername
+        Assert-AreEqual $expected.RuntimeState $actual.RuntimeState
+
+        Remove-AzureRmDataFactoryV2Trigger -ResourceId $trresourceid -Force
+    }
+    finally
+    {
+        Clean-DataFactory $rgname $dfname
+    }
+}
