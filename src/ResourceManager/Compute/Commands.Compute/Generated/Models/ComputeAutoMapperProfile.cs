@@ -133,12 +133,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 cfg.CreateMap<TO.PSVirtualMachine, FROM.VirtualMachine>();
                 cfg.CreateMap<FROM.RunCommandResult, TO.PSRunCommandResult>();
                 cfg.CreateMap<TO.PSRunCommandResult, FROM.RunCommandResult>();
+                cfg.CreateMap<FROM.RollingUpgradeStatusInfo, TO.PSRollingUpgradeStatusInfo>();
+                cfg.CreateMap<TO.PSRollingUpgradeStatusInfo, FROM.RollingUpgradeStatusInfo>();
+                cfg.CreateMap<FROM.VirtualMachineInstanceView, TO.PSVirtualMachineInstanceView>();
+                cfg.CreateMap<TO.PSVirtualMachineInstanceView, FROM.VirtualMachineInstanceView>();
             });
 
-            Mapper.CreateMap<FROM.RollingUpgradeStatusInfo, TO.PSRollingUpgradeStatusInfo>();
-            Mapper.CreateMap<TO.PSRollingUpgradeStatusInfo, FROM.RollingUpgradeStatusInfo>();
-            Mapper.CreateMap<FROM.VirtualMachineInstanceView, TO.PSVirtualMachineInstanceView>();
-            Mapper.CreateMap<TO.PSVirtualMachineInstanceView, FROM.VirtualMachineInstanceView>();
             _mapper = config.CreateMapper();
         }
     }
