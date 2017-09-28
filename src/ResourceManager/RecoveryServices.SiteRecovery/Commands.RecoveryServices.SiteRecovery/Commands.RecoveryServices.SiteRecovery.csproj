@@ -35,11 +35,12 @@
     <DelaySign>true</DelaySign>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AutoMapper, Version=3.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\AutoMapper.3.1.1\lib\net40\AutoMapper.dll</HintPath>
+    <Reference Include="AutoMapper, Version=6.0.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\AutoMapper.6.0.2\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="AutoMapper.Net4, Version=3.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\AutoMapper.3.1.1\lib\net40\AutoMapper.Net4.dll</HintPath>
+    <Reference Include="AutoMapper.Net4, Version=6.0.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\AutoMapper.6.0.2\lib\net45\AutoMapper.Net4.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.RecoveryServices, Version=4.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.RecoveryServices.4.2.0-preview\lib\net45\Microsoft.Azure.Management.RecoveryServices.dll</HintPath>
