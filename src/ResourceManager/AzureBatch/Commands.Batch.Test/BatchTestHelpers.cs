@@ -254,10 +254,10 @@ namespace Microsoft.Azure.Commands.Batch.Test
 
                     propRequest.ServiceRequestFunc = (cancellationToken) =>
                     {
-                        var response = new AzureOperationHeaderResponse<ProxyModels.FileGetNodeFilePropertiesFromTaskHeaders>();
-                        response.Headers = new ProxyModels.FileGetNodeFilePropertiesFromTaskHeaders();
+                        var response = new AzureOperationHeaderResponse<ProxyModels.FileGetPropertiesFromTaskHeaders>();
+                        response.Headers = new ProxyModels.FileGetPropertiesFromTaskHeaders();
 
-                        Task<AzureOperationHeaderResponse<ProxyModels.FileGetNodeFilePropertiesFromTaskHeaders>> task = Task.FromResult(response);
+                        Task<AzureOperationHeaderResponse<ProxyModels.FileGetPropertiesFromTaskHeaders>> task = Task.FromResult(response);
 
                         return task;
                     };
@@ -296,10 +296,10 @@ namespace Microsoft.Azure.Commands.Batch.Test
 
                     propRequest.ServiceRequestFunc = (cancellationToken) =>
                     {
-                        var response = new AzureOperationHeaderResponse<ProxyModels.FileGetNodeFilePropertiesFromComputeNodeHeaders>();
-                        response.Headers = new ProxyModels.FileGetNodeFilePropertiesFromComputeNodeHeaders();
+                        var response = new AzureOperationHeaderResponse<ProxyModels.FileGetPropertiesFromComputeNodeHeaders>();
+                        response.Headers = new ProxyModels.FileGetPropertiesFromComputeNodeHeaders();
 
-                        Task<AzureOperationHeaderResponse<ProxyModels.FileGetNodeFilePropertiesFromComputeNodeHeaders>> task = Task.FromResult(response);
+                        Task<AzureOperationHeaderResponse<ProxyModels.FileGetPropertiesFromComputeNodeHeaders>> task = Task.FromResult(response);
 
                         return task;
                     };
@@ -401,7 +401,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
         /// <summary>
         /// Builds a CloudPoolUsageMetricsResponse object. Note: The lengths of all three lists must be the same.
         /// </summary>
-        public static AzureOperationResponse<IPage<ProxyModels.PoolUsageMetrics>, ProxyModels.PoolListPoolUsageMetricsHeaders> CreatePoolListUsageMetricsResponse(
+        public static AzureOperationResponse<IPage<ProxyModels.PoolUsageMetrics>, ProxyModels.PoolListUsageMetricsHeaders> CreatePoolListUsageMetricsResponse(
             IEnumerable<string> poolIds,
             IEnumerable<DateTime> startTimes,
             IEnumerable<DateTime> endTimes)
@@ -430,7 +430,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
             }
 
             var response = new AzureOperationResponse
-                <IPage<ProxyModels.PoolUsageMetrics>, ProxyModels.PoolListPoolUsageMetricsHeaders>()
+                <IPage<ProxyModels.PoolUsageMetrics>, ProxyModels.PoolListUsageMetricsHeaders>()
             {
                 Response = new HttpResponseMessage(HttpStatusCode.OK),
                 Body = new MockPagedEnumerable<ProxyModels.PoolUsageMetrics>(poolUsageList)
@@ -442,7 +442,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
         /// <summary>
         /// Builds a CloudPoolStatisticsResponse object. Note: Using avgCPUPercentage and startTime for validating if the pipeline return the correct values
         /// </summary>
-        public static AzureOperationResponse<ProxyModels.PoolStatistics, ProxyModels.PoolGetAllPoolsLifetimeStatisticsHeaders> CreatePoolStatisticsResponse(
+        public static AzureOperationResponse<ProxyModels.PoolStatistics, ProxyModels.PoolGetAllLifetimeStatisticsHeaders> CreatePoolStatisticsResponse(
             double avgCPUPercentage,
             DateTime startTime)
         {
@@ -453,7 +453,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
             };
 
             var response = new AzureOperationResponse
-                <ProxyModels.PoolStatistics, ProxyModels.PoolGetAllPoolsLifetimeStatisticsHeaders>()
+                <ProxyModels.PoolStatistics, ProxyModels.PoolGetAllLifetimeStatisticsHeaders>()
             {
                 Body = stats,
                 Response = new HttpResponseMessage(HttpStatusCode.Accepted)
@@ -465,7 +465,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
         /// <summary>
         /// Builds a CloudJobStatisticsResponse object.Note: Using startTime for validating if the pipeline return the correct values
         /// </summary>
-        public static AzureOperationResponse<ProxyModels.JobStatistics, ProxyModels.JobGetAllJobsLifetimeStatisticsHeaders> CreateJobStatisticsResponse(DateTime startTime)
+        public static AzureOperationResponse<ProxyModels.JobStatistics, ProxyModels.JobGetAllLifetimeStatisticsHeaders> CreateJobStatisticsResponse(DateTime startTime)
         {
             var stats = new ProxyModels.JobStatistics()
             {
@@ -473,7 +473,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
             };
 
             var response = new AzureOperationResponse
-                <ProxyModels.JobStatistics, ProxyModels.JobGetAllJobsLifetimeStatisticsHeaders>()
+                <ProxyModels.JobStatistics, ProxyModels.JobGetAllLifetimeStatisticsHeaders>()
             {
                 Body = stats,
                 Response = new HttpResponseMessage(HttpStatusCode.Accepted)
@@ -789,22 +789,22 @@ namespace Microsoft.Azure.Commands.Batch.Test
         /// <summary>
         /// Builds a NodeFileGetPropertiesFromTaskResponse object
         /// </summary>
-        public static AzureOperationHeaderResponse<ProxyModels.FileGetNodeFilePropertiesFromTaskHeaders> CreateNodeFileGetPropertiesByTaskResponse()
+        public static AzureOperationHeaderResponse<ProxyModels.FileGetPropertiesFromTaskHeaders> CreateNodeFileGetPropertiesByTaskResponse()
         {
-            var response = new AzureOperationHeaderResponse<ProxyModels.FileGetNodeFilePropertiesFromTaskHeaders>();
+            var response = new AzureOperationHeaderResponse<ProxyModels.FileGetPropertiesFromTaskHeaders>();
             response.Response = new HttpResponseMessage(HttpStatusCode.OK);
-            response.Headers = new ProxyModels.FileGetNodeFilePropertiesFromTaskHeaders();
+            response.Headers = new ProxyModels.FileGetPropertiesFromTaskHeaders();
             return response;
         }
 
         /// <summary>
         /// Builds a NodeFileGetPropertiesFromComputeNodeResponse object
         /// </summary>
-        public static AzureOperationHeaderResponse<ProxyModels.FileGetNodeFilePropertiesFromComputeNodeHeaders> CreateNodeFileGetPropertiesByComputeNodeResponse()
+        public static AzureOperationHeaderResponse<ProxyModels.FileGetPropertiesFromComputeNodeHeaders> CreateNodeFileGetPropertiesByComputeNodeResponse()
         {
-            var response = new AzureOperationHeaderResponse<ProxyModels.FileGetNodeFilePropertiesFromComputeNodeHeaders>();
+            var response = new AzureOperationHeaderResponse<ProxyModels.FileGetPropertiesFromComputeNodeHeaders>();
             response.Response = new HttpResponseMessage(HttpStatusCode.OK);
-            response.Headers = new ProxyModels.FileGetNodeFilePropertiesFromComputeNodeHeaders();
+            response.Headers = new ProxyModels.FileGetPropertiesFromComputeNodeHeaders();
             return response;
         }
 

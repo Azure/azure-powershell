@@ -148,9 +148,9 @@ namespace Microsoft.Azure.Commands.Profile
         }
 
         [Parameter(Position = 20, Mandatory = false, ValueFromPipelineByPropertyName = true,
-          HelpMessage = "The Azure Batch AD resource ID.")]
-        [Alias("BatchResourceId")]
-        public string BatchEndpointResourceId { get; set; }
+            HelpMessage = "The audience for tokens authenticating with the AD Azure Batch services endpoint.")]
+        [Alias("BatchResourceId", "BatchEndpointResourceId")]
+        public string BatchAudience { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -292,7 +292,7 @@ namespace Microsoft.Azure.Commands.Profile
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.Endpoint.DataLakeEndpointResourceId,
                                     nameof(DataLakeAudience));
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.Endpoint.BatchEndpointResourceId,
-                                    nameof(TODO));
+                                    nameof(BatchAudience));
                                 WriteObject(new PSAzureEnvironment(profileClient.AddOrSetEnvironment(newEnvironment)));
                             }
                         });
