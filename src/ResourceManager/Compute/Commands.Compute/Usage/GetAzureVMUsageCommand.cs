@@ -45,8 +45,8 @@ namespace Microsoft.Azure.Commands.Compute
                 var psResultList = new List<PSUsage>();
                 foreach (var item in result.Body)
                 {
-                    var psItem = Mapper.Map<PSUsage>(result);
-                    psItem = Mapper.Map(item, psItem);
+                    var psItem = ComputeAutoMapperProfile.Mapper.Map<PSUsage>(result);
+                    psItem = ComputeAutoMapperProfile.Mapper.Map(item, psItem);
                     psResultList.Add(psItem);
                 }
 
