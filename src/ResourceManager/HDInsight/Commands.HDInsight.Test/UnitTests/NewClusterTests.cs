@@ -152,7 +152,6 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     clusterout.Name == ClusterName &&
                     clusterout.OperatingSystemType == OSType.Linux)),
                 Times.Once);
-
         }
 
         [Fact]
@@ -206,8 +205,12 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                 Times.Once);
         }
 
-        private void CreateNewHDInsightCluster(bool addSecurityProfileInresponse = false, bool setEdgeNodeVmSize = false)
+        private void CreateNewHDInsightCluster(
+            bool addSecurityProfileInresponse = false, 
+            bool setEdgeNodeVmSize = false,
+            int workerNodeDataDisks = 0)
         {
+            // Assign cmdlet parameters
             cmdlet.ClusterName = ClusterName;
             cmdlet.ResourceGroupName = ResourceGroupName;
             cmdlet.ClusterSizeInNodes = ClusterSize;
@@ -218,9 +221,13 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             cmdlet.ClusterType = ClusterType;
             cmdlet.SshCredential = _sshCred;
             cmdlet.OSType = OSType.Linux;
+            cmdlet.DisksPerWorkerNode = workerNodeDataDisks;
             if (setEdgeNodeVmSize)
+            {
                 cmdlet.EdgeNodeSize = "edgeNodeVmSizeSetTest";
+            }
 
+            // Construct cluster Object
             var cluster = new Cluster
             {
                 Id = "id",
@@ -238,9 +245,28 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     {
                         CoresUsed = 24
                     },
-                    OperatingSystemType = OSType.Linux
+                    OperatingSystemType = OSType.Linux,
+                    ComputeProfile = new ComputeProfile()
+                    {
+                        Roles = new List<Role>()
+                    }
                 }
             };
+
+            if (workerNodeDataDisks > 0)
+            {
+                cluster.Properties.ComputeProfile.Roles.Add(new Role()
+                {
+                    Name = "workernode",
+                    DataDisksGroups = new List<DataDisksGroupProperties>()
+                    {
+                        new DataDisksGroupProperties()
+                        {
+                            DisksPerNode = workerNodeDataDisks
+                        }
+                    }
+                });
+            }
 
             if (addSecurityProfileInresponse)
             {
@@ -286,6 +312,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
 
             var getresponse = new ClusterGetResponse {Cluster = cluster};
 
+            // Setup Mocks and verify successfull GET response
             hdinsightManagementMock.Setup(
                 c => c.CreateNewCluster(ResourceGroupName, ClusterName, It.Is<ClusterCreateParameters>(
                     parameters =>
@@ -300,10 +327,12 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                         parameters.OSType == OSType.Linux &&
                         parameters.SshUserName == _sshCred.UserName &&
                         parameters.SshPassword == _sshCred.Password.ConvertToString() &&
-                        ((!setEdgeNodeVmSize && parameters.EdgeNodeSize == null) || (setEdgeNodeVmSize && parameters.EdgeNodeSize == "edgeNodeVmSizeSetTest")))))
+                        ((!setEdgeNodeVmSize && parameters.EdgeNodeSize == null) || (setEdgeNodeVmSize && parameters.EdgeNodeSize == "edgeNodeVmSizeSetTest")) &&
+                        (workerNodeDataDisks == 0) || (workerNodeDataDisks > 0 && parameters.WorkerNodeDataDisksGroups.First().DisksPerNode == workerNodeDataDisks))))
                 .Returns(getresponse)
                 .Verifiable();
 
+            // Execute Cmdlet and verify output
             cmdlet.ExecuteCmdlet();
 
             commandRuntimeMock.VerifyAll();
@@ -315,7 +344,8 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     clusterout.CoresUsed == 24 &&
                     clusterout.Location == Location &&
                     clusterout.Name == ClusterName &&
-                    clusterout.OperatingSystemType == OSType.Linux)),
+                    clusterout.OperatingSystemType == OSType.Linux &&
+                    (workerNodeDataDisks == 0) || (clusterout.WorkerNodeDataDisksGroups.First().DisksPerNode == workerNodeDataDisks))),
                     Times.Once);
         }
 
@@ -441,137 +471,12 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void CanCreateNewHDInsightCluster_DataDisksGroups()
+        public void CanCreateNewHDInsightCluster_Kafka_DataDisks_Linux()
         {
-            var kafkaClusterType = "Kafka";
-            var hdiVersion = "3.6";
-            var coresUsed = 24;
-            var expectedClusterState = "Running";
-            var dataDisksGroup = new DataDisksGroupProperties()
-            {
-                DisksPerNode = 8
-            };
-            var workerNodeDataDisksGroups = new List<DataDisksGroupProperties>()
-            {
-                dataDisksGroup
-            };
+            ClusterType = "Kafka";
+            HdiVersion = "3.6";
 
-            cmdlet.ClusterName = ClusterName;
-            cmdlet.ResourceGroupName = ResourceGroupName;
-            cmdlet.ClusterSizeInNodes = ClusterSize;
-            cmdlet.Location = Location;
-            cmdlet.HttpCredential = _httpCred;
-            cmdlet.DefaultStorageAccountName = StorageName;
-            cmdlet.DefaultStorageAccountKey = StorageKey;
-            cmdlet.ClusterType = kafkaClusterType;
-            cmdlet.SshCredential = _sshCred;
-            cmdlet.OSType = OSType.Linux;
-            cmdlet.WorkerNodeDataDisksGroups = workerNodeDataDisksGroups;
-
-            var cluster = new Cluster
-            {
-                Id = "id",
-                Name = ClusterName,
-                Location = Location,
-                Properties = new ClusterGetProperties
-                {
-                    ClusterVersion = hdiVersion,
-                    ClusterState = expectedClusterState,
-                    ClusterDefinition = new ClusterDefinition
-                    {
-                        ClusterType = kafkaClusterType
-                    },
-                    QuotaInfo = new QuotaInfo
-                    {
-                        CoresUsed = coresUsed
-                    },
-                    OperatingSystemType = OSType.Linux,
-                    ComputeProfile = new ComputeProfile()
-                    {
-                        Roles = new List<Role>()
-                    }
-                }
-            };
-
-            cluster.Properties.ComputeProfile.Roles.Add(new Role()
-            {
-                Name = "workernode",
-                DataDisksGroups = workerNodeDataDisksGroups
-            });
-
-            var coreConfigs = new Dictionary<string, string>
-            {
-                {"fs.defaultFS", "wasb://giyertestcsmv2@" + StorageName},
-                {
-                    "fs.azure.account.key." + StorageName,
-                    StorageKey
-                }
-            };
-            var gatewayConfigs = new Dictionary<string, string>
-            {
-                {"restAuthCredential.isEnabled", "true"},
-                {"restAuthCredential.username", _httpCred.UserName},
-                {"restAuthCredential.password", _httpCred.Password.ConvertToString()}
-            };
-
-            var configurations = new Dictionary<string, Dictionary<string, string>>
-            {
-                {"core-site", coreConfigs},
-                {"gateway", gatewayConfigs}
-            };
-            var serializedConfig = JsonConvert.SerializeObject(configurations);
-            cluster.Properties.ClusterDefinition.Configurations = serializedConfig;
-
-            var getresponse = new ClusterGetResponse { Cluster = cluster };
-
-            hdinsightManagementMock.Setup(c => c.CreateNewCluster(ResourceGroupName, ClusterName, It.Is<ClusterCreateParameters>(
-                parameters =>
-                    parameters.ClusterSizeInNodes == ClusterSize &&
-                    parameters.DefaultStorageInfo as AzureStorageInfo != null &&
-                    ((AzureStorageInfo)parameters.DefaultStorageInfo).StorageAccountName == StorageName &&
-                    ((AzureStorageInfo)parameters.DefaultStorageInfo).StorageAccountKey == StorageKey &&
-                    parameters.Location == Location &&
-                    parameters.UserName == _httpCred.UserName &&
-                    parameters.Password == _httpCred.Password.ConvertToString() &&
-                    parameters.ClusterType == kafkaClusterType &&
-                    parameters.OSType == OSType.Linux &&
-                    parameters.SshUserName == _sshCred.UserName &&
-                    parameters.SshPassword == _sshCred.Password.ConvertToString() &&
-                    parameters.WorkerNodeDataDisksGroups.First().DisksPerNode == dataDisksGroup.DisksPerNode)))
-            .Returns(getresponse)
-            .Verifiable();
-            hdinsightManagementMock.Setup(
-                c => c.CreateNewCluster(ResourceGroupName, ClusterName, It.Is<ClusterCreateParameters>(
-                    parameters =>
-                        parameters.ClusterSizeInNodes == ClusterSize &&
-                        parameters.DefaultStorageInfo as AzureStorageInfo != null &&
-                        ((AzureStorageInfo)parameters.DefaultStorageInfo).StorageAccountName == StorageName &&
-                        ((AzureStorageInfo)parameters.DefaultStorageInfo).StorageAccountKey == StorageKey &&
-                        parameters.Location == Location &&
-                        parameters.UserName == _httpCred.UserName &&
-                        parameters.Password == _httpCred.Password.ConvertToString() &&
-                        parameters.ClusterType == ClusterType &&
-                        parameters.OSType == OSType.Linux &&
-                        parameters.SshUserName == _sshCred.UserName &&
-                        parameters.SshPassword == _sshCred.Password.ConvertToString())))
-                .Returns(getresponse)
-                .Verifiable();
-
-            cmdlet.ExecuteCmdlet();
-
-            commandRuntimeMock.VerifyAll();
-
-            
-            commandRuntimeMock.Verify(f => f.WriteObject(It.Is<AzureHDInsightCluster>(
-                clusterout =>
-                    clusterout.ClusterState == expectedClusterState &&
-                    clusterout.ClusterType == kafkaClusterType &&
-                    clusterout.ClusterVersion == hdiVersion &&
-                    clusterout.CoresUsed == coresUsed &&
-                    clusterout.Location == Location &&
-                    clusterout.Name == ClusterName &&
-                    clusterout.OperatingSystemType == OSType.Linux)),
-                    Times.Once);
+            CreateNewHDInsightCluster(workerNodeDataDisks: 8);
         }
 
         [Fact]
