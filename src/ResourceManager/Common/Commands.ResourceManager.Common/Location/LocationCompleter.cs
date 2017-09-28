@@ -24,8 +24,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Location
     using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
-    using Rest;
-    using Commands.Common.Authentication.Models;
+    using System.Collections.Concurrent;
 
 
     /// <summary>
@@ -34,7 +33,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Location
     public class LocationCompleterAttribute : ArgumentCompleterAttribute
     {
         private static IDictionary<int, IDictionary<string, ICollection<string>>> _resourceTypeLocationDictionary = new Dictionary<int, IDictionary<string, ICollection<string>>>();
-
         private static readonly object _lock = new object();
 
         protected static IDictionary<string, ICollection<string>> ResourceTypeLocationDictionary
@@ -44,21 +42,31 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Location
                 lock (_lock)
                 {
                     IAzureContext context = AzureRmProfileProvider.Instance.Profile.DefaultContext;
-
                     var contextHash = HashContext(context);
-
                     if (!_resourceTypeLocationDictionary.ContainsKey(contextHash))
                     {
                         try
                         {
-                            IResourceManagementClient client = AzureSession.Instance.ClientFactory.CreateCustomArmClient<ResourceManagementClient>(
+                            var instance = AzureSession.Instance;
+                            IResourceManagementClient client = instance.ClientFactory.CreateCustomArmClient<ResourceManagementClient>(
                                 context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager),
-                                AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(context, AzureEnvironment.Endpoint.ResourceManager),
-                                AzureSession.Instance.ClientFactory.GetCustomHandlers());
+                                instance.AuthenticationFactory.GetServiceClientCredentials(context, AzureEnvironment.Endpoint.ResourceManager),
+                                instance.ClientFactory.GetCustomHandlers());
+                            //var client = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
                             client.SubscriptionId = context.Subscription.Id;
                             var allProviders = client.Providers.ListAsync();
                             if (allProviders.Wait(TimeSpan.FromSeconds(5)))
-                                _resourceTypeLocationDictionary[contextHash] = CreateLocationDictionary(allProviders.Result.ToList());
+                                if (allProviders.Result != null)
+                                {
+                                    _resourceTypeLocationDictionary[contextHash] = CreateLocationDictionary(allProviders.Result.ToList());
+                                }
+                                else
+                                {
+                                    _resourceTypeLocationDictionary[contextHash] = CreateLocationDictionary(new List<Provider>());
+#if DEBUG
+                                    throw new Exception("Result from client.Providers is null");
+#endif
+                                }
                             else
                             {
                                 _resourceTypeLocationDictionary[contextHash] = new Dictionary<string, ICollection<string>>();
@@ -105,7 +113,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Location
         {
             if (resourceTypeLocationDictionary == null)
             {
-                resourceTypeLocationDictionary = new Dictionary<string, ICollection<string>>();
+                resourceTypeLocationDictionary = new ConcurrentDictionary<string, ICollection<string>>(StringComparer.OrdinalIgnoreCase);
             }
 
             if (resourceTypes == null)
@@ -118,7 +126,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Location
             {
                 if (resourceType != null)
                 {
-                    if (resourceTypeLocationDictionary.ContainsKey(resourceType))
+                    if (resourceTypeLocationDictionary.ContainsKey(resourceType) && resourceTypeLocationDictionary[resourceType] != null)
                         validResourceTypes.Add(resourceType);
 #if DEBUG
                     else throw new Exception(String.Format(Resources.InvalidResourceType, resourceType));
@@ -142,7 +150,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Location
 #endif
             for (int i = 0; i < distinctLocations.Length; i++)
             {
-                distinctLocations[i] = "\"" + distinctLocations[i] + "\"";
+                distinctLocations[i] = String.Format("\"{0}\"", distinctLocations[i]);
             }
             return distinctLocations;
         }
@@ -154,7 +162,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Location
         /// <returns></returns>
         public static IDictionary<string, ICollection<string>> CreateLocationDictionary(List<Provider> allProviders)
         {
-            IDictionary<string, ICollection<string>> resourceTypeLocationDictionary = new Dictionary<string, ICollection<string>>(StringComparer.OrdinalIgnoreCase);
+            IDictionary<string, ICollection<string>> resourceTypeLocationDictionary = new ConcurrentDictionary<string, ICollection<string>>(StringComparer.OrdinalIgnoreCase);
 
             foreach (var provider in allProviders)
             {
