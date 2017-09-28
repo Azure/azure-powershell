@@ -29,26 +29,29 @@ The **Get-AzureRmAutomationDscNodeConfigurationDeployment** cmdlet deployes an A
 
 ### Example 1: Get a node configuration deployment
 ```
-PS C:\> $deployment = Get-AzureRmAutomationDscNodeConfigurationDeployment -JobId 6248f59e-e2fa-498c-a4c0-4ce33b8bc0b5 `
-            -AutomationAccountName "Contoso01"  `
-            -ResourceGroupName "ResourceGroup01" `
+PS C:\> $deployment = Get-AzureRmAutomationDscNodeConfigurationDeployment `
+                         -JobId 35b14eb4-52b7-4a1d-ad62-8e9f84adc657 `
+                         -AutomationAccountName "Contoso01"  `
+                         -ResourceGroupName "ResourceGroup01" `
             
 ResourceGroupName     : ResourceGroup01
 AutomationAccountName : Contoso01
-JobId                 : 6248f59e-e2fa-498c-a4c0-4ce33b8bc0b5
+JobId                 : 35b14eb4-52b7-4a1d-ad62-8e9f84adc657
 Job                   : Microsoft.Azure.Commands.Automation.Model.Job
 JobStatus             : Running
-nodeStatus            : {System.Collections.Generic.Dictionary`2[System.String,System.String],
-                        System.Collections.Generic.Dictionary`2[System.String,System.String]}
+NodeStatus            : {System.Collections.Generic.Dictionary`2[System.String,System.String], System.Collections.Generic.Dictionary`2[System.String,System.String]}
+NodeConfigurationName : Config01.Node1
+JobSchedule           :
+JobScheduleId         : 00000000-0000-0000-0000-000000000000
 
-PS C:\> $ns = $deployment | select nodeStatus
-PS C:\> $ns.nodeStatus
+PS C:\> $deployment | Select -expand nodeStatus
 
 Key        Value
 ---        -----
 WebServer  Pending
 WebServer2 Pending
 WebServer3 Compliant
+
 ```
 
 The above command deploys the DSC node configuration named "Config01.Node1" to the given two-dimensional array of Node Names. The deployment happens in a staged manner.
