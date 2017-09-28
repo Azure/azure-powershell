@@ -41,7 +41,6 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "New password for the user.")]
         [ValidateNotNullOrEmpty]
-        [Obsolete("Set-AzureRmADUser: The parameter \"Password\" is being changed from a string to a SecureString in an upcoming breaking change release.")]
         public SecureString Password { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "It must be specified if the user should change the password on the next successful login. Only valid if password is updated otherwise it will be ignored.")]
