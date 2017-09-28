@@ -14,11 +14,8 @@
 
 namespace Microsoft.Azure.Commands.Automation.Model
 {
-    using AutomationManagement = Management.Automation;
     using System;
     using Common;
-    using System.Collections.Generic;
-    using Management.Automation.Models;
 
     public class NodeConfigurationDeploymentSchedule
     {
@@ -43,17 +40,15 @@ namespace Microsoft.Azure.Commands.Automation.Model
             Requires.Argument("accountName", accountName).NotNull();
             Requires.Argument("resourceGroupName", resourceGroupName).NotNull();
 
-            this.RunbookName = "Deploy-NodeConfigurationToAutomationDscNodesV1";
+            RunbookName = "Deploy-NodeConfigurationToAutomationDscNodesV1";
             ResourceGroupName = resourceGroupName;
             AutomationAccountName = accountName;
 
             if (automationJobSchedule != null && automationJobSchedule.Properties == null) return;
+            if (automationJobSchedule == null) return;
 
-            if (automationJobSchedule != null)
-            {
-                JobScheduleId = automationJobSchedule.Properties.Id;
-                this.JobSchedule = new JobSchedule(resourceGroupName, accountName, automationJobSchedule);
-            }
+            JobScheduleId = automationJobSchedule.Properties.Id;
+            JobSchedule = new JobSchedule(resourceGroupName, accountName, automationJobSchedule);
         }
 
         /// <summary>
@@ -61,7 +56,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// </summary>
         public NodeConfigurationDeploymentSchedule()
         {
-            this.RunbookName = "Deploy-NodeConfigurationToAutomationDscNodesV1";
+            RunbookName = "Deploy-NodeConfigurationToAutomationDscNodesV1";
         }
 
         /// <summary>
@@ -87,6 +82,6 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <summary>
         ///     Gets or sets the job id.
         /// </summary>
-        public string RunbookName { get; private set; }
+        public string RunbookName { get; }
     }
 }
