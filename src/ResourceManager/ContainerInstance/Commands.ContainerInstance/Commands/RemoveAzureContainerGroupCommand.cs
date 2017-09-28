@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.ContainerInstance
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
-        protected override void ExecuteCmdletInternal()
+        public override void ExecuteCmdlet()
         {
             if (ShouldProcess(Name, "Remove Container Group"))
             {
