@@ -15,24 +15,27 @@ Gets information about pipeline runs.
 ### ByFactoryNameByRunId (Default)
 ```
 Get-AzureRmDataFactoryV2PipelineRun [-ResourceGroupName] <String> [-DataFactoryName] <String>
- [-PipelineRunId] <String>
+ [-PipelineRunId] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByFactoryObjectByRunId
 ```
 Get-AzureRmDataFactoryV2PipelineRun [-DataFactory] <PSDataFactory> [-PipelineRunId] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByFactoryObjectByPipeline
 ```
 Get-AzureRmDataFactoryV2PipelineRun [-DataFactory] <PSDataFactory> [-LastUpdatedAfter] <DateTime>
- [-LastUpdatedBefore] <DateTime> [[-PipelineName] <String>]
+ [-LastUpdatedBefore] <DateTime> [[-PipelineName] <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByFactoryNameByPipeline
 ```
 Get-AzureRmDataFactoryV2PipelineRun [-ResourceGroupName] <String> [-DataFactoryName] <String>
  [-LastUpdatedAfter] <DateTime> [-LastUpdatedBefore] <DateTime> [[-PipelineName] <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,11 +58,9 @@ PS C:\> Get-AzureRmDataFactoryV2PipelineRun -ResourceGroupName "ADF" -DataFactor
     DurationInMs      : 8246
     Status            : Succeeded
     Message           :
-
 ```
 
 This command gets details about the pipeline run with ID "61eb095a-fe23-4591-8a97-fade6c65ca72".
-
 
 ## PARAMETERS
 
@@ -90,6 +91,21 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -143,7 +159,7 @@ The Run ID of the pipeline.
 
 ```yaml
 Type: String
-Parameter Sets: ByFactoryObjectByRunId, ByFactoryNameByRunId
+Parameter Sets: ByFactoryNameByRunId, ByFactoryObjectByRunId
 Aliases: 
 
 Required: True
@@ -168,21 +184,23 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### Microsoft.Azure.Commands.DataFactoryV2.Models.PSDataFactory
 System.String
-
 
 ## OUTPUTS
 
 ### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.DataFactoryV2.Models.PSPipelineRun, Microsoft.Azure.Commands.DataFactoryV2, Version=0.1.9.0, Culture=neutral, PublicKeyToken=null]]
 Microsoft.Azure.Commands.DataFactoryV2.Models.PSPipelineRun
 
-
 ## NOTES
 
 ## RELATED LINKS
+
 [Invoke-AzureRmDataFactoryV2Pipeline]()
 
 [Get-AzureRmDataFactoryV2ActivityRun]()
