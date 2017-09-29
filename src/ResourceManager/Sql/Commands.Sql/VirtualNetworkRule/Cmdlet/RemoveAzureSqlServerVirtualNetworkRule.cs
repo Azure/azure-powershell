@@ -55,14 +55,16 @@ namespace Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Cmdlet
         }
 
         /// <summary>
-        /// Deletes the server.
+        /// Deletes the virtual network rule.
         /// </summary>
-        /// <param name="entity">The server being deleted</param>
-        /// <returns>The server that was deleted</returns>
+        /// <param name="entity">The virtual network rule being deleted</param>
+        /// <returns>Empty list</returns>
         protected override IEnumerable<Model.AzureSqlServerVirtualNetworkRuleModel> PersistChanges(IEnumerable<Model.AzureSqlServerVirtualNetworkRuleModel> entity)
         {
             ModelAdapter.RemoveVirtualNetworkRule(this.ResourceGroupName, this.ServerName, this.VirtualNetworkRuleName);
-            return entity;
+
+            // The rule no longer exists, so return an empty List so that the previous state of the rule is not output
+            return new List<Model.AzureSqlServerVirtualNetworkRuleModel>();
         }
     }
 }
