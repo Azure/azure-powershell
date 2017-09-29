@@ -17,21 +17,24 @@ Creates an Azure Site Recovery replication policy.
 New-AzureRmRecoveryServicesAsrPolicy [-HyperVToAzure] -Name <String> -ReplicationProvider <String>
  -ReplicationFrequencyInSeconds <String> [-NumberOfRecoveryPointsToRetain <Int32>]
  [-ApplicationConsistentSnapshotFrequencyInHours <Int32>] [-ReplicationStartTime <TimeSpan>]
- [-RecoveryAzureStorageAccountId <String>] [-Encryption <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-RecoveryAzureStorageAccountId <String>] [-Encryption <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### VMwareToAzure
 ```
-New-AzureRmRecoveryServicesAsrPolicy [-VmwareToAzure] -Name <String> [-RecoveryPointRetentionInHours <Int32>]
+New-AzureRmRecoveryServicesAsrPolicy [-VMwareToAzure] -Name <String> -RecoveryPointRetentionInHours <Int32>
  [-ApplicationConsistentSnapshotFrequencyInHours <Int32>] [-EnableMultiVmSync <Boolean>]
- [-RPOWarningThresholdInMinutes <Int32>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -RPOWarningThresholdInMinutes <Int32> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### AzureToVmware
+### AzureToVMware
 ```
-New-AzureRmRecoveryServicesAsrPolicy [-AzureToVmware] -Name <String> [-RecoveryPointRetentionInHours <Int32>]
+New-AzureRmRecoveryServicesAsrPolicy [-AzureToVMware] -Name <String> -RecoveryPointRetentionInHours <Int32>
  [-ApplicationConsistentSnapshotFrequencyInHours <Int32>] [-EnableMultiVmSync <Boolean>]
- [-RPOWarningThresholdInMinutes <Int32>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -RPOWarningThresholdInMinutes <Int32> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### EnterpriseToEnterprise
@@ -40,7 +43,8 @@ New-AzureRmRecoveryServicesAsrPolicy [-VmmToVmm] -Name <String> -ReplicationProv
  [-ReplicationMethod <String>] -ReplicationFrequencyInSeconds <String>
  [-NumberOfRecoveryPointsToRetain <Int32>] [-ApplicationConsistentSnapshotFrequencyInHours <Int32>]
  [-Compression <String>] -ReplicationPort <UInt16> [-Authentication <String>]
- [-ReplicationStartTime <TimeSpan>] [-ReplicaDeletion <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ReplicationStartTime <TimeSpan>] [-ReplicaDeletion <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -220,10 +224,10 @@ Accept wildcard characters: False
 ### -RPOWarningThresholdInMinutes
 The RPO threshold value in minutes to warn on.```yaml
 Type: Int32
-Parameter Sets: VMwareToAzure, AzureToVmware
+Parameter Sets: VMwareToAzure, AzureToVMware
 Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -369,27 +373,12 @@ Retain the recovery points fir given time in hours.
 
 ```yaml
 Type: Int32
-Parameter Sets: VMwareToAzure, AzureToVmware
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AzureToVmware
-Switch parameter specifying that the replication policy being created will be used to reverse replicate failed over VMware virtual machines and Physical servers running in Azure back to an on-premises VMware site.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: AzureToVmware
+Parameter Sets: VMwareToAzure, AzureToVMware
 Aliases: 
 
 Required: True
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -397,27 +386,12 @@ Accept wildcard characters: False
 ### -EnableMultiVmSync
 Enable multi Vm Sync for policy.```yaml
 Type: Boolean
-Parameter Sets: VMwareToAzure, AzureToVmware
+Parameter Sets: VMwareToAzure, AzureToVMware
 Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -VmwareToAzure
-Switch parameter specifying that the replication policy being created will be used to replicate VMware virtual machines and/or Physical servers to Azure.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: VMwareToAzure
-Aliases: 
-
-Required: True
-Position: Named
-Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -448,6 +422,49 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AzureToVMware
+Switch parameter specifying that the replication policy being created will be used to reverse replicate failed over VMware virtual machines and Physical servers running in Azure back to an on-premises VMware site.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: AzureToVMware
+Aliases: 
+
+Required: True
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VMwareToAzure
+Switch parameter specifying that the replication policy being created will be used to replicate VMware virtual machines and/or Physical servers to Azure.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: VMwareToAzure
+Aliases: 
+
+Required: True
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

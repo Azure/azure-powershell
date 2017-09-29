@@ -15,12 +15,13 @@ Configure Azure Site Recovery notification settings (email notification) for the
 ### Set (Default)
 ```
 Set-AzureRmRecoveryServicesAsrAlertSetting [-EmailSubscriptionOwner <Boolean>] [-CustomEmailAddress <String[]>]
- [-LocaleID <String>] [<CommonParameters>]
+ [-LocaleID <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Disable
 ```
-Set-AzureRmRecoveryServicesAsrAlertSetting [-DisableNotification] [<CommonParameters>]
+Set-AzureRmRecoveryServicesAsrAlertSetting [-DisableNotification] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -104,6 +105,19 @@ Email language of alert /notifcation to user(supported culture codes from micros
 Type: String
 Parameter Sets: Set
 Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named

@@ -15,57 +15,58 @@ Updates the replication direction for the specified replication protected item o
 ### ByRPIObject (Default)
 ```
 Update-AzureRmRecoveryServicesAsrProtectionDirection -ReplicationProtectedItem <ASRReplicationProtectedItem>
- -Direction <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+ -Direction <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### AzureToVMware
+```
+Update-AzureRmRecoveryServicesAsrProtectionDirection [-AzureToVMware] [-Account <ASRRunAsAccount>]
+ -DataStore <ASRDataStore> [-MasterTarget <ASRMasterTargetServer>] -ProcessServer <ASRProcessServer>
+ -ProtectionContainerMapping <ASRProtectionContainerMapping>
+ -ReplicationProtectedItem <ASRReplicationProtectedItem> -Direction <String>
+ -RetentionVolume <ASRRetentionVolume> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### VMwareToAzure
 ```
-Update-AzureRmRecoveryServicesAsrProtectionDirection [-VmwareToAzure] [-Account <ASRRunAsAccount>]
- -DataStore <ASRDataStore> [-MasterTarget <ASRMasterTargetServer>] -ProcessServer <ASRProcessServer>
- -ProtectionContainerMapping <ASRProtectionContainerMapping>
- -ReplicationProtectedItem <ASRReplicationProtectedItem> -Direction <String>
- -RetentionVolume <ASRRetentionVolume> [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### AzureToVmware
-```
-Update-AzureRmRecoveryServicesAsrProtectionDirection [-AzureToVmware] -Account <ASRRunAsAccount>
+Update-AzureRmRecoveryServicesAsrProtectionDirection [-VMwareToAzure] -Account <ASRRunAsAccount>
  [-MasterTarget <ASRMasterTargetServer>] -ProcessServer <ASRProcessServer>
  -ProtectionContainerMapping <ASRProtectionContainerMapping> [-LogStorageAccountId <String>]
  [-RecoveryAzureStorageAccountId <String>] -ReplicationProtectedItem <ASRReplicationProtectedItem>
- -Direction <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+ -Direction <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### HyperVToAzure
 ```
 Update-AzureRmRecoveryServicesAsrProtectionDirection [-HyperVToAzure] [-LogStorageAccountId <String>]
  [-RecoveryAzureStorageAccountId <String>] -ReplicationProtectedItem <ASRReplicationProtectedItem>
- -Direction <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+ -Direction <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### HyperVToAzureRP
 ```
 Update-AzureRmRecoveryServicesAsrProtectionDirection [-HyperVToAzure] -RecoveryPlan <ASRRecoveryPlan>
- -Direction <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+ -Direction <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### EnterpriseToEnterpriseRP
 ```
 Update-AzureRmRecoveryServicesAsrProtectionDirection [-VmmToVmm] -RecoveryPlan <ASRRecoveryPlan>
- -Direction <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+ -Direction <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### EnterpriseToEnterprise
 ```
 Update-AzureRmRecoveryServicesAsrProtectionDirection [-VmmToVmm]
- -ReplicationProtectedItem <ASRReplicationProtectedItem> -Direction <String> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -ReplicationProtectedItem <ASRReplicationProtectedItem> -Direction <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByRPObject
 ```
 Update-AzureRmRecoveryServicesAsrProtectionDirection -RecoveryPlan <ASRRecoveryPlan> -Direction <String>
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -87,7 +88,7 @@ The run as account to be used to push install the Mobility service if needed. Mu
 
 ```yaml
 Type: ASRRunAsAccount
-Parameter Sets: VMwareToAzure
+Parameter Sets: AzureToVMware
 Aliases: 
 
 Required: False
@@ -99,7 +100,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: ASRRunAsAccount
-Parameter Sets: AzureToVmware
+Parameter Sets: VMwareToAzure
 Aliases: 
 
 Required: True
@@ -129,7 +130,7 @@ The VMware datastore to be used for the vmdk's
 
 ```yaml
 Type: ASRDataStore
-Parameter Sets: VMwareToAzure
+Parameter Sets: AzureToVMware
 Aliases: 
 
 Required: True
@@ -164,7 +165,7 @@ Vm log azure storage account Id.
 
 ```yaml
 Type: String
-Parameter Sets: AzureToVmware, HyperVToAzure
+Parameter Sets: VMwareToAzure, HyperVToAzure
 Aliases: 
 
 Required: False
@@ -179,7 +180,7 @@ Master Target Server Details.
 
 ```yaml
 Type: ASRMasterTargetServer
-Parameter Sets: VMwareToAzure, AzureToVmware
+Parameter Sets: AzureToVMware, VMwareToAzure
 Aliases: 
 
 Required: False
@@ -194,7 +195,7 @@ Process Sever to be used for replication.
 
 ```yaml
 Type: ASRProcessServer
-Parameter Sets: VMwareToAzure, AzureToVmware
+Parameter Sets: AzureToVMware, VMwareToAzure
 Aliases: 
 
 Required: True
@@ -209,7 +210,7 @@ Protection containerMapping to be used for replication.
 
 ```yaml
 Type: ASRProtectionContainerMapping
-Parameter Sets: VMwareToAzure, AzureToVmware
+Parameter Sets: AzureToVMware, VMwareToAzure
 Aliases: 
 
 Required: True
@@ -224,7 +225,7 @@ Recovery Azure Storage AccountId.
 
 ```yaml
 Type: String
-Parameter Sets: AzureToVmware, HyperVToAzure
+Parameter Sets: VMwareToAzure, HyperVToAzure
 Aliases: 
 
 Required: False
@@ -254,7 +255,7 @@ Specifies an ASR replication protected item
 
 ```yaml
 Type: ASRReplicationProtectedItem
-Parameter Sets: ByRPIObject, VMwareToAzure, AzureToVmware, HyperVToAzure, EnterpriseToEnterprise
+Parameter Sets: ByRPIObject, AzureToVMware, VMwareToAzure, HyperVToAzure, EnterpriseToEnterprise
 Aliases: 
 
 Required: True
@@ -269,7 +270,7 @@ Retention Volume on the master target server to be used.
 
 ```yaml
 Type: ASRRetentionVolume
-Parameter Sets: VMwareToAzure
+Parameter Sets: AzureToVMware
 Aliases: 
 
 Required: True
@@ -294,21 +295,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AzureToVmware
-Update replication direction from Azure to Vmware.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: AzureToVmware
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -VmmToVmm
 Update replication direction for a failed over Hyper-V virtual machine that is protected between two VMM managed Hyper-V sites.
 
@@ -324,12 +310,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VmwareToAzure
-Update replication direction from VMware to Azure.
+### -HyperVToAzure
+Reprotect a Hyper-V virtual machine after failback.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: VMwareToAzure
+Parameter Sets: HyperVToAzure, HyperVToAzureRP
 Aliases: 
 
 Required: True
@@ -339,12 +325,40 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -HyperVToAzure
-Reprotect a Hyper-V virtual machine after failback.
+### -AzureToVMware
+Update replication direction from Azure to Vmware.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: HyperVToAzure, HyperVToAzureRP
+Parameter Sets: AzureToVMware
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VMwareToAzure
+Update replication direction from VMware to Azure.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: VMwareToAzure
 Aliases: 
 
 Required: True
