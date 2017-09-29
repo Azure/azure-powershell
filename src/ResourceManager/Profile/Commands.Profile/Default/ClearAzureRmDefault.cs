@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Profile.Default
         private const string ResourceGroupParameterSet = "ResourceGroup";
         private bool resourceGroup;
 
-        [Parameter(ParameterSetName = ResourceGroupParameterSet, Mandatory = false, HelpMessage = "Resource Group", ValueFromPipelineByPropertyName = true)]
+        [Parameter(ParameterSetName = ResourceGroupParameterSet, Mandatory = false, HelpMessage = "Clear Default Resource Group", ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public SwitchParameter ResourceGroup
         {

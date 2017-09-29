@@ -295,7 +295,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No Resource Group default set..
+        ///   Looks up a localized string similar to No default resource group set..
         /// </summary>
         internal static string NoDefaultResourceGroupSet {
             get {
