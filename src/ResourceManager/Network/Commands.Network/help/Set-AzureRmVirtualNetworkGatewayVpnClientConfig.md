@@ -23,7 +23,7 @@ Set-AzureRmVirtualNetworkGatewayVpnClientConfig -VirtualNetworkGateway <PSVirtua
 ### RadiusServerConfiguration
 ```
 Set-AzureRmVirtualNetworkGatewayVpnClientConfig -VirtualNetworkGateway <PSVirtualNetworkGateway>
- -VpnClientAddressPool <System.Collections.Generic.List`1[System.String]> [-RadiusServerAddress <String>]
+ -VpnClientAddressPool <System.Collections.Generic.List`1[System.String]> -RadiusServerAddress <String>
  -RadiusServerSecret <SecureString> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -62,7 +62,9 @@ The second command in the example then uses the **Set-AzureRmVirtualNetworkGatew
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.```yaml
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
 Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
@@ -75,12 +77,14 @@ Accept wildcard characters: False
 ```
 
 ### -RadiusServerAddress
-P2S External Radius server address.```yaml
+P2S External Radius server address.
+
+```yaml
 Type: String
 Parameter Sets: RadiusServerConfiguration
 Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -88,7 +92,9 @@ Accept wildcard characters: False
 ```
 
 ### -RadiusServerSecret
-P2S External Radius server secret.```yaml
+P2S External Radius server secret.
+
+```yaml
 Type: SecureString
 Parameter Sets: RadiusServerConfiguration
 Aliases: 

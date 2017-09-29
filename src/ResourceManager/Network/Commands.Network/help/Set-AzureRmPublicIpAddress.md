@@ -14,7 +14,8 @@ Sets the goal state for a public IP address.
 ## SYNTAX
 
 ```
-Set-AzureRmPublicIpAddress -PublicIpAddress <PSPublicIpAddress> [<CommonParameters>]
+Set-AzureRmPublicIpAddress -PublicIpAddress <PSPublicIpAddress> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,6 +59,21 @@ First command gets the public IP address resource with name $publicIPName in the
     updated object. DomainNameLabel & Fqdn are modified as expected.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -PublicIpAddress
 Specifies a **PublicIpAddress** object that represents the goal state to which the public IP address should be set.
