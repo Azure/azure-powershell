@@ -185,6 +185,7 @@
     <Compile Include="AzureRmProfileTests.cs" />
     <Compile Include="ClientFactoryTests.cs" />
     <Compile Include="CommonDataCmdletTests.cs" />
+    <Compile Include="DefaultCmdletTests.cs" />
     <Compile Include="EnvironmentCmdletTests.cs" />
     <Compile Include="ErrorResolutionTests.cs" />
     <Compile Include="MockDataStore.cs" />
