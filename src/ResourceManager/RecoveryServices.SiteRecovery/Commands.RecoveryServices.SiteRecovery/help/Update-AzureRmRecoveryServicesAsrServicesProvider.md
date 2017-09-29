@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.dll-Help.xml
+Module Name: AzureRM.RecoveryServices.SiteRecovery
 online version: 
 schema: 2.0.0
 ---
@@ -17,34 +18,18 @@ Update-AzureRmRecoveryServicesAsrServicesProvider -InputObject <ASRRecoveryServi
 ```
 
 ## DESCRIPTION
-The **Update-AzureRmRecoveryServicesAsrServicesProvider** cmdlet updates the information received from the Azure Site Recovery Services Provider.
-You can use this cmdlet to trigger a refresh of the information received from the Recovery Services Provider.
+The **Update-AzureRmRecoveryServicesAsrServicesProvider** cmdlet updates the information received from the Azure Site Recovery Services Provider. You can use this cmdlet to trigger a refresh of the information received from the Recovery Services Provider.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> $currentJob = Update-AzureRmRecoveryServicesAsrServicesProvider -ServicesProvider $ServicesProvider
+PS C:\> $currentJob = Update-AzureRmRecoveryServicesAsrServicesProvider -InputObject $ServicesProvider
 ```
 
-Starts the operation of refreshing the information from the specified ASR services provider and returns the ASR job used to track the operation. 
+Starts the operation of refreshing the information from the specified ASR services provider and returns the ASR job used to track the operation.
 
 ## PARAMETERS
-
-### -InputObject
-Input Object: Specifies the ASR services provider object corresponding to the ASR services provider that identifies the server for which information is to updated(refreshed.)
-
-```yaml
-Type: ASRRecoveryServicesProvider
-Parameter Sets: (All)
-Aliases: ServicesProvider
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
 
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
@@ -58,6 +43,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Specifies the ASR services provider object corresponding to the ASR services provider that identifies the server for which information is to updated(refreshed.)
+
+```yaml
+Type: ASRRecoveryServicesProvider
+Parameter Sets: (All)
+Aliases: ServicesProvider
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.RecoveryServices.ARM.dll-Help.xml
+Module Name: AzureRM.RecoveryServices
 ms.assetid: C635D723-0F03-4EF8-9435-24DBE0859899
 online version: 
 schema: 2.0.0
@@ -103,7 +104,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### ARSVault
-
 Parameter 'Vault' accepts value of type 'ARSVault' from the pipeline
 
 ## OUTPUTS

@@ -44,6 +44,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         internal const string ASRVault = "AzureSiteRecoveryVault";
 
+        /// </summary>
+        /// Handle ASR Vault.
+        /// </summary>
+        internal const string AzureToVMware = "AzureToVMware";
+
         /// <summary>
         ///     When only Name is passed to the command.
         /// </summary>
@@ -220,6 +225,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         internal const string ByRPIdWithVMNetworkID = "ByRPIdWithVMNetworkID";
 
         /// <summary>
+        ///     When only RPI Object with RecoveryTag is passed to the command.currently used only in case on InMage.
+        /// </summary>
+        internal const string ByRPIObjectWithRecoveryTag = "ByRPIObjectWithRecoveryTag";
+
+        /// <summary>
         ///     When only RPI Object is passed to the command.
         /// </summary>
         internal const string ByRPIObject = "ByRPIObject";
@@ -232,12 +242,32 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     When only RPI Object is passed along with Logical VM network to the command.
         /// </summary>
+        internal const string ByRPIObjectWithAzureVMNetworkIdAndRecoveryTag = "ByRPIObjectWithAzureVMNetworkIdAndRecoveryTag";
+        
+        /// <summary>
+        ///     When only RPI Object is passed along with Logical VM network to the command.
+        /// </summary>
+        internal const string ByRPIObjectWithAzureVMNetworkIdAndRecoveryPoint = "ByRPIObjectWithAzureVMNetworkIdAndRecoveryPoint";
+
+        /// <summary>
+        ///     When only RPI Object is passed along with Logical VM network to the command.
+        /// </summary>
         internal const string ByRPIObjectWithLogicalVMNetwork = "ByRPIObjectWithLogicalVMNetwork";
 
         /// <summary>
         ///     When only RPI Object is passed along with VM network to the command.
         /// </summary>
         internal const string ByRPIObjectWithVMNetwork = "ByRPIObjectWithVMNetwork";
+        
+        /// <summary>
+        ///     When only RPI Object is passed along with VM network to the command.
+        /// </summary>
+        internal const string ByRPIObjectWithVMNetworkAndRecoveryTag = "ByRPIObjectWithVMNetworkAndRecoveryTag";
+        
+        /// <summary>
+        ///     When only RPI Object is passed along with VM network to the command.
+        /// </summary>
+        internal const string ByRPIObjectWithVMNetworkAndRecoveryPoint = "ByRPIObjectWithVMNetworkAndRecoveryPoint";
 
         /// <summary>
         ///     When only RP Object is passed to the command.
@@ -260,6 +290,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         internal const string ByRPObjectWithAzureVMNetworkId = "ByRPObjectWithAzureVMNetworkId";
 
         /// <summary>
+        ///     When only RP Object is passed along with Azure VM Network Id to the command.
+        /// </summary>
+        internal const string ByRPObjectWithAzureVMNetworkIdAndRecoveryTag = "ByRPObjectWithAzureVMNetworkIdAndRecoveryTag";
+        
+        /// <summary>
         ///     When only RP object is passed along with logical network ID to the command.
         /// </summary>
         internal const string ByRPObjectWithLogicalNetworkID = "ByRPObjectWithLogicalNetworkID";
@@ -269,6 +304,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         internal const string ByRPObjectWithVMNetwork = "ByRPObjectWithVMNetwork";
 
+        /// <summary>
+        ///     When only RP Object is passed along with VM network to the command.
+        /// </summary>
+        internal const string ByRPObjectWithVMNetworkAndRecoveryTag = "ByRPObjectWithVMNetworkAndRecoveryTag"; 
         /// <summary>
         ///     When only RP Object is passed along with VM network ID to the command.
         /// </summary>
@@ -280,9 +319,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         internal const string ByServerObject = "ByServerObject";
 
         /// <summary>
+        ///     When only Server Object is passed to the command.
+        /// </summary>
+        internal const string ByTime = "ByTime";
+
+        /// <summary>
+        ///     When only Object type is passed to the command.
+        /// </summary>
+        internal const string ByType = "ByType";
+
+        /// <summary>
         ///     When nothing is passed to the command.
         /// </summary>
         internal const string Default = "Default";
+
+        /// <summary>
+        ///     Disable
+        /// </summary>
+        internal const string Disable = "Disable";
 
         /// <summary>
         ///     Disable DR
@@ -315,6 +369,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         internal const string EnterpriseToEnterprise = "EnterpriseToEnterprise";
 
         /// <summary>
+        ///     Mapping between Enterprise to Enterprise Recovery Plan.
+        /// </summary>
+        internal const string EnterpriseToEnterpriseRP = "EnterpriseToEnterpriseRP";
+
+        /// <summary>
         ///     Mapping between Enterprise to Enterprise Legacy.
         /// </summary>
         internal const string EnterpriseToEnterpriseLegacy = "EnterpriseToEnterpriseLegacy";
@@ -335,6 +394,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         internal const string HyperVSiteToAzure = "HyperVSiteToAzure";
 
         /// <summary>
+        ///     Mapping between HyperV to Azure.
+        /// </summary>
+        internal const string HyperVToAzure = "HyperVToAzure";
+
+        /// <summary>
+        ///     Mapping between HyperV Site to Azure Recovery Plan.
+        /// </summary>
+        internal const string HyperVSiteToAzureRP = "HyperVSiteToAzureRP";
+        
+        /// <summary>
+        ///     Mapping between HyperV to Azure Recovery Plan.
+        /// </summary>
+        internal const string HyperVToAzureRP = "HyperVToAzureRP";
+
+        /// <summary>
         ///     Mapping between HyperV Site to Azure Legacy.
         /// </summary>
         internal const string HyperVSiteToAzureLegacy = "HyperVSiteToAzureLegacy";
@@ -353,5 +427,61 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Remove replication protected items from RP
         /// </summary>
         internal const string RemoveReplicationProtectedItems = "RemoveReplicationProtectedItems";
+
+        /// <summary>
+        ///     Set alerts to send to owners.
+        /// </summary>
+        internal const string SendToOwners = "SendToOwners";
+
+        /// <summary>
+        ///     Set alerts to send to owners.
+        /// </summary>
+        internal const string Set = "Set";
+
+        /// <summary>
+        ///     Set email addresses.
+        /// </summary>
+        internal const string SetEmail = "SetEmail";
+
+        /// <summary>
+        ///     Mapping for VMware to Azure.
+        /// </summary>
+        internal const string VMwareToAzure = "VMwareToAzure";
+
+        /// <summary>
+        ///     Mapping for both VMware to Azure and VMware to VMware.
+        /// </summary>
+        internal const string VMwareToAzureAndVMwareToVMware = "VMwareToAzureAndVMwareToVMware";
+
+        /// <summary>
+        ///     Mapping for both VMware to Azure and VMware to VMware for RP.
+        /// </summary>
+        internal const string VMwareToAzureAndVMwareToVMwareRP = "VMwareToAzureAndVMwareToVMwareRP";
+
+        /// <summary>
+        ///     Mapping for both VMware to Azure and VMware to VMware for RPI.
+        /// </summary>
+        internal const string VMwareToAzureAndVMwareToVMwareRPI =
+            "VMwareToAzureAndVMwareToVMwareRPI";
+
+        /// <summary>
+        ///     Mapping for VMware to Azure for RP.
+        /// </summary>
+        internal const string VMwareToAzureRP = "VMwareToAzureRP";
+
+        /// <summary>
+        ///     Mapping for VMware to Azure for RPI.
+        /// </summary>
+        internal const string VMwareToAzureRPI = "VMwareToAzureRPI";
+
+        /// <summary>
+        ///     Mapping for VMware to VMware.
+        /// </summary>
+        internal const string VMWareToVMWare = "VMWareToVMWare";
+
+        /// <summary>
+        ///     Mapping for VMware to VMware for RPI.
+        /// </summary>
+        internal const string VMwareToVMwareRPI = "VMwareToVMwareRPI";
     }
 }
