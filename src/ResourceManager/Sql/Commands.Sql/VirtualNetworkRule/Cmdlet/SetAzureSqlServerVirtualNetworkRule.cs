@@ -42,6 +42,14 @@ namespace Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Cmdlet
         public string VirtualNetworkSubnetId { get; set; }
 
         /// <summary>
+        /// Create firewall rule before the virtual network has private access enabled.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Create firewall rule before the virtual network has private access enabled..")]
+        [ValidateNotNull]
+        public SwitchParameter IgnoreMissingVnetServiceEndpoint { get; set; }
+
+        /// <summary>
         /// Get the Virtual Network Rule to update
         /// </summary>
         /// <returns>The Virtual Network Rule being updated</returns>
@@ -64,7 +72,8 @@ namespace Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Cmdlet
                 ResourceGroupName = this.ResourceGroupName,
                 ServerName = this.ServerName,
                 VirtualNetworkRuleName = this.VirtualNetworkRuleName,
-                VirtualNetworkSubnetId = this.VirtualNetworkSubnetId
+                VirtualNetworkSubnetId = this.VirtualNetworkSubnetId,
+                IgnoreMissingVnetServiceEndpoint = this.IgnoreMissingVnetServiceEndpoint
             });
             return updateData;
         }
