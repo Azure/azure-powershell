@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     string.IsNullOrEmpty(this.Size) &&
                     string.IsNullOrEmpty(this.PrimaryNic) &&
                     string.IsNullOrEmpty(this.RecoveryNetworkId) &&
-                    this.UseManagedDisks != null &&
+                    this.UseManagedDisks == null &&
                     string.IsNullOrEmpty(this.RecoveryAvailabilitySet) &&
                     string.IsNullOrEmpty(this.RecoveryResourceGroupId) &&
                     string.IsNullOrEmpty(this.LicenseType))

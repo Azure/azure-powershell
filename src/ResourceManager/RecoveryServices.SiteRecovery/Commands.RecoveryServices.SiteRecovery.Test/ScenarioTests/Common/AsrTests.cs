@@ -52,19 +52,6 @@ namespace RecoveryServices.SiteRecovery.Test
         [Trait(
             Category.AcceptanceType,
             Category.CheckIn)]
-        public void VerifyAuth()
-        {
-            this.RunPowerShellTest(
-              Constants.NewModel,
-              "Test-VerifyAuth -vaultSettingsFilePath \"" +
-                this.vaultSettingsFilePath +
-                "\"");
-        }
-
-        [Fact]
-        [Trait(
-            Category.AcceptanceType,
-            Category.CheckIn)]
         public void V2AEvent()
         {
             this.RunPowerShellTest(

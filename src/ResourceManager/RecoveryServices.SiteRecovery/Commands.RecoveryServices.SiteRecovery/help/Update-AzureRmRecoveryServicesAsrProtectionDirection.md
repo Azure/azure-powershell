@@ -44,18 +44,6 @@ Update-AzureRmRecoveryServicesAsrProtectionDirection [-HyperVToAzure] [-LogStora
  -Direction <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### HyperVToAzureRP
-```
-Update-AzureRmRecoveryServicesAsrProtectionDirection [-HyperVToAzure] -RecoveryPlan <ASRRecoveryPlan>
- -Direction <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### EnterpriseToEnterpriseRP
-```
-Update-AzureRmRecoveryServicesAsrProtectionDirection [-VmmToVmm] -RecoveryPlan <ASRRecoveryPlan>
- -Direction <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ### EnterpriseToEnterprise
 ```
 Update-AzureRmRecoveryServicesAsrProtectionDirection [-VmmToVmm]
@@ -126,7 +114,7 @@ Accept wildcard characters: False
 ```
 
 ### -DataStore
-The VMware datastore to be used for the vmdk's
+The VMware datastore to be used for the vmdisk's
 
 ```yaml
 Type: ASRDataStore
@@ -161,7 +149,7 @@ Accept wildcard characters: False
 ```
 
 ### -LogStorageAccountId
-Vm log azure storage account Id.
+Specifies the storage account ID to store the replication log of VMs.
 
 ```yaml
 Type: String
@@ -240,7 +228,7 @@ Specifies an ASR recovery plan object.
 
 ```yaml
 Type: ASRRecoveryPlan
-Parameter Sets: HyperVToAzureRP, EnterpriseToEnterpriseRP, ByRPObject
+Parameter Sets: ByRPObject
 Aliases: 
 
 Required: True
@@ -300,7 +288,7 @@ Update replication direction for a failed over Hyper-V virtual machine that is p
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: EnterpriseToEnterpriseRP, EnterpriseToEnterprise
+Parameter Sets: EnterpriseToEnterprise
 Aliases: 
 
 Required: True
@@ -315,7 +303,7 @@ Reprotect a Hyper-V virtual machine after failback.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: HyperVToAzure, HyperVToAzureRP
+Parameter Sets: HyperVToAzure
 Aliases: 
 
 Required: True

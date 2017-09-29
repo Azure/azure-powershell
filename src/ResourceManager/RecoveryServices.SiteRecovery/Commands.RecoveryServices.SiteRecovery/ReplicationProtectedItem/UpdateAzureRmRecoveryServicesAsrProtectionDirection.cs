@@ -57,19 +57,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             Position = 0,
             ParameterSetName = ASRParameterSets.HyperVToAzure,
             Mandatory = true)]
-        [Parameter(
-            Position = 0,
-            ParameterSetName = ASRParameterSets.HyperVToAzureRP,
-            Mandatory = true)]
         public SwitchParameter HyperVToAzure { get; set; }
 
         /// <summary>
         ///    Switch Paramter to create HyperVSiteToHyperVSite policy.
         /// </summary>
-        [Parameter(
-            Position = 0,
-            ParameterSetName = ASRParameterSets.EnterpriseToEnterpriseRP,
-            Mandatory = true)]
         [Parameter(
             Position = 0,
             ParameterSetName = ASRParameterSets.EnterpriseToEnterprise,
@@ -133,15 +125,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets Recovery Plan object.
         /// </summary>
-        [Parameter(
-            ParameterSetName = ASRParameterSets.EnterpriseToEnterpriseRP,
-            Mandatory = true,
-            ValueFromPipeline = true)]
-        [Parameter(
-            ParameterSetName = ASRParameterSets.HyperVToAzureRP,
-            Mandatory = true,
-            ValueFromPipeline = true)]
-        [Parameter(
+       [Parameter(
             ParameterSetName = ASRParameterSets.ByRPObject,
             Mandatory = true,
             ValueFromPipeline = true)]
@@ -216,8 +200,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                             ARMResourceTypeConstants.ReplicationFabrics);
                         this.SetRPIReprotect();
                         break;
-                    case ASRParameterSets.EnterpriseToEnterpriseRP:
-                    case ASRParameterSets.HyperVToAzureRP:
                     case ASRParameterSets.ByRPObject:
                         this.SetRPReprotect();
                         break;
@@ -398,7 +380,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             
             foreach (var replicationProvider in rp.Properties.ReplicationProviders)
             {
-                validateRPSwitchParam(rp, replicationProvider);
                 if (string.Compare(
                         replicationProvider,
                         Constants.InMageAzureV2,
