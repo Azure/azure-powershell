@@ -24,7 +24,12 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<PSVpnClientRootCertificate> VpnClientRootCertificates { get; set; }
 
+        public string RadiusServerAddress;
 
+        public string RadiusServerSecret;
+
+        public List<string> VpnClientProtocols { get; set; }
+        
         [JsonIgnore]
         public string VpnClientAddressPoolText
         {
