@@ -243,6 +243,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage
             }
         }
 
+        protected void ValidateBlobTier(BlobType type, PremiumPageBlobTier? pageBlobTier)
+        {
+            if ((pageBlobTier != null)
+                && (type != BlobType.PageBlob))
+            {
+                throw new ArgumentOutOfRangeException("BlobType, PageBlobTier", String.Format("PremiumPageBlobTier can only be set to Page Blob. The Current BlobType is: {0}", type));
+            }
+        }
+
         protected bool ContainerIsEmpty(CloudBlobContainer container)
         {
             try

@@ -81,6 +81,11 @@ Remove-AzureRmRoleAssignment -ServicePrincipalName <String> [-Scope <String>] -R
  [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### RoleAssignmentParameterSet
+```
+Remove-AzureRmRoleAssignment [-InputObject] <PSRoleAssignment> [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Use the Remove-AzureRmRoleAssignment commandlet to revoke access to any principal at given scope and given role.
 
@@ -116,6 +121,14 @@ PS C:\> Remove-AzureRmRoleAssignment -ObjectId 36f81fc3-b00f-48cd-8218-3879f51ff
 
 Removes the role assignment to the group principal identified by the ObjectId and assigned to the Reader role.
 Defaults to using the current subscription as the scope to find the assignment to be deleted.
+
+### --------------------------  Example 3  --------------------------
+```
+PS C:\> $roleassignment = Get-AzureRmRoleAssignment |Select-Object -First 1 -Wait
+PS C:\> Remove-AzureRmRoleAssignment -InputObject $roleassignment
+```
+
+Removes the first role assignment object which is fetched from the Get-AzureRmRoleAssignment commandlet.
 
 ## PARAMETERS
 
@@ -296,6 +309,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -InputObject
+Role Assignment object.
+
+```yaml
+Type: PSRoleAssignment
+Parameter Sets: RoleAssignmentParameterSet
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True
 Accept wildcard characters: False
 ```
 

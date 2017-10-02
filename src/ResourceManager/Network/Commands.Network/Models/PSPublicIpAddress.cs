@@ -15,6 +15,7 @@
 namespace Microsoft.Azure.Commands.Network.Models
 {
     using Newtonsoft.Json;
+    using System.Collections.Generic;
 
     public class PSPublicIpAddress : PSTopLevelResource
     {
@@ -32,6 +33,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public int? IdleTimeoutInMinutes { get; set; }
 
+        public List<string> Zones { get; set; }
+
         public string ProvisioningState { get; set; }
 
         [JsonIgnore]
@@ -44,6 +47,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string DnsSettingsText
         {
             get { return JsonConvert.SerializeObject(DnsSettings, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string SkuText
+        {
+            get { return JsonConvert.SerializeObject(Sku, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

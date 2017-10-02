@@ -13,7 +13,8 @@ Gets VMImage offer types.
 ## SYNTAX
 
 ```
-Get-AzureRmVMImageOffer -Location <String> -PublisherName <String> [<CommonParameters>]
+Get-AzureRmVMImageOffer -Location <String> -PublisherName <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,6 +30,21 @@ PS C:\> Get-AzureRmVMImageOffer -Location "Central US" -PublisherName "Fabrikam"
 This command gets the offer types for the specified publisher in the Central US region.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Location
 Specifies the location of the VMImage.
