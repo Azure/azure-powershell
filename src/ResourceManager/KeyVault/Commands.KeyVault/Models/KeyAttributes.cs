@@ -73,6 +73,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         /// <remarks>
         /// Deprecated, will be removed in the next PowerShell release.
         /// </remarks>
+        [Obsolete("This property is being deprecated and will be removed in a future release")]
         public bool PurgeDisabled { get; private set; }
 
         public string RecoveryLevel { get; private set; }
