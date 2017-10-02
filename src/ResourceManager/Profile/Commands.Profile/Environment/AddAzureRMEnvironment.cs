@@ -98,6 +98,7 @@ namespace Microsoft.Azure.Commands.Profile
 
         [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Position = 11, Mandatory = false, ValueFromPipelineByPropertyName = true,
            HelpMessage = "Resource identifier of Azure Key Vault data service that is the recipient of the requested token.")]
+        [Parameter(ParameterSetName = MetadataParameterSet, Position = 4, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Resource identifier of Azure Key Vault data service that is the recipient of the requested token.")]
         public string AzureKeyVaultServiceEndpointResourceId { get; set; }
 
         [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Position = 12, Mandatory = false, ValueFromPipelineByPropertyName = true,
