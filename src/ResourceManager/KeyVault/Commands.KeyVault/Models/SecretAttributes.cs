@@ -33,7 +33,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             this.NotBefore = notBefore;
             this.ContentType = contentType;
             this.Tags = tags;
-            this.PurgeDisabled = false;
         }
 
         internal SecretAttributes(bool? enabled, DateTime? expires, DateTime? notBefore, 
@@ -47,7 +46,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             this.ContentType = contentType;
             this.RecoveryLevel = deletionRecoveryLevel;
             this.Tags = (tags == null) ? null : tags.ConvertToHashtable();
-            this.PurgeDisabled = false;
         }
 
         public bool? Enabled { get; set; }
