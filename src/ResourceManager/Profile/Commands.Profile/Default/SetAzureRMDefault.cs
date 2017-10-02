@@ -18,7 +18,6 @@ using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Internal.Resources.Models;
-using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Profile.Default
@@ -49,7 +48,7 @@ namespace Microsoft.Azure.Commands.Profile.Default
             if (ResourceGroupName != null)
             {
                 var defaultResourceGroup = client.ResourceGroups.Get(ResourceGroupName);
-                if (ShouldProcess(Resources.DefaultResourceGroupTarget, String.Format(Resources.DefaultResourceGroupChangeWarning, defaultResourceGroup.Name)))
+                if (ShouldProcess(Resources.DefaultResourceGroupTarget, string.Format(Resources.DefaultResourceGroupChangeWarning, defaultResourceGroup.Name)))
                 {
                     if (context.ExtendedProperties.ContainsKey(Resources.DefaultResourceGroupKey))
                     {

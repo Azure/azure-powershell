@@ -15,12 +15,14 @@
 using Microsoft.Azure.Commands.Resources.Test.ScenarioTests;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using System.Threading;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Profile.Test
 {
-    public class DefaultCmdletTests
+    public class DefaultCmdletTests : RMTestBase
     {
         private XunitTracingInterceptor xunitLogger;
 

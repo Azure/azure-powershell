@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Profile.Default
                 }
             }
 
-            // If any parameters are specified, show only defaults with switch parameters set to true
+            // If any parameters are specified, clear only defaults with switch parameters set to true
             if (ResourceGroup)
             {
                 if (context.ExtendedProperties.ContainsKey(Resources.DefaultResourceGroupKey))
