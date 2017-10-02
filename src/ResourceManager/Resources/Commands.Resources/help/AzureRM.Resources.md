@@ -44,11 +44,20 @@ Filters active directory users.
 ### [Get-AzureRmLocation](Get-AzureRmLocation.md)
 Gets all locations and the supported resource providers for each location.
 
+### [Get-AzureRmManagedApplicationDefinition](Get-AzureRmManagedApplicationDefinition.md)
+Gets managed application definitions.
+
+### [Get-AzureRmManagedApplication](Get-AzureRmManagedApplication.md)
+Gets managed applications.
+
 ### [Get-AzureRmPolicyAssignment](Get-AzureRmPolicyAssignment.md)
 Gets policy assignments.
 
 ### [Get-AzureRmPolicyDefinition](Get-AzureRmPolicyDefinition.md)
 Gets policy definitions.
+
+### [Get-AzureRmPolicySetDefinition](Get-AzureRmPolicySetDefinition.md)
+Gets policy set definitions.
 
 ### [Get-AzureRmProviderFeature](Get-AzureRmProviderFeature.md)
 Gets information about Azure provider features.
@@ -103,11 +112,20 @@ Adds a credential to an existing service principal.
 ### [New-AzureRmADUser](New-AzureRmADUser.md)
 Creates a new active directory user.
 
+### [New-AzureRmManagedApplicationDefinition](New-AzureRmManagedApplicationDefinition.md)
+Creates managed application definitions.
+
+### [New-AzureRmManagedApplication](New-AzureRmManagedApplication.md)
+Creates managed applications.
+
 ### [New-AzureRmPolicyAssignment](New-AzureRmPolicyAssignment.md)
 Creates a policy assignment.
 
 ### [New-AzureRmPolicyDefinition](New-AzureRmPolicyDefinition.md)
 Creates a policy definition.
+
+### [New-AzureRmPolicySetDefinition](New-AzureRmPolicySetDefinition.md)
+Creates a policy set definition.
 
 ### [New-AzureRmResource](New-AzureRmResource.md)
 Creates a resource.
@@ -152,11 +170,20 @@ Removes a credential from a service principal.
 ### [Remove-AzureRmADUser](Remove-AzureRmADUser.md)
 Deletes an active directory user.
 
+### [Remove-AzureRmManagedApplicationDefinition](Remove-AzureRmManagedApplicationDefinition.md)
+Removes managed application definitions.
+
+### [Remove-AzureRmManagedApplication](Remove-AzureRmManagedApplication.md)
+Removes managed applications.
+
 ### [Remove-AzureRmPolicyAssignment](Remove-AzureRmPolicyAssignment.md)
 Removes a policy assignment.
 
 ### [Remove-AzureRmPolicyDefinition](Remove-AzureRmPolicyDefinition.md)
 Removes a policy definition.
+
+### [Remove-AzureRmPolicySetDefinition](Remove-AzureRmPolicySetDefinition.md)
+Removes a policy set definition.
 
 ### [Remove-AzureRmResource](Remove-AzureRmResource.md)
 Removes a resource.
@@ -190,11 +217,20 @@ Updates an existing azure active directory service principal.
 ### [Set-AzureRmADUser](Set-AzureRmADUser.md)
 Updates an existing active directory user.
 
+### [Set-AzureRmManagedApplicationDefinition](Set-AzureRmManagedApplicationDefinition.md)
+Updates an existing managed application definition.
+
+### [Set-AzureRmManagedApplication](Set-AzureRmManagedApplication.md)
+Updates an existing managed application.
+
 ### [Set-AzureRmPolicyAssignment](Set-AzureRmPolicyAssignment.md)
 Modifies a policy assignment.
 
 ### [Set-AzureRmPolicyDefinition](Set-AzureRmPolicyDefinition.md)
 Modifies a policy definition.
+
+### [Set-AzureRmPolicySetDefinition](Set-AzureRmPolicySetDefinition.md)
+Modifies a policy set definition.
 
 ### [Set-AzureRmResource](Set-AzureRmResource.md)
 Modifies a resource.

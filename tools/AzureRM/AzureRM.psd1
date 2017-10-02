@@ -12,7 +12,7 @@
 RootModule = '.\AzureRM.psm1'
 
 # Version number of this module.
-ModuleVersion = '4.3.1'
+ModuleVersion = '4.4.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -51,54 +51,57 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '3.3.1'; }, 
-               @{ModuleName = 'Azure.Storage'; RequiredVersion = '3.3.1'; }, 
-               @{ModuleName = 'AzureRM.AnalysisServices'; RequiredVersion = '0.4.4'; }, 
-               @{ModuleName = 'Azure.AnalysisServices'; RequiredVersion = '0.4.4'; }, 
-               @{ModuleName = 'AzureRM.ApiManagement'; RequiredVersion = '4.3.1'; }, 
-               @{ModuleName = 'AzureRM.Automation'; RequiredVersion = '3.3.1'; }, 
-               @{ModuleName = 'AzureRM.Backup'; RequiredVersion = '3.3.1'; }, 
-               @{ModuleName = 'AzureRM.Batch'; RequiredVersion = '3.3.1'; }, 
-               @{ModuleName = 'AzureRM.Billing'; RequiredVersion = '0.13.4'; }, 
-               @{ModuleName = 'AzureRM.Cdn'; RequiredVersion = '3.3.1'; }, 
-               @{ModuleName = 'AzureRM.CognitiveServices'; RequiredVersion = '0.8.4'; }, 
-               @{ModuleName = 'AzureRM.Compute'; RequiredVersion = '3.3.1'; }, 
-               @{ModuleName = 'AzureRM.Consumption'; RequiredVersion = '0.2.4'; }, 
-               @{ModuleName = 'AzureRM.ContainerRegistry'; RequiredVersion = '0.2.4'; }, 
-               @{ModuleName = 'AzureRM.DataFactories'; RequiredVersion = '3.3.1'; }, 
-               @{ModuleName = 'AzureRM.DataLakeAnalytics'; RequiredVersion = '3.3.1'; }, 
-               @{ModuleName = 'AzureRM.DataLakeStore'; RequiredVersion = '4.3.1'; }, 
-               @{ModuleName = 'AzureRM.DevTestLabs'; RequiredVersion = '3.3.1'; }, 
-               @{ModuleName = 'AzureRM.Dns'; RequiredVersion = '3.3.1'; }, 
-               @{ModuleName = 'AzureRM.EventHub'; RequiredVersion = '0.4.4'; }, 
-               @{ModuleName = 'AzureRM.HDInsight'; RequiredVersion = '3.3.1'; }, 
-               @{ModuleName = 'AzureRM.Insights'; RequiredVersion = '3.3.1'; }, 
-               @{ModuleName = 'AzureRM.IoTHub'; RequiredVersion = '2.3.1'; }, 
-               @{ModuleName = 'AzureRM.KeyVault'; RequiredVersion = '3.3.1'; }, 
-               @{ModuleName = 'AzureRM.LogicApp'; RequiredVersion = '3.3.1'; }, 
-               @{ModuleName = 'AzureRM.MachineLearning'; RequiredVersion = '0.15.4'; }, 
-               @{ModuleName = 'AzureRM.Media'; RequiredVersion = '0.7.4'; }, 
-               @{ModuleName = 'AzureRM.Network'; RequiredVersion = '4.3.1'; }, 
-               @{ModuleName = 'AzureRM.NotificationHubs'; RequiredVersion = '3.3.1'; }, 
-               @{ModuleName = 'AzureRM.OperationalInsights'; RequiredVersion = '3.3.1'; }, 
-               @{ModuleName = 'AzureRM.PowerBIEmbedded'; RequiredVersion = '3.3.1'; }, 
-               @{ModuleName = 'AzureRM.RecoveryServices'; RequiredVersion = '3.3.1'; }, 
-               @{ModuleName = 'AzureRM.RecoveryServices.Backup'; RequiredVersion = '3.3.1'; }, 
-               @{ModuleName = 'AzureRM.RedisCache'; RequiredVersion = '3.3.1'; }, 
-               @{ModuleName = 'AzureRM.Relay'; RequiredVersion = '0.2.4'; }, 
-               @{ModuleName = 'AzureRM.Resources'; RequiredVersion = '4.3.1'; }, 
-               @{ModuleName = 'AzureRM.Scheduler'; RequiredVersion = '0.15.4'; }, 
-               @{ModuleName = 'AzureRM.ServerManagement'; RequiredVersion = '3.3.1'; }, 
-               @{ModuleName = 'AzureRM.ServiceBus'; RequiredVersion = '0.4.4'; }, 
-               @{ModuleName = 'AzureRM.ServiceFabric'; RequiredVersion = '0.2.4'; }, 
-               @{ModuleName = 'AzureRM.SiteRecovery'; RequiredVersion = '4.3.1'; }, 
-               @{ModuleName = 'AzureRM.Sql'; RequiredVersion = '3.3.1'; }, 
-               @{ModuleName = 'AzureRM.Storage'; RequiredVersion = '3.3.1'; }, 
-               @{ModuleName = 'AzureRM.StreamAnalytics'; RequiredVersion = '3.3.1'; }, 
-               @{ModuleName = 'AzureRM.Tags'; RequiredVersion = '3.3.1'; }, 
-               @{ModuleName = 'AzureRM.TrafficManager'; RequiredVersion = '3.3.1'; }, 
-               @{ModuleName = 'AzureRM.UsageAggregates'; RequiredVersion = '3.3.1'; }, 
-               @{ModuleName = 'AzureRM.Websites'; RequiredVersion = '3.3.1'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '3.4.0'; }, 
+               @{ModuleName = 'Azure.Storage'; RequiredVersion = '3.4.0'; }, 
+               @{ModuleName = 'AzureRM.AnalysisServices'; RequiredVersion = '0.4.6'; }, 
+               @{ModuleName = 'Azure.AnalysisServices'; RequiredVersion = '0.4.6'; }, 
+               @{ModuleName = 'AzureRM.ApiManagement'; RequiredVersion = '4.4.0'; }, 
+               @{ModuleName = 'AzureRM.Automation'; RequiredVersion = '3.4.0'; }, 
+               @{ModuleName = 'AzureRM.Backup'; RequiredVersion = '3.4.0'; }, 
+               @{ModuleName = 'AzureRM.Batch'; RequiredVersion = '3.4.0'; }, 
+               @{ModuleName = 'AzureRM.Billing'; RequiredVersion = '0.13.6'; }, 
+               @{ModuleName = 'AzureRM.Cdn'; RequiredVersion = '3.4.0'; }, 
+               @{ModuleName = 'AzureRM.CognitiveServices'; RequiredVersion = '0.8.6'; }, 
+               @{ModuleName = 'AzureRM.Compute'; RequiredVersion = '3.4.0'; }, 
+               @{ModuleName = 'AzureRM.Consumption'; RequiredVersion = '0.2.6'; }, 
+               @{ModuleName = 'AzureRM.ContainerInstance'; RequiredVersion = '0.0.1'; },
+               @{ModuleName = 'AzureRM.ContainerRegistry'; RequiredVersion = '0.2.6'; }, 
+               @{ModuleName = 'AzureRM.DataFactories'; RequiredVersion = '3.4.0'; }, 
+               @{ModuleName = 'AzureRM.DataFactoryV2'; RequiredVersion = '0.2.0'; }, 
+               @{ModuleName = 'AzureRM.DataLakeAnalytics'; RequiredVersion = '3.4.0'; }, 
+               @{ModuleName = 'AzureRM.DataLakeStore'; RequiredVersion = '4.4.0'; }, 
+               @{ModuleName = 'AzureRM.DevTestLabs'; RequiredVersion = '3.4.0'; }, 
+               @{ModuleName = 'AzureRM.Dns'; RequiredVersion = '3.4.0'; }, 
+               @{ModuleName = 'AzureRM.EventGrid'; RequiredVersion = '0.1.0'; }, 
+               @{ModuleName = 'AzureRM.EventHub'; RequiredVersion = '0.4.6'; }, 
+               @{ModuleName = 'AzureRM.HDInsight'; RequiredVersion = '3.4.0'; }, 
+               @{ModuleName = 'AzureRM.Insights'; RequiredVersion = '3.4.0'; }, 
+               @{ModuleName = 'AzureRM.IoTHub'; RequiredVersion = '2.4.0'; }, 
+               @{ModuleName = 'AzureRM.KeyVault'; RequiredVersion = '3.4.0'; }, 
+               @{ModuleName = 'AzureRM.LogicApp'; RequiredVersion = '3.4.0'; }, 
+               @{ModuleName = 'AzureRM.MachineLearning'; RequiredVersion = '0.15.6'; }, 
+               @{ModuleName = 'AzureRM.Media'; RequiredVersion = '0.7.6'; }, 
+               @{ModuleName = 'AzureRM.Network'; RequiredVersion = '4.4.0'; }, 
+               @{ModuleName = 'AzureRM.NotificationHubs'; RequiredVersion = '3.4.0'; }, 
+               @{ModuleName = 'AzureRM.OperationalInsights'; RequiredVersion = '3.4.0'; }, 
+               @{ModuleName = 'AzureRM.PowerBIEmbedded'; RequiredVersion = '3.4.0'; }, 
+               @{ModuleName = 'AzureRM.RecoveryServices'; RequiredVersion = '3.4.0'; }, 
+               @{ModuleName = 'AzureRM.RecoveryServices.Backup'; RequiredVersion = '3.4.0'; }, 
+               @{ModuleName = 'AzureRM.RedisCache'; RequiredVersion = '3.4.0'; }, 
+               @{ModuleName = 'AzureRM.Relay'; RequiredVersion = '0.2.6'; }, 
+               @{ModuleName = 'AzureRM.Resources'; RequiredVersion = '4.4.0'; }, 
+               @{ModuleName = 'AzureRM.Scheduler'; RequiredVersion = '0.15.6'; }, 
+               @{ModuleName = 'AzureRM.ServerManagement'; RequiredVersion = '3.4.0'; }, 
+               @{ModuleName = 'AzureRM.ServiceBus'; RequiredVersion = '0.4.6'; }, 
+               @{ModuleName = 'AzureRM.ServiceFabric'; RequiredVersion = '0.2.6'; }, 
+               @{ModuleName = 'AzureRM.SiteRecovery'; RequiredVersion = '4.4.0'; }, 
+               @{ModuleName = 'AzureRM.Sql'; RequiredVersion = '3.4.0'; }, 
+               @{ModuleName = 'AzureRM.Storage'; RequiredVersion = '3.4.0'; }, 
+               @{ModuleName = 'AzureRM.StreamAnalytics'; RequiredVersion = '3.4.0'; }, 
+               @{ModuleName = 'AzureRM.Tags'; RequiredVersion = '3.4.0'; }, 
+               @{ModuleName = 'AzureRM.TrafficManager'; RequiredVersion = '3.4.0'; }, 
+               @{ModuleName = 'AzureRM.UsageAggregates'; RequiredVersion = '3.4.0'; }, 
+               @{ModuleName = 'AzureRM.Websites'; RequiredVersion = '3.4.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 # RequiredAssemblies = @()
@@ -154,111 +157,125 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '## 2017.08.07 - Version 4.3.0
-* AnalysisServices
-    * Fixed bug in Set-AzureRmAnalysisServciesServer
-        - When admin was not provided, the admin will be removed.
-    * Added BackupBlobContainerUri in New-AzureRmAnalysisServicesServer and Set-AzureRmAnalysisServicesServer
-        - Enable to set/disable backup blob container for backup/restore Azure Analysis Services Server
-    * Updated Sku lookup in New-AzureRmAnalysisServicesServer and Set-AzureRmAnalysisServicesServer
-        - Changed hard coded Sku into dynamic lookup.
-    * Add-AzureAnalysisServicesAccount to support login with Service Principal
-* Automation
-    * Made changes to AutomationDSC* cmdlets to pull more than 100 records
-    * Resolved the issue where the Verbose streams stop working after calling some Automation cmdlets (for example Get-AzureRmAutomationVariable, Get-AzureRmAutomationJob).
-    * Support for NodeConfiguration Build versioning added in StartAzureAutomationDscCompilationJob and ImportAzureAutomationDscNodeConfiguration.
-    * Bug fixes for existing issues - Fixes the alias issue is #3775 and the runOn alias and support for HybridWorkers.
-* Compute
-    * Set-AzureRmVMAEMExtension: Add support for new Premium Disk sizes
-    * Set-AzureRmVMAEMExtension: Add support for M series
-    * Add ForceUpdateTag parameter to Add-AzureRmVmssExtension
-    * Add Primary parameter to New-AzureRmVmssIpConfig
-    * Add EnableAcceleratedNetworking parameter to Add-AzureRmVmssNetworkInterfaceConfig
-    * Add InstanceId to Set-AzureRmVmss
-    * Expose MaintenanceRedeployStatus to Get-AzureRmVM -Status output
-    * Expose Restriction and Capability to the table format of Get-AzureRmComputeResourceSku
-* DataLakeStore
-    * Fix for issue: https://github.com/Azure/azure-powershell/issues/4323
-* EventHub
-    * added ResourceGroup property to NamespaceAttributes
-        - ''ResourceGroup'' Gets the name of the resource group the Namespace is in
-    * updated commandlets with new parameter and parameter alias
-        - below cmdlets updated with Parametersets for Namespace and EventHub for operation of AuthorizationRule
-        - New-AzureRmEventHubAuthorizationRule
-            + Adds a new AuthorizationRule to the existing NameSpace or EventHub.
-        - Get-AzureRmEventHubAuthorizationRule
-            + Gets AuthorizationRule / List of AuthorizationRules for the existing NameSpace or EventHub.
-        - Set-AzureRmEventHubAuthorizationRule
-            + Updates properties of existing AuthorizationRule of EventHub NameSpace.
-        - Remove-AzureRmEventHubAuthorizationRule
-            + Deletes the existing AuthorizationRule of existing NameSpace or EventHub.    
-        - New-AzureRmEventHubKey
-            + Generates a new Primary/Secondary Key for AuthorizationRule of existing NameSpace or EventHub.
-        - Get-AzureRmEventHubKey
-            + Gets Primary/Secondary Key for AuthorizationRule of existing NameSpace or EventHub.
-* Network
-    * New-AzureRmExpressRouteCircuitPeeringConfig: Added IPv6 support. New optional parameter added
-    	- PeerAddressType
-    * Set-AzureRmExpressRouteCircuitPeeringConfig: Added IPv6 support. New optional parameter added
-    	- PeerAddressType
-    * Remove-AzureRmExpressRouteCircuitPeeringConfig: Added IPv6 support. New optional parameter added
-    	- PeerAddressType
-    * Marked parameter -ProbeEnabled as obsolete
-        - Add-AzureRmApplicationGatewayBackendHttpSettings
-        - New-AzureRmApplicationGatewayBackendHttpSettings
-        - Set-AzureRmApplicationGatewayBackendHttpSettings 
-* Profile
-    * Data collection has been enabled by default. Usage data is collected by Microsoft in order to improve the user experience. The data is anonymous and does not include command-line argument values.
-        - Use the Disable-AzureRmDataCollection cmdlet to turn the feature off
-        - Use the Enable-AzureRmDataCollection cmdlet to turn this feature on
-* Resources
-    * Add Support for validation of scopes for the following roledefinition and roleassignment commandlets before sending the request to ARM
-        - Get-AzureRMRoleAssignment
-        - New-AzureRMRoleAssignment
-        - Remove-AzureRMRoleAssignment
-        - Get-AzureRMRoleDefinition
-        - New-AzureRMRoleDefinition
-        - Remove-AzureRMRoleDefinition
-        - Set-AzureRMRoleDefinition
-* ServiceBus
-    * Added below new commandlets for AuthorizationRules for NameSpace, Queue and Topic. according to parameter set the authorization rule orperations are perfomed. 
-     - New-AzureRmServiceBusAuthorizationRule
-       - Adds a new AuthorizationRule to the existing ServiceBus NameSpace/Queue/Topic.    
-     - Get-AzureRmServiceBusAuthorizationRule
-       - Gets AuthorizationRule / List of AuthorizationRules for the existing ServiceBus NameSpace/Queue/Topic.    
-     - Set-AzureRmServiceBusAuthorizationRule
-       - Updates properties of existing AuthorizationRule of Servicebus NameSpace/Queue/Topic.    
-     - New-AzureRmServiceBusKey
-       - Generates a new Primary/Secondary Key for AuthorizationRule of existing ServiceBus NameSpace/Queue/Topic.    
-     - Get-AzureRmServiceBusKey
-       - Gets Primary/Secondary Key for AuthorizationRule of existing ServiceBus NameSpace/Queue/Topic.       
-     - Remove-AzureRmServiceBusNamespaceAuthorizationRule
-       - Deletes the existing AuthorizationRule of ServiceBus NameSpace/Queue/Topic.       
-    * Added Resource Group property to NamespceAttributes    
-* Sql
-    * Updating Set-AzureRmSqlServerTransparentDataEncryptionProtector to display a warning and require confirmation if the Encryption Protector Type is being set to AzureKeyVault
-    * Adding new updated cmdlets for Auditing settings
-    	- Adding Get-AzureRmSqlDatabaseAuditing cmdlet which gets the auditing settings of an Azure SQL database.
-    	- Adding Get-AzureRmSqlServerAuditing cmdlet which gets the auditing settings of an Azure SQL server.
-    	- Adding Set-AzureRmSqlDatabaseAuditing cmdlet which changes the auditing settings for an Azure SQL database.
-    	- Adding Set-AzureRmSqlServerAuditing cmdlet which changes the auditing settings of an Azure SQL server.
-    * Deprecating the existing Auditing policy cmdlets
-    	- Deprecating Get-AzureRmSqlDatabaseAuditingPolicy
-    	- Deprecating Get-AzureRmSqlServerAuditingPolicy
-    	- Deprecating Set-AzureRmSqlDatabaseAuditingPolicy
-    	- Deprecating Set-AzureRmSqlServerAuditingPolicy
-    	- Deprecating Use-AzureRmSqlServerAuditingPolicy
-    	- Deprecating Remove-AzureRmSqlDatabaseAuditing
-    	- Deprecating Remove-AzureRmSqlServerAuditing
-    * Schema file parsing for Update-AzureRmSqlSyncGroup is now case insensitive.
-* Storage
-    * Add NeworkRule support to resource mode storage account cmdlets
-        - New-AzureRmStorageAccount
-        - Set-AzureRmStorageAccount
-        - Get-AzureRmStorageAccountNetworkRuleSet
-        - Update-AzureRmStorageAccountNetworkRuleSet
-        - Add-AzureRmStorageAccountNetworkRule
-        - Remove-AzureRmStorageAccountNetworkRule'
+        ReleaseNotes = '## 2017.09.25 - Version 4.4.0
+        * AnalysisServices
+            * Added a new dataplane commandlet to allow synchronization of databases from read-write instance to read-only instances 
+                - Included help file for the commandlet
+                - Added in-memory tests and a scenario test (only live)
+            * Fixed bugs in Add-AzureAsAccount commandlet 
+        * CognitiveServices
+            * Integrate with Cognitive Services Management SDK version 2.0.0.
+            * Get-AzureRmCognitiveServicesAccount now can correctly support paging.
+        * Compute
+            * Run Command feature:
+                - New cmdlet: ''Invoke-AzureRmVMRunCommand''
+                - New cmdlet: ''Get-AzureRmVMRunCommandDocument''
+            * Add ''StorageAccountType'' parameter to Set-AzureRmDataDisk
+            * Availability Zone support for virtual machine, VM scale set, and disk
+                - New paramter: ''Zone'' is added to New-AzureRmVM, New-AzureRmVMConfig, New-AzureRmVmssConfig, New-AzureRmDiskConfig
+            * VM scale set rolling upgrade feature:
+                - New cmdlet: ''Start-AzureRmVmssRollingOSUpgrade''
+                - New cmdlet: ''Set-AzureRmVmssRollingUpgradePolicy''
+                - New cmdlet: ''Stop-AzureRmVmssRollingUpgrade''
+                - New cmdlet: ''Get-AzureRmVmssRollingUpgrade''
+            * AssignIdentity switch parameter is introduced for system assigned identity.
+                - New parameter: ''AssignIdentity'' is added to New-AzureRmVMConfig, New-AzureRmVmssConfig and Update-AzureRmVM
+            * Vmss disk encryption feature:
+                - New cmdlet: ''Set-AzureRmVmssDiskEncryptionExtension'' enables disk encryption on VM scale set
+                - New cmdlet: ''Disable-AzureRmVmssDiskEncryption'' disables disk encryption on VM scale set
+                - New cmdlet: ''Get-AzureRmVmssDiskEncryptionStatus'' shows the disk encryption status of a VM scale set
+                - New cmdelt: ''Get-AzureRmVmssVMDiskEncryptionStatus'' shows the disk encryption status of VMs in a VM scale set
+        * ContainerInstance
+            * Add PowerShell cmdlets for Azure Container Instance
+                - New-AzureRmContainerGroup
+                - Get-AzureRmContainerGroup
+                - Remove-AzureRmContainerGroup
+                - Get-AzureRmContainerInstanceLog
+        * Insights
+                * New cmdlet Set-AzureRmActionGroup
+                    - A new cmdlet to create a new or update an existing action group.
+                * New cmdlet Get-AzureRmActionGroup
+                    - A new cmdlet to retrieve one or more action groups.
+                    - The action groups can be retrieved by name, resource group, or subscription.
+                * New cmdlet Remove-AzureRmActionGroup
+                    - A new cmdlet to remove one action group.
+                * New cmdlet New-AzureRmActionGroupReceiver
+                    - A new cmdlet to create an new action group receiver in memory.
+        * KeyVault
+            * New/updated Cmdlets to support soft-delete for KeyVault certificates
+              * Get-AzureKeyVaultCertificate
+              * Remove-AzureKeyVaultCertificate
+              * Undo-AzureKeyVaultCertificateRemoval
+        * Network
+            * Added support for endpoint services to Virtual Network Subnets
+                - Updated Add-AzureRmVirtualSubnetConfig: Added optional parameter -ServiceEndpoint
+                - Updated New-AzureRmVirtualSubnetConfig: Added optional parameter -ServiceEndpoint
+                - Updated Set-AzureRmVirtualSubnetConfig: Added optional parameter -ServiceEndpoint
+            * Added cmdlet to list endpoint services available in the location
+                - Get-AzureRmVirtualNetworkAvailableEndpointService
+            * Added the ability to configure external radius based P2S authentication to the following commandlets
+                - New-AzureVirtualNetworkGateway
+                - Set-AzureVirtualNetworkGateway
+                - Set-AzureRmVirtualNetworkGatewayVpnClientConfig
+            * Added cmdlet to allow generation of VpnProfiles for external radius based P2S
+                - New-AzureRmVpnClientConfiguration
+                  - Get-AzureRmVpnClientConfiguration
+            * Added support for SKU parameter to Public IP Addresses and Load Balancers
+                - Updated New-AzureRMLoadBalancer: Added optional parameter -Sku
+                - Updated New-AzureRMPublicIpAddress: Added optional parameter -Sku
+            * Added support for DisableOutboundSNAT to Load Balancer Rules
+                - Updated New-AzureRMLoadBalancerRuleConfig: Added optional parameter DisableOutboundSNAT
+                - Updated Add-AzureRMLoadBalancerRuleConfig: Added optional parameter DisableOutboundSNAT
+                - Updated Set-AzureRMLoadBalancerRuleConfig: Added optional parameter DisableOutboundSNAT
+            * Added support for IkeV2 P2S
+                - Updated New-AzureRmVirtualNetworkGateway: Added optional parameter -VpnClientProtocol, defaults to [ "SSTP", "IkeV2" ]
+                - Updated Set-AzureRmVirtualNetworkGateway: Added optional parameter -VpnClientProtocol
+            * Added support for MultiValued rules in Network Security Rules and Effective Network Security Rules
+                - Updated Add-AzureRmNetworkSecurityRuleConfig: Updated SourcePortRange, DestinationPortRange, SourceAddressPrefix parameters to accept a list of strings
+                - Updated New-AzureRmNetworkSecurityRuleConfig: Updated SourcePortRange, DestinationPortRange, SourceAddressPrefix  parameter to accept a list of strings
+                - Updated Set-AzureRmNetworkSecurityRuleConfig: Updated SourcePortRange, DestinationPortRange, SourceAddressPrefix parameter to accept a list of strings
+                - Updated Add-AzureRmNetworkSecurityRuleConfig: Updated SourcePortRange, DestinationPortRange, SourceAddressPrefix parameter to accept a list of strings
+                - Updated New-AzureRmNetworkSecurityGroup : Updated SecurityRules parameter to accept SourcePortRange, DestinationPortRange, SourceAddressPrefix parameters which are list of strings in PSSecurityRule object
+                - Updated Get-AzureRmEffectiveNetworkSecurityGroup: Added parameter TagMap
+                - Updated Get-AzureRmEffectiveNetworkSecurityGroup: Updated returned PSEffectiveSecurityRule object with SourcePortRange, DestinationPortRange, SourceAddressPrefix parameters which are list of strings.
+            * Added support for DDoS protection for virtual networks
+                - Updated New-AzureRmVirtualNetwork: Added switch parameters EnableDDoSProtection and EnableVmProtection
+                - Added properties EnableDDoSProtection and EnableVmProtection in PSVirtualNetwork object
+            * Added support for Highly Available Internal Load Balancer
+                - Updated Add-AzureRmLoadBalancerRuleConfig: Added All as an acceptable value for Protocol parameter
+                - Updated New-AzureRmLoadBalancerRuleConfig: Added All as an acceptable value for Protocol parameter
+                - Updated Set-AzureRmLoadBalancerRuleConfig: Added All as an acceptable value for Protocol parameter
+            * Added support for Application Security Groups
+                - Added New-AzureRmApplicationSecurityGroup
+                - Added Get-AzureRmApplicationSecurityGroup
+                - Added Remove-AzureRmApplicationSecurityGroup
+                - Updated New-AzureRmNetworkInterface: Added optional parameters ApplicationSecurityGroup and ApplicationSecurityGroupId
+                - Updated Add/New/Set-AzureRmNetworkInterfaceIpConfig: Added optional parameters ApplicationSecurityGroup and ApplicationSecurityGroupId
+                - Updated Add/New/Set-AzureRmNetworkSecurityRuleConfig: Added optional parameters SourceApplicationSecurityGroup, SourceApplicationSecurityGroupId, DestinationApplicationSecurityGroup, and DestinationApplicationSecurityGroupId
+        * Resources
+            * Add PolicySetDefinition cmdlets
+                - New-AzureRmPolicySetDefinition cmdlet to create a policy set definition
+                - Get-AzureRmPolicySetDefinition cmdlet to list all policy set definitions or to get a specific policy set definition
+                - Remove-AzureRmPolicySetDefinition cmdlet to delete a policy set definition
+                - Set-AzureRmPolicySetDefinition cmdlet to update an existing policy set definition
+            * Add -PolicySetDefinition, -Sku and -NotScope parameters to New-AzureRmPolicyAssignment and Set-AzureRmPolicyAssignment cmdlets
+            * Add support to pass in policy url to New-AzureRmPolicyDefinition and Set-AzureRmPolicyDefinition cmdlets
+            * Add -Mode parameter to New-AzureRmPolicyDefinition cmdlet
+        * Sql
+            * Adding support for Virtual Network Rules
+                - Adding Get/New/Remove/Set-AzureRmSqlServerVirtualNetworkRule cmdlet
+        * Websites
+            * Add PremiumV2 Tier for App Service Plans
+        * Azure.Storage
+            * Upgrade to Azure Storage Client Library 8.4.0 and Azure Storage DataMovement Library 0.6.1
+            * Add PremiumPageBlobTier Support in Upload and Copy Blob API
+                - Set-AzureStorageBlobContent
+                - Start-AzureStorageBlobCopy
+            * Refine the Console Output Format of AzureStorageContainer, AzureStorageBlob, AzureStorageQueue, AzureStorageTable
+                - Get-AzureStorageContainer
+                - Get-AzureStorageBlob
+                - Get-AzureStorageQueue
+                - Get-AzureStorageTable'
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''

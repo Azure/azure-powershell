@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '3.3.1'
+ModuleVersion = '3.4.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -51,8 +51,8 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '3.3.1'; }, 
-               @{ModuleName = 'Azure.Storage'; ModuleVersion = '3.3.1'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '3.4.0'; }, 
+               @{ModuleName = 'Azure.Storage'; ModuleVersion = '3.4.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 # RequiredAssemblies = @()
@@ -117,14 +117,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Add NeworkRule support to resource mode storage account cmdlets
-    - New-AzureRmStorageAccount
-    - Set-AzureRmStorageAccount
-    - Get-AzureStorageAccountNetworkRuleSet
-    - Update-AzureStorageAccountNetworkRuleSet
-    - Add-AzureStorageAccountNetworkRule
-    - Remove-AzureStorageAccountNetworkRule
-'
+        ReleaseNotes = 'Updated for common code changes'
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''

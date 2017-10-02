@@ -50,6 +50,17 @@ namespace Microsoft.Azure.Commands.Network
         public virtual string Location { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The load balancer Sku name.")]
+        [ValidateNotNullOrEmpty]
+        [ValidateSet(
+            MNM.LoadBalancerSkuName.Basic,
+            MNM.LoadBalancerSkuName.Standard,
+            IgnoreCase = true)]
+        public string Sku { get; set; }
+
+        [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of frontend Ip config")]
@@ -121,6 +132,12 @@ namespace Microsoft.Azure.Commands.Network
             loadBalancer.Name = this.Name;
             loadBalancer.ResourceGroupName = this.ResourceGroupName;
             loadBalancer.Location = this.Location;
+
+            if (!string.IsNullOrEmpty(this.Sku))
+            {
+                loadBalancer.Sku = new PSLoadBalancerSku();
+                loadBalancer.Sku.Name = this.Sku;
+            }
 
             if (this.FrontendIpConfiguration != null)
             {

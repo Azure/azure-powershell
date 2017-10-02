@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+Module Name: AzureRM.Network
 ms.assetid: 0F141A92-4994-45B3-AE94-09865BC691C4
 online version: 
 schema: 2.0.0

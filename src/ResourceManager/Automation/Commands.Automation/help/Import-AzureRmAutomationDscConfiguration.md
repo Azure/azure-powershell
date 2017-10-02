@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
 ms.assetid: BA508F0B-847F-4531-9D5D-A5A044A2D207
-online version:
+online version: 
 schema: 2.0.0
 ---
 
@@ -41,7 +41,7 @@ Specifies the name of the Automation account into which this cmdlet imports a DS
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 1
@@ -56,7 +56,7 @@ Specifies a description of the configuration that this cmdlet imports.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -71,7 +71,7 @@ Indicates that this cmdlet replaces an existing DSC configuration in Automation.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -87,7 +87,7 @@ configuration. Specify a value of $True to turn verbose logging on or $False to 
 ```yaml
 Type: Boolean
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -102,7 +102,7 @@ Indicates that this cmdlet imports the DSC configuration in the published state.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -117,7 +117,7 @@ Specifies the name of a resource group for which this cmdlet imports a DSC confi
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
