@@ -15,15 +15,16 @@ Uploads a local file to an Azure Storage blob.
 ### SendManual (Default)
 ```
 Set-AzureStorageBlobContent [-File] <String> [-Container] <String> [-Blob <String>] [-BlobType <String>]
- [-Properties <Hashtable>] [-Metadata <Hashtable>] [-Force] [-Context <IStorageContext>]
- [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-Properties <Hashtable>] [-Metadata <Hashtable>] [-PremiumPageBlobTier <PremiumPageBlobTier>] [-Force]
+ [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+ [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ContainerPipeline
 ```
 Set-AzureStorageBlobContent [-File] <String> [-Blob <String>] -CloudBlobContainer <CloudBlobContainer>
- [-BlobType <String>] [-Properties <Hashtable>] [-Metadata <Hashtable>] [-Force] [-Context <IStorageContext>]
+ [-BlobType <String>] [-Properties <Hashtable>] [-Metadata <Hashtable>]
+ [-PremiumPageBlobTier <PremiumPageBlobTier>] [-Force] [-Context <IStorageContext>]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -31,9 +32,9 @@ Set-AzureStorageBlobContent [-File] <String> [-Blob <String>] -CloudBlobContaine
 ### BlobPipeline
 ```
 Set-AzureStorageBlobContent [-File] <String> -CloudBlob <CloudBlob> [-BlobType <String>]
- [-Properties <Hashtable>] [-Metadata <Hashtable>] [-Force] [-Context <IStorageContext>]
- [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-Properties <Hashtable>] [-Metadata <Hashtable>] [-PremiumPageBlobTier <PremiumPageBlobTier>] [-Force]
+ [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+ [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -75,16 +76,16 @@ PS C:\>Get-AzureStorageContainer -Container "ContosoUpload*" | Set-AzureStorageB
 This command gets the container that starts with the string ContosoUpload by using the **Get-AzureStorageContainer** cmdlet, and then passes that blob to the current cmdlet.
 The command uploads the file that is named ContosoPlanning as Planning2015.
 
-### Example 5: Upload a file and metadata
+### Example 5: Upload a file to page blob with metadata and PremiumPageBlobTier as P10
 ```
 PS C:\>$Metadata = @{"key" = "value"; "name" = "test"}
-PS C:\> Set-AzureStorageBlobContent -File "ContosoPlanning" -Container "ContosoUploads" -Metadata $Metadata
+PS C:\> Set-AzureStorageBlobContent -File "ContosoPlanning" -Container "ContosoUploads" -Metadata $Metadata -BlobType Page -PremiumPageBlobTier P10
 ```
 
 The first command creates a hash table that contains metadata for a blob, and stores that hash table in the $Metadata variable.
 
 The second command uploads the file that is named ContosoPlanning to the container named ContosoUploads.
-The blob includes the metadata stored in $Metadata.
+The blob includes the metadata stored in $Metadata, and has PremiumPageBlobTier as P10.
 
 ## PARAMETERS
 
@@ -274,6 +275,21 @@ Specifies metadata for the uploaded blob.
 
 ```yaml
 Type: Hashtable
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PremiumPageBlobTier
+Page Blob Tier
+
+```yaml
+Type: PremiumPageBlobTier
 Parameter Sets: (All)
 Aliases: 
 

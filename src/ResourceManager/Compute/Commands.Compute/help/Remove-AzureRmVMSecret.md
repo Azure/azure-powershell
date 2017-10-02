@@ -12,8 +12,8 @@ Removes (a) secret(s) from a virtual machine object
 ## SYNTAX
 
 ```
-Remove-AzureRmVMSecret [-VM] <PSVirtualMachine> [[-SourceVaultId] <String[]>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzureRmVMSecret [-VM] <PSVirtualMachine> [[-SourceVaultId] <String[]>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,12 +23,27 @@ The Remove-AzureRmVMSecret cmdlet removes (a) secret(s) from a virtual machine o
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmVM -ResourceGroupName "rg1" -Name "vm1" | Remove-AzureRmVM | Update-AzureRmVM
+PS C:\> Get-AzureRmVM -ResourceGroupName "rg1" -Name "vm1" | Remove-AzureRmVMSecret | Update-AzureRmVM
 ```
 
 Removes all secrets from a virtual machine "vm1" in resource group "rg1" and update the VM
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -SourceVaultId
 Specifies an array of source vault IDs that this cmdlet removes.
