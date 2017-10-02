@@ -64,12 +64,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         public Hashtable Tags { get; set; }
 
-        /// <summary>
-        /// Obsolete flag indicating that the secret is protected against purge.
-        /// </summary>
-        /// <remarks>
-        /// Deprecated, will be removed in the next PowerShell release.
-        /// </remarks>
+        [Obsolete( "This property is being deprecated and will be removed in a future release" )]
         public bool PurgeDisabled { get; private set; }
 
         public string RecoveryLevel { get; private set; }

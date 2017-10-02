@@ -77,6 +77,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         public DateTime? Updated { get; private set; }
 
+        [Obsolete( "This property is being deprecated and will be removed in a future release" )]
         public bool PurgeDisabled { get; private set; }
 
         public string RecoveryLevel { get; private set; }
