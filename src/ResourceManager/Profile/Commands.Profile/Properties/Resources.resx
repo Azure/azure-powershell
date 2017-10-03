@@ -218,9 +218,6 @@
   <data name="NoAccountProvided" xml:space="preserve">
     <value>(no account provided)</value>
   </data>
-  <data name="NoDefaultResourceGroupSet" xml:space="preserve">
-    <value>No default resource group set.</value>
-  </data>
   <data name="NoValidTenant" xml:space="preserve">
     <value>Please provide a valid tenant Id on the command line or execute Login-AzureRmAccount.</value>
   </data>

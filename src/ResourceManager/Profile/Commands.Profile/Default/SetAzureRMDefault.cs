@@ -47,6 +47,12 @@ namespace Microsoft.Azure.Commands.Profile.Default
 
             if (ResourceGroupName != null)
             {
+                if (!client.ResourceGroups.CheckExistence(ResourceGroupName))
+                {
+                    ResourceGroup parameters = new ResourceGroup("West US");
+                    client.ResourceGroups.CreateOrUpdate(ResourceGroupName, parameters);
+                    WriteObject(string.Format("New Resource Group Created: {0} with Location: {1}", ResourceGroupName, parameters.Location));
+                }
                 var defaultResourceGroup = client.ResourceGroups.Get(ResourceGroupName);
                 if (ShouldProcess(Resources.DefaultResourceGroupTarget, string.Format(Resources.DefaultResourceGroupChangeWarning, defaultResourceGroup.Name)))
                 {

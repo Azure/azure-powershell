@@ -12,7 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.Resources.Test.ScenarioTests;
+using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
@@ -28,21 +30,24 @@ namespace Microsoft.Azure.Commands.Profile.Test
 
         public DefaultCmdletTests(ITestOutputHelper output)
         {
+            TestExecutionHelpers.SetUpSessionAndProfile();
+            ResourceManagerProfileProvider.InitializeResourceManagerProfile(true);
+
             xunitLogger = new XunitTracingInterceptor(output);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void SetAzureRmDefaultResourceGroupValid()
+        public void SetAzureRmDefaultResourceGroupNonexistent()
         {
-            ProfileController.NewInstance.RunPsTest(xunitLogger, "72f988bf-86f1-41af-91ab-2d7cd011db47", "Test-SetAzureRmDefaultResourceGroupValid");
+            ProfileController.NewInstance.RunPsTest(xunitLogger, "72f988bf-86f1-41af-91ab-2d7cd011db47", "Test-SetAzureRmDefaultResourceGroupNonexistent");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void SetAzureRmDefaultResourceGroupNotValid()
+        public void SetAzureRmDefaultResourceGroupExists()
         {
-            ProfileController.NewInstance.RunPsTest(xunitLogger, "72f988bf-86f1-41af-91ab-2d7cd011db47", "Test-SetAzureRmDefaultResourceGroupNotValid");
+            ProfileController.NewInstance.RunPsTest(xunitLogger, "72f988bf-86f1-41af-91ab-2d7cd011db47", "Test-SetAzureRmDefaultResourceGroupExists");
         }
 
         [Fact]

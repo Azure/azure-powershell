@@ -14,25 +14,28 @@
 
 <#
 .SYNOPSIS
-Tests Set-AzureRmDefault when resource group given is valid
+Tests Set-AzureRmDefault when resource group given does not exist
 #>
-function Test-SetAzureRmDefaultResourceGroupValid
+function Test-SetAzureRmDefaultResourceGroupNonexistent
 {
-	$validResourceGroups = Get-AzureRmResourceGroup
-	$output = Set-AzureRmDefault -ResourceGroupName $validResourceGroups[0].Name
-	Assert-True { $output -eq $validResourceGroups[0] }
+	$output = Set-AzureRmDefault -ResourceGroupName "TestResourceGroup"
+	Assert-True { $output.Name -eq "TestResourceGroup" }
+	Remove-AzureRmResourceGroup -Name "TestResourceGroup" -Force
+	Clear-AzureRmDefault
 }
 
 <#
 .SYNOPSIS
-Tests Set-AzureRmDefault when resource group given is not valid
+Tests Set-AzureRmDefault when resource group given exists
 #>
-function Test-SetAzureRmDefaultResourceGroupNotValid
+function Test-SetAzureRmDefaultResourceGroupExists
 {
-	$invalidResourceGroupName = "Invalid Resource Group"
-	$output = Set-AzureRmDefault -ResourceGroupName $invalidResourceGroupName
-	Assert-Null($output)
-	Assert-ThrowsContains { Set-AzureRmDefault -ResourceGroupName $invalidResourceGroupName } "Resource group 'Invalid Resource Group' could not be found"
+	Set-AzureRmDefault -ResourceGroupName "TestResourceGroup"
+	Clear-AzureRmDefault
+	$output = Set-AzureRmDefault -ResourceGroupName "TestResourceGroup"
+	Assert-True { $output.Name -eq "TestResourceGroup" }
+	Remove-AzureRmResourceGroup -Name "TestResourceGroup" -Force
+	Clear-AzureRmDefault
 }
 
 <#
@@ -44,7 +47,7 @@ function Test-GetAzureRmDefaultNoDefault
 	$output = Get-AzureRmDefault
 	Assert-Null($output)
 	$output1 = Get-AzureRmDefault -ResourceGroup
-	Assert-Null($output1)
+	Assert-Null($output)
 }
 
 <#
@@ -53,12 +56,13 @@ Tests Get-AzureRmDefault when default set
 #>
 function Test-GetAzureRmDefaultWithDefault
 {
-	$validResourceGroups = Get-AzureRmResourceGroup
-	Set-AzureRmDefault -ResourceGroupName $validResourceGroups[0].Name
+	$resourceGroup = Set-AzureRmDefault -ResourceGroupName "TestResourceGroup"
 	$output = Get-AzureRmDefault
-	Assert-AreEqual $output $validResourceGroups[0]
+	Assert-AreEqual $output.Name $resourceGroup[1].Name
 	$output1 = Get-AzureRmDefault -ResourceGroup
-	Assert-AreEqual $output1 $validResourceGroups[0]
+	Assert-AreEqual $output1.Name $resourceGroup[1].Name
+	Remove-AzureRmResourceGroup -Name "TestResourceGroup" -Force
+	Clear-AzureRmDefault
 }
 
 <#
@@ -83,16 +87,21 @@ Tests Clear-AzureRmDefault when default set
 #>
 function Test-ClearAzureRmDefaultWithDefault
 {
-	$validResourceGroups = Get-AzureRmResourceGroup
-	Set-AzureRmDefault -ResourceGroupName $validResourceGroups[0].Name
+	$resourceGroup = Set-AzureRmDefault -ResourceGroupName "TestResourceGroup"
+	$output = Get-AzureRmDefault
+	Assert-AreEqual $output.Name $resourceGroup[1].Name
+
 	Clear-AzureRmDefault
 	$output = Get-AzureRmDefault
 	Assert-Null($output)
-	$validResourceGroups = Get-AzureRmResourceGroup
-	Set-AzureRmDefault -ResourceGroupName $validResourceGroups[0].Name
-	$output1 = Get-AzureRmDefault
-	Assert-AreEqual $output1 $validResourceGroups[0]
+
+	$resourceGroup = Set-AzureRmDefault -ResourceGroupName "TestResourceGroup"
+	$output = Get-AzureRmDefault
+	Assert-AreEqual $output.Name $resourceGroup.Name
+
 	Clear-AzureRmDefault -ResourceGroup
-	$output2 = Get-AzureRmDefault
-	Assert-Null($output2)
+	$output = Get-AzureRmDefault
+	Assert-Null($output)
+
+	Remove-AzureRmResourceGroup -Name "TestResourceGroup" -Force
 }
