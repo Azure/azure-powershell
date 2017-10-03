@@ -47,15 +47,16 @@ namespace Microsoft.Azure.Commands.Profile.Default
 
             if (ResourceGroupName != null)
             {
-                if (!client.ResourceGroups.CheckExistence(ResourceGroupName))
+                ResourceGroup defaultResourceGroup;
+                if (ShouldProcess(Resources.DefaultResourceGroupTarget, string.Format(Resources.DefaultResourceGroupChangeWarning, ResourceGroupName)))
                 {
-                    ResourceGroup parameters = new ResourceGroup("West US");
-                    client.ResourceGroups.CreateOrUpdate(ResourceGroupName, parameters);
-                    WriteObject(string.Format("New Resource Group Created: {0} with Location: {1}", ResourceGroupName, parameters.Location));
-                }
-                var defaultResourceGroup = client.ResourceGroups.Get(ResourceGroupName);
-                if (ShouldProcess(Resources.DefaultResourceGroupTarget, string.Format(Resources.DefaultResourceGroupChangeWarning, defaultResourceGroup.Name)))
-                {
+                    if (!client.ResourceGroups.CheckExistence(ResourceGroupName))
+                    {
+                        ResourceGroup parameters = new ResourceGroup("West US");
+                        client.ResourceGroups.CreateOrUpdate(ResourceGroupName, parameters);
+                        WriteObject(string.Format("New Resource Group Created: {0} with Location: {1}", ResourceGroupName, parameters.Location));
+                    }
+                    defaultResourceGroup = client.ResourceGroups.Get(ResourceGroupName);
                     if (context.ExtendedProperties.ContainsKey(Resources.DefaultResourceGroupKey))
                     {
                         context.ExtendedProperties.SetProperty(Resources.DefaultResourceGroupKey, defaultResourceGroup.Name);
@@ -65,8 +66,8 @@ namespace Microsoft.Azure.Commands.Profile.Default
                     {
                         context.ExtendedProperties.Add(Resources.DefaultResourceGroupKey, defaultResourceGroup.Name);
                     }
+                    WriteObject(defaultResourceGroup);
                 }
-                WriteObject(defaultResourceGroup);
             }
         }
     }
