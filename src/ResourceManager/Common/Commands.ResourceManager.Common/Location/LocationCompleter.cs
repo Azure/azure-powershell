@@ -52,10 +52,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Location
                                 context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager),
                                 instance.AuthenticationFactory.GetServiceClientCredentials(context, AzureEnvironment.Endpoint.ResourceManager),
                                 instance.ClientFactory.GetCustomHandlers());
-                            //var client = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
                             client.SubscriptionId = context.Subscription.Id;
                             var allProviders = client.Providers.ListAsync();
-                            if (allProviders.Wait(TimeSpan.FromSeconds(5)))
+                            if (allProviders.Wait(TimeSpan.FromSeconds(3)))
                                 if (allProviders.Result != null)
                                 {
                                     _resourceTypeLocationDictionary[contextHash] = CreateLocationDictionary(allProviders.Result.ToList());
