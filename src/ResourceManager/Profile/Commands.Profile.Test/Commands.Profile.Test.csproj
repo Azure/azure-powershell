@@ -236,7 +236,7 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Profile.Test.DefaultCmdletTests\SetAzureRmDefaultResourceGroupExists.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Profile.Test.DefaultCmdletTests\SetAzureRmDefaultResourceGroupNonexistant.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Profile.Test.DefaultCmdletTests\SetAzureRmDefaultResourceGroupNonexistent.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Profile.Test.ProfileModuleTests\WarningOnIncompatibleVersions.json">
