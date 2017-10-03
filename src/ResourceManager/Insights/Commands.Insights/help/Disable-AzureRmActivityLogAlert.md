@@ -18,7 +18,7 @@ Disable-AzureRmActivityLogAlert [-InputObject <PSActivityLogAlertResource>] [-Re
 
 ## DESCRIPTION
 The **Disable-AzureRmActivityLogAlert** cmdlet disables and activity log alert and allows setting its tags.
-This cmdlet implements the ShouldProcess pattern, i.e. it might request confirmation from the user before actually patching the resource and it accepts the -Force argument.
+This cmdlet implements the ShouldProcess pattern, i.e. it might request confirmation from the user before actually patching the resource.
 
 ## EXAMPLES
 
