@@ -55,6 +55,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Location
                             client.SubscriptionId = context.Subscription.Id;
                             var allProviders = client.Providers.ListAsync();
                             if (allProviders.Wait(TimeSpan.FromSeconds(3)))
+                            {
                                 if (allProviders.Result != null)
                                 {
                                     _resourceTypeLocationDictionary[contextHash] = CreateLocationDictionary(allProviders.Result.ToList());
@@ -66,6 +67,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Location
                                     throw new Exception("Result from client.Providers is null");
 #endif
                                 }
+                            }
                             else
                             {
                                 _resourceTypeLocationDictionary[contextHash] = new ConcurrentDictionary<string, ICollection<string>>(StringComparer.OrdinalIgnoreCase);
