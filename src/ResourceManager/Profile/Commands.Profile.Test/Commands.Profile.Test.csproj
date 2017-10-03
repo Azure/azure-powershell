@@ -197,7 +197,6 @@
     <Compile Include="ProtectedFileProviderTests.cs" />
     <Compile Include="PSSerializationTests.cs" />
     <Compile Include="RPRegistrationDelegatingHandlerTests.cs" />
-    <Compile Include="ScenarioTests\LocationCompleterTests.cs" />
     <Compile Include="SessionInitializationTests.cs" />
     <Compile Include="SubscriptionCmdletTests.cs" />
     <Compile Include="SendFeedbackTests.cs" />
