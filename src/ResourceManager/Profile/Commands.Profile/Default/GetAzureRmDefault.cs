@@ -67,11 +67,6 @@ namespace Microsoft.Azure.Commands.Profile.Default
                     var defaultResourceGroup = client.ResourceGroups.Get(context.ExtendedProperties[Resources.DefaultResourceGroupKey]);
                     WriteObject(defaultResourceGroup);
                 }
-
-                else
-                {
-                    WriteObject(Resources.NoDefaultResourceGroupSet);
-                }
             }
         }
     }

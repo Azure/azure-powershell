@@ -448,15 +448,6 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No default resource group set..
-        /// </summary>
-        internal static string NoDefaultResourceGroupSet {
-            get {
-                return ResourceManager.GetString("NoDefaultResourceGroupSet", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Please provide a valid tenant Id on the command line or execute Login-AzureRmAccount..
         /// </summary>
         internal static string NoValidTenant {
