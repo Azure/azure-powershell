@@ -29,7 +29,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network.Automation
 {
-    [Cmdlet("Get", "AzureRmRouteConfig", SupportsShouldProcess = true), OutputType(typeof(PSRoute))]
+    [Cmdlet("Get", "AzureRmRouteConfig"), OutputType(typeof(PSRoute))]
      public class GetAzureRmRouteConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(
