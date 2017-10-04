@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Models
             }
         }
 
-        public override string Etag
+        public override string ETag
         {
             get
             {
