@@ -95,7 +95,11 @@ InModuleScope Azs.Fabric.Admin {
 					$Found.Type             | Should Be $Expected.Type
 					
 					# Logical Network
-					$Found.IpPools   | Should Be $Expected.IpPools
+					if($Expected -eq $null) {
+						$Found.IpPools | Should be $null
+					} else {
+						$Found.IpPools.Count   | Should Be $Expected.IpPools.Count
+					}
 					$Found.IsPublic  | Should Be $Expected.IsPublic
 
 					if($Expected.Metadata -eq $null) {
