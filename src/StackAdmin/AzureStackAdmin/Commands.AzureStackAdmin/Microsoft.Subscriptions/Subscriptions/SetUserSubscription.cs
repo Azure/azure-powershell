@@ -24,10 +24,10 @@ namespace Microsoft.AzureStack.Commands
     /// <summary>
     /// Set Managed Subscription Cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, Nouns.TenantSubscription, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Set, Nouns.UserSubscription, SupportsShouldProcess = true)]
     [OutputType(typeof(SubscriptionDefinition))]
     [Alias("Set-AzureRmManagedSubscription", "Set-AzsTenantSubscription")]
-    public class SetTenantSubscription : AdminApiCmdlet
+    public class SetUserSubscription : AdminApiCmdlet
     {
         /// <summary>
         /// Gets or sets the subscription to be updated.

@@ -67,7 +67,7 @@ namespace Microsoft.AzureStack.Commands
         /// </summary>
         protected SubscriptionDefinition GetSubscriptionDefinition()
         {
-            if (NewTenantSubscription.SubscriptionIds.Count != 0)
+            if (NewUserSubscription.SubscriptionIds.Count != 0)
             {
                 this.SubscriptionId = NewSubscription.SubscriptionIds.Dequeue().ToString();
             }
