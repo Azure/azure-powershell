@@ -27,17 +27,21 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using System.Collections;
     using System.Collections.Generic;
     using Microsoft.Azure.Batch;
-
-
-    [Obsolete("SchedulingError will be removed in a future version and replaced with FailureInformation")]
-    public partial class PSTaskSchedulingError
+    
+    
+    public partial class PSPoolEndpointConfiguration
     {
         
-        internal Microsoft.Azure.Batch.TaskSchedulingError omObject;
+        internal Microsoft.Azure.Batch.PoolEndpointConfiguration omObject;
         
-        private IReadOnlyList<PSNameValuePair> details;
+        private IReadOnlyList<PSInboundNatPool> inboundNatPools;
         
-        internal PSTaskSchedulingError(Microsoft.Azure.Batch.TaskSchedulingError omObject)
+        public PSPoolEndpointConfiguration(System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Batch.InboundNatPool> inboundNatPools)
+        {
+            this.omObject = new Microsoft.Azure.Batch.PoolEndpointConfiguration(inboundNatPools);
+        }
+        
+        internal PSPoolEndpointConfiguration(Microsoft.Azure.Batch.PoolEndpointConfiguration omObject)
         {
             if ((omObject == null))
             {
@@ -46,50 +50,26 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public Microsoft.Azure.Batch.Common.SchedulingErrorCategory Category
+        public IReadOnlyList<PSInboundNatPool> InboundNatPools
         {
             get
             {
-                return this.omObject.Category;
-            }
-        }
-        
-        public string Code
-        {
-            get
-            {
-                return this.omObject.Code;
-            }
-        }
-        
-        public IReadOnlyList<PSNameValuePair> Details
-        {
-            get
-            {
-                if (((this.details == null) 
-                            && (this.omObject.Details != null)))
+                if (((this.inboundNatPools == null) 
+                            && (this.omObject.InboundNatPools != null)))
                 {
-                    List<PSNameValuePair> list;
-                    list = new List<PSNameValuePair>();
-                    IEnumerator<Microsoft.Azure.Batch.NameValuePair> enumerator;
-                    enumerator = this.omObject.Details.GetEnumerator();
+                    List<PSInboundNatPool> list;
+                    list = new List<PSInboundNatPool>();
+                    IEnumerator<Microsoft.Azure.Batch.InboundNatPool> enumerator;
+                    enumerator = this.omObject.InboundNatPools.GetEnumerator();
                     for (
                     ; enumerator.MoveNext(); 
                     )
                     {
-                        list.Add(new PSNameValuePair(enumerator.Current));
+                        list.Add(new PSInboundNatPool(enumerator.Current));
                     }
-                    this.details = list.AsReadOnly();
+                    this.inboundNatPools = list.AsReadOnly();
                 }
-                return this.details;
-            }
-        }
-        
-        public string Message
-        {
-            get
-            {
-                return this.omObject.Message;
+                return this.inboundNatPools;
             }
         }
     }

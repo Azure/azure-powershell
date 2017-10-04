@@ -61,11 +61,13 @@ namespace Microsoft.Azure.Commands.Batch
         [Parameter(ParameterSetName = JobIdAndSingleAddParameterSet)]
         [Parameter(ParameterSetName = JobObjectAndSingleAddParameterSet)]
         [ValidateNotNullOrEmpty]
+        [Alias("ResourceFile")]
         public IDictionary ResourceFiles { get; set; }
 
         [Parameter(ParameterSetName = JobIdAndSingleAddParameterSet)]
         [Parameter(ParameterSetName = JobObjectAndSingleAddParameterSet)]
         [ValidateNotNullOrEmpty]
+        [Alias("EnvironmentSetting")]
         public IDictionary EnvironmentSettings { get; set; }
 
         [Parameter(ParameterSetName = JobIdAndSingleAddParameterSet)]
@@ -99,7 +101,13 @@ namespace Microsoft.Azure.Commands.Batch
         [Parameter(ParameterSetName = JobIdAndSingleAddParameterSet)]
         [Parameter(ParameterSetName = JobObjectAndSingleAddParameterSet)]
         [ValidateNotNullOrEmpty]
+        [Alias("ApplicationPackageReference")]
         public PSApplicationPackageReference[] ApplicationPackageReferences { get; set; }
+
+        [Parameter(ParameterSetName = JobIdAndSingleAddParameterSet)]
+        [Parameter(ParameterSetName = JobObjectAndSingleAddParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public PSOutputFile[] OutputFile { get; set; }
 
         [Parameter(ParameterSetName = JobObjectAndBulkAddParameterSet,
             HelpMessage = "The collection of tasks to add to a job.")]
@@ -112,6 +120,11 @@ namespace Microsoft.Azure.Commands.Batch
         [Parameter(ParameterSetName = JobObjectAndSingleAddParameterSet)]
         [ValidateNotNullOrEmpty]
         public PSExitConditions ExitConditions { get; set; }
+
+        [Parameter(ParameterSetName = JobIdAndSingleAddParameterSet)]
+        [Parameter(ParameterSetName = JobObjectAndSingleAddParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public PSTaskContainerSettings ContainerSettings { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -137,6 +150,8 @@ namespace Microsoft.Azure.Commands.Batch
                     DependsOn = this.DependsOn,
                     ApplicationPackageReferences = this.ApplicationPackageReferences,
                     ExitConditions = this.ExitConditions,
+                    OutputFiles = this.OutputFile,
+                    ContainerSettings = this.ContainerSettings
                 };
 
                 BatchClient.CreateTask(parameters);

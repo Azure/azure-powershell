@@ -69,7 +69,7 @@ The value is the environment variable value.
 ```yaml
 Type: IDictionary
 Parameter Sets: (All)
-Aliases: 
+Aliases: CommonEnvironmentSetting
 
 Required: False
 Position: Named

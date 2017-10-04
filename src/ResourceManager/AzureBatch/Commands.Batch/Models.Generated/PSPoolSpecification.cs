@@ -34,6 +34,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         internal Microsoft.Azure.Batch.PoolSpecification omObject;
         
+        private IList<System.String> applicationLicenses;
+        
         private IList<PSApplicationPackageReference> applicationPackageReferences;
         
         private IList<PSCertificateReference> certificateReferences;
@@ -64,6 +66,41 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 throw new System.ArgumentNullException("omObject");
             }
             this.omObject = omObject;
+        }
+        
+        public IList<System.String> ApplicationLicenses
+        {
+            get
+            {
+                if (((this.applicationLicenses == null) 
+                            && (this.omObject.ApplicationLicenses != null)))
+                {
+                    List<System.String> list;
+                    list = new List<System.String>();
+                    IEnumerator<System.String> enumerator;
+                    enumerator = this.omObject.ApplicationLicenses.GetEnumerator();
+                    for (
+                    ; enumerator.MoveNext(); 
+                    )
+                    {
+                        list.Add(enumerator.Current);
+                    }
+                    this.applicationLicenses = list;
+                }
+                return this.applicationLicenses;
+            }
+            set
+            {
+                if ((value == null))
+                {
+                    this.omObject.ApplicationLicenses = null;
+                }
+                else
+                {
+                    this.omObject.ApplicationLicenses = new List<System.String>();
+                }
+                this.applicationLicenses = value;
+            }
         }
         
         public IList<PSApplicationPackageReference> ApplicationPackageReferences
@@ -330,15 +367,27 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public System.Int32? TargetDedicated
+        public System.Int32? TargetDedicatedComputeNodes
         {
             get
             {
-                return this.omObject.TargetDedicated;
+                return this.omObject.TargetDedicatedComputeNodes;
             }
             set
             {
-                this.omObject.TargetDedicated = value;
+                this.omObject.TargetDedicatedComputeNodes = value;
+            }
+        }
+        
+        public System.Int32? TargetLowPriorityComputeNodes
+        {
+            get
+            {
+                return this.omObject.TargetLowPriorityComputeNodes;
+            }
+            set
+            {
+                this.omObject.TargetLowPriorityComputeNodes = value;
             }
         }
         

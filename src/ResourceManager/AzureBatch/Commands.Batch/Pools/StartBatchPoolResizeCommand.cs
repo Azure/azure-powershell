@@ -29,9 +29,14 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The number of target dedicated compute nodes.")]
+        [Parameter(Mandatory = false, HelpMessage = "The number of target dedicated compute nodes.")]
         [ValidateNotNullOrEmpty]
-        public int TargetDedicated { get; set; }
+        [Alias("TargetDedicated")]
+        public int? TargetDedicatedComputeNodes { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The number of target low-priority compute nodes.")]
+        [ValidateNotNullOrEmpty]
+        public int? TargetLowPriorityComputeNodes { get; set; }
 
         [Parameter]
         [ValidateNotNullOrEmpty]
@@ -45,7 +50,8 @@ namespace Microsoft.Azure.Commands.Batch
         {
             PoolResizeParameters parameters = new PoolResizeParameters(this.BatchContext, this.Id, null, this.AdditionalBehaviors)
             {
-                TargetDedicated = this.TargetDedicated,
+                TargetDedicatedComputeNodes = this.TargetDedicatedComputeNodes,
+                TargetLowPriorityComputeNodes = this.TargetLowPriorityComputeNodes,
                 ResizeTimeout = this.ResizeTimeout,
                 ComputeNodeDeallocationOption = this.ComputeNodeDeallocationOption
             };

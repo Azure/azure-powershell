@@ -34,6 +34,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         internal Microsoft.Azure.Batch.JobReleaseTask omObject;
         
+        private PSTaskContainerSettings containerSettings;
+        
         private IList<PSEnvironmentSetting> environmentSettings;
         
         private IList<PSResourceFile> resourceFiles;
@@ -68,6 +70,31 @@ namespace Microsoft.Azure.Commands.Batch.Models
             set
             {
                 this.omObject.CommandLine = value;
+            }
+        }
+        
+        public PSTaskContainerSettings ContainerSettings
+        {
+            get
+            {
+                if (((this.containerSettings == null) 
+                            && (this.omObject.ContainerSettings != null)))
+                {
+                    this.containerSettings = new PSTaskContainerSettings(this.omObject.ContainerSettings);
+                }
+                return this.containerSettings;
+            }
+            set
+            {
+                if ((value == null))
+                {
+                    this.omObject.ContainerSettings = null;
+                }
+                else
+                {
+                    this.omObject.ContainerSettings = value.omObject;
+                }
+                this.containerSettings = value;
             }
         }
         
