@@ -20,7 +20,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>Azs.Fabric.Admin\0.1.0\ref\fullclr\</OutputPath>
+    <OutputPath>Azs.Fabric.Admin\ref\fullclr\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -32,7 +32,7 @@
     <DelaySign>true</DelaySign>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>Azs.Fabric.Admin\0.1.0\ref\fullclr\</OutputPath>
+    <OutputPath>Azs.Fabric.Admin\ref\fullclr\</OutputPath>
     <DefineConstants>TRACE;SIGN</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
