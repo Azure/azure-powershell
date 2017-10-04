@@ -42,7 +42,7 @@ namespace Microsoft.AzureStack.Commands
         /// <summary>
         /// The noun for operations on Subscriptions as an administrator.
         /// </summary>
-        public const string TenantSubscription = Prefix + "UserSubscription";
+        public const string UserSubscription = Prefix + "UserSubscription";
 
         /// <summary>
         /// The noun for operations on Offers.

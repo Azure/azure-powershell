@@ -25,10 +25,10 @@ namespace Microsoft.AzureStack.Commands
     /// <summary>
     /// Subscription Cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, Nouns.TenantSubscription, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Remove, Nouns.UserSubscription, SupportsShouldProcess = true)]
     [OutputType(typeof(AzureOperationResponse))]
     [Alias("Remove-AzureRmManagedSubscription", "Remove-AzsTenantSubscription")]
-    public class RemoveTenantSubscription : AdminApiCmdlet
+    public class RemoveUserSubscription : AdminApiCmdlet
     {
         /// <summary>
         /// Gets or sets the subscription ID to be deleted.
