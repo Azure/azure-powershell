@@ -56,12 +56,12 @@
   <Import Project="..\..\..\..\tools\Common.Dependencies.targets" />
   <Target Name="AfterBuild">
     <ItemGroup>
-      <MarkdownFiles Include="$(SolutionDir)Help\*.md" />
+      <MarkdownFiles Include="$(ProjectDir)..\Help\*.md" />
     </ItemGroup>
     <ItemGroup>
       <OutFiles Include="$(ProjectDir)$(RootNameSpace)\**\*.*"/>
     </ItemGroup>
-    <Copy SourceFiles="@(OutFiles)" DestinationFiles="@(OutFiles->'..\..\..\Stack\$(Configuration)\$(RootNameSpace)\%(RecursiveDir)%(Filename)%(Extension)')" />
-    <Copy SourceFiles="@(MarkdownFiles)" DestinationFolder="..\..\..\Stack\$(Configuration)\$(RootNameSpace)\help\" ContinueOnError="false" />
+    <Copy SourceFiles="@(OutFiles)" DestinationFiles="@(OutFiles->'..\..\..\Stack\$(Configuration)\ResourceManager\AzureResourceManager\$(RootNameSpace)\%(RecursiveDir)%(Filename)%(Extension)')" />
+    <Copy SourceFiles="@(MarkdownFiles)" DestinationFolder="..\..\..\Stack\$(Configuration)\ResourceManager\AzureResourceManager\$(RootNameSpace)\help\" ContinueOnError="false" />
   </Target>
 </Project>

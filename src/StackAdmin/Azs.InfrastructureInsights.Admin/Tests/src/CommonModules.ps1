@@ -14,7 +14,7 @@
 
 $ModuleName = "Azs.InfrastructureInsights.Admin"
 
-Import-Module AzureRM.Profile -RequiredVersion 3.4.0
+Import-Module "..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Profile"
 Import-Module ..\Module\$ModuleName
 
 if(Test-Path bin\Debug) {

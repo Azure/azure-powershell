@@ -47,7 +47,10 @@ CLRVersion = '4.0'
 # Modules that must be imported into the global environment prior to importing this module
 RequiredModules = @(@{ModuleName="AzureRM.Profile"; RequiredVersion="3.4.0"},
   @{ModuleName="AzureRM.AzureStackAdmin"; RequiredVersion="0.11.1"},
-  @{ModuleName="AzureRM.AzureStackStorage"; RequiredVersion="0.10.9"})
+  @{ModuleName="AzureRM.AzureStackStorage"; RequiredVersion="0.10.9"},
+  @{ModuleName="Azs.Commerce.Admin"; RequiredVersion="0.1.0"},
+  @{ModuleName="Azs.Fabric.Admin"; RequiredVersion="0.1.0"},
+  @{ModuleName="Azs.InfrastructureInsights.Admin"; RequiredVersion="0.1.0"})
 
 # Assemblies that must be loaded prior to importing this module
 # RequiredAssemblies = @()
