@@ -58,5 +58,12 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Test
         {
             RunPowerShellTest("Test-DataFactoryPiping");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetFactoryByNameParameterSetV2()
+        {
+            RunPowerShellTest("Test-GetFactoryByNameParameterSet");
+        }
     }
 }
