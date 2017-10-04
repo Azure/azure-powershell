@@ -30,21 +30,5 @@ if (-not (Get-Command Get-OperatingSystemInfo -Module PSSwaggerUtility -ErrorAct
     Import-Module PSSwaggerUtility -Force
 }
 
-if ((Get-OperatingSystemInfo).IsCore) {
-    . (Join-Path -Path $PSScriptRoot "Test-CoreRequirements.ps1")
-    $clr = 'coreclr'
-    $framework = 'netstandard1'
-} else {
-    . (Join-Path -Path $PSScriptRoot "Test-FullRequirements.ps1")
-    $clr = 'fullclr'
-    $framework = 'net4'
-}
-
-$clrPath = Join-Path -Path $PSScriptRoot -ChildPath 'ref' | Join-Path -ChildPath $clr
-$dllFullName = Join-Path -Path $clrPath -ChildPath 'Microsoft.AzureStack.Management.Fabric.Admin.dll'
-$isAzureCSharp = $True
-$consent = $false
-
-
-Get-ChildItem -Path (Join-Path -Path "$PSScriptRoot" -ChildPath "ref" | Join-Path -ChildPath "$clr" | Join-Path -ChildPath "*.dll") -File | ForEach-Object { Add-Type -Path $_.FullName -ErrorAction SilentlyContinue }
+Get-ChildItem -Path (Join-Path -Path "$PSScriptRoot" -ChildPath "ref" | Join-Path -ChildPath "fullclr" | Join-Path -ChildPath "*.dll") -File | ForEach-Object { Add-Type -Path $_.FullName -ErrorAction SilentlyContinue }
 Get-ChildItem -Path "$PSScriptRoot\Generated.PowerShell.Commands\*.ps1" -Recurse -File | ForEach-Object { . $_.FullName}
