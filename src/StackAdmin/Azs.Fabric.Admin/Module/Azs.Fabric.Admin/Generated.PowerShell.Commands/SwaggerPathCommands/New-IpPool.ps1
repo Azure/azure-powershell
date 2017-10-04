@@ -81,14 +81,6 @@ function New-IpPool
 
     Begin 
     {
-	    Initialize-PSSwaggerDependencies -Azure
-        $tracerObject = $null
-        if (('continue' -eq $DebugPreference) -or ('inquire' -eq $DebugPreference)) {
-            $oldDebugPreference = $global:DebugPreference
-			$global:DebugPreference = "continue"
-            $tracerObject = New-PSSwaggerClientTracing
-            Register-PSSwaggerClientTracing -TracerObject $tracerObject
-        }
 	}
 
     Process {
@@ -156,9 +148,5 @@ function New-IpPool
     }
 
     End {
-        if ($tracerObject) {
-            $global:DebugPreference = $oldDebugPreference
-            Unregister-PSSwaggerClientTracing -TracerObject $tracerObject
-        }
     }
 }

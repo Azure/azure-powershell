@@ -88,14 +88,6 @@ function Get-MacAddressPool
 
     Begin 
     {
-	    Initialize-PSSwaggerDependencies -Azure
-        $tracerObject = $null
-        if (('continue' -eq $DebugPreference) -or ('inquire' -eq $DebugPreference)) {
-            $oldDebugPreference = $global:DebugPreference
-			$global:DebugPreference = "continue"
-            $tracerObject = New-PSSwaggerClientTracing
-            Register-PSSwaggerClientTracing -TracerObject $tracerObject
-        }
 	}
 
     Process {
@@ -221,9 +213,5 @@ function Get-MacAddressPool
     }
 
     End {
-        if ($tracerObject) {
-            $global:DebugPreference = $oldDebugPreference
-            Unregister-PSSwaggerClientTracing -TracerObject $tracerObject
-        }
     }
 }
