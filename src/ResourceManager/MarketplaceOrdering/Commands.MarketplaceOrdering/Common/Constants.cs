@@ -19,6 +19,7 @@ namespace Microsoft.Azure.Commands.MarketplaceOrdering.Common
         public class ParameterSetNames
         {
             public const string AgreementParameterSet = "AgreementParameterSet";
+            public const string InputObjectParametrSet = "InputObjectParameterSet";
         }
     }
 }

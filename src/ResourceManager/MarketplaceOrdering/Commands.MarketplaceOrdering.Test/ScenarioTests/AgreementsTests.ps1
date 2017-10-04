@@ -45,7 +45,7 @@ function Test-SetAgreementTermsNotAccepted
 	Assert-NotNull $agreementTerms.PrivacyPolicyLink
 	Assert-NotNull $agreementTerms.Signature
 
-	$newAgreementTerms = Set-AzureRmMarketplaceTerms -Publisher $PublisherId -Product $ProductId -Name $PlanId -Accepted:$false
+	$newAgreementTerms = Set-AzureRmMarketplaceTerms -Publisher $PublisherId -Product $ProductId -Name $PlanId -Accepted $false
 	Assert-NotNull $newAgreementTerms
 	Assert-NotNull $newAgreementTerms.LicenseTextLink
 	Assert-NotNull $newAgreementTerms.PrivacyPolicyLink
@@ -69,7 +69,7 @@ function Test-SetAgreementTermsAccepted
 	Assert-NotNull $agreementTerms.PrivacyPolicyLink
 	Assert-NotNull $agreementTerms.Signature
 
-	$newAgreementTerms = Set-AzureRmMarketplaceTerms -Publisher $PublisherId -Product $ProductId -Name $PlanId -InputObject $agreementTerms -Accepted
+	$newAgreementTerms = Set-AzureRmMarketplaceTerms -Publisher $PublisherId -Product $ProductId -Name $PlanId -Terms $agreementTerms -Accepted $true
 	Assert-NotNull $newAgreementTerms
 	Assert-NotNull $newAgreementTerms.LicenseTextLink
 	Assert-NotNull $newAgreementTerms.PrivacyPolicyLink
@@ -86,7 +86,7 @@ function Test-SetAgreementTermsAcceptedPipelineGet
 	$PublisherId = "microsoft-ads"
 	$ProductId = "windows-data-science-vm"
 	$PlanId = "windows2016"
-	$newAgreementTerms = Get-AzureRmMarketplaceTerms -Publisher $PublisherId -Product $ProductId -Name $PlanId|Set-AzureRmMarketplaceTerms -Publisher $PublisherId -Product $ProductId -Name $PlanId -Accepted
+	$newAgreementTerms = Get-AzureRmMarketplaceTerms -Publisher $PublisherId -Product $ProductId -Name $PlanId|Set-AzureRmMarketplaceTerms -Accepted $true
 	Assert-NotNull $newAgreementTerms
 	Assert-NotNull $newAgreementTerms.LicenseTextLink
 	Assert-NotNull $newAgreementTerms.PrivacyPolicyLink

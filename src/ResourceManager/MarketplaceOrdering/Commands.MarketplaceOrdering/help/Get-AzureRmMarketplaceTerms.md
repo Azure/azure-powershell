@@ -8,12 +8,13 @@ schema: 2.0.0
 # Get-AzureRmMarketplaceTerms
 
 ## SYNOPSIS
-Get the agreement terms for a given publisher id(Publisher), offer id(Product) and plan id(Name). The terms object which is returned should be passed to Set-AzureRmMarketplaceTerms to accept the terms.
+Get the agreement terms for a given publisher id(Publisher), offer id(Product) and plan id(Name). The same terms object which is returned here should be passed to Set-AzureRmMarketplaceTerms to accept the terms.
 
 ## SYNTAX
 
 ```
-Get-AzureRmMarketplaceTerms -Publisher <String> -Product <String> -Name <String> [<CommonParameters>]
+Get-AzureRmMarketplaceTerms -Publisher <String> -Product <String> -Name <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,6 +36,21 @@ RetrieveDatetime  : <RetrieveDatetime>
 ```
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 Plan identifier string of image being deployed.
