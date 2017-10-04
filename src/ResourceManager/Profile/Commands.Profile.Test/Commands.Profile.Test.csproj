@@ -227,18 +227,12 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Profile.Test.DefaultCmdletTests\ClearAzureRmDefaultWithDefault.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Profile.Test.DefaultCmdletTests\GetAzureRmDefaultWithDefault.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Profile.Test.DefaultCmdletTests\SetAzureRmDefaultResourceGroupExists.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Profile.Test.DefaultCmdletTests\SetAzureRmDefaultResourceGroupNonexistent.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Profile.Test.DefaultCmdletTests\ClearAzureRmDefaultNoDefault.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Profile.Test.DefaultCmdletTests\ClearAzureRmDefaultWithDefault.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Profile.Test.DefaultCmdletTests\GetAzureRmDefaultNoDefault.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Profile.Test.DefaultCmdletTests\GetAzureRmDefaultWithDefault.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Profile.Test.DefaultCmdletTests\SetAzureRmDefaultResourceGroupExists.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Profile.Test.DefaultCmdletTests\SetAzureRmDefaultResourceGroupNonexistent.json" />
     <None Include="SessionRecords\Microsoft.Azure.Commands.Profile.Test.ProfileModuleTests\WarningOnIncompatibleVersions.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
