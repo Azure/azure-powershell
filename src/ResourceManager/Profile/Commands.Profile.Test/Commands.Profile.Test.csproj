@@ -227,7 +227,13 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Profile.Test.DefaultCmdletTests\ClearAzureRmDefaultNoDefault.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Profile.Test.DefaultCmdletTests\ClearAzureRmDefaultWithDefault.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Profile.Test.DefaultCmdletTests\GetAzureRmDefaultNoDefault.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Profile.Test.DefaultCmdletTests\GetAzureRmDefaultWithDefault.json">
