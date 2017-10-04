@@ -107,9 +107,16 @@ function New-AzVm {
             } else {
                 $vm = $vmi.GetOrCreate($createParams, [ProgressRange]::new(0.0, 1.0))
                 Write-Progress "Done." -Completed
-                return [PSAzureVm]::new(
-                    $vm,
-                    $piai.DomainNameLabel + "." + $locationi.Value + ".cloudapp.azure.com")
+                $fqdn = $piai.DomainNameLabel + "." + $locationi.Value + ".cloudapp.azure.com"
+                switch ($image.Type) {
+                    "Windows" {
+                        Write-Verbose ("To connect to the VM, use '$fqdn' as a computer name in the 'Remote Desktop Connection' application." )
+                    }
+                    "Linux" {
+                        Write-Verbose ("To connect to the VM, type 'ssh $($Credential.UserName)@$fqdn' in a Bash console." )
+                    }
+                }
+                return [PSAzureVm]::new($vm, $fqdn)
             }
         }
     }
@@ -202,6 +209,9 @@ class AzureObject {
             $this.GetInfoCalled = $true
             try {
                 $this.Info = $this.GetInfoOrThrow($context)
+                if ($this.Info) {
+                    Write-Verbose ("Found '" + $this.Name + "' " + $this.GetResourceType() + ".")
+                }
             } catch {
                 # ignore all errors
             }
