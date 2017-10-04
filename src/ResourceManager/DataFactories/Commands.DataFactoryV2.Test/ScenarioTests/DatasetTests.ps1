@@ -14,8 +14,7 @@
 
 <#
 .SYNOPSIS
-Create a dataset and the linked service which it depends on. Then do a Get to compare the result are identical.
-Delete the created dataset after test finishes.
+Creates a dataset and the linked service which it depends on. Then does a Get to compare the results.
 #>
 function Test-Dataset
 {
@@ -29,30 +28,27 @@ function Test-Dataset
     try
     {
         Set-AzureRmDataFactoryV2 -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
-
         $linkedServicename = "foo1"
         Set-AzureRmDataFactoryV2LinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -File .\Resources\linkedService.json -Name $linkedServicename -Force
    
         $datasetname = "foo2"
-        $actual = Set-AzureRmDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $datasetname -File .\Resources\dataset.json -Force
-        $expected = Get-AzureRmDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $datasetname
+        $expected = Set-AzureRmDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $datasetname -File .\Resources\dataset.json -Force
+        $actual = Get-AzureRmDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $datasetname
 
-        Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
-        Assert-AreEqual $expected.DataFactoryName $actual.DataFactoryName
-        Assert-AreEqual $expected.Name $datasetname
+        Verify-AdfSubResource $expected $actual $rgname $dfname $datasetname
 
         Remove-AzureRmDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $datasetname -Force
     }
     finally
     {
-        Clean-DataFactory $rgname $dfname
+        CleanUp $rgname $dfname
     }
 }
 
 <#
 .SYNOPSIS
-Create a dataset and the linked service which it depends on. Then do a Get to compare the result are identical.
-Delete the created dataset after test finishes.
+Creates a dataset and the linked service which it depends on.
+Then does a Get using the resource id, compares the results, and then deletes the dataset using the resource id.
 #>
 function Test-DatasetWithResourceId
 {
@@ -66,33 +62,27 @@ function Test-DatasetWithResourceId
     try
     {
         $df = Set-AzureRmDataFactoryV2 -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
-
         $linkedServicename = "foo1"
         Set-AzureRmDataFactoryV2LinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -File .\Resources\linkedService.json -Name $linkedServicename -Force
    
         $dsname = "foo2"
-        $actual = Set-AzureRmDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $dsname -File .\Resources\dataset.json -Force
-        $dsrecourceid = -join($df.DataFactoryId, "/datasets/", $dsname)
+        $expected = Set-AzureRmDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $dsname -File .\Resources\dataset.json -Force
+        $actual = Get-AzureRmDataFactoryV2Dataset -ResourceId $expected.Id
 
-        $expected = Get-AzureRmDataFactoryV2Dataset -ResourceId $dsrecourceid
+        Verify-AdfSubResource $expected $actual $rgname $dfname $dsname
 
-        Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
-        Assert-AreEqual $expected.DataFactoryName $actual.DataFactoryName
-        Assert-AreEqual $expected.Name $actual.Name
-
-        Remove-AzureRmDataFactoryV2Dataset -ResourceId $dsrecourceid -Force
+        Remove-AzureRmDataFactoryV2Dataset -ResourceId $expected.Id -Force
     }
     finally
     {
-        Clean-DataFactory $rgname $dfname
+        CleanUp $rgname $dfname
     }
 }
 
 <#
 .SYNOPSIS
-Create a dataset and the linked service which it depends on. Then do a Get to compare the result are identical.
-Delete the created dataset after test finishes.
-Use -DataFactory parameter in all cmdlets.
+Creates a dataset and the linked service which it depends on. Then does a Get to compare the results, and then deletes the created dataset.
+Uses -DataFactory parameter if available in cmdlet.
 #>
 function Test-DatasetWithDataFactoryParameter
 {
@@ -106,7 +96,6 @@ function Test-DatasetWithDataFactoryParameter
     try
     {
         $df = Set-AzureRmDataFactoryV2 -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
-     
         $linkedServicename = "foo1"
         Set-AzureRmDataFactoryV2LinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -File .\Resources\linkedService.json -Name $linkedServicename -Force
    
@@ -114,21 +103,19 @@ function Test-DatasetWithDataFactoryParameter
         $actual = Set-AzureRmDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $datasetname -File .\Resources\dataset.json -Force
         $expected = Get-AzureRmDataFactoryV2Dataset -DataFactory $df -Name $datasetname
 
-        Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
-        Assert-AreEqual $expected.DataFactoryName $actual.DataFactoryName
-        Assert-AreEqual $expected.Name $datasetname
+        Verify-AdfSubResource $expected $actual $rgname $dfname $datasetname
 
         Remove-AzureRmDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $datasetname -Force
     }
     finally
     {
-        Clean-DataFactory $rgname $dfname
+        CleanUp $rgname $dfname
     }
 }
 
 <#
 .SYNOPSIS
-Test piping support.
+Tests the piping support.
 #>
 function Test-DatasetPiping
 {
@@ -142,7 +129,6 @@ function Test-DatasetPiping
     try
     {
         Set-AzureRmDataFactoryV2 -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
-     
         $linkedServicename = "foo1"
         Set-AzureRmDataFactoryV2LinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -File .\Resources\linkedService.json -Name $linkedServicename -Force
    
@@ -156,6 +142,6 @@ function Test-DatasetPiping
     }
     finally
     {
-        Clean-DataFactory $rgname $dfname
+        CleanUp $rgname $dfname
     }
 }

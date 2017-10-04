@@ -37,6 +37,11 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public virtual List<PSDataFactory> ListDataFactories(DataFactoryFilterOptions filterOptions)
         {
+            if (filterOptions == null)
+            {
+                throw new ArgumentNullException("filterOptions");
+            }
+
             var dataFactories = new List<PSDataFactory>();
 
             IPage<Factory> response;
@@ -61,6 +66,11 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public virtual List<PSDataFactory> ListDataFactoriesBySubscription(DataFactoryFilterOptions filterOptions)
         {
+            if (filterOptions == null)
+            {
+                throw new ArgumentNullException("filterOptions");
+            }
+
             var dataFactories = new List<PSDataFactory>();
             IPage<Factory> response;
 

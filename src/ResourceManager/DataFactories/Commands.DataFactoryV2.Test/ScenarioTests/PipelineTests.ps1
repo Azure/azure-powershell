@@ -16,8 +16,7 @@
 
 <#
 .SYNOPSIS
-Create a sample pipeline with all of its dependencies. Then test overwrite the pipeline and then
-delete the pipeline with piping.
+Creates a sample pipeline with all of its dependencies. Then deletes the pipeline with piping.
 #>
 function Test-Pipeline
 {
@@ -43,13 +42,10 @@ function Test-Pipeline
         Set-AzureRmDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name "ds1_0" -File .\Resources\dataset-ds1_0.json -Force
 
         $pipelineName = "samplePipeline"   
+        $expected = Set-AzureRmDataFactoryV2Pipeline -ResourceGroupName $rgname -Name $pipelineName -DataFactoryName $dfname -File ".\Resources\pipeline.json" -Force
+        $actual = Get-AzureRmDataFactoryV2Pipeline -ResourceGroupName $rgname -Name $pipelineName -DataFactoryName $dfname
 
-        Set-AzureRmDataFactoryV2Pipeline -ResourceGroupName $rgname -Name $pipelineName -DataFactoryName $dfname -File ".\Resources\pipeline.json" -Force
-        $expectedPipeline = Get-AzureRmDataFactoryV2Pipeline -ResourceGroupName $rgname -Name $pipelineName -DataFactoryName $dfname
-
-        Assert-AreEqual $rgname $expectedPipeline.ResourceGroupName
-        Assert-AreEqual $dfname $expectedPipeline.DataFactoryName
-        Assert-AreEqual $pipelineName $expectedPipeline.Name
+        Verify-AdfSubResource $expected $actual $rgname $dfname $pipelineName
                 
         #remove the pipeline through piping
         Get-AzureRmDataFactoryV2Pipeline -DataFactory $df -Name $pipelineName | Remove-AzureRmDataFactoryV2Pipeline -Force
@@ -62,14 +58,14 @@ function Test-Pipeline
     }
     finally
     {
-        Clean-DataFactory $rgname $dfname
+        CleanUp $rgname $dfname
     }
 }
 
 <#
 .SYNOPSIS
-Create a dataset and the linked service which it depends on. Then do a Get to compare the result are identical.
-Delete the created dataset after test finishes.
+Creates a sample pipeline with all of its dependencies. Then does a Get to compare the results.
+Delete sthe created pipeline with resource id at the end.
 #>
 function Test-PipelineWithResourceId
 {
@@ -96,18 +92,17 @@ function Test-PipelineWithResourceId
 
         $pipelineName = "samplePipeline"   
         $actual = Set-AzureRmDataFactoryV2Pipeline -ResourceGroupName $rgname -Name $pipelineName -DataFactoryName $dfname -File ".\Resources\pipeline.json" -Force
-        $precourceid = -join($df.DataFactoryId, "/pipelines/", $pipelineName)
         
-        $expected = Get-AzureRmDataFactoryV2Pipeline -ResourceId $precourceid
+        $expected = Get-AzureRmDataFactoryV2Pipeline -ResourceId $actual.Id
 
         Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
         Assert-AreEqual $expected.DataFactoryName $actual.DataFactoryName
         Assert-AreEqual $expected.Name $actual.Name
 
-        Remove-AzureRmDataFactoryV2Pipeline -ResourceId $precourceid -Force
+        Remove-AzureRmDataFactoryV2Pipeline -ResourceId $actual.Id -Force
     }
     finally
     {
-        Clean-DataFactory $rgname $dfname
+        CleanUp $rgname $dfname
     }
 }

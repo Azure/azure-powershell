@@ -54,6 +54,6 @@ function Test-Run
     }
     finally
     {
-        Clean-DataFactory $rgname $dfname
+        CleanUp $rgname $dfname
     }
 }

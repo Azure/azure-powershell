@@ -26,6 +26,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
+        // The Name property is abstract to force child classes to redefine it with proper set of attributes.
         [ValidateNotNullOrEmpty]
         public abstract string Name { get; set; }
 
