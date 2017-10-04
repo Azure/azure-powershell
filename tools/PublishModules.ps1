@@ -110,6 +110,82 @@ function Get-TargetModules
     }
 }
 
+function Update-NugetPackage
+{
+    [CmdletBinding()]
+    param(
+        [string]$BasePath,
+        [string]$ModuleName,
+        [string]$DirPath,
+        [string]$NugetExe
+    )
+
+    PROCESS
+    {
+        $regex = New-Object -Type System.Text.RegularExpressions.Regex -ArgumentList  "([0-9\.]+)nupkg$"
+        $regex2 = "<requireLicenseAcceptance>false</requireLicenseAcceptance>"
+        
+        $relDir = Join-Path $DirPath -ChildPath "_rels"
+        $contentPath = Join-Path $DirPath -ChildPath '`[Content_Types`].xml'
+        $packPath = Join-Path $DirPath -ChildPath "package"
+        $modulePath = Join-Path $DirPath -ChildPath ($ModuleName + ".nuspec")
+        Remove-Item -Recurse -Path $relDir -Force
+        Remove-Item -Recurse -Path $packPath -Force
+        Remove-Item -Path $contentPath -Force
+        $content = (Get-Content -Path $modulePath) -join "`r`n"
+        $content = $content -replace $regex2, ("<licenseUrl>https://raw.githubusercontent.com/Azure/azure-powershell/dev/LICENSE.txt</licenseUrl>`r`n    <projectUrl>https://github.com/Azure/azure-powershell</projectUrl>`r`n    <requireLicenseAcceptance>true</requireLicenseAcceptance>")
+        $content | Out-File -FilePath $modulePath -Force
+        &$NugetExe pack $modulePath -OutputDirectory $BasePath
+    }
+}
+
+function Change-RMModule 
+{
+    [CmdletBinding()]
+    param(
+        [string]$Path,
+        [string]$RepoLocation,
+        [string]$TempRepo,
+        [string]$TempRepoPath,
+        [string]$NugetExe
+    )
+
+    PROCESS
+    {
+        $moduleName = (Get-Item -Path $Path).Name
+        $moduleManifest = $moduleName + ".psd1"
+        $moduleSourcePath = Join-Path -Path $Path -ChildPath $moduleManifest
+        $manifest = Test-ModuleManifest -Path $moduleSourcePath
+        $toss = Publish-Module -Path $Path -Repository $TempRepo -Force
+        Write-Output "Changing to directory for module modifications $TempRepoPath"
+        pushd $TempRepoPath
+        try
+        {
+          $nupkgPath = Join-Path -Path . -ChildPath ($moduleName + "." + $manifest.Version.ToString() + ".nupkg")
+          $zipPath = Join-Path -Path . -ChildPath ($moduleName + "." + $manifest.Version.ToString() + ".zip")
+          $dirPath = Join-Path -Path . -ChildPath $moduleName
+          $unzippedManifest = Join-Path -Path $dirPath -ChildPath ($moduleName + ".psd1")
+
+          if (!(Test-Path -Path $nupkgPath))
+          {
+              throw "Module at $nupkgPath in $TempRepoPath does not exist"
+          }
+          Write-Output "Renaming package $nupkgPath to zip archive $zipPath"
+          ren $nupkgPath $zipPath
+          Write-Output "Expanding $zipPath"
+          Expand-Archive $zipPath -DestinationPath $dirPath
+
+          Remove-Item -Path $zipPath -Force
+          Write-Output "Repackaging $dirPath"
+          Update-NugetPackage -BasePath $TempRepoPath -ModuleName $moduleName -DirPath $dirPath -NugetExe $NugetExe
+        }
+        finally 
+        {
+            popd
+        }
+    }
+}
+
 function Publish-RMModule 
 {
     [CmdletBinding()]
@@ -199,6 +275,14 @@ $env:PSModulePath="$env:PSModulePath;$tempRepoPath"
 
 try {
     $modulesInScope = Get-TargetModules -buildConfig $buildConfig -Scope $scope -PublishLocal $publishToLocal -Profile $Profile
+    foreach ($modulePath in $modulesInScope) {
+        # filter out AzureRM.Profile which always gets published first 
+        # And "Azure.Storage" which is built out as test dependencies  
+        $module = Get-Item -Path $modulePath
+        Write-Host "Changing $module module from $modulePath"
+        Change-RMModule -Path $modulePath -RepoLocation $repositoryLocation -TempRepo $tempRepoName -TempRepoPath $tempRepoPath -nugetExe $nugetExe
+        Write-Host "Changed $module module"
+    }
 
     if (!$publishToLocal)
     {
