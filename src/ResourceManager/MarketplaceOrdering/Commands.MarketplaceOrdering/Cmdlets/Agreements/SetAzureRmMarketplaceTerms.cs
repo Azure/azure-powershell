@@ -35,12 +35,16 @@ namespace Microsoft.Azure.Commands.MarketplaceOrdering.Cmdlets.Agreements
         public string Name { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "Boolean which would indicate the status of acceptance of the terms, it should be true if any version of the terms have been accepted.", ParameterSetName = Constants.ParameterSetNames.AgreementParameterSet)]
+        [Parameter(Mandatory = true, HelpMessage = "Boolean which would indicate the status of acceptance of the terms, it should be true if any version of the terms have been accepted.", ParameterSetName = Constants.ParameterSetNames.InputObjectParametrSet)]
         [ValidateNotNullOrEmpty]
-        public SwitchParameter Accepted { get; set; }
+        public bool? Accepted { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipeline = true, HelpMessage = "Terms object returned in Get-AzureRmMarketplaceTerms cmdlet. This is a mandatory parameter if Accepted paramter is true.", ParameterSetName = Constants.ParameterSetNames.AgreementParameterSet)]
+        [Parameter(Mandatory = false, HelpMessage = "Terms object returned in Get-AzureRmMarketplaceTerms cmdlet. This is a mandatory parameter if Accepted paramter is true.", ParameterSetName = Constants.ParameterSetNames.AgreementParameterSet)]
         [ValidateNotNullOrEmpty]
-        [Alias("Terms")]
+        public PSAgreementTerms Terms { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipeline = true, Position = 0, HelpMessage = "Terms object returned in Get-AzureRmMarketplaceTerms cmdlet. This is a mandatory parameter if Accepted paramter is true.", ParameterSetName = Constants.ParameterSetNames.InputObjectParametrSet)]
+        [ValidateNotNullOrEmpty]
         public PSAgreementTerms InputObject { get; set; }
 
         public override void ExecuteCmdlet()
@@ -49,18 +53,18 @@ namespace Microsoft.Azure.Commands.MarketplaceOrdering.Cmdlets.Agreements
             {
                 if (ParameterSetName.Equals(Constants.ParameterSetNames.AgreementParameterSet))
                 {
-                    if (!Accepted)
+                    if (Accepted == false)
                     {
-                        InputObject = new PSAgreementTerms
+                        Terms = new PSAgreementTerms
                         {
                             Accepted = false
                         };
                     }
                     else
                     {
-                        if (InputObject != null)
+                        if (Terms != null)
                         {
-                            InputObject.Accepted = Accepted;
+                            Terms.Accepted = Accepted;
                         }
                         else
                         {//Accepted = True but there is no terms object
@@ -68,10 +72,23 @@ namespace Microsoft.Azure.Commands.MarketplaceOrdering.Cmdlets.Agreements
                             return;
                         }
                     }
-                    var agreementTerms =
-                        new PSAgreementTerms(MarketplaceOrderingAgreementsClient.MarketplaceAgreements.Create(
-                            Publisher, Product, Name, InputObject.ToAgreementTerms()));
+                    var agreementTerms = new PSAgreementTerms(MarketplaceOrderingAgreementsClient.MarketplaceAgreements.Create(
+                                                                Publisher, Product, Name, Terms.ToAgreementTerms()));
                     WriteObject(agreementTerms);
+                }
+                else if (ParameterSetName.Equals(Constants.ParameterSetNames.InputObjectParametrSet))
+                {
+                    if (InputObject != null)
+                    {
+                        InputObject.Accepted = Accepted;
+                        var agreementTerms = new PSAgreementTerms(MarketplaceOrderingAgreementsClient.MarketplaceAgreements.Create(
+                                                InputObject.Publisher, InputObject.Product, InputObject.Plan, InputObject.ToAgreementTerms()));
+                        WriteObject(agreementTerms);
+                    }
+                    else
+                    {
+                        WriteWarning("Terms parameter is mandatory when passing it as pipeline.");
+                    }
                 }
             }
         }
