@@ -26,7 +26,7 @@ namespace Microsoft.AzureStack.Commands
     /// </summary>
     [Cmdlet(VerbsCommon.New, Nouns.TenantSubscription, SupportsShouldProcess = true)]
     [OutputType(typeof(SubscriptionDefinition))]
-    [Alias("New-AzureRmManagedSubscription")]
+    [Alias("New-AzureRmManagedSubscription", "New-AzsTenantSubscription")]
     public class NewTenantSubscription : AdminApiCmdlet
     {
         /// <summary>
@@ -110,7 +110,12 @@ namespace Microsoft.AzureStack.Commands
         {
             if (this.MyInvocation.InvocationName.Equals("New-AzureRmManagedSubscription", StringComparison.OrdinalIgnoreCase))
             {
-                this.WriteWarning("Alias New-AzureRmManagedSubscription will be deprecated in a future release. Please use the cmdlet name New-AzsTenantSubscription instead");
+                this.WriteWarning("Alias New-AzureRmManagedSubscription will be deprecated in a future release. Please use the cmdlet name New-AzsUserSubscription instead");
+            }
+
+            if (this.MyInvocation.InvocationName.Equals("New-AzsTenantSubscription", StringComparison.OrdinalIgnoreCase))
+            {
+                this.WriteWarning("Alias New-AzsTenantSubscription will be deprecated in a future release. Please use the cmdlet name New-AzsUserSubscription instead");
             }
 
             if (ShouldProcess(this.SubscriptionId, VerbsCommon.New))
