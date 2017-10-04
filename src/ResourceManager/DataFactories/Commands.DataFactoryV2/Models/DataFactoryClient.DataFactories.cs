@@ -105,16 +105,20 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             }
             var dataFactories = new List<PSDataFactory>();
 
-            if (filterOptions.DataFactoryName != null)
+            if (filterOptions.DataFactoryName != null && filterOptions.ResourceGroupName != null)
             {
                 dataFactories.Add(GetDataFactory(filterOptions.ResourceGroupName, filterOptions.DataFactoryName));
             }
-            else if (filterOptions.ResourceGroupName == null)
+            else if (filterOptions.ResourceGroupName == null && filterOptions.DataFactoryName == null)
             {
                 dataFactories.AddRange(ListDataFactoriesBySubscription(filterOptions));
             }
             else
             {
+                if(filterOptions.ResourceGroupName == null && filterOptions.DataFactoryName != null)
+                {
+                    throw new Exception("ResourceGroupName name can't be null if factory name is not due to parameter sets. Should never reach this point");
+                }
                 dataFactories.AddRange(ListDataFactories(filterOptions));
             }
             return dataFactories;
