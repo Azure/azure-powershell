@@ -30,15 +30,9 @@ namespace Microsoft.Azure.Commands.Profile.Default
     public class GetAzureRMDefaultCommand : AzureRMCmdlet
     {
         private const string ResourceGroupParameterSet = "ResourceGroup";
-        private bool resourceGroup;
 
         [Parameter(ParameterSetName = ResourceGroupParameterSet, Mandatory = false, HelpMessage = "Display Default Resource Group", ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNullOrEmpty]
-        public SwitchParameter ResourceGroup
-        {
-            get { return resourceGroup; }
-            set { resourceGroup = value; }
-        }
+        public SwitchParameter ResourceGroup { get; set; }
 
         public override void ExecuteCmdlet()
         {
