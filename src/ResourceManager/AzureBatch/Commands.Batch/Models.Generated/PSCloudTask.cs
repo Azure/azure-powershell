@@ -54,6 +54,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         private PSMultiInstanceSettings multiInstanceSettings;
         
+        private IList<PSOutputFile> outputFiles;
+        
         private IList<PSResourceFile> resourceFiles;
         
         private PSTaskStatistics statistics;
@@ -377,6 +379,41 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     this.omObject.MultiInstanceSettings = value.omObject;
                 }
                 this.multiInstanceSettings = value;
+            }
+        }
+        
+        public IList<PSOutputFile> OutputFiles
+        {
+            get
+            {
+                if (((this.outputFiles == null) 
+                            && (this.omObject.OutputFiles != null)))
+                {
+                    List<PSOutputFile> list;
+                    list = new List<PSOutputFile>();
+                    IEnumerator<Microsoft.Azure.Batch.OutputFile> enumerator;
+                    enumerator = this.omObject.OutputFiles.GetEnumerator();
+                    for (
+                    ; enumerator.MoveNext(); 
+                    )
+                    {
+                        list.Add(new PSOutputFile(enumerator.Current));
+                    }
+                    this.outputFiles = list;
+                }
+                return this.outputFiles;
+            }
+            set
+            {
+                if ((value == null))
+                {
+                    this.omObject.OutputFiles = null;
+                }
+                else
+                {
+                    this.omObject.OutputFiles = new List<Microsoft.Azure.Batch.OutputFile>();
+                }
+                this.outputFiles = value;
             }
         }
         

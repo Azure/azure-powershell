@@ -29,19 +29,14 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public partial class PSNetworkConfiguration
+    public partial class PSComputeNodeEndpointConfiguration
     {
         
-        internal Microsoft.Azure.Batch.NetworkConfiguration omObject;
+        internal Microsoft.Azure.Batch.ComputeNodeEndpointConfiguration omObject;
         
-        private PSPoolEndpointConfiguration endpointConfiguration;
+        private IReadOnlyList<PSInboundEndpoint> inboundEndpoints;
         
-        public PSNetworkConfiguration()
-        {
-            this.omObject = new Microsoft.Azure.Batch.NetworkConfiguration();
-        }
-        
-        internal PSNetworkConfiguration(Microsoft.Azure.Batch.NetworkConfiguration omObject)
+        internal PSComputeNodeEndpointConfiguration(Microsoft.Azure.Batch.ComputeNodeEndpointConfiguration omObject)
         {
             if ((omObject == null))
             {
@@ -50,40 +45,26 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public PSPoolEndpointConfiguration EndpointConfiguration
+        public IReadOnlyList<PSInboundEndpoint> InboundEndpoints
         {
             get
             {
-                if (((this.endpointConfiguration == null) 
-                            && (this.omObject.EndpointConfiguration != null)))
+                if (((this.inboundEndpoints == null) 
+                            && (this.omObject.InboundEndpoints != null)))
                 {
-                    this.endpointConfiguration = new PSPoolEndpointConfiguration(this.omObject.EndpointConfiguration);
+                    List<PSInboundEndpoint> list;
+                    list = new List<PSInboundEndpoint>();
+                    IEnumerator<Microsoft.Azure.Batch.InboundEndpoint> enumerator;
+                    enumerator = this.omObject.InboundEndpoints.GetEnumerator();
+                    for (
+                    ; enumerator.MoveNext(); 
+                    )
+                    {
+                        list.Add(new PSInboundEndpoint(enumerator.Current));
+                    }
+                    this.inboundEndpoints = list.AsReadOnly();
                 }
-                return this.endpointConfiguration;
-            }
-            set
-            {
-                if ((value == null))
-                {
-                    this.omObject.EndpointConfiguration = null;
-                }
-                else
-                {
-                    this.omObject.EndpointConfiguration = value.omObject;
-                }
-                this.endpointConfiguration = value;
-            }
-        }
-        
-        public string SubnetId
-        {
-            get
-            {
-                return this.omObject.SubnetId;
-            }
-            set
-            {
-                this.omObject.SubnetId = value;
+                return this.inboundEndpoints;
             }
         }
     }

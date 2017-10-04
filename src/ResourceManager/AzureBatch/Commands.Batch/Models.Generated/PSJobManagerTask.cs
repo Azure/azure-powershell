@@ -42,6 +42,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         private IList<PSEnvironmentSetting> environmentSettings;
         
+        private IList<PSOutputFile> outputFiles;
+        
         private IList<PSResourceFile> resourceFiles;
         
         private PSUserIdentity userIdentity;
@@ -63,6 +65,18 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 throw new System.ArgumentNullException("omObject");
             }
             this.omObject = omObject;
+        }
+        
+        public System.Boolean? AllowLowPriorityNode
+        {
+            get
+            {
+                return this.omObject.AllowLowPriorityNode;
+            }
+            set
+            {
+                this.omObject.AllowLowPriorityNode = value;
+            }
         }
         
         public IList<PSApplicationPackageReference> ApplicationPackageReferences
@@ -233,6 +247,41 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
+        public IList<PSOutputFile> OutputFiles
+        {
+            get
+            {
+                if (((this.outputFiles == null) 
+                            && (this.omObject.OutputFiles != null)))
+                {
+                    List<PSOutputFile> list;
+                    list = new List<PSOutputFile>();
+                    IEnumerator<Microsoft.Azure.Batch.OutputFile> enumerator;
+                    enumerator = this.omObject.OutputFiles.GetEnumerator();
+                    for (
+                    ; enumerator.MoveNext(); 
+                    )
+                    {
+                        list.Add(new PSOutputFile(enumerator.Current));
+                    }
+                    this.outputFiles = list;
+                }
+                return this.outputFiles;
+            }
+            set
+            {
+                if ((value == null))
+                {
+                    this.omObject.OutputFiles = null;
+                }
+                else
+                {
+                    this.omObject.OutputFiles = new List<Microsoft.Azure.Batch.OutputFile>();
+                }
+                this.outputFiles = value;
+            }
+        }
+        
         public IList<PSResourceFile> ResourceFiles
         {
             get
@@ -267,7 +316,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 this.resourceFiles = value;
             }
         }
-
+        
         public System.Boolean? RunExclusive
         {
             get

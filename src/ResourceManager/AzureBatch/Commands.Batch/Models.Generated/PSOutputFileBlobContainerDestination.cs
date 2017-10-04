@@ -29,19 +29,17 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public partial class PSNetworkConfiguration
+    public partial class PSOutputFileBlobContainerDestination
     {
         
-        internal Microsoft.Azure.Batch.NetworkConfiguration omObject;
+        internal Microsoft.Azure.Batch.OutputFileBlobContainerDestination omObject;
         
-        private PSPoolEndpointConfiguration endpointConfiguration;
-        
-        public PSNetworkConfiguration()
+        public PSOutputFileBlobContainerDestination(string containerUrl, string path = null)
         {
-            this.omObject = new Microsoft.Azure.Batch.NetworkConfiguration();
+            this.omObject = new Microsoft.Azure.Batch.OutputFileBlobContainerDestination(containerUrl, path);
         }
         
-        internal PSNetworkConfiguration(Microsoft.Azure.Batch.NetworkConfiguration omObject)
+        internal PSOutputFileBlobContainerDestination(Microsoft.Azure.Batch.OutputFileBlobContainerDestination omObject)
         {
             if ((omObject == null))
             {
@@ -50,40 +48,19 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public PSPoolEndpointConfiguration EndpointConfiguration
+        public string ContainerUrl
         {
             get
             {
-                if (((this.endpointConfiguration == null) 
-                            && (this.omObject.EndpointConfiguration != null)))
-                {
-                    this.endpointConfiguration = new PSPoolEndpointConfiguration(this.omObject.EndpointConfiguration);
-                }
-                return this.endpointConfiguration;
-            }
-            set
-            {
-                if ((value == null))
-                {
-                    this.omObject.EndpointConfiguration = null;
-                }
-                else
-                {
-                    this.omObject.EndpointConfiguration = value.omObject;
-                }
-                this.endpointConfiguration = value;
+                return this.omObject.ContainerUrl;
             }
         }
         
-        public string SubnetId
+        public string Path
         {
             get
             {
-                return this.omObject.SubnetId;
-            }
-            set
-            {
-                this.omObject.SubnetId = value;
+                return this.omObject.Path;
             }
         }
     }

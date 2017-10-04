@@ -29,19 +29,21 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public partial class PSNetworkConfiguration
+    public partial class PSOutputFile
     {
         
-        internal Microsoft.Azure.Batch.NetworkConfiguration omObject;
+        internal Microsoft.Azure.Batch.OutputFile omObject;
         
-        private PSPoolEndpointConfiguration endpointConfiguration;
+        private PSOutputFileDestination destination;
         
-        public PSNetworkConfiguration()
+        private PSOutputFileUploadOptions uploadOptions;
+        
+        public PSOutputFile(string filePattern, PSOutputFileDestination destination, PSOutputFileUploadOptions uploadOptions)
         {
-            this.omObject = new Microsoft.Azure.Batch.NetworkConfiguration();
+            this.omObject = new Microsoft.Azure.Batch.OutputFile(filePattern, destination.omObject, uploadOptions.omObject);
         }
         
-        internal PSNetworkConfiguration(Microsoft.Azure.Batch.NetworkConfiguration omObject)
+        internal PSOutputFile(Microsoft.Azure.Batch.OutputFile omObject)
         {
             if ((omObject == null))
             {
@@ -50,40 +52,37 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public PSPoolEndpointConfiguration EndpointConfiguration
+        public PSOutputFileDestination Destination
         {
             get
             {
-                if (((this.endpointConfiguration == null) 
-                            && (this.omObject.EndpointConfiguration != null)))
+                if (((this.destination == null) 
+                            && (this.omObject.Destination != null)))
                 {
-                    this.endpointConfiguration = new PSPoolEndpointConfiguration(this.omObject.EndpointConfiguration);
+                    this.destination = new PSOutputFileDestination(this.omObject.Destination);
                 }
-                return this.endpointConfiguration;
-            }
-            set
-            {
-                if ((value == null))
-                {
-                    this.omObject.EndpointConfiguration = null;
-                }
-                else
-                {
-                    this.omObject.EndpointConfiguration = value.omObject;
-                }
-                this.endpointConfiguration = value;
+                return this.destination;
             }
         }
         
-        public string SubnetId
+        public string FilePattern
         {
             get
             {
-                return this.omObject.SubnetId;
+                return this.omObject.FilePattern;
             }
-            set
+        }
+        
+        public PSOutputFileUploadOptions UploadOptions
+        {
+            get
             {
-                this.omObject.SubnetId = value;
+                if (((this.uploadOptions == null) 
+                            && (this.omObject.UploadOptions != null)))
+                {
+                    this.uploadOptions = new PSOutputFileUploadOptions(this.omObject.UploadOptions);
+                }
+                return this.uploadOptions;
             }
         }
     }

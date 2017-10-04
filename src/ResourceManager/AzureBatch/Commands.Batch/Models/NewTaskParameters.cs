@@ -96,5 +96,10 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// The settings for an authentication token that the task can use to perform Batch service operations.
         /// </summary>
         public PSAuthenticationTokenSettings AuthenticationTokenSettings { get; set; }
+
+        /// <summary>
+        /// The output file details
+        /// </summary>
+        public PSOutputFile[] OutputFiles { get; set; }
     }
 }

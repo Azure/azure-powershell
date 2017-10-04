@@ -29,14 +29,14 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public partial class PSJobReleaseTaskExecutionInformation
+    public partial class PSTaskFailureInformation
     {
         
-        internal Microsoft.Azure.Batch.JobReleaseTaskExecutionInformation omObject;
+        internal Microsoft.Azure.Batch.TaskFailureInformation omObject;
         
-        private PSTaskFailureInformation failureInformation;
+        private IReadOnlyList<PSNameValuePair> details;
         
-        internal PSJobReleaseTaskExecutionInformation(Microsoft.Azure.Batch.JobReleaseTaskExecutionInformation omObject)
+        internal PSTaskFailureInformation(Microsoft.Azure.Batch.TaskFailureInformation omObject)
         {
             if ((omObject == null))
             {
@@ -45,72 +45,50 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public System.DateTime? EndTime
+        public Microsoft.Azure.Batch.Common.ErrorCategory Category
         {
             get
             {
-                return this.omObject.EndTime;
+                return this.omObject.Category;
             }
         }
         
-        public System.Int32? ExitCode
+        public string Code
         {
             get
             {
-                return this.omObject.ExitCode;
+                return this.omObject.Code;
             }
         }
         
-        public PSTaskFailureInformation FailureInformation
+        public IReadOnlyList<PSNameValuePair> Details
         {
             get
             {
-                if (((this.failureInformation == null) 
-                            && (this.omObject.FailureInformation != null)))
+                if (((this.details == null) 
+                            && (this.omObject.Details != null)))
                 {
-                    this.failureInformation = new PSTaskFailureInformation(this.omObject.FailureInformation);
+                    List<PSNameValuePair> list;
+                    list = new List<PSNameValuePair>();
+                    IEnumerator<Microsoft.Azure.Batch.NameValuePair> enumerator;
+                    enumerator = this.omObject.Details.GetEnumerator();
+                    for (
+                    ; enumerator.MoveNext(); 
+                    )
+                    {
+                        list.Add(new PSNameValuePair(enumerator.Current));
+                    }
+                    this.details = list.AsReadOnly();
                 }
-                return this.failureInformation;
+                return this.details;
             }
         }
         
-        public Microsoft.Azure.Batch.Common.TaskExecutionResult? Result
+        public string Message
         {
             get
             {
-                return this.omObject.Result;
-            }
-        }
-        
-        public System.DateTime StartTime
-        {
-            get
-            {
-                return this.omObject.StartTime;
-            }
-        }
-        
-        public Microsoft.Azure.Batch.Common.JobReleaseTaskState State
-        {
-            get
-            {
-                return this.omObject.State;
-            }
-        }
-        
-        public string TaskRootDirectory
-        {
-            get
-            {
-                return this.omObject.TaskRootDirectory;
-            }
-        }
-        
-        public string TaskRootDirectoryUrl
-        {
-            get
-            {
-                return this.omObject.TaskRootDirectoryUrl;
+                return this.omObject.Message;
             }
         }
     }

@@ -168,8 +168,14 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// <summary>
         /// Creates a test pool for use in Scenario tests.
         /// </summary>
-        public static void CreateTestPool(BatchController controller, BatchAccountContext context, string poolId, int targetDedicated,
-            CertificateReference certReference = null, StartTask startTask = null)
+        public static void CreateTestPool(
+            BatchController controller,
+            BatchAccountContext context,
+            string poolId,
+            int? targetDedicated,
+            int? targetLowPriority,
+            CertificateReference certReference = null,
+            StartTask startTask = null)
         {
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
@@ -190,7 +196,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             {
                 VirtualMachineSize = "small",
                 CloudServiceConfiguration = paasConfiguration,
-                TargetDedicated = targetDedicated,
+                TargetDedicatedComputeNodes = targetDedicated,
+                TargetLowPriorityComputeNodes = targetLowPriority,
                 CertificateReferences = certReferences,
                 StartTask = psStartTask,
                 InterComputeNodeCommunicationEnabled = true
@@ -225,19 +232,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 // We got the pool not found error, so continue and create the pool
             }
 
-            CreateTestPool(controller, context, MpiPoolId, targetDedicated);
-        }
-
-        public static void ResizePool(BatchController controller, BatchAccountContext context, string poolId, int targetDedicated)
-        {
-            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
-
-            PoolResizeParameters parameters = new PoolResizeParameters(context, poolId, null)
-            {
-                TargetDedicated = targetDedicated
-            };
-
-            client.ResizePool(parameters);
+            CreateTestPool(controller, context, MpiPoolId, targetDedicated, targetLowPriority: 0);
         }
 
         public static void WaitForSteadyPoolAllocation(BatchController controller, BatchAccountContext context, string poolId)
@@ -260,22 +255,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 Sleep(5000);
                 pool = client.ListPools(options).First();
             }
-        }
-
-        /// <summary>
-        /// Gets the CurrentDedicated count from a pool
-        /// </summary>
-        public static int GetPoolCurrentDedicated(BatchController controller, BatchAccountContext context, string poolId)
-        {
-            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
-
-            ListPoolOptions options = new ListPoolOptions(context)
-            {
-                PoolId = poolId
-            };
-
-            PSCloudPool pool = client.ListPools(options).First();
-            return pool.CurrentDedicated.Value;
         }
 
         /// <summary>

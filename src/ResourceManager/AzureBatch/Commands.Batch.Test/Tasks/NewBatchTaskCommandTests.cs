@@ -28,6 +28,7 @@ using Microsoft.Azure.Commands.Batch.Models;
 using Xunit;
 using ProxyModels = Microsoft.Azure.Batch.Protocol.Models;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
+using OutputFileUploadCondition = Microsoft.Azure.Batch.Common.OutputFileUploadCondition;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Tasks
 {
@@ -203,7 +204,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             cmdlet.ExitConditions = new PSExitConditions
             {
                 ExitCodes = new List<PSExitCodeMapping> { new PSExitCodeMapping(0, none) },
-                SchedulingError = terminate,
+                PreProcessingError = terminate,
+                FileUploadError = none,
                 ExitCodeRanges = new List<PSExitCodeRangeMapping> { new PSExitCodeRangeMapping(1, 5, satisfyDependency) },
                 Default = none,
             };
@@ -217,7 +219,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             Assert.Equal(5, exitConditions.ExitCodeRanges.First().End);
             Assert.Equal(ProxyModels.DependencyAction.Satisfy, exitConditions.ExitCodeRanges.First().ExitOptions.DependencyAction);
             Assert.Equal(ProxyModels.JobAction.None, exitConditions.ExitCodes.First().ExitOptions.JobAction);
-            Assert.Equal(ProxyModels.JobAction.Terminate, exitConditions.SchedulingError.JobAction);
+            Assert.Equal(ProxyModels.JobAction.Terminate, exitConditions.PreProcessingError.JobAction);
+            Assert.Equal(ProxyModels.JobAction.None, exitConditions.FileUploadError.JobAction);
             Assert.Equal(ProxyModels.JobAction.None, exitConditions.DefaultProperty.JobAction);
         }
 
@@ -343,6 +346,48 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             {
                 Assert.True(taskIds.Contains(task.Id));
             }
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void OutputFilesAreSentToService()
+        {
+            // Setup cmdlet without the required parameters
+            BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
+            cmdlet.BatchContext = context;
+            
+            cmdlet.Id = "task-id";
+            cmdlet.JobId = "job-id";
+
+            const string pattern = @"**\*.txt";
+            const string containerUrl = "containerUrl";
+            const string path = "path";
+            const OutputFileUploadCondition uploadCondition = OutputFileUploadCondition.TaskCompletion;
+
+            cmdlet.OutputFiles = new[]
+            {
+                new PSOutputFile(
+                    pattern,
+                    new PSOutputFileDestination(new PSOutputFileBlobContainerDestination(containerUrl, path)),
+                    new PSOutputFileUploadOptions(uploadCondition))
+            };
+
+            // Don't go to the service on an Add CloudJob call
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<TaskAddParameter, TaskAddOptions, AzureOperationHeaderResponse<TaskAddHeaders>>(
+                new AzureOperationHeaderResponse<TaskAddHeaders>(),
+                request =>
+                {
+                    var outputFile = request.Parameters.OutputFiles.Single();
+                    Assert.Equal(pattern, outputFile.FilePattern);
+                    Assert.Equal(containerUrl, outputFile.Destination.Container.ContainerUrl);
+                    Assert.Equal(path, outputFile.Destination.Container.Path);
+                    Assert.Equal(uploadCondition.ToString().ToLowerInvariant(), outputFile.UploadOptions.UploadCondition.ToString().ToLowerInvariant());
+                });
+
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
+
+            // Verify no exceptions when required parameters are set
+            cmdlet.ExecuteCmdlet();
         }
     }
 }

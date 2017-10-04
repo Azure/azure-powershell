@@ -1033,7 +1033,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Resizing pool {0}, new target dedicated: {1}..
+        ///   Looks up a localized string similar to Resizing pool {0}, new target dedicated: {1}, new target low-priority: {2}..
         /// </summary>
         internal static string ResizingPool {
             get {

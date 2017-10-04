@@ -97,7 +97,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.Metadata.Add("meta1", "value1");
             cmdlet.ResizeTimeout = TimeSpan.FromMinutes(20);
             cmdlet.StartTask = new PSStartTask("cmd /c echo start task");
-            cmdlet.TargetDedicated = 3;
+            cmdlet.TargetDedicatedComputeNodes = 3;
+            cmdlet.TargetLowPriorityComputeNodes = 2;
             cmdlet.TaskSchedulingPolicy = new PSTaskSchedulingPolicy(Azure.Batch.Common.ComputeNodeFillType.Spread);
             cmdlet.VirtualMachineConfiguration = new PSVirtualMachineConfiguration("node agent", new PSImageReference("offer", "publisher", "sku"));
             cmdlet.VirtualMachineSize = "small";
@@ -130,7 +131,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             Assert.Equal(cmdlet.Metadata["meta1"], requestParameters.Metadata[0].Value);
             Assert.Equal(cmdlet.ResizeTimeout, requestParameters.ResizeTimeout);
             Assert.Equal(cmdlet.StartTask.CommandLine, requestParameters.StartTask.CommandLine);
-            Assert.Equal(cmdlet.TargetDedicated, requestParameters.TargetDedicated);
+            Assert.Equal(cmdlet.TargetDedicatedComputeNodes, requestParameters.TargetDedicatedNodes);
+            Assert.Equal(cmdlet.TargetLowPriorityComputeNodes, requestParameters.TargetLowPriorityNodes);
             Assert.Equal(cmdlet.TaskSchedulingPolicy.ComputeNodeFillType.ToString(), requestParameters.TaskSchedulingPolicy.NodeFillType.ToString());
             Assert.Equal(cmdlet.VirtualMachineConfiguration.NodeAgentSkuId, requestParameters.VirtualMachineConfiguration.NodeAgentSKUId);
             Assert.Equal(cmdlet.VirtualMachineConfiguration.ImageReference.Publisher, requestParameters.VirtualMachineConfiguration.ImageReference.Publisher);
@@ -168,7 +170,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             Assert.Equal(cmdlet.AutoScaleEvaluationInterval, requestParameters.AutoScaleEvaluationInterval);
             Assert.Equal(cmdlet.AutoScaleFormula, requestParameters.AutoScaleFormula);
             Assert.Equal(true, requestParameters.EnableAutoScale);
-            Assert.Equal(null, requestParameters.TargetDedicated);
+            Assert.Equal(null, requestParameters.TargetDedicatedNodes);
         }
 
         [Fact]
@@ -215,7 +217,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.BatchContext = context;
 
             cmdlet.Id = "testPool";
-            cmdlet.TargetDedicated = 3;
+            cmdlet.TargetDedicatedComputeNodes = 3;
 
             List<string> imageUrls = new List<string>() { "https://image1.vhd", "https://image2.vhd" };
             Azure.Batch.Common.CachingType cachingType = Azure.Batch.Common.CachingType.ReadWrite;
@@ -251,12 +253,12 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
 
             cmdlet.Id = "testPool";
             cmdlet.CloudServiceConfiguration = new PSCloudServiceConfiguration("4", "*");
-            cmdlet.TargetDedicated = 3;
+            cmdlet.TargetDedicatedComputeNodes = 3;
 
             PSUserAccount adminUser = new PSUserAccount("admin", "password1", Azure.Batch.Common.ElevationLevel.Admin);
             PSUserAccount nonAdminUser = new PSUserAccount("user2", "password2", Azure.Batch.Common.ElevationLevel.NonAdmin);
-            PSUserAccount sshUser = new PSUserAccount("user3", "password3", sshPrivateKey: "my ssh key");
-            cmdlet.UserAccounts = new PSUserAccount[] { adminUser, nonAdminUser, sshUser };
+            PSUserAccount sshUser = new PSUserAccount("user3", "password3", linuxUserConfiguration: new PSLinuxUserConfiguration(uid: 1, gid: 2, sshPrivateKey: "my ssh key"));
+            cmdlet.UserAccounts = new [] { adminUser, nonAdminUser, sshUser };
 
             PoolAddParameter requestParameters = null;
 
@@ -286,7 +288,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             Assert.Equal(sshUser.Password, requestParameters.UserAccounts[2].Password);
             Assert.Equal(sshUser.ElevationLevel.ToString().ToLowerInvariant(),
                 requestParameters.UserAccounts[2].ElevationLevel.ToString().ToLowerInvariant());
-            Assert.Equal(sshUser.SshPrivateKey, requestParameters.UserAccounts[2].SshPrivateKey);
+            Assert.Equal(sshUser.LinuxUserConfiguration.Uid, requestParameters.UserAccounts[2].LinuxUserConfiguration.Uid);
+            Assert.Equal(sshUser.LinuxUserConfiguration.Gid, requestParameters.UserAccounts[2].LinuxUserConfiguration.Gid);
+            Assert.Equal(sshUser.LinuxUserConfiguration.SshPrivateKey, requestParameters.UserAccounts[2].LinuxUserConfiguration.SshPrivateKey);
         }
     }
 }

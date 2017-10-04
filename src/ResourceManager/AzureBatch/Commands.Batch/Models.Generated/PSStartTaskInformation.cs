@@ -33,9 +33,9 @@ namespace Microsoft.Azure.Commands.Batch.Models
     {
         
         internal Microsoft.Azure.Batch.StartTaskInformation omObject;
-#pragma warning disable CS0618
-        private PSTaskSchedulingError schedulingError;
-#pragma warning restore CS0618
+        
+        private PSTaskFailureInformation failureInformation;
+        
         internal PSStartTaskInformation(Microsoft.Azure.Batch.StartTaskInformation omObject)
         {
             if ((omObject == null))
@@ -61,6 +61,19 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
+        public PSTaskFailureInformation FailureInformation
+        {
+            get
+            {
+                if (((this.failureInformation == null) 
+                            && (this.omObject.FailureInformation != null)))
+                {
+                    this.failureInformation = new PSTaskFailureInformation(this.omObject.FailureInformation);
+                }
+                return this.failureInformation;
+            }
+        }
+        
         public System.DateTime? LastRetryTime
         {
             get
@@ -69,25 +82,19 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
+        public Microsoft.Azure.Batch.Common.TaskExecutionResult? Result
+        {
+            get
+            {
+                return this.omObject.Result;
+            }
+        }
+        
         public int RetryCount
         {
             get
             {
                 return this.omObject.RetryCount;
-            }
-        }
-
-        [Obsolete("SchedulingError will be removed in a future version and replaced with FailureInformation")]
-        public PSTaskSchedulingError SchedulingError
-        {
-            get
-            {
-                if (((this.schedulingError == null) 
-                            && (this.omObject.SchedulingError != null)))
-                {
-                    this.schedulingError = new PSTaskSchedulingError(this.omObject.SchedulingError);
-                }
-                return this.schedulingError;
             }
         }
         

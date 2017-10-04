@@ -49,7 +49,13 @@ namespace Microsoft.Azure.Commands.Batch
         [Parameter(ParameterSetName = VirtualMachineTargetDedicatedParameterSet)]
         [Parameter(ParameterSetName = CloudServiceTargetDedicatedParameterSet)]
         [ValidateNotNullOrEmpty]
-        public int? TargetDedicated { get; set; }
+        [Alias("TargetDedicated")]
+        public int? TargetDedicatedComputeNodes { get; set; }
+
+        [Parameter(ParameterSetName = VirtualMachineTargetDedicatedParameterSet)]
+        [Parameter(ParameterSetName = CloudServiceTargetDedicatedParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public int? TargetLowPriorityComputeNodes { get; set; }
 
         [Parameter(ParameterSetName = CloudServiceAutoScaleParameterSet)]
         [Parameter(ParameterSetName = VirtualMachineAutoScaleParameterSet)]
@@ -113,7 +119,8 @@ namespace Microsoft.Azure.Commands.Batch
                 VirtualMachineSize = this.VirtualMachineSize,
                 DisplayName = this.DisplayName,
                 ResizeTimeout = this.ResizeTimeout,
-                TargetDedicated = this.TargetDedicated,
+                TargetDedicatedComputeNodes = this.TargetDedicatedComputeNodes,
+                TargetLowPriorityComputeNodes = this.TargetLowPriorityComputeNodes,
                 AutoScaleEvaluationInterval = this.AutoScaleEvaluationInterval,
                 AutoScaleFormula = this.AutoScaleFormula,
                 MaxTasksPerComputeNode = this.MaxTasksPerComputeNode,

@@ -29,19 +29,17 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public partial class PSNetworkConfiguration
+    public partial class PSOutputFileUploadOptions
     {
         
-        internal Microsoft.Azure.Batch.NetworkConfiguration omObject;
+        internal Microsoft.Azure.Batch.OutputFileUploadOptions omObject;
         
-        private PSPoolEndpointConfiguration endpointConfiguration;
-        
-        public PSNetworkConfiguration()
+        public PSOutputFileUploadOptions(Microsoft.Azure.Batch.Common.OutputFileUploadCondition uploadCondition)
         {
-            this.omObject = new Microsoft.Azure.Batch.NetworkConfiguration();
+            this.omObject = new Microsoft.Azure.Batch.OutputFileUploadOptions(uploadCondition);
         }
         
-        internal PSNetworkConfiguration(Microsoft.Azure.Batch.NetworkConfiguration omObject)
+        internal PSOutputFileUploadOptions(Microsoft.Azure.Batch.OutputFileUploadOptions omObject)
         {
             if ((omObject == null))
             {
@@ -50,40 +48,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public PSPoolEndpointConfiguration EndpointConfiguration
+        public Microsoft.Azure.Batch.Common.OutputFileUploadCondition UploadCondition
         {
             get
             {
-                if (((this.endpointConfiguration == null) 
-                            && (this.omObject.EndpointConfiguration != null)))
-                {
-                    this.endpointConfiguration = new PSPoolEndpointConfiguration(this.omObject.EndpointConfiguration);
-                }
-                return this.endpointConfiguration;
-            }
-            set
-            {
-                if ((value == null))
-                {
-                    this.omObject.EndpointConfiguration = null;
-                }
-                else
-                {
-                    this.omObject.EndpointConfiguration = value.omObject;
-                }
-                this.endpointConfiguration = value;
-            }
-        }
-        
-        public string SubnetId
-        {
-            get
-            {
-                return this.omObject.SubnetId;
-            }
-            set
-            {
-                this.omObject.SubnetId = value;
+                return this.omObject.UploadCondition;
             }
         }
     }

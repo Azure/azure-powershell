@@ -29,14 +29,17 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public partial class PSJobReleaseTaskExecutionInformation
+    public partial class PSNetworkSecurityGroupRule
     {
         
-        internal Microsoft.Azure.Batch.JobReleaseTaskExecutionInformation omObject;
+        internal Microsoft.Azure.Batch.NetworkSecurityGroupRule omObject;
         
-        private PSTaskFailureInformation failureInformation;
+        public PSNetworkSecurityGroupRule(int priority, Microsoft.Azure.Batch.Common.NetworkSecurityGroupRuleAccess access, string sourceAddressPrefix)
+        {
+            this.omObject = new Microsoft.Azure.Batch.NetworkSecurityGroupRule(priority, access, sourceAddressPrefix);
+        }
         
-        internal PSJobReleaseTaskExecutionInformation(Microsoft.Azure.Batch.JobReleaseTaskExecutionInformation omObject)
+        internal PSNetworkSecurityGroupRule(Microsoft.Azure.Batch.NetworkSecurityGroupRule omObject)
         {
             if ((omObject == null))
             {
@@ -45,72 +48,27 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public System.DateTime? EndTime
+        public Microsoft.Azure.Batch.Common.NetworkSecurityGroupRuleAccess Access
         {
             get
             {
-                return this.omObject.EndTime;
+                return this.omObject.Access;
             }
         }
         
-        public System.Int32? ExitCode
+        public int Priority
         {
             get
             {
-                return this.omObject.ExitCode;
+                return this.omObject.Priority;
             }
         }
         
-        public PSTaskFailureInformation FailureInformation
+        public string SourceAddressPrefix
         {
             get
             {
-                if (((this.failureInformation == null) 
-                            && (this.omObject.FailureInformation != null)))
-                {
-                    this.failureInformation = new PSTaskFailureInformation(this.omObject.FailureInformation);
-                }
-                return this.failureInformation;
-            }
-        }
-        
-        public Microsoft.Azure.Batch.Common.TaskExecutionResult? Result
-        {
-            get
-            {
-                return this.omObject.Result;
-            }
-        }
-        
-        public System.DateTime StartTime
-        {
-            get
-            {
-                return this.omObject.StartTime;
-            }
-        }
-        
-        public Microsoft.Azure.Batch.Common.JobReleaseTaskState State
-        {
-            get
-            {
-                return this.omObject.State;
-            }
-        }
-        
-        public string TaskRootDirectory
-        {
-            get
-            {
-                return this.omObject.TaskRootDirectory;
-            }
-        }
-        
-        public string TaskRootDirectoryUrl
-        {
-            get
-            {
-                return this.omObject.TaskRootDirectoryUrl;
+                return this.omObject.SourceAddressPrefix;
             }
         }
     }

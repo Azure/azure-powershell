@@ -112,9 +112,10 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 pool.AutoScaleEvaluationInterval = parameters.AutoScaleEvaluationInterval;
                 pool.AutoScaleFormula = parameters.AutoScaleFormula;
             }
-            else if (parameters.TargetDedicated.HasValue)
+            else if (parameters.TargetDedicatedComputeNodes.HasValue || parameters.TargetLowPriorityComputeNodes.HasValue)
             {
-                pool.TargetDedicated = parameters.TargetDedicated;
+                pool.TargetDedicatedComputeNodes = parameters.TargetDedicatedComputeNodes;
+                pool.TargetLowPriorityComputeNodes = parameters.TargetLowPriorityComputeNodes;
             }
 
             if (parameters.TaskSchedulingPolicy != null)
@@ -224,9 +225,15 @@ namespace Microsoft.Azure.Commands.Batch.Models
 
             string poolId = parameters.Pool == null ? parameters.PoolId : parameters.Pool.Id;
 
-            WriteVerbose(string.Format(Resources.ResizingPool, poolId, parameters.TargetDedicated));
+            WriteVerbose(string.Format(Resources.ResizingPool, poolId, parameters.TargetDedicatedComputeNodes, parameters.TargetLowPriorityComputeNodes));
             PoolOperations poolOperations = parameters.Context.BatchOMClient.PoolOperations;
-            poolOperations.ResizePool(poolId, parameters.TargetDedicated, parameters.ResizeTimeout, parameters.ComputeNodeDeallocationOption, parameters.AdditionalBehaviors);
+            poolOperations.ResizePool(
+                poolId,
+                parameters.TargetDedicatedComputeNodes,
+                parameters.TargetLowPriorityComputeNodes,
+                parameters.ResizeTimeout,
+                parameters.ComputeNodeDeallocationOption,
+                parameters.AdditionalBehaviors);
         }
 
         /// <summary>

@@ -154,6 +154,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 task.ExitConditions = parameters.ExitConditions.omObject;
             }
 
+            if (parameters.OutputFiles != null)
+            {
+                task.OutputFiles = parameters.OutputFiles.ToList().ConvertAll(outputFile => outputFile.omObject);
+            }
+
             WriteVerbose(string.Format(Resources.CreatingTask, parameters.TaskId));
             if (parameters.Job != null)
             {

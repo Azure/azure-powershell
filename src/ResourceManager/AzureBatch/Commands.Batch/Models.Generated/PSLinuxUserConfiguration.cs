@@ -29,14 +29,17 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public partial class PSJobReleaseTaskExecutionInformation
+    public partial class PSLinuxUserConfiguration
     {
         
-        internal Microsoft.Azure.Batch.JobReleaseTaskExecutionInformation omObject;
+        internal Microsoft.Azure.Batch.LinuxUserConfiguration omObject;
         
-        private PSTaskFailureInformation failureInformation;
+        public PSLinuxUserConfiguration(System.Nullable<int> uid = null, System.Nullable<int> gid = null, string sshPrivateKey = null)
+        {
+            this.omObject = new Microsoft.Azure.Batch.LinuxUserConfiguration(uid, gid, sshPrivateKey);
+        }
         
-        internal PSJobReleaseTaskExecutionInformation(Microsoft.Azure.Batch.JobReleaseTaskExecutionInformation omObject)
+        internal PSLinuxUserConfiguration(Microsoft.Azure.Batch.LinuxUserConfiguration omObject)
         {
             if ((omObject == null))
             {
@@ -45,72 +48,39 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public System.DateTime? EndTime
+        public System.Int32? Gid
         {
             get
             {
-                return this.omObject.EndTime;
+                return this.omObject.Gid;
+            }
+            set
+            {
+                this.omObject.Gid = value;
             }
         }
         
-        public System.Int32? ExitCode
+        public string SshPrivateKey
         {
             get
             {
-                return this.omObject.ExitCode;
+                return this.omObject.SshPrivateKey;
+            }
+            set
+            {
+                this.omObject.SshPrivateKey = value;
             }
         }
         
-        public PSTaskFailureInformation FailureInformation
+        public System.Int32? Uid
         {
             get
             {
-                if (((this.failureInformation == null) 
-                            && (this.omObject.FailureInformation != null)))
-                {
-                    this.failureInformation = new PSTaskFailureInformation(this.omObject.FailureInformation);
-                }
-                return this.failureInformation;
+                return this.omObject.Uid;
             }
-        }
-        
-        public Microsoft.Azure.Batch.Common.TaskExecutionResult? Result
-        {
-            get
+            set
             {
-                return this.omObject.Result;
-            }
-        }
-        
-        public System.DateTime StartTime
-        {
-            get
-            {
-                return this.omObject.StartTime;
-            }
-        }
-        
-        public Microsoft.Azure.Batch.Common.JobReleaseTaskState State
-        {
-            get
-            {
-                return this.omObject.State;
-            }
-        }
-        
-        public string TaskRootDirectory
-        {
-            get
-            {
-                return this.omObject.TaskRootDirectory;
-            }
-        }
-        
-        public string TaskRootDirectoryUrl
-        {
-            get
-            {
-                return this.omObject.TaskRootDirectoryUrl;
+                this.omObject.Uid = value;
             }
         }
     }

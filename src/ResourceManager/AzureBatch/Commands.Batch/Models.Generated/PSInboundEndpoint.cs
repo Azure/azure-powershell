@@ -29,14 +29,12 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public partial class PSJobReleaseTaskExecutionInformation
+    public partial class PSInboundEndpoint
     {
         
-        internal Microsoft.Azure.Batch.JobReleaseTaskExecutionInformation omObject;
+        internal Microsoft.Azure.Batch.InboundEndpoint omObject;
         
-        private PSTaskFailureInformation failureInformation;
-        
-        internal PSJobReleaseTaskExecutionInformation(Microsoft.Azure.Batch.JobReleaseTaskExecutionInformation omObject)
+        internal PSInboundEndpoint(Microsoft.Azure.Batch.InboundEndpoint omObject)
         {
             if ((omObject == null))
             {
@@ -45,72 +43,51 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public System.DateTime? EndTime
+        public int BackendPort
         {
             get
             {
-                return this.omObject.EndTime;
+                return this.omObject.BackendPort;
             }
         }
         
-        public System.Int32? ExitCode
+        public int FrontendPort
         {
             get
             {
-                return this.omObject.ExitCode;
+                return this.omObject.FrontendPort;
             }
         }
         
-        public PSTaskFailureInformation FailureInformation
+        public string Name
         {
             get
             {
-                if (((this.failureInformation == null) 
-                            && (this.omObject.FailureInformation != null)))
-                {
-                    this.failureInformation = new PSTaskFailureInformation(this.omObject.FailureInformation);
-                }
-                return this.failureInformation;
+                return this.omObject.Name;
             }
         }
         
-        public Microsoft.Azure.Batch.Common.TaskExecutionResult? Result
+        public Microsoft.Azure.Batch.Common.InboundEndpointProtocol Protocol
         {
             get
             {
-                return this.omObject.Result;
+                return this.omObject.Protocol;
             }
         }
         
-        public System.DateTime StartTime
+        public string PublicFqdn
         {
             get
             {
-                return this.omObject.StartTime;
+                return this.omObject.PublicFqdn;
             }
         }
         
-        public Microsoft.Azure.Batch.Common.JobReleaseTaskState State
+        public string PublicIPAddress
         {
             get
             {
-                return this.omObject.State;
-            }
-        }
-        
-        public string TaskRootDirectory
-        {
-            get
-            {
-                return this.omObject.TaskRootDirectory;
-            }
-        }
-        
-        public string TaskRootDirectoryUrl
-        {
-            get
-            {
-                return this.omObject.TaskRootDirectoryUrl;
+                return this.omObject.PublicIPAddress;
             }
         }
     }

@@ -65,7 +65,12 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// <summary>
         /// The target number of compute nodes to allocate to the pool.
         /// </summary>
-        public int? TargetDedicated { get; set; }
+        public int? TargetDedicatedComputeNodes { get; set; }
+
+        /// <summary>
+        /// The target number of low-priority compute nodes to allocate to the pool.
+        /// </summary>
+        public int? TargetLowPriorityComputeNodes { get; set; }
 
         /// <summary>
         /// The time interval at which to automatically adjust the pool size according to the AutoScaleFormula.

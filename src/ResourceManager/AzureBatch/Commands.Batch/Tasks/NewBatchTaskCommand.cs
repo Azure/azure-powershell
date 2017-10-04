@@ -101,6 +101,11 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public PSApplicationPackageReference[] ApplicationPackageReferences { get; set; }
 
+        [Parameter(ParameterSetName = JobIdAndSingleAddParameterSet)]
+        [Parameter(ParameterSetName = JobObjectAndSingleAddParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public PSOutputFile[] OutputFiles { get; set; }
+
         [Parameter(ParameterSetName = JobObjectAndBulkAddParameterSet,
             HelpMessage = "The collection of tasks to add to a job.")]
         [Parameter(ParameterSetName = JobIdAndBulkAddParameterSet,
@@ -137,6 +142,7 @@ namespace Microsoft.Azure.Commands.Batch
                     DependsOn = this.DependsOn,
                     ApplicationPackageReferences = this.ApplicationPackageReferences,
                     ExitConditions = this.ExitConditions,
+                    OutputFiles = this.OutputFiles,
                 };
 
                 BatchClient.CreateTask(parameters);

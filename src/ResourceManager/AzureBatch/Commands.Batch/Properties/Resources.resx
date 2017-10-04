@@ -397,7 +397,7 @@
     <value>Looking up resource group for account {0}</value>
   </data>
   <data name="ResizingPool" xml:space="preserve">
-    <value>Resizing pool {0}, new target dedicated: {1}.</value>
+    <value>Resizing pool {0}, new target dedicated: {1}, new target low-priority: {2}.</value>
   </data>
   <data name="ResourceNotFound" xml:space="preserve">
     <value>ResourceNotFound: Resource not found.</value>
