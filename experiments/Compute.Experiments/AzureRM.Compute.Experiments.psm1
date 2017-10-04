@@ -110,10 +110,10 @@ function New-AzVm {
                 $fqdn = $piai.DomainNameLabel + "." + $locationi.Value + ".cloudapp.azure.com"
                 switch ($image.Type) {
                     "Windows" {
-                        Write-Verbose ("To connect to the VM, use '$fqdn' as a computer name in the 'Remote Desktop Connection' application." )
+                        Write-Verbose ("Use 'mstsc /v:$fqdn' to connect to the VM." )
                     }
                     "Linux" {
-                        Write-Verbose ("To connect to the VM, type 'ssh $($Credential.UserName)@$fqdn' in a Bash console." )
+                        Write-Verbose ("Use 'ssh $($Credential.UserName)@$fqdn' to connect to the VM." )
                     }
                 }
                 return [PSAzureVm]::new($vm, $fqdn)
