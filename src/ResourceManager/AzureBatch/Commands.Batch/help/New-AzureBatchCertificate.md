@@ -15,13 +15,13 @@ Adds a certificate to the specified Batch account.
 
 ### File (Default)
 ```
-New-AzureBatchCertificate [-FilePath] <String> [-Password <String>] -BatchContext <BatchAccountContext>
+New-AzureBatchCertificate [-FilePath] <String> [-Password <SecureString>] -BatchContext <BatchAccountContext>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### RawData
 ```
-New-AzureBatchCertificate [-RawData] <Byte[]> [-Password <String>] -BatchContext <BatchAccountContext>
+New-AzureBatchCertificate [-RawData] <Byte[]> [-Password <SecureString>] -BatchContext <BatchAccountContext>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -101,7 +101,7 @@ Specifies the password to access the certificate private key.
 You must specify this parameter if you specify a certificate in .pfx format.
 
 ```yaml
-Type: String
+Type: SecureString
 Parameter Sets: (All)
 Aliases: 
 

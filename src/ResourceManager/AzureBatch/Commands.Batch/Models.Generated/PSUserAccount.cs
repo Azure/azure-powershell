@@ -34,9 +34,16 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         internal Microsoft.Azure.Batch.UserAccount omObject;
         
-        public PSUserAccount(string name, string password, System.Nullable<Microsoft.Azure.Batch.Common.ElevationLevel> elevationLevel = null, string sshPrivateKey = null)
+        private PSLinuxUserConfiguration linuxUserConfiguration;
+        
+        public PSUserAccount(string name, string password, System.Nullable<Microsoft.Azure.Batch.Common.ElevationLevel> elevationLevel = null, PSLinuxUserConfiguration linuxUserConfiguration = default(PSLinuxUserConfiguration))
         {
-            this.omObject = new Microsoft.Azure.Batch.UserAccount(name, password, elevationLevel, sshPrivateKey);
+            Microsoft.Azure.Batch.LinuxUserConfiguration linuxUserConfigurationOmObject = null;
+            if ((linuxUserConfiguration != null))
+            {
+                linuxUserConfigurationOmObject = linuxUserConfiguration.omObject;
+            }
+            this.omObject = new Microsoft.Azure.Batch.UserAccount(name, password, elevationLevel, linuxUserConfigurationOmObject);
         }
         
         internal PSUserAccount(Microsoft.Azure.Batch.UserAccount omObject)
@@ -57,6 +64,31 @@ namespace Microsoft.Azure.Commands.Batch.Models
             set
             {
                 this.omObject.ElevationLevel = value;
+            }
+        }
+        
+        public PSLinuxUserConfiguration LinuxUserConfiguration
+        {
+            get
+            {
+                if (((this.linuxUserConfiguration == null) 
+                            && (this.omObject.LinuxUserConfiguration != null)))
+                {
+                    this.linuxUserConfiguration = new PSLinuxUserConfiguration(this.omObject.LinuxUserConfiguration);
+                }
+                return this.linuxUserConfiguration;
+            }
+            set
+            {
+                if ((value == null))
+                {
+                    this.omObject.LinuxUserConfiguration = null;
+                }
+                else
+                {
+                    this.omObject.LinuxUserConfiguration = value.omObject;
+                }
+                this.linuxUserConfiguration = value;
             }
         }
         
@@ -81,18 +113,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
             set
             {
                 this.omObject.Password = value;
-            }
-        }
-        
-        public string SshPrivateKey
-        {
-            get
-            {
-                return this.omObject.SshPrivateKey;
-            }
-            set
-            {
-                this.omObject.SshPrivateKey = value;
             }
         }
     }

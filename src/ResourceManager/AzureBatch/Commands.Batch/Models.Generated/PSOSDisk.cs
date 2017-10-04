@@ -34,11 +34,9 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         internal Microsoft.Azure.Batch.OSDisk omObject;
         
-        private IEnumerable<System.String> imageUris;
-        
-        public PSOSDisk(System.Collections.Generic.IEnumerable<string> imageUris, System.Nullable<Microsoft.Azure.Batch.Common.CachingType> caching = null)
+        public PSOSDisk(System.Nullable<Microsoft.Azure.Batch.Common.CachingType> caching = null)
         {
-            this.omObject = new Microsoft.Azure.Batch.OSDisk(imageUris, caching);
+            this.omObject = new Microsoft.Azure.Batch.OSDisk(caching);
         }
         
         internal PSOSDisk(Microsoft.Azure.Batch.OSDisk omObject)
@@ -55,29 +53,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
             get
             {
                 return this.omObject.Caching;
-            }
-        }
-        
-        public IEnumerable<System.String> ImageUris
-        {
-            get
-            {
-                if (((this.imageUris == null) 
-                            && (this.omObject.ImageUris != null)))
-                {
-                    List<System.String> list;
-                    list = new List<System.String>();
-                    IEnumerator<System.String> enumerator;
-                    enumerator = this.omObject.ImageUris.GetEnumerator();
-                    for (
-                    ; enumerator.MoveNext(); 
-                    )
-                    {
-                        list.Add(enumerator.Current);
-                    }
-                    this.imageUris = list;
-                }
-                return this.imageUris;
             }
         }
     }

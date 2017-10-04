@@ -44,6 +44,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         private PSTaskConstraints constraints;
         
+        private PSTaskContainerSettings containerSettings;
+        
         private PSTaskDependencies dependsOn;
         
         private IList<PSEnvironmentSetting> environmentSettings;
@@ -53,6 +55,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
         private PSExitConditions exitConditions;
         
         private PSMultiInstanceSettings multiInstanceSettings;
+        
+        private IList<PSOutputFile> outputFiles;
         
         private IList<PSResourceFile> resourceFiles;
         
@@ -206,6 +210,31 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     this.omObject.Constraints = value.omObject;
                 }
                 this.constraints = value;
+            }
+        }
+        
+        public PSTaskContainerSettings ContainerSettings
+        {
+            get
+            {
+                if (((this.containerSettings == null) 
+                            && (this.omObject.ContainerSettings != null)))
+                {
+                    this.containerSettings = new PSTaskContainerSettings(this.omObject.ContainerSettings);
+                }
+                return this.containerSettings;
+            }
+            set
+            {
+                if ((value == null))
+                {
+                    this.omObject.ContainerSettings = null;
+                }
+                else
+                {
+                    this.omObject.ContainerSettings = value.omObject;
+                }
+                this.containerSettings = value;
             }
         }
         
@@ -377,6 +406,41 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     this.omObject.MultiInstanceSettings = value.omObject;
                 }
                 this.multiInstanceSettings = value;
+            }
+        }
+        
+        public IList<PSOutputFile> OutputFiles
+        {
+            get
+            {
+                if (((this.outputFiles == null) 
+                            && (this.omObject.OutputFiles != null)))
+                {
+                    List<PSOutputFile> list;
+                    list = new List<PSOutputFile>();
+                    IEnumerator<Microsoft.Azure.Batch.OutputFile> enumerator;
+                    enumerator = this.omObject.OutputFiles.GetEnumerator();
+                    for (
+                    ; enumerator.MoveNext(); 
+                    )
+                    {
+                        list.Add(new PSOutputFile(enumerator.Current));
+                    }
+                    this.outputFiles = list;
+                }
+                return this.outputFiles;
+            }
+            set
+            {
+                if ((value == null))
+                {
+                    this.omObject.OutputFiles = null;
+                }
+                else
+                {
+                    this.omObject.OutputFiles = new List<Microsoft.Azure.Batch.OutputFile>();
+                }
+                this.outputFiles = value;
             }
         }
         

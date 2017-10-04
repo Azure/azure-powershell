@@ -15,7 +15,7 @@ Modifies properties of an account on a Batch compute node.
 
 ```
 Set-AzureBatchComputeNodeUser [-PoolId] <String> [-ComputeNodeId] <String> [-Name] <String>
- [-Password] <String> [-ExpiryTime <DateTime>] -BatchContext <BatchAccountContext>
+ [-Password] <SecureString> [-ExpiryTime <DateTime>] -BatchContext <BatchAccountContext>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -114,7 +114,7 @@ Accept wildcard characters: False
 Specifies the password for the user account.
 
 ```yaml
-Type: String
+Type: SecureString
 Parameter Sets: (All)
 Aliases: 
 

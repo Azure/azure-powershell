@@ -34,6 +34,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         internal Microsoft.Azure.Batch.CloudPool omObject;
         
+        private IList<System.String> applicationLicenses;
+        
         private IList<PSApplicationPackageReference> applicationPackageReferences;
         
         private PSAutoScaleRun autoScaleRun;
@@ -46,7 +48,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         private PSNetworkConfiguration networkConfiguration;
         
-        private PSResizeError resizeError;
+        private IReadOnlyList<PSResizeError> resizeErrors;
         
         private PSStartTask startTask;
         
@@ -80,6 +82,41 @@ namespace Microsoft.Azure.Commands.Batch.Models
             get
             {
                 return this.omObject.AllocationStateTransitionTime;
+            }
+        }
+        
+        public IList<System.String> ApplicationLicenses
+        {
+            get
+            {
+                if (((this.applicationLicenses == null) 
+                            && (this.omObject.ApplicationLicenses != null)))
+                {
+                    List<System.String> list;
+                    list = new List<System.String>();
+                    IEnumerator<System.String> enumerator;
+                    enumerator = this.omObject.ApplicationLicenses.GetEnumerator();
+                    for (
+                    ; enumerator.MoveNext(); 
+                    )
+                    {
+                        list.Add(enumerator.Current);
+                    }
+                    this.applicationLicenses = list;
+                }
+                return this.applicationLicenses;
+            }
+            set
+            {
+                if ((value == null))
+                {
+                    this.omObject.ApplicationLicenses = null;
+                }
+                else
+                {
+                    this.omObject.ApplicationLicenses = new List<System.String>();
+                }
+                this.applicationLicenses = value;
             }
         }
         
@@ -235,11 +272,19 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public System.Int32? CurrentDedicated
+        public System.Int32? CurrentDedicatedComputeNodes
         {
             get
             {
-                return this.omObject.CurrentDedicated;
+                return this.omObject.CurrentDedicatedComputeNodes;
+            }
+        }
+        
+        public System.Int32? CurrentLowPriorityComputeNodes
+        {
+            get
+            {
+                return this.omObject.CurrentLowPriorityComputeNodes;
             }
         }
         
@@ -367,17 +412,26 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
 
-        [Obsolete("The ResizeError property will be removed in an upcoming breaking change release. Please use the ResizeErrors property instead.")]
-        public PSResizeError ResizeError
+        public IReadOnlyList<PSResizeError> ResizeErrors
         {
             get
             {
-                if (((this.resizeError == null) 
-                            && (this.omObject.ResizeError != null)))
+                if (((this.resizeErrors == null) 
+                            && (this.omObject.ResizeErrors != null)))
                 {
-                    this.resizeError = new PSResizeError(this.omObject.ResizeError);
+                    List<PSResizeError> list;
+                    list = new List<PSResizeError>();
+                    IEnumerator<Microsoft.Azure.Batch.ResizeError> enumerator;
+                    enumerator = this.omObject.ResizeErrors.GetEnumerator();
+                    for (
+                    ; enumerator.MoveNext(); 
+                    )
+                    {
+                        list.Add(new PSResizeError(enumerator.Current));
+                    }
+                    this.resizeErrors = list.AsReadOnly();
                 }
-                return this.resizeError;
+                return this.resizeErrors;
             }
         }
         
@@ -447,15 +501,27 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public System.Int32? TargetDedicated
+        public System.Int32? TargetDedicatedComputeNodes
         {
             get
             {
-                return this.omObject.TargetDedicated;
+                return this.omObject.TargetDedicatedComputeNodes;
             }
             set
             {
-                this.omObject.TargetDedicated = value;
+                this.omObject.TargetDedicatedComputeNodes = value;
+            }
+        }
+        
+        public System.Int32? TargetLowPriorityComputeNodes
+        {
+            get
+            {
+                return this.omObject.TargetLowPriorityComputeNodes;
+            }
+            set
+            {
+                this.omObject.TargetLowPriorityComputeNodes = value;
             }
         }
         

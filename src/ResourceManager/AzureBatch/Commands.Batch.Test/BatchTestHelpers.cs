@@ -27,6 +27,7 @@ using System.Net.Http;
 using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Batch.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Xunit;
 using ProxyModels = Microsoft.Azure.Batch.Protocol.Models;
@@ -686,6 +687,28 @@ namespace Microsoft.Azure.Commands.Batch.Test
             var response = new AzureOperationResponse<ProxyModels.CloudTask, ProxyModels.TaskGetHeaders>();
             response.Response = new HttpResponseMessage(HttpStatusCode.OK);
             response.Body = task;
+            return response;
+        }
+
+        /// <summary>
+        /// Builds a TaskCountsGetResponse object
+        /// </summary>
+        public static AzureOperationResponse<ProxyModels.TaskCounts, ProxyModels.JobGetTaskCountsHeaders> CreateTaskCountsGetResponse(
+            int active, int running, int succeeded, int failed, ProxyModels.TaskCountValidationStatus validationStatus)
+        {
+            var response = new AzureOperationResponse<ProxyModels.TaskCounts, ProxyModels.JobGetTaskCountsHeaders>();
+            response.Response = new HttpResponseMessage(HttpStatusCode.OK);
+            
+            ProxyModels.TaskCounts taskCounts = new ProxyModels.TaskCounts();
+            taskCounts.Active = active;
+            taskCounts.Running = running;
+            taskCounts.Succeeded = succeeded;
+            taskCounts.Failed = failed;
+            taskCounts.Completed = succeeded + failed;
+            taskCounts.ValidationStatus = validationStatus;
+
+            response.Body = taskCounts;
+
             return response;
         }
 

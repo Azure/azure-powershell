@@ -16,6 +16,7 @@ using Microsoft.Azure.Batch;
 using Microsoft.Azure.Commands.Batch.Models;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Management.Automation;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
@@ -49,7 +50,13 @@ namespace Microsoft.Azure.Commands.Batch
         [Parameter(ParameterSetName = VirtualMachineTargetDedicatedParameterSet)]
         [Parameter(ParameterSetName = CloudServiceTargetDedicatedParameterSet)]
         [ValidateNotNullOrEmpty]
-        public int? TargetDedicated { get; set; }
+        [Alias("TargetDedicated")]
+        public int? TargetDedicatedComputeNodes { get; set; }
+
+        [Parameter(ParameterSetName = VirtualMachineTargetDedicatedParameterSet)]
+        [Parameter(ParameterSetName = CloudServiceTargetDedicatedParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public int? TargetLowPriorityComputeNodes { get; set; }
 
         [Parameter(ParameterSetName = CloudServiceAutoScaleParameterSet)]
         [Parameter(ParameterSetName = VirtualMachineAutoScaleParameterSet)]
@@ -82,11 +89,18 @@ namespace Microsoft.Azure.Commands.Batch
 
         [Parameter]
         [ValidateNotNullOrEmpty]
+        [Alias("CertificateReference")]
         public PSCertificateReference[] CertificateReferences { get; set; }
 
         [Parameter]
         [ValidateNotNullOrEmpty]
+        [Alias("ApplicationPackageReference")]
         public PSApplicationPackageReference[] ApplicationPackageReferences { get; set; }
+
+        [Parameter]
+        [ValidateNotNullOrEmpty]
+        [Alias("ApplicationLicense")]
+        public List<string> ApplicationLicenses { get; set; }
 
         [Parameter(ParameterSetName = VirtualMachineAutoScaleParameterSet)]
         [Parameter(ParameterSetName = VirtualMachineTargetDedicatedParameterSet)]
@@ -104,7 +118,7 @@ namespace Microsoft.Azure.Commands.Batch
 
         [Parameter]
         [ValidateNotNullOrEmpty]
-        public PSUserAccount[] UserAccounts { get; set; }
+        public PSUserAccount[] UserAccount { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -113,7 +127,8 @@ namespace Microsoft.Azure.Commands.Batch
                 VirtualMachineSize = this.VirtualMachineSize,
                 DisplayName = this.DisplayName,
                 ResizeTimeout = this.ResizeTimeout,
-                TargetDedicated = this.TargetDedicated,
+                TargetDedicatedComputeNodes = this.TargetDedicatedComputeNodes,
+                TargetLowPriorityComputeNodes = this.TargetLowPriorityComputeNodes,
                 AutoScaleEvaluationInterval = this.AutoScaleEvaluationInterval,
                 AutoScaleFormula = this.AutoScaleFormula,
                 MaxTasksPerComputeNode = this.MaxTasksPerComputeNode,
@@ -126,7 +141,8 @@ namespace Microsoft.Azure.Commands.Batch
                 VirtualMachineConfiguration =  this.VirtualMachineConfiguration,
                 CloudServiceConfiguration = this.CloudServiceConfiguration,
                 NetworkConfiguration = this.NetworkConfiguration,
-                UserAccounts = this.UserAccounts
+                UserAccounts = this.UserAccount,
+                ApplicationLicenses = this.ApplicationLicenses
             };
 
             if (ShouldProcess("AzureBatchPool"))

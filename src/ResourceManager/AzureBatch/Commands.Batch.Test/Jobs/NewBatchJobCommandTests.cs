@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
 
             PSUserAccount adminUser = new PSUserAccount("admin", "password1", Azure.Batch.Common.ElevationLevel.Admin);
             PSUserAccount nonAdminUser = new PSUserAccount("user2", "password2", Azure.Batch.Common.ElevationLevel.NonAdmin);
-            PSUserAccount sshUser = new PSUserAccount("user3", "password3", sshPrivateKey: "my ssh key");
+            PSUserAccount sshUser = new PSUserAccount("user3", "password3", Azure.Batch.Common.ElevationLevel.Admin, new PSLinuxUserConfiguration(uid: 1, gid:2, sshPrivateKey: "my ssh key"));
             cmdlet.PoolInformation = new PSPoolInformation
             {
                 AutoPoolSpecification = new PSAutoPoolSpecification
@@ -214,7 +214,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
             Assert.Equal(sshUser.Password, requestParameters.PoolInfo.AutoPoolSpecification.Pool.UserAccounts[2].Password);
             Assert.Equal(sshUser.ElevationLevel.ToString().ToLowerInvariant(),
                 requestParameters.PoolInfo.AutoPoolSpecification.Pool.UserAccounts[2].ElevationLevel.ToString().ToLowerInvariant());
-            Assert.Equal(sshUser.SshPrivateKey, requestParameters.PoolInfo.AutoPoolSpecification.Pool.UserAccounts[2].SshPrivateKey);
+            Assert.Equal(sshUser.LinuxUserConfiguration.Uid, requestParameters.PoolInfo.AutoPoolSpecification.Pool.UserAccounts[2].LinuxUserConfiguration.Uid);
+            Assert.Equal(sshUser.LinuxUserConfiguration.Gid, requestParameters.PoolInfo.AutoPoolSpecification.Pool.UserAccounts[2].LinuxUserConfiguration.Gid);
+            Assert.Equal(sshUser.LinuxUserConfiguration.SshPrivateKey, requestParameters.PoolInfo.AutoPoolSpecification.Pool.UserAccounts[2].LinuxUserConfiguration.SshPrivateKey);
         }
     }
 }
