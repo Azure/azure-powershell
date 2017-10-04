@@ -101,9 +101,11 @@
     <Compile Include="AuthenticationStore.cs" />
     <Compile Include="Authentication\AadAuthenticationException.cs" />
     <Compile Include="AzureAccount.cs" />
+    <Compile Include="AzurePSDataCollectionProfile.cs" />
     <Compile Include="AzureRmProfileProvider.cs" />
     <Compile Include="AzureSMProfileProvider.cs" />
     <Compile Include="ContextSaveMode.cs" />
+    <Compile Include="DataCollectionController.cs" />
     <Compile Include="DiskDataStore.cs" />
     <Compile Include="Extensions\AzureAccountExtensions.cs" />
     <Compile Include="AzureEnvironmentConstants.cs" />

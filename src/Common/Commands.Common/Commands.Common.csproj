@@ -122,7 +122,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataCollectionController.cs" />
     <Compile Include="Serialization\LegacyAzureAccount.cs" />
     <Compile Include="Serialization\LegacyAzureEnvironment.cs" />
     <Compile Include="Serialization\LegacyAzureSubscription.cs" />
@@ -131,7 +130,6 @@
     <Compile Include="Utilities\JsonUtilities.cs" />
     <Compile Include="AzureDataCmdlet.cs" />
     <Compile Include="AzurePSCmdlet.cs" />
-    <Compile Include="AzurePSDataCollectionProfile.cs" />
     <Compile Include="AzurePowerShell.cs" />
     <Compile Include="Extensions\ConcurrentQueueExtensions.cs" />
     <Compile Include="Constants.cs" />
