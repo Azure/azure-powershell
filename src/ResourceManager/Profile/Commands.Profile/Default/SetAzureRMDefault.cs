@@ -61,11 +61,11 @@ namespace Microsoft.Azure.Commands.Profile.Default
                     {
                         context.ExtendedProperties.SetProperty(Resources.DefaultResourceGroupKey, defaultResourceGroup.Name);
                     }
-
                     else
                     {
                         context.ExtendedProperties.Add(Resources.DefaultResourceGroupKey, defaultResourceGroup.Name);
                     }
+
                     WriteObject(defaultResourceGroup);
                 }
             }

@@ -27,18 +27,13 @@ namespace Microsoft.Azure.Commands.Profile.Default
     /// </summary>
     [Cmdlet(VerbsCommon.Clear, "AzureRmDefault", DefaultParameterSetName = ResourceGroupParameterSet,
          SupportsShouldProcess = true)]
+    [OutputType(typeof(void))]
     public class ClearAzureRMDefaultCommand : AzureRMCmdlet
     {
         private const string ResourceGroupParameterSet = "ResourceGroup";
-        private bool resourceGroup;
 
         [Parameter(ParameterSetName = ResourceGroupParameterSet, Mandatory = false, HelpMessage = "Clear Default Resource Group", ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNullOrEmpty]
-        public SwitchParameter ResourceGroup
-        {
-            get { return resourceGroup; }
-            set { resourceGroup = value; }
-        }
+        public SwitchParameter ResourceGroup { get; set; }
 
         public override void ExecuteCmdlet()
         {
