@@ -17,11 +17,11 @@ function New-AzVm {
         [Parameter()][string] $SubnetAddressPrefix = "192.168.1.0/24",
 
         [Parameter()][string] $PublicIpAddressName = $Name,
-        [Parameter()][string] $DomainNameLabel = $ResourceGroupName + $Name,
+        [Parameter()][string] $DomainNameLabel = $Name + $ResourceGroupName,
         [Parameter()][ValidateSet("Static", "Dynamic")][string] $AllocationMethod = "Static",
 
         [Parameter()][string] $SecurityGroupName = $Name,
-        [Parameter()][int[]] $OpenPorts = @(3389, 5985),
+        [Parameter()][int[]] $OpenPorts,
 
         [Parameter()][string] $ImageName = "Win2016Datacenter",
         [Parameter()][string] $Size = "Standard_DS1_v2",
@@ -36,6 +36,19 @@ function New-AzVm {
             Get-AzureRmContext -AzureRmContext $AzureRmContext
         } else {
             Get-AzureRmContext
+        }
+
+        $image = Get-Image($ImageName)
+
+        if (!$OpenPorts) {
+            switch ($image.Type) {
+                "Windows" {
+                    $OpenPorts = @(3389, 5985)
+                }
+                "Linux" {
+                    $OpenPorts = @(22)
+                }
+            }
         }
 
         $rgi = [ResourceGroup]::new($ResourceGroupName)
@@ -59,8 +72,7 @@ function New-AzVm {
             $rgi,
             $nii,
             $Credential,
-            $ImageName,
-            $images,
+            $image,
             $Size)
 
         # infer a location
@@ -505,8 +517,7 @@ class NetworkInterface: Resource1 {
 class VirtualMachine: Resource1 {
     [NetworkInterface] $NetworkInterface;
     [pscredential] $Credential;
-    [string] $ImageName;
-    [object] $Images;
+    [object] $Image;
     [string] $Size;
 
     VirtualMachine(
@@ -514,15 +525,13 @@ class VirtualMachine: Resource1 {
         [ResourceGroup] $resourceGroup,
         [NetworkInterface] $networkInterface,
         [PSCredential] $credential,
-        [string] $imageName,
-        [object] $images,
+        [object] $image,
         [string] $size):
         base($name, $resourceGroup, @($networkInterface)) {
 
         $this.Credential = $credential
-        $this.ImageName = $imageName
         $this.NetworkInterface = $networkInterface
-        $this.Images = $images
+        $this.Image = $image
         $this.Size = $size
     }
 
@@ -541,14 +550,9 @@ class VirtualMachine: Resource1 {
     [object] Create([CreateParams] $p) {
         $networkInterfaceInstance = $this.NetworkInterface.Info
 
-        $vmImage = $this.Images | Where-Object { $_.Name -eq $this.ImageName } | Select-Object -First 1
-        if (-not $vmImage) {
-            throw "Unknown image: " + $this.ImageName
-        }
-
         $vmConfig = New-AzureRmVMConfig -VMName $this.Name -VMSize $this.Size -ErrorAction Stop
         $vmComputerName = $this.Name
-        switch ($vmImage.Type) {
+        switch ($this.Image.Type) {
             "Windows" {
                 $vmConfig = $vmConfig | Set-AzureRmVMOperatingSystem `
                     -Windows `
@@ -565,7 +569,7 @@ class VirtualMachine: Resource1 {
             }
         }
 
-        $vmImageImage = $vmImage.Image
+        $vmImageImage = $this.Image.Image
         $vmConfig = $vmConfig `
             | Set-AzureRmVMSourceImage `
                 -PublisherName $vmImageImage.publisher `
@@ -686,6 +690,14 @@ $images = $staticImages.psobject.Properties | ForEach-Object {
             Image = $_.Value
         }
     }
+}
+
+function Get-Image([string] $imageName) {
+    $vmImage = $images | Where-Object { $_.Name -eq $imageName } | Select-Object -First 1
+    if (-not $vmImage) {
+        throw "Unknown image: " + $this.ImageName
+    }
+    return $vmImage
 }
 
 Export-ModuleMember -Function New-AzVm

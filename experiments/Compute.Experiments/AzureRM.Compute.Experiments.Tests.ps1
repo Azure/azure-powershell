@@ -25,7 +25,8 @@ $vmCredential = New-Object System.Management.Automation.PSCredential ($vmCompute
 
 # $vm = New-AzVm
 # $vm = New-AzVm -Credential $vmCredential
-$vm = New-AzVm -Name MyVMA1 -Credential $vmCredential -ResourceGroupName Something1
+$vm = New-AzVm -Name MyVMA1 -Credential $vmCredential -ResourceGroupName Something1 -Verbose
+$linux = New-AzVm -Name MyVMA2 -Credential $vmCredential -ResourceGroupName Something1 -ImageName UbuntuLTS -Verbose
 # $vm = New-AzVm -Name MyVMA
 
 $vm
