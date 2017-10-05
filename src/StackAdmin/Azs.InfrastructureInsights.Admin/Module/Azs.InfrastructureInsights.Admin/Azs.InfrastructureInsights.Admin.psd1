@@ -145,7 +145,9 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        # ReleaseNotes = ''
+        ReleaseNotes = 'Initial release of InfrastructureInsights Admin module. Allows administrators to view the health of their resource providers.'
+
+        ExternalModuleDependencies = @('PSSwaggerUtility')
 
     } # End of PSData hashtable
 

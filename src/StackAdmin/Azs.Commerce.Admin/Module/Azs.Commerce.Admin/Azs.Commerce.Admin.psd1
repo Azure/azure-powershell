@@ -134,7 +134,9 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        # ReleaseNotes = ''
+        ReleaseNotes = 'Initial release of the Commerce Admin module. Allows administrators to view aggregate subscription usage.'
+
+        ExternalModuleDependencies = @('PSSwaggerUtility')
 
     } # End of PSData hashtable
 
