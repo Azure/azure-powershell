@@ -149,73 +149,68 @@ namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
         {
             if (ShouldProcess(Name, @"Creating operationalization cluster..."))
             {
-                // If we have an object, go ahead and create
+                var cluster = new OperationalizationCluster();
+
                 if (string.Equals(this.ParameterSetName, CreateFromObjectParameterSet, StringComparison.OrdinalIgnoreCase))
                 {
-                    var cluster = InputObject.ConvertToOperationalizationCluster();
-
-                    WriteObject(new PSOperationalizationCluster(MachineLearningComputeManagementClient.OperationalizationClusters.CreateOrUpdate(ResourceGroupName, Name, cluster)));
+                    cluster = InputObject.ConvertToOperationalizationCluster();
                 }
-
-                // If it's parameters create the cluster object and then create
-                if (string.Equals(this.ParameterSetName, CreateFromCmdletParametersParameterSet, StringComparison.OrdinalIgnoreCase))
+                else if (string.Equals(this.ParameterSetName, CreateFromCmdletParametersParameterSet, StringComparison.OrdinalIgnoreCase))
                 {
-                    var newCluster = new OperationalizationCluster();
-
-                    newCluster.Location = Location;
-                    newCluster.ClusterType = ClusterType;
-                    newCluster.Description = Description;
+                    cluster.Location = Location;
+                    cluster.ClusterType = ClusterType;
+                    cluster.Description = Description;
 
                     if (StorageAccount != null)
                     {
-                        newCluster.StorageAccount = new StorageAccountProperties(StorageAccount);
+                        cluster.StorageAccount = new StorageAccountProperties(StorageAccount);
                     }
 
                     if (AzureContainerRegistry != null)
                     {
-                        newCluster.ContainerRegistry = new ContainerRegistryProperties(AzureContainerRegistry);
+                        cluster.ContainerRegistry = new ContainerRegistryProperties(AzureContainerRegistry);
                     }
 
                     if (GlobalServiceConfigurationETag != null)
                     {
-                        newCluster.GlobalServiceConfiguration = newCluster.GlobalServiceConfiguration ?? new GlobalServiceConfiguration();
-                        newCluster.GlobalServiceConfiguration.Etag = GlobalServiceConfigurationETag;
+                        cluster.GlobalServiceConfiguration = cluster.GlobalServiceConfiguration ?? new GlobalServiceConfiguration();
+                        cluster.GlobalServiceConfiguration.Etag = GlobalServiceConfigurationETag;
                     }
 
                     if (GlobalServiceConfigurationAdditionalProperties != null)
                     {
-                        newCluster.GlobalServiceConfiguration = newCluster.GlobalServiceConfiguration ?? new GlobalServiceConfiguration();
-                        newCluster.GlobalServiceConfiguration.AdditionalProperties = GlobalServiceConfigurationAdditionalProperties.Cast<DictionaryEntry>().ToDictionary(kvp => (string)kvp.Key, kvp => kvp.Value);
+                        cluster.GlobalServiceConfiguration = cluster.GlobalServiceConfiguration ?? new GlobalServiceConfiguration();
+                        cluster.GlobalServiceConfiguration.AdditionalProperties = GlobalServiceConfigurationAdditionalProperties.Cast<DictionaryEntry>().ToDictionary(kvp => (string)kvp.Key, kvp => kvp.Value);
                     }
 
                     if (SslStatus != null)
                     {
-                        newCluster.GlobalServiceConfiguration.Ssl = newCluster.GlobalServiceConfiguration.Ssl ?? new SslConfiguration();
-                        newCluster.GlobalServiceConfiguration.Ssl.Status = SslStatus;
+                        cluster.GlobalServiceConfiguration.Ssl = cluster.GlobalServiceConfiguration.Ssl ?? new SslConfiguration();
+                        cluster.GlobalServiceConfiguration.Ssl.Status = SslStatus;
                     }
 
                     if (SslCertificate != null)
                     {
-                        newCluster.GlobalServiceConfiguration.Ssl = newCluster.GlobalServiceConfiguration.Ssl ?? new SslConfiguration();
-                        newCluster.GlobalServiceConfiguration.Ssl.Cert = SslCertificate;
+                        cluster.GlobalServiceConfiguration.Ssl = cluster.GlobalServiceConfiguration.Ssl ?? new SslConfiguration();
+                        cluster.GlobalServiceConfiguration.Ssl.Cert = SslCertificate;
                     }
 
                     if (SslKey != null)
                     {
-                        newCluster.GlobalServiceConfiguration.Ssl = newCluster.GlobalServiceConfiguration.Ssl ?? new SslConfiguration();
-                        newCluster.GlobalServiceConfiguration.Ssl.Key = SslKey;
+                        cluster.GlobalServiceConfiguration.Ssl = cluster.GlobalServiceConfiguration.Ssl ?? new SslConfiguration();
+                        cluster.GlobalServiceConfiguration.Ssl.Key = SslKey;
                     }
 
                     if (SslCName != null)
                     {
-                        newCluster.GlobalServiceConfiguration.Ssl = newCluster.GlobalServiceConfiguration.Ssl ?? new SslConfiguration();
-                        newCluster.GlobalServiceConfiguration.Ssl.Cname = SslCName;
+                        cluster.GlobalServiceConfiguration.Ssl = cluster.GlobalServiceConfiguration.Ssl ?? new SslConfiguration();
+                        cluster.GlobalServiceConfiguration.Ssl.Cname = SslCName;
                     }
 
                     switch (ClusterType)
                     {
                         case Management.MachineLearningCompute.Models.ClusterType.ACS:
-                            newCluster.ContainerService = new AcsClusterProperties
+                            cluster.ContainerService = new AcsClusterProperties
                             {
                                 OrchestratorType = OrchestratorType,
                                 OrchestratorProperties = new KubernetesClusterProperties
@@ -239,14 +234,15 @@ namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
                             break;
                     }
 
-                    try
-                    {
-                        WriteObject(new PSOperationalizationCluster(MachineLearningComputeManagementClient.OperationalizationClusters.CreateOrUpdate(ResourceGroupName, Name, newCluster)));
-                    }
-                    catch (CloudException e)
-                    {
-                        HandleNestedExceptionMessages(e);
-                    }
+                }
+
+                try
+                {
+                    WriteObject(new PSOperationalizationCluster(MachineLearningComputeManagementClient.OperationalizationClusters.CreateOrUpdate(ResourceGroupName, Name, cluster)));
+                }
+                catch (Exception e)
+                {
+                    HandleNestedExceptionMessages(e);
                 }
             }
         }
