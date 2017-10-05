@@ -138,6 +138,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Default Resource Group.
+        /// </summary>
+        public static string DefaultResourceGroupKey {
+            get {
+                return ResourceManager.GetString("DefaultResourceGroupKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No default subscription has been designated. Use Select-AzureSubscription -Default &lt;subscriptionName&gt; to set the default subscription..
         /// </summary>
         public static string InvalidDefaultSubscription {
