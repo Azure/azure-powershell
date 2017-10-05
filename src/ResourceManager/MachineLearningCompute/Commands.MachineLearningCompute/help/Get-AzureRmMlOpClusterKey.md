@@ -109,7 +109,7 @@ System.String
 
 ## OUTPUTS
 
-### Microsoft.Azure.Management.MachineLearningCompute.Models.OperationalizationClusterCredentials
+### Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationClusterCredentials
 
 
 ## NOTES

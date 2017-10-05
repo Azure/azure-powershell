@@ -117,7 +117,7 @@ Accept wildcard characters: False
 
 ## OUTPUTS
 
-### Microsoft.Azure.Management.MachineLearningCompute.Models.CheckSystemServicesUpdatesAvailableResponse
+### Microsoft.Azure.Commands.MachineLearningCompute.Models.PSCheckSystemServicesUpdatesAvailableResponse
 
 
 ## NOTES
