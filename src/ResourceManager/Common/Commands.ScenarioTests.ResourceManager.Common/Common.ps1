@@ -13,9 +13,10 @@
 # ----------------------------------------------------------------------------------
 
 $excludedExtensions = @(".dll", ".zip", ".msi", ".exe")
+
 ###################################
 #
-# Retrievce the contents of a powershrell transcript, stripping headers and footers
+# Retrieve the contents of a powershrell transcript, stripping headers and footers
 #
 #    param [string] $path: The path to the transript file to read
 ###################################
@@ -543,4 +544,27 @@ function getSubscriptionFromEnvironment
    }
 
    return $subscription
+}
+
+function Get-Location
+{
+    param([string]$providerNamespace, [string]$resourceType, [string]$preferredLocation)
+    $provider = Get-AzureRmResourceProvider -ProviderNamespace $providerNamespace
+    $resourceTypes = $provider.ResourceTypes | Where-Object { $_.ResourceTypeName -eq $resourceType}
+    $location = $resourceTypes.Locations | Where-Object { $_ -eq $preferredLocation }
+    if ($location -eq $null)
+    {
+        if ($resourceTypes.Locations.Length -ne 0)
+        {
+            return $resourceTypes.Locations[0]
+        }
+        else 
+        {
+            return "West US"
+        }
+    }
+    else 
+    {
+        return $location
+    }
 }
