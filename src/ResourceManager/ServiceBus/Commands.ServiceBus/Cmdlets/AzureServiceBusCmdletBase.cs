@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         public const string RegenerateKeysSetName = "RegenerateKeysSet";
 
         protected static TimeSpan LongRunningOperationDefaultTimeout = TimeSpan.FromMinutes(1);
-        private Microsoft.Azure.Commands.Servicebus.ServiceBusClient  _client;
+        private Microsoft.Azure.Commands.ServiceBus.ServiceBusClient  _client;
 
         protected const string ServiceBusNamespaceVerb = "AzureRmServiceBusNamespace";
 
@@ -100,6 +100,10 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
 
         protected const string ServicebusRuleVerb = "AzureRmServiceBusRule";
 
+        protected const string ServicebusDRConfigurationVerb = "AzureRmServiceBusDRConfigurations";
+        protected const string ServicebusDRConfigurationFailoverVerb = "AzureRmServiceBusDRConfigurationsFailOver";
+        protected const string ServicebusDRConfigurationBreakPairingVerb = "AzureRmServiceBusDRConfigurationsBreakPairing";
+
         protected struct SKU
         {
             internal const string Basic = "Basic";
@@ -157,13 +161,13 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
             return tspan;
         }
 
-        public Microsoft.Azure.Commands.Servicebus.ServiceBusClient Client
+        public Microsoft.Azure.Commands.ServiceBus.ServiceBusClient Client
         {
             get
             {
                 if (_client == null)
                 {
-                    _client = new Microsoft.Azure.Commands.Servicebus.ServiceBusClient(DefaultContext);
+                    _client = new Microsoft.Azure.Commands.ServiceBus.ServiceBusClient(DefaultContext);
                 }
                 return _client;
             }

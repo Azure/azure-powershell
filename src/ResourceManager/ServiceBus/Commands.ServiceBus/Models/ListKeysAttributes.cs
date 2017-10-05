@@ -35,6 +35,8 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
                 PrimaryKey = listKeysResource.PrimaryKey;
                 SecondaryKey = listKeysResource.SecondaryKey;
                 KeyName = listKeysResource.KeyName;
+				AliasPrimaryConnectionString = listKeysResource.AliasPrimaryConnectionString;
+                AliasSecondaryConnectionString = listKeysResource.AliasSecondaryConnectionString;
             };
         }
 
@@ -48,6 +50,18 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// AuthorizationRule
         /// </summary>
         public string SecondaryConnectionString { get; set; }
+		
+		/// <summary>
+        /// AliasPrimaryConnectionString of the alias if GEO DR is enabled
+        /// AuthorizationRule
+        /// </summary>
+		public string AliasPrimaryConnectionString { get; set; }
+		
+		/// <summary>
+        /// AliasSecondaryConnectionString of the alias if GEO DR is enabled
+        /// AuthorizationRule
+        /// </summary>
+		public string AliasSecondaryConnectionString { get; set; }
 
         /// <summary>
         /// A base64-encoded 256-bit primary key for signing and validating
