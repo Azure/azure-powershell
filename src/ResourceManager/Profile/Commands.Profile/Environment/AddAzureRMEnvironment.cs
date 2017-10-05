@@ -172,10 +172,12 @@ namespace Microsoft.Azure.Commands.Profile
                                 GeneralUtilities.EnsureTrailingSlash(ARMEndpoint)?.ToLowerInvariant(), StringComparison.CurrentCultureIgnoreCase));
 
                         IAzureEnvironment newEnvironment = new AzureEnvironment { Name = this.Name };
-                        var defProfile = DefaultProfile as AzureRmProfile;
-                        if (defProfile != null && defProfile.EnvironmentTable.ContainsKey(this.Name))
+                        var defProfile = GetDefaultProfile();
+                        if (defProfile != null)
                         {
-                            newEnvironment = defProfile.EnvironmentTable[Name];
+                            IAzureEnvironment _newEnvironment;
+                            defProfile.TryGetEnvironment(this.Name, out _newEnvironment);
+                            newEnvironment = (_newEnvironment ?? newEnvironment);
                         }
 
                         if (publicEnvironment.Key == null)
@@ -185,7 +187,7 @@ namespace Microsoft.Azure.Commands.Profile
                             {
                                 EnvHelper = (EnvHelper == null ? new EnvironmentHelper() : EnvHelper);
                                 MetadataResponse metadataEndpoints = EnvHelper.RetrieveMetaDataEndpoints(newEnvironment.ResourceManagerUrl).Result;
-                                string domain = EnvHelper.RetrieveDomain(newEnvironment.ResourceManagerUrl);
+                                string domain = EnvHelper.RetrieveDomain(ARMEndpoint);
 
                                 SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.ActiveDirectory,
                                     metadataEndpoints.authentication.LoginEndpoint.TrimEnd('/') + '/');
