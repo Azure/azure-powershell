@@ -162,6 +162,11 @@
             <Alignment>Left</Alignment>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>AccessTier</Label>
+            <Alignment>Left</Alignment>
+            <Width>10</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>SnapshotTime</Label>
             <width>20</width>
             <Alignment>Left</Alignment>
@@ -184,6 +189,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <ScriptBlock>$_.Properties.LastModified.UtcDateTime.ToString("u")</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.ICloudBlob.Properties.StandardBlobTier</ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
                 <ScriptBlock>$_.SnapshotTime.UtcDateTime.ToString("u")</ScriptBlock>
@@ -369,6 +377,11 @@
             <Width>20</Width>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>AccessTier</Label>
+            <Alignment>Left</Alignment>
+            <Width>10</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>SnapshotTime</Label>
             <Alignment>Left</Alignment>
             <Width>20</Width>
@@ -391,6 +404,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <ScriptBlock>$_.LastModified.UtcDateTime.ToString("u")</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.ICloudBlob.Properties.StandardBlobTier</ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
                 <ScriptBlock>$_.SnapshotTime.UtcDateTime.ToString("u")</ScriptBlock>

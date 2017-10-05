@@ -307,5 +307,14 @@ namespace Microsoft.WindowsAzure.Commands.Common
             }
 #endif
         }
+        public Stream OpenForSharedRead(string path)
+        {
+            return File.Open(path, FileMode.OpenOrCreate, FileAccess.Read, FileShare.Read);
+        }
+
+        public Stream OpenForExclusiveWrite(string path)
+        {
+            return File.Open(path, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None);
+        }
     }
 }

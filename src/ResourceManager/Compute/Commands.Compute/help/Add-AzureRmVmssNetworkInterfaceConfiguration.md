@@ -16,8 +16,8 @@ Adds a network interface configuration to the VMSS.
 Add-AzureRmVmssNetworkInterfaceConfiguration [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet>
  [[-Name] <String>] [[-Primary] <Boolean>] [[-Id] <String>]
  [[-IpConfiguration] <VirtualMachineScaleSetIPConfiguration[]>] [-EnableAcceleratedNetworking]
- [-NetworkSecurityGroupId <String>] [-DnsSettingsDnsServer <String[]>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-NetworkSecurityGroupId <String>] [-DnsSettingsDnsServer <String[]>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,6 +33,21 @@ PS C:\> Add-AzureRmVmssNetworkInterfaceConfiguration -VirtualMachineScaleSet $VM
 This command adds a network interface configuration to the VMSS.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DnsSettingsDnsServer
 List of dns server IP addresses for dns settings.
@@ -191,7 +206,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### VirtualMachineScaleSet
-
 Parameter 'VirtualMachineScaleSet' accepts value of type 'VirtualMachineScaleSet' from the pipeline
 
 ## OUTPUTS
