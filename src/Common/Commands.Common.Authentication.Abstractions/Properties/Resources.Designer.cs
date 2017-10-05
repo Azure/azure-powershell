@@ -10,7 +10,6 @@
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions.Properties {
     using System;
-    using System.Reflection;
     
     
     /// <summary>
@@ -40,7 +39,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions.Properties
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.Common.Authentication.Abstractions.Properties.Resources", typeof(Resources).GetTypeInfo().Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.Common.Authentication.Abstractions.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -157,6 +156,42 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions.Properties
         internal static string PublishSettingsFileRealmFormat {
             get {
                 return ResourceManager.GetString("PublishSettingsFileRealmFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attempted to read from the Azure PowerShell Session registry after it was disposed.  Please reload the module and try this operation again..
+        /// </summary>
+        internal static string RegistryLockReadDisposed {
+            get {
+                return ResourceManager.GetString("RegistryLockReadDisposed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attempted to read from the Azure PowerShell Session registry while it was in use.  Please reload the module and try this operation again..
+        /// </summary>
+        internal static string RegistryLockReadRecursion {
+            get {
+                return ResourceManager.GetString("RegistryLockReadRecursion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attempted to write to the Azure PowerShell Session registry after it was disposed.  Please reload the module and try this operation again..
+        /// </summary>
+        internal static string RegistryLockWriteDisposed {
+            get {
+                return ResourceManager.GetString("RegistryLockWriteDisposed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attempted to write to the Azure PowerShell Session registry while reading from the session registry.  Please reload the module and try this operation again..
+        /// </summary>
+        internal static string RegistryLockWriteRecursion {
+            get {
+                return ResourceManager.GetString("RegistryLockWriteRecursion", resourceCulture);
             }
         }
         

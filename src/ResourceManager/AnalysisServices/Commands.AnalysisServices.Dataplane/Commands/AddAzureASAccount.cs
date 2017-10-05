@@ -22,6 +22,7 @@ using Microsoft.Azure.Commands.AnalysisServices.Dataplane.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.WindowsAzure.Commands.Common;
+using System;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 {
@@ -85,19 +86,18 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
             }
         }
 
-        protected override void SaveDataCollectionProfile()
+        protected override string DataCollectionWarning
         {
-            // No data collection for this commandlet 
-        }
-
-        protected override void SetDataCollectionProfileIfNotExists()
-        {
-            // No data collection for this commandlet 
+            get
+            {
+                return Resources.ARMDataCollectionMessage;
+            }
         }
 
         protected override void BeginProcessing()
         {
-            base.BeginProcessing();
+            this._dataCollectionProfile = new AzurePSDataCollectionProfile(false);
+
             if (string.IsNullOrEmpty(RolloutEnvironment))
             {
                 RolloutEnvironment = AsAzureClientSession.GetDefaultEnvironmentName();
@@ -111,6 +111,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
             {
                 AsEnvironment = AsAzureClientSession.Instance.Profile.CreateEnvironment(RolloutEnvironment);
             }
+            base.BeginProcessing();
         }
 
         protected override void InitializeQosEvent()
