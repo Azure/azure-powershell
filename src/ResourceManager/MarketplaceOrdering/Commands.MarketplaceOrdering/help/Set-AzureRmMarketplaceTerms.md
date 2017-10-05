@@ -12,16 +12,29 @@ Accept or reject terms for a given publisher id(Publisher), offer id(Product) an
 
 ## SYNTAX
 
-### AgreementParameterSet (Default)
+### AgreementAcceptParameterSet (Default)
 ```
-Set-AzureRmMarketplaceTerms -Publisher <String> -Product <String> -Name <String> -Accepted <Boolean>
+Set-AzureRmMarketplaceTerms -Publisher <String> -Product <String> -Name <String> [-Accept]
  [-Terms <PSAgreementTerms>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### InputObjectParameterSet
+### AgreementRejectParameterSet
 ```
-Set-AzureRmMarketplaceTerms -Accepted <Boolean> [-InputObject] <PSAgreementTerms>
+Set-AzureRmMarketplaceTerms -Publisher <String> -Product <String> -Name <String> [-Reject]
+ [-Terms <PSAgreementTerms>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### InputObjectAcceptParametrSet
+```
+Set-AzureRmMarketplaceTerms [-Accept] [-InputObject] <PSAgreementTerms>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InputObjectRejectParametrSet
+```
+Set-AzureRmMarketplaceTerms [-Reject] [-InputObject] <PSAgreementTerms>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -32,22 +45,22 @@ The **Set-AzureRmMarketplaceTerms** cmdlet saves the terms object for given publ
 
 ### Example 1
 ```
-PS C:\> Set-AzureRmMarketplaceTerms -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016" -Terms $agreementTerms -Accepted $true
+PS C:\> Set-AzureRmMarketplaceTerms -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016" -Terms $agreementTerms -Accept
 ```
 
 ### Example 2
 ```
-PS C:\> Get-AzureRmMarketplaceTerms -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016" | Set-AzureRmMarketplaceTerms -Accepted $true
+PS C:\> Get-AzureRmMarketplaceTerms -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016" | Set-AzureRmMarketplaceTerms -Accept
 ```
 
 ## PARAMETERS
 
-### -Accepted
-Boolean which indicate the status of acceptance of the terms, it should be true if any version of the terms have been accepted.
+### -Accept
+Pass this to accept the legal terms.
 
 ```yaml
-Type: Boolean
-Parameter Sets: (All)
+Type: SwitchParameter
+Parameter Sets: AgreementAcceptParameterSet, InputObjectAcceptParametrSet
 Aliases: 
 
 Required: True
@@ -58,7 +71,9 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.```yaml
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
 Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
@@ -75,7 +90,7 @@ Terms object returned in Get-AzureRmMarketplaceTerms cmdlet. This is a mandatory
 
 ```yaml
 Type: PSAgreementTerms
-Parameter Sets: InputObjectParameterSet
+Parameter Sets: InputObjectAcceptParametrSet, InputObjectRejectParametrSet
 Aliases: 
 
 Required: True
@@ -90,7 +105,7 @@ Plan identifier string of image being deployed.
 
 ```yaml
 Type: String
-Parameter Sets: AgreementParameterSet
+Parameter Sets: AgreementAcceptParameterSet, AgreementRejectParameterSet
 Aliases: 
 
 Required: True
@@ -105,7 +120,7 @@ Offer identifier string of image being deployed.
 
 ```yaml
 Type: String
-Parameter Sets: AgreementParameterSet
+Parameter Sets: AgreementAcceptParameterSet, AgreementRejectParameterSet
 Aliases: 
 
 Required: True
@@ -120,7 +135,20 @@ Publisher identifier string of image being deployed.
 
 ```yaml
 Type: String
-Parameter Sets: AgreementParameterSet
+Parameter Sets: AgreementAcceptParameterSet, AgreementRejectParameterSet
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Reject
+Pass this to reject the legal terms.```yaml
+Type: SwitchParameter
+Parameter Sets: AgreementRejectParameterSet, InputObjectRejectParametrSet
 Aliases: 
 
 Required: True
@@ -135,7 +163,7 @@ Terms object returned in Get-AzureRmMarketplaceTerms cmdlet. This is a mandatory
 
 ```yaml
 Type: PSAgreementTerms
-Parameter Sets: AgreementParameterSet
+Parameter Sets: AgreementAcceptParameterSet, AgreementRejectParameterSet
 Aliases: 
 
 Required: False

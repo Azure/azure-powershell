@@ -149,11 +149,21 @@
     <None Include="ScenarioTests\AgreementsTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.MarketplaceOrdering.Test.ScenarioTests.AgreementsTests\TestGetAgreement.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.MarketplaceOrdering.Test.ScenarioTests.AgreementsTests\TestSetAgreementAccepted.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.MarketplaceOrdering.Test.ScenarioTests.AgreementsTests\TestSetAgreementAcceptedPipeline.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.MarketplaceOrdering.Test.ScenarioTests.AgreementsTests\TestSetAgreementNotAccepted.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.MarketplaceOrdering.Test.ScenarioTests.AgreementsTests\TestSetAgreementRejectPipeline.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.MarketplaceOrdering.Test.ScenarioTests.AgreementsTests\TestGetAgreement.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.MarketplaceOrdering.Test.ScenarioTests.AgreementsTests\TestSetAgreementAccepted.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.MarketplaceOrdering.Test.ScenarioTests.AgreementsTests\TestSetAgreementAcceptedPipeline.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.MarketplaceOrdering.Test.ScenarioTests.AgreementsTests\TestSetAgreementNotAccepted.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.MarketplaceOrdering.Test.ScenarioTests.AgreementsTests\TestSetAgreementRejectPipeline.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
