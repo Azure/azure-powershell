@@ -189,6 +189,7 @@
     <Compile Include="CommonDataCmdletTests.cs" />
     <Compile Include="EnvironmentCmdletTests.cs" />
     <Compile Include="ErrorResolutionTests.cs" />
+    <Compile Include="LocationCompleterUnitTests.cs" />
     <Compile Include="MockDataStore.cs" />
     <Compile Include="MockSubscriptionClientFactory.cs" />
     <Compile Include="NullClient.cs" />
