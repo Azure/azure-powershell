@@ -231,38 +231,3 @@ function Test-UpdateSystemServices
     ## Cleanup
     TeardownTest $resourceGroupName
 }
-
-<#
-.SYNOPSIS
-TODO: DELETE ME
-#>
-function Test-Sandbox
-{
-    # Setup
-    $resourceGroupName = "mlcrp-cmdlet-test-sandbox"
-    $clusterName = "mlcrp-cmdlet-test-sandbox"
-
-    SetupTest $resourceGroupName
-
-    # Create the cluster
-    $cluster = GetDefaultClusterProperties
-    $result = New-AzureRmMlOpCluster -ResourceGroupName $resourceGroupName -Name $clusterName -ClusterType Local -Location "East US 2"
-
-	# Test for updates
-	#$updateAvailability = Test-AzureRmMlOpClusterSystemServicesUpdateAvailability -ResourceGroupName $resourceGroupName -Name $clusterName
- #   Assert-NotNull { $updateAvailability }
-
-	# Test for updates - pipelining
-
-	# Update the cluster
-	#$updateResult = Update-AzureRmMlOpClusterSystemService -ResourceGroupName $resourceGroupName -Name $clusterName
- #   Assert-True { $updateResult.UpdateStatus -eq "Succeeded" }
-	#Assert-NotNull { $updateResult.UpdateStartedOn }
-	#Assert-NotNull { $updateResult.UpdateCompletedOn }
-
-	#$updateAvailability = Test-AzureRmMlOpClusterSystemServicesUpdateAvailability -ResourceGroupName $resourceGroupName -Name $clusterName
- #   Assert-True { $updateAvailability.UpdatesAvailable -eq "No" }
-
-    ## Cleanup
-    #TeardownTest $resourceGroupName
-}

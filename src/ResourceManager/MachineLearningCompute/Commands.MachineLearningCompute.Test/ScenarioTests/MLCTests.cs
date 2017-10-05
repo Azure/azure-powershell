@@ -36,14 +36,5 @@ namespace Microsoft.Azure.Commands.MachineLearningCompute.Test.ScenarioTests
         {
             TestController.NewInstance.RunPsTest(this.interceptor, "Test-UpdateSystemServices");
         }
-
-        /*
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSandbox()
-        {
-            TestController.NewInstance.RunPsTest(this.interceptor, "Test-Sandbox");
-        }
-        */
     }
 }
