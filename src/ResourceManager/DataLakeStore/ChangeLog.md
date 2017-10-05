@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Changed one of the two OutputTypes of Get-AzureRmDataLakeStoreAccount
+    - List<PSDataLakeStoreAccount> to List<PSDataLakeStoreAccountBasic>
+    - The properties of PSDataLakeStoreAccountBasic is a strict subset of the properties of PSDataLakeStoreAccount
+    - The additional properties that are in PSDataLakeStoreAccount are not returned by the service.  Therefore, this change is to reflect this accurately.
+* Removed the Obsolete Properties fields in PSDataLakeStoreAccount.cs and its assoicated files
 
 ## Version 4.4.0
 
