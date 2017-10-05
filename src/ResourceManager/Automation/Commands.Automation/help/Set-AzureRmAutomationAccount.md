@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
 ms.assetid: B1897EFC-0184-4A8B-B8E4-203CC8E3B179
-online version:
+online version: 
 schema: 2.0.0
 ---
 
@@ -68,7 +68,7 @@ Valid values are:
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 Accepted values: Free, Basic
 
 Required: False
@@ -84,7 +84,7 @@ Specifies the name of a resource group that contains the Automation account that
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0

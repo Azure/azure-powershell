@@ -14,7 +14,7 @@ Starts a manual upgrade of the VMSS instance.
 
 ```
 Update-AzureRmVmssInstance [-ResourceGroupName] <String> [-VMScaleSetName] <String> [-InstanceId] <String[]>
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,6 +31,21 @@ PS C:\> Update-AzureRmVmssInstance -ResourceGroupName "Group011" -VMScaleSetName
 This command starts an upgrade of the VMSS named VMScaleSet001 that has the instance ID of 0.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -InstanceId
 Specifies, as a string array, the ID or IDs of the instance to upgrade.

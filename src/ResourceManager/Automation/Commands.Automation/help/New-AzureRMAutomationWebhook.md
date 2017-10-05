@@ -14,8 +14,8 @@ Creates a webhook for an Automation runbook.
 
 ```
 New-AzureRmAutomationWebhook [-Name] <String> [-RunbookName] <String> [-IsEnabled] <Boolean>
- [-ExpiryTime] <DateTimeOffset> [-Parameters <IDictionary>] [-Force] [-ResourceGroupName] <String>
- [-AutomationAccountName] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ExpiryTime] <DateTimeOffset> [-Parameters <IDictionary>] [-Force] [-RunOn <String>]
+ [-ResourceGroupName] <String> [-AutomationAccountName] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -172,6 +172,21 @@ Required: True
 Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RunOn
+Optional name of the hybrid agent which should execute the runbook
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: HybridWorker
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
