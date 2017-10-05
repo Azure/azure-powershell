@@ -184,6 +184,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="ResourceGroupCompleter.cs" />
     <Compile Include="ResponseWithContinuation.cs" />
     <Compile Include="RPRegistrationDelegatingHandler.cs" />
     <Compile Include="ServiceClientTracingInterceptor.cs" />
