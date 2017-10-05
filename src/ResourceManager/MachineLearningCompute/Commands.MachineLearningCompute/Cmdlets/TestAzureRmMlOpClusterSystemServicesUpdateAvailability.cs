@@ -1,7 +1,6 @@
 ﻿using Microsoft.Azure.Commands.MachineLearningCompute.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.MachineLearningCompute;
-using Microsoft.Azure.Management.MachineLearningCompute.Models;
 using Microsoft.Rest.Azure;
 using System;
 using System.Management.Automation;
@@ -9,7 +8,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
 {
     [Cmdlet(VerbsDiagnostic.Test, CmdletSuffix + "SystemServicesUpdateAvailability")]
-    [OutputType(typeof(CheckSystemServicesUpdatesAvailableResponse))]
+    [OutputType(typeof(PSCheckSystemServicesUpdatesAvailableResponse))]
     public class TestAzureRmOpClusterSystemServicesUpdateAvailability: MachineLearningComputeCmdletBase
     {
         protected const string CmdletParametersParameterSet =
@@ -63,7 +62,7 @@ namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
 
             try
             {
-                WriteObject(MachineLearningComputeManagementClient.OperationalizationClusters.CheckSystemServicesUpdatesAvailable(ResourceGroupName, Name));
+                WriteObject(new PSCheckSystemServicesUpdatesAvailableResponse(MachineLearningComputeManagementClient.OperationalizationClusters.CheckSystemServicesUpdatesAvailable(ResourceGroupName, Name)));
             }
             catch (CloudException e)
             {

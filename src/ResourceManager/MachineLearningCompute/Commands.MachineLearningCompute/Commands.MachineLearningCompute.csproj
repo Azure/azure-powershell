@@ -87,8 +87,10 @@
     <Compile Include="Cmdlets\NewAzureRmMlOpCluster.cs" />
     <Compile Include="Cmdlets\RemoveAzureRmMlOpCluster.cs" />
     <Compile Include="Cmdlets\UpdateAzureRmMlOpClusterSystemService.cs" />
+    <Compile Include="Models\PSCheckSystemServicesUpdatesAvailableResponse.cs" />
     <Compile Include="Models\PSOperationalizationCluster.cs" />
-    <Compile Include="Models\PSOperationalizationClusterCredential.cs" />
+    <Compile Include="Models\PSOperationalizationClusterCredentials.cs" />
+    <Compile Include="Models\PSUpdateSystemServicesResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources.Designer.cs">
       <AutoGen>True</AutoGen>

@@ -15,7 +15,6 @@
 using Microsoft.Azure.Commands.MachineLearningCompute.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.MachineLearningCompute;
-using Microsoft.Azure.Management.MachineLearningCompute.Models;
 using Microsoft.Rest.Azure;
 using System;
 using System.Management.Automation;
@@ -23,7 +22,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
 {
     [Cmdlet(VerbsCommon.Get, CmdletSuffix + "Key")]
-    [OutputType(typeof(OperationalizationClusterCredentials))]
+    [OutputType(typeof(PSOperationalizationClusterCredentials))]
     public class GetAzureRmMlOpClusterKey : MachineLearningComputeCmdletBase
     {
         protected const string CmdletParametersParameterSet =
@@ -77,7 +76,7 @@ namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
 
             try
             {
-                WriteObject(MachineLearningComputeManagementClient.OperationalizationClusters.ListKeys(ResourceGroupName, Name));
+                WriteObject(new PSOperationalizationClusterCredentials(MachineLearningComputeManagementClient.OperationalizationClusters.ListKeys(ResourceGroupName, Name)));
             }
             catch (CloudException e)
             {
