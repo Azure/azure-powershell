@@ -206,7 +206,7 @@ Use the Enable-AzureRmDataCollection cmdlet to turn the feature On. The cmdlet c
     <value>Tenant '{0}' was not found. Please verify that your account has access to this tenant.</value>
   </data>
   <data name="TimeOutForProviderList" xml:space="preserve">
-    <value>Provider.List() timed out</value>
+    <value>Provider.List() timed out. Please retry.</value>
   </data>
   <data name="RDFEDataCollectionMessage" xml:space="preserve">
     <value>Azure PowerShell collects usage data in order to improve your experience.

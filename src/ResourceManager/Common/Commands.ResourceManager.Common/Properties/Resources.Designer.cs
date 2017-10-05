@@ -323,7 +323,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Provider.List() timed out.
+        ///   Looks up a localized string similar to Provider.List() timed out. Please retry..
         /// </summary>
         public static string TimeOutForProviderList {
             get {
