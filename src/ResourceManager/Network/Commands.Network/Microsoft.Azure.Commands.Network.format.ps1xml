@@ -808,6 +808,10 @@
                 <Label>Zones</Label>
                 <PropertyName>Zones</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>Sku</Label>
+                <PropertyName>SkuText</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -1404,6 +1408,10 @@
                 <Label>InboundNatPools</Label>
                 <PropertyName>InboundNatPoolsText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>Sku</Label>
+                <PropertyName>SkuText</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -1509,6 +1517,10 @@
               <ListItem>
                 <Label>InboundNatPools</Label>
                 <PropertyName>InboundNatPoolsText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Zones</Label>
+                <PropertyName>ZonesText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>

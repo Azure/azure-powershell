@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
 
     public class NodeConfigurationDeployment
     {
+        private const string Scheduled = "Scheduled";
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="NodeConfigurationDeployment" /> class.
@@ -31,15 +32,15 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <param name="accountName">
         ///     The account name.
         /// </param>
+        /// <param name="nodeConfiguraionName">
+        ///     The node configuration name.
+        /// </param>
         /// <param name="automationJob">
         ///     The Job.
         /// </param>
-        /// <param name="automationJobSchedule">
-        ///     The Job Schedule. (optional)
-        /// </param>
         /// <exception cref="System.ArgumentException">
         /// </exception>
-        public NodeConfigurationDeployment(string resourceGroupName, string accountName, 
+        public NodeConfigurationDeployment(string resourceGroupName, string accountName,
             string nodeConfiguraionName, Management.Automation.Models.Job automationJob = null)
         {
             Requires.Argument("accountName", accountName).NotNull();
@@ -49,10 +50,15 @@ namespace Microsoft.Azure.Commands.Automation.Model
             AutomationAccountName = accountName;
 
             if (automationJob != null && automationJob.Properties == null) return;
-            JobId = automationJob.Properties.JobId;
-            this.Job = new Job(resourceGroupName, accountName, automationJob);
 
-            this.NodeConfigurationName = nodeConfiguraionName;
+            if (automationJob != null)
+            {
+                JobId = automationJob.Properties.JobId;
+                JobStatus = automationJob.Properties.Status;
+                Job = new Job(resourceGroupName, accountName, automationJob);
+            }
+
+            NodeConfigurationName = nodeConfiguraionName;
         }
 
 
@@ -64,6 +70,9 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// </param>
         /// <param name="accountName">
         ///     The account name.
+        /// </param>
+        /// <param name="nodeConfiguraionName">
+        ///     The node configuration name.
         /// </param>
         /// <param name="automationJob">
         ///     The Job.
@@ -74,20 +83,33 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <exception cref="System.ArgumentException">
         /// </exception>
         public NodeConfigurationDeployment(string resourceGroupName, string accountName, string nodeConfiguraionName,
-            Automation.Model.Job automationJob = null)
+            Management.Automation.Models.Job automationJob = null, Management.Automation.Models.JobSchedule automationJobSchedule = null)
         {
             Requires.Argument("accountName", accountName).NotNull();
             Requires.Argument("resourceGroupName", resourceGroupName).NotNull();
 
             ResourceGroupName = resourceGroupName;
             AutomationAccountName = accountName;
-            this.NodeConfigurationName = nodeConfiguraionName;
+            NodeConfigurationName = nodeConfiguraionName;
+            
+            if (automationJob == null && automationJobSchedule == null) return;
+            else
+            {
+                if (automationJob != null)
+                {
+                    JobId = automationJob.Properties.JobId;
+                    JobStatus = automationJob.Properties.Status;
+                    Job = new Job(resourceGroupName, accountName, automationJob);
+                }
+                else
+                {
+                    JobScheduleId = automationJobSchedule.Properties.Id;
+                    JobStatus = Scheduled;
+                    JobSchedule = new JobSchedule(resourceGroupName, accountName, automationJobSchedule);
+                }
+            }
 
-            if (automationJob == null) return;
-
-            JobId = automationJob.JobId;
-            this.Job = automationJob;
-            this.JobStatus = automationJob.Status;
+            NodeConfigurationName = nodeConfiguraionName;
         }
 
         /// <summary>
@@ -98,6 +120,9 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// </param>
         /// <param name="accountName">
         ///     The account name.
+        /// </param>
+        /// <param name="nodeConfiguraionName"> 
+        ///     The Node Configuration Name 
         /// </param>
         /// <param name="nodeGroups">
         ///     The list of Node Groups with status.
@@ -116,7 +141,52 @@ namespace Microsoft.Azure.Commands.Automation.Model
 
             if (nodeGroups != null)
             {
-                this.NodeStatus = nodeGroups;
+                NodeStatus = nodeGroups;
+            }
+        }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="NodeConfigurationDeployment" /> class.
+        /// </summary>
+        /// <param name="resourceGroupName">
+        ///     The resource group name.
+        /// </param>
+        /// <param name="accountName">
+        ///     The account name.
+        /// </param>
+        /// <param name="automationJob">
+        ///     The Job. (optional)
+        /// </param>
+        /// <param name="nodeConfiguraionName"> 
+        ///     The Node Configuration Name 
+        /// </param>
+        /// <param name="nodeGroups">
+        ///     The list of Node Groups with status. (optional)
+        /// </param>
+        /// <exception cref="System.ArgumentException">
+        /// </exception>
+        public NodeConfigurationDeployment(string resourceGroupName, string accountName, string nodeConfiguraionName,
+            Management.Automation.Models.Job automationJob = null, IList<IDictionary<string, string>> nodeGroups = null)
+        {
+            Requires.Argument("accountName", accountName).NotNull();
+            Requires.Argument("resourceGroupName", resourceGroupName).NotNull();
+
+            ResourceGroupName = resourceGroupName;
+            AutomationAccountName = accountName;
+            NodeConfigurationName = nodeConfiguraionName;
+
+            if (automationJob != null && automationJob.Properties == null) return;
+
+            if (automationJob != null)
+            {
+                JobId = automationJob.Properties.JobId;
+                JobStatus = automationJob.Properties.Status;
+                Job = new Job(resourceGroupName, accountName, automationJob);
+            }
+
+            if (nodeGroups != null)
+            {
+                NodeStatus = nodeGroups;
             }
         }
 
@@ -135,13 +205,16 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <param name="automationJobSchedule">
         ///     The Job Schedule. (optional)
         /// </param>
+        /// <param name="nodeConfiguraionName"> 
+        ///     The Node Configuration Name 
+        /// </param>
         /// <param name="nodeGroups">
         ///     The list of Node Groups with status. (optional)
         /// </param>
         /// <exception cref="System.ArgumentException">
         /// </exception>
         public NodeConfigurationDeployment(string resourceGroupName, string accountName, string nodeConfiguraionName,
-            Management.Automation.Models.Job automationJob = null,
+            Management.Automation.Models.Job automationJob = null, Management.Automation.Models.JobSchedule automationJobSchedule = null,
             IList<IDictionary<string, string>> nodeGroups = null)
         {
             Requires.Argument("accountName", accountName).NotNull();
@@ -151,19 +224,27 @@ namespace Microsoft.Azure.Commands.Automation.Model
             AutomationAccountName = accountName;
             NodeConfigurationName = nodeConfiguraionName;
 
-            if (automationJob != null && automationJob.Properties == null) return;
-
-            JobId = automationJob.Properties.JobId;
-            JobStatus = automationJob.Properties.Status;
-            this.Job = new Job(resourceGroupName, accountName, automationJob);
-            
+            if (automationJob == null && automationJobSchedule == null) return;
+            else
+            {
+                if (automationJob != null)
+                {
+                    JobId = automationJob.Properties.JobId;
+                    JobStatus = automationJob.Properties.Status;
+                    Job = new Job(resourceGroupName, accountName, automationJob);
+                }
+                else
+                {
+                    JobScheduleId = automationJobSchedule.Properties.Id;
+                    JobSchedule = new JobSchedule(resourceGroupName, accountName, automationJobSchedule);
+                }
+            }
 
             if (nodeGroups != null)
             {
-                this.NodeStatus = nodeGroups;
+                NodeStatus = nodeGroups;
             }
         }
-        
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="NodeConfigurationDeployment" /> class.
@@ -203,8 +284,18 @@ namespace Microsoft.Azure.Commands.Automation.Model
         public IList<IDictionary<string, string>> NodeStatus { get; set; }
 
         /// <summary>
-        ///     Gets or sets Ndoe Configuration name.
+        ///     Gets or sets Node Configuration name.
         /// </summary>
         public string NodeConfigurationName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Job Schedule.
+        /// </summary>
+        public JobSchedule JobSchedule { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Job Schedule Id.
+        /// </summary>
+        public Guid JobScheduleId { get; set; }
     }
 }
