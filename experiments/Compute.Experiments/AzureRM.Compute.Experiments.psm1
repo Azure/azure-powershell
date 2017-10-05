@@ -38,8 +38,10 @@ function New-AzVm {
             Get-AzureRmContext
         }
 
+        # find image
         $image = Get-Image($ImageName)
 
+        # ports
         if (!$OpenPorts) {
             switch ($image.Type) {
                 "Windows" {
@@ -58,7 +60,7 @@ function New-AzVm {
         $piai = [PublicIpAddress]::new($PublicIpAddressName, $rgi, $DomainNameLabel, $AllocationMethod)
         $sgi = [SecurityGroup]::new($SecurityGroupName, $rgi, $OpenPorts)
 
-        # we don't allow to reuse NetworkInterface so $name is $null.
+        # we don't allow to reuse NetworkInterface
         $nii = [NetworkInterface]::new(
             $Name,
             $rgi,

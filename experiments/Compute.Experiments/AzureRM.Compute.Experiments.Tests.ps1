@@ -16,26 +16,21 @@ $vmComputerUser = $credentials.vmUser;
 $password = ConvertTo-SecureString $vmComputerPassword -AsPlainText -Force;
 $vmCredential = New-Object System.Management.Automation.PSCredential ($vmComputerUser, $password);
 
-# New-AzVm -Name MyVM -Credential $vmCredential -WhatIf
-
-# $job = New-AzVm -Name MyVMA -Credential $vmCredential -AsJob
-# Receive-Job $job
-
-# exit
-
-# $vm = New-AzVm
-# $vm = New-AzVm -Credential $vmCredential
-$vm = New-AzVm -Name MyVMA1 -Credential $vmCredential -ResourceGroupName Something1 -Verbose
-$linux = New-AzVm -Name MyVMA2 -Credential $vmCredential -ResourceGroupName Something1 -ImageName UbuntuLTS -Verbose
-# $vm = New-AzVm -Name MyVMA
-
-$vm
-
-# Write-Host "<async>"
-# $job = New-AzVm -Name MyVMA3 -Credential $vmCredential -AsJob
-# $vm = Receive-Job $job -Wait
-# $vm
-# Write-Host "</async>"
+Describe 'New-AzVm' {
+    It 'WhatIf' {
+        New-AzVm -Name MyVM -Credential $vmCredential -WhatIf
+    }
+    It 'Create Windows VM' {
+        New-AzVm -Name MyVMA1 -Credential $vmCredential -ResourceGroupName Something1 -Verbose
+    }
+    It 'Create Linux VM' {
+        New-AzVm -Name MyVMA2 -Credential $vmCredential -ResourceGroupName Something1 -ImageName UbuntuLTS -Verbose
+    }
+    It 'Create Linux VM AsJob' {
+        $job = New-AzVm -Name MyVMA3 -Credential $vmCredential -AsJob -ImageName UbuntuLTS -Verbose
+        Receive-Job $job -Wait
+    }
+}
 
 # clean-up
-Remove-AzureRmResourceGroup -Name $vm.Vm.ResourceGroupName
+# Remove-AzureRmResourceGroup -Name Something1
