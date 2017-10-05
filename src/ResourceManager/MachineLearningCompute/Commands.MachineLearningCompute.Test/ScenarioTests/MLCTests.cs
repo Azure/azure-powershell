@@ -16,6 +16,7 @@ namespace Microsoft.Azure.Commands.MachineLearningCompute.Test.ScenarioTests
             XunitTracingInterceptor.AddToContext(interceptor);
         }
 
+        /*
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewGetRemove()
@@ -35,6 +36,14 @@ namespace Microsoft.Azure.Commands.MachineLearningCompute.Test.ScenarioTests
         public void TestUpdateSystemServices()
         {
             TestController.NewInstance.RunPsTest(this.interceptor, "Test-UpdateSystemServices");
+        }
+        */
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSandbox()
+        {
+            TestController.NewInstance.RunPsTest(this.interceptor, "Test-Sandbox");
         }
     }
 }

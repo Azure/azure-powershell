@@ -16,7 +16,9 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.MachineLearningCompute;
+using Microsoft.Azure.Management.MachineLearningCompute.Models;
 using Microsoft.Rest.Azure;
+using System;
 
 namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
 {
@@ -65,18 +67,55 @@ namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
             }
         }
 
-        protected void HandleNestedExceptionMessages(CloudException e)
+        protected void HandleNestedExceptionMessages(Exception e)
         {
-            var exceptionDetails = e.Message + ".";
+            var unwrappedException = e;
 
-            foreach (var err in e.Body.Details)
+            // Try to get the details out of the exception
+            try
             {
-                exceptionDetails += " " + err.Message + ".";
+                if (e is ErrorResponseWrapperException)
+                {
+                    var wrappedException = e as ErrorResponseWrapperException;
+
+                    if (wrappedException.Body != null && wrappedException.Body.Error != null)
+                    {
+                        var exceptionDetails = e.Message + ": " + wrappedException.Body.Error.Message;
+
+                        if (wrappedException.Body.Error.Details != null)
+                        {
+                            foreach (var err in wrappedException.Body.Error.Details)
+                            {
+                                exceptionDetails += $" {err.Message};";
+                            }
+                        }
+
+                        unwrappedException = new ErrorResponseWrapperException(exceptionDetails);
+                    }
+                }
+                else if(e is CloudException)
+                {
+                    var cloudException = e as CloudException;
+                    var exceptionDetails = e.Message;
+
+                    if (cloudException.Body != null && cloudException.Body.Details != null)
+                    {
+                        exceptionDetails += ":";
+                        foreach (var err in cloudException.Body.Details)
+                        {
+                            exceptionDetails += $" {err.Message};";
+                        }
+
+                        unwrappedException = new CloudException(exceptionDetails);
+                    }
+                }
+            }
+            catch (Exception) // If there's trouble throw the original exception
+            {
+                throw e;
             }
 
-            var newException = new CloudException(exceptionDetails);
-      
-            throw newException;
+            throw unwrappedException;
         }
     }
 }
