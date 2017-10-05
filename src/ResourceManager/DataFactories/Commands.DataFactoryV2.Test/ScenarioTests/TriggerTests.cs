@@ -44,5 +44,12 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Test
         {
             RunPowerShellTest("Test-TriggerRun");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestTriggerWithResourceId()
+        {
+            RunPowerShellTest("Test-TriggerWithResourceId");
+        }
     }
 }
