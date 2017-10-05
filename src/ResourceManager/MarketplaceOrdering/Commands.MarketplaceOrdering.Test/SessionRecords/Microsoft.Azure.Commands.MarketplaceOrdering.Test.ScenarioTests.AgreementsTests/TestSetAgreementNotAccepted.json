@@ -7,22 +7,22 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "10ef30d2-9b79-4d17-8c0e-cd6f677e10d3"
+          "522f446e-5fdc-4569-8d6c-5bf40c90e618"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
           "FxVersion/4.7.2110.0",
-          "OSName/Windows_10_Enterprise",
+          "OSName/Windows10Enterprise",
           "OSVersion/6.3.15063",
-          "Microsoft.Azure.Management.MarketplaceOrdering.MarketplaceOrderingAgreementsClient/1.0.0"
+          "Microsoft.Azure.Management.MarketplaceOrdering.MarketplaceOrderingAgreementsClient/1.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/2ad668e2-04e4-4a99-8292-4df4f74362ae/providers/Microsoft.MarketplaceOrdering/offertypes/microsoft-ads/offers/windows-data-science-vm/plans/windows2016\",\r\n  \"name\": \"windows2016\",\r\n  \"type\": \"Microsoft.MarketplaceOrdering/offertypes\",\r\n  \"properties\": {\r\n    \"publisher\": \"microsoft-ads\",\r\n    \"product\": \"windows-data-science-vm\",\r\n    \"plan\": \"windows2016\",\r\n    \"licenseTextLink\": \"https://106c4.wpc.azureedge.net/80106C4/Gallery-Prod/cdn/2015-02-24/prod20161101-microsoft-windowsazure-gallery/microsoft-ads.windows-data-science-vmwindows2016.1.0.3/Content/LegalTerms0.DEFAULT.txt\",\r\n    \"privacyPolicyLink\": \"https://www.microsoft.com/EN-US/privacystatement/OnlineServices/Default.aspx\",\r\n    \"retrieveDatetime\": \"2017-10-04T04:14:26.7894332Z\",\r\n    \"signature\": \"ZELIKUBZ5NUP6R5SRYAJ4EV2JIIGKDGUIJ3IIHW6QULDGIFQKAXYS7ABYMJAU3UF72YUHSUF4VGR3E35M7Y6YDWBFB43YUET7G73UNI\",\r\n    \"accepted\": true\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/2ad668e2-04e4-4a99-8292-4df4f74362ae/providers/Microsoft.MarketplaceOrdering/offertypes/microsoft-ads/offers/windows-data-science-vm/plans/windows2016\",\r\n  \"name\": \"windows2016\",\r\n  \"type\": \"Microsoft.MarketplaceOrdering/offertypes\",\r\n  \"properties\": {\r\n    \"publisher\": \"microsoft-ads\",\r\n    \"product\": \"windows-data-science-vm\",\r\n    \"plan\": \"windows2016\",\r\n    \"licenseTextLink\": \"https://106c4.wpc.azureedge.net/80106C4/Gallery-Prod/cdn/2015-02-24/prod20161101-microsoft-windowsazure-gallery/microsoft-ads.windows-data-science-vmwindows2016.1.0.3/Content/LegalTerms0.DEFAULT.txt\",\r\n    \"privacyPolicyLink\": \"https://www.microsoft.com/EN-US/privacystatement/OnlineServices/Default.aspx\",\r\n    \"retrieveDatetime\": \"2017-10-05T00:45:19.20199Z\",\r\n    \"signature\": \"MRBULAF7BCED733HPMJXBU2PMGDUBOALX3NQLAYIGPLDGT6IT4NVB7XFKPQA4NRNRHKQMW7LNECM22HV5GBZNFX2EFPFR3KL47ARZXA\",\r\n    \"accepted\": true\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "847"
+          "845"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -40,10 +40,10 @@
           "14999"
         ],
         "x-ms-client-request-id": [
-          "10ef30d2-9b79-4d17-8c0e-cd6f677e10d3"
+          "522f446e-5fdc-4569-8d6c-5bf40c90e618"
         ],
         "x-ms-request-id": [
-          "b7ab81a9-bc82-48b2-b9bc-e687cfcefa21"
+          "5d393f80-44a9-4a23-b313-7b6cba62c98e"
         ],
         "DataServiceVersion": [
           "5.2.1.309 (AzureUX-Store:master.9dbea9b4.170911-1246)"
@@ -52,16 +52,16 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-correlation-request-id": [
-          "b5b939f6-8d32-4acb-85b2-abe353f2ef74"
+          "e12fd10b-7e63-4090-820a-935a386cc6e8"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20171004T041426Z:b5b939f6-8d32-4acb-85b2-abe353f2ef74"
+          "WESTUS2:20171005T004519Z:e12fd10b-7e63-4090-820a-935a386cc6e8"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 04 Oct 2017 04:14:26 GMT"
+          "Thu, 05 Oct 2017 00:45:18 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -82,19 +82,19 @@
           "51"
         ],
         "x-ms-client-request-id": [
-          "aff076c1-061a-46c5-a576-e9fdcfe65f52"
+          "09390b28-349a-4ce8-855a-4b9529b79769"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
           "FxVersion/4.7.2110.0",
-          "OSName/Windows_10_Enterprise",
+          "OSName/Windows10Enterprise",
           "OSVersion/6.3.15063",
-          "Microsoft.Azure.Management.MarketplaceOrdering.MarketplaceOrderingAgreementsClient/1.0.0"
+          "Microsoft.Azure.Management.MarketplaceOrdering.MarketplaceOrderingAgreementsClient/1.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/2ad668e2-04e4-4a99-8292-4df4f74362ae/providers/Microsoft.MarketplaceOrdering/offertypes/microsoft-ads/offers/windows-data-science-vm/plans/windows2016\",\r\n  \"name\": \"windows2016\",\r\n  \"type\": \"Microsoft.MarketplaceOrdering/offertypes\",\r\n  \"properties\": {\r\n    \"publisher\": \"microsoft-ads\",\r\n    \"product\": \"windows-data-science-vm\",\r\n    \"plan\": \"windows2016\",\r\n    \"licenseTextLink\": \"https://106c4.wpc.azureedge.net/80106C4/Gallery-Prod/cdn/2015-02-24/prod20161101-microsoft-windowsazure-gallery/microsoft-ads.windows-data-science-vmwindows2016.1.0.3/Content/LegalTerms0.DEFAULT.txt\",\r\n    \"privacyPolicyLink\": \"https://www.microsoft.com/EN-US/privacystatement/OnlineServices/Default.aspx\",\r\n    \"retrieveDatetime\": \"2017-10-04T04:14:13.6238393Z\",\r\n    \"signature\": \"YBJQPHPVQBDWYRO4ZTWNRCTLNXGLXQRMNIBF7J2WELK4RLOY3GWH3IY5W7ADTEOAWVD2WTRPTB6U3VZED7F55Y6TQZG36TDNMN5JMUI\",\r\n    \"accepted\": false\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/2ad668e2-04e4-4a99-8292-4df4f74362ae/providers/Microsoft.MarketplaceOrdering/offertypes/microsoft-ads/offers/windows-data-science-vm/plans/windows2016\",\r\n  \"name\": \"windows2016\",\r\n  \"type\": \"Microsoft.MarketplaceOrdering/offertypes\",\r\n  \"properties\": {\r\n    \"publisher\": \"microsoft-ads\",\r\n    \"product\": \"windows-data-science-vm\",\r\n    \"plan\": \"windows2016\",\r\n    \"licenseTextLink\": \"https://106c4.wpc.azureedge.net/80106C4/Gallery-Prod/cdn/2015-02-24/prod20161101-microsoft-windowsazure-gallery/microsoft-ads.windows-data-science-vmwindows2016.1.0.3/Content/LegalTerms0.DEFAULT.txt\",\r\n    \"privacyPolicyLink\": \"https://www.microsoft.com/EN-US/privacystatement/OnlineServices/Default.aspx\",\r\n    \"retrieveDatetime\": \"2017-10-05T00:45:08.9511183Z\",\r\n    \"signature\": \"UDZAIFOCYCA2NDN6OT2O4CE2AMG45LFVZB2MHAG5R3SEP4LRKTULCCLO6UJSRTMRXNWPP7BLS2UWRLCRKV5IWYGBVUYAQWZIHR3IUGI\",\r\n    \"accepted\": false\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "848"
@@ -115,10 +115,10 @@
           "1199"
         ],
         "x-ms-client-request-id": [
-          "aff076c1-061a-46c5-a576-e9fdcfe65f52"
+          "09390b28-349a-4ce8-855a-4b9529b79769"
         ],
         "x-ms-request-id": [
-          "d13fc0ae-bca4-4cbd-8944-19bef150f6cc"
+          "2bafb0f2-a15c-4626-8d7b-427e0beb0738"
         ],
         "DataServiceVersion": [
           "5.2.1.309 (AzureUX-Store:master.9dbea9b4.170911-1246)"
@@ -127,16 +127,16 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-correlation-request-id": [
-          "6ed1002f-4e67-499b-956e-c4fb7472ac8c"
+          "1fafe3d5-1d93-4d04-9058-697ddc2862f7"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20171004T041427Z:6ed1002f-4e67-499b-956e-c4fb7472ac8c"
+          "WESTUS2:20171005T004519Z:1fafe3d5-1d93-4d04-9058-697ddc2862f7"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 04 Oct 2017 04:14:26 GMT"
+          "Thu, 05 Oct 2017 00:45:19 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.5"

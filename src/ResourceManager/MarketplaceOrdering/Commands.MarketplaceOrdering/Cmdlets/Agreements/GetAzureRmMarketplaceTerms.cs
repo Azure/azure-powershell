@@ -20,18 +20,18 @@ using Microsoft.Azure.Management.MarketplaceOrdering.Models;
 
 namespace Microsoft.Azure.Commands.MarketplaceOrdering.Cmdlets.Agreements
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmMarketplaceTerms", DefaultParameterSetName = Constants.ParameterSetNames.AgreementParameterSet), OutputType(typeof(PSAgreementTerms))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmMarketplaceTerms", DefaultParameterSetName = Constants.ParameterSetNames.AgreementAcceptParameterSet), OutputType(typeof(PSAgreementTerms))]
     public class GetAzureRmMarketplaceTerms : AzureMarketplaceOrderingCmdletBase
     {
-        [Parameter(Mandatory = true, HelpMessage = "Publisher identifier string of image being deployed.", ParameterSetName = Constants.ParameterSetNames.AgreementParameterSet)]
+        [Parameter(Mandatory = true, HelpMessage = "Publisher identifier string of image being deployed.", ParameterSetName = Constants.ParameterSetNames.AgreementAcceptParameterSet)]
         [ValidateNotNullOrEmpty]
         public string Publisher { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "Offer identifier string of image being deployed.", ParameterSetName = Constants.ParameterSetNames.AgreementParameterSet)]
+        [Parameter(Mandatory = true, HelpMessage = "Offer identifier string of image being deployed.", ParameterSetName = Constants.ParameterSetNames.AgreementAcceptParameterSet)]
         [ValidateNotNullOrEmpty]
         public string Product { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "Plan identifier string of image being deployed.", ParameterSetName = Constants.ParameterSetNames.AgreementParameterSet)]
+        [Parameter(Mandatory = true, HelpMessage = "Plan identifier string of image being deployed.", ParameterSetName = Constants.ParameterSetNames.AgreementAcceptParameterSet)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.MarketplaceOrdering.Cmdlets.Agreements
         {
             try
             {
-                if (ParameterSetName.Equals(Constants.ParameterSetNames.AgreementParameterSet))
+                if (ParameterSetName.Equals(Constants.ParameterSetNames.AgreementAcceptParameterSet))
                 {
                     var agreementTerms = new PSAgreementTerms(MarketplaceOrderingAgreementsClient.MarketplaceAgreements.Get(Publisher, Product, Name));
                     WriteObject(agreementTerms);

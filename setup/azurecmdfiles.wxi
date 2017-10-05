@@ -7106,12 +7106,6 @@
                         <Component Id="cmp0288996DAF3F5401E14AC034166AE89D" Guid="*">
                             <File Id="fil713A1AFA219BD6B114C9D652E014F08A" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.MarketplaceOrdering\AzureRM.MarketplaceOrdering.psm1" />
                         </Component>
-                        <Component Id="cmp4EED2737300C8F03A04CD370B2B1A16F" Guid="*">
-                            <File Id="filADF2026C7DD45CA957C302F6E58D71A7" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.MarketplaceOrdering\AzureRM.Profile.psd1" />
-                        </Component>
-                        <Component Id="cmpFFF0E91695372C7062F9C01D91CB1769" Guid="*">
-                            <File Id="filA3CCE88184489456EB58C50D5F46D509" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.MarketplaceOrdering\AzureRmProfileStartup.ps1" />
-                        </Component>
                         <Component Id="cmp61A2F6BAE32D6B1610634661666B00EB" Guid="*">
                             <File Id="fil47AB96F186D0AB1AF53DBF6CE77DD0A6" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.MarketplaceOrdering\Hyak.Common.dll" />
                         </Component>
@@ -7129,12 +7123,6 @@
                         </Component>
                         <Component Id="cmpA935356DB49173BE632246C7D5831B87" Guid="*">
                             <File Id="fil543466169A8CDB4A63AFB0670B1A8974" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.MarketplaceOrdering\Microsoft.Azure.Commands.MarketplaceOrdering.Format.ps1xml" />
-                        </Component>
-                        <Component Id="cmpE84543C0175CAD4DD739E41582EBF234" Guid="*">
-                            <File Id="filCBBECF78F45145A3E52A8709E5F24C9C" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.MarketplaceOrdering\Microsoft.Azure.Commands.Profile.format.ps1xml" />
-                        </Component>
-                        <Component Id="cmpB446FBB46722C39D70BFC9E3433D8E0D" Guid="*">
-                            <File Id="fil2E96B8126D3BA9F36677A32504A94CBC" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.MarketplaceOrdering\Microsoft.Azure.Commands.Profile.types.ps1xml" />
                         </Component>
                         <Component Id="cmp22F865481B4F65F5A7677100DDEBF80F" Guid="*">
                             <File Id="filEC1D7D16C113689C0A843237756CEE7F" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.MarketplaceOrdering\Microsoft.Azure.Commands.ResourceManager.Common.dll" />
@@ -11704,16 +11692,12 @@
             <ComponentRef Id="cmpAEE0BBCF0220365A089D7B8797E01190" />
             <ComponentRef Id="cmp7A8866964515C9266836AE2727FC2772" />
             <ComponentRef Id="cmp0288996DAF3F5401E14AC034166AE89D" />
-            <ComponentRef Id="cmp4EED2737300C8F03A04CD370B2B1A16F" />
-            <ComponentRef Id="cmpFFF0E91695372C7062F9C01D91CB1769" />
             <ComponentRef Id="cmp61A2F6BAE32D6B1610634661666B00EB" />
             <ComponentRef Id="cmp7B5D5FD680D26D30857427E36AAFA0DB" />
             <ComponentRef Id="cmpD25AAE4E5D284F4849212C1BB5C53D35" />
             <ComponentRef Id="cmp0207800F580CB08D274BA341FAB3497A" />
             <ComponentRef Id="cmpD7BAE7FE5CF6F216C224400B50C0476E" />
             <ComponentRef Id="cmpA935356DB49173BE632246C7D5831B87" />
-            <ComponentRef Id="cmpE84543C0175CAD4DD739E41582EBF234" />
-            <ComponentRef Id="cmpB446FBB46722C39D70BFC9E3433D8E0D" />
             <ComponentRef Id="cmp22F865481B4F65F5A7677100DDEBF80F" />
             <ComponentRef Id="cmp5119252ED0C2A2BE2FD9A40F7759876C" />
             <ComponentRef Id="cmpE19137AF99446153F264315346D5ACF9" />

@@ -56,5 +56,12 @@ namespace Microsoft.Azure.Commands.MarketplaceOrdering.Test.ScenarioTests
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-SetAgreementTermsAcceptedPipelineGet");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetAgreementRejectPipeline()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-SetAgreementTermsRejectedPipelineGet");
+        }
     }
 }
