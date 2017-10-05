@@ -25,4 +25,44 @@
     https://github.com/Azure/azure-powershell/blob/dev/documentation/breaking-changes/breaking-change-template.md
 -->
 
-# Upcoming Breaking Changes
+# Upcoming Breaking Changes   
+
+## Release 5.0.0 - November 2017
+
+The following cmdlets were affected this release:
+
+**New-AzureRmBatchCertificate**
+- Parameter "Password" being replaced in favor of a Secure string
+
+```powershell
+
+# Old
+# New-AzureRmBatchCertificate [other required parameters] -Password "plain-text string"
+
+# New
+# New-AzureRmBatchCertificate [other required parameters] -Password $SecureStringVariable
+```
+
+**New-AzureRmBatchComputeNodeUser**
+- Parameter "Password" being replaced in favor of a Secure string
+
+```powershell
+
+# Old
+# New-AzureRmBatchComputeNodeUser [other required parameters] -Password "plain-text string"
+
+# New
+# New-AzureRmBatchComputeNodeUser [other required parameters] -Password $SecureStringVariable
+```
+
+**Set-AzureRmBatchComputeNodeUser**
+- Parameter "Password" being replaced in favor of a Secure string
+
+```powershell
+
+# Old
+# Set-AzureRmBatchComputeNodeUser [other required parameters] -Password "plain-text string"
+
+# New
+# Set-AzureRmBatchComputeNodeUser [other required parameters] -Password $SecureStringVariable
+```
