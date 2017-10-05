@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzureRmMarketplaceTerms
 
 ## SYNOPSIS
-Get the agreement terms for a given publisher id(Publisher), offer id(Product) and plan id(Name). The same terms object which is returned here should be passed to Set-AzureRmMarketplaceTerms to accept the terms.
+Get the agreement terms for a given publisher id(Publisher), offer id(Product) and plan id(Name). The terms object which is returned by this command should be passed to Set-AzureRmMarketplaceTerms to accept the legal terms.
 
 ## SYNTAX
 
