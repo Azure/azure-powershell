@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.Location;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
@@ -54,7 +55,7 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The location.")]
+            HelpMessage = "The location."), LocationCompleter(new string[] { "Microsoft.Compute/virtualMachines" })]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
