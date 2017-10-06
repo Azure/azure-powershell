@@ -29,17 +29,24 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public partial class PSOSDisk
+    public partial class PSTaskContainerSettings
     {
         
-        internal Microsoft.Azure.Batch.OSDisk omObject;
+        internal Microsoft.Azure.Batch.TaskContainerSettings omObject;
         
-        public PSOSDisk(System.Nullable<Microsoft.Azure.Batch.Common.CachingType> caching = null)
+        private PSContainerRegistry registry;
+        
+        public PSTaskContainerSettings(string imageName, string containerRunOptions = null, PSContainerRegistry registry = default(PSContainerRegistry))
         {
-            this.omObject = new Microsoft.Azure.Batch.OSDisk(caching);
+            Microsoft.Azure.Batch.ContainerRegistry registryOmObject = null;
+            if ((registry != null))
+            {
+                registryOmObject = registry.omObject;
+            }
+            this.omObject = new Microsoft.Azure.Batch.TaskContainerSettings(imageName, containerRunOptions, registryOmObject);
         }
         
-        internal PSOSDisk(Microsoft.Azure.Batch.OSDisk omObject)
+        internal PSTaskContainerSettings(Microsoft.Azure.Batch.TaskContainerSettings omObject)
         {
             if ((omObject == null))
             {
@@ -48,11 +55,32 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public Microsoft.Azure.Batch.Common.CachingType? Caching
+        public string ContainerRunOptions
         {
             get
             {
-                return this.omObject.Caching;
+                return this.omObject.ContainerRunOptions;
+            }
+        }
+        
+        public string ImageName
+        {
+            get
+            {
+                return this.omObject.ImageName;
+            }
+        }
+        
+        public PSContainerRegistry Registry
+        {
+            get
+            {
+                if (((this.registry == null) 
+                            && (this.omObject.Registry != null)))
+                {
+                    this.registry = new PSContainerRegistry(this.omObject.Registry);
+                }
+                return this.registry;
             }
         }
     }

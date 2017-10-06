@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.TargetDedicatedComputeNodes = 3;
             cmdlet.TargetLowPriorityComputeNodes = 2;
             cmdlet.TaskSchedulingPolicy = new PSTaskSchedulingPolicy(Azure.Batch.Common.ComputeNodeFillType.Spread);
-            cmdlet.VirtualMachineConfiguration = new PSVirtualMachineConfiguration("node agent", new PSImageReference("offer", "publisher", "sku"));
+            cmdlet.VirtualMachineConfiguration = new PSVirtualMachineConfiguration(new PSImageReference("offer", "publisher", "sku"), "node agent");
             cmdlet.VirtualMachineSize = "small";
             
             PoolAddParameter requestParameters = null;
@@ -219,9 +219,12 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.Id = "testPool";
             cmdlet.TargetDedicatedComputeNodes = 3;
 
-            List<string> imageUrls = new List<string>() { "https://image1.vhd", "https://image2.vhd" };
             Azure.Batch.Common.CachingType cachingType = Azure.Batch.Common.CachingType.ReadWrite;
-            cmdlet.VirtualMachineConfiguration = new PSVirtualMachineConfiguration("node agent", osDisk: new PSOSDisk(imageUrls, cachingType));
+            cmdlet.VirtualMachineConfiguration =
+                new PSVirtualMachineConfiguration(new PSImageReference("offer", "publisher", "sku"), "node agent")
+                {
+                    OSDisk = new PSOSDisk(cachingType)
+                };
             PoolAddParameter requestParameters = null;
 
             // Store the request parameters
@@ -237,9 +240,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.ExecuteCmdlet();
 
             // Verify the request parameters match the cmdlet parameters
-            Assert.Equal(2, requestParameters.VirtualMachineConfiguration.OsDisk.ImageUris.Count);
-            Assert.Equal(imageUrls[0], requestParameters.VirtualMachineConfiguration.OsDisk.ImageUris[0]);
-            Assert.Equal(imageUrls[1], requestParameters.VirtualMachineConfiguration.OsDisk.ImageUris[1]);
             Assert.Equal(cachingType.ToString().ToLowerInvariant(), 
                 requestParameters.VirtualMachineConfiguration.OsDisk.Caching.ToString().ToLowerInvariant());
         }

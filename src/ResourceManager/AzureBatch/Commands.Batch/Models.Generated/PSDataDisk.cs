@@ -29,17 +29,17 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public partial class PSOSDisk
+    public partial class PSDataDisk
     {
         
-        internal Microsoft.Azure.Batch.OSDisk omObject;
+        internal Microsoft.Azure.Batch.DataDisk omObject;
         
-        public PSOSDisk(System.Nullable<Microsoft.Azure.Batch.Common.CachingType> caching = null)
+        public PSDataDisk(int lun, int diskSizeGB, System.Nullable<Microsoft.Azure.Batch.Common.CachingType> caching = null, System.Nullable<Microsoft.Azure.Batch.Common.StorageAccountType> storageAccountType = null)
         {
-            this.omObject = new Microsoft.Azure.Batch.OSDisk(caching);
+            this.omObject = new Microsoft.Azure.Batch.DataDisk(lun, diskSizeGB, caching, storageAccountType);
         }
         
-        internal PSOSDisk(Microsoft.Azure.Batch.OSDisk omObject)
+        internal PSDataDisk(Microsoft.Azure.Batch.DataDisk omObject)
         {
             if ((omObject == null))
             {
@@ -53,6 +53,30 @@ namespace Microsoft.Azure.Commands.Batch.Models
             get
             {
                 return this.omObject.Caching;
+            }
+        }
+        
+        public int DiskSizeGB
+        {
+            get
+            {
+                return this.omObject.DiskSizeGB;
+            }
+        }
+        
+        public int Lun
+        {
+            get
+            {
+                return this.omObject.Lun;
+            }
+        }
+        
+        public Microsoft.Azure.Batch.Common.StorageAccountType? StorageAccountType
+        {
+            get
+            {
+                return this.omObject.StorageAccountType;
             }
         }
     }

@@ -29,17 +29,17 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public partial class PSOSDisk
+    public partial class PSContainerRegistry
     {
         
-        internal Microsoft.Azure.Batch.OSDisk omObject;
+        internal Microsoft.Azure.Batch.ContainerRegistry omObject;
         
-        public PSOSDisk(System.Nullable<Microsoft.Azure.Batch.Common.CachingType> caching = null)
+        public PSContainerRegistry(string userName, string registryServer = null, string password = null)
         {
-            this.omObject = new Microsoft.Azure.Batch.OSDisk(caching);
+            this.omObject = new Microsoft.Azure.Batch.ContainerRegistry(userName, registryServer, password);
         }
         
-        internal PSOSDisk(Microsoft.Azure.Batch.OSDisk omObject)
+        internal PSContainerRegistry(Microsoft.Azure.Batch.ContainerRegistry omObject)
         {
             if ((omObject == null))
             {
@@ -48,11 +48,27 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public Microsoft.Azure.Batch.Common.CachingType? Caching
+        public string Password
         {
             get
             {
-                return this.omObject.Caching;
+                return this.omObject.Password;
+            }
+        }
+        
+        public string RegistryServer
+        {
+            get
+            {
+                return this.omObject.RegistryServer;
+            }
+        }
+        
+        public string UserName
+        {
+            get
+            {
+                return this.omObject.UserName;
             }
         }
     }

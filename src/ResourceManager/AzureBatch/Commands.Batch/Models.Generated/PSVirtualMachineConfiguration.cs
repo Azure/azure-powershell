@@ -34,40 +34,19 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         internal Microsoft.Azure.Batch.VirtualMachineConfiguration omObject;
         
+        private PSContainerConfiguration containerConfiguration;
+        
+        private IList<PSDataDisk> dataDisks;
+        
         private PSImageReference imageReference;
         
         private PSOSDisk oSDisk;
         
         private PSWindowsConfiguration windowsConfiguration;
         
-        public PSVirtualMachineConfiguration(string nodeAgentSkuId, PSImageReference imageReference = default(PSImageReference), PSOSDisk osDisk = default(PSOSDisk), PSWindowsConfiguration windowsConfiguration = default(PSWindowsConfiguration))
+        public PSVirtualMachineConfiguration(PSImageReference imageReference, string nodeAgentSkuId)
         {
-            Microsoft.Azure.Batch.ImageReference imageReferenceOmObject = null;
-            if ((imageReference != null))
-            {
-                imageReferenceOmObject = imageReference.omObject;
-            }
-            Microsoft.Azure.Batch.OSDisk osDiskOmObject = null;
-            if ((osDisk != null))
-            {
-                osDiskOmObject = osDisk.omObject;
-            }
-            Microsoft.Azure.Batch.WindowsConfiguration windowsConfigurationOmObject = null;
-            if ((windowsConfiguration != null))
-            {
-                windowsConfigurationOmObject = windowsConfiguration.omObject;
-            }
-            this.omObject = new Microsoft.Azure.Batch.VirtualMachineConfiguration(nodeAgentSkuId, imageReferenceOmObject, osDiskOmObject, windowsConfigurationOmObject);
-        }
-        
-        public PSVirtualMachineConfiguration(PSImageReference imageReference, string nodeAgentSkuId, PSWindowsConfiguration windowsConfiguration = default(PSWindowsConfiguration))
-        {
-            Microsoft.Azure.Batch.WindowsConfiguration windowsConfigurationOmObject = null;
-            if ((windowsConfiguration != null))
-            {
-                windowsConfigurationOmObject = windowsConfiguration.omObject;
-            }
-            this.omObject = new Microsoft.Azure.Batch.VirtualMachineConfiguration(imageReference.omObject, nodeAgentSkuId, windowsConfigurationOmObject);
+            this.omObject = new Microsoft.Azure.Batch.VirtualMachineConfiguration(imageReference.omObject, nodeAgentSkuId);
         }
         
         internal PSVirtualMachineConfiguration(Microsoft.Azure.Batch.VirtualMachineConfiguration omObject)
@@ -77,6 +56,66 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 throw new System.ArgumentNullException("omObject");
             }
             this.omObject = omObject;
+        }
+        
+        public PSContainerConfiguration ContainerConfiguration
+        {
+            get
+            {
+                if (((this.containerConfiguration == null) 
+                            && (this.omObject.ContainerConfiguration != null)))
+                {
+                    this.containerConfiguration = new PSContainerConfiguration(this.omObject.ContainerConfiguration);
+                }
+                return this.containerConfiguration;
+            }
+            set
+            {
+                if ((value == null))
+                {
+                    this.omObject.ContainerConfiguration = null;
+                }
+                else
+                {
+                    this.omObject.ContainerConfiguration = value.omObject;
+                }
+                this.containerConfiguration = value;
+            }
+        }
+        
+        public IList<PSDataDisk> DataDisks
+        {
+            get
+            {
+                if (((this.dataDisks == null) 
+                            && (this.omObject.DataDisks != null)))
+                {
+                    List<PSDataDisk> list;
+                    list = new List<PSDataDisk>();
+                    IEnumerator<Microsoft.Azure.Batch.DataDisk> enumerator;
+                    enumerator = this.omObject.DataDisks.GetEnumerator();
+                    for (
+                    ; enumerator.MoveNext(); 
+                    )
+                    {
+                        list.Add(new PSDataDisk(enumerator.Current));
+                    }
+                    this.dataDisks = list;
+                }
+                return this.dataDisks;
+            }
+            set
+            {
+                if ((value == null))
+                {
+                    this.omObject.DataDisks = null;
+                }
+                else
+                {
+                    this.omObject.DataDisks = new List<Microsoft.Azure.Batch.DataDisk>();
+                }
+                this.dataDisks = value;
+            }
         }
         
         public PSImageReference ImageReference
@@ -101,6 +140,18 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     this.omObject.ImageReference = value.omObject;
                 }
                 this.imageReference = value;
+            }
+        }
+        
+        public string LicenseType
+        {
+            get
+            {
+                return this.omObject.LicenseType;
+            }
+            set
+            {
+                this.omObject.LicenseType = value;
             }
         }
         

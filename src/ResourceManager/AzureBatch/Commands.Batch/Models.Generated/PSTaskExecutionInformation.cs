@@ -34,6 +34,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         internal Microsoft.Azure.Batch.TaskExecutionInformation omObject;
         
+        private PSTaskContainerExecutionInformation containerInformation;
+        
         private PSTaskFailureInformation failureInformation;
         
         internal PSTaskExecutionInformation(Microsoft.Azure.Batch.TaskExecutionInformation omObject)
@@ -43,6 +45,19 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 throw new System.ArgumentNullException("omObject");
             }
             this.omObject = omObject;
+        }
+        
+        public PSTaskContainerExecutionInformation ContainerInformation
+        {
+            get
+            {
+                if (((this.containerInformation == null) 
+                            && (this.omObject.ContainerInformation != null)))
+                {
+                    this.containerInformation = new PSTaskContainerExecutionInformation(this.omObject.ContainerInformation);
+                }
+                return this.containerInformation;
+            }
         }
         
         public System.DateTime? EndTime

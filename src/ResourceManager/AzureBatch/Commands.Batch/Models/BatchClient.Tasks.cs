@@ -159,6 +159,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 task.OutputFiles = parameters.OutputFiles.ToList().ConvertAll(outputFile => outputFile.omObject);
             }
 
+            task.ContainerSettings = parameters.ContainerSettings?.omObject;
+
             WriteVerbose(string.Format(Resources.CreatingTask, parameters.TaskId));
             if (parameters.Job != null)
             {

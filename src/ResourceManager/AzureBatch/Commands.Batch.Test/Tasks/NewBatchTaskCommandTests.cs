@@ -92,13 +92,12 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             cmdlet.CommandLine = "cmd /c echo hello";
             cmdlet.EnvironmentSettings = new Dictionary<string, string>();
             cmdlet.EnvironmentSettings.Add("env1", "value1");
-            cmdlet.MultiInstanceSettings = new PSMultiInstanceSettings(3)
+            cmdlet.MultiInstanceSettings = new PSMultiInstanceSettings("cmd /c echo coordinating", 3)
             {
                 CommonResourceFiles = new List<PSResourceFile>()
                 {
                     new PSResourceFile("https://some.blob", "myFile.txt")
-                },
-                CoordinationCommandLine = "cmd /c echo coordinating"
+                }
             };
             cmdlet.ResourceFiles = new Dictionary<string, string>();
             cmdlet.ResourceFiles.Add("anotherFile.txt", "https://another.blob");
@@ -382,6 +381,46 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
                     Assert.Equal(containerUrl, outputFile.Destination.Container.ContainerUrl);
                     Assert.Equal(path, outputFile.Destination.Container.Path);
                     Assert.Equal(uploadCondition.ToString().ToLowerInvariant(), outputFile.UploadOptions.UploadCondition.ToString().ToLowerInvariant());
+                });
+
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
+
+            // Verify no exceptions when required parameters are set
+            cmdlet.ExecuteCmdlet();
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ContainerSettingsAreSentToService()
+        {
+            // Setup cmdlet without the required parameters
+            BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
+            cmdlet.BatchContext = context;
+
+            cmdlet.Id = "task-id";
+            cmdlet.JobId = "job-id";
+
+            const string imageName = "foo";
+            const string containerRunOptions = "bar";
+            const string userName = "abc";
+            const string password = "mypass";
+
+            cmdlet.ContainerSettings = new PSTaskContainerSettings(
+                imageName,
+                containerRunOptions, new PSContainerRegistry(
+                    userName, 
+                    password: password));
+
+            // Don't go to the service on an Add CloudTask call
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<TaskAddParameter, TaskAddOptions, AzureOperationHeaderResponse<TaskAddHeaders>>(
+                new AzureOperationHeaderResponse<TaskAddHeaders>(),
+                request =>
+                {
+                    var containerSettings = request.Parameters.ContainerSettings;
+                    Assert.Equal(imageName, containerSettings.ImageName);
+                    Assert.Equal(containerRunOptions, containerSettings.ContainerRunOptions);
+                    Assert.Equal(userName, containerSettings.Registry.UserName);
+                    Assert.Equal(password, containerSettings.Registry.Password);
                 });
 
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };

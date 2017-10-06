@@ -177,8 +177,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             CertificateReference certReference = null,
             StartTask startTask = null)
         {
-            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
-
             PSCertificateReference[] certReferences = null;
             if (certReference != null)
             {
@@ -203,7 +201,26 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 InterComputeNodeCommunicationEnabled = true
             };
 
-            client.CreatePool(parameters);
+            CreatePoolIfNotExists(controller, parameters);
+        }
+
+        public static void CreatePoolIfNotExists(
+            BatchController controller,
+            NewPoolParameters poolParameters)
+        {
+            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+
+            try
+            {
+                client.CreatePool(poolParameters);
+            }
+            catch (BatchException e)
+            {
+                if (e.RequestInformation.BatchError.Code != "PoolAlreadyExists")
+                {
+                    throw;
+                }
+            }
         }
 
         /// <summary>
@@ -362,8 +379,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             PSMultiInstanceSettings multiInstanceSettings = null;
             if (numInstances > 1)
             {
-                multiInstanceSettings = new PSMultiInstanceSettings(numInstances);
-                multiInstanceSettings.CoordinationCommandLine = "cmd /c echo coordinating";
+                multiInstanceSettings = new PSMultiInstanceSettings("cmd /c echo coordinating", numInstances);
             }
 
             NewTaskParameters parameters = new NewTaskParameters(context, jobId, null, taskId)

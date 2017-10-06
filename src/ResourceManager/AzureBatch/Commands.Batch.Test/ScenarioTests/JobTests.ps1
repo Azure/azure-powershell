@@ -162,7 +162,7 @@ function IfJobSetsAutoFailure-ItCompletesWhenAnyTaskFails
     $paasConfiguration = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration -ArgumentList @($osFamily, $targetOSVersion)
 
     $poolSpec = New-Object Microsoft.Azure.Commands.Batch.Models.PSPoolSpecification
-    $poolSpec.TargetDedicated = $targetDedicated = 3
+    $poolSpec.TargetDedicatedComputeNodes = $targetDedicated = 3
     $poolSpec.VirtualMachineSize = $vmSize = "small"
     $poolSpec.CloudServiceConfiguration = $paasConfiguration
     $autoPoolSpec = New-Object Microsoft.Azure.Commands.Batch.Models.PSAutoPoolSpecification

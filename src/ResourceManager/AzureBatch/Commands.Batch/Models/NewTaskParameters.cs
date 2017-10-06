@@ -101,5 +101,10 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// The output file details
         /// </summary>
         public PSOutputFile[] OutputFiles { get; set; }
+
+        /// <summary>
+        /// The task container settings
+        /// </summary>
+        public PSTaskContainerSettings ContainerSettings { get; set; }
     }
 }

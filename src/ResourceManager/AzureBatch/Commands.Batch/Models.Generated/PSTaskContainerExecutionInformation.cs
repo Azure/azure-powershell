@@ -29,17 +29,12 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public partial class PSOSDisk
+    public partial class PSTaskContainerExecutionInformation
     {
         
-        internal Microsoft.Azure.Batch.OSDisk omObject;
+        internal Microsoft.Azure.Batch.TaskContainerExecutionInformation omObject;
         
-        public PSOSDisk(System.Nullable<Microsoft.Azure.Batch.Common.CachingType> caching = null)
-        {
-            this.omObject = new Microsoft.Azure.Batch.OSDisk(caching);
-        }
-        
-        internal PSOSDisk(Microsoft.Azure.Batch.OSDisk omObject)
+        internal PSTaskContainerExecutionInformation(Microsoft.Azure.Batch.TaskContainerExecutionInformation omObject)
         {
             if ((omObject == null))
             {
@@ -48,11 +43,27 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public Microsoft.Azure.Batch.Common.CachingType? Caching
+        public string ContainerId
         {
             get
             {
-                return this.omObject.Caching;
+                return this.omObject.ContainerId;
+            }
+        }
+        
+        public string Error
+        {
+            get
+            {
+                return this.omObject.Error;
+            }
+        }
+        
+        public string State
+        {
+            get
+            {
+                return this.omObject.State;
             }
         }
     }

@@ -36,6 +36,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         private PSComputeNodeInformation computeNodeInformation;
         
+        private PSTaskContainerExecutionInformation containerInformation;
+        
         private PSTaskFailureInformation failureInformation;
         
         internal PSSubtaskInformation(Microsoft.Azure.Batch.SubtaskInformation omObject)
@@ -57,6 +59,19 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     this.computeNodeInformation = new PSComputeNodeInformation(this.omObject.ComputeNodeInformation);
                 }
                 return this.computeNodeInformation;
+            }
+        }
+        
+        public PSTaskContainerExecutionInformation ContainerInformation
+        {
+            get
+            {
+                if (((this.containerInformation == null) 
+                            && (this.omObject.ContainerInformation != null)))
+                {
+                    this.containerInformation = new PSTaskContainerExecutionInformation(this.omObject.ContainerInformation);
+                }
+                return this.containerInformation;
             }
         }
         

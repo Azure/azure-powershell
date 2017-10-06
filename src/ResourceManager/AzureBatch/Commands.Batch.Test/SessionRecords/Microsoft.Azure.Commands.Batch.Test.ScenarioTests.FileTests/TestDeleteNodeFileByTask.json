@@ -1,8 +1,8 @@
 {
   "Entries": [
     {
-      "RequestUri": "/jobs?api-version=2017-01-01.4.0",
-      "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxNy0wMS0wMS40LjA=",
+      "RequestUri": "/jobs?api-version=2017-09-01.6.0",
+      "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"id\": \"deletetaskFile\",\r\n  \"priority\": 0,\r\n  \"poolInfo\": {\r\n    \"poolId\": \"testPool\"\r\n  }\r\n}",
       "RequestHeaders": {
@@ -13,32 +13,32 @@
           "97"
         ],
         "client-request-id": [
-          "1a34ea38-3b96-4c5e-ba6d-a13874ea083a"
+          "a778a57a-16c8-4df7-980c-b73ba636bedc"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Thu, 09 Feb 2017 17:08:48 GMT"
+          "Fri, 06 Oct 2017 03:12:24 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.6.1586.0",
-          "OSName/Windows_10_Enterprise",
-          "OSVersion/6.3.14393",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/6.0.0.0",
-          "AzurePowershell/v3.4.0"
+          "FxVersion/4.7.2110.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
+          "AzurePowershell/v4.4.0"
         ]
       },
       "ResponseBody": "",
       "ResponseHeaders": {
         "Last-Modified": [
-          "Thu, 09 Feb 2017 17:08:48 GMT"
+          "Fri, 06 Oct 2017 03:12:24 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "b34ed746-cf6d-4a2b-9f4e-686d92a88c78"
+          "2488585d-e191-4563-8dc2-2b55279bd299"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -50,16 +50,16 @@
           "3.0"
         ],
         "DataServiceId": [
-          "https://jstesteastus2.eastus2.batch.azure.com/jobs/job-1"
+          "https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/job-1"
         ],
         "Date": [
-          "Thu, 09 Feb 2017 17:08:47 GMT"
+          "Fri, 06 Oct 2017 03:12:24 GMT"
         ],
         "ETag": [
-          "0x8D4510E5081CFE6"
+          "0x8D50C681152E838"
         ],
         "Location": [
-          "https://jstesteastus2.eastus2.batch.azure.com/jobs/job-1"
+          "https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/job-1"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -68,8 +68,8 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/jobs/deletetaskFile/tasks?api-version=2017-01-01.4.0",
-      "EncodedRequestUri": "L2pvYnMvZGVsZXRldGFza0ZpbGUvdGFza3M/YXBpLXZlcnNpb249MjAxNy0wMS0wMS40LjA=",
+      "RequestUri": "/jobs/deletetaskFile/tasks?api-version=2017-09-01.6.0",
+      "EncodedRequestUri": "L2pvYnMvZGVsZXRldGFza0ZpbGUvdGFza3M/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"id\": \"task1\",\r\n  \"commandLine\": \"cmd /c echo \\\"test\\\" > testFile.txt\",\r\n  \"userIdentity\": {\r\n    \"autoUser\": {\r\n      \"scope\": \"task\",\r\n      \"elevationLevel\": \"admin\"\r\n    }\r\n  }\r\n}",
       "RequestHeaders": {
@@ -80,32 +80,32 @@
           "188"
         ],
         "client-request-id": [
-          "28109017-2f4f-45d3-9ce2-51b7ca983b1c"
+          "b9a5c6b1-47db-4547-a4c7-23dfcb41d5f0"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Thu, 09 Feb 2017 17:08:48 GMT"
+          "Fri, 06 Oct 2017 03:12:24 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.6.1586.0",
-          "OSName/Windows_10_Enterprise",
-          "OSVersion/6.3.14393",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/6.0.0.0",
-          "AzurePowershell/v3.4.0"
+          "FxVersion/4.7.2110.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
+          "AzurePowershell/v4.4.0"
         ]
       },
       "ResponseBody": "",
       "ResponseHeaders": {
         "Last-Modified": [
-          "Thu, 09 Feb 2017 17:08:48 GMT"
+          "Fri, 06 Oct 2017 03:12:24 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "03efccc1-c6f2-4503-8dca-66aca8ad0085"
+          "25a2e86e-6e9d-43f9-987b-1e68f1588d9d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -117,16 +117,16 @@
           "3.0"
         ],
         "DataServiceId": [
-          "https://jstesteastus2.eastus2.batch.azure.com/jobs/deletetaskFile/tasks/task1"
+          "https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/deletetaskFile/tasks/task1"
         ],
         "Date": [
-          "Thu, 09 Feb 2017 17:08:47 GMT"
+          "Fri, 06 Oct 2017 03:12:24 GMT"
         ],
         "ETag": [
-          "0x8D4510E507FBD06"
+          "0x8D50C68112DE4FC"
         ],
         "Location": [
-          "https://jstesteastus2.eastus2.batch.azure.com/jobs/deletetaskFile/tasks/task1"
+          "https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/deletetaskFile/tasks/task1"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -135,41 +135,41 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/jobs/deletetaskFile/tasks/task1?api-version=2017-01-01.4.0",
-      "EncodedRequestUri": "L2pvYnMvZGVsZXRldGFza0ZpbGUvdGFza3MvdGFzazE/YXBpLXZlcnNpb249MjAxNy0wMS0wMS40LjA=",
+      "RequestUri": "/jobs/deletetaskFile/tasks/task1?api-version=2017-09-01.6.0",
+      "EncodedRequestUri": "L2pvYnMvZGVsZXRldGFza0ZpbGUvdGFza3MvdGFzazE/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "650e1c16-8085-454e-a7dd-87dcda03da23"
+          "0dfe8f57-5244-4e13-955d-7013f38d949b"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Thu, 09 Feb 2017 17:08:49 GMT"
+          "Fri, 06 Oct 2017 03:12:24 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.6.1586.0",
-          "OSName/Windows_10_Enterprise",
-          "OSVersion/6.3.14393",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/6.0.0.0",
-          "AzurePowershell/v3.4.0"
+          "FxVersion/4.7.2110.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
+          "AzurePowershell/v4.4.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://jstesteastus2.eastus2.batch.azure.com/$metadata#tasks/@Element\",\r\n  \"id\": \"task1\",\r\n  \"url\": \"https://jstesteastus2.eastus2.batch.azure.com/jobs/deletetaskFile/tasks/task1\",\r\n  \"eTag\": \"0x8D4510E507FBD06\",\r\n  \"creationTime\": \"2017-02-09T17:08:48.8023302Z\",\r\n  \"lastModified\": \"2017-02-09T17:08:48.8023302Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2017-02-09T17:08:48.8023302Z\",\r\n  \"commandLine\": \"cmd /c echo \\\"test\\\" > testFile.txt\",\r\n  \"userIdentity\": {\r\n    \"autoUser\": {\r\n      \"scope\": \"task\",\r\n      \"elevationLevel\": \"admin\"\r\n    }\r\n  },\r\n  \"constraints\": {\r\n    \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n    \"retentionTime\": \"P10675199DT2H48M5.4775807S\",\r\n    \"maxTaskRetryCount\": 0\r\n  },\r\n  \"executionInfo\": {\r\n    \"retryCount\": 0,\r\n    \"requeueCount\": 0\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#tasks/@Element\",\r\n  \"id\": \"task1\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/deletetaskFile/tasks/task1\",\r\n  \"eTag\": \"0x8D50C68112DE4FC\",\r\n  \"creationTime\": \"2017-10-06T03:12:24.7145724Z\",\r\n  \"lastModified\": \"2017-10-06T03:12:24.7145724Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2017-10-06T03:12:24.7145724Z\",\r\n  \"commandLine\": \"cmd /c echo \\\"test\\\" > testFile.txt\",\r\n  \"userIdentity\": {\r\n    \"autoUser\": {\r\n      \"scope\": \"task\",\r\n      \"elevationLevel\": \"admin\"\r\n    }\r\n  },\r\n  \"constraints\": {\r\n    \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n    \"retentionTime\": \"P10675199DT2H48M5.4775807S\",\r\n    \"maxTaskRetryCount\": 0\r\n  },\r\n  \"executionInfo\": {\r\n    \"retryCount\": 0,\r\n    \"requeueCount\": 0\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Thu, 09 Feb 2017 17:08:48 GMT"
+          "Fri, 06 Oct 2017 03:12:24 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "60a076c3-c356-4400-a3a1-bf585f3fc988"
+          "f1a9a154-9f4d-4086-9bb6-62046df93975"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -181,10 +181,10 @@
           "3.0"
         ],
         "Date": [
-          "Thu, 09 Feb 2017 17:08:48 GMT"
+          "Fri, 06 Oct 2017 03:12:24 GMT"
         ],
         "ETag": [
-          "0x8D4510E507FBD06"
+          "0x8D50C68112DE4FC"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -193,29 +193,29 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs/deletetaskFile/tasks?api-version=2017-01-01.4.0&$filter=id%20eq%20'task1'&$select=id%2Cstate",
-      "EncodedRequestUri": "L2pvYnMvZGVsZXRldGFza0ZpbGUvdGFza3M/YXBpLXZlcnNpb249MjAxNy0wMS0wMS40LjAmJGZpbHRlcj1pZCUyMGVxJTIwJTI3dGFzazElMjcmJHNlbGVjdD1pZCUyQ3N0YXRl",
+      "RequestUri": "/jobs/deletetaskFile/tasks?api-version=2017-09-01.6.0&$filter=id%20eq%20'task1'&$select=id%2Cstate",
+      "EncodedRequestUri": "L2pvYnMvZGVsZXRldGFza0ZpbGUvdGFza3M/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjAmJGZpbHRlcj1pZCUyMGVxJTIwJTI3dGFzazElMjcmJHNlbGVjdD1pZCUyQ3N0YXRl",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "a0bb66ea-c55f-432c-b711-1a10f8f7058a"
+          "e627b489-ef18-48fb-96c6-095b3ed7e60d"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Thu, 09 Feb 2017 17:08:49 GMT"
+          "Fri, 06 Oct 2017 03:12:24 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.6.1586.0",
-          "OSName/Windows_10_Enterprise",
-          "OSVersion/6.3.14393",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/6.0.0.0",
-          "AzurePowershell/v3.4.0"
+          "FxVersion/4.7.2110.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
+          "AzurePowershell/v4.4.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://jstesteastus2.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"task1\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"task1\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
@@ -224,7 +224,7 @@
           "chunked"
         ],
         "request-id": [
-          "4185eb64-9a0d-459b-8dbb-e632b39fe2cc"
+          "a9375aa4-767b-411e-9e46-5bb20e11176d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -236,7 +236,7 @@
           "3.0"
         ],
         "Date": [
-          "Thu, 09 Feb 2017 17:08:48 GMT"
+          "Fri, 06 Oct 2017 03:12:24 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -245,29 +245,29 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs/deletetaskFile/tasks?api-version=2017-01-01.4.0&$filter=id%20eq%20'task1'&$select=id%2Cstate",
-      "EncodedRequestUri": "L2pvYnMvZGVsZXRldGFza0ZpbGUvdGFza3M/YXBpLXZlcnNpb249MjAxNy0wMS0wMS40LjAmJGZpbHRlcj1pZCUyMGVxJTIwJTI3dGFzazElMjcmJHNlbGVjdD1pZCUyQ3N0YXRl",
+      "RequestUri": "/jobs/deletetaskFile/tasks?api-version=2017-09-01.6.0&$filter=id%20eq%20'task1'&$select=id%2Cstate",
+      "EncodedRequestUri": "L2pvYnMvZGVsZXRldGFza0ZpbGUvdGFza3M/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjAmJGZpbHRlcj1pZCUyMGVxJTIwJTI3dGFzazElMjcmJHNlbGVjdD1pZCUyQ3N0YXRl",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "0a086682-45b5-498c-b725-6084581c69c5"
+          "e12fc1b5-9221-40bd-a87f-907bad6227e0"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Thu, 09 Feb 2017 17:08:51 GMT"
+          "Fri, 06 Oct 2017 03:12:26 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.6.1586.0",
-          "OSName/Windows_10_Enterprise",
-          "OSVersion/6.3.14393",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/6.0.0.0",
-          "AzurePowershell/v3.4.0"
+          "FxVersion/4.7.2110.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
+          "AzurePowershell/v4.4.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://jstesteastus2.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"task1\",\r\n      \"state\": \"completed\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"task1\",\r\n      \"state\": \"completed\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
@@ -276,7 +276,7 @@
           "chunked"
         ],
         "request-id": [
-          "98332ba0-bacf-47e0-aecf-8cba38548f13"
+          "9808480e-18f5-4527-97f7-4ae82c83b0a4"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -288,7 +288,7 @@
           "3.0"
         ],
         "Date": [
-          "Thu, 09 Feb 2017 17:08:51 GMT"
+          "Fri, 06 Oct 2017 03:12:26 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -297,26 +297,26 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs/deletetaskFile/tasks/task1/files/wd%5CtestFile.txt?api-version=2017-01-01.4.0",
-      "EncodedRequestUri": "L2pvYnMvZGVsZXRldGFza0ZpbGUvdGFza3MvdGFzazEvZmlsZXMvd2QlNUN0ZXN0RmlsZS50eHQ/YXBpLXZlcnNpb249MjAxNy0wMS0wMS40LjA=",
+      "RequestUri": "/jobs/deletetaskFile/tasks/task1/files/wd%5CtestFile.txt?api-version=2017-09-01.6.0",
+      "EncodedRequestUri": "L2pvYnMvZGVsZXRldGFza0ZpbGUvdGFza3MvdGFzazEvZmlsZXMvd2QlNUN0ZXN0RmlsZS50eHQ/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
       "RequestMethod": "HEAD",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "b652e019-89bd-4dec-b331-dd1a79f5cf95"
+          "6f79566a-140e-418d-a464-e545d8743ee0"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Thu, 09 Feb 2017 17:08:51 GMT"
+          "Fri, 06 Oct 2017 03:12:27 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.6.1586.0",
-          "OSName/Windows_10_Enterprise",
-          "OSVersion/6.3.14393",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/6.0.0.0",
-          "AzurePowershell/v3.4.0"
+          "FxVersion/4.7.2110.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
+          "AzurePowershell/v4.4.0"
         ]
       },
       "ResponseBody": "",
@@ -328,10 +328,10 @@
           "application/octet-stream"
         ],
         "Last-Modified": [
-          "Thu, 09 Feb 2017 17:08:50 GMT"
+          "Fri, 06 Oct 2017 03:12:25 GMT"
         ],
         "request-id": [
-          "25d8212f-3580-4fa6-894e-41e8f37eaa4c"
+          "c1d690ec-fb94-48e1-ab24-c4c62831d556"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -343,16 +343,16 @@
           "3.0"
         ],
         "ocp-creation-time": [
-          "Thu, 09 Feb 2017 17:08:50 GMT"
+          "Fri, 06 Oct 2017 03:12:25 GMT"
         ],
         "ocp-batch-file-isdirectory": [
           "False"
         ],
         "ocp-batch-file-url": [
-          "https%3A%2F%2Fjstesteastus2.eastus2.batch.azure.com%2Fjobs%2FdeletetaskFile%2Ftasks%2Ftask1%2Ffiles%2Fwd%2FtestFile.txt"
+          "https%3A%2F%2Fmatthchrwestcentralus.westcentralus.batch.azure.com%2Fjobs%2FdeletetaskFile%2Ftasks%2Ftask1%2Ffiles%2Fwd%2FtestFile.txt"
         ],
         "Date": [
-          "Thu, 09 Feb 2017 17:08:49 GMT"
+          "Fri, 06 Oct 2017 03:12:26 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -361,26 +361,26 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs/deletetaskFile/tasks/task1/files/wd%5CtestFile.txt?recursive=false&api-version=2017-01-01.4.0",
-      "EncodedRequestUri": "L2pvYnMvZGVsZXRldGFza0ZpbGUvdGFza3MvdGFzazEvZmlsZXMvd2QlNUN0ZXN0RmlsZS50eHQ/cmVjdXJzaXZlPWZhbHNlJmFwaS12ZXJzaW9uPTIwMTctMDEtMDEuNC4w",
+      "RequestUri": "/jobs/deletetaskFile/tasks/task1/files/wd%5CtestFile.txt?recursive=false&api-version=2017-09-01.6.0",
+      "EncodedRequestUri": "L2pvYnMvZGVsZXRldGFza0ZpbGUvdGFza3MvdGFzazEvZmlsZXMvd2QlNUN0ZXN0RmlsZS50eHQ/cmVjdXJzaXZlPWZhbHNlJmFwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4w",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "0b789c2d-7253-436d-bdbc-96a6cc5d2f30"
+          "990edd4a-94df-4e73-9866-6051e03a96a6"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Thu, 09 Feb 2017 17:08:52 GMT"
+          "Fri, 06 Oct 2017 03:12:27 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.6.1586.0",
-          "OSName/Windows_10_Enterprise",
-          "OSVersion/6.3.14393",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/6.0.0.0",
-          "AzurePowershell/v3.4.0"
+          "FxVersion/4.7.2110.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
+          "AzurePowershell/v4.4.0"
         ]
       },
       "ResponseBody": "",
@@ -389,7 +389,7 @@
           "chunked"
         ],
         "request-id": [
-          "a5351bec-eefc-4d3c-9abf-f4caef29408c"
+          "65b0ca79-a28e-498c-92d4-fcaf16995417"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -401,7 +401,7 @@
           "3.0"
         ],
         "Date": [
-          "Thu, 09 Feb 2017 17:08:50 GMT"
+          "Fri, 06 Oct 2017 03:12:26 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -410,29 +410,29 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs/deletetaskFile/tasks/task1/files?recursive=false&api-version=2017-01-01.4.0&$filter=startswith(name%2C'wd%5CtestFile.txt')",
-      "EncodedRequestUri": "L2pvYnMvZGVsZXRldGFza0ZpbGUvdGFza3MvdGFzazEvZmlsZXM/cmVjdXJzaXZlPWZhbHNlJmFwaS12ZXJzaW9uPTIwMTctMDEtMDEuNC4wJiRmaWx0ZXI9c3RhcnRzd2l0aCUyOG5hbWUlMkMlMjd3ZCU1Q3Rlc3RGaWxlLnR4dCUyNyUyOQ==",
+      "RequestUri": "/jobs/deletetaskFile/tasks/task1/files?recursive=false&api-version=2017-09-01.6.0&$filter=startswith(name%2C'wd%5CtestFile.txt')",
+      "EncodedRequestUri": "L2pvYnMvZGVsZXRldGFza0ZpbGUvdGFza3MvdGFzazEvZmlsZXM/cmVjdXJzaXZlPWZhbHNlJmFwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4wJiRmaWx0ZXI9c3RhcnRzd2l0aCUyOG5hbWUlMkMlMjd3ZCU1Q3Rlc3RGaWxlLnR4dCUyNyUyOQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "628bd40c-2c64-4665-99ee-1519c7fab7a2"
+          "eeeb73eb-52cd-42a4-9240-dbe0e7b71a68"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Thu, 09 Feb 2017 17:08:52 GMT"
+          "Fri, 06 Oct 2017 03:12:27 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.6.1586.0",
-          "OSName/Windows_10_Enterprise",
-          "OSVersion/6.3.14393",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/6.0.0.0",
-          "AzurePowershell/v3.4.0"
+          "FxVersion/4.7.2110.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
+          "AzurePowershell/v4.4.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://jstesteastus2.eastus2.batch.azure.com/$metadata#files\",\r\n  \"value\": []\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#files\",\r\n  \"value\": []\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
@@ -441,7 +441,7 @@
           "chunked"
         ],
         "request-id": [
-          "102aac60-cb89-48c5-a628-32753fb27783"
+          "38140e10-f3b8-4047-9383-c6b374752b53"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -453,7 +453,7 @@
           "3.0"
         ],
         "Date": [
-          "Thu, 09 Feb 2017 17:08:50 GMT"
+          "Fri, 06 Oct 2017 03:12:27 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -462,26 +462,26 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs/deletetaskFile?api-version=2017-01-01.4.0",
-      "EncodedRequestUri": "L2pvYnMvZGVsZXRldGFza0ZpbGU/YXBpLXZlcnNpb249MjAxNy0wMS0wMS40LjA=",
+      "RequestUri": "/jobs/deletetaskFile?api-version=2017-09-01.6.0",
+      "EncodedRequestUri": "L2pvYnMvZGVsZXRldGFza0ZpbGU/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "761d2287-4244-4c5e-b53c-5aaaf3a4fe97"
+          "e96d860a-fba9-4dcb-95f6-39304777be28"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Thu, 09 Feb 2017 17:08:53 GMT"
+          "Fri, 06 Oct 2017 03:12:27 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.6.1586.0",
-          "OSName/Windows_10_Enterprise",
-          "OSVersion/6.3.14393",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/6.0.0.0",
-          "AzurePowershell/v3.4.0"
+          "FxVersion/4.7.2110.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
+          "AzurePowershell/v4.4.0"
         ]
       },
       "ResponseBody": "",
@@ -490,7 +490,7 @@
           "chunked"
         ],
         "request-id": [
-          "5400248f-014a-4276-affb-036f1a45cf45"
+          "e5bb0cd1-ea3a-4b11-bcb9-b54b3fce2166"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -502,7 +502,7 @@
           "3.0"
         ],
         "Date": [
-          "Thu, 09 Feb 2017 17:08:52 GMT"
+          "Fri, 06 Oct 2017 03:12:27 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -513,9 +513,9 @@
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "46241355-bb95-46a9-ba6c-42b554d71925",
-    "AZURE_BATCH_ACCOUNT": "jstesteastus2",
-    "AZURE_BATCH_ENDPOINT": "https://jstesteastus2.eastus2.batch.azure.com",
-    "AZURE_BATCH_RESOURCE_GROUP": "default-eastus"
+    "SubscriptionId": "2915bbd6-1252-405f-8173-6c00428146d9",
+    "AZURE_BATCH_ACCOUNT": "matthchrwestcentralus",
+    "AZURE_BATCH_ENDPOINT": "https://matthchrwestcentralus.westcentralus.batch.azure.com",
+    "AZURE_BATCH_RESOURCE_GROUP": "matthchrwestcentralus"
   }
 }

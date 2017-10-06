@@ -118,6 +118,11 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public PSExitConditions ExitConditions { get; set; }
 
+        [Parameter(ParameterSetName = JobIdAndSingleAddParameterSet)]
+        [Parameter(ParameterSetName = JobObjectAndSingleAddParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public PSTaskContainerSettings ContainerSettings { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (Tasks != null)
@@ -143,6 +148,7 @@ namespace Microsoft.Azure.Commands.Batch
                     ApplicationPackageReferences = this.ApplicationPackageReferences,
                     ExitConditions = this.ExitConditions,
                     OutputFiles = this.OutputFiles,
+                    ContainerSettings = this.ContainerSettings
                 };
 
                 BatchClient.CreateTask(parameters);

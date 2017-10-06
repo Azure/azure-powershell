@@ -44,6 +44,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         private PSTaskConstraints constraints;
         
+        private PSTaskContainerSettings containerSettings;
+        
         private PSTaskDependencies dependsOn;
         
         private IList<PSEnvironmentSetting> environmentSettings;
@@ -208,6 +210,31 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     this.omObject.Constraints = value.omObject;
                 }
                 this.constraints = value;
+            }
+        }
+        
+        public PSTaskContainerSettings ContainerSettings
+        {
+            get
+            {
+                if (((this.containerSettings == null) 
+                            && (this.omObject.ContainerSettings != null)))
+                {
+                    this.containerSettings = new PSTaskContainerSettings(this.omObject.ContainerSettings);
+                }
+                return this.containerSettings;
+            }
+            set
+            {
+                if ((value == null))
+                {
+                    this.omObject.ContainerSettings = null;
+                }
+                else
+                {
+                    this.omObject.ContainerSettings = value.omObject;
+                }
+                this.containerSettings = value;
             }
         }
         
