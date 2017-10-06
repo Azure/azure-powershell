@@ -15,10 +15,12 @@ Creates a Batch task under a job.
 ### JobId_Single (Default)
 ```
 New-AzureBatchTask -JobId <String> -Id <String> [-DisplayName <String>] [-CommandLine <String>]
- [-ResourceFiles <IDictionary>] [-EnvironmentSettings <IDictionary>] [-RunElevated]
+ [-ResourceFiles <IDictionary>] [-EnvironmentSettings <IDictionary>]
+ [-AuthenticationTokenSettings <PSAuthenticationTokenSettings>] [-UserIdentity <PSUserIdentity>]
  [-AffinityInformation <PSAffinityInformation>] [-Constraints <PSTaskConstraints>]
  [-MultiInstanceSettings <PSMultiInstanceSettings>] [-DependsOn <TaskDependencies>]
- [-ApplicationPackageReferences <PSApplicationPackageReference[]>] [-ExitConditions <PSExitConditions>]
+ [-ApplicationPackageReferences <PSApplicationPackageReference[]>] [-OutputFiles <PSOutputFile[]>]
+ [-ExitConditions <PSExitConditions>] [-ContainerSettings <PSTaskContainerSettings>]
  -BatchContext <BatchAccountContext> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -37,10 +39,12 @@ New-AzureBatchTask [-Job <PSCloudJob>] [-Tasks <PSCloudTask[]>] -BatchContext <B
 ### JobObject_Single
 ```
 New-AzureBatchTask [-Job <PSCloudJob>] -Id <String> [-DisplayName <String>] [-CommandLine <String>]
- [-ResourceFiles <IDictionary>] [-EnvironmentSettings <IDictionary>] [-RunElevated]
+ [-ResourceFiles <IDictionary>] [-EnvironmentSettings <IDictionary>]
+ [-AuthenticationTokenSettings <PSAuthenticationTokenSettings>] [-UserIdentity <PSUserIdentity>]
  [-AffinityInformation <PSAffinityInformation>] [-Constraints <PSTaskConstraints>]
  [-MultiInstanceSettings <PSMultiInstanceSettings>] [-DependsOn <TaskDependencies>]
- [-ApplicationPackageReferences <PSApplicationPackageReference[]>] [-ExitConditions <PSExitConditions>]
+ [-ApplicationPackageReferences <PSApplicationPackageReference[]>] [-OutputFiles <PSOutputFile[]>]
+ [-ExitConditions <PSExitConditions>] [-ContainerSettings <PSTaskContainerSettings>]
  -BatchContext <BatchAccountContext> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -60,7 +64,9 @@ Use the **Get-AzureRmBatchAccountKeys** cmdlet to assign a context to the $Conte
 
 ### Example 2: Create a Batch task
 ```
-PS C:\>Get-AzureBatchJob -Id "Job-000001" -BatchContext $Context | New-AzureBatchTask -Id "Task26" -CommandLine "cmd /c echo hello > newFile.txt" -RunElevated -BatchContext $Context
+PS C:\> $autoUser = New-Object Microsoft.Azure.Commands.Batch.Models.PSAutoUserSpecification -ArgumentList @("Task", "Admin")
+PS C:\> $userIdentity = New-Object Microsoft.Azure.Commands.Batch.Models.PSUserIdentity $autoUser
+PS C:\>Get-AzureBatchJob -Id "Job-000001" -BatchContext $Context | New-AzureBatchTask -Id "Task26" -CommandLine "cmd /c echo hello > newFile.txt" -UserIdentity $userIdentity -BatchContext $Context
 ```
 
 This command gets the Batch job that has the ID Job-000001 by using the **Get-AzureBatchJob** cmdlet.
@@ -133,6 +139,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AuthenticationTokenSettings
+The settings for an authentication token that the task can use to perform Batch service operations.
+
+If this is set, the Batch service provides the task with an authentication token which can be used to 
+authenticate Batch service operations without requiring an account access key. The token is provided via the 
+AZ_BATCH_AUTHENTICATION_TOKEN environment variable. The operations that the task can carry out using the token 
+depend on the settings. For example, a task can request job permissions in order to add other tasks to the job, 
+or check the status of the job or of other tasks.
+
+```yaml
+Type: PSAuthenticationTokenSettings
+Parameter Sets: JobId_Single, JobObject_Single
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -BatchContext
 Specifies the **BatchAccountContext** instance that this cmdlet uses to interact with the Batch service.
 If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
@@ -169,6 +196,26 @@ Specifies the execution constraints that apply to this task.
 
 ```yaml
 Type: PSTaskConstraints
+Parameter Sets: JobId_Single, JobObject_Single
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ContainerSettings
+The settings for the container under which the task runs.
+
+If the pool that will run this task has containerConfiguration set, this must be set as well. If the pool that will run this task
+doesn't have containerConfiguration set, this must not be set. When this is specified, all directories recursively below the 
+AZ_BATCH_NODE_ROOT_DIR (the root of Azure Batch directories on the node) are mapped into the container, all task environment variables 
+are mapped into the container, and the task command line is executed in the container.
+
+```yaml
+Type: PSTaskContainerSettings
 Parameter Sets: JobId_Single, JobObject_Single
 Aliases: 
 
@@ -314,6 +361,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -OutputFiles
+Gets or sets a list of files that the Batch service will upload from the compute node after running the command line.
+
+For multi-instance tasks, the files will only be uploaded from the compute node on which the primary task is executed.
+
+```yaml
+Type: PSOutputFile[]
+Parameter Sets: JobId_Single, JobObject_Single
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceFiles
 Specifies resource files, as key/value pairs, that the task requires.
 The key is the resource file path.
@@ -331,12 +395,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RunElevated
-Indicates that the task process runs with administrator privileges.
+### -Tasks
+Specifies the collection of tasks to be added.
+Each task must have a unique ID.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: JobId_Single, JobObject_Single
+Type: PSCloudTask[]
+Parameter Sets: JobId_Bulk, JobObject_Bulk
 Aliases: 
 
 Required: False
@@ -346,13 +411,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tasks
-Specifies the collection of tasks to be added.
-Each task must have a unique ID.
+### -UserIdentity
+The user identity under which the task runs.
 
 ```yaml
-Type: PSCloudTask[]
-Parameter Sets: JobId_Bulk, JobObject_Bulk
+Type: PSUserIdentity
+Parameter Sets: JobId_Single, JobObject_Single
 Aliases: 
 
 Required: False

@@ -14,14 +14,14 @@ Deletes a node file for a task or compute node.
 
 ### Task
 ```
-Remove-AzureBatchNodeFile -JobId <String> -TaskId <String> -Name <String> [-Force] [-Recursive]
+Remove-AzureBatchNodeFile -JobId <String> -TaskId <String> -Path <String> [-Force] [-Recursive]
  -BatchContext <BatchAccountContext> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ComputeNode
 ```
-Remove-AzureBatchNodeFile [-PoolId] <String> [-ComputeNodeId] <String> -Name <String> [-Force] [-Recursive]
+Remove-AzureBatchNodeFile [-PoolId] <String> [-ComputeNodeId] <String> -Path <String> [-Force] [-Recursive]
  -BatchContext <BatchAccountContext> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -40,7 +40,7 @@ The **Remove-AzureBatchNodeFile** cmdlet deletes an Azure Batch node file for a 
 
 ### Example 1: Delete a file assocated with a task
 ```
-PS C:\>Remove-AzureBatchNodeFile -JobId "Job-000001" -TaskId "Task26" -Name "wd\testFile.txt" -BatchContext $Context
+PS C:\>Remove-AzureBatchNodeFile -JobId "Job-000001" -TaskId "Task26" -Path "wd\testFile.txt" -BatchContext $Context
 ```
 
 This command deletes the node file that is named wd\testFile.txt.
@@ -48,14 +48,14 @@ That file is associated with the task that has the ID Task26 under the job Job-0
 
 ### Example 2: Delete a file from a compute node
 ```
-PS C:\>Remove-AzureBatchNodeFile -PoolId "Pool07" -ComputeNodeId "tvm-2316545714_1-20150725t213220z" -Name "startup\testFile.txt" -BatchContext $Context
+PS C:\>Remove-AzureBatchNodeFile -PoolId "Pool07" -ComputeNodeId "tvm-2316545714_1-20150725t213220z" -Path "startup\testFile.txt" -BatchContext $Context
 ```
 
 This command deletes the node file that is named startup\testFile.txt from the specified compute node in the pool that has the ID Pool07.
 
 ### Example 3: Remove a file by using the pipeline
 ```
-PS C:\>Get-AzureBatchNodeFile -JobId "Job-000001" -TaskId "Task26" -Name "wd\testFile2.txt" -BatchContext $Context | Remove-AzureBatchNodeFile -Force -BatchContext $Context
+PS C:\>Get-AzureBatchNodeFile -JobId "Job-000001" -TaskId "Task26" -Path "wd\testFile2.txt" -BatchContext $Context | Remove-AzureBatchNodeFile -Force -BatchContext $Context
 ```
 
 This command gets the node file by using **Get-AzureBatchNodeFile**.
@@ -157,13 +157,11 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Name
-Specifies the name of the node file that this cmdlet deletes.
-
-```yaml
+### -Path
+The file path of the node file to delete.```yaml
 Type: String
 Parameter Sets: Task, ComputeNode
-Aliases: 
+Aliases: Name
 
 Required: True
 Position: Named

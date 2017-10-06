@@ -13,7 +13,8 @@ Starts to resize a pool.
 ## SYNTAX
 
 ```
-Start-AzureBatchPoolResize [-Id] <String> -TargetDedicated <Int32> [-ResizeTimeout <TimeSpan>]
+Start-AzureBatchPoolResize [-Id] <String> [-TargetDedicatedComputeNodes <Int32>]
+ [-TargetLowPriorityComputeNodes <Int32>] [-ResizeTimeout <TimeSpan>]
  [-ComputeNodeDeallocationOption <ComputeNodeDeallocationOption>] -BatchContext <BatchAccountContext>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -25,7 +26,7 @@ The **Start-AzureBatchPoolResize** cmdlet starts an Azure Batch resize operation
 
 ### Example 1: Resize a pool to 12 nodes
 ```
-PS C:\>Start-AzureBatchPoolResize -Id "ContosoPool06" -TargetDedicated 12 -BatchContext $Context
+PS C:\>Start-AzureBatchPoolResize -Id "ContosoPool06" -TargetDedicatedComputeNodes 12 -BatchContext $Context
 ```
 
 This command starts a resize operation on the pool that has the ID ContosoPool06.
@@ -34,7 +35,7 @@ Use the Get-AzureRmBatchAccountKeys cmdlet to assign a context to the $Context v
 
 ### Example 2: Resize a pool using a deallocation option
 ```
-PS C:\>Get-AzureBatchPool -Id "ContosoPool06" -BatchContext $Context | Start-AzureBatchPoolResize -TargetDedicated 5 -ResizeTimeout ([TimeSpan]::FromHours(1)) -ComputeNodeDeallocationOption ([Microsoft.Azure.Batch.Common.ComputeNodeDeallocationOption]::Terminate) -BatchContext $Context
+PS C:\>Get-AzureBatchPool -Id "ContosoPool06" -BatchContext $Context | Start-AzureBatchPoolResize -TargetDedicatedComputeNodes 5 -ResizeTimeout ([TimeSpan]::FromHours(1)) -ComputeNodeDeallocationOption ([Microsoft.Azure.Batch.Common.ComputeNodeDeallocationOption]::Terminate) -BatchContext $Context
 ```
 
 This cmdlet resizes a pool to five dedicated compute nodes.
@@ -123,15 +124,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TargetDedicated
-Specifies the target number of dedicated compute nodes.
+### -TargetDedicatedComputeNodes
+The number of target dedicated compute nodes.
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases: TargetDedicated
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetLowPriorityComputeNodes
+The number of target low-priority compute nodes.
 
 ```yaml
 Type: Int32
 Parameter Sets: (All)
 Aliases: 
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

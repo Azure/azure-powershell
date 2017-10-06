@@ -15,27 +15,28 @@ Creates a pool in the Batch service.
 ### CloudServiceAndTargetDedicated (Default)
 ```
 New-AzureBatchPool [-Id] <String> -VirtualMachineSize <String> [-DisplayName <String>]
- [-ResizeTimeout <TimeSpan>] [-TargetDedicated <Int32>] [-MaxTasksPerComputeNode <Int32>]
- [-TaskSchedulingPolicy <PSTaskSchedulingPolicy>] [-Metadata <IDictionary>]
+ [-ResizeTimeout <TimeSpan>] [-TargetDedicatedComputeNodes <Int32>] [-TargetLowPriorityComputeNodes <Int32>]
+ [-MaxTasksPerComputeNode <Int32>] [-TaskSchedulingPolicy <PSTaskSchedulingPolicy>] [-Metadata <IDictionary>]
  [-InterComputeNodeCommunicationEnabled] [-StartTask <PSStartTask>]
  [-CertificateReferences <PSCertificateReference[]>]
  [-ApplicationPackageReferences <PSApplicationPackageReference[]>]
  [-CloudServiceConfiguration <PSCloudServiceConfiguration>] [-NetworkConfiguration <PSNetworkConfiguration>]
- -BatchContext <BatchAccountContext> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-UserAccounts <PSUserAccount[]>] -BatchContext <BatchAccountContext>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### VirtualMachineAndTargetDedicated
 ```
 New-AzureBatchPool [-Id] <String> -VirtualMachineSize <String> [-DisplayName <String>]
- [-ResizeTimeout <TimeSpan>] [-TargetDedicated <Int32>] [-MaxTasksPerComputeNode <Int32>]
- [-TaskSchedulingPolicy <PSTaskSchedulingPolicy>] [-Metadata <IDictionary>]
+ [-ResizeTimeout <TimeSpan>] [-TargetDedicatedComputeNodes <Int32>] [-TargetLowPriorityComputeNodes <Int32>]
+ [-MaxTasksPerComputeNode <Int32>] [-TaskSchedulingPolicy <PSTaskSchedulingPolicy>] [-Metadata <IDictionary>]
  [-InterComputeNodeCommunicationEnabled] [-StartTask <PSStartTask>]
  [-CertificateReferences <PSCertificateReference[]>]
  [-ApplicationPackageReferences <PSApplicationPackageReference[]>]
  [-VirtualMachineConfiguration <PSVirtualMachineConfiguration>]
- [-NetworkConfiguration <PSNetworkConfiguration>] -BatchContext <BatchAccountContext>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NetworkConfiguration <PSNetworkConfiguration>] [-UserAccounts <PSUserAccount[]>]
+ -BatchContext <BatchAccountContext> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CloudServiceAndAutoScale
@@ -47,8 +48,8 @@ New-AzureBatchPool [-Id] <String> -VirtualMachineSize <String> [-DisplayName <St
  [-CertificateReferences <PSCertificateReference[]>]
  [-ApplicationPackageReferences <PSApplicationPackageReference[]>]
  [-CloudServiceConfiguration <PSCloudServiceConfiguration>] [-NetworkConfiguration <PSNetworkConfiguration>]
- -BatchContext <BatchAccountContext> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-UserAccounts <PSUserAccount[]>] -BatchContext <BatchAccountContext>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### VirtualMachineAndAutoScale
@@ -60,8 +61,9 @@ New-AzureBatchPool [-Id] <String> -VirtualMachineSize <String> [-DisplayName <St
  [-CertificateReferences <PSCertificateReference[]>]
  [-ApplicationPackageReferences <PSApplicationPackageReference[]>]
  [-VirtualMachineConfiguration <PSVirtualMachineConfiguration>]
- [-NetworkConfiguration <PSNetworkConfiguration>] -BatchContext <BatchAccountContext>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NetworkConfiguration <PSNetworkConfiguration>] [-UserAccounts <PSUserAccount[]>]
+ -BatchContext <BatchAccountContext> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -71,7 +73,7 @@ The **New-AzureBatchPool** cmdlet creates a pool in the Azure Batch service unde
 
 ### Example 1: Create a new pool using the TargetDedicated parameter set
 ```
-PS C:\>New-AzureBatchPool -Id "MyPool" -VirtualMachineSize "Small" -OSFamily "4" -TargetOSVersion "*" -TargetDedicated 3 -BatchContext $Context
+PS C:\>New-AzureBatchPool -Id "MyPool" -VirtualMachineSize "Small" -OSFamily "4" -TargetOSVersion "*" -TargetDedicatedComputeNodes 3 -BatchContext $Context
 ```
 
 This command creates a new pool with ID MyPool using the TargetDedicated parameter set.
@@ -313,8 +315,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TargetDedicated
-Specifies the target number of compute nodes to allocate to the pool.
+### -TargetDedicatedComputeNodes
+Specifies the target number of dedicated compute nodes to allocate to the pool.
+
+```yaml
+Type: Int32
+Parameter Sets: CloudServiceAndTargetDedicated, VirtualMachineAndTargetDedicated
+Aliases: TargetDedicated
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetLowPriorityComputeNodes
+Specifies the target number of low-priority compute nodes to allocate to the pool.
 
 ```yaml
 Type: Int32
@@ -333,6 +350,21 @@ Specifies the task scheduling policy, such as the ComputeNodeFillType.
 
 ```yaml
 Type: PSTaskSchedulingPolicy
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAccounts
+The list of user accounts to be created on each node in the pool.
+
+```yaml
+Type: PSUserAccount[]
 Parameter Sets: (All)
 Aliases: 
 
