@@ -37,17 +37,10 @@ namespace Microsoft.Azure.Commands.MarketplaceOrdering.Cmdlets.Agreements
 
         public override void ExecuteCmdlet()
         {
-            try
+            if (ParameterSetName.Equals(Constants.ParameterSetNames.AgreementAcceptParameterSet))
             {
-                if (ParameterSetName.Equals(Constants.ParameterSetNames.AgreementAcceptParameterSet))
-                {
-                    var agreementTerms = new PSAgreementTerms(MarketplaceOrderingAgreementsClient.MarketplaceAgreements.Get(Publisher, Product, Name));
-                    WriteObject(agreementTerms);
-                }
-            }
-            catch (ErrorResponseException e)
-            {
-                WriteWarning(e.Body.Error.Message);
+                var agreementTerms = new PSAgreementTerms(MarketplaceOrderingAgreementsClient.MarketplaceAgreements.Get(Publisher, Product, Name));
+                WriteObject(agreementTerms);
             }
         }
     }
