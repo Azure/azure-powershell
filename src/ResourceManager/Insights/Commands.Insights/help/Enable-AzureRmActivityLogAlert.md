@@ -18,7 +18,7 @@ Enable-AzureRmActivityLogAlert [-InputObject <PSActivityLogAlertResource>] [-Res
 
 ## DESCRIPTION
 The **Enable-AzureRmActivityLogAlert** cmdlet allows enabling an activity log alert and setting its tags.
-This cmdlet implements the ShouldProcess pattern, i.e. it might request confirmation from the user before actually patching the resource and it accepts the -Force argument.
+This cmdlet implements the ShouldProcess pattern, i.e. it might request confirmation from the user before actually patching the resource.
 
 ## EXAMPLES
 
