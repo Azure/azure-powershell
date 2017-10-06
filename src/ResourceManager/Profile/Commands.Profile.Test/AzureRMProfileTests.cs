@@ -18,10 +18,10 @@ using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile;
 using Microsoft.Azure.Commands.Profile.Models;
+using Microsoft.Azure.Commands.Profile.Test;
 using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.Azure.Internal.Subscriptions.Models;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.Rest;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.Common;
@@ -901,12 +901,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void CanRenwTokenLogin()
+        public void CanRenewTokenLogin()
         {
             var tenants = new List<string> { DefaultTenant.ToString() };
             var subscriptions = new List<string> { DefaultSubscription.ToString() };
             var profile = SetupLogin(tenants, subscriptions, subscriptions);
-
             var cmdlet = new AddAzureRMAccountCommand();
             cmdlet.CommandRuntime = new MockCommandRuntime();
             cmdlet.DefaultProfile = profile;
@@ -931,7 +930,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             Assert.Equal(graphToken1, account.GetProperty(AzureAccount.Property.GraphAccessToken));
             Assert.True(account.IsPropertySet(AzureAccount.Property.KeyVaultAccessToken));
             Assert.Equal(keyVaultToken1, account.GetProperty(AzureAccount.Property.KeyVaultAccessToken));
-
             var toss = SetupLogin(tenants, subscriptions, subscriptions);
             var cmdlet2 = new AddAzureRMAccountCommand();
             cmdlet2.CommandRuntime = new MockCommandRuntime();
@@ -956,7 +954,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             Assert.Equal(graphToken2, account.GetProperty(AzureAccount.Property.GraphAccessToken));
             Assert.True(account.IsPropertySet(AzureAccount.Property.KeyVaultAccessToken));
             Assert.Equal(keyVaultToken2, account.GetProperty(AzureAccount.Property.KeyVaultAccessToken));
-
             var factory = new ClientFactory();
             var rmClient = factory.CreateArmClient<MockServiceClient>(profile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
             var rmCred = rmClient.Credentials as TokenCredentials;
@@ -966,7 +963,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             Assert.NotNull(message.Headers.Authorization);
             Assert.NotNull(message.Headers.Authorization.Parameter);
             Assert.Contains(accessToken2, message.Headers.Authorization.Parameter);
-
             var graphClient = factory.CreateArmClient<MockServiceClient>(profile.DefaultContext, AzureEnvironment.Endpoint.Graph);
             var graphCred = graphClient.Credentials as TokenCredentials;
             Assert.NotNull(graphCred);
@@ -1011,24 +1007,4 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             }
         }
     }
-        public class MockServiceClient : ServiceClient<MockServiceClient>
-        {
-            public MockServiceClient(Uri uri, ServiceClientCredentials credentials)
-            {
-                BaseUri = uri;
-                Credentials = credentials;
-            }
-
-        public MockServiceClient(Uri uri, ServiceClientCredentials credentials, params DelegatingHandler[] handlers)
-        {
-            BaseUri = uri;
-            Credentials = credentials;
-        }
-
-        public string SubscriptionId { get; set; }
-
-            public ServiceClientCredentials Credentials { get; set; }
-
-            public Uri BaseUri { get; set; }
-        }
 }

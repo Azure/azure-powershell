@@ -12,25 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Profile;
-using Microsoft.Azure.Commands.Profile.Models;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
-using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Xunit;
-using Xunit.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using System;
-using Microsoft.Azure.Commands.ScenarioTest.Extensions;
-using Microsoft.Azure.Commands.Profile.Context;
-using System.Linq;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
-using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using System;
+using Xunit;
 
 namespace Microsoft.Azure.Commands.Profile.Test
 {
@@ -48,7 +36,6 @@ namespace Microsoft.Azure.Commands.Profile.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetContextCopiesAccountProperties()
         {
-
             TestExecutionHelpers.SetUpSessionAndProfile();
             var context = new AzureContext();
             var newContext = new AzureContext();
@@ -87,7 +74,6 @@ namespace Microsoft.Azure.Commands.Profile.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetContextWithNameCopiesAccountProperties()
         {
-
             TestExecutionHelpers.SetUpSessionAndProfile();
             var context = new AzureContext();
             var newContext = new AzureContext();
