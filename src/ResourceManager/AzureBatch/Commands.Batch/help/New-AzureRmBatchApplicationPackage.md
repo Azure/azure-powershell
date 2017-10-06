@@ -16,14 +16,14 @@ Creates an application package in a Batch account.
 ```
 New-AzureRmBatchApplicationPackage [-AccountName] <String> [-ResourceGroupName] <String>
  [-ApplicationId] <String> [-ApplicationVersion] <String> [-Format] <String> -FilePath <String>
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ActivateOnly
 ```
 New-AzureRmBatchApplicationPackage [-AccountName] <String> [-ResourceGroupName] <String>
  [-ApplicationId] <String> [-ApplicationVersion] <String> [-Format] <String> [-ActivateOnly]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -97,6 +97,19 @@ Required: True
 Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

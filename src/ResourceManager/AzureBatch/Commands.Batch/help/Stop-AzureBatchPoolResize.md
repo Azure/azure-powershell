@@ -13,7 +13,8 @@ Stops a pool resize operation.
 ## SYNTAX
 
 ```
-Stop-AzureBatchPoolResize [-Id] <String> -BatchContext <BatchAccountContext> [<CommonParameters>]
+Stop-AzureBatchPoolResize [-Id] <String> -BatchContext <BatchAccountContext>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -57,6 +58,19 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Id
 Specifies the ID of the pool for which this cmdlet stops a resizing operation.
 
@@ -78,11 +92,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### BatchAccountContext
-
 Parameter 'BatchContext' accepts value of type 'BatchAccountContext' from the pipeline
 
 ### String
-
 Parameter 'Id' accepts value of type 'String' from the pipeline
 
 ## OUTPUTS

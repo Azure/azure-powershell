@@ -21,7 +21,8 @@ New-AzureBatchPool [-Id] <String> -VirtualMachineSize <String> [-DisplayName <St
  [-CertificateReferences <PSCertificateReference[]>]
  [-ApplicationPackageReferences <PSApplicationPackageReference[]>]
  [-CloudServiceConfiguration <PSCloudServiceConfiguration>] [-NetworkConfiguration <PSNetworkConfiguration>]
- -BatchContext <BatchAccountContext> [-WhatIf] [-Confirm] [<CommonParameters>]
+ -BatchContext <BatchAccountContext> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### VirtualMachineAndTargetDedicated
@@ -33,8 +34,8 @@ New-AzureBatchPool [-Id] <String> -VirtualMachineSize <String> [-DisplayName <St
  [-CertificateReferences <PSCertificateReference[]>]
  [-ApplicationPackageReferences <PSApplicationPackageReference[]>]
  [-VirtualMachineConfiguration <PSVirtualMachineConfiguration>]
- [-NetworkConfiguration <PSNetworkConfiguration>] -BatchContext <BatchAccountContext> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-NetworkConfiguration <PSNetworkConfiguration>] -BatchContext <BatchAccountContext>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CloudServiceAndAutoScale
@@ -46,7 +47,8 @@ New-AzureBatchPool [-Id] <String> -VirtualMachineSize <String> [-DisplayName <St
  [-CertificateReferences <PSCertificateReference[]>]
  [-ApplicationPackageReferences <PSApplicationPackageReference[]>]
  [-CloudServiceConfiguration <PSCloudServiceConfiguration>] [-NetworkConfiguration <PSNetworkConfiguration>]
- -BatchContext <BatchAccountContext> [-WhatIf] [-Confirm] [<CommonParameters>]
+ -BatchContext <BatchAccountContext> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### VirtualMachineAndAutoScale
@@ -58,8 +60,8 @@ New-AzureBatchPool [-Id] <String> -VirtualMachineSize <String> [-DisplayName <St
  [-CertificateReferences <PSCertificateReference[]>]
  [-ApplicationPackageReferences <PSApplicationPackageReference[]>]
  [-VirtualMachineConfiguration <PSVirtualMachineConfiguration>]
- [-NetworkConfiguration <PSNetworkConfiguration>] -BatchContext <BatchAccountContext> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-NetworkConfiguration <PSNetworkConfiguration>] -BatchContext <BatchAccountContext>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -169,6 +171,19 @@ Specifies configuration settings for a pool based on the Azure cloud service pla
 Type: PSCloudServiceConfiguration
 Parameter Sets: CloudServiceAndTargetDedicated, CloudServiceAndAutoScale
 Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -396,7 +411,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### BatchAccountContext
-
 Parameter 'BatchContext' accepts value of type 'BatchAccountContext' from the pipeline
 
 ## OUTPUTS

@@ -13,7 +13,8 @@ Updates the properties of a pool.
 ## SYNTAX
 
 ```
-Set-AzureBatchPool [-Pool] <PSCloudPool> -BatchContext <BatchAccountContext> [<CommonParameters>]
+Set-AzureBatchPool [-Pool] <PSCloudPool> -BatchContext <BatchAccountContext>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -56,6 +57,19 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Pool
 Specifies the **PSCloudPool** to which this cmdlet updates the Batch service.
 
@@ -77,11 +91,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### BatchAccountContext
-
 Parameter 'BatchContext' accepts value of type 'BatchAccountContext' from the pipeline
 
 ### PSCloudPool
-
 Parameter 'Pool' accepts value of type 'PSCloudPool' from the pipeline
 
 ## OUTPUTS

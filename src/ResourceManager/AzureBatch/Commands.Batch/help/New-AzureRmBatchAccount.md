@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
 ms.assetid: 82C7B128-8818-4390-B1A5-CB40AC9D53CA
-online version:
+online version: 
 schema: 2.0.0
 ---
 
@@ -14,7 +14,8 @@ Creates a Batch account.
 
 ```
 New-AzureRmBatchAccount [-AccountName] <String> [-Location] <String> [-ResourceGroupName] <String>
- [[-AutoStorageAccountId] <String>] [-Tag <Hashtable>] [<CommonParameters>]
+ [[-AutoStorageAccountId] <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -62,12 +63,25 @@ Specifies the resource ID of the storage account to be used for auto storage.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -78,7 +92,7 @@ For more information, see [Azure Regions](https://azure.microsoft.com/en-us/regi
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 1
@@ -93,7 +107,7 @@ Specifies the name of the resource group in which this cmdlet creates the accoun
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 2
