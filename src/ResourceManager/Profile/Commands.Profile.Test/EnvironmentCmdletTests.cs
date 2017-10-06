@@ -398,7 +398,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             Assert.Equal(cmdlet.Name, actual.Name);
             Assert.Equal(cmdlet.EnableAdfsAuthentication.ToBool(), actual.EnableAdfsAuthentication);
             Assert.Equal(cmdlet.ActiveDirectoryEndpoint + "/", actual.ActiveDirectoryAuthority, StringComparer.OrdinalIgnoreCase);
-            Assert.Equal(cmdlet.ActiveDirectoryServiceEndpointResourceId + "/",
+            Assert.Equal(cmdlet.ActiveDirectoryServiceEndpointResourceId,
                 actual.ActiveDirectoryServiceEndpointResourceId);
             Assert.Equal(cmdlet.AdTenant, actual.AdTenant);
             Assert.Equal(cmdlet.AzureKeyVaultDnsSuffix, actual.AzureKeyVaultDnsSuffix);
