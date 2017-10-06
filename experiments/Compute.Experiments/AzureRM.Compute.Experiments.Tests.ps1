@@ -22,17 +22,21 @@ Describe 'New-AzVm' {
     }
     It 'Create Windows VM' {
         Remove-AzureRmResourceGroup -Name Something1 -Force
+
         $result = New-AzVm -Name MyVMA1 -Credential $vmCredential -ResourceGroupName Something1 -Verbose
-        $result.Name | Should -Be MyVMA1
+
+        $result.Name | Should Be MyVMA1
     }
     It 'Create Linux VM' {
         $result = New-AzVm -Name MyVMA2 -Credential $vmCredential -ResourceGroupName Something1 -ImageName UbuntuLTS -Verbose
-        $result.Name | Should -Be MyVMA2
+        $result.Name | Should Be MyVMA2
     }
     It 'Create Linux VM AsJob' {
         Remove-AzureRmResourceGroup -Name MyVMA3 -Force
+
         $job = New-AzVm -Name MyVMA3 -Credential $vmCredential -AsJob -ImageName UbuntuLTS -Verbose
-        $result = Receive-Job $job -Wait
-        $result.Name | Should -Be MyVMA3
+        $result = Receive-Job $job -Wait -Verbose
+
+        $result.Name | Should Be MyVMA3
     }
 }
