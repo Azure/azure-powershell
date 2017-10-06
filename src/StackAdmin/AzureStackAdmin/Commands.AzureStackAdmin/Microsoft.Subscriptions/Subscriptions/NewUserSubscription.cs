@@ -24,10 +24,10 @@ namespace Microsoft.AzureStack.Commands
     /// <summary>
     /// New Managed Subscription Cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.New, Nouns.TenantSubscription, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.New, Nouns.UserSubscription, SupportsShouldProcess = true)]
     [OutputType(typeof(SubscriptionDefinition))]
-    [Alias("New-AzureRmManagedSubscription")]
-    public class NewTenantSubscription : AdminApiCmdlet
+    [Alias("New-AzureRmManagedSubscription", "New-AzsTenantSubscription")]
+    public class NewUserSubscription : AdminApiCmdlet
     {
         /// <summary>
         /// Gets or sets the subscription owner.
@@ -73,7 +73,7 @@ namespace Microsoft.AzureStack.Commands
         /// </summary>
         public static Queue<Guid> SubscriptionIds { get; set; }
 
-        static NewTenantSubscription()
+        static NewUserSubscription()
         {
             SubscriptionIds = new Queue<Guid>();
         }
@@ -83,9 +83,9 @@ namespace Microsoft.AzureStack.Commands
         /// </summary>
         protected AdminSubscriptionDefinition GetSubscriptionDefinition()
         {
-            if (NewTenantSubscription.SubscriptionIds.Count != 0)
+            if (NewUserSubscription.SubscriptionIds.Count != 0)
             {
-                this.SubscriptionId = NewTenantSubscription.SubscriptionIds.Dequeue().ToString();
+                this.SubscriptionId = NewUserSubscription.SubscriptionIds.Dequeue().ToString();
             }
             else if (string.IsNullOrEmpty(this.SubscriptionId))
             {
@@ -110,7 +110,12 @@ namespace Microsoft.AzureStack.Commands
         {
             if (this.MyInvocation.InvocationName.Equals("New-AzureRmManagedSubscription", StringComparison.OrdinalIgnoreCase))
             {
-                this.WriteWarning("Alias New-AzureRmManagedSubscription will be deprecated in a future release. Please use the cmdlet name New-AzsTenantSubscription instead");
+                this.WriteWarning("Alias New-AzureRmManagedSubscription will be deprecated in a future release. Please use the cmdlet name New-AzsUserSubscription instead");
+            }
+
+            if (this.MyInvocation.InvocationName.Equals("New-AzsTenantSubscription", StringComparison.OrdinalIgnoreCase))
+            {
+                this.WriteWarning("Alias New-AzsTenantSubscription will be deprecated in a future release. Please use the cmdlet name New-AzsUserSubscription instead");
             }
 
             if (ShouldProcess(this.SubscriptionId, VerbsCommon.New))

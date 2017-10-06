@@ -23,10 +23,10 @@ namespace Microsoft.AzureStack.Commands
     /// <summary>
     /// Get Subscription Cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, Nouns.TenantSubscription)]
+    [Cmdlet(VerbsCommon.Get, Nouns.UserSubscription)]
     [OutputType(typeof(SubscriptionDefinition))]
-    [Alias("Get-AzureRmManagedSubscription")]
-    public class GetTenantSubscription : AdminApiCmdlet 
+    [Alias("Get-AzureRmManagedSubscription", "Get-AzsTenantSubscription")]
+    public class GetUserSubscription : AdminApiCmdlet 
     {
         /// <summary>
         /// Gets or sets the subscription id.
@@ -42,7 +42,12 @@ namespace Microsoft.AzureStack.Commands
         {
             if (this.MyInvocation.InvocationName.Equals("Get-AzureRmManagedSubscription", StringComparison.OrdinalIgnoreCase))
             {
-                this.WriteWarning("Alias Get-AzureRmManagedSubscription will be deprecated in a future release. Please use the cmdlet name Get-AzsTenantSubscription instead");
+                this.WriteWarning("Alias Get-AzureRmManagedSubscription will be deprecated in a future release. Please use the cmdlet name Get-AzsUserSubscription instead");
+            }
+
+            if (this.MyInvocation.InvocationName.Equals("Get-AzsTenantSubscription", StringComparison.OrdinalIgnoreCase))
+            {
+                this.WriteWarning("Alias Get-AzsTenantSubscription will be deprecated in a future release. Please use the cmdlet name Get-AzsUserSubscription instead");
             }
 
             using (var client = this.GetAzureStackClient())

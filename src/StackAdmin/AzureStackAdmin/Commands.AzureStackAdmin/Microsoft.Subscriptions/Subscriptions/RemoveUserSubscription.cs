@@ -16,6 +16,7 @@ namespace Microsoft.AzureStack.Commands
 {
     using System;
     using System.Management.Automation;
+    using System.Runtime.InteropServices.ComTypes;
     using Microsoft.Azure;
     using Microsoft.WindowsAzure.Commands.Common;
     using Microsoft.AzureStack.Management;
@@ -24,10 +25,10 @@ namespace Microsoft.AzureStack.Commands
     /// <summary>
     /// Subscription Cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, Nouns.TenantSubscription, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Remove, Nouns.UserSubscription, SupportsShouldProcess = true)]
     [OutputType(typeof(AzureOperationResponse))]
-    [Alias("Remove-AzureRmManagedSubscription")]
-    public class RemoveTenantSubscription : AdminApiCmdlet
+    [Alias("Remove-AzureRmManagedSubscription", "Remove-AzsTenantSubscription")]
+    public class RemoveUserSubscription : AdminApiCmdlet
     {
         /// <summary>
         /// Gets or sets the subscription ID to be deleted.
@@ -44,7 +45,12 @@ namespace Microsoft.AzureStack.Commands
         {
             if (this.MyInvocation.InvocationName.Equals("Remove-AzureRmManagedSubscription", StringComparison.OrdinalIgnoreCase))
             {
-                this.WriteWarning("Alias Remove-AzureRmManagedSubscription will be deprecated in a future release. Please use the cmdlet name Remove-AzsTenantSubscription instead");
+                this.WriteWarning("Alias Remove-AzureRmManagedSubscription will be deprecated in a future release. Please use the cmdlet name Remove-AzsUserSubscription instead");
+            }
+
+            if (this.MyInvocation.InvocationName.Equals("Remove-AzsTenantSubscription", StringComparison.OrdinalIgnoreCase))
+            {
+                this.WriteWarning("Alias Remove-AzsTenantSubscription will be deprecated in a future release. Please use the cmdlet name Remove-AzsUserSubscription instead");
             }
 
             if (ShouldProcess(this.SubscriptionId.ToString(), VerbsCommon.Remove))
