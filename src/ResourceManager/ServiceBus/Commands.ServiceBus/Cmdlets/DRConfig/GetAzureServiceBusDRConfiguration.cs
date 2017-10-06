@@ -38,13 +38,15 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
             Position = 1,
             HelpMessage = "Namespace Name.")]
         [ValidateNotNullOrEmpty]
-        public string NamespaceName { get; set; }
+        [Alias(AliasNamespaceName)]
+        public string Namespace { get; set; }
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             Position = 2,
             HelpMessage = "DR Configuration Name.")]
         [ValidateNotNullOrEmpty]
+        [Alias(AliasAliasName)]
         public string Name { get; set; }
 
         public override void ExecuteCmdlet()
@@ -52,13 +54,13 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
             if (!string.IsNullOrEmpty(Name))
             {
                 // Get a DRConfiguration
-                ServiceBusDRConfigurationAttributes drConfiguration = Client.GetServiceBusDRConfiguration(ResourceGroupName, NamespaceName, Name);
+                ServiceBusDRConfigurationAttributes drConfiguration = Client.GetServiceBusDRConfiguration(ResourceGroupName, Namespace, Name);
                 WriteObject(drConfiguration);
             }
             else
             {
                 // Get all DRConfigurations
-                IEnumerable<ServiceBusDRConfigurationAttributes> drConfigurationList = Client.ListAllServiceBusDRConfiguration(ResourceGroupName, NamespaceName);
+                IEnumerable<ServiceBusDRConfigurationAttributes> drConfigurationList = Client.ListAllServiceBusDRConfiguration(ResourceGroupName, Namespace);
                 WriteObject(drConfigurationList.ToList(), true);
             }
         }

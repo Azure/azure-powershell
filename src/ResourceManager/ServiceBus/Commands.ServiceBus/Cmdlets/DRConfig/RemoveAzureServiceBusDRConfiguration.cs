@@ -33,21 +33,23 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
             Position = 1,
             HelpMessage = "Namespace Name.")]
         [ValidateNotNullOrEmpty]
-        public string NamespaceName { get; set; }
+        [Alias(AliasNamespaceName)]
+        public string Namespace { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 2,
             HelpMessage = "Alias (GeoDr)")]
         [ValidateNotNullOrEmpty]
+        [Alias(AliasAliasName)]
         public string Name { get; set; }
 
         public override void ExecuteCmdlet()
         {
             // delete a EventHub 
-            if(ShouldProcess(target:Name, action:string.Format("Deleting Alias: {0} of NnameSpace{1}",Name,NamespaceName)))
+            if(ShouldProcess(target:Name, action:string.Format("Deleting Alias: {0} of NnameSpace{1}",Name,Namespace)))
             {
-                WriteObject(Client.DeleteServiceBusDRConfiguration(ResourceGroupName, NamespaceName, Name));
+                WriteObject(Client.DeleteServiceBusDRConfiguration(ResourceGroupName, Namespace, Name));
             }            
         }
     }

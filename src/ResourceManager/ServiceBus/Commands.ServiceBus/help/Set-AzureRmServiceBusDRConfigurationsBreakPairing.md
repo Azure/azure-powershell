@@ -13,7 +13,7 @@ This operation disables the Disaster Recovery and stops replicating changes from
 ## SYNTAX
 
 ```
-Set-AzureRmServiceBusDRConfigurationsBreakPairing [-ResourceGroupName] <String> [-NamespaceName] <String>
+Set-AzureRmServiceBusDRConfigurationsBreakPairing [-ResourceGroupName] <String> [-Namespace] <String>
  [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
 ```
 
@@ -24,7 +24,7 @@ The **Set-AzureRmServiceBusDRConfigurationsBreakPairing** cmdlet disables the Di
 
 ### Example 1
 ```
-PS C:\> Set-AzureRmServiceBusDRConfigurationsBreakPairing -ResourceGroupName "SampleResourceGroup" -NamespaceName "SampleNamespace_Primary" -Name "SampleDRCongifName"
+PS C:\> Set-AzureRmServiceBusDRConfigurationsBreakPairing -ResourceGroupName "SampleResourceGroup" -Namespace "SampleNamespace_Primary" -Name "SampleDRCongifName"
 ```
 
 This operation disables the Disaster Recovery and stops replicating changes from primary to secondary namespaces
@@ -61,7 +61,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -NamespaceName
+### -Namespace
 Namespace Name - Primary Namespace
 
 ```yaml

@@ -13,7 +13,7 @@ Creates an new Alias(Disaster Recovery configuration)
 ## SYNTAX
 
 ```
-New-AzureRmServiceBusDRConfigurations [-ResourceGroupName] <String> [-NamespaceName] <String> [-Name] <String>
+New-AzureRmServiceBusDRConfigurations [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
  [-PartnerNamespace] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
 ```
 
@@ -24,7 +24,7 @@ The **New-AzureRmServiceBusDRConfigurations** cmdlet Creates a new Alias(Disaste
 
 ### Example 1
 ```
-PS C:\> New-AzureRmServiceBusDRConfigurations -ResourceGroupName "SampleResourceGroup" -NamespaceName "SampleNamespace_Primary" -Name "SampleDRCongifName" -PartnerNamespace "SampleNamespace_Secondary"
+PS C:\> New-AzureRmServiceBusDRConfigurations -ResourceGroupName "SampleResourceGroup" -Namespace "SampleNamespace_Primary" -Name "SampleDRCongifName" -PartnerNamespace "SampleNamespace_Secondary"
 ```
 
 Creates an alias "SampleDRCongifName" with primary namespace "SampleNamespace_Primary" with secondary namespace "SampleNamespace_Secondary"
@@ -61,7 +61,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -NamespaceName
+### -Namespace
 Namespace Name.
 
 ```yaml

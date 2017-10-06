@@ -13,7 +13,7 @@ Envokes GEO DR failover and reconfigure the alias to point to the secondary name
 ## SYNTAX
 
 ```
-Set-AzureRmServiceBusDRConfigurationsFailOver [-ResourceGroupName] <String> [-NamespaceName] <String>
+Set-AzureRmServiceBusDRConfigurationsFailOver [-ResourceGroupName] <String> [-Namespace] <String>
  [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
 ```
 
@@ -24,7 +24,7 @@ The **Set-AzureRmServiceBusDRConfigurationsFailOver** cmdlet envokes GEO DR fail
 
 ### Example 1
 ```
-PS C:\> Set-AzureRmServiceBusDRConfigurationsFailOver -ResourceGroupName "SampleResourceGroup" -NamespaceName "SampleNamespace_Secondary" -Name "SampleDRCongifName"
+PS C:\> Set-AzureRmServiceBusDRConfigurationsFailOver -ResourceGroupName "SampleResourceGroup" -Namespace "SampleNamespace_Secondary" -Name "SampleDRCongifName"
 ```
 
 Envokes the Failover over alias "SampleDRCongifName", reconfigures and point to Secondary namespace "SampleNamespace_Secondary"
@@ -61,7 +61,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -NamespaceName
+### -Namespace
 Namespace Name - Secondary Namespace
 
 ```yaml

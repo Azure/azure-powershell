@@ -13,7 +13,7 @@ Retrieves Alias(Disaster Recovery configuration) for primary or secondary namesp
 ## SYNTAX
 
 ```
-Get-AzureRmServiceBusDRConfigurations [-ResourceGroupName] <String> [-NamespaceName] <String>
+Get-AzureRmServiceBusDRConfigurations [-ResourceGroupName] <String> [-Namespace] <String>
  [[-Name] <String>] [-DefaultProfile <IAzureContextContainer>]
 ```
 
@@ -24,14 +24,14 @@ The **Get-AzureRmServiceBusDRConfigurations** Retrieves Alias(Disaster Recovery 
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmServiceBusDRConfigurations -ResourceGroupName "SampleResourceGroup" -NamespaceName "SampleNamespace_Primary" -Name "SampleDRCongifName"
+PS C:\> Get-AzureRmServiceBusDRConfigurations -ResourceGroupName "SampleResourceGroup" -Namespace "SampleNamespace_Primary" -Name "SampleDRCongifName"
 ```
 
 Retrieves alias "SampleDRCongifName" configuration for primary namespace "SampleNamespace_Primary"
 
 ### Example 2
 ```
-PS C:\> Get-AzureRmServiceBusDRConfigurations -ResourceGroupName "SampleResourceGroup" -NamespaceName "SampleNamespace_Primary"
+PS C:\> Get-AzureRmServiceBusDRConfigurations -ResourceGroupName "SampleResourceGroup" -Namespace "SampleNamespace_Primary"
 ```
 
 Retrieves all alias configurations(list) for primary namespace "SampleNamespace_Primary"
@@ -68,7 +68,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -NamespaceName
+### -Namespace
 Namespace Name.
 
 ```yaml

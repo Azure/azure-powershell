@@ -13,7 +13,7 @@ Deletes an Alias(Disaster Recovery configuration)
 ## SYNTAX
 
 ```
-Remove-AzureRmServiceBusDRConfigurations [-ResourceGroupName] <String> [-NamespaceName] <String>
+Remove-AzureRmServiceBusDRConfigurations [-ResourceGroupName] <String> [-Namespace] <String>
  [-Name] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
 ```
 
@@ -24,7 +24,7 @@ The **Remove-AzureRmServiceBusDRConfigurations** cmdlet deletes an Alias(Disaste
 
 ### Example 1
 ```
-PS C:\> Remove-AzureRmServiceBusDRConfigurations -ResourceGroupName "SampleResourceGroup" -NamespaceName "SampleNamespace_Secondary" -Name "SampleDRCongifName"
+PS C:\> Remove-AzureRmServiceBusDRConfigurations -ResourceGroupName "SampleResourceGroup" -Namespace "SampleNamespace_Secondary" -Name "SampleDRCongifName"
 ```
 
 Deletes an Alias(Disaster Recovery configuration)
@@ -61,7 +61,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -NamespaceName
+### -Namespace
 Namespace Name.
 
 ```yaml

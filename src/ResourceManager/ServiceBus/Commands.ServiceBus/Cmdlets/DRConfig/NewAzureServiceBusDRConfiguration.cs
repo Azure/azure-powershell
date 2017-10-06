@@ -36,7 +36,8 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
             Position = 1,
             HelpMessage = "Namespace Name.")]
         [ValidateNotNullOrEmpty]
-        public string NamespaceName { get; set; }
+        [Alias(AliasNamespaceName)]
+        public string Namespace { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -50,6 +51,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
             Position = 3,
            HelpMessage = "DR Configuration PartnerNamespace")]
         [ValidateNotNullOrEmpty]
+        [Alias(AliasAliasName)]
         public string PartnerNamespace { get; set; }
 
         public override void ExecuteCmdlet()
@@ -62,9 +64,9 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
             if (!string.IsNullOrEmpty(Name))
                 drConfiguration.Name = Name;
 
-            if (ShouldProcess(target: drConfiguration.Name, action:string.Format("Creating new GEoDRConfigs:{0} under NameSpace:{1} ", drConfiguration.Name,NamespaceName)))
+            if (ShouldProcess(target: drConfiguration.Name, action:string.Format("Creating new GEoDRConfigs:{0} under NameSpace:{1} ", drConfiguration.Name,Namespace)))
             {
-                WriteObject(Client.CreateServiceBusDRConfiguration(ResourceGroupName, NamespaceName, drConfiguration.Name, drConfiguration));
+                WriteObject(Client.CreateServiceBusDRConfiguration(ResourceGroupName, Namespace, drConfiguration.Name, drConfiguration));
             }
                         
         }
