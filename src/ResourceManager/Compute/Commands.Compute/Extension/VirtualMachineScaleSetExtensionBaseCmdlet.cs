@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using System;
@@ -90,7 +91,9 @@ namespace Microsoft.Azure.Commands.Compute
         {
             if (string.IsNullOrWhiteSpace(VolumeType))
             {
-                return this.CurrentOSType == OperatingSystemTypes.Windows ? "All" : "Data";
+                return this.CurrentOSType == OperatingSystemTypes.Windows 
+                    ? AzureVmssDiskEncryptionExtensionContext.VolumeTypeAll 
+                    : AzureVmssDiskEncryptionExtensionContext.VolumeTypeData;
             }
             else
             {
