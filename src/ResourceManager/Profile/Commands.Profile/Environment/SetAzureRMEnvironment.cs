@@ -173,13 +173,11 @@ namespace Microsoft.Azure.Commands.Profile
                                 env.Value?.GetEndpoint(AzureEnvironment.Endpoint.ResourceManager)?.ToLowerInvariant(),
                                 GeneralUtilities.EnsureTrailingSlash(ARMEndpoint)?.ToLowerInvariant(), StringComparison.CurrentCultureIgnoreCase));
 
-                        IAzureEnvironment newEnvironment = new AzureEnvironment { Name = this.Name };
                         var defProfile = GetDefaultProfile();
-                        if (defProfile != null)
+                        IAzureEnvironment newEnvironment;
+                        if (!defProfile.TryGetEnvironment(this.Name, out newEnvironment))
                         {
-                            IAzureEnvironment _newEnvironment;
-                            defProfile.TryGetEnvironment(this.Name, out _newEnvironment);
-                            newEnvironment = (_newEnvironment ?? newEnvironment);
+                            newEnvironment = new AzureEnvironment { Name = this.Name };
                         }
 
                         if (publicEnvironment.Key == null)
