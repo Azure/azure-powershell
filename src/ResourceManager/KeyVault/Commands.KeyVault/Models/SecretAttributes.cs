@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         public Hashtable Tags { get; set; }
 
-        [Obsolete( "This property is being deprecated and will be removed in a future release" )]
+        [Obsolete( "The PurgeDisabled property is being deprecated and will be removed in a future release. Please use the RecoveryLevel property instead." )]
         public bool PurgeDisabled { get; private set; }
 
         public string RecoveryLevel { get; private set; }
