@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Profile.Default
     /// </summary>
     [Cmdlet(VerbsCommon.Clear, "AzureRmDefault", DefaultParameterSetName = ResourceGroupParameterSet,
          SupportsShouldProcess = true)]
-    [OutputType(typeof(void))]
+    [OutputType(typeof(bool))]
     public class ClearAzureRMDefaultCommand : AzureRMCmdlet
     {
         private const string ResourceGroupParameterSet = "ResourceGroup";
@@ -35,17 +35,34 @@ namespace Microsoft.Azure.Commands.Profile.Default
         [Parameter(ParameterSetName = ResourceGroupParameterSet, Mandatory = false, HelpMessage = "Clear Default Resource Group", ValueFromPipelineByPropertyName = true)]
         public SwitchParameter ResourceGroup { get; set; }
 
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Remove all defaults if no default is specified")]
+        public SwitchParameter Force { get; set; }
+
         public override void ExecuteCmdlet()
         {
             IAzureContext context = AzureRmProfileProvider.Instance.Profile.DefaultContext;
             // If no parameters are specified, clear all defaults
             if (!ResourceGroup)
             {
-                if (context.ExtendedProperties.ContainsKey(Resources.DefaultResourceGroupKey))
+                if (Force.IsPresent || ShouldContinue(Resources.RemoveDefaultsMessage, Resources.RemoveDefaultsCaption))
                 {
-                    if (ShouldProcess(string.Format(Resources.DefaultResourceGroupTarget), Resources.DefaultResourceGroupRemovalWarning))
+                    if (context.ExtendedProperties.ContainsKey(Resources.DefaultResourceGroupKey))
                     {
                         context.ExtendedProperties.Remove(Resources.DefaultResourceGroupKey);
+                        if (PassThru.IsPresent)
+                        {
+                            WriteObject(true);
+                        }
+                    }
+                    else
+                    {
+                        if (PassThru.IsPresent)
+                        {
+                            WriteObject(false);
+                        }
                     }
                 }
             }
@@ -58,6 +75,17 @@ namespace Microsoft.Azure.Commands.Profile.Default
                     if (ShouldProcess(string.Format(Resources.DefaultResourceGroupTarget), Resources.DefaultResourceGroupRemovalWarning))
                     {
                         context.ExtendedProperties.Remove(Resources.DefaultResourceGroupKey);
+                        if (PassThru.IsPresent)
+                        {
+                            WriteObject(true);
+                        }
+                    }
+                }
+                else
+                {
+                    if (PassThru.IsPresent)
+                    {
+                        WriteObject(false);
                     }
                 }
             }

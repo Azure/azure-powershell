@@ -565,6 +565,24 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Remove defaults?.
+        /// </summary>
+        internal static string RemoveDefaultsCaption {
+            get {
+                return ResourceManager.GetString("RemoveDefaultsCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove all existing defaults in the current context?.
+        /// </summary>
+        internal static string RemoveDefaultsMessage {
+            get {
+                return ResourceManager.GetString("RemoveDefaultsMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Rename context &apos;{0}&apos; to &apos;{1}&apos;.
         /// </summary>
         internal static string RenameContextMessage {

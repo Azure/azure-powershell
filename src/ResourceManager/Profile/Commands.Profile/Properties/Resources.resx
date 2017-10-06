@@ -388,4 +388,10 @@
     <value>Autosave setting from startup session: '{0}'</value>
     <comment>{0} = CurrentUser | Process</comment>
   </data>
+  <data name="RemoveDefaultsCaption" xml:space="preserve">
+    <value>Remove defaults?</value>
+  </data>
+  <data name="RemoveDefaultsMessage" xml:space="preserve">
+    <value>Remove all existing defaults in the current context?</value>
+  </data>
 </root>
