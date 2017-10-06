@@ -25,9 +25,9 @@ SOFTWARE.
 Import-Module -Name (Join-Path -Path $PSScriptRoot -ChildPath .. | Join-Path -ChildPath .. | Join-Path -ChildPath "GeneratedHelpers.psm1")
 <#
 .DESCRIPTION
-    Power on an infra role instance.
+    Power off an infra role instance.
 
-.PARAMETER InfraRoleInstance
+.PARAMETER InfrastructureRoleInstance
     Name of an infra role instance.
 
 .PARAMETER Location
@@ -35,23 +35,23 @@ Import-Module -Name (Join-Path -Path $PSScriptRoot -ChildPath .. | Join-Path -Ch
 
 .EXAMPLE
 
-Invoke-AzsInfraRoleInstancePowerOn -Location "local" -InfraRoleInstance "AzS-ACS01"
+Stop-AzsInfrastructureRoleInstance -Location "local" -InfrastructureRoleInstance "AzS-ACS01"
 
 ProvisioningState
 -----------------
 Succeeded
 
 #>
-function Invoke-InfraRoleInstancePowerOn
+function Stop-InfrastructureRoleInstance
 {
     [OutputType([Microsoft.AzureStack.Management.Fabric.Admin.Models.OperationStatus])]
-    [CmdletBinding(DefaultParameterSetName='InfraRoleInstances_PowerOn')]
+    [CmdletBinding(DefaultParameterSetName='InfrastructureRoleInstances_PowerOff')]
     param(    
-        [Parameter(Mandatory = $true, ParameterSetName = 'InfraRoleInstances_PowerOn')]
+        [Parameter(Mandatory = $true, ParameterSetName = 'InfrastructureRoleInstances_PowerOff')]
         [System.String]
-        $InfraRoleInstance,
+        $InfrastructureRoleInstance,
     
-        [Parameter(Mandatory = $true, ParameterSetName = 'InfraRoleInstances_PowerOn')]
+        [Parameter(Mandatory = $true, ParameterSetName = 'InfrastructureRoleInstances_PowerOff')]
         [System.String]
         $Location,
 
@@ -69,12 +69,13 @@ function Invoke-InfraRoleInstancePowerOn
     $ErrorActionPreference = 'Stop'
     
     $FabricAdminClient = Get-ServiceClient
+    
 
     $skippedCount = 0
     $returnedCount = 0
-    if ('InfraRoleInstances_PowerOn' -eq $PsCmdlet.ParameterSetName) {
-        Write-Verbose -Message 'Performing operation PowerOnWithHttpMessagesAsync on $FabricAdminClient.'
-        $taskResult = $FabricAdminClient.InfraRoleInstances.PowerOnWithHttpMessagesAsync($Location, $InfraRoleInstance)
+    if ('InfrastructureRoleInstances_PowerOff' -eq $PsCmdlet.ParameterSetName) {
+        Write-Verbose -Message 'Performing operation PowerOffWithHttpMessagesAsync on $FabricAdminClient.'
+        $taskResult = $FabricAdminClient.InfraRoleInstances.PowerOffWithHttpMessagesAsync($Location, $InfrastructureRoleInstance)
     } else {
         Write-Verbose -Message 'Failed to map parameter set to operation method.'
         throw 'Module failed to find operation to execute.'

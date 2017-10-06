@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Stop-AzsScaleUnitNodeMaintenanceMode
+# Enable-AzsScaleUnitNode
 
 ## SYNOPSIS
 Stop maintenance mode for a scale unit node.
@@ -13,7 +13,7 @@ Stop maintenance mode for a scale unit node.
 ## SYNTAX
 
 ```
-Stop-AzsScaleUnitNodeMaintenanceMode -ScaleUnitNode <String> -Location <String> [-AsJob]
+Enable-AzsScaleUnitNode -ScaleUnitNode <String> -Location <String> [-AsJob]
 ```
 
 ## DESCRIPTION
@@ -23,7 +23,7 @@ Stop maintenance mode for a scale unit node.
 
 ### Example 1
 ```
-PS C:\> Stop-AzsScaleUnitNodeMaintenanceMode -Location "local" -ScaleUnitNode "HC1n25r2236"
+PS C:\> Enable-AzsScaleUnitNode -Location "local" -ScaleUnitNode "HC1n25r2236"
 
 ProvisioningState
 -----------------------

@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-AzsVolume
+# Get-AzsInfrastructureVolume
 
 ## SYNOPSIS
 Get volumes at a location.
@@ -14,13 +14,13 @@ Get volumes at a location.
 
 ### Volumes_List (Default)
 ```
-Get-AzsVolume [-Filter <String>] -StorageSubSystem <String> [-Skip <Int32>] -Location <String> [-Top <Int32>]
+Get-AzsInfrastructureVolume [-Filter <String>] -StorageSubSystem <String> [-Skip <Int32>] -Location <String> [-Top <Int32>]
  -StoragePool <String>
 ```
 
 ### Volumes_Get
 ```
-Get-AzsVolume -StorageSubSystem <String> -Volume <String> -Location <String> -StoragePool <String>
+Get-AzsInfrastructureVolume -StorageSubSystem <String> -Volume <String> -Location <String> -StoragePool <String>
 ```
 
 ## DESCRIPTION
@@ -30,7 +30,7 @@ Get volumes at a location.
 
 ### Example 1
 ```
-PS C:\> Get-AzsVolume -Location local -StoragePool SU1_Pool -StorageSubSystem S-Cluster.azurestack.local
+PS C:\> Get-AzsInfrastructureVolume -Location local -StoragePool SU1_Pool -StorageSubSystem S-Cluster.azurestack.local
 
 Type                                                                          FileSystem RemainingSizeGB Name     SizeGB
 ----                                                                          ---------- --------------- ----     ------
@@ -44,7 +44,7 @@ Get a list of all volumes from a location.
 
 ### Example 2
 ```
-PS C:\> Get-AzsVolume -Location local -StoragePool SU1_Pool -StorageSubSystem S-Cluster.azurestack.local -Volume a42d219b
+PS C:\> Get-AzsInfrastructureVolume -Location local -StoragePool SU1_Pool -StorageSubSystem S-Cluster.azurestack.local -Volume a42d219b
 
 Type                                                                          FileSystem RemainingSizeGB Name     SizeGB
 ----                                                                          ---------- --------------- ----     ------

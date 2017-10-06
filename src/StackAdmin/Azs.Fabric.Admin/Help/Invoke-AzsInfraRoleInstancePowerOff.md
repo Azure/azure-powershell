@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Invoke-AzsInfraRoleInstancePowerOff
+# Stop-AzsInfrastructureRoleInstance
 
 ## SYNOPSIS
 Power off an infrastructure role instance. On failure an exception is thrown.
@@ -13,7 +13,7 @@ Power off an infrastructure role instance. On failure an exception is thrown.
 ## SYNTAX
 
 ```
-Invoke-AzsInfraRoleInstancePowerOff -InfraRoleInstance <String> -Location <String> [-AsJob]
+Stop-AzsInfrastructureRoleInstance -InfrastructureRoleInstance <String> -Location <String> [-AsJob]
 ```
 
 ## DESCRIPTION
@@ -23,7 +23,7 @@ Power off an infrastructure role instance. On failure an exception is thrown.
 
 ### Example 1
 ```
-PS C:\> Invoke-AzsInfraRoleInstancePowerOff -Location "local" -InfraRoleInstance "AzS-ACS01"
+PS C:\> Stop-AzsInfrastructureRoleInstancef -Location "local" -InfrastructureRoleInstance "AzS-ACS01"
 
 ProvisioningState
 -----------------
@@ -46,7 +46,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InfraRoleInstance
+### -InfrastructureRoleInstance
 Name of an infra role instance.
 
 ```yaml

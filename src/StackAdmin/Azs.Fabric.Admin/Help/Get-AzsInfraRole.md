@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-AzsInfraRole
+# Get-AzsInfrastructureRole
 
 ## SYNOPSIS
 Get infrastructure roles.
@@ -14,12 +14,12 @@ Get infrastructure roles.
 
 ### InfraRoles_List (Default)
 ```
-Get-AzsInfraRole [-Filter <String>] [-Skip <Int32>] -Location <String> [-Top <Int32>]
+Get-AzsInfrastructureRole [-Filter <String>] [-Skip <Int32>] -Location <String> [-Top <Int32>]
 ```
 
-### InfraRoles_Get
+### InfrasRoles_Get
 ```
-Get-AzsInfraRole -Location <String> -InfraRole <String>
+Get-AzsInfrastructureRole -Location <String> -InfrastructureRole <String>
 ```
 
 ## DESCRIPTION
@@ -29,14 +29,14 @@ Get infrastructure roles.
 
 ### Example 1
 ```
-PS C:\> Get-AzsInfraRole -Location "local"
+PS C:\> Get-AzsInfrastructureRole -Location "local"
 Type                                              Instances
 ----                                              ---------
-Microsoft.Fabric.Admin/fabricLocations/infraRoles {subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric.Admin/fabricLocations/local/i...
-Microsoft.Fabric.Admin/fabricLocations/infraRoles {subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric.Admin/fabricLocations/local/i...
-Microsoft.Fabric.Admin/fabricLocations/infraRoles {subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric.Admin/fabricLocations/local/i...
-Microsoft.Fabric.Admin/fabricLocations/infraRoles {subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric.Admin/fabricLocations/local/i...
-Microsoft.Fabric.Admin/fabricLocations/infraRoles {subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric.Admin/fabricLocations/local/i...
+Microsoft.Fabric.Admin/fabricLocations/InfraRoles {subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric.Admin/fabricLocations/local/i...
+Microsoft.Fabric.Admin/fabricLocations/InfraRoles {subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric.Admin/fabricLocations/local/i...
+Microsoft.Fabric.Admin/fabricLocations/InfraRoles {subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric.Admin/fabricLocations/local/i...
+Microsoft.Fabric.Admin/fabricLocations/InfraRoles {subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric.Admin/fabricLocations/local/i...
+Microsoft.Fabric.Admin/fabricLocations/InfraRoles {subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric.Admin/fabricLocations/local/i...
 ...
 ```
 
@@ -44,10 +44,10 @@ Get a list of all infrastructure roles.
 
 ### Example 2
 ```
-PS C:\> Get-AzsInfraRole -Location "local" -InfraRole "Active Directory Federation Services"
+PS C:\> Get-AzsInfrastructureRole -Location "local" -InfrastructureRole "Active Directory Federation Services"
 Type                                              Instances
 ----                                              ---------
-Microsoft.Fabric.Admin/fabricLocations/infraRoles {subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric.Admin/fabricLocations/local/i...
+Microsoft.Fabric.Admin/fabricLocations/InfrastructureRoles {subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric.Admin/fabricLocations/local/i...
 ```
 
 Get an infrastructure role based on the name.
@@ -59,7 +59,7 @@ OData filter parameter.
 
 ```yaml
 Type: String
-Parameter Sets: InfraRoles_List
+Parameter Sets: InfrastructureRoles_List
 Aliases: 
 
 Required: False
@@ -69,12 +69,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InfraRole
+### -InfrastructureRole
 Infra role name.
 
 ```yaml
 Type: String
-Parameter Sets: InfraRoles_Get
+Parameter Sets: InfrastructureRoles_Get
 Aliases: 
 
 Required: True
@@ -104,7 +104,7 @@ Skip the first N items as specified by the parameter value.
 
 ```yaml
 Type: Int32
-Parameter Sets: InfraRoles_List
+Parameter Sets: InfrastructureRoles_List
 Aliases: 
 
 Required: False
@@ -120,7 +120,7 @@ Applies after the -Skip parameter.
 
 ```yaml
 Type: Int32
-Parameter Sets: InfraRoles_List
+Parameter Sets: InfrastructureRoles_List
 Aliases: 
 
 Required: False

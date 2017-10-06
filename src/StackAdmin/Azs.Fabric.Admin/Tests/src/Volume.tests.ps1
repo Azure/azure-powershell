@@ -111,7 +111,7 @@ InModuleScope Azs.Fabric.Admin {
 			foreach($storageSystem in $storageSystems) { 
 				$StoragePools = Get-AzsStoragePool -Location $Location -StorageSubSystem $storageSystem.Name
 				foreach($StoragePool in $StoragePools) {
-					$volumes = Get-AzsVolume -Location $Location -StoragePool $StoragePool.Name -StorageSubSystem $storageSystem.Name
+					$volumes = Get-AzsInfrastructureVolume -Location $Location -StoragePool $StoragePool.Name -StorageSubSystem $storageSystem.Name
 					$volumes | Should Not Be $null
 					foreach($volume in $volumes) {
 						ValidateVolume $volume
@@ -128,9 +128,9 @@ InModuleScope Azs.Fabric.Admin {
 			foreach($storageSystem in $storageSystems) { 
 				$StoragePools = Get-AzsStoragePool -Location $Location -StorageSubSystem $storageSystem.Name
 				foreach($StoragePool in $StoragePools) {
-					$volumes = Get-AzsVolume -Location $Location -StoragePool $StoragePool.Name -StorageSubSystem $storageSystem.Name
+					$volumes = Get-AzsInfrastructureVolume -Location $Location -StoragePool $StoragePool.Name -StorageSubSystem $storageSystem.Name
 					foreach($volume in $volumes) {
-						$retrieved = Get-AzsVolume -Location $Location -StoragePool $StoragePool.Name -StorageSubSystem $storageSystem.Name -Volume $volume.Name
+						$retrieved = Get-AzsInfrastructureVolume -Location $Location -StoragePool $StoragePool.Name -StorageSubSystem $storageSystem.Name -Volume $volume.Name
 						AssertVolumesAreSame -Expected $volume -Found $retrieved
 						break
 					}
@@ -147,9 +147,9 @@ InModuleScope Azs.Fabric.Admin {
 			foreach($storageSystem in $storageSystems) { 
 				$StoragePools = Get-AzsStoragePool -Location $Location -StorageSubSystem $storageSystem.Name
 				foreach($StoragePool in $StoragePools) {
-					$volumes = Get-AzsVolume -Location $Location -StoragePool $StoragePool.Name -StorageSubSystem $storageSystem.Name
+					$volumes = Get-AzsInfrastructureVolume -Location $Location -StoragePool $StoragePool.Name -StorageSubSystem $storageSystem.Name
 					foreach($volume in $volumes) {
-						$retrieved = Get-AzsVolume -Location $Location -StoragePool $StoragePool.Name -StorageSubSystem $storageSystem.Name -Volume $volume.Name
+						$retrieved = Get-AzsInfrastructureVolume -Location $Location -StoragePool $StoragePool.Name -StorageSubSystem $storageSystem.Name -Volume $volume.Name
 						AssertVolumesAreSame -Expected $volume -Found $retrieved
 					}
 				}

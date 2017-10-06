@@ -25,16 +25,16 @@ SOFTWARE.
 Import-Module -Name (Join-Path -Path $PSScriptRoot -ChildPath .. | Join-Path -ChildPath .. | Join-Path -ChildPath "GeneratedHelpers.psm1")
 <#
 .DESCRIPTION
-    Get a list of all fabric locations.
-
-.PARAMETER FabricLocation
-    Fabric Location.
+    Get infrastructure role instances.
 
 .PARAMETER Filter
     OData filter parameter.
 
 .PARAMETER Skip
     Skip the first N items as specified by the parameter value.
+
+.PARAMETER InfrastructureRoleInstance
+    Name of an infra role instance.
 
 .PARAMETER Location
     Location of the resource.
@@ -44,36 +44,54 @@ Import-Module -Name (Join-Path -Path $PSScriptRoot -ChildPath .. | Join-Path -Ch
 
 .EXAMPLE
 
-Get-AzsFabricLocation -Location "local"
+Get-AzsInfrastructureRoleInstance -Location "local"
 
-Name  Type                                   Location
-----  ----                                   --------
-local Microsoft.Fabric.Admin/fabricLocations local
+Type                                                      State   Name         ScaleUnit
+----                                                      -----   ----         ---------
+Microsoft.Fabric.Admin/fabricLocations/InfrastructureRoleInstances Running AzS-ACS01    /subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric....
+Microsoft.Fabric.Admin/fabricLocations/InfrastructureRoleInstances Running AzS-ADFS01   /subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric....
+Microsoft.Fabric.Admin/fabricLocations/InfrastructureRoleInstances Running AzS-BGPNAT01 /subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric....
+Microsoft.Fabric.Admin/fabricLocations/InfrastructureRoleInstances Running AzS-CA01     /subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric....
+Microsoft.Fabric.Admin/fabricLocations/InfrastructureRoleInstances Running AzS-Gwy01    /subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric....
+Microsoft.Fabric.Admin/fabricLocations/InfrastructureRoleInstances Running AzS-NC01     /subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric....
+Microsoft.Fabric.Admin/fabricLocations/InfrastructureRoleInstances Running AzS-SLB01    /subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric....
+Microsoft.Fabric.Admin/fabricLocations/InfrastructureRoleInstances Running AzS-Sql01    /subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric....
+Microsoft.Fabric.Admin/fabricLocations/InfrastructureRoleInstances Running AzS-WAS01    /subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric....
+Microsoft.Fabric.Admin/fabricLocations/InfrastructureRoleInstances Running AzS-WASP01   /subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric....
+Microsoft.Fabric.Admin/fabricLocations/InfrastructureRoleInstances Running AzS-Xrp01    /subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric....
+
+.EXAMPLE
+
+Get-AzsInfrastructureRoleInstance -Location "local" -Name "AzS-ACS01"
+
+Type                                                      State   Name         ScaleUnit
+----                                                      -----   ----         ---------
+Microsoft.Fabric.Admin/fabricLocations/InfrastructureRoleInstances Running AzS-ACS01    /subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric....
 
 #>
-function Get-FabricLocation
+function Get-InfrastructureRoleInstance
 {
-    [OutputType([Microsoft.AzureStack.Management.Fabric.Admin.Models.FabricLocation])]
-    [CmdletBinding(DefaultParameterSetName='FabricLocations_List')]
+    [OutputType([Microsoft.AzureStack.Management.Fabric.Admin.Models.InfraRoleInstance])]
+    [CmdletBinding(DefaultParameterSetName='InfrastructureRoleInstances_List')]
     param(    
-        [Parameter(Mandatory = $true, ParameterSetName = 'FabricLocations_Get')]
-        [System.String]
-        $FabricLocation,
-    
-        [Parameter(Mandatory = $false, ParameterSetName = 'FabricLocations_List')]
+        [Parameter(Mandatory = $false, ParameterSetName = 'InfrastructureRoleInstances_List')]
         [string]
         $Filter,
     
-        [Parameter(Mandatory = $false, ParameterSetName = 'FabricLocations_List')]
+        [Parameter(Mandatory = $false, ParameterSetName = 'InfrastructureRoleInstances_List')]
         [int]
         $Skip = -1,
     
-        [Parameter(Mandatory = $true, ParameterSetName = 'FabricLocations_Get')]
-        [Parameter(Mandatory = $true, ParameterSetName = 'FabricLocations_List')]
+        [Parameter(Mandatory = $true, ParameterSetName = 'InfrastructureRoleInstances_Get')]
+        [System.String]
+        $InfrastructureRoleInstance,
+    
+        [Parameter(Mandatory = $true, ParameterSetName = 'InfrastructureRoleInstances_List')]
+        [Parameter(Mandatory = $true, ParameterSetName = 'InfrastructureRoleInstances_Get')]
         [System.String]
         $Location,
     
-        [Parameter(Mandatory = $false, ParameterSetName = 'FabricLocations_List')]
+        [Parameter(Mandatory = $false, ParameterSetName = 'InfrastructureRoleInstances_List')]
         [int]
         $Top = -1
     )
@@ -96,12 +114,12 @@ function Get-FabricLocation
 
     $skippedCount = 0
     $returnedCount = 0
-    if ('FabricLocations_Get' -eq $PsCmdlet.ParameterSetName) {
+    if ('InfrastructureRoleInstances_Get' -eq $PsCmdlet.ParameterSetName) {
         Write-Verbose -Message 'Performing operation GetWithHttpMessagesAsync on $FabricAdminClient.'
-        $taskResult = $FabricAdminClient.FabricLocations.GetWithHttpMessagesAsync($Location, $FabricLocation)
-    } elseif ('FabricLocations_List' -eq $PsCmdlet.ParameterSetName ) {
+        $taskResult = $FabricAdminClient.InfraRoleInstances.GetWithHttpMessagesAsync($Location, $InfrastructureRoleInstance)
+    } elseif ('InfrastructureRoleInstances_List' -eq $PsCmdlet.ParameterSetName ) {
         Write-Verbose -Message 'Performing operation ListWithHttpMessagesAsync on $FabricAdminClient.'
-        $taskResult = $FabricAdminClient.FabricLocations.ListWithHttpMessagesAsync($Location, $(if ($oDataQuery) { New-Object -TypeName "Microsoft.Rest.Azure.OData.ODataQuery``1[Microsoft.AzureStack.Management.Fabric.Admin.Models.FabricLocation]" -ArgumentList $oDataQuery } else { $null }))
+        $taskResult = $FabricAdminClient.InfraRoleInstances.ListWithHttpMessagesAsync($Location, $(if ($oDataQuery) { New-Object -TypeName "Microsoft.Rest.Azure.OData.ODataQuery``1[Microsoft.AzureStack.Management.Fabric.Admin.Models.InfraRoleInstance]" -ArgumentList $oDataQuery } else { $null }))
     } else {
         Write-Verbose -Message 'Failed to map parameter set to operation method.'
         throw 'Module failed to find operation to execute.'
@@ -135,7 +153,7 @@ function Get-FabricLocation
             {
                 $result = $taskResult.Result.Body
                 Write-Debug -Message "$($result | Out-String)"
-                if ($result -is [Microsoft.Rest.Azure.IPage[Microsoft.AzureStack.Management.Fabric.Admin.Models.FabricLocation]]) {
+                if ($result -is [Microsoft.Rest.Azure.IPage[Microsoft.AzureStack.Management.Fabric.Admin.Models.InfraRoleInstance]]) {
                     foreach ($item in $result) {
                         if ($skippedCount++ -lt $Skip) {
                         } else {
@@ -156,7 +174,7 @@ function Get-FabricLocation
         # Get the next page iff 1) there is a next page and 2) any result in the next page would be returned
         while ($result -and (Get-Member -InputObject $result -Name nextLink) -and $result.nextLink -and (($Top -eq -1) -or ($returnedCount -lt $Top))) {
             Write-Debug -Message "Retrieving next page: $($result.nextLink)"
-            $taskResult = $FabricAdminClient.FabricLocations.ListNextWithHttpMessagesAsync($result.nextLink)
+            $taskResult = $FabricAdminClient.InfraRoleInstances.ListNextWithHttpMessagesAsync($result.nextLink)
              $result = $null
         $ErrorActionPreference = 'Stop'
                     
@@ -184,7 +202,7 @@ function Get-FabricLocation
             {
                 $result = $taskResult.Result.Body
                 Write-Debug -Message "$($result | Out-String)"
-                if ($result -is [Microsoft.Rest.Azure.IPage[Microsoft.AzureStack.Management.Fabric.Admin.Models.FabricLocation]]) {
+                if ($result -is [Microsoft.Rest.Azure.IPage[Microsoft.AzureStack.Management.Fabric.Admin.Models.InfraRoleInstance]]) {
                     foreach ($item in $result) {
                         if ($skippedCount++ -lt $Skip) {
                         } else {

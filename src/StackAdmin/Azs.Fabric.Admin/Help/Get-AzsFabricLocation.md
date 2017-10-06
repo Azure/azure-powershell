@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-AzsFabricLocation
+# Get-AzsInfrastructureLocation
 
 ## SYNOPSIS
 Get a list of all fabric locations.
@@ -14,12 +14,12 @@ Get a list of all fabric locations.
 
 ### FabricLocations_List (Default)
 ```
-Get-AzsFabricLocation [-Filter <String>] [-Skip <Int32>] -Location <String> [-Top <Int32>]
+Get-AzsInfrastructureLocation [-Filter <String>] [-Skip <Int32>] -Location <String> [-Top <Int32>]
 ```
 
 ### FabricLocations_Get
 ```
-Get-AzsFabricLocation -FabricLocation <String> -Location <String>
+Get-AzsInfrastructureLocation -FabricLocation <String> -Location <String>
 ```
 
 ## DESCRIPTION
@@ -30,7 +30,7 @@ Get a list of all fabric locations.
 ### Example 1
 ```
 PS C:\> 
-Get-AzsFabricLocation -Location "local"
+Get-AzsInfrastructureLocation -Location "local"
 
 Name  Type                                   Location
 ----  ----                                   --------

@@ -5,21 +5,21 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-AzsInfraRoleInstance
+# Get-AzsInfrastructureRoleInstance
 
 ## SYNOPSIS
 Get a list of infrastructure role instances.
 
 ## SYNTAX
 
-### InfraRoleInstances_List (Default)
+### InfrastructureRoleInstances_List (Default)
 ```
-Get-AzsInfraRoleInstance [-Filter <String>] [-Skip <Int32>] -Location <String> [-Top <Int32>]
+Get-AzsInfrastructureRoleInstance [-Filter <String>] [-Skip <Int32>] -Location <String> [-Top <Int32>]
 ```
 
-### InfraRoleInstances_Get
+### InfrastructureRoleInstances_Get
 ```
-Get-AzsInfraRoleInstance -InfraRoleInstance <String> -Location <String>
+Get-AzsInfrastructureRoleInstance -InfrastructureRoleInstance <String> -Location <String>
 ```
 
 ## DESCRIPTION
@@ -29,30 +29,30 @@ Get a list of infrastructure role instances.
 
 ### Example 1
 ```
-PS C:\> Get-AzsInfraRoleInstance -Location "local"
+PS C:\> Get-AzsInfrastructureRoleInstance -Location "local"
 
 Type                                                      State   Name         ScaleUnit
 ----                                                      -----   ----         ---------
-Microsoft.Fabric.Admin/fabricLocations/infraRoleInstances Running AzS-ACS01    /subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric....
-Microsoft.Fabric.Admin/fabricLocations/infraRoleInstances Running AzS-ADFS01   /subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric....
-Microsoft.Fabric.Admin/fabricLocations/infraRoleInstances Running AzS-BGPNAT01 /subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric....
-Microsoft.Fabric.Admin/fabricLocations/infraRoleInstances Running AzS-CA01     /subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric....
-Microsoft.Fabric.Admin/fabricLocations/infraRoleInstances Running AzS-Gwy01    /subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric....
-Microsoft.Fabric.Admin/fabricLocations/infraRoleInstances Running AzS-NC01     /subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric....
-Microsoft.Fabric.Admin/fabricLocations/infraRoleInstances Running AzS-SLB01    /subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric....
-Microsoft.Fabric.Admin/fabricLocations/infraRoleInstances Running AzS-Sql01    /subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric....
-Microsoft.Fabric.Admin/fabricLocations/infraRoleInstances Running AzS-WAS01    /subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric....
-Microsoft.Fabric.Admin/fabricLocations/infraRoleInstances Running AzS-WASP01   /subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric....
-Microsoft.Fabric.Admin/fabricLocations/infraRoleInstances Running AzS-Xrp01    /subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric....
+Microsoft.Fabric.Admin/fabricLocations/InfrastructureRoleInstances Running AzS-ACS01    /subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric....
+Microsoft.Fabric.Admin/fabricLocations/InfrastructureRoleInstances Running AzS-ADFS01   /subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric....
+Microsoft.Fabric.Admin/fabricLocations/InfrastructureRoleInstances Running AzS-BGPNAT01 /subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric....
+Microsoft.Fabric.Admin/fabricLocations/InfrastructureRoleInstances Running AzS-CA01     /subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric....
+Microsoft.Fabric.Admin/fabricLocations/InfrastructureRoleInstances Running AzS-Gwy01    /subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric....
+Microsoft.Fabric.Admin/fabricLocations/InfrastructureRoleInstances Running AzS-NC01     /subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric....
+Microsoft.Fabric.Admin/fabricLocations/InfrastructureRoleInstances Running AzS-SLB01    /subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric....
+Microsoft.Fabric.Admin/fabricLocations/InfrastructureRoleInstances Running AzS-Sql01    /subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric....
+Microsoft.Fabric.Admin/fabricLocations/InfrastructureRoleInstances Running AzS-WAS01    /subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric....
+Microsoft.Fabric.Admin/fabricLocations/InfrastructureRoleInstances Running AzS-WASP01   /subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric....
+Microsoft.Fabric.Admin/fabricLocations/InfrastructureRoleInstances Running AzS-Xrp01    /subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric....
 ```
 
 Return a list of all infrastructure roles instances.
 
 ### Example 2
 ```
-PS C:\> Get-AzsInfraRoleInstance -Location "local" -Name "AzS-ACS01"
+PS C:\> Get-AzsInfrastructureRoleInstance -Location "local" -Name "AzS-ACS01"
 
-Microsoft.Fabric.Admin/fabricLocations/infraRoleInstances Running AzS-ACS01    /subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric....
+Microsoft.Fabric.Admin/fabricLocations/InfrastructureRoleInstances Running AzS-ACS01    /subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric....
 ```
 
 Return a single infrastructure role instance based on name.
@@ -64,7 +64,7 @@ OData filter parameter.
 
 ```yaml
 Type: String
-Parameter Sets: InfraRoleInstances_List
+Parameter Sets: InfrastructureRoleInstances_List
 Aliases: 
 
 Required: False
@@ -74,12 +74,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InfraRoleInstance
+### -InfrastructureRoleInstance
 Name of an infra role instance.
 
 ```yaml
 Type: String
-Parameter Sets: InfraRoleInstances_Get
+Parameter Sets: InfrastructureRoleInstances_Get
 Aliases: 
 
 Required: True
@@ -109,7 +109,7 @@ Skip the first N items as specified by the parameter value.
 
 ```yaml
 Type: Int32
-Parameter Sets: InfraRoleInstances_List
+Parameter Sets: InfrastructureRoleInstances_List
 Aliases: 
 
 Required: False
@@ -125,7 +125,7 @@ Applies after the -Skip parameter.
 
 ```yaml
 Type: Int32
-Parameter Sets: InfraRoleInstances_List
+Parameter Sets: InfrastructureRoleInstances_List
 Aliases: 
 
 Required: False

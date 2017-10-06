@@ -25,42 +25,39 @@ SOFTWARE.
 Import-Module -Name (Join-Path -Path $PSScriptRoot -ChildPath .. | Join-Path -ChildPath .. | Join-Path -ChildPath "GeneratedHelpers.psm1")
 <#
 .DESCRIPTION
-    Get the status of a compute fabric operation.
+    Reboot an infra role instance.
 
-.PARAMETER ComputeOperationResult
-    Id of a compute fabric operation.
-
-.PARAMETER Provider
-    Name of the provider.
+.PARAMETER InfrastructureRoleInstance
+    Name of an infra role instance.
 
 .PARAMETER Location
     Location of the resource.
 
 .EXAMPLE
 
-Get-AzsComputeFabricOperation -Location "local" -Provider "Microsoft.Fabric.Admin" -ComputeOperationResult "fdcdefb6-6fd0-402c-8b0c-5765b8fc4dc1"
+ReStart-AzsInfrastructureRoleInstance -Location "local" -InfrastructureRoleInstance "AzS-ACS01"
 
 ProvisioningState
------------------------
+-----------------
 Succeeded
 
 #>
-function Get-ComputeFabricOperation
+function Restart-InfrastructureRoleInstance
 {
     [OutputType([Microsoft.AzureStack.Management.Fabric.Admin.Models.OperationStatus])]
-    [CmdletBinding(DefaultParameterSetName='ComputeFabricOperations_Get')]
+    [CmdletBinding(DefaultParameterSetName='InfrastructureRoleInstances_Reboot')]
     param(    
-        [Parameter(Mandatory = $true, ParameterSetName = 'ComputeFabricOperations_Get')]
+        [Parameter(Mandatory = $true, ParameterSetName = 'InfrastructureRoleInstances_Reboot')]
         [System.String]
-        $ComputeOperationResult,
+        $InfrastructureRoleInstance,
     
-        [Parameter(Mandatory = $true, ParameterSetName = 'ComputeFabricOperations_Get')]
+        [Parameter(Mandatory = $true, ParameterSetName = 'InfrastructureRoleInstances_Reboot')]
         [System.String]
-        $Provider,
-    
-        [Parameter(Mandatory = $true, ParameterSetName = 'ComputeFabricOperations_Get')]
-        [System.String]
-        $Location
+        $Location,
+
+        [Parameter(Mandatory = $false)]
+        [switch]
+        $AsJob
     )
 
     Begin 
@@ -75,28 +72,39 @@ function Get-ComputeFabricOperation
 
     $skippedCount = 0
     $returnedCount = 0
-    if ('ComputeFabricOperations_Get' -eq $PsCmdlet.ParameterSetName) {
-        Write-Verbose -Message 'Performing operation GetWithHttpMessagesAsync on $FabricAdminClient.'
-        $taskResult = $FabricAdminClient.ComputeFabricOperations.GetWithHttpMessagesAsync($Location, $Provider, $ComputeOperationResult)
+    if ('InfrastructureRoleInstances_Reboot' -eq $PsCmdlet.ParameterSetName) {
+        Write-Verbose -Message 'Performing operation RebootWithHttpMessagesAsync on $FabricAdminClient.'
+        $taskResult = $FabricAdminClient.InfraRoleInstances.RebootWithHttpMessagesAsync($Location, $InfrastructureRoleInstance)
     } else {
         Write-Verbose -Message 'Failed to map parameter set to operation method.'
         throw 'Module failed to find operation to execute.'
     }
 
-    if ($TaskResult) {
-        $result = $null
+    Write-Verbose -Message "Waiting for the operation to complete."
+
+    $PSSwaggerJobScriptBlock = {
+        [CmdletBinding()]
+        param(    
+            [Parameter(Mandatory = $true)]
+            [System.Threading.Tasks.Task]
+            $TaskResult
+        )
+        if ($TaskResult) {
+            $result = $null
         $ErrorActionPreference = 'Stop'
                     
         $null = $taskResult.AsyncWaitHandle.WaitOne()
                     
         Write-Debug -Message "$($taskResult | Out-String)"
 
-        if($taskResult.IsFaulted)
+        $hasBody = $taskResult.Result -and (Get-Member -InputObject $taskResult.Result -Name 'Body') -and $taskResult.Result.Body
+
+        if($taskResult.IsFaulted -and -not $hasBody)
         {
             Write-Verbose -Message 'Operation failed.'
             Throw "$($taskResult.Exception.InnerExceptions | Out-String)"
         } 
-        elseif ($taskResult.IsCanceled)
+        elseif ($taskResult.IsCanceled -and -not $hasBody)
         {
             Write-Verbose -Message 'Operation got cancelled.'
             Throw 'Operation got cancelled.'
@@ -105,16 +113,36 @@ function Get-ComputeFabricOperation
         {
             Write-Verbose -Message 'Operation completed successfully.'
 
-            if($taskResult.Result -and
-                (Get-Member -InputObject $taskResult.Result -Name 'Body') -and
-                $taskResult.Result.Body)
+            if($hasBody)
             {
                 $result = $taskResult.Result.Body
                 Write-Debug -Message "$($result | Out-String)"
                 $result
             }
         }
-        
+            
+        }
+    }
+
+    $PSCommonParameters = Get-PSCommonParameter -CallerPSBoundParameters $PSBoundParameters
+
+    if($AsJob)
+    {
+        $ScriptBlockParameters = New-Object -TypeName 'System.Collections.Generic.Dictionary[string,object]'
+        $ScriptBlockParameters['TaskResult'] = $TaskResult
+        $ScriptBlockParameters['AsJob'] = $AsJob
+        $PSCommonParameters.GetEnumerator() | ForEach-Object { $ScriptBlockParameters[$_.Name] = $_.Value }
+
+        Start-PSSwaggerJobHelper -ScriptBlock $PSSwaggerJobScriptBlock `
+                                     -CallerPSBoundParameters $ScriptBlockParameters `
+                                     -CallerPSCmdlet $PSCmdlet `
+                                     @PSCommonParameters
+    }
+    else
+    {
+        Invoke-Command -ScriptBlock $PSSwaggerJobScriptBlock `
+                       -ArgumentList $taskResult `
+                       @PSCommonParameters
     }
     }
 

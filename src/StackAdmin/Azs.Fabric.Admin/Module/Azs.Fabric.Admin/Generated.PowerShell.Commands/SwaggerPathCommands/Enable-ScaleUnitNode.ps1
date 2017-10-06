@@ -25,33 +25,34 @@ SOFTWARE.
 Import-Module -Name (Join-Path -Path $PSScriptRoot -ChildPath .. | Join-Path -ChildPath .. | Join-Path -ChildPath "GeneratedHelpers.psm1")
 <#
 .DESCRIPTION
-    Reboot an infra role instance.
+    Stop maintenance mode for a scale unit node.
 
-.PARAMETER InfraRoleInstance
-    Name of an infra role instance.
+.PARAMETER ScaleUnitNode
+    Name of the scale unit node.
 
 .PARAMETER Location
     Location of the resource.
 
 .EXAMPLE
 
-Invoke-AzsInfraRoleInstanceReboot -Location "local" -InfraRoleInstance "AzS-ACS01"
+Enable-AzsScaleUnitNode -Location "local" -ScaleUnitNode "HC1n25r2236"
 
 ProvisioningState
------------------
+-----------------------
 Succeeded
 
+
 #>
-function Invoke-InfraRoleInstanceReboot
+function Enable-ScaleUnitNode
 {
     [OutputType([Microsoft.AzureStack.Management.Fabric.Admin.Models.OperationStatus])]
-    [CmdletBinding(DefaultParameterSetName='InfraRoleInstances_Reboot')]
+    [CmdletBinding(DefaultParameterSetName='ScaleUnitNodes_StopMaintenanceMode')]
     param(    
-        [Parameter(Mandatory = $true, ParameterSetName = 'InfraRoleInstances_Reboot')]
+        [Parameter(Mandatory = $true, ParameterSetName = 'ScaleUnitNodes_StopMaintenanceMode')]
         [System.String]
-        $InfraRoleInstance,
+        $ScaleUnitNode,
     
-        [Parameter(Mandatory = $true, ParameterSetName = 'InfraRoleInstances_Reboot')]
+        [Parameter(Mandatory = $true, ParameterSetName = 'ScaleUnitNodes_StopMaintenanceMode')]
         [System.String]
         $Location,
 
@@ -72,9 +73,9 @@ function Invoke-InfraRoleInstanceReboot
 
     $skippedCount = 0
     $returnedCount = 0
-    if ('InfraRoleInstances_Reboot' -eq $PsCmdlet.ParameterSetName) {
-        Write-Verbose -Message 'Performing operation RebootWithHttpMessagesAsync on $FabricAdminClient.'
-        $taskResult = $FabricAdminClient.InfraRoleInstances.RebootWithHttpMessagesAsync($Location, $InfraRoleInstance)
+    if ('ScaleUnitNodes_StopMaintenanceMode' -eq $PsCmdlet.ParameterSetName) {
+        Write-Verbose -Message 'Performing operation StopMaintenanceModeWithHttpMessagesAsync on $FabricAdminClient.'
+        $taskResult = $FabricAdminClient.ScaleUnitNodes.StopMaintenanceModeWithHttpMessagesAsync($Location, $ScaleUnitNode)
     } else {
         Write-Verbose -Message 'Failed to map parameter set to operation method.'
         throw 'Module failed to find operation to execute.'

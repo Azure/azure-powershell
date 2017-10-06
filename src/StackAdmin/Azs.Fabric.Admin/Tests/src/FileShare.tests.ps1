@@ -102,7 +102,7 @@ InModuleScope Azs.Fabric.Admin {
 		
 		It "TestListFileShares" {
 			$global:TestName = 'TestListFileShares'
-			$fileShares = Get-AzsFileShare -Location $Location
+			$fileShares = Get-AzsInfrastructureShare -Location $Location
 			$fileShares | Should not be $null
 			foreach($fileShare in $fileShares) {
 				ValidateFileShare -FileShare $fileShare
@@ -112,10 +112,10 @@ InModuleScope Azs.Fabric.Admin {
 		It "TestGetFileShare" {
             $global:TestName = 'TestGetFileShare'
 
-			$fileShares = Get-AzsFileShare -Location $Location
+			$fileShares = Get-AzsInfrastructureShare -Location $Location
 			if($fileShares -and $fileShares.Count -gt 0) {
 				$fileShare = $fileShares[0]
-				$retrieved = Get-AzsFileShare -Location $Location -FileShare $fileShare.Name
+				$retrieved = Get-AzsInfrastructureShare -Location $Location -FileShare $fileShare.Name
 				AssertFileSharesAreSame -Expected $fileShare -Found $retrieved
 			}
 		}
@@ -123,9 +123,9 @@ InModuleScope Azs.Fabric.Admin {
 		It "TestGetAllFileShares" {
 			$global:TestName = 'TestGetAllFileShares'
 
-			$fileShares = Get-AzsFileShare -Location $Location
+			$fileShares = Get-AzsInfrastructureShare -Location $Location
 			foreach($fileShare in $fileShares) {
-				$retrieved = Get-AzsFileShare -Location $Location -FileShare $fileShare.Name
+				$retrieved = Get-AzsInfrastructureShare -Location $Location -FileShare $fileShare.Name
 				AssertFileSharesAreSame -Expected $fileShare -Found $retrieved
 			}
 		}

@@ -13,8 +13,9 @@
 # ----------------------------------------------------------------------------------
 
 $ModuleName = "Azs.Fabric.Admin"
-
+If ( !(Get-module AzureRm.Profile )) {
 Import-Module "..\..\..\Stack\Debug\ResourceManager\AzureResourceManager\AzureRM.Profile"
+}
 Import-Module ..\Module\$ModuleName
 
 if(Test-Path bin\Debug) {

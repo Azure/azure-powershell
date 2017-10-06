@@ -84,7 +84,7 @@
       "post": {
         "x-ps-cmdlet-infos": [
           {
-            "name": "Stop-ScaleUnitNodeMaintenanceMode",
+            "name": "Enable-ScaleUnitNode",
             "description": "Stop maintenance mode for a scale unit node.",
             "defaultParameterSet": "ScaleUnitNodes_StopMaintenanceMode",
             "generateCommand": true
@@ -170,13 +170,13 @@
         }
       }
     },
-    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/infraRoleInstances/{infraRoleInstance}/PowerOn": {
+    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/InfrastructureRoleInstances/{InfrastructureRoleInstance}/PowerOn": {
       "post": {
         "x-ps-cmdlet-infos": [
           {
-            "name": "Invoke-InfraRoleInstancePowerOn",
+            "name": "Start-InfrastructureRoleInstance",
             "description": "Power on an infra role instance.",
-            "defaultParameterSet": "InfraRoleInstances_PowerOn",
+            "defaultParameterSet": "InfrastructureRoleInstances_PowerOn",
             "generateCommand": true
           }
         ],
@@ -275,13 +275,13 @@
         }
       }
     },
-    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/infraRoleInstances/{infraRoleInstance}/Reboot": {
+    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/InfrastructureRoleInstances/{InfrastructureRoleInstance}/Reboot": {
       "post": {
         "x-ps-cmdlet-infos": [
           {
-            "name": "Invoke-InfraRoleInstanceReboot",
+            "name": "Restart-InfrastructureRoleInstanc",
             "description": "Reboot an infra role instance.",
-            "defaultParameterSet": "InfraRoleInstances_Reboot",
+            "defaultParameterSet": "InfrastructureRoleInstances_Reboot",
             "generateCommand": true
           }
         ],
@@ -290,13 +290,13 @@
         }
       }
     },
-    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/infraRoleInstances/{infraRoleInstance}": {
+    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/InfrastructureRoleInstances/{InfrastructureRoleInstance}": {
       "get": {
         "x-ps-cmdlet-infos": [
           {
-            "name": "Get-InfraRoleInstance",
+            "name": "Get-InfrastructureRoleInstance",
             "description": "Get an infra role instance.",
-            "defaultParameterSet": "InfraRoleInstances_Get",
+            "defaultParameterSet": "InfrastructureRoleInstances_Get",
             "generateCommand": true
           }
         ],
@@ -305,13 +305,13 @@
         }
       }
     },
-    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/infraRoleInstances": {
+    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/InfrastructureRoleInstances": {
       "get": {
         "x-ps-cmdlet-infos": [
           {
-            "name": "Get-InfraRoleInstance",
+            "name": "Get-InfrastructureRoleInstance",
             "description": "Get a list of all infra role instances at a location.",
-            "defaultParameterSet": "InfraRoleInstances_Get",
+            "defaultParameterSet": "InfrastructureRoleInstances_Get",
             "generateCommand": true
           }
         ],
@@ -380,13 +380,13 @@
         }
       }
     },
-    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/infraRoleInstances/{infraRoleInstance}/PowerOff": {
+    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/InfrastructureRoleInstances/{InfrastructureRoleInstance}/PowerOff": {
       "post": {
         "x-ps-cmdlet-infos": [
           {
-            "name": "Invoke-InfraRoleInstancePowerOff",
+            "name": "Stop-InfrastructureRoleInstance",
             "description": "Power off an infra role instance.",
-            "defaultParameterSet": "InfraRoleInstances_PowerOff",
+            "defaultParameterSet": "InfrastructureRoleInstances_PowerOff",
             "generateCommand": true
           }
         ],
@@ -395,13 +395,13 @@
         }
       }
     },
-    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/infraRoleInstances/{infraRoleInstance}/Shutdown": {
+    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/InfrastructureRoleInstances/{InfrastructureRoleInstance}/Shutdown": {
       "post": {
         "x-ps-cmdlet-infos": [
           {
-            "name": "Invoke-InfraRoleInstanceShutdown",
+            "name": "Stop-InfrastructureRoleInstance",
             "description": "Shut down an infra role instance.",
-            "defaultParameterSet": "InfraRoleInstances_Shutdown",
+            "defaultParameterSet": "InfrastructureRoleInstances_Shutdown",
             "generateCommand": true
           }
         ],
@@ -414,7 +414,7 @@
       "get": {
         "x-ps-cmdlet-infos": [
           {
-            "name": "Get-FileShare",
+            "name": "Get-Infrastructurehare",
             "description": "Get a fabric file share.",
             "defaultParameterSet": "FileShares_Get",
             "generateCommand": true
@@ -429,7 +429,7 @@
       "get": {
         "x-ps-cmdlet-infos": [
           {
-            "name": "Get-FileShare",
+            "name": "Get-InfrastructureShare",
             "description": "Get a list of all fabric file shares at a certain location.",
             "defaultParameterSet": "FileShares_Get",
             "generateCommand": true
@@ -444,7 +444,7 @@
       "get": {
         "x-ps-cmdlet-infos": [
           {
-            "name": "Get-FabricLocation",
+            "name": "Get-InfrastructureLocation",
             "description": "Get a fabric location.",
             "defaultParameterSet": "FabricLocations_Get",
             "generateCommand": true
@@ -459,7 +459,7 @@
       "get": {
         "x-ps-cmdlet-infos": [
           {
-            "name": "Get-FabricLocation",
+            "name": "Get-InfrastructureLocation",
             "description": "Get a list of all fabric locations.",
             "defaultParameterSet": "FabricLocations_Get",
             "generateCommand": true
@@ -517,7 +517,7 @@
       "get": {
         "x-ps-cmdlet-infos": [
           {
-            "name": "Get-Volume",
+            "name": "Get-InfrastructureVolume",
             "description": "Get a volume.",
             "defaultParameterSet": "Volumes_Get",
             "generateCommand": true
@@ -532,7 +532,7 @@
       "get": {
         "x-ps-cmdlet-infos": [
           {
-            "name": "Get-Volume",
+            "name": "Get-InfrastructureVolume",
             "description": "Get a list of all volumes at a location.",
             "defaultParameterSet": "Volumes_Get",
             "generateCommand": true
@@ -547,7 +547,7 @@
       "post": {
         "x-ps-cmdlet-infos": [
           {
-            "name": "Invoke-ScaleUnitNodePowerOn",
+            "name": "Start-ScaleUnitNode",
             "description": "Power on a scale unit node.",
             "defaultParameterSet": "ScaleUnitNodes_PowerOn",
             "generateCommand": true
@@ -558,11 +558,11 @@
         }
       }
     }
-    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/infraRoles/{infraRole}": {
+    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/infraRoles/{InfrastructureRole}": {
       "get": {
         "x-ps-cmdlet-infos": [
           {
-            "name": "Get-InfraRole",
+            "name": "Get-InfrastructureRole",
             "description": "Get an infra role description.",
             "defaultParameterSet": "InfraRoles_Get",
             "generateCommand": true
@@ -577,7 +577,7 @@
       "get": {
         "x-ps-cmdlet-infos": [
           {
-            "name": "Get-InfraRole",
+            "name": "Get-InfrastructureRole",
             "description": "Get a list of all infra roles at a location.",
             "defaultParameterSet": "InfraRoles_Get",
             "generateCommand": true
@@ -592,7 +592,7 @@
       "post": {
         "x-ps-cmdlet-infos": [
           {
-            "name": "Start-ScaleUnitNodeMaintenanceMode",
+            "name": "Disable-ScaleUnitNode",
             "description": "Start maintenance mode for a scale unit node.",
             "defaultParameterSet": "ScaleUnitNodes_StartMaintenanceMode",
             "generateCommand": true
@@ -667,7 +667,7 @@
       "post": {
         "x-ps-cmdlet-infos": [
           {
-            "name": "Invoke-ScaleUnitNodePowerOff",
+            "name": "Stop-ScaleUnitNode",
             "description": "Power off a scale unit node.",
             "defaultParameterSet": "ScaleUnitNodes_PowerOff",
             "generateCommand": true
@@ -1140,12 +1140,12 @@
         }
       }
     },
-    "InfraRoleInstance": {
+    "InfrastructureRoleInstance": {
       "x-ps-cmdlet-infos": [
         {
-          "name": "New-InfraRoleInstanceObject",
+          "name": "New-InfrastructureRoleInstanceObject",
           "description": "The virtual machine resource is used to represent an infrastructure virtual machine in the Azure Stack environment. The fabric resource provider only surfaces infrastructure virtual machines. These machines are never created directly by the admin, but rather as a side effect of expanding admin services.",
-          "defaultParameterSet": "InfraRoleInstance",
+          "defaultParameterSet": "InfrastructureRoleInstance",
           "generateCommand": true,
           "generateOutputFormat": true
         }
@@ -1154,12 +1154,12 @@
         
       }
     },
-    "InfraRoleList": {
+    "InfrastructureRoleList": {
       "x-ps-cmdlet-infos": [
         {
-          "name": "New-InfraRoleListObject",
+          "name": "New-InfrastructureRoleListObject",
           "description": "Pageable list of infra roles.",
-          "defaultParameterSet": "InfraRoleList",
+          "defaultParameterSet": "InfrastructureRoleList",
           "generateCommand": true,
           "generateOutputFormat": true
         }
@@ -1343,12 +1343,12 @@
         }
       }
     },
-    "InfraRole": {
+    "InfrastructureRole": {
       "x-ps-cmdlet-infos": [
         {
-          "name": "New-InfraRoleObject",
+          "name": "New-InfrastructureRoleObject",
           "description": "Get an infra role description.",
-          "defaultParameterSet": "InfraRole",
+          "defaultParameterSet": "InfrastructureRole",
           "generateCommand": true,
           "generateOutputFormat": true
         }
@@ -1493,12 +1493,12 @@
         }
       }
     },
-    "InfraRoleModel": {
+    "InfrastructureRoleModel": {
       "x-ps-cmdlet-infos": [
         {
-          "name": "New-InfraRoleModelObject",
+          "name": "New-InfrastructureRoleModelObject",
           "description": "Infra role properties.",
-          "defaultParameterSet": "InfraRoleModel",
+          "defaultParameterSet": "InfrastructureRoleModel",
           "generateCommand": true,
           "generateOutputFormat": true
         }
@@ -1750,12 +1750,12 @@
         }
       }
     },
-    "InfraRoleInstanceModel": {
+    "InfrastructureRoleInstanceModel": {
       "x-ps-cmdlet-infos": [
         {
-          "name": "New-InfraRoleInstanceModelObject",
+          "name": "New-InfrastructureRoleInstanceModelObject",
           "description": "All properties of an infra role instance.",
-          "defaultParameterSet": "InfraRoleInstanceModel",
+          "defaultParameterSet": "InfrastructureRoleInstanceModel",
           "generateCommand": true,
           "generateOutputFormat": true
         }
@@ -1807,12 +1807,12 @@
         }
       }
     },
-    "InfraRoleInstanceSize": {
+    "InfrastructureRoleInstanceSize": {
       "x-ps-cmdlet-infos": [
         {
-          "name": "New-InfraRoleInstanceizeObject",
+          "name": "New-InfrastructureRoleInstanceizeObject",
           "description": "The capacity information for a virtual machine.",
-          "defaultParameterSet": "InfraRoleInstanceSize",
+          "defaultParameterSet": "InfrastructureRoleInstanceSize",
           "generateCommand": true,
           "generateOutputFormat": true
         }
@@ -2120,12 +2120,12 @@
         }
       }
     },
-    "InfraRoleInstanceList": {
+    "InfrastructureRoleInstanceList": {
       "x-ps-cmdlet-infos": [
         {
-          "name": "New-InfraRoleInstanceListObject",
+          "name": "New-InfrastructureRoleInstanceListObject",
           "description": "Pageable list of infra role instances.",
-          "defaultParameterSet": "InfraRoleInstanceList",
+          "defaultParameterSet": "InfrastructureRoleInstanceList",
           "generateCommand": true,
           "generateOutputFormat": true
         }
@@ -2553,9 +2553,9 @@
         "flatten": false
       }
     },
-    "InfraRoleParameter": {
+    "InfrastructureRoleParameter": {
       "x-ps-parameter-info": {
-        "name": "InfraRole",
+        "name": "InfrastructureRole",
         "description": "Infra role name.",
         "flatten": false
       }
@@ -2602,9 +2602,9 @@
         "flatten": false
       }
     },
-    "InfraRoleInstanceParameter": {
+    "InfrastructureRoleInstanceParameter": {
       "x-ps-parameter-info": {
-        "name": "InfraRoleInstance",
+        "name": "InfrastructureRoleInstance",
         "description": "Name of an infra role instance.",
         "flatten": false
       }

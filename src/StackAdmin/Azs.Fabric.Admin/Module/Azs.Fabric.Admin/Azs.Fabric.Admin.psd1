@@ -93,14 +93,14 @@ FormatsToProcess =
                '.\Generated.PowerShell.Commands\FormatFiles\EdgeGatewayList.ps1xml', 
                '.\Generated.PowerShell.Commands\FormatFiles\EdgeGatewayPool.ps1xml', 
                '.\Generated.PowerShell.Commands\FormatFiles\EdgeGatewayPoolList.ps1xml', 
-               '.\Generated.PowerShell.Commands\FormatFiles\FabricLocationList.ps1xml', 
-               '.\Generated.PowerShell.Commands\FormatFiles\FileShare.ps1xml', 
-               '.\Generated.PowerShell.Commands\FormatFiles\FileShareList.ps1xml', 
-               '.\Generated.PowerShell.Commands\FormatFiles\InfraRole.ps1xml', 
-               '.\Generated.PowerShell.Commands\FormatFiles\InfraRoleInstance.ps1xml', 
-               '.\Generated.PowerShell.Commands\FormatFiles\InfraRoleInstanceList.ps1xml', 
-               '.\Generated.PowerShell.Commands\FormatFiles\InfraRoleInstanceSize.ps1xml', 
-               '.\Generated.PowerShell.Commands\FormatFiles\InfraRoleList.ps1xml', 
+               '.\Generated.PowerShell.Commands\FormatFiles\InfrastructureLocationList.ps1xml', 
+               '.\Generated.PowerShell.Commands\FormatFiles\InfrastructureShare.ps1xml', 
+               '.\Generated.PowerShell.Commands\FormatFiles\InfrastructureShareList.ps1xml', 
+               '.\Generated.PowerShell.Commands\FormatFiles\InfrastructureRole.ps1xml', 
+               '.\Generated.PowerShell.Commands\FormatFiles\InfrastructureRoleInstance.ps1xml', 
+               '.\Generated.PowerShell.Commands\FormatFiles\InfrastructureRoleInstanceList.ps1xml', 
+               '.\Generated.PowerShell.Commands\FormatFiles\InfrastructureRoleInstanceSize.ps1xml', 
+               '.\Generated.PowerShell.Commands\FormatFiles\InfrastructureRoleList.ps1xml', 
                '.\Generated.PowerShell.Commands\FormatFiles\IpPool.ps1xml', 
                '.\Generated.PowerShell.Commands\FormatFiles\IpPoolList.ps1xml', 
                '.\Generated.PowerShell.Commands\FormatFiles\LogicalNetwork.ps1xml', 
@@ -123,24 +123,23 @@ FormatsToProcess =
                '.\Generated.PowerShell.Commands\FormatFiles\StoragePoolList.ps1xml', 
                '.\Generated.PowerShell.Commands\FormatFiles\StorageSystem.ps1xml', 
                '.\Generated.PowerShell.Commands\FormatFiles\StorageSystemList.ps1xml', 
-               '.\Generated.PowerShell.Commands\FormatFiles\Volume.ps1xml', 
-               '.\Generated.PowerShell.Commands\FormatFiles\VolumeList.ps1xml'
+               '.\Generated.PowerShell.Commands\FormatFiles\InfrastructureVolume.ps1xml', 
+               '.\Generated.PowerShell.Commands\FormatFiles\InfrastructureVolumeList.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
 NestedModules = @()
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = 'Get-ScaleUnitNode', 'Get-ComputeFabricOperation', 
-               'Get-MacAddressPool', 'Invoke-ScaleUnitcaleOut', 
-               'Start-ScaleUnitNodeMaintenanceMode', 'Get-LogicalNetwork', 
-               'Get-NetworkFabricOperation', 'Get-ScaleUnit', 'Get-EdgeGatewayPool', 
-               'Invoke-ScaleUnitNodePowerOn', 'Get-FileShare', 'Get-StoragePool', 
-               'Invoke-InfraRoleInstanceShutdown', 'Get-InfraRole', 
-               'Stop-ScaleUnitNode', 'Get-FabricLocation', 'Get-StorageSystem', 
-               'New-IpPool', 'Get-Volume', 'Invoke-InfraRoleInstanceReboot', 
-               'Get-InfraRoleInstance', 'Get-EdgeGateway', 
-               'Stop-ScaleUnitNodeMaintenanceMode', 'Invoke-InfraRoleInstancePowerOn', 
-               'Invoke-InfraRoleInstancePowerOff', 'Get-IpPool', 
+FunctionsToExport = 'Get-ScaleUnitNode', 'Get-ComputeInfrastructureOperation', 
+               'Get-MacAddressPool', 'Disable-ScaleUnitNode', 'Get-LogicalNetwork', 
+               'Get-NetworkInfrastructureOperation', 'Get-ScaleUnit', 'Get-EdgeGatewayPool', 
+               'Start-ScaleUnitNode', 'Get-InfrastructureShare', 'Get-StoragePool', 
+               'Disable-InfrastructureRoleInstance', 'Get-InfrastructureRole', 
+               'Stop-ScaleUnitNode', 'Get-InfrastructureLocation', 'Get-StorageSystem', 
+               'New-IpPool', 'Get-InfrastructureVolume', 'Restart-InfrastructureRoleInstance', 
+               'Get-InfrastructureRoleInstance', 'Get-EdgeGateway', 
+               'Enable-ScaleUnitNode', 'Start-InfrastructureRoleInstance', 
+               'Stop-InfrastructureRoleInstance', 'Get-IpPool', 
                'Get-SlbMuxInstance', 'Get-LogicalSubnet', 'New-IpPoolObject'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.

@@ -35,14 +35,14 @@ Import-Module -Name (Join-Path -Path $PSScriptRoot -ChildPath .. | Join-Path -Ch
 
 .Example
 
-Start-AzsScaleUnitNodeMaintenanceMode -Location "local" -ScaleUnitNode "HC1n25r2236"
+Disable-AzsScaleUnitNode -Location "local" -ScaleUnitNode "HC1n25r2236"
 
 ProvisioningState
 -----------------------
 Succeeded
 
 #>
-function Start-ScaleUnitNodeMaintenanceMode
+function Disable-ScaleUnitNode
 {
     [OutputType([Microsoft.AzureStack.Management.Fabric.Admin.Models.OperationStatus])]
     [CmdletBinding(DefaultParameterSetName='ScaleUnitNodes_StartMaintenanceMode')]

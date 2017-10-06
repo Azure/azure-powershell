@@ -38,7 +38,7 @@ Import-Module -Name (Join-Path -Path $PSScriptRoot -ChildPath .. | Join-Path -Ch
 
 .EXAMPLE
 
-Get-AzsFileShare -Location "local"
+Get-AzsInfrastructureShare -Location "local"
 
 Type                                              UncPath                                               Name                 Location AssociatedVolume
 ----                                              -------                                               ----                 -------- ----------------
@@ -51,14 +51,14 @@ Microsoft.Fabric.Admin/fabricLocations/fileShares \\SU1FileServer.azurestack.loc
 
 .EXAMPLE
 
-Get-AzsFileShare -Location -FileShare "SU1_Infrastructure_1"
+Get-AzsInfrastructureShare -Location -FileShare "SU1_Infrastructure_1"
 
 Type                                              UncPath                                               Name                 Location AssociatedVolume
 ----                                              -------                                               ----                 -------- ----------------
 Microsoft.Fabric.Admin/fabricLocations/fileShares \\SU1FileServer.azurestack.local\SU1_Infrastructure_1 SU1_Infrastructure_1 local    a42d219b
 
 #>
-function Get-FileShare
+function Get-InfrastructureShare
 {
     [OutputType([Microsoft.AzureStack.Management.Fabric.Admin.Models.FileShare])]
     [CmdletBinding(DefaultParameterSetName='FileShares_List')]

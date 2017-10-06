@@ -25,34 +25,33 @@ SOFTWARE.
 Import-Module -Name (Join-Path -Path $PSScriptRoot -ChildPath .. | Join-Path -ChildPath .. | Join-Path -ChildPath "GeneratedHelpers.psm1")
 <#
 .DESCRIPTION
-    Stop maintenance mode for a scale unit node.
+    Shut down an infra role instance.
 
-.PARAMETER ScaleUnitNode
-    Name of the scale unit node.
+.PARAMETER InfrastructureRoleInstance
+    Name of an infra role instance.
 
 .PARAMETER Location
     Location of the resource.
 
 .EXAMPLE
 
-Stop-AzsScaleUnitNodeMaintenanceMode -Location "local" -ScaleUnitNode "HC1n25r2236"
+Disable-AzsInfrastructureRoleInstance -Location "local" -InfrastructureRoleInstance "AzS-ACS01"
 
 ProvisioningState
------------------------
+-----------------
 Succeeded
 
-
 #>
-function Stop-ScaleUnitNodeMaintenanceMode
+function Disable-InfrastructureRoleInstance
 {
     [OutputType([Microsoft.AzureStack.Management.Fabric.Admin.Models.OperationStatus])]
-    [CmdletBinding(DefaultParameterSetName='ScaleUnitNodes_StopMaintenanceMode')]
+    [CmdletBinding(DefaultParameterSetName='InfrastructureRoleInstances_Shutdown')]
     param(    
-        [Parameter(Mandatory = $true, ParameterSetName = 'ScaleUnitNodes_StopMaintenanceMode')]
+        [Parameter(Mandatory = $true, ParameterSetName = 'InfrastructureRoleInstances_Shutdown')]
         [System.String]
-        $ScaleUnitNode,
+        $InfrastructureRoleInstance,
     
-        [Parameter(Mandatory = $true, ParameterSetName = 'ScaleUnitNodes_StopMaintenanceMode')]
+        [Parameter(Mandatory = $true, ParameterSetName = 'InfrastructureRoleInstances_Shutdown')]
         [System.String]
         $Location,
 
@@ -73,9 +72,9 @@ function Stop-ScaleUnitNodeMaintenanceMode
 
     $skippedCount = 0
     $returnedCount = 0
-    if ('ScaleUnitNodes_StopMaintenanceMode' -eq $PsCmdlet.ParameterSetName) {
-        Write-Verbose -Message 'Performing operation StopMaintenanceModeWithHttpMessagesAsync on $FabricAdminClient.'
-        $taskResult = $FabricAdminClient.ScaleUnitNodes.StopMaintenanceModeWithHttpMessagesAsync($Location, $ScaleUnitNode)
+    if ('InfrastructureRoleInstances_Shutdown' -eq $PsCmdlet.ParameterSetName) {
+        Write-Verbose -Message 'Performing operation ShutdownWithHttpMessagesAsync on $FabricAdminClient.'
+        $taskResult = $FabricAdminClient.InfraRoleInstances.ShutdownWithHttpMessagesAsync($Location, $InfrastructureRoleInstance)
     } else {
         Write-Verbose -Message 'Failed to map parameter set to operation method.'
         throw 'Module failed to find operation to execute.'

@@ -50,7 +50,7 @@ Import-Module -Name (Join-Path -Path $PSScriptRoot -ChildPath .. | Join-Path -Ch
 
 .EXAMPLE
 
-Get-AzsVolume -Location local -StoragePool SU1_Pool -StorageSubSystem S-Cluster.azurestack.local
+Get-AzsInfrastructureVolume -Location local -StoragePool SU1_Pool -StorageSubSystem S-Cluster.azurestack.local
 
 Type                                                                          FileSystem RemainingSizeGB Name     SizeGB
 ----                                                                          ---------- --------------- ----     ------
@@ -59,14 +59,14 @@ Microsoft.Fabric.Admin/fabricLocations/storageSubSystems/storagePools/volumes CS
 
 .EXAMPLE
 
-Get-AzsVolume -Location local -StoragePool SU1_Pool -StorageSubSystem S-Cluster.azurestack.local -Volume a42d219b
+Get-AzsInfrastructureVolume -Location local -StoragePool SU1_Pool -StorageSubSystem S-Cluster.azurestack.local -Volume a42d219b
 
 Type                                                                          FileSystem RemainingSizeGB Name     SizeGB
 ----                                                                          ---------- --------------- ----     ------
 Microsoft.Fabric.Admin/fabricLocations/storageSubSystems/storagePools/volumes CSVFS_ReFS 2201            a42d219b 2525
 
 #>
-function Get-Volume
+function Get-InfrastructureVolume
 {
     [OutputType([Microsoft.AzureStack.Management.Fabric.Admin.Models.Volume])]
     [CmdletBinding(DefaultParameterSetName='Volumes_List')]

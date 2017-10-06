@@ -14,18 +14,18 @@
 
 <#
 .SYNOPSIS
-    Run AzureStack fabric admin infrarole tests.
+    Run AzureStack fabric admin InfrastructureRole tests.
 
 .DESCRIPTION
-    Run AzureStack fabric admin infrarole tests using either mock client or our client.
+    Run AzureStack fabric admin InfrastructureRole tests using either mock client or our client.
 	The mock client allows for recording and playback.  This allows for offline tests.
 
 .PARAMETER RunRaw
     Run using our client creation path.
 
 .EXAMPLE
-    C:\PS> .\src\InfraRole.Tests.ps1
-	Describing InfraRoles
+    C:\PS> .\src\InfrastructureRole.Tests.ps1
+	Describing InfrastructureRoles
 	 [+] TestListInfraRoles 438ms
 	 [+] TestGetInfraRole 107ms
 	 [+] TestGetAllInfraRoles 0.99s
@@ -47,33 +47,33 @@ $global:TestName = ""
 	
 InModuleScope Azs.Fabric.Admin {
 
-	Describe "InfraRoles" -Tags @('InfraRole', 'Azs.Fabric.Admin') {
+	Describe "InfrastructureRoles" -Tags @('InfrastructureRole', 'Azs.Fabric.Admin') {
 
 		BeforeEach  {
 			
 			. $PSScriptRoot\Common.ps1
 
-			function ValidateInfraRole {
+			function ValidateInfrastructureRole {
 				param(
 					[Parameter(Mandatory=$true)]
-					$InfraRole
+					$InfrastructureRole
 				)
 			
-				$InfraRole          | Should Not Be $null
+				$InfrastructureRole          | Should Not Be $null
 
 				# Resource
-				$InfraRole.Id       | Should Not Be $null
-				$InfraRole.Location | Should Not Be $null
-				$InfraRole.Name     | Should Not Be $null
-				$InfraRole.Type     | Should Not Be $null
+				$InfrastructureRole.Id       | Should Not Be $null
+				$InfrastructureRole.Location | Should Not Be $null
+				$InfrastructureRole.Name     | Should Not Be $null
+				$InfrastructureRole.Type     | Should Not Be $null
 
 				# Infra Role
-				$InfraRole.Instances | Should Not be $null
-				$InfraRole.Instances.Count | Should Not be 0
+				$InfrastructureRole.Instances | Should Not be $null
+				$InfrastructureRole.Instances.Count | Should Not be 0
 
 			}
 
-			function AssertInfraRolesAreSame {
+			function AssertInfrastructureRolesAreSame {
 				param(
 					[Parameter(Mandatory=$true)]
 					$Expected,
@@ -101,20 +101,20 @@ InModuleScope Azs.Fabric.Admin {
 		
 		It "TestListInfraRoles" {
 			$global:TestName = 'TestListInfraRoles'
-			$infraRoles = Get-AzsInfraRole -Location $Location
-			$infraRoles | Should Not Be $null
-			foreach($infraRole in $infraRoles) {
-				ValidateInfraRole -InfraRole $infraRole
+			$InfrastructureRoles = Get-AzsInfrastructureRole -Location $Location
+			$InfrastructureRoles | Should Not Be $null
+			foreach($InfrastructureRole in $InfrastructureRoles) {
+				ValidateInfrastructureRole -InfrastructureRole $InfrastructureRole
 			}
 	    }
 	
 		It "TestGetInfraRole" {
             $global:TestName = 'TestGetInfraRole'
 
-			$infraRoles = Get-AzsInfraRole -Location $Location
-			foreach($infraRole in $infraRoles) {
-				$retrieved = Get-AzsInfraRole -Location $Location -InfraRole $infraRole.Name
-				AssertInfraRolesAreSame -Expected $infraRole -Found $retrieved
+			$InfrastructureRoles = Get-AzsInfrastructureRole -Location $Location
+			foreach($InfrastructureRole in $InfrastructureRoles) {
+				$retrieved = Get-AzsInfrastructureRole -Location $Location -InfrastructureRole $InfrastructureRole.Name
+				AssertInfrastructureRolesAreSame -Expected $InfrastructureRole -Found $retrieved
 				break
 			}
 		}
@@ -122,13 +122,13 @@ InModuleScope Azs.Fabric.Admin {
 		It "TestGetAllInfraRoles" {
 			$global:TestName = 'TestGetAllInfraRoles'
 
-			$infraRoles = Get-AzsInfraRole -Location $Location
-			foreach($infraRole in $infraRoles) {
-				$name = $infraRole.Name
+			$InfrastructureRoles = Get-AzsInfrastructureRole -Location $Location
+			foreach($InfrastructureRole in $InfrastructureRoles) {
+				$name = $InfrastructureRole.Name
 				$check = -not ($name -like "*User*" -or $name -like "*Administrator*")
 				if($check) {
-					$retrieved = Get-AzsInfraRole -Location $Location -InfraRole $infraRole.Name
-					AssertInfraRolesAreSame -Expected $infraRole -Found $retrieved
+					$retrieved = Get-AzsInfrastructureRole -Location $Location -InfrastructureRole $InfrastructureRole.Name
+					AssertInfrastructureRolesAreSame -Expected $InfrastructureRole -Found $retrieved
 				}
 			}
 		}

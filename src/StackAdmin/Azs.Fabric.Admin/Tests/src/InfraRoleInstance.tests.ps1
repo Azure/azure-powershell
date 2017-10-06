@@ -14,18 +14,18 @@
 
 <#
 .SYNOPSIS
-    Run AzureStack fabric admin infrarole instance tests.
+    Run AzureStack fabric admin InfrastructureRole instance tests.
 
 .DESCRIPTION
-    Run AzureStack fabric admin infrarole instance tests using either mock client or our client.
+    Run AzureStack fabric admin InfrastructureRole instance tests using either mock client or our client.
 	The mock client allows for recording and playback.  This allows for offline tests.
 
 .PARAMETER RunRaw
     Run using our client creation path.
 
 .EXAMPLE
-    C:\PS> .\src\InfraRoleInstance.Tests.ps1
-	Describing InfraRoleInstances
+    C:\PS> .\src\InfrastructureRoleInstance.Tests.ps1
+	Describing InfrastructureRoleInstances
 	 [+] TestListInfraRoleInstances 238ms
 	 [+] TestGetInfraRoleInstance 119ms
 	 [+] TestGetAllInfraRoleInstances 290ms
@@ -56,35 +56,35 @@ $global:TestName = ""
 
 InModuleScope Azs.Fabric.Admin {
 
-	Describe "InfraRoleInstances" -Tags @('InfraRoleInstance', 'Azs.Fabric.Admin') {
+	Describe "InfrastructureRoleInstances" -Tags @('InfrastructureRoleInstance', 'Azs.Fabric.Admin') {
 
 		BeforeEach  {
 			
 			. $PSScriptRoot\Common.ps1
 
-			function ValidateInfraRoleInstance {
+			function ValidateInfrastructureRoleInstance {
 				param(
 					[Parameter(Mandatory=$true)]
-					$InfraRoleInstance
+					$InfrastructureRoleInstance
 				)
 			
-				$InfraRoleInstance          | Should Not Be $null
+				$InfrastructureRoleInstance          | Should Not Be $null
 
 				# Resource
-				$InfraRoleInstance.Id       | Should Not Be $null
-				$InfraRoleInstance.Location | Should Not Be $null
-				$InfraRoleInstance.Name     | Should Not Be $null
-				$InfraRoleInstance.Type     | Should Not Be $null
+				$InfrastructureRoleInstance.Id       | Should Not Be $null
+				$InfrastructureRoleInstance.Location | Should Not Be $null
+				$InfrastructureRoleInstance.Name     | Should Not Be $null
+				$InfrastructureRoleInstance.Type     | Should Not Be $null
 
 				# Infra Role Instance
-				$InfraRoleInstance.ScaleUnit       | Should Not Be $null
-				$InfraRoleInstance.ScaleUnitNode  | Should Not Be $null
-				$InfraRoleInstance.Size            | Should Not Be $null
-				$InfraRoleInstance.State           | Should Not Be $null
+				$InfrastructureRoleInstance.ScaleUnit       | Should Not Be $null
+				$InfrastructureRoleInstance.ScaleUnitNode  | Should Not Be $null
+				$InfrastructureRoleInstance.Size            | Should Not Be $null
+				$InfrastructureRoleInstance.State           | Should Not Be $null
 
 			}
 
-			function AssertInfraRoleInstancesAreSame {
+			function AssertInfrastructureRoleInstancesAreSame {
 				param(
 					[Parameter(Mandatory=$true)]
 					$Expected,
@@ -116,20 +116,20 @@ InModuleScope Azs.Fabric.Admin {
 		
 		It "TestListInfraRoleInstances" {
 			$global:TestName = 'TestListInfraRoleInstances'
-			$InfraRoleInstances = Get-AzsInfraRoleInstance -Location $Location
-			$InfraRoleInstances | Should Not Be $null
-			foreach($InfraRoleInstance in $InfraRoleInstances) {
-				ValidateInfraRoleInstance -InfraRoleInstance $InfraRoleInstance
+			$InfrastructureRoleInstances = Get-AzsInfrastructureRoleInstance -Location $Location
+			$InfrastructureRoleInstances | Should Not Be $null
+			foreach($InfrastructureRoleInstance in $InfrastructureRoleInstances) {
+				ValidateInfrastructureRoleInstance -InfrastructureRoleInstance $InfrastructureRoleInstance
 			}
 	    }
 	
 		It "TestGetInfraRoleInstance" {
             $global:TestName = 'TestGetInfraRoleInstance'
 
-			$InfraRoleInstances = Get-AzsInfraRoleInstance -Location $Location
-			foreach($InfraRoleInstance in $InfraRoleInstances) {
-				$retrieved = Get-AzsInfraRoleInstance -Location $Location -InfraRoleInstance $InfraRoleInstance.Name
-				AssertInfraRoleInstancesAreSame -Expected $InfraRoleInstance -Found $retrieved
+			$InfrastructureRoleInstances = Get-AzsInfrastructureRoleInstance -Location $Location
+			foreach($InfrastructureRoleInstance in $InfrastructureRoleInstances) {
+				$retrieved = Get-AzsInfrastructureRoleInstance -Location $Location -InfrastructureRoleInstance $InfrastructureRoleInstance.Name
+				AssertInfrastructureRoleInstancesAreSame -Expected $InfrastructureRoleInstance -Found $retrieved
 				break
 			}
 		}
@@ -137,19 +137,19 @@ InModuleScope Azs.Fabric.Admin {
 		It "TestGetAllInfraRoleInstances" {
 			$global:TestName = 'TestGetAllInfraRoleInstances'
 
-			$InfraRoleInstances = Get-AzsInfraRoleInstance -Location $Location
-			foreach($InfraRoleInstance in $InfraRoleInstances) {
-				$retrieved = Get-AzsInfraRoleInstance -Location $Location -InfraRoleInstance $InfraRoleInstance.Name
-				AssertInfraRoleInstancesAreSame -Expected $InfraRoleInstance -Found $retrieved
+			$InfrastructureRoleInstances = Get-AzsInfrastructureRoleInstance -Location $Location
+			foreach($InfrastructureRoleInstance in $InfrastructureRoleInstances) {
+				$retrieved = Get-AzsInfrastructureRoleInstance -Location $Location -InfrastructureRoleInstance $InfrastructureRoleInstance.Name
+				AssertInfrastructureRoleInstancesAreSame -Expected $InfrastructureRoleInstance -Found $retrieved
 			}
 		}
 
 		It "TestInfraRoleInstancePowerOn" {
 			$global:TestName = 'TestInfraRoleInstancePowerOn'
 
-			$InfraRoleInstances = Get-AzsInfraRoleInstance -Location $Location
-			foreach($InfraRoleInstance in $InfraRoleInstances) {
-				Invoke-AzsInfraRoleInstancePowerOn -Location $Location -InfraRoleInstance $InfraRoleInstance.Name
+			$InfrastructureRoleInstances = Get-AzsInfrastructureRoleInstance -Location $Location
+			foreach($InfrastructureRoleInstance in $InfrastructureRoleInstances) {
+				Start-AzsInfrastructureRoleInstance -Location $Location -InfrastructureRoleInstance $InfrastructureRoleInstance.Name
 				break
 			}
 		}
@@ -157,9 +157,9 @@ InModuleScope Azs.Fabric.Admin {
 		It "TestInfraRoleInstancePowerOnAll" {
 			$global:TestName = 'TestInfraRoleInstancePowerOnAll'
 
-			$InfraRoleInstances = Get-AzsInfraRoleInstance -Location $Location
-			foreach($InfraRoleInstance in $InfraRoleInstances) {
-				Invoke-AzsInfraRoleInstancePowerOn -Location $Location -InfraRoleInstance $InfraRoleInstance.Name
+			$InfrastructureRoleInstances = Get-AzsInfrastructureRoleInstance -Location $Location
+			foreach($InfrastructureRoleInstance in $InfrastructureRoleInstances) {
+				Start-AzsInfrastructureRoleInstance -Location $Location -InfrastructureRoleInstance $InfrastructureRoleInstance.Name
 			}
 		}
 
@@ -167,62 +167,62 @@ InModuleScope Azs.Fabric.Admin {
 		
 		
 
-		It "TestGetInfraRoleInstanceOnTenantVM" {
-			$global:TestName = 'TestGetInfraRoleInstanceOnTenantVM'
+		It "TestGetInfrastructureRoleInstanceOnTenantVM" {
+			$global:TestName = 'TestGetInfrastructureRoleInstanceOnTenantVM'
 
-			{ Get-AzsInfraRoleInstance -Location $Location -InfraRoleInstance $TenantVMName } | Should Throw
+			{ Get-AzsInfrastructureRoleInstance -Location $Location -InfrastructureRoleInstance $TenantVMName } | Should Throw
 		}
 		
-		It "TestInfraRoleInstanceShutdownOnTenantVM" {
-			$global:TestName = 'TestInfraRoleInstanceShutdownOnTenantVM'
+		It "TestInfrastructureRoleInstanceShutdownOnTenantVM" {
+			$global:TestName = 'TestInfrastructureRoleInstanceShutdownOnTenantVM'
 			{
-				Invoke-AzsInfraRoleInstanceShutdown -Location $Location -InfraRoleInstance $TenantVMName
+				Disable-AzsInfrastructureRoleInstance -Location $Location -InfrastructureRoleInstance $TenantVMName
 			} | Should Throw
 		}
 		
-		It "TestInfraRoleInstanceRebootOnTenantVM" {
-			$global:TestName = 'TestInfraRoleInstanceRebootOnTenantVM'
+		It "TestInfrastructureRoleInstanceRebootOnTenantVM" {
+			$global:TestName = 'TestInfrastructureRoleInstanceRebootOnTenantVM'
 			{
-				Invoke-AzsInfraRoleInstanceReboot -Location $Location -InfraRoleInstance $TenantVMName
+				ReStart-AzsInfrastructureRoleInstance -Location $Location -InfrastructureRoleInstance $TenantVMName
 		} | Should Throw
 		}
 		
-		It "TestInfraRoleInstancePowerOffOnTenantVM" {
-			$global:TestName = 'TestInfraRoleInstancePowerOffOnTenantVM'
+		It "TestInfrastructureRoleInstancePowerOffOnTenantVM" {
+			$global:TestName = 'TestInfrastructureRoleInstancePowerOffOnTenantVM'
 			{
-				Invoke-AzsInfraRoleInstancePowerOff -Location $Location -InfraRoleInstance $TenantVMName
+				Stop-AzsInfrastructureRoleInstance -Location $Location -InfrastructureRoleInstance $TenantVMName
 			} | Should Throw
 		}
 
 
 		# Disabled
 
-		It "TestInfraRoleInstanceShutdown" -Skip {
-			$global:TestName = 'TestInfraRoleInstanceShutdown'
+		It "TestInfrastructureRoleInstanceShutdown" -Skip {
+			$global:TestName = 'TestInfrastructureRoleInstanceShutdown'
 
-			$InfraRoleInstances = Get-AzsInfraRoleInstance -Location $Location
-			foreach($InfraRoleInstance in $InfraRoleInstances) {
-				Invoke-AzsInfraRoleInstanceShutdown -Location $Location -InfraRoleInstance $InfraRoleInstance.Name
+			$InfrastructureRoleInstances = Get-AzsInfrastructureRoleInstance -Location $Location
+			foreach($InfrastructureRoleInstance in $InfrastructureRoleInstances) {
+				Disable-AzsInfrastructureRoleInstance -Location $Location -InfrastructureRoleInstance $InfrastructureRoleInstance.Name
 				break
 			}
 		}
 
-		It "TestInfraRoleInstancePowerOff" -Skip {
-			$global:TestName = 'TestInfraRoleInstancePowerOff'
+		It "TestInfrastructureRoleInstancePowerOff" -Skip {
+			$global:TestName = 'TestInfrastructureRoleInstancePowerOff'
 
-			$InfraRoleInstances = Get-AzsInfraRoleInstance -Location $Location
-			foreach($InfraRoleInstance in $InfraRoleInstances) {
-				Invoke-AzsInfraRoleInstancePoweroff -Location $Location -InfraRoleInstance $InfraRoleInstance.Instance
+			$InfrastructureRoleInstances = Get-AzsInfrastructureRoleInstance -Location $Location
+			foreach($InfrastructureRoleInstance in $InfrastructureRoleInstances) {
+				Stop-AzsInfrastructureRoleInstance -Location $Location -InfrastructureRoleInstance $InfrastructureRoleInstance.Instance
 				break
 			}
 		}
 
-		It "TestInfraRoleInstanceReboot" -Skip {
-			$global:TestName = 'TestInfraRoleInstanceReboot'
+		It "TestInfrastructureRoleInstanceReboot" -Skip {
+			$global:TestName = 'TestInfrastructureRoleInstanceReboot'
 
-			$InfraRoleInstances = Get-AzsInfraRoleInstance -Location $Location
-			foreach($InfraRoleInstance in $InfraRoleInstances) {
-				Invoke-AzsInfraRoleInstanceReboot -Location $Location -InfraRoleInstance $InfraRoleInstance.Instance
+			$InfrastructureRoleInstances = Get-AzsInfrastructureRoleInstance -Location $Location
+			foreach($InfrastructureRoleInstance in $InfrastructureRoleInstances) {
+				ReStart-AzsInfrastructureRoleInstance -Location $Location -InfrastructureRoleInstance $InfrastructureRoleInstance.Instance
 				break
 			}
 		}

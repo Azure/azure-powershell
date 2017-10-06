@@ -25,7 +25,10 @@ SOFTWARE.
 Import-Module -Name (Join-Path -Path $PSScriptRoot -ChildPath .. | Join-Path -ChildPath .. | Join-Path -ChildPath "GeneratedHelpers.psm1")
 <#
 .DESCRIPTION
-    Get infrastructure roles.
+    Get a list of all fabric locations.
+
+.PARAMETER FabricLocation
+    Fabric Location.
 
 .PARAMETER Filter
     OData filter parameter.
@@ -39,57 +42,40 @@ Import-Module -Name (Join-Path -Path $PSScriptRoot -ChildPath .. | Join-Path -Ch
 .PARAMETER Top
     Return the top N items as specified by the parameter value. Applies after the -Skip parameter.
 
-.PARAMETER InfraRole
-    Infra role name.
-
 .EXAMPLE
 
-Get-AzsInfraRole -Location "local"
+Get-AzsInfrastructureLocation -Location "local"
 
-Type                                              Instances
-----                                              ---------
-Microsoft.Fabric.Admin/fabricLocations/infraRoles {subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric.Admin/fabricLocations/local/i...
-Microsoft.Fabric.Admin/fabricLocations/infraRoles {subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric.Admin/fabricLocations/local/i...
-Microsoft.Fabric.Admin/fabricLocations/infraRoles {subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric.Admin/fabricLocations/local/i...
-Microsoft.Fabric.Admin/fabricLocations/infraRoles {subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric.Admin/fabricLocations/local/i...
-Microsoft.Fabric.Admin/fabricLocations/infraRoles {subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric.Admin/fabricLocations/local/i...
-...
-
-.EXAMPLE
-
-Get-AzsInfraRole -Location "local" -InfraRole "Active Directory Federation Services"
-
-Type                                              Instances
-----                                              ---------
-Microsoft.Fabric.Admin/fabricLocations/infraRoles {subscriptions/1c0daa04-01ae-4df9-a5d8-491b755f5288/resourceGroups/system.local/providers/Microsoft.Fabric.Admin/fabricLocations/local/i...
-
+Name  Type                                   Location
+----  ----                                   --------
+local Microsoft.Fabric.Admin/fabricLocations local
 
 #>
-function Get-InfraRole
+function Get-InfrastructureLocation
 {
-    [OutputType([Microsoft.AzureStack.Management.Fabric.Admin.Models.InfraRole])]
-    [CmdletBinding(DefaultParameterSetName='InfraRoles_List')]
+    [OutputType([Microsoft.AzureStack.Management.Fabric.Admin.Models.FabricLocation])]
+    [CmdletBinding(DefaultParameterSetName='FabricLocations_List')]
     param(    
-        [Parameter(Mandatory = $false, ParameterSetName = 'InfraRoles_List')]
+        [Parameter(Mandatory = $true, ParameterSetName = 'FabricLocations_Get')]
+        [System.String]
+        $FabricLocation,
+    
+        [Parameter(Mandatory = $false, ParameterSetName = 'FabricLocations_List')]
         [string]
         $Filter,
     
-        [Parameter(Mandatory = $false, ParameterSetName = 'InfraRoles_List')]
+        [Parameter(Mandatory = $false, ParameterSetName = 'FabricLocations_List')]
         [int]
         $Skip = -1,
     
-        [Parameter(Mandatory = $true, ParameterSetName = 'InfraRoles_Get')]
-        [Parameter(Mandatory = $true, ParameterSetName = 'InfraRoles_List')]
+        [Parameter(Mandatory = $true, ParameterSetName = 'FabricLocations_Get')]
+        [Parameter(Mandatory = $true, ParameterSetName = 'FabricLocations_List')]
         [System.String]
         $Location,
     
-        [Parameter(Mandatory = $false, ParameterSetName = 'InfraRoles_List')]
+        [Parameter(Mandatory = $false, ParameterSetName = 'FabricLocations_List')]
         [int]
-        $Top = -1,
-    
-        [Parameter(Mandatory = $true, ParameterSetName = 'InfraRoles_Get')]
-        [System.String]
-        $InfraRole
+        $Top = -1
     )
 
     Begin 
@@ -110,12 +96,12 @@ function Get-InfraRole
 
     $skippedCount = 0
     $returnedCount = 0
-    if ('InfraRoles_Get' -eq $PsCmdlet.ParameterSetName) {
+    if ('FabricLocations_Get' -eq $PsCmdlet.ParameterSetName) {
         Write-Verbose -Message 'Performing operation GetWithHttpMessagesAsync on $FabricAdminClient.'
-        $taskResult = $FabricAdminClient.InfraRoles.GetWithHttpMessagesAsync($Location, $InfraRole)
-    } elseif ('InfraRoles_List' -eq $PsCmdlet.ParameterSetName ) {
+        $taskResult = $FabricAdminClient.FabricLocations.GetWithHttpMessagesAsync($Location, $FabricLocation)
+    } elseif ('FabricLocations_List' -eq $PsCmdlet.ParameterSetName ) {
         Write-Verbose -Message 'Performing operation ListWithHttpMessagesAsync on $FabricAdminClient.'
-        $taskResult = $FabricAdminClient.InfraRoles.ListWithHttpMessagesAsync($Location, $(if ($oDataQuery) { New-Object -TypeName "Microsoft.Rest.Azure.OData.ODataQuery``1[Microsoft.AzureStack.Management.Fabric.Admin.Models.InfraRole]" -ArgumentList $oDataQuery } else { $null }))
+        $taskResult = $FabricAdminClient.FabricLocations.ListWithHttpMessagesAsync($Location, $(if ($oDataQuery) { New-Object -TypeName "Microsoft.Rest.Azure.OData.ODataQuery``1[Microsoft.AzureStack.Management.Fabric.Admin.Models.FabricLocation]" -ArgumentList $oDataQuery } else { $null }))
     } else {
         Write-Verbose -Message 'Failed to map parameter set to operation method.'
         throw 'Module failed to find operation to execute.'
@@ -149,7 +135,7 @@ function Get-InfraRole
             {
                 $result = $taskResult.Result.Body
                 Write-Debug -Message "$($result | Out-String)"
-                if ($result -is [Microsoft.Rest.Azure.IPage[Microsoft.AzureStack.Management.Fabric.Admin.Models.InfraRole]]) {
+                if ($result -is [Microsoft.Rest.Azure.IPage[Microsoft.AzureStack.Management.Fabric.Admin.Models.FabricLocation]]) {
                     foreach ($item in $result) {
                         if ($skippedCount++ -lt $Skip) {
                         } else {
@@ -170,7 +156,7 @@ function Get-InfraRole
         # Get the next page iff 1) there is a next page and 2) any result in the next page would be returned
         while ($result -and (Get-Member -InputObject $result -Name nextLink) -and $result.nextLink -and (($Top -eq -1) -or ($returnedCount -lt $Top))) {
             Write-Debug -Message "Retrieving next page: $($result.nextLink)"
-            $taskResult = $FabricAdminClient.InfraRoles.ListNextWithHttpMessagesAsync($result.nextLink)
+            $taskResult = $FabricAdminClient.FabricLocations.ListNextWithHttpMessagesAsync($result.nextLink)
              $result = $null
         $ErrorActionPreference = 'Stop'
                     
@@ -198,7 +184,7 @@ function Get-InfraRole
             {
                 $result = $taskResult.Result.Body
                 Write-Debug -Message "$($result | Out-String)"
-                if ($result -is [Microsoft.Rest.Azure.IPage[Microsoft.AzureStack.Management.Fabric.Admin.Models.InfraRole]]) {
+                if ($result -is [Microsoft.Rest.Azure.IPage[Microsoft.AzureStack.Management.Fabric.Admin.Models.FabricLocation]]) {
                     foreach ($item in $result) {
                         if ($skippedCount++ -lt $Skip) {
                         } else {

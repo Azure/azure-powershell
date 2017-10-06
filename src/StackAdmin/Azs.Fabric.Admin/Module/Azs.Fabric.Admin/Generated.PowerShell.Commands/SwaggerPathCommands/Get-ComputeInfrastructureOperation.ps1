@@ -25,41 +25,42 @@ SOFTWARE.
 Import-Module -Name (Join-Path -Path $PSScriptRoot -ChildPath .. | Join-Path -ChildPath .. | Join-Path -ChildPath "GeneratedHelpers.psm1")
 <#
 .DESCRIPTION
-    Power on a scale unit node.
+    Get the status of a compute fabric operation.
 
-.PARAMETER ScaleUnitNode
-    Name of the scale unit node.
+.PARAMETER ComputeOperationResult
+    Id of a compute fabric operation.
+
+.PARAMETER Provider
+    Name of the provider.
 
 .PARAMETER Location
     Location of the resource.
 
-
 .EXAMPLE
 
-Invoke-AzsScaleUnitNodePowerOn -Location "local" -InfraRoleInstance "AzS-ACS01"
+Get-AzsComputeInfrastructureOperation -Location "local" -Provider "Microsoft.Fabric.Admin" -ComputeOperationResult "fdcdefb6-6fd0-402c-8b0c-5765b8fc4dc1"
 
 ProvisioningState
------------------
+-----------------------
 Succeeded
 
-
 #>
-function Invoke-ScaleUnitNodePowerOn
+function Get-ComputeInfrastructureOperation
 {
     [OutputType([Microsoft.AzureStack.Management.Fabric.Admin.Models.OperationStatus])]
-    [CmdletBinding(DefaultParameterSetName='ScaleUnitNodes_PowerOn')]
+    [CmdletBinding(DefaultParameterSetName='ComputeFabricOperations_Get')]
     param(    
-        [Parameter(Mandatory = $true, ParameterSetName = 'ScaleUnitNodes_PowerOn')]
+        [Parameter(Mandatory = $true, ParameterSetName = 'ComputeFabricOperations_Get')]
         [System.String]
-        $ScaleUnitNode,
+        $ComputeOperationResult,
     
-        [Parameter(Mandatory = $true, ParameterSetName = 'ScaleUnitNodes_PowerOn')]
+        [Parameter(Mandatory = $true, ParameterSetName = 'ComputeFabricOperations_Get')]
         [System.String]
-        $Location,
-
-        [Parameter(Mandatory = $false)]
-        [switch]
-        $AsJob
+        $Provider,
+    
+        [Parameter(Mandatory = $true, ParameterSetName = 'ComputeFabricOperations_Get')]
+        [System.String]
+        $Location
     )
 
     Begin 
@@ -74,39 +75,28 @@ function Invoke-ScaleUnitNodePowerOn
 
     $skippedCount = 0
     $returnedCount = 0
-    if ('ScaleUnitNodes_PowerOn' -eq $PsCmdlet.ParameterSetName) {
-        Write-Verbose -Message 'Performing operation PowerOnWithHttpMessagesAsync on $FabricAdminClient.'
-        $taskResult = $FabricAdminClient.ScaleUnitNodes.PowerOnWithHttpMessagesAsync($Location, $ScaleUnitNode)
+    if ('ComputeFabricOperations_Get' -eq $PsCmdlet.ParameterSetName) {
+        Write-Verbose -Message 'Performing operation GetWithHttpMessagesAsync on $FabricAdminClient.'
+        $taskResult = $FabricAdminClient.ComputeFabricOperations.GetWithHttpMessagesAsync($Location, $Provider, $ComputeOperationResult)
     } else {
         Write-Verbose -Message 'Failed to map parameter set to operation method.'
         throw 'Module failed to find operation to execute.'
     }
 
-    Write-Verbose -Message "Waiting for the operation to complete."
-
-    $PSSwaggerJobScriptBlock = {
-        [CmdletBinding()]
-        param(    
-            [Parameter(Mandatory = $true)]
-            [System.Threading.Tasks.Task]
-            $TaskResult
-        )
-        if ($TaskResult) {
-            $result = $null
+    if ($TaskResult) {
+        $result = $null
         $ErrorActionPreference = 'Stop'
                     
         $null = $taskResult.AsyncWaitHandle.WaitOne()
                     
         Write-Debug -Message "$($taskResult | Out-String)"
 
-        $hasBody = $taskResult.Result -and (Get-Member -InputObject $taskResult.Result -Name 'Body') -and $taskResult.Result.Body
-
-        if($taskResult.IsFaulted -and (-not $hasBody))
+        if($taskResult.IsFaulted)
         {
             Write-Verbose -Message 'Operation failed.'
             Throw "$($taskResult.Exception.InnerExceptions | Out-String)"
         } 
-        elseif ($taskResult.IsCanceled -and -not $hasBody)
+        elseif ($taskResult.IsCanceled)
         {
             Write-Verbose -Message 'Operation got cancelled.'
             Throw 'Operation got cancelled.'
@@ -115,36 +105,16 @@ function Invoke-ScaleUnitNodePowerOn
         {
             Write-Verbose -Message 'Operation completed successfully.'
 
-            if($hasBody)
+            if($taskResult.Result -and
+                (Get-Member -InputObject $taskResult.Result -Name 'Body') -and
+                $taskResult.Result.Body)
             {
                 $result = $taskResult.Result.Body
                 Write-Debug -Message "$($result | Out-String)"
                 $result
             }
         }
-            
-        }
-    }
-
-    $PSCommonParameters = Get-PSCommonParameter -CallerPSBoundParameters $PSBoundParameters
-
-    if($AsJob)
-    {
-        $ScriptBlockParameters = New-Object -TypeName 'System.Collections.Generic.Dictionary[string,object]'
-        $ScriptBlockParameters['TaskResult'] = $TaskResult
-        $ScriptBlockParameters['AsJob'] = $AsJob
-        $PSCommonParameters.GetEnumerator() | ForEach-Object { $ScriptBlockParameters[$_.Name] = $_.Value }
-
-        Start-PSSwaggerJobHelper -ScriptBlock $PSSwaggerJobScriptBlock `
-                                     -CallerPSBoundParameters $ScriptBlockParameters `
-                                     -CallerPSCmdlet $PSCmdlet `
-                                     @PSCommonParameters
-    }
-    else
-    {
-        Invoke-Command -ScriptBlock $PSSwaggerJobScriptBlock `
-                       -ArgumentList $taskResult `
-                       @PSCommonParameters
+        
     }
     }
 

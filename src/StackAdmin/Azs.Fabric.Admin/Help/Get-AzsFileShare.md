@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-AzsFileShare
+# Get-AzsInfrastructureShare
 
 ## SYNOPSIS
 Get file shares.
@@ -14,12 +14,12 @@ Get file shares.
 
 ### FileShares_List (Default)
 ```
-Get-AzsFileShare [-Filter <String>] -Location <String>
+Get-AzsInfrastructureShare [-Filter <String>] -Location <String>
 ```
 
 ### FileShares_Get
 ```
-Get-AzsFileShare -FileShare <String> -Location <String>
+Get-AzsInfrastructureShare -FileShare <String> -Location <String>
 ```
 
 ## DESCRIPTION

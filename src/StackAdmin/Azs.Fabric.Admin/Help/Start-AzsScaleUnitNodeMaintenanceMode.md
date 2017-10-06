@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Start-AzsScaleUnitNodeMaintenanceMode
+# Disable-AzsScaleUnitNode
 
 ## SYNOPSIS
 Start maintenance mode for a scale unit node.  This begins the process of moving all resources off the node.
@@ -13,7 +13,7 @@ Start maintenance mode for a scale unit node.  This begins the process of moving
 ## SYNTAX
 
 ```
-Start-AzsScaleUnitNodeMaintenanceMode -ScaleUnitNode <String> -Location <String> [-AsJob]
+Disable-AzsScaleUnitNode -ScaleUnitNode <String> -Location <String> [-AsJob]
 ```
 
 ## DESCRIPTION
@@ -23,7 +23,7 @@ Start maintenance mode for a scale unit node.  This begins the process of moving
 
 ### Example 1
 ```
-PS C:\> Start-AzsScaleUnitNodeMaintenanceMode -Location "local" -ScaleUnitNode "HC1n25r2236"
+PS C:\> Disable-AzsScaleUnitNode -Location "local" -ScaleUnitNode "HC1n25r2236"
 
 ProvisioningState
 -----------------------

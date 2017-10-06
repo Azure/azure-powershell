@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Invoke-AzsScaleUnitNodePowerOn
+# Start-AzsScaleUnitNode
 
 ## SYNOPSIS
 Power on a scale unit node.
@@ -13,7 +13,7 @@ Power on a scale unit node.
 ## SYNTAX
 
 ```
-Invoke-AzsScaleUnitNodePowerOn -ScaleUnitNode <String> -Location <String> [-AsJob]
+Start-AzsScaleUnitNode -ScaleUnitNode <String> -Location <String> [-AsJob]
 ```
 
 ## DESCRIPTION
@@ -23,7 +23,7 @@ Power on a scale unit node.
 
 ### Example 1
 ```
-PS C:\> Invoke-AzsScaleUnitNodePowerOn -Location "local" -InfraRoleInstance "AzS-ACS01"
+PS C:\> Start-AzsScaleUnitNode -Location "local" -InfrastructureRoleInstance "AzS-ACS01"
 
 ProvisioningState
 -----------------

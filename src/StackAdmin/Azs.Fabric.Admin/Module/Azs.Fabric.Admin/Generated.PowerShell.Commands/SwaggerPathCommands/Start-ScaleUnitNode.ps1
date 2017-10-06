@@ -25,33 +25,35 @@ SOFTWARE.
 Import-Module -Name (Join-Path -Path $PSScriptRoot -ChildPath .. | Join-Path -ChildPath .. | Join-Path -ChildPath "GeneratedHelpers.psm1")
 <#
 .DESCRIPTION
-    Shut down an infra role instance.
+    Power on a scale unit node.
 
-.PARAMETER InfraRoleInstance
-    Name of an infra role instance.
+.PARAMETER ScaleUnitNode
+    Name of the scale unit node.
 
 .PARAMETER Location
     Location of the resource.
 
+
 .EXAMPLE
 
-Invoke-AzsInfraRoleInstanceShutdown -Location "local" -InfraRoleInstance "AzS-ACS01"
+Start-AzsScaleUnitNode -Location "local" -InfrastructureRoleInstance "AzS-ACS01"
 
 ProvisioningState
 -----------------
 Succeeded
 
+
 #>
-function Invoke-InfraRoleInstanceShutdown
+function Start-ScaleUnitNode
 {
     [OutputType([Microsoft.AzureStack.Management.Fabric.Admin.Models.OperationStatus])]
-    [CmdletBinding(DefaultParameterSetName='InfraRoleInstances_Shutdown')]
+    [CmdletBinding(DefaultParameterSetName='ScaleUnitNodes_PowerOn')]
     param(    
-        [Parameter(Mandatory = $true, ParameterSetName = 'InfraRoleInstances_Shutdown')]
+        [Parameter(Mandatory = $true, ParameterSetName = 'ScaleUnitNodes_PowerOn')]
         [System.String]
-        $InfraRoleInstance,
+        $ScaleUnitNode,
     
-        [Parameter(Mandatory = $true, ParameterSetName = 'InfraRoleInstances_Shutdown')]
+        [Parameter(Mandatory = $true, ParameterSetName = 'ScaleUnitNodes_PowerOn')]
         [System.String]
         $Location,
 
@@ -72,9 +74,9 @@ function Invoke-InfraRoleInstanceShutdown
 
     $skippedCount = 0
     $returnedCount = 0
-    if ('InfraRoleInstances_Shutdown' -eq $PsCmdlet.ParameterSetName) {
-        Write-Verbose -Message 'Performing operation ShutdownWithHttpMessagesAsync on $FabricAdminClient.'
-        $taskResult = $FabricAdminClient.InfraRoleInstances.ShutdownWithHttpMessagesAsync($Location, $InfraRoleInstance)
+    if ('ScaleUnitNodes_PowerOn' -eq $PsCmdlet.ParameterSetName) {
+        Write-Verbose -Message 'Performing operation PowerOnWithHttpMessagesAsync on $FabricAdminClient.'
+        $taskResult = $FabricAdminClient.ScaleUnitNodes.PowerOnWithHttpMessagesAsync($Location, $ScaleUnitNode)
     } else {
         Write-Verbose -Message 'Failed to map parameter set to operation method.'
         throw 'Module failed to find operation to execute.'
@@ -99,7 +101,7 @@ function Invoke-InfraRoleInstanceShutdown
 
         $hasBody = $taskResult.Result -and (Get-Member -InputObject $taskResult.Result -Name 'Body') -and $taskResult.Result.Body
 
-        if($taskResult.IsFaulted -and -not $hasBody)
+        if($taskResult.IsFaulted -and (-not $hasBody))
         {
             Write-Verbose -Message 'Operation failed.'
             Throw "$($taskResult.Exception.InnerExceptions | Out-String)"

@@ -94,7 +94,7 @@ InModuleScope Azs.Fabric.Admin {
 		
 		It "TestListFabricLocations" {
 			$global:TestName = 'TestListFabricLocations'
-			$fabricLocations = Get-AzsFabricLocation -Location $Location
+			$fabricLocations = Get-AzsInfrastructureLocation -Location $Location
 			$fabricLocations | Should Not Be $null
 			foreach($fabricLocation in $fabricLocations) {
 				ValidateFabricLocation -FabricLocation $fabricLocation
@@ -104,9 +104,9 @@ InModuleScope Azs.Fabric.Admin {
 		It "TestGetFabricLocation" {
             $global:TestName = 'TestGetFabricLocation'
 
-			$fabricLocations = Get-AzsFabricLocation -Location $Location
+			$fabricLocations = Get-AzsInfrastructureLocation -Location $Location
 			foreach($fabricLocation in $fabricLocations) {
-				$retrieved = Get-AzsFabricLocation -Location $Location -FabricLocation $fabricLocation.Name
+				$retrieved = Get-AzsInfrastructureLocation -Location $Location -FabricLocation $fabricLocation.Name
 				AssertFabricLocationsAreSame -Expected $fabricLocation -Found $retrieved
 				break
 			}
@@ -115,9 +115,9 @@ InModuleScope Azs.Fabric.Admin {
 		It "TestGetAllFabricLocations" {
 			$global:TestName = 'TestGetAllFabricLocations'
 
-			$fabricLocations = Get-AzsFabricLocation -Location $Location
+			$fabricLocations = Get-AzsInfrastructureLocation -Location $Location
 			foreach($fabricLocation in $fabricLocations) {
-				$retrieved = Get-AzsFabricLocation -Location $Location -FabricLocation $fabricLocation.Name
+				$retrieved = Get-AzsInfrastructureLocation -Location $Location -FabricLocation $fabricLocation.Name
 				AssertFabricLocationsAreSame -Expected $fabricLocation -Found $retrieved
 			}
 		}
