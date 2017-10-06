@@ -33,9 +33,7 @@ namespace Microsoft.Azure.Commands.EventHub.Models
                 Type = drResource.Type;
                 ProvisioningState = drResource.ProvisioningState;
                 PartnerNamespace = drResource.PartnerNamespace;
-                Role = drResource.Role;
-                ArmDisasterRecoveryType = drResource.ArmDisasterRecoveryType;
-                LastSynced = drResource.LastSynced;
+                Role = drResource.Role;       
             }
         }
         
@@ -48,7 +46,7 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         /// <summary>
         /// Gets provisioning state of the disaster recovery
         /// </summary>
-        public string ProvisioningState { get; set; }
+        public ProvisioningStateDR? ProvisioningState { get; set; }
 
         /// <summary>
         /// Gets or sets a value that indicates partner namespace
@@ -57,21 +55,10 @@ namespace Microsoft.Azure.Commands.EventHub.Models
 
         /// <summary>
         /// Gets enumerates the possible values for the encoding format of
-        /// capture description. Possible values include: 'Unspecified',
+        /// capture description. Possible values include:
         /// 'Primary', 'PrimaryNotReplicating', 'Secondary'
         /// </summary>
-        public RoleDisasterRecovery? Role { get;  set; }
-
-        /// <summary>
-        /// Gets enumerates the possible values for the encoding format of
-        /// capture description. Possible values include:
-        /// 'MetadataReplication', 'DataReplication'
-        /// </summary>
-        public ReplicationType? ArmDisasterRecoveryType { get;  set; }
-
-        /// <summary>
-        /// Gets time of Last Synced
-        /// </summary>
-        public System.DateTime? LastSynced { get;  set; }
+        public RoleDisasterRecovery? Role { get;  set; }        
+        
     }
 }

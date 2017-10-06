@@ -17,12 +17,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
-{    
+namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
+{
     /// <summary>
-    /// 'Get-AzureRmEventHub' Cmdlet gives the details of a / List of EventHub(s)
-    /// <para> If EventHub name provided, a single EventHub detials will be returned</para>
-    /// <para> If EventHub name not provided, list of EventHub will be returned</para>
+    /// 'Get-AzureEventHubDRConfigurations' CmdletRetrieves Alias(Disaster Recovery configuration) for primary or secondary namespace    
     /// </summary>
     [Cmdlet(VerbsCommon.Get, EventHubDRConfigurationVerb), OutputType(typeof(List<EventHubDRConfigurationAttributes>))]
     public class GetEventHubDRConfiguration : AzureEventHubsCmdletBase
@@ -39,7 +37,8 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
             Position = 1,
             HelpMessage = "Namespace Name.")]
         [ValidateNotNullOrEmpty]
-        public string NamespaceName { get; set; }
+        [Alias(AliasNamespaceName)]
+        public string Namespace { get; set; }
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -53,13 +52,13 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
             if (!string.IsNullOrEmpty(Name))
             {
                 // Get a DRConfiguration
-                EventHubDRConfigurationAttributes drConfiguration = Client.GetEventHubDRConfiguration(ResourceGroupName, NamespaceName, Name);
+                EventHubDRConfigurationAttributes drConfiguration = Client.GetEventHubDRConfiguration(ResourceGroupName, Namespace, Name);
                 WriteObject(drConfiguration);
             }
             else
             {
                 // Get all DRConfigurations
-                IEnumerable<EventHubDRConfigurationAttributes> drConfigurationList = Client.ListAllEventHubDRConfiguration(ResourceGroupName, NamespaceName);
+                IEnumerable<EventHubDRConfigurationAttributes> drConfigurationList = Client.ListAllEventHubDRConfiguration(ResourceGroupName, Namespace);
                 WriteObject(drConfigurationList.ToList(), true);
             }
         }

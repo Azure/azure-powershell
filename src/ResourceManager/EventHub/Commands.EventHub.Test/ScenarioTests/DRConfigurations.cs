@@ -32,19 +32,5 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
         {
             EventHubsController.NewInstance.RunPsTest("DRConfigurationTests");
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void DRConfigurations_BrakPairing()
-        {
-            EventHubsController.NewInstance.RunPsTest("DRConfigurationTests_BreakPairing");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void DRConfigurations_FailOver()
-        {
-            EventHubsController.NewInstance.RunPsTest("DRConfigurationTests_FailOver");
-        }
     }
 }

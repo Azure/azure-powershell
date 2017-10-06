@@ -16,10 +16,10 @@ using Microsoft.Azure.Commands.EventHub.Models;
 using Microsoft.Azure.Management.EventHub.Models;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
+namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
 {
     /// <summary>
-    /// 'New-AzureRmEventHub' Cmdlet creates a new EventHub
+    /// 'New-AzureRmEventHubDRConfigurations' Cmdlet Creates an new Alias(Disaster Recovery configuration)
     /// </summary>
     [Cmdlet(VerbsCommon.New, EventHubDRConfigurationVerb, SupportsShouldProcess = true), OutputType(typeof(EventHubDRConfigurationAttributes))]
     public class NewAzureRmEventHubDRConfiguration : AzureEventHubsCmdletBase
@@ -36,7 +36,8 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
             Position = 1,
             HelpMessage = "Namespace Name.")]
         [ValidateNotNullOrEmpty]
-        public string NamespaceName { get; set; }
+        [Alias(AliasNamespaceName)]
+        public string Namespace { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -62,9 +63,9 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
             if (!string.IsNullOrEmpty(Name))
                 drConfiguration.Name = Name;
 
-            if (ShouldProcess(target: drConfiguration.Name, action:string.Format("Creating new EventHub:{0} under NameSpace:{1} ", drConfiguration.Name,NamespaceName)))
+            if (ShouldProcess(target: drConfiguration.Name, action:string.Format("Creating new EventHub:{0} under NameSpace:{1} ", drConfiguration.Name, Namespace)))
             {
-                WriteObject(Client.CreateEventHubDRConfiguration(ResourceGroupName, NamespaceName, drConfiguration.Name, drConfiguration));
+                WriteObject(Client.CreateEventHubDRConfiguration(ResourceGroupName, Namespace, drConfiguration.Name, drConfiguration));
             }
                         
         }

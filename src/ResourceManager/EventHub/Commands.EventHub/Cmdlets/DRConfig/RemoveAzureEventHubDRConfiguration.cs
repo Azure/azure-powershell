@@ -13,10 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
-namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
+namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
 {
     /// <summary>
-    /// 'Remove-AzureRmEventHub' Cmdlet removes the specified EventHub
+    /// 'Remove-AzureRmEventHubDRConfigurations' Cmdlet Deletes an Alias(Disaster Recovery configuration)
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, EventHubDRConfigurationVerb, SupportsShouldProcess = true)]
     public class RemoveEventHubDRConfiguration : AzureEventHubsCmdletBase
@@ -33,7 +33,8 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
             Position = 1,
             HelpMessage = "Namespace Name.")]
         [ValidateNotNullOrEmpty]
-        public string NamespaceName { get; set; }
+        [Alias(AliasNamespaceName)]
+        public string Namespace { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -45,9 +46,9 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
         public override void ExecuteCmdlet()
         {
             // delete a EventHub 
-            if(ShouldProcess(target:EventHubName, action:string.Format("Deleting EventHub: {0} of NnameSpace{1}",EventHubName,NamespaceName)))
+            if(ShouldProcess(target:EventHubName, action:string.Format("Deleting EventHub: {0} of NnameSpace{1}",EventHubName, Namespace)))
             {
-                WriteObject(Client.DeleteEventHub(ResourceGroupName, NamespaceName, EventHubName));
+                WriteObject(Client.DeleteEventHub(ResourceGroupName, Namespace, EventHubName));
             }            
         }
     }

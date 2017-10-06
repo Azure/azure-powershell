@@ -17,14 +17,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
-{    
+namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
+{
     /// <summary>
-    /// 'Get-AzureRmEventHub' Cmdlet gives the details of a / List of EventHub(s)
-    /// <para> If EventHub name provided, a single EventHub detials will be returned</para>
-    /// <para> If EventHub name not provided, list of EventHub will be returned</para>
+    /// 'New-AzureRmEventHubDRConfigurationsFailOver' Cmdlet envokes GEO DR failover and reconfigure the alias to point to the secondary namespace
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmEventHubDRConfigurationFailOver")]
+    [Cmdlet(VerbsCommon.Set, EventhubDRConfigurationFailoverVerb)]
     public class SetAzureEventHubDRConfigurationFailOver : AzureEventHubsCmdletBase
     {
         [Parameter(Mandatory = true,
@@ -39,7 +37,8 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
             Position = 1,
             HelpMessage = "Namespace Name - Secondary Namespace")]
         [ValidateNotNullOrEmpty]
-        public string NamespaceName { get; set; }
+        [Alias(AliasNamespaceName)]
+        public string Namespace { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -51,7 +50,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
         public override void ExecuteCmdlet()
         {
             //Set FailOver
-            Client.SetEventHubDRConfigurationFailOver(ResourceGroupName, NamespaceName, Name);            
+            Client.SetEventHubDRConfigurationFailOver(ResourceGroupName, Namespace, Name);
         }
     }
 }
