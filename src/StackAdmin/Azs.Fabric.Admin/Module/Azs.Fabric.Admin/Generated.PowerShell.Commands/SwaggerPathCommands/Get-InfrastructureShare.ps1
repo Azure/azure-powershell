@@ -30,7 +30,7 @@ Import-Module -Name (Join-Path -Path $PSScriptRoot -ChildPath .. | Join-Path -Ch
 .PARAMETER Filter
     OData filter parameter.
 
-.PARAMETER FileShare
+.PARAMETER Share
     Fabric file share name.
 
 .PARAMETER Location
@@ -51,7 +51,7 @@ Microsoft.Fabric.Admin/fabricLocations/fileShares \\SU1FileServer.azurestack.loc
 
 .EXAMPLE
 
-Get-AzsInfrastructureShare -Location -FileShare "SU1_Infrastructure_1"
+Get-AzsInfrastructureShare -Location "local" -Share "SU1_Infrastructure_1"
 
 Type                                              UncPath                                               Name                 Location AssociatedVolume
 ----                                              -------                                               ----                 -------- ----------------
@@ -61,18 +61,18 @@ Microsoft.Fabric.Admin/fabricLocations/fileShares \\SU1FileServer.azurestack.loc
 function Get-InfrastructureShare
 {
     [OutputType([Microsoft.AzureStack.Management.Fabric.Admin.Models.FileShare])]
-    [CmdletBinding(DefaultParameterSetName='FileShares_List')]
+    [CmdletBinding(DefaultParameterSetName='InfrastructureShares_List')]
     param(    
-        [Parameter(Mandatory = $false, ParameterSetName = 'FileShares_List')]
+        [Parameter(Mandatory = $false, ParameterSetName = 'InfrastructureShares_List')]
         [string]
         $Filter,
     
-        [Parameter(Mandatory = $true, ParameterSetName = 'FileShares_Get')]
+        [Parameter(Mandatory = $true, ParameterSetName = 'InfrastructureShares_Get')]
         [System.String]
-        $FileShare,
+        $Share,
     
-        [Parameter(Mandatory = $true, ParameterSetName = 'FileShares_List')]
-        [Parameter(Mandatory = $true, ParameterSetName = 'FileShares_Get')]
+        [Parameter(Mandatory = $true, ParameterSetName = 'InfrastructureShares_List')]
+        [Parameter(Mandatory = $true, ParameterSetName = 'InfrastructureShares_Get')]
         [System.String]
         $Location
     )
@@ -95,10 +95,10 @@ function Get-InfrastructureShare
 
     $skippedCount = 0
     $returnedCount = 0
-    if ('FileShares_Get' -eq $PsCmdlet.ParameterSetName) {
+    if ('InfrastructureShares_Get' -eq $PsCmdlet.ParameterSetName) {
         Write-Verbose -Message 'Performing operation GetWithHttpMessagesAsync on $FabricAdminClient.'
-        $taskResult = $FabricAdminClient.FileShares.GetWithHttpMessagesAsync($Location, $FileShare)
-    } elseif ('FileShares_List' -eq $PsCmdlet.ParameterSetName ) {
+        $taskResult = $FabricAdminClient.FileShares.GetWithHttpMessagesAsync($Location, $Share)
+    } elseif ('InfrastructureShares_List' -eq $PsCmdlet.ParameterSetName ) {
         Write-Verbose -Message 'Performing operation ListWithHttpMessagesAsync on $FabricAdminClient.'
         $taskResult = $FabricAdminClient.FileShares.ListWithHttpMessagesAsync($Location, $(if ($oDataQuery) { New-Object -TypeName "Microsoft.Rest.Azure.OData.ODataQuery``1[Microsoft.AzureStack.Management.Fabric.Admin.Models.FileShare]" -ArgumentList $oDataQuery } else { $null }))
     } else {

@@ -69,36 +69,36 @@ Microsoft.Fabric.Admin/fabricLocations/storageSubSystems/storagePools/volumes CS
 function Get-InfrastructureVolume
 {
     [OutputType([Microsoft.AzureStack.Management.Fabric.Admin.Models.Volume])]
-    [CmdletBinding(DefaultParameterSetName='Volumes_List')]
+    [CmdletBinding(DefaultParameterSetName='InfrastructureVolumes_List')]
     param(    
-        [Parameter(Mandatory = $false, ParameterSetName = 'Volumes_List')]
+        [Parameter(Mandatory = $false, ParameterSetName = 'InfrastructureVolumes_List')]
         [string]
         $Filter,
     
-        [Parameter(Mandatory = $true, ParameterSetName = 'Volumes_Get')]
-        [Parameter(Mandatory = $true, ParameterSetName = 'Volumes_List')]
+        [Parameter(Mandatory = $true, ParameterSetName = 'InfrastructureVolumes_Get')]
+        [Parameter(Mandatory = $true, ParameterSetName = 'InfrastructureVolumes_List')]
         [System.String]
         $StorageSubSystem,
     
-        [Parameter(Mandatory = $false, ParameterSetName = 'Volumes_List')]
+        [Parameter(Mandatory = $false, ParameterSetName = 'InfrastructureVolumes_List')]
         [int]
         $Skip = -1,
     
-        [Parameter(Mandatory = $true, ParameterSetName = 'Volumes_Get')]
+        [Parameter(Mandatory = $true, ParameterSetName = 'InfrastructureVolumes_Get')]
         [System.String]
         $Volume,
     
-        [Parameter(Mandatory = $true, ParameterSetName = 'Volumes_Get')]
-        [Parameter(Mandatory = $true, ParameterSetName = 'Volumes_List')]
+        [Parameter(Mandatory = $true, ParameterSetName = 'InfrastructureVolumes_Get')]
+        [Parameter(Mandatory = $true, ParameterSetName = 'InfrastructureVolumes_List')]
         [System.String]
         $Location,
     
-        [Parameter(Mandatory = $false, ParameterSetName = 'Volumes_List')]
+        [Parameter(Mandatory = $false, ParameterSetName = 'InfrastructureVolumes_List')]
         [int]
         $Top = -1,
     
-        [Parameter(Mandatory = $true, ParameterSetName = 'Volumes_Get')]
-        [Parameter(Mandatory = $true, ParameterSetName = 'Volumes_List')]
+        [Parameter(Mandatory = $true, ParameterSetName = 'InfrastructureVolumes_Get')]
+        [Parameter(Mandatory = $true, ParameterSetName = 'InfrastructureVolumes_List')]
         [System.String]
         $StoragePool
     )
@@ -121,10 +121,10 @@ function Get-InfrastructureVolume
 
     $skippedCount = 0
     $returnedCount = 0
-    if ('Volumes_Get' -eq $PsCmdlet.ParameterSetName) {
+    if ('InfrastructureVolumes_Get' -eq $PsCmdlet.ParameterSetName) {
         Write-Verbose -Message 'Performing operation GetWithHttpMessagesAsync on $FabricAdminClient.'
         $taskResult = $FabricAdminClient.Volumes.GetWithHttpMessagesAsync($Location, $StorageSubSystem, $StoragePool, $Volume)
-    } elseif ('Volumes_List' -eq $PsCmdlet.ParameterSetName ) {
+    } elseif ('InfrastructureVolumes_List' -eq $PsCmdlet.ParameterSetName ) {
         Write-Verbose -Message 'Performing operation ListWithHttpMessagesAsync on $FabricAdminClient.'
         $taskResult = $FabricAdminClient.Volumes.ListWithHttpMessagesAsync($Location, $StorageSubSystem, $StoragePool, $(if ($oDataQuery) { New-Object -TypeName "Microsoft.Rest.Azure.OData.ODataQuery``1[Microsoft.AzureStack.Management.Fabric.Admin.Models.Volume]" -ArgumentList $oDataQuery } else { $null }))
     } else {

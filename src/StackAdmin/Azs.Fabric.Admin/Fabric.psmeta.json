@@ -414,9 +414,9 @@
       "get": {
         "x-ps-cmdlet-infos": [
           {
-            "name": "Get-Infrastructurehare",
+            "name": "Get-InfrastructureShare",
             "description": "Get a fabric file share.",
-            "defaultParameterSet": "FileShares_Get",
+            "defaultParameterSet": "InfrastructureShares_Get",
             "generateCommand": true
           }
         ],
@@ -431,7 +431,7 @@
           {
             "name": "Get-InfrastructureShare",
             "description": "Get a list of all fabric file shares at a certain location.",
-            "defaultParameterSet": "FileShares_Get",
+            "defaultParameterSet": "InfrastructureShares_Get",
             "generateCommand": true
           }
         ],
@@ -519,7 +519,7 @@
           {
             "name": "Get-InfrastructureVolume",
             "description": "Get a volume.",
-            "defaultParameterSet": "Volumes_Get",
+            "defaultParameterSet": "InfrastructureVolumes_Get",
             "generateCommand": true
           }
         ],
@@ -534,7 +534,7 @@
           {
             "name": "Get-InfrastructureVolume",
             "description": "Get a list of all volumes at a location.",
-            "defaultParameterSet": "Volumes_Get",
+            "defaultParameterSet": "InfrastructureVolumes_Get",
             "generateCommand": true
           }
         ],
@@ -1287,7 +1287,7 @@
     "FileShareList": {
       "x-ps-cmdlet-infos": [
         {
-          "name": "New-FileShareListObject",
+          "name": "New-InfrastructureShareListObject",
           "description": "Pageable list of fabric file share locations.",
           "defaultParameterSet": "FileShareList",
           "generateCommand": true,
@@ -1398,7 +1398,7 @@
     "FileShare": {
       "x-ps-cmdlet-infos": [
         {
-          "name": "New-FileShareObject",
+          "name": "New-InfrastructureShareObject",
           "description": "Representation of a file share resource.",
           "defaultParameterSet": "FileShare",
           "generateCommand": true,
@@ -1461,7 +1461,7 @@
     "FileShareModel": {
       "x-ps-cmdlet-infos": [
         {
-          "name": "New-FileShareModelObject",
+          "name": "New-InfrastructureShareModelObject",
           "description": "Properties of a file share resource.",
           "defaultParameterSet": "FileShareModel",
           "generateCommand": true,

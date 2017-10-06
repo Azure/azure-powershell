@@ -12,12 +12,12 @@ Get infrastructure roles.
 
 ## SYNTAX
 
-### InfraRoles_List (Default)
+### InfrastructureRoles_List (Default)
 ```
 Get-AzsInfrastructureRole [-Filter <String>] [-Skip <Int32>] -Location <String> [-Top <Int32>]
 ```
 
-### InfrasRoles_Get
+### InfrasstructureRoles_Get
 ```
 Get-AzsInfrastructureRole -Location <String> -InfrastructureRole <String>
 ```

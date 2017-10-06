@@ -12,13 +12,13 @@ Get volumes at a location.
 
 ## SYNTAX
 
-### Volumes_List (Default)
+### InfrastructureVolumes_List (Default)
 ```
 Get-AzsInfrastructureVolume [-Filter <String>] -StorageSubSystem <String> [-Skip <Int32>] -Location <String> [-Top <Int32>]
  -StoragePool <String>
 ```
 
-### Volumes_Get
+### InfrastructureVolumes_Get
 ```
 Get-AzsInfrastructureVolume -StorageSubSystem <String> -Volume <String> -Location <String> -StoragePool <String>
 ```
@@ -60,7 +60,7 @@ OData filter parameter.
 
 ```yaml
 Type: String
-Parameter Sets: Volumes_List
+Parameter Sets: InfrastructureVolumes_List
 Aliases: 
 
 Required: False
@@ -90,7 +90,7 @@ Skip the first N items as specified by the parameter value.
 
 ```yaml
 Type: Int32
-Parameter Sets: Volumes_List
+Parameter Sets: InfrastructureVolumes_List
 Aliases: 
 
 Required: False
@@ -136,7 +136,7 @@ Applies after the -Skip parameter.
 
 ```yaml
 Type: Int32
-Parameter Sets: Volumes_List
+Parameter Sets: InfrastructureVolumes_List
 Aliases: 
 
 Required: False
@@ -151,7 +151,7 @@ Name of the volume.
 
 ```yaml
 Type: String
-Parameter Sets: Volumes_Get
+Parameter Sets: InfrastructureVolumes_Get
 Aliases: 
 
 Required: True

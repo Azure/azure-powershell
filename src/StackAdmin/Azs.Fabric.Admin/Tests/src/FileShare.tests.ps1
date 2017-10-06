@@ -14,18 +14,18 @@
 
 <#
 .SYNOPSIS
-    Run AzureStack fabric admin fileshare tests.
+    Run AzureStack fabric admin infrastructure share tests.
 
 .DESCRIPTION
-    Run AzureStack fabric admin fileshare tests using either mock client or our client.
+    Run AzureStack fabric admin infrastructure share tests using either mock client or our client.
 	The mock client allows for recording and playback.  This allows for offline tests.
 
 .PARAMETER RunRaw
     Run using our client creation path.
 
 .EXAMPLE
-    C:\PS> .\src\FileShare.Tests.ps1
-	Describing FileShares
+    C:\PS> .\src\InfrastructureShare.Tests.ps1
+	Describing InfrastructureShares
 	 [+] TestListFileShares 178ms
 	 [+] TestGetFileShare 100ms
 	 [+] TestGetAllFileShares 174ms
@@ -47,7 +47,7 @@ $global:TestName = ""
 
 InModuleScope Azs.Fabric.Admin {
 
-	Describe "FileShares" -Tags @('FileShare', 'Azs.Fabric.Admin') {
+	Describe "InfrastructureShares" -Tags @('FileShare', 'Azs.Fabric.Admin') {
 
 		BeforeEach  {
 			
@@ -56,7 +56,7 @@ InModuleScope Azs.Fabric.Admin {
 			function ValidateFileShare {
 				param(
 					[Parameter(Mandatory=$true)]
-					$FileShare
+					$Share
 				)
 			
 				$FileShare          | Should Not Be $null
@@ -105,7 +105,7 @@ InModuleScope Azs.Fabric.Admin {
 			$fileShares = Get-AzsInfrastructureShare -Location $Location
 			$fileShares | Should not be $null
 			foreach($fileShare in $fileShares) {
-				ValidateFileShare -FileShare $fileShare
+				ValidateFileShare -Share $fileShare
 			}
 	    }
 	
@@ -115,7 +115,10 @@ InModuleScope Azs.Fabric.Admin {
 			$fileShares = Get-AzsInfrastructureShare -Location $Location
 			if($fileShares -and $fileShares.Count -gt 0) {
 				$fileShare = $fileShares[0]
-				$retrieved = Get-AzsInfrastructureShare -Location $Location -FileShare $fileShare.Name
+				$retrieved = Get-AzsInfrastructureShare -Location $Location -Share $fileShare.Name
+				Write-Host "Get-AzsInfrastructureShare -Location $Location -Share $fileShare.Name"
+				Write-Host ($retrieved | Out-String)
+				
 				AssertFileSharesAreSame -Expected $fileShare -Found $retrieved
 			}
 		}
@@ -125,7 +128,7 @@ InModuleScope Azs.Fabric.Admin {
 
 			$fileShares = Get-AzsInfrastructureShare -Location $Location
 			foreach($fileShare in $fileShares) {
-				$retrieved = Get-AzsInfrastructureShare -Location $Location -FileShare $fileShare.Name
+				$retrieved = Get-AzsInfrastructureShare -Location $Location -Share $fileShare.Name
 				AssertFileSharesAreSame -Expected $fileShare -Found $retrieved
 			}
 		}
