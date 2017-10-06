@@ -146,7 +146,9 @@ Accept wildcard characters: False
 ```
 
 ### -Reject
-Pass this to reject the legal terms.```yaml
+Pass this to reject the legal terms.
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: AgreementRejectParameterSet, InputObjectRejectParametrSet
 Aliases: 
