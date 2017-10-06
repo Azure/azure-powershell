@@ -18,19 +18,21 @@ $vmCredential = New-Object System.Management.Automation.PSCredential ($vmCompute
 
 Describe 'New-AzVm' {
     It 'WhatIf' {
-        New-AzVm -Name MyVM -Credential $vmCredential -WhatIf
+        $result = New-AzVm -Name MyVM -Credential $vmCredential -WhatIf
     }
     It 'Create Windows VM' {
-        New-AzVm -Name MyVMA1 -Credential $vmCredential -ResourceGroupName Something1 -Verbose
+        Remove-AzureRmResourceGroup -Name Something1 -Force
+        $result = New-AzVm -Name MyVMA1 -Credential $vmCredential -ResourceGroupName Something1 -Verbose
+        $result.Name | Should -Be MyVMA1
     }
     It 'Create Linux VM' {
-        New-AzVm -Name MyVMA2 -Credential $vmCredential -ResourceGroupName Something1 -ImageName UbuntuLTS -Verbose
+        $result = New-AzVm -Name MyVMA2 -Credential $vmCredential -ResourceGroupName Something1 -ImageName UbuntuLTS -Verbose
+        $result.Name | Should -Be MyVMA2
     }
     It 'Create Linux VM AsJob' {
+        Remove-AzureRmResourceGroup -Name MyVMA3 -Force
         $job = New-AzVm -Name MyVMA3 -Credential $vmCredential -AsJob -ImageName UbuntuLTS -Verbose
-        Receive-Job $job -Wait
+        $result = Receive-Job $job -Wait
+        $result.Name | Should -Be MyVMA3
     }
 }
-
-# clean-up
-# Remove-AzureRmResourceGroup -Name Something1

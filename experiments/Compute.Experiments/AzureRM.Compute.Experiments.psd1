@@ -52,9 +52,9 @@ PowerShellVersion = '5.0'
 
 # Modules that must be imported into the global environment prior to importing this module
 RequiredModules = @(
-    @{ ModuleName = "AzureRM.Resources"; ModuleVersion = "4.3.2"; },
-    @{ ModuleName = "AzureRM.Network"; ModuleVersion = "4.3.2"; },
-    @{ ModuleName = "AzureRM.Compute"; ModuleVersion = "3.3.2"; }
+    @{ ModuleName = "AzureRM.Resources"; ModuleVersion = "4.4.0"; },
+    @{ ModuleName = "AzureRM.Network"; ModuleVersion = "4.4.0"; },
+    @{ ModuleName = "AzureRM.Compute"; ModuleVersion = "3.4.0"; }
 )
 
 # Assemblies that must be loaded prior to importing this module
