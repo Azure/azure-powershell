@@ -110,67 +110,6 @@ function Get-TargetModules
     }
 }
 
-function Make-StrictModuleDependencies
-{
-  [CmdletBinding()]
-  param(
-  [string] $Path)
-
-  PROCESS 
-  {
-    $manifest = Test-ModuleManifest -Path $Path
-    $newModules = @()
-    foreach ($module in $manifest.RequiredModules)
-    {
-       $newModules += (@{ModuleName = $module.Name; RequiredVersion= $module.Version})
-    }
-
-      if ($newModules.Count -gt 0)
-      {
-        Update-ModuleManifest -Path $Path -RequiredModules $newModules
-      }
-    
-  }
-
-}
-
-function Add-PSM1Dependency
-{
-  [CmdletBinding()]
-  param(
-  [string] $Path)
-
-  PROCESS 
-  {
-    $file = Get-Item -Path $Path
-    $manifestFile = $file.Name
-    $psm1file = $manifestFile -replace ".psd1", ".psm1"
-    $manifest = Test-ModuleManifest -Path $Path
-    if($isNetCore -eq "false") {
-      Update-ModuleManifest -Path $Path -RootModule $psm1file
-    }
-  }
-
-}
-
-
-function Remove-ModuleDependencies
-{
-  [CmdletBinding()]
-  param(
-  [string] $Path)
-
-  PROCESS 
-  {
-    $regex = New-Object System.Text.RegularExpressions.Regex "RequiredModules\s*=\s*@\([^\)]+\)"
-    $content = (Get-Content -Path $Path) -join "`r`n"
-    $text = $regex.Replace($content, "RequiredModules = @()")
-    $text | Out-File -FilePath $Path
-    
-  }
-
-}
-
 function Update-NugetPackage
 {
     [CmdletBinding()]
@@ -216,7 +155,6 @@ function Change-RMModule
         $moduleName = (Get-Item -Path $Path).Name
         $moduleManifest = $moduleName + ".psd1"
         $moduleSourcePath = Join-Path -Path $Path -ChildPath $moduleManifest
-        $manifest = Make-StrictModuleDependencies $moduleSourcePath
         $manifest = Test-ModuleManifest -Path $moduleSourcePath
         $toss = Publish-Module -Path $Path -Repository $TempRepo -Force
         Write-Output "Changing to directory for module modifications $TempRepoPath"
@@ -236,10 +174,6 @@ function Change-RMModule
           ren $nupkgPath $zipPath
           Write-Output "Expanding $zipPath"
           Expand-Archive $zipPath -DestinationPath $dirPath
-          Write-Output "Adding PSM1 dependency to $unzippedManifest"
-          Add-PSM1Dependency -Path $unzippedManifest
-          Write-Output "Removing module manifest dependencies for $unzippedManifest"
-          Remove-ModuleDependencies -Path $unzippedManifest
 
           Remove-Item -Path $zipPath -Force
           Write-Output "Repackaging $dirPath"
