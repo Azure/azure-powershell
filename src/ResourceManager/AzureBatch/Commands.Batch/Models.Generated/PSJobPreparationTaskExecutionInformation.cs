@@ -33,9 +33,9 @@ namespace Microsoft.Azure.Commands.Batch.Models
     {
         
         internal Microsoft.Azure.Batch.JobPreparationTaskExecutionInformation omObject;
-        
+#pragma warning disable CS0618
         private PSTaskSchedulingError schedulingError;
-        
+#pragma warning restore CS0618
         internal PSJobPreparationTaskExecutionInformation(Microsoft.Azure.Batch.JobPreparationTaskExecutionInformation omObject)
         {
             if ((omObject == null))
@@ -76,7 +76,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 return this.omObject.RetryCount;
             }
         }
-        
+
+        [Obsolete("SchedulingError will be removed in a future version and replaced with FailureInformation")]
         public PSTaskSchedulingError SchedulingError
         {
             get

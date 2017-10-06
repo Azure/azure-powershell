@@ -364,7 +364,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 this.networkConfiguration = value;
             }
         }
-        
+
+        [Obsolete("The ResizeError property will be removed in an upcoming breaking change release. Please use the ResizeErrors property instead.")]
         public PSResizeError ResizeError
         {
             get
