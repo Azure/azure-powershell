@@ -50,7 +50,7 @@ Creates a trigger and then does a Get to compare the results.
 Starts and Stops trigger.
 Then deletes the created trigger at the end.
 #>
-function Test-StartStopTrigger
+function Test-StartTriggerThrowsWithoutPipeline
 {
     $dfname = Get-DataFactoryName
     $rgname = Get-ResourceGroupName
@@ -69,16 +69,8 @@ function Test-StartStopTrigger
 
         Verify-Trigger $expected $actual $rgname $dfname $triggername
 
-        Start-AzureRmDataFactoryV2Trigger -ResourceGroupName $rgname -DataFactoryName $dfname -Name $triggername -Force
-        $started = Get-AzureRmDataFactoryV2Trigger -ResourceGroupName $rgname -DataFactoryName $dfname -Name $triggername
+        Assert-ThrowsContains {Start-AzureRmDataFactoryV2Trigger -ResourceGroupName $rgname -DataFactoryName $dfname -Name $triggername -Force} "BadRequest"
         
-        Assert-AreEqual $started.RuntimeState 'Started'
-        
-        Stop-AzureRmDataFactoryV2Trigger -ResourceGroupName $rgname -DataFactoryName $dfname -Name $triggername -Force
-        $stopped = Get-AzureRmDataFactoryV2Trigger -ResourceGroupName $rgname -DataFactoryName $dfname -Name $triggername
-        
-        Assert-AreEqual $stopped.RuntimeState 'Stopped'
-
         Remove-AzureRmDataFactoryV2Trigger -ResourceGroupName $rgname -DataFactoryName $dfname -Name $triggername -Force
     }
     finally
