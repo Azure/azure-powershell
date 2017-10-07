@@ -483,19 +483,28 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         private VirtualMachineScaleSetStorageProfile GetStorageProfile(VirtualMachineScaleSetStorageProfile existingProfile)
         {
-            var vhds = CreateStorageAccount().Select(a => string.Concat(a.PrimaryEndpoints.Blob, "vhd")).ToList();
+            var osDisk = new VirtualMachineScaleSetOSDisk()
+            {
+                Caching = existingProfile.OsDisk.Caching,
+                OsType = existingProfile.OsDisk.OsType,
+                CreateOption = existingProfile.OsDisk.CreateOption
+            };
+
+            if(existingProfile.OsDisk.ManagedDisk != null)
+            {
+                osDisk.ManagedDisk = existingProfile.OsDisk.ManagedDisk;
+            }
+            else
+            {
+                osDisk.Image = existingProfile.OsDisk.Image;
+                osDisk.Name = existingProfile.OsDisk.Name;
+                osDisk.VhdContainers = CreateStorageAccount().Select(a => string.Concat(a.PrimaryEndpoints.Blob, "vhd")).ToList();
+            }
+
             return new VirtualMachineScaleSetStorageProfile()
             {
                 ImageReference = existingProfile.ImageReference,
-                OsDisk = new VirtualMachineScaleSetOSDisk()
-                {
-                    Caching = existingProfile.OsDisk.Caching,
-                    OsType = existingProfile.OsDisk.OsType,
-                    Image = existingProfile.OsDisk.Image,
-                    Name = existingProfile.OsDisk.Name,
-                    CreateOption = existingProfile.OsDisk.CreateOption,
-                    VhdContainers = vhds
-                }
+                OsDisk = osDisk
             };
         }
 
