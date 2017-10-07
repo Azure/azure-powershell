@@ -34,6 +34,9 @@ Shut down an infrastructure role instance.  On failure an exception is thrown.
 
 ## PARAMETERS
 
+### -AsJob
+Runs as a job.
+
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)

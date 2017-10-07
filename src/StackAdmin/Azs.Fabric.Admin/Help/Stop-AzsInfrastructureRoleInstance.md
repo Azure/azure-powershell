@@ -34,6 +34,9 @@ Power off a infrastructure role instance.
 
 ## PARAMETERS
 
+### -AsJob
+Runs as job.
+
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)

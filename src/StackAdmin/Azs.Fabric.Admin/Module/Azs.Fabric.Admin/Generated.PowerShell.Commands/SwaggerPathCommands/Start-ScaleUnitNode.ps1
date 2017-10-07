@@ -36,7 +36,7 @@ Import-Module -Name (Join-Path -Path $PSScriptRoot -ChildPath .. | Join-Path -Ch
 
 .EXAMPLE
 
-Start-AzsScaleUnitNode -Location "local" -InfrastructureRoleInstance "AzS-ACS01"
+Start-AzsScaleUnitNode -Location local -ScaleUnitNode HC1n25r2236
 
 ProvisioningState
 -----------------

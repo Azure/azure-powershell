@@ -34,6 +34,9 @@ End maintenance mode on a scale unit node.
 
 ## PARAMETERS
 
+### -AsJob
+Runs as job.
+
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
