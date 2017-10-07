@@ -28,8 +28,16 @@ Describe 'New-AzVm' {
         $result.Name | Should Be MyVMA1
     }
     It 'Create Linux VM' {
-        $result = New-AzVm -Name MyVMA2 -Credential $vmCredential -ResourceGroupName Something1 -ImageName UbuntuLTS -Verbose
-        $result.Name | Should Be MyVMA2
+        $context = Get-AzureRmContext
+        $result = New-AzVm `
+            -Name X2 `
+            -Credential $vmCredential `
+            -Location westus2 `
+            -ResourceGroupName Something1 `
+            -AzureRmContext $context `
+            -ImageName UbuntuLTS `
+            -Verbose
+        $result.Name | Should Be X2
     }
     It 'Create Linux VM AsJob' {
         Remove-AzureRmResourceGroup -Name MyVMA3 -Force
