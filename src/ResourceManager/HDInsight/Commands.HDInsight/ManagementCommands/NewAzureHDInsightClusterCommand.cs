@@ -158,10 +158,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                 {
                     result.ComponentVersion.Add(component.Key, component.Value);
                 }
-                foreach (var dataDisksGroups in parameters.WorkerNodeDataDisksGroups.Where(d => d.DisksPerNode > 0))
-                {
-                    result.DataDisksGroupProperties.Add(dataDisksGroups);
-                }
+                
                 return result;
             }
             set
@@ -212,10 +209,6 @@ namespace Microsoft.Azure.Commands.HDInsight
                 foreach (var component in value.ComponentVersion.Where(component => !parameters.ComponentVersion.ContainsKey(component.Key)))
                 {
                     parameters.ComponentVersion.Add(component.Key, component.Value);
-                }
-                foreach (var dataDisksGroups in value.DataDisksGroupProperties.Where(d => d.DisksPerNode > 0))
-                {
-                    this.parameters.WorkerNodeDataDisksGroups.Add(dataDisksGroups);
                 }
             }
         }
@@ -292,13 +285,6 @@ namespace Microsoft.Azure.Commands.HDInsight
         {
             get { return parameters.ComponentVersion; }
             set { parameters.ComponentVersion = value; }
-        }
-
-        [Parameter(HelpMessage = "Gets or sets the data disks groups for worker node role in the cluster.")]
-        public List<DataDisksGroupProperties> WorkerNodeDataDisksGroups
-        {
-            get { return parameters.WorkerNodeDataDisksGroups; }
-            set { parameters.WorkerNodeDataDisksGroups = value; }
         }
 
         [Parameter(HelpMessage = "Gets or sets the virtual network guid for this HDInsight cluster.")]
@@ -477,14 +463,13 @@ namespace Microsoft.Azure.Commands.HDInsight
                 };
             }
 
-            if (WorkerNodeDataDisksGroups != null)
+            if (DisksPerWorkerNode > 0)
             {
-                var dataDisksGroups = WorkerNodeDataDisksGroups;
-                this.parameters.WorkerNodeDataDisksGroups = new List<DataDisksGroupProperties>()
+                parameters.WorkerNodeDataDisksGroups = new List<DataDisksGroupProperties>()
                 {
                     new DataDisksGroupProperties()
                     {
-                        DisksPerNode = dataDisksGroups.First().DisksPerNode
+                        DisksPerNode = DisksPerWorkerNode
                     }
                 };
             }

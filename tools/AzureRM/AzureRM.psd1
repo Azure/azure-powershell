@@ -81,7 +81,7 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '3.4.0';
                @{ModuleName = 'AzureRM.LogicApp'; RequiredVersion = '3.4.0'; }, 
                @{ModuleName = 'AzureRM.MachineLearning'; RequiredVersion = '0.15.6'; }, 
                @{ModuleName = 'AzureRM.MachineLearningCompute'; RequiredVersion = '0.1.0'},
-			   @{ModuleName = 'AzureRM.MarketplaceOrdering'; RequiredVersion = '0.1.0'; },
+	           @{ModuleName = 'AzureRM.MarketplaceOrdering'; RequiredVersion = '0.1.0'; },
                @{ModuleName = 'AzureRM.Media'; RequiredVersion = '0.7.6'; }, 
                @{ModuleName = 'AzureRM.Network'; RequiredVersion = '4.4.0'; }, 
                @{ModuleName = 'AzureRM.NotificationHubs'; RequiredVersion = '3.4.0'; }, 
