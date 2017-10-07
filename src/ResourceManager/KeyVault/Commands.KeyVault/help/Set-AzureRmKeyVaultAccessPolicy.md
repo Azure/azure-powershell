@@ -71,7 +71,7 @@ Note that although specifying the resource group is optional for this cmdlet, yo
 
 ## EXAMPLES
 
-### Example 1: Grant permissions to a user for a key vault Key Vault and modify the permissions
+### Example 1: Grant permissions to a user for a key vault and modify the permissions
 ```
 PS C:\>Set-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -UserPrincipalName 'PattiFuller@contoso.com' -PermissionsToKeys create,import,delete,list -PermissionsToSecrets 'set,delete'
 PS C:\> Set-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -UserPrincipalName 'PattiFuller@contoso.com' -PermissionsToSecrets set,delete,get -PassThru
@@ -111,7 +111,7 @@ PS C:\>Set-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -UserPrincipa
 
 This command grants get, list, and set permissions for the specified user principal name for access to secrets.
 
-### Example 5: Enable secrets to be retrieved from a key vault vault by the Microsoft.Compute resource providerkey vault
+### Example 5: Enable secrets to be retrieved from a key vault vault by the Microsoft.Compute resource provider
 ```
 PS C:\>Set-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -ResourceGroupName 'Group14' -EnabledForDeployment
 ```
@@ -258,6 +258,7 @@ Accept wildcard characters: False
 
 ### -PassThru
 Returns an object representing the item with which you are working.
+
 By default, this cmdlet does not generate any output.
 
 ```yaml
@@ -274,7 +275,8 @@ Accept wildcard characters: False
 
 ### -PermissionsToCertificates
 Specifies an array of certificate permissions to grant to a user or service principal.
-The acceptable values for this parameter are:
+
+The acceptable values for this parameter:
 
 - Get
 - List
@@ -304,7 +306,8 @@ Accept wildcard characters: False
 
 ### -PermissionsToKeys
 Specifies an array of key operation permissions to grant to a user or service principal.
-The acceptable values for this parameter are:
+
+The acceptable values for this parameter:
 
 - Decrypt
 - Encrypt
@@ -364,7 +367,7 @@ Accept wildcard characters: False
 ```
 
 ### -PermissionsToStorage
-Specifies managed storage account and sas definition operation permissions to grant to a user or service principal.
+Specifies managed storage account and SaS-definition operation permissions to grant to a user or service principal.
 
 ```yaml
 Type: String[]
