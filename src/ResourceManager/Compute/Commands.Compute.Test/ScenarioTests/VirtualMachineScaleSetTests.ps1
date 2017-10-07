@@ -372,7 +372,10 @@ function Test-VirtualMachineScaleSetReimageUpdate
         Assert-AreEqual "ProvisioningState/succeeded" $vmssInstanceViewResult.VirtualMachine.StatusesSummary[0].Code;
 
         # Manual Upgrade operation
-        $st = Get-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName | Update-AzureRmVmss -ResourceGroupName $rgname -Name $vmssName;
+        $vmss = Get-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+        Assert-AreEqual $null $vmss.Zones;
+
+        Update-AzureRmVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
         $vmssResult = Get-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
         $vmssInstanceViewResult = Get-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceView;
         Assert-AreEqual "ProvisioningState/succeeded" $vmssInstanceViewResult.VirtualMachine.StatusesSummary[0].Code;

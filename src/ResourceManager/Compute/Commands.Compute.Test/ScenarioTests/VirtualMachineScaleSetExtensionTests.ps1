@@ -259,3 +259,43 @@ function Test-GetVirtualMachineScaleSetDiskEncryptionStatus
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Test Get Virtual Machine Scale Set Disk Encryption for VMSS with a data disk.
+Precondition: The given VMSS has an encrypted data disk.
+#>
+function Test-GetVirtualMachineScaleSetDiskEncryptionDataDisk
+{
+    $rgname = "hyleevmssdetest2";
+    $vmssName = "vmsshyleevmssdetest3";
+    $result = Get-AzureRmVmssDiskEncryption -ResourceGroupName $rgname;
+    $output = $result | Out-String;
+
+    $result = Get-AzureRmVmssDiskEncryption -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+    $output = $result | Out-String;
+
+    $result = Get-AzureRmVmssVMDiskEncryption -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+    Assert-AreEqual "Encrypted" $result[0].DataVolumesEncrypted;
+    $output = $result | Out-String;
+
+    $result = Get-AzureRmVmssVMDiskEncryption -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId "1";
+    Assert-AreEqual "Encrypted" $result.DataVolumesEncrypted;
+    $output = $result | Out-String;
+
+    Disable-AzureRmVmssDiskEncryption -ResourceGroupName $rgname -VMScaleSetName $vmssName -Force;
+
+    $result = Get-AzureRmVmssDiskEncryption -ResourceGroupName $rgname;
+    $output = $result | Out-String;
+
+    $result = Get-AzureRmVmssDiskEncryption -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+    $output = $result | Out-String;
+
+    $result = Get-AzureRmVmssVMDiskEncryption -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+    Assert-AreEqual "NotEncrypted" $result[0].DataVolumesEncrypted;
+    $output = $result | Out-String;
+
+    $result = Get-AzureRmVmssVMDiskEncryption -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId "1";
+    Assert-AreEqual "NotEncrypted" $result.DataVolumesEncrypted;
+    $output = $result | Out-String;
+}
