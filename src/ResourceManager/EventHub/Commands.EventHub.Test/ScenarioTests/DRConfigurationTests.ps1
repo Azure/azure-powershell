@@ -98,7 +98,7 @@ function DRConfigurationTests
 	$createdDRConfig = Get-AzureRmEventHubDRConfigurations -ResourceGroup $resourceGroupName -NamespaceName $namespaceName1 -Name $drConfigName
 
 	# Assert
-	Assert-True {$createdEventHub.PartnerNamespace -eq $namespaceName2} "DRConfig created earlier is not found."
+	Assert-True {$createdDRConfig.PartnerNamespace -eq $namespaceName2} "DRConfig created earlier is not found."
 
 	# Get the Created DRConfiguration
 	Write-Debug " Get all the created DRConfiguration"
@@ -113,19 +113,10 @@ function DRConfigurationTests
 
 	# FailOver on Secondary Namespace
 	Write-Debug "FailOver on Secondary Namespace"
-	Set-AzureRmEventHubDRConfigurationsFailOVer -ResourceGroup $resourceGroupName -NamespaceName $namespaceName2 -Name $drConfigName
-	
-	# Cleanup
-	# Delete all Created Eventhub
-	#Write-Debug " Delete the EventHub"
-	#for ($i = 0; $i -lt $createdEventHubList.Count; $i++)
-	#{
-	#	$delete1 = Remove-AzureRmEventHub -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -EventHubName $createdEventHubList[$i].Name		
-	#}
-	#Write-Debug " Delete namespaces"
-	#Remove-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName
+	Set-AzureRmEventHubDRConfigurationsFailOver -ResourceGroup $resourceGroupName -NamespaceName $namespaceName2 -Name $drConfigName
 
-	Write-Debug " Delete resourcegroup"
-	Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+	# Remove the Alias created
+	Remove-AzureRmEventHubDRConfigurations -ResourceGroup $resourceGroupName -NamespaceName $namespaceName2 -Name $drConfigName	
+	
 }
 

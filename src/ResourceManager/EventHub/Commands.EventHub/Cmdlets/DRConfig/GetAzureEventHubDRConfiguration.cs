@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
         [ValidateNotNullOrEmpty]
          public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true,
+        [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "Namespace Name.")]
@@ -45,6 +45,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
             Position = 2,
             HelpMessage = "DR Configuration Name.")]
         [ValidateNotNullOrEmpty]
+        [Alias(AliasAliasName)]
         public string Name { get; set; }
 
         public override void ExecuteCmdlet()

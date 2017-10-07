@@ -51,6 +51,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
             Position = 3,
            HelpMessage = "DR Configuration PartnerNamespace")]
         [ValidateNotNullOrEmpty]
+        [Alias(AliasAliasName)]
         public string PartnerNamespace { get; set; }
 
         public override void ExecuteCmdlet()
@@ -63,7 +64,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
             if (!string.IsNullOrEmpty(Name))
                 drConfiguration.Name = Name;
 
-            if (ShouldProcess(target: drConfiguration.Name, action:string.Format("Creating new EventHub:{0} under NameSpace:{1} ", drConfiguration.Name, Namespace)))
+            if (ShouldProcess(target: drConfiguration.Name, action:string.Format("Creating new Alias :{0} under NameSpace:{1} ", drConfiguration.Name, Namespace)))
             {
                 WriteObject(Client.CreateEventHubDRConfiguration(ResourceGroupName, Namespace, drConfiguration.Name, drConfiguration));
             }

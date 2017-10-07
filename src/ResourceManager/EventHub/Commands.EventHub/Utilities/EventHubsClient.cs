@@ -324,10 +324,7 @@ namespace Microsoft.Azure.Commands.Eventhub
 
             var response = Client.DisasterRecoveryConfigs.CreateOrUpdate(resourceGroupName, namespaceName, alias, Parameter1);
             Thread.Sleep(TimeSpan.FromSeconds(5));
-            while (GetEventHubDRConfiguration(resourceGroupName, namespaceName, alias).ProvisioningState != ProvisioningStateDR.Succeeded)
-            {
-                Thread.Sleep(TimeSpan.FromSeconds(10));
-            }
+            
             return new EventHubDRConfigurationAttributes(response);
         }
 
@@ -340,21 +337,13 @@ namespace Microsoft.Azure.Commands.Eventhub
         public void SetEventHubDRConfigurationBreakPairing(string resourceGroupName, string namespaceName, string alias)
         {
             Client.DisasterRecoveryConfigs.BreakPairing(resourceGroupName, namespaceName, alias);
-            Thread.Sleep(TimeSpan.FromSeconds(5));
-            while (GetEventHubDRConfiguration(resourceGroupName, namespaceName, alias).ProvisioningState != ProvisioningStateDR.Succeeded)
-            {
-                Thread.Sleep(TimeSpan.FromSeconds(10));
-            }
+            Thread.Sleep(TimeSpan.FromSeconds(5));            
         }
 
         public void SetEventHubDRConfigurationFailOver(string resourceGroupName, string namespaceName, string alias)
         {
             Client.DisasterRecoveryConfigs.FailOver(resourceGroupName, namespaceName, alias);
-            Thread.Sleep(TimeSpan.FromSeconds(5));
-            while (GetEventHubDRConfiguration(resourceGroupName, namespaceName, alias).ProvisioningState != ProvisioningStateDR.Succeeded)
-            {
-                Thread.Sleep(TimeSpan.FromSeconds(10));
-            }
+            Thread.Sleep(TimeSpan.FromSeconds(5));            
         }
 
 

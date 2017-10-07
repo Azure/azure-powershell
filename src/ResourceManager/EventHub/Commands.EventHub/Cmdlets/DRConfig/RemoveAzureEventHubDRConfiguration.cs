@@ -39,16 +39,17 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 2,
-            HelpMessage = "EventHub Name.")]
+            HelpMessage = "DR Configuration Name.")]
         [ValidateNotNullOrEmpty]
-        public string EventHubName { get; set; }
+        [Alias(AliasAliasName)]
+        public string Name { get; set; }
 
         public override void ExecuteCmdlet()
         {
             // delete a EventHub 
-            if(ShouldProcess(target:EventHubName, action:string.Format("Deleting EventHub: {0} of NnameSpace{1}",EventHubName, Namespace)))
+            if(ShouldProcess(target: Name, action:string.Format("Deleting DR configuration: {0} of NnameSpace{1}", Name, Namespace)))
             {
-                WriteObject(Client.DeleteEventHub(ResourceGroupName, Namespace, EventHubName));
+                WriteObject(Client.DeleteEventHub(ResourceGroupName, Namespace, Name));
             }            
         }
     }
