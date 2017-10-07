@@ -12,7 +12,7 @@
 
   
 # Version number of this module.  
-ModuleVersion = '1.2.12'  
+ModuleVersion = '1.2.11'  
   
 # ID used to uniquely identify this module  
 GUID = 'B433E830-B479-4F7F-9C80-9CC6C28E1B51'  
@@ -49,13 +49,13 @@ ProcessorArchitecture = 'None'
   
 # Modules that must be imported into the global environment prior to importing this module  
 RequiredModules = @(@{ModuleName="AzureRM.Profile"; RequiredVersion="3.4.1"},
-  @{ModuleName="Azure.Storage"; RequiredVersion="1.0.6.4"}  
+  @{ModuleName="Azure.Storage"; RequiredVersion="1.0.5.4"}  
   @{ModuleName="AzureRM.Compute"; RequiredVersion="3.2.2"},
   @{ModuleName="AzureRM.Dns"; RequiredVersion="3.4.1"},
   @{ModuleName="AzureRM.KeyVault"; RequiredVersion="3.4.1"},
-  @{ModuleName="AzureRM.Network"; RequiredVersion="1.0.6.4"},
+  @{ModuleName="AzureRM.Network"; RequiredVersion="1.0.5.4"},
   @{ModuleName="AzureRM.Resources"; RequiredVersion="4.4.1"},
-  @{ModuleName="AzureRM.Storage"; RequiredVersion="1.0.6.4"},
+  @{ModuleName="AzureRM.Storage"; RequiredVersion="1.0.5.4"},
   @{ModuleName="AzureRM.Tags"; RequiredVersion="3.4.1"},
   @{ModuleName="AzureRM.UsageAggregates"; RequiredVersion="3.4.1"}) 
   
