@@ -254,7 +254,7 @@ namespace Microsoft.Azure.Commands.Profile
 
                                 SetEndpointIfBound(newEnvironment,
                                     AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId,
-                                    nameof(ActiveDirectoryServiceEndpointResourceId), true);
+                                    nameof(ActiveDirectoryServiceEndpointResourceId));
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.Endpoint.Gallery, nameof(GalleryEndpoint));
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.Endpoint.Graph, nameof(GraphEndpoint));
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix,
