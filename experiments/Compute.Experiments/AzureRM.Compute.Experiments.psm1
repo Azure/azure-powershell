@@ -562,7 +562,11 @@ class VirtualMachine: Resource1 {
     [object] Create([CreateParams] $p) {
         $networkInterfaceInstance = $this.NetworkInterface.Info
 
-        $vmConfig = New-AzureRmVMConfig -VMName $this.Name -VMSize $this.Size -ErrorAction Stop
+        $vmConfig = New-AzureRmVMConfig `
+            -VMName $this.Name `
+            -VMSize $this.Size `
+            -ErrorAction Stop `
+            -DisableBootDiagnostics
         $vmComputerName = $this.Name
         switch ($this.Image.Type) {
             "Windows" {
