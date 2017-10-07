@@ -565,8 +565,8 @@ class VirtualMachine: Resource1 {
         $vmConfig = New-AzureRmVMConfig `
             -VMName $this.Name `
             -VMSize $this.Size `
-            -ErrorAction Stop `
-            -DisableBootDiagnostics
+            -DisableBootDiagnostics `
+            -ErrorAction Stop
         $vmComputerName = $this.Name
         switch ($this.Image.Type) {
             "Windows" {
