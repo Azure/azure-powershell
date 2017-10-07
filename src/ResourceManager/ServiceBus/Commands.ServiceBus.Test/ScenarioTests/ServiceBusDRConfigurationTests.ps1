@@ -43,7 +43,7 @@ function Get-NamespaceName
 
 <#
 .SYNOPSIS
-Tests EventHubs DRConfiguration Create List Remove operations.
+Tests ServiceBus DRConfiguration Create List Remove operations.
 #>
 
 function ServiceBusDRConfigurationTests
@@ -60,8 +60,8 @@ function ServiceBusDRConfigurationTests
 	Write-Debug " Resource Group Name : $resourceGroupName"
 	#New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force
 			
-	# Create EventHub Namespace - 1
-	Write-Debug "Create new eventhub namespace 1"
+	# Create ServiceBus Namespace - 1
+	Write-Debug "Create new ServiceBus namespace 1"
 	Write-Debug " Namespace 1 name : $namespaceName1"
 	$result1 = New-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName1 -Location $location -SkuName Premium
 
@@ -70,8 +70,8 @@ function ServiceBusDRConfigurationTests
 
 	$result1 = Set-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName1 -Location $location -SkuName Premium -SkuCapacity 1
 
-	# Create EventHub Namespace - 2
-	Write-Debug "  Create new eventhub namespace 2"
+	# Create ServiceBus Namespace - 2
+	Write-Debug "  Create new ServiceBus namespace 2"
 	Write-Debug " Namespace 2 name : $namespaceName2"
 	$result2 = New-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName2 -Location $location -SkuName Premium
 
@@ -80,13 +80,13 @@ function ServiceBusDRConfigurationTests
 
 	 $result2 = Set-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName2 -Location $location -SkuName Premium -SkuCapacity 1
 
-	# get the created Eventhub Namespace  1
+	# get the created ServiceBus Namespace  1
 	Write-Debug " Get the created namespace within the resource group"
 	$createdNamespace1 = Get-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName1
 	
 	Assert-True {$createdNamespace1.Name -eq $namespaceName1} "Namespace created earlier is not found."
 
-	# get the created Eventhub Namespace  2
+	# get the created ServiceBus Namespace  2
 	Write-Debug " Get the created namespace within the resource group"
 	$createdNamespace2 = Get-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName2
 	
@@ -107,7 +107,7 @@ function ServiceBusDRConfigurationTests
 	$createdServiceBusDRConfigList = Get-AzureRmServiceBusDRConfigurations -ResourceGroup $resourceGroupName -NamespaceName $namespaceName1
 
 	# Assert
-	Assert-True {$createdServiceBusDRConfigList.Count -eq 1} "EventHub DRConfig created earlier is not found in list"
+	Assert-True {$createdServiceBusDRConfigList.Count -eq 1} "ServiceBus DRConfig created earlier is not found in list"
 
 	# BreakPairing on Primary Namespace
 	Write-Debug "BreakPairing on Primary Namespace"
@@ -124,17 +124,5 @@ function ServiceBusDRConfigurationTests
 	# Remove created alias
 
 	Remove-AzureRmServiceBusDRConfigurations -ResourceGroup $resourceGroupName -NamespaceName $namespaceName2 -Name $drConfigName
-	
-	# Cleanup
-	# Delete all Created Eventhub
-	#Write-Debug " Delete the EventHub"
-	#for ($i = 0; $i -lt $createdEventHubList.Count; $i++)
-	#{
-	#	$delete1 = Remove-AzureRmEventHub -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -EventHubName $createdEventHubList[$i].Name		
-	#}
-	#Write-Debug " Delete namespaces"
-	#Remove-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName
-
-	Write-Debug " Delete resourcegroup"
-	#Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+		
 }
