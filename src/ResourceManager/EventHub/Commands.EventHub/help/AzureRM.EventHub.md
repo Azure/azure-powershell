@@ -20,6 +20,9 @@ Gets the details of an authorization rule, or gets a list of authorization rules
 ### [Get-AzureRmEventHubConsumerGroup](Get-AzureRmEventHubConsumerGroup.md)
 Gets the details of a specified Event Hubs consumer group, or gets a list of consumer groups in an Event Hub.
 
+### [Get-AzureRmEventHubDRConfigurations](Get-AzureRmEventHubDRConfigurations.md)
+Gets a description Alias(Disaster Recovery configuration) for primary or secondary namespace
+
 ### [Get-AzureRmEventHubKey](Get-AzureRmEventHubKey.md)
 Gets the primary key details of the specified Event Hubs authorization rule.
 
@@ -37,6 +40,9 @@ Creates a new Event Hub.
 
 ### [New-AzureRmEventHubAuthorizationRule](New-AzureRmEventHubAuthorizationRule.md)
 Creates a new Event Hubs authorization rule.
+
+### [New-New-AzureRmEventHubDRConfigurations](New-New-AzureRmEventHubDRConfigurations.md)
+Creates an new Alias(Disaster Recovery configuration)
 
 ### [New-AzureRmEventHubConsumerGroup](New-AzureRmEventHubConsumerGroup.md)
 Creates a new consumer group for the specified Event Hub.
@@ -62,6 +68,9 @@ Removes the specified Event Hub authorization rule.
 ### [Remove-AzureRmEventHubConsumerGroup](Remove-AzureRmEventHubConsumerGroup.md)
 Removes the specified Event Hubs consumer group.
 
+### [Remove-AzureRmEventHubDRConfigurations](Remove-AzureRmEventHubDRConfigurations.md)
+Removes an Alias(Disaster Recovery configuration)
+
 ### [Remove-AzureRmEventHubNamespace](Remove-AzureRmEventHubNamespace.md)
 Removes the specified Event Hubs namespace.
 
@@ -76,6 +85,12 @@ Updates the specified authorization rule on an Event Hub.
 
 ### [Set-AzureRmEventHubConsumerGroup](Set-AzureRmEventHubConsumerGroup.md)
 Updates the specified Event Hubs consumer group.
+
+### [Set-AzureRmEventHubDRConfigurationsBreakPairing](Set-AzureRmEventHubDRConfigurationsBreakPairing.md)
+Disables the Disaster Recovery and stops replicating changes from primary to secondary namespaces
+
+### [Set-AzureRmEventHubDRConfigurationsFailOver](Set-AzureRmEventHubDRConfigurationsFailOver.md)
+Envokes Disaster Recovery failover and reconfigure the alias to point to the secondary namespace
 
 ### [Set-AzureRmEventHubNamespace](Set-AzureRmEventHubNamespace.md)
 Updates the specified Event Hubs namespace.

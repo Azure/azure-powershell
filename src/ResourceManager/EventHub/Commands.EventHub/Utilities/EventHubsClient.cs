@@ -15,6 +15,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.EventHub.Models;
 using Microsoft.Azure.Management.EventHub;
@@ -297,6 +298,54 @@ namespace Microsoft.Azure.Commands.Eventhub
             return new ListKeysAttributes(regenerateKeyslistKeys);
 
         }
+
+        #endregion
+
+        #region DRConfiguration
+        public EventHubDRConfigurationAttributes GetEventHubDRConfiguration(string resourceGroupName, string namespaceName, string alias)
+        {
+            var response = Client.DisasterRecoveryConfigs.Get(resourceGroupName, namespaceName, alias);
+            return new EventHubDRConfigurationAttributes(response);
+        }
+
+        public IEnumerable<EventHubDRConfigurationAttributes> ListAllEventHubDRConfiguration(string resourceGroupName, string namespaceName)
+        {
+            var response = Client.DisasterRecoveryConfigs.List(resourceGroupName, namespaceName);
+            var resourceList = response.Select(resource => new EventHubDRConfigurationAttributes(resource));
+            return resourceList;
+        }
+
+        public EventHubDRConfigurationAttributes CreateEventHubDRConfiguration(string resourceGroupName, string namespaceName, string alias, EventHubDRConfigurationAttributes parameter)
+        {
+            var Parameter1 = new Management.EventHub.Models.ArmDisasterRecovery();
+
+            if (!string.IsNullOrEmpty(parameter.PartnerNamespace))
+                Parameter1.PartnerNamespace = parameter.PartnerNamespace;
+
+            var response = Client.DisasterRecoveryConfigs.CreateOrUpdate(resourceGroupName, namespaceName, alias, Parameter1);
+            Thread.Sleep(TimeSpan.FromSeconds(5));
+            
+            return new EventHubDRConfigurationAttributes(response);
+        }
+
+        public bool DeleteEventHubDRConfiguration(string resourceGroupName, string namespaceName, string alias)
+        {
+            Client.DisasterRecoveryConfigs.Delete(resourceGroupName, namespaceName, alias);
+            return true;
+        }
+
+        public void SetEventHubDRConfigurationBreakPairing(string resourceGroupName, string namespaceName, string alias)
+        {
+            Client.DisasterRecoveryConfigs.BreakPairing(resourceGroupName, namespaceName, alias);
+            Thread.Sleep(TimeSpan.FromSeconds(5));            
+        }
+
+        public void SetEventHubDRConfigurationFailOver(string resourceGroupName, string namespaceName, string alias)
+        {
+            Client.DisasterRecoveryConfigs.FailOver(resourceGroupName, namespaceName, alias);
+            Thread.Sleep(TimeSpan.FromSeconds(5));            
+        }
+
 
         #endregion
 

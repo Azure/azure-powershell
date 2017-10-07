@@ -53,6 +53,9 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
 
         protected const string ConsumerGroupVerb = "AzureRmEventHubConsumerGroup";
 
+        protected const string EventHubDRConfigurationVerb = "AzureRmEventHubDRConfigurations";
+        protected const string EventhubDRConfigurationFailoverVerb = "AzureRmEventHubDRConfigurationsFailOver";
+        protected const string EventhubDRConfigurationBreakPairingVerb = "AzureRmEventHubDRConfigurationsBreakPairing";
 
         //AuthorizationRules
         //protected const string EventHubAuthorizationRuleVerb = "AzureRmEventHubAuthorizationRule";
@@ -87,7 +90,8 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         protected const string AliasEventHubObj = "EventHubObj";
         protected const string AliasAuthorizationRuleName = "AuthorizationRuleName";
         protected const string AliasAuthRuleObj = "AuthRuleObj";
-        
+        protected const string AliasAliasName = "Alias";
+
         protected struct SKU
         {
             internal const string Basic = "Basic";
