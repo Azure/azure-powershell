@@ -15,7 +15,7 @@ Gets usage statistics of an ExpressRoute circuit.
 
 ```
 Get-AzureRmExpressRouteCircuitStats -ResourceGroupName <String> -ExpressRouteCircuitName <String>
- [-PeeringType <String>] [<CommonParameters>]
+ [-PeeringType <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,6 +31,21 @@ Get-AzureRmExpressRouteCircuitStats -ResourceGroupName $RG -ExpressRouteCircuitN
 ```
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ExpressRouteCircuitName
 The name of the ExpressRoute circuit being examined.
