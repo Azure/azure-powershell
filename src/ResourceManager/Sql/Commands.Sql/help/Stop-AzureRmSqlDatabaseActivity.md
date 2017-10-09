@@ -5,36 +5,29 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-AzureRmSqlDatabaseActivity
+# Stop-AzureRmSqlDatabaseActivity
 
 ## SYNOPSIS
-Gets the status of database operations.
+Cancels the asynchronous operation on the database.
 
 ## SYNTAX
 
 ```
-Get-AzureRmSqlDatabaseActivity [-ServerName] <String> [-ElasticPoolName <String>] -DatabaseName <String>
+Stop-AzureRmSqlDatabaseActivity [-ServerName] <String> -DatabaseName <String>
  [-OperationId <Guid>] [-ResourceGroupName] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmSqlDatabaseActivity** cmdlet gets the status of database operations in Azure SQL Database.
+The **Stop-AzureRmSqlDatabaseActivity** cmdlet cancels the asynchronous operation on the database.
 
 ## EXAMPLES
 
-### Example 1: Get status for all SQL Database instances
+### Example 1: Cancel the asynchronous operation on the database
 ```
-PS C:\>Get-AzureRmSqlDatabaseActivity -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ElasticPoolName "ElasticPool01"
-```
-
-This command returns the operation status of all SQL Database instances in an elastic pool named ElasticPool01.
-
-### Example 2: Get status for all SQL Database operations
-```
-PS C:\>Get-AzureRmSqlDatabaseActivity -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01"
+PS C:\>Stop-AzureRmSqlDatabaseActivity -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -OperationId af97005d-9243-4f8a-844e-402d1cc855f5
 ```
 
-This command returns the status of all SQL Database operations in a database.
+This command cancels the asynchronous operation on the database.
 
 ## PARAMETERS
 
@@ -47,21 +40,6 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ElasticPoolName
-Specifies the name of the elastic database pool for which this cmdlet gets status.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
