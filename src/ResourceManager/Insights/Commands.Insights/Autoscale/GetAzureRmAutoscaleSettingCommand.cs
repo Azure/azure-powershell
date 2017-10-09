@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// </summary>
         protected override void ProcessRecordInternal()
         {
-            WriteWarning("The AutoscaleSettingResourceName field will be deprecated in a future release since it always equals the Name field. In this version is optional.");
+            WriteWarning("Output change: The AutoscaleSettingResourceName field will be deprecated in the release 5.0.0 - November 2017 - since it always equals the Name field.");
             if (string.IsNullOrWhiteSpace(this.Name))
             {
                 // Retrieve all the Autoscale settings for a resource group

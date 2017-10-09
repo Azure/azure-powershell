@@ -18,7 +18,7 @@ Remove-AzureRmActivityLogAlert [-InputObject <PSActivityLogAlertResource>] [-Res
 
 ## DESCRIPTION
 The **Remove-AzureRmActivityLogAlert** cmdlet removes an activity log alert.
-This cmdlet implements the ShouldProcess pattern, i.e. it might request confirmation from the user before actually patching the resource and it accepts the -Force argument.
+This cmdlet implements the ShouldProcess pattern, i.e. it might request confirmation from the user before actually patching the resource.
 
 ## EXAMPLES
 

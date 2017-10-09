@@ -60,6 +60,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// <summary>
         /// Whether to run the task in elevated mode.
         /// </summary>
+        [Obsolete("RunElevated will be removed in a future version and replaced with UserIdentity")]
         public bool RunElevated { get; set; }
 
         /// <summary>
@@ -87,6 +88,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// </summary>
         public PSApplicationPackageReference[] ApplicationPackageReferences { get; set; }
 
+        /// <summary>
         /// How the Batch service should respond when the task completes.
         /// </summary>
         public PSExitConditions ExitConditions { get; set; }
