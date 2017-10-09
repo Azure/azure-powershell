@@ -13,7 +13,8 @@ Lists available endpoint services for location.
 ## SYNTAX
 
 ```
-Get-AzureRmVirtualNetworkAvailableEndpointService -Location <String> [<CommonParameters>]
+Get-AzureRmVirtualNetworkAvailableEndpointService -Location <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,6 +34,21 @@ PS C:\> Get-AzureRmVirtualNetworkAvailableEndpointService -Location westus
 Gets available endpoint services in westus region.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Location
 The location to retrieve the endpoint services from.
