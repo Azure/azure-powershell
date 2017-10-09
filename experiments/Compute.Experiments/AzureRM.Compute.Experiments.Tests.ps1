@@ -16,25 +16,35 @@ $vmComputerUser = $credentials.vmUser;
 $password = ConvertTo-SecureString $vmComputerPassword -AsPlainText -Force;
 $vmCredential = New-Object System.Management.Automation.PSCredential ($vmComputerUser, $password);
 
-New-AzVm -Name MyVM -Credential $vmCredential -WhatIf
+Describe 'New-AzVm' {
+    It 'WhatIf' {
+        $result = New-AzVm -Name MyVM -Credential $vmCredential -WhatIf
+    }
+    It 'Create Windows VM' {
+        Remove-AzureRmResourceGroup -Name Something1 -Force
 
-# $job = New-AzVm -Name MyVMA -Credential $vmCredential -AsJob
-# Receive-Job $job
+        $result = New-AzVm -Name MyVMA1 -Credential $vmCredential -ResourceGroupName Something1 -Verbose
 
-# exit
+        $result.Name | Should Be MyVMA1
+    }
+    It 'Create Linux VM' {
+        $context = Get-AzureRmContext
+        $result = New-AzVm `
+            -Name X2 `
+            -Credential $vmCredential `
+            -Location westus2 `
+            -ResourceGroupName Something1 `
+            -AzureRmContext $context `
+            -ImageName UbuntuLTS `
+            -Verbose
+        $result.Name | Should Be X2
+    }
+    It 'Create Linux VM AsJob' {
+        Remove-AzureRmResourceGroup -Name MyVMA3 -Force
 
-# $vm = New-AzVm
-# $vm = New-AzVm -Credential $vmCredential
-$vm = New-AzVm -Name MyVMA1 -Credential $vmCredential -ResourceGroupName Crocodile
-# $vm = New-AzVm -Name MyVMA
+        $job = New-AzVm -Name MyVMA3 -Credential $vmCredential -AsJob -ImageName UbuntuLTS -Verbose
+        $result = Receive-Job $job -Wait -Verbose
 
-$vm
-
-# Write-Host "<async>"
-# $job = New-AzVm -Name MyVMA3 -Credential $vmCredential -AsJob
-# $vm = Receive-Job $job -Wait
-# $vm
-# Write-Host "</async>"
-
-# clean-up
-Remove-AzureRmResourceGroup -ResourceId $vm.ResourceGroupId
+        $result.Name | Should Be MyVMA3
+    }
+}

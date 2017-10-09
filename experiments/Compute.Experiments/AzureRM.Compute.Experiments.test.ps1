@@ -6,4 +6,4 @@ $vm = New-AzVm -Name myVm1234 -Credential $pscredentials
 $vm
 
 #Cleanup
-Remove-AzureRmResourceGroup -ResourceId $vm.ResourceGroupId -Force
+Remove-AzureRmResourceGroup -ResourceName $vm.Vm.ResourceGroupName -Force
