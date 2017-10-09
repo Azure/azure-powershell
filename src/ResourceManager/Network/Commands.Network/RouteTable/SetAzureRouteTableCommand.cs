@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             // Map to the sdk object
-            var routeTableModel = Mapper.Map<MNM.RouteTable>(this.RouteTable);
+            var routeTableModel = NetworkResourceManagerProfile.Mapper.Map<MNM.RouteTable>(this.RouteTable);
             routeTableModel.Tags = TagsConversionHelper.CreateTagDictionary(this.RouteTable.Tag, validate: true);
 
             // Execute the PUT RouteTable call

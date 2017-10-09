@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             var routeTable = this.RouteTableClient.Get(resourceGroupName, name, expandResource);
 
-            var psRouteTable = Mapper.Map<PSRouteTable>(routeTable);
+            var psRouteTable = NetworkResourceManagerProfile.Mapper.Map<PSRouteTable>(routeTable);
             psRouteTable.ResourceGroupName = resourceGroupName;
 
             psRouteTable.Tag = TagsConversionHelper.CreateTagHashtable(routeTable.Tags);
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public PSRouteTable ToPsRouteTable(RouteTable routeTable)
         {
-            var psRouteTable = Mapper.Map<PSRouteTable>(routeTable);
+            var psRouteTable = NetworkResourceManagerProfile.Mapper.Map<PSRouteTable>(routeTable);
 
             psRouteTable.Tag = TagsConversionHelper.CreateTagHashtable(routeTable.Tags);
 
