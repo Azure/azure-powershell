@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Profile.Default
             {
                 if (Force.IsPresent || ShouldContinue(Resources.RemoveDefaultsMessage, Resources.RemoveDefaultsCaption))
                 {
-                    if (context.ExtendedProperties.ContainsKey(Resources.DefaultResourceGroupKey))
+                    if (context.IsPropertySet(Resources.DefaultResourceGroupKey))
                     {
                         context.ExtendedProperties.Remove(Resources.DefaultResourceGroupKey);
                         if (PassThru.IsPresent)
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Profile.Default
             // If any parameters are specified, clear only defaults with switch parameters set to true
             if (ResourceGroup)
             {
-                if (context.ExtendedProperties.ContainsKey(Resources.DefaultResourceGroupKey))
+                if (context.IsPropertySet(Resources.DefaultResourceGroupKey))
                 {
                     if (ShouldProcess(string.Format(Resources.DefaultResourceGroupTarget), Resources.DefaultResourceGroupRemovalWarning))
                     {

@@ -394,4 +394,10 @@
   <data name="RemoveDefaultsMessage" xml:space="preserve">
     <value>Remove all existing defaults in the current context?</value>
   </data>
+  <data name="CreateResourceGroupCaption" xml:space="preserve">
+    <value>Create Resource Group?</value>
+  </data>
+  <data name="CreateResourceGroupMessage" xml:space="preserve">
+    <value>Create new resource group '{0}' and set as default?</value>
+  </data>
 </root>

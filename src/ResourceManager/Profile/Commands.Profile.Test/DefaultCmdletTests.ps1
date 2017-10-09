@@ -14,23 +14,12 @@
 
 <#
 .SYNOPSIS
-Tests Set-AzureRmDefault when resource group given does not exist
+Tests Set-AzureRmDefault when resource group given exists/does not exist
 #>
-function Test-SetAzureRmDefaultResourceGroupNonexistent
+function Test-SetAzureRmDefault
 {
-	$output = Set-AzureRmDefault -ResourceGroupName "TestResourceGroup"
+	$output = Set-AzureRmDefault -ResourceGroupName "TestResourceGroup" -Force
 	Assert-True { $output.Name -eq "TestResourceGroup" }
-	Remove-AzureRmResourceGroup -Name "TestResourceGroup" -Force
-	Clear-AzureRmDefault
-}
-
-<#
-.SYNOPSIS
-Tests Set-AzureRmDefault when resource group given exists
-#>
-function Test-SetAzureRmDefaultResourceGroupExists
-{
-	Set-AzureRmDefault -ResourceGroupName "TestResourceGroup"
 	Clear-AzureRmDefault
 	$output = Set-AzureRmDefault -ResourceGroupName "TestResourceGroup"
 	Assert-True { $output.Name -eq "TestResourceGroup" }

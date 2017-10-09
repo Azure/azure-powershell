@@ -286,6 +286,24 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create Resource Group?.
+        /// </summary>
+        internal static string CreateResourceGroupCaption {
+            get {
+                return ResourceManager.GetString("CreateResourceGroupCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create new resource group &apos;{0}&apos; and set as default?.
+        /// </summary>
+        internal static string CreateResourceGroupMessage {
+            get {
+                return ResourceManager.GetString("CreateResourceGroupMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Current tenant with Id &apos;{0}&apos; will be used..
         /// </summary>
         internal static string CurrentTenantInUse {

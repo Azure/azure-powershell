@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.Internal.Resources;
@@ -27,7 +28,7 @@ namespace Microsoft.Azure.Commands.Profile.Default
     /// </summary>
     [Cmdlet(VerbsCommon.Set, "AzureRmDefault", DefaultParameterSetName = ResourceGroupNameParameterSet,
         SupportsShouldProcess = true)]
-    [OutputType(typeof(ResourceGroup))]
+    [OutputType(typeof(PSResourceGroup))]
     public class SetAzureRMDefaultCommand : AzureRMCmdlet
     {
         private const string ResourceGroupNameParameterSet = "ResourceGroupName";
@@ -35,6 +36,9 @@ namespace Microsoft.Azure.Commands.Profile.Default
         [Parameter(ParameterSetName = ResourceGroupNameParameterSet, Mandatory = false, HelpMessage = "Name of the resource group being set as default", ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Create a new resource group if specified default does not exist")]
+        public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -50,21 +54,13 @@ namespace Microsoft.Azure.Commands.Profile.Default
                 ResourceGroup defaultResourceGroup;
                 if (ShouldProcess(Resources.DefaultResourceGroupTarget, string.Format(Resources.DefaultResourceGroupChangeWarning, ResourceGroupName)))
                 {
-                    if (!client.ResourceGroups.CheckExistence(ResourceGroupName))
+                    if (!client.ResourceGroups.CheckExistence(ResourceGroupName) && (Force.IsPresent || ShouldContinue(string.Format(Resources.CreateResourceGroupMessage, ResourceGroupName), Resources.CreateResourceGroupCaption)))
                     {
                         ResourceGroup parameters = new ResourceGroup("West US");
                         client.ResourceGroups.CreateOrUpdate(ResourceGroupName, parameters);
-                        WriteObject(string.Format("New Resource Group Created: {0} with Location: {1}", ResourceGroupName, parameters.Location));
                     }
                     defaultResourceGroup = client.ResourceGroups.Get(ResourceGroupName);
-                    if (context.ExtendedProperties.ContainsKey(Resources.DefaultResourceGroupKey))
-                    {
-                        context.ExtendedProperties.SetProperty(Resources.DefaultResourceGroupKey, defaultResourceGroup.Name);
-                    }
-                    else
-                    {
-                        context.ExtendedProperties.Add(Resources.DefaultResourceGroupKey, defaultResourceGroup.Name);
-                    }
+                    context.SetProperty(Resources.DefaultResourceGroupKey, defaultResourceGroup.Name);
 
                     WriteObject(defaultResourceGroup);
                 }
