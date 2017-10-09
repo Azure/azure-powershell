@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+ - Marked cmdlet parameters and type properties obsolete in 
+   preparation for upcoming breaking change release (Version 4.0.0)
 
 ## Version 3.4.0
 
