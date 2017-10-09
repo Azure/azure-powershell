@@ -151,6 +151,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Azure Sql Database Elastic Pool name cannot be specified for this operation.
+        /// </summary>
+        internal static string ElasticPoolDatabaseActivityCancelNotSupported {
+            get {
+                return ResourceManager.GetString("ElasticPoolDatabaseActivityCancelNotSupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Elastic Pool with name: &apos;{0}&apos; already exists in server &apos;{1}&apos;..
         /// </summary>
         internal static string ElasticPoolNameExists {
@@ -340,6 +349,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to OperationId is required for this operation.
+        /// </summary>
+        internal static string OperationIdRequired {
+            get {
+                return ResourceManager.GetString("OperationIdRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to PHP Data Objects(PDO) Sample Code:.
         /// </summary>
         internal static string PdoTitle {
@@ -520,7 +538,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove the Virtual Network Rule &apos;{0}&apos; for Azure Sql Server  &apos;{1}&apos;?.
+        ///   Looks up a localized string similar to Are you sure you want to remove the Virtual Network Rule &apos;{0}&apos; for Azure Sql Server &apos;{1}&apos;?.
         /// </summary>
         internal static string RemoveAzureSqlServerVirtualNetworkRuleWarning {
             get {
