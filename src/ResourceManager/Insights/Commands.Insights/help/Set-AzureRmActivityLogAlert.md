@@ -47,7 +47,7 @@ Set-AzureRmActivityLogAlert [-Scope <System.Collections.Generic.List`1[System.St
 ## DESCRIPTION
 The **Set-AzureRmActivityLogAlert** cmdlet creates a new or sets an existing activity log alert.
 For tags, conditions, and actions the objects must be created in advance and passed as parameters in this call as a comma separated (see the example below).
-This cmdlet implements the ShouldProcess pattern, i.e. it might request confirmation from the user before actually creating/modifying the resource and it accepts the -Force argument.
+This cmdlet implements the ShouldProcess pattern, i.e. it might request confirmation from the user before actually creating/modifying the resource.
 
 ## EXAMPLES
 
@@ -184,6 +184,8 @@ Accept wildcard characters: False
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
+
+**NOTE**: In the list of conditions there must be at least one with the Field equal to "Category". The backend responds with 400 (BadRequest) if this condition is not present.
 
 ```yaml
 Type: IAzureContextContainer

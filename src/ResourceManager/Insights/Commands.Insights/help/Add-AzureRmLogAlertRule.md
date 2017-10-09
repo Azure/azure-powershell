@@ -25,6 +25,8 @@ Add-AzureRmLogAlertRule [-TargetResourceGroup <String>] [-TargetResourceId <Stri
 The **Add-AzureRmLogAlertRule** cmdlet adds or replaces an event alert rule.
 The added rule is associated with a resource group and has a name.
 
+As announced in previous releases: **Add-AzureRMLogAlertRule cmdlet will be deprecated in a future release.** After October 1st 2017 using this cmdlet will no longer have any effect as this functionality is being transitioned to Activity Log Alerts. Please see **_https://aka.ms/migratemealerts_** for more information.
+
 ## EXAMPLES
 
 ### Example 1: Add a log alert rule

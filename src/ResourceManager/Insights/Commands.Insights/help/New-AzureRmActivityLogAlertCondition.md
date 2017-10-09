@@ -30,6 +30,8 @@ PS C:\>$condition = New-AzureRmActivityLogAlertCondition -Field "Requests" -Equa
 
 This command creates a new activity log alert condition object in memory.
 
+**NOTE**: when this cmdlet is used with Set-AzureRmActivityLogAlert at least one of these objects, passed as parameters, must have its Field equal to "Category". Otherwise, the backend responds with a 400 (BadRequest.)
+
 ## PARAMETERS
 
 ### -DefaultProfile
