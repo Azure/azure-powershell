@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Commands.Network
             vnet.EnableVmProtection = this.EnableVmProtection;
 
             // Map to the sdk object
-            var vnetModel = Mapper.Map<MNM.VirtualNetwork>(vnet);
+            var vnetModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualNetwork>(vnet);
             vnetModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
             // Execute the Create VirtualNetwork call

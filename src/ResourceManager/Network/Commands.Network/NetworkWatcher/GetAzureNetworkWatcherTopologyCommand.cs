@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.Network
         public PSTopology GetTopology(string resourceGroupName, string name, MNM.TopologyParameters parameters)
         {
             MNM.Topology topology = this.NetworkWatcherClient.GetTopology(resourceGroupName, name, parameters);
-            PSTopology psTopology = Mapper.Map<PSTopology>(topology);
+            PSTopology psTopology = NetworkResourceManagerProfile.Mapper.Map<PSTopology>(topology);
 
             return psTopology;
         }

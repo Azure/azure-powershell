@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.Network
             psRouteTable.Routes = this.Route;
 
             // Map to the sdk object
-            var routeTableModel = Mapper.Map<MNM.RouteTable>(psRouteTable);
+            var routeTableModel = NetworkResourceManagerProfile.Mapper.Map<MNM.RouteTable>(psRouteTable);
             routeTableModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
             // Execute the Create RouteTable call

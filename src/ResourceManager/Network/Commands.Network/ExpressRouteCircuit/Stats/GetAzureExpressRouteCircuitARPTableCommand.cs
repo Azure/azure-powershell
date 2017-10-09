@@ -72,7 +72,7 @@
              var psARPs = new List<PSExpressRouteCircuitArpTable>();
              foreach (var arpTable in arpTables)
              {
-                 var psARP = Mapper.Map<PSExpressRouteCircuitArpTable>(arpTable);
+                 var psARP = NetworkResourceManagerProfile.Mapper.Map<PSExpressRouteCircuitArpTable>(arpTable);
                  psARPs.Add(psARP);
              }
              WriteObject(psARPs, true);
