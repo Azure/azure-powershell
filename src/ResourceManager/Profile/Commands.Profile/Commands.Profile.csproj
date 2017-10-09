@@ -100,6 +100,7 @@
     <Compile Include="Models\AzureRmProfileExtensions.cs" />
     <Compile Include="Models\MetadataResponse.cs" />
     <Compile Include="Models\ModelExtensions.cs" />
+    <Compile Include="Models\PSResourceGroup.cs" />
     <Compile Include="Models\RMProfileClient.cs" />
     <Compile Include="Models\SimpleAccessToken.cs" />
     <Compile Include="Subscription\GetAzureRMSubscription.cs" />

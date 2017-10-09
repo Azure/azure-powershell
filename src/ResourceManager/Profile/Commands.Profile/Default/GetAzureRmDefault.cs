@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.Internal.Resources;
@@ -26,7 +27,7 @@ namespace Microsoft.Azure.Commands.Profile.Default
     /// Cmdlet to get default options. 
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmDefault", DefaultParameterSetName = ResourceGroupParameterSet)]
-    [OutputType(typeof(ResourceGroup))]
+    [OutputType(typeof(PSResourceGroup))]
     public class GetAzureRMDefaultCommand : AzureRMCmdlet
     {
         private const string ResourceGroupParameterSet = "ResourceGroup";
@@ -46,9 +47,9 @@ namespace Microsoft.Azure.Commands.Profile.Default
             // If no parameters are specified, show all defaults
             if (!ResourceGroup)
             {
-                if (context.ExtendedProperties.ContainsKey(Resources.DefaultResourceGroupKey))
+                if (context.IsPropertySet(Resources.DefaultResourceGroupKey))
                 {
-                    var defaultResourceGroup = client.ResourceGroups.Get(context.ExtendedProperties[Resources.DefaultResourceGroupKey]);
+                    var defaultResourceGroup = client.ResourceGroups.Get(context.GetProperty(Resources.DefaultResourceGroupKey));
                     WriteObject(defaultResourceGroup);
                 }
             }
@@ -56,9 +57,9 @@ namespace Microsoft.Azure.Commands.Profile.Default
             // If any parameters are specified, show only defaults with switch parameters set to true
             if (ResourceGroup)
             {
-                if (context.ExtendedProperties.ContainsKey(Resources.DefaultResourceGroupKey))
+                if (context.IsPropertySet(Resources.DefaultResourceGroupKey))
                 {
-                    var defaultResourceGroup = client.ResourceGroups.Get(context.ExtendedProperties[Resources.DefaultResourceGroupKey]);
+                    var defaultResourceGroup = client.ResourceGroups.Get(context.GetProperty(Resources.DefaultResourceGroupKey));
                     WriteObject(defaultResourceGroup);
                 }
             }
