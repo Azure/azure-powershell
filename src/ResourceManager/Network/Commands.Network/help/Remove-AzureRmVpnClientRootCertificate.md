@@ -15,7 +15,8 @@ Removes an existing VPN client root certificate.
 
 ```
 Remove-AzureRmVpnClientRootCertificate -VpnClientRootCertificateName <String>
- -VirtualNetworkGatewayName <String> -ResourceGroupName <String> -PublicCertData <String> [<CommonParameters>]
+ -VirtualNetworkGatewayName <String> -ResourceGroupName <String> -PublicCertData <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,6 +46,21 @@ This extracted text is stored in a variable named $CertificateText.
 The third command uses the information stored in the $CertificateText variable along with the **Remove-AzureRmVpnClientRootCertificate** cmdlet to remove the certificate from the gateway.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -PublicCertData
 Specifies the text representation of the root certificate to be removed.
