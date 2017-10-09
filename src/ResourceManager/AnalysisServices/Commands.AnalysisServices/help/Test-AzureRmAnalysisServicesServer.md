@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.AnalysisServices.dll-Help.xml
+Module Name: AzureRM.AnalysisServices
 online version: 
 schema: 2.0.0
 ---
@@ -12,7 +13,8 @@ Tests the existence of an instance of Analysis Services server
 ## SYNTAX
 
 ```
-Test-AzureRmAnalysisServicesServer [-Name] <String> [[-ResourceGroupName] <String>] [<CommonParameters>]
+Test-AzureRmAnalysisServicesServer [-Name] <String> [[-ResourceGroupName] <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,6 +30,21 @@ PS C:\> Test-AzureRmAnalysisServicesServer -Name "testserver" -ResourceGroupName
 This command will test if there is a server named testserver in the resourcegroup testgroup
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 Name of the Analysis Services server

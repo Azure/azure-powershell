@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
+Module Name: AzureRM.ApiManagement
 ms.assetid: 27FF1B7D-E103-4504-AD09-8D3A8BCA8B75
 online version: 
 schema: 2.0.0
@@ -13,7 +14,8 @@ Generates an SSO URL for a user.
 ## SYNTAX
 
 ```
-Get-AzureRmApiManagementUserSsoUrl -Context <PsApiManagementContext> -UserId <String> [<CommonParameters>]
+Get-AzureRmApiManagementUserSsoUrl -Context <PsApiManagementContext> -UserId <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,6 +45,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

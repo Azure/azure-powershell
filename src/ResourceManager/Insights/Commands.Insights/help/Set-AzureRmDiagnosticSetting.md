@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
+Module Name: AzureRM.Insights
 ms.assetid: B5F2388E-0136-4F8A-8577-67CE2A45671E
 online version: 
 schema: 2.0.0
@@ -14,9 +15,11 @@ Sets the logs and metrics settings for the resource.
 
 ```
 Set-AzureRmDiagnosticSetting -ResourceId <String> [-StorageAccountId <String>] [-ServiceBusRuleId <String>]
- [-Enabled <Boolean>] [-Categories <System.Collections.Generic.List`1[System.String]>]
+ [-EventHubAuthorizationRuleId <String>] [-Enabled <Boolean>]
+ [-Categories <System.Collections.Generic.List`1[System.String]>]
  [-Timegrains <System.Collections.Generic.List`1[System.String]>] [-RetentionEnabled <Boolean>]
- [-WorkspaceId <String>] [-RetentionInDays <Int32>] [<CommonParameters>]
+ [-WorkspaceId <String>] [-RetentionInDays <Int32>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -90,12 +93,40 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Enabled
 Indicates whether to enable diagnostics.
 Specify $True to enable diagnostics, or $False to disable diagnostics.
 
 ```yaml
 Type: Boolean
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -EventHubAuthorizationRuleId
+The event hub rule id```yaml
+Type: String
 Parameter Sets: (All)
 Aliases: 
 

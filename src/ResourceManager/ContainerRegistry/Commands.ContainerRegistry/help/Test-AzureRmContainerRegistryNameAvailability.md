@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ContainerRegistry.dll-Help.xml
+Module Name: AzureRM.ContainerRegistry
 online version: 
 schema: 2.0.0
 ---
@@ -12,7 +13,8 @@ Checks the availability of a container registry name.
 ## SYNTAX
 
 ```
-Test-AzureRmContainerRegistryNameAvailability [-Name] <String> [<CommonParameters>]
+Test-AzureRmContainerRegistryNameAvailability [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,6 +34,21 @@ NameAvailable Reason Message
 This command checks the availability of the container registry name `SomeRegistryName`.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 Container Registry Name.

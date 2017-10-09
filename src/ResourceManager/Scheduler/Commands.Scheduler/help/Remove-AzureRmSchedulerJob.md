@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Scheduler.dll-Help.xml
+Module Name: AzureRM.Scheduler
 ms.assetid: 774699A8-8916-4F2A-973E-97E5E487D42E
 online version: 
 schema: 2.0.0
@@ -14,7 +15,7 @@ Removes a Scheduler job.
 
 ```
 Remove-AzureRmSchedulerJob -ResourceGroupName <String> -JobCollectionName <String> -JobName <String>
- [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,6 +29,21 @@ The **Remove-AzureRmSchedulerJob** cmdlet removes an Azure Scheduler job.
 ```
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -JobCollectionName
 Specifies the name of a job collection that contains the job to remove.

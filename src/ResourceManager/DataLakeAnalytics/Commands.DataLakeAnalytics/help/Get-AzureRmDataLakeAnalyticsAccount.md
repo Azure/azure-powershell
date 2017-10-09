@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.DataLakeAnalytics.dll-Help.xml
+Module Name: AzureRM.DataLakeAnalytics
 ms.assetid: 4EA01047-021C-4FA5-82F0-5102BA114BC2
 online version: 
 schema: 2.0.0
@@ -14,17 +15,19 @@ Gets information about a Data Lake Analytics account.
 
 ### All In Subscription (Default)
 ```
-Get-AzureRmDataLakeAnalyticsAccount [<CommonParameters>]
+Get-AzureRmDataLakeAnalyticsAccount [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### All In Resource Group
 ```
-Get-AzureRmDataLakeAnalyticsAccount [-ResourceGroupName] <String> [<CommonParameters>]
+Get-AzureRmDataLakeAnalyticsAccount [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### Specific Account
 ```
-Get-AzureRmDataLakeAnalyticsAccount [[-ResourceGroupName] <String>] [-Name] <String> [<CommonParameters>]
+Get-AzureRmDataLakeAnalyticsAccount [[-ResourceGroupName] <String>] [-Name] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,6 +43,21 @@ PS C:\>Get-AzureRmDataLakeAnalyticsAccount -Name "ContosoAdlAccount"
 This command gets information about the account named ContosoAdlAccount.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 Specifies the name of the Data Lake Analytics account.

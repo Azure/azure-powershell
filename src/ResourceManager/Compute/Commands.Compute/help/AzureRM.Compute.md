@@ -78,7 +78,7 @@ List all compute resource Skus
 Gets a container service.
 
 ### [Get-AzureRmDisk](Get-AzureRmDisk.md)
-Gets the properties of a disk.
+Gets the properties of a Managed disk.
 
 ### [Get-AzureRmImage](Get-AzureRmImage.md)
 Gets the properties of an image.

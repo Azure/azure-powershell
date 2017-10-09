@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.RecoveryServices.ARM.dll-Help.xml
+Module Name: AzureRM.RecoveryServices
 ms.assetid: C635D723-0F03-4EF8-9435-24DBE0859899
 online version: 
 schema: 2.0.0
@@ -14,8 +15,8 @@ Sets the properties for backup management.
 
 ```
 Set-AzureRmRecoveryServicesBackupProperties -Vault <ARSVault>
- [-BackupStorageRedundancy <AzureRmRecoveryServicesBackupStorageRedundancyType>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-BackupStorageRedundancy <AzureRmRecoveryServicesBackupStorageRedundancyType>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,6 +44,21 @@ Type: AzureRmRecoveryServicesBackupStorageRedundancyType
 Parameter Sets: (All)
 Aliases: 
 Accepted values: GeoRedundant, LocallyRedundant
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -103,7 +119,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### ARSVault
-
 Parameter 'Vault' accepts value of type 'ARSVault' from the pipeline
 
 ## OUTPUTS

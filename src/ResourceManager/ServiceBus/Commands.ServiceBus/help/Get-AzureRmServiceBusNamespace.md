@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ServiceBus.dll-Help.xml
+Module Name: AzureRM.ServiceBus
 online version: 
 schema: 2.0.0
 ---
@@ -12,7 +13,8 @@ Gets a description for the specified Service Bus namespace within the resource g
 ## SYNTAX
 
 ```
-Get-AzureRmServiceBusNamespace [[-ResourceGroup] <String>] [[-NamespaceName] <String>] [<CommonParameters>]
+Get-AzureRmServiceBusNamespace [[-ResourceGroupName] <String>] [[-Name] <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,13 +31,26 @@ Returns a description of the specified Service Bus namespace.
 
 ## PARAMETERS
 
-### -NamespaceName
-The Service Bus namespace name.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Namespace Name.```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: NamespaceName
 
 Required: False
 Position: 1
@@ -44,13 +59,11 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroup
-The name of the resource group.
-
-```yaml
+### -ResourceGroupName
+The name of the resource group```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: ResourceGroup
 
 Required: False
 Position: 0
@@ -58,7 +71,6 @@ Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
-
 
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
@@ -86,5 +98,7 @@ ServiceBusEndpoint : https://SB-Example1.servicebus.windows.net:443/
 Enabled            : True
 
 ## NOTES
+## RELATED LINKS
 
 ## RELATED LINKS
+

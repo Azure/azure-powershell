@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.AnalysisServices.Dataplane.dll-Help.xml
+Module Name: Azure.AnalysisServices
 online version: 
 schema: 2.0.0
 ---

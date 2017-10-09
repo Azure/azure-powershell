@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.MachineLearning.dll-Help.xml
+Module Name: AzureRM.MachineLearning
 online version: 
 schema: 2.0.0
 ---
@@ -13,12 +14,14 @@ Retrieves the web service's keys.
 
 ### Get an Azure ML web service's access keys given its name and resource group.
 ```
-Get-AzureRmMlWebServiceKeys -ResourceGroupName <String> -Name <String> [<CommonParameters>]
+Get-AzureRmMlWebServiceKeys -ResourceGroupName <String> -Name <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Get the access kesy for the given web service instance.
 ```
-Get-AzureRmMlWebServiceKeys -MlWebService <WebService> [<CommonParameters>]
+Get-AzureRmMlWebServiceKeys -MlWebService <WebService> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,12 +34,16 @@ Gets the access keys for the Azure Machine Learning web service's runtime APIs.
 
 
 
+
+
 ```
 Get-AzureRmMlWebServiceKeys -ResourceGroupName "myresourcegroup" -Name "mywebservicename"
 ```
 
 ### --------------------------  Example 2 - Get keys for web service instance  --------------------------
 @{paragraph=PS C:\\\>}
+
+
 
 
 
@@ -47,6 +54,21 @@ Get-AzureRmMlWebServiceKeys -MlWebService $mlService
 $mlService is an object of type Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -MlWebService
 The name of the web service for which the access keys are retrieved.
@@ -99,7 +121,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### WebService
-
 Parameter 'MlWebService' accepts value of type 'WebService' from the pipeline
 
 ## OUTPUTS
