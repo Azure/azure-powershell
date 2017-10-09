@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
+Module Name: AzureRM.Compute
 ms.assetid: CE32F620-8DB2-4004-8012-F1C4AA235B60
 online version: 
 schema: 2.0.0
@@ -17,10 +18,12 @@ New-AzureRmVmssConfig [[-Overprovision] <Boolean>] [[-Location] <String>] [[-Tag
  [[-SkuName] <String>] [[-SkuTier] <String>] [[-SkuCapacity] <Int64>] [[-UpgradePolicyMode] <UpgradeMode>]
  [[-OsProfile] <VirtualMachineScaleSetOSProfile>] [[-StorageProfile] <VirtualMachineScaleSetStorageProfile>]
  [[-NetworkInterfaceConfiguration] <VirtualMachineScaleSetNetworkConfiguration[]>]
- [[-Extension] <VirtualMachineScaleSetExtension[]>] [-SinglePlacementGroup <Boolean>] [-PlanName <String>]
- [-PlanPublisher <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>]
- [-RecoveryPolicyMode <RecoveryMode>] [-BootDiagnostic <BootDiagnostics>] [-LicenseType <String>]
- [-IdentityType <ResourceIdentityType>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-Extension] <VirtualMachineScaleSetExtension[]>] [-SinglePlacementGroup <Boolean>] [-Zone <String[]>]
+ [-PlanName <String>] [-PlanPublisher <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>]
+ [-RollingUpgradePolicy <RollingUpgradePolicy>] [-AutoOSUpgrade] [-HealthProbeId <String>]
+ [-BootDiagnostic <BootDiagnostics>] [-LicenseType <String>] [-AssignIdentity]
+ [-IdentityType <ResourceIdentityType>] [-RecoveryPolicyMode <RecoveryMode>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,6 +58,36 @@ The second command uses the **New-AzureRmVmss** cmdlet to create a VMSS that use
 
 ## PARAMETERS
 
+### -AssignIdentity
+{{Fill AssignIdentity Description}}
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AutoOSUpgrade
+{{Fill AutoOSUpgrade Description}}
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -BootDiagnostic
 Specifies the virtual machine scale set boot diagnostics profile.
 
@@ -67,6 +100,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -86,6 +134,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -HealthProbeId
+{{Fill HealthProbeId Description}}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -IdentityType
 Specify the identity of the virtual machine scale set, if configured.
 
@@ -93,6 +156,7 @@ Specify the identity of the virtual machine scale set, if configured.
 Type: ResourceIdentityType
 Parameter Sets: (All)
 Aliases: 
+Accepted values: SystemAssigned
 
 Required: False
 Position: Named
@@ -245,6 +309,22 @@ Specify the recovery policy.
 Type: RecoveryMode
 Parameter Sets: (All)
 Aliases: 
+Accepted values: None, OverProvision, Reprovision
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RollingUpgradePolicy
+{{Fill RollingUpgradePolicy Description}}
+
+```yaml
+Type: RollingUpgradePolicy
+Parameter Sets: (All)
+Aliases: 
 
 Required: False
 Position: Named
@@ -361,10 +441,25 @@ The acceptable values for this parameter are:
 Type: UpgradeMode
 Parameter Sets: (All)
 Aliases: 
-Accepted values: Automatic, Manual
+Accepted values: Automatic, Manual, Rolling
 
 Required: False
 Position: 6
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Zone
+{{Fill Zone Description}}
+
+```yaml
+Type: String[]
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Profile.dll-Help.xml
+Module Name: AzureRM.Profile
 online version: 
 schema: 2.0.0
 ---
@@ -89,6 +90,7 @@ The name of the context
 Type: String
 Parameter Sets: Named Context
 Aliases: 
+Accepted values: Default
 
 Required: True
 Position: 0

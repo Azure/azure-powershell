@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
+Module Name: AzureRM.Batch
 ms.assetid: 75483BC7-440A-437B-9EDE-D270D87CF3C5
 online version: 
 schema: 2.0.0
@@ -13,7 +14,8 @@ Updates a Batch job.
 ## SYNTAX
 
 ```
-Set-AzureBatchJob [-Job] <PSCloudJob> -BatchContext <BatchAccountContext> [<CommonParameters>]
+Set-AzureBatchJob [-Job] <PSCloudJob> -BatchContext <BatchAccountContext>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -54,6 +56,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Job
 Specifies a **PSCloudJob** to which this cmdlet updates the Batch service.
 
@@ -75,11 +92,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### BatchAccountContext
-
 Parameter 'BatchContext' accepts value of type 'BatchAccountContext' from the pipeline
 
 ### PSCloudJob
-
 Parameter 'Job' accepts value of type 'PSCloudJob' from the pipeline
 
 ## OUTPUTS

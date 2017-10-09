@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
+Module Name: AzureRM.Compute
 ms.assetid: D2BBAC5B-A7B9-44DA-BE37-24D89E03BAB3
 online version: 
 schema: 2.0.0
@@ -13,7 +14,8 @@ Gets VMImage SKUs.
 ## SYNTAX
 
 ```
-Get-AzureRmVMImageSku -Location <String> -PublisherName <String> -Offer <String> [<CommonParameters>]
+Get-AzureRmVMImageSku -Location <String> -PublisherName <String> -Offer <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,6 +31,21 @@ PS C:\> Get-AzureRmVMImageSku -Location "Central US" -PublisherName "Fabrikam" -
 This command gets the SKUs for the specified publisher and offer.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Location
 Specifies the location of the VMImage.

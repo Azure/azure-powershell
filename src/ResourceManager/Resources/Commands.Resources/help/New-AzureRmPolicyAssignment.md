@@ -16,38 +16,45 @@ Creates a policy assignment.
 ### Policy assignment without parameters (Default)
 ```
 New-AzureRmPolicyAssignment -Name <String> -Scope <String> [-NotScope <String[]>] [-DisplayName <String>]
- [-PolicyDefinition <PSObject>] [-PolicySetDefinition <PSObject>] [-ApiVersion <String>] [-Pre]
+ [-Description <String>] [-PolicyDefinition <PSObject>] [-PolicySetDefinition <PSObject>] [-Sku <Hashtable>]
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
 ```
 
 ### Policy assignment with parameters via policy parameter object
 ```
 New-AzureRmPolicyAssignment -Name <String> -Scope <String> [-NotScope <String[]>] [-DisplayName <String>]
- -PolicyDefinition <PSObject> [-PolicySetDefinition <PSObject>] -PolicyParameterObject <Hashtable>
- [-ApiVersion <String>] [-Pre] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [<CommonParameters>]
+ [-Description <String>] -PolicyDefinition <PSObject> [-PolicySetDefinition <PSObject>]
+ -PolicyParameterObject <Hashtable> [-Sku <Hashtable>] [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
+ [-InformationVariable <String>] [<CommonParameters>]
 ```
 
 ### Policy assignment with parameters via policy parameter string
 ```
 New-AzureRmPolicyAssignment -Name <String> -Scope <String> [-NotScope <String[]>] [-DisplayName <String>]
- -PolicyDefinition <PSObject> [-PolicySetDefinition <PSObject>] -PolicyParameter <String>
- [-ApiVersion <String>] [-Pre] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [<CommonParameters>]
+ [-Description <String>] -PolicyDefinition <PSObject> [-PolicySetDefinition <PSObject>]
+ -PolicyParameter <String> [-Sku <Hashtable>] [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
+ [-InformationVariable <String>] [<CommonParameters>]
 ```
 
 ### Policy assignment with parameters via policy set parameter object
 ```
 New-AzureRmPolicyAssignment -Name <String> -Scope <String> [-NotScope <String[]>] [-DisplayName <String>]
- [-PolicyDefinition <PSObject>] -PolicySetDefinition <PSObject> [-ApiVersion <String>] [-Pre]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [-Description <String>] [-PolicyDefinition <PSObject>] -PolicySetDefinition <PSObject>
+ -PolicyParameterObject <Hashtable> [-Sku <Hashtable>] [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
+ [-InformationVariable <String>] [<CommonParameters>]
 ```
 
 ### Policy assignment with parameters via policy set parameter string
 ```
 New-AzureRmPolicyAssignment -Name <String> -Scope <String> [-NotScope <String[]>] [-DisplayName <String>]
- [-PolicyDefinition <PSObject>] -PolicySetDefinition <PSObject> [-ApiVersion <String>] [-Pre]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [-Description <String>] [-PolicyDefinition <PSObject>] -PolicySetDefinition <PSObject>
+ -PolicyParameter <String> [-Sku <Hashtable>] [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
+ [-InformationVariable <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -87,6 +94,34 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Description
+The description for policy assignment.```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -206,7 +241,7 @@ The policy parameter file path or policy parameter string.
 
 ```yaml
 Type: String
-Parameter Sets: Policy assignment with parameters via policy parameter string
+Parameter Sets: Policy assignment with parameters via policy parameter string, Policy assignment with parameters via policy set parameter string
 Aliases: 
 
 Required: True
@@ -221,7 +256,7 @@ The policy parameter object.
 
 ```yaml
 Type: Hashtable
-Parameter Sets: Policy assignment with parameters via policy parameter object
+Parameter Sets: Policy assignment with parameters via policy parameter object, Policy assignment with parameters via policy set parameter object
 Aliases: 
 
 Required: True
@@ -285,6 +320,19 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Sku
+A hash table which represents sku properties. Defaults to Free Sku: Name = A0, Tier = Free```yaml
+Type: Hashtable
+Parameter Sets: (All)
+Aliases: SkuObject
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

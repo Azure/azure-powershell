@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.RecoveryServices.Backup.dll-Help.xml
+Module Name: AzureRM.RecoveryServices.Backup
 ms.assetid: 04D7317E-2089-4197-909D-89F0CEC4851A
 online version: 
 schema: 2.0.0
@@ -13,7 +14,8 @@ Starts a backup for a Backup item.
 ## SYNTAX
 
 ```
-Backup-AzureRmRecoveryServicesBackupItem -Item <ItemBase> [-ExpiryDateTimeUTC <DateTime>] [<CommonParameters>]
+Backup-AzureRmRecoveryServicesBackupItem -Item <ItemBase> [-ExpiryDateTimeUTC <DateTime>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,6 +43,21 @@ The second command gets the Backup item corresponding to the container in $Named
 The last command triggers the backup job for the Backup item in $Item.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ExpiryDateTimeUTC
 Specifies an expiry time as a **DateTime** object.
@@ -78,11 +95,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### DateTime
-
 Parameter 'ExpiryDateTimeUTC' accepts value of type 'DateTime' from the pipeline
 
 ### ItemBase
-
 Parameter 'Item' accepts value of type 'ItemBase' from the pipeline
 
 ## OUTPUTS

@@ -15,12 +15,14 @@ Gets route tables.
 
 ### NoExpand
 ```
-Get-AzureRmRouteTable [-Name <String>] [-ResourceGroupName <String>] [<CommonParameters>]
+Get-AzureRmRouteTable [-Name <String>] [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### Expand
 ```
-Get-AzureRmRouteTable -Name <String> -ResourceGroupName <String> -ExpandResource <String> [<CommonParameters>]
+Get-AzureRmRouteTable -Name <String> -ResourceGroupName <String> -ExpandResource <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,6 +60,21 @@ Subnets           : []
 This command gets the route table named RouteTable01 in the resource group named ResourceGroup11.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ExpandResource
 ```yaml

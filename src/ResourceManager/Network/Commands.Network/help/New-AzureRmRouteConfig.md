@@ -15,7 +15,7 @@ Creates a route for a route table.
 
 ```
 New-AzureRmRouteConfig -Name <String> [-AddressPrefix <String>] -NextHopType <String>
- [-NextHopIpAddress <String>] [<CommonParameters>]
+ [-NextHopIpAddress <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -50,6 +50,21 @@ Specifies the destination, in Classless Interdomain Routing (CIDR) format, to wh
 Type: String
 Parameter Sets: (All)
 Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named

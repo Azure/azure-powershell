@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
+Module Name: AzureRM.Compute
 ms.assetid: EF155949-5766-4BC4-9C8A-2B97E8EA032D
 online version: 
 schema: 2.0.0
@@ -14,24 +15,26 @@ Restarts an Azure virtual machine.
 
 ### RestartResourceGroupNameParameterSetName (Default)
 ```
-Restart-AzureRmVM [-ResourceGroupName] <String> [-Name] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+Restart-AzureRmVM [-ResourceGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PerformMaintenanceResourceGroupNameParameterSetName
 ```
-Restart-AzureRmVM [-ResourceGroupName] <String> [-Name] <String> [-PerformMaintenance] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Restart-AzureRmVM [-ResourceGroupName] <String> [-Name] <String> [-PerformMaintenance]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RestartIdParameterSetName
 ```
-Restart-AzureRmVM [-Id] <String> [-Name] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+Restart-AzureRmVM [-Id] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### PerformMaintenanceIdParameterSetName
 ```
-Restart-AzureRmVM [-Id] <String> [-Name] <String> [-PerformMaintenance] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Restart-AzureRmVM [-Id] <String> [-Name] <String> [-PerformMaintenance]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,6 +50,21 @@ PS C:\> Restart-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMac
 This command restarts the virtual machine named VirtualMachine07 in ResourceGroup11.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Id
 The resource group name.```yaml
@@ -81,7 +99,7 @@ Parameter Sets: PerformMaintenanceResourceGroupNameParameterSetName, PerformMain
 Aliases: 
 
 Required: True
-Position: Named
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

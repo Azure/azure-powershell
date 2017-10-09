@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ServiceBus.dll-Help.xml
+Module Name: AzureRM.ServiceBus
 online version: 
 schema: 2.0.0
 ---
@@ -12,8 +13,9 @@ Regenerates the primary or secondary connection strings for the Service Bus queu
 ## SYNTAX
 
 ```
-New-AzureRmServiceBusQueueKey [-ResourceGroup] <String> [-NamespaceName] <String> [-QueueName] <String>
- [-AuthorizationRuleName] <String> [-RegenerateKeys] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzureRmServiceBusQueueKey [-ResourceGroup] <String> [-Namespace] <String> [-Queue] <String>
+ [-Name] <String> [-RegenerateKeys] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,13 +39,26 @@ Regenerates the secondary connection string for the namespace.
 
 ## PARAMETERS
 
-### -AuthorizationRuleName
-The authorization rule name.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Authorization Rule Name.```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: AuthorizationRuleName
 
 Required: True
 Position: 3
@@ -52,13 +67,11 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -NamespaceName
-The Service Bus namespace name.
-
-```yaml
+### -Namespace
+Namespace Name.```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: NamespaceName
 
 Required: True
 Position: 1
@@ -67,13 +80,11 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -QueueName
-The Service Bus queue name.
-
-```yaml
+### -Queue
+ServiceBus Name.```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: QueueName
 
 Required: True
 Position: 2
