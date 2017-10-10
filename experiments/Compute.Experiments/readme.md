@@ -19,3 +19,5 @@
    1. should it modify the resource?
    1. should it delete and create a new one?
    1. should we have two types of commands with different behavior, such as `New` and `Update`?
+   1. should the cmdlet ask to modify/recreate an existing resource?
+1. Unique Domain Name Label. Should we add a subscription id as a suffix?
