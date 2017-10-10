@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.SiteRecovery.dll-Help.xml
+Module Name: AzureRM.SiteRecovery
 ms.assetid: B1D914F8-4181-4BF1-B1D3-A5857DA8254C
 online version: 
 schema: 2.0.0
@@ -14,7 +15,8 @@ Removes an Azure Site Recovery Protection Container mapping.
 
 ```
 Remove-AzureRmSiteRecoveryProtectionContainerMapping
- -ProtectionContainerMapping <ASRProtectionContainerMapping> [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -ProtectionContainerMapping <ASRProtectionContainerMapping> [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,6 +25,21 @@ The **Remove-AzureRmSiteRecoveryProtectionContainerMapping** cmdlet removes an A
 ## EXAMPLES
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Force
 Forces the command to run without asking for user confirmation.
@@ -92,7 +109,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### ASRProtectionContainerMapping
-
 Parameter 'ProtectionContainerMapping' accepts value of type 'ASRProtectionContainerMapping' from the pipeline
 
 ## OUTPUTS
