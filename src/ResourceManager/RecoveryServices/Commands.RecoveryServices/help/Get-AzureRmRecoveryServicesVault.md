@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.RecoveryServices.ARM.dll-Help.xml
+Module Name: AzureRM.RecoveryServices
 ms.assetid: 818B5302-91EE-425F-B1CD-86B626F1B7A3
 online version: 
 schema: 2.0.0
@@ -13,7 +14,8 @@ Gets a list of Recovery Services vaults.
 ## SYNTAX
 
 ```
-Get-AzureRmRecoveryServicesVault [-ResourceGroupName <String>] [-Name <String>] [<CommonParameters>]
+Get-AzureRmRecoveryServicesVault [-ResourceGroupName <String>] [-Name <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,6 +29,21 @@ The **Get-AzureRmRecoveryServicesVault** cmdlet gets a list of Recovery Services
 ```
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 Specifies the name of the vault to query for.
