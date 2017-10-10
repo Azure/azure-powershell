@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzureRmStorageAccountNetworkRuleSet
 
 ## SYNOPSIS
-Update the NetworkRule property of a Storage Account
+{{Fill in the Synopsis}}
 
 ## SYNTAX
 
@@ -16,45 +16,24 @@ Update the NetworkRule property of a Storage Account
 Update-AzureRmStorageAccountNetworkRuleSet [-ResourceGroupName] <String> [-Name] <String>
  [-Bypass <PSNetWorkRuleBypassEnum>] [-DefaultAction <PSNetWorkRuleDefaultActionEnum>] [-IPRule <PSIpRule[]>]
  [-VirtualNetworkRule <PSVirtualNetworkRule[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Update-AzureRmStorageAccountNetworkRuleSet** cmdlet updates the NetworkRule property of a Storage Account
+{{Fill in the Description}}
 
 ## EXAMPLES
 
-### Example 1: Update all properties of NetworkRule, input Rules with JSON
+### Example 1
 ```
-PS C:\> Update-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" -Bypass Logging,Metrics -DefaultAction Allow -IpRule (@{IPAddressOrRange="10.0.0.0/24";Action="allow"},@{IPAddressOrRange="28.2.0.0/16";Action="allow"})
-    -VirtualNetworkRule (@{VirtualNetworkReourceId="/subscriptions/s1/resourceGroups/g1/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1";Action="allow"},@{VirtualNetworkReourceId="/subscriptions/s1/resourceGroups/g1/providers/Microsoft.Network/virtualN
-    etworks/vnet2/subnets/subnet2";Action="allow"})
+PS C:\> {{ Add example code here }}
 ```
 
-This command update all properties of NetworkRule, input Rules with JSON.
-
-### Example 2: Update Bypass property of NetworkRule
-```
-PS C:\> Update-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" -Bypass AzureServices,Metrics
-```
-
-This command update Bypass property of NetworkRule (other properties won't change).
-
-### Example 3: Clean up rules of NetworkRule of a Storage Account
-```
-PS C:\> Update-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" -IpRule @() -VirtualNetworkRule @()
-```
-
-This command clean up rules of NetworkRule of a Storage Account (other properties not change).
+{{ Add example description here }}
 
 ## PARAMETERS
 
 ### -Bypass
-The Bypass value to update to the NetworkRule property of a Storage Account.
-The allowed value are none or any combination of:
-• Logging
-• Metrics
-• Azureservices
+Storage Account NetworkRule Bypass.
 
 ```yaml
 Type: PSNetWorkRuleBypassEnum
@@ -70,10 +49,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultAction
-The DefaultAction value to update to the NetworkRule property of a Storage Account.
-The allowed Options:
-• Allow
-• Deny
+Storage Account NetworkRule DefaultAction.
 
 ```yaml
 Type: PSNetWorkRuleDefaultActionEnum
@@ -104,7 +80,7 @@ Accept wildcard characters: False
 ```
 
 ### -IPRule
-The Array of IpRule objects to update to the NetworkRule Property of a Storage Account.
+Storage Account NetworkRule IPRules.
 
 ```yaml
 Type: PSIpRule[]
@@ -119,7 +95,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the Storage account.
+Storage Account Name.
 
 ```yaml
 Type: String
@@ -134,7 +110,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specifies the name of the resource group contains the Storage account.
+Resource Group Name.
 
 ```yaml
 Type: String
@@ -149,7 +125,7 @@ Accept wildcard characters: False
 ```
 
 ### -VirtualNetworkRule
-The Array of VirtualNetworkRule objects to update to the NetworkRule Property of a Storage Account.
+Storage Account NetworkRule VirtualNetworkRules.
 
 ```yaml
 Type: PSVirtualNetworkRule[]
@@ -194,18 +170,17 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
-
 ## INPUTS
 
 ### System.String
 Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule[]
 Microsoft.Azure.Commands.Management.Storage.Models.PSVirtualNetworkRule[]
 
+
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet
+
 
 ## NOTES
 

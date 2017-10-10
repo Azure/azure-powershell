@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzureRmStorageAccountNetworkRule
 
 ## SYNOPSIS
-Remove IpRules or VirtualNetworkRules from the NetWorkRule property of a Storage Account
+{{Fill in the Synopsis}}
 
 ## SYNTAX
 
@@ -16,61 +16,37 @@ Remove IpRules or VirtualNetworkRules from the NetWorkRule property of a Storage
 ```
 Remove-AzureRmStorageAccountNetworkRule [-ResourceGroupName] <String> [-Name] <String>
  -VirtualNetworkResourceId <String[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
 ```
 
 ### IpRuleObject
 ```
 Remove-AzureRmStorageAccountNetworkRule [-ResourceGroupName] <String> [-Name] <String> -IPRule <PSIpRule[]>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
 ```
 
 ### NetworkRuleObject
 ```
 Remove-AzureRmStorageAccountNetworkRule [-ResourceGroupName] <String> [-Name] <String>
  -VirtualNetworkRule <PSVirtualNetworkRule[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
 ```
 
 ### IpRuleString
 ```
 Remove-AzureRmStorageAccountNetworkRule [-ResourceGroupName] <String> [-Name] <String>
  -IPAddressOrRange <String[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmStorageAccountNetworkRule** cmdlet removes IpRules or VirtualNetworkRules from the NetWorkRule property of a Storage Account
+{{Fill in the Description}}
 
 ## EXAMPLES
 
-### Example 1: Remove several IpRules with IPAddressOrRange
+### Example 1
 ```
-PS C:\>Remove-AzureRmStorageAccountNetworkRule -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" -IPAddressOrRange "10.0.0.0/24,28.1.0.0/16"
-```
-
-This command remove several IpRules with IPAddressOrRange.
-
-### Example 2: Remove a VirtualNetworkRule with VirtualNetworkRule Object input with JSON
-```
-PS C:\>Remove-AzureRmStorageAccountNetworkRule -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" -VirtualNetworkRules (@{VirtualNetworkReourceId="/subscriptions/s1/resourceGroups/g1/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1";Action="allow"})
+PS C:\> {{ Add example code here }}
 ```
 
-This command remove a VirtualNetworkRule with VirtualNetworkRule Object input with JSON.
-
-### Example 3: Remove first IpRule with pipeline
-```
-PS C:\>(Get-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount").IpRules[0] | Remove-AzureRmStorageAccountNetworkRule -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount"
-```
-
-This command remove first IpRule with pipeline.
-
-### Example 4: Remove several VirtualNetworkRules with VirtualNetworkResourceID
-```
-PS C:\>Remove-AzureRmStorageAccountNetworkRule -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" -VirtualNetworkResourceId "/subscriptions/s1/resourceGroups/g1/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1","/subscriptions/s1/resourceGroups/g1/providers/Microsoft.Network/virtualNetworks/vnet2/subnets/subnet2"
-```
-
-This command remove several VirtualNetworkRules with VirtualNetworkResourceID.
+{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -90,7 +66,7 @@ Accept wildcard characters: False
 ```
 
 ### -IPAddressOrRange
-The Array of IpAddressOrRange, will remove IpRule with same IpAddressOrRange from the NetWorkRule Property.
+Storage Account NetworkRule IPRules IPAddressOrRange in string.
 
 ```yaml
 Type: String[]
@@ -105,7 +81,7 @@ Accept wildcard characters: False
 ```
 
 ### -IPRule
-The Array of IpRule objects to remove from the NetWorkRule Property.
+Storage Account NetworkRule IPRules.
 
 ```yaml
 Type: PSIpRule[]
@@ -120,7 +96,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the Storage account.
+Storage Account Name.
 
 ```yaml
 Type: String
@@ -135,7 +111,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specifies the name of the resource group contains the Storage account.
+Resource Group Name.
 
 ```yaml
 Type: String
@@ -150,7 +126,7 @@ Accept wildcard characters: False
 ```
 
 ### -VirtualNetworkResourceId
-The Array of VirtualNetworkResourceId, will remove VirtualNetworkRule with same VirtualNetworkResourceId from the NetWorkRule Property.
+Storage Account NetworkRule VirtualNetworkRules VirtualNetworkResourceId in string.
 
 ```yaml
 Type: String[]
@@ -165,7 +141,7 @@ Accept wildcard characters: False
 ```
 
 ### -VirtualNetworkRule
-The Array of VirtualNetworkRule objects to remove from the NetWorkRule Property.
+Storage Account NetworkRule VirtualNetworkRules.
 
 ```yaml
 Type: PSVirtualNetworkRule[]
@@ -210,19 +186,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
-
 ## INPUTS
 
 ### System.String
 Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule[]
 Microsoft.Azure.Commands.Management.Storage.Models.PSVirtualNetworkRule[]
 
+
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Management.Storage.Models.PSVirtualNetworkRule
 Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule
+
 
 ## NOTES
 
