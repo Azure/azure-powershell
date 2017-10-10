@@ -48,5 +48,5 @@ using Xunit;
 // by using the '*' as shown below:
 
 [assembly: AssemblyVersion( "3.0.0.0" )]
-[assembly: AssemblyFileVersion("3.4.0")]
+[assembly: AssemblyFileVersion("3.4.1")]
 [assembly: CollectionBehavior(DisableTestParallelization = true)]
