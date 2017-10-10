@@ -2,6 +2,7 @@
   ".github": [],
   "documentation": [],
   "setup": [],
+  "src/StackAdmin": [],
   "src/ResourceManager/AnalysisServices/": [],
   "src/ResourceManager/ApiManagement/": [
     ".\\src\\ResourceManager\\ApiManagement\\Commands.ApiManagement.Test\\bin\\Debug\\Microsoft.Azure.Commands.ApiManagement.Test.dll"

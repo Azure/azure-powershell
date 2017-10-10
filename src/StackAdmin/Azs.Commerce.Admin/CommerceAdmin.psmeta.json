@@ -1,0 +1,303 @@
+{
+  "info": {
+    "x-ps-code-generation-settings": {
+      "codeGenerator": "AzureCsharp",
+      "nameSpacePrefix": "Microsoft.PowerShell.",
+      "noAssembly": false,
+      "powerShellCorePath": "",
+      "includeCoreFxAssembly": false,
+      "testBuild": false,
+      "confirmBootstrap": false,
+      "path": ".",
+      "symbolPath": ".",
+      "serviceType": "azure_stack",
+      "customAuthCommand": "",
+      "hostOverrideCommand": "",
+      "noAuthChallenge": ""
+    },
+    "x-ps-module-info": {
+      "name": "CommerceAdminClient",
+      "moduleVersion": "0.1.0",
+      "guid": "a533345d-2bbf-4e76-91fc-02967fb6ec11",
+      "description": "Commerce Admin Client",
+      "author": "Jeffrey Robinson",
+      "companyName": "Microsoft",
+      "CopyRight": "MIT",
+      "licenseUri": "https://github.com/Azure/azure-powershell/blob/preview/LICENSE.txt",
+      "projectUri": "https://github.com/Azure/azure-powershell",
+      "helpInfoUri": "",
+      "iconUri": "",
+      "releaseNotes": "",
+      "defaultCommandPrefix": "Azs",
+      "tags": [
+        
+      ]
+    }
+  },
+  "paths": {
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Commerce/subscriberUsageAggregates": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-SubscriberUsageAggregate",
+            "description": "Gets a collection of SubscriberUsageAggregates, which are UsageAggregates from direct tenants.",
+            "defaultParameterSet": "SubscriberUsageAggregates_List",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    }
+  },
+  "definitions": {
+    "UsageAggregateModel": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-UsageAggregateModelObject",
+          "description": "Properties for aggregate usage.",
+          "defaultParameterSet": "UsageAggregateModel",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "usageStartTime": {
+          "x-ps-parameter-info": {
+            "name": "UsageStartTime",
+            "description": "UTC start time for the usage bucket to which this usage aggregate belongs."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "instanceData": {
+          "x-ps-parameter-info": {
+            "name": "InstanceData",
+            "description": "Key-value pairs of instance details represented as a string."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        },
+        "meterId": {
+          "x-ps-parameter-info": {
+            "name": "MeterId",
+            "description": "Unique ID for the resource that was consumed (aka ResourceID)."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 2,
+            "width": 10
+          }
+        },
+        "usageEndTime": {
+          "x-ps-parameter-info": {
+            "name": "UsageEndTime",
+            "description": "UTC end time for the usage bucket to which this usage aggregate belongs."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 3,
+            "width": 10
+          }
+        },
+        "quantity": {
+          "x-ps-parameter-info": {
+            "name": "Quantity",
+            "description": "The amount of the resource consumption that occurred in this time frame."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 4,
+            "width": 10
+          }
+        },
+        "subscriptionId": {
+          "x-ps-parameter-info": {
+            "name": "SubscriptionId",
+            "description": "Subscription id of tenant using plan."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "UsageAggregatePage": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-UsageAggregatePageObject",
+          "description": "Holds an array of usage aggregates and the continuation token.",
+          "defaultParameterSet": "UsageAggregatePage",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "value": {
+          "x-ps-parameter-info": {
+            "name": "Value",
+            "description": "Array of usage aggregates."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "nextLink": {
+          "x-ps-parameter-info": {
+            "name": "NextLink",
+            "description": "Continuation token"
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "Resource": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-ResourceObject",
+          "description": "Base Resource Object",
+          "defaultParameterSet": "Resource",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "tags": {
+          "x-ps-parameter-info": {
+            "name": "Tags",
+            "description": "List of key value pairs."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "name": {
+          "x-ps-parameter-info": {
+            "name": "Name",
+            "description": "Name of the resource."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "id": {
+          "x-ps-parameter-info": {
+            "name": "Id",
+            "description": "URI of the resource."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "type": {
+          "x-ps-parameter-info": {
+            "name": "Type",
+            "description": "Type of resource."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        },
+        "location": {
+          "x-ps-parameter-info": {
+            "name": "Location",
+            "description": "Location where resource is location."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 2,
+            "width": 10
+          }
+        }
+      }
+    },
+    "UsageAggregate": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-UsageAggregateObject",
+          "description": "Aggregate usage values for resource.",
+          "defaultParameterSet": "UsageAggregate",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        
+      }
+    }
+  },
+  "parameters": {
+    "AggregationGranularityParameter": {
+      "x-ps-parameter-info": {
+        "name": "AggregationGranularity",
+        "description": "The aggregation granularity.",
+        "flatten": false
+      }
+    },
+    "SubscriptionIdParameter": {
+      "x-ps-parameter-info": {
+        "name": "SubscriptionId",
+        "description": "Subscription credentials which uniquely identify Microsoft Azure subscription.The subscription ID forms part of the URI for every service call.",
+        "flatten": false
+      }
+    },
+    "ReportedStartTimeParameter": {
+      "x-ps-parameter-info": {
+        "name": "ReportedStartTime",
+        "description": "The reported start time (inclusive).",
+        "flatten": false
+      }
+    },
+    "ReportedEndTimeParameter": {
+      "x-ps-parameter-info": {
+        "name": "ReportedEndTime",
+        "description": "The reported end time (exclusive).",
+        "flatten": false
+      }
+    },
+    "ApiVersionParameter": {
+      "x-ps-parameter-info": {
+        "name": "Apiversion",
+        "description": "Client Api Version.",
+        "flatten": false
+      }
+    },
+    "TenantSubscriptionIdParameter": {
+      "x-ps-parameter-info": {
+        "name": "SubscriberId",
+        "description": "The tenant subscription identifier.",
+        "flatten": false
+      }
+    },
+    "ContinuationTokenParameter": {
+      "x-ps-parameter-info": {
+        "name": "ContinuationToken",
+        "description": "The continuation token.",
+        "flatten": false
+      }
+    }
+  }
+}

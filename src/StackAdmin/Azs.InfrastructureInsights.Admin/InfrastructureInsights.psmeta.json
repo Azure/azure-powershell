@@ -1,0 +1,1186 @@
+{
+  "info": {
+    "x-ps-code-generation-settings": {
+      "codeGenerator": "AzureCsharp",
+      "nameSpacePrefix": "Azs",
+      "noAssembly": false,
+      "powerShellCorePath": "",
+      "includeCoreFxAssembly": false,
+      "testBuild": false,
+      "confirmBootstrap": false,
+      "path": ".",
+      "symbolPath": ".",
+      "serviceType": "azure_stack",
+      "customAuthCommand": "",
+      "hostOverrideCommand": "",
+      "noAuthChallenge": ""
+    },
+    "x-ps-module-info": {
+      "name": "InfrastructureInsightsAdminClient",
+      "moduleVersion": "0.1.0",
+      "guid": "15df75bf-fbf4-44df-bc46-285793299270",
+      "description": "InfrastructureInsights Admin Client",
+      "author": "Jeffrey Robinson",
+      "companyName": "Microsoft",
+      "CopyRight": "MIT",
+      "licenseUri": "https://github.com/Azure/azure-powershell/blob/preview/LICENSE.txt",
+      "projectUri": "https://github.com/Azure/azure-powershell",
+      "helpInfoUri": "",
+      "iconUri": "",
+      "releaseNotes": "",
+      "defaultCommandPrefix": "Azs",
+      "tags": [
+        
+      ]
+    }
+  },
+  "paths": {
+    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.InfrastructureInsights.Admin/regionHealths/{location}/serviceHealths": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-ServiceHealth",
+            "description": "Get a list of all services health",
+            "defaultParameterSet": "ServiceHealths_List",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.InfrastructureInsights.Admin/regionHealths/{location}/serviceHealths/{serviceHealth}": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-ServiceHealth",
+            "description": "Get a services health",
+            "defaultParameterSet": "ServiceHealths_List",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.InfrastructureInsights.Admin/regionHealths/{location}/alerts": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-Alert",
+            "description": "Returns the list of all alerts in a given location.",
+            "defaultParameterSet": "Alerts_List",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.InfrastructureInsights.Admin/regionHealths/{location}/alerts/{alertName}": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-Alert",
+            "description": "Get an alert.",
+            "defaultParameterSet": "Alerts_List",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      },
+      "put": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Close-Alert",
+            "description": "Close an alert.",
+            "defaultParameterSet": "Alerts_Close",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.InfrastructureInsights.Admin/regionHealths/{location}/serviceHealths/{serviceRegistrationId}/resourceHealths": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-ResourceHealth",
+            "description": "Get a list of resources?.",
+            "defaultParameterSet": "ResourceHealths_List",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.InfrastructureInsights.Admin/regionHealths/{location}/serviceHealths/{serviceRegistrationId}/resourceHealths/{resourceRegistrationId}": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-ResourceHealth",
+            "description": "Get health information about a resources.",
+            "defaultParameterSet": "ResourceHealths_List",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.InfrastructureInsights.Admin/regionHealths": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-RegionHealth",
+            "description": "Get the list of all regions health status.",
+            "defaultParameterSet": "RegionHealths_List",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.InfrastructureInsights.Admin/regionHealths/{region}": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-RegionHealth",
+            "description": "Get health status of a region.",
+            "defaultParameterSet": "RegionHealths_List",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    }
+  },
+  "definitions": {
+    "MetricsUnit": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-MetricsUnitObject",
+          "description": "The unit of the metric.",
+          "defaultParameterSet": "MetricsUnit",
+          "generateCommand": false,
+          "generateOutputFormat": false
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "BaseHealth": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-BaseHealthObject",
+          "description": "Models the base properties for health resource.",
+          "defaultParameterSet": "BaseHealth",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "alertSummary": {
+          "x-ps-parameter-info": {
+            "name": "AlertSummary",
+            "description": "Gets or sets the alert summary."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "namespace": {
+          "x-ps-parameter-info": {
+            "name": "Namespace",
+            "description": "Gets or sets the name space."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "registrationId": {
+          "x-ps-parameter-info": {
+            "name": "RegistrationId",
+            "description": "Gets or sets the registration id."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        },
+        "routePrefix": {
+          "x-ps-parameter-info": {
+            "name": "RoutePrefix",
+            "description": "Gets or sets the route prefix."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 2,
+            "width": 10
+          }
+        },
+        "healthState": {
+          "x-ps-parameter-info": {
+            "name": "HealthState",
+            "description": "Gets or sets the health status."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 3,
+            "width": 10
+          }
+        }
+      }
+    },
+    "ServiceHealthList": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-ServiceHealthListObject",
+          "description": "Pageable list of service health instances.",
+          "defaultParameterSet": "ServiceHealthList",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "value": {
+          "x-ps-parameter-info": {
+            "name": "Value",
+            "description": "Array of service health instances."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "nextLink": {
+          "x-ps-parameter-info": {
+            "name": "NextLink",
+            "description": "URI of the next page."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "RegionHealthList": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-RegionHealthListObject",
+          "description": "Pageable list of region health items.",
+          "defaultParameterSet": "RegionHealthList",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "value": {
+          "x-ps-parameter-info": {
+            "name": "Value",
+            "description": "Array of region health items"
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "nextLink": {
+          "x-ps-parameter-info": {
+            "name": "NextLink",
+            "description": "URI to next page."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "RegionHealthModel": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-RegionHealthModelObject",
+          "description": "Contains information related to a regions health.",
+          "defaultParameterSet": "RegionHealthModel",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "alertSummary": {
+          "x-ps-parameter-info": {
+            "name": "AlertSummary",
+            "description": "Summary of alerts."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "usageMetrics": {
+          "x-ps-parameter-info": {
+            "name": "UsageMetrics",
+            "description": "List of usage metrics for this region."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "MetricsSourceType": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-MetricsSourceTypeObject",
+          "description": "What created the metric.",
+          "defaultParameterSet": "MetricsSourceType",
+          "generateCommand": false,
+          "generateOutputFormat": false
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "ServiceHealth": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-ServiceHealthObject",
+          "description": "Holds information about a services health.",
+          "defaultParameterSet": "ServiceHealth",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "ResourceHealthList": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-ResourceHealthListObject",
+          "description": "Pageable list of resource healths.",
+          "defaultParameterSet": "ResourceHealthList",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "value": {
+          "x-ps-parameter-info": {
+            "name": "Value",
+            "description": "Array of of resource healths"
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "nextLink": {
+          "x-ps-parameter-info": {
+            "name": "NextLink",
+            "description": "URI to next page."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "ResourceHealthModel": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-ResourceHealthModelObject",
+          "description": "Health information related to a resource.",
+          "defaultParameterSet": "ResourceHealthModel",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "resourceURI": {
+          "x-ps-parameter-info": {
+            "name": "ResourceURI",
+            "description": "Gets or sets the resource uri."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "usageMetrics": {
+          "x-ps-parameter-info": {
+            "name": "UsageMetrics",
+            "description": "Gets or sets the usage metrics."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "resourceType": {
+          "x-ps-parameter-info": {
+            "name": "ResourceType",
+            "description": "Gets or sets the resource type."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        },
+        "resourceDisplayName": {
+          "x-ps-parameter-info": {
+            "name": "ResourceDisplayName",
+            "description": "Gets or sets the resource display name."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 2,
+            "width": 10
+          }
+        },
+        "resourceName": {
+          "x-ps-parameter-info": {
+            "name": "ResourceName",
+            "description": "Gets or sets the resource name."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 3,
+            "width": 10
+          }
+        },
+        "resourceLocation": {
+          "x-ps-parameter-info": {
+            "name": "ResourceLocation",
+            "description": "Gets or sets the resource location."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 4,
+            "width": 10
+          }
+        },
+        "rpRegistrationId": {
+          "x-ps-parameter-info": {
+            "name": "RpRegistrationId",
+            "description": "Gets or sets the resource provider registration id."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "ServiceHealthModel": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-ServiceHealthModelObject",
+          "description": "Holds information about a services health.",
+          "defaultParameterSet": "ServiceHealthModel",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "displayName": {
+          "x-ps-parameter-info": {
+            "name": "DisplayName",
+            "description": "Name of the alert."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "infraURI": {
+          "x-ps-parameter-info": {
+            "name": "InfraURI",
+            "description": "The route prefix to the alert."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        },
+        "serviceLocation": {
+          "x-ps-parameter-info": {
+            "name": "ServiceLocation",
+            "description": "Location of the service."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 2,
+            "width": 10
+          }
+        }
+      }
+    },
+    "RegionHealth": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-RegionHealthObject",
+          "description": "Contains information related to a regions health.",
+          "defaultParameterSet": "RegionHealth",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "AlertSummary": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AlertSummaryObject",
+          "description": "Summary of the alerts.",
+          "defaultParameterSet": "AlertSummary",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "criticalAlertCount": {
+          "x-ps-parameter-info": {
+            "name": "CriticalAlertCount",
+            "description": "How many critical alerts this service has."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "warningAlertCount": {
+          "x-ps-parameter-info": {
+            "name": "WarningAlertCount",
+            "description": "How many warning alerts this service has."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "Dictionary": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-DictionaryObject",
+          "description": "dictionary",
+          "defaultParameterSet": "Dictionary",
+          "generateCommand": false,
+          "generateOutputFormat": false
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "ResourceHealth": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-ResourceHealthObject",
+          "description": "Health information related to a resource.",
+          "defaultParameterSet": "ResourceHealth",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "UsageMetrics": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-UsageMetricsObject",
+          "description": "Metrics of resource usage.",
+          "defaultParameterSet": "UsageMetrics",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "name": {
+          "x-ps-parameter-info": {
+            "name": "Name",
+            "description": "Name of the usage metric."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "metricsValue": {
+          "x-ps-parameter-info": {
+            "name": "MetricsValue",
+            "description": "List of usage metrics."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "AlertList": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AlertListObject",
+          "description": "A pageable list of Alerts",
+          "defaultParameterSet": "AlertList",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "value": {
+          "x-ps-parameter-info": {
+            "name": "Value",
+            "description": "Holds all alerts in this page."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "nextLink": {
+          "x-ps-parameter-info": {
+            "name": "NextLink",
+            "description": "Points to the next page."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "Metrics": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-MetricsObject",
+          "description": "Metrics for a source.",
+          "defaultParameterSet": "Metrics",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "sourceName": {
+          "x-ps-parameter-info": {
+            "name": "SourceName",
+            "description": "Source of the metric."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "maCounterName": {
+          "x-ps-parameter-info": {
+            "name": "MaCounterName",
+            "description": "Name of the usage metric."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "value": {
+          "x-ps-parameter-info": {
+            "name": "Value",
+            "description": "Name of the usage metric."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        },
+        "name": {
+          "x-ps-parameter-info": {
+            "name": "Name",
+            "description": "Name of the usage metric."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 2,
+            "width": 10
+          }
+        },
+        "observedTimestamp": {
+          "x-ps-parameter-info": {
+            "name": "ObservedTimestamp",
+            "description": "Name of the usage metric."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 3,
+            "width": 10
+          }
+        },
+        "unit": {
+          "x-ps-parameter-info": {
+            "name": "Unit",
+            "description": "Unit for the metric."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "sourceType": {
+          "x-ps-parameter-info": {
+            "name": "SourceType",
+            "description": "Name of the usage metric."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 4,
+            "width": 10
+          }
+        }
+      }
+    },
+    "AlertModel": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AlertModelObject",
+          "description": "Holds Alert data",
+          "defaultParameterSet": "AlertModel",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "faultTypeId": {
+          "x-ps-parameter-info": {
+            "name": "FaultTypeId",
+            "description": "Gets or sets the fault type id of the alert."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "description": {
+          "x-ps-parameter-info": {
+            "name": "Description",
+            "description": "Gets or sets the description of the alert."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "closedTimestamp": {
+          "x-ps-parameter-info": {
+            "name": "ClosedTimestamp",
+            "description": "Gets or sets the closed timestamp of the alert."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        },
+        "closedByUserAlias": {
+          "x-ps-parameter-info": {
+            "name": "ClosedByUserAlias",
+            "description": "Gets or sets the user alias who closed the alert."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 2,
+            "width": 10
+          }
+        },
+        "resourceRegistrationId": {
+          "x-ps-parameter-info": {
+            "name": "ResourceRegistrationId",
+            "description": "Gets or sets the registration id of the atomic component the alert belongs to.  This is null if not associated with a resource."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 3,
+            "width": 10
+          }
+        },
+        "severity": {
+          "x-ps-parameter-info": {
+            "name": "Severity",
+            "description": "Gets or sets the severity of the alert."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 4,
+            "width": 10
+          }
+        },
+        "lastUpdatedTimestamp": {
+          "x-ps-parameter-info": {
+            "name": "LastUpdatedTimestamp",
+            "description": "Gets or sets last updated timestamp of the alert."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "resourceProviderRegistrationId": {
+          "x-ps-parameter-info": {
+            "name": "ResourceProviderRegistrationId",
+            "description": "Gets or sets the registration id of the service the alert belongs to."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "remediation": {
+          "x-ps-parameter-info": {
+            "name": "Remediation",
+            "description": "Gets or sets the admin friendly remediation instructions for the alert."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "impactedResourceId": {
+          "x-ps-parameter-info": {
+            "name": "ImpactedResourceId",
+            "description": "Gets or sets the ResourceId for the impacted item."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "title": {
+          "x-ps-parameter-info": {
+            "name": "Title",
+            "description": "Gets or sets the ResourceId for the impacted item."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "impactedResourceDisplayName": {
+          "x-ps-parameter-info": {
+            "name": "ImpactedResourceDisplayName",
+            "description": "Gets or sets the display name for the impacted item."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "alertProperties": {
+          "x-ps-parameter-info": {
+            "name": "AlertProperties",
+            "description": "Gets or sets properties of the alert."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "faultId": {
+          "x-ps-parameter-info": {
+            "name": "FaultId",
+            "description": "Gets or sets the fault id of the alert."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "state": {
+          "x-ps-parameter-info": {
+            "name": "State",
+            "description": "Gets or sets the state of the alert."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "alertId": {
+          "x-ps-parameter-info": {
+            "name": "AlertId",
+            "description": "Gets or sets the id of the alert."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "createdTimestamp": {
+          "x-ps-parameter-info": {
+            "name": "CreatedTimestamp",
+            "description": "Gets or sets the created timestamp of the alert."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "Resource": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-ResourceObject",
+          "description": "Base Resource Object",
+          "defaultParameterSet": "Resource",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "tags": {
+          "x-ps-parameter-info": {
+            "name": "Tags",
+            "description": "List of key value pairs."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "name": {
+          "x-ps-parameter-info": {
+            "name": "Name",
+            "description": "Name of the resource."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "id": {
+          "x-ps-parameter-info": {
+            "name": "Id",
+            "description": "URI of the resource."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "type": {
+          "x-ps-parameter-info": {
+            "name": "Type",
+            "description": "Type of resource."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        },
+        "location": {
+          "x-ps-parameter-info": {
+            "name": "Location",
+            "description": "Location where resource is location."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 2,
+            "width": 10
+          }
+        }
+      }
+    },
+    "Alert": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AlertObject",
+          "description": "This class models an alert resource.",
+          "defaultParameterSet": "Alert",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        
+      }
+    }
+  },
+  "parameters": {
+    "ServiceRegistrationIdParameter": {
+      "x-ps-parameter-info": {
+        "name": "ServiceRegistrationId",
+        "description": "Service registration id.",
+        "flatten": false
+      }
+    },
+    "ResourceRegistrationIdBodyParameter": {
+      "x-ps-parameter-info": {
+        "name": "ResourceRegistrationId",
+        "description": "A resource provider id.",
+        "flatten": false
+      }
+    },
+    "RetentionPeriodInDaysBodyParameter": {
+      "x-ps-parameter-info": {
+        "name": "RetentionPeriodInDays",
+        "description": "How long alerts should exist before deletion.",
+        "flatten": false
+      }
+    },
+    "SubscriptionIdParameter": {
+      "x-ps-parameter-info": {
+        "name": "SubscriptionId",
+        "description": "Subscription credentials which uniquely identify Microsoft Azure subscription.The subscription ID forms part of the URI for every service call.",
+        "flatten": false
+      }
+    },
+    "UserParameter": {
+      "x-ps-parameter-info": {
+        "name": "User",
+        "description": "The username used to perform the operation.",
+        "flatten": false
+      }
+    },
+    "FilterParameter": {
+      "x-ps-parameter-info": {
+        "name": "Filter",
+        "description": "OData filter parameter.",
+        "flatten": false
+      }
+    },
+    "RegionParameter": {
+      "x-ps-parameter-info": {
+        "name": "Region",
+        "description": "Name of the region",
+        "flatten": false
+      }
+    },
+    "AlertNameParameter": {
+      "x-ps-parameter-info": {
+        "name": "AlertName",
+        "description": "Name of the alert.",
+        "flatten": false
+      }
+    },
+    "ApiVersionParameter": {
+      "x-ps-parameter-info": {
+        "name": "Apiversion",
+        "description": "Client Api Version.",
+        "flatten": false
+      }
+    },
+    "HeartbeatMachineNameBodyParameter": {
+      "x-ps-parameter-info": {
+        "name": "HeartbeatMachineName",
+        "description": "Name of a heartbeat machine.",
+        "flatten": false
+      }
+    },
+    "ResourceProviderRegistrationIdBodyParameter": {
+      "x-ps-parameter-info": {
+        "name": "ResourceProviderRegistrationId",
+        "description": "A resource provider registration id.",
+        "flatten": false
+      }
+    },
+    "ResourceRegistrationIdParameter": {
+      "x-ps-parameter-info": {
+        "name": "ResourceRegistrationId",
+        "description": "Resource registration id.",
+        "flatten": false
+      }
+    },
+    "LocationParameter": {
+      "x-ps-parameter-info": {
+        "name": "Location",
+        "description": "Location name.",
+        "flatten": false
+      }
+    },
+    "AlertParameter": {
+      "x-ps-parameter-info": {
+        "name": "Alert",
+        "description": "Updated Alert Parameter.",
+        "flatten": false
+      }
+    },
+    "ServiceHealthParameter": {
+      "x-ps-parameter-info": {
+        "name": "ServiceHealth",
+        "description": "Service Health name.",
+        "flatten": false
+      }
+    }
+  }
+}
