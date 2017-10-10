@@ -14,7 +14,8 @@ Creates an ExpressRoute circuit authorization.
 ## SYNTAX
 
 ```
-New-AzureRmExpressRouteCircuitAuthorization -Name <String> [<CommonParameters>]
+New-AzureRmExpressRouteCircuitAuthorization -Name <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,6 +47,21 @@ New-AzureRmExpressRouteCircuit when creating a brand-new ExpressRoute circuit.
 For more information, see the documentation for the New-AzureRmExpressRouteCircuit cmdlet.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 Specifies a unique name for the new ExpressRoute circuit authorization.
