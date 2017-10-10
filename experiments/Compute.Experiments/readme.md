@@ -13,3 +13,9 @@
    1. existing resource location
    1. resource group location
    1. [future] use current global/default user's/subscription location
+1. What should be happened if a resource exists?
+   1. should the behavior depends on a type/class of a resource?
+   1. should it validate if it's compatable?
+   1. should it modify the resource?
+   1. should it delete and create a new one?
+   1. should we have two types of commands with different behavior, such as `New` and `Update`?
