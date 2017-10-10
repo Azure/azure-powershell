@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
+Module Name: AzureRM.DataLakeStore
 ms.assetid: 234D579E-B62D-4D70-8D2E-22AC0D9AC513
 online version: 
 schema: 2.0.0
@@ -14,17 +15,19 @@ Gets details of a Data Lake Store account.
 
 ### All In Subscription (Default)
 ```
-Get-AzureRmDataLakeStoreAccount [<CommonParameters>]
+Get-AzureRmDataLakeStoreAccount [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### All In Resource Group
 ```
-Get-AzureRmDataLakeStoreAccount [-ResourceGroupName] <String> [<CommonParameters>]
+Get-AzureRmDataLakeStoreAccount [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### Specific Account
 ```
-Get-AzureRmDataLakeStoreAccount [[-ResourceGroupName] <String>] [-Name] <String> [<CommonParameters>]
+Get-AzureRmDataLakeStoreAccount [[-ResourceGroupName] <String>] [-Name] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,6 +43,21 @@ PS C:\>Get-AzureRmDataLakeStoreAccount -Name "ContosoADL"
 This command gets the account named ContosoADL.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 Specifies the name of the account to get.
