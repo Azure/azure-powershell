@@ -293,8 +293,14 @@ Gets a Virtual Network Gateway Connection
 ### [Get-AzureRmVirtualNetworkGatewayConnectionSharedKey](Get-AzureRmVirtualNetworkGatewayConnectionSharedKey.md)
 {{Manually Enter Get-AzureRmVirtualNetworkGatewayConnectionSharedKey Description Here}}
 
+### [Get-AzureRmVirtualNetworkGatewayConnectionVpnDeviceConfigScript](Get-AzureRmVirtualNetworkGatewayConnectionVpnDeviceConfigScript.md)
+This commandlet takes the connection resource, VPN device brand, model, firmware version, and return the corresponding configuration script that customers can apply directly on their on-premises VPN devices. The script will follow the syntax of the selected device, and fill in the necessary parameters such as Azure gateway public IP addresses, virtual network address prefixes, VPN tunnel pre-shared key, etc. so customers can simply copy-paste to their VPN device configurations.
+
 ### [Get-AzureRmVirtualNetworkGatewayLearnedRoute](Get-AzureRmVirtualNetworkGatewayLearnedRoute.md)
 Lists routes learned by an Azure virtual network gateway
+
+### [Get-AzureRmVirtualNetworkGatewaySupportedVpnDevice](Get-AzureRmVirtualNetworkGatewaySupportedVpnDevice.md)
+This commandlet returns a list of supported VPN device brands, models, and firmware versions.
 
 ### [Get-AzureRmVirtualNetworkPeering](Get-AzureRmVirtualNetworkPeering.md)
 Gets the virtual network peering.
