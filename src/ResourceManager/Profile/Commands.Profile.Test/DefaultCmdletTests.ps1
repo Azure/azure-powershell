@@ -27,7 +27,7 @@ function Test-DefaultResourceGroup
 		# Test GetDefault when default not set
 		$output = Get-AzureRmDefault
 		Assert-Null($output)
-		$output1 = Get-AzureRmDefault -ResourceGroup
+		$output = Get-AzureRmDefault -ResourceGroup
 		Assert-Null($output)
 		$storedValue = (Get-AzureRmContext).ExtendedProperties["Default Resource Group"]
 		Assert-Null($storedValue)
@@ -35,16 +35,16 @@ function Test-DefaultResourceGroup
 		# Test Resoure Group created when it doesn't exist
 		$output = Set-AzureRmDefault -ResourceGroupName $rgname -Force
 		$resourcegroup = Get-AzureRmResourceGroup -Name $rgname
-		Assert-AreEqual $ouput.ResourceGroupName $resourcegroup.ResourceGroupName "fail 1"
+		Assert-AreEqual $output.Name $resourcegroup.ResourceGroupName
 		$context = Get-AzureRmContext
 		$storedValue = $context.ExtendedProperties["Default Resource Group"]
-		Assert-AreEqual $storedValue $output.Name "fail 2"
+		Assert-AreEqual $storedValue $output.Name
 
 		# Test GetDefault when default is set
 		$output = Get-AzureRmDefault
-		Assert-AreEqual $output.ResourceGroupName $resourceGroup.ResourceGroupName "fail 3"
+		Assert-AreEqual $output.Name $resourceGroup.ResourceGroupName
 		$output = Get-AzureRmDefault -ResourceGroup
-		Assert-AreEqual $output.ResourceGroupName $resourceGroup.ResourceGroupName "fail 4"
+		Assert-AreEqual $output.Name $resourceGroup.ResourceGroupName
 
 		# Test Clear-AzureRmDefault (no parameters shown)
 		Clear-AzureRmDefault -Force
@@ -56,10 +56,10 @@ function Test-DefaultResourceGroup
 
 		# Test SetDefault when resource group exists
 		$output = Set-AzureRmDefault -ResourceGroupName $rgname
-		Assert-AreEqual $ouput.ResourceGroupName $resourcegroup.ResourceGroupName "fail 5"
+		Assert-AreEqual $output.Name $resourcegroup.ResourceGroupName
 		$context = Get-AzureRmContext
 		$storedValue = $context.ExtendedProperties["Default Resource Group"]
-		Assert-AreEqual $storedValue $output.ResourceGroupName "fail 6"
+		Assert-AreEqual $storedValue $output.Name
 
 		# Test Clear-AzureRmDefault (no parameters shown)
 		Clear-AzureRmDefault -ResourceGroup
