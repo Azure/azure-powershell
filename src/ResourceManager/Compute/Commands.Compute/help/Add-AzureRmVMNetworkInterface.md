@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
+Module Name: AzureRM.Compute
 ms.assetid: BF80D456-DAB1-4B51-B50F-A75C2C66A472
 online version: 
 schema: 2.0.0
