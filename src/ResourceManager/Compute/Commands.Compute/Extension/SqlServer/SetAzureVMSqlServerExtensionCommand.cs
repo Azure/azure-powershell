@@ -94,7 +94,8 @@ namespace Microsoft.Azure.Commands.Compute
             Mandatory = false,
             Position = 8,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Location of the resource."), LocationCompleter(new string[] { "Microsoft.Compute/virtualMachines" })]
+            HelpMessage = "Location of the resource.")]
+        [LocationCompleter(new string[] { "Microsoft.Compute/virtualMachines" })]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
