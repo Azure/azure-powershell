@@ -84,6 +84,7 @@ function New-AzVm {
             if (-not $locationi.Value) {
                 $locationi.Value = "eastus"
             }
+            Write-Verbose ("Resource Location " + $locationi.Value)
         } else {
             $locationi.Value = $Location
         }
@@ -194,6 +195,7 @@ class AzureObject {
         $this.Priority++
     }
 
+    <#
     [string] GetResourceType() {
         return $null
     }
@@ -203,6 +205,15 @@ class AzureObject {
     }
 
     [object] Create([CreateParams] $p) {
+        return $null
+    }
+    #>
+
+    [string] GetLocation([object] $context) {
+        $i = $this.GetInfo($context)
+        if ($i) {
+            return $i.Location
+        }
         return $null
     }
 
@@ -223,13 +234,11 @@ class AzureObject {
 
     [void] UpdateLocation([Location] $location, [object] $context) {
         if ($this.Priority -gt $location.Priority) {
-            if ($this.Name) {
-                $i = $this.GetInfo($context)
-                if ($i) {
-                    $location.Value = $i.Location
-                    $location.Priority = $this.Priority
-                    return;
-                }
+            $l = $this.GetLocation($context)
+            if ($l) {
+                $location.Value = $l
+                $location.Priority = $this.Priority
+                return;
             }
             foreach ($child in $this.Children) {
                 $child.UpdateLocation($location, $context)
@@ -460,6 +469,10 @@ class Subnet: AzureObject {
             return $this.GetInfoFromVirtualNetworkInfo($virtualNetworkInfo)
         }
         return $null
+    }
+
+    [string] GetLocation([object] $context) {
+        return $this.VirtualNetwork.GetLocation($context)
     }
 
     [object] Create([CreateParams] $p) {

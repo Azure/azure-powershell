@@ -39,6 +39,19 @@ Describe 'New-AzVm' {
             -Verbose
         $result.Name | Should Be X2
     }
+    It 'Create Another VM, share VirtualNetwork' {
+        $result = New-AzVm `
+            -Name X3 `
+            -Credential $vmCredential `
+            -ResourceGroupName Something1 `
+            -VirtualNetworkName X2 `
+            -SubnetName X2 `
+            -AzureRmContext $context `
+            -ImageName UbuntuLTS `
+            -Verbose
+
+        $result.Name | Should Be X3
+    }
     It 'Create Linux VM AsJob' {
         Remove-AzureRmResourceGroup -Name MyVMA3 -Force
 
