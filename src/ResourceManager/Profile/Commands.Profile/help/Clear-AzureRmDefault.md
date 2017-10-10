@@ -40,7 +40,9 @@ This command removes the default resource group set by the user in the current c
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.```yaml
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
 Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
@@ -53,7 +55,9 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Remove all defaults if no default is specified```yaml
+Remove all defaults if no default is specified
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
