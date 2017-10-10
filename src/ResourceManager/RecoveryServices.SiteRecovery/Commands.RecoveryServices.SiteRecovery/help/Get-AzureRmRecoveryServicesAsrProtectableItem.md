@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.dll-Help.xml
+Module Name: AzureRM.RecoveryServices.SiteRecovery
 online version: 
 schema: 2.0.0
 ---
@@ -14,19 +15,19 @@ Get the protectable items in an ASR protection container.
 ### ByObject (Default)
 ```
 Get-AzureRmRecoveryServicesAsrProtectableItem -ProtectionContainer <ASRProtectionContainer>
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByObjectWithName
 ```
 Get-AzureRmRecoveryServicesAsrProtectableItem -Name <String> -ProtectionContainer <ASRProtectionContainer>
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByObjectWithFriendlyName
 ```
 Get-AzureRmRecoveryServicesAsrProtectableItem -FriendlyName <String>
- -ProtectionContainer <ASRProtectionContainer> [<CommonParameters>]
+ -ProtectionContainer <ASRProtectionContainer> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,6 +43,21 @@ PS C:\> $ProtectableItems = Get-AzureRmRecoveryServicesAsrProtectableItem -Prote
 Gets all the protectable items in specified ASR protection container.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -FriendlyName
 Specifies the friendly name of the ASR protectable item.
