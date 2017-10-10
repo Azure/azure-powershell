@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// <returns>List of Database activity</returns>
         protected override IEnumerable<AzureSqlDatabaseActivityModel> GetEntity()
         {
-            return ModelAdapter.CancelDatabaseActivity(this.ResourceGroupName, this.ServerName, this.ElasticPoolName, this.DatabaseName, this.OperationId);
+            return ModelAdapter.ListDatabaseActivity(this.ResourceGroupName, this.ServerName, this.ElasticPoolName, this.DatabaseName, this.OperationId);
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// <returns>The input entity</returns>
         protected override IEnumerable<AzureSqlDatabaseActivityModel> PersistChanges(IEnumerable<AzureSqlDatabaseActivityModel> entity)
         {
-            return entity;
+            return ModelAdapter.CancelDatabaseActivity(this.ResourceGroupName, this.ServerName, this.ElasticPoolName, this.DatabaseName, this.OperationId);
         }
     }
 }

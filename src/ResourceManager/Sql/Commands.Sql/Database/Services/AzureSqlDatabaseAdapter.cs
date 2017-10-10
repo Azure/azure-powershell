@@ -334,19 +334,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
             Communicator.CancelOperation(resourceGroupName, serverName, databaseName, operationId.Value);
 
             // After Cancel event is fired, state will be in 'CancelInProgress' for a while but should expect to finish in a minute
-            bool cancelled = false;
-            IEnumerable<AzureSqlDatabaseActivityModel> list = null;
-            int retryCount = 0;
-            do
-            {
-                list = ListDatabaseActivity(resourceGroupName, serverName, elasticPoolName, databaseName, operationId);
-                cancelled = (string.Equals(list.First().State, "Canceled", StringComparison.OrdinalIgnoreCase));
-                retryCount++;
-                System.Threading.Thread.Sleep(10000);
-            }
-            while (!cancelled && retryCount < 6);
 
-            return list;
+            return ListDatabaseActivity(resourceGroupName, serverName, elasticPoolName, databaseName, operationId);
         }
     }
 }
