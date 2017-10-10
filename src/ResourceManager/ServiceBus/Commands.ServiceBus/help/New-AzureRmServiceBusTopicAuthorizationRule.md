@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ServiceBus.dll-Help.xml
+Module Name: AzureRM.ServiceBus
 online version: 
 schema: 2.0.0
 ---
@@ -12,8 +13,8 @@ Creates a new authorization rule for the specified Service Bus topic.
 ## SYNTAX
 
 ```
-New-AzureRmServiceBusTopicAuthorizationRule [-ResourceGroup] <String> [-NamespaceName] <String>
- [-TopicName] <String> [-AuthorizationRuleName] <String> [-Rights] <String[]> [-WhatIf] [-Confirm]
+New-AzureRmServiceBusTopicAuthorizationRule [-ResourceGroup] <String> [-Namespace] <String> [-Topic] <String>
+ [-Name] <String> [-Rights] <String[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -31,13 +32,26 @@ Creates authorization rule `SBTopicAuthoRule1` with **Listen** and **Send** righ
 
 ## PARAMETERS
 
-### -AuthorizationRuleName
-The authorization rule name.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+AuthorizationRule Name.```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: AuthorizationRuleName
 
 Required: True
 Position: 2
@@ -46,13 +60,11 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -NamespaceName
-The Service Bus namespace name.
-
-```yaml
+### -Namespace
+Namespace Name.```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: NamespaceName
 
 Required: True
 Position: 1
@@ -84,6 +96,7 @@ The rights; for example,
 Type: String[]
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Listen, Send, Manage
 
 Required: True
 Position: 3
@@ -92,13 +105,11 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -TopicName
-The Service Bus topic name.
-
-```yaml
+### -Topic
+Topic Name.```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: TopicName
 
 Required: True
 Position: 2

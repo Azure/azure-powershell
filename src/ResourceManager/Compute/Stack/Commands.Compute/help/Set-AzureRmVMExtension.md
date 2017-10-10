@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
+Module Name: AzureRM.Compute
 ms.assetid: 064196C3-ABF3-4F3A-A4AB-EB0D27098C70
 online version: 
 schema: 2.0.0
@@ -17,7 +18,7 @@ Updates extension properties or adds an extension to a virtual machine.
 Set-AzureRmVMExtension -Publisher <String> -ExtensionType <String> [-Settings <Hashtable>]
  [-ProtectedSettings <Hashtable>] [-ResourceGroupName] <String> [-VMName] <String> [-Name <String>]
  [-TypeHandlerVersion <String>] [-Location <String>] [-DisableAutoUpgradeMinorVersion] [-ForceRerun <String>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SettingString
@@ -25,7 +26,7 @@ Set-AzureRmVMExtension -Publisher <String> -ExtensionType <String> [-Settings <H
 Set-AzureRmVMExtension -Publisher <String> -ExtensionType <String> [-SettingString <String>]
  [-ProtectedSettingString <String>] [-ResourceGroupName] <String> [-VMName] <String> [-Name <String>]
  [-TypeHandlerVersion <String>] [-Location <String>] [-DisableAutoUpgradeMinorVersion] [-ForceRerun <String>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -60,6 +61,21 @@ The final command modifies an extension of the virtual machine named VirtualMach
 The command specifies other required information that includes the publisher and the extension type.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DisableAutoUpgradeMinorVersion
 Indicates that this cmdlet prevents the Azure guest agent from automatically updating the extensions to a newer minor version.

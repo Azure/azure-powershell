@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
+Module Name: AzureRM.Compute
 ms.assetid: 9EE192A5-4E3F-41ED-A539-8E0A5D5EA4C9
 online version: 
 schema: 2.0.0
@@ -13,8 +14,9 @@ Updates the state of a VMSS.
 ## SYNTAX
 
 ```
-Update-AzureRmVmss [-ResourceGroupName] <String> -VMScaleSetName <String>
- [-VirtualMachineScaleSet] <VirtualMachineScaleSet> [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzureRmVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
+ [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,6 +32,21 @@ PS C:\> Update-AzureRmVmss -ResourceGroupName "Group001" -Name "VMSS001" -Virtua
 This command updates the state of the VMSS named VMSS001 that belongs to the resource group named Group001 to the state of a local VMSS object named LocalVMSS.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ResourceGroupName
 Specifies the name of the resource group the VMSS belongs to.
@@ -52,7 +69,7 @@ To obtain a VMSS object, use the Get-AzureRmVmss cmdlet.
 This virtual machine object contains the updated state for the VMSS.
 
 ```yaml
-Type: VirtualMachineScaleSet
+Type: PSVirtualMachineScaleSet
 Parameter Sets: (All)
 Aliases: 
 
@@ -72,7 +89,7 @@ Parameter Sets: (All)
 Aliases: Name
 
 Required: True
-Position: Named
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

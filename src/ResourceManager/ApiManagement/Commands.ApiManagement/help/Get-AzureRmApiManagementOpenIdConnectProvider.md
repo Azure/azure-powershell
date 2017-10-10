@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
+Module Name: AzureRM.ApiManagement
 ms.assetid: 15B6EAE2-56ED-4A01-B8EA-52B9FCDC1F66
 online version: 
 schema: 2.0.0
@@ -14,19 +15,20 @@ Gets OpenID Connect providers.
 
 ### Get all OpenID Connect Providers (Default)
 ```
-Get-AzureRmApiManagementOpenIdConnectProvider -Context <PsApiManagementContext> [<CommonParameters>]
+Get-AzureRmApiManagementOpenIdConnectProvider -Context <PsApiManagementContext>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Get by OpenID Connect Provider ID
 ```
 Get-AzureRmApiManagementOpenIdConnectProvider -Context <PsApiManagementContext>
- [-OpenIdConnectProviderId <String>] [<CommonParameters>]
+ [-OpenIdConnectProviderId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Find by OpenID Connect Provider friendly Name
 ```
 Get-AzureRmApiManagementOpenIdConnectProvider -Context <PsApiManagementContext> [-Name <String>]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -69,6 +71,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ServiceBus.dll-Help.xml
+Module Name: AzureRM.ServiceBus
 online version: 
 schema: 2.0.0
 ---
@@ -12,9 +13,9 @@ Updates the specified authorization rule description for the given Service Bus n
 ## SYNTAX
 
 ```
-Set-AzureRmServiceBusNamespaceAuthorizationRule [-ResourceGroup] <String> [-NamespaceName] <String>
- [-AuthRuleObj] <SharedAccessAuthorizationRuleAttributes> [[-AuthorizationRuleName] <String>]
- [[-Rights] <String[]>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzureRmServiceBusNamespaceAuthorizationRule [-ResourceGroup] <String> [-Namespace] <String>
+ [-InputObj] <SharedAccessAuthorizationRuleAttributes> [[-Name] <String>] [[-Rights] <String[]>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,28 +36,26 @@ Removes **Manage** from the access rights of the authorization rule `AuthoRule1`
 
 ## PARAMETERS
 
-### -AuthorizationRuleName
-The authorization rule name. Required if **-AuthruleObj** is not specified.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: String
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: 
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
-Position: 3
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AuthRuleObj
-The Service Bus namespace authorization rule object.
-
-```yaml
+### -InputObj
+ServiceBus NameSpace AuthorizationRule Object.```yaml
 Type: SharedAccessAuthorizationRuleAttributes
 Parameter Sets: (All)
-Aliases: 
+Aliases: AuthRuleObj
 
 Required: True
 Position: 2
@@ -65,13 +64,24 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -NamespaceName
-The Service Bus namespace name.
-
-```yaml
+### -Name
+AuthorizationRule Name - Required if 'AuthruleObj' not specified.```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: AuthorizationRuleName
+
+Required: False
+Position: 3
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Namespace
+ServiceBus Namespace Name.```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: NamespaceName
 
 Required: True
 Position: 1
@@ -103,6 +113,7 @@ Rights; for example
 Type: String[]
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Listen, Send, Manage
 
 Required: False
 Position: 4

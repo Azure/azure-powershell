@@ -15,5 +15,8 @@ This module contains commands for performing operations on a given Azure Analysi
 Adds an authenticated account to use for Azure Analysis Services server cmdlet requests.
 
 ### [Restart-AzureAnalysisServicesInstance](Restart-AzureAnalysisServicesInstance.md)
-Restarts a specified Azure Analysis Services server.
+Restarts an instance of Analysis Services server in the currently logged in Environment as specified in Add-AzureAnalysisServicesAccount command
+
+### [Sync-AzureAnalysisServicesInstance](Sync-AzureAnalysisServicesInstance.md)
+Synchronizes a specified database on the specified instance of Analysis Services server to all the query scaleout instances in the currently logged in Environment as specified in Add-AzureAnalysisServicesAccount command
 

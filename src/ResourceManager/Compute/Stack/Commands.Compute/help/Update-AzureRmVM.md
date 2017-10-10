@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
+Module Name: AzureRM.Compute
 ms.assetid: 38917534-49C6-47EA-B815-240F794EE655
 online version: 
 schema: 2.0.0
@@ -15,13 +16,15 @@ Updates the state of an Azure virtual machine.
 ### ResourceGroupNameParameterSetName (Default)
 ```
 Update-AzureRmVM -VM <PSVirtualMachine> [-Tags <Hashtable>] [-IdentityType <ResourceIdentityType>]
- [-ResourceGroupName] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AssignIdentity] [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### IdParameterSetName
 ```
 Update-AzureRmVM -VM <PSVirtualMachine> [-Tags <Hashtable>] [-IdentityType <ResourceIdentityType>]
- [-Id] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AssignIdentity] [-Id] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,6 +42,36 @@ The command updates it by using the virtual machine object stored in the $Virtua
 To obtain a virtual machine object, use the **Get-AzureRmVM** cmdlet.
 
 ## PARAMETERS
+
+### -AssignIdentity
+{{Fill AssignIdentity Description}}
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Id
 Specifies the Resource ID of the virtual machine.
@@ -62,6 +95,7 @@ The type of identity used for the virtual machine. Currently, the only supported
 Type: ResourceIdentityType
 Parameter Sets: (All)
 Aliases: 
+Accepted values: SystemAssigned
 
 Required: False
 Position: Named

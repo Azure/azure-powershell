@@ -575,3 +575,25 @@ Commands.Websites,Reset-AzureRmWebAppPublishingProfile.md,No synopsis found
 Commands.Websites,Reset-AzureRmWebAppSlotPublishingProfile.md,No synopsis found
 Commands.Websites,Restart-AzureRmWebAppSlot.md,No synopsis found
 Commands.Websites,Restore-AzureRmWebAppBackup.md,No synopsis found
+AzureRM.RecoveryServices,Get-AzureRmRecoveryServicesBackupProperty.md,No examples found
+AzureRM.Compute,Disable-AzureRmVmssDiskEncryption.md,No examples found
+AzureRM.Compute,Get-AzureRmVMRunCommandDocument.md,No examples found
+AzureRM.Compute,Get-AzureRmVmssDiskEncryption.md,No examples found
+AzureRM.Compute,Get-AzureRmVmssRollingUpgrade.md,No examples found
+AzureRM.Compute,Get-AzureRmVmssVMDiskEncryption.md,No examples found
+AzureRM.Compute,Invoke-AzureRmVMRunCommand.md,No examples found
+AzureRM.Compute,New-AzureRmVMSqlServerAutoBackupConfig.md,No description found for parameter InformationAction
+AzureRM.Compute,New-AzureRmVMSqlServerAutoBackupConfig.md,No description found for parameter InformationVariable
+AzureRM.Compute,New-AzureRmVMSqlServerAutoPatchingConfig.md,No description found for parameter InformationAction
+AzureRM.Compute,New-AzureRmVMSqlServerAutoPatchingConfig.md,No description found for parameter InformationVariable
+AzureRM.Compute,New-AzureRmVMSqlServerKeyVaultCredentialConfig.md,No description found for parameter InformationAction
+AzureRM.Compute,New-AzureRmVMSqlServerKeyVaultCredentialConfig.md,No description found for parameter InformationVariable
+AzureRM.Compute,New-AzureRmVMSqlServerKeyVaultCredentialConfig.md,No description found for parameter Profile
+AzureRM.Compute,Set-AzureRmVmssDiskEncryptionExtension.md,No examples found
+AzureRM.Compute,Set-AzureRmVmssRollingUpgradePolicy.md,No examples found
+AzureRM.Compute,Start-AzureRmVmssRollingOSUpgrade.md,No examples found
+AzureRM.Compute,Stop-AzureRmVmssRollingUpgrade.md,No examples found
+AzureRM.Storage,Add-AzureRmStorageAccountNetworkRule.md,No examples found
+AzureRM.Storage,Get-AzureRmStorageAccountNetworkRuleSet.md,No examples found
+AzureRM.Storage,Remove-AzureRmStorageAccountNetworkRule.md,No examples found
+AzureRM.Storage,Update-AzureRmStorageAccountNetworkRuleSet.md,No examples found

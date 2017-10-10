@@ -16,7 +16,8 @@ Creates a route table.
 ```
 New-AzureRmRouteTable -Name <String> -ResourceGroupName <String> -Location <String>
  [-Route <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSRoute]>]
- [-Tag <Hashtable>] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable>] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -59,6 +60,21 @@ the new table. The command specifies the resource group to which the table belon
 for the table.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Force
 Indicates that this cmdlet creates a route table even if a route table that has the same name already exists.

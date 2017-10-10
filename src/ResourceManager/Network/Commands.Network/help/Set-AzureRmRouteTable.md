@@ -14,7 +14,8 @@ Sets the goal state for a route table.
 ## SYNTAX
 
 ```
-Set-AzureRmRouteTable -RouteTable <PSRouteTable> [<CommonParameters>]
+Set-AzureRmRouteTable -RouteTable <PSRouteTable> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -72,6 +73,21 @@ The command passes that table to the Add-AzureRmRouteConfig cmdlet by using the 
 **Add-AzureRmRouteConfig** adds the route named Route07, and then passes the result to the current cmdlet, which updates the table to reflect your changes.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -RouteTable
 Specifies a route table object that represents the goal state to which this cmdlet sets the route table.

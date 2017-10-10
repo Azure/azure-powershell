@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.MachineLearning.dll-Help.xml
+Module Name: AzureRM.MachineLearning
 online version: 
 schema: 2.0.0
 ---
@@ -13,14 +14,14 @@ Exports the web service definition object as a JSON formatted string.
 
 ### Export to file.
 ```
-Export-AzureRmMlWebService -WebService <WebService> -OutputFile <String> [-Force] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Export-AzureRmMlWebService -WebService <WebService> -OutputFile <String> [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Export to JSON string.
 ```
-Export-AzureRmMlWebService -WebService <WebService> [-ToJsonString] [-Force] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Export-AzureRmMlWebService -WebService <WebService> [-ToJsonString] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,6 +35,8 @@ You can return the string immediately or save it to a file.
 
 
 
+
+
 ```
 Export-AzureRmMlWebService -WebService $svc -ToJsonString
 ```
@@ -43,11 +46,28 @@ Export-AzureRmMlWebService -WebService $svc -ToJsonString
 
 
 
+
+
 ```
 Export-AzureRmMlWebService -WebService $svc -OutputFile "C:\mlservice.json"
 ```
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Force
 Do not ask for confirmation.
@@ -146,7 +166,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### WebService
-
 Parameter 'WebService' accepts value of type 'WebService' from the pipeline
 
 ## OUTPUTS

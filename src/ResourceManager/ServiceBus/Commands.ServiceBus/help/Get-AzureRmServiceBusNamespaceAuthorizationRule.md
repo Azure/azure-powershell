@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ServiceBus.dll-Help.xml
+Module Name: AzureRM.ServiceBus
 online version: 
 schema: 2.0.0
 ---
@@ -12,8 +13,8 @@ Gets a description of the specified authorization rule for a given namespace.
 ## SYNTAX
 
 ```
-Get-AzureRmServiceBusNamespaceAuthorizationRule [-ResourceGroup] <String> [-NamespaceName] <String>
- [[-AuthorizationRuleName] <String>] [<CommonParameters>]
+Get-AzureRmServiceBusNamespaceAuthorizationRule [-ResourceGroup] <String> [-Namespace] <String>
+ [[-Name] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,13 +31,26 @@ Returns the specified authorization rule description for a specified namespace.
 
 ## PARAMETERS
 
-### -AuthorizationRuleName
-The Service Bus namespace authorization rule name.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+ServiceBus Namespace AuthorizationRule Name.```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: AuthorizationRuleName
 
 Required: False
 Position: 2
@@ -45,13 +59,11 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -NamespaceName
-The Service Bus namespace name.
-
-```yaml
+### -Namespace
+ServiceBus Namespace Name.```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: NamespaceName
 
 Required: True
 Position: 1
