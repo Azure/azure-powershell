@@ -171,7 +171,8 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Location of the resource."), LocationCompleter(new string[] { "Microsoft.Storage/storageAccounts" })]
+            HelpMessage = "Location of the resource.")]
+        [LocationCompleter(new string[] { "Microsoft.Storage/storageAccounts" })]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 

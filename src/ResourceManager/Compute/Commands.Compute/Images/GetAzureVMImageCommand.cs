@@ -38,7 +38,8 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true)]
         [Parameter(ParameterSetName = GetVMImageDetailParamSetName,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true), LocationCompleter(new string[] { "Microsoft.Compute/locations/publishers" })]
+            ValueFromPipelineByPropertyName = true)]
+        [LocationCompleter(new string[] { "Microsoft.Compute/locations/publishers" })]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 

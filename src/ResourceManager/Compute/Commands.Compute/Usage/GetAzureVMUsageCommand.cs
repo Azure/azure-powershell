@@ -31,7 +31,8 @@ namespace Microsoft.Azure.Commands.Compute
            Mandatory = true,
            Position = 0,
            ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The location name."), LocationCompleter(new string[] { "Microsoft.Compute/locations/usages" })]
+           HelpMessage = "The location name.")]
+        [LocationCompleter(new string[] { "Microsoft.Compute/locations/usages" })]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 

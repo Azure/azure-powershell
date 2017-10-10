@@ -47,7 +47,8 @@ namespace Microsoft.Azure.Commands.Compute
             Mandatory = true,
             Position = 1,
             ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNullOrEmpty, LocationCompleter(new string[] { "Microsoft.Compute/virtualMachines" })]
+        [LocationCompleter(new string[] { "Microsoft.Compute/virtualMachines" })]
+        [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
         [Alias("VMProfile")]
