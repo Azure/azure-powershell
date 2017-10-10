@@ -14,83 +14,83 @@
 
 <#
 .SYNOPSIS
-Tests Set-AzureRmDefault when resource group given exists/does not exist
+Tests cmdlets surrounding default resource group
 #>
-function Test-SetAzureRmDefault
+function Test-DefaultResourceGroup
 {
-	$output = Set-AzureRmDefault -ResourceGroupName "TestResourceGroup" -Force
-	Assert-True { $output.Name -eq "TestResourceGroup" }
-	Clear-AzureRmDefault
-	$output = Set-AzureRmDefault -ResourceGroupName "TestResourceGroup"
-	Assert-True { $output.Name -eq "TestResourceGroup" }
-	Remove-AzureRmResourceGroup -Name "TestResourceGroup" -Force
-	Clear-AzureRmDefault
-}
-
-<#
-.SYNOPSIS
-Tests Get-AzureRmDefault when no default set
-#>
-function Test-GetAzureRmDefaultNoDefault
-{
-	$output = Get-AzureRmDefault
-	Assert-Null($output)
-	$output1 = Get-AzureRmDefault -ResourceGroup
-	Assert-Null($output)
-}
-
-<#
-.SYNOPSIS
-Tests Get-AzureRmDefault when default set
-#>
-function Test-GetAzureRmDefaultWithDefault
-{
-	$resourceGroup = Set-AzureRmDefault -ResourceGroupName "TestResourceGroup"
-	$output = Get-AzureRmDefault
-	Assert-AreEqual $output.Name $resourceGroup[1].Name
-	$output1 = Get-AzureRmDefault -ResourceGroup
-	Assert-AreEqual $output1.Name $resourceGroup[1].Name
-	Remove-AzureRmResourceGroup -Name "TestResourceGroup" -Force
-	Clear-AzureRmDefault
-}
-
-<#
-.SYNOPSIS
-Tests Clear-AzureRmDefault when no default set
-#>
-function Test-ClearAzureRmDefaultNoDefault
-{
-	$output = Get-AzureRmDefault
-	Assert-Null($output)
-	Clear-AzureRmDefault
-	$output1 = Get-AzureRmDefault
-	Assert-Null($output1)
+	# Setup
+	$rgname = Get-ResourceGroupName
 	Clear-AzureRmDefault -ResourceGroup
-	$output2 = Get-AzureRmDefault
-	Assert-Null($output2)
+
+	try
+	{
+		# Test GetDefault when default not set
+		$output = Get-AzureRmDefault
+		Assert-Null($output)
+		$output1 = Get-AzureRmDefault -ResourceGroup
+		Assert-Null($output)
+		$storedValue = (Get-AzureRmContext).ExtendedProperties["Default Resource Group"]
+		Assert-Null($storedValue)
+
+		# Test Resoure Group created when it doesn't exist
+		$output = Set-AzureRmDefault -ResourceGroupName $rgname -Force
+		$resourcegroup = Get-AzureRmResourceGroup -Name $rgname
+		Assert-AreEqual $ouput.ResourceGroupName $resourcegroup.ResourceGroupName "fail 1"
+		$context = Get-AzureRmContext
+		$storedValue = $context.ExtendedProperties["Default Resource Group"]
+		Assert-AreEqual $storedValue $output.Name "fail 2"
+
+		# Test GetDefault when default is set
+		$output = Get-AzureRmDefault
+		Assert-AreEqual $output.ResourceGroupName $resourceGroup.ResourceGroupName "fail 3"
+		$output = Get-AzureRmDefault -ResourceGroup
+		Assert-AreEqual $output.ResourceGroupName $resourceGroup.ResourceGroupName "fail 4"
+
+		# Test Clear-AzureRmDefault (no parameters shown)
+		Clear-AzureRmDefault -Force
+		$output = Get-AzureRmDefault
+		Assert-Null($output)
+		$context = Get-AzureRmContext
+		$storedValue = $context.ExtendedProperties["Default Resource Group"]
+		Assert-Null($storedValue)
+
+		# Test SetDefault when resource group exists
+		$output = Set-AzureRmDefault -ResourceGroupName $rgname
+		Assert-AreEqual $ouput.ResourceGroupName $resourcegroup.ResourceGroupName "fail 5"
+		$context = Get-AzureRmContext
+		$storedValue = $context.ExtendedProperties["Default Resource Group"]
+		Assert-AreEqual $storedValue $output.ResourceGroupName "fail 6"
+
+		# Test Clear-AzureRmDefault (no parameters shown)
+		Clear-AzureRmDefault -ResourceGroup
+		$output = Get-AzureRmDefault
+		Assert-Null($output)
+		$context = Get-AzureRmContext
+		$storedValue = $context.ExtendedProperties["Default Resource Group"]
+		Assert-Null($storedValue)
+	}
+	finally
+	{
+		Clean-ResourceGroup($rgname)
+	}
 }
 
 <#
 .SYNOPSIS
-Tests Clear-AzureRmDefault when default set
+Gets valid resource group name
 #>
-function Test-ClearAzureRmDefaultWithDefault
+function Get-ResourceGroupName
 {
-	$resourceGroup = Set-AzureRmDefault -ResourceGroupName "TestResourceGroup"
-	$output = Get-AzureRmDefault
-	Assert-AreEqual $output.Name $resourceGroup[1].Name
+    return getAssetName
+}
 
-	Clear-AzureRmDefault
-	$output = Get-AzureRmDefault
-	Assert-Null($output)
-
-	$resourceGroup = Set-AzureRmDefault -ResourceGroupName "TestResourceGroup"
-	$output = Get-AzureRmDefault
-	Assert-AreEqual $output.Name $resourceGroup.Name
-
-	Clear-AzureRmDefault -ResourceGroup
-	$output = Get-AzureRmDefault
-	Assert-Null($output)
-
-	Remove-AzureRmResourceGroup -Name "TestResourceGroup" -Force
+<#
+.SYNOPSIS
+Cleans the created resource groups
+#>
+function Clean-ResourceGroup($rgname)
+{
+    if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) {
+        Remove-AzureRmResourceGroup -Name $rgname -Force
+    }
 }
