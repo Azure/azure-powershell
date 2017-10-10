@@ -70,6 +70,9 @@
     ".\\src\\ResourceManager\\LogicApp\\Commands.LogicApp.Test\\bin\\Debug\\Microsoft.Azure.Commands.LogicApp.Test.dll"
   ],
   "src/ResourceManager/MachineLearning/": [],
+  "src/ResourceManager/MachineLearningCompute/" : [
+     ".\\src\\ResourceManager\\MachineLearningCompute\\Commands.MachineLearningCompute.Test\\bin\\Debug\\Microsoft.Azure.Commands.MachineLearningCompute.Test.dll"
+  ],
   "src/ResourceManager/Media/": [],
   "src/ResourceManager/Network/": [
     ".\\src\\ResourceManager\\Network\\Commands.Network.Test\\bin\\Debug\\Microsoft.Azure.Commands.Network.Test.dll"

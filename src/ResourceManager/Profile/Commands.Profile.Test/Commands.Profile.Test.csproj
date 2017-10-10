@@ -187,10 +187,12 @@
     <Compile Include="AzureRmProfileTests.cs" />
     <Compile Include="ClientFactoryTests.cs" />
     <Compile Include="CommonDataCmdletTests.cs" />
+    <Compile Include="ContextModelTests.cs" />
     <Compile Include="EnvironmentCmdletTests.cs" />
     <Compile Include="ErrorResolutionTests.cs" />
     <Compile Include="LocationCompleterUnitTests.cs" />
     <Compile Include="MockDataStore.cs" />
+    <Compile Include="MockServiceClient.cs" />
     <Compile Include="MockSubscriptionClientFactory.cs" />
     <Compile Include="NullClient.cs" />
     <Compile Include="ProfileController.cs" />
