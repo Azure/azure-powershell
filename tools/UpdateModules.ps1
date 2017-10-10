@@ -78,9 +78,8 @@ if ($Profile -eq "Stack")
 
 
 $resourceManagerRootFolder = "$packageFolder\$buildConfig\ResourceManager\AzureResourceManager"
-$publishToLocal = test-path $repositoryLocation
 $templateLocation = "$PSScriptRoot\AzureRM.Example.psm1"
-if (($scope -eq 'All') -or $publishToLocal ) {
+if (($scope -eq 'All')) {
     # If we publish 'All' or to local folder, publish AzureRM.Profile first, becasue it is the common dependency
     Write-Host "Updating profile module"
     Create-ModulePsm1 -ModulePath "$resourceManagerRootFolder\AzureRM.Profile" -TemplatePath $templateLocation
@@ -94,14 +93,14 @@ if (($scope -eq 'All') -or ($scope -eq 'AzureStorage')) {
     Create-ModulePsm1 -ModulePath $modulePath -TemplatePath $templateLocation
 } 
 
-if (($scope -eq 'All') -or ($scope -eq 'ServiceManagement')) {
+if ((($scope -eq 'All') -or ($scope -eq 'ServiceManagement')) -and ($Profile -ne "Stack")) {
     $modulePath = "$packageFolder\$buildConfig\ServiceManagement\Azure"
     # Publish Azure module
     Write-Host "Updating ServiceManagement(aka Azure) module from $modulePath"
     Create-ModulePsm1 -ModulePath $modulePath -TemplatePath $templateLocation
 } 
 
-$resourceManagerModules = Get-ChildItem -Path $resourceManagerRootFolder -Directory
+$resourceManagerModules = Get-ChildItem -Path $resourceManagerRootFolder -Directory -Exclude Azs.*
 if ($scope -eq 'All') {  
     foreach ($module in $resourceManagerModules) {
         # filter out AzureRM.Profile which always gets published first 
