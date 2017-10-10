@@ -16,7 +16,7 @@ Creates a peering between two virtual networks.
 ```
 Add-AzureRmVirtualNetworkPeering -Name <String> -VirtualNetwork <PSVirtualNetwork>
  -RemoteVirtualNetworkId <String> [-BlockVirtualNetworkAccess] [-AllowForwardedTraffic] [-AllowGatewayTransit]
- [-UseRemoteGateways] [<CommonParameters>]
+ [-UseRemoteGateways] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,9 +44,8 @@ Add-AzureRmVirtualNetworkPeering -Name myVnet1ToMyVnet2' -VirtualNetwork $vnet1 
 
 # Peer VNet2 to VNet1.
 Add-AzureRmVirtualNetworkPeering -Name 'myVnet2ToMyVnet1' -VirtualNetwork $vnet2 -RemoteVirtualNetworkId $vnet1.Id
-
-
 ```
+
 Note that a peering link must be created from vnet1 to vnet2 and vice versa in order for peering to work.
 
 ### Example 2: Create a peering between two virtual networks in different regions
@@ -111,6 +110,21 @@ Indicates that this cmdlet blocks the virtual machines in the linked virtual net
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
