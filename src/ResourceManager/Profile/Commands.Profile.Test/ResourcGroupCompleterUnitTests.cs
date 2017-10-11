@@ -26,8 +26,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         public void ReturnsEmptyListWhenNoResourceGroupsExist()
         {
             IList<string> resourceGroupsReturned = new List<string>();
-
-            Assert.Equal(ResourceGroupCompleterAttribute.GetResourceGroups(resourceGroupsReturned, null), new string[] { });
+            Assert.Collection(ResourceGroupCompleterAttribute.GetResourceGroups(resourceGroupsReturned, null));
         }
 
         [Fact]
@@ -36,8 +35,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         {
             IList<string> resourceGroupsReturned = new List<string>();
             resourceGroupsReturned.Add("test1");
-
-            Assert.Equal(ResourceGroupCompleterAttribute.GetResourceGroups(resourceGroupsReturned, null), new string[] { "test1" });
+            Assert.Collection(ResourceGroupCompleterAttribute.GetResourceGroups(resourceGroupsReturned, null), e1 => Assert.Equal("test1", e1));
         }
 
         [Fact]
@@ -46,8 +44,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         {
             IList<string> resourceGroupsReturned = new List<string>();
             resourceGroupsReturned.Add("test1");
-
-            Assert.Equal(ResourceGroupCompleterAttribute.GetResourceGroups(resourceGroupsReturned, "test1"), new string[] { "test1" });
+            Assert.Collection(ResourceGroupCompleterAttribute.GetResourceGroups(resourceGroupsReturned, "test1"), e1 => Assert.Equal("test1", e1));
         }
 
         [Fact]
@@ -56,8 +53,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         {
             IList<string> resourceGroupsReturned = new List<string>();
             resourceGroupsReturned.Add("test1");
-
-            Assert.Equal(ResourceGroupCompleterAttribute.GetResourceGroups(resourceGroupsReturned, "invalidDefault"), new string[] { "test1" });
+            Assert.Collection(ResourceGroupCompleterAttribute.GetResourceGroups(resourceGroupsReturned, "invalidDefault"), e1 => Assert.Equal("test1", e1));
         }
 
         [Fact]
@@ -69,8 +65,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
             resourceGroupsReturned.Add("test2");
             resourceGroupsReturned.Add("test3");
             resourceGroupsReturned.Add("test4");
-
-            Assert.Equal(ResourceGroupCompleterAttribute.GetResourceGroups(resourceGroupsReturned, null), new string[] { "test1", "test2", "test3", "test4" });
+            Assert.Collection(ResourceGroupCompleterAttribute.GetResourceGroups(resourceGroupsReturned, null), e1 => Assert.Equal("test1", e1), 
+                e2 => Assert.Equal("test2", e2), e3 => Assert.Equal("test3", e3), e4 => Assert.Equal("test4", e4));
         }
 
         [Fact]
@@ -82,8 +78,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
             resourceGroupsReturned.Add("test2");
             resourceGroupsReturned.Add("test3");
             resourceGroupsReturned.Add("test4");
-
-            Assert.Equal(ResourceGroupCompleterAttribute.GetResourceGroups(resourceGroupsReturned, "test3"), new string[] { "test3", "test1", "test2", "test4" });
+            Assert.Collection(ResourceGroupCompleterAttribute.GetResourceGroups(resourceGroupsReturned, "test3"), e1 => Assert.Equal("test3", e1),
+                e2 => Assert.Equal("test1", e2), e3 => Assert.Equal("test2", e3), e4 => Assert.Equal("test4", e4));
         }
     }
 }
