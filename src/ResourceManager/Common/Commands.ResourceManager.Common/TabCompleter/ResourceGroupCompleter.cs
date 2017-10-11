@@ -47,34 +47,31 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.TabCompletion
                             context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager),
                             instance.AuthenticationFactory.GetServiceClientCredentials(context, AzureEnvironment.Endpoint.ResourceManager),
                             instance.ClientFactory.GetCustomHandlers());
-                        //var client = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
                         client.SubscriptionId = context.Subscription.Id;
                         var resourceGroups = client.ResourceGroups.ListAsync();
                         if (resourceGroups.Wait(TimeSpan.FromSeconds(5)))
                         {
                             if (resourceGroups.Result != null)
                             {
-                                var resourceGroupList = resourceGroups.Result.ToList();
+                                var resourceGroupList = resourceGroups.Result;
                                 foreach (ResourceGroup resourceGroup in resourceGroupList)
                                 {
                                     _resourceGroupNames.Add(resourceGroup.Name);
                                 }
                             }
-
+#if DEBUG
                             else
                             {
-#if DEBUG
                                 throw new Exception("Result from client.ResourceGroups is null");
-#endif
                             }
+#endif
                         }
-
+#if DEBUG
                         else
                         {
-#if DEBUG
                             throw new Exception("client.ResourceGroups call timed out");
-#endif
                         }
+#endif
                     }
 
                     catch (Exception ex)
