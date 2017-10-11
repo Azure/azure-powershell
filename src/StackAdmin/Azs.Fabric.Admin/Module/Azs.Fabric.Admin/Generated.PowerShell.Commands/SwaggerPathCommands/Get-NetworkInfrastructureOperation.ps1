@@ -38,14 +38,14 @@ Import-Module -Name (Join-Path -Path $PSScriptRoot -ChildPath .. | Join-Path -Ch
 
 .EXAMPLE
 
-Get-AzsComputeFabricOperation -Location "local" -Provider "Microsoft.Fabric.Admin" -NetworkOperationResult "fdcdefb6-6fd0-402c-8b0c-5765b8fc4dc1"
+Get-NetworkInfrastructureOperation -Location "local" -Provider "Microsoft.Fabric.Admin" -NetworkOperationResult "fdcdefb6-6fd0-402c-8b0c-5765b8fc4dc1"
 
 ProvisioningState
 -----------------------
 Succeeded
 
 #>
-function Get-NetworkFabricOperation
+function Get-NetworkInfrastructureOperation
 {
     [OutputType([Microsoft.AzureStack.Management.Fabric.Admin.Models.OperationStatus])]
     [CmdletBinding(DefaultParameterSetName='NetworkFabricOperations_Get')]

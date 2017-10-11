@@ -15,11 +15,12 @@ Get a list of infrastructure role instances.
 ### InfrastructureRoleInstances_List (Default)
 ```
 Get-AzsInfrastructureRoleInstance [-Filter <String>] [-Skip <Int32>] -Location <String> [-Top <Int32>]
+ [<CommonParameters>]
 ```
 
 ### InfrastructureRoleInstances_Get
 ```
-Get-AzsInfrastructureRoleInstance -InfrastructureRoleInstance <String> -Location <String>
+Get-AzsInfrastructureRoleInstance -InfrastructureRoleInstance <String> -Location <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -134,6 +135,9 @@ Default value: -1
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

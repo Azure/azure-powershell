@@ -14,12 +14,12 @@ Get the regions health status.  Azure Stack currently only supports a single reg
 
 ### RegionHealths_List (Default)
 ```
-Get-AzsRegionHealth [-Filter <String>] [-Skip <Int32>] -Location <String> [-Top <Int32>]
+Get-AzsRegionHealth [-Filter <String>] [-Skip <Int32>] -Location <String> [-Top <Int32>] [<CommonParameters>]
 ```
 
 ### RegionHealths_Get
 ```
-Get-AzsRegionHealth -Region <String> -Location <String>
+Get-AzsRegionHealth -Region <String> -Location <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -115,6 +115,9 @@ Default value: -1
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

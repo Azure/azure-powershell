@@ -12,14 +12,15 @@ Get infrastructure roles.
 
 ## SYNTAX
 
-### InfrastructureRoles_List (Default)
+### InfraRoles_List (Default)
 ```
 Get-AzsInfrastructureRole [-Filter <String>] [-Skip <Int32>] -Location <String> [-Top <Int32>]
+ [<CommonParameters>]
 ```
 
-### InfrasstructureRoles_Get
+### InfraRoles_Get
 ```
-Get-AzsInfrastructureRole -Location <String> -InfrastructureRole <String>
+Get-AzsInfrastructureRole -Location <String> -InfrastructureRole <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -59,7 +60,7 @@ OData filter parameter.
 
 ```yaml
 Type: String
-Parameter Sets: InfrastructureRoles_List
+Parameter Sets: InfraRoles_List
 Aliases: 
 
 Required: False
@@ -74,7 +75,7 @@ Infra role name.
 
 ```yaml
 Type: String
-Parameter Sets: InfrastructureRoles_Get
+Parameter Sets: InfraRoles_Get
 Aliases: 
 
 Required: True
@@ -104,7 +105,7 @@ Skip the first N items as specified by the parameter value.
 
 ```yaml
 Type: Int32
-Parameter Sets: InfrastructureRoles_List
+Parameter Sets: InfraRoles_List
 Aliases: 
 
 Required: False
@@ -120,7 +121,7 @@ Applies after the -Skip parameter.
 
 ```yaml
 Type: Int32
-Parameter Sets: InfrastructureRoles_List
+Parameter Sets: InfraRoles_List
 Aliases: 
 
 Required: False
@@ -129,6 +130,9 @@ Default value: -1
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

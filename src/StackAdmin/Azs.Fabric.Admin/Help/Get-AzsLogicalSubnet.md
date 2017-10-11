@@ -15,12 +15,12 @@ Get logical subnets under a logical network at a specific location.
 ### LogicalSubnets_List (Default)
 ```
 Get-AzsLogicalSubnet [-Filter <String>] [-Skip <Int32>] -LogicalNetwork <String> -Location <String>
- [-Top <Int32>]
+ [-Top <Int32>] [<CommonParameters>]
 ```
 
 ### LogicalSubnets_Get
 ```
-Get-AzsLogicalSubnet -LogicalNetwork <String> -Location <String> -LogicalSubnet <String>
+Get-AzsLogicalSubnet -LogicalNetwork <String> -Location <String> -LogicalSubnet <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -142,6 +142,9 @@ Default value: -1
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
