@@ -13,15 +13,17 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.Storage;
+using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using System;
 using System.Management.Automation;
 using System.Runtime.InteropServices;
 using System.Security;
-using System.Security.Permissions;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -30,14 +32,12 @@ namespace Microsoft.Azure.Commands.Compute
     /// </summary>
     [Cmdlet(
         VerbsCommon.New,
-        AzureVMSqlServerAutoBackupConfigNoun,
+        ProfileNouns.VirtualMachineSqlServerAutoBackupConfig,
         DefaultParameterSetName = StorageUriParamSetName),
     OutputType(
         typeof(AutoBackupSettings))]
     public class NewAzureVMSqlServerAutoBackupConfigCommand : AzureRMCmdlet
     {
-        protected const string AzureVMSqlServerAutoBackupConfigNoun = "AzureVMSqlServerAutoBackupConfig";
-
         protected const string StorageContextParamSetName = "StorageContextSqlServerAutoBackup";
         protected const string StorageUriParamSetName = "StorageUriSqlServerAutoBackup";
 
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The storage connection context")]
         [ValidateNotNullOrEmpty]
-        public AzureStorageContext StorageContext
+        public IStorageContext StorageContext
         {
             get;
             set;
@@ -112,6 +112,71 @@ namespace Microsoft.Azure.Commands.Compute
           HelpMessage = "The storage access key")]
         [ValidateNotNullOrEmpty]
         public SecureString StorageKey
+        {
+            get;
+            set;
+        }
+
+        [Parameter(
+          Mandatory = false,
+          ValueFromPipelineByPropertyName = true,
+          HelpMessage = "Backup system databases")]
+        public SwitchParameter BackupSystemDbs
+        {
+            get;
+            set;
+        }
+
+        [Parameter(
+          Mandatory = false,
+          ValueFromPipelineByPropertyName = true,
+          HelpMessage = "Backup schedule type, manual or automated")]
+        [ValidateSet(ValidateSetValues.Manual, ValidateSetValues.Automated, IgnoreCase = true)]
+        public string BackupScheduleType
+        {
+            get;
+            set;
+        }
+
+        [Parameter(
+          Mandatory = false,
+          ValueFromPipelineByPropertyName = true,
+          HelpMessage = "Sql Server Full Backup frequency, daily or weekly")]
+        [ValidateSet(ValidateSetValues.Daily, ValidateSetValues.Weekly, IgnoreCase = true)]
+        public string FullBackupFrequency
+        {
+            get;
+            set;
+        }
+
+        [Parameter(
+          Mandatory = false,
+          ValueFromPipelineByPropertyName = true,
+          HelpMessage = "Hour of the day (0-23) when the Sql Server Full Backup should start")]
+        [ValidateRange(0, 23)]
+        public int? FullBackupStartHour
+        {
+            get;
+            set;
+        }
+
+        [Parameter(
+          Mandatory = false,
+          ValueFromPipelineByPropertyName = true,
+          HelpMessage = "Sql Server Full Backup window in hours")]
+        [ValidateRange(1, 23)]
+        public int? FullBackupWindowInHours
+        {
+            get;
+            set;
+        }
+
+        [Parameter(
+          Mandatory = false,
+          ValueFromPipelineByPropertyName = true,
+          HelpMessage = "Sql Server Log Backup frequency, once every 1-60 minutes")]
+        [ValidateRange(1, 60)]
+        public int? LogBackupFrequencyInMinutes
         {
             get;
             set;
@@ -144,12 +209,26 @@ namespace Microsoft.Azure.Commands.Compute
 
                 case StorageUriParamSetName:
                     autoBackupSettings.StorageUrl = (StorageUri == null) ? null : StorageUri.ToString();
-                    autoBackupSettings.StorageAccessKey = (StorageKey == null) ? null : ConvertToUnsecureString(StorageKey);
+                    autoBackupSettings.StorageAccessKey = (StorageKey == null) ? null : ConversionUtilities.SecureStringToString(StorageKey);
                     break;
             }
 
             // Check if certificate password was set
-            autoBackupSettings.Password = (CertificatePassword == null) ? null : ConvertToUnsecureString(CertificatePassword);
+            autoBackupSettings.Password = (CertificatePassword == null) ? null : ConversionUtilities.SecureStringToString(CertificatePassword);
+
+            autoBackupSettings.BackupSystemDbs = BackupSystemDbs.IsPresent ? BackupSystemDbs.ToBool() : false;
+            autoBackupSettings.BackupScheduleType = BackupScheduleType;
+
+            // Set other Backup schedule settings only if BackUpSchedule type is Manual.
+            if (!string.IsNullOrEmpty(BackupScheduleType) && string.Equals(BackupScheduleType, ValidateSetValues.Manual, StringComparison.InvariantCultureIgnoreCase))
+            {
+                ValidateBackupScheduleSettings();
+
+                autoBackupSettings.FullBackupFrequency = FullBackupFrequency;
+                autoBackupSettings.FullBackupStartTime = FullBackupStartHour;
+                autoBackupSettings.FullBackupWindowHours = FullBackupWindowInHours;
+                autoBackupSettings.LogBackupFrequency = LogBackupFrequencyInMinutes;
+            }
 
             WriteObject(autoBackupSettings);
         }
@@ -161,7 +240,7 @@ namespace Microsoft.Azure.Commands.Compute
 
             if (!string.IsNullOrEmpty(storageName))
             {
-                var storageClient = AzureSession.ClientFactory.CreateArmClient<StorageManagementClient>(DefaultProfile.Context,
+                var storageClient = AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(DefaultProfile.DefaultContext,
                         AzureEnvironment.Endpoint.ResourceManager);
 
                 var storageAccount = storageClient.StorageAccounts.GetProperties(this.ResourceGroupName, storageName);
@@ -172,9 +251,7 @@ namespace Microsoft.Azure.Commands.Compute
 
                     if (keys != null)
                     {
-                        storageKey = !string.IsNullOrEmpty(keys.Key1) ?
-                            keys.Key1 :
-                            keys.Key2;
+                        storageKey = keys.GetFirstAvailableKey();
                     }
                 }
             }
@@ -183,28 +260,28 @@ namespace Microsoft.Azure.Commands.Compute
         }
 
         /// <summary>
-        /// convert secure string to regular string
-        /// $Issue -  for ARM cmdlets, check if there is a similair helper class library like Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers
+        /// Validates Backup schedule settings when schedule type is Manual.
         /// </summary>
-        /// <param name="securePassword"></param>
-        /// <returns></returns>
-        [SecurityPermission(SecurityAction.Demand, Flags = SecurityPermissionFlag.UnmanagedCode)]
-        private static string ConvertToUnsecureString(SecureString securePassword)
+        private void ValidateBackupScheduleSettings()
         {
-            if (securePassword == null)
+            if (FullBackupFrequency == null)
             {
-                throw new ArgumentNullException("securePassword");
+                throw new Exception("FullBackupFrequency cannot be null when BackupScheduleType is set to Manual");
             }
 
-            IntPtr unmanagedString = IntPtr.Zero;
-            try
+            if (FullBackupStartHour == null)
             {
-                unmanagedString = Marshal.SecureStringToGlobalAllocUnicode(securePassword);
-                return Marshal.PtrToStringUni(unmanagedString);
+                throw new Exception("FullBackupStartTime cannot be null when BackupScheduleType is set to Manual");
             }
-            finally
+
+            if (FullBackupWindowInHours == null)
             {
-                Marshal.ZeroFreeGlobalAllocUnicode(unmanagedString);
+                throw new Exception("FullBackupStartHour cannot be null when BackupScheduleType is set to Manual");
+            }
+
+            if (LogBackupFrequencyInMinutes == null || LogBackupFrequencyInMinutes % 5 != 0)
+            {
+                throw new Exception("LogBackupFrequencyInMinutes cannot be null or should be multiple of 5 when BackupScheduleType is set to Manual");
             }
         }
     }

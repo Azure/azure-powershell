@@ -14,6 +14,7 @@
 
 
 using Microsoft.Azure.Commands.Management.CognitiveServices.Test.ScenarioTests;
+using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
@@ -31,6 +32,7 @@ namespace CognitiveServices.Test.ScenarioTests
         {
             this.traceInterceptor = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(this.traceInterceptor);
+            TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
         [Fact]
@@ -38,6 +40,13 @@ namespace CognitiveServices.Test.ScenarioTests
         public void TestNewAccount()
         {
             TestController.NewInstance.RunPsTest("Test-NewAzureRmCognitiveServicesAccount");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateAllKindsOfAccounts()
+        {
+            TestController.NewInstance.RunPsTest("Test-NewAzureRmAllKindsOfCognitiveServicesAccounts");
         }
 
         [Fact]
@@ -101,6 +110,20 @@ namespace CognitiveServices.Test.ScenarioTests
         public void TestPipingToGetSkus()
         {
             TestController.NewInstance.RunPsTest("Test-PipingToGetAccountSkus");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestMinMaxAccountNames()
+        {
+            TestController.NewInstance.RunPsTest("Test-MinMaxAccountName");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetWithPaging()
+        {
+            TestController.NewInstance.RunPsTest("Test-GetWithPaging");
         }
     }
 }

@@ -13,9 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
@@ -34,7 +31,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// Workload type of the policy to be created.
         /// </summary>
-        [Parameter(Mandatory = true, Position = 0, 
+        [Parameter(Mandatory = true, Position = 0,
             HelpMessage = ParamHelpMsgs.Common.WorkloadType)]
         [ValidateNotNullOrEmpty]
         public WorkloadType WorkloadType { get; set; }
@@ -42,7 +39,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// Backup management type of the policy to be created.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 1, 
+        [Parameter(Mandatory = false, Position = 1,
             HelpMessage = ParamHelpMsgs.Common.BackupManagementType)]
         [ValidateNotNullOrEmpty]
         public BackupManagementType? BackupManagementType { get; set; }
@@ -53,10 +50,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             {
                 base.ExecuteCmdlet();
 
-                PsBackupProviderManager providerManager = 
-                    new PsBackupProviderManager(new Dictionary<System.Enum, object>(), ServiceClientAdapter);
+                PsBackupProviderManager providerManager =
+                    new PsBackupProviderManager(new Dictionary<Enum, object>(), ServiceClientAdapter);
 
-                IPsBackupProvider psBackupProvider = 
+                IPsBackupProvider psBackupProvider =
                     providerManager.GetProviderInstance(WorkloadType, BackupManagementType);
                 WriteObject(psBackupProvider.GetDefaultRetentionPolicyObject());
             });

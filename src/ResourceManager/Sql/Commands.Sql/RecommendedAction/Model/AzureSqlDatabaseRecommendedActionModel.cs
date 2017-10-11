@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -32,14 +32,14 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Model
         }
 
         /// <summary>
-        /// Construct AzureSqlDatabaseRecommendedActionModel from Management.Sql.Models.RecommendedAction object
+        /// Construct AzureSqlDatabaseRecommendedActionModel from Management.Sql.LegacySdk.Models.RecommendedAction object
         /// </summary>
         /// <param name="resourceGroupName">Resource group</param>
         /// <param name="serverName">Server name</param>
         /// <param name="databaseName">Database name</param>
         /// <param name="advisorName">Advisor name</param>
         /// <param name="recommendedAction">Recommended Action object</param>
-        public AzureSqlDatabaseRecommendedActionModel(string resourceGroupName, string serverName, string databaseName, string advisorName, Management.Sql.Models.RecommendedAction recommendedAction)
+        public AzureSqlDatabaseRecommendedActionModel(string resourceGroupName, string serverName, string databaseName, string advisorName, Management.Sql.LegacySdk.Models.RecommendedAction recommendedAction)
         : base(resourceGroupName, serverName, advisorName, recommendedAction)
         {
             DatabaseName = databaseName;

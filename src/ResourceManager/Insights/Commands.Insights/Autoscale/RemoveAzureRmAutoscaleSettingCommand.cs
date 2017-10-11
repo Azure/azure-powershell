@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Insights;
+using System.Net;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Insights.Autoscale
@@ -48,8 +48,17 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// </summary>
         protected override void ProcessRecordInternal()
         {
-            AzureOperationResponse result = this.InsightsManagementClient.AutoscaleOperations.DeleteSettingAsync(resourceGroupName: this.ResourceGroup, autoscaleSettingName: this.Name).Result;
-            WriteObject(result);
+            var result = this.MonitorManagementClient.AutoscaleSettings.DeleteWithHttpMessagesAsync(resourceGroupName: this.ResourceGroup, autoscaleSettingName: this.Name).Result;
+
+            // Keep this response for backwards compatibility.
+            // Note: Delete operations return nothing in the new specification.
+            var response = new AzureOperationResponse
+            {
+                RequestId = result.RequestId,
+                StatusCode = result.Response != null ? result.Response.StatusCode : HttpStatusCode.OK
+            };
+
+            WriteObject(response);
         }
     }
 }

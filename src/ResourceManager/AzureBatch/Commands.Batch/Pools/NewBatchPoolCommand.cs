@@ -49,7 +49,13 @@ namespace Microsoft.Azure.Commands.Batch
         [Parameter(ParameterSetName = VirtualMachineTargetDedicatedParameterSet)]
         [Parameter(ParameterSetName = CloudServiceTargetDedicatedParameterSet)]
         [ValidateNotNullOrEmpty]
-        public int? TargetDedicated { get; set; }
+        [Alias("TargetDedicated")]
+        public int? TargetDedicatedComputeNodes { get; set; }
+
+        [Parameter(ParameterSetName = VirtualMachineTargetDedicatedParameterSet)]
+        [Parameter(ParameterSetName = CloudServiceTargetDedicatedParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public int? TargetLowPriorityComputeNodes { get; set; }
 
         [Parameter(ParameterSetName = CloudServiceAutoScaleParameterSet)]
         [Parameter(ParameterSetName = VirtualMachineAutoScaleParameterSet)]
@@ -102,6 +108,10 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public PSNetworkConfiguration NetworkConfiguration { get; set; }
 
+        [Parameter]
+        [ValidateNotNullOrEmpty]
+        public PSUserAccount[] UserAccounts { get; set; }
+
         public override void ExecuteCmdlet()
         {
             NewPoolParameters parameters = new NewPoolParameters(this.BatchContext, this.Id, this.AdditionalBehaviors)
@@ -109,7 +119,8 @@ namespace Microsoft.Azure.Commands.Batch
                 VirtualMachineSize = this.VirtualMachineSize,
                 DisplayName = this.DisplayName,
                 ResizeTimeout = this.ResizeTimeout,
-                TargetDedicated = this.TargetDedicated,
+                TargetDedicatedComputeNodes = this.TargetDedicatedComputeNodes,
+                TargetLowPriorityComputeNodes = this.TargetLowPriorityComputeNodes,
                 AutoScaleEvaluationInterval = this.AutoScaleEvaluationInterval,
                 AutoScaleFormula = this.AutoScaleFormula,
                 MaxTasksPerComputeNode = this.MaxTasksPerComputeNode,
@@ -121,7 +132,8 @@ namespace Microsoft.Azure.Commands.Batch
                 ApplicationPackageReferences = this.ApplicationPackageReferences,
                 VirtualMachineConfiguration =  this.VirtualMachineConfiguration,
                 CloudServiceConfiguration = this.CloudServiceConfiguration,
-                NetworkConfiguration = this.NetworkConfiguration
+                NetworkConfiguration = this.NetworkConfiguration,
+                UserAccounts = this.UserAccounts
             };
 
             if (ShouldProcess("AzureBatchPool"))

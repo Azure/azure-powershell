@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,27 +24,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
     public class DatabaseBackupStretchTests : SqlTestsBase
     {
-        /// <summary>
-        /// Follow the way how AuditingTests setup their manangement clients
-        /// Only overide SetupManagementClients() here because stretch database 
-        /// tests in this test suite now use V2 version of storage client
-        /// </summary>
-        protected override void SetupManagementClients(RestTestFramework.MockContext context)
+        public DatabaseBackupStretchTests(ITestOutputHelper output) : base(output)
         {
-            var sqlCSMClient = GetSqlClient();
-            var storageClient = GetStorageV2Client();
-
-            // TODO, Remove the MockDeploymentFactory call when the test is re-recorded
-            //
-            var resourcesClient = MockDeploymentClientFactory.GetResourceClient(GetResourcesClient());
-            var authorizationClient = GetAuthorizationManagementClient();
-            helper.SetupSomeOfManagementClients(sqlCSMClient, storageClient, resourcesClient,
-                authorizationClient);
-        }
-
-        public DatabaseBackupStretchTests(ITestOutputHelper output)
-        {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
         [Fact]

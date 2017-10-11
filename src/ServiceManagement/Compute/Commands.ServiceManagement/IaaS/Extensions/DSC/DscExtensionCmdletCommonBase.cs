@@ -19,6 +19,11 @@ using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Storage.Auth;
+using Microsoft.WindowsAzure.Commands.Storage.Adapters;
+using Microsoft.Azure.Commands.Management.Storage.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.WindowsAzure.Management.Storage;
+using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC
 {
@@ -31,17 +36,19 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC
         /// Attempts to get the user's credentials from the given Storage Context or the current subscription, if the former is null. 
         /// Throws a terminating error if the credentials cannot be determined.
         /// </summary>
-        internal static StorageCredentials GetStorageCredentials(this AzureSMCmdlet cmdlet, AzureStorageContext storageContext)
+        internal static StorageCredentials GetStorageCredentials(this AzureSMCmdlet cmdlet, IStorageContext storageContext)
         {
             StorageCredentials credentials = null;
 
             if (storageContext != null)
             {
-                credentials = storageContext.StorageAccount.Credentials;
+                credentials = storageContext.GetCloudStorageAccount().Credentials;
             }
             else
             {
-                var storageAccount = cmdlet.Profile.Context.GetCurrentStorageAccount();
+                var storageAccount = cmdlet.Profile.Context.GetCurrentStorageAccount(
+                    new RDFEStorageProvider(AzureSession.Instance.ClientFactory.CreateClient<StorageManagementClient>(
+                        cmdlet.Profile.Context, AzureEnvironment.Endpoint.ServiceManagement), cmdlet.Profile.Context.Environment));
                 if (storageAccount != null)
                 {
                     credentials = storageAccount.Credentials;

@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabase", SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.Medium)]
-    public class SetAzureSqlDatabase : AzureSqlDatabaseCmdletBase
+    public class SetAzureSqlDatabase : AzureSqlDatabaseCmdletBase<IEnumerable<AzureSqlDatabaseModel>>
     {
         /// <summary>
         /// Gets or sets the name of the Azure SQL Database
@@ -35,6 +35,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
             ValueFromPipelineByPropertyName = true,
             Position = 2,
             HelpMessage = "The name of the Azure SQL Database.")]
+        [Alias("Name")]
         [ValidateNotNullOrEmpty]
         public string DatabaseName { get; set; }
 
@@ -69,6 +70,14 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
             HelpMessage = "The name of the Elastic Pool to put the database in.")]
         [ValidateNotNullOrEmpty]
         public string ElasticPoolName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the read scale option to assign to the Azure SQL Database
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The read scale option to assign to the Azure SQL Database.(Enabled/Disabled)")]
+        [ValidateNotNullOrEmpty]
+        public DatabaseReadScale ReadScale { get; set; }
 
         /// <summary>
         /// Gets or sets the tags associated with the Azure Sql Database
@@ -113,9 +122,10 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 Edition = Edition,
                 MaxSizeBytes = MaxSizeBytes,
                 RequestedServiceObjectiveName = RequestedServiceObjectiveName,
-                Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
+                Tags = TagsConversionHelper.ReadOrFetchTags(this, model.FirstOrDefault().Tags),
                 ElasticPoolName = ElasticPoolName,
                 Location = model.FirstOrDefault().Location,
+                ReadScale = ReadScale,
             });
             return newEntity;
         }
@@ -127,8 +137,15 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// <returns>The input entity</returns>
         protected override IEnumerable<AzureSqlDatabaseModel> PersistChanges(IEnumerable<AzureSqlDatabaseModel> entity)
         {
-            return new List<AzureSqlDatabaseModel>() {
-                ModelAdapter.UpsertDatabase(this.ResourceGroupName, this.ServerName, entity.First())
+            return new List<AzureSqlDatabaseModel>
+            {
+                ModelAdapter.UpsertDatabase(
+                    this.ResourceGroupName,
+                    this.ServerName,
+                    new AzureSqlDatabaseCreateOrUpdateModel
+                    {
+                        Database = entity.First()
+                    })
             };
         }
     }

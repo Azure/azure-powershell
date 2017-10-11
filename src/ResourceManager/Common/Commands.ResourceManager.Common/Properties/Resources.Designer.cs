@@ -61,6 +61,29 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Azure PowerShell collects usage data in order to improve your experience.
+        ///The data is anonymous and does not include commandline argument values.
+        ///The data is collected by Microsoft.
+        ///
+        ///Use the Disable-AzureRmDataCollection cmdlet to turn the feature Off. The cmdlet can be found in the AzureRM.Profile module.  To disable data collection: PS &gt; Disable-AzureRmDataCollection.
+        ///Use the Enable-AzureRmDataCollection cmdlet to turn the feature On. The cmdlet can be found in the AzureRM.Profile module.  To enable  [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string ARMDataCollectionMessage {
+            get {
+                return ResourceManager.GetString("ARMDataCollectionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Can not remove tag/tag value because it&apos;s being referenced by other resources..
+        /// </summary>
+        public static string CanNotDeleteTag {
+            get {
+                return ResourceManager.GetString("CanNotDeleteTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Context cannot be null.  Please log in using Add-AzureRmAccount..
         /// </summary>
         public static string ContextCannotBeNull {
@@ -106,18 +129,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Microsoft Azure PowerShell collects data about how users use PowerShell cmdlets and some problems they encounter.  Microsoft uses this information to improve our PowerShell cmdlets.  Participation is voluntary and when you choose to participate your device automatically sends information to Microsoft about how you use Azure PowerShell. 
-        /// 
-        ///If you choose to participate, you can stop at any time by using Azure PowerShell as follows:
-        ///1.	Use the Disable-AzureDataCollection cmdlet to turn the feature Off. The  [rest of string was truncated]&quot;;.
-        /// </summary>
-        public static string DataCollectionPrompt {
-            get {
-                return ResourceManager.GetString("DataCollectionPrompt", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to The setting profile has been saved to the following path &apos;{0}&apos;..
         /// </summary>
         public static string DataCollectionSaveFileInformation {
@@ -132,6 +143,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties {
         public static string InvalidDefaultSubscription {
             get {
                 return ResourceManager.GetString("InvalidDefaultSubscription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ResourceType name: &apos;{0}&apos; is invalid..
+        /// </summary>
+        public static string InvalidResourceType {
+            get {
+                return ResourceManager.GetString("InvalidResourceType", resourceCulture);
             }
         }
         
@@ -154,11 +174,70 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No locations exist for all of the given ResourceTypes..
+        /// </summary>
+        public static string NoValidLocationsFound {
+            get {
+                return ResourceManager.GetString("NoValidLocationsFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No valid ResourceType given to LocationCompleter..
+        /// </summary>
+        public static string NoValidProviderFound {
+            get {
+                return ResourceManager.GetString("NoValidProviderFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Profile cannot be null.  Please run Add-AzureRmAccount..
         /// </summary>
         public static string ProfileCannotBeNull {
             get {
                 return ResourceManager.GetString("ProfileCannotBeNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Azure PowerShell context has not been properly initialized.  Please import the module and try again..
+        /// </summary>
+        public static string ProfileNotInitialized {
+            get {
+                return ResourceManager.GetString("ProfileNotInitialized", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Azure PowerShell collects usage data in order to improve your experience.
+        ///The data is anonymous and does not include commandline argument values.
+        ///The data is collected by Microsoft.
+        ///
+        ///Use the Disable-AzureDataCollection cmdlet to turn the feature Off. The cmdlet can be found in the Azure module.  To disable data collection: PS &gt; Disable-AzureDataCollection.
+        ///Use the Enable-AzureDataCollection cmdlet to turn the feature On. The cmdlet can be found in the Azure module.  To enable data collection: PS &gt; Enab [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string RDFEDataCollectionMessage {
+            get {
+                return ResourceManager.GetString("RDFEDataCollectionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing tag .....
+        /// </summary>
+        public static string RemoveTagMessage {
+            get {
+                return ResourceManager.GetString("RemoveTagMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove tag &apos;{0}&apos;.
+        /// </summary>
+        public static string RemovingTag {
+            get {
+                return ResourceManager.GetString("RemovingTag", resourceCulture);
             }
         }
         
@@ -226,11 +305,29 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tag &apos;{0}&apos; not found.
+        /// </summary>
+        public static string TagNotFoundMessage {
+            get {
+                return ResourceManager.GetString("TagNotFoundMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tenant &apos;{0}&apos; was not found. Please verify that your account has access to this tenant..
         /// </summary>
         public static string TenantNotFound {
             get {
                 return ResourceManager.GetString("TenantNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Provider.List() timed out. Please retry..
+        /// </summary>
+        public static string TimeOutForProviderList {
+            get {
+                return ResourceManager.GetString("TimeOutForProviderList", resourceCulture);
             }
         }
     }

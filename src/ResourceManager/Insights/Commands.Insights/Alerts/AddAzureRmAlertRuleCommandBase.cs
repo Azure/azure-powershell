@@ -12,8 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Insights;
-using Microsoft.Azure.Management.Insights.Models;
+using System.Net;
+using Microsoft.Azure.Commands.Insights.OutputClasses;
+using Microsoft.Azure.Management.Monitor.Management.Models;
 using System.Collections.Generic;
 using System.Management.Automation;
 
@@ -75,16 +76,25 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// </summary>
         protected override void ProcessRecordInternal()
         {
-            RuleCreateOrUpdateParameters parameters = this.CreateSdkCallParameters();
+            AlertRuleResource parameters = this.CreateSdkCallParameters();
 
-            var result = this.InsightsManagementClient.AlertOperations.CreateOrUpdateRuleAsync(resourceGroupName: this.ResourceGroup, parameters: parameters).Result;
-            WriteObject(result);
+            // Part of the result of this operation is operation (result.Body ==> a AutoscaleSettingResource) is being discarded for backwards compatibility
+            var result = this.MonitorManagementClient.AlertRules.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName: this.ResourceGroup, parameters: parameters, ruleName: parameters.AlertRuleResourceName).Result;
+
+            var response = new PSAddAlertRuleOperationResponse
+            {
+                RequestId = result.RequestId,
+                StatusCode = result.Response != null ? result.Response.StatusCode : HttpStatusCode.OK,
+                AlertRule = result.Body
+            };
+
+            WriteObject(response);
         }
 
         /// <summary>
         /// When overriden by a descendant class this method creates the set of parameters for the call to the sdk
         /// </summary>
         /// <returns>The set of parameters for the call to the sdk</returns>
-        protected abstract RuleCreateOrUpdateParameters CreateSdkCallParameters();
+        protected abstract AlertRuleResource CreateSdkCallParameters();
     }
 }

@@ -485,4 +485,10 @@ Please contact Microsoft for further assistant.</value>
   <data name="GetContainerNameParamDeprecated" xml:space="preserve">
     <value>Name parameter will be deprecated. Please use FriendlyName instead for filtering by name.</value>
   </data>
+  <data name="GetRPErrorStartTimeShouldBeLessThanUTCNow" xml:space="preserve">
+    <value>Start date\time should be less than current UTC date\time</value>
+  </data>
+  <data name="JobStartTimeShouldBeLessThanCurrent" xml:space="preserve">
+    <value>From date should be less than current UTC time</value>
+  </data>
 </root>

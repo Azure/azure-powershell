@@ -19,6 +19,7 @@ using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System;
+using System.Collections.Generic;
 using System.Management.Automation;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
@@ -65,6 +66,37 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
 
             // Verify that no exceptions occur
             cmdlet.ExecuteCmdlet();
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SetBatchTaskParametersGetPassedToRequestTest()
+        {
+            BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
+            cmdlet.BatchContext = context;
+
+            cmdlet.Task = new PSCloudTask(BatchTestHelpers.CreateFakeBoundTask(context));
+
+            // Update task
+            cmdlet.Task.Constraints = new PSTaskConstraints(TimeSpan.FromHours(1), TimeSpan.FromDays(2), 5);
+
+            ProxyModels.TaskConstraints requestParameters = null;
+
+            // Store the request parameters
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                ProxyModels.TaskConstraints,
+                ProxyModels.TaskUpdateOptions,
+                AzureOperationHeaderResponse<ProxyModels.TaskUpdateHeaders>>(requestAction: (r) =>
+                {
+                    requestParameters = r.Parameters;
+                });
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
+            cmdlet.ExecuteCmdlet();
+
+            // Verify the request parameters match the cmdlet parameters
+            Assert.Equal(cmdlet.Task.Constraints.MaxTaskRetryCount, requestParameters.MaxTaskRetryCount);
+            Assert.Equal(cmdlet.Task.Constraints.MaxWallClockTime, requestParameters.MaxWallClockTime);
+            Assert.Equal(cmdlet.Task.Constraints.RetentionTime, requestParameters.RetentionTime);
         }
     }
 }

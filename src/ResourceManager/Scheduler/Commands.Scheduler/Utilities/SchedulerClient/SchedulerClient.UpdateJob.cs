@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.Scheduler.Utilities
                             HttpRequest existinghHttpRequest = existingJobAction.Request;
                             if (httpJobAction.Uri != null)
                             {
-                                existinghHttpRequest.Uri = httpJobAction.Uri.ToString();
+                                existinghHttpRequest.Uri = httpJobAction.Uri.OriginalString;
                                 existingJobAction.Type = updateJobActionParams.JobActionType;
                             }
 
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Commands.Scheduler.Utilities
                             HttpRequest existinghHttpRequest = existingJobErrorAction.Request;
                             existingJobErrorAction.Type = updateJobErrorActionParams.JobActionType;
                             existinghHttpRequest.Method = httpJobAction.RequestMethod.GetValueOrDefault(defaultValue: existinghHttpRequest.Method);
-                            existinghHttpRequest.Uri = httpJobAction.Uri != null ? httpJobAction.Uri.ToString() : existinghHttpRequest.Uri;
+                            existinghHttpRequest.Uri = httpJobAction.Uri != null ? httpJobAction.Uri.OriginalString : existinghHttpRequest.Uri;
                             existinghHttpRequest.Body = httpJobAction.RequestBody.GetValueOrDefault(defaultValue: existinghHttpRequest.Body);
                             existinghHttpRequest.Authentication = this.GetExistingAuthentication(httpJobAction.RequestAuthentication, existinghHttpRequest.Authentication);
                             break;
@@ -283,44 +283,14 @@ namespace Microsoft.Azure.Commands.Scheduler.Utilities
         /// <returns>HttpAuthentication object.</returns>
         private HttpAuthentication GetExistingAuthentication(PSHttpJobAuthenticationParams updateJobAuthenticationParams, HttpAuthentication authentication)
         {
-            if (updateJobAuthenticationParams == null)
-            {
-                return null;
-            }
-
-            if(updateJobAuthenticationParams.HttpAuthType != null &&
-               (authentication == null || 
-                authentication.Type == null ||
-                !updateJobAuthenticationParams.HttpAuthType.Equals(authentication.Type.ToString(), StringComparison.InvariantCultureIgnoreCase)))
+            // With current SDK design (limits within Swagger for inheritance), we won't be able to update Authentication params. 
+            // In order for user to update Authentication params, the user must enter the credentials again.
+            if (updateJobAuthenticationParams != null && updateJobAuthenticationParams.HttpAuthType != null)
             {
                 return this.PopulateHttpAuthentication(updateJobAuthenticationParams);
             }
 
-            switch (authentication.Type)
-            {
-                case HttpAuthenticationType.ClientCertificate:
-                    var clientCertificate = authentication as ClientCertAuthentication;
-                    clientCertificate.Pfx = updateJobAuthenticationParams.ClientCertPfx.GetValueOrDefault(defaultValue: clientCertificate.Pfx);
-                    clientCertificate.Password = updateJobAuthenticationParams.ClientCertPassword.GetValueOrDefault(defaultValue: clientCertificate.Password);
-                    return clientCertificate;
-
-                case HttpAuthenticationType.Basic:
-                    var basic = authentication as BasicAuthentication;
-                    basic.Username = updateJobAuthenticationParams.Username.GetValueOrDefault(defaultValue: basic.Username);
-                    basic.Password = updateJobAuthenticationParams.Password.GetValueOrDefault(defaultValue: basic.Password);
-                    return basic;
-
-                case HttpAuthenticationType.ActiveDirectoryOAuth:
-                    var adOAuth = authentication as OAuthAuthentication;
-                    adOAuth.Audience = updateJobAuthenticationParams.Audience.GetValueOrDefault(defaultValue: adOAuth.Audience);
-                    adOAuth.ClientId = updateJobAuthenticationParams.ClientId.GetValueOrDefault(defaultValue: adOAuth.ClientId);
-                    adOAuth.Secret = updateJobAuthenticationParams.Secret.GetValueOrDefault(defaultValue: adOAuth.Secret);
-                    adOAuth.Tenant = updateJobAuthenticationParams.Tenant.GetValueOrDefault(defaultValue: adOAuth.Tenant);
-                    return adOAuth;
-
-                default:
-                    return authentication;
-            }
+            return null;
         }
     }
 }

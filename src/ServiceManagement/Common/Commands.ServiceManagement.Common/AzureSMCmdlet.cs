@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.Common;
@@ -41,79 +42,25 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         {
             private get
             {
-                return AzureSMProfileProvider.Instance.Profile;
+                ServiceManagementProfileProvider.InitializeServiceManagementProfile();
+                return AzureSMProfileProvider.Instance.Profile as AzureSMProfile;
             }
 
             set
             {
+                ServiceManagementProfileProvider.InitializeServiceManagementProfile();
                 AzureSMProfileProvider.Instance.Profile = value;
             }
         }
 
 
-        protected override AzureContext DefaultContext { get { return CurrentProfile.Context; } }
+        protected override IAzureContext DefaultContext { get { return CurrentProfile.DefaultContext; } }
 
-        static AzureSMCmdlet()
+        protected override string DataCollectionWarning
         {
-            if (!TestMockSupport.RunningMocked)
+            get
             {
-                AzureSession.ClientFactory.AddAction(new RPRegistrationAction());
-                AzureSession.DataStore = new DiskDataStore();
-            }
-        }
-
-        protected override void SaveDataCollectionProfile()
-        {
-            if (_dataCollectionProfile == null)
-            {
-                InitializeDataCollectionProfile();
-            }
-
-            string fileFullPath = Path.Combine(AzureSession.ProfileDirectory, AzurePSDataCollectionProfile.DefaultFileName);
-            var contents = JsonConvert.SerializeObject(_dataCollectionProfile);
-            AzureSession.DataStore.WriteFile(fileFullPath, contents);
-            WriteWarning(string.Format(Resources.DataCollectionSaveFileInformation, fileFullPath));
-        }
-
-        protected override void PromptForDataCollectionProfileIfNotExists()
-        {
-            // Initialize it from the environment variable or profile file.
-            InitializeDataCollectionProfile();
-
-            if (!_dataCollectionProfile.EnableAzureDataCollection.HasValue && CheckIfInteractive())
-            {
-                WriteWarning(Resources.DataCollectionPrompt);
-
-                const double timeToWaitInSeconds = 60;
-                var status = string.Format(Resources.DataCollectionConfirmTime, timeToWaitInSeconds);
-                ProgressRecord record = new ProgressRecord(0, Resources.DataCollectionActivity, status);
-
-                var startTime = DateTime.Now;
-                var endTime = DateTime.Now;
-                double elapsedSeconds = 0;
-
-                while (!this.Host.UI.RawUI.KeyAvailable && elapsedSeconds < timeToWaitInSeconds)
-                {
-                    Thread.Sleep(TimeSpan.FromMilliseconds(10));
-                    endTime = DateTime.Now;
-
-                    elapsedSeconds = (endTime - startTime).TotalSeconds;
-                    record.PercentComplete = ((int)elapsedSeconds * 100 / (int)timeToWaitInSeconds);
-                    WriteProgress(record);
-                }
-
-                bool enabled = false;
-                if (this.Host.UI.RawUI.KeyAvailable)
-                {
-                    KeyInfo keyInfo = this.Host.UI.RawUI.ReadKey(ReadKeyOptions.NoEcho | ReadKeyOptions.AllowCtrlC | ReadKeyOptions.IncludeKeyDown);
-                    enabled = (keyInfo.Character == 'Y' || keyInfo.Character == 'y');
-                }
-
-                _dataCollectionProfile.EnableAzureDataCollection = enabled;
-
-                WriteWarning(enabled ? Resources.DataCollectionConfirmYes : Resources.DataCollectionConfirmNo);
-
-                SaveDataCollectionProfile();
+                return Resources.RDFEDataCollectionMessage;
             }
         }
 
@@ -135,7 +82,8 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 IsSuccess = true,
             };
 
-            if (this.MyInvocation != null && this.MyInvocation.BoundParameters != null)
+            if (this.MyInvocation != null && this.MyInvocation.BoundParameters != null 
+                && this.MyInvocation.BoundParameters.Keys != null)
             {
                 _qosEvent.Parameters = string.Join(" ",
                     this.MyInvocation.BoundParameters.Keys.Select(
@@ -144,7 +92,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
             if (this.DefaultContext != null &&
                 this.DefaultContext.Account != null &&
-                this.DefaultContext.Account.Id != null)
+                !string.IsNullOrEmpty(this.DefaultContext.Account.Id))
             {
                 _qosEvent.Uid = MetricHelper.GenerateSha256HashString(
                     this.DefaultContext.Account.Id.ToString());
@@ -171,7 +119,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         {
             if (Profile == null)
             {
-                Profile = AzureSMProfileProvider.Instance.Profile;
+                Profile = AzureSMProfileProvider.Instance.Profile as AzureSMProfile;
             }
             else
             {

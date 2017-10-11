@@ -20,6 +20,7 @@ using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System;
+using System.Collections.Generic;
 using System.Management.Automation;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
@@ -65,6 +66,68 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
 
             // Verify that no exceptions occur
             cmdlet.ExecuteCmdlet();
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SetBatchPoolParametersGetPassedToRequestTest()
+        {
+            BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
+            cmdlet.BatchContext = context;
+
+            cmdlet.Pool = new PSCloudPool(BatchTestHelpers.CreateFakeBoundPool(context));
+
+            // Update the pool
+            cmdlet.Pool.StartTask = new PSStartTask("cmd /c echo start task");
+            cmdlet.Pool.CertificateReferences = new List<PSCertificateReference>()
+            {
+                new PSCertificateReference()
+                {
+                    StoreLocation = Azure.Batch.Common.CertStoreLocation.LocalMachine,
+                    Thumbprint = "thumbprint",
+                    ThumbprintAlgorithm = "sha1",
+                    StoreName = "My",
+                    Visibility = Azure.Batch.Common.CertificateVisibility.StartTask
+                }
+            };
+            cmdlet.Pool.ApplicationPackageReferences = new List<PSApplicationPackageReference>()
+            {
+                new PSApplicationPackageReference()
+                {
+                    ApplicationId = "myApp",
+                    Version = "1.0"
+                }
+            };
+            cmdlet.Pool.Metadata = new List<PSMetadataItem>()
+            {
+                new PSMetadataItem("meta1", "value1")
+            };
+
+            PoolUpdatePropertiesParameter requestParameters = null;
+
+            // Store the request parameters
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                PoolUpdatePropertiesParameter,
+                PoolUpdatePropertiesOptions,
+                AzureOperationHeaderResponse<PoolUpdatePropertiesHeaders>>(requestAction: (r) =>
+                {
+                    requestParameters = r.Parameters;
+                });
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
+            cmdlet.ExecuteCmdlet();
+
+            // Verify the request parameters match the cmdlet parameters
+            Assert.Equal(cmdlet.Pool.StartTask.CommandLine, requestParameters.StartTask.CommandLine);
+            Assert.Equal(cmdlet.Pool.CertificateReferences.Count, requestParameters.CertificateReferences.Count);
+            Assert.Equal(cmdlet.Pool.CertificateReferences[0].StoreName, requestParameters.CertificateReferences[0].StoreName);
+            Assert.Equal(cmdlet.Pool.CertificateReferences[0].Thumbprint, requestParameters.CertificateReferences[0].Thumbprint);
+            Assert.Equal(cmdlet.Pool.CertificateReferences[0].ThumbprintAlgorithm, requestParameters.CertificateReferences[0].ThumbprintAlgorithm);
+            Assert.Equal(cmdlet.Pool.ApplicationPackageReferences.Count, requestParameters.ApplicationPackageReferences.Count);
+            Assert.Equal(cmdlet.Pool.ApplicationPackageReferences[0].ApplicationId, requestParameters.ApplicationPackageReferences[0].ApplicationId);
+            Assert.Equal(cmdlet.Pool.ApplicationPackageReferences[0].Version, requestParameters.ApplicationPackageReferences[0].Version);
+            Assert.Equal(cmdlet.Pool.Metadata.Count, requestParameters.Metadata.Count);
+            Assert.Equal(cmdlet.Pool.Metadata[0].Name, requestParameters.Metadata[0].Name);
+            Assert.Equal(cmdlet.Pool.Metadata[0].Value, requestParameters.Metadata[0].Value);
         }
     }
 }

@@ -60,7 +60,8 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
                                                               using (var stream = new MemoryStream(dwr.Data, 0, (int)dwr.Range.Length))
                                                               {
                                                                   b.Properties.ContentMD5 = md5HashOfDataChunk;
-                                                                  b.WritePages(stream, dwr.Range.StartIndex);
+                                                                  b.WritePagesAsync(stream, dwr.Range.StartIndex, contentMD5: null)
+                                                                            .ConfigureAwait(false).GetAwaiter().GetResult();
                                                               }
                                                           }
                                                           uploadStatus.AddToProcessedBytes((int)dwr.Range.Length);

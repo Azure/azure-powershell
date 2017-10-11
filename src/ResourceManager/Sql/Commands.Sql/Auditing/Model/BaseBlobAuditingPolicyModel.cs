@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -45,6 +45,5 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
     public abstract class BaseBlobAuditingPolicyModel : AuditingPolicyModel
     {
         public AuditActionGroups[] AuditActionGroup { get; set; }
-        public string[] AuditAction { get; set; }
     }
 }

@@ -15,17 +15,18 @@
 namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
     using System;
+    using System.Globalization;
+    using System.Linq;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.LogicApp.Utilities;
     using Microsoft.Azure.Management.Logic.Models;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
-    using System.Globalization;
-    using System.Linq;
 
     /// <summary>
     /// Creates a new integration account agreement.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmIntegrationAccountAgreement", SupportsShouldProcess = true), OutputType(typeof(object))]
+    [Cmdlet(VerbsCommon.New, "AzureRmIntegrationAccountAgreement", SupportsShouldProcess = true)]
+    [OutputType(typeof(IntegrationAccountAgreement))]
     public class NewAzureIntegrationAccountAgreementCommand : LogicAppBaseCmdlet
     {
 
@@ -38,8 +39,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
         [Parameter(Mandatory = true, HelpMessage = "The integration account name.",
             ValueFromPipelineByPropertyName = true)]
-        [Alias("ResourceName")]
         [ValidateNotNullOrEmpty]
+        [Alias("IntegrationAccountName", "ResourceName")]
         public string Name { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The integration account agreement name.",
@@ -68,10 +69,20 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         [ValidateNotNullOrEmpty]
         public string GuestIdentityQualifier { get; set; }
 
+        [Parameter(Mandatory = true, HelpMessage = "The integration account agreement guest identity qualifier value.",
+            ValueFromPipelineByPropertyName = false)]
+        [ValidateNotNullOrEmpty]
+        public string GuestIdentityQualifierValue { get; set; }
+
         [Parameter(Mandatory = true, HelpMessage = "The integration account agreement host identity qualifier.",
             ValueFromPipelineByPropertyName = false)]
         [ValidateNotNullOrEmpty]
         public string HostIdentityQualifier { get; set; }
+
+        [Parameter(Mandatory = true, HelpMessage = "The integration account agreement host identity qualifier value.",
+            ValueFromPipelineByPropertyName = false)]
+        [ValidateNotNullOrEmpty]
+        public string HostIdentityQualifierValue { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The integration account agreement content.",
             ValueFromPipelineByPropertyName = false)]
@@ -110,7 +121,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 this.GuestPartner);
 
             var hostIdentity =
-                hostPartner.Content.B2b.BusinessIdentities.FirstOrDefault(s => s.Qualifier == this.HostIdentityQualifier);
+                hostPartner.Content.B2b.BusinessIdentities.FirstOrDefault(
+                    s => s.Qualifier == this.HostIdentityQualifier && s.Value == this.HostIdentityQualifierValue);
 
             if (hostIdentity == null)
             {
@@ -120,7 +132,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
             var guestIdentity =
                 guestPartner.Content.B2b.BusinessIdentities.FirstOrDefault(
-                    s => s.Qualifier == this.GuestIdentityQualifier);
+                    s => s.Qualifier == this.GuestIdentityQualifier && s.Value == this.GuestIdentityQualifierValue);
 
             if (guestIdentity == null)
             {
@@ -139,8 +151,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                     this.AgreementName,
                     new IntegrationAccountAgreement
                     {
-                        Name = this.AgreementName,
-                        AgreementType = (AgreementType) Enum.Parse(typeof (AgreementType), this.AgreementType),
+                        AgreementType = (AgreementType) Enum.Parse(typeof(AgreementType), this.AgreementType),
                         HostIdentity = hostIdentity,
                         GuestIdentity = guestIdentity,
                         GuestPartner = this.GuestPartner,

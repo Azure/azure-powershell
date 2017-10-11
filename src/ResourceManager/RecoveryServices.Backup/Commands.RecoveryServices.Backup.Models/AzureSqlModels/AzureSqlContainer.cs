@@ -12,12 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
@@ -36,11 +31,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// and converts it in to the PS container model
         /// </summary>
         /// <param name="protectionContainer">Service client object representing the container</param>
-        public AzureSqlContainer(ProtectionContainerResource protectionContainer)
+        public AzureSqlContainer(
+            ServiceClientModel.ProtectionContainerResource protectionContainer)
             : base(protectionContainer)
         {
-            AzureSqlProtectionContainer sqlProtectionContainer = 
-                (AzureSqlProtectionContainer)protectionContainer.Properties;
+            ServiceClientModel.AzureSqlContainer sqlProtectionContainer =
+                (ServiceClientModel.AzureSqlContainer)protectionContainer.Properties;
             Status = EnumUtils.GetEnum<ContainerRegistrationStatus>(
                 sqlProtectionContainer.RegistrationStatus);
         }

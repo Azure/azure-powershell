@@ -1,0 +1,442 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/bab08e11-7b12-4354-9fd1-4b5d64d40b68/resourceGroups/Api-Default-East-US/providers/Microsoft.ApiManagement/service/hydraapimservice9895/backends/onesdk9123?api-version=2016-10-10",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYmFiMDhlMTEtN2IxMi00MzU0LTlmZDEtNGI1ZDY0ZDQwYjY4L3Jlc291cmNlR3JvdXBzL0FwaS1EZWZhdWx0LUVhc3QtVVMvcHJvdmlkZXJzL01pY3Jvc29mdC5BcGlNYW5hZ2VtZW50L3NlcnZpY2UvaHlkcmFhcGltc2VydmljZTk4OTUvYmFja2VuZHMvb25lc2RrOTEyMz9hcGktdmVyc2lvbj0yMDE2LTEwLTEw",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"title\": \"onesdk2363\",\r\n  \"description\": \"onesdk8706\",\r\n  \"url\": \"https://contoso.com/awesomeapi\",\r\n  \"protocol\": \"http\",\r\n  \"properties\": {\r\n    \"skipCertificateChainValidation\": true\r\n  },\r\n  \"credentials\": {\r\n    \"query\": {\r\n      \"sv\": [\r\n        \"xx\",\r\n        \"bb\"\r\n      ],\r\n      \"sr\": [\r\n        \"cc\"\r\n      ]\r\n    },\r\n    \"header\": {\r\n      \"x-my-1\": [\r\n        \"val1\",\r\n        \"val2\"\r\n      ]\r\n    },\r\n    \"authorization\": {\r\n      \"scheme\": \"basic\",\r\n      \"parameter\": \"opensesame\"\r\n    }\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json"
+        ],
+        "Content-Length": [
+          "515"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/3.4.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "abbd6598-ac49-4b8e-bcee-00daeec44850"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "x-ms-correlation-request-id": [
+          "bf7cbb09-fe80-4387-ba85-da5ac03a0b2b"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20170306T213048Z:bf7cbb09-fe80-4387-ba85-da5ac03a0b2b"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 06 Mar 2017 21:30:48 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/bab08e11-7b12-4354-9fd1-4b5d64d40b68/resourceGroups/Api-Default-East-US/providers/Microsoft.ApiManagement/service/hydraapimservice9895/backends/onesdk9123?api-version=2016-10-10",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYmFiMDhlMTEtN2IxMi00MzU0LTlmZDEtNGI1ZDY0ZDQwYjY4L3Jlc291cmNlR3JvdXBzL0FwaS1EZWZhdWx0LUVhc3QtVVMvcHJvdmlkZXJzL01pY3Jvc29mdC5BcGlNYW5hZ2VtZW50L3NlcnZpY2UvaHlkcmFhcGltc2VydmljZTk4OTUvYmFja2VuZHMvb25lc2RrOTEyMz9hcGktdmVyc2lvbj0yMDE2LTEwLTEw",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/3.4.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/backends/onesdk9123\",\r\n  \"title\": \"onesdk2363\",\r\n  \"description\": \"onesdk8706\",\r\n  \"url\": \"https://contoso.com/awesomeapi\",\r\n  \"protocol\": \"http\",\r\n  \"properties\": {\r\n    \"skipCertificateChainValidation\": true\r\n  },\r\n  \"credentials\": {\r\n    \"query\": {\r\n      \"sv\": [\r\n        \"xx\",\r\n        \"bb\"\r\n      ],\r\n      \"sr\": [\r\n        \"cc\"\r\n      ]\r\n    },\r\n    \"header\": {\r\n      \"x-my-1\": [\r\n        \"val1\",\r\n        \"val2\"\r\n      ]\r\n    },\r\n    \"authorization\": {\r\n      \"scheme\": \"basic\",\r\n      \"parameter\": \"opensesame\"\r\n    }\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "338"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "105c7996-73ae-4627-b21d-958c61d6042d"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14994"
+        ],
+        "x-ms-correlation-request-id": [
+          "1d6a2ad2-f6b8-4d3c-9ca5-63026950a614"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20170306T213049Z:1d6a2ad2-f6b8-4d3c-9ca5-63026950a614"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 06 Mar 2017 21:30:48 GMT"
+        ],
+        "ETag": [
+          "\"AAAAAAAAG4E=\""
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/bab08e11-7b12-4354-9fd1-4b5d64d40b68/resourceGroups/Api-Default-East-US/providers/Microsoft.ApiManagement/service/hydraapimservice9895/backends/onesdk9123?api-version=2016-10-10",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYmFiMDhlMTEtN2IxMi00MzU0LTlmZDEtNGI1ZDY0ZDQwYjY4L3Jlc291cmNlR3JvdXBzL0FwaS1EZWZhdWx0LUVhc3QtVVMvcHJvdmlkZXJzL01pY3Jvc29mdC5BcGlNYW5hZ2VtZW50L3NlcnZpY2UvaHlkcmFhcGltc2VydmljZTk4OTUvYmFja2VuZHMvb25lc2RrOTEyMz9hcGktdmVyc2lvbj0yMDE2LTEwLTEw",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/3.4.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/backends/onesdk9123\",\r\n  \"title\": \"onesdk2363\",\r\n  \"description\": \"onesdk227\",\r\n  \"url\": \"https://contoso.com/awesomeapi\",\r\n  \"protocol\": \"http\",\r\n  \"properties\": {\r\n    \"skipCertificateChainValidation\": true\r\n  },\r\n  \"credentials\": {\r\n    \"query\": {\r\n      \"sv\": [\r\n        \"xx\",\r\n        \"bb\"\r\n      ],\r\n      \"sr\": [\r\n        \"cc\"\r\n      ]\r\n    },\r\n    \"header\": {\r\n      \"x-my-1\": [\r\n        \"val1\",\r\n        \"val2\"\r\n      ]\r\n    },\r\n    \"authorization\": {\r\n      \"scheme\": \"basic\",\r\n      \"parameter\": \"opensesame\"\r\n    }\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "337"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "d9f0e2b0-2907-4544-a0a4-263b3539ceaf"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14993"
+        ],
+        "x-ms-correlation-request-id": [
+          "f4839a21-8411-4d17-8470-60f54572515d"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20170306T213049Z:f4839a21-8411-4d17-8470-60f54572515d"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 06 Mar 2017 21:30:49 GMT"
+        ],
+        "ETag": [
+          "\"AAAAAAAAG4I=\""
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/bab08e11-7b12-4354-9fd1-4b5d64d40b68/resourceGroups/Api-Default-East-US/providers/Microsoft.ApiManagement/service/hydraapimservice9895/backends/onesdk9123?api-version=2016-10-10",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYmFiMDhlMTEtN2IxMi00MzU0LTlmZDEtNGI1ZDY0ZDQwYjY4L3Jlc291cmNlR3JvdXBzL0FwaS1EZWZhdWx0LUVhc3QtVVMvcHJvdmlkZXJzL01pY3Jvc29mdC5BcGlNYW5hZ2VtZW50L3NlcnZpY2UvaHlkcmFhcGltc2VydmljZTk4OTUvYmFja2VuZHMvb25lc2RrOTEyMz9hcGktdmVyc2lvbj0yMDE2LTEwLTEw",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/3.4.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/backends/onesdk9123\",\r\n  \"title\": \"onesdk2363\",\r\n  \"description\": \"onesdk227\",\r\n  \"url\": \"https://contoso.com/awesomeapi\",\r\n  \"protocol\": \"http\",\r\n  \"properties\": {\r\n    \"skipCertificateChainValidation\": true\r\n  },\r\n  \"credentials\": {\r\n    \"query\": {\r\n      \"sv\": [\r\n        \"xx\",\r\n        \"bb\"\r\n      ],\r\n      \"sr\": [\r\n        \"cc\"\r\n      ]\r\n    },\r\n    \"header\": {\r\n      \"x-my-1\": [\r\n        \"val1\",\r\n        \"val2\"\r\n      ]\r\n    },\r\n    \"authorization\": {\r\n      \"scheme\": \"basic\",\r\n      \"parameter\": \"opensesame\"\r\n    }\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "337"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "3f448b1e-410f-4e17-a197-a4c855d60f58"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14990"
+        ],
+        "x-ms-correlation-request-id": [
+          "214e3b06-a192-47cf-99a2-b260adfb4975"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20170306T213050Z:214e3b06-a192-47cf-99a2-b260adfb4975"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 06 Mar 2017 21:30:49 GMT"
+        ],
+        "ETag": [
+          "\"AAAAAAAAG4I=\""
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/bab08e11-7b12-4354-9fd1-4b5d64d40b68/resourceGroups/Api-Default-East-US/providers/Microsoft.ApiManagement/service/hydraapimservice9895/backends/onesdk9123?api-version=2016-10-10",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYmFiMDhlMTEtN2IxMi00MzU0LTlmZDEtNGI1ZDY0ZDQwYjY4L3Jlc291cmNlR3JvdXBzL0FwaS1EZWZhdWx0LUVhc3QtVVMvcHJvdmlkZXJzL01pY3Jvc29mdC5BcGlNYW5hZ2VtZW50L3NlcnZpY2UvaHlkcmFhcGltc2VydmljZTk4OTUvYmFja2VuZHMvb25lc2RrOTEyMz9hcGktdmVyc2lvbj0yMDE2LTEwLTEw",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/3.4.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"Backend not found.\",\r\n    \"details\": null\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "83"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "e7753f8c-dc4f-48cb-9466-e16aa3e93a44"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14989"
+        ],
+        "x-ms-correlation-request-id": [
+          "967b630e-768e-4366-b973-0f0ac6a38c07"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20170306T213051Z:967b630e-768e-4366-b973-0f0ac6a38c07"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 06 Mar 2017 21:30:50 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/bab08e11-7b12-4354-9fd1-4b5d64d40b68/resourceGroups/Api-Default-East-US/providers/Microsoft.ApiManagement/service/hydraapimservice9895/backends/onesdk9123?api-version=2016-10-10",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYmFiMDhlMTEtN2IxMi00MzU0LTlmZDEtNGI1ZDY0ZDQwYjY4L3Jlc291cmNlR3JvdXBzL0FwaS1EZWZhdWx0LUVhc3QtVVMvcHJvdmlkZXJzL01pY3Jvc29mdC5BcGlNYW5hZ2VtZW50L3NlcnZpY2UvaHlkcmFhcGltc2VydmljZTk4OTUvYmFja2VuZHMvb25lc2RrOTEyMz9hcGktdmVyc2lvbj0yMDE2LTEwLTEw",
+      "RequestMethod": "PATCH",
+      "RequestBody": "{\r\n  \"description\": \"onesdk227\"\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json"
+        ],
+        "Content-Length": [
+          "34"
+        ],
+        "If-Match": [
+          "*"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/3.4.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "6f6c1acb-bc33-437a-9032-fce4846236d0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1197"
+        ],
+        "x-ms-correlation-request-id": [
+          "757c8da0-bb95-4716-9f44-bc63fbd0bb99"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20170306T213049Z:757c8da0-bb95-4716-9f44-bc63fbd0bb99"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 06 Mar 2017 21:30:49 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 204
+    },
+    {
+      "RequestUri": "/subscriptions/bab08e11-7b12-4354-9fd1-4b5d64d40b68/resourceGroups/Api-Default-East-US/providers/Microsoft.ApiManagement/service/hydraapimservice9895/backends?api-version=2016-10-10",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYmFiMDhlMTEtN2IxMi00MzU0LTlmZDEtNGI1ZDY0ZDQwYjY4L3Jlc291cmNlR3JvdXBzL0FwaS1EZWZhdWx0LUVhc3QtVVMvcHJvdmlkZXJzL01pY3Jvc29mdC5BcGlNYW5hZ2VtZW50L3NlcnZpY2UvaHlkcmFhcGltc2VydmljZTk4OTUvYmFja2VuZHM/YXBpLXZlcnNpb249MjAxNi0xMC0xMA==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/3.4.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/backends/onesdk9123\",\r\n      \"title\": \"onesdk2363\",\r\n      \"description\": \"onesdk227\",\r\n      \"url\": \"https://contoso.com/awesomeapi\",\r\n      \"protocol\": \"http\",\r\n      \"properties\": {\r\n        \"skipCertificateChainValidation\": true\r\n      },\r\n      \"credentials\": {\r\n        \"query\": {\r\n          \"sv\": [\r\n            \"xx\",\r\n            \"bb\"\r\n          ],\r\n          \"sr\": [\r\n            \"cc\"\r\n          ]\r\n        },\r\n        \"header\": {\r\n          \"x-my-1\": [\r\n            \"val1\",\r\n            \"val2\"\r\n          ]\r\n        },\r\n        \"authorization\": {\r\n          \"scheme\": \"basic\",\r\n          \"parameter\": \"opensesame\"\r\n        }\r\n      }\r\n    }\r\n  ],\r\n  \"count\": 1,\r\n  \"nextLink\": null\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "375"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "496291ee-74c2-495e-87b4-7c98654ffe72"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14991"
+        ],
+        "x-ms-correlation-request-id": [
+          "6933c5db-8d92-4c02-bf20-3ec429c7c830"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20170306T213050Z:6933c5db-8d92-4c02-bf20-3ec429c7c830"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 06 Mar 2017 21:30:49 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/bab08e11-7b12-4354-9fd1-4b5d64d40b68/resourceGroups/Api-Default-East-US/providers/Microsoft.ApiManagement/service/hydraapimservice9895/backends/onesdk9123?api-version=2016-10-10",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYmFiMDhlMTEtN2IxMi00MzU0LTlmZDEtNGI1ZDY0ZDQwYjY4L3Jlc291cmNlR3JvdXBzL0FwaS1EZWZhdWx0LUVhc3QtVVMvcHJvdmlkZXJzL01pY3Jvc29mdC5BcGlNYW5hZ2VtZW50L3NlcnZpY2UvaHlkcmFhcGltc2VydmljZTk4OTUvYmFja2VuZHMvb25lc2RrOTEyMz9hcGktdmVyc2lvbj0yMDE2LTEwLTEw",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "If-Match": [
+          "*"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/3.4.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "3c15fc7a-4766-45e7-ab9f-f61c78aae1d8"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1196"
+        ],
+        "x-ms-correlation-request-id": [
+          "8814f77b-530a-4883-8fc3-ba5237ab700b"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20170306T213050Z:8814f77b-530a-4883-8fc3-ba5237ab700b"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 06 Mar 2017 21:30:50 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 204
+    }
+  ],
+  "Names": {
+    "": [
+      "onesdk9123",
+      "onesdk2363",
+      "onesdk6640",
+      "onesdk8706",
+      "onesdk227"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "bab08e11-7b12-4354-9fd1-4b5d64d40b68"
+  }
+}

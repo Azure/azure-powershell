@@ -95,7 +95,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 //Make sure we use the correct copy id to abort
                 //Use default retry policy for FetchBlobAttributes
                 FileRequestOptions options = RequestOptions;
-                await localChannel.FetchFileAttributesAsync(file, null, options, OperationContext, CmdletCancellationToken);
+                await localChannel.FetchFileAttributesAsync(file, null, options, OperationContext, CmdletCancellationToken).ConfigureAwait(false);
 
                 if (file.CopyState == null || string.IsNullOrEmpty(file.CopyState.CopyId))
                 {
@@ -110,7 +110,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 if (!Force)
                 {
                     string confirmation = String.Format(Resources.ConfirmAbortFileCopyOperation, file.Uri.ToString(), abortCopyId);
-                    if (!await OutputStream.ConfirmAsync(confirmation))
+                    if (!await OutputStream.ConfirmAsync(confirmation).ConfigureAwait(false))
                     {
                         string cancelMessage = String.Format(Resources.StopCopyOperationCancelled, file.Uri.ToString());
                         OutputStream.WriteVerbose(taskId, cancelMessage);
@@ -122,7 +122,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 abortCopyId = copyId;
             }
 
-            await localChannel.AbortCopyAsync(file, abortCopyId, null, requestOptions, OperationContext, CmdletCancellationToken);
+            await localChannel.AbortCopyAsync(file, abortCopyId, null, requestOptions, OperationContext, CmdletCancellationToken).ConfigureAwait(false);
             string message = String.Format(Resources.StopCopyFileSuccessfully, file.Uri.ToString());
             OutputStream.WriteObject(taskId, message);
         }

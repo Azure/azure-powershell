@@ -35,6 +35,16 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         }
 
         /// <summary>
+        /// Test New-AzureRmIntegrationAccountCertificatePrivateKey command to create a new integration account certificate.
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateIntegrationAccountCertificatePrivateKey()
+        {
+            WorkflowController.NewInstance.RunPowerShellTest("Test-CreateIntegrationAccountCertificatePrivateKey");
+        }
+
+        /// <summary>
         /// Test Get-AzureRmIntegrationAccountCertificate command to get the integration account certificate.
         /// </summary>
         [Fact]
@@ -62,7 +72,17 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         public void TestUpdateIntegrationAccountCertificate()
         {
             WorkflowController.NewInstance.RunPowerShellTest("Test-UpdateIntegrationAccountCertificate");
-        }               
+        }
+
+        /// <summary>
+        /// Test-CreateIntegrationAccountCertificatePublicKey command to update the integration account certificate.
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateIntegrationAccountCertificatePublicKey()
+        {
+            WorkflowController.NewInstance.RunPowerShellTest("Test-CreateIntegrationAccountCertificatePublicKey");
+        }
     }
 }
 

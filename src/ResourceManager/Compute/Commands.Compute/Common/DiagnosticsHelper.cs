@@ -12,11 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Management.Storage.Models;
+using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
+using Microsoft.WindowsAzure.Commands.Storage.Adapters;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Newtonsoft.Json;
@@ -39,6 +43,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
         private static string EncodedXmlCfg = "xmlCfg";
         private static string WadCfg = "WadCfg";
         private static string WadCfgBlob = "WadCfgBlob";
+        private static string StorageType = "StorageType";
         private static string StorageAccount = "storageAccount";
         private static string Path = "path";
         private static string ExpandResourceDirectory = "expandResourceDirectory";
@@ -46,6 +51,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
         private static string StorageAccountNameTag = "storageAccountName";
         private static string StorageAccountKeyTag = "storageAccountKey";
         private static string StorageAccountEndPointTag = "storageAccountEndPoint";
+        private static string StorageAccountSASTokenTag = "storageAccountSasToken";
 
         public static string XmlNamespace = "http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration";
         public static string DiagnosticsConfigurationElemStr = "DiagnosticsConfiguration";
@@ -56,12 +62,20 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public static string PrivConfNameAttr = "name";
         public static string PrivConfKeyAttr = "key";
         public static string PrivConfEndpointAttr = "endpoint";
+        public static string PrivConfSasKeyAttr = "sasToken";
         public static string MetricsElemStr = "Metrics";
         public static string MetricsResourceIdAttr = "resourceId";
         public static string EventHubElemStr = "EventHub";
         public static string EventHubUrlAttr = "Url";
         public static string EventHubSharedAccessKeyNameAttr = "SharedAccessKeyName";
         public static string EventHubSharedAccessKeyAttr = "SharedAccessKey";
+
+        private enum WadStorageType
+        {
+            Table,
+            Blob,
+            TableAndBlob
+        }
 
         public enum ConfigFileType
         {
@@ -153,6 +167,19 @@ namespace Microsoft.Azure.Commands.Compute.Common
                 hashTable.Add(LocalResourceDirectory, localDirectoryHashTable);
             }
 
+            var storageTypeElement = doc.Descendants().FirstOrDefault(d => d.Name.LocalName == StorageType);
+            if (storageTypeElement != null)
+            {
+                string storageType = storageTypeElement.Value;
+                WadStorageType wadStorageType;
+                if (!Enum.TryParse<WadStorageType>(storageType, out wadStorageType))
+                {
+                    throw new ArgumentException(StorageType);
+                }
+
+                hashTable.Add(StorageType, storageTypeElement.Value);
+            }
+
             return hashTable;
         }
 
@@ -195,8 +222,16 @@ namespace Microsoft.Azure.Commands.Compute.Common
             var wadCfgProperty = properties.FirstOrDefault(p => p.Equals(WadCfg, StringComparison.OrdinalIgnoreCase));
             var wadCfgBlobProperty = properties.FirstOrDefault(p => p.Equals(WadCfgBlob, StringComparison.OrdinalIgnoreCase));
             var xmlCfgProperty = properties.FirstOrDefault(p => p.Equals(EncodedXmlCfg, StringComparison.OrdinalIgnoreCase));
+            var storageAccountProperty = properties.FirstOrDefault(p => p.Equals(StorageAccount, StringComparison.OrdinalIgnoreCase));
+            var storageTypeProperty = properties.FirstOrDefault(p => p.Equals(StorageType, StringComparison.OrdinalIgnoreCase));
 
             var hashTable = new Hashtable();
+
+            if (string.IsNullOrEmpty(storageAccountName) && storageAccountProperty != null)
+            {
+                storageAccountName = (string)publicConfig[storageAccountProperty];
+            }
+
             hashTable.Add(StorageAccount, storageAccountName);
 
             if (wadCfgProperty != null && publicConfig[wadCfgProperty] is JObject)
@@ -216,6 +251,18 @@ namespace Microsoft.Azure.Commands.Compute.Common
             else
             {
                 throw new ArgumentException(Properties.Resources.DiagnosticsExtensionIaaSConfigElementNotDefinedInJson);
+            }
+
+            if (storageTypeProperty != null)
+            {
+                string storageType = (string)publicConfig[storageTypeProperty];
+                WadStorageType wadStorageType;
+                if (!Enum.TryParse<WadStorageType>(storageType, out wadStorageType))
+                {
+                    throw new ArgumentException(StorageType);
+                }
+
+                hashTable.Add(StorageType, storageType);
             }
 
             return hashTable;
@@ -253,7 +300,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
         }
 
         public static Hashtable GetPrivateDiagnosticsConfiguration(string configurationPath,
-            string storageAccountName, string storageKey, string endpoint)
+            string overrideStorageAccountName, string overrideStorageKey, string overrideEndpoint)
         {
             var privateConfig = new Hashtable();
             var configFileType = GetConfigFileType(configurationPath);
@@ -273,6 +320,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
                     {
                         var config = (Cis.Monitoring.Wad.PrivateConfigConverter.PrivateConfig)serializer.Deserialize(sr);
 
+                        var storageAccount = config.StorageAccount;
                         // Set the StorageAccount element as null, so it won't appear after serialize to json
                         config.StorageAccount = null;
 
@@ -282,6 +330,26 @@ namespace Microsoft.Azure.Commands.Compute.Common
                                                 NullValueHandling = NullValueHandling.Ignore
                                             });
                         privateConfig = JsonConvert.DeserializeObject<Hashtable>(privateConfigInJson);
+
+                        if (!string.IsNullOrEmpty(storageAccount.name))
+                        {
+                            privateConfig[StorageAccountNameTag] = storageAccount.name;
+                        }
+
+                        if (!string.IsNullOrEmpty(storageAccount.key))
+                        {
+                            privateConfig[StorageAccountKeyTag] = storageAccount.key;
+                        }
+
+                        if (!string.IsNullOrEmpty(storageAccount.endpoint))
+                        {
+                            privateConfig[StorageAccountEndPointTag] = storageAccount.endpoint;
+                        }
+
+                        if (!string.IsNullOrEmpty(storageAccount.sasToken))
+                        {
+                            privateConfig[StorageAccountSASTokenTag] = storageAccount.sasToken;
+                        }
                     }
                 }
             }
@@ -297,9 +365,21 @@ namespace Microsoft.Azure.Commands.Compute.Common
                 }
             }
 
-            privateConfig[StorageAccountNameTag] = storageAccountName;
-            privateConfig[StorageAccountKeyTag] = storageKey;
-            privateConfig[StorageAccountEndPointTag] = endpoint;
+            string storageAccountNameInPrivateConfig = privateConfig[StorageAccountNameTag] as string;
+            if (!string.IsNullOrEmpty(storageAccountNameInPrivateConfig) && 
+                !string.Equals(storageAccountNameInPrivateConfig, overrideStorageAccountName, StringComparison.OrdinalIgnoreCase))
+            {
+                throw new ArgumentException(Properties.Resources.DiagnosticsExtensionMismatchStorageAccountName, StorageAccountNameTag);
+            }
+
+            privateConfig[StorageAccountNameTag] = overrideStorageAccountName;
+
+            // Only overwrite storage key if no sas token is provided.
+            if (string.IsNullOrEmpty(privateConfig[StorageAccountSASTokenTag] as string))
+            {
+                privateConfig[StorageAccountKeyTag] = overrideStorageKey;
+                privateConfig[StorageAccountEndPointTag] = overrideEndpoint;
+            }
 
             return privateConfig;
         }
@@ -452,7 +532,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
         /// 1. The one get from StorageContext parameter
         /// 2. The one parsed from the diagnostics configuration file
         /// </summary>
-        public static string InitializeStorageAccountName(AzureStorageContext storageContext = null, string configurationPath = null)
+        public static string InitializeStorageAccountName(IStorageContext storageContext = null, string configurationPath = null)
         {
             string storageAccountName = null;
             var configFileType = GetConfigFileType(configurationPath);
@@ -491,9 +571,9 @@ namespace Microsoft.Azure.Commands.Compute.Common
 
             if (TryGetStorageAccount(storageClient, storageAccountName, out storageAccount))
             {
+                var account = new ARMStorageProvider(storageClient).GetCloudStorageAccount(storageAccount.Name, ARMStorageService.ParseResourceGroupFromId(storageAccount.Id));
                 // Help user retrieve the storage account key
-                var credentials = StorageUtilities.GenerateStorageCredentials(new ARMStorageProvider(storageClient),
-                    ARMStorageService.ParseResourceGroupFromId(storageAccount.Id), storageAccount.Name);
+                var credentials = account.Credentials;
                 storageAccountKey = credentials.ExportBase64EncodedKey();
             }
             else
@@ -514,7 +594,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
         /// 4. The one get from current Azure Environment
         /// </summary>
         public static string InitializeStorageAccountEndpoint(string storageAccountName, string storageAccountKey, IStorageManagementClient storageClient,
-            AzureStorageContext storageContext = null, string configurationPath = null, AzureContext defaultContext = null)
+            IStorageContext storageContext = null, string configurationPath = null, IAzureContext defaultContext = null)
         {
             string storageAccountEndpoint = null;
             StorageAccount storageAccount = null;
@@ -573,10 +653,97 @@ namespace Microsoft.Azure.Commands.Compute.Common
             return new AzureStorageContext(cloudStorageAccount);
         }
 
-        private static string GetEndpointFromStorageContext(AzureStorageContext context)
+        private static string GetEndpointFromStorageContext(IStorageContext context)
         {
             var scheme = context.BlobEndPoint.StartsWith("https://", StringComparison.OrdinalIgnoreCase) ? "https://" : "http://";
             return scheme + context.EndPointSuffix;
+        }
+
+        /// <summary>
+        /// Parse public and private configurations, and automatically resolve storage key for private configuration.
+        /// </summary>
+        /// <param name="publicConfigPath">Public configuration file path</param>
+        /// <param name="privateConfigPath">Private configuration file path, can be empty</param>
+        /// <param name="storageClient">Storage client</param>
+        /// <returns>A tuple with public configuration as first element and private configuration as second element</returns>
+        public static Tuple<Hashtable, Hashtable> GetConfigurationsFromFiles(string publicConfigPath, string privateConfigPath, string resourceId, Cmdlet cmdlet, IStorageManagementClient storageClient)
+        {
+            var publicConfig = GetPublicConfigFromJsonFile(publicConfigPath, null, resourceId, cmdlet);
+            var privateConfig = string.IsNullOrEmpty(privateConfigPath) ? new Hashtable() :
+                JsonConvert.DeserializeObject<Hashtable>(File.ReadAllText(privateConfigPath));
+
+            // Resolve storage account name
+            // Storage account name must be provided in public config
+            var storageAccountNameInPublicConfig = publicConfig[StorageAccount] as string;
+            if (string.IsNullOrEmpty(storageAccountNameInPublicConfig))
+            {
+                throw new ArgumentException(Properties.Resources.DiagnosticsExtensionNullStorageAccountName);
+            }
+
+            string storageAccountNameInPrivateConfig = privateConfig[StorageAccountNameTag] as string;
+            if (!string.IsNullOrEmpty(storageAccountNameInPrivateConfig) &&
+                !string.Equals(storageAccountNameInPrivateConfig, storageAccountNameInPublicConfig, StringComparison.OrdinalIgnoreCase))
+            {
+                throw new ArgumentException(Properties.Resources.DiagnosticsExtensionMismatchStorageAccountName, StorageAccountNameTag);
+            }
+
+            privateConfig[StorageAccountNameTag] = storageAccountNameInPublicConfig;
+
+            string storageAccountKey = null;
+            // If sas token is provided, just use it.
+            // Otherwise, try to resolve storage key.
+            if (string.IsNullOrEmpty(privateConfig[StorageAccountSASTokenTag] as string))
+            {
+                // Resolve storage account key
+                storageAccountKey = InitializeStorageAccountKey(storageClient, storageAccountNameInPublicConfig, privateConfigPath);
+                if (string.IsNullOrEmpty(storageAccountKey))
+                {
+                    storageAccountKey = privateConfig[StorageAccountKeyTag] as string;
+
+                    if (string.IsNullOrEmpty(storageAccountKey))
+                    {
+                        // Throw exception if no storage key provided in private config and cannot retrieve it from server
+                        throw new ArgumentException(Properties.Resources.DiagnosticsExtensionNullStorageAccountKey);
+                    }
+                }
+                else
+                {
+                    // If storage key can be retrieved, use that one.
+                    privateConfig[StorageAccountKeyTag] = storageAccountKey;
+                }
+            }
+
+
+            // Resolve storage account endpoint
+            var storageAccountEndpoint = storageAccountKey == null? null: InitializeStorageAccountEndpoint(storageAccountNameInPublicConfig, storageAccountKey, storageClient);
+            if (string.IsNullOrEmpty(storageAccountEndpoint))
+            {
+                storageAccountEndpoint = privateConfig[StorageAccountEndPointTag] as string;
+
+                if (string.IsNullOrEmpty(storageAccountEndpoint))
+                {
+                    // Throw exception if no storage endpoint provided in private config and cannot retrieve it from server
+                    throw new ArgumentNullException(Properties.Resources.DiagnosticsExtensionNullStorageAccountEndpoint);
+                }
+            }
+            else
+            {
+                // If storage account endpoint can be retrieved, use that one.
+                privateConfig[StorageAccountEndPointTag] = storageAccountEndpoint;
+            }
+
+            return new Tuple<Hashtable, Hashtable>(publicConfig, privateConfig);
+        }
+
+        /// <summary>
+        /// Check if a VMSS extension is diagnostics extension.
+        /// </summary>
+        /// <param name="extension">VMSS extension</param>
+        /// <returns>Whether the VMSS extension is diagnostics extension</returns>
+        public static bool IsDiagnosticsExtension(VirtualMachineScaleSetExtension extension)
+        {
+            return extension.Publisher.Equals(DiagnosticsExtensionConstants.ExtensionPublisher, StringComparison.InvariantCultureIgnoreCase) &&
+                extension.Type.Equals(DiagnosticsExtensionConstants.ExtensionType, StringComparison.InvariantCultureIgnoreCase);
         }
     }
 }

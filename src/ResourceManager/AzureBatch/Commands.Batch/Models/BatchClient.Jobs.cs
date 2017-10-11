@@ -153,6 +153,16 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 job.PoolInformation = parameters.PoolInformation.omObject;
             }
 
+            if (parameters.OnAllTasksComplete != null)
+            {
+                job.OnAllTasksComplete = parameters.OnAllTasksComplete;
+            }
+
+            if (parameters.OnTaskFailure != null)
+            {
+                job.OnTaskFailure = parameters.OnTaskFailure;
+            }
+
             WriteVerbose(string.Format(Resources.CreatingJob, parameters.JobId));
             job.Commit(parameters.AdditionalBehaviors);
         }
@@ -259,10 +269,41 @@ namespace Microsoft.Azure.Commands.Batch.Models
             WriteVerbose(Resources.GetAllJobsLifetimeStatistics);
 
             JobOperations jobOperations = context.BatchOMClient.JobOperations;
-            JobStatistics jobStatistics = jobOperations.GetAllJobsLifetimeStatistics(additionalBehaviors);
+            JobStatistics jobStatistics = jobOperations.GetAllLifetimeStatistics(additionalBehaviors);
             PSJobStatistics psJobStatistics = new PSJobStatistics(jobStatistics);
 
             return psJobStatistics;
+        }
+
+        /// <summary>
+        /// Lists the job prep and release status matching the specified filter options.
+        /// </summary>
+        /// <param name="options">The Batch account context.</param>
+        public IEnumerable<PSJobPreparationAndReleaseTaskExecutionInformation> ListJobPreparationAndReleaseStatus(ListJobPreparationAndReleaseStatusOptions options)
+        {
+            if (options == null)
+            {
+                throw new ArgumentNullException(nameof(options));
+            }
+
+            string jobId = options.JobId ?? options.Job.Id;
+
+            if (jobId == null)
+            {
+                throw new ArgumentNullException(nameof(jobId));
+            }
+            
+            WriteVerbose(string.Format(Resources.GetJobPreparationAndReleaseStatus, jobId));
+            JobOperations jobOperations = options.Context.BatchOMClient.JobOperations;
+            ODATADetailLevel getDetailLevel = new ODATADetailLevel(filterClause: options.Filter, selectClause: options.Select, expandClause: options.Expand);
+            IPagedEnumerable<JobPreparationAndReleaseTaskExecutionInformation> jobPrepAndReleaseDetails =
+                jobOperations.ListJobPreparationAndReleaseTaskStatus(jobId, getDetailLevel, additionalBehaviors: options.AdditionalBehaviors);
+
+            Func<JobPreparationAndReleaseTaskExecutionInformation, PSJobPreparationAndReleaseTaskExecutionInformation> mappingFunction = 
+                j => new PSJobPreparationAndReleaseTaskExecutionInformation(j);
+
+            return PSPagedEnumerable<PSJobPreparationAndReleaseTaskExecutionInformation, JobPreparationAndReleaseTaskExecutionInformation>.CreateWithMaxCount(
+                jobPrepAndReleaseDetails, mappingFunction, options.MaxCount, () => WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount)));
         }
     }
 }

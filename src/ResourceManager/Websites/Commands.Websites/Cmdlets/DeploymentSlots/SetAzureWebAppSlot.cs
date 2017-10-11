@@ -79,9 +79,12 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
         [Parameter(Position = 15, Mandatory = false, HelpMessage = "Whether or not to use 32-bit worker process. By default worker process is 64-bit")]
         [ValidateNotNullOrEmpty]
         public bool Use32BitWorkerProcess { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = "Destination slot name for auto swap")]
 
-        [Parameter(Mandatory = false, HelpMessage = "Destination slot name for auto swap")]        
         public string AutoSwapSlotName { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = "The number of workers to be allocated", ValueFromPipeline = true)]
+        [ValidateNotNullOrEmpty]
+        public int NumberOfWorkers { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -114,7 +117,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
                             WebSocketsEnabled = parameters.Contains("WebSocketsEnabled") ? (bool?)WebSocketsEnabled : null,
                             Use32BitWorkerProcess =
                                 parameters.Contains("Use32BitWorkerProcess") ? (bool?)Use32BitWorkerProcess : null,
-                            AutoSwapSlotName = parameters.Contains("AutoSwapSlotName") ? AutoSwapSlotName : null
+                            AutoSwapSlotName = parameters.Contains("AutoSwapSlotName") ? AutoSwapSlotName : null,
+                            NumberOfWorkers = parameters.Contains("NumberOfWorkers") ? NumberOfWorkers : WebApp.SiteConfig.NumberOfWorkers
                         };
                     }
 
@@ -136,7 +140,30 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
                     siteConfig = WebApp.SiteConfig;
 
                     // Update web app configuration
-                    WebsitesClient.UpdateWebAppConfiguration(ResourceGroupName, location, Name, Slot, siteConfig, WebApp.SiteConfig == null ? null : WebApp.SiteConfig.AppSettings.ToDictionary(nvp => nvp.Name, nvp => nvp.Value, StringComparer.OrdinalIgnoreCase), WebApp.SiteConfig == null ? null : WebApp.SiteConfig.ConnectionStrings.ToDictionary(nvp => nvp.Name, nvp => new ConnStringValueTypePair { Type = nvp.Type, Value = nvp.ConnectionString }, StringComparer.OrdinalIgnoreCase));
+                    WebsitesClient.UpdateWebAppConfiguration(
+                        ResourceGroupName, 
+                        location, 
+                        Name, 
+                        Slot, 
+                        siteConfig, 
+                        WebApp.SiteConfig == null ? 
+                            null : 
+                            WebApp.SiteConfig.AppSettings
+                                .ToDictionary(
+                                    nvp => nvp.Name, 
+                                    nvp => nvp.Value, 
+                                    StringComparer.OrdinalIgnoreCase), 
+                        WebApp.SiteConfig == null ? 
+                            null : 
+                            WebApp.SiteConfig.ConnectionStrings
+                                .ToDictionary(
+                                nvp => nvp.Name, 
+                                nvp => new ConnStringValueTypePair
+                                {
+                                    Type = nvp.Type.Value,
+                                    Value = nvp.ConnectionString
+                                }, 
+                                StringComparer.OrdinalIgnoreCase));
 
                     CmdletHelpers.TryParseAppServicePlanMetadataFromResourceId(WebApp.ServerFarmId, out rg, out servicePlanName);
                     WebsitesClient.UpdateWebApp(ResourceGroupName, location, Name, Slot, servicePlanName);

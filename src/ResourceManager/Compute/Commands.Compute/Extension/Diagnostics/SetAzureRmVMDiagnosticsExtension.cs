@@ -14,6 +14,7 @@
 
 using AutoMapper;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
@@ -97,7 +98,7 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The storage connection context.")]
         [ValidateNotNullOrEmpty]
-        public AzureStorageContext StorageContext { get; set; }
+        public IStorageContext StorageContext { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -209,8 +210,8 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 if (this.storageClient == null)
                 {
-                    this.storageClient = AzureSession.ClientFactory.CreateArmClient<StorageManagementClient>(
-                        DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager);
+                    this.storageClient = AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(
+                        DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
                 }
 
                 return this.storageClient;
@@ -246,8 +247,13 @@ namespace Microsoft.Azure.Commands.Compute
         private void InitializeStorageParameters()
         {
             InitializeStorageAccountName();
-            InitializeStorageAccountKey();
-            InitializeStorageAccountEndpoint();
+
+            // If sas token is provided in private config, skip retrieving storage account key and endpoint.
+            if (!IsSasTokenProvided())
+            {
+                InitializeStorageAccountKey();
+                InitializeStorageAccountEndpoint();
+            }
         }
 
         private void InitializeStorageAccountName()
@@ -282,6 +288,12 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 throw new ArgumentNullException(Properties.Resources.DiagnosticsExtensionNullStorageAccountEndpoint);
             }
+        }
+
+        private bool IsSasTokenProvided()
+        {
+            return !string.IsNullOrEmpty(DiagnosticsHelper.GetConfigValueFromPrivateConfig(this.DiagnosticsConfigurationPath, 
+                DiagnosticsHelper.PrivateConfigElemStr, DiagnosticsHelper.PrivConfSasKeyAttr));
         }
 
         public override void ExecuteCmdlet()

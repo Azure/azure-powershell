@@ -33,12 +33,29 @@ namespace Microsoft.Azure.Commands.Insights.LogProfiles
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [Parameter(Mandatory = false)] 
+        public SwitchParameter PassThru { get; set; }
+
         #endregion
 
         protected override void ProcessRecordInternal()
         {
-            this.InsightsManagementClient.LogProfilesOperations.DeleteAsync(this.Name, CancellationToken.None).Wait();
-            WriteObject(true);
+            WriteWarning("Output change: The type of the output will change in the release 5.0.0 - November 2017 - to return a single object containing the request Id and the status code.");
+            Rest.Azure.AzureOperationResponse result = this.MonitorManagementClient.LogProfiles.DeleteWithHttpMessagesAsync(logProfileName: this.Name, cancellationToken: CancellationToken.None).Result;
+
+            /*
+             * This object will be returned in future releases
+            var response = new AzureOperationResponse
+            {
+                RequestId = result.RequestId,
+                StatusCode = result.Response != null ? result.Response.StatusCode : HttpStatusCode.OK
+            };
+			*/
+
+            if (this.PassThru)
+            {
+                WriteObject(true);
+            }
         }
     }
 }

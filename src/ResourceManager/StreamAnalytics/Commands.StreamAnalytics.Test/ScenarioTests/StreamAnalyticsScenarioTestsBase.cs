@@ -18,9 +18,18 @@ using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.StreamAnalytics;
 using Microsoft.Azure.Subscriptions;
-using Microsoft.Azure.Test;
+using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using LegacyRMClient = Microsoft.Azure.Management.Resources;
+using LegacyRMSubscription = Microsoft.Azure.Subscriptions;
+using LegacyTest = Microsoft.Azure.Test;
+using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
+using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities;
 
 namespace Microsoft.Azure.Commands.StreamAnalytics.Test
 {
@@ -33,9 +42,9 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Test
             helper = new EnvironmentSetupHelper();
         }
 
-        protected void SetupManagementClients()
+        protected void SetupManagementClients(MockContext context)
         {
-            var streamAnalyticsManagementClient = GetStreamAnalyticsManagementClient();
+            var streamAnalyticsManagementClient = GetStreamAnalyticsManagementClient(context);
             var resourceManagementClient = GetResourceManagementClient();
             var subscriptionsClient = GetSubscriptionClient();
             var galleryClient = GetGalleryClient();
@@ -50,11 +59,21 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Test
 
         protected void RunPowerShellTest(params string[] scripts)
         {
-            using (UndoContext context = UndoContext.Current)
-            {
-                context.Start(TestUtilities.GetCallingClass(2), TestUtilities.GetCurrentMethodName(2));
+            var callingClassType = TestUtilities.GetCallingClass(2);
+            var mockName = TestUtilities.GetCurrentMethodName(2);
+            Dictionary<string, string> d = new Dictionary<string, string>();
+            d.Add("Microsoft.Resources", null);
+            d.Add("Microsoft.Features", null);
+            d.Add("Microsoft.Authorization", null);
+            var providersToIgnore = new Dictionary<string, string>();
+            providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
+            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
+            HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
 
-                SetupManagementClients();
+            using (MockContext context = MockContext.Start(callingClassType, mockName))
+            {
+                SetupManagementClients(context);
+                var whatisthis = this.GetType().Name;
 
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
                 helper.SetupModules(AzureModule.AzureResourceManager,
@@ -66,29 +85,29 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Test
             }
         }
 
-        protected StreamAnalyticsManagementClient GetStreamAnalyticsManagementClient()
+        protected StreamAnalyticsManagementClient GetStreamAnalyticsManagementClient(MockContext context)
         {
-            return TestBase.GetServiceClient<StreamAnalyticsManagementClient>(new CSMTestEnvironmentFactory());
+            return context.GetServiceClient<StreamAnalyticsManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        protected ResourceManagementClient GetResourceManagementClient()
+        protected LegacyRMClient.ResourceManagementClient GetResourceManagementClient()
         {
-            return TestBase.GetServiceClient<ResourceManagementClient>(new CSMTestEnvironmentFactory());
+            return LegacyTest.TestBase.GetServiceClient<ResourceManagementClient>(new LegacyTest.CSMTestEnvironmentFactory());
         }
 
-        protected SubscriptionClient GetSubscriptionClient()
+        protected LegacyRMSubscription.SubscriptionClient GetSubscriptionClient()
         {
-            return TestBase.GetServiceClient<SubscriptionClient>(new CSMTestEnvironmentFactory());
+            return LegacyTest.TestBase.GetServiceClient<SubscriptionClient>(new LegacyTest.CSMTestEnvironmentFactory());
         }
 
         protected GalleryClient GetGalleryClient()
         {
-            return TestBase.GetServiceClient<GalleryClient>(new CSMTestEnvironmentFactory());
+            return LegacyTest.TestBase.GetServiceClient<GalleryClient>(new LegacyTest.CSMTestEnvironmentFactory());
         }
 
         protected AuthorizationManagementClient GetAuthorizationManagementClient()
         {
-            return TestBase.GetServiceClient<AuthorizationManagementClient>(new CSMTestEnvironmentFactory());
+            return LegacyTest.TestBase.GetServiceClient<AuthorizationManagementClient>(new LegacyTest.CSMTestEnvironmentFactory());
         }
     }
 }

@@ -187,6 +187,60 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Database to be added with id &apos;{0}&apos; already exists in Failover Group with name: &apos;{1}&apos;  in server &apos;{2}&apos;..
+        /// </summary>
+        internal static string FailoverGroupAddDatabaseAlreadyExists {
+            get {
+                return ResourceManager.GetString("FailoverGroupAddDatabaseAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Value {0} is too large for the &apos;GracePeriodWithDataLossHours&apos; parameter. Using the largest supported value, {1}..
+        /// </summary>
+        internal static string FailoverGroupDataLossHoursOverflow {
+            get {
+                return ResourceManager.GetString("FailoverGroupDataLossHoursOverflow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A value of {0} is not yet supported for the &apos;GracePeriodWithDataLossHours&apos; parameter. Using the smallest supported value, {1}..
+        /// </summary>
+        internal static string FailoverGroupDataLossHoursUnsupportedLowValue {
+            get {
+                return ResourceManager.GetString("FailoverGroupDataLossHoursUnsupportedLowValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failover Group with name: &apos;{0}&apos; already exists in server &apos;{1}&apos;..
+        /// </summary>
+        internal static string FailoverGroupNameExists {
+            get {
+                return ResourceManager.GetString("FailoverGroupNameExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No arguments are provided to remove databases to Failover Group with name: &apos;{0}&apos;  in server &apos;{1}&apos;..
+        /// </summary>
+        internal static string FailoverGroupRemoveDatabaseNoArguments {
+            get {
+                return ResourceManager.GetString("FailoverGroupRemoveDatabaseNoArguments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Database to be removed with id {0} in Failover Group with name: &apos;{1}&apos;  in server &apos;{2} does not exist&apos;..
+        /// </summary>
+        internal static string FailoverGroupRemoveDatabaseNotExists {
+            get {
+                return ResourceManager.GetString("FailoverGroupRemoveDatabaseNotExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The Active Directory Group &apos;{0}&apos; is not security enabled. Only Azure Active Directory Security Enabled Groups are supported..
         /// </summary>
         internal static string InvalidADGroupNotSecurity {
@@ -277,6 +331,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot set threat detection policy without a storage account name..
+        /// </summary>
+        internal static string NoStorageAccountWhenConfiguringThreatDetectionPolicy {
+            get {
+                return ResourceManager.GetString("NoStorageAccountWhenConfiguringThreatDetectionPolicy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to PHP Data Objects(PDO) Sample Code:.
         /// </summary>
         internal static string PdoTitle {
@@ -304,6 +367,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove this Azure Sql Database from Azure Sql Database Failover Group &apos;{0}&apos; on server &apos;{1}&apos;?.
+        /// </summary>
+        internal static string RemoveAzureSqlDatabaseeFromAzureSqlDatabaseFailoverGroupWarning {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlDatabaseeFromAzureSqlDatabaseFailoverGroupWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Permanently removing Azure Sql Database Elastic Pool &apos;{0}&apos; on server &apos;{1}&apos;..
         /// </summary>
         internal static string RemoveAzureSqlDatabaseElasticPoolDescription {
@@ -318,6 +390,33 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string RemoveAzureSqlDatabaseElasticPoolWarning {
             get {
                 return ResourceManager.GetString("RemoveAzureSqlDatabaseElasticPoolWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Permanently removing Azure Sql Database Failover Group &apos;{0}&apos; on server &apos;{1}&apos;..
+        /// </summary>
+        internal static string RemoveAzureSqlDatabaseFailoverGroupDescription {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlDatabaseFailoverGroupDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Azure Sql Database Failover Group &apos;{0}&apos; on server &apos;{1}&apos;?.
+        /// </summary>
+        internal static string RemoveAzureSqlDatabaseFailoverGroupWarning {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlDatabaseFailoverGroupWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Permanently removing this Azure Sql Database from  Azure Sql Database Failover Group &apos;{0}&apos; on server &apos;{1}&apos;..
+        /// </summary>
+        internal static string RemoveAzureSqlDatabaseFromAzureSqlDatabaseFailoverGroupDescription {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlDatabaseFromAzureSqlDatabaseFailoverGroupDescription", resourceCulture);
             }
         }
         
@@ -412,11 +511,83 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Permanently removing Virtual Network Rule &apos;{0}&apos; for Azure Sql Server &apos;{1}&apos;.
+        /// </summary>
+        internal static string RemoveAzureSqlServerVirtualNetworkRuleDescription {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlServerVirtualNetworkRuleDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Virtual Network Rule &apos;{0}&apos; for Azure Sql Server  &apos;{1}&apos;?.
+        /// </summary>
+        internal static string RemoveAzureSqlServerVirtualNetworkRuleWarning {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlServerVirtualNetworkRuleWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove the Azure Sql Database Server &apos;{0}&apos;?.
         /// </summary>
         internal static string RemoveAzureSqlServerWarning {
             get {
                 return ResourceManager.GetString("RemoveAzureSqlServerWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Permanently removing Azure Sql Sync Agent &apos;{0}&apos;..
+        /// </summary>
+        internal static string RemoveAzureSqlSyncAgentDescription {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlSyncAgentDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Sync Agent &apos;{0}&apos; for  Resource Group &apos;{1}&apos; ?.
+        /// </summary>
+        internal static string RemoveAzureSqlSyncAgentWarning {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlSyncAgentWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Permanently removing Azure Sql Sync Group &apos;{0}&apos;..
+        /// </summary>
+        internal static string RemoveAzureSqlSyncGroupDescription {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlSyncGroupDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Sync Group &apos;{0}&apos; for database &apos;{1}&apos;?.
+        /// </summary>
+        internal static string RemoveAzureSqlSyncGroupWarning {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlSyncGroupWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Permanently removing Azure Sql Sync Member &apos;{0}&apos;..
+        /// </summary>
+        internal static string RemoveAzureSqlSyncMemberDescription {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlSyncMemberDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Sync Member &apos;{0}&apos; for Sync Group &apos;{1}&apos;?.
+        /// </summary>
+        internal static string RemoveAzureSqlSyncMemberWarning {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlSyncMemberWarning", resourceCulture);
             }
         }
         
@@ -502,6 +673,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Virtual Network Rule with name: &apos;{0}&apos; already exists for server &apos;{1}&apos;.
+        /// </summary>
+        internal static string ServerVirtualNetworkRuleNameExists {
+            get {
+                return ResourceManager.GetString("ServerVirtualNetworkRuleNameExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Updating auto execute status of the advisor &apos;{0}&apos; to &apos;{1}&apos;..
         /// </summary>
         internal static string SetAdvisorAutoExecuteStatusDescription {
@@ -516,6 +696,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string SetAdvisorAutoExecuteStatusWarning {
             get {
                 return ResourceManager.GetString("SetAdvisorAutoExecuteStatusWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Warning: Cutting off access to the key &apos;{0}&apos; may result in data loss on this server. Learn about best practices at aka.ms/sqltdewithbyok. Do you want to proceed?.
+        /// </summary>
+        internal static string SetAzureSqlServerTransparentDataEncryptionProtectorWarning {
+            get {
+                return ResourceManager.GetString("SetAzureSqlServerTransparentDataEncryptionProtectorWarning", resourceCulture);
             }
         }
         
@@ -615,6 +804,33 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string StorageAccountNotFound {
             get {
                 return ResourceManager.GetString("StorageAccountNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sync Agent with name: ‘{0}&apos; already exists in Resource Group &apos;{1}&apos;..
+        /// </summary>
+        internal static string SyncAgentNameExists {
+            get {
+                return ResourceManager.GetString("SyncAgentNameExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sync Group with name: ‘{0}&apos; already exists in database &apos;{1}&apos;..
+        /// </summary>
+        internal static string SyncGroupNameExists {
+            get {
+                return ResourceManager.GetString("SyncGroupNameExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sync Member with name: ‘{0}&apos; already exists in Sync Group &apos;{1}&apos;..
+        /// </summary>
+        internal static string SyncMemberNameExists {
+            get {
+                return ResourceManager.GetString("SyncMemberNameExists", resourceCulture);
             }
         }
         

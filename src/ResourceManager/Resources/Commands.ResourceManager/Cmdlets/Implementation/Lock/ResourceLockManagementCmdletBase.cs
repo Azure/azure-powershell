@@ -14,6 +14,7 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
+    using Commands.Common.Authentication.Abstractions;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Newtonsoft.Json.Linq;
@@ -145,7 +146,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     extensionResourceType: Constants.MicrosoftAuthorizationLocksType,
                     extensionResourceName: lockName)
                 : ResourceIdUtility.GetResourceId(
-                    subscriptionId: this.DefaultContext.Subscription.Id,
+                    subscriptionId: this.DefaultContext.Subscription.GetId(),
                     resourceGroupName: this.ResourceGroupName,
                     resourceType: this.ResourceType,
                     resourceName: this.ResourceName,

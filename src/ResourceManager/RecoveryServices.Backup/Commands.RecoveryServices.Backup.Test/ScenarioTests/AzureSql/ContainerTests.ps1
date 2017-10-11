@@ -14,35 +14,35 @@
 
 function Test-GetAzureSqlContainer
 {
-	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "RsvTestRG" -Name "RsvTestRN";
+	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "sqlpaasrg" -Name "sqlpaasrn";
 	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
 	$containers = Get-AzureRmRecoveryServicesBackupContainer `
 		-ContainerType "AzureSQL" -BackupManagementType "AzureSQL";
 	
-	Assert-AreEqual $containers[0].Name "Sql;testRG;ContosoServer";
+	Assert-AreEqual $containers[0].Name "Sql;sqlpaasrg;sqlpaasserver";
 
 	$namedContainer = Get-AzureRmRecoveryServicesBackupContainer `
 		-ContainerType "AzureSQL" `
 		-BackupManagementType "AzureSQL" `
-		-Name "Sql;testRG;ContosoServer";
-	Assert-AreEqual $namedContainer.Name "Sql;testRG;ContosoServer";
+		-Name "Sql;sqlpaasrg;sqlpaasserver";
+	Assert-AreEqual $namedContainer.Name "Sql;sqlpaasrg;sqlpaasserver";
 }
 
 function Test-UnregisterAzureSqlContainer
 {
-	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "RsvTestRG" -Name "RsvTestRN";
+	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "sqlpaasrg" -Name "sqlpaasrn";
 	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
 	
 	$container = Get-AzureRmRecoveryServicesBackupContainer `
 		-ContainerType "AzureSQL" `
 		-BackupManagementType "AzureSQL" `
-		-Name "Sql;testRG;ContosoServer";
-	Assert-AreEqual $container.Name "Sql;testRG;ContosoServer";
+		-Name "Sql;sqlpaasrg;sqlpaasserver";
+	Assert-AreEqual $container.Name "Sql;sqlpaasrg;sqlpaasserver";
 
 	Unregister-AzureRmRecoveryServicesBackupContainer -Container $container;
 	$container = Get-AzureRmRecoveryServicesBackupContainer `
 		-ContainerType "AzureSQL" `
 		-BackupManagementType "AzureSQL" `
-		-Name "Sql;testRG;ContosoServer";
+		-Name "Sql;sqlpaasrg;sqlpaasserver";
 	Assert-Null $container;
 }

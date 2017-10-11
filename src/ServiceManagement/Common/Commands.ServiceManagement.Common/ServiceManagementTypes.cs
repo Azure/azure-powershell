@@ -129,6 +129,33 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
         public const string HotfixGA = "HotfixGA";
     }
 
+    public static class VirtualNetworkGatewayConnectionType
+    {
+        public const string ExpressRoute = "ExpressRoute";
+        public const string IPsec = "IPsec";
+        public const string Vnet2Vnet = "Vnet2Vnet";
+        public const string VPNClient = "VPNClient";
+    }
+
+    /// <summary>
+    /// Represents the type of a virtual network gateway connection.
+    /// </summary>
+    [DataContract(Namespace = Constants.ServiceManagementNS)]
+    public enum GatewayConnectionType
+    {
+        [EnumMember]
+        ExpressRoute = 0,
+
+        [EnumMember]
+        IPsec = 1,
+
+        [EnumMember]
+        Vnet2Vnet = 2,
+
+        [EnumMember]
+        VPNClient = 3,
+    }
+
     #endregion
 
     #region Mergable
@@ -2960,6 +2987,37 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
     }
 
     [DataContract(Namespace = Constants.ServiceManagementNS)]
+    public class MaintenanceStatus
+    {
+        [DataMember(EmitDefaultValue = false, Order = 1)]
+        public bool IsCustomerInitiatedMaintenanceAllowed { get; set; }
+
+        [DataMember(EmitDefaultValue = false, Order = 2)]
+        public DateTime? PreMaintenanceWindowStartTime { get; set; }
+
+        [DataMember(EmitDefaultValue = false, Order = 3)]
+        public DateTime? PreMaintenanceWindowEndTime { get; set; }
+
+        [DataMember(EmitDefaultValue = false, Order = 4)]
+        public DateTime? MaintenanceWindowStartTime { get; set; }
+
+        [DataMember(EmitDefaultValue = false, Order = 5)]
+        public DateTime? MaintenanceWindowEndTime { get; set; }
+
+        [DataMember(EmitDefaultValue = false, Order = 6)]
+        public string LastOperationResultCode { get; set; }
+
+        [DataMember(EmitDefaultValue = false, Order = 7)]
+        public string LastOperationMessage { get; set; }
+
+        public override string ToString()
+        {
+            return "Maintenance Status of this VM. Set the return value of this command to " +
+                    "a variable $foo and use $foo.MaintenanceStatus to see detail";
+        }
+    }
+
+    [DataContract(Namespace = Constants.ServiceManagementNS)]
     public class GuestAgentMessage : IExtensibleDataObject
     {
         [DataMember(EmitDefaultValue = false, Order = 1)]
@@ -4470,9 +4528,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
 
         [DataMember(Order = 18, EmitDefaultValue = false)]
         public string ExtendedInstanceStatus { get; set; }
-
+        
         [DataMember(Order = 19, EmitDefaultValue = false)]
         public PublicIPList PublicIPs { get; set; }
+
+        [DataMember(Order = 20, EmitDefaultValue = false)]
+        public MaintenanceStatus MaintenanceStatus { get; set; }
 
         public ExtensionDataObject ExtensionData { get; set; }
     }

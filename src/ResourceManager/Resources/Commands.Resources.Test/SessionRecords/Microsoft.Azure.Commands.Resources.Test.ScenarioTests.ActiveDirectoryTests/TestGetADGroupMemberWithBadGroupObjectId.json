@@ -1,43 +1,64 @@
 {
   "Entries": [
     {
-      "RequestUri": "/1273adef-00a3-4086-a51a-dbcce1857d36/groups/baadc0de-baad-c0de-baad-c0debaadc0de?api-version=1.6",
-      "EncodedRequestUri": "LzEyNzNhZGVmLTAwYTMtNDA4Ni1hNTFhLWRiY2NlMTg1N2QzNi9ncm91cHMvYmFhZGMwZGUtYmFhZC1jMGRlLWJhYWQtYzBkZWJhYWRjMGRlP2FwaS12ZXJzaW9uPTEuNg==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
+      "RequestUri": "/1273adef-00a3-4086-a51a-dbcce1857d36/getObjectsByObjectIds?api-version=1.6",
+      "EncodedRequestUri": "LzEyNzNhZGVmLTAwYTMtNDA4Ni1hNTFhLWRiY2NlMTg1N2QzNi9nZXRPYmplY3RzQnlPYmplY3RJZHM/YXBpLXZlcnNpb249MS42",
+      "RequestMethod": "POST",
+      "RequestBody": "{\r\n  \"objectIds\": [\r\n    \"baadc0de-baad-c0de-baad-c0debaadc0de\"\r\n  ],\r\n  \"includeDirectoryObjectReferences\": true\r\n}",
       "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "116"
+        ],
         "x-ms-client-request-id": [
-          "81e874cd-883c-4897-b17d-a7696658e051"
+          "1b93a2bf-7fc9-4098-a943-265a85d8a85a"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient/3.1.0-preview"
+          "FxVersion/4.7.2046.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient/3.4.0-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.error\": {\r\n    \"code\": \"Request_ResourceNotFound\",\r\n    \"message\": {\r\n      \"lang\": \"en\",\r\n      \"value\": \"Resource 'baadc0de-baad-c0de-baad-c0debaadc0de' does not exist or one of its queried reference-property objects are not present.\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/$metadata#directoryObjects\",\r\n  \"value\": []\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "214"
+          "121"
         ],
         "Content-Type": [
-          "application/json; odata=minimalmetadata; charset=utf-8"
+          "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
         ],
         "ocp-aad-diagnostics-server-name": [
-          "JOcOImGbsHySgKlAQbtemgj5KuX+mrNNzouN4cLWfY8="
+          "9v5aY2QFzxkwn3T2am+/aCvnGmYkbjZiUZErMLpMcAk="
         ],
         "request-id": [
-          "e0af7d66-72e9-4546-bc48-e94d604aff6b"
+          "1ec3f8be-ecd5-4a91-8e4b-e5f9f682f55b"
         ],
         "client-request-id": [
-          "38fd4124-0b28-4ab4-9cbd-f5f2e1c43954"
+          "a4b0a76f-c20b-4092-a4cc-3ac74241ef3f"
         ],
         "x-ms-dirapi-data-contract-version": [
           "1.6"
         ],
         "ocp-aad-session-key": [
-          "gb5OfyxqPCAqbp9xJYXxMB2OCY5J7DvaChIhD6tPiuNY-HIPOj6-QkeEDd_1PqzPDTk44kJlvp0FIlAMCB_LO3KtcOSePOSrwbEYv3hJOIK3mCM0mLbL59vIR-fxaoyAUd-ubgT6ktx6Vj54Ckjd9Q.WqreSWJ-eoHJCOE951O4jHlhOEJwDU_Ppp2gvbA6B54"
+          "7CJxbe4qbDUUXXqAkHlneDu_xGsUjL-kkrRzktoiVK_LEx-pu3XjwYLQGlud9B4j0H989zCfVd4hXMkXCFcAnZRxo6oOqYcrYhT2SVhwsVOWyDEM9KyJPhFf-8XavfP1euQ-E7Wo--LBOvcuZTqMDQ.KcIFL4ur3_LxIVdM-jYsJf2fCO_SHeBqwW7dQyG3T8Y"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -46,10 +67,10 @@
           "*"
         ],
         "Duration": [
-          "1049625"
+          "708165"
         ],
         "Cache-Control": [
-          "private"
+          "no-cache"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -62,10 +83,10 @@
           "ASP.NET"
         ],
         "Date": [
-          "Wed, 27 Jul 2016 18:56:32 GMT"
+          "Thu, 18 May 2017 23:08:33 GMT"
         ]
       },
-      "StatusCode": 404
+      "StatusCode": 200
     }
   ],
   "Names": {},

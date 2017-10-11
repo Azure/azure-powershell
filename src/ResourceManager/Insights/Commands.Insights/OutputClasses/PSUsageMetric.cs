@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Insights.Models;
+using Microsoft.Azure.Management.Monitor.Models;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
@@ -30,17 +30,16 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// Initializes a new instance of the PSUsageMetric class.
         /// </summary>
         /// <param name="usageMetric">The input UsageMetric object</param>
-        public PSUsageMetric(UsageMetric usageMetric)
+        public PSUsageMetric(UsageMetric usageMetric) : base(name: usageMetric.Name)
         {
-            // Keep the original value (localized string, Dictionary, List) in the base
-            base.Name = usageMetric.Name;
+            this.Name = usageMetric.Name != null ? usageMetric.Name.LocalizedValue : null;
 
             this.CurrentValue = usageMetric.CurrentValue;
             this.Limit = usageMetric.Limit;
-            this.Name = usageMetric.Name != null ? usageMetric.Name.LocalizedValue : null;
             this.NextResetTime = usageMetric.NextResetTime;
             this.QuotaPeriod = usageMetric.QuotaPeriod;
             this.Unit = usageMetric.Unit;
+            this.Id = usageMetric.Id;
         }
     }
 }

@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.RedisCache
     using System;
     using System.Collections.Generic;
     using System.Management.Automation;
-    using DayOfWeekEnum = System.DayOfWeek;
+    using DayOfWeekEnum = Management.Redis.Models.DayOfWeek;
 
     [Cmdlet(VerbsCommon.New, "AzureRmRedisCachePatchSchedule"), OutputType(typeof(List<PSScheduleEntry>))]
     public class NewAzureRedisCachePatchSchedule : RedisCacheCmdletBase
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.RedisCache
             {
                 requestData.Add(new ScheduleEntry
                 {
-                    DayOfWeek = schedule.DayOfWeek,
+                    DayOfWeek = (DayOfWeekEnum)Enum.Parse(typeof(DayOfWeekEnum), schedule.DayOfWeek, true),
                     StartHourUtc = schedule.StartHourUtc,
                     MaintenanceWindow = schedule.MaintenanceWindow
                 });
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.RedisCache
             {
                 returnValue.Add(new PSScheduleEntry
                 {
-                    DayOfWeek = schedule.DayOfWeek,
+                    DayOfWeek = schedule.DayOfWeek.ToString(),
                     StartHourUtc = schedule.StartHourUtc,
                     MaintenanceWindow = schedule.MaintenanceWindow
                 });

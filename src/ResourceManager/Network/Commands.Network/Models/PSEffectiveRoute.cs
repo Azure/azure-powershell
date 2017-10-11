@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string State { get; set; }
 
         [JsonProperty(Order = 1)]
+        public string Source { get; set; }
+
+        [JsonProperty(Order = 1)]
         public List<string> AddressPrefix { get; set; }
 
         [JsonProperty(Order = 1)]

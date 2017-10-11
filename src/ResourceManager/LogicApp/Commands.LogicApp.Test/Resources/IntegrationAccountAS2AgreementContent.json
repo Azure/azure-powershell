@@ -31,7 +31,7 @@
                         "signOutboundMDNIfOptional": true,
                         "mdnText": "Sample",
                         "sendInboundMDNToMessageBox": true,
-                        "micHashingAlgorithm": "None"
+                        "micHashingAlgorithm": "MD5"
                     },
                     "securitySettings": {
                         "overrideGroupSigningCertificate": false,
@@ -97,7 +97,7 @@
                         "signOutboundMDNIfOptional": true,
                         "mdnText": "Sample",
                         "sendInboundMDNToMessageBox": true,
-                        "micHashingAlgorithm": "None"
+                        "micHashingAlgorithm": "SHA1"
                     },
                     "securitySettings": {
                         "overrideGroupSigningCertificate": false,

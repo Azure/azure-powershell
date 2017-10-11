@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.ServerUpgrade.Services;
@@ -40,9 +41,9 @@ namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Cmdlet
         /// </summary>
         /// <param name="subscription">The subscription the cmdlets are operation under</param>
         /// <returns>The server adapter</returns>
-        protected override AzureSqlServerUpgradeAdapter InitModelAdapter(AzureSubscription subscription)
+        protected override AzureSqlServerUpgradeAdapter InitModelAdapter(IAzureSubscription subscription)
         {
-            return new AzureSqlServerUpgradeAdapter(DefaultProfile.Context);
+            return new AzureSqlServerUpgradeAdapter(DefaultProfile.DefaultContext);
         }
 
     }

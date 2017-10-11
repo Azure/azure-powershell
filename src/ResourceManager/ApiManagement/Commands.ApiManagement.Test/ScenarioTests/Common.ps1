@@ -32,6 +32,15 @@ function Get-ApiManagementServiceName
 
 <#
 .SYNOPSIS
+Gets valid resource name
+#>
+function Get-ResourceName
+{
+    return getAssetName
+}
+
+<#
+.SYNOPSIS
 Gets the default location for a provider
 #>
 function Get-ProviderLocation($provider)
@@ -71,4 +80,16 @@ function Get-ProviderLocations($provider)
     }
 
     return @("Central US", "East US")
+}
+
+
+<#
+.SYNOPSIS
+Cleans the created resource groups
+#>
+function Clean-ResourceGroup($rgname)
+{
+    if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) {
+        Remove-AzureRmResourceGroup -Name $rgname -Force
+    }
 }

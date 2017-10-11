@@ -53,14 +53,6 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         [ValidateNotNullOrEmpty]
         public string AccessKey { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = false,
-            ParameterSetName = DataLakeParameterSetName,
-            HelpMessage =
-                "Optionally indicates that this should now be the default storage account for the DataLakeAnalytics account."
-            )]
-        [ValidateNotNullOrEmpty]
-        public SwitchParameter Default { get; set; }
-
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false,
             ParameterSetName = DataLakeParameterSetName,
             HelpMessage =
@@ -79,10 +71,8 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                 var toAdd = new StorageAccountInfo
                 {
                     Name = Blob,
-                    Properties = new StorageAccountProperties
-                    {
-                        AccessKey = AccessKey
-                    }
+                    AccessKey = AccessKey
+                    
                 };
 
                 DataLakeAnalyticsClient.AddStorageAccount(ResourceGroupName, Account, toAdd);
@@ -91,16 +81,10 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
             {
                 var toAdd = new DataLakeStoreAccountInfo
                 {
-                    Name = DataLakeStore,
-                    Properties = new DataLakeStoreAccountInfoProperties()
+                    Name = DataLakeStore
                 };
 
                 DataLakeAnalyticsClient.AddDataLakeStoreAccount(ResourceGroupName, Account, toAdd);
-
-                if (Default)
-                {
-                    DataLakeAnalyticsClient.SetDefaultDataLakeStoreAccount(ResourceGroupName, Account, toAdd);
-                }
             }
         }
     }

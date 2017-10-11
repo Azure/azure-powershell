@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <helpItems xmlns="http://msh" schema="maml">
   <!--Get-AzureSiteRecoveryServer-->
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
@@ -946,8 +946,8 @@
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <command:details>
       <command:name>
-                   Get-AzureSiteRecoveryJob
-		</command:name>
+        Get-AzureSiteRecoveryJob
+      </command:name>
       <maml:description>
         <maml:para>The Get-AzureSiteRecoveryJob cmdlet gets Microsoft Azure Site Recovery jobs. You can use this cmdlet to view the information of the operation for current Azure Site Recovery vault.</maml:para>
       </maml:description>
@@ -1150,24 +1150,25 @@
     <command:examples>
       <command:example>
         <maml:title>
-				-------------------------- EXAMPLE 1 --------------------------
-			</maml:title>
+          -------------------------- EXAMPLE 1 --------------------------
+        </maml:title>
         <maml:introduction>
           <maml:para>C:\PS&gt;</maml:para>
         </maml:introduction>
         <dev:code>
-Get-AzureSiteRecoveryJob -Id d0b56c01-1fd7-411a-94e9-be717ac6601e
+          Get-AzureSiteRecoveryJob -Id d0b56c01-1fd7-411a-94e9-be717ac6601e
 
-ID               : d0b56c01-1fd7-411a-94e9-be717ac6601e
-ClientRequestId  : 0d259706-7882-4614-81bf-7d155f3600cb-2014-10-06 09:40:26Z
-State            : Succeeded
-StateDescription : Completed
-StartTime        : 10/6/2014 9:40:28 AM
-EndTime          : 10/6/2014 9:40:30 AM
-AllowedActions   : {Cancel, Restart}
-Name             : Remove classification configuration
-Tasks            : {Prerequisites check for unpairing classifications, Unpairing classifications}
-Errors           : {}                        </dev:code>
+          ID               : d0b56c01-1fd7-411a-94e9-be717ac6601e
+          ClientRequestId  : 0d259706-7882-4614-81bf-7d155f3600cb-2014-10-06 09:40:26Z
+          State            : Succeeded
+          StateDescription : Completed
+          StartTime        : 10/6/2014 9:40:28 AM
+          EndTime          : 10/6/2014 9:40:30 AM
+          AllowedActions   : {Cancel, Restart}
+          Name             : Remove classification configuration
+          Tasks            : {Prerequisites check for unpairing classifications, Unpairing classifications}
+          Errors           : {}
+        </dev:code>
         <dev:remarks>
           <maml:para>Description</maml:para>
           <maml:para>-----------</maml:para>
@@ -1191,29 +1192,30 @@ Errors           : {}                        </dev:code>
       </command:example>
       <command:example>
         <maml:title>
-				-------------------------- EXAMPLE 2 --------------------------
-			</maml:title>
+          -------------------------- EXAMPLE 2 --------------------------
+        </maml:title>
         <maml:introduction>
           <maml:para>C:\PS&gt;</maml:para>
         </maml:introduction>
         <dev:code>
-$StartTime = Get-Date "2015-02-20 06:10:03Z"
-$EndTime = Get-Date "2015-02-20 06:20:03Z"
-Get-AzureSiteRecoveryJob -StartTime $StartTime -EndTime $EndTime
+          $StartTime = Get-Date "2015-02-20 06:10:03Z"
+          $EndTime = Get-Date "2015-02-20 06:20:03Z"
+          Get-AzureSiteRecoveryJob -StartTime $StartTime -EndTime $EndTime
 
-Name             : SaveRecoveryPlan
-ID               : 5d6389f7-3f08-48d6-9d2c-e4a4aed36a0b
-ClientRequestId  : bc4b291d-4722-419e-a7a3-7a58674c35a3-2015-02-20 06:14:03Z
-State            : Succeeded
-StateDescription : Completed
-StartTime        : 2/20/2015 6:14:04 AM
-EndTime          : 2/20/2015 6:14:05 AM
-TargetObjectId   : 2d11e8be-29b8-4152-a8b9-2a6a9304537a
-TargetObjectType : RecoveryPlan
-TargetObjectName : TestRP
-AllowedActions   :
-Tasks            : {Save a recovery plan task}
-Errors           : {}                        </dev:code>
+          Name             : SaveRecoveryPlan
+          ID               : 5d6389f7-3f08-48d6-9d2c-e4a4aed36a0b
+          ClientRequestId  : bc4b291d-4722-419e-a7a3-7a58674c35a3-2015-02-20 06:14:03Z
+          State            : Succeeded
+          StateDescription : Completed
+          StartTime        : 2/20/2015 6:14:04 AM
+          EndTime          : 2/20/2015 6:14:05 AM
+          TargetObjectId   : 2d11e8be-29b8-4152-a8b9-2a6a9304537a
+          TargetObjectType : RecoveryPlan
+          TargetObjectName : TestRP
+          AllowedActions   :
+          Tasks            : {Save a recovery plan task}
+          Errors           : {}
+        </dev:code>
         <dev:remarks>
           <maml:para>Description</maml:para>
           <maml:para>-----------</maml:para>
@@ -1420,8 +1422,8 @@ Errors           : {}                        </dev:code>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <command:details>
       <command:name>
-                   Get-AzureSiteRecoveryProtectionEntity
-		</command:name>
+        Get-AzureSiteRecoveryProtectionEntity
+      </command:name>
       <maml:description>
         <maml:para>The Get-AzureSiteRecoveryProtectionEntity cmdlet gets protected objects in Microsoft Azure Site Recovery, such as virtual machines. </maml:para>
       </maml:description>
@@ -1635,29 +1637,30 @@ Errors           : {}                        </dev:code>
     <command:examples>
       <command:example>
         <maml:title>
-				-------------------------- EXAMPLE 1 --------------------------
-			</maml:title>
+          -------------------------- EXAMPLE 1 --------------------------
+        </maml:title>
         <maml:introduction>
           <maml:para>C:\PS&gt;</maml:para>
         </maml:introduction>
         <dev:code>
-$PC = Get-AzureSiteRecoveryProtectionContainer; Get-AzureSiteRecoveryProtectionEntity -ProtectionContainer $PC
+          $PC = Get-AzureSiteRecoveryProtectionContainer; Get-AzureSiteRecoveryProtectionEntity -ProtectionContainer $PC
 
-ID                           : 43aaab46-1cb0-4c39-8077-9a091c3b05ce
-ServerId                     : 4a94c4a9-c856-4577-afbd-367fe9b3ce9c
-ProtectionContainerId        : 4a94c4a9-c856-4577-afbd-367fe9b3ce9c_1c513d45-645d-4ed0-b9ae-e7b869a1f7fc
-Name                         : testvm
-Type                         : VirtualMachine
-FabricObjectId               : 506B3CAC-5758-49E2-98C4-E5B0512E4D8E
-Protected                    : False
-CanCommit                    : False
-CanFailover                  : False
-CanReverseReplicate          : False
-ActiveLocation               : Primary
-ProtectionStateDescription   : Enabling protection
-ReplicationHealth            :
-TestFailoverStateDescription : None
-ReplicationProvider          : HyperVReplica                        </dev:code>
+          ID                           : 43aaab46-1cb0-4c39-8077-9a091c3b05ce
+          ServerId                     : 4a94c4a9-c856-4577-afbd-367fe9b3ce9c
+          ProtectionContainerId        : 4a94c4a9-c856-4577-afbd-367fe9b3ce9c_1c513d45-645d-4ed0-b9ae-e7b869a1f7fc
+          Name                         : testvm
+          Type                         : VirtualMachine
+          FabricObjectId               : 506B3CAC-5758-49E2-98C4-E5B0512E4D8E
+          Protected                    : False
+          CanCommit                    : False
+          CanFailover                  : False
+          CanReverseReplicate          : False
+          ActiveLocation               : Primary
+          ProtectionStateDescription   : Enabling protection
+          ReplicationHealth            :
+          TestFailoverStateDescription : None
+          ReplicationProvider          : HyperVReplica
+        </dev:code>
         <dev:remarks>
           <maml:para>Description</maml:para>
           <maml:para>-----------</maml:para>
@@ -2618,8 +2621,8 @@ ReplicationProvider          : HyperVReplica                        </dev:code>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <command:details>
       <command:name>
-                   Set-AzureSiteRecoveryProtectionEntity
-		</command:name>
+        Set-AzureSiteRecoveryProtectionEntity
+      </command:name>
       <maml:description>
         <maml:para>Sets the Protection on a protection entity for Azure Site Recovery</maml:para>
       </maml:description>
@@ -2896,30 +2899,30 @@ ReplicationProvider          : HyperVReplica                        </dev:code>
     <command:examples>
       <command:example>
         <maml:title>
-				-------------------------- EXAMPLE 1 --------------------------
-			</maml:title>
+          -------------------------- EXAMPLE 1 --------------------------
+        </maml:title>
         <maml:introduction>
           <maml:para>C:\PS&gt;</maml:para>
         </maml:introduction>
         <dev:code>
-$PC = Get-AzureSiteRecoveryProtectionContainer -Name "Cloud1"
-$PE = Get-AzureSiteRecoveryProtectionEntity -ProtectionContainer $PC -Name "VM1"
-Set-AzureSiteRecoveryProtectionEntity -ProtectionEntity $PE -Protection Enable -ProtectionProfile $PC.AvailableProtectionProfiles[0] -OS Windows
+          $PC = Get-AzureSiteRecoveryProtectionContainer -Name "Cloud1"
+          $PE = Get-AzureSiteRecoveryProtectionEntity -ProtectionContainer $PC -Name "VM1"
+          Set-AzureSiteRecoveryProtectionEntity -ProtectionEntity $PE -Protection Enable -ProtectionProfile $PC.AvailableProtectionProfiles[0] -OS Windows
 
-Name             : EnableDr
-ID               : 7d980e67-ad8c-45bc-99a6-6d8ca0a4a689
-ClientRequestId  : d45eb812-de16-4bff-b4f4-a34ffa4afc5d-2015-02-18 15:31:12Z-P
-State            : InProgress
-StateDescription : InProgress
-StartTime        : 2/18/2015 3:31:16 PM
-EndTime          :
-TargetObjectId   : 52fa9f2d-57d4-4036-a46f-b112d2d6ae72
-TargetObjectType : ProtectionEntity
-TargetObjectName : TestVM2
-AllowedActions   :
-Tasks            : {Prerequisites check for enabling protection, Identifying the replication target, Enablereplication, Starting initial replication...}
-Errors           : {}
-                        </dev:code>
+          Name             : EnableDr
+          ID               : 7d980e67-ad8c-45bc-99a6-6d8ca0a4a689
+          ClientRequestId  : d45eb812-de16-4bff-b4f4-a34ffa4afc5d-2015-02-18 15:31:12Z-P
+          State            : InProgress
+          StateDescription : InProgress
+          StartTime        : 2/18/2015 3:31:16 PM
+          EndTime          :
+          TargetObjectId   : 52fa9f2d-57d4-4036-a46f-b112d2d6ae72
+          TargetObjectType : ProtectionEntity
+          TargetObjectName : TestVM2
+          AllowedActions   :
+          Tasks            : {Prerequisites check for enabling protection, Identifying the replication target, Enablereplication, Starting initial replication...}
+          Errors           : {}
+        </dev:code>
         <dev:remarks>
           <maml:para>Description</maml:para>
           <maml:para>-----------</maml:para>
@@ -3853,12 +3856,13 @@ Errors           : {}
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <command:details>
       <command:name>
-                   Start-AzureSiteRecoveryUnplannedFailoverJob
-		</command:name>
+        Start-AzureSiteRecoveryUnplannedFailoverJob
+      </command:name>
       <maml:description>
-        <maml:para>The Start-AzureSiteRecoveryUnplannedFailoverJob cmdlet starts the unplanned failover for a protectioned entity or for a recovery plan in Microsoft Azure Site Recovery. 
-Check whether the job succeeds by using the Get-AzureSiteRecoveryJob cmdlet.
-</maml:para>
+        <maml:para>
+          The Start-AzureSiteRecoveryUnplannedFailoverJob cmdlet starts the unplanned failover for a protectioned entity or for a recovery plan in Microsoft Azure Site Recovery.
+          Check whether the job succeeds by using the Get-AzureSiteRecoveryJob cmdlet.
+        </maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -4157,24 +4161,25 @@ Check whether the job succeeds by using the Get-AzureSiteRecoveryJob cmdlet.
     <command:examples>
       <command:example>
         <maml:title>
-				-------------------------- EXAMPLE 1 --------------------------
-			</maml:title>
+          -------------------------- EXAMPLE 1 --------------------------
+        </maml:title>
         <maml:introduction>
           <maml:para>C:\PS&gt;</maml:para>
         </maml:introduction>
         <dev:code>
-$PC = Get-AzureSiteRecoveryProtectionContainer; $PE = Get-AzureSiteRecoveryProtectionEntity -ProtectionContainer $PC; Start-AzureSiteRecoveryUnplannedFailoverJob -ProtectionEntity $PE -Direction PrimaryToRecovery
+          $PC = Get-AzureSiteRecoveryProtectionContainer; $PE = Get-AzureSiteRecoveryProtectionEntity -ProtectionContainer $PC; Start-AzureSiteRecoveryUnplannedFailoverJob -ProtectionEntity $PE -Direction PrimaryToRecovery
 
-ID               : c38eecdc-731c-405b-a61c-08db99aae2fe
-ClientRequestId  : 32ace403-0916-4967-83a1-529176bd6e88-2014-49-06 15:49:24Z-P
-State            : NotStarted
-StateDescription : NotStarted
-StartTime        :
-EndTime          :
-AllowedActions   : {}
-Name             :
-Tasks            : {}
-Errors           : {}                        </dev:code>
+          ID               : c38eecdc-731c-405b-a61c-08db99aae2fe
+          ClientRequestId  : 32ace403-0916-4967-83a1-529176bd6e88-2014-49-06 15:49:24Z-P
+          State            : NotStarted
+          StateDescription : NotStarted
+          StartTime        :
+          EndTime          :
+          AllowedActions   : {}
+          Name             :
+          Tasks            : {}
+          Errors           : {}
+        </dev:code>
         <dev:remarks>
           <maml:para>Description</maml:para>
           <maml:para>-----------</maml:para>
@@ -5699,8 +5704,8 @@ Errors           : {}                        </dev:code>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <command:details>
       <command:name>
-                   New-AzureSiteRecoveryProtectionProfileObject
-    </command:name>
+        New-AzureSiteRecoveryProtectionProfileObject
+      </command:name>
       <maml:description>
         <maml:para>Creates a Protection profile object . This is an in memory object to be further supplied for Protection Profile related operations.</maml:para>
       </maml:description>
@@ -5723,9 +5728,11 @@ Errors           : {}                        </dev:code>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>ReplicationFrequencyInSeconds</maml:name>
           <maml:description>
-            <maml:para>Replication frequency interval in seconds.
-As of now, only three possible values supported.
-30 seconds, 300 seconds, 900 seconds.</maml:para>
+            <maml:para>
+              Replication frequency interval in seconds.
+              As of now, only three possible values supported.
+              30 seconds, 300 seconds, 900 seconds.
+            </maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
         </command:parameter>
@@ -5823,9 +5830,11 @@ As of now, only three possible values supported.
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>ReplicationFrequencyInSeconds</maml:name>
           <maml:description>
-            <maml:para>Replication frequency interval in seconds.
-As of now, only three possible values supported.
-30 seconds, 300 seconds, 900 seconds.</maml:para>
+            <maml:para>
+              Replication frequency interval in seconds.
+              As of now, only three possible values supported.
+              30 seconds, 300 seconds, 900 seconds.
+            </maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
         </command:parameter>
@@ -5994,9 +6003,11 @@ As of now, only three possible values supported.
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ReplicationFrequencyInSeconds</maml:name>
         <maml:description>
-          <maml:para>Replication frequency interval in seconds.
-As of now, only three possible values supported.
-30 seconds, 300 seconds, 900 seconds.</maml:para>
+          <maml:para>
+            Replication frequency interval in seconds.
+            As of now, only three possible values supported.
+            30 seconds, 300 seconds, 900 seconds.
+          </maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
         <dev:type>
@@ -6110,20 +6121,21 @@ As of now, only three possible values supported.
     <command:examples>
       <command:example>
         <maml:title>
-        -------------------------- EXAMPLE 1 --------------------------
-      </maml:title>
+          -------------------------- EXAMPLE 1 --------------------------
+        </maml:title>
         <maml:introduction>
           <maml:para>C:\PS&gt;</maml:para>
         </maml:introduction>
         <dev:code>
-New-AzureSiteRecoveryProtectionProfileObject -ReplicationProvider HyperVReplica -ReplicationMethod Online -ReplicationFrequencyInSeconds 30 -RecoveryPoints 2 -ApplicationConsistentSnapshotFrequencyInHours 1 -CompressionEnabled -ReplicationPort 8085 -ReplicationStartTime 1 -AllowReplicaDeletion
+          New-AzureSiteRecoveryProtectionProfileObject -ReplicationProvider HyperVReplica -ReplicationMethod Online -ReplicationFrequencyInSeconds 30 -RecoveryPoints 2 -ApplicationConsistentSnapshotFrequencyInHours 1 -CompressionEnabled -ReplicationPort 8085 -ReplicationStartTime 1 -AllowReplicaDeletion
 
           Name                                     :
           ID                                       :
           ReplicationProvider                      : HyperVReplica
           HyperVReplicaProviderSettingsObject      : Microsoft.Azure.Portal.RecoveryServices.Models.Common.HyperVReplicaProviderS
-                                                     ettings
-          HyperVReplicaAzureProviderSettingsObject :                        </dev:code>
+          ettings
+          HyperVReplicaAzureProviderSettingsObject :
+        </dev:code>
         <dev:remarks>
           <maml:para>Description</maml:para>
           <maml:para>-----------</maml:para>
@@ -6147,20 +6159,21 @@ New-AzureSiteRecoveryProtectionProfileObject -ReplicationProvider HyperVReplica 
       </command:example>
       <command:example>
         <maml:title>
-        -------------------------- EXAMPLE 2 --------------------------
-      </maml:title>
+          -------------------------- EXAMPLE 2 --------------------------
+        </maml:title>
         <maml:introduction>
           <maml:para>C:\PS&gt;</maml:para>
         </maml:introduction>
         <dev:code>
-New-AzureSiteRecoveryProtectionProfileObject -Name protProfile -ReplicationProvider HyperVReplicaAzure -RecoveryAzureSubscription cb53d0c3-bd59-4721-89bc-06916a9147ef -RecoveryAzureStorageAccount test -ReplicationFrequencyInSeconds 30 -RecoveryPoints 1 -Force
+          New-AzureSiteRecoveryProtectionProfileObject -Name protProfile -ReplicationProvider HyperVReplicaAzure -RecoveryAzureSubscription cb53d0c3-bd59-4721-89bc-06916a9147ef -RecoveryAzureStorageAccount test -ReplicationFrequencyInSeconds 30 -RecoveryPoints 1 -Force
 
-Name                                     : protProfile
-ID                                       :
-ReplicationProvider                      : HyperVReplicaAzure
-HyperVReplicaProviderSettingsObject      :
-HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServices.Models.Common.HyperVReplicaAzureProv
-                                           iderSettings                        </dev:code>
+          Name                                     : protProfile
+          ID                                       :
+          ReplicationProvider                      : HyperVReplicaAzure
+          HyperVReplicaProviderSettingsObject      :
+          HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServices.Models.Common.HyperVReplicaAzureProv
+          iderSettings
+        </dev:code>
         <dev:remarks>
           <maml:para>Description</maml:para>
           <maml:para>-----------</maml:para>
@@ -9724,6 +9737,481 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
         <maml:linkText>
         </maml:linkText>
         <maml:uri />
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+  <!--Test-AzureRecoveryServicesVaultUpgrade-->
+  <!-- v 1.3.0.36 -->
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+      <command:name>
+        Test-AzureRecoveryServicesVaultUpgrade
+      </command:name>
+      <maml:description>
+        <maml:para>Checks for Vault Upgrade prerequisites.</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para></maml:para>
+      </maml:copyright>
+      <command:verb>Test</command:verb>
+      <command:noun>AzureRecoveryServicesVaultUpgrade</command:noun>
+      <dev:version></dev:version>
+    </command:details>
+    <maml:description>
+      <maml:para>The Test-AzureRecoveryServicesVaultUpgrade cmdlet checks for vault upgrade prerequisites. This includes check for active jobs, agent versions, deployment scenarios, supported configurations. For backup vaults, this check also verifies the billing model.</maml:para>
+    </maml:description>
+    <!-- Cmdlet syntax section-->
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Test-AzureRecoveryServicesVaultUpgrade</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>ResourceType</maml:name>
+          <maml:description>
+            <maml:para>The type of vault, expected value is 'HyperVRecoveryManagerVault' for Site Recovery vaults and 'BackupVault' for backup vaults.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>VaultName</maml:name>
+          <maml:description>
+            <maml:para>Name of the vault that is to be upgraded.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Location</maml:name>
+          <maml:description>
+            <maml:para>The location of the vault. For eg: 'West US', 'East US' etc.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>TargetResourceGroupName</maml:name>
+          <maml:description>
+            <maml:para>The Resource Group into which the upgraded vault will be placed.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <!-- Cmdlet parameter section  -->
+    <command:parameters>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ResourceType</maml:name>
+        <maml:description>
+          <maml:para>The type of vault, expected value is 'HyperVRecoveryManagerVault' for Site Recovery vaults and 'BackupVault' for backup vaults.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>VaultName</maml:name>
+        <maml:description>
+          <maml:para>Name of the vault that is to be upgraded.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Location</maml:name>
+        <maml:description>
+          <maml:para>The location of the vault. For eg: 'West US', 'East US' etc.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>TargetResourceGroupName</maml:name>
+        <maml:description>
+          <maml:para>The Resource Group into which the upgraded vault will be placed.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <!-- Input - Output section-->
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri/>
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para>
+            <!-- description  -->
+
+          </maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri />
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para>
+            <!-- description  -->
+
+          </maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <!-- Error section-->
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+    <!-- Notes section  -->
+    <maml:alertSet>
+      <maml:title></maml:title>
+      <maml:alert>
+        <maml:para>
+
+        </maml:para>
+      </maml:alert>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <!-- Example section  -->
+    <command:examples>
+
+      <command:example>
+        <maml:title>
+          -------------------------- EXAMPLE 1 --------------------------
+        </maml:title>
+        <maml:introduction>
+          <maml:para>C:\PS&gt;</maml:para>
+        </maml:introduction>
+        <dev:code>
+          PS C:\> Test-AzureRecoveryServicesVaultUpgrade -ResourceType HyperVRecoveryManagerVault -VaultName ContosoVault -Location 'West US' -TargetResourceGroupName ContosoRG
+
+Response
+--------
+Successfully completed prerequisites check for vault upgrade.
+
+
+        </dev:code>
+        <dev:remarks>
+          <maml:para>This command checks if Site Recovery vault with name 'ContosoVault' in region 'West US' with target resource group name 'ContosoRG' is ready to be upgraded to 'Recovery Services vault'.</maml:para>
+          <maml:para>The output represents status with errors if any along with RequestId with which user can contact support. </maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText></command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+
+      <command:example>
+        <maml:title>
+          -------------------------- EXAMPLE 2 --------------------------
+        </maml:title>
+        <maml:introduction>
+          <maml:para>C:\PS&gt;</maml:para>
+        </maml:introduction>
+        <dev:code>
+          PS C:\> Test-AzureRecoveryServicesVaultUpgrade -ResourceType BackupVault -VaultName ContosoVault -Location 'West US' -TargetResourceGroupName ContosoRG
+
+Response
+--------
+Successfully completed prerequisites check for vault upgrade.
+
+
+        </dev:code>
+        <dev:remarks>
+          <maml:para>This command checks if Backup vault with name 'ContosoVault' in region 'West US' with target resource group name 'ContosoRG' is ready to be upgraded to 'Recovery Services vault'.</maml:para>
+          <maml:para>The output represents status with errors if any along with RequestId with which user can contact support. </maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText></command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <!-- Link section  -->
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText></maml:linkText>
+        <maml:uri/>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+  <!--Invoke-AzureRecoveryServicesVaultUpgrade-->
+  <!-- v 1.3.0.36 -->
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+      <command:name>
+        Invoke-AzureRecoveryServicesVaultUpgrade
+      </command:name>
+      <maml:description>
+        <maml:para>Upgrades the specified vault (Site Recovery vault or Backup vault) to 'Recovery Services vault'.</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para></maml:para>
+      </maml:copyright>
+      <command:verb>Invoke</command:verb>
+      <command:noun>AzureRecoveryServicesVaultUpgrade</command:noun>
+      <dev:version></dev:version>
+    </command:details>
+    <maml:description>
+      <maml:para>The Invoke-AzureRecoveryServicesVaultUpgrade cmdlet starts the upgrade of the specified vault (Site Recovery vault or Backup vault) to 'Recovery Services vault'.</maml:para>
+    </maml:description>
+    <!-- Cmdlet syntax section-->
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Invoke-AzureRecoveryServicesVaultUpgrade</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>ResourceType</maml:name>
+          <maml:description>
+            <maml:para>The type of vault, expected values are 'HyperVRecoveryManagerVault' for Site Recovery vaults and 'BackupVault' for backup vaults.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>VaultName</maml:name>
+          <maml:description>
+            <maml:para>Name of the vault that is to be upgraded</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Location</maml:name>
+          <maml:description>
+            <maml:para>The location of the vault. For eg: 'West US', 'East US' etc.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>TargetResourceGroupName</maml:name>
+          <maml:description>
+            <maml:para>The Resource Group into which the upgraded vault will be placed.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Force</maml:name>
+          <maml:description>
+            <maml:para>Specify this to bypass the confirm action and take the default (Y).</maml:para>
+          </maml:description>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <!-- Cmdlet parameter section  -->
+    <command:parameters>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ResourceType</maml:name>
+        <maml:description>
+          <maml:para>The type of vault, expected values are 'HyperVRecoveryManagerVault' for Site Recovery vaults and 'BackupVault' for backup vaults.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>VaultName</maml:name>
+        <maml:description>
+          <maml:para>Name of the vault that is to be upgraded</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Location</maml:name>
+        <maml:description>
+          <maml:para>The location of the vault. For eg: 'West US', 'East US' etc.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>TargetResourceGroupName</maml:name>
+        <maml:description>
+          <maml:para>The Resource Group into which the upgraded vault will be placed.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Force</maml:name>
+        <maml:description>
+          <maml:para>Specify this to bypass the confirm action and take the default (Y).</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <!-- Input - Output section-->
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri/>
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para>
+            <!-- description  -->
+
+          </maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri />
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para>
+            <!-- description  -->
+
+          </maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <!-- Error section-->
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+    <!-- Notes section  -->
+    <maml:alertSet>
+      <maml:title></maml:title>
+      <maml:alert>
+        <maml:para>
+
+        </maml:para>
+      </maml:alert>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <!-- Example section  -->
+    <command:examples>
+
+      <command:example>
+        <maml:title>
+          -------------------------- EXAMPLE 1 --------------------------
+        </maml:title>
+        <maml:introduction>
+          <maml:para>C:\PS&gt;</maml:para>
+        </maml:introduction>
+        <dev:code>
+          PS C:\> Invoke-AzureRecoveryServicesVaultUpgrade -ResourceType HyperVRecoveryManagerVault -VaultName ContosoVault -Location 'West US' -TargetResourceGroupName ContosoRG
+
+          OperationId     : cc627bbc-f9c6-47f7-a2ac-3c499e1aae83-2017-03-31 09:33:01Z-P
+          StartTimeUtc    : 3/31/2017 3:03:05 PM
+          OperationResult : Succeeded
+          OperationStatus : Completed
+          UpgradeStatus   : HyperVRecoveryManagerVault 'ContosoVault' has been successfully upgraded to Recovery Services vault and is now accessible through the new Azure portal at http://portal.azure.com.
+
+        </dev:code>
+        <dev:remarks>
+          <maml:para>This command starts vault upgrade of a Site Recovery vault with name 'ContosoVault' in region 'West US' with target resource group name 'ContosoRG'.</maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText></command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+
+      <command:example>
+        <maml:title>
+          -------------------------- EXAMPLE 2 --------------------------
+        </maml:title>
+        <maml:introduction>
+          <maml:para>C:\PS&gt;</maml:para>
+        </maml:introduction>
+        <dev:code>
+          PS C:\> Invoke-AzureRecoveryServicesVaultUpgrade -ResourceType BackupVault -VaultName ContosoVault -Location 'West US' -TargetResourceGroupName ContosoRG
+
+          OperationId     : bb627bbc-f9c6-47f7-a2ac-3c499e1aae83-2017-03-31 09:37:01Z-P
+          StartTimeUtc    : 3/31/2017 3:10:05 PM
+          OperationResult : Succeeded
+          OperationStatus : Completed
+          UpgradeStatus   : BackupVault 'ContosoVault' has been successfully upgraded to Recovery Services vault and is now accessible through the new Azure portal at http://portal.azure.com.
+
+        </dev:code>
+        <dev:remarks>
+          <maml:para>This command starts vault upgrade of a Backup vault with name 'ContosoVault' in region 'West US' with target resource group name 'ContosoRG'.</maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText></command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <!-- Link section  -->
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText></maml:linkText>
+        <maml:uri/>
       </maml:navigationLink>
     </maml:relatedLinks>
   </command:command>

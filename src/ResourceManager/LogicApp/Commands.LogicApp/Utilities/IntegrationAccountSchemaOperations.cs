@@ -19,6 +19,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
     using System.Management.Automation;
     using System.Globalization;
     using Microsoft.Rest.Azure;
+    using System.Collections.Generic;
 
     /// <summary>
     /// LogicApp client partial class for integration account schema operations.
@@ -37,7 +38,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         {
             if (!this.DoesIntegrationAccountSchemaExist(resourceGroupName, integrationAccountName,integrationAccountSchemaName))
             {
-                return this.LogicManagementClient.IntegrationAccountSchemas.CreateOrUpdate(resourceGroupName, integrationAccountName, integrationAccountSchemaName, integrationAccountSchema);
+                return this.LogicManagementClient.Schemas.CreateOrUpdate(resourceGroupName, integrationAccountName, integrationAccountSchemaName, integrationAccountSchema);
             }
             else
             {
@@ -58,7 +59,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
             bool result = false;
             try
             {
-                var schema = this.LogicManagementClient.IntegrationAccountSchemas.Get(resourceGroupName, integrationAccountName, integrationAccountSchemaName);
+                var schema = this.LogicManagementClient.Schemas.Get(resourceGroupName, integrationAccountName, integrationAccountSchemaName);
                 result = schema != null;
             }
             catch
@@ -78,7 +79,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <returns>Updated integration account schema</returns>
         public IntegrationAccountSchema UpdateIntegrationAccountSchema(string resourceGroupName, string integrationAccountName, string integrationAccountSchemaName, IntegrationAccountSchema integrationAccountSchema)
         {
-            return this.LogicManagementClient.IntegrationAccountSchemas.CreateOrUpdate(resourceGroupName, integrationAccountName, integrationAccountSchemaName, integrationAccountSchema);
+            return this.LogicManagementClient.Schemas.CreateOrUpdate(resourceGroupName, integrationAccountName, integrationAccountSchemaName, integrationAccountSchema);
         }
 
         /// <summary>
@@ -90,7 +91,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <returns>Integration account schema object.</returns>
         public IntegrationAccountSchema GetIntegrationAccountSchema(string resourceGroupName, string integrationAccountName, string integrationAccountSchemaName)
         {
-            return this.LogicManagementClient.IntegrationAccountSchemas.Get(resourceGroupName, integrationAccountName, integrationAccountSchemaName);
+            return this.LogicManagementClient.Schemas.Get(resourceGroupName, integrationAccountName, integrationAccountSchemaName);
         }
 
         /// <summary>
@@ -100,8 +101,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <param name="integrationAccountName">The integration account name.</param>
         /// <returns>List of integration account schemas.</returns>
         public IPage<IntegrationAccountSchema> ListIntegrationAccountSchemas(string resourceGroupName, string integrationAccountName)
-        {            
-            return this.LogicManagementClient.IntegrationAccountSchemas.List(resourceGroupName, integrationAccountName);
+        {
+            return this.LogicManagementClient.Schemas.ListByIntegrationAccounts(resourceGroupName, integrationAccountName,"$filter=schemaType eq 'Xml'&$top=1000");
         }
 
         /// <summary>
@@ -112,7 +113,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <param name="integrationAccountSchemaName">The integration account schema name.</param>
         public void RemoveIntegrationAccountSchema(string resourceGroupName, string integrationAccountName, string integrationAccountSchemaName)
         {
-            this.LogicManagementClient.IntegrationAccountSchemas.Delete(resourceGroupName, integrationAccountName, integrationAccountSchemaName);
+            this.LogicManagementClient.Schemas.Delete(resourceGroupName, integrationAccountName, integrationAccountSchemaName);
         }
     }
 }

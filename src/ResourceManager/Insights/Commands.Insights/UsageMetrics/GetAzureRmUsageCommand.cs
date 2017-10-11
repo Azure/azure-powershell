@@ -12,13 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
-using Microsoft.Azure.Insights.Models;
+using Microsoft.Azure.Management.Monitor;
+using Microsoft.Azure.Management.Monitor.Models;
 using System;
 using System.Linq;
 using System.Management.Automation;
 using System.Text;
 using System.Threading;
+using Microsoft.Rest.Azure.OData;
 
 namespace Microsoft.Azure.Commands.Insights.UsageMetrics
 {
@@ -26,7 +29,7 @@ namespace Microsoft.Azure.Commands.Insights.UsageMetrics
     /// Get the list of usage metrics for a resource.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmUsage"), OutputType(typeof(PSUsageMetric[]))]
-    public class GetAzureRmUsageCommand : InsightsClientCmdletBase
+    public class GetAzureRmUsageCommand : MonitorClientCmdletBase
     {
         /// <summary>
         /// Default value of the timerange to search for usage metrics
@@ -103,9 +106,9 @@ namespace Microsoft.Azure.Commands.Insights.UsageMetrics
             }
 
             buffer.Append(" and startTime eq ");
-            buffer.Append(this.StartTime.ToString("O"));
+            buffer.Append(this.StartTime.ToUniversalTime().ToString("O"));
             buffer.Append(" and endTime eq ");
-            buffer.Append(this.EndTime.ToString("O"));
+            buffer.Append(this.EndTime.ToUniversalTime().ToString("O"));
 
             string queryFilter = buffer.ToString();
             if (queryFilter.StartsWith(" and "))
@@ -116,25 +119,37 @@ namespace Microsoft.Azure.Commands.Insights.UsageMetrics
             return queryFilter.Trim();
         }
 
+        private static IEnumerable<PSUsageMetric> ExtractCollectionFromResult(IEnumerator<UsageMetric> enumerator)
+        {
+            var records = new List<PSUsageMetric>();
+            while (enumerator.MoveNext())
+            {
+                var current = enumerator.Current;
+                records.Add(new PSUsageMetric(current));
+            }
+
+            return records;
+        }
+
         /// <summary>
         /// Execute the cmdlet
         /// </summary>
         protected override void ProcessRecordInternal()
         {
-            string queryFilter = this.ProcessParameters();
+            WriteWarning("*** This cmdlet will be removed in the 5.0 release (November 2017.)");
+
+            var queryFilter = new ODataQuery<UsageMetric>(this.ProcessParameters());
             string apiVersion = this.ApiVersion ?? DefaultApiVersion;
 
             // Call the proper API methods to return a list of raw records.
             // If fullDetails is present full details of the records displayed, otherwise only a summary of the values is displayed
-            UsageMetricListResponse response = this.InsightsClient.UsageMetricOperations
-                .ListAsync(resourceUri: this.ResourceId, filterString: queryFilter, apiVersion: apiVersion, cancellationToken: CancellationToken.None)
+            IEnumerable<UsageMetric> response = this.MonitorClient.UsageMetrics
+                .ListAsync(resourceUri: this.ResourceId, apiVersion: apiVersion, odataQuery: queryFilter, cancellationToken: CancellationToken.None)
                 .Result;
 
-            var records = response.UsageMetricCollection.Value
-                .Select(e => new PSUsageMetric(e))
-                .ToArray();
+            var records = ExtractCollectionFromResult(response.GetEnumerator()).ToArray();
 
-            WriteObject(sendToPipeline: records);
+            WriteObject(sendToPipeline: records, enumerateCollection: true);
         }
     }
 }

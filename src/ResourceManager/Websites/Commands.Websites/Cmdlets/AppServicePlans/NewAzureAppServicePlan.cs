@@ -17,6 +17,9 @@ using Microsoft.Azure.Commands.WebApps.Utilities;
 using Microsoft.Azure.Management.WebSites.Models;
 using System.Management.Automation;
 
+#if NETSTANDARD
+using ServerFarmWithRichSku = Microsoft.Azure.Management.WebSites.Models.AppServicePlan;
+#endif
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
 {
     /// <summary>
@@ -29,8 +32,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
-        [Parameter(Position = 3, Mandatory = false, HelpMessage = "The App Service plan tier. Allowed values are [Free|Shared|Basic|Standard|Premium]")]
-        [ValidateSet("Free", "Shared", "Basic", "Standard", "Premium", IgnoreCase = true)]
+        [Parameter(Position = 3, Mandatory = false, HelpMessage = "The App Service plan tier. Allowed values are [Free|Shared|Basic|Standard|Premium|PremiumV2]")]
+        [ValidateSet("Free", "Shared", "Basic", "Standard", "Premium", "PremiumV2", IgnoreCase = true)]
         public string Tier { get; set; }
 
         [Parameter(Position = 4, Mandatory = false, HelpMessage = "Number of Workers to be allocated.")]
@@ -48,6 +51,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
         [Parameter(Position = 7, Mandatory = false, HelpMessage = "Name of the application service environment resource group")]
         [ValidateNotNullOrEmpty]
         public string AseResourceGroupName { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Whether or not to enable Per Site Scaling")]
+        [ValidateNotNullOrEmpty]
+        public bool PerSiteScaling { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -79,7 +86,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
                 Capacity = capacity
             };
 
-            WriteObject(WebsitesClient.CreateAppServicePlan(ResourceGroupName, Name, Location, null, sku, AseName, aseResourceGroupName), true);
+            WriteObject(WebsitesClient.CreateAppServicePlan(ResourceGroupName, Name, Location, null, sku, AseName, aseResourceGroupName, PerSiteScaling), true);
         }
     }
 }

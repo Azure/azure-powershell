@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Cdn.Common;
@@ -43,7 +44,10 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
             var resourceGroupName = CdnEndpoint.ResourceGroupName;
             var profileName = CdnEndpoint.ProfileName;
 
-            var endpoint = CdnManagementClient.Endpoints.Update(CdnEndpoint.Name,
+            var endpoint = CdnManagementClient.Endpoints.Update(
+                resourceGroupName,
+                profileName,
+                CdnEndpoint.Name,
                 new EndpointUpdateParameters(
                     CdnEndpoint.Tags.ToDictionaryTags(),
                     CdnEndpoint.OriginHostHeader,
@@ -52,8 +56,9 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
                     CdnEndpoint.IsCompressionEnabled,
                     CdnEndpoint.IsHttpAllowed,
                     CdnEndpoint.IsHttpsAllowed,
-                    CdnEndpoint.QueryStringCachingBehavior
-                        .CastEnum<PSQueryStringCachingBehavior, SdkQueryStringCachingBehavior>()), profileName, resourceGroupName);
+                    (QueryStringCachingBehavior) Enum.Parse(typeof(QueryStringCachingBehavior), CdnEndpoint.QueryStringCachingBehavior.ToString()),
+                    CdnEndpoint.OptimizationType,
+                    CdnEndpoint.GeoFilters.Select(g => g.ToSdkGeoFilter()).ToList()));
 
             WriteVerbose(Resources.Success);
             WriteObject(endpoint.ToPsEndpoint());

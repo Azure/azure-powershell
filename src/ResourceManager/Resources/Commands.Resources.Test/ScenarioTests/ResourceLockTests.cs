@@ -32,5 +32,11 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         {
             ResourcesController.NewInstance.RunPsTest("Test-ResourceLockCRUD");
         }
+
+        [Fact]
+        public void TestResourceLockNonExisting()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-ResourceLockNonExisting");
+        }
     }
 }

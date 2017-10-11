@@ -21,7 +21,8 @@ function Get-AzureRmStorageAccount
         $getTask = $client.StorageAccounts.GetPropertiesAsync($ResourceGroupName, $name, [System.Threading.CancellationToken]::None)
     }
     $sa = $getTask.Result
-    $account = Get-StorageAccount $ResourceGroupName $Name
+	$id = "/subscriptions/" + $context.Subscription.Id + "/resourceGroups/"+ $ResourceGroupName + "/providers/Microsoft.Storage/storageAccounts/" + $Name	  
+    $account = Get-StorageAccount $ResourceGroupName $Name $id
     Write-Output $account
   }
   END {}
@@ -43,16 +44,32 @@ function New-AzureRmStorageAccount
   }
   PROCESS {
     $createParms = New-Object -Type Microsoft.Azure.Management.Storage.Models.StorageAccountCreateParameters
-    if ($typeString -eq $null)
-    {
-      $Type = [Microsoft.Azure.Management.Storage.Models.AccountType]::StandardLRS
-    }
-    else
-    {
-      $Type = Parse-Type $typeString
-    }
+	if ($version.Major -lt 5)
+	{
+		if ($typeString -eq $null)
+		{
+		  $Type = [Microsoft.Azure.Management.Storage.Models.AccountType]::StandardLRS
+		}
+		else
+		{
+		  $Type = Parse-Type $typeString $version.Major
+		}
 
-    $createParms.AccountType = $Type
+		$createParms.AccountType = $Type
+	}
+	else
+	{
+		if ($typeString -eq $null)
+		{
+		  $Type = [Microsoft.Azure.Management.Storage.Models.SkuName]::StandardLRS
+		}
+		else
+		{
+		  $Type = Parse-Type $typeString $version.Major
+		}
+
+		$createParms.Sku = New-Object -Type Microsoft.Azure.Management.Storage.Models.Sku $Type
+	}
     $createParms.Location = $Location
     if ($version.Major -gt 3)
     {
@@ -155,29 +172,29 @@ function Remove-AzureRmStorageAccount
 
 function Get-Context
 {
-    [Microsoft.Azure.Commands.Common.Authentication.Models.AzureContext]$context = $null
-    $profile = [Microsoft.WindowsAzure.Commands.Common.AzureRmProfileProvider]::Instance.Profile
-    if ($profile -ne $null)
-    {
-      $context = $profile.Context
-    }
-
-    return $context
+      return [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile.DefaultContext
 }
 
  function Parse-Type
  {
-    param([string] $type)
+    param([string] $type, [int] $majorVersion)
     $type = $type.Replace("_", "")
-    $returnSkuName = [System.Enum]::Parse([Microsoft.Azure.Management.Storage.Models.AccountType], $type)
+	if ($majorVersion -lt 5)
+	{
+		$returnSkuName = [System.Enum]::Parse([Microsoft.Azure.Management.Storage.Models.AccountType], $type)
+	}
+	else
+	{
+		$returnSkuName = [System.Enum]::Parse([Microsoft.Azure.Management.Storage.Models.SkuName], $type)
+	}
     return $returnSkuName;
  }
 
 function Get-StorageClient
 {
-  param([Microsoft.Azure.Commands.Common.Authentication.Models.AzureContext] $context)
-    $factory = [Microsoft.Azure.Commands.Common.Authentication.AzureSession]::ClientFactory
-    [System.Type[]]$types = [Microsoft.Azure.Commands.Common.Authentication.Models.AzureContext], [Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment+Endpoint]
+  param([Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext] $context)
+    $factory = [Microsoft.Azure.Commands.Common.Authentication.AzureSession]::Instance.ClientFactory
+    [System.Type[]]$types = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext], [string]
     $storageClient = [Microsoft.Azure.Management.Storage.StorageManagementClient]
     $storageVersion = [System.Reflection.Assembly]::GetAssembly($storageClient).GetName().Version
     if ($storageVersion.Major -gt 3)
@@ -186,19 +203,19 @@ function Get-StorageClient
     }
     else
     {
-      $method = [Microsoft.Azure.Commands.Common.Authentication.IClientFactory].GetMethod("CreateClient", $types)
+      $method = [Microsoft.Azure.Commands.Common.Authentication.IHyakClientFactory].GetMethod("CreateClient", $types)
     }
     $closedMethod = $method.MakeGenericMethod([Microsoft.Azure.Management.Storage.StorageManagementClient])
-    $arguments = $context, [Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment+Endpoint]::ResourceManager
+    $arguments = $context, [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureEnvironment+Endpoint]::ResourceManager
     $client = $closedMethod.Invoke($factory, $arguments)
     return $client
 }
 
 function Get-StorageAccount {
-  param([string] $resourceGroupName, [string] $name)
+  param([string] $resourceGroupName, [string] $name, [string] $id)
     $endpoints = New-Object PSObject -Property @{"Blob" = "https://$name.blob.core.windows.net/"}
     $sa = New-Object PSObject -Property @{"Name" = $name; "ResourceGroupName" = $resourceGroupName;
-      "PrimaryEndpoints" = $endpoints
+      "PrimaryEndpoints" = $endpoints; "Id" = $id
     }
   return $sa
 }

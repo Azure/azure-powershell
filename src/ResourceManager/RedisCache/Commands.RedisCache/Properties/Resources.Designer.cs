@@ -106,6 +106,15 @@ namespace Microsoft.Azure.Commands.RedisCache.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There are no patch schedules found for redis cache &apos;{0}&apos;..
+        /// </summary>
+        internal static string PatchScheduleNotFound {
+            get {
+                return ResourceManager.GetString("PatchScheduleNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to reboot redis cache &apos;{0}&apos; {1}?.
         /// </summary>
         internal static string RebootingRedisCache {
@@ -192,6 +201,15 @@ namespace Microsoft.Azure.Commands.RedisCache.Properties {
         internal static string StorageAccountIdException {
             get {
                 return ResourceManager.GetString("StorageAccountIdException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string test {
+            get {
+                return ResourceManager.GetString("test", resourceCulture);
             }
         }
     }

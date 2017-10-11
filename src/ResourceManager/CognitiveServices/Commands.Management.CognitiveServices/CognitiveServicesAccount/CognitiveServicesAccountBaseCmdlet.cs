@@ -47,21 +47,35 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         protected struct AccountSkuString 
         {
             internal const string F0 = "F0";
+            internal const string P0 = "P0";
+            internal const string P1 = "P1";
+            internal const string P2 = "P2";
             internal const string S0 = "S0";
             internal const string S1 = "S1";
             internal const string S2 = "S2";
             internal const string S3 = "S3";
             internal const string S4 = "S4";
+            internal const string S5 = "S5";
+            internal const string S6 = "S6";
         }
         protected struct AccountType
         {
+            internal const string Academic = "Academic";
+            internal const string BingAutosuggest = "Bing.Autosuggest";
+            internal const string BingSearch = "Bing.Search";
+            internal const string BingSpeech = "Bing.Speech";
+            internal const string BingSpellCheck = "Bing.SpellCheck";
             internal const string ComputerVision = "ComputerVision";
+            internal const string ContentModerator = "ContentModerator";
             internal const string Emotion = "Emotion";
             internal const string Face = "Face";
             internal const string LUIS = "LUIS";
             internal const string Recommendations = "Recommendations";
+            internal const string SpeakerRecognition = "SpeakerRecognition";
             internal const string Speech = "Speech";
+            internal const string SpeechTranslation = "SpeechTranslation";
             internal const string TextAnalytics = "TextAnalytics";
+            internal const string TextTranslation = "TextTranslation";
             internal const string WebLM = "WebLM";
         }
         
@@ -71,7 +85,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             {
                 if (cognitiveServicesClientWrapper == null)
                 {
-                    cognitiveServicesClientWrapper = new CognitiveServicesManagementClientWrapper(DefaultProfile.Context)
+                    cognitiveServicesClientWrapper = new CognitiveServicesManagementClientWrapper(DefaultProfile.DefaultContext)
                     {
                         VerboseLogger = WriteVerboseWithTimestamp,
                         ErrorLogger = WriteErrorWithTimestamp
@@ -88,7 +102,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         {
             get
             {
-                return DefaultProfile.Context.Subscription.Id.ToString();
+                return DefaultProfile.DefaultContext.Subscription.Id.ToString();
             }
         }
 
@@ -108,29 +122,6 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             }
         }
 
-        protected static SkuName ParseSkuName(string skuName)
-        {
-            SkuName returnSkuName;
-            if (!Enum.TryParse<SkuName>(skuName.Replace("_", ""), true, out returnSkuName))
-            {
-                throw new ArgumentOutOfRangeException("SkuName");
-            }
-            return returnSkuName;
-        }
-
-        protected static Kind? ParseAccountKind(string accountKind)
-        {
-            Kind returnKind;
-            if (accountKind == null)
-            {
-                return null;
-            }
-            else if (!Enum.TryParse<Kind>(accountKind, true, out returnKind))
-            {
-                throw new ArgumentOutOfRangeException("Kind");
-            }
-            return returnKind;
-        }
 
         protected void WriteCognitiveServicesAccount(
             CognitiveServicesModels.CognitiveServicesAccount cognitiveServicesAccount)

@@ -18,6 +18,6 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
 {
     public class StartPSJobParameter : JobParametersBase
     {
-        public JobStartParameters StartParameters { get; set; }
+        public StartStreamingJobParameters StartParameters { get; set; }
     }
 }

@@ -96,7 +96,6 @@ function Test-AddAzureRmMetricAlertRule
 
         # Assert TODO add more asserts
 		Assert-AreEqual $actual.RequestId '47af504c-88a1-49c5-9766-e397d54e490b'
-		Assert-AreEqual $actual.StatusCode 'Created'
     }
     finally
     {
@@ -114,11 +113,13 @@ function Test-AddAzureRmLogAlertRule
     try 
     {
         # Test
-        $actual = Add-AzureRmLogAlertRule -Name "chiricutin" -Location "East US" -ResourceGroup "Default-Web-EastUS" -OperationName "Create" -TargetResourceId "/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/misitiooeltuyo" -Description "Pura Vida"
+        $resourceGroup = "Rac46PostSwapRG"
+        $resourceId = "/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/Rac46PostSwapRG/providers/Microsoft.Web/sites/leoalerttest"
+
+        $actual = Add-AzureRmLogAlertRule -Name chiricutin -Location "West US" -ResourceGroup $resourceGroup -TargetResourceId $resourceId -OperationName "microsoft.web/sites/stop/action" -Status "Succeeded"
 
         # Assert TODO add more asserts
 		Assert-AreEqual $actual.RequestId '47af504c-88a1-49c5-9766-e397d54e490b'
-		Assert-AreEqual $actual.StatusCode 'Created'
     }
     finally
     {
@@ -140,7 +141,6 @@ function Test-AddAzureRmWebtestAlertRule
 
         # Assert TODO add more asserts
 		Assert-AreEqual $actual.RequestId '47af504c-88a1-49c5-9766-e397d54e490b'
-		Assert-AreEqual $actual.StatusCode 'Created'
     }
     finally
     {
@@ -160,9 +160,8 @@ function Test-GetAzureRmAlertRule
 
     try 
     {
-	    $actual = Get-AzureRmAlertRule -ResourceGroup $rgname -detailedOutput
-
-        # Assert TODO add more asserts
+	    $actual = Get-AzureRmAlertRule -ResourceGroup $rgname 
+		Assert-NotNull $actual
 		Assert-AreEqual $actual.Count 1
     }
     finally
@@ -171,6 +170,28 @@ function Test-GetAzureRmAlertRule
         # No cleanup needed for now
     }
 }
+
+<#
+.SYNOPSIS
+Tests getting the alert rules associated to a resource group.
+#>
+function Test-GetAzureRmAlertRuleByName
+{
+    # Setup
+    $rgname = 'Default-Web-EastUS'
+
+    try 
+    {
+        $actual = Get-AzureRmAlertRule -ResourceGroup $rgname -Name 'MyruleName'
+		Assert-NotNull $actual
+    }
+    finally
+    {
+        # Cleanup
+        # No cleanup needed for now
+    }
+}
+
 
 <#
 .SYNOPSIS
@@ -183,11 +204,7 @@ function Test-RemoveAzureRmAlertRule
 
     try 
     {
-		$actual = Remove-AzureRmAlertRule -ResourceGroup $rgname -name chiricutin
-
-        # Assert TODO add more asserts
-		Assert-AreEqual $actual.RequestId '93550c06-54b2-4e11-8c29-a3bd7b37b1dc'
-		Assert-AreEqual $actual.StatusCode 'OK'
+		Remove-AzureRmAlertRule -ResourceGroup $rgname -name chiricutin
     }
     finally
     {
@@ -204,7 +221,7 @@ function Test-GetAzureRmAlertHistory
 {
     try 
     {
-		$actual = Get-AzureRmAlertHistory -endTime 2015-02-11T12:00:00 -detailedOutput
+		$actual = Get-AzureRmAlertHistory -endTime 2015-02-11T20:00:00Z -detailedOutput
 
         # Assert
 		Assert-AreEqual $actual.Count 2

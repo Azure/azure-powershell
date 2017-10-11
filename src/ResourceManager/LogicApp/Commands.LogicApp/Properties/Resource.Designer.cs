@@ -61,15 +61,6 @@ namespace Microsoft.Azure.Commands.LogicApp.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to /subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Web/serverfarms/{2}.
-        /// </summary>
-        internal static string ApplicationServicePlanIdFormat {
-            get {
-                return ResourceManager.GetString("ApplicationServicePlanIdFormat", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Cancelling the LogicApp run..
         /// </summary>
         internal static string CancelLogicAppRunMessage {
@@ -97,11 +88,38 @@ namespace Microsoft.Azure.Commands.LogicApp.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to File {0} does not exist..
+        ///   Looks up a localized string similar to File &apos;{0}&apos; does not exist..
         /// </summary>
         internal static string FileDoesNotExist {
             get {
                 return ResourceManager.GetString("FileDoesNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The existing generated control number for agreement &apos;{0}&apos; is not in a valid format..
+        /// </summary>
+        internal static string GeneratedControlNumberInvalidFormat {
+            get {
+                return ResourceManager.GetString("GeneratedControlNumberInvalidFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No generated control number was found for this agreement..
+        /// </summary>
+        internal static string GeneratedControlNumberNotFound {
+            get {
+                return ResourceManager.GetString("GeneratedControlNumberNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid business identity..
+        /// </summary>
+        internal static string InvalidBusinessIdentity {
+            get {
+                return ResourceManager.GetString("InvalidBusinessIdentity", resourceCulture);
             }
         }
         
@@ -124,7 +142,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} needs to be specified..
+        ///   Looks up a localized string similar to &apos;{0}&apos; needs to be specified..
         /// </summary>
         internal static string ParameterNeedsToBeSpecified {
             get {
@@ -133,7 +151,25 @@ namespace Microsoft.Azure.Commands.LogicApp.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Removing {0} {1}..
+        ///   Looks up a localized string similar to Either &apos;{0}&apos; business Identity qualifier or qualifier value is not specified..
+        /// </summary>
+        internal static string QualifierWithValueNotSpecified {
+            get {
+                return ResourceManager.GetString("QualifierWithValueNotSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The existing received control number &apos;{0}&apos; for agreement &apos;{1}&apos; is not in a valid format..
+        /// </summary>
+        internal static string ReceivedControlNumberInvalidFormat {
+            get {
+                return ResourceManager.GetString("ReceivedControlNumberInvalidFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing &apos;{0}&apos; &apos;{1}&apos;..
         /// </summary>
         internal static string RemoveResourceMessage {
             get {
@@ -142,7 +178,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove the {0} {1}..
+        ///   Looks up a localized string similar to Are you sure you want to remove the &apos;{0}&apos; &apos;{1}&apos;..
         /// </summary>
         internal static string RemoveResourceWarning {
             get {
@@ -169,7 +205,25 @@ namespace Microsoft.Azure.Commands.LogicApp.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Updating {0} {1}..
+        ///   Looks up a localized string similar to Updating the generated control number for &apos;{0}&apos; &apos;{1}&apos;..
+        /// </summary>
+        internal static string UpdateGeneratedControlNumberMessage {
+            get {
+                return ResourceManager.GetString("UpdateGeneratedControlNumberMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating the recevied control number &apos;{0}&apos; for &apos;{1}&apos; &apos;{2}&apos;..
+        /// </summary>
+        internal static string UpdateReceivedControlNumberMessage {
+            get {
+                return ResourceManager.GetString("UpdateReceivedControlNumberMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating &apos;{0}&apos; &apos;{1}&apos;..
         /// </summary>
         internal static string UpdateResourceMessage {
             get {
@@ -178,7 +232,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to update the {0} {1}..
+        ///   Looks up a localized string similar to Are you sure you want to update the &apos;{0}&apos; &apos;{1}&apos;..
         /// </summary>
         internal static string UpdateResourceWarning {
             get {

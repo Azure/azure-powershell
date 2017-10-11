@@ -12,9 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using Microsoft.Azure.Commands.Insights.Autoscale;
-using Microsoft.Azure.Insights;
-using Microsoft.Azure.Insights.Models;
+using Microsoft.Azure.Management.Monitor;
+using Microsoft.Azure.Management.Monitor.Models;
+using Microsoft.Rest.Azure;
+using Microsoft.Rest.Azure.OData;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System;
@@ -22,42 +25,54 @@ using System.Management.Automation;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
+using Microsoft.Azure.Commands.ScenarioTest;
 
 namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
 {
     public class GetAzureRmAutoscaleHistoryTests
     {
         private readonly GetAzureRmAutoscaleHistoryCommand cmdlet;
-        private readonly Mock<InsightsClient> insightsClientMock;
-        private readonly Mock<IEventOperations> insightsEventOperationsMock;
+        private readonly Mock<MonitorClient> MonitorClientMock;
+        private readonly Mock<IActivityLogsOperations> insightsEventOperationsMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
-        private EventDataListResponse response;
-        private string filter;
+        private AzureOperationResponse<IPage<EventData>> response;
+        private AzureOperationResponse<IPage<EventData>> finalResponse;
+        private ODataQuery<EventData> filter;
         private string selected;
+        private string nextLink;
 
         public GetAzureRmAutoscaleHistoryTests(Xunit.Abstractions.ITestOutputHelper output)
         {
             ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
-            insightsEventOperationsMock = new Mock<IEventOperations>();
-            insightsClientMock = new Mock<InsightsClient>();
+            TestExecutionHelpers.SetUpSessionAndProfile();
+            insightsEventOperationsMock = new Mock<IActivityLogsOperations>();
+            MonitorClientMock = new Mock<MonitorClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new GetAzureRmAutoscaleHistoryCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
-                InsightsClient = insightsClientMock.Object
+                MonitorClient = MonitorClientMock.Object
             };
 
             response = Test.Utilities.InitializeResponse();
+            finalResponse = Utilities.InitializeFinalResponse();
 
-            insightsEventOperationsMock.Setup(f => f.ListEventsAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<CancellationToken>()))
-                .Returns(Task.FromResult<EventDataListResponse>(response))
-                .Callback((string f, string s, CancellationToken t) =>
+            insightsEventOperationsMock.Setup(f => f.ListWithHttpMessagesAsync(It.IsAny<ODataQuery<EventData>>(), It.IsAny<string>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))
+                .Returns(Task.FromResult<AzureOperationResponse<IPage<EventData>>>(response))
+                .Callback((ODataQuery<EventData> f, string s, Dictionary<string, List<string>> headers, CancellationToken t) =>
                 {
                     filter = f;
                     selected = s;
                 });
 
-            insightsClientMock.SetupGet(f => f.EventOperations).Returns(this.insightsEventOperationsMock.Object);
+            insightsEventOperationsMock.Setup(f => f.ListNextWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))
+                .Returns(Task.FromResult<AzureOperationResponse<IPage<EventData>>>(finalResponse))
+                .Callback((string next, Dictionary<string, List<string>> headers, CancellationToken t) =>
+                {
+                    nextLink = next;
+                });
+
+            MonitorClientMock.SetupGet(f => f.ActivityLogs).Returns(this.insightsEventOperationsMock.Object);
         }
 
         [Fact]
@@ -74,7 +89,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
                 filter: ref this.filter,
                 selected: ref this.selected,
                 startDate: startDate,
-                response: response);
+                nextLink: ref this.nextLink);
         }
     }
 }

@@ -78,31 +78,22 @@ Gets the latest API Version for the resource type
 #>
 function Get-ProviderAPIVersion($providerNamespace, $resourceType)
 { 
-    if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne `
-        [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+    if ($providerNamespace -eq "Microsoft.MachineLearning")
     {
-        $provider = Get-AzureRmResourceProvider -ProviderNamespace $providerNamespace
-        $resourceType = $provider.ResourceTypes | where {$_.ResourceTypeName -eq $resourceType}
-        return $resourceType.ApiVersions[$resourceType.ApiVersions.Count -1]
-    } else
-    {
-        if ($providerNamespace -eq "Microsoft.MachineLearning")
+        if ([System.String]::Equals($resourceType, "commitmentPlans", `
+            [System.StringComparison]::OrdinalIgnoreCase))
         {
-            if ([System.String]::Equals($resourceType, "CommitmentPlans", `
-                [System.StringComparison]::OrdinalIgnoreCase))
-            {
-                return "2016-05-01-preview"
-            }
-
-            if ([System.String]::Equals($resourceType, "webServices", `
-                [System.StringComparison]::OrdinalIgnoreCase))
-            {
-                return "2016-05-01-preview"
-            }
+            return "2016-05-01-preview"
         }
 
-        return $null
+        if ([System.String]::Equals($resourceType, "webServices", `
+            [System.StringComparison]::OrdinalIgnoreCase))
+        {
+            return "2017-01-01"
+        }
     }
+
+    return $null
 }
 
 <#
@@ -116,6 +107,29 @@ function Create-TestStorageAccount($resourceGroup, $location, $storageName)
     $accessKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $resourceGroup `
                                 -Name $storageName).Key1;
     return @{ Name = $storageName; Key = $accessKey }
+}
+
+<#
+.SYNOPSIS
+Cleans the commitment plan created during testing
+#>
+function Clean-CommitmentPlan($resourceGroup, $commitmentPlanName)
+{
+    if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne `
+        [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) 
+    {
+        try {
+            LogOutput "Removing commitment plan $commitmentPlanName from resource group $rgName"    
+            Remove-AzureRmMlCommitmentPlan -ResourceGroupName $resourceGroup `
+                                        -Name $commitmentPlanName -Force
+            LogOutput "Commitment plan $commitmentPlanName was removed."
+        }
+        catch {
+            Write-Warning "Caught unexpected exception when cleaning up commitment `
+                            plan $commitmentPlanName in group $resourceGroup : `
+                            $($($_.Exception).Message)"
+        }
+    }
 }
 
 <#

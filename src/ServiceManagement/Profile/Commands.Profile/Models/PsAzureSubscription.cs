@@ -18,23 +18,25 @@ using System.Linq;
 using System.ServiceModel.Description;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Profile.Models
 {
     public class PSAzureSubscription
     {
         public PSAzureSubscription() {}
-        public PSAzureSubscription(AzureSubscription subscription, AzureSMProfile profile)
+        public PSAzureSubscription(IAzureSubscription subscription, AzureSMProfile profile)
         {
             SubscriptionId = subscription.Id.ToString();
             SubscriptionName = subscription.Name;
-            Environment = subscription.Environment;
-            DefaultAccount = subscription.Account;
-            Accounts = profile.Accounts.Values.Where(a => a.HasSubscription(subscription.Id)).ToArray();
+            Environment = subscription.GetEnvironment();
+            DefaultAccount = subscription.GetAccount();
+            Accounts = profile.AccountTable.Values.Where(a => a.HasSubscription(subscription.GetId())).ToArray();
             IsDefault = subscription.IsPropertySet(AzureSubscription.Property.Default);
             IsCurrent = profile.Context != null && profile.Context.Subscription.Id == subscription.Id;
             CurrentStorageAccountName = subscription.GetProperty(AzureSubscription.Property.StorageAccount);
-            TenantId = subscription.GetPropertyAsArray(AzureSubscription.Property.Tenants).FirstOrDefault();
+            TenantId = subscription.GetTenant();
         }
 
         public string SubscriptionId { get; set; }
@@ -45,7 +47,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile.Models
         
         public string DefaultAccount { get; set; }
         
-        public AzureAccount[] Accounts { get; set; }
+        public IAzureAccount[] Accounts { get; set; }
         
         public bool IsDefault { get; set; }
         

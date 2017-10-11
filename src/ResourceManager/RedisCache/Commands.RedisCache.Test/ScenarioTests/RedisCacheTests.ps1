@@ -5,10 +5,12 @@ Tests redis cache.
 function Test-RedisCache
 {
     # Setup
-    # resource group should exists
-    $resourceGroupName = "SunnyAAPT6"
+    $resourceGroupName = "PowerShellTest-1"
     $cacheName = "powershelltest"
-    $location = "North Central US"
+    $location = "West US"
+
+	# Create resource group
+	New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
 
     # Creating Cache
     $cacheCreated = New-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Location $location -Size 1GB -Sku Standard
@@ -134,8 +136,10 @@ function Test-RedisCache
 
     # Delete cache
     Assert-True {Remove-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Force -PassThru} "Remove cache failed."
-}
 
+	# Delete resource group
+	Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+}
 
 <#
 .SYNOPSIS
@@ -144,10 +148,9 @@ Tests set redis cache that do not exists.
 function Test-SetNonExistingRedisCacheTest
 {
     # Setup
-    # resource group should exists
-    $resourceGroupName = "SunnyAAPT6"
-    $cacheName = "NonExistingRedisCache"
-    $location = "North Central US"
+    $resourceGroupName = "PowerShellTestNonExisting"
+    $cacheName = "nonexistingrediscache"
+    $location = "West US"
 
     # Creating Cache
     Assert-Throws {Set-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -RedisConfiguration @{"maxmemory-policy" = "allkeys-random"} }
@@ -160,10 +163,12 @@ Tests redis cache.
 function Test-RedisCachePipeline
 {
     # Setup
-    # resource group should exists
-    $resourceGroupName = "SunnyAAPT6"
+    $resourceGroupName = "PowerShellTest-2"
     $cacheName = "powershelltestpipe"
-    $location = "North Central US"
+    $location = "West US"
+
+	# Create resource group
+	New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
 
     # Creating Cache
     $cacheCreated = New-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Location $location -Size 1GB -Sku Basic -EnableNonSslPort $true
@@ -237,27 +242,9 @@ function Test-RedisCachePipeline
 
     # Delete cache
     Assert-True {Get-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName | Remove-AzureRmRedisCache -Force -PassThru} "Remove cache failed."
-}
 
-<#
-.SYNOPSIS
-Tests bug fix in set redis cache.
-#>
-function Test-SetRedisCacheBugFixTest
-{
-    # Setup
-    # resource group should exists
-    $resourceGroupName = "SunnyAAPT6"
-    $cacheName = "siddharthchatrola"
-    $location = "North Central US"
-
-    # Updating Cache
-    $cacheUpdated = Set-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -EnableNonSslPort $true
-    Assert-True  { $cacheUpdated.EnableNonSslPort }
-
-    $cacheUpdated2 = Set-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -RedisConfiguration @{"maxmemory-policy" = "allkeys-lru"} 
-    Assert-AreEqual "allkeys-lru" $cacheUpdated2.RedisConfiguration.Item("maxmemory-policy")
-    Assert-True  { $cacheUpdated2.EnableNonSslPort }
+	# Delete resource group
+	Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
 }
 
 <#
@@ -267,7 +254,6 @@ Tests MaxMemoryPolicy error check
 function Test-MaxMemoryPolicyErrorCheck
 {
     # Setup
-    # resource group should exists
     $resourceGroupName = "DummyResourceGroup"
     $cacheName = "dummycache"
     $location = "North Central US"
@@ -283,10 +269,12 @@ Tests redis cache clustering.
 function Test-RedisCacheClustering
 {
     # Setup
-    # resource group should exists
-    $resourceGroupName = "SunnyAAPT6"
+    $resourceGroupName = "PowerShellTest-3"
     $cacheName = "powershellcluster"
-    $location = "East US"
+    $location = "West US"
+
+	# Create resource group
+	New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
 
     # Creating Cache
     $cacheCreated = New-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Location $location -Size 6GB -Sku Premium -ShardCount 3
@@ -393,86 +381,44 @@ function Test-RedisCacheClustering
 
     # Delete cache
     Assert-True {Remove-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Force -PassThru} "Remove cache failed."
+	
+	# Delete resource group
+	Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
 }
 
 <#
 .SYNOPSIS
-Tests SetAzureRedisCacheDiagnostics
-#>
-function Test-SetAzureRedisCacheDiagnostics
-{
-    # Setup
-    # resource group should exists
-    $resourceGroupName = "SunnyAAPT6"
-    $cacheName = "sunnycache"
-    
-    # Set Diagnostics
-    Set-AzureRmRedisCacheDiagnostics -ResourceGroupName $resourceGroupName -Name $cacheName -StorageAccountId "/subscriptions/f8f8f139-2fd5-4d86-afca-21f21f35806e/resourceGroups/SunnyAAPT6/providers/Microsoft.ClassicStorage/storageAccounts/sunnystoragenew"
-}
-
-<#
-.SYNOPSIS
-Tests RemoveAzureRedisCacheDiagnostics
-#>
-function Test-RemoveAzureRedisCacheDiagnostics
-{
-    # Setup
-    # resource group should exists
-    $resourceGroupName = "SunnyAAPT6"
-    $cacheName = "sunnycache"
-    
-    # Set Diagnostics
-    Remove-AzureRmRedisCacheDiagnostics -ResourceGroupName $resourceGroupName -Name $cacheName
-}
-
-<#
-.SYNOPSIS
-Tests ResetRMAzureRedisCache
-#>
-function Test-ResetAzureRmRedisCache
-{
-    $resourceGroupName = "SunnyAAPT6"
-    $cacheName = "sunny-reboot"
-    $rebootType = "PrimaryNode"
-    
-    Reset-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -RebootType $rebootType -Force
-}
-
-<#
-.SYNOPSIS
-Tests ExportRMAzureRedisCache
-#>
-function Test-ExportAzureRmRedisCache
-{
-    $resourceGroupName = "SunnyAAPT6"
-    $cacheName = "sunny-importexport"
-    $prefix = "sunny"
-    $container = "<container sas key>"
-    Export-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Prefix $prefix -Container $container
-}
-
-<#
-.SYNOPSIS
-Tests ImportAzureRmRedisCache
-#>
-function Test-ImportAzureRmRedisCache
-{
-    $resourceGroupName = "SunnyAAPT6"
-    $cacheName = "sunny-importexport"
-    $files = @("<blob sas key>")
-    Import-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Files $files -Force
-}
-
-<#
-.SYNOPSIS
-Tests schedule patching
+Tests RedisCachePatchSchedules and a bug fix
 #>
 function Test-RedisCachePatchSchedules
 {
-    $resourceGroupName = "SiddharthsSub"
-    $cacheName = "sunny-premium"
-    
-    $weekend = New-AzureRmRedisCacheScheduleEntry -DayOfWeek "Weekend" -StartHourUtc 2 -MaintenanceWindow "06:00:00"
+    # Setup
+    $resourceGroupName = "PowerShellTest-4"
+    $cacheName = "powershelltests4"
+    $location = "West US"
+	
+	############################# Initial Creation ############################# 
+	# Create resource group
+	New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+
+	# Creating Cache
+    $cacheCreated = New-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Location $location -Sku Premium -Size P1
+    Assert-AreEqual "creating" $cacheCreated.ProvisioningState
+    # In loop to check if cache exists
+    for ($i = 0; $i -le 60; $i++)
+    {
+        Start-TestSleep 30000
+        $cacheGet = Get-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName
+        if ([string]::Compare("succeeded", $cacheGet[0].ProvisioningState, $True) -eq 0)
+        {
+            Assert-AreEqual $cacheName $cacheGet[0].Name
+            break
+        }
+        Assert-False {$i -eq 60} "Cache is not in succeeded state even after 30 min."
+    }
+
+	############################# Tests schedule patching ##########################################
+	$weekend = New-AzureRmRedisCacheScheduleEntry -DayOfWeek "Weekend" -StartHourUtc 2 -MaintenanceWindow "06:00:00"
     $thursday = New-AzureRmRedisCacheScheduleEntry -DayOfWeek "Thursday" -StartHourUtc 10 -MaintenanceWindow "09:00:00"
 
     $createResult = New-AzureRmRedisCachePatchSchedule -ResourceGroupName $resourceGroupName -Name $cacheName -Entries @($weekend, $thursday)
@@ -517,8 +463,201 @@ function Test-RedisCachePatchSchedules
 
     Remove-AzureRmRedisCachePatchSchedule -ResourceGroupName $resourceGroupName -Name $cacheName
 
-    Assert-ThrowsContains {Get-AzureRmRedisCachePatchSchedule -ResourceGroupName $resourceGroupName -Name $cacheName} "There are no patch schedules found for redis cache 'sunny-premium'"
+    Assert-ThrowsContains {Get-AzureRmRedisCachePatchSchedule -ResourceGroupName $resourceGroupName -Name $cacheName} "There are no patch schedules found for redis cache"
+	
+	############################# Bug fix in set redis cache related to EnableNonSslPort ##########################################
+    $cacheUpdated = Set-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -EnableNonSslPort $true
+    Assert-True  { $cacheUpdated.EnableNonSslPort }
+
+    $cacheUpdated2 = Set-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -RedisConfiguration @{"maxmemory-policy" = "allkeys-lru"} 
+    Assert-AreEqual "allkeys-lru" $cacheUpdated2.RedisConfiguration.Item("maxmemory-policy")
+    Assert-True  { $cacheUpdated2.EnableNonSslPort }
+	
+	############################# CleanUp ############################# 
+	# Delete cache
+    Assert-True {Remove-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Force -PassThru} "Remove cache failed."
+
+	# Delete resource group
+	Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
 }
+
+function Create-StorageAccount($resourceGroupName,$storageName,$location)
+{
+	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+    {
+        $storageAccount = New-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $storageName -Location $location -Type "Standard_LRS" 
+    }
+}
+
+function Get-SasForContainer
+{
+	param
+	(
+	$resourceGroupName,
+	$storageName,
+	$storageContainerName,
+	[ref] $sasKeyForContainer
+	)
+	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+	{
+		# Get storage account context
+		$storageAccountContext = New-AzureStorageContext -StorageAccountName $storageName -StorageAccountKey (Get-AzureRmStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageName).Value[0]
+
+		# Create Container in Storage Account
+		New-AzureStorageContainer -Name $storageContainerName -Context $storageAccountContext
+
+		# Get SAS token for container
+		$sasKeyForContainer.Value = New-AzureStorageContainerSASToken -Name $storageContainerName -Permission "rwdl" -StartTime ([System.DateTime]::Now).AddMinutes(-20) -ExpiryTime ([System.DateTime]::Now).AddHours(2) -Context $storageAccountContext -FullUri
+	}
+	else
+	{
+		$sasKeyForContainer.Value = "dummysasforcontainer"
+	}
+}
+
+function Get-SasForBlob
+{
+	param
+	(
+	$resourceGroupName,
+	$storageName,
+	$storageContainerName,
+	$prefix,
+	[ref] $sasKeyForBlob
+	)
+	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+	{
+		# Get storage account context
+		$storageAccountContext = New-AzureStorageContext -StorageAccountName $storageName -StorageAccountKey (Get-AzureRmStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageName).Value[0]
+
+		# Get SAS token for blob
+		$sasKeyForBlob.Value = New-AzureStorageBlobSASToken -Container $storageContainerName -Blob $prefix -Permission "rwdl" -StartTime ([System.DateTime]::Now).AddMinutes(-20) -ExpiryTime ([System.DateTime]::Now).AddHours(2) -Context $storageAccountContext -FullUri
+	}
+	else
+	{
+		$sasKeyForBlob.Value = "dummysasforblob"
+	}
+}
+
+<#
+.SYNOPSIS
+Tests ExportRMAzureRedisCache
+Tests ImportAzureRmRedisCache
+Tests ResetRMAzureRedisCache
+#>
+function Test-ImportExportReboot
+{
+    # Setup
+    $resourceGroupName = "PowerShellTest-5"
+    $cacheName = "importexporttest"
+    $location = "West US"
+	$storageName = "powershelltest1"
+	$storageContainerName = "exportimport" 
+	$prefix = "sunny"
+
+	############################# Initial Creation ############################# 
+	# Create resource group
+	New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+
+	# Create Storage Account
+	Create-StorageAccount $resourceGroupName $storageName $location
+
+	# Creating Cache
+    $cacheCreated = New-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Location $location -Sku Premium -Size P1
+    Assert-AreEqual "creating" $cacheCreated.ProvisioningState
+    # In loop to check if cache exists
+    for ($i = 0; $i -le 60; $i++)
+    {
+        Start-TestSleep 30000
+        $cacheGet = Get-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName
+        if ([string]::Compare("succeeded", $cacheGet[0].ProvisioningState, $True) -eq 0)
+        {
+            Assert-AreEqual $cacheName $cacheGet[0].Name
+            break
+        }
+        Assert-False {$i -eq 60} "Cache is not in succeeded state even after 30 min."
+    }
+
+	############################# ExportRMAzureRedisCache & ImportAzureRmRedisCache ############################# 
+	# Get SAS token for container
+	$sasKeyForContainer = ""
+	Get-SasForContainer $resourceGroupName $storageName $storageContainerName ([ref]$sasKeyForContainer)
+	
+	# Tests ExportRMAzureRedisCache
+	Export-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Prefix $prefix -Container $sasKeyForContainer
+
+	# Get SAS token for blob
+	$sasKeyForBlob = "" 
+	Get-SasForBlob $resourceGroupName $storageName $storageContainerName $prefix ([ref]$sasKeyForBlob)
+
+	# Tests ImportAzureRmRedisCache
+	Import-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Files @($sasKeyForBlob) -Force
+	
+	############################# Tests ResetRMAzureRedisCache ############################# 
+	$rebootType = "PrimaryNode"
+    Reset-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -RebootType $rebootType -Force
+	Start-TestSleep 120000
+	
+	############################# CleanUp ############################# 
+	# Delete cache
+    Assert-True {Remove-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Force -PassThru} "Remove cache failed."
+
+	# Delete resource group
+	Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+}
+
+<#
+.SYNOPSIS
+Tests SetAzureRedisCacheDiagnostics
+Tests RemoveAzureRedisCacheDiagnostics
+#>
+function Test-DiagnosticOperations
+{
+    # Setup
+    $resourceGroupName = "PowerShellTest-6"
+    $cacheName = "powershelltests6"
+    $location = "West US"
+	$storageName = "powershelltest2"
+	
+	############################# Initial Creation ############################# 
+	# Create resource group
+	New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+
+	# Create Storage Account
+	New-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $storageName -Location $location -Type "Standard_LRS" 
+	$storageAccount = Get-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $storageName
+
+	# Creating Cache
+    $cacheCreated = New-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Location $location -Sku Premium -Size P1
+    Assert-AreEqual "creating" $cacheCreated.ProvisioningState
+    # In loop to check if cache exists
+    for ($i = 0; $i -le 60; $i++)
+    {
+        Start-TestSleep 30000
+        $cacheGet = Get-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName
+        if ([string]::Compare("succeeded", $cacheGet[0].ProvisioningState, $True) -eq 0)
+        {
+            Assert-AreEqual $cacheName $cacheGet[0].Name
+            break
+        }
+        Assert-False {$i -eq 60} "Cache is not in succeeded state even after 30 min."
+    }
+
+	############################# SetAzureRedisCacheDiagnostics & RemoveAzureRedisCacheDiagnostics tests #############################
+	# Tests SetAzureRedisCacheDiagnostics
+	Set-AzureRmRedisCacheDiagnostics -ResourceGroupName $resourceGroupName -Name $cacheName -StorageAccountId $storageAccount.Id
+	
+	# Tests RemoveAzureRedisCacheDiagnostics
+	Remove-AzureRmRedisCacheDiagnostics -ResourceGroupName $resourceGroupName -Name $cacheName
+	
+	############################# CleanUp ############################# 
+	# Delete cache
+    Assert-True {Remove-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Force -PassThru} "Remove cache failed."
+
+	# Delete resource group
+	Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+}
+
 
 <#
 .SYNOPSIS

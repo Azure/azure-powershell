@@ -18,7 +18,7 @@ Get and update search results
 #>
 function Test-SearchGetSearchResultsAndUpdate
 {
-	$rgname = "mms-eus"
+    $rgname = "mms-eus"
     $wsname = "188087e4-5850-4d8b-9d08-3e5b448eaecd"
 
 	$top = 5
@@ -29,6 +29,12 @@ function Test-SearchGetSearchResultsAndUpdate
 	Assert-NotNull $searchResult.Metadata
 	Assert-NotNull $searchResult.Value
 	Assert-AreEqual $searchResult.Value.Count $top
+
+	# Makesure we return each doc as string for backward compatiable.
+	$stringType = "string".GetType()
+	$valueType = $searchResult.Value.GetType()
+	$valueIsString = $valueType.GenericTypeArguments.Contains($stringType)
+	Assert-AreEqual $true $valueIsString
 
 	$idArray = $searchResult.Id.Split("/")
 	$id = $idArray[$idArray.Length-1]
@@ -45,9 +51,15 @@ Get schemas for a given workspace
 #>
 function Test-SearchGetSchema
 {
-	$rgname = "mms-eus"
-    $wsname = "188087e4-5850-4d8b-9d08-3e5b448eaecd"
+    $wsname = Get-ResourceName
+    $dsName = Get-ResourceName
+    $rgname = Get-ResourceGroupName
+    $wslocation = Get-ProviderLocation
 
+    New-AzureRmResourceGroup -Name $rgname -Location $wslocation -Force
+
+    # Create a workspace to house the data sources
+    $workspace = New-AzureRmOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation -Sku premium -Force
 	$schema = Get-AzureRmOperationalInsightsSchema -ResourceGroupName $rgname -WorkspaceName $wsname
 	Assert-NotNull $schema
 	Assert-NotNull $schema.Metadata
@@ -61,7 +73,7 @@ Get saved searches and search results from a saved search
 #>
 function Test-SearchGetSavedSearchesAndResults
 {
-	$rgname = "mms-eus"
+    $rgname = "mms-eus"
     $wsname = "188087e4-5850-4d8b-9d08-3e5b448eaecd"
 
 	$savedSearches = Get-AzureRmOperationalInsightsSavedSearch -ResourceGroupName $rgname -WorkspaceName $wsname
@@ -93,8 +105,15 @@ Create a new saved search, update, and then remove it
 #>
 function Test-SearchSetAndRemoveSavedSearches
 {
-	$rgname = "mms-eus"
-    $wsname = "188087e4-5850-4d8b-9d08-3e5b448eaecd"
+    $wsname = Get-ResourceName
+    $dsName = Get-ResourceName
+    $rgname = Get-ResourceGroupName
+    $wslocation = Get-ProviderLocation
+
+    New-AzureRmResourceGroup -Name $rgname -Location $wslocation -Force
+
+    # Create a workspace to house the data sources
+    $workspace = New-AzureRmOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation -Sku premium -Force
 
 	$id = "test-new-saved-search-id-2015"
 	$displayName = "TestingSavedSearch"
@@ -124,8 +143,8 @@ function Test-SearchSetAndRemoveSavedSearches
 
 	#Set saved search cmdlet has issue with Etag. Temporarily comment out the call until it's fixed.
 	# Test updating the search
-	#$query = "* | distinct Computer"
-	#Set-AzureRmOperationalInsightsSavedSearch -ResourceGroupName $rgname -WorkspaceName $wsname -SavedSearchId $id -DisplayName $displayName -Category $category -Query $query -Tags $tags -Version $version -ETag $etag
+	$query = "* | distinct Computer"
+	Set-AzureRmOperationalInsightsSavedSearch -ResourceGroupName $rgname -WorkspaceName $wsname -SavedSearchId $id -DisplayName $displayName -Category $category -Query $query -Tags $tags -Version $version -ETag $etag
 	
 	# Check that the search was updated
 	$savedSearches = Get-AzureRmOperationalInsightsSavedSearch -ResourceGroupName $rgname -WorkspaceName $wsname

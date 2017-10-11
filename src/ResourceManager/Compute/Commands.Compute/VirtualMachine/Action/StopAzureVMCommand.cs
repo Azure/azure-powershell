@@ -15,6 +15,7 @@
 using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
+using MCM = Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -57,9 +58,9 @@ namespace Microsoft.Azure.Commands.Compute
                 if (this.ShouldProcess(Name, VerbsLifecycle.Stop) 
                     && (this.Force.IsPresent || this.ShouldContinue(Properties.Resources.VirtualMachineStoppingConfirmation, Properties.Resources.VirtualMachineStoppingCaption)))
                 {
-                    Action<Func<string, string, Dictionary<string, List<string>>, CancellationToken, Task<Rest.Azure.AzureOperationResponse>>> call = f =>
+                    Action<Func<string, string, Dictionary<string, List<string>>, CancellationToken, Task<Rest.Azure.AzureOperationResponse<MCM.OperationStatusResponse>>>> call = f =>
                     {
-                        Rest.Azure.AzureOperationResponse op = f(this.ResourceGroupName, this.Name, null, CancellationToken.None).GetAwaiter().GetResult();
+                        var op = f(this.ResourceGroupName, this.Name, null, CancellationToken.None).GetAwaiter().GetResult();
                         var result = Mapper.Map<PSComputeLongRunningOperation>(op);
                         WriteObject(result);
                     };

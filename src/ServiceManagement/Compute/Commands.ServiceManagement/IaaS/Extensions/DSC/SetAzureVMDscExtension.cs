@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
@@ -113,7 +114,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                 "The Azure Storage Context that provides the security settings used to access the configuration script")
         ]
         [ValidateNotNullOrEmpty]
-        public AzureStorageContext StorageContext { get; set; }
+        public IStorageContext StorageContext { get; set; }
 
         /// <summary>
         /// The specific version of the DSC extension that Set-AzureVMDSCExtension will 
@@ -138,7 +139,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         ///
         /// The DSC Azure Extension depends on DSC features that are only available in 
         /// the WMF updates. This parameter specifies which version of the update to 
-        /// install on the VM. The possible values are "4.0","5.0" ,"5.1PP" and "latest".  
+        /// install on the VM. The possible values are "4.0","5.0" ,"5.1" and "latest".  
         /// 
         /// A value of "4.0" will install WMF 4.0 Update packages 
         /// (https://support.microsoft.com/en-us/kb/3119938) on Windows 8.1 or Windows Server 
@@ -149,15 +150,15 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         /// A value of "5.0" will install the latest release of WMF 5.0 
         /// (https://www.microsoft.com/en-us/download/details.aspx?id=50395).
         /// 
-        /// A value of "5.1PP" will install the WMF 5.1 preview
-        /// (https://www.microsoft.com/en-us/download/details.aspx?id=53347).
+        /// A value of "5.1" will install the WMF 5.1
+        /// (https://www.microsoft.com/en-us/download/details.aspx?id=54616).
         /// 
-        /// A value of "latest" will install the latest WMF, currently WMF 5.0
+        /// A value of "latest" will install the latest WMF, currently WMF 5.1
         /// 
         /// The default value is "latest"
         /// </summary>
         [Parameter(ValueFromPipelineByPropertyName = true)]
-        [ValidateSetAttribute(new[] { "4.0", "5.0", "5.1PP", "latest" })]
+        [ValidateSetAttribute(new[] { "4.0", "5.0", "5.1", "latest" })]
         public string WmfVersion { get; set; }
 
         /// <summary>
@@ -225,6 +226,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             //
             // Validate parameters
             //
+            
             if (string.IsNullOrEmpty(ConfigurationArchive))
             {
                 if (ConfigurationName != null || ConfigurationArgument != null
@@ -373,7 +375,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                                     null));
                         }
 
-                        configurationDataBlobReference.UploadFromFile(ConfigurationDataPath, FileMode.Open);
+                        configurationDataBlobReference.UploadFromFile(ConfigurationDataPath);
 
                         var configurationDataBlobSasToken =
                             configurationDataBlobReference.GetSharedAccessSignature(blobAccessPolicy);

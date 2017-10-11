@@ -50,6 +50,45 @@ function Test-NewAzureRmCognitiveServicesAccount
 
 <#
 .SYNOPSIS
+Test New-AzureRmCognitiveServicesAccount
+#>
+function Test-NewAzureRmAllKindsOfCognitiveServicesAccounts
+{
+	# Setup
+    $rgname = Get-CognitiveServicesManagementTestResourceName;
+
+	try
+	{
+		New-AzureRmResourceGroup -Name $rgname -Location 'West US';
+		
+		# Create all known kinds of Cognitive Services accounts.
+		Test-CreateCognitiveServicesAccount $rgname 'AcademicTest' 'Academic' 'S0' 'West US'
+		Test-CreateCognitiveServicesAccount $rgname 'BingAutosuggestTest' 'Bing.Autosuggest' 'S1' 'Global'
+		Test-CreateCognitiveServicesAccount $rgname 'BingSearchTest' 'Bing.Search' 'S1' 'Global'
+		Test-CreateCognitiveServicesAccount $rgname 'BingSpeechTest' 'Bing.Speech' 'S0' 'Global'
+		Test-CreateCognitiveServicesAccount $rgname 'BingSpellCheckTest' 'Bing.SpellCheck' 'S1' 'Global'
+		Test-CreateCognitiveServicesAccount $rgname 'ComputerVisionTest' 'ComputerVision' 'S0' 'West US'
+		Test-CreateCognitiveServicesAccount $rgname 'ContentModeratorTest' 'ContentModerator' 'S0' 'West US'
+		Test-CreateCognitiveServicesAccount $rgname 'EmotionTest' 'Emotion' 'S0' 'West US'
+		Test-CreateCognitiveServicesAccount $rgname 'FaceTest' 'Face' 'S0' 'West US'
+		Test-CreateCognitiveServicesAccount $rgname 'LUISTest' 'LUIS' 'S0' 'West US'
+		Test-CreateCognitiveServicesAccount $rgname 'RecommendationsTest' 'Recommendations' 'S1' 'West US'
+		Test-CreateCognitiveServicesAccount $rgname 'SpeakerRecognitionTest' 'SpeakerRecognition' 'S0' 'West US'
+		Test-CreateCognitiveServicesAccount $rgname 'SpeechTest' 'Speech' 'S0' 'West US'
+		Test-CreateCognitiveServicesAccount $rgname 'SpeechTranslationTest' 'SpeechTranslation' 'S1' 'Global'
+		Test-CreateCognitiveServicesAccount $rgname 'TextAnalyticsTest' 'TextAnalytics' 'S1' 'West US'
+		Test-CreateCognitiveServicesAccount $rgname 'TextTranslationTest' 'TextTranslation' 'S1' 'Global'
+		Test-CreateCognitiveServicesAccount $rgname 'WebLMTest' 'WebLM' 'S0' 'West US'
+	}
+	finally
+	{
+	    # Cleanup
+        Clean-ResourceGroup $rgname
+	}
+}
+
+<#
+.SYNOPSIS
 Test Remove-AzureRmCognitiveServicesAccount
 #>
 function Test-RemoveAzureRmCognitiveServicesAccount
@@ -324,7 +363,7 @@ Test Get-AzureRmCognitiveServicesAccount | Set-AzureRmCognitiveServicesAccount
 #>
 function Test-PipingToSetAzureAccount
 {
- # Setup
+	# Setup
     $rgname = Get-CognitiveServicesManagementTestResourceName
 
     try
@@ -359,7 +398,7 @@ Test Get-AzureRmCognitiveServicesAccount | Get-AzureRmCognitiveServicesAccountSk
 #>
 function Test-PipingToGetAccountSkus
 {
- # Setup
+	# Setup
     $rgname = Get-CognitiveServicesManagementTestResourceName
 
     try
@@ -389,3 +428,77 @@ function Test-PipingToGetAccountSkus
     }
 }
 
+<#
+.SYNOPSIS
+Test  New-AzureRmCognitiveServicesAccount
+#>
+function Test-MinMaxAccountName
+{
+	# Setup
+    $rgname = Get-CognitiveServicesManagementTestResourceName
+
+    try
+    {
+        # Test
+        $shortname = 'aa';
+		$longname = 'testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttest';
+        $skuname = 'S2';
+        $accounttype = 'TextAnalytics';
+        $loc = 'West US';
+
+        New-AzureRmResourceGroup -Name $rgname -Location $loc;
+        $shortaccount = New-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $shortname -Type $accounttype -SkuName $skuname -Location $loc -Force;
+		$longaccount = New-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $longname -Type $accounttype -SkuName $skuname -Location $loc -Force;
+
+		Assert-AreEqual $shortname $shortaccount.AccountName;               
+		Assert-AreEqual $longname $longaccount.AccountName;
+        
+        Retry-IfException { Remove-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Force; }
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test  Test-GetWithPaging
+#>
+function Test-GetWithPaging
+{
+	# Setup
+    $rgname = Get-CognitiveServicesManagementTestResourceName
+	$loc = 'West US'
+	
+	try
+    {
+		$TotalCount = 100
+        # Test
+        New-AzureRmResourceGroup -Name $rgname -Location $loc
+
+		# 100 Face
+		For($i = 0; $i -lt $TotalCount ; $i++)
+		{
+			New-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name "facepaging_wu_$i" -Type 'Face' -SkuName 'S0' -Location $loc -Force;
+		}
+
+		# 100 Emotion
+		For($i = 0; $i -lt $TotalCount ; $i++)
+		{
+			New-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name "emotionpaging_wu_$i" -Type 'Emotion' -SkuName 'S0' -Location $loc -Force;
+		}
+
+		$accounts = Get-AzureRmCognitiveServicesAccount
+		Assert-AreEqual 200 $accounts.Count
+
+		$accounts = Get-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname
+		Assert-AreEqual 200 $accounts.Count
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

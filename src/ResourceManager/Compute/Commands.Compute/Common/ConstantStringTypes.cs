@@ -42,6 +42,9 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public const string VMDataDiskLun = "The virtual machine data disk's Lun.";
         public const string VMDataDiskCreateOption = "The virtual machine data disk's create option.";
 
+        public const string VMManagedDiskId = "The virtual machine managed disk's Id.";
+        public const string VMManagedDiskAccountType = "The virtual machine managed disk's account type.";
+
         public const string VMNetworkInterfaceName = "The virtual machine network interface's name.";
         public const string VMNetworkInterfaceID = "The virtual machine network interface's ID.";
         public const string VMPublicIPAddressName = "The virtual machine public IP address's name.";
@@ -63,6 +66,10 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public const string ReadOnly = "ReadOnly";
         public const string ReadWrite = "ReadWrite";
         public const string None = "None";
+        public const string Manual = "Manual";
+        public const string Automated = "Automated";
+        public const string Daily = "Daily";
+        public const string Weekly = "Weekly";
     }
 
     public static class ProfileNouns
@@ -116,6 +123,8 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public const string VaultSecretGroup = "AzureRmVMSecret";
         public const string RemoteDesktopFile = "AzureRmRemoteDesktopFile";
 
+        public const string VirtualMachineScaleSetDiagnosticsExtension = "AzureRmVmssDiagnosticsExtension";
+
         //DSC
         public const string VirtualMachineDscExtension = "AzureRmVMDscExtension";
         public const string VirtualMachineDscConfiguration = "AzureRmVMDscConfiguration";
@@ -124,11 +133,21 @@ namespace Microsoft.Azure.Commands.Compute.Common
 
         // Sql Server
         public const string VirtualMachineSqlServerExtension = "AzureRmVMSqlServerExtension";
+        public const string VirtualMachineSqlServerAutoBackupConfig = "AzureRmVMSqlServerAutoBackupConfig";
+        public const string VirtualMachineSqlServerAutoPatchingConfig = "AzureRmVMSqlServerAutoPatchingConfig";
+        public const string VirtualMachineSqlServerKeyVaultCredentialConfig = "AzureRmVMSqlServerKeyVaultCredentialConfig";
 
         //AzureDiskEncryption
         public const string AzureDiskEncryptionExtension = "AzureRmVMDiskEncryptionExtension";
         public const string AzureDiskEncryptionStatus = "AzureRmVMDiskEncryptionStatus";
         public const string AzureDiskEncryption = "AzureRmVMDiskEncryption";
+
+        // AzureVmssDiskEncryption
+        public const string AzureVmssDiskEncryptionExtension = "AzureRmVmssDiskEncryptionExtension";
+        public const string AzureVmssDiskEncryption = "AzureRmVmssDiskEncryption";
+        public const string AzureVmssVMDiskEncryption = "AzureRmVmssVMDiskEncryption";
+        public const string GetAzureRmVmssDiskEncryptionAlias = "Get-AzureRmVmssDiskEncryptionStatus";
+        public const string GetAzureRmVmssVMDiskEncryptionAlias = "Get-AzureRmVmssVMDiskEncryptionStatus";
 
         //AzureVMBackup
         public const string AzureVMBackup = "AzureRmVMBackup";

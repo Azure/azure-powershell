@@ -1,0 +1,74 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/0347d63a-421a-43a7-836a-5f389c79cd07/providers/Microsoft.Billing/invoices?api-version=2017-04-24-preview&$expand=downloadUrl&$top=1",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDM0N2Q2M2EtNDIxYS00M2E3LTgzNmEtNWYzODljNzljZDA3L3Byb3ZpZGVycy9NaWNyb3NvZnQuQmlsbGluZy9pbnZvaWNlcz9hcGktdmVyc2lvbj0yMDE3LTA0LTI0LXByZXZpZXcmJGV4cGFuZD1kb3dubG9hZFVybCYkdG9wPTE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "5bc1e307-d577-4e36-b93e-a9ab3327570d"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1637.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Billing.BillingManagementClient/2.0.0-preview"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/0347d63a-421a-43a7-836a-5f389c79cd07/providers/Microsoft.Billing/invoices/201705-217994100075389\",\r\n      \"type\": \"Microsoft.Billing/invoices\",\r\n      \"name\": \"201705-217994100075389\",\r\n      \"properties\": {\r\n        \"downloadUrl\": {\r\n          \"expiryTime\": \"2017-04-25T02:21:52Z\",\r\n          \"url\": \"https://billinginsightsstoretest.blob.core.windows.net/invoices/0347d63a-421a-43a7-836a-5f389c79cd07-201705-217994100075389.pdf?sv=2014-02-14&sr=b&sig=EigPr%2BisMbtTGa6Cw%2BB1kcBKrVx%2B%2BmpPn2JD%2BxCCgM4%3D&se=2017-04-25T02%3A21%3A52Z&sp=r\"\r\n        },\r\n        \"invoicePeriodEndDate\": \"2017-04-09\",\r\n        \"invoicePeriodStartDate\": \"2017-03-10\",\r\n        \"billingPeriodIds\": [\r\n          \"/subscriptions/0347d63a-421a-43a7-836a-5f389c79cd07/providers/Microsoft.Billing/billingPeriods/201705-1\"\r\n        ]\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": \"https://billing-preview.windowsazure.com/subscriptions/0347d63a-421a-43a7-836a-5f389c79cd07/providers/Microsoft.Billing/invoices?api-version=2017-04-24-preview&$expand=downloadUrl&$top=1&$skiptoken=%23%231!8!OEY1MEY-%23%231!80!MDM0N0Q2M0EtNDIxQS00M0E3LTgzNkEtNUYzODlDNzlDRDA3Xzc5ODIwOC0xMTcwNDkxMzAwNjg3NzI-%23%23\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "1044"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14991"
+        ],
+        "x-ms-request-id": [
+          "65ede1da-7632-43c5-a53b-5b4b814a491b"
+        ],
+        "x-ms-correlation-request-id": [
+          "65ede1da-7632-43c5-a53b-5b4b814a491b"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20170425T012152Z:65ede1da-7632-43c5-a53b-5b4b814a491b"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 25 Apr 2017 01:21:52 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "0347d63a-421a-43a7-836a-5f389c79cd07"
+  }
+}

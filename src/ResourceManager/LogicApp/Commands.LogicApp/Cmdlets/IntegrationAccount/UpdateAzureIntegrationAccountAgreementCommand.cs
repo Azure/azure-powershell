@@ -25,8 +25,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// <summary>
     /// Updates the integration account agreement.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmIntegrationAccountAgreement", SupportsShouldProcess = true),
-     OutputType(typeof (object))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmIntegrationAccountAgreement", SupportsShouldProcess = true)]
+    [OutputType(typeof(IntegrationAccountAgreement))]
     public class UpdateAzureIntegrationAccountAgreementCommand : LogicAppBaseCmdlet
     {
 
@@ -39,8 +39,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
         [Parameter(Mandatory = true, HelpMessage = "The integration account name.",
             ValueFromPipelineByPropertyName = true)]
-        [Alias("ResourceName")]
         [ValidateNotNullOrEmpty]
+        [Alias("IntegrationAccountName", "ResourceName")]
         public string Name { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The integration account agreement name.",
@@ -69,10 +69,20 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         [ValidateNotNullOrEmpty]
         public string GuestIdentityQualifier { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The integration account agreement guest identity qualifier value.",
+            ValueFromPipelineByPropertyName = false)]
+        [ValidateNotNullOrEmpty]
+        public string GuestIdentityQualifierValue { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "The integration account agreement host identity qualifier.",
             ValueFromPipelineByPropertyName = false)]
         [ValidateNotNullOrEmpty]
         public string HostIdentityQualifier { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The integration account agreement host identity qualifier value.",
+            ValueFromPipelineByPropertyName = false)]
+        [ValidateNotNullOrEmpty]
+        public string HostIdentityQualifierValue { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The integration account agreement content.",
             ValueFromPipelineByPropertyName = false)]
@@ -122,11 +132,11 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                     : this.GuestPartner);
             integrationAccountAgreement.GuestPartner = guestPartner.Name;
 
-            if (!string.IsNullOrEmpty(this.HostIdentityQualifier))
+            if (!string.IsNullOrEmpty(this.HostIdentityQualifier) && !string.IsNullOrEmpty(this.HostIdentityQualifierValue))
             {
                 var hostIdentity =
                     hostPartner.Content.B2b.BusinessIdentities.FirstOrDefault(
-                        s => s.Qualifier == this.HostIdentityQualifier);
+                        s => (s.Qualifier == this.HostIdentityQualifier && s.Value == this.HostIdentityQualifierValue));
 
                 if (hostIdentity == null)
                 {
@@ -136,12 +146,16 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
                 integrationAccountAgreement.HostIdentity = hostIdentity;
             }
+            else  if (string.IsNullOrEmpty(this.HostIdentityQualifier) ^ string.IsNullOrEmpty(this.HostIdentityQualifierValue))
+            {
+                throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture,Properties.Resource.QualifierWithValueNotSpecified, "Host"));
+            }
 
-            if (!string.IsNullOrEmpty(this.GuestIdentityQualifier))
+            if (!string.IsNullOrEmpty(this.GuestIdentityQualifier) && !string.IsNullOrEmpty(this.GuestIdentityQualifierValue))
             {
                 var guestIdentity =
                     guestPartner.Content.B2b.BusinessIdentities.FirstOrDefault(
-                        s => s.Qualifier == this.GuestIdentityQualifier);
+                        s => (s.Qualifier == this.GuestIdentityQualifier && s.Value == this.GuestIdentityQualifierValue));
 
                 if (guestIdentity == null)
                 {
@@ -151,11 +165,15 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
                 integrationAccountAgreement.GuestIdentity = guestIdentity;
             }
+            else if (string.IsNullOrEmpty(this.GuestIdentityQualifier) ^ string.IsNullOrEmpty(this.GuestIdentityQualifierValue))
+            {
+                throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture, Properties.Resource.QualifierWithValueNotSpecified, "Guest"));
+            }
 
             if (!string.IsNullOrEmpty(this.AgreementType))
             {
                 integrationAccountAgreement.AgreementType =
-                    (AgreementType) Enum.Parse(typeof (AgreementType), this.AgreementType);
+                    (AgreementType) Enum.Parse(typeof(AgreementType), this.AgreementType);
             }
 
             if (!string.IsNullOrEmpty(this.AgreementContentFilePath))

@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             ResourcesController.NewInstance.RunPsTest("Test-AzureProvider");
         }
 
-        [Fact]
+        [Fact(Skip = "ZoneMapping removed.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureProvider_WithZoneMappings()
         {

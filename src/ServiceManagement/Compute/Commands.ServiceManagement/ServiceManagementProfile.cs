@@ -232,6 +232,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement
             Mapper.CreateMap<NSM.GuestAgentFormattedMessage, PVM.GuestAgentFormattedMessage>();
             Mapper.CreateMap<NSM.GuestAgentStatus, PVM.GuestAgentStatus>()
                   .ForMember(c => c.TimestampUtc, o => o.MapFrom(r => r.Timestamp));
+            Mapper.CreateMap<NSM.MaintenanceStatus, PVM.MaintenanceStatus>();
 
             Mapper.CreateMap<NSM.ResourceExtensionConfigurationStatus, PVM.ResourceExtensionConfigurationStatus>()
                   .ForMember(c => c.TimestampUtc, o => o.MapFrom(r => r.Timestamp))

@@ -342,5 +342,24 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test.Common
 
             return isIdentical;
         }
+
+        public static void SetUpDefaultRemoteAppExportTemplateImage(Mock<IRemoteAppManagementClient> clientMock, string sourceCollectionName, string DestinationStorageAccountName, string DestinationStorageAccountKey, string DestinationStorageAccountContainerName, string trackingId)
+        {
+            OperationResultWithTrackingId response = new OperationResultWithTrackingId()
+            {
+                StatusCode = System.Net.HttpStatusCode.Accepted,
+                TrackingId = trackingId,
+                RequestId = "02111-222-3456"
+            };
+
+            mockTrackingId = new List<TrackingResult>()
+            {
+                new TrackingResult(response)
+            };
+
+            ISetup<IRemoteAppManagementClient, Task<OperationResultWithTrackingId>> setup =
+                clientMock.Setup(c => c.TemplateImages.MigrateAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<bool>(), It.IsAny<CancellationToken>()));
+            setup.Returns(Task.Factory.StartNew(() => response));
+        }
     }
 }

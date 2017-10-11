@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ParameterSetName = GetById,
             ValueFromPipelineByPropertyName = true,
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "Identifier of a logger. If specified will try to find logger by the identifier. This parameter is optional.")]
         public String LoggerId { get; set; }
 

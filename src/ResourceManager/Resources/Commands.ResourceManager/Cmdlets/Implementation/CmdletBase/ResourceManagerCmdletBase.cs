@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
+    using Commands.Common.Authentication.Abstractions;
     using Common;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ErrorResponses;
@@ -168,6 +169,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             try
             {
+                if (this.cancellationSource == null)
+                {
+                    this.cancellationSource = new CancellationTokenSource();
+                }
+
                 base.ExecuteCmdlet();
                 this.OnProcessRecord();
             }
@@ -270,8 +276,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 endpointUri: endpointUri,
                 httpClientHelper: HttpClientHelperFactory.Instance
                 .CreateHttpClientHelper(
-                        credentials: AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(DefaultContext),
-                        headerValues: AzureSession.ClientFactory.UserAgents,
+                        credentials: AzureSession.Instance.AuthenticationFactory
+                                                 .GetSubscriptionCloudCredentials(
+                                                    DefaultContext,
+                                                    AzureEnvironment.Endpoint.ResourceManager),
+                        headerValues: AzureSession.Instance.ClientFactory.UserAgents,
                         cmdletHeaderValues: this.GetCmdletHeaders()));
         }
 

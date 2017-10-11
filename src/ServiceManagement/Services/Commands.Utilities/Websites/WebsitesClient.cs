@@ -48,8 +48,9 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
 {
     using Utilities = Services.WebEntities;
     using Microsoft.Azure.Commands.Common.Authentication.Models;
-    using Microsoft.Azure.Commands.Common.Authentication;
+    using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
     using Hyak.Common;
+    using Azure.Commands.Common.Authentication;
 
     public class WebsitesClient : IWebsitesClient
     {
@@ -57,7 +58,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
 
         private readonly CloudServiceClient cloudServiceClient;
 
-        private readonly AzureSubscription subscription;
+        private readonly IAzureSubscription subscription;
 
         public static string SlotFormat = "{0}({1})";
 
@@ -70,11 +71,11 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
         /// </summary>
         /// <param name="subscription">Subscription containing websites to manipulate</param>
         /// <param name="logger">The logger action</param>
-        public WebsitesClient(AzureSMProfile profile, AzureSubscription subscription, Action<string> logger)
+        public WebsitesClient(AzureSMProfile profile, IAzureSubscription subscription, Action<string> logger)
         {
             Logger = logger;
             cloudServiceClient = new CloudServiceClient(profile, subscription, debugStream: logger);
-            WebsiteManagementClient = AzureSession.ClientFactory.CreateClient<WebSiteManagementClient>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            WebsiteManagementClient = AzureSession.Instance.ClientFactory.CreateClient<WebSiteManagementClient>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
             this.subscription = subscription;
         }
 
@@ -104,7 +105,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
             Repository repository;
             ICredentials credentials;
             GetWebsiteDeploymentHttpConfiguration(websiteName, out repository, out credentials);
-            return AzureSession.ClientFactory.CreateHttpClient(repository.RepositoryUri, credentials);
+            return AzureSession.Instance.ClientFactory.CreateHttpClient(repository.RepositoryUri, credentials);
         }
 
         private string GetWebsiteDeploymentHttpConfiguration(
@@ -250,7 +251,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
         {
             Utilities.Site website = GetWebsite(websiteName);
             Uri endpointUrl = new Uri("https://" + website.EnabledHostNames.First(url => url.Contains(".scm.")));
-            return AzureSession.ClientFactory.CreateCustomClient<WebSiteExtensionsClient>(new object[] { websiteName,
+            return AzureSession.Instance.ClientFactory.CreateCustomClient<WebSiteExtensionsClient>(new object[] { websiteName,
                 GetWebSiteExtensionsCredentials(websiteName), endpointUrl });
         }
 
@@ -1360,8 +1361,43 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
                 AuthenticationType = "Basic",
                 TempAgent = false
             };
+            
+            var userAgent = GetDeploymentBaseOptionsUserAgent();
+            if (!string.IsNullOrEmpty(userAgent))
+            {
+                remoteBaseOptions.UserAgent = userAgent;
+            }
 
             return remoteBaseOptions;
+        }
+
+        /// <summary>
+        /// Gets remote deployment base options useragent using AzureSession/WebSiteManagementClient.
+        /// </summary>
+        /// <returns>useragent string.</returns>
+        private string GetDeploymentBaseOptionsUserAgent()
+        {
+            var userAgent = string.Empty;
+            var managementClient = this.WebsiteManagementClient as WebSiteManagementClient;
+            if (managementClient != null && managementClient.UserAgent != null)
+            {
+                foreach (var agent in managementClient.UserAgent)
+                {
+                    if (agent != null && agent.Product != null && !string.IsNullOrEmpty(agent.Product.Name))
+                    {
+                        if (!string.IsNullOrEmpty(agent.Product.Version))
+                        {
+                            userAgent = string.Concat(userAgent, agent.Product.Name, "/", agent.Product.Version, " ");
+                        }
+                        else
+                        {
+                            userAgent = string.Concat(userAgent, agent.Product.Name, " ");
+                        }
+                    }
+                }
+            }
+
+            return userAgent.TrimEnd();
         }
 
         /// <summary>

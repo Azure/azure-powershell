@@ -13,14 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.IO;
 using System.Runtime.Serialization;
-using System.Xml;
-using Hyak.Common;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Commands.ResourceManager.Common;
-using Newtonsoft.Json;
 using System.Text;
+using System.Xml;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Rest.Azure;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
@@ -48,11 +46,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             {
                 if (this.recoveryServicesClient == null)
                 {
-                    this.recoveryServicesClient = new PSRecoveryServicesClient(DefaultProfile);
+                    this.recoveryServicesClient = new PSRecoveryServicesClient(DefaultContext);
                 }
 
                 return this.recoveryServicesClient;
             }
+        }
+
+        protected void Initialize()
+        {
+            Logger.Instance = new Logger(WriteWarning, WriteDebug, WriteVerbose, ThrowTerminatingError);
         }
 
         /// <summary>
@@ -75,7 +78,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 {
                     if (cloudException.Message != null)
                     {
-                        string originalMessage = cloudException.Error.OriginalMessage;
+                        string originalMessage = cloudException.Message;
                         error = JsonConvert.DeserializeObject<ARMError>(originalMessage);
 
                         StringBuilder exceptionMessage = new StringBuilder();
@@ -137,6 +140,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     clientRequestIdMsg + ex.Message),
                     ex);
             }
+        }
+
+        protected override void BeginProcessing()
+        {
+            base.BeginProcessing();
+
+            Initialize();
         }
 
         /// <summary>

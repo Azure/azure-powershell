@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
+using Microsoft.Azure.Commands.HDInsight.Models.Management;
 using Microsoft.Azure.Management.HDInsight.Models;
 using System;
 using System.Management.Automation;
@@ -31,18 +32,25 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         #region Input Parameter Definitions
 
-        [Parameter(HelpMessage = "Gets or sets the StorageName for the default Azure Storage Account.")]
+        [Parameter(HelpMessage = "Gets or sets the account name for the default storage account.")]
         public string DefaultStorageAccountName
         {
             get { return _config.DefaultStorageAccountName; }
             set { _config.DefaultStorageAccountName = value; }
         }
 
-        [Parameter(HelpMessage = "Gets or sets the StorageKey for the default Azure Storage Account.")]
+        [Parameter(HelpMessage = "Gets or sets the storage key for the default Azure Storage Account.")]
         public string DefaultStorageAccountKey
         {
             get { return _config.DefaultStorageAccountKey; }
             set { _config.DefaultStorageAccountKey = value; }
+        }
+
+        [Parameter(HelpMessage = "Gets or sets the type of the default storage account.")]
+        public StorageType DefaultStorageAccountType
+        {
+            get { return _config.DefaultStorageAccountType; }
+            set { _config.DefaultStorageAccountType = value; }
         }
 
         [Parameter(HelpMessage = "Gets or sets the database to store the metadata for Oozie.")]
@@ -71,6 +79,13 @@ namespace Microsoft.Azure.Commands.HDInsight
         {
             get { return _config.WorkerNodeSize; }
             set { _config.WorkerNodeSize = value; }
+        }
+
+        [Parameter(HelpMessage = "Gets or sets the size of the Edge Node if available for the cluster type.")]
+        public string EdgeNodeSize
+        {
+            get { return _config.EdgeNodeSize; }
+            set { _config.EdgeNodeSize = value; }
         }
 
         [Parameter(HelpMessage = "Gets or sets the size of the Zookeeper Node.")]

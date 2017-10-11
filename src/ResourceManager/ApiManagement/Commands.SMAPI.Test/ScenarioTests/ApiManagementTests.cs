@@ -101,9 +101,30 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void ApiImportExportTest()
+        public void ApiImportExportWadlTest()
         {
-            RunPowerShellTest("Api-ImportExportTest");
+            RunPowerShellTest("Api-ImportExportWadlTest");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ApiImportExportSwaggerTest()
+        {
+            RunPowerShellTest("Api-ImportExportSwaggerTest");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ApiImportExportWsdlTest()
+        {
+            RunPowerShellTest("Api-ImportExportWsdlTest");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ApiImportWsdlToCreateSoapToRest()
+        {
+            RunPowerShellTest("Api-ImportWsdlToCreateSoapToRestApi");
         }
 
         [Fact]
@@ -185,6 +206,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void IdentityProviderCrudTest()
+        {
+            RunPowerShellTest("IdentityProvider-CrudTest");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TenantGitConfigurationCrudTest()
         {
             RunPowerShellTest("TenantGitConfiguration-CrudTest");
@@ -195,6 +223,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
         public void TenantAccessConfigurationCrudTest()
         {
             RunPowerShellTest("TenantAccessConfiguration-CrudTest");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void BackendCrudTest()
+        {
+            RunPowerShellTest("Backend-CrudTest");
         }
 
         private void RunPowerShellTest(params string[] scripts)

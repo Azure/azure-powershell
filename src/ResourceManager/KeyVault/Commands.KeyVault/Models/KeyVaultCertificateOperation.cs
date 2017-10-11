@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 StatusDetails = certificateOperation.StatusDetails,
                 RequestId = certificateOperation.RequestId,
                 Target = certificateOperation.Target,
-                Issuer = certificateOperation.IssuerReference.Name,
+                Issuer = certificateOperation.IssuerParameters.Name,
                 CancellationRequested = certificateOperation.CancellationRequested,
             };
 

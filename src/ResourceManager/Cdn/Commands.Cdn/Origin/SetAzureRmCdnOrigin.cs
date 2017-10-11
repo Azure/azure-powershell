@@ -39,11 +39,14 @@ namespace Microsoft.Azure.Commands.Cdn.Origin
         private void SetOrigin()
         {
             var origin = CdnManagementClient.Origins.Update(
-                CdnOrigin.Name,
-                new OriginParameters(CdnOrigin.HostName, CdnOrigin.HttpPort, CdnOrigin.HttpsPort),
-                CdnOrigin.EndpointName,
+                CdnOrigin.ResourceGroupName,
                 CdnOrigin.ProfileName,
-                CdnOrigin.ResourceGroupName);
+                CdnOrigin.EndpointName,
+                CdnOrigin.Name,
+                new OriginUpdateParameters(
+                    hostName: CdnOrigin.HostName,
+                    httpPort: CdnOrigin.HttpPort,
+                    httpsPort: CdnOrigin.HttpsPort));
 
             WriteVerbose(Resources.Success);
             WriteObject(origin.ToPsOrigin());

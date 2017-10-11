@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
                 ProfileName = CdnProfile.Name;
             }
 
-            var sso = CdnManagementClient.Profiles.GenerateSsoUri(ProfileName, ResourceGroupName);
+            var sso = CdnManagementClient.Profiles.GenerateSsoUri(ResourceGroupName, ProfileName);
             
             WriteVerbose(Resources.Success);
             WriteObject(new PSSsoUri {SsoUriValue = sso.SsoUriValue });

@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
 
             ConfirmAction(MyInvocation.InvocationName,
                 EndpointName,
-                () => CdnManagementClient.Endpoints.Stop(EndpointName, ProfileName, ResourceGroupName));
+                () => CdnManagementClient.Endpoints.Stop(ResourceGroupName, ProfileName, EndpointName));
 
             if (PassThru)
             {

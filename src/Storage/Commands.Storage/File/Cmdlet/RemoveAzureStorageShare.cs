@@ -79,7 +79,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 {
                     if (force || ShareIsEmpty(share) || ShouldContinue(string.Format("Remove share and all content in it: {0}", share.Name), ""))
                     {
-                        await this.Channel.DeleteShareAsync(share, null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken);
+                        await this.Channel.DeleteShareAsync(share, null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken).ConfigureAwait(false);
                     }
 
                     if (this.PassThru)

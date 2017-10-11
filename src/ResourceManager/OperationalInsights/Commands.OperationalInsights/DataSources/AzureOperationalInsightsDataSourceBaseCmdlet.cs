@@ -22,23 +22,13 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 {
     public abstract class AzureOperationalInsightsDataSourceBaseCmdlet : OperationalInsightsBaseCmdlet
     {
-        [Parameter(Position = 0, ParameterSetName = ByWorkspaceObject, Mandatory = true, ValueFromPipeline = true,
-            HelpMessage = "The workspace that will contain the data source.")]
-        [ValidateNotNull]
-        public PSWorkspace Workspace { get; set; }
+        public virtual PSWorkspace Workspace { get; set; }
 
-        [Parameter(Position = 1, ParameterSetName = ByWorkspaceName, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource group name.")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
+        public virtual string ResourceGroupName { get; set; }
 
-        [Parameter(Position = 2, ParameterSetName = ByWorkspaceName, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The name of the workspace that will contain the data source.")]
-        [ValidateNotNullOrEmpty]
-        public string WorkspaceName { get; set; }
+        public virtual string WorkspaceName { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
+        public virtual SwitchParameter Force { get; set; }
 
 
         protected override void BeginProcessing()

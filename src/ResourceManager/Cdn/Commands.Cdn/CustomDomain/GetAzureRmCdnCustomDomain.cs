@@ -58,17 +58,17 @@ namespace Microsoft.Azure.Commands.Cdn.CustomDomain
             if (CustomDomainName == null)
             {
                 //List all custom domains on this endpoint
-                var customDomains = CdnManagementClient.CustomDomains.ListByEndpoint(EndpointName, ProfileName, ResourceGroupName).Select(c => c.ToPsCustomDomain());
+                var customDomains = CdnManagementClient.CustomDomains.ListByEndpoint(ResourceGroupName, ProfileName, EndpointName).Select(c => c.ToPsCustomDomain());
                 WriteVerbose(Resources.Success);
                 WriteObject(customDomains, true);
             }
             else
             {
                 var customDomain = CdnManagementClient.CustomDomains.Get(
-                    CustomDomainName,
-                    EndpointName,
+                    ResourceGroupName,
                     ProfileName,
-                    ResourceGroupName);
+                    EndpointName,
+                    CustomDomainName);
 
                 WriteVerbose(Resources.Success);
                 WriteObject(customDomain.ToPsCustomDomain());

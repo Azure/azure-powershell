@@ -41,6 +41,13 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetAzureRmAutoscaleSettingByName()
+        {
+            TestsController.NewInstance.RunPsTest("Test-GetAzureRmAutoscaleSettingByName");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveAzureRmAutoscaleSetting()
         {
             TestsController.NewInstance.RunPsTest("Test-RemoveAzureRmAutoscaleSetting");

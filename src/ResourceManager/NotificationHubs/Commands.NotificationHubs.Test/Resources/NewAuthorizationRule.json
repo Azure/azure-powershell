@@ -1,8 +1,8 @@
 ﻿{
-    "Name": "TestAuthRule",
-    "PrimaryKey": "IR4qH02MB2yXjlekt5fhlgMR9YAoMsXHTkUqarUkATU=",
-    "Rights": [
-        "Listen",
-        "Send"
-    ]
+  "Name": "TestAuthRule",
+  "Location": "South Central US",
+  "Rights": [
+    "Listen",
+    "Send"
+  ]
 }

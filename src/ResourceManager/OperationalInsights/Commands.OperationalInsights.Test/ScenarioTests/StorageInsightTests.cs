@@ -35,9 +35,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestStorageInsightCreateFailsWithoutWorkspace()
+        public void TestStorageInsightCreateFailsNoWs()
         {
-            RunPowerShellTest("Test-StorageInsightCreateFailsWithoutWorkspace");
+            RunPowerShellTest("Test-StorageInsightCreateFailsNoWs");
         }
     }
 }

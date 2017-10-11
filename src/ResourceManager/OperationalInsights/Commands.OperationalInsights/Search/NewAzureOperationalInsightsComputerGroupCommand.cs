@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
         protected override void ProcessRecord()
         {
-            SavedSearchProperties properties = new SavedSearchProperties()
+            SavedSearch properties = new SavedSearch()
             {
                 Category = this.Category,
                 DisplayName = this.DisplayName,
@@ -72,11 +72,6 @@ namespace Microsoft.Azure.Commands.OperationalInsights
                 Version = this.Version,
                 Tags = new List<Tag>() { new Tag() { Name = "Group", Value = "Computer" } }
             };
-
-            if (!SearchCommandHelper.IsListOfComputers(this.Query))
-            {
-                throw new PSArgumentException("Query is not a list of computers. Please use aggregations such as: distinct Computer or measure count() by Computer.");
-            }
 
             WriteObject(OperationalInsightsClient.CreateOrUpdateSavedSearch(ResourceGroupName, WorkspaceName, SavedSearchId, properties, Force, ConfirmAction), true);
         }

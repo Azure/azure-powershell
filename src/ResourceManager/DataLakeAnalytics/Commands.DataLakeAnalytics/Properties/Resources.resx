@@ -210,4 +210,67 @@
   <data name="RemovingDataLakeAnalyticsCatalogCredential" xml:space="preserve">
     <value>Are you sure you want to remove Data Lake Analytics catalog credential '{0}'?</value>
   </data>
+  <data name="NewDataLakeCatalogCredential" xml:space="preserve">
+    <value>Creating Data Lake Analytics catalog credential '{0}' in database '{1}' ...</value>
+  </data>
+  <data name="SetDataLakeCatalogCredential" xml:space="preserve">
+    <value>Updating Data Lake Analytics catalog credential '{0}' in database '{1}' ...</value>
+  </data>
+  <data name="SettingDataLakeCatalogCredential" xml:space="preserve">
+    <value>Are you sure you want to update Data Lake Analytics catalog credential '{0}' in database '{1}'?</value>
+  </data>
+  <data name="EmptyCatalogPath" xml:space="preserve">
+    <value>Invalid empty catalog path. A catalog path is required unless listing databases and must be in the following format with no empty internal elements: &lt;FirstPart&gt;.&lt;OptionalSecondPart&gt;.&lt;OptionalThirdPart&gt;.&lt;OptionalFourthPart&gt;. For example: Master.dbo.tableName.tableStatisticsName</value>
+  </data>
+  <data name="RemoveDataLakeAnalyticsCatalogCredentialCascade" xml:space="preserve">
+    <value>Removing Data Lake Analytics catalog credential '{0}'  and ALL resources dependent on it...</value>
+  </data>
+  <data name="RemovingDataLakeAnalyticsCatalogCredentialCascade" xml:space="preserve">
+    <value>Are you sure you want to remove Data Lake Analytics catalog credential '{0}' and ALL resources dependent on it?</value>
+  </data>
+  <data name="IncorrectOutputTypeWarning" xml:space="preserve">
+    <value>The output type defined for this cmdlet is incorrect and will be updated to reflect what is actually returned (and defined in the help) in a future release.</value>
+  </data>
+  <data name="MoreJobsToGetWarning" xml:space="preserve">
+    <value>More than {0} jobs exist in the account. Specify -Top with a larger value to retrieve more jobs. Note that large values of -Top will take time to retrieve all items.</value>
+  </data>
+  <data name="AddDataLakeFirewallRule" xml:space="preserve">
+    <value>Adding the Data Lake Analytics firewall rule: '{0}' ...</value>
+  </data>
+  <data name="FirewallDisabledWarning" xml:space="preserve">
+    <value>The firewall is currently disabled for account: {0}. Updates to firewall rules will not take affect until the firewall is enabled.</value>
+  </data>
+  <data name="FirewallRuleNotFound" xml:space="preserve">
+    <value>The specified firewall rule '{0}' does not exist.</value>
+  </data>
+  <data name="RemoveDataLakeAnalyticsFirewallRule" xml:space="preserve">
+    <value>Removing Data Lake Analytics firewall rule: '{0}' ...</value>
+  </data>
+  <data name="RemovingDataLakeAnalyticsFirewallRule" xml:space="preserve">
+    <value>Are you sure you want to remove the Data Lake Analytics firewall rule: '{0}'?</value>
+  </data>
+  <data name="SetDataLakeFirewallRule" xml:space="preserve">
+    <value>Setting the Data Lake Analytics firewall rule: '{0}' ...</value>
+  </data>
+  <data name="InvalidDefaultSubscription" xml:space="preserve">
+    <value>No default subscription has been designated. Use Select-AzureSubscription -Default &lt;subscriptionName&gt; to set the default subscription.</value>
+  </data>
+  <data name="NoSubscriptionInContext" xml:space="preserve">
+    <value>No subscription found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Login-AzureRMAccount to login.</value>
+  </data>
+  <data name="MissingComputePolicyField" xml:space="preserve">
+    <value>-MaxDegreeOfParallelismPerJob or -MinPriorityPerJob or both must be specified when creating or updating a compute policy.</value>
+  </data>
+  <data name="RemoveDataLakeAnalyticsComputePolicy" xml:space="preserve">
+    <value>Removing Data Lake Analytics compute policy: '{0}' ...</value>
+  </data>
+  <data name="InvalidDegreeOfParallelism" xml:space="preserve">
+    <value>Zero and negative values will no longer be defaulted to one, nor will they be accepted, in a future release for -DegreeOfParallelism. Please adjust your scripts to pass in a value greater than zero</value>
+  </data>
+  <data name="NewDataLakeComputePolicy" xml:space="preserve">
+    <value>Creating Data Lake Analytics compute policy '{0}' with the following rules: {1}{2}...</value>
+  </data>
+  <data name="UpdateDataLakeComputePolicy" xml:space="preserve">
+    <value>Update Data Lake Analytics compute policy '{0}' with the following rules: {1}{2}...</value>
+  </data>
 </root>

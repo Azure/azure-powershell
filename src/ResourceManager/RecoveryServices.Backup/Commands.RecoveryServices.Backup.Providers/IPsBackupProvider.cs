@@ -12,15 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS;
-using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
-using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS;
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using RestAzureNS = Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
@@ -32,23 +29,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
     {
         void Initialize(Dictionary<System.Enum, object> providerData, ServiceClientAdapter serviceClientAdapter);
 
-        BaseRecoveryServicesJobResponse EnableProtection();
+        RestAzureNS.AzureOperationResponse EnableProtection();
 
-        BaseRecoveryServicesJobResponse DisableProtection();
+        RestAzureNS.AzureOperationResponse DisableProtection();
 
-        BaseRecoveryServicesJobResponse TriggerBackup();
+        RestAzureNS.AzureOperationResponse TriggerBackup();
 
-        BaseRecoveryServicesJobResponse TriggerRestore();
+        RestAzureNS.AzureOperationResponse TriggerRestore();
 
-        ProtectedItemResponse GetProtectedItem();
+        ProtectedItemResource GetProtectedItem();
 
-        CmdletModel.RecoveryPointBase GetRecoveryPointDetails();
+        RecoveryPointBase GetRecoveryPointDetails();
 
-        List<CmdletModel.RecoveryPointBase> ListRecoveryPoints();
+        List<RecoveryPointBase> ListRecoveryPoints();
 
-        ProtectionPolicyResponse CreatePolicy();
+        ProtectionPolicyResource CreatePolicy();
 
-        ProtectionPolicyResponse ModifyPolicy();
+        RestAzureNS.AzureOperationResponse<ProtectionPolicyResource> ModifyPolicy();
 
         SchedulePolicyBase GetDefaultSchedulePolicyObject();
 

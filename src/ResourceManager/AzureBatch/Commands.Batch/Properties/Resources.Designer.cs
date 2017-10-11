@@ -61,15 +61,6 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Executing cmdlet with Batch account {0} with its {1} key. To change which key to use, set the KeyInUse property on the BatchAccountContext..
-        /// </summary>
-        internal static string AccountAndKeyInUse {
-            get {
-                return ResourceManager.GetString("AccountAndKeyInUse", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Adding a new certificate with thumbprint {0}. .
         /// </summary>
         internal static string AddingCertificate {
@@ -210,6 +201,15 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         internal static string DownloadingNodeFile {
             get {
                 return ResourceManager.GetString("DownloadingNodeFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Downloading byte range {0} to {1}.
+        /// </summary>
+        internal static string DownloadingNodeFileByteRange {
+            get {
+                return ResourceManager.GetString("DownloadingNodeFileByteRange", resourceCulture);
             }
         }
         
@@ -466,6 +466,15 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Getting job preparation and release status for job &quot;{0}&quot;.
+        /// </summary>
+        internal static string GetJobPreparationAndReleaseStatus {
+            get {
+                return ResourceManager.GetString("GetJobPreparationAndReleaseStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Getting job schedule &quot;{0}&quot;.
         /// </summary>
         internal static string GetJobScheduleById {
@@ -655,11 +664,11 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Getting the quotas of the subscription in the Batch Service for region: {0}..
+        ///   Looks up a localized string similar to Getting the Batch service quotas for the subscription at region: {0}..
         /// </summary>
-        internal static string GettingSubscriptionQuotas {
+        internal static string GettingLocationQuotas {
             get {
-                return ResourceManager.GetString("GettingSubscriptionQuotas", resourceCulture);
+                return ResourceManager.GetString("GettingLocationQuotas", resourceCulture);
             }
         }
         
@@ -696,15 +705,6 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         internal static string InvalidTagFormatNotUniqueName {
             get {
                 return ResourceManager.GetString("InvalidTagFormatNotUniqueName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The current KeyInUse on this BatchAccountContext is the {0} key, but this key is not populated on the BatchAccountContext object. Use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its keys populated..
-        /// </summary>
-        internal static string KeyNotPresent {
-            get {
-                return ResourceManager.GetString("KeyNotPresent", resourceCulture);
             }
         }
         
@@ -831,6 +831,15 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         internal static string NoTask {
             get {
                 return ResourceManager.GetString("NoTask", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reactivating task {0}..
+        /// </summary>
+        internal static string ReactivateTask {
+            get {
+                return ResourceManager.GetString("ReactivateTask", resourceCulture);
             }
         }
         
@@ -1024,7 +1033,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Resizing pool {0}, new target dedicated: {1}..
+        ///   Looks up a localized string similar to Resizing pool {0}, new target dedicated: {1}, new target low-priority: {2}..
         /// </summary>
         internal static string ResizingPool {
             get {
@@ -1137,6 +1146,24 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         internal static string UploadedApplicationButFailedToActivate {
             get {
                 return ResourceManager.GetString("UploadedApplicationButFailedToActivate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Using Azure Active Directory authentication to interact with the Batch service. To use shared key authentication, supply a BatchAccountContext that was returned from the Get-AzureRmBatchAccountKeys cmdlet..
+        /// </summary>
+        internal static string UsingAadAuth {
+            get {
+                return ResourceManager.GetString("UsingAadAuth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Using shared key authentication to interact with the Batch service. Current key in use: {0}. To change keys, set the BatchAccountContext.KeyInUse property. To use Azure Active Directory authentication, supply a BatchAccountContext that was returned from the Get-AzureRmBatchAccount cmdlet..
+        /// </summary>
+        internal static string UsingSharedKeyAuth {
+            get {
+                return ResourceManager.GetString("UsingSharedKeyAuth", resourceCulture);
             }
         }
     }

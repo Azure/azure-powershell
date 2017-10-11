@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Sql.Auditing.Model;
+using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
@@ -21,7 +22,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
     /// Disables auditing on a specific database.
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureRmSqlDatabaseAuditing", SupportsShouldProcess = true), OutputType(typeof(AuditingPolicyModel))]
-    [Alias("Remove-AzureRmSqlDatabaseAuditing")]
+    [Obsolete("Note that Table auditing is deprecated and this command will be removed in a future release. Please use the 'Set-AzureRmSqlDatabaseAuditing' command to configure Blob auditing.", false)]
     public class RemoveSqlDatabaseAuditing : SqlDatabaseAuditingCmdletBase
     {
         /// <summary>
@@ -42,8 +43,15 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         /// <param name="model">A model object</param>
         protected override AuditingPolicyModel ApplyUserInputToModel(AuditingPolicyModel model)
         {
-            base.ApplyUserInputToModel(model);   
+            base.ApplyUserInputToModel(model);
             model.AuditState = AuditStateType.Disabled;
+
+            DatabaseAuditingPolicyModel tableAuditingPolicyModel = (model as DatabaseAuditingPolicyModel);
+            if (tableAuditingPolicyModel != null)
+            {
+                tableAuditingPolicyModel.UseServerDefault = UseServerDefaultOptions.Disabled;
+            }
+
             return model;
         }
 
@@ -56,10 +64,21 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         {
             ModelAdapter.IgnoreStorage = true;
             base.PersistChanges(model);
-            AuditType = AuditType.Blob;
-            var blobModel = GetEntity();
-            blobModel.AuditState = AuditStateType.Disabled;
-            base.PersistChanges(blobModel);
+            //if another server auditing policy exists, remove it
+            if (AuditType == AuditType.Blob)
+            {
+                AuditType = AuditType.Table;
+            }
+            else
+            {
+                AuditType = AuditType.Blob;
+            }
+            var otherAuditingTypePolicyModel = GetEntity();
+            if (otherAuditingTypePolicyModel != null)
+            {
+                otherAuditingTypePolicyModel.AuditState = AuditStateType.Disabled;
+                base.PersistChanges(otherAuditingTypePolicyModel);
+            }
             return null;
         }
     }

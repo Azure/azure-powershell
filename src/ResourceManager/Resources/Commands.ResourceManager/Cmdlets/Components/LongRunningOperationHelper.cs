@@ -14,6 +14,7 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 {
+    using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Collections;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
@@ -283,7 +284,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// <param name="result">The operation result</param>
         private void UpdateProgress(TrackingOperationResult result)
         {
-            this.ProgressTrackerObject.UpdateProgress(result);
+            this.ProgressTrackerObject.UpdateProgress(result, this.IsResourceCreateOrUpdate);
         }
 
         /// <summary>
@@ -332,26 +333,43 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
                 this.ProgressRecord = new ProgressRecord(activityId: 0, activity: activityName, statusDescription: "Starting - 0.00% completed.");
             }
 
+            internal void SetProgressPercentageAndWriteProgress(double percentage)
+            {
+                this.SetProgressRecordPercentComplete(percentage);
+                this.WriteProgressAction(this.ProgressRecord);
+            }
+
             /// <summary>
             /// Logs the fact that the operation has progressed.
             /// </summary>
             /// <param name="result">The operation result</param>
-            internal void UpdateProgress(TrackingOperationResult result)
+            /// <param name="isResourceCreateOrUpdate">Is Create or Update operation, other option include Move etc.</param>
+            internal void UpdateProgress(TrackingOperationResult result, bool isResourceCreateOrUpdate)
             {
-                var currentState = this.GetOperationState(result.OperationResult);
-
-                if (result.Failed || currentState == null || !this.LastState.EqualsInsensitively(currentState))
+                if (isResourceCreateOrUpdate)
                 {
-                    this.SetProgressRecordPercentComplete(100.0);
-                    this.WriteProgressAction(this.ProgressRecord);
+                    var currentState = this.GetOperationState(result.OperationResult);
+
+                    if (result.Failed || currentState == null || !this.LastState.EqualsInsensitively(currentState))
+                    {
+                        this.SetProgressPercentageAndWriteProgress(100.0);
+                    }
+
+                    if (currentState == null)
+                    {
+                        return;
+                    }
+
+                    this.LastState = currentState;
+                }
+                else
+                {
+                    if(result.Failed)
+                    {
+                        this.SetProgressPercentageAndWriteProgress(100.0);
+                    }
                 }
 
-                if (currentState == null)
-                {
-                    return;
-                }
-
-                this.LastState = currentState;
                 this.SetProgressRecordPercentComplete(result.OperationResult.PercentComplete);
                 this.WriteProgressAction(this.ProgressRecord);
             }

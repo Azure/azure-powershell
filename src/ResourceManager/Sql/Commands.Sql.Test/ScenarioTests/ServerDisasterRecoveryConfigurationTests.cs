@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,12 +22,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
     public class ServerDisasterRecoveryConfigurationTests : SqlTestsBase
     {
-        public ServerDisasterRecoveryConfigurationTests(ITestOutputHelper output)
+        public ServerDisasterRecoveryConfigurationTests(ITestOutputHelper output) : base(output)
         {
-            var logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
-
-            helper.TracingInterceptor = logger;
         }
 
         [Fact(Skip = "TODO fix the test failure")]

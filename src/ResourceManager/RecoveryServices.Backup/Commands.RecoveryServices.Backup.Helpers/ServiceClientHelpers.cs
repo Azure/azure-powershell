@@ -81,6 +81,55 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         }
 
         /// <summary>
+        /// Gets the provider type with which the service client calls 
+        /// are to be made to contact the backend service. 
+        /// This is determined by the backupmanagement type of powershell object.
+        /// </summary>
+        /// <param name="backupManagementType">Powershell backup management type</param>
+        /// <returns>Service backup management type</returns>
+        public static ServiceClientModel.BackupManagementType?
+            GetServiceClientBackupManagementType(
+                CmdletModel.BackupManagementType? backupManagementType)
+        {
+            ServiceClientModel.BackupManagementType? providerType = null;
+
+            switch (backupManagementType)
+            {
+                case CmdletModel.BackupManagementType.AzureVM:
+                    providerType = ServiceClientModel.BackupManagementType.AzureIaasVM;
+                    break;
+                case CmdletModel.BackupManagementType.AzureSQL:
+                    providerType = ServiceClientModel.BackupManagementType.AzureSql;
+                    break;
+                default:
+                    break;
+            }
+
+            return providerType;
+        }
+
+        /// <summary>
+        /// Gets the provider type with which the service client calls 
+        /// are to be made to contact the backend service. 
+        /// This is determined by the backupmanagement type of powershell object.
+        /// </summary>
+        /// <param name="backupManagementType"></param>
+        /// <returns>service backup management type</returns>
+        public static ServiceClientModel.BackupManagementType?
+            GetServiceClientBackupManagementType(string backupManagementType)
+        {
+            ServiceClientModel.BackupManagementType? providerType = null;
+
+            if (string.IsNullOrEmpty(backupManagementType))
+            {
+                return providerType;
+            }
+
+            return GetServiceClientBackupManagementType(
+                backupManagementType.ToEnum<CmdletModel.BackupManagementType>());
+        }
+
+        /// <summary>
         /// Gets the skip token from the next link. Usually, next link is the location uri returned as a header
         /// when an ARM call is made. When this skip token (if non-null) is used in the next call to the backend service,
         /// the next set of objects are returned.
@@ -138,7 +187,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             switch (containerType)
             {
                 case CmdletModel.ContainerType.AzureVM:
-                    serviceClientContainerType = ServiceClientModel.ContainerType.IaasVMContainer.ToString();
+                    serviceClientContainerType = ServiceClientModel.MabServerType.IaasVMContainer.ToString();
                     break;
                 default:
                     break;

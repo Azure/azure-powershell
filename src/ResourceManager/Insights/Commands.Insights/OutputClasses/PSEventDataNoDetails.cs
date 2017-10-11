@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Insights.Models;
+using Microsoft.Azure.Management.Monitor.Models;
 using System;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
@@ -91,7 +91,6 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
                 ? new PSEventDataAuthorization
                 {
                     Action = eventData.Authorization.Action,
-                    Condition = eventData.Authorization.Condition,
                     Role = eventData.Authorization.Role,
                     Scope = eventData.Authorization.Scope
                 }

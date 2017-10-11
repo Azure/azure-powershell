@@ -12,11 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Globalization;
 using System.Management.Automation;
 namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
 {
 
-    [Cmdlet(VerbsCommon.Remove, "AzureRmNotificationHub")]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmNotificationHub", SupportsShouldProcess = true)]
     public class RemoveAzureNotificationHub : AzureNotificationHubsCmdletBase
     {
         [Parameter(Mandatory = true,
@@ -40,11 +41,25 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
         [ValidateNotNullOrEmpty]
         public string NotificationHub { get; set; }
 
+        /// <summary>
+        /// If present, do not ask for confirmation
+        /// </summary>
+        [Parameter(Mandatory = false,
+           HelpMessage = "Do not ask for confirmation.")]
+        public SwitchParameter Force { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            // delete a notificationHub 
-            var deleteHub = Client.DeleteNotificationHub(ResourceGroup, Namespace, NotificationHub);
-            WriteObject(deleteHub);
+            ConfirmAction(
+                Force.IsPresent,
+                string.Format(CultureInfo.InvariantCulture, Resources.DeleteNotificationHub_Confirm, NotificationHub),
+                Resources.DeleteNotificationHub_WhatIf,
+                NotificationHub,
+                () =>
+                {
+                    // delete a notificationHub 
+                    Client.DeleteNotificationHub(ResourceGroup, Namespace, NotificationHub);
+                });
         }
     }
 }

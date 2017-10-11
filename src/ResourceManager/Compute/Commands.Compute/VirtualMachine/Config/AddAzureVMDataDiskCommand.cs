@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Compute
         public PSVirtualMachine VM { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             Position = 1,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMDataDiskName)]
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Compute
         public string Name { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             Position = 2,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMDataDiskVhdUri)]
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Compute
         public CachingTypes Caching { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             Position = 4,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMDataDiskSizeInGB)]
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Compute
         public int? DiskSizeInGB { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             Position = 5,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMDataDiskLun)]
@@ -91,6 +91,20 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public string SourceImageUri { get; set; }
 
+        [Parameter(
+            Position = 8,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = HelpMessages.VMManagedDiskId)]
+        [ValidateNotNullOrEmpty]
+        public string ManagedDiskId { get; set; }
+
+        [Parameter(
+            Position = 9,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = HelpMessages.VMManagedDiskAccountType)]
+        [ValidateNotNullOrEmpty]
+        public StorageAccountTypes? StorageAccountType { get; set; }
+
         public override void ExecuteCmdlet()
         {
             var storageProfile = this.VM.StorageProfile;
@@ -111,7 +125,7 @@ namespace Microsoft.Azure.Commands.Compute
                 Caching = this.Caching,
                 DiskSizeGB = this.DiskSizeInGB,
                 Lun = this.Lun.GetValueOrDefault(),
-                Vhd = new VirtualHardDisk
+                Vhd = string.IsNullOrEmpty(this.VhdUri) ? null : new VirtualHardDisk
                 {
                     Uri = this.VhdUri
                 },
@@ -119,8 +133,15 @@ namespace Microsoft.Azure.Commands.Compute
                 Image = string.IsNullOrEmpty(this.SourceImageUri) ? null : new VirtualHardDisk
                 {
                     Uri = this.SourceImageUri
-                }
-            });
+                },
+                ManagedDisk = (this.ManagedDiskId == null && this.StorageAccountType == null)
+                              ? null
+                              : new ManagedDiskParameters
+                              {
+                                  Id = this.ManagedDiskId,
+                                  StorageAccountType = this.StorageAccountType
+                              }
+        });
 
             this.VM.StorageProfile = storageProfile;
 

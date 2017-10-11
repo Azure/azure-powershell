@@ -12,22 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
     /// <summary>
     /// Fetches containers registered to the vault according to the filters passed via the cmdlet parameters.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupContainer"), 
+    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupContainer"),
     OutputType(typeof(ContainerBase), typeof(IList<ContainerBase>))]
     public class GetAzureRmRecoveryServicesBackupContainer : RecoveryServicesBackupCmdletBase
     {
@@ -41,7 +37,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// The backup management type of the container(s) to be fetched.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 2, 
+        [Parameter(Mandatory = false, Position = 2,
             HelpMessage = ParamHelpMsgs.Container.BackupManagementType)]
         [ValidateNotNullOrEmpty]
         [ValidateSet("AzureVM", "MARS", "AzureSQL")]
@@ -50,7 +46,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// Friendly name of the container(s) to be fetched. This will be deprecated.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 3, 
+        [Parameter(Mandatory = false, Position = 3,
             HelpMessage = ParamHelpMsgs.Container.Name)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -66,7 +62,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// Resource group name of the container(s) to be fetched.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 4, 
+        [Parameter(Mandatory = false, Position = 4,
             HelpMessage = ParamHelpMsgs.Container.ResourceGroupName)]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
@@ -74,7 +70,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// Status of the registration of the container with the recovery services vault.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 5, 
+        [Parameter(Mandatory = false, Position = 5,
             HelpMessage = ParamHelpMsgs.Container.Status)]
         [ValidateNotNullOrEmpty]
         public ContainerRegistrationStatus Status { get; set; }
@@ -89,13 +85,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 BackupManagementType backupManagementType;
                 if (BackupManagementType != null)
                 {
-                    Enum.TryParse<BackupManagementType>(BackupManagementType, out backupManagementType);
+                    Enum.TryParse(BackupManagementType, out backupManagementType);
                     backupManagementTypeNullable = backupManagementType;
                 }
 
-                PsBackupProviderManager providerManager = 
-                    new PsBackupProviderManager(new Dictionary<System.Enum, object>()
-                {  
+                PsBackupProviderManager providerManager =
+                    new PsBackupProviderManager(new Dictionary<Enum, object>()
+                {
                     {ContainerParams.ContainerType, ContainerType},
                     {ContainerParams.BackupManagementType, backupManagementTypeNullable},
                     {ContainerParams.Name, Name},
@@ -104,7 +100,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     {ContainerParams.Status, Status},
                 }, ServiceClientAdapter);
 
-                IPsBackupProvider psBackupProvider = 
+                IPsBackupProvider psBackupProvider =
                     providerManager.GetProviderInstance(ContainerType, backupManagementTypeNullable);
                 var containerModels = psBackupProvider.ListProtectionContainers();
                 WriteObject(containerModels, enumerateCollection: true);

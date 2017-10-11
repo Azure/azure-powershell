@@ -12,11 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Moq;
@@ -48,17 +48,14 @@ namespace Microsoft.Azure.Commands.Profile.Test
         {
             // Setup
             Mock<ResourceManagementClient> mockClient = new Mock<ResourceManagementClient>();
-            Mock<IProviderOperations> mockProvidersOperations = new Mock<IProviderOperations>();
+            Mock<IProvidersOperations> mockProvidersOperations = new Mock<IProvidersOperations>();
             mockClient.Setup(f => f.Providers).Returns(mockProvidersOperations.Object);
-            mockProvidersOperations.Setup(f => f.GetAsync(It.IsAny<string>(), It.IsAny<CancellationToken>())).Returns(
-                (string rp, CancellationToken token) =>
+            mockProvidersOperations.Setup(f => f.RegisterWithHttpMessagesAsync(It.IsAny<string>(), null, It.IsAny<CancellationToken>())).Returns(
+                (string rp, Dictionary<string, List<string>> ch, CancellationToken token) =>
                 {
-                    ProviderGetResult r = new ProviderGetResult
+                    AzureOperationResponse<Provider> r = new AzureOperationResponse<Provider>
                     {
-                        Provider = new Provider
-                        {
-                            RegistrationState = RegistrationState.Registered.ToString()
-                        }
+                        Body = new Provider(registrationState: RegistrationState.Registered.ToString())
                     };
 
                     return Task.FromResult(r);
@@ -97,7 +94,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         {
             // Setup
             Mock<ResourceManagementClient> mockClient = new Mock<ResourceManagementClient>();
-            Mock<IProviderOperations> mockProvidersOperations = new Mock<IProviderOperations>();
+            Mock<IProvidersOperations> mockProvidersOperations = new Mock<IProvidersOperations>();
             mockClient.Setup(f => f.Providers).Returns(mockProvidersOperations.Object);
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, compatibleUri);
             Dictionary<HttpRequestMessage, List<HttpResponseMessage>> mapping = new Dictionary<HttpRequestMessage, List<HttpResponseMessage>>
@@ -131,7 +128,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         {
             // Setup
             Mock<ResourceManagementClient> mockClient = new Mock<ResourceManagementClient>();
-            Mock<IProviderOperations> mockProvidersOperations = new Mock<IProviderOperations>();
+            Mock<IProvidersOperations> mockProvidersOperations = new Mock<IProvidersOperations>();
             mockClient.Setup(f => f.Providers).Returns(mockProvidersOperations.Object);
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, compatibleUri);
             Dictionary<HttpRequestMessage, List<HttpResponseMessage>> mapping = new Dictionary<HttpRequestMessage, List<HttpResponseMessage>>
@@ -165,7 +162,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         {
             // Setup
             Mock<ResourceManagementClient> mockClient = new Mock<ResourceManagementClient>();
-            Mock<IProviderOperations> mockProvidersOperations = new Mock<IProviderOperations>();
+            Mock<IProvidersOperations> mockProvidersOperations = new Mock<IProvidersOperations>();
             mockClient.Setup(f => f.Providers).Returns(mockProvidersOperations.Object);
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, incompatibleUri);
             Dictionary<HttpRequestMessage, List<HttpResponseMessage>> mapping = new Dictionary<HttpRequestMessage, List<HttpResponseMessage>>
@@ -199,19 +196,16 @@ namespace Microsoft.Azure.Commands.Profile.Test
         {
             // Setup
             Mock<ResourceManagementClient> mockClient = new Mock<ResourceManagementClient>();
-            Mock<IProviderOperations> mockProvidersOperations = new Mock<IProviderOperations>();
+            Mock<IProvidersOperations> mockProvidersOperations = new Mock<IProvidersOperations>();
             mockClient.Setup(f => f.Providers).Returns(mockProvidersOperations.Object);
-            mockProvidersOperations.Setup(f => f.GetAsync(It.IsAny<string>(), It.IsAny<CancellationToken>())).Returns(
-                (string rp, CancellationToken token) =>
+            mockProvidersOperations.Setup(f => f.RegisterWithHttpMessagesAsync(It.IsAny<string>(), null, It.IsAny<CancellationToken>())).Returns(
+                (string rp, Dictionary<string, List<string>> ch, CancellationToken token) =>
                 {
-                    ProviderGetResult r = new ProviderGetResult
+                    AzureOperationResponse<Provider> r = new AzureOperationResponse<Provider>
                     {
-                        Provider = new Provider
-                        {
-                            RegistrationState = RegistrationState.Pending.ToString()
-                        }
+                        Body = new Provider(registrationState: RegistrationState.Pending.ToString())
                     };
-
+                     
                     return Task.FromResult(r);
                 }
                 );
@@ -240,7 +234,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.True(msgs.Any(s => s.Equals("Failed to register resource provider 'microsoft.compute'.Details: 'The operation has timed out.'")));
             Assert.Equal(response.StatusCode, HttpStatusCode.Conflict);
             Assert.Equal(response.Content.ReadAsStringAsync().Result, "registered to use namespace");
-            mockProvidersOperations.Verify(f => f.RegisterAsync("microsoft.compute", It.IsAny<CancellationToken>()), Times.AtMost(4));
+            mockProvidersOperations.Verify(f => f.RegisterWithHttpMessagesAsync("microsoft.compute", null, It.IsAny<CancellationToken>()), Times.AtMost(5));
         }
 
         [Fact]
@@ -249,9 +243,9 @@ namespace Microsoft.Azure.Commands.Profile.Test
         {
             // Setup
             Mock<ResourceManagementClient> mockClient = new Mock<ResourceManagementClient>();
-            Mock<IProviderOperations> mockProvidersOperations = new Mock<IProviderOperations>();
+            Mock<IProvidersOperations> mockProvidersOperations = new Mock<IProvidersOperations>();
             mockClient.Setup(f => f.Providers).Returns(mockProvidersOperations.Object);
-            mockProvidersOperations.Setup(f => f.GetAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()))
+            mockProvidersOperations.Setup(f => f.RegisterWithHttpMessagesAsync(It.IsAny<string>(), null, It.IsAny<CancellationToken>()))
                 .Throws(new CloudException("PR reg failed"));
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, compatibleUri);
             Dictionary<HttpRequestMessage, List<HttpResponseMessage>> mapping = new Dictionary<HttpRequestMessage, List<HttpResponseMessage>>
@@ -278,7 +272,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.True(msgs.Any(s => s.Equals("Failed to register resource provider 'microsoft.compute'.Details: 'PR reg failed'")));
             Assert.Equal(response.StatusCode, HttpStatusCode.Conflict);
             Assert.Equal(response.Content.ReadAsStringAsync().Result, "registered to use namespace");
-            mockProvidersOperations.Verify(f => f.RegisterAsync("microsoft.compute", It.IsAny<CancellationToken>()), Times.AtMost(4));
+            mockProvidersOperations.Verify(f => f.RegisterWithHttpMessagesAsync("microsoft.compute", null, It.IsAny<CancellationToken>()), Times.AtMost(4));
         }
     }
 

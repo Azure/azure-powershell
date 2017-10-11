@@ -16,6 +16,9 @@ using Microsoft.Azure.Management.HDInsight.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Management.Automation;
+using System.Security;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.HDInsight.Models
 {
@@ -37,21 +40,66 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             HttpEndpoint = httpEndpoint != null ? httpEndpoint.Location : null;
             Error = cluster.Properties.ErrorInfos.Select(s => s.Message).FirstOrDefault();
             ResourceGroup = ClusterConfigurationUtils.GetResourceGroupFromClusterId(cluster.Id);
+            ComponentVersion = new List<string>();
+            foreach(var componentVersion in cluster.Properties.ClusterDefinition.ComponentVersion)
+            {
+                ComponentVersion.Add(componentVersion.ToString());
+            }
+            WorkerNodeDataDisksGroups = new List<DataDisksGroupProperties>();
+            if (cluster.Properties.ComputeProfile != null && cluster.Properties.ComputeProfile.Roles.Any())
+            {
+                var rolesWithDataDisksGroups = cluster.Properties.ComputeProfile.Roles.Where(x => x.DataDisksGroups != null);
+                foreach (var role in rolesWithDataDisksGroups)
+                {
+                    WorkerNodeDataDisksGroups.AddRange(role.DataDisksGroups);
+                }
+            }
+            var clusterSecurityProfile = cluster.Properties.SecurityProfile;
+            SecurityProfile = clusterSecurityProfile != null ? new AzureHDInsightSecurityProfile()
+            {
+                Domain = clusterSecurityProfile.Domain,
+                //We should not be returning the actual password to the user
+                DomainUserCredential = new PSCredential(clusterSecurityProfile.DomainUsername, "***".ConvertToSecureString()),
+                OrganizationalUnitDN = clusterSecurityProfile.OrganizationalUnitDN,
+                LdapsUrls = clusterSecurityProfile.LdapsUrls != null ? clusterSecurityProfile.LdapsUrls.ToArray() : null,
+                ClusterUsersGroupDNs = clusterSecurityProfile.ClusterUsersGroupDNs != null ? clusterSecurityProfile.ClusterUsersGroupDNs.ToArray() : null,
+            } : null;
         }
 
-        public AzureHDInsightCluster(Cluster cluster, IDictionary<string, string> clusterConfiguration)
+        public AzureHDInsightCluster(Cluster cluster, IDictionary<string, string> clusterConfiguration, IDictionary<string, string> clusterIdentity)
             : this(cluster)
         {
             if (clusterConfiguration != null)
             {
                 var defaultAccount = ClusterConfigurationUtils.GetDefaultStorageAccountDetails(
-                clusterConfiguration,
-                cluster.Properties.ClusterVersion);
+                    cluster.Properties.ClusterVersion,
+                    clusterConfiguration, 
+                    clusterIdentity
+                );
 
-                DefaultStorageAccount = defaultAccount.StorageAccountName;
-                DefaultStorageContainer = defaultAccount.StorageContainerName;
+                if (defaultAccount != null)
+                {
+                    DefaultStorageAccount = defaultAccount.StorageAccountName;
 
-                AdditionalStorageAccounts = ClusterConfigurationUtils.GetAdditionStorageAccounts(clusterConfiguration, DefaultStorageAccount);
+                    var wasbAccount = defaultAccount as AzureHDInsightWASBDefaultStorageAccount;
+                    var adlAccount = defaultAccount as AzureHDInsightDataLakeDefaultStorageAccount;
+
+                    if (wasbAccount != null)
+                    {
+                        DefaultStorageContainer =  wasbAccount.StorageContainerName;
+                    }
+                    else if(adlAccount != null)
+                    {
+                        DefaultStorageRootPath = adlAccount.StorageRootPath;
+                    }
+                    else
+                    {
+                        DefaultStorageContainer = string.Empty;
+                    }
+
+
+                    AdditionalStorageAccounts = ClusterConfigurationUtils.GetAdditionStorageAccounts(clusterConfiguration, DefaultStorageAccount);
+                }
             }
         }
 
@@ -121,6 +169,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         public string DefaultStorageContainer { get; set; }
 
         /// <summary>
+        /// Default storage path where this Azure Data Lake Cluster is rooted
+        /// </summary>
+        public string DefaultStorageRootPath { get; set; }
+
+        /// <summary>
         /// Default storage container for this cluster.
         /// </summary>
         public string ResourceGroup { get; set; }
@@ -129,5 +182,22 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// Additional storage accounts for this cluster
         /// </summary>
         public List<string> AdditionalStorageAccounts { get; set; }
+
+        /// <summary>
+        /// Version of a component service in the cluster
+        /// </summary>
+        public List<string> ComponentVersion { get; set; }
+
+        /// <summary>
+        /// Data Disks Group Properties for the Worker Role.
+        /// </summary>
+        public List<DataDisksGroupProperties> WorkerNodeDataDisksGroups { get; set; }
+		
+        /// Gets or sets the security profile.
+        /// </summary>
+        /// <value>
+        /// The security profile.
+        /// </value>
+        public AzureHDInsightSecurityProfile SecurityProfile { get; set; }
     }
 }

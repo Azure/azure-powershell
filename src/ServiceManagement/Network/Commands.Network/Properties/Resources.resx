@@ -318,4 +318,13 @@
   <data name="RemoveRouteWarning" xml:space="preserve">
     <value>Are you sure you want to remove the Route "{0}" from Route Table "{1}"?</value>
   </data>
+  <data name="UltraPerformanceGatewayContinue" xml:space="preserve">
+    <value>Creating UltraPerformance Gateway</value>
+  </data>
+  <data name="UltraPerformanceGatewaySucceed" xml:space="preserve">
+    <value>Successfully creatied Azure UltraPerformance Gateway. This gateway is now being billed</value>
+  </data>
+  <data name="UltraPerformanceGatewayWarning" xml:space="preserve">
+    <value>Please check the availability of UltraPerformance gateway on https://azure.microsoft.com/en-us/documentation/articles/expressroute-about-virtual-network-gateways/. You will be billed for this gateway once this command succeeds.</value>
+  </data>
 </root>

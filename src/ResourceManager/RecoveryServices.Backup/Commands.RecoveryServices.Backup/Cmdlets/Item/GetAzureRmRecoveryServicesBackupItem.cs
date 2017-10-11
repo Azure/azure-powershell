@@ -12,14 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -27,7 +24,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// Get list of items associated with the recovery services vault 
     /// according to the filters passed via the cmdlet parameters.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupItem", 
+    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupItem",
         DefaultParameterSetName = GetItemsForContainerParamSet), OutputType(typeof(ItemBase),
             typeof(IList<ItemBase>))]
     public class GetAzureRmRecoveryServicesBackupItem : RecoveryServicesBackupCmdletBase
@@ -39,10 +36,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// When this option is specified, only those items which belong to this container will be returned.
         /// </summary>
         [Parameter(
-            Mandatory = true, 
-            Position = 1, 
+            Mandatory = true,
+            Position = 1,
             HelpMessage = ParamHelpMsgs.Item.Container,
-            ParameterSetName = GetItemsForContainerParamSet, 
+            ParameterSetName = GetItemsForContainerParamSet,
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public ContainerBase Container { get; set; }
@@ -89,8 +86,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             {
                 base.ExecuteCmdlet();
 
-                PsBackupProviderManager providerManager = 
-                    new PsBackupProviderManager(new Dictionary<System.Enum, object>()
+                PsBackupProviderManager providerManager =
+                    new PsBackupProviderManager(new Dictionary<Enum, object>()
                 {
                     {ItemParams.Container, Container},
                     {ItemParams.BackupManagementType, BackupManagementType},
@@ -104,7 +101,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 if (this.ParameterSetName == GetItemsForVaultParamSet)
                 {
-                    psBackupProvider = 
+                    psBackupProvider =
                         providerManager.GetProviderInstance(WorkloadType, BackupManagementType);
                 }
                 else

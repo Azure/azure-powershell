@@ -25,6 +25,7 @@ using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
 using Microsoft.WindowsAzure.Management.Storage;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 {
@@ -41,8 +42,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
     {
         protected const string AzureVMSqlServerAutoBackupConfigNoun = "AzureVMSqlServerAutoBackupConfig";
 
-        protected const string StorageContextParamSetName            = "StorageContextSqlServerAutoBackup";
-        protected const string StorageUriParamSetName                = "StorageUriSqlServerAutoBackup";
+        protected const string StorageContextParamSetName = "StorageContextSqlServerAutoBackup";
+        protected const string StorageUriParamSetName = "StorageUriSqlServerAutoBackup";
+        protected const string BackupScheduleManualType = "Manual";
 
         [Parameter(
             Mandatory = false,
@@ -82,7 +84,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The storage connection context")]
         [ValidateNotNullOrEmpty]
-        public AzureStorageContext StorageContext
+        public IStorageContext StorageContext
         {
             get;
             set;
@@ -107,6 +109,71 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
           HelpMessage = "The storage access key")]
         [ValidateNotNullOrEmpty]
         public SecureString StorageKey
+        {
+            get;
+            set;
+        }
+
+        [Parameter(
+          Mandatory = false,
+          ValueFromPipelineByPropertyName = true,
+          HelpMessage = "Backup system databases")]
+        public SwitchParameter BackupSystemDbs
+        {
+            get;
+            set;
+        }
+
+        [Parameter(
+          Mandatory = false,
+          ValueFromPipelineByPropertyName = true,
+          HelpMessage = "Backup schedule type, manual or automated")]
+        [ValidateSet(new string[] { "Manual", "Automated" }, IgnoreCase = true)]
+        public string BackupScheduleType
+        {
+            get;
+            set;
+        }
+
+        [Parameter(
+          Mandatory = false,
+          ValueFromPipelineByPropertyName = true,
+          HelpMessage = "Sql Server Full Backup frequency, daily or weekly")]
+        [ValidateSet(new string[] { "Daily", "Weekly" }, IgnoreCase = true)]
+        public string FullBackupFrequency
+        {
+            get;
+            set;
+        }
+
+        [Parameter(
+          Mandatory = false,
+          ValueFromPipelineByPropertyName = true,
+          HelpMessage = "Hour of the day (0-23) when the Sql Server Full Backup should start")]
+        [ValidateRange(0, 23)]
+        public int? FullBackupStartHour
+        {
+            get;
+            set;
+        }
+
+        [Parameter(
+          Mandatory = false,
+          ValueFromPipelineByPropertyName = true,
+          HelpMessage = "Sql Server Full Backup window in hours")]
+        [ValidateRange(1, 23)]
+        public int? FullBackupWindowInHours
+        {
+            get;
+            set;
+        }
+
+        [Parameter(
+          Mandatory = false,
+          ValueFromPipelineByPropertyName = true,
+          HelpMessage = "Sql Server Log Backup frequency, once every 1-60 minutes")]
+        [ValidateRange(1, 60)]
+        public int? LogBackupFrequencyInMinutes
         {
             get;
             set;
@@ -146,6 +213,20 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             // Check if certificate password was set
             autoBackupSettings.Password = (CertificatePassword == null) ? null : SecureStringHelper.ConvertToUnsecureString(CertificatePassword);
 
+            autoBackupSettings.BackupSystemDbs = BackupSystemDbs.IsPresent ? BackupSystemDbs.ToBool() : false;
+            autoBackupSettings.BackupScheduleType = BackupScheduleType;
+
+            // Set other Backup schedule settings only if BackUpSchedule type is Manual.
+            if (!string.IsNullOrEmpty(BackupScheduleType) && string.Equals(BackupScheduleType, BackupScheduleManualType, StringComparison.InvariantCultureIgnoreCase))
+            {
+                ValidateBackupScheduleSettings();
+
+                autoBackupSettings.FullBackupFrequency = FullBackupFrequency;
+                autoBackupSettings.FullBackupStartTime = FullBackupStartHour;
+                autoBackupSettings.FullBackupWindowHours = FullBackupWindowInHours;
+                autoBackupSettings.LogBackupFrequency = LogBackupFrequencyInMinutes;
+            }
+
             WriteObject(autoBackupSettings);
         }
 
@@ -168,6 +249,32 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             }
 
             return storageKey;
+        }
+
+        /// <summary>
+        /// Validates Backup schedule settings when schedule type is Manual.
+        /// </summary>
+        private void ValidateBackupScheduleSettings()
+        {
+            if (FullBackupFrequency == null)
+            {
+                throw new Exception("FullBackupFrequency cannot be null when BackupScheduleType is set to Manual");
+            }
+
+            if (FullBackupStartHour == null)
+            {
+                throw new Exception("FullBackupStartTime cannot be null when BackupScheduleType is set to Manual");
+            }
+
+            if (FullBackupWindowInHours == null)
+            {
+                throw new Exception("FullBackupStartHour cannot be null when BackupScheduleType is set to Manual");
+            }
+
+            if (LogBackupFrequencyInMinutes == null || LogBackupFrequencyInMinutes % 5 != 0)
+            {
+                throw new Exception("LogBackupFrequencyInMinutes cannot be null or should be multiple of 5 when BackupScheduleType is set to Manual");
+            }
         }
     }
 }

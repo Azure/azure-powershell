@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Insights.Properties;
-using Microsoft.Azure.Management.Insights.Models;
+using Microsoft.Azure.Management.Monitor.Management.Models;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// Initializes a new instance of the PSRuleProperties class.
         /// </summary>
         /// <param name="properties"></param>
-        public PSAlertRuleProperty(Rule properties)
+        public PSAlertRuleProperty(AlertRuleResource properties)
         {
             this.Actions = properties.Actions;
 

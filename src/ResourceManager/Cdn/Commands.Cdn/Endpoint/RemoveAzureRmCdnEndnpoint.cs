@@ -58,9 +58,9 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
                 EndpointName = CdnEndpoint.Name;
             }
 
-            var existingEndpoint = CdnManagementClient.Endpoints.ListByProfile(ProfileName, ResourceGroupName)
-                .Where(e => e.Name.ToLower() == EndpointName.ToLower())
-                .FirstOrDefault();
+            var existingEndpoint = CdnManagementClient.Endpoints
+                .ListByProfile(ResourceGroupName, ProfileName)
+                .FirstOrDefault(e => e.Name.ToLower() == EndpointName.ToLower());
 
             if(existingEndpoint == null)
             {
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
                 string.Format(Resources.Confirm_RemoveEndpoint, EndpointName, ProfileName, ResourceGroupName),
                 this.MyInvocation.InvocationName,
                 EndpointName,
-                () => CdnManagementClient.Endpoints.DeleteIfExists(EndpointName, ProfileName, ResourceGroupName));
+                () => CdnManagementClient.Endpoints.Delete(ResourceGroupName, ProfileName, EndpointName));
            
             if (PassThru)
             {

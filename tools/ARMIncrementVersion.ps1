@@ -12,7 +12,7 @@ Param(
 
 function ReplaceVersion([string]$key, [string]$line)
 {
-	$matches = ([regex]::matches($line, "$key = '([\d\.]+)'"))
+	$matches = ([regex]::matches($line, "$key\s*=\s*['\""]([\d\.]+)['\""]"))
 	if($matches.Count -eq 1)
         {
             $packageVersion = $matches.Groups[1].Value
@@ -22,26 +22,42 @@ function ReplaceVersion([string]$key, [string]$line)
             $cMinor = $Minor
             $cPatch = $Patch
                
-            if ($cMajor -eq $true)
+            if ($version[0] -eq 0)
             {
-                $version[0] = 1 + $version[0]
-                $version[1] = "0"
-                $version[2] = "0"
+                if ($cMajor -eq $true)
+                {
+                    $version[1] = 1 + $version[1]
+                    $version[2] = "0"
+                }
+                
+                if ($cMinor -eq $true -or $cPatch -eq $true)
+                {
+                    $version[2] = 1 + $version[2]
+                }
             }
-            
-            if ($cMinor -eq $true)
+            else
             {
-                $version[1] = 1 + $version[1]
-                $version[2] = "0"
-            }
-            
-            if ($cPatch -eq $true)
-            {
-                $version[2] = 1 + $version[2]
+                if ($cMajor -eq $true)
+                {
+                    $version[0] = 1 + $version[0]
+                    $version[1] = "0"
+                    $version[2] = "0"
+                }
+                
+                if ($cMinor -eq $true)
+                {
+                    $version[1] = 1 + $version[1]
+                    $version[2] = "0"
+                }
+                
+                if ($cPatch -eq $true)
+                {
+                    $version[2] = 1 + $version[2]
+                }    
             }
             
             $version = [String]::Join(".", $version)
-            $line.Replace("$key = '$packageVersion'", "$key = '$version'")
+            $line -Replace "$key(\s*)=(\s*)(['\""])$packageVersion(['\""])", ($key + '${1}=${2}${3}'  + $version + '$4')
         } else {
             $line
         }

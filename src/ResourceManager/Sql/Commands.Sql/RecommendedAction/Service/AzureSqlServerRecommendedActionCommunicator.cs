@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,9 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Management.Sql;
-using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Azure.Management.Sql.LegacySdk;
+using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Service
@@ -27,32 +28,32 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Service
         /// <summary>
         /// Creates a communicator for Azure Sql Server Recommended Actions
         /// </summary>
-        public AzureSqlServerRecommendedActionCommunicator(AzureContext context) : base(context)
+        public AzureSqlServerRecommendedActionCommunicator(IAzureContext context) : base(context)
         {
         }
 
         /// <summary>
         /// Gets the Azure Sql Server Recommended Action
         /// </summary>
-        public Management.Sql.Models.RecommendedAction Get(string resourceGroupName, string serverName, string advisorName, string recommendedActionName, string clientRequestId)
+        public Management.Sql.LegacySdk.Models.RecommendedAction Get(string resourceGroupName, string serverName, string advisorName, string recommendedActionName)
         {
-            return GetCurrentSqlClient(clientRequestId).ServerRecommendedActions.Get(resourceGroupName, serverName, advisorName, recommendedActionName).RecommendedAction;
+            return GetCurrentSqlClient().ServerRecommendedActions.Get(resourceGroupName, serverName, advisorName, recommendedActionName).RecommendedAction;
         }
 
         /// <summary>
         /// Lists Azure Sql Server Recommended Actions
         /// </summary> 
-        public IList<Management.Sql.Models.RecommendedAction> List(string resourceGroupName, string serverName, string advisorName, string clientRequestId)
+        public IList<Management.Sql.LegacySdk.Models.RecommendedAction> List(string resourceGroupName, string serverName, string advisorName)
         {
-            return GetCurrentSqlClient(clientRequestId).ServerRecommendedActions.List(resourceGroupName, serverName, advisorName).RecommendedActions;
+            return GetCurrentSqlClient().ServerRecommendedActions.List(resourceGroupName, serverName, advisorName).RecommendedActions;
         }
 
         /// <summary>
         /// Update Recommended Action State
         /// </summary>
-        public Management.Sql.Models.RecommendedAction UpdateState(string resourceGroupName, string serverName, string advisorName, string recommendedActionName, string newStateValue, string clientRequestId)
+        public Management.Sql.LegacySdk.Models.RecommendedAction UpdateState(string resourceGroupName, string serverName, string advisorName, string recommendedActionName, string newStateValue)
         {
-            return GetCurrentSqlClient(clientRequestId).ServerRecommendedActions.Update(resourceGroupName, serverName, advisorName, recommendedActionName,
+            return GetCurrentSqlClient().ServerRecommendedActions.Update(resourceGroupName, serverName, advisorName, recommendedActionName,
                     new RecommendedActionUpdateParameters
                     {
                         Properties = new RecommendedActionUpdateProperties()

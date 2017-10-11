@@ -144,7 +144,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                         this.CmdletCancellationToken);
                 },
                 data.Record,
-                this.OutputStream);
+                this.OutputStream).ConfigureAwait(false);
 
             this.WriteCloudBlobObject(data.TaskId, data.Channel, blob);
         }

@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
@@ -24,42 +25,14 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        public void TestGetNonExistingBatchAccount()
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestBatchAccountEndToEnd()
         {
-            BatchController.NewInstance.RunPsTest("Test-GetNonExistingBatchAccount");
+            BatchController.NewInstance.RunPsTest("Test-BatchAccountEndToEnd");
         }
 
         [Fact]
-        public void TestCreatesNewBatchAccount()
-        {
-            BatchController.NewInstance.RunPsTest("Test-CreatesNewBatchAccount");
-        }
-
-        [Fact]
-        public void TestUpdatesExistingBatchAccount()
-        {
-            BatchController.NewInstance.RunPsTest("Test-UpdatesExistingBatchAccount");
-        }
-
-        [Fact]
-        public void TestGetBatchAccountsUnderResourceGroups()
-        {
-            BatchController.NewInstance.RunPsTest("Test-GetBatchAccountsUnderResourceGroups");
-        }
-
-        [Fact]
-        public void TestCreateAndRemoveBatchAccountViaPiping()
-        {
-            BatchController.NewInstance.RunPsTest("Test-CreateAndRemoveBatchAccountViaPiping");
-        }
-
-        [Fact]
-        public void TestBatchAccountKeys()
-        {
-            BatchController.NewInstance.RunPsTest("Test-BatchAccountKeys");
-        }
-
-        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListNodeAgentSkus()
         {
             BatchController.NewInstance.RunPsTest("Test-GetBatchNodeAgentSkus");

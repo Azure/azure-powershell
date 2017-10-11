@@ -20,18 +20,30 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
+using System.Security;
+using Microsoft.Azure.Commands.Network.VirtualNetworkGateway;
+using Microsoft.WindowsAzure.Commands.Common;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmVirtualNetworkGateway", SupportsShouldProcess = true),
-        OutputType(typeof(PSVirtualNetworkGateway))]
+    [Cmdlet(VerbsCommon.New,
+         "AzureRmVirtualNetworkGateway",
+         SupportsShouldProcess = true,
+         DefaultParameterSetName = VirtualNetworkGatewayParameterSets.Default),
+     OutputType(typeof(PSVirtualNetworkGateway))]
     public class NewAzureVirtualNetworkGatewayCommand : VirtualNetworkGatewayBaseCmdlet
     {
         [Alias("ResourceName")]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
+            ParameterSetName = VirtualNetworkGatewayParameterSets.RadiusServerConfiguration,
+            HelpMessage = "The resource name.")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = VirtualNetworkGatewayParameterSets.Default,
             HelpMessage = "The resource name.")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
@@ -39,6 +51,12 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
+            ParameterSetName = VirtualNetworkGatewayParameterSets.RadiusServerConfiguration,
+            HelpMessage = "The resource group name.")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = VirtualNetworkGatewayParameterSets.Default,
             HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
@@ -46,6 +64,12 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
+            ParameterSetName = VirtualNetworkGatewayParameterSets.RadiusServerConfiguration,
+            HelpMessage = "location.")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = VirtualNetworkGatewayParameterSets.Default,
             HelpMessage = "location.")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
@@ -62,9 +86,9 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The type of this virtual network gateway: Vpn, ExoressRoute")]
         [ValidateSet(
-        MNM.VirtualNetworkGatewayType.Vpn,
-        MNM.VirtualNetworkGatewayType.ExpressRoute,
-        IgnoreCase = true)]
+            MNM.VirtualNetworkGatewayType.Vpn,
+            MNM.VirtualNetworkGatewayType.ExpressRoute,
+            IgnoreCase = true)]
         public string GatewayType { get; set; }
 
         [Parameter(
@@ -72,9 +96,9 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The type of the Vpn:PolicyBased/RouteBased")]
         [ValidateSet(
-        MNM.VpnType.PolicyBased,
-        MNM.VpnType.RouteBased,
-        IgnoreCase = true)]
+            MNM.VpnType.PolicyBased,
+            MNM.VpnType.RouteBased,
+            IgnoreCase = true)]
         public string VpnType { get; set; }
 
         [Parameter(
@@ -85,25 +109,28 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Active-Active feature flag")]
-        public bool ActiveActive { get; set; }
+            HelpMessage = "Flag to enable Active Active feature on virtual network gateway")]
+        public SwitchParameter EnableActiveActiveFeature { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The type of the Vpn:PolicyBased/RouteBased")]
+            HelpMessage = "The Gateway Sku Tier")]
         [ValidateSet(
-        MNM.VirtualNetworkGatewaySkuTier.Basic,
-        MNM.VirtualNetworkGatewaySkuTier.Standard,
-        MNM.VirtualNetworkGatewaySkuTier.HighPerformance,
-        IgnoreCase = true)]
+            MNM.VirtualNetworkGatewaySkuTier.Basic,
+            MNM.VirtualNetworkGatewaySkuTier.Standard,
+            MNM.VirtualNetworkGatewaySkuTier.HighPerformance,
+            MNM.VirtualNetworkGatewaySkuTier.UltraPerformance,
+            MNM.VirtualNetworkGatewaySkuTier.VpnGw1,
+            MNM.VirtualNetworkGatewaySkuTier.VpnGw2,
+            MNM.VirtualNetworkGatewaySkuTier.VpnGw3,
+            IgnoreCase = true)]
         public string GatewaySku { get; set; }
 
         [Parameter(
-             Mandatory = false,
-             ValueFromPipelineByPropertyName = true,
-             ParameterSetName = "SetByResource",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "SetByResource",
             HelpMessage = "GatewayDefaultSite")]
         public PSLocalNetworkGateway GatewayDefaultSite { get; set; }
 
@@ -113,6 +140,16 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "P2S VpnClient AddressPool")]
         [ValidateNotNullOrEmpty]
         public List<string> VpnClientAddressPool { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The list of P2S VPN client tunneling protocols")]
+        [ValidateSet(
+            MNM.VpnClientProtocol.SSTP,
+            MNM.VpnClientProtocol.IkeV2)]
+        [ValidateNotNullOrEmpty]
+        public List<string> VpnClientProtocol { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -149,15 +186,49 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
         public SwitchParameter Force { get; set; }
 
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = VirtualNetworkGatewayParameterSets.RadiusServerConfiguration,
+            HelpMessage = "P2S External Radius server address.")]
+        [ValidateNotNullOrEmpty]
+        public string RadiusServerAddress { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = VirtualNetworkGatewayParameterSets.RadiusServerConfiguration,
+            HelpMessage = "P2S External Radius server secret.")]
+        [ValidateNotNullOrEmpty]
+        public SecureString RadiusServerSecret { get; set; }
+
         public override void Execute()
         {
             base.Execute();
             WriteWarning("The output object type of this cmdlet will be modified in a future release.");
             var present = this.IsVirtualNetworkGatewayPresent(this.ResourceGroupName, this.Name);
+            string warningMsg = string.Empty;
+            string continueMsg = Properties.Resources.CreatingResourceMessage;
+            bool force = true;
+            if (!string.IsNullOrEmpty(GatewaySku)
+                && GatewaySku.Equals(MNM.VirtualNetworkGatewaySkuTier.UltraPerformance, StringComparison.InvariantCultureIgnoreCase))
+            {
+                warningMsg = string.Format(Properties.Resources.UltraPerformaceGatewayWarning, this.Name);
+                force = false;
+            }
+            else
+            {
+                warningMsg = string.Format(Properties.Resources.OverwritingResource, this.Name);
+            }
+            if (this.Force.IsPresent)
+            {
+                force = true;
+            }
+
             ConfirmAction(
-                Force.IsPresent,
-                string.Format(Properties.Resources.OverwritingResource, Name),
-                Properties.Resources.CreatingResourceMessage,
+                force,
+                warningMsg,
+                continueMsg,
                 Name,
                 () =>
                 {
@@ -165,6 +236,7 @@ namespace Microsoft.Azure.Commands.Network
                     WriteObject(virtualNetworkGateway);
                 },
                 () => present);
+
         }
 
         private PSVirtualNetworkGateway CreateVirtualNetworkGateway()
@@ -174,22 +246,40 @@ namespace Microsoft.Azure.Commands.Network
             vnetGateway.ResourceGroupName = this.ResourceGroupName;
             vnetGateway.Location = this.Location;
 
-            if (this.ActiveActive && !this.GatewaySku.Equals(MNM.VirtualNetworkGatewaySkuTier.HighPerformance))
+            if (this.GatewaySku != null)
             {
-                throw new ArgumentException("Virtual Network Gateway Sku should be " + MNM.VirtualNetworkGatewaySkuTier.HighPerformance + " when Active-Active feature flag is set to True.");
+                vnetGateway.Sku = new PSVirtualNetworkGatewaySku();
+                vnetGateway.Sku.Tier = this.GatewaySku;
+                vnetGateway.Sku.Name = this.GatewaySku;
+            }
+            else
+            {
+                // If gateway sku param value is not passed, set gateway sku to VpnGw1 if VpnType is RouteBased and Basic if VpnType is PolicyBased
+                if (this.VpnType != null && this.VpnType.Equals(MNM.VpnType.RouteBased))
+                {
+                    vnetGateway.Sku = new PSVirtualNetworkGatewaySku();
+                    vnetGateway.Sku.Tier = MNM.VirtualNetworkGatewaySkuTier.VpnGw1;
+                    vnetGateway.Sku.Name = MNM.VirtualNetworkGatewaySkuTier.VpnGw1;
+                }
+                else
+                {
+                    vnetGateway.Sku = new PSVirtualNetworkGatewaySku();
+                    vnetGateway.Sku.Tier = MNM.VirtualNetworkGatewaySkuTier.Basic;
+                    vnetGateway.Sku.Name = MNM.VirtualNetworkGatewaySkuTier.Basic;
+                }
             }
 
-            if (this.ActiveActive && !this.VpnType.Equals(MNM.VpnType.RouteBased))
+            if (this.EnableActiveActiveFeature.IsPresent && !this.VpnType.Equals(MNM.VpnType.RouteBased))
             {
                 throw new ArgumentException("Virtual Network Gateway VpnType should be " + MNM.VpnType.RouteBased + " when Active-Active feature flag is set to True.");
             }
 
-            if (this.ActiveActive && this.IpConfigurations.Count != 2)
+            if (this.EnableActiveActiveFeature.IsPresent && this.IpConfigurations.Count != 2)
             {
                 throw new ArgumentException("Virtual Network Gateway should have 2 Gateway IpConfigurations specified when Active-Active feature flag is True.");
             }
 
-            if (!this.ActiveActive && this.IpConfigurations.Count == 2)
+            if (!this.EnableActiveActiveFeature.IsPresent && this.IpConfigurations.Count == 2)
             {
                 throw new ArgumentException("Virtual Network Gateway should have Active-Active feature flag set to True as there are 2 Gateway IpConfigurations specified. OR there should be only one Gateway IpConfiguration specified.");
             }
@@ -199,10 +289,21 @@ namespace Microsoft.Azure.Commands.Network
                 vnetGateway.IpConfigurations = this.IpConfigurations;
             }
 
+            if (!string.IsNullOrEmpty(GatewaySku)
+                && GatewaySku.Equals(
+                    MNM.VirtualNetworkGatewaySkuTier.UltraPerformance,
+                    StringComparison.InvariantCultureIgnoreCase) && !string.IsNullOrEmpty(GatewayType)
+                && !GatewayType.Equals(
+                    MNM.VirtualNetworkGatewayType.ExpressRoute.ToString(),
+                    StringComparison.InvariantCultureIgnoreCase))
+            {
+                throw new ArgumentException("Virtual Network Gateway Need to be Express Route when the sku is UltraPerformance.");
+
+            }
             vnetGateway.GatewayType = this.GatewayType;
             vnetGateway.VpnType = this.VpnType;
             vnetGateway.EnableBgp = this.EnableBgp;
-            vnetGateway.ActiveActive = this.ActiveActive;
+            vnetGateway.ActiveActive = this.EnableActiveActiveFeature.IsPresent;
 
             if (this.GatewayDefaultSite != null)
             {
@@ -214,18 +315,10 @@ namespace Microsoft.Azure.Commands.Network
                 vnetGateway.GatewayDefaultSite = null;
             }
 
-            if (this.GatewaySku != null)
-            {
-                vnetGateway.Sku = new PSVirtualNetworkGatewaySku();
-                vnetGateway.Sku.Tier = this.GatewaySku;
-                vnetGateway.Sku.Name = this.GatewaySku;
-            }
-            else
-            {
-                vnetGateway.Sku = null;
-            }
-
-            if (this.VpnClientAddressPool != null || this.VpnClientRootCertificates != null || this.VpnClientRevokedCertificates != null)
+            if (this.VpnClientAddressPool != null ||
+                this.VpnClientRootCertificates != null ||
+                this.VpnClientRevokedCertificates != null ||
+                this.RadiusServerAddress != null)
             {
                 vnetGateway.VpnClientConfiguration = new PSVpnClientConfiguration();
 
@@ -241,6 +334,16 @@ namespace Microsoft.Azure.Commands.Network
                     vnetGateway.VpnClientConfiguration.VpnClientAddressPool.AddressPrefixes = this.VpnClientAddressPool;
                 }
 
+                if (this.VpnClientProtocol != null)
+                {
+                    vnetGateway.VpnClientConfiguration.VpnClientProtocols = this.VpnClientProtocol;
+                }
+                else
+                {
+                    // set default
+                    vnetGateway.VpnClientConfiguration.VpnClientProtocols = new List<string> { MNM.VpnClientProtocol.SSTP, MNM.VpnClientProtocol.IkeV2 };
+                }
+
                 if (this.VpnClientRootCertificates != null)
                 {
                     vnetGateway.VpnClientConfiguration.VpnClientRootCertificates = this.VpnClientRootCertificates;
@@ -249,6 +352,18 @@ namespace Microsoft.Azure.Commands.Network
                 if (this.VpnClientRevokedCertificates != null)
                 {
                     vnetGateway.VpnClientConfiguration.VpnClientRevokedCertificates = this.VpnClientRevokedCertificates;
+                }
+
+                if ((this.RadiusServerAddress != null && this.RadiusServerSecret == null) ||
+                    (this.RadiusServerAddress == null && this.RadiusServerSecret != null))
+                {
+                    throw new ArgumentException("Both radius server address and secret must be specified if external radius is being configured");
+                }
+
+                if (this.RadiusServerAddress != null)
+                {
+                    vnetGateway.VpnClientConfiguration.RadiusServerAddress = this.RadiusServerAddress;
+                    vnetGateway.VpnClientConfiguration.RadiusServerSecret = SecureStringExtensions.ConvertToString(this.RadiusServerSecret);
                 }
             }
             else

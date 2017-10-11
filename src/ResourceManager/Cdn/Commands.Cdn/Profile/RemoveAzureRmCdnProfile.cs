@@ -54,10 +54,10 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
                 ProfileName = CdnProfile.Name;
             }
 
-            var existingProfile = CdnManagementClient.Profiles.ListBySubscriptionId().Select(p => p.ToPsProfile())
+            var existingProfile = CdnManagementClient.Profiles.List()
+                .Select(p => p.ToPsProfile())
                 .Where(p => p.Name.ToLower() == ProfileName.ToLower())
-                .Where(p => p.ResourceGroupName.ToLower() == ResourceGroupName.ToLower())
-                .FirstOrDefault();
+                .FirstOrDefault(p => p.ResourceGroupName.ToLower() == ResourceGroupName.ToLower());
 
             if (existingProfile == null)
             {
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
                 string.Format(Resources.Confirm_RemoveProfile, ProfileName),
                 this.MyInvocation.InvocationName,
                 ProfileName,
-                () => CdnManagementClient.Profiles.DeleteIfExists(ProfileName, ResourceGroupName),
+                () => CdnManagementClient.Profiles.Delete(ResourceGroupName, ProfileName),
                 () => ContainsEndpoints());
 
             if (PassThru)
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
 
         private bool ContainsEndpoints()
         {
-            var existingEndpoints = CdnManagementClient.Endpoints.ListByProfile(ProfileName, ResourceGroupName);
+            var existingEndpoints = CdnManagementClient.Endpoints.ListByProfile(ResourceGroupName, ProfileName);
             if(existingEndpoints.Count() > 0)
             {
                 return true;

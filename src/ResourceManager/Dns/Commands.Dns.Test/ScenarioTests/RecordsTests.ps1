@@ -82,6 +82,7 @@ function Test-RecordSetCrud
 	Assert-ThrowsLike { Get-AzureRmDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType A } "*does not exist*"
 
 	Remove-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false
+	Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
 
 <#
@@ -125,6 +126,7 @@ function Test-RecordSetCrudTrimsDotFromZoneName
 	Assert-ThrowsLike { Get-AzureRmDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType A } "*does not exist*"
 
 	Remove-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false
+	Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
 
 <#
@@ -137,6 +139,7 @@ function Test-RecordSetCrudWithPiping
 	$recordName = getAssetname
     $updatedRecord = TestSetup-CreateResourceGroup | New-AzureRmDnsZone -Name $zoneName | New-AzureRmDnsRecordSet -Name $recordName -Ttl 100 -RecordType A -Metadata @{tag1 = "val1"} | Add-AzureRmDnsRecordConfig -Ipv4Address 13.13.0.13 | Set-AzureRmDnsRecordSet
 
+	$resourceGroupName = $updatedRecord.ResourceGroupName
 	Assert-NotNull $updatedRecord
 	Assert-NotNull $updatedRecord.Etag
 	Assert-AreEqual $recordName $updatedRecord.Name 
@@ -153,6 +156,7 @@ function Test-RecordSetCrudWithPiping
 	Assert-ThrowsLike { Get-AzureRmDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $updatedRecord.ResourceGroupName -RecordType A } "*does not exist*"
 
 	Remove-AzureRmDnsZone -Name $zoneName -ResourceGroupName $updatedRecord.ResourceGroupName -Confirm:$false
+	Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
 }
 
 <#
@@ -210,6 +214,7 @@ function Test-RecordSetCrudWithPipingTrimsDotFromZoneName
 	Assert-ThrowsLike { Get-AzureRmDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $updatedRecord.ResourceGroupName -RecordType A } "*does not exist*"
 
 	Remove-AzureRmDnsZone -Name $zoneName -ResourceGroupName $zone.ResourceGroupName -Confirm:$false
+	Remove-AzureRmResourceGroup -Name $zone.ResourceGroupName -Force
 }
 
 <#
@@ -247,6 +252,7 @@ function Test-RecordSetA
 	Assert-True { $removed }
 
 	Remove-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false
+	Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
 
 <#
@@ -282,6 +288,7 @@ function Test-RecordSetANonEmpty
 	Assert-True { $removed }
 
 	Remove-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false
+	Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
 
 <#
@@ -322,6 +329,7 @@ function Test-RecordSetAAAA
 	Assert-True { $removed }
 
 	Remove-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false
+	Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
 
 function Test-RecordSetAAAANonEmpty
@@ -347,6 +355,7 @@ function Test-RecordSetAAAANonEmpty
 	Assert-True { $removed }
 
 	Remove-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false
+	Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
 
 
@@ -385,6 +394,7 @@ function Test-RecordSetCNAME
 	Assert-True { $removed }
 
 	Remove-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false
+	Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
 
 function Test-RecordSetCNAMENonEmpty
@@ -407,6 +417,7 @@ function Test-RecordSetCNAMENonEmpty
 	Assert-True { $removed }
 
 	Remove-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false
+	Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
 
 <#
@@ -446,6 +457,7 @@ function Test-RecordSetMX
 	Assert-True { $removed }
 
 	Remove-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false
+	Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
 
 <#
@@ -474,6 +486,7 @@ function Test-RecordSetMXNonEmpty
 	Assert-True { $removed }
 
 	Remove-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false
+	Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
 
 <#
@@ -516,6 +529,7 @@ function Test-RecordSetNS
 	Assert-True { $removed }
 
 	Remove-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false
+	Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
 
 function Test-RecordSetNSNonEmpty
@@ -549,6 +563,7 @@ function Test-RecordSetNSNonEmpty
 	Assert-True { $removed }
 
 	Remove-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false
+	Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
 
 <#
@@ -589,6 +604,7 @@ function Test-RecordSetTXT
 	Assert-True { $removed }
 
 	Remove-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false
+	Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
 
 function Test-RecordSetTXTNonEmpty
@@ -618,6 +634,7 @@ function Test-RecordSetTXTNonEmpty
 	Assert-True { $removed }
 
 	Remove-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false
+	Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
 
 function Test-RecordSetTXTLegacyLengthValidation
@@ -642,6 +659,7 @@ function Test-RecordSetTXTLegacyLengthValidation
 	Assert-AreEqual $maxRecordTxt $getResult.Records[0].Value;
 
 	Remove-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false
+	Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
 
 
@@ -664,6 +682,7 @@ function Test-RecordSetTXTLengthValidation
 	Assert-AreEqual $maxRecordTxt $getResult.Records[0].Value;
 
 	Remove-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false
+	Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
 
 
@@ -699,6 +718,7 @@ function Test-RecordSetPTR
 	Assert-True { $removed }
 
 	Remove-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false
+	Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
 
 function Test-RecordSetPTRNonEmpty
@@ -722,6 +742,7 @@ function Test-RecordSetPTRNonEmpty
 	Assert-True { $removed }
 
 	Remove-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false
+	Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
 
 <#
@@ -765,6 +786,7 @@ function Test-RecordSetSRV
 	Assert-True { $removed }
 
 	Remove-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false
+	Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
 
 function Test-RecordSetSRVNonEmpty
@@ -792,6 +814,7 @@ function Test-RecordSetSRVNonEmpty
 	Assert-True { $removed }
 
 	Remove-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false
+	Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
 
 
@@ -841,6 +864,7 @@ function Test-RecordSetSOA
 	Assert-Throws { $listResult[0] | Remove-AzureRmDnsRecordSet -Confirm:$false -PassThru } "RecordSets of type 'SOA' with name '@' cannot be deleted."
 
 	Remove-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false
+	Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
 
 <#
@@ -869,6 +893,7 @@ function Test-RecordSetNewAlreadyExists
 
 	$retrievedRecordSet | Remove-AzureRmDnsRecordSet -Confirm:$false
 	$zone | Remove-AzureRmDnsZone -Confirm:$false
+	Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
 
 <#
@@ -893,7 +918,8 @@ function Test-RecordSetAddTwoCnames
 	$recordName = getAssetname
 
     $recordSet = TestSetup-CreateResourceGroup | New-AzureRmDnsZone -Name $zoneName | New-AzureRmDnsRecordSet -Name $recordName -Ttl 100 -RecordType CNAME 
-	
+	$resourceGroupName = $recordSet.ResourceGroupName
+
 	$recordSet | Add-AzureRmDnsRecordConfig -Cname www.goril.la
 	Assert-Throws { $recordSet | Add-AzureRmDnsRecordConfig -Cname rubadub.dub } "There already exists a CNAME record in this set. A CNAME record set can only contain one record."
 	Assert-AreEqual 1 $recordSet.Records.Count
@@ -906,6 +932,7 @@ function Test-RecordSetAddTwoCnames
 
 	$recordSet | Remove-AzureRmDnsRecordSet -Confirm:$false
 	Remove-AzureRmDnsZone -Name $recordSet.ZoneName -ResourceGroupName $recordSet.ResourceGroupName -Confirm:$false
+	Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
 }
 
 <#
@@ -917,11 +944,13 @@ function Test-RecordSetRemoveRecordTypeMismatch
 	$zoneName = Get-RandomZoneName
 	$recordName = getAssetname
     $recordSet = TestSetup-CreateResourceGroup | New-AzureRmDnsZone -Name $zoneName | New-AzureRmDnsRecordSet -Name $recordName -Ttl 100 -RecordType TXT
-	
+	$resourceGroupName = $recordSet.ResourceGroupName
+
 	Assert-Throws { $recordSet | Remove-AzureRmDnsRecordConfig -Nsdname nsa.fed.gov } "Cannot remove a record of type NS from a record set of type TXT. The types must match."
 
 	$recordSet | Remove-AzureRmDnsRecordSet -Confirm:$false
 	Remove-AzureRmDnsZone -Name $recordSet.ZoneName -ResourceGroupName $recordSet.ResourceGroupName -Confirm:$false
+	Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
 }
 
 <#
@@ -950,6 +979,7 @@ function Test-RecordSetEtagMismatch
 	Assert-True { $recordSet | Remove-AzureRmDnsRecordSet -Overwrite -Confirm:$false -PassThru }
 
 	Remove-AzureRmDnsZone -Name $zoneName -ResourceGroupName $recordSet.ResourceGroupName -Confirm:$false
+	Remove-AzureRmResourceGroup -Name $recordSet.ResourceGroupName -Force
 }
 
 <#
@@ -964,6 +994,7 @@ function Test-RecordSetGet
 	$recordName3 = getAssetname
 
 	$zone = TestSetup-CreateResourceGroup | New-AzureRmDnsZone -Name $zoneName
+	$resourceGroupName = $zone.ResourceGroupName
 
 	# test for root records
 	$nsRecords = Get-AzureRmDnsRecordSet -Zone $zone -RecordType NS
@@ -994,6 +1025,7 @@ function Test-RecordSetGet
 	$zone | Remove-AzureRmDnsRecordSet -Name $recordName3 -RecordType MX -Confirm:$false
 
 	$zone | Remove-AzureRmDnsZone -Confirm:$false -Overwrite
+	Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
 }
 
 <#
@@ -1013,6 +1045,7 @@ function Test-RecordSetGetWithEndsWith
 	$recordName3 = (getAssetname) + $recordSuffix
 
 	$zone = TestSetup-CreateResourceGroup | New-AzureRmDnsZone -Name $zoneName
+	$resourceGroupName = $zone.ResourceGroupName
 
 	# test for root records
 	$rootRecords = $zone | Get-AzureRmDnsRecordSet -EndsWith $rootRecordName
@@ -1040,6 +1073,7 @@ function Test-RecordSetGetWithEndsWith
 	$zone | Remove-AzureRmDnsRecordSet -Name $recordName3 -RecordType MX -Confirm:$false
 
 	$zone | Remove-AzureRmDnsZone -Confirm:$false -Overwrite
+	Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
 }
 
 <#
@@ -1053,18 +1087,14 @@ function Test-RecordSetEndsWithZoneName
 	$resourceGroup = TestSetup-CreateResourceGroup
 	$zone = New-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName
 
-	$warning = $env:TEMP + "\warning.txt"
-	$message = [System.String]::Format("The relative record set name `"{0}`" includes the zone name `"{1}`". This will result in the set name `"{0}.{1}`".", $recordName, $zoneName);
-	(New-AzureRmDnsRecordSet -Name $recordName -RecordType A -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Ttl 100) 3> $warning
+	$message = [System.String]::Format("The relative record set name `"{0}`" includes the zone name `"{1}`". This will result in the set name `"{0}.{1}`". Usage of this cmdlet without DnsRecords parameter will be deprecated soon. If there is a need to create empty record set, please specify DnsRecords parameter with an empty array as value Microsoft.Azure.Commands.Dns.DnsRecordSet", $recordName, $zoneName);
+	 $warning = (New-AzureRmDnsRecordSet -Name $recordName -RecordType A -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Ttl 100) 3>&1
 
-	if(Test-Path $warning){
-		$warningCombined = (Get-Content $warning)[0] + (Get-Content $warning)[1]
-		Assert-AreEqual $warningCombined $message
-		Remove-Item $warning
-	}
+	Assert-AreEqual $message $warning
+
 	Remove-AzureRmDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType A -PassThru -Confirm:$false
 	Remove-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false
-
+	Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
 
 function Test-RecordSetNewRecordNoName
@@ -1091,4 +1121,5 @@ function Test-RecordSetNewRecordNoName
 	Assert-True { $removed }
 	Remove-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false
 
+	Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }

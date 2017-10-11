@@ -163,7 +163,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 {
                     await
                         fileToBeDownloaded.FetchAttributesAsync(null, this.RequestOptions, OperationContext,
-                            CmdletCancellationToken);
+                            CmdletCancellationToken).ConfigureAwait(false);
 
                     var progressRecord = new ProgressRecord(
                         this.OutputStream.GetProgressId(taskId),
@@ -184,7 +184,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                             CmdletCancellationToken);
                     },
                         progressRecord,
-                        this.OutputStream);
+                        this.OutputStream).ConfigureAwait(false);
 
                     if (this.PassThru)
                     {

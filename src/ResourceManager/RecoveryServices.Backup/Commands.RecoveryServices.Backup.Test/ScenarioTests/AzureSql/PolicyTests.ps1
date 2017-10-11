@@ -14,7 +14,7 @@
 
 function Test-AzureSqlPolicyScenario
 {
-	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "RsvTestRG" -Name "RsvTestRN";
+	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "sqlpaasrg" -Name "sqlpaasrn";
 	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
 
 	# get default objects

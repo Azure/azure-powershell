@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using System.Security;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
@@ -54,5 +55,13 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         /// The service principal secret to access the Azure Key Vault.
         /// </value>
         public string ServicePrincipalSecret { get; set; }
+
+        /// <summary>
+        /// Gets the credentials
+        /// </summary>
+        /// <value>
+        /// The list of existing credentials for AKV.
+        /// </value>
+        public List<AzureVMSqlServerKeyVaultCredential> Credentials { get; set; }
     }
 }

@@ -172,6 +172,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                                                                                   ? roleInstance.InstanceUpgradeDomain.Value.ToString(CultureInfo.InvariantCulture) : null,
                 Status                      = roleInstance == null ? string.Empty : roleInstance.InstanceStatus,
                 GuestAgentStatus            = roleInstance == null ? null : Mapper.Map<PVM.GuestAgentStatus>(roleInstance.GuestAgentStatus),
+                MaintenanceStatus           = roleInstance == null ? null : Mapper.Map<PVM.MaintenanceStatus>(roleInstance.MaintenanceStatus),
                 ResourceExtensionStatusList = roleInstance == null ? null : Mapper.Map<List<PVM.ResourceExtensionStatus>>(roleInstance.ResourceExtensionStatusList),
                 OperationId                 = deployment == null ? string.Empty : deployment.RequestId,
                 OperationStatus             = deployment == null ? string.Empty : deployment.StatusCode.ToString(),

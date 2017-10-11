@@ -13,33 +13,29 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Subscriptions.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Internal.Subscriptions.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
     internal static class ModelExtensions
     {
-        internal static AzureSubscription ToAzureSubscription(this Subscription other, AzureContext context)
+        internal static AzureSubscription ToAzureSubscription(this Subscription other, IAzureContext context)
         {
             var subscription = new AzureSubscription();
-            subscription.Account = context.Account != null ? context.Account.Id : null;
-            subscription.Environment = context.Environment != null ? context.Environment.Name : EnvironmentName.AzureCloud;
-            subscription.Id = new Guid(other.SubscriptionId);
+            subscription.SetAccount(context.Account != null ? context.Account.Id : null);
+            subscription.SetEnvironment(context.Environment != null ? context.Environment.Name : EnvironmentName.AzureCloud);
+            subscription.Id = other.SubscriptionId;
             subscription.Name = other.DisplayName;
-            subscription.State = other.State;
+            subscription.State = other.State.ToString();
             subscription.SetProperty(AzureSubscription.Property.Tenants,
                 context.Tenant.Id.ToString());
             return subscription;
         }
 
-        public static List<AzureTenant> MergeTenants(
-            this AzureAccount account,
-            IEnumerable<TenantIdDescription> tenants,
-            IAccessToken token)
+        public static List<AzureTenant> MergeTenants( this IAzureAccount account, IEnumerable<TenantIdDescription> tenants, IAccessToken token)
         {
             List<AzureTenant> result = null;
             if (tenants != null)
@@ -48,7 +44,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 account.SetProperty(AzureAccount.Property.Tenants, null);
                 tenants.ForEach((t) =>
                 {
-                    existingTenants.Add(new AzureTenant { Id = new Guid(t.TenantId), Domain = token.GetDomain() });
+                    existingTenants.Add(new AzureTenant { Id = t.TenantId, Directory = token.GetDomain() });
                     account.SetOrAppendProperty(AzureAccount.Property.Tenants, t.TenantId);
                 });
 
@@ -57,5 +53,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
             return result;
         }
+
     }
 }

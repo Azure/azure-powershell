@@ -115,6 +115,24 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Removing Backend &apos;{0}&apos;.
+        /// </summary>
+        internal static string BackendRemoveDescription {
+            get {
+                return ResourceManager.GetString("BackendRemoveDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove Backend &quot;{0}&quot; ?.
+        /// </summary>
+        internal static string BackendRemoveWarning {
+            get {
+                return ResourceManager.GetString("BackendRemoveWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing Certificate &quot;{0}&quot;..
         /// </summary>
         internal static string CertificateRemoveDescription {
@@ -133,6 +151,15 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create a Backend Entity.
+        /// </summary>
+        internal static string CreateBackend {
+            get {
+                return ResourceManager.GetString("CreateBackend", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing Group &quot;{0}&quot;..
         /// </summary>
         internal static string GroupRemoveDescription {
@@ -147,6 +174,24 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties {
         internal static string GroupRemoveWarning {
             get {
                 return ResourceManager.GetString("GroupRemoveWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing Identity Provider configuration for &quot;{0}&quot;..
+        /// </summary>
+        internal static string IdentityProviderRemoveDescription {
+            get {
+                return ResourceManager.GetString("IdentityProviderRemoveDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove Identity Provider &quot;{0}&quot;?.
+        /// </summary>
+        internal static string IdentityProviderRemoveWarning {
+            get {
+                return ResourceManager.GetString("IdentityProviderRemoveWarning", resourceCulture);
             }
         }
         
@@ -309,6 +354,15 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties {
         internal static string SaveTenantConfigurationWarning {
             get {
                 return ResourceManager.GetString("SaveTenantConfigurationWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set Backend.
+        /// </summary>
+        internal static string SetBackend {
+            get {
+                return ResourceManager.GetString("SetBackend", resourceCulture);
             }
         }
         

@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,11 +15,11 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
-using Microsoft.Azure.Management.Sql;
-using Microsoft.Azure.Management.Sql.Models;
-using System;
+using Microsoft.Azure.Management.Sql.LegacySdk;
+using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using System.Threading.Tasks;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
 {
@@ -36,14 +36,14 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
         /// <summary>
         /// Gets or set the Azure subscription
         /// </summary>
-        private static AzureSubscription Subscription { get; set; }
+        private static IAzureSubscription Subscription { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureContext Context { get; set; }
+        public IAzureContext Context { get; set; }
 
-        public ThreatDetectionEndpointsCommunicator(AzureContext context)
+        public ThreatDetectionEndpointsCommunicator(IAzureContext context)
         {
             Context = context;
             if (context.Subscription != Subscription)
@@ -56,9 +56,9 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
         /// <summary>
         /// Gets the server security alert policy for the given server in the given resource group
         /// </summary>
-        public ServerSecurityAlertPolicy GetServerSecurityAlertPolicy(string resourceGroupName, string serverName, string clientRequestId)
+        public ServerSecurityAlertPolicy GetServerSecurityAlertPolicy(string resourceGroupName, string serverName)
         {
-            ISecurityAlertPolicyOperations operations = GetCurrentSqlClient(clientRequestId).SecurityAlertPolicy;
+            ISecurityAlertPolicyOperations operations = GetCurrentSqlClient().SecurityAlertPolicy;
             var response = operations.GetServerSecurityAlertPolicy(resourceGroupName, serverName);
             return response.SecurityAlertPolicy;
         }
@@ -66,9 +66,9 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
         /// <summary>
         /// Calls the set security alert APIs for the server security alert policy in the given resource group
         /// </summary>
-        public void SetServerSecurityAlertPolicy(string resourceGroupName, string serverName, string clientRequestId, ServerSecurityAlertPolicyCreateOrUpdateParameters parameters)
+        public void SetServerSecurityAlertPolicy(string resourceGroupName, string serverName, ServerSecurityAlertPolicyCreateOrUpdateParameters parameters)
         {
-            ISecurityAlertPolicyOperations operations = GetCurrentSqlClient(clientRequestId).SecurityAlertPolicy;
+            ISecurityAlertPolicyOperations operations = GetCurrentSqlClient().SecurityAlertPolicy;
             var statusLink = operations.CreateOrUpdateServerSecurityAlertPolicy(resourceGroupName, serverName, parameters).OperationStatusLink;
             if (string.IsNullOrEmpty(statusLink))
             {
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
             }
             for (var iterationCount = 0; iterationCount < 1800; iterationCount++) // wait for at most an hour
             {
-                var status = GetServerCreateOrUpdateOperationStatus(statusLink, clientRequestId);
+                var status = GetServerCreateOrUpdateOperationStatus(statusLink);
                 if (status == OperationStatus.Succeeded)
                 {
                     break;
@@ -88,18 +88,18 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
         /// <summary>
         /// Returns the operation status of a server create or update operation
         /// </summary>
-        public OperationStatus GetServerCreateOrUpdateOperationStatus(string operationStatusLink, string clientRequestId)
+        public OperationStatus GetServerCreateOrUpdateOperationStatus(string operationStatusLink)
         {
-            var operations = GetCurrentSqlClient(clientRequestId).SecurityAlertPolicy;
+            var operations = GetCurrentSqlClient().SecurityAlertPolicy;
             return operations.GetOperationStatus(operationStatusLink).OperationResult.Properties.State;
         }
 
         /// <summary>
         /// Gets the database security alert policy for the given database in the given database server in the given resource group
         /// </summary>
-        public DatabaseSecurityAlertPolicy GetDatabaseSecurityAlertPolicy(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
+        public DatabaseSecurityAlertPolicy GetDatabaseSecurityAlertPolicy(string resourceGroupName, string serverName, string databaseName)
         {
-            ISecurityAlertPolicyOperations operations = GetCurrentSqlClient(clientRequestId).SecurityAlertPolicy;
+            ISecurityAlertPolicyOperations operations = GetCurrentSqlClient().SecurityAlertPolicy;
             DatabaseSecurityAlertPolicyGetResponse response = operations.GetDatabaseSecurityAlertPolicy(resourceGroupName, serverName, databaseName);
             return response.SecurityAlertPolicy;
         }
@@ -107,9 +107,9 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
         /// <summary>
         /// Calls the set security alert APIs for the database security alert policy for the given database in the given database server in the given resource group
         /// </summary>
-        public void SetDatabaseSecurityAlertPolicy(string resourceGroupName, string serverName, string databaseName, string clientRequestId, DatabaseSecurityAlertPolicyCreateOrUpdateParameters parameters)
+        public void SetDatabaseSecurityAlertPolicy(string resourceGroupName, string serverName, string databaseName, DatabaseSecurityAlertPolicyCreateOrUpdateParameters parameters)
         {
-            ISecurityAlertPolicyOperations operations = GetCurrentSqlClient(clientRequestId).SecurityAlertPolicy;
+            ISecurityAlertPolicyOperations operations = GetCurrentSqlClient().SecurityAlertPolicy;
             operations.CreateOrUpdateDatabaseSecurityAlertPolicy(resourceGroupName, serverName, databaseName, parameters);
         }
 
@@ -118,15 +118,13 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
         /// id tracing headers for the current cmdlet invocation.
         /// </summary>
         /// <returns>The SQL Management client for the currently selected subscription.</returns>
-        private SqlManagementClient GetCurrentSqlClient(String clientRequestId)
+        private SqlManagementClient GetCurrentSqlClient()
         {
             // Get the SQL management client for the current subscription
             if (SqlClient == null)
             {
-                SqlClient = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
+                SqlClient = AzureSession.Instance.ClientFactory.CreateClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
             }
-            SqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
-            SqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);
             return SqlClient;
         }
     }

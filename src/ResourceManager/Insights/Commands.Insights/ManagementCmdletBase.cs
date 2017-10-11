@@ -13,60 +13,38 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Management.Insights;
+using Microsoft.Azure.Management.Monitor.Management;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.Insights
 {
     /// <summary>
-    /// Base class for the Azure Insights SDK Cmdlets based on the InsightsManagementClient
+    /// Base class for the Azure Insights SDK Cmdlets based on the MonitorManagementClient
     /// </summary>
-    public abstract class ManagementCmdletBase : InsightsCmdletBase
+    public abstract class ManagementCmdletBase : MonitorCmdletBase
     {
         #region General declarations
 
-        private IInsightsManagementClient insightsManagementClient;
-
-        private bool disposed;
+        private IMonitorManagementClient monitorManagementClient;
 
         /// <summary>
-        /// Gets the insightsManagementClient to use in the Cmdlet
+        /// Gets the monitorManagementClient to use in the Cmdlet
         /// </summary>
-        public IInsightsManagementClient InsightsManagementClient
+        public IMonitorManagementClient MonitorManagementClient
         {
             // The premise is that a command to establish a context (like Add-AzureRmAccount) has
             //   been called before this command in order to have a correct CurrentContext
             get
             {
-                if (this.insightsManagementClient == null)
+                if (this.monitorManagementClient == null)
                 {
-                    this.insightsManagementClient = AzureSession.ClientFactory.CreateClient<InsightsManagementClient>(DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager);
+                    this.monitorManagementClient = AzureSession.Instance.ClientFactory.CreateArmClient<MonitorManagementClient>(DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
                 }
 
-                return this.insightsManagementClient;
+                return this.monitorManagementClient;
             }
-            set { this.insightsManagementClient = value; }
+            set { this.monitorManagementClient = value; }
         }
-
-        /// <summary>
-        /// Dispose the resources
-        /// </summary>
-        /// <param name="disposing">Indicates whether the managed resources should be disposed or not</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (!this.disposed)
-            {
-                if (this.insightsManagementClient != null)
-                {
-                    this.insightsManagementClient.Dispose();
-                    this.insightsManagementClient = null;
-                }
-
-                this.disposed = true;
-            }
-            base.Dispose(disposing);
-        }
-
         #endregion
     }
 }

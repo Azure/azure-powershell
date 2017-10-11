@@ -130,6 +130,18 @@ namespace Microsoft.Azure.Commands.Network
         public List<PSApplicationGatewayRequestRoutingRule> RequestRoutingRules { get; set; }
 
         [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "The list of redirect configuration")]
+        public List<PSApplicationGatewayRedirectConfiguration> RedirectConfigurations { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Firewall configuration")]
+        public virtual PSApplicationGatewayWebApplicationFirewallConfiguration WebApplicationFirewallConfiguration { get; set; }
+
+        [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable which represents resource tags.")]
@@ -226,6 +238,16 @@ namespace Microsoft.Azure.Commands.Network
             if (this.RequestRoutingRules != null)
             {
                 applicationGateway.RequestRoutingRules = this.RequestRoutingRules;
+            }
+
+            if (this.RedirectConfigurations != null)
+            {
+                applicationGateway.RedirectConfigurations = this.RedirectConfigurations;
+            }
+
+            if (this.WebApplicationFirewallConfiguration != null)
+            {
+                applicationGateway.WebApplicationFirewallConfiguration = this.WebApplicationFirewallConfiguration;
             }
 
             // Normalize the IDs

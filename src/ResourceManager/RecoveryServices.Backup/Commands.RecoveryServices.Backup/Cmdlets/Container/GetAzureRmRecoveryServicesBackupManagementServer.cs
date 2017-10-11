@@ -12,15 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -29,13 +25,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupManagementServer"),
     OutputType(typeof(BackupEngineBase), typeof(IList<BackupEngineBase>))]
-    public class GetAzureRmRecoveryServicesBackupManagementServer 
+    public class GetAzureRmRecoveryServicesBackupManagementServer
         : RecoveryServicesBackupCmdletBase
     {
         /// <summary>
         /// Name of the backup management server(s) to be fetched.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 1, 
+        [Parameter(Mandatory = false, Position = 1,
             HelpMessage = ParamHelpMsgs.Container.Name)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -48,12 +44,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 PsBackupProviderManager providerManager = new PsBackupProviderManager(
                     new Dictionary<System.Enum, object>()
-                {  
-                    {ContainerParams.ContainerType, ContainerType.Windows},                
+                {
+                    {ContainerParams.ContainerType, ContainerType.Windows},
                     {ContainerParams.Name, Name}
                 }, ServiceClientAdapter);
 
-                IPsBackupProvider psBackupProvider = 
+                IPsBackupProvider psBackupProvider =
                     providerManager.GetProviderInstanceForBackupManagementServer();
 
                 var backupServerModels = psBackupProvider.ListBackupManagementServers();

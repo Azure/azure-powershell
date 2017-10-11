@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     public class PolicyConstants
     {
         public const int MinPolicyNameLength = 3;
-        public const int MaxPolicyNameLength = 150;                
+        public const int MaxPolicyNameLength = 150;
     }
 
     public class ContainerConstansts

@@ -12,42 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Insights.Models;
+using Microsoft.Azure.Management.Monitor.Models;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
     /// <summary>
     /// Wrapps around the PSMetricNoDetails and exposes all the localized strings as invariant/localized properties
     /// </summary>
-    public sealed class PSMetric : PSMetricNoDetails
+    public class PSMetric : Metric
     {
-        /// <summary>
-        /// Gets or sets the MetricValues collection of the metric
-        /// </summary>
-        public new PSMetricValuesCollection MetricValues { get; set; }
-
-        /// <summary>
-        /// Gets or sets the Properties of the metric
-        /// </summary>
-        public new PSDictionaryElement Properties { get; set; }
-
         /// <summary>
         /// Initializes a new instance of the PSMetric class.
         /// </summary>
         /// <param name="metric">The input Metric object</param>
         public PSMetric(Metric metric)
-            : base(metric)
+            : base(name: new PSLocalizableString(metric.Name), unit: metric.Unit, data: new PSMetricValuesCollection(metric.Data), id: metric.Id, type: metric.Type)
         {
-            this.DimensionName = metric.DimensionName == null ? null : metric.DimensionName.Value;
-            this.DimensionValue = metric.DimensionValue == null ? null : metric.DimensionValue.Value;
-            this.EndTime = metric.EndTime;
-            this.MetricValues = new PSMetricValuesCollection(metric.MetricValues);
-            this.Name = metric.Name == null ? null : metric.Name.Value;
-            this.Properties = new PSDictionaryElement(metric.Properties);
-            this.ResourceId = metric.ResourceId;
-            this.StartTime = metric.StartTime;
-            this.TimeGrain = metric.TimeGrain;
-            this.Unit = metric.Unit;
         }
     }
 }

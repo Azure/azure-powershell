@@ -32,6 +32,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public List<string> Ekus { get; set; }
         public int? ValidityInMonths { get; set; }
         public string IssuerName { get; set; }
+        public string CertificateType { get; set; }
         public int? RenewAtNumberOfDaysBeforeExpiry { get; set; }
         public int? RenewAtPercentageLifetime { get; set; }
         public int? EmailAtNumberOfDaysBeforeExpiry { get; set; }
@@ -74,7 +75,22 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             if (!string.IsNullOrWhiteSpace(IssuerName))
             {
-                certificatePolicy.IssuerReference = new IssuerReference { Name = IssuerName };
+                if (certificatePolicy.IssuerParameters == null)
+                {
+                    certificatePolicy.IssuerParameters = new IssuerParameters();
+                }
+
+                certificatePolicy.IssuerParameters.Name = IssuerName;
+            }
+
+            if (!string.IsNullOrWhiteSpace(CertificateType))
+            {
+                if (certificatePolicy.IssuerParameters == null)
+                {
+                    certificatePolicy.IssuerParameters = new IssuerParameters();
+                }
+
+                certificatePolicy.IssuerParameters.CertificateType = CertificateType;
             }
 
             if (Enabled.HasValue)
@@ -204,7 +220,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 KeyUsage = certificatePolicy.X509CertificateProperties == null ? null : certificatePolicy.X509CertificateProperties.KeyUsage == null ? null : new List<string>(certificatePolicy.X509CertificateProperties.KeyUsage),
                 Ekus = certificatePolicy.X509CertificateProperties == null ? null : certificatePolicy.X509CertificateProperties.Ekus == null ? null : new List<string>(certificatePolicy.X509CertificateProperties.Ekus),               
                 ValidityInMonths = certificatePolicy.X509CertificateProperties == null ? null : certificatePolicy.X509CertificateProperties.ValidityInMonths,
-                IssuerName = certificatePolicy.IssuerReference == null ? null : certificatePolicy.IssuerReference.Name,
+                IssuerName = certificatePolicy.IssuerParameters == null ? null : certificatePolicy.IssuerParameters.Name,
+                CertificateType = certificatePolicy.IssuerParameters == null ? null : certificatePolicy.IssuerParameters.CertificateType,
                 RenewAtNumberOfDaysBeforeExpiry = certificatePolicy.LifetimeActions == null ? null : FindIntValueForAutoRenewAction(certificatePolicy.LifetimeActions, (trigger) => trigger.DaysBeforeExpiry),
                 RenewAtPercentageLifetime = certificatePolicy.LifetimeActions == null ? null : FindIntValueForAutoRenewAction(certificatePolicy.LifetimeActions, (trigger) => trigger.LifetimePercentage),
                 EmailAtNumberOfDaysBeforeExpiry = certificatePolicy.LifetimeActions == null ? null : FindIntValueForEmailAction(certificatePolicy.LifetimeActions, (trigger) => trigger.DaysBeforeExpiry),

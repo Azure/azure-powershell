@@ -50,13 +50,6 @@ namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetRedisCacheBugFixTest()
-        {
-            RedisCacheController.NewInstance.RunPowerShellTest("Test-SetRedisCacheBugFixTest");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMaxMemoryPolicyErrorCheck()
         {
             RedisCacheController.NewInstance.RunPowerShellTest("Test-MaxMemoryPolicyErrorCheck");
@@ -68,47 +61,26 @@ namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
         {
             RedisCacheController.NewInstance.RunPowerShellTest("Test-RedisCacheClustering");
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetAzureRedisCacheDiagnostics()
-        {
-            RedisCacheController.NewInstance.RunPowerShellTest("Test-SetAzureRedisCacheDiagnostics");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRemoveAzureRedisCacheDiagnostics()
-        {
-            RedisCacheController.NewInstance.RunPowerShellTest("Test-RemoveAzureRedisCacheDiagnostics");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestResetAzureRmRedisCache()
-        {
-            RedisCacheController.NewInstance.RunPowerShellTest("Test-ResetAzureRmRedisCache");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestExportAzureRmRedisCache()
-        {
-            RedisCacheController.NewInstance.RunPowerShellTest("Test-ExportAzureRmRedisCache");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestImportAzureRmRedisCache()
-        {
-            RedisCacheController.NewInstance.RunPowerShellTest("Test-ImportAzureRmRedisCache");
-        }
-
+        
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRedisCachePatchSchedules()
         {
             RedisCacheController.NewInstance.RunPowerShellTest("Test-RedisCachePatchSchedules");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestImportExportReboot()
+        {
+            RedisCacheController.NewInstance.RunPowerShellTest("Test-ImportExportReboot");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDiagnosticOperations()
+        {
+            RedisCacheController.NewInstance.RunPowerShellTest("Test-DiagnosticOperations");
         }
     }
 }

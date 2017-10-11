@@ -167,6 +167,67 @@ function Test-subnetCRUD
 
 <#
 .SYNOPSIS
+Tests creating new simple virtualNetwork with DDoSProtecion parameters.
+#>
+function Test-VirtualNetworkCRUDWithDDoSProtection
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $vnetName = Get-ResourceName
+    $subnetName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/virtualNetworks"
+    $location = Get-ProviderLocation $resourceTypeParent
+    
+    try 
+    {
+        # Create the resource group
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+        
+        # Create the Virtual Network
+        $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
+        $actual = New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -DnsServer 8.8.8.8 -Subnet $subnet -EnableDDoSProtection
+        $expected = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+        
+        Assert-AreEqual $expected.ResourceGroupName $rgname    
+        Assert-AreEqual $expected.Name $actual.Name    
+        Assert-AreEqual $expected.Location $actual.Location
+        Assert-AreEqual "Succeeded" $expected.ProvisioningState
+        Assert-NotNull $expected.ResourceGuid
+        Assert-AreEqual "10.0.0.0/16" $expected.AddressSpace.AddressPrefixes[0]
+        Assert-AreEqual 1 @($expected.DhcpOptions.DnsServers).Count
+        Assert-AreEqual "8.8.8.8" $expected.DhcpOptions.DnsServers[0]
+        Assert-AreEqual 1 @($expected.Subnets).Count
+        Assert-AreEqual $subnetName $expected.Subnets[0].Name
+        Assert-AreEqual "10.0.1.0/24" $expected.Subnets[0].AddressPrefix
+		Assert-AreEqual true $expected.EnableDDoSProtection
+		Assert-AreEqual false $expected.EnableVmProtection
+        
+		$expected.EnableDDoSProtection=$false
+		Set-AzureRmVirtualNetwork -VirtualNetwork $expected
+		$expected = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+        Assert-AreEqual false $expected.EnableDDoSProtection
+		Assert-AreEqual false $expected.EnableVmProtection
+
+		$expected.EnableVmProtection=$true
+		Set-AzureRmVirtualNetwork -VirtualNetwork $expected
+		$expected = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+        Assert-AreEqual false $expected.EnableDDoSProtection
+		Assert-AreEqual true $expected.EnableVmProtection
+        
+        # Delete VirtualNetwork
+        $delete = Remove-AzureRmvirtualNetwork -ResourceGroupName $rgname -name $vnetName -PassThru -Force
+        Assert-AreEqual true $delete
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Tests on CRUD for virtualNetworkpeering.
 #>
 function Test-VirtualNetworkPeeringCRUD
@@ -342,6 +403,101 @@ function Test-ResourceNavigationLinksCRUD
         Assert-AreEqual 1 @($subnet.ResourceNavigationLinks).Count
         Assert-AreEqual $cache.Id $subnet.ResourceNavigationLinks[0].Link
         Assert-AreEqual "Microsoft.Cache/redis" $subnet.ResourceNavigationLinks[0].LinkedResourceType
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests checking Virtual Network Usage feature.
+#>
+function Test-VirtualNetworkUsage
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $vnetName = Get-ResourceName
+    $subnetName = Get-ResourceName
+    $subnet2Name = Get-ResourceName
+    $nicName = Get-ResourceName
+    $domainNameLabel = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/virtualNetworks"
+    $location = Get-ProviderLocation $resourceTypeParent
+
+    try
+    {
+        # Create the resource group
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+
+        # Create the Virtual Network
+        $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
+        New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $vnet = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+
+        Assert-NotNull $vnet;
+        Assert-NotNull $vnet.Subnets;
+
+        $subnetId = $vnet.Subnets[0].Id;
+
+        $usage = Get-AzureRMVirtualNetworkUsageList -ResourceGroupName $rgname -Name $vnetName;
+
+        Assert-NotNull $usage;
+        $currentUsage = $usage.CurrentValue;
+
+        # Add Network Interface to change usage current value
+        New-AzureRmNetworkInterface -Location $location -Name $nicName -ResourceGroupName $rgname -SubnetId $subnetId;
+        $usage = Get-AzureRMVirtualNetworkUsageList -ResourceGroupName $rgname -Name $vnetName;
+        $currentUsageNew = $usage.CurrentValue;
+
+        Assert-AreEqual $currentUsage $($currentUsageNew - 1);
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests checking Virtual Network Subnet Service Endpoint feature.
+#>
+function Test-VirtualNetworkSubnetServiceEndpoint
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $vnetName = Get-ResourceName
+    $subnetName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/virtualNetworks"
+    $location = Get-ProviderLocation $resourceTypeParent
+    $serviceEndpoint = "Microsoft.Storage"
+
+    try
+    {
+        # Create the resource group
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" };
+
+        # Create the Virtual Network
+        $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24 -ServiceEndpoint $serviceEndpoint;
+        New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet;
+        $vnet = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname;
+
+        Assert-NotNull $vnet;
+        Assert-NotNull $vnet.Subnets;
+
+        $subnet = $vnet.Subnets[0];
+        Assert-AreEqual $serviceEndpoint $subnet.serviceEndpoints[0].Service;
+
+        Set-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $vnet -AddressPrefix 10.0.1.0/24 -ServiceEndpoint $null;
+        $vnet = Set-AzureRmVirtualNetwork -VirtualNetwork $vnet;
+        $subnet = $vnet.Subnets[0];
+
+        Assert-Null $subnet.serviceEndpoints;
     }
     finally
     {

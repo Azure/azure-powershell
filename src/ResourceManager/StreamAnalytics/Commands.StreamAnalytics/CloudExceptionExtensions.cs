@@ -12,8 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Hyak.Common;
 using Microsoft.Azure.Commands.StreamAnalytics.Properties;
+using Microsoft.Rest.Azure;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -24,13 +25,14 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
     {
         public static CloudException CreateFormattedException(this CloudException cloudException)
         {
+            JObject errorResponse = JObject.Parse(cloudException.Response.Content);
             return new CloudException(
                 string.Format(
                     CultureInfo.InvariantCulture,
                     Resources.FormattedCloudExceptionMessageTemplate,
                     cloudException.Response.StatusCode,
-                    cloudException.Error.Code,
-                    cloudException.Error.Message,
+                    cloudException.Body == null ? errorResponse["code"] : cloudException.Body.Code,
+                    cloudException.Body == null ? errorResponse["message"] : cloudException.Body.Message,
                     cloudException.GetRequestId(),
                     DateTime.UtcNow));
         }

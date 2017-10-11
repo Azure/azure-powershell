@@ -47,6 +47,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             ValueFromPipeline = true,
              ValueFromPipelineByPropertyName = true,
            ParameterSetName = NameParameterSet)]
+        [SupportsWildcards()]
         public string Name { get; set; }
 
         [Parameter(HelpMessage = "Container Prefix",
@@ -228,7 +229,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             try
             {
                 permissions = await localChannel.GetContainerPermissionsAsync(container, accessCondition,
-                    requestOptions, OperationContext, CmdletCancellationToken);
+                    requestOptions, OperationContext, CmdletCancellationToken).ConfigureAwait(false);
             }
             catch (StorageException e)
             {

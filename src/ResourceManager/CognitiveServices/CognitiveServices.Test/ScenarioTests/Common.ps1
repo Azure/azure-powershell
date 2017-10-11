@@ -83,6 +83,24 @@ function Retry-IfException
 
 <#
 .SYNOPSIS
+Create a Cognitive Services account
+#>
+function Test-CreateCognitiveServicesAccount
+{
+	param([string] $rgname, [string] $accountname, [string] $accounttype, [string] $skuname, [string] $loc)
+
+	# Action: create
+	$createdAccount = New-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -Force;
+	
+	# Assert
+	Assert-NotNull $createdAccount;
+
+	# Cleanup
+	Retry-IfException { Remove-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Force; }
+}
+
+<#
+.SYNOPSIS
 Gets random resource name
 #>
 function Get-RandomItemName

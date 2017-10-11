@@ -38,12 +38,12 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
             this.Name = storageInsight.Name;
             this.ResourceId = storageInsight.Id;
 
-            if (storageInsight.Properties != null)
+            if (storageInsight != null)
             {
-                this.StorageAccountResourceId = storageInsight.Properties.StorageAccount != null ? storageInsight.Properties.StorageAccount.Id : null;
-                this.Tables = storageInsight.Properties.Tables.ToList();
-                this.Containers = storageInsight.Properties.Containers.ToList();
-                this.State = storageInsight.Properties.Status != null ? storageInsight.Properties.Status.State : null;
+                this.StorageAccountResourceId = storageInsight.StorageAccount != null ? storageInsight.StorageAccount.Id : null;
+                this.Tables = storageInsight.Tables.ToList();
+                this.Containers = storageInsight.Containers.ToList();
+                this.State = storageInsight.Status != null ? storageInsight.Status.State : null;
             }
         }
 

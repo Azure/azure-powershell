@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using Microsoft.Rest.Azure.OData;
+using RestAzureNS = Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS
 {
@@ -30,25 +30,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <param name="protectedItemName">Name of the item</param>
         /// <param name="recoveryPointId">ID of the recovery point</param>
         /// <returns>Recovery point response returned by the service</returns>
-        public RecoveryPointResponse GetRecoveryPointDetails
+        public RecoveryPointResource GetRecoveryPointDetails
             (
-            string containerName, 
-            string protectedItemName, 
+            string containerName,
+            string protectedItemName,
             string recoveryPointId
             )
         {
             string resourceGroupName = BmsAdapter.GetResourceGroupName();
             string resourceName = BmsAdapter.GetResourceName();
 
-            var response = BmsAdapter.Client.RecoveryPoints.GetAsync(
-                resourceGroupName, 
+            var response = BmsAdapter.Client.RecoveryPoints.GetWithHttpMessagesAsync(
                 resourceName,
-                BmsAdapter.GetCustomRequestHeaders(), 
-                AzureFabricName, 
-                containerName, 
-                protectedItemName, 
-                recoveryPointId, 
-                BmsAdapter.CmdletCancellationToken).Result;
+                resourceGroupName,
+                AzureFabricName,
+                containerName,
+                protectedItemName,
+                recoveryPointId,
+                cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
 
             return response;
         }
@@ -60,26 +59,30 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <param name="protectedItemName">Name of the item</param>
         /// <param name="queryFilter">Query filter</param>
         /// <returns>List of recovery points</returns>
-        public RecoveryPointListResponse GetRecoveryPoints
-            (
-            string containerName, 
-            string protectedItemName, 
-            RecoveryPointQueryParameters queryFilter
-            )
+        public List<RecoveryPointResource> GetRecoveryPoints(
+            string containerName,
+            string protectedItemName,
+            ODataQuery<BMSRPQueryObject> queryFilter)
         {
             string resourceGroupName = BmsAdapter.GetResourceGroupName();
             string resourceName = BmsAdapter.GetResourceName();
 
-            var response = BmsAdapter.Client.RecoveryPoints.ListAsync(
-                resourceGroupName, 
-                resourceName,
-                BmsAdapter.GetCustomRequestHeaders(), 
-                AzureFabricName, 
-                containerName, 
-                protectedItemName, 
-                queryFilter, 
-                BmsAdapter.CmdletCancellationToken).Result;
+            Func<RestAzureNS.IPage<RecoveryPointResource>> listAsync =
+                () => BmsAdapter.Client.RecoveryPoints.ListWithHttpMessagesAsync(
+                    resourceName,
+                    resourceGroupName,
+                    AzureFabricName,
+                    containerName,
+                    protectedItemName,
+                    queryFilter,
+                    cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
 
+            Func<string, RestAzureNS.IPage<RecoveryPointResource>> listNextAsync =
+                nextLink => BmsAdapter.Client.RecoveryPoints.ListNextWithHttpMessagesAsync(
+                    nextLink,
+                    cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
+
+            var response = HelperUtils.GetPagedList(listAsync, listNextAsync);
             return response;
         }
     }

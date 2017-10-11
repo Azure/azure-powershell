@@ -12,20 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Insights.OutputClasses;
-using Microsoft.Azure.Insights.Models;
 using System.Linq;
 using System.Management.Automation;
 using System.Text;
 using System.Threading;
+using Microsoft.Azure.Commands.Insights.OutputClasses;
+using Microsoft.Azure.Management.Monitor;
+using Microsoft.Azure.Management.Monitor.Models;
+using Microsoft.Rest.Azure.OData;
 
 namespace Microsoft.Azure.Commands.Insights.Metrics
 {
     /// <summary>
     /// Get the list of metric definitions for a resource.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmMetricDefinition"), OutputType(typeof(MetricDefinition[]))]
-    public class GetAzureRmMetricDefinitionCommand : InsightsClientCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzureRmMetricDefinition"), OutputType(typeof(PSMetricDefinition[]))]
+    public class GetAzureRmMetricDefinitionCommand : MonitorClientCmdletBase
     {
         /// <summary>
         /// Gets or sets the ResourceId parameter of the cmdlet
@@ -73,13 +75,11 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
             string queryFilter = this.ProcessParameters();
             bool fullDetails = this.DetailedOutput.IsPresent;
 
-            // Call the proper API methods to return a list of raw records.
             // If fullDetails is present full details of the records are displayed, otherwise only a summary of the records is displayed
-            MetricDefinitionListResponse response = this.InsightsClient.MetricDefinitionOperations.GetMetricDefinitionsAsync(resourceUri: this.ResourceId, filterString: queryFilter, cancellationToken: CancellationToken.None).Result;
+            var records = this.MonitorClient.MetricDefinitions.List(resourceUri: this.ResourceId, odataQuery: new ODataQuery<MetricDefinition>(queryFilter))
+                .Select(e => fullDetails ? new PSMetricDefinition(e) : new PSMetricDefinitionNoDetails(e)).ToArray();
 
-            var records = response.MetricDefinitionCollection.Value.Select(e => fullDetails ? (MetricDefinition)new PSMetricDefinition(e) : new PSMetricDefinitionNoDetails(e)).ToArray();
-
-            WriteObject(sendToPipeline: records);
+            WriteObject(sendToPipeline: records, enumerateCollection: true);
         }
     }
 }

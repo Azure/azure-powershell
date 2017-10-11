@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// <summary>
     /// Updates a LogicApp workflow 
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmLogicApp", SupportsShouldProcess = true, DefaultParameterSetName = "Consumption"), OutputType(typeof (object))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmLogicApp", SupportsShouldProcess = true, DefaultParameterSetName = "Consumption"), OutputType(typeof(object))]
     public class UpdateAzureLogicAppCommand : LogicAppBaseCmdlet
     {
         #region private Variables
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
             if (!string.IsNullOrEmpty(this.State))
             {
-                workflow.State = (WorkflowState) Enum.Parse(typeof (WorkflowState), this.State);
+                workflow.State = (WorkflowState) Enum.Parse(typeof(WorkflowState), this.State);
             }
 
             if (UseConsumptionModel.IsPresent)
@@ -163,11 +163,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 var servicePlan = WebsitesClient.GetAppServicePlan(this.ResourceGroupName, this.AppServicePlan);
                 workflow.Sku = new Sku
                 {
-                    Name = (SkuName) Enum.Parse(typeof (SkuName), servicePlan.Sku.Tier),
-                    Plan = new ResourceReference
-                    {
-                        Id = servicePlan.Id
-                    }
+                    Name = (SkuName) Enum.Parse(typeof(SkuName), servicePlan.Sku.Tier),
+                    Plan = new ResourceReference(id: servicePlan.Id)
                 };
             }
 

@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Management.OperationalInsights.Models;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Models
@@ -24,14 +25,18 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         {
         }
 
-        public PSSearchGetSearchResultsResponse(SearchGetSearchResultsResponse response)
+        public PSSearchGetSearchResultsResponse(SearchResultsResponse response)
         {
             if (response != null)
             {
                 this.Id = response.Id;
                 this.Metadata = new PSSearchMetadata(response.Metadata);
-                this.Value = response.Value;
-                this.Error = new PSSearchError(response.Error);
+                this.Value = response.Value.Select(jObj=>jObj.ToString()).ToList();
+
+                if (response.Error != null)
+                {
+                    this.Error = new PSSearchError(response.Error);
+                }
             }
         }
         public string Id { get; set; }

@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         [Alias(CognitiveServicesAccountNameAlias, AccountNameAlias)]
         [ValidateNotNullOrEmpty]
         [ValidatePattern("^[a-zA-Z0-9][a-zA-Z0-9_.-]*$")]
-        [ValidateLength(3, 24)]
+        [ValidateLength(2, 64)]
         public string Name { get; set; }
 
         [Parameter(
@@ -53,16 +53,6 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Cognitive Services Account Type.")]
         [Alias(CognitiveServicesAccountTypeAlias, AccountTypeAlias, KindAlias)]
-        [ValidateSet(
-            AccountType.ComputerVision,
-            AccountType.Emotion,
-            AccountType.Face,
-            AccountType.LUIS,
-            AccountType.Recommendations,
-            AccountType.Speech,
-            AccountType.TextAnalytics,
-            AccountType.WebLM,
-            IgnoreCase = true)]
         public string Type { get; set; }
 
         [Parameter(
@@ -70,14 +60,6 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Cognitive Services Account Sku Name.")]
-        [ValidateSet(
-            AccountSkuString.F0, 
-            AccountSkuString.S0, 
-            AccountSkuString.S1, 
-            AccountSkuString.S2, 
-            AccountSkuString.S3, 
-            AccountSkuString.S4, 
-            IgnoreCase = true)]
         public string SkuName { get; set; }
 
         [Parameter(
@@ -91,14 +73,14 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         [Parameter(
             Mandatory = false,
             HelpMessage = "Cognitive Services Account Tags.")]
-        [Alias (TagsAlias)]
+        [Alias(TagsAlias)]
         [ValidateNotNull]
         [AllowEmptyCollection]
         public Hashtable[] Tag { get; set; }
-        
+
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
         public SwitchParameter Force { get; set; }
-        
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -108,17 +90,27 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                 CognitiveServicesAccountCreateParameters createParameters = new CognitiveServicesAccountCreateParameters()
                 {
                     Location = this.Location,
-                    Kind = ParseAccountKind(this.Type).Value, // must have value, mandatory parameter
-                    Sku = new Sku(ParseSkuName(this.SkuName)),
+                    Kind = this.Type, // must have value, mandatory parameter
+                    Sku = new Sku(this.SkuName),
                     Tags = TagsConversionHelper.CreateTagDictionary(Tag),
                     Properties = new object(), // Must not be null according to Azure RM spec. Also there is no actual properties to pass, so not exposing it through cmdlet
                 };
 
                 if (ShouldProcess(
-                    this.Name, string.Format(CultureInfo.CurrentCulture, Resources.NewAccount_ProcessMessage, this.Name, this.Type, this.SkuName, this.Location))
-                    ||
-                    Force.IsPresent)
+                    this.Name, string.Format(CultureInfo.CurrentCulture, Resources.NewAccount_ProcessMessage, this.Name, this.Type, this.SkuName, this.Location)))
                 {
+                    if (Force.IsPresent)
+                    {
+                        WriteWarning(Resources.NewAccount_Notice);
+                    }
+                    else
+                    {
+                        bool yesToAll = false, noToAll = false;
+                        if (!ShouldContinue(Resources.NewAccount_Notice, "Notice", true, ref yesToAll, ref noToAll))
+                        {
+                            return;
+                        }
+                    }
 
                     var createAccountResponse = this.CognitiveServicesClient.CognitiveServicesAccounts.Create(
                                     this.ResourceGroupName,

@@ -44,8 +44,8 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
         private void SetProfile()
         {
             var profile = CdnManagementClient.Profiles.Update(
-                CdnProfile.Name,
                 CdnProfile.ResourceGroupName,
+                CdnProfile.Name,
                 CdnProfile.Tags.ToDictionaryTags());
 
             WriteVerbose(Resources.Success);

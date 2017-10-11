@@ -87,6 +87,8 @@ namespace Microsoft.Cis.Monitoring.Wad.PrivateConfigConverter {
         
         private string endpointField;
         
+        private string sasTokenField;
+        
         public StorageAccount() {
             this.keyField = "";
             this.endpointField = "https://core.windows.net";
@@ -124,6 +126,19 @@ namespace Microsoft.Cis.Monitoring.Wad.PrivateConfigConverter {
             }
             set {
                 this.endpointField = value;
+            }
+        }
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string sasToken
+        {
+            get
+            {
+                return this.sasTokenField;
+            }
+            set
+            {
+                this.sasTokenField = value;
             }
         }
     }

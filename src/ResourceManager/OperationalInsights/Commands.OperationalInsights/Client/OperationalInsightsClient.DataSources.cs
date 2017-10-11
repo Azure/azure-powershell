@@ -12,11 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Hyak.Common;
 using Microsoft.Azure.Commands.OperationalInsights.Models;
 using Microsoft.Azure.Commands.OperationalInsights.Properties;
 using Microsoft.Azure.Management.OperationalInsights;
 using Microsoft.Azure.Management.OperationalInsights.Models;
+using Microsoft.Rest.Azure.OData;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
         {
             var response = OperationalInsightsManagementClient.DataSources.Get(resourceGroupName, workspaceName, dataSourceName);
             
-            return new PSDataSource(response.DataSource, resourceGroupName, workspaceName);
+            return new PSDataSource(response, resourceGroupName, workspaceName);
         }
         
         public virtual List<PSDataSource> ListDataSources(string resourceGroupName, string workspaceName, string kind)
@@ -42,16 +42,18 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             List<PSDataSource> dataSources = new List<PSDataSource>();
             
             // List data sources by kind
-            var response = OperationalInsightsManagementClient.DataSources.ListInWorkspace(resourceGroupName, workspaceName, kind, string.Empty);
+            var response = OperationalInsightsManagementClient.DataSources.ListByWorkspace(
+                new ODataQuery<DataSourceFilter>(ds => ds.Kind == kind), resourceGroupName, workspaceName);
+
             while (null != response)
             {
-                if (response.DataSources != null)
+                if (response != null)
                 {
-                    response.DataSources.ForEach(ds => dataSources.Add(new PSDataSource(ds, resourceGroupName, workspaceName)));
+                    response.ForEach(ds => dataSources.Add(new PSDataSource(ds, resourceGroupName, workspaceName)));
                 }
-                if (!string.IsNullOrEmpty(response.NextLink))
+                if (!string.IsNullOrEmpty(response.NextPageLink))
                 {
-                    response = OperationalInsightsManagementClient.DataSources.ListNext(response.NextLink);
+                    response = OperationalInsightsManagementClient.DataSources.ListByWorkspaceNext(response.NextPageLink);
                 }
                 else
                 {
@@ -64,8 +66,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
         
         public virtual HttpStatusCode DeleteDataSource(string resourceGroupName, string workspaceName, string dataSourceName)
         {
-            AzureOperationResponse response = OperationalInsightsManagementClient.DataSources.Delete(resourceGroupName, workspaceName, dataSourceName);
-            return response.StatusCode;
+            Rest.Azure.AzureOperationResponse result = OperationalInsightsManagementClient.DataSources.DeleteWithHttpMessagesAsync(resourceGroupName, workspaceName, dataSourceName).GetAwaiter().GetResult();
+            return result.Response.StatusCode;
         }
         
         public virtual DataSource CreateOrUpdateDataSource(
@@ -74,24 +76,22 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             string name,
             PSDataSourcePropertiesBase dataSourceProperties)
         {
-            var serializedProperties = JsonConvert.SerializeObject(dataSourceProperties);
-            
             var response = OperationalInsightsManagementClient.DataSources.CreateOrUpdate(
                 resourceGroupName,
                 workspaceName,
-                new DataSourceCreateOrUpdateParameters
-                {
-                    DataSource = new DataSource { Name = name, Kind=dataSourceProperties.Kind, Properties = serializedProperties}
+                name,
+                new DataSource {
+                    Kind =dataSourceProperties.Kind,
+                    Properties = dataSourceProperties
                 });
             
-            return response.DataSource;
+            return response;
         }
         
         public virtual PSDataSource UpdatePSDataSource(UpdatePSDataSourceParameters parameters)
         {
             // Get the existing data source
-            DataSourceGetResponse response = OperationalInsightsManagementClient.DataSources.Get(parameters.ResourceGroupName, parameters.WorkspaceName, parameters.Name);
-            DataSource dataSource = response.DataSource;
+            DataSource dataSource = OperationalInsightsManagementClient.DataSources.Get(parameters.ResourceGroupName, parameters.WorkspaceName, parameters.Name);
             
             if (parameters.Properties.Kind != dataSource.Kind)
             {
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                 PSDataSource datasource = GetDataSource(resourceGroupName, workspaceName, dataSourceName);
                 return true;
             }
-            catch (CloudException e)
+            catch (Rest.Azure.CloudException e)
             {
                 // Get throws NotFound exception if workspace does not exist
                 if (e.Response.StatusCode == HttpStatusCode.NotFound)

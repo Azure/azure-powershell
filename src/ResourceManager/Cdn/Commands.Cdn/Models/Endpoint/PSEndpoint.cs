@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
@@ -44,6 +45,10 @@ namespace Microsoft.Azure.Commands.Cdn.Models.Endpoint
         public PSQueryStringCachingBehavior QueryStringCachingBehavior { get; set; }
 
         public ICollection<PSDeepCreatedOrigin> Origins { get; set; }
+
+        public string OptimizationType { get; set; }
+
+        public ICollection<PSGeoFilter> GeoFilters { get; set; }
 
         public PSEndpointResourceState ResourceState { get; set; }
 

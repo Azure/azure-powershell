@@ -13,15 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
@@ -39,7 +32,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// Name of the policy to be deleted
         /// </summary>
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = ParamHelpMsgs.Policy.Name, 
+        [Parameter(Position = 1, Mandatory = true, HelpMessage = ParamHelpMsgs.Policy.Name,
             ParameterSetName = PolicyNameParameterSet)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -47,7 +40,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// Policy object to be deleted
         /// </summary>
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = ParamHelpMsgs.Policy.ProtectionPolicy, 
+        [Parameter(Position = 1, Mandatory = true, HelpMessage = ParamHelpMsgs.Policy.ProtectionPolicy,
             ValueFromPipeline = true,
             ParameterSetName = PolicyObjectParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -60,11 +53,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         public SwitchParameter Force { get; set; }
 
         private string PolicyName = string.Empty;
-        
+
         public override void ExecuteCmdlet()
         {
             PolicyName = (this.ParameterSetName == PolicyNameParameterSet) ? Name : Policy.Name;
-            if(string.IsNullOrEmpty(PolicyName))
+            if (string.IsNullOrEmpty(PolicyName))
             {
                 throw new ArgumentException(Resources.PolicyNameIsEmptyOrNull);
             }

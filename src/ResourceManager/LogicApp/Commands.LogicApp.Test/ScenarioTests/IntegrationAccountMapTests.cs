@@ -62,7 +62,17 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         public void TestUpdateIntegrationAccountMap()
         {
             WorkflowController.NewInstance.RunPowerShellTest("Test-UpdateIntegrationAccountMap");
-        }               
+        }
+
+        /// <summary>
+        /// Test Get-AzureRmIntegrationAccountMap command to get all the integration account map.
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestListIntegrationAccountMap()
+        {
+            WorkflowController.NewInstance.RunPowerShellTest("Test-ListIntegrationAccountMap");
+        }
     }
 }
 

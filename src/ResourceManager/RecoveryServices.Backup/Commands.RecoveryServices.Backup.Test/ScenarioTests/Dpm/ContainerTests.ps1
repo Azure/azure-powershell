@@ -14,21 +14,21 @@
 
 function Test-GetContainerScenario
 {
-	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "RsvTestRG" -Name "RsvTestRN";
+	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "pstestrg" -Name "pstestrsvault";
 	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
 	$containers = Get-AzureRmRecoveryServicesBackupManagementServer;	
 
-	$namedContainer = Get-AzureRmRecoveryServicesBackupManagementServer -Name "NAGAASTHRAM.DPMDOM02.SELFHOST.CORP.MICROSOFT.COM";
-	Assert-AreEqual $namedContainer.FriendlyName "NAGAASTHRAM.DPMDOM02.SELFHOST.CORP.MICROSOFT.COM";
+	$namedContainer = Get-AzureRmRecoveryServicesBackupManagementServer -Name "PRCHIDEL-VEN2.FAREAST.CORP.MICROSOFT.COM";
+	Assert-AreEqual $namedContainer.FriendlyName "PRCHIDEL-VEN2.FAREAST.CORP.MICROSOFT.COM";
 }
 
 function Test-UnregisterContainerScenario
 {
-	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "RsvTestRG" -Name "RsvTestRN";
+	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "pstestrg" -Name "pstestrsvault";
 	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
 	
-	$container = Get-AzureRmRecoveryServicesBackupManagementServer -Name "NAGAASTHRAM.DPMDOM02.SELFHOST.CORP.MICROSOFT.COM";
-	Assert-AreEqual $container.FriendlyName "NAGAASTHRAM.DPMDOM02.SELFHOST.CORP.MICROSOFT.COM";
+	$container = Get-AzureRmRecoveryServicesBackupManagementServer -Name "PRCHIDEL-VEN2.FAREAST.CORP.MICROSOFT.COM";
+	Assert-AreEqual $container.FriendlyName "PRCHIDEL-VEN2.FAREAST.CORP.MICROSOFT.COM";
 
 	Unregister-AzureRmRecoveryServicesBackupManagementServer -AzureRmBackupManagementServer $container;
 }

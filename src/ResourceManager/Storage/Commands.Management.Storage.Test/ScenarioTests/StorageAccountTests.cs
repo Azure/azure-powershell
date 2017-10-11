@@ -98,5 +98,19 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
             TestController.NewInstance.RunPsTest("Test-SetAzureRmCurrentStorageAccount");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetAzureRmStorageAccountKeySource()
+        {
+            TestController.NewInstance.RunPsTest("Test-SetAzureRmStorageAccountKeySource");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNetworkRule()
+        {
+            TestController.NewInstance.RunPsTest("Test-NetworkRule");
+        }
+
     }
 }

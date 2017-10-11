@@ -16,7 +16,6 @@
  using System.Collections.Generic;
  using System.Management.Automation;
  using AutoMapper;
- using Microsoft.Azure.Commands.Tags.Model;
  using Microsoft.Azure.Management.Network;
  using Microsoft.Azure.Commands.Network.Models;
  using MNM = Microsoft.Azure.Management.Network.Models;
@@ -28,14 +27,6 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet(VerbsCommon.Get, "AzureRmExpressRouteCircuitRouteTableSummary"), OutputType(typeof(PSExpressRouteCircuitRoutesTableSummary))]
     public class GetAzureRmExpressRouteCircuitRouteTableSummaryCommand : NetworkBaseCmdlet
     {
-        [Alias("ResourceName")]
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource name.")]
-        [ValidateNotNullOrEmpty]
-        public virtual string Name { get; set; }
-
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -43,9 +34,10 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
 
+        [Alias("Name", "ResourceName")]
         [Parameter(
             Mandatory = true,
-            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Name of ExpressRoute Circuit")]
         [ValidateNotNullOrEmpty]
         public string ExpressRouteCircuitName { get; set; }

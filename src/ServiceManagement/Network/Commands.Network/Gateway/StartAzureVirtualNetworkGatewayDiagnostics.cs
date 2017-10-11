@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway.Model;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -36,7 +37,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway
         public string ContainerName { get; set; }
 
         [Parameter(Position = 3, Mandatory = false, HelpMessage = "The object used to access the customer's storage account. This can be created using the Get-AzureStorageContext cmdlet.")]       
-        public AzureStorageContext StorageContext { get; set; }
+        public IStorageContext StorageContext { get; set; }
 
         public override void ExecuteCmdlet()
         {

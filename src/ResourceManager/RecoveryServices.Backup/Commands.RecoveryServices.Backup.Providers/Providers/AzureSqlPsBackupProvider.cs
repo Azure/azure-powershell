@@ -15,18 +15,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Management.Automation;
-using System.Net;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using Microsoft.Rest.Azure.OData;
 using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using RestAzureNS = Microsoft.Rest.Azure;
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
@@ -46,7 +42,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             CmdletModel.RetentionDurationType.Months;
         private const int defaultSqlRetentionCount = 10;
 
-        Dictionary<System.Enum, object> ProviderData { get; set; }
+        Dictionary<Enum, object> ProviderData { get; set; }
         ServiceClientAdapter ServiceClientAdapter { get; set; }
 
         /// <summary>
@@ -55,14 +51,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         /// <param name="providerData">Data from the cmdlet layer intended for the provider</param>
         /// <param name="serviceClientAdapter">Service client adapter for communicating with the backend service</param>
         public void Initialize(
-            Dictionary<System.Enum, object> providerData,
+            Dictionary<Enum, object> providerData,
             ServiceClientAdapter serviceClientAdapter)
         {
-            this.ProviderData = providerData;
-            this.ServiceClientAdapter = serviceClientAdapter;
+            ProviderData = providerData;
+            ServiceClientAdapter = serviceClientAdapter;
         }
 
-        public ServiceClientModel.BaseRecoveryServicesJobResponse EnableProtection()
+        public RestAzureNS.AzureOperationResponse EnableProtection()
         {
             throw new NotImplementedException();
         }
@@ -71,7 +67,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         /// Triggers the disable protection operation for the given item
         /// </summary>
         /// <returns>The job response returned from the service</returns>
-        public ServiceClientModel.BaseRecoveryServicesJobResponse DisableProtection()
+        public RestAzureNS.AzureOperationResponse DisableProtection()
         {
             bool deleteBackupData = (bool)ProviderData[ItemParams.DeleteBackupData];
 
@@ -96,17 +92,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
         }
 
-        public ServiceClientModel.BaseRecoveryServicesJobResponse TriggerBackup()
+        public RestAzureNS.AzureOperationResponse TriggerBackup()
         {
             throw new NotImplementedException();
         }
 
-        public ServiceClientModel.BaseRecoveryServicesJobResponse TriggerRestore()
+        public RestAzureNS.AzureOperationResponse TriggerRestore()
         {
             throw new NotImplementedException();
         }
 
-        public ServiceClientModel.ProtectedItemResponse GetProtectedItem()
+        public ProtectedItemResource GetProtectedItem()
         {
             throw new NotImplementedException();
         }
@@ -115,10 +111,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         /// Fetches the detail info for the given recovery point
         /// </summary>
         /// <returns>Recovery point detail as returned by the service</returns>
-        public CmdletModel.RecoveryPointBase GetRecoveryPointDetails()
+        public RecoveryPointBase GetRecoveryPointDetails()
         {
-            CmdletModel.AzureSqlItem item = ProviderData[RecoveryPointParams.Item]
-                as CmdletModel.AzureSqlItem;
+            AzureSqlItem item = ProviderData[RecoveryPointParams.Item]
+                as AzureSqlItem;
 
             string recoveryPointId = ProviderData[RecoveryPointParams.RecoveryPointId].ToString();
 
@@ -135,7 +131,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         /// Lists recovery points generated for the given item
         /// </summary>
         /// <returns>List of recovery point PowerShell model objects</returns>
-        public List<CmdletModel.RecoveryPointBase> ListRecoveryPoints()
+        public List<RecoveryPointBase> ListRecoveryPoints()
         {
             DateTime startDate = (DateTime)(ProviderData[RecoveryPointParams.StartDate]);
             DateTime endDate = (DateTime)(ProviderData[RecoveryPointParams.EndDate]);
@@ -153,12 +149,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
 
             //we need to fetch the list of RPs
-            RecoveryPointQueryParameters queryFilter = new RecoveryPointQueryParameters();
-            queryFilter.StartDate = CommonHelpers.GetDateTimeStringForService(startDate);
-            queryFilter.EndDate = CommonHelpers.GetDateTimeStringForService(endDate);
-            RecoveryPointListResponse rpListResponse = null;
+            var queryFilterString = QueryBuilder.Instance.GetQueryString(new BMSRPQueryObject()
+            {
+                StartDate = startDate,
+                EndDate = endDate
+            });
 
-            rpListResponse = ServiceClientAdapter.GetRecoveryPoints(
+            ODataQuery<BMSRPQueryObject> queryFilter = new ODataQuery<BMSRPQueryObject>();
+            queryFilter.Filter = queryFilterString;
+
+            List<RecoveryPointResource> rpListResponse = ServiceClientAdapter.GetRecoveryPoints(
                 containerUri, protectedItemName, queryFilter);
             return RecoveryPointConversions.GetPSAzureRecoveryPoints(rpListResponse, item);
         }
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         /// Creates policy given the provider data
         /// </summary>
         /// <returns>Created policy object as returned by the service</returns>
-        public ProtectionPolicyResponse CreatePolicy()
+        public ProtectionPolicyResource CreatePolicy()
         {
             string policyName = (string)ProviderData[PolicyParams.PolicyName];
             CmdletModel.WorkloadType workloadType =
@@ -184,28 +184,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             Logger.Instance.WriteDebug("Validation of Retention policy is successful");
 
             // construct Hydra policy request            
-            ProtectionPolicyRequest hydraRequest = new ProtectionPolicyRequest()
+            ProtectionPolicyResource hydraRequest = new ProtectionPolicyResource()
             {
-                Item = new ProtectionPolicyResource()
+                Properties = new AzureSqlProtectionPolicy()
                 {
-                    Properties = new AzureSqlProtectionPolicy()
-                    {
-                        RetentionPolicy = PolicyHelpers.GetServiceClientSimpleRetentionPolicy(
+                    RetentionPolicy = PolicyHelpers.GetServiceClientSimpleRetentionPolicy(
                             (CmdletModel.SimpleRetentionPolicy)retentionPolicy)
-                    }
                 }
             };
 
             return ServiceClientAdapter.CreateOrUpdateProtectionPolicy(
                                  policyName,
-                                 hydraRequest);
+                                 hydraRequest).Body;
         }
 
         /// <summary>
         /// Modifies policy using the provider data
         /// </summary>
         /// <returns>Modified policy object as returned by the service</returns>
-        public ProtectionPolicyResponse ModifyPolicy()
+        public RestAzureNS.AzureOperationResponse<ProtectionPolicyResource> ModifyPolicy()
         {
             RetentionPolicyBase retentionPolicy =
               ProviderData.ContainsKey(PolicyParams.RetentionPolicy) ?
@@ -231,15 +228,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             CmdletModel.SimpleRetentionPolicy sqlRetentionPolicy =
                 (CmdletModel.SimpleRetentionPolicy)((AzureSqlPolicy)policy).RetentionPolicy;
-            ProtectionPolicyRequest hydraRequest = new ProtectionPolicyRequest()
+            ProtectionPolicyResource hydraRequest = new ProtectionPolicyResource()
             {
-                Item = new ProtectionPolicyResource()
+                Properties = new AzureSqlProtectionPolicy()
                 {
-                    Properties = new AzureSqlProtectionPolicy()
-                    {
-                        RetentionPolicy =
+                    RetentionPolicy =
                             PolicyHelpers.GetServiceClientSimpleRetentionPolicy(sqlRetentionPolicy)
-                    }
                 }
             };
 
@@ -251,15 +245,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         /// Lists protection containers according to the provider data
         /// </summary>
         /// <returns>List of protection containers</returns>
-        public List<Models.ContainerBase> ListProtectionContainers()
+        public List<ContainerBase> ListProtectionContainers()
         {
             string name = (string)this.ProviderData[ContainerParams.Name];
 
-            ProtectionContainerListQueryParams queryParams =
-                new ProtectionContainerListQueryParams();
+            ODataQuery<BMSContainerQueryObject> queryParams =
+                new ODataQuery<BMSContainerQueryObject>(
+                    q => q.BackupManagementType
+                            == ServiceClientModel.BackupManagementType.AzureSql);
 
-            queryParams.BackupManagementType =
-                ServiceClientModel.BackupManagementType.AzureSql.ToString();
 
             var listResponse = ServiceClientAdapter.ListContainers(queryParams);
 
@@ -282,6 +276,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// SchedulePolicy Object is not required for WorkloadType AzureSql.
+        /// </summary>
         public SchedulePolicyBase GetDefaultSchedulePolicyObject()
         {
             throw new ArgumentException(
@@ -307,37 +304,26 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         /// <returns>List of protected items</returns>
         public List<ItemBase> ListProtectedItems()
         {
-            ContainerBase container = (ContainerBase)this.ProviderData[ItemParams.Container];
-            string name = (string)this.ProviderData[ItemParams.AzureVMName];
+            ContainerBase container = (ContainerBase)ProviderData[ItemParams.Container];
+            string name = (string)ProviderData[ItemParams.AzureVMName];
             ItemProtectionStatus protectionStatus =
-                (ItemProtectionStatus)this.ProviderData[ItemParams.ProtectionStatus];
+                (ItemProtectionStatus)ProviderData[ItemParams.ProtectionStatus];
             ItemProtectionState status =
-                (ItemProtectionState)this.ProviderData[ItemParams.ProtectionState];
-            Models.WorkloadType workloadType =
-                (Models.WorkloadType)this.ProviderData[ItemParams.WorkloadType];
+                (ItemProtectionState)ProviderData[ItemParams.ProtectionState];
+            CmdletModel.WorkloadType workloadType =
+                (CmdletModel.WorkloadType)ProviderData[ItemParams.WorkloadType];
 
-            ProtectedItemListQueryParam queryParams = new ProtectedItemListQueryParam();
-            queryParams.DatasourceType = ServiceClientModel.WorkloadType.AzureSqlDb.ToString();
-            queryParams.BackupManagementType =
-                ServiceClientModel.BackupManagementType.AzureSql.ToString();
+            ODataQuery<ProtectedItemQueryObject> queryParams =
+                new ODataQuery<ProtectedItemQueryObject>(
+                    q => q.BackupManagementType
+                            == ServiceClientModel.BackupManagementType.AzureSql &&
+                         q.ItemType == DataSourceType.AzureSqlDb);
 
             List<ProtectedItemResource> protectedItems = new List<ProtectedItemResource>();
             string skipToken = null;
-            PaginationRequest paginationRequest = null;
-            do
-            {
-                var listResponse =
-                    ServiceClientAdapter.ListProtectedItem(queryParams, paginationRequest);
-                protectedItems.AddRange(listResponse.ItemList.Value);
+            var listResponse = ServiceClientAdapter.ListProtectedItem(queryParams, skipToken);
+            protectedItems.AddRange(listResponse);
 
-                ServiceClientHelpers.GetSkipTokenFromNextLink(
-                    listResponse.ItemList.NextLink, out skipToken);
-                if (skipToken != null)
-                {
-                    paginationRequest = new PaginationRequest();
-                    paginationRequest.SkipToken = skipToken;
-                }
-            } while (skipToken != null);
 
             // 1. Filter by container
             if (container != null)
@@ -352,8 +338,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 }).ToList();
             }
 
-            List<ProtectedItemResponse> protectedItemGetResponses =
-                new List<ProtectedItemResponse>();
+            List<ProtectedItemResource> protectedItemGetResponses =
+                new List<ProtectedItemResource>();
 
             // 2. Filter by item's friendly name
             if (!string.IsNullOrEmpty(name))
@@ -367,8 +353,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     return protectedItemUri.ToLower().Contains(name.ToLower());
                 }).ToList();
 
-                GetProtectedItemQueryParam getItemQueryParams = new GetProtectedItemQueryParam();
-                getItemQueryParams.Expand = extendedInfo;
+                ODataQuery<GetProtectedItemQueryObject> getItemQueryParams =
+                    new ODataQuery<GetProtectedItemQueryObject>(q => q.Expand == extendedInfo);
 
                 for (int i = 0; i < protectedItems.Count; i++)
                 {
@@ -381,7 +367,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
                     var getResponse = ServiceClientAdapter.GetProtectedItem(
                         containerUri, protectedItemUri, getItemQueryParams);
-                    protectedItemGetResponses.Add(getResponse);
+                    protectedItemGetResponses.Add(getResponse.Body);
                 }
             }
 
@@ -392,7 +378,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 for (int i = 0; i < itemModels.Count; i++)
                 {
                     AzureSqlProtectedItem azureSqlProtectedItem =
-                        (AzureSqlProtectedItem)protectedItemGetResponses[i].Item.Properties;
+                        (AzureSqlProtectedItem)protectedItemGetResponses[i].Properties;
                     AzureSqlItemExtendedInfo extendedInfo = new AzureSqlItemExtendedInfo();
                     var hydraExtendedInfo = azureSqlProtectedItem.ExtendedInfo;
                     if (hydraExtendedInfo.OldestRecoveryPoint.HasValue)
@@ -501,14 +487,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             ValidateAzureSqlContainerType(itemBase.ContainerType);
         }
 
-        private void ValidateAzureSqlContainerType(CmdletModel.ContainerType type)
+        private void ValidateAzureSqlContainerType(ContainerType type)
         {
-            if (type != CmdletModel.ContainerType.AzureSQL)
+            if (type != ContainerType.AzureSQL)
             {
                 throw new ArgumentException(
                     string.Format(
                         Resources.UnExpectedContainerTypeException,
-                        CmdletModel.ContainerType.AzureSQL.ToString(),
+                        ContainerType.AzureSQL.ToString(),
                         type.ToString()));
             }
         }

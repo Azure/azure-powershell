@@ -1,0 +1,62 @@
+{
+			"rgName": {
+			"value": "onesdk411"
+			},
+			"location": {
+			"value": "westcentralus"
+			},
+			"virtualMachineName": {
+			"value": "onesdk662"
+			},
+			"virtualMachineSize": {
+			"value": "Standard_DS1_v2"
+			},
+			"adminUsername": {
+			"value": "netanaytics12"
+			},
+			"storageAccountName": {
+			"value": "onesdk5456"
+			},
+			"routeTableName": {
+			"value": "onesdk4251"
+			},
+			"virtualNetworkName": {
+			"value": "onesdk4727"
+			},
+			"networkInterfaceName": {
+			"value": "onesdk9584"
+			},
+			"networkSecurityGroupName": {
+			"value": "onesdk5672"
+			},
+			"adminPassword": {
+			"value": "netanalytics-32onesdk411"
+			},
+			"storageAccountType": {
+			"value": "Premium_LRS"
+			},
+			"diagnosticsStorageAccountName": {
+			"value": "onesdk1522"
+			},
+			"diagnosticsStorageAccountId": {
+			"value": "Microsoft.Storage/storageAccounts/onesdk1522"
+			},
+			"diagnosticsStorageAccountType": {
+			"value": "Standard_LRS"
+			},
+			"addressPrefix": {
+			"value": "10.17.3.0/24"
+			},
+			"subnetName": {
+			"value": "default"
+			},
+			"subnetPrefix": {
+			"value": "10.17.3.0/24"
+			},
+			"publicIpAddressName": {
+			"value": "onesdk662-ip"
+			},
+			"publicIpAddressType": {
+			"value": "Dynamic"
+			}
+}

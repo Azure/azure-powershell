@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.RecommendedElasticPools.Services;
@@ -61,7 +62,7 @@ namespace Microsoft.Azure.Commands.Sql.ServiceTierAdvisor.Cmdlet
             else
             {
                 // Return elastic pool hints and exclude databases contained in pools
-                var elasticPoolAdapter = new AzureSqlElasticPoolRecommendationAdapter(DefaultProfile.Context);
+                var elasticPoolAdapter = new AzureSqlElasticPoolRecommendationAdapter(DefaultProfile.DefaultContext);
                 return new UpgradeServerHint
                 {
                     Databases = ModelAdapter.ListUpgradeDatabaseHints(ResourceGroupName, ServerName, true),
@@ -75,9 +76,9 @@ namespace Microsoft.Azure.Commands.Sql.ServiceTierAdvisor.Cmdlet
         /// </summary>
         /// <param name="subscription">Subscription</param>
         /// <returns>Returns new AzureSqlServiceTierAdvisorAdapter</returns>
-        protected override AzureSqlServiceTierAdvisorAdapter InitModelAdapter(AzureSubscription subscription)
+        protected override AzureSqlServiceTierAdvisorAdapter InitModelAdapter(IAzureSubscription subscription)
         {
-            return new AzureSqlServiceTierAdvisorAdapter(DefaultProfile.Context);
+            return new AzureSqlServiceTierAdvisorAdapter(DefaultProfile.DefaultContext);
         }
     }
 }

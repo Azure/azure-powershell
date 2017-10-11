@@ -16,6 +16,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Management.Automation;
 using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Common.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common.Tags
@@ -93,5 +94,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Tags
             }
             return tagsHashtable;
         }
+
+        public static Dictionary<string, string> ReadOrFetchTags(PSCmdlet cmdlet, Dictionary<string,string> tagsFromModel)
+        {
+            object tagsFromCli;
+            if (cmdlet.MyInvocation.BoundParameters.TryGetValue("Tags", out tagsFromCli))
+            {
+                Hashtable tags = tagsFromCli as Hashtable;
+                return TagsConversionHelper.CreateTagDictionary(tags, validate: true);
+            }
+            else
+            {
+                return tagsFromModel;
+            }
+        } 
+    
     }
 }

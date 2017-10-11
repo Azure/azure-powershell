@@ -16,6 +16,8 @@ using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Management.Network;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Management.Network.Models;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -66,27 +68,22 @@ namespace Microsoft.Azure.Commands.Network
 
                 WriteObject(routeTable);
             }
-            else if (!string.IsNullOrEmpty(this.ResourceGroupName))
-            {
-                var routeTableList = this.RouteTableClient.List(this.ResourceGroupName);
-
-                var psRouteTables = new List<PSRouteTable>();
-
-                foreach (var routeTable in routeTableList)
-                {
-                    var psRouteTable = this.ToPsRouteTable(routeTable);
-                    psRouteTable.ResourceGroupName = this.ResourceGroupName;
-                    psRouteTables.Add(psRouteTable);
-                }
-
-                WriteObject(psRouteTables, true);
-            }
             else
             {
-                var routeTableList = this.RouteTableClient.ListAll();
+                IPage<RouteTable> routeTablePage;
+                if (!string.IsNullOrEmpty(this.ResourceGroupName))
+                {
+                    routeTablePage = this.RouteTableClient.List(this.ResourceGroupName);
+                }
+                else
+                {
+                    routeTablePage = this.RouteTableClient.ListAll();                    
+                }
+
+                // Get all resources by polling on next page link
+                var routeTableList = ListNextLink<RouteTable>.GetAllResourcesByPollingNextLink(routeTablePage, this.RouteTableClient.ListNext);
 
                 var psRouteTables = new List<PSRouteTable>();
-
                 foreach (var routeTable in routeTableList)
                 {
                     var psRouteTable = this.ToPsRouteTable(routeTable);

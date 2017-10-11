@@ -356,7 +356,7 @@ function Get-DefaultCRPImage
         $defaultPublisher = $result[0];
     }
 
-    $result = (Get-AzureRmVMImageOffer -Location $loc -PublisherName $defaultPublisher) | select -ExpandProperty Offer | where { $_ -like '*Windows*' };
+    $result = (Get-AzureRmVMImageOffer -Location $loc -PublisherName $defaultPublisher) | select -ExpandProperty Offer | where { $_ -like '*WindowsServer*' -and -not ($_ -like '*HUB')  };
     if ($result.Count -eq 1)
     {
         $defaultOffer = $result;
@@ -575,4 +575,9 @@ function Get-SubscriptionIdFromResourceGroup
       $first = $rgid.IndexOf('/', 1);
       $last = $rgid.IndexOf('/', $first + 1);
       return $rgid.Substring($first + 1, $last - $first - 1);
+}
+
+function Get-ComputeVmssLocation
+{
+      Get-ResourceProviderLocation "Microsoft.Compute/virtualMachineScaleSets"
 }

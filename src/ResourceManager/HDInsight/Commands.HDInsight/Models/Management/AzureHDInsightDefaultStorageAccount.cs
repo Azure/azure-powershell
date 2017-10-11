@@ -13,12 +13,13 @@
 
 namespace Microsoft.Azure.Commands.HDInsight.Models
 {
-    public class AzureHDInsightDefaultStorageAccount
+    public abstract class AzureHDInsightDefaultStorageAccount
     {
-        public string StorageAccountName { get; set; }
+        public AzureHDInsightDefaultStorageAccount(string storageAccountName)
+        {
+            StorageAccountName = storageAccountName;
+        }
 
-        public string StorageAccountKey { get; set; }
-
-        public string StorageContainerName { get; set; }
+        public string StorageAccountName { get; private set; }
     }
 }

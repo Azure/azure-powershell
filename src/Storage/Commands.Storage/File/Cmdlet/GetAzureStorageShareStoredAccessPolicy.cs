@@ -45,7 +45,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
         internal async Task GetAzureShareStoredAccessPolicyAsync(long taskId, IStorageFileManagement localChannel, string shareName, string policyName)
         {
-            SharedAccessFilePolicies shareAccessPolicies = await GetPoliciesAsync(localChannel, shareName, policyName);
+            SharedAccessFilePolicies shareAccessPolicies = await GetPoliciesAsync(localChannel, shareName, policyName).ConfigureAwait(false);
 
             if (!String.IsNullOrEmpty(policyName))
             {
@@ -70,7 +70,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         internal async Task<SharedAccessFilePolicies> GetPoliciesAsync(IStorageFileManagement localChannel, string shareName, string policyName)
         {
             CloudFileShare share = localChannel.GetShareReference(shareName);
-            FileSharePermissions permissions = await localChannel.GetSharePermissionsAsync(share, null, null, null, CmdletCancellationToken);
+            FileSharePermissions permissions = await localChannel.GetSharePermissionsAsync(share, null, null, null, CmdletCancellationToken).ConfigureAwait(false);
             return permissions.SharedAccessPolicies;
         }
 

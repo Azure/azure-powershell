@@ -62,7 +62,17 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         public void TestUpdateIntegrationAccountPartner()
         {
             WorkflowController.NewInstance.RunPowerShellTest("Test-UpdateIntegrationAccountPartner");
-        }               
+        }
+
+        /// <summary>
+        /// Test Get-AzureRmIntegrationAccountPartner command to get all the integration account partners.
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestListIntegrationAccountPartner()
+        {
+            WorkflowController.NewInstance.RunPowerShellTest("Test-ListIntegrationAccountPartner");
+        }
     }
 }
 

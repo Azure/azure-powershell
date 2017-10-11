@@ -14,11 +14,13 @@
 
 using Microsoft.Azure.Commands.NotificationHubs.Models;
 using System.Management.Automation;
+using System.Globalization;
+using System;
 
 namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
 {
 
-    [Cmdlet(VerbsCommon.Set, "AzureRmNotificationHub"), OutputType(typeof(NotificationHubAttributes))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmNotificationHub", SupportsShouldProcess = true), OutputType(typeof(NotificationHubAttributes))]
     public class SetAzureNotificationHub : AzureNotificationHubsCmdletBase
     {
         [Parameter(Mandatory = true,
@@ -49,6 +51,13 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
         [ValidateNotNullOrEmpty]
         public NotificationHubAttributes NotificationHubObj { get; set; }
 
+        /// <summary>
+        /// If present, do not ask for confirmation
+        /// </summary>
+        [Parameter(Mandatory = false,
+           HelpMessage = "Do not ask for confirmation.")]
+        public SwitchParameter Force { get; set; }
+
         public override void ExecuteCmdlet()
         {
             NotificationHubAttributes hub = null;
@@ -61,8 +70,24 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
                 hub = NotificationHubObj;
             }
 
-            var hubAttributes = Client.UpdateNotificationHub(ResourceGroup, Namespace, hub);
-            WriteObject(hubAttributes);
+            if (!string.IsNullOrEmpty(hub.Name))
+            {
+                ConfirmAction(
+                Force.IsPresent,
+                string.Format(CultureInfo.InvariantCulture, Resources.UpdateNotificationHub_Confirm, hub.Name),
+                Resources.UpdateNotificationHub_WhatIf,
+                hub.Name,
+                () =>
+                {
+
+                    var hubAttributes = Client.UpdateNotificationHub(ResourceGroup, Namespace, hub);
+                    WriteObject(hubAttributes);
+                });
+            }
+            else
+            {
+                throw new ArgumentNullException(Resources.NotificationHubNameNull);
+            }
         }
     }
 }

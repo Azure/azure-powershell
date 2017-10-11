@@ -54,7 +54,8 @@ namespace Microsoft.Azure.Commands.HDInsight
             {
                 string resourceGroupName = ClusterConfigurationUtils.GetResourceGroupFromClusterId(entry.Id);
                 var configuration = HDInsightManagementClient.GetClusterConfigurations(resourceGroupName, entry.Name, "core-site");
-                return new AzureHDInsightCluster(entry, configuration);
+                var clusterIdentity = HDInsightManagementClient.GetClusterConfigurations(resourceGroupName, entry.Name, "clusterIdentity");
+                return new AzureHDInsightCluster(entry, configuration, clusterIdentity);
             }).ToList();
 
             WriteObject(output, true);

@@ -143,7 +143,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         private async Task StopCopyBlob(long taskId, IStorageBlobManagement localChannel, string containerName, string blobName, string copyId)
         {
             CloudBlobContainer container = localChannel.GetContainerReference(containerName);
-            await StopCopyBlob(taskId, localChannel, container, blobName, copyId);
+            await StopCopyBlob(taskId, localChannel, container, blobName, copyId).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -161,7 +161,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             BlobRequestOptions options = RequestOptions;
             CloudBlob blob = GetBlobReferenceFromServerWithContainer(localChannel, container, blobName, accessCondition, options, OperationContext);
 
-            await StopCopyBlob(taskId, localChannel, blob, copyId);
+            await StopCopyBlob(taskId, localChannel, blob, copyId).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -201,7 +201,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 //Make sure we use the correct copy id to abort
                 //Use default retry policy for FetchBlobAttributes
                 BlobRequestOptions options = RequestOptions;
-                await localChannel.FetchBlobAttributesAsync(blob, accessCondition, options, OperationContext, CmdletCancellationToken);
+                await localChannel.FetchBlobAttributesAsync(blob, accessCondition, options, OperationContext, CmdletCancellationToken).ConfigureAwait(false);
 
                 if (blob.CopyState == null || String.IsNullOrEmpty(blob.CopyState.CopyId))
                 {
@@ -216,7 +216,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 if (!Force)
                 {
                     string confirmation = String.Format(Resources.ConfirmAbortCopyOperation, blob.Name, blob.Container.Name, abortCopyId);
-                    if (!await OutputStream.ConfirmAsync(confirmation))
+                    if (!await OutputStream.ConfirmAsync(confirmation).ConfigureAwait(false))
                     {
                         string cancelMessage = String.Format(Resources.StopCopyOperationCancelled, blob.Name, blob.Container.Name);
                         OutputStream.WriteVerbose(taskId, cancelMessage);
@@ -228,7 +228,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 abortCopyId = specifiedCopyId;
             }
 
-            await localChannel.AbortCopyAsync(blob, abortCopyId, accessCondition, abortRequestOption, OperationContext, CmdletCancellationToken);
+            await localChannel.AbortCopyAsync(blob, abortCopyId, accessCondition, abortRequestOption, OperationContext, CmdletCancellationToken).ConfigureAwait(false);
             string message = String.Format(Resources.StopCopyBlobSuccessfully, blob.Name, blob.Container.Name);
             OutputStream.WriteObject(taskId, message);
         }

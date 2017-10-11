@@ -12,8 +12,10 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
+using System;
 using Microsoft.Azure.Commands.Common.Authentication;
 using System.Collections.Generic;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
 {
@@ -46,7 +48,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
             var galaryClient = GetGalleryClient();
             var authorizationManagementClient = GetAuthorizationManagementClient();
             var managementClient = GetManagementClient();
-            var storageManagementClient = GetStorageManagementClient();
             var armStorageManagementClient = GetArmStorageManagementClient();
 
             _helper.SetupManagementClients(
@@ -93,7 +94,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
             return TestBase.GetServiceClient<Management.ApiManagement.ApiManagementClient>(new CSMTestEnvironmentFactory());
         }
 
-
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCrudApiManagement()
@@ -110,6 +110,20 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetApiManagementDeploymentExternalVirtualNetwork()
+        {
+            RunPowerShellTest("Test-SetApiManagementDeploymentExternalVirtualNetwork");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetApiManagementDeploymentInternalVirtualNetwork()
+        {
+            RunPowerShellTest("Test-SetApiManagementDeploymentInternalVirtualNetwork");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateApiManagementDeployment()
         {
             RunPowerShellTest("Test-UpdateApiManagementDeployment");
@@ -119,7 +133,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateDeploymentComplex()
         {
-            RunPowerShellTest("Test-UpdateApiManagementDeploymentWithHelpersAndPipline");
+            RunPowerShellTest("Test-UpdateApiManagementDeploymentWithHelpersAndPipeline");
         }
 
         [Fact]
@@ -131,31 +145,27 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetApiManagementVirtualNetworks()
-        {
-            RunPowerShellTest("Test-SetApiManagementVirtualNetworks");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetApiManagementHostnames()
         {
             RunPowerShellTest("Test-SetApiManagementHostnames");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCrudApiManagementWithExternalVpn()
+        {
+            RunPowerShellTest("Test-CrudApiManagementWithExternalVpn");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCrudApiManagementWithAdditionalRegions()
+        {
+            RunPowerShellTest("Test-CrudApiManagementWithAdditionalRegions");
+        }
+
         private void RunPowerShellTest(params string[] scripts)
         {
-#if DEBUG
-            //Environment.SetEnvironmentVariable("AZURE_TEST_MODE", "Record");
-
-            //Environment.SetEnvironmentVariable(
-            //    "TEST_CSM_ORGID_AUTHENTICATION",
-            //    "SubscriptionId=;Environment=;AADTenant=");
-
-            //Environment.SetEnvironmentVariable(
-            //    "TEST_ORGID_AUTHENTICATION",
-            //    "SubscriptionId=;Environment=");
-#endif
             Dictionary<string, string> d = new Dictionary<string, string>();
             d.Add("Microsoft.Resources", null);
             d.Add("Microsoft.Features", null);

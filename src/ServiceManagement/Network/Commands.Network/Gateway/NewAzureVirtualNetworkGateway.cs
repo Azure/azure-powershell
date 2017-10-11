@@ -12,13 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway.Model;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Properties;
+
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway
 {
+    using System;
+    
+
     [Cmdlet(VerbsCommon.New, "AzureVirtualNetworkGateway"), OutputType(typeof(ManagementOperationContext))]
     public class NewAzureVirtualNetworkGatewayCommand : NetworkCmdletBase
     {
@@ -31,7 +37,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway
         [Parameter(Position = 2, Mandatory = false, HelpMessage = "The type of routing that the gateway will use:StaticRouting/DynamicRouting. This will default to StaticRouting if no value is provided.")]
         public string GatewayType { get; set; }
 
-        [Parameter(Position = 3, Mandatory = false, HelpMessage = "The Gateway SKU for the new gateway:Default/HighPerformance/Standard. This will default to 'Default' SKU if no value is provided.")]
+        [Parameter(Position = 3, Mandatory = false, HelpMessage = "The Gateway SKU for the new gateway:Default/HighPerformance/Standard/UltraPerformance. This will default to 'Default' SKU if no value is provided.")]
         public string GatewaySKU { get; set; }
 
         [Parameter(Position = 4, Mandatory = false, HelpMessage = "Location for the virtual network gateway.")]
@@ -48,9 +54,46 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway
         [Parameter(Position = 7, Mandatory = false, HelpMessage = "Weight for routes learned from this BGP speaker")]
         public int PeerWeight { get; set; }
 
+        [Parameter(HelpMessage = "Do not confirm Azure Virtual Network Gateway Creation")]
+        public SwitchParameter Force { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            WriteObject(Client.CreateVirtualNetworkGateway(VNetName, GatewayName, GatewayType, GatewaySKU, Location, VnetId, Asn, PeerWeight));
+            string gatewayType = "UltraPerformance";
+            string warningMsg = string.Empty;
+            string continueMsg = string.Empty;
+            bool force = true;
+            if (GatewaySKU.Trim().Replace(" ", "").Equals(gatewayType, StringComparison.InvariantCultureIgnoreCase))
+            {
+
+                warningMsg = Resources.UltraPerformanceGatewayWarning;
+                continueMsg = Resources.UltraPerformanceGatewayContinue;
+                 force = false;
+            }
+            if (this.Force.IsPresent)
+            {
+                force = true;
+            }
+
+            ConfirmAction(
+               force,
+               warningMsg,
+               continueMsg,
+               GatewaySKU + " " + GatewayType,
+               () =>
+               {
+                   var gateway = Client.CreateVirtualNetworkGateway(
+                       VNetName,
+                       GatewayName,
+                       GatewayType,
+                       GatewaySKU,
+                       Location,
+                       VnetId,
+                       Asn,
+                       PeerWeight);
+                   WriteVerboseWithTimestamp(Resources.UltraPerformanceGatewaySucceed);
+                   WriteObject(gateway);
+               });
         }
     }
 }

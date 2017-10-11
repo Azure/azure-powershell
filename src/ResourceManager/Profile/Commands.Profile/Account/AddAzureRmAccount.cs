@@ -13,97 +13,115 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
-using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.IO;
 using System.Management.Automation;
 using System.Reflection;
 using System.Security;
+using Microsoft.Azure.Commands.Profile.Properties;
+using Microsoft.Azure.Commands.Profile.Common;
 
 namespace Microsoft.Azure.Commands.Profile
 {
     /// <summary>
     /// Cmdlet to log into an environment and download the subscriptions
     /// </summary>
-    [Cmdlet("Add", "AzureRmAccount", DefaultParameterSetName = "User", SupportsShouldProcess=true)]
-    [Alias("Login-AzureRmAccount")]
+    [Cmdlet("Add", "AzureRmAccount", DefaultParameterSetName = "UserWithSubscriptionId", SupportsShouldProcess=true)]
+    [Alias("Login-AzureRmAccount", "Login-AzAccount")]
     [OutputType(typeof(PSAzureProfile))]
-    public class AddAzureRMAccountCommand : AzureRMCmdlet, IModuleAssemblyInitializer
+    public class AddAzureRMAccountCommand : AzureContextModificationCmdlet, IModuleAssemblyInitializer
     {
-        private const string UserParameterSet = "User";
-        private const string ServicePrincipalParameterSet = "ServicePrincipal";
-        private const string ServicePrincipalCertificateParameterSet = "ServicePrincipalCertificate";
-        private const string AccessTokenParameterSet = "AccessToken";
-        private const string SubscriptionNameParameterSet = "SubscriptionName";
-        private const string SubscriptionIdParameterSet = "SubscriptionId";
+        public const string UserParameterSet = "UserWithSubscriptionId";
+        public const string ServicePrincipalParameterSet = "ServicePrincipalWithSubscriptionId";
+        public const string ServicePrincipalCertificateParameterSet= "ServicePrincipalCertificateWithSubscriptionId";
+        public const string AccessTokenParameterSet = "AccessTokenWithSubscriptionId";
 
-        [Parameter(Mandatory = false, HelpMessage = "Environment containing the account to log into")]
-        [ValidateNotNullOrEmpty]
-        public AzureEnvironment Environment { get; set; }
+        protected IAzureEnvironment _environment =AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud];
 
         [Parameter(Mandatory = false, HelpMessage = "Name of the environment containing the account to log into")]
+        [Alias("EnvironmentName")]
         [ValidateNotNullOrEmpty]
+        public string Environment { get; set; }
 
-        public string EnvironmentName { get; set; }
-
-
-        [Parameter(ParameterSetName = UserParameterSet, Mandatory = false, HelpMessage = "Optional credential")]
-        [Parameter(ParameterSetName = ServicePrincipalParameterSet, Mandatory = true, HelpMessage = "Credential")]
-        [Parameter(ParameterSetName = SubscriptionIdParameterSet, Mandatory = false, HelpMessage = "Optional credential")]
-        [Parameter(ParameterSetName = SubscriptionNameParameterSet, Mandatory = false, HelpMessage = "Optional credential")]
+        
+        [Parameter(ParameterSetName = UserParameterSet, 
+                    Mandatory = false, HelpMessage = "Optional credential", Position = 0)]
+        [Parameter(ParameterSetName = ServicePrincipalParameterSet, 
+                    Mandatory = true, HelpMessage = "Credential")]
         public PSCredential Credential { get; set; }
 
-        [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet, Mandatory = true, HelpMessage = "Certificate Hash (Thumbprint)")]
-        [Parameter(ParameterSetName = SubscriptionIdParameterSet, Mandatory = false, HelpMessage = "Certificate Hash (Thumbprint)")]
-        [Parameter(ParameterSetName = SubscriptionNameParameterSet, Mandatory = false, HelpMessage = "Certificate Hash (Thumbprint)")]
+        [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet, 
+                    Mandatory = true, HelpMessage = "Certificate Hash (Thumbprint)")]
         public string CertificateThumbprint { get; set; }
-
-        [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet, Mandatory = true, HelpMessage = "SPN")]
-        [Parameter(ParameterSetName = SubscriptionIdParameterSet, Mandatory = false, HelpMessage = "SPN")]
-        [Parameter(ParameterSetName = SubscriptionNameParameterSet, Mandatory = false, HelpMessage = "SPN")]
+        
+        [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet, 
+                    Mandatory = true, HelpMessage = "SPN")]
         public string ApplicationId { get; set; }
 
-        [Parameter(ParameterSetName = ServicePrincipalParameterSet, Mandatory = true)]
-        [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet, Mandatory = true)]
+        [Parameter(ParameterSetName = ServicePrincipalParameterSet, 
+                    Mandatory = true)]
+        [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet, 
+                    Mandatory = true)]
         public SwitchParameter ServicePrincipal { get; set; }
-
-        [Parameter(ParameterSetName = UserParameterSet, Mandatory = false, HelpMessage = "Optional tenant name or ID")]
-        [Parameter(ParameterSetName = ServicePrincipalParameterSet, Mandatory = true, HelpMessage = "TenantId name or ID")]
-        [Parameter(ParameterSetName = AccessTokenParameterSet, Mandatory = false, HelpMessage = "TenantId name or ID")]
-        [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet, Mandatory = true, HelpMessage = "TenantId name or ID")]
-        [Parameter(ParameterSetName = SubscriptionIdParameterSet, Mandatory = false, HelpMessage = "TenantId name or ID")]
-        [Parameter(ParameterSetName = SubscriptionNameParameterSet, Mandatory = false, HelpMessage = "TenantId name or ID")]
+        
+        [Parameter(ParameterSetName = UserParameterSet, 
+                    Mandatory = false, HelpMessage = "Optional tenant name or ID")]
+        [Parameter(ParameterSetName = ServicePrincipalParameterSet, 
+                    Mandatory = true, HelpMessage = "Tenant name or ID")]
+        [Parameter(ParameterSetName = AccessTokenParameterSet, 
+                    Mandatory = false, HelpMessage = "Tenant name or ID")]
+        [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet, 
+                    Mandatory = true, HelpMessage = "Tenant name or ID")]
         [Alias("Domain")]
         [ValidateNotNullOrEmpty]
         public string TenantId { get; set; }
-
-        [Parameter(ParameterSetName = AccessTokenParameterSet, Mandatory = true, HelpMessage = "AccessToken")]
-        [Parameter(ParameterSetName = SubscriptionIdParameterSet, Mandatory = false, HelpMessage = "AccessToken")]
-        [Parameter(ParameterSetName = SubscriptionNameParameterSet, Mandatory = false, HelpMessage = "AccessToken")]
+        
+        [Parameter(ParameterSetName = AccessTokenParameterSet, 
+                    Mandatory = true, HelpMessage = "AccessToken for Azure Resource Manager")]
         [ValidateNotNullOrEmpty]
         public string AccessToken { get; set; }
 
-        [Parameter(ParameterSetName = AccessTokenParameterSet, Mandatory = true, HelpMessage = "Account Id for access token")]
-        [Parameter(ParameterSetName = SubscriptionIdParameterSet, Mandatory = false, HelpMessage = "Account Id for access token")]
-        [Parameter(ParameterSetName = SubscriptionNameParameterSet, Mandatory = false, HelpMessage = "Account Id for access token")]
+        [Parameter(ParameterSetName = AccessTokenParameterSet,
+                   Mandatory = false, HelpMessage = "AccessToken for Graph Service")]
+        [ValidateNotNullOrEmpty]
+        public string GraphAccessToken { get; set; }
+
+        [Parameter(ParameterSetName = AccessTokenParameterSet,
+                   Mandatory = false, HelpMessage = "AccessToken for KeyVault Service")]
+        [ValidateNotNullOrEmpty]
+        public string KeyVaultAccessToken { get; set; }
+        
+        [Parameter(ParameterSetName = AccessTokenParameterSet, 
+                    Mandatory = true, HelpMessage = "Account Id for access token")]
         [ValidateNotNullOrEmpty]
         public string AccountId { get; set; }
-
-        [Parameter(ParameterSetName = SubscriptionIdParameterSet, Mandatory = false, HelpMessage = "Subscription", ValueFromPipelineByPropertyName = true)]
-        [Parameter(ParameterSetName = ServicePrincipalParameterSet, Mandatory = false, HelpMessage = "Subscription", ValueFromPipelineByPropertyName = true)]
+        
+        [Alias("SubscriptionName", "SubscriptionId")]
+        [Parameter(ParameterSetName = UserParameterSet,
+                    Mandatory = false, HelpMessage = "Subscription Name or ID", ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ServicePrincipalParameterSet,
+                    Mandatory = false, HelpMessage = "Subscription Name or ID", ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet,
+                    Mandatory = false, HelpMessage = "Subscription Name or ID", ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = AccessTokenParameterSet,
+                    Mandatory = false, HelpMessage = "Subscription Name or ID", ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string SubscriptionId { get; set; }
+        public string Subscription { get; set; }
 
-        [Parameter(ParameterSetName = SubscriptionNameParameterSet, Mandatory = false, HelpMessage = "Subscription Name", ValueFromPipelineByPropertyName = true)]
-        [Parameter(ParameterSetName = ServicePrincipalParameterSet, Mandatory = false, HelpMessage = "Subscription Name", ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, HelpMessage = "Name of the default context from this login")]
         [ValidateNotNullOrEmpty]
-        public string SubscriptionName { get; set; }
+        public string ContextName { get; set; }
 
-        protected override AzureContext DefaultContext
+        [Parameter(Mandatory = false, HelpMessage = "Overwrite the existing context with the same name, if any.")]
+        public SwitchParameter Force { get; set; }
+
+        protected override IAzureContext DefaultContext
         {
             get
             {
@@ -114,65 +132,53 @@ namespace Microsoft.Azure.Commands.Profile
         protected override void BeginProcessing()
         {
             base.BeginProcessing();
-            if (Environment == null && EnvironmentName == null)
+            if (MyInvocation.BoundParameters.ContainsKey(nameof(Environment)))
             {
-                Environment = AzureEnvironment.PublicEnvironments[Common.Authentication.Models.EnvironmentName.AzureCloud];
-            }
-            else if (Environment == null && EnvironmentName != null)
-            {
-                if (AzureRmProfileProvider.Instance.Profile.Environments.ContainsKey(EnvironmentName))
-                {
-                    Environment = AzureRmProfileProvider.Instance.Profile.Environments[EnvironmentName];
-                }
-                else
+                var profile = GetDefaultProfile();
+                if (!profile.TryGetEnvironment(Environment, out _environment))
                 {
                     throw new PSInvalidOperationException(
-                        string.Format(Resources.UnknownEnvironment, EnvironmentName));
+                        string.Format(Resources.UnknownEnvironment, Environment));
                 }
             }
         }
 
         public override void ExecuteCmdlet()
         {
-            if (!string.IsNullOrWhiteSpace(SubscriptionId) &&
-                !string.IsNullOrWhiteSpace(SubscriptionName))
-            {
-                throw new PSInvalidOperationException(Resources.BothSubscriptionIdAndNameProvided);
-            }
-
             Guid subscrptionIdGuid;
-            if (!string.IsNullOrWhiteSpace(SubscriptionId) &&
-                !Guid.TryParse(SubscriptionId, out subscrptionIdGuid))
+            string subscriptionName = null;
+            string subscriptionId = null;
+            if (MyInvocation.BoundParameters.ContainsKey(nameof(Subscription)))
             {
-                throw new PSInvalidOperationException(
-                    string.Format(Resources.InvalidSubscriptionId, SubscriptionId));
+                if (Guid.TryParse(Subscription, out subscrptionIdGuid))
+                {
+                    subscriptionId = Subscription;
+                }
+                else
+                {
+                    subscriptionName = Subscription;
+                }
+
             }
 
             AzureAccount azureAccount = new AzureAccount();
 
-            if (!string.IsNullOrEmpty(AccessToken))
+            switch(ParameterSetName)
             {
-                if (string.IsNullOrWhiteSpace(AccountId))
-                {
-                    throw new PSInvalidOperationException(Resources.AccountIdRequired);
-                }
-
-                azureAccount.Type = AzureAccount.AccountType.AccessToken;
-                azureAccount.Id = AccountId;
-                azureAccount.SetProperty(AzureAccount.Property.AccessToken, AccessToken);
-            }
-            else if (ServicePrincipal.IsPresent)
-            {
-                azureAccount.Type = AzureAccount.AccountType.ServicePrincipal;
-            }
-            else
-            {
-                azureAccount.Type = AzureAccount.AccountType.User;
-            }
-
-            if (!string.IsNullOrEmpty(CertificateThumbprint))
-            {
-                azureAccount.SetProperty(AzureAccount.Property.CertificateThumbprint, CertificateThumbprint);
+                case AccessTokenParameterSet:
+                    azureAccount.Type = AzureAccount.AccountType.AccessToken;
+                    azureAccount.Id = AccountId;
+                    azureAccount.SetProperty(AzureAccount.Property.AccessToken, AccessToken);
+                    azureAccount.SetProperty(AzureAccount.Property.GraphAccessToken, GraphAccessToken);
+                    azureAccount.SetProperty(AzureAccount.Property.KeyVaultAccessToken, KeyVaultAccessToken);
+                    break;
+                case ServicePrincipalCertificateParameterSet:
+                case ServicePrincipalParameterSet:
+                    azureAccount.Type = AzureAccount.AccountType.ServicePrincipal;
+                    break;
+                default:
+                    azureAccount.Type = AzureAccount.AccountType.User;
+                    break;
             }
 
             SecureString password = null;
@@ -186,23 +192,59 @@ namespace Microsoft.Azure.Commands.Profile
             {
                 azureAccount.Id = ApplicationId;
             }
+             
+            if (!string.IsNullOrWhiteSpace(CertificateThumbprint))
+            {
+                azureAccount.SetThumbprint(CertificateThumbprint);
+            }
 
             if (!string.IsNullOrEmpty(TenantId))
             {
                 azureAccount.SetProperty(AzureAccount.Property.Tenants, new[] { TenantId });
             }
 
-            if (ShouldProcess(string.Format(Resources.LoginTarget, azureAccount.Type, Environment.Name), "log in"))
+            if (ShouldProcess(string.Format(Resources.LoginTarget, azureAccount.Type, _environment.Name), "log in"))
             {
                 if (AzureRmProfileProvider.Instance.Profile == null)
                 {
-                    AzureRmProfileProvider.Instance.Profile = new AzureRMProfile();
+                    InitializeProfileProvider();
                 }
 
-                var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.Profile);
+                SetContextWithOverwritePrompt((localProfile, profileClient, name) =>
+               {
+                   WriteObject((PSAzureProfile)profileClient.Login(
+                        azureAccount,
+                        _environment,
+                        TenantId,
+                        subscriptionId,
+                        subscriptionName,
+                        password,
+                        (s) => WriteWarning(s),
+                        name));
+               });
+            }
+        }
 
-                WriteObject((PSAzureProfile) profileClient.Login(azureAccount, Environment, TenantId, SubscriptionId,
-                    SubscriptionName, password));
+        bool CheckForExistingContext(AzureRmProfile profile, string name)
+        {
+            return name != null && profile != null && profile.Contexts != null && profile.Contexts.ContainsKey(name);
+        }
+
+        void SetContextWithOverwritePrompt(Action<AzureRmProfile, RMProfileClient, string> setContextAction)
+        {
+            string name = null;
+            if (MyInvocation.BoundParameters.ContainsKey(nameof(ContextName)))
+            {
+                name = ContextName;
+            }
+
+            AzureRmProfile profile = DefaultProfile as AzureRmProfile;
+            if (!CheckForExistingContext(profile, name)
+                || Force.IsPresent
+                || ShouldContinue(string.Format(Resources.ReplaceContextQuery, name),
+                string.Format(Resources.ReplaceContextCaption, name)))
+            {
+                ModifyContext((prof, client) => setContextAction(prof, client, name));
             }
         }
 
@@ -211,20 +253,41 @@ namespace Microsoft.Azure.Commands.Profile
         /// </summary>
         public void OnImport()
         {
+#if DEBUG
             try
             {
-                System.Management.Automation.PowerShell invoker = null;
-                invoker = System.Management.Automation.PowerShell.Create(RunspaceMode.CurrentRunspace);
+#endif
+                AzureSessionInitializer.InitializeAzureSession();
+#if DEBUG
+                if (!TestMockSupport.RunningMocked)
+                {
+#endif
+                    AzureSession.Instance.DataStore = new DiskDataStore();
+#if DEBUG
+                }
+#endif
+                var invoker = System.Management.Automation.PowerShell.Create(RunspaceMode.CurrentRunspace);
                 invoker.AddScript(File.ReadAllText(FileUtilities.GetContentFilePath(
                     Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
                     "AzureRmProfileStartup.ps1")));
-                invoker.Invoke();
+                var result = invoker.Invoke();
+                
+                bool autoSaveEnabled = AzureSession.Instance.ARMContextSaveMode == ContextSaveMode.CurrentUser;
+                var autosaveVariable = System.Environment.GetEnvironmentVariable(AzureProfileConstants.AzureAutosaveVariable);
+                bool localAutosave;
+                if(bool.TryParse(autosaveVariable, out localAutosave))
+                {
+                    autoSaveEnabled = localAutosave;
+                }
+
+                InitializeProfileProvider(autoSaveEnabled);
+#if DEBUG
             }
-            catch
+            catch (Exception) when (TestMockSupport.RunningMocked)
             {
                 // This will throw exception for tests, ignore.
             }
+#endif
         }
-
     }
 }

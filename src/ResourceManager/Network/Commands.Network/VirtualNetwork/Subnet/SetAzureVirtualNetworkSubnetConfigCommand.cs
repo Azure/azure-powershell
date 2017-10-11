@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Network.Models;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 
@@ -71,6 +72,21 @@ namespace Microsoft.Azure.Commands.Network
             {
                 subnet.RouteTable = new PSRouteTable();
                 subnet.RouteTable.Id = this.RouteTableId;
+            }
+
+            if (this.ServiceEndpoint != null)
+            {
+                subnet.ServiceEndpoints = new List<PSServiceEndpoint>();
+                foreach (var item in this.ServiceEndpoint)
+                {
+                    var service = new PSServiceEndpoint();
+                    service.Service = item;
+                    subnet.ServiceEndpoints.Add(service);
+                }
+            }
+            else
+            {
+                subnet.ServiceEndpoints = null;
             }
 
             WriteObject(this.VirtualNetwork);

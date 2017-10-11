@@ -14,6 +14,7 @@
 
 using Hyak.Common;
 using Microsoft.Azure.Commands.HDInsight.Commands;
+using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Commands.HDInsight.Models.Job;
 using Microsoft.Azure.Management.HDInsight.Job.Models;
 using Microsoft.WindowsAzure.Commands.Common;
@@ -132,16 +133,28 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         internal IStorageAccess GetDefaultStorageAccess(string resourceGroupName, string clusterName)
         {
+            var StorageAccountSuffix = "";
+    
             if (DefaultContainer == null && DefaultStorageAccountName == null && DefaultStorageAccountKey == null)
             {
                 var DefaultStorageAccount = GetDefaultStorageAccount(resourceGroupName, clusterName);
 
-                DefaultContainer = DefaultStorageAccount.StorageContainerName;
-                DefaultStorageAccountName = DefaultStorageAccount.StorageAccountName;
-                DefaultStorageAccountKey = DefaultStorageAccount.StorageAccountKey;
+                var wasbAccount = DefaultStorageAccount as AzureHDInsightWASBDefaultStorageAccount;
+                if (wasbAccount != null)
+                {
+                    DefaultContainer = wasbAccount.StorageContainerName;
+                    DefaultStorageAccountName = wasbAccount.StorageAccountName;
+                    DefaultStorageAccountKey = wasbAccount.StorageAccountKey;
+                    StorageAccountSuffix = DefaultContext.Environment.StorageEndpointSuffix;
+                }
+                else
+                {
+                    throw new CloudException("Unsupported default storage account type");
+                }
+
             }
 
-            return new AzureStorageAccess(DefaultStorageAccountName, DefaultStorageAccountKey, DefaultContainer);
+            return new AzureStorageAccess(DefaultStorageAccountName, DefaultStorageAccountKey, DefaultContainer,StorageAccountSuffix);
         }
     }
 }

@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Commands.RedisCache
     using System.Collections.Generic;
     using System.Management.Automation;
     using DayOfWeekEnum = System.DayOfWeek;
+    using Rest.Azure;
 
     [Cmdlet(VerbsCommon.Get, "AzureRmRedisCachePatchSchedule"), OutputType(typeof(List<PSScheduleEntry>))]
     public class GetAzureRedisCachePatchSchedule : RedisCacheCmdletBase
@@ -37,12 +38,17 @@ namespace Microsoft.Azure.Commands.RedisCache
         {
             Utility.ValidateResourceGroupAndResourceName(ResourceGroupName, Name);
             IList<ScheduleEntry> response = CacheClient.GetPatchSchedules(ResourceGroupName, Name);
+            if (response == null)
+            {
+                throw new CloudException(string.Format(Resources.PatchScheduleNotFound, Name));
+            }
+
             List<PSScheduleEntry> returnValue = new List<PSScheduleEntry>();
             foreach (var schedule in response)
             {
                 returnValue.Add(new PSScheduleEntry
                 {
-                    DayOfWeek = schedule.DayOfWeek,
+                    DayOfWeek = schedule.DayOfWeek.ToString(),
                     StartHourUtc = schedule.StartHourUtc,
                     MaintenanceWindow = schedule.MaintenanceWindow
                 });

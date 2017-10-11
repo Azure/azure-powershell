@@ -13,14 +13,16 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.DataLakeStore.Models;
+using Microsoft.Azure.Commands.DataLakeStore.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.DataLake.Store.Models;
+using System;
 using System.Collections;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeStoreAccount"), OutputType(typeof(DataLakeStoreAccount))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeStoreAccount"), OutputType(typeof(PSDataLakeStoreAccount))]
     [Alias("Set-AdlStore")]
     public class SetAzureDataLakeStoreAccount : DataLakeStoreCmdletBase
     {
@@ -43,9 +45,34 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         public Hashtable Tags { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false,
+            HelpMessage = "Optionally enable/disable the existing trusted ID providers.")]
+        [ValidateNotNull]
+        public TrustedIdProviderState? TrustedIdProviderState { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, Mandatory = false,
+            HelpMessage = "Optionally enable/disable existing firewall rules.")]
+        [ValidateNotNull]
+        public FirewallState? FirewallState { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false,
             HelpMessage = "Name of resource group under which you want to update the account.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            HelpMessage = "The desired commitment tier for this account to use.")]
+        [ValidateNotNull]
+        public TierType? Tier { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            HelpMessage = "Optionally allow/block Azure originating IPs through the firewall.")]
+        [ValidateNotNull]
+        public FirewallAllowAzureIpsState? AllowAzureIpState { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            HelpMessage = "If the encryption type is User assigned, the user can rotate their key version with this parameter.")]
+        [ValidateNotNull]
+        public string KeyVersion { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -54,7 +81,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
             if (string.IsNullOrEmpty(DefaultGroup))
             {
-                DefaultGroup = currentAccount.Properties.DefaultGroup;
+                DefaultGroup = currentAccount.DefaultGroup;
             }
 
             if (Tags == null)
@@ -62,7 +89,55 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 Tags = TagsConversionHelper.CreateTagHashtable(currentAccount.Tags);
             }
 
-            WriteObject(DataLakeStoreClient.CreateOrUpdateAccount(ResourceGroupName, Name, DefaultGroup, location, Tags));
+            if (!TrustedIdProviderState.HasValue)
+            {
+                TrustedIdProviderState = currentAccount.TrustedIdProviderState;
+            }
+
+            if (!FirewallState.HasValue)
+            {
+                FirewallState = currentAccount.FirewallState;
+            }
+
+            if (AllowAzureIpState.HasValue && FirewallState.Value == Management.DataLake.Store.Models.FirewallState.Disabled)
+            {
+                WriteWarning(string.Format(Resources.FirewallDisabledWarning, Name));
+            }
+
+            if (!AllowAzureIpState.HasValue)
+            {
+                AllowAzureIpState = currentAccount.FirewallAllowAzureIps;
+            }
+
+            UpdateEncryptionConfig updateConfig = null;
+            if (!string.IsNullOrEmpty(KeyVersion))
+            {
+                if (currentAccount.EncryptionConfig.Type == EncryptionConfigType.ServiceManaged)
+                {
+                    throw new ArgumentException(Resources.IncorrectEncryptionTypeForUpdate);
+                }
+
+                updateConfig = new UpdateEncryptionConfig
+                {
+                    KeyVaultMetaInfo = new UpdateKeyVaultMetaInfo
+                    {
+                        EncryptionKeyVersion = KeyVersion
+                    }
+                };
+            }
+
+            WriteObject(
+                new PSDataLakeStoreAccount(
+                    DataLakeStoreClient.UpdateAccount(
+                        ResourceGroupName,
+                        Name,
+                        DefaultGroup,
+                        TrustedIdProviderState.GetValueOrDefault(),
+                        FirewallState.GetValueOrDefault(),
+                        AllowAzureIpState.GetValueOrDefault(),
+                        Tags,
+                        tier: Tier,
+                        userConfig: updateConfig)));
         }
     }
 }

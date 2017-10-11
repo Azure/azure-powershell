@@ -83,7 +83,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             var directoryToBeCreated = baseDirectory.GetDirectoryReferenceByPath(path);
             this.RunTask(async taskId =>
             {
-                await this.Channel.CreateDirectoryAsync(directoryToBeCreated, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken);
+                await this.Channel.CreateDirectoryAsync(directoryToBeCreated, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken).ConfigureAwait(false);
                 this.OutputStream.WriteObject(taskId, directoryToBeCreated);
             });
         }

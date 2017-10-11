@@ -19,7 +19,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
 {
 
-    [Cmdlet(VerbsCommon.New, "AzureRmNotificationHubsNamespace"), OutputType(typeof(NamespaceAttributes))]
+    [Cmdlet(VerbsCommon.New, "AzureRmNotificationHubsNamespace", SupportsShouldProcess = true), OutputType(typeof(NamespaceAttributes))]
     public class NewAzureNotificationHubsNamespace : AzureNotificationHubsCmdletBase
     {
         [Parameter(Mandatory = true,
@@ -49,11 +49,25 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
             HelpMessage = "Hashtables which represents resource Tags.")]
         public Hashtable Tags { get; set; }
 
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            Position = 4,
+            HelpMessage = "Sku tier of the namespace")]
+        public string SkuTier { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            // Create a new namespace 
-            var nsAttribute = Client.BeginCreateNamespace(ResourceGroup, Namespace, Location, ConvertTagsToDictionary(Tags));
-            WriteObject(nsAttribute);
+            if (ShouldProcess(string.Empty, Resources.CreateNamespace))
+            {
+                // Create a new namespace
+                if(string.IsNullOrWhiteSpace(SkuTier))
+                {
+                    SkuTier = "free";
+                }
+
+                var nsAttribute = Client.CreateNamespace(ResourceGroup, Namespace, Location, ConvertTagsToDictionary(Tags), SkuTier);
+                WriteObject(nsAttribute);
+            }
         }
     }
 }

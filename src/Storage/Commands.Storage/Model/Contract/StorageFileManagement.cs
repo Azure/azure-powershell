@@ -79,7 +79,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
             FileContinuationToken continuationToken = null;
             do
             {
-                var segment = await directory.ListFilesAndDirectoriesSegmentedAsync(null, continuationToken, options, operationContext, token);
+                var segment = await directory.ListFilesAndDirectoriesSegmentedAsync(null, continuationToken, options, operationContext, token).ConfigureAwait(false);
                 foreach (var item in segment.Results)
                 {
                     enumerationAction(item);
@@ -100,7 +100,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
             FileContinuationToken continuationToken = null;
             do
             {
-                var segment = await this.Client.ListSharesSegmentedAsync(prefix, detailsIncluded, null, continuationToken, options, operationContext, token);
+                var segment = await this.Client.ListSharesSegmentedAsync(prefix, detailsIncluded, null, continuationToken, options, operationContext, token).ConfigureAwait(false);
                 foreach (var item in segment.Results)
                 {
                     enumerationAction(item);
@@ -177,6 +177,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
 
         public Task AbortCopyAsync(CloudFile file, string copyId, AccessCondition accessCondition, FileRequestOptions requestOptions, OperationContext operationContext, CancellationToken cancellationToken)
         {
+            // Workaround for XSCL 8.4.0 issue: File abort copy fail with null reference. Will remove the line with the issue fixed.
+            CloudFileShare share = file.Share;
             return file.AbortCopyAsync(copyId, accessCondition, requestOptions, operationContext, cancellationToken);
         }
     }

@@ -14,8 +14,8 @@
 
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Azure.Management.Internal.Network.Common;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipeline = true,
             ParameterSetName = NicObjectParamSetName)]
         [ValidateNotNullOrEmpty]
-        public List<PSNetworkInterface> NetworkInterface { get; set; }
+        public List<INetworkInterfaceReference> NetworkInterface { get; set; }
 
         [Parameter(
             Mandatory = false,
