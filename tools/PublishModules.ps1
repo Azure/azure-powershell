@@ -373,6 +373,8 @@ function Add-ExternalDependency {
         $moduleName = (Get-Item -Path $Path).Name
         $moduleManifest = $moduleName + ".psd1"
         $moduleSourcePath = Join-Path -Path $Path -ChildPath $moduleManifest
+        $content = Get-Content -Path $moduleSourcePath | where {$_ -notlike "*DefaultCommandPrefix*"}
+        $content | Set-Content -Path $moduleSourcePath -Force
         Update-ModuleManifest -Path $moduleSourcePath -ExternalModuleDependencies 'PSSwaggerUtility'
      }
 }
