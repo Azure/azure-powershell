@@ -95,7 +95,71 @@ ModuleList = @()
 # List of all files packaged with this module  
 FileList =  @()  
   
-# Private data to pass to the module specified in ModuleToProcess  
-PrivateData = ''  
+# Private data to pass to the module specified in RootModule/ModuleToProcess. This may also contain a PSData hashtable with additional module metadata used by PowerShell.
+PrivateData = @{
+
+    PSData = @{
+
+        # Tags applied to this module. These help with module discovery in online galleries.
+        # Tags = @()
+
+        # A URL to the license for this module.
+        LicenseUri = 'https://aka.ms/azps-license'
+
+        # A URL to the main website for this project.
+        ProjectUri = 'https://github.com/Azure/azure-powershell'
+
+        # A URL to an icon representing this module.
+        # IconUri = ''
+
+        # ReleaseNotes of this module
+        ReleaseNotes = '## 2017.10.12 - Version 1.2.11
+        * The release 1.2.11 comes with a list of breaking changes. To upgrade from the 1.2.10 version, we have created a migration guide at https://aka.ms/azSpowershellmigration
+        * Profile
+            * Context persistence has been enabled, refer to the link for the details https://docs.microsoft.com/en-us/powershell/azure/context-persistence
+            * Add-AzureRmAccount - EnvironmentName parameter has been removed and replaced with Environment
+            * Select-AzureRmContext has been renamed to Import-AzureRmContext
+            * Save-AzureRmProfile has been renamed to Save-AzureRmContext
+            * -Force Parameter has been deprecated from Remove-AzureRmEnvironment
+            * Refer to the migration guide https://aka.ms/azSpowershellmigration for the object model changes
+        * Compute
+            * Tags parameter has been changed to Tag and the type was changed from HashTable[] to HashTable for the cmdlets New-AzureRmVM and Update-AzureRmVM
+        * Dns
+            * Tags parameter has been changed to Tag and the type was changed from HashTable[] to HashTable for the cmdlets New-AzureRmDnsZone and Set-AzureRmDnsZone
+        * KeyVault
+            * Tags parameter has been changed to Tag and the type was changed from HashTable[] to HashTable for the cmdlets New-AzureRmDnsZone and Set-AzureRmDnsZone
+        * Network
+            * Tags parameter has been changed to Tag and the type was changed from HashTable[] to HashTable for the following cmdlets
+                  - New-AzureRmApplicationGateway
+                  - New-AzureRmExpressRouteCircuit
+                  - New-AzureRmLoadBalancer
+                  - New-AzureRmLocalNetworkGateway
+                  - New-AzureRmNetworkInterface
+                  - New-AzureRmNetworkSecurityGroup
+                  - New-AzureRmPublicIpAddress
+                  - New-AzureRmRouteTable
+                  - New-AzureRmVirtualNetwork
+                  - New-AzureRmVirtualNetworkGateway
+                  - New-AzureRmVirtualNetworkGatewayConnection
+                  - New-AzureRmVirtualNetworkPeering
+        * Resources
+            * -Force parmeter has been removed from the following cmdlets
+                  - Register-AzureRmProviderFeature
+                  - Register-AzureRmResourceProvider
+                  - Remove-AzureRmADServicePrincipal
+                  - Remove-AzureRmPolicyAssignment
+                  - Remove-AzureRmResourceGroupDeployment
+                  - Remove-AzureRmRoleAssignment
+                  - Stop-AzureRmResourceGroupDeployment
+                  - Unregister-AzureRmResourceProvider
+        * Tag
+            * -Force parmeter has been removed from the cmdlet Remove-AzureRmTag'
+
+        # External dependent modules of this module
+        # ExternalModuleDependencies = ''
+
+    } # End of PSData hashtable
+    
+ } # End of PrivateData hashtable 
 
 } 
