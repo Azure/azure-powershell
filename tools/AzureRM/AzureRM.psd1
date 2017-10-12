@@ -165,7 +165,7 @@ PrivateData = @{
        preparation for upcoming breaking change release (Version 4.0.0)
 * HDInsight
     * Added support for Data Disks property in cluster creation
-        - Added parameter 'WorkerNodeDataDisksGroups' to the New-AzureHDInsightCluster cmdlet
+        - Added parameter ''WorkerNodeDataDisksGroups'' to the New-AzureHDInsightCluster cmdlet
 * Insights
         * Add-AzureRmLogAlertRule
             - Adding details to deprecation warning introduced in April 2017: the cmdlet will stop having effect: its functionality is moved to the "ActivityLogAlerts" cmdlets.
