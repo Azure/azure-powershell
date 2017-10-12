@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 0.1.0
 * New Cmdlet Get-AzureRmMarketplaceTerms
     - Get the agreement terms of a given publisher id, offer id and plan id.
 * New Cmdlet Set-AzureRmMarketplaceTerms
