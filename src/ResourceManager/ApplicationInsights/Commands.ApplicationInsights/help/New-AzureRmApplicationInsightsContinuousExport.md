@@ -26,11 +26,11 @@ Create a new application insights continuous export configuration for an applica
 ### Example 1
 ```
 PS C:\> New-AzureRmApplicationInsightsContinuousExport -ResourceGroupName "testgroup" -Name "test"
- -DocumentTypes "Rdd","Messages" -DestinationStorageAccountId "/subscriptions/50359d91-7b9d-4823-85af-eb298a61ba96/resourceGroups/testgroup/providers/Microsoft.Storage/storageAccounts/teststorageaccount" -DestinationStorageLocationId sourcecentralus
- -DestinationStorageSASToken "https://teststorageaccount.blob.core.windows.net/testcontainer?sv=2015-04-05&sr=c&sig=xxxxxxxxx"
+ -DocumentTypes "Request","Trace" -DestinationStorageAccountId "/subscriptions/50359d91-7b9d-4823-85af-eb298a61ba96/resourceGroups/testgroup/providers/Microsoft.Storage/storageAccounts/teststorageaccount" -DestinationStorageLocationId sourcecentralus
+ -DestinationStorageSASUri "https://teststorageaccount.blob.core.windows.net/testcontainer?sv=2050-04-05&sr=c&sig=xxxxxxxxx"
 ```
 
-Create a new application insights continuous export configuration to export "Rdd" and "Messages" document types to storage contain "testcontainer" in storage account "teststorageaccount" in resource group "testgroup".
+Create a new application insights continuous export configuration to export "Request" and "Trace" document types to storage contain "testcontainer" in storage account "teststorageaccount" in resource group "testgroup". The SAS token have to be valid and have write permission to the container, otherwise continous export feature won't work.
 
 ## PARAMETERS
 
@@ -77,8 +77,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -DestinationStorageSASToken
-Destination Storage SAS token.
+### -DestinationStorageSASUri
+Destination Storage SAS uri.
 
 ```yaml
 Type: String
@@ -98,8 +98,8 @@ Document types that need exported.
 ```yaml
 Type: String[]
 Parameter Sets: (All)
-Aliases: ApplicationKind
-Accepted values: Requests, Exceptions, Event, Messages, Metrics, PageViewPerformance, PageViews, Rdd, Availability, PerformanceCounters
+Aliases: 
+Accepted values: Request, Exception, Custom Event, Trace, Metric, Page Load, Page View, Dependency, Availability, Performance Counter
 
 Required: True
 Position: 2

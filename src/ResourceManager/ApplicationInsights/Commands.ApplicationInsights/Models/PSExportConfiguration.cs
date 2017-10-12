@@ -18,42 +18,30 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.Models
 {
     public class PSExportConfiguration
     {
-        public string ExportId { get; set; }        
+        public string ExportId { get; set; }
         public string StorageName { get; set; }
         public string ContainerName { get; set; }
         public string RecordTypes { get; set; }
         public string DestinationStorageSubscriptionId { get; set; }
         public string DestinationStorageLocationId { get; set; }
-        public string DestinationAccountId { get; set; }
+        public string DestinationStorageAccountId { get; set; }
         public string IsEnabled { get; set; }
         public string ExportStatus { get; set; }
-        public string DestinationAddress { get; set; }
+        public string LastSuccessTime { get; set; }
 
         public PSExportConfiguration(ApplicationInsightsComponentExportConfiguration response)
         {
             this.ExportId = response.ExportId;
 
-            this.RecordTypes = response.RecordTypes;
+            this.RecordTypes = string.Join(", ", ApplicationInsightsBaseCmdlet.ConvertToDocumentType(response.RecordTypes.Split(',')));
             this.DestinationStorageSubscriptionId = response.DestinationStorageSubscriptionId;
             this.DestinationStorageLocationId = response.DestinationStorageLocationId;
-            this.DestinationAccountId = response.DestinationAccountId;
+            this.DestinationStorageAccountId = response.DestinationAccountId;
             this.IsEnabled = response.IsUserEnabled;
             this.ExportStatus = response.ExportStatus;
             this.StorageName = response.StorageName;
             this.ContainerName = response.ContainerName;
-        }
-
-        public ApplicationInsightsComponentExportRequest ToExportRequest()
-        {
-            return new ApplicationInsightsComponentExportRequest()
-            {
-                RecordTypes = this.RecordTypes,
-                DestinationAccountId = this.DestinationAccountId,
-                DestinationAddress = this.DestinationAddress,
-                DestinationStorageSubscriptionId = this.DestinationStorageSubscriptionId,
-                DestinationStorageLocationId = this.DestinationStorageLocationId,
-                IsEnabled = this.IsEnabled,
-            };
+            this.LastSuccessTime = response.LastSuccessTime;
         }
     }
 }
