@@ -48,6 +48,20 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
 
         public class DocumentType
         {
+            public const string Requests = "Request";
+            public const string Event = "Custom Event";
+            public const string Exceptions = "Exception";
+            public const string Metrics = "Metric";
+            public const string PageViews = "Page View";
+            public const string PageViewPerformance = "Page Load";
+            public const string RemoteDependency = "Dependency";
+            public const string PerformanceCounters = "Performance Counter";
+            public const string Availability = "Availability";
+            public const string Messages = "Trace";
+        }
+
+        internal class RecordType
+        {
             public const string Requests = "Requests";
             public const string Event = "Event";
             public const string Exceptions = "Exceptions";
@@ -189,6 +203,50 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
             }
 
             return null;
+        }
+
+        protected static string[] ConvertToRecordType(string[] documentTypes)
+        {
+            if (documentTypes == null)
+            {
+                throw new ArgumentNullException("documentTypes");
+            }
+
+            Dictionary<string, string> mapping = new Dictionary<string, string>();
+            mapping.Add(DocumentType.Requests.ToLowerInvariant(), RecordType.Requests);
+            mapping.Add(DocumentType.Event.ToLowerInvariant(), RecordType.Event);
+            mapping.Add(DocumentType.Exceptions.ToLowerInvariant(), RecordType.Exceptions);
+            mapping.Add(DocumentType.Messages.ToLowerInvariant(), RecordType.Messages);
+            mapping.Add(DocumentType.Metrics.ToLowerInvariant(), RecordType.Metrics);
+            mapping.Add(DocumentType.PageViewPerformance.ToLowerInvariant(), RecordType.PageViewPerformance);
+            mapping.Add(DocumentType.PageViews.ToLowerInvariant(), RecordType.PageViews);
+            mapping.Add(DocumentType.RemoteDependency.ToLowerInvariant(), RecordType.RemoteDependency);
+            mapping.Add(DocumentType.Availability.ToLowerInvariant(), RecordType.Availability);
+            mapping.Add(DocumentType.PerformanceCounters.ToLowerInvariant(), RecordType.PerformanceCounters);
+
+            return documentTypes.Select(d => mapping[d.Trim().ToLowerInvariant()]).ToArray();
+        }
+
+        internal static string[] ConvertToDocumentType(string[] recordTypes)
+        {
+            if (recordTypes == null)
+            {
+                throw new ArgumentNullException("documentTypes");
+            }
+
+            Dictionary<string, string> mapping = new Dictionary<string, string>();
+            mapping.Add(RecordType.Requests.ToLowerInvariant(), DocumentType.Requests);
+            mapping.Add(RecordType.Event.ToLowerInvariant(), DocumentType.Event);
+            mapping.Add(RecordType.Exceptions.ToLowerInvariant(), DocumentType.Exceptions);
+            mapping.Add(RecordType.Messages.ToLowerInvariant(), DocumentType.Messages);
+            mapping.Add(RecordType.Metrics.ToLowerInvariant(), DocumentType.Metrics);
+            mapping.Add(RecordType.PageViewPerformance.ToLowerInvariant(), DocumentType.PageViewPerformance);
+            mapping.Add(RecordType.PageViews.ToLowerInvariant(), DocumentType.PageViews);
+            mapping.Add(RecordType.RemoteDependency.ToLowerInvariant(), DocumentType.RemoteDependency);
+            mapping.Add(RecordType.Availability.ToLowerInvariant(), DocumentType.Availability);
+            mapping.Add(RecordType.PerformanceCounters.ToLowerInvariant(), DocumentType.PerformanceCounters);
+
+            return recordTypes.Select(d => mapping[d.Trim().ToLowerInvariant()]).ToArray();
         }
     }
 }

@@ -43,8 +43,7 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
             Position = 2,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Document types that need exported.")]
-        [Alias(ApplicationKindAlias)]
+            HelpMessage = "Document types that need exported.")]        
         [ValidateSet(DocumentType.Requests,
             DocumentType.Exceptions,
             DocumentType.Event,
@@ -78,9 +77,9 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
             Position = 5,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Destination Storage SAS token.")]
+            HelpMessage = "Destination Storage SAS Uri.")]
         [ValidateNotNullOrEmpty]
-        public string DestinationStorageSASToken { get; set; }
+        public string DestinationStorageSASUri { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -90,10 +89,10 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
             exportRequest.IsEnabled = "true";
             exportRequest.DestinationAccountId = this.DestinationStorageAccountId;
             exportRequest.DestinationStorageSubscriptionId = ParseSubscriptionFromId(this.DestinationStorageAccountId);
-            exportRequest.DestinationAddress = this.DestinationStorageSASToken;
+            exportRequest.DestinationAddress = this.DestinationStorageSASUri;
             exportRequest.DestinationStorageLocationId = this.DestinationStorageLocationId;
             exportRequest.DestinationType = "Blob";
-            exportRequest.RecordTypes = string.Join(",", this.DocumentTypes);
+            exportRequest.RecordTypes = string.Join(",", ConvertToRecordType(this.DocumentTypes));
 
             var exportConfigurationsResponse = this.AppInsightsManagementClient
                                                     .ExportConfigurations
