@@ -84,7 +84,7 @@ RequiredModules = @(@{ModuleName="AzureRM.Profile"; RequiredVersion="3.4.1"},
 
 # List of all files packaged with this module
 # FileList = @()
-
+  
 # Private data to pass to the module specified in RootModule/ModuleToProcess. This may also contain a PSData hashtable with additional module metadata used by PowerShell.
 PrivateData = @{
 
@@ -94,7 +94,7 @@ PrivateData = @{
         # Tags = @()
 
         # A URL to the license for this module.
-        LicenseUri = 'https://raw.githubusercontent.com/Azure/azure-powershell/stack-dev/LICENSE.txt'
+        LicenseUri = 'https://aka.ms/azps-license'
 
         # A URL to the main website for this project.
         ProjectUri = 'https://github.com/Azure/azure-powershell'
@@ -103,17 +103,17 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '2017.01.11 version 1.2.8
-* AzureRM.Keyvault module
-	* Relaxing data type of ObjectId from Guid to string in Access Policy Entry for a Vault. These changes are required to Support ADFS Identity System.
-	* Set-AzureRmKeyVaultAccessPolicy cmdlet has an optional parameter BypassObjectIdValidation for supporting ADFS scenarios'
-
+        ReleaseNotes = '## 2017.10.12 - Version 1.2.11
+        * Dependency on the new AzureRm.Profile module brings many breaking changes, please refer migration guide https://aka.ms/azSpowershellmigration for the details
+        * AzureStackAdmin
+            * Get-AzsTenantSubscription has been renamed to Get-AzsUserSubscription with alias support for backward compatibility
+            * New-AzsTenantSubscription has been renamed to New-AzsUserSubscription with alias support for backward compatibility
+            * Remove-AzsTenantSubscription has been renamed to Remove-AzsUserSubscription with alias support for backward compatibility'
         # External dependent modules of this module
         # ExternalModuleDependencies = ''
 
     } # End of PSData hashtable
-    
- } # End of PrivateData hashtable
+  } # End of PrivateData hashtable
 
 # HelpInfo URI of this module
 # HelpInfoURI = ''
