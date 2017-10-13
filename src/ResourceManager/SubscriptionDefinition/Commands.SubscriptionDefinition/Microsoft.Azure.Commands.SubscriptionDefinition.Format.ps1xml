@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Configuration>
+  <ViewDefinitions>
+	<View>
+      <Name>Microsoft.Azure.Commands.SubscriptionDefinition.Models.PSSubscriptionDefinition</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.SubscriptionDefinition.Models.PSSubscriptionDefinition</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>ManagementGroupId</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>SubscriptionId</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>SubscriptionDisplayName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>OfferType</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>UserCancellationRequested</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+  </ViewDefinitions>
+</Configuration>
