@@ -134,7 +134,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'Initial release of the Commerce Admin module. Allows administrators to view aggregate subscription usage.'
+        ReleaseNotes = 'Initial release of the Commerce Admin module. Allows AzureStack administrators to view aggregate subscription usage.'
 
         ExternalModuleDependencies = 'PSSwaggerUtility'
 

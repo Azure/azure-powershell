@@ -178,7 +178,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'Initial release of the Fabric Admin module. Allows administrators view and manage their AzureStack infrastructure.'
+        ReleaseNotes = 'Initial release of the Fabric Admin module. Allows AzureStack administrators view and manage their infrastructure.'
 
         ExternalModuleDependencies = @('PSSwaggerUtility')
 

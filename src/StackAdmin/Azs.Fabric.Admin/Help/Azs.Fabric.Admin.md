@@ -1,14 +1,14 @@
 ---
 Module Name: Azs.Fabric.Admin
 Module Guid: 5e04dc01-069b-4fad-a590-ccff2c6e20b5
-Download Help Link: {{Please enter FwLink manually}}
-Help Version: {{Please enter version of help manually (X.X.X.X) format}}
+Download Help Link: 
+Help Version: 0.1.0
 Locale: en-US
 ---
 
 # Azs.Fabric.Admin Module
 ## Description
-{{Manually Enter Description Here}}
+Allows AzureStack administrators view and manage their infrastructure.
 
 ## Azs.Fabric.Admin Cmdlets
 ### [Disable-AzsInfrastructureRoleInstance](Disable-AzsInfrastructureRoleInstance.md)
