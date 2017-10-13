@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -205,11 +205,38 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The parameter ForceBinary is deprecated. It will not have any impact in the file transfer. We will remove the parameter in future releases..
+        /// </summary>
+        internal static string IncorrectForceBinary {
+            get {
+                return ResourceManager.GetString("IncorrectForceBinary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The output type defined for this cmdlet is incorrect and will be updated to reflect what is actually returned (and defined in the help) in a future release..
         /// </summary>
         internal static string IncorrectOutputTypeWarning {
             get {
                 return ResourceManager.GetString("IncorrectOutputTypeWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The parameter PerFileThreadCount is deprecated. It will not have any impact in the file transfer. We will remove the parameter in future releases. ConcurrentFileCount will only be used..
+        /// </summary>
+        internal static string IncorrectPerFileThreadCountWarning {
+            get {
+                return ResourceManager.GetString("IncorrectPerFileThreadCountWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The parameter Resume is deprecated. We will remove the parameter in future releases..
+        /// </summary>
+        internal static string IncorrectResume {
+            get {
+                return ResourceManager.GetString("IncorrectResume", resourceCulture);
             }
         }
         

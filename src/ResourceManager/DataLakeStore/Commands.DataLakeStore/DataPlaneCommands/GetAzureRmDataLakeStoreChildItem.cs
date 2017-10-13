@@ -39,11 +39,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         public override void ExecuteCmdlet()
         {
-            List<DataLakeStoreItem> toReturn =
-                DataLakeStoreFileSystemClient.GetFileStatuses(Path.TransformedPath, Account)
-                    .FileStatus.Select(element => new DataLakeStoreItem(element, optionalPath: "/" + Path.TransformedPath))
-                    .ToList();
-
+            var toReturn = DataLakeStoreFileSystemClient.GetFileStatuses(Path.TransformedPath, Account).Select(entry => new DataLakeStoreItem(entry)).ToList();
             WriteObject(toReturn, true);
         }
     }
