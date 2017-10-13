@@ -54,9 +54,11 @@ function TestRunner( [string[]]$tests ) {
             $scriptStackTrace = $PSItem.ScriptStackTrace
 			$newLine = [Environment]::NewLine
 			$scriptStackTrace.Split($newLine) | Where-Object {$_.Length -gt 0} | ForEach-Object { Write-Output "`t$_" }
-			Write-Error "!!! Test FAILED: $PSItem $newLine $scriptStackTrace"
+			Write-Error "!!! Test FAILED: $PSItem$newLine$scriptStackTrace"
 		}
 	}
+	
+	"==> Done: PASSED $pass  FAILED $fail  EXECUTED $run($total)";
 	
 	if ($fail -gt 0) {
 		$msg = "$fail test(s) failed. Please see log for details"
@@ -64,5 +66,4 @@ function TestRunner( [string[]]$tests ) {
 		throw $msg
 	}
 	
-    "==> Done: PASSED $pass  FAILED $fail  EXECUTED $run($total)";
 }

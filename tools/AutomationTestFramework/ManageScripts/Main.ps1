@@ -6,14 +6,6 @@
 . "$PSScriptRoot\GenerateRunbook.ps1"
 . "$PSScriptRoot\AccountRunbook.ps1"
 
-$i_want_to = @{
-    'GenerateAndUploadTestHelperModule' = $true;
-    'GenerateAndUploadTestModule' = $true;
-    'UploadSignedModules' = $true;
-    'GenerateRunbooks' = $true;
-    'UploadPublishAndStartRunbooks' = $true;
-}
-
 <#
 .SYNOPSIS
 Complete Automation Account TEST Framework scenario  
@@ -23,12 +15,18 @@ Set of switches to enable or disable certain functionality
 Prerequisite: Ready to use Azure Automation Account and Azure Storage Account container
 with settings provided in the AzureConfig.ps1 file
 #>
-function Main ($i_want_to) {
+function Main (
+     [bool]$generateAndUploadTestHelperModule = $true
+    ,[bool]$generateAndUploadTestModule = $true
+    ,[bool]$uploadSignedModules = $true
+    ,[bool]$generateRunbooks = $true
+    ,[bool]$uploadPublishAndStartRunbooks = $true) {
+
     try {
 
         $foregroundColor = "DarkMagenta"
 
-        if ($i_want_to.GenerateAndUploadTestHelperModule) {
+        if ($generateAndUploadTestHelperModule) {
             Write-Host "=== GenerateAndUploadTestHelperModule ========================" -ForegroundColor  $foregroundColor
             GenerateAndUploadTestHelperModule
     
@@ -39,7 +37,7 @@ function Main ($i_want_to) {
         # Project is one of the azure-powershell\src\ResourceManager subfolders
         $projectList = @('Compute', 'Storage')
         
-        if ($i_want_to.GenerateAndUploadTestModule) {
+        if ($generateAndUploadTestModule) {
             Write-Host "=== GenerateAndUploadTestModule ========================" -ForegroundColor $foregroundColor
             
             GenerateAndUploadTestsModule `
@@ -47,12 +45,12 @@ function Main ($i_want_to) {
                 -projectList $projectList
         }
 
-        if ($i_want_to.UploadSignedModules) {
+        if ($uploadSignedModules) {
             Write-Host "=== UploadSignedModuless ========================" -ForegroundColor $foregroundColor
             
             RemoveAutomationAccountModules -like "*AzureRm.*"
             
-            $signedModulesPath = "E:\OneDrive - Microsoft\Projects\PowerShell\AzureAutomation\pkgs"
+            $signedModulesPath = "\\aaptfile01\ADXSDK\PowerShell\2017_10_12_PowerShell\pkgs"
             
             $moduleList =  @('AzureRM.Resources', 'AzureRM.Compute', 'AzureRM.Network', 'AzureRM.Storage', 'AzureRM.Websites',  'AzureRM.KeyVault', 'AzureRM.Sql')
             
@@ -61,7 +59,7 @@ function Main ($i_want_to) {
                 -moduleList $moduleList
         }
 
-        if ($i_want_to.GenerateRunbooks) {
+        if ($generateRunbooks) {
             Write-Host "=== GenerateRunbooks ========================" -ForegroundColor $foregroundColor
             GenerateRunbooksForProject  `
                 -srcPath $srcPath `
@@ -69,7 +67,7 @@ function Main ($i_want_to) {
                 -projectList $projectList
         }
         
-        if ($i_want_to.UploadPublishAndStartRunbooks) {
+        if ($uploadPublishAndStartRunbooks) {
             Write-Host "=== UploadPublishAndStartRunbooks ========================" -ForegroundColor $foregroundColor
             RemoveRunbookFromAutomationAccount -like "Live*Tests*"
             UploadPublishAndStartRunbooks
@@ -83,12 +81,4 @@ function Main ($i_want_to) {
     }
 }
 
-# $i_want_to.GenerateAndUploadTestHelperModule = $false
-# $i_want_to.GenerateAndUploadTestModule = $false
-# $i_want_to.UploadSignedModules = $false
-# $i_want_to.GenerateRunbooks = $false
-# $i_want_to.UploadPublishAndStartRunbooks = $false
-
-$i_want_to
-
-Main $i_want_to
+Main -generateAndUploadTestHelperModule $false -generateAndUploadTestModule $false -generateRunbooks $false -uploadPublishAndStartRunbooks $false
