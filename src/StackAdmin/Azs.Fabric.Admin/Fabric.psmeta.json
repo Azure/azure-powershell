@@ -1,0 +1,2725 @@
+{
+  "info": {
+    "x-ps-code-generation-settings": {
+      "codeGenerator": "AzureCsharp",
+      "nameSpacePrefix": "Azs.Fabric.Admin",
+      "noAssembly": false,
+      "powerShellCorePath": "",
+      "includeCoreFxAssembly": false,
+      "testBuild": false,
+      "confirmBootstrap": false,
+      "path": ".",
+      "symbolPath": ".",
+      "serviceType": "azure_stack",
+      "customAuthCommand": "",
+      "hostOverrideCommand": "",
+      "noAuthChallenge": ""
+    },
+    "x-ps-module-info": {
+      "name": "FabricAdminClient",
+      "moduleVersion": "0.1.0",
+      "guid": "0605ec7e-88a5-4ca6-8bdc-c62eabc4f38a",
+      "description": "Fabric Admin Client",
+      "author": "Jeffrey Robinson",
+      "companyName": "Microsoft",
+      "CopyRight": "MIT",
+      "licenseUri": "https://github.com/Azure/azure-powershell/blob/preview/LICENSE.txt",
+      "projectUri": "https://github.com/Azure/azure-powershell",
+      "helpInfoUri": "",
+      "iconUri": "",
+      "releaseNotes": "",
+      "defaultCommandPrefix": "Azs",
+      "tags": [
+        
+      ]
+    }
+  },
+  "paths": {
+    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/scaleUnits/{scaleUnit}": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-ScaleUnit",
+            "description": "Get a scale unit.",
+            "defaultParameterSet": "ScaleUnits_Get",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/scaleUnits": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-ScaleUnit",
+            "description": "Get a list of all scale units at a location.",
+            "defaultParameterSet": "ScaleUnits_Get",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/{provider}/fabricLocations/{location}/networkOperationResults/{networkOperationResult}": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-NetworkFabricOperation",
+            "description": "Get the status of a network fabric operation.",
+            "defaultParameterSet": "NetworkFabricOperations_Get",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/scaleUnitNodes/{scaleUnitNode}/StopMaintenanceMode": {
+      "post": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Enable-ScaleUnitNode",
+            "description": "Stop maintenance mode for a scale unit node.",
+            "defaultParameterSet": "ScaleUnitNodes_StopMaintenanceMode",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/{provider}/fabricLocations/{location}/computeOperationResults/{computeOperationResult}": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-ComputeFabricOperation",
+            "description": "Get the status of a compute fabric operation.",
+            "defaultParameterSet": "ComputeFabricOperations_Get",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/logicalNetworks/{logicalNetwork}/logicalSubnets/{logicalSubnet}": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-LogicalSubnet",
+            "description": "Get a list of all volumes at a location.",
+            "defaultParameterSet": "LogicalSubnets_Get",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/logicalNetworks/{logicalNetwork}/logicalSubnets": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-LogicalSubnet",
+            "description": "Get a list of all logical subnets.",
+            "defaultParameterSet": "LogicalSubnets_Get",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/storageSubSystems/{storageSubSystem}": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-StorageSystem",
+            "description": "Get a storage subsystem.",
+            "defaultParameterSet": "StorageSystems_Get",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/storageSubSystems": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-StorageSystem",
+            "description": "Get a list of all storage subsystems for a location.",
+            "defaultParameterSet": "StorageSystems_Get",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/InfrastructureRoleInstances/{InfrastructureRoleInstance}/PowerOn": {
+      "post": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Start-InfrastructureRoleInstance",
+            "description": "Power on an infra role instance.",
+            "defaultParameterSet": "InfrastructureRoleInstances_PowerOn",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/edgeGatewayPools/{edgeGatewayPool}": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-EdgeGatewayPool",
+            "description": "Get an EdgeGatewayPool.",
+            "defaultParameterSet": "EdgeGatewayPools_Get",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/edgeGatewayPools": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-EdgeGatewayPool",
+            "description": "Get a list of all edge gateway pools at a location.",
+            "defaultParameterSet": "EdgeGatewayPools_Get",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/edgeGateways/{edgeGateway}": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-EdgeGateway",
+            "description": "Get an edge gateway by name.",
+            "defaultParameterSet": "EdgeGateways_Get",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/edgeGateways": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-EdgeGateway",
+            "description": "Get a list of all edge gateways at a certain location.",
+            "defaultParameterSet": "EdgeGateways_Get",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/slbMuxInstances/{slbMuxInstance}": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-SlbMuxInstance",
+            "description": "Get a software load balancer multiplexer instance.",
+            "defaultParameterSet": "SlbMuxInstances_Get",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/slbMuxInstances": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-SlbMuxInstance",
+            "description": "Get a list of all software load balancer instances at a location.",
+            "defaultParameterSet": "SlbMuxInstances_Get",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/InfrastructureRoleInstances/{InfrastructureRoleInstance}/Reboot": {
+      "post": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Restart-InfrastructureRoleInstanc",
+            "description": "Reboot an infra role instance.",
+            "defaultParameterSet": "InfrastructureRoleInstances_Reboot",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/InfrastructureRoleInstances/{InfrastructureRoleInstance}": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-InfrastructureRoleInstance",
+            "description": "Get an infra role instance.",
+            "defaultParameterSet": "InfrastructureRoleInstances_Get",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/InfrastructureRoleInstances": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-InfrastructureRoleInstance",
+            "description": "Get a list of all infra role instances at a location.",
+            "defaultParameterSet": "InfrastructureRoleInstances_Get",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/scaleUnitNodes/{scaleUnitNode}": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-ScaleUnitNode",
+            "description": "Get a specific scale unit node.",
+            "defaultParameterSet": "ScaleUnitNodes_Get",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/scaleUnitNodes": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-ScaleUnitNode",
+            "description": "Get a list of all scale unit nodes in a location.",
+            "defaultParameterSet": "ScaleUnitNodes_Get",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/logicalNetworks/{logicalNetwork}": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-LogicalNetwork",
+            "description": "Get a logical network.",
+            "defaultParameterSet": "LogicalNetworks_Get",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/logicalNetworks": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-LogicalNetwork",
+            "description": "Get a list of all logical networks at a location.",
+            "defaultParameterSet": "LogicalNetworks_Get",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/InfrastructureRoleInstances/{InfrastructureRoleInstance}/PowerOff": {
+      "post": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Stop-InfrastructureRoleInstance",
+            "description": "Power off an infra role instance.",
+            "defaultParameterSet": "InfrastructureRoleInstances_PowerOff",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/InfrastructureRoleInstances/{InfrastructureRoleInstance}/Shutdown": {
+      "post": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Stop-InfrastructureRoleInstance",
+            "description": "Shut down an infra role instance.",
+            "defaultParameterSet": "InfrastructureRoleInstances_Shutdown",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/fileShares/{fileShare}": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-InfrastructureShare",
+            "description": "Get a fabric file share.",
+            "defaultParameterSet": "InfrastructureShares_Get",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/fileShares": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-InfrastructureShare",
+            "description": "Get a list of all fabric file shares at a certain location.",
+            "defaultParameterSet": "InfrastructureShares_Get",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.Fabric.Admin/fabricLocations/{fabricLocation}": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-InfrastructureLocation",
+            "description": "Get a fabric location.",
+            "defaultParameterSet": "FabricLocations_Get",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.Fabric.Admin/fabricLocations": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-InfrastructureLocation",
+            "description": "Get a list of all fabric locations.",
+            "defaultParameterSet": "FabricLocations_Get",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/ipPools/{ipPool}": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-IpPool",
+            "description": "Get an ip pool.",
+            "defaultParameterSet": "IpPools_Get",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      },
+      "put": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "New-IpPool",
+            "description": "Create an ip pool.",
+            "defaultParameterSet": "IpPools_Create",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/ipPools": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-IpPool",
+            "description": "Get a list of all ip pools at a certain location.",
+            "defaultParameterSet": "IpPools_Get",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/storageSubSystems/{storageSubSystem}/storagePools/{storagePool}/volumes/{volume}": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-InfrastructureVolume",
+            "description": "Get a volume.",
+            "defaultParameterSet": "InfrastructureVolumes_Get",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/storageSubSystems/{storageSubSystem}/storagePools/{storagePool}/volumes": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-InfrastructureVolume",
+            "description": "Get a list of all volumes at a location.",
+            "defaultParameterSet": "InfrastructureVolumes_Get",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/scaleUnitNodes/{scaleUnitNode}/PowerOn": {
+      "post": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Start-ScaleUnitNode",
+            "description": "Power on a scale unit node.",
+            "defaultParameterSet": "ScaleUnitNodes_PowerOn",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    }
+    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/infraRoles/{InfrastructureRole}": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-InfrastructureRole",
+            "description": "Get an infra role description.",
+            "defaultParameterSet": "InfraRoles_Get",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/infraRoles": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-InfrastructureRole",
+            "description": "Get a list of all infra roles at a location.",
+            "defaultParameterSet": "InfraRoles_Get",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/scaleUnitNodes/{scaleUnitNode}/StartMaintenanceMode": {
+      "post": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Disable-ScaleUnitNode",
+            "description": "Start maintenance mode for a scale unit node.",
+            "defaultParameterSet": "ScaleUnitNodes_StartMaintenanceMode",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/macAddressPools/{macAddressPool}": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-MacAddressPool",
+            "description": "Get a MAC address pool.",
+            "defaultParameterSet": "MacAddressPools_Get",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/macAddressPools": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-MacAddressPool",
+            "description": "Get a list of all MAC address pools at a location.",
+            "defaultParameterSet": "MacAddressPools_Get",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/storageSubSystems/{storageSubSystem}/storagePools/{storagePool}": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-StoragePool",
+            "description": "Get a storage pool.",
+            "defaultParameterSet": "StoragePools_Get",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/storageSubSystems/{storageSubSystem}/storagePools": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-StoragePool",
+            "description": "Get a list of all storage pools for a location.",
+            "defaultParameterSet": "StoragePools_Get",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/System.{location}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/scaleUnitNodes/{scaleUnitNode}/PowerOff": {
+      "post": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Stop-ScaleUnitNode",
+            "description": "Power off a scale unit node.",
+            "defaultParameterSet": "ScaleUnitNodes_PowerOff",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    }
+  },
+  "definitions": {
+    "FabricLocationList": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-FabricLocationListObject",
+          "description": "Pageable list of fabric locations.",
+          "defaultParameterSet": "FabricLocationList",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "value": {
+          "x-ps-parameter-info": {
+            "name": "Value",
+            "description": "List of fabric locations for this page."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "nextLink": {
+          "x-ps-parameter-info": {
+            "name": "NextLink",
+            "description": "URI to the next page."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "MacAddressPool": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-MacAddressPoolObject",
+          "description": "This resource represents a MAC address pool.  The default MAC address pools are used if you set the MAC address type for a virtual machine to \u0027Static\u0027.  If the virtual machine setting is ???Dynamic???, the hypervisor assigns the MAC address.",
+          "defaultParameterSet": "MacAddressPool",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "SlbMuxInstanceModel": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-SlbMuxInstanceModelObject",
+          "description": "Properties of a SLB MUX",
+          "defaultParameterSet": "SlbMuxInstanceModel",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "virtualServer": {
+          "x-ps-parameter-info": {
+            "name": "VirtualServer",
+            "description": "Virtual server."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "configurationState": {
+          "x-ps-parameter-info": {
+            "name": "ConfigurationState",
+            "description": "Configuration state."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        },
+        "bgpPeers": {
+          "x-ps-parameter-info": {
+            "name": "BgpPeers",
+            "description": "List of BGP peers."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 2,
+            "width": 10
+          }
+        }
+      }
+    },
+    "MacAddressPoolList": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-MacAddressPoolListObject",
+          "description": "A pageable list of MAC address pools.",
+          "defaultParameterSet": "MacAddressPoolList",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "value": {
+          "x-ps-parameter-info": {
+            "name": "Value",
+            "description": "The list of MAC address pools on this page."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "nextLink": {
+          "x-ps-parameter-info": {
+            "name": "NextLink",
+            "description": "URI to the next page."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "IpPoolModel": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-IpPoolModelObject",
+          "description": "Properties of an IpPool.",
+          "defaultParameterSet": "IpPoolModel",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "numberOfIpAddressesInTransition": {
+          "x-ps-parameter-info": {
+            "name": "NumberOfIpAddressesInTransition",
+            "description": "The current number of ip addresses in transition."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "startIpAddress": {
+          "x-ps-parameter-info": {
+            "name": "StartIpAddress",
+            "description": "The starting Ip address."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        },
+        "addressPrefix": {
+          "x-ps-parameter-info": {
+            "name": "AddressPrefix",
+            "description": "The address prefix."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 2,
+            "width": 10
+          }
+        },
+        "numberOfIpAddresses": {
+          "x-ps-parameter-info": {
+            "name": "NumberOfIpAddresses",
+            "description": "The total number of ip addresses."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 3,
+            "width": 10
+          }
+        },
+        "numberOfAllocatedIpAddresses": {
+          "x-ps-parameter-info": {
+            "name": "NumberOfAllocatedIpAddresses",
+            "description": "The number of currently allocated ip addresses."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 4,
+            "width": 10
+          }
+        },
+        "endIpAddress": {
+          "x-ps-parameter-info": {
+            "name": "EndIpAddress",
+            "description": "The ending Ip address."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "FabricLocation": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-FabricLocationObject",
+          "description": "Place holder for fabric location.",
+          "defaultParameterSet": "FabricLocation",
+          "generateCommand": false,
+          "generateOutputFormat": false
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "StoragePoolModel": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-StoragePoolModelObject",
+          "description": "All properties of a storage pool.",
+          "defaultParameterSet": "StoragePoolModel",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "sizeGB": {
+          "x-ps-parameter-info": {
+            "name": "SizeGB",
+            "description": "Amount of space in the storage pool in GB."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        }
+      }
+    },
+    "ScaleUnitNode": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-ScaleUnitNodeObject",
+          "description": "The physical server in a cluster.",
+          "defaultParameterSet": "ScaleUnitNode",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "StoragePool": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-StoragePoolObject",
+          "description": "Representation of a storage pool resource.",
+          "defaultParameterSet": "StoragePool",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "EdgeGatewayList": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-EdgeGatewayListObject",
+          "description": "Pageable list of edge gateways.",
+          "defaultParameterSet": "EdgeGatewayList",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "value": {
+          "x-ps-parameter-info": {
+            "name": "Value",
+            "description": "Array of edge gateways."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "nextLink": {
+          "x-ps-parameter-info": {
+            "name": "NextLink",
+            "description": "URI to the next page."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "ScaleUnit": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-ScaleUnitObject",
+          "description": "Represents a cluster - generally this will be a collection of Hosts backed by Failover Cluster Manager.",
+          "defaultParameterSet": "ScaleUnit",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "VolumeModel": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-VolumeModelObject",
+          "description": "Properties of a volume.",
+          "defaultParameterSet": "VolumeModel",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "fileSystem": {
+          "x-ps-parameter-info": {
+            "name": "FileSystem",
+            "description": "Filesystem type."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "volumeLabel": {
+          "x-ps-parameter-info": {
+            "name": "VolumeLabel",
+            "description": "Volume label."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        },
+        "sizeGB": {
+          "x-ps-parameter-info": {
+            "name": "SizeGB",
+            "description": "Total amount of space in GB."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 2,
+            "width": 10
+          }
+        },
+        "remainingSizeGB": {
+          "x-ps-parameter-info": {
+            "name": "RemainingSizeGB",
+            "description": "Amount of free space in GB."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 3,
+            "width": 10
+          }
+        }
+      }
+    },
+    "ScaleUnitModel": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-ScaleUnitModelObject",
+          "description": "Properties of a scale unit.",
+          "defaultParameterSet": "ScaleUnitModel",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "scaleUnitType": {
+          "x-ps-parameter-info": {
+            "name": "ScaleUnitType",
+            "description": "Type of the cluster."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "logicalFaultDomain": {
+          "x-ps-parameter-info": {
+            "name": "LogicalFaultDomain",
+            "description": "Fault domain name of the cluster."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        },
+        "totalCapacity": {
+          "x-ps-parameter-info": {
+            "name": "TotalCapacity",
+            "description": "Capacity information for the cluster."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "state": {
+          "x-ps-parameter-info": {
+            "name": "State",
+            "description": "Current state of the cluster."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 2,
+            "width": 10
+          }
+        },
+        "model": {
+          "x-ps-parameter-info": {
+            "name": "Model",
+            "description": "Model of the servers in the cluster."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 3,
+            "width": 10
+          }
+        },
+        "nodes": {
+          "x-ps-parameter-info": {
+            "name": "Nodes",
+            "description": "List of nodes in the server."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 4,
+            "width": 10
+          }
+        }
+      }
+    },
+    "InfrastructureRoleInstance": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-InfrastructureRoleInstanceObject",
+          "description": "The virtual machine resource is used to represent an infrastructure virtual machine in the Azure Stack environment. The fabric resource provider only surfaces infrastructure virtual machines. These machines are never created directly by the admin, but rather as a side effect of expanding admin services.",
+          "defaultParameterSet": "InfrastructureRoleInstance",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "InfrastructureRoleList": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-InfrastructureRoleListObject",
+          "description": "Pageable list of infra roles.",
+          "defaultParameterSet": "InfrastructureRoleList",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "value": {
+          "x-ps-parameter-info": {
+            "name": "Value",
+            "description": "List of infra roles for this page."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "nextLink": {
+          "x-ps-parameter-info": {
+            "name": "NextLink",
+            "description": "URI to the next page."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "VolumeList": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-VolumeListObject",
+          "description": "Pageable list of volumes.",
+          "defaultParameterSet": "VolumeList",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "value": {
+          "x-ps-parameter-info": {
+            "name": "Value",
+            "description": "List of volumes on this page."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "nextLink": {
+          "x-ps-parameter-info": {
+            "name": "NextLink",
+            "description": "URI to the next page."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "Volume": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-VolumeObject",
+          "description": "Representation of a volume resource.",
+          "defaultParameterSet": "Volume",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "LogicalNetworkModel": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-LogicalNetworkModelObject",
+          "description": "Properties of a logical network.",
+          "defaultParameterSet": "LogicalNetworkModel",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "networkVirtualizationEnabled": {
+          "x-ps-parameter-info": {
+            "name": "NetworkVirtualizationEnabled",
+            "description": "Is Network Virtualization is enabled on this Logical Network."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "subnets": {
+          "x-ps-parameter-info": {
+            "name": "Subnets",
+            "description": "List of subnets belonging to this Logical Network."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        },
+        "metadata": {
+          "x-ps-parameter-info": {
+            "name": "Metadata",
+            "description": "Metadata related to this Logical Network."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 2,
+            "width": 10
+          }
+        }
+      }
+    },
+    "FileShareList": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-InfrastructureShareListObject",
+          "description": "Pageable list of fabric file share locations.",
+          "defaultParameterSet": "FileShareList",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "value": {
+          "x-ps-parameter-info": {
+            "name": "Value",
+            "description": "List of fabric file shares for this page."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        }
+      }
+    },
+    "EdgeGatewayPoolList": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-EdgeGatewayPoolListObject",
+          "description": "A pageable list of edge gateway pools.",
+          "defaultParameterSet": "EdgeGatewayPoolList",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "value": {
+          "x-ps-parameter-info": {
+            "name": "Value",
+            "description": "The array of edge gateway pools in this page."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "nextLink": {
+          "x-ps-parameter-info": {
+            "name": "NextLink",
+            "description": "The URI to the next page."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "InfrastructureRole": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-InfrastructureRoleObject",
+          "description": "Get an infra role description.",
+          "defaultParameterSet": "InfrastructureRole",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "StorageSystemModel": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-StorageSystemModelObject",
+          "description": "All properties of a storage system.",
+          "defaultParameterSet": "StorageSystemModel",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "totalCapacityGB": {
+          "x-ps-parameter-info": {
+            "name": "TotalCapacityGB",
+            "description": "Total capacity of the system."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        }
+      }
+    },
+    "LogicalNetwork": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-LogicalNetworkObject",
+          "description": "This resource represents a logical partition of physical network that is dedicated for a particular purpose.  A logical network comprises of a collection of logical subnets.",
+          "defaultParameterSet": "LogicalNetwork",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "FileShare": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-InfrastructureShareObject",
+          "description": "Representation of a file share resource.",
+          "defaultParameterSet": "FileShare",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "ScaleUnitList": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-ScaleUnitListObject",
+          "description": "A pageable list of scale units.",
+          "defaultParameterSet": "ScaleUnitList",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "value": {
+          "x-ps-parameter-info": {
+            "name": "Value",
+            "description": "The list of scale units on this page."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "nextLink": {
+          "x-ps-parameter-info": {
+            "name": "NextLink",
+            "description": "URI to the next page."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "LogicalSubnet": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-LogicalSubnetObject",
+          "description": "This resource represents a Logical Subnet.  A Logical Subnet comprises of subnet/vlan pair.",
+          "defaultParameterSet": "LogicalSubnet",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "FileShareModel": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-InfrastructureShareModelObject",
+          "description": "Properties of a file share resource.",
+          "defaultParameterSet": "FileShareModel",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "associatedVolume": {
+          "x-ps-parameter-info": {
+            "name": "AssociatedVolume",
+            "description": "Associated volume Id."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "uncPath": {
+          "x-ps-parameter-info": {
+            "name": "UncPath",
+            "description": "The UNCPath for the fileshare."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "InfrastructureRoleModel": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-InfrastructureRoleModelObject",
+          "description": "Infra role properties.",
+          "defaultParameterSet": "InfrastructureRoleModel",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "instances": {
+          "x-ps-parameter-info": {
+            "name": "Instances",
+            "description": "List of infra role instances."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        }
+      }
+    },
+    "Resource": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-ResourceObject",
+          "description": "Base Resource Object",
+          "defaultParameterSet": "Resource",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "tags": {
+          "x-ps-parameter-info": {
+            "name": "Tags",
+            "description": "List of key value pairs."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "name": {
+          "x-ps-parameter-info": {
+            "name": "Name",
+            "description": "Name of the resource."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "id": {
+          "x-ps-parameter-info": {
+            "name": "Id",
+            "description": "URI of the resource."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "type": {
+          "x-ps-parameter-info": {
+            "name": "Type",
+            "description": "Type of resource."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        },
+        "location": {
+          "x-ps-parameter-info": {
+            "name": "Location",
+            "description": "Region Location of resource."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 2,
+            "width": 10
+          }
+        }
+      }
+    },
+    "OperationStatusLocation": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-OperationStatusLocationObject",
+          "description": "URI where you can poll for status of operation.",
+          "defaultParameterSet": "OperationStatusLocation",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "location": {
+          "x-ps-parameter-info": {
+            "name": "Location",
+            "description": "URI where you can poll for status of operation."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        }
+      }
+    },
+    "StorageSystem": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-StorageSystemObject",
+          "description": "Representation of a storage system resource.",
+          "defaultParameterSet": "StorageSystem",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "IpPoolList": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-IpPoolListObject",
+          "description": "Pageable list of ip pools.",
+          "defaultParameterSet": "IpPoolList",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "value": {
+          "x-ps-parameter-info": {
+            "name": "Value",
+            "description": "List of ip pools for this page."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "nextLink": {
+          "x-ps-parameter-info": {
+            "name": "NextLink",
+            "description": "URI to the next page."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "EdgeGatewayModel": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-EdgeGatewayModelObject",
+          "description": "Model which holds information related to edge gateways.",
+          "defaultParameterSet": "EdgeGatewayModel",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "totalCapacity": {
+          "x-ps-parameter-info": {
+            "name": "TotalCapacity",
+            "description": "The total network capacity."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "numberOfConnections": {
+          "x-ps-parameter-info": {
+            "name": "NumberOfConnections",
+            "description": "The current number of connections."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        },
+        "availableCapacity": {
+          "x-ps-parameter-info": {
+            "name": "AvailableCapacity",
+            "description": "The available network capacity."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 2,
+            "width": 10
+          }
+        },
+        "state": {
+          "x-ps-parameter-info": {
+            "name": "State",
+            "description": "The current state of the edge gateway."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 3,
+            "width": 10
+          }
+        }
+      }
+    },
+    "LogicalSubnetList": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-LogicalSubnetListObject",
+          "description": "Pageable list of logical subnets.",
+          "defaultParameterSet": "LogicalSubnetList",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "value": {
+          "x-ps-parameter-info": {
+            "name": "Value",
+            "description": "List of logical subnets on this page."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "nextLink": {
+          "x-ps-parameter-info": {
+            "name": "NextLink",
+            "description": "URI to the next page."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "InfrastructureRoleInstanceModel": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-InfrastructureRoleInstanceModelObject",
+          "description": "All properties of an infra role instance.",
+          "defaultParameterSet": "InfrastructureRoleInstanceModel",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "scaleUnit": {
+          "x-ps-parameter-info": {
+            "name": "ScaleUnit",
+            "description": "The cluster that the virtual machine\u0027s host is part of."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "scaleUnitNode": {
+          "x-ps-parameter-info": {
+            "name": "ScaleUnitNode",
+            "description": "URI to the scale unit node."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        },
+        "size": {
+          "x-ps-parameter-info": {
+            "name": "Size",
+            "description": "Size of the virtual machine."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 2,
+            "width": 10
+          }
+        },
+        "state": {
+          "x-ps-parameter-info": {
+            "name": "State",
+            "description": "The current state of the virtual machine."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 3,
+            "width": 10
+          }
+        }
+      }
+    },
+    "InfrastructureRoleInstanceSize": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-InfrastructureRoleInstanceizeObject",
+          "description": "The capacity information for a virtual machine.",
+          "defaultParameterSet": "InfrastructureRoleInstanceSize",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "cores": {
+          "x-ps-parameter-info": {
+            "name": "Cores",
+            "description": "The number of cores assigned to the virtual machine."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "memoryGb": {
+          "x-ps-parameter-info": {
+            "name": "MemoryGb",
+            "description": "The amount of memory, in GB, currently assigned to the virtual machine.  In Azure Stack V1, only static memory is used for infrastructure VMs."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "ScaleUnitNodeList": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-ScaleUnitNodeListObject",
+          "description": "A pageable list of scale unit nodes.",
+          "defaultParameterSet": "ScaleUnitNodeList",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "value": {
+          "x-ps-parameter-info": {
+            "name": "Value",
+            "description": "The list of nodes in this page."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "nextLink": {
+          "x-ps-parameter-info": {
+            "name": "NextLink",
+            "description": "The URI to the next page."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "ScaleUnitCapacity": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-ScaleUnitCapacityObject",
+          "description": "The capacity information for a physical machine.",
+          "defaultParameterSet": "ScaleUnitCapacity",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "cores": {
+          "x-ps-parameter-info": {
+            "name": "Cores",
+            "description": "The number of CPU cores for the physical machine."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "memoryGB": {
+          "x-ps-parameter-info": {
+            "name": "MemoryGB",
+            "description": "The memory for the physical machine."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "EdgeGateway": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-EdgeGatewayObject",
+          "description": "This resource represents a gateway, which provides the configuration needed to provide gateway services to virtual networks.",
+          "defaultParameterSet": "EdgeGateway",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "StoragePoolList": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-StoragePoolListObject",
+          "description": "Pageable list of storage pools.",
+          "defaultParameterSet": "StoragePoolList",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "value": {
+          "x-ps-parameter-info": {
+            "name": "Value",
+            "description": "List of storage pools on this page."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "nextLink": {
+          "x-ps-parameter-info": {
+            "name": "NextLink",
+            "description": "URI to the next page."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "IpPool": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-IpPoolObject",
+          "description": "This resource defines the range of IP addresses from which addresses are  allocated for nodes within a subnet.",
+          "defaultParameterSet": "IpPool",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "ScaleUnitNodeModel": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-ScaleUnitNodeModelObject",
+          "description": "Holds all properties related to a scale unit node.",
+          "defaultParameterSet": "ScaleUnitNodeModel",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "serialNumber": {
+          "x-ps-parameter-info": {
+            "name": "SerialNumber",
+            "description": "Serial number of the physical machine."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "canPowerOff": {
+          "x-ps-parameter-info": {
+            "name": "CanPowerOff",
+            "description": "Value indicating whether the node can be powered off."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        },
+        "capacity": {
+          "x-ps-parameter-info": {
+            "name": "Capacity",
+            "description": "Capacity of the physical machine."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "macAddress": {
+          "x-ps-parameter-info": {
+            "name": "MacAddress",
+            "description": "MacAddress of the physical machine."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 2,
+            "width": 10
+          }
+        },
+        "powerState": {
+          "x-ps-parameter-info": {
+            "name": "PowerState",
+            "description": "PowerState of the physical machine."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 3,
+            "width": 10
+          }
+        },
+        "model": {
+          "x-ps-parameter-info": {
+            "name": "Model",
+            "description": "Model of the physical machine."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 4,
+            "width": 10
+          }
+        },
+        "biosVersion": {
+          "x-ps-parameter-info": {
+            "name": "BiosVersion",
+            "description": "Bios version of the physical machine."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "scaleUnitNodeStatus": {
+          "x-ps-parameter-info": {
+            "name": "ScaleUnitNodeStatus",
+            "description": "Status of the physical machine."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "bmcAddress": {
+          "x-ps-parameter-info": {
+            "name": "BmcAddress",
+            "description": "Bmc address of the physical machine."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "scaleUnitUri": {
+          "x-ps-parameter-info": {
+            "name": "ScaleUnitUri",
+            "description": "URI of the corresponding cluster."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "scaleUnitName": {
+          "x-ps-parameter-info": {
+            "name": "ScaleUnitName",
+            "description": "Cluster name of the physical machine."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "vendor": {
+          "x-ps-parameter-info": {
+            "name": "Vendor",
+            "description": "Vendor of the physical machine."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "InfrastructureRoleInstanceList": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-InfrastructureRoleInstanceListObject",
+          "description": "Pageable list of infra role instances.",
+          "defaultParameterSet": "InfrastructureRoleInstanceList",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "value": {
+          "x-ps-parameter-info": {
+            "name": "Value",
+            "description": "List of infra role instances for this page."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "nextLink": {
+          "x-ps-parameter-info": {
+            "name": "NextLink",
+            "description": "URI to the next page."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "MacAddressPoolModel": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-MacAddressPoolModelObject",
+          "description": "Properties of a MAC address pool.",
+          "defaultParameterSet": "MacAddressPoolModel",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "numberOfAvailableMacAddresses": {
+          "x-ps-parameter-info": {
+            "name": "NumberOfAvailableMacAddresses",
+            "description": "Number of MAC addresses available."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "numberOfAllocatedMacAddresses": {
+          "x-ps-parameter-info": {
+            "name": "NumberOfAllocatedMacAddresses",
+            "description": "Number of MAC addresses allocated."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        },
+        "endMacAddress": {
+          "x-ps-parameter-info": {
+            "name": "EndMacAddress",
+            "description": "Ending MAC address."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 2,
+            "width": 10
+          }
+        },
+        "startMacAddress": {
+          "x-ps-parameter-info": {
+            "name": "StartMacAddress",
+            "description": "Starting MAC address."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 3,
+            "width": 10
+          }
+        },
+        "metadata": {
+          "x-ps-parameter-info": {
+            "name": "Metadata",
+            "description": "Metadata related to this MAC pool."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 4,
+            "width": 10
+          }
+        }
+      }
+    },
+    "LogicalNetworkList": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-LogicalNetworkListObject",
+          "description": "A pageable list of logical networks.",
+          "defaultParameterSet": "LogicalNetworkList",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "value": {
+          "x-ps-parameter-info": {
+            "name": "Value",
+            "description": "List of logical networks for this page."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "nextLink": {
+          "x-ps-parameter-info": {
+            "name": "NextLink",
+            "description": "URI to the next page."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "SlbMuxInstanceList": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-SlbMuxInstanceListObject",
+          "description": "A pageable list of SLB Mux instances.",
+          "defaultParameterSet": "SlbMuxInstanceList",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "value": {
+          "x-ps-parameter-info": {
+            "name": "Value",
+            "description": "List of SLB Mux instances on this page."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "nextLink": {
+          "x-ps-parameter-info": {
+            "name": "NextLink",
+            "description": "URI to the next page."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "LogicalSubnetModel": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-LogicalSubnetModelObject",
+          "description": "Properties of a logical subnet.",
+          "defaultParameterSet": "LogicalSubnetModel",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "metadata": {
+          "x-ps-parameter-info": {
+            "name": "Metadata",
+            "description": "Metadata related to this Logical Network."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "ipPools": {
+          "x-ps-parameter-info": {
+            "name": "IpPools",
+            "description": "All ip pools which belong to this subnet."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        },
+        "isPublic": {
+          "x-ps-parameter-info": {
+            "name": "IsPublic",
+            "description": "The visiblity status of the ip pool.  If is true the associated pools are public ip address pools."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 2,
+            "width": 10
+          }
+        }
+      }
+    },
+    "SlbMuxInstance": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-SlbMuxInstanceObject",
+          "description": "This resource represents an SLB MUX (software load balancing multiplexer, which distributes the tenant and tenant customer network traffic).",
+          "defaultParameterSet": "SlbMuxInstance",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "ProvisioningState": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-ProvisioningStateObject",
+          "description": "The state of the operation.",
+          "defaultParameterSet": "ProvisioningState",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "provisioningState": {
+          "x-ps-parameter-info": {
+            "name": "ProvisioningState",
+            "description": "The state of the operation."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        }
+      }
+    },
+    "StorageSystemList": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-StorageSystemListObject",
+          "description": "Pageable list of storage systems.",
+          "defaultParameterSet": "StorageSystemList",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "value": {
+          "x-ps-parameter-info": {
+            "name": "Value",
+            "description": "List of storage systems on this page."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "nextLink": {
+          "x-ps-parameter-info": {
+            "name": "NextLink",
+            "description": "URI to the next page."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "EdgeGatewayPoolModel": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-EdgeGatewayPoolModelObject",
+          "description": "A model holding all properties of an edge gateway pool.",
+          "defaultParameterSet": "EdgeGatewayPoolModel",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "gatewayCapacityKiloBitsPerSecond": {
+          "x-ps-parameter-info": {
+            "name": "GatewayCapacityKiloBitsPerSecond",
+            "description": "Gateway capacity in kilobits per second."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "gatewayType": {
+          "x-ps-parameter-info": {
+            "name": "GatewayType",
+            "description": "The gateway type (S2sIPsec, S2sGre, etc)."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        },
+        "greVipSubnet": {
+          "x-ps-parameter-info": {
+            "name": "GreVipSubnet",
+            "description": "The GRE VIP subnet."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 2,
+            "width": 10
+          }
+        },
+        "publicIpAddress": {
+          "x-ps-parameter-info": {
+            "name": "PublicIpAddress",
+            "description": "The public IP address."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 3,
+            "width": 10
+          }
+        },
+        "numberOfGateways": {
+          "x-ps-parameter-info": {
+            "name": "NumberOfGateways",
+            "description": "The number of gateways in the pool."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 4,
+            "width": 10
+          }
+        },
+        "edgeGateways": {
+          "x-ps-parameter-info": {
+            "name": "EdgeGateways",
+            "description": "List of the edge gateways in this pool."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "redundantGatewayCount": {
+          "x-ps-parameter-info": {
+            "name": "RedundantGatewayCount",
+            "description": "The number of redundant gateways."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "OperationStatus": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-OperationStatusObject",
+          "description": "Status of the compute operation.",
+          "defaultParameterSet": "OperationStatus",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "EdgeGatewayPool": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-EdgeGatewayPoolObject",
+          "description": "This resource represents an edge gateway pool, which contains an array of gateways.",
+          "defaultParameterSet": "EdgeGatewayPool",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        
+      }
+    }
+  },
+  "parameters": {
+    "ProviderParameter": {
+      "x-ps-parameter-info": {
+        "name": "Provider",
+        "description": "Name of the provider.",
+        "flatten": false
+      }
+    },
+    "StorageSubSystemParameter": {
+      "x-ps-parameter-info": {
+        "name": "StorageSubSystem",
+        "description": "Name of the storage system.",
+        "flatten": false
+      }
+    },
+    "ApplicationOperationResultParameter": {
+      "x-ps-parameter-info": {
+        "name": "ApplicationOperationResult",
+        "description": "Id of an infra role operation.",
+        "flatten": false
+      }
+    },
+    "InfrastructureRoleParameter": {
+      "x-ps-parameter-info": {
+        "name": "InfrastructureRole",
+        "description": "Infra role name.",
+        "flatten": false
+      }
+    },
+    "LogicalSubnetParameter": {
+      "x-ps-parameter-info": {
+        "name": "LogicalSubnet",
+        "description": "Name of the logical subnet.",
+        "flatten": false
+      }
+    },
+    "FileShareParameter": {
+      "x-ps-parameter-info": {
+        "name": "FileShare",
+        "description": "Fabric file share name.",
+        "flatten": false
+      }
+    },
+    "EdgeGatewayParameter": {
+      "x-ps-parameter-info": {
+        "name": "EdgeGateway",
+        "description": "name of the edge gateway.",
+        "flatten": false
+      }
+    },
+    "ScaleUnitParameter": {
+      "x-ps-parameter-info": {
+        "name": "ScaleUnit",
+        "description": "Name of the scale units.",
+        "flatten": false
+      }
+    },
+    "FabricLocationParameter": {
+      "x-ps-parameter-info": {
+        "name": "FabricLocation",
+        "description": "Fabric Location.",
+        "flatten": false
+      }
+    },
+    "VolumeParameter": {
+      "x-ps-parameter-info": {
+        "name": "Volume",
+        "description": "Name of the volume.",
+        "flatten": false
+      }
+    },
+    "InfrastructureRoleInstanceParameter": {
+      "x-ps-parameter-info": {
+        "name": "InfrastructureRoleInstance",
+        "description": "Name of an infra role instance.",
+        "flatten": false
+      }
+    },
+    "StoragePoolParameter": {
+      "x-ps-parameter-info": {
+        "name": "StoragePool",
+        "description": "Storage pool name.",
+        "flatten": false
+      }
+    },
+    "StorageOperationResultParameter": {
+      "x-ps-parameter-info": {
+        "name": "StorageOperationResult",
+        "description": "Id of a storage fabric operation.",
+        "flatten": false
+      }
+    },
+    "NetworkOperationResultParameter": {
+      "x-ps-parameter-info": {
+        "name": "NetworkOperationResult",
+        "description": "Id of a network fabric operation.",
+        "flatten": false
+      }
+    },
+    "ApiVersionParameter": {
+      "x-ps-parameter-info": {
+        "name": "Apiversion",
+        "description": "Client Api Version.",
+        "flatten": false
+      }
+    },
+    "SLBMuxInstanceParameter": {
+      "x-ps-parameter-info": {
+        "name": "SlbMuxInstance",
+        "description": "Name of a SLB Mux instance.",
+        "flatten": false
+      }
+    },
+    "MACAddressPoolParameter": {
+      "x-ps-parameter-info": {
+        "name": "MacAddressPool",
+        "description": "Name of the MAC address pool.",
+        "flatten": false
+      }
+    },
+    "LocationParameter": {
+      "x-ps-parameter-info": {
+        "name": "Location",
+        "description": "Location of the resource.",
+        "flatten": false
+      }
+    },
+    "EdgeGatewayPoolParameter": {
+      "x-ps-parameter-info": {
+        "name": "EdgeGatewayPool",
+        "description": "Name of the edge gateway pool.",
+        "flatten": false
+      }
+    },
+    "ComputeOperationResultParameter": {
+      "x-ps-parameter-info": {
+        "name": "ComputeOperationResult",
+        "description": "Id of a compute fabric operation.",
+        "flatten": false
+      }
+    },
+    "IpPoolParameter": {
+      "x-ps-parameter-info": {
+        "name": "Pool",
+        "description": "Ip pool object to send.",
+        "flatten": false
+      }
+    },
+    "IpPoolNameParameter": {
+      "x-ps-parameter-info": {
+        "name": "IpPool",
+        "description": "Ip pool name.",
+        "flatten": false
+      }
+    },
+    "SubscriptionIdParameter": {
+      "x-ps-parameter-info": {
+        "name": "SubscriptionId",
+        "description": "Subscription credentials which uniquely identify Microsoft Azure subscription.The subscription ID forms part of the URI for every service call.",
+        "flatten": false
+      }
+    },
+    "LogicalNetworkParameter": {
+      "x-ps-parameter-info": {
+        "name": "LogicalNetwork",
+        "description": "Name of the logical network.",
+        "flatten": false
+      }
+    },
+    "FilterParameter": {
+      "x-ps-parameter-info": {
+        "name": "Filter",
+        "description": "OData filter parameter.",
+        "flatten": false
+      }
+    },
+    "ScaleUnitNodeParameter": {
+      "x-ps-parameter-info": {
+        "name": "ScaleUnitNode",
+        "description": "Name of the scale unit node.",
+        "flatten": false
+      }
+    },
+    "ServersToBeAddedParameter": {
+      "x-ps-parameter-info": {
+        "name": "ServersToBeAdded",
+        "description": "Descripion of the server to be added.",
+        "flatten": false
+      }
+    }
+  }
+}
