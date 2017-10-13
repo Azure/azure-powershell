@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.DataLakeStore.Models;
-using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
@@ -38,17 +37,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         public override void ExecuteCmdlet()
         {
-            var toReturn = DataLakeStoreFileSystemClient.GetFileStatus(Path.TransformedPath, Account);
-            var itemName = string.Empty;
-            if (!string.IsNullOrEmpty(Path.TransformedPath))
-            {
-                // In the event that there is no "/" the full string will be returned.
-                itemName =
-                    Path.TransformedPath.Substring(
-                        Path.TransformedPath.LastIndexOf("/", StringComparison.InvariantCultureIgnoreCase) + 1);
-            }
-
-            WriteObject(new DataLakeStoreItem(toReturn, itemName, "/" + Path.TransformedPath));
+            var toReturn = new DataLakeStoreItem(DataLakeStoreFileSystemClient.GetFileStatus(Path.TransformedPath, Account));
+            WriteObject(toReturn);
         }
     }
 }

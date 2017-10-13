@@ -16,7 +16,6 @@ using Microsoft.Azure.Commands.DataLakeStore.Models;
 using Microsoft.Azure.Commands.DataLakeStore.Properties;
 using Microsoft.PowerShell.Commands;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Management.Automation;
 
@@ -27,7 +26,6 @@ namespace Microsoft.Azure.Commands.DataLakeStore
     [Alias("Get-AdlStoreItemContent")]
     public class GetAzureDataLakeStoreContent : DataLakeStoreFileSystemCmdletBase
     {
-        private FileSystemCmdletProviderEncoding _encoding = FileSystemCmdletProviderEncoding.UTF8;
         internal const string BaseParameterSetName = "Preview file content";
         internal const string HeadRowParameterSetName = "Preview file rows from the head of the file";
         internal const string TailRowParameterSetName = "Preview file rows from the tail of the file";
@@ -79,17 +77,16 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             HelpMessage = "The number of bytes to read from the file.")]
         public long Length { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, ParameterSetName = BaseParameterSetName, Mandatory = false,
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, ParameterSetName = BaseParameterSetName,
+            Mandatory = false,
             HelpMessage = "Optionally indicates the encoding for the content being downloaded. Default is UTF8")]
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, ParameterSetName = HeadRowParameterSetName, Mandatory = false,
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, ParameterSetName = HeadRowParameterSetName,
+            Mandatory = false,
             HelpMessage = "Optionally indicates the encoding for the content being downloaded. Default is UTF8")]
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, ParameterSetName = TailRowParameterSetName, Mandatory = false,
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, ParameterSetName = TailRowParameterSetName,
+            Mandatory = false,
             HelpMessage = "Optionally indicates the encoding for the content being downloaded. Default is UTF8")]
-        public FileSystemCmdletProviderEncoding Encoding
-        {
-            get { return _encoding; }
-            set { _encoding = value; }
-        }
+        public FileSystemCmdletProviderEncoding Encoding { get; set; } = FileSystemCmdletProviderEncoding.UTF8;
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 5, ParameterSetName = BaseParameterSetName, Mandatory = false,
             HelpMessage = "If the length parameter is not specified or is less than or equal to zero, force returns all content of the file, otherwise it does nothing.")]
@@ -97,41 +94,58 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         public override void ExecuteCmdlet()
         {
-            if (this.ParameterSetName.Equals(BaseParameterSetName, StringComparison.OrdinalIgnoreCase))
+            if (ParameterSetName.Equals(BaseParameterSetName, StringComparison.OrdinalIgnoreCase))
             {
                 ConfirmAction(
                     Resources.DownloadFileDataMessage,
                     Path.TransformedPath,
                     () =>
                     {
-                        byte[] byteArray;
-                        if (Length <= 0)
+                        using (var adlReadStream =
+                            DataLakeStoreFileSystemClient.ReadFromFile(Path.TransformedPath, Account))
                         {
-                            Length = (long)DataLakeStoreFileSystemClient.GetFileStatus(Path.TransformedPath, Account).Length - Offset;
-                            if (Length > 1 * 1024 * 1024 && !Force)
-                            // If content is greater than 1MB throw an error to the user to let them know they must pass in a length to preview this much content
+                            if (Length <= 0)
                             {
-                                throw new InvalidOperationException(string.Format(Resources.FilePreviewTooLarge, 1 * 1024 * 1024, Length));
+                                Length = adlReadStream.Length-Offset;
+                                if (Length > 1 * 1024 * 1024 && !Force)
+                                    // If content is greater than 1MB throw an error to the user to let them know they must pass in a length to preview this much content
+                                {
+                                    throw new InvalidOperationException(string.Format(Resources.FilePreviewTooLarge, 1 * 1024 * 1024, Length));
+                                }
                             }
-                        }
-
-                        using (var memStream = ((MemoryStream)DataLakeStoreFileSystemClient.PreviewFile(Path.TransformedPath, Account, Length, Offset,
-                            CmdletCancellationToken, this)))
-                        {
-                            byteArray = memStream.ToArray();
-                        }
-
-                        if (UsingByteEncoding(Encoding))
-                        {
-                            WriteObject(byteArray);
-                        }
-                        else
-                        {
-                            WriteObject(BytesToString(byteArray, Encoding));
+                            adlReadStream.Seek(Offset, SeekOrigin.Begin);
+                            int BuffSize = 4 * 1024 * 1024;
+                            byte[] byteArray = new byte[Length];
+                            long lengthToRead = Length;
+                            long totalLengthRead = 0;
+                            while (lengthToRead > 0)
+                            {
+                                // Read may return anything from 0 to numBytesToRead.
+                                int bytesRead = adlReadStream.Read(byteArray, (int)totalLengthRead, (int)Math.Min(BuffSize, lengthToRead));
+                                // Break when the end of the file is reached.
+                                if (bytesRead <= 0)
+                                {
+                                    break;
+                                }
+                                lengthToRead -= bytesRead;
+                                totalLengthRead += bytesRead;
+                            }
+                            if (totalLengthRead < Length)
+                            {
+                                Array.Resize(ref byteArray,(int)totalLengthRead);
+                            }
+                            if (UsingByteEncoding(Encoding))
+                            {
+                                WriteObject(byteArray);
+                            }
+                            else
+                            {
+                                WriteObject(BytesToString(byteArray, Encoding));
+                            }
                         }
                     });
             }
-            else if (this.ParameterSetName.Equals(HeadRowParameterSetName, StringComparison.OrdinalIgnoreCase))
+            else if (ParameterSetName.Equals(HeadRowParameterSetName, StringComparison.OrdinalIgnoreCase))
             {                
                 var encoding = GetEncoding(Encoding);
                 WriteObject(DataLakeStoreFileSystemClient.GetStreamRows(Path.TransformedPath, Account, Head, encoding), true);
@@ -139,7 +153,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             else
             {
                 var encoding = GetEncoding(Encoding);
-                WriteObject(DataLakeStoreFileSystemClient.GetStreamRows(Path.TransformedPath, Account, Tail, encoding, reverse: true), true);
+                WriteObject(DataLakeStoreFileSystemClient.GetStreamRows(Path.TransformedPath, Account, Tail, encoding, true), true);
             }
         }
     }
