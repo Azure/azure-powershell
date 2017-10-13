@@ -14,7 +14,8 @@ Creates a backend address pool configuration for a load balancer.
 ## SYNTAX
 
 ```
-New-AzureRmLoadBalancerBackendAddressPoolConfig -Name <String> [<CommonParameters>]
+New-AzureRmLoadBalancerBackendAddressPoolConfig -Name <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,6 +31,21 @@ PS C:\>New-AzureRmLoadBalancerBackendAddressPoolConfig -Name "BackendAddressPool
 This command creates a backend address pool configuration named BackendAddressPool02 for a load balancer.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 Specifies the name of the address pool configuration to create.

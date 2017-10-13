@@ -19,6 +19,8 @@
 -->
 ## Current Release
 
+## Version 3.4.1
+
 ## Version 3.4.0
 * Fixed help documents for cmdlets fixed in the earlier release.
 * Added 3 new cmdlets to support staged rollout of DSC node configurations.
