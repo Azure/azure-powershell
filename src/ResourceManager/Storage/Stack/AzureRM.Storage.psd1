@@ -51,7 +51,7 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '3.4.0'; }, 
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '3.4.1'; }, 
                @{ModuleName = 'Azure.Storage'; ModuleVersion = '1.0.5.4'; })
 
 # Assemblies that must be loaded prior to importing this module
@@ -104,7 +104,7 @@ PrivateData = @{
         Tags = 'Azure','ResourceManager','ARM','Storage','StorageAccount'
 
         # A URL to the license for this module.
-        LicenseUri = 'https://raw.githubusercontent.com/Azure/azure-powershell/dev/LICENSE.txt'
+        LicenseUri = 'https://aka.ms/azps-license'
 
         # A URL to the main website for this project.
         ProjectUri = 'https://github.com/Azure/azure-powershell'

@@ -15,20 +15,19 @@ Gets information about activity runs for a pipeline run.
 ### ByFactoryName (Default)
 ```
 Get-AzureRmDataFactoryV2ActivityRun [-PipelineRunId] <String> [-RunStartedAfter] <DateTime>
- [-RunStartedBefore] <DateTime> [[-ActivityName] <String>] [[-Status] <String>]
- [[-LinkedServiceName] <String>] [-ResourceGroupName] <String> [-DataFactoryName] <String>
+ [-RunStartedBefore] <DateTime> [[-ActivityName] <String>] [[-Status] <String>] [[-LinkedServiceName] <String>]
+ [-ResourceGroupName] <String> [-DataFactoryName] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByFactoryObject
 ```
 Get-AzureRmDataFactoryV2ActivityRun [-PipelineRunId] <String> [-RunStartedAfter] <DateTime>
- [-RunStartedBefore] <DateTime> [[-ActivityName] <String>] [[-Status] <String>]
- [[-LinkedServiceName] <String>] [-DataFactory] <PSDataFactory>
+ [-RunStartedBefore] <DateTime> [[-ActivityName] <String>] [[-Status] <String>] [[-LinkedServiceName] <String>]
+ [-DataFactory] <PSDataFactory> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-
 ## DESCRIPTION
-
 The **Get-AzureRmDataFactoryV2ActivityRun** cmdlet gets information about runs in Azure Data Factory for the specified pipeline run that happened in the given timeframe. Additionally, you can specify filters for activity name, linked service name that executed the run, and the status of the run.
 
 ## EXAMPLES
@@ -50,7 +49,6 @@ PS C:\> Get-AzureRmDataFactoryV2ActivityRun -ResourceGroupName "ADF" -DataFactor
     DurationInMs      : 2768
     Status            : Succeeded
     Error             : {errorCode, message, failureType, target}
-
 ```
 
 This command gets details about all activity runs in the pipeline run with ID "f288712d-fb08-4cb8-96ef-82d3b9b30621" that happened between "2017-09-01" and "2017-09-30".
@@ -99,6 +97,21 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -192,21 +205,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### Microsoft.Azure.Commands.DataFactoryV2.Models.PSDataFactory
 System.String
-
 
 ## OUTPUTS
 
 ### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.DataFactoryV2.Models.PSActivityRun, Microsoft.Azure.Commands.DataFactoryV2, Version=0.1.9.0, Culture=neutral, PublicKeyToken=null]]
 Microsoft.Azure.Commands.DataFactoryV2.Models.PSActivityRun
 
-
 ## NOTES
 
 ## RELATED LINKS
+
 [Invoke-AzureRmDataFactoryV2Pipeline]()
 
 [Get-AzureRmDataFactoryV2PipelineRun]()

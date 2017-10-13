@@ -12,15 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Automation.Model;
 using Microsoft.Azure.Commands.Automation.Properties;
-using System.Collections;
-using System.Globalization;
 using System.Management.Automation;
 using System.Security.Permissions;
 using Microsoft.Azure.Commands.Automation.Common;
@@ -29,12 +22,12 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
     [Cmdlet(VerbsLifecycle.Start, "AzureRmAutomationDscNodeConfigurationDeployment", SupportsShouldProcess = true, 
         DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
-    [OutputType(typeof(Model.NodeConfigurationDeployment))]
+    [OutputType(typeof(NodeConfigurationDeployment))]
     public class StartAzureAutomationDscNodeConfigurationDeployment : AzureAutomationBaseCmdlet
     {
 
         /// <summary>
-        /// Gets or sets the ndoe configuration name.
+        /// Gets or sets the node configuration name.
         /// </summary>
         [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = AutomationCmdletParameterSets.ByAll, 
             HelpMessage = "The node configuration name to be deployed.")]
@@ -79,40 +72,42 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationProcessRecord()
         {
-            if (this.ParameterSetName == AutomationCmdletParameterSets.ByInputObject)
+            // ReSharper disable once SwitchStatementMissingSomeCases
+            switch (ParameterSetName)
             {
-                if (ShouldProcess(NodeConfigurationName, VerbsLifecycle.Start))
-                {
-                    if (Force || ShouldContinue(Resources.StartAzureAutomationNodeConfigurationWarning,
-                                                Resources.StartAzureAutomationNodeConfigurationDescription))
+                case AutomationCmdletParameterSets.ByInputObject:
+                    if (ShouldProcess(NodeConfigurationName, VerbsLifecycle.Start))
                     {
-                        NodeConfigurationDeployment nodeConfigurationDeployment = this.AutomationClient.StartNodeConfigurationDeployment(
-                            this.InputObject.ResourceGroupName,
-                            this.InputObject.AutomationAccountName,
-                            this.InputObject.NodeConfigurationName,
-                            this.NodeName,
-                            this.Schedule);
+                        if (Force || ShouldContinue(Resources.StartAzureAutomationNodeConfigurationWarning,
+                                Resources.StartAzureAutomationNodeConfigurationDescription))
+                        {
+                            var nodeConfigurationDeployment = AutomationClient.StartNodeConfigurationDeployment(
+                                InputObject.ResourceGroupName,
+                                InputObject.AutomationAccountName,
+                                InputObject.NodeConfigurationName,
+                                NodeName,
+                                Schedule);
 
-                        this.WriteObject(nodeConfigurationDeployment);
+                            WriteObject(nodeConfigurationDeployment);
+                        }
                     }
-                }
-            }
-            else if (this.ParameterSetName == AutomationCmdletParameterSets.ByAll)
-            {
-                if (ShouldProcess(NodeConfigurationName, VerbsLifecycle.Start))
-                {
-                    if (Force || ShouldContinue(Resources.StartAzureAutomationNodeConfigurationWarning,
-                                                Resources.StartAzureAutomationNodeConfigurationDescription))
+                    break;
+                case AutomationCmdletParameterSets.ByAll:
+                    if (ShouldProcess(NodeConfigurationName, VerbsLifecycle.Start))
                     {
-                        NodeConfigurationDeployment nodeConfigurationDeployment = this.AutomationClient.StartNodeConfigurationDeployment(this.ResourceGroupName,
-                            this.AutomationAccountName,
-                            this.NodeConfigurationName,
-                            this.NodeName,
-                            this.Schedule);
+                        if (Force || ShouldContinue(Resources.StartAzureAutomationNodeConfigurationWarning,
+                                Resources.StartAzureAutomationNodeConfigurationDescription))
+                        {
+                            var nodeConfigurationDeployment = AutomationClient.StartNodeConfigurationDeployment(ResourceGroupName,
+                                AutomationAccountName,
+                                NodeConfigurationName,
+                                NodeName,
+                                Schedule);
 
-                        this.WriteObject(nodeConfigurationDeployment);
+                            WriteObject(nodeConfigurationDeployment);
+                        }
                     }
-                }
+                    break;
             }
         }
     }
