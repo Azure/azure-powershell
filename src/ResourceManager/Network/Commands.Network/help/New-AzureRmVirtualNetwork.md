@@ -18,8 +18,8 @@ New-AzureRmVirtualNetwork -Name <String> -ResourceGroupName <String> -Location <
  -AddressPrefix <System.Collections.Generic.List`1[System.String]>
  [-DnsServer <System.Collections.Generic.List`1[System.String]>]
  [-Subnet <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSSubnet]>]
- [-Tag <Hashtable>] [-EnableDdoSProtection] [-EnableVmProtection] [-Force] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Tag <Hashtable>] [-EnableDDoSProtection] [-EnableVmProtection] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -90,6 +90,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DnsServer
 Specifies the DNS server for a subnet.
 
@@ -105,8 +120,10 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -EnableDdoSProtection
-A switch parameter which represents if DDoS protection is enabled or not.```yaml
+### -EnableDDoSProtection
+A switch parameter which represents if DDoS protection is enabled or not.
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
@@ -119,7 +136,9 @@ Accept wildcard characters: False
 ```
 
 ### -EnableVmProtection
-A switch parameter which represents if Vm protection is enabled or not.```yaml
+A switch parameter which represents if Vm protection is enabled or not.
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 

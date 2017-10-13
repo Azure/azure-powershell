@@ -19,6 +19,8 @@
 -->
 ## Current Release
 
+## Version 4.4.1
+
 ## Version 4.4.0
 * Added support for endpoint services to Virtual Network Subnets
     - Updated Add-AzureRmVirtualSubnetConfig: Added optional parameter -ServiceEndpoint

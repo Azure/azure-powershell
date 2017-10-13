@@ -13,7 +13,8 @@ Gets Predefined SSL Policies provided by Application Gateway.
 ## SYNTAX
 
 ```
-Get-AzureRmApplicationGatewaySslPredefinedPolicy [-Name <String>] [<CommonParameters>]
+Get-AzureRmApplicationGatewaySslPredefinedPolicy [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,6 +37,21 @@ PS C:\>$policy = Get-AzureRmApplicationGatewaySslPredefinedPolicy -Name AppGwSsl
 This commands returns predefined policy with name AppGwSslPolicy20170401.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 Name of the ssl predefined policy
