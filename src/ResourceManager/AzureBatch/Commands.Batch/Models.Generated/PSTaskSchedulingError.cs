@@ -27,8 +27,9 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using System.Collections;
     using System.Collections.Generic;
     using Microsoft.Azure.Batch;
-    
-    
+
+
+    [Obsolete("SchedulingError will be removed in a future version and replaced with FailureInformation")]
     public partial class PSTaskSchedulingError
     {
         

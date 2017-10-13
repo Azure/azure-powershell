@@ -15,23 +15,27 @@ schema: 2.0.0
 ### ByFactoryNameByParameterFile (Default)
 ```
 Invoke-AzureRmDataFactoryV2Pipeline [-ResourceGroupName] <String> [-DataFactoryName] <String>
- [-PipelineName] <String> [[-ParameterFile] <String>] [-WhatIf] [-Confirm]
+ [-PipelineName] <String> [[-ParameterFile] <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ByPipelineObjectByParameterFile
 ```
-Invoke-AzureRmDataFactoryV2Pipeline [-InputObject] <PSPipeline> [[-ParameterFile] <String>] [-WhatIf] [-Confirm]
+Invoke-AzureRmDataFactoryV2Pipeline [-InputObject] <PSPipeline> [[-ParameterFile] <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByPipelineObjectByParameterObject
 ```
-Invoke-AzureRmDataFactoryV2Pipeline [-InputObject] <PSPipeline> [[-Parameter] <Hashtable>] [-WhatIf] [-Confirm]
+Invoke-AzureRmDataFactoryV2Pipeline [-InputObject] <PSPipeline> [[-Parameter] <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByFactoryNameByParameterObject
 ```
 Invoke-AzureRmDataFactoryV2Pipeline [-ResourceGroupName] <String> [-DataFactoryName] <String>
- [-PipelineName] <String> [[-Parameter] <Hashtable>] [-WhatIf] [-Confirm]
+ [-PipelineName] <String> [[-Parameter] <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -49,21 +53,6 @@ This command starts a run for "DPWikisample" pipeline in the "WikiADF" factory.
 
 ## PARAMETERS
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DataFactoryName
 The data factory name.
 
@@ -79,18 +68,33 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ParameterFile
-The name of the file with parameters for pipeline run.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: String
-Parameter Sets: ByFactoryNameByParameterFile, ByPipelineObjectByParameterFile
-Aliases: 
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
-Position: 3
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+The data factory object.
+
+```yaml
+Type: PSPipeline
+Parameter Sets: ByPipelineObjectByParameterFile, ByPipelineObjectByParameterObject
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -109,18 +113,18 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InputObject
-The data factory object.
+### -ParameterFile
+The name of the file with parameters for pipeline run.
 
 ```yaml
-Type: PSPipeline
-Parameter Sets: ByPipelineObjectByParameterFile, ByPipelineObjectByParameterObject
+Type: String
+Parameter Sets: ByFactoryNameByParameterFile, ByPipelineObjectByParameterFile
 Aliases: 
 
-Required: True
-Position: 0
+Required: False
+Position: 3
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -154,6 +158,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -WhatIf
 Shows what happens if the cmdlet runs, but doesn't run the cmdlet.
 
@@ -169,21 +188,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### Microsoft.Azure.Commands.DataFactoryV2.Models.PSPipeline
 System.String
 System.Collections.Hashtable
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.DataFactoryV2.Models.PSPipeline
 
-
 ## NOTES
 
 ## RELATED LINKS
+
 [Get-AzureRmDataFactoryV2PipelineRun]()
 
 [Get-AzureRmDataFactoryV2ActivityRun]()

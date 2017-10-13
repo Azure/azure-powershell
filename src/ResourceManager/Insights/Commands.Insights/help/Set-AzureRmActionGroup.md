@@ -25,8 +25,8 @@ The **Set-AzureRmActionGroup** cmdlet creates a new or updates an existing actio
 
 ### Example 1: Create an Action Group
 ```
-PS C:\>$email1 = New-AzureRmActionGroupReceiver -Type 'email' -Name 'user1' -EmailAddress 'user1@example.com'
-PS C:\>$sms1 = New-AzureRmActionGroupReceiver -Type 'sms' -Name 'user2'  -CountryCode '1' -PhoneNumber '5555555555'
+PS C:\>$email1 = New-AzureRmActionGroupReceiver -Name 'user1' -EmailReceiver -EmailAddress 'user1@example.com'
+PS C:\>$sms1 = New-AzureRmActionGroupReceiver -Name 'user2' -SmsReceiver -CountryCode '1' -PhoneNumber '5555555555'
 PS C:\>Set-AzureRmActionGroup -Name $actionGroupName -ResourceGroup $resourceGroupName -ShortName $shortName -Receiver $email1,$sms1
 
 ```

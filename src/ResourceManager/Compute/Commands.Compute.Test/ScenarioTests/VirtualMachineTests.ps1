@@ -169,6 +169,8 @@ function Test-VirtualMachine
         Update-AzureRmVM -ResourceGroupName $rgname -VM $p;
 
         $vm2 = Get-AzureRmVM -Name $vmname -ResourceGroupName $rgname;
+        Assert-AreEqual $null $vm2.Zones;
+
         Assert-AreEqual $vm2.NetworkProfile.NetworkInterfaces.Count 1;
         Assert-AreEqual $vm2.NetworkProfile.NetworkInterfaces[0].Id $nicId;
 

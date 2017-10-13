@@ -44,6 +44,7 @@ namespace Microsoft.Azure.Commands.Batch
 
         [Parameter(Mandatory = true, HelpMessage = "The account password.")]
         [ValidateNotNullOrEmpty]
+        [Obsolete("New-AzureRmBatchComputeNodeUser: The parameter \"Password\" is being changed from a string to a SecureString in an upcoming breaking change release.")]
         public string Password { get; set; }
 
         [Parameter]
@@ -59,7 +60,9 @@ namespace Microsoft.Azure.Commands.Batch
                 this.ComputeNode, this.AdditionalBehaviors)
             {
                 ComputeNodeUserName = this.Name,
+#pragma warning disable 0618
                 Password = this.Password,
+#pragma warning restore 0618
                 ExpiryTime = this.ExpiryTime,
                 IsAdmin = this.IsAdmin.IsPresent
             };
