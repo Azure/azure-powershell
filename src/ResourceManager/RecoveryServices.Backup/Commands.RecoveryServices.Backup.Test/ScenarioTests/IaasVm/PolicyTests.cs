@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVM)]
-        public void TestPolicyScenario()
+        public void TestAzureVMPolicy()
         {
             TestController.NewInstance.RunPsTest(
                 PsBackupProviderTypes.IaasVm, "Test-PolicyScenario");

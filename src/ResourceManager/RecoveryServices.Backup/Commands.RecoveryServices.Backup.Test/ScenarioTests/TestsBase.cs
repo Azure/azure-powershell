@@ -32,6 +32,9 @@ using RecoveryServicesNS = Microsoft.Azure.Management.RecoveryServices;
 using ResourceManagementNS = Microsoft.Azure.Management.Resources;
 using ResourceManagementRestNS = Microsoft.Azure.Management.ResourceManager;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using StorageMgmtNS = Microsoft.Azure.Management.Storage;
+using NetworkMgmtNS = Microsoft.Azure.Management.Network;
+using ComputeMgmtNS = Microsoft.Azure.Management.Compute;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
@@ -49,6 +52,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public ResourceManagementRestNS.ResourceManagementClient RmRestClient { get; private set; }
 
         public HyakRmNS.ResourceManagementClient HyakRmClient { get; private set; }
+
+        public StorageMgmtNS.StorageManagementClient StorageClient { get; private set; }
+
+        public NetworkMgmtNS.NetworkManagementClient NetworkManagementClient { get; private set; }
+
+        public ComputeMgmtNS.ComputeManagementClient ComputeManagementClient { get; private set; }
 
         protected string ResourceNamespace { get; private set; }
 
@@ -70,7 +79,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         {
             ResourceNamespace = resourceNamespace;
         }
-
+        
         protected void SetupManagementClients(MockContext context)
         {
             RsBackupClient = GetRsBackupClient(context);
@@ -79,12 +88,37 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
             RmRestClient = GetRmRestClient(context);
             HyakRmClient = GetHyakRmClient(context);
 
+            StorageClient = GetStorageManagementClient(context);
+            NetworkManagementClient = GetNetworkManagementClient(context);
+            ComputeManagementClient = GetComputeManagementClient(context);
+
             helper.SetupManagementClients(
                 RsBackupClient,
                 RsClient,
                 RmClient,
                 RmRestClient,
-                HyakRmClient);
+                HyakRmClient,
+                StorageClient,
+                NetworkManagementClient,
+                ComputeManagementClient);
+        }
+
+        private StorageMgmtNS.StorageManagementClient GetStorageManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<StorageMgmtNS.StorageManagementClient>(
+                TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private NetworkMgmtNS.NetworkManagementClient GetNetworkManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<NetworkMgmtNS.NetworkManagementClient>(
+                TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private ComputeMgmtNS.ComputeManagementClient GetComputeManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<ComputeMgmtNS.ComputeManagementClient>(
+                TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private ResourceManagementNS.ResourceManagementClient GetRmClient()
@@ -177,6 +211,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 modules.Add(rmProfileModule);
                 modules.Add(rmModulePath);
                 modules.Add(recoveryServicesModulePath);
+                modules.Add(helper.RMResourceModule);
+                modules.Add(helper.RMStorageDataPlaneModule);
+                modules.Add(helper.RMStorageModule);
+                modules.Add(helper.GetRMModulePath("AzureRM.Compute.psd1"));
+                modules.Add(helper.GetRMModulePath("AzureRM.Network.psd1"));
+                modules.Add("AzureRM.Storage.ps1");
+                modules.Add("AzureRM.Resources.ps1");
 
                 helper.SetupModules(AzureModule.AzureResourceManager, modules.ToArray());
 

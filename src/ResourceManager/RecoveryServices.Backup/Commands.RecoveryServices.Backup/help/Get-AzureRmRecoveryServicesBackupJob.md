@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.RecoveryServices.Backup.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.RecoveryServices.Backup
 ms.assetid: 12F8A120-7282-4844-90E0-1C3393336E8A
 online version: 
 schema: 2.0.0
@@ -89,9 +89,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
-
-```yaml
+The credentials, account, tenant, and subscription used for communication with azure.```yaml
 Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential

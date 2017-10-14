@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.RecoveryServices.Backup.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.RecoveryServices.Backup
 ms.assetid: 4B7ACEC8-29BB-4791-8087-801300F246B4
 online version: 
 schema: 2.0.0
@@ -38,9 +38,7 @@ This command gets all Backup management servers registered with the vault.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
-
-```yaml
+The credentials, account, tenant, and subscription used for communication with azure.```yaml
 Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
