@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVM)]
-        public void TestGetJobs()
+        public void TestAzureVMGetJobs()
         {
             TestController.NewInstance.RunPsTest(
                 PsBackupProviderTypes.IaasVm, "Test-GetJobsScenario");
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVM)]
-        public void TestGetJobsTimeFilter()
+        public void TestAzureVMGetJobsTimeFilter()
         {
             TestController.NewInstance.RunPsTest(
                 PsBackupProviderTypes.IaasVm, "Test-GetJobsTimeFilter");
@@ -49,43 +49,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVM)]
-        public void TestGetJobsStatusFilter()
-        {
-            TestController.NewInstance.RunPsTest(
-                PsBackupProviderTypes.IaasVm, "Test-GetJobsStatusFilter");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(TestConstants.Workload, TestConstants.AzureVM)]
-        public void TestGetJobsOperationFilter()
-        {
-            TestController.NewInstance.RunPsTest(
-                PsBackupProviderTypes.IaasVm, "Test-GetJobsOperationFilter");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(TestConstants.Workload, TestConstants.AzureVM)]
-        public void TestGetJobsBackupManagementTypeFilter()
-        {
-            TestController.NewInstance.RunPsTest(
-                PsBackupProviderTypes.IaasVm, "Test-GetJobsBackupManagementTypeFilter");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(TestConstants.Workload, TestConstants.AzureVM)]
-        public void TestGetJobDetails()
-        {
-            TestController.NewInstance.RunPsTest(
-                PsBackupProviderTypes.IaasVm, "Test-GetJobDetails");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(TestConstants.Workload, TestConstants.AzureVM)]
-        public void TestWaitJobScenario()
+        public void TestAzureVMWaitJob()
         {
             TestController.NewInstance.RunPsTest(
                 PsBackupProviderTypes.IaasVm, "Test-WaitJobScenario");
@@ -94,13 +58,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVM)]
-        public void TestWaitJobPipeScenario()
-        {
-            TestController.NewInstance.RunPsTest(
-                PsBackupProviderTypes.IaasVm, "Test-WaitJobPipeScenario");
-        }
-
-        public void TestCancelJobScenario()
+        public void TestAzureVMCancelJob()
         {
             TestController.NewInstance.RunPsTest(
                 PsBackupProviderTypes.IaasVm, "Test-CancelJobScenario");

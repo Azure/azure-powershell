@@ -24,7 +24,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Mount recovery point of an item for item level recovery.
     /// </summary>
-    [Cmdlet(VerbsData.Mount, "AzureRmRecoveryServicesBackupRecoveryPoint "), OutputType(typeof(AzureVmRecoveryPointAccessInfo))]
+    [Cmdlet(VerbsData.Mount, "AzureRmRecoveryServicesBackupRecoveryPoint",
+        SupportsShouldProcess = true), OutputType(typeof(AzureVmRecoveryPointAccessInfo))]
     public class MountAzureRmRecoveryServicesBackupRecoveryPoint : RecoveryServicesBackupCmdletBase
     {
         /// <summary>
@@ -64,14 +65,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 WriteInformation(string.Format(Resources.MountRecoveryPointInfoMessage, response.Password),
                     null);
                 WriteObject(response);
-            });
+            }, ShouldProcess(RecoveryPoint.ItemName, VerbsData.Mount));
         }
     }
 
     /// <summary>
     /// Dismount to recovery point of an item for item level recovery.
     /// </summary>
-    [Cmdlet(VerbsData.Dismount, "AzureRmRecoveryServicesBackupRecoveryPoint")]
+    [Cmdlet(VerbsData.Dismount, "AzureRmRecoveryServicesBackupRecoveryPoint",
+        SupportsShouldProcess = true)]
     public class DismountAzureRmRecoveryServicesBackupRecoveryPoint : RecoveryServicesBackupCmdletBase
     {
         /// <summary>
@@ -81,6 +83,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             HelpMessage = ParamHelpMsgs.RestoreDisk.RecoveryPoint)]
         [ValidateNotNullOrEmpty]
         public RecoveryPointBase RecoveryPoint { get; set; }
+
+        /// <summary>
+        /// Return the recovery point to be dismounted
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Return the policy to be deleted.")]
+        public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -99,8 +107,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 string content = string.Empty;
                 psBackupProvider.RevokeItemLevelRecoveryAccess();
 
+                if (PassThru.IsPresent)
+                {
+                    WriteObject(RecoveryPoint);
+                }
+
                 WriteDebug(string.Format("Dismount of recovery point"));
-            });
+            }, ShouldProcess(RecoveryPoint.ItemName, VerbsData.Dismount));
         }
     }
 }

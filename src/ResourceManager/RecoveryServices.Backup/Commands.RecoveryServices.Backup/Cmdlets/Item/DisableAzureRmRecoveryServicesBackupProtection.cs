@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// Returns the corresponding job created in the service to track this operation.
     /// </summary>
     [Cmdlet(VerbsLifecycle.Disable, "AzureRmRecoveryServicesBackupProtection", SupportsShouldProcess = true),
-    OutputType(typeof(JobBase))]
+        OutputType(typeof(JobBase))]
     public class DisableAzureRmRecoveryServicesBackupProtection : RecoveryServicesBackupCmdletBase
     {
         /// <summary>
@@ -58,20 +58,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
         public override void ExecuteCmdlet()
         {
-            ConfirmAction(
-                Force.IsPresent,
-                string.Format(Resources.DisableProtectionWarning, Item.Name),
-                Resources.DisableProtectionMessage,
-                Item.Name, () =>
-                {
-                    ExecutionBlock(() =>
+            ExecutionBlock(() =>
+            {
+                ConfirmAction(
+                    Force.IsPresent,
+                    string.Format(Resources.DisableProtectionWarning, Item.Name),
+                    Resources.DisableProtectionMessage,
+                    Item.Name, () =>
                     {
                         base.ExecuteCmdlet();
                         PsBackupProviderManager providerManager =
                             new PsBackupProviderManager(new Dictionary<System.Enum, object>()
                         {
-                            {ItemParams.Item, Item},
-                            {ItemParams.DeleteBackupData, this.DeleteBackupData},
+                                {ItemParams.Item, Item},
+                                {ItemParams.DeleteBackupData, this.DeleteBackupData},
                         }, ServiceClientAdapter);
 
                         IPsBackupProvider psBackupProvider =
@@ -83,9 +83,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         // Track Response and display job details
 
                         HandleCreatedJob(itemResponse, Resources.DisableProtectionOperation);
-                    });
-                });
-
+                    }
+                );
+            }, ShouldProcess(Item.Name, VerbsLifecycle.Disable));
+            
         }
     }
 }

@@ -17,6 +17,9 @@ Starts a backup for a Backup item.
 ### [Disable-AzureRmRecoveryServicesBackupProtection](Disable-AzureRmRecoveryServicesBackupProtection.md)
 Disables protection for a Backup-protected item.
 
+### [Dismount-AzureRmRecoveryServicesBackupRecoveryPoint](Dismount-AzureRmRecoveryServicesBackupRecoveryPoint.md)
+Dismounts all the files of the recovery point.
+
 ### [Enable-AzureRmRecoveryServicesBackupProtection](Enable-AzureRmRecoveryServicesBackupProtection.md)
 Enables backup for an item with a specified Backup protection policy.
 
@@ -46,6 +49,9 @@ Gets a base retention policy object.
 
 ### [Get-AzureRmRecoveryServicesBackupSchedulePolicyObject](Get-AzureRmRecoveryServicesBackupSchedulePolicyObject.md)
 Gets a base schedule policy object.
+
+### [Mount-AzureRmRecoveryServicesBackupRecoveryPoint](Mount-AzureRmRecoveryServicesBackupRecoveryPoint.md)
+Mounts all the files of the recovery point.
 
 ### [New-AzureRmRecoveryServicesBackupProtectionPolicy](New-AzureRmRecoveryServicesBackupProtectionPolicy.md)
 Creates a Backup protection policy.

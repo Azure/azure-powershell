@@ -180,7 +180,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// <returns></returns>
         public static T GetEnum<T>(string enumValue)
         {
-            return (T)Enum.Parse(typeof(T), enumValue);
+            try
+            {
+                return (T)Enum.Parse(typeof(T), enumValue);
+            }
+            catch (Exception ex)
+            {
+                return default(T);
+            }
         }
     }
 
