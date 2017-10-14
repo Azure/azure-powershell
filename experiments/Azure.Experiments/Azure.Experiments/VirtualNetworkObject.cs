@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 namespace Azure.Experiments
 {
     public sealed class VirtualNetworkObject : 
-        AzureResource<VirtualNetwork, IVirtualNetworksOperations>
+        ResourceObject<VirtualNetwork, IVirtualNetworksOperations>
     {
         public VirtualNetworkObject(
             string name,
@@ -30,9 +30,7 @@ namespace Azure.Experiments
                 });
 
         protected override IVirtualNetworksOperations CreateClient(Context c)
-            => new NetworkManagementClient(c.Credentials)
-                { SubscriptionId = c.SubscriptionId }
-                .VirtualNetworks;
+            => c.CreateNetwork().VirtualNetworks;
 
         protected override Task DeleteAsync(IVirtualNetworksOperations c)
             => c.DeleteAsync(ResourceGroupName, Name);

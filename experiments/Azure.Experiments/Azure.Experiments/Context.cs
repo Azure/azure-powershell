@@ -1,4 +1,5 @@
-﻿using Microsoft.Rest;
+﻿using Microsoft.Azure.Management.Network;
+using Microsoft.Rest;
 
 namespace Azure.Experiments
 {
@@ -13,5 +14,11 @@ namespace Azure.Experiments
         public ServiceClientCredentials Credentials { get; }
 
         public string SubscriptionId { get; }
+
+        public NetworkManagementClient CreateNetwork()
+            => new NetworkManagementClient(Credentials)
+            {
+                SubscriptionId = SubscriptionId
+            };
     }
 }

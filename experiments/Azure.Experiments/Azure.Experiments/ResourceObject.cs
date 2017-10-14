@@ -3,12 +3,12 @@ using System.Linq;
 
 namespace Azure.Experiments
 {
-    public abstract class AzureResource<T, C> : AzureObject<T, C>
+    public abstract class ResourceObject<T, C> : AzureObject<T, C>
         where T : class
     {
         protected string ResourceGroupName { get; }
 
-        protected AzureResource(
+        protected ResourceObject(
             string name,
             ResourceGroupObject rg,
             IEnumerable<AzureObject> dependencies) 
@@ -17,7 +17,7 @@ namespace Azure.Experiments
             ResourceGroupName = rg.Name;
         }
 
-        protected AzureResource(
+        protected ResourceObject(
             string name,
             ResourceGroupObject rg)
             : this(name, rg, Enumerable.Empty<AzureObject>())

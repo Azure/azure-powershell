@@ -1,12 +1,13 @@
 using Xunit;
 using Microsoft.Azure.Management.Compute;
+using System.Threading.Tasks;
 
 namespace Azure.Experiments.Tests
 {
     public class ComputeTest
     {
         [Fact]
-        public async void ResourceGroupTest()
+        public async Task ResourceGroupTest()
         {
             var c = Credentials.Get();
             var rg = new ResourceGroupObject("My");
@@ -16,7 +17,7 @@ namespace Azure.Experiments.Tests
         }
 
         [Fact]
-        public async void VirtualNetworkTest()
+        public async Task VirtualNetworkTest()
         {
             var c = Credentials.Get();
             var rg = new ResourceGroupObject("My1");
@@ -26,7 +27,16 @@ namespace Azure.Experiments.Tests
         }
 
         [Fact]
-        public async void Test1()
+        public async Task PublicIpAddressTest()
+        {
+            var c = Credentials.Get();
+            var rg = new ResourceGroupObject("MyPIA");
+            var pia = new PublicIpAddressObject("MyPIA", rg);
+            var info = await pia.GetOrCreateAsync(c);
+        }
+
+        [Fact]
+        public async Task Test1()
         {
             var c = Credentials.Get();
             var client = new ComputeManagementClient(c.Credentials)
