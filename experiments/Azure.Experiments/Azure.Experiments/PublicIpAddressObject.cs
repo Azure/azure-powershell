@@ -22,9 +22,7 @@ namespace Azure.Experiments
             => c.CreateNetwork().PublicIPAddresses;
 
         protected override Task DeleteAsync(IPublicIPAddressesOperations c)
-        {
-            throw new NotImplementedException();
-        }
+            => c.DeleteAsync(ResourceGroupName, Name);
 
         protected override Task<PublicIPAddress> GetOrThrowAsync(IPublicIPAddressesOperations c)
             => c.GetAsync(ResourceGroupName, Name);
