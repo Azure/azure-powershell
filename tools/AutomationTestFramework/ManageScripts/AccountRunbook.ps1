@@ -31,11 +31,20 @@ function UploadPublishAndStartRunbook (
     Write-Host "Publishing '$bookName' runbook..." -ForegroundColor Green
     $null = Publish-AzureRmAutomationRunbook -Name $bookName -AutomationAccountName $automationAccountName -ResourceGroupName $resourceGroupName -ErrorAction Stop
     
-    Write-Host "Starting '$bookName' runbook..." -ForegroundColor Green
-    $null = Start-AzureRmAutomationRunbook -Name $bookName -AutomationAccountName $automationAccountName -ResourceGroupName $resourceGroupName -ErrorAction Stop
-}
+    # to save result streams in Azure Storage Account Container
+    $runbookParams = @{
+        subscriptionName        = $subscriptionName; 
+        automationAccountName   = $automationAccountName; 
+        aaResourseGroupName     = $resourceGroupName;
+        storageAccountName      =  $azureConfig.Get_Item("saName");
+        saResourseGroupName     = $azureConfig.Get_Item("saResourceGroupName");
+        containerName           = 'testreports';
+        reportFolderPrefix      = $bookName
+    }
 
-#UploadRunbook $path "E:\OneDrive - Microsoft\Projects\PowerShell\AzureAutomation\AutomationTestAssets\RunBooks\LiveWebsitesTests.ps1" -name "LiveWebsitesTests"
+    Write-Host "Starting '$bookName' runbook..." -ForegroundColor Green
+    $null = Start-AzureRmAutomationRunbook -Name $bookName -Parameters $runbookParams -AutomationAccountName $automationAccountName -ResourceGroupName $resourceGroupName -ErrorAction Stop
+}
 
 <#
 .SYNOPSIS
@@ -59,8 +68,6 @@ function UploadPublishAndStartRunbooks ([string] $path ) {
         UploadPublishAndStartRunbook -path $filepath -bookName $bookName
     }
 }
-
-#UploadPublishAndStartRunbooks
 
 <#
 .SYNOPSIS
@@ -92,7 +99,4 @@ function RemoveRunbookFromAutomationAccount (
     }    
     
     Write-Host "Done." -ForegroundColor Green
-}    
-    
-
-
+}

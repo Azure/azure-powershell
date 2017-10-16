@@ -51,8 +51,9 @@ function Main (
             RemoveAutomationAccountModules -like "*AzureRm.*"
             
             $signedModulesPath = "\\aaptfile01\ADXSDK\PowerShell\2017_10_12_PowerShell\pkgs"
-            
-            $moduleList =  @('AzureRM.Resources', 'AzureRM.Compute', 'AzureRM.Network', 'AzureRM.Storage', 'AzureRM.Websites',  'AzureRM.KeyVault', 'AzureRM.Sql')
+
+            # AzureRM.Automation and AzureRM.Storage modules are required to store runbooks streams in Azure container. 
+            $moduleList =  @('AzureRM.Resources', 'AzureRM.Compute', 'AzureRM.Automation', 'AzureRM.Network', 'AzureRM.Storage', 'AzureRM.Websites',  'AzureRM.KeyVault', 'AzureRM.Sql')
             
             UploadSignedModules `
                 -path $signedModulesPath `
@@ -80,5 +81,3 @@ function Main (
         ($PSItem.ScriptStackTrace).Split([Environment]::NewLine) | Where-Object {$_.Length -gt 0} | ForEach-Object { Write-Host "`t$_" -ForegroundColor Red }
     }
 }
-
-Main -generateAndUploadTestHelperModule $false -generateAndUploadTestModule $false -generateRunbooks $false -uploadPublishAndStartRunbooks $false

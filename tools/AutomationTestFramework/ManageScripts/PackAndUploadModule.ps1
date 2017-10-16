@@ -27,5 +27,4 @@ function PackAndUploadModule ([string] $path, [string[]] $files, [string] $modul
     DeliverModuleToAutomationAccount `
         -modulePath $path `
         -moduleName $moduleName
-
 }
