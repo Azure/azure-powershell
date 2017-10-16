@@ -75,4 +75,3 @@ function DefaultIfNotSpecifiedSA (
     
     @($subscriptionName, $resourceGroupName, $storageAccountName,  $containerName)
 }
-

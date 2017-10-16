@@ -23,47 +23,132 @@ function LoginWithConnection([string]$connectionName) {
 			throw $_.Exception
 		}
 	}
-
+	"Available subscriptions:"
 	Get-AzureRmSubscription | Format-Table -Property Name, Id
 }
 
 function TestRunner( [string[]]$tests ) {
+
     if (!$tests -or $tests.Count -eq 0) {
 		$msg = "No tests found to execute"
-		Write-Error $msg
 		throw $msg
 	}
+
 	$pass = 0;
     $fail = 0;
     $run = 0;
-    $total = $tests.Count;
-    "==> Staring test cases..."
+	$total = $tests.Count;
+	
+	"==> Staring test execution..."
+	$startTime = (Get-Date)
     foreach ($test in $tests) {
         try {
             $run++;
-            Write-Output "--> Running $test..."
+            "--> Running $test..."
             #& $tast | Out-Null
             $null = & $test
-            Write-Output "+++ Test PASSED"
+            "+++ Test PASSED"
             $pass++;
         
         }  catch {
             $fail++;
-            #$PSItem.InvocationInfo | Format-List *
-            Write-Output "!!! Test FAILED: $PSItem"
+            "!!! Test FAILED: $PSItem"
             $scriptStackTrace = $PSItem.ScriptStackTrace
 			$newLine = [Environment]::NewLine
 			$scriptStackTrace.Split($newLine) | Where-Object {$_.Length -gt 0} | ForEach-Object { Write-Output "`t$_" }
-			Write-Error "!!! Test FAILED: $PSItem$newLine$scriptStackTrace"
 		}
 	}
-	
-	"==> Done: PASSED $pass  FAILED $fail  EXECUTED $run($total)";
-	
-	if ($fail -gt 0) {
-		$msg = "$fail test(s) failed. Please see log for details"
-		Write-Error $msg
-		throw $msg
+
+	$endTime = (Get-Date)
+	$elapsedTime = $endTime-$startTime
+	$duration = '{0:hh} h {0:mm} min {0:ss} sec' -f $elapsedTime
+	"==> Done: PASSED $pass  FAILED $fail  EXECUTED $run($total) DURATION $duration";
+}
+
+function SaveResultsInStorageAccount {
+
+	Param(
+		[parameter(Mandatory=$true)]
+		[string] $jobId,
+		[parameter(Mandatory=$true)]
+		[string] $subscriptionName,
+		[parameter(Mandatory=$true)]
+		[string] $automationAccountName,
+		[parameter(Mandatory=$true)]
+		[string] $aaResourseGroupName,
+		[parameter(Mandatory=$true)]
+		[string] $storageAccountName,
+		[parameter(Mandatory=$true)]
+		[string] $saResourseGroupName,
+		[parameter(Mandatory=$true)]
+		[string] $containerName,
+		[parameter(Mandatory=$true)]
+		[string] $reportFolderPrefix
+	)
+
+	$cntx = Get-AzureRmContext
+    if ($cntx.Subscription.Name -ne $subscriptionName) {
+        $null = Get-AzureRmSubscription -SubscriptionName $subscriptionName | Select-AzureRmSubscription
+    }  
+
+	$outputPath = Join-Path $PSScriptRoot "Reports"
+	if (-not (Test-Path $outputPath)) {
+		$null = New-Item -ItemType Directory -Path $outputPath
+	} else { 
+		Remove-Item "$outputPath\*"
 	}
+
+	#get job streams
+	$streams = Get-AzureRmAutomationJobOutput -id $jobId -ResourceGroupName $aaResourseGroupName -AutomationAccountName $automationAccountName -Stream Any | Where-Object { 
+		($_.Summary).Length -gt 0 
+	} | Get-AzureRmAutomationJobOutputRecord
+
+	#generate reports localy
+
+	$outputStr = 'Output'
+	$errorStr = 'Error'
+	$warningStr = 'Warning'
+
+	$streamTypes = @($outputStr, $errorStr, $warningStr)
+
+	$streamTypes | ForEach-Object {
+		$streamType = $_
+		$fileName = "$streamType.txt"
+		$filePath = Join-Path $outputPath $fileName
+		$null = New-Item -Path  $outputPath -Name $fileName -ItemType File
+
+		$streams | Where-Object {
+			$_.Type -eq $streamType
+		} | ForEach-Object {
+			$stream = $_
+			switch ($streamType) {
+				$outputStr {
+					$stream.Value.value | Add-Content -Path $filePath
+				} $errorStr {
+					$stream.Value.Exception | Add-Content -Path $filePath
+					$stream.Value.ScriptStackTrace | Add-Content -Path $filePath
+				} $warningStr {
+					$stream.Value.Message | Add-Content -Path $filePath
+					$stream.Value.InvocationInfo | Add-Content -Path $filePath
+				} default {
+					Write-Output "Can't be here $streamType"
+				} 
+			}
+		}
+	}
+
+	#upload reports to storage account
+	$storageAccountKey = Get-AzureRmStorageAccountKey -StorageAccountName $storageAccountName -ResourceGroupName $saResourseGroupName -Verbose -ErrorAction Stop
+	$key1 = $storageAccountKey.Value[0];
+	$ctx = New-AzureStorageContext $storageAccountName -StorageAccountKey $key1 -ErrorAction Stop
+	$now = Get-Date;
+	$folderName = "{0}_{1}-{2}-{3}" -f $reportFolderPrefix, $now.Month, $now.Day, $now.Year, $_.Name
 	
+	Get-ChildItem $outputPath -Filter "*.txt" | Where-Object {
+		$_.Length -gt 0
+	} | ForEach-Object {
+		$filePath =  Join-Path $outputPath $_.Name
+		$blobName = "$folderName\$_" 
+		$null = Set-AzureStorageBlobContent -Container $containerName  -File $filePath -Blob $blobName -Context $ctx -Force -ErrorAction Stop
+	}
 }

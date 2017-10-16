@@ -21,8 +21,7 @@ function GenerateRunbook (
      [string] $srcPath
     ,[string] $bookName
     ,[string] $connectionName
-    ,[string] $outputPath
-    ) {
+    ,[string] $outputPath) {
 
     if ([string]::IsNullOrEmpty($outputPath)) {
         $outputPath = Join-Path "$PSScriptRoot\..\" "RunBooks"
@@ -32,13 +31,35 @@ function GenerateRunbook (
     $bookPath
     $null = New-Item $bookPath -type file -Force
 
+    # These params to save result streams in Azure Storage Account Container
+    "Param("                                | Add-Content $bookPath
+	"	[parameter(Mandatory=`$true)]"      | Add-Content $bookPath
+	"	[string] `$subscriptionName,"       | Add-Content $bookPath
+	"	[parameter(Mandatory=`$true)]"      | Add-Content $bookPath
+	"	[string] `$automationAccountName,"  | Add-Content $bookPath
+	"	[parameter(Mandatory=`$true)]"      | Add-Content $bookPath
+	"	[string] `$aaResourseGroupName,"    | Add-Content $bookPath
+	"	[parameter(Mandatory=`$true)]"      | Add-Content $bookPath
+	"	[string] `$storageAccountName,"     | Add-Content $bookPath
+	"	[parameter(Mandatory=`$true)]"      | Add-Content $bookPath
+	"	[string] `$saResourseGroupName,"    | Add-Content $bookPath
+	"	[parameter(Mandatory=`$true)]"      | Add-Content $bookPath
+	"	[string] `$containerName,"          | Add-Content $bookPath
+	"	[parameter(Mandatory=`$true)]"      | Add-Content $bookPath
+	"	[string] `$reportFolderPrefix"      | Add-Content $bookPath
+	")"                                     | Add-Content $bookPath
+
     "loginWithConnection -connectionName ""$connectionName""" | Add-Content $bookPath -ErrorAction Stop
     
     ListTestFunctions $srcPath | ForEach-Object {
-        $_ | Add-Content $bookPath -ErrorAction Stop
+        $_ | Add-Content $bookPath
     }
     
-    "TestRunner `$testList" | Add-Content $bookPath -ErrorAction Stop
+    "TestRunner `$testList" | Add-Content $bookPath
+
+    "`$jobId = `$PsPrivateMetaData.JobId.Guid" | Add-Content $bookPath
+    
+    "SaveResultsInStorageAccount -jobId `$jobId -subscriptionName `$subscriptionName -automationAccountName `$automationAccountName -aaResourseGroupName `$aaResourseGroupName -storageAccountName `$storageAccountName -saResourseGroupName `$saResourseGroupName -containerName `$containerName -reportFolderPrefix `$reportFolderPrefix" | Add-Content $bookPath
 }
 
 <#
