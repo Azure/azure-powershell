@@ -49,7 +49,7 @@ Accept wildcard characters: False
 ```
 
 ### -IgnoreMissingVnetServiceEndpoint
-Create firewall rule before the virtual network private access enabled.
+Create firewall rule before the virtual network has vnet service endpoint enabled.
 
 ```yaml
 Type: SwitchParameter
