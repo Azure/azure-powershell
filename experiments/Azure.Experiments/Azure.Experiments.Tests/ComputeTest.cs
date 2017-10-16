@@ -36,6 +36,15 @@ namespace Azure.Experiments.Tests
         }
 
         [Fact]
+        public async Task NetworkSecurityGroupTest()
+        {
+            var c = Credentials.Get();
+            var rg = new ResourceGroupObject("MyNSG");
+            var nsg = new NetworkSecurityGroupObject("MyNSG", rg);
+            var info = await nsg.GetOrCreateAsync(c);
+        }
+
+        [Fact]
         public async Task Test1()
         {
             var c = Credentials.Get();

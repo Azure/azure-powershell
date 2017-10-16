@@ -28,14 +28,14 @@ namespace Azure.Experiments
     public abstract class AzureObject<T, C> : AzureObject
         where T: class
     {
-        public async Task<T> GetOrNullAsync(Context c)
+        public async Task<T> GetOrNullAsync(C c)
         {
             if (!IsGetCalled)
             {
                 IsGetCalled = true;
                 try
                 {
-                    Info = await GetOrThrowAsync(CreateClient(c));
+                    Info = await GetOrThrowAsync(c);
                 }
                 catch (CloudException e) 
                     when (e.Response.StatusCode == HttpStatusCode.NotFound)
@@ -44,6 +44,9 @@ namespace Azure.Experiments
             }
             return Info;
         }
+
+        public Task<T> GetOrNullAsync(Context c)
+            => GetOrNullAsync(CreateClient(c));
 
         public async Task<T> GetOrCreateAsync(Context c)
         {
