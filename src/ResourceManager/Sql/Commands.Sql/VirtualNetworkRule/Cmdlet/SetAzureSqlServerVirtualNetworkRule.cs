@@ -42,10 +42,10 @@ namespace Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Cmdlet
         public string VirtualNetworkSubnetId { get; set; }
 
         /// <summary>
-        /// Create firewall rule before the virtual network has private access enabled.
+        /// Create firewall rule before the virtual network has vnet service endpoint enabled.
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "Create firewall rule before the virtual network has private access enabled..")]
+            HelpMessage = "Create firewall rule before the virtual network has vnet service endpoint enabled.")]
         [ValidateNotNull]
         public SwitchParameter IgnoreMissingVnetServiceEndpoint { get; set; }
 

@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Model
         public string VirtualNetworkSubnetId { get; set; }
 
         /// <summary>
-        /// Gets or sets create firewall rule before the virtual network has private access enabled.
+        /// Gets or sets create firewall rule before the virtual network has vnet service endpoint enabled.
         /// </summary>
         public bool? IgnoreMissingVnetServiceEndpoint { get; set; }
 
