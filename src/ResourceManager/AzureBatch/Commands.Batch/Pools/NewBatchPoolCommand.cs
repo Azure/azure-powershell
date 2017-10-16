@@ -16,6 +16,7 @@ using Microsoft.Azure.Batch;
 using Microsoft.Azure.Commands.Batch.Models;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Management.Automation;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
@@ -94,6 +95,10 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public PSApplicationPackageReference[] ApplicationPackageReferences { get; set; }
 
+        [Parameter]
+        [ValidateNotNullOrEmpty]
+        public List<string> ApplicationLicenses { get; set; }
+
         [Parameter(ParameterSetName = VirtualMachineAutoScaleParameterSet)]
         [Parameter(ParameterSetName = VirtualMachineTargetDedicatedParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -133,7 +138,8 @@ namespace Microsoft.Azure.Commands.Batch
                 VirtualMachineConfiguration =  this.VirtualMachineConfiguration,
                 CloudServiceConfiguration = this.CloudServiceConfiguration,
                 NetworkConfiguration = this.NetworkConfiguration,
-                UserAccounts = this.UserAccounts
+                UserAccounts = this.UserAccounts,
+                ApplicationLicenses = this.ApplicationLicenses
             };
 
             if (ShouldProcess("AzureBatchPool"))

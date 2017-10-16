@@ -172,6 +172,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 pool.UserAccounts = parameters.UserAccounts.ToList().ConvertAll(user => user.omObject);
             }
 
+            if (parameters.ApplicationLicenses != null)
+            {
+                pool.ApplicationLicenses = parameters.ApplicationLicenses;
+            }
+
             WriteVerbose(string.Format(Resources.CreatingPool, parameters.PoolId));
             pool.Commit(parameters.AdditionalBehaviors);
         }

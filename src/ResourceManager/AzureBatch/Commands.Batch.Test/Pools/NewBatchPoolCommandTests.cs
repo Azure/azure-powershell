@@ -78,6 +78,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.BatchContext = context;
 
             cmdlet.Id = "testPool";
+            cmdlet.ApplicationLicenses = new List<string>() { "foo", "bar"};
             cmdlet.CertificateReferences = new PSCertificateReference[]
             {
                 new PSCertificateReference()
@@ -118,6 +119,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.ExecuteCmdlet();
 
             // Verify the request parameters match the cmdlet parameters
+            Assert.Equal(cmdlet.ApplicationLicenses[0], requestParameters.ApplicationLicenses[0]);
+            Assert.Equal(cmdlet.ApplicationLicenses[1], requestParameters.ApplicationLicenses[1]);
             Assert.Equal(cmdlet.CertificateReferences.Length, requestParameters.CertificateReferences.Count);
             Assert.Equal(cmdlet.CertificateReferences[0].StoreName, requestParameters.CertificateReferences[0].StoreName);
             Assert.Equal(cmdlet.CertificateReferences[0].Thumbprint, requestParameters.CertificateReferences[0].Thumbprint);
