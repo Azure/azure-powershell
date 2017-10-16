@@ -25,6 +25,14 @@ The **Get-AzureRmServiceBusDRConfigurations** Retrieves Alias(Disaster Recovery 
 ### Example 1
 ```
 PS C:\> Get-AzureRmServiceBusDRConfigurations -ResourceGroupName "SampleResourceGroup" -Namespace "SampleNamespace_Primary" -Name "SampleDRCongifName"
+
+Name              : SampleDRCongifName
+Id                : /subscriptions/{SubscriptionId}/resourceGroups/SampleResourceGroup/providers/Microsoft.ServiceBus/namespaces/SampleNamespace_Primary/disasterRecoveryConfigs/SampleDRCongifName
+Type              : Microsoft.ServiceBus/Namespaces/disasterrecoveryconfigs
+ProvisioningState : Accepted
+PartnerNamespace  : SampleNamespace_Secondary
+Role              : Primary
+
 ```
 
 Retrieves alias "SampleDRCongifName" configuration for primary namespace "SampleNamespace_Primary"
@@ -32,6 +40,13 @@ Retrieves alias "SampleDRCongifName" configuration for primary namespace "Sample
 ### Example 2
 ```
 PS C:\> Get-AzureRmServiceBusDRConfigurations -ResourceGroupName "SampleResourceGroup" -Namespace "SampleNamespace_Primary"
+
+Name              : SampleDRCongifName
+Id                : /subscriptions/{SubscriptionId}/resourceGroups/SampleResourceGroup/providers/Microsoft.ServiceBus/namespaces/SampleNamespace_Primary/disasterRecoveryConfigs/SampleDRCongifName
+Type              : Microsoft.ServiceBus/Namespaces/disasterrecoveryconfigs
+ProvisioningState : Accepted
+PartnerNamespace  : SampleNamespace_Secondary
+Role              : Primary
 ```
 
 Retrieves all alias configurations(list) for primary namespace "SampleNamespace_Primary"
@@ -104,14 +119,6 @@ Accept wildcard characters: False
 
 
 ## OUTPUTS
-
-Name              : SampleDRCongifName
-Id                : /subscriptions/{SubscriptionId}/resourceGroups/SampleResourceGroup/providers/Microsoft.ServiceBus/namespaces/SampleNamespace_Primary/disasterRecoveryConfigs/SampleDRCongifName
-Type              : Microsoft.ServiceBus/Namespaces/disasterrecoveryconfigs
-ProvisioningState : Accepted
-PartnerNamespace  : SampleNamespace_Secondary
-Role              : Primary
-
 
 ## NOTES
 

@@ -25,6 +25,14 @@ The **New-AzureRmServiceBusDRConfigurations** cmdlet Creates a new Alias(Disaste
 ### Example 1
 ```
 PS C:\> New-AzureRmServiceBusDRConfigurations -ResourceGroupName "SampleResourceGroup" -Namespace "SampleNamespace_Primary" -Name "SampleDRCongifName" -PartnerNamespace "SampleNamespace_Secondary"
+
+Name              : SampleDRCongifName
+Id                : /subscriptions/{SubscriptionId}/resourceGroups/SampleResourceGroup/providers/Microsoft.ServiceBus/namespaces/SampleNamespace_Primary/disasterRecoveryConfigs/SampleDRCongifName
+Type              : Microsoft.ServiceBus/Namespaces/disasterrecoveryconfigs
+ProvisioningState : Accepted
+PartnerNamespace  : SampleNamespace_Secondary
+Role              : Primary
+
 ```
 
 Creates an alias "SampleDRCongifName" with primary namespace "SampleNamespace_Primary" with secondary namespace "SampleNamespace_Secondary"
@@ -144,13 +152,6 @@ Accept wildcard characters: False
 
 ## OUTPUTS
  
-Name              : SampleDRCongifName
-Id                : /subscriptions/{SubscriptionId}/resourceGroups/SampleResourceGroup/providers/Microsoft.ServiceBus/namespaces/SampleNamespace_Primary/disasterRecoveryConfigs/SampleDRCongifName
-Type              : Microsoft.ServiceBus/Namespaces/disasterrecoveryconfigs
-ProvisioningState : Accepted
-PartnerNamespace  : SampleNamespace_Secondary
-Role              : Primary
-
 ## NOTES
 
 ## RELATED LINKS

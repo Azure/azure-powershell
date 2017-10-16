@@ -544,7 +544,6 @@ namespace Microsoft.Azure.Commands.ServiceBus
         public ServiceBusDRConfigurationAttributes GetServiceBusDRConfiguration(string resourceGroupName, string namespaceName, string alias)
         {
             var response = Client.DisasterRecoveryConfigs.Get(resourceGroupName, namespaceName, alias);
-            Thread.Sleep(TimeSpan.FromSeconds(5));
             return new ServiceBusDRConfigurationAttributes(response);
         }
 
@@ -552,7 +551,6 @@ namespace Microsoft.Azure.Commands.ServiceBus
         {
             var response = Client.DisasterRecoveryConfigs.List(resourceGroupName, namespaceName);
             var resourceList = response.Select(resource => new ServiceBusDRConfigurationAttributes(resource));
-            Thread.Sleep(TimeSpan.FromSeconds(5));
             return resourceList;
         }
 
@@ -564,7 +562,6 @@ namespace Microsoft.Azure.Commands.ServiceBus
                 Parameter1.PartnerNamespace = parameter.PartnerNamespace;
 
             var response = Client.DisasterRecoveryConfigs.CreateOrUpdate(resourceGroupName, namespaceName, alias, Parameter1);
-            Thread.Sleep(TimeSpan.FromSeconds(5));            
             return new ServiceBusDRConfigurationAttributes(response);
         }
 
@@ -584,7 +581,6 @@ namespace Microsoft.Azure.Commands.ServiceBus
         public void SetServiceBusDRConfigurationFailOver(string resourceGroupName, string namespaceName, string alias)
         {
             Client.DisasterRecoveryConfigs.FailOver(resourceGroupName, namespaceName, alias);
-            Thread.Sleep(TimeSpan.FromSeconds(5));           
         }
 
         #endregion

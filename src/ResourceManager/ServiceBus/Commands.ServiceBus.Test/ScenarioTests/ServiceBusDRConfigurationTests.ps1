@@ -120,7 +120,7 @@ function ServiceBusDRConfigurationTests
 	# FailOver on Secondary Namespace
 	Write-Debug "FailOver on Secondary Namespace"
 	Set-AzureRmServiceBusDRConfigurationsFailOver -ResourceGroup $resourceGroupName -NamespaceName $namespaceName2 -Name $drConfigName
-	
+		
 	# Remove created alias
 
 	Remove-AzureRmServiceBusDRConfigurations -ResourceGroup $resourceGroupName -NamespaceName $namespaceName2 -Name $drConfigName

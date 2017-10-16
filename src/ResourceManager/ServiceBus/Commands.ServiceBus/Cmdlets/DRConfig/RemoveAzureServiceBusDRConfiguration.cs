@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
     /// <summary>
     /// 'Remove-AzureRmServicebusDRConfigurations' Cmdlet Deletes an Alias(Disaster Recovery configuration)
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, ServicebusDRConfigurationVerb, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Remove, ServicebusDRConfigurationVerb, SupportsShouldProcess = true), OutputType(typeof(void))]
     public class RemoveServicBusDRConfiguration : AzureServiceBusCmdletBase
     {
         [Parameter(Mandatory = true,
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
         public override void ExecuteCmdlet()
         {
             // delete a EventHub 
-            if(ShouldProcess(target:Name, action:string.Format("Deleting Alias: {0} of NnameSpace{1}",Name,Namespace)))
+            if(ShouldProcess(target:Name, action:string.Format(Resources.DRRemoveAlias,Name,Namespace)))
             {
                 WriteObject(Client.DeleteServiceBusDRConfiguration(ResourceGroupName, Namespace, Name));
             }            

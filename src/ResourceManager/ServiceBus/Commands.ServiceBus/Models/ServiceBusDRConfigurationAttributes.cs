@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
                 Role = drResource.Role;
             }
         }
-        
+
         public string Name { get; set; }
 
         public string Id { get; set; }
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// capture description. Possible values include:
         /// 'Primary', 'PrimaryNotReplicating', 'Secondary'
         /// </summary>
-        public RoleDisasterRecovery? Role { get;  set; }
-        
+        public RoleDisasterRecovery? Role { get; set; }
+
     }
 }

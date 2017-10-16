@@ -20,9 +20,9 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
 {
     /// <summary>
-    /// 'New-AzureRmServicebusDRConfigurationsBreakPairing' Cmdlet disables the Disaster Recovery and stops replicating changes from primary to secondary namespaces
+    /// 'Set-AzureRmServicebusDRConfigurationsBreakPairing' Cmdlet disables the Disaster Recovery and stops replicating changes from primary to secondary namespace
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, ServicebusDRConfigurationBreakPairingVerb)]
+    [Cmdlet(VerbsCommon.Set, ServicebusDRConfigurationBreakPairingVerb, SupportsShouldProcess = true), OutputType(typeof(void))]
     public class SetAzureServiceBusDRConfigurationBreakPairing : AzureServiceBusCmdletBase
     {
         [Parameter(Mandatory = true,
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
             Position = 0,
             HelpMessage = "Resource Group Name.")]
         [ValidateNotNullOrEmpty]
-         public string ResourceGroupName { get; set; }
+        public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -51,8 +51,11 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
         public override void ExecuteCmdlet()
         {
             //Set Break Pairing
-            Client.SetServiceBusDRConfigurationBreakPairing(ResourceGroupName, Namespace, Name);
-            
+            if (ShouldProcess(target: Name, action: string.Format(Resources.DRBreakPairing, Name, Namespace)))
+            {
+                Client.SetServiceBusDRConfigurationBreakPairing(ResourceGroupName, Namespace, Name);
+            }
+
         }
     }
 }

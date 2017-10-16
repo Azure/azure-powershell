@@ -20,9 +20,9 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
 {
     /// <summary>
-    /// 'New-AzureRmServicebusDRConfigurationsFailOver' Cmdlet envokes GEO DR failover and reconfigure the alias to point to the secondary namespace
+    /// 'Set-AzureRmServicebusDRConfigurationsFailOver' Cmdlet invokes GEO DR failover and reconfigure the alias to point to the secondary namespace
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, ServicebusDRConfigurationFailoverVerb)]
+    [Cmdlet(VerbsCommon.Set, ServicebusDRConfigurationFailoverVerb, SupportsShouldProcess = true), OutputType(typeof(void))]
     public class SetAzureServiceBusDRConfigurationFailOver : AzureServiceBusCmdletBase
     {
         [Parameter(Mandatory = true,
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 2,
-            HelpMessage = "DR Configuration Name.")]
+            HelpMessage = "DR Configuration Name - Alias.")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasAliasName)]
         public string Name { get; set; }
@@ -51,7 +51,10 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
         public override void ExecuteCmdlet()
         {
             //Set FailOver
-            Client.SetServiceBusDRConfigurationFailOver(ResourceGroupName, Namespace, Name);            
+            if (ShouldProcess(target: Name, action: string.Format(Resources.DRFailOver, Name, Namespace)))
+            {
+                Client.SetServiceBusDRConfigurationFailOver(ResourceGroupName, Namespace, Name);
+            }
         }
     }
 }
