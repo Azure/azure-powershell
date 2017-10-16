@@ -45,6 +45,16 @@ namespace Azure.Experiments.Tests
         }
 
         [Fact]
+        public async Task SubnetTest()
+        {
+            var c = Credentials.Get();
+            var rg = new ResourceGroupObject("MySubnet");
+            var vn = new VirtualNetworkObject("MySubnet", rg, "192.168.0.0/16");
+            var subnet = new SubnetObject("MySubnet", vn, "192.168.1.0/24");
+            var info = await subnet.GetOrCreateAsync(c);
+        }
+
+        [Fact]
         public async Task Test1()
         {
             var c = Credentials.Get();

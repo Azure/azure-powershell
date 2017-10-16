@@ -1,21 +1,29 @@
 ﻿using Microsoft.Azure.Management.Network;
+using Microsoft.Azure.Management.Network.Models;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace Azure.Experiments
 {
-    sealed class SubnetObject : AzureObject<object, IVirtualNetworksOperations>
+    public sealed class SubnetObject : AzureObject<Subnet, IVirtualNetworksOperations>
     {
-        public SubnetObject(string name, VirtualNetworkObject vn) 
+        public string AddressPrefix { get; }
+
+        public SubnetObject(string name, VirtualNetworkObject vn, string addressPrefix) 
             : base(name, new[] { vn })
         {
             Vn = vn;
+            AddressPrefix = addressPrefix;
         }
 
-        protected override Task<object> CreateAsync(IVirtualNetworksOperations c)
+        protected override async Task<Subnet> CreateAsync(IVirtualNetworksOperations c)
         {
-            throw new NotImplementedException();
+            // The Virtual Network should be created at this point.
+            var vn = await Vn.GetOrNullAsync(c);
+            vn.Subnets.Add(new Subnet { Name = Name, AddressPrefix = AddressPrefix });
+            vn = await c.CreateOrUpdateAsync(Vn.ResourceGroupName, Vn.Name, vn);
+            return GetSubnet(vn);
         }
 
         protected override IVirtualNetworksOperations CreateClient(Context c)
@@ -26,11 +34,12 @@ namespace Azure.Experiments
             throw new NotImplementedException();
         }
 
-        protected override async Task<object> GetOrThrowAsync(IVirtualNetworksOperations c)
-            => (await Vn.GetOrNullAsync(c))
-                ?.Subnets
-                .FirstOrDefault(s => s.Name == Name);
+        protected override async Task<Subnet> GetOrThrowAsync(IVirtualNetworksOperations c)
+            => GetSubnet(await Vn.GetOrNullAsync(c));
 
         private VirtualNetworkObject Vn { get; }
+
+        private Subnet GetSubnet(VirtualNetwork vn)
+            => vn?.Subnets.FirstOrDefault(s => s.Name == Name);
     }
 }

@@ -6,7 +6,7 @@ namespace Azure.Experiments
     public abstract class ResourceObject<T, C> : AzureObject<T, C>
         where T : class
     {
-        protected string ResourceGroupName { get; }
+        public string ResourceGroupName { get; }
 
         protected ResourceObject(
             string name,
