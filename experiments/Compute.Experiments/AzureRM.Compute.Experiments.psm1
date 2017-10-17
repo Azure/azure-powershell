@@ -514,7 +514,7 @@ class NetworkInterface: Resource1 {
         $subnetInfo = $this.Subnet.Info
         $securityGroupInfo = $this.SecurityGroup.Info
         return New-AzureRmNetworkInterface `
-            -ResourceGroupName $this.GetResourceGroupName() `
+            -ResourceGroupName $this.ResourceGroup.Name `
             -Location $p.Location `
             -Name $this.Name `
             -PublicIpAddressId $publicIpAddressInfo.Id `

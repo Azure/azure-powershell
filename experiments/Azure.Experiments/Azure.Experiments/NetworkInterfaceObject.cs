@@ -4,23 +4,39 @@ using System.Threading.Tasks;
 
 namespace Azure.Experiments
 {
-    class NetworkInterfaceObject
+    public sealed class NetworkInterfaceObject
         : ResourceObject<NetworkInterface, INetworkInterfacesOperations>
     {
-        protected NetworkInterfaceObject(
+        public NetworkInterfaceObject(
             string name,
             ResourceGroupObject rg, 
-            VirtualNetworkObject vn,
+            SubnetObject subnet,
             PublicIpAddressObject pia,
             NetworkSecurityGroupObject nsg) 
-            : base(name, rg, new AzureObject[] { vn, pia, nsg })
+            : base(name, rg, new AzureObject[] { subnet, pia, nsg })
         {
+            Pia = pia;
+            Subnet = subnet;
         }
 
-        protected override Task<NetworkInterface> CreateAsync(
+        protected override async Task<NetworkInterface> CreateAsync(
             INetworkInterfacesOperations c)
-            => c.CreateOrUpdateAsync(
-                ResourceGroupName, Name, new NetworkInterface());
+            => await c.CreateOrUpdateAsync(
+                ResourceGroupName,
+                Name, 
+                new NetworkInterface
+                {
+                    Location = "eastus",                    
+                    IpConfigurations = new[] 
+                    {
+                        new NetworkInterfaceIPConfiguration
+                        {
+                            Name = Name,
+                            Subnet = Subnet.Info,
+                            PublicIPAddress = Pia.Info,
+                        }
+                    }                    
+                });
 
         protected override INetworkInterfacesOperations CreateClient(Context c)
             => c.CreateNetwork().NetworkInterfaces;
@@ -31,5 +47,8 @@ namespace Azure.Experiments
         protected override Task<NetworkInterface> GetOrThrowAsync(
             INetworkInterfacesOperations c)
             => c.GetAsync(ResourceGroupName, Name);
+
+        private PublicIpAddressObject Pia { get; }
+        private SubnetObject Subnet { get; }
     }
 }

@@ -28,6 +28,8 @@ namespace Azure.Experiments
     public abstract class AzureObject<T, C> : AzureObject
         where T: class
     {
+        public T Info { get; private set; }
+
         public async Task<T> GetOrNullAsync(C c)
         {
             if (!IsGetCalled)
@@ -84,8 +86,6 @@ namespace Azure.Experiments
 
         protected abstract Task DeleteAsync(C c);
 
-        private bool IsGetCalled;
-
-        private T Info;
+        private bool IsGetCalled;       
     }
 }

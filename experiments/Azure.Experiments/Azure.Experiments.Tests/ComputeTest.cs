@@ -55,6 +55,19 @@ namespace Azure.Experiments.Tests
         }
 
         [Fact]
+        public async Task NetworkInterfaceObject()
+        {
+            var c = Credentials.Get();
+            var rg = new ResourceGroupObject("MyNI");
+            var vn = new VirtualNetworkObject("MyNI", rg, "192.168.0.0/16");
+            var subnet = new SubnetObject("MyNI", vn, "192.168.1.0/24");
+            var pia = new PublicIpAddressObject("MyNI", rg);
+            var nsg = new NetworkSecurityGroupObject("MyNI", rg);
+            var ni = new NetworkInterfaceObject("MyNI", rg, subnet, pia, nsg);
+            var info = await ni.GetOrCreateAsync(c);
+        }
+
+        [Fact]
         public async Task Test1()
         {
             var c = Credentials.Get();
