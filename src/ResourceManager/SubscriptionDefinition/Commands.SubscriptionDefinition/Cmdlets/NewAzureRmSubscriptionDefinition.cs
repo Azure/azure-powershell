@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.SubscriptionDefinition.Cmdlets
 
         public override void ExecuteCmdlet()
         {
-            this.WriteSubscriptionDefinitionObject(this.SubscriptionDefinitionClient.ManagementGroupsSubscriptionDefinitions.Create(new Microsoft.Azure.Management.ResourceManager.Models.SubscriptionDefinition(
+            this.WriteSubscriptionDefinitionObject(this.SubscriptionDefinitionClient.SubscriptionDefinitions.Create(new Microsoft.Azure.Management.ResourceManager.Models.SubscriptionDefinition(
                 groupId: this.ManagementGroupId.ToString(),
                 name: this.Name,
                 ratingContext: new Management.ResourceManager.Models.SubscriptionDefinitionPropertiesRatingContext(this.OfferType),

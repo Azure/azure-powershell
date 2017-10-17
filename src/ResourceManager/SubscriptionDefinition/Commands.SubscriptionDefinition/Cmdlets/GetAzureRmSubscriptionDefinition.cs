@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.SubscriptionDefinition.Cmdlets
             if (this.ManagementGroupId != Guid.Empty)
             {
                 // Get subscription definition(s) in the specified management group.
-                this.SubscriptionDefinitionClient.SetManagementGroupsScope(this.ManagementGroupId, this.Name);
+                this.SubscriptionDefinitionClient.SetManagementGroupScope(this.ManagementGroupId, this.Name);
             }
             else if (this.Subscription != null)
             {

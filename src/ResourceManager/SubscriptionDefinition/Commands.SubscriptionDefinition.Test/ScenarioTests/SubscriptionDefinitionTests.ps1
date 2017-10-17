@@ -70,7 +70,7 @@ function Test-NewSubscriptionDefinition
     $definitions = Get-AzureRmSubscriptionDefinition -ManagementGroup 'ac03d01c-232b-4d97-b869-c979f8669be2'
     $previousDefinitionCount = $definitions.Count
 
-    $definition = Net-AzureRmSubscriptionDefinition -ManagementGroupId 'ac03d01c-232b-4d97-b869-c979f8669be2' -Name 'myNewSubDef' -OfferType ''
+    $definition = New-AzureRmSubscriptionDefinition -ManagementGroupId 'ac03d01c-232b-4d97-b869-c979f8669be2' -Name 'myNewSubDef' -OfferType ''
 
     Assert-NotNull $definition.Name
 	Assert-NotNull $definition.GroupId
