@@ -9,7 +9,7 @@ schema: 2.0.0
 # Stop-AzureRmSqlDatabaseActivity
 
 ## SYNOPSIS
-Cancels the asynchronous operation on the database.
+Cancels the asynchronous updateslo operation on the database.
 
 ## SYNTAX
 
@@ -20,16 +20,28 @@ Stop-AzureRmSqlDatabaseActivity [-ServerName] <String> [-ElasticPoolName <String
 ```
 
 ## DESCRIPTION
-The **Stop-AzureRmSqlDatabaseActivity** cmdlet cancels the asynchronous operation on the database.
+The **Stop-AzureRmSqlDatabaseActivity** cmdlet cancels the asynchronous updateslo operation on the database.
 
 ## EXAMPLES
 
-### Example 1: Cancel the asynchronous operation on the database
+### Example 1: Cancel the asynchronous updateslo operation on the database
 ```
 PS C:\>Stop-AzureRmSqlDatabaseActivity -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -OperationId af97005d-9243-4f8a-844e-402d1cc855f5
+OperationId     : af97005d-9243-4f8a-844e-402d1cc855f5
+ServerName      : Server01
+DatabaseName    : Database01
+State           : CANCELLED
+Operation       : UpdateLogicalDatabase
+ErrorCode       :
+ErrorMessage    :
+ErrorSeverity   :
+StartTime       : 10/15/2017 02:49:42 PM
+EndTime         : 10/15/2017 02:49:43 PM
+PercentComplete : 
+Properties      : Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseActivityModel+DatabaseState
 ```
 
-This command cancels the asynchronous operation on the database.
+This command cancels the asynchronous updateslo operation on the database.
 
 ## PARAMETERS
 
@@ -49,7 +61,9 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.```yaml
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
 Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
@@ -62,7 +76,9 @@ Accept wildcard characters: False
 ```
 
 ### -ElasticPoolName
-The name of the Azure SQL Elastic Pool.```yaml
+The name of the Azure SQL Elastic Pool.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 

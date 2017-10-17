@@ -19,6 +19,11 @@
 -->
 ## Current Release
 
+## Version 3.4.1
+* Adding support for list and cancel the asynchronous updateslo operation on the database
+	- update existing cmdlet Get-AzureRmSqlDatabaseActivity to return DB updateslo operation status.
+	- add new cmdlet Stop-AzureRmSqlDatabaseActivity for cancel the asynchronous updateslo operation on the database.
+
 ## Version 3.4.0
 * Adding support for Virtual Network Rules
 	- Adding Get-AzureRmSqlServerVirtualNetworkRule cmdlet which gets the virtual network rules by a specific rule name or a list of virtual network rules in an Azure Sql server.

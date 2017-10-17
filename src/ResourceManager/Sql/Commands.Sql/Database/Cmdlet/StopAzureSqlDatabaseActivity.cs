@@ -14,13 +14,13 @@
 
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 {
-    [Cmdlet(VerbsLifecycle.Stop, "AzureRmSqlDatabaseActivity", SupportsShouldProcess = true,
-        ConfirmImpact = ConfirmImpact.None)]
-    public class CancelAzureSqlDatabaseActivity : AzureSqlDatabaseActivityCmdletBase
+    [Cmdlet(VerbsLifecycle.Stop, "AzureRmSqlDatabaseActivity", SupportsShouldProcess = true)]
+    public class StopAzureSqlDatabaseActivity : AzureSqlDatabaseActivityCmdletBase
     {
         /// <summary>
         /// Gets database activity in an Elastic Pool
@@ -49,6 +49,22 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         protected override IEnumerable<AzureSqlDatabaseActivityModel> PersistChanges(IEnumerable<AzureSqlDatabaseActivityModel> entity)
         {
             return ModelAdapter.CancelDatabaseActivity(this.ResourceGroupName, this.ServerName, this.ElasticPoolName, this.DatabaseName, this.OperationId);
+        }
+
+        /// <summary>
+        /// Entry point for the cmdlet
+        /// </summary>
+        public override void ExecuteCmdlet()
+        {
+            if (!ShouldProcess(
+                    string.Format(CultureInfo.InvariantCulture, Properties.Resources.StopDatabaseActivityDescription, this.DatabaseName, this.ServerName),
+                    string.Format(CultureInfo.InvariantCulture, Properties.Resources.StopDatabaseActivityWarning, this.DatabaseName, this.ServerName),
+                    Properties.Resources.ShouldProcessCaption))
+            {
+                return;
+            }
+
+            base.ExecuteCmdlet();
         }
     }
 }
