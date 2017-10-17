@@ -12,13 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Profile.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.SubscriptionDefinition.Common;
 using Microsoft.Azure.Commands.SubscriptionDefinition.Models;
 using Microsoft.Azure.Management.ResourceManager;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.SubscriptionDefinition.Cmdlets
@@ -33,7 +32,7 @@ namespace Microsoft.Azure.Commands.SubscriptionDefinition.Cmdlets
         public string Name { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.BySubscription, Mandatory = false, ValueFromPipeline = true)]
-        public PSAzureSubscription Subscription { get; set; }
+        public IAzureSubscription Subscription { get; set; }
 
         public override void ExecuteCmdlet()
         {
