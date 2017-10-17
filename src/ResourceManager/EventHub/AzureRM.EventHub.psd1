@@ -72,25 +72,27 @@ NestedModules = @('.\Microsoft.Azure.Commands.EventHub.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'New-AzureRmEventHubKey', 'Get-AzureRmEventHubNamespace', 
-               'Get-AzureRmEventHubNamespaceAuthorizationRule', 
-               'Get-AzureRmEventHubNamespaceKey', 'New-AzureRmEventHubNamespace', 
-               'New-AzureRmEventHubNamespaceAuthorizationRule', 
-               'Remove-AzureRmEventHubNamespace', 
-               'Remove-AzureRmEventHubNamespaceAuthorizationRule', 
-               'Set-AzureRmEventHubNamespace', 
-               'Set-AzureRmEventHubNamespaceAuthorizationRule', 
-               'New-AzureRmEventHubNamespaceKey', 
-               'Get-AzureRmEventHubAuthorizationRule', 'Get-AzureRmEventHubKey', 
-               'Get-AzureRmEventHub', 'New-AzureRmEventHub', 
-               'New-AzureRmEventHubAuthorizationRule', 'Remove-AzureRmEventHub', 
-               'Remove-AzureRmEventHubAuthorizationRule', 'Set-AzureRmEventHub', 
-               'Set-AzureRmEventHubAuthorizationRule', 
-               'Get-AzureRmEventHubConsumerGroup', 
-               'New-AzureRmEventHubConsumerGroup', 
-               'Remove-AzureRmEventHubConsumerGroup', 
-               'Set-AzureRmEventHubConsumerGroup'
 
+CmdletsToExport = 'New-AzureRmEventHubKey', 'Get-AzureRmEventHubNamespace',
+               'Get-AzureRmEventHubNamespaceAuthorizationRule',
+               'Get-AzureRmEventHubNamespaceKey', 'New-AzureRmEventHubNamespace',
+               'New-AzureRmEventHubNamespaceAuthorizationRule',
+               'Remove-AzureRmEventHubNamespace',
+               'Remove-AzureRmEventHubNamespaceAuthorizationRule',
+               'Set-AzureRmEventHubNamespace',
+               'Set-AzureRmEventHubNamespaceAuthorizationRule',
+               'New-AzureRmEventHubNamespaceKey',
+               'Get-AzureRmEventHubAuthorizationRule', 'Get-AzureRmEventHubKey',
+               'Get-AzureRmEventHub', 'New-AzureRmEventHub',
+               'New-AzureRmEventHubAuthorizationRule', 'Remove-AzureRmEventHub',
+               'Remove-AzureRmEventHubAuthorizationRule', 'Set-AzureRmEventHub',
+               'Set-AzureRmEventHubAuthorizationRule',
+               'Get-AzureRmEventHubConsumerGroup',
+               'New-AzureRmEventHubConsumerGroup',
+               'Remove-AzureRmEventHubConsumerGroup',
+               'Set-AzureRmEventHubConsumerGroup',
+			   'New-AzureRmEventHubDRConfiguration','Get-AzureRmEventHubDRConfiguration','Remove-AzureRmEventHubDRConfiguration',
+			   'Set-AzureRmEventHubDRConfigurationBreakPairing','Set-AzureRmEventHubDRConfigurationFailOver'
 # Variables to export from this module
 # VariablesToExport = @()
 

@@ -53,6 +53,9 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
 
         protected const string ConsumerGroupVerb = "AzureRmEventHubConsumerGroup";
 
+        protected const string EventHubDRConfigurationVerb = "AzureRmEventHubDRConfiguration";
+        protected const string EventhubDRConfigurationFailoverVerb = "AzureRmEventHubDRConfigurationFailOver";
+        protected const string EventhubDRConfigurationBreakPairingVerb = "AzureRmEventHubDRConfigurationBreakPairing";
 
         //AuthorizationRules
         //protected const string EventHubAuthorizationRuleVerb = "AzureRmEventHubAuthorizationRule";
@@ -68,12 +71,14 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         protected const string EventhubInputObjectParameterSet = "EventhubInputObjectSet";
         protected const string ConsumergroupInputObjectParameterSet = "ConsumergroupInputObjectSet";
         protected const string AuthoRuleInputObjectParameterSet = "AuthoRuleInputObjectSet";
+        protected const string AliasInputObjectParameterSet = "AliasInputObjectSet";
 
         //Parameter sets for Properties
         protected const string NamespacePropertiesParameterSet = "NamespacePropertiesSet";
         protected const string EventhubPropertiesParameterSet = "EventhubPropertiesSet";
         protected const string ConsumergroupPropertiesParameterSet = "ConsumergroupPropertiesSet";
         protected const string AuthoRulePropertiesParameterSet = "AuthoRulePropertiesSet";
+        protected const string AliasPropertiesParameterSet = "AliasPropertiesSet";
 
         //Parametersets for Authorizationrules
         protected const string NamespaceParameterSet = "NamespaceParameterSet";
@@ -87,7 +92,9 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         protected const string AliasEventHubObj = "EventHubObj";
         protected const string AliasAuthorizationRuleName = "AuthorizationRuleName";
         protected const string AliasAuthRuleObj = "AuthRuleObj";
-        
+        protected const string AliasAliasName = "Alias";
+        protected const string AliasAliasObj = "AliasObj";
+
         protected struct SKU
         {
             internal const string Basic = "Basic";

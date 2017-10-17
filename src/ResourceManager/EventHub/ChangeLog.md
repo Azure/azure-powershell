@@ -18,6 +18,17 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Added below new commandlets for Geo Disaster Recovery operations. 
+	-Creating a new Alias(Disaster Recovery configuration): 
+		- New-AzureRmEventHubDRConfiguration [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String> [-PartnerNamespace] <String> [-WhatIf] [-Confirm]
+	-Retrieve Alias(Disaster Recovery configuration) : 
+		- Get-AzureRmEventHubDRConfiguration [-ResourceGroupName] <String> [-Namespace] <String> [[-Name] <String>]
+	-Disabling the Disaster Recovery and stops replicating changes from primary to secondary namespaces
+		- Set-AzureRmEventHubDRConfigurationBreakPairing [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
+	-Invoking Disaster Recovery failover and reconfigure the alias to point to the secondary namespace
+		- Set-AzureRmEventHubDRConfigurationFailOver [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
+	-Deleting an Alias(Disaster Recovery configuration)
+		- Remove-AzureRmEventHubDRConfiguration [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String> [-WhatIf] [-Confirm]
 
 ## Version 0.4.7
 
