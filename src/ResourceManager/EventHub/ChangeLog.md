@@ -31,7 +31,7 @@
 		- Remove-AzureRmEventHubDRConfiguration [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String> [-WhatIf] [-Confirm]
 
 ## Version 0.4.7
-		
+
 ## Version 0.4.6
 
 ## Version 0.4.4
