@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Management.Storage.dll-Help.xml
 ms.assetid: FDD2CE98-6C7E-4B95-BA5B-B03B6AC6EAEF
-online version: 
+online version:
 schema: 2.0.0
 ---
 
@@ -24,7 +24,7 @@ The **New-AzureRmStorageAccountKey** cmdlet regenerates a storage key for an Azu
 
 ### Example 1: Regenerate a storage key
 ```
-PS C:\>New-AzureRmStorageKey -ResourceGroupName "MyResourceGroup" -AccountName "MyStorageAccount" -KeyName "key1"
+PS C:\>New-AzureRmStorageKey -ResourceGroupName "MyResourceGroup" -Name "MyStorageAccount" -KeyName "key1"
 ```
 
 This command regenerates a storage key for the specified Storage account.
@@ -35,13 +35,13 @@ This command regenerates a storage key for the specified Storage account.
 Specifies which key to regenerate.
 The acceptable values for this parameter are:
 
-- key1 
+- key1
 - key2
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: key1, key2
 
 Required: True
@@ -72,7 +72,7 @@ Specifies the name of the resource group that contains the Storage account.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -95,5 +95,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [Get-AzureRmStorageAccountKey](./Get-AzureRmStorageAccountKey.md)
-
-

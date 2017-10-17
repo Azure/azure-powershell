@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 4.4.1
+
+## Version 4.4.0
 * Add ManagedApplication cmdlets
     - New-AzureRmManagedApplication cmdlet to create a managed application
     - Get-AzureRmManagedApplication cmdlet to list all managed applications under a subscription or to get a specific managed application
