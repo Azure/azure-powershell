@@ -14,8 +14,8 @@ Removes a public IP address.
 ## SYNTAX
 
 ```
-Remove-AzureRmPublicIpAddress -Name <String> -ResourceGroupName <String> [-Force] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzureRmPublicIpAddress -Name <String> -ResourceGroupName <String> [-Force] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,6 +31,21 @@ Remove-AzureRmPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName
 This command removes the public IP address resource named $publicIpName in the resource group $rgName.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Force
 Forces the command to run without asking for user confirmation.

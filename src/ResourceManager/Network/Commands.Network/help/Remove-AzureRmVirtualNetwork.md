@@ -14,8 +14,8 @@ Removes a virtual network.
 ## SYNTAX
 
 ```
-Remove-AzureRmVirtualNetwork -Name <String> -ResourceGroupName <String> [-Force] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzureRmVirtualNetwork -Name <String> -ResourceGroupName <String> [-Force] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,6 +40,21 @@ Remove-AzureRmVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResou
 This example creates a virtual network in a resource group and then immediately deletes it. To suppress the prompt when deleting the virtual network, use the -Force flag.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Force
 Forces the command to run without asking for user confirmation.
