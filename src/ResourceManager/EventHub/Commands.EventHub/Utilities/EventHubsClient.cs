@@ -323,7 +323,6 @@ namespace Microsoft.Azure.Commands.Eventhub
                 Parameter1.PartnerNamespace = parameter.PartnerNamespace;
 
             var response = Client.DisasterRecoveryConfigs.CreateOrUpdate(resourceGroupName, namespaceName, alias, Parameter1);
-            Thread.Sleep(TimeSpan.FromSeconds(5));
             
             return new EventHubDRConfigurationAttributes(response);
         }
@@ -337,15 +336,12 @@ namespace Microsoft.Azure.Commands.Eventhub
         public void SetEventHubDRConfigurationBreakPairing(string resourceGroupName, string namespaceName, string alias)
         {
             Client.DisasterRecoveryConfigs.BreakPairing(resourceGroupName, namespaceName, alias);
-            Thread.Sleep(TimeSpan.FromSeconds(5));            
         }
 
         public void SetEventHubDRConfigurationFailOver(string resourceGroupName, string namespaceName, string alias)
         {
             Client.DisasterRecoveryConfigs.FailOver(resourceGroupName, namespaceName, alias);
-            Thread.Sleep(TimeSpan.FromSeconds(5));            
         }
-
 
         #endregion
 

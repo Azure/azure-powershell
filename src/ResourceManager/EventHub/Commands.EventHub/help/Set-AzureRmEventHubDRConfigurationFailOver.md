@@ -5,39 +5,54 @@ online version:
 schema: 2.0.0
 ---
 
-# Remove-AzureRmEventHubDRConfigurations
+# Set-AzureRmEventHubDRConfigurationFailOver
 
 ## SYNOPSIS
-Deletes an Alias(Disaster Recovery configuration)
+Invokes GEO DR failover and reconfigure the alias to point to the secondary namespace
 
 ## SYNTAX
 
 ```
-Remove-AzureRmEventHubDRConfigurations [-ResourceGroupName] <String> [-Namespace] <String>
- [-EventHubName] <String> [-WhatIf] [-Confirm]
+Set-AzureRmEventHubDRConfigurationFailOver [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmEventHubDRConfigurations** cmdlet deletes an Alias(Disaster Recovery configuration)
+The **Set-AzureRmEventHubDRConfigurationFailOver** cmdlet envokes GEO DR failover and reconfigure the alias to point to the secondary namespace
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\>Remove-AzureRmEventHubDRConfigurations -ResourceGroupName "SampleResourceGroup" -Namespace "SampleNamespace_Secondary" -Name "SampleDRCongifName"
+PS C:\>Set-AzureRmEventHubDRConfigurationFailOver -ResourceGroupName "SampleResourceGroup" -Namespace "SampleNamespace_Secondary" -Name "SampleDRCongifName"
 ```
 
-Deletes an Alias(Disaster Recovery configuration)
+Invokes the Failover over alias "SampleDRCongifName", reconfigures and point to Secondary namespace "SampleNamespace_Secondary"
 
 ## PARAMETERS
 
-### -EventHubName
-EventHub Name.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+DR Configuration Name.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: Alias
 
 Required: True
 Position: 2
@@ -47,12 +62,12 @@ Accept wildcard characters: False
 ```
 
 ### -Namespace
-Namespace Name.
+Namespace Name - Secondary Namespace
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: NamespaceName
 
 Required: True
 Position: 1
@@ -114,7 +129,8 @@ Accept wildcard characters: False
 
 ## OUTPUTS
 
-### System.Object
+### System.Void
+
 
 ## NOTES
 

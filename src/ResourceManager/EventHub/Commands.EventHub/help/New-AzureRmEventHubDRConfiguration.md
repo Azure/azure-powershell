@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# New-AzureRmEventHubDRConfigurations
+# New-AzureRmEventHubDRConfiguration
 
 ## SYNOPSIS
 Creates an new Alias(Disaster Recovery configuration)
@@ -13,23 +13,45 @@ Creates an new Alias(Disaster Recovery configuration)
 ## SYNTAX
 
 ```
-New-AzureRmEventHubDRConfigurations [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
- [-PartnerNamespace] <String> [-WhatIf] [-Confirm]
+New-AzureRmEventHubDRConfiguration [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
+ [-PartnerNamespace] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmEventHubDRConfigurations** cmdlet Creates a new Alias(Disaster Recovery configuration)
+The **New-AzureRmEventHubDRConfiguration** cmdlet Creates a new Alias(Disaster Recovery configuration)
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> New-AzureRmEventHubDRConfigurations -ResourceGroupName "SampleResourceGroup" -Namespace "SampleNamespace_Primary" -Name "SampleDRCongifName" -PartnerNamespace "SampleNamespace_Secondary"
+PS C:\> New-AzureRmEventHubDRConfiguration -ResourceGroupName "SampleResourceGroup" -Namespace "SampleNamespace_Primary" -Name "SampleDRCongifName" -PartnerNamespace "SampleNamespace_Secondary"
+
+Name              : SampleDRCongifName
+Id                : /subscriptions/{SubscriptionId}/resourceGroups/SampleResourceGroup/providers/Microsoft.EventHub/namespaces/SampleNamespace_Primary/disasterRecoveryConfigs/SampleDRCongifName
+Type              : Microsoft.EventHub/Namespaces/disasterrecoveryconfigs
+ProvisioningState : Accepted
+PartnerNamespace  : SampleNamespace_Secondary
+Role              : Primary
 ```
 
 Creates an alias "SampleDRCongifName" with primary namespace "SampleNamespace_Primary" with secondary namespace "SampleNamespace_Secondary"
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 DR Configuration Name.
@@ -52,7 +74,7 @@ Namespace Name.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: NamespaceName
 
 Required: True
 Position: 1
@@ -67,7 +89,7 @@ DR Configuration PartnerNamespace
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: Alias
 
 Required: True
 Position: 3
@@ -129,12 +151,7 @@ Accept wildcard characters: False
 
 ## OUTPUTS
 
-Name              : SampleDRCongifName
-Id                : /subscriptions/{SubscriptionId}/resourceGroups/SampleResourceGroup/providers/Microsoft.EventHub/namespaces/SampleNamespace_Primary/disasterRecoveryConfigs/SampleDRCongifName
-Type              : Microsoft.EventHub/Namespaces/disasterrecoveryconfigs
-ProvisioningState : Accepted
-PartnerNamespace  : SampleNamespace_Secondary
-Role              : Primary
+### Microsoft.Azure.Commands.EventHub.Models.EventHubDRConfigurationAttributes
 
 
 ## NOTES

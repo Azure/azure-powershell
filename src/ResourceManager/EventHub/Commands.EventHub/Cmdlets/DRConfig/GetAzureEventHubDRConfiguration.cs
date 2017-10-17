@@ -20,7 +20,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
 {
     /// <summary>
-    /// 'Get-AzureEventHubDRConfigurations' CmdletRetrieves Alias(Disaster Recovery configuration) for primary or secondary namespace    
+    /// 'Get-AzureEventHubDRConfiguration' CmdletRetrieves Alias(Disaster Recovery configuration) for primary or secondary namespace    
     /// </summary>
     [Cmdlet(VerbsCommon.Get, EventHubDRConfigurationVerb), OutputType(typeof(List<EventHubDRConfigurationAttributes>))]
     public class GetEventHubDRConfiguration : AzureEventHubsCmdletBase

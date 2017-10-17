@@ -19,7 +19,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
 {
     /// <summary>
-    /// 'New-AzureRmEventHubDRConfigurations' Cmdlet Creates an new Alias(Disaster Recovery configuration)
+    /// 'New-AzureRmEventHubDRConfiguration' Cmdlet Creates an new Alias(Disaster Recovery configuration)
     /// </summary>
     [Cmdlet(VerbsCommon.New, EventHubDRConfigurationVerb, SupportsShouldProcess = true), OutputType(typeof(EventHubDRConfigurationAttributes))]
     public class NewAzureRmEventHubDRConfiguration : AzureEventHubsCmdletBase
@@ -56,19 +56,12 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
 
         public override void ExecuteCmdlet()
         {
-            EventHubDRConfigurationAttributes drConfiguration = new EventHubDRConfigurationAttributes();
+            EventHubDRConfigurationAttributes drConfiguration = new EventHubDRConfigurationAttributes() { PartnerNamespace = PartnerNamespace};
             
-            if (!string.IsNullOrEmpty(PartnerNamespace))
-                drConfiguration.PartnerNamespace = PartnerNamespace;
-
-            if (!string.IsNullOrEmpty(Name))
-                drConfiguration.Name = Name;
-
-            if (ShouldProcess(target: drConfiguration.Name, action:string.Format("Creating new Alias :{0} under NameSpace:{1} ", drConfiguration.Name, Namespace)))
+            if (ShouldProcess(target: Name, action:string.Format("Creating new Alias :{0} under NameSpace:{1} ", Name, Namespace)))
             {
-                WriteObject(Client.CreateEventHubDRConfiguration(ResourceGroupName, Namespace, drConfiguration.Name, drConfiguration));
-            }
-                        
+                WriteObject(Client.CreateEventHubDRConfiguration(ResourceGroupName, Namespace, Name, drConfiguration));
+            }                        
         }
     }
 }

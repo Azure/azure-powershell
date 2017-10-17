@@ -20,9 +20,9 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
 {
     /// <summary>
-    /// 'New-AzureRmEventHubDRConfigurationsBreakPairing' Cmdlet disables the Disaster Recovery and stops replicating changes from primary to secondary namespaces
+    /// 'Set-AzureRmEventHubDRConfigurationBreakPairing' Cmdlet disables the Disaster Recovery and stops replicating changes from primary to secondary namespaces
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, EventhubDRConfigurationBreakPairingVerb)]
+    [Cmdlet(VerbsCommon.Set, EventhubDRConfigurationBreakPairingVerb, SupportsShouldProcess = true), OutputType(typeof(void))]
     public class SetAzureEventHubDRConfigurationBreakPairing : AzureEventHubsCmdletBase
     {
         [Parameter(Mandatory = true,
@@ -51,8 +51,11 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
         public override void ExecuteCmdlet()
         {
             //Set Break Pairing
-            Client.SetEventHubDRConfigurationBreakPairing(ResourceGroupName, Namespace, Name);
-            
+            if (ShouldProcess(target: Name, action: string.Format(Resources.DRBreakPairing, Name, Namespace)))
+            {
+                Client.SetEventHubDRConfigurationBreakPairing(ResourceGroupName, Namespace, Name);
+            }
+
         }
     }
 }

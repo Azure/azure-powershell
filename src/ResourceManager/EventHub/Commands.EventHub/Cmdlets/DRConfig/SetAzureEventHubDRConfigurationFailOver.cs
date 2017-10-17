@@ -20,9 +20,9 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
 {
     /// <summary>
-    /// 'New-AzureRmEventHubDRConfigurationsFailOver' Cmdlet envokes GEO DR failover and reconfigure the alias to point to the secondary namespace
+    /// 'Set-AzureRmEventHubDRConfigurationFailOver' Cmdlet envokes Geo DR failover and reconfigure the alias to point to the secondary namespace
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, EventhubDRConfigurationFailoverVerb)]
+    [Cmdlet(VerbsCommon.Set, EventhubDRConfigurationFailoverVerb, SupportsShouldProcess = true), OutputType(typeof(void))]
     public class SetAzureEventHubDRConfigurationFailOver : AzureEventHubsCmdletBase
     {
         [Parameter(Mandatory = true,
@@ -51,7 +51,10 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
         public override void ExecuteCmdlet()
         {
             //Set FailOver
-            Client.SetEventHubDRConfigurationFailOver(ResourceGroupName, Namespace, Name);
+            if (ShouldProcess(target: Name, action: string.Format(Resources.DRFailOver, Name, Namespace)))
+            {
+                Client.SetEventHubDRConfigurationFailOver(ResourceGroupName, Namespace, Name);
+            }
         }
     }
 }
