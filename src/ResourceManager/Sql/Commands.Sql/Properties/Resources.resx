@@ -384,4 +384,10 @@
   <data name="OperationIdRequired" xml:space="preserve">
     <value>OperationId is required for this operation</value>
   </data>
+  <data name="StopDatabaseActivityDescription" xml:space="preserve">
+    <value>Cancelling updateslo operation for database '{0}' under server '{1}'.</value>
+  </data>
+  <data name="StopDatabaseActivityWarning" xml:space="preserve">
+    <value>Are you sure you want to cancel updateslo operation for database '{0}' under server '{1}'?</value>
+  </data>
 </root>

@@ -817,6 +817,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancelling updateslo operation for database &apos;{0}&apos; under server &apos;{1}&apos;..
+        /// </summary>
+        internal static string StopDatabaseActivityDescription {
+            get {
+                return ResourceManager.GetString("StopDatabaseActivityDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to cancel updateslo operation for database &apos;{0}&apos; under server &apos;{1}&apos;?.
+        /// </summary>
+        internal static string StopDatabaseActivityWarning {
+            get {
+                return ResourceManager.GetString("StopDatabaseActivityWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot find a storage account with the name &apos;{0}&apos;. It either does not exist, associated with a different subscription or you do not have the appropriate credentials to access it..
         /// </summary>
         internal static string StorageAccountNotFound {
