@@ -15,6 +15,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Management.Automation;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Cmdlet
 {
@@ -58,13 +59,12 @@ namespace Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Cmdlet
         /// Deletes the virtual network rule.
         /// </summary>
         /// <param name="entity">The virtual network rule being deleted</param>
-        /// <returns>Empty list</returns>
+        /// <returns>The input model</returns>
         protected override IEnumerable<Model.AzureSqlServerVirtualNetworkRuleModel> PersistChanges(IEnumerable<Model.AzureSqlServerVirtualNetworkRuleModel> entity)
         {
             ModelAdapter.RemoveVirtualNetworkRule(this.ResourceGroupName, this.ServerName, this.VirtualNetworkRuleName);
-
-            // The rule no longer exists, so return an empty List so that the previous state of the rule is not output
-            return new List<Model.AzureSqlServerVirtualNetworkRuleModel>();
+            entity.First().State = "Deleted";
+            return entity;
         }
     }
 }
