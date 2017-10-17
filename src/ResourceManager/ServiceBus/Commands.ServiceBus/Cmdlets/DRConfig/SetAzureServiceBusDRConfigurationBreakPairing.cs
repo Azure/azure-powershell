@@ -20,7 +20,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
 {
     /// <summary>
-    /// 'Set-AzureRmServicebusDRConfigurationsBreakPairing' Cmdlet disables the Disaster Recovery and stops replicating changes from primary to secondary namespace
+    /// 'Set-AzureRmServicebusDRConfigurationBreakPairing' Cmdlet disables the Disaster Recovery and stops replicating changes from primary to secondary namespace
     /// </summary>
     [Cmdlet(VerbsCommon.Set, ServicebusDRConfigurationBreakPairingVerb, SupportsShouldProcess = true), OutputType(typeof(void))]
     public class SetAzureServiceBusDRConfigurationBreakPairing : AzureServiceBusCmdletBase

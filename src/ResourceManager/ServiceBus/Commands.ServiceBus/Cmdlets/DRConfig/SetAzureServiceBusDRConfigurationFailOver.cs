@@ -20,7 +20,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
 {
     /// <summary>
-    /// 'Set-AzureRmServicebusDRConfigurationsFailOver' Cmdlet invokes GEO DR failover and reconfigure the alias to point to the secondary namespace
+    /// 'Set-AzureRmServicebusDRConfigurationFailOver' Cmdlet invokes GEO DR failover and reconfigure the alias to point to the secondary namespace
     /// </summary>
     [Cmdlet(VerbsCommon.Set, ServicebusDRConfigurationFailoverVerb, SupportsShouldProcess = true), OutputType(typeof(void))]
     public class SetAzureServiceBusDRConfigurationFailOver : AzureServiceBusCmdletBase

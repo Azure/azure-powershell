@@ -40,6 +40,24 @@ function Get-NamespaceName
 	
 }
 
+<#
+.SYNOPSIS
+Check the Provisioning state of the created alias and wait till it get succeded 
+#>
+function WaitforStatetoBeSucceded 
+{
+	param([string]$resourceGroupName,[string]$namespaceName,[string]$drConfigName)
+	
+	$createdDRConfig = Get-AzureRmServiceBusDRConfiguration -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -Name $drConfigName
+
+	while($createdDRConfig.ProvisioningState -ne "Succeeded")
+	{
+		Start-Sleep -s 10
+		$createdDRConfig = Get-AzureRmServiceBusDRConfiguration -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -Name $drConfigName
+	}
+
+	return $createdDRConfig
+}
 
 <#
 .SYNOPSIS
@@ -88,41 +106,56 @@ function ServiceBusDRConfigurationTests
 
 	# get the created ServiceBus Namespace  2
 	Write-Debug " Get the created namespace within the resource group"
-	$createdNamespace2 = Get-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName2
-	
+	$createdNamespace2 = Get-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName2	
 	Assert-True {$createdNamespace2.Name -eq $namespaceName2} "Namespace created earlier is not found."	
 
 	# Create a DRConfiguration
 	Write-Debug " Create new DRConfiguration"
-	$result = New-AzureRmServiceBusDRConfigurations -ResourceGroup $resourceGroupName -NamespaceName $namespaceName1 -Name $drConfigName -PartnerNamespace $namespaceName2
+	$result = New-AzureRmServiceBusDRConfiguration -ResourceGroup $resourceGroupName -NamespaceName $namespaceName1 -Name $drConfigName -PartnerNamespace $namespaceName2
+	Assert-True{$result.Role -eq "Primary"}
 		
 	Write-Debug " Get the created DRConfiguration"
-	$createdDRConfig = Get-AzureRmServiceBusDRConfigurations -ResourceGroup $resourceGroupName -NamespaceName $namespaceName1 -Name $drConfigName
+	$createdDRConfig = Get-AzureRmServiceBusDRConfiguration -ResourceGroup $resourceGroupName -NamespaceName $namespaceName1 -Name $drConfigName
 
 	# Assert
 	Assert-True {$createdDRConfig.PartnerNamespace -eq $namespaceName2} "DRConfig created earlier is not found."
 
 	# Get the Created DRConfiguration
 	Write-Debug " Get all the created DRConfiguration"
-	$createdServiceBusDRConfigList = Get-AzureRmServiceBusDRConfigurations -ResourceGroup $resourceGroupName -NamespaceName $namespaceName1
+	$createdServiceBusDRConfigList = Get-AzureRmServiceBusDRConfiguration -ResourceGroup $resourceGroupName -NamespaceName $namespaceName1
 
 	# Assert
 	Assert-True {$createdServiceBusDRConfigList.Count -eq 1} "ServiceBus DRConfig created earlier is not found in list"
 
+	# Wait till the Alias Provisioning  state changes to succeeded
+	WaitforStatetoBeSucceded $resourceGroupName $namespaceName1 $drConfigName
+
 	# BreakPairing on Primary Namespace
 	Write-Debug "BreakPairing on Primary Namespace"
-	Set-AzureRmServiceBusDRConfigurationsBreakPairing -ResourceGroup $resourceGroupName -NamespaceName $namespaceName1 -Name $drConfigName
+	Set-AzureRmServiceBusDRConfigurationBreakPairing -ResourceGroup $resourceGroupName -NamespaceName $namespaceName1 -Name $drConfigName
+	
+	# Wait till the Alias Provisioning  state changes to succeeded
+	$breakPairingDRConfig = WaitforStatetoBeSucceded $resourceGroupName $namespaceName1 $drConfigName
+	Assert-True{$breakPairingDRConfig.Role -eq "PrimaryNotReplicating"}
 
 	# Create a DRConfiguration
 	Write-Debug " Create new DRConfiguration"
-	$DRresult = New-AzureRmServiceBusDRConfigurations -ResourceGroup $resourceGroupName -NamespaceName $namespaceName1 -Name $drConfigName -PartnerNamespace $namespaceName2
+	$DRresult = New-AzureRmServiceBusDRConfiguration -ResourceGroup $resourceGroupName -NamespaceName $namespaceName1 -Name $drConfigName -PartnerNamespace $namespaceName2
+	
+	# Wait till the Alias Provisioning  state changes to succeeded
+	$UpdateDRConfig = WaitforStatetoBeSucceded $resourceGroupName $namespaceName1 $drConfigName	
+	Assert-True{$UpdateDRConfig.Role -eq "Primary"}
 
 	# FailOver on Secondary Namespace
 	Write-Debug "FailOver on Secondary Namespace"
-	Set-AzureRmServiceBusDRConfigurationsFailOver -ResourceGroup $resourceGroupName -NamespaceName $namespaceName2 -Name $drConfigName
-		
+	Set-AzureRmServiceBusDRConfigurationFailOver -ResourceGroup $resourceGroupName -NamespaceName $namespaceName2 -Name $drConfigName
+
+	# Wait till the Alias Provisioning  state changes to succeeded
+	$failoverDrConfiguration = WaitforStatetoBeSucceded $resourceGroupName $namespaceName2 $drConfigName
+	Assert-True{$failoverDrConfiguration.Role -eq "PrimaryNotReplicating"}
+	
 	# Remove created alias
 
-	Remove-AzureRmServiceBusDRConfigurations -ResourceGroup $resourceGroupName -NamespaceName $namespaceName2 -Name $drConfigName
+	Remove-AzureRmServiceBusDRConfiguration -ResourceGroup $resourceGroupName -NamespaceName $namespaceName2 -Name $drConfigName
 		
 }

@@ -74,6 +74,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         protected const string TopicInputObjectParameterSet = "TopicInputObjectSet";
         protected const string SubscriptionInputObjectParameterSet = "SubscriptionInputObjectSet";
         protected const string AuthoRuleInputObjectParameterSet = "AuthoRuleInputObjectSet";
+        protected const string AliasInputObjectParameterSet = "AliasInputObjectSet";
 
         //Parameter sets for Properties
         protected const string NamespacePropertiesParameterSet = "NamespacePropertiesSet";
@@ -81,6 +82,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         protected const string TopicPropertiesParameterSet = "TopicPropertiesSet";
         protected const string SubscriptionPropertiesParameterSet = "SubscriptionPropertiesSet";
         protected const string AuthoRulePropertiesParameterSet = "AuthoRulePropertiesSet";
+        protected const string AliasPropertiesParameterSet = "AliasPropertiesSet";
 
         //Alias - used in Cmdlets
         protected const string AliasResourceGroupname = "ResourceGroupName";
@@ -95,14 +97,15 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         protected const string AliasSubscriptionName = "SubscriptionName";
         protected const string AliasSubscriptionObj = "SubscriptionObj";
         protected const string AliasAliasName = "Alias";
+        protected const string AliasAliasObj = "AliasObj";
 
         protected const string ServicebusSubscriptionVerb = "AzureRmServiceBusSubscription";
 
         protected const string ServicebusRuleVerb = "AzureRmServiceBusRule";
 
-        protected const string ServicebusDRConfigurationVerb = "AzureRmServiceBusDRConfigurations";
-        protected const string ServicebusDRConfigurationFailoverVerb = "AzureRmServiceBusDRConfigurationsFailOver";
-        protected const string ServicebusDRConfigurationBreakPairingVerb = "AzureRmServiceBusDRConfigurationsBreakPairing";
+        protected const string ServicebusDRConfigurationVerb = "AzureRmServiceBusDRConfiguration";
+        protected const string ServicebusDRConfigurationFailoverVerb = "AzureRmServiceBusDRConfigurationFailOver";
+        protected const string ServicebusDRConfigurationBreakPairingVerb = "AzureRmServiceBusDRConfigurationBreakPairing";
 
         protected struct SKU
         {

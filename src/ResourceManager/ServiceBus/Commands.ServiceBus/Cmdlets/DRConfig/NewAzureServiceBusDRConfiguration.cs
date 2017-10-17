@@ -19,7 +19,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
 {
     /// <summary>
-    /// 'New-AzureRmServicebusDRConfigurations' Cmdlet Creates an new Alias(Disaster Recovery configuration)
+    /// 'New-AzureRmServicebusDRConfiguration' Cmdlet Creates an new Alias(Disaster Recovery configuration)
     /// </summary>
     [Cmdlet(VerbsCommon.New, ServicebusDRConfigurationVerb, SupportsShouldProcess = true), OutputType(typeof(ServiceBusDRConfigurationAttributes))]
     public class NewAzureRmEventHubDRConfiguration : AzureServiceBusCmdletBase

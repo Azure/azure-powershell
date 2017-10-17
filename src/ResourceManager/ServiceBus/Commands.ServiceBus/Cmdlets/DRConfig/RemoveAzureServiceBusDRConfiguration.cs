@@ -13,12 +13,13 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
+using Microsoft.Azure.Commands.ServiceBus.Models;
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
 {
     /// <summary>
-    /// 'Remove-AzureRmServicebusDRConfigurations' Cmdlet Deletes an Alias(Disaster Recovery configuration)
+    /// 'Remove-AzureRmServicebusDRConfiguration' Cmdlet Deletes an Alias(Disaster Recovery configuration)
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, ServicebusDRConfigurationVerb, SupportsShouldProcess = true), OutputType(typeof(void))]
+    [Cmdlet(VerbsCommon.Remove, ServicebusDRConfigurationVerb, SupportsShouldProcess = true, DefaultParameterSetName = AliasPropertiesParameterSet), OutputType(typeof(bool))]
     public class RemoveServicBusDRConfiguration : AzureServiceBusCmdletBase
     {
         [Parameter(Mandatory = true,
@@ -29,28 +30,60 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
          public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true,
+            ParameterSetName = AliasPropertiesParameterSet,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "Namespace Name.")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasNamespaceName)]
+        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true, ParameterSetName = AliasInputObjectParameterSet, HelpMessage = "Namespace Name")]
         public string Namespace { get; set; }
 
         [Parameter(Mandatory = true,
+            ParameterSetName = AliasPropertiesParameterSet,
             ValueFromPipelineByPropertyName = true,
             Position = 2,
-            HelpMessage = "Alias (GeoDr)")]
+            HelpMessage = "Alias (GeoDR)")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasAliasName)]
+        [Parameter(Mandatory = false, Position = 2, ValueFromPipelineByPropertyName = true, ParameterSetName = AliasInputObjectParameterSet, HelpMessage = "Alias (GeoDr)")]
         public string Name { get; set; }
+
+        [Parameter(Mandatory = true,
+            ParameterSetName = AliasInputObjectParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            Position = 3,
+            HelpMessage = "Alias Configuration object.")]
+        [Alias(AliasAliasObj)]
+        [ValidateNotNullOrEmpty]
+        [Parameter(Mandatory = false,
+            ParameterSetName = AliasPropertiesParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            Position = 3,
+            HelpMessage = "Alias Configuration object.")]
+        public ServiceBusDRConfigurationAttributes InputObject { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            // delete a EventHub 
-            if(ShouldProcess(target:Name, action:string.Format(Resources.DRRemoveAlias,Name,Namespace)))
+            if(ParameterSetName == AliasInputObjectParameterSet)
             {
-                WriteObject(Client.DeleteServiceBusDRConfiguration(ResourceGroupName, Namespace, Name));
-            }            
+                // delete an Alias 
+                if (ShouldProcess(target: InputObject.Name, action: string.Format(Resources.DRRemoveAlias, InputObject.Name, Namespace)))
+                {
+                    WriteObject(Client.DeleteServiceBusDRConfiguration(ResourceGroupName, Namespace, InputObject.Name));
+                }
+            }
+
+            if (ParameterSetName == AliasPropertiesParameterSet)
+            {
+                // delete an Alias 
+                if (ShouldProcess(target: Name, action: string.Format(Resources.DRRemoveAlias, Name, Namespace)))
+                {
+                    WriteObject(Client.DeleteServiceBusDRConfiguration(ResourceGroupName, Namespace, Name));
+                }
+
+            }
+                       
         }
     }
 }
