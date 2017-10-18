@@ -43,22 +43,22 @@
 The following cmdlets were affected this release:
 	
 	**New-AzureRmEventHubNamespaceAuthorizationRule**
-	- 'New-AzureRmEventHubNamespaceAuthorizationRule' cmdlet depricated in this build. Please use the New cmdlet 'New-AzureRmEventHubAuthorizationRule'
+	- 'New-AzureRmEventHubNamespaceAuthorizationRule' cmdlet removed in this build. Please use the New cmdlet 'New-AzureRmEventHubAuthorizationRule'
 	
 	**Get-AzureRmEventHubNamespaceAuthorizationRule**
-	- 'Get-AzureRmEventHubNamespaceAuthorizationRule' cmdlet depricated in this build. Please use the New cmdlet 'Get-AzureRmEventHubAuthorizationRule'
+	- 'Get-AzureRmEventHubNamespaceAuthorizationRule' cmdlet removed in this build. Please use the New cmdlet 'Get-AzureRmEventHubAuthorizationRule'
 	
 	**Set-AzureRmEventHubNamespaceAuthorizationRule**
-	- 'Set-AzureRmEventHubNamespaceAuthorizationRule' cmdlet depricated in this build. Please use the New cmdlet 'Set-AzureRmEventHubAuthorizationRule'
+	- 'Set-AzureRmEventHubNamespaceAuthorizationRule' cmdlet removed in this build. Please use the New cmdlet 'Set-AzureRmEventHubAuthorizationRule'
 	
 	**Remove-AzureRmEventHubNamespaceAuthorizationRule**
-	- 'Remove-AzureRmEventHubNamespaceAuthorizationRule' cmdlet depricated in this build. Please use the New cmdlet 'Remove-AzureRmEventHubAuthorizationRule'
+	- 'Remove-AzureRmEventHubNamespaceAuthorizationRule' cmdlet removed in this build. Please use the New cmdlet 'Remove-AzureRmEventHubAuthorizationRule'
 	
 	**New-AzureRmEventHubNamespaceKey**
-	- 'New-AzureRmEventHubNamespaceKey' cmdlet depricated in this build. Please use the New cmdlet 'New-AzureRmEventHubKey'
+	- 'New-AzureRmEventHubNamespaceKey' cmdlet removed in this build. Please use the New cmdlet 'New-AzureRmEventHubKey'
 	
 	**Get-AzureRmEventHubNamespaceKey**
-	- 'Get-AzureRmEventHubNamespaceKey' cmdlet depricated in this build. Please use the New cmdlet 'Get-AzureRmEventHubKey'
+	- 'Get-AzureRmEventHubNamespaceKey' cmdlet removed in this build. Please use the New cmdlet 'Get-AzureRmEventHubKey'
 		
     **New-AzureRmEventHubNamespace**
 	
