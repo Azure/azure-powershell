@@ -61,6 +61,7 @@ The first two commands get a virtual network called myvnet and a subnet called m
     configuration ipconfig1 to 10.0.0.11. Finally, the last command updates the network interface ensuring the changes
     have been made successfully.
     
+
 ### 2: Associating an IP configuration with an applicaiton security groupp
 ```
 $vnet = Get-AzureRmVirtualNetwork -Name myvnet -ResourceGroupName myrg

@@ -13,14 +13,16 @@ Gets route tables.
 
 ## SYNTAX
 
-### NoExpand
-```
-Get-AzureRmRouteTable [-Name <String>] [-ResourceGroupName <String>] [<CommonParameters>]
-```
-
 ### Expand
 ```
-Get-AzureRmRouteTable -Name <String> -ResourceGroupName <String> -ExpandResource <String> [<CommonParameters>]
+Get-AzureRmRouteTable -ResourceGroupName <String> -Name <String> -ExpandResource <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### NoExpand
+```
+Get-AzureRmRouteTable [-ResourceGroupName <String>] [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -59,6 +61,21 @@ This command gets the route table named RouteTable01 in the resource group named
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ExpandResource
 ```yaml
 Type: String
@@ -77,10 +94,10 @@ Specifies the name of the route table that this cmdlet gets.
 
 ```yaml
 Type: String
-Parameter Sets: NoExpand
+Parameter Sets: Expand
 Aliases: ResourceName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -89,10 +106,10 @@ Accept wildcard characters: False
 
 ```yaml
 Type: String
-Parameter Sets: Expand
+Parameter Sets: NoExpand
 Aliases: ResourceName
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -104,10 +121,10 @@ Specifies the name of the resource group that contains the route tables that thi
 
 ```yaml
 Type: String
-Parameter Sets: NoExpand
+Parameter Sets: Expand
 Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -116,10 +133,10 @@ Accept wildcard characters: False
 
 ```yaml
 Type: String
-Parameter Sets: Expand
+Parameter Sets: NoExpand
 Aliases: 
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
