@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
+Module Name: AzureRM.DataLakeStore
 ms.assetid: B008028D-27FC-4469-BE71-54F7218C068B
 online version: 
 schema: 2.0.0
@@ -111,7 +112,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Object
-
 Parameter 'Value' accepts value of type 'Object' from the pipeline
 
 ## OUTPUTS

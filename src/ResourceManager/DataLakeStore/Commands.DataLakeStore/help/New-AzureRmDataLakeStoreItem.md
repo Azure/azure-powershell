@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
+Module Name: AzureRM.DataLakeStore
 ms.assetid: A8222AB8-0003-4AC6-8114-294ABE8054CE
 online version: 
 schema: 2.0.0
@@ -14,7 +15,8 @@ Creates a new file or folder in Data Lake Store.
 
 ```
 New-AzureRmDataLakeStoreItem [-Account] <String> [-Path] <DataLakeStorePathInstance> [[-Value] <Object>]
- [[-Encoding] <FileSystemCmdletProviderEncoding>] [-Folder] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-Encoding] <FileSystemCmdletProviderEncoding>] [-Folder] [-Force] [[-IfFileExists] <FileExists>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -107,6 +109,20 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -IfFileExists
+If the file or folder exists, it should be overwritten. If Overwrite is passed then item is created without promptIf fail is passed then it fails without any prompt```yaml
+Type: FileExists
+Parameter Sets: (All)
+Aliases: 
+Accepted values: Overwrite, Fail
+
+Required: False
+Position: 5
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Path
 Specifies the Data Lake Store path of the item to create, starting with the root directory (/).
 
@@ -174,7 +190,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Object
-
 Parameter 'Value' accepts value of type 'Object' from the pipeline
 
 ## OUTPUTS

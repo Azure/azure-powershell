@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
+Module Name: AzureRM.DataLakeStore
 ms.assetid: 6ACE045E-67AD-40FE-86E4-450AF522F174
 online version: 
 schema: 2.0.0
