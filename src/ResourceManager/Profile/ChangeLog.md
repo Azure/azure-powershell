@@ -29,6 +29,10 @@
     - Use this cmdlet to remove the current default resource group
     - ```Clear-AzureRmDefault -ResourceGroup```
 
+## Version 3.4.1
+* LocationCompleterAttribute added and available for cmdlets which use the -Location parameter
+    - Use this feature by adding LocationCompleter(string[] validResourceTypes) onto the Location parameter
+
 ## Version 3.4.0
 * Start-Job Support for AzureRm cmdlets. 
     * All AzureRmCmdlets add -AzureRmContext parameter, which can accept a context (output of a Context cmdlet). 
