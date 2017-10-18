@@ -68,6 +68,20 @@ namespace Azure.Experiments.Tests
         }
 
         [Fact]
+        public async Task VmObject()
+        {
+            var c = Credentials.Get();
+            var rg = new ResourceGroupObject("MyVM");
+            var vn = new VirtualNetworkObject("MyVM", rg, "192.168.0.0/16");
+            var subnet = new SubnetObject("MyVM", vn, "192.168.1.0/24");
+            var pia = new PublicIpAddressObject("MyVM", rg);
+            var nsg = new NetworkSecurityGroupObject("MyVM", rg);
+            var ni = new NetworkInterfaceObject("MyVM", rg, subnet, pia, nsg);
+            var vm = new VmObject("MyVM", rg, ni, "MyVMUser", "@3as54dDd");
+            var info = await vm.GetOrCreateAsync(c);
+        }
+
+        [Fact]
         public async Task Test1()
         {
             var c = Credentials.Get();
