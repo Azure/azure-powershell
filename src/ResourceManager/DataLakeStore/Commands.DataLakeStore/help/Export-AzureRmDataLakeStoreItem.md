@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
+Module Name: AzureRM.DataLakeStore
 ms.assetid: B10B1F5D-5566-4129-9D42-05A6D3B72C9E
 online version: 
 schema: 2.0.0
@@ -148,8 +149,7 @@ Accept wildcard characters: False
 ```
 
 ### -PerFileThreadCount
-Specifies the maximum number of threads to use per file.
-The default value is ten (10).
+DEPRECATED. Please use ConcurrentFileCount parameter.
 
 ```yaml
 Type: Int32
@@ -179,8 +179,7 @@ Accept wildcard characters: False
 ```
 
 ### -Resume
-Indicates that the file or files being copied are a continuation of a previous download.
-The download attempts to resume from the last file that was not fully downloaded.
+DEPRECATED. This feature will be discontinued.
 
 ```yaml
 Type: SwitchParameter

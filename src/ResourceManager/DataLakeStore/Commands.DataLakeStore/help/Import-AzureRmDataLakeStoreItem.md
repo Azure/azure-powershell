@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
+Module Name: AzureRM.DataLakeStore
 ms.assetid: 90630395-8747-4446-A879-323274811956
 online version: 
 schema: 2.0.0
@@ -133,7 +134,7 @@ Accept wildcard characters: False
 ```
 
 ### -ForceBinary
-Indicates that this operation uploads the file as a binary file.
+DEPRECATED. Will have no effect in the upload process.
 
 ```yaml
 Type: SwitchParameter
@@ -163,8 +164,7 @@ Accept wildcard characters: False
 ```
 
 ### -PerFileThreadCount
-Specifies the maximum number of threads to use per file.
-The default value is ten (10).
+DEPRECATED. Please use ConcurrentFileCount parameter.
 
 ```yaml
 Type: Int32
@@ -194,7 +194,7 @@ Accept wildcard characters: False
 ```
 
 ### -Resume
-Indicates that this operation should resume a previously canceled or failed upload.
+DEPRECATED. This feature will be discontinued.
 
 ```yaml
 Type: SwitchParameter
