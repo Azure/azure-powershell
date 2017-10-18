@@ -69,7 +69,7 @@ Copyright = '(c) 2016 ShahAbhijeet. All rights reserved.'
 # NestedModules = @()
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = 'Set-TestEnvironment', 'Remove-ServicePrincipal', 'New-ServicePrincipal', 'Set-SPNRole'
+FunctionsToExport = 'Set-TestEnvironment', 'Remove-ServicePrincipal', 'New-ServicePrincipal', 'Set-SPNRole', 'New-AzureCredential'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @()

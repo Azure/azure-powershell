@@ -87,6 +87,11 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 #endif
             // Set RunningMocked
             TestMockSupport.RunningMocked = HttpMockServer.GetCurrentMode() == HttpRecorderMode.Playback;
+
+            if (File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "/.azure/testcredentials.json"))
+            {
+                SetEnvironmentVariableFromCredentialFile();
+            }
         }
 
         public string RMProfileModule
@@ -174,6 +179,109 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 #if !NETSTANDARD
             ProfileClient.Profile.Save();
 #endif
+        }
+
+        private void SetEnvironmentVariableFromCredentialFile()
+        {
+            var filePath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "/.azure/testcredentials.json";
+            Dictionary<string, object> credentials;
+            using (StreamReader r = new StreamReader(filePath))
+            {
+                string json = r.ReadToEnd();
+                credentials = JsonUtilities.DeserializeJson(json);
+            }
+
+            if (Environment.GetEnvironmentVariable("TEST_CSM_ORGID_AUTHENTICATION") == null)
+            {
+                var formattedConnectionString = String.Format("SubscriptionId={0};HttpRecorderMode={1};Environment={2}", credentials["SubscriptionId"], credentials["HttpRecorderMode"], credentials["Environment"]);
+
+                if (credentials.ContainsKey("UserId"))
+                {
+                    formattedConnectionString += String.Format(";UserId={0}", credentials["UserId"]);
+                }
+
+                if (credentials.ContainsKey("Password"))
+                {
+                    formattedConnectionString += String.Format(";Password={0}", credentials["Password"]);
+                }
+
+                if (credentials.ContainsKey("AADTenant"))
+                {
+                    formattedConnectionString += String.Format(";AADTenant={0}", credentials["AADTenant"]);
+                }
+
+                if (credentials.ContainsKey("ServicePrincipal"))
+                {
+                    formattedConnectionString += String.Format(";ServicePrincipal={0}", credentials["ServicePrincipal"]);
+                }
+
+                if (credentials.ContainsKey("ServicePrincipalSecret"))
+                {
+                    formattedConnectionString += String.Format(";ServicePrincipalSecret={0}", credentials["ServicePrincipalSecret"]);
+                }
+
+                if (credentials.ContainsKey("ResourceManagementUri"))
+                {
+                    formattedConnectionString += String.Format(";ResourceManagementUri={0}", credentials["ResourceManagementUri"]);
+                }
+
+                if (credentials.ContainsKey("GraphUri"))
+                {
+                    formattedConnectionString += String.Format(";GraphUri={0}", credentials["GraphUri"]);
+                }
+
+                if (credentials.ContainsKey("AADAuthUri"))
+                {
+                    formattedConnectionString += String.Format(";AADAuthUri={0}", credentials["AADAuthUri"]);
+                }
+
+                if (credentials.ContainsKey("AADTokenAudienceUri"))
+                {
+                    formattedConnectionString += String.Format(";AADTokenAudienceUri={0}", credentials["AADTokenAudienceUri"]);
+                }
+
+                if (credentials.ContainsKey("GraphTokenAudienceUri"))
+                {
+                    formattedConnectionString += String.Format(";GraphTokenAudienceUri={0}", credentials["GraphTokenAudienceUri"]);
+                }
+
+                if (credentials.ContainsKey("IbizaPortalUri"))
+                {
+                    formattedConnectionString += String.Format(";IbizaPortalUri={0}", credentials["IbizaPortalUri"]);
+                }
+
+                if (credentials.ContainsKey("ServiceManagementUri"))
+                {
+                    formattedConnectionString += String.Format(";ServiceManagementUri={0}", credentials["ServiceManagementUri"]);
+                }
+
+                if (credentials.ContainsKey("RdfePortalUri"))
+                {
+                    formattedConnectionString += String.Format(";RdfePortalUri={0}", credentials["RdfePortalUri"]);
+                }
+
+                if (credentials.ContainsKey("GalleryUri"))
+                {
+                    formattedConnectionString += String.Format(";GalleryUri={0}", credentials["GalleryUri"]);
+                }
+
+                if (credentials.ContainsKey("DataLakeStoreServiceUri"))
+                {
+                    formattedConnectionString += String.Format(";DataLakeStoreServiceUri={0}", credentials["DataLakeStoreServiceUri"]);
+                }
+
+                if (credentials.ContainsKey("DataLakeAnalyticsJobAndCatalogServiceUri"))
+                {
+                    formattedConnectionString += String.Format(";DataLakeAnalyticsJobAndCatalogServiceUri={0}", credentials["DataLakeAnalyticsJobAndCatalogServiceUri"]);
+                }
+
+                Environment.SetEnvironmentVariable("TEST_CSM_ORGID_AUTHENTICATION", formattedConnectionString);
+            }
+
+            if (Environment.GetEnvironmentVariable("AZURE_TEST_MODE") == null)
+            {
+                Environment.SetEnvironmentVariable("AZURE_TEST_MODE", credentials["HttpRecorderMode"].ToString());
+            }
         }
 
         private void SetupAzureEnvironmentFromEnvironmentVariables(AzureModule mode)
