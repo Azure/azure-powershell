@@ -8,11 +8,13 @@ namespace Azure.Experiments
         ResourceObject<VirtualNetwork, IVirtualNetworksOperations>
     {
         public VirtualNetworkObject(
+            INetworkManagementClient client,
             string name,
             ResourceGroupObject rg,
             string addressPrefix) 
             : base(name, rg, NoDependencies)
         {
+            Client = client.VirtualNetworks;
             AddressPrefix = addressPrefix;
         }
 
@@ -37,5 +39,7 @@ namespace Azure.Experiments
             => c.GetAsync(ResourceGroupName, Name);
 
         private string AddressPrefix { get; }
+
+        private IVirtualNetworksOperations Client { get; }
     }
 }

@@ -10,7 +10,7 @@ namespace Azure.Experiments.Tests
         public async Task ResourceGroupTest()
         {
             var c = Credentials.Get();
-            var rg = new ResourceGroupObject("My");
+            var rg = new ResourceGroupObject(c, "My");
             var info = await rg.GetOrNullAsync(c);
             var infoCreate = await rg.GetOrCreateAsync(c);
             // await rg.DeleteAsync(c);
@@ -20,8 +20,8 @@ namespace Azure.Experiments.Tests
         public async Task VirtualNetworkTest()
         {
             var c = Credentials.Get();
-            var rg = new ResourceGroupObject("My1");
-            var vn = new VirtualNetworkObject("My1", rg, "192.168.0.0/16");
+            var rg = new ResourceGroupObject(c, "My1");
+            var vn = new VirtualNetworkObject(c.CreateNetwork(), "My1", rg, "192.168.0.0/16");
             var info = await vn.GetOrNullAsync(c);
             var infoCreate = await vn.GetOrCreateAsync(c);
         }
@@ -30,8 +30,8 @@ namespace Azure.Experiments.Tests
         public async Task PublicIpAddressTest()
         {
             var c = Credentials.Get();
-            var rg = new ResourceGroupObject("MyPIA");
-            var pia = new PublicIpAddressObject("MyPIA", rg);
+            var rg = new ResourceGroupObject(c, "MyPIA");
+            var pia = new PublicIpAddressObject(c.CreateNetwork(), "MyPIA", rg);
             var info = await pia.GetOrCreateAsync(c);
         }
 
@@ -39,8 +39,8 @@ namespace Azure.Experiments.Tests
         public async Task NetworkSecurityGroupTest()
         {
             var c = Credentials.Get();
-            var rg = new ResourceGroupObject("MyNSG");
-            var nsg = new NetworkSecurityGroupObject("MyNSG", rg);
+            var rg = new ResourceGroupObject(c, "MyNSG");
+            var nsg = new NetworkSecurityGroupObject(c.CreateNetwork(), "MyNSG", rg);
             var info = await nsg.GetOrCreateAsync(c);
         }
 
@@ -48,8 +48,8 @@ namespace Azure.Experiments.Tests
         public async Task SubnetTest()
         {
             var c = Credentials.Get();
-            var rg = new ResourceGroupObject("MySubnet");
-            var vn = new VirtualNetworkObject("MySubnet", rg, "192.168.0.0/16");
+            var rg = new ResourceGroupObject(c, "MySubnet");
+            var vn = new VirtualNetworkObject(c.CreateNetwork(), "MySubnet", rg, "192.168.0.0/16");
             var subnet = new SubnetObject("MySubnet", vn, "192.168.1.0/24");
             var info = await subnet.GetOrCreateAsync(c);
         }
@@ -58,12 +58,13 @@ namespace Azure.Experiments.Tests
         public async Task NetworkInterfaceObject()
         {
             var c = Credentials.Get();
-            var rg = new ResourceGroupObject("MyNI");
-            var vn = new VirtualNetworkObject("MyNI", rg, "192.168.0.0/16");
+            var network = c.CreateNetwork();
+            var rg = new ResourceGroupObject(c, "MyNI");
+            var vn = new VirtualNetworkObject(network, "MyNI", rg, "192.168.0.0/16");
             var subnet = new SubnetObject("MyNI", vn, "192.168.1.0/24");
-            var pia = new PublicIpAddressObject("MyNI", rg);
-            var nsg = new NetworkSecurityGroupObject("MyNI", rg);
-            var ni = new NetworkInterfaceObject("MyNI", rg, subnet, pia, nsg);
+            var pia = new PublicIpAddressObject(network, "MyNI", rg);
+            var nsg = new NetworkSecurityGroupObject(network, "MyNI", rg);
+            var ni = new NetworkInterfaceObject(network, "MyNI", rg, subnet, pia, nsg);
             var info = await ni.GetOrCreateAsync(c);
         }
 
@@ -71,12 +72,13 @@ namespace Azure.Experiments.Tests
         public async Task VmObject()
         {
             var c = Credentials.Get();
-            var rg = new ResourceGroupObject("MyVM");
-            var vn = new VirtualNetworkObject("MyVM", rg, "192.168.0.0/16");
+            var network = c.CreateNetwork();
+            var rg = new ResourceGroupObject(c, "MyVM");
+            var vn = new VirtualNetworkObject(network, "MyVM", rg, "192.168.0.0/16");
             var subnet = new SubnetObject("MyVM", vn, "192.168.1.0/24");
-            var pia = new PublicIpAddressObject("MyVM", rg);
-            var nsg = new NetworkSecurityGroupObject("MyVM", rg);
-            var ni = new NetworkInterfaceObject("MyVM", rg, subnet, pia, nsg);
+            var pia = new PublicIpAddressObject(network, "MyVM", rg);
+            var nsg = new NetworkSecurityGroupObject(network, "MyVM", rg);
+            var ni = new NetworkInterfaceObject(network, "MyVM", rg, subnet, pia, nsg);
             var vm = new VmObject(c, "MyVM", rg, ni, "MyVMUser", "@3as54dDd");
             var info = await vm.GetOrCreateAsync(c);
         }

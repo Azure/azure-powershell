@@ -8,6 +8,7 @@ namespace Azure.Experiments
         : ResourceObject<NetworkInterface, INetworkInterfacesOperations>
     {
         public NetworkInterfaceObject(
+            INetworkManagementClient client,
             string name,
             ResourceGroupObject rg, 
             SubnetObject subnet,
@@ -15,13 +16,14 @@ namespace Azure.Experiments
             NetworkSecurityGroupObject nsg) 
             : base(name, rg, new AzureObject[] { subnet, pia, nsg })
         {
+            Client = client.NetworkInterfaces;
             Pia = pia;
             Subnet = subnet;
         }
 
         protected override async Task<NetworkInterface> CreateAsync(
-            INetworkInterfacesOperations c)
-            => await c.CreateOrUpdateAsync(
+            INetworkInterfacesOperations _)
+            => await Client.CreateOrUpdateAsync(
                 ResourceGroupName,
                 Name, 
                 new NetworkInterface
@@ -42,10 +44,13 @@ namespace Azure.Experiments
             => c.CreateNetwork().NetworkInterfaces;
 
         protected override Task<NetworkInterface> GetOrThrowAsync(
-            INetworkInterfacesOperations c)
-            => c.GetAsync(ResourceGroupName, Name);
+            INetworkInterfacesOperations _)
+            => Client.GetAsync(ResourceGroupName, Name);
 
         private PublicIpAddressObject Pia { get; }
+
         private SubnetObject Subnet { get; }
+
+        private INetworkInterfacesOperations Client { get; }
     }
 }

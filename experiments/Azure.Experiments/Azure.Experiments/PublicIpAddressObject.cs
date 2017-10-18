@@ -8,8 +8,13 @@ namespace Azure.Experiments
     public sealed class PublicIpAddressObject :
         ResourceObject<PublicIPAddress, IPublicIPAddressesOperations>
     {
-        public PublicIpAddressObject(string name, ResourceGroupObject rg) : base(name, rg)
+        public PublicIpAddressObject(
+            INetworkManagementClient client,
+            string name,
+            ResourceGroupObject rg)
+            : base(name, rg)
         {
+            Client = client.PublicIPAddresses;
         }
 
         protected override Task<PublicIPAddress> CreateAsync(IPublicIPAddressesOperations c)
@@ -23,5 +28,7 @@ namespace Azure.Experiments
 
         protected override Task<PublicIPAddress> GetOrThrowAsync(IPublicIPAddressesOperations c)
             => c.GetAsync(ResourceGroupName, Name);
+
+        private IPublicIPAddressesOperations Client { get; }
     }
 }

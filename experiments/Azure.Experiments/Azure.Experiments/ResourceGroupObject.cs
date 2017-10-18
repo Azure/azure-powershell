@@ -8,9 +8,14 @@ namespace Azure.Experiments
     public sealed class ResourceGroupObject : AzureObject<
         ResourceGroup, IResourceGroupsOperations>
     {
-        public ResourceGroupObject(string name) 
+        public ResourceGroupObject(Context client, string name) 
             : base(name, NoDependencies)
         {
+            Client = new ResourceManagementClient(client.Credentials)
+                {
+                    SubscriptionId = client.SubscriptionId
+                }
+                .ResourceGroups;
         }        
 
         protected override IResourceGroupsOperations CreateClient(Context c)
@@ -20,12 +25,14 @@ namespace Azure.Experiments
                 }
                 .ResourceGroups;
 
-        protected override Task<ResourceGroup> CreateAsync(IResourceGroupsOperations c)
-            => c.CreateOrUpdateAsync(
+        protected override Task<ResourceGroup> CreateAsync(IResourceGroupsOperations _)
+            => Client.CreateOrUpdateAsync(
                 Name,
                 new ResourceGroup { Location = "eastus" });
 
-        protected override Task<ResourceGroup> GetOrThrowAsync(IResourceGroupsOperations c)
-            => c.GetAsync(Name);
+        protected override Task<ResourceGroup> GetOrThrowAsync(IResourceGroupsOperations _)
+            => Client.GetAsync(Name);
+
+        private IResourceGroupsOperations Client { get; }
     }
 }

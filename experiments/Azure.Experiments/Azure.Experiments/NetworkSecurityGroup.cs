@@ -8,9 +8,12 @@ namespace Azure.Experiments
         : ResourceObject<NetworkSecurityGroup, INetworkSecurityGroupsOperations>
     {
         public NetworkSecurityGroupObject(
-            string name, ResourceGroupObject rg)
+            INetworkManagementClient client,
+            string name,
+            ResourceGroupObject rg)
             : base(name, rg)
         {
+            Client = client.NetworkSecurityGroups;
         }
 
         protected override Task<NetworkSecurityGroup> CreateAsync(
@@ -27,5 +30,7 @@ namespace Azure.Experiments
         protected override Task<NetworkSecurityGroup> GetOrThrowAsync(
             INetworkSecurityGroupsOperations c)
             => c.GetAsync(ResourceGroupName, Name);
+
+        private INetworkSecurityGroupsOperations Client { get; }
     }
 }
