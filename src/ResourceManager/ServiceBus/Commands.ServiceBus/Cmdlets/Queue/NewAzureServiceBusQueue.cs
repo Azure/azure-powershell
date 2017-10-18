@@ -193,17 +193,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
                 queueAttributes.RequiresSession = RequiresSession;
 
             if (SizeInBytes != null)
-                queueAttributes.SizeInBytes = SizeInBytes;
-
-#pragma warning disable 612, 618
-            queueAttributes.Location = getNamespaceLoc.Location;
-
-            if (EnableBatchedOperations != null)
-                queueAttributes.EnableBatchedOperations = EnableBatchedOperations;
-
-            if (IsAnonymousAccessible != null)
-                queueAttributes.IsAnonymousAccessible = IsAnonymousAccessible;
-#pragma warning restore 612, 618
+                queueAttributes.SizeInBytes = SizeInBytes;          
 
             if (ShouldProcess(target: Name, action: string.Format(Resources.CreateQueue, Name, Namespace)))
             {

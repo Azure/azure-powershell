@@ -194,18 +194,6 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Topic
 
             if (SizeInBytes != null)
                 topicAttributes.SizeInBytes = SizeInBytes;
-
-#pragma warning disable 612, 618
-            if (EnableSubscriptionPartitioning != null)
-                topicAttributes.EnableSubscriptionPartitioning = false;
-            if (FilteringMessagesBeforePublishing != null)
-                topicAttributes.FilteringMessagesBeforePublishing = false;
-            if (IsAnonymousAccessible != null)
-                topicAttributes.IsAnonymousAccessible = false;
-            if (IsExpress != null)
-                topicAttributes.IsExpress = false;
-                topicAttributes.Location = "";
-#pragma warning restore 612, 618
             
             if (ShouldProcess(target: Name, action: string.Format(Resources.CreateTopic, Name, Namespace)))
             {
