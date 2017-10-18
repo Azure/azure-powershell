@@ -14,6 +14,8 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
+using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
@@ -29,7 +31,7 @@ namespace Microsoft.Azure.Commands.Profile.Default
     [Cmdlet(VerbsCommon.Set, "AzureRmDefault", DefaultParameterSetName = ResourceGroupNameParameterSet,
         SupportsShouldProcess = true)]
     [OutputType(typeof(PSResourceGroup))]
-    public class SetAzureRMDefaultCommand : AzureRMCmdlet
+    public class SetAzureRMDefaultCommand : AzureContextModificationCmdlet
     {
         private const string ResourceGroupNameParameterSet = "ResourceGroupName";
 
@@ -43,28 +45,34 @@ namespace Microsoft.Azure.Commands.Profile.Default
         public override void ExecuteCmdlet()
         {
             IAzureContext context = AzureRmProfileProvider.Instance.Profile.DefaultContext;
-            IResourceManagementClient client = AzureSession.Instance.ClientFactory.CreateCustomArmClient<ResourceManagementClient>(
+            IResourceManagementClient resourceManagementclient = AzureSession.Instance.ClientFactory.CreateCustomArmClient<ResourceManagementClient>(
                                 context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager),
                                 AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(context, AzureEnvironment.Endpoint.ResourceManager),
                                 AzureSession.Instance.ClientFactory.GetCustomHandlers());
-            client.SubscriptionId = context.Subscription.Id;
+            resourceManagementclient.SubscriptionId = context.Subscription.Id;
 
             if (ResourceGroupName != null)
             {
                 ResourceGroup defaultResourceGroup;
                 if (ShouldProcess(Resources.DefaultResourceGroupTarget, string.Format(Resources.DefaultResourceGroupChangeWarning, ResourceGroupName)))
                 {
-                    if (!client.ResourceGroups.CheckExistence(ResourceGroupName) && (Force.IsPresent || ShouldContinue(string.Format(Resources.CreateResourceGroupMessage, ResourceGroupName), Resources.CreateResourceGroupCaption)))
+                    if (!resourceManagementclient.ResourceGroups.CheckExistence(ResourceGroupName) && (Force.IsPresent || ShouldContinue(string.Format(Resources.CreateResourceGroupMessage, ResourceGroupName), Resources.CreateResourceGroupCaption)))
                     {
                         ResourceGroup parameters = new ResourceGroup("West US");
-                        client.ResourceGroups.CreateOrUpdate(ResourceGroupName, parameters);
+                        resourceManagementclient.ResourceGroups.CreateOrUpdate(ResourceGroupName, parameters);
                     }
-                    defaultResourceGroup = client.ResourceGroups.Get(ResourceGroupName);
-                    context.SetProperty(Resources.DefaultResourceGroupKey, defaultResourceGroup.Name);
 
+                    defaultResourceGroup = resourceManagementclient.ResourceGroups.Get(ResourceGroupName);
+                    ModifyContext((profile, client) => SetDefaultProperty(profile));
                     WriteObject(defaultResourceGroup);
                 }
             }
+        }
+
+        private void SetDefaultProperty(IProfileOperations profile)
+        {
+            var context = profile.DefaultContext;
+            context.SetProperty(Resources.DefaultResourceGroupKey, ResourceGroupName);
         }
     }
 }
