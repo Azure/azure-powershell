@@ -456,7 +456,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         public bool TrySetContext(IAzureContext context, out string name)
         {
             bool result = false;
-            if (!TryFindContext(context, out name))
+            if (TryFindContext(context, out name) && Contexts != null && Contexts.ContainsKey(name))
+            {
+                Contexts[name].Update(context);
+                result = true;
+            }
+            else
             {
                 result = TryAddContext(context, out name);
             }
@@ -483,7 +488,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
 
             if (context != null && (TryFindContext(context, out contextName) || TryAddContext(context, out contextName)))
             {
-                result = TrySetDefaultContext(contextName);
+                if (TrySetDefaultContext(contextName) && DefaultContext != null)
+                {
+                    DefaultContext.Update(context);
+                    result = true;
+                }
             }
 
             return result;
