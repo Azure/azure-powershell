@@ -90,7 +90,8 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
 
         protected override AlertRuleResource CreateSdkCallParameters()
         {
-            WriteWarning("*** Add-AzureRMLogAlertRule cmdlet will be deprecated in a future release.");
+            WriteWarning("*** This cmdlet will be removed in the 5.0 release (November 2017.)");
+            WriteWarning("*** Note: After October 1st using this cmdlet will no longer have any effect as this functionality is being transitioned to Activity Log Alerts. Please see https://aka.ms/migratemealerts for more information.");
 
             RuleCondition condition = this.CreateRuleCondition();
 

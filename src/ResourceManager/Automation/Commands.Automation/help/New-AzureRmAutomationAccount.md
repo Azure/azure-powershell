@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
 ms.assetid: 2D5B16F0-0662-4D9F-A13F-808CE5EEBBA3
-online version:
+online version: 
 schema: 2.0.0
 ---
 
@@ -42,7 +42,7 @@ To obtain valid locations, use the Get-AzureRMLocation cmdlet.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 2
@@ -76,7 +76,7 @@ Valid values are:
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 Accepted values: Free, Basic
 
 Required: False
@@ -92,7 +92,7 @@ Specifies the name of a resource group to which this cmdlet adds an Automation a
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0

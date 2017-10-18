@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+
 * Moved from AutoRest sdk to our version of Dataplane sdk for Azure data lake.
 * Refactored following cmdlets to use the new version of SDK:
 	* Add-AzureRmDataLakeStoreItemContent
@@ -53,6 +54,11 @@
 * Get-AzureRMDataLakeStoreItemContent - Fixed the tail behavior for contents greater than 4MB
 * Set-AzureRMDataLakeStoreItemExpiry - Introduced new parameter set for setting relative expiration time
 * New-AzureRmDataLakeStoreItem - Introduced IfExist parameter which allows user to overwrite or fail without prompting
+
+## Version 4.4.1
+
+## Version 4.4.0
+
 ## Version 4.3.1
 
 ## Version 4.3.0

@@ -14,14 +14,14 @@ Stops an Azure virtual machine.
 
 ### ResourceGroupNameParameterSetName (Default)
 ```
-Stop-AzureRmVM [-Name] <String> [-Force] [-StayProvisioned] [-ResourceGroupName] <String> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Stop-AzureRmVM [-Name] <String> [-Force] [-StayProvisioned] [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### IdParameterSetName
 ```
-Stop-AzureRmVM [-Name] <String> [-Force] [-StayProvisioned] [-Id] <String> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Stop-AzureRmVM [-Name] <String> [-Force] [-StayProvisioned] [-Id] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,6 +37,21 @@ PS C:\> Stop-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachin
 This command stops the virtual machine named VirtualMachine07 in ResourceGroup11.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Force
 Forces the command to run without asking for user confirmation.

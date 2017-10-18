@@ -14,7 +14,8 @@ Sets the goal state for a load balancer.
 ## SYNTAX
 
 ```
-Set-AzureRmLoadBalancer -LoadBalancer <PSLoadBalancer> [<CommonParameters>]
+Set-AzureRmLoadBalancer -LoadBalancer <PSLoadBalancer> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,6 +37,21 @@ The second command uses the pipeline operator to pass the load balancer in $slb 
 The third command passes the load balancer to **Set-AzureRmLoadBalancer**, which updates the load balancer configuration and saves it.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -LoadBalancer
 Specifies a load balancer.
