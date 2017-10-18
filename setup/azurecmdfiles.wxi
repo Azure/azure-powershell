@@ -664,6 +664,9 @@
                         <Component Id="cmp3DFAD82DD1E67132EE013EE7306EEB42" Guid="*">
                             <File Id="fil5B598E476BCAB5739CBB1943599D8DA8" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.MachineLearningCompute\Microsoft.Azure.Commands.MachineLearningCompute.dll-Help.xml" />
                         </Component>
+                        <Component Id="cmp0E7C3658432FB72A5FDBE368BE031658" Guid="*">
+                            <File Id="fil6429B6C7C2D8F74AFCD8884A9966EB9A" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.MachineLearningCompute\Microsoft.Azure.Management.MachineLearningCompute.dll" />
+                        </Component>
                     </Directory>
                     <Directory Id="dirD7515C98365CCAF206E0B30DCEDDC46F" Name="AzureRM.MarketplaceOrdering">
                         <Component Id="cmp7A8866964515C9266836AE2727FC2772" Guid="*">
@@ -680,6 +683,9 @@
                         </Component>
                         <Component Id="cmpA935356DB49173BE632246C7D5831B87" Guid="*">
                             <File Id="fil543466169A8CDB4A63AFB0670B1A8974" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.MarketplaceOrdering\Microsoft.Azure.Commands.MarketplaceOrdering.Format.ps1xml" />
+                        </Component>
+                        <Component Id="cmp0B219B795B27D0020436AB75FDD47657" Guid="*">
+                            <File Id="filFADF2FB4D6555845E3CAE87E7F9D590E" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.MarketplaceOrdering\Microsoft.Azure.Management.MarketplaceOrdering.dll" />
                         </Component>
                     </Directory>
                     <Directory Id="dirCB0C047DD4181DECD8246B00896D9DEB" Name="AzureRM.Media">
@@ -3177,11 +3183,13 @@
             <ComponentRef Id="cmpB2597D237191FA5EFBD36804D217035B" />
             <ComponentRef Id="cmp108295324F5A1DBE5ECC002872855BAE" />
             <ComponentRef Id="cmp3DFAD82DD1E67132EE013EE7306EEB42" />
+            <ComponentRef Id="cmp0E7C3658432FB72A5FDBE368BE031658" />
             <ComponentRef Id="cmp7A8866964515C9266836AE2727FC2772" />
             <ComponentRef Id="cmp0288996DAF3F5401E14AC034166AE89D" />
             <ComponentRef Id="cmp0207800F580CB08D274BA341FAB3497A" />
             <ComponentRef Id="cmpD7BAE7FE5CF6F216C224400B50C0476E" />
             <ComponentRef Id="cmpA935356DB49173BE632246C7D5831B87" />
+            <ComponentRef Id="cmp0B219B795B27D0020436AB75FDD47657" />
             <ComponentRef Id="cmp6FD3249008BE1CA9554B0CF205468ECC" />
             <ComponentRef Id="cmp2CDE3382CBE83DEF253156256822F049" />
             <ComponentRef Id="cmp3C3A70621EDD9E921588895963830D1F" />
