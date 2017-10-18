@@ -14,6 +14,8 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
+using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.Internal.Resources;
@@ -28,7 +30,7 @@ namespace Microsoft.Azure.Commands.Profile.Default
     [Cmdlet(VerbsCommon.Clear, "AzureRmDefault", DefaultParameterSetName = ResourceGroupParameterSet,
          SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
-    public class ClearAzureRMDefaultCommand : AzureRMCmdlet
+    public class ClearAzureRMDefaultCommand : AzureContextModificationCmdlet
     {
         private const string ResourceGroupParameterSet = "ResourceGroup";
 
@@ -47,21 +49,23 @@ namespace Microsoft.Azure.Commands.Profile.Default
             // If no parameters are specified, clear all defaults
             if (!ResourceGroup)
             {
-                if (Force.IsPresent || ShouldContinue(Resources.RemoveDefaultsMessage, Resources.RemoveDefaultsCaption))
-                {
-                    if (context.IsPropertySet(Resources.DefaultResourceGroupKey))
+                if (ShouldProcess(string.Format(Resources.DefaultResourceGroupTarget), Resources.DefaultResourceGroupRemovalWarning)) {
+                    if (Force.IsPresent || ShouldContinue(Resources.RemoveDefaultsMessage, Resources.RemoveDefaultsCaption))
                     {
-                        context.ExtendedProperties.Remove(Resources.DefaultResourceGroupKey);
-                        if (PassThru.IsPresent)
+                        if (context.IsPropertySet(Resources.DefaultResourceGroupKey))
                         {
-                            WriteObject(true);
+                            ModifyContext((profile, client) => RemoveDefaultProperty(profile));
+                            if (PassThru.IsPresent)
+                            {
+                                WriteObject(true);
+                            }
                         }
-                    }
-                    else
-                    {
-                        if (PassThru.IsPresent)
+                        else
                         {
-                            WriteObject(false);
+                            if (PassThru.IsPresent)
+                            {
+                                WriteObject(false);
+                            }
                         }
                     }
                 }
@@ -74,7 +78,7 @@ namespace Microsoft.Azure.Commands.Profile.Default
                 {
                     if (ShouldProcess(string.Format(Resources.DefaultResourceGroupTarget), Resources.DefaultResourceGroupRemovalWarning))
                     {
-                        context.ExtendedProperties.Remove(Resources.DefaultResourceGroupKey);
+                        ModifyContext((profile, client) => RemoveDefaultProperty(profile));
                         if (PassThru.IsPresent)
                         {
                             WriteObject(true);
@@ -89,6 +93,12 @@ namespace Microsoft.Azure.Commands.Profile.Default
                     }
                 }
             }
+        }
+
+        private void RemoveDefaultProperty(IProfileOperations profile)
+        {
+            var context = profile.DefaultContext;
+            context.ExtendedProperties.Remove(Resources.DefaultResourceGroupKey);
         }
     }
 }
