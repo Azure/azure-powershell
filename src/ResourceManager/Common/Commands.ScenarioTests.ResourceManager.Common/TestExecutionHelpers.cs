@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using System;
 
@@ -52,6 +53,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest
         public static void SetUpSessionAndProfile()
         {
             AzureSessionInitializer.InitializeAzureSession();
+            AzureSession.Instance.ARMContextSaveMode = ContextSaveMode.Process;
             ResourceManagerProfileProvider.InitializeResourceManagerProfile();
         }
     }

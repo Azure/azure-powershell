@@ -14,7 +14,8 @@ Creates a VMSS.
 
 ```
 New-AzureRmVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
- [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -128,6 +129,21 @@ The nineteenth command uses the **New-AzureRmVmss** cmdlet to create the VMSS.
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Specifies the name of the resource group of the VMSS.
 
@@ -211,7 +227,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### VirtualMachineScaleSet
-
 Parameter 'VirtualMachineScaleSet' accepts value of type 'VirtualMachineScaleSet' from the pipeline
 
 ## OUTPUTS

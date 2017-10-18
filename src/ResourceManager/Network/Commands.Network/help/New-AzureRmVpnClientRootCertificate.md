@@ -14,7 +14,8 @@ Creates a new VPN client root certificate.
 ## SYNTAX
 
 ```
-New-AzureRmVpnClientRootCertificate -Name <String> -PublicCertData <String> [<CommonParameters>]
+New-AzureRmVpnClientRootCertificate -Name <String> -PublicCertData <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -50,6 +51,21 @@ The second command then uses a for loop to extract all the text except for the f
 The third command uses the **New-AzureRmVpnClientRootCertificate** cmdlet to create the certificate, storing the created object in a variable named $Certificate.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 Specifies a name for the new client root certificate.

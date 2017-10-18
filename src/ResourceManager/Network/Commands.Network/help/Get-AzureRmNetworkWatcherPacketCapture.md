@@ -15,13 +15,13 @@ Gets information and properties and status of a packet capture resource.
 ### SetByResource (Default)
 ```
 Get-AzureRmNetworkWatcherPacketCapture -NetworkWatcher <PSNetworkWatcher> [-PacketCaptureName <String>]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SetByName
 ```
 Get-AzureRmNetworkWatcherPacketCapture -NetworkWatcherName <String> -ResourceGroupName <String>
- [-PacketCaptureName <String>] [<CommonParameters>]
+ [-PacketCaptureName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -49,6 +49,21 @@ We then call Get-AzureRmNetworkWatcherPacketCapture to retrieve the status of th
 Note: The Azure Network Watcher extension must be installed on the target virtual machine to create packet captures.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -NetworkWatcher
 The network watcher resource.
