@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         private readonly Random _uniqueActivityIdGenerator;
         private const int MaxConnectionLimit = 1000;
         private const long NeverExpireValue = 253402300800000;
-
+        internal const int ImportExportMaxThreads = 256;
         #region Constructors
 
         public DataLakeStoreFileSystemClient(IAzureContext context)

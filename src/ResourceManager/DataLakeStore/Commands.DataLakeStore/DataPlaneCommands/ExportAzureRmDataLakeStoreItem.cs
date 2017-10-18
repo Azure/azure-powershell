@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using Microsoft.Azure.Commands.DataLakeStore.Properties;
 using Microsoft.Azure.Commands.DataLakeStore.Models;
 using Microsoft.Rest.Azure;
@@ -76,10 +77,10 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         public SwitchParameter Resume { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 5, Mandatory = false,
-            HelpMessage = "DEPRECATED. ConcurrentFileCount will only be used.",
+            HelpMessage = "DEPRECATED. Please use ConcurrentFileCount parameter.",
             ParameterSetName = BaseParameterSetName)]
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 5, Mandatory = false,
-            HelpMessage = "DEPRECATED. ConcurrentFileCount will only be used.",
+            HelpMessage = "DEPRECATED. Please use ConcurrentFileCount parameter.",
             ParameterSetName = DiagnosticParameterSetName)]
         public int PerFileThreadCount { get; set; } = -1;
 
@@ -146,7 +147,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                         }
                         else
                         {
-                            threadCount = PerFileThreadCount * ConcurrentFileCount;
+                            threadCount = Math.Max(PerFileThreadCount * ConcurrentFileCount, DataLakeStoreFileSystemClient.ImportExportMaxThreads);
                         }
                         DataLakeStoreFileSystemClient.BulkCopy(powerShellReadyPath, Account,
                             Path.TransformedPath, CmdletCancellationToken, threadCount, Recurse, Force, true, this);

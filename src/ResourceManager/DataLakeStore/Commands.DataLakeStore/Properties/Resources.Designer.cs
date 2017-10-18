@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -205,7 +205,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The parameter ForceBinary is deprecated. It will not have any impact in the file transfer. We will remove the parameter in future releases..
+        ///   Looks up a localized string similar to Parameter ForceBinary is deprecated. It will not have any impact in the file transfer. This parameter will be removed in future releases..
         /// </summary>
         internal static string IncorrectForceBinary {
             get {
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The parameter PerFileThreadCount is deprecated. It will not have any impact in the file transfer. We will remove the parameter in future releases. ConcurrentFileCount will only be used..
+        ///   Looks up a localized string similar to Parameter PerFileThreadCount is deprecated. This parameter will be removed in future releases. Please use ConcurrentFileCount parameter instead..
         /// </summary>
         internal static string IncorrectPerFileThreadCountWarning {
             get {
@@ -232,7 +232,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The parameter Resume is deprecated. We will remove the parameter in future releases..
+        ///   Looks up a localized string similar to Parameter Resume is deprecated. This parameter will be removed in future releases..
         /// </summary>
         internal static string IncorrectResume {
             get {
