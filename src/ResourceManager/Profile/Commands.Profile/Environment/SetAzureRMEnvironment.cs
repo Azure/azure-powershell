@@ -99,6 +99,7 @@ namespace Microsoft.Azure.Commands.Profile
 
         [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Position = 11, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Resource identifier of Azure Key Vault data service that is the recipient of the requested token.")]
+        [Parameter(ParameterSetName = MetadataParameterSet, Position = 4, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Resource identifier of Azure Key Vault data service that is the recipient of the requested token.")]
         public string AzureKeyVaultServiceEndpointResourceId { get; set; }
 
         [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Position = 12, Mandatory = false, ValueFromPipelineByPropertyName = true,
@@ -172,14 +173,20 @@ namespace Microsoft.Azure.Commands.Profile
                                 env.Value?.GetEndpoint(AzureEnvironment.Endpoint.ResourceManager)?.ToLowerInvariant(),
                                 GeneralUtilities.EnsureTrailingSlash(ARMEndpoint)?.ToLowerInvariant(), StringComparison.CurrentCultureIgnoreCase));
 
-                        var newEnvironment = new AzureEnvironment { Name = this.Name };
+                        var defProfile = GetDefaultProfile();
+                        IAzureEnvironment newEnvironment;
+                        if (!defProfile.TryGetEnvironment(this.Name, out newEnvironment))
+                        {
+                            newEnvironment = new AzureEnvironment { Name = this.Name };
+                        }
+
                         if (publicEnvironment.Key == null)
                         {
                             SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.ResourceManager, ARMEndpoint);
                             try
                             {
                                 EnvHelper = (EnvHelper == null ? new EnvironmentHelper() : EnvHelper);
-                                MetadataResponse metadataEndpoints = EnvHelper.RetrieveMetaDataEndpoints(ResourceManagerEndpoint).Result;
+                                MetadataResponse metadataEndpoints = EnvHelper.RetrieveMetaDataEndpoints(newEnvironment.ResourceManagerUrl).Result;
                                 string domain = EnvHelper.RetrieveDomain(ARMEndpoint);
 
                                 SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.ActiveDirectory,

@@ -15,7 +15,7 @@ Creates a probe configuration for a load balancer.
 
 ```
 New-AzureRmLoadBalancerProbeConfig -Name <String> [-RequestPath <String>] [-Protocol <String>] -Port <Int32>
- -IntervalInSeconds <Int32> -ProbeCount <Int32> [<CommonParameters>]
+ -IntervalInSeconds <Int32> -ProbeCount <Int32> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,6 +32,21 @@ This command creates a probe configuration named MyProbe using the HTTP protocol
 The new probe will connect to a load-balanced service on port 80.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -IntervalInSeconds
 Specifies the interval, in seconds, between probes to each instance of a load-balanced service.

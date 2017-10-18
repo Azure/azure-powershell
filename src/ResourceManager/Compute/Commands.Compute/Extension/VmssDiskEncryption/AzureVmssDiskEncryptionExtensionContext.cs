@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         public const string VolumeTypeOS = "OS";
         public const string VolumeTypeData = "Data";
         public const string VolumeTypeAll = "All";
-        public const string StatusSucceeded = "Succeeded";
+        public const string StatusSucceeded = "succeeded";
         public const string EncryptionStateString = "EncryptionState/";
     }
 }
