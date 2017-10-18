@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 namespace Azure.Experiments
 {
     public sealed class NetworkSecurityGroupObject
-        : ResourceObject<NetworkSecurityGroup, INetworkSecurityGroupsOperations>
+        : ResourceObject<NetworkSecurityGroup>
     {
         public NetworkSecurityGroupObject(
             INetworkManagementClient client,
@@ -16,20 +16,14 @@ namespace Azure.Experiments
             Client = client.NetworkSecurityGroups;
         }
 
-        protected override Task<NetworkSecurityGroup> CreateAsync(
-            INetworkSecurityGroupsOperations c)
-            => c.CreateOrUpdateAsync(
+        protected override Task<NetworkSecurityGroup> CreateAsync()
+            => Client.CreateOrUpdateAsync(
                 ResourceGroupName,
                 Name,
                 new NetworkSecurityGroup { Location = "eastus" });
 
-        protected override INetworkSecurityGroupsOperations CreateClient(
-            Context c)
-            => c.CreateNetwork().NetworkSecurityGroups;
-
-        protected override Task<NetworkSecurityGroup> GetOrThrowAsync(
-            INetworkSecurityGroupsOperations c)
-            => c.GetAsync(ResourceGroupName, Name);
+        protected override Task<NetworkSecurityGroup> GetOrThrowAsync()
+            => Client.GetAsync(ResourceGroupName, Name);
 
         private INetworkSecurityGroupsOperations Client { get; }
     }

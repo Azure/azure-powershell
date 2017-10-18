@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Azure.Experiments
 {
-    public abstract class ResourceObject<T, C> : AzureObject<T, C>
+    public abstract class ResourceObject<T> : AzureObject<T>
         where T : class
     {
         public string ResourceGroupName { get; }
@@ -20,7 +20,7 @@ namespace Azure.Experiments
         protected ResourceObject(
             string name,
             ResourceGroupObject rg)
-            : this(name, rg, Enumerable.Empty<AzureObject>())
+            : this(name, rg, NoDependencies)
         {
         }
     }

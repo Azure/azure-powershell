@@ -1,12 +1,11 @@
-﻿using System.Linq;
-using Microsoft.Azure.Management.ResourceManager.Models;
+﻿using Microsoft.Azure.Management.ResourceManager.Models;
 using Microsoft.Azure.Management.ResourceManager;
 using System.Threading.Tasks;
 
 namespace Azure.Experiments
 {
     public sealed class ResourceGroupObject : AzureObject<
-        ResourceGroup, IResourceGroupsOperations>
+        ResourceGroup>
     {
         public ResourceGroupObject(Context client, string name) 
             : base(name, NoDependencies)
@@ -18,19 +17,12 @@ namespace Azure.Experiments
                 .ResourceGroups;
         }        
 
-        protected override IResourceGroupsOperations CreateClient(Context c)
-            => new ResourceManagementClient(c.Credentials)
-                {
-                    SubscriptionId = c.SubscriptionId
-                }
-                .ResourceGroups;
-
-        protected override Task<ResourceGroup> CreateAsync(IResourceGroupsOperations _)
+        protected override Task<ResourceGroup> CreateAsync()
             => Client.CreateOrUpdateAsync(
                 Name,
                 new ResourceGroup { Location = "eastus" });
 
-        protected override Task<ResourceGroup> GetOrThrowAsync(IResourceGroupsOperations _)
+        protected override Task<ResourceGroup> GetOrThrowAsync()
             => Client.GetAsync(Name);
 
         private IResourceGroupsOperations Client { get; }

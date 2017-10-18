@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 namespace Azure.Experiments
 {
     public sealed class VirtualNetworkObject : 
-        ResourceObject<VirtualNetwork, IVirtualNetworksOperations>
+        ResourceObject<VirtualNetwork>
     {
         public VirtualNetworkObject(
             INetworkManagementClient client,
@@ -18,8 +18,8 @@ namespace Azure.Experiments
             AddressPrefix = addressPrefix;
         }
 
-        protected override Task<VirtualNetwork> CreateAsync(IVirtualNetworksOperations c)
-            => c.CreateOrUpdateAsync(
+        protected override Task<VirtualNetwork> CreateAsync()
+            => Client.CreateOrUpdateAsync(
                 ResourceGroupName,
                 Name,
                 new VirtualNetwork
@@ -31,15 +31,11 @@ namespace Azure.Experiments
                     }
                 });
 
-        protected override IVirtualNetworksOperations CreateClient(Context c)
-            => c.CreateNetwork().VirtualNetworks;
-
-        protected override Task<VirtualNetwork> GetOrThrowAsync(
-            IVirtualNetworksOperations c)
-            => c.GetAsync(ResourceGroupName, Name);
+        protected override Task<VirtualNetwork> GetOrThrowAsync()
+            => Client.GetAsync(ResourceGroupName, Name);
 
         private string AddressPrefix { get; }
 
-        private IVirtualNetworksOperations Client { get; }
+        public IVirtualNetworksOperations Client { get; }
     }
 }

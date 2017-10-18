@@ -16,7 +16,7 @@ namespace Azure.Experiments
 
         public IEnumerable<AzureObject> Dependencies { get; }
 
-        public abstract Task CheckOrCreateAsync(Context c);
+        public abstract Task CheckOrCreateAsync();
 
         protected AzureObject(string name, IEnumerable<AzureObject> dependencies)
         {
@@ -25,19 +25,19 @@ namespace Azure.Experiments
         }
     }
 
-    public abstract class AzureObject<T, C> : AzureObject
+    public abstract class AzureObject<T> : AzureObject
         where T: class
     {
         public T Info { get; private set; }
 
-        public async Task<T> GetOrNullAsync(C c)
+        public async Task<T> GetOrNullAsync()
         {
             if (!IsGetCalled)
             {
                 IsGetCalled = true;
                 try
                 {
-                    Info = await GetOrThrowAsync(c);
+                    Info = await GetOrThrowAsync();
                 }
                 catch (CloudException e) 
                     when (e.Response.StatusCode == HttpStatusCode.NotFound)
@@ -47,12 +47,9 @@ namespace Azure.Experiments
             return Info;
         }
 
-        public Task<T> GetOrNullAsync(Context c)
-            => GetOrNullAsync(CreateClient(c));
-
-        public async Task<T> GetOrCreateAsync(Context c)
+        public async Task<T> GetOrCreateAsync()
         {
-            Info = await GetOrNullAsync(c);
+            Info = await GetOrNullAsync();
             if (Info == null)
             {
                 // this can be optimized by using WaitForAll and a state 
@@ -60,26 +57,24 @@ namespace Azure.Experiments
                 // avoid multiple creations of the same resource group.
                 foreach (var d in Dependencies)
                 {
-                    await d.CheckOrCreateAsync(c);
+                    await d.CheckOrCreateAsync();
                 }
-                Info = await CreateAsync(CreateClient(c));
+                Info = await CreateAsync();
             }
             return Info;
         }
-
-        public override Task CheckOrCreateAsync(Context c)
-            => GetOrCreateAsync(c);
 
         protected AzureObject(string name, IEnumerable<AzureObject> dependencies) 
             : base(name, dependencies)
         {
         }
 
-        protected abstract C CreateClient(Context c);
+        public override Task CheckOrCreateAsync()
+            => GetOrCreateAsync();
 
-        protected abstract Task<T> GetOrThrowAsync(C c);
+        protected abstract Task<T> GetOrThrowAsync();
 
-        protected abstract Task<T> CreateAsync(C c);
+        protected abstract Task<T> CreateAsync();
 
         private bool IsGetCalled;       
     }

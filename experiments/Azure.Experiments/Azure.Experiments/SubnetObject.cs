@@ -6,31 +6,30 @@ using System.Threading.Tasks;
 
 namespace Azure.Experiments
 {
-    public sealed class SubnetObject : AzureObject<Subnet, IVirtualNetworksOperations>
+    public sealed class SubnetObject : AzureObject<Subnet>
     {
         public string AddressPrefix { get; }
 
-        public SubnetObject(string name, VirtualNetworkObject vn, string addressPrefix) 
+        public SubnetObject(
+            string name, VirtualNetworkObject vn, string addressPrefix) 
             : base(name, new[] { vn })
         {
             Vn = vn;
             AddressPrefix = addressPrefix;
         }
 
-        protected override async Task<Subnet> CreateAsync(IVirtualNetworksOperations c)
+        protected override async Task<Subnet> CreateAsync()
         {
             // The Virtual Network should be created at this point.
-            var vn = await Vn.GetOrNullAsync(c);
+            var vn = await Vn.GetOrNullAsync();
             vn.Subnets.Add(new Subnet { Name = Name, AddressPrefix = AddressPrefix });
-            vn = await c.CreateOrUpdateAsync(Vn.ResourceGroupName, Vn.Name, vn);
+            vn = await Vn.Client.CreateOrUpdateAsync(
+                Vn.ResourceGroupName, Vn.Name, vn);
             return GetSubnet(vn);
         }
 
-        protected override IVirtualNetworksOperations CreateClient(Context c)
-            => c.CreateNetwork().VirtualNetworks;
-
-        protected override async Task<Subnet> GetOrThrowAsync(IVirtualNetworksOperations c)
-            => GetSubnet(await Vn.GetOrNullAsync(c));
+        protected override async Task<Subnet> GetOrThrowAsync()
+            => GetSubnet(await Vn.GetOrNullAsync());
 
         private VirtualNetworkObject Vn { get; }
 

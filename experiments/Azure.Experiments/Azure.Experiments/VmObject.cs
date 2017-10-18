@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 namespace Azure.Experiments
 {
     public sealed class VmObject 
-        : ResourceObject<VirtualMachine, IVirtualMachinesOperations>
+        : ResourceObject<VirtualMachine>
     {
         public VmObject(
             Context c,
@@ -26,8 +26,7 @@ namespace Azure.Experiments
             Ni = ni;
         }
 
-        protected override Task<VirtualMachine> CreateAsync(
-            IVirtualMachinesOperations _)
+        protected override Task<VirtualMachine> CreateAsync()
             => Client.CreateOrUpdateAsync(
                 ResourceGroupName,
                 Name,
@@ -66,14 +65,7 @@ namespace Azure.Experiments
                     },                    
                 });
 
-        protected override IVirtualMachinesOperations CreateClient(Context c)
-            => new ComputeManagementClient(c.Credentials)
-                {
-                    SubscriptionId = c.SubscriptionId
-                }
-                .VirtualMachines;
-
-        protected override Task<VirtualMachine> GetOrThrowAsync(IVirtualMachinesOperations _)
+        protected override Task<VirtualMachine> GetOrThrowAsync()
             => Client.GetAsync(ResourceGroupName, Name);
 
         private string AdminUsername { get; }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 namespace Azure.Experiments
 {
     public sealed class PublicIpAddressObject :
-        ResourceObject<PublicIPAddress, IPublicIPAddressesOperations>
+        ResourceObject<PublicIPAddress>
     {
         public PublicIpAddressObject(
             INetworkManagementClient client,
@@ -17,17 +17,14 @@ namespace Azure.Experiments
             Client = client.PublicIPAddresses;
         }
 
-        protected override Task<PublicIPAddress> CreateAsync(IPublicIPAddressesOperations c)
-            => c.CreateOrUpdateAsync(
+        protected override Task<PublicIPAddress> CreateAsync()
+            => Client.CreateOrUpdateAsync(
                 ResourceGroupName,
                 Name,
                 new PublicIPAddress { Location = "eastus" });
 
-        protected override IPublicIPAddressesOperations CreateClient(Context c)
-            => c.CreateNetwork().PublicIPAddresses;
-
-        protected override Task<PublicIPAddress> GetOrThrowAsync(IPublicIPAddressesOperations c)
-            => c.GetAsync(ResourceGroupName, Name);
+        protected override Task<PublicIPAddress> GetOrThrowAsync()
+            => Client.GetAsync(ResourceGroupName, Name);
 
         private IPublicIPAddressesOperations Client { get; }
     }

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 namespace Azure.Experiments
 {
     public sealed class NetworkInterfaceObject
-        : ResourceObject<NetworkInterface, INetworkInterfacesOperations>
+        : ResourceObject<NetworkInterface>
     {
         public NetworkInterfaceObject(
             INetworkManagementClient client,
@@ -21,8 +21,7 @@ namespace Azure.Experiments
             Subnet = subnet;
         }
 
-        protected override async Task<NetworkInterface> CreateAsync(
-            INetworkInterfacesOperations _)
+        protected override async Task<NetworkInterface> CreateAsync()
             => await Client.CreateOrUpdateAsync(
                 ResourceGroupName,
                 Name, 
@@ -40,11 +39,7 @@ namespace Azure.Experiments
                     }                    
                 });
 
-        protected override INetworkInterfacesOperations CreateClient(Context c)
-            => c.CreateNetwork().NetworkInterfaces;
-
-        protected override Task<NetworkInterface> GetOrThrowAsync(
-            INetworkInterfacesOperations _)
+        protected override Task<NetworkInterface> GetOrThrowAsync()
             => Client.GetAsync(ResourceGroupName, Name);
 
         private PublicIpAddressObject Pia { get; }

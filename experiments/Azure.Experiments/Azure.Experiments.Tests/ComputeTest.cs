@@ -11,8 +11,8 @@ namespace Azure.Experiments.Tests
         {
             var c = Credentials.Get();
             var rg = new ResourceGroupObject(c, "My");
-            var info = await rg.GetOrNullAsync(c);
-            var infoCreate = await rg.GetOrCreateAsync(c);
+            var info = await rg.GetOrNullAsync();
+            var infoCreate = await rg.GetOrCreateAsync();
             // await rg.DeleteAsync(c);
         }
 
@@ -22,8 +22,8 @@ namespace Azure.Experiments.Tests
             var c = Credentials.Get();
             var rg = new ResourceGroupObject(c, "My1");
             var vn = new VirtualNetworkObject(c.CreateNetwork(), "My1", rg, "192.168.0.0/16");
-            var info = await vn.GetOrNullAsync(c);
-            var infoCreate = await vn.GetOrCreateAsync(c);
+            var info = await vn.GetOrNullAsync();
+            var infoCreate = await vn.GetOrCreateAsync();
         }
 
         [Fact]
@@ -32,7 +32,7 @@ namespace Azure.Experiments.Tests
             var c = Credentials.Get();
             var rg = new ResourceGroupObject(c, "MyPIA");
             var pia = new PublicIpAddressObject(c.CreateNetwork(), "MyPIA", rg);
-            var info = await pia.GetOrCreateAsync(c);
+            var info = await pia.GetOrCreateAsync();
         }
 
         [Fact]
@@ -41,7 +41,7 @@ namespace Azure.Experiments.Tests
             var c = Credentials.Get();
             var rg = new ResourceGroupObject(c, "MyNSG");
             var nsg = new NetworkSecurityGroupObject(c.CreateNetwork(), "MyNSG", rg);
-            var info = await nsg.GetOrCreateAsync(c);
+            var info = await nsg.GetOrCreateAsync();
         }
 
         [Fact]
@@ -51,7 +51,7 @@ namespace Azure.Experiments.Tests
             var rg = new ResourceGroupObject(c, "MySubnet");
             var vn = new VirtualNetworkObject(c.CreateNetwork(), "MySubnet", rg, "192.168.0.0/16");
             var subnet = new SubnetObject("MySubnet", vn, "192.168.1.0/24");
-            var info = await subnet.GetOrCreateAsync(c);
+            var info = await subnet.GetOrCreateAsync();
         }
 
         [Fact]
@@ -65,7 +65,7 @@ namespace Azure.Experiments.Tests
             var pia = new PublicIpAddressObject(network, "MyNI", rg);
             var nsg = new NetworkSecurityGroupObject(network, "MyNI", rg);
             var ni = new NetworkInterfaceObject(network, "MyNI", rg, subnet, pia, nsg);
-            var info = await ni.GetOrCreateAsync(c);
+            var info = await ni.GetOrCreateAsync();
         }
 
         [Fact]
@@ -80,7 +80,7 @@ namespace Azure.Experiments.Tests
             var nsg = new NetworkSecurityGroupObject(network, "MyVM", rg);
             var ni = new NetworkInterfaceObject(network, "MyVM", rg, subnet, pia, nsg);
             var vm = new VmObject(c, "MyVM", rg, ni, "MyVMUser", "@3as54dDd");
-            var info = await vm.GetOrCreateAsync(c);
+            var info = await vm.GetOrCreateAsync();
         }
 
         [Fact]
