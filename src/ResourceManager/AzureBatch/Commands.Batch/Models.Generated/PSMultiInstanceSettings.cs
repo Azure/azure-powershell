@@ -35,7 +35,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
         internal Microsoft.Azure.Batch.MultiInstanceSettings omObject;
         
         private IList<PSResourceFile> commonResourceFiles;
-        
+
+        [Obsolete("This will be removed in a future version and replaced a constructor which takes CoordinationCommandLine")]
         public PSMultiInstanceSettings(int numberOfInstances)
         {
             this.omObject = new Microsoft.Azure.Batch.MultiInstanceSettings(numberOfInstances);

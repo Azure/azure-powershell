@@ -19,6 +19,8 @@
 -->
 ## Current Release
 
+## Version 0.4.7
+
 ## Version 0.4.6
 * Added a new dataplane commandlet to allow synchronization of databases from read-write instance to read-only instances 
     - Included help file for the commandlet

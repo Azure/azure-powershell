@@ -265,13 +265,13 @@
     <Compile Include="Microsoft.Subscriptions\ProviderRegistrations\GetResourceProviderRegistration.cs" />
     <Compile Include="Microsoft.Subscriptions\ProviderRegistrations\RemoveResourceProviderRegistration.cs" />
     <Compile Include="Microsoft.Subscriptions\ProviderRegistrations\SetResourceProviderRegistration.cs" />
-    <Compile Include="Microsoft.Subscriptions\Subscriptions\GetTenantSubscription.cs" />
+    <Compile Include="Microsoft.Subscriptions\Subscriptions\GetUserSubscription.cs" />
     <Compile Include="Microsoft.Subscriptions\Subscriptions\GetSubscription.cs" />
-    <Compile Include="Microsoft.Subscriptions\Subscriptions\NewTenantSubscription.cs" />
+    <Compile Include="Microsoft.Subscriptions\Subscriptions\NewUserSubscription.cs" />
     <Compile Include="Microsoft.Subscriptions\Subscriptions\NewSubscription.cs" />
-    <Compile Include="Microsoft.Subscriptions\Subscriptions\RemoveTenantSubscription.cs" />
+    <Compile Include="Microsoft.Subscriptions\Subscriptions\RemoveUserSubscription.cs" />
     <Compile Include="Microsoft.Subscriptions\Subscriptions\RemoveSubscription.cs" />
-    <Compile Include="Microsoft.Subscriptions\Subscriptions\SetTenantSubscription.cs" />
+    <Compile Include="Microsoft.Subscriptions\Subscriptions\SetUserSubscription.cs" />
     <Compile Include="Microsoft.Subscriptions\Subscriptions\SetSubscription.cs" />
     <Compile Include="Nouns.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
