@@ -41,9 +41,6 @@ namespace Azure.Experiments
         protected override INetworkInterfacesOperations CreateClient(Context c)
             => c.CreateNetwork().NetworkInterfaces;
 
-        protected override Task DeleteAsync(INetworkInterfacesOperations c)
-            => c.DeleteAsync(ResourceGroupName, Name);
-
         protected override Task<NetworkInterface> GetOrThrowAsync(
             INetworkInterfacesOperations c)
             => c.GetAsync(ResourceGroupName, Name);

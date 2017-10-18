@@ -32,9 +32,6 @@ namespace Azure.Experiments
         protected override IVirtualNetworksOperations CreateClient(Context c)
             => c.CreateNetwork().VirtualNetworks;
 
-        protected override Task DeleteAsync(IVirtualNetworksOperations c)
-            => c.DeleteAsync(ResourceGroupName, Name);
-
         protected override Task<VirtualNetwork> GetOrThrowAsync(
             IVirtualNetworksOperations c)
             => c.GetAsync(ResourceGroupName, Name);

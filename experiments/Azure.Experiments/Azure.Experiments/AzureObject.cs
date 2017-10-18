@@ -67,9 +67,6 @@ namespace Azure.Experiments
             return Info;
         }
 
-        public Task DeleteAsync(Context c)
-            => DeleteAsync(CreateClient(c));
-
         public override Task CheckOrCreateAsync(Context c)
             => GetOrCreateAsync(c);
 
@@ -83,8 +80,6 @@ namespace Azure.Experiments
         protected abstract Task<T> GetOrThrowAsync(C c);
 
         protected abstract Task<T> CreateAsync(C c);
-
-        protected abstract Task DeleteAsync(C c);
 
         private bool IsGetCalled;       
     }

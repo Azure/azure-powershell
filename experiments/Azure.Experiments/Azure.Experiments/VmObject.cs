@@ -8,6 +8,7 @@ namespace Azure.Experiments
         : ResourceObject<VirtualMachine, IVirtualMachinesOperations>
     {
         public VmObject(
+            Context c,
             string name,
             ResourceGroupObject rg,
             NetworkInterfaceObject ni,
@@ -15,14 +16,19 @@ namespace Azure.Experiments
             string adminPassword) 
             : base(name, rg, new[] { ni })
         {
+            Client = new ComputeManagementClient(c.Credentials)
+                {
+                    SubscriptionId = c.SubscriptionId
+                }
+                .VirtualMachines;
             AdminUsername = adminUsername;
             AdminPassword = adminPassword;
             Ni = ni;
         }
 
         protected override Task<VirtualMachine> CreateAsync(
-            IVirtualMachinesOperations c)
-            => c.CreateOrUpdateAsync(
+            IVirtualMachinesOperations _)
+            => Client.CreateOrUpdateAsync(
                 ResourceGroupName,
                 Name,
                 new VirtualMachine
@@ -67,18 +73,15 @@ namespace Azure.Experiments
                 }
                 .VirtualMachines;
 
-        protected override Task DeleteAsync(IVirtualMachinesOperations c)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        protected override Task<VirtualMachine> GetOrThrowAsync(IVirtualMachinesOperations c)
-            => c.GetAsync(ResourceGroupName, Name);
+        protected override Task<VirtualMachine> GetOrThrowAsync(IVirtualMachinesOperations _)
+            => Client.GetAsync(ResourceGroupName, Name);
 
         private string AdminUsername { get; }
 
         private string AdminPassword { get; }
 
         private NetworkInterfaceObject Ni { get; }
+
+        private IVirtualMachinesOperations Client { get; }
     }
 }

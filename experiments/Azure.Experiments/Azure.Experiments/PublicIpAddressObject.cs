@@ -21,9 +21,6 @@ namespace Azure.Experiments
         protected override IPublicIPAddressesOperations CreateClient(Context c)
             => c.CreateNetwork().PublicIPAddresses;
 
-        protected override Task DeleteAsync(IPublicIPAddressesOperations c)
-            => c.DeleteAsync(ResourceGroupName, Name);
-
         protected override Task<PublicIPAddress> GetOrThrowAsync(IPublicIPAddressesOperations c)
             => c.GetAsync(ResourceGroupName, Name);
     }

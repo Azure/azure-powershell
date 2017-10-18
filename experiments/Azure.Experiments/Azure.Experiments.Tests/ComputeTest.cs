@@ -77,7 +77,7 @@ namespace Azure.Experiments.Tests
             var pia = new PublicIpAddressObject("MyVM", rg);
             var nsg = new NetworkSecurityGroupObject("MyVM", rg);
             var ni = new NetworkInterfaceObject("MyVM", rg, subnet, pia, nsg);
-            var vm = new VmObject("MyVM", rg, ni, "MyVMUser", "@3as54dDd");
+            var vm = new VmObject(c, "MyVM", rg, ni, "MyVMUser", "@3as54dDd");
             var info = await vm.GetOrCreateAsync(c);
         }
 

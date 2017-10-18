@@ -24,9 +24,6 @@ namespace Azure.Experiments
             Context c)
             => c.CreateNetwork().NetworkSecurityGroups;
 
-        protected override Task DeleteAsync(INetworkSecurityGroupsOperations c)
-            => c.DeleteAsync(ResourceGroupName, Name);
-
         protected override Task<NetworkSecurityGroup> GetOrThrowAsync(
             INetworkSecurityGroupsOperations c)
             => c.GetAsync(ResourceGroupName, Name);

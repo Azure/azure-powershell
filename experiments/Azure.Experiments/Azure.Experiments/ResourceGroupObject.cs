@@ -27,8 +27,5 @@ namespace Azure.Experiments
 
         protected override Task<ResourceGroup> GetOrThrowAsync(IResourceGroupsOperations c)
             => c.GetAsync(Name);
-
-        protected override Task DeleteAsync(IResourceGroupsOperations c)
-            => c.DeleteAsync(Name);
     }
 }
