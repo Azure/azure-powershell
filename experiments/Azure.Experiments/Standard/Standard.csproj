@@ -2,6 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard1.4</TargetFramework>
+    <AssemblyName>Azure.Experiments</AssemblyName>
+    <RootNamespace>Azure.Experiments</RootNamespace>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>1.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -9,5 +13,7 @@
     <PackageReference Include="Microsoft.Azure.Management.Network" Version="15.0.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="1.6.0-preview" />
   </ItemGroup>
+
+  <Import Project="..\Shared\Azure.Experiments.Shared.projitems" Label="Shared" />
 
 </Project>

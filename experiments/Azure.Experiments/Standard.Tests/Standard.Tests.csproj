@@ -14,7 +14,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Azure.Experiments\Azure.Experiments.csproj" />
+    <ProjectReference Include="..\Standard\Standard.csproj" />
   </ItemGroup>
+
+  <Import Project="..\Shared.Tests\Shared.Tests.projitems" Label="Shared" />
 
 </Project>
