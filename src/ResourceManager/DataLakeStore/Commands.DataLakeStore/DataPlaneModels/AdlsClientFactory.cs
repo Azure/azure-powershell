@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
     {
         private static readonly Dictionary<string, AdlsClient> ClientFactory=new Dictionary<string, AdlsClient>();
         /// <summary>
-        /// 
+        /// Mock client credentials used for testing
         /// </summary>
         public static ServiceClientCredentials MockCredentials;
         private static string HandleAccntName(string accnt)

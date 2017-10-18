@@ -39,3 +39,19 @@
 -->
 
 ## Current Breaking Changes
+**Export-AzureRmDataLakeStoreItem**
+- Parameters Resume, PerFileThreadCount are deprecated. Will be removed in future releases.
+```powershell
+# Old
+# Export-AzureRmDataLakeStoreItem -Account contoso -Path /test -Destination C:\test -Recurse -Resume -PerFileThreadCount 2 -ConcurrentFileCount 80
+# New
+# Export-AzureRmDataLakeStoreItem -Account contoso -Path /test -Destination C:\test -Recurse -ConcurrentFileCount 160
+```
+**Import-AzureRmDataLakeStoreItem**
+- Parameters Resume, PerFileThreadCount, ForceBinary are deprecated. Will be removed in future releases.
+```powershell
+# Old
+# Import-AzureRmDataLakeStoreItem -Account contoso -Path C:\test -Destination /test -Recurse -Resume -ForceBinary -PerFileThreadCount 2 -ConcurrentFileCount 80
+# New
+# Import-AzureRmDataLakeStoreItem -Account contoso -Path C:\test -Destination /test -Recurse -ConcurrentFileCount 160
+```
