@@ -152,7 +152,7 @@ PrivateData = @{
 '
 
         # External dependent modules of this module
-        ExternalModuleDependencies = 'AzureRM.Profile'
+        # ExternalModuleDependencies = 'AzureRM.Profile'
 
     } # End of PSData hashtable
     
