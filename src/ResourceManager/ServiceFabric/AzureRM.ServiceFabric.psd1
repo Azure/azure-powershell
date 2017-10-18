@@ -54,7 +54,14 @@ CLRVersion = '4.0'
 RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '3.4.1'; })
 
 # Assemblies that must be loaded prior to importing this module
-# RequiredAssemblies = @()
+RequiredAssemblies = '.\Microsoft.Azure.KeyVault.dll',
+                     '.\Microsoft.Azure.KeyVault.WebKey.dll',
+                     '.\Microsoft.Azure.Management.Compute.dll',
+                     '.\Microsoft.Azure.Management.KeyVault.dll',
+                     '.\Microsoft.Azure.Management.Network.dll',
+                     '.\Microsoft.Azure.Management.ResourceManager.dll',
+                     '.\Microsoft.Azure.Management.ServiceFabric.dll',
+                     '.\Microsoft.Azure.Management.Storage.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -124,7 +131,7 @@ PrivateData = @{
         ReleaseNotes = 'Updated for common code changes'
 
         # External dependent modules of this module
-        # ExternalModuleDependencies = ''
+        ExternalModuleDependencies = 'AzureRM.Profile'
 
     } # End of PSData hashtable
     

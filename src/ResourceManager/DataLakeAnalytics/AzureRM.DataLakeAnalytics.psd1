@@ -27,7 +27,7 @@ Author = 'Microsoft Corporation'
 CompanyName = 'Microsoft Corporation'
 
 # Copyright statement for this module
-Copyright = '© Microsoft Corporation. All rights reserved.'
+Copyright = 'Â© Microsoft Corporation. All rights reserved.'
 
 # Description of the functionality provided by this module
 Description = 'Microsoft Azure PowerShell - Data Lake Analytics'
@@ -54,7 +54,7 @@ CLRVersion = '4.0'
 RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '3.4.1'; })
 
 # Assemblies that must be loaded prior to importing this module
-# RequiredAssemblies = @()
+RequiredAssemblies = '.\Microsoft.Azure.Management.DataLake.Analytics.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -154,7 +154,7 @@ PrivateData = @{
         ReleaseNotes = 'Updated for common code changes'
 
         # External dependent modules of this module
-        # ExternalModuleDependencies = ''
+        ExternalModuleDependencies = 'AzureRM.Profile'
 
     } # End of PSData hashtable
     

@@ -118,11 +118,19 @@ function Make-StrictModuleDependencies
 
   PROCESS 
   {
-    $manifest = Test-ModuleManifest -Path $Path
+    $file = Get-Item $path
+    Import-LocalizedData -BindingVariable ModuleMetadata -BaseDirectory $file.DirectoryName -FileName $file.Name
     $newModules = @()
-    foreach ($module in $manifest.RequiredModules)
+    foreach ($module in $ModuleMetadata.RequiredModules)
     {
-       $newModules += (@{ModuleName = $module.Name; RequiredVersion= $module.Version})
+        if (($file.Name -eq "AzureRM.psd1") -or ($file.Name -eq "AzureStack.psd1"))
+        {
+            $newModules += (@{ModuleName = $module["ModuleName"]; RequiredVersion= $module["RequiredVersion"]})
+        }
+        else
+        {
+            $newModules += (@{ModuleName = $module["ModuleName"]; RequiredVersion= $module["ModuleVersion"]})
+        }        
     }
 
       if ($newModules.Count -gt 0)
@@ -145,7 +153,6 @@ function Add-PSM1Dependency
     $file = Get-Item -Path $Path
     $manifestFile = $file.Name
     $psm1file = $manifestFile -replace ".psd1", ".psm1"
-    $manifest = Test-ModuleManifest -Path $Path
     if($isNetCore -eq "false") {
       Update-ModuleManifest -Path $Path -RootModule $psm1file
     }
@@ -217,14 +224,15 @@ function Change-RMModule
         $moduleManifest = $moduleName + ".psd1"
         $moduleSourcePath = Join-Path -Path $Path -ChildPath $moduleManifest
         $manifest = Make-StrictModuleDependencies $moduleSourcePath
-        $manifest = Test-ModuleManifest -Path $moduleSourcePath
+        $file = Get-Item $moduleSourcePath
+        Import-LocalizedData -BindingVariable ModuleMetadata -BaseDirectory $file.DirectoryName -FileName $file.Name
         $toss = Publish-Module -Path $Path -Repository $TempRepo -Force
         Write-Output "Changing to directory for module modifications $TempRepoPath"
         pushd $TempRepoPath
         try
         {
-          $nupkgPath = Join-Path -Path . -ChildPath ($moduleName + "." + $manifest.Version.ToString() + ".nupkg")
-          $zipPath = Join-Path -Path . -ChildPath ($moduleName + "." + $manifest.Version.ToString() + ".zip")
+          $nupkgPath = Join-Path -Path . -ChildPath ($moduleName + "." + $ModuleMetadata.ModuleVersion.ToString() + ".nupkg")
+          $zipPath = Join-Path -Path . -ChildPath ($moduleName + "." + $ModuleMetadata.ModuleVersion.ToString() + ".zip")
           $dirPath = Join-Path -Path . -ChildPath $moduleName
           $unzippedManifest = Join-Path -Path $dirPath -ChildPath ($moduleName + ".psd1")
 
@@ -268,8 +276,9 @@ function Publish-RMModule
         $moduleName = (Get-Item -Path $Path).Name
         $moduleManifest = $moduleName + ".psd1"
         $moduleSourcePath = Join-Path -Path $Path -ChildPath $moduleManifest
-        $manifest = Test-ModuleManifest -Path $moduleSourcePath
-        $nupkgPath = Join-Path -Path $TempRepoPath -ChildPath ($moduleName + "." + $manifest.Version.ToString() + ".nupkg")
+        $file = Get-Item $moduleSourcePath
+        Import-LocalizedData -BindingVariable ModuleMetadata -BaseDirectory $file.DirectoryName -FileName $file.Name
+        $nupkgPath = Join-Path -Path $TempRepoPath -ChildPath ($moduleName + "." + $ModuleMetadata.ModuleVersion.ToString() + ".nupkg")
         if (!(Test-Path -Path $nupkgPath))
         {
             throw "Module at $nupkgPath in $TempRepoPath does not exist"

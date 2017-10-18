@@ -25,6 +25,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using System.Linq;
     using System.Collections;
     using WindowsAzure.Commands.Common;
+    using Commands.Common.Authentication.Abstractions;
 
     /// <summary>
     /// Creates a policy assignment.

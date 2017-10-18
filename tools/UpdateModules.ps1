@@ -31,23 +31,21 @@ function Create-ModulePsm1
 
   PROCESS
   {
-	 $manifestDir = Get-Item -Path $ModulePath
-	 $moduleName = $manifestDir.Name + ".psd1"
-	 $manifestPath = Join-Path -Path $ModulePath -ChildPath $moduleName
-     $module = Test-ModuleManifest -Path $manifestPath
+     $manifestDir = Get-Item -Path $ModulePath
+     $moduleName = $manifestDir.Name + ".psd1"
+     $manifestPath = Join-Path -Path $ModulePath -ChildPath $moduleName
+     $file = Get-Item $manifestPath
+     Import-LocalizedData -BindingVariable ModuleMetadata -BaseDirectory $file.DirectoryName -FileName $file.Name
      $templateOutputPath = $manifestPath -replace ".psd1", ".psm1"
-     [string]$strict
-     [string]$loose
-     foreach ($mod in $module.RequiredModules)
+     [string]$minimum
+     foreach ($mod in $ModuleMetadata.RequiredModules)
      {
-        $strict += "  Import-Module " + $mod.Name + " -RequiredVersion " + [string]$mod.Version + "`r`n"
-        $loose += "  Import-Module " + $mod.Name + "`r`n"
+        $minimum += "  Import-Module " + $mod["ModuleName"] + " -ModuleVersion " + [string]$mod["ModuleVersion"] + "`r`n"
      }
      $template = Get-Content -Path $TemplatePath
-     $template = $template -replace "%MODULE-NAME%", $module.Name
+     $template = $template -replace "%MODULE-NAME%", $file.BaseName
      $template = $template -replace "%DATE%", [string](Get-Date)
-     $template = $template -replace "%STRICT-DEPENDENCIES%", $strict
-     $template = $template -replace "%DEPENDENCIES%", $loose
+     $template = $template -replace "%MINIMUM-DEPENDENCIES%", $minimum
      Write-Host "Writing psm1 manifest to $templateOutputPath"
      $template | Out-File -FilePath $templateOutputPath -Force
      $file = Get-Item -Path $templateOutputPath
@@ -144,5 +142,4 @@ if (($scope -eq 'All') -or ($scope -eq 'AzureRM')) {
         Write-Host "Updated Azure module"
     }
 } 
-
 
