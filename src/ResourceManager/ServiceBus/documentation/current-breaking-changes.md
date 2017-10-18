@@ -43,61 +43,61 @@
 The following cmdlets were affected this release:
 	
    **Get-AzureRmServiceBusTopicAuthorizationRule**
-	- 'Get-AzureRmServiceBusTopicAuthorizationRule' cmdlet is depricated in current build. Please use the New cmdlet 'Get-AzureRmServiceBusAuthorizationRule'
+	- 'Get-AzureRmServiceBusTopicAuthorizationRule' cmdlet is removed in current build. Please use the New cmdlet 'Get-AzureRmServiceBusAuthorizationRule'
 	
    **Get-AzureRmServiceBusTopicKey**
-	- 'Get-AzureRmServiceBusTopicKey' cmdlet is depricated in current build. Please use the New cmdlet 'Get-AzureRmServiceBusKey'
+	- 'Get-AzureRmServiceBusTopicKey' cmdlet is removed in current build. Please use the New cmdlet 'Get-AzureRmServiceBusKey'
 	
    **New-AzureRmServiceBusTopicAuthorizationRule**, 
-	- 'New-AzureRmServiceBusTopicAuthorizationRule' cmdlet is depricated in current build. Please use the New cmdlet 'New-AzureRmServiceBusAuthorizationRule'
+	- 'New-AzureRmServiceBusTopicAuthorizationRule' cmdlet is removed in current build. Please use the New cmdlet 'New-AzureRmServiceBusAuthorizationRule'
 	
    **New-AzureRmServiceBusTopicKey**,
-	- 'New-AzureRmServiceBusTopicKey' cmdlet is depricated in current build. Please use the New cmdlet 'New-AzureRmServiceBusKey'
+	- 'New-AzureRmServiceBusTopicKey' cmdlet is removed in current build. Please use the New cmdlet 'New-AzureRmServiceBusKey'
 	
    **Remove-AzureRmServiceBusTopicAuthorizationRule**, 
-   - 'Remove-AzureRmServiceBusTopicAuthorizationRule' cmdlet is depricated in current build. Please use the New cmdlet 'Remove-AzureRmServiceBusAuthorizationRule'
+   - 'Remove-AzureRmServiceBusTopicAuthorizationRule' cmdlet is removed in current build. Please use the New cmdlet 'Remove-AzureRmServiceBusAuthorizationRule'
    
    **Set-AzureRmServiceBusTopicAuthorizationRule**,
-   - 'Set-AzureRmServiceBusTopicAuthorizationRule' cmdlet is depricated in current build. Please use the New cmdlet 'Set-AzureRmServiceBusAuthorizationRule'
+   - 'Set-AzureRmServiceBusTopicAuthorizationRule' cmdlet is removed in current build. Please use the New cmdlet 'Set-AzureRmServiceBusAuthorizationRule'
    
    **New-AzureRmServiceBusNamespaceKey**, 
-   - 'New-AzureRmServiceBusNamespaceKey' cmdlet is depricated in current build. Please use the New cmdlet 'New-AzureRmServiceBusKey'
+   - 'New-AzureRmServiceBusNamespaceKey' cmdlet is removed in current build. Please use the New cmdlet 'New-AzureRmServiceBusKey'
    
    **Get-AzureRmServiceBusQueueAuthorizationRule**, 
-   - 'Get-AzureRmServiceBusQueueAuthorizationRule' cmdlet is depricated in current build. Please use the New cmdlet 'Get-AzureRmServiceBusAuthorizationRule'
+   - 'Get-AzureRmServiceBusQueueAuthorizationRule' cmdlet is removed in current build. Please use the New cmdlet 'Get-AzureRmServiceBusAuthorizationRule'
    
    **Get-AzureRmServiceBusQueueKey**,
-   - 'Get-AzureRmServiceBusQueueKey' cmdlet is depricated in current build. Please use the New cmdlet 'Get-AzureRmServiceBusKey'
+   - 'Get-AzureRmServiceBusQueueKey' cmdlet is removed in current build. Please use the New cmdlet 'Get-AzureRmServiceBusKey'
    
    **New-AzureRmServiceBusQueueAuthorizationRule**, 
-   - 'New-AzureRmServiceBusQueueAuthorizationRule' cmdlet is depricated in current build. Please use the New cmdlet 'New-AzureRmServiceBusAuthorizationRule'
+   - 'New-AzureRmServiceBusQueueAuthorizationRule' cmdlet is removed in current build. Please use the New cmdlet 'New-AzureRmServiceBusAuthorizationRule'
    
    **New-AzureRmServiceBusQueueKey**,
-   - 'New-AzureRmServiceBusQueueKey' cmdlet is depricated in current build. Please use the New cmdlet 'New-AzureRmServiceBusKey'
+   - 'New-AzureRmServiceBusQueueKey' cmdlet is removed in current build. Please use the New cmdlet 'New-AzureRmServiceBusKey'
    
    **Remove-AzureRmServiceBusQueueAuthorizationRule**,
-   - 'Remove-AzureRmServiceBusQueueAuthorizationRule' cmdlet is depricated in current build. Please use the New cmdlet 'GRemove-AzureRmServiceBusAuthorizationRule'
+   - 'Remove-AzureRmServiceBusQueueAuthorizationRule' cmdlet is removed in current build. Please use the New cmdlet 'GRemove-AzureRmServiceBusAuthorizationRule'
    
    **Set-AzureRmServiceBusQueueAuthorizationRule**, 
-   - 'Set-AzureRmServiceBusQueueAuthorizationRule' cmdlet is depricated in current build. Please use the New cmdlet 'Set-AzureRmServiceBusAuthorizationRule'
+   - 'Set-AzureRmServiceBusQueueAuthorizationRule' cmdlet is removed in current build. Please use the New cmdlet 'Set-AzureRmServiceBusAuthorizationRule'
    
    **Get-AzureRmServiceBusNamespaceAuthorizationRule**, 
-   - 'Get-AzureRmServiceBusNamespaceAuthorizationRule' cmdlet is depricated in current build. Please use the New cmdlet 'Get-AzureRmServiceBusAuthorizationRule'
+   - 'Get-AzureRmServiceBusNamespaceAuthorizationRule' cmdlet is removed in current build. Please use the New cmdlet 'Get-AzureRmServiceBusAuthorizationRule'
    
    **Get-AzureRmServiceBusNamespaceKey**, 
-   - 'Get-AzureRmServiceBusNamespaceKey' cmdlet is depricated in current build. Please use the New cmdlet 'Get-AzureRmServiceBusKey'
+   - 'Get-AzureRmServiceBusNamespaceKey' cmdlet is removed in current build. Please use the New cmdlet 'Get-AzureRmServiceBusKey'
    
    **New-AzureRmServiceBusNamespaceAuthorizationRule**,
-   - 'New-AzureRmServiceBusNamespaceAuthorizationRule' cmdlet is depricated in current build. Please use the New cmdlet 'New-AzureRmServiceBusAuthorizationRule'
+   - 'New-AzureRmServiceBusNamespaceAuthorizationRule' cmdlet is removed in current build. Please use the New cmdlet 'New-AzureRmServiceBusAuthorizationRule'
    
    **Remove-AzureRmServiceBusNamespaceAuthorizationRule**,
-   - 'Remove-AzureRmServiceBusNamespaceAuthorizationRule' cmdlet is depricated in current build. Please use the New cmdlet 'Remove-AzureRmServiceBusAuthorizationRule'
+   - 'Remove-AzureRmServiceBusNamespaceAuthorizationRule' cmdlet is removed in current build. Please use the New cmdlet 'Remove-AzureRmServiceBusAuthorizationRule'
    
    **Set-AzureRmServiceBusNamespaceAuthorizationRule**
-   - 'Set-AzureRmServiceBusNamespaceAuthorizationRule' cmdlet is depricated in current build. Please use the New cmdlet 'Set-AzureRmServiceBusAuthorizationRule'
+   - 'Set-AzureRmServiceBusNamespaceAuthorizationRule' cmdlet is removed in current build. Please use the New cmdlet 'Set-AzureRmServiceBusAuthorizationRule'
    
    
-   The following properties are depricated in this release:
+   The following properties are removed in this release:
    
    ** NamespceAttributes **
    - Status
@@ -177,18 +177,16 @@ The following cmdlets were affected this release:
     ```powershell
    
     # Old
-	# The $subscription has EntityAvailabilityStatus, EnableSubscriptionPartitioning, IsAnonymousAccessible, IsExpress, Location and FilteringMessagesBeforePublishing property 
+	# The $subscription has EntityAvailabilityStatus, DeadLetteringOnFilterEvaluationExceptions, Location, and IsReadOnly property 
     $subscription = Get-AzureRmServiceBussubscription <parameters>
 	$subscription.EntityAvailabilityStatus
-	$subscription.EnableSubscriptionPartitioning
-	$subscription.IsAnonymousAccessible
-	$subscription.IsExpress
-	$subscription.FilteringMessagesBeforePublishing
+	$subscription.DeadLetteringOnFilterEvaluationExceptions
 	$subscription.Location
+	$subscription.IsReadOnly
 
     # New
 
-    # The call remains the same, but the returned values Topic object will not have the EntityAvailabilityStatus, EnableBatchedOperations, IsAnonymousAccessible and SupportOrdering properties    
+    # The call remains the same, but the returned values Topic object will not have the EntityAvailabilityStatus, DeadLetteringOnFilterEvaluationExceptions, Location, and IsReadOnly properties    
     $subscription = Get-AzureRmServiceBussubscription <parameters>
     
     ```
