@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard1.4</TargetFramework>
+    <TargetFrameworks>netstandard1.4;net452</TargetFrameworks>
     <AssemblyName>Azure.Experiments</AssemblyName>
     <RootNamespace>Azure.Experiments</RootNamespace>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -12,6 +12,7 @@
     <PackageReference Include="Microsoft.Azure.Management.Compute" Version="16.3.0" />
     <PackageReference Include="Microsoft.Azure.Management.Network" Version="15.0.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="1.6.0-preview" />
+    <PackageReference Include="System.Net.Http" Version="4.3.0" />
   </ItemGroup>
 
   <Import Project="..\Shared\Azure.Experiments.Shared.projitems" Label="Shared" />

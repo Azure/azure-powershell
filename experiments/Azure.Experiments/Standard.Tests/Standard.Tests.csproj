@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp1.1</TargetFramework>
+    <TargetFrameworks>netcoreapp1.1;net4.5.2</TargetFrameworks>
 
     <IsPackable>false</IsPackable>
   </PropertyGroup>
@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Standard\Standard.csproj" />
+    <ProjectReference Include="..\Azure.Experiments\Azure.Experiments.csproj" />
   </ItemGroup>
 
   <Import Project="..\Shared.Tests\Shared.Tests.projitems" Label="Shared" />

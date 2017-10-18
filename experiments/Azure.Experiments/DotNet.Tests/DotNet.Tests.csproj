@@ -78,12 +78,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DotNet\DotNet.csproj">
-      <Project>{a2bf6184-cfaf-4395-896d-6062d5c08ca1}</Project>
-      <Name>DotNet</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -91,6 +85,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Azure.Experiments\Azure.Experiments.csproj">
+      <Project>{1d707014-5d2b-4c4e-9d1a-3a449a234329}</Project>
+      <Name>Azure.Experiments</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="..\Shared.Tests\Shared.Tests.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -8,16 +8,4 @@
   <PropertyGroup Label="Configuration">
     <Import_RootNamespace>Azure.Experiments.Shared</Import_RootNamespace>
   </PropertyGroup>
-  <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)AzureObject.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Context.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)NetworkInterfaceObject.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)NetworkSecurityGroup.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)PublicIpAddressObject.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ResourceGroupObject.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ResourceObject.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)SubnetObject.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)VirtualNetworkObject.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)VmObject.cs" />
-  </ItemGroup>
 </Project>
