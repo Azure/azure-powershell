@@ -107,7 +107,7 @@ NestedModules = @()
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = 'Get-ServiceHealth', 'Get-ResourceHealth', 'Get-Alert', 
-               'Get-RegionHealth', 'Close-Alert', 'New-AlertObject'
+               'Get-RegionHealth', 'Close-Alert'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @()

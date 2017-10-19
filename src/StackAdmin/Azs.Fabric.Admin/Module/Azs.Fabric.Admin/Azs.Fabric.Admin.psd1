@@ -140,7 +140,7 @@ FunctionsToExport = 'Get-ScaleUnitNode', 'Get-ComputeInfrastructureOperation',
                'Get-InfrastructureRoleInstance', 'Get-EdgeGateway', 
                'Enable-ScaleUnitNode', 'Start-InfrastructureRoleInstance', 
                'Stop-InfrastructureRoleInstance', 'Get-IpPool', 
-               'Get-SlbMuxInstance', 'Get-LogicalSubnet', 'New-IpPoolObject'
+               'Get-SlbMuxInstance', 'Get-LogicalSubnet'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @()
