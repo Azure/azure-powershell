@@ -6,37 +6,43 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-AzureRmSqlDatabaseActivity
+# Stop-AzureRmSqlDatabaseActivity
 
 ## SYNOPSIS
-Gets the status of database operations.
+Cancels the asynchronous updateslo operation on the database.
 
 ## SYNTAX
 
 ```
-Get-AzureRmSqlDatabaseActivity [-ServerName] <String> [-ElasticPoolName <String>] -DatabaseName <String>
+Stop-AzureRmSqlDatabaseActivity [-ServerName] <String> [-ElasticPoolName <String>] -DatabaseName <String>
  [-OperationId <Guid>] [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmSqlDatabaseActivity** cmdlet gets the status of database operations in Azure SQL Database.
+The **Stop-AzureRmSqlDatabaseActivity** cmdlet cancels the asynchronous updateslo operation on the database.
 
 ## EXAMPLES
 
-### Example 1: Get status for all SQL Database instances
+### Example 1: Cancel the asynchronous updateslo operation on the database
 ```
-PS C:\>Get-AzureRmSqlDatabaseActivity -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ElasticPoolName "ElasticPool01"
+PS C:\>Stop-AzureRmSqlDatabaseActivity -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -OperationId af97005d-9243-4f8a-844e-402d1cc855f5
+
+OperationId     : af97005d-9243-4f8a-844e-402d1cc855f5
+ServerName      : Server01
+DatabaseName    : Database01
+State           : CANCELLED
+Operation       : UpdateLogicalDatabase
+ErrorCode       :
+ErrorMessage    :
+ErrorSeverity   :
+StartTime       : 10/15/2017 02:49:42 PM
+EndTime         : 10/15/2017 02:49:43 PM
+PercentComplete : 
+Properties      : Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseActivityModel+DatabaseState
 ```
 
-This command returns the operation status of all SQL Database instances in an elastic pool named ElasticPool01.
-
-### Example 2: Get status for all SQL Database operations
-```
-PS C:\>Get-AzureRmSqlDatabaseActivity -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01"
-```
-
-This command returns the status of all SQL Database operations in a database.
+This command cancels the asynchronous updateslo operation on the database.
 
 ## PARAMETERS
 
@@ -71,7 +77,7 @@ Accept wildcard characters: False
 ```
 
 ### -ElasticPoolName
-Specifies the name of the elastic database pool for which this cmdlet gets status.
+The name of the Azure SQL Elastic Pool.
 
 ```yaml
 Type: String
