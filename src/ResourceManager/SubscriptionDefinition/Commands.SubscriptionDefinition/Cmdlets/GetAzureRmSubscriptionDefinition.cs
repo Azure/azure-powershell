@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.SubscriptionDefinition.Cmdlets
             else
             {
                 // TODO: Instead of returning a SubDef for the current subscription, consider retrieving all management groups 
-                //       and returning the SubDefs for those groups.
+                //       and subscriptions in the current tenant, and returning the distinct set of SubDefs.
                 IAzureContext defaultContext;
                 if (this.TryGetDefaultContext(out defaultContext) && defaultContext.Subscription != null)
                 {
