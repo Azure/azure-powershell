@@ -48,8 +48,18 @@ namespace Microsoft.Azure.Commands.SubscriptionDefinition.Cmdlets
             }
             else
             {
-                // Get subscription definition for the subscription in the current context.
-                this.SubscriptionDefinitionClient.SetSubscriptionScope(Guid.Parse(this.DefaultContext.Subscription.Id));
+                // TODO: Instead of returning a SubDef for the current subscription, consider retrieving all management groups 
+                //       and returning the SubDefs for those groups.
+                IAzureContext defaultContext;
+                if (this.TryGetDefaultContext(out defaultContext) && defaultContext.Subscription != null)
+                {
+                    // Get subscription definition for the subscription in the current context.
+                    this.SubscriptionDefinitionClient.SetSubscriptionScope(Guid.Parse(defaultContext.Subscription.Id));
+                }
+                else
+                {
+                    throw new InvalidOperationException("No subscription provided.");
+                }
             }
 
             if (IsListOperation())
