@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.ApplicationInsights.Models;
 using Microsoft.Azure.Management.ApplicationInsights.Management.Models;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System;
 using System.Management.Automation;
 
@@ -25,6 +26,25 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
         [Parameter(
             Position = 0,
             Mandatory = true,
+            ParameterSetName = ComponentObjectParameterSet,
+            ValueFromPipeline = true,
+            HelpMessage = "Application Insights Component Object.")]
+        [ValidateNotNull]
+        public PSApplicationInsightsComponent ApplicationInsightsComponent { get; set; }
+
+        [Parameter(
+            Position = 0,
+            Mandatory = true,
+            ParameterSetName = ResourceIdParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Application Insights Component Resource Id.")]
+        [ValidateNotNull]
+        public ResourceIdentifier ResourceId { get; set; }
+
+        [Parameter(
+            Position = 0,
+            Mandatory = true,
+            ParameterSetName = ComponentNameParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Resource Group Name.")]
         [ValidateNotNullOrEmpty]
@@ -33,6 +53,7 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
         [Parameter(
             Position = 1,
             Mandatory = true,
+            ParameterSetName = ComponentNameParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Component Name.")]
         [Alias(ApplicationInsightsComponentNameAlias, ComponentNameAlias)]
@@ -44,7 +65,6 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Permissions that API key allow apps to do.")]
-        [Alias(ApplicationKindAlias)]
         [ValidateSet(PermissionType.ReadTelemetry,
             PermissionType.WriteAnnotations,
             PermissionType.AuthenticateSDKControlChannel,
@@ -55,16 +75,28 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
             Position = 3,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "API Key identify name.")]
+            HelpMessage = "Description to help identify this API key.")]
         [ValidateNotNullOrEmpty]
-        public string ApiKeyName { get; set; }
+        public string Description { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
+            if (this.ApplicationInsightsComponent != null)
+            {
+                this.ResourceGroupName = this.ApplicationInsightsComponent.ResourceGroupName;
+                this.Name = this.ApplicationInsightsComponent.Name;
+            }
+
+            if (this.ResourceId != null)
+            {
+                this.ResourceGroupName = this.ResourceId.ResourceGroupName;
+                this.Name = this.ResourceId.ResourceName;
+            }
+
             APIKeyRequest apiKeyRequest = new APIKeyRequest();
-            apiKeyRequest.Name = this.ApiKeyName;
+            apiKeyRequest.Name = this.Description;
 
             var access = PSApiKey.BuildApiKeyAccess(this.SubscriptionId, this.ResourceGroupName, this.Name, this.Permissions);
             apiKeyRequest.LinkedReadProperties = access.Item1;

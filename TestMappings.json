@@ -167,5 +167,8 @@
   ],
   "src/ResourceManager/Profile/Commands.Profile.Test/": [
     ".\\src\\ResourceManager\\Profile\\Commands.Profile.Test\\bin\\Debug\\Microsoft.Azure.Commands.Profile.Test.dll"
-  ]
+  ],
+ "src/ResourceManager/ApplicationInsights/": [
+    ".\\src\\ResourceManager\\ApplicationInsights\\Commands.ApplicationInsights.Test\\bin\\Debug\\Microsoft.Azure.Commands.ApplicationInsights.Test.dll"
+  ]  
 }

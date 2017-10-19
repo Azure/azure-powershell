@@ -165,10 +165,11 @@
     <Compile Include="ApplicationInsights\ApplicationInsightsManagementClient.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
-    <None Include="AzureRM.ApplicationInsights.psd1">
+    <None Include="..\AzureRM.ApplicationInsights.psd1">
+      <Link>AzureRM.ApplicationInsights.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="app.config" />
     <None Include="Microsoft.Azure.Commands.ApplicationInsights.dll-Help.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

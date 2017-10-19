@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ApplicationInsights.Models;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ApplicationInsights
@@ -23,6 +24,25 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
         [Parameter(
             Position = 0,
             Mandatory = true,
+            ParameterSetName = ComponentObjectParameterSet,
+            ValueFromPipeline = true,
+            HelpMessage = "Application Insights Component Object.")]
+        [ValidateNotNull]
+        public PSApplicationInsightsComponent ApplicationInsightsComponent { get; set; }
+
+        [Parameter(
+            Position = 0,
+            Mandatory = true,
+            ParameterSetName = ResourceIdParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Application Insights Component Resource Id.")]
+        [ValidateNotNull]
+        public ResourceIdentifier ResourceId { get; set; }
+
+        [Parameter(
+            Position = 0,
+            Mandatory = true,
+            ParameterSetName = ComponentNameParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Resource Group Name.")]
         [ValidateNotNullOrEmpty]
@@ -31,6 +51,7 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
         [Parameter(
             Position = 1,
             Mandatory = true,
+            ParameterSetName = ComponentNameParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Application Insights Component Name.")]
         [Alias(ApplicationInsightsComponentNameAlias, ComponentNameAlias)]
@@ -40,6 +61,18 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
+
+            if (this.ApplicationInsightsComponent != null)
+            {
+                this.ResourceGroupName = this.ApplicationInsightsComponent.ResourceGroupName;
+                this.Name = this.ApplicationInsightsComponent.Name;
+            }
+
+            if (this.ResourceId != null)
+            {
+                this.ResourceGroupName = this.ResourceId.ResourceGroupName;
+                this.Name = this.ResourceId.ResourceName;
+            }
 
             var pricingPlanResponse = this.AppInsightsManagementClient
                                             .ComponentCurrentBillingFeatures

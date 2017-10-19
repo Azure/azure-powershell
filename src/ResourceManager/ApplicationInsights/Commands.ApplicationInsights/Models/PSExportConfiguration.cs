@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.Models
         public string ExportId { get; set; }
         public string StorageName { get; set; }
         public string ContainerName { get; set; }
-        public string RecordTypes { get; set; }
+        public string DocumentTypes { get; set; }
         public string DestinationStorageSubscriptionId { get; set; }
         public string DestinationStorageLocationId { get; set; }
         public string DestinationStorageAccountId { get; set; }
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.Models
         {
             this.ExportId = response.ExportId;
 
-            this.RecordTypes = string.Join(", ", ApplicationInsightsBaseCmdlet.ConvertToDocumentType(response.RecordTypes.Split(',')));
+            this.DocumentTypes = string.Join(", ", ApplicationInsightsBaseCmdlet.ConvertToDocumentType(response.RecordTypes.Split(',')));
             this.DestinationStorageSubscriptionId = response.DestinationStorageSubscriptionId;
             this.DestinationStorageLocationId = response.DestinationStorageLocationId;
             this.DestinationStorageAccountId = response.DestinationAccountId;
@@ -43,6 +43,13 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.Models
             this.ContainerName = response.ContainerName;
             this.LastSuccessTime = response.LastSuccessTime;
         }
+    }
+
+    public class PSExportConfigurationTableView : PSExportConfiguration
+    {
+        public PSExportConfigurationTableView(ApplicationInsightsComponentExportConfiguration response)
+            : base(response)
+        { }
     }
 }
 

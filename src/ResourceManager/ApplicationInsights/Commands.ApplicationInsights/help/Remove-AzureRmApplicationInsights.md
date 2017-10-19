@@ -12,8 +12,21 @@ Remove an application insights resource
 
 ## SYNTAX
 
+### ComponentObjectParameterSet
 ```
-Remove-AzureRmApplicationInsights [-ResourceGroupName] <String> [-Name] <String> [-Force]
+Remove-AzureRmApplicationInsights [-ApplicationInsightsComponent] <PSApplicationInsightsComponent> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ResourceIdParameterSet
+```
+Remove-AzureRmApplicationInsights [-ResourceId] <ResourceIdentifier> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ComponentNameParameterSet
+```
+Remove-AzureRmApplicationInsights [-ResourceGroupName] <String> [-Name] <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -31,61 +44,18 @@ Remove an applciation insights resource named "test" in resource group "testgrou
 
 ## PARAMETERS
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.```yaml
-Type: IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Force
-Force to Delete the Application Insights Component
+### -ApplicationInsightsComponent
+Application Insights Component Object.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-Application Insights Component Name.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: ApplicationInsightsComponentName, ComponentName
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Resource Group Name.
-
-```yaml
-Type: String
-Parameter Sets: (All)
+Type: PSApplicationInsightsComponent
+Parameter Sets: ComponentObjectParameterSet
 Aliases: 
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -101,6 +71,75 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Application Insights Component Name.
+
+```yaml
+Type: String
+Parameter Sets: ComponentNameParameterSet
+Aliases: ApplicationInsightsComponentName, ComponentName
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PassThru
+If specified will write true in case operation succeeds. This parameter is optional. Default value is false.```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Resource Group Name.
+
+```yaml
+Type: String
+Parameter Sets: ComponentNameParameterSet
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+Application Insights Component Resource Id.```yaml
+Type: ResourceIdentifier
+Parameter Sets: ResourceIdParameterSet
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

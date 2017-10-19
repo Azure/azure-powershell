@@ -38,12 +38,12 @@ function Test-GetApplicationInsightsContinuousExport
 		$destinationStorageAccountSASToken = "https://"+ $dummyStorageAccount + ".blob.core.windows.net/"+$dummyContainer + "?sv=2015-04-05&sr=c&sig=xxxxxxxxx";
 		
 		$documentTypes = @("Request", "Custom Event");
-		$continuousExport = New-AzureRmApplicationInsightsContinuousExport -ResourceGroupName $rgname -Name $appName -DocumentTypes $documentTypes -DestinationStorageAccountId $destinatinStorageAccountId -DestinationStorageLocationId $loc -DestinationStorageSASUri $destinationStorageAccountSASToken;
+		$continuousExport = New-AzureRmApplicationInsightsContinuousExport -ResourceGroupName $rgname -Name $appName -DocumentType $documentTypes -StorageAccountId $destinatinStorageAccountId -StorageLocation $loc -StorageSASUri $destinationStorageAccountSASToken;
 
         $continuousExport2 = Get-AzureRmApplicationInsightsContinuousExport -ResourceGroupName $rgname -Name $appName -ExportId $continuousExport.ExportId;
         
         Assert-NotNull $continuousExport2        
-		Assert-AreEqual "Request, Custom Event" $continuousExport2.RecordTypes
+		Assert-AreEqual "Request, Custom Event" $continuousExport2.DocumentTypes
 		Assert-AreEqual $dummySubId $continuousExport2.DestinationStorageSubscriptionId
 		Assert-AreEqual $loc $continuousExport2.DestinationStorageLocationId
 		Assert-AreEqual $dummyContainer $continuousExport2.ContainerName
@@ -51,12 +51,12 @@ function Test-GetApplicationInsightsContinuousExport
         $continuousExports = Get-AzureRmApplicationInsightsContinuousExport -ResourceGroupName $rgname -Name $appName;
         
 		Assert-AreEqual 1 $continuousExports.count
-		Assert-AreEqual "Request, Custom Event" $continuousExports[0].RecordTypes
+		Assert-AreEqual "Request, Custom Event" $continuousExports[0].DocumentTypes
 		Assert-AreEqual $dummySubId $continuousExports[0].DestinationStorageSubscriptionId
 		Assert-AreEqual $loc $continuousExports[0].DestinationStorageLocationId
 		Assert-AreEqual $dummyContainer $continuousExports[0].ContainerName
 
-        Remove-AzureRmApplicationInsights -Force -ResourceGroupName $rgname -Name $appName;
+        Remove-AzureRmApplicationInsights -ResourceGroupName $rgname -Name $appName;
     }
     finally
     {
@@ -91,10 +91,10 @@ function Test-NewApplicationInsightsContinuousExport
 		$destinationStorageAccountSASToken = "https://"+ $dummyStorageAccount + ".blob.core.windows.net/"+$dummyContainer + "?sv=2015-04-05&sr=c&sig=xxxxxxxxx";
 		
 		$documentTypes = @("Request", "Custom Event");
-		$continuousExport = New-AzureRmApplicationInsightsContinuousExport -ResourceGroupName $rgname -Name $appName -DocumentTypes $documentTypes -DestinationStorageAccountId $destinatinStorageAccountId -DestinationStorageLocationId $loc -DestinationStorageSASUri $destinationStorageAccountSASToken;
+		$continuousExport = New-AzureRmApplicationInsightsContinuousExport -ResourceGroupName $rgname -Name $appName -DocumentType $documentTypes -StorageAccountId $destinatinStorageAccountId -StorageLocation $loc -StorageSASUri $destinationStorageAccountSASToken;
 
         Assert-NotNull $continuousExport       
-		Assert-AreEqual "Request, Custom Event" $continuousExport.RecordTypes
+		Assert-AreEqual "Request, Custom Event" $continuousExport.DocumentTypes
 		Assert-AreEqual $dummySubId $continuousExport.DestinationStorageSubscriptionId
 		Assert-AreEqual $loc $continuousExport.DestinationStorageLocationId
 		Assert-AreEqual $dummyContainer $continuousExport.ContainerName
@@ -102,12 +102,12 @@ function Test-NewApplicationInsightsContinuousExport
         $continuousExport2 = Get-AzureRmApplicationInsightsContinuousExport -ResourceGroupName $rgname -Name $appName -ExportId $continuousExport.ExportId;
         
         Assert-NotNull $continuousExport2        
-		Assert-AreEqual "Request, Custom Event" $continuousExport2.RecordTypes
+		Assert-AreEqual "Request, Custom Event" $continuousExport2.DocumentTypes
 		Assert-AreEqual $dummySubId $continuousExport2.DestinationStorageSubscriptionId
 		Assert-AreEqual $loc $continuousExport2.DestinationStorageLocationId
 		Assert-AreEqual $dummyContainer $continuousExport2.ContainerName
 
-        Remove-AzureRmApplicationInsights -Force -ResourceGroupName $rgname -Name $appName;
+        Remove-AzureRmApplicationInsights -ResourceGroupName $rgname -Name $appName;
     }
     finally
     {
@@ -143,22 +143,22 @@ function Test-RemoveApplicationInsightsContinuousExport
 		$destinationStorageAccountSASToken = "https://"+ $dummyStorageAccount + ".blob.core.windows.net/"+$dummyContainer + "?sv=2015-04-05&sr=c&sig=xxxxxxxxx";
 		
 		$documentTypes = @("Request", "Custom Event");
-		$continuousExport = New-AzureRmApplicationInsightsContinuousExport -ResourceGroupName $rgname -Name $appName -DocumentTypes $documentTypes -DestinationStorageAccountId $destinatinStorageAccountId -DestinationStorageLocationId $loc -DestinationStorageSASUri $destinationStorageAccountSASToken;
+		$continuousExport = New-AzureRmApplicationInsightsContinuousExport -ResourceGroupName $rgname -Name $appName -DocumentType $documentTypes -StorageAccountId $destinatinStorageAccountId -StorageLocation $loc -StorageSASUri $destinationStorageAccountSASToken;
 
         $continuousExport2 = Get-AzureRmApplicationInsightsContinuousExport -ResourceGroupName $rgname -Name $appName -ExportId $continuousExport.ExportId;
         
         Assert-NotNull $continuousExport2        
-		Assert-AreEqual "Request, Custom Event" $continuousExport2.RecordTypes
+		Assert-AreEqual "Request, Custom Event" $continuousExport2.DocumentTypes
 		Assert-AreEqual $dummySubId $continuousExport2.DestinationStorageSubscriptionId
 		Assert-AreEqual $loc $continuousExport2.DestinationStorageLocationId
 		Assert-AreEqual $dummyContainer $continuousExport2.ContainerName
 
-        Remove-AzureRmApplicationInsightsContinuousExport -Force -ResourceGroupName $rgname -Name $appName -ExportId $continuousExport.ExportId;
+        Remove-AzureRmApplicationInsightsContinuousExport -ResourceGroupName $rgname -Name $appName -ExportId $continuousExport.ExportId;
 
 		$continuousExports = Get-AzureRmApplicationInsightsContinuousExport -ResourceGroupName $rgname -Name $appName;
 		Assert-AreEqual 0 $continuousExports.count;
 
-        Remove-AzureRmApplicationInsights -Force -ResourceGroupName $rgname -Name $appName;
+        Remove-AzureRmApplicationInsights -ResourceGroupName $rgname -Name $appName;
     }
     finally
     {
@@ -193,25 +193,25 @@ function Test-SetApplicationInsightsContinuousExport
 		$destinationStorageAccountSASToken = "https://"+ $dummyStorageAccount + ".blob.core.windows.net/"+$dummyContainer + "?sv=2015-04-05&sr=c&sig=xxxxxxxxx";
 		
 		$documentTypes = @("Request", "Custom Event");
-		$continuousExport = New-AzureRmApplicationInsightsContinuousExport -ResourceGroupName $rgname -Name $appName -DocumentTypes $documentTypes -DestinationStorageAccountId $destinatinStorageAccountId -DestinationStorageLocationId $loc -DestinationStorageSASUri $destinationStorageAccountSASToken;
+		$continuousExport = New-AzureRmApplicationInsightsContinuousExport -ResourceGroupName $rgname -Name $appName -DocumentType $documentTypes -StorageAccountId $destinatinStorageAccountId -StorageLocation $loc -StorageSASUri $destinationStorageAccountSASToken;
 
         $continuousExport2 = Get-AzureRmApplicationInsightsContinuousExport -ResourceGroupName $rgname -Name $appName -ExportId $continuousExport.ExportId;
         
         Assert-NotNull $continuousExport2        
-		Assert-AreEqual "Request, Custom Event" $continuousExport2.RecordTypes
+		Assert-AreEqual "Request, Custom Event" $continuousExport2.DocumentTypes
 		Assert-AreEqual $dummySubId $continuousExport2.DestinationStorageSubscriptionId
 		Assert-AreEqual $loc $continuousExport2.DestinationStorageLocationId
 		Assert-AreEqual $dummyContainer $continuousExport2.ContainerName
 
 		$documentTypes = @("Request", "Custom Event", "Exception");
-		$continuousExport3 = Set-AzureRmApplicationInsightsContinuousExport -ResourceGroupName $rgname -Name $appName -ExportId $continuousExport.ExportId -DocumentTypes $documentTypes -DestinationStorageAccountId $destinatinStorageAccountId -DestinationStorageLocationId $loc -DestinationStorageSASUri $destinationStorageAccountSASToken;
+		$continuousExport3 = Set-AzureRmApplicationInsightsContinuousExport -ResourceGroupName $rgname -Name $appName -ExportId $continuousExport.ExportId -DocumentType $documentTypes -StorageAccountId $destinatinStorageAccountId -StorageLocation $loc -StorageSASUri $destinationStorageAccountSASToken;
         Assert-NotNull $continuousExport3        
-		Assert-AreEqual "Request, Custom Event, Exception" $continuousExport3.RecordTypes
+		Assert-AreEqual "Request, Custom Event, Exception" $continuousExport3.DocumentTypes
 		Assert-AreEqual $dummySubId $continuousExport3.DestinationStorageSubscriptionId
 		Assert-AreEqual $loc $continuousExport3.DestinationStorageLocationId
 		Assert-AreEqual $dummyContainer $continuousExport3.ContainerName
 
-        Remove-AzureRmApplicationInsights -Force -ResourceGroupName $rgname -Name $appName;
+        Remove-AzureRmApplicationInsights -ResourceGroupName $rgname -Name $appName;
     }
     finally
     {

@@ -12,6 +12,19 @@ Get current daily data volume status information for an applicaiton insights res
 
 ## SYNTAX
 
+### ComponentObjectParameterSet
+```
+Get-AzureRmApplicationInsightsDailyCapStatus [-ApplicationInsightsComponent] <PSApplicationInsightsComponent>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ResourceIdParameterSet
+```
+Get-AzureRmApplicationInsightsDailyCapStatus [-ResourceId] <ResourceIdentifier>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ComponentNameParameterSet
 ```
 Get-AzureRmApplicationInsightsDailyCapStatus [-ResourceGroupName] <String> [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -31,6 +44,21 @@ Get current daily data volume status information for resource named "test" in "t
 
 ## PARAMETERS
 
+### -ApplicationInsightsComponent
+Application Insights Component Object.
+
+```yaml
+Type: PSApplicationInsightsComponent
+Parameter Sets: ComponentObjectParameterSet
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.```yaml
 Type: IAzureContextContainer
@@ -49,7 +77,7 @@ Application Insights Component Name.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ComponentNameParameterSet
 Aliases: ApplicationInsightsComponentName, ComponentName
 
 Required: True
@@ -64,7 +92,20 @@ Resource Group Name.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ComponentNameParameterSet
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+Application Insights Component Resource Id.```yaml
+Type: ResourceIdentifier
+Parameter Sets: ResourceIdParameterSet
 Aliases: 
 
 Required: True

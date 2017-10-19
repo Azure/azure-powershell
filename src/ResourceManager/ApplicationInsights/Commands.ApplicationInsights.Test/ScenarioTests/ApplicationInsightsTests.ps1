@@ -42,7 +42,7 @@ function Test-GetApplicationInsights
         Assert-AreEqual $apps[0].Kind $kind
         Assert-NotNull $apps[0].InstrumentationKey
 
-        Remove-AzureRmApplicationInsights -Force -ResourceGroupName $rgname -Name $appName;
+        Remove-AzureRmApplicationInsights -ResourceGroupName $rgname -Name $appName;
     }
     finally
     {
@@ -80,7 +80,7 @@ function Test-NewApplicationInsights
         Assert-AreEqual $app.Kind $kind
         Assert-NotNull $app.InstrumentationKey
 
-        Remove-AzureRmApplicationInsights -Force -ResourceGroupName $rgname -Name $appName;
+        Remove-AzureRmApplicationInsights -ResourceGroupName $rgname -Name $appName;
     }
     finally
     {
@@ -114,7 +114,7 @@ function Test-RemoveApplicationInsights
         Assert-AreEqual $app.Kind $kind
         Assert-NotNull $app.InstrumentationKey
 
-        Remove-AzureRmApplicationInsights -Force -ResourceGroupName $rgname -Name $appName;
+        Remove-AzureRmApplicationInsights -ResourceGroupName $rgname -Name $appName;
 
 		Assert-ThrowsContains { Get-AzureRmApplicationInsights -ResourceGroupName $rgname -Name $appName } "not found"
     }

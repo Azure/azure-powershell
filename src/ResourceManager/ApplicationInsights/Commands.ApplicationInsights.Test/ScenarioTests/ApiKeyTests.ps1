@@ -32,11 +32,11 @@ function Test-GetApplicationInsightsApiKey
 		
 		$apiKeyName = "test";
 		$permissions = @("ReadTelemetry", "WriteAnnotations", "AuthenticateSDKControlChannel");
-		$apiKey = New-AzureRmApplicationInsightsApiKey -ResourceGroupName $rgname -Name $appName -ApiKeyName $apiKeyName -Permissions $permissions;
+		$apiKey = New-AzureRmApplicationInsightsApiKey -ResourceGroupName $rgname -Name $appName -Description $apiKeyName -Permissions $permissions;
 
         $apiKey2 = Get-AzureRmApplicationInsightsApiKey -ResourceGroupName $rgname -Name $appName -ApiKeyId $apiKey.Id;
 
-        Assert-AreEqual $apiKeyName $apiKey2.Name
+        Assert-AreEqual $apiKeyName $apiKey2.Description
         Assert-NotNull $apiKey2.Id
 		#we only return apikey once when it created, when doing get, it does not return back anymore.
         Assert-Null $apiKey2.ApiKey
@@ -45,13 +45,13 @@ function Test-GetApplicationInsightsApiKey
         $apiKeys = Get-AzureRmApplicationInsightsApiKey -ResourceGroupName $rgname -Name $appName;
         
 		Assert-AreEqual 1 $apiKeys.count
-		Assert-AreEqual $apiKeyName $apiKeys[0].Name
+		Assert-AreEqual $apiKeyName $apiKeys[0].Description
         Assert-NotNull $apiKeys[0].Id
 		#we only return apikey once when it created, when doing get, it does not return back anymore.
         Assert-Null $apiKeys[0].ApiKey
 		Assert-AreEqual 3 $apiKeys[0].Permissions.count
 
-        Remove-AzureRmApplicationInsights -Force -ResourceGroupName $rgname -Name $appName;
+        Remove-AzureRmApplicationInsights -ResourceGroupName $rgname -Name $appName;
     }
     finally
     {
@@ -80,22 +80,22 @@ function Test-NewApplicationInsightsApiKey
 		
 		$apiKeyName = "test";
 		$permissions = @("ReadTelemetry", "WriteAnnotations", "AuthenticateSDKControlChannel");
-		$apiKey = New-AzureRmApplicationInsightsApiKey -ResourceGroupName $rgname -Name $appName -ApiKeyName $apiKeyName -Permissions $permissions;
+		$apiKey = New-AzureRmApplicationInsightsApiKey -ResourceGroupName $rgname -Name $appName -Description $apiKeyName -Permissions $permissions;
 
-        Assert-AreEqual $apiKeyName $apiKey.Name
+        Assert-AreEqual $apiKeyName $apiKey.Description
         Assert-NotNull $apiKey.Id
         Assert-NotNull $apiKey.ApiKey
 		Assert-AreEqual 3 $apiKey.Permissions.count
 
         $apiKey2 = Get-AzureRmApplicationInsightsApiKey -ResourceGroupName $rgname -Name $appName -ApiKeyId $apiKey.Id;
 
-        Assert-AreEqual $apiKeyName $apiKey2.Name
+        Assert-AreEqual $apiKeyName $apiKey2.Description
         Assert-NotNull $apiKey2.Id
 		#we only return apikey once when it created, when doing get, it does not return back anymore.
         Assert-Null $apiKey2.ApiKey
 		Assert-AreEqual 3 $apiKey2.Permissions.count
 
-        Remove-AzureRmApplicationInsights -Force -ResourceGroupName $rgname -Name $appName;
+        Remove-AzureRmApplicationInsights -ResourceGroupName $rgname -Name $appName;
     }
     finally
     {
@@ -125,9 +125,9 @@ function Test-RemoveApplicationInsightsApiKey
 		
 		$apiKeyName = "test";
 		$permissions = @("ReadTelemetry", "WriteAnnotations", "AuthenticateSDKControlChannel");
-		$apiKey = New-AzureRmApplicationInsightsApiKey -ResourceGroupName $rgname -Name $appName -ApiKeyName $apiKeyName -Permissions $permissions;
+		$apiKey = New-AzureRmApplicationInsightsApiKey -ResourceGroupName $rgname -Name $appName -Description $apiKeyName -Permissions $permissions;
 
-        Assert-AreEqual $apiKeyName $apiKey.Name
+        Assert-AreEqual $apiKeyName $apiKey.Description
         Assert-NotNull $apiKey.Id
         Assert-NotNull $apiKey.ApiKey
 		Assert-AreEqual 3 $apiKey.Permissions.count
@@ -136,7 +136,7 @@ function Test-RemoveApplicationInsightsApiKey
 
         Assert-NotNull $apiKey2
 
-        Remove-AzureRmApplicationInsightsApiKey -Force -ResourceGroupName $rgname -Name $appName -ApiKeyId $apiKey.Id;
+        Remove-AzureRmApplicationInsightsApiKey -ResourceGroupName $rgname -Name $appName -ApiKeyId $apiKey.Id;
 
 		Assert-ThrowsContains { Get-AzureRmApplicationInsightsApiKey -ResourceGroupName $rgname -Name $appName -ApiKeyId $apiKey.Id } "NotFound"
     }

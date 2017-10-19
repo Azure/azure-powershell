@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.Models
 
         public double? SamplingPercentage { get; set; }
 
-        public string TenantId { get; set; }        
+        public string TenantId { get; set; }
 
         public static PSApplicationInsightsComponent Create(ApplicationInsightsComponent component)
         {
@@ -96,5 +96,13 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.Models
 
             return null;
         }
-    }    
+    }
+
+    public class PSApplicationInsightsComponentTableView : PSApplicationInsightsComponent
+    {
+        public PSApplicationInsightsComponentTableView(ApplicationInsightsComponent component) 
+            : base(component)
+        {
+        }
+    }
 }

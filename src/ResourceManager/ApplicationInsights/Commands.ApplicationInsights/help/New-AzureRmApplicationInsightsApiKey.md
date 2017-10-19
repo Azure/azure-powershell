@@ -12,9 +12,23 @@ Create an application insights api key for an application insights resource
 
 ## SYNTAX
 
+### ComponentObjectParameterSet
+```
+New-AzureRmApplicationInsightsApiKey [-ApplicationInsightsComponent] <PSApplicationInsightsComponent>
+ [-Permissions] <String[]> [-Description] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### ResourceIdParameterSet
+```
+New-AzureRmApplicationInsightsApiKey [-ResourceId] <ResourceIdentifier> [-Permissions] <String[]>
+ [-Description] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ComponentNameParameterSet
 ```
 New-AzureRmApplicationInsightsApiKey [-ResourceGroupName] <String> [-Name] <String> [-Permissions] <String[]>
- [-ApiKeyName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Description] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,27 +38,27 @@ Create an application insights api keys for an application insights resource
 
 ### Example 1
 ```
-PS C:\>$apiKeyName="testapiKey"
+PS C:\>$apiKeyDescription="testapiKey"
 PS C:\>$permissions = @("ReadTelemetry", "WriteAnnotations")
-PS C:\>New-AzureRmApplicationInsightsApiKey -ResourceGroupName "testGroup" -Name "test" -ApiKeyName $apiKeyName -Permissions $permissions
+PS C:\>New-AzureRmApplicationInsightsApiKey -ResourceGroupName "testGroup" -Name "test" -Description $apiKeyDescription -Permissions $permissions
 ```
 
-Create application insights api key named "testapiKey" with permissions "ReadTelemetry", "WriteAnnotations" for resource "test" in resource group "testGroup".
+Create application insights api key description as "testapiKey" with permissions "ReadTelemetry", "WriteAnnotations" for resource "test" in resource group "testGroup".
 
 ## PARAMETERS
 
-### -ApiKeyName
-API Key identify name.
+### -ApplicationInsightsComponent
+Application Insights Component Object.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
+Type: PSApplicationInsightsComponent
+Parameter Sets: ComponentObjectParameterSet
 Aliases: 
 
 Required: True
-Position: 3
+Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -63,12 +77,25 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Description
+Description to help identify this API key.```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 3
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Name
 Component Name.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ComponentNameParameterSet
 Aliases: ApplicationInsightsComponentName, ComponentName
 
 Required: True
@@ -84,7 +111,7 @@ Permissions that API key allow apps to do.
 ```yaml
 Type: String[]
 Parameter Sets: (All)
-Aliases: ApplicationKind
+Aliases: 
 Accepted values: ReadTelemetry, WriteAnnotations, AuthenticateSDKControlChannel
 
 Required: True
@@ -99,7 +126,20 @@ Resource Group Name.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ComponentNameParameterSet
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+Application Insights Component Resource Id.```yaml
+Type: ResourceIdentifier
+Parameter Sets: ResourceIdParameterSet
 Aliases: 
 
 Required: True

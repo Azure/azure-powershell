@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.ApplicationInsights.Models;
 using Microsoft.Azure.Management.ApplicationInsights.Management.Models;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System;
 using System.Management.Automation;
 
@@ -25,6 +26,25 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
         [Parameter(
             Position = 0,
             Mandatory = true,
+            ParameterSetName = ComponentObjectParameterSet,
+            ValueFromPipeline = true,
+            HelpMessage = "Application Insights Component Object.")]
+        [ValidateNotNull]
+        public PSApplicationInsightsComponent ApplicationInsightsComponent { get; set; }
+
+        [Parameter(
+            Position = 0,
+            Mandatory = true,
+            ParameterSetName = ResourceIdParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Application Insights Component Resource Id.")]
+        [ValidateNotNull]
+        public ResourceIdentifier ResourceId { get; set; }
+
+        [Parameter(
+            Position = 0,
+            Mandatory = true,
+            ParameterSetName = ComponentNameParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Resource Group Name.")]
         [ValidateNotNullOrEmpty]
@@ -33,6 +53,7 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
         [Parameter(
             Position = 1,
             Mandatory = true,
+            ParameterSetName = ComponentNameParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Component Name.")]
         [Alias(ApplicationInsightsComponentNameAlias, ComponentNameAlias)]
@@ -44,18 +65,18 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Document types that need exported.")]        
-        [ValidateSet(DocumentType.Requests,
-            DocumentType.Exceptions,
-            DocumentType.Event,
-            DocumentType.Messages,
-            DocumentType.Metrics,
-            DocumentType.PageViewPerformance,
-            DocumentType.PageViews,
-            DocumentType.RemoteDependency,
-            DocumentType.Availability,
-            DocumentType.PerformanceCounters,
+        [ValidateSet(ApplicationInsightsBaseCmdlet.DocumentTypes.Requests,
+            ApplicationInsightsBaseCmdlet.DocumentTypes.Exceptions,
+            ApplicationInsightsBaseCmdlet.DocumentTypes.Event,
+            ApplicationInsightsBaseCmdlet.DocumentTypes.Messages,
+            ApplicationInsightsBaseCmdlet.DocumentTypes.Metrics,
+            ApplicationInsightsBaseCmdlet.DocumentTypes.PageViewPerformance,
+            ApplicationInsightsBaseCmdlet.DocumentTypes.PageViews,
+            ApplicationInsightsBaseCmdlet.DocumentTypes.RemoteDependency,
+            ApplicationInsightsBaseCmdlet.DocumentTypes.Availability,
+            ApplicationInsightsBaseCmdlet.DocumentTypes.PerformanceCounters,
             IgnoreCase = true)]
-        public string[] DocumentTypes { get; set; }
+        public string[] DocumentType { get; set; }
 
         [Parameter(
             Position = 3,
@@ -63,7 +84,7 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Destination Storage Account Id.")]
         [ValidateNotNullOrEmpty]
-        public string DestinationStorageAccountId { get; set; }
+        public string StorageAccountId { get; set; }
 
         [Parameter(
             Position = 4,
@@ -71,7 +92,7 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Destination Storage Location Id.")]
         [ValidateNotNullOrEmpty]
-        public string DestinationStorageLocationId { get; set; }
+        public string StorageLocation { get; set; }
 
         [Parameter(
             Position = 5,
@@ -79,20 +100,32 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Destination Storage SAS Uri.")]
         [ValidateNotNullOrEmpty]
-        public string DestinationStorageSASUri { get; set; }
+        public string StorageSASUri { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
+            if (this.ApplicationInsightsComponent != null)
+            {
+                this.ResourceGroupName = this.ApplicationInsightsComponent.ResourceGroupName;
+                this.Name = this.ApplicationInsightsComponent.Name;
+            }
+
+            if (this.ResourceId != null)
+            {
+                this.ResourceGroupName = this.ResourceId.ResourceGroupName;
+                this.Name = this.ResourceId.ResourceName;
+            }
+
             ApplicationInsightsComponentExportRequest exportRequest = new ApplicationInsightsComponentExportRequest();
             exportRequest.IsEnabled = "true";
-            exportRequest.DestinationAccountId = this.DestinationStorageAccountId;
-            exportRequest.DestinationStorageSubscriptionId = ParseSubscriptionFromId(this.DestinationStorageAccountId);
-            exportRequest.DestinationAddress = this.DestinationStorageSASUri;
-            exportRequest.DestinationStorageLocationId = this.DestinationStorageLocationId;
+            exportRequest.DestinationAccountId = this.StorageAccountId;
+            exportRequest.DestinationStorageSubscriptionId = ParseSubscriptionFromId(this.StorageAccountId);
+            exportRequest.DestinationAddress = this.StorageSASUri;
+            exportRequest.DestinationStorageLocationId = this.StorageLocation;
             exportRequest.DestinationType = "Blob";
-            exportRequest.RecordTypes = string.Join(",", ConvertToRecordType(this.DocumentTypes));
+            exportRequest.RecordTypes = string.Join(",", ConvertToRecordType(this.DocumentType));
 
             var exportConfigurationsResponse = this.AppInsightsManagementClient
                                                     .ExportConfigurations
