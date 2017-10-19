@@ -16,7 +16,11 @@ using Microsoft.Azure.Commands.SubscriptionDefinition.Common;
 using Microsoft.Azure.Commands.SubscriptionDefinition.Models;
 using Microsoft.Azure.Management.ResourceManager;
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
+using System.Management.Automation.Language;
 
 namespace Microsoft.Azure.Commands.SubscriptionDefinition.Cmdlets
 {
@@ -30,7 +34,8 @@ namespace Microsoft.Azure.Commands.SubscriptionDefinition.Cmdlets
         public string Name { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "Offer type of the subscription definition.")]
-        public string OfferType { get; set; }
+        [ArgumentCompleter(typeof(OfferTypeCompleter))]
+        public RuntimeDefinedParameter OfferType { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Display name of the subscription.")]
         public string SubscriptionDisplayName { get; set; }
@@ -42,8 +47,21 @@ namespace Microsoft.Azure.Commands.SubscriptionDefinition.Cmdlets
                 this.WriteSubscriptionDefinitionObject(this.SubscriptionDefinitionClient.SubscriptionDefinitions.Create(new Microsoft.Azure.Management.ResourceManager.Models.SubscriptionDefinition(
                     groupId: this.ManagementGroupId.ToString(),
                     name: this.Name,
-                    ratingContext: new Management.ResourceManager.Models.SubscriptionDefinitionPropertiesRatingContext(this.OfferType),
+                    ratingContext: new Management.ResourceManager.Models.SubscriptionDefinitionPropertiesRatingContext(this.OfferType.Value.ToString()),
                     subscriptionDisplayName: this.SubscriptionDisplayName ?? this.Name)));
+            }
+        }
+
+        private class OfferTypeCompleter : IArgumentCompleter
+        {
+            private static readonly string[] KnownOfferTypes = { "MS-AZR-0017P", "MS-AZR-0148P" };
+
+            public IEnumerable<CompletionResult> CompleteArgument(string commandName, string parameterName, string wordToComplete, CommandAst commandAst, IDictionary fakeBoundParameters)
+            {
+                var pattern = new WildcardPattern(wordToComplete + "*", WildcardOptions.IgnoreCase);
+                return KnownOfferTypes
+                    .Where(pattern.IsMatch)
+                    .Select(s => new CompletionResult(s));
             }
         }
     }
