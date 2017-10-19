@@ -14,12 +14,12 @@ Get edge gateways.
 
 ### EdgeGateways_List (Default)
 ```
-Get-AzsEdgeGateway [-Filter <String>] [-Skip <Int32>] -Location <String> [-Top <Int32>]
+Get-AzsEdgeGateway [-Filter <String>] [-Skip <Int32>] -Location <String> [-Top <Int32>] [<CommonParameters>]
 ```
 
 ### EdgeGateways_Get
 ```
-Get-AzsEdgeGateway -EdgeGateway <String> -Location <String>
+Get-AzsEdgeGateway -EdgeGateway <String> -Location <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,7 +46,6 @@ PS C:\> Get-AzsEdgeGateway -Location "local" -EdgeGateway "AzS-Gwy01"
 Type                                                State  TotalCapacity Name      AvailableCapacity
 ----                                                -----  ------------- ----      -----------------
 Microsoft.Fabric.Admin/fabricLocations/edgeGateways Active 100000000     AzS-Gwy01 100000000
-
 ```
 
 Get a specific edge gateway.
@@ -128,6 +127,9 @@ Default value: -1
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

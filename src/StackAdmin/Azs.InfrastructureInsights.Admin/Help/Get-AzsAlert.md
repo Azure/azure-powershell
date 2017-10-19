@@ -14,12 +14,12 @@ Returns alerts at a given location.
 
 ### Alerts_List (Default)
 ```
-Get-AzsAlert [-Filter <String>] [-Skip <Int32>] -Location <String> [-Top <Int32>]
+Get-AzsAlert [-Filter <String>] [-Skip <Int32>] -Location <String> [-Top <Int32>] [<CommonParameters>]
 ```
 
 ### Alerts_Get
 ```
-Get-AzsAlert -Location <String> -AlertName <String>
+Get-AzsAlert -Location <String> -AlertName <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,11 +41,10 @@ ServiceFabricApplicationUnhealthy 08/25/2017 04:52:27                           
 ServiceFabricClusterUnhealthy     08/25/2017 04:33:12                                             b8f81ea8-cf7d-4909-a9f4-0779909e15eb ca96c335-e545-4563-9d65-058db3a8ef15
 AzureStackNotActivated            08/25/2017 18:16:49 ciserviceadmin@msazurestack.onmicrosoft.com c0328148-006b-482b-9c75-ad58c454225b
 AzureStackNotActivated            08/25/2017 18:29:55 ciserviceadmin@msazurestack.onmicrosoft.com cf278262-78cd-43eb-8cd8-9c4cac5e75f7
-AzureStackNotActivated      
+AzureStackNotActivated
 ```
 
 Get all alerts at a location.
-
 
 ### Example 1
 ```
@@ -135,6 +134,9 @@ Default value: -1
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

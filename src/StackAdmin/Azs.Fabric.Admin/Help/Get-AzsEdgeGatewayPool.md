@@ -15,11 +15,12 @@ Get edge gateway pools.
 ### EdgeGatewayPools_List (Default)
 ```
 Get-AzsEdgeGatewayPool [-Filter <String>] [-Skip <Int32>] -Location <String> [-Top <Int32>]
+ [<CommonParameters>]
 ```
 
 ### EdgeGatewayPools_Get
 ```
-Get-AzsEdgeGatewayPool -EdgeGatewayPool <String> -Location <String>
+Get-AzsEdgeGatewayPool -EdgeGatewayPool <String> -Location <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,20 +36,17 @@ GatewayCapacityKiloBitsPerSecond Type                                           
 -------------------------------- ----                                                    ------------ ---------------                      ------------
 100000000                        Microsoft.Fabric.Admin/fabricLocations/edgeGatewayPools              00000000-5555-0000-0001-000000000000 {AzS-Gwy01}
 200000000                        Microsoft.Fabric.Admin/fabricLocations/edgeGatewayPools              00000000-4444-0000-0001-000000000000 {AzS-Gwy02}
-
 ```
 
 Get a list of all Edge Gateway pools.
 
 ### Example 2
-
 ```
 PS C:\> Get-AzsEdgeGatewayPool -Location "local" -EdgeGatewayPool "AzS-Gwy01"
 
 GatewayCapacityKiloBitsPerSecond Type                                                    GreVipSubnet PublicIpAddress                      EdgeGateways
 -------------------------------- ----                                                    ------------ ---------------                      ------------
 100000000                        Microsoft.Fabric.Admin/fabricLocations/edgeGatewayPools              00000000-5555-0000-0001-000000000000 {AzS-Gwy01}
-
 ```
 
 Get a specific edge gateway pool.
@@ -130,6 +128,9 @@ Default value: -1
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

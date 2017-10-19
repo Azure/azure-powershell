@@ -145,7 +145,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'Initial release of InfrastructureInsights Admin module. Allows administrators to view the health of their resource providers.'
+        ReleaseNotes = 'Initial release of InfrastructureInsights Admin module. Allows AzureStack administrators to view the health of their resource providers.'
 
         ExternalModuleDependencies = @('PSSwaggerUtility')
 

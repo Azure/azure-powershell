@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-AzsNetworkFabricOperation
+# Get-AzsNetworkInfrastructureOperation
 
 ## SYNOPSIS
 Get the status of a network fabric operation.
@@ -13,7 +13,8 @@ Get the status of a network fabric operation.
 ## SYNTAX
 
 ```
-Get-AzsNetworkFabricOperation -Provider <String> -Location <String> -NetworkOperationResult <String>
+Get-AzsNetworkInfrastructureOperation -Provider <String> -Location <String> -NetworkOperationResult <String>
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,7 +24,7 @@ Get the status of a network fabric operation.
 
 ### Example 1
 ```
-PS C:\> Get-AzsComputeFabricOperation -Location "local" -Provider "Microsoft.Fabric.Admin" -NetworkOperationResult "fdcdefb6-6fd0-402c-8b0c-5765b8fc4dc1"
+PS C:\> Get-AzsNetworkInfrastructureOperation -Location "local" -Provider "Microsoft.Fabric.Admin" -NetworkOperationResult "fdcdefb6-6fd0-402c-8b0c-5765b8fc4dc1"
 
 ProvisioningState
 -----------------------
@@ -78,6 +79,9 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -13,7 +13,7 @@ Close an alert.
 ## SYNTAX
 
 ```
-Close-AzsAlert -Alert <Alert> -Location <String> -AlertName <String> -User <String>
+Close-AzsAlert -Alert <Alert> -Location <String> -AlertName <String> -User <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,7 +27,6 @@ PS C:\> Close-AzsAlert -Location local -User  AlertCloseTests -AlertName db1a20c
 ```
 
 Close an alert.
-
 
 ## PARAMETERS
 
@@ -90,6 +89,9 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

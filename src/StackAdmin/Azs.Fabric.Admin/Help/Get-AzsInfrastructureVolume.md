@@ -14,13 +14,14 @@ Get volumes at a location.
 
 ### InfrastructureVolumes_List (Default)
 ```
-Get-AzsInfrastructureVolume [-Filter <String>] -StorageSubSystem <String> [-Skip <Int32>] -Location <String> [-Top <Int32>]
- -StoragePool <String>
+Get-AzsInfrastructureVolume [-Filter <String>] -StorageSubSystem <String> [-Skip <Int32>] -Location <String>
+ [-Top <Int32>] -StoragePool <String> [<CommonParameters>]
 ```
 
 ### InfrastructureVolumes_Get
 ```
-Get-AzsInfrastructureVolume -StorageSubSystem <String> -Volume <String> -Location <String> -StoragePool <String>
+Get-AzsInfrastructureVolume -StorageSubSystem <String> -Volume <String> -Location <String>
+ -StoragePool <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,8 +40,6 @@ Microsoft.Fabric.Admin/fabricLocations/storageSubSystems/storagePools/volumes CS
 ```
 
 Get a list of all volumes from a location.
-
-## EXAMPLES
 
 ### Example 2
 ```
@@ -160,6 +159,9 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

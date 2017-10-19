@@ -21,11 +21,13 @@ New-AzsAlertObject [[-FaultTypeId] <String>]
  [[-ImpactedResourceDisplayName] <String>]
  [[-AlertProperties] <System.Collections.Generic.Dictionary`2[System.String,System.String]>]
  [[-Description] <Dictionary`2[]>] [[-Id] <String>] [[-State] <String>] [[-Location] <String>]
- [[-FaultId] <String>] [[-AlertId] <String>]
+ [[-FaultId] <String>] [[-AlertId] <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 This class models an alert resource.
+
+## EXAMPLES
 
 ## PARAMETERS
 
@@ -359,6 +361,9 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -110,7 +110,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'Initial release of the Commerce Admin module. Allows administrators to view aggregate subscription usage.'
+        ReleaseNotes = 'Initial release of the Commerce Admin module. Allows AzureStack administrators to view aggregate subscription usage.'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update
         # RequireLicenseAcceptance = $false

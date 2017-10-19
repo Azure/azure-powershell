@@ -14,17 +14,19 @@ schema: 2.0.0
 ### ResourceHealths_List (Default)
 ```
 Get-AzsResourceHealth -ServiceRegistrationId <String> [-Filter <String>] [-Skip <Int32>] -Location <String>
- [-Top <Int32>]
+ [-Top <Int32>] [<CommonParameters>]
 ```
 
 ### ResourceHealths_Get
 ```
 Get-AzsResourceHealth -ServiceRegistrationId <String> [-Filter <String>] -ResourceRegistrationId <String>
- -Location <String>
+ -Location <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 Get a list of resources?.
+
+## EXAMPLES
 
 ## PARAMETERS
 
@@ -118,6 +120,9 @@ Default value: -1
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -13,12 +13,12 @@ schema: 2.0.0
 
 ### ServiceHealths_List (Default)
 ```
-Get-AzsServiceHealth [-Filter <String>] [-Skip <Int32>] -Location <String> [-Top <Int32>]
+Get-AzsServiceHealth [-Filter <String>] [-Skip <Int32>] -Location <String> [-Top <Int32>] [<CommonParameters>]
 ```
 
 ### ServiceHealths_Get
 ```
-Get-AzsServiceHealth -Location <String> -ServiceHealth <String>
+Get-AzsServiceHealth -Location <String> -ServiceHealth <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -131,6 +131,9 @@ Default value: -1
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -16,11 +16,13 @@ This resource defines the range of IP addresses from which addresses are  alloca
 New-AzsIpPoolObject [[-NumberOfIpAddressesInTransition] <Int64>] [[-StartIpAddress] <String>] [[-Id] <String>]
  [[-Type] <String>] [[-Tags] <System.Collections.Generic.Dictionary`2[System.String,System.String]>]
  [[-AddressPrefix] <String>] [[-NumberOfIpAddresses] <Int64>] [[-Name] <String>] [[-Location] <String>]
- [[-EndIpAddress] <String>] [[-NumberOfAllocatedIpAddresses] <Int64>]
+ [[-EndIpAddress] <String>] [[-NumberOfAllocatedIpAddresses] <Int64>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 This resource defines the range of IP addresses from which addresses are  allocated for nodes within a subnet.
+
+## EXAMPLES
 
 ## PARAMETERS
 
@@ -188,6 +190,9 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
