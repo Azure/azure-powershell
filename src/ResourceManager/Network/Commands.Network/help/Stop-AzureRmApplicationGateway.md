@@ -14,7 +14,8 @@ Stops an application gateway
 ## SYNTAX
 
 ```
-Stop-AzureRmApplicationGateway -ApplicationGateway <PSApplicationGateway> [<CommonParameters>]
+Stop-AzureRmApplicationGateway -ApplicationGateway <PSApplicationGateway>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,6 +44,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

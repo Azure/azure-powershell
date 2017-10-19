@@ -69,7 +69,7 @@ Specifies the URL of the .zip file that contains the new version of a module tha
 ```yaml
 Type: Uri
 Parameter Sets: (All)
-Aliases: 
+Aliases: ContentLink
 
 Required: False
 Position: Named

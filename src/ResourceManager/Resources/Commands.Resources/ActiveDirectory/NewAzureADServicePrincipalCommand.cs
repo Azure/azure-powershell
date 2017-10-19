@@ -66,6 +66,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.DisplayNameWithPasswordPlain,
             HelpMessage = "The value for the password credential associated with the application that will be valid for one year by default.")]
         [ValidateNotNullOrEmpty]
+        [Obsolete("New-AzureRmADServicePrincipal: The parameter \"Password\" is being changed from a string to a SecureString in an upcoming breaking change release.")]
         public string Password { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithKeyPlain,
@@ -142,7 +143,9 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                             StartDate = StartDate,
                             EndDate = EndDate,
                             KeyId = Guid.NewGuid(),
+#pragma warning disable 0618
                             Password = Password
+#pragma warning restore 0618
                         }
                         };
                         break;

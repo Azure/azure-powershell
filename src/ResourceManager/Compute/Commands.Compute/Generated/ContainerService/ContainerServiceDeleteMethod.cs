@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
             ExecuteClientAction(() =>
             {
-                if (ShouldProcess(this.ResourceGroupName, VerbsCommon.Remove)
+                if (ShouldProcess(this.Name, VerbsCommon.Remove)
                     && (this.Force.IsPresent ||
                         this.ShouldContinue(Properties.Resources.ResourceRemovalConfirmation,
                                             "Remove-AzureRmContainerService operation")))
