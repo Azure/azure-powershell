@@ -24,7 +24,7 @@ Gets SQL Database capabilities for the current subscription.
 Gets one or more databases.
 
 ### [Get-AzureRmSqlDatabaseActivity](Get-AzureRmSqlDatabaseActivity.md)
-Gets the status of moving elastic databases.
+Gets the status of database operations.
 
 ### [Get-AzureRmSqlDatabaseAdvisor](Get-AzureRmSqlDatabaseAdvisor.md)
 Gets one or more Advisors for an Azure SQL Database.
@@ -389,6 +389,9 @@ Starts the upgrade of a SQL Database server.
 ### [Start-AzureRmSqlSyncGroupSync](Start-AzureRmSqlSyncGroupSync.md)
 Starts a sync group synchronization.
 
+### [Stop-AzureRmSqlDatabaseActivity](Stop-AzureRmSqlDatabaseActivity.md)
+Cancels the asynchronous operation on the database.
+
 ### [Stop-AzureRmSqlDatabaseExecuteIndexRecommendation](Stop-AzureRmSqlDatabaseExecuteIndexRecommendation.md)
 Stops the workflow that runs a recommended index operation.
 
@@ -417,4 +420,3 @@ If "SyncMemberName" is specified, it will refresh the member database schema; if
 
 ### [Use-AzureRmSqlServerAuditingPolicy](Use-AzureRmSqlServerAuditingPolicy.md)
 Specifies that a database uses the auditing policy of its host server.
-
