@@ -68,7 +68,6 @@
     <Compile Include="ActionGroups\GetAzureRmActionGroupCommand.cs" />
     <Compile Include="Alerts\AddAzureRmAlertRuleCommandBase.cs" />
     <Compile Include="Alerts\AddAzureRmMetricAlertRuleCommand.cs" />
-    <Compile Include="Alerts\AddAzureRmLogAlertRuleCommand.cs" />
     <Compile Include="Alerts\AddAzureRmWebtestAlertRuleCommand.cs" />
     <Compile Include="Alerts\AlertRuleTypes.cs" />
     <Compile Include="Alerts\GetAzureRmAlertHistoryCommand.cs" />
@@ -163,7 +162,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ResourcesForAutoscaleCmdlets.resx</DependentUpon>
     </Compile>
-    <Compile Include="UsageMetrics\GetAzureRmUsageCommand.cs" />
     <Compile Include="Utilities.cs" />
   </ItemGroup>
   <ItemGroup>

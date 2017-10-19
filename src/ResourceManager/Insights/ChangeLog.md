@@ -18,6 +18,12 @@
         - Additional information about change #1
 -->
 ## Current Release
+    **Add-AzureRMLogAlertRule**
+    - Deprecated as announced since April 2017
+    - After October 1st using this cmdlet no longer had any effect as this functionality was transitioned to Activity Log Alerts. Please see https://aka.ms/migratemealerts for more information.
+
+    **Get-AzureRMUsage**
+    - Deprecated as announced since April 2017
 
 ## Version 3.4.1
     * Add-AzureRmLogAlertRule
