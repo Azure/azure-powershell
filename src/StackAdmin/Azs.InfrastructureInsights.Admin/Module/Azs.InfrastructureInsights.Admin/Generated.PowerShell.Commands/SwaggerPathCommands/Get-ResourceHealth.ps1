@@ -25,7 +25,7 @@ SOFTWARE.
 Import-Module -Name (Join-Path -Path $PSScriptRoot -ChildPath .. | Join-Path -ChildPath .. | Join-Path -ChildPath "GeneratedHelpers.psm1")
 <#
 .DESCRIPTION
-    Get a list of resources?.
+    Get the health for resources under a service.
 
 .PARAMETER ServiceRegistrationId
     Service registration id.

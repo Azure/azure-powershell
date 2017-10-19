@@ -8,6 +8,7 @@ schema: 2.0.0
 # Get-AzsServiceHealth
 
 ## SYNOPSIS
+Get the health of services.
 
 ## SYNTAX
 

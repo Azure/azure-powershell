@@ -116,8 +116,6 @@ InModuleScope Azs.Fabric.Admin {
 			if($fileShares -and $fileShares.Count -gt 0) {
 				$fileShare = $fileShares[0]
 				$retrieved = Get-AzsInfrastructureShare -Location $Location -Share $fileShare.Name
-				Write-Host "Get-AzsInfrastructureShare -Location $Location -Share $fileShare.Name"
-				Write-Host ($retrieved | Out-String)
 				
 				AssertFileSharesAreSame -Expected $fileShare -Found $retrieved
 			}

@@ -21,11 +21,7 @@ Returns alerts at a given location.
 Get the regions health status.  Azure Stack currently only supports a single region.
 
 ### [Get-AzsResourceHealth](Get-AzsResourceHealth.md)
-{{Manually Enter Get-AzsResourceHealth Description Here}}
+Get the health for resources under a service.
 
 ### [Get-AzsServiceHealth](Get-AzsServiceHealth.md)
-{{Manually Enter Get-AzsServiceHealth Description Here}}
-
-### [New-AzsAlertObject](New-AzsAlertObject.md)
-This class models an alert resource.
-
+Get the health of services.

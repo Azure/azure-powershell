@@ -25,7 +25,7 @@ SOFTWARE.
 Import-Module -Name (Join-Path -Path $PSScriptRoot -ChildPath .. | Join-Path -ChildPath .. | Join-Path -ChildPath "GeneratedHelpers.psm1")
 <#
 .DESCRIPTION
-    Get a list of all services health
+Get the health of services.Get a list of all services healthGet a list of all services health
 
 .PARAMETER Filter
     OData filter parameter.
