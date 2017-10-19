@@ -12,6 +12,19 @@ Get daily data volume cap information for an application insights resource
 
 ## SYNTAX
 
+### ComponentObjectParameterSet
+```
+Get-AzureRmApplicationInsightsDailyCap [-ApplicationInsightsComponent] <PSApplicationInsightsComponent>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ResourceIdParameterSet
+```
+Get-AzureRmApplicationInsightsDailyCap [-ResourceId] <ResourceIdentifier>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ComponentNameParameterSet
 ```
 Get-AzureRmApplicationInsightsDailyCap [-ResourceGroupName] <String> [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -31,6 +44,21 @@ Get daily data volume cap information for resource name "test" in resource group
 
 ## PARAMETERS
 
+### -ApplicationInsightsComponent
+Application Insights Component Object.
+
+```yaml
+Type: PSApplicationInsightsComponent
+Parameter Sets: ComponentObjectParameterSet
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.```yaml
 Type: IAzureContextContainer
@@ -49,7 +77,7 @@ Application Insights Component Name.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ComponentNameParameterSet
 Aliases: ApplicationInsightsComponentName, ComponentName
 
 Required: True
@@ -64,7 +92,20 @@ Resource Group Name.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ComponentNameParameterSet
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+Application Insights Component Resource Id.```yaml
+Type: ResourceIdentifier
+Parameter Sets: ResourceIdParameterSet
 Aliases: 
 
 Required: True

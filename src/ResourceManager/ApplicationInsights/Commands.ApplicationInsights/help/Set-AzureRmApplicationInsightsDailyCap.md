@@ -12,9 +12,25 @@ Set daily data volume cap for an application insights resource
 
 ## SYNTAX
 
+### ComponentObjectParameterSet
+```
+Set-AzureRmApplicationInsightsDailyCap [-ApplicationInsightsComponent] <PSApplicationInsightsComponent>
+ [[-DailyCapGB] <Double>] [-DisableNotificationWhenHitCap] [-EnableNotificationWhenHitCap]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ResourceIdParameterSet
+```
+Set-AzureRmApplicationInsightsDailyCap [-ResourceId] <ResourceIdentifier> [[-DailyCapGB] <Double>]
+ [-DisableNotificationWhenHitCap] [-EnableNotificationWhenHitCap] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### ComponentNameParameterSet
 ```
 Set-AzureRmApplicationInsightsDailyCap [-ResourceGroupName] <String> [-Name] <String> [[-DailyCapGB] <Double>]
- [[-StopSendNotificationWhenHitCap] <Boolean>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DisableNotificationWhenHitCap] [-EnableNotificationWhenHitCap] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,6 +48,21 @@ Set the daily data volumen cap to 400GB per day and stop send notification when 
 
 ## PARAMETERS
 
+### -ApplicationInsightsComponent
+Application Insights Component Object.
+
+```yaml
+Type: PSApplicationInsightsComponent
+Parameter Sets: ComponentObjectParameterSet
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DailyCapGB
 Daily Cap.
 
@@ -41,7 +72,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -60,12 +91,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DisableNotificationWhenHitCap
+Stop send notification when hit cap.```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: 3
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableNotificationWhenHitCap
+Enable send notification when hit cap.```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: 4
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Application Insights Component Name.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ComponentNameParameterSet
 Aliases: ApplicationInsightsComponentName, ComponentName
 
 Required: True
@@ -80,7 +137,7 @@ Resource Group Name.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ComponentNameParameterSet
 Aliases: 
 
 Required: True
@@ -90,16 +147,14 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -StopSendNotificationWhenHitCap
-Stop send notification when hit cap.
-
-```yaml
-Type: Boolean
-Parameter Sets: (All)
+### -ResourceId
+Application Insights Component Resource Id.```yaml
+Type: ResourceIdentifier
+Parameter Sets: ResourceIdParameterSet
 Aliases: 
 
-Required: False
-Position: 4
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

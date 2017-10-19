@@ -12,10 +12,25 @@ Set pricing plan and daily data volume information for an applicaiton insights r
 
 ## SYNTAX
 
+### ComponentObjectParameterSet
+```
+Set-AzureRmApplicationInsightsPricingPlan [-ApplicationInsightsComponent] <PSApplicationInsightsComponent>
+ [[-PricingPlan] <String>] [[-DailyCapGB] <Double>] [-DisableNotificationWhenHitCap]
+ [-EnableNotificationWhenHitCap] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ResourceIdParameterSet
+```
+Set-AzureRmApplicationInsightsPricingPlan [-ResourceId] <ResourceIdentifier> [[-PricingPlan] <String>]
+ [[-DailyCapGB] <Double>] [-DisableNotificationWhenHitCap] [-EnableNotificationWhenHitCap]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ComponentNameParameterSet
 ```
 Set-AzureRmApplicationInsightsPricingPlan [-ResourceGroupName] <String> [-Name] <String>
- [[-PricingPlan] <String>] [[-DailyCapGB] <Double>] [[-StopSendNotificationWhenHitCap] <Boolean>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [[-PricingPlan] <String>] [[-DailyCapGB] <Double>] [-DisableNotificationWhenHitCap]
+ [-EnableNotificationWhenHitCap] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,6 +47,21 @@ PS C:\> Set-AzureRmApplicationInsightsDailyCap -ResourceGroupName "testgroup" -N
 Set the pricing plan to "Basic", set the daily data volumen cap to 400GB per day and stop send notification when hit cap for resource "test" in resource group "testgroup"
 
 ## PARAMETERS
+
+### -ApplicationInsightsComponent
+Application Insights Component Object.
+
+```yaml
+Type: PSApplicationInsightsComponent
+Parameter Sets: ComponentObjectParameterSet
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
 
 ### -DailyCapGB
 Daily Cap.
@@ -61,12 +91,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DisableNotificationWhenHitCap
+Stop send notification when hit cap.```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: 4
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableNotificationWhenHitCap
+Enable send notification when hit cap.```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: 5
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Application Insights Component Name.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ComponentNameParameterSet
 Aliases: ApplicationInsightsComponentName, ComponentName
 
 Required: True
@@ -97,7 +153,7 @@ Resource Group Name.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ComponentNameParameterSet
 Aliases: 
 
 Required: True
@@ -107,16 +163,14 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -StopSendNotificationWhenHitCap
-Stop send notification when hit cap.
-
-```yaml
-Type: Boolean
-Parameter Sets: (All)
+### -ResourceId
+Application Insights Component Resource Id.```yaml
+Type: ResourceIdentifier
+Parameter Sets: ResourceIdParameterSet
 Aliases: 
 
-Required: False
-Position: 4
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

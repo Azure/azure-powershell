@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ApplicationInsights.Models;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ApplicationInsights
@@ -20,9 +21,6 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
     [Cmdlet(VerbsCommon.Get, ApplicationInsightsNounStr), OutputType(typeof(PSApplicationInsightsComponent))]
     public class GetApplicationInsightsCommand : ApplicationInsightsBaseCmdlet
     {
-        protected const string ResourceGroupParameterSet = "ResourceGroupParameterSet";
-        protected const string ComponentNameParameterSet = "ComponentNameParameterSet";
-
         [Parameter(
             Position = 0,
             Mandatory = false,
@@ -48,10 +46,25 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [Parameter(
+            Position = 0,
+            Mandatory = true,
+            ParameterSetName = ResourceIdParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Application Insights Component Resource Id.")]
+        [ValidateNotNull]
+        public ResourceIdentifier ResourceId { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            
+
+            if (this.ResourceId != null)
+            {
+                this.ResourceGroupName = this.ResourceId.ResourceGroupName;
+                this.Name = this.ResourceId.ResourceName;
+            }
+
             if (string.IsNullOrEmpty(this.ResourceGroupName))
             {
                 var components = Utilities.GetComponents(this.AppInsightsManagementClient);

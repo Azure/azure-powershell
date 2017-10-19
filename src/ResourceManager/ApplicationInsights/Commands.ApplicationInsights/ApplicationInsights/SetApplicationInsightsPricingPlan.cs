@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.ApplicationInsights.Models;
 using Microsoft.Azure.Management.ApplicationInsights.Management.Models;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ApplicationInsights
@@ -24,6 +25,25 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
         [Parameter(
             Position = 0,
             Mandatory = true,
+            ParameterSetName = ComponentObjectParameterSet,
+            ValueFromPipeline = true,
+            HelpMessage = "Application Insights Component Object.")]
+        [ValidateNotNull]
+        public PSApplicationInsightsComponent ApplicationInsightsComponent { get; set; }
+
+        [Parameter(
+            Position = 0,
+            Mandatory = true,
+            ParameterSetName = ResourceIdParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Application Insights Component Resource Id.")]
+        [ValidateNotNull]
+        public ResourceIdentifier ResourceId { get; set; }
+
+        [Parameter(
+            Position = 0,
+            Mandatory = true,
+            ParameterSetName = ComponentNameParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Resource Group Name.")]
         [ValidateNotNullOrEmpty]
@@ -32,6 +52,7 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
         [Parameter(
             Position = 1,
             Mandatory = true,
+            ParameterSetName = ComponentNameParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Application Insights Component Name.")]
         [Alias(ApplicationInsightsComponentNameAlias, ComponentNameAlias)]
@@ -60,13 +81,31 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
         [Parameter(
             Position = 4,
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Stop send notification when hit cap.")]        
-        public bool? StopSendNotificationWhenHitCap { get; set; }
+        public SwitchParameter DisableNotificationWhenHitCap { get; set; }
+
+        [Parameter(
+            Position = 5,
+            Mandatory = false,
+            HelpMessage = "Enable send notification when hit cap.")]
+        public SwitchParameter EnableNotificationWhenHitCap { get; set; }
+
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
+
+            if (this.ApplicationInsightsComponent != null)
+            {
+                this.ResourceGroupName = this.ApplicationInsightsComponent.ResourceGroupName;
+                this.Name = this.ApplicationInsightsComponent.Name;
+            }
+
+            if (this.ResourceId != null)
+            {
+                this.ResourceGroupName = this.ResourceId.ResourceGroupName;
+                this.Name = this.ResourceId.ResourceName;
+            }
 
             ApplicationInsightsComponentBillingFeatures features =
                                                 this.AppInsightsManagementClient
@@ -77,18 +116,20 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
                                                         .GetAwaiter()
                                                         .GetResult()
                                                         .Body;
-
-            if (this.PricingPlan.ToLowerInvariant().Contains("enterprise"))
+            if (!string.IsNullOrEmpty(this.PricingPlan))
             {
-                features.CurrentBillingFeatures = new string[] { "Application Insights Enterprise" };
-            }
-            else if (this.PricingPlan.ToLowerInvariant().Contains("basic"))
-            {
-                features.CurrentBillingFeatures = new string[] { "Limited Basic" };
-            }
-            else
-            {
-                features.CurrentBillingFeatures = new string[] { "Basic" };
+                if (this.PricingPlan.ToLowerInvariant().Contains("enterprise"))
+                {
+                    features.CurrentBillingFeatures = new string[] { "Application Insights Enterprise" };
+                }
+                else if (this.PricingPlan.ToLowerInvariant().Contains("basic"))
+                {
+                    features.CurrentBillingFeatures = new string[] { "Limited Basic" };
+                }
+                else
+                {
+                    features.CurrentBillingFeatures = new string[] { "Basic" };
+                }
             }
 
             if (this.DailyCapGB != null)
@@ -96,9 +137,14 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
                 features.DataVolumeCap.Cap = this.DailyCapGB.Value;
             }
 
-            if (this.StopSendNotificationWhenHitCap != null)
+            if (this.DisableNotificationWhenHitCap.IsPresent)
             {
-                features.DataVolumeCap.StopSendNotificationWhenHitCap = this.StopSendNotificationWhenHitCap.Value;
+                features.DataVolumeCap.StopSendNotificationWhenHitCap = true;
+            }
+
+            if (this.EnableNotificationWhenHitCap.IsPresent)
+            {
+                features.DataVolumeCap.StopSendNotificationWhenHitCap = false;
             }
 
 

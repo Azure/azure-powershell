@@ -12,10 +12,25 @@ Create a new application insights continuous export configuration for an applica
 
 ## SYNTAX
 
+### ComponentObjectParameterSet
+```
+New-AzureRmApplicationInsightsContinuousExport [-ApplicationInsightsComponent] <PSApplicationInsightsComponent>
+ [-DocumentType] <String[]> [-StorageAccountId] <String> [-StorageLocation] <String> [-StorageSASUri] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ResourceIdParameterSet
+```
+New-AzureRmApplicationInsightsContinuousExport [-ResourceId] <ResourceIdentifier> [-DocumentType] <String[]>
+ [-StorageAccountId] <String> [-StorageLocation] <String> [-StorageSASUri] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ComponentNameParameterSet
 ```
 New-AzureRmApplicationInsightsContinuousExport [-ResourceGroupName] <String> [-Name] <String>
- [-DocumentTypes] <String[]> [-DestinationStorageAccountId] <String> [-DestinationStorageLocationId] <String>
- [-DestinationStorageSASToken] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DocumentType] <String[]> [-StorageAccountId] <String> [-StorageLocation] <String> [-StorageSASUri] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,13 +41,28 @@ Create a new application insights continuous export configuration for an applica
 ### Example 1
 ```
 PS C:\> New-AzureRmApplicationInsightsContinuousExport -ResourceGroupName "testgroup" -Name "test"
- -DocumentTypes "Request","Trace" -DestinationStorageAccountId "/subscriptions/50359d91-7b9d-4823-85af-eb298a61ba96/resourceGroups/testgroup/providers/Microsoft.Storage/storageAccounts/teststorageaccount" -DestinationStorageLocationId sourcecentralus
- -DestinationStorageSASUri "https://teststorageaccount.blob.core.windows.net/testcontainer?sv=2050-04-05&sr=c&sig=xxxxxxxxx"
+ -DocumentType "Request","Trace" -StorageAccountId "/subscriptions/50359d91-7b9d-4823-85af-eb298a61ba96/resourceGroups/testgroup/providers/Microsoft.Storage/storageAccounts/teststorageaccount" -StorageLocation sourcecentralus
+ -StorageSASUri "https://teststorageaccount.blob.core.windows.net/testcontainer?sv=2050-04-05&sr=c&sig=xxxxxxxxx"
 ```
 
 Create a new application insights continuous export configuration to export "Request" and "Trace" document types to storage contain "testcontainer" in storage account "teststorageaccount" in resource group "testgroup". The SAS token have to be valid and have write permission to the container, otherwise continous export feature won't work.
 
 ## PARAMETERS
+
+### -ApplicationInsightsComponent
+Application Insights Component Object.
+
+```yaml
+Type: PSApplicationInsightsComponent
+Parameter Sets: ComponentObjectParameterSet
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.```yaml
@@ -47,55 +77,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DestinationStorageAccountId
-Destination Storage Account Id.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 3
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -DestinationStorageLocationId
-Destination Storage Location Id.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 4
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -DestinationStorageSASUri
-Destination Storage SAS uri.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 5
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -DocumentTypes
-Document types that need exported.
-
-```yaml
+### -DocumentType
+Document types that need exported.```yaml
 Type: String[]
 Parameter Sets: (All)
 Aliases: 
@@ -113,7 +96,7 @@ Component Name.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ComponentNameParameterSet
 Aliases: ApplicationInsightsComponentName, ComponentName
 
 Required: True
@@ -128,11 +111,63 @@ Resource Group Name.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ComponentNameParameterSet
 Aliases: 
 
 Required: True
 Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+Application Insights Component Resource Id.```yaml
+Type: ResourceIdentifier
+Parameter Sets: ResourceIdParameterSet
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -StorageAccountId
+Destination Storage Account Id.```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 3
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -StorageLocation
+Destination Storage Location Id.```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 4
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -StorageSASUri
+Destination Storage SAS Uri.```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 5
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

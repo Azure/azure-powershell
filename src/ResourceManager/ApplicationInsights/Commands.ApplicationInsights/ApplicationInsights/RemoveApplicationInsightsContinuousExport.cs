@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ApplicationInsights.Models;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ApplicationInsights
@@ -22,6 +24,25 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
         [Parameter(
             Position = 0,
             Mandatory = true,
+            ParameterSetName = ComponentObjectParameterSet,
+            ValueFromPipeline = true,
+            HelpMessage = "Application Insights Component Object.")]
+        [ValidateNotNull]
+        public PSApplicationInsightsComponent ApplicationInsightsComponent { get; set; }
+
+        [Parameter(
+            Position = 0,
+            Mandatory = true,
+            ParameterSetName = ResourceIdParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Application Insights Component Resource Id.")]
+        [ValidateNotNull]
+        public ResourceIdentifier ResourceId { get; set; }
+
+        [Parameter(
+            Position = 0,
+            Mandatory = true,
+            ParameterSetName = ComponentNameParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Resource Group Name.")]
         [ValidateNotNullOrEmpty]
@@ -30,6 +51,7 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
         [Parameter(
             Position = 1,
             Mandatory = true,
+            ParameterSetName = ComponentNameParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Application Insights Component Name.")]
         [Alias(ApplicationInsightsComponentNameAlias, ComponentNameAlias)]
@@ -44,31 +66,42 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
         [ValidateNotNullOrEmpty]
         public string ExportId { get; set; }
 
-        [Parameter(HelpMessage = "Force to Delete the Application Insights Component continuous export configuration")]
-        public SwitchParameter Force
-        {
-            get { return force; }
-            set { force = value; }
-        }
-        private bool force = false;
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "If specified will write true in case operation succeeds. This parameter is optional. Default value is false.")]
+        public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
+            if (this.ApplicationInsightsComponent != null)
+            {
+                this.ResourceGroupName = this.ApplicationInsightsComponent.ResourceGroupName;
+                this.Name = this.ApplicationInsightsComponent.Name;
+            }
+
+            if (this.ResourceId != null)
+            {
+                this.ResourceGroupName = this.ResourceId.ResourceGroupName;
+                this.Name = this.ResourceId.ResourceName;
+            }
+
             if (ShouldProcess(this.Name, "Remove Application Insights Continuous Export"))
             {
-                if (this.force || ShouldContinue(string.Format("Remove Application Insights Continuous Export '{0}'", this.ExportId), ""))
+                this.AppInsightsManagementClient
+                    .ExportConfigurations
+                    .DeleteWithHttpMessagesAsync(
+                        this.ResourceGroupName,
+                        this.Name,
+                        this.ExportId)
+                    .GetAwaiter()
+                    .GetResult();
+
+                if (this.PassThru)
                 {
-                    this.AppInsightsManagementClient
-                        .ExportConfigurations
-                        .DeleteWithHttpMessagesAsync(
-                            this.ResourceGroupName,
-                            this.Name, 
-                            this.ExportId)
-                        .GetAwaiter()
-                        .GetResult();
-                }
+                    WriteObject(true);
+                }                
             }
         }
     }

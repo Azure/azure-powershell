@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.Models
 
     public class PSApiKey
     {
-        private static readonly Regex AccessIdRegex = new Regex(@"^/subscriptions/(?<SubscriptionId>[^/]+)/resourceGroups/(?<ResourceGroup>[^/]+)/providers/microsoft.insights/components/(?<ResourceName>[^/]+)/(?<Permission>[^/]+).*$", RegexOptions.IgnoreCase);        
+        private static readonly Regex AccessIdRegex = new Regex(@"^/subscriptions/(?<SubscriptionId>[^/]+)/resourceGroups/(?<ResourceGroup>[^/]+)/providers/microsoft.insights/components/(?<ResourceName>[^/]+)/(?<Permission>[^/]+).*$", RegexOptions.IgnoreCase);
 
         internal static ApiKeyRole ReadTelemetry = new ApiKeyRole()
         {
@@ -61,14 +61,14 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.Models
 
         public string[] Permissions { get; }
 
-        public string Name { get; set; }
+        public string Description { get; set; }
 
         public PSApiKey(ApplicationInsightsComponentAPIKey key)
         {
             this.ApiKey = key.ApiKey;
             this.CreatedDate = key.CreatedDate;
             this.Id = key.Id.Split('/')[10];
-            this.Name = key.Name;
+            this.Description = key.Name;
 
             List<string> accessPermission = new List<string>();
 
@@ -157,5 +157,12 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.Models
 
             return Tuple.Create(readAccess.ToArray(), writeAccess.ToArray());
         }
+    }
+
+    public class PSApiKeyTableView : PSApiKey
+    {
+        public PSApiKeyTableView(ApplicationInsightsComponentAPIKey key) 
+            : base(key)
+        { }
     }
 }

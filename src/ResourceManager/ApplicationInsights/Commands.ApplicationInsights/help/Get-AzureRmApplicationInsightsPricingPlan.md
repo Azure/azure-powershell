@@ -12,6 +12,19 @@ Get pricing plan information for an applicaiton insights resource
 
 ## SYNTAX
 
+### ComponentObjectParameterSet
+```
+Get-AzureRmApplicationInsightsPricingPlan [-ApplicationInsightsComponent] <PSApplicationInsightsComponent>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ResourceIdParameterSet
+```
+Get-AzureRmApplicationInsightsPricingPlan [-ResourceId] <ResourceIdentifier>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ComponentNameParameterSet
 ```
 Get-AzureRmApplicationInsightsPricingPlan [-ResourceGroupName] <String> [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -24,15 +37,30 @@ Get pricing plan information for an applicaiton insights resource
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmApplicationInsightsDailyCapStatus -ResourceGroupName "testgroup" -Name "test"
+PS C:\> Get-AzureRmApplicationInsightsPricingPlan -ResourceGroupName "testgroup" -Name "test"
 ```
 
 Get pricing plan information for resource named "test" in resource group "testgroup"
 
 ## PARAMETERS
 
+### -ApplicationInsightsComponent
+Application Insights Component Object.```yaml
+Type: PSApplicationInsightsComponent
+Parameter Sets: ComponentObjectParameterSet
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.```yaml
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
 Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
@@ -49,7 +77,7 @@ Application Insights Component Name.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ComponentNameParameterSet
 Aliases: ApplicationInsightsComponentName, ComponentName
 
 Required: True
@@ -64,7 +92,20 @@ Resource Group Name.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ComponentNameParameterSet
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+Application Insights Component Resource Id.```yaml
+Type: ResourceIdentifier
+Parameter Sets: ResourceIdParameterSet
 Aliases: 
 
 Required: True

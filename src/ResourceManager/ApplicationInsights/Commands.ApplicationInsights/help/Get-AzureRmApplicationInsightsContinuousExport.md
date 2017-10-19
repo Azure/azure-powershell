@@ -12,6 +12,19 @@ Get application insights continuous export configuration for an application insi
 
 ## SYNTAX
 
+### ComponentObjectParameterSet
+```
+Get-AzureRmApplicationInsightsContinuousExport [-ApplicationInsightsComponent] <PSApplicationInsightsComponent>
+ [[-ExportId] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ResourceIdParameterSet
+```
+Get-AzureRmApplicationInsightsContinuousExport [-ResourceId] <ResourceIdentifier> [[-ExportId] <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ComponentNameParameterSet
 ```
 Get-AzureRmApplicationInsightsContinuousExport [-ResourceGroupName] <String> [-Name] <String>
  [[-ExportId] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -24,13 +37,28 @@ Get application insights continuous export configuration for an application insi
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmApplicationInsightsContinuousExport -ResourceGroupName "testgroup" [-Name] "test"
+PS C:\> Get-AzureRmApplicationInsightsContinuousExport -ResourceGroupName "testgroup" -Name "test"
  -ExportId "uGOoki0jQsyEs3IdQ83Q4QsNr4="
 ```
 
 Get application insights continuous export configuration with export id "uGOoki0jQsyEs3IdQ83Q4QsNr4=" for resource named "test" in resource group "testgroup"
 
 ## PARAMETERS
+
+### -ApplicationInsightsComponent
+Application Insights Component Object.
+
+```yaml
+Type: PSApplicationInsightsComponent
+Parameter Sets: ComponentObjectParameterSet
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.```yaml
@@ -65,7 +93,7 @@ Application Insights Component Name.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ComponentNameParameterSet
 Aliases: ApplicationInsightsComponentName, ComponentName
 
 Required: True
@@ -80,7 +108,20 @@ Resource Group Name.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ComponentNameParameterSet
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+Application Insights Component Resource Id.```yaml
+Type: ResourceIdentifier
+Parameter Sets: ResourceIdParameterSet
 Aliases: 
 
 Required: True
