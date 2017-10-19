@@ -16,6 +16,7 @@ using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute.Models;
+using System;
 using System.Collections;
 using System.Management.Automation;
 
@@ -35,12 +36,14 @@ namespace Microsoft.Azure.Commands.Compute
            Mandatory = false,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "New or Existing User Name")]
+        [Obsolete("Set-AzureRmVMAccessExtension: The parameter \"UserName\" is being removed in a future release in favor of a new PSCredential parameter (-Credential).")]
         public string UserName { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "New or Existing User Password")]
+        [Obsolete("Set-AzureRmVMAccessExtension: The parameter \"Password\" is being removed in a future release in favor of a new PSCredential parameter (-Credential).")]
         public string Password { get; set; }
 
         public override void ExecuteCmdlet()
