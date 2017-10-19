@@ -47,6 +47,17 @@ PS C:\> Set-AzureRmDataLakeStoreItemExpiry -AccountName "ContosoADL" -Path /myfi
 Removes any expiration that was previously set on file 'myfile.txt' in account 'ContosoADL'.
 This means the file will not automatically expire (be marked for delete) and will need to be manually deleted or set to expire again.
 
+
+### Example 3: Set expiration time for a file relative to now
+```
+PS C:\> Set-AdlStoreItemExpiry -Account "ContosoADL" -path /myfile.txt -FileExpiryOptions RelativeToNow -RelativeTime 240000
+PS C:\> Set-AdlStoreItemExpiry -Account "ContosoADL" -path /myfile.txt -FileExpiryOptions RelativeToCreationDate -RelativeTime 240000
+```
+
+The first command sets the expiration time of the file /myfile.txt 240 seconds relative to current time at server.
+
+The second command sets the expiration time of the file /myfile.txt 240 seconds relative to creation time at server.
+
 ## PARAMETERS
 
 ### -Account

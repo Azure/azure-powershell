@@ -34,6 +34,15 @@ The first command creates the file NewFile.txt for the specified account.
 
 The second command creates the folder NewFolder at the root folder.
 
+### Example 2: Create a new file with IfFileExists
+```
+PS C:\>New-AzureRmDataLakeStoreItem -AccountName "ContosoADL" -Path "/NewFile.txt" -IfFileExists Overwrite
+PS C:\>New-AzureRmDataLakeStoreItem -AccountName "ContosoADL" -Path "/NewFile.txt" -IfFileExists Fail
+```
+
+The first command creates the file NewFile.txt overwriting the existing one without prompting.
+
+The first command fails to create the file NewFile.txt without prompting.
 ## PARAMETERS
 
 ### -Account
