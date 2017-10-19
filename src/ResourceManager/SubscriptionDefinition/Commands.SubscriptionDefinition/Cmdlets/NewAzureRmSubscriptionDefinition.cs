@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.SubscriptionDefinition.Cmdlets
 
         [Parameter(Mandatory = true, HelpMessage = "Offer type of the subscription definition.")]
         [ArgumentCompleter(typeof(OfferTypeCompleter))]
-        public RuntimeDefinedParameter OfferType { get; set; }
+        public string OfferType { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Display name of the subscription.")]
         public string SubscriptionDisplayName { get; set; }
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.SubscriptionDefinition.Cmdlets
                 this.WriteSubscriptionDefinitionObject(this.SubscriptionDefinitionClient.SubscriptionDefinitions.Create(new Microsoft.Azure.Management.ResourceManager.Models.SubscriptionDefinition(
                     groupId: this.ManagementGroupId.ToString(),
                     name: this.Name,
-                    ratingContext: new Management.ResourceManager.Models.SubscriptionDefinitionPropertiesRatingContext(this.OfferType.Value.ToString()),
+                    ratingContext: new Management.ResourceManager.Models.SubscriptionDefinitionPropertiesRatingContext(this.OfferType),
                     subscriptionDisplayName: this.SubscriptionDisplayName ?? this.Name)));
             }
         }
