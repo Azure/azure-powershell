@@ -48,6 +48,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.TabCompletion
                             instance.AuthenticationFactory.GetServiceClientCredentials(context, AzureEnvironment.Endpoint.ResourceManager),
                             instance.ClientFactory.GetCustomHandlers());
                         client.SubscriptionId = context.Subscription.Id;
+                        // Retrieve only the first page of ResourceGroups to display to the user
                         var resourceGroups = client.ResourceGroups.ListAsync();
                         if (resourceGroups.Wait(TimeSpan.FromSeconds(5)))
                         {
@@ -112,9 +113,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.TabCompletion
             {
                 if (resourceGroupNames.Contains(defaultResourceGroup))
                 {
-                    resourceGroupNames.Remove(defaultResourceGroup);
-                    resourceGroupNames.Insert(0, defaultResourceGroup);
+                    resourceGroupNames.Remove(defaultResourceGroup);    
                 }
+                resourceGroupNames.Insert(0, defaultResourceGroup);
             }
             return resourceGroupNames.ToArray();
         }
