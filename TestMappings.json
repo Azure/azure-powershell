@@ -171,5 +171,8 @@
   ],
   "src/ResourceManager/Profile/Commands.Profile.Test/": [
     ".\\src\\ResourceManager\\Profile\\Commands.Profile.Test\\bin\\Debug\\Microsoft.Azure.Commands.Profile.Test.dll"
+  ],
+  "src/ResourceManager/MarketplaceOrdering/Commands.MarketplaceOrdering.Test/": [
+    ".\\src\\ResourceManager\\MarketplaceOrdering\\Commands.MarketplaceOrdering.Test\\bin\\Debug\\Microsoft.Azure.Commands.MarketplaceOrdering.Test.dll"
   ]
 }
