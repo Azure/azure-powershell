@@ -110,7 +110,8 @@ Accept wildcard characters: False
 ```
 
 ### -IfFileExists
-If the file or folder exists, it should be overwritten. If Overwrite is passed then item is created without promptIf fail is passed then it fails without any prompt```yaml
+If the file or folder exists, it should be overwritten. If Overwrite is passed then item is created without promptIf fail is passed then it fails without any prompt
+```yaml
 Type: FileExists
 Parameter Sets: (All)
 Aliases: 
