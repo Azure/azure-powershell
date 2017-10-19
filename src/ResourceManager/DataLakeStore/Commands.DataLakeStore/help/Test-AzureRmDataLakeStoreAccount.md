@@ -14,7 +14,8 @@ Tests the existence of a Data Lake Store account.
 ## SYNTAX
 
 ```
-Test-AzureRmDataLakeStoreAccount [-Name] <String> [[-ResourceGroupName] <String>] [<CommonParameters>]
+Test-AzureRmDataLakeStoreAccount [-Name] <String> [[-ResourceGroupName] <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,6 +31,21 @@ PS C:\>Test-AzureRmDataLakeStoreAccount -Name "ContosoADL"
 This command tests whether the account named ContosoADL exists.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 Specifies the name of the Data Lake Store account to test.

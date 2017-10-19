@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false,
             HelpMessage =
-                "Indicates the user wants to remove all of the contents of the folder, but not the folder itself")]
+                "DEPRECATED. Will be discontinued in future releases.")]
         public SwitchParameter Clean { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, Mandatory = false,
@@ -59,6 +59,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         public override void ExecuteCmdlet()
         {
+            WriteWarning(Resources.IncorrectCleanWarning);
             bool success = true ;
             foreach (var path in Paths)
             {
