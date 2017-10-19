@@ -77,20 +77,20 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         public SwitchParameter Resume { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 5, Mandatory = false,
-            HelpMessage = "DEPRECATED. Please use ConcurrentFileCount parameter.",
+            HelpMessage = "DEPRECATED. Please use Concurrency parameter.",
             ParameterSetName = BaseParameterSetName)]
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 5, Mandatory = false,
-            HelpMessage = "DEPRECATED. Please use ConcurrentFileCount parameter.",
+            HelpMessage = "DEPRECATED. Please use Concurrency parameter.",
             ParameterSetName = DiagnosticParameterSetName)]
         public int PerFileThreadCount { get; set; } = -1;
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 6, Mandatory = false,
             HelpMessage =
-                "Indicates the maximum number of files to download in parallel for a folder download.  Default will be computed as a best effort based on folder and file size",
+                "DEPRECATED. Please use Concurrency parameter.",
             ParameterSetName = BaseParameterSetName)]
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 6, Mandatory = false,
             HelpMessage =
-                "Indicates the maximum number of files to download in parallel for a folder download.  Default will be computed as a best effort based on folder and file size",
+                "DEPRECATED. Please use Concurrency parameter.",
             ParameterSetName = DiagnosticParameterSetName)]
         public int ConcurrentFileCount { get; set; } = -1;
 
@@ -101,6 +101,16 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             HelpMessage = "Indicates that, if the file or folder exists, it should be overwritten",
             ParameterSetName = DiagnosticParameterSetName)]
         public SwitchParameter Force { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 8, Mandatory = false,
+            HelpMessage =
+                "Indicates the number of files or chunks to download in parallel. Default will be computed as a best effort based on system specifications.",
+            ParameterSetName = BaseParameterSetName)]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 8, Mandatory = false,
+            HelpMessage =
+                "Indicates the number of files or chunks to download in parallel. Default will be computed as a best effort based on system specification.",
+            ParameterSetName = DiagnosticParameterSetName)]
+        public int Concurrency { get; set; } = -1;
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
             HelpMessage =
@@ -116,6 +126,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         public override void ExecuteCmdlet()
         {
+            WriteWarning(Resources.IncorrectConcurrentFileCountWarning);
             WriteWarning(Resources.IncorrectPerFileThreadCountWarning);
             WriteWarning(Resources.IncorrectResume);
             // We will let this throw itself if the path they give us is invalid
@@ -137,7 +148,11 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                         }
 
                         int threadCount;
-                        if (ConcurrentFileCount > 0 && PerFileThreadCount <= 0)
+                        if (Concurrency > 0)
+                        {
+                            threadCount = Concurrency;
+                        }
+                        else if (ConcurrentFileCount > 0 && PerFileThreadCount <= 0)
                         {
                             threadCount = ConcurrentFileCount;
                         }

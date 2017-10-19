@@ -15,14 +15,15 @@ Sets or removes the expire time for a file in an Azure Data Lake Store account.
 ### Set expiry as Absolute or NeverExpire (Default)
 ```
 Set-AzureRmDataLakeStoreItemExpiry [-Account] <String> [-Path] <DataLakeStorePathInstance>
- [[-Expiration] <DateTimeOffset>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-Expiration] <DateTimeOffset>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### Set expiry as relative to creation or now
 ```
 Set-AzureRmDataLakeStoreItemExpiry [-Account] <String> [-Path] <DataLakeStorePathInstance>
- [[-FileExpiryOptions] <PathRelativeExpiryOptions>] [[-RelativeTime] <Int64>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [[-FileExpiryOptions] <PathRelativeExpiryOptions>] [[-RelativeTime] <Int64>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -60,6 +61,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

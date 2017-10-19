@@ -16,15 +16,16 @@ Downloads a file from Data Lake Store.
 ### No diagnostic logging (Default)
 ```
 Export-AzureRmDataLakeStoreItem [-Account] <String> [-Path] <DataLakeStorePathInstance> [-Destination] <String>
- [-Recurse] [-Resume] [[-PerFileThreadCount] <Int32>] [[-ConcurrentFileCount] <Int32>] [-Force] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-Recurse] [-Resume] [[-PerFileThreadCount] <Int32>] [[-ConcurrentFileCount] <Int32>] [-Force]
+ [[-Concurrency] <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Include diagnostic logging
 ```
 Export-AzureRmDataLakeStoreItem [-Account] <String> [-Path] <DataLakeStorePathInstance> [-Destination] <String>
  [-Recurse] [-Resume] [[-PerFileThreadCount] <Int32>] [[-ConcurrentFileCount] <Int32>] [-Force]
- [-DiagnosticLogLevel <LogLevel>] -DiagnosticLogPath <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-Concurrency] <Int32>] [-DiagnosticLogLevel <LogLevel>] -DiagnosticLogPath <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -56,9 +57,23 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Concurrency
+Indicates the number of files or chunks to download in parallel. Default will be computed as a best effort based on system specifications.
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: 8
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -ConcurrentFileCount
-Specifies the maximum number of files to download in parallel for a folder download.
-The default value is five (5).
+DEPRECATED. Please use Concurrency parameter.
 
 ```yaml
 Type: Int32
@@ -69,6 +84,21 @@ Required: False
 Position: 6
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -149,7 +179,7 @@ Accept wildcard characters: False
 ```
 
 ### -PerFileThreadCount
-DEPRECATED. Please use ConcurrentFileCount parameter.
+DEPRECATED. Please use Concurrency parameter.
 
 ```yaml
 Type: Int32
