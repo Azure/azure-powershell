@@ -19,6 +19,8 @@
 -->
 ## Current Release
 
+## Version 0.15.7
+
 ## Version 0.15.6
 
 ## Version 0.15.4

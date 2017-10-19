@@ -39,6 +39,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             ComputeTestController.NewInstance.RunPsTest("Test-GetVirtualMachineScaleSetDiskEncryptionStatus");
         }
-    }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetVirtualMachineScaleSetDiskEncryptionDataDisk()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-GetVirtualMachineScaleSetDiskEncryptionDataDisk");
+        }
+    }
 }

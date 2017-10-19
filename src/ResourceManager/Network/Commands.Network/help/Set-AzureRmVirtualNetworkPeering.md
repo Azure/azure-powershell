@@ -14,7 +14,8 @@ Configures a virtual network peering.
 ## SYNTAX
 
 ```
-Set-AzureRmVirtualNetworkPeering -VirtualNetworkPeering <PSVirtualNetworkPeering> [<CommonParameters>]
+Set-AzureRmVirtualNetworkPeering -VirtualNetworkPeering <PSVirtualNetworkPeering>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -76,6 +77,21 @@ However, the peer VNet must have a gateway configured and **AllowGatewayTransit*
 This property cannot be used if a gateway has already been configured.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -VirtualNetworkPeering
 Specifies the virtual network peering.
