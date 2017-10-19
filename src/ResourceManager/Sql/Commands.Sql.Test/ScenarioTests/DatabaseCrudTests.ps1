@@ -345,13 +345,13 @@ function Test-CancelDatabaseOperationInternal ($location = "westcentralus")
 	# Setup
 	$rg = Create-ResourceGroupForTest
 	$server = Create-ServerForTest $rg $location
-	
+
 	$databaseName = Get-DatabaseName
 	$db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
 		-Edition Standard -MaxSizeBytes 250GB -RequestedServiceObjectiveName S0
 	Assert-AreEqual $db.DatabaseName $databaseName
 
-    # Database will be Standard s0 with maxsize: 268435456000 (250GB)
+	# Database will be Standard s0 with maxsize: 268435456000 (250GB)
 
 	try
 	{
@@ -370,11 +370,11 @@ function Test-CancelDatabaseOperationInternal ($location = "westcentralus")
 		$dbactivityId = $dbactivity.OperationId
 		try
 		{
-            $dbactivityCancel = Stop-AzureRmSqlDatabaseActivity -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName -OperationId $dbactivityId
+			$dbactivityCancel = Stop-AzureRmSqlDatabaseActivity -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName -OperationId $dbactivityId
 		}
 		Catch
 		{
-            $ErrorMessage = $_.Exception.Message
+			$ErrorMessage = $_.Exception.Message
 			Assert-AreEqual True $ErrorMessage.Contains("Cannot cancel database management operation '" + $dbactivityId + "' in the current state")
 		}
 	}

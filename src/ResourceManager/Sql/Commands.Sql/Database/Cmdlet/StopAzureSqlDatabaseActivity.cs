@@ -50,21 +50,5 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         {
             return ModelAdapter.CancelDatabaseActivity(this.ResourceGroupName, this.ServerName, this.ElasticPoolName, this.DatabaseName, this.OperationId);
         }
-
-        /// <summary>
-        /// Entry point for the cmdlet
-        /// </summary>
-        public override void ExecuteCmdlet()
-        {
-            if (!ShouldProcess(
-                    string.Format(CultureInfo.InvariantCulture, Properties.Resources.StopDatabaseActivityDescription, this.DatabaseName, this.ServerName),
-                    string.Format(CultureInfo.InvariantCulture, Properties.Resources.StopDatabaseActivityWarning, this.DatabaseName, this.ServerName),
-                    Properties.Resources.ShouldProcessCaption))
-            {
-                return;
-            }
-
-            base.ExecuteCmdlet();
-        }
     }
 }
