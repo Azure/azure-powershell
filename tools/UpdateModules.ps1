@@ -40,7 +40,7 @@ function Create-ModulePsm1
      [string]$minimum
      foreach ($mod in $ModuleMetadata.RequiredModules)
      {
-        $minimum += "  Import-Module " + $mod["ModuleName"] + " -ModuleVersion " + [string]$mod["ModuleVersion"] + "`r`n"
+        $minimum += "Import-Module " + $mod["ModuleName"] + " -MinimumVersion " + [string]$mod["ModuleVersion"] + "`r`n"
      }
      $template = Get-Content -Path $TemplatePath
      $template = $template -replace "%MODULE-NAME%", $file.BaseName

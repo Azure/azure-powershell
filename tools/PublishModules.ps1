@@ -129,7 +129,7 @@ function Make-StrictModuleDependencies
         }
         else
         {
-            $newModules += (@{ModuleName = $module["ModuleName"]; RequiredVersion= $module["ModuleVersion"]})
+            $newModules += (@{ModuleName = $module["ModuleName"]; ModuleVersion= $module["ModuleVersion"]})
         }        
     }
 
