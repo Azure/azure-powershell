@@ -53,7 +53,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
         {
             IList<string> resourceGroupsReturned = new List<string>();
             resourceGroupsReturned.Add("test1");
-            Assert.Collection(ResourceGroupCompleterAttribute.GetResourceGroups(resourceGroupsReturned, "invalidDefault"), e1 => Assert.Equal("test1", e1));
+            Assert.Collection(ResourceGroupCompleterAttribute.GetResourceGroups(resourceGroupsReturned, "defaultOutOfPage"), e1 => Assert.Equal("defaultOutOfPage", e1),
+                e2 => Assert.Equal("test1", e2));
         }
 
         [Fact]
