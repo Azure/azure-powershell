@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.9.5'
+ModuleVersion = '0.9.6'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -103,7 +103,7 @@ PrivateData = @{
         Tags = 'Azure','ResourceManager','ARM','Profile','Authentication','Environment','Subscription'
 
         # A URL to the license for this module.
-        LicenseUri = 'https://raw.githubusercontent.com/Azure/azure-powershell/preview/LICENSE.txt'
+        LicenseUri = 'https://aka.ms/azps-license'
 
         # A URL to the main website for this project.
         ProjectUri = 'https://github.com/Azure/azure-powershell'

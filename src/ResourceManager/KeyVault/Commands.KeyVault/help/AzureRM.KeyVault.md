@@ -59,9 +59,6 @@ Gets the secrets in a key vault.
 ### [Get-AzureRmKeyVault](Get-AzureRmKeyVault.md)
 Gets key vaults.
 
-### [Get-AzureRmKeyVault](Get-AzureRmKeyVault.md)
-Gets key vaults.
-
 ### [New-AzureKeyVaultCertificateAdministratorDetails](New-AzureKeyVaultCertificateAdministratorDetails.md)
 Creates an in-memory certificate administrator details object.
 
