@@ -14,15 +14,15 @@
 
 using Microsoft.Azure.Commands.DataLakeStore.Models;
 using Microsoft.Azure.Commands.DataLakeStore.Properties;
-using System;
 using System.Management.Automation;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeStoreItemOwner", SupportsShouldProcess = true),
+    [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeStoreItemAcl", SupportsShouldProcess = true), 
         OutputType(typeof(bool))]
-    [Alias("Set-AdlStoreItemOwner")]
-    public class SetAzureDataLakeStoreItemOwner : DataLakeStoreFileSystemCmdletBase
+    [Alias("Set-AdlStoreItemAcl")]
+    public class SetAzureDataLakeStoreItemAcl : DataLakeStoreFileSystemCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             HelpMessage = "The DataLakeStore account to execute the filesystem operation in")]
@@ -38,51 +38,40 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         [ValidateNotNull]
         public DataLakeStorePathInstance Path { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = true,
-            HelpMessage = "The type of owner to set. Valid values are 'user' and 'group'.")]
-        [ValidateNotNull]
-        public DataLakeStoreEnums.Owner Type { get; set; }
-
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = true,
-            HelpMessage = "The AAD object ID of the new owner entity")]
-        [ValidateNotNull]
-        public Guid Id { get; set; }
+        [Parameter(ValueFromPipelineByPropertyName = true, ValueFromPipeline = true, Position = 2, Mandatory = true,
+            HelpMessage =
+                "The ACL to set. This can be a modified ACL from Get-AzureDataLakeStoreItemAcl or it can be the string " +
+                " representation of an ACL as defined in the apache webhdfs specification. Note that this is only supported for named ACEs." +
+                "This cmdlet is not to be used for setting the owner or owning group.")]
+        public DataLakeStoreItemAce[] Acl { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
             HelpMessage =
-                "Indicates the resulting updated owner should be returned."
+                "Indicates the resulting ACL should be returned indicating the result of set operation."
             )]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
             WriteWarning(Resources.IncorrectOutputTypeWarning);
-            var currentAcl = DataLakeStoreFileSystemClient.GetAclStatus(Path.TransformedPath, Account);
-            string group;
-            string user;
-            if (Type == DataLakeStoreEnums.Owner.Group)
-            {
-                group = Id.ToString();
-                user = currentAcl.Owner;
-            }
-            else
-            {
-                group = currentAcl.Group;
-                user = Id.ToString();
-            }
-
             ConfirmAction(
-                string.Format(Resources.SetDataLakeStoreItemOwner, Path.OriginalPath),
+                string.Format(Resources.SetDataLakeStoreItemAcl, Path.OriginalPath),
                 Path.OriginalPath,
                 () =>
-                {
-                    DataLakeStoreFileSystemClient.SetOwner(Path.TransformedPath, Account, user, group);
-                    if(PassThru)
                     {
-                        var aclObject = DataLakeStoreFileSystemClient.GetAclStatus(Path.TransformedPath, Account);
-                        WriteObject(Type == DataLakeStoreEnums.Owner.Group ? aclObject.Group : aclObject.Owner);
-                    }
-                });
+                        DataLakeStoreFileSystemClient.SetAcl(
+                            Path.TransformedPath,
+                            Account,
+                            Acl.Select(entry=>entry.ParseDataLakeStoreItemAce()).ToList());
+
+                        if (PassThru)
+                        {
+                            var toReturn = DataLakeStoreFileSystemClient.GetAclStatus(Path.TransformedPath, 
+                                        Account).Entries.Select(entry=>new DataLakeStoreItemAce(entry));
+
+                            WriteObject(toReturn);
+                        }
+                    });
         }
     }
 }

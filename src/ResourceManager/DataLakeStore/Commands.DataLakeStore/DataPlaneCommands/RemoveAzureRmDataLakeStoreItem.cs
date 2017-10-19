@@ -14,8 +14,8 @@
 
 using Microsoft.Azure.Commands.DataLakeStore.Models;
 using Microsoft.Azure.Commands.DataLakeStore.Properties;
-using Microsoft.Azure.Management.DataLake.Store.Models;
 using System.Management.Automation;
+using Microsoft.Azure.DataLake.Store;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
@@ -42,27 +42,28 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false,
             HelpMessage =
-                "Indicates the user wants to remove all of the contents of the folder, but not the folder itself")]
+                "DEPRECATED. Will be discontinued in future releases.")]
         public SwitchParameter Clean { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, Mandatory = false,
             HelpMessage =
-                "Indicates a boolean response should be returned indicating the result of the delete operation."
+                "Indicates delete should be performed without prompting."
             )]
         public SwitchParameter Force { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 5, Mandatory = false,
             HelpMessage =
-                "Indicates the delete should be immediately performed with no confirmation or prompting. Use carefully."
+                "Indicates a boolean response should be returned indicating the result of the delete operation."
             )]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            bool[] success = { true };
+            WriteWarning(Resources.IncorrectCleanWarning);
+            bool success = true ;
             foreach (var path in Paths)
             {
-                FileType testClean;
+                DirectoryEntryType testClean;
                 var pathExists = DataLakeStoreFileSystemClient.TestFileOrFolderExistence(path.TransformedPath,
                     Account, out testClean);
 
@@ -73,18 +74,18 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                     path.OriginalPath,
                     () =>
                     {
-                        success[0] =
-                            success[0] &&
+                        success =
+                            success &&
                             DataLakeStoreFileSystemClient.DeleteFileOrFolder(path.TransformedPath, Account,
                                 Recurse);
-                        if (pathExists && testClean == FileType.DIRECTORY && Clean)
+                        if (pathExists && testClean == DirectoryEntryType.DIRECTORY && Clean)
                         {
                             // recreate the directory as an empty directory if clean was specified.
                             DataLakeStoreFileSystemClient.CreateDirectory(path.TransformedPath, Account);
                         }
                         if (PassThru)
                         {
-                            WriteObject(success[0]);
+                            WriteObject(success);
                         }
                     });
             }

@@ -13,17 +13,16 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.DataLakeStore.Properties;
-using Microsoft.Azure.Management.DataLake.Store.Models;
 using Microsoft.Rest.Azure;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Azure.DataLake.Store.Acl;
 
 namespace Microsoft.Azure.Commands.DataLakeStore.Models
 {
     /// <summary>
-    /// The object that is used to manage permissions for files and folders.
+    /// The object that is used to manage permissions for files and folders. This is an exposed model to public so it should be independent of SDK models. We will never be able to remove members. 
+    /// The sdk model AclEntry is mapped to this model.
     /// </summary>
     public class DataLakeStoreItemAce
     {
@@ -34,10 +33,49 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             Id = id;
             Permission = permission;
 
-            Entry = string.Format("{0}{1}:{2}:{3}", Scope == DataLakeStoreEnums.ScopeType.Default ? "default:" : string.Empty, Type, Id, permission);
-            NoPermissionEntry = string.Format("{0}{1}:{2}", Scope == DataLakeStoreEnums.ScopeType.Default ? "default:" : string.Empty, Type, Id);
+            Entry = $"{(Scope == DataLakeStoreEnums.ScopeType.Default ? "default:" : string.Empty)}{Type}:{Id}:{Permission}";
+            NoPermissionEntry =
+                $"{(Scope == DataLakeStoreEnums.ScopeType.Default ? "default:" : string.Empty)}{Type}:{Id}";
         }
 
+        private DataLakeStoreEnums.AceType MapAclEntryType(AclType aclType)
+        {
+            switch (aclType)
+            {
+                case AclType.group: return DataLakeStoreEnums.AceType.Group;
+                case AclType.user: return DataLakeStoreEnums.AceType.User;
+                case AclType.mask: return DataLakeStoreEnums.AceType.Mask;
+                case AclType.other: return DataLakeStoreEnums.AceType.Other;
+                default: throw new ArgumentException("AclType is invalid");
+            }
+        }
+        private AclType MapAceType(DataLakeStoreEnums.AceType aclType)
+        {
+            switch (aclType)
+            {
+                case DataLakeStoreEnums.AceType.Group: return AclType.group;
+                case DataLakeStoreEnums.AceType.User: return AclType.user;
+                case DataLakeStoreEnums.AceType.Mask : return AclType.mask;
+                case DataLakeStoreEnums.AceType.Other: return AclType.other;
+                default: throw new ArgumentException("AceType is invalid");
+            }
+        }
+        internal DataLakeStoreItemAce(AclEntry entry)
+        {
+            Scope = (DataLakeStoreEnums.ScopeType)entry.Scope;
+            Type = MapAclEntryType(entry.Type);
+            Id = entry.UserOrGroupId;
+            Permission = entry.Action.GetRwx();
+
+            Entry = $"{(Scope == DataLakeStoreEnums.ScopeType.Default ? "default:":string.Empty)}{Type}:{Id}:{Permission}";
+            NoPermissionEntry =
+                $"{(Scope == DataLakeStoreEnums.ScopeType.Default ? "default:" : string.Empty)}{Type}:{Id}";
+        }
+
+        internal AclEntry ParseDataLakeStoreItemAce()
+        {
+            return new AclEntry(MapAceType(Type), Id,(AclScope)Scope, AclActionExtension.GetAclAction(Permission).Value);
+        }
         public DataLakeStoreEnums.ScopeType Scope { get; set; }
         public DataLakeStoreEnums.AceType Type { get; set; }
 
@@ -109,14 +147,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
         internal static DataLakeStoreItemAce[] GetAclFromStatus(AclStatus aclStatus)
         {
-            var toReturn = new DataLakeStoreItemAce[aclStatus.Entries.Count()];
-            var index = 0;
-            foreach(var entry in aclStatus.Entries)
-            {
-                toReturn[index++] = Parse(entry);
-            }
-
-            return toReturn;
+            return aclStatus.Entries.Select(entry => new DataLakeStoreItemAce(entry)).ToArray();
         }
 
         internal static string GetAclSpec(DataLakeStoreItemAce[] aces, bool includePermission = true)

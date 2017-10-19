@@ -19,6 +19,43 @@
 -->
 ## Current Release
 
+* Moved from AutoRest sdk to our version of Dataplane sdk for Azure data lake.
+* Refactored following cmdlets to use the new version of SDK:
+	* Add-AzureRmDataLakeStoreItemContent
+	* Export-AzureRmDataLakeStoreItem
+	* Get-AzureRmDataLakeStoreChildItem
+	* Get-AzureRmDataLakeStoreItem
+	* Get-AzureRmDataLakeStoreItemAclEntry
+	* Get-AzureRmDataLakeStoreItemContent
+	* Get-AzureRmDataLakeStoreItemOwner
+	* Get-AzureRmDataLakeStoreItemPermission
+	* Import-AzureRmDataLakeStoreItem
+	* Join-AzureRmDataLakeStoreItem
+	* Move-AzureRmDataLakeStoreItem
+	* New-AzureRmDataLakeStoreItem
+	* Remove-AzureRmDataLakeStoreItem
+	* Remove-AzureRmDataLakeStoreItemAcl
+	* Remove-AzureRmDataLakeStoreItemAclEntry
+	* Set-AzureRmDataLakeStoreItemAcl
+	* Set-AzureRmDataLakeStoreItemAclEntry
+	* Set-AzureRmDataLakeStoreItemExpiry
+	* Set-AzureRmDataLakeStoreItemOwner
+	* Set-AzureRmDataLakeStoreItemPermission
+	* Test-AzureRmDataLakeStoreItem
+* Refactored following models to use models from new SDK:
+	* DataLakeStoreEnums
+	* DataLakeStoreFileSystemClient
+	* DataLakeStoreItem
+	* DataLakeStoreItemAce
+	* DataLakeStorePathInstance
+* Moved the commands and models related to the dataplane into separate folders
+* Export-AzureRmDataLakeStoreItem (documented in the breaking changes) - Deprecated parameters Resume, PerFileThreadCount, ConcurrentFileCount and introduced parameter Concurrency
+* Import-AzureRMDataLakeStoreItem (documented in the breaking changes) -Deprecated parameters Resume, PerFileThreadCount, ForceBinary, ConcurrentFileCount and introduced parameter Concurrency
+* Get-AzureRMDataLakeStoreItemContent - Fixed the tail behavior for contents greater than 4MB
+* Set-AzureRMDataLakeStoreItemExpiry - Introduced new parameter set for setting relative expiration time
+* New-AzureRmDataLakeStoreItem - Introduced IfExist parameter which allows user to overwrite or fail without prompting
+* Remove-AzureRmDataLakeStoreItem - Deprecated parameter Clean.
+
 ## Version 4.4.1
 
 ## Version 4.4.0
