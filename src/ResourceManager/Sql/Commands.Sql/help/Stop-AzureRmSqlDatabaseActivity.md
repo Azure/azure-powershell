@@ -27,6 +27,7 @@ The **Stop-AzureRmSqlDatabaseActivity** cmdlet cancels the asynchronous updatesl
 ### Example 1: Cancel the asynchronous updateslo operation on the database
 ```
 PS C:\>Stop-AzureRmSqlDatabaseActivity -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -OperationId af97005d-9243-4f8a-844e-402d1cc855f5
+
 OperationId     : af97005d-9243-4f8a-844e-402d1cc855f5
 ServerName      : Server01
 DatabaseName    : Database01
