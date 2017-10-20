@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Insights.LogProfiles
     /// <summary>
     /// Get the log profiles.
     /// </summary>
-    [Cmdlet(VerbsCommon.Add, "AzureRmLogProfile"), OutputType(typeof(PSLogProfile))]
+    [Cmdlet(VerbsCommon.Add, "AzureRmLogProfile", SupportsShouldProcess = true), OutputType(typeof(PSLogProfile))]
     public class AddAzureRmLogProfileCommand : ManagementCmdletBase
     {
         private static readonly List<string> ValidCategories = new List<string> { "Delete", "Write", "Action" };
@@ -76,28 +76,33 @@ namespace Microsoft.Azure.Commands.Insights.LogProfiles
 
         protected override void ProcessRecordInternal()
         {
-            var putParameters = new LogProfileResource()
+            if (ShouldProcess(
+                target: string.Format("Create/update a log profile: {0}", this.Name),
+                action: "Create/update a log profile"))
             {
-                Location = string.Empty,
-                Locations = this.Locations
-            };
+                var putParameters = new LogProfileResource()
+                {
+                    Location = string.Empty,
+                    Locations = this.Locations
+                };
 
-            if (this.Categories == null)
-            {
-                this.Categories = new List<string>(ValidCategories);
+                if (this.Categories == null)
+                {
+                    this.Categories = new List<string>(ValidCategories);
+                }
+
+                putParameters.Categories = this.Categories;
+                putParameters.RetentionPolicy = new RetentionPolicy
+                {
+                    Days = this.RetentionInDays.HasValue ? this.RetentionInDays.Value : 0,
+                    Enabled = this.RetentionInDays.HasValue
+                };
+                putParameters.ServiceBusRuleId = this.ServiceBusRuleId;
+                putParameters.StorageAccountId = this.StorageAccountId;
+
+                LogProfileResource result = this.MonitorManagementClient.LogProfiles.CreateOrUpdateAsync(logProfileName: this.Name, parameters: putParameters, cancellationToken: CancellationToken.None).Result;
+                WriteObject(new PSLogProfile(result));
             }
-
-            putParameters.Categories = this.Categories;
-            putParameters.RetentionPolicy = new RetentionPolicy
-            {
-                Days = this.RetentionInDays.HasValue ? this.RetentionInDays.Value : 0,
-                Enabled = this.RetentionInDays.HasValue
-            };
-            putParameters.ServiceBusRuleId = this.ServiceBusRuleId;
-            putParameters.StorageAccountId = this.StorageAccountId;
-
-            LogProfileResource result = this.MonitorManagementClient.LogProfiles.CreateOrUpdateAsync(logProfileName: this.Name, parameters: putParameters, cancellationToken: CancellationToken.None).Result;
-            WriteObject(new PSLogProfile(result));
         }
     }
 }
