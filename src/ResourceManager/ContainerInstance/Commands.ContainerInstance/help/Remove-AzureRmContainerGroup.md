@@ -12,22 +12,19 @@ Removes a container group.
 
 ## SYNTAX
 
-### RemoveContainerGroupByResourceGroupAndNameParamSet (Default)
+### RemoveContainerGroupByResourceGroupAndNameParamSet
 ```
-Remove-AzureRmContainerGroup [-ResourceGroupName] <String> [-Name] <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzureRmContainerGroup [-ResourceGroupName] <String> [-Name] <String> [-PassThru] [-WhatIf] [-Confirm]
 ```
 
 ### RemoveContainerGroupByPSContainerGroupParamSet
 ```
-Remove-AzureRmContainerGroup -InputObject <PSContainerGroup> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzureRmContainerGroup -InputObject <PSContainerGroup> [-PassThru] [-WhatIf] [-Confirm]
 ```
 
 ### RemoveContainerGroupByResourceIdParamSet
 ```
-Remove-AzureRmContainerGroup -ResourceId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzureRmContainerGroup -ResourceId <String> [-PassThru] [-WhatIf] [-Confirm]
 ```
 
 ## DESCRIPTION
@@ -58,13 +55,13 @@ This command removes a container group by resource Id.
 
 ## PARAMETERS
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: IAzureContextContainer
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: cf
 
 Required: False
 Position: Named
@@ -99,7 +96,7 @@ Aliases:
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -129,7 +126,7 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -145,21 +142,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -179,17 +161,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
-
 ## INPUTS
 
 ### System.String
 Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup
 
+
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup
+
 
 ## NOTES
 
