@@ -55,13 +55,13 @@
     <Compile Include="Models\DnsBaseCmdlet.cs" />
     <Compile Include="Models\DnsRecordSet.cs" />
     <Compile Include="Models\DnsZone.cs" />
-    <Compile Include="Records\GetAzureDnsRescordSet.cs" />
+    <Compile Include="Records\GetAzureDnsRecordSet.cs" />
     <Compile Include="Records\NewAzureRmDnsRecordConfig.cs" />
     <Compile Include="Records\RemoveAzureDnsRecordSet.cs" />
     <Compile Include="Records\SetAzureDnsRecordSet.cs" />
     <Compile Include="Records\RemoveAzureDnsRecordConfig.cs" />
     <Compile Include="Records\AddAzureDnsRecordConfig.cs" />
-    <Compile Include="Records\NewAzureDnsRescordSet.cs" />
+    <Compile Include="Records\NewAzureDnsRecordSet.cs" />
     <Compile Include="Zones\GetAzureDnsZone.cs" />
     <Compile Include="Zones\RemoveAzureDnsZone.cs" />
     <Compile Include="Zones\SetAzureDnsZone.cs" />
