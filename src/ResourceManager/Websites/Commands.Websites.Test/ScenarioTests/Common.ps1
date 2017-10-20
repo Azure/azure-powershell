@@ -91,7 +91,7 @@ Gets the location for the Website. Default to West US if none found.
 #>
 function Get-Location
 {
-	if (Get-WebsitesTestMode -ne 'Playback')
+	if ((Get-WebsitesTestMode) -ne 'Playback')
 	{
 		$namespace = "Microsoft.Web"
 		$type = "sites"
@@ -115,7 +115,7 @@ Gets the location for the Website. Default to West US if none found.
 #>
 function Get-SecondaryLocation
 {
-	if (Get-WebsitesTestMode -ne 'Playback')
+	if ((Get-WebsitesTestMode) -ne 'Playback')
 	{
 		$namespace = "Microsoft.Web"
 		$type = "sites"
@@ -139,7 +139,7 @@ Cleans the website
 #>
 function Clean-Website($resourceGroup, $websiteName)
 {
-    if (Get-WebsitesTestMode -ne 'Playback') 
+    if ((Get-WebsitesTestMode) -ne 'Playback') 
 	{
 		$result = Remove-AzureRmWebsite -ResourceGroupName $resourceGroup.ToString() -WebsiteName $websiteName.ToString() -Force
     }
@@ -147,7 +147,7 @@ function Clean-Website($resourceGroup, $websiteName)
 
 function PingWebApp($webApp)
 {
-	if (Get-WebsitesTestMode -ne 'Playback') 
+	if ((Get-WebsitesTestMode) -ne 'Playback') 
 	{
 		try 
 		{

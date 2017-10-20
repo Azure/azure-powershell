@@ -1975,7 +1975,7 @@ function Test-GetVMSizeFromAllLocations
 
 function get_all_vm_locations
 {
-    if (Get-ComputeTestMode -ne 'Playback')
+    if ((Get-ComputeTestMode) -ne 'Playback')
     {
         $namespace = "Microsoft.Compute"
         $type = "virtualMachines"

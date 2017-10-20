@@ -55,7 +55,7 @@ Gets the default location for a provider
 #>
 function Get-ProviderLocation($provider)
 {
-	if (Get-NetworkTestMode -ne 'Playback')
+	if ((Get-NetworkTestMode) -ne 'Playback')
 	{
 		$namespace = $provider.Split("/")[0]  
 		if($provider.Contains("/"))  
@@ -92,7 +92,7 @@ Cleans the created resource groups
 #>
 function Clean-ResourceGroup($rgname)
 {
-    if (Get-NetworkTestMode -ne 'Playback') {
+    if ((Get-NetworkTestMode) -ne 'Playback') {
         Remove-AzureRmResourceGroup -Name $rgname -Force
     }
 }
@@ -103,7 +103,7 @@ Sleeps but only during recording.
 #>
 function Start-TestSleep($milliseconds)
 {
-    if (Get-NetworkTestMode -ne 'Playback')
+    if ((Get-NetworkTestMode) -ne 'Playback')
     {
         Start-Sleep -Milliseconds $milliseconds
     }
