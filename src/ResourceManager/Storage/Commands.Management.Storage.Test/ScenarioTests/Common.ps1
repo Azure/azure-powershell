@@ -37,7 +37,7 @@ Cleans the created resource groups
 #>
 function Clean-ResourceGroup($rgname)
 {
-    if (Get-StorageTestMode -ne 'Playback') {
+    if ((Get-StorageTestMode) -ne 'Playback') {
         Remove-AzureRmResourceGroup -Name $rgname -Force
     }
 }

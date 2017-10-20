@@ -371,7 +371,7 @@ Gets the location for a provider, if not found return East US
 #>
 function Get-ProviderLocation($provider)
 {
-	if (Get-SqlTestMode -ne 'Playback')
+	if ((Get-SqlTestMode) -ne 'Playback')
 	{
 		$namespace = $provider.Split("/")[0]
 		if($provider.Contains("/"))

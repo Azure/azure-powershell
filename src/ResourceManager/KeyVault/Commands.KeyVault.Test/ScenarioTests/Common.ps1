@@ -55,7 +55,7 @@ Gets the location for the Vault. Default to West US if none found.
 #>
 function Get-Location
 {
-    if (Get-KeyVaultTestMode -ne 'Playback')
+    if ((Get-KeyVaultTestMode) -ne 'Playback')
 	{
 		$namespace = "Microsoft.KeyVault"  
 		$type = "vaults"
@@ -80,7 +80,7 @@ Gets the default location for a provider
 #>
 function Get-ProviderLocation($provider)
 {
-	if (Get-KeyVaultTestMode -ne 'Playback')
+	if ((Get-KeyVaultTestMode) -ne 'Playback')
 	{
 		$namespace = $provider.Split("/")[0]  
 		if($provider.Contains("/"))  
@@ -110,7 +110,7 @@ Cleans the created resource groups
 #>
 function Clean-ResourceGroup($rgname)
 {
-    if (Get-KeyVaultTestMode -ne 'Playback') {
+    if ((Get-KeyVaultTestMode) -ne 'Playback') {
         Remove-AzureRmResourceGroup -Name $rgname -Force
     }
 }
