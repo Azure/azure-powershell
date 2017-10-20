@@ -89,6 +89,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                 var user = Client.UserById(Context, UserId);
                 WriteObject(user);
             }
+            else if (ParameterSetName.Equals(FindBy))
+            {
+                var user = Client.UsersList(Context, FirstName, LastName, Email, State, GroupId);
+                WriteObject(user, true);
+            }
             else
             {
                 throw new InvalidOperationException(string.Format("Parameter set name '{0}' is not supported.", ParameterSetName));

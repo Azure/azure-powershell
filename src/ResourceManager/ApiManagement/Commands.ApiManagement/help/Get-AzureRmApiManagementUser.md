@@ -14,18 +14,21 @@ Gets a user or users.
 
 ### Get all users (Default)
 ```
-Get-AzureRmApiManagementUser -Context <PsApiManagementContext> [<CommonParameters>]
+Get-AzureRmApiManagementUser -Context <PsApiManagementContext> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### Get user by ID
 ```
-Get-AzureRmApiManagementUser -Context <PsApiManagementContext> [-UserId <String>] [<CommonParameters>]
+Get-AzureRmApiManagementUser -Context <PsApiManagementContext> [-UserId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Find users
 ```
 Get-AzureRmApiManagementUser -Context <PsApiManagementContext> [-FirstName <String>] [-LastName <String>]
- [-State <PsApiManagementUserState>] [-Email <String>] [-GroupId <String>] [<CommonParameters>]
+ [-State <PsApiManagementUserState>] [-Email <String>] [-GroupId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,7 +38,7 @@ The **Get-AzureRmApiManagementUser** cmdlet gets a specified user, or all users,
 
 ### Example 1: Get all users
 ```
-PS C:\>Get-AzureRmApiManagementUser -Context $apimContext
+PS C:\>Get-AzureRmApiManagementUser -Context $apimContext 
 ```
 
 This command gets all users.
@@ -83,6 +86,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -196,7 +214,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementUser
+The details of User in API Management service.
+
 ### IList<Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementUser>
+The list of User in the API Management  service.
 
 ## NOTES
 

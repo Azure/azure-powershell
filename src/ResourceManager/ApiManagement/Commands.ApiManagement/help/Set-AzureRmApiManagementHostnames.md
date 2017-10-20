@@ -16,12 +16,14 @@ Sets a custom hostname configuration for an API Management service proxy or port
 ```
 Set-AzureRmApiManagementHostnames -ResourceGroupName <String> -Name <String>
  [-PortalHostnameConfiguration <PsApiManagementHostnameConfiguration>]
- [-ProxyHostnameConfiguration <PsApiManagementHostnameConfiguration>] [-PassThru] [<CommonParameters>]
+ [-ProxyHostnameConfiguration <PsApiManagementHostnameConfiguration>] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Set from provided PsApiManagement instance
 ```
-Set-AzureRmApiManagementHostnames -ApiManagement <PsApiManagement> [-PassThru] [<CommonParameters>]
+Set-AzureRmApiManagementHostnames -ApiManagement <PsApiManagement> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -62,6 +64,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+ 
+ ```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -149,7 +166,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### PsApiManagement
-
 Parameter 'ApiManagement' accepts value of type 'PsApiManagement' from the pipeline
 
 ## OUTPUTS

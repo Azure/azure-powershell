@@ -14,22 +14,26 @@ Gets an API.
 
 ### All APIs (Default)
 ```
-Get-AzureRmApiManagementApi -Context <PsApiManagementContext> [<CommonParameters>]
+Get-AzureRmApiManagementApi -Context <PsApiManagementContext> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### Find by ID
 ```
-Get-AzureRmApiManagementApi -Context <PsApiManagementContext> -ApiId <String> [<CommonParameters>]
+Get-AzureRmApiManagementApi -Context <PsApiManagementContext> -ApiId <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Find by Name
 ```
-Get-AzureRmApiManagementApi -Context <PsApiManagementContext> -Name <String> [<CommonParameters>]
+Get-AzureRmApiManagementApi -Context <PsApiManagementContext> -Name <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Find by product ID
 ```
-Get-AzureRmApiManagementApi -Context <PsApiManagementContext> -ProductId <String> [<CommonParameters>]
+Get-AzureRmApiManagementApi -Context <PsApiManagementContext> -ProductId <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,13 +43,15 @@ The **Get-AzureRmApiManagementApi** cmdlet gets one or more Azure API Management
 
 ### Example 1: Get all management APIs
 ```
-PS C:\>Get-AzureRmApiManagementApi -Context $ApiMgmtContext
+PS C:\>$ApiMgmtContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Get-AzureRmApiManagementApi -Context $ApiMgmtContext
 ```
 
 This command gets all of the APIs for the specified context.
 
 ### Example 2: Get a management API by ID
 ```
+PS C:\>$ApiMgmtContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Get-AzureRmApiManagementApi -Context $ApiMgmtContext -ApiId $ApiId
 ```
 
@@ -53,6 +59,7 @@ This command gets the API with the specified ID.
 
 ### Example 3: Get a management API by name
 ```
+PS C:\>$ApiMgmtContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Get-AzureRmApiManagementApi -Context $ApiMgmtContext -Name "EchoApi"
 ```
 
@@ -87,6 +94,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+ 
+ ```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -127,7 +149,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApi
+The details of the Api in a given ApiManagement service
+
 ### IList<Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApi>
+The list of Apis in a given ApiManagement service
 
 ## NOTES
 
