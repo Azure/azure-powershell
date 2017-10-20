@@ -1,6 +1,5 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
 online version: 
 schema: 2.0.0
 ---
@@ -14,14 +13,12 @@ Get the details of the Backend.
 
 ### Get all backends (Default)
 ```
-Get-AzureRmApiManagementBackend -Context <PsApiManagementContext> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzureRmApiManagementBackend -Context <PsApiManagementContext> [<CommonParameters>]
 ```
 
 ### Get by backend ID
 ```
-Get-AzureRmApiManagementBackend -Context <PsApiManagementContext> -BackendId <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmApiManagementBackend -Context <PsApiManagementContext> -BackendId <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,8 +33,6 @@ Get the details of the Backend.
 
 
 
-
-
 ```
 Get-AzureRmApiManagementBackend -Context $apimContext
 ```
@@ -46,8 +41,6 @@ Gets a list of all the Backends configured in the Api Management service.
 
 ### --------------------------  Example 2  --------------------------
 @{paragraph=PS C:\\\>}
-
-
 
 
 
@@ -91,21 +84,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
-
-```yaml
-Type: IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

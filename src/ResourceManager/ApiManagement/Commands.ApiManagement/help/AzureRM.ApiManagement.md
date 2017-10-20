@@ -114,7 +114,7 @@ Creates a new Backend Credential contract.
 Creates a new Backend Proxy Object.
 
 ### [New-AzureRmApiManagementCertificate](New-AzureRmApiManagementCertificate.md)
-Creates an API Management certificate to be used during Authentication with Backend.
+Creates an API Management certificate.
 
 ### [New-AzureRmApiManagementContext](New-AzureRmApiManagementContext.md)
 Creates an instance of PsAzureApiManagementContext.

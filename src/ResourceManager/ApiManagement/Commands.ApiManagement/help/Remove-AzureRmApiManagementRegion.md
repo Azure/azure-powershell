@@ -1,6 +1,5 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
 ms.assetid: 17D7EBD2-FE3F-4D24-A1AA-8C45B9B1FEF5
 online version: 
 schema: 2.0.0
@@ -14,8 +13,7 @@ Removes an existing deployment region from PsApiManagement instance.
 ## SYNTAX
 
 ```
-Remove-AzureRmApiManagementRegion -ApiManagement <PsApiManagement> -Location <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Remove-AzureRmApiManagementRegion -ApiManagement <PsApiManagement> -Location <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -54,21 +52,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
-
-```yaml
-Type: IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -111,6 +94,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### PsApiManagement
+
 Parameter 'ApiManagement' accepts value of type 'PsApiManagement' from the pipeline
 
 ## OUTPUTS

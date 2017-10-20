@@ -1,6 +1,5 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
 online version: 
 schema: 2.0.0
 ---
@@ -14,14 +13,13 @@ Get the identity provider configuration details.
 
 ### AllIdentityProviders (Default)
 ```
-Get-AzureRmApiManagementIdentityProvider -Context <PsApiManagementContext>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmApiManagementIdentityProvider -Context <PsApiManagementContext> [<CommonParameters>]
 ```
 
 ### IdentityProviderByType
 ```
 Get-AzureRmApiManagementIdentityProvider -Context <PsApiManagementContext>
- -Type <PsApiManagementIdentityProviderType> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -Type <PsApiManagementIdentityProviderType> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,8 +34,6 @@ Get the identity provider configuration details.
 
 
 
-
-
 ```
 Get-AzureRmApiManagementIdentityProvider -Context $context
 ```
@@ -46,8 +42,6 @@ Get all the identity provider Configuration on the service.
 
 ### --------------------------  Example 2  --------------------------
 @{paragraph=PS C:\\\>}
-
-
 
 
 
@@ -74,21 +68,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
-
-```yaml
-Type: IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

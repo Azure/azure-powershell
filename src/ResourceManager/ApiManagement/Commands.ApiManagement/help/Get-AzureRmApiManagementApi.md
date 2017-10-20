@@ -1,6 +1,5 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
 ms.assetid: B80389B9-E143-4E24-A222-E95F691DA2E9
 online version: 
 schema: 2.0.0
@@ -15,26 +14,22 @@ Gets an API.
 
 ### All APIs (Default)
 ```
-Get-AzureRmApiManagementApi -Context <PsApiManagementContext> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzureRmApiManagementApi -Context <PsApiManagementContext> [<CommonParameters>]
 ```
 
 ### Find by ID
 ```
-Get-AzureRmApiManagementApi -Context <PsApiManagementContext> -ApiId <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmApiManagementApi -Context <PsApiManagementContext> -ApiId <String> [<CommonParameters>]
 ```
 
 ### Find by Name
 ```
-Get-AzureRmApiManagementApi -Context <PsApiManagementContext> -Name <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmApiManagementApi -Context <PsApiManagementContext> -Name <String> [<CommonParameters>]
 ```
 
 ### Find by product ID
 ```
-Get-AzureRmApiManagementApi -Context <PsApiManagementContext> -ProductId <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmApiManagementApi -Context <PsApiManagementContext> -ProductId <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -92,21 +87,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
-
-```yaml
-Type: IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

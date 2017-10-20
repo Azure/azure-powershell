@@ -1,6 +1,5 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
 ms.assetid: 6CD1C2B8-0416-4FF3-81B0-0C9E59AE6CF9
 online version: 
 schema: 2.0.0
@@ -16,28 +15,25 @@ Sets the specified scope policy for API Management.
 ### Tenant level (Default)
 ```
 Set-AzureRmApiManagementPolicy -Context <PsApiManagementContext> [-Format <String>] [-Policy <String>]
- [-PolicyFilePath <String>] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-PolicyFilePath <String>] [-PassThru] [<CommonParameters>]
 ```
 
 ### Product level
 ```
 Set-AzureRmApiManagementPolicy -Context <PsApiManagementContext> [-Format <String>] -ProductId <String>
- [-Policy <String>] [-PolicyFilePath <String>] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-Policy <String>] [-PolicyFilePath <String>] [-PassThru] [<CommonParameters>]
 ```
 
 ### API level
 ```
 Set-AzureRmApiManagementPolicy -Context <PsApiManagementContext> [-Format <String>] -ApiId <String>
- [-Policy <String>] [-PolicyFilePath <String>] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-Policy <String>] [-PolicyFilePath <String>] [-PassThru] [<CommonParameters>]
 ```
 
 ### Operation level
 ```
 Set-AzureRmApiManagementPolicy -Context <PsApiManagementContext> [-Format <String>] -ApiId <String>
- -OperationId <String> [-Policy <String>] [-PolicyFilePath <String>] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -OperationId <String> [-Policy <String>] [-PolicyFilePath <String>] [-PassThru] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -103,21 +99,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
-
-```yaml
-Type: IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

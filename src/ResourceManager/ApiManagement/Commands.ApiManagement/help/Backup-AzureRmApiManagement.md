@@ -1,6 +1,5 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
 ms.assetid: 5846BBB7-DA8E-41B5-A894-BA2B61C2212C
 online version: 
 schema: 2.0.0
@@ -14,9 +13,8 @@ Backs up an API Management service.
 ## SYNTAX
 
 ```
-Backup-AzureRmApiManagement -ResourceGroupName <String> -Name <String> -StorageContext <IStorageContext>
- -TargetContainerName <String> [-TargetBlobName <String>] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Backup-AzureRmApiManagement -ResourceGroupName <String> -Name <String> -StorageContext <AzureStorageContext>
+ -TargetContainerName <String> [-TargetBlobName <String>] [-PassThru] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,21 +31,6 @@ PS C:\>Backup-AzureRmApiManagement -ResourceGroupName "ContosoGroup02" -Name "Co
 This command backs up an API Management service to a Storage blob.
 
 ## PARAMETERS
-
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
-
-```yaml
-Type: IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -Name
 Specifies the name of the API Management deployment that this cmdlet backs up.
@@ -98,7 +81,7 @@ Accept wildcard characters: False
 Specifies a storage connection context.
 
 ```yaml
-Type: IStorageContext
+Type: AzureStorageContext
 Parameter Sets: (All)
 Aliases: 
 
