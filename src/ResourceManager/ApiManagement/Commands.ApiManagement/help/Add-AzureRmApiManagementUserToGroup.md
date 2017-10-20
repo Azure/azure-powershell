@@ -24,6 +24,7 @@ The **Add-AzureRmApiManagementUserToGroup** cmdlet adds a user to a group.
 
 ### Example 1: Add a user to a group
 ```
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Add-AzureRmApiManagementUserToGroup -Context $apimContext -GroupId "0001" -UserId "0123456789"
 ```
 

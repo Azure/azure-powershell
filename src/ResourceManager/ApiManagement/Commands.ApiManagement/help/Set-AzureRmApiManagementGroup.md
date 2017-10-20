@@ -24,7 +24,8 @@ The **Set-AzureRmApiManagementGroup** cmdlet configures an API management group.
 
 ### Example 1: Configure a management group
 ```
-PS C:\>Set-AzureRmApiManagementGroup -Context $APImContext -Description "Updated Management Group" -Name "Group0001"
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Set-AzureRmApiManagementGroup -Context $apimContext -Description "Updated Management Group" -Name "Group0001"
 ```
 
 This command configures a management group named Group0001.

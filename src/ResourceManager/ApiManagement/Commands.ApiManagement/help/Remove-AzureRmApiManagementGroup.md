@@ -24,7 +24,7 @@ The **Remove-AzureRmApiManagementGroup** cmdlet removes an existing API manageme
 
 ### Example 1: Remove an existing management group
 ```
-PS C:\>Remove-AzureRmApiManagementGroup -Context $APImContext -GroupId "Group0001" -Force
+PS C:\>Remove-AzureRmApiManagementGroup -Context $apimContext -GroupId "Group0001" -Force
 ```
 
 This command removes an existing management group named Group0001 and does not prompt the user for confirmation.

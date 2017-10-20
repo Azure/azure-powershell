@@ -45,28 +45,32 @@ The **Get-AzureRmApiManagementPolicy** cmdlet gets the specified scope policy.
 
 ### Example 1: Get the tenant level policy
 ```
-PS C:\>Get-AzureRmApiManagementPolicy -Context $APImContext -SaveAs "C:\contoso\policies\tenantpolicy.xml"
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Get-AzureRmApiManagementPolicy -Context $apimContext -SaveAs "C:\contoso\policies\tenantpolicy.xml"
 ```
 
 This command gets tenant level policy and saves it to a file named tenantpolicy.xml.
 
 ### Example 2: Get the product-scope policy
 ```
-PS C:\>Get-AzureRmApiManagementPolicy -Context $APImContext -ProductId "0123456789"
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Get-AzureRmApiManagementPolicy -Context $apimContext -ProductId "0123456789"
 ```
 
 This command gets product-scope policy
 
 ### Example 3: Get the API-scope policy
 ```
-PS C:\>Get-AzureRmApiManagementPolicy -Context $APImContext -ApiId "9876543210"
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Get-AzureRmApiManagementPolicy -Context $apimContext -ApiId "9876543210"
 ```
 
 This command gets API-scope policy.
 
 ### Example 4: Get the operation-scope policy
 ```
-PS C:\>Get-AzureRmApiManagementPolicy -Context $APImContext -ApiId "9876543210" -OperationId "777"
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Get-AzureRmApiManagementPolicy -Context $apimContext -ApiId "9876543210" -OperationId "777"
 ```
 
 This command gets the operation-scope policy.

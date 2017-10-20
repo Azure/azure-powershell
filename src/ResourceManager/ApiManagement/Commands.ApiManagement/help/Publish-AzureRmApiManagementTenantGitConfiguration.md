@@ -26,14 +26,14 @@ You can alternatively validate the changes in a Git branch without publishing.
 
 ### Example 1: Deploy Git changes
 ```
-PS C:\>Publish-AzureRmApiManagementTenantGitConfiguration -Context $ApimContext -Branch 'master' -PassThru
+PS C:\>Publish-AzureRmApiManagementTenantGitConfiguration -Context $apimContext -Branch 'master' -PassThru
 ```
 
 This command publishes the changes from the specified branch to the configuration database.
 
 ### Example 2: Validate Git changes
 ```
-PS C:\>Publish-AzureRmApiManagementTenantGitConfiguration -Context $ApimContext -Branch 'master' -ValidateOnly -PassThru
+PS C:\>Publish-AzureRmApiManagementTenantGitConfiguration -Context $apimContext -Branch 'master' -ValidateOnly -PassThru
 ```
 
 This command validates the changes in the Git branch against the configuration database.

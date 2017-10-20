@@ -12,7 +12,7 @@ Creates a new Backend Proxy Object.
 ## SYNTAX
 
 ```
-New-AzureRmApiManagementBackendProxy -Url <String> [-ProxyCredentials <PSCredential>]
+New-AzureRmApiManagementBackendProxy -Url <String> [-ProxyCredential <PSCredential>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -25,7 +25,7 @@ Creates a new Backend Proxy Object which can be piped when creating a new Backen
 ```
 $secpassword = ConvertTo-SecureString "PlainTextPassword" -AsPlainText -Force
 $proxyCreds = New-Object System.Management.Automation.PSCredential ("foo", $secpassword)
-$credential = New-AzureRmApiManagementBackendProxy -Url "http://12.168.1.1:8080" -ProxyCredentials $proxyCreds
+$credential = New-AzureRmApiManagementBackendProxy -Url "http://12.168.1.1:8080" -ProxyCredential $proxyCreds
 ```
 
 Creates a Backend Proxy Object
@@ -47,7 +47,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProxyCredentials
+### -ProxyCredential
 Credentials used to connect to Backend Proxy. This parameter is optional.
 
 ```yaml

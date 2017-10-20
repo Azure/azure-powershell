@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             ValueFromPipelineByPropertyName = false,
             Mandatory = false,
             HelpMessage = "Credentials used to connect to Backend Proxy. This parameter is optional.")]
-        public PSCredential ProxyCredentials { get; set; }
+        public PSCredential ProxyCredential { get; set; }
 
         public override void ExecuteApiManagementCmdlet()
         {
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                 new PsApiManagementBackendProxy
                 {
                     Url = Url,
-                    ProxyCredentials = ProxyCredentials != null ? ProxyCredentials : PSCredential.Empty
+                    ProxyCredentials = ProxyCredential != null ? ProxyCredential : PSCredential.Empty
                 });
         }
     }

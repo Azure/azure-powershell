@@ -25,8 +25,9 @@ The **Set-AzureRmApiManagementProperty** cmdlet modifies an Azure API Management
 
 ### Example 1: Change the tags on a property
 ```
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>$Tags = 'sdk', 'powershell'
-PS C:\> Set-AzureRmApiManagementProperty -Context $ApimContext -PropertyId "Property11" -Tags $Tags -PassThru
+PS C:\> Set-AzureRmApiManagementProperty -Context $apimContext -PropertyId "Property11" -Tags $Tags -PassThru
 ```
 
 The first command assigns two values to the $Tags variable.
@@ -36,7 +37,8 @@ The command assigns the strings in $Tags as tags on the property.
 
 ### Example 2: Modify a property to have a secret value
 ```
-PS C:\>Set-AzureRmApiManagementProperty -Context $ApimContext -PropertyId "Property12" -Secret $True -PassThru
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Set-AzureRmApiManagementProperty -Context $apimContext -PropertyId "Property12" -Secret $True -PassThru
 ```
 
 This command changes the property to be Encrypted.

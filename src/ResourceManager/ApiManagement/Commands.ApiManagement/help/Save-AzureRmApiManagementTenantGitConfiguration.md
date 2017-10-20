@@ -24,7 +24,7 @@ The **Save-AzureRmApiManagementTenantGitConfiguration** cmdlet saves the changes
 
 ### Example 1: Save changes to configuration
 ```
-PS C:\>Save-AzureRmApiManagementTenantGitConfiguration -Context $ApimContext -Branch 'master' -PassThru
+PS C:\>Save-AzureRmApiManagementTenantGitConfiguration -Context $apimContext -Branch 'master' -PassThru
 ```
 
 This command saves the changes by creating a commit with the current configuration snapshot to the specified branch in the repository.

@@ -31,14 +31,16 @@ The **Get-AzureRmApiManagementLogger** cmdlet gets an Azure API Management **Log
 
 ### Example 1: Get all loggers
 ```
-PS C:\>Get-AzureRmApiManagementLogger -Context $ApimContext
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Get-AzureRmApiManagementLogger -Context $apimContext 
 ```
 
 This command gets all the loggers for the specified context.
 
 ### Example 2: Get a specific logger
 ```
-PS C:\>Get-AzureRmApiManagementLogger -Context $ApimContext -LoggerId "Logger123"
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Get-AzureRmApiManagementLogger -Context $apimContext -LoggerId "Logger123"
 ```
 
 This command removes a logger that has the ID Logger123.

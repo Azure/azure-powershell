@@ -24,6 +24,7 @@ The **Get-AzureRmApiManagementUserSsoUrl** cmdlet generates a single sign-on (SS
 
 ### Example 1: Get a user's SSO URL
 ```
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Get-AzureRmApiManagementUserSsoUrl -Context $apimContext -UserId "0123456789"
 ```
 
