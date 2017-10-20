@@ -14,12 +14,14 @@ Gets API Management Logger objects.
 
 ### Get all loggers (Default)
 ```
-Get-AzureRmApiManagementLogger -Context <PsApiManagementContext> [<CommonParameters>]
+Get-AzureRmApiManagementLogger -Context <PsApiManagementContext> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### Get by logger ID
 ```
-Get-AzureRmApiManagementLogger -Context <PsApiManagementContext> -LoggerId <String> [<CommonParameters>]
+Get-AzureRmApiManagementLogger -Context <PsApiManagementContext> -LoggerId <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,6 +60,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+ 
+ ```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -LoggerId
 Specifies the ID of the specific logger to get.
 
@@ -80,7 +97,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementLogger
+The detail of the Logger configured in API Management service.
+
 ### IList<Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementLogger>
+The list of Loggers configured in API Management service.
 
 ## NOTES
 
