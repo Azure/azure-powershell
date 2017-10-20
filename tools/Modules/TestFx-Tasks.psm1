@@ -3,7 +3,7 @@
 Function New-AzureCredential
 {
     [CmdletBinding(
-        DefaultParameterSetName='UserIdParamSet', 
+        DefaultParameterSetName='CreateSpnParamSet', 
         SupportsShouldProcess=$true
         )]
     param(
@@ -23,15 +23,26 @@ Function New-AzureCredential
         [ValidateNotNullOrEmpty()]
         [string]$ServicePrincipalSecret,
 
-        [Parameter(ParameterSetName='SpnParamSet', Mandatory=$true)]
+        [Parameter(ParameterSetName='CreateSpnParamSet', Mandatory=$true, HelpMessage='ServicePrincipal DisplayName you would like to set')]
+        [ValidateNotNullOrEmpty()]
+        [string]$NewServicePrincipalDisplayName,
+
+        [Parameter(ParameterSetName='CreateSpnParamSet', Mandatory=$true, HelpMessage='ServicePrincipal password')]
+        [ValidateNotNullOrEmpty()]
+        [string]$NewServicePrincipalPassword,
+
+        [Parameter(ParameterSetName='CreateSpnParamSet', Mandatory=$true, HelpMessage = "SubscriptionId you would like to use")]
+        [Parameter(ParameterSetName='SpnParamSet', Mandatory=$true, HelpMessage = "SubscriptionId you would like to use")]
         [Parameter(ParameterSetName='UserIdParamSet', Mandatory=$true, HelpMessage = "SubscriptionId you would like to use")]
         [ValidateNotNullOrEmpty()]
         [string]$SubscriptionId,
 
+        [Parameter(ParameterSetName='CreateSpnParamSet', Mandatory=$true, HelpMessage='AADTenant/TenantId you would like to use')]
         [Parameter(ParameterSetName='SpnParamSet', Mandatory=$true, HelpMessage='AADTenant/TenantId you would like to use')]
         [ValidateNotNullOrEmpty()]
         [string]$TenantId,
 
+        [Parameter(ParameterSetName='CreateSpnParamSet', Mandatory=$true, HelpMessage = "SubscriptionId you would like to use")]
         [Parameter(ParameterSetName='SpnParamSet', Mandatory=$true, HelpMessage = "Record tests, Playback tests, or neither")]
         [Parameter(ParameterSetName='UserIdParamSet', Mandatory=$true, HelpMessage = "Record tests, Playback tests, or neither")]
         [ValidateSet("Playback", "Record", "None")]
@@ -58,12 +69,34 @@ Function New-AzureCredential
     $credentials.HttpRecorderMode = $RecordMode
     $credentials.Environment = $TargetEnvironment
 
-    if ([string]::IsNullOrEmpty($UserId) -eq $false) {
-        $credentials.UserId = $UserId
+    if ([string]::IsNullOrEmpty($NewServicePrincipalDisplayName) -eq $false) {
+        Login-AzureRmAccount
+        $Scope = "/subscriptions/" + $SubscriptionId
+        $NewServicePrincipal = New-AzureRMADServicePrincipal -DisplayName $NewServicePrincipalDisplayName -Password $NewServicePrincipalPassword
+        Write-Host "New ServicePrincipal created: " + $NewServicePrincipal
+
+        $NewRole = $null
+        $Retries = 0;
+        While ($NewRole -eq $null -and $Retries -le 6)
+        {
+           # Sleep here for a few seconds to allow the service principal application to become active (should only take a couple of seconds normally)
+           Start-Sleep 15
+           New-AzureRMRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $NewServicePrincipal.ApplicationId -Scope $Scope | Write-Verbose -ErrorAction SilentlyContinue
+           $NewRole = Get-AzureRMRoleAssignment -ObjectId $NewServicePrincipal.Id -ErrorAction SilentlyContinue
+           $Retries++;
+        }
+        $credentials.ServicePrincipal = $NewServicePrincipal.ApplicationId
+        $credentials.ServicePrincipalSecret = $NewServicePrincipalPassword
     }
 
-    if ([string]::IsNullOrEmpty($Password) -eq $false) {
+    if ([string]::IsNullOrEmpty($UserId) -eq $false) {
+        $credentials.UserId = $UserId
         $credentials.Password = $Password
+    }
+    
+    if ([string]::IsNullOrEmpty($ServicePrincipal) -eq $false) {
+        $credentials.ServicePrincipal = $ServicePrincipal
+        $credentials.ServicePrincipalSecret = $ServicePrincipalSecret
     }
 
     if ([string]::IsNullOrEmpty($TenantId) -eq $false) {
