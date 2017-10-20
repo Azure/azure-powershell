@@ -23,7 +23,7 @@ Power off a scale unit node.  This will turn off your physical machine and shoul
 
 ### Example 1
 ```
-PS C:\> Stop-AzsScaleUnitNode -Location "local" -ScaleUnitNode "HC1n25r2236"
+PS C:\> Stop-AzsScaleUnitNode -Location "local" -ScaleUnitNode "Node1"
 
 ProvisioningState
 -----------------------

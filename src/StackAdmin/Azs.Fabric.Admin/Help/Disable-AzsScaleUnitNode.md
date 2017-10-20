@@ -23,7 +23,7 @@ Start maintenance mode for a scale unit node.  This begins the process of moving
 
 ### Example 1
 ```
-PS C:\> Disable-AzsScaleUnitNode -Location "local" -ScaleUnitNode "HC1n25r2236"
+PS C:\> Disable-AzsScaleUnitNode -Location "local" -ScaleUnitNode "Node1"
 
 ProvisioningState
 -----------------------

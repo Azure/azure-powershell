@@ -8,7 +8,7 @@ Locale: en-US
 
 # Azs.Fabric.Admin Module
 ## Description
-Allows AzureStack administrators view and manage their infrastructure.
+This module provides cmdlets for interacting with the Azure Stack infrastructure. 
 
 ## Azs.Fabric.Admin Cmdlets
 ### [Disable-AzsInfrastructureRoleInstance](Disable-AzsInfrastructureRoleInstance.md)
@@ -76,6 +76,7 @@ Get storage subsystems given a location.
 
 ### [New-AzsIpPool](New-AzsIpPool.md)
 Create an infrastructure ip pool.
+
 
 ### [Restart-AzsInfrastructureRoleInstance](Restart-AzsInfrastructureRoleInstance.md)
 Reboot an infrastructure role instance.  On failure an exception is thrown.
