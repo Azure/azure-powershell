@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.dll-Help.xml
+Module Name: AzureRM.ApiManagement
 ms.assetid: FB5E4ED2-8EF3-462F-A053-7EC82C767E8D
 online version: 
 schema: 2.0.0
@@ -13,7 +14,8 @@ Creates an instance of PsApiManagementVirtualNetwork.
 ## SYNTAX
 
 ```
-New-AzureRmApiManagementVirtualNetwork -Location <String> -SubnetResourceId <String> [<CommonParameters>]
+New-AzureRmApiManagementVirtualNetwork -Location <String> -SubnetResourceId <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,6 +34,21 @@ PS C:\> Set-AzureRmApiManagementVirtualNetworks -ResourceGroupName "ContosoGroup
 This example creates a virtual network and then calls the **Set-AzureRmApiManagementVirtualNetworks** cmdlet.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Location
 Specifies the location of the virtual network in which this cmdlet creates the instance.
