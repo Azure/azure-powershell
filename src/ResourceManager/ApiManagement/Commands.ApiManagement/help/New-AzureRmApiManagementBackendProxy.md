@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
+Module Name: AzureRM.ApiManagement
 online version: 
 schema: 2.0.0
 ---
@@ -13,7 +14,7 @@ Creates a new Backend Proxy Object.
 
 ```
 New-AzureRmApiManagementBackendProxy -Url <String> [-UserName <String>] [-Password <String>]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,6 +30,21 @@ $proxy= New-AzureRmApiManagementBackendProxy -Url "https://abbc.def.g" -UserName
 Creates a Backend Proxy Object
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Password
 Proxy Password used to connect to Backend Proxy.

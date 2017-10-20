@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
+Module Name: AzureRM.ApiManagement
 ms.assetid: D5B18FF4-3294-4561-A4CD-CF0FA5E4A59B
 online version: 
 schema: 2.0.0
@@ -15,7 +16,8 @@ Creates an OpenID Connect provider.
 ```
 New-AzureRmApiManagementOpenIdConnectProvider -Context <PsApiManagementContext>
  [-OpenIdConnectProviderId <String>] -Name <String> -MetadataEndpointUri <String> -ClientId <String>
- [-ClientSecret <String>] [-Description <String>] [<CommonParameters>]
+ [-ClientSecret <String>] [-Description <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -74,6 +76,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
