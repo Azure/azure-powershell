@@ -24,7 +24,7 @@ The **Remove-AzureRmApiManagementLogger** cmdlet removes an Azure API Management
 
 ### Example 1: Remove a logger
 ```
-PS C:\>Remove-AzureRmApiManagementLogger -Context $ApimContext -LoggerId "Logger123" -Force
+PS C:\>Remove-AzureRmApiManagementLogger -Context $apimContext -LoggerId "Logger123" -Force
 ```
 
 This command removes a logger that has the ID Logger123.

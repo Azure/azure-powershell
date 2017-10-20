@@ -2148,7 +2148,7 @@ Param($resourceGroupName, $serviceName)
         #backend with proxy
         $secpassword = ConvertTo-SecureString "PlainTextPassword" -AsPlainText -Force
         $proxyCreds = New-Object System.Management.Automation.PSCredential ("foo", $secpassword)
-        $credential = New-AzureRmApiManagementBackendProxy -Url "http://12.168.1.1:8080" -ProxyCredentials $proxyCreds
+        $credential = New-AzureRmApiManagementBackendProxy -Url "http://12.168.1.1:8080" -ProxyCredential $proxyCreds
 
         $backend = Set-AzureRmApiManagementBackend -Context $context -BackendId $backendId -Proxy $credential -PassThru
         Assert-AreEqual $backendId $backend.BackendId
@@ -2165,7 +2165,7 @@ Param($resourceGroupName, $serviceName)
         Assert-AreEqual 1 $backend.Properties.Count
         Assert-NotNull $backend.Proxy
         Assert-AreEqual $backend.Proxy.Url "http://12.168.1.1:8080"
-        Assert-NotNull $backend.Proxy.ProxyCredentials
+        Assert-NotNull $backend.Proxy.ProxyCredential
     }
     finally
     {

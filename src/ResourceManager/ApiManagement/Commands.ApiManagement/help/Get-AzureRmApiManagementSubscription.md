@@ -43,7 +43,8 @@ The **Get-AzureRmApiManagementSubscription** cmdlet gets a specified subscriptio
 
 ### Example 1: Get all subscriptions
 ```
-PS C:\>Get-AzureRmApiManagementSubscription -Context $apimContext
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Get-AzureRmApiManagementSubscription -Context $apimContext 
 ```
 
 This command gets all subscriptions.

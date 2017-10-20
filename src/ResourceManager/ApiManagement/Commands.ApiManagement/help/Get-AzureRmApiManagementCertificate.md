@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzureRmApiManagementCertificate
 
 ## SYNOPSIS
-Gets API Management certificates.
+Gets API Management certificates configured for Mutual Authentication with Backend in the service.
 
 ## SYNTAX
 
@@ -31,6 +31,7 @@ The **Get-AzureRmApiManagementCertificate** cmdlet gets all Azure API Management
 
 ### Example 1: Get all certificates
 ```
+PS C:\>$ApiMgmtContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Get-AzureRmApiManagementCertificate -Context $ApiMgmtContext
 ```
 
@@ -38,6 +39,7 @@ This command gets all API Management certificates.
 
 ### Example 2: Get a certificate by its ID
 ```
+PS C:\>$ApiMgmtContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Get-AzureRmApiManagementCertificate -Context $ApiMgmtContext -CertificateId "0123456789"
 ```
 

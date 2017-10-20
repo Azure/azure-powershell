@@ -35,6 +35,7 @@ The **Import-AzureRmApiManagementApi** cmdlet imports an Azure API Management AP
 
 ### Example 1 Import an API from a WADL file
 ```
+PS C:\>$ApiMgmtContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Import-AzureRmApiManagementApi -Context $ApiMgmtContext -SpecificationFormat "Wadl" -SpecificationPath "C:\contoso\specifications\echoapi.wadl" -Path "apis"
 ```
 
@@ -42,6 +43,7 @@ This command imports an API from the specified WADL file.
 
 ### Example 2 Import an API from a Swagger file
 ```
+PS C:\>$ApiMgmtContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Import-AzureRmApiManagementApi -Context $ApiMgmtContext -SpecificationFormat "Swagger" -SpecificationPath "C:\contoso\specifications\echoapi.swagger" -Path "apis"
 ```
 
@@ -49,6 +51,7 @@ This command imports an API from the specified Swagger file.
 
 ### Example 3: Import an API from a WADL link
 ```
+PS C:\>$ApiMgmtContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Import-AzureRmApiManagementApi -Context $ApiMgmtContext -SpecificationFormat "Wadl" -SpecificationUrl "http://contoso.com/specifications/wadl/echoapi" -Path "apis"
 ```
 

@@ -43,28 +43,28 @@ The **Remove-AzureRmApiManagementPolicy** cmdlet removes the API Management poli
 
 ### Example 1: Remove the tenant level policy
 ```
-PS C:\>Remove-AzureRmApiManagementPolicy -Context $APImContext
+PS C:\>Remove-AzureRmApiManagementPolicy -Context $apimContext 
 ```
 
 This command removes tenant level policy from API Management.
 
 ### Example 2: Remove the product-scope policy
 ```
-PS C:\>Remove-AzureRmApiManagementPolicy -Context $APImContext -ProductId "0123456789"
+PS C:\>Remove-AzureRmApiManagementPolicy -Context $apimContext -ProductId "0123456789"
 ```
 
 This command removes product-scope policy from API Management.
 
 ### Example 3: Remove the API-scope policy
 ```
-PS C:\>Remove-AzureRmApiManagementPolicy -Context $APImContext -ApiId "9876543210"
+PS C:\>Remove-AzureRmApiManagementPolicy -Context $apimContext -ApiId "9876543210"
 ```
 
 This command removes API-scope policy from API Management.
 
 ### Example 4: Remove the operation-scope policy
 ```
-PS C:\>Remove-AzureRmApiManagementPolicy -Context $APImContext -ApiId "9876543210" -OperationId "777"
+PS C:\>Remove-AzureRmApiManagementPolicy -Context $apimContext -ApiId "9876543210" -OperationId "777"
 ```
 
 This command removes operation-scope policy from API Management.

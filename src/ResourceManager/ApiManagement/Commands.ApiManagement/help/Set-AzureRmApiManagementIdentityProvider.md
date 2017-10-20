@@ -25,7 +25,7 @@ Updates the Configuration of an existing Identity Provider.
 
 ### Example 1
 ```
-PS C:\> Set-AzureRmApiManagementIdentityProvider -Context $apimcontext -Type Facebook -ClientSecret "updatedSecret" -PassThru
+PS C:\> Set-AzureRmApiManagementIdentityProvider -Context $apimContext -Type Facebook -ClientSecret "updatedSecret" -PassThru
 ```
 
 The cmdlet updates the Client Secret of the Facebook Identity Provider;

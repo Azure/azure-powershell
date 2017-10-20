@@ -25,6 +25,7 @@ In other words, this cmdlet assigns a group to a product.
 
 ### Example 1: Add a product to a group
 ```
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Add-AzureRmApiManagementProductToGroup -Context $apimContext -GroupId "0001" -ProductId "0123456789"
 ```
 

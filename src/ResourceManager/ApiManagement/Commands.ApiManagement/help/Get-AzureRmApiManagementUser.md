@@ -38,7 +38,7 @@ The **Get-AzureRmApiManagementUser** cmdlet gets a specified user, or all users,
 
 ### Example 1: Get all users
 ```
-PS C:\>Get-AzureRmApiManagementUser -Context $apimContext
+PS C:\>Get-AzureRmApiManagementUser -Context $apimContext 
 ```
 
 This command gets all users.

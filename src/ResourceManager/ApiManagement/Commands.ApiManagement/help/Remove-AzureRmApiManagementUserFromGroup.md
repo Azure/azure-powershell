@@ -24,6 +24,7 @@ The **Remove-AzureRmApiManagementUserFromGroup** cmdlet removes a user from an e
 
 ### Example 1: Remove a user from a group
 ```
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Remove-AzureRmApiManagementUserFromGroup -Context $apimContext -GroupId "0001" -UserId "0123456789"
 ```
 

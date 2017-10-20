@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzureRmApiManagementCertificate
 
 ## SYNOPSIS
-Modifies an API Management certificate.
+Modifies an API Management certificate which is configured for mutual authentication with backend.
 
 ## SYNTAX
 
@@ -33,6 +33,7 @@ The **Set-AzureRmApiManagementCertificate** cmdlet modifies an Azure API Managem
 
 ### Example 1: Modify a certificate
 ```
+PS C:\>$ApiMgmtContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Set-AzureRmApiManagementCertificate -Context $ApiMgmtContext -CertificateId "0123456789" -PfxFilePath "C:\contoso\certificates\apimanagementnew.pfx" -PfxPassword "2222"
 ```
 
