@@ -24,6 +24,8 @@ The **Set-AzureRmDiagnosticSetting** cmdlet enables or disables each time grain 
 
 The logs and metrics are stored in the specified storage account.
 
+This cmdlet implements the ShouldProcess pattern, i.e. it might request confirmation from the user before actually creating, modifying, or removing the resource.
+
 ## EXAMPLES
 
 ### Example 1: Enable all metrics and logs for a resource

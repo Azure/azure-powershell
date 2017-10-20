@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
     /// <summary>
     /// Create or update an Autoscale setting
     /// </summary>
-    [Cmdlet(VerbsCommon.Add, "AzureRmAutoscaleSetting"), OutputType(typeof(PSAddAutoscaleSettingOperationResponse))]
+    [Cmdlet(VerbsCommon.Add, "AzureRmAutoscaleSetting", SupportsShouldProcess = true), OutputType(typeof(PSAddAutoscaleSettingOperationResponse))]
     public class AddAzureRmAutoscaleSettingCommand : ManagementCmdletBase
     {
         internal const string AddAzureRmAutoscaleSettingCreateParamGroup = "Parameters for Add-AzureRmAutoscaleSetting cmdlet in the create semantics";
@@ -102,18 +102,23 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// </summary>
         protected override void ProcessRecordInternal()
         {
-            AutoscaleSettingResource parameters = this.CreateAutoscaleSettingResource();
-
-            // The result of this operation is operation (AutoscaleSettingResource) is being discarded for backwards compatibility
-            var result = this.MonitorManagementClient.AutoscaleSettings.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName: this.ResourceGroup, autoscaleSettingName: this.Name, parameters: parameters).Result;
-            var response = new PSAddAutoscaleSettingOperationResponse()
+            if (ShouldProcess(
+                target: string.Format("Create/update an autoscale setting: {0} from resource group: {1}", this.Name, this.ResourceGroup),
+                action: "Create/update an autoscale setting"))
             {
-                RequestId = result.RequestId,
-                StatusCode = result.Response != null ? result.Response.StatusCode : HttpStatusCode.OK,
-                SettingSpec = result.Body    
-            };
+                AutoscaleSettingResource parameters = this.CreateAutoscaleSettingResource();
 
-            WriteObject(response);
+                // The result of this operation is operation (AutoscaleSettingResource) is being discarded for backwards compatibility
+                var result = this.MonitorManagementClient.AutoscaleSettings.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName: this.ResourceGroup, autoscaleSettingName: this.Name, parameters: parameters).Result;
+                var response = new PSAddAutoscaleSettingOperationResponse()
+                {
+                    RequestId = result.RequestId,
+                    StatusCode = result.Response != null ? result.Response.StatusCode : HttpStatusCode.OK,
+                    SettingSpec = result.Body
+                };
+
+                WriteObject(response);
+            }
         }
 
         private AutoscaleSettingResource CreateAutoscaleSettingResource()

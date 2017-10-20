@@ -23,6 +23,7 @@ Add-AzureRmWebtestAlertRule -MetricName <String> -TargetResourceUri <String> -Wi
 ## DESCRIPTION
 The **Add-AzureRmWebtestAlertRule** cmdlet adds or updates an alert rule of either metric, event, or webtest type.
 The added rule is associated to a resource group and has a name.
+This cmdlet implements the ShouldProcess pattern, i.e. it might request confirmation from the user before actually creating, modifying, or removing the resource.
 
 ## EXAMPLES
 

@@ -20,6 +20,8 @@ Remove-AzureRmAlertRule -ResourceGroup <String> -Name <String> [<CommonParameter
 The **Remove-AzureRmAlertRule** cmdlet removes an alert rule.
 You must specify the name of the alert rule and the resource group to which it is assigned.
 
+This cmdlet implements the ShouldProcess pattern, i.e. it might request confirmation from the user before actually creating, modifying, or removing the resource.
+
 ## EXAMPLES
 
 ### Example 1: Remove an alert rule

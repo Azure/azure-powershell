@@ -76,19 +76,24 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// </summary>
         protected override void ProcessRecordInternal()
         {
-            AlertRuleResource parameters = this.CreateSdkCallParameters();
-
-            // Part of the result of this operation is operation (result.Body ==> a AutoscaleSettingResource) is being discarded for backwards compatibility
-            var result = this.MonitorManagementClient.AlertRules.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName: this.ResourceGroup, parameters: parameters, ruleName: parameters.AlertRuleResourceName).Result;
-
-            var response = new PSAddAlertRuleOperationResponse
+            if (ShouldProcess(
+                    target: string.Format("Create/update an alert rule: {0} from resource group: {1}", this.Name, this.ResourceGroup),
+                    action: "Create/update an alert rule"))
             {
-                RequestId = result.RequestId,
-                StatusCode = result.Response != null ? result.Response.StatusCode : HttpStatusCode.OK,
-                AlertRule = result.Body
-            };
+                AlertRuleResource parameters = this.CreateSdkCallParameters();
 
-            WriteObject(response);
+                // Part of the result of this operation is operation (result.Body ==> a AutoscaleSettingResource) is being discarded for backwards compatibility
+                var result = this.MonitorManagementClient.AlertRules.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName: this.ResourceGroup, parameters: parameters, ruleName: parameters.AlertRuleResourceName).Result;
+
+                var response = new PSAddAlertRuleOperationResponse
+                {
+                    RequestId = result.RequestId,
+                    StatusCode = result.Response != null ? result.Response.StatusCode : HttpStatusCode.OK,
+                    AlertRule = result.Body
+                };
+
+                WriteObject(response);
+            }
         }
 
         /// <summary>
