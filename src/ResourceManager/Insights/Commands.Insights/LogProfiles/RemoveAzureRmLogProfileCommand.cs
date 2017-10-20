@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Insights.LogProfiles
     /// <summary>
     /// Removes the log profile.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmLogProfile"), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmLogProfile", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureRmLogProfileCommand : ManagementCmdletBase
     {
 
@@ -40,21 +40,26 @@ namespace Microsoft.Azure.Commands.Insights.LogProfiles
 
         protected override void ProcessRecordInternal()
         {
-            WriteWarning("Output change: The type of the output will change in the release 5.0.0 - November 2017 - to return a single object containing the request Id and the status code.");
-            Rest.Azure.AzureOperationResponse result = this.MonitorManagementClient.LogProfiles.DeleteWithHttpMessagesAsync(logProfileName: this.Name, cancellationToken: CancellationToken.None).Result;
-
-            /*
-             * This object will be returned in future releases
-            var response = new AzureOperationResponse
+            if (ShouldProcess(
+                target: string.Format("Remove a log profile: {0}", this.Name),
+                action: "Remove a log profile"))
             {
-                RequestId = result.RequestId,
-                StatusCode = result.Response != null ? result.Response.StatusCode : HttpStatusCode.OK
-            };
-			*/
+                WriteWarning("Output change: The type of the output will change in the release 5.0.0 - November 2017 - to return a single object containing the request Id and the status code.");
+                Rest.Azure.AzureOperationResponse result = this.MonitorManagementClient.LogProfiles.DeleteWithHttpMessagesAsync(logProfileName: this.Name, cancellationToken: CancellationToken.None).Result;
 
-            if (this.PassThru)
-            {
-                WriteObject(true);
+                /*
+                 * This object will be returned in future releases
+                var response = new AzureOperationResponse
+                {
+                    RequestId = result.RequestId,
+                    StatusCode = result.Response != null ? result.Response.StatusCode : HttpStatusCode.OK
+                };
+			    */
+
+                if (this.PassThru)
+                {
+                    WriteObject(true);
+                }
             }
         }
     }

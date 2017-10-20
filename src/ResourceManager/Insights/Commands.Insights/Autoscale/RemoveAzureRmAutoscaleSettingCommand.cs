@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
     /// <summary>
     /// Remove an autoscale setting.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmAutoscaleSetting"), OutputType(typeof(AzureOperationResponse))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmAutoscaleSetting", SupportsShouldProcess = true), OutputType(typeof(AzureOperationResponse))]
     public class RemoveAzureRmAutoscaleSettingCommand : ManagementCmdletBase
     {
         internal const string RemoveAzureRmAutoscaleSettingParamGroup = "Parameters for Remove-AzureRmAutoscaleSetting cmdlet";
@@ -48,17 +48,22 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// </summary>
         protected override void ProcessRecordInternal()
         {
-            var result = this.MonitorManagementClient.AutoscaleSettings.DeleteWithHttpMessagesAsync(resourceGroupName: this.ResourceGroup, autoscaleSettingName: this.Name).Result;
-
-            // Keep this response for backwards compatibility.
-            // Note: Delete operations return nothing in the new specification.
-            var response = new AzureOperationResponse
+            if (ShouldProcess(
+                target: string.Format("Remove an autoscale setting: {0} from resource group: {1}", this.Name, this.ResourceGroup),
+                action: "Remove an autoscale setting"))
             {
-                RequestId = result.RequestId,
-                StatusCode = result.Response != null ? result.Response.StatusCode : HttpStatusCode.OK
-            };
+                var result = this.MonitorManagementClient.AutoscaleSettings.DeleteWithHttpMessagesAsync(resourceGroupName: this.ResourceGroup, autoscaleSettingName: this.Name).Result;
 
-            WriteObject(response);
+                // Keep this response for backwards compatibility.
+                // Note: Delete operations return nothing in the new specification.
+                var response = new AzureOperationResponse
+                {
+                    RequestId = result.RequestId,
+                    StatusCode = result.Response != null ? result.Response.StatusCode : HttpStatusCode.OK
+                };
+
+                WriteObject(response);
+            }
         }
     }
 }

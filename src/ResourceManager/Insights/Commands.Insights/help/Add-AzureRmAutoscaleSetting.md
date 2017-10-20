@@ -32,6 +32,8 @@ Add-AzureRmAutoscaleSetting -Location <String> -Name <String> -ResourceGroup <St
 ## DESCRIPTION
 The **Add-AzureRmAutoscaleSetting** cmdlet creates an Autoscale setting.
 
+This cmdlet implements the ShouldProcess pattern, i.e. it might request confirmation from the user before actually creating, modifying, or removing the resource.
+
 ## EXAMPLES
 
 ### Example 1: Create an Autoscale setting

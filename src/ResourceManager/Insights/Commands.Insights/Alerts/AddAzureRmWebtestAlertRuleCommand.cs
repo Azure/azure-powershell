@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
     /// <summary>
     /// Add an Alert rule
     /// </summary>
-    [Cmdlet(VerbsCommon.Add, "AzureRmWebtestAlertRule"), OutputType(typeof(PSAddAlertRuleOperationResponse))]
+    [Cmdlet(VerbsCommon.Add, "AzureRmWebtestAlertRule", SupportsShouldProcess = true), OutputType(typeof(PSAddAlertRuleOperationResponse))]
     public class AddAzureRmWebtestAlertRuleCommand : AddAzureRmAlertRuleCommandBase
     {
         /// <summary>
