@@ -57,8 +57,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
 
     internal class StorageAccount
     {
-        public string Name { get; set; }
-        public string AccessKey { get; set; }
+        public string Id { get; set; }
     }
 
     internal class StorageResource : AzureResource
@@ -82,7 +81,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
 
     internal static class DeploymentTemplateHelper
     {
-        private const string RegistryApiVersion = "2017-03-01";
+        private const string RegistryApiVersion = "2017-10-01";
         private const string StorageApiVersion = "2016-12-01";
         private const string StorageAccountSku = "Standard_LRS";
 
@@ -144,8 +143,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
                             AdminUserEnabled = adminUserEnabled != null ? adminUserEnabled.Value : false,
                             StorageAccount = new StorageAccount
                             {
-                                Name = storageAccountName,
-                                AccessKey = $"[listKeys(resourceId('Microsoft.Storage/storageAccounts', '{storageAccountName}'), '{StorageApiVersion}').keys[0].value]"
+                                Id = $"[resourceId('Microsoft.Storage/storageAccounts', '{storageAccountName}')]"
                             }
                         }
                     }
@@ -159,8 +157,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
             string registryName,
             string registryLocation,
             string registrySku,
-            string storageAccountName,
-            string storageAccountResourceGroup,
+            string storageAccountId,
             bool? adminUserEnabled,
             IDictionary<string, string> tags = null)
         {
@@ -185,8 +182,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
                             AdminUserEnabled = adminUserEnabled != null ? adminUserEnabled.Value : false,
                             StorageAccount = new StorageAccount
                             {
-                                Name = storageAccountName,
-                                AccessKey = $"[listKeys(resourceId('{storageAccountResourceGroup}', 'Microsoft.Storage/storageAccounts', '{storageAccountName}'), '{StorageApiVersion}').keys[0].value]"
+                                Id = $"[resourceId('Microsoft.Storage/storageAccounts', '{storageAccountId}')]"
                             }
                         }
                     }

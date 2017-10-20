@@ -12,23 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
 using Microsoft.Azure.Management.ContainerRegistry.Models;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
-    [Cmdlet(VerbsDiagnostic.Test, ContainerRegistryNameAvailabilityNoun)]
-    [OutputType(typeof(RegistryNameStatus))]
-    public class TestAzureContainerRegistryNameAvailability : ContainerRegistryCmdletBase
+    public class PSContainerRegistryWebhookEvent
     {
-        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Container Registry Name.")]
-        [Alias(ContainerRegistryNameAlias, RegistryNameAlias, ResourceNameAlias)]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
-        public override void ExecuteCmdlet()
+        public PSContainerRegistryWebhookEvent(EventModel webhookEvent)
         {
-            WriteObject(RegistryClient.CheckRegistryNameAvailability(Name));
+            Id = webhookEvent?.Id;
+            EventRequestMessage = webhookEvent?.EventRequestMessage;
+            EventResponseMessage = webhookEvent?.EventResponseMessage;
         }
+
+        public string Id { get; set; }
+        public EventRequestMessage EventRequestMessage { get; set; }
+        public EventResponseMessage EventResponseMessage { get; set; }
     }
 }
