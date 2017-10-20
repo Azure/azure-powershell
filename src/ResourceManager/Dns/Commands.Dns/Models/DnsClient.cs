@@ -47,7 +47,8 @@ namespace Microsoft.Azure.Commands.Dns.Models
             {RecordType.SOA, typeof (SoaRecord)},
             {RecordType.PTR, typeof (PtrRecord)},
             {RecordType.SRV, typeof (SrvRecord)},
-            {RecordType.TXT, typeof (TxtRecord)}
+            {RecordType.TXT, typeof (TxtRecord)},
+            {RecordType.CAA, typeof (CaaRecord)}
         };
 
         public DnsClient(IAzureContext context)
@@ -245,6 +246,9 @@ namespace Microsoft.Azure.Commands.Dns.Models
                 case RecordType.SOA:
                     properties.SoaRecord = (Sdk.SoaRecord) resourceRecords[0].ToMamlRecord();
                     break;
+                case RecordType.CAA:
+                    properties.CaaRecords = resourceRecords.Select(x => (Sdk.CaaRecord)(x as CaaRecord).ToMamlRecord()).ToList();
+                    break;
             }
         }
 
@@ -259,6 +263,7 @@ namespace Microsoft.Azure.Commands.Dns.Models
             properties.SoaRecord = null;
             properties.SrvRecords = recordType == RecordType.SRV ? new List<Management.Dns.Models.SrvRecord>() : null;
             properties.TxtRecords = recordType == RecordType.TXT ? new List<Management.Dns.Models.TxtRecord>() : null;
+            properties.CaaRecords = recordType == RecordType.CAA ? new List<Management.Dns.Models.CaaRecord>() : null;
         }
 
         public DnsRecordSet UpdateDnsRecordSet(DnsRecordSet recordSet, bool overwrite)
@@ -308,6 +313,10 @@ namespace Microsoft.Azure.Commands.Dns.Models
                     CnameRecord =
                         recordSet.RecordType == RecordType.CNAME
                             ? GetMamlRecords<CnameRecord, Management.Dns.Models.CnameRecord>(recordSet.Records).SingleOrDefault()
+                            : null,
+                    CaaRecords =
+                        recordSet.RecordType == RecordType.CAA
+                            ? GetMamlRecords<CaaRecord, Management.Dns.Models.CaaRecord>(recordSet.Records)
                             : null,
                 },
                 ifMatch: overwrite ? "*" : recordSet.Etag,
@@ -432,6 +441,7 @@ namespace Microsoft.Azure.Commands.Dns.Models
             result.AddRange(GetPowerShellRecords(recordSet.SrvRecords));
             result.AddRange(GetPowerShellRecords(recordSet.TxtRecords));
             result.AddRange(GetPowerShellRecords(recordSet.PtrRecords));
+            result.AddRange(GetPowerShellRecords(recordSet.CaaRecords));
             if (recordSet.CnameRecord != null)
             {
                 result.Add(DnsRecordBase.FromMamlRecord(recordSet.CnameRecord));
