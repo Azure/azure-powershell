@@ -1,6 +1,5 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
 ms.assetid: 93005775-3AB9-43C5-B353-45B82124ADB7
 online version: 
 schema: 2.0.0
@@ -22,7 +21,7 @@ Set-AzureRmApiManagementAuthorizationServer -Context <PsApiManagementContext> -S
  -ClientAuthenticationMethods <PsApiManagementClientAuthenticationMethod[]> [-TokenBodyParameters <Hashtable>]
  [-SupportState <Boolean>] [-DefaultScope <String>]
  -AccessTokenSendingMethods <PsApiManagementAccessTokenSendingMethod[]> [-ResourceOwnerUsername <String>]
- [-ResourceOwnerPassword <String>] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-ResourceOwnerPassword <String>] [-PassThru] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -163,21 +162,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
-
-```yaml
-Type: IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

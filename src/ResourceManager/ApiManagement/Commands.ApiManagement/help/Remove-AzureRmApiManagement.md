@@ -1,6 +1,5 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
 ms.assetid: CD582654-1B0C-4960-9E18-454F857B56E7
 online version: 
 schema: 2.0.0
@@ -14,8 +13,8 @@ Removes an API Management service.
 ## SYNTAX
 
 ```
-Remove-AzureRmApiManagement -ResourceGroupName <String> -Name <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzureRmApiManagement -ResourceGroupName <String> -Name <String> [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,21 +30,6 @@ PS C:\>Remove-AzureRmApiManagement -ResourceGroupName "ContosoGroup02" -Name "Co
 This command removes the API Management service named ContosoApi.
 
 ## PARAMETERS
-
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
-
-```yaml
-Type: IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -Name
 Specifies the name of the API Management deployment that this cmdlet removes.

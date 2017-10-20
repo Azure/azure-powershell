@@ -1,6 +1,5 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
 ms.assetid: EEB52CCA-F5D6-4ACB-A6C9-D07C510A5878
 online version: 
 schema: 2.0.0
@@ -15,26 +14,25 @@ Gets all or specific API management groups.
 
 ### Get all groups (Default)
 ```
-Get-AzureRmApiManagementGroup -Context <PsApiManagementContext> [-Name <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmApiManagementGroup -Context <PsApiManagementContext> [-Name <String>] [<CommonParameters>]
 ```
 
 ### Get by group ID
 ```
 Get-AzureRmApiManagementGroup -Context <PsApiManagementContext> [-GroupId <String>] [-Name <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### Find groups by user
 ```
 Get-AzureRmApiManagementGroup -Context <PsApiManagementContext> [-Name <String>] [-UserId <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### Find groups by product
 ```
 Get-AzureRmApiManagementGroup -Context <PsApiManagementContext> [-Name <String>] [-ProductId <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -84,21 +82,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
-
-```yaml
-Type: IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
