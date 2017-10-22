@@ -13,10 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
+using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
-using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -32,11 +33,12 @@ namespace Microsoft.Azure.Commands.Profile.Test
 
         public TenantCmdletTests(ITestOutputHelper output)
         {
+            TestExecutionHelpers.SetUpSessionAndProfile();
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             dataStore = new MemoryDataStore();
-            AzureSession.DataStore = dataStore;
+            AzureSession.Instance.DataStore = dataStore;
             commandRuntimeMock = new MockCommandRuntime();
-            AzureRmProfileProvider.Instance.Profile = new AzureRMProfile();
+            AzureRmProfileProvider.Instance.Profile = new AzureRmProfile();
         }
 
         [Fact]
@@ -55,8 +57,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
             cmdlt.InvokeEndProcessing();
 
             Assert.True(commandRuntimeMock.OutputPipeline.Count == 2);
-            Assert.Equal("72f988bf-86f1-41af-91ab-2d7cd011db47", ((PSAzureTenant)commandRuntimeMock.OutputPipeline[1]).TenantId.ToString());
-            Assert.Equal("microsoft.com", ((PSAzureTenant)commandRuntimeMock.OutputPipeline[1]).Domain);
+            Assert.Equal("72f988bf-86f1-41af-91ab-2d7cd011db47", ((PSAzureTenant)commandRuntimeMock.OutputPipeline[1]).Id.ToString());
+            Assert.Equal("microsoft.com", ((PSAzureTenant)commandRuntimeMock.OutputPipeline[1]).Directory);
         }
 
         [Fact]
@@ -75,8 +77,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
             cmdlt.InvokeEndProcessing();
 
             Assert.True(commandRuntimeMock.OutputPipeline.Count == 3);
-            Assert.Equal("72f988bf-86f1-41af-91ab-2d7cd011db47", ((PSAzureTenant)commandRuntimeMock.OutputPipeline[1]).TenantId.ToString());
-            Assert.Equal("microsoft.com", ((PSAzureTenant)commandRuntimeMock.OutputPipeline[1]).Domain);
+            Assert.Equal("72f988bf-86f1-41af-91ab-2d7cd011db47", ((PSAzureTenant)commandRuntimeMock.OutputPipeline[1]).Id.ToString());
+            Assert.Equal("microsoft.com", ((PSAzureTenant)commandRuntimeMock.OutputPipeline[1]).Directory);
         }
 
         [Fact]
@@ -94,8 +96,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
             cmdlt.InvokeEndProcessing();
 
             Assert.True(commandRuntimeMock.OutputPipeline.Count == 3);
-            Assert.Equal("72f988bf-86f1-41af-91ab-2d7cd011db47", ((PSAzureTenant)commandRuntimeMock.OutputPipeline[1]).TenantId.ToString());
-            Assert.Equal("microsoft.com", ((PSAzureTenant)commandRuntimeMock.OutputPipeline[1]).Domain);
+            Assert.Equal("72f988bf-86f1-41af-91ab-2d7cd011db47", ((PSAzureTenant)commandRuntimeMock.OutputPipeline[1]).Id.ToString());
+            Assert.Equal("microsoft.com", ((PSAzureTenant)commandRuntimeMock.OutputPipeline[1]).Directory);
         }
 
         private void Login(string subscriptionId, string tenantId)
@@ -103,7 +105,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             var cmdlt = new AddAzureRMAccountCommand();
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
-            cmdlt.SubscriptionId = subscriptionId;
+            cmdlt.Subscription = subscriptionId;
             cmdlt.TenantId = tenantId;
 
             // Act
@@ -111,7 +113,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             cmdlt.ExecuteCmdlet();
             cmdlt.InvokeEndProcessing();
 
-            Assert.NotNull(AzureRmProfileProvider.Instance.Profile.Context);
+            Assert.NotNull(AzureRmProfileProvider.Instance.Profile.DefaultContext);
         }
     }
 }

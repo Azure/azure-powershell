@@ -95,7 +95,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### BatchAccountContext
+
+Parameter 'BatchContext' accepts value of type 'BatchAccountContext' from the pipeline
+
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Batch.Models.PSNodeAgentSku
 
 ## NOTES
 

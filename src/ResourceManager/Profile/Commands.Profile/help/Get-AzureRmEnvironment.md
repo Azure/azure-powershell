@@ -12,7 +12,7 @@ Get endpoints and metadata for an instance of Azure services.
 ## SYNTAX
 
 ```
-Get-AzureRmEnvironment [[-Name] <String>] [<CommonParameters>]
+Get-AzureRmEnvironment [[-Name] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -103,6 +103,21 @@ This example shows how to get the endpoints and metadata for the AzureUSGovernme
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of the Azure instance to get.
 
@@ -131,9 +146,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzureRMEnvironment]()
+[Add-AzureRMEnvironment](./Add-AzureRMEnvironment.md)
 
-[Remove-AzureRMEnvironment]()
+[Remove-AzureRMEnvironment](./Remove-AzureRMEnvironment.md)
 
-[Set-AzureRMEnvironment]()
+[Set-AzureRMEnvironment](./Set-AzureRMEnvironment.md)
 

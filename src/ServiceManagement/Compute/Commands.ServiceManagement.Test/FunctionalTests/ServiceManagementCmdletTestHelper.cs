@@ -48,6 +48,7 @@ using System.Xml;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 {
+    using Azure.Commands.Common.Authentication.Abstractions;
     using SM = Model;
 
     public class ServiceManagementCmdletTestHelper

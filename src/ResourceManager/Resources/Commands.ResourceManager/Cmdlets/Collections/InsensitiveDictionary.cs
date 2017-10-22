@@ -17,6 +17,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Collections
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Json;
     using System;
     using System.Collections.Generic;
+    using Commands.Common.Authentication.Abstractions;
 
     /// <summary>
     /// The insensitive version of dictionary.

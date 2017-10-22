@@ -7,7 +7,7 @@
             "RequestBody": "",
             "RequestHeaders": {
                 "Accept": [ "application/json" ],
-                "User-Agent": [ "Microsoft.Azure.Insights.InsightsClient/0.14.0.0 AzurePowershell/v0.14.0" ]
+                "User-Agent": [ "Microsoft.Azure.Management.Monitor.MonitorClient/0.16.0.0 AzurePowershell/v0.14.0" ]
             },
             "ResponseBody": "",
             "ResponseHeaders": {

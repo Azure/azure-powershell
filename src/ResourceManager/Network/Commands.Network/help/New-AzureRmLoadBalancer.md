@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+Module Name: AzureRM.Network
 ms.assetid: F1522074-7EEA-4DCF-AC16-26FE8E654720
 online version: 
 schema: 2.0.0
@@ -13,7 +14,7 @@ Creates a load balancer.
 ## SYNTAX
 
 ```
-New-AzureRmLoadBalancer -Name <String> -ResourceGroupName <String> -Location <String>
+New-AzureRmLoadBalancer -Name <String> -ResourceGroupName <String> -Location <String> [-Sku <String>]
  [-FrontendIpConfiguration <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSFrontendIPConfiguration]>]
  [-BackendAddressPool <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSBackendAddressPool]>]
  [-Probe <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSProbe]>]
@@ -21,7 +22,7 @@ New-AzureRmLoadBalancer -Name <String> -ResourceGroupName <String> -Location <St
  [-LoadBalancingRule <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSLoadBalancingRule]>]
  [-Tag <Hashtable>]
  [-InboundNatPool <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSInboundNatPool]>]
- [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,14 +43,16 @@ PS C:\> $lb = New-AzureRmLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName 
 PS C:\> Get-AzureRmLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
 ```
 
-Deploying a load balancer requires that you first create several objects, and the first seven commands show how to create those objects.
+Deploying a load balancer requires that you first create several objects, and the first seven
+commands show how to create those objects.
 
-The eighth command creates a load balancer named MyLoadBalancer in the resource group named MyResourceGroup.
+The eighth command creates a load balancer named MyLoadBalancer in the resource group named
+MyResourceGroup.
 
 The ninth and last command gets the new load balancer to ensure it was successfully created.
 
-Note that this example only shows how to create a load balancer.
-You must also configure it using the Add-AzureRmNetworkInterfaceIpConfig cmdlet to assign the NICs to different virtual machines.
+Note that this example only shows how to create a load balancer. You must also configure it using
+the Add-AzureRmNetworkInterfaceIpConfig cmdlet to assign the NICs to different virtual machines.
 
 ## PARAMETERS
 
@@ -65,6 +68,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -201,8 +219,26 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Sku
+The load balancer Sku name.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+Accepted values: Basic, Standard
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Tag
-Specifies an array of tags to associate with a load balancer.
+Key-value pairs in the form of a hash table. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
 Type: Hashtable
@@ -254,6 +290,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Network.Models.PSLoadBalancer
+
 ## NOTES
 
 ## RELATED LINKS
@@ -265,5 +303,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzureRmLoadBalancer](./Remove-AzureRmLoadBalancer.md)
 
 [Set-AzureRmLoadBalancer](./Set-AzureRmLoadBalancer.md)
-
-

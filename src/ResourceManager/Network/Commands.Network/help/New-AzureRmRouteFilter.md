@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+Module Name: AzureRM.Network
 online version: 
 schema: 2.0.0
 ---
@@ -14,7 +15,8 @@ Creates a route filter.
 ```
 New-AzureRmRouteFilter -Name <String> -ResourceGroupName <String> -Location <String>
  [-Rule <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSRouteFilterRule]>]
- [-Tag <Hashtable>] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable>] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,9 +29,25 @@ The New-AzureRmRouteFilter cmdlet creates an Azure route filter.
 PS C:\> {{ Add example code here }}
 ```
 
+ 
 {{ Add example description here }}
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Force
 Indicates that this cmdlet creates a route table even if a route filter that has the same name already exists.
@@ -107,7 +125,9 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Specifies a dictionary of tags to associate with the route filter.
+Key-value pairs in the form of a hash table. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
 Type: Hashtable
@@ -158,15 +178,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Network.Models.PSRouteFilter
+
 ## NOTES
 Keywords: azure, azurerm, arm, resource, management, manager, network, networking
 
 ## RELATED LINKS
 
-[Get-AzureRmRouteFilter]()
+[Get-AzureRmRouteFilter](./Get-AzureRmRouteFilter.md)
 
-[New-AzureRmRouteFilterRuleConfig]()
+[New-AzureRmRouteFilterRuleConfig](./New-AzureRmRouteFilterRuleConfig.md)
 
-[Remove-AzureRmRouteFilter]()
+[Remove-AzureRmRouteFilter](./Remove-AzureRmRouteFilter.md)
 
-[Set-AzureRmRouteFilter]()
+[Set-AzureRmRouteFilter](./Set-AzureRmRouteFilter.md)

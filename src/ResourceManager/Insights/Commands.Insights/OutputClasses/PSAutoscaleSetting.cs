@@ -14,14 +14,14 @@
 
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Azure.Management.Insights.Models;
+using Microsoft.Azure.Management.Monitor.Management.Models;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
     /// <summary>
     /// Wrapps around the AutoscaleSettingGetResponse and AutoscaleSettingResource
     /// </summary>
-    public sealed class PSAutoscaleSetting : AutoscaleSettingResource
+    public class PSAutoscaleSetting : AutoscaleSettingResource
     {
         /// <summary>
         /// <para>Gets or sets the Tags of the object.</para>
@@ -40,9 +40,15 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// </summary>
         /// <param name="autoscaleSettingSpec">The autoscale setting spec</param>
         public PSAutoscaleSetting(AutoscaleSettingResource autoscaleSettingSpec)
-            : base(id: autoscaleSettingSpec.Id, location: autoscaleSettingSpec.Location, autoscaleSettingResourceName: autoscaleSettingSpec.Name, profiles: autoscaleSettingSpec.Profiles, type: autoscaleSettingSpec.Type, tags: autoscaleSettingSpec.Tags)
+            : base(
+                name: autoscaleSettingSpec.Name,
+                id: autoscaleSettingSpec.Id, 
+                location: autoscaleSettingSpec.Location, 
+                autoscaleSettingResourceName: autoscaleSettingSpec.Name, 
+                profiles: autoscaleSettingSpec.Profiles, 
+                type: autoscaleSettingSpec.Type, 
+                tags: autoscaleSettingSpec.Tags)
         {
-            this.Name = autoscaleSettingSpec.Name;
             this.TargetResourceUri = autoscaleSettingSpec.TargetResourceUri;
             this.Enabled = autoscaleSettingSpec.Enabled;
             this.Notifications = autoscaleSettingSpec.Notifications;

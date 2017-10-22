@@ -68,7 +68,6 @@ namespace Microsoft.Azure.Commands.Compute
 
                     if (this.ParameterSetName.Equals(ManagedParamterSetName))
                     {
-                        avSetParams.Managed = true;
                         avSetParams.Sku = new Sku
                         {
                             Name = "Aligned"

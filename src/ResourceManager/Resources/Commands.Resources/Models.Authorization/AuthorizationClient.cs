@@ -14,10 +14,11 @@
 
 using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
-using Microsoft.Azure.Management.Authorization;
-using Microsoft.Azure.Management.Authorization.Models;
+using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
+using Microsoft.Azure.Management.Authorization.Version2015_07_01;
+using Microsoft.Azure.Management.Authorization.Version2015_07_01.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,13 +53,15 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         }
 
         /// <summary>
-        /// Creates PoliciesClient using AzureContext instance.
+        /// Creates AuthorizationClient using AzureContext instance.
         /// </summary>
         /// <param name="context">The AzureContext instance</param>
-        public AuthorizationClient(AzureContext context)
+        public AuthorizationClient(IAzureContext context)
         {
             ActiveDirectoryClient = new ActiveDirectoryClient(context);
-            AuthorizationManagementClient = AzureSession.ClientFactory.CreateClient<AuthorizationManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
+            AuthorizationManagementClient = AzureSession.Instance.ClientFactory
+                .CreateArmClient<AuthorizationManagementClient>
+                (context, AzureEnvironment.Endpoint.ResourceManager);
         }
 
         /// <summary>
@@ -67,7 +70,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         /// <param name="roleId">Fully qualified roleId</param>
         public PSRoleDefinition GetRoleDefinition(string roleId)
         {
-            return AuthorizationManagementClient.RoleDefinitions.GetById(roleId).RoleDefinition.ToPSRoleDefinition();
+            return AuthorizationManagementClient.RoleDefinitions.GetById(roleId).ToPSRoleDefinition();
         }
 
         /// <summary>
@@ -76,25 +79,35 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         /// <param name="roleId">RoleId guid</param>
         public PSRoleDefinition GetRoleDefinition(Guid roleId, string scope)
         {
-            return AuthorizationManagementClient.RoleDefinitions.Get(roleId, scope).RoleDefinition.ToPSRoleDefinition();
+            return AuthorizationManagementClient.RoleDefinitions.Get(scope, roleId.ToString()).ToPSRoleDefinition();
         }
 
         /// <summary>
         /// Filters the existing role Definitions.
-        /// If name is not provided, all role definitions are fetched.
+        /// If scopeAndBelow is true, Will fetch Roledefinitions with scopeAndBelow and provided name.
+        /// Otherwise  will fetch Roledefinitions with provided name
         /// </summary>
         /// <param name="name">The role name</param>
         /// <returns>The matched role Definitions</returns>
         public List<PSRoleDefinition> FilterRoleDefinitions(string name, string scope, bool scopeAndBelow = false)
         {
             List<PSRoleDefinition> result = new List<PSRoleDefinition>();
-            ListDefinitionFilterParameters parameters = new ListDefinitionFilterParameters
-            {
-                RoleName = name,
-                AtScopeAndBelow = scopeAndBelow
-            };
 
-            result.AddRange(AuthorizationManagementClient.RoleDefinitions.List(scope, parameters).RoleDefinitions.Select(r => r.ToPSRoleDefinition()));
+            Rest.Azure.OData.ODataQuery<RoleDefinitionFilter> odataFilter = null;
+
+            if (scopeAndBelow)
+            {
+                odataFilter = new Rest.Azure.OData.ODataQuery<RoleDefinitionFilter>(item => item.AtScopeAndBelow() && item.RoleName == name);
+            }
+            else
+            {
+                odataFilter = new Rest.Azure.OData.ODataQuery<RoleDefinitionFilter>(item => item.RoleName == name);
+            }
+
+            result.AddRange(AuthorizationManagementClient.RoleDefinitions.List(
+                        scope,
+                        odataFilter)
+                  .Select(r => r.ToPSRoleDefinition()));
 
             return result;
         }
@@ -125,9 +138,8 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         public List<PSRoleDefinition> GetAllRoleDefinitionsAtScopeAndBelow(string scope)
         {
             List<PSRoleDefinition> result = new List<PSRoleDefinition>();
-            result.AddRange(AuthorizationManagementClient.RoleDefinitions.List(scope, new ListDefinitionFilterParameters { AtScopeAndBelow = true })
-                .RoleDefinitions
-                .Select(r => r.ToPSRoleDefinition()));
+            result.AddRange(AuthorizationManagementClient.RoleDefinitions.List(scope ?? "",
+            new Rest.Azure.OData.ODataQuery<RoleDefinitionFilter>(filter => filter.AtScopeAndBelow())).Select(r => r.ToPSRoleDefinition()));
             return result;
         }
 
@@ -139,9 +151,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         {
             List<PSRoleDefinition> result = new List<PSRoleDefinition>();
             result.AddRange(AuthorizationManagementClient.RoleDefinitions.List(
-                    scope,
-                    parameters: new ListDefinitionFilterParameters { AtScopeAndBelow = scopeAndBelow })
-                .RoleDefinitions
+                    scope, scopeAndBelow ? new Rest.Azure.OData.ODataQuery<RoleDefinitionFilter>(filter => filter.AtScopeAndBelow()) : null)
                 .Where(r => r.Properties.Type == AuthorizationClientExtensions.CustomRole)
                 .Select(r => r.ToPSRoleDefinition()));
             return result;
@@ -156,21 +166,19 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         {
             Guid principalId = ActiveDirectoryClient.GetObjectId(parameters.ADObjectFilter);
             Guid roleAssignmentId = RoleAssignmentNames.Count == 0 ? Guid.NewGuid() : RoleAssignmentNames.Dequeue();
+            string scope = parameters.Scope;
             string roleDefinitionId = !string.IsNullOrEmpty(parameters.RoleDefinitionName)
-                ? AuthorizationHelper.ConstructFullyQualifiedRoleDefinitionIdFromScopeAndIdAsGuid(parameters.Scope, GetSingleRoleDefinitionByName(parameters.RoleDefinitionName, parameters.Scope).Id)
-                : AuthorizationHelper.ConstructFullyQualifiedRoleDefinitionIdFromScopeAndIdAsGuid(parameters.Scope, parameters.RoleDefinitionId);
-
-            RoleAssignmentCreateParameters createParameters = new RoleAssignmentCreateParameters
+                ? AuthorizationHelper.ConstructFullyQualifiedRoleDefinitionIdFromScopeAndIdAsGuid(scope, GetSingleRoleDefinitionByName(parameters.RoleDefinitionName, scope).Id)
+                : AuthorizationHelper.ConstructFullyQualifiedRoleDefinitionIdFromScopeAndIdAsGuid(scope, parameters.RoleDefinitionId);
+            var createProperties = new RoleAssignmentProperties
             {
-                Properties = new RoleAssignmentProperties
-                {
-                    PrincipalId = principalId,
-                    RoleDefinitionId = roleDefinitionId
-                }
+                PrincipalId = principalId.ToString(),
+                RoleDefinitionId = roleDefinitionId
             };
+            var createParameters = new RoleAssignmentCreateParameters(createProperties);
 
-            RoleAssignment assignment = AuthorizationManagementClient.RoleAssignments.Create(parameters.Scope, roleAssignmentId, createParameters).RoleAssignment;
-
+            RoleAssignment assignment = AuthorizationManagementClient.RoleAssignments.Create(
+                parameters.Scope, roleAssignmentId.ToString(), createParameters);
             return assignment.ToPSRoleAssignment(this, ActiveDirectoryClient);
         }
 
@@ -183,8 +191,8 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         public List<PSRoleAssignment> FilterRoleAssignments(FilterRoleAssignmentsOptions options, string currentSubscription)
         {
             List<PSRoleAssignment> result = new List<PSRoleAssignment>();
-            List<RoleAssignment> roleAssignments = new List<RoleAssignment>();
-            ListAssignmentsFilterParameters parameters = new ListAssignmentsFilterParameters();
+            string assignedToPrincipalId = null;
+            string principalId = null;
 
             PSADObject adObject = null;
             if (options.ADObjectFilter.HasFilter)
@@ -201,65 +209,71 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 
                 // Filter first by principal
                 if (options.ExpandPrincipalGroups)
-                {                   
+                {
                     if (!(adObject is PSADUser))
                     {
                         throw new InvalidOperationException(ProjectResources.ExpandGroupsNotSupported);
                     }
 
-                    parameters.AssignedToPrincipalId = adObject.Id;
+                    assignedToPrincipalId = adObject.Id.ToString();
                 }
                 else
                 {
-                    parameters.PrincipalId = string.IsNullOrEmpty(options.ADObjectFilter.Id) ? adObject.Id : Guid.Parse(options.ADObjectFilter.Id);
+                    principalId = string.IsNullOrEmpty(options.ADObjectFilter.Id.ToString()) ? adObject.Id.ToString() : options.ADObjectFilter.Id;
                 }
 
-                var tempResult = AuthorizationManagementClient.RoleAssignments.List(parameters);
-                roleAssignments.AddRange(tempResult.RoleAssignments.ToList());
+                var tempResult = AuthorizationManagementClient.RoleAssignments.List(
+                    new Rest.Azure.OData.ODataQuery<RoleAssignmentFilter>(f => f.PrincipalId == principalId));
+                result.AddRange(tempResult.FilterRoleAssignmentsOnRoleId(AuthorizationHelper.ConstructFullyQualifiedRoleDefinitionIdFromScopeAndIdAsGuid(currentSubscription, options.RoleDefinitionId))
+                    .ToPSRoleAssignments(this, ActiveDirectoryClient, options.Scope, options.ExcludeAssignmentsForDeletedPrincipals));
 
-                while (!string.IsNullOrWhiteSpace(tempResult.NextLink))
+                while (!string.IsNullOrWhiteSpace(tempResult.NextPageLink))
                 {
-                    tempResult = AuthorizationManagementClient.RoleAssignments.ListNext(tempResult.NextLink);
-                    roleAssignments.AddRange(tempResult.RoleAssignments.ToList());
+                    tempResult = AuthorizationManagementClient.RoleAssignments.ListNext(tempResult.NextPageLink);
+                    result.AddRange(tempResult.FilterRoleAssignmentsOnRoleId(AuthorizationHelper.ConstructFullyQualifiedRoleDefinitionIdFromScopeAndIdAsGuid(currentSubscription, options.RoleDefinitionId))
+                        .ToPSRoleAssignments(this, ActiveDirectoryClient, options.Scope, options.ExcludeAssignmentsForDeletedPrincipals));
                 }
 
                 // Filter out by scope
-                if (!string.IsNullOrWhiteSpace(options.Scope))
+                if (!string.IsNullOrEmpty(options.Scope))
                 {
-                    roleAssignments.RemoveAll(r => !options.Scope.StartsWith(r.Properties.Scope, StringComparison.InvariantCultureIgnoreCase));
+                    result.RemoveAll(r => !options.Scope.StartsWith(r.Scope, StringComparison.OrdinalIgnoreCase));
                 }
             }
             else if (!string.IsNullOrEmpty(options.Scope))
             {
                 // Filter by scope and above directly
-                parameters.AtScope = true;
+                var tempResult = AuthorizationManagementClient.RoleAssignments.ListForScope(
+                    options.Scope,
+                    new Rest.Azure.OData.ODataQuery<RoleAssignmentFilter>(
+                        f => f.PrincipalId == principalId));
 
-                var tempResult = AuthorizationManagementClient.RoleAssignments.ListForScope(options.Scope, parameters);
-                roleAssignments.AddRange(tempResult.RoleAssignments.ToList());
+                result.AddRange(tempResult.FilterRoleAssignmentsOnRoleId(AuthorizationHelper.ConstructFullyQualifiedRoleDefinitionIdFromScopeAndIdAsGuid(currentSubscription, options.RoleDefinitionId))
+                    .ToPSRoleAssignments(this, ActiveDirectoryClient, options.Scope, options.ExcludeAssignmentsForDeletedPrincipals));
 
-                while (!string.IsNullOrWhiteSpace(tempResult.NextLink))
+                while (!string.IsNullOrWhiteSpace(tempResult.NextPageLink))
                 {
-                    tempResult = AuthorizationManagementClient.RoleAssignments.ListForScopeNext(tempResult.NextLink);
-                    roleAssignments.AddRange(tempResult.RoleAssignments.ToList());
+                    tempResult = AuthorizationManagementClient.RoleAssignments.ListForScopeNext(tempResult.NextPageLink);
+                    result.AddRange(tempResult.FilterRoleAssignmentsOnRoleId(AuthorizationHelper.ConstructFullyQualifiedRoleDefinitionIdFromScopeAndIdAsGuid(currentSubscription, options.RoleDefinitionId))
+                        .ToPSRoleAssignments(this, ActiveDirectoryClient, options.Scope, options.ExcludeAssignmentsForDeletedPrincipals));
                 }
             }
             else
             {
-                var tempResult = AuthorizationManagementClient.RoleAssignments.List(parameters);
-                roleAssignments.AddRange(tempResult.RoleAssignments.ToList());
+                var tempResult = AuthorizationManagementClient.RoleAssignments.List(
+                    new Rest.Azure.OData.ODataQuery<RoleAssignmentFilter>(f => f.PrincipalId == principalId));
+                result.AddRange(tempResult
+                     .FilterRoleAssignmentsOnRoleId(AuthorizationHelper.ConstructFullyQualifiedRoleDefinitionIdFromScopeAndIdAsGuid(currentSubscription, options.RoleDefinitionId))
+                     .ToPSRoleAssignments(this, ActiveDirectoryClient, options.Scope, options.ExcludeAssignmentsForDeletedPrincipals));
 
-                while (!string.IsNullOrWhiteSpace(tempResult.NextLink))
+                while (!string.IsNullOrWhiteSpace(tempResult.NextPageLink))
                 {
-                    tempResult = AuthorizationManagementClient.RoleAssignments.ListNext(tempResult.NextLink);
-                    roleAssignments.AddRange(tempResult.RoleAssignments.ToList());
+                    tempResult = AuthorizationManagementClient.RoleAssignments.ListNext(tempResult.NextPageLink);
+                    result.AddRange(tempResult
+                   .FilterRoleAssignmentsOnRoleId(AuthorizationHelper.ConstructFullyQualifiedRoleDefinitionIdFromScopeAndIdAsGuid(currentSubscription, options.RoleDefinitionId))
+                   .ToPSRoleAssignments(this, ActiveDirectoryClient, options.Scope, options.ExcludeAssignmentsForDeletedPrincipals));
                 }
             }
-
-            // To look for RoleDefinitions at the stated scope - if scope is Null then default to subscription scope
-            string scopeForRoleDefinitions = string.IsNullOrEmpty(options.Scope) ? AuthorizationHelper.GetSubscriptionScope(currentSubscription) : options.Scope;
-
-            result.AddRange(roleAssignments.FilterRoleAssignmentsOnRoleId(options.RoleDefinitionId)
-                .ToPSRoleAssignments(this, ActiveDirectoryClient, scopeForRoleDefinitions, options.ExcludeAssignmentsForDeletedPrincipals));
 
             if (!string.IsNullOrEmpty(options.RoleDefinitionName))
             {
@@ -269,7 +283,8 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             if (options.IncludeClassicAdministrators)
             {
                 // Get classic administrator access assignments 
-                List<ClassicAdministrator> classicAdministrators = AuthorizationManagementClient.ClassicAdministrators.List().ClassicAdministrators.ToList();
+                List<ClassicAdministrator> classicAdministrators = AuthorizationManagementClient.ClassicAdministrators
+                    .List("2015-06-01").ToList();
                 List<PSRoleAssignment> classicAdministratorsAssignments = classicAdministrators.Select(a => a.ToPSRoleAssignment(currentSubscription)).ToList();
 
                 // Filter by principal if provided
@@ -303,7 +318,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             // but an edge case can have multiple role assignments to the same role or multiple role assignments to different roles, with same name.
             // The FilterRoleAssignments takes care of paging internally
             IEnumerable<PSRoleAssignment> roleAssignments = FilterRoleAssignments(options, currentSubscription: subscriptionId)
-                                                .Where(ra => ra.Scope == options.Scope.TrimEnd('/'));
+                                                .Where(ra => ra.Scope.Equals(options.Scope.TrimEnd('/'), StringComparison.OrdinalIgnoreCase));
 
             if (roleAssignments == null || !roleAssignments.Any())
             {
@@ -360,7 +375,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             PSRoleDefinition roleDefinition = this.GetRoleDefinition(roleDefinitionId, scope);
             if (roleDefinition != null)
             {
-                return AuthorizationManagementClient.RoleDefinitions.Delete(roleDefinitionId, scope).RoleDefinition.ToPSRoleDefinition();
+                return AuthorizationManagementClient.RoleDefinitions.Delete(scope, roleDefinitionId.ToString()).ToPSRoleDefinition();
             }
             else
             {
@@ -376,7 +391,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         public PSRoleDefinition RemoveRoleDefinition(string roleDefinitionName, string scope)
         {
             PSRoleDefinition roleDefinition = this.GetSingleRoleDefinitionByName(roleDefinitionName, scope);
-            return AuthorizationManagementClient.RoleDefinitions.Delete(Guid.Parse(roleDefinition.Id), scope).RoleDefinition.ToPSRoleDefinition();
+            return AuthorizationManagementClient.RoleDefinitions.Delete(scope, roleDefinition.Id).ToPSRoleDefinition();
         }
 
         public PSRoleDefinition RemoveRoleDefinition(FilterRoleDefinitionOptions options)
@@ -410,7 +425,16 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 
             ValidateRoleDefinition(roleDefinition);
 
-            PSRoleDefinition fetchedRoleDefinition = this.GetRoleDefinition(roleDefinitionId, roleDefinition.AssignableScopes.First());
+			PSRoleDefinition fetchedRoleDefinition = null;
+			foreach (String scope in roleDefinition.AssignableScopes)
+			{
+				fetchedRoleDefinition = this.GetRoleDefinition(roleDefinitionId, scope);
+				if (fetchedRoleDefinition != null)
+				{
+					break;
+				}
+			}
+
             if (fetchedRoleDefinition == null)
             {
                 throw new KeyNotFoundException(string.Format(ProjectResources.RoleDefinitionWithIdNotFound, roleDefinition.Id));
@@ -434,16 +458,15 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 
         private PSRoleDefinition CreateOrUpdateRoleDefinition(Guid roleDefinitionId, PSRoleDefinition roleDefinition)
         {
-            RoleDefinitionCreateOrUpdateParameters parameters = new RoleDefinitionCreateOrUpdateParameters()
+            PSRoleDefinition roleDef = null;
+            var parameters = new RoleDefinition()
             {
-                RoleDefinition = new RoleDefinition()
+                Name = roleDefinitionId.ToString(),
+                Properties = new RoleDefinitionProperties()
                 {
-                    Name = roleDefinitionId,
-                    Properties = new RoleDefinitionProperties()
-                    {
-                        AssignableScopes = roleDefinition.AssignableScopes,
-                        Description = roleDefinition.Description,
-                        Permissions = new List<Permission>()
+                    AssignableScopes = roleDefinition.AssignableScopes,
+                    Description = roleDefinition.Description,
+                    Permissions = new List<Permission>()
                         {
                             new Permission()
                             {
@@ -451,20 +474,20 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                                 NotActions = roleDefinition.NotActions
                             }
                         },
-                        RoleName = roleDefinition.Name,
-                        Type = "CustomRole"
-                    }
+                    RoleName = roleDefinition.Name,
+                    Type = "CustomRole"
                 }
             };
 
-            PSRoleDefinition roleDef = null;
             try
             {
-                roleDef = AuthorizationManagementClient.RoleDefinitions.CreateOrUpdate(roleDefinitionId, roleDefinition.AssignableScopes.First(), parameters).RoleDefinition.ToPSRoleDefinition();
+                roleDef = AuthorizationManagementClient.RoleDefinitions.CreateOrUpdate(
+                    roleDefinition.AssignableScopes.First(), roleDefinitionId.ToString(), parameters).ToPSRoleDefinition();
             }
             catch (CloudException ce)
             {
-                if (ce.Response.StatusCode == HttpStatusCode.Unauthorized && ce.Error.Code.Equals("TenantNotAllowed", StringComparison.InvariantCultureIgnoreCase))
+                if (ce.Response.StatusCode == HttpStatusCode.Unauthorized &&
+                    ce.Error.Code.Equals("TenantNotAllowed", StringComparison.InvariantCultureIgnoreCase))
                 {
                     throw new InvalidOperationException("The tenant is not currently authorized to create/update Custom role definition. Please refer to http://aka.ms/customrolespreview for more details");
                 }
@@ -496,6 +519,70 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             {
                 throw new ArgumentException(ProjectResources.InvalidActions);
             }
+
+        }
+
+        public static void ValidateScope(string scope, bool allowEmpty)
+        {
+            if (allowEmpty && string.IsNullOrEmpty(scope))
+                return;
+
+            if (scope.Length == 0 || !scope.StartsWith("/"))
+            {
+                throw new ArgumentException(string.Format(ProjectResources.ScopeShouldBeginWithSubscriptionsOrProviders, scope));
+            }
+
+            // "/" is a valid scope.
+            if (string.Compare(scope, "/") == 0)
+            {
+                return;
+            }
+
+            var parts = scope.Substring(1).Split('/');   // Skip the leading '/'
+
+            if (parts.Contains(string.Empty))
+            {
+                throw new ArgumentException(string.Format(ProjectResources.ScopeShouldHaveNoEmptyPart, scope));
+            }
+
+            int count = parts.Count();
+
+            if (count % 2 != 0)
+            {
+                throw new ArgumentException(string.Format(ProjectResources.ScopeShouldHaveEvenNumberOfParts, scope));
+            }
+
+            // For Scope that on tenant level, without subscriptions, should start with "providers"
+            // in this case we only ensure that the number of parts is even.
+            if (string.Compare(parts[0], "providers", true) == 0)
+            {
+                return;
+            }
+            else if (string.Compare(parts[0], "subscriptions", true) != 0)
+            {
+                throw new ArgumentException(string.Format(ProjectResources.ScopeShouldBeginWithSubscriptionsOrProviders, scope));
+            }
+
+            // Now check the case that scope begins with '/subscriptions'
+
+            if (count >= 4 && string.Compare(parts[2], "resourceGroups", true) != 0)
+            {
+                throw new ArgumentException(string.Format(ProjectResources.ScopeShouldBeginWithSubscriptionsAndResourceGroups, scope));
+            }
+
+            if (count >= 6)
+            {
+                if (string.Compare(parts[4], "providers", true) != 0)
+                {
+                    throw new ArgumentException(string.Format(ProjectResources.ScopeShouldBeginWithSubscriptionsAndResourceGroupsAndProviders, scope));
+                }
+
+                if (count < 8)
+                {
+                    throw new ArgumentException(string.Format(ProjectResources.ScopeShouldHaveAtLeastOnePairOfResourceTypeAndName, scope));
+                }
+            }
+
         }
     }
 }

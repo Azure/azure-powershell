@@ -47,11 +47,11 @@ namespace Microsoft.Azure.Commands.Dns
             }
             else if (!string.IsNullOrEmpty(this.ResourceGroupName))
             {
-                WriteObject(this.DnsClient.ListDnsZonesInResourceGroup(this.ResourceGroupName));
+                WriteObject(this.DnsClient.ListDnsZonesInResourceGroup(this.ResourceGroupName), true);
             }
             else
             {
-                WriteObject(this.DnsClient.ListDnsZonesInSubscription());
+                WriteObject(this.DnsClient.ListDnsZonesInSubscription(), true);
             }
         }
     }

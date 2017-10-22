@@ -44,6 +44,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### ASRRecoveryServicesProvider
+
+Parameter 'ServicesProvider' accepts value of type 'ASRRecoveryServicesProvider' from the pipeline
+
 ## OUTPUTS
 
 ## NOTES

@@ -54,6 +54,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Media.Models.PSCheckNameAvailabilityOutput
+
 ## NOTES
 
 ## RELATED LINKS

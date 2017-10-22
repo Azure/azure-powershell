@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Common.Authentication.Properties;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.DataLakeStore.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.DataLake.Store;
 using Microsoft.Azure.Management.DataLake.Store.Models;
@@ -32,14 +32,14 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         private readonly DataLakeStoreAccountManagementClient _client;
         private readonly Guid _subscriptionId;
 
-        public DataLakeStoreClient(AzureContext context)
+        public DataLakeStoreClient(IAzureContext context)
         {
             if (context == null)
             {
                 throw new ApplicationException(Resources.InvalidDefaultSubscription);
             }
 
-            _subscriptionId = context.Subscription.Id;
+            _subscriptionId = context.Subscription.GetId();
             _client = DataLakeStoreCmdletBase.CreateAdlsClient<DataLakeStoreAccountManagementClient>(context,
                 AzureEnvironment.Endpoint.ResourceManager);
         }
@@ -112,7 +112,9 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 parameters.NewTier = tier;
             }
 
-            return  _client.Account.Create(resourceGroupName, accountName, parameters);
+            var toReturn = _client.Account.Create(resourceGroupName, accountName, parameters);
+
+            return toReturn;
         }
 
         public DataLakeStoreAccount UpdateAccount(
@@ -123,7 +125,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             FirewallState firewallState,
             FirewallAllowAzureIpsState azureIpState,
             Hashtable customTags = null,
-            TierType? tier = null)
+            TierType? tier = null,
+            UpdateEncryptionConfig userConfig = null)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
@@ -138,7 +141,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 Tags = tags ?? new Dictionary<string, string>(),
                 TrustedIdProviderState = providerState,
                 FirewallState = firewallState,
-                FirewallAllowAzureIps = azureIpState
+                FirewallAllowAzureIps = azureIpState,
+                EncryptionConfig = userConfig
             };
 
             if (tier.HasValue)
@@ -146,7 +150,9 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 parameters.NewTier = tier;
             }
 
-            return _client.Account.Update(resourceGroupName, accountName, parameters);
+            var toReturn = _client.Account.Update(resourceGroupName, accountName, parameters);
+
+            return toReturn;
         }
 
         public void DeleteAccount(string resourceGroupName, string accountName)
@@ -192,6 +198,17 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
             return _client.Account.Get(resourceGroupName, accountName);
         }
+
+        public void EnableKeyVault(string resourceGroupName, string accountName)
+        {
+            if (string.IsNullOrEmpty(resourceGroupName))
+            {
+                resourceGroupName = GetResourceGroupByAccount(accountName);
+            }
+
+            _client.Account.EnableKeyVault(resourceGroupName, accountName);
+        }
+
         public FirewallRule AddOrUpdateFirewallRule(string resourceGroupName, string accountName, string ruleName, string startIp, string endIp, Cmdlet runningCommand)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
@@ -330,7 +347,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             return toReturn;
         }
 
-        public List<DataLakeStoreAccount> ListAccounts(string resourceGroupName, string filter, int? top, int? skip)
+        public List<DataLakeStoreAccountBasic> ListAccounts(string resourceGroupName, string filter, int? top, int? skip)
         {
             var parameters = new ODataQuery<DataLakeStoreAccount>
             {
@@ -339,7 +356,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 Skip = skip
             };
 
-            var accountList = new List<DataLakeStoreAccount>();
+            var accountList = new List<DataLakeStoreAccountBasic>();
             var response = string.IsNullOrEmpty(resourceGroupName) ?
                 _client.Account.List(parameters) :
                 _client.Account.ListByResourceGroup(resourceGroupName, parameters);
@@ -355,7 +372,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             return accountList;
         }
 
-        private IPage<DataLakeStoreAccount> ListAccountsWithNextLink(string nextLink)
+        private IPage<DataLakeStoreAccountBasic> ListAccountsWithNextLink(string nextLink)
         {
             return _client.Account.ListNext(nextLink);
         }

@@ -21,7 +21,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
     {
         public void RemovePublishSettingsProcess(string azureSdkDirPath)
         {
-            AzureSession.DataStore.EmptyDirectory(azureSdkDirPath);
+            AzureSession.Instance.DataStore.EmptyDirectory(azureSdkDirPath);
         }
     }
 }

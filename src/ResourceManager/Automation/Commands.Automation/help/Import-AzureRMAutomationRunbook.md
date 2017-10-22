@@ -19,16 +19,17 @@ Import-AzureRmAutomationRunbook [-Path] <String> [-Description <String>] [-Name 
 ```
 
 ## DESCRIPTION
-The **Import-AzureRmAutomationRunbook** cmdlet imports an Azure Automation runbook.
-Specify the path to a wps_2 script (.ps1 ) file to import for wps_2 and wps_2 Workflow runbooks, or to a graphical runbook (.graphrunbook) file for graphical runbooks.
-The name of the file becomes the name of the runbook.
-For wps_2 Workflow runbooks, the script must contain a single wps_2 Workflow definition that matches the name of the file.
+The **Import-AzureRmAutomationRunbook** cmdlet imports an Azure Automation runbook. Specify the
+path to a wps_2 script (.ps1 ) file to import for wps_2 and wps_2 Workflow runbooks, or to a
+graphical runbook (.graphrunbook) file for graphical runbooks. The name of the file becomes the
+name of the runbook. For wps_2 Workflow runbooks, the script must contain a single wps_2 Workflow
+definition that matches the name of the file.
 
 ## EXAMPLES
 
 ### Example 1: Import a runbook from a file
 ```
-PS C:\>$Tags = @{"tag01"='value01"; "tag02"="value02"}
+PS C:\> $Tags = @{"tag01"="value01"; "tag02"="value02"}
 PS C:\> Import-AzureRmAutomationRunbook -Path .\GraphicalRunbook06.graphrunbook -Tags $Tags -ResourceGroup "ResourceGroup01" -AutomationAccountName "AutomationAccount01" -Type GraphicalPowershell
 ```
 
@@ -175,7 +176,9 @@ Accept wildcard characters: False
 ```
 
 ### -Tags
-Specifies a dictionary of tags for the imported runbook.
+Key-value pairs in the form of a hash table. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
 Type: IDictionary
@@ -191,13 +194,13 @@ Accept wildcard characters: False
 
 ### -Type
 Specifies the type of runbook that this cmdlet creates.
-Valid values are: 
+Valid values are:
 
 - PowerShell
 - GraphicalPowerShell
 - PowerShellWorkflow
 - GraphicalPowerShellWorkflow
-- Graph 
+- Graph
 
 The value Graph is obsolete.
 It is equivalent to GraphicalPowerShellWorkflow.
@@ -253,6 +256,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Automation.Model.Runbook
+
 ## NOTES
 
 ## RELATED LINKS
@@ -272,5 +277,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Set-AzureRmAutomationRunbook](./Set-AzureRMAutomationRunbook.md)
 
 [Start-AzureRmAutomationRunbook](./Start-AzureRMAutomationRunbook.md)
-
-

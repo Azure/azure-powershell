@@ -35,6 +35,9 @@ Adds an IP configuration to an application gateway.
 ### [Add-AzureRmApplicationGatewayProbeConfig](Add-AzureRmApplicationGatewayProbeConfig.md)
 Adds a health probe to an Application Gateway.
 
+### [Add-AzureRmApplicationGatewayRedirectConfiguration](Add-AzureRmApplicationGatewayRedirectConfiguration.md)
+Adds a redirect configuration to an Application Gateway.
+
 ### [Add-AzureRmApplicationGatewayRequestRoutingRule](Add-AzureRmApplicationGatewayRequestRoutingRule.md)
 Adds a request routing rule to an application gateway.
 
@@ -101,6 +104,9 @@ Gets an application gateway.
 ### [Get-AzureRmApplicationGatewayAuthenticationCertificate](Get-AzureRmApplicationGatewayAuthenticationCertificate.md)
 Gets an authentication certificate for an application gateway.
 
+### [Get-AzureRmApplicationGatewayAvailableSslOptions](Get-AzureRmApplicationGatewayAvailableSslOptions.md)
+Gets all available ssl options for ssl policy for Application Gateway.
+
 ### [Get-AzureRmApplicationGatewayAvailableWafRuleSets](Get-AzureRmApplicationGatewayAvailableWafRuleSets.md)
 Gets all available web application firewall rule sets.
 
@@ -131,6 +137,9 @@ Gets the IP configuration of an application gateway.
 ### [Get-AzureRmApplicationGatewayProbeConfig](Get-AzureRmApplicationGatewayProbeConfig.md)
 Gets an existing health probe configuration from an Application Gateway.
 
+### [Get-AzureRmApplicationGatewayRedirectConfiguration](Get-AzureRmApplicationGatewayRedirectConfiguration.md)
+Gets an existing redirect configuration from an Application Gateway.
+
 ### [Get-AzureRmApplicationGatewayRequestRoutingRule](Get-AzureRmApplicationGatewayRequestRoutingRule.md)
 Gets the request routing rule of an application gateway.
 
@@ -143,11 +152,17 @@ Gets an SSL certificate for an application gateway.
 ### [Get-AzureRmApplicationGatewaySslPolicy](Get-AzureRmApplicationGatewaySslPolicy.md)
 Gets the SSL policy of an application gateway.
 
+### [Get-AzureRmApplicationGatewaySslPredefinedPolicy](Get-AzureRmApplicationGatewaySslPredefinedPolicy.md)
+Gets Predefined SSL Policies provided by Application Gateway.
+
 ### [Get-AzureRmApplicationGatewayUrlPathMapConfig](Get-AzureRmApplicationGatewayUrlPathMapConfig.md)
 Gets an array of URL path mappings to a backend server pool.
 
 ### [Get-AzureRmApplicationGatewayWebApplicationFirewallConfiguration](Get-AzureRmApplicationGatewayWebApplicationFirewallConfiguration.md)
 Gets the WAF configuration of an application gateway.
+
+### [Get-AzureRmApplicationSecurityGroup](Get-AzureRmApplicationSecurityGroup.md)
+Gets an application security group.
 
 ### [Get-AzureRmBgpServiceCommunity](Get-AzureRmBgpServiceCommunity.md)
 {{Manually Enter Get-AzureRmBgpServiceCommunity Description Here}}
@@ -218,6 +233,9 @@ Gets a network security group.
 ### [Get-AzureRmNetworkSecurityRuleConfig](Get-AzureRmNetworkSecurityRuleConfig.md)
 Get a network security rule configuration for a network security group.
 
+### [Get-AzureRmNetworkUsage](Get-AzureRmNetworkUsage.md)
+Lists network usages for a subscription
+
 ### [Get-AzureRmNetworkWatcher](Get-AzureRmNetworkWatcher.md)
 Gets the properties of a Network Watcher
 
@@ -257,6 +275,9 @@ Gets route tables.
 ### [Get-AzureRmVirtualNetwork](Get-AzureRmVirtualNetwork.md)
 Gets a virtual network in a resource group.
 
+### [Get-AzureRmVirtualNetworkAvailableEndpointService](Get-AzureRmVirtualNetworkAvailableEndpointService.md)
+Lists available endpoint services for location.
+
 ### [Get-AzureRmVirtualNetworkGateway](Get-AzureRmVirtualNetworkGateway.md)
 Gets a Virtual Network Gateway
 
@@ -272,14 +293,26 @@ Gets a Virtual Network Gateway Connection
 ### [Get-AzureRmVirtualNetworkGatewayConnectionSharedKey](Get-AzureRmVirtualNetworkGatewayConnectionSharedKey.md)
 {{Manually Enter Get-AzureRmVirtualNetworkGatewayConnectionSharedKey Description Here}}
 
+### [Get-AzureRmVirtualNetworkGatewayConnectionVpnDeviceConfigScript](Get-AzureRmVirtualNetworkGatewayConnectionVpnDeviceConfigScript.md)
+This commandlet takes the connection resource, VPN device brand, model, firmware version, and return the corresponding configuration script that customers can apply directly on their on-premises VPN devices. The script will follow the syntax of the selected device, and fill in the necessary parameters such as Azure gateway public IP addresses, virtual network address prefixes, VPN tunnel pre-shared key, etc. so customers can simply copy-paste to their VPN device configurations.
+
 ### [Get-AzureRmVirtualNetworkGatewayLearnedRoute](Get-AzureRmVirtualNetworkGatewayLearnedRoute.md)
 Lists routes learned by an Azure virtual network gateway
+
+### [Get-AzureRmVirtualNetworkGatewaySupportedVpnDevice](Get-AzureRmVirtualNetworkGatewaySupportedVpnDevice.md)
+This commandlet returns a list of supported VPN device brands, models, and firmware versions.
 
 ### [Get-AzureRmVirtualNetworkPeering](Get-AzureRmVirtualNetworkPeering.md)
 Gets the virtual network peering.
 
 ### [Get-AzureRmVirtualNetworkSubnetConfig](Get-AzureRmVirtualNetworkSubnetConfig.md)
 Gets a subnet in a virtual network.
+
+### [Get-AzureRmVirtualNetworkUsageList](Get-AzureRmVirtualNetworkUsageList.md)
+Gets virtual network current usage.
+
+### [Get-AzureRmVpnClientConfiguration](Get-AzureRmVpnClientConfiguration.md)
+Allows users to easily download the Vpn Profile package that was generated using the New-AzureRmVpnClientConfiguration commandlet.
 
 ### [Get-AzureRmVpnClientPackage](Get-AzureRmVpnClientPackage.md)
 Gets information about a VPN client package.
@@ -329,6 +362,12 @@ Creates an application gateway path rule.
 ### [New-AzureRmApplicationGatewayProbeConfig](New-AzureRmApplicationGatewayProbeConfig.md)
 Creates a health probe.
 
+### [New-AzureRmApplicationGatewayProbeHealthResponseMatch](New-AzureRmApplicationGatewayProbeHealthResponseMatch.md)
+Creates a health probe response match used by Health Probe for an application gateway.
+
+### [New-AzureRmApplicationGatewayRedirectConfiguration](New-AzureRmApplicationGatewayRedirectConfiguration.md)
+Creates a redirect configuration for an application gateway.
+
 ### [New-AzureRmApplicationGatewayRequestRoutingRule](New-AzureRmApplicationGatewayRequestRoutingRule.md)
 Creates a request routing rule for an application gateway.
 
@@ -346,6 +385,9 @@ Creates an array of URL path mappings to a backend server pool.
 
 ### [New-AzureRmApplicationGatewayWebApplicationFirewallConfiguration](New-AzureRmApplicationGatewayWebApplicationFirewallConfiguration.md)
 Creates a WAF configuration for an application gateway.
+
+### [New-AzureRmApplicationSecurityGroup](New-AzureRmApplicationSecurityGroup.md)
+Creates an application security group.
 
 ### [New-AzureRmExpressRouteCircuit](New-AzureRmExpressRouteCircuit.md)
 Creates an Azure express route circuit.
@@ -434,6 +476,9 @@ Creates an IP Configuration for a Virtual Network Gateway
 ### [New-AzureRmVirtualNetworkSubnetConfig](New-AzureRmVirtualNetworkSubnetConfig.md)
 Creates a virtual network subnet configuration.
 
+### [New-AzureRmVpnClientConfiguration](New-AzureRmVpnClientConfiguration.md)
+This command allows the users to create the Vpn profile package based on pre-configured vpn settings on the VPN gateway, in addition to some additional settings that users may need to configure, for e.g. some root certificates.
+
 ### [New-AzureRmVpnClientRevokedCertificate](New-AzureRmVpnClientRevokedCertificate.md)
 Creates a new VPN client-revocation certificate.
 
@@ -470,6 +515,9 @@ Removes an IP configuration from an application gateway.
 ### [Remove-AzureRmApplicationGatewayProbeConfig](Remove-AzureRmApplicationGatewayProbeConfig.md)
 Removes a health probe from an existing application gateway.
 
+### [Remove-AzureRmApplicationGatewayRedirectConfiguration](Remove-AzureRmApplicationGatewayRedirectConfiguration.md)
+Removes a redirect configuration from an existing Application Gateway.
+
 ### [Remove-AzureRmApplicationGatewayRequestRoutingRule](Remove-AzureRmApplicationGatewayRequestRoutingRule.md)
 Removes a request routing rule from an application gateway.
 
@@ -481,6 +529,9 @@ Removes an SSL policy from an Azure application gateway.
 
 ### [Remove-AzureRmApplicationGatewayUrlPathMapConfig](Remove-AzureRmApplicationGatewayUrlPathMapConfig.md)
 Removes URL path mappings to a backend server pool.
+
+### [Remove-AzureRmApplicationSecurityGroup](Remove-AzureRmApplicationSecurityGroup.md)
+Removes an application security group.
 
 ### [Remove-AzureRmExpressRouteCircuit](Remove-AzureRmExpressRouteCircuit.md)
 Removes an ExpressRoute circuit.
@@ -614,6 +665,9 @@ Modifies an IP configuration for an application gateway.
 ### [Set-AzureRmApplicationGatewayProbeConfig](Set-AzureRmApplicationGatewayProbeConfig.md)
 Sets the health probe configuration on an existing Application Gateway.
 
+### [Set-AzureRmApplicationGatewayRedirectConfiguration](Set-AzureRmApplicationGatewayRedirectConfiguration.md)
+Sets the redirect configuration on an existing Application Gateway.
+
 ### [Set-AzureRmApplicationGatewayRequestRoutingRule](Set-AzureRmApplicationGatewayRequestRoutingRule.md)
 Modifies a request routing rule for an application gateway.
 
@@ -727,6 +781,9 @@ Stops a running packet capture session
 
 ### [Test-AzureRmDnsAvailability](Test-AzureRmDnsAvailability.md)
 {{Manually Enter Test-AzureRmDnsAvailability Description Here}}
+
+### [Test-AzureRmNetworkWatcherConnectivity](Test-AzureRmNetworkWatcherConnectivity.md)
+Returns connectivity information for a specified source VM and a destination.
 
 ### [Test-AzureRmNetworkWatcherIPFlow](Test-AzureRmNetworkWatcherIPFlow.md)
 Returns whether the packet is allowed or denied to or from a particular destination.

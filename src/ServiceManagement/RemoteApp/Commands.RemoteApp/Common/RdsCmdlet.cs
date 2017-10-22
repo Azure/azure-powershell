@@ -25,7 +25,7 @@ using System.Management.Automation;
 using System.Security.Principal;
 using Microsoft.Azure;
 using Microsoft.WindowsAzure.Commands.Common;
-
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Management.RemoteApp.Models
 {
@@ -65,7 +65,7 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
             {
                 if (client == null)
                 {
-                    client = AzureSession.ClientFactory.CreateClient<RemoteAppManagementClient>(Profile.Context, AzureEnvironment.Endpoint.ServiceManagement);
+                    client = AzureSession.Instance.ClientFactory.CreateClient<RemoteAppManagementClient>(Profile.Context, AzureEnvironment.Endpoint.ServiceManagement);
                     client.RdfeNamespace = "remoteapp";
 
                     // Read the namespace if defined as an environment variable from the session configuration
@@ -93,7 +93,7 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
             {
                 if (mgmtClient == null)
                 {
-                    mgmtClient = AzureSession.ClientFactory.CreateClient<Microsoft.WindowsAzure.Management.ManagementClient>
+                    mgmtClient = AzureSession.Instance.ClientFactory.CreateClient<Microsoft.WindowsAzure.Management.ManagementClient>
                                         (Profile.Context, AzureEnvironment.Endpoint.ServiceManagement);
 
                 }

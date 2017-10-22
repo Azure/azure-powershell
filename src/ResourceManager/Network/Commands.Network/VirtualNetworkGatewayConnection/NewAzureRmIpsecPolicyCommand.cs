@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Network.Models;
+using System;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
@@ -22,15 +23,15 @@ namespace Microsoft.Azure.Commands.Network
     public class NewAzureRmIpsecPolicyCommand : NetworkBaseCmdlet
     {
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The IPSec Security Association (also called Quick Mode or Phase 2 SA) lifetime in seconds")]
-        [ValidateNotNullOrEmpty]
+        [ValidateRange(300, 172799)]
         public int SALifeTimeSeconds { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The IPSec Security Association (also called Quick Mode or Phase 2 SA) payload size in KB")]
-        [ValidateNotNullOrEmpty]
+        [ValidateRange(1024, int.MaxValue)]
         public int SADataSizeKilobytes { get; set; }
 
         [Parameter(
@@ -125,8 +126,16 @@ namespace Microsoft.Azure.Commands.Network
             base.Execute();
             var ipsecPolicy = new PSIpsecPolicy();
 
-            ipsecPolicy.SALifeTimeSeconds = this.SALifeTimeSeconds;
-            ipsecPolicy.SADataSizeKilobytes = this.SADataSizeKilobytes;
+            // default SA values
+            ipsecPolicy.SALifeTimeSeconds = (!this.MyInvocation.BoundParameters.ContainsKey("SALifeTimeSeconds")) ? 27000 : this.SALifeTimeSeconds;
+            ipsecPolicy.SADataSizeKilobytes = (!this.MyInvocation.BoundParameters.ContainsKey("SADataSizeKilobytes")) ? 102400000 : this.SADataSizeKilobytes;
+
+            // GCM matching check
+            if ((this.IpsecEncryption.Contains("GCM") || this.IpsecIntegrity.Contains("GCM")) && this.IpsecEncryption != this.IpsecIntegrity)
+            {
+                throw new ArgumentException("IpsecEncryption and IpsecIntegrity must use matching GCM algorithms");
+            }
+
             ipsecPolicy.IpsecEncryption = this.IpsecEncryption;
             ipsecPolicy.IpsecIntegrity = this.IpsecIntegrity;
             ipsecPolicy.IkeEncryption = this.IkeEncryption;

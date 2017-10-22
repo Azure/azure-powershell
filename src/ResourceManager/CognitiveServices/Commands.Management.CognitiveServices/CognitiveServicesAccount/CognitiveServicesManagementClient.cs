@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Management.CognitiveServices;
 using System;
@@ -27,8 +28,8 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
 
         public Action<string> ErrorLogger { get; set; }
 
-        public CognitiveServicesManagementClientWrapper(AzureContext context)
-            : this(AzureSession.ClientFactory.CreateArmClient<CognitiveServicesManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
+        public CognitiveServicesManagementClientWrapper(IAzureContext context)
+            : this(AzureSession.Instance.ClientFactory.CreateArmClient<CognitiveServicesManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
         {
         }
 

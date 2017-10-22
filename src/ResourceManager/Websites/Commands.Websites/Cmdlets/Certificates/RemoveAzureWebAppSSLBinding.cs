@@ -13,6 +13,7 @@ using Microsoft.Rest.Azure;
 using System.Linq;
 using System.Management.Automation;
 using System.Net;
+using Microsoft.Azure.Commands.WebApps.Properties;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 {

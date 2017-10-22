@@ -101,7 +101,7 @@ Specifies the name of the database to retrieve.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: Name
 
 Required: False
 Position: 2
@@ -193,7 +193,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Set-AzureRmSqlDatabase](./Set-AzureRmSqlDatabase.md)
 
 [Suspend-AzureRmSqlDatabase](./Suspend-AzureRmSqlDatabase.md)
-
-[Azure SQL Database Cmdlets](./AzureRM.Sql.md)
 
 

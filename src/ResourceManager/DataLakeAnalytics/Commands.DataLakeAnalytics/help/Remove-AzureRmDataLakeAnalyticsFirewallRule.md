@@ -31,7 +31,7 @@ This command removes the firewall rule named "my firewall rule" from account "Co
 ## PARAMETERS
 
 ### -Account
-The Data Lake Analytics account to update the firewall rule in
+The Data Lake Analytics account to remove the firewall rule from
 
 ```yaml
 Type: String

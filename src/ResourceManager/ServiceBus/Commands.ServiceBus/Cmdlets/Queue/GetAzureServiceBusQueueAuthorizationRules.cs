@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.ServiceBus.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using System;
 
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
 {
@@ -24,6 +25,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
     /// <para> If AuthorizationRule name provided, a single AuthorizationRule detials will be returned</para>
     /// <para> If AuthorizationRule name not provided, list of AuthorizationRules will be returned</para>
     /// </summary>
+    [ObsoleteAttribute("'Get-AzureRmServiceBusQueueAuthorizationRule' cmdlet is mark as obsolete and will be depricated in upcoming breaking changes build. Please use the New cmdlet 'Get-AzureRmServiceBusAuthorizationRule'", false)]
     [Cmdlet(VerbsCommon.Get, ServiceBusQueueAuthorizationRuleVerb), OutputType(typeof(List<SharedAccessAuthorizationRuleAttributes>))]
     public class GetAzureRmServiceBusQueueAuthorizationRule : AzureServiceBusCmdletBase
     {
@@ -39,33 +41,36 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
             Position = 1,
             HelpMessage = "Namespace Name.")]
         [ValidateNotNullOrEmpty]
-        public string NamespaceName { get; set; }
+        [Alias(AliasNamespaceName)]
+        public string Namespace { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 2,
             HelpMessage = "Queue Name.")]
         [ValidateNotNullOrEmpty]
-        public string QueueName { get; set; }
+        [Alias(AliasQueueName)]
+        public string Queue { get; set; }
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             Position = 3,
             HelpMessage = "EventHub AuthorizationRule Name.")]
-        public string AuthorizationRuleName { get; set; }
+        [Alias(AliasAuthorizationRuleName)]
+        public string Name { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (!string.IsNullOrEmpty(AuthorizationRuleName))
+            if (!string.IsNullOrEmpty(Name))
             {
                 // Get a eventHub AuthorizationRules
-                var authRule = Client.GetServiceBusQueueAuthorizationRules(ResourceGroup, NamespaceName, QueueName, AuthorizationRuleName);
+                var authRule = Client.GetServiceBusQueueAuthorizationRules(ResourceGroup, Namespace, Queue, Name);
                 WriteObject(authRule);
             }
             else
             {
                 // Get all eventHub AuthorizationRules
-                var authRuleList = Client.ListServiceBusQueueAuthorizationRules(ResourceGroup, NamespaceName, QueueName);
+                var authRuleList = Client.ListServiceBusQueueAuthorizationRules(ResourceGroup, Namespace, Queue);
                 WriteObject(authRuleList.ToList(), true);
             }
         }

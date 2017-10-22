@@ -21,11 +21,7 @@ Creates a new Backend Proxy Object which can be piped when creating a new Backen
 
 ## EXAMPLES
 
-### --------------------------  Example 1  --------------------------
-@{paragraph=PS C:\\\>}
-
-
-
+### Create a Backend Proxy In-Memory Object
 ```
 $proxy= New-AzureRmApiManagementBackendProxy -Url "https://abbc.def.g" -UserName "apim" -Password "password"
 ```
@@ -95,3 +91,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
+[Get-AzureRmApiManagementBackend](./Get-AzureRmApiManagementBackend)
+
+[New-AzureRmApiManagementBackend](./New-AzureRmApiManagementBackend.md)
+
+[New-AzureRmApiManagementBackendCredential](./New-AzureRmApiManagementBackendCredential.md)
+
+[Set-AzureRmApiManagementBackend](./Set-AzureRmApiManagementBackend.md)
+
+[Remove-AzureRmApiManagementBackend](./Remove-AzureRmApiManagementBackend.md)

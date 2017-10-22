@@ -62,7 +62,9 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-Indicates the resulting updated owner should be returned.```yaml
+Indicates the resulting updated owner should be returned.
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 

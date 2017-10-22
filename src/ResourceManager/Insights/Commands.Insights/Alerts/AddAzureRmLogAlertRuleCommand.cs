@@ -12,17 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Insights.Models;
+using Microsoft.Azure.Management.Monitor.Management.Models;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Insights.OutputClasses;
 
 namespace Microsoft.Azure.Commands.Insights.Alerts
 {
     /// <summary>
     /// Add an Alert rule
     /// </summary>
-    [Cmdlet(VerbsCommon.Add, "AzureRmLogAlertRule"), OutputType(typeof(List<PSObject>))]
+    [Cmdlet(VerbsCommon.Add, "AzureRmLogAlertRule"), OutputType(typeof(PSAddAlertRuleOperationResponse))]
     public class AddAzureRmLogAlertRuleCommand : AddAzureRmAlertRuleCommandBase
     {
         /// <summary>
@@ -89,17 +90,20 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
 
         protected override AlertRuleResource CreateSdkCallParameters()
         {
+            WriteWarning("*** This cmdlet will be removed in the 5.0 release (November 2017.)");
+            WriteWarning("*** Note: After October 1st using this cmdlet will no longer have any effect as this functionality is being transitioned to Activity Log Alerts. Please see https://aka.ms/migratemealerts for more information.");
+
             RuleCondition condition = this.CreateRuleCondition();
 
             WriteVerboseWithTimestamp(string.Format("CreateSdkCallParameters: Creating rule object"));
-            var rule = new AlertRuleResource(
-                location: this.Location,
-                isEnabled: !this.DisableRule,
-                alertRuleResourceName: this.Name)
+            var rule = new AlertRuleResource()
             {
                 Description = this.Description ?? Utilities.GetDefaultDescription("log alert rule"),
                 Condition = condition,
                 Actions = this.Actions,
+                Location = this.Location,
+                IsEnabled = !this.DisableRule,
+                AlertRuleResourceName = this.Name,
 
                 // DO NOT REMOVE OR CHANGE the following. The two elements in the Tags are required by other services.
                 Tags = new Dictionary<string, string>(),

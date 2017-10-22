@@ -41,14 +41,14 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Download
             this.storageAccountKey = storageAccountKey;
             var blobClient = new CloudBlobClient(new Uri(this.blobUri.BaseUri), new StorageCredentials(this.blobUri.StorageAccountName, this.storageAccountKey));
             this.container = blobClient.GetContainerReference(this.blobUri.BlobContainerName);
-            this.container.FetchAttributes();
+            this.container.FetchAttributesAsync().ConfigureAwait(false).GetAwaiter().GetResult();
             this.pageBlob = this.container.GetPageBlobReference(blobUri.BlobName);
             this.blobRequestOptions = new BlobRequestOptions
             {
                 ServerTimeout = TimeSpan.FromMinutes(5),
                 RetryPolicy = new LinearRetry(TimeSpan.FromMinutes(1), 3)
             };
-            this.pageBlob.FetchAttributes(new AccessCondition(), blobRequestOptions);
+            this.pageBlob.FetchAttributesAsync(new AccessCondition(), blobRequestOptions, operationContext: null).ConfigureAwait(false).GetAwaiter().GetResult();
         }
 
         public CloudPageBlob Blob { get { return this.pageBlob; } }
@@ -68,15 +68,18 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Download
 
         private IEnumerable<IndexRange> GetPageRanges()
         {
-            pageBlob.FetchAttributes(new AccessCondition(), blobRequestOptions);
-            IEnumerable<PageRange> pageRanges = pageBlob.GetPageRanges(null, null, new AccessCondition(), blobRequestOptions);
+            pageBlob.FetchAttributesAsync(new AccessCondition(), blobRequestOptions, operationContext: null)
+                    .ConfigureAwait(false).GetAwaiter().GetResult();
+            IEnumerable<PageRange> pageRanges = pageBlob.GetPageRangesAsync(null, null, new AccessCondition(), blobRequestOptions, operationContext: null)
+                    .ConfigureAwait(false).GetAwaiter().GetResult();
             pageRanges = pageRanges.OrderBy(range => range.StartOffset);
             return pageRanges.Select(pr => new IndexRange(pr.StartOffset, pr.EndOffset));
         }
 
         public Stream OpenStream()
         {
-            return this.container.GetPageBlobReference(blobUri.BlobName).OpenRead(new AccessCondition(), blobRequestOptions);
+            return this.container.GetPageBlobReference(blobUri.BlobName).OpenReadAsync(new AccessCondition(), blobRequestOptions, operationContext: null)
+                    .ConfigureAwait(false).GetAwaiter().GetResult();
         }
 
         public long Length

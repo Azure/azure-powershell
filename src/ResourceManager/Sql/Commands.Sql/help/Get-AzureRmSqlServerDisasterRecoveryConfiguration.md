@@ -122,4 +122,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Set-AzureRmSqlServerDisasterRecoveryConfiguration](./Set-AzureRmSqlServerDisasterRecoveryConfiguration.md)
 
+[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
 

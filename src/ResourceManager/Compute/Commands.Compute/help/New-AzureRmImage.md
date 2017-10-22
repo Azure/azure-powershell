@@ -12,8 +12,8 @@ Creats an image.
 ## SYNTAX
 
 ```
-New-AzureRmImage [-WhatIf] [-Confirm] [-ResourceGroupName] <String> [-ImageName] <String> [-Image] <Image>
- [<CommonParameters>]
+New-AzureRmImage [-ResourceGroupName] <String> [-ImageName] <String> [-Image] <PSImage>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,11 +45,26 @@ The final command creates an image named 'ImageName01' in resource group 'Resour
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Image
 Specifies a local image object.
 
 ```yaml
-Type: Image
+Type: PSImage
 Parameter Sets: (All)
 Aliases: 
 
@@ -127,9 +142,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Management.Compute.Models.Image
+Microsoft.Azure.Commands.Compute.Automation.Models.PSImage
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSImage
 
 ### System.Object
 

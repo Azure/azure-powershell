@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using System.Net;
-using Microsoft.Azure.Management.Insights;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Insights.Autoscale
@@ -49,16 +48,14 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// </summary>
         protected override void ProcessRecordInternal()
         {
-            WriteWarning("The output of this cmdlet will change. The cmdlet will not return anything in future releases.");
-            var result = this.InsightsManagementClient.AutoscaleSettings.DeleteWithHttpMessagesAsync(resourceGroupName: this.ResourceGroup, autoscaleSettingName: this.Name).Result;
+            var result = this.MonitorManagementClient.AutoscaleSettings.DeleteWithHttpMessagesAsync(resourceGroupName: this.ResourceGroup, autoscaleSettingName: this.Name).Result;
 
             // Keep this response for backwards compatibility.
             // Note: Delete operations return nothing in the new specification.
             var response = new AzureOperationResponse
             {
-                // There is no data about the request Id in the new SDK .Net.
                 RequestId = result.RequestId,
-                StatusCode = HttpStatusCode.OK
+                StatusCode = result.Response != null ? result.Response.StatusCode : HttpStatusCode.OK
             };
 
             WriteObject(response);

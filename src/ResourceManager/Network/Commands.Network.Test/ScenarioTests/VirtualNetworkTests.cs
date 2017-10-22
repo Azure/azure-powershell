@@ -35,6 +35,13 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualNetworkCRUDWithDDoSProtection()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkCRUDWithDDoSProtection");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualNetworkSubnetCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-subnetCRUD");
@@ -52,6 +59,20 @@ namespace Commands.Network.Test.ScenarioTests
         public void TestResourceNavigationLinksOnSubnetCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-ResourceNavigationLinksCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualNetworkUsage()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkUsage");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualNetworkSubnetServiceEndpoint()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkSubnetServiceEndpoint");
         }
     }
 }

@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.Compute
                     if (Credential != null)
                     {
                         publicSettings.Add(userKey, Credential.UserName);
-                        privateSettings.Add(passwordKey, SecureStringExtensions.ConvertToString(this.Credential.Password));
+                        privateSettings.Add(passwordKey, ConversionUtilities.SecureStringToString(this.Credential.Password));
                     }
 
                     if (string.IsNullOrEmpty(this.Location))

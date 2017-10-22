@@ -24,6 +24,7 @@ using System.Linq;
 using System.Management.Automation;
 using System.Diagnostics;
 using System.Security;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
 {

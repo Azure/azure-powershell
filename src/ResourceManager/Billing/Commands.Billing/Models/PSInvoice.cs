@@ -12,7 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Billing.Common;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using ApiInvoice = Microsoft.Azure.Management.Billing.Models.Invoice;
 
 namespace Microsoft.Azure.Commands.Billing.Models
@@ -33,6 +36,8 @@ namespace Microsoft.Azure.Commands.Billing.Models
 
         public DateTime? DownloadUrlExpiry { get; set; }
 
+        public List<string> BillingPeriodNames { get; set; }
+
         public PSInvoice()
         {
         }
@@ -49,10 +54,11 @@ namespace Microsoft.Azure.Commands.Billing.Models
                 if (invoice.DownloadUrl != null)
                 {
                     this.DownloadUrl = invoice.DownloadUrl.Url;
-                    if (invoice.DownloadUrl.ExpiryTime.HasValue)
-                    {
-                        this.DownloadUrlExpiry = invoice.DownloadUrl.ExpiryTime.Value.ToLocalTime();
-                    }
+                    this.DownloadUrlExpiry = invoice.DownloadUrl.ExpiryTime;
+                }
+                if (invoice.BillingPeriodIds != null)
+                {
+                    this.BillingPeriodNames = invoice.BillingPeriodIds.Select(x => Utilities.GetResourceNameFromId(x)).ToList();
                 }
             }
         }

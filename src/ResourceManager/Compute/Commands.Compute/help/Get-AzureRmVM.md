@@ -14,23 +14,24 @@ Gets the properties of a virtual machine.
 
 ### ListAllVirtualMachinesParamSet (Default)
 ```
-Get-AzureRmVM [-Status] [<CommonParameters>]
+Get-AzureRmVM [-Status] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ListVirtualMachineInResourceGroupParamSet
 ```
-Get-AzureRmVM [-ResourceGroupName] <String> [-Status] [<CommonParameters>]
+Get-AzureRmVM [-ResourceGroupName] <String> [-Status] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### GetVirtualMachineInResourceGroupParamSet
 ```
 Get-AzureRmVM [-ResourceGroupName] <String> [-Name] <String> [-Status] [-DisplayHint <DisplayHintType>]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ListNextLinkVirtualMachinesParamSet
 ```
-Get-AzureRmVM [-Status] [-NextLink] <Uri> [<CommonParameters>]
+Get-AzureRmVM [-Status] [-NextLink] <Uri> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,14 +44,14 @@ Specify the *Status* parameter to get only the instance view of a virtual machin
 
 ### Example 1: Get model and instance view properties
 ```
-PS C:\>Get-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07"
+PS C:\> Get-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07"
 ```
 
 This command gets the model view and instance view properties of the virtual machine named VirtualMachine07.
 
 ### Example 2: Get instance view properties
 ```
-PS C:\>Get-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07" -Status
+PS C:\> Get-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07" -Status
 ```
 
 This command gets properties of the virtual machine named VirtualMachine07.
@@ -59,19 +60,34 @@ Therefore, the command gets only the instance view properties.
 
 ### Example 3: Get properties for all virtual machines in a resource group
 ```
-PS C:\>Get-AzureRmVM -ResourceGroupName "ResourceGroup11"
+PS C:\> Get-AzureRmVM -ResourceGroupName "ResourceGroup11"
 ```
 
 This command gets properties for all the virtual machines in the resource group named ResourceGroup11.
 
 ### Example 4: Get all virtual machines in your subscription
 ```
-PS C:\>Get-AzureRmVM
+PS C:\> Get-AzureRmVM
 ```
 
 This command gets all the virtual machines in your subscription.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DisplayHint
 Determines how the virtual machine object is displayed.
@@ -160,6 +176,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
+
+### Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineInstanceView
 
 ## NOTES
 

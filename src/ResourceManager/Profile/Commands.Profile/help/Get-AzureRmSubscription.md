@@ -13,29 +13,34 @@ Get subscriptions that the current account can access.
 
 ### ListByIdInTenant (Default)
 ```
-Get-AzureRmSubscription [-SubscriptionId <String>] [-TenantId <String>] [<CommonParameters>]
+Get-AzureRmSubscription [-SubscriptionId <String>] [-TenantId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ListByNameInTenant
 ```
-Get-AzureRmSubscription [-SubscriptionName <String>] [-TenantId <String>] [<CommonParameters>]
+Get-AzureRmSubscription [-SubscriptionName <String>] [-TenantId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzureRmSubscription cmdlet gets the subscription ID, subscription name, and home tenant for subscriptions that the current account can access.
+The Get-AzureRmSubscription cmdlet gets the subscription ID, subscription
+name, and home tenant for subscriptions that the current account can
+access.
 
 ## EXAMPLES
 
 ### Example 1: Get all subscriptions in all tenants
 ```
-PS C:\>Get-AzureRmSubscription -All
+PS C:\>Get-AzureRmSubscription
 
 Subscription Name : Contoso Subscription 1
 SubscriptionId    : xxxx-xxxx-xxxx-xxxx
 TenantId          : yyyy-yyyy-yyyy-yyyy
 ```
 
-This command gets all subscriptions in all tenants that are authorized for the current account.
+This command gets all subscriptions in all tenants that are authorized for
+the current account.
 
 ### Example 2: Get all subscriptions for a specific tenant
 ```
@@ -50,7 +55,8 @@ SubscriptionId    : yyyy-yyyy-yyyy-yyyy
 TenantId          : xxxx-xxxx-xxxx-xxxx
 ```
 
-List all subscriptions in the given tenant that are authorized for the current account.
+List all subscriptions in the given tenant that are authorized for the
+current account.
 
 ### Example 3: Get all subscriptions in the current tenant
 ```
@@ -65,7 +71,8 @@ SubscriptionId    : yyyy-yyyy-yyyy-yyyy
 TenantId          : xxxx-xxxx-xxxx-xxxx
 ```
 
-This command gets all subscriptions in the current tenant that are authorized for the current user.
+This command gets all subscriptions in the current tenant that are
+authorized for the current user.
 
 ### Example 4: Change the current context to use a specific subscription
 ```
@@ -76,10 +83,26 @@ SubscriptionId    : xxxx-xxxx-xxxx-xxxx
 TenantId          : yyyy-yyyy-yyyy-yyyy
 ```
 
-This command gets the specified subscription, and then sets the current context to use it.
-All subsequent cmdlets in this session use the new subscription (Contoso Subscription 1) by default.
+This command gets the specified subscription, and then sets the current
+context to use it. All subsequent cmdlets in this session use the new
+subscription (Contoso Subscription 1) by default.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, tenant and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -SubscriptionId
 Specifies the ID of the subscription to get.

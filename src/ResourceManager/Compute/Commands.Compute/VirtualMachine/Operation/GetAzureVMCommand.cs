@@ -80,8 +80,6 @@ namespace Microsoft.Azure.Commands.Compute
         {
             base.ExecuteCmdlet();
 
-            WriteWarning("Breaking change notice: In upcoming release, top level properties, DataDiskNames and NetworkInterfaceIDs, will be removed from VM object because they are also in StorageProfile and NetworkProfile, respectively.");
-
             ExecuteClientAction(() =>
             {
                 if (string.IsNullOrEmpty(this.ResourceGroupName) && string.IsNullOrEmpty(this.Name))
@@ -204,6 +202,7 @@ namespace Microsoft.Azure.Commands.Compute
                         if (state == null)
                         {
                             psItem.PowerState = InfoNotAvailable;
+                            psItem.MaintenanceRedeployStatus = null;
                         }
                         else
                         {
@@ -216,6 +215,7 @@ namespace Microsoft.Azure.Commands.Compute
                             {
                                 psItem.PowerState = InfoNotAvailable;
                             }
+                            psItem.MaintenanceRedeployStatus = psstate.MaintenanceRedeployStatus;
                         }
                     }
                     psItem.DisplayHint = this.DisplayHint;

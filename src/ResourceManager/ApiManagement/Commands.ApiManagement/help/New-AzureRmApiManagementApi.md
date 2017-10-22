@@ -129,7 +129,7 @@ Accept wildcard characters: False
 ```
 
 ### -Path
-Specifies the web API path, which is the last part of the API's public URL.
+Specifies the web API path, which is the last part of the API's public URL and corresponds to the Web API URL suffix field in the admin portal.
 This URL is used by API consumers to send requests to the web service, and must be one to 400 characters long.
 The default value is $Null.
 

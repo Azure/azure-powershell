@@ -81,6 +81,11 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "If specified, 'soft delete' functionality is enabled for this key vault.")]
+        public SwitchParameter EnableSoftDelete { get; set; }
+
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the SKU of the key vault instance. For information about which features are available for each SKU, see the Azure Key Vault Pricing website (http://go.microsoft.com/fwlink/?linkid=512521).")]
         public SkuName Sku { get; set; }
 
@@ -124,7 +129,8 @@ namespace Microsoft.Azure.Commands.KeyVault
                         {
                             Keys = DefaultPermissionsToKeys,
                             Secrets = DefaultPermissionsToSecrets,
-                            Certificates = DefaultPermissionsToCertificates
+                            Certificates = DefaultPermissionsToCertificates,
+                            Storage = DefaultPermissionsToStorage
                         }
                     };
                 }
@@ -137,6 +143,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                     EnabledForDeployment = this.EnabledForDeployment.IsPresent,
                     EnabledForTemplateDeployment = EnabledForTemplateDeployment.IsPresent,
                     EnabledForDiskEncryption = EnabledForDiskEncryption.IsPresent,
+                    EnableSoftDelete = EnableSoftDelete.IsPresent,
                     SkuFamilyName = DefaultSkuFamily,
                     SkuName = this.Sku,
                     TenantId = GetTenantId(),

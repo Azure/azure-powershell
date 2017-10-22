@@ -12,31 +12,32 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Management.Monitor;
+using Microsoft.Azure.Management.Monitor.Management;
+using Microsoft.Azure.Test;
+using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using System;
 using System.Collections.Generic;
 using System.IO;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Insights;
-using Microsoft.Azure.Management.Insights;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.Azure.Test.HttpRecorder;
-using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
-using System;
 using System.Linq;
-using LegacyTest = Microsoft.Azure.Test;
-using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
-using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities;
+// using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
+// using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities;
+using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
 {
-    public sealed class TestsController //: RMTestBase
+    public sealed class TestsController : RMTestBase
     {
-        private LegacyTest.CSMTestEnvironmentFactory csmTestFactory;
+        private const string TenantIdKey = "TenantId";
+        private const string DomainKey = "Domain";
+        private CSMTestEnvironmentFactory csmTestFactory;
         private EnvironmentSetupHelper helper;
 
-        public IInsightsClient InsightsClient { get; private set; }
-        public IInsightsManagementClient InsightsManagementClient { get; private set; }
-
-        public string UserDomain { get; private set; }
+        public IMonitorClient MonitorClient { get; private set; }
+        public IMonitorManagementClient MonitorManagementClient { get; private set; }
 
         public static TestsController NewInstance
         {
@@ -84,7 +85,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
 
         public void RunPsTestWorkflow(
             Func<string[]> scriptBuilder,
-            Action<LegacyTest.CSMTestEnvironmentFactory> initialize,
+            Action<CSMTestEnvironmentFactory> initialize,
             Action cleanup,
             string callingClassType,
             string mockName)
@@ -94,12 +95,15 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
                 { "Microsoft.Insights", null }
             };
 
-            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(ignoreResourcesClient: true, providers: providers);
+            var providersToIgnore = new Dictionary<string, string>();
+            providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
+
+            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(ignoreResourcesClient: true, providers: providers, userAgents: providersToIgnore);
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
 
-            using (MockContext context = MockContext.Start(callingClassType, mockName))
+            using (RestTestFramework.MockContext context = RestTestFramework.MockContext.Start(callingClassType, mockName))
             {
-                this.csmTestFactory = new LegacyTest.CSMTestEnvironmentFactory();
+                this.csmTestFactory = new CSMTestEnvironmentFactory();
 
                 if (initialize != null)
                 {
@@ -141,24 +145,41 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
             }
         }
 
-        private void SetupManagementClients(MockContext context)
+        private void SetupManagementClients(RestTestFramework.MockContext context)
         {
-            this.InsightsClient = this.GetInsightsClient(context);
-            this.InsightsManagementClient = this.GetInsightsManagementClient(context);
+            if (HttpMockServer.Mode == HttpRecorderMode.Record)
+            {
+                // This allows the use of a particular subscription if the user is associated to several
+                // "TEST_CSM_ORGID_AUTHENTICATION=SubscriptionId=<subscription-id>"
+                string subId = Environment.GetEnvironmentVariable("TEST_CSM_ORGID_AUTHENTICATION");
+                RestTestFramework.TestEnvironment environment = new RestTestFramework.TestEnvironment(connectionString: subId);
+                this.MonitorClient = this.GetMonitorClient(context: context, env: environment);
+                this.MonitorManagementClient = this.GetInsightsManagementClient(context: context, env: environment);
+            }
+            else if (HttpMockServer.Mode == HttpRecorderMode.Playback)
+            {
+                this.MonitorClient = this.GetMonitorClient(context: context, env: null);
+                this.MonitorManagementClient = this.GetInsightsManagementClient(context: context, env: null);
+            }
 
-            helper.SetupManagementClients(this.InsightsClient, this.InsightsManagementClient);
+            helper.SetupManagementClients(
+                this.MonitorClient, 
+                this.MonitorManagementClient);
         }
 
-        private IInsightsClient GetInsightsClient(MockContext context)
+        private IMonitorClient GetMonitorClient(RestTestFramework.MockContext context, RestTestFramework.TestEnvironment env)
         {
-            // return TestBase.GetServiceClient<InsightsClient>(RestTestFramework.  this.csmTestFactory);
-            return context.GetServiceClient<InsightsClient>(TestEnvironmentFactory.GetTestEnvironment());
+            // currentEnvironment: RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
+            return env != null 
+                ? context.GetServiceClient<MonitorClient>(currentEnvironment: env) 
+                : context.GetServiceClient<MonitorClient>();
         }
 
-        private IInsightsManagementClient GetInsightsManagementClient(MockContext context)
+        private IMonitorManagementClient GetInsightsManagementClient(RestTestFramework.MockContext context, RestTestFramework.TestEnvironment env)
         {
-            //return TestBase.GetServiceClient<InsightsManagementClient>(this.csmTestFactory);
-            return context.GetServiceClient<InsightsManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            return env != null 
+                ? context.GetServiceClient<MonitorManagementClient>(currentEnvironment: env) 
+                : context.GetServiceClient<MonitorManagementClient>();
         }
     }
 }

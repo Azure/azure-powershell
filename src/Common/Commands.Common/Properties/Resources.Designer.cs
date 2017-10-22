@@ -232,6 +232,20 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Azure PowerShell collects usage data in order to improve your experience.
+        ///The data is anonymous and does not include commandline argument values.
+        ///The data is collected by Microsoft.
+        ///
+        ///Use the Disable-AzureRmDataCollection cmdlet to turn the feature Off. The cmdlet can be found in the AzureRM.Profile module.  To disable data collection: PS &gt; Disable-AzureRmDataCollection.
+        ///Use the Enable-AzureRmDataCollection cmdlet to turn the feature On. The cmdlet can be found in the AzureRM.Profile module.  To enable  [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string ARMDataCollectionMessage {
+            get {
+                return ResourceManager.GetString("ARMDataCollectionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to [Common.Authentication]: Authenticating for account {0} with single tenant {1}..
         /// </summary>
         public static string AuthenticatingForSingleTenant {
@@ -529,6 +543,15 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No certificate was found in the certificate store with thumbprint {0}.
+        /// </summary>
+        public static string CertificateNotFoundInStore {
+            get {
+                return ResourceManager.GetString("CertificateNotFoundInStore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Your account does not have access to the private key for certificate {0}.
         /// </summary>
         public static string CertificatePrivateKeyAccessError {
@@ -741,18 +764,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         public static string DataCollectionConfirmYes {
             get {
                 return ResourceManager.GetString("DataCollectionConfirmYes", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Microsoft Azure PowerShell collects data about how users use PowerShell cmdlets and some problems they encounter.  Microsoft uses this information to improve our PowerShell cmdlets.  Participation is voluntary and when you choose to participate your device automatically sends information to Microsoft about how you use Azure PowerShell. 
-        /// 
-        ///If you choose to participate, you can stop at any time by using Azure PowerShell as follows:
-        ///1.	Use the Disable-AzureDataCollection cmdlet to turn the feature Off. The  [rest of string was truncated]&quot;;.
-        /// </summary>
-        public static string DataCollectionPrompt {
-            get {
-                return ResourceManager.GetString("DataCollectionPrompt", resourceCulture);
             }
         }
         
@@ -1189,6 +1200,15 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Illegal characters in path..
+        /// </summary>
+        public static string IllegalPath {
+            get {
+                return ResourceManager.GetString("IllegalPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Internal Server Error.
         /// </summary>
         public static string InternalServerErrorMessage {
@@ -1203,6 +1223,15 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         public static string InvalidCacheRoleName {
             get {
                 return ResourceManager.GetString("InvalidCacheRoleName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid certificate format. Publish settings may be corrupted. Use Get-AzurePublishSettingsFile to download updated settings.
+        /// </summary>
+        public static string InvalidCertificate {
+            get {
+                return ResourceManager.GetString("InvalidCertificate", resourceCulture);
             }
         }
         
@@ -1261,11 +1290,29 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &quot;{0}&quot; is an invalid DNS name for {1}.
+        /// </summary>
+        public static string InvalidDnsName {
+            get {
+                return ResourceManager.GetString("InvalidDnsName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid service endpoint..
         /// </summary>
         public static string InvalidEndpoint {
             get {
                 return ResourceManager.GetString("InvalidEndpoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The provided file in {0} must be have {1} extension.
+        /// </summary>
+        public static string InvalidFileExtension {
+            get {
+                return ResourceManager.GetString("InvalidFileExtension", resourceCulture);
             }
         }
         
@@ -1370,6 +1417,15 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         public static string InvalidNullArgument {
             get {
                 return ResourceManager.GetString("InvalidNullArgument", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} is invalid or empty.
+        /// </summary>
+        public static string InvalidOrEmptyArgumentMessage {
+            get {
+                return ResourceManager.GetString("InvalidOrEmptyArgumentMessage", resourceCulture);
             }
         }
         
@@ -1983,6 +2039,15 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please connect to internet before executing this cmdlet.
+        /// </summary>
+        public static string NoInternetConnection {
+            get {
+                return ResourceManager.GetString("NoInternetConnection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;NONE&gt;.
         /// </summary>
         public static string None {
@@ -2146,6 +2211,24 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         public static string PackageJsonFileName {
             get {
                 return ResourceManager.GetString("PackageJsonFileName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Path {0} doesn&apos;t exist..
+        /// </summary>
+        public static string PathDoesNotExist {
+            get {
+                return ResourceManager.GetString("PathDoesNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Path for {0} doesn&apos;t exist in {1}..
+        /// </summary>
+        public static string PathDoesNotExistForElement {
+            get {
+                return ResourceManager.GetString("PathDoesNotExistForElement", resourceCulture);
             }
         }
         
@@ -2408,6 +2491,15 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &amp;whr={0}.
+        /// </summary>
+        public static string PublishSettingsFileRealmFormat {
+            get {
+                return ResourceManager.GetString("PublishSettingsFileRealmFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Publish settings imported.
         /// </summary>
         public static string PublishSettingsSetSuccessfully {
@@ -2600,6 +2692,20 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         public static string PublishVMDscExtensionUploadArchiveConfigFileNotExist {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionUploadArchiveConfigFileNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Azure PowerShell collects usage data in order to improve your experience.
+        ///The data is anonymous and does not include commandline argument values.
+        ///The data is collected by Microsoft.
+        ///
+        ///Use the Disable-AzureDataCollection cmdlet to turn the feature Off. The cmdlet can be found in the Azure module.  To disable data collection: PS &gt; Disable-AzureDataCollection.
+        ///Use the Enable-AzureDataCollection cmdlet to turn the feature On. The cmdlet can be found in the Azure module.  To enable data collection: PS &gt; Enab [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string RDFEDataCollectionMessage {
+            get {
+                return ResourceManager.GetString("RDFEDataCollectionMessage", resourceCulture);
             }
         }
         
@@ -3423,6 +3529,15 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The provided service name {0} already exists, please pick another name.
+        /// </summary>
+        public static string ServiceNameExists {
+            get {
+                return ResourceManager.GetString("ServiceNameExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please provide name for the hosted service.
         /// </summary>
         public static string ServiceNameMissingMessage {
@@ -3883,6 +3998,15 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unable to update mismatching Json structured: {0} {1}..
+        /// </summary>
+        public static string UnableToPatchJson {
+            get {
+                return ResourceManager.GetString("UnableToPatchJson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The provider {0} is unknown..
         /// </summary>
         public static string UnknownProviderMessage {
@@ -4086,6 +4210,15 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         public static string WorkerRoleTemplateFileName {
             get {
                 return ResourceManager.GetString("WorkerRoleTemplateFileName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (x86).
+        /// </summary>
+        public static string x86InProgramFiles {
+            get {
+                return ResourceManager.GetString("x86InProgramFiles", resourceCulture);
             }
         }
         

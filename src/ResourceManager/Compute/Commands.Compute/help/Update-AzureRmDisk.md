@@ -11,16 +11,16 @@ Updates a disk.
 
 ## SYNTAX
 
-### InvokeByDynamicParameters (Default)
+### DefaultParameter (Default)
 ```
-Update-AzureRmDisk [-WhatIf] [-Confirm] [-ResourceGroupName] <String> [-DiskName] <String>
- [-DiskUpdate] <DiskUpdate> [<CommonParameters>]
+Update-AzureRmDisk [-ResourceGroupName] <String> [-DiskName] <String> [-DiskUpdate] <PSDiskUpdate>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### InvokeByDynamicParametersForFriendMethod
+### FriendMethod
 ```
-Update-AzureRmDisk [-WhatIf] [-Confirm] [-ResourceGroupName] <String> [-DiskName] <String> [-Disk] <Disk>
- [<CommonParameters>]
+Update-AzureRmDisk [-ResourceGroupName] <String> [-DiskName] <String> [-Disk] <PSDisk>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -62,12 +62,27 @@ These commands also update an existing disk with name 'Disk01' in resource group
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Disk
 Specifies a local disk object.
 
 ```yaml
-Type: Disk
-Parameter Sets: InvokeByDynamicParametersForFriendMethod
+Type: PSDisk
+Parameter Sets: FriendMethod
 Aliases: 
 
 Required: True
@@ -96,8 +111,8 @@ Accept wildcard characters: False
 Specifies a local disk update object.
 
 ```yaml
-Type: DiskUpdate
-Parameter Sets: InvokeByDynamicParameters
+Type: PSDiskUpdate
+Parameter Sets: DefaultParameter
 Aliases: 
 
 Required: True
@@ -159,12 +174,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Management.Compute.Models.DiskUpdate
-Microsoft.Azure.Management.Compute.Models.Disk
+Microsoft.Azure.Commands.Compute.Automation.Models.PSDiskUpdate
+Microsoft.Azure.Commands.Compute.Automation.Models.PSDisk
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSDisk
 
 ## NOTES
 

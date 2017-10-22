@@ -243,6 +243,24 @@
   <data name="ResourceProviderNotFound" xml:space="preserve">
     <value>Could not find the resource provider '{0}'.</value>
   </data>
+  <data name="ScopeShouldBeginWithSubscriptionsAndResourceGroups" xml:space="preserve">
+    <value>Scope '{0}' should begin with '/subscriptions/&lt;subid&gt;/resourceGroups'.</value>
+  </data>
+  <data name="ScopeShouldBeginWithSubscriptionsOrProviders" xml:space="preserve">
+    <value>Scope '{0}' should begin with '/subscriptions' or '/providers'.</value>
+  </data>  
+  <data name="ScopeShouldBeginWithSubscriptionsAndResourceGroupsAndProviders" xml:space="preserve">
+    <value>Scope '{0}' should begin with '/subscriptions/&lt;subid&gt;/resourceGroups/&lt;groupname&gt;/providers'.</value>
+  </data>
+  <data name="ScopeShouldHaveAtLeastOnePairOfResourceTypeAndName" xml:space="preserve">
+    <value>Scope '{0}' should have at least one pair of resource type and resource name. e.g. '/subscriptions/&lt;subid&gt;/resourceGroups/&lt;groupname&gt;/providers/&lt;providername&gt;/&lt;resourcetype&gt;/&lt;resourcename&gt;'.</value>
+  </data>
+  <data name="ScopeShouldHaveEvenNumberOfParts" xml:space="preserve">
+    <value>Scope '{0}' should have even number of parts.</value>
+  </data>
+  <data name="ScopeShouldHaveNoEmptyPart" xml:space="preserve">
+    <value>Scope '{0}' should not have any empty part.</value>
+  </data>
   <data name="UnregisteringProvider" xml:space="preserve">
     <value>Are you sure you want to unregister the provider '{0}'</value>
   </data>

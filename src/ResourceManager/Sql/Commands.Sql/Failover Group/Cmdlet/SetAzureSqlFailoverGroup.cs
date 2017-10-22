@@ -31,6 +31,16 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
     public class SetAzureSqlFailoverGroup : AzureSqlFailoverGroupCmdletBase
     {
         /// <summary>
+        /// Gets or sets the name of the server to use.
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            Position = 1,
+            HelpMessage = "The name of the primary Azure SQL Database Server of the Failover Group.")]
+        [ValidateNotNullOrEmpty]
+        public string ServerName { get; set; }
+
+        /// <summary>
         /// Gets or sets the name of the Azure SQL Database Failover Group
         /// </summary>
         [Parameter(Mandatory = true,
@@ -44,34 +54,28 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         /// Gets or sets the failover policy without data loss for the Sql Azure Failover Group.
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The failover policy without data loss for the failover group.")]
+            HelpMessage = "The failover policy of the Azure SQL Database Failover Group.")]
         [ValidateNotNullOrEmpty]
+        [PSDefaultValue(Help = "Automatic")]
         public FailoverPolicy FailoverPolicy { get; set; }
 
         /// <summary>
         /// Gets or sets the grace period with data loss for the Sql Azure Failover Group.
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The grace period for failover with data loss of the failover group. This property defines how big of the window we tolerate for data loss during failover operation")]
+            HelpMessage = "Interval before automatic failover is initiated if an outage occurs on the primary server and failover cannot be completed without data loss.")]
         [ValidateNotNullOrEmpty]
-        [Obsolete("This parameter will be deprecated in the next release.")]
-        public int GracePeriodWithDataLossHour { get; set; }
+        [ValidateRange(0, int.MaxValue)]
+        [PSDefaultValue(Help = "1")]
+        public int GracePeriodWithDataLossHours { get; set; }
 
         /// <summary>
         /// Gets or sets the failover policy for read only endpoint of the Sql Azure Failover Group.
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The failover policy for read only endpoint of the failover group.")]
+            HelpMessage = "Whether outages on the secondary server should trigger automatic failover of the read-only endpoint. This feature is not yet supported.")]
         [ValidateNotNullOrEmpty]
         public AllowReadOnlyFailoverToPrimary AllowReadOnlyFailoverToPrimary { get; set; }
-
-        /// <summary>
-        /// Gets or sets the tags associated with the Azure SQL Database Failover Group
-        /// </summary>
-        [Parameter(Mandatory = false,
-            HelpMessage = "The tag to associate with the Azure SQL Database Failover Group")]
-        [Obsolete("This parameter will be deprecated in the next release.")]
-        public Hashtable Tag { get; set; }
 
         /// <summary>
         /// Get the entities from the service
@@ -91,18 +95,23 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         /// <returns>The model that was passed in</returns>
         protected override IEnumerable<AzureSqlFailoverGroupModel> ApplyUserInputToModel(IEnumerable<AzureSqlFailoverGroupModel> model)
         {
-#pragma warning disable 0618
             string location = ModelAdapter.GetServerLocation(ResourceGroupName, ServerName);
             List<AzureSqlFailoverGroupModel> newEntity = new List<AzureSqlFailoverGroupModel>();
             AzureSqlFailoverGroupModel newModel = model.First();
 
-            newModel.ReadWriteFailoverPolicy = MyInvocation.BoundParameters.ContainsKey("FailoverPolicy") ? FailoverPolicy.ToString() : newModel.ReadWriteFailoverPolicy;
-            newModel.FailoverWithDataLossGracePeriodHours = MyInvocation.BoundParameters.ContainsKey("GracePeriodWithDataLossHour") ? GracePeriodWithDataLossHour : newModel.FailoverWithDataLossGracePeriodHours;
+            FailoverPolicy effectivePolicy = FailoverPolicy;
+            if (!MyInvocation.BoundParameters.ContainsKey("FailoverPolicy"))
+            {
+                // If none was provided, use the existing policy.
+                Enum.TryParse(newModel.ReadWriteFailoverPolicy, out effectivePolicy);
+            }
+
+            newModel.ReadWriteFailoverPolicy = effectivePolicy.ToString();
+            newModel.FailoverWithDataLossGracePeriodHours = ComputeEffectiveGracePeriod(effectivePolicy, originalGracePeriod: newModel.FailoverWithDataLossGracePeriodHours);
             newModel.ReadOnlyFailoverPolicy = MyInvocation.BoundParameters.ContainsKey("AllowReadOnlyFailoverToPrimary") ? AllowReadOnlyFailoverToPrimary.ToString() : newModel.ReadOnlyFailoverPolicy;
             newEntity.Add(newModel);
 
             return newEntity;
-#pragma warning restore 0618
         }
 
         /// <summary>

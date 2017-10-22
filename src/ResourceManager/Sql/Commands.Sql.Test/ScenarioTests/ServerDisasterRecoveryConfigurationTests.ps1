@@ -33,8 +33,8 @@ function Test-ServerDisasterRecoveryConfigurationInternal ($location1 = "North E
     
     try
     {
-        $server1 = Create-ServerForTest $rg1 "12.0" $location1
-        $server2 = Create-ServerForTest $rg2 "12.0" $location2
+        $server1 = Create-ServerForTest $rg1 $location1
+        $server2 = Create-ServerForTest $rg2 $location2
         $failoverPolicy = "Off"
         $sdrcName = "test-sdrc-alias"
 

@@ -23,20 +23,6 @@ namespace Microsoft.Azure.Commands.Sql.Services
     public class Util
     {
         /// <summary>
-        /// Generates a client side tracing Id of the format:
-        /// [Guid]
-        /// </summary>
-        /// <returns>A string representation of the client side tracing Id.</returns>
-        public static string GenerateTracingId()
-        {
-            return string.Format(
-                CultureInfo.InvariantCulture,
-                "{0}",
-                Guid.NewGuid().ToString()
-            );
-        }
-
-        /// <summary>
         /// In cases where the user decided to use one of the shortcuts (ALL or NONE), this method sets the value of the EventType property to reflect the correct values.
         /// In addition the is a deprecated audit events validity check.
         /// </summary>

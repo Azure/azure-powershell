@@ -43,7 +43,8 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             if (String.IsNullOrEmpty(destination.Uri.Query))
             {
                 var destinationBlob = Create(destination);
-                return destinationBlob.Container.CreateIfNotExists(this.CreateRequestOptions());
+                return destinationBlob.Container.CreateIfNotExistsAsync(this.CreateRequestOptions(), operationContext: null)
+                                      .ConfigureAwait(false).GetAwaiter().GetResult();
             }
             return true;
         }

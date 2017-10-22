@@ -173,6 +173,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Object
+
+Parameter 'Value' accepts value of type 'Object' from the pipeline
+
 ## OUTPUTS
 
 ### string

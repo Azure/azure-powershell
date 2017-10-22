@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.DataMasking.Model;
@@ -30,7 +31,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
         /// <returns>A model object</returns>
         protected override DatabaseDataMaskingPolicyModel GetEntity()
         {
-            return ModelAdapter.GetDatabaseDataMaskingPolicy(ResourceGroupName, ServerName, DatabaseName, clientRequestId);
+            return ModelAdapter.GetDatabaseDataMaskingPolicy(ResourceGroupName, ServerName, DatabaseName);
         }
 
         /// <summary>
@@ -38,9 +39,9 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
         /// </summary>
         /// <param name="subscription">The AzureSubscription in which the current execution is performed</param>
         /// <returns>An initialized and ready to use ModelAdapter object</returns>
-        protected override SqlDataMaskingAdapter InitModelAdapter(AzureSubscription subscription)
+        protected override SqlDataMaskingAdapter InitModelAdapter(IAzureSubscription subscription)
         {
-            return new SqlDataMaskingAdapter(DefaultProfile.Context);
+            return new SqlDataMaskingAdapter(DefaultProfile.DefaultContext);
         }
 
         /// <summary>
@@ -50,7 +51,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
         /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
         protected override DatabaseDataMaskingPolicyModel PersistChanges(DatabaseDataMaskingPolicyModel model)
         {
-            ModelAdapter.SetDatabaseDataMaskingPolicy(model, clientRequestId);
+            ModelAdapter.SetDatabaseDataMaskingPolicy(model);
             return null;
         }
     }

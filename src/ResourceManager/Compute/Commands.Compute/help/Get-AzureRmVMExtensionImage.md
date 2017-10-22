@@ -14,7 +14,8 @@ Gets all versions for an Azure extension.
 
 ```
 Get-AzureRmVMExtensionImage -Location <String> -PublisherName <String> -Type <String>
- [-FilterExpression <String>] [-Version <String>] [<CommonParameters>]
+ [-FilterExpression <String>] [-Version <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,12 +25,27 @@ The **Get-AzureRmVMExtensionImage** cmdlet gets all versions for an Azure extens
 
 ### Example 1: Get the versions of an extension image
 ```
-PS C:\>Get-AzureRmVMExtensionImage -Location "Central US" -PublisherName "Fabrikam" -Type "FabrikamEndpointProtection"
+PS C:\> Get-AzureRmVMExtensionImage -Location "Central US" -PublisherName "Fabrikam" -Type "FabrikamEndpointProtection"
 ```
 
 This command gets all the versions of the extension image for the specified location, publisher, and type.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -FilterExpression
 Specifies a filter expression.
@@ -114,6 +130,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineExtensionImage
+
+### Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineExtensionImageDetails
 
 ## NOTES
 

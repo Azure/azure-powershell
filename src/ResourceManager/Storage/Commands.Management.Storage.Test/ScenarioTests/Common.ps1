@@ -139,3 +139,21 @@ function Get-StorageManagementTestResourceName
 
     return $assetName
 }
+
+<#
+.SYNOPSIS
+Gets the default location for a provider
+#>
+function Get-ProviderLocation($provider)
+{
+    "westus"
+}
+
+<#
+.SYNOPSIS
+Gets the Canary location for a provider
+#>
+function Get-ProviderLocation_Canary($provider)
+{
+    "eastus2euap"
+}

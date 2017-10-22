@@ -25,6 +25,8 @@ using Microsoft.WindowsAzure.Commands.Utilities.Websites.Services.WebEntities;
 using Microsoft.WindowsAzure.Commands.Websites;
 using Moq;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Websites
 {
@@ -68,9 +70,9 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 Name = "website1",
             };
             currentProfile = new AzureSMProfile();
-            var subscription = new AzureSubscription{Id = new Guid(base.subscriptionId) };
-            subscription.Properties[AzureSubscription.Property.Default] = "True";
-            currentProfile.Subscriptions[new Guid(base.subscriptionId)] = subscription;
+            var subscription = new AzureSubscription{Id = base.subscriptionId };
+            subscription.SetDefault();
+            currentProfile.SubscriptionTable[new Guid(base.subscriptionId)] = subscription;
 
             // Switch existing website
             cmdlet.ExecuteCmdlet();

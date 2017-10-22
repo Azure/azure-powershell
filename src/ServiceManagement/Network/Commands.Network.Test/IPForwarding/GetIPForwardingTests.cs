@@ -26,6 +26,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.IPForwarding
 {
@@ -47,6 +49,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.IPForwa
 
         public GetIPForwardingTests()
         {
+            AzureSessionInitializer.InitializeAzureSession();
+            ServiceManagementProfileProvider.InitializeServiceManagementProfile();
             this.networkingClientMock = new Mock<INetworkManagementClient>();
             this.computeClientMock = new Mock<IComputeManagementClient>();
             this.managementClientMock = new Mock<IManagementClient>();

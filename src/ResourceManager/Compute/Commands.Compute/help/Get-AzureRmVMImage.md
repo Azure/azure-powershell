@@ -15,13 +15,13 @@ Gets all the versions of a VMImage.
 ### ListVMImage
 ```
 Get-AzureRmVMImage -Location <String> -PublisherName <String> -Offer <String> -Skus <String>
- [-FilterExpression <String>] [<CommonParameters>]
+ [-FilterExpression <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetVMImageDetail
 ```
 Get-AzureRmVMImage -Location <String> -PublisherName <String> -Offer <String> -Skus <String> -Version <String>
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,12 +31,27 @@ The **Get-AzureRmVMImage** cmdlet gets all the versions of a VMImage.
 
 ### Example 1: Get VMImage objects
 ```
-PS C:\>Get-AzureRmVMImage -Location "Central US" -PublisherName "Canonical" -Offer "UbuntuServer" -Skus "15.04-DAILY"
+PS C:\> Get-AzureRmVMImage -Location "Central US" -PublisherName "Canonical" -Offer "UbuntuServer" -Skus "15.04-DAILY"
 ```
 
 This command gets all the versions of VMImage that match the specified values.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -FilterExpression
 Specifies a filter expression.
@@ -137,6 +152,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineImage
+
+### Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineImageDetail
 
 ## NOTES
 

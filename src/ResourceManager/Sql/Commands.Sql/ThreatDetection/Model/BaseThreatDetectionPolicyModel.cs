@@ -31,7 +31,6 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Model
         Sql_Injection,
         Sql_Injection_Vulnerability,
         Access_Anomaly,
-        Usage_Anomaly,
         None
     };
 

@@ -221,19 +221,19 @@ function Test-ListWebServices
             # Create a few web services in the same resource group
             $svcDefinition = LoadWebServiceDefinitionForTest $TEST_WEBSERVICE_DEFINITION_FILE `
                                     $commitmentPlanId $storageAccount
-            LogOutput "Creating web service: $webServiceName"
+            LogOutput "Creating web service 1: $webServiceName"
             $svc1 = New-AzureRmMlWebService -ResourceGroupName $rgName -Location $location `
                                     -Name $webServiceName -NewWebServiceDefinition $svcDefinition `
                                     -Force
             Assert-NotNull $svc1
-            LogOutput "Created web service: $($svc1.Id)"                     
+            LogOutput "Created web service 1: $($svc1.Id)"                     
             ValidateWebServiceResult $rgName $webServiceName $location $svc1
-            LogOutput "Creating web service: $sameGroupWebServiceName"
+            LogOutput "Creating web service 2: $sameGroupWebServiceName"
             $svc2 = New-AzureRmMlWebService -ResourceGroupName $rgName -Location $location `
                             -Name $sameGroupWebServiceName -NewWebServiceDefinition $svcDefinition `
                             -Force
             Assert-NotNull $svc2
-            LogOutput "Created web service: $($svc2.Id)"                     
+            LogOutput "Created web service 2: $($svc2.Id)"                     
             ValidateWebServiceResult $rgName $sameGroupWebServiceName $location $svc2
 
             # Create a web service in a different resource group
@@ -293,6 +293,62 @@ function Test-ListWebServices
 
 <#
 .SYNOPSIS
+Tests creating a regional properties and get it
+#>
+function Test-CreateAndGetRegionalProperties
+{
+    $actualTest = {
+        param([string] $rgName, [string] $location, [string] $webServiceName, `
+                [string] $commitmentPlanId, [object] $storageAccount)
+
+        $definitionFile = "";
+        try 
+        {
+            # Create a valid service definition file
+            $svcDefinition = LoadWebServiceDefinitionForTest $TEST_WEBSERVICE_DEFINITION_FILE `
+                                                             $commitmentPlanId $storageAccount
+            $definitionFile = "$webServiceName.json"
+            LogOutput "Exporting web service definition to file: $definitionFile"
+            Export-AzureRmMlWebService -WebService $svcDefinition -OutputFile $definitionFile
+            LogOutput "Checking that exported service definition exists at $definitionFile"
+            Assert-True { Test-Path $definitionFile }
+
+            # Create a new web service from the local file definition
+            LogOutput "Creating web service: $webServiceName"
+            $svc = New-AzureRmMlWebService -ResourceGroupName $rgName -Location $location `
+                                        -Name $webServiceName -DefinitionFile $definitionFile `
+                                        -Force
+            LogOutput "Created web service: $webServiceName"
+            ValidateWebServiceResult $rgName $webServiceName $location $svc
+
+            $newRegion = "westcentralus"
+
+            # Validate that service no longer exists 
+            Assert-ThrowsContains { Get-AzureRmMlWebService -ResourceGroupName $rgName `
+                                        -Name $webServiceName -region $newRegion} "PerRegionPayloadNotFound"
+
+            LogOutput "Creating web service regional properties for $webServiceName in $newRegion"
+            $newSvc = Add-AzureRmMlWebServiceRegionalProperty -ResourceGroupName $rgName -Name $webServiceName -region $newRegion -Force
+            ValidateWebServiceResult $rgName $webServiceName $location $svc
+            
+            Assert-AreEqual $newSvc.Properties.Package.Nodes["node1"].parameters["Account Key"].certificateThumbprint "ENCRYPTED_CERTIFICATETHUMBPRINT_2"
+        }
+        finally
+        {
+            if (Test-Path $definitionFile)
+            {
+                Remove-Item $definitionFile
+            }
+            
+            Clean-WebService $rgName $webServiceName            
+        }
+    };
+
+    RunWebServicesTest $actualTest
+}
+
+<#
+.SYNOPSIS
 Base function for running web services tests
 #>
 function RunWebServicesTest([ScriptBlock] $testScript)
@@ -312,13 +368,14 @@ function RunWebServicesTest([ScriptBlock] $testScript)
         LogOutput "Creating resource group: $rgName"    
         $group = New-AzureRmResourceGroup -Name $rgName -Location $location        
         LogOutput("Created resource group: $($group.ResourceId)")
+        LogOutput("Created resource group: $($group.ResourceGroupName)")
 
         LogOutput "Creating storage account: $storageAccountName"    
         $storageAccount = Create-TestStorageAccount $rgName $location $storageAccountName        
         LogOutput("Created storage account: $storageAccountName")
 
         LogOutput "Creating commitment plan resource: $commitmentPlanName"
-        $cpSku = @{Name = 'PLAN_SKU_NAME'; Tier='PLAN_SKU_TIER'; Capacity=1}
+        $cpSku = @{Name = 'S1'; Tier='Standard'; Capacity=1}
         $cpPlan = New-AzureRmResource -Location $location -ResourceType `
                         "Microsoft.MachineLearning/CommitmentPlans" -ResourceName $commitmentPlanName `
                         -ResourceGroupName $rgName -SkuObject $cpSku -Properties @{} `

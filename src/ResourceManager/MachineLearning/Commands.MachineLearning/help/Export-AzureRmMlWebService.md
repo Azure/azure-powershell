@@ -145,6 +145,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### WebService
+
+Parameter 'WebService' accepts value of type 'WebService' from the pipeline
+
 ## OUTPUTS
 
 ### None

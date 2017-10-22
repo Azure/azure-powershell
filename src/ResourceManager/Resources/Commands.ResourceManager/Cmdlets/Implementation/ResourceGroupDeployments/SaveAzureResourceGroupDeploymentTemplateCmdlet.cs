@@ -14,6 +14,7 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
+    using Commands.Common.Authentication.Abstractions;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -109,7 +110,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         protected string GetResourceId()
         {
             return ResourceIdUtility.GetResourceId(
-                subscriptionId: DefaultContext.Subscription.Id,
+                subscriptionId: DefaultContext.Subscription.GetId(),
                 resourceGroupName: this.ResourceGroupName,
                 resourceType: Constants.MicrosoftResourcesDeploymentType,
                 resourceName: this.DeploymentName);

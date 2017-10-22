@@ -335,6 +335,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Int32
+
+Parameter 'NumberOfWorkers' accepts value of type 'Int32' from the pipeline
+
+### Site
+
+Parameter 'WebApp' accepts value of type 'Site' from the pipeline
+
 ## OUTPUTS
 
 ## NOTES

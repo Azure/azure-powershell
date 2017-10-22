@@ -62,15 +62,14 @@ This command does not modify any other setting.
 ## PARAMETERS
 
 ### -AuditActionGroup
-You can specify several event types.
-You can specify All to audit all of the event types or None to specify that no events will be audited.
-If you specify All or None at the same time, the command fails.
+Specify one or more audit action groups. 
+This parameter is only applicable to Blob auditing.
 
 ```yaml
 Type: AuditActionGroups[]
 Parameter Sets: (All)
 Aliases: 
-Accepted values: BATCH_STARTED_GROUP, BATCH_COMPLETED_GROUP, APPLICATION_ROLE_CHANGE_PASSWORD_GROUP, AUDIT_CHANGE_GROUP, BACKUP_RESTORE_GROUP, DATABASE_LOGOUT_GROUP, DATABASE_OBJECT_CHANGE_GROUP, DATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP, DATABASE_OBJECT_PERMISSION_CHANGE_GROUP, DATABASE_OPERATION_GROUP, DATABASE_PERMISSION_CHANGE_GROUP, DATABASE_PRINCIPAL_CHANGE_GROUP, DATABASE_PRINCIPAL_IMPERSONATION_GROUP, DATABASE_ROLE_MEMBER_CHANGE_GROUP, FAILED_DATABASE_AUTHENTICATION_GROUP, SCHEMA_OBJECT_ACCESS_GROUP, SCHEMA_OBJECT_CHANGE_GROUP, SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP, SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP, SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP, USER_CHANGE_PASSWORD_GROUP
+Accepted values: BATCH_STARTED_GROUP, BATCH_COMPLETED_GROUP, APPLICATION_ROLE_CHANGE_PASSWORD_GROUP, BACKUP_RESTORE_GROUP, DATABASE_LOGOUT_GROUP, DATABASE_OBJECT_CHANGE_GROUP, DATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP, DATABASE_OBJECT_PERMISSION_CHANGE_GROUP, DATABASE_OPERATION_GROUP, DATABASE_PERMISSION_CHANGE_GROUP, DATABASE_PRINCIPAL_CHANGE_GROUP, DATABASE_PRINCIPAL_IMPERSONATION_GROUP, DATABASE_ROLE_MEMBER_CHANGE_GROUP, FAILED_DATABASE_AUTHENTICATION_GROUP, SCHEMA_OBJECT_ACCESS_GROUP, SCHEMA_OBJECT_CHANGE_GROUP, SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP, SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP, SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP, USER_CHANGE_PASSWORD_GROUP
 
 Required: False
 Position: Named
@@ -80,9 +79,7 @@ Accept wildcard characters: False
 ```
 
 ### -AuditType
-You can specify several event types.
-You can specify All to audit all of the event types or None to specify that no events will be audited.
-If you specify All or None at the same time, the command fails.
+Specify the audit type. Audit logs can be written to Table storage or Blob storage. Blob auditing provides higher performance and supports object-level auditing.
 
 ```yaml
 Type: AuditType
@@ -99,20 +96,7 @@ Accept wildcard characters: False
 
 ### -EventType
 Specifies the event types to audit.
-The acceptable values for this parameter are:
-
-- PlainSQL_Success
-- PlainSQL_Failure
-- ParameterizedSQL_Success
-- ParameterizedSQL_Failure
-- StoredProcedure_Success
-- StoredProcedure_Failure
-- Login_Success
-- Login_Failure 
-- TransactionManagement_Success
-- TransactionManagement_Failure
-- All
-- None
+This parameter is only applicable to Table auditing.
 
 You can specify several event types.
 You can specify All to audit all of the event types or None to specify that no events will be audited.
@@ -299,6 +283,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Use-AzureRmSqlServerAuditingPolicy](./Use-AzureRmSqlServerAuditingPolicy.md)
 
-[Azure SQL Database Cmdlets](./AzureRM.Sql.md)
+[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
 
 

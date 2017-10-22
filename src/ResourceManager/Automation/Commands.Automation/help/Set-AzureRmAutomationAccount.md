@@ -60,9 +60,9 @@ Accept wildcard characters: False
 
 ### -Plan
 Specifies the plan for the Automation account.
-Valid values are: 
+Valid values are:
 
-- Basic 
+- Basic
 - Free
 
 ```yaml
@@ -94,7 +94,9 @@ Accept wildcard characters: False
 ```
 
 ### -Tags
-Specifies Automation account tags for the Automation account.
+Key-value pairs in the form of a hash table. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
 Type: IDictionary
@@ -115,6 +117,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Automation.Model.AutomationAccount
+
 ## NOTES
 
 ## RELATED LINKS
@@ -124,5 +128,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzureRmAutomationAccount](./New-AzureRmAutomationAccount.md)
 
 [Remove-AzureRmAutomationAccount](./Remove-AzureRmAutomationAccount.md)
-
-

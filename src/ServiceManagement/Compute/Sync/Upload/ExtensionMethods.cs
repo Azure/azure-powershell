@@ -23,8 +23,32 @@ using System.Text;
 
 namespace Microsoft.WindowsAzure.Commands.Sync.Upload
 {
-    internal static class CloudPageBlobExtensions
+    public static class CloudPageBlobExtensions
     {
+        public static IEnumerable<IListBlobItem> ListContainerBlobs(
+            this CloudBlobContainer container, 
+            bool useFlatBlobListing, 
+            BlobListingDetails details,
+            BlobRequestOptions options)
+        {
+            BlobContinuationToken continuationToken = null;
+            string prefix = null;
+            int maxBlobsPerRequest = 10;
+            List<IListBlobItem> blobs = new List<IListBlobItem>();
+            do
+            {
+                var listingResult = container.ListBlobsSegmentedAsync(
+                                prefix, useFlatBlobListing, details, maxBlobsPerRequest, continuationToken, options, null)
+                     .ConfigureAwait(false)
+                    .GetAwaiter().GetResult();
+                continuationToken = listingResult.ContinuationToken;
+                blobs.AddRange(listingResult.Results);
+            }
+            while (continuationToken != null);
+
+            return blobs;
+        }
+
         public static void SetUploadMetaData(this CloudPageBlob blob, LocalMetaData metaData)
         {
             if (metaData == null)
@@ -50,7 +74,7 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
 
         public static byte[] GetBlobMd5Hash(this CloudPageBlob blob)
         {
-            blob.FetchAttributes();
+            blob.FetchAttributesAsync().ConfigureAwait(false).GetAwaiter().GetResult();
             if (String.IsNullOrEmpty(blob.Properties.ContentMD5))
             {
                 return null;
@@ -61,7 +85,8 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
 
         public static byte[] GetBlobMd5Hash(this CloudPageBlob blob, BlobRequestOptions requestOptions)
         {
-            blob.FetchAttributes(new AccessCondition(), requestOptions);
+            blob.FetchAttributesAsync(new AccessCondition(), requestOptions, operationContext: null)
+                .ConfigureAwait(false).GetAwaiter().GetResult();
             if (String.IsNullOrEmpty(blob.Properties.ContentMD5))
             {
                 return null;
@@ -84,7 +109,7 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
         public static VhdFooter GetVhdFooter(this CloudPageBlob basePageBlob)
         {
             var vhdFileFactory = new VhdFileFactory();
-            using (var file = vhdFileFactory.Create(basePageBlob.OpenRead()))
+            using (var file = vhdFileFactory.Create(basePageBlob.OpenReadAsync().ConfigureAwait(false).GetAwaiter().GetResult()))
             {
                 return file.Footer;
             }
@@ -92,7 +117,7 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
 
         public static bool Exists(this CloudPageBlob blob)
         {
-            var listBlobItems = blob.Container.ListBlobs();
+            var listBlobItems = blob.Container.ListContainerBlobs(false, BlobListingDetails.None, null);
             var blobToUpload = listBlobItems.FirstOrDefault(b => b.Uri == blob.Uri);
             if (blobToUpload is CloudBlockBlob)
             {
@@ -104,7 +129,7 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
 
         public static bool Exists(this CloudPageBlob blob, BlobRequestOptions options)
         {
-            var listBlobItems = blob.Container.ListBlobs(null, false, BlobListingDetails.UncommittedBlobs, options);
+            var listBlobItems = blob.Container.ListContainerBlobs(false, BlobListingDetails.UncommittedBlobs, options);
             var blobToUpload = listBlobItems.FirstOrDefault(b => b.Uri == blob.Uri);
             if (blobToUpload is CloudBlockBlob)
             {

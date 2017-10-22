@@ -43,7 +43,7 @@ function Test-SetAzureVMChefExtension
         New-AzureQuickVM -Windows -ImageName "a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-R2-20161214-en.us-127GB.vhd" -Name $vmName -ServiceName $svcName -AdminUsername "pstestuser" -Password $PLACEHOLDER
         $vm = Get-AzureVM -ServiceName $svcName -Name $vmName
 
-        Set-AzureVMChefExtension -VM $vm -ValidationPem "$TestOutputRoot\Resources\ChefExtension\tstorgnztn-validator.pem" -ClientRb "$TestOutputRoot\Resources\ChefExtension\client.rb" -JsonAttribute '{"container_service": {"chef-init-test": {"command": "C:\\opscode\\chef\\bin"}}}' -ChefServiceInterval 35 -Windows
+        Set-AzureVMChefExtension -VM $vm -ValidationPem "$TestOutputRoot\Resources\ChefExtension\tstorgnztn-validator.pem" -ClientRb "$TestOutputRoot\Resources\ChefExtension\client.rb" -JsonAttribute '{"container_service": {"chef-init-test": {"command": "C:\\opscode\\chef\\bin"}}}' -ChefDaemonInterval 35 -Windows
 
         Update-AzureVM -VM $vm.VM -ServiceName $svcName -Name $vmName
 

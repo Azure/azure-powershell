@@ -17,6 +17,8 @@ using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightClusters.BaseInterfaces;
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightClusters.Extensions;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightClusters
 {
@@ -31,12 +33,12 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightCl
             this.profile = profile;
         }
 
-        public AzureSubscription ResolveSubscription(string subscription)
+        public IAzureSubscription ResolveSubscription(string subscription)
         {
-            var resolvedSubscription = this.profile.Subscriptions.Values.FirstOrDefault(s => s.Id == new Guid(subscription));
+            var resolvedSubscription = this.profile.Subscriptions.FirstOrDefault(s => s.Id == subscription);
             if (resolvedSubscription.IsNull())
             {
-                resolvedSubscription = this.profile.Subscriptions.Values.FirstOrDefault(s => s.Name == subscription);
+                resolvedSubscription = this.profile.Subscriptions.FirstOrDefault(s => s.Name == subscription);
             }
 
             return resolvedSubscription;

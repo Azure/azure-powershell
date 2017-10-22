@@ -14,9 +14,11 @@
 
 namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
+    using System;
     using System.Collections.Generic;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.LogicApp.Utilities;
+    using Microsoft.Azure.Management.Logic.Models;
 
     /// <summary>
     /// Gets the integration account generated interchange control number by agreement name
@@ -50,6 +52,14 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         [ValidateNotNullOrEmpty]
         public string AgreementName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the agreement type.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "The integration account agreement type.")]
+        [Alias("MessageType")]
+        [ValidateSet("X12", "Edifact", IgnoreCase = true)]
+        public string AgreementType { get; set; }
+
         #endregion Input Parameters
 
         /// <summary>
@@ -59,11 +69,18 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         {
             base.ExecuteCmdlet();
 
+            if (string.IsNullOrEmpty(AgreementType))
+            {
+                this.WriteWarning(Constants.NoAgreementTypeParameterWarningMessage);
+                AgreementType = "X12";
+            }
+
             this.WriteObject(
                 sendToPipeline: string.IsNullOrEmpty(this.AgreementName) ?
                     this.IntegrationAccountClient.ListIntegrationAccountGeneratedIcns(
                         resourceGroupName: this.ResourceGroupName,
-                        integrationAccountName: this.Name) as object :
+                        integrationAccountName: this.Name,
+                        agreementType: (AgreementType)Enum.Parse(enumType: typeof(AgreementType), value: AgreementType, ignoreCase: true)) as object :
                     this.IntegrationAccountClient.GetIntegrationAccountGeneratedIcn(
                         resourceGroupName: this.ResourceGroupName,
                         integrationAccountName: this.Name,

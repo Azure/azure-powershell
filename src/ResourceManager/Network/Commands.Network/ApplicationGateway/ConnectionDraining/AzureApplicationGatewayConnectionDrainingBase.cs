@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Network
                Mandatory = true,
                HelpMessage = "The number of seconds connection draining is active. Acceptable values are from 1 second to 3600 seconds.")]
         [ValidateNotNullOrEmpty]
-        public uint DrainTimeoutInSec { get; set; }
+        public int DrainTimeoutInSec { get; set; }
 
         public override void ExecuteCmdlet()
         {

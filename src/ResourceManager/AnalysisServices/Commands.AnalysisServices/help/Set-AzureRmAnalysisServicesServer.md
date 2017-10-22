@@ -11,9 +11,18 @@ Modifies  an instance of Analysis Services server
 
 ## SYNTAX
 
+### Default (Default)
 ```
 Set-AzureRmAnalysisServicesServer [-Name] <String> [[-ResourceGroupName] <String>] [[-Sku] <String>]
- [[-Tag] <Hashtable>] [[-Administrator] <String>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-Tag] <Hashtable>] [[-Administrator] <String>] [[-BackupBlobContainerUri] <String>] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### Disable Backup
+```
+Set-AzureRmAnalysisServicesServer [-Name] <String> [[-ResourceGroupName] <String>] [[-Sku] <String>]
+ [[-Tag] <Hashtable>] [[-Administrator] <String>] [-PassThru] [-DisableBackup] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,6 +51,37 @@ Aliases:
 
 Required: False
 Position: 4
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -BackupBlobContainerUri
+The blob container Uri for backup the Analysis Services server
+
+```yaml
+Type: String
+Parameter Sets: Default
+Aliases: 
+
+Required: False
+Position: 5
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DisableBackup
+The switch to disable backup blob container.
+To re-enable the backup blob container, please provide the backup blob container Uri as -BackupBlobContainerUri.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: Disable Backup
+Aliases: 
+
+Required: True
+Position: 5
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -94,13 +134,12 @@ Accept wildcard characters: False
 
 ### -Sku
 The name of the Sku for the server.
-The supported values are 'S1', 'S2', 'S4' for the Standard tier and 'D1' for Development.
+The supported values are 'S0', 'S1', 'S2', 'S4' for the Standard tier; 'B1', 'B2' for the Basic tier and 'D1' for Development tier.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
-Accepted values: S1, S2, S4
 
 Required: False
 Position: 2

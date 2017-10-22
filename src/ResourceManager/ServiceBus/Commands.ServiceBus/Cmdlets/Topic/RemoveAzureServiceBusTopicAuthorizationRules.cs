@@ -13,12 +13,14 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
+using System;
 
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.Topic
 {
     /// <summary>
     /// 'Remove-AzureRmServiceBusTopicAuthorizationRule' Cmdlet removes/deletes AuthorizationRule
     /// </summary>
+    [ObsoleteAttribute("'Remove-AzureRmServiceBusTopicAuthorizationRule' cmdlet is mark as obsolete and will be depricated in upcoming breaking changes build. Please use the New cmdlet 'Remove-AzureRmServiceBusAuthorizationRule'", false)]
     [Cmdlet(VerbsCommon.Remove, ServiceBusTopicAuthorizationRuleVerb, SupportsShouldProcess = true)]
     public class RemoveAzureRmServiceBusTopicAuthorizationRule : AzureServiceBusCmdletBase
     {
@@ -34,29 +36,32 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Topic
             Position = 1,
             HelpMessage = "Namespace Name.")]
         [ValidateNotNullOrEmpty]
-        public string NamespaceName { get; set; }
+        [Alias(AliasNamespaceName)]
+        public string Namespace { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 2,
             HelpMessage = "Topic Name.")]
         [ValidateNotNullOrEmpty]
-        public string TopicName { get; set; }
+        [Alias(AliasTopicName)]
+        public string Topic { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 3,
             HelpMessage = "Topic AuthorizationRule Name.")]
         [ValidateNotNullOrEmpty]
-        public string AuthorizationRuleName { get; set; }
+        [Alias(AliasAuthorizationRuleName)]
+        public string Name { get; set; }
 
         public override void ExecuteCmdlet()
         {
             // Delete Topic authorizationRule
 
-            if (ShouldProcess(target: AuthorizationRuleName, action: string.Format("Delete AuthorizationRule:{0} of Topic:{1}", AuthorizationRuleName, TopicName)))
+            if (ShouldProcess(target: Name, action: string.Format("Delete AuthorizationRule:{0} of Topic:{1}", Name, Topic)))
             {
-                WriteObject(Client.DeleteServiceBusTopicAuthorizationRule(ResourceGroup, NamespaceName, TopicName, AuthorizationRuleName));
+                WriteObject(Client.DeleteServiceBusTopicAuthorizationRule(ResourceGroup, Namespace, Topic, Name));
             }
         }
     }

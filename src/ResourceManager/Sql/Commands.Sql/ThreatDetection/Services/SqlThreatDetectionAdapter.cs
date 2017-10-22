@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Auditing.Model;
 using Microsoft.Azure.Commands.Sql.Auditing.Services;
@@ -32,7 +33,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
         /// <summary>
         /// Gets or sets the Azure subscription
         /// </summary>
-        private AzureSubscription Subscription { get; set; }
+        private IAzureSubscription Subscription { get; set; }
 
         /// <summary>
         /// The Threat Detection endpoints communicator used by this adapter
@@ -52,9 +53,9 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureContext Context { get; set; }
+        public IAzureContext Context { get; set; }
 
-        public SqlThreatDetectionAdapter(AzureContext context)
+        public SqlThreatDetectionAdapter(IAzureContext context)
         {
             Context = context;
             Subscription = context.Subscription;
@@ -66,24 +67,24 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
         /// <summary>
         ///  Checks whether the server is applicable for threat detection
         /// </summary>
-        private bool IsRightServerVersionForThreatDetection(string resourceGroupName, string serverName, string clientId)
+        private bool IsRightServerVersionForThreatDetection(string resourceGroupName, string serverName)
         {
             AzureSqlServerCommunicator dbCommunicator = new AzureSqlServerCommunicator(Context);
-            Management.Sql.Models.Server server = dbCommunicator.Get(resourceGroupName, serverName, clientId);
+            Management.Sql.Models.Server server = dbCommunicator.Get(resourceGroupName, serverName);
             return server.Version == "12.0";
         }
 
         /// <summary>
         /// Provides a database threat detection policy model for the given database
         /// </summary>
-        public DatabaseThreatDetectionPolicyModel GetDatabaseThreatDetectionPolicy(string resourceGroup, string serverName, string databaseName, string requestId)
+        public DatabaseThreatDetectionPolicyModel GetDatabaseThreatDetectionPolicy(string resourceGroup, string serverName, string databaseName)
         {
-            if (!IsRightServerVersionForThreatDetection(resourceGroup, serverName, requestId))
+            if (!IsRightServerVersionForThreatDetection(resourceGroup, serverName))
             {
                 throw new Exception(Properties.Resources.ServerNotApplicableForThreatDetection);
             }
 
-            var threatDetectionPolicy = ThreatDetectionCommunicator.GetDatabaseSecurityAlertPolicy(resourceGroup, serverName, databaseName, requestId);
+            var threatDetectionPolicy = ThreatDetectionCommunicator.GetDatabaseSecurityAlertPolicy(resourceGroup, serverName, databaseName);
 
             var databaseThreatDetectionPolicyModel = ModelizeThreatDetectionPolicy(threatDetectionPolicy.Properties, new DatabaseThreatDetectionPolicyModel()) as DatabaseThreatDetectionPolicyModel;
             databaseThreatDetectionPolicyModel.ResourceGroupName = resourceGroup;
@@ -95,14 +96,14 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
         /// <summary>
         /// Provides a database threat detection policy model for the given database
         /// </summary>
-        public ServerThreatDetectionPolicyModel GetServerThreatDetectionPolicy(string resourceGroup, string serverName, string requestId)
+        public ServerThreatDetectionPolicyModel GetServerThreatDetectionPolicy(string resourceGroup, string serverName)
         {
-            if (!IsRightServerVersionForThreatDetection(resourceGroup, serverName, requestId))
+            if (!IsRightServerVersionForThreatDetection(resourceGroup, serverName))
             {
                 throw new Exception(Properties.Resources.ServerNotApplicableForThreatDetection);
             }
 
-            var threatDetectionPolicy = ThreatDetectionCommunicator.GetServerSecurityAlertPolicy(resourceGroup, serverName, requestId);
+            var threatDetectionPolicy = ThreatDetectionCommunicator.GetServerSecurityAlertPolicy(resourceGroup, serverName);
 
             var serverThreatDetectionPolicyModel = ModelizeThreatDetectionPolicy(threatDetectionPolicy.Properties, new ServerThreatDetectionPolicyModel()) as ServerThreatDetectionPolicyModel;
             serverThreatDetectionPolicyModel.ResourceGroupName = resourceGroup;
@@ -183,31 +184,31 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
         /// <summary>
         /// Transforms the given model to its endpoints acceptable structure and sends it to the endpoint
         /// </summary>
-        public void SetDatabaseThreatDetectionPolicy(DatabaseThreatDetectionPolicyModel model, string clientId, string storageEndpointSuffix)
+        public void SetDatabaseThreatDetectionPolicy(DatabaseThreatDetectionPolicyModel model, string storageEndpointSuffix)
         {
             if (model.ThreatDetectionState == ThreatDetectionStateType.Enabled && 
-                !IsRightServerVersionForThreatDetection(model.ResourceGroupName, model.ServerName, clientId))
+                !IsRightServerVersionForThreatDetection(model.ResourceGroupName, model.ServerName))
             {
                     throw new Exception(Properties.Resources.ServerNotApplicableForThreatDetection);
             }
 
             var databaseSecurityAlertPolicyParameters = PolicizeDatabaseSecurityAlertModel(model, storageEndpointSuffix);
-            ThreatDetectionCommunicator.SetDatabaseSecurityAlertPolicy(model.ResourceGroupName, model.ServerName, model.DatabaseName, clientId, databaseSecurityAlertPolicyParameters);
+            ThreatDetectionCommunicator.SetDatabaseSecurityAlertPolicy(model.ResourceGroupName, model.ServerName, model.DatabaseName, databaseSecurityAlertPolicyParameters);
         }
 
         /// <summary>
         /// Transforms the given model to its endpoints acceptable structure and sends it to the endpoint
         /// </summary>
-        public void SetServerThreatDetectionPolicy(ServerThreatDetectionPolicyModel model, string clientId, string storageEndpointSuffix)
+        public void SetServerThreatDetectionPolicy(ServerThreatDetectionPolicyModel model, string storageEndpointSuffix)
         {
             if (model.ThreatDetectionState == ThreatDetectionStateType.Enabled && 
-                !IsRightServerVersionForThreatDetection(model.ResourceGroupName, model.ServerName, clientId))
+                !IsRightServerVersionForThreatDetection(model.ResourceGroupName, model.ServerName))
             {
                 throw new Exception(Properties.Resources.ServerNotApplicableForThreatDetection);
             }
 
             var serverSecurityAlertPolicyParameters = PolicizeServerSecurityAlertModel(model, storageEndpointSuffix);
-            ThreatDetectionCommunicator.SetServerSecurityAlertPolicy(model.ResourceGroupName, model.ServerName, clientId, serverSecurityAlertPolicyParameters);
+            ThreatDetectionCommunicator.SetServerSecurityAlertPolicy(model.ResourceGroupName, model.ServerName, serverSecurityAlertPolicyParameters);
         }
 
         /// <summary>

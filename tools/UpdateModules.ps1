@@ -11,6 +11,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
+param(
+    [Parameter(Mandatory = $false, Position = 0)]
+    [string] $buildConfig,
+    [Parameter(Mandatory = $false, Position = 1)]
+    [string] $scope,
+    [Parameter(Mandatory=$false)]
+    [ValidateSet("Latest", "Stack")]
+    [string] $Profile = "Latest"
+)
+
 function Create-ModulePsm1
 {
   [CmdletBinding()]
@@ -44,13 +54,6 @@ function Create-ModulePsm1
   }
 }
 
-param(
-    [Parameter(Mandatory = $false, Position = 0)]
-    [string] $buildConfig,
-    [Parameter(Mandatory = $false, Position = 1)]
-    [string] $scope
-)
-
 if ([string]::IsNullOrEmpty($buildConfig))
 {
     Write-Verbose "Setting build configuration to 'Release'"
@@ -66,6 +69,11 @@ if ([string]::IsNullOrEmpty($scope))
 Write-Host "Updating $scope package(and its dependencies)" 
 
 $packageFolder = "$PSScriptRoot\..\src\Package"
+
+if ($Profile -eq "Stack")
+{
+    $packageFolder = "$PSScriptRoot\..\src\Stack"
+}
 
 
 
@@ -118,8 +126,23 @@ if ($scope -eq 'All') {
 
 if (($scope -eq 'All') -or ($scope -eq 'AzureRM')) {
     # Update AzureRM module    
-    $modulePath = "$PSScriptRoot\AzureRM"
-    Write-Host "Updating AzureRM module from $modulePath"
-    Create-ModulePsm1 -ModulePath $modulePath -TemplatePath $templateLocation
-    Write-Host "Updated Azure module"
+    if ($Profile -eq "Stack")
+    {
+        $modulePath = "$PSScriptRoot\..\src\StackAdmin\AzureRM"
+        Write-Host "Updating AzureRM module from $modulePath"
+        Create-ModulePsm1 -ModulePath $modulePath -TemplatePath $templateLocation
+        Write-Host "Updated AzureRM module"
+        $modulePath = "$PSScriptRoot\..\src\StackAdmin\AzureStack"
+        Write-Host "Updating AzureRM module from $modulePath"
+        Create-ModulePsm1 -ModulePath $modulePath -TemplatePath $templateLocation
+        Write-Host "Updated AzureStack module"
+    }
+    else {
+        $modulePath = "$PSScriptRoot\AzureRM"
+        Write-Host "Updating AzureRM module from $modulePath"
+        Create-ModulePsm1 -ModulePath $modulePath -TemplatePath $templateLocation
+        Write-Host "Updated Azure module"
+    }
 } 
+
+

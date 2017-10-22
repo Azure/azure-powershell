@@ -22,9 +22,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
     public class RecommendedElasticPoolTests : SqlTestsBase
     {
-        public RecommendedElasticPoolTests(ITestOutputHelper output)
+        public RecommendedElasticPoolTests(ITestOutputHelper output) : base(output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
         [Fact]

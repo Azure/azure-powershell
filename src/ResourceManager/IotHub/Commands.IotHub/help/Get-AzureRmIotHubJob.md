@@ -16,7 +16,8 @@ Get-AzureRmIotHubJob [-ResourceGroupName] <String> [-Name] <String> [[-JobId] <S
 ```
 
 ## DESCRIPTION
-Gets the information about an IotHub Job. An IotHub Job gets created when an import or export operation is initialted using the New-AzureRmIotHubExportDevices or New-AzureRmIotHubImportDevices commands.
+Gets the information about an IotHub Job.
+An IotHub Job gets created when an import or export operation is initialted using the New-AzureRmIotHubExportDevices or New-AzureRmIotHubImportDevices commands.
 You can either list all the jobs or filter the jobs by the Job Identifier.
 
 ## EXAMPLES
@@ -38,7 +39,7 @@ Gets information about the job with the identifier "3630fc31-4caa-43e8-a232-ea05
 ## PARAMETERS
 
 ### -JobId
-The Job Identifier.
+The Job Identifier. 
 
 ```yaml
 Type: String
@@ -53,7 +54,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the IoT hub.
+Name of the IoT hub. 
 
 ```yaml
 Type: String
@@ -68,7 +69,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Name of the resource group.
+Resource Group Name
 
 ```yaml
 Type: String
@@ -92,7 +93,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobResponse
-System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobResponse, Microsoft.Azure.Commands.IotHub, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+System.Collections.Generic.List\`1\[\[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobResponse, Microsoft.Azure.Commands.IotHub, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null\]\]
 
 ## NOTES
 

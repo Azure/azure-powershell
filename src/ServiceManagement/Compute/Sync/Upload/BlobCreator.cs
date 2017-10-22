@@ -35,7 +35,7 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
         {
             Program.SyncOutput.MessageCreatingNewPageBlob(OperationMetaData.FileMetaData.VhdSize);
 
-            destinationBlob.Create(OperationMetaData.FileMetaData.VhdSize);
+            destinationBlob.CreateAsync(OperationMetaData.FileMetaData.VhdSize).ConfigureAwait(false).GetAwaiter().GetResult();
 
             using (var bdms = new BlobMetaDataScope(destinationBlob))
             {

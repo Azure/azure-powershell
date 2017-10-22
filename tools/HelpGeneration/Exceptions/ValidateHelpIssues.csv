@@ -46,8 +46,8 @@ AzureRM.CognitiveServices,Remove-AzureRmCognitiveServicesAccount.md,No examples 
 AzureRM.CognitiveServices,Set-AzureRmCognitiveServicesAccount.md,No examples found
 AzureRM.Compute,Get-AzureRmVMADDomainExtension.md,No examples found
 AzureRM.Compute,Get-AzureRmVMDscExtensionStatus.md,No examples found
-AzureRM.Compute,New-AzureVMSqlServerKeyVaultCredentialConfig.md,No description found
-AzureRM.Compute,New-AzureVMSqlServerKeyVaultCredentialConfig.md,No examples found
+AzureRM.Compute,New-AzureRmVMSqlServerKeyVaultCredentialConfig.md,No description found
+AzureRM.Compute,New-AzureRmVMSqlServerKeyVaultCredentialConfig.md,No examples found
 AzureRM.Compute,Remove-AzureRmVMAccessExtension.md,No examples found
 AzureRM.Compute,Remove-AzureRmVMBackup.md,No description found
 AzureRM.Compute,Remove-AzureRmVMCustomScriptExtension.md,No examples found
@@ -334,8 +334,8 @@ Commands.Management.CognitiveServices,Remove-AzureRmCognitiveServicesAccount.md,
 Commands.Management.CognitiveServices,Set-AzureRmCognitiveServicesAccount.md,No examples found
 Commands.Compute,Get-AzureRmVMADDomainExtension.md,No examples found
 Commands.Compute,Get-AzureRmVMDscExtensionStatus.md,No examples found
-Commands.Compute,New-AzureVMSqlServerKeyVaultCredentialConfig.md,No description found
-Commands.Compute,New-AzureVMSqlServerKeyVaultCredentialConfig.md,No examples found
+Commands.Compute,New-AzureRmVMSqlServerKeyVaultCredentialConfig.md,No description found
+Commands.Compute,New-AzureRmVMSqlServerKeyVaultCredentialConfig.md,No examples found
 Commands.Compute,Remove-AzureRmVMAccessExtension.md,No examples found
 Commands.Compute,Remove-AzureRmVMBackup.md,No description found
 Commands.Compute,Remove-AzureRmVMCustomScriptExtension.md,No examples found

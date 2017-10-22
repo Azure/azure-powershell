@@ -22,9 +22,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
     public class RecommendedActionTests : SqlTestsBase
     {
-        public RecommendedActionTests(ITestOutputHelper output)
+        public RecommendedActionTests(ITestOutputHelper output) : base(output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
         #region Server Recommended Action Tests

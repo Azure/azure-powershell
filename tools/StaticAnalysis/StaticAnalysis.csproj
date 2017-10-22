@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>StaticAnalysis</RootNamespace>
     <AssemblyName>StaticAnalysis</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <RestorePackages>true</RestorePackages>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -70,6 +70,7 @@
     <Compile Include="BreakingChangeAnalyzer\ParameterSetMetadataHelper.cs" />
     <Compile Include="BreakingChangeAnalyzer\TypeMetadata.cs" />
     <Compile Include="BreakingChangeAnalyzer\TypeMetadataHelper.cs" />
+    <Compile Include="DependencyAnalyzer\DependencyMap.cs" />
     <Compile Include="Loggers\AnalysisLogger.cs" />
     <Compile Include="CmdlineArgParsing\StaticAnalysisArgs.cs" />
     <Compile Include="EnvironmentHelpers.cs" />

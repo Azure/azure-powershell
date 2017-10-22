@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 
         public RecoveryServicesBackupClient RsBackupClient { get; private set; }
 
-        public RecoveryServicesNS.RecoveryServicesManagementClient RsClient { get; private set; }
+        public RecoveryServicesNS.RecoveryServicesClient RsClient { get; private set; }
 
         public ResourceManagementNS.ResourceManagementClient RmClient { get; private set; }
 
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         protected void SetupManagementClients(MockContext context)
         {
             RsBackupClient = GetRsBackupClient(context);
-            RsClient = GetRsClient();
+            RsClient = GetRsClient(context);
             RmClient = GetRmClient();
             RmRestClient = GetRmRestClient(context);
             HyakRmClient = GetHyakRmClient(context);
@@ -202,79 +202,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
             }
         }
 
-        private RecoveryServicesNS.RecoveryServicesManagementClient GetRsClient()
+        private RecoveryServicesNS.RecoveryServicesClient GetRsClient(MockContext context)
         {
-            return GetServiceClient<RecoveryServicesNS.RecoveryServicesManagementClient>();
-        }
-
-        public static T GetServiceClient<T>() where T : class
-        {
-            var factory = (LegacyTest.TestEnvironmentFactory)new LegacyTest.CSMTestEnvironmentFactory();
-            var testEnvironment = factory.GetTestEnvironment();
-
-            ServicePointManager.ServerCertificateValidationCallback = IgnoreCertificateErrorHandler;
-
-            RecoveryServicesNS.RecoveryServicesManagementClient client;
-            var credentials = new SubscriptionCredentialsAdapter(
-                testEnvironment.AuthorizationContext.TokenCredentials[LegacyTest.TokenAudience.Management],
-                testEnvironment.SubscriptionId);
-
-            if (testEnvironment.UsesCustomUri())
-            {
-                client = new RecoveryServicesNS.RecoveryServicesManagementClient(
-                    "Microsoft.RecoveryServices",
-                    credentials,
-                    testEnvironment.BaseUri);
-            }
-            else
-            {
-                client = new RecoveryServicesNS.RecoveryServicesManagementClient(
-                    "Microsoft.RecoveryServices",
-                    credentials);
-            }
-            return GetServiceClient<T>(factory, client);
-        }
-
-        public static T GetServiceClient<T>(
-            LegacyTest.TestEnvironmentFactory factory,
-            RecoveryServicesNS.RecoveryServicesManagementClient client) where T : class
-        {
-            LegacyTest.TestEnvironment testEnvironment = factory.GetTestEnvironment();
-
-            HttpMockServer instance;
-            try
-            {
-                instance = HttpMockServer.CreateInstance();
-            }
-            catch (ApplicationException)
-            {
-                HttpMockServer.Initialize("TestEnvironment", "InitialCreation");
-                instance = HttpMockServer.CreateInstance();
-            }
-            T obj2 = typeof(T).GetMethod("WithHandler", new Type[1]
-            {
-                typeof (DelegatingHandler)
-            }).Invoke((object)client, new object[1]
-            {
-                (object) instance
-            }) as T;
-
-            if (HttpMockServer.Mode == HttpRecorderMode.Record)
-            {
-                HttpMockServer.Variables[TestEnvironment.SubscriptionIdKey] = testEnvironment.SubscriptionId;
-            }
-
-            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
-            {
-                PropertyInfo property1 = typeof(T).GetProperty("LongRunningOperationInitialTimeout", typeof(int));
-                PropertyInfo property2 = typeof(T).GetProperty("LongRunningOperationRetryTimeout", typeof(int));
-                if (property1 != (PropertyInfo)null && property2 != (PropertyInfo)null)
-                {
-                    property1.SetValue((object)obj2, (object)0);
-                    property2.SetValue((object)obj2, (object)0);
-                }
-            }
-            return obj2;
+            return context.GetServiceClient<RecoveryServicesNS.RecoveryServicesClient>(
+                TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private static bool IgnoreCertificateErrorHandler

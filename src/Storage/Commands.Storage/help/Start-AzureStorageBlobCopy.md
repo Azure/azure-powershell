@@ -15,38 +15,39 @@ Starts to copy a blob.
 ### ContainerName (Default)
 ```
 Start-AzureStorageBlobCopy [-SrcBlob] <String> -SrcContainer <String> -DestContainer <String>
- [-DestBlob <String>] [-Context <AzureStorageContext>] [-DestContext <AzureStorageContext>] [-Force]
- [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-DestBlob <String>] [-PremiumPageBlobTier <PremiumPageBlobTier>] [-Context <IStorageContext>]
+ [-DestContext <IStorageContext>] [-Force] [-ServerTimeoutPerRequest <Int32>]
+ [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### BlobInstance
 ```
 Start-AzureStorageBlobCopy -CloudBlob <CloudBlob> -DestContainer <String> [-DestBlob <String>]
- [-Context <AzureStorageContext>] [-DestContext <AzureStorageContext>] [-Force]
- [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-PremiumPageBlobTier <PremiumPageBlobTier>] [-Context <IStorageContext>] [-DestContext <IStorageContext>]
+ [-Force] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### BlobInstanceToBlobInstance
 ```
-Start-AzureStorageBlobCopy -CloudBlob <CloudBlob> -DestCloudBlob <CloudBlob> [-Context <AzureStorageContext>]
- [-DestContext <AzureStorageContext>] [-Force] [-ServerTimeoutPerRequest <Int32>]
- [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Start-AzureStorageBlobCopy -CloudBlob <CloudBlob> -DestCloudBlob <CloudBlob>
+ [-PremiumPageBlobTier <PremiumPageBlobTier>] [-Context <IStorageContext>] [-DestContext <IStorageContext>]
+ [-Force] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ContainerInstance
 ```
 Start-AzureStorageBlobCopy -CloudBlobContainer <CloudBlobContainer> [-SrcBlob] <String> -DestContainer <String>
- [-DestBlob <String>] [-Context <AzureStorageContext>] [-DestContext <AzureStorageContext>] [-Force]
- [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-DestBlob <String>] [-PremiumPageBlobTier <PremiumPageBlobTier>] [-Context <IStorageContext>]
+ [-DestContext <IStorageContext>] [-Force] [-ServerTimeoutPerRequest <Int32>]
+ [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ShareName
 ```
 Start-AzureStorageBlobCopy -SrcShareName <String> -SrcFilePath <String> -DestContainer <String>
- [-DestBlob <String>] [-Context <AzureStorageContext>] [-DestContext <AzureStorageContext>] [-Force]
+ [-DestBlob <String>] [-Context <IStorageContext>] [-DestContext <IStorageContext>] [-Force]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -54,7 +55,7 @@ Start-AzureStorageBlobCopy -SrcShareName <String> -SrcFilePath <String> -DestCon
 ### ShareInstance
 ```
 Start-AzureStorageBlobCopy -SrcShare <CloudFileShare> -SrcFilePath <String> -DestContainer <String>
- [-DestBlob <String>] [-Context <AzureStorageContext>] [-DestContext <AzureStorageContext>] [-Force]
+ [-DestBlob <String>] [-Context <IStorageContext>] [-DestContext <IStorageContext>] [-Force]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -62,7 +63,7 @@ Start-AzureStorageBlobCopy -SrcShare <CloudFileShare> -SrcFilePath <String> -Des
 ### DirInstance
 ```
 Start-AzureStorageBlobCopy -SrcDir <CloudFileDirectory> -SrcFilePath <String> -DestContainer <String>
- [-DestBlob <String>] [-Context <AzureStorageContext>] [-DestContext <AzureStorageContext>] [-Force]
+ [-DestBlob <String>] [-Context <IStorageContext>] [-DestContext <IStorageContext>] [-Force]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -70,24 +71,22 @@ Start-AzureStorageBlobCopy -SrcDir <CloudFileDirectory> -SrcFilePath <String> -D
 ### FileInstance
 ```
 Start-AzureStorageBlobCopy -SrcFile <CloudFile> -DestContainer <String> [-DestBlob <String>]
- [-Context <AzureStorageContext>] [-DestContext <AzureStorageContext>] [-Force]
- [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-Context <IStorageContext>] [-DestContext <IStorageContext>] [-Force] [-ServerTimeoutPerRequest <Int32>]
+ [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FileInstanceToBlobInstance
 ```
-Start-AzureStorageBlobCopy -SrcFile <CloudFile> -DestCloudBlob <CloudBlob> [-Context <AzureStorageContext>]
- [-DestContext <AzureStorageContext>] [-Force] [-ServerTimeoutPerRequest <Int32>]
+Start-AzureStorageBlobCopy -SrcFile <CloudFile> -DestCloudBlob <CloudBlob> [-Context <IStorageContext>]
+ [-DestContext <IStorageContext>] [-Force] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UriPipeline
 ```
 Start-AzureStorageBlobCopy -AbsoluteUri <String> -DestContainer <String> -DestBlob <String>
- [-Context <AzureStorageContext>] [-DestContext <AzureStorageContext>] [-Force]
- [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-Context <IStorageContext>] [-DestContext <IStorageContext>] [-Force] [-ServerTimeoutPerRequest <Int32>]
+ [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -155,7 +154,7 @@ Specifies the absolute URI of a file to copy to an Azure Storage blob.
 ```yaml
 Type: String
 Parameter Sets: UriPipeline
-Aliases: SrcUri
+Aliases: SrcUri, SourceUri
 
 Required: True
 Position: Named
@@ -188,7 +187,7 @@ To obtain a **CloudBlob** object, use the Get-AzureStorageBlob cmdlet.
 ```yaml
 Type: CloudBlob
 Parameter Sets: BlobInstance, BlobInstanceToBlobInstance
-Aliases: SrcICloudBlob, SrcCloudBlob, ICloudBlob
+Aliases: SrcICloudBlob, SrcCloudBlob, ICloudBlob, SourceICloudBlob, SourceCloudBlob
 
 Required: True
 Position: Named
@@ -205,7 +204,7 @@ To obtain a **CloudBlobContainer** object, use the Get-AzureStorageContainer cmd
 ```yaml
 Type: CloudBlobContainer
 Parameter Sets: ContainerInstance
-Aliases: 
+Aliases: SourceCloudBlobContainer
 
 Required: True
 Position: Named
@@ -238,9 +237,9 @@ Specifies an Azure storage context.
 To obtain a storage context, use the New-AzureStorageContext cmdlet.
 
 ```yaml
-Type: AzureStorageContext
+Type: IStorageContext
 Parameter Sets: ContainerName, BlobInstance, BlobInstanceToBlobInstance, ContainerInstance, ShareName, ShareInstance, DirInstance, FileInstance, FileInstanceToBlobInstance
-Aliases: SrcContext
+Aliases: SrcContext, SourceContext
 
 Required: False
 Position: Named
@@ -250,9 +249,9 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: AzureStorageContext
+Type: IStorageContext
 Parameter Sets: UriPipeline
-Aliases: SrcContext
+Aliases: SrcContext, SourceContext
 
 Required: False
 Position: Named
@@ -267,7 +266,7 @@ Specifies the name of the destination blob.
 ```yaml
 Type: String
 Parameter Sets: ContainerName, BlobInstance, ContainerInstance, ShareName, ShareInstance, DirInstance, FileInstance
-Aliases: 
+Aliases: DestinationBlob
 
 Required: False
 Position: Named
@@ -279,7 +278,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: UriPipeline
-Aliases: 
+Aliases: DestinationBlob
 
 Required: True
 Position: Named
@@ -294,7 +293,7 @@ Specifies a destination **CloudBlob** object
 ```yaml
 Type: CloudBlob
 Parameter Sets: BlobInstanceToBlobInstance, FileInstanceToBlobInstance
-Aliases: DestICloudBlob
+Aliases: DestICloudBlob, DestinationCloudBlob, DestinationICloudBlob
 
 Required: True
 Position: Named
@@ -309,7 +308,7 @@ Specifies the name of the destination container.
 ```yaml
 Type: String
 Parameter Sets: ContainerName, BlobInstance, ContainerInstance, ShareName, ShareInstance, DirInstance, FileInstance, UriPipeline
-Aliases: 
+Aliases: DestinationContainer
 
 Required: True
 Position: Named
@@ -323,9 +322,9 @@ Specifies an Azure storage context.
 To obtain a storage context, use the New-AzureStorageContext cmdlet.
 
 ```yaml
-Type: AzureStorageContext
+Type: IStorageContext
 Parameter Sets: (All)
-Aliases: 
+Aliases: DestinationContext
 
 Required: False
 Position: Named
@@ -340,6 +339,21 @@ Indicates that this cmdlet overwrites the destination blob without prompting you
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PremiumPageBlobTier
+Premium Page Blob Tier
+
+```yaml
+Type: PremiumPageBlobTier
+Parameter Sets: ContainerName, BlobInstance, BlobInstanceToBlobInstance, ContainerInstance
 Aliases: 
 
 Required: False
@@ -371,7 +385,7 @@ Specifies the name of the source blob.
 ```yaml
 Type: String
 Parameter Sets: ContainerName, ContainerInstance
-Aliases: 
+Aliases: SourceBlob
 
 Required: True
 Position: 0
@@ -386,7 +400,7 @@ Specifies the name of the source container.
 ```yaml
 Type: String
 Parameter Sets: ContainerName
-Aliases: 
+Aliases: SourceContainer
 
 Required: True
 Position: Named
@@ -401,7 +415,7 @@ Specifies a **CloudFileDirectory** object from Azure Storage Client library.
 ```yaml
 Type: CloudFileDirectory
 Parameter Sets: DirInstance
-Aliases: 
+Aliases: SourceDir
 
 Required: True
 Position: Named
@@ -417,7 +431,7 @@ You can create it or use Get-AzureStorageFile cmdlet.
 ```yaml
 Type: CloudFile
 Parameter Sets: FileInstance, FileInstanceToBlobInstance
-Aliases: 
+Aliases: SourceFile
 
 Required: True
 Position: Named
@@ -432,7 +446,7 @@ Specifies the source file relative path of source directory or source share.
 ```yaml
 Type: String
 Parameter Sets: ShareName, ShareInstance, DirInstance
-Aliases: 
+Aliases: SourceFilePath
 
 Required: True
 Position: Named
@@ -448,7 +462,7 @@ You can create it or use Get-AzureStorageShare cmdlet.
 ```yaml
 Type: CloudFileShare
 Parameter Sets: ShareInstance
-Aliases: 
+Aliases: SourceShare
 
 Required: True
 Position: Named
@@ -463,7 +477,7 @@ Specifies the source share name.
 ```yaml
 Type: String
 Parameter Sets: ShareName
-Aliases: 
+Aliases: SourceShareName
 
 Required: True
 Position: Named
@@ -508,7 +522,25 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### CloudBlob
+
+Parameter 'CloudBlob' accepts value of type 'CloudBlob' from the pipeline
+
+### IStorageContext
+
+Parameter 'Context' accepts value of type 'IStorageContext' from the pipeline
+
+### IStorageContext
+
+Parameter 'Context' accepts value of type 'IStorageContext' from the pipeline
+
+### CloudFile
+
+Parameter 'SrcFile' accepts value of type 'CloudFile' from the pipeline
+
 ## OUTPUTS
+
+### Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageBlob
 
 ## NOTES
 

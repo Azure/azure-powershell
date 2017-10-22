@@ -13,10 +13,11 @@ Adds an extension to the VMSS.
 ## SYNTAX
 
 ```
-Add-AzureRmVmssExtension [-VirtualMachineScaleSet] <VirtualMachineScaleSet> [[-Name] <String>]
+Add-AzureRmVmssExtension [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [[-Name] <String>]
  [[-Publisher] <String>] [[-Type] <String>] [[-TypeHandlerVersion] <String>]
- [[-AutoUpgradeMinorVersion] <Boolean>] [[-Setting] <Object>] [[-ProtectedSetting] <Object>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [[-AutoUpgradeMinorVersion] <Boolean>] [[-Setting] <Object>] [[-ProtectedSetting] <Object>]
+ [-ForceUpdateTag <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,7 +27,7 @@ The **Add-AzureRmVmssExtension** cmdlet adds an extension to the Virtual Machine
 
 ### Example 1: Add an extension to the VMSS
 ```
-PS C:\>Add-AzureRmVmssExtension -VirtualMachineScaleSet $VMSS -Name $ExtName -Publisher $Publisher -Type $ExtType -TypeHandlerVersion $ExtVer -AutoUpgradeMinorVersion $True
+PS C:\> Add-AzureRmVmssExtension -VirtualMachineScaleSet $VMSS -Name $ExtName -Publisher $Publisher -Type $ExtType -TypeHandlerVersion $ExtVer -AutoUpgradeMinorVersion $True
 ```
 
 This command adds an extension to the VMMS.
@@ -43,6 +44,36 @@ Aliases:
 
 Required: False
 Position: 5
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ForceUpdateTag
+If a value is provided and is different from the previous value, the extension handler will be forced to update even if the extension configuration has not changed.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -82,7 +113,7 @@ Accept wildcard characters: False
 ### -Publisher
 Specifies the name of the extension publisher.
 The publisher provides a name when the publisher registers an extension.
-This can use the Get-AzureRmVMImagePublisher cmdlet to get the publisher.
+This can use the [Get-AzureRmVMImagePublisher](./Get-AzureRmVMImagePublisher.md) cmdlet to get the publisher.
 
 ```yaml
 Type: String
@@ -114,7 +145,7 @@ Accept wildcard characters: False
 
 ### -Type
 Specifies the extension type.
-You can use the Get-AzureRmVMExtensionImageType cmdlet to get the extension type.
+You can use the [Get-AzureRmVMExtensionImageType](./Get-AzureRmVMExtensionImageType.md) cmdlet to get the extension type.
 
 ```yaml
 Type: String
@@ -130,7 +161,7 @@ Accept wildcard characters: False
 
 ### -TypeHandlerVersion
 Specifies the version of the extension to use for this virtual machine.
-You can use the Get-AzureRmVMExtensionImage cmdlet to get the version of the extension.
+You can use the [Get-AzureRmVMExtensionImage](./Get-AzureRmVMExtensionImage.md) cmdlet to get the version of the extension.
 
 ```yaml
 Type: String
@@ -146,10 +177,10 @@ Accept wildcard characters: False
 
 ### -VirtualMachineScaleSet
 Specify the VMSS object.
-You can use the New-AzureRmVmssConfig to create the object.
+You can use the [New-AzureRmVmssConfig](./New-AzureRmVmssConfig.md) to create the object.
 
 ```yaml
-Type: VirtualMachineScaleSet
+Type: PSVirtualMachineScaleSet
 Parameter Sets: (All)
 Aliases: 
 
@@ -195,6 +226,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### VirtualMachineScaleSet
+Parameter 'VirtualMachineScaleSet' accepts value of type 'VirtualMachineScaleSet' from the pipeline
+
 ## OUTPUTS
 
 ###  
@@ -213,5 +247,3 @@ This cmdlet does not generate any output.
 [Get-AzureRmVMExtensionImage](./Get-AzureRmVMExtensionImage.md)
 
 [New-AzureRmVmssConfig](./New-AzureRmVmssConfig.md)
-
-

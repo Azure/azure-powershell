@@ -86,7 +86,8 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
                 foreach (var streamExtent in enumerable)
                 {
                     var indexRange = streamExtent.Range;
-                    destinationBlob.ClearPages(indexRange.StartIndex, indexRange.Length);
+                    destinationBlob.ClearPagesAsync(indexRange.StartIndex, indexRange.Length)
+                        .ConfigureAwait(false).GetAwaiter().GetResult();
                 }
             }
 
@@ -101,13 +102,14 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
         private void CopyBaseImageToDestination()
         {
             var source = this.blobObjectFactory.Create(baseVhdBlobUri);
-            source.FetchAttributes();
+            source.FetchAttributesAsync()
+                .ConfigureAwait(false).GetAwaiter().GetResult();
 
             var copyStatus = new ProgressStatus(0, source.Properties.Length);
             using (new ProgressTracker(copyStatus, Program.SyncOutput.ProgressCopyStatus, Program.SyncOutput.ProgressCopyComplete, TimeSpan.FromSeconds(1)))
             {
-                destinationBlob.StartCopy(source);
-                destinationBlob.FetchAttributes();
+                destinationBlob.StartCopyAsync(source).ConfigureAwait(false).GetAwaiter().GetResult();
+                destinationBlob.FetchAttributesAsync().ConfigureAwait(false).GetAwaiter().GetResult();
 
                 while (true)
                 {
@@ -129,7 +131,7 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
                             string.Format("Cannot copy source '{0}' to destination '{1}', copy state is '{2}'", source.Uri,
                                           destinationBlob.Uri, destinationBlob.CopyState));
                     }
-                    destinationBlob.FetchAttributes();
+                    destinationBlob.FetchAttributesAsync().ConfigureAwait(false).GetAwaiter().GetResult();
                 }
             }
         }
@@ -170,7 +172,7 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
         public BlobMetaDataScope(CloudPageBlob blob)
         {
             this.blob = blob;
-            this.blob.FetchAttributes();
+            this.blob.FetchAttributesAsync().ConfigureAwait(false).GetAwaiter().GetResult();
             this.Current = blob;
         }
 
@@ -190,8 +192,8 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
                 {
                     if (completed)
                     {
-                        this.blob.SetMetadata();
-                        this.blob.SetProperties();
+                        this.blob.SetMetadataAsync().ConfigureAwait(false).GetAwaiter().GetResult();
+                        this.blob.SetPropertiesAsync().ConfigureAwait(false).GetAwaiter().GetResult();
                     }
                     this.disposed = true;
                 }

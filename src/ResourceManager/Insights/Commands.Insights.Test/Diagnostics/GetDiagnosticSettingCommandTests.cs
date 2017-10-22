@@ -13,8 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Insights.Diagnostics;
-using Microsoft.Azure.Management.Insights;
-using Microsoft.Azure.Management.Insights.Models;
+using Microsoft.Azure.Management.Monitor.Management;
+using Microsoft.Azure.Management.Monitor.Management.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System;
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
     public class GetDiagnosticSettingCommandTests
     {
         private readonly GetAzureRmDiagnosticSettingCommand cmdlet;
-        private readonly Mock<InsightsManagementClient> insightsManagementClientMock;
+        private readonly Mock<MonitorManagementClient> insightsManagementClientMock;
         private readonly Mock<IServiceDiagnosticSettingsOperations> insightsDiagnosticsOperationsMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
         private Microsoft.Rest.Azure.AzureOperationResponse<ServiceDiagnosticSettingsResource> response;
@@ -41,12 +41,12 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
         {
             ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             insightsDiagnosticsOperationsMock = new Mock<IServiceDiagnosticSettingsOperations>();
-            insightsManagementClientMock = new Mock<InsightsManagementClient>();
+            insightsManagementClientMock = new Mock<MonitorManagementClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new GetAzureRmDiagnosticSettingCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
-                InsightsManagementClient = insightsManagementClientMock.Object
+                MonitorManagementClient = insightsManagementClientMock.Object
             };
 
             response = new Microsoft.Rest.Azure.AzureOperationResponse<ServiceDiagnosticSettingsResource>()
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void AddAlertRuleCommandParametersProcessing()
+        public void GetDiagnosticSettingCommandParametersProcessing()
         {
             cmdlet.ResourceId = resourceId;
             cmdlet.ExecuteCmdlet();

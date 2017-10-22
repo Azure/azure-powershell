@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using System;
 
 namespace Microsoft.WindowsAzure.Commands.Common
@@ -20,7 +20,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
     public static class AzureSubscriptionExtensions
     {
 
-        public static string GetStorageAccountName(this AzureSubscription subscription)
+        public static string GetStorageAccountName(this IAzureSubscription subscription)
         {
             if (subscription == null || !subscription.IsPropertySet(AzureSubscription.Property.StorageAccount))
             {

@@ -14,6 +14,7 @@
 
 using AutoMapper;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
@@ -58,7 +59,13 @@ namespace Microsoft.Azure.Commands.Compute
         public PSVirtualMachine VM { get; set; }
 
         [Parameter(
-            Position = 3,
+           Mandatory = false,
+           Position = 3,
+           ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public string[] Zone { get; set; }
+
+        [Parameter(
             HelpMessage = "Disable BG Info Extension")]
         public SwitchParameter DisableBginfoExtension { get; set; }
 
@@ -94,6 +101,7 @@ namespace Microsoft.Azure.Commands.Compute
                 }
             }
 
+
             if (ShouldProcess(this.VM.Name, VerbsCommon.New))
             {
                 ExecuteClientAction(() =>
@@ -109,7 +117,9 @@ namespace Microsoft.Azure.Commands.Compute
                         LicenseType = this.LicenseType ?? this.VM.LicenseType,
                         AvailabilitySet = this.VM.AvailabilitySetReference,
                         Location = this.Location ?? this.VM.Location,
-                        Tags = this.Tags != null ? this.Tags.ToDictionary() : this.VM.Tags
+                        Tags = this.Tags != null ? this.Tags.ToDictionary() : this.VM.Tags,
+                        Identity = this.VM.Identity,
+                        Zones = this.Zone ?? this.VM.Zones,
                     };
 
                     var result = this.VirtualMachineClient.CreateOrUpdateWithHttpMessagesAsync(
@@ -222,7 +232,7 @@ namespace Microsoft.Azure.Commands.Compute
         {
             var storageAccountName = GetStorageAccountNameFromStorageProfile();
             var storageClient =
-                    AzureSession.ClientFactory.CreateArmClient<StorageManagementClient>(DefaultProfile.Context,
+                    AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(DefaultProfile.DefaultContext,
                         AzureEnvironment.Endpoint.ResourceManager);
 
             if (!string.IsNullOrEmpty(storageAccountName))
@@ -235,8 +245,8 @@ namespace Microsoft.Azure.Commands.Compute
                         var osDiskStorageAccount = storageAccountList.First(e => e.Name.Equals(storageAccountName));
 
                         if (osDiskStorageAccount != null
-                            && osDiskStorageAccount.AccountType.HasValue
-                            && !osDiskStorageAccount.AccountType.Value.ToString().ToLowerInvariant().Contains("premium"))
+                            && osDiskStorageAccount.Sku() != null
+                            && !osDiskStorageAccount.SkuName().ToLowerInvariant().Contains("premium"))
                         {
                             return osDiskStorageAccount.PrimaryEndpoints.Blob;
                         }
@@ -297,8 +307,8 @@ namespace Microsoft.Azure.Commands.Compute
             try
             {
                 return storageAccountList.First(
-                e => e.AccountType.HasValue
-                    && !e.AccountType.Value.ToString().ToLowerInvariant().Contains("premium"));
+                e => e.Sku() != null
+                    && !e.SkuName().ToLowerInvariant().Contains("premium"));
             }
             catch (InvalidOperationException e)
             {
@@ -322,9 +332,9 @@ namespace Microsoft.Azure.Commands.Compute
 
             var storaeAccountParameter = new StorageAccountCreateParameters
             {
-                AccountType = AccountType.StandardGRS,
                 Location = this.Location ?? this.VM.Location,
             };
+            storaeAccountParameter.SetAsStandardGRS();
 
             try
             {

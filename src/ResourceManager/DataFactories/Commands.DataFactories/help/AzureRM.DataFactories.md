@@ -23,6 +23,9 @@ Gets information about datasets in Azure Data Factory.
 ### [Get-AzureRmDataFactoryGateway](Get-AzureRmDataFactoryGateway.md)
 Gets information about logical gateways in Azure Data Factory.
 
+### [Get-AzureRmDataFactoryGatewayAuthKey](Get-AzureRmDataFactoryGatewayAuthKey.md)
+Gets gateway auth key for an Azure Data Factory.
+
 ### [Get-AzureRmDataFactoryHub](Get-AzureRmDataFactoryHub.md)
 Gets information about hubs in Azure Data Factory.
 
@@ -50,8 +53,11 @@ Encrypts sensitive data.
 ### [New-AzureRmDataFactoryGateway](New-AzureRmDataFactoryGateway.md)
 Creates a gateway for an Azure Data Factory.
 
+### [New-AzureRmDataFactoryGatewayAuthKey](New-AzureRmDataFactoryGatewayAuthKey.md)
+Creates auth key for an Azure Data Factory Gateway.
+
 ### [New-AzureRmDataFactoryGatewayKey](New-AzureRmDataFactoryGatewayKey.md)
-Creates a gateway key for an Azure Data Factory.
+Creates a gateway key for an Azure Data Factory. This cmdlet is deprecated, and you should use **New-AzureRmDataFactoryGatewayAuthKey** instead.
 
 ### [New-AzureRmDataFactoryHub](New-AzureRmDataFactoryHub.md)
 Creates a hub for an Azure Data Factory.

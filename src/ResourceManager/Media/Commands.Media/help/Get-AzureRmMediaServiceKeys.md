@@ -67,6 +67,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Media.Models.PSServiceKeys
+
 ## NOTES
 
 ## RELATED LINKS

@@ -20,6 +20,7 @@ using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
 using System;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC
 {
@@ -80,7 +81,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC
             HelpMessage = "The Azure Storage Context that provides the security settings used to upload " +
                           "the configuration script to the container specified by ContainerName")]
         [ValidateNotNullOrEmpty]
-        public AzureStorageContext StorageContext { get; set; }
+        public IStorageContext StorageContext { get; set; }
 
         /// <summary>
         /// Path to a local ZIP file to write the configuration archive to.

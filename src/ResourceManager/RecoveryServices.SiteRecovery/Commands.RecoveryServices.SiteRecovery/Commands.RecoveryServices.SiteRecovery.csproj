@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7C879645-31EE-4A78-AD81-5512300FA105}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.Azure.Commands.RecoveryServices.SiteRecovery</RootNamespace>
+    <AssemblyName>Microsoft.Azure.Commands.RecoveryServices.SiteRecovery</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.RecoveryServices.SiteRecovery\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\Package\Release\ResourceManager\AzureResourceManager\AzureRM.RecoveryServices.SiteRecovery\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>true</DelaySign>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=3.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\AutoMapper.3.1.1\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper.Net4, Version=3.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\AutoMapper.3.1.1\lib\net40\AutoMapper.Net4.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Management.RecoveryServices, Version=4.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.RecoveryServices.4.2.0-preview\lib\net45\Microsoft.Azure.Management.RecoveryServices.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Management.RecoveryServices.SiteRecovery, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.RecoveryServices.SiteRecovery.1.0.1-preview\lib\net452\Microsoft.Azure.Management.RecoveryServices.SiteRecovery.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Security.Cryptography">
+      <HintPath>Utilities\Security.Cryptography.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Extensions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\PSAsrNetworkClient.cs" />
+    <Compile Include="Common\PSAsrNetworkMappingClient.cs" />
+    <Compile Include="Common\PSAsrClient.cs" />
+    <Compile Include="Common\PSAsrClientHelper.cs" />
+    <Compile Include="Common\PSAsrJobClient.cs" />
+    <Compile Include="Common\PSAsrProtectableItemsClient.cs" />
+    <Compile Include="Common\PSAsrRecoveryPlanClient.cs" />
+    <Compile Include="Common\PSAsrRecoveryPointClient.cs" />
+    <Compile Include="Common\PSAsrReplicationProtectedItemsClient.cs" />
+    <Compile Include="Common\PSAsrProtectionContainerClient.cs" />
+    <Compile Include="Common\PSAsrPolicyClient.cs" />
+    <Compile Include="Common\PSAsrRecoveryServicesProviderClient.cs" />
+    <Compile Include="Common\PSAsrFabricClient.cs" />
+    <Compile Include="Common\PSAsrStorageClassificationClient.cs" />
+    <Compile Include="Common\AsrCmdletBase.cs" />
+    <Compile Include="Fabrics\GetAzureRmRecoveryServicesAsrFabric.cs" />
+    <Compile Include="Fabrics\NewAzureRmRecoveryServicesAsrFabric.cs" />
+    <Compile Include="Fabrics\RemoveAzureRmRecoveryServicesAsrFabric.cs" />
+    <Compile Include="Job\StopAzureRmRecoveryServicesAsrJob.cs" />
+    <Compile Include="Models\PSConstants.cs" />
+    <Compile Include="Models\PSNetworkObjects.cs" />
+    <Compile Include="Models\PSRecoveryPlanObjects.cs" />
+    <Compile Include="Network\GetAzureRmRecoveryServicesAsrNetworkMapping.cs" />
+    <Compile Include="Network\GetAzureRmRecoveryServicesAsrNetwork.cs" />
+    <Compile Include="Network\UpdateAzureRmRecoveryServicesAsrNetworkMapping.cs" />
+    <Compile Include="Policy\UpdateAzureRmRecoveryServicesAsrPolicy.cs" />
+    <Compile Include="ProtectableItem\GetAzureRmRecoveryServicesAsrProtectableItem.cs" />
+    <Compile Include="ProtectionContainerMapping\GetAzureRmRecoveryServicesAsrProtectionContainerMapping.cs" />
+    <Compile Include="ProtectionContainerMapping\NewAzureRmRecoveryServicesAsrProtectionContainerMapping.cs" />
+    <Compile Include="ProtectionContainerMapping\RemoveAzureRmRecoveryServicesAsrProtectionContainerMapping.cs" />
+    <Compile Include="ProtectionContainer\GetAzureRmRecoveryServicesAsrProtectionContainer.cs" />
+    <Compile Include="RecoveryPlan\EditAzureRmRecoveryServicesAsrRecoveryPlan.cs" />
+    <Compile Include="RecoveryPlan\NewAzureRmRecoveryServicesAsrRecoveryPlan.cs" />
+    <Compile Include="RecoveryPoint\GetAzureRmRecoveryServicesAsrRecoveryPoint.cs" />
+    <Compile Include="ReplicationProtectedItem\GetAzureRmRecoveryServicesAsrReplicationProtectedItem.cs" />
+    <Compile Include="ReplicationProtectedItem\NewAzureRmRecoveryServicesAsrReplicationProtectedItem.cs" />
+    <Compile Include="ReplicationProtectedItem\RemoveAzureRmRecoveryServicesAsrReplicationProtectedItem.cs" />
+    <Compile Include="ReplicationProtectedItem\SetAzureRmRecoveryServicesAsrReplicationProtectedItem.cs" />
+    <Compile Include="ReplicationProtectedItem\StartAzureRmRecoveryServicesAsrApplyRecoveryPoint.cs" />
+    <Compile Include="ReplicationProtectedItem\StartAzureRmRecoveryServicesAsrCommitFailoverJob.cs" />
+    <Compile Include="ReplicationProtectedItem\StartAzureRmRecoveryServicesAsrPlannedFailoverJob.cs" />
+    <Compile Include="ReplicationProtectedItem\StartAzureRmRecoveryServicesAsrTestFailoverJob.cs" />
+    <Compile Include="ReplicationProtectedItem\StartAzureRmRecoveryServicesAsrUnPlannedFailover.cs" />
+    <Compile Include="ReplicationProtectedItem\UpdateAzureRmRecoveryServicesAsrProtectionDirection.cs" />
+    <Compile Include="Network\NewAzureRmRecoveryServicesAsrNetworkMapping.cs" />
+    <Compile Include="Network\RemoveAzureRmRecoveryServicesAsrNetworkMapping.cs" />
+    <Compile Include="RecoveryPlan\GetAzureRmRecoveryServicesAsrRecoveryPlan.cs" />
+    <Compile Include="RecoveryPlan\RemoveAzureRmRecoveryServicesAsrRecoveryPlan.cs" />
+    <Compile Include="RecoveryPlan\UpdateAzureRmRecoveryServicesAsrRecoveryPlan.cs" />
+    <Compile Include="RecoveryServicesProvider\GetAzureRmRecoveryServicesAsrServicesProvider.cs" />
+    <Compile Include="RecoveryServicesProvider\RefreshAzureRmRecoveryServicesAsrServicesProvider.cs" />
+    <Compile Include="RecoveryServicesProvider\RemoveAzureRmRecoveryServicesAsrServicesProvider.cs" />
+    <Compile Include="Job\GetAzureRmRecoveryServicesAsrJob.cs" />
+    <Compile Include="Job\RestartAzureRmRecoveryServicesAsrJob.cs" />
+    <Compile Include="Job\ResumeAzureRmRecoveryServicesAsrJob.cs" />
+    <Compile Include="Models\PSContracts.cs" />
+    <Compile Include="Models\PSObjects.cs" />
+    <Compile Include="Models\PSParameterSets.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <DependentUpon>Resources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Policy\RemoveAzureRmRecoveryServicesAsrPolicy.cs" />
+    <Compile Include="Policy\NewAzureRmRecoveryServicesAsrPolicy.cs" />
+    <Compile Include="Policy\GetAzureRmRecoveryServicesAsrPolicy.cs" />
+    <Compile Include="Storage\Classification\GetAzureRmRecoveryServicesAsrStorageClassification.cs" />
+    <Compile Include="Storage\Classification\GetAzureRmRecoveryServicesAsrStorageClassificationMapping.cs" />
+    <Compile Include="Storage\Classification\NewAzureRmRecoveryServicesAsrStorageClassificationMapping.cs" />
+    <Compile Include="Storage\Classification\RemoveAzureRmRecoveryServicesAsrStorageClassificationMapping.cs" />
+    <Compile Include="Utilities\CertUtils.cs" />
+    <Compile Include="Utilities\SiteRecoveryAutoMapperProfile.cs" />
+    <Compile Include="Utilities\Utilities.cs" />
+    <Compile Include="Vault\SetAzureRmRecoveryServicesAsrVaultSettings.cs" />
+    <Compile Include="Vault\GetAzureRmRecoveryServicesAsrVaultSettings.cs" />
+    <Compile Include="Vault\ImportAzureRmRecoveryServicesAsrVaultSettingsFile.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\AzureRM.RecoveryServices.SiteRecovery.psd1">
+      <Link>AzureRM.RecoveryServices.SiteRecovery.psd1</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="MSSharedLibKey.snk" />
+    <None Include="packages.config" />
+    <None Include="RecoveryServicesAsrStartup.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
+      <Project>{70527617-7598-4aef-b5bd-db9186b8184b}</Project>
+      <Name>Commands.Common.Authentication.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication\Commands.Common.Authentication.csproj">
+      <Project>{D3804B64-C0D3-48F8-82EC-1F632F833C9E}</Project>
+      <Name>Commands.Common.Authentication</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
+      <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
+      <Name>Commands.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\Commands.Common.Authentication.ResourceManager\Commands.Common.Authentication.ResourceManager.csproj">
+      <Project>{69C2EB6B-CD63-480A-89A0-C489706E9299}</Project>
+      <Name>Commands.Common.Authentication.ResourceManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj">
+      <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
+      <Name>Commands.ResourceManager.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\RecoveryServices\Commands.RecoveryServices\Commands.RecoveryServices.csproj">
+      <Project>{604260dc-b392-4cf4-81ec-34b14591e2d2}</Project>
+      <Name>Commands.RecoveryServices</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\..\..\..\tools\Common.Dependencies.targets" />
+  <Target Name="AfterBuild">
+    <ItemGroup>
+      <MarkdownFiles Include="$(ProjectDir)help\*.*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(MarkdownFiles)" DestinationFolder="$(OutputPath)\help\" ContinueOnError="false" />
+  </Target>
+</Project>

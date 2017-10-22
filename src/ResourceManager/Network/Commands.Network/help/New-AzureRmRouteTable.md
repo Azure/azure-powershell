@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+Module Name: AzureRM.Network
 ms.assetid: 6A278F91-C078-4DD4-82D0-2E4FA549A089
 online version: 
 schema: 2.0.0
@@ -13,9 +14,9 @@ Creates a route table.
 ## SYNTAX
 
 ```
-New-AzureRmRouteTable -Name <String> -ResourceGroupName <String> -Location <String>
- [-Route <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSRoute]>]
- [-Tag <Hashtable>] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzureRmRouteTable -ResourceGroupName <String> -Name <String> -Location <String> [-Tag <Hashtable>]
+ [-Route <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSRoute]>] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,7 +35,7 @@ Id                : /subscriptions/xxxx-xxxx-xxxx-xxxx/resourceGroups/ResourceGr
                     k/routeTables/myroutetable
 Etag              : W/"db5f4e12-3f34-465b-92dd-0ab3bf6fc274"
 ProvisioningState : Succeeded
-Tags              : 
+Tags              :
 Routes            : [
                       {
                         "Name": "route07",
@@ -43,20 +44,36 @@ Routes            : [
                     soft.Network/routeTables/routetable01/routes/route07",
                         "AddressPrefix": "10.1.0.0/16",
                         "NextHopType": "VnetLocal",
-                        "NextHopIpAddress": null, 
+                        "NextHopIpAddress": null,
                         "ProvisioningState": "Succeeded"
                       }
-                    ] 
+                    ]
 Subnets           : []
 ```
 
-The first command creates a route named Route07 by using the New-AzureRmRouteConfig cmdlet, and then stores it in the $Route variable.
-This route forwards packets to the local virtual network.
+The first command creates a route named Route07 by using the New-AzureRmRouteConfig cmdlet, and
+then stores it in the $Route variable. This route forwards packets to the local virtual network.
 
-The second command creates a route table named RouteTable01, and adds the route stored in $Route to the new table.
-The command specifies the resource group to which the table belongs and the location for the table.
+The second command creates a route table named RouteTable01, and adds the route stored in $Route to
+the new table. The command specifies the resource group to which the table belongs and the location
+for the table.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Force
 Indicates that this cmdlet creates a route table even if a route table that has the same name already exists.
@@ -74,8 +91,8 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-Specifies the Azureregion in which this cmdlet creates a route table.
-For more information, see Azure Regionshttp://azure.microsoft.com/en-us/regions/ (http://azure.microsoft.com/en-us/regions/).
+Specifies the Azure region in which this cmdlet creates a route table.
+For more information, see [Azure Regions](http://azure.microsoft.com/en-us/regions/).
 
 ```yaml
 Type: String
@@ -135,7 +152,9 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Specifies a dictionary of tags to associate with the route table.
+Key-value pairs in the form of a hash table. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
 Type: Hashtable
@@ -187,6 +206,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Network.Models.PSRouteTable
+
 ## NOTES
 
 ## RELATED LINKS
@@ -198,5 +219,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzureRmRouteTable](./Remove-AzureRmRouteTable.md)
 
 [Set-AzureRmRouteTable](./Set-AzureRmRouteTable.md)
-
-

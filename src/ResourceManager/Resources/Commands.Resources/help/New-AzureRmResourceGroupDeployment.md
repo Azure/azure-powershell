@@ -156,8 +156,7 @@ Accept wildcard characters: False
 ```
 
 ### -Mode
-Specifies the deployment mode.
-The acceptable values for this parameter are:
+Specifies the deployment mode. The acceptable values for this parameter are:
 
 - Complete 
 - Incremental
@@ -169,7 +168,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: Incremental
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```

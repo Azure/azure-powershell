@@ -29,9 +29,9 @@ Specify the path of an APS script that contains a single DSC configuration.
 PS C:\>Import-AzureRmAutomationDscConfiguration -AutomationAccountName "Contoso17"-ResourceGroupName "ResourceGroup01" -SourcePath "C:\DSC\client.ps1" -Force
 ```
 
-This command imports the DSC configuration in the file named client.ps1 into the Automation account named Contoso17.
-The command specifies the *Force* parameter.
-If there is an existing DSC configuration, this command replaces it.
+This command imports the DSC configuration in the file named client.ps1 into the Automation account
+named Contoso17. The command specifies the *Force* parameter. If there is an existing DSC
+configuration, this command replaces it.
 
 ## PARAMETERS
 
@@ -81,8 +81,8 @@ Accept wildcard characters: False
 ```
 
 ### -LogVerbose
-Specifies whether this cmdlet turns verbose logging on or off for compilation jobs of this DSC configuration.
-Specify a value of $True to turn verbose logging on or $False to turn it off.
+Specifies whether this cmdlet turns verbose logging on or off for compilation jobs of this DSC
+configuration. Specify a value of $True to turn verbose logging on or $False to turn it off.
 
 ```yaml
 Type: Boolean
@@ -142,7 +142,9 @@ Accept wildcard characters: False
 ```
 
 ### -Tags
-Specifies a dictionary of tags.
+Key-value pairs in the form of a hash table. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
 Type: IDictionary
@@ -194,6 +196,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Automation.Model.DscConfiguration
+
 ## NOTES
 
 ## RELATED LINKS
@@ -201,5 +205,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Export-AzureRmAutomationDscConfiguration](./Export-AzureRmAutomationDscConfiguration.md)
 
 [Get-AzureRmAutomationDscConfiguration](./Get-AzureRmAutomationDscConfiguration.md)
-
-

@@ -22,15 +22,16 @@ using APIClient = Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Azu
 
 namespace Microsoft.Azure.Commands.MachineLearning.Utilities
 {
+    using Common.Authentication.Abstractions;
     using Rest.Azure;
 
     public class CommitmentPlansClient : MachineLearningClientBase
     {
         private readonly APIClient apiClient;
 
-        public CommitmentPlansClient(AzureContext context)
+        public CommitmentPlansClient(IAzureContext context)
         {
-            this.apiClient = AzureSession.ClientFactory.CreateArmClient<APIClient>(
+            this.apiClient = AzureSession.Instance.ClientFactory.CreateArmClient<APIClient>(
                 context,
                 AzureEnvironment.Endpoint.ResourceManager);
         }

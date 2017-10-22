@@ -16,12 +16,14 @@ using Microsoft.Azure.Commands.ServiceBus.Models;
 using Microsoft.Azure.Management.ServiceBus.Models;
 using System.Management.Automation;
 using System.Collections.Generic;
+using System;
 
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
 {
     /// <summary>
     /// 'Set-AzureRmServicebusQueueAuthorizationRule' Cmdlet updates the specified AuthorizationRule
     /// </summary>
+    [ObsoleteAttribute("'Set-AzureRmServicebusQueueAuthorizationRule' cmdlet is mark as obsolete and will be depricated in upcoming breaking changes build. Please use the New cmdlet 'Set-AzureRmServiceBusAuthorizationRule'", false)]
     [Cmdlet(VerbsCommon.Set, ServiceBusQueueAuthorizationRuleVerb, SupportsShouldProcess = true), OutputType(typeof(SharedAccessAuthorizationRuleAttributes))]
     public class SetAzureRmServiceBusNamespaceAuthorizationRule : AzureServiceBusCmdletBase
     {
@@ -37,47 +39,53 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
             Position = 1,
             HelpMessage = "Namespace Name.")]
         [ValidateNotNullOrEmpty]
-        public string NamespaceName { get; set; }
+        [Alias(AliasNamespaceName)]
+        public string Namespace { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 2,
             HelpMessage = "Queue Name.")]
         [ValidateNotNullOrEmpty]
-        public string QueueName { get; set; }
+        [Alias(AliasQueueName)]
+        public string Queue { get; set; }
 
         [Parameter(Mandatory = true,
             Position = 2,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "ServiceBus Queue AuthorizationRule Object.")]
         [ValidateNotNullOrEmpty]
-        public SharedAccessAuthorizationRuleAttributes AuthRuleObj { get; set; }
+        [Alias(AliasAuthRuleObj)]
+        public SharedAccessAuthorizationRuleAttributes InputObj { get; set; }
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             Position = 3,
             HelpMessage = "AuthorizationRule Name - Required if 'AuthruleObj' not specified.")]
         [ValidateNotNullOrEmpty]
-        public string AuthorizationRuleName { get; set; }
+        [Alias(AliasAuthorizationRuleName)]
+        public string Name { get; set; }
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             Position = 4,
             HelpMessage = "Required if 'AuthruleObj' not specified. Rights - e.g.  @(\"Listen\",\"Send\",\"Manage\")")]
         [ValidateNotNullOrEmpty]
+        [ValidateSet("Listen", "Send", "Manage",
+            IgnoreCase = true)]
         public string[] Rights { get; set; }
 
         public override void ExecuteCmdlet()
         {
             SharedAccessAuthorizationRuleAttributes sasRule = new SharedAccessAuthorizationRuleAttributes();
 
-            if (AuthRuleObj != null)
+            if (InputObj != null)
             {
-                sasRule = AuthRuleObj;
+                sasRule = InputObj;
             }
             else
             {
-                NamespaceAttributes getNameSpace = Client.GetNamespace(ResourceGroup, NamespaceName);
+                NamespaceAttributes getNameSpace = Client.GetNamespace(ResourceGroup, Namespace);
 
                 IList<Management.ServiceBus.Models.AccessRights?> newListAry = new List<Management.ServiceBus.Models.AccessRights?>();
 
@@ -86,16 +94,16 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
                     newListAry.Add(ParseAccessRights(test));
                 }
 
-                sasRule.Name = AuthorizationRuleName;
+                sasRule.Name = Name;
                 sasRule.Rights = newListAry;
                 sasRule.Location = getNameSpace.Location;
             }
 
             // Update a Servicebus Queue authorizationRule
             
-            if (ShouldProcess(target:AuthorizationRuleName, action: string.Format("Update AuthorizationRule:{0} of Queue:{1} of NameSpace:{2}",AuthorizationRuleName,QueueName,NamespaceName)))
+            if (ShouldProcess(target:Name, action: string.Format("Update AuthorizationRule:{0} of Queue:{1} of NameSpace:{2}",Name,Queue,Namespace)))
             {
-                WriteObject(Client.CreateOrUpdateServiceBusQueueAuthorizationRules(ResourceGroup, NamespaceName, QueueName, sasRule.Name, sasRule));
+                WriteObject(Client.CreateOrUpdateServiceBusQueueAuthorizationRules(ResourceGroup, Namespace, Queue, sasRule.Name, sasRule));
             }
 
         }

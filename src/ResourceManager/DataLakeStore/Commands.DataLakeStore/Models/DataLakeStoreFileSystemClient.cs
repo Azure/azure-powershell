@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Common.Authentication.Properties;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.DataLakeStore.Properties;
 using Microsoft.Azure.Management.DataLake.Store;
 using Microsoft.Azure.Management.DataLake.Store.Models;
 using Microsoft.Rest;
@@ -35,6 +35,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
     public class DataLakeStoreFileSystemClient
     {
         private const decimal MaximumBytesPerDownloadRequest = 32 * 1024 * 1024; //32MB
+        private const decimal MaximumBytesPerAppendRequest = 20 * 1024 * 1024; //20MB
 
         /// <summary>
         /// The lock object
@@ -48,7 +49,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
         #region Constructors
 
-        public DataLakeStoreFileSystemClient(AzureContext context)
+        public DataLakeStoreFileSystemClient(IAzureContext context)
         {
             if (context == null)
             {
@@ -255,7 +256,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                     // now find either the last (for head) or first (for tail) index of a new line in the stream.
                     // set the offset to the character immediately after (for head) or before (for tail)
                     // Then, for tail, subtract the amount of data that we want to read from that location (so read up to where the new line would be).
-                    var newOffset = StringExtensions.FindNewline(
+                    var newOffset = Management.DataLake.Store.StringExtensions.FindNewline(
                         streamAsBytes,
                         !reverse ? streamAsBytes.Length - 1 : 0,  // depending on if we are searching from the back or the front, the start index is either the front or back of the array
                         streamAsBytes.Length,
@@ -421,9 +422,27 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 deleteDirectory);
         }
 
-        public void CreateFile(string filePath, string accountName, Stream contents = null, bool overwrite = false)
+        public void CreateFile(string filePath, string accountName, MemoryStream contents = null, bool overwrite = false)
         {
-            _client.FileSystem.Create(accountName, filePath, contents, overwrite: overwrite);
+            if (contents.Length <= MaximumBytesPerAppendRequest)   
+            {
+                // use content-length header for request
+                _client.FileSystem.Create(accountName, filePath, contents, overwrite: overwrite);
+            }
+            else
+            {
+                // use transfer-encoding: chunked header for request
+                var customHeaders = new Dictionary<string, List<string>>();
+                customHeaders.Add("Transfer-Encoding", new List<string> { "Chunked" });
+                _client.FileSystem.CreateWithHttpMessagesAsync(
+                    accountName,
+                    filePath,
+                    contents,
+                    overwrite: overwrite,
+                    customHeaders: customHeaders).GetAwaiter().GetResult();
+            }
+
+
         }
 
         public bool CreateDirectory(string dirPath, string accountName)
@@ -432,9 +451,24 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             return boolean != null && boolean.Value;
         }
 
-        public void AppendToFile(string filePath, string accountName, Stream contents)
+        public void AppendToFile(string filePath, string accountName, MemoryStream contents)
         {
-            _client.FileSystem.Append(accountName, filePath, contents);
+            if (contents.Length <= MaximumBytesPerAppendRequest)
+            {
+                // use content-length header for request
+                _client.FileSystem.Append(accountName, filePath, contents);
+            }
+            else
+            {
+                // use transfer-encoding: chunked header for request
+                var customHeaders = new Dictionary<string, List<string>>();
+                customHeaders.Add("Transfer-Encoding", new List<string> { "Chunked" });
+                _client.FileSystem.AppendWithHttpMessagesAsync(
+                    accountName,
+                    filePath,
+                    contents,
+                    customHeaders: customHeaders).GetAwaiter().GetResult();
+            }
         }
 
         public void CopyFile(string destinationPath, string accountName, string sourcePath,

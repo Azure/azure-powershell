@@ -169,6 +169,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.NotificationHubs.Models.NotificationHubAttributes
+
 ## NOTES
 
 ## RELATED LINKS

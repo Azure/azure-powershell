@@ -17,10 +17,12 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Reflection;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
-using Microsoft.Azure.Insights.Models;
+using Microsoft.Azure.Management.Monitor.Models;
 
 namespace Microsoft.Azure.Commands.Insights
 {
+    using System.Linq;
+
     /// <summary>
     /// Static class contaning common functions
     /// </summary>

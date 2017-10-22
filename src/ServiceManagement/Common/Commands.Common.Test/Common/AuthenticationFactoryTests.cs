@@ -22,6 +22,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit.Abstractions;
 using Microsoft.WindowsAzure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
 {
@@ -30,6 +31,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
         public AuthenticationFactoryTests(ITestOutputHelper output)
         {
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            AzureSessionInitializer.InitializeAzureSession();
         }
 
         [Fact]
@@ -42,25 +44,23 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             };
 
             var subscriptionId = Guid.NewGuid();
+            var subscription = new AzureSubscription
+            {
+                Id = subscriptionId.ToString(),
+            };
+
+            var account = new AzureAccount
+            {
+                Id = "testuser",
+                Type = AzureAccount.AccountType.User
+            };
+            account.SetTenants("123");
+
+            subscription.SetProperty(AzureSubscription.Property.Tenants, "123");
 
             var credential = authFactory.GetSubscriptionCloudCredentials(new AzureContext(
-                new AzureSubscription
-                {
-                    Id = subscriptionId,
-                    Properties = new Dictionary<AzureSubscription.Property, string>
-                    {
-                        { AzureSubscription.Property.Tenants, "123"}
-                    }
-                },
-                new AzureAccount
-                {
-                    Id = "testuser",
-                    Type = AzureAccount.AccountType.User,
-                    Properties = new Dictionary<AzureAccount.Property, string>
-                    {
-                        { AzureAccount.Property.Tenants, "123" }
-                    }
-                },
+                subscription,
+                account,
                 AzureEnvironment.PublicEnvironments["AzureCloud"]
                 
             ));

@@ -37,6 +37,12 @@ namespace Microsoft.Azure.Commands.MachineLearning
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The name of region")]
+        [ValidateNotNullOrEmpty]
+        public string Region { get; set; }
+
         protected override void RunCmdlet()
         {
             if (!string.IsNullOrWhiteSpace(this.Name))
@@ -48,7 +54,7 @@ namespace Microsoft.Azure.Commands.MachineLearning
                 }
 
                 // If this is a simple get web service by name operation, resolve it as such
-                WebService service = this.WebServicesClient.GetAzureMlWebService(this.ResourceGroupName, this.Name);
+                WebService service = this.WebServicesClient.GetAzureMlWebService(this.ResourceGroupName, this.Name, this.Region);
                 this.WriteObject(service);
             }
             else

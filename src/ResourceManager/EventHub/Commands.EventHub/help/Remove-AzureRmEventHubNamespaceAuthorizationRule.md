@@ -13,11 +13,11 @@ Deletes the specified authorization rule on the given Event Hubs namespace.
 
 ```
 Remove-AzureRmEventHubNamespaceAuthorizationRule [-ResourceGroupName] <String> [-NamespaceName] <String>
- [-AuthorizationRuleName] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AuthorizationRuleName] <String> [-WhatIf] [-Confirm]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmEventHubNamespaceAuthorizationRule** cmdlet removes and deletes the specified authorization rule on the given Event Hubs namespace.
+The Remove-AzureRmEventHubNamespaceAuthorizationRule cmdlet removes and deletes the specified authorization rule on the given Event Hubs namespace.
 
 ## EXAMPLES
 
@@ -26,7 +26,7 @@ The **Remove-AzureRmEventHubNamespaceAuthorizationRule** cmdlet removes and dele
 PS C:\> Remove-AzureRmEventHubNamespaceAuthorizationRule -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -AuthorizationRuleName MyAuthRuleName
 ```
 
-Removes the authorization rule `MyAuthRuleName` from the namespace `MyNamespaceName`.
+Removes the authorization rule \`MyAuthRuleName\` from the namespace \`MyNamespaceName\`.
 
 ## PARAMETERS
 
@@ -105,9 +105,6 @@ Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
-
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -39,7 +39,7 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
 
     public abstract class BlobCreatorBase
     {
-        private const long OneTeraByte = 1024L * 1024L * 1024L * 1024L;
+        private const long FourTeraByte = 4 * 1024L * 1024L * 1024L * 1024L;
 
         protected FileInfo localVhd;
         protected readonly ICloudPageBlobObjectFactory blobObjectFactory;
@@ -96,10 +96,10 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
         {
             using (var stream = new VirtualDiskStream(fileInfo.FullName))
             {
-                if (stream.Length > OneTeraByte)
+                if (stream.Length > FourTeraByte)
                 {
                     var lengthString = stream.Length.ToString("N0", CultureInfo.CurrentCulture);
-                    var expectedLengthString = OneTeraByte.ToString("N0", CultureInfo.CurrentCulture);
+                    var expectedLengthString = FourTeraByte.ToString("N0", CultureInfo.CurrentCulture);
                     string message = String.Format("VHD size is too large ('{0}'), maximum allowed size is '{1}'.", lengthString, expectedLengthString);
                     throw new InvalidOperationException(message);
                 }
@@ -126,7 +126,8 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
 
                 if (overWrite)
                 {
-                    destinationBlob.DeleteIfExists(DeleteSnapshotsOption.IncludeSnapshots, null, requestOptions);
+                    destinationBlob.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots, null, requestOptions, operationContext: null)
+                        .ConfigureAwait(false).GetAwaiter().GetResult();
                 }
 
                 if (destinationBlob.Exists(requestOptions))
@@ -184,7 +185,9 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
                 var bs = new BufferedStream(vds);
                 if (resume)
                 {
-                    var alreadyUploadedRanges = context.DestinationBlob.GetPageRanges().Select(pr => new IndexRange(pr.StartOffset, pr.EndOffset));
+                    var alreadyUploadedRanges = context.DestinationBlob.GetPageRangesAsync()
+                        .ConfigureAwait(false).GetAwaiter().GetResult()
+                        .Select(pr => new IndexRange(pr.StartOffset, pr.EndOffset));
                     ranges = IndexRange.SubstractRanges(ranges, alreadyUploadedRanges);
                     context.AlreadyUploadedDataSize = alreadyUploadedRanges.Sum(ir => ir.Length);
                 }

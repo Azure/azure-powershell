@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Profile;
 using System.Collections.Generic;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.Profile
 {
@@ -39,7 +40,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
 
         public override void ExecuteCmdlet()
         {
-            IEnumerable<AzureAccount> accounts = Profile.Accounts.Values.Where(a => Name == null || a.Id == Name);
+            IEnumerable<IAzureAccount> accounts = Profile.AccountTable.Values.Where(a => Name == null || a.Id == Name);
             List<PSAzureAccount> output = new List<PSAzureAccount>();
             foreach (AzureAccount account in accounts) {
                 output.Add(account.ToPSAzureAccount());

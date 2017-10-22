@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+Module Name: AzureRM.Network
 ms.assetid: A420B3E7-2FE9-4D0B-803E-AC28E5F23C59
 online version: 
 schema: 2.0.0
@@ -15,7 +16,8 @@ Creates a network security group.
 ```
 New-AzureRmNetworkSecurityGroup -Name <String> -ResourceGroupName <String> -Location <String>
  [-SecurityRules <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSSecurityRule]>]
- [-Tag <Hashtable>] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable>] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,24 +34,38 @@ This command ceates a new Azure network security group named "nsg1" in resource 
 
 ### 2: Create a detailed network security group
 ```
-$rule1 = New-AzureRmNetworkSecurityRuleConfig -Name rdp-rule -Description "Allow RDP" 
-    -Access Allow -Protocol Tcp -Direction Inbound -Priority 100 -SourceAddressPrefix 
+$rule1 = New-AzureRmNetworkSecurityRuleConfig -Name rdp-rule -Description "Allow RDP"
+    -Access Allow -Protocol Tcp -Direction Inbound -Priority 100 -SourceAddressPrefix
     Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389
-    
-$rule2 = New-AzureRmNetworkSecurityRuleConfig -Name web-rule -Description "Allow HTTP" 
-    -Access Allow -Protocol Tcp -Direction Inbound -Priority 101 -SourceAddressPrefix 
+
+$rule2 = New-AzureRmNetworkSecurityRuleConfig -Name web-rule -Description "Allow HTTP"
+    -Access Allow -Protocol Tcp -Direction Inbound -Priority 101 -SourceAddressPrefix
     Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 80
-    
-$nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName TestRG -Location westus -Name 
+
+$nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName TestRG -Location westus -Name
     "NSG-FrontEnd" -SecurityRules $rule1,$rule2
 ```
 
 Step:1 Create a security rule allowing access from the Internet to port 3389.
 Step:2 Create a security rule allowing access from the Internet to port 80.
 Step:3 Add the rules created above to a new NSG named NSG-FrontEnd.
-    
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Force
 Forces the command to run without asking for user confirmation.
@@ -128,7 +144,9 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Specifies a dictionary of tags to associate with a network security group.
+Key-value pairs in the form of a hash table. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
 Type: Hashtable
@@ -180,6 +198,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Network.Models.PSNetworkSecurityGroup
+
 ## NOTES
 
 ## RELATED LINKS
@@ -189,5 +209,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzureRmNetworkSecurityGroup](./Remove-AzureRmNetworkSecurityGroup.md)
 
 [Set-AzureRmNetworkSecurityGroup](./Set-AzureRmNetworkSecurityGroup.md)
-
-

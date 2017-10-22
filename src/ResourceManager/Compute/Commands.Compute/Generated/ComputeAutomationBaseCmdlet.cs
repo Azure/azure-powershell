@@ -112,11 +112,35 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
         }
 
+        public IResourceSkusOperations ResourceSkusClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.ResourceSkus;
+            }
+        }
+
         public ISnapshotsOperations SnapshotsClient
         {
             get
             {
                 return ComputeClient.ComputeManagementClient.Snapshots;
+            }
+        }
+
+        public IVirtualMachineRunCommandsOperations VirtualMachineRunCommandsClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.VirtualMachineRunCommands;
+            }
+        }
+
+        public IVirtualMachineScaleSetRollingUpgradesOperations VirtualMachineScaleSetRollingUpgradesClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.VirtualMachineScaleSetRollingUpgrades;
             }
         }
 
@@ -212,7 +236,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                             {
                                 Type propType = elem[i].GetType();
 
-                                if (propType.IsSerializable)
+                                if (propType.IsSerializable || propType.Equals(typeof(Newtonsoft.Json.Linq.JObject)))
                                 {
                                     tupleList.Add(MakeTuple(property.Name + "[" + i + "]", elem[i].ToString(), depth));
                                 }

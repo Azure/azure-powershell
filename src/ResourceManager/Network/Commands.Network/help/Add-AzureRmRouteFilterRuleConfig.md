@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+Module Name: AzureRM.Network
 online version: 
 schema: 2.0.0
 ---
@@ -13,8 +14,8 @@ Adds a route filter rule to a route filter.
 
 ```
 Add-AzureRmRouteFilterRuleConfig -RouteFilter <PSRouteFilter> [-Force] -Name <String> -Access <String>
- -RouteFilterRuleType <String> -CommunityList <System.Collections.Generic.List`1[System.String]> [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ -RouteFilterRuleType <String> -CommunityList <System.Collections.Generic.List`1[System.String]>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,6 +25,14 @@ The Add-AzureRmRouteFilterRuleConfig cmdlet adds a route filter rule to an Azure
 
 ### --------------------------  Example 1: Add a route filter rule to a route filter  --------------------------
 @{paragraph=PS C:\\\>}
+
+
+
+
+
+
+
+
 
 
 
@@ -56,7 +65,9 @@ Accept wildcard characters: False
 ```
 
 ### -CommunityList
-The list of community value that route filter will filter on```yaml
+The list of community value that route filter will filter on
+
+```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
 Aliases: 
@@ -68,8 +79,25 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Force
-Do not ask for confirmation if you want to overrite a resource```yaml
+Do not ask for confirmation if you want to overrite a resource
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
@@ -163,22 +191,27 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### PSRouteFilter
+Parameter 'RouteFilter' accepts value of type 'PSRouteFilter' from the pipeline
+
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Network.Models.PSRouteFilter
 
 ## NOTES
 Keywords: azure, azurerm, arm, resource, management, manager, network, networking
 
 ## RELATED LINKS
 
-[Get-AzureRmRouteFilterRuleConfig]()
+[Get-AzureRmRouteFilterRuleConfig](./Get-AzureRmRouteFilterRuleConfig.md)
 
-[Get-AzureRmRouteFilter]()
+[Get-AzureRmRouteFilter](./Get-AzureRmRouteFilter.md)
 
-[New-AzureRmRouteFilterRuleConfigConfig]()
+[New-AzureRmRouteFilterRuleConfigConfig](./New-AzureRmRouteFilterRuleConfigConfig.md)
 
-[Remove-AzureRmRouteFilterRuleConfigConfig]()
+[Remove-AzureRmRouteFilterRuleConfigConfig](./Remove-AzureRmRouteFilterRuleConfigConfig.md)
 
-[Set-AzureRmRouteFilterRuleConfigConfig]()
+[Set-AzureRmRouteFilterRuleConfigConfig](./Set-AzureRmRouteFilterRuleConfigConfig.md)
 
-[Set-AzureRmRouteFilter]()
+[Set-AzureRmRouteFilter](./Set-AzureRmRouteFilter.md)
 

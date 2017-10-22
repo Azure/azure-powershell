@@ -8,8 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.ServiceBus.Properties
-{
+namespace Microsoft.Azure.Commands.ServiceBus {
     using System;
     
     
@@ -62,11 +61,281 @@ namespace Microsoft.Azure.Commands.ServiceBus.Properties
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create New NameSpace:{0} for ResourceGroup:{1}.
+        /// </summary>
+        internal static string CreateNamesapce {
+            get {
+                return ResourceManager.GetString("CreateNamesapce", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creating new AuthorizationRule named:{0} for Namespace: {1}.
+        /// </summary>
+        internal static string CreateNamespaceAuthorizationrule {
+            get {
+                return ResourceManager.GetString("CreateNamespaceAuthorizationrule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create New Queue:{0} for Namespace:{1}.
+        /// </summary>
+        internal static string CreateQueue {
+            get {
+                return ResourceManager.GetString("CreateQueue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creating new AuthorizationRule named:{0} for Queue: {1}.
+        /// </summary>
+        internal static string CreateQueueAuthorizationrule {
+            get {
+                return ResourceManager.GetString("CreateQueueAuthorizationrule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create a new Rule:{0} for Subscription:{1} of Namsespae:{2}.
+        /// </summary>
+        internal static string CreateRule {
+            get {
+                return ResourceManager.GetString("CreateRule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create a new Subscription:{0} for Topic:{1} of Namsespae:{2}.
+        /// </summary>
+        internal static string CreateSubscription {
+            get {
+                return ResourceManager.GetString("CreateSubscription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create a new Topic:{0} for Namespace:{1}.
+        /// </summary>
+        internal static string CreateTopic {
+            get {
+                return ResourceManager.GetString("CreateTopic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creating new AuthorizationRule named:{0} for Topic: {1}.
+        /// </summary>
+        internal static string CreateTopicAuthorizationrule {
+            get {
+                return ResourceManager.GetString("CreateTopicAuthorizationrule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to File {0} does not exist.
         /// </summary>
         internal static string FileDoesNotExist {
             get {
                 return ResourceManager.GetString("FileDoesNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Generating PrimaryKey/SecondaryKey for AuthorizationRule: {0} of Namespace:{1}.
+        /// </summary>
+        internal static string RegenerateKeyNamesapce {
+            get {
+                return ResourceManager.GetString("RegenerateKeyNamesapce", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Generating PrimaryKey/SecondaryKey for AuthorizationRule: {0} of Queue:{1}.
+        /// </summary>
+        internal static string RegenerateKeyQueue {
+            get {
+                return ResourceManager.GetString("RegenerateKeyQueue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Generating PrimaryKey/SecondaryKey for AuthorizationRule: {0} of Topic:{1}.
+        /// </summary>
+        internal static string RegenerateKeyTopic {
+            get {
+                return ResourceManager.GetString("RegenerateKeyTopic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete Namespace:{0} ofthe ResourceGroup:{1}.
+        /// </summary>
+        internal static string RemoveNamespace {
+            get {
+                return ResourceManager.GetString("RemoveNamespace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete  AtuhorizationRule:{0} of Namespace: {1}.
+        /// </summary>
+        internal static string RemoveNamespaceAuthorizationRule {
+            get {
+                return ResourceManager.GetString("RemoveNamespaceAuthorizationRule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deleting Queue:{0} of NameSpace:{1}.
+        /// </summary>
+        internal static string RemoveQueue {
+            get {
+                return ResourceManager.GetString("RemoveQueue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removeing AtuhorizationRule:{0} from Queue::{1} of Namespace: {2}.
+        /// </summary>
+        internal static string RemoveQueueAuthorizationRule {
+            get {
+                return ResourceManager.GetString("RemoveQueueAuthorizationRule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deleting Rule:{0} for Subscription:{1} of NameSpace:{2}.
+        /// </summary>
+        internal static string RemoveRule {
+            get {
+                return ResourceManager.GetString("RemoveRule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deleting Subscription:{0} for Topic:{1} of NameSpace:{2}.
+        /// </summary>
+        internal static string RemoveSubscription {
+            get {
+                return ResourceManager.GetString("RemoveSubscription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deleting Topic:{0} of NameSpace:{1}.
+        /// </summary>
+        internal static string RemoveTopic {
+            get {
+                return ResourceManager.GetString("RemoveTopic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removeing AtuhorizationRule:{0} from Topic: {1} of Namespace: {2}.
+        /// </summary>
+        internal static string RemoveTopicAuthorizationRule {
+            get {
+                return ResourceManager.GetString("RemoveTopicAuthorizationRule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing AtuhorizationRule:{0} of Namespace: {1}.
+        /// </summary>
+        internal static string RemovingNamespaceAuthorizationRule {
+            get {
+                return ResourceManager.GetString("RemovingNamespaceAuthorizationRule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove AtuhorizationRule:{0} from Queue:{1} of Namespace: {2}.
+        /// </summary>
+        internal static string RemovingQueueAuthorizationRule {
+            get {
+                return ResourceManager.GetString("RemovingQueueAuthorizationRule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove AtuhorizationRule:{0} from Topic: {1} of Namespace: {2}.
+        /// </summary>
+        internal static string RemovingTopicAuthorizationRule {
+            get {
+                return ResourceManager.GetString("RemovingTopicAuthorizationRule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update Namespace:{0} of the ResorceGroup:{1}.
+        /// </summary>
+        internal static string UpdateNamespace {
+            get {
+                return ResourceManager.GetString("UpdateNamespace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating  AuthorizationRule named:{0} for Namespace: {1}.
+        /// </summary>
+        internal static string UpdateNamespaceAuthorizationrule {
+            get {
+                return ResourceManager.GetString("UpdateNamespaceAuthorizationrule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating Queue:{0} of the NameSpace:{1}.
+        /// </summary>
+        internal static string UpdateQueue {
+            get {
+                return ResourceManager.GetString("UpdateQueue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating AuthorizationRule named:{0} for Queue: {1}.
+        /// </summary>
+        internal static string UpdateQueueAuthorizationrule {
+            get {
+                return ResourceManager.GetString("UpdateQueueAuthorizationrule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update Rule:{0} of Subscription:{1}.
+        /// </summary>
+        internal static string UpdateRule {
+            get {
+                return ResourceManager.GetString("UpdateRule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update Subscription:{0} of Topic:{1}.
+        /// </summary>
+        internal static string UpdateSubscription {
+            get {
+                return ResourceManager.GetString("UpdateSubscription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update Topic:{0} of NameSpace:{1}.
+        /// </summary>
+        internal static string UpdateTopic {
+            get {
+                return ResourceManager.GetString("UpdateTopic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating AuthorizationRule named:{0} for Topic: {1}.
+        /// </summary>
+        internal static string UpdateTopicAuthorizationrule {
+            get {
+                return ResourceManager.GetString("UpdateTopicAuthorizationrule", resourceCulture);
             }
         }
     }

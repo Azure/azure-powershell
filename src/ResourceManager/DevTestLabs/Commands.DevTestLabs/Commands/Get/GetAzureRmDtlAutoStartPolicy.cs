@@ -14,8 +14,6 @@
 
 using Microsoft.Azure.Commands.DevTestLabs.Models;
 using Microsoft.Azure.Management.DevTestLabs;
-using System;
-using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DevTestLabs
@@ -27,7 +25,7 @@ namespace Microsoft.Azure.Commands.DevTestLabs
     {
         public override void ExecuteCmdlet()
         {
-            var schedule = DataServiceClient.Schedule.GetResource(
+            var schedule = DataServiceClient.Schedules.Get(
                 ResourceGroupName,
                 LabName,
                 WellKnownPolicyNames.LabVmsAutoStart);

@@ -52,6 +52,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Management.Storage.Models.CheckNameAvailabilityResult
+
 ## NOTES
 
 ## RELATED LINKS

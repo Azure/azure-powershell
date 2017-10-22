@@ -17,6 +17,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     using System;
     using System.Globalization;
     using System.Management.Automation;
+    using Microsoft.Azure.Management.Logic.Models;
     using Microsoft.Azure.Commands.LogicApp.Utilities;
 
     /// <summary>
@@ -65,6 +66,14 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         [ValidateNotNullOrEmpty]
         public bool IsMessageProcessingFailed { get; set; }
 
+        /// <summary>
+        /// Gets or sets the agreement type.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "The integration account agreement type.")]
+        [Alias("MessageType")]
+        [ValidateSet("X12", "Edifact", IgnoreCase = true)]
+        public string AgreementType { get; set; }
+
         #endregion Input Parameters
 
         /// <summary>
@@ -74,17 +83,25 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         {
             base.ExecuteCmdlet();
 
-            var integrationAccountGeneratedIcn = this.IntegrationAccountClient.GetIntegrationAccountReceivedControlNumber(
+            if (string.IsNullOrEmpty(AgreementType))
+            {
+                this.WriteWarning(Constants.NoAgreementTypeParameterWarningMessage);
+                AgreementType = "X12";
+            }
+
+            var integrationAccountReceivedIcn = this.IntegrationAccountClient.GetIntegrationAccountReceivedControlNumber(
                 resourceGroupName: this.ResourceGroupName,
                 integrationAccountName: this.Name,
                 integrationAccountAgreementName: this.AgreementName,
+                agreementType: (AgreementType)Enum.Parse(enumType: typeof(AgreementType), value: AgreementType, ignoreCase: true),
                 controlNumber: this.ControlNumberValue);
 
-            integrationAccountGeneratedIcn.ControlNumber = this.ControlNumberValue;
-            integrationAccountGeneratedIcn.IsMessageProcessingFailed = this.IsMessageProcessingFailed;
-            integrationAccountGeneratedIcn.ControlNumberChangedTime = DateTime.UtcNow > integrationAccountGeneratedIcn.ControlNumberChangedTime ?
+            integrationAccountReceivedIcn.MessageType = (MessageType)Enum.Parse(enumType: typeof(MessageType), value: AgreementType, ignoreCase: true);
+            integrationAccountReceivedIcn.ControlNumber = this.ControlNumberValue;
+            integrationAccountReceivedIcn.IsMessageProcessingFailed = this.IsMessageProcessingFailed;
+            integrationAccountReceivedIcn.ControlNumberChangedTime = DateTime.UtcNow > integrationAccountReceivedIcn.ControlNumberChangedTime ?
                 DateTime.UtcNow :
-                integrationAccountGeneratedIcn.ControlNumberChangedTime.AddTicks(1);
+                integrationAccountReceivedIcn.ControlNumberChangedTime.AddTicks(1);
 
             this.ConfirmAction(
                 processMessage: string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateReceivedControlNumberMessage, this.ControlNumberValue, "Microsoft.Logic/integrationAccounts/agreements", this.Name),
@@ -96,7 +113,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                             resourceGroupName: this.ResourceGroupName,
                             integrationAccountName: this.Name,
                             integrationAccountAgreementName: this.AgreementName,
-                            integrationAccountControlNumber: integrationAccountGeneratedIcn),
+                            agreementType: (AgreementType)Enum.Parse(enumType: typeof(AgreementType), value: AgreementType, ignoreCase: true),
+                            integrationAccountControlNumber: integrationAccountReceivedIcn),
                         enumerateCollection: true);
                 });
         }

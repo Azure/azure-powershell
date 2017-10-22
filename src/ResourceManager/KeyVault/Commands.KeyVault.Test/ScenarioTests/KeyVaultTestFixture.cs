@@ -1,4 +1,4 @@
-﻿using Microsoft.Azure.Graph.RBAC;
+﻿using Microsoft.Azure.Graph.RBAC.Version1_6;
 using Microsoft.Azure.Management.KeyVault;
 using Microsoft.Azure.Management.KeyVault.Models;
 using Microsoft.Azure.Management.Resources;

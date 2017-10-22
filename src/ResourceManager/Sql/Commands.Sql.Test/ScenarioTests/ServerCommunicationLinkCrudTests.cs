@@ -22,9 +22,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
     public class ServerCommunicationLinkCrudTests : SqlTestsBase
     {
-        public ServerCommunicationLinkCrudTests(ITestOutputHelper output)
+        public ServerCommunicationLinkCrudTests(ITestOutputHelper output) : base(output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
         [Fact]

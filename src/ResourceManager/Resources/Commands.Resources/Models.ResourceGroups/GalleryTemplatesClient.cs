@@ -14,10 +14,10 @@
 
 using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Resources.Models.Gallery;
 using Microsoft.Azure.Common.OData;
-using Microsoft.Azure.Gallery;
-using Microsoft.Azure.Gallery.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using System;
@@ -38,8 +38,8 @@ namespace Microsoft.Azure.Commands.Resources.Models
     {
         public IGalleryClient GalleryClient { get; set; }
 
-        public GalleryTemplatesClient(AzureContext context)
-            : this(AzureSession.ClientFactory.CreateClient<GalleryClient>(context, AzureEnvironment.Endpoint.Gallery))
+        public GalleryTemplatesClient(IAzureContext context)
+            : this(AzureSession.Instance.ClientFactory.CreateClient<GalleryClient>(context, AzureEnvironment.Endpoint.Gallery))
         {
 
         }

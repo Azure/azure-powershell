@@ -16,6 +16,7 @@ using System.Configuration;
 using System.Reflection;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using RecoveryServicesNS = Microsoft.Azure.Management.RecoveryServices.Backup;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS
 {
@@ -59,7 +60,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// AzureContext based ctor
         /// </summary>
         /// <param name="context">Azure context</param>
-        public ServiceClientAdapter(AzureContext context)
+        public ServiceClientAdapter(IAzureContext context)
         {
             BmsAdapter = new ClientProxy<RecoveryServicesNS.RecoveryServicesBackupClient>(context);
         }

@@ -19,7 +19,7 @@ Set-AzureRmCurrentStorageAccount -ResourceGroupName <String> -Name <String> [<Co
 
 ### UsingStorageContext
 ```
-Set-AzureRmCurrentStorageAccount -Context <AzureStorageContext> [<CommonParameters>]
+Set-AzureRmCurrentStorageAccount -Context <IStorageContext> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,7 +42,7 @@ Specifies an **AzureStorageContext** object for the current Storage account.
 To obtain a storage context object, use the New-AzureStorageContext cmdlet.
 
 ```yaml
-Type: AzureStorageContext
+Type: IStorageContext
 Parameter Sets: UsingStorageContext
 Aliases: 
 
@@ -88,7 +88,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### IStorageContext
+
+Parameter 'Context' accepts value of type 'IStorageContext' from the pipeline
+
 ## OUTPUTS
+
+### System.String
 
 ## NOTES
 

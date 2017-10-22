@@ -29,6 +29,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
         public Hashtable Tags { get; set; }
 
+        public int? RetentionInDays { get; set; }
+
         public Action<bool, string, string, string, Action, Func<bool>> ConfirmAction { get; set; }
     }
 }
