@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true,
+        [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "EnablePartitioning")]
         [ValidateSet("TRUE", "FALSE",
