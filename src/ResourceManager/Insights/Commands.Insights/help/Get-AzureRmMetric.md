@@ -252,6 +252,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Insights.OutputClasses.PSMetric[]
+
 ## NOTES
 
 ## RELATED LINKS

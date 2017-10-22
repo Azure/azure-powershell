@@ -33,28 +33,31 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.ConsumerGroup
             Position = 1,
             HelpMessage = "Namespace Name.")]
         [ValidateNotNullOrEmpty]
-        public string NamespaceName { get; set; }
+        [Alias(AliasNamespaceName)]
+        public string Namespace { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 2,
             HelpMessage = "EventHub Name.")]
         [ValidateNotNullOrEmpty]
-        public string EventHubName { get; set; }
+        [Alias(AliasEventHubName)]
+        public string EventHub { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 3,
             HelpMessage = "ConsumerGroup Name.")]
         [ValidateNotNullOrEmpty]
-        public string ConsumerGroupName { get; set; }
+        [Alias(AliasConsumerGroupName)]
+        public string Name { get; set; }
 
         public override void ExecuteCmdlet()
         {
             // delete a ConsumerGroup 
-            if (ShouldProcess(target:ConsumerGroupName, action: string.Format("Deleting ConsumerGrop:{0} from Eventhub:{1}", ConsumerGroupName, EventHubName)))
+            if (ShouldProcess(target:Name, action: string.Format(Resources.RemoveConsumerGroup, Name, EventHub)))
                {
-                Client.DeletConsumerGroup(ResourceGroupName, NamespaceName, EventHubName, ConsumerGroupName);
+                    Client.DeletConsumerGroup(ResourceGroupName, Namespace, EventHub, Name);
                }
         }
     }

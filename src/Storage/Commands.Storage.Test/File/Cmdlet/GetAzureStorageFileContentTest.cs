@@ -10,6 +10,7 @@ using Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet;
 using Microsoft.WindowsAzure.Management.Storage.Test.Common;
 using Microsoft.WindowsAzure.Storage.DataMovement;
 using Microsoft.WindowsAzure.Storage.File;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using PSHFile = Microsoft.WindowsAzure.Commands.Storage.File;
 
 namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
@@ -45,6 +46,7 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
         [TestMethod]
         public void DownloadFileUsingShareNameAndPathToLocalFileTest()
         {
+            this.CmdletInstance.DisableDataCollection();
             DownloadFileInternal(
                 "share",
                 "remoteFile",
@@ -59,6 +61,7 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
         [TestMethod]
         public void DownloadFileUsingShareObjectAndPathToLocalFileTest()
         {
+            this.CmdletInstance.DisableDataCollection();
             DownloadFileInternal(
                 "share",
                 "remoteFile",
@@ -73,6 +76,7 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
         [TestMethod]
         public void DownloadFileUsingDirectoryAndPathToLocalFileTest()
         {
+            this.CmdletInstance.DisableDataCollection();
             DownloadFileInternal(
                 "share",
                 "remoteFile",
@@ -87,6 +91,7 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
         [TestMethod]
         public void DownloadFileUsingFileObjectToLocalFileTest()
         {
+            this.CmdletInstance.DisableDataCollection();
             DownloadFileInternal(
                 "share",
                 "remoteFile",
@@ -100,6 +105,7 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
         [TestMethod]
         public void DownloadFileUsingFileObjectToLocalDirectoryTest()
         {
+            this.CmdletInstance.DisableDataCollection();
             this.destinationFilePath = Path.Combine(this.destinationPath, "remoteFile");
             DownloadFileInternal(
                 "share",
@@ -138,7 +144,7 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
                 validateAction = validate;
             }
 
-            public override Task DownloadAsync(CloudFile sourceFile, string destFilePath, DownloadOptions options, TransferContext context, CancellationToken cancellationToken)
+            public override Task DownloadAsync(CloudFile sourceFile, string destFilePath, DownloadOptions options, SingleTransferContext context, CancellationToken cancellationToken)
             {
                 validateAction(sourceFile, destFilePath);
                 return TaskEx.FromResult(true);

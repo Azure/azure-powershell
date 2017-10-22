@@ -12,53 +12,22 @@ Removes the specified Event Hub.
 ## SYNTAX
 
 ```
-Remove-AzureRmEventHub [-ResourceGroupName] <String> [-NamespaceName] <String> [-EventHubName] <String>
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzureRmEventHub [-ResourceGroupName] <String> -Namespace <String> -Name <String> [-WhatIf] [-Confirm]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmEventHub** cmdlet removes and deletes the specified Event Hub from the given namespace.
+The Remove-AzureRmEventHub cmdlet removes and deletes the specified Event Hub from the given namespace.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Remove-AzureRmEventHub -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -EventHubName MyEventHubName
+PS C:\> Remove-AzureRmEventHub -ResourceGroupName MyResourceGroupName -Namespace MyNamespaceName -Name MyEventHubName
 ```
 
-Removes the Event Hub `MyEventHubName`.
+Removes the Event Hub \`MyEventHubName\`.
 
 ## PARAMETERS
-
-### -EventHubName
-Name of the Event Hub to remove.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -NamespaceName
-The Event Hubs namespace name.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
 
 ### -ResourceGroupName
 Resource group name.
@@ -106,8 +75,35 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+### -Name
+EventHub Name.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: EventHubName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Namespace
+Namespace Name.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: NamespaceName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ## INPUTS
 

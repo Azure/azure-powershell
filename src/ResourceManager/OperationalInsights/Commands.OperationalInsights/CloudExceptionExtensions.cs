@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Hyak.Common;
 using Microsoft.Azure.Commands.OperationalInsights.Properties;
 using System;
 using System.Collections.Generic;
@@ -22,31 +21,16 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 {
     internal static class CloudExceptionExtensions
     {
-        public static CloudException CreateFormattedException(this CloudException cloudException)
+        public static Rest.Azure.CloudException CreateFormattedException(this Rest.Azure.CloudException cloudException)
         {
-            return new CloudException(
+            return new Rest.Azure.CloudException(
                 string.Format(
                     CultureInfo.InvariantCulture,
                     Resources.FormattedCloudExceptionMessageTemplate,
                     cloudException.Response.StatusCode,
-                    cloudException.Error.Code,
-                    cloudException.Error.Message,
-                    cloudException.GetRequestId(),
+                    cloudException.Message,
+                    cloudException.RequestId,
                     DateTime.UtcNow));
-        }
-
-        public static string GetRequestId(this CloudException exception)
-        {
-            IEnumerable<string> requestIds;
-
-            if (exception.Response != null
-                && exception.Response.Headers != null
-                && exception.Response.Headers.TryGetValue("x-ms-request-id", out requestIds))
-            {
-                return string.Join(";", requestIds);
-            }
-
-            return string.Empty;
         }
     }
 }

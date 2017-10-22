@@ -44,8 +44,10 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Cmdlet
 
             if (this.MyInvocation.BoundParameters.ContainsKey("ServiceObjectiveName"))
             {
-                results = new List<AzureSqlServerServiceObjectiveModel>();
-                results.Add(ModelAdapter.GetServiceObjective(this.ResourceGroupName, this.ServerName, this.ServiceObjectiveName));
+                results = new List<AzureSqlServerServiceObjectiveModel>
+                {
+                    ModelAdapter.GetServiceObjective(this.ResourceGroupName, this.ServerName, this.ServiceObjectiveName)
+                };
             }
             else
             {

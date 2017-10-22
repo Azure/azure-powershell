@@ -13,12 +13,13 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Security.Cryptography;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
-using System.Collections.Generic;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
@@ -189,6 +190,35 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             namespaceEndIndex++;
             var typeEndIndex = resourceId.IndexOf("/", namespaceEndIndex, StringComparison.OrdinalIgnoreCase);
             resourceType = resourceId.Substring(namespaceEndIndex, typeEndIndex - namespaceEndIndex);
+        }
+
+        public static List<T> GetPagedList<T>(Func<IPage<T>> listResources, Func<string, IPage<T>> listNext)
+            where T : class
+        {
+            var resources = new List<T>();
+            string nextLink = null;
+
+            var pagedResources = listResources();
+
+            foreach (var pagedResource in pagedResources)
+            {
+                resources.Add(pagedResource);
+            }
+
+            nextLink = pagedResources.NextPageLink;
+
+            while (!string.IsNullOrEmpty(nextLink))
+            {
+                pagedResources = listNext(nextLink);
+                nextLink = pagedResources.NextPageLink;
+
+                foreach (var pagedResource in pagedResources)
+                {
+                    resources.Add(pagedResource);
+                }
+            }
+
+            return resources;
         }
     }
 }

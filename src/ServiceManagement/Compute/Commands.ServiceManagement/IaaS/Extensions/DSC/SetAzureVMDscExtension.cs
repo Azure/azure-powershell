@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
@@ -113,7 +114,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                 "The Azure Storage Context that provides the security settings used to access the configuration script")
         ]
         [ValidateNotNullOrEmpty]
-        public AzureStorageContext StorageContext { get; set; }
+        public IStorageContext StorageContext { get; set; }
 
         /// <summary>
         /// The specific version of the DSC extension that Set-AzureVMDSCExtension will 
@@ -374,7 +375,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                                     null));
                         }
 
-                        configurationDataBlobReference.UploadFromFile(ConfigurationDataPath, FileMode.Open);
+                        configurationDataBlobReference.UploadFromFile(ConfigurationDataPath);
 
                         var configurationDataBlobSasToken =
                             configurationDataBlobReference.GetSharedAccessSignature(blobAccessPolicy);

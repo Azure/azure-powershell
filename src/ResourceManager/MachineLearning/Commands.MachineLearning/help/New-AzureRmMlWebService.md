@@ -123,7 +123,7 @@ Accept wildcard characters: False
 ### -NewWebServiceDefinition
 The definition for the new web service, containing all the properties that make up the service.
 This parameter is required and represents an instance of the Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService class.
-You can find the latest specification for the web service definition in the swagger spec under https://github.com/Azure/azure-rest-api-specs/blob/master/arm-machinelearning/2016-05-01-preview/swagger/webservices.json.
+You can find the latest specification for the web service definition in the swagger spec under https://github.com/Azure/azure-rest-api-specs/blob/master/arm-machinelearning/2017-01-01/swagger/webservices.json.
 
 ```yaml
 Type: WebService
@@ -192,6 +192,10 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### WebService
+
+Parameter 'NewWebServiceDefinition' accepts value of type 'WebService' from the pipeline
 
 ## OUTPUTS
 

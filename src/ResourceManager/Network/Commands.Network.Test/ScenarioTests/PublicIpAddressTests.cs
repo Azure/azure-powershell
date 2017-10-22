@@ -67,5 +67,33 @@ namespace Commands.Network.Test.ScenarioTests
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-PublicIpAddressIpVersion");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPublicIpAddressVmss()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-PublicIpAddressVmss");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPublicIpBasicSku()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-PublicIpAddressCRUD-BasicSku");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPublicIpStandardSku()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-PublicIpAddressCRUD-StandardSku");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPublicIpAddressZones()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-PublicIpAddressZones");
+        }
     }
 }

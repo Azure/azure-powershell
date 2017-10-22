@@ -26,6 +26,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Rest.Azure;
 
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.MachineLearning
 {
@@ -262,18 +263,28 @@ namespace Microsoft.Azure.Commands.MachineLearning
 
             errorReport.AppendLine();
             errorReport.AppendLine("Request Id: {0}".FormatInvariant(requestId));
-            errorReport.AppendLine("Error Code: {0}".FormatInvariant(cloudException.Body.Code));
-            errorReport.AppendLine("Error Message: {0}".FormatInvariant(cloudException.Body.Message));
-            errorReport.AppendLine("Error Target: {0}".FormatInvariant(cloudException.Body.Target));
-            if (cloudException.Body.Details.Any())
+            if (cloudException.Body != null)
             {
-                errorReport.AppendLine("Error Details:");
-                foreach (var errorDetail in cloudException.Body.Details)
+                errorReport.AppendLine("Error Code: {0}".FormatInvariant(cloudException.Body.Code));
+                errorReport.AppendLine("Error Message: {0}".FormatInvariant(cloudException.Body.Message));
+                errorReport.AppendLine("Error Target: {0}".FormatInvariant(cloudException.Body.Target));
+                if (cloudException.Body.Details.Any())
                 {
-                    errorReport.AppendLine(
-                                    "\t[Code={0}, Message={1}]".FormatInvariant(
-                                                                    errorDetail.Code,
-                                                                    errorDetail.Message));
+                    errorReport.AppendLine("Error Details:");
+                    foreach (var errorDetail in cloudException.Body.Details)
+                    {
+                        errorReport.AppendLine(
+                                        "\t[Code={0}, Message={1}]".FormatInvariant(
+                                                                        errorDetail.Code,
+                                                                        errorDetail.Message));
+                    }
+                }
+            }
+            else
+            {
+                if (cloudException.Response != null)
+                {
+                    errorReport.AppendLine("Error Content: {0}".FormatInvariant(cloudException.Response.Content));
                 }
             }
 

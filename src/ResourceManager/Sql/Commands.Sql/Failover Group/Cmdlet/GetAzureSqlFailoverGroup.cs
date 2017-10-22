@@ -22,6 +22,16 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
     public class GetAzureSqlFailoverGroup : AzureSqlFailoverGroupCmdletBase
     {
         /// <summary>
+        /// Gets or sets the name of the server to use.
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            Position = 1,
+            HelpMessage = "The name of the Azure SQL Database Server from which to retrieve the Failover Group.")]
+        [ValidateNotNullOrEmpty]
+        public string ServerName { get; set; }
+
+        /// <summary>
         /// Gets or sets the name of the FailoverGroup to use.
         /// </summary>
         [Parameter(Mandatory = false,

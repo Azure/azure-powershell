@@ -12,9 +12,16 @@ Deletes a key vault.
 
 ## SYNTAX
 
+### ByAvailableVault
 ```
-Remove-AzureRmKeyVault [-VaultName] <String> [[-ResourceGroupName] <String>] [-Force] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzureRmKeyVault [-VaultName] <String> [[-ResourceGroupName] <String>] [[-Location] <String>] [-Force]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByDeletedVault
+```
+Remove-AzureRmKeyVault [-VaultName] <String> [-Location] <String> [-Force] [-InRemovedState] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,16 +65,58 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InRemovedState
+Remove the previously deleted vault permanently.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: ByDeletedVault
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+The location of the deleted vault.
+
+```yaml
+Type: String
+Parameter Sets: ByAvailableVault
+Aliases: 
+
+Required: False
+Position: 2
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: ByDeletedVault
+Aliases: 
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Specifies the name of a resource group.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ByAvailableVault
 Aliases: 
 
 Required: False
-Position: 1
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -82,7 +131,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 0
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

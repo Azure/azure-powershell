@@ -61,6 +61,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             Mandatory = true,
             HelpMessage = "User password. This parameter is required.")]
         [ValidateNotNullOrEmpty]
+        [Obsolete("New-AzureRmApiManagementUser: The parameter \"Password\" is being changed from a string to a SecureString in an upcoming breaking change release.")]
         public String Password { get; set; }
 
         [Parameter(
@@ -79,7 +80,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         {
             string userId = UserId ?? Guid.NewGuid().ToString("N");
 
+#pragma warning disable 0618
             var user = Client.UserCreate(Context, userId, FirstName, LastName, Password, Email, State, Note);
+#pragma warning restore 0618
 
             WriteObject(user);
         }

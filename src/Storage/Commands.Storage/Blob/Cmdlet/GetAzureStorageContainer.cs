@@ -47,6 +47,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             ValueFromPipeline = true,
              ValueFromPipelineByPropertyName = true,
            ParameterSetName = NameParameterSet)]
+        [SupportsWildcards()]
         public string Name { get; set; }
 
         [Parameter(HelpMessage = "Container Prefix",

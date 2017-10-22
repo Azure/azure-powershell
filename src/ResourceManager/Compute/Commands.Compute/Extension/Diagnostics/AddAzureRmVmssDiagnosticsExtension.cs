@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Compute.Common;
-using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Storage;
 using System;
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Diagnostics
 
                 if (shouldContinue)
                 {
-                    var storageClient = AzureSession.ClientFactory.CreateArmClient<StorageManagementClient>(DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager);
+                    var storageClient = AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
 
                     // Parse configs, and auto fill incomplete parts
                     Tuple<Hashtable, Hashtable> settings = DiagnosticsHelper.GetConfigurationsFromFiles(this.SettingFilePath, this.ProtectedSettingFilePath, this.VirtualMachineScaleSet.Id, this, storageClient);

@@ -13,12 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Commands.HDInsight.Models.Management;
-using Microsoft.Azure.Graph.RBAC;
-using Microsoft.Azure.Graph.RBAC.Models;
+using Microsoft.Azure.Graph.RBAC.Version1_6;
 using Microsoft.Azure.Management.HDInsight.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using System;
@@ -136,7 +136,8 @@ namespace Microsoft.Azure.Commands.HDInsight
                     CertificateFileContents = CertificateFileContents,
                     CertificateFilePath = CertificateFilePath,
                     CertificatePassword = CertificatePassword,
-                    SecurityProfile = SecurityProfile
+                    SecurityProfile = SecurityProfile,
+                    DisksPerWorkerNode = DisksPerWorkerNode
                 };
                 foreach (
                     var storageAccount in
@@ -157,6 +158,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                 {
                     result.ComponentVersion.Add(component.Key, component.Value);
                 }
+                
                 return result;
             }
             set
@@ -187,6 +189,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                 ObjectId = value.ObjectId;
                 CertificatePassword = value.CertificatePassword;
                 SecurityProfile = value.SecurityProfile;
+                DisksPerWorkerNode = value.DisksPerWorkerNode;
 
                 foreach (
                     var storageAccount in
@@ -348,6 +351,9 @@ namespace Microsoft.Azure.Commands.HDInsight
         [Parameter(HelpMessage = "Gets or sets Security Profile which is used for creating secure cluster.")]
         public AzureHDInsightSecurityProfile SecurityProfile { get; set; }
 
+        [Parameter(HelpMessage = "Gets or sets the number of disks for worker node role in the cluster.")]
+        public int DisksPerWorkerNode { get; set; }
+
         #endregion
 
 
@@ -456,7 +462,18 @@ namespace Microsoft.Azure.Commands.HDInsight
                     ClusterUsersGroupDNs = SecurityProfile.ClusterUsersGroupDNs
                 };
             }
-            
+
+            if (DisksPerWorkerNode > 0)
+            {
+                parameters.WorkerNodeDataDisksGroups = new List<DataDisksGroupProperties>()
+                {
+                    new DataDisksGroupProperties()
+                    {
+                        DisksPerNode = DisksPerWorkerNode
+                    }
+                };
+            }
+
             var cluster = HDInsightManagementClient.CreateNewCluster(ResourceGroupName, ClusterName, parameters);
 
             if (cluster != null)
@@ -485,19 +502,19 @@ namespace Microsoft.Azure.Commands.HDInsight
                 return tenantId;
             }
 
-            var tenantIdStr = DefaultProfile.Context.Subscription.GetPropertyAsArray(AzureSubscription.Property.Tenants).FirstOrDefault();
+            var tenantIdStr = DefaultProfile.DefaultContext.Subscription.GetPropertyAsArray(AzureSubscription.Property.Tenants).FirstOrDefault();
             return new Guid(tenantIdStr);
         }
 
         //Get ApplicationId for the given ObjectId.
         private Guid GetApplicationId()
         {
-            GraphRbacManagementClient graphClient = AzureSession.ClientFactory.CreateArmClient<GraphRbacManagementClient>(
-                DefaultProfile.Context, AzureEnvironment.Endpoint.Graph);
+            GraphRbacManagementClient graphClient = AzureSession.Instance.ClientFactory.CreateArmClient<GraphRbacManagementClient>(
+                DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.Graph);
 
-            graphClient.TenantID = DefaultProfile.Context.Tenant.Id.ToString();
+            graphClient.TenantID = DefaultProfile.DefaultContext.Tenant.Id.ToString();
 
-            Microsoft.Azure.Graph.RBAC.Models.ServicePrincipal sp = graphClient.ServicePrincipals.Get(ObjectId.ToString());
+            Microsoft.Azure.Graph.RBAC.Version1_6.Models.ServicePrincipal sp = graphClient.ServicePrincipals.Get(ObjectId.ToString());
 
             var applicationId = Guid.Empty;
             Guid.TryParse(sp.AppId, out applicationId);

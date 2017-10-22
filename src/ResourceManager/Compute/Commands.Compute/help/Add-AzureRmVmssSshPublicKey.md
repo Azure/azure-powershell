@@ -13,8 +13,8 @@ Adds SSH public keys to the VMSS.
 ## SYNTAX
 
 ```
-Add-AzureRmVmssSshPublicKey [-VirtualMachineScaleSet] <VirtualMachineScaleSet> [[-Path] <String>]
- [[-KeyData] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Add-AzureRmVmssSshPublicKey [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [[-Path] <String>]
+ [[-KeyData] <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +24,7 @@ The **Add-AzureRmVmssSshPublicKey** cmdlet adds the public keys that you can use
 
 ### Example 1: Add an SSH public key to the VMSS
 ```
-PS C:\>$VMSS = New-AzureRmVmssConfig
+PS C:\> $VMSS = New-AzureRmVmssConfig
 PS C:\> Add-AzureRmVmssSshPublicKey -VirtualMachineScaleSet $VMSS -KeyData "MIIDszCCApugAwIBAgIJALBV9YJCF/tAMA0GCSq12Ib3DQEB21QUAMEUxCzAJBgNV" -Path "/home/admin/.ssh/authorized_keys"
 ```
 
@@ -34,6 +34,21 @@ The first command uses the **New-AzureRmVmssConfig** cmdlet to create a VMSS con
 The second command adds an SSH key with the specified key data and stores the key at the specified path on the virtual machine.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -KeyData
 Specifies a SSH RSA public key data.
@@ -68,10 +83,10 @@ Accept wildcard characters: False
 
 ### -VirtualMachineScaleSet
 Specifies the VMSS object.
-You can use the New-AzureRmVmssConfig cmdlet to create the object.
+You can use the [New-AzureRmVmssConfig](./New-AzureRmVmssConfig.md) cmdlet to create the object.
 
 ```yaml
-Type: VirtualMachineScaleSet
+Type: PSVirtualMachineScaleSet
 Parameter Sets: (All)
 Aliases: 
 
@@ -117,6 +132,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### VirtualMachineScaleSet
+Parameter 'VirtualMachineScaleSet' accepts value of type 'VirtualMachineScaleSet' from the pipeline
+
 ## OUTPUTS
 
 ###  
@@ -127,5 +145,3 @@ This cmdlet does not generate any output.
 ## RELATED LINKS
 
 [New-AzureRmVmssConfig](./New-AzureRmVmssConfig.md)
-
-

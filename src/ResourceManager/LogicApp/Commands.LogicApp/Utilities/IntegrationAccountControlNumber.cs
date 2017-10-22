@@ -44,5 +44,11 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// </summary>
         [JsonProperty]
         public bool? IsMessageProcessingFailed { get; set; }
+
+        /// <summary>
+        /// Gets or sets the message type.
+        /// </summary>
+        [JsonProperty]
+        public MessageType? MessageType { get; set; }
     }
 }

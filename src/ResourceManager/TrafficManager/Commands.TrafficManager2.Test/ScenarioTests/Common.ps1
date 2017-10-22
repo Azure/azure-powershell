@@ -94,3 +94,12 @@ function TestSetup-AddEndpoint($endpointName, $profile)
 
 	return $profile
 }
+
+<#
+.SYNOPSIS
+Cleans the created resource groups
+#>
+function TestCleanup-RemoveResourceGroup($rgname)
+{
+    Remove-AzureRmResourceGroup -Name $rgname -Force
+}

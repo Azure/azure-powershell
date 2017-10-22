@@ -12,7 +12,7 @@ This topic displays help topics for the Azure SQL Database Cmdlets.
 
 ## AzureRM.Sql Cmdlets
 ### [Add-AzureRmSqlDatabaseToFailoverGroup](Add-AzureRmSqlDatabaseToFailoverGroup.md)
-Cmdlet that adds databases into the Azure SQL Failover Group
+Adds one or more databases to an Azure SQL Database Failover Group.
 
 ### [Add-AzureRmSqlServerKeyVaultKey](Add-AzureRmSqlServerKeyVaultKey.md)
 Adds a Key Vault key to a SQL server.
@@ -24,7 +24,7 @@ Gets SQL Database capabilities for the current subscription.
 Gets one or more databases.
 
 ### [Get-AzureRmSqlDatabaseActivity](Get-AzureRmSqlDatabaseActivity.md)
-Gets the status of moving elastic databases.
+Gets the status of database operations.
 
 ### [Get-AzureRmSqlDatabaseAdvisor](Get-AzureRmSqlDatabaseAdvisor.md)
 Gets one or more Advisors for an Azure SQL Database.
@@ -45,7 +45,7 @@ Gets the data masking rules from a database.
 Gets a database and its expanded property values.
 
 ### [Get-AzureRmSqlDatabaseFailoverGroup](Get-AzureRmSqlDatabaseFailoverGroup.md)
-Cmdlet to get the Azure SQL Failover Group Object
+Gets or lists Azure SQL Database Failover Groups.
 
 ### [Get-AzureRmSqlDatabaseGeoBackup](Get-AzureRmSqlDatabaseGeoBackup.md)
 Gets a geo-redundant backup of a database.
@@ -165,7 +165,7 @@ Creates a data masking rule for a database.
 Exports an Azure SQL Database as a .bacpac file to a storage account.
 
 ### [New-AzureRmSqlDatabaseFailoverGroup](New-AzureRmSqlDatabaseFailoverGroup.md)
-This command is executed in the context of the primary server. It creates the new Azure SQL Failover Group on the server. 
+This command creates a new Azure SQL Database Failover Group.
 
 ### [New-AzureRmSqlDatabaseImport](New-AzureRmSqlDatabaseImport.md)
 Imports a .bacpac file and create a new database on the server.
@@ -198,10 +198,10 @@ Removes the auditing of a database.
 Removes a data masking rule from a database.
 
 ### [Remove-AzureRmSqlDatabaseFailoverGroup](Remove-AzureRmSqlDatabaseFailoverGroup.md)
-The Cmdlet that removes the Azure SQL Failover Group
+Removes an Azure SQL Database Failover Group.
 
-### [Remove-AzureRmSqlDatabaseFailoverGroup](Remove-AzureRmSqlDatabaseFailoverGroup.md)
-The Cmdlet that removes the Azure SQL Failover Group
+### [Remove-AzureRmSqlDatabaseFromFailoverGroup](Remove-AzureRmSqlDatabaseFromFailoverGroup.md)
+Removes one or more databases from an Azure SQL Database Failover Group.
 
 ### [Remove-AzureRmSqlDatabaseSecondary](Remove-AzureRmSqlDatabaseSecondary.md)
 Terminates data replication between a SQL Database and the specified secondary database.
@@ -261,7 +261,7 @@ Sets data masking for a database.
 Sets the properties of a data masking rule for a database.
 
 ### [Set-AzureRmSqlDatabaseFailoverGroup](Set-AzureRmSqlDatabaseFailoverGroup.md)
-The Cmdlet that sets properties of the Azure SQL Failover Group
+Modifies the configuration of an Azure SQL Database Failover Group.
 
 ### [Set-AzureRmSqlDatabaseGeoBackupPolicy](Set-AzureRmSqlDatabaseGeoBackupPolicy.md)
 Sets a database geo backup policy.
@@ -323,6 +323,9 @@ Starts the workflow that runs a recommended index operation.
 ### [Start-AzureRmSqlServerUpgrade](Start-AzureRmSqlServerUpgrade.md)
 Starts the upgrade of a SQL Database server.
 
+### [Stop-AzureRmSqlDatabaseActivity](Stop-AzureRmSqlDatabaseActivity.md)
+Cancels the asynchronous operation on the database.
+
 ### [Stop-AzureRmSqlDatabaseExecuteIndexRecommendation](Stop-AzureRmSqlDatabaseExecuteIndexRecommendation.md)
 Stops the workflow that runs a recommended index operation.
 
@@ -333,8 +336,58 @@ Stops the upgrade of a SQL Database server.
 Suspends a SQL Data Warehouse database.
 
 ### [Switch-AzureRmSqlDatabaseFailoverGroup](Switch-AzureRmSqlDatabaseFailoverGroup.md)
-The Cmdlet that issues failover operation on Azure SQL Failover Group
+Executes a failover of an Azure SQL Database Failover Group.
 
 ### [Use-AzureRmSqlServerAuditingPolicy](Use-AzureRmSqlServerAuditingPolicy.md)
 Specifies that a database uses the auditing policy of its host server.
 
+### [New-AzureRmSqlSyncGroup](New-AzureRmSqlSyncGroup.md)
+Creates an Azure SQL Database Sync Group.
+
+### [Update-AzureRmSqlSyncGroup](Update-AzureRmSqlSyncGroup.md)
+Updates an Azure SQL Database Sync Group.
+
+### [Get-AzureRmSqlSyncGroup](Get-AzureRmSqlSyncGroup.md)
+Returns information about Azure SQL Database Sync Groups.
+
+### [Remove-AzureRmSqlSyncGroup](Remove-AzureRmSqlSyncGroup.md)
+Removes an Azure SQL Database Sync Group.
+
+### [Start-AzureRmSqlSyncGroupSync](Start-AzureRmSqlSyncGroupSync.md)
+Starts a sync group synchronization.
+
+### [Stop-AzureRmSqlSyncGroupSync](Stop-AzureRmSqlSyncGroupSync.md)
+Stops a sync group synchronization.
+
+### [Get-AzureRmSqlSyncGroupLog](Get-AzureRmSqlSyncGroupLog.md)
+Returns the logs of an Azure SQL Database Sync Group.
+
+### [New-AzureRmSqlSyncMember](New-AzureRmSqlSyncMember.md)
+Creates an Azure SQL Database Sync Member.
+
+### [Update-AzureRmSqlSyncMember](Update-AzureRmSqlSyncMember.md)
+Updates an Azure SQL Database Sync Member.
+
+### [Get-AzureRmSqlSyncMember](Get-AzureRmSqlSyncMember.md)
+Returns information about Azure SQL Database Sync Members.
+
+### [Remove-AzureRmSqlSyncMember](Remove-AzureRmSqlSyncMember.md)
+Removes an Azure SQL Database Sync Member.
+
+### [New-AzureRmSqlSyncAgent](New-AzureRmSqlSyncAgent.md)
+Creates an Azure SQL Sync Agent.
+
+### [New-AzureRmSqlSyncAgentKey](New-AzureRmSqlSyncAgentKey.md)
+Creates an Azure SQL Sync Agent Key.
+
+### [Get-AzureRmSqlSyncAgent](Get-AzureRmSqlSyncAgent.md)
+Returns information about Azure SQL Sync Agents.
+
+### [Remove-AzureRmSqlSyncAgent](Remove-AzureRmSqlSyncAgent.md)
+Removes an Azure SQL Sync Agent.
+
+### [Get-AzureRmSqlSyncAgentLinkedDatabase](Get-AzureRmSqlSyncAgentLinkedDatabase.md)
+Returns information about SQL Server databases linked by a sync agent.
+
+### [Stop-AzureRmSqlDatabaseActivity](Stop-AzureRmSqlDatabaseActivity.md)
+Cancels the asynchronous operation on the database.

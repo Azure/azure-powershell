@@ -19,6 +19,25 @@
 -->
 ## Current Release
 
+## Version 4.4.1
+
+## Version 4.4.0
+
+## Version 4.3.1
+
+## Version 4.3.0
+
+## Version 4.2.1
+
+## Version 4.2.0
+
+## Version 4.1.0
+
+## Version 4.0.1
+
+## Version 4.0.0
+* Added support for configuring external groups in New-AzureRmApiManagementGroup.
+
 ## Version 3.6.0
 
 ## Version 3.5.0

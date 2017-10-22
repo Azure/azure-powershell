@@ -118,14 +118,15 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// </summary>
         /// <param name="resourceGroupName">The integration account agreement resource group name.</param>
         /// <param name="integrationAccountName">The integration account name.</param>
+        /// <param name="agreementType">The agreement type.</param>
         /// <returns>List of integration account agreements.</returns>
-        public IList<QualifiedIntegrationAccountControlNumber> ListIntegrationAccountGeneratedIcns(string resourceGroupName, string integrationAccountName)
+        public IList<QualifiedIntegrationAccountControlNumber> ListIntegrationAccountGeneratedIcns(string resourceGroupName, string integrationAccountName, AgreementType agreementType)
         {
             return this
                 .ListIntegrationAccountAgreements(
                     resourceGroupName: resourceGroupName,
                     integrationAccountName: integrationAccountName)
-                .Where(agreement => agreement.AgreementType == AgreementType.X12)
+                .Where(agreement => agreement.AgreementType == agreementType)
                 .Select(agreement => new QualifiedIntegrationAccountControlNumber(
                     icn: this.TryGetIntegrationAccountGeneratedIcn(
                         resourceGroupName: resourceGroupName,

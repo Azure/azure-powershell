@@ -57,19 +57,8 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
 
             try
             {
-                HttpStatusCode statusCode = StreamAnalyticsClient.RemovePSJob(parameter);
-                if (statusCode == HttpStatusCode.OK)
-                {
-                    WriteObject(true);
-                }
-                else if (statusCode == HttpStatusCode.NoContent)
-                {
-                    WriteWarning(string.Format(CultureInfo.InvariantCulture, Resources.JobNotFound, Name, ResourceGroupName));
-                }
-                else
-                {
-                    WriteObject(false);
-                }
+                StreamAnalyticsClient.RemovePSJob(parameter);
+                WriteObject(true);
             }
             catch
             {

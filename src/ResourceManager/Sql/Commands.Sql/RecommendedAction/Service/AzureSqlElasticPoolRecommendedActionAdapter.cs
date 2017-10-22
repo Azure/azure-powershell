@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Azure.Commands.Sql.RecommendedAction.Model;
 using Microsoft.Azure.Commands.Sql.Services;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Service
 {
@@ -33,12 +34,12 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Service
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureContext Context { get; set; }
+        public IAzureContext Context { get; set; }
 
         /// <summary>
         /// Constructs adapter
         /// </summary>
-        public AzureSqlElasticPoolRecommendedActionAdapter(AzureContext context)
+        public AzureSqlElasticPoolRecommendedActionAdapter(IAzureContext context)
         {
             Context = context;
             Communicator = new AzureSqlElasticPoolRecommendedActionCommunicator(Context);
@@ -55,7 +56,7 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Service
         /// <returns>The Azure Sql Elastic Pool Recommended Action object</returns>
         internal AzureSqlElasticPoolRecommendedActionModel GetElasticPoolRecommendedAction(string resourceGroupName, string serverName, string elasticPoolName, string advisorName, string RecommendedActionName)
         {
-            var response = Communicator.Get(resourceGroupName, serverName, elasticPoolName, advisorName, RecommendedActionName, Util.GenerateTracingId());
+            var response = Communicator.Get(resourceGroupName, serverName, elasticPoolName, advisorName, RecommendedActionName);
             return new AzureSqlElasticPoolRecommendedActionModel(resourceGroupName, serverName, elasticPoolName, advisorName, response);
         }
 
@@ -69,7 +70,7 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Service
         /// <returns>A list of Elastic Pool Recommended Action objects</returns>
         internal ICollection<AzureSqlElasticPoolRecommendedActionModel> ListElasticPoolRecommendedActions(string resourceGroupName, string serverName, string elasticPoolName, string advisorName)
         {
-            var response = Communicator.List(resourceGroupName, serverName, elasticPoolName, advisorName, Util.GenerateTracingId());
+            var response = Communicator.List(resourceGroupName, serverName, elasticPoolName, advisorName);
             return response.Select(adv => new AzureSqlElasticPoolRecommendedActionModel(resourceGroupName, serverName, elasticPoolName, advisorName, adv)).ToList();
         }
 
@@ -80,7 +81,7 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Service
         /// <returns>The upserted Azure Sql Elastic Pool Recommended Action</returns>
         internal AzureSqlElasticPoolRecommendedActionModel UpdateState(AzureSqlElasticPoolRecommendedActionModel model)
         {
-            var response = Communicator.UpdateState(model.ResourceGroupName, model.ServerName, model.ElasticPoolName, model.AdvisorName, model.RecommendedActionName, model.State.CurrentValue, Util.GenerateTracingId());
+            var response = Communicator.UpdateState(model.ResourceGroupName, model.ServerName, model.ElasticPoolName, model.AdvisorName, model.RecommendedActionName, model.State.CurrentValue);
             return new AzureSqlElasticPoolRecommendedActionModel(model.ResourceGroupName, model.ServerName, model.ElasticPoolName, model.AdvisorName, response);
         }
     }

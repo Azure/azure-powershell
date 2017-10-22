@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
 
         public override void ExecuteCmdlet()
         {
-            var regenKey = new RegenerateKeysParameters(ParsePolicyKey(RegenerateKey));
+            var regenKey = new RegenerateAccessKeyParameters { Key = RegenerateKey };
 
             // Get a EventHub List Keys for the specified AuthorizationRule
             if (ShouldProcess(target: RegenerateKey, action: string.Format("Generating PrimaryKey/SecondaryKey for AuthorizationRule: {0} of EventHub:{1}", AuthorizationRuleName, EventHubName)))

@@ -23,6 +23,9 @@ Gets information about a Data Lake Analytics account.
 ### [Get-AzureRmDataLakeAnalyticsCatalogItem](Get-AzureRmDataLakeAnalyticsCatalogItem.md)
 Gets a Data Lake Analytics catalog item or types of items.
 
+### [Get-AzureRmDataLakeAnalyticsComputePolicy](Get-AzureRmDataLakeAnalyticsComputePolicy.md)
+Gets a Data Lake Analytics compute policy or list of compute policies.
+
 ### [Get-AzureRmDataLakeAnalyticsDataSource](Get-AzureRmDataLakeAnalyticsDataSource.md)
 Gets a Data Lake Analytics data source.
 
@@ -31,6 +34,12 @@ Retrieves a firewall rule or list of firewall rules from a Data Lake Analytics a
 
 ### [Get-AzureRmDataLakeAnalyticsJob](Get-AzureRmDataLakeAnalyticsJob.md)
 Gets a Data Lake Analytics job.
+
+### [Get-AzureRmDataLakeAnalyticsJobPipeline](Get-AzureRmDataLakeAnalyticsJobPipeline.md)
+Gets a Data Lake Analytics Job pipeline or pipelines.
+
+### [Get-AzureRmDataLakeAnalyticsJobRecurrence](Get-AzureRmDataLakeAnalyticsJobRecurrence.md)
+Gets a Data Lake Analytics Job recurrence or recurrences.
 
 ### [New-AzureRmDataLakeAnalyticsAccount](New-AzureRmDataLakeAnalyticsAccount.md)
 Creates a Data Lake Analytics account.
@@ -41,6 +50,9 @@ Creates a new Azure Data Lake Analytics catalog credential.
 ### [New-AzureRmDataLakeAnalyticsCatalogSecret](New-AzureRmDataLakeAnalyticsCatalogSecret.md)
 Creates a Data Lake Analytics catalog secret.
 
+### [New-AzureRmDataLakeAnalyticsComputePolicy](New-AzureRmDataLakeAnalyticsComputePolicy.md)
+Creates a Data Lake Analytics compute policy rule for a specific AAD entity.
+
 ### [Remove-AzureRmDataLakeAnalyticsAccount](Remove-AzureRmDataLakeAnalyticsAccount.md)
 Deletes a Data Lake Analytics account.
 
@@ -49,6 +61,9 @@ Deletes an Azure Data Lake Analytics credential.
 
 ### [Remove-AzureRmDataLakeAnalyticsCatalogSecret](Remove-AzureRmDataLakeAnalyticsCatalogSecret.md)
 Deletes a Data Lake Analytics secret.
+
+### [Remove-AzureRmDataLakeAnalyticsComputePolicy](Remove-AzureRmDataLakeAnalyticsComputePolicy.md)
+Removes a specified Azure Data Lake Analytics compute policy
 
 ### [Remove-AzureRmDataLakeAnalyticsDataSource](Remove-AzureRmDataLakeAnalyticsDataSource.md)
 Removes a data source from a Data Lake Analytics account.
@@ -82,6 +97,9 @@ Checks for the existence of a Data Lake Analytics account.
 
 ### [Test-AzureRmDataLakeAnalyticsCatalogItem](Test-AzureRmDataLakeAnalyticsCatalogItem.md)
 Checks for the existence of a catalog item.
+
+### [Update-AzureRmDataLakeAnalyticsComputePolicy](Update-AzureRmDataLakeAnalyticsComputePolicy.md)
+Updates a Data Lake Analytics compute policy rule for a specific AAD entity.
 
 ### [Wait-AzureRmDataLakeAnalyticsJob](Wait-AzureRmDataLakeAnalyticsJob.md)
 Waits for a job to complete.

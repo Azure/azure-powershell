@@ -11,14 +11,32 @@ Updates the specified authorization rule on an Event Hub.
 
 ## SYNTAX
 
+### NamespaceAuthorizationRuleSet (Default)
 ```
-Set-AzureRmEventHubAuthorizationRule [-ResourceGroupName] <String> [-NamespaceName] <String>
- [-EventHubName] <String> [-AuthRuleObj] <SharedAccessAuthorizationRuleAttributes>
- [-AuthorizationRuleName] <String> [-Rights <String[]>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzureRmEventHubAuthorizationRule [-ResourceGroupName] <String> -Namespace <String> -Name <String>
+ [-InputObject <AuthorizationRuleAttributes>] [-Rights <String[]>] [-WhatIf] [-Confirm]
+```
+
+### EventhubAuthorizationRuleSet
+```
+Set-AzureRmEventHubAuthorizationRule [-ResourceGroupName] <String> [-Namespace <String>] -EventHub <String>
+ -Name <String> [-InputObject <AuthorizationRuleAttributes>] [-Rights <String[]>] [-WhatIf] [-Confirm]
+```
+
+### AuthoRuleInputObjectSet
+```
+Set-AzureRmEventHubAuthorizationRule [-ResourceGroupName] <String> -Name <String>
+ -InputObject <AuthorizationRuleAttributes> [-WhatIf] [-Confirm]
+```
+
+### AuthoRulePropertiesSet
+```
+Set-AzureRmEventHubAuthorizationRule [-ResourceGroupName] <String> -Name <String> -Rights <String[]> [-WhatIf]
+ [-Confirm]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmEventHubAuthorizationRule** cmdlet updates the specified authorization rule on the given Event Hub.
+The Set-AzureRmEventHubAuthorizationRule cmdlet updates the specified authorization rule on the given Event Hub.
 
 ## EXAMPLES
 
@@ -27,69 +45,9 @@ The **Set-AzureRmEventHubAuthorizationRule** cmdlet updates the specified author
 PS C:\> Set-AzureRmEventHubAuthorizationRule -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -EventHubName MyEventHubName -AuthorizationRuleName MyAuthRuleName -Rights @("Manage")
 ```
 
-Updates the authorization rule `MyAuthRuleName` to grant **Manage** rights to the Event Hub `MyEventHubName`, scoped by the namespace `MyNamespaceName`.
+Updates the authorization rule \`MyAuthRuleName\` to grant Manage rights to the Event Hub \`MyEventHubName\`, scoped by the namespace \`MyNamespaceName\`.
 
 ## PARAMETERS
-
-### -AuthorizationRuleName
-Authorization rule name.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 3
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -AuthRuleObj
-Event Hubs authorization rule object.
-
-```yaml
-Type: SharedAccessAuthorizationRuleAttributes
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EventHubName
-The Event Hub name.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -NamespaceName
-The Event Hubs namespace name.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
 
 ### -ResourceGroupName
 Resource group name.
@@ -108,18 +66,29 @@ Accept wildcard characters: False
 
 ### -Rights
 Required if 'AuthruleObj' not specified.
-Rights; for example,
-@("Listen","Send","Manage")
+Rights; for example, @("Listen","Send","Manage")
 
 ```yaml
 Type: String[]
-Parameter Sets: (All)
+Parameter Sets: NamespaceAuthorizationRuleSet, EventhubAuthorizationRuleSet
 Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String[]
+Parameter Sets: AuthoRulePropertiesSet
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -154,8 +123,89 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+### -EventHub
+EventHub Name.
+
+```yaml
+Type: String
+Parameter Sets: EventhubAuthorizationRuleSet
+Aliases: EventHubName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -InputObject
+{{Fill InputObject Description}}
+
+```yaml
+Type: AuthorizationRuleAttributes
+Parameter Sets: NamespaceAuthorizationRuleSet, EventhubAuthorizationRuleSet
+Aliases: AuthRuleObj
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: AuthorizationRuleAttributes
+Parameter Sets: AuthoRuleInputObjectSet
+Aliases: AuthRuleObj
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+AuthorizationRule Name.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: AuthorizationRuleName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Namespace
+Namespace Name.
+
+```yaml
+Type: String
+Parameter Sets: NamespaceAuthorizationRuleSet
+Aliases: NamespaceName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: EventhubAuthorizationRuleSet
+Aliases: NamespaceName
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ## INPUTS
 

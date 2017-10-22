@@ -19,8 +19,99 @@
 -->
 ## Current Release
 
-## Version 2.9.0
+## Version 3.4.1
 
+## Version 3.4.0
+* Run Command feature:
+    - New cmdlet: 'Invoke-AzureRmVMRunCommand' invokes a run command on a VM
+    - New cmdlet: 'Get-AzureRmVMRunCommandDocument' shows available run command documents
+* Add 'StorageAccountType' parameter to Set-AzureRmDataDisk
+* Availability Zone support for virtual machine, VM scale set, and disk
+    - New paramter: 'Zone' is added to New-AzureRmVM, New-AzureRmVMConfig, New-AzureRmVmssConfig, New-AzureRmDiskConfig
+* VM scale set rolling upgrade feature:
+    - New cmdlet: 'Start-AzureRmVmssRollingOSUpgrade' invokes OS rolling upgrade of VM scale set
+    - New cmdlet: 'Set-AzureRmVmssRollingUpgradePolicy' sets upgrade policy for VM scale set rolling upgrade.
+    - New cmdlet: 'Stop-AzureRmVmssRollingUpgrade' cancels rolling upgrade of VM scale set
+    - New cmdlet: 'Get-AzureRmVmssRollingUpgrade' shows the status of VM scale set rolling upgrade.
+* AssignIdentity switch parameter is introduced for system assigned identity.
+    - New parameter: 'AssignIdentity' is added to New-AzureRmVMConfig, New-AzureRmVmssConfig and Update-AzureRmVM
+* Vmss disk encryption feature:
+    - New cmdlet: 'Set-AzureRmVmssDiskEncryptionExtension' enables disk encryption on VM scale set
+    - New cmdlet: 'Disable-AzureRmVmssDiskEncryption' disables disk encryption on VM scale set
+    - New cmdlet: 'Get-AzureRmVmssDiskEncryptionStatus' shows the disk encryption status of a VM scale set
+    - New cmdelt: 'Get-AzureRmVmssVMDiskEncryptionStatus' shows the disk encryption status of VMs in a VM scale set
+
+## Version 3.3.1
+* 
+## Version 3.3.0
+* Set-AzureRmVMAEMExtension: Add support for new Premium Disk sizes
+* Set-AzureRmVMAEMExtension: Add support for M series
+* Add ForceUpdateTag parameter to Add-AzureRmVmssExtension
+* Add Primary parameter to New-AzureRmVmssIpConfig
+* Add EnableAcceleratedNetworking parameter to Add-AzureRmVmssNetworkInterfaceConfig
+* Add InstanceId to Set-AzureRmVmss
+* Expose MaintenanceRedeployStatus to Get-AzureRmVM -Status output
+* Expose Restriction and Capability to the table format of Get-AzureRmComputeResourceSku
+
+## Version 3.2.1
+- Fix issue with VM DIsk and VM Disk snapshot create and update cmdlets, (link)[https://github.com/azure/azure-powershell/issues/4309]
+  - New-AzureRmDisk
+  - New-AzureRmSnapshot
+  - Update-AzureRmDisk
+  - Update-AzureRmSnapshot
+  
+## Version 3.2.0
+* Storage account type support for Image disk:
+    - 'StorageAccountType' parameter is added to Set-AzureRmImageOsDisk and Add-AzureRmImageDataDisk
+* PrivateIP and PublicIP feature in Vmss Ip Configuration:
+    - 'PrivateIPAddressVersion', 'PublicIPAddressConfigurationName', 'PublicIPAddressConfigurationIdleTimeoutInMinutes', 'DnsSetting' names are added to New-AzureRmVmssIpConfig
+    - 'PrivateIPAddressVersion' parameter for specifying IPv4 or IPv6 is added to New-AzureRmVmssIpConfig
+* Performance Maintenance feature:
+    - 'PerformMaintenance' switch parameter is added to Restart-AzureRmVM.
+    - Get-AzureRmVM -Status shows the information of performance maintenance of the given VM
+* Virtual Machine Identity feature:
+    - 'IdentityType' parameter is added to New-AzureRmVMConfig and UpdateAzureRmVM
+    - Get-AzureRmVM shows the information of the identity of the given VM
+* Vmss Identity feature:
+    - 'IdentityType' parameter is added to to New-AzureRmVmssConfig
+    - Get-AzureRmVmss shows the information of the identity of the given Vmss
+* Vmss Boot Diagnostics feature:
+    - New cmdlet for setting boot diagnostics of Vmss object: Set-AzureRmVmssBootDiagnostics
+    - 'BootDiagnostic' parameter is added to New-AzureRmVmssConfig
+* Vmss LicenseType feature:
+    - 'LicenseType' parameter is added to New-AzureRmVmssConfig
+* RecoveryPolicyMode support:
+    - 'RecoveryPolicyMode' paramter is added to New-AzureRmVmssConfig
+* Compute Resource Sku feature:
+    - New cmdlet 'Get-AzureRmComputeResourceSku' list all compute resource skus
+
+## Version 3.1.0
+* Fix Test-AzureRmVMAEMExtension for virtual machines with multiple managed disks
+* Updated Set-AzureRmVMAEMExtension: Add caching information for Premium managed disks
+* Add-AzureRmVhd: The size limit on vhd is increased to 4TB.
+* Stop-AzureRmVM: Clarify documentation for STayProvisioned parameter
+* New-AzureRmDiskUpdateConfig
+  * Deprecated parameters CreateOption, StorageAccountId, ImageReference, SourceUri, SourceResourceId
+* Set-AzureRmDiskUpdateImageReference: Deprecated cmdlet
+* New-AzureRmSnapshotUpdateConfig
+  * Deprecated parameters CreateOption, StorageAccountId, ImageReference, SourceUri, SourceResourceId
+* Set-AzureRmSnapshotUpdateImageReference: Deprecated Cmdlet
+
+## Version 3.0.1
+
+## Version 3.0.0
+* Updated Set-AzureRmVMAEMExtension and Test-AzureRmVMAEMExtension cmdlets to support Premium managed disks
+* Backup encryption settings for IaaS VMs and restore on failure
+* ChefServiceInterval option is renamed to ChefDaemonInterval now. Old one will continue to work however.
+* Remove duplicated DataDiskNames and NetworkInterfaceIDs properties from PS VM object.
+  - Make DataDiskNames and NetworkInterfaceIDs parameters optional in Remove-AzureRmVMDataDisk and Remove-AzureRmVMNetworkInterface, respectively.
+* Fix the piping issue of Get cmdlets when the Get cmdlets return a list object.
+* Cmdlets that conflicted with RDFE cmdlets have been renamed. See issue https://github.com/Azure/azure-powershell/issues/2917 for more details
+    - `New-AzureVMSqlServerAutoBackupConfig` has been renamed to `New-AzureRmVMSqlServerAutoBackupConfig`
+    - `New-AzureVMSqlServerAutoPatchingConfig` has been renamed to `New-AzureRmVMSqlServerAutoPatchingConfig`
+    - `New-AzureVMSqlServerKeyVaultCredentialConfig` has been renamed to `New-AzureRmVMSqlServerKeyVaultCredentialConfig`
+
+## Version 2.9.0
 * Fix bug in Get-* cmdlets, to allow retrieving multiple pages of data (more than 120 items)
 
 ## Version 2.8.0

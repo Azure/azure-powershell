@@ -14,6 +14,7 @@
 
 using Microsoft.WindowsAzure.Commands.Common;
 using System;
+using System.Linq;
 using System.IO;
 using System.Net.Http;
 using System.ServiceModel;
@@ -22,6 +23,8 @@ using System.ServiceModel.Description;
 using System.ServiceModel.Dispatcher;
 using System.Threading;
 using System.Xml.Linq;
+using System.Collections.Generic;
+using System.Net;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
@@ -90,18 +93,28 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         #region IClientMessageInspector
 
+        public static Dictionary<string, IEnumerable<string>> ConvertHeadersToDictionary(WebHeaderCollection headers)
+        {
+            var retValue = new Dictionary<string, IEnumerable<string>>();
+            foreach(var key in headers.Keys)
+            {
+                retValue.Add(key.ToString(), new List<string>(headers.GetValues(key.ToString())));
+            }
+            return retValue;
+        }
+
         public virtual void AfterReceiveReply(ref Message reply, object correlationState)
         {
             HttpResponseMessageProperty prop = (HttpResponseMessageProperty)reply.Properties[HttpResponseMessageProperty.Name];
             string body = ServiceManagementUtilities.ReadMessageBody(ref reply);
-            logger(GeneralUtilities.GetHttpResponseLog(prop.StatusCode.ToString(), prop.Headers, body));
+            logger(GeneralUtilities.GetHttpResponseLog(prop.StatusCode.ToString(), ConvertHeadersToDictionary(prop.Headers), body));
         }
 
         public virtual object BeforeSendRequest(ref Message request, IClientChannel channel)
         {
             HttpRequestMessageProperty prop = (HttpRequestMessageProperty)request.Properties[HttpRequestMessageProperty.Name];
             string body = ServiceManagementUtilities.ReadMessageBody(ref request);
-            logger(GeneralUtilities.GetHttpRequestLog(prop.Method, request.Headers.To.AbsoluteUri, prop.Headers, body));
+            logger(GeneralUtilities.GetHttpRequestLog(prop.Method, request.Headers.To.AbsoluteUri, ConvertHeadersToDictionary(prop.Headers), body));
 
             return request;
         }

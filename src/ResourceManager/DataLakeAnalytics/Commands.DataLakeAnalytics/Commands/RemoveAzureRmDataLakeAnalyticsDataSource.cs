@@ -52,8 +52,8 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         [Parameter(Mandatory = false, Position = 2, ParameterSetName = BlobParameterSetName, HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
-        [Parameter(Mandatory = false, Position = 3, ParameterSetName = DataLakeParameterSetName, HelpMessage = "Return true upon successfull deletion.")]
-        [Parameter(Mandatory = false, Position = 3, ParameterSetName = BlobParameterSetName, HelpMessage = "Return true upon successfull deletion.")]
+        [Parameter(Mandatory = false, Position = 3, ParameterSetName = DataLakeParameterSetName, HelpMessage = "Return true upon successful deletion.")]
+        [Parameter(Mandatory = false, Position = 3, ParameterSetName = BlobParameterSetName, HelpMessage = "Return true upon successful deletion.")]
         public SwitchParameter PassThru { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, Mandatory = false,

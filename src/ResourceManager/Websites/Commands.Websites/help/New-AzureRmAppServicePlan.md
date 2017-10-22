@@ -132,7 +132,9 @@ Accept wildcard characters: False
 ```
 
 ### -PerSiteScaling
-Whether or not to enable Per Site Scaling```yaml
+Whether or not to enable Per Site Scaling
+
+```yaml
 Type: Boolean
 Parameter Sets: (All)
 Aliases: 
@@ -196,7 +198,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### ServerFarmWithRichSku
+
+Parameter 'AppServicePlan' accepts value of type 'ServerFarmWithRichSku' from the pipeline
+
 ## OUTPUTS
+
+### Microsoft.Azure.Management.WebSites.Models.ServerFarmWithRichSku
 
 ## NOTES
 

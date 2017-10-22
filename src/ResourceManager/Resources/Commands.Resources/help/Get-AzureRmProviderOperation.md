@@ -64,7 +64,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### String
+
+Parameter 'OperationSearchString' accepts value of type 'String' from the pipeline
+
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Resources.Models.PSResourceProviderOperation
 
 ## NOTES
 Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment

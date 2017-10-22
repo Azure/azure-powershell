@@ -90,7 +90,9 @@ Accept wildcard characters: False
 ```
 
 ### -GeoFilters
-The list of geo filters that applies to this endpoint.```yaml
+The list of geo filters that applies to this endpoint.
+
+```yaml
 Type: PSGeoFilter[]
 Parameter Sets: (All)
 Aliases: 
@@ -193,7 +195,9 @@ Accept wildcard characters: False
 ```
 
 ### -OptimizationType
-Specifies any optimization this endpoint has.```yaml
+Specifies any optimization this endpoint has.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
@@ -362,7 +366,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### PSProfile
+
+Parameter 'CdnProfile' accepts value of type 'PSProfile' from the pipeline
+
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint
 
 ## NOTES
 

@@ -23,7 +23,7 @@ Get-AzureRmBillingInvoice [-Latest] [<CommonParameters>]
 
 ### Single
 ```
-Get-AzureRmBillingInvoice -Name <String> [<CommonParameters>]
+Get-AzureRmBillingInvoice -Name <System.Collections.Generic.List`1[System.String]> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -110,7 +110,7 @@ Accept wildcard characters: False
 Name of a specific invoice to get or the most recent if not specified.
 
 ```yaml
-Type: String
+Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: Single
 Aliases: 
 

@@ -13,8 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using Hyak.Common;
-using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
-using Microsoft.Azure.Management.Authorization.Models;
+using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
+using Microsoft.Azure.Management.Authorization.Version2015_07_01.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -121,8 +122,10 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             foreach (RoleAssignment assignment in assignments)
             {
                 assignment.Properties.RoleDefinitionId = assignment.Properties.RoleDefinitionId.GuidFromFullyQualifiedId();
-                PSADObject adObject = adObjects.SingleOrDefault(o => o.Id == assignment.Properties.PrincipalId) ?? new PSADObject() { Id = assignment.Properties.PrincipalId };
-                PSRoleDefinition roleDefinition = roleDefinitions.SingleOrDefault(r => r.Id == assignment.Properties.RoleDefinitionId) ?? new PSRoleDefinition() { Id = assignment.Properties.RoleDefinitionId };
+                PSADObject adObject = adObjects.SingleOrDefault(o => o.Id == Guid.Parse(assignment.Properties.PrincipalId)) ??
+                    new PSADObject() { Id = Guid.Parse(assignment.Properties.PrincipalId) };
+                PSRoleDefinition roleDefinition = roleDefinitions.SingleOrDefault(r => r.Id == assignment.Properties.RoleDefinitionId) ?? 
+                    new PSRoleDefinition() { Id = assignment.Properties.RoleDefinitionId };
 
                 if (adObject is PSADUser)
                 {

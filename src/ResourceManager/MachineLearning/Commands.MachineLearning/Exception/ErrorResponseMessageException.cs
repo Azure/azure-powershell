@@ -20,6 +20,7 @@ using System.Net;
 using System.Text;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.MachineLearning
 {
@@ -27,6 +28,7 @@ namespace Microsoft.Azure.Commands.MachineLearning
     /// Helper class that converts <see cref="ErrorResponseMessageException"/> 
     /// objects into <see cref="ErrorRecord"/>
     /// </summary>
+    [Serializable]
     public class ErrorResponseMessageException : Exception
     {
         /// <summary>

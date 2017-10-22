@@ -14,8 +14,8 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.ScenarioTest.Mocks;
-using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Management.Authorization;
+using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
@@ -26,10 +26,15 @@ using Microsoft.WindowsAzure.Management.Storage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Xunit.Abstractions;
 using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 {
+    using Graph.RBAC;
+    using Common.Authentication.Abstractions;
+    using ResourceManager.Common;
     using System.IO;
 
     public class SqlTestsBase : RMTestBase
@@ -41,24 +46,27 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 
         public string UserDomain { get; private set; }
 
-        protected SqlTestsBase()
+        protected SqlTestsBase(ITestOutputHelper output)
         {
             helper = new SqlEvnSetupHelper();
+
+            XunitTracingInterceptor tracer = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(tracer);
+            helper.TracingInterceptor = tracer;
         }
 
         protected virtual void SetupManagementClients(RestTestFramework.MockContext context)
         {
             var sqlClient = GetSqlClient(context);
             var sqlLegacyClient = GetLegacySqlClient();
-            var storageClient = GetStorageClient();
-            //TODO, Remove the MockDeploymentFactory call when the test is re-recorded
-            var resourcesClient = MockDeploymentClientFactory.GetResourceClient(GetResourcesClient());
-            var authorizationClient = GetAuthorizationManagementClient();
-            helper.SetupSomeOfManagementClients(sqlClient, sqlLegacyClient, storageClient, resourcesClient, authorizationClient);
+            var resourcesClient = GetResourcesClient();
+            var newResourcesClient = GetResourcesClient(context);
+            helper.SetupSomeOfManagementClients(sqlClient, sqlLegacyClient, resourcesClient, newResourcesClient);
         }
-        
+
         protected void RunPowerShellTest(params string[] scripts)
         {
+            TestExecutionHelpers.SetUpSessionAndProfile();
             var callingClassType = TestUtilities.GetCallingClass(2);
             var mockName = TestUtilities.GetCurrentMethodName(2);
 
@@ -67,7 +75,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             d.Add("Microsoft.Features", null);
             d.Add("Microsoft.Authorization", null);
             var providersToIgnore = new Dictionary<string, string>();
-            providersToIgnore.Add("Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient", "1.42-previewInternal");
+            providersToIgnore.Add("Microsoft.Azure.Graph.RBAC.Version1_6.GraphRbacManagementClient", "1.42-previewInternal");
             providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
@@ -88,7 +96,8 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
                     helper.GetRMModulePath(@"AzureRM.Insights.psd1"),
                     helper.GetRMModulePath(@"AzureRM.Sql.psd1"),
                     "AzureRM.Storage.ps1",
-                    "AzureRM.Resources.ps1");
+                    "AzureRM.Resources.ps1",
+                    helper.RMNetworkModule);
                 helper.RunPowerShellTest(scripts);
             }
         }
@@ -107,7 +116,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 
         protected Management.Sql.LegacySdk.SqlManagementClient GetLegacySqlClient()
         {
-            Management.Sql.LegacySdk.SqlManagementClient client = 
+            Management.Sql.LegacySdk.SqlManagementClient client =
                 TestBase.GetServiceClient<Management.Sql.LegacySdk.SqlManagementClient>(
                     new CSMTestEnvironmentFactory());
             if (HttpMockServer.Mode == HttpRecorderMode.Playback)
@@ -140,12 +149,35 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             return client;
         }
 
+        protected Management.Internal.Resources.ResourceManagementClient GetResourcesClient(RestTestFramework.MockContext context)
+        {
+            Management.Internal.Resources.ResourceManagementClient client =
+                context.GetServiceClient<Management.Internal.Resources.ResourceManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
+            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
+            {
+                client.LongRunningOperationRetryTimeout = 0;
+            }
+            return client;
+        }
+
         protected AuthorizationManagementClient GetAuthorizationManagementClient()
         {
             AuthorizationManagementClient client = TestBase.GetServiceClient<AuthorizationManagementClient>(new CSMTestEnvironmentFactory());
             if (HttpMockServer.Mode == HttpRecorderMode.Playback)
             {
                 client.LongRunningOperationInitialTimeout = 0;
+                client.LongRunningOperationRetryTimeout = 0;
+            }
+            return client;
+        }
+
+        protected Management.Network.NetworkManagementClient GetNetworkClient(RestTestFramework.MockContext context)
+        {
+            Management.Network.NetworkManagementClient client =
+                context.GetServiceClient<Management.Network.NetworkManagementClient>(
+                    RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
+            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
+            {
                 client.LongRunningOperationRetryTimeout = 0;
             }
             return client;
@@ -169,12 +201,12 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
                 if (HttpMockServer.Variables.ContainsKey(TenantIdKey))
                 {
                     tenantId = HttpMockServer.Variables[TenantIdKey];
-                    AzureRmProfileProvider.Instance.Profile.Context.Tenant.Id = new Guid(tenantId);
+                    AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant.Id = tenantId;
                 }
                 if (HttpMockServer.Variables.ContainsKey(DomainKey))
                 {
                     UserDomain = HttpMockServer.Variables[DomainKey];
-                    AzureRmProfileProvider.Instance.Profile.Context.Tenant.Domain = UserDomain;
+                    AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant.Directory = UserDomain;
                 }
             }
 

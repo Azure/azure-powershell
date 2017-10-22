@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.DevTestLabs
 
             try
             {
-                inputSchedule = DataServiceClient.Schedule.GetResource(
+                inputSchedule = DataServiceClient.Schedules.Get(
                                 ResourceGroupName,
                                 LabName,
                                 PolicyName);
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.DevTestLabs
                 inputSchedule = new Schedule
                 {
                     TimeZoneId = TimeZoneInfo.Local.Id,
-                    TaskType = TaskType.LabVmsStartupTask,
+                    TaskType = "LabVmsStartupTask",
                     WeeklyRecurrence = new WeekDetails
                     {
                         Time = Time.Value.ToString("HHmm"),
@@ -139,8 +139,7 @@ namespace Microsoft.Azure.Commands.DevTestLabs
                 return;
             }
 
-            var outputSchedule = DataServiceClient.Schedule.CreateOrUpdateResource(
-                ResourceGroupName,
+            var outputSchedule = DataServiceClient.Schedules.CreateOrUpdate(
                 LabName,
                 PolicyName,
                 inputSchedule

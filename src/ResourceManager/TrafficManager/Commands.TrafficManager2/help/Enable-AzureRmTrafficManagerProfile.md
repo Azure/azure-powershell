@@ -104,6 +104,8 @@ This cmdlet accepts a **TrafficManagerProfile** object.
 
 ## OUTPUTS
 
+### System.Boolean
+
 ## NOTES
 
 ## RELATED LINKS

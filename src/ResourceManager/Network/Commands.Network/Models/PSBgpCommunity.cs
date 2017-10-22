@@ -28,6 +28,10 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<string> CommunityPrefixes { get; set; }
 
+        public bool IsAuthorizedToUse { get; set; }
+
+        public string ServiceGroup { get; set; }
+
         [JsonIgnore]
         public string CommunityPrefixesText
         {

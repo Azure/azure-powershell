@@ -313,6 +313,20 @@ namespace Microsoft.Azure.Commands.Batch.Test
             return interceptor;
         }
 
+        public static RequestInterceptor ExamineRequestInterceptor<T>(Action<T> assertAction) where T : class, IBatchRequest
+        {
+            RequestInterceptor interceptor = new RequestInterceptor(baseRequest =>
+            {
+                var request = baseRequest as T;
+
+                if (request != null)
+                {
+                    assertAction(request);
+                }
+            });
+            return interceptor;
+        }
+
         /// <summary>
         /// Builds a CertificateGetResponse object
         /// </summary>
@@ -614,6 +628,21 @@ namespace Microsoft.Azure.Commands.Batch.Test
             }
 
             response.Body = new MockPagedEnumerable<ProxyModels.CloudJob>(jobs);
+
+            return response;
+        }
+
+        /// <summary>
+        /// Builds a CloudJobPreparationAndReleaseStatus object
+        /// </summary>
+        public static AzureOperationResponse<
+            IPage<ProxyModels.JobPreparationAndReleaseTaskExecutionInformation>,
+            ProxyModels.JobListPreparationAndReleaseTaskStatusHeaders>
+            CreateJobPreparationAndReleaseTaskStatusListResponse(List<ProxyModels.JobPreparationAndReleaseTaskExecutionInformation> infoList)
+        {
+            var response = new AzureOperationResponse<IPage<ProxyModels.JobPreparationAndReleaseTaskExecutionInformation>, ProxyModels.JobListPreparationAndReleaseTaskStatusHeaders>();
+            response.Response = new HttpResponseMessage(HttpStatusCode.OK);
+            response.Body = new MockPagedEnumerable<ProxyModels.JobPreparationAndReleaseTaskExecutionInformation>(infoList);
 
             return response;
         }

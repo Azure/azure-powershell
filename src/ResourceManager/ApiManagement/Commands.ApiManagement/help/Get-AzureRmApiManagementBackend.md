@@ -31,6 +31,8 @@ Get the details of the Backend.
 
 
 
+
+
 ```
 Get-AzureRmApiManagementBackend -Context $apimContext
 ```
@@ -39,6 +41,8 @@ Gets a list of all the Backends configured in the Api Management service.
 
 ### --------------------------  Example 2  --------------------------
 @{paragraph=PS C:\\\>}
+
+
 
 
 
@@ -98,3 +102,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
+[New-AzureRmApiManagementBackend](./New-AzureRmApiManagementBackend.md)
+
+[New-AzureRmApiManagementBackendCredential](./New-AzureRmApiManagementBackendCredential.md)
+
+[New-AzureRmApiManagementBackendProxy](./New-AzureRmApiManagementBackendProxy.md)
+
+[Set-AzureRmApiManagementBackend](./Set-AzureRmApiManagementBackend.md)
+
+[Remove-AzureRmApiManagementBackend](./Remove-AzureRmApiManagementBackend.md)

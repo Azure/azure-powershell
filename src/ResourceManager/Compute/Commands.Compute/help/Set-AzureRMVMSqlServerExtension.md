@@ -16,7 +16,7 @@ Sets the Azure SQL Server extension on a virtual machine.
 Set-AzureRmVMSqlServerExtension [[-Version] <String>] [-ResourceGroupName] <String> [-VMName] <String>
  [[-Name] <String>] [[-AutoPatchingSettings] <AutoPatchingSettings>]
  [[-AutoBackupSettings] <AutoBackupSettings>] [[-KeyVaultCredentialSettings] <KeyVaultCredentialSettings>]
- [[-Location] <String>] [<CommonParameters>]
+ [[-Location] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,7 +26,7 @@ The **Set-AzureRmVMSqlServerExtension** cmdlet sets the AzureSQL Server extensio
 
 ### Example 1: Set automatic patching settings on a virtual machine
 ```
-PS C:\>$AutoPatchingConfig = New-AzureVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Thursday" -MaintenanceWindowStartingHour 11 -MaintenanceWindowDuration 120 -PatchCategory "Important"
+PS C:\> $AutoPatchingConfig = New-AzureVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Thursday" -MaintenanceWindowStartingHour 11 -MaintenanceWindowDuration 120 -PatchCategory "Important"
 PS C:\> Get-AzureRmVM -ServiceName "Service02" -Name "VirtualMachine11" | Set-AzureRmVMSqlServerExtension -AutoPatchingSettings $AutoPatchingConfig | Update-AzureRmVM
 ```
 
@@ -41,7 +41,7 @@ The command passes the virtual machine to the Update-AzureRmVM cmdlet.
 
 ### Example 2: Set automatic backup settings on a virtual machine
 ```
-PS C:\>$AutoBackupConfig = New-AzureVMSqlServerAutoBackupConfig -Enable -RetentionPeriod 10 -StorageUri $StorageUrl -StorageKey $StorageAccountKeySecure
+PS C:\> $AutoBackupConfig = New-AzureVMSqlServerAutoBackupConfig -Enable -RetentionPeriod 10 -StorageUri $StorageUrl -StorageKey $StorageAccountKeySecure
 PS C:\> Get-AzureRmVM -ServiceName "Service02" -Name "VirtualMachine11" | Set-AzureRmVMSqlServerExtension -AutoBackupSettings $AutoBackupConfig | Update-AzureRmVM
 ```
 
@@ -55,7 +55,7 @@ The command passes the virtual machine to the Update-AzureRmVM cmdlet.
 
 ### Example 3: Disable a SQL Server extension on a virtual machine
 ```
-PS C:\>Get-AzureRmVM -ServiceName "Service03" -Name "VirtualMachine08" | Set-AzureRmVMSqlServerExtension -Disable
+PS C:\> Get-AzureRmVM -ServiceName "Service03" -Name "VirtualMachine08" | Set-AzureRmVMSqlServerExtension -Disable
 ```
 
 This command gets a virtual machine named VirtualMachine08 on Service03, and then passes it to the current cmdlet.
@@ -63,7 +63,7 @@ The command disables SQL Server virtual machine extension on that virtual machin
 
 ### Example 4: Uninstall a SQL Server extension on a specific virtual machine
 ```
-PS C:\>Get-AzureRmVM -ServiceName "Service03" -Name "VirtualMachine08" | Set-AzureRmVMSqlServerExtension -Uninstall
+PS C:\> Get-AzureRmVM -ServiceName "Service03" -Name "VirtualMachine08" | Set-AzureRmVMSqlServerExtension -Uninstall
 ```
 
 This command gets a virtual machine named VirtualMachine08 on Service03, and then passes it to the current cmdlet.
@@ -100,6 +100,21 @@ Required: False
 Position: 5
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -197,6 +212,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Compute.Models.PSAzureOperationResponse
 
 ## NOTES
 

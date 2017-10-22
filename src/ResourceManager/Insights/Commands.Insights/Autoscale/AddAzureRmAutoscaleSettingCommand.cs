@@ -16,8 +16,8 @@ using System.Net;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Commands.Insights.Properties;
-using Microsoft.Azure.Management.Insights;
-using Microsoft.Azure.Management.Insights.Models;
+using Microsoft.Azure.Management.Monitor.Management;
+using Microsoft.Azure.Management.Monitor.Management.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
     /// <summary>
     /// Create or update an Autoscale setting
     /// </summary>
-    [Cmdlet(VerbsCommon.Add, "AzureRmAutoscaleSetting"), OutputType(typeof(AzureOperationResponse))]
+    [Cmdlet(VerbsCommon.Add, "AzureRmAutoscaleSetting"), OutputType(typeof(PSAddAutoscaleSettingOperationResponse))]
     public class AddAzureRmAutoscaleSettingCommand : ManagementCmdletBase
     {
         internal const string AddAzureRmAutoscaleSettingCreateParamGroup = "Parameters for Add-AzureRmAutoscaleSetting cmdlet in the create semantics";
@@ -102,21 +102,15 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// </summary>
         protected override void ProcessRecordInternal()
         {
-            WriteWarning("This output of this cmdlet will change in the next release to return the newly created object.");
             AutoscaleSettingResource parameters = this.CreateAutoscaleSettingResource();
 
             // The result of this operation is operation (AutoscaleSettingResource) is being discarded for backwards compatibility
-            var result = this.InsightsManagementClient.AutoscaleSettings.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName: this.ResourceGroup, autoscaleSettingName: this.Name, parameters: parameters).Result;
-
-            // Keep this response for backwards compatibility.
-            // Note: Create operations return the newly created object in the new specification, i.e. need to use result.Body
-            var response = new List<AzureOperationResponse>
+            var result = this.MonitorManagementClient.AutoscaleSettings.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName: this.ResourceGroup, autoscaleSettingName: this.Name, parameters: parameters).Result;
+            var response = new PSAddAutoscaleSettingOperationResponse()
             {
-                new AzureOperationResponse()
-                {
-                    RequestId = result.RequestId,
-                    StatusCode = HttpStatusCode.OK
-                }
+                RequestId = result.RequestId,
+                StatusCode = result.Response != null ? result.Response.StatusCode : HttpStatusCode.OK,
+                SettingSpec = result.Body    
             };
 
             WriteObject(response);
@@ -138,7 +132,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
                 }
 
                 this.Location = this.SettingSpec.Location;
-                this.Name = this.SettingSpec.AutoscaleSettingResourceName;
+                this.Name = this.SettingSpec.Name ?? this.SettingSpec.AutoscaleSettingResourceName;
 
                 // The semantics is if AutoscaleProfiles is given it will replace the existing Profiles
                 this.AutoscaleProfiles = this.AutoscaleProfiles ?? property.Profiles.ToList();
@@ -150,13 +144,12 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
                 this.Notifications = this.Notifications ?? (this.SettingSpec.Notifications != null ? this.SettingSpec.Notifications.ToList() : null);
             }
 
-            return new AutoscaleSettingResource()
+            return new AutoscaleSettingResource(
+                profiles: this.AutoscaleProfiles,
+                location: this.Location,
+                name: this.Name)
             {
-                Location = this.Location,
-                Name = this.Name,
-                AutoscaleSettingResourceName = this.Name,
                 Enabled = enableSetting,
-                Profiles = this.AutoscaleProfiles,
                 TargetResourceUri = this.TargetResourceId,
                 Notifications = this.Notifications,
                 Tags = this.SettingSpec != null ? new Dictionary<string, string>(this.SettingSpec.Tags.Content) : new Dictionary<string, string>()

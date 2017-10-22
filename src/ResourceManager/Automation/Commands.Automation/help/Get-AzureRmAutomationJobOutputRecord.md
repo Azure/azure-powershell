@@ -103,6 +103,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Automation.Model.JobStreamRecord
+
 ## NOTES
 
 ## RELATED LINKS

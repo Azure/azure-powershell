@@ -17,7 +17,7 @@ Updates extension properties or adds an extension to a virtual machine.
 Set-AzureRmVMExtension -Publisher <String> -ExtensionType <String> [-Settings <Hashtable>]
  [-ProtectedSettings <Hashtable>] [-ResourceGroupName] <String> [-VMName] <String> [-Name <String>]
  [-TypeHandlerVersion <String>] [-Location <String>] [-DisableAutoUpgradeMinorVersion] [-ForceRerun <String>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SettingString
@@ -25,7 +25,7 @@ Set-AzureRmVMExtension -Publisher <String> -ExtensionType <String> [-Settings <H
 Set-AzureRmVMExtension -Publisher <String> -ExtensionType <String> [-SettingString <String>]
  [-ProtectedSettingString <String>] [-ResourceGroupName] <String> [-VMName] <String> [-Name <String>]
  [-TypeHandlerVersion <String>] [-Location <String>] [-DisableAutoUpgradeMinorVersion] [-ForceRerun <String>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,7 +35,7 @@ The **Set-AzureRmVMExtension** cmdlet updates properties for existing Virtual Ma
 
 ### Example 1: Modify settings by using hash tables
 ```
-PS C:\>$Settings = @{"fileUris" = "[]"; "commandToExecute" = ""};
+PS C:\> $Settings = @{"fileUris" = "[]"; "commandToExecute" = ""};
 PS C:\> $ProtectedSettings = @{"storageAccountName" = $stoname; "storageAccountKey" = $stokey};
 PS C:\> Set-AzureRmVMExtension -ResourceGroupName "ResourceGroup11" -Location "West US" -VMName "VirtualMachine22" -Name "ContosoTest" -Publisher "Contoso.Compute" -Type "CustomScriptExtension" -TypeHandlerVersion "1.1" -Settings $Settings -ProtectedSettings $ProtectedSettings;
 ```
@@ -49,7 +49,7 @@ The command specifies other required information that includes the publisher and
 
 ### Example 2: Modify settings by using strings
 ```
-PS C:\>$SettingsString = '{"fileUris":[],"commandToExecute":""}';
+PS C:\> $SettingsString = '{"fileUris":[],"commandToExecute":""}';
 PS C:\> $ProtectedSettingsString = '{"storageAccountName":"' + $stoname + '","storageAccountKey":"' + $stokey + '"}';
 PS C:\> Set-AzureRmVMExtension -ResourceGroupName "ResourceGroup11" -Location "West US" -VMName "VirtualMachine22" -Name "CustomScriptExtension" -Publisher "Contoso.Compute" -Type "CustomScriptExtension" -TypeHandlerVersion "1.1" -SettingString $SettingsString -ProtectedSettingString $ProtectedSettingsString ;
 ```
@@ -60,6 +60,21 @@ The final command modifies an extension of the virtual machine named VirtualMach
 The command specifies other required information that includes the publisher and the extension type.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DisableAutoUpgradeMinorVersion
 Indicates that this cmdlet prevents the Azure guest agent from automatically updating the extensions to a newer minor version.
@@ -304,6 +319,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Compute.Models.PSAzureOperationResponse
 
 ## NOTES
 

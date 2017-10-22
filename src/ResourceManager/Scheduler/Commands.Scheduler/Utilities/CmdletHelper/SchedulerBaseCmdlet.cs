@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Scheduler.Utilities
         {
             get
             {
-                this._schedulerClient = new SchedulerClient(this.DefaultProfile.Context);
+                this._schedulerClient = new SchedulerClient(this.DefaultProfile.DefaultContext);
 
                 return this._schedulerClient;
             }

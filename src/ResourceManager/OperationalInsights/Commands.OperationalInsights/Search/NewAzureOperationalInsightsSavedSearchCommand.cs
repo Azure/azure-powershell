@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
         protected override void ProcessRecord()
         {
-            SavedSearchProperties properties = new SavedSearchProperties()
+            SavedSearch properties = new SavedSearch()
             {
                 Category = this.Category,
                 DisplayName = this.DisplayName,

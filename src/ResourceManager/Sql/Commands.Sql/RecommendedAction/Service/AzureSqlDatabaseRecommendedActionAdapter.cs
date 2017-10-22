@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Azure.Commands.Sql.RecommendedAction.Model;
 using Microsoft.Azure.Commands.Sql.Services;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Service
 {
@@ -33,12 +34,12 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Service
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureContext Context { get; set; }
+        public IAzureContext Context { get; set; }
 
         /// <summary>
         /// Constructs adapter
         /// </summary>
-        public AzureSqlDatabaseRecommendedActionAdapter(AzureContext context)
+        public AzureSqlDatabaseRecommendedActionAdapter(IAzureContext context)
         {
             Context = context;
             Communicator = new AzureSqlDatabaseRecommendedActionCommunicator(Context);
@@ -55,7 +56,7 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Service
         /// <returns>The Azure Sql Database RecommendedAction object</returns>
         internal AzureSqlDatabaseRecommendedActionModel GetDatabaseRecommendedAction(string resourceGroupName, string serverName, string databaseName, string advisorName, string RecommendedActionName)
         {
-            var response = Communicator.Get(resourceGroupName, serverName, databaseName, advisorName, RecommendedActionName, Util.GenerateTracingId());
+            var response = Communicator.Get(resourceGroupName, serverName, databaseName, advisorName, RecommendedActionName);
             return new AzureSqlDatabaseRecommendedActionModel(resourceGroupName, serverName, databaseName, advisorName, response);
         }
 
@@ -69,7 +70,7 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Service
         /// <returns>A list of Database Recommended Action objects</returns>
         internal ICollection<AzureSqlDatabaseRecommendedActionModel> ListDatabaseRecommendedActions(string resourceGroupName, string serverName, string databaseName, string advisorName)
         {
-            var response = Communicator.List(resourceGroupName, serverName, databaseName, advisorName, Util.GenerateTracingId());
+            var response = Communicator.List(resourceGroupName, serverName, databaseName, advisorName);
             return response.Select(adv => new AzureSqlDatabaseRecommendedActionModel(resourceGroupName, serverName, databaseName, advisorName, adv)).ToList();
         }
 
@@ -80,7 +81,7 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Service
         /// <returns>The upserted Azure Sql Database Recommended Action</returns>
         internal AzureSqlDatabaseRecommendedActionModel UpdateState(AzureSqlDatabaseRecommendedActionModel model)
         {
-            var response = Communicator.UpdateState(model.ResourceGroupName, model.ServerName, model.DatabaseName, model.AdvisorName, model.RecommendedActionName, model.State.CurrentValue, Util.GenerateTracingId());
+            var response = Communicator.UpdateState(model.ResourceGroupName, model.ServerName, model.DatabaseName, model.AdvisorName, model.RecommendedActionName, model.State.CurrentValue);
             return new AzureSqlDatabaseRecommendedActionModel(model.ResourceGroupName, model.ServerName, model.DatabaseName, model.AdvisorName, response);
         }
     }

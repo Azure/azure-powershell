@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
     {
         public AzureHdInsightJobManagementClient(string clusterName, BasicAuthenticationCloudCredentials credential)
         {
-            HdInsightJobManagementClient = AzureSession.ClientFactory.CreateCustomClient<HDInsightJobManagementClient>(clusterName, credential, HDInsightJobManagementClient.HDInsightRetryPolicy);
+            HdInsightJobManagementClient = AzureSession.Instance.ClientFactory.CreateCustomClient<HDInsightJobManagementClient>(clusterName, credential, HDInsightJobManagementClient.HDInsightRetryPolicy);
         }
 
         /// <summary>
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             HdInsightJobManagementClient.JobManagement.KillJob(jobId);
         }
 
-        public Stream GetJobOutput(string jobid, IStorageAccess storageAccess)
+        public virtual Stream GetJobOutput(string jobid, IStorageAccess storageAccess)
         {
             var joboutput = HdInsightJobManagementClient.JobManagement.GetJobOutput(jobid, storageAccess);
             return joboutput;

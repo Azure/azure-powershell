@@ -51,7 +51,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
 
         public void RemoveEnvironmentProcess()
         {
-            WriteObject((PSAzureEnvironment)(ProfileClient.RemoveEnvironment(Name)));
+            WriteObject( new PSAzureEnvironment((ProfileClient.RemoveEnvironment(Name))));
         }
     }
 }

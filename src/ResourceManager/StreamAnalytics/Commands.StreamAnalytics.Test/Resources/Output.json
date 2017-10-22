@@ -7,8 +7,8 @@
             "properties": {
               "server": "$EncryptedStringForTesting.database.windows.net",
               "database": "azurenrtsql",
-			  "user": "azurenrt@$EncryptedStringForTesting",
-			  "password": "$EncryptedStringForTesting",
+              "user": "azurenrt@$EncryptedStringForTesting",
+              "password": "$EncryptedStringForTesting",
               "table": "Samples"
             }
           }

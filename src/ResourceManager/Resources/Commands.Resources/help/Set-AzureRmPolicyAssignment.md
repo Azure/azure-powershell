@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
+Module Name: AzureRM.Resources
 ms.assetid: C3B2C33F-8BD4-4E31-9450-EF6A3A6A5325
 online version: 
 schema: 2.0.0
@@ -14,8 +15,9 @@ Modifies a policy assignment.
 
 ### The policy assignment name parameter set. (Default)
 ```
-Set-AzureRmPolicyAssignment -Name <String> -Scope <String> [-DisplayName <String>] [-ApiVersion <String>]
- [-Pre] [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+Set-AzureRmPolicyAssignment -Name <String> -Scope <String> [-NotScope <String[]>] [-DisplayName <String>]
+ [-ApiVersion <String>] [-Pre] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
+ [<CommonParameters>]
 ```
 
 ### The policy assignment Id parameter set.
@@ -147,6 +149,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -NotScope
+The policy assignment not scopes.
+
+```yaml
+Type: String[]
+Parameter Sets: The policy assignment name parameter set.
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Pre
 Indicates that this cmdlet considers pre-release API versions when it automatically determines which version to use.
 
@@ -183,6 +200,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### System.Management.Automation.PSObject
 
 ## NOTES
 

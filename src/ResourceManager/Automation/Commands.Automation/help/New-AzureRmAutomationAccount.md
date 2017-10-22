@@ -20,8 +20,9 @@ New-AzureRmAutomationAccount [-ResourceGroupName] <String> [-Name] <String> [-Lo
 ## DESCRIPTION
 The **New-AzureRmAutomationAccount** cmdlet creates an Azure Automation account in a resource group.
 
-An Automation account is a container for Automation resources that is isolated from the resources of other Automation accounts.
-Automation resources include runbooks, Desired State Configuration (DSC) configurations, jobs, and assets.
+An Automation account is a container for Automation resources that is isolated from the resources
+of other Automation accounts. Automation resources include runbooks, Desired State Configuration
+(DSC) configurations, jobs, and assets.
 
 ## EXAMPLES
 
@@ -67,9 +68,9 @@ Accept wildcard characters: False
 
 ### -Plan
 Specifies the plan for the Automation account.
-Valid values are: 
+Valid values are:
 
-- Basic 
+- Basic
 - Free
 
 ```yaml
@@ -101,7 +102,9 @@ Accept wildcard characters: False
 ```
 
 ### -Tags
-Specifies tags for the Automation account.
+Key-value pairs in the form of a hash table. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
 Type: IDictionary
@@ -122,6 +125,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Automation.Model.AutomationAccount
+
 ## NOTES
 
 ## RELATED LINKS
@@ -131,5 +136,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzureRmAutomationAccount](./Remove-AzureRmAutomationAccount.md)
 
 [Set-AzureRmAutomationAccount](./Set-AzureRmAutomationAccount.md)
-
-

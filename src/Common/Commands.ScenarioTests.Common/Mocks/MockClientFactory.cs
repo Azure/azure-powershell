@@ -30,6 +30,8 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure;
 using System.IO;
 using Microsoft.Azure.ServiceManagemenet.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 {
@@ -43,28 +45,29 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 
         public MockClientFactory(IEnumerable<object> clients, bool throwIfClientNotSpecified = true)
         {
-            UserAgents = new HashSet<ProductInfoHeaderValue>();
+            _userAgents = new HashSet<ProductInfoHeaderValue>();
             ManagementClients = clients.ToList();
             throwWhenNotAvailable = throwIfClientNotSpecified;
         }
 
-        public TClient CreateClient<TClient>(AzureContext context, AzureEnvironment.Endpoint endpoint) where TClient : ServiceClient<TClient>
+        public TClient CreateClient<TClient>(IAzureContext context, string endpoint) where TClient : ServiceClient<TClient>
         {
             Debug.Assert(context != null);
 
-            SubscriptionCloudCredentials creds = AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(context);
+            SubscriptionCloudCredentials creds = AzureSession.Instance.AuthenticationFactory.GetSubscriptionCloudCredentials(context);
             TClient client = CreateCustomClient<TClient>(creds, context.Environment.GetEndpointAsUri(endpoint));
 
             return client;
         }
 
-        public TClient CreateClient<TClient>(AzureSMProfile profile, AzureEnvironment.Endpoint endpoint) where TClient : ServiceClient<TClient>
+        public TClient CreateClient<TClient>(IAzureContextContainer profile, string endpoint) where TClient : ServiceClient<TClient>
         {
-            return CreateClient<TClient>(profile, profile.Context.Subscription, endpoint);
+            return CreateClient<TClient>(profile, profile.DefaultContext.Subscription, endpoint);
         }
 
-        public TClient CreateClient<TClient>(AzureSMProfile profile, AzureSubscription subscription, AzureEnvironment.Endpoint endpoint) where TClient : ServiceClient<TClient>
+        public TClient CreateClient<TClient>(IAzureContextContainer container, IAzureSubscription subscription, string endpoint) where TClient : ServiceClient<TClient>
         {
+            var profile = container as AzureSMProfile;
             if (subscription == null)
             {
                 throw new ArgumentException(Commands.Common.Properties.Resources.InvalidDefaultSubscription);
@@ -72,7 +75,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 
             if (profile == null)
             {
-                profile = new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
+                profile = new AzureSMProfile(Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.ProfileFile));
             }
 
             SubscriptionCloudCredentials creds = new TokenCloudCredentials(subscription.Id.ToString(), "fake_token");
@@ -81,14 +84,14 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
                 ProfileClient profileClient = new ProfileClient(profile);
                 AzureContext context = new AzureContext(
                     subscription,
-                    profileClient.GetAccount(subscription.Account),
-                    profileClient.GetEnvironmentOrDefault(subscription.Environment)
+                    profileClient.GetAccount(subscription.GetAccount()),
+                    profileClient.GetEnvironmentOrDefault(subscription.GetEnvironment())
                 );
 
-                creds = AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(context);
+                creds = AzureSession.Instance.AuthenticationFactory.GetSubscriptionCloudCredentials(context);
             }
 
-            Uri endpointUri = profile.Environments[subscription.Environment].GetEndpointAsUri(endpoint);
+            Uri endpointUri = profile.EnvironmentTable[subscription.GetEnvironment()].GetEndpointAsUri(endpoint);
             return CreateCustomClient<TClient>(creds, endpointUri);
         }
 
@@ -184,7 +187,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 
         public void AddUserAgent(string productName, string productVersion)
         {
-            this.UserAgents.Add(new ProductInfoHeaderValue(productName, productVersion));
+            this._userAgents.Add(new ProductInfoHeaderValue(productName, productVersion));
         }
 
         public void AddUserAgent(string productName)
@@ -192,7 +195,15 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             this.AddUserAgent(productName, string.Empty);
         }
 
-        public HashSet<ProductInfoHeaderValue> UserAgents { get; set; }
+        HashSet<ProductInfoHeaderValue> _userAgents { get; set; }
+
+        public ProductInfoHeaderValue[] UserAgents
+        {
+            get
+            {
+                return _userAgents?.ToArray();
+            }
+        }
 
         /// <summary>
         /// This class exists to allow adding an additional reference to the httpClient to prevent the client 
@@ -206,10 +217,10 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             }
         }
 
-        public TClient CreateArmClient<TClient>(AzureContext context, AzureEnvironment.Endpoint endpoint) where TClient : Rest.ServiceClient<TClient>
+        public TClient CreateArmClient<TClient>(IAzureContext context, string endpoint) where TClient : Rest.ServiceClient<TClient>
         {
             Debug.Assert(context != null);
-            var credentials = AzureSession.AuthenticationFactory.GetServiceClientCredentials(context);
+            var credentials = AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(context);
             var client = CreateCustomArmClient<TClient>(credentials, context.Environment.GetEndpointAsUri(endpoint),
                 context.Subscription.Id);
             return client;
@@ -239,6 +250,11 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             }
 
             return client;
+        }
+
+        public void RemoveUserAgent(string name)
+        {
+            this._userAgents?.RemoveWhere(p => string.Equals(p.Product.Name, name, StringComparison.OrdinalIgnoreCase));
         }
     }
 }

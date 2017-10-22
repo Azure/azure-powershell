@@ -22,9 +22,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
     public class ServiceTierAdvisorTests : SqlTestsBase
     {
-        public ServiceTierAdvisorTests(ITestOutputHelper output)
+        public ServiceTierAdvisorTests(ITestOutputHelper output) : base(output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
         [Fact]

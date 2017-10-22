@@ -13,7 +13,7 @@ Gets the virtual machine core count usage for a location.
 ## SYNTAX
 
 ```
-Get-AzureRmVMUsage [-Location] <String> [<CommonParameters>]
+Get-AzureRmVMUsage [-Location] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,12 +23,27 @@ The **Get-AzureRmVMUsage** cmdlet gets the virtual machine core count usage for 
 
 ### Example 1: Get core count usage for a location
 ```
-PS C:\>Get-AzureRmVMUsage -Location "Central US"
+PS C:\> Get-AzureRmVMUsage -Location "Central US"
 ```
 
 This command gets the virtual machine core count usage for the location Central US.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Location
 Specifies the location for which this cmdlet gets virtual machine core count usage.
@@ -51,6 +66,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Compute.Models.PSUsage
 
 ## NOTES
 

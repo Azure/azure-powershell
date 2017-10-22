@@ -24,21 +24,26 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         public EventHubAttributes()
         { }
 
-        public EventHubAttributes(EventHubResource ehResource)
+        public EventHubAttributes(Microsoft.Azure.Management.EventHub.Models.Eventhub ehResource)
         {
             if (ehResource != null)
             {
                 Name = ehResource.Name;
-                Location = ehResource.Location;
                 CreatedAt = ehResource.CreatedAt;
                 MessageRetentionInDays = ehResource.MessageRetentionInDays;
                 PartitionCount = ehResource.PartitionCount;
                 PartitionIds = ehResource.PartitionIds;
                 Status = ehResource.Status;
                 UpdatedAt = ehResource.UpdatedAt;
+                if (ehResource.CaptureDescription != null)
+                    CaptureDescription = new CaptureDescriptionAttributes(ehResource.CaptureDescription);
+                else
+                    CaptureDescription = null;
             }
         }
 
+
+        [ObsoleteAttribute("'Location' property of eventhub is mark as obsolete and will be remved in Breaking changes build", false)]
         public string Location { get; set; }
 
         public string Name { get; set; }
@@ -61,7 +66,7 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         /// <summary>
         /// Current number of shards on the Event Hub.
         /// </summary>
-        public IList<int?> PartitionIds { get; set; }
+        public IList<string> PartitionIds { get; set; }
 
         /// <summary>
         /// Enumerates the possible values for the status of the EventHub.
@@ -75,5 +80,12 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         /// The exact time the message has been updated.
         /// </summary>
         public DateTime? UpdatedAt { get; set; }
+
+        /// <summary>
+        /// Gets or sets properties of capture description
+        /// </summary>
+        public CaptureDescriptionAttributes CaptureDescription { get; set; }
+
+
     }
 }

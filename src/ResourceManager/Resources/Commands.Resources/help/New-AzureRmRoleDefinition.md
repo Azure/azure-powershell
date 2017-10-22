@@ -98,7 +98,7 @@ PS C:\> $role = Get-AzureRmRoleDefinition -Name "Virtual Machine Contributor"
           PS C:\> $role.Actions.Add("Microsoft.Resources/subscriptions/resourceGroups/resources/read")
           PS C:\> $role.Actions.Add("Microsoft.Insights/alertRules/*")
           PS C:\> $role.Actions.Add("Microsoft.Support/*")
-          PS C:\> $role.AssignableScopes.Remove("/") | Out-Null
+          PS C:\> $role.AssignableScopes.Clear()
           PS C:\> $role.AssignableScopes.Add("/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e")
 
           PS C:\> New-AzureRmRoleDefinition -Role $role
@@ -148,16 +148,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition
+
 ## NOTES
 Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment
 
 ## RELATED LINKS
 
-[Get-AzureRmProviderOperation]()
+[Get-AzureRmProviderOperation](./Get-AzureRmProviderOperation.md)
 
-[Get-AzureRmRoleDefinition]()
+[Get-AzureRmRoleDefinition](./Get-AzureRmRoleDefinition.md)
 
-[Set-AzureRmRoleDefinition]()
+[Set-AzureRmRoleDefinition](./Set-AzureRmRoleDefinition.md)
 
-[Remove-AzureRmRoleDefinition]()
+[Remove-AzureRmRoleDefinition](./Remove-AzureRmRoleDefinition.md)
 

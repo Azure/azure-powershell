@@ -15,7 +15,7 @@ Downloads the contents of a file.
 ### ShareName (Default)
 ```
 Get-AzureStorageFileContent [-ShareName] <String> [-Path] <String> [[-Destination] <String>] [-CheckMd5]
- [-PassThru] [-Force] [-Context <AzureStorageContext>] [-ServerTimeoutPerRequest <Int32>]
+ [-PassThru] [-Force] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -52,6 +52,13 @@ PS C:\>Get-AzureStorageFileContent -ShareName "ContosoShare06" -Path "ContosoWor
 ```
 
 This command downloads a file that is named CurrentDataFile in the folder ContosoWorkingFolder from the file share ContosoShare06 to current folder.
+
+### Example 2: Downloads the files under sample file share
+```
+PS C:\>Get-AzureStorageFile -ShareName sample | ? {$_.GetType().Name -eq "CloudFile"} | Get-AzureStorageFileContent
+```
+
+This example downloads the files under sample file share
 
 ## PARAMETERS
 
@@ -120,7 +127,7 @@ If you specify a path of an existing file and you do not specify *Force*, the cm
 If you specify the path of a folder, this cmdlet attempts to create a file that has the name of the Azure storage file.
 
 ```yaml
-Type: AzureStorageContext
+Type: IStorageContext
 Parameter Sets: ShareName
 Aliases: 
 
@@ -332,6 +339,22 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### IStorageContext
+
+Parameter 'Context' accepts value of type 'IStorageContext' from the pipeline
+
+### CloudFileDirectory
+
+Parameter 'Directory' accepts value of type 'CloudFileDirectory' from the pipeline
+
+### CloudFile
+
+Parameter 'File' accepts value of type 'CloudFile' from the pipeline
+
+### CloudFileShare
+
+Parameter 'Share' accepts value of type 'CloudFileShare' from the pipeline
 
 ## OUTPUTS
 

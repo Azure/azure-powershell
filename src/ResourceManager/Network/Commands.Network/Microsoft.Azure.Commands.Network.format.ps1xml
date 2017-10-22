@@ -2,6 +2,66 @@
 <Configuration>
   <ViewDefinitions>
     <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSUsage</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSUsage</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>ResourceType</Label>
+                <PropertyName>ResourceType</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>CurrentValue</Label>
+                <PropertyName>CurrentValue</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Limit</Label>
+                <PropertyName>Limit</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkUsage</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkUsage</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Name</Label>
+                <PropertyName>NameText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Id</Label>
+                <PropertyName>Id</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>CurrentValue</Label>
+                <PropertyName>CurrentValue</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Limit</Label>
+                <PropertyName>Limit</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Unit</Label>
+                <PropertyName>Unit</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.Commands.Network.Models.PSVirtualNetwork</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Network.Models.PSVirtualNetwork</TypeName>
@@ -57,6 +117,14 @@
               <ListItem>
                 <Label>VirtualNetworkPeerings</Label>
                 <PropertyName>VirtualNetworkPeeringsText</PropertyName>
+              </ListItem> 
+              <ListItem>
+                <Label>EnableDDoSProtection</Label>
+                <PropertyName>EnableDDoSProtectionText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>EnableVmProtection</Label>
+                <PropertyName>EnableVmProtectionText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -592,6 +660,10 @@
                 <Label>RouteTable</Label>
                 <PropertyName>RouteTableText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>ServiceEndpoints</Label>
+                <PropertyName>ServiceEndpointText</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -732,6 +804,14 @@
                 <Label>DnsSettings</Label>
                 <PropertyName>DnsSettingsText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>Zones</Label>
+                <PropertyName>Zones</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Sku</Label>
+                <PropertyName>SkuText</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -806,6 +886,10 @@
                 <Label>Primary</Label>
                 <PropertyName>Primary</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>MacAddress</Label>
+                <PropertyName>MacAddress</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -871,6 +955,10 @@
               <ListItem>
                 <Label>LoadBalancerInboundNatRules</Label>
                 <PropertyName>LoadBalancerInboundNatRulesText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ApplicationSecurityGroups</Label>
+                <PropertyName>ApplicationSecurityGroupsText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -943,6 +1031,10 @@
               <ListItem>
                 <Label>EffectiveSecurityRules</Label>
                 <PropertyName>EffectiveSecurityRulesText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>TagMap</Label>
+                <PropertyName>TagMapText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -1059,6 +1151,14 @@
               <ListItem>
                 <Label>DestinationAddressPrefix</Label>
                 <PropertyName>DestinationAddressPrefix</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>SourceApplicationSecurityGroups</Label>
+                <PropertyName>SourceApplicationSecurityGroupsText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>DestinationApplicationSecurityGroups</Label>
+                <PropertyName>DestinationApplicationSecurityGroupsText</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>Access</Label>
@@ -1202,6 +1302,48 @@
       </ListControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSConnectivityInformation</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSConnectivityInformation</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>ConnectionStatus</Label>
+                <PropertyName>ConnectionStatus</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>AvgLatencyInMs</Label>
+                <PropertyName>AvgLatencyInMs</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>MinLatencyInMs</Label>
+                <PropertyName>MinLatencyInMs</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>MaxLatencyInMs</Label>
+                <PropertyName>MaxLatencyInMs</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ProbesSent</Label>
+                <PropertyName>ProbesSent</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ProbesFailed</Label>
+                <PropertyName>ProbesFailed</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Hops</Label>
+                <PropertyName>HopsText</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.Commands.Network.Models.PSLoadBalancer</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Network.Models.PSLoadBalancer</TypeName>
@@ -1265,6 +1407,10 @@
               <ListItem>
                 <Label>InboundNatPools</Label>
                 <PropertyName>InboundNatPoolsText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Sku</Label>
+                <PropertyName>SkuText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -1371,6 +1517,10 @@
               <ListItem>
                 <Label>InboundNatPools</Label>
                 <PropertyName>InboundNatPoolsText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Zones</Label>
+                <PropertyName>ZonesText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -2054,6 +2204,14 @@
                 <Label>CommunityPrefixes</Label>
                 <PropertyName>CommunityPrefixesText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>IsAuthorizedToUse</Label>
+                <PropertyName>IsAuthorizedToUseText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ServiceGroup</Label>
+                <PropertyName>ServiceGroupText</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -2248,6 +2406,44 @@
                 <ScriptBlock>
                     [Microsoft.Azure.Commands.Network.ApplicationGatewayPowerShellFormatting]::Format($_, 0)
                 </ScriptBlock>  
+              </ExpressionBinding>
+            </CustomItem>
+          </CustomEntry>
+        </CustomEntries>
+      </CustomControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAvailableSslOptions</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAvailableSslOptions</TypeName>
+      </ViewSelectedBy>
+      <CustomControl>
+        <CustomEntries>
+          <CustomEntry>
+            <CustomItem>
+              <ExpressionBinding>
+                <ScriptBlock>
+                  [Microsoft.Azure.Commands.Network.ApplicationGatewayPowerShellFormatting]::Format($_, 0)
+                </ScriptBlock>
+              </ExpressionBinding>
+            </CustomItem>
+          </CustomEntry>
+        </CustomEntries>
+      </CustomControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSApplicationGatewaySslPredefinedPolicy</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSApplicationGatewaySslPredefinedPolicy</TypeName>
+      </ViewSelectedBy>
+      <CustomControl>
+        <CustomEntries>
+          <CustomEntry>
+            <CustomItem>
+              <ExpressionBinding>
+                <ScriptBlock>
+                  [Microsoft.Azure.Commands.Network.ApplicationGatewayPowerShellFormatting]::Format($_, 0)
+                </ScriptBlock>
               </ExpressionBinding>
             </CustomItem>
           </CustomEntry>

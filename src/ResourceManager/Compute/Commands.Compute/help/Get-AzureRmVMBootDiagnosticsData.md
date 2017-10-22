@@ -15,13 +15,13 @@ Gets boot diagnostics data for a virtual machine.
 ### WindowsParamSet (Default)
 ```
 Get-AzureRmVMBootDiagnosticsData [-ResourceGroupName] <String> [-Name] <String> [-Windows]
- [-LocalPath] <String> [<CommonParameters>]
+ [-LocalPath] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### LinuxParamSet
 ```
 Get-AzureRmVMBootDiagnosticsData [-ResourceGroupName] <String> [-Name] <String> [-Linux]
- [[-LocalPath] <String>] [<CommonParameters>]
+ [[-LocalPath] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,7 +31,7 @@ The **Get-AzureRmVMBootDiagnosticsData** cmdlet gets boot diagnostics data for a
 
 ### Example 1: Get boot diagnostics data
 ```
-PS C:\>Get-AzureRmVMBootDiagnosticsData -ResourceGroupName "ResourceGroup11" -Name "ContosoVM07" -Windows -LocalPath "C:\Contoso\BootDiagnostics"
+PS C:\> Get-AzureRmVMBootDiagnosticsData -ResourceGroupName "ResourceGroup11" -Name "ContosoVM07" -Windows -LocalPath "C:\Contoso\BootDiagnostics"
 ```
 
 This command gets boot diagnostics data for the virtual machine named ContosoVM07.
@@ -39,6 +39,21 @@ This virtual machine runs the Windows operating system.
 The command stores the data in specified local path.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Linux
 Indicates that the virtual machine runs the Linux operating system.
@@ -133,6 +148,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
+
+### Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineInstanceView
 
 ## NOTES
 

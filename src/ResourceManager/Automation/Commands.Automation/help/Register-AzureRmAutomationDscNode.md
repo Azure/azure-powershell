@@ -27,7 +27,7 @@ The **Register-AzureRmAutomationDscNode** cmdlet registers an Azure virtual mach
 
 ### Example 1: Register an Azure virtual machine as an Azure DSC node
 ```
-PS C:\>Register-AzureAutomationDscNode -AutomationAccountName "Contoso17" -AzureVMName "VirtualMachine01" -ResourceGroupName "ResourceGroup01"-NodeConfigurationName "ContosoConfiguration.webserver"
+PS C:\>Register-AzureRmAutomationDscNode -AutomationAccountName "Contoso17" -AzureVMName "VirtualMachine01" -ResourceGroupName "ResourceGroup01"-NodeConfigurationName "ContosoConfiguration.webserver"
 ```
 
 This command registers the Azure virtual machine named VirtualMachine01 as a DSC node in the Automation account named Contoso17.

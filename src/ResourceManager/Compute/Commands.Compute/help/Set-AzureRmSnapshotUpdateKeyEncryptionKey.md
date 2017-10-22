@@ -12,8 +12,9 @@ Sets the key encryption key properties on a snapshot update object.
 ## SYNTAX
 
 ```
-Set-AzureRmSnapshotUpdateKeyEncryptionKey [-SnapshotUpdate] <SnapshotUpdate> [[-KeyUrl] <String>]
- [[-SourceVaultId] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzureRmSnapshotUpdateKeyEncryptionKey [-SnapshotUpdate] <PSSnapshotUpdate> [[-KeyUrl] <String>]
+ [[-SourceVaultId] <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,6 +40,21 @@ The last command takes the snapshot update object and updates an existing snapsh
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -KeyUrl
 Specifes the key Url.
 
@@ -58,7 +74,7 @@ Accept wildcard characters: False
 Specifies a local snapshot update object.
 
 ```yaml
-Type: SnapshotUpdate
+Type: PSSnapshotUpdate
 Parameter Sets: (All)
 Aliases: 
 

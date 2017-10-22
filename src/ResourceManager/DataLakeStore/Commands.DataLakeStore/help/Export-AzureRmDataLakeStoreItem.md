@@ -87,7 +87,9 @@ Accept wildcard characters: False
 ```
 
 ### -DiagnosticLogLevel
-Optionally indicates the diagnostic log level to use to record events during the file or folder import. Default is Error.```yaml
+Optionally indicates the diagnostic log level to use to record events during the file or folder import. Default is Error.
+
+```yaml
 Type: LogLevel
 Parameter Sets: Include diagnostic logging
 Aliases: 
@@ -101,7 +103,9 @@ Accept wildcard characters: False
 ```
 
 ### -DiagnosticLogPath
-Specifies the path for the diagnostic log to record events to during the file or folder import.```yaml
+Specifies the path for the diagnostic log to record events to during the file or folder import.
+
+```yaml
 Type: String
 Parameter Sets: Include diagnostic logging
 Aliases: 

@@ -36,6 +36,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             NotBefore = keyItem.Attributes.NotBefore;
             Created = keyItem.Attributes.Created;
             Updated = keyItem.Attributes.Updated;
+            RecoveryLevel = keyItem.Attributes.RecoveryLevel;
             Tags = (keyItem.Tags == null) ? null : keyItem.Tags.ConvertToHashtable();
         }
 
@@ -53,6 +54,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             NotBefore = keyBundle.Attributes.NotBefore;
             Created = keyBundle.Attributes.Created;
             Updated = keyBundle.Attributes.Updated;
+            RecoveryLevel = keyBundle.Attributes.RecoveryLevel;
             Tags = keyBundle.Attributes.Tags;
         }
 
@@ -65,6 +67,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public DateTime? Created { get; private set; }
 
         public DateTime? Updated { get; private set; }
+
+        [Obsolete( "The PurgeDisabled property is being deprecated and will be removed in a future release. Please use the RecoveryLevel property instead." )]
+        public bool PurgeDisabled { get; private set; }
+
+        public string RecoveryLevel { get; private set; }
 
         public Hashtable Tags { get; set; }
 

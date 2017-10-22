@@ -13,14 +13,17 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.ServiceBus.Models;
+using Microsoft.Azure.Commands.ServiceBus.Models;
 using System.Management.Automation;
+using System;
 
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
 {
     /// <summary>
     /// 'New-AzureRmServicebusNamespaceKey' Cmdlet creates a new specified (PrimaryKey / SecondaryKey) key for the given ServiceBus Namespace Authorization Rule
     /// </summary>
-    [Cmdlet(VerbsCommon.New, ServiceBusNamespaceKeyVerb, SupportsShouldProcess = true), OutputType(typeof(ResourceListKeys))]
+    [ObsoleteAttribute("'New-AzureRmServicebusNamespaceKey' cmdlet is mark as obsolete and will be depricated in upcoming breaking changes build. Please use the New cmdlet 'New-AzureRmServicebusKey'", false)]
+    [Cmdlet(VerbsCommon.New, ServiceBusNamespaceKeyVerb, SupportsShouldProcess = true), OutputType(typeof(ListKeysAttributes))]
     public class NewAzureRmServiceBusNamespaceKeys : AzureServiceBusCmdletBase
     {
         [Parameter(Mandatory = true,
@@ -28,6 +31,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
             Position = 0,
             HelpMessage = "The name of the resource group")]
         [ValidateNotNullOrEmpty]
+        [Alias(AliasResourceGroupname)]
         public string ResourceGroup { get; set; }
 
         [Parameter(Mandatory = true,
@@ -35,14 +39,16 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
             Position = 1,
             HelpMessage = "Namespace Name.")]
         [ValidateNotNullOrEmpty]
-        public string NamespaceName { get; set; }
+        [Alias(AliasNamespaceName)]
+        public string Namespace { get; set; }
                 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 3,
             HelpMessage = "Authorization Rule Name.")]        
         [ValidateNotNullOrEmpty]
-        public string AuthorizationRuleName { get; set; }        
+        [Alias(AliasAuthorizationRuleName)]
+        public string Name { get; set; }        
 
         [Parameter(Mandatory = true,
             Position = 4,
@@ -55,13 +61,11 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
 
         public override void ExecuteCmdlet()
         {
-            var regenKey = new RegenerateKeysParameters(ParsePolicyKey(RegenerateKeys));
-
             // Get a ServiceBus List Keys for the specified AuthorizationRule
-            
-            if (ShouldProcess(target: RegenerateKeys, action: string.Format("Generate new Key:{0} for the AuthorizationRule:{1} of Namespace:{2}", RegenerateKeys, AuthorizationRuleName, NamespaceName)))
+
+            if (ShouldProcess(target: RegenerateKeys, action: string.Format("Generate new Key:{0} for the AuthorizationRule:{1} of Namespace:{2}", RegenerateKeys, Name, Namespace)))
             {
-                WriteObject(Client.SetRegenerateKeys(ResourceGroup, NamespaceName, AuthorizationRuleName, regenKey));
+                WriteObject(Client.SetRegenerateKeys(ResourceGroup, Namespace, Name, RegenerateKeys));
             }
         }
     }

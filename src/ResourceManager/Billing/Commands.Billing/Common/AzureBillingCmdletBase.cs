@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.Billing;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.Billing.Common
 {
@@ -26,20 +27,20 @@ namespace Microsoft.Azure.Commands.Billing.Common
     /// </summary>
     public abstract class AzureBillingCmdletBase : AzureRMCmdlet
     {
-        private IBillingClient _billingManagementClient;
+        private IBillingManagementClient _billingManagementClient;
 
         private Dictionary<string, List<string>> _defaultRequestHeaders;
 
         /// <summary>
         /// Gets or sets the Billing management client.
         /// </summary>
-        public IBillingClient BillingManagementClient
+        public IBillingManagementClient BillingManagementClient
         {
             get
             {
                 return _billingManagementClient ??
                        (_billingManagementClient =
-                           AzureSession.ClientFactory.CreateArmClient<BillingClient>(DefaultProfile.Context,
+                           AzureSession.Instance.ClientFactory.CreateArmClient<BillingManagementClient>(DefaultProfile.DefaultContext,
                                AzureEnvironment.Endpoint.ResourceManager));
             }
             set { _billingManagementClient = value; }

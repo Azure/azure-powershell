@@ -9,7 +9,7 @@
 @{  
   
 # Version number of this module.  
-ModuleVersion = '0.9.0' 
+ModuleVersion = '0.13.0' 
   
 # ID used to uniquely identify this module  
 GUID = '9B00B730-E4BF-11E5-93D9-40A8F066D050'  
@@ -90,7 +90,7 @@ PrivateData = @{
         # Tags = @()
 
         # A URL to the license for this module.
-        LicenseUri = 'https://raw.githubusercontent.com/Azure/azure-powershell/dev/LICENSE.txt'
+        LicenseUri = 'https://aka.ms/azps-license'
 
         # A URL to the main website for this project.
         ProjectUri = 'https://github.com/Azure/azure-powershell'

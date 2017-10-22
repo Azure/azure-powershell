@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.Test.Utilities;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -28,12 +29,14 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureSqlCmdletBaseAttributes()
         {
             UnitTestHelper.CheckCmdletParameterAttributes(typeof(AzureSqlCmdletBase<object, object>), "ResourceGroupName", true, true);
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureSqlDatabaseCmdletBaseAttributes()
         {
             UnitTestHelper.CheckCmdletParameterAttributes(typeof(AzureSqlDatabaseCmdletBase<object, object>), "DatabaseName", true, true);

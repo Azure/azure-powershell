@@ -30,6 +30,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
 
         public const string HTTP = "HTTP";
         public const string HTTPS = "HTTPS";
+        public const string TCP = "TCP";
 
         public const string ProfileType = "Microsoft.Network/trafficManagerProfiles";
     }

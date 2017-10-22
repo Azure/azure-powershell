@@ -23,10 +23,16 @@ namespace Microsoft.Azure.Commands.Network.Models
         public List<string> AdvertisedPublicPrefixes { get; set; }
 
         [JsonProperty(Order = 1)]
+        public List<string> AdvertisedCommunities { get; set; }
+
+        [JsonProperty(Order = 1)]
         public string AdvertisedPublicPrefixesState { get; set; }
 
         [JsonProperty(Order = 1)]
         public int CustomerASN { get; set; }
+
+        [JsonProperty(Order = 1)]
+        public int LegacyMode { get; set; }
 
         [JsonProperty(Order = 1)]
         public string RoutingRegistryName { get; set; }
@@ -35,6 +41,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string AdvertisedPublicPrefixesSText
         {
             get { return JsonConvert.SerializeObject(AdvertisedPublicPrefixes, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string AdvertisedCommunitiesSText
+        {
+            get { return JsonConvert.SerializeObject(AdvertisedCommunities, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

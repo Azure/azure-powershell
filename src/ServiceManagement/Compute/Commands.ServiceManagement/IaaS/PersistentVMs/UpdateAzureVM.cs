@@ -14,14 +14,19 @@
 
 using AutoMapper;
 using Hyak.Common;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Management.Storage.Models;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Common;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
+using Microsoft.WindowsAzure.Commands.Storage.Adapters;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Management.Storage;
 using Microsoft.WindowsAzure.Storage;
 using System;
 using System.Collections.Generic;
@@ -56,7 +61,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
 
             base.ExecuteCommand();
 
-            AzureSubscription currentSubscription = Profile.Context.Subscription;
+            IAzureSubscription currentSubscription = Profile.Context.Subscription;
             if (CurrentDeploymentNewSM == null)
             {
                 throw new ApplicationException(String.Format(Resources.CouldNotFindDeployment, ServiceName, Model.DeploymentSlotType.Production));
@@ -67,7 +72,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
             {
                 if (datadisk.MediaLink == null && string.IsNullOrEmpty(datadisk.DiskName))
                 {
-                    CloudStorageAccount currentStorage = currentSubscription.GetCloudStorageAccount(Profile);
+                    CloudStorageAccount currentStorage = Profile.Context.GetCurrentStorageAccount(
+                    new RDFEStorageProvider(AzureSession.Instance.ClientFactory.CreateClient<StorageManagementClient>(
+                        Profile.Context, AzureEnvironment.Endpoint.ServiceManagement), Profile.Context.Environment));
                     if (currentStorage == null)
                     {
                         throw new ArgumentException(Resources.CurrentStorageAccountIsNotAccessible);

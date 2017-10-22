@@ -31,20 +31,23 @@ namespace Microsoft.Azure.Commands.KeyVault
 
             if (policies != null && policies.Any())
             {
-                string rowFormat = "{0, -40}  {1, -40}  {2, -40} {3, -40} {4, -40}\r\n";
+                string rowFormat = "{0, -43}  {1, -43}  {2, -43} {3, -43} {4, -43} {5, -43} {6, -43}\r\n";
                 sb.AppendLine();
-                sb.AppendFormat(rowFormat, "Tenant ID", "Object ID", "Application ID", "Permissions to keys", "Permissions to secrets");
+                sb.AppendFormat( rowFormat, "Tenant ID", "Object ID", "Application ID", "Permissions to keys", "Permissions to secrets", "Permissions to certificates", "Permissions to (Key Vault Managed) storage" );
                 sb.AppendFormat(rowFormat,
                     GeneralUtilities.GenerateSeparator("Tenant ID".Length, "="),
                     GeneralUtilities.GenerateSeparator("Object ID".Length, "="),
                     GeneralUtilities.GenerateSeparator("Application ID".Length, "="),
                     GeneralUtilities.GenerateSeparator("Permissions To Keys".Length, "="),
-                    GeneralUtilities.GenerateSeparator("Permissions To Secrets".Length, "="));
+                    GeneralUtilities.GenerateSeparator("Permissions To Secrets".Length, "="),
+                    GeneralUtilities.GenerateSeparator("Permissions To Certificates".Length, "="),
+                    GeneralUtilities.GenerateSeparator("Permissions To (Key Vault Managed) Storage".Length, "="));
 
                 foreach (var policy in policies)
                 {
                     sb.AppendFormat(rowFormat, policy.TenantId.ToString(), policy.DisplayName, policy.ApplicationIdDisplayName,
-                        TrimWithEllipsis(policy.PermissionsToKeysStr, 40), TrimWithEllipsis(policy.PermissionsToSecretsStr, 40));
+                        TrimWithEllipsis(policy.PermissionsToKeysStr, 40), TrimWithEllipsis(policy.PermissionsToSecretsStr, 40),
+                        TrimWithEllipsis( policy.PermissionsToCertificatesStr, 40 ), TrimWithEllipsis( policy.PermissionsToStorageStr, 40 ) );
                 }
 
             }
@@ -60,14 +63,15 @@ namespace Microsoft.Azure.Commands.KeyVault
             {
                 sb.AppendLine();
                 foreach(var policy in policies)
-                {                    
-                    sb.AppendFormat("{0, -28}: {1}\r\n", "Tenant ID", policy.TenantName);
-                    sb.AppendFormat("{0, -28}: {1}\r\n", "Object ID", policy.ObjectId);
-                    sb.AppendFormat("{0, -28}: {1}\r\n", "Application ID", policy.ApplicationIdDisplayName);
-                    sb.AppendFormat("{0, -28}: {1}\r\n", "Display Name", policy.DisplayName);
-                    sb.AppendFormat("{0, -28}: {1}\r\n", "Permissions to Keys", policy.PermissionsToKeysStr);
-                    sb.AppendFormat("{0, -28}: {1}\r\n", "Permissions to Secrets", policy.PermissionsToSecretsStr);
-                    sb.AppendFormat("{0, -28}: {1}\r\n", "Permissions to Certificates", policy.PermissionsToCertificatesStr);
+                {
+                    sb.AppendFormat( "{0, -43}: {1}\r\n", "Tenant ID", policy.TenantName );
+                    sb.AppendFormat( "{0, -43}: {1}\r\n", "Object ID", policy.ObjectId );
+                    sb.AppendFormat( "{0, -43}: {1}\r\n", "Application ID", policy.ApplicationIdDisplayName );
+                    sb.AppendFormat( "{0, -43}: {1}\r\n", "Display Name", policy.DisplayName );
+                    sb.AppendFormat( "{0, -43}: {1}\r\n", "Permissions to Keys", policy.PermissionsToKeysStr );
+                    sb.AppendFormat( "{0, -43}: {1}\r\n", "Permissions to Secrets", policy.PermissionsToSecretsStr );
+                    sb.AppendFormat( "{0, -43}: {1}\r\n", "Permissions to Certificates", policy.PermissionsToCertificatesStr );
+                    sb.AppendFormat( "{0, -43}: {1}\r\n", "Permissions to (Key Vault Managed) Storage", policy.PermissionsToStorageStr );
                     sb.AppendLine();
                 }
             }

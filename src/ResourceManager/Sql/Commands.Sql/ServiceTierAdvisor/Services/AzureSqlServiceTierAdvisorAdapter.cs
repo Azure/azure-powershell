@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Services;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
@@ -38,19 +39,19 @@ namespace Microsoft.Azure.Commands.Sql.ServiceTierAdvisor.Services
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureContext Context { get; set; }
+        public IAzureContext Context { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure Subscription
         /// </summary>
-        private AzureSubscription _subscription { get; set; }
+        private IAzureSubscription _subscription { get; set; }
 
         /// <summary>
         /// Constructs a service tier advisor adapter
         /// </summary>
         /// <param name="profile">The current azure profile</param>
         /// <param name="subscription">The current azure subscription</param>
-        public AzureSqlServiceTierAdvisorAdapter(AzureContext context)
+        public AzureSqlServiceTierAdvisorAdapter(IAzureContext context)
         {
             _subscription = context.Subscription;
             Context = context;
@@ -70,13 +71,13 @@ namespace Microsoft.Azure.Commands.Sql.ServiceTierAdvisor.Services
             // if excludeEpCandidates is set and database is included in recommended elastic pools return null
             if (excludeEpCandidates)
             {
-                var pools = Communicator.GetRecommendedElasticPoolsExpanded(resourceGroupName, serverName, "databases", Util.GenerateTracingId());
+                var pools = Communicator.GetRecommendedElasticPoolsExpanded(resourceGroupName, serverName, "databases");
                 if (pools.SelectMany(pool => pool.Properties.Databases).Any(poolDatabase => databaseName == poolDatabase.Name))
                 {
                     return null;
                 }
             }
-            var database = Communicator.GetDatabaseExpanded(resourceGroupName, serverName, databaseName, "upgradeHint", Util.GenerateTracingId());
+            var database = Communicator.GetDatabaseExpanded(resourceGroupName, serverName, databaseName, "upgradeHint");
             return CreateUpgradeDatabaseHint(database);
         }
 
@@ -89,12 +90,12 @@ namespace Microsoft.Azure.Commands.Sql.ServiceTierAdvisor.Services
         /// <returns>List of UpgradeDatabaseHint</returns>
         public ICollection<RecommendedDatabaseProperties> ListUpgradeDatabaseHints(string resourceGroupName, string serverName, bool excludeEpCandidates)
         {
-            var databases = Communicator.ListDatabasesExpanded(resourceGroupName, serverName, "upgradeHint", Util.GenerateTracingId());
+            var databases = Communicator.ListDatabasesExpanded(resourceGroupName, serverName, "upgradeHint");
 
             // if excludeEpCandidates flag is set filter out databases that are in recommended elastic pools
             if (excludeEpCandidates && databases.Count > 0)
             {
-                var pools = Communicator.GetRecommendedElasticPoolsExpanded(resourceGroupName, serverName, "databases", Util.GenerateTracingId());
+                var pools = Communicator.GetRecommendedElasticPoolsExpanded(resourceGroupName, serverName, "databases");
                 var pooledDatabaseNames = new HashSet<string>(pools.SelectMany(pool => pool.Properties.Databases).Select(d => d.Name));
                 databases = databases.Where(database => !pooledDatabaseNames.Contains(database.Name)).ToList();
             }

@@ -16,7 +16,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "StaticAnalysis.Test.CmdletTest.BreakingChange.DifferentGenericTypeArgumentSize",
-            "Name": "Test",
+            "Name": "StaticAnalysis.Test.CmdletTest.BreakingChange.DifferentGenericTypeArgumentSize.Test",
             "AssemblyQualifiedName": "StaticAnalysis.Test.CmdletTest.BreakingChange.DifferentGenericTypeArgumentSize.Test, TestCmdletsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Foo": "StaticAnalysis.Test.CmdletTest.BreakingChange.DifferentGenericTypeArgumentSize.TestType`1[System.Int32]"
@@ -40,7 +40,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "StaticAnalysis.Test.CmdletTest.BreakingChange.DifferentGenericTypeArgumentSize",
-                  "Name": "Test",
+                  "Name": "StaticAnalysis.Test.CmdletTest.BreakingChange.DifferentGenericTypeArgumentSize.Test",
                   "AssemblyQualifiedName": "StaticAnalysis.Test.CmdletTest.BreakingChange.DifferentGenericTypeArgumentSize.Test, TestCmdletsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Foo": "StaticAnalysis.Test.CmdletTest.BreakingChange.DifferentGenericTypeArgumentSize.TestType`1[System.Int32]"
@@ -79,11 +79,11 @@
           "AliasList": [],
           "Type": {
             "Namespace": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeGenericTypeArgument",
-            "Name": "Test",
+            "Name": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeGenericTypeArgument.Test",
             "AssemblyQualifiedName": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeGenericTypeArgument.Test, TestCmdletsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Bar": "System.Collections.Generic.List`1[System.Int32]",
-              "Foo": "System.Collections.Generic.List`1[System.Int32]"
+              "Foo": "System.Collections.Generic.List`1[System.Int32]",
+              "Bar": "System.Collections.Generic.List`1[System.Int32]"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -104,11 +104,11 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeGenericTypeArgument",
-                  "Name": "Test",
+                  "Name": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeGenericTypeArgument.Test",
                   "AssemblyQualifiedName": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeGenericTypeArgument.Test, TestCmdletsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Bar": "System.Collections.Generic.List`1[System.Int32]",
-                    "Foo": "System.Collections.Generic.List`1[System.Int32]"
+                    "Foo": "System.Collections.Generic.List`1[System.Int32]",
+                    "Bar": "System.Collections.Generic.List`1[System.Int32]"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -144,11 +144,11 @@
           "AliasList": [],
           "Type": {
             "Namespace": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeGenericType",
-            "Name": "Test",
+            "Name": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeGenericType.Test",
             "AssemblyQualifiedName": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeGenericType.Test, TestCmdletsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Bar": "System.Collections.Generic.List`1[System.Int32]",
-              "Foo": "System.Collections.Generic.List`1[System.Int32]"
+              "Foo": "System.Collections.Generic.List`1[System.Int32]",
+              "Bar": "System.Collections.Generic.List`1[System.Int32]"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -169,11 +169,11 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeGenericType",
-                  "Name": "Test",
+                  "Name": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeGenericType.Test",
                   "AssemblyQualifiedName": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeGenericType.Test, TestCmdletsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Bar": "System.Collections.Generic.List`1[System.Int32]",
-                    "Foo": "System.Collections.Generic.List`1[System.Int32]"
+                    "Foo": "System.Collections.Generic.List`1[System.Int32]",
+                    "Bar": "System.Collections.Generic.List`1[System.Int32]"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -209,11 +209,11 @@
           "AliasList": [],
           "Type": {
             "Namespace": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeElementType",
-            "Name": "Test",
+            "Name": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeElementType.Test",
             "AssemblyQualifiedName": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeElementType.Test, TestCmdletsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Bar": "System.Int32[]",
-              "Foo": "System.Int32[]"
+              "Foo": "System.Int32[]",
+              "Bar": "System.Int32[]"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -234,11 +234,11 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeElementType",
-                  "Name": "Test",
+                  "Name": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeElementType.Test",
                   "AssemblyQualifiedName": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeElementType.Test, TestCmdletsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Bar": "System.Int32[]",
-                    "Foo": "System.Int32[]"
+                    "Foo": "System.Int32[]",
+                    "Bar": "System.Int32[]"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -274,7 +274,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Int32",
+            "Name": "System.Int32",
             "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -296,7 +296,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Int32",
+                  "Name": "System.Int32",
                   "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -333,7 +333,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Int32",
+            "Name": "System.Int32",
             "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -355,7 +355,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Int32",
+                  "Name": "System.Int32",
                   "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -392,7 +392,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Int32",
+            "Name": "System.Int32",
             "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -414,7 +414,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Int32",
+                  "Name": "System.Int32",
                   "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -451,7 +451,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "StaticAnalysis.Test.CmdletTest.BreakingChange.DifferentParameterGenericTypeArgumentSize",
-            "Name": "Test",
+            "Name": "StaticAnalysis.Test.CmdletTest.BreakingChange.DifferentParameterGenericTypeArgumentSize.Test`1[System.Int32]",
             "AssemblyQualifiedName": "StaticAnalysis.Test.CmdletTest.BreakingChange.DifferentParameterGenericTypeArgumentSize.Test`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], TestCmdletsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
@@ -475,7 +475,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "StaticAnalysis.Test.CmdletTest.BreakingChange.DifferentParameterGenericTypeArgumentSize",
-                  "Name": "Test",
+                  "Name": "StaticAnalysis.Test.CmdletTest.BreakingChange.DifferentParameterGenericTypeArgumentSize.Test`1[System.Int32]",
                   "AssemblyQualifiedName": "StaticAnalysis.Test.CmdletTest.BreakingChange.DifferentParameterGenericTypeArgumentSize.Test`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], TestCmdletsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
@@ -514,7 +514,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Collections.Generic",
-            "Name": "List",
+            "Name": "System.Collections.Generic.List`1[System.Int32]",
             "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -532,7 +532,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Collections.Generic",
-            "Name": "List",
+            "Name": "System.Collections.Generic.List`1[System.Int32]",
             "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -556,7 +556,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Collections.Generic",
-                  "Name": "List",
+                  "Name": "System.Collections.Generic.List`1[System.Int32]",
                   "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -580,7 +580,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Collections.Generic",
-                  "Name": "List",
+                  "Name": "System.Collections.Generic.List`1[System.Int32]",
                   "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -619,7 +619,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Collections.Generic",
-            "Name": "List",
+            "Name": "System.Collections.Generic.List`1[System.Int32]",
             "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -637,7 +637,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Collections.Generic",
-            "Name": "List",
+            "Name": "System.Collections.Generic.List`1[System.Int32]",
             "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -661,7 +661,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Collections.Generic",
-                  "Name": "List",
+                  "Name": "System.Collections.Generic.List`1[System.Int32]",
                   "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -685,7 +685,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Collections.Generic",
-                  "Name": "List",
+                  "Name": "System.Collections.Generic.List`1[System.Int32]",
                   "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -724,7 +724,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Int32[]",
+            "Name": "System.Int32[]",
             "AssemblyQualifiedName": "System.Int32[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": "System.Int32",
@@ -740,7 +740,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Int32[]",
+            "Name": "System.Int32[]",
             "AssemblyQualifiedName": "System.Int32[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": "System.Int32",
@@ -762,7 +762,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Int32[]",
+                  "Name": "System.Int32[]",
                   "AssemblyQualifiedName": "System.Int32[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": "System.Int32",
@@ -784,7 +784,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Int32[]",
+                  "Name": "System.Int32[]",
                   "AssemblyQualifiedName": "System.Int32[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": "System.Int32",
@@ -818,7 +818,7 @@
         {
           "Type": {
             "Namespace": "StaticAnalysis.Test.CmdletTest.BreakingChange.DifferentOutputGenericTypeArgumentSize",
-            "Name": "Test",
+            "Name": "StaticAnalysis.Test.CmdletTest.BreakingChange.DifferentOutputGenericTypeArgumentSize.Test`1[System.Int32]",
             "AssemblyQualifiedName": "StaticAnalysis.Test.CmdletTest.BreakingChange.DifferentOutputGenericTypeArgumentSize.Test`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], TestCmdletsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
@@ -832,7 +832,12 @@
         }
       ],
       "Parameters": [],
-      "ParameterSets": [],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": []
+        }
+      ],
       "AliasList": []
     },
     {
@@ -848,7 +853,7 @@
         {
           "Type": {
             "Namespace": "System.Collections.Generic",
-            "Name": "List",
+            "Name": "System.Collections.Generic.List`1[System.Int32]",
             "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -862,7 +867,12 @@
         }
       ],
       "Parameters": [],
-      "ParameterSets": [],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": []
+        }
+      ],
       "AliasList": []
     },
     {
@@ -878,7 +888,7 @@
         {
           "Type": {
             "Namespace": "System.Collections.Generic",
-            "Name": "List",
+            "Name": "System.Collections.Generic.List`1[System.Int32]",
             "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -892,7 +902,12 @@
         }
       ],
       "Parameters": [],
-      "ParameterSets": [],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": []
+        }
+      ],
       "AliasList": []
     },
     {
@@ -908,7 +923,7 @@
         {
           "Type": {
             "Namespace": "System",
-            "Name": "Int32[]",
+            "Name": "System.Int32[]",
             "AssemblyQualifiedName": "System.Int32[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": "System.Int32",
@@ -920,7 +935,12 @@
         }
       ],
       "Parameters": [],
-      "ParameterSets": [],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": []
+        }
+      ],
       "AliasList": []
     },
     {
@@ -939,7 +959,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -961,7 +981,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -998,7 +1018,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1014,7 +1034,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1030,7 +1050,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1052,7 +1072,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1074,7 +1094,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1101,7 +1121,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1123,7 +1143,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1150,7 +1170,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1187,7 +1207,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1203,7 +1223,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1225,7 +1245,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1247,7 +1267,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1284,7 +1304,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1300,7 +1320,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1322,7 +1342,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1344,7 +1364,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1381,7 +1401,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1403,7 +1423,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1440,7 +1460,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1462,7 +1482,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1499,7 +1519,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1521,7 +1541,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1558,7 +1578,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1580,7 +1600,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1614,11 +1634,11 @@
         {
           "Type": {
             "Namespace": "StaticAnalysis.Test.CmdletTest.BreakingChange.RemoveProperty",
-            "Name": "TestOutput",
+            "Name": "StaticAnalysis.Test.CmdletTest.BreakingChange.RemoveProperty.TestOutput",
             "AssemblyQualifiedName": "StaticAnalysis.Test.CmdletTest.BreakingChange.RemoveProperty.TestOutput, TestCmdletsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "PropertyOne": "System.String",
-              "PropertyTwo": "StaticAnalysis.Test.CmdletTest.BreakingChange.RemoveProperty.TestType"
+              "PropertyTwo": "StaticAnalysis.Test.CmdletTest.BreakingChange.RemoveProperty.TestType",
+              "PropertyOne": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1629,7 +1649,12 @@
         }
       ],
       "Parameters": [],
-      "ParameterSets": [],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": []
+        }
+      ],
       "AliasList": []
     },
     {
@@ -1645,11 +1670,11 @@
         {
           "Type": {
             "Namespace": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangePropertyType",
-            "Name": "TestOutput",
+            "Name": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangePropertyType.TestOutput",
             "AssemblyQualifiedName": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangePropertyType.TestOutput, TestCmdletsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "PropertyOne": "System.String",
-              "PropertyTwo": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangePropertyType.TestType"
+              "PropertyTwo": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangePropertyType.TestType",
+              "PropertyOne": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1660,7 +1685,12 @@
         }
       ],
       "Parameters": [],
-      "ParameterSets": [],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": []
+        }
+      ],
       "AliasList": []
     },
     {
@@ -1676,12 +1706,12 @@
         {
           "Type": {
             "Namespace": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeOutputTypeName",
-            "Name": "TestOutput",
+            "Name": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeOutputTypeName.TestOutput",
             "AssemblyQualifiedName": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeOutputTypeName.TestOutput, TestCmdletsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "PropertyOne": "System.String",
               "PropertyThree": "System.Boolean",
-              "PropertyTwo": "System.Int32"
+              "PropertyTwo": "System.Int32",
+              "PropertyOne": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1692,7 +1722,12 @@
         }
       ],
       "Parameters": [],
-      "ParameterSets": [],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": []
+        }
+      ],
       "AliasList": []
     },
     {
@@ -1708,7 +1743,7 @@
         {
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1720,7 +1755,12 @@
         }
       ],
       "Parameters": [],
-      "ParameterSets": [],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": []
+        }
+      ],
       "AliasList": []
     },
     {
@@ -1739,7 +1779,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1761,7 +1801,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1798,7 +1838,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1824,7 +1864,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1865,7 +1905,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -1881,7 +1921,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -1897,7 +1937,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -1919,7 +1959,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -1941,7 +1981,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -1963,7 +2003,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -2000,7 +2040,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -2022,7 +2062,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -2059,7 +2099,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2081,7 +2121,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2120,7 +2160,7 @@
           ],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -2144,7 +2184,7 @@
                 ],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -2181,7 +2221,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -2203,7 +2243,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -2235,7 +2275,12 @@
       "DefaultParameterSetName": "__AllParameterSets",
       "OutputTypes": [],
       "Parameters": [],
-      "ParameterSets": [],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": []
+        }
+      ],
       "AliasList": []
     },
     {
@@ -2249,7 +2294,12 @@
       "DefaultParameterSetName": "__AllParameterSets",
       "OutputTypes": [],
       "Parameters": [],
-      "ParameterSets": [],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": []
+        }
+      ],
       "AliasList": []
     },
     {
@@ -2263,7 +2313,12 @@
       "DefaultParameterSetName": "__AllParameterSets",
       "OutputTypes": [],
       "Parameters": [],
-      "ParameterSets": [],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": []
+        }
+      ],
       "AliasList": []
     },
     {
@@ -2277,7 +2332,12 @@
       "DefaultParameterSetName": "__AllParameterSets",
       "OutputTypes": [],
       "Parameters": [],
-      "ParameterSets": [],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": []
+        }
+      ],
       "AliasList": [
         "Test-CmdletAlias"
       ]
@@ -2293,7 +2353,12 @@
       "DefaultParameterSetName": "__AllParameterSets",
       "OutputTypes": [],
       "Parameters": [],
-      "ParameterSets": [],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": []
+        }
+      ],
       "AliasList": []
     },
     {
@@ -2307,7 +2372,12 @@
       "DefaultParameterSetName": "__AllParameterSets",
       "OutputTypes": [],
       "Parameters": [],
-      "ParameterSets": [],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": []
+        }
+      ],
       "AliasList": []
     },
     {
@@ -2321,7 +2391,12 @@
       "DefaultParameterSetName": "__AllParameterSets",
       "OutputTypes": [],
       "Parameters": [],
-      "ParameterSets": [],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": []
+        }
+      ],
       "AliasList": []
     },
     {
@@ -2335,7 +2410,12 @@
       "DefaultParameterSetName": "__AllParameterSets",
       "OutputTypes": [],
       "Parameters": [],
-      "ParameterSets": [],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": []
+        }
+      ],
       "AliasList": []
     },
     {
@@ -2354,7 +2434,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -2376,7 +2456,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -2413,7 +2493,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -2435,7 +2515,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -2467,7 +2547,12 @@
       "DefaultParameterSetName": "__AllParameterSets",
       "OutputTypes": [],
       "Parameters": [],
-      "ParameterSets": [],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": []
+        }
+      ],
       "AliasList": []
     },
     {
@@ -2486,7 +2571,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -2508,7 +2593,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -2545,7 +2630,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2561,7 +2646,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -2583,7 +2668,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2605,7 +2690,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -2642,7 +2727,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2664,7 +2749,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2701,7 +2786,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2723,7 +2808,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2860,7 +2945,7 @@
     },
     "StaticAnalysis.Test.CmdletTest.BreakingChange.DifferentGenericTypeArgumentSize.TestType`1[System.Int32]": {
       "Namespace": "StaticAnalysis.Test.CmdletTest.BreakingChange.DifferentGenericTypeArgumentSize",
-      "Name": "TestType",
+      "Name": "StaticAnalysis.Test.CmdletTest.BreakingChange.DifferentGenericTypeArgumentSize.TestType`1[System.Int32]",
       "AssemblyQualifiedName": "StaticAnalysis.Test.CmdletTest.BreakingChange.DifferentGenericTypeArgumentSize.TestType`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], TestCmdletsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
@@ -2870,7 +2955,7 @@
     },
     "System.Collections.Generic.List`1[System.Int32]": {
       "Namespace": "System.Collections.Generic",
-      "Name": "List",
+      "Name": "System.Collections.Generic.List`1[System.Int32]",
       "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
@@ -2880,7 +2965,7 @@
     },
     "System.Int32[]": {
       "Namespace": "System",
-      "Name": "Int32[]",
+      "Name": "System.Int32[]",
       "AssemblyQualifiedName": "System.Int32[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": "System.Int32",
@@ -2888,24 +2973,24 @@
     },
     "StaticAnalysis.Test.CmdletTest.BreakingChange.RemoveProperty.TestType": {
       "Namespace": "StaticAnalysis.Test.CmdletTest.BreakingChange.RemoveProperty",
-      "Name": "TestType",
+      "Name": "StaticAnalysis.Test.CmdletTest.BreakingChange.RemoveProperty.TestType",
       "AssemblyQualifiedName": "StaticAnalysis.Test.CmdletTest.BreakingChange.RemoveProperty.TestType, TestCmdletsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "PropertyOne": "System.String",
         "PropertyThree": "System.Boolean",
-        "PropertyTwo": "System.Int32"
+        "PropertyTwo": "System.Int32",
+        "PropertyOne": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
     },
     "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangePropertyType.TestType": {
       "Namespace": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangePropertyType",
-      "Name": "TestType",
+      "Name": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangePropertyType.TestType",
       "AssemblyQualifiedName": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangePropertyType.TestType, TestCmdletsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "PropertyOne": "System.String",
         "PropertyThree": "System.Boolean",
-        "PropertyTwo": "System.Int32"
+        "PropertyTwo": "System.Int32",
+        "PropertyOne": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []

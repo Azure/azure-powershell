@@ -23,6 +23,7 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Hyak.Common;
 using Microsoft.Azure;
 using Microsoft.Azure.ServiceManagement.Common.XmlSchema;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest.Common
 {

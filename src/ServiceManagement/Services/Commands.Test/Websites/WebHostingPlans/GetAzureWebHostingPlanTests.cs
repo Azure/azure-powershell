@@ -27,6 +27,8 @@ using Microsoft.WindowsAzure.Commands.Utilities.Websites.Services.WebEntities;
 using Microsoft.WindowsAzure.Commands.Websites.WebHostingPlan;
 using Moq;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Websites.WebHostingPlans
 {
@@ -56,9 +58,9 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites.WebHostingPlans
                 WebsitesClient = clientMock.Object
             };
             currentProfile = new AzureSMProfile();
-            var subscription = new AzureSubscription{Id = new Guid(subscriptionId) };
-            subscription.Properties[AzureSubscription.Property.Default] = "True";
-            currentProfile.Subscriptions[new Guid(subscriptionId)] = subscription;
+            var subscription = new AzureSubscription{Id = subscriptionId };
+            subscription.SetDefault();
+            currentProfile.SubscriptionTable[new Guid(subscriptionId)] = subscription;
 
             command.ExecuteCmdlet();
 
@@ -90,9 +92,9 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites.WebHostingPlans
                 WebsitesClient = clientMock.Object
             };
             currentProfile = new AzureSMProfile();
-            var subscription = new AzureSubscription{Id = new Guid(subscriptionId) };
-            subscription.Properties[AzureSubscription.Property.Default] = "True";
-            currentProfile.Subscriptions[new Guid(subscriptionId)] = subscription;
+            var subscription = new AzureSubscription{Id = subscriptionId };
+            subscription.SetDefault();
+            currentProfile.SubscriptionTable[new Guid(subscriptionId)] = subscription;
 
             command.ExecuteCmdlet();
 

@@ -38,6 +38,8 @@ namespace Microsoft.Azure.Commands.Compute.Models
         public VirtualMachineAgentInstanceView VMAgent { get; set; }
 
         public IList<InstanceViewStatus> Statuses { get; set; }
+
+        public MaintenanceRedeployStatus MaintenanceRedeployStatus { get; set; }
     }
 
     public static class PSVirtualMachineInstanceViewExtension
@@ -58,7 +60,8 @@ namespace Microsoft.Azure.Commands.Compute.Models
                 PlatformFaultDomain = virtualMachineInstanceView.PlatformFaultDomain,
                 PlatformUpdateDomain = virtualMachineInstanceView.PlatformUpdateDomain,
                 RemoteDesktopThumbprint = virtualMachineInstanceView.RdpThumbPrint,
-                VMAgent = virtualMachineInstanceView.VmAgent
+                VMAgent = virtualMachineInstanceView.VmAgent,
+                MaintenanceRedeployStatus = virtualMachineInstanceView.MaintenanceRedeployStatus
             };
 
             return result;

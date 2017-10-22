@@ -14,8 +14,8 @@
 
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.Insights.UsageMetrics;
-using Microsoft.Azure.Insights;
-using Microsoft.Azure.Insights.Models;
+using Microsoft.Azure.Management.Monitor;
+using Microsoft.Azure.Management.Monitor.Models;
 using Microsoft.Rest.Azure.OData;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
@@ -30,10 +30,10 @@ namespace Microsoft.Azure.Commands.Insights.Test.Metrics
     public class GetAzureRmUsageTests
     {
         private readonly GetAzureRmUsageCommand cmdlet;
-        private readonly Mock<InsightsClient> insightsClientMock;
+        private readonly Mock<MonitorClient> MonitorClientMock;
         private readonly Mock<IUsageMetricsOperations> insightsUsageMetricOperationsMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
-        private Microsoft.Rest.Azure.AzureOperationResponse<IEnumerable<Microsoft.Azure.Insights.Models.UsageMetric>> response;
+        private Microsoft.Rest.Azure.AzureOperationResponse<IEnumerable<Microsoft.Azure.Management.Monitor.Models.UsageMetric>> response;
         private string resourceId;
         private ODataQuery<UsageMetric> filter;
         private string apiVersion;
@@ -42,12 +42,12 @@ namespace Microsoft.Azure.Commands.Insights.Test.Metrics
         {
             //ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             insightsUsageMetricOperationsMock = new Mock<IUsageMetricsOperations>();
-            insightsClientMock = new Mock<InsightsClient>();
+            MonitorClientMock = new Mock<MonitorClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new GetAzureRmUsageCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
-                InsightsClient = insightsClientMock.Object
+                MonitorClient = MonitorClientMock.Object
             };
 
             response = new Microsoft.Rest.Azure.AzureOperationResponse<IEnumerable<UsageMetric>>()
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Metrics
                     apiVersion = api;
                 });
 
-            insightsClientMock
+            MonitorClientMock
                 .SetupGet(f => f.UsageMetrics)
                 .Returns(this.insightsUsageMetricOperationsMock.Object);
         }

@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 ComputerName = this.ComputerName,
                 AdminUsername = this.Credential.UserName,
-                AdminPassword = SecureStringExtensions.ConvertToString(this.Credential.Password),
+                AdminPassword = ConversionUtilities.SecureStringToString(this.Credential.Password),
                 CustomData = string.IsNullOrWhiteSpace(this.CustomData) ? null : Convert.ToBase64String(Encoding.UTF8.GetBytes(this.CustomData)),
             };
 

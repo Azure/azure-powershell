@@ -71,7 +71,6 @@ namespace StaticAnalysis.SignatureVerifier
             VerbsCommon.New,
             VerbsCommon.Optimize,
             VerbsData.Publish,
-            VerbsDiagnostic.Resolve,
             VerbsData.Save,
             VerbsData.Sync,
             VerbsCommon.Switch,

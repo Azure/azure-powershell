@@ -19,32 +19,32 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
 {
     public class PSQuota
     {
-        private SubscriptionQuotas subscriptionQuotas;
+        private SubscriptionQuota subscriptionQuota;
 
         public PSQuota()
         {
-            subscriptionQuotas = new SubscriptionQuotas();
+            subscriptionQuota = new SubscriptionQuota();
         }
 
-        public PSQuota(SubscriptionQuotas subscriptionQuotas)
+        public PSQuota(SubscriptionQuota subscriptionQuotas)
         {
             if (subscriptionQuotas == null)
             {
                 throw new ArgumentNullException("subscriptionQuotas");
             }
 
-            this.subscriptionQuotas = subscriptionQuotas;
+            this.subscriptionQuota = subscriptionQuotas;
         }
 
         public string Name
         {
             get
             {
-                return subscriptionQuotas.Name;
+                return subscriptionQuota.Name;
             }
             internal set
             {
-                subscriptionQuotas.Name = value;
+                subscriptionQuota.Name = value;
             }
         }
 
@@ -54,11 +54,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
         {
             get
             {
-                return subscriptionQuotas.Properties.CurrentCount;
-            }
-            internal set
-            {
-                subscriptionQuotas.Properties.CurrentCount = value;
+                return subscriptionQuota.CurrentCount.GetValueOrDefault();
             }
         }
 
@@ -66,23 +62,19 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
         {
             get
             {
-                return subscriptionQuotas.Properties.MaxCount;
-            }
-            internal set
-            {
-                subscriptionQuotas.Properties.MaxCount = value;
+                return subscriptionQuota.MaxCount.GetValueOrDefault();
             }
         }
 
-        public SubscriptionQuotasProperties Properties
+        public SubscriptionQuota Properties
         {
             get
             {
-                return subscriptionQuotas.Properties;
+                return subscriptionQuota;
             }
             internal set
             {
-                subscriptionQuotas.Properties = value;
+                subscriptionQuota = value;
             }
         }
     }

@@ -13,9 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Management.Batch;
-using Microsoft.Azure.Management.Resources;
+using Microsoft.Azure.Management.Internal.Resources;
 using System;
 
 namespace Microsoft.Azure.Commands.Batch.Models
@@ -50,9 +51,9 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// Creates new BatchClient
         /// </summary>
         /// <param name="context">Context with subscription containing a batch account to manipulate</param>
-        public BatchClient(AzureContext context)
-            : this(AzureSession.ClientFactory.CreateArmClient<BatchManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager),
-            AzureSession.ClientFactory.CreateClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
+        public BatchClient(IAzureContext context)
+            : this(AzureSession.Instance.ClientFactory.CreateArmClient<BatchManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager),
+            AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
         {
         }
 

@@ -39,7 +39,11 @@ Moves a commitment association from one commitment plan to another.
 Creates a new commitment plan.
 
 ### [New-AzureRmMlWebService](New-AzureRmMlWebService.md)
-Creates a new web service.
+
+Creates a new Azure Machine Learning web service.
+
+### [Add-AzureRmMlWebServiceRegionalProperty](Add-AzureRmMlWebServiceRegionalProperty.md)
+Creates regional web service properties.
 
 ### [Remove-AzureRmMlCommitmentPlan](Remove-AzureRmMlCommitmentPlan.md)
 Deletes a commitment plan.

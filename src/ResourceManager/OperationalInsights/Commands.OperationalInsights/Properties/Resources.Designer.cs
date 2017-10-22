@@ -190,10 +190,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to HTTP Status Code: {0}
-        ///Error Code: {1}
-        ///Error Message: {2}
-        ///Request Id: {3}
-        ///Timestamp (Utc):{4}.
+        ///Error Message: {1}
+        ///Request Id: {2}
+        ///Timestamp (Utc):{3}.
         /// </summary>
         internal static string FormattedCloudExceptionMessageTemplate {
             get {

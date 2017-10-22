@@ -266,4 +266,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Set-AzureRmSqlDatabaseAdvisorAutoExecuteStatus](./Set-AzureRmSqlDatabaseAdvisorAutoExecuteStatus.md)
 
-
+[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)

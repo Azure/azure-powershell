@@ -120,7 +120,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Node
+
+Parameter 'Node' accepts value of type 'Node' from the pipeline
+
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.ServerManagement.Model.Session
 
 ## NOTES
 

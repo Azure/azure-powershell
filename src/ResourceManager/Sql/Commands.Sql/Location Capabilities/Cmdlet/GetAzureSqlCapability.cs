@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            AzureSqlCapabilitiesAdapter adapter = new AzureSqlCapabilitiesAdapter(DefaultProfile.Context);
+            AzureSqlCapabilitiesAdapter adapter = new AzureSqlCapabilitiesAdapter(DefaultProfile.DefaultContext);
             LocationCapabilityModel model = adapter.GetLocationCapabilities(LocationName);
             int depth = 0;
 

@@ -107,6 +107,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### ASRReplicationProtectedItem
+
+Parameter 'ReplicationProtectedItem' accepts value of type 'ASRReplicationProtectedItem' from the pipeline
+
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.SiteRecovery.ASRJob

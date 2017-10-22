@@ -139,4 +139,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Get-AzureRmSqlDatabaseGeoBackupPolicy](./Get-AzureRmSqlDatabaseGeoBackupPolicy.md)
 
+[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
 

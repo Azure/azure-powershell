@@ -190,7 +190,7 @@ Accept wildcard characters: False
 ```
 
 ### -TargetResourceId
-Specifies the ID of the resource the rule is monitoring.
+Specifies the ID of the resource the rule is monitoring. NOTE: This property cannot be updated for an existing alert rule.
 
 ```yaml
 Type: String
@@ -256,6 +256,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Insights.OutputClasses.PSAddAlertRuleOperationResponse
 
 ## NOTES
 

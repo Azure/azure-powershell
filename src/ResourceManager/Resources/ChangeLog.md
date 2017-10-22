@@ -19,6 +19,56 @@
 -->
 ## Current Release
 
+## Version 4.4.1
+
+## Version 4.4.0
+* Add ManagedApplication cmdlets
+    - New-AzureRmManagedApplication cmdlet to create a managed application
+    - Get-AzureRmManagedApplication cmdlet to list all managed applications under a subscription or to get a specific managed application
+    - Remove-AzureRmManagedApplication cmdlet to delete a managed application
+    - Set-AzureRmManagedApplication cmdlet to update an existing managed application
+* Add ManagedApplicationDefinition cmdlets
+    - New-AzureRmManagedApplicationDefinition cmdlet to create a managed application definition using a zip file uri or using mainTemplate and createUiDefinition json files
+    - Get-AzureRmManagedApplicationDefinition cmdlet to list all managed application definitions under a resource group or to get a specific managed application definition
+    - Remove-AzureRmManagedApplicationDefinition cmdlet to delete a managed application definition
+    - Set-AzureRmManagedApplicationDefinition cmdlet to update an existing managed application definition
+* Add PolicySetDefinition cmdlets
+    - New-AzureRmPolicySetDefinition cmdlet to create a policy set definition
+    - Get-AzureRmPolicySetDefinition cmdlet to list all policy set definitions or to get a specific policy set definition
+    - Remove-AzureRmPolicySetDefinition cmdlet to delete a policy set definition
+    - Set-AzureRmPolicySetDefinition cmdlet to update an existing policy set definition
+* Add -PolicySetDefinition, -Sku and -NotScope parameters to New-AzureRmPolicyAssignment and Set-AzureRmPolicyAssignment cmdlets
+* Add support to pass in policy url to New-AzureRmPolicyDefinition and Set-AzureRmPolicyDefinition cmdlets
+* Add -Mode parameter to New-AzureRmPolicyDefinition cmdlet
+* Add Support for removal of roleassignment using PSRoleAssignment object
+    - Users can now use PSRoleassignmnet inputobject with Remove-AzureRMRoleAssignment commandlet to remove the roleassignment.
+    
+## Version 4.3.1
+
+## Version 4.3.0
+* Add Support for validation of scopes for the following roledefinition and roleassignment commandlets before sending the request to ARM
+    - Get-AzureRMRoleAssignment
+    - New-AzureRMRoleAssignment
+    - Remove-AzureRMRoleAssignment
+    - Get-AzureRMRoleDefinition
+    - New-AzureRMRoleDefinition
+    - Remove-AzureRMRoleDefinition
+    - Set-AzureRMRoleDefinition
+
+## Version 4.2.1
+
+## Version 4.2.0
+
+## Version 4.1.0
+* Fixed issue where Get-AzureRMRoleAssignment would result in a Bad Request if the number of roleassignments where greater than 1000
+    - Users can now use Get-AzureRMRoleAssignment even if the roleassignments to be returned is greater than 1000
+    
+## Version 4.0.1
+
+## Version 4.0.0
+* Support cross-resource-group deployments for New-AzureRmResourceGroupDeployment
+    - Users can now use nested deployments to deploy to different resource groups.
+
 ## Version 3.8.0
 
 ## Version 3.7.0

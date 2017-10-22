@@ -131,5 +131,5 @@ Alias: Set-AdlStoreItemExpiry
 
 ## RELATED LINKS
 
-[Get-AzureRmDataLakeStoreItem]()
+[Get-AzureRmDataLakeStoreItem](./Get-AzureRmDataLakeStoreItem.md)
 

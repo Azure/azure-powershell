@@ -14,6 +14,7 @@
 
 using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.ServerUpgrade.Model;
@@ -42,18 +43,18 @@ namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Services
         /// <summary>
         /// Gets or set the Azure subscription
         /// </summary>
-        private static AzureSubscription Subscription { get; set; }
+        private static IAzureSubscription Subscription { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureContext Context { get; set; }
+        public IAzureContext Context { get; set; }
 
         /// <summary>
         /// Creates a communicator for Azure Sql Databases
         /// </summary>
         /// <param name="context"></param>
-        public AzureSqlServerUpgradeCommunicator(AzureContext context)
+        public AzureSqlServerUpgradeCommunicator(IAzureContext context)
         {
             Context = context;
             if (context.Subscription != Subscription)
@@ -66,34 +67,34 @@ namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Services
         /// <summary>
         /// Start an Azure Sql Database Server Upgrade
         /// </summary>
-        public void Start(string resourceGroupName, string serverName, ServerUpgradeStartParameters parameters, string clientRequestId)
+        public void Start(string resourceGroupName, string serverName, ServerUpgradeStartParameters parameters)
         {
-            GetCurrentSqlClient(clientRequestId).ServerUpgrades.Start(resourceGroupName, serverName, parameters);
+            GetCurrentSqlClient().ServerUpgrades.Start(resourceGroupName, serverName, parameters);
         }
 
         /// <summary>
         /// Cancel an Azure Sql Database Server Upgrade
         /// </summary>
-        public void Cancel(string resourceGroupName, string serverName, string clientRequestId)
+        public void Cancel(string resourceGroupName, string serverName)
         {
-            GetCurrentSqlClient(clientRequestId).ServerUpgrades.Cancel(resourceGroupName, serverName);
+            GetCurrentSqlClient().ServerUpgrades.Cancel(resourceGroupName, serverName);
         }
 
         /// <summary>
         /// Gets the Azure Sql Database Server Upgrade status
         /// </summary>
-        public ServerUpgradeGetResponse GetUpgrade(string resourceGroupName, string serverName, string clientRequestId)
+        public ServerUpgradeGetResponse GetUpgrade(string resourceGroupName, string serverName)
         {
             try
             {
-                var upgradeDetails = GetCurrentSqlClient(clientRequestId).ServerUpgrades.Get(resourceGroupName, serverName);
+                var upgradeDetails = GetCurrentSqlClient().ServerUpgrades.Get(resourceGroupName, serverName);
                 if (!String.IsNullOrEmpty(upgradeDetails.Status))
                 {
                     return upgradeDetails;
                 }
 
                 // This upgrade is either completed or not started. Check server version to be sure
-                var server = GetCurrentSqlClient(clientRequestId).Servers.Get(resourceGroupName, serverName).Server;
+                var server = GetCurrentSqlClient().Servers.Get(resourceGroupName, serverName).Server;
                 if (server.Properties.Version.Equals(targetUpgradeVersion, StringComparison.InvariantCultureIgnoreCase))
                 {
                     return new ServerUpgradeGetResponse
@@ -132,15 +133,13 @@ namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Services
         /// id tracing headers for the current cmdlet invocation.
         /// </summary>
         /// <returns>The SQL Management client for the currently selected subscription.</returns>
-        private SqlManagementClient GetCurrentSqlClient(String clientRequestId)
+        private SqlManagementClient GetCurrentSqlClient()
         {
             // Get the SQL management client for the current subscription
             if (SqlClient == null)
             {
-                SqlClient = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
+                SqlClient = AzureSession.Instance.ClientFactory.CreateClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
             }
-            SqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
-            SqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);
             return SqlClient;
         }
     }

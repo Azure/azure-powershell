@@ -20,6 +20,7 @@ using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -27,12 +28,10 @@ namespace Microsoft.Azure.Commands.Profile
     /// Saves Microsoft Azure profile.
     /// </summary>
     [Cmdlet(VerbsData.Save, "AzureRmContext", SupportsShouldProcess = true), OutputType(typeof(PSAzureProfile))]
-    [Alias("Save-AzureRmProfile")]
-    [Obsolete("Save-AzureRmProfile will be renamed to Save-AzureRmContext in the next release.", false)]
     public class SaveAzureRMContextCommand : AzureRMCmdlet
     {
         [Parameter(Mandatory = false, Position = 0, ValueFromPipeline = true)]
-        public AzureRMProfile Profile { get; set; }
+        public AzureRmProfile Profile { get; set; }
 
         [Parameter(Mandatory = true, Position = 1)]
         public string Path { get; set; }
@@ -48,7 +47,7 @@ namespace Microsoft.Azure.Commands.Profile
                     string.Format(Resources.ProfileWriteWarning, Path),
                     string.Empty))
                 {
-                    if (!AzureSession.DataStore.FileExists(Path) || Force ||
+                    if (!AzureSession.Instance.DataStore.FileExists(Path) || Force ||
                         ShouldContinue(string.Format(Resources.FileOverwriteMessage, Path), 
                         Resources.FileOverwriteCaption))
                     {
@@ -67,11 +66,11 @@ namespace Microsoft.Azure.Commands.Profile
                         throw new ArgumentException(Resources.AzureProfileMustNotBeNull);
                     }
 
-                    if (!AzureSession.DataStore.FileExists(Path) || Force.IsPresent ||
+                    if (!AzureSession.Instance.DataStore.FileExists(Path) || Force.IsPresent ||
                         ShouldContinue(string.Format(Resources.FileOverwriteMessage, Path), 
                         Resources.FileOverwriteCaption))
                     {
-                        AzureRmProfileProvider.Instance.Profile.Save(Path);
+                        AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>().Save(Path);
                         WriteVerbose(string.Format(Resources.ProfileCurrentSaved, Path));
                     }
                 }

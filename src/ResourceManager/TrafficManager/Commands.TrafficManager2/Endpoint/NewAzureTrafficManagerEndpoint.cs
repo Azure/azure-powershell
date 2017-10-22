@@ -18,10 +18,10 @@ namespace Microsoft.Azure.Commands.TrafficManager
     using System.Management.Automation;
     using System.Net;
 
-    using Hyak.Common;
-
     using Microsoft.Azure.Commands.TrafficManager.Models;
     using Microsoft.Azure.Commands.TrafficManager.Utilities;
+    using Microsoft.Rest.Azure;
+
     using ProjectResources = Microsoft.Azure.Commands.TrafficManager.Properties.Resources;   
 
     [Cmdlet(VerbsCommon.New, "AzureRmTrafficManagerEndpoint"), OutputType(typeof(TrafficManagerEndpoint))]
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The type of the endpoint.")]
-        [ValidateSet(Constants.AzureEndpoint, Constants.ExternalEndpoint, Constants.NestedEndpoint, IgnoreCase = false)]
+        [ValidateSet(Constants.AzureEndpoint, Constants.ExternalEndpoint, Constants.NestedEndpoint, IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string Type { get; set; }
 

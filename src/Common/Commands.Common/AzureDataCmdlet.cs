@@ -13,111 +13,53 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.WindowsAzure.Commands.Common.Properties;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using System;
 using System.IO;
 using System.Management.Automation;
 using System.Management.Automation.Host;
+using Microsoft.WindowsAzure.Commands.Common.Properties;
 
 namespace Microsoft.WindowsAzure.Commands.Common
 {
     public class AzureDataCmdlet : AzurePSCmdlet
     {
-        protected override AzureContext DefaultContext
+        protected override IAzureContext DefaultContext
         {
             get
             {
-                if (RMProfile != null && RMProfile.Context != null)
+                if (RMProfile != null && RMProfile.DefaultContext != null && RMProfile.DefaultContext.Environment != null)
                 {
-                    return RMProfile.Context;
+                    return RMProfile.DefaultContext;
                 }
-
-                if (SMProfile == null || SMProfile.Context == null)
+#if !NETSTANDARD
+                if (SMProfile == null || SMProfile.DefaultContext == null)
                 {
                     throw new InvalidOperationException(Resources.NoCurrentContextForDataCmdlet);
                 }
 
-                return SMProfile.Context;
+                return SMProfile.DefaultContext;
+#else
+                return null;
+#endif
             }
         }
 
-        public AzureSMProfile SMProfile
+        public IAzureContextContainer RMProfile
         {
-            get { return AzureSMProfileProvider.Instance.Profile; }
-        }
-
-        public AzureRMProfile RMProfile
-        {
-            get { return AzureRmProfileProvider.Instance.Profile; }
-        }
-
-        protected override void SaveDataCollectionProfile()
-        {
-            if (_dataCollectionProfile == null)
+            get
             {
-                InitializeDataCollectionProfile();
-            }
-
-            string fileFullPath = Path.Combine(AzureSession.ProfileDirectory, AzurePSDataCollectionProfile.DefaultFileName);
-            var contents = JsonConvert.SerializeObject(_dataCollectionProfile);
-            if (!AzureSession.DataStore.DirectoryExists(AzureSession.ProfileDirectory))
-            {
-                AzureSession.DataStore.CreateDirectory(AzureSession.ProfileDirectory);
-            }
-            AzureSession.DataStore.WriteFile(fileFullPath, contents);
-            WriteWarning(string.Format(Resources.DataCollectionSaveFileInformation, fileFullPath));
-        }
-
-        protected override void PromptForDataCollectionProfileIfNotExists()
-        {
-            // Initialize it from the environment variable or profile file.
-            InitializeDataCollectionProfile();
-
-            if (!_dataCollectionProfile.EnableAzureDataCollection.HasValue && CheckIfInteractive())
-            {
-                WriteWarning(Resources.DataCollectionPrompt);
-
-                const double timeToWaitInSeconds = 60;
-                var status = string.Format(Resources.DataCollectionConfirmTime, timeToWaitInSeconds);
-                ProgressRecord record = new ProgressRecord(0, Resources.DataCollectionActivity, status);
-
-                var startTime = DateTime.Now;
-                var endTime = DateTime.Now;
-                double elapsedSeconds = 0;
-
-                while (!this.Host.UI.RawUI.KeyAvailable && elapsedSeconds < timeToWaitInSeconds)
+                IAzureContextContainer result = null;
+                if (AzureRmProfileProvider.Instance != null)
                 {
-                    TestMockSupport.Delay(10 * 1000);
-                    endTime = DateTime.Now;
-
-                    elapsedSeconds = (endTime - startTime).TotalSeconds;
-                    record.PercentComplete = ((int)elapsedSeconds * 100 / (int)timeToWaitInSeconds);
-                    WriteProgress(record);
+                    result = AzureRmProfileProvider.Instance.Profile;
                 }
 
-                bool enabled = false;
-                if (this.Host.UI.RawUI.KeyAvailable)
-                {
-                    KeyInfo keyInfo =
-                        this.Host.UI.RawUI.ReadKey(ReadKeyOptions.NoEcho | ReadKeyOptions.AllowCtrlC |
-                                                   ReadKeyOptions.IncludeKeyDown);
-                    enabled = (keyInfo.Character == 'Y' || keyInfo.Character == 'y');
-                }
-
-                _dataCollectionProfile.EnableAzureDataCollection = enabled;
-
-                WriteWarning(enabled ? Resources.DataCollectionConfirmYes : Resources.DataCollectionConfirmNo);
-
-                SaveDataCollectionProfile();
+                return result;
             }
         }
-        protected override void InitializeQosEvent()
-        {
-        }
-
         /// <summary>
         /// Guards execution of the given action using ShouldProcess and ShouldContinue.  The optional 
         /// useSHouldContinue predicate determines whether SHouldContinue should be called for this 
@@ -136,6 +78,32 @@ namespace Microsoft.WindowsAzure.Commands.Common
             ConfirmAction(force, continueMessage, processMessage, target, action, () => true);
         }
 
+#if !NETSTANDARD
+        public IAzureContextContainer SMProfile
+        {
+            get
+            {
+                IAzureContextContainer result = null;
+                if (AzureSMProfileProvider.Instance != null)
+                {
+                    result = AzureSMProfileProvider.Instance.Profile;
+                }
 
+                return result;
+            }
+        }
+
+        protected override string DataCollectionWarning
+        {
+            get
+            {
+                return Resources.ARMDataCollectionMessage;
+            }
+        }
+#endif
+
+        protected override void InitializeQosEvent()
+        {
+        }
     }
 }

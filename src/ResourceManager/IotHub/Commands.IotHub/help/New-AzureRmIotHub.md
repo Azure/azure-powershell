@@ -12,12 +12,13 @@ Creates a new IotHub.
 ## SYNTAX
 
 ```
-New-AzureRmIotHub -ResourceGroupName <String> -Name <String> -SkuName <PSIotHubSku> -Units <Int64>
- -Location <String> [-Properties <PSIotHubInputProperties>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzureRmIotHub [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <PSIotHubSku> [-Units] <Int64>
+ [-Location] <String> [-Properties <PSIotHubInputProperties>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a new IotHub. You can create the IotHub with either the default properties or specify the input proerties.
+Creates a new IotHub.
+You can create the IotHub with either the default properties or specify the input proerties.
 
 ## EXAMPLES
 
@@ -33,16 +34,14 @@ Creates a new IotHub named "myiothub" of the sku "S1", capacity 1 and location "
 PS C:\> New-AzureRmIotHub -ResourceGroupName "myresourcegroup" -Name "myiothub" -SkuName "S1" -Units 1 -Location "northeurope" -Properties $properties
 ```
 
-Creates a new IotHub named "myiothub" of the sku "S1", capacity 1 and location "northeurope" with advanced input properties represented by $properties. 
+Creates a new IotHub named "myiothub" of the sku "S1", capacity 1 and location "northeurope" with advanced input properties represented by $properties.
 
-$psCloudToDeviceProperties = New-Object Microsoft.Azure.Commands.Management.IotHub.Models.PSCloudToDeviceProperties -Property @{MaxDeliveryCount=20}
-$properties = New-Object Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubInputProperties -Property @{CloudToDevice=$psCloudToDeviceProperties}
-New-AzureRmIotHub -ResourceGroupName "myresourcegroup" -Name "myiothub" -SkuName "S1" -Units 1 -Location "northeurope" -Properties $properties
+$psCloudToDeviceProperties = New-Object Microsoft.Azure.Commands.Management.IotHub.Models.PSCloudToDeviceProperties -Property @{MaxDeliveryCount=20} $properties = New-Object Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubInputProperties -Property @{CloudToDevice=$psCloudToDeviceProperties} New-AzureRmIotHub -ResourceGroupName "myresourcegroup" -Name "myiothub" -SkuName "S1" -Units 1 -Location "northeurope" -Properties $properties
 
 ## PARAMETERS
 
 ### -Location
-Location where the IoT hub needs to be created.
+Location where the IoT hub needs to be created. 
 
 ```yaml
 Type: String
@@ -50,14 +49,14 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: Named
+Position: 4
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the IoT hub.
+Name of the IotHub
 
 ```yaml
 Type: String
@@ -65,14 +64,14 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -Properties
-Properties of the IoT hub.
+Properties of the IoT hub. 
 
 ```yaml
 Type: PSIotHubInputProperties
@@ -87,7 +86,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Name of hte resource group.
+Resource Group Name
 
 ```yaml
 Type: String
@@ -95,14 +94,14 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -SkuName
-Name of the Sku.
+Name of the sku
 
 ```yaml
 Type: PSIotHubSku
@@ -111,14 +110,14 @@ Aliases:
 Accepted values: F1, S1, S2, S3
 
 Required: True
-Position: Named
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Units
-Number of units.
+Number of units
 
 ```yaml
 Type: Int64
@@ -126,7 +125,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: Named
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -142,13 +141,14 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: SwitchParameter
@@ -157,7 +157,7 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -168,9 +168,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSku
-System.Int64
-Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubInputProperties
+Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSku System.Int64 Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubInputProperties
 
 ## OUTPUTS
 

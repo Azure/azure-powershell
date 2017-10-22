@@ -22,7 +22,7 @@ function Test-DatabasePauseResume
 	$location = "Southeast Asia"
 	$serverVersion = "12.0";
 	$rg = Create-ResourceGroupForTest
-	$server = Create-ServerForTest $rg $serverVersion $location
+	$server = Create-ServerForTest $rg $location
 
 	# Create data warehouse database with all parameters.
 	$databaseName = Get-DatabaseName
@@ -64,13 +64,13 @@ function Test-DatabasePauseResume
 function Test-DatabasePauseResumePiped
 {
 	# Setup
-	$location = "Japan East"
+	$location = "westcentralus"
 	$serverVersion = "12.0";
 	$rg = Create-ResourceGroupForTest
 
 	try
 	{
-		$server = Create-ServerForTest $rg $serverVersion $location
+		$server = Create-ServerForTest $rg $location
 
 		# Create data warehouse database with all parameters.
 		$databaseName = Get-DatabaseName

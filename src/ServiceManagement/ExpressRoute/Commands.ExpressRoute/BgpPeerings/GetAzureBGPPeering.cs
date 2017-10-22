@@ -27,14 +27,21 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
             HelpMessage = "Service Key representing the Azure Circuit")]
         public Guid ServiceKey { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Bgp Peering Access Type: Public or Private")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Bgp Peering Access Type: Microsoft, Public or Private")]
+        [ValidateSet("Microsoft", "Public", "Private")]
         [DefaultValue("Private")]
         public BgpPeeringAccessType AccessType { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            var route = ExpressRouteClient.GetAzureBGPPeering(ServiceKey, AccessType);
-            WriteObject(route);
+            var peer = ExpressRouteClient.GetAzureBGPPeering(ServiceKey, AccessType);
+
+            if (AccessType != BgpPeeringAccessType.Microsoft)
+            {
+                peer.LegacyMode = 1;
+            }
+
+            WriteObject(peer);
         }
     }
 }

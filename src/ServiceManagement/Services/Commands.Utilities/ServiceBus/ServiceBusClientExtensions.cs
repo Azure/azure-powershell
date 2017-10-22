@@ -33,12 +33,14 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.ServiceBus
     using Microsoft.Azure.Commands.Common.Authentication.Models;
     using Microsoft.Azure.Commands.Common.Authentication;
     using Hyak.Common;
+    using Azure.Commands.Common.Authentication.Abstractions;
+    using Common;
 
     public class ServiceBusClientExtensions
     {
         private string subscriptionId;
 
-        public AzureSubscription Subscription { get; set; }
+        public IAzureSubscription Subscription { get; set; }
 
         public ServiceBusManagementClient ServiceBusClient { get; internal set; }
 
@@ -299,7 +301,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.ServiceBus
 
             subscriptionId = profile.Context.Subscription.Id.ToString();
             Subscription = profile.Context.Subscription;
-            ServiceBusClient = AzureSession.ClientFactory.CreateClient<ServiceBusManagementClient>(profile, profile.Context.Subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            ServiceBusClient = AzureSession.Instance.ClientFactory.CreateClient<ServiceBusManagementClient>(profile, profile.Context.Subscription, AzureEnvironment.Endpoint.ServiceManagement);
         }
 
         /// <summary>

@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.Media;
@@ -46,7 +47,7 @@ namespace Microsoft.Azure.Commands.Media.Common
             get
             {
                 return _mediaServicesManagementClient ??
-                       (_mediaServicesManagementClient = AzureSession.ClientFactory.CreateArmClient<MediaServicesManagementClient>(DefaultProfile.Context, 
+                       (_mediaServicesManagementClient = AzureSession.Instance.ClientFactory.CreateArmClient<MediaServicesManagementClient>(DefaultProfile.DefaultContext, 
                        AzureEnvironment.Endpoint.ResourceManager));
             }
         }
@@ -56,7 +57,7 @@ namespace Microsoft.Azure.Commands.Media.Common
         /// </summary>
         protected string SubscrptionName
         {
-            get { return DefaultProfile.Context.Subscription.Name; }
+            get { return DefaultProfile.DefaultContext.Subscription.Name; }
         }
     }
 }

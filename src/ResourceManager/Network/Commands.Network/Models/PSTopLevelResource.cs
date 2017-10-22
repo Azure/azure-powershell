@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Resources.Models;
+using Microsoft.Azure.Management.Internal.Resources.Utilities;
 using System.Collections;
 
 namespace Microsoft.Azure.Commands.Network.Models

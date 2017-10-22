@@ -100,7 +100,9 @@ Accept wildcard characters: False
 ```
 
 ### -SkuTier
-Sku tier of the namespace```yaml
+Sku tier of the namespace
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
@@ -169,6 +171,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.NotificationHubs.Models.NamespaceAttributes
 
 ## NOTES
 

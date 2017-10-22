@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzureRmIotHub
 
 ## SYNOPSIS
-Gets information about the IotHubs in a subscription. 
+Gets information about the IotHubs in a subscription.
 
 ## SYNTAX
 
@@ -22,7 +22,8 @@ Get-AzureRmIotHub [-ResourceGroupName] <String> [-Name] <String> [<CommonParamet
 ```
 
 ## DESCRIPTION
-Gets information about the IotHubs in a subscription. You can view all IotHub instances in a subscription, or filter your results by a resource group or a particular IotHub Name.
+Gets information about the IotHubs in a subscription.
+You can view all IotHub instances in a subscription, or filter your results by a resource group or a particular IotHub Name.
 
 ## EXAMPLES
 
@@ -50,7 +51,7 @@ Gets information about the IotHub named "myiothub".
 ## PARAMETERS
 
 ### -Name
-Name of the IoT hub.
+Name of the IotHub
 
 ```yaml
 Type: String
@@ -65,7 +66,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Name of the resource group.
+Name of the ResourceGroup
 
 ```yaml
 Type: String
@@ -101,7 +102,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub
-System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.Commands.IotHub, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+System.Collections.Generic.List\`1\[\[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.Commands.IotHub, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null\]\]
 
 ## NOTES
 

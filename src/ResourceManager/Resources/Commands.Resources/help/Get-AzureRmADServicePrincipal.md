@@ -124,17 +124,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### System.Collections.Generic.List`1[Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADServicePrincipal]
+
 ## NOTES
 
 ## RELATED LINKS
 
-[New-AzureRmADServicePrincipal]()
+[New-AzureRmADServicePrincipal](./New-AzureRmADServicePrincipal.md)
 
-[Set-AzureRmADServicePrincipal]()
+[Set-AzureRmADServicePrincipal](./Set-AzureRmADServicePrincipal.md)
 
-[Remove-AzureRmADServicePrincipal]()
+[Remove-AzureRmADServicePrincipal](./Remove-AzureRmADServicePrincipal.md)
 
-[Get-AzureRmADApplication]()
+[Get-AzureRmADApplication](./Get-AzureRmADApplication.md)
 
-[Get-AzureRmADSpCredential]()
+[Get-AzureRmADSpCredential](./Get-AzureRmADSpCredential.md)
 

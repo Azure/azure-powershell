@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public int? Asn { get; set; }
         public string ConnectedDuration { get; set; }
         public string LocalAddress { get; set; }
-        public int? MessagesReceived { get; set; }
+        public long? MessagesReceived { get; set; }
         public long? MessagesSent { get; set; }
         public string Neighbor { get; set; }
         public long? RoutesReceived { get; set; }

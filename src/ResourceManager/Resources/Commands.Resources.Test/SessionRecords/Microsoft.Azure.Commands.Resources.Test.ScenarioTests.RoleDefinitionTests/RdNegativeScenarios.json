@@ -6,14 +6,23 @@
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b0472bec-4e43-4ff2-899a-2649470ea8c1"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/2.0.0.0"
+          "FxVersion/4.7.2101.1",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.Authorization.Version2015_07_01.AuthorizationManagementClient/1.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [],\r\n  \"nextLink\": null\r\n}",
+      "ResponseBody": "{\r\n  \"value\": []\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "28"
+          "12"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -25,7 +34,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "fbc0cf23-3ae5-4bc5-b853-918501278956"
+          "07fe39ca-83a2-4778-9e11-a8ef418c10c0"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -34,22 +43,22 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14998"
+          "14995"
         ],
         "x-ms-correlation-request-id": [
-          "88df4df4-bfff-440b-aafd-64b80fa99a9c"
+          "df6e2219-4aa3-4193-b1c6-7f3b09d157ef"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20161017T223014Z:88df4df4-bfff-440b-aafd-64b80fa99a9c"
+          "SOUTHEASTASIA:20170804T065019Z:df6e2219-4aa3-4193-b1c6-7f3b09d157ef"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Mon, 17 Oct 2016 22:30:14 GMT"
+          "Fri, 04 Aug 2017 06:50:19 GMT"
         ],
         "Set-Cookie": [
-          "x-ms-gateway-slice=productiona; path=/"
+          "x-ms-gateway-slice=productionb; path=/; secure; HttpOnly"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -66,8 +75,17 @@
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "61edcf4b-3f83-4cc5-b69c-d8d2b70f4ff0"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/2.0.0.0"
+          "FxVersion/4.7.2101.1",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.Authorization.Version2015_07_01.AuthorizationManagementClient/1.0.0.0"
         ]
       },
       "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"RoleDefinitionDoesNotExist\",\r\n    \"message\": \"The specified role definition with ID '85e460b3-89e9-48ba-9dcd-a8a99d64a674' does not exist.\"\r\n  }\r\n}",
@@ -85,7 +103,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "f0d77389-3d96-4c35-ac8b-35a0ddbba548"
+          "fa34cc62-e8b9-40ee-85b9-a70f025ad33a"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -94,22 +112,22 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14997"
+          "14994"
         ],
         "x-ms-correlation-request-id": [
-          "e299cf56-7a4a-4d30-8b41-100275b7965c"
+          "71ec29c5-3a49-4329-9527-063e0575e1bc"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20161017T223014Z:e299cf56-7a4a-4d30-8b41-100275b7965c"
+          "SOUTHEASTASIA:20170804T065020Z:71ec29c5-3a49-4329-9527-063e0575e1bc"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Mon, 17 Oct 2016 22:30:14 GMT"
+          "Fri, 04 Aug 2017 06:50:19 GMT"
         ],
         "Set-Cookie": [
-          "x-ms-gateway-slice=productiona; path=/"
+          "x-ms-gateway-slice=productionb; path=/; secure; HttpOnly"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -126,8 +144,17 @@
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "2d17d214-3ddd-4d27-a44c-92c681d9a876"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/2.0.0.0"
+          "FxVersion/4.7.2101.1",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.Authorization.Version2015_07_01.AuthorizationManagementClient/1.0.0.0"
         ]
       },
       "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"RoleDefinitionDoesNotExist\",\r\n    \"message\": \"The specified role definition with ID '85e460b3-89e9-48ba-9dcd-a8a99d64a674' does not exist.\"\r\n  }\r\n}",
@@ -145,7 +172,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "6b2b766d-0f3a-4854-be7e-d9c42604e770"
+          "4e2af146-8de4-461e-b7f4-376793e13922"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -154,22 +181,22 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14996"
+          "14993"
         ],
         "x-ms-correlation-request-id": [
-          "53aee657-e2c1-493f-ada9-7edb33f8e622"
+          "ce43af75-e832-4146-84b8-c7318a6480eb"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20161017T223014Z:53aee657-e2c1-493f-ada9-7edb33f8e622"
+          "SOUTHEASTASIA:20170804T065020Z:ce43af75-e832-4146-84b8-c7318a6480eb"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Mon, 17 Oct 2016 22:30:14 GMT"
+          "Fri, 04 Aug 2017 06:50:19 GMT"
         ],
         "Set-Cookie": [
-          "x-ms-gateway-slice=productiona; path=/"
+          "x-ms-gateway-slice=productionb; path=/; secure; HttpOnly"
         ],
         "Server": [
           "Microsoft-IIS/8.5"

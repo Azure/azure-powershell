@@ -14,7 +14,7 @@ Removes a stored access policy from an Azure storage queue.
 
 ```
 Remove-AzureStorageQueueStoredAccessPolicy [-Queue] <String> [-Policy] <String> [-PassThru]
- [-Context <AzureStorageContext>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Context <IStorageContext>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,7 +36,7 @@ Specifies an Azure storage context.
 To obtain a storage context, use the New-AzureStorageContext cmdlet.
 
 ```yaml
-Type: AzureStorageContext
+Type: IStorageContext
 Parameter Sets: (All)
 Aliases: 
 
@@ -64,7 +64,7 @@ Accept wildcard characters: False
 ```
 
 ### -Policy
-Specifies the stored access policy, which includes the permissions for this Shared Access Signature (SAS) token.
+Specifies the name of the stored access policy that this cmdlet removes.
 
 ```yaml
 Type: String
@@ -129,7 +129,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### IStorageContext
+
+Parameter 'Context' accepts value of type 'IStorageContext' from the pipeline
+
 ## OUTPUTS
+
+### System.Boolean
 
 ## NOTES
 

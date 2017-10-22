@@ -30,6 +30,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
             ValueFromPipelineByPropertyName = true,
             Position = 2,
             HelpMessage = "The name of the Azure SQL Elastic Pool to remove.")]
+        [Alias("Name")]
         [ValidateNotNullOrEmpty]
         public string ElasticPoolName { get; set; }
 

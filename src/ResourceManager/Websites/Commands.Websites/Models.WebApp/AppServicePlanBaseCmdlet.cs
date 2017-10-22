@@ -18,6 +18,10 @@ using Microsoft.Azure.Management.WebSites.Models;
 using System;
 using System.Management.Automation;
 
+#if NETSTANDARD
+using ServerFarmWithRichSku = Microsoft.Azure.Management.WebSites.Models.AppServicePlan;
+#endif
+
 namespace Microsoft.Azure.Commands.WebApps
 {
     public abstract class AppServicePlanBaseCmdlet : WebAppBaseClientCmdLet

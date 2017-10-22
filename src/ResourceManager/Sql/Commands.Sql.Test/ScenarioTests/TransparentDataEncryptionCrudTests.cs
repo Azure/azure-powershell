@@ -22,9 +22,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
     public class TransparentDataEncryptionCrudTests : SqlTestsBase
     {
-        public TransparentDataEncryptionCrudTests(ITestOutputHelper output)
+        public TransparentDataEncryptionCrudTests(ITestOutputHelper output) : base(output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
         [Fact]

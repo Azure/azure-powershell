@@ -15,13 +15,13 @@ Gets information about a Chef extension.
 ### Linux
 ```
 Get-AzureRmVMChefExtension [-ResourceGroupName] <String> [-VMName] <String> [[-Name] <String>] [-Status]
- [-Linux] [<CommonParameters>]
+ [-Linux] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Windows
 ```
 Get-AzureRmVMChefExtension [-ResourceGroupName] <String> [-VMName] <String> [[-Name] <String>] [-Status]
- [-Windows] [<CommonParameters>]
+ [-Windows] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,19 +31,34 @@ The **Get-AzureVMChefExtension** cmdlet gets information about a Chef extension 
 
 ### Example 1: Get the details of Chef extension for a Windows virtual machine-
 ```
-PS C:\>Get-AzureRmVMChefExtension -ResourceGroupName "ResourceGroup001" -VMName "WindowsVM001" -Windows
+PS C:\> Get-AzureRmVMChefExtension -ResourceGroupName "ResourceGroup001" -VMName "WindowsVM001" -Windows
 ```
 
 This command gets the Chef extension from a Windows virtual machine named WindowsVM001 that belongs to the resource group named ResourceGroup001.
 
 ### Example 2: Get the details of Chef extension for a Linux virtual machine
 ```
-PS C:\>Get-AzureRmVMChefExtension -ResourceGroupName "ResourceGroup002" -VMName "LinuxVM001" -Linux
+PS C:\> Get-AzureRmVMChefExtension -ResourceGroupName "ResourceGroup002" -VMName "LinuxVM001" -Linux
 ```
 
 This command gets the Chef extension from a Linux virtual machine named LinuxVM001 that belongs to the resource group named ResourceGroup002.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Linux
 Indicates that this cmdlet works on a Linux virtual machine.
@@ -141,6 +156,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineExtension
 
 ## NOTES
 

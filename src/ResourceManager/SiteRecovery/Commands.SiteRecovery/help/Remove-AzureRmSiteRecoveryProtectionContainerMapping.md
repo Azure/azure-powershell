@@ -91,6 +91,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### ASRProtectionContainerMapping
+
+Parameter 'ProtectionContainerMapping' accepts value of type 'ASRProtectionContainerMapping' from the pipeline
+
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.SiteRecovery.ASRJob

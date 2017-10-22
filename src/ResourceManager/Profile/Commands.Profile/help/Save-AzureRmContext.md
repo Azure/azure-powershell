@@ -12,7 +12,8 @@ Saves the current authentication information for use in other PowerShell session
 ## SYNTAX
 
 ```
-Save-AzureRmContext [[-Profile] <AzureRMProfile>] [-Path] <String> [-Force] [-WhatIf] [-Confirm]
+Save-AzureRmContext [[-Profile] <AzureRmProfile>] [-Path] <String> [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,6 +37,21 @@ PS C:\> Save-AzureRmContext -Profile (Add-AzureRmAccount) -Path C:\test.json
 This example saves the Azure context that is passed through to the cmdlet to the JSON file provided.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Force
 Overwrite the given file if it exists
@@ -72,7 +88,7 @@ Specifies the Azure context from which this cmdlet reads.
 If you do not specify a context, this cmdlet reads from the local default context.
 
 ```yaml
-Type: AzureRMProfile
+Type: AzureRmProfile
 Parameter Sets: (All)
 Aliases: 
 
@@ -114,15 +130,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Common.Authentication.Models.AzureRMProfile
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Profile.Models.PSAzureProfile
-
 
 ## NOTES
 

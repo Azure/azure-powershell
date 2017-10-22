@@ -13,8 +13,8 @@
         {
           "Type": {
             "Namespace": "System.Collections.Generic",
-            "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.NotificationHubs.Models.NotificationHubAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.NotificationHubs.Models.NotificationHubAttributes]",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.NotificationHubs.Models.NotificationHubAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -32,7 +32,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -48,7 +48,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -64,7 +64,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -86,7 +86,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -108,7 +108,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -130,7 +130,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -164,8 +164,8 @@
         {
           "Type": {
             "Namespace": "System.Collections.Generic",
-            "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes]",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -183,7 +183,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -199,7 +199,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -215,7 +215,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -231,7 +231,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -253,7 +253,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -275,7 +275,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -297,7 +297,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -319,7 +319,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -353,14 +353,14 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Management.NotificationHubs.Models",
-            "Name": "ResourceListKeys",
+            "Name": "Microsoft.Azure.Management.NotificationHubs.Models.ResourceListKeys",
             "AssemblyQualifiedName": "Microsoft.Azure.Management.NotificationHubs.Models.ResourceListKeys, Microsoft.Azure.Management.NotificationHubs, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "KeyName": "System.String",
               "PrimaryConnectionString": "System.String",
-              "PrimaryKey": "System.String",
               "SecondaryConnectionString": "System.String",
-              "SecondaryKey": "System.String"
+              "PrimaryKey": "System.String",
+              "SecondaryKey": "System.String",
+              "KeyName": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -376,7 +376,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -392,7 +392,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -408,7 +408,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -424,7 +424,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -446,7 +446,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -468,7 +468,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -490,7 +490,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -512,7 +512,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -546,22 +546,22 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NotificationHubs.Models",
-            "Name": "NotificationHubAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.NotificationHubAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.NotificationHubs.Models.NotificationHubAttributes",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.NotificationHubAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AdmCredential": "Microsoft.Azure.Management.NotificationHubs.Models.AdmCredential",
               "ApnsCredential": "Microsoft.Azure.Management.NotificationHubs.Models.ApnsCredential",
-              "AuthorizationRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.NotificationHubs.Models.SharedAccessAuthorizationRuleProperties]",
               "BaiduCredential": "Microsoft.Azure.Management.NotificationHubs.Models.BaiduCredential",
               "GcmCredential": "Microsoft.Azure.Management.NotificationHubs.Models.GcmCredential",
-              "Id": "System.String",
-              "Location": "System.String",
               "MpnsCredential": "Microsoft.Azure.Management.NotificationHubs.Models.MpnsCredential",
-              "Name": "System.String",
-              "RegistrationTtl": "System.String",
+              "WnsCredential": "Microsoft.Azure.Management.NotificationHubs.Models.WnsCredential",
               "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
+              "AuthorizationRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.NotificationHubs.Models.SharedAccessAuthorizationRuleProperties]",
+              "Id": "System.String",
               "Type": "System.String",
-              "WnsCredential": "Microsoft.Azure.Management.NotificationHubs.Models.WnsCredential"
+              "Location": "System.String",
+              "Name": "System.String",
+              "RegistrationTtl": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -577,7 +577,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -593,7 +593,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -609,7 +609,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -631,7 +631,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -653,7 +653,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -675,7 +675,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -709,22 +709,22 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NotificationHubs.Models",
-            "Name": "NotificationHubAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.NotificationHubAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.NotificationHubs.Models.NotificationHubAttributes",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.NotificationHubAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AdmCredential": "Microsoft.Azure.Management.NotificationHubs.Models.AdmCredential",
               "ApnsCredential": "Microsoft.Azure.Management.NotificationHubs.Models.ApnsCredential",
-              "AuthorizationRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.NotificationHubs.Models.SharedAccessAuthorizationRuleProperties]",
               "BaiduCredential": "Microsoft.Azure.Management.NotificationHubs.Models.BaiduCredential",
               "GcmCredential": "Microsoft.Azure.Management.NotificationHubs.Models.GcmCredential",
-              "Id": "System.String",
-              "Location": "System.String",
               "MpnsCredential": "Microsoft.Azure.Management.NotificationHubs.Models.MpnsCredential",
-              "Name": "System.String",
-              "RegistrationTtl": "System.String",
+              "WnsCredential": "Microsoft.Azure.Management.NotificationHubs.Models.WnsCredential",
               "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
+              "AuthorizationRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.NotificationHubs.Models.SharedAccessAuthorizationRuleProperties]",
+              "Id": "System.String",
               "Type": "System.String",
-              "WnsCredential": "Microsoft.Azure.Management.NotificationHubs.Models.WnsCredential"
+              "Location": "System.String",
+              "Name": "System.String",
+              "RegistrationTtl": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -740,7 +740,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -756,7 +756,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -772,7 +772,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -788,22 +788,22 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NotificationHubs.Models",
-            "Name": "NotificationHubAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.NotificationHubAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.NotificationHubs.Models.NotificationHubAttributes",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.NotificationHubAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AdmCredential": "Microsoft.Azure.Management.NotificationHubs.Models.AdmCredential",
               "ApnsCredential": "Microsoft.Azure.Management.NotificationHubs.Models.ApnsCredential",
-              "AuthorizationRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.NotificationHubs.Models.SharedAccessAuthorizationRuleProperties]",
               "BaiduCredential": "Microsoft.Azure.Management.NotificationHubs.Models.BaiduCredential",
               "GcmCredential": "Microsoft.Azure.Management.NotificationHubs.Models.GcmCredential",
-              "Id": "System.String",
-              "Location": "System.String",
               "MpnsCredential": "Microsoft.Azure.Management.NotificationHubs.Models.MpnsCredential",
-              "Name": "System.String",
-              "RegistrationTtl": "System.String",
+              "WnsCredential": "Microsoft.Azure.Management.NotificationHubs.Models.WnsCredential",
               "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
+              "AuthorizationRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.NotificationHubs.Models.SharedAccessAuthorizationRuleProperties]",
+              "Id": "System.String",
               "Type": "System.String",
-              "WnsCredential": "Microsoft.Azure.Management.NotificationHubs.Models.WnsCredential"
+              "Location": "System.String",
+              "Name": "System.String",
+              "RegistrationTtl": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -824,7 +824,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -846,7 +846,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -873,7 +873,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -895,7 +895,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -917,7 +917,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -944,22 +944,22 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.NotificationHubs.Models",
-                  "Name": "NotificationHubAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.NotificationHubAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.NotificationHubs.Models.NotificationHubAttributes",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.NotificationHubAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AdmCredential": "Microsoft.Azure.Management.NotificationHubs.Models.AdmCredential",
                     "ApnsCredential": "Microsoft.Azure.Management.NotificationHubs.Models.ApnsCredential",
-                    "AuthorizationRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.NotificationHubs.Models.SharedAccessAuthorizationRuleProperties]",
                     "BaiduCredential": "Microsoft.Azure.Management.NotificationHubs.Models.BaiduCredential",
                     "GcmCredential": "Microsoft.Azure.Management.NotificationHubs.Models.GcmCredential",
-                    "Id": "System.String",
-                    "Location": "System.String",
                     "MpnsCredential": "Microsoft.Azure.Management.NotificationHubs.Models.MpnsCredential",
-                    "Name": "System.String",
-                    "RegistrationTtl": "System.String",
+                    "WnsCredential": "Microsoft.Azure.Management.NotificationHubs.Models.WnsCredential",
                     "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
+                    "AuthorizationRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.NotificationHubs.Models.SharedAccessAuthorizationRuleProperties]",
+                    "Id": "System.String",
                     "Type": "System.String",
-                    "WnsCredential": "Microsoft.Azure.Management.NotificationHubs.Models.WnsCredential"
+                    "Location": "System.String",
+                    "Name": "System.String",
+                    "RegistrationTtl": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -980,7 +980,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1002,7 +1002,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1036,15 +1036,15 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NotificationHubs.Models",
-            "Name": "SharedAccessAuthorizationRuleAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Id": "System.String",
-              "Location": "System.String",
-              "Name": "System.String",
-              "Rights": "System.Collections.Generic.List`1[System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.AccessRights]]",
               "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
-              "Type": "System.String"
+              "Rights": "System.Collections.Generic.List`1[System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.AccessRights]]",
+              "Id": "System.String",
+              "Type": "System.String",
+              "Name": "System.String",
+              "Location": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1060,7 +1060,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1076,7 +1076,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1092,7 +1092,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1108,7 +1108,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1124,15 +1124,15 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NotificationHubs.Models",
-            "Name": "SharedAccessAuthorizationRuleAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Id": "System.String",
-              "Location": "System.String",
-              "Name": "System.String",
-              "Rights": "System.Collections.Generic.List`1[System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.AccessRights]]",
               "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
-              "Type": "System.String"
+              "Rights": "System.Collections.Generic.List`1[System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.AccessRights]]",
+              "Id": "System.String",
+              "Type": "System.String",
+              "Name": "System.String",
+              "Location": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1153,7 +1153,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1175,7 +1175,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1197,7 +1197,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1224,7 +1224,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1246,7 +1246,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1268,7 +1268,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1290,7 +1290,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1317,15 +1317,15 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.NotificationHubs.Models",
-                  "Name": "SharedAccessAuthorizationRuleAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Id": "System.String",
-                    "Location": "System.String",
-                    "Name": "System.String",
-                    "Rights": "System.Collections.Generic.List`1[System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.AccessRights]]",
                     "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
-                    "Type": "System.String"
+                    "Rights": "System.Collections.Generic.List`1[System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.AccessRights]]",
+                    "Id": "System.String",
+                    "Type": "System.String",
+                    "Name": "System.String",
+                    "Location": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1346,7 +1346,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1368,7 +1368,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1390,7 +1390,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1424,14 +1424,14 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Management.NotificationHubs.Models",
-            "Name": "ResourceListKeys",
+            "Name": "Microsoft.Azure.Management.NotificationHubs.Models.ResourceListKeys",
             "AssemblyQualifiedName": "Microsoft.Azure.Management.NotificationHubs.Models.ResourceListKeys, Microsoft.Azure.Management.NotificationHubs, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "KeyName": "System.String",
               "PrimaryConnectionString": "System.String",
-              "PrimaryKey": "System.String",
               "SecondaryConnectionString": "System.String",
-              "SecondaryKey": "System.String"
+              "PrimaryKey": "System.String",
+              "SecondaryKey": "System.String",
+              "KeyName": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1447,7 +1447,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1463,7 +1463,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1479,7 +1479,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1495,7 +1495,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1511,7 +1511,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1530,7 +1530,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -1552,7 +1552,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1574,7 +1574,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1596,7 +1596,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1618,7 +1618,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1640,7 +1640,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1665,7 +1665,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -1702,7 +1702,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1718,7 +1718,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1734,7 +1734,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1750,7 +1750,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -1772,7 +1772,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1794,7 +1794,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1816,7 +1816,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1838,7 +1838,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -1875,7 +1875,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1891,7 +1891,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1907,7 +1907,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1923,7 +1923,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1939,7 +1939,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -1961,7 +1961,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1983,7 +1983,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2005,7 +2005,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2027,7 +2027,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2049,7 +2049,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -2083,22 +2083,22 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NotificationHubs.Models",
-            "Name": "NotificationHubAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.NotificationHubAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.NotificationHubs.Models.NotificationHubAttributes",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.NotificationHubAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AdmCredential": "Microsoft.Azure.Management.NotificationHubs.Models.AdmCredential",
               "ApnsCredential": "Microsoft.Azure.Management.NotificationHubs.Models.ApnsCredential",
-              "AuthorizationRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.NotificationHubs.Models.SharedAccessAuthorizationRuleProperties]",
               "BaiduCredential": "Microsoft.Azure.Management.NotificationHubs.Models.BaiduCredential",
               "GcmCredential": "Microsoft.Azure.Management.NotificationHubs.Models.GcmCredential",
-              "Id": "System.String",
-              "Location": "System.String",
               "MpnsCredential": "Microsoft.Azure.Management.NotificationHubs.Models.MpnsCredential",
-              "Name": "System.String",
-              "RegistrationTtl": "System.String",
+              "WnsCredential": "Microsoft.Azure.Management.NotificationHubs.Models.WnsCredential",
               "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
+              "AuthorizationRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.NotificationHubs.Models.SharedAccessAuthorizationRuleProperties]",
+              "Id": "System.String",
               "Type": "System.String",
-              "WnsCredential": "Microsoft.Azure.Management.NotificationHubs.Models.WnsCredential"
+              "Location": "System.String",
+              "Name": "System.String",
+              "RegistrationTtl": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2114,7 +2114,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2130,7 +2130,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2146,7 +2146,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2162,22 +2162,22 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NotificationHubs.Models",
-            "Name": "NotificationHubAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.NotificationHubAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.NotificationHubs.Models.NotificationHubAttributes",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.NotificationHubAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AdmCredential": "Microsoft.Azure.Management.NotificationHubs.Models.AdmCredential",
               "ApnsCredential": "Microsoft.Azure.Management.NotificationHubs.Models.ApnsCredential",
-              "AuthorizationRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.NotificationHubs.Models.SharedAccessAuthorizationRuleProperties]",
               "BaiduCredential": "Microsoft.Azure.Management.NotificationHubs.Models.BaiduCredential",
               "GcmCredential": "Microsoft.Azure.Management.NotificationHubs.Models.GcmCredential",
-              "Id": "System.String",
-              "Location": "System.String",
               "MpnsCredential": "Microsoft.Azure.Management.NotificationHubs.Models.MpnsCredential",
-              "Name": "System.String",
-              "RegistrationTtl": "System.String",
+              "WnsCredential": "Microsoft.Azure.Management.NotificationHubs.Models.WnsCredential",
               "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
+              "AuthorizationRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.NotificationHubs.Models.SharedAccessAuthorizationRuleProperties]",
+              "Id": "System.String",
               "Type": "System.String",
-              "WnsCredential": "Microsoft.Azure.Management.NotificationHubs.Models.WnsCredential"
+              "Location": "System.String",
+              "Name": "System.String",
+              "RegistrationTtl": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2192,7 +2192,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -2214,7 +2214,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2236,7 +2236,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2258,7 +2258,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -2285,7 +2285,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2307,7 +2307,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2329,7 +2329,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2351,7 +2351,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -2378,22 +2378,22 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.NotificationHubs.Models",
-                  "Name": "NotificationHubAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.NotificationHubAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.NotificationHubs.Models.NotificationHubAttributes",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.NotificationHubAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AdmCredential": "Microsoft.Azure.Management.NotificationHubs.Models.AdmCredential",
                     "ApnsCredential": "Microsoft.Azure.Management.NotificationHubs.Models.ApnsCredential",
-                    "AuthorizationRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.NotificationHubs.Models.SharedAccessAuthorizationRuleProperties]",
                     "BaiduCredential": "Microsoft.Azure.Management.NotificationHubs.Models.BaiduCredential",
                     "GcmCredential": "Microsoft.Azure.Management.NotificationHubs.Models.GcmCredential",
-                    "Id": "System.String",
-                    "Location": "System.String",
                     "MpnsCredential": "Microsoft.Azure.Management.NotificationHubs.Models.MpnsCredential",
-                    "Name": "System.String",
-                    "RegistrationTtl": "System.String",
+                    "WnsCredential": "Microsoft.Azure.Management.NotificationHubs.Models.WnsCredential",
                     "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
+                    "AuthorizationRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.NotificationHubs.Models.SharedAccessAuthorizationRuleProperties]",
+                    "Id": "System.String",
                     "Type": "System.String",
-                    "WnsCredential": "Microsoft.Azure.Management.NotificationHubs.Models.WnsCredential"
+                    "Location": "System.String",
+                    "Name": "System.String",
+                    "RegistrationTtl": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2414,7 +2414,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2436,7 +2436,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2458,7 +2458,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -2492,15 +2492,15 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NotificationHubs.Models",
-            "Name": "SharedAccessAuthorizationRuleAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Id": "System.String",
-              "Location": "System.String",
-              "Name": "System.String",
-              "Rights": "System.Collections.Generic.List`1[System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.AccessRights]]",
               "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
-              "Type": "System.String"
+              "Rights": "System.Collections.Generic.List`1[System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.AccessRights]]",
+              "Id": "System.String",
+              "Type": "System.String",
+              "Name": "System.String",
+              "Location": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2516,7 +2516,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2532,7 +2532,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2548,7 +2548,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2564,7 +2564,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2580,15 +2580,15 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NotificationHubs.Models",
-            "Name": "SharedAccessAuthorizationRuleAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Id": "System.String",
-              "Location": "System.String",
-              "Name": "System.String",
-              "Rights": "System.Collections.Generic.List`1[System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.AccessRights]]",
               "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
-              "Type": "System.String"
+              "Rights": "System.Collections.Generic.List`1[System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.AccessRights]]",
+              "Id": "System.String",
+              "Type": "System.String",
+              "Name": "System.String",
+              "Location": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2603,7 +2603,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -2625,7 +2625,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2647,7 +2647,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2669,7 +2669,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2691,7 +2691,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -2718,7 +2718,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2740,7 +2740,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2762,7 +2762,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2784,7 +2784,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2806,7 +2806,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -2833,15 +2833,15 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.NotificationHubs.Models",
-                  "Name": "SharedAccessAuthorizationRuleAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Id": "System.String",
-                    "Location": "System.String",
-                    "Name": "System.String",
-                    "Rights": "System.Collections.Generic.List`1[System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.AccessRights]]",
                     "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
-                    "Type": "System.String"
+                    "Rights": "System.Collections.Generic.List`1[System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.AccessRights]]",
+                    "Id": "System.String",
+                    "Type": "System.String",
+                    "Name": "System.String",
+                    "Location": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2862,7 +2862,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2884,7 +2884,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2906,7 +2906,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2928,7 +2928,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -2962,8 +2962,8 @@
         {
           "Type": {
             "Namespace": "System.Collections.Generic",
-            "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes]",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -2981,7 +2981,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2997,7 +2997,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3013,7 +3013,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3035,7 +3035,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3057,7 +3057,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3079,7 +3079,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3113,14 +3113,14 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Management.NotificationHubs.Models",
-            "Name": "ResourceListKeys",
+            "Name": "Microsoft.Azure.Management.NotificationHubs.Models.ResourceListKeys",
             "AssemblyQualifiedName": "Microsoft.Azure.Management.NotificationHubs.Models.ResourceListKeys, Microsoft.Azure.Management.NotificationHubs, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "KeyName": "System.String",
               "PrimaryConnectionString": "System.String",
-              "PrimaryKey": "System.String",
               "SecondaryConnectionString": "System.String",
-              "SecondaryKey": "System.String"
+              "PrimaryKey": "System.String",
+              "SecondaryKey": "System.String",
+              "KeyName": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3136,7 +3136,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3152,7 +3152,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3168,7 +3168,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3190,7 +3190,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3212,7 +3212,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3234,7 +3234,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3268,15 +3268,15 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NotificationHubs.Models",
-            "Name": "SharedAccessAuthorizationRuleAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Id": "System.String",
-              "Location": "System.String",
-              "Name": "System.String",
-              "Rights": "System.Collections.Generic.List`1[System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.AccessRights]]",
               "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
-              "Type": "System.String"
+              "Rights": "System.Collections.Generic.List`1[System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.AccessRights]]",
+              "Id": "System.String",
+              "Type": "System.String",
+              "Name": "System.String",
+              "Location": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3292,7 +3292,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3308,7 +3308,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3324,7 +3324,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3340,15 +3340,15 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NotificationHubs.Models",
-            "Name": "SharedAccessAuthorizationRuleAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Id": "System.String",
-              "Location": "System.String",
-              "Name": "System.String",
-              "Rights": "System.Collections.Generic.List`1[System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.AccessRights]]",
               "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
-              "Type": "System.String"
+              "Rights": "System.Collections.Generic.List`1[System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.AccessRights]]",
+              "Id": "System.String",
+              "Type": "System.String",
+              "Name": "System.String",
+              "Location": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3369,7 +3369,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3391,7 +3391,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3418,7 +3418,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3440,7 +3440,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3462,7 +3462,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3489,15 +3489,15 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.NotificationHubs.Models",
-                  "Name": "SharedAccessAuthorizationRuleAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Id": "System.String",
-                    "Location": "System.String",
-                    "Name": "System.String",
-                    "Rights": "System.Collections.Generic.List`1[System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.AccessRights]]",
                     "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
-                    "Type": "System.String"
+                    "Rights": "System.Collections.Generic.List`1[System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.AccessRights]]",
+                    "Id": "System.String",
+                    "Type": "System.String",
+                    "Name": "System.String",
+                    "Location": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -3518,7 +3518,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3540,7 +3540,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3574,14 +3574,14 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Management.NotificationHubs.Models",
-            "Name": "ResourceListKeys",
+            "Name": "Microsoft.Azure.Management.NotificationHubs.Models.ResourceListKeys",
             "AssemblyQualifiedName": "Microsoft.Azure.Management.NotificationHubs.Models.ResourceListKeys, Microsoft.Azure.Management.NotificationHubs, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "KeyName": "System.String",
               "PrimaryConnectionString": "System.String",
-              "PrimaryKey": "System.String",
               "SecondaryConnectionString": "System.String",
-              "SecondaryKey": "System.String"
+              "PrimaryKey": "System.String",
+              "SecondaryKey": "System.String",
+              "KeyName": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3597,7 +3597,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3613,7 +3613,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3629,7 +3629,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3645,7 +3645,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3664,7 +3664,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -3686,7 +3686,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3708,7 +3708,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3730,7 +3730,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3752,7 +3752,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3777,7 +3777,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -3811,7 +3811,7 @@
         {
           "Type": {
             "Namespace": "System",
-            "Name": "Boolean",
+            "Name": "System.Boolean",
             "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3828,7 +3828,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3844,7 +3844,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3860,7 +3860,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3876,7 +3876,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -3898,7 +3898,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3920,7 +3920,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3942,7 +3942,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3964,7 +3964,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -3998,15 +3998,15 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NotificationHubs.Models",
-            "Name": "SharedAccessAuthorizationRuleAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Id": "System.String",
-              "Location": "System.String",
-              "Name": "System.String",
-              "Rights": "System.Collections.Generic.List`1[System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.AccessRights]]",
               "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
-              "Type": "System.String"
+              "Rights": "System.Collections.Generic.List`1[System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.AccessRights]]",
+              "Id": "System.String",
+              "Type": "System.String",
+              "Name": "System.String",
+              "Location": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -4022,7 +4022,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -4038,7 +4038,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -4054,7 +4054,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -4070,15 +4070,15 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NotificationHubs.Models",
-            "Name": "SharedAccessAuthorizationRuleAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Id": "System.String",
-              "Location": "System.String",
-              "Name": "System.String",
-              "Rights": "System.Collections.Generic.List`1[System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.AccessRights]]",
               "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
-              "Type": "System.String"
+              "Rights": "System.Collections.Generic.List`1[System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.AccessRights]]",
+              "Id": "System.String",
+              "Type": "System.String",
+              "Name": "System.String",
+              "Location": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -4093,7 +4093,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -4115,7 +4115,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -4137,7 +4137,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -4159,7 +4159,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -4186,7 +4186,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -4208,7 +4208,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -4230,7 +4230,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -4252,7 +4252,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -4279,15 +4279,15 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.NotificationHubs.Models",
-                  "Name": "SharedAccessAuthorizationRuleAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Id": "System.String",
-                    "Location": "System.String",
-                    "Name": "System.String",
-                    "Rights": "System.Collections.Generic.List`1[System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.AccessRights]]",
                     "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
-                    "Type": "System.String"
+                    "Rights": "System.Collections.Generic.List`1[System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.AccessRights]]",
+                    "Id": "System.String",
+                    "Type": "System.String",
+                    "Name": "System.String",
+                    "Location": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -4308,7 +4308,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -4330,7 +4330,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -4352,7 +4352,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -4386,8 +4386,8 @@
         {
           "Type": {
             "Namespace": "System.Collections.Generic",
-            "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.NotificationHubs.Models.NamespaceAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.NotificationHubs.Models.NamespaceAttributes]",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.NotificationHubs.Models.NamespaceAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -4405,7 +4405,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -4421,7 +4421,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -4443,7 +4443,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -4465,7 +4465,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -4499,26 +4499,26 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NotificationHubs.Models",
-            "Name": "NamespaceAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.NamespaceAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.NotificationHubs.Models.NamespaceAttributes",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.NamespaceAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "CreatedAt": "System.Nullable`1[System.DateTime]",
-              "Critical": "System.Nullable`1[System.Boolean]",
+              "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
+              "NamespaceType": "System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.NamespaceType]",
               "Enabled": "System.Nullable`1[System.Boolean]",
-              "Id": "System.String",
+              "Critical": "System.Nullable`1[System.Boolean]",
+              "CreatedAt": "System.Nullable`1[System.DateTime]",
+              "Status": "System.String",
+              "ScaleUnit": "System.String",
+              "Region": "System.String",
+              "ProvisioningState": "System.String",
+              "ResourceGroupName": "System.String",
               "Location": "System.String",
               "Name": "System.String",
-              "NamespaceType": "System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.NamespaceType]",
-              "ProvisioningState": "System.String",
-              "Region": "System.String",
-              "ResourceGroupName": "System.String",
-              "ScaleUnit": "System.String",
-              "ServiceBusEndpoint": "System.Uri",
-              "SkuName": "System.String",
-              "Status": "System.String",
+              "Type": "System.String",
+              "Id": "System.String",
               "SubscriptionId": "System.String",
-              "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
-              "Type": "System.String"
+              "SkuName": "System.String",
+              "ServiceBusEndpoint": "System.Uri"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -4534,7 +4534,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -4550,7 +4550,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -4566,7 +4566,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -4582,7 +4582,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Collections",
-            "Name": "Hashtable",
+            "Name": "System.Collections.Hashtable",
             "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -4598,7 +4598,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -4620,7 +4620,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -4642,7 +4642,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -4664,7 +4664,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -4686,7 +4686,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Collections",
-                  "Name": "Hashtable",
+                  "Name": "System.Collections.Hashtable",
                   "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -4708,7 +4708,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -4745,7 +4745,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -4761,7 +4761,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -4777,7 +4777,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -4799,7 +4799,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -4821,7 +4821,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -4843,7 +4843,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -4877,26 +4877,26 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NotificationHubs.Models",
-            "Name": "NamespaceAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.NamespaceAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.NotificationHubs.Models.NamespaceAttributes",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.NamespaceAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "CreatedAt": "System.Nullable`1[System.DateTime]",
-              "Critical": "System.Nullable`1[System.Boolean]",
+              "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
+              "NamespaceType": "System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.NamespaceType]",
               "Enabled": "System.Nullable`1[System.Boolean]",
-              "Id": "System.String",
+              "Critical": "System.Nullable`1[System.Boolean]",
+              "CreatedAt": "System.Nullable`1[System.DateTime]",
+              "Status": "System.String",
+              "ScaleUnit": "System.String",
+              "Region": "System.String",
+              "ProvisioningState": "System.String",
+              "ResourceGroupName": "System.String",
               "Location": "System.String",
               "Name": "System.String",
-              "NamespaceType": "System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.NamespaceType]",
-              "ProvisioningState": "System.String",
-              "Region": "System.String",
-              "ResourceGroupName": "System.String",
-              "ScaleUnit": "System.String",
-              "ServiceBusEndpoint": "System.Uri",
-              "SkuName": "System.String",
-              "Status": "System.String",
+              "Type": "System.String",
+              "Id": "System.String",
               "SubscriptionId": "System.String",
-              "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
-              "Type": "System.String"
+              "SkuName": "System.String",
+              "ServiceBusEndpoint": "System.Uri"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -4912,7 +4912,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -4928,7 +4928,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -4944,7 +4944,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -4960,8 +4960,8 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NotificationHubs.Models",
-            "Name": "NamespaceState",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.NamespaceState, Microsoft.Azure.Commands.NotificationHubs, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.NotificationHubs.Models.NamespaceState",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.NamespaceState, Microsoft.Azure.Commands.NotificationHubs, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -4976,7 +4976,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Boolean",
+            "Name": "System.Boolean",
             "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -4992,7 +4992,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Collections",
-            "Name": "Hashtable",
+            "Name": "System.Collections.Hashtable",
             "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -5008,7 +5008,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -5024,7 +5024,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -5046,7 +5046,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -5068,7 +5068,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -5090,7 +5090,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -5112,8 +5112,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.NotificationHubs.Models",
-                  "Name": "NamespaceState",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.NamespaceState, Microsoft.Azure.Commands.NotificationHubs, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.NotificationHubs.Models.NamespaceState",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.NamespaceState, Microsoft.Azure.Commands.NotificationHubs, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -5134,7 +5134,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Boolean",
+                  "Name": "System.Boolean",
                   "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -5156,7 +5156,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Collections",
-                  "Name": "Hashtable",
+                  "Name": "System.Collections.Hashtable",
                   "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -5178,7 +5178,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -5200,7 +5200,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -5337,102 +5337,58 @@
     },
     "Microsoft.Azure.Commands.NotificationHubs.Models.NotificationHubAttributes": {
       "Namespace": "Microsoft.Azure.Commands.NotificationHubs.Models",
-      "Name": "NotificationHubAttributes",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.NotificationHubAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "Microsoft.Azure.Commands.NotificationHubs.Models.NotificationHubAttributes",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.NotificationHubAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "AdmCredential": "Microsoft.Azure.Management.NotificationHubs.Models.AdmCredential",
         "ApnsCredential": "Microsoft.Azure.Management.NotificationHubs.Models.ApnsCredential",
-        "AuthorizationRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.NotificationHubs.Models.SharedAccessAuthorizationRuleProperties]",
         "BaiduCredential": "Microsoft.Azure.Management.NotificationHubs.Models.BaiduCredential",
         "GcmCredential": "Microsoft.Azure.Management.NotificationHubs.Models.GcmCredential",
-        "Id": "System.String",
-        "Location": "System.String",
         "MpnsCredential": "Microsoft.Azure.Management.NotificationHubs.Models.MpnsCredential",
-        "Name": "System.String",
-        "RegistrationTtl": "System.String",
+        "WnsCredential": "Microsoft.Azure.Management.NotificationHubs.Models.WnsCredential",
         "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
+        "AuthorizationRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.NotificationHubs.Models.SharedAccessAuthorizationRuleProperties]",
+        "Id": "System.String",
         "Type": "System.String",
-        "WnsCredential": "Microsoft.Azure.Management.NotificationHubs.Models.WnsCredential"
+        "Location": "System.String",
+        "Name": "System.String",
+        "RegistrationTtl": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
     },
     "Microsoft.Azure.Management.NotificationHubs.Models.AdmCredential": {
       "Namespace": "Microsoft.Azure.Management.NotificationHubs.Models",
-      "Name": "AdmCredential",
+      "Name": "Microsoft.Azure.Management.NotificationHubs.Models.AdmCredential",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.NotificationHubs.Models.AdmCredential, Microsoft.Azure.Management.NotificationHubs, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "AuthTokenUrl": "System.String",
         "ClientId": "System.String",
-        "ClientSecret": "System.String"
+        "ClientSecret": "System.String",
+        "AuthTokenUrl": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
     },
     "Microsoft.Azure.Management.NotificationHubs.Models.ApnsCredential": {
       "Namespace": "Microsoft.Azure.Management.NotificationHubs.Models",
-      "Name": "ApnsCredential",
+      "Name": "Microsoft.Azure.Management.NotificationHubs.Models.ApnsCredential",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.NotificationHubs.Models.ApnsCredential, Microsoft.Azure.Management.NotificationHubs, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "ApnsCertificate": "System.String",
         "CertificateKey": "System.String",
         "Endpoint": "System.String",
-        "Thumbprint": "System.String"
+        "Thumbprint": "System.String",
+        "KeyId": "System.String",
+        "AppName": "System.String",
+        "AppId": "System.String",
+        "Token": "System.String"
       },
-      "ElementType": null,
-      "GenericTypeArguments": []
-    },
-    "System.Collections.Generic.IList`1[Microsoft.Azure.Management.NotificationHubs.Models.SharedAccessAuthorizationRuleProperties]": {
-      "Namespace": "System.Collections.Generic",
-      "Name": "IList",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.NotificationHubs.Models.SharedAccessAuthorizationRuleProperties, Microsoft.Azure.Management.NotificationHubs, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "Microsoft.Azure.Management.NotificationHubs.Models.SharedAccessAuthorizationRuleProperties"
-      ]
-    },
-    "Microsoft.Azure.Management.NotificationHubs.Models.SharedAccessAuthorizationRuleProperties": {
-      "Namespace": "Microsoft.Azure.Management.NotificationHubs.Models",
-      "Name": "SharedAccessAuthorizationRuleProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.NotificationHubs.Models.SharedAccessAuthorizationRuleProperties, Microsoft.Azure.Management.NotificationHubs, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {
-        "Rights": "System.Collections.Generic.IList`1[System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.AccessRights]]"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": []
-    },
-    "System.Collections.Generic.IList`1[System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.AccessRights]]": {
-      "Namespace": "System.Collections.Generic",
-      "Name": "IList",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[System.Nullable`1[[Microsoft.Azure.Management.NotificationHubs.Models.AccessRights, Microsoft.Azure.Management.NotificationHubs, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.AccessRights]"
-      ]
-    },
-    "System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.AccessRights]": {
-      "Namespace": "System",
-      "Name": "Nullable",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.NotificationHubs.Models.AccessRights, Microsoft.Azure.Management.NotificationHubs, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "Microsoft.Azure.Management.NotificationHubs.Models.AccessRights"
-      ]
-    },
-    "Microsoft.Azure.Management.NotificationHubs.Models.AccessRights": {
-      "Namespace": "Microsoft.Azure.Management.NotificationHubs.Models",
-      "Name": "AccessRights",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.NotificationHubs.Models.AccessRights, Microsoft.Azure.Management.NotificationHubs, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
     },
     "Microsoft.Azure.Management.NotificationHubs.Models.BaiduCredential": {
       "Namespace": "Microsoft.Azure.Management.NotificationHubs.Models",
-      "Name": "BaiduCredential",
+      "Name": "Microsoft.Azure.Management.NotificationHubs.Models.BaiduCredential",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.NotificationHubs.Models.BaiduCredential, Microsoft.Azure.Management.NotificationHubs, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "BaiduApiKey": "System.String",
@@ -5444,7 +5400,7 @@
     },
     "Microsoft.Azure.Management.NotificationHubs.Models.GcmCredential": {
       "Namespace": "Microsoft.Azure.Management.NotificationHubs.Models",
-      "Name": "GcmCredential",
+      "Name": "Microsoft.Azure.Management.NotificationHubs.Models.GcmCredential",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.NotificationHubs.Models.GcmCredential, Microsoft.Azure.Management.NotificationHubs, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "GcmEndpoint": "System.String",
@@ -5455,30 +5411,19 @@
     },
     "Microsoft.Azure.Management.NotificationHubs.Models.MpnsCredential": {
       "Namespace": "Microsoft.Azure.Management.NotificationHubs.Models",
-      "Name": "MpnsCredential",
+      "Name": "Microsoft.Azure.Management.NotificationHubs.Models.MpnsCredential",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.NotificationHubs.Models.MpnsCredential, Microsoft.Azure.Management.NotificationHubs, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "CertificateKey": "System.String",
         "MpnsCertificate": "System.String",
+        "CertificateKey": "System.String",
         "Thumbprint": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
     },
-    "System.Collections.Generic.Dictionary`2[System.String,System.String]": {
-      "Namespace": "System.Collections.Generic",
-      "Name": "Dictionary",
-      "AssemblyQualifiedName": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "System.String",
-        "System.String"
-      ]
-    },
     "Microsoft.Azure.Management.NotificationHubs.Models.WnsCredential": {
       "Namespace": "Microsoft.Azure.Management.NotificationHubs.Models",
-      "Name": "WnsCredential",
+      "Name": "Microsoft.Azure.Management.NotificationHubs.Models.WnsCredential",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.NotificationHubs.Models.WnsCredential, Microsoft.Azure.Management.NotificationHubs, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "PackageSid": "System.String",
@@ -5488,24 +5433,83 @@
       "ElementType": null,
       "GenericTypeArguments": []
     },
+    "System.Collections.Generic.Dictionary`2[System.String,System.String]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
+      "AssemblyQualifiedName": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "System.String",
+        "System.String"
+      ]
+    },
+    "System.Collections.Generic.IList`1[Microsoft.Azure.Management.NotificationHubs.Models.SharedAccessAuthorizationRuleProperties]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.NotificationHubs.Models.SharedAccessAuthorizationRuleProperties]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.NotificationHubs.Models.SharedAccessAuthorizationRuleProperties, Microsoft.Azure.Management.NotificationHubs, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Management.NotificationHubs.Models.SharedAccessAuthorizationRuleProperties"
+      ]
+    },
+    "Microsoft.Azure.Management.NotificationHubs.Models.SharedAccessAuthorizationRuleProperties": {
+      "Namespace": "Microsoft.Azure.Management.NotificationHubs.Models",
+      "Name": "Microsoft.Azure.Management.NotificationHubs.Models.SharedAccessAuthorizationRuleProperties",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.NotificationHubs.Models.SharedAccessAuthorizationRuleProperties, Microsoft.Azure.Management.NotificationHubs, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "Rights": "System.Collections.Generic.IList`1[System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.AccessRights]]"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Collections.Generic.IList`1[System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.AccessRights]]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IList`1[System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.AccessRights]]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[System.Nullable`1[[Microsoft.Azure.Management.NotificationHubs.Models.AccessRights, Microsoft.Azure.Management.NotificationHubs, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.AccessRights]"
+      ]
+    },
+    "System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.AccessRights]": {
+      "Namespace": "System",
+      "Name": "System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.AccessRights]",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.NotificationHubs.Models.AccessRights, Microsoft.Azure.Management.NotificationHubs, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Management.NotificationHubs.Models.AccessRights"
+      ]
+    },
+    "Microsoft.Azure.Management.NotificationHubs.Models.AccessRights": {
+      "Namespace": "Microsoft.Azure.Management.NotificationHubs.Models",
+      "Name": "Microsoft.Azure.Management.NotificationHubs.Models.AccessRights",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.NotificationHubs.Models.AccessRights, Microsoft.Azure.Management.NotificationHubs, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
     "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes": {
       "Namespace": "Microsoft.Azure.Commands.NotificationHubs.Models",
-      "Name": "SharedAccessAuthorizationRuleAttributes",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "Id": "System.String",
-        "Location": "System.String",
-        "Name": "System.String",
-        "Rights": "System.Collections.Generic.List`1[System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.AccessRights]]",
         "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
-        "Type": "System.String"
+        "Rights": "System.Collections.Generic.List`1[System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.AccessRights]]",
+        "Id": "System.String",
+        "Type": "System.String",
+        "Name": "System.String",
+        "Location": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
     },
     "System.Collections.Generic.List`1[System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.AccessRights]]": {
       "Namespace": "System.Collections.Generic",
-      "Name": "List",
+      "Name": "System.Collections.Generic.List`1[System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.AccessRights]]",
       "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.Nullable`1[[Microsoft.Azure.Management.NotificationHubs.Models.AccessRights, Microsoft.Azure.Management.NotificationHubs, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
@@ -5515,61 +5519,33 @@
     },
     "Microsoft.Azure.Commands.NotificationHubs.Models.NamespaceAttributes": {
       "Namespace": "Microsoft.Azure.Commands.NotificationHubs.Models",
-      "Name": "NamespaceAttributes",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.NamespaceAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "Microsoft.Azure.Commands.NotificationHubs.Models.NamespaceAttributes",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.NotificationHubs.Models.NamespaceAttributes, Microsoft.Azure.Commands.NotificationHubs, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "CreatedAt": "System.Nullable`1[System.DateTime]",
-        "Critical": "System.Nullable`1[System.Boolean]",
+        "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
+        "NamespaceType": "System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.NamespaceType]",
         "Enabled": "System.Nullable`1[System.Boolean]",
-        "Id": "System.String",
+        "Critical": "System.Nullable`1[System.Boolean]",
+        "CreatedAt": "System.Nullable`1[System.DateTime]",
+        "Status": "System.String",
+        "ScaleUnit": "System.String",
+        "Region": "System.String",
+        "ProvisioningState": "System.String",
+        "ResourceGroupName": "System.String",
         "Location": "System.String",
         "Name": "System.String",
-        "NamespaceType": "System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.NamespaceType]",
-        "ProvisioningState": "System.String",
-        "Region": "System.String",
-        "ResourceGroupName": "System.String",
-        "ScaleUnit": "System.String",
-        "ServiceBusEndpoint": "System.Uri",
-        "SkuName": "System.String",
-        "Status": "System.String",
+        "Type": "System.String",
+        "Id": "System.String",
         "SubscriptionId": "System.String",
-        "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
-        "Type": "System.String"
+        "SkuName": "System.String",
+        "ServiceBusEndpoint": "System.Uri"
       },
       "ElementType": null,
       "GenericTypeArguments": []
     },
-    "System.Nullable`1[System.DateTime]": {
-      "Namespace": "System",
-      "Name": "Nullable",
-      "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "System.DateTime"
-      ]
-    },
-    "System.DateTime": {
-      "Namespace": "System",
-      "Name": "DateTime",
-      "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": []
-    },
-    "System.Nullable`1[System.Boolean]": {
-      "Namespace": "System",
-      "Name": "Nullable",
-      "AssemblyQualifiedName": "System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "System.Boolean"
-      ]
-    },
     "System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.NamespaceType]": {
       "Namespace": "System",
-      "Name": "Nullable",
+      "Name": "System.Nullable`1[Microsoft.Azure.Management.NotificationHubs.Models.NamespaceType]",
       "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.NotificationHubs.Models.NamespaceType, Microsoft.Azure.Management.NotificationHubs, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
@@ -5579,15 +5555,43 @@
     },
     "Microsoft.Azure.Management.NotificationHubs.Models.NamespaceType": {
       "Namespace": "Microsoft.Azure.Management.NotificationHubs.Models",
-      "Name": "NamespaceType",
+      "Name": "Microsoft.Azure.Management.NotificationHubs.Models.NamespaceType",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.NotificationHubs.Models.NamespaceType, Microsoft.Azure.Management.NotificationHubs, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Nullable`1[System.Boolean]": {
+      "Namespace": "System",
+      "Name": "System.Nullable`1[System.Boolean]",
+      "AssemblyQualifiedName": "System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "System.Boolean"
+      ]
+    },
+    "System.Nullable`1[System.DateTime]": {
+      "Namespace": "System",
+      "Name": "System.Nullable`1[System.DateTime]",
+      "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "System.DateTime"
+      ]
+    },
+    "System.DateTime": {
+      "Namespace": "System",
+      "Name": "System.DateTime",
+      "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
     },
     "System.Uri": {
       "Namespace": "System",
-      "Name": "Uri",
+      "Name": "System.Uri",
       "AssemblyQualifiedName": "System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,

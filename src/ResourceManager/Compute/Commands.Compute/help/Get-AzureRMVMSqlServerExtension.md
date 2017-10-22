@@ -14,7 +14,7 @@ Gets the settings for a SQL Server extension on a virtual machine.
 
 ```
 Get-AzureRmVMSqlServerExtension [-ResourceGroupName] <String> [-VMName] <String> [[-Name] <String>]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +24,7 @@ The **Get-AzureRmVMSqlServerExtension** cmdlet gets the settings of the SQL Serv
 
 ### Example 1: Get the settings of a SQL Server extension on a virtual machine
 ```
-PS C:\>Get-AzureRmVMSqlServerExtension -ResourceGroupName "ResourceGroup11" -VMName "ContosoVM07"
+PS C:\> Get-AzureRmVMSqlServerExtension -ResourceGroupName "ResourceGroup11" -VMName "ContosoVM07"
 ExtensionName        : SqlIaaSAgent
 Publisher            : Microsoft.SqlServer.Management
 Version              : 1.0
@@ -38,7 +38,7 @@ This command gets the settings of the SQL Server extension on a virtual machine 
 
 ### Example 2: Get the settings by using the pipeline
 ```
-PS C:\>Get-AzureRmVM -ServiceName "Service08" -Name "ContosoVM22" | Get-AzureRmVMSqlServerExtension
+PS C:\> Get-AzureRmVM -ServiceName "Service08" -Name "ContosoVM22" | Get-AzureRmVMSqlServerExtension
 ExtensionName        : SqlIaaSAgent
 Publisher            : Microsoft.SqlServer.Management
 Version              : 1.0
@@ -55,7 +55,7 @@ The current command gets the settings of the SQL Server IaaS Agent on that virtu
 
 ### Example 3: Get the settings of specific SQL Server version
 ```
-PS C:\>Get-AzureRmVMSqlServerExtension -ResourceGroupName "ResourceGroup11" -VMName "ContosoVM07" -Version "1.0"
+PS C:\> Get-AzureRmVMSqlServerExtension -ResourceGroupName "ResourceGroup11" -VMName "ContosoVM07" -Version "1.0"
 ExtensionName        : SqlIaaSAgent
 Publisher            : Microsoft.SqlServer.Management
 Version              : 1.0
@@ -68,6 +68,21 @@ AutoBackupSettings   : Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Ex
 This command gets the settings of version 1.0 of the SQL Server extension on a virtual machine named ContosoVM07.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 Specifies the name of the SQL Server the extension.
@@ -120,6 +135,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Compute.VirtualMachineSqlServerExtensionContext
 
 ## NOTES
 

@@ -26,22 +26,24 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = "The name of the resource group")]
+        [Alias("ResourceGroup")]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroup { get; set; }
+        public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "Namespace Name.")]
+        [Alias(AliasNamespaceName)]
         [ValidateNotNullOrEmpty]
-        public string NamespaceName { get; set; }
+        public string Name { get; set; }
 
         public override void ExecuteCmdlet()
         {
             // delete a namespace             
-            if (ShouldProcess(target:NamespaceName, action: string.Format("Delete Namespace:{0} ofthe ResourceGroup:{1}",NamespaceName,ResourceGroup)))
+            if (ShouldProcess(target: Name, action: string.Format(Resources.RemoveNamespace, Name, ResourceGroupName)))
             {
-                Client.BeginDeleteNamespace(ResourceGroup, NamespaceName);
+                Client.BeginDeleteNamespace(ResourceGroupName, Name);
             }
         }
     }

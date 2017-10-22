@@ -21,7 +21,7 @@ function Test-ValidateDeployment
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceName
-	$rglocation = Get-ProviderLocation ResourceManagement
+	$rglocation = "CentralUSEUAP"
 	$location = Get-ProviderLocation "Microsoft.Web/sites"
 
 	# Test
@@ -42,14 +42,14 @@ function Test-NewDeploymentFromTemplateFile
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceName
-	$rglocation = "EastUS"
+	$rglocation = "CentralUSEUAP"
 
 	try
 	{
 		# Test
 		New-AzureRmResourceGroup -Name $rgname -Location $rglocation
 		
-		$deployment = New-AzureRmResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile sampleTemplate.json -TemplateParameterFile sampleTemplateParams.json
+		$deployment = New-AzureRmResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile sampleDeploymentTemplate.json -TemplateParameterFile sampleDeploymentTemplateParams.json
 
 		# Assert
 		Assert-AreEqual Succeeded $deployment.ProvisioningState
@@ -69,6 +69,47 @@ function Test-NewDeploymentFromTemplateFile
 
 <#
 .SYNOPSIS
+Tests cross resource group deployment via template file.
+#>
+function Test-CrossResourceGroupDeploymentFromTemplateFile
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$rgname2 = Get-ResourceGroupName
+	$rname = Get-ResourceName
+	$rglocation = "CentralUSEUAP"
+
+	try
+	{
+		# Test
+		New-AzureRmResourceGroup -Name $rgname -Location $rglocation
+		New-AzureRmResourceGroup -Name $rgname2 -Location $rglocation
+		
+		$parameters = @{ "NestedDeploymentResourceGroup" = $rgname2 }
+		$deployment = New-AzureRmResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile sampleTemplateWithCrossResourceGroupDeployment.json -TemplateParameterObject $parameters
+
+		# Assert
+		Assert-AreEqual Succeeded $deployment.ProvisioningState
+
+		$subId = (Get-AzureRmContext).Subscription.SubscriptionId
+		$deploymentId = "/subscriptions/$subId/resourcegroups/$rgname/providers/Microsoft.Resources/deployments/$rname"
+		$getById = Get-AzureRmResourceGroupDeployment -Id $deploymentId
+		Assert-AreEqual $getById.DeploymentName $deployment.DeploymentName
+
+		$nestedDeploymentId = "/subscriptions/$subId/resourcegroups/$rgname2/providers/Microsoft.Resources/deployments/nestedTemplate"
+		$nestedDeployment = Get-AzureRmResourceGroupDeployment -Id $nestedDeploymentId
+		Assert-AreEqual Succeeded $nestedDeployment.ProvisioningState
+	}
+	
+	finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Tests nested errors displayed when temployment put fails.
 #>
 function Test-NestedErrorsDisplayed
@@ -76,7 +117,7 @@ function Test-NestedErrorsDisplayed
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceName
-	$rglocation = "EastUS"
+	$rglocation = "CentralUSEUAP"
 
 	try
 	{
@@ -106,7 +147,7 @@ function Test-NestedDeploymentFromTemplateFile
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceName
-	$rglocation = "EastUS"
+	$rglocation = "CentralUSEUAP"
 
 	try
 	{
@@ -140,14 +181,14 @@ function Test-SaveDeploymentTemplateFile
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceName
-	$rglocation = "EastUS"
+	$rglocation = "CentralUSEUAP"
 
 	try
 	{
 		# Test
 		New-AzureRmResourceGroup -Name $rgname -Location $rglocation
 		
-		$deployment = New-AzureRmResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile sampleTemplate.json -TemplateParameterFile sampleTemplateParams.json
+		$deployment = New-AzureRmResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile sampleDeploymentTemplate.json -TemplateParameterFile sampleDeploymentTemplateParams.json
 
 		# Assert
 		Assert-AreEqual Succeeded $deployment.ProvisioningState
@@ -175,7 +216,7 @@ function Test-NewDeploymentWithKeyVaultReference
 	$rname = Get-ResourceName
 	$keyVaultname = Get-ResourceName
 	$secretName = Get-ResourceName
-	$rglocation = Get-ProviderLocation ResourceManagement
+	$rglocation = "CentralUSEUAP"
 	$location = Get-ProviderLocation "Microsoft.Web/sites"
 	$hostplanName = "xDeploymentTestHost26668"
 
@@ -229,7 +270,7 @@ function Test-NewDeploymentWithComplexPramaters
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceName
-	$rglocation = "EastUS"
+	$rglocation = "CentralUSEUAP"
 
 	try
 	{
@@ -263,7 +304,7 @@ function Test-NewDeploymentWithParameterObject
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceName
-	$rglocation = "EastUS"
+	$rglocation = "CentralUSEUAP"
 
 	try
 	{
@@ -297,7 +338,7 @@ function Test-NewDeploymentWithDynamicParameters
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceName
-	$rglocation = "EastUS"
+	$rglocation = "CentralUSEUAP"
 
 	try
 	{
@@ -331,7 +372,7 @@ function Test-NewDeploymentWithInvalidParameters
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceName
-	$rglocation = "EastUS"
+	$rglocation = "CentralUSEUAP"
 
 	try
 	{

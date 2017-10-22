@@ -35,21 +35,24 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.ConsumerGroup
             Position = 1,
             HelpMessage = "Namespace Name.")]
         [ValidateNotNullOrEmpty]
-        public string NamespaceName { get; set; }
+        [Alias(AliasNamespaceName)]
+        public string Namespace { get; set; }
 
         [Parameter(Mandatory = true,
              ValueFromPipelineByPropertyName = true,
              Position = 2,
              HelpMessage = "EventHub Name.")]
         [ValidateNotNullOrEmpty]
-        public string EventHubName { get; set; }
+        [Alias(AliasEventHubName)]
+        public string EventHub { get; set; }
 
         [Parameter(Mandatory = true,
              ValueFromPipelineByPropertyName = true,
              Position = 3,
              HelpMessage = "ConsumerGroup Name.")]
         [ValidateNotNullOrEmpty]
-        public string ConsumerGroupName { get; set; }
+        [Alias(AliasConsumerGroupName)]
+        public string Name { get; set; }
 
         [Parameter(Mandatory = false,
              ValueFromPipelineByPropertyName = true,
@@ -62,17 +65,12 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.ConsumerGroup
         {
             ConsumerGroupAttributes consumerGroup = new ConsumerGroupAttributes();
 
-            EventHubAttributes getEventHub = Client.GetEventHub(ResourceGroupName, NamespaceName, EventHubName);
-
-            consumerGroup.Name = ConsumerGroupName;
-            consumerGroup.Location = getEventHub.Location;
-
             if (!string.IsNullOrEmpty(UserMetadata))
                 consumerGroup.UserMetadata = UserMetadata;
 
-            if (ShouldProcess(target: consumerGroup.Name, action: string.Format("Adding a new Consumer Group {0} under Eventhub {1}", consumerGroup.Name, EventHubName)))
+            if (ShouldProcess(target: Name, action: string.Format(Resources.CreateConsumerGroup, Name, EventHub)))
             {
-                WriteObject(Client.CreateOrUpdateConsumerGroup(ResourceGroupName, NamespaceName, EventHubName, consumerGroup.Name, consumerGroup));
+                WriteObject(Client.CreateOrUpdateConsumerGroup(ResourceGroupName, Namespace, EventHub, Name, consumerGroup));
             }
             
         }

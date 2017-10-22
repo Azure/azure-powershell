@@ -14,17 +14,19 @@ Gets available virtual machine sizes.
 
 ### ListVirtualMachineSizeParamSet (Default)
 ```
-Get-AzureRmVMSize [-Location] <String> [<CommonParameters>]
+Get-AzureRmVMSize [-Location] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ListAvailableSizesForAvailabilitySet
 ```
-Get-AzureRmVMSize [-ResourceGroupName] <String> [-AvailabilitySetName] <String> [<CommonParameters>]
+Get-AzureRmVMSize [-ResourceGroupName] <String> [-AvailabilitySetName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ListAvailableSizesForVirtualMachine
 ```
-Get-AzureRmVMSize [-ResourceGroupName] <String> [-VMName] <String> [<CommonParameters>]
+Get-AzureRmVMSize [-ResourceGroupName] <String> [-VMName] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,21 +36,21 @@ The **Get-AzureRmVMSize** cmdlet gets available virtual machine sizes.
 
 ### Example 1: Get virtual machine sizes for a location
 ```
-PS C:\>Get-AzureRmVMSize -Location "Central US"
+PS C:\> Get-AzureRmVMSize -Location "Central US"
 ```
 
 This command gets the available sizes for virtual machines in the specified location.
 
 ### Example 2: Get sizes for an availability set
 ```
-PS C:\>Get-AzureRmVMSize -ResourceGroupName "ResourceGroup03" -AvailabilitySetName "AvailabilitySet17"
+PS C:\> Get-AzureRmVMSize -ResourceGroupName "ResourceGroup03" -AvailabilitySetName "AvailabilitySet17"
 ```
 
 This command gets available sizes for virtual machines that you can deploy in the availability set named AvailabilitySet17.
 
 ### Example 3: Get sizes for an existing virtual machine
 ```
-PS C:\>Get-AzureRmVMSize -ResourceGroupName "ResourceGroup03" -VMName "VirtualMachine12"
+PS C:\> Get-AzureRmVMSize -ResourceGroupName "ResourceGroup03" -VMName "VirtualMachine12"
 ```
 
 This command gets available sizes for the existing virtual machine named VirtualMachine12.
@@ -68,6 +70,21 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -122,6 +139,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineSize
 
 ## NOTES
 

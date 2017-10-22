@@ -19,6 +19,28 @@
 -->
 ## Current Release
 
+## Version 3.4.1
+ - Marked cmdlet parameters and type properties obsolete in 
+   preparation for upcoming breaking change release (Version 4.0.0)
+
+## Version 3.4.0
+
+## Version 3.3.1
+
+## Version 3.3.0
+
+## Version 3.2.1
+
+## Version 3.2.0
+- Added new Get-AzureBatchJobPreparationAndReleaseTaskStatus cmdlet.
+- Added byte range start and end to Get-AzureBatchNodeFileContent parameters.
+
+## Version 3.1.0
+
+## Version 3.0.1
+
+## Version 3.0.0
+
 ## Version 2.8.0
 
 ## Version 2.7.0

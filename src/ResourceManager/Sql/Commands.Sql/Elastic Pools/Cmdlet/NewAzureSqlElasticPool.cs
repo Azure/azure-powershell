@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Hyak.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.Sql.ElasticPool.Model;
+using Microsoft.Rest.Azure;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,6 +35,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         /// </summary>
         [Parameter(Mandatory = true,
             HelpMessage = "The name of the Azure SQL ElasticPool to create.")]
+        [Alias("Name")]
         [ValidateNotNullOrEmpty]
         public string ElasticPoolName { get; set; }
 

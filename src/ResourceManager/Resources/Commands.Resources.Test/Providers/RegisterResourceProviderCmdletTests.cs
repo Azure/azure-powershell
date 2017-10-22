@@ -95,19 +95,17 @@ namespace Microsoft.Azure.Commands.Resources.Test
         {
             const string ProviderName = "Providers.Test";
 
-            var provider = new Provider
-            {
-                NamespaceProperty = ProviderName,
-                RegistrationState = ResourcesClient.RegisteredStateName,
-                ResourceTypes = new[]
+            var provider = new Provider(
+                namespaceProperty: ProviderName,
+                registrationState: ResourcesClient.RegisteredStateName,
+                resourceTypes: new[]
                 {
                     new ProviderResourceType
                     {
                         Locations = new[] {"West US", "East US"},
                         //Name = "TestResource2"
                     }
-                }
-            };
+                });
 
             var registrationResult = provider;
 

@@ -13,12 +13,12 @@ Updates the authorization rule on the specified Event Hubs namespace.
 
 ```
 Set-AzureRmEventHubNamespaceAuthorizationRule [-ResourceGroupName] <String> [-NamespaceName] <String>
- [-AuthRuleObj] <SharedAccessAuthorizationRuleAttributes> [[-AuthorizationRuleName] <String>]
- [-Rights <String[]>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AuthRuleObj] <AuthorizationRuleAttributes> [[-AuthorizationRuleName] <String>] [-Rights <String[]>]
+ [-WhatIf] [-Confirm]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmEventHubNamespaceAuthorizationRule** cmdlet updates the authorization rule on the specified Event Hubs namespace.
+The Set-AzureRmEventHubNamespaceAuthorizationRule cmdlet updates the authorization rule on the specified Event Hubs namespace.
 
 ## EXAMPLES
 
@@ -27,12 +27,13 @@ The **Set-AzureRmEventHubNamespaceAuthorizationRule** cmdlet updates the authori
 PS C:\> Set-AzureRmEventHubNamespaceAuthorizationRule -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -AuthorizationRuleName MyAuthRuleName -Rights @("Manage")
 ```
 
-Updates the authorization rule `MyAuthRuleName` to grant **Manage** rights.
+Updates the authorization rule \`MyAuthRuleName\` to grant Manage rights.
 
 ## PARAMETERS
 
 ### -AuthorizationRuleName
-The authorization rule name. Required if **-AuthruleObj** is not specified.
+The authorization rule name.
+Required if -AuthruleObj is not specified.
 
 ```yaml
 Type: String
@@ -50,7 +51,7 @@ Accept wildcard characters: False
 The Event Hubs namespace authorization rule object.
 
 ```yaml
-Type: SharedAccessAuthorizationRuleAttributes
+Type: AuthorizationRuleAttributes
 Parameter Sets: (All)
 Aliases: 
 
@@ -92,9 +93,8 @@ Accept wildcard characters: False
 ```
 
 ### -Rights
-Required if **-AuthruleObj** is not specified.
-Rights; for example, 
-@("Listen","Send","Manage")
+Required if -AuthruleObj is not specified.
+Rights; for example,  @("Listen","Send","Manage")
 
 ```yaml
 Type: String[]
@@ -138,9 +138,6 @@ Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
-
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

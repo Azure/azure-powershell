@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using Microsoft.Azure.Commands.Sql.ServerUpgrade.Model;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -21,6 +22,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Cmdlet
     /// <summary>
     /// Defines the Get-AzureRmSqlServerUpgrade cmdlet
     /// </summary>
+    [Obsolete("All Azure SQL DB Servers now have version 12.0 so there is nothing to upgrade.")]
     [Cmdlet(VerbsCommon.Get, "AzureRmSqlServerUpgrade", ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
     public class GetAzureSqlServerUpgrade : AzureSqlServerUpgradeCmdletBase<AzureSqlServerUpgradeModel>
     {

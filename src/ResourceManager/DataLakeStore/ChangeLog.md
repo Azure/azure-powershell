@@ -1,4 +1,4 @@
-<!--
+﻿<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -18,7 +18,40 @@
         - Additional information about change #1
 -->
 ## Current Release
+* [BREAKING CHANGE] Removed the Obsolete Properties fields in PSDataLakeStoreAccount.cs and its assoicated files
+* Changed one of the two OutputTypes of Get-AzureRmDataLakeStoreAccount
+    - List<PSDataLakeStoreAccount> to List<PSDataLakeStoreAccountBasic>
+    - The properties of PSDataLakeStoreAccountBasic is a strict subset of the properties of PSDataLakeStoreAccount
+    - The additional properties that are in PSDataLakeStoreAccount are not returned by the service.  Therefore, this change is to reflect this accurately. These additional properties are still in PSDataLakeStoreAccountBasic, but they are tagged as Obsolete.
+
+## Version 4.4.1
+
+## Version 4.4.0
+
+## Version 4.3.1
+
+## Version 4.3.0
+* Fix for issue: https://github.com/Azure/azure-powershell/issues/4323
+
+## Version 4.2.1
+
+## Version 4.2.0
+* Added support for user managed KeyVault key rotations in the Set-AzureRMDataLakeStoreAccount cmdlet
+* Added a quality of life update to automatically trigger an `enableKeyVault` call when a user managed KeyVault is added or a key is rotated.
+* Updated the token audience for job and catalog APIs to use the correct Data Lake specific audience instead of the Azure Resource audience.
+* Fixed a bug limiting the size of files created/appended using the following cmdlets:
+    - New-AzureRmDataLakeStoreItem
+    - Add-AzureRmDataLakeStoreItemContent
+
+## Version 4.1.0
+* Enable-AzureRmDataLakeStoreKeyVault (Enable-AdlStoreKeyVault)
+  * Enable KeyVault managed encryption for a DataLake Store
+
+## Version 4.0.1
+
+## Version 4.0.0
 * For `Import-AzureRMDataLakeStoreItem` and `Export-AzureRMDataLakeStoreItem` trace logging has been disabled by default to improve performance. If trace logging is desired please use the `-DiagnosticLogLevel` and `-DiagnosticLogPath` parameters
+* Fixed a bug that would sometimes cause PowerShell to crash when uploading lots of small file to ADLS.
 
 ## Version 3.6.0
 * Add support for head and tail to the `Get-AzureRMDataLakeStoreItemContent` cmdlet. This enables returning the top N or last N new line delimited rows to be displayed.

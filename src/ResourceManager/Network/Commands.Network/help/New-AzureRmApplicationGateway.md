@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+Module Name: AzureRM.Network
 ms.assetid: 1F5066C6-9756-47B4-886C-C52755809926
 online version: 
 schema: 2.0.0
@@ -26,33 +27,33 @@ New-AzureRmApplicationGateway -Name <String> -ResourceGroupName <String> -Locati
  -HttpListeners <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayHttpListener]>
  [-UrlPathMaps <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayUrlPathMap]>]
  -RequestRoutingRules <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayRequestRoutingRule]>
+ [-RedirectConfigurations <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayRedirectConfiguration]>]
  [-WebApplicationFirewallConfiguration <PSApplicationGatewayWebApplicationFirewallConfiguration>]
- [-Tag <Hashtable>] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable>] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The **New-AzureRmApplicationGateway** cmdlet creates an Azure application gateway.
 
-An application gateway requires the following: 
+An application gateway requires the following:
 
-- A resource group. 
-- A virtual network. 
-- A back-end server pool, containing the IP addresses of the back-end servers. 
-- Back-end server pool settings.
-Each pool has settings such as port, protocol and cookie-based affinity, that are applied to all servers within the pool. 
-- Front-end IP addresses, which are the IP addresses opened on the application gateway.
-A front-end IP address can be a public IP address or an internal IP address. 
-- Front-end ports, which are the public ports opened on the application gateway.
-Traffic that hits these ports is redirected to the back-end servers. 
-- A request routing rule that binds the listener and the back-end server pool.
-The rule defines which back-end server pool the traffic should be directed to when it hits a particular listener.
-A listener has a front-end port, front-end IP address, protocol (HTTP or HTTPS) and Secure Sockets Layer (SSL) certificate name (if configuring SSL offload).
+- A resource group.
+- A virtual network.
+- A back-end server pool, containing the IP addresses of the back-end servers.
+- Back-end server pool settings. Each pool has settings such as port, protocol and cookie-based affinity, that are applied to all servers within the pool.
+- Front-end IP addresses, which are the IP addresses opened on the application gateway. A front-end IP address can be a public IP address or an internal IP address.
+- Front-end ports, which are the public ports opened on the application gateway. Traffic that hits these ports is redirected to the back-end servers.
+- A request routing rule that binds the listener and the back-end server pool. The rule defines which back-end server pool the traffic should be directed to when it hits a particular listener.
+
+A listener has a front-end port, front-end IP address, protocol (HTTP or HTTPS) and Secure Sockets
+Layer (SSL) certificate name (if configuring SSL offload).
 
 ## EXAMPLES
 
 ### Example 1: Create an application gateway
 ```
-PS C:\>$ResourceGroup = New-AzureRmResourceGroup -Name "ResourceGroup01" -Location "West US" -Tags @{Name = "Department"; Value = "Marketing"} PS C:\>$Subnet = New-AzureRmVirtualNetworkSubnetConfig -Name "Subnet01" -AddressPrefix 10.0.0.0/24
+PS C:\>$ResourceGroup = New-AzureRmResourceGroup -Name "ResourceGroup01" -Location "West US" -Tag @{Name = "Department"; Value = "Marketing"} PS C:\>$Subnet = New-AzureRmVirtualNetworkSubnetConfig -Name "Subnet01" -AddressPrefix 10.0.0.0/24
 PS C:\> $VNet = New-AzureRmvirtualNetwork -Name "VNet01" -ResourceGroupName "ResourceGroup01" -Location "West US" -AddressPrefix 10.0.0.0/16 -Subnet $Subnet
 PS C:\> $VNet = Get-AzureRmvirtualNetwork -Name "VNet01" -ResourceGroupName "ResourceGroup01"
 PS C:\> $Subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name $Subnet01 -VirtualNetwork $VNet PS C:\>$GatewayIPconfig = New-AzureRmApplicationGatewayIPConfiguration -Name "GatewayIp01" -Subnet $Subnet
@@ -68,7 +69,8 @@ PS C:\> $Sku = New-AzureRmApplicationGatewaySku -Name "Standard_Small" -Tier Sta
 PS C:\> $Gateway = New-AzureRmApplicationGateway -Name "AppGateway01" -ResourceGroupName "ResourceGroup01" -Location "West US" -BackendAddressPools $Pool -BackendHttpSettingsCollection $PoolSetting -FrontendIpConfigurations $FrontEndIpConfig  -GatewayIpConfigurations $GatewayIpConfig -FrontendPorts $FrontEndPort -HttpListeners $Listener -RequestRoutingRules $Rule -Sku $Sku
 ```
 
-The following example creates an application gateway by first creating a resource group and a virtual network, as well as the following: 
+The following example creates an application gateway by first creating a resource group and a
+virtual network, as well as the following:
 
 - A back-end server pool
 - Back-end server pool settings
@@ -137,6 +139,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -260,6 +277,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -RedirectConfigurations
+The list of redirect configuration
+
+```yaml
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayRedirectConfiguration]
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -RequestRoutingRules
 Specifies a list of request routing rules for the application gateway.
 
@@ -336,7 +368,9 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Specifies the dictionary of tags associated with the application gateway.
+Key-value pairs in the form of a hash table. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
 Type: Hashtable
@@ -366,8 +400,8 @@ Accept wildcard characters: False
 ```
 
 ### -WebApplicationFirewallConfiguration
-Specifies a web application firewall (WAF) configuration.
-You can use the Get-AzureRmApplicationGatewayWebApplicationFirewallConfiguration cmdlet to get a WAF.
+Specifies a web application firewall (WAF) configuration. You can use the
+Get-AzureRmApplicationGatewayWebApplicationFirewallConfiguration cmdlet to get a WAF.
 
 ```yaml
 Type: PSApplicationGatewayWebApplicationFirewallConfiguration
@@ -417,8 +451,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
@@ -446,5 +478,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzureRmVirtualNetwork](./New-AzureRmVirtualNetwork.md)
 
 [New-AzureRmVirtualNetworkSubnetConfig](./New-AzureRmVirtualNetworkSubnetConfig.md)
-
-

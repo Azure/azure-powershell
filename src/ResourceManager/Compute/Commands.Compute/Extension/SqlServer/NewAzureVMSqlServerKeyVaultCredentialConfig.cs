@@ -14,10 +14,10 @@
 
 using System.Management.Automation;
 using System.Security;
-using System.Security.Permissions;
 using System;
 using System.Runtime.InteropServices;
 using Microsoft.Azure.Commands.Compute.Common;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -26,19 +26,12 @@ namespace Microsoft.Azure.Commands.Compute
     /// </summary>
     [Cmdlet(
          VerbsCommon.New,
-         AzureVMSqlServerKeyVaultCredentialConfigNoun,
+         ProfileNouns.VirtualMachineSqlServerKeyVaultCredentialConfig,
          SupportsShouldProcess = true),
-    Alias(
-        VerbsCommon.New + "-" + ProfileNouns.VirtualMachineSqlServerKeyVaultCredentialConfig),
      OutputType(
          typeof(KeyVaultCredentialSettings))]
     public class NewAzureVMSqlServerKeyVaultCredentialConfigCommand : PSCmdlet
     {
-        /// <summary>
-        /// Configuration object friendly name
-        /// </summary>
-        protected const string AzureVMSqlServerKeyVaultCredentialConfigNoun = "AzureVMSqlServerKeyVaultCredentialConfig";
-
         [Parameter(
             Mandatory = true,
             Position = 0,
@@ -104,34 +97,9 @@ namespace Microsoft.Azure.Commands.Compute
                 settings.CredentialName = (this.CredentialName == null) ? null : this.CredentialName;
                 settings.ServicePrincipalName = (this.ServicePrincipalName == null) ? null : this.ServicePrincipalName;
                 settings.ServicePrincipalSecret = (this.ServicePrincipalSecret == null) ?
-                                                  null : ConvertToUnsecureString(ServicePrincipalSecret);
+                                                  null : ConversionUtilities.SecureStringToString(ServicePrincipalSecret);
                 settings.AzureKeyVaultUrl = (this.AzureKeyVaultUrl == null) ? null : this.AzureKeyVaultUrl;
                 WriteObject(settings);
-            }
-        }
-
-        /// <summary>
-        /// convert secure string to regular string
-        /// $Issue -  for ARM cmdlets, check if there is a similair helper class library like Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers
-        /// </summary>
-        /// <param name="securePassword"></param>
-        /// <returns></returns>
-        private static string ConvertToUnsecureString(SecureString securePassword)
-        {
-            if (securePassword == null)
-            {
-                throw new ArgumentNullException("securePassword");
-            }
-
-            IntPtr unmanagedString = IntPtr.Zero;
-            try
-            {
-                unmanagedString = Marshal.SecureStringToGlobalAllocUnicode(securePassword);
-                return Marshal.PtrToStringUni(unmanagedString);
-            }
-            finally
-            {
-                Marshal.ZeroFreeGlobalAllocUnicode(unmanagedString);
             }
         }
     }

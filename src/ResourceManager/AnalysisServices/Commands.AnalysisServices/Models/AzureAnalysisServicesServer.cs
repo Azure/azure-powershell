@@ -12,16 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Common.Authentication.Properties;
-using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using Microsoft.Azure.Management.Analysis;
-using Microsoft.Azure.Management.Analysis.Models;
-using Microsoft.Rest.Azure;
 using System;
-using System.Collections;
+using Microsoft.Azure.Management.Analysis.Models;
 using System.Collections.Generic;
-using System.Net;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Models
 {
@@ -43,18 +36,20 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
 
         public string ServerFullName { get; private set; }
 
+        public string BackupBlobContainerUri { get; set; }
+
         public ServerSku Sku { get; set; }
 
         public System.Collections.Generic.IDictionary<string, string> Tag { get; set; }
 
-        internal static AzureAnalysisServicesServer FromAnalysisServicesServer(AnalysisServicesServer server)
+        internal static AzureAnalysisServicesServerDetail FromAnalysisServicesServer(AnalysisServicesServer server)
         {
             if (server == null)
             {
                 return null;
             }
 
-            return new AzureAnalysisServicesServer()
+            return new AzureAnalysisServicesServerDetail()
             {
                 AsAdministrators = server.AsAdministrators == null
                     ? new List<string>()
@@ -66,21 +61,27 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
                 ProvisioningState = server.ProvisioningState,
                 Id = server.Id,
                 ServerFullName = server.ServerFullName,
-                Sku = server.Sku != null ? ServerSku.FromResourceSku(server.Sku) : new ServerSku(),
-                Tag = server.Tags != null ? new Dictionary<string, string>(server.Tags) : new Dictionary<string, string>()
+                Sku = server.Sku != null ? ServerSku.FromResourceSku(server.Sku): new Dictionary<string, string>(),
+                Tag = server.Tags != null ? new Dictionary<string, string>(server.Tags) : new Dictionary<string, string>(),
+                BackupBlobContainerUri = server.BackupBlobContainerUri == null ? String.Empty : server.BackupBlobContainerUri
             };
         }
 
-        internal static List<AzureAnalysisServicesServer> FromAnalysisServicesServerCollection(List<AnalysisServicesServer> list)
+        internal static List<AzureAnalysisServicesServerDetail> FromAnalysisServicesServerCollection(List<AnalysisServicesServer> list)
         {
             if (list == null)
             {
                 return null;
             }
 
-            var listAzureAnalysisServicesServer = new List<AzureAnalysisServicesServer>();
+            var listAzureAnalysisServicesServer = new List<AzureAnalysisServicesServerDetail>();
             list.ForEach(server => listAzureAnalysisServicesServer.Add(FromAnalysisServicesServer(server)));
             return listAzureAnalysisServicesServer;
         }
+    }
+
+    public class AzureAnalysisServicesServerDetail : AzureAnalysisServicesServer
+    {
+        public new System.Collections.Generic.IDictionary<string, string> Sku { get; set; }
     }
 }

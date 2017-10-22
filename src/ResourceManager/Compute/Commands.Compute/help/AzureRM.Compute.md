@@ -65,8 +65,14 @@ Converts a virtual machine with blob-based disks to a virtual machine with manag
 ### [Disable-AzureRmVMDiskEncryption](Disable-AzureRmVMDiskEncryption.md)
 Disables encryption on an IaaS virtual machine.
 
+### [Disable-AzureRmVmssDiskEncryption](Disable-AzureRmVmssDiskEncryption.md)
+Disables disk encryption on a VM scale set.
+
 ### [Get-AzureRmAvailabilitySet](Get-AzureRmAvailabilitySet.md)
 Gets Azure availability sets in a resource group.
+
+### [Get-AzureRmComputeResourceSku](Get-AzureRmComputeResourceSku.md)
+List all compute resource Skus
 
 ### [Get-AzureRmContainerService](Get-AzureRmContainerService.md)
 Gets a container service.
@@ -137,6 +143,9 @@ Gets the VMImage publishers.
 ### [Get-AzureRmVMImageSku](Get-AzureRmVMImageSku.md)
 Gets VMImage SKUs.
 
+### [Get-AzureRmVMRunCommandDocument](Get-AzureRmVMRunCommandDocument.md)
+Get run command document.
+
 ### [Get-AzureRmVMSize](Get-AzureRmVMSize.md)
 Gets available virtual machine sizes.
 
@@ -146,11 +155,20 @@ Gets the settings for a SQL Server extension on a virtual machine.
 ### [Get-AzureRmVmss](Get-AzureRmVmss.md)
 Gets the properties of a VMSS.
 
+### [Get-AzureRmVmssDiskEncryption](Get-AzureRmVmssDiskEncryption.md)
+Shows the disk encryption status of a VM scale set.
+
+### [Get-AzureRmVmssRollingUpgrade](Get-AzureRmVmssRollingUpgrade.md)
+Shows the status of the latest virtual machine scale set rolling upgrade.
+
 ### [Get-AzureRmVmssSku](Get-AzureRmVmssSku.md)
 Gets the available SKUs for the VMSS.
 
 ### [Get-AzureRmVmssVM](Get-AzureRmVmssVM.md)
 Gets the properties of a VMSS virtual machine.
+
+### [Get-AzureRmVmssVMDiskEncryption](Get-AzureRmVmssVMDiskEncryption.md)
+Shows the disk encryption status of VMs in a VM scale set.
 
 ### [Get-AzureRmVMUsage](Get-AzureRmVMUsage.md)
 Gets the virtual machine core count usage for a location.
@@ -160,6 +178,9 @@ Grants an access to a disk.
 
 ### [Grant-AzureRmSnapshotAccess](Grant-AzureRmSnapshotAccess.md)
 Grants an access to a snapshot.
+
+### [Invoke-AzureRmVMRunCommand](Invoke-AzureRmVMRunCommand.md)
+Run command on the VM.
 
 ### [New-AzureRmAvailabilitySet](New-AzureRmAvailabilitySet.md)
 Creates an Azure availability set.
@@ -200,6 +221,15 @@ Creates a virtual machine.
 ### [New-AzureRmVMConfig](New-AzureRmVMConfig.md)
 Creates a configurable virtual machine object.
 
+### [New-AzureRmVMSqlServerAutoBackupConfig](New-AzureRmVMSqlServerAutoBackupConfig.md)
+Creates a configuration object for SQL Server automatic backup.
+
+### [New-AzureRmVMSqlServerAutoPatchingConfig](New-AzureRmVMSqlServerAutoPatchingConfig.md)
+Creates a configuration object for automatic patching on a virtual machine.
+
+### [New-AzureRmVMSqlServerKeyVaultCredentialConfig](New-AzureRmVMSqlServerKeyVaultCredentialConfig.md)
+Creates a configuration object for SQL server key vault credential on a virtual machine.
+
 ### [New-AzureRmVmss](New-AzureRmVmss.md)
 Creates a VMSS.
 
@@ -211,15 +241,6 @@ Creates an IP configuration for a network interface of a VMSS.
 
 ### [New-AzureRmVmssVaultCertificateConfig](New-AzureRmVmssVaultCertificateConfig.md)
 Creates a Key Vault certificate configuration.
-
-### [New-AzureVMSqlServerAutoBackupConfig](New-AzureVMSqlServerAutoBackupConfig.md)
-Creates a configuration object for SQL Server automatic backup.
-
-### [New-AzureVMSqlServerAutoPatchingConfig](New-AzureVMSqlServerAutoPatchingConfig.md)
-Creates a configuration object for automatic patching on a virtual machine.
-
-### [New-AzureVMSqlServerKeyVaultCredentialConfig](New-AzureVMSqlServerKeyVaultCredentialConfig.md)
-Creates a configuration object for SQL server key vault credential on a virtual machine.
 
 ### [Publish-AzureRmVMDscConfiguration](Publish-AzureRmVMDscConfiguration.md)
 Uploads a DSC script to Azure blob storage.
@@ -411,7 +432,7 @@ Sets the operating system disk properties on a virtual machine.
 Sets the Marketplace plan information on a virtual machine.
 
 ### [Set-AzureRmVMSourceImage](Set-AzureRmVMSourceImage.md)
-Specifies the platform image for a virtual machine.
+Specifies the image for a virtual machine.
 
 ### [Set-AzureRmVMSqlServerExtension](Set-AzureRmVMSqlServerExtension.md)
 Sets the Azure SQL Server extension on a virtual machine.
@@ -419,8 +440,17 @@ Sets the Azure SQL Server extension on a virtual machine.
 ### [Set-AzureRmVmss](Set-AzureRmVmss.md)
 Sets specific actions on a specified VMSS.
 
+### [Set-AzureRmVmssBootDiagnostic](Set-AzureRmVmssBootDiagnostic.md)
+Sets the virtual machine scale set boot diagnostics profile.
+
+### [Set-AzureRmVmssDiskEncryptionExtension](Set-AzureRmVmssDiskEncryptionExtension.md)
+Enables disk encryption on a VM scale set.
+
 ### [Set-AzureRmVmssOsProfile](Set-AzureRmVmssOsProfile.md)
 Sets the VMSS operating system profile properties.
+
+### [Set-AzureRmVmssRollingUpgradePolicy](Set-AzureRmVmssRollingUpgradePolicy.md)
+Sets the VMSS rolling upgrade policy properties.
 
 ### [Set-AzureRmVmssStorageProfile](Set-AzureRmVmssStorageProfile.md)
 Sets the storage profile properties for the VMSS.
@@ -434,11 +464,17 @@ Starts an Azure virtual machine.
 ### [Start-AzureRmVmss](Start-AzureRmVmss.md)
 Starts the VMSS or a set of virtual machines within the VMSS.
 
+### [Start-AzureRmVmssRollingOSUpgrade](Start-AzureRmVmssRollingOSUpgrade.md)
+Starts a rolling upgrade to move all virtual machine scale set instances to the latest available Platform Image OS version.
+
 ### [Stop-AzureRmVM](Stop-AzureRmVM.md)
 Stops an Azure virtual machine.
 
 ### [Stop-AzureRmVmss](Stop-AzureRmVmss.md)
 Stops the VMSS or a set of virtual machines within the VMSS.
+
+### [Stop-AzureRmVmssRollingUpgrade](Stop-AzureRmVmssRollingUpgrade.md)
+Cancels the current virtual machine scale set rolling upgrade.
 
 ### [Test-AzureRmVMAEMExtension](Test-AzureRmVMAEMExtension.md)
 Checks the configuration of the AEM extension.

@@ -61,6 +61,15 @@ namespace Microsoft.Azure.Commands.MachineLearning {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to create new regional properties for the machine learning web service &quot;{0}&quot; in region &quot;{1}&quot;?.
+        /// </summary>
+        internal static string CreateNewRegionalProperties {
+            get {
+                return ResourceManager.GetString("CreateNewRegionalProperties", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The passed in machine learning web service object does not have a valid ARM resource id. .
         /// </summary>
         internal static string InvalidWebServiceIdOnObject {

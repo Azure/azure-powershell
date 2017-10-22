@@ -109,12 +109,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ServerThreatDetectionPolicyModel
+
 ## NOTES
 
 ## RELATED LINKS
 
 [Remove-AzureRmSqlDatabaseThreatDetectionPolicy](./Remove-AzureRmSqlDatabaseThreatDetectionPolicy.md)
 
-[Set-AzureRmSqlDatabaseThreatDetectionPolicy]()
+[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
 
 

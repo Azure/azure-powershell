@@ -16,6 +16,7 @@ using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute.Models;
+using System;
 using System.Collections;
 using System.Management.Automation;
 
@@ -36,6 +37,18 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(ValueFromPipelineByPropertyName = false)]
         public Hashtable Tags { get; set; }
 
+        [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = false)]
+        [Obsolete("This parameter is obsolete.  Use AssignIdentity parameter instead.", false)]
+        [ValidateNotNullOrEmpty]
+        public ResourceIdentityType? IdentityType { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = false)]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter AssignIdentity { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -55,8 +68,15 @@ namespace Microsoft.Azure.Commands.Compute
                         AvailabilitySet = this.VM.AvailabilitySetReference,
                         Location = this.VM.Location,
                         LicenseType = this.VM.LicenseType,
-                        Tags = this.Tags != null ? this.Tags.ToDictionary() : this.VM.Tags
+                        Tags = this.Tags != null ? this.Tags.ToDictionary() : this.VM.Tags,
+                        Identity = this.AssignIdentity.IsPresent ? new VirtualMachineIdentity(null, null, ResourceIdentityType.SystemAssigned) : this.VM.Identity,
+                        Zones = (this.VM.Zones != null && this.VM.Zones.Count > 0) ? this.VM.Zones : null
                     };
+
+                    if (this.IdentityType != null)
+                    {
+                        parameters.Identity = new VirtualMachineIdentity(null, null, this.IdentityType);
+                    }
 
                     var op = this.VirtualMachineClient.CreateOrUpdateWithHttpMessagesAsync(
                         this.ResourceGroupName,

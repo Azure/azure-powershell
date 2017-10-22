@@ -147,12 +147,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADUser
+
 ## NOTES
 
 ## RELATED LINKS
 
-[Get-AzureRmADUser]()
+[Get-AzureRmADUser](./Get-AzureRmADUser.md)
 
-[Set-AzureRmADUser]()
+[Set-AzureRmADUser](./Set-AzureRmADUser.md)
 
-[Remove-AzureRmADUser]()
+[Remove-AzureRmADUser](./Remove-AzureRmADUser.md)

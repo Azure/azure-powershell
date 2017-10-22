@@ -17,9 +17,9 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Base
     using System.Runtime.InteropServices;
     using System.Security;
     using Common.Authentication;
-    using Common.Authentication.Models;
     using Management.ServerManagement;
     using ResourceManager.Common;
+    using Common.Authentication.Abstractions;
 
     public class ServerManagementCmdlet : AzureRMCmdlet
     {
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Base
             get
             {
                 return _client ??
-                       (_client = AzureSession.ClientFactory.CreateArmClient<ServerManagementClient>(DefaultContext,
+                       (_client = AzureSession.Instance.ClientFactory.CreateArmClient<ServerManagementClient>(DefaultContext,
                            AzureEnvironment.Endpoint.ResourceManager));
             }
             set { _client = value; }

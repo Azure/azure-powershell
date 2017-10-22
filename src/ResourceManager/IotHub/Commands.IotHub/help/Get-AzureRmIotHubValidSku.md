@@ -16,7 +16,8 @@ Get-AzureRmIotHubValidSku [-ResourceGroupName] <String> [-Name] <String> [<Commo
 ```
 
 ## DESCRIPTION
-Gets all the valid skus that this IotHub can transition to. An IotHub cannot transition between free and the paid skus and vice versa. 
+Gets all the valid skus that this IotHub can transition to.
+An IotHub cannot transition between free and the paid skus and vice versa. 
 You will have to delete and recreate the iothub if you want to achieve this.
 
 ## EXAMPLES
@@ -31,7 +32,7 @@ Gets a list of all skus for the IotHub named "myiothub"
 ## PARAMETERS
 
 ### -Name
-Name of hte IoT hub.
+Name of the IoT hub. 
 
 ```yaml
 Type: String
@@ -46,7 +47,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Name of the resource group.
+Resource Group Name
 
 ```yaml
 Type: String

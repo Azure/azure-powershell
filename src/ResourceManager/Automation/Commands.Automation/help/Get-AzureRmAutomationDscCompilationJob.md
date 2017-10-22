@@ -167,6 +167,7 @@ Valid values are:
 - Suspended 
 - Suspending 
 - Activating
+- New
 
 ```yaml
 Type: String
@@ -187,6 +188,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Automation.Model.CompilationJob
 
 ## NOTES
 

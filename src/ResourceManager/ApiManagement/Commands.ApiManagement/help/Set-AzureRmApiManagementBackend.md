@@ -24,10 +24,7 @@ Updates an existing backend in the Api Management.
 
 ## EXAMPLES
 
-### --------------------------  Example 1  --------------------------
-@{paragraph=PS C:\\\>}
-
-
+### Updates the Description of the Backend 123
 
 ```
 Set-AzureRmApiManagementBackend -Context $apimContext -BackendId 123 -Description "updated description" -PassThru
@@ -272,3 +269,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
+[Get-AzureRmApiManagementBackend](./Get-AzureRmApiManagementBackend)
+
+[New-AzureRmApiManagementBackend](./New-AzureRmApiManagementBackend.md)
+
+[New-AzureRmApiManagementBackendCredential](./New-AzureRmApiManagementBackendCredential.md)
+
+[New-AzureRmApiManagementBackendProxy](./New-AzureRmApiManagementBackendProxy.md)
+
+[Remove-AzureRmApiManagementBackend](./Remove-AzureRmApiManagementBackend.md)

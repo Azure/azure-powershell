@@ -28,14 +28,35 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAnalysisServicesServer()
         {
-            NewInstance.RunPsTest(string.Format("Test-AnalysisServicesServer -location '{0}'", AsTestsBase.resourceGroupLocation));
+            NewInstance.RunPsTest("Test-AnalysisServicesServer");
         }
-        
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAnalysisServicesServerScaleUpDown()
+        {
+            NewInstance.RunPsTest("Test-AnalysisServicesServerScaleUpDown");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestAnalysisServicesServerDisableBackup()
+        {
+            NewInstance.RunPsTest("Test-AnalysisServicesServerDisableBackup");
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNegativeAnalysisServicesServer()
         {
-            NewInstance.RunPsTest(string.Format("Test-NegativeAnalysisServicesServer -location '{0}'", AsTestsBase.resourceGroupLocation));
+            NewInstance.RunPsTest("Test-NegativeAnalysisServicesServer");
+        }
+
+        [Fact]
+        [Trait(Category.ServiceManagement, Category.LiveOnly)]
+        public void TestAnalysisServicesServerLogExport()
+        {
+            NewInstance.RunPsTest("Test-AnalysisServicesServerLogExport");
         }
 
         [Fact]
@@ -43,6 +64,20 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.ScenarioTests
         public void TestAnalysisServicesServerRestart()
         {
             NewInstance.RunPsTest("Test-AnalysisServicesServerRestart");
+        }
+
+        [Fact]
+        [Trait(Category.ServiceManagement, Category.LiveOnly)]
+        public void TestAnalysisServicesServerSynchronizeSingle()
+        {
+            NewInstance.RunPsTest("Test-AnalysisServicesServerSynchronizeSingle");
+        }
+
+        [Fact]
+        [Trait(Category.ServiceManagement, Category.LiveOnly)]
+        public void TestAnalysisServicesServerLoginWithSPN()
+        {
+            NewInstance.RunPsTest("Test-AnalysisServicesServerLoginWithSPN");
         }
     }
 }

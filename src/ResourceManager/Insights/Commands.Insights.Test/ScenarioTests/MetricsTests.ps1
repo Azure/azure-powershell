@@ -19,15 +19,15 @@ Tests getting metrics values for a particular resource.
 function Test-GetMetrics
 {
     # Setup
-	$rscname = '/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/garyyang1'
+	$rscname = 'subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/myWeb1'
 
     try 
     {
         # Test
-        $actual = Get-AzureRmMetric -ResourceId $rscname -timeGrain 00:01:00 -starttime 2015-03-23T22:00:00 -endtime 2015-03-23T22:30:00
-
+        $actual = Get-AzureRmMetric -ResourceId $rscname -timeGrain 00:01:00 -starttime 2015-03-23T22:00:00Z -endtime 2015-03-23T22:30:00Z -Aggrega Count -MetricNames CPU, Requests
+ 
         # Assert TODO add more asserts
-		Assert-AreEqual $actual.Count 15
+		Assert-AreEqual 1 $actual.Count
     }
     finally
     {
@@ -43,14 +43,14 @@ Tests getting metrics definitions.
 function Test-GetMetricDefinitions
 {
     # Setup
-    $rscname = '/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/garyyang1'
+    $rscname = 'subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/myWeb1'
 
     try 
     {
 	    $actual = Get-AzureRmMetricDefinition -ResourceId $rscname 
 
         # Assert TODO add more asserts
-		Assert-AreEqual $actual.Count 15
+		Assert-AreEqual 15 $actual.Count
     }
     finally
     {

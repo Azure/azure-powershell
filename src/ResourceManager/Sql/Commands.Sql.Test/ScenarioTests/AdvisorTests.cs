@@ -22,9 +22,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
     public class AdvisorTests : SqlTestsBase
     {
-        public AdvisorTests(ITestOutputHelper output)
+        public AdvisorTests(ITestOutputHelper output) : base(output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
         #region Server Advisor Tests
@@ -112,13 +111,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         public void TestGetElasticPoolAdvisor()
         {
             RunPowerShellTest("Test-GetElasticPoolAdvisor");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestUpdateElasticPoolAdvisor()
-        {
-            RunPowerShellTest("Test-UpdateElasticPoolAdvisor");
         }
 
         #endregion
