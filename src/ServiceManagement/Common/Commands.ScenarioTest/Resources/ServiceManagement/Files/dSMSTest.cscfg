@@ -16,7 +16,7 @@
       <Setting name="DummySetting" value="Foo" />
     </ConfigurationSettings>
     <Certificates>
-      <Certificate name="ThumbprintCert" thumbprint="6CAE49B8166D5ADA04EDA09616CEDC88A091289E" thumbprintAlgorithm="sha1" />
+      <Certificate name="ThumbprintCert" thumbprint="{{PLACEHOLDER}}" thumbprintAlgorithm="sha1" />
       <Certificate name="dSMSCert" sourceLocation="/genevacustomers/monitoring/prod/warmpath/test/auxweb/certificates/chained/portaldogfoodmdscert.pfx" />
     </Certificates>
   </Role>

@@ -320,7 +320,12 @@ function Run-DSMSHostedServiceTest
     }
     $cscfg = "$TestOutputRoot\Resources\ServiceManagement\Files\dSMSTest.cscfg";
 	$cscfgChanged = "$TestOutputRoot\Resources\ServiceManagement\Files\dSMSTest-changed.cscfg";
-	$certFile = "$TestOutputRoot\Resources\ServiceManagement\Files\example.pfx";
+	
+	# Create a temporary self-signed cert
+	$cert = New-SelfSignedCertificate -DnsName "example.local" -CertStoreLocation "Cert:\CurrentUser\My";
+	$certPath = "Cert:\CurrentUser\My\$($cert.Thumbprint)"
+	# Update the cscfg to use the new cert
+	(Get-Content $cscfg) | ForEach-Object {$_ -replace "\{\{PLACEHOLDER\}\}", $cert.Thumbprint} | Set-Content $cscfgChanged;
 
     try
     {
@@ -328,10 +333,10 @@ function Run-DSMSHostedServiceTest
 		$result = New-AzureService -ServiceName $svcName -Location $location -Label $svcName -Description $svcName;
 
 		# Upload the certificate
-		Add-AzureCertificate -ServiceName $svcName -CertToDeploy $certFile -Password "pass@word1*";
+		Add-AzureCertificate -ServiceName $svcName -CertToDeploy $cert;
 
         # Deploy to staging
-        $result = New-AzureDeployment -ServiceName $svcName -Package $cspkg -Configuration $cscfg -Label $svcName -Slot Staging;
+        $result = New-AzureDeployment -ServiceName $svcName -Package $cspkg -Configuration $cscfgChanged -Label $svcName -Slot Staging;
 
 		# Get Deployment
 		$deploy = Get-AzureDeployment -ServiceName $svcName -Slot Staging;
@@ -351,6 +356,10 @@ function Run-DSMSHostedServiceTest
 		if (Test-Path $cscfgChanged)
 		{
 			Remove-Item $cscfgChanged;
+		}
+		if (Test-Path $certPath)
+		{
+			Remove-Item $certPath
 		}
     }
 }
