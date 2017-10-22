@@ -12,24 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.DataLake.Analytics.Models;
-using System;
+using System.Collections;
+using System.Collections.Generic;
 
-namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
+namespace Microsoft.Azure.Commands.Profile.Models
 {
-    /// <summary>
-    ///    A wrapper for all ADLA supported data sources.
-    ///    This object is returned from a GET
-    /// </summary>
-    [Obsolete("This class will be deprecated in a future release.")]
-    public class PSStorageAccountInfoProperties
+    public class PSResourceGroup
     {
-        public string AccessKey { get; set; }
-        public string Suffix { get; set; }
-        public PSStorageAccountInfoProperties(string accessKey, string suffix)
-        {
-            AccessKey = accessKey;
-            Suffix = suffix;
-        }
+        public string ResourceGroupName { get; set; }
+
+        public string Location { get; set; }
+
+        public string ProvisioningState { get; set; }
+
+        public Hashtable Tags { get; set; }
+
+        public string ResourceId { get; set; }
     }
 }

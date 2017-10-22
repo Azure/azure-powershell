@@ -174,6 +174,18 @@
   <data name="DataCollectionEnabledWarning" xml:space="preserve">
     <value>Cmdlets will send data to Microsoft to help improve the customer experience</value>
   </data>
+  <data name="DefaultResourceGroupChangeWarning" xml:space="preserve">
+    <value>Changing default resource group to '{0}'</value>
+  </data>
+  <data name="DefaultResourceGroupKey" xml:space="preserve">
+    <value>Default Resource Group</value>
+  </data>
+  <data name="DefaultResourceGroupRemovalWarning" xml:space="preserve">
+    <value>Removing default resource group</value>
+  </data>
+  <data name="DefaultResourceGroupTarget" xml:space="preserve">
+    <value>Current context</value>
+  </data>
   <data name="DisableDataCollection" xml:space="preserve">
     <value>Turn off data collection for Azure PowerShell cmdlets</value>
   </data>
@@ -375,5 +387,17 @@
   <data name="AutosaveSettingFromSession" xml:space="preserve">
     <value>Autosave setting from startup session: '{0}'</value>
     <comment>{0} = CurrentUser | Process</comment>
+  </data>
+  <data name="RemoveDefaultsCaption" xml:space="preserve">
+    <value>Remove defaults?</value>
+  </data>
+  <data name="RemoveDefaultsMessage" xml:space="preserve">
+    <value>Remove all existing defaults in the current context?</value>
+  </data>
+  <data name="CreateResourceGroupCaption" xml:space="preserve">
+    <value>Create Resource Group?</value>
+  </data>
+  <data name="CreateResourceGroupMessage" xml:space="preserve">
+    <value>Create new resource group '{0}' and set as default?</value>
   </data>
 </root>
