@@ -231,9 +231,6 @@
     <None Include="Resources\ServiceManagement\Files\dSMSTest.cspkg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\ServiceManagement\Files\example.pfx">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="Resources\SqlIaaSExtension\SqlIaaSExtensionTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
