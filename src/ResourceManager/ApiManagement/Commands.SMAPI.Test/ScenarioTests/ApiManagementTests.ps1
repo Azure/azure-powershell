@@ -882,17 +882,19 @@ Param($resourceGroupName, $serviceName)
         $userLastName = getAssetName
         $userPassword = getAssetName
         $userNote = getAssetName
-        $userSate = "Active"
+        $userState = "Active"
+
+        $secureUserPassword = ConvertTo-SecureString -String $userPassword -AsPlainText -Force
 
         $user = New-AzureRmApiManagementUser -Context $context -UserId $userId -FirstName $userFirstName -LastName $userLastName `
-            -Password $userPassword -State $userSate -Note $userNote -Email $userEmail
+            -Password $secureUserPassword -State $userState -Note $userNote -Email $userEmail
 
         Assert-AreEqual $userId $user.UserId
         Assert-AreEqual $userEmail $user.Email
         Assert-AreEqual $userFirstName $user.FirstName
         Assert-AreEqual $userLastName $user.LastName
         Assert-AreEqual $userNote $user.Note
-        Assert-AreEqual $userSate $user.State
+        Assert-AreEqual $userState $user.State
 
         #update user
         $userEmail = "changed.contoso@microsoft.com"
@@ -900,17 +902,19 @@ Param($resourceGroupName, $serviceName)
         $userLastName = getAssetName
         $userPassword = getAssetName
         $userNote = getAssetName
-        $userSate = "Active"
+        $userState = "Active"
+
+        $secureUserPassword = ConvertTo-SecureString -String $userPassword -AsPlainText -Force
 
         $user = Set-AzureRmApiManagementUser -Context $context -UserId $userId -FirstName $userFirstName -LastName $userLastName `
-            -Password $userPassword -State $userSate -Note $userNote -PassThru -Email $userEmail
+            -Password $secureUserPassword -State $userState -Note $userNote -PassThru -Email $userEmail
 
         Assert-AreEqual $userId $user.UserId
         Assert-AreEqual $userEmail $user.Email
         Assert-AreEqual $userFirstName $user.FirstName
         Assert-AreEqual $userLastName $user.LastName
         Assert-AreEqual $userNote $user.Note
-        Assert-AreEqual $userSate $user.State
+        Assert-AreEqual $userState $user.State
 
         #generate SSO URL for the user
         $ssoUrl = Get-AzureRmApiManagementUserSsoUrl -Context $context -UserId $userId
@@ -2039,10 +2043,9 @@ Param($resourceGroupName, $serviceName)
     $backendId = getAssetName
     try
     {        
-		$title = getAssetName
-		$urlEndpoint = 'https://contoso.com/awesomeapi'
-		$resourceId = getAssetName
-		$description = getAssetName
+        $title = getAssetName
+        $urlEndpoint = 'https://contoso.com/awesomeapi'
+        $description = getAssetName
 		$skipCertificateChainValidation = $true
 
 		$credential = New-AzureRmApiManagementBackendCredential -AuthorizationHeaderScheme basic -AuthorizationHeaderParameter opensesame -Query @{"sv" = @('xx', 'bb'); "sr" = @('cc')} -Header @{"x-my-1" = @('val1', 'val2')}
@@ -2076,7 +2079,7 @@ Param($resourceGroupName, $serviceName)
 		Assert-NotNull $backends
 		Assert-AreEqual 1 $backends.Count
 		
-		# get a specific logger
+		# get a specific backend
 		$backend = $null
 		$backend = Get-AzureRmApiManagementBackend -Context $context -BackendId $backendId
 
@@ -2091,7 +2094,29 @@ Param($resourceGroupName, $serviceName)
 		Assert-AreEqual 2 $backend.Credentials.Query.Count
 		Assert-AreEqual 1 $backend.Credentials.Header.Count
 		Assert-NotNull $backend.Properties
-		Assert-AreEqual 1 $backend.Properties.Count             
+        Assert-AreEqual 1 $backend.Properties.Count
+        
+        #backend with proxy
+        $secpassword = ConvertTo-SecureString "PlainTextPassword" -AsPlainText -Force
+        $proxyCreds = New-Object System.Management.Automation.PSCredential ("foo", $secpassword)
+        $credential = New-AzureRmApiManagementBackendProxy -Url "http://12.168.1.1:8080" -ProxyCredential $proxyCreds
+
+        $backend = Set-AzureRmApiManagementBackend -Context $context -BackendId $backendId -Proxy $credential -PassThru
+        Assert-AreEqual $backendId $backend.BackendId
+		Assert-AreEqual $newBackendDescription $backend.Description
+		Assert-AreEqual $urlEndpoint $backend.Url
+		Assert-AreEqual http $backend.Protocol
+		Assert-NotNull $backend.Credentials
+		Assert-NotNull $backend.Credentials.Authorization
+		Assert-NotNull $backend.Credentials.Query
+		Assert-NotNull $backend.Credentials.Header
+		Assert-AreEqual 2 $backend.Credentials.Query.Count
+		Assert-AreEqual 1 $backend.Credentials.Header.Count
+		Assert-NotNull $backend.Properties
+        Assert-AreEqual 1 $backend.Properties.Count
+        Assert-NotNull $backend.Proxy
+        Assert-AreEqual $backend.Proxy.Url "http://12.168.1.1:8080"
+        Assert-NotNull $backend.Proxy.ProxyCredential
     }
     finally
     {
