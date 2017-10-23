@@ -27,7 +27,7 @@ Create a new application insights resource
 PS C:\>  New-AzureRmApplicationInsights -Kind java -ResourceGroupName testgroup -Name test
 ```
 
-Add a new application insights resoruce named as "test" in resource group "testgroup" with kind "java".
+Add a new application insights resource named as "test" in resource group "testgroup" with kind "java".
 
 ## PARAMETERS
 

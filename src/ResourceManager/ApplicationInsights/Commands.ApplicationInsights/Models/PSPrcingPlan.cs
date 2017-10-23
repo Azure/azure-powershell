@@ -17,19 +17,19 @@ using System.Linq;
 
 namespace Microsoft.Azure.Commands.ApplicationInsights.Models
 {
-    public class PSPricingTier : PSDailyCap
+    public class PSPricingPlan : PSDailyCap
     {
         public string CurrentTier;
 
 
-        public static PSPricingTier Create(ApplicationInsightsComponentBillingFeatures billing)
+        public static PSPricingPlan Create(ApplicationInsightsComponentBillingFeatures billing)
         {
-            var result = new PSPricingTier(billing);
+            var result = new PSPricingPlan(billing);
 
             return result;
         }
 
-        public PSPricingTier(ApplicationInsightsComponentBillingFeatures billing)
+        public PSPricingPlan(ApplicationInsightsComponentBillingFeatures billing)
             : base(billing)
         {
             if (billing.CurrentBillingFeatures.Any(f => f.Contains("Enterprise")))
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.Models
             }
             else
             {
-                this.CurrentTier = "Basic";
+                this.CurrentTier = billing.CurrentBillingFeatures.FirstOrDefault();
             }
         }
     }

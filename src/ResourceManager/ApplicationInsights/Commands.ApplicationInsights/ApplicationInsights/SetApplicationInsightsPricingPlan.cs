@@ -19,7 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ApplicationInsights
 {
-    [Cmdlet(VerbsCommon.Set, ApplicationInsightsPricingPlanNounStr), OutputType(typeof(PSPricingTier))]
+    [Cmdlet(VerbsCommon.Set, ApplicationInsightsPricingPlanNounStr), OutputType(typeof(PSPricingPlan))]
     public class SetApplicationInsightsPricingPlanCommand : ApplicationInsightsBaseCmdlet
     {
         [Parameter(

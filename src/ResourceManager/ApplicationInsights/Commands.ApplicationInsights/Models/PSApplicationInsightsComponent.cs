@@ -15,6 +15,7 @@
 using Microsoft.Azure.Management.ApplicationInsights.Management.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.ApplicationInsights.Models
 {
@@ -103,6 +104,42 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.Models
         public PSApplicationInsightsComponentTableView(ApplicationInsightsComponent component) 
             : base(component)
         {
+        }
+    }
+
+    public class PSApplicationInsightsComponentWithPricingPlan : PSApplicationInsightsComponent
+    {
+        public string CurrentTier;
+
+        public double? Cap { get; set; }
+
+        public int? ResetTime { get; set; }
+
+        public bool StopSendNotificationWhenHitCap { get; set; }
+
+        public string CapExpirationTime { get; }
+
+        public bool IsCapped { get; }
+
+        public PSApplicationInsightsComponentWithPricingPlan(ApplicationInsightsComponent component, 
+                                                             ApplicationInsightsComponentBillingFeatures billing, 
+                                                             ApplicationInsightsComponentQuotaStatus status) 
+            : base(component)
+        {
+            if (billing.CurrentBillingFeatures.Any(f => f.Contains("Enterprise")))
+            {
+                this.CurrentTier = "Application Insights Enterprise";
+            }
+            else
+            {
+                this.CurrentTier = billing.CurrentBillingFeatures.FirstOrDefault();
+            }
+
+            this.Cap = billing.DataVolumeCap.Cap;
+            this.ResetTime = billing.DataVolumeCap.ResetTime;
+            this.StopSendNotificationWhenHitCap = billing.DataVolumeCap.StopSendNotificationWhenHitCap.Value;
+            this.CapExpirationTime = status.ExpirationTime;
+            this.IsCapped = status.ShouldBeThrottled != null ? status.ShouldBeThrottled.Value : false;
         }
     }
 }

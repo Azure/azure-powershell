@@ -30,7 +30,7 @@ function Test-GetApplicationInsightsPricingPlan
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
         New-AzureRmApplicationInsights -ResourceGroupName $rgname -Name $appName -Location $loc -Kind $kind;
 		
-        $pricingPlan = Get-AzureRmApplicationInsightsPricingPlan -ResourceGroupName $rgname -Name $appName;
+        $pricingPlan = Get-AzureRmApplicationInsights -ResourceGroupName $rgname -Name $appName -IncludePricingPlan;
 
 		Assert-NotNull $pricingPlan
         Assert-AreEqual "Basic" $pricingPlan.CurrentTier
@@ -63,7 +63,7 @@ function Test-SetApplicationInsightsPricingPlan
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
         New-AzureRmApplicationInsights -ResourceGroupName $rgname -Name $appName -Location $loc -Kind $kind;
 		
-        $pricingPlan = Get-AzureRmApplicationInsightsPricingPlan -ResourceGroupName $rgname -Name $appName;
+        $pricingPlan = Get-AzureRmApplicationInsights -ResourceGroupName $rgname -Name $appName -IncludePricingPlan;
 
 		Assert-NotNull $pricingPlan
         Assert-AreEqual "Basic" $pricingPlan.CurrentTier
@@ -73,7 +73,7 @@ function Test-SetApplicationInsightsPricingPlan
 		$stopSendEmail = $True;
         Set-AzureRmApplicationInsightsPricingPlan -ResourceGroupName $rgname -Name $appName -PricingPlan $planName -DailyCapGB $dailyCapGB -DisableNotificationWhenHitCap;
 
-		$pricingPlan2 = Get-AzureRmApplicationInsightsPricingPlan -ResourceGroupName $rgname -Name $appName;
+		$pricingPlan2 = Get-AzureRmApplicationInsights -ResourceGroupName $rgname -Name $appName -IncludePricingPlan;
 		Assert-NotNull $pricingPlan2
         Assert-AreEqual $planName $pricingPlan2.CurrentTier
 		Assert-AreEqual $dailyCapGB $pricingPlan2.Cap
@@ -106,10 +106,10 @@ function Test-GetApplicationInsightsDailyCap
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
         New-AzureRmApplicationInsights -ResourceGroupName $rgname -Name $appName -Location $loc -Kind $kind;
 		
-        $dailyCap = Get-AzureRmApplicationInsightsDailyCap -ResourceGroupName $rgname -Name $appName;
+        $dailyCap = Get-AzureRmApplicationInsights -ResourceGroupName $rgname -Name $appName -IncludePricingPlan;
 
 		Assert-NotNull $dailyCap
-        Assert-AreEqual 500 $dailyCap.Cap
+        Assert-AreEqual 100 $dailyCap.Cap
 		Assert-AreEqual $False $dailyCap.StopSendNotificationWhenHitCap
         
         Remove-AzureRmApplicationInsights -ResourceGroupName $rgname -Name $appName;
@@ -144,7 +144,7 @@ function Test-SetApplicationInsightsDailyCap
 		$stopSendEmail = $True;
         Set-AzureRmApplicationInsightsDailyCap -ResourceGroupName $rgname -Name $appName -DailyCapGB $dailyCapGB -DisableNotificationWhenHitCap;
 
-		$dailyCapInfo = Get-AzureRmApplicationInsightsDailyCap -ResourceGroupName $rgname -Name $appName;
+		$dailyCapInfo = Get-AzureRmApplicationInsights -ResourceGroupName $rgname -Name $appName -IncludePricingPlan;
 		Assert-NotNull $dailyCapInfo        
 		Assert-AreEqual $dailyCapGB $dailyCapInfo.Cap
 		Assert-AreEqual $stopSendEmail $dailyCapInfo.StopSendNotificationWhenHitCap
@@ -176,7 +176,7 @@ function Test-GetApplicationInsightsDailyCapStatus
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
         New-AzureRmApplicationInsights -ResourceGroupName $rgname -Name $appName -Location $loc -Kind $kind;
 		
-        $dailyCapStatus = Get-AzureRmApplicationInsightsDailyCapStatus -ResourceGroupName $rgname -Name $appName;
+        $dailyCapStatus = Get-AzureRmApplicationInsights -ResourceGroupName $rgname -Name $appName -IncludeDailyCapStatus;
 
 		Assert-NotNull $dailyCapStatus
 		Assert-AreEqual $False $dailyCapStatus.IsCapped
