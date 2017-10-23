@@ -1,3 +1,17 @@
+# ----------------------------------------------------------------------------------
+#
+# Copyright Microsoft Corporation
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+# ----------------------------------------------------------------------------------
+
 if (!$azureConfig) {
     . "$PSScriptRoot\AzureConfig.ps1"
 }
@@ -25,10 +39,10 @@ function UploadPublishAndStartRunbook (
 
     $subscriptionName, $automationAccountName, $resourceGroupName = DefaultIfNotSpecifiedAA $subscriptionName $automationAccountName $resourceGroupName
 
-    Write-Host "Uploading '$bookName' runbook..." -ForegroundColor Green
+    Write-Verbose "Uploading '$bookName' runbook..."
     $null = Import-AzureRmAutomationRunbook -Path $path -Name $bookName -type PowerShell -AutomationAccountName $automationAccountName -ResourceGroupName $resourceGroupName -Force -ErrorAction Stop
     
-    Write-Host "Publishing '$bookName' runbook..." -ForegroundColor Green
+    Write-Verbose "Publishing '$bookName' runbook..."
     $null = Publish-AzureRmAutomationRunbook -Name $bookName -AutomationAccountName $automationAccountName -ResourceGroupName $resourceGroupName -ErrorAction Stop
     
     # to save result streams in Azure Storage Account Container
@@ -42,7 +56,7 @@ function UploadPublishAndStartRunbook (
         reportFolderPrefix      = $bookName
     }
 
-    Write-Host "Starting '$bookName' runbook..." -ForegroundColor Green
+    Write-Verbose "Starting '$bookName' runbook..."
     $null = Start-AzureRmAutomationRunbook -Name $bookName -Parameters $runbookParams -AutomationAccountName $automationAccountName -ResourceGroupName $resourceGroupName -ErrorAction Stop
 }
 
@@ -73,7 +87,7 @@ function UploadPublishAndStartRunbooks ([string] $path ) {
 .SYNOPSIS
 Removes all runbooks from Automation Account that match pattern
 .PARAMETER like
-Pattern
+Pattern to use with -like operator to remove runbooks. Sample pattern for generated runbooks is 'Live*Tests'. 
 .PARAMETER subscriptionName
 Automation Account subscription name
 .PARAMETER automationAccountName
@@ -89,7 +103,7 @@ function RemoveRunbookFromAutomationAccount (
 
     $subscriptionName, $automationAccountName, $resourceGroupName = DefaultIfNotSpecifiedAA $subscriptionName $automationAccountName $resourceGroupName
 
-    Write-Host "Removing runbooks with name like '$like' from Automation Account..." -ForegroundColor Green
+    Write-Verbose "Removing runbooks with name like '$like' from Automation Account..."
 
     $accountRunbooks = Get-AzureRmAutomationRunbook -AutomationAccountName $automationAccountName -ResourceGroupName $resourceGroupName 
     $accountRunbooks | Where-Object {
@@ -98,5 +112,5 @@ function RemoveRunbookFromAutomationAccount (
         Remove-AzureRmAutomationRunbook -AutomationAccountName $automationAccountName -ResourceGroupName $resourceGroupName -Name $_.Name -Force
     }    
     
-    Write-Host "Done." -ForegroundColor Green
+    Write-Verbose "Done."
 }
