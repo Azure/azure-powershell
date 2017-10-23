@@ -456,7 +456,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             string apiId,
             PsApiManagementApiFormat specificationFormat,
             string specificationPath,
-            string urlSuffix,
+            string apiPath,
             string wsdlServiceName,
             string wsdlEndpointName,
             PsApiManagementApiType? apiType)
@@ -467,7 +467,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
 
             using (var fileStream = File.OpenRead(specificationPath))
             {
-                Client.Apis.Import(context.ResourceGroupName, context.ServiceName, apiId, contentType, fileStream, urlSuffix, wsdlServiceName, wsdlEndpointName, apiTypeValue);
+                Client.Apis.Import(context.ResourceGroupName, context.ServiceName, apiId, contentType, fileStream, apiPath, wsdlServiceName, wsdlEndpointName, apiTypeValue);
             }
         }
 
