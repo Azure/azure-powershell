@@ -140,8 +140,6 @@
   <ItemGroup>
     <Compile Include="ApplicationInsights\GetApplicationInsightsApiKey.cs" />
     <Compile Include="ApplicationInsights\GetApplicationInsightsContinuousExport.cs" />
-    <Compile Include="ApplicationInsights\GetApplicationInsightsDailyCapStatus.cs" />
-    <Compile Include="ApplicationInsights\GetApplicationInsightsDailyCap.cs" />
     <Compile Include="ApplicationInsights\NewApplicationInsightsApiKey.cs" />
     <Compile Include="ApplicationInsights\NewApplicationInsightsContinuousExport.cs" />
     <Compile Include="ApplicationInsights\RemoveApplicationInsightsApiKey.cs" />
@@ -149,14 +147,13 @@
     <Compile Include="ApplicationInsights\SetApplicationInsightsDailyCap.cs" />
     <Compile Include="ApplicationInsights\SetApplicationInsightsPricingPlan.cs" />
     <Compile Include="ApplicationInsights\SetApplicationInsightsContinuousExport.cs" />
-    <Compile Include="ApplicationInsights\GetApplicationInsightsPricingPlan.cs" />
     <Compile Include="ApplicationInsights\NewApplicationInsights.cs" />
     <Compile Include="Helper\Utilities.cs" />
     <Compile Include="Models\PSApplicationInsightsComponent.cs" />
     <Compile Include="Models\PSApiKey.cs" />
     <Compile Include="Models\PSDailyCapStatus.cs" />
     <Compile Include="Models\PSDailyCap.cs" />
-    <Compile Include="Models\PSPrcingTier.cs" />
+    <Compile Include="Models\PSPrcingPlan.cs" />
     <Compile Include="Models\PSExportConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ApplicationInsights\GetApplicationInsights.cs" />
@@ -169,7 +166,6 @@
       <Link>AzureRM.ApplicationInsights.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="app.config" />
     <None Include="Microsoft.Azure.Commands.ApplicationInsights.dll-Help.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

@@ -55,6 +55,19 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
         [ValidateNotNull]
         public ResourceIdentifier ResourceId { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = ComponentNameParameterSet,
+            HelpMessage = "If specified, it will get back pricing plan of the application insights component.")]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = ResourceIdParameterSet,
+            HelpMessage = "If specified, it will get back pricing plan of the application insights component.")]
+        [Alias("IncludeDailyCap", "IncludeDailyCapStatus")]
+        public SwitchParameter IncludePricingPlan { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -86,8 +99,30 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
                                         this.Name)
                                     .GetAwaiter()
                                     .GetResult();
+                if (IncludePricingPlan)
+                {
+                    var pricingPlanResponse = this.AppInsightsManagementClient
+                                                    .ComponentCurrentBillingFeatures
+                                                    .GetWithHttpMessagesAsync(
+                                                        this.ResourceGroupName,
+                                                        this.Name)
+                                                    .GetAwaiter()
+                                                    .GetResult();
 
-                WriteComponent(response.Body);
+                    var dailyCapStatusResponse = this.AppInsightsManagementClient
+                                                    .ComponentQuotaStatus
+                                                    .GetWithHttpMessagesAsync(
+                                                        this.ResourceGroupName,
+                                                        this.Name)
+                                                    .GetAwaiter()
+                                                    .GetResult();
+
+                    WriteComponentWithPricingPlan(response.Body, pricingPlanResponse.Body, dailyCapStatusResponse.Body);
+                }
+                else
+                {
+                    WriteComponent(response.Body);
+                }
             }
         }
     }

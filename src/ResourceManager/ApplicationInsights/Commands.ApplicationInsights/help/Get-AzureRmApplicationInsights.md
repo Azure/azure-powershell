@@ -20,14 +20,14 @@ Get-AzureRmApplicationInsights [[-ResourceGroupName] <String>] [-DefaultProfile 
 
 ### ComponentNameParameterSet
 ```
-Get-AzureRmApplicationInsights [-ResourceGroupName] <String> [-Name] <String>
+Get-AzureRmApplicationInsights [-ResourceGroupName] <String> [-Name] <String> [-IncludePricingPlan]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Get-AzureRmApplicationInsights [-ResourceId] <ResourceIdentifier> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzureRmApplicationInsights [-ResourceId] <ResourceIdentifier> [-IncludePricingPlan]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,8 +40,14 @@ Get application insights resources in a resource group or specific resource
 PS C:\> Get-AzureRmApplicationInsights -ResourceGroupName "testgroup" -Name "test"
 ```
 
-Get application insights resoruce named "test" in resoruce group "testgroup"
+Get application insights resource named "test" in resoruce group "testgroup"
 
+### Example 2
+```
+PS C:\> Get-AzureRmApplicationInsights -ResourceGroupName "testgroup" -Name "test" -IncludePricingPlan
+```
+
+Get application insights resource and include pricing plan information for resource named "test" in resoruce group "testgroup"
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -57,6 +63,19 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IncludePricingPlan
+If specified, it will get back pricing plan of the application insights component.```yaml
+Type: SwitchParameter
+Parameter Sets: ComponentNameParameterSet, ResourceIdParameterSet
+Aliases: IncludeDailyCap, IncludeDailyCapStatus
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

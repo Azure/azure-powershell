@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
         {
             if (billing != null)
             {
-                WriteObject(PSPricingTier.Create(billing));
+                WriteObject(PSPricingPlan.Create(billing));
             }
         }
 
@@ -141,6 +141,16 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
             if (component != null)
             {
                 WriteObject(PSApplicationInsightsComponent.Create(component));
+            }
+        }
+
+        protected void WriteComponentWithPricingPlan(ApplicationInsightsComponent component, 
+                                                     ApplicationInsightsComponentBillingFeatures billing,
+                                                     ApplicationInsightsComponentQuotaStatus status)
+        {
+            if (component != null && billing != null)
+            {
+                WriteObject(new PSApplicationInsightsComponentWithPricingPlan(component, billing, status));
             }
         }
 
