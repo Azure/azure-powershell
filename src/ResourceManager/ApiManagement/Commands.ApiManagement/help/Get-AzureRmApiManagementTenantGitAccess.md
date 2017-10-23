@@ -13,7 +13,8 @@ Gets the Git access configuration for a tenant.
 ## SYNTAX
 
 ```
-Get-AzureRmApiManagementTenantGitAccess -Context <PsApiManagementContext> [<CommonParameters>]
+Get-AzureRmApiManagementTenantGitAccess -Context <PsApiManagementContext>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,7 +24,7 @@ The **Get-AzureRmApiManagementTenantGitAccess** cmdlet gets the Git access confi
 
 ### Example 1: Get tenant access configuration
 ```
-PS C:\>Get-AzureRmApiManagementTenantGitAccess -Context $ApimContext
+PS C:\>Get-AzureRmApiManagementTenantGitAccess -Context $apimContext 
 ```
 
 This command gets the Git access configuration for the specified context.
@@ -42,6 +43,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+ 
+ ```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

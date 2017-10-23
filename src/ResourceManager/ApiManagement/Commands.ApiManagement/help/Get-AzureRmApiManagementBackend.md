@@ -13,12 +13,14 @@ Get the details of the Backend.
 
 ### Get all backends (Default)
 ```
-Get-AzureRmApiManagementBackend -Context <PsApiManagementContext> [<CommonParameters>]
+Get-AzureRmApiManagementBackend -Context <PsApiManagementContext> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### Get by backend ID
 ```
-Get-AzureRmApiManagementBackend -Context <PsApiManagementContext> -BackendId <String> [<CommonParameters>]
+Get-AzureRmApiManagementBackend -Context <PsApiManagementContext> -BackendId <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,27 +28,19 @@ Get the details of the Backend.
 
 ## EXAMPLES
 
-### --------------------------  Example 1  --------------------------
-@{paragraph=PS C:\\\>}
-
-
-
-
+### Example 1: Get all Backends
 
 ```
-Get-AzureRmApiManagementBackend -Context $apimContext
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Get-AzureRmApiManagementBackend -Context $apimContext 
 ```
 
 Gets a list of all the Backends configured in the Api Management service.
 
-### --------------------------  Example 2  --------------------------
-@{paragraph=PS C:\\\>}
-
-
-
-
+### Example 2: Get the Backend specified by the Identifier 123
 
 ```
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 Get-AzureRmApiManagementBackend -Context $apimContext -backendId 123
 ```
 
@@ -87,6 +81,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+ 
+ ```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -94,9 +103,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### IList<Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementBackend>
+### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementBackend
+The details of the Backend configured in API Management service.
 
-### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementLogger.PsApiManagementBackend
+### IList<Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementBackend>
+The list of Backend configured in API Management service.
 
 ## NOTES
 
