@@ -1,4 +1,18 @@
-﻿<#
+﻿# ----------------------------------------------------------------------------------
+#
+# Copyright Microsoft Corporation
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+# ----------------------------------------------------------------------------------
+
+<#
 .SYNOPSIS
 Walks trought all test function headers and collects those 
 that has the 'AutomationTest' tag in the dot Description section
@@ -8,7 +22,8 @@ Path to the directory where test sctipts are located
 ListTestFunctions "e:\git\azure-powershell\src\ResourceManager\Compute\Commands.Compute.Test\ScenarioTests"
 #>
 function ListTestFunctions(
-    [string] $path) {
+     [string] $path
+    ,[string] $tag = 'AzureAutomationTest') {
 
     $lines = [System.Collections.ArrayList]@()
     
@@ -27,7 +42,7 @@ function ListTestFunctions(
             ($_.Name.StartsWith("Test-", "CurrentCultureIgnoreCase")) 
         } | Where-Object {
             $desc = (Get-Help $_).Description
-            $desc -and ($desc[0].Text -contains 'AzureAutomationTest')
+            $desc -and ($desc[0].Text -contains $tag)
         } 
         
         if ($testFunctions.Count -gt 0) {

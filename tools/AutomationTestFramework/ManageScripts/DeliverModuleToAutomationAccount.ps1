@@ -1,4 +1,18 @@
-﻿if (!$azureConfig) {
+﻿# ----------------------------------------------------------------------------------
+#
+# Copyright Microsoft Corporation
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+# ----------------------------------------------------------------------------------
+
+if (!$azureConfig) {
     . "$PSScriptRoot\AzureConfig.ps1"
 }
 
@@ -29,17 +43,17 @@ function UploadModuleToContainer (
     ,[string] $containerName) {
 
     $subscriptionName, $resourceGroupName, $storageAccountName,  $containerName = DefaultIfNotSpecifiedSA $subscriptionName $resourceGroupName $storageAccountName  $containerName
-    Write-Host "Getting Azure storage account key..." -ForegroundColor Green
+    Write-Verbose "Getting Azure storage account key..."
 
     $storageAccountKey = Get-AzureRmStorageAccountKey -StorageAccountName $storageAccountName -ResourceGroupName $resourceGroupName -Verbose -ErrorAction Stop
     $key1 = $storageAccountKey.Value[0];
-    Write-Host "Creating Azure storage account context..." -ForegroundColor Green
+    Write-Verbose "Creating Azure storage account context..."
     $ctx = New-AzureStorageContext $storageAccountName -StorageAccountKey $key1 -ErrorAction Stop
-    Write-Host "Uploading module to Azure storage container..." -ForegroundColor Green
+    Write-Verbose "Uploading module to Azure storage container..."
     $blobName = "$moduleName.zip"
     $null = Set-AzureStorageBlobContent -Container $containerName  -File "$modulePath\$blobName" -Blob $blobName -Context $ctx -Force -ErrorAction Stop
     $now = Get-Date;
-    Write-Host "Creating Azure storage blob SAS URL..." -ForegroundColor Green
+    Write-Verbose "Creating Azure storage blob SAS URL..."
     $sasTokenURL = New-AzureStorageBlobSASToken -Container $containerName -Blob $blobName -Context $ctx -Permission rwd -StartTime $now.AddHours(-1) -ExpiryTime $now.AddHours(1) -FullUri -ErrorAction Stop
     return $sasTokenURL
 }
@@ -72,7 +86,7 @@ function UpdateMouduleToAutomationAccount (
     ,[string] $url ) {
     
     $subscriptionName, $automationAccountName, $resourceGroupName = DefaultIfNotSpecifiedAA $subscriptionName $automationAccountName $resourceGroupName
-    Write-Host "Adding module '$moduleName' to Azure Automation account..." -ForegroundColor Green
+    Write-Verbose "Adding module '$moduleName' to Azure Automation account..."
     $null = New-AzureRmAutomationModule -AutomationAccountName $automationAccountName -ResourceGroupName $resourceGroupName -Name $moduleName -ContentLink $url -ErrorAction Stop
 }
 
@@ -103,7 +117,7 @@ function CheckModuleProvisionState (
 
     $azureContext = (Get-AzureRmContext)
     if ($azureContext.Subscription.Name -ne $subscriptionName) {
-        Write-Host "Switching subscription to '$subscriptionName'"
+        Write-Verbose "Switching subscription to '$subscriptionName'"
         $null = Get-AzureRmSubscription –SubscriptionName $subscriptionName -ErrorAction Stop | Select-AzureRmSubscription -ErrorAction Stop
     }
     
@@ -116,14 +130,14 @@ function CheckModuleProvisionState (
         $statusMap.Add($_, $null)
     }
 
-    Write-Host "Checking modules provision state, number of requests is $attempsQnty..." -ForegroundColor Green
+    Write-Verbose "Checking modules provision state, number of requests is $attempsQnty..."
     while ($counter -lt $attempsQnty) {
         $inProgressModules = $statusMap.GetEnumerator() | Where-Object {$_.Value -eq $null} | ForEach-Object { $_.Key }
         $inProgressModules | ForEach-Object {
             $moduleName = $_
             $module = Get-AzureRmAutomationModule -AutomationAccountName $automationAccountName -ResourceGroupName $resourceGroupName -Name $moduleName -ErrorAction Stop
             $provisioningState = $module.ProvisioningState
-            Write-Host "`t$moduleName provision state is ""$provisioningState"""
+            Write-Verbose "`t$moduleName provision state is ""$provisioningState"""
             
             $progressActivity = "Checking module '$moduleName' provision state"
             $percentComplete =  $counter/$attempsQnty*100
@@ -138,7 +152,7 @@ function CheckModuleProvisionState (
         
         $inProgressModules = $statusMap.GetEnumerator() | Where-Object {$_.Value -eq $null}
         if ($inProgressModules.Count -gt 0) {
-            Write-Host "`t#$counter waiting $sleepSec sec..."
+            Write-Verbose "`t#$counter waiting $sleepSec sec..."
             Start-Sleep -Seconds $sleepSec 
             $counter++
         } else {
@@ -148,10 +162,10 @@ function CheckModuleProvisionState (
     
     if ($counter -eq $attempsQnty) {
         $totalCheckTime =  $attempsQnty*$sleepSec
-        Write-Host "Looks like the provision is not finished after $totalCheckTime seconds"   
+        Write-Verbose "Looks like the provision is not finished after $totalCheckTime seconds"   
     }
     
-    #Write-Host "Module added, final provision state is ""$provisioningState"" " -ForegroundColor Green 
+    #Write-Verbose "Module added, final provision state is ""$provisioningState"" "
     $statusMap
 }
 
