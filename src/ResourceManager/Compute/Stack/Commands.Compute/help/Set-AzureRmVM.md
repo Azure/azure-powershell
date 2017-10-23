@@ -10,6 +10,8 @@ schema: 2.0.0
 ## SYNOPSIS
 Marks a virtual machine as generalized.
 
+The genenralization process removes all your personal account information, among other things, and prepares the machine to be used as an image.
+
 ## SYNTAX
 
 ### GeneralizeResourceGroupNameParameterSetName (Default)
