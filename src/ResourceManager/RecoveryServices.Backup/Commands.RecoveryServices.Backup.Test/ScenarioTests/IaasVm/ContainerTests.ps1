@@ -17,7 +17,7 @@
 Test Recovery Services Backup Vault
 #>
 
-function Test-GetContainerScenario
+function Test-AzureVMGetContainers
 {
 	$location = Get-ResourceGroupLocation
 	$resourceGroupName = Create-ResourceGroup $location

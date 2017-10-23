@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureVMGetJobs()
         {
             TestController.NewInstance.RunPsTest(
-                PsBackupProviderTypes.IaasVm, "Test-GetJobsScenario");
+                PsBackupProviderTypes.IaasVm, "Test-AzureVMGetJobs");
         }
 
         [Fact]
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureVMGetJobsTimeFilter()
         {
             TestController.NewInstance.RunPsTest(
-                PsBackupProviderTypes.IaasVm, "Test-GetJobsTimeFilter");
+                PsBackupProviderTypes.IaasVm, "Test-AzureVMGetJobsTimeFilter");
         }
 
         [Fact]
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureVMWaitJob()
         {
             TestController.NewInstance.RunPsTest(
-                PsBackupProviderTypes.IaasVm, "Test-WaitJobScenario");
+                PsBackupProviderTypes.IaasVm, "Test-AzureVMWaitJob");
         }
 
         [Fact]
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureVMCancelJob()
         {
             TestController.NewInstance.RunPsTest(
-                PsBackupProviderTypes.IaasVm, "Test-CancelJobScenario");
+                PsBackupProviderTypes.IaasVm, "Test-AzureVMCancelJob");
         }
     }
 }

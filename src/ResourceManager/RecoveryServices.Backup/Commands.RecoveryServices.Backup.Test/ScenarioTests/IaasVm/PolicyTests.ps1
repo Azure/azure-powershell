@@ -16,7 +16,7 @@ $resourceGroupName = "RecoveryServicesBackupTestRg";
 $resourceName = "PsTestRsVault";
 $policyName = "PsTestPolicy";
 
-function Test-PolicyScenario
+function Test-AzureVMPolicy
 {
 	$location = Get-ResourceGroupLocation
 	$resourceGroupName = Create-ResourceGroup $location

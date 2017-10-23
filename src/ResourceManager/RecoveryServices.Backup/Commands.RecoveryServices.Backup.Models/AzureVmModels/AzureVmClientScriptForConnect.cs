@@ -17,26 +17,26 @@ using System;
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
     /// <summary>
-    /// Azure VM specific recovery point access info class.
+    /// Azure VM specific info of script to mount recovery point.
     /// </summary>
-    public class AzureVmRecoveryPointAccessInfo : RecoveryPointAccessInfo
+    public class AzureVmRPMountScriptInfo : RPMountScriptInfo
     {
         /// <summary>
-        /// OS Type of the client script 
+        /// OS Type of the mount script 
         /// </summary>
         public string OsType { get; set; }
 
         /// <summary>
-        /// Password required to run the script.
+        /// Password required to run the mount script.
         /// </summary>
         public string Password { get; set; }
 
         /// <summary>
-        /// Filename of the downloaded script
+        /// Filename of the downloaded mount script
         /// </summary>
         public string Filename { get; set; }
 
-        public AzureVmRecoveryPointAccessInfo(string osType, string fileName, string password)
+        public AzureVmRPMountScriptInfo(string osType, string fileName, string password)
         {
             this.OsType = osType;
             this.Filename = fileName;
