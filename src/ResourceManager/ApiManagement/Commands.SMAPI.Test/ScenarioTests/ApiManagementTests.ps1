@@ -916,6 +916,55 @@ Param($resourceGroupName, $serviceName)
         Assert-AreEqual $userNote $user.Note
         Assert-AreEqual $userState $user.State
 
+        #find user by email
+        $user = Get-AzureRmApiManagementUser -Context $context -Email $userEmail
+
+        Assert-AreEqual $userId $user.UserId
+        Assert-AreEqual $userEmail $user.Email
+        Assert-AreEqual $userFirstName $user.FirstName
+
+        #find user by FirstName
+        $user = Get-AzureRmApiManagementUser -Context $context -FirstName $userFirstName
+
+        Assert-AreEqual $userId $user.UserId
+        Assert-AreEqual $userEmail $user.Email
+        Assert-AreEqual $userFirstName $user.FirstName
+
+        #find user by LastName
+        $user = Get-AzureRmApiManagementUser -Context $context -LastName $userLastName
+
+        Assert-AreEqual $userId $user.UserId
+        Assert-AreEqual $userEmail $user.Email
+        Assert-AreEqual $userLastName $user.LastName
+
+        # update State to Blocked
+        $userState = "Blocked"
+        $user = Set-AzureRmApiManagementUser -Context $context -UserId $userId -State $userState -PassThru
+        Assert-AreEqual $userId $user.UserId
+        Assert-AreEqual $userEmail $user.Email
+        Assert-AreEqual $userFirstName $user.FirstName
+        Assert-AreEqual $userLastName $user.LastName
+        Assert-AreEqual $userNote $user.Note
+        Assert-AreEqual $userState $user.State
+
+        #find user by State
+        $user = Get-AzureRmApiManagementUser -Context $context -State $userState
+
+        Assert-AreEqual $userId $user.UserId
+        Assert-AreEqual $userEmail $user.Email
+        Assert-AreEqual $userLastName $user.LastName
+        Assert-AreEqual $userState $user.State
+        
+        # update State to Active
+        $userState = "Active"
+        $user = Set-AzureRmApiManagementUser -Context $context -UserId $userId -State $userState -PassThru
+        Assert-AreEqual $userId $user.UserId
+        Assert-AreEqual $userEmail $user.Email
+        Assert-AreEqual $userFirstName $user.FirstName
+        Assert-AreEqual $userLastName $user.LastName
+        Assert-AreEqual $userNote $user.Note
+        Assert-AreEqual $userState $user.State
+
         #generate SSO URL for the user
         $ssoUrl = Get-AzureRmApiManagementUserSsoUrl -Context $context -UserId $userId
 

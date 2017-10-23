@@ -1051,7 +1051,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                 {
                     query.Filter += "&";
                 }
-                query.Filter = string.Format("lastName eq '{0}'", email);
+                query.Filter = string.Format("email eq '{0}'", email);
                 isFirstCondition = false;
             }
 
