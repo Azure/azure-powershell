@@ -12,7 +12,7 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-function Test-GetItemScenario
+function Test-AzureVMGetItems
 {
 	$location = Get-ResourceGroupLocation
 	$resourceGroupName = Create-ResourceGroup $location
@@ -97,7 +97,7 @@ function Test-GetItemScenario
 	}
 }
 
-function Test-EnableDisableProtectionScenario
+function Test-AzureVMProtection
 {
 	$location = Get-ResourceGroupLocation
 	$resourceGroupName = Create-ResourceGroup $location
@@ -137,7 +137,7 @@ function Test-EnableDisableProtectionScenario
 	}
 }
 
-function Test-GetAzureVMRecoveryPointsScenario
+function Test-AzureVMGetRPs
 {
 	$location = Get-ResourceGroupLocation
 	$resourceGroupName = Create-ResourceGroup $location
@@ -178,7 +178,7 @@ function Test-GetAzureVMRecoveryPointsScenario
 			"Start date\time should be less than current UTC date\time";
 
 		# 3. rangeStart.Kind != DateTimeKind.Utc
-		$backupStartTime2 = Get-QueryDate $((Get-Date).AddDays(-20)) "BackupStartTime2"
+		$backupStartTime2 = Get-QueryDateLocal $((Get-Date).AddDays(-20)) "BackupStartTime2"
         Assert-ThrowsContains { Get-AzureRmRecoveryServicesBackupRecoveryPoint `
 			-StartDate $backupStartTime2 -Item $item } `
 			"Please specify startdate and enddate in UTC format";
@@ -190,7 +190,7 @@ function Test-GetAzureVMRecoveryPointsScenario
 	}
 }
 
-function Test-RestoreAzureVMRItemScenario
+function Test-AzureVMFullRestore
 {
 	$location = Get-ResourceGroupLocation
 	$resourceGroupName = Create-ResourceGroup $location
@@ -221,7 +221,7 @@ function Test-RestoreAzureVMRItemScenario
 	}
 }
 
-function Test-InstantRestoreItemScenario
+function Test-AzureVMInstantRestore
 {
 	$location = Get-ResourceGroupLocation
 	$resourceGroupName = Create-ResourceGroup $location
@@ -237,13 +237,11 @@ function Test-InstantRestoreItemScenario
 
 		Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
 
-		# Mount recovery point
-		$accessInfo = Mount-AzureRmRecoveryServicesBackupRecoveryPoint -RecoveryPoint $rp
+		# Get mount script of recovery point
+		$mountScriptInfo = Get-AzureRmRSBRPMountScript -RecoveryPoint $rp
 
-		Assert-Exists $accessInfo.Filename "Mounting script not found."
-
-		# Dismount recovery point
-		Dismount-AzureRmRecoveryServicesBackupRecoveryPoint -RecoveryPoint $rp
+		# Disable the mount script of recovery point
+		Disable-AzureRmRSBRPMountScript -RecoveryPoint $rp
 	}
 	finally
 	{
@@ -252,7 +250,7 @@ function Test-InstantRestoreItemScenario
 	}
 }
 
-function Test-BackupItemScenario
+function Test-AzureVMBackup
 {
 	$location = Get-ResourceGroupLocation
 	$resourceGroupName = Create-ResourceGroup $location

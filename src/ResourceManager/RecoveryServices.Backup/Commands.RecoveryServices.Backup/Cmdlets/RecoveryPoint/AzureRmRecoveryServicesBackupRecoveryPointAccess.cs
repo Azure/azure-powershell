@@ -22,11 +22,11 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
     /// <summary>
-    /// Mount recovery point of an item for item level recovery.
+    /// Get script to mount recovery point of an item for item level recovery.
     /// </summary>
-    [Cmdlet(VerbsData.Mount, "AzureRmRecoveryServicesBackupRecoveryPoint",
-        SupportsShouldProcess = true), OutputType(typeof(AzureVmRecoveryPointAccessInfo))]
-    public class MountAzureRmRecoveryServicesBackupRecoveryPoint : RecoveryServicesBackupCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzureRmRSBRPMountScript",
+        SupportsShouldProcess = true), OutputType(typeof(AzureVmRPMountScriptInfo))]
+    public class GetAzureRmRSBRPMountScript : RecoveryServicesBackupCmdletBase
     {
         /// <summary>
         /// Recovery point of the item to be explored
@@ -36,6 +36,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [ValidateNotNullOrEmpty]
         public RecoveryPointBase RecoveryPoint { get; set; }
 
+        /// <summary>
+        /// Location where the mount script to access the given recovery point is to be downloaded.
+        /// </summary>
         [Parameter(
             Mandatory = false,
             ValueFromPipeline = false,
@@ -61,23 +64,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     RecoveryPoint.WorkloadType, RecoveryPoint.BackupManagementType);
                 var response = psBackupProvider.ProvisionItemLevelRecoveryAccess();
 
-                WriteDebug(string.Format("ILR Script download completed"));
+                WriteDebug(string.Format("Mount Script download completed"));
                 WriteInformation(string.Format(Resources.MountRecoveryPointInfoMessage, response.Password),
                     null);
                 WriteObject(response);
-            }, ShouldProcess(RecoveryPoint.ItemName, VerbsData.Mount));
+            }, ShouldProcess(RecoveryPoint.ItemName, VerbsCommon.Get));
         }
     }
 
     /// <summary>
-    /// Dismount to recovery point of an item for item level recovery.
+    /// Disable the mount script of recovery point of an item.
+    /// Files won't be mounted after running this cmdlet.
     /// </summary>
-    [Cmdlet(VerbsData.Dismount, "AzureRmRecoveryServicesBackupRecoveryPoint",
+    [Cmdlet(VerbsLifecycle.Disable, "AzureRmRSBRPMountScript",
         SupportsShouldProcess = true)]
-    public class DismountAzureRmRecoveryServicesBackupRecoveryPoint : RecoveryServicesBackupCmdletBase
+    public class DisableAzureRmRSBRPMountScript : RecoveryServicesBackupCmdletBase
     {
         /// <summary>
-        /// Recovery point of the item to be dismounted
+        /// Recovery point of the item. Access to the mounted files of this recovery point
+        /// will be disabled upon running this cmdlet.
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipeline = true, Position = 0,
             HelpMessage = ParamHelpMsgs.RestoreDisk.RecoveryPoint)]
@@ -85,9 +90,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         public RecoveryPointBase RecoveryPoint { get; set; }
 
         /// <summary>
-        /// Return the recovery point to be dismounted
+        /// Return the recovery point.
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Return the policy to be deleted.")]
+        [Parameter(Mandatory = false, HelpMessage = "Return the recovery point.")]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
@@ -112,8 +117,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     WriteObject(RecoveryPoint);
                 }
 
-                WriteDebug(string.Format("Dismount of recovery point"));
-            }, ShouldProcess(RecoveryPoint.ItemName, VerbsData.Dismount));
+                WriteDebug(string.Format("Disabled the mount script of recovery point"));
+            }, ShouldProcess(RecoveryPoint.ItemName, VerbsLifecycle.Disable));
         }
     }
 }

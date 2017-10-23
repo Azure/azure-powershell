@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureVMGetContainers()
         {
             TestController.NewInstance.RunPsTest(
-                PsBackupProviderTypes.IaasVm, "Test-GetContainerScenario");
+                PsBackupProviderTypes.IaasVm, "Test-AzureVMGetContainers");
         }
     }
 }

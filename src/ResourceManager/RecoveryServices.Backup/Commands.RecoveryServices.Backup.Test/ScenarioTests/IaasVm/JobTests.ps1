@@ -12,7 +12,7 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-function Test-GetJobsScenario
+function Test-AzureVMGetJobs
 {
 	$location = Get-ResourceGroupLocation
 	$resourceGroupName = Create-ResourceGroup $location
@@ -73,7 +73,7 @@ function Test-GetJobsScenario
 	}
 }
 
-function Test-GetJobsTimeFilter
+function Test-AzureVMGetJobsTimeFilter
 {
 	$location = Get-ResourceGroupLocation
 	$resourceGroupName = Create-ResourceGroup -Location $location
@@ -113,7 +113,7 @@ function Test-GetJobsTimeFilter
 			"To filter should not be less than From filter";
 		
 		# 2. rangeStart.Kind != DateTimeKind.Utc
-		$startTime2 = Get-QueryDate $((Get-Date).AddDays(-20)) "StartTime2"
+		$startTime2 = Get-QueryDateLocal $((Get-Date).AddDays(-20)) "StartTime2"
 		$endTime2 = $endTime1
 		Assert-ThrowsContains { Get-AzureRmRecoveryServicesBackupJob -From $startTime2 -To $endTime2 } `
 			"Please specify From and To filter values in UTC. Other timezones are not supported";
@@ -137,7 +137,7 @@ function Test-GetJobsTimeFilter
 	}
 }
 
-function Test-WaitJobScenario
+function Test-AzureVMWaitJob
 {
 	$location = Get-ResourceGroupLocation
 	$resourceGroupName = Create-ResourceGroup -Location $location
@@ -166,7 +166,7 @@ function Test-WaitJobScenario
 	}
 }
 
-function Test-CancelJobScenario
+function Test-AzureVMCancelJob
 {
 	$location = Get-ResourceGroupLocation
 	$resourceGroupName = Create-ResourceGroup -Location $location

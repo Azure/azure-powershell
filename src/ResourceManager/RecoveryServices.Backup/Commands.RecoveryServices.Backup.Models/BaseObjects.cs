@@ -231,11 +231,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     }
 
     /// <summary>
-    /// Recovery Point Access Info for Connection
+    /// Info of script to mount recovery point.
     /// </summary>
-    public class RecoveryPointAccessInfo : ObjectBase
+    public class RPMountScriptInfo : ObjectBase
     {
-        public RecoveryPointAccessInfo()
+        public RPMountScriptInfo()
             : base()
         {
         }

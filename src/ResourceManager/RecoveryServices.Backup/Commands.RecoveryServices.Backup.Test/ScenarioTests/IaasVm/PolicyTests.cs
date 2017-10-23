@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureVMPolicy()
         {
             TestController.NewInstance.RunPsTest(
-                PsBackupProviderTypes.IaasVm, "Test-PolicyScenario");
+                PsBackupProviderTypes.IaasVm, "Test-AzureVMPolicy");
         }
     }
 }

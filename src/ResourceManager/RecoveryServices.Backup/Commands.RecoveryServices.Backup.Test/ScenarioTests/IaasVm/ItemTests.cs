@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureVMGetItems()
         {
             TestController.NewInstance.RunPsTest(
-                PsBackupProviderTypes.IaasVm, "Test-GetItemScenario");
+                PsBackupProviderTypes.IaasVm, "Test-AzureVMGetItems");
         }
 
         [Fact]
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureVMProtection()
         {
             TestController.NewInstance.RunPsTest(
-                PsBackupProviderTypes.IaasVm, "Test-EnableDisableProtectionScenario");
+                PsBackupProviderTypes.IaasVm, "Test-AzureVMProtection");
         }
 
         [Fact]
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureVMBackup()
         {
             TestController.NewInstance.RunPsTest(
-                PsBackupProviderTypes.IaasVm, "Test-BackupItemScenario");
+                PsBackupProviderTypes.IaasVm, "Test-AzureVMBackup");
         }
 
         [Fact]
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureVMGetRPs()
         {
             TestController.NewInstance.RunPsTest(
-                PsBackupProviderTypes.IaasVm, "Test-GetAzureVMRecoveryPointsScenario");
+                PsBackupProviderTypes.IaasVm, "Test-AzureVMGetRPs");
         }
 
         [Fact]
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureVMFullRestore()
         {
             TestController.NewInstance.RunPsTest(
-                PsBackupProviderTypes.IaasVm, "Test-RestoreAzureVMRItemScenario");
+                PsBackupProviderTypes.IaasVm, "Test-AzureVMFullRestore");
         }
 
         [Fact]
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureVMInstantRestore()
         {
             TestController.NewInstance.RunPsTest(
-                PsBackupProviderTypes.IaasVm, "Test-InstantRestoreItemScenario");
+                PsBackupProviderTypes.IaasVm, "Test-AzureVMInstantRestore");
         }
     }
 }

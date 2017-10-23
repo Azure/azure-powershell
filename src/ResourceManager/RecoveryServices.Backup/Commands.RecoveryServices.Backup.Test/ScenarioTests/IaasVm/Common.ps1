@@ -161,7 +161,8 @@ function Create-VM(
 			-SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id -NetworkSecurityGroupId $nsg.Id -Force
 
 		$UserName='demouser'
-		$Password='Password@123'| ConvertTo-SecureString -Force -AsPlainText
+		$PasswordString = $(Get-RandomSuffix 12)
+		$Password=$PasswordString| ConvertTo-SecureString -Force -AsPlainText
 		$Credential=New-Object PSCredential($UserName,$Password)
 
 		$vmConfig = New-AzureRmVMConfig -VMName $vmName -VMSize Standard_D1 | `
@@ -251,7 +252,28 @@ function Get-RecoveryPoint(
 	return $rps[0]
 }
 
-function Get-QueryDate(
+function Get-QueryDateInUtc(
+	$date, 
+	[string] $variableName)
+{
+	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -eq [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Record)
+	{
+		$queryDate = $date.ToUniversalTime()
+		$queryDateString = $queryDate.ToString("u")
+		
+		[Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Variables[$variableName] = $queryDateString
+	}
+	else
+	{
+		$queryDateString = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Variables[$variableName]
+
+		$queryDate = (Get-Date $queryDateString).ToUniversalTime()
+	}
+
+	return $queryDate
+}
+
+function Get-QueryDateLocal(
 	$date, 
 	[string] $variableName)
 {
@@ -265,15 +287,8 @@ function Get-QueryDate(
 	{
 		$queryDateString = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Variables[$variableName]
 
-		$queryDate = Get-Date -Date $queryDateString
+		$queryDate = Get-Date $queryDateString
 	}
 
 	return $queryDate
-}
-
-function Get-QueryDateInUtc(
-	$date, 
-	[string] $variableName)
-{
-	return (Get-QueryDate $date $variableName).ToUniversalTime()
 }
