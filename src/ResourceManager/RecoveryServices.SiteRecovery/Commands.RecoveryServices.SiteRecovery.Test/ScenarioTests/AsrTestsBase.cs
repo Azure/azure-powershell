@@ -31,33 +31,57 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
-namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Test.ScenarioTests
+namespace RecoveryServices.SiteRecovery.Test
 {
     public abstract class AsrTestsBase : RMTestBase
     {
         protected string vaultSettingsFilePath;
-        private readonly ASRVaultCreds asrVaultCreds;
+        protected string powershellFile;
+        private ASRVaultCreds asrVaultCreds;
         private CSMTestEnvironmentFactory csmTestFactory;
-        private readonly EnvironmentSetupHelper helper;
+        private EnvironmentSetupHelper helper;
 
         protected AsrTestsBase()
         {
-            this.vaultSettingsFilePath = Path.Combine(
-                AppDomain.CurrentDomain.BaseDirectory,
-                "ScenarioTests\\vaultSettings.VaultCredentials");
+        }
 
+        protected void initialize()
+        {
             if (File.Exists(this.vaultSettingsFilePath))
             {
                 try
-                {
-                    var serializer1 = new DataContractSerializer(typeof(ASRVaultCreds));
-                    using (var s = new FileStream(
-                        this.vaultSettingsFilePath,
-                        FileMode.Open,
-                        FileAccess.Read,
-                        FileShare.Read))
+                {  
+                    if (File.ReadAllText(this.vaultSettingsFilePath).ToLower().Contains("<asrvaultcreds"))
                     {
-                        this.asrVaultCreds = (ASRVaultCreds)serializer1.ReadObject(s);
+                        var serializer1 = new DataContractSerializer(typeof(ASRVaultCreds));
+                        using (var s = new FileStream(
+                            this.vaultSettingsFilePath,
+                            FileMode.Open,
+                            FileAccess.Read,
+                            FileShare.Read))
+                        {
+                            this.asrVaultCreds = (ASRVaultCreds)serializer1.ReadObject(s);
+                        }
+                    }
+                    else
+                    {
+                        var serializer = new DataContractSerializer(typeof(RSVaultAsrCreds));
+                        using (var s = new FileStream(
+                            this.vaultSettingsFilePath,
+                            FileMode.Open,
+                            FileAccess.Read,
+                            FileShare.Read))
+                        {
+                            RSVaultAsrCreds aadCreds = (RSVaultAsrCreds)serializer.ReadObject(s);
+                            asrVaultCreds = new ASRVaultCreds();
+                            asrVaultCreds.ChannelIntegrityKey = aadCreds.ChannelIntegrityKey;
+                            asrVaultCreds.ResourceGroupName = aadCreds.VaultDetails.ResourceGroup;
+                            asrVaultCreds.Version = "2.0";
+                            asrVaultCreds.SiteId = aadCreds.SiteId;
+                            asrVaultCreds.SiteName = aadCreds.SiteName;
+                            asrVaultCreds.ResourceNamespace = aadCreds.VaultDetails.ProviderNamespace;
+                            asrVaultCreds.ARMResourceType = aadCreds.VaultDetails.ResourceType;
+                        }
                     }
                 }
                 catch (XmlException xmlException)
@@ -159,12 +183,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Test.ScenarioTe
 
                 this.helper.SetupEnvironment(AzureModule.AzureResourceManager);
 
-                var testFolderName = scenario;
-                var callingClassName = callingClassType.Split(
-                        new[] { "." },
-                        StringSplitOptions.RemoveEmptyEntries)
-                    .Last();
-                var psFile = "ScenarioTests\\" + callingClassName + ".ps1";
                 var rmProfileModule = this.helper.RMProfileModule;
                 var rmModulePath =
                     this.helper.GetRMModulePath("AzureRM.RecoveryServices.SiteRecovery.psd1");
@@ -173,7 +191,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Test.ScenarioTe
 
                 var modules = new List<string>();
 
-                modules.Add(psFile);
+                modules.Add(powershellFile);
                 modules.Add(rmProfileModule);
                 modules.Add(rmModulePath);
                 modules.Add(recoveryServicesModulePath);
@@ -276,5 +294,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Test.ScenarioTe
         {
             return true;
         }
-    }
+    }  
 }
