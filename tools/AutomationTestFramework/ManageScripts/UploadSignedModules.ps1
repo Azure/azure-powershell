@@ -181,3 +181,28 @@ function UploadSignedModules ([string] $path, [string[]] $moduleList) {
     }    
     Write-Verbose "Modules have been uploaded successfully."     
 }
+
+function GetLatestBitsPath([string]$searchPath) {
+    $dirList = Get-ChildItem $searchPath -Directory -Filter "*_PowerShell"
+    $pattern = '(\d{4}_\d{2}_\d{2})_PowerShell'
+    $zeroDate = '0000_00_00'
+    $latestDate = $zeroDate
+    $dirList | ForEach-Object {
+        #$_.Name
+        $match = [regex]::Match($_.Name, $pattern)
+        if ($match) {
+            $d = $match.Groups[1].Value
+            if ($d -gt $latestDate) {
+                $latestDate = $d
+            }
+        } else {
+            Write-Error "$_ directory doesn't follow the pattern $pattern"
+        }
+    }
+
+    if ($latestDate -eq $zeroDate) {
+        throw "No directories found that follow the pattern $pattern in the $searchPath"
+    }
+
+    Join-Path $searchPath "${latestDate}_PowerShell"
+}

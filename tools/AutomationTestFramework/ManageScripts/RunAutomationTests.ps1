@@ -62,7 +62,8 @@ try {
         #$signedModulesPath = "\\aaptfile01\ADXSDK\PowerShell\2017_10_12_PowerShell\pkgs"
         if ([string]::IsNullOrEmpty($signedModulesPath)) {
             #get the latest drop by searching on 20\d\d_\d\d_PowerShell and getting the pkgs child item from that directory
-            
+            $latestBitsPath = GetLatestBitsPath -searchPath '\\aaptfile01\ADXSDK\PowerShell'
+            $signedModulesPath = Join-Path $latestBitsPath 'pkgs'
         }
 
         # AzureRM.Automation and AzureRM.Storage modules are required to store runbooks streams in Azure container. 
@@ -90,6 +91,6 @@ try {
     Write-Verbose "=== All done ========================"
 
 } catch {
-    Write-Verbose "Something went wrong: " $PSItem.ToString()
+    Write-Verbose "Something went wrong: $PSItem" 
     ($PSItem.ScriptStackTrace).Split([Environment]::NewLine) | Where-Object {$_.Length -gt 0} | ForEach-Object { Write-Verbose "`t$_" }
 }

@@ -27,53 +27,42 @@ Name of the book on Automation Account.
 Name of connection to use in the runbook.
 .PARAMETER outputPath
 Folder path to put generated runbook to.
-If not specified, the value will be '..\RunBooks'
 .EXAMPLE
 GenerateRunbook "e:\git\azure-powershell\src\ResourceManager\Storage\Commands.Management.Storage.Test\ScenarioTests\" "ShchBook" "ShchConn".
 #>
-function GenerateRunbook (
-     [string] $srcPath
-    ,[string] $bookName
-    ,[string] $connectionName
-    ,[string] $outputPath) {
-
-    if ([string]::IsNullOrEmpty($outputPath)) {
-        $outputPath = Join-Path "$PSScriptRoot\..\" "RunBooks"
-    }
-
+function GenerateRunbook {
+    param(
+        [Parameter(Mandatory = $true, Position = 0)]
+        [string]$srcPath,
+        [Parameter(Mandatory = $true, Position = 1)]
+        [string]$bookName,
+        [Parameter(Mandatory = $false, Position = 2)]
+        [string]$connectionName,
+        [Parameter(Mandatory = $true, Position = 3)]
+        [string]$outputPath
+    )
+        
     $bookPath = Join-Path $outputPath "$bookName.ps1"
-    $bookPath
+    # $bookPath
     $null = New-Item $bookPath -type file -Force
 
-    # These params to save result streams in Azure Storage Account Container
-    "Param("                                | Add-Content $bookPath
-	"	[parameter(Mandatory=`$true)]"      | Add-Content $bookPath
-	"	[string] `$subscriptionName,"       | Add-Content $bookPath
-	"	[parameter(Mandatory=`$true)]"      | Add-Content $bookPath
-	"	[string] `$automationAccountName,"  | Add-Content $bookPath
-	"	[parameter(Mandatory=`$true)]"      | Add-Content $bookPath
-	"	[string] `$aaResourseGroupName,"    | Add-Content $bookPath
-	"	[parameter(Mandatory=`$true)]"      | Add-Content $bookPath
-	"	[string] `$storageAccountName,"     | Add-Content $bookPath
-	"	[parameter(Mandatory=`$true)]"      | Add-Content $bookPath
-	"	[string] `$saResourseGroupName,"    | Add-Content $bookPath
-	"	[parameter(Mandatory=`$true)]"      | Add-Content $bookPath
-	"	[string] `$containerName,"          | Add-Content $bookPath
-	"	[parameter(Mandatory=`$true)]"      | Add-Content $bookPath
-	"	[string] `$reportFolderPrefix"      | Add-Content $bookPath
-	")"                                     | Add-Content $bookPath
-
-    "loginWithConnection -connectionName ""$connectionName""" | Add-Content $bookPath -ErrorAction Stop
-    
-    ListTestFunctions $srcPath | ForEach-Object {
-        $_ | Add-Content $bookPath
+    $runbookTemplate = Get-Content (Join-Path $PSScriptRoot "RunbookTemplate.ps1")
+    $connectionNameTemplate = '%CONNECTION-NAME%'
+    $testListTemplate = '%TEST-LIST%'
+    $runbookTemplate | ForEach-Object {
+        $line = $_
+        switch -wildcard ($line) {
+            "*$connectionNameTemplate" {
+                $line -replace $connectionNameTemplate, $connectionName | Add-Content $bookPath
+            } $testListTemplate {
+                ListTestFunctions $srcPath | ForEach-Object {
+                    $_ | Add-Content $bookPath
+                }  
+            } default {
+                $line | Add-Content $bookPath    
+            }
+        }
     }
-    
-    "TestRunner `$testList" | Add-Content $bookPath
-
-    "`$jobId = `$PsPrivateMetaData.JobId.Guid" | Add-Content $bookPath
-    
-    "SaveResultsInStorageAccount -jobId `$jobId -subscriptionName `$subscriptionName -automationAccountName `$automationAccountName -aaResourseGroupName `$aaResourseGroupName -storageAccountName `$storageAccountName -saResourseGroupName `$saResourseGroupName -containerName `$containerName -reportFolderPrefix `$reportFolderPrefix" | Add-Content $bookPath
 }
 
 <#
@@ -97,9 +86,9 @@ function GenerateRunbooksForProject (
    ,[string] $connectionName
    ,[string[]]$projectList
    ) {
-    $projectList
+    #$projectList
     # test location pattern: ResourceModule/{ServiseName}/Commands.{ServiseName}.Test/ScenarioTests/{*}Tests.ps1
-    $patternExeptions = @{
+    $patternExceptions = @{
         "AzureBatch"="Batch";
         "Storage" = "Management.Storage";
         "TrafficManager" = "TrafficManager2"
@@ -112,13 +101,22 @@ function GenerateRunbooksForProject (
 
     $resourceManagerFolders = Get-ChildItem -Path $resourceManagerPath -ErrorAction Stop
 
+    $outputPath = Join-Path "$PSScriptRoot\..\" "RunBooks" 
+
+    if (-not (Test-Path $outputPath)) {
+        $null = New-Item -ItemType directory -Path $outputPath  -ErrorAction Stop
+    } else { 
+        Write-Verbose "Cleaning up the $outputPath folder..."
+        Remove-Item "$outputPath\*" -ErrorAction Stop
+    }
+
     foreach ($folder in $resourceManagerFolders) {
        if (-not ($projectList.Contains($folder.Name))) { 
            continue
        }
 
-       if ($patternExeptions.ContainsKey($folder.Name)) {
-           $substitution = $patternExeptions.Get_Item($folder.Name)
+       if ($patternExceptions.ContainsKey($folder.Name)) {
+           $substitution = $patternExceptions.Get_Item($folder.Name)
            $testFolderPath = "$resourceManagerPath\$folder\Commands.$substitution.Test\ScenarioTests"            
        } else {
            $testFolderPath = "$resourceManagerPath\$folder\Commands.$folder.Test\ScenarioTests"
@@ -126,8 +124,8 @@ function GenerateRunbooksForProject (
 
        if (Test-Path $testFolderPath) {
             $bookName = "Live{0}Tests" -f $folder.Name
-            $bookName
-            GenerateRunbook $testFolderPath  $bookName $connectionName
+            #$bookName
+            GenerateRunbook $testFolderPath  $bookName $connectionName $outputPath
 
        } else {
            Write-Verbose "folder '$testFolderPath' doesn't exist"
