@@ -51,6 +51,7 @@ This command gets all subscriptions.
 
 ### Example 2: Get a subscription with a specified ID
 ```
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Get-AzureRmApiManagementSubscription -Context $apimContext -SubscriptionId "0123456789"
 ```
 
@@ -58,6 +59,7 @@ This command gets a subscription by ID.
 
 ### Example 3: Get all subscriptions for a user
 ```
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Get-AzureRmApiManagementSubscription -Context $apimContext -UserId "777"
 ```
 
@@ -65,6 +67,7 @@ This command gets a user's subscriptions.
 
 ### Example 4: Get all subscriptions for a product
 ```
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Get-AzureRmApiManagementSubscription -Context $apimContext -ProductId "999"
 ```
 

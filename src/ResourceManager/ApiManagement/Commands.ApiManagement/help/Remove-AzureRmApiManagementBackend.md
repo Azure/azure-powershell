@@ -23,7 +23,8 @@ Removes a backend specified by the Identifier from the Api Management.
 
 ### Example 1: Remove the Backend 123
 ```
-Remove-AzureRmApiManagementBackend -Context $apimContext -BackendId 123 -PassThru
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Remove-AzureRmApiManagementBackend -Context $apimContext -BackendId 123 -PassThru
 ```
 
 ## PARAMETERS

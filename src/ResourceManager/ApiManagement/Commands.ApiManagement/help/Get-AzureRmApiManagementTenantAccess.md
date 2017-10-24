@@ -24,6 +24,7 @@ The **Get-AzureRmApiManagementTenantAccess** cmdlet gets the tenant access confi
 
 ### Example 1: Get tenant access configuration
 ```
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Get-AzureRmApiManagementTenantAccess -Context $apimContext 
 ```
 

@@ -25,7 +25,7 @@ Removes an existing Identity Provider Configuration.
 ### Removes the Facebook identity provider settings from ApiManagement service
 ```
 PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-Remove-AzureRmApiManagementIdentityProvider -Context $apimContext -Type 'Facebook' -PassThru
+PS C:\>Remove-AzureRmApiManagementIdentityProvider -Context $apimContext -Type 'Facebook' -PassThru
 ```
 
 Deletes configuration related to Facebook Identity provider configuration.

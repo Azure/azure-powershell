@@ -32,7 +32,7 @@ Get the details of the Backend.
 
 ```
 PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-Get-AzureRmApiManagementBackend -Context $apimContext 
+PS C:\>Get-AzureRmApiManagementBackend -Context $apimContext 
 ```
 
 Gets a list of all the Backends configured in the Api Management service.
@@ -41,7 +41,7 @@ Gets a list of all the Backends configured in the Api Management service.
 
 ```
 PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-Get-AzureRmApiManagementBackend -Context $apimContext -backendId 123
+PS C:\>Get-AzureRmApiManagementBackend -Context $apimContext -backendId 123
 ```
 
 Get the details of the specified Backend identified by the Identifier '123'

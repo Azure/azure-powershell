@@ -25,8 +25,9 @@ The **New-AzureRmApiManagementUser** cmdlet registers a new user.
 
 ### Example 1: Register a new user
 ```
-$securePassword = ConvertTo-SecureString "qwerty" -AsPlainText -Force
-New-AzureRmApiManagementUser -Context $apimContext -FirstName "Patti" -LastName "Fuller" -Email "Patti.Fuller@contoso.com" -Password $securePassword
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>$securePassword = ConvertTo-SecureString "qwerty" -AsPlainText -Force
+PS C:\>New-AzureRmApiManagementUser -Context $apimContext -FirstName "Patti" -LastName "Fuller" -Email "Patti.Fuller@contoso.com" -Password $securePassword
 ```
 
 This command registers a new user named Patti Fuller.

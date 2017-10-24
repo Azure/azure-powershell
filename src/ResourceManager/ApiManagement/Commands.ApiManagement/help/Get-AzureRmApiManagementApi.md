@@ -44,7 +44,7 @@ The **Get-AzureRmApiManagementApi** cmdlet gets one or more Azure API Management
 ### Example 1: Get all management APIs
 ```
 PS C:\>$ApiMgmtContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-Get-AzureRmApiManagementApi -Context $ApiMgmtContext
+PS C:\>Get-AzureRmApiManagementApi -Context $ApiMgmtContext
 ```
 
 This command gets all of the APIs for the specified context.

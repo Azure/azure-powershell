@@ -24,6 +24,7 @@ The **Get-AzureRmApiManagementTenantSyncState** cmdlet gets the status of the mo
 
 ### Example 1: Get the status of the most recent synchronization
 ```
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Get-AzureRmApiManagementTenantSyncState -Context $apimContext 
 ```
 

@@ -39,9 +39,10 @@ Get-AzureRmApiManagementProperty -Context <PsApiManagementContext> [-Tag <String
 
 ## EXAMPLES
 
-### 1:
+### Example 1: Get Property by name
 ```
-PS C:\> Get-AzureRmApiManagementProperty -Context $Context -Name $PropertyName
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Get-AzureRmApiManagementProperty -Context $apimContext -Name "sql-connectionstring"
 ```
 
 ## PARAMETERS

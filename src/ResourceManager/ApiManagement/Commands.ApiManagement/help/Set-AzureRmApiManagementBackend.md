@@ -26,7 +26,8 @@ Updates an existing backend in the Api Management.
 
 ### Updates the Description of the Backend 123
 ```
-Set-AzureRmApiManagementBackend -Context $apimContext -BackendId 123 -Description "updated description" -PassThru
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Set-AzureRmApiManagementBackend -Context $apimContext -BackendId 123 -Description "updated description" -PassThru
 ```
 
 ## PARAMETERS

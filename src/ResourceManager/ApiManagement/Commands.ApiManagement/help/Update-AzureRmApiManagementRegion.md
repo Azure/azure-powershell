@@ -75,23 +75,9 @@ Accept wildcard characters: False
 ### -Location
 Specifies the location of the deployment region to update.
 
-Valid values are:
-
-- North Central US
-- South Central US
-- Central US
-- West Europe
-- North Europe
-- West US
-- East US
-- East US 2
-- Japan East
-- Japan West
-- Brazil South
-- Southeast Asia
-- East Asia
-- Australia East
-- Australia Southeast
+Specifies the location of the new deployment region amongst the supported region for Api Management service.
+To obtain valid locations, use the cmdlet
+Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.ApiManagement" | where {$_.ResourceTypes[0].ResourceTypeName -eq "service"} | Select-Object Locations
 
 ```yaml
 Type: String
