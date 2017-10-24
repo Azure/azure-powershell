@@ -14,7 +14,8 @@
 # ----------------------------------------------------------------------------------
 
 function LoginWithConnection([string]$connectionName) {
-	if (!$connectionName) {
+	
+	if ([string]::IsNullOrEmpty($connectionName)) {
 		$connectionName = "AzureRunAsConnection";
 		Write-Output "Parameter 'connectionName' is not set - will use the default connection name $connectionName"
 	}
@@ -22,7 +23,7 @@ function LoginWithConnection([string]$connectionName) {
 	try {
 		$servicePrincipalConnection=Get-AutomationConnection -Name $connectionName         
 
-		"==> Logging in to Azure..."
+		"==> Logging in to Azure using connection $connectionName..."
 		Add-AzureRmAccount `
 			-ServicePrincipal `
 			-TenantId $servicePrincipalConnection.TenantId `
@@ -38,7 +39,7 @@ function LoginWithConnection([string]$connectionName) {
 		}
 	}
 	"Available subscriptions:"
-	Get-AzureRmSubscription | Format-Table -Property Name, Id
+	Get-AzureRmSubscription | Format-Table -Property Name, Id | Write-Output
 }
 
 function TestRunner( [string[]]$tests ) {
@@ -152,9 +153,7 @@ function SaveResultsInStorageAccount {
 	}
 
 	#upload reports to storage account
-	$storageAccountKey = Get-AzureRmStorageAccountKey -StorageAccountName $storageAccountName -ResourceGroupName $saResourseGroupName -Verbose -ErrorAction Stop
-	$key1 = $storageAccountKey.Value[0];
-	$ctx = New-AzureStorageContext $storageAccountName -StorageAccountKey $key1 -ErrorAction Stop
+	$ctx = (Get-AzureRmStorageAccount -ResourceGroupName $saResourseGroupName -AccountName $storageAccountName).Context
 	$now = Get-Date;
 	$folderName = "{0}_{1}-{2}-{3}" -f $reportFolderPrefix, $now.Month, $now.Day, $now.Year, $_.Name
 	

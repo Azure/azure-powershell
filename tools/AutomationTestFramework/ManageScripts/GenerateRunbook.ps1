@@ -53,7 +53,7 @@ function GenerateRunbook {
         $line = $_
         switch -wildcard ($line) {
             "*$connectionNameTemplate" {
-                $line -replace $connectionNameTemplate, $connectionName | Add-Content $bookPath
+                $line -replace $connectionNameTemplate, "`"$connectionName`"" | Add-Content $bookPath
             } $testListTemplate {
                 ListTestFunctions $srcPath | ForEach-Object {
                     $_ | Add-Content $bookPath

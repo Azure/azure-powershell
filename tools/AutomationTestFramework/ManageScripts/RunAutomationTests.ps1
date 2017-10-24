@@ -63,6 +63,7 @@ try {
         if ([string]::IsNullOrEmpty($signedModulesPath)) {
             #get the latest drop by searching on 20\d\d_\d\d_PowerShell and getting the pkgs child item from that directory
             $latestBitsPath = GetLatestBitsPath -searchPath '\\aaptfile01\ADXSDK\PowerShell'
+            Write-Verbose "Latest drop path found:  $latestBitsPath"
             $signedModulesPath = Join-Path $latestBitsPath 'pkgs'
         }
 
@@ -91,6 +92,6 @@ try {
     Write-Verbose "=== All done ========================"
 
 } catch {
-    Write-Verbose "Something went wrong: $PSItem" 
+    Write-Host "Something went wrong: $PSItem" -ForegroundColor Red
     ($PSItem.ScriptStackTrace).Split([Environment]::NewLine) | Where-Object {$_.Length -gt 0} | ForEach-Object { Write-Verbose "`t$_" }
 }

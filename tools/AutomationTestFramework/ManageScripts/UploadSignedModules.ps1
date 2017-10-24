@@ -159,7 +159,7 @@ function UploadSignedModules ([string] $path, [string[]] $moduleList) {
     $modulesOrdered | ForEach-Object {
         $modulesOrderedFlat += $_
     }
-    $modulesOrderedFlat
+    #$modulesOrderedFlat
 
     ConvertToProperZip -path $path -moduleList $modulesOrderedFlat -outputFolderName $outputFolderName
 
@@ -175,7 +175,7 @@ function UploadSignedModules ([string] $path, [string[]] $moduleList) {
 
         $statusMap = CheckModuleProvisionState -moduleList $_
         $failed = $statusMap.GetEnumerator() | Where-Object {$_.Value -eq $false} | ForEach-Object { $_.Key }
-        if ($failed -gt 0) {
+        if ($failed.Count -gt 0) {
             throw "Modules $failed failed to upload"
         }
     }    

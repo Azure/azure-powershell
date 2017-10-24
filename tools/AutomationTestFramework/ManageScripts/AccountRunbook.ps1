@@ -77,7 +77,7 @@ function UploadPublishAndStartRunbooks ([string] $path ) {
 
     Get-ChildItem $path | ForEach-Object {
         $filepath = Join-Path $path $_
-        $filepath
+        #$filepath
         $bookName = $_.BaseName
         UploadPublishAndStartRunbook -path $filepath -bookName $bookName
     }

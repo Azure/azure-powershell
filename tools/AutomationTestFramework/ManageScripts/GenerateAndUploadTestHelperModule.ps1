@@ -38,5 +38,10 @@ function GenerateAndUploadTestHelperModule([string]$path, [string[]]$files) {
 
     PackAndUploadModule -path $path -files $files -moduleName $moduleName
 
-    CheckModuleProvisionState -moduleList $moduleName
+    $statusMap = CheckModuleProvisionState -moduleList $moduleName
+
+    $failed = $statusMap.GetEnumerator() | Where-Object {$_.Value -eq $false} | ForEach-Object { $_.Key }
+    if ($failed.Count -gt 0) {
+        throw "Modules $failed failed to upload"
+    }
 }

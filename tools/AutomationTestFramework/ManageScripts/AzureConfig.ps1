@@ -52,8 +52,8 @@ function DefaultIfNotSpecifiedAA (
 
     $cntx = Get-AzureRmContext
     if ($cntx.Subscription.Name -ne $subscriptionName) {
-        Write-Host "Switching subscription to '$subscriptionName'"
-        $null = Get-AzureRmSubscription -SubscriptionName $subscriptionName | Select-AzureRmSubscription
+        Write-Verbose "Switching subscription to '$subscriptionName'"
+        $null = Get-AzureRmSubscription -SubscriptionName $subscriptionName -ErrorAction "Stop" | Select-AzureRmSubscription
     }  
 
     @($subscriptionName, $automaitionAccountName, $resourceGroupName)
@@ -83,8 +83,8 @@ function DefaultIfNotSpecifiedSA (
     
     $cntx = Get-AzureRmContext
     if ($cntx.Subscription.Name -ne $subscriptionName) {
-        Write-Host "Switching subscription to '$subscriptionName'"
-        $null = Get-AzureRmSubscription -SubscriptionName $subscriptionName | Select-AzureRmSubscription
+        Write-Verbose "Switching subscription to '$subscriptionName'"
+        $null = Get-AzureRmSubscription -SubscriptionName $subscriptionName -ErrorAction "Stop" | Select-AzureRmSubscription
     }  
     
     @($subscriptionName, $resourceGroupName, $storageAccountName,  $containerName)
