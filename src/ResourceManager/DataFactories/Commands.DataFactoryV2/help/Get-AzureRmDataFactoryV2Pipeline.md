@@ -24,6 +24,12 @@ Get-AzureRmDataFactoryV2Pipeline [[-Name] <String>] [-DataFactory] <PSDataFactor
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### ByResourceId
+```
+Get-AzureRmDataFactoryV2Pipeline -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The Get-AzureRmDataFactoryV2Pipeline cmdlet gets information about pipelines in Azure Data Factory.
 If you specify the name of a pipeline, this cmdlet gets information about that pipeline.
@@ -174,7 +180,7 @@ Specifies the name of the pipeline about which to get information.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ByFactoryName, ByFactoryObject
 Aliases: PipelineName
 
 Required: False
@@ -195,6 +201,19 @@ Aliases:
 
 Required: True
 Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+The Azure resource ID.```yaml
+Type: String
+Parameter Sets: ByResourceId
+Aliases: 
+
+Required: True
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
