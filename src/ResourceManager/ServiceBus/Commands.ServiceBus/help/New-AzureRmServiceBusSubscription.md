@@ -13,9 +13,8 @@ Creates a subscription to the specified Service Bus topic.
 
 ```
 New-AzureRmServiceBusSubscription [-ResourceGroup] <String> [-NamespaceName] <String> [-TopicName] <String>
- [-SubscriptionName] <String> [-AutoDeleteOnIdle <String>]
- [-DeadLetteringOnFilterEvaluationExceptions <Boolean>] [-DeadLetteringOnMessageExpiration <Boolean>]
- [-EnableBatchedOperations <Boolean>] [-IsReadOnly <Boolean>] [-LockDuration <String>]
+ [-SubscriptionName] <String> [-AutoDeleteOnIdle <String>][-DeadLetteringOnMessageExpiration <Boolean>]
+ [-EnableBatchedOperations <Boolean>][-LockDuration <String>]
  [-MaxDeliveryCount <Int32>] [-RequiresSession <Boolean>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -48,22 +47,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -DeadLetteringOnFilterEvaluationExceptions
-Indicates if a subscription has dead letter support on Filter evaluation exceptions.
-
-```yaml
-Type: Boolean
-Parameter Sets: (All)
-Aliases: 
-Accepted values: TRUE, FALSE
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -DeadLetteringOnMessageExpiration
 Indicates if a subscription has deadletter support when a message expires.
 
@@ -82,22 +65,6 @@ Accept wildcard characters: False
 
 ### -EnableBatchedOperations
 Indicates whether server-side batched operations are enabled.
-
-```yaml
-Type: Boolean
-Parameter Sets: (All)
-Aliases: 
-Accepted values: TRUE, FALSE
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -IsReadOnly
-Indicates whether the entity description is read-only
 
 ```yaml
 Type: Boolean
@@ -279,11 +246,8 @@ AutoDeleteOnIdle                          : 10675199.02:48:05.4775807
 CountDetails                              : Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails
 CreatedAt                                 : 1/20/2017 3:18:52 AM
 DefaultMessageTimeToLive                  : 10675199.02:48:05.4775807
-DeadLetteringOnFilterEvaluationExceptions : True
 DeadLetteringOnMessageExpiration          : False
 EnableBatchedOperations                   : True
-EntityAvailabilityStatus                  : Available
-IsReadOnly                                : 
 LockDuration                              : 00:01:00
 MaxDeliveryCount                          : 10
 MessageCount                              : 0

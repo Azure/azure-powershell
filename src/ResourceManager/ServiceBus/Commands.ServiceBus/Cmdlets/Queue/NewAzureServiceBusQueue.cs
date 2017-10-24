@@ -83,14 +83,6 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Enable Batched Operations - value that indicates whether server-side batched operations are enabled")]
-        [ValidateSet("TRUE", "FALSE",
-            IgnoreCase = true)]
-        [ValidateNotNullOrEmpty]
-        public bool? EnableBatchedOperations { get; set; }
-
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Dead Lettering On Message Expiration")]
         [ValidateSet("TRUE", "FALSE",
             IgnoreCase = true)]
@@ -104,14 +96,6 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
             IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public bool? EnableExpress { get; set; }
-
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "IsAnonymousAccessible - a value that indicates whether the message is anonymous accessible.")]
-        [ValidateSet("TRUE", "FALSE",
-            IgnoreCase = true)]
-        [ValidateNotNullOrEmpty]
-        public bool? IsAnonymousAccessible { get; set; }
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,

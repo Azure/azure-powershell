@@ -151,15 +151,12 @@ Location                            : West US
 LockDuration                        : 
 AccessedAt                          : 1/1/0001 12:00:00 AM
 AutoDeleteOnIdle                    : 10675199.02:48:05.4775807
-EntityAvailabilityStatus            : 
 CreatedAt                           : 1/20/2017 2:51:34 AM
 DefaultMessageTimeToLive            : 10675199.02:48:05.4775807
 DuplicateDetectionHistoryTimeWindow : 
-EnableBatchedOperations             : True
 DeadLetteringOnMessageExpiration    : False
 EnableExpress                       : False
 EnablePartitioning                  : True
-IsAnonymousAccessible               : False
 MaxDeliveryCount                    : 
 MaxSizeInMegabytes                  : 16384
 MessageCount                        : 
@@ -168,7 +165,6 @@ RequiresDuplicateDetection          : False
 RequiresSession                     : False
 SizeInBytes                         : 
 Status                              : Active
-SupportOrdering                     : False
 UpdatedAt                           : 1/20/2017 6:16:18 PM
 
 ## NOTES

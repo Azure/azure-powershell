@@ -71,14 +71,6 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Subscription
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "DeadLetteringOnFilterEvaluationExceptions - Value that indicates if a subscription has dead letter support when a message expires.")]
-        [ValidateSet("TRUE", "FALSE",
-            IgnoreCase = true)]
-        [ValidateNotNullOrEmpty]
-        public bool? DeadLetteringOnFilterEvaluationExceptions { get; set; }
-
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Dead Lettering On Message Expiration")]
         [ValidateSet("TRUE", "FALSE",
             IgnoreCase = true)]
