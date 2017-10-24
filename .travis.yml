@@ -12,9 +12,9 @@ before_install:
  - sudo apt-get install docker-ce
 
 script:
- - dotnet msbuild build.proj /t:BuildNetcore /p:Configuration=Debug
- - docker build . -t twitchax/azure-powershell-core:latest
+ - dotnet msbuild build.proj /t:BuildNetcore /p:Configuration=Release
+ - docker build . -t $DOCKER_USER/azure-powershell-core:$TRAVIS_COMMIT
  
 after_success:
- - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
- - docker push twitchax/azure-powershell-core:latest
+ - docker login -u $DOCKER_USER -p $DOCKER_PASS
+ - docker push $DOCKER_USER/azure-powershell-core:$TRAVIS_COMMIT
