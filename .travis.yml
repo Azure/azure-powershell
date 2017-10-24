@@ -1,0 +1,25 @@
+sudo: required
+language: csharp
+mono: none
+dotnet: 2.0.0
+dist: trusty
+
+services:
+ - docker
+
+before_install:
+ - sudo apt-get update
+ - sudo apt-get install docker-ce
+
+script:
+ - dotnet msbuild build.proj /t:BuildNetcore /p:Configuration=Release
+ - docker build . -t $DOCKER_USER/azure-powershell-core:$TRAVIS_COMMIT
+ 
+after_success:
+ - docker login -u $DOCKER_USER -p $DOCKER_PASS
+ - if [ $TRAVIS_BRANCH == 'master' ]; then
+    docker tag $DOCKER_USER/azure-powershell-core:$TRAVIS_COMMIT $DOCKER_USER/azure-powershell-core:latest;
+    docker push $DOCKER_USER/azure-powershell-core:latest;
+   else
+    docker push $DOCKER_USER/azure-powershell-core:$TRAVIS_COMMIT;
+   fi

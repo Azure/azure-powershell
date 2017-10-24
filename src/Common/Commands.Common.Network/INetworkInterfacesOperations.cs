@@ -16,6 +16,8 @@ namespace Microsoft.Azure.Management.Internal.Network.Version2017_03_01
     using System.Threading;
     using System.Threading.Tasks;
 
+    using AzureOperationResponse = Microsoft.Rest.Azure.AzureOperationResponse;
+
     /// <summary>
     /// NetworkInterfacesOperations operations.
     /// </summary>

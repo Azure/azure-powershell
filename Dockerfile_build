@@ -1,0 +1,10 @@
+ARG source=.
+
+FROM microsoft/dotnet as builder
+WORKDIR /builder
+COPY ${source} .
+RUN ["dotnet", "msbuild", "build.proj", "/t:BuildNetcore", "/p:Configuration=Debug"]
+
+FROM microsoft/powershell
+COPY --from=builder /builder/src/Package/Debug/ResourceManager /azure-powershell
+CMD powershell -NoExit -Command '$env:PSModulePath = "$($env:PSModulePath):/azure-powershell"'
