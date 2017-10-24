@@ -161,18 +161,6 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// </summary>
         
         public DateTime? UpdatedAt { get; set; }
-
-
-        /// <summary>
-        /// location of the resource.
-        /// </summary> 
-        [ObsoleteAttribute("'Location' property is mark as obsolete and will be removed in upcoming breaking changes build", false)]
-        public string Location { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [ObsoleteAttribute("'IsExpress' property is mark as obsolete and will be removed in upcoming breaking changes build", false)]
-        public bool? IsExpress { get; set; }
         
     }
 }

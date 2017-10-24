@@ -121,11 +121,8 @@ AutoDeleteOnIdle                          : 10675199.02:48:05.4775807
 CountDetails                              : Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails
 CreatedAt                                 : 1/20/2017 3:18:52 AM
 DefaultMessageTimeToLive                  : 10675199.02:48:05.4775807
-DeadLetteringOnFilterEvaluationExceptions : True
 DeadLetteringOnMessageExpiration          : False
 EnableBatchedOperations                   : True
-EntityAvailabilityStatus                  : Available
-IsReadOnly                                : 
 LockDuration                              : 00:01:00
 MaxDeliveryCount                          : 10
 MessageCount                              : 0

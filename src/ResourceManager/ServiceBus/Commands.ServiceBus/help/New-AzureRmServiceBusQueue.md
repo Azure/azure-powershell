@@ -15,8 +15,8 @@ Creates a Service Bus queue in the specified Service Bus namespace.
 New-AzureRmServiceBusQueue [-ResourceGroup] <String> [-NamespaceName] <String> [-QueueName] <String>
  -EnablePartitioning <Boolean> [-LockDuration <String>] [-AutoDeleteOnIdle <String>]
  [-DefaultMessageTimeToLive <String>] [-DuplicateDetectionHistoryTimeWindow <String>]
- [-EnableBatchedOperations <Boolean>] [-DeadLetteringOnMessageExpiration <Boolean>] [-EnableExpress <Boolean>]
- [-IsAnonymousAccessible <Boolean>] [-MaxDeliveryCount <Int32>] [-MaxSizeInMegabytes <Int64>]
+ [-DeadLetteringOnMessageExpiration <Boolean>] [-EnableExpress <Boolean>]
+ [-MaxDeliveryCount <Int32>] [-MaxSizeInMegabytes <Int64>]
  [-MessageCount <Int64>] [-RequiresDuplicateDetection <Boolean>] [-RequiresSession <Boolean>]
  [-SizeInBytes <Int64>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -96,22 +96,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -EnableBatchedOperations
-Specifies whether server-side batched operations are enabled.
-
-```yaml
-Type: Boolean
-Parameter Sets: (All)
-Aliases: 
-Accepted values: TRUE, FALSE
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -EnableExpress
 Specifies whether Express Entities are enabled. An express queue holds a message in memory temporarily before writing it to persistent storage.
 
@@ -138,22 +122,6 @@ Aliases:
 Accepted values: TRUE, FALSE
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -IsAnonymousAccessible
-Specifies whether the message is anonymously accessible.
-
-```yaml
-Type: Boolean
-Parameter Sets: (All)
-Aliases: 
-Accepted values: TRUE, FALSE
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -368,15 +336,12 @@ Location                            : West US
 LockDuration                        : 
 AccessedAt                          : 
 AutoDeleteOnIdle                    : 10675199.02:48:05.4775807
-EntityAvailabilityStatus            : 
 CreatedAt                           : 1/20/2017 2:51:36 AM
 DefaultMessageTimeToLive            : 10675199.02:48:05.4775807
 DuplicateDetectionHistoryTimeWindow : 
-EnableBatchedOperations             : True
 DeadLetteringOnMessageExpiration    : False
 EnableExpress                       : False
 EnablePartitioning                  : True
-IsAnonymousAccessible               : False
 MaxDeliveryCount                    : 
 MaxSizeInMegabytes                  : 16384
 MessageCount                        : 
@@ -385,7 +350,6 @@ RequiresDuplicateDetection          : False
 RequiresSession                     : False
 SizeInBytes                         : 
 Status                              : Active
-SupportOrdering                     : False
 UpdatedAt                           : 1/20/2017 2:51:37 AM
 
 ## NOTES

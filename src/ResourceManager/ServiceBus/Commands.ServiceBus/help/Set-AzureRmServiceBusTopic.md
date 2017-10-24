@@ -152,7 +152,6 @@ Id                                  : /subscriptions/854d368f-1828-428f-8f3c-f2a
 Type                                : Microsoft.ServiceBus/Topic
 AccessedAt                          : 1/20/2017 3:18:54 AM
 AutoDeleteOnIdle                    : 10675199.02:48:05.4775807
-EntityAvailabilityStatus            : 
 CreatedAt                           : 1/20/2017 3:16:41 AM
 CountDetails                        : Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails
 DefaultMessageTimeToLive            : 10675199.02:48:05.4775807
@@ -160,10 +159,6 @@ DuplicateDetectionHistoryTimeWindow :
 EnableBatchedOperations             : True
 EnableExpress                       : True
 EnablePartitioning                  : True
-EnableSubscriptionPartitioning      : False
-FilteringMessagesBeforePublishing   : False
-IsAnonymousAccessible               : False
-IsExpress                           : False
 MaxSizeInMegabytes                  : 16384
 RequiresDuplicateDetection          : False
 SizeInBytes                         : 0
