@@ -43,12 +43,7 @@ function UploadModuleToContainer (
     ,[string] $containerName) {
 
     $subscriptionName, $resourceGroupName, $storageAccountName,  $containerName = DefaultIfNotSpecifiedSA $subscriptionName $resourceGroupName $storageAccountName  $containerName
-    Write-Verbose "Getting Azure storage account key..."
-
-    $storageAccountKey = Get-AzureRmStorageAccountKey -StorageAccountName $storageAccountName -ResourceGroupName $resourceGroupName -Verbose -ErrorAction Stop
-    $key1 = $storageAccountKey.Value[0];
-    Write-Verbose "Creating Azure storage account context..."
-    $ctx = New-AzureStorageContext $storageAccountName -StorageAccountKey $key1 -ErrorAction Stop
+    $ctx = (Get-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -AccountName $storageAccountName).Context
     Write-Verbose "Uploading module to Azure storage container..."
     $blobName = "$moduleName.zip"
     $null = Set-AzureStorageBlobContent -Container $containerName  -File "$modulePath\$blobName" -Blob $blobName -Context $ctx -Force -ErrorAction Stop
