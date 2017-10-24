@@ -26,6 +26,7 @@ The **New-AzureRmApiManagementOpenIdConnectProvider** cmdlet creates an OpenID C
 
 ### Example 1: Create a provider
 ```
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>New-AzureRmApiManagementOpenIdConnectProvider -Context $apimContext -OpenIdConnectProviderId "OICProvicer01" -Name "Contoso OpenID Connect Provider" -MetadataEndpointUri "https://openid.provider/configuration" -ClientId "12432143" -Description "OpenID Connect provider description"
 ```
 

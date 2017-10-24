@@ -23,9 +23,9 @@ Creates a new Backend Proxy Object which can be piped when creating a new Backen
 
 ### Create a Backend Proxy In-Memory Object
 ```
-$secpassword = ConvertTo-SecureString "PlainTextPassword" -AsPlainText -Force
-$proxyCreds = New-Object System.Management.Automation.PSCredential ("foo", $secpassword)
-$credential = New-AzureRmApiManagementBackendProxy -Url "http://12.168.1.1:8080" -ProxyCredential $proxyCreds
+PS C:\>$secpassword = ConvertTo-SecureString "PlainTextPassword" -AsPlainText -Force
+PS C:\>$proxyCreds = New-Object System.Management.Automation.PSCredential ("foo", $secpassword)
+PS C:\>$credential = New-AzureRmApiManagementBackendProxy -Url "http://12.168.1.1:8080" -ProxyCredential $proxyCreds
 ```
 
 Creates a Backend Proxy Object

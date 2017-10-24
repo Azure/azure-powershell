@@ -24,6 +24,7 @@ The **Remove-AzureRmApiManagementProperty** cmdlet removes an Azure API Manageme
 
 ### Example 1: Remove a property
 ```
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Remove-AzureRmApiManagementProperty -Context $apimContext -PropertyId "Property11" -PassThru
 ```
 

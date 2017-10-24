@@ -26,6 +26,7 @@ The **Set-AzureRmApiManagementOpenIdConnectProvider** cmdlet modifies an OpenID 
 
 ### Example 1: Change the client secret for a provider
 ```
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Set-AzureRmApiManagementOpenIdConnectProvider -Context $apimContext -OpenIdConnectProviderId "OICProvicer01" -ClientSecret "q2w3e43r45" -PassThru
 ```
 

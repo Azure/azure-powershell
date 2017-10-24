@@ -25,7 +25,7 @@ The context is used for all of the API Management service cmdlets.
 
 ### Example 1: Create a PsApiManagementContext instance
 ```
-PS C:\>PS C:\>$ApiMgmtContext = New-AzureRmApiManagementContext -ResourceGroupName "ContosoResources" -ServiceName "Contoso"
+PS C:\>$ApiMgmtContext = New-AzureRmApiManagementContext -ResourceGroupName "ContosoResources" -ServiceName "Contoso"
 ```
 
 This command creates an instance of **PsApiManagementContext**.

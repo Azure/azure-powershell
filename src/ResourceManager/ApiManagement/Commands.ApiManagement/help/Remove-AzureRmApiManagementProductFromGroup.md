@@ -25,6 +25,7 @@ In other words, this cmdlet removes the group assignment from a product.
 
 ### Example 1: Remove a product from a group
 ```
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Remove-AzureRmApiManagementProductFromGroup -Context $apimContext -GroupId "0001" -ProductId "0123456789"
 ```
 

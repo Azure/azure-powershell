@@ -25,6 +25,7 @@ The **Remove-AzureRmApiManagementOpenIdConnectProvider** cmdlet removes an OpenI
 
 ### Example 1: Remove a provider
 ```
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Remove-AzureRmApiManagementOpenIdConnectProvider -Context $apimContext -OpenIdConnectProviderId "OICProvicer01" -PassThru
 ```
 

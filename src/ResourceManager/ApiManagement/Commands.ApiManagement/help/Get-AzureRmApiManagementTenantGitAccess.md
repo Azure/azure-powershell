@@ -24,6 +24,7 @@ The **Get-AzureRmApiManagementTenantGitAccess** cmdlet gets the Git access confi
 
 ### Example 1: Get tenant access configuration
 ```
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Get-AzureRmApiManagementTenantGitAccess -Context $apimContext 
 ```
 

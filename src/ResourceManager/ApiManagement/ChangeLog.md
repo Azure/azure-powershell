@@ -23,7 +23,7 @@
     - Set-AzureRmApiManagementBackend Parameter `Password` is changed from String to SecureString
     
 * Breaking Changes in Cmdlet to Create Backend Proxy Object
-    - New-AzureRmApiManagementBackendProxy Parameter `Password` and `UserName` has been replaced with `ProxyCredentials` of type PSCredential
+    - New-AzureRmApiManagementBackendProxy Parameter `Password` and `UserName` have been replaced with `ProxyCredentials` of type PSCredential
 	
 * Updated Cmdlet Get-AzureRmApiManagementUser to fix issue https://github.com/Azure/azure-powershell/issues/4510
 

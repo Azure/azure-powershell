@@ -24,6 +24,7 @@ The **Remove-AzureRmApiManagementCertificate** cmdlet removes an Azure API Manag
 
 ### Example 1: Remove a certificate
 ```
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Remove-AzureRmApiManagementCertificate -Context $ApiMgmtContext -CertificateId "0123456789" -Force
 ```
 

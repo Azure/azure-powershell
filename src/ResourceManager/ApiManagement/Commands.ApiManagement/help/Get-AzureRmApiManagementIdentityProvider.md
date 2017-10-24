@@ -31,14 +31,16 @@ Get the identity provider configuration details.
 ### Example 1: Get all Identity Providers
 
 ```
-Get-AzureRmApiManagementIdentityProvider -Context $context
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Get-AzureRmApiManagementIdentityProvider -Context $apimContext
 ```
 
 Get all the identity provider Configuration on the service.
 
 ### Get the AAD Type Identity Provider
 ```
-Get-AzureRmApiManagementIdentityProvider -Context $context -Type Aad
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Get-AzureRmApiManagementIdentityProvider -Context $apimContext -Type Aad
 ```
 
 Gets the Identity Provider Configuration of Azure Active Directory.

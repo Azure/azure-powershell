@@ -25,7 +25,8 @@ Creates a new Identity Provider configuration.
 
 ### Example 1: Configures Facebook as an identity Provider for Developer Portal Logins
 ```
-New-AzureRmApiManagementIdentityProvider -Context $apimContext -Type 'Facebook' -ClientId 'sdfsfwerwerw' -ClientSecret 'sdgsdfgfst43tewfewrf'
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>New-AzureRmApiManagementIdentityProvider -Context $apimContext -Type 'Facebook' -ClientId 'sdfsfwerwerw' -ClientSecret 'sdgsdfgfst43tewfewrf'
 ```
 
 This command configures Facebook Identity as a accepted Identity Provider on the Developer Portal of the ApiManagement service.
