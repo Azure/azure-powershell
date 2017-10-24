@@ -1,13 +1,14 @@
-﻿using Microsoft.Azure.Management.Compute;
+﻿using Azure.Experiments.Network;
+using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using System.Threading.Tasks;
 
-namespace Azure.Experiments
+namespace Azure.Experiments.Compute
 {
-    public sealed class VmObject 
-        : ResourceObject<VirtualMachine>
+    public sealed class VirtualMachineObject 
+        : ResourceObject<VirtualMachine, ComputePolicy<VirtualMachine>>
     {
-        public VmObject(
+        public VirtualMachineObject(
             Context c,
             string name,
             ResourceGroupObject rg,

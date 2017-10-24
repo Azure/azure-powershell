@@ -3,8 +3,9 @@ using System.Linq;
 
 namespace Azure.Experiments
 {
-    public abstract class ResourceObject<T> : AzureObject<T>
+    public abstract class ResourceObject<T, P> : AzureObject<T, P>
         where T : class
+        where P : struct, IInfoPolicy<T>
     {
         public string ResourceGroupName { get; }
 

@@ -3,9 +3,9 @@ using Microsoft.Azure.Management.Network.Models;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Azure.Experiments
+namespace Azure.Experiments.Network
 {
-    public sealed class SubnetObject : AzureObject<Subnet>
+    public sealed class SubnetObject : AzureObject<Subnet, SubnetPolicy>
     {
         public string AddressPrefix { get; }
 

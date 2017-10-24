@@ -1,6 +1,8 @@
 using Xunit;
 using Microsoft.Azure.Management.Compute;
 using System.Threading.Tasks;
+using Azure.Experiments.Network;
+using Azure.Experiments.Compute;
 
 namespace Azure.Experiments.Tests
 {
@@ -79,7 +81,7 @@ namespace Azure.Experiments.Tests
             var pia = new PublicIpAddressObject(network, "MyVM", rg);
             var nsg = new NetworkSecurityGroupObject(network, "MyVM", rg);
             var ni = new NetworkInterfaceObject(network, "MyVM", rg, subnet, pia, nsg);
-            var vm = new VmObject(c, "MyVM", rg, ni, "MyVMUser", "@3as54dDd");
+            var vm = new VirtualMachineObject(c, "MyVM", rg, ni, "MyVMUser", "@3as54dDd");
             var info = await vm.GetOrCreateAsync();
         }
 

@@ -1,4 +1,6 @@
-﻿using Microsoft.Rest;
+﻿using Azure.Experiments.Compute;
+using Azure.Experiments.Network;
+using Microsoft.Rest;
 using Xunit;
 
 namespace Azure.Experiments.Tests
@@ -8,14 +10,14 @@ namespace Azure.Experiments.Tests
         private static Context C { get; }
             = new Context(new TokenCredentials("a"), string.Empty);
 
-        //[Fact]
+        [Fact]
         public void ResourceGroupObjectTest()
         {
             var rg = new ResourceGroupObject(C, "My");
             Assert.Equal(0, rg.Priority);
         }
 
-        //[Fact]
+        [Fact]
         public void VirtualNetworkObjectTest()
         {
             var rg = new ResourceGroupObject(C, "My1");
@@ -23,7 +25,7 @@ namespace Azure.Experiments.Tests
             Assert.Equal(1, vn.Priority);
         }
 
-        //[Fact]
+        [Fact]
         public void PublicIpAddressObjectTest()
         {
             var rg = new ResourceGroupObject(C, "MyPIA");
@@ -72,7 +74,7 @@ namespace Azure.Experiments.Tests
             var pia = new PublicIpAddressObject(network, "MyVM", rg);
             var nsg = new NetworkSecurityGroupObject(network, "MyVM", rg);
             var ni = new NetworkInterfaceObject(network, "MyVM", rg, subnet, pia, nsg);
-            var vm = new VmObject(C, "MyVM", rg, ni, "MyVMUser", "@3as54dDd");
+            var vm = new VirtualMachineObject(C, "MyVM", rg, ni, "MyVMUser", "@3as54dDd");
             Assert.Equal(4, vm.Priority);
         }
     }

@@ -26,8 +26,9 @@ namespace Azure.Experiments
         }
     }
 
-    public abstract class AzureObject<T> : AzureObject
+    public abstract class AzureObject<T, P> : AzureObject
         where T: class
+        where P: struct, IInfoPolicy<T>
     {
         public T Info { get; private set; }
 

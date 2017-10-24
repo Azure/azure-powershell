@@ -2,10 +2,10 @@
 using Microsoft.Azure.Management.Network.Models;
 using System.Threading.Tasks;
 
-namespace Azure.Experiments
+namespace Azure.Experiments.Network
 {
     public sealed class NetworkSecurityGroupObject
-        : ResourceObject<NetworkSecurityGroup>
+        : NetworkObject<NetworkSecurityGroup>
     {
         public NetworkSecurityGroupObject(
             INetworkManagementClient client,

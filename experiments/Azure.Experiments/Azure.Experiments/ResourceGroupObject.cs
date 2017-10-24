@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 namespace Azure.Experiments
 {
     public sealed class ResourceGroupObject : AzureObject<
-        ResourceGroup>
+        ResourceGroup, ResourceGroupPolicy>
     {
         public ResourceGroupObject(Context client, string name) 
             : base(name, NoDependencies)
