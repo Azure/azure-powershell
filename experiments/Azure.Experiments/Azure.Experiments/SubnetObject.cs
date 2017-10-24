@@ -1,6 +1,5 @@
 ﻿using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
-using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -21,7 +20,7 @@ namespace Azure.Experiments
         protected override async Task<Subnet> CreateAsync()
         {
             // The Virtual Network should be created at this point.
-            var vn = await Vn.GetOrNullAsync();
+            var vn = Vn.Info;
             vn.Subnets.Add(new Subnet { Name = Name, AddressPrefix = AddressPrefix });
             vn = await Vn.Client.CreateOrUpdateAsync(
                 Vn.ResourceGroupName, Vn.Name, vn);

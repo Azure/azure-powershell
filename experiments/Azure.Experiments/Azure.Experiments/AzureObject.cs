@@ -1,6 +1,4 @@
-﻿using Microsoft.Rest.Azure;
-using System;
-using System.Collections.Generic;
+﻿using Microsoft.Rest.Azure;using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -18,10 +16,13 @@ namespace Azure.Experiments
 
         public abstract Task CheckOrCreateAsync();
 
+        public int Priority { get; }
+
         protected AzureObject(string name, IEnumerable<AzureObject> dependencies)
         {
             Name = name;
             Dependencies = dependencies;
+            Priority = dependencies.Any() ? dependencies.Max(d => d.Priority) + 1 : 0;
         }
     }
 

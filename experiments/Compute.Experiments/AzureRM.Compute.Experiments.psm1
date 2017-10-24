@@ -31,6 +31,9 @@ function New-AzVm {
     )
 
     PROCESS {
+        $x = New-Object Azure.Experiments.Context($null, $null)
+        Write-Host "X: " + $x
+
         # TODO: make sure it's logged in.
         $context = if ($AzureRmContext) {
             Get-AzureRmContext -AzureRmContext $AzureRmContext

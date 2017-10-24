@@ -5,7 +5,7 @@
     <AssemblyName>Azure.Experiments</AssemblyName>
     <RootNamespace>Azure.Experiments</RootNamespace>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.0</Version>
+    <Version>1.1.0</Version>
   </PropertyGroup>
 
   <ItemGroup>

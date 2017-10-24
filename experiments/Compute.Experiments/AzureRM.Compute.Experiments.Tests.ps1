@@ -2,6 +2,7 @@ $build = Resolve-Path "..\build\"
 $out = Join-Path $build "AzureRM.Compute.Experiments\"
 Copy-Item .\AzureRM.Compute.Experiments.psd1 $out
 Copy-Item .\AzureRM.Compute.Experiments.psm1 $out
+Copy-Item ..\Azure.Experiments\Azure.Experiments\bin\Debug\net452\*.dll $out
 
 $env:PSModulePath = $env:PSModulePath + ";" + $build.ToString()
 
@@ -20,6 +21,7 @@ Describe 'New-AzVm' {
     It 'WhatIf' {
         $result = New-AzVm -Name MyVM -Credential $vmCredential -WhatIf
     }
+    <#
     It 'Create Windows VM' {
         Remove-AzureRmResourceGroup -Name Something1 -Force
 
@@ -47,4 +49,5 @@ Describe 'New-AzVm' {
 
         $result.Name | Should Be MyVMA3
     }
+    #>
 }
