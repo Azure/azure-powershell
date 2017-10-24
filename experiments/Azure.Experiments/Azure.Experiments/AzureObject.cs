@@ -18,11 +18,32 @@ namespace Azure.Experiments
 
         public int Priority { get; }
 
+        public abstract string GetInfoLocation();
+
+        /// <summary>
+        /// The function should be called only after GetInfo is called for the 
+        /// object and its dependencies.
+        /// </summary>
+        /// <returns></returns>
+        public DependencyLocation GetDependencyLocation()
+        {
+            var location = GetInfoLocation();
+            return location != null
+                ? new DependencyLocation(location, Priority)
+                : Dependencies
+                    .Select(d => GetDependencyLocation())
+                    .Aggregate(
+                        DependencyLocation.None,
+                        (a, b) => a.Priority > b.Priority ? a : b);
+        }
+
         protected AzureObject(string name, IEnumerable<AzureObject> dependencies)
         {
             Name = name;
             Dependencies = dependencies;
-            Priority = dependencies.Any() ? dependencies.Max(d => d.Priority) + 1 : 0;
+            Priority = dependencies.Any() 
+                ? dependencies.Max(d => d.Priority) + 1 
+                : 1;
         }
     }
 
@@ -31,6 +52,9 @@ namespace Azure.Experiments
         where P: struct, IInfoPolicy<T>
     {
         public T Info { get; private set; }
+
+        public override string GetInfoLocation()
+            => Info == null ? null : new P().GetLocation(Info);
 
         public async Task<T> GetOrNullAsync()
         {

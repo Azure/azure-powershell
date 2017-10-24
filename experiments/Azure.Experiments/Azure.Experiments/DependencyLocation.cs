@@ -2,6 +2,9 @@
 {
     public sealed class DependencyLocation
     {
+        public static DependencyLocation None { get; }
+            = new DependencyLocation(null, 0);
+
         public string Location { get; }
 
         public int Priority { get; }
