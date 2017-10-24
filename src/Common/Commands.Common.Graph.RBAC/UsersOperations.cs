@@ -20,6 +20,8 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6
     using System.Threading;
     using System.Threading.Tasks;
 
+    using AzureOperationResponse = Microsoft.Rest.Azure.AzureOperationResponse;
+
     /// <summary>
     /// UsersOperations operations.
     /// </summary>

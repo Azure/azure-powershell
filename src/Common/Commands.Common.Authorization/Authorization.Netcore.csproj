@@ -2,9 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-    <AssemblyName>Authentication</AssemblyName>
+    <AssemblyName>Authorization</AssemblyName>
     <RuntimeIdentifiers>win10-x64</RuntimeIdentifiers>
-    <RootNamespace>Microsoft.Azure.Commands.Common.Authentication</RootNamespace>
+    <RootNamespace>Microsoft.Azure.Commands.Common.Authorization</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
 
@@ -34,16 +34,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="Authentication\ConsoleParentWindow.cs" />
-    <Compile Remove="Authentication\CredStore.cs" />
-    <Compile Remove="Authentication\ServicePrincipalKeyStore.cs" />
-    <Compile Remove="Authentication\UserTokenProvider.cs" />
-    <Compile Remove="Utilities\AdalTokenCache.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Commands.Common.Authentication.Abstractions\Authentication.Abstractions.NetCore.csproj" />
     <ProjectReference Include="..\Commands.Common\Common.Netcore.csproj" />
+    <ProjectReference Include="..\..\ResourceManager\Common\Commands.ResourceManager.Common\Common.ResourceManager.Netcore.csproj" />
   </ItemGroup>
 
   <ItemGroup>

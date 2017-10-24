@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     {
         protected override void ProcessRecord()
         {
-            AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
+            
             ExecuteClientAction(() =>
             {
                 string resourceGroupName = this.ResourceGroupName;

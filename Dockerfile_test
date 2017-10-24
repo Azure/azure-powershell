@@ -1,0 +1,4 @@
+FROM microsoft/powershell
+COPY src/Package/Debug/ResourceManager /azure-powershell
+COPY tools/InstallationTests/NetcoreTests /tests
+ENTRYPOINT [ "powershell -Command '$env:PSModulePath = \"$($env:PSModulePath):/azure-powershell\"'; cd tests; ./NetcoreTests.ps1" ]

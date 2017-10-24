@@ -1,0 +1,20 @@
+sudo: required
+language: csharp
+mono: none
+dotnet: 2.0.0
+dist: trusty
+
+services:
+ - docker
+
+before_install:
+ - sudo apt-get update
+ - sudo apt-get install docker-ce
+
+script:
+ - dotnet msbuild build.proj /t:BuildNetcore /p:Configuration=Debug
+ - docker build . -t twitchax/azure-powershell-core:latest
+ 
+after_success:
+ - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+ - docker push twitchax/azure-powershell-core:latest

@@ -1,0 +1,22 @@
+﻿<Properties StartupConfiguration="{87246108-B555-4F5F-B916-A9C6FABB1971}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="src/ResourceManager/Compute/Commands.Compute/Generated/Models/ComputeAutoMapperProfile.cs">
+    <Files>
+      <File FileName="src/ResourceManager/Resources/Commands.Resources/Models.ResourceGroups/ResourcesBaseCmdlet.cs" Line="90" Column="7" />
+      <File FileName="src/ResourceManager/Resources/Commands.Resources/Models.ResourceGroups/ResourcesExtensions.cs" Line="47" Column="17" />
+      <File FileName="src/ResourceManager/Resources/Commands.Resources/Models.ResourceGroups/ResourceClient.ResourceManager.cs" Line="99" Column="10" />
+      <File FileName="src/Common/Commands.Common.Storage/Stack/Properties/AssemblyInfo.cs" Line="17" Column="38" />
+      <File FileName="src/Common/Commands.Common.Graph.RBAC/Properties/AssemblyInfo.cs" Line="15" Column="1" />
+      <File FileName="src/ResourceManager/Compute/Commands.Compute/Extension/VmssDiskEncryption/SetAzureVmssDiskEncryptionExtension.cs" Line="22" Column="34" />
+      <File FileName="src/ResourceManager/Compute/Commands.Compute/RemoteDesktop/GetAzureRemoteDesktopFileCommand.cs" Line="17" Column="68" />
+      <File FileName="src/ResourceManager/Compute/Commands.Compute/Generated/Models/ComputeAutoMapperProfile.cs" Line="60" Column="58" />
+      <File FileName="src/ResourceManager/Compute/Commands.Compute/Generated/Snapshot/SnapshotGrantAccessMethod.cs" Line="137" Column="24" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.Tests.Commands.Profile.Test.Netcore PreferredExecutionTarget="MonoDevelop.Default" />
+</Properties>
