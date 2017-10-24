@@ -31,10 +31,11 @@ The **New-AzureRmApiManagementCertificate** cmdlet creates an Azure API Manageme
 
 ### Example 1: Create and upload a certificate
 ```
+PS C:\>$ApiMgmtContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>New-AzureRmApiManagementCertificate -Context $ApiMgmtContext -PfxFilePath "C:\contoso\certificates\apimanagement.pfx" -PfxPassword "1111"
 ```
 
-This command creates an API Management certificate and uploads it.
+This command uploads a certificate to Api Management. This certificate can be used for mutual authentication with backend using policies.
 
 ## PARAMETERS
 
