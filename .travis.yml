@@ -17,9 +17,9 @@ script:
  
 after_success:
  - docker login -u $DOCKER_USER -p $DOCKER_PASS
- - if [[ $TRAVIS_BRANCH == 'master' ]]
-    docker tag $DOCKER_USER/azure-powershell-core:$TRAVIS_COMMIT $DOCKER_USER/azure-powershell-core:latest
-    docker push $DOCKER_USER/azure-powershell-core:latest
+ - if [ $TRAVIS_BRANCH == 'master' ]; then
+    docker tag $DOCKER_USER/azure-powershell-core:$TRAVIS_COMMIT $DOCKER_USER/azure-powershell-core:latest;
+    docker push $DOCKER_USER/azure-powershell-core:latest;
    else
-    docker push $DOCKER_USER/azure-powershell-core:$TRAVIS_COMMIT
+    docker push $DOCKER_USER/azure-powershell-core:$TRAVIS_COMMIT;
    fi
