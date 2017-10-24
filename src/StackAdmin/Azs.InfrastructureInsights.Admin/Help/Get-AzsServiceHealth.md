@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzsServiceHealth
 
 ## SYNOPSIS
-Get the heath of a Service.
+Get the health of a Service.
 
 ## SYNTAX
 
