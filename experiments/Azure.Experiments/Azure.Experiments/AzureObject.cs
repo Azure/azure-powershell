@@ -19,6 +19,11 @@ namespace Azure.Experiments
 
         public int Priority { get; }
 
+        /// <summary>
+        /// The function should be called only after GetInfo is called for the 
+        /// object and its dependencies.
+        /// </summary>
+        /// <returns></returns>
         public abstract string GetInfoLocation();
 
         /// <summary>
@@ -89,6 +94,14 @@ namespace Azure.Experiments
                 Info = await CreateAsync(location);
             }
             return Info;
+        }
+
+        public async Task<T> GetOrCreateAsync()
+        {
+            await GetOrNullAsync();
+            var dl = GetDependencyLocation();
+            var location = dl.Location ?? "eastus";
+            return await GetOrCreateAsync(location);
         }
 
         protected AzureObject(string name, IEnumerable<AzureObject> dependencies) 
