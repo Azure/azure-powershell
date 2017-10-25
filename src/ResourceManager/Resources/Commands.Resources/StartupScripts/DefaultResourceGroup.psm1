@@ -1,9 +1,5 @@
-﻿Function Init()
-{
-    #Initialize Code
-}
-
-$dllPath = '../../../../../Package/Debug/ResourceManager/AzureResourceManager/AzureRM.Resources/Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll'
+﻿# Set Default Resource Group for Resources cmdlets
+$dllPath = '../../../../../Package/Debug/ResourceManager/AzureResourceManager/AzureRM.Resources/Microsoft.Azure.Management.ResourceManager.dll'
 $Assembly = [Reflection.Assembly]::LoadFrom($dllPath)
 $AllCmdlets = $Assembly.GetTypes() | where {$_.CustomAttributes.AttributeType.Name -contains "CmdletAttribute"}
 
@@ -40,6 +36,3 @@ $FilteredCommands | ForEach-Object {
 			} 
 		})
 }
-
-#Execute Init
-#Init
