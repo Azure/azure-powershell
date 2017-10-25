@@ -21,6 +21,11 @@
 * Adding support for list and cancel the asynchronous updateslo operation on the database
 	- update existing cmdlet Get-AzureRmSqlDatabaseActivity to return DB updateslo operation status.
 	- add new cmdlet Stop-AzureRmSqlDatabaseActivity for cancel the asynchronous updateslo operation on the database.
+* Adding support for Server DNS Aliases
+	- Adding Get-AzureRmSqlServerDnsAlias cmdlet which gets server dns aliases by server and alias name or a list of server dns aliases for an azure Sql Server.
+	- Adding New-AzureRmSqlServerDnsAlias cmdlet which creates new server dns alias for a given Azure Sql server
+	- Adding Set-AzurermSqlServerDnsAlias cmlet which allows updating a Azure Sql Server to which server dns alias is pointing
+	- Adding Remove-AzureRmSqlServerDnsAlias cmdlet which removes a server dns alias for a Azure Sql Server
 
 ## Version 3.4.1
 
