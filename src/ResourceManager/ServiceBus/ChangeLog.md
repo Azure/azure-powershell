@@ -89,13 +89,11 @@ The following cmdlets were affected this release:
     $namespace = Get-AzureRmServiceBusNamespace <parameters>
 	$namespace.Status
 	$namespace.Enabled
+	
     # New
-
     # The call remains the same, but the returned values NameSpace object will not have the Enabled and Status properties   
     $namespace = Get-AzureRmServiceBusNamespace <parameters>
-    
-    ```
-   
+```
    
    **Queue**
    - EntityAvailabilityStatus
@@ -114,11 +112,9 @@ The following cmdlets were affected this release:
 	$queue.SupportOrdering	
 
     # New
-
     # The call remains the same, but the returned values Queue object will not have the EntityAvailabilityStatus, EnableBatchedOperations, IsAnonymousAccessible and SupportOrdering properties    
     $queue = Get-AzureRmServiceBusQueue <parameters>
-    
-    ```
+```
    
    **Topic**
    - Location
@@ -128,11 +124,10 @@ The following cmdlets were affected this release:
    - EnableSubscriptionPartitioning
    - EntityAvailabilityStatus
    
-   
-    ```powershell
+   ```powershell
    
     # Old
-	# The $topic has EntityAvailabilityStatus, EnableSubscriptionPartitioning, IsAnonymousAccessible, IsExpress, Location and FilteringMessagesBeforePublishing property 
+    # The $topic has EntityAvailabilityStatus, EnableSubscriptionPartitioning, IsAnonymousAccessible, IsExpress, Location and FilteringMessagesBeforePublishing property 
     $topic = Get-AzureRmServiceBusTopic <parameters>
 	$topic.EntityAvailabilityStatus
 	$topic.EnableSubscriptionPartitioning
@@ -142,11 +137,9 @@ The following cmdlets were affected this release:
 	$topic.Location
 
     # New
-
     # The call remains the same, but the returned values Topic object will not have the EntityAvailabilityStatus, EnableSubscriptionPartitioning, IsAnonymousAccessible, IsExpress, FilteringMessagesBeforePublishing and Location properties    
     $topic = Get-AzureRmServiceBusTopic <parameters>
-    
-    ```
+```
    
    **Subscription**
    - EntityAvailabilityStatus
@@ -154,7 +147,7 @@ The following cmdlets were affected this release:
    - Location
    - IsReadOnly
    
-    ```powershell
+   ```powershell
    
     # Old
 	# The $subscription has EntityAvailabilityStatus, DeadLetteringOnFilterEvaluationExceptions, Location, and IsReadOnly property 
@@ -165,11 +158,9 @@ The following cmdlets were affected this release:
 	$subscription.IsReadOnly
 
     # New
-
     # The call remains the same, but the returned values Topic object will not have the EntityAvailabilityStatus, DeadLetteringOnFilterEvaluationExceptions, Location, and IsReadOnly properties    
     $subscription = Get-AzureRmServiceBussubscription <parameters>
-    
-    ```
+```
 
 ## Version 0.4.7
 
