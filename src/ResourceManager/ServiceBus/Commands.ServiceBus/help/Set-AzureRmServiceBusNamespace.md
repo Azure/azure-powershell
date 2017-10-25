@@ -30,11 +30,9 @@ Id                 : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourc
 Location           : West US
 Sku                : Name : Standard , Capacity : 10 , Tier : Standard
 ProvisioningState  : Succeeded
-Status             :
 CreatedAt          :
 UpdatedAt          :
 ServiceBusEndpoint :
-Enabled            : False
 ```
 
 Updates the Service Bus namespace with a new description.
