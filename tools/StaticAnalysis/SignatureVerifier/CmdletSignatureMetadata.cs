@@ -163,7 +163,8 @@ namespace StaticAnalysis.SignatureVerifier
             "Statistics",
             "Status",
             "Success",
-            "Vmss"
+            "Vmss",
+            "Alias"
         };
 
         public List<ParameterMetadata> GetParametersWithPluralNoun()
