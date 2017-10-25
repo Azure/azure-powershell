@@ -207,7 +207,9 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-The Azure resource ID.```yaml
+The Azure resource ID.
+
+```yaml
 Type: String
 Parameter Sets: ByResourceId
 Aliases: 
