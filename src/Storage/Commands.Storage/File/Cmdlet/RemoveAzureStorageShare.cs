@@ -119,12 +119,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                         }
                         catch (StorageException e)
                         {
-                            if (e.IsConflictException() && retryDeleteSnapshot)
-                            {
-                                //If x-ms-delete-snapshots is not specified on the request and the share has associated snapshots, the File service returns status code 409 (Conflict).
-                                retryDeleteSnapshot = true;
-                            }
-                            else
+                            //If x-ms-delete-snapshots is not specified on the request and the share has associated snapshots, the File service returns status code 409 (Conflict).
+                            if (!(e.IsConflictException() && retryDeleteSnapshot))
                             {
                                 throw;
                             }
@@ -132,14 +128,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
                         if (retryDeleteSnapshot)
                         {
-                            if (force || await OutputStream.ConfirmAsync(string.Format("This share might has snapshots, Remove the share and all snapshots?: {0}", share.Name)).ConfigureAwait(false))
+                            if (force || await OutputStream.ConfirmAsync(string.Format("This share might have snapshots, remove the share and all snapshots?: {0}", share.Name)).ConfigureAwait(false))
                             {
                                 deleteShareSnapshotsOption = DeleteShareSnapshotsOption.IncludeSnapshots;
                                 await this.Channel.DeleteShareAsync(share, deleteShareSnapshotsOption, null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken).ConfigureAwait(false);
                             }
                             else
                             {
-                                string result = string.Format("The remove operation of  share '{0}' is cancelled.", share.Name);
+                                string result = string.Format("The remove operation of share '{0}' has been cancelled.", share.Name);
                                 OutputStream.WriteVerbose(taskId, result);
                             }
                         }
