@@ -8,7 +8,7 @@ Locale: en-US
 
 # AzureRM.MarketplaceOrdering Module
 ## Description
-The topics in this section document the Azure PowerShell cmdlets for Azure MarketplaceOrdering in the Azure Resource Manager (ARM) framework. The cmdlets exist in the Microsoft.Azure.Commands.MarketplaceOrdering namespace. These cmdlets allow azure users to accept the legal terms for a marketplace offering further allowing programmtic deployment for these solutions. Users may also reject set of legal terms already accepted.
+The topics in this section document the Azure PowerShell cmdlets for Azure MarketplaceOrdering in the Azure Resource Manager (ARM) framework. The cmdlets exist in the Microsoft.Azure.Commands.MarketplaceOrdering namespace. These cmdlets allow azure users to accept the legal terms for a marketplace offering further allowing programmatic deployment for these solutions. Users may also reject set of legal terms already accepted.
 
 ## AzureRM.MarketplaceOrdering Cmdlets
 ### [Get-AzureRmMarketplaceTerms](Get-AzureRmMarketplaceTerms.md)

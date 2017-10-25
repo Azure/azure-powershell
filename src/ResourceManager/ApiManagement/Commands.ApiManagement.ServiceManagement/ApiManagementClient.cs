@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
+    using System.Management.Automation;
     using System.Net;
     using System.Text;
     using System.Text.RegularExpressions;
@@ -202,8 +203,15 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                 cfg
                     .CreateMap<BackendProxyContract, PsApiManagementBackendProxy>()
                     .ForMember(dest => dest.Url, opt => opt.MapFrom(src => src.Url))
-                    .ForMember(dest => dest.Password, opt => opt.MapFrom(src => src.Password))
-                    .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.Username));
+                    .ForMember(dest => dest.ProxyCredentials, opt => opt.MapFrom(src =>
+                        string.IsNullOrEmpty(src.Password) ? PSCredential.Empty :
+                        new PSCredential(src.Username, src.Password.ConvertToSecureString())));
+
+                cfg
+                    .CreateMap<PsApiManagementBackendProxy, BackendProxyContract>()
+                    .ForMember(dest => dest.Url, opt => opt.MapFrom(src => src.Url))
+                    .ForMember(dest => dest.Username, opt => opt.MapFrom(src => src.ProxyCredentials == PSCredential.Empty ? null : src.ProxyCredentials.UserName))
+                    .ForMember(dest => dest.Password, opt => opt.MapFrom(src => src.ProxyCredentials == PSCredential.Empty ? null : src.ProxyCredentials.Password.ConvertToString()));
 
                 cfg
                     .CreateMap<BackendCredentialsContract, PsApiManagementBackendCredential>()
@@ -463,7 +471,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             string apiId,
             PsApiManagementApiFormat specificationFormat,
             string specificationPath,
-            string urlSuffix,
+            string apiPath,
             string wsdlServiceName,
             string wsdlEndpointName,
             PsApiManagementApiType? apiType)
@@ -474,7 +482,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
 
             using (var fileStream = File.OpenRead(specificationPath))
             {
-                Client.Apis.Import(context.ResourceGroupName, context.ServiceName, apiId, contentType, fileStream, urlSuffix, wsdlServiceName, wsdlEndpointName, apiTypeValue);
+                Client.Apis.Import(context.ResourceGroupName, context.ServiceName, apiId, contentType, fileStream, apiPath, wsdlServiceName, wsdlEndpointName, apiTypeValue);
             }
         }
 
@@ -1058,7 +1066,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                 {
                     query.Filter += "&";
                 }
-                query.Filter = string.Format("lastName eq '{0}'", email);
+                query.Filter = string.Format("email eq '{0}'", email);
                 isFirstCondition = false;
             }
 
@@ -2094,9 +2102,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             return results;
         }
 
-        public PsApiManagementBackend BackendById(PsApiManagementContext context, string loggerId)
+        public PsApiManagementBackend BackendById(PsApiManagementContext context, string backendId)
         {
-            var response = Client.Backends.Get(context.ResourceGroupName, context.ServiceName, loggerId);
+            var response = Client.Backends.Get(context.ResourceGroupName, context.ServiceName, backendId);
             var backend = Mapper.Map<PsApiManagementBackend>(response.Value);
 
             return backend;
@@ -2187,7 +2195,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
 
             if (proxy != null)
             {
-                backendUpdateParams.Proxy = Mapper.Map<PsApiManagementBackendProxy, BackendProxyContract>(proxy);
+                backendUpdateParams.Proxy = Mapper.Map<BackendProxyContract>(proxy);
             }
 
             Client.Backends.Update(

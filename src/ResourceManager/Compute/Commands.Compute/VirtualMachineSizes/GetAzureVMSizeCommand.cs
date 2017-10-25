@@ -15,6 +15,7 @@
 using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.Location;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Rest.Azure;
 using System.Collections.Generic;
@@ -36,6 +37,7 @@ namespace Microsoft.Azure.Commands.Compute
            ParameterSetName = ListVirtualMachineSizeParamSet,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The location name.")]
+        [LocationCompleter("Microsoft.Compute/locations/vmSizes")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
