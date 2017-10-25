@@ -29,7 +29,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             Position = 0,
             Mandatory = true,
             ParameterSetName = Constants.SpecificParameterSetName,
-            HelpMessage = "Name of the file share to be gotten.")]
+            HelpMessage = "Name of the file share to be received.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -43,7 +43,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         Position = 1,
         Mandatory = false,
         ParameterSetName = Constants.SpecificParameterSetName,
-        HelpMessage = "Snapshot Time of the file share snapshot to be gotten.")]
+        HelpMessage = "SnapshotTime of the file share snapshot to be received.")]
                 [ValidateNotNullOrEmpty]
                 public DateTimeOffset? SnapshotTime { get; set; }
 

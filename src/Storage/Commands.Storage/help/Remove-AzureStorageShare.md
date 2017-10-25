@@ -40,7 +40,7 @@ This command removes the file share named ContosoShare06.
 
 ### Example 2: Remove a file share and all its snapshots
 ```
-PS C:\>Remove-AzureStorageShare -Name "ContosoShare06" -IncludeSnapshot
+PS C:\>Remove-AzureStorageShare -Name "ContosoShare06" -IncludeAllSnapshot
 ```
 
 This command removes the file share named ContosoShare06 and all its snapshots.

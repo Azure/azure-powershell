@@ -163,7 +163,7 @@ Accept wildcard characters: False
 ```
 
 ### -SnapshotTime
-Snapshot Time of the file share snapshot to be gotten.
+SnapshotTime of the file share snapshot to be received.
 
 ```yaml
 Type: DateTimeOffset
