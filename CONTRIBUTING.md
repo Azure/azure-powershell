@@ -148,7 +148,7 @@ The following guidelines must be followed in **EVERY** pull request that is open
 
 The following guidelines must be followed in pull requests that add, edit, or remove a cmdlet.
 
-- Cmdlet name uses an approved PowerShell verb - use enums for `VerbsCommon`, `VerbsCommunication`, `VerbLifecycle`, `VerbsOther` whenever possible
+- Cmdlet name uses an approved PowerShell verb - use enums for `VerbsCommon`, `VerbsCommunication`, `VerbsData`, `VerbsDiagnostic`, `VerbsLifecycle`, `VerbsOther` whenever possible
 - Cmdlet noun name uses the AzureRm prefix for management cmdlets, and the Azure prefix for data plane cmdlets
 - Cmdlet specifies the `OutputType` attribute if any output is produced; if the cmdlet produces no output, it should implement a `PassThrough` parameter
 - If the cmdlet makes changes or has side effects, it should implement `ShouldProcess` and have `SupportsShouldProcess = true` specified in the cmdlet attribute. See a discussion about correct `ShouldProcess` implementation [here](https://gist.github.com/markcowl/338e16fe5c8bbf195aff9f8af0db585d#what-is-the-change).
