@@ -79,47 +79,43 @@ The following cmdlets were affected this release:
    
    The following properties are removed in this release:
    
+
    **NamespceAttributes**
    - Status
    - Enabled
    
    ```powershell
-    # Old
-	# The $namespace has Status and Enabled property 
-    $namespace = Get-AzureRmServiceBusNamespace <parameters>
-	$namespace.Status
-	$namespace.Enabled
-    # New
+   # Old
+   # The $namespace has Status and Enabled property 
+   $namespace = Get-AzureRmServiceBusNamespace <parameters>
+   $namespace.Status
+   $namespace.Enabled
+   # New
 
-    # The call remains the same, but the returned values NameSpace object will not have the Enabled and Status properties   
-    $namespace = Get-AzureRmServiceBusNamespace <parameters>
-    
-    ```
-   
-   
+   # The call remains the same, but the returned values NameSpace object will not have the Enabled and Status properties   
+   $namespace = Get-AzureRmServiceBusNamespace <parameters>
+   ```
+
    **Queue**
    - EntityAvailabilityStatus
    - EnableBatchedOperations
    - IsAnonymousAccessible
    - SupportOrdering
    
-   ```powershell
-   
-    # Old
-	# The $queue has EntityAvailabilityStatus, EnableBatchedOperations, IsAnonymousAccessible and SupportOrdering property 
-    $queue = Get-AzureRmServiceBusQueue <parameters>
-	$queue.EntityAvailabilityStatus
-	$queue.EnableBatchedOperations
-	$queue.IsAnonymousAccessible
-	$queue.SupportOrdering	
+   ```powershell   
+   # Old
+   # The $queue has EntityAvailabilityStatus, EnableBatchedOperations, IsAnonymousAccessible and SupportOrdering property 
+   $queue = Get-AzureRmServiceBusQueue <parameters>
+   $queue.EntityAvailabilityStatus
+   $queue.EnableBatchedOperations
+   $queue.IsAnonymousAccessible
+   $queue.SupportOrdering	
 
-    # New
+   # New
+   # The call remains the same, but the returned values Queue object will not have the EntityAvailabilityStatus, EnableBatchedOperations, IsAnonymousAccessible and SupportOrdering properties    
+   $queue = Get-AzureRmServiceBusQueue <parameters>
+   ```
 
-    # The call remains the same, but the returned values Queue object will not have the EntityAvailabilityStatus, EnableBatchedOperations, IsAnonymousAccessible and SupportOrdering properties    
-    $queue = Get-AzureRmServiceBusQueue <parameters>
-    
-    ```
-   
    **Topic**
    - Location
    - IsExpress
@@ -127,49 +123,44 @@ The following cmdlets were affected this release:
    - FilteringMessagesBeforePublishing
    - EnableSubscriptionPartitioning
    - EntityAvailabilityStatus
-   
-   
-    ```powershell
-   
-    # Old
-	# The $topic has EntityAvailabilityStatus, EnableSubscriptionPartitioning, IsAnonymousAccessible, IsExpress, Location and FilteringMessagesBeforePublishing property 
-    $topic = Get-AzureRmServiceBusTopic <parameters>
-	$topic.EntityAvailabilityStatus
-	$topic.EnableSubscriptionPartitioning
-	$topic.IsAnonymousAccessible
-	$topic.IsExpress
-	$topic.FilteringMessagesBeforePublishing
-	$topic.Location
 
-    # New
+   ```powershell   
+   # Old
+   # The $topic has EntityAvailabilityStatus, EnableSubscriptionPartitioning, IsAnonymousAccessible, IsExpress, Location and FilteringMessagesBeforePublishing property 
+   $topic = Get-AzureRmServiceBusTopic <parameters>
+   $topic.EntityAvailabilityStatus
+   $topic.EnableSubscriptionPartitioning
+   $topic.IsAnonymousAccessible
+   $topic.IsExpress
+   $topic.FilteringMessagesBeforePublishing
+   $topic.Location
 
-    # The call remains the same, but the returned values Topic object will not have the EntityAvailabilityStatus, EnableSubscriptionPartitioning, IsAnonymousAccessible, IsExpress, FilteringMessagesBeforePublishing and Location properties    
-    $topic = Get-AzureRmServiceBusTopic <parameters>
-    
-    ```
-   
+   # New
+
+   # The call remains the same, but the returned values Topic object will not have the EntityAvailabilityStatus, EnableSubscriptionPartitioning, IsAnonymousAccessible, IsExpress, FilteringMessagesBeforePublishing and Location properties    
+   $topic = Get-AzureRmServiceBusTopic <parameters>
+   ```   
+
    **Subscription**
    - EntityAvailabilityStatus
    - DeadLetteringOnFilterEvaluationExceptions
    - Location
    - IsReadOnly
    
-    ```powershell
-   
-    # Old
-	# The $subscription has EntityAvailabilityStatus, DeadLetteringOnFilterEvaluationExceptions, Location, and IsReadOnly property 
-    $subscription = Get-AzureRmServiceBussubscription <parameters>
-	$subscription.EntityAvailabilityStatus
-	$subscription.DeadLetteringOnFilterEvaluationExceptions
-	$subscription.Location
-	$subscription.IsReadOnly
+   ```powershell   
+   # Old
+   # The $subscription has EntityAvailabilityStatus, DeadLetteringOnFilterEvaluationExceptions, Location, and IsReadOnly property 
+   $subscription = Get-AzureRmServiceBussubscription <parameters>
+   $subscription.EntityAvailabilityStatus
+   $subscription.DeadLetteringOnFilterEvaluationExceptions
+   $subscription.Location
+   $subscription.IsReadOnly
 
-    # New
+   # New
 
-    # The call remains the same, but the returned values Topic object will not have the EntityAvailabilityStatus, DeadLetteringOnFilterEvaluationExceptions, Location, and IsReadOnly properties    
-    $subscription = Get-AzureRmServiceBussubscription <parameters>
-    
-    ```
+   # The call remains the same, but the returned values Topic object will not have the EntityAvailabilityStatus, DeadLetteringOnFilterEvaluationExceptions, Location, and IsReadOnly properties    
+   $subscription = Get-AzureRmServiceBussubscription <parameters>
+   ```
 
 ## Version 0.4.7
 
