@@ -288,7 +288,6 @@ System.Nullable\`1\[\[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral
 
 ### Microsoft.Azure.Commands.ServiceBus.Models.TopicAttributes
 Name                                : SB-Topic_exampl1
-Location                            : West US
 Id                                  : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1/topics/S
                                       B-Topic_exampl1
 Type                                : Microsoft.ServiceBus/Topic

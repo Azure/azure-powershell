@@ -116,7 +116,6 @@ Id                                  : /subscriptions/854d368f-1828-428f-8f3c-f2a
                                       B-Queue_example1
 Name                                : SB-Queue_example1
 Type                                : Microsoft.ServiceBus/Queues
-Location                            : West US
 
 ## NOTES
 
