@@ -14,17 +14,20 @@ Gets a list or a particular product.
 
 ### Get all producst (Default)
 ```
-Get-AzureRmApiManagementProduct -Context <PsApiManagementContext> [<CommonParameters>]
+Get-AzureRmApiManagementProduct -Context <PsApiManagementContext> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### Get by Id
 ```
-Get-AzureRmApiManagementProduct -Context <PsApiManagementContext> -ProductId <String> [<CommonParameters>]
+Get-AzureRmApiManagementProduct -Context <PsApiManagementContext> -ProductId <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Get by Title
 ```
-Get-AzureRmApiManagementProduct -Context <PsApiManagementContext> [-Title <String>] [<CommonParameters>]
+Get-AzureRmApiManagementProduct -Context <PsApiManagementContext> [-Title <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,14 +37,16 @@ The **Get-AzureRmApiManagementProduct** cmdlet gets a list or a particular produ
 
 ### Example 1: Get all products
 ```
-PS C:\>Get-AzureRmApiManagementProduct -Context $APImContext
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Get-AzureRmApiManagementProduct -Context $apimContext 
 ```
 
 This command get all API Management products.
 
 ### Example 2: Get a product by ID
 ```
-PS C:\>Get-AzureRmApiManagementProduct -Context $APImContext -ProductId "0123456789"
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Get-AzureRmApiManagementProduct -Context $apimContext -ProductId "0123456789"
 ```
 
 This command get an API Management product by ID.
@@ -60,6 +65,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+ 
+ ```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -101,7 +121,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementProduct
+The details of the Product in API Management service.
+
 ### IList<Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementProduct>
+The list of Product in API Management service.
 
 ## NOTES
 
