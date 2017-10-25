@@ -225,7 +225,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Resources\ServiceManagement\Files\dSMSTest.cscfg">
-      <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Resources\ServiceManagement\Files\dSMSTest.cspkg">
