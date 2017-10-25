@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Location
         /// Example: [Parameter(ParameterSetName = ListByNameInTenantParameterSet, ValueFromPipelineByPropertyName = true, Mandatory = false), LocationCompleter(new string[] { "Microsoft.Batch/operationss" })]
         /// </summary>
         /// <param name="resourceTypes"></param>
-        public LocationCompleterAttribute(string[] resourceTypes) : base(CreateScriptBlock(resourceTypes))
+        public LocationCompleterAttribute(params string[] resourceTypes) : base(CreateScriptBlock(resourceTypes))
         {
         }
 
