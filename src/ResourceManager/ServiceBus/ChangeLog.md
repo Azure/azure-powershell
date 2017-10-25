@@ -79,7 +79,7 @@ The following cmdlets were affected this release:
    
    The following properties are removed in this release:
    
-   ** NamespceAttributes **
+   **NamespceAttributes**
    - Status
    - Enabled
    
@@ -91,13 +91,13 @@ The following cmdlets were affected this release:
 	$namespace.Enabled
     # New
 
-    # The call remains the same, but the returned values NameSpace object will not have the ResourceGroupName property    
+    # The call remains the same, but the returned values NameSpace object will not have the Enabled and Status properties   
     $namespace = Get-AzureRmServiceBusNamespace <parameters>
     
     ```
    
    
-   ** Queue **
+   **Queue**
    - EntityAvailabilityStatus
    - EnableBatchedOperations
    - IsAnonymousAccessible
@@ -120,7 +120,7 @@ The following cmdlets were affected this release:
     
     ```
    
-   ** Topic **
+   **Topic**
    - Location
    - IsExpress
    - IsAnonymousAccessible
@@ -143,12 +143,12 @@ The following cmdlets were affected this release:
 
     # New
 
-    # The call remains the same, but the returned values Topic object will not have the EntityAvailabilityStatus, EnableBatchedOperations, IsAnonymousAccessible and SupportOrdering properties    
+    # The call remains the same, but the returned values Topic object will not have the EntityAvailabilityStatus, EnableSubscriptionPartitioning, IsAnonymousAccessible, IsExpress, FilteringMessagesBeforePublishing and Location properties    
     $topic = Get-AzureRmServiceBusTopic <parameters>
     
     ```
    
-   ** Subscription **
+   **Subscription**
    - EntityAvailabilityStatus
    - DeadLetteringOnFilterEvaluationExceptions
    - Location

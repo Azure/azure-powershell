@@ -115,7 +115,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.Commands.ServiceBus.Models.SubscriptionAttributes
 Name                                      : SB-TopicSubscription-Example1
-Location                                  : West US
 AccessedAt                                : 1/20/2017 3:18:54 AM
 AutoDeleteOnIdle                          : 10675199.02:48:05.4775807
 CountDetails                              : Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails
