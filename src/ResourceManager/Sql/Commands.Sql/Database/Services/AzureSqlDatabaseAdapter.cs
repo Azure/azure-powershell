@@ -286,8 +286,56 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
             }
             else
             {
-                throw new NotSupportedException(string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.StandaloneDatabaseActivityNotSupported));
+                var response = Communicator.ListOperations(resourceGroupName, serverName, databaseName);
+                IEnumerable<AzureSqlDatabaseActivityModel> list = response.Select((r) =>
+                {
+                    return new AzureSqlDatabaseActivityModel()
+                    {
+                        DatabaseName = r.DatabaseName,
+                        ErrorCode = r.ErrorCode,
+                        ErrorMessage = r.ErrorDescription,
+                        ErrorSeverity = r.ErrorSeverity,
+                        Operation = r.Operation,
+                        OperationId = Guid.Parse(r.Name),
+                        PercentComplete = r.PercentComplete,
+                        ServerName = r.ServerName,
+                        StartTime = r.StartTime,
+                        State = r.State,
+                        Properties = new AzureSqlDatabaseActivityModel.DatabaseState()
+                        {
+                            Current = new Dictionary<string, string>(),
+                            Requested = new Dictionary<string, string>()
+                        }
+                    };
+                });
+
+                // Check if we have a operation id constraint
+                if (operationId.HasValue)
+                {
+                    list = list.Where(pl => Guid.Equals(pl.OperationId, operationId));
+                }
+
+                return list.ToList();
             }
+        }
+
+        internal IEnumerable<AzureSqlDatabaseActivityModel> CancelDatabaseActivity(string resourceGroupName, string serverName, string elasticPoolName, string databaseName, Guid? operationId)
+        {
+            if (!string.IsNullOrEmpty(elasticPoolName))
+            {
+                throw new NotSupportedException(string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.ElasticPoolDatabaseActivityCancelNotSupported));
+            }
+
+            if (!operationId.HasValue)
+            {
+                throw new NotSupportedException(string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.OperationIdRequired));
+            }
+
+            Communicator.CancelOperation(resourceGroupName, serverName, databaseName, operationId.Value);
+
+            // After Cancel event is fired, state will be in 'CancelInProgress' for a while but should expect to finish in a minute
+
+            return ListDatabaseActivity(resourceGroupName, serverName, elasticPoolName, databaseName, operationId);
         }
     }
 }
