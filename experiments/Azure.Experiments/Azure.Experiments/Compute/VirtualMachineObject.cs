@@ -27,7 +27,7 @@ namespace Azure.Experiments.Compute
             Ni = ni;
         }
 
-        protected override Task<VirtualMachine> CreateAsync()
+        protected override Task<VirtualMachine> CreateAsync(string location)
             => Client.CreateOrUpdateAsync(
                 ResourceGroupName,
                 Name,

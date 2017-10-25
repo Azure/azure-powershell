@@ -17,7 +17,7 @@ namespace Azure.Experiments.Network
             AddressPrefix = addressPrefix;
         }
 
-        protected override async Task<Subnet> CreateAsync()
+        protected override async Task<Subnet> CreateAsync(string location)
         {
             // The Virtual Network should be created at this point.
             var vn = Vn.Info;

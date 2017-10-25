@@ -16,11 +16,11 @@ namespace Azure.Experiments.Network
             Client = client.NetworkSecurityGroups;
         }
 
-        protected override Task<NetworkSecurityGroup> CreateAsync()
+        protected override Task<NetworkSecurityGroup> CreateAsync(string location)
             => Client.CreateOrUpdateAsync(
                 ResourceGroupName,
                 Name,
-                new NetworkSecurityGroup { Location = "eastus" });
+                new NetworkSecurityGroup { Location = location });
 
         protected override Task<NetworkSecurityGroup> GetOrThrowAsync()
             => Client.GetAsync(ResourceGroupName, Name);

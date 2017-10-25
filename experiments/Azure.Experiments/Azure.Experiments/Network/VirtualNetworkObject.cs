@@ -18,7 +18,7 @@ namespace Azure.Experiments.Network
             AddressPrefix = addressPrefix;
         }
 
-        protected override Task<VirtualNetwork> CreateAsync()
+        protected override Task<VirtualNetwork> CreateAsync(string location)
             => Client.CreateOrUpdateAsync(
                 ResourceGroupName,
                 Name,

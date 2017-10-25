@@ -14,7 +14,7 @@ namespace Azure.Experiments.Tests
         public void ResourceGroupObjectTest()
         {
             var rg = new ResourceGroupObject(C, "My");
-            Assert.Equal(0, rg.Priority);
+            Assert.Equal(1, rg.Priority);
         }
 
         [Fact]
@@ -22,7 +22,7 @@ namespace Azure.Experiments.Tests
         {
             var rg = new ResourceGroupObject(C, "My1");
             var vn = new VirtualNetworkObject(C.CreateNetwork(), "My1", rg, "192.168.0.0/16");
-            Assert.Equal(1, vn.Priority);
+            Assert.Equal(2, vn.Priority);
         }
 
         [Fact]
@@ -30,7 +30,7 @@ namespace Azure.Experiments.Tests
         {
             var rg = new ResourceGroupObject(C, "MyPIA");
             var pia = new PublicIpAddressObject(C.CreateNetwork(), "MyPIA", rg);
-            Assert.Equal(1, pia.Priority);
+            Assert.Equal(2, pia.Priority);
         }
 
         //[Fact]
@@ -39,19 +39,19 @@ namespace Azure.Experiments.Tests
             var c = Credentials.Get();
             var rg = new ResourceGroupObject(c, "MyNSG");
             var nsg = new NetworkSecurityGroupObject(c.CreateNetwork(), "MyNSG", rg);
-            Assert.Equal(1, nsg.Priority);
+            Assert.Equal(2, nsg.Priority);
         }
 
-        //[Fact]
+        [Fact]
         public void SubnetObjectTest()
         {
             var rg = new ResourceGroupObject(C, "MySubnet");
             var vn = new VirtualNetworkObject(C.CreateNetwork(), "MySubnet", rg, "192.168.0.0/16");
             var subnet = new SubnetObject("MySubnet", vn, "192.168.1.0/24");
-            Assert.Equal(2, subnet.Priority);
+            Assert.Equal(3, subnet.Priority);
         }
 
-        //[Fact]
+        [Fact]
         public void NetworkInterfaceObjectTest()
         {
             var network = C.CreateNetwork();
@@ -61,10 +61,10 @@ namespace Azure.Experiments.Tests
             var pia = new PublicIpAddressObject(network, "MyNI", rg);
             var nsg = new NetworkSecurityGroupObject(network, "MyNI", rg);
             var ni = new NetworkInterfaceObject(network, "MyNI", rg, subnet, pia, nsg);
-            Assert.Equal(3, ni.Priority);
+            Assert.Equal(4, ni.Priority);
         }
 
-        //[Fact]
+        [Fact]
         public void VmObjectTest()
         {
             var network = C.CreateNetwork();
@@ -75,7 +75,7 @@ namespace Azure.Experiments.Tests
             var nsg = new NetworkSecurityGroupObject(network, "MyVM", rg);
             var ni = new NetworkInterfaceObject(network, "MyVM", rg, subnet, pia, nsg);
             var vm = new VirtualMachineObject(C, "MyVM", rg, ni, "MyVMUser", "@3as54dDd");
-            Assert.Equal(4, vm.Priority);
+            Assert.Equal(5, vm.Priority);
         }
     }
 }

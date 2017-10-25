@@ -21,13 +21,13 @@ namespace Azure.Experiments.Network
             Subnet = subnet;
         }
 
-        protected override async Task<NetworkInterface> CreateAsync()
+        protected override async Task<NetworkInterface> CreateAsync(string location)
             => await Client.CreateOrUpdateAsync(
                 ResourceGroupName,
                 Name, 
                 new NetworkInterface
                 {
-                    Location = "eastus",                    
+                    Location = location,
                     IpConfigurations = new[] 
                     {
                         new NetworkInterfaceIPConfiguration

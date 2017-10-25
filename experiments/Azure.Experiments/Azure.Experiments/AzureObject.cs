@@ -15,7 +15,7 @@ namespace Azure.Experiments
 
         public IEnumerable<AzureObject> Dependencies { get; }
 
-        public abstract Task CheckOrCreateAsync();
+        public abstract Task CheckOrCreateAsync(string location);
 
         public int Priority { get; }
 
@@ -74,7 +74,7 @@ namespace Azure.Experiments
             return Info;
         }
 
-        public async Task<T> GetOrCreateAsync()
+        public async Task<T> GetOrCreateAsync(string location)
         {
             Info = await GetOrNullAsync();
             if (Info == null)
@@ -84,9 +84,9 @@ namespace Azure.Experiments
                 // avoid multiple creations of the same resource group.
                 foreach (var d in Dependencies)
                 {
-                    await d.CheckOrCreateAsync();
+                    await d.CheckOrCreateAsync(location);
                 }
-                Info = await CreateAsync();
+                Info = await CreateAsync(location);
             }
             return Info;
         }
@@ -96,12 +96,12 @@ namespace Azure.Experiments
         {
         }
 
-        public override Task CheckOrCreateAsync()
-            => GetOrCreateAsync();
+        public override Task CheckOrCreateAsync(string location)
+            => GetOrCreateAsync(location);
 
         protected abstract Task<T> GetOrThrowAsync();
 
-        protected abstract Task<T> CreateAsync();
+        protected abstract Task<T> CreateAsync(string location);
 
         private bool IsGetCalled;       
     }

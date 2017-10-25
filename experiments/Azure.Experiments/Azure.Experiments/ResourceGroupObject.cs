@@ -17,10 +17,10 @@ namespace Azure.Experiments
                 .ResourceGroups;
         }        
 
-        protected override Task<ResourceGroup> CreateAsync()
+        protected override Task<ResourceGroup> CreateAsync(string location)
             => Client.CreateOrUpdateAsync(
                 Name,
-                new ResourceGroup { Location = "eastus" });
+                new ResourceGroup { Location = location });
 
         protected override Task<ResourceGroup> GetOrThrowAsync()
             => Client.GetAsync(Name);

@@ -16,7 +16,7 @@ namespace Azure.Experiments.Network
             Client = client.PublicIPAddresses;
         }
 
-        protected override Task<PublicIPAddress> CreateAsync()
+        protected override Task<PublicIPAddress> CreateAsync(string location)
             => Client.CreateOrUpdateAsync(
                 ResourceGroupName,
                 Name,
