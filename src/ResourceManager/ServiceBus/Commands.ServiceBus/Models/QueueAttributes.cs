@@ -48,12 +48,6 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
                 SizeInBytes = quResource.SizeInBytes;
                 Status = quResource.Status;                
                 UpdatedAt = quResource.UpdatedAt;
-#pragma warning disable 612, 618
-                IsAnonymousAccessible = false;
-                SupportOrdering = false;
-                EnableBatchedOperations = false;
-                EntityAvailabilityStatus = "Available";
-#pragma warning restore 612, 618
 
             }
         }
@@ -63,12 +57,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// </summary> 
         public string Name { get; set; }
 
-        /// <summary>
-        /// location of the resource.
-        /// </summary> 
-        [ObsoleteAttribute("'Location' property of eventhub is mark as obsolete and will be remved in Breaking changes build", false)]
-        public string Location { get; set; }
-
+        
         /// <summary>
         /// the duration of a peek lock; that is, the amount of time that the
         /// message is locked for other receivers. The maximum value for
@@ -175,34 +164,6 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// <summary>
         /// the exact time the message has been updated.
         /// </summary>
-        public DateTime? UpdatedAt { get; set; }
-
-        /// <summary>
-        /// Entity availability status for the queue. Possible values include:
-        /// 'Available', 'Limited', 'Renaming', 'Restoring', 'Unknown'
-        /// </summary> 
-        [ObsoleteAttribute("'EntityAvailabilityStatus' property of eventhub is mark as obsolete and will be remved in Breaking changes build", false)]
-        public string EntityAvailabilityStatus { get; set; }
-
-        /// <summary>
-        /// value that indicates whether server-side batched operations are
-        /// enabled..
-        /// </summary> 
-        [ObsoleteAttribute("'EnableBatchedOperations' property of eventhub is mark as obsolete and will be remved in Breaking changes build", false)]
-        public bool? EnableBatchedOperations { get; set; }
-
-        /// <summary>
-        /// a value that indicates whether the queue supports ordering.
-        /// </summary>
-        [ObsoleteAttribute("'SupportOrdering' property of eventhub is mark as obsolete and will be remved in Breaking changes build", false)]
-        public bool? SupportOrdering { get; set; }
-
-        /// <summary>
-        /// a value that indicates whether the message is anonymous accessible.
-        /// </summary> 
-        [ObsoleteAttribute("'IsAnonymousAccessible' property of eventhub is mark as obsolete and will be remved in Breaking changes build", false)]
-        public bool? IsAnonymousAccessible { get; set; }
-
-
+        public DateTime? UpdatedAt { get; set; }        
     }
 }
