@@ -15,8 +15,9 @@ namespace Azure.Experiments.Compute
             NetworkInterfaceObject ni,
             string adminUsername,
             string adminPassword) 
-            : base(name, rg, new[] { ni })
+            : base(rg, new[] { ni })
         {
+            Name = name;
             Client = new ComputeManagementClient(c.Credentials)
                 {
                     SubscriptionId = c.SubscriptionId
@@ -79,5 +80,7 @@ namespace Azure.Experiments.Compute
         private NetworkInterfaceObject Ni { get; }
 
         private IVirtualMachinesOperations Client { get; }
+
+        public override string Name { get; }
     }
 }

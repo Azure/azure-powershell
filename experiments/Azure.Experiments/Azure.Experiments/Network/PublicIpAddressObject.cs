@@ -11,8 +11,9 @@ namespace Azure.Experiments.Network
             INetworkManagementClient client,
             string name,
             ResourceGroupObject rg)
-            : base(name, rg)
+            : base(rg)
         {
+            Name = name;
             Client = client.PublicIPAddresses;
         }
 
@@ -20,11 +21,13 @@ namespace Azure.Experiments.Network
             => Client.CreateOrUpdateAsync(
                 ResourceGroupName,
                 Name,
-                new PublicIPAddress { Location = "eastus" });
+                new PublicIPAddress { Location = location });
 
         protected override Task<PublicIPAddress> GetOrThrowAsync()
             => Client.GetAsync(ResourceGroupName, Name);
 
         private IPublicIPAddressesOperations Client { get; }
+
+        public override string Name { get; }
     }
 }

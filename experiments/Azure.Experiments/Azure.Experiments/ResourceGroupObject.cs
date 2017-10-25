@@ -8,8 +8,9 @@ namespace Azure.Experiments
         ResourceGroup, ResourceGroupPolicy>
     {
         public ResourceGroupObject(Context client, string name) 
-            : base(name, NoDependencies)
+            : base(NoDependencies)
         {
+            Name = name;
             Client = new ResourceManagementClient(client.Credentials)
                 {
                     SubscriptionId = client.SubscriptionId
@@ -26,5 +27,7 @@ namespace Azure.Experiments
             => Client.GetAsync(Name);
 
         private IResourceGroupsOperations Client { get; }
+
+        public override string Name { get; }
     }
 }

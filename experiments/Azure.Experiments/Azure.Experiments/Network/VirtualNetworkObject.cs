@@ -12,8 +12,9 @@ namespace Azure.Experiments.Network
             string name,
             ResourceGroupObject rg,
             string addressPrefix) 
-            : base(name, rg, NoDependencies)
+            : base(rg, NoDependencies)
         {
+            Name = name;
             Client = client.VirtualNetworks;
             AddressPrefix = addressPrefix;
         }
@@ -37,5 +38,7 @@ namespace Azure.Experiments.Network
         private string AddressPrefix { get; }
 
         public IVirtualNetworksOperations Client { get; }
+
+        public override string Name { get; }
     }
 }

@@ -11,7 +11,7 @@ namespace Azure.Experiments
         public static IEnumerable<AzureObject> NoDependencies { get; } 
             = Enumerable.Empty<AzureObject>();
 
-        public string Name { get; }
+        public abstract string Name { get; }
 
         public IEnumerable<AzureObject> Dependencies { get; }
 
@@ -49,9 +49,9 @@ namespace Azure.Experiments
             return DependencyLocation;
         }
 
-        protected AzureObject(string name, IEnumerable<AzureObject> dependencies)
+        protected AzureObject(IEnumerable<AzureObject> dependencies)
         {
-            Name = name;
+            // Name = name;
             Dependencies = dependencies;
             Priority = dependencies.Any() 
                 ? dependencies.Max(d => d.Priority) + 1 
@@ -111,8 +111,8 @@ namespace Azure.Experiments
             return await GetOrCreateAsync(location);
         }
 
-        protected AzureObject(string name, IEnumerable<AzureObject> dependencies) 
-            : base(name, dependencies)
+        protected AzureObject(IEnumerable<AzureObject> dependencies) 
+            : base(dependencies)
         {
         }
 

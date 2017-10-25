@@ -11,8 +11,9 @@ namespace Azure.Experiments.Network
 
         public SubnetObject(
             string name, VirtualNetworkObject vn, string addressPrefix) 
-            : base(name, new[] { vn })
+            : base(new[] { vn })
         {
+            Name = name;
             Vn = vn;
             AddressPrefix = addressPrefix;
         }
@@ -31,6 +32,8 @@ namespace Azure.Experiments.Network
             => GetSubnet(await Vn.GetOrNullAsync());
 
         private VirtualNetworkObject Vn { get; }
+
+        public override string Name { get; }
 
         private Subnet GetSubnet(VirtualNetwork vn)
             => vn?.Subnets.FirstOrDefault(s => s.Name == Name);

@@ -14,8 +14,9 @@ namespace Azure.Experiments.Network
             SubnetObject subnet,
             PublicIpAddressObject pia,
             NetworkSecurityGroupObject nsg) 
-            : base(name, rg, new AzureObject[] { subnet, pia, nsg })
+            : base(rg, new AzureObject[] { subnet, pia, nsg })
         {
+            Name = name;
             Client = client.NetworkInterfaces;
             Pia = pia;
             Subnet = subnet;
@@ -51,5 +52,7 @@ namespace Azure.Experiments.Network
         private SubnetObject Subnet { get; }
 
         private INetworkInterfacesOperations Client { get; }
+
+        public override string Name { get; }
     }
 }

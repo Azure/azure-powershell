@@ -11,8 +11,9 @@ namespace Azure.Experiments.Network
             INetworkManagementClient client,
             string name,
             ResourceGroupObject rg)
-            : base(name, rg)
+            : base(rg)
         {
+            Name = name;
             Client = client.NetworkSecurityGroups;
         }
 
@@ -26,5 +27,7 @@ namespace Azure.Experiments.Network
             => Client.GetAsync(ResourceGroupName, Name);
 
         private INetworkSecurityGroupsOperations Client { get; }
+
+        public override string Name { get; }
     }
 }
