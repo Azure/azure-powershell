@@ -119,7 +119,7 @@ PrivateData = @{
     - Update-AzureRmMlOpClusterSystemService'
 
         # External dependent modules of this module
-        # ExternalModuleDependencies = 'AzureRM.Profile'
+        # ExternalModuleDependencies = ''
 
     } # End of PSData hashtable
     

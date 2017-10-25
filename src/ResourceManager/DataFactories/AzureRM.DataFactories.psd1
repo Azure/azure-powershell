@@ -134,7 +134,7 @@ PrivateData = @{
         ReleaseNotes = 'Updated for common code changes'
 
         # External dependent modules of this module
-        # ExternalModuleDependencies = 'AzureRM.Profile'
+        # ExternalModuleDependencies = ''
 
     } # End of PSData hashtable
     
