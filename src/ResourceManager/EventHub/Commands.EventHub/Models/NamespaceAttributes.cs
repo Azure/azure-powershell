@@ -37,9 +37,7 @@ namespace Microsoft.Azure.Commands.EventHub.Models
                 };
                 if (evResource.ProvisioningState != null)
                     ProvisioningState = evResource.ProvisioningState;
-#pragma warning disable 612, 618
-                Status = Microsoft.Azure.Commands.EventHub.Models.NamespaceState.Active;
-#pragma warning restore 612, 618
+
                 if (evResource.CreatedAt.HasValue)
                     CreatedAt = evResource.CreatedAt;
 
@@ -48,9 +46,6 @@ namespace Microsoft.Azure.Commands.EventHub.Models
 
                 if(evResource.ServiceBusEndpoint != null)
                     ServiceBusEndpoint = evResource.ServiceBusEndpoint;
-#pragma warning disable 612, 618
-                Enabled = true;
-#pragma warning restore 612,618
                 if (evResource.Location != null)
                     Location = evResource.Location;
 
@@ -98,16 +93,7 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         /// Provisioning state of the Namespace.
         /// </summary>
         public string ProvisioningState { get; set; }
-
-        [ObsoleteAttribute("'Status' property is mark as obsolete and will be removed in upcoming breaking changes build", false)]
-        /// <summary>
-        /// State of the namespace. Possible values include: 'Unknown',
-        /// 'Creating', 'Created', 'Activating', 'Enabling', 'Active',
-        /// 'Disabling', 'Disabled', 'SoftDeleting', 'SoftDeleted',
-        /// 'Removing', 'Removed', 'Failed'
-        /// </summary>
-        public Models.NamespaceState? Status { get; set; }
-
+                
         /// <summary>
         /// The time the namespace was created.
         /// </summary>
@@ -122,13 +108,7 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         /// Endpoint you can use to perform ServiceBus operations.
         /// </summary>
         public string ServiceBusEndpoint { get; set; }
-
-        [ObsoleteAttribute("'Enabled' property is mark as obsolete and will be removed in upcoming breaking changes build", false)]
-        /// <summary>
-        /// Specifies whether this instance is enabled.
-        /// </summary>
-        public bool? Enabled { get; set; }
-
+        
         /// <summary>
         /// Gets or sets value that indicates whether AutoInflate is enabled
         /// for eventhub namespace.
