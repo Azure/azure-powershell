@@ -101,7 +101,7 @@ The following cmdlets were affected this release:
    - EnableBatchedOperations
    - IsAnonymousAccessible
    - SupportOrdering
-   
+
    ```powershell   
    # Old
    # The $queue has EntityAvailabilityStatus, EnableBatchedOperations, IsAnonymousAccessible and SupportOrdering property 
@@ -146,7 +146,7 @@ The following cmdlets were affected this release:
    - DeadLetteringOnFilterEvaluationExceptions
    - Location
    - IsReadOnly
-   
+
    ```powershell   
    # Old
    # The $subscription has EntityAvailabilityStatus, DeadLetteringOnFilterEvaluationExceptions, Location, and IsReadOnly property 
