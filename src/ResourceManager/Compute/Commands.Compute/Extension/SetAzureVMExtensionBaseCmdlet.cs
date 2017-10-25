@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Compute
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The location.")]
-        [LocationCompleter(new string[] { "Microsoft.Compute/virtualMachines" })]
+        [LocationCompleter("Microsoft.Compute/virtualMachines")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
