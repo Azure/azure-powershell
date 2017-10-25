@@ -24,4 +24,5 @@ Get the regions health status.  Azure Stack currently only supports a single reg
 Get the health for resources under a service.
 
 ### [Get-AzsServiceHealth](Get-AzsServiceHealth.md)
-Get the health of services.
+Get the heath of a Service.
+

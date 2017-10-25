@@ -24,7 +24,7 @@ Create an infrastructure ip pool.
 
 ### Example 1
 ```
-PS C:\> New-AzsIpPool -Location "local" -StartIpAddress "100.10.20.30" -AddressPrefix "100.10.20.30/24" -IpPool "MyTestIpPool" -EndIpAddress "100.10.20.130"
+PS C:\> New-AzsIpPool -Location "local" -StartIpAddress "192.168.1.0" -AddressPrefix "192.168.1.0/24" -IpPool "MyTestIpPool" -EndIpAddress "192.168.1.254"
 
 NumberOfIpAddressesInTransition StartIpAddress  Type                                           AddressPrefix NumberOfIpAddresses
 0                               100.10.20.30   Microsoft.Fabric.Admin/fabricLocations/ipPools               100

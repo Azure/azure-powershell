@@ -33,10 +33,10 @@ PS C:\> Get-AzsScaleUnitNode -Location "local"
 
 BiosVersion Type                                                  Name        ScaleUnitName CanPowerOff
 ----------- ----                                                  ----        ------------- -----------
-            Microsoft.Fabric.Admin/fabricLocations/scaleUnitNodes HC1n25r2230 S-Cluster     False
-            Microsoft.Fabric.Admin/fabricLocations/scaleUnitNodes HC1n25r2231 S-Cluster     False
-            Microsoft.Fabric.Admin/fabricLocations/scaleUnitNodes HC1n25r2232 S-Cluster     False
-            Microsoft.Fabric.Admin/fabricLocations/scaleUnitNodes HC1n25r2233 S-Cluster     False
+            Microsoft.Fabric.Admin/fabricLocations/scaleUnitNodes Node1 S-Cluster     False
+            Microsoft.Fabric.Admin/fabricLocations/scaleUnitNodes Node2 S-Cluster     False
+            Microsoft.Fabric.Admin/fabricLocations/scaleUnitNodes Node3 S-Cluster     False
+            Microsoft.Fabric.Admin/fabricLocations/scaleUnitNodes Node4 S-Cluster     False
             ...
 ```
 
@@ -44,11 +44,11 @@ Get all scale unit nodes at a location.
 
 ### Example 2
 ```
-PS C:\> Get-AzsScaleUnitNode -Location "local" -ScaleUnitNode "HC1n25r2231"
+PS C:\> Get-AzsScaleUnitNode -Location "local" -ScaleUnitNode "Node1"
 
 BiosVersion Type                                                  Name        ScaleUnitName CanPowerOff
 ----------- ----                                                  ----        ------------- -----------
-            Microsoft.Fabric.Admin/fabricLocations/scaleUnitNodes HC1n25r2231 S-Cluster     False
+            Microsoft.Fabric.Admin/fabricLocations/scaleUnitNodes Node1 S-Cluster     False
 ```
 
 Get a specific scale unit node at a location given a name.
