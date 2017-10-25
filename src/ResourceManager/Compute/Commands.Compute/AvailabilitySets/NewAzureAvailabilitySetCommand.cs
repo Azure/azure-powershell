@@ -15,6 +15,7 @@
 using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.Location;
 using Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Management.Automation;
@@ -47,6 +48,7 @@ namespace Microsoft.Azure.Commands.Compute
             Position = 2,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The location.")]
+        [LocationCompleter("Microsoft.Compute/availabilitySets")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
