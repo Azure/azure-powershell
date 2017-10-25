@@ -22,22 +22,26 @@ namespace Azure.Experiments.Network
         }
 
         protected override async Task<NetworkInterface> CreateAsync(string location)
-            => await Client.CreateOrUpdateAsync(
+        {
+            var subnet = await Subnet.GetOrNullAsync();
+            var pia = await Pia.GetOrNullAsync();
+            return await Client.CreateOrUpdateAsync(
                 ResourceGroupName,
-                Name, 
+                Name,
                 new NetworkInterface
                 {
                     Location = location,
-                    IpConfigurations = new[] 
+                    IpConfigurations = new[]
                     {
                         new NetworkInterfaceIPConfiguration
                         {
                             Name = Name,
-                            Subnet = Subnet.Info,
-                            PublicIPAddress = Pia.Info,
+                            Subnet = subnet,
+                            PublicIPAddress = pia,
                         }
-                    }                    
+                    }
                 });
+        }
 
         protected override Task<NetworkInterface> GetOrThrowAsync()
             => Client.GetAsync(ResourceGroupName, Name);

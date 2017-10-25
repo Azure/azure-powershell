@@ -27,18 +27,20 @@ namespace Azure.Experiments.Compute
             Ni = ni;
         }
 
-        protected override Task<VirtualMachine> CreateAsync(string location)
-            => Client.CreateOrUpdateAsync(
+        protected override async Task<VirtualMachine> CreateAsync(string location)
+        {
+            var ni = await Ni.GetOrNullAsync();
+            return await Client.CreateOrUpdateAsync(
                 ResourceGroupName,
                 Name,
                 new VirtualMachine
                 {
                     Location = "eastus",
                     OsProfile = new OSProfile
-                    {           
+                    {
                         ComputerName = Name,
                         WindowsConfiguration = new WindowsConfiguration
-                        {                            
+                        {
                         },
                         AdminUsername = AdminUsername,
                         AdminPassword = AdminPassword,
@@ -47,7 +49,7 @@ namespace Azure.Experiments.Compute
                     {
                         NetworkInterfaces = new NetworkInterfaceReference[]
                         {
-                            new NetworkInterfaceReference(Ni.Info.Id)
+                            new NetworkInterfaceReference(ni.Id)
                         }
                     },
                     HardwareProfile = new HardwareProfile
@@ -63,8 +65,9 @@ namespace Azure.Experiments.Compute
                             Sku = "2016-Datacenter",
                             Version = "latest"
                         }
-                    },                    
+                    },
                 });
+        }
 
         protected override Task<VirtualMachine> GetOrThrowAsync()
             => Client.GetAsync(ResourceGroupName, Name);

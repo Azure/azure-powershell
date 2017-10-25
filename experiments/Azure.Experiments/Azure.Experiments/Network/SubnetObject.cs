@@ -20,7 +20,7 @@ namespace Azure.Experiments.Network
         protected override async Task<Subnet> CreateAsync(string location)
         {
             // The Virtual Network should be created at this point.
-            var vn = Vn.Info;
+            var vn = await Vn.GetOrNullAsync();
             vn.Subnets.Add(new Subnet { Name = Name, AddressPrefix = AddressPrefix });
             vn = await Vn.Client.CreateOrUpdateAsync(
                 Vn.ResourceGroupName, Vn.Name, vn);

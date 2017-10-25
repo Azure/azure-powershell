@@ -24,23 +24,29 @@ namespace Azure.Experiments
         /// object and its dependencies.
         /// </summary>
         /// <returns></returns>
-        public abstract string GetInfoLocation();
+        public abstract Task<string> GetInfoLocationAsync();
 
         /// <summary>
         /// The function should be called only after GetInfo is called for the 
         /// object and its dependencies.
         /// </summary>
         /// <returns></returns>
-        public DependencyLocation GetDependencyLocation()
+        public async Task<DependencyLocation> GetDependencyLocationAsync()
         {
-            var location = GetInfoLocation();
-            return location != null
-                ? new DependencyLocation(location, Priority)
-                : Dependencies
-                    .Select(d => GetDependencyLocation())
-                    .Aggregate(
-                        DependencyLocation.None,
-                        (a, b) => a.Priority > b.Priority ? a : b);
+            if (DependencyLocation == null)
+            {
+                var location = await GetInfoLocationAsync();
+                if (location != null)
+                {
+                    return new DependencyLocation(location, Priority);
+                }
+                var taskList = Dependencies.Select(d => GetDependencyLocationAsync());
+                var dlList = await Task.WhenAll(taskList);
+                DependencyLocation = dlList.Aggregate(
+                    DependencyLocation.None,
+                    (a, b) => a.Priority > b.Priority ? a : b);
+            }
+            return DependencyLocation;
         }
 
         protected AzureObject(string name, IEnumerable<AzureObject> dependencies)
@@ -51,16 +57,18 @@ namespace Azure.Experiments
                 ? dependencies.Max(d => d.Priority) + 1 
                 : 1;
         }
+
+        private DependencyLocation DependencyLocation { get; set; }
     }
 
     public abstract class AzureObject<T, P> : AzureObject
         where T: class
         where P: struct, IInfoPolicy<T>
     {
-        public T Info { get; private set; }
+        private T Info { get; set; }
 
-        public override string GetInfoLocation()
-            => Info == null ? null : new P().GetLocation(Info);
+        public override async Task<string> GetInfoLocationAsync()
+            => await GetOrNullAsync() == null ? null : new P().GetLocation(Info);
 
         public async Task<T> GetOrNullAsync()
         {
@@ -98,8 +106,7 @@ namespace Azure.Experiments
 
         public async Task<T> GetOrCreateAsync()
         {
-            await GetOrNullAsync();
-            var dl = GetDependencyLocation();
+            var dl = await GetDependencyLocationAsync();
             var location = dl.Location ?? "eastus";
             return await GetOrCreateAsync(location);
         }
