@@ -356,21 +356,24 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         {
             bool result = false;
             name = null;
-            var foundContext = Contexts.FirstOrDefault((c) =>
-                c.Value != null
-                && (
-                    (c.Value.Account != null && context.Account != null && string.Equals(c.Value.Account.Id, context.Account.Id, StringComparison.OrdinalIgnoreCase))
-                    || (c.Value.Account == context.Account))
-                && (
-                    (c.Value.Tenant != null && context.Tenant != null && c.Value.Tenant.GetId() == context.Tenant.GetId())
-                    || (c.Value.Tenant == context.Tenant))
-                && (
-                    (c.Value.Subscription != null && context.Subscription != null && c.Value.Subscription.GetId() == context.Subscription.GetId())
-                    || (c.Value.Subscription == context.Subscription)));
-            if (!string.IsNullOrEmpty(foundContext.Key))
+            if (context != null)
             {
-                name = foundContext.Key;
-                result = true;
+                var foundContext = Contexts.FirstOrDefault((c) =>
+                    c.Value != null
+                    && (
+                        (c.Value.Account != null && context.Account != null && string.Equals(c.Value.Account.Id, context.Account.Id, StringComparison.OrdinalIgnoreCase))
+                        || (c.Value.Account == context.Account))
+                    && (
+                        (c.Value.Tenant != null && context.Tenant != null && c.Value.Tenant.GetId() == context.Tenant.GetId())
+                        || (c.Value.Tenant == context.Tenant))
+                    && (
+                        (c.Value.Subscription != null && context.Subscription != null && c.Value.Subscription.GetId() == context.Subscription.GetId())
+                        || (c.Value.Subscription == context.Subscription)));
+                if (!string.IsNullOrEmpty(foundContext.Key))
+                {
+                    name = foundContext.Key;
+                    result = true;
+                }
             }
 
             return result;
@@ -378,33 +381,32 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
 
         public bool TryGetContextName(IAzureContext context, out string name)
         {
-            if (context == null)
-            {
-                throw new ArgumentNullException(nameof(context));
-            }
-
             bool result = false;
             name = null;
-            if ((context.Account != null && !string.IsNullOrWhiteSpace(context.Account.Id)) || context.Subscription != null)
+            if (context != null)
             {
-                List<string> components = new List<string>();
-                if (context.Account != null && !string.IsNullOrWhiteSpace(context.Account.Id))
-                {
-                    components.Add(context.Account.Id);
-                }
 
-                if (context.Subscription != null)
+                if ((context.Account != null && !string.IsNullOrWhiteSpace(context.Account.Id)) || context.Subscription != null)
                 {
-                    components.Add(context.Subscription.GetId().ToString());
-                }
+                    List<string> components = new List<string>();
+                    if (context.Account != null && !string.IsNullOrWhiteSpace(context.Account.Id))
+                    {
+                        components.Add(context.Account.Id);
+                    }
 
-                name = string.Format("[{0}]", string.Join(", ", components));
-                result = true;
-            }
-            else
-            {
-                name = "Default";
-                result = true;
+                    if (context.Subscription != null)
+                    {
+                        components.Add(context.Subscription.GetId().ToString());
+                    }
+
+                    name = string.Format("[{0}]", string.Join(", ", components));
+                    result = true;
+                }
+                else
+                {
+                    name = "Default";
+                    result = true;
+                }
             }
 
             return result;
@@ -454,7 +456,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         public bool TrySetContext(IAzureContext context, out string name)
         {
             bool result = false;
-            if (!TryFindContext(context, out name))
+            if (TryFindContext(context, out name) && Contexts != null && Contexts.ContainsKey(name))
+            {
+                Contexts[name].Update(context);
+                result = true;
+            }
+            else
             {
                 result = TryAddContext(context, out name);
             }
@@ -478,9 +485,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         {
             bool result = false;
             string contextName;
-            if (TryFindContext(context, out contextName) || TryAddContext(context, out contextName))
+
+            if (context != null && (TryFindContext(context, out contextName) || TryAddContext(context, out contextName)))
             {
-                result = TrySetDefaultContext(contextName);
+                if (TrySetDefaultContext(contextName) && DefaultContext != null)
+                {
+                    DefaultContext.Update(context);
+                    result = true;
+                }
             }
 
             return result;
@@ -489,13 +501,16 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         public bool TrySetDefaultContext(string name, IAzureContext context)
         {
             bool result = false;
-            if (string.IsNullOrWhiteSpace(name))
+            if (context != null)
             {
-                result = TrySetDefaultContext(context);
-            }
-            else if (TrySetContext(name, context))
-            {
-                result = TrySetDefaultContext(name);
+                if (string.IsNullOrWhiteSpace(name))
+                {
+                    result = TrySetDefaultContext(context);
+                }
+                else if (TrySetContext(name, context))
+                {
+                    result = TrySetDefaultContext(name);
+                }
             }
 
             return result;
@@ -560,6 +575,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             foreach (var context in other.Contexts)
             {
                 TrySetContext(context.Key, context.Value);
+            }
+
+            if (other.DefaultContext != null)
+            {
+                this.TrySetDefaultContext(other.DefaultContext);
             }
 
             this.CopyPropertiesFrom(other);

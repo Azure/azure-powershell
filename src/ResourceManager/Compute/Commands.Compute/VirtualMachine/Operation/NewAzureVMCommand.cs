@@ -61,7 +61,13 @@ namespace Microsoft.Azure.Commands.Compute
         public PSVirtualMachine VM { get; set; }
 
         [Parameter(
-            Position = 3,
+           Mandatory = false,
+           Position = 3,
+           ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public string[] Zone { get; set; }
+
+        [Parameter(
             HelpMessage = "Disable BG Info Extension")]
         public SwitchParameter DisableBginfoExtension { get; set; }
 
@@ -114,7 +120,8 @@ namespace Microsoft.Azure.Commands.Compute
                         AvailabilitySet = this.VM.AvailabilitySetReference,
                         Location = this.Location ?? this.VM.Location,
                         Tags = this.Tags != null ? this.Tags.ToDictionary() : this.VM.Tags,
-                        Identity = this.VM.Identity
+                        Identity = this.VM.Identity,
+                        Zones = this.Zone ?? this.VM.Zones,
                     };
 
                     var result = this.VirtualMachineClient.CreateOrUpdateWithHttpMessagesAsync(

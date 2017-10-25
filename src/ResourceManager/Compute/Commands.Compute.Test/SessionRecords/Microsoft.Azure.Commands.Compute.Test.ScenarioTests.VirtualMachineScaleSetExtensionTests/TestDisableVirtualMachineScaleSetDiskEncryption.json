@@ -1,0 +1,2174 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/providers/Microsoft.Compute/virtualMachineScaleSets?api-version=2017-03-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS92aXJ0dWFsTWFjaGluZVNjYWxlU2V0cz9hcGktdmVyc2lvbj0yMDE3LTAzLTMw",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "5c85448e-d9a9-46e3-8029-3fab8e21a8c1"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2102.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/16.2.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"sku\": {\r\n        \"name\": \"Standard_A0\",\r\n        \"tier\": \"Standard\",\r\n        \"capacity\": 2\r\n      },\r\n      \"properties\": {\r\n        \"singlePlacementGroup\": true,\r\n        \"upgradePolicy\": {\r\n          \"mode\": \"Automatic\"\r\n        },\r\n        \"virtualMachineProfile\": {\r\n          \"osProfile\": {\r\n            \"computerNamePrefix\": \"test\",\r\n            \"adminUsername\": \"Foo12\",\r\n            \"windowsConfiguration\": {\r\n              \"provisionVMAgent\": true,\r\n              \"enableAutomaticUpdates\": true\r\n            },\r\n            \"secrets\": []\r\n          },\r\n          \"storageProfile\": {\r\n            \"osDisk\": {\r\n              \"createOption\": \"FromImage\",\r\n              \"caching\": \"None\",\r\n              \"managedDisk\": {\r\n                \"storageAccountType\": \"Standard_LRS\"\r\n              }\r\n            },\r\n            \"imageReference\": {\r\n              \"publisher\": \"MicrosoftWindowsServer\",\r\n              \"offer\": \"WindowsServer\",\r\n              \"sku\": \"2012-R2-Datacenter\",\r\n              \"version\": \"4.0.20151120\"\r\n            },\r\n            \"dataDisks\": [\r\n              {\r\n                \"lun\": 1,\r\n                \"createOption\": \"Empty\",\r\n                \"caching\": \"None\",\r\n                \"managedDisk\": {\r\n                  \"storageAccountType\": \"Standard_LRS\"\r\n                },\r\n                \"diskSizeGB\": 128\r\n              }\r\n            ]\r\n          },\r\n          \"networkProfile\": {\r\n            \"networkInterfaceConfigurations\": [\r\n              {\r\n                \"name\": \"vmsstestnetconfig169\",\r\n                \"properties\": {\r\n                  \"primary\": true,\r\n                  \"ipConfigurations\": [\r\n                    {\r\n                      \"name\": \"vmsstestnetconfig5873\",\r\n                      \"properties\": {\r\n                        \"subnet\": {\r\n                          \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/crp123testar72971/providers/Microsoft.Network/virtualNetworks/vn3122/subnets/sn7516\"\r\n                        }\r\n                      }\r\n                    }\r\n                  ]\r\n                }\r\n              }\r\n            ]\r\n          }\r\n        },\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"overprovision\": true,\r\n        \"uniqueId\": \"83ea0d47-e2ac-4565-bd26-65e8f4daa533\"\r\n      },\r\n      \"type\": \"Microsoft.Compute/virtualMachineScaleSets\",\r\n      \"location\": \"southeastasia\",\r\n      \"tags\": {\r\n        \"RG\": \"rg\",\r\n        \"testTag\": \"1\"\r\n      },\r\n      \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/CRP123TESTAR72971/providers/Microsoft.Compute/virtualMachineScaleSets/vmss5976\",\r\n      \"name\": \"vmss5976\"\r\n    },\r\n    {\r\n      \"sku\": {\r\n        \"name\": \"Standard_DS1\",\r\n        \"tier\": \"Standard\",\r\n        \"capacity\": 10\r\n      },\r\n      \"properties\": {\r\n        \"singlePlacementGroup\": true,\r\n        \"upgradePolicy\": {\r\n          \"mode\": \"Manual\"\r\n        },\r\n        \"virtualMachineProfile\": {\r\n          \"osProfile\": {\r\n            \"computerNamePrefix\": \"test\",\r\n            \"adminUsername\": \"azureuser\",\r\n            \"windowsConfiguration\": {\r\n              \"provisionVMAgent\": true,\r\n              \"enableAutomaticUpdates\": true\r\n            },\r\n            \"secrets\": []\r\n          },\r\n          \"storageProfile\": {\r\n            \"osDisk\": {\r\n              \"vhdContainers\": [\r\n                \"https://xplatteststorage16075.blob.core.windows.net/xplatteststoragecnt14469\",\r\n                \"https://xplatteststorage22925.blob.core.windows.net/xplatteststoragecnt21689\",\r\n                \"https://xplatteststorage31908.blob.core.windows.net/xplatteststoragecnt39912\"\r\n              ],\r\n              \"name\": \"test\",\r\n              \"createOption\": \"FromImage\",\r\n              \"caching\": \"None\"\r\n            },\r\n            \"imageReference\": {\r\n              \"publisher\": \"MicrosoftWindowsServer\",\r\n              \"offer\": \"WindowsServer\",\r\n              \"sku\": \"2012-R2-Datacenter\",\r\n              \"version\": \"latest\"\r\n            }\r\n          },\r\n          \"networkProfile\": {\r\n            \"networkInterfaceConfigurations\": [\r\n              {\r\n                \"name\": \"test\",\r\n                \"properties\": {\r\n                  \"primary\": true,\r\n                  \"ipConfigurations\": [\r\n                    {\r\n                      \"name\": \"test\",\r\n                      \"properties\": {\r\n                        \"subnet\": {\r\n                          \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/xplatTstVmssGCreate7338/providers/Microsoft.Network/virtualNetworks/xplattestvnet1141/subnets/xplattestsubnet7338\"\r\n                        }\r\n                      }\r\n                    }\r\n                  ]\r\n                }\r\n              }\r\n            ]\r\n          },\r\n          \"extensionProfile\": {\r\n            \"extensions\": [\r\n              {\r\n                \"properties\": {\r\n                  \"publisher\": \"Microsoft.Compute\",\r\n                  \"type\": \"VMAccessAgent\",\r\n                  \"typeHandlerVersion\": \"2.0\",\r\n                  \"autoUpgradeMinorVersion\": true,\r\n                  \"settings\": {}\r\n                },\r\n                \"name\": \"test\"\r\n              },\r\n              {\r\n                \"properties\": {\r\n                  \"publisher\": \"Microsoft.Compute\",\r\n                  \"type\": \"BGInfo\",\r\n                  \"typeHandlerVersion\": \"2.1\",\r\n                  \"autoUpgradeMinorVersion\": true\r\n                },\r\n                \"name\": \"test1\"\r\n              }\r\n            ]\r\n          }\r\n        },\r\n        \"provisioningState\": \"Failed\",\r\n        \"overprovision\": false,\r\n        \"uniqueId\": \"b1a08cda-2d5a-4e7d-b042-3fbcd1da0fbe\"\r\n      },\r\n      \"type\": \"Microsoft.Compute/virtualMachineScaleSets\",\r\n      \"location\": \"southeastasia\",\r\n      \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/XPLATTSTVMSSGCREATE7338/providers/Microsoft.Compute/virtualMachineScaleSets/xplattestvmss5\",\r\n      \"name\": \"xplattestvmss5\"\r\n    },\r\n    {\r\n      \"sku\": {\r\n        \"name\": \"Standard_A1\",\r\n        \"tier\": \"Standard\",\r\n        \"capacity\": 2\r\n      },\r\n      \"properties\": {\r\n        \"singlePlacementGroup\": true,\r\n        \"upgradePolicy\": {\r\n          \"mode\": \"Automatic\"\r\n        },\r\n        \"virtualMachineProfile\": {\r\n          \"osProfile\": {\r\n            \"computerNamePrefix\": \"test\",\r\n            \"adminUsername\": \"Foo12\",\r\n            \"windowsConfiguration\": {\r\n              \"provisionVMAgent\": true,\r\n              \"enableAutomaticUpdates\": true\r\n            },\r\n            \"secrets\": []\r\n          },\r\n          \"storageProfile\": {\r\n            \"osDisk\": {\r\n              \"createOption\": \"FromImage\",\r\n              \"caching\": \"None\",\r\n              \"managedDisk\": {\r\n                \"storageAccountType\": \"Standard_LRS\"\r\n              }\r\n            },\r\n            \"imageReference\": {\r\n              \"publisher\": \"MicrosoftWindowsServer\",\r\n              \"offer\": \"WindowsServer\",\r\n              \"sku\": \"2008-R2-SP1\",\r\n              \"version\": \"2.127.20170406\"\r\n            }\r\n          },\r\n          \"networkProfile\": {\r\n            \"networkInterfaceConfigurations\": [\r\n              {\r\n                \"name\": \"test\",\r\n                \"properties\": {\r\n                  \"primary\": true,\r\n                  \"enableAcceleratedNetworking\": false,\r\n                  \"dnsSettings\": {\r\n                    \"dnsServers\": []\r\n                  },\r\n                  \"ipConfigurations\": [\r\n                    {\r\n                      \"name\": \"test\",\r\n                      \"properties\": {\r\n                        \"subnet\": {\r\n                          \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Network/virtualNetworks/vnethyleevmssdetest2/subnets/subnethyleevmssdetest2\"\r\n                        },\r\n                        \"privateIPAddressVersion\": \"IPv4\"\r\n                      }\r\n                    }\r\n                  ]\r\n                }\r\n              }\r\n            ]\r\n          },\r\n          \"extensionProfile\": {\r\n            \"extensions\": [\r\n              {\r\n                \"properties\": {\r\n                  \"publisher\": \"Microsoft.Azure.Security\",\r\n                  \"type\": \"AzureDiskEncryption\",\r\n                  \"typeHandlerVersion\": \"2.0\",\r\n                  \"autoUpgradeMinorVersion\": true,\r\n                  \"settings\": {\r\n                    \"AADClientCertThumbprint\": \"\",\r\n                    \"EncryptionOperation\": \"EnableEncryption\",\r\n                    \"KeyEncryptionAlgorithm\": \"RSA-OAEP\",\r\n                    \"KeyVaultResourceId\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.KeyVault/vaults/detestvault\",\r\n                    \"KeyVaultURL\": \"https://detestvault.vault.azure.net/\",\r\n                    \"AADClientID\": \"c258f481-c6e0-4599-850d-3d1616fb0ebb\",\r\n                    \"KekVaultResourceId\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.KeyVault/vaults/detestvault\",\r\n                    \"VolumeType\": \"OS\",\r\n                    \"KeyEncryptionKeyURL\": \"https://detestvault.vault.azure.net/keys/dstestkek/923c02c3ccfe4861ab0d1b68bf6c083b\"\r\n                  },\r\n                  \"forceUpdateTag\": \"b487c913-3a7e-4205-8ad3-a8dcc287db81\"\r\n                },\r\n                \"name\": \"AzureDiskEncryption\"\r\n              }\r\n            ]\r\n          }\r\n        },\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"overprovision\": true,\r\n        \"uniqueId\": \"14e24b20-4154-4c94-849a-8dccb70a4086\"\r\n      },\r\n      \"type\": \"Microsoft.Compute/virtualMachineScaleSets\",\r\n      \"location\": \"westcentralus\",\r\n      \"tags\": {},\r\n      \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/HYLEEVMSSDETEST2/providers/Microsoft.Compute/virtualMachineScaleSets/vmsshyleevmssdetest2\",\r\n      \"name\": \"vmsshyleevmssdetest2\"\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "5656"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-original-request-ids": [
+          "565b812c-9aff-44fa-8af1-5b01075fdb39",
+          "8c791a17-49d0-41e4-8148-df97a9d7cf0d"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14999"
+        ],
+        "x-ms-request-id": [
+          "703ab7a0-d548-438d-b464-cd7938b00578"
+        ],
+        "x-ms-correlation-request-id": [
+          "703ab7a0-d548-438d-b464-cd7938b00578"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170811T230816Z:703ab7a0-d548-438d-b464-cd7938b00578"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 11 Aug 2017 23:08:16 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/CRP123TESTAR72971/providers/Microsoft.Compute/virtualMachineScaleSets/vmss5976?api-version=2017-03-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Jlc291cmNlR3JvdXBzL0NSUDEyM1RFU1RBUjcyOTcxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS92aXJ0dWFsTWFjaGluZVNjYWxlU2V0cy92bXNzNTk3Nj9hcGktdmVyc2lvbj0yMDE3LTAzLTMw",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "45cf4fb6-8237-478f-beb2-6e7c291a6039"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2102.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/16.2.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard_A0\",\r\n    \"tier\": \"Standard\",\r\n    \"capacity\": 2\r\n  },\r\n  \"properties\": {\r\n    \"singlePlacementGroup\": true,\r\n    \"upgradePolicy\": {\r\n      \"mode\": \"Automatic\"\r\n    },\r\n    \"virtualMachineProfile\": {\r\n      \"osProfile\": {\r\n        \"computerNamePrefix\": \"test\",\r\n        \"adminUsername\": \"Foo12\",\r\n        \"windowsConfiguration\": {\r\n          \"provisionVMAgent\": true,\r\n          \"enableAutomaticUpdates\": true\r\n        },\r\n        \"secrets\": []\r\n      },\r\n      \"storageProfile\": {\r\n        \"osDisk\": {\r\n          \"createOption\": \"FromImage\",\r\n          \"caching\": \"None\",\r\n          \"managedDisk\": {\r\n            \"storageAccountType\": \"Standard_LRS\"\r\n          }\r\n        },\r\n        \"imageReference\": {\r\n          \"publisher\": \"MicrosoftWindowsServer\",\r\n          \"offer\": \"WindowsServer\",\r\n          \"sku\": \"2012-R2-Datacenter\",\r\n          \"version\": \"4.0.20151120\"\r\n        },\r\n        \"dataDisks\": [\r\n          {\r\n            \"lun\": 1,\r\n            \"createOption\": \"Empty\",\r\n            \"caching\": \"None\",\r\n            \"managedDisk\": {\r\n              \"storageAccountType\": \"Standard_LRS\"\r\n            },\r\n            \"diskSizeGB\": 128\r\n          }\r\n        ]\r\n      },\r\n      \"networkProfile\": {\r\n        \"networkInterfaceConfigurations\": [\r\n          {\r\n            \"name\": \"vmsstestnetconfig169\",\r\n            \"properties\": {\r\n              \"primary\": true,\r\n              \"ipConfigurations\": [\r\n                {\r\n                  \"name\": \"vmsstestnetconfig5873\",\r\n                  \"properties\": {\r\n                    \"subnet\": {\r\n                      \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/crp123testar72971/providers/Microsoft.Network/virtualNetworks/vn3122/subnets/sn7516\"\r\n                    }\r\n                  }\r\n                }\r\n              ]\r\n            }\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"overprovision\": true,\r\n    \"uniqueId\": \"83ea0d47-e2ac-4565-bd26-65e8f4daa533\"\r\n  },\r\n  \"type\": \"Microsoft.Compute/virtualMachineScaleSets\",\r\n  \"location\": \"southeastasia\",\r\n  \"tags\": {\r\n    \"RG\": \"rg\",\r\n    \"testTag\": \"1\"\r\n  },\r\n  \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/CRP123TESTAR72971/providers/Microsoft.Compute/virtualMachineScaleSets/vmss5976\",\r\n  \"name\": \"vmss5976\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2036"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-served-by": [
+          "d8479ab9-b4a1-4ca4-bfe5-eb2106eeb54c_131457364321432510"
+        ],
+        "x-ms-request-id": [
+          "f395ec64-a561-472b-aed8-44d3f502a9da"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14998"
+        ],
+        "x-ms-correlation-request-id": [
+          "236bbe51-5acc-43d6-9526-1501940f5a86"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170811T230817Z:236bbe51-5acc-43d6-9526-1501940f5a86"
+        ],
+        "Date": [
+          "Fri, 11 Aug 2017 23:08:16 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/XPLATTSTVMSSGCREATE7338/providers/Microsoft.Compute/virtualMachineScaleSets/xplattestvmss5?api-version=2017-03-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Jlc291cmNlR3JvdXBzL1hQTEFUVFNUVk1TU0dDUkVBVEU3MzM4L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS92aXJ0dWFsTWFjaGluZVNjYWxlU2V0cy94cGxhdHRlc3R2bXNzNT9hcGktdmVyc2lvbj0yMDE3LTAzLTMw",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e8f08c7c-ddbd-4164-b3f8-13abf34632df"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2102.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/16.2.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard_DS1\",\r\n    \"tier\": \"Standard\",\r\n    \"capacity\": 10\r\n  },\r\n  \"properties\": {\r\n    \"singlePlacementGroup\": true,\r\n    \"upgradePolicy\": {\r\n      \"mode\": \"Manual\"\r\n    },\r\n    \"virtualMachineProfile\": {\r\n      \"osProfile\": {\r\n        \"computerNamePrefix\": \"test\",\r\n        \"adminUsername\": \"azureuser\",\r\n        \"windowsConfiguration\": {\r\n          \"provisionVMAgent\": true,\r\n          \"enableAutomaticUpdates\": true\r\n        },\r\n        \"secrets\": []\r\n      },\r\n      \"storageProfile\": {\r\n        \"osDisk\": {\r\n          \"vhdContainers\": [\r\n            \"https://xplatteststorage16075.blob.core.windows.net/xplatteststoragecnt14469\",\r\n            \"https://xplatteststorage22925.blob.core.windows.net/xplatteststoragecnt21689\",\r\n            \"https://xplatteststorage31908.blob.core.windows.net/xplatteststoragecnt39912\"\r\n          ],\r\n          \"name\": \"test\",\r\n          \"createOption\": \"FromImage\",\r\n          \"caching\": \"None\"\r\n        },\r\n        \"imageReference\": {\r\n          \"publisher\": \"MicrosoftWindowsServer\",\r\n          \"offer\": \"WindowsServer\",\r\n          \"sku\": \"2012-R2-Datacenter\",\r\n          \"version\": \"latest\"\r\n        }\r\n      },\r\n      \"networkProfile\": {\r\n        \"networkInterfaceConfigurations\": [\r\n          {\r\n            \"name\": \"test\",\r\n            \"properties\": {\r\n              \"primary\": true,\r\n              \"ipConfigurations\": [\r\n                {\r\n                  \"name\": \"test\",\r\n                  \"properties\": {\r\n                    \"subnet\": {\r\n                      \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/xplatTstVmssGCreate7338/providers/Microsoft.Network/virtualNetworks/xplattestvnet1141/subnets/xplattestsubnet7338\"\r\n                    }\r\n                  }\r\n                }\r\n              ]\r\n            }\r\n          }\r\n        ]\r\n      },\r\n      \"extensionProfile\": {\r\n        \"extensions\": [\r\n          {\r\n            \"properties\": {\r\n              \"publisher\": \"Microsoft.Compute\",\r\n              \"type\": \"VMAccessAgent\",\r\n              \"typeHandlerVersion\": \"2.0\",\r\n              \"autoUpgradeMinorVersion\": true,\r\n              \"settings\": {}\r\n            },\r\n            \"name\": \"test\"\r\n          },\r\n          {\r\n            \"properties\": {\r\n              \"publisher\": \"Microsoft.Compute\",\r\n              \"type\": \"BGInfo\",\r\n              \"typeHandlerVersion\": \"2.1\",\r\n              \"autoUpgradeMinorVersion\": true\r\n            },\r\n            \"name\": \"test1\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"provisioningState\": \"Failed\",\r\n    \"overprovision\": false,\r\n    \"uniqueId\": \"b1a08cda-2d5a-4e7d-b042-3fbcd1da0fbe\"\r\n  },\r\n  \"type\": \"Microsoft.Compute/virtualMachineScaleSets\",\r\n  \"location\": \"southeastasia\",\r\n  \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/XPLATTSTVMSSGCREATE7338/providers/Microsoft.Compute/virtualMachineScaleSets/xplattestvmss5\",\r\n  \"name\": \"xplattestvmss5\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2622"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-served-by": [
+          "d8479ab9-b4a1-4ca4-bfe5-eb2106eeb54c_131457364321432510"
+        ],
+        "x-ms-request-id": [
+          "ed7e7561-6d4a-4897-a961-6ce9fba07dbd"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14997"
+        ],
+        "x-ms-correlation-request-id": [
+          "c389541a-3f7d-40c6-9ade-8ec103f228a1"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170811T230817Z:c389541a-3f7d-40c6-9ade-8ec103f228a1"
+        ],
+        "Date": [
+          "Fri, 11 Aug 2017 23:08:16 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/HYLEEVMSSDETEST2/providers/Microsoft.Compute/virtualMachineScaleSets/vmsshyleevmssdetest2?api-version=2017-03-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Jlc291cmNlR3JvdXBzL0hZTEVFVk1TU0RFVEVTVDIvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lU2NhbGVTZXRzL3Ztc3NoeWxlZXZtc3NkZXRlc3QyP2FwaS12ZXJzaW9uPTIwMTctMDMtMzA=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "9a7e6c70-99bf-4dd1-83e2-0bd5f9131b8d"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2102.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/16.2.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard_A1\",\r\n    \"tier\": \"Standard\",\r\n    \"capacity\": 2\r\n  },\r\n  \"properties\": {\r\n    \"singlePlacementGroup\": true,\r\n    \"upgradePolicy\": {\r\n      \"mode\": \"Automatic\"\r\n    },\r\n    \"virtualMachineProfile\": {\r\n      \"osProfile\": {\r\n        \"computerNamePrefix\": \"test\",\r\n        \"adminUsername\": \"Foo12\",\r\n        \"windowsConfiguration\": {\r\n          \"provisionVMAgent\": true,\r\n          \"enableAutomaticUpdates\": true\r\n        },\r\n        \"secrets\": []\r\n      },\r\n      \"storageProfile\": {\r\n        \"osDisk\": {\r\n          \"createOption\": \"FromImage\",\r\n          \"caching\": \"None\",\r\n          \"managedDisk\": {\r\n            \"storageAccountType\": \"Standard_LRS\"\r\n          }\r\n        },\r\n        \"imageReference\": {\r\n          \"publisher\": \"MicrosoftWindowsServer\",\r\n          \"offer\": \"WindowsServer\",\r\n          \"sku\": \"2008-R2-SP1\",\r\n          \"version\": \"2.127.20170406\"\r\n        }\r\n      },\r\n      \"networkProfile\": {\r\n        \"networkInterfaceConfigurations\": [\r\n          {\r\n            \"name\": \"test\",\r\n            \"properties\": {\r\n              \"primary\": true,\r\n              \"enableAcceleratedNetworking\": false,\r\n              \"dnsSettings\": {\r\n                \"dnsServers\": []\r\n              },\r\n              \"ipConfigurations\": [\r\n                {\r\n                  \"name\": \"test\",\r\n                  \"properties\": {\r\n                    \"subnet\": {\r\n                      \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Network/virtualNetworks/vnethyleevmssdetest2/subnets/subnethyleevmssdetest2\"\r\n                    },\r\n                    \"privateIPAddressVersion\": \"IPv4\"\r\n                  }\r\n                }\r\n              ]\r\n            }\r\n          }\r\n        ]\r\n      },\r\n      \"extensionProfile\": {\r\n        \"extensions\": [\r\n          {\r\n            \"properties\": {\r\n              \"publisher\": \"Microsoft.Azure.Security\",\r\n              \"type\": \"AzureDiskEncryption\",\r\n              \"typeHandlerVersion\": \"2.0\",\r\n              \"autoUpgradeMinorVersion\": true,\r\n              \"settings\": {\r\n                \"AADClientCertThumbprint\": \"\",\r\n                \"EncryptionOperation\": \"EnableEncryption\",\r\n                \"KeyEncryptionAlgorithm\": \"RSA-OAEP\",\r\n                \"KeyVaultResourceId\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.KeyVault/vaults/detestvault\",\r\n                \"KeyVaultURL\": \"https://detestvault.vault.azure.net/\",\r\n                \"AADClientID\": \"c258f481-c6e0-4599-850d-3d1616fb0ebb\",\r\n                \"KekVaultResourceId\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.KeyVault/vaults/detestvault\",\r\n                \"VolumeType\": \"OS\",\r\n                \"KeyEncryptionKeyURL\": \"https://detestvault.vault.azure.net/keys/dstestkek/923c02c3ccfe4861ab0d1b68bf6c083b\"\r\n              },\r\n              \"forceUpdateTag\": \"b487c913-3a7e-4205-8ad3-a8dcc287db81\"\r\n            },\r\n            \"name\": \"AzureDiskEncryption\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"overprovision\": true,\r\n    \"uniqueId\": \"14e24b20-4154-4c94-849a-8dccb70a4086\"\r\n  },\r\n  \"type\": \"Microsoft.Compute/virtualMachineScaleSets\",\r\n  \"location\": \"westcentralus\",\r\n  \"tags\": {},\r\n  \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/HYLEEVMSSDETEST2/providers/Microsoft.Compute/virtualMachineScaleSets/vmsshyleevmssdetest2\",\r\n  \"name\": \"vmsshyleevmssdetest2\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2959"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-served-by": [
+          "2be8e138-3223-4141-af48-5163dbafa559_131442037031481435"
+        ],
+        "x-ms-request-id": [
+          "e9d5b32e-55c0-4362-9fe3-bb00421b818b"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14996"
+        ],
+        "x-ms-correlation-request-id": [
+          "2e66bf73-cecf-4cf7-af54-0fe626ea67aa"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170811T230817Z:2e66bf73-cecf-4cf7-af54-0fe626ea67aa"
+        ],
+        "Date": [
+          "Fri, 11 Aug 2017 23:08:16 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/HYLEEVMSSDETEST2/providers/Microsoft.Compute/virtualMachineScaleSets/vmsshyleevmssdetest2/instanceView?api-version=2017-03-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Jlc291cmNlR3JvdXBzL0hZTEVFVk1TU0RFVEVTVDIvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lU2NhbGVTZXRzL3Ztc3NoeWxlZXZtc3NkZXRlc3QyL2luc3RhbmNlVmlldz9hcGktdmVyc2lvbj0yMDE3LTAzLTMw",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "2fdcab3f-2887-482c-9959-b8d965bf3360"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2102.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/16.2.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"virtualMachine\": {\r\n    \"statusesSummary\": [\r\n      {\r\n        \"code\": \"ProvisioningState/succeeded\",\r\n        \"count\": 2\r\n      }\r\n    ]\r\n  },\r\n  \"extensions\": [\r\n    {\r\n      \"name\": \"AzureDiskEncryption\",\r\n      \"statusesSummary\": [\r\n        {\r\n          \"code\": \"ProvisioningState/succeeded\",\r\n          \"count\": 2\r\n        }\r\n      ]\r\n    }\r\n  ],\r\n  \"statuses\": [\r\n    {\r\n      \"code\": \"ProvisioningState/succeeded\",\r\n      \"level\": \"Info\",\r\n      \"displayStatus\": \"Provisioning succeeded\",\r\n      \"time\": \"2017-08-11T16:02:37.5632685-07:00\"\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "567"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-served-by": [
+          "2be8e138-3223-4141-af48-5163dbafa559_131442037031481435"
+        ],
+        "x-ms-request-id": [
+          "a2d261f0-c30d-4938-ab94-c2c262126b57"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14995"
+        ],
+        "x-ms-correlation-request-id": [
+          "d1b2d94a-6a86-442e-9f17-ae7acf8a9c6d"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170811T230817Z:d1b2d94a-6a86-442e-9f17-ae7acf8a9c6d"
+        ],
+        "Date": [
+          "Fri, 11 Aug 2017 23:08:16 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/virtualMachineScaleSets?api-version=2017-03-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Jlc291cmNlR3JvdXBzL2h5bGVldm1zc2RldGVzdDIvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lU2NhbGVTZXRzP2FwaS12ZXJzaW9uPTIwMTctMDMtMzA=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "5549bda4-0b38-4aa9-9f04-8ea520c7ffa3"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2102.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/16.2.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"sku\": {\r\n        \"name\": \"Standard_A1\",\r\n        \"tier\": \"Standard\",\r\n        \"capacity\": 2\r\n      },\r\n      \"properties\": {\r\n        \"singlePlacementGroup\": true,\r\n        \"upgradePolicy\": {\r\n          \"mode\": \"Automatic\"\r\n        },\r\n        \"virtualMachineProfile\": {\r\n          \"osProfile\": {\r\n            \"computerNamePrefix\": \"test\",\r\n            \"adminUsername\": \"Foo12\",\r\n            \"windowsConfiguration\": {\r\n              \"provisionVMAgent\": true,\r\n              \"enableAutomaticUpdates\": true\r\n            },\r\n            \"secrets\": []\r\n          },\r\n          \"storageProfile\": {\r\n            \"osDisk\": {\r\n              \"createOption\": \"FromImage\",\r\n              \"caching\": \"None\",\r\n              \"managedDisk\": {\r\n                \"storageAccountType\": \"Standard_LRS\"\r\n              }\r\n            },\r\n            \"imageReference\": {\r\n              \"publisher\": \"MicrosoftWindowsServer\",\r\n              \"offer\": \"WindowsServer\",\r\n              \"sku\": \"2008-R2-SP1\",\r\n              \"version\": \"2.127.20170406\"\r\n            }\r\n          },\r\n          \"networkProfile\": {\r\n            \"networkInterfaceConfigurations\": [\r\n              {\r\n                \"name\": \"test\",\r\n                \"properties\": {\r\n                  \"primary\": true,\r\n                  \"enableAcceleratedNetworking\": false,\r\n                  \"dnsSettings\": {\r\n                    \"dnsServers\": []\r\n                  },\r\n                  \"ipConfigurations\": [\r\n                    {\r\n                      \"name\": \"test\",\r\n                      \"properties\": {\r\n                        \"subnet\": {\r\n                          \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Network/virtualNetworks/vnethyleevmssdetest2/subnets/subnethyleevmssdetest2\"\r\n                        },\r\n                        \"privateIPAddressVersion\": \"IPv4\"\r\n                      }\r\n                    }\r\n                  ]\r\n                }\r\n              }\r\n            ]\r\n          },\r\n          \"extensionProfile\": {\r\n            \"extensions\": [\r\n              {\r\n                \"properties\": {\r\n                  \"publisher\": \"Microsoft.Azure.Security\",\r\n                  \"type\": \"AzureDiskEncryption\",\r\n                  \"typeHandlerVersion\": \"2.0\",\r\n                  \"autoUpgradeMinorVersion\": true,\r\n                  \"settings\": {\r\n                    \"AADClientCertThumbprint\": \"\",\r\n                    \"EncryptionOperation\": \"EnableEncryption\",\r\n                    \"KeyEncryptionAlgorithm\": \"RSA-OAEP\",\r\n                    \"KeyVaultResourceId\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.KeyVault/vaults/detestvault\",\r\n                    \"KeyVaultURL\": \"https://detestvault.vault.azure.net/\",\r\n                    \"AADClientID\": \"c258f481-c6e0-4599-850d-3d1616fb0ebb\",\r\n                    \"KekVaultResourceId\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.KeyVault/vaults/detestvault\",\r\n                    \"VolumeType\": \"OS\",\r\n                    \"KeyEncryptionKeyURL\": \"https://detestvault.vault.azure.net/keys/dstestkek/923c02c3ccfe4861ab0d1b68bf6c083b\"\r\n                  },\r\n                  \"forceUpdateTag\": \"b487c913-3a7e-4205-8ad3-a8dcc287db81\"\r\n                },\r\n                \"name\": \"AzureDiskEncryption\"\r\n              }\r\n            ]\r\n          }\r\n        },\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"overprovision\": true,\r\n        \"uniqueId\": \"14e24b20-4154-4c94-849a-8dccb70a4086\"\r\n      },\r\n      \"type\": \"Microsoft.Compute/virtualMachineScaleSets\",\r\n      \"location\": \"westcentralus\",\r\n      \"tags\": {},\r\n      \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/virtualMachineScaleSets/vmsshyleevmssdetest2\",\r\n      \"name\": \"vmsshyleevmssdetest2\"\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "3236"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-served-by": [
+          "2be8e138-3223-4141-af48-5163dbafa559_131442037031481435"
+        ],
+        "x-ms-request-id": [
+          "0cf99c17-c391-436c-b918-b3f735c67b30"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14994"
+        ],
+        "x-ms-correlation-request-id": [
+          "f1aa7134-54fa-4f14-b605-fe3fa5fac131"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170811T230817Z:f1aa7134-54fa-4f14-b605-fe3fa5fac131"
+        ],
+        "Date": [
+          "Fri, 11 Aug 2017 23:08:17 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/virtualMachineScaleSets?api-version=2017-03-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Jlc291cmNlR3JvdXBzL2h5bGVldm1zc2RldGVzdDIvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lU2NhbGVTZXRzP2FwaS12ZXJzaW9uPTIwMTctMDMtMzA=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "98c45809-396c-46f9-8213-c7af7e390e1a"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2102.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/16.2.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"sku\": {\r\n        \"name\": \"Standard_A1\",\r\n        \"tier\": \"Standard\",\r\n        \"capacity\": 2\r\n      },\r\n      \"properties\": {\r\n        \"singlePlacementGroup\": true,\r\n        \"upgradePolicy\": {\r\n          \"mode\": \"Automatic\"\r\n        },\r\n        \"virtualMachineProfile\": {\r\n          \"osProfile\": {\r\n            \"computerNamePrefix\": \"test\",\r\n            \"adminUsername\": \"Foo12\",\r\n            \"windowsConfiguration\": {\r\n              \"provisionVMAgent\": true,\r\n              \"enableAutomaticUpdates\": true\r\n            },\r\n            \"secrets\": []\r\n          },\r\n          \"storageProfile\": {\r\n            \"osDisk\": {\r\n              \"createOption\": \"FromImage\",\r\n              \"caching\": \"None\",\r\n              \"managedDisk\": {\r\n                \"storageAccountType\": \"Standard_LRS\"\r\n              }\r\n            },\r\n            \"imageReference\": {\r\n              \"publisher\": \"MicrosoftWindowsServer\",\r\n              \"offer\": \"WindowsServer\",\r\n              \"sku\": \"2008-R2-SP1\",\r\n              \"version\": \"2.127.20170406\"\r\n            }\r\n          },\r\n          \"networkProfile\": {\r\n            \"networkInterfaceConfigurations\": [\r\n              {\r\n                \"name\": \"test\",\r\n                \"properties\": {\r\n                  \"primary\": true,\r\n                  \"enableAcceleratedNetworking\": false,\r\n                  \"dnsSettings\": {\r\n                    \"dnsServers\": []\r\n                  },\r\n                  \"ipConfigurations\": [\r\n                    {\r\n                      \"name\": \"test\",\r\n                      \"properties\": {\r\n                        \"subnet\": {\r\n                          \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Network/virtualNetworks/vnethyleevmssdetest2/subnets/subnethyleevmssdetest2\"\r\n                        },\r\n                        \"privateIPAddressVersion\": \"IPv4\"\r\n                      }\r\n                    }\r\n                  ]\r\n                }\r\n              }\r\n            ]\r\n          },\r\n          \"extensionProfile\": {\r\n            \"extensions\": [\r\n              {\r\n                \"properties\": {\r\n                  \"publisher\": \"Microsoft.Azure.Security\",\r\n                  \"type\": \"AzureDiskEncryption\",\r\n                  \"typeHandlerVersion\": \"2.0\",\r\n                  \"autoUpgradeMinorVersion\": true,\r\n                  \"settings\": {\r\n                    \"EncryptionOperation\": \"DisableEncryption\",\r\n                    \"VolumeType\": \"OS\"\r\n                  },\r\n                  \"forceUpdateTag\": \"823eed64-e135-44bc-b26f-a052daf025c1\"\r\n                },\r\n                \"name\": \"AzureDiskEncryption\"\r\n              }\r\n            ]\r\n          }\r\n        },\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"overprovision\": true,\r\n        \"uniqueId\": \"14e24b20-4154-4c94-849a-8dccb70a4086\"\r\n      },\r\n      \"type\": \"Microsoft.Compute/virtualMachineScaleSets\",\r\n      \"location\": \"westcentralus\",\r\n      \"tags\": {},\r\n      \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/virtualMachineScaleSets/vmsshyleevmssdetest2\",\r\n      \"name\": \"vmsshyleevmssdetest2\"\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2648"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-served-by": [
+          "2be8e138-3223-4141-af48-5163dbafa559_131442037031481435"
+        ],
+        "x-ms-request-id": [
+          "f1a6891f-803e-4719-95c7-b833f8b36337"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14978"
+        ],
+        "x-ms-correlation-request-id": [
+          "22812d4b-79ac-4aea-93b8-6918fdf61f8d"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170811T230920Z:22812d4b-79ac-4aea-93b8-6918fdf61f8d"
+        ],
+        "Date": [
+          "Fri, 11 Aug 2017 23:09:20 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/virtualMachineScaleSets/vmsshyleevmssdetest2?api-version=2017-03-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Jlc291cmNlR3JvdXBzL2h5bGVldm1zc2RldGVzdDIvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lU2NhbGVTZXRzL3Ztc3NoeWxlZXZtc3NkZXRlc3QyP2FwaS12ZXJzaW9uPTIwMTctMDMtMzA=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "7f997549-9fae-4506-ac2a-dc384d447b55"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2102.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/16.2.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard_A1\",\r\n    \"tier\": \"Standard\",\r\n    \"capacity\": 2\r\n  },\r\n  \"properties\": {\r\n    \"singlePlacementGroup\": true,\r\n    \"upgradePolicy\": {\r\n      \"mode\": \"Automatic\"\r\n    },\r\n    \"virtualMachineProfile\": {\r\n      \"osProfile\": {\r\n        \"computerNamePrefix\": \"test\",\r\n        \"adminUsername\": \"Foo12\",\r\n        \"windowsConfiguration\": {\r\n          \"provisionVMAgent\": true,\r\n          \"enableAutomaticUpdates\": true\r\n        },\r\n        \"secrets\": []\r\n      },\r\n      \"storageProfile\": {\r\n        \"osDisk\": {\r\n          \"createOption\": \"FromImage\",\r\n          \"caching\": \"None\",\r\n          \"managedDisk\": {\r\n            \"storageAccountType\": \"Standard_LRS\"\r\n          }\r\n        },\r\n        \"imageReference\": {\r\n          \"publisher\": \"MicrosoftWindowsServer\",\r\n          \"offer\": \"WindowsServer\",\r\n          \"sku\": \"2008-R2-SP1\",\r\n          \"version\": \"2.127.20170406\"\r\n        }\r\n      },\r\n      \"networkProfile\": {\r\n        \"networkInterfaceConfigurations\": [\r\n          {\r\n            \"name\": \"test\",\r\n            \"properties\": {\r\n              \"primary\": true,\r\n              \"enableAcceleratedNetworking\": false,\r\n              \"dnsSettings\": {\r\n                \"dnsServers\": []\r\n              },\r\n              \"ipConfigurations\": [\r\n                {\r\n                  \"name\": \"test\",\r\n                  \"properties\": {\r\n                    \"subnet\": {\r\n                      \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Network/virtualNetworks/vnethyleevmssdetest2/subnets/subnethyleevmssdetest2\"\r\n                    },\r\n                    \"privateIPAddressVersion\": \"IPv4\"\r\n                  }\r\n                }\r\n              ]\r\n            }\r\n          }\r\n        ]\r\n      },\r\n      \"extensionProfile\": {\r\n        \"extensions\": [\r\n          {\r\n            \"properties\": {\r\n              \"publisher\": \"Microsoft.Azure.Security\",\r\n              \"type\": \"AzureDiskEncryption\",\r\n              \"typeHandlerVersion\": \"2.0\",\r\n              \"autoUpgradeMinorVersion\": true,\r\n              \"settings\": {\r\n                \"AADClientCertThumbprint\": \"\",\r\n                \"EncryptionOperation\": \"EnableEncryption\",\r\n                \"KeyEncryptionAlgorithm\": \"RSA-OAEP\",\r\n                \"KeyVaultResourceId\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.KeyVault/vaults/detestvault\",\r\n                \"KeyVaultURL\": \"https://detestvault.vault.azure.net/\",\r\n                \"AADClientID\": \"c258f481-c6e0-4599-850d-3d1616fb0ebb\",\r\n                \"KekVaultResourceId\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.KeyVault/vaults/detestvault\",\r\n                \"VolumeType\": \"OS\",\r\n                \"KeyEncryptionKeyURL\": \"https://detestvault.vault.azure.net/keys/dstestkek/923c02c3ccfe4861ab0d1b68bf6c083b\"\r\n              },\r\n              \"forceUpdateTag\": \"b487c913-3a7e-4205-8ad3-a8dcc287db81\"\r\n            },\r\n            \"name\": \"AzureDiskEncryption\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"overprovision\": true,\r\n    \"uniqueId\": \"14e24b20-4154-4c94-849a-8dccb70a4086\"\r\n  },\r\n  \"type\": \"Microsoft.Compute/virtualMachineScaleSets\",\r\n  \"location\": \"westcentralus\",\r\n  \"tags\": {},\r\n  \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/virtualMachineScaleSets/vmsshyleevmssdetest2\",\r\n  \"name\": \"vmsshyleevmssdetest2\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2959"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-served-by": [
+          "2be8e138-3223-4141-af48-5163dbafa559_131442037031481435"
+        ],
+        "x-ms-request-id": [
+          "820cafb9-2f93-4a26-ad36-1bd4c8372afc"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14993"
+        ],
+        "x-ms-correlation-request-id": [
+          "997c53ba-40f7-49ac-8824-9ffb434ca8c2"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170811T230817Z:997c53ba-40f7-49ac-8824-9ffb434ca8c2"
+        ],
+        "Date": [
+          "Fri, 11 Aug 2017 23:08:17 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/virtualMachineScaleSets/vmsshyleevmssdetest2?api-version=2017-03-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Jlc291cmNlR3JvdXBzL2h5bGVldm1zc2RldGVzdDIvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lU2NhbGVTZXRzL3Ztc3NoeWxlZXZtc3NkZXRlc3QyP2FwaS12ZXJzaW9uPTIwMTctMDMtMzA=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "790f14a2-d9fc-4604-a7a2-dfc56eb23ba3"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2102.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/16.2.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard_A1\",\r\n    \"tier\": \"Standard\",\r\n    \"capacity\": 2\r\n  },\r\n  \"properties\": {\r\n    \"singlePlacementGroup\": true,\r\n    \"upgradePolicy\": {\r\n      \"mode\": \"Automatic\"\r\n    },\r\n    \"virtualMachineProfile\": {\r\n      \"osProfile\": {\r\n        \"computerNamePrefix\": \"test\",\r\n        \"adminUsername\": \"Foo12\",\r\n        \"windowsConfiguration\": {\r\n          \"provisionVMAgent\": true,\r\n          \"enableAutomaticUpdates\": true\r\n        },\r\n        \"secrets\": []\r\n      },\r\n      \"storageProfile\": {\r\n        \"osDisk\": {\r\n          \"createOption\": \"FromImage\",\r\n          \"caching\": \"None\",\r\n          \"managedDisk\": {\r\n            \"storageAccountType\": \"Standard_LRS\"\r\n          }\r\n        },\r\n        \"imageReference\": {\r\n          \"publisher\": \"MicrosoftWindowsServer\",\r\n          \"offer\": \"WindowsServer\",\r\n          \"sku\": \"2008-R2-SP1\",\r\n          \"version\": \"2.127.20170406\"\r\n        }\r\n      },\r\n      \"networkProfile\": {\r\n        \"networkInterfaceConfigurations\": [\r\n          {\r\n            \"name\": \"test\",\r\n            \"properties\": {\r\n              \"primary\": true,\r\n              \"enableAcceleratedNetworking\": false,\r\n              \"dnsSettings\": {\r\n                \"dnsServers\": []\r\n              },\r\n              \"ipConfigurations\": [\r\n                {\r\n                  \"name\": \"test\",\r\n                  \"properties\": {\r\n                    \"subnet\": {\r\n                      \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Network/virtualNetworks/vnethyleevmssdetest2/subnets/subnethyleevmssdetest2\"\r\n                    },\r\n                    \"privateIPAddressVersion\": \"IPv4\"\r\n                  }\r\n                }\r\n              ]\r\n            }\r\n          }\r\n        ]\r\n      },\r\n      \"extensionProfile\": {\r\n        \"extensions\": [\r\n          {\r\n            \"properties\": {\r\n              \"publisher\": \"Microsoft.Azure.Security\",\r\n              \"type\": \"AzureDiskEncryption\",\r\n              \"typeHandlerVersion\": \"2.0\",\r\n              \"autoUpgradeMinorVersion\": true,\r\n              \"settings\": {\r\n                \"AADClientCertThumbprint\": \"\",\r\n                \"EncryptionOperation\": \"EnableEncryption\",\r\n                \"KeyEncryptionAlgorithm\": \"RSA-OAEP\",\r\n                \"KeyVaultResourceId\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.KeyVault/vaults/detestvault\",\r\n                \"KeyVaultURL\": \"https://detestvault.vault.azure.net/\",\r\n                \"AADClientID\": \"c258f481-c6e0-4599-850d-3d1616fb0ebb\",\r\n                \"KekVaultResourceId\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.KeyVault/vaults/detestvault\",\r\n                \"VolumeType\": \"OS\",\r\n                \"KeyEncryptionKeyURL\": \"https://detestvault.vault.azure.net/keys/dstestkek/923c02c3ccfe4861ab0d1b68bf6c083b\"\r\n              },\r\n              \"forceUpdateTag\": \"b487c913-3a7e-4205-8ad3-a8dcc287db81\"\r\n            },\r\n            \"name\": \"AzureDiskEncryption\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"overprovision\": true,\r\n    \"uniqueId\": \"14e24b20-4154-4c94-849a-8dccb70a4086\"\r\n  },\r\n  \"type\": \"Microsoft.Compute/virtualMachineScaleSets\",\r\n  \"location\": \"westcentralus\",\r\n  \"tags\": {},\r\n  \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/virtualMachineScaleSets/vmsshyleevmssdetest2\",\r\n  \"name\": \"vmsshyleevmssdetest2\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2959"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-served-by": [
+          "2be8e138-3223-4141-af48-5163dbafa559_131442037031481435"
+        ],
+        "x-ms-request-id": [
+          "84621443-0764-408d-91fa-349abe3fee90"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14991"
+        ],
+        "x-ms-correlation-request-id": [
+          "e865a158-3952-4890-b4ad-7c325c36b55c"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170811T230818Z:e865a158-3952-4890-b4ad-7c325c36b55c"
+        ],
+        "Date": [
+          "Fri, 11 Aug 2017 23:08:17 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/virtualMachineScaleSets/vmsshyleevmssdetest2?api-version=2017-03-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Jlc291cmNlR3JvdXBzL2h5bGVldm1zc2RldGVzdDIvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lU2NhbGVTZXRzL3Ztc3NoeWxlZXZtc3NkZXRlc3QyP2FwaS12ZXJzaW9uPTIwMTctMDMtMzA=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c6436ab5-5c4b-48b0-b40d-bdfd82dc25f5"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2102.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/16.2.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard_A1\",\r\n    \"tier\": \"Standard\",\r\n    \"capacity\": 2\r\n  },\r\n  \"properties\": {\r\n    \"singlePlacementGroup\": true,\r\n    \"upgradePolicy\": {\r\n      \"mode\": \"Automatic\"\r\n    },\r\n    \"virtualMachineProfile\": {\r\n      \"osProfile\": {\r\n        \"computerNamePrefix\": \"test\",\r\n        \"adminUsername\": \"Foo12\",\r\n        \"windowsConfiguration\": {\r\n          \"provisionVMAgent\": true,\r\n          \"enableAutomaticUpdates\": true\r\n        },\r\n        \"secrets\": []\r\n      },\r\n      \"storageProfile\": {\r\n        \"osDisk\": {\r\n          \"createOption\": \"FromImage\",\r\n          \"caching\": \"None\",\r\n          \"managedDisk\": {\r\n            \"storageAccountType\": \"Standard_LRS\"\r\n          }\r\n        },\r\n        \"imageReference\": {\r\n          \"publisher\": \"MicrosoftWindowsServer\",\r\n          \"offer\": \"WindowsServer\",\r\n          \"sku\": \"2008-R2-SP1\",\r\n          \"version\": \"2.127.20170406\"\r\n        }\r\n      },\r\n      \"networkProfile\": {\r\n        \"networkInterfaceConfigurations\": [\r\n          {\r\n            \"name\": \"test\",\r\n            \"properties\": {\r\n              \"primary\": true,\r\n              \"enableAcceleratedNetworking\": false,\r\n              \"dnsSettings\": {\r\n                \"dnsServers\": []\r\n              },\r\n              \"ipConfigurations\": [\r\n                {\r\n                  \"name\": \"test\",\r\n                  \"properties\": {\r\n                    \"subnet\": {\r\n                      \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Network/virtualNetworks/vnethyleevmssdetest2/subnets/subnethyleevmssdetest2\"\r\n                    },\r\n                    \"privateIPAddressVersion\": \"IPv4\"\r\n                  }\r\n                }\r\n              ]\r\n            }\r\n          }\r\n        ]\r\n      },\r\n      \"extensionProfile\": {\r\n        \"extensions\": [\r\n          {\r\n            \"properties\": {\r\n              \"publisher\": \"Microsoft.Azure.Security\",\r\n              \"type\": \"AzureDiskEncryption\",\r\n              \"typeHandlerVersion\": \"2.0\",\r\n              \"autoUpgradeMinorVersion\": true,\r\n              \"settings\": {\r\n                \"AADClientCertThumbprint\": \"\",\r\n                \"EncryptionOperation\": \"EnableEncryption\",\r\n                \"KeyEncryptionAlgorithm\": \"RSA-OAEP\",\r\n                \"KeyVaultResourceId\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.KeyVault/vaults/detestvault\",\r\n                \"KeyVaultURL\": \"https://detestvault.vault.azure.net/\",\r\n                \"AADClientID\": \"c258f481-c6e0-4599-850d-3d1616fb0ebb\",\r\n                \"KekVaultResourceId\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.KeyVault/vaults/detestvault\",\r\n                \"VolumeType\": \"OS\",\r\n                \"KeyEncryptionKeyURL\": \"https://detestvault.vault.azure.net/keys/dstestkek/923c02c3ccfe4861ab0d1b68bf6c083b\"\r\n              },\r\n              \"forceUpdateTag\": \"b487c913-3a7e-4205-8ad3-a8dcc287db81\"\r\n            },\r\n            \"name\": \"AzureDiskEncryption\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"overprovision\": true,\r\n    \"uniqueId\": \"14e24b20-4154-4c94-849a-8dccb70a4086\"\r\n  },\r\n  \"type\": \"Microsoft.Compute/virtualMachineScaleSets\",\r\n  \"location\": \"westcentralus\",\r\n  \"tags\": {},\r\n  \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/virtualMachineScaleSets/vmsshyleevmssdetest2\",\r\n  \"name\": \"vmsshyleevmssdetest2\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2959"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-served-by": [
+          "2be8e138-3223-4141-af48-5163dbafa559_131442037031481435"
+        ],
+        "x-ms-request-id": [
+          "9edb78e3-557d-415e-949e-3cbf88a14e23"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14982"
+        ],
+        "x-ms-correlation-request-id": [
+          "6f7baf5b-0f0a-493d-804e-712a1f7f83f8"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170811T230819Z:6f7baf5b-0f0a-493d-804e-712a1f7f83f8"
+        ],
+        "Date": [
+          "Fri, 11 Aug 2017 23:08:18 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/virtualMachineScaleSets/vmsshyleevmssdetest2?api-version=2017-03-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Jlc291cmNlR3JvdXBzL2h5bGVldm1zc2RldGVzdDIvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lU2NhbGVTZXRzL3Ztc3NoeWxlZXZtc3NkZXRlc3QyP2FwaS12ZXJzaW9uPTIwMTctMDMtMzA=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "3d75e99d-1f51-4682-a40f-12782aacad53"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2102.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/16.2.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard_A1\",\r\n    \"tier\": \"Standard\",\r\n    \"capacity\": 2\r\n  },\r\n  \"properties\": {\r\n    \"singlePlacementGroup\": true,\r\n    \"upgradePolicy\": {\r\n      \"mode\": \"Automatic\"\r\n    },\r\n    \"virtualMachineProfile\": {\r\n      \"osProfile\": {\r\n        \"computerNamePrefix\": \"test\",\r\n        \"adminUsername\": \"Foo12\",\r\n        \"windowsConfiguration\": {\r\n          \"provisionVMAgent\": true,\r\n          \"enableAutomaticUpdates\": true\r\n        },\r\n        \"secrets\": []\r\n      },\r\n      \"storageProfile\": {\r\n        \"osDisk\": {\r\n          \"createOption\": \"FromImage\",\r\n          \"caching\": \"None\",\r\n          \"managedDisk\": {\r\n            \"storageAccountType\": \"Standard_LRS\"\r\n          }\r\n        },\r\n        \"imageReference\": {\r\n          \"publisher\": \"MicrosoftWindowsServer\",\r\n          \"offer\": \"WindowsServer\",\r\n          \"sku\": \"2008-R2-SP1\",\r\n          \"version\": \"2.127.20170406\"\r\n        }\r\n      },\r\n      \"networkProfile\": {\r\n        \"networkInterfaceConfigurations\": [\r\n          {\r\n            \"name\": \"test\",\r\n            \"properties\": {\r\n              \"primary\": true,\r\n              \"enableAcceleratedNetworking\": false,\r\n              \"dnsSettings\": {\r\n                \"dnsServers\": []\r\n              },\r\n              \"ipConfigurations\": [\r\n                {\r\n                  \"name\": \"test\",\r\n                  \"properties\": {\r\n                    \"subnet\": {\r\n                      \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Network/virtualNetworks/vnethyleevmssdetest2/subnets/subnethyleevmssdetest2\"\r\n                    },\r\n                    \"privateIPAddressVersion\": \"IPv4\"\r\n                  }\r\n                }\r\n              ]\r\n            }\r\n          }\r\n        ]\r\n      },\r\n      \"extensionProfile\": {\r\n        \"extensions\": [\r\n          {\r\n            \"properties\": {\r\n              \"publisher\": \"Microsoft.Azure.Security\",\r\n              \"type\": \"AzureDiskEncryption\",\r\n              \"typeHandlerVersion\": \"2.0\",\r\n              \"autoUpgradeMinorVersion\": true,\r\n              \"settings\": {\r\n                \"EncryptionOperation\": \"DisableEncryption\",\r\n                \"VolumeType\": \"OS\"\r\n              },\r\n              \"forceUpdateTag\": \"823eed64-e135-44bc-b26f-a052daf025c1\"\r\n            },\r\n            \"name\": \"AzureDiskEncryption\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"overprovision\": true,\r\n    \"uniqueId\": \"14e24b20-4154-4c94-849a-8dccb70a4086\"\r\n  },\r\n  \"type\": \"Microsoft.Compute/virtualMachineScaleSets\",\r\n  \"location\": \"westcentralus\",\r\n  \"tags\": {},\r\n  \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/virtualMachineScaleSets/vmsshyleevmssdetest2\",\r\n  \"name\": \"vmsshyleevmssdetest2\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2371"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-served-by": [
+          "2be8e138-3223-4141-af48-5163dbafa559_131442037031481435"
+        ],
+        "x-ms-request-id": [
+          "81a6e9d7-384c-4b1b-8874-aac216e202e7"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14977"
+        ],
+        "x-ms-correlation-request-id": [
+          "6a020839-aca6-4964-85ed-dab08cb6b32c"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170811T230920Z:6a020839-aca6-4964-85ed-dab08cb6b32c"
+        ],
+        "Date": [
+          "Fri, 11 Aug 2017 23:09:20 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/virtualMachineScaleSets/vmsshyleevmssdetest2?api-version=2017-03-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Jlc291cmNlR3JvdXBzL2h5bGVldm1zc2RldGVzdDIvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lU2NhbGVTZXRzL3Ztc3NoeWxlZXZtc3NkZXRlc3QyP2FwaS12ZXJzaW9uPTIwMTctMDMtMzA=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "692ccdae-56a2-4e51-9195-6bd0b4242c9d"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2102.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/16.2.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard_A1\",\r\n    \"tier\": \"Standard\",\r\n    \"capacity\": 2\r\n  },\r\n  \"properties\": {\r\n    \"singlePlacementGroup\": true,\r\n    \"upgradePolicy\": {\r\n      \"mode\": \"Automatic\"\r\n    },\r\n    \"virtualMachineProfile\": {\r\n      \"osProfile\": {\r\n        \"computerNamePrefix\": \"test\",\r\n        \"adminUsername\": \"Foo12\",\r\n        \"windowsConfiguration\": {\r\n          \"provisionVMAgent\": true,\r\n          \"enableAutomaticUpdates\": true\r\n        },\r\n        \"secrets\": []\r\n      },\r\n      \"storageProfile\": {\r\n        \"osDisk\": {\r\n          \"createOption\": \"FromImage\",\r\n          \"caching\": \"None\",\r\n          \"managedDisk\": {\r\n            \"storageAccountType\": \"Standard_LRS\"\r\n          }\r\n        },\r\n        \"imageReference\": {\r\n          \"publisher\": \"MicrosoftWindowsServer\",\r\n          \"offer\": \"WindowsServer\",\r\n          \"sku\": \"2008-R2-SP1\",\r\n          \"version\": \"2.127.20170406\"\r\n        }\r\n      },\r\n      \"networkProfile\": {\r\n        \"networkInterfaceConfigurations\": [\r\n          {\r\n            \"name\": \"test\",\r\n            \"properties\": {\r\n              \"primary\": true,\r\n              \"enableAcceleratedNetworking\": false,\r\n              \"dnsSettings\": {\r\n                \"dnsServers\": []\r\n              },\r\n              \"ipConfigurations\": [\r\n                {\r\n                  \"name\": \"test\",\r\n                  \"properties\": {\r\n                    \"subnet\": {\r\n                      \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Network/virtualNetworks/vnethyleevmssdetest2/subnets/subnethyleevmssdetest2\"\r\n                    },\r\n                    \"privateIPAddressVersion\": \"IPv4\"\r\n                  }\r\n                }\r\n              ]\r\n            }\r\n          }\r\n        ]\r\n      },\r\n      \"extensionProfile\": {\r\n        \"extensions\": [\r\n          {\r\n            \"properties\": {\r\n              \"publisher\": \"Microsoft.Azure.Security\",\r\n              \"type\": \"AzureDiskEncryption\",\r\n              \"typeHandlerVersion\": \"2.0\",\r\n              \"autoUpgradeMinorVersion\": true,\r\n              \"settings\": {\r\n                \"EncryptionOperation\": \"DisableEncryption\",\r\n                \"VolumeType\": \"OS\"\r\n              },\r\n              \"forceUpdateTag\": \"823eed64-e135-44bc-b26f-a052daf025c1\"\r\n            },\r\n            \"name\": \"AzureDiskEncryption\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"overprovision\": true,\r\n    \"uniqueId\": \"14e24b20-4154-4c94-849a-8dccb70a4086\"\r\n  },\r\n  \"type\": \"Microsoft.Compute/virtualMachineScaleSets\",\r\n  \"location\": \"westcentralus\",\r\n  \"tags\": {},\r\n  \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/virtualMachineScaleSets/vmsshyleevmssdetest2\",\r\n  \"name\": \"vmsshyleevmssdetest2\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2371"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-served-by": [
+          "2be8e138-3223-4141-af48-5163dbafa559_131442037031481435"
+        ],
+        "x-ms-request-id": [
+          "edf3843a-a38a-46e0-8fb4-2a253145ee67"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14975"
+        ],
+        "x-ms-correlation-request-id": [
+          "61abf0be-dca0-4186-b484-805aeca3256f"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170811T230921Z:61abf0be-dca0-4186-b484-805aeca3256f"
+        ],
+        "Date": [
+          "Fri, 11 Aug 2017 23:09:21 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/virtualMachineScaleSets/vmsshyleevmssdetest2/instanceView?api-version=2017-03-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Jlc291cmNlR3JvdXBzL2h5bGVldm1zc2RldGVzdDIvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lU2NhbGVTZXRzL3Ztc3NoeWxlZXZtc3NkZXRlc3QyL2luc3RhbmNlVmlldz9hcGktdmVyc2lvbj0yMDE3LTAzLTMw",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d4ef26db-c166-4f60-aa6a-81b4ccd0adac"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2102.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/16.2.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"virtualMachine\": {\r\n    \"statusesSummary\": [\r\n      {\r\n        \"code\": \"ProvisioningState/succeeded\",\r\n        \"count\": 2\r\n      }\r\n    ]\r\n  },\r\n  \"extensions\": [\r\n    {\r\n      \"name\": \"AzureDiskEncryption\",\r\n      \"statusesSummary\": [\r\n        {\r\n          \"code\": \"ProvisioningState/succeeded\",\r\n          \"count\": 2\r\n        }\r\n      ]\r\n    }\r\n  ],\r\n  \"statuses\": [\r\n    {\r\n      \"code\": \"ProvisioningState/succeeded\",\r\n      \"level\": \"Info\",\r\n      \"displayStatus\": \"Provisioning succeeded\",\r\n      \"time\": \"2017-08-11T16:02:37.5632685-07:00\"\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "567"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-served-by": [
+          "2be8e138-3223-4141-af48-5163dbafa559_131442037031481435"
+        ],
+        "x-ms-request-id": [
+          "8af39484-bf2c-4c99-b889-1acee68e3583"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14992"
+        ],
+        "x-ms-correlation-request-id": [
+          "d858c715-4480-40f9-bfb1-cce9bc0b70df"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170811T230817Z:d858c715-4480-40f9-bfb1-cce9bc0b70df"
+        ],
+        "Date": [
+          "Fri, 11 Aug 2017 23:08:17 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/virtualMachineScaleSets/vmsshyleevmssdetest2/instanceView?api-version=2017-03-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Jlc291cmNlR3JvdXBzL2h5bGVldm1zc2RldGVzdDIvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lU2NhbGVTZXRzL3Ztc3NoeWxlZXZtc3NkZXRlc3QyL2luc3RhbmNlVmlldz9hcGktdmVyc2lvbj0yMDE3LTAzLTMw",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "dcd40d03-054b-4f1c-a461-809275765f32"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2102.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/16.2.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"virtualMachine\": {\r\n    \"statusesSummary\": [\r\n      {\r\n        \"code\": \"ProvisioningState/succeeded\",\r\n        \"count\": 2\r\n      }\r\n    ]\r\n  },\r\n  \"extensions\": [\r\n    {\r\n      \"name\": \"AzureDiskEncryption\",\r\n      \"statusesSummary\": [\r\n        {\r\n          \"code\": \"ProvisioningState/succeeded\",\r\n          \"count\": 2\r\n        }\r\n      ]\r\n    }\r\n  ],\r\n  \"statuses\": [\r\n    {\r\n      \"code\": \"ProvisioningState/succeeded\",\r\n      \"level\": \"Info\",\r\n      \"displayStatus\": \"Provisioning succeeded\",\r\n      \"time\": \"2017-08-11T16:02:37.5632685-07:00\"\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "567"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-served-by": [
+          "2be8e138-3223-4141-af48-5163dbafa559_131442037031481435"
+        ],
+        "x-ms-request-id": [
+          "9875b319-42f7-40f6-b24e-70b6ebcabf30"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14990"
+        ],
+        "x-ms-correlation-request-id": [
+          "5134321e-1585-439c-8958-614ed6d32db5"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170811T230818Z:5134321e-1585-439c-8958-614ed6d32db5"
+        ],
+        "Date": [
+          "Fri, 11 Aug 2017 23:08:17 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/virtualMachineScaleSets/vmsshyleevmssdetest2/instanceView?api-version=2017-03-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Jlc291cmNlR3JvdXBzL2h5bGVldm1zc2RldGVzdDIvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lU2NhbGVTZXRzL3Ztc3NoeWxlZXZtc3NkZXRlc3QyL2luc3RhbmNlVmlldz9hcGktdmVyc2lvbj0yMDE3LTAzLTMw",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "2b3abaab-15de-497b-9f08-3df29214a232"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2102.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/16.2.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"virtualMachine\": {\r\n    \"statusesSummary\": [\r\n      {\r\n        \"code\": \"ProvisioningState/succeeded\",\r\n        \"count\": 2\r\n      }\r\n    ]\r\n  },\r\n  \"extensions\": [\r\n    {\r\n      \"name\": \"AzureDiskEncryption\",\r\n      \"statusesSummary\": [\r\n        {\r\n          \"code\": \"ProvisioningState/succeeded\",\r\n          \"count\": 2\r\n        }\r\n      ]\r\n    }\r\n  ],\r\n  \"statuses\": [\r\n    {\r\n      \"code\": \"ProvisioningState/succeeded\",\r\n      \"level\": \"Info\",\r\n      \"displayStatus\": \"Provisioning succeeded\",\r\n      \"time\": \"2017-08-11T16:09:14.5527017-07:00\"\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "567"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-served-by": [
+          "2be8e138-3223-4141-af48-5163dbafa559_131442037031481435"
+        ],
+        "x-ms-request-id": [
+          "51bdb20a-fb8c-4f19-b2ca-78e5bc3f33f3"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14976"
+        ],
+        "x-ms-correlation-request-id": [
+          "cc097880-42f0-4695-b851-ff7ce7e30da2"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170811T230920Z:cc097880-42f0-4695-b851-ff7ce7e30da2"
+        ],
+        "Date": [
+          "Fri, 11 Aug 2017 23:09:20 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/virtualMachineScaleSets/vmsshyleevmssdetest2/instanceView?api-version=2017-03-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Jlc291cmNlR3JvdXBzL2h5bGVldm1zc2RldGVzdDIvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lU2NhbGVTZXRzL3Ztc3NoeWxlZXZtc3NkZXRlc3QyL2luc3RhbmNlVmlldz9hcGktdmVyc2lvbj0yMDE3LTAzLTMw",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "fad39986-2958-4cb9-aee6-bf1afcb9d794"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2102.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/16.2.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"virtualMachine\": {\r\n    \"statusesSummary\": [\r\n      {\r\n        \"code\": \"ProvisioningState/succeeded\",\r\n        \"count\": 2\r\n      }\r\n    ]\r\n  },\r\n  \"extensions\": [\r\n    {\r\n      \"name\": \"AzureDiskEncryption\",\r\n      \"statusesSummary\": [\r\n        {\r\n          \"code\": \"ProvisioningState/succeeded\",\r\n          \"count\": 2\r\n        }\r\n      ]\r\n    }\r\n  ],\r\n  \"statuses\": [\r\n    {\r\n      \"code\": \"ProvisioningState/succeeded\",\r\n      \"level\": \"Info\",\r\n      \"displayStatus\": \"Provisioning succeeded\",\r\n      \"time\": \"2017-08-11T16:09:14.5527017-07:00\"\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "567"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-served-by": [
+          "2be8e138-3223-4141-af48-5163dbafa559_131442037031481435"
+        ],
+        "x-ms-request-id": [
+          "96494e94-c329-43f7-be19-dd56dc034845"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14974"
+        ],
+        "x-ms-correlation-request-id": [
+          "efa49289-50e2-44dd-95d5-c51a97b84ae6"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170811T230921Z:efa49289-50e2-44dd-95d5-c51a97b84ae6"
+        ],
+        "Date": [
+          "Fri, 11 Aug 2017 23:09:21 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/virtualMachineScaleSets/vmsshyleevmssdetest2/virtualMachines?api-version=2017-03-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Jlc291cmNlR3JvdXBzL2h5bGVldm1zc2RldGVzdDIvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lU2NhbGVTZXRzL3Ztc3NoeWxlZXZtc3NkZXRlc3QyL3ZpcnR1YWxNYWNoaW5lcz9hcGktdmVyc2lvbj0yMDE3LTAzLTMw",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "ba9f6f35-b18d-4b9e-8121-8adc0f77bafa"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2102.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/16.2.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"instanceId\": \"2\",\r\n      \"sku\": {\r\n        \"name\": \"Standard_A1\",\r\n        \"tier\": \"Standard\"\r\n      },\r\n      \"properties\": {\r\n        \"latestModelApplied\": true,\r\n        \"vmId\": \"56eb065b-f7f9-4faf-8ad1-f6b2a20effca\",\r\n        \"storageProfile\": {\r\n          \"imageReference\": {\r\n            \"publisher\": \"MicrosoftWindowsServer\",\r\n            \"offer\": \"WindowsServer\",\r\n            \"sku\": \"2008-R2-SP1\",\r\n            \"version\": \"2.127.20170406\"\r\n          },\r\n          \"osDisk\": {\r\n            \"osType\": \"Windows\",\r\n            \"name\": \"vmsshyleevmssdetest2vmsshyleevmssdetest2_OS__1_cfa86d3a2f72479abe1fa016b3c2f073\",\r\n            \"createOption\": \"FromImage\",\r\n            \"caching\": \"None\",\r\n            \"managedDisk\": {\r\n              \"storageAccountType\": \"Standard_LRS\",\r\n              \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/disks/vmsshyleevmssdetest2vmsshyleevmssdetest2_OS__1_cfa86d3a2f72479abe1fa016b3c2f073\"\r\n            },\r\n            \"diskSizeGB\": 128\r\n          },\r\n          \"dataDisks\": []\r\n        },\r\n        \"osProfile\": {\r\n          \"computerName\": \"test000002\",\r\n          \"adminUsername\": \"Foo12\",\r\n          \"windowsConfiguration\": {\r\n            \"provisionVMAgent\": true,\r\n            \"enableAutomaticUpdates\": true\r\n          },\r\n          \"secrets\": []\r\n        },\r\n        \"networkProfile\": {\r\n          \"networkInterfaces\": [\r\n            {\r\n              \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/virtualMachineScaleSets/vmsshyleevmssdetest2/virtualMachines/2/networkInterfaces/test\"\r\n            }\r\n          ]\r\n        },\r\n        \"provisioningState\": \"Succeeded\"\r\n      },\r\n      \"resources\": [\r\n        {\r\n          \"properties\": {\r\n            \"publisher\": \"Microsoft.Azure.Security\",\r\n            \"type\": \"AzureDiskEncryption\",\r\n            \"typeHandlerVersion\": \"2.0\",\r\n            \"autoUpgradeMinorVersion\": true,\r\n            \"settings\": {\r\n              \"AADClientCertThumbprint\": \"\",\r\n              \"EncryptionOperation\": \"EnableEncryption\",\r\n              \"KeyEncryptionAlgorithm\": \"RSA-OAEP\",\r\n              \"KeyVaultResourceId\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.KeyVault/vaults/detestvault\",\r\n              \"KeyVaultURL\": \"https://detestvault.vault.azure.net/\",\r\n              \"AADClientID\": \"c258f481-c6e0-4599-850d-3d1616fb0ebb\",\r\n              \"KekVaultResourceId\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.KeyVault/vaults/detestvault\",\r\n              \"VolumeType\": \"OS\",\r\n              \"KeyEncryptionKeyURL\": \"https://detestvault.vault.azure.net/keys/dstestkek/923c02c3ccfe4861ab0d1b68bf6c083b\"\r\n            },\r\n            \"forceUpdateTag\": \"b487c913-3a7e-4205-8ad3-a8dcc287db81\",\r\n            \"provisioningState\": \"Succeeded\"\r\n          },\r\n          \"type\": \"Microsoft.Compute/virtualMachines/extensions\",\r\n          \"location\": \"westcentralus\",\r\n          \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/HYLEEVMSSDETEST2/providers/Microsoft.Compute/virtualMachines/vmsshyleevmssdetest2_2/extensions/AzureDiskEncryption\",\r\n          \"name\": \"AzureDiskEncryption\"\r\n        }\r\n      ],\r\n      \"type\": \"Microsoft.Compute/virtualMachineScaleSets/virtualMachines\",\r\n      \"location\": \"westcentralus\",\r\n      \"tags\": {},\r\n      \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/HYLEEVMSSDETEST2/providers/Microsoft.Compute/virtualMachineScaleSets/vmsshyleevmssdetest2/virtualMachines/2\",\r\n      \"name\": \"vmsshyleevmssdetest2_2\"\r\n    },\r\n    {\r\n      \"instanceId\": \"3\",\r\n      \"sku\": {\r\n        \"name\": \"Standard_A1\",\r\n        \"tier\": \"Standard\"\r\n      },\r\n      \"properties\": {\r\n        \"latestModelApplied\": true,\r\n        \"vmId\": \"ca85149c-19bc-40aa-babd-75f765946a47\",\r\n        \"storageProfile\": {\r\n          \"imageReference\": {\r\n            \"publisher\": \"MicrosoftWindowsServer\",\r\n            \"offer\": \"WindowsServer\",\r\n            \"sku\": \"2008-R2-SP1\",\r\n            \"version\": \"2.127.20170406\"\r\n          },\r\n          \"osDisk\": {\r\n            \"osType\": \"Windows\",\r\n            \"name\": \"vmsshyleevmssdetest2vmsshyleevmssdetest2_OS__1_e642af092c2c436cb972049131967297\",\r\n            \"createOption\": \"FromImage\",\r\n            \"caching\": \"None\",\r\n            \"managedDisk\": {\r\n              \"storageAccountType\": \"Standard_LRS\",\r\n              \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/disks/vmsshyleevmssdetest2vmsshyleevmssdetest2_OS__1_e642af092c2c436cb972049131967297\"\r\n            },\r\n            \"diskSizeGB\": 128\r\n          },\r\n          \"dataDisks\": []\r\n        },\r\n        \"osProfile\": {\r\n          \"computerName\": \"test000003\",\r\n          \"adminUsername\": \"Foo12\",\r\n          \"windowsConfiguration\": {\r\n            \"provisionVMAgent\": true,\r\n            \"enableAutomaticUpdates\": true\r\n          },\r\n          \"secrets\": []\r\n        },\r\n        \"networkProfile\": {\r\n          \"networkInterfaces\": [\r\n            {\r\n              \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/virtualMachineScaleSets/vmsshyleevmssdetest2/virtualMachines/3/networkInterfaces/test\"\r\n            }\r\n          ]\r\n        },\r\n        \"provisioningState\": \"Succeeded\"\r\n      },\r\n      \"resources\": [\r\n        {\r\n          \"properties\": {\r\n            \"publisher\": \"Microsoft.Azure.Security\",\r\n            \"type\": \"AzureDiskEncryption\",\r\n            \"typeHandlerVersion\": \"2.0\",\r\n            \"autoUpgradeMinorVersion\": true,\r\n            \"settings\": {\r\n              \"AADClientCertThumbprint\": \"\",\r\n              \"EncryptionOperation\": \"EnableEncryption\",\r\n              \"KeyEncryptionAlgorithm\": \"RSA-OAEP\",\r\n              \"KeyVaultResourceId\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.KeyVault/vaults/detestvault\",\r\n              \"KeyVaultURL\": \"https://detestvault.vault.azure.net/\",\r\n              \"AADClientID\": \"c258f481-c6e0-4599-850d-3d1616fb0ebb\",\r\n              \"KekVaultResourceId\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.KeyVault/vaults/detestvault\",\r\n              \"VolumeType\": \"OS\",\r\n              \"KeyEncryptionKeyURL\": \"https://detestvault.vault.azure.net/keys/dstestkek/923c02c3ccfe4861ab0d1b68bf6c083b\"\r\n            },\r\n            \"forceUpdateTag\": \"b487c913-3a7e-4205-8ad3-a8dcc287db81\",\r\n            \"provisioningState\": \"Succeeded\"\r\n          },\r\n          \"type\": \"Microsoft.Compute/virtualMachines/extensions\",\r\n          \"location\": \"westcentralus\",\r\n          \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/HYLEEVMSSDETEST2/providers/Microsoft.Compute/virtualMachines/vmsshyleevmssdetest2_3/extensions/AzureDiskEncryption\",\r\n          \"name\": \"AzureDiskEncryption\"\r\n        }\r\n      ],\r\n      \"type\": \"Microsoft.Compute/virtualMachineScaleSets/virtualMachines\",\r\n      \"location\": \"westcentralus\",\r\n      \"tags\": {},\r\n      \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/HYLEEVMSSDETEST2/providers/Microsoft.Compute/virtualMachineScaleSets/vmsshyleevmssdetest2/virtualMachines/3\",\r\n      \"name\": \"vmsshyleevmssdetest2_3\"\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "7010"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-served-by": [
+          "2be8e138-3223-4141-af48-5163dbafa559_131442037031481435"
+        ],
+        "x-ms-request-id": [
+          "88dfd0af-2878-41ca-9a32-5881d134ef45"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14989"
+        ],
+        "x-ms-correlation-request-id": [
+          "62e9e792-07a1-48d0-ae53-d571a0cddafc"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170811T230818Z:62e9e792-07a1-48d0-ae53-d571a0cddafc"
+        ],
+        "Date": [
+          "Fri, 11 Aug 2017 23:08:17 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/virtualMachineScaleSets/vmsshyleevmssdetest2/virtualMachines?api-version=2017-03-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Jlc291cmNlR3JvdXBzL2h5bGVldm1zc2RldGVzdDIvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lU2NhbGVTZXRzL3Ztc3NoeWxlZXZtc3NkZXRlc3QyL3ZpcnR1YWxNYWNoaW5lcz9hcGktdmVyc2lvbj0yMDE3LTAzLTMw",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "cb4d603f-5e1b-4fb9-8bf9-fea079d369a8"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2102.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/16.2.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"instanceId\": \"2\",\r\n      \"sku\": {\r\n        \"name\": \"Standard_A1\",\r\n        \"tier\": \"Standard\"\r\n      },\r\n      \"properties\": {\r\n        \"latestModelApplied\": true,\r\n        \"vmId\": \"56eb065b-f7f9-4faf-8ad1-f6b2a20effca\",\r\n        \"storageProfile\": {\r\n          \"imageReference\": {\r\n            \"publisher\": \"MicrosoftWindowsServer\",\r\n            \"offer\": \"WindowsServer\",\r\n            \"sku\": \"2008-R2-SP1\",\r\n            \"version\": \"2.127.20170406\"\r\n          },\r\n          \"osDisk\": {\r\n            \"osType\": \"Windows\",\r\n            \"name\": \"vmsshyleevmssdetest2vmsshyleevmssdetest2_OS__1_cfa86d3a2f72479abe1fa016b3c2f073\",\r\n            \"createOption\": \"FromImage\",\r\n            \"caching\": \"None\",\r\n            \"managedDisk\": {\r\n              \"storageAccountType\": \"Standard_LRS\",\r\n              \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/disks/vmsshyleevmssdetest2vmsshyleevmssdetest2_OS__1_cfa86d3a2f72479abe1fa016b3c2f073\"\r\n            },\r\n            \"diskSizeGB\": 128\r\n          },\r\n          \"dataDisks\": []\r\n        },\r\n        \"osProfile\": {\r\n          \"computerName\": \"test000002\",\r\n          \"adminUsername\": \"Foo12\",\r\n          \"windowsConfiguration\": {\r\n            \"provisionVMAgent\": true,\r\n            \"enableAutomaticUpdates\": true\r\n          },\r\n          \"secrets\": []\r\n        },\r\n        \"networkProfile\": {\r\n          \"networkInterfaces\": [\r\n            {\r\n              \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/virtualMachineScaleSets/vmsshyleevmssdetest2/virtualMachines/2/networkInterfaces/test\"\r\n            }\r\n          ]\r\n        },\r\n        \"provisioningState\": \"Succeeded\"\r\n      },\r\n      \"resources\": [\r\n        {\r\n          \"properties\": {\r\n            \"publisher\": \"Microsoft.Azure.Security\",\r\n            \"type\": \"AzureDiskEncryption\",\r\n            \"typeHandlerVersion\": \"2.0\",\r\n            \"autoUpgradeMinorVersion\": true,\r\n            \"settings\": {\r\n              \"EncryptionOperation\": \"DisableEncryption\",\r\n              \"VolumeType\": \"OS\"\r\n            },\r\n            \"forceUpdateTag\": \"823eed64-e135-44bc-b26f-a052daf025c1\",\r\n            \"provisioningState\": \"Succeeded\"\r\n          },\r\n          \"type\": \"Microsoft.Compute/virtualMachines/extensions\",\r\n          \"location\": \"westcentralus\",\r\n          \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/HYLEEVMSSDETEST2/providers/Microsoft.Compute/virtualMachines/vmsshyleevmssdetest2_2/extensions/AzureDiskEncryption\",\r\n          \"name\": \"AzureDiskEncryption\"\r\n        }\r\n      ],\r\n      \"type\": \"Microsoft.Compute/virtualMachineScaleSets/virtualMachines\",\r\n      \"location\": \"westcentralus\",\r\n      \"tags\": {},\r\n      \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/HYLEEVMSSDETEST2/providers/Microsoft.Compute/virtualMachineScaleSets/vmsshyleevmssdetest2/virtualMachines/2\",\r\n      \"name\": \"vmsshyleevmssdetest2_2\"\r\n    },\r\n    {\r\n      \"instanceId\": \"3\",\r\n      \"sku\": {\r\n        \"name\": \"Standard_A1\",\r\n        \"tier\": \"Standard\"\r\n      },\r\n      \"properties\": {\r\n        \"latestModelApplied\": true,\r\n        \"vmId\": \"ca85149c-19bc-40aa-babd-75f765946a47\",\r\n        \"storageProfile\": {\r\n          \"imageReference\": {\r\n            \"publisher\": \"MicrosoftWindowsServer\",\r\n            \"offer\": \"WindowsServer\",\r\n            \"sku\": \"2008-R2-SP1\",\r\n            \"version\": \"2.127.20170406\"\r\n          },\r\n          \"osDisk\": {\r\n            \"osType\": \"Windows\",\r\n            \"name\": \"vmsshyleevmssdetest2vmsshyleevmssdetest2_OS__1_e642af092c2c436cb972049131967297\",\r\n            \"createOption\": \"FromImage\",\r\n            \"caching\": \"None\",\r\n            \"managedDisk\": {\r\n              \"storageAccountType\": \"Standard_LRS\",\r\n              \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/disks/vmsshyleevmssdetest2vmsshyleevmssdetest2_OS__1_e642af092c2c436cb972049131967297\"\r\n            },\r\n            \"diskSizeGB\": 128\r\n          },\r\n          \"dataDisks\": []\r\n        },\r\n        \"osProfile\": {\r\n          \"computerName\": \"test000003\",\r\n          \"adminUsername\": \"Foo12\",\r\n          \"windowsConfiguration\": {\r\n            \"provisionVMAgent\": true,\r\n            \"enableAutomaticUpdates\": true\r\n          },\r\n          \"secrets\": []\r\n        },\r\n        \"networkProfile\": {\r\n          \"networkInterfaces\": [\r\n            {\r\n              \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/virtualMachineScaleSets/vmsshyleevmssdetest2/virtualMachines/3/networkInterfaces/test\"\r\n            }\r\n          ]\r\n        },\r\n        \"provisioningState\": \"Succeeded\"\r\n      },\r\n      \"resources\": [\r\n        {\r\n          \"properties\": {\r\n            \"publisher\": \"Microsoft.Azure.Security\",\r\n            \"type\": \"AzureDiskEncryption\",\r\n            \"typeHandlerVersion\": \"2.0\",\r\n            \"autoUpgradeMinorVersion\": true,\r\n            \"settings\": {\r\n              \"EncryptionOperation\": \"DisableEncryption\",\r\n              \"VolumeType\": \"OS\"\r\n            },\r\n            \"forceUpdateTag\": \"823eed64-e135-44bc-b26f-a052daf025c1\",\r\n            \"provisioningState\": \"Succeeded\"\r\n          },\r\n          \"type\": \"Microsoft.Compute/virtualMachines/extensions\",\r\n          \"location\": \"westcentralus\",\r\n          \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/HYLEEVMSSDETEST2/providers/Microsoft.Compute/virtualMachines/vmsshyleevmssdetest2_3/extensions/AzureDiskEncryption\",\r\n          \"name\": \"AzureDiskEncryption\"\r\n        }\r\n      ],\r\n      \"type\": \"Microsoft.Compute/virtualMachineScaleSets/virtualMachines\",\r\n      \"location\": \"westcentralus\",\r\n      \"tags\": {},\r\n      \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/HYLEEVMSSDETEST2/providers/Microsoft.Compute/virtualMachineScaleSets/vmsshyleevmssdetest2/virtualMachines/3\",\r\n      \"name\": \"vmsshyleevmssdetest2_3\"\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "5834"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-served-by": [
+          "2be8e138-3223-4141-af48-5163dbafa559_131442037031481435"
+        ],
+        "x-ms-request-id": [
+          "0ac63eb5-341c-4aaa-bb8d-ba44c49e3470"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14973"
+        ],
+        "x-ms-correlation-request-id": [
+          "8ba6f0e1-3754-456d-be62-547b9091fbdd"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170811T230921Z:8ba6f0e1-3754-456d-be62-547b9091fbdd"
+        ],
+        "Date": [
+          "Fri, 11 Aug 2017 23:09:21 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/virtualMachineScaleSets/vmsshyleevmssdetest2/virtualmachines/2/instanceView?api-version=2017-03-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Jlc291cmNlR3JvdXBzL2h5bGVldm1zc2RldGVzdDIvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lU2NhbGVTZXRzL3Ztc3NoeWxlZXZtc3NkZXRlc3QyL3ZpcnR1YWxtYWNoaW5lcy8yL2luc3RhbmNlVmlldz9hcGktdmVyc2lvbj0yMDE3LTAzLTMw",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "97461bac-442b-417d-ae66-9312086410d6"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2102.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/16.2.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"placementGroupId\": \"71dbc00c-1251-4110-9a75-2aedcd11be94\",\r\n  \"platformUpdateDomain\": 2,\r\n  \"platformFaultDomain\": 2,\r\n  \"vmAgent\": {\r\n    \"vmAgentVersion\": \"2.7.1198.809\",\r\n    \"statuses\": [\r\n      {\r\n        \"code\": \"ProvisioningState/succeeded\",\r\n        \"level\": \"Info\",\r\n        \"displayStatus\": \"Ready\",\r\n        \"message\": \"GuestAgent is running and accepting new configurations.\",\r\n        \"time\": \"2017-08-11T16:08:04-07:00\"\r\n      }\r\n    ],\r\n    \"extensionHandlers\": [\r\n      {\r\n        \"type\": \"Microsoft.Azure.Security.AzureDiskEncryption\",\r\n        \"typeHandlerVersion\": \"2.0.0.0\",\r\n        \"status\": {\r\n          \"code\": \"ProvisioningState/succeeded\",\r\n          \"level\": \"Info\",\r\n          \"displayStatus\": \"Ready\"\r\n        }\r\n      }\r\n    ]\r\n  },\r\n  \"disks\": [\r\n    {\r\n      \"name\": \"vmsshyleevmssdetest2vmsshyleevmssdetest2_OS__1_cfa86d3a2f72479abe1fa016b3c2f073\",\r\n      \"encryptionSettings\": [\r\n        {\r\n          \"enabled\": true,\r\n          \"diskEncryptionKey\": {\r\n            \"sourceVault\": {\r\n              \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.KeyVault/vaults/detestvault\"\r\n            },\r\n            \"secretUrl\": \"https://detestvault.vault.azure.net/secrets/9D3CB577-F8CC-4B4C-92B8-0F1432ED3B42/7ef81c65ecc34823abb2f26b3ce4ef80\"\r\n          },\r\n          \"keyEncryptionKey\": {\r\n            \"sourceVault\": {\r\n              \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.KeyVault/vaults/detestvault\"\r\n            },\r\n            \"keyUrl\": \"https://detestvault.vault.azure.net/keys/dstestkek/923c02c3ccfe4861ab0d1b68bf6c083b\"\r\n          }\r\n        }\r\n      ],\r\n      \"statuses\": [\r\n        {\r\n          \"code\": \"ProvisioningState/succeeded\",\r\n          \"level\": \"Info\",\r\n          \"displayStatus\": \"Provisioning succeeded\",\r\n          \"time\": \"2017-08-11T16:02:37.1883392-07:00\"\r\n        },\r\n        {\r\n          \"code\": \"EncryptionState/encrypted\",\r\n          \"level\": \"Info\",\r\n          \"displayStatus\": \"Encryption is enabled on disk\"\r\n        }\r\n      ]\r\n    }\r\n  ],\r\n  \"extensions\": [\r\n    {\r\n      \"name\": \"AzureDiskEncryption\",\r\n      \"type\": \"Microsoft.Azure.Security.AzureDiskEncryption\",\r\n      \"typeHandlerVersion\": \"2.0.0.0\",\r\n      \"statuses\": [\r\n        {\r\n          \"code\": \"ProvisioningState/succeeded\",\r\n          \"level\": \"Info\",\r\n          \"displayStatus\": \"Provisioning succeeded\",\r\n          \"message\": \"https://detestvault.vault.azure.net/secrets/9D3CB577-F8CC-4B4C-92B8-0F1432ED3B42/7ef81c65ecc34823abb2f26b3ce4ef80\"\r\n        }\r\n      ]\r\n    }\r\n  ],\r\n  \"statuses\": [\r\n    {\r\n      \"code\": \"ProvisioningState/succeeded\",\r\n      \"level\": \"Info\",\r\n      \"displayStatus\": \"Provisioning succeeded\",\r\n      \"time\": \"2017-08-11T16:02:37.2196151-07:00\"\r\n    },\r\n    {\r\n      \"code\": \"PowerState/running\",\r\n      \"level\": \"Info\",\r\n      \"displayStatus\": \"VM running\"\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2961"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-served-by": [
+          "2be8e138-3223-4141-af48-5163dbafa559_131442037031481435"
+        ],
+        "x-ms-request-id": [
+          "667b25e0-5d13-4d07-ab79-deeed25c7a55"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14988"
+        ],
+        "x-ms-correlation-request-id": [
+          "40c0420f-c51b-49b0-b189-423dfde4a49f"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170811T230818Z:40c0420f-c51b-49b0-b189-423dfde4a49f"
+        ],
+        "Date": [
+          "Fri, 11 Aug 2017 23:08:18 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/virtualMachineScaleSets/vmsshyleevmssdetest2/virtualmachines/2/instanceView?api-version=2017-03-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Jlc291cmNlR3JvdXBzL2h5bGVldm1zc2RldGVzdDIvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lU2NhbGVTZXRzL3Ztc3NoeWxlZXZtc3NkZXRlc3QyL3ZpcnR1YWxtYWNoaW5lcy8yL2luc3RhbmNlVmlldz9hcGktdmVyc2lvbj0yMDE3LTAzLTMw",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "2618ecb4-7165-45e3-8ac2-902d7a970a24"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2102.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/16.2.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"placementGroupId\": \"71dbc00c-1251-4110-9a75-2aedcd11be94\",\r\n  \"platformUpdateDomain\": 2,\r\n  \"platformFaultDomain\": 2,\r\n  \"vmAgent\": {\r\n    \"vmAgentVersion\": \"2.7.1198.809\",\r\n    \"statuses\": [\r\n      {\r\n        \"code\": \"ProvisioningState/succeeded\",\r\n        \"level\": \"Info\",\r\n        \"displayStatus\": \"Ready\",\r\n        \"message\": \"GuestAgent is running and accepting new configurations.\",\r\n        \"time\": \"2017-08-11T16:08:04-07:00\"\r\n      }\r\n    ],\r\n    \"extensionHandlers\": [\r\n      {\r\n        \"type\": \"Microsoft.Azure.Security.AzureDiskEncryption\",\r\n        \"typeHandlerVersion\": \"2.0.0.0\",\r\n        \"status\": {\r\n          \"code\": \"ProvisioningState/succeeded\",\r\n          \"level\": \"Info\",\r\n          \"displayStatus\": \"Ready\"\r\n        }\r\n      }\r\n    ]\r\n  },\r\n  \"disks\": [\r\n    {\r\n      \"name\": \"vmsshyleevmssdetest2vmsshyleevmssdetest2_OS__1_cfa86d3a2f72479abe1fa016b3c2f073\",\r\n      \"encryptionSettings\": [\r\n        {\r\n          \"enabled\": true,\r\n          \"diskEncryptionKey\": {\r\n            \"sourceVault\": {\r\n              \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.KeyVault/vaults/detestvault\"\r\n            },\r\n            \"secretUrl\": \"https://detestvault.vault.azure.net/secrets/9D3CB577-F8CC-4B4C-92B8-0F1432ED3B42/7ef81c65ecc34823abb2f26b3ce4ef80\"\r\n          },\r\n          \"keyEncryptionKey\": {\r\n            \"sourceVault\": {\r\n              \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.KeyVault/vaults/detestvault\"\r\n            },\r\n            \"keyUrl\": \"https://detestvault.vault.azure.net/keys/dstestkek/923c02c3ccfe4861ab0d1b68bf6c083b\"\r\n          }\r\n        }\r\n      ],\r\n      \"statuses\": [\r\n        {\r\n          \"code\": \"ProvisioningState/succeeded\",\r\n          \"level\": \"Info\",\r\n          \"displayStatus\": \"Provisioning succeeded\",\r\n          \"time\": \"2017-08-11T16:02:37.1883392-07:00\"\r\n        },\r\n        {\r\n          \"code\": \"EncryptionState/encrypted\",\r\n          \"level\": \"Info\",\r\n          \"displayStatus\": \"Encryption is enabled on disk\"\r\n        }\r\n      ]\r\n    }\r\n  ],\r\n  \"extensions\": [\r\n    {\r\n      \"name\": \"AzureDiskEncryption\",\r\n      \"type\": \"Microsoft.Azure.Security.AzureDiskEncryption\",\r\n      \"typeHandlerVersion\": \"2.0.0.0\",\r\n      \"statuses\": [\r\n        {\r\n          \"code\": \"ProvisioningState/succeeded\",\r\n          \"level\": \"Info\",\r\n          \"displayStatus\": \"Provisioning succeeded\",\r\n          \"message\": \"https://detestvault.vault.azure.net/secrets/9D3CB577-F8CC-4B4C-92B8-0F1432ED3B42/7ef81c65ecc34823abb2f26b3ce4ef80\"\r\n        }\r\n      ]\r\n    }\r\n  ],\r\n  \"statuses\": [\r\n    {\r\n      \"code\": \"ProvisioningState/succeeded\",\r\n      \"level\": \"Info\",\r\n      \"displayStatus\": \"Provisioning succeeded\",\r\n      \"time\": \"2017-08-11T16:02:37.2196151-07:00\"\r\n    },\r\n    {\r\n      \"code\": \"PowerState/running\",\r\n      \"level\": \"Info\",\r\n      \"displayStatus\": \"VM running\"\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2961"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-served-by": [
+          "2be8e138-3223-4141-af48-5163dbafa559_131442037031481435"
+        ],
+        "x-ms-request-id": [
+          "7be95353-a0c5-498e-95a0-9bc3cb386d25"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14984"
+        ],
+        "x-ms-correlation-request-id": [
+          "f2dd0dce-5618-49d2-8e4e-a8f4686f1c71"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170811T230818Z:f2dd0dce-5618-49d2-8e4e-a8f4686f1c71"
+        ],
+        "Date": [
+          "Fri, 11 Aug 2017 23:08:18 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/virtualMachineScaleSets/vmsshyleevmssdetest2/virtualmachines/2/instanceView?api-version=2017-03-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Jlc291cmNlR3JvdXBzL2h5bGVldm1zc2RldGVzdDIvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lU2NhbGVTZXRzL3Ztc3NoeWxlZXZtc3NkZXRlc3QyL3ZpcnR1YWxtYWNoaW5lcy8yL2luc3RhbmNlVmlldz9hcGktdmVyc2lvbj0yMDE3LTAzLTMw",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "7709f726-8d9d-443b-a01e-3f11b96cf6a5"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2102.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/16.2.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"placementGroupId\": \"71dbc00c-1251-4110-9a75-2aedcd11be94\",\r\n  \"platformUpdateDomain\": 2,\r\n  \"platformFaultDomain\": 2,\r\n  \"vmAgent\": {\r\n    \"vmAgentVersion\": \"2.7.1198.809\",\r\n    \"statuses\": [\r\n      {\r\n        \"code\": \"ProvisioningState/succeeded\",\r\n        \"level\": \"Info\",\r\n        \"displayStatus\": \"Ready\",\r\n        \"message\": \"GuestAgent is running and accepting new configurations.\",\r\n        \"time\": \"2017-08-11T16:09:20-07:00\"\r\n      }\r\n    ],\r\n    \"extensionHandlers\": [\r\n      {\r\n        \"type\": \"Microsoft.Azure.Security.AzureDiskEncryption\",\r\n        \"typeHandlerVersion\": \"2.0.0.0\",\r\n        \"status\": {\r\n          \"code\": \"ProvisioningState/succeeded\",\r\n          \"level\": \"Info\",\r\n          \"displayStatus\": \"Ready\"\r\n        }\r\n      }\r\n    ]\r\n  },\r\n  \"disks\": [\r\n    {\r\n      \"name\": \"vmsshyleevmssdetest2vmsshyleevmssdetest2_OS__1_cfa86d3a2f72479abe1fa016b3c2f073\",\r\n      \"encryptionSettings\": [\r\n        {\r\n          \"enabled\": false\r\n        }\r\n      ],\r\n      \"statuses\": [\r\n        {\r\n          \"code\": \"ProvisioningState/succeeded\",\r\n          \"level\": \"Info\",\r\n          \"displayStatus\": \"Provisioning succeeded\",\r\n          \"time\": \"2017-08-11T16:09:12.5532819-07:00\"\r\n        },\r\n        {\r\n          \"code\": \"EncryptionState/notEncrypted\",\r\n          \"level\": \"Info\",\r\n          \"displayStatus\": \"Disk is not encrypted\"\r\n        }\r\n      ]\r\n    }\r\n  ],\r\n  \"extensions\": [\r\n    {\r\n      \"name\": \"AzureDiskEncryption\",\r\n      \"type\": \"Microsoft.Azure.Security.AzureDiskEncryption\",\r\n      \"typeHandlerVersion\": \"2.0.0.0\",\r\n      \"statuses\": [\r\n        {\r\n          \"code\": \"ProvisioningState/succeeded\",\r\n          \"level\": \"Info\",\r\n          \"displayStatus\": \"Provisioning succeeded\",\r\n          \"message\": \"Disable Encryption completed successfully\"\r\n        }\r\n      ]\r\n    }\r\n  ],\r\n  \"statuses\": [\r\n    {\r\n      \"code\": \"ProvisioningState/succeeded\",\r\n      \"level\": \"Info\",\r\n      \"displayStatus\": \"Provisioning succeeded\",\r\n      \"time\": \"2017-08-11T16:09:12.5845275-07:00\"\r\n    },\r\n    {\r\n      \"code\": \"PowerState/running\",\r\n      \"level\": \"Info\",\r\n      \"displayStatus\": \"VM running\"\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2137"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-served-by": [
+          "2be8e138-3223-4141-af48-5163dbafa559_131442037031481435"
+        ],
+        "x-ms-request-id": [
+          "da8184c7-f340-40ac-aefa-1c0cfef536e8"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14972"
+        ],
+        "x-ms-correlation-request-id": [
+          "c9d45c5f-7ff7-481c-a37f-2a69c2dbcf4b"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170811T230921Z:c9d45c5f-7ff7-481c-a37f-2a69c2dbcf4b"
+        ],
+        "Date": [
+          "Fri, 11 Aug 2017 23:09:21 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/virtualMachineScaleSets/vmsshyleevmssdetest2/virtualmachines/2/instanceView?api-version=2017-03-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Jlc291cmNlR3JvdXBzL2h5bGVldm1zc2RldGVzdDIvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lU2NhbGVTZXRzL3Ztc3NoeWxlZXZtc3NkZXRlc3QyL3ZpcnR1YWxtYWNoaW5lcy8yL2luc3RhbmNlVmlldz9hcGktdmVyc2lvbj0yMDE3LTAzLTMw",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d5b60a3c-8305-42c7-936c-0503107c7a67"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2102.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/16.2.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"placementGroupId\": \"71dbc00c-1251-4110-9a75-2aedcd11be94\",\r\n  \"platformUpdateDomain\": 2,\r\n  \"platformFaultDomain\": 2,\r\n  \"vmAgent\": {\r\n    \"vmAgentVersion\": \"2.7.1198.809\",\r\n    \"statuses\": [\r\n      {\r\n        \"code\": \"ProvisioningState/succeeded\",\r\n        \"level\": \"Info\",\r\n        \"displayStatus\": \"Ready\",\r\n        \"message\": \"GuestAgent is running and accepting new configurations.\",\r\n        \"time\": \"2017-08-11T16:09:20-07:00\"\r\n      }\r\n    ],\r\n    \"extensionHandlers\": [\r\n      {\r\n        \"type\": \"Microsoft.Azure.Security.AzureDiskEncryption\",\r\n        \"typeHandlerVersion\": \"2.0.0.0\",\r\n        \"status\": {\r\n          \"code\": \"ProvisioningState/succeeded\",\r\n          \"level\": \"Info\",\r\n          \"displayStatus\": \"Ready\"\r\n        }\r\n      }\r\n    ]\r\n  },\r\n  \"disks\": [\r\n    {\r\n      \"name\": \"vmsshyleevmssdetest2vmsshyleevmssdetest2_OS__1_cfa86d3a2f72479abe1fa016b3c2f073\",\r\n      \"encryptionSettings\": [\r\n        {\r\n          \"enabled\": false\r\n        }\r\n      ],\r\n      \"statuses\": [\r\n        {\r\n          \"code\": \"ProvisioningState/succeeded\",\r\n          \"level\": \"Info\",\r\n          \"displayStatus\": \"Provisioning succeeded\",\r\n          \"time\": \"2017-08-11T16:09:12.5532819-07:00\"\r\n        },\r\n        {\r\n          \"code\": \"EncryptionState/notEncrypted\",\r\n          \"level\": \"Info\",\r\n          \"displayStatus\": \"Disk is not encrypted\"\r\n        }\r\n      ]\r\n    }\r\n  ],\r\n  \"extensions\": [\r\n    {\r\n      \"name\": \"AzureDiskEncryption\",\r\n      \"type\": \"Microsoft.Azure.Security.AzureDiskEncryption\",\r\n      \"typeHandlerVersion\": \"2.0.0.0\",\r\n      \"statuses\": [\r\n        {\r\n          \"code\": \"ProvisioningState/succeeded\",\r\n          \"level\": \"Info\",\r\n          \"displayStatus\": \"Provisioning succeeded\",\r\n          \"message\": \"Disable Encryption completed successfully\"\r\n        }\r\n      ]\r\n    }\r\n  ],\r\n  \"statuses\": [\r\n    {\r\n      \"code\": \"ProvisioningState/succeeded\",\r\n      \"level\": \"Info\",\r\n      \"displayStatus\": \"Provisioning succeeded\",\r\n      \"time\": \"2017-08-11T16:09:12.5845275-07:00\"\r\n    },\r\n    {\r\n      \"code\": \"PowerState/running\",\r\n      \"level\": \"Info\",\r\n      \"displayStatus\": \"VM running\"\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2137"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-served-by": [
+          "2be8e138-3223-4141-af48-5163dbafa559_131442037031481435"
+        ],
+        "x-ms-request-id": [
+          "d2fa8286-a411-493e-aca0-a72371895caf"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14968"
+        ],
+        "x-ms-correlation-request-id": [
+          "bdb4d12e-d1b0-4a19-b72e-ea6e241b17cb"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170811T230921Z:bdb4d12e-d1b0-4a19-b72e-ea6e241b17cb"
+        ],
+        "Date": [
+          "Fri, 11 Aug 2017 23:09:21 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/virtualMachineScaleSets/vmsshyleevmssdetest2/virtualmachines/2?api-version=2017-03-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Jlc291cmNlR3JvdXBzL2h5bGVldm1zc2RldGVzdDIvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lU2NhbGVTZXRzL3Ztc3NoeWxlZXZtc3NkZXRlc3QyL3ZpcnR1YWxtYWNoaW5lcy8yP2FwaS12ZXJzaW9uPTIwMTctMDMtMzA=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "6bb9ac70-7734-4f3a-9beb-25940a702623"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2102.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/16.2.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"instanceId\": \"2\",\r\n  \"sku\": {\r\n    \"name\": \"Standard_A1\",\r\n    \"tier\": \"Standard\"\r\n  },\r\n  \"properties\": {\r\n    \"latestModelApplied\": true,\r\n    \"vmId\": \"56eb065b-f7f9-4faf-8ad1-f6b2a20effca\",\r\n    \"storageProfile\": {\r\n      \"imageReference\": {\r\n        \"publisher\": \"MicrosoftWindowsServer\",\r\n        \"offer\": \"WindowsServer\",\r\n        \"sku\": \"2008-R2-SP1\",\r\n        \"version\": \"2.127.20170406\"\r\n      },\r\n      \"osDisk\": {\r\n        \"osType\": \"Windows\",\r\n        \"name\": \"vmsshyleevmssdetest2vmsshyleevmssdetest2_OS__1_cfa86d3a2f72479abe1fa016b3c2f073\",\r\n        \"createOption\": \"FromImage\",\r\n        \"caching\": \"None\",\r\n        \"managedDisk\": {\r\n          \"storageAccountType\": \"Standard_LRS\",\r\n          \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/disks/vmsshyleevmssdetest2vmsshyleevmssdetest2_OS__1_cfa86d3a2f72479abe1fa016b3c2f073\"\r\n        },\r\n        \"diskSizeGB\": 128\r\n      },\r\n      \"dataDisks\": []\r\n    },\r\n    \"osProfile\": {\r\n      \"computerName\": \"test000002\",\r\n      \"adminUsername\": \"Foo12\",\r\n      \"windowsConfiguration\": {\r\n        \"provisionVMAgent\": true,\r\n        \"enableAutomaticUpdates\": true\r\n      },\r\n      \"secrets\": []\r\n    },\r\n    \"networkProfile\": {\r\n      \"networkInterfaces\": [\r\n        {\r\n          \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/virtualMachineScaleSets/vmsshyleevmssdetest2/virtualMachines/2/networkInterfaces/test\"\r\n        }\r\n      ]\r\n    },\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"resources\": [\r\n    {\r\n      \"properties\": {\r\n        \"publisher\": \"Microsoft.Azure.Security\",\r\n        \"type\": \"AzureDiskEncryption\",\r\n        \"typeHandlerVersion\": \"2.0\",\r\n        \"autoUpgradeMinorVersion\": true,\r\n        \"settings\": {\r\n          \"AADClientCertThumbprint\": \"\",\r\n          \"EncryptionOperation\": \"EnableEncryption\",\r\n          \"KeyEncryptionAlgorithm\": \"RSA-OAEP\",\r\n          \"KeyVaultResourceId\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.KeyVault/vaults/detestvault\",\r\n          \"KeyVaultURL\": \"https://detestvault.vault.azure.net/\",\r\n          \"AADClientID\": \"c258f481-c6e0-4599-850d-3d1616fb0ebb\",\r\n          \"KekVaultResourceId\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.KeyVault/vaults/detestvault\",\r\n          \"VolumeType\": \"OS\",\r\n          \"KeyEncryptionKeyURL\": \"https://detestvault.vault.azure.net/keys/dstestkek/923c02c3ccfe4861ab0d1b68bf6c083b\"\r\n        },\r\n        \"forceUpdateTag\": \"b487c913-3a7e-4205-8ad3-a8dcc287db81\",\r\n        \"provisioningState\": \"Succeeded\"\r\n      },\r\n      \"type\": \"Microsoft.Compute/virtualMachines/extensions\",\r\n      \"location\": \"westcentralus\",\r\n      \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/virtualMachines/vmsshyleevmssdetest2_2/extensions/AzureDiskEncryption\",\r\n      \"name\": \"AzureDiskEncryption\"\r\n    }\r\n  ],\r\n  \"type\": \"Microsoft.Compute/virtualMachineScaleSets/virtualMachines\",\r\n  \"location\": \"westcentralus\",\r\n  \"tags\": {},\r\n  \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/virtualMachineScaleSets/vmsshyleevmssdetest2/virtualMachines/2\",\r\n  \"name\": \"vmsshyleevmssdetest2_2\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "3235"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-served-by": [
+          "2be8e138-3223-4141-af48-5163dbafa559_131442037031481435"
+        ],
+        "x-ms-request-id": [
+          "2abf919c-27e6-402c-9cd6-0b11a1026be9"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14987"
+        ],
+        "x-ms-correlation-request-id": [
+          "0168f756-5ef5-4295-89ee-04d49c52abe2"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170811T230818Z:0168f756-5ef5-4295-89ee-04d49c52abe2"
+        ],
+        "Date": [
+          "Fri, 11 Aug 2017 23:08:18 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/virtualMachineScaleSets/vmsshyleevmssdetest2/virtualmachines/2?api-version=2017-03-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Jlc291cmNlR3JvdXBzL2h5bGVldm1zc2RldGVzdDIvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lU2NhbGVTZXRzL3Ztc3NoeWxlZXZtc3NkZXRlc3QyL3ZpcnR1YWxtYWNoaW5lcy8yP2FwaS12ZXJzaW9uPTIwMTctMDMtMzA=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "7eaf76ac-a166-4ccb-9ba3-a4ecfd9b1088"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2102.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/16.2.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"instanceId\": \"2\",\r\n  \"sku\": {\r\n    \"name\": \"Standard_A1\",\r\n    \"tier\": \"Standard\"\r\n  },\r\n  \"properties\": {\r\n    \"latestModelApplied\": true,\r\n    \"vmId\": \"56eb065b-f7f9-4faf-8ad1-f6b2a20effca\",\r\n    \"storageProfile\": {\r\n      \"imageReference\": {\r\n        \"publisher\": \"MicrosoftWindowsServer\",\r\n        \"offer\": \"WindowsServer\",\r\n        \"sku\": \"2008-R2-SP1\",\r\n        \"version\": \"2.127.20170406\"\r\n      },\r\n      \"osDisk\": {\r\n        \"osType\": \"Windows\",\r\n        \"name\": \"vmsshyleevmssdetest2vmsshyleevmssdetest2_OS__1_cfa86d3a2f72479abe1fa016b3c2f073\",\r\n        \"createOption\": \"FromImage\",\r\n        \"caching\": \"None\",\r\n        \"managedDisk\": {\r\n          \"storageAccountType\": \"Standard_LRS\",\r\n          \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/disks/vmsshyleevmssdetest2vmsshyleevmssdetest2_OS__1_cfa86d3a2f72479abe1fa016b3c2f073\"\r\n        },\r\n        \"diskSizeGB\": 128\r\n      },\r\n      \"dataDisks\": []\r\n    },\r\n    \"osProfile\": {\r\n      \"computerName\": \"test000002\",\r\n      \"adminUsername\": \"Foo12\",\r\n      \"windowsConfiguration\": {\r\n        \"provisionVMAgent\": true,\r\n        \"enableAutomaticUpdates\": true\r\n      },\r\n      \"secrets\": []\r\n    },\r\n    \"networkProfile\": {\r\n      \"networkInterfaces\": [\r\n        {\r\n          \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/virtualMachineScaleSets/vmsshyleevmssdetest2/virtualMachines/2/networkInterfaces/test\"\r\n        }\r\n      ]\r\n    },\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"resources\": [\r\n    {\r\n      \"properties\": {\r\n        \"publisher\": \"Microsoft.Azure.Security\",\r\n        \"type\": \"AzureDiskEncryption\",\r\n        \"typeHandlerVersion\": \"2.0\",\r\n        \"autoUpgradeMinorVersion\": true,\r\n        \"settings\": {\r\n          \"AADClientCertThumbprint\": \"\",\r\n          \"EncryptionOperation\": \"EnableEncryption\",\r\n          \"KeyEncryptionAlgorithm\": \"RSA-OAEP\",\r\n          \"KeyVaultResourceId\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.KeyVault/vaults/detestvault\",\r\n          \"KeyVaultURL\": \"https://detestvault.vault.azure.net/\",\r\n          \"AADClientID\": \"c258f481-c6e0-4599-850d-3d1616fb0ebb\",\r\n          \"KekVaultResourceId\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.KeyVault/vaults/detestvault\",\r\n          \"VolumeType\": \"OS\",\r\n          \"KeyEncryptionKeyURL\": \"https://detestvault.vault.azure.net/keys/dstestkek/923c02c3ccfe4861ab0d1b68bf6c083b\"\r\n        },\r\n        \"forceUpdateTag\": \"b487c913-3a7e-4205-8ad3-a8dcc287db81\",\r\n        \"provisioningState\": \"Succeeded\"\r\n      },\r\n      \"type\": \"Microsoft.Compute/virtualMachines/extensions\",\r\n      \"location\": \"westcentralus\",\r\n      \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/virtualMachines/vmsshyleevmssdetest2_2/extensions/AzureDiskEncryption\",\r\n      \"name\": \"AzureDiskEncryption\"\r\n    }\r\n  ],\r\n  \"type\": \"Microsoft.Compute/virtualMachineScaleSets/virtualMachines\",\r\n  \"location\": \"westcentralus\",\r\n  \"tags\": {},\r\n  \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/virtualMachineScaleSets/vmsshyleevmssdetest2/virtualMachines/2\",\r\n  \"name\": \"vmsshyleevmssdetest2_2\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "3235"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-served-by": [
+          "2be8e138-3223-4141-af48-5163dbafa559_131442037031481435"
+        ],
+        "x-ms-request-id": [
+          "f3850122-47c3-4673-bcca-869f875747ff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14983"
+        ],
+        "x-ms-correlation-request-id": [
+          "495eb17c-dc9d-47a1-98b0-eddfbd4fde00"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170811T230819Z:495eb17c-dc9d-47a1-98b0-eddfbd4fde00"
+        ],
+        "Date": [
+          "Fri, 11 Aug 2017 23:08:18 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/virtualMachineScaleSets/vmsshyleevmssdetest2/virtualmachines/2?api-version=2017-03-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Jlc291cmNlR3JvdXBzL2h5bGVldm1zc2RldGVzdDIvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lU2NhbGVTZXRzL3Ztc3NoeWxlZXZtc3NkZXRlc3QyL3ZpcnR1YWxtYWNoaW5lcy8yP2FwaS12ZXJzaW9uPTIwMTctMDMtMzA=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b5e48b04-2900-48de-bc8a-baf53cf39ca5"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2102.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/16.2.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"instanceId\": \"2\",\r\n  \"sku\": {\r\n    \"name\": \"Standard_A1\",\r\n    \"tier\": \"Standard\"\r\n  },\r\n  \"properties\": {\r\n    \"latestModelApplied\": true,\r\n    \"vmId\": \"56eb065b-f7f9-4faf-8ad1-f6b2a20effca\",\r\n    \"storageProfile\": {\r\n      \"imageReference\": {\r\n        \"publisher\": \"MicrosoftWindowsServer\",\r\n        \"offer\": \"WindowsServer\",\r\n        \"sku\": \"2008-R2-SP1\",\r\n        \"version\": \"2.127.20170406\"\r\n      },\r\n      \"osDisk\": {\r\n        \"osType\": \"Windows\",\r\n        \"name\": \"vmsshyleevmssdetest2vmsshyleevmssdetest2_OS__1_cfa86d3a2f72479abe1fa016b3c2f073\",\r\n        \"createOption\": \"FromImage\",\r\n        \"caching\": \"None\",\r\n        \"managedDisk\": {\r\n          \"storageAccountType\": \"Standard_LRS\",\r\n          \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/disks/vmsshyleevmssdetest2vmsshyleevmssdetest2_OS__1_cfa86d3a2f72479abe1fa016b3c2f073\"\r\n        },\r\n        \"diskSizeGB\": 128\r\n      },\r\n      \"dataDisks\": []\r\n    },\r\n    \"osProfile\": {\r\n      \"computerName\": \"test000002\",\r\n      \"adminUsername\": \"Foo12\",\r\n      \"windowsConfiguration\": {\r\n        \"provisionVMAgent\": true,\r\n        \"enableAutomaticUpdates\": true\r\n      },\r\n      \"secrets\": []\r\n    },\r\n    \"networkProfile\": {\r\n      \"networkInterfaces\": [\r\n        {\r\n          \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/virtualMachineScaleSets/vmsshyleevmssdetest2/virtualMachines/2/networkInterfaces/test\"\r\n        }\r\n      ]\r\n    },\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"resources\": [\r\n    {\r\n      \"properties\": {\r\n        \"publisher\": \"Microsoft.Azure.Security\",\r\n        \"type\": \"AzureDiskEncryption\",\r\n        \"typeHandlerVersion\": \"2.0\",\r\n        \"autoUpgradeMinorVersion\": true,\r\n        \"settings\": {\r\n          \"EncryptionOperation\": \"DisableEncryption\",\r\n          \"VolumeType\": \"OS\"\r\n        },\r\n        \"forceUpdateTag\": \"823eed64-e135-44bc-b26f-a052daf025c1\",\r\n        \"provisioningState\": \"Succeeded\"\r\n      },\r\n      \"type\": \"Microsoft.Compute/virtualMachines/extensions\",\r\n      \"location\": \"westcentralus\",\r\n      \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/virtualMachines/vmsshyleevmssdetest2_2/extensions/AzureDiskEncryption\",\r\n      \"name\": \"AzureDiskEncryption\"\r\n    }\r\n  ],\r\n  \"type\": \"Microsoft.Compute/virtualMachineScaleSets/virtualMachines\",\r\n  \"location\": \"westcentralus\",\r\n  \"tags\": {},\r\n  \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/virtualMachineScaleSets/vmsshyleevmssdetest2/virtualMachines/2\",\r\n  \"name\": \"vmsshyleevmssdetest2_2\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2647"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-served-by": [
+          "2be8e138-3223-4141-af48-5163dbafa559_131442037031481435"
+        ],
+        "x-ms-request-id": [
+          "67bf9db2-f46d-45bb-ac84-7e93c1d5f7bc"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14971"
+        ],
+        "x-ms-correlation-request-id": [
+          "d08f13c5-34ba-4f95-a661-2624dcc241f6"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170811T230921Z:d08f13c5-34ba-4f95-a661-2624dcc241f6"
+        ],
+        "Date": [
+          "Fri, 11 Aug 2017 23:09:21 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/virtualMachineScaleSets/vmsshyleevmssdetest2/virtualmachines/2?api-version=2017-03-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Jlc291cmNlR3JvdXBzL2h5bGVldm1zc2RldGVzdDIvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lU2NhbGVTZXRzL3Ztc3NoeWxlZXZtc3NkZXRlc3QyL3ZpcnR1YWxtYWNoaW5lcy8yP2FwaS12ZXJzaW9uPTIwMTctMDMtMzA=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b0f6dd71-49fe-48a9-9241-07997a5229ec"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2102.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/16.2.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"instanceId\": \"2\",\r\n  \"sku\": {\r\n    \"name\": \"Standard_A1\",\r\n    \"tier\": \"Standard\"\r\n  },\r\n  \"properties\": {\r\n    \"latestModelApplied\": true,\r\n    \"vmId\": \"56eb065b-f7f9-4faf-8ad1-f6b2a20effca\",\r\n    \"storageProfile\": {\r\n      \"imageReference\": {\r\n        \"publisher\": \"MicrosoftWindowsServer\",\r\n        \"offer\": \"WindowsServer\",\r\n        \"sku\": \"2008-R2-SP1\",\r\n        \"version\": \"2.127.20170406\"\r\n      },\r\n      \"osDisk\": {\r\n        \"osType\": \"Windows\",\r\n        \"name\": \"vmsshyleevmssdetest2vmsshyleevmssdetest2_OS__1_cfa86d3a2f72479abe1fa016b3c2f073\",\r\n        \"createOption\": \"FromImage\",\r\n        \"caching\": \"None\",\r\n        \"managedDisk\": {\r\n          \"storageAccountType\": \"Standard_LRS\",\r\n          \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/disks/vmsshyleevmssdetest2vmsshyleevmssdetest2_OS__1_cfa86d3a2f72479abe1fa016b3c2f073\"\r\n        },\r\n        \"diskSizeGB\": 128\r\n      },\r\n      \"dataDisks\": []\r\n    },\r\n    \"osProfile\": {\r\n      \"computerName\": \"test000002\",\r\n      \"adminUsername\": \"Foo12\",\r\n      \"windowsConfiguration\": {\r\n        \"provisionVMAgent\": true,\r\n        \"enableAutomaticUpdates\": true\r\n      },\r\n      \"secrets\": []\r\n    },\r\n    \"networkProfile\": {\r\n      \"networkInterfaces\": [\r\n        {\r\n          \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/virtualMachineScaleSets/vmsshyleevmssdetest2/virtualMachines/2/networkInterfaces/test\"\r\n        }\r\n      ]\r\n    },\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"resources\": [\r\n    {\r\n      \"properties\": {\r\n        \"publisher\": \"Microsoft.Azure.Security\",\r\n        \"type\": \"AzureDiskEncryption\",\r\n        \"typeHandlerVersion\": \"2.0\",\r\n        \"autoUpgradeMinorVersion\": true,\r\n        \"settings\": {\r\n          \"EncryptionOperation\": \"DisableEncryption\",\r\n          \"VolumeType\": \"OS\"\r\n        },\r\n        \"forceUpdateTag\": \"823eed64-e135-44bc-b26f-a052daf025c1\",\r\n        \"provisioningState\": \"Succeeded\"\r\n      },\r\n      \"type\": \"Microsoft.Compute/virtualMachines/extensions\",\r\n      \"location\": \"westcentralus\",\r\n      \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/virtualMachines/vmsshyleevmssdetest2_2/extensions/AzureDiskEncryption\",\r\n      \"name\": \"AzureDiskEncryption\"\r\n    }\r\n  ],\r\n  \"type\": \"Microsoft.Compute/virtualMachineScaleSets/virtualMachines\",\r\n  \"location\": \"westcentralus\",\r\n  \"tags\": {},\r\n  \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/virtualMachineScaleSets/vmsshyleevmssdetest2/virtualMachines/2\",\r\n  \"name\": \"vmsshyleevmssdetest2_2\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2647"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-served-by": [
+          "2be8e138-3223-4141-af48-5163dbafa559_131442037031481435"
+        ],
+        "x-ms-request-id": [
+          "d9f21ce0-16ac-4013-8235-7c9810fa4757"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14967"
+        ],
+        "x-ms-correlation-request-id": [
+          "c25ead40-13b1-4d26-ab58-1316c6acb550"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170811T230922Z:c25ead40-13b1-4d26-ab58-1316c6acb550"
+        ],
+        "Date": [
+          "Fri, 11 Aug 2017 23:09:21 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/virtualMachineScaleSets/vmsshyleevmssdetest2/virtualmachines/3/instanceView?api-version=2017-03-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Jlc291cmNlR3JvdXBzL2h5bGVldm1zc2RldGVzdDIvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lU2NhbGVTZXRzL3Ztc3NoeWxlZXZtc3NkZXRlc3QyL3ZpcnR1YWxtYWNoaW5lcy8zL2luc3RhbmNlVmlldz9hcGktdmVyc2lvbj0yMDE3LTAzLTMw",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a346e115-6c3c-49b5-a098-0d2ceece3da8"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2102.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/16.2.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"placementGroupId\": \"71dbc00c-1251-4110-9a75-2aedcd11be94\",\r\n  \"platformUpdateDomain\": 3,\r\n  \"platformFaultDomain\": 3,\r\n  \"vmAgent\": {\r\n    \"vmAgentVersion\": \"2.7.1198.809\",\r\n    \"statuses\": [\r\n      {\r\n        \"code\": \"ProvisioningState/succeeded\",\r\n        \"level\": \"Info\",\r\n        \"displayStatus\": \"Ready\",\r\n        \"message\": \"GuestAgent is running and accepting new configurations.\",\r\n        \"time\": \"2017-08-11T16:08:05-07:00\"\r\n      }\r\n    ],\r\n    \"extensionHandlers\": [\r\n      {\r\n        \"type\": \"Microsoft.Azure.Security.AzureDiskEncryption\",\r\n        \"typeHandlerVersion\": \"2.0.0.0\",\r\n        \"status\": {\r\n          \"code\": \"ProvisioningState/succeeded\",\r\n          \"level\": \"Info\",\r\n          \"displayStatus\": \"Ready\"\r\n        }\r\n      }\r\n    ]\r\n  },\r\n  \"disks\": [\r\n    {\r\n      \"name\": \"vmsshyleevmssdetest2vmsshyleevmssdetest2_OS__1_e642af092c2c436cb972049131967297\",\r\n      \"encryptionSettings\": [\r\n        {\r\n          \"enabled\": true,\r\n          \"diskEncryptionKey\": {\r\n            \"sourceVault\": {\r\n              \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.KeyVault/vaults/detestvault\"\r\n            },\r\n            \"secretUrl\": \"https://detestvault.vault.azure.net/secrets/82698588-0ED9-4CD5-8B3F-54B3E0470C76/d802037744d844f387ecd66972c71779\"\r\n          },\r\n          \"keyEncryptionKey\": {\r\n            \"sourceVault\": {\r\n              \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.KeyVault/vaults/detestvault\"\r\n            },\r\n            \"keyUrl\": \"https://detestvault.vault.azure.net/keys/dstestkek/923c02c3ccfe4861ab0d1b68bf6c083b\"\r\n          }\r\n        }\r\n      ],\r\n      \"statuses\": [\r\n        {\r\n          \"code\": \"ProvisioningState/succeeded\",\r\n          \"level\": \"Info\",\r\n          \"displayStatus\": \"Provisioning succeeded\",\r\n          \"time\": \"2017-08-11T16:02:37.5163967-07:00\"\r\n        },\r\n        {\r\n          \"code\": \"EncryptionState/encrypted\",\r\n          \"level\": \"Info\",\r\n          \"displayStatus\": \"Encryption is enabled on disk\"\r\n        }\r\n      ]\r\n    }\r\n  ],\r\n  \"extensions\": [\r\n    {\r\n      \"name\": \"AzureDiskEncryption\",\r\n      \"type\": \"Microsoft.Azure.Security.AzureDiskEncryption\",\r\n      \"typeHandlerVersion\": \"2.0.0.0\",\r\n      \"statuses\": [\r\n        {\r\n          \"code\": \"ProvisioningState/succeeded\",\r\n          \"level\": \"Info\",\r\n          \"displayStatus\": \"Provisioning succeeded\",\r\n          \"message\": \"https://detestvault.vault.azure.net/secrets/82698588-0ED9-4CD5-8B3F-54B3E0470C76/d802037744d844f387ecd66972c71779\"\r\n        }\r\n      ]\r\n    }\r\n  ],\r\n  \"statuses\": [\r\n    {\r\n      \"code\": \"ProvisioningState/succeeded\",\r\n      \"level\": \"Info\",\r\n      \"displayStatus\": \"Provisioning succeeded\",\r\n      \"time\": \"2017-08-11T16:02:37.5476292-07:00\"\r\n    },\r\n    {\r\n      \"code\": \"PowerState/running\",\r\n      \"level\": \"Info\",\r\n      \"displayStatus\": \"VM running\"\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2961"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-served-by": [
+          "2be8e138-3223-4141-af48-5163dbafa559_131442037031481435"
+        ],
+        "x-ms-request-id": [
+          "3e6a6d76-8a33-40a5-9072-04858d6521f9"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14986"
+        ],
+        "x-ms-correlation-request-id": [
+          "fad2e09d-4d6d-4a9d-bb92-56b5c495edac"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170811T230818Z:fad2e09d-4d6d-4a9d-bb92-56b5c495edac"
+        ],
+        "Date": [
+          "Fri, 11 Aug 2017 23:08:18 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/virtualMachineScaleSets/vmsshyleevmssdetest2/virtualmachines/3/instanceView?api-version=2017-03-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Jlc291cmNlR3JvdXBzL2h5bGVldm1zc2RldGVzdDIvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lU2NhbGVTZXRzL3Ztc3NoeWxlZXZtc3NkZXRlc3QyL3ZpcnR1YWxtYWNoaW5lcy8zL2luc3RhbmNlVmlldz9hcGktdmVyc2lvbj0yMDE3LTAzLTMw",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "ecfe8d43-53f9-4af7-978b-e162e9a0b990"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2102.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/16.2.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"placementGroupId\": \"71dbc00c-1251-4110-9a75-2aedcd11be94\",\r\n  \"platformUpdateDomain\": 3,\r\n  \"platformFaultDomain\": 3,\r\n  \"vmAgent\": {\r\n    \"vmAgentVersion\": \"2.7.1198.809\",\r\n    \"statuses\": [\r\n      {\r\n        \"code\": \"ProvisioningState/succeeded\",\r\n        \"level\": \"Info\",\r\n        \"displayStatus\": \"Ready\",\r\n        \"message\": \"GuestAgent is running and accepting new configurations.\",\r\n        \"time\": \"2017-08-11T16:09:20-07:00\"\r\n      }\r\n    ],\r\n    \"extensionHandlers\": [\r\n      {\r\n        \"type\": \"Microsoft.Azure.Security.AzureDiskEncryption\",\r\n        \"typeHandlerVersion\": \"2.0.0.0\",\r\n        \"status\": {\r\n          \"code\": \"ProvisioningState/succeeded\",\r\n          \"level\": \"Info\",\r\n          \"displayStatus\": \"Ready\"\r\n        }\r\n      }\r\n    ]\r\n  },\r\n  \"disks\": [\r\n    {\r\n      \"name\": \"vmsshyleevmssdetest2vmsshyleevmssdetest2_OS__1_e642af092c2c436cb972049131967297\",\r\n      \"encryptionSettings\": [\r\n        {\r\n          \"enabled\": false\r\n        }\r\n      ],\r\n      \"statuses\": [\r\n        {\r\n          \"code\": \"ProvisioningState/succeeded\",\r\n          \"level\": \"Info\",\r\n          \"displayStatus\": \"Provisioning succeeded\",\r\n          \"time\": \"2017-08-11T16:09:14.5058125-07:00\"\r\n        },\r\n        {\r\n          \"code\": \"EncryptionState/notEncrypted\",\r\n          \"level\": \"Info\",\r\n          \"displayStatus\": \"Disk is not encrypted\"\r\n        }\r\n      ]\r\n    }\r\n  ],\r\n  \"extensions\": [\r\n    {\r\n      \"name\": \"AzureDiskEncryption\",\r\n      \"type\": \"Microsoft.Azure.Security.AzureDiskEncryption\",\r\n      \"typeHandlerVersion\": \"2.0.0.0\",\r\n      \"statuses\": [\r\n        {\r\n          \"code\": \"ProvisioningState/succeeded\",\r\n          \"level\": \"Info\",\r\n          \"displayStatus\": \"Provisioning succeeded\",\r\n          \"message\": \"Disable Encryption completed successfully\"\r\n        }\r\n      ]\r\n    }\r\n  ],\r\n  \"statuses\": [\r\n    {\r\n      \"code\": \"ProvisioningState/succeeded\",\r\n      \"level\": \"Info\",\r\n      \"displayStatus\": \"Provisioning succeeded\",\r\n      \"time\": \"2017-08-11T16:09:14.5370923-07:00\"\r\n    },\r\n    {\r\n      \"code\": \"PowerState/running\",\r\n      \"level\": \"Info\",\r\n      \"displayStatus\": \"VM running\"\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2137"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-served-by": [
+          "2be8e138-3223-4141-af48-5163dbafa559_131442037031481435"
+        ],
+        "x-ms-request-id": [
+          "7fc66d77-0267-4730-9ee9-0ffdf34adb36"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14970"
+        ],
+        "x-ms-correlation-request-id": [
+          "1fdbcc38-acea-479e-88c3-da175ccfec21"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170811T230921Z:1fdbcc38-acea-479e-88c3-da175ccfec21"
+        ],
+        "Date": [
+          "Fri, 11 Aug 2017 23:09:21 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/virtualMachineScaleSets/vmsshyleevmssdetest2/virtualmachines/3?api-version=2017-03-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Jlc291cmNlR3JvdXBzL2h5bGVldm1zc2RldGVzdDIvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lU2NhbGVTZXRzL3Ztc3NoeWxlZXZtc3NkZXRlc3QyL3ZpcnR1YWxtYWNoaW5lcy8zP2FwaS12ZXJzaW9uPTIwMTctMDMtMzA=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "2d890027-7743-4c0b-a106-9367f8c586e5"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2102.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/16.2.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"instanceId\": \"3\",\r\n  \"sku\": {\r\n    \"name\": \"Standard_A1\",\r\n    \"tier\": \"Standard\"\r\n  },\r\n  \"properties\": {\r\n    \"latestModelApplied\": true,\r\n    \"vmId\": \"ca85149c-19bc-40aa-babd-75f765946a47\",\r\n    \"storageProfile\": {\r\n      \"imageReference\": {\r\n        \"publisher\": \"MicrosoftWindowsServer\",\r\n        \"offer\": \"WindowsServer\",\r\n        \"sku\": \"2008-R2-SP1\",\r\n        \"version\": \"2.127.20170406\"\r\n      },\r\n      \"osDisk\": {\r\n        \"osType\": \"Windows\",\r\n        \"name\": \"vmsshyleevmssdetest2vmsshyleevmssdetest2_OS__1_e642af092c2c436cb972049131967297\",\r\n        \"createOption\": \"FromImage\",\r\n        \"caching\": \"None\",\r\n        \"managedDisk\": {\r\n          \"storageAccountType\": \"Standard_LRS\",\r\n          \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/disks/vmsshyleevmssdetest2vmsshyleevmssdetest2_OS__1_e642af092c2c436cb972049131967297\"\r\n        },\r\n        \"diskSizeGB\": 128\r\n      },\r\n      \"dataDisks\": []\r\n    },\r\n    \"osProfile\": {\r\n      \"computerName\": \"test000003\",\r\n      \"adminUsername\": \"Foo12\",\r\n      \"windowsConfiguration\": {\r\n        \"provisionVMAgent\": true,\r\n        \"enableAutomaticUpdates\": true\r\n      },\r\n      \"secrets\": []\r\n    },\r\n    \"networkProfile\": {\r\n      \"networkInterfaces\": [\r\n        {\r\n          \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/virtualMachineScaleSets/vmsshyleevmssdetest2/virtualMachines/3/networkInterfaces/test\"\r\n        }\r\n      ]\r\n    },\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"resources\": [\r\n    {\r\n      \"properties\": {\r\n        \"publisher\": \"Microsoft.Azure.Security\",\r\n        \"type\": \"AzureDiskEncryption\",\r\n        \"typeHandlerVersion\": \"2.0\",\r\n        \"autoUpgradeMinorVersion\": true,\r\n        \"settings\": {\r\n          \"AADClientCertThumbprint\": \"\",\r\n          \"EncryptionOperation\": \"EnableEncryption\",\r\n          \"KeyEncryptionAlgorithm\": \"RSA-OAEP\",\r\n          \"KeyVaultResourceId\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.KeyVault/vaults/detestvault\",\r\n          \"KeyVaultURL\": \"https://detestvault.vault.azure.net/\",\r\n          \"AADClientID\": \"c258f481-c6e0-4599-850d-3d1616fb0ebb\",\r\n          \"KekVaultResourceId\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.KeyVault/vaults/detestvault\",\r\n          \"VolumeType\": \"OS\",\r\n          \"KeyEncryptionKeyURL\": \"https://detestvault.vault.azure.net/keys/dstestkek/923c02c3ccfe4861ab0d1b68bf6c083b\"\r\n        },\r\n        \"forceUpdateTag\": \"b487c913-3a7e-4205-8ad3-a8dcc287db81\",\r\n        \"provisioningState\": \"Succeeded\"\r\n      },\r\n      \"type\": \"Microsoft.Compute/virtualMachines/extensions\",\r\n      \"location\": \"westcentralus\",\r\n      \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/virtualMachines/vmsshyleevmssdetest2_3/extensions/AzureDiskEncryption\",\r\n      \"name\": \"AzureDiskEncryption\"\r\n    }\r\n  ],\r\n  \"type\": \"Microsoft.Compute/virtualMachineScaleSets/virtualMachines\",\r\n  \"location\": \"westcentralus\",\r\n  \"tags\": {},\r\n  \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/virtualMachineScaleSets/vmsshyleevmssdetest2/virtualMachines/3\",\r\n  \"name\": \"vmsshyleevmssdetest2_3\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "3235"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-served-by": [
+          "2be8e138-3223-4141-af48-5163dbafa559_131442037031481435"
+        ],
+        "x-ms-request-id": [
+          "b08361ca-631f-4ea7-8e0e-ecb9d28ce7d8"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14985"
+        ],
+        "x-ms-correlation-request-id": [
+          "3f42da51-f11a-43e3-925d-2c20fc605b46"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170811T230818Z:3f42da51-f11a-43e3-925d-2c20fc605b46"
+        ],
+        "Date": [
+          "Fri, 11 Aug 2017 23:08:18 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/virtualMachineScaleSets/vmsshyleevmssdetest2/virtualmachines/3?api-version=2017-03-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Jlc291cmNlR3JvdXBzL2h5bGVldm1zc2RldGVzdDIvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lU2NhbGVTZXRzL3Ztc3NoeWxlZXZtc3NkZXRlc3QyL3ZpcnR1YWxtYWNoaW5lcy8zP2FwaS12ZXJzaW9uPTIwMTctMDMtMzA=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d23306ce-11b7-4d3b-92a0-7ab9e31d829b"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2102.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/16.2.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"instanceId\": \"3\",\r\n  \"sku\": {\r\n    \"name\": \"Standard_A1\",\r\n    \"tier\": \"Standard\"\r\n  },\r\n  \"properties\": {\r\n    \"latestModelApplied\": true,\r\n    \"vmId\": \"ca85149c-19bc-40aa-babd-75f765946a47\",\r\n    \"storageProfile\": {\r\n      \"imageReference\": {\r\n        \"publisher\": \"MicrosoftWindowsServer\",\r\n        \"offer\": \"WindowsServer\",\r\n        \"sku\": \"2008-R2-SP1\",\r\n        \"version\": \"2.127.20170406\"\r\n      },\r\n      \"osDisk\": {\r\n        \"osType\": \"Windows\",\r\n        \"name\": \"vmsshyleevmssdetest2vmsshyleevmssdetest2_OS__1_e642af092c2c436cb972049131967297\",\r\n        \"createOption\": \"FromImage\",\r\n        \"caching\": \"None\",\r\n        \"managedDisk\": {\r\n          \"storageAccountType\": \"Standard_LRS\",\r\n          \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/disks/vmsshyleevmssdetest2vmsshyleevmssdetest2_OS__1_e642af092c2c436cb972049131967297\"\r\n        },\r\n        \"diskSizeGB\": 128\r\n      },\r\n      \"dataDisks\": []\r\n    },\r\n    \"osProfile\": {\r\n      \"computerName\": \"test000003\",\r\n      \"adminUsername\": \"Foo12\",\r\n      \"windowsConfiguration\": {\r\n        \"provisionVMAgent\": true,\r\n        \"enableAutomaticUpdates\": true\r\n      },\r\n      \"secrets\": []\r\n    },\r\n    \"networkProfile\": {\r\n      \"networkInterfaces\": [\r\n        {\r\n          \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/virtualMachineScaleSets/vmsshyleevmssdetest2/virtualMachines/3/networkInterfaces/test\"\r\n        }\r\n      ]\r\n    },\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"resources\": [\r\n    {\r\n      \"properties\": {\r\n        \"publisher\": \"Microsoft.Azure.Security\",\r\n        \"type\": \"AzureDiskEncryption\",\r\n        \"typeHandlerVersion\": \"2.0\",\r\n        \"autoUpgradeMinorVersion\": true,\r\n        \"settings\": {\r\n          \"EncryptionOperation\": \"DisableEncryption\",\r\n          \"VolumeType\": \"OS\"\r\n        },\r\n        \"forceUpdateTag\": \"823eed64-e135-44bc-b26f-a052daf025c1\",\r\n        \"provisioningState\": \"Succeeded\"\r\n      },\r\n      \"type\": \"Microsoft.Compute/virtualMachines/extensions\",\r\n      \"location\": \"westcentralus\",\r\n      \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/virtualMachines/vmsshyleevmssdetest2_3/extensions/AzureDiskEncryption\",\r\n      \"name\": \"AzureDiskEncryption\"\r\n    }\r\n  ],\r\n  \"type\": \"Microsoft.Compute/virtualMachineScaleSets/virtualMachines\",\r\n  \"location\": \"westcentralus\",\r\n  \"tags\": {},\r\n  \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/virtualMachineScaleSets/vmsshyleevmssdetest2/virtualMachines/3\",\r\n  \"name\": \"vmsshyleevmssdetest2_3\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2647"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-served-by": [
+          "2be8e138-3223-4141-af48-5163dbafa559_131442037031481435"
+        ],
+        "x-ms-request-id": [
+          "c7b738c7-aa58-45be-a8ad-2f1dae60e227"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14969"
+        ],
+        "x-ms-correlation-request-id": [
+          "991a715b-d7af-4e0a-9ee0-92abcda4c092"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170811T230921Z:991a715b-d7af-4e0a-9ee0-92abcda4c092"
+        ],
+        "Date": [
+          "Fri, 11 Aug 2017 23:09:21 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/virtualMachineScaleSets/vmsshyleevmssdetest2/extensions/AzureDiskEncryption?api-version=2017-03-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Jlc291cmNlR3JvdXBzL2h5bGVldm1zc2RldGVzdDIvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lU2NhbGVTZXRzL3Ztc3NoeWxlZXZtc3NkZXRlc3QyL2V4dGVuc2lvbnMvQXp1cmVEaXNrRW5jcnlwdGlvbj9hcGktdmVyc2lvbj0yMDE3LTAzLTMw",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"name\": \"AzureDiskEncryption\",\r\n  \"properties\": {\r\n    \"forceUpdateTag\": \"823eed64-e135-44bc-b26f-a052daf025c1\",\r\n    \"publisher\": \"Microsoft.Azure.Security\",\r\n    \"type\": \"AzureDiskEncryption\",\r\n    \"typeHandlerVersion\": \"2.0\",\r\n    \"autoUpgradeMinorVersion\": true,\r\n    \"settings\": {\r\n      \"EncryptionOperation\": \"DisableEncryption\",\r\n      \"VolumeType\": \"OS\"\r\n    }\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "382"
+        ],
+        "x-ms-client-request-id": [
+          "c94cd9ab-9358-4783-bd76-8e54ebf43948"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2102.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/16.2.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"publisher\": \"Microsoft.Azure.Security\",\r\n    \"type\": \"AzureDiskEncryption\",\r\n    \"typeHandlerVersion\": \"2.0\",\r\n    \"autoUpgradeMinorVersion\": true,\r\n    \"settings\": {\r\n      \"EncryptionOperation\": \"DisableEncryption\",\r\n      \"VolumeType\": \"OS\"\r\n    },\r\n    \"forceUpdateTag\": \"823eed64-e135-44bc-b26f-a052daf025c1\"\r\n  },\r\n  \"type\": \"Microsoft.Compute/virtualMachineScaleSets/extensions\",\r\n  \"name\": \"AzureDiskEncryption\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "463"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/providers/Microsoft.Compute/locations/westcentralus/operations/257d8854-fef2-43c9-a41f-47e4b3acb5b7?api-version=2017-03-30"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-served-by": [
+          "2be8e138-3223-4141-af48-5163dbafa559_131442037031481435"
+        ],
+        "x-ms-request-id": [
+          "257d8854-fef2-43c9-a41f-47e4b3acb5b7"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "536f4122-9513-4e90-81cc-42404dd9bfcf"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170811T230819Z:536f4122-9513-4e90-81cc-42404dd9bfcf"
+        ],
+        "Date": [
+          "Fri, 11 Aug 2017 23:08:19 GMT"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/providers/Microsoft.Compute/locations/westcentralus/operations/257d8854-fef2-43c9-a41f-47e4b3acb5b7?api-version=2017-03-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdGNlbnRyYWx1cy9vcGVyYXRpb25zLzI1N2Q4ODU0LWZlZjItNDNjOS1hNDFmLTQ3ZTRiM2FjYjViNz9hcGktdmVyc2lvbj0yMDE3LTAzLTMw",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2102.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/16.2.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"startTime\": \"2017-08-11T16:08:19.5376601-07:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"257d8854-fef2-43c9-a41f-47e4b3acb5b7\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "134"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-served-by": [
+          "2be8e138-3223-4141-af48-5163dbafa559_131442037031481435"
+        ],
+        "x-ms-request-id": [
+          "08ccbf16-1d4b-49e8-becd-46d9f8317312"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14981"
+        ],
+        "x-ms-correlation-request-id": [
+          "44da1091-af6a-440f-97a8-48f72e79f901"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170811T230850Z:44da1091-af6a-440f-97a8-48f72e79f901"
+        ],
+        "Date": [
+          "Fri, 11 Aug 2017 23:08:49 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/providers/Microsoft.Compute/locations/westcentralus/operations/257d8854-fef2-43c9-a41f-47e4b3acb5b7?api-version=2017-03-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdGNlbnRyYWx1cy9vcGVyYXRpb25zLzI1N2Q4ODU0LWZlZjItNDNjOS1hNDFmLTQ3ZTRiM2FjYjViNz9hcGktdmVyc2lvbj0yMDE3LTAzLTMw",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2102.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/16.2.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"startTime\": \"2017-08-11T16:08:19.5376601-07:00\",\r\n  \"endTime\": \"2017-08-11T16:09:14.5683314-07:00\",\r\n  \"status\": \"Succeeded\",\r\n  \"name\": \"257d8854-fef2-43c9-a41f-47e4b3acb5b7\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "184"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-served-by": [
+          "2be8e138-3223-4141-af48-5163dbafa559_131442037031481435"
+        ],
+        "x-ms-request-id": [
+          "4c7a5fa5-2d34-4705-b762-2c1751d07e00"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14980"
+        ],
+        "x-ms-correlation-request-id": [
+          "2a250125-7c6e-4609-a64d-5f25dac9c952"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170811T230920Z:2a250125-7c6e-4609-a64d-5f25dac9c952"
+        ],
+        "Date": [
+          "Fri, 11 Aug 2017 23:09:20 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/virtualMachineScaleSets/vmsshyleevmssdetest2/extensions/AzureDiskEncryption?api-version=2017-03-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Jlc291cmNlR3JvdXBzL2h5bGVldm1zc2RldGVzdDIvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lU2NhbGVTZXRzL3Ztc3NoeWxlZXZtc3NkZXRlc3QyL2V4dGVuc2lvbnMvQXp1cmVEaXNrRW5jcnlwdGlvbj9hcGktdmVyc2lvbj0yMDE3LTAzLTMw",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2102.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/16.2.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"publisher\": \"Microsoft.Azure.Security\",\r\n    \"type\": \"AzureDiskEncryption\",\r\n    \"typeHandlerVersion\": \"2.0\",\r\n    \"autoUpgradeMinorVersion\": true,\r\n    \"settings\": {\r\n      \"EncryptionOperation\": \"DisableEncryption\",\r\n      \"VolumeType\": \"OS\"\r\n    },\r\n    \"forceUpdateTag\": \"823eed64-e135-44bc-b26f-a052daf025c1\"\r\n  },\r\n  \"type\": \"Microsoft.Compute/virtualMachineScaleSets/extensions\",\r\n  \"name\": \"AzureDiskEncryption\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "464"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-served-by": [
+          "2be8e138-3223-4141-af48-5163dbafa559_131442037031481435"
+        ],
+        "x-ms-request-id": [
+          "6b9a0432-e850-49ca-8b39-7c6e92d65d1b"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14979"
+        ],
+        "x-ms-correlation-request-id": [
+          "32a01615-9dfb-46ca-935a-e811135a60bf"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170811T230920Z:32a01615-9dfb-46ca-935a-e811135a60bf"
+        ],
+        "Date": [
+          "Fri, 11 Aug 2017 23:09:20 GMT"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "24fb23e3-6ba3-41f0-9b6e-e41131d5d61e",
+    "TenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+    "Domain": ""
+  }
+}

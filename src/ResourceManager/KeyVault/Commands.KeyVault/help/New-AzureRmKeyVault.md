@@ -96,7 +96,9 @@ Accept wildcard characters: False
 ```
 
 ### -EnableSoftDelete
-If specified, 'soft delete' functionality is enabled for this key vault.
+Specifies that the soft-delete functionality is enabled for this key vault. When soft-delete is enabled, for a grace period, you can recover this key vault and its contents after it is deleted.
+
+For more information about this functionality, see [Azure Key Vault soft-delete overview](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete). For how-to instructions, see [How to use Key Vault soft-delete with PowerShell](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell).
 
 ```yaml
 Type: SwitchParameter
@@ -111,9 +113,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-Specifies the Azure region in which to create the key vault. Use the command Get-AzureLocation
-(https://msdn.microsoft.com/ library/azure/mt589064.aspx) to see your choices. For more
-information, type `Get-Help Get-AzureLocation`.
+Specifies the Azure region in which to create the key vault. Use the command [Get-AzureLocation](https://docs.microsoft.com/powershell/module/Azure/Get-AzureLocation) to see your choices.
 
 ```yaml
 Type: String
@@ -143,8 +143,7 @@ Accept wildcard characters: False
 ```
 
 ### -Sku
-Specifies the SKU of the key vault instance. For information about which features are available for
-each SKU, see the Azure Key Vault Pricing website (http://go.microsoft.com/fwlink/?linkid=512521).
+Specifies the SKU of the key vault instance. For information about which features are available for each SKU, see the Azure Key Vault Pricing website (https://go.microsoft.com/fwlink/?linkid=512521).
 
 ```yaml
 Type: SkuName

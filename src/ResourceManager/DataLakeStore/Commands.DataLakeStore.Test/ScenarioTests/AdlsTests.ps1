@@ -32,7 +32,7 @@ function Test-DataLakeStoreTrustedIdProvider
 		for ($i = 0; $i -le 60; $i++)
 		{
 			[array]$accountGet = Get-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName
-			if ($accountGet[0].Properties.ProvisioningState -like "Succeeded")
+			if ($accountGet[0].ProvisioningState -like "Succeeded")
 			{
 				Assert-AreEqual $accountName $accountGet[0].Name
 				Assert-AreEqual $location $accountGet[0].Location
@@ -41,7 +41,7 @@ function Test-DataLakeStoreTrustedIdProvider
 				break
 			}
 
-			Write-Host "account not yet provisioned. current state: $($accountGet[0].Properties.ProvisioningState)"
+			Write-Host "account not yet provisioned. current state: $($accountGet[0].ProvisioningState)"
 			[Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)
 			Assert-False {$i -eq 60} " Data Lake Store account is not in succeeded state even after 30 min."
 		}
@@ -114,7 +114,7 @@ function Test-DataLakeStoreFirewall
 		for ($i = 0; $i -le 60; $i++)
 		{
 			[array]$accountGet = Get-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName
-			if ($accountGet[0].Properties.ProvisioningState -like "Succeeded")
+			if ($accountGet[0].ProvisioningState -like "Succeeded")
 			{
 				Assert-AreEqual $accountName $accountGet[0].Name
 				Assert-AreEqual $location $accountGet[0].Location
@@ -123,7 +123,7 @@ function Test-DataLakeStoreFirewall
 				break
 			}
 
-			Write-Host "account not yet provisioned. current state: $($accountGet[0].Properties.ProvisioningState)"
+			Write-Host "account not yet provisioned. current state: $($accountGet[0].ProvisioningState)"
 			[Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)
 			Assert-False {$i -eq 60} " Data Lake Store account is not in succeeded state even after 30 min."
 		}
@@ -392,7 +392,7 @@ function Test-DataLakeStoreFileSystem
 		for ($i = 0; $i -le 60; $i++)
 		{
 			[array]$accountGet = Get-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName
-			if ($accountGet[0].Properties.ProvisioningState -like "Succeeded")
+			if ($accountGet[0].ProvisioningState -like "Succeeded")
 			{
 				Assert-AreEqual $accountName $accountGet[0].Name
 				Assert-AreEqual $location $accountGet[0].Location
@@ -401,7 +401,7 @@ function Test-DataLakeStoreFileSystem
 				break
 			}
 
-			Write-Host "account not yet provisioned. current state: $($accountGet[0].Properties.ProvisioningState)"
+			Write-Host "account not yet provisioned. current state: $($accountGet[0].ProvisioningState)"
 			[Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)
 			Assert-False {$i -eq 60} " Data Lake Store account is not in succeeded state even after 30 min."
 		}
@@ -583,7 +583,7 @@ function Test-DataLakeStoreFileSystemPermissions
 		for ($i = 0; $i -le 60; $i++)
 		{
 			[array]$accountGet = Get-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName
-			if ($accountGet[0].Properties.ProvisioningState -like "Succeeded")
+			if ($accountGet[0].ProvisioningState -like "Succeeded")
 			{
 				Assert-AreEqual $accountName $accountGet[0].Name
 				Assert-AreEqual $location $accountGet[0].Location
@@ -592,7 +592,7 @@ function Test-DataLakeStoreFileSystemPermissions
 				break
 			}
 
-			Write-Host "account not yet provisioned. current state: $($accountGet[0].Properties.ProvisioningState)"
+			Write-Host "account not yet provisioned. current state: $($accountGet[0].ProvisioningState)"
 			[Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)
 			Assert-False {$i -eq 60} " Data Lake Store account is not in succeeded state even after 30 min."
 		}
@@ -708,7 +708,7 @@ function Test-NegativeDataLakeStoreAccount
 		{
         
 			[array]$accountGet = Get-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName
-			if ($accountGet[0].Properties.ProvisioningState -like "Succeeded")
+			if ($accountGet[0].ProvisioningState -like "Succeeded")
 			{
 				Assert-AreEqual $accountName $accountGet[0].Name
 				Assert-AreEqual $location $accountGet[0].Location
@@ -717,7 +717,7 @@ function Test-NegativeDataLakeStoreAccount
 				break
 			}
 
-			Write-Host "account not yet provisioned. current state: $($accountGet[0].Properties.ProvisioningState)"
+			Write-Host "account not yet provisioned. current state: $($accountGet[0].ProvisioningState)"
 			[Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)
 			Assert-False {$i -eq 60} " Data Lake Store account not in succeeded state even after 30 min."
 		}

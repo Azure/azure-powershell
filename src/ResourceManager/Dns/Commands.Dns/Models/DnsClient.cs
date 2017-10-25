@@ -65,10 +65,7 @@ namespace Microsoft.Azure.Commands.Dns.Models
         public DnsZone CreateDnsZone(
             string name,
             string resourceGroupName,
-            Hashtable tags,
-            ZoneType zoneType,
-            IList<string> registrationVirtualNetworks,
-            IList<string> resolutionVirtualNetworks)
+            Hashtable tags)
         {
             var response = this.DnsManagementClient.Zones.CreateOrUpdate(
                 resourceGroupName,
@@ -77,9 +74,6 @@ namespace Microsoft.Azure.Commands.Dns.Models
                 {
                     Location = DnsResourceLocation,
                     Tags = TagsConversionHelper.CreateTagDictionary(tags, validate: true),
-                    ZoneType = zoneType,
-                    RegistrationVirtualNetworks = registrationVirtualNetworks.ToVirtualNetworkResources(),
-                    ResolutionVirtualNetworks = resolutionVirtualNetworks.ToVirtualNetworkResources(),
                 },
                 ifMatch: null,
                 ifNoneMatch: "*");
@@ -96,9 +90,6 @@ namespace Microsoft.Azure.Commands.Dns.Models
                     {
                         Location = DnsResourceLocation,
                         Tags = TagsConversionHelper.CreateTagDictionary(zone.Tags, validate: true),
-                        ZoneType = zone.ZoneType,
-                        RegistrationVirtualNetworks = zone.RegistrationVirtualNetworkIds.ToVirtualNetworkResources(),
-                        ResolutionVirtualNetworks = zone.ResolutionVirtualNetworkIds.ToVirtualNetworkResources(),
                     },
                 ifMatch: overwrite ? "*" : zone.Etag,
                 ifNoneMatch: null);
@@ -113,7 +104,8 @@ namespace Microsoft.Azure.Commands.Dns.Models
             var deleteResult = this.DnsManagementClient.Zones.Delete(
                 zone.ResourceGroupName,
                 zone.Name,
-                ifMatch: overwrite ? null : zone.Etag);
+                ifMatch: overwrite ? null : zone.Etag,
+                ifNoneMatch: null);
 
             return deleteResult.Status == Sdk.OperationStatus.Succeeded ;
         }
@@ -131,11 +123,11 @@ namespace Microsoft.Azure.Commands.Dns.Models
             {
                 if (getResponse != null && getResponse.NextPageLink != null)
                 {
-                    getResponse = this.DnsManagementClient.Zones.ListByResourceGroupNext(getResponse.NextPageLink);
+                    getResponse = this.DnsManagementClient.Zones.ListInResourceGroupNext(getResponse.NextPageLink);
                 }
                 else
                 {
-                    getResponse = this.DnsManagementClient.Zones.ListByResourceGroup(resourceGroupName);    
+                    getResponse = this.DnsManagementClient.Zones.ListInResourceGroup(resourceGroupName);    
                 }
                 
                 results.AddRange(getResponse.Select(ToDnsZone));
@@ -152,11 +144,11 @@ namespace Microsoft.Azure.Commands.Dns.Models
             {
                 if (getResponse != null && getResponse.NextPageLink != null)
                 {
-                    getResponse = this.DnsManagementClient.Zones.ListNext(getResponse.NextPageLink);
+                    getResponse = this.DnsManagementClient.Zones.ListInSubscriptionNext(getResponse.NextPageLink);
                 }
                 else
                 {
-                    getResponse = this.DnsManagementClient.Zones.List();
+                    getResponse = this.DnsManagementClient.Zones.ListInSubscription();
                 }
 
                 results.AddRange(getResponse.Select(ToDnsZone));
@@ -331,7 +323,8 @@ namespace Microsoft.Azure.Commands.Dns.Models
                 recordSet.ZoneName,
                 recordSet.Name,
                 recordSet.RecordType,
-                ifMatch: overwrite ? "*" : recordSet.Etag);
+                ifMatch: overwrite ? "*" : recordSet.Etag,
+                ifNoneMatch: null);
             return true;
         }
 
@@ -376,11 +369,11 @@ namespace Microsoft.Azure.Commands.Dns.Models
             {
                 if (listResponse != null && listResponse.NextPageLink != null)
                 {
-                    listResponse = this.DnsManagementClient.RecordSets.ListByDnsZoneNext(listResponse.NextPageLink);
+                    listResponse = this.DnsManagementClient.RecordSets.ListAllInResourceGroupNext(listResponse.NextPageLink);
                 }
                 else
                 {
-                    listResponse = this.DnsManagementClient.RecordSets.ListByDnsZone(
+                    listResponse = this.DnsManagementClient.RecordSets.ListAllInResourceGroup(
                                     resourceGroupName,
                                     zoneName);
                 }
@@ -484,9 +477,6 @@ namespace Microsoft.Azure.Commands.Dns.Models
                 NameServers = zone.NameServers != null ? zone.NameServers.ToList() : new List<string>(),
                 NumberOfRecordSets = zone.NumberOfRecordSets,
                 MaxNumberOfRecordSets = zone.MaxNumberOfRecordSets,
-                ZoneType = zone.ZoneType,
-                RegistrationVirtualNetworkIds = zone.RegistrationVirtualNetworks.ToVirtualNetworkIds(),
-                ResolutionVirtualNetworkIds = zone.ResolutionVirtualNetworks.ToVirtualNetworkIds(),
             };
         }
 
@@ -510,7 +500,5 @@ namespace Microsoft.Azure.Commands.Dns.Models
 
             throw new FormatException(string.Format("Unable to extract resource group name from {0} ", id));
         }
-
-
     }
 }

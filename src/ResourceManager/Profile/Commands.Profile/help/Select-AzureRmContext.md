@@ -75,7 +75,6 @@ The name of the context
 Type: String
 Parameter Sets: Context Name
 Aliases: 
-Accepted values: [contrib@AzureSDKTeam.onmicrosoft.com, 0b1f6471-1bf0-4dda-aec3-cb9272f09590], [markcowl@microsoft.com, 00977cdb-163f-435f-9c32-39ec8ae61f4d]
 
 Required: True
 Position: 0

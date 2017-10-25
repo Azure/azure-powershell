@@ -13,8 +13,9 @@ Creates a configuration object for automatic patching on a virtual machine.
 ## SYNTAX
 
 ```
-New-AzureRmVMSqlServerAutoPatchingConfig [-Enable] [-DayOfWeek <String>] [-MaintenanceWindowStartingHour <Int32>]
- [-MaintenanceWindowDuration <Int32>] [-PatchCategory <String>] [<CommonParameters>]
+New-AzureRmVMSqlServerAutoPatchingConfig [-Enable] [-DayOfWeek <String>]
+ [-MaintenanceWindowStartingHour <Int32>] [-MaintenanceWindowDuration <Int32>] [-PatchCategory <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
