@@ -26,23 +26,32 @@ namespace Microsoft.WindowsAzure.Commands.Common
 
         static AzurePSDataCollectionProfile Initialize(IAzureSession session)
         {
-            AzurePSDataCollectionProfile result = new AzurePSDataCollectionProfile();
+            AzurePSDataCollectionProfile result = new AzurePSDataCollectionProfile(true);
             try
             {
-                var store = session.DataStore;
-                string dataPath = Path.Combine(session.ProfileDirectory, AzurePSDataCollectionProfile.DefaultFileName);
-                if (store.FileExists(dataPath))
+                var environmentValue = Environment.GetEnvironmentVariable(AzurePSDataCollectionProfile.EnvironmentVariableName);
+                bool enabled = true;
+                if (!string.IsNullOrWhiteSpace(environmentValue) && bool.TryParse(environmentValue, out enabled))
                 {
-                    string contents = store.ReadFileAsText(dataPath);
-                    var localResult = JsonConvert.DeserializeObject<AzurePSDataCollectionProfile>(contents);
-                    if (localResult != null && localResult.EnableAzureDataCollection.HasValue)
-                    {
-                        result = localResult;
-                    }
+                    result.EnableAzureDataCollection = enabled;
                 }
                 else
                 {
-                    WritePSDataCollectionProfile(session, new AzurePSDataCollectionProfile(true));
+                    var store = session.DataStore;
+                    string dataPath = Path.Combine(session.ProfileDirectory, AzurePSDataCollectionProfile.DefaultFileName);
+                    if (store.FileExists(dataPath))
+                    {
+                        string contents = store.ReadFileAsText(dataPath);
+                        var localResult = JsonConvert.DeserializeObject<AzurePSDataCollectionProfile>(contents);
+                        if (localResult != null && localResult.EnableAzureDataCollection.HasValue)
+                        {
+                            result = localResult;
+                        }
+                    }
+                    else
+                    {
+                        WritePSDataCollectionProfile(session, new AzurePSDataCollectionProfile(true));
+                    }
                 }
             }
             catch

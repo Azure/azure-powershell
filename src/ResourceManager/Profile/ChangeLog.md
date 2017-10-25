@@ -18,9 +18,38 @@
         - Additional information about change #1
 -->
 ## Current Release
+- Set-AzureRmDefault
+    - Use this cmdlet to set a default resource group.  This will make the -ResourceGroup parameter optional for some cmdlets, and will use the default when a resource group is not specified
+    - ```Set-AzureRmDefault -ResourceGroupName "ExampleResourceGroup"```
+    - If resource group specified exists in the subscription, this resource group will be set to default.  Otherwise, the resource group will be created and then set to default.
+- Get-AzureRmDefault
+    - Use this cmdlet to get the current default resource group (and other defaults in the future).
+    - ```Get-AzureRmDefault -ResourceGroup```
+- Clear-AzureRmDefault
+    - Use this cmdlet to remove the current default resource group
+    - ```Clear-AzureRmDefault -ResourceGroup```
+
+## Version 3.4.1
 * LocationCompleterAttribute added and available for cmdlets which use the -Location parameter
     - Use this feature by adding LocationCompleter(string[] validResourceTypes) onto the Location parameter
 
+## Version 3.4.0
+* Start-Job Support for AzureRm cmdlets. 
+    * All AzureRmCmdlets add -AzureRmContext parameter, which can accept a context (output of a Context cmdlet). 
+      - Common pattern for jobs with context persistence DISABLED: ```Start-Job {param ($context) New-AzureRmVM -AzureRmContext $context [... other parameters]} -ArgumentList (Get-AzureRmContext)```
+      - Common pattern for jobs with context persistence ENABLED:```Start-Job {New-AzureRmVM [... other parameters]}```
+    * Persist login information across sessions, new cmdlets: 
+      - Enable-AzureRmContextAutosave - Enable login persistence across sessions. 
+      - Disable-AzureRmContextAutosave - Disable login persistence across sessions. 
+    * Manage context information, new cmdets 
+      - Select-AzureRmContext - Select the active named context. 
+      - Rename-AzureRmContext - Rename an exsiting context for easy reference. 
+      - Remove-AzureRmContext - Remove an existing context. 
+      - Remove-AzureRmAccount - Remove all credentials, subscriptions, and tenants associated with an account. 
+    * Manage context information, cmdlet changes: 
+      - Added Scope = (Process | CurrentUser) to all cmdlets that change credentials 
+      - Get-AzureRmContext - Added ListAvailable parameter to list all saved contexts
+      
 ## Version 3.3.1
 
 ## Version 3.3.0

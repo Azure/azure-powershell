@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
+Module Name: AzureRM.HDInsight
 ms.assetid: 691AC991-3249-487C-A0DF-C579ED7D00E7
 online version: 
 schema: 2.0.0
@@ -29,7 +30,7 @@ New-AzureRmHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [
  [-VirtualNetworkId <String>] [-SubnetName <String>] [-OSType <OSType>] [-ClusterTier <Tier>]
  [-SshCredential <PSCredential>] [-SshPublicKey <String>] [-RdpCredential <PSCredential>]
  [-RdpAccessExpiry <DateTime>] [-ObjectId <Guid>] [-CertificatePassword <String>] [-AadTenantId <Guid>]
- [-SecurityProfile <AzureHDInsightSecurityProfile>] [<CommonParameters>]
+ [-SecurityProfile <AzureHDInsightSecurityProfile>] [-DisksPerWorkerNode <Int32>] [<CommonParameters>]
 ```
 
 ### CertificateFilePath
@@ -50,7 +51,7 @@ New-AzureRmHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [
  [-SshCredential <PSCredential>] [-SshPublicKey <String>] [-RdpCredential <PSCredential>]
  [-RdpAccessExpiry <DateTime>] [-ObjectId <Guid>] [-CertificateFilePath <String>]
  [-CertificatePassword <String>] [-AadTenantId <Guid>] [-SecurityProfile <AzureHDInsightSecurityProfile>]
- [<CommonParameters>]
+ [-DisksPerWorkerNode <Int32>] [<CommonParameters>]
 ```
 
 ### CertificateFileContents
@@ -71,7 +72,7 @@ New-AzureRmHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [
  [-SshCredential <PSCredential>] [-SshPublicKey <String>] [-RdpCredential <PSCredential>]
  [-RdpAccessExpiry <DateTime>] [-ObjectId <Guid>] [-CertificateFileContents <Byte[]>]
  [-CertificatePassword <String>] [-AadTenantId <Guid>] [-SecurityProfile <AzureHDInsightSecurityProfile>]
- [<CommonParameters>]
+ [-DisksPerWorkerNode <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -81,6 +82,8 @@ The New-AzureHDInsightCluster creates an Azure HDInsight cluster by using the sp
 
 ### --------------------------  Example 1: Create an Azure HDInsight cluster  --------------------------
 @{paragraph=PS C:\\\>}
+
+
 
 
 
@@ -378,6 +381,21 @@ Specifies the path-prefix in the Data Lake Store Account that the HDInsight clus
 
 ```yaml
 Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisksPerWorkerNode
+Specifies the number of disks for worker node role in the cluster.
+
+```yaml
+Type: Int32
 Parameter Sets: (All)
 Aliases: 
 
@@ -709,7 +727,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### AzureHDInsightConfig
-
 Parameter 'Config' accepts value of type 'AzureHDInsightConfig' from the pipeline
 
 ## OUTPUTS

@@ -16,15 +16,15 @@ Adds an IP configuration to a virtual network gateway.
 ### SetByResourceId
 ```
 Add-AzureRmVirtualNetworkGatewayIpConfig -VirtualNetworkGateway <PSVirtualNetworkGateway> -Name <String>
- [-PrivateIpAddress <String>] [-SubnetId <String>] [-PublicIpAddressId <String>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-PrivateIpAddress <String>] [-SubnetId <String>] [-PublicIpAddressId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResource
 ```
 Add-AzureRmVirtualNetworkGatewayIpConfig -VirtualNetworkGateway <PSVirtualNetworkGateway> -Name <String>
- [-PrivateIpAddress <String>] [-Subnet <PSSubnet>] [-PublicIpAddress <PSPublicIpAddress>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-PrivateIpAddress <String>] [-Subnet <PSSubnet>] [-PublicIpAddress <PSPublicIpAddress>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,6 +38,21 @@ The **Add-AzureRmVirtualNetworkGatewayIpConfig** cmdlet adds an IP configuration
 ```
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 Specifies the name of the gateway IP configuration to add.

@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.Dns.Models;
 using System.Collections;
-using System.Collections.Generic;
 using System.Management.Automation;
 using ProjectResources = Microsoft.Azure.Commands.Dns.Properties.Resources;
 
@@ -38,14 +37,6 @@ namespace Microsoft.Azure.Commands.Dns
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents resource tags.", ParameterSetName = "Fields")]
         public Hashtable Tag { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of virtual networks able to resolve records in this DNS zone, only available for private zones.", ParameterSetName = "Fields")]
-        [ValidateNotNull]
-        public List<string> ResolutionVirtualNetworkId { get; set; }
-
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of virtual networks that will register VM hostnames records in this DNS zone, only available for private zones.", ParameterSetName = "Fields")]
-        [ValidateNotNull]
-        public List<string> RegistrationVirtualNetworkId { get; set; }
-
         [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The zone object to set.", ParameterSetName = "Object")]
         [ValidateNotNullOrEmpty]
         public DnsZone Zone { get; set; }
@@ -62,27 +53,13 @@ namespace Microsoft.Azure.Commands.Dns
 
             if (this.ParameterSetName == "Fields")
             {
-                if (this.Name.EndsWith("."))
+                zoneToUpdate = new DnsZone
                 {
-                    this.Name = this.Name.TrimEnd('.');
-                    this.WriteWarning(string.Format("Modifying zone name to remove terminating '.'.  Zone name used is \"{0}\".", this.Name));
-                }
-
-                zoneToUpdate = this.DnsClient.GetDnsZone(this.Name, this.ResourceGroupName);
-                zoneToUpdate.Etag = "*";
-
-                // Change mutable fields if value is passed
-                if (this.RegistrationVirtualNetworkId != null)
-                {
-                    zoneToUpdate.RegistrationVirtualNetworkIds = this.RegistrationVirtualNetworkId;
-                }
-
-                if (this.ResolutionVirtualNetworkId != null)
-                {
-                    zoneToUpdate.ResolutionVirtualNetworkIds = this.ResolutionVirtualNetworkId;
-                }
-
-                zoneToUpdate.Tags = this.Tag;
+                    Name = this.Name,
+                    ResourceGroupName = this.ResourceGroupName,
+                    Etag = "*",
+                    Tags = this.Tag,
+                };
             }
             else if (this.ParameterSetName == "Object")
             {

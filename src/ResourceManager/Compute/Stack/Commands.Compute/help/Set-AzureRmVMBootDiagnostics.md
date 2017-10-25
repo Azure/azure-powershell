@@ -32,6 +32,7 @@ The **Set-AzureRmVMBootDiagnostics** cmdlet modifies boot diagnostics properties
 ```
 PS C:\> $VM = Get-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "ContosoVM07"
 PS C:\> Set-AzureRmVMBootDiagnostics -VM $VM -Enable -ResourceGroupName "ResourceGroup11" -StorageAccountName "DiagnosticStorage"
+PS C:\> Update-AzureRmVM -ResourceGroup "ResourceGroup11" -VM $VM
 ```
 
 The first command gets the virtual machine named ContosoVM07 by using **Get-AzureRmVM**.

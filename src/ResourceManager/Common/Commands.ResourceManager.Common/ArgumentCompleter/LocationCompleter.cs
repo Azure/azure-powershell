@@ -79,6 +79,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Location
                         catch (Exception ex)
                         {
                             _resourceTypeLocationDictionary[contextHash] = new ConcurrentDictionary<string, ICollection<string>>(StringComparer.OrdinalIgnoreCase);
+                            if (ex == null) { }
 #if DEBUG
                             throw ex;
 #endif
@@ -135,7 +136,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Location
                 }
             }
 
-            string[] distinctLocations;
+            string[] distinctLocations = { };
             if (validResourceTypes.Count > 0)
             {
                 distinctLocations = resourceTypeLocationDictionary[validResourceTypes[0]].ToArray();
