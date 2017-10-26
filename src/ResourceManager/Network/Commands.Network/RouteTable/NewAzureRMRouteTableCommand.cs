@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.Network.Automation
                 Routes = this.Route,
             };
 
-            var vRouteTableModel = Mapper.Map<MNM.RouteTable>(vRouteTable);
+            var vRouteTableModel = NetworkResourceManagerProfile.Mapper.Map<MNM.RouteTable>(vRouteTable);
             vRouteTableModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
             var present = true;
             try
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.Network.Automation
             {
                 this.NetworkClient.NetworkManagementClient.RouteTables.CreateOrUpdate(this.ResourceGroupName, this.Name, vRouteTableModel);
                 var getRouteTable = this.NetworkClient.NetworkManagementClient.RouteTables.Get(this.ResourceGroupName, this.Name);
-                var psRouteTable = Mapper.Map<PSRouteTable>(getRouteTable);
+                var psRouteTable = NetworkResourceManagerProfile.Mapper.Map<PSRouteTable>(getRouteTable);
                 psRouteTable.ResourceGroupName = this.ResourceGroupName;
                 psRouteTable.Tag = TagsConversionHelper.CreateTagHashtable(getRouteTable.Tags);
                 WriteObject(psRouteTable, true);

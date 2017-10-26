@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Network.Automation
             if(!string.IsNullOrEmpty(this.Name))
             {
                 var vApplicationSecurityGroup = this.NetworkClient.NetworkManagementClient.ApplicationSecurityGroups.Get(ResourceGroupName, Name);
-                var vApplicationSecurityGroupModel = Mapper.Map<CNM.PSApplicationSecurityGroup>(vApplicationSecurityGroup);
+                var vApplicationSecurityGroupModel = NetworkResourceManagerProfile.Mapper.Map<CNM.PSApplicationSecurityGroup>(vApplicationSecurityGroup);
                 vApplicationSecurityGroupModel.ResourceGroupName = this.ResourceGroupName;
                 vApplicationSecurityGroupModel.Tag = TagsConversionHelper.CreateTagHashtable(vApplicationSecurityGroup.Tags);
                 WriteObject(vApplicationSecurityGroupModel, true);
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Network.Automation
                 List<PSApplicationSecurityGroup> psApplicationSecurityGroupList = new List<PSApplicationSecurityGroup>();
                 foreach (var vApplicationSecurityGroup in vApplicationSecurityGroupList)
                 {
-                    var vApplicationSecurityGroupModel = Mapper.Map<CNM.PSApplicationSecurityGroup>(vApplicationSecurityGroup);
+                    var vApplicationSecurityGroupModel = NetworkResourceManagerProfile.Mapper.Map<CNM.PSApplicationSecurityGroup>(vApplicationSecurityGroup);
                     vApplicationSecurityGroupModel.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(vApplicationSecurityGroup.Id);
                     vApplicationSecurityGroupModel.Tag = TagsConversionHelper.CreateTagHashtable(vApplicationSecurityGroup.Tags);
                     psApplicationSecurityGroupList.Add(vApplicationSecurityGroupModel);

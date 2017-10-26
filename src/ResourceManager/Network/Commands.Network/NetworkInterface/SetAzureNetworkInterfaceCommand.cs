@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             // Map to the sdk object
-            var networkInterfaceModel = Mapper.Map<MNM.NetworkInterface>(this.NetworkInterface);
+            var networkInterfaceModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NetworkInterface>(this.NetworkInterface);
 
 			this.NullifyApplicationSecurityGroupIfAbsent(networkInterfaceModel);
 

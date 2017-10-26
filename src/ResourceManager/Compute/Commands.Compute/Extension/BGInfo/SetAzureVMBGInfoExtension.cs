@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Compute
                         this.Name ?? VirtualMachineBGInfoExtensionContext.ExtensionDefaultName,
                         parameters).GetAwaiter().GetResult();
 
-                    var result = Mapper.Map<PSAzureOperationResponse>(op);
+                    var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
                     WriteObject(result);
                 });
             }

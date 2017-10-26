@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                     foreach (var vm in resultList)
                     {
                         var diskStatus = GetDiskStatus(this.ResourceGroupName, this.VMScaleSetName, vm.InstanceId);
-                        var psResult = Mapper.Map<PSVmssVMDiskEncryptionStatusContextList>(diskStatus);
+                        var psResult = ComputeAutoMapperProfile.Mapper.Map<PSVmssVMDiskEncryptionStatusContextList>(diskStatus);
                         psResultList.Add(psResult);
                     }
                     WriteObject(psResultList);
