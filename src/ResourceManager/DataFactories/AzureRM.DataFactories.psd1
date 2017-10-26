@@ -55,6 +55,9 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '3.4.1'; }
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.DataFactories.dll',
+                     '.\Microsoft.Data.Edm.dll',
+                     '.\Microsoft.Data.OData.dll',
+                     '.\Microsoft.Data.Services.Client.dll',
                      '.\Microsoft.DataTransfer.Gateway.Encryption.dll',
                      '.\Microsoft.WindowsAzure.Storage.dll'
 
