@@ -7,13 +7,17 @@ Function New-AzureCredential
         SupportsShouldProcess=$true
         )]
     param(
+        [Parameter(ParameterSetName='CreateSpnParamSet', Mandatory=$true, HelpMessage='ServicePrincipal DisplayName you would like to set')]
+        [ValidateNotNullOrEmpty()]
+        [string]$NewServicePrincipalDisplayName,
+
+        [Parameter(ParameterSetName='CreateSpnParamSet', Mandatory=$true, HelpMessage='ServicePrincipal password')]
+        [ValidateNotNullOrEmpty()]
+        [string]$NewServicePrincipalPassword,
+
         [Parameter(ParameterSetName='UserIdParamSet', Mandatory=$true, HelpMessage = "UserId (OrgId) you would like to use")]
         [ValidateNotNullOrEmpty()]
         [string]$UserId,
-
-        [Parameter(ParameterSetName='UserIdParamSet', Mandatory=$true, HelpMessage = "Password (OrgId) you would like to use")]
-        [ValidateNotNullOrEmpty()]
-        [securestring]$Password,
 
         [Parameter(ParameterSetName='SpnParamSet', Mandatory=$true, HelpMessage='ServicePrincipal/ClientId you would like to use')]   
         [ValidateNotNullOrEmpty()]
@@ -22,14 +26,6 @@ Function New-AzureCredential
         [Parameter(ParameterSetName='SpnParamSet', Mandatory=$true, HelpMessage='ServicePrincipal Secret/ClientId Secret you would like to use')]
         [ValidateNotNullOrEmpty()]
         [string]$ServicePrincipalSecret,
-
-        [Parameter(ParameterSetName='CreateSpnParamSet', Mandatory=$true, HelpMessage='ServicePrincipal DisplayName you would like to set')]
-        [ValidateNotNullOrEmpty()]
-        [string]$NewServicePrincipalDisplayName,
-
-        [Parameter(ParameterSetName='CreateSpnParamSet', Mandatory=$true, HelpMessage='ServicePrincipal password')]
-        [ValidateNotNullOrEmpty()]
-        [string]$NewServicePrincipalPassword,
 
         [Parameter(ParameterSetName='CreateSpnParamSet', Mandatory=$true, HelpMessage = "SubscriptionId you would like to use")]
         [Parameter(ParameterSetName='SpnParamSet', Mandatory=$true, HelpMessage = "SubscriptionId you would like to use")]
@@ -80,7 +76,7 @@ Function New-AzureCredential
         While ($NewRole -eq $null -and $Retries -le 6)
         {
            # Sleep here for a few seconds to allow the service principal application to become active (should only take a couple of seconds normally)
-           Start-Sleep 15
+           Start-Sleep 5
            New-AzureRMRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $NewServicePrincipal.ApplicationId -Scope $Scope | Write-Verbose -ErrorAction SilentlyContinue
            $NewRole = Get-AzureRMRoleAssignment -ObjectId $NewServicePrincipal.Id -ErrorAction SilentlyContinue
            $Retries++;
@@ -91,7 +87,6 @@ Function New-AzureCredential
 
     if ([string]::IsNullOrEmpty($UserId) -eq $false) {
         $credentials.UserId = $UserId
-        $credentials.Password = $Password
     }
     
     if ([string]::IsNullOrEmpty($ServicePrincipal) -eq $false) {
@@ -182,10 +177,6 @@ This cmdlet will only prompt you for Subscription and Tenant information, rest a
         [ValidateNotNullOrEmpty()]
         [string]$UserId,
 
-        [Parameter(ParameterSetName='UserIdParamSet', Mandatory=$true, HelpMessage = "Password (OrgId) you would like to use")]
-        [ValidateNotNullOrEmpty()]
-        [string]$Password,
-
         [Parameter(ParameterSetName='SpnParamSet', Mandatory=$true, HelpMessage='ServicePrincipal/ClientId you would like to use')]   
         [ValidateNotNullOrEmpty()]
         [string]$ServicePrincipal,
@@ -194,7 +185,7 @@ This cmdlet will only prompt you for Subscription and Tenant information, rest a
         [ValidateNotNullOrEmpty()]
         [string]$ServicePrincipalSecret,
 
-        [Parameter(ParameterSetName='SpnParamSet', Mandatory=$true)]
+        [Parameter(ParameterSetName='SpnParamSet', Mandatory=$true, HelpMessage = "SubscriptionId you would like to use")]
         [Parameter(ParameterSetName='UserIdParamSet', Mandatory=$true, HelpMessage = "SubscriptionId you would like to use")]
         [ValidateNotNullOrEmpty()]
         [string]$SubscriptionId,
@@ -203,25 +194,32 @@ This cmdlet will only prompt you for Subscription and Tenant information, rest a
         [ValidateNotNullOrEmpty()]
         [string]$TenantId,
 
+	[Parameter(ParameterSetName='SpnParamSet', Mandatory=$true, HelpMessage = "Would you like to record or playback your tests?")]
+        [Parameter(ParameterSetName='UserIdParamSet', Mandatory=$true, HelpMessage = "Would you like to record or playback your tests?")]
         [ValidateSet("Playback", "Record", "None")]
         [string]$RecordMode='Playback',
 
         [ValidateSet("Prod", "Dogfood", "Current", "Next")]
-        [string]$TargetEnvironment='Prod'
-    )
+        [string]$TargetEnvironment='Prod',
 
-    [string]$uris="https://management.azure.com/"
+		[string]$ResourceManagementUri,
+		[string]$GraphUri,
+		[string]$AADAuthUri,
+		[string]$AADTokenAudienceUri,
+		[string]$GraphTokenAudienceUri,		
+		[string]$IbizaPortalUri,
+		[string]$ServiceManagementUri,
+		[string]$RdfePortalUri,
+		[string]$GalleryUri,
+		[string]$DataLakeStoreServiceUri,
+		[string]$DataLakeAnalyticsJobAndCatalogServiceUri
+    )
 
     $formattedConnStr = [string]::Format("SubscriptionId={0};HttpRecorderMode={1};Environment={2}", $SubscriptionId, $RecordMode, $TargetEnvironment)
 
     if([string]::IsNullOrEmpty($UserId) -eq $false)
     {
         $formattedConnStr = [string]::Format([string]::Concat($formattedConnStr, ";UserId={0}"), $UserId)
-    }
-
-    if([string]::IsNullOrEmpty($Password) -eq $false)
-    {
-        $formattedConnStr = [string]::Format([string]::Concat($formattedConnStr, ";Password={0}"), $Password)
     }
 
     if([string]::IsNullOrEmpty($TenantId) -eq $false)
@@ -238,14 +236,69 @@ This cmdlet will only prompt you for Subscription and Tenant information, rest a
     {
         $formattedConnStr = [string]::Format([string]::Concat($formattedConnStr, ";ServicePrincipalSecret={0}"), $ServicePrincipalSecret)
     }
-    
-    $formattedConnStr = [string]::Format([string]::Concat($formattedConnStr, ";BaseUri={0}"), $uris)
+
+	#Uris
+	if([string]::IsNullOrEmpty($ResourceManagementUri) -eq $false)
+    {
+        $formattedConnStr = [string]::Format([string]::Concat($formattedConnStr, ";ResourceManagementUri={0}"), $ResourceManagementUri)
+    }
+	
+	if([string]::IsNullOrEmpty($GraphUri) -eq $false)
+    {
+        $formattedConnStr = [string]::Format([string]::Concat($formattedConnStr, ";GraphUri={0}"), $GraphUri)
+    }
+	
+	if([string]::IsNullOrEmpty($AADAuthUri) -eq $false)
+    {
+        $formattedConnStr = [string]::Format([string]::Concat($formattedConnStr, ";AADAuthUri={0}"), $AADAuthUri)
+    }
+	
+	if([string]::IsNullOrEmpty($AADTokenAudienceUri) -eq $false)
+    {
+        $formattedConnStr = [string]::Format([string]::Concat($formattedConnStr, ";AADTokenAudienceUri={0}"), $AADTokenAudienceUri)
+    }
+	
+	if([string]::IsNullOrEmpty($GraphTokenAudienceUri) -eq $false)
+    {
+        $formattedConnStr = [string]::Format([string]::Concat($formattedConnStr, ";GraphTokenAudienceUri={0}"), $GraphTokenAudienceUri)
+    }
+	
+	if([string]::IsNullOrEmpty($IbizaPortalUri) -eq $false)
+    {
+        $formattedConnStr = [string]::Format([string]::Concat($formattedConnStr, ";IbizaPortalUri={0}"), $IbizaPortalUri)
+    }
+	
+	if([string]::IsNullOrEmpty($ServiceManagementUri) -eq $false)
+    {
+        $formattedConnStr = [string]::Format([string]::Concat($formattedConnStr, ";ServiceManagementUri={0}"), $ServiceManagementUri)
+    }
+	
+	if([string]::IsNullOrEmpty($RdfePortalUri) -eq $false)
+    {
+        $formattedConnStr = [string]::Format([string]::Concat($formattedConnStr, ";RdfePortalUri={0}"), $RdfePortalUri)
+    }
+	
+	if([string]::IsNullOrEmpty($GalleryUri) -eq $false)
+    {
+        $formattedConnStr = [string]::Format([string]::Concat($formattedConnStr, ";GalleryUri={0}"), $GalleryUri)
+    }
+	
+	if([string]::IsNullOrEmpty($DataLakeStoreServiceUri) -eq $false)
+    {
+        $formattedConnStr = [string]::Format([string]::Concat($formattedConnStr, ";DataLakeStoreServiceUri={0}"), $DataLakeStoreServiceUri)
+    }
+	
+	if([string]::IsNullOrEmpty($DataLakeAnalyticsJobAndCatalogServiceUri) -eq $false)
+    {
+        $formattedConnStr = [string]::Format([string]::Concat($formattedConnStr, ";DataLakeAnalyticsJobAndCatalogServiceUri={0}"), $DataLakeAnalyticsJobAndCatalogServiceUri)
+    }
 
     Write-Host "Below connection string is ready to be set"
-    Print-ConnectionString $UserId $Password $SubscriptionId $TenantId $ServicePrincipal $ServicePrincipalSecret $RecordMode $TargetEnvironment $uris
+    Print-ConnectionString $UserId $SubscriptionId $TenantId $ServicePrincipal $ServicePrincipalSecret $RecordMode $TargetEnvironment
 
     #Set connection string to Environment variable
     $env:TEST_CSM_ORGID_AUTHENTICATION=$formattedConnStr
+    $env:AZURE_TEST_MODE=$RecordMode
     Write-Host ""
 
     # Retrieve the environment variable
@@ -258,19 +311,13 @@ This cmdlet will only prompt you for Subscription and Tenant information, rest a
     Write-Host "Please visit https://github.com/Azure/azure-powershell/blob/dev/documentation/Using-Azure-TestFramework.md" -ForegroundColor Yellow
 }
 
-Function Print-ConnectionString([string]$uid, [string]$pwd, [string]$subId, [string]$aadTenant, [string]$spn, [string]$spnSecret, [string]$recordMode, [string]$targetEnvironment, [string]$uris)
+Function Print-ConnectionString([string]$uid, [string]$subId, [string]$aadTenant, [string]$spn, [string]$spnSecret, [string]$recordMode, [string]$targetEnvironment)
 {
 
     if([string]::IsNullOrEmpty($uid) -eq $false)
     {
         Write-Host "UserId=" -ForegroundColor Green -NoNewline
         Write-Host $uid";" -NoNewline 
-    }
-
-    if([string]::IsNullOrEmpty($pwd) -eq $false)
-    {
-        Write-Host "Password=" -ForegroundColor Green -NoNewline
-        Write-Host $pwd";" -NoNewline 
     }
 
     if([string]::IsNullOrEmpty($subId) -eq $false)
@@ -307,12 +354,6 @@ Function Print-ConnectionString([string]$uid, [string]$pwd, [string]$subId, [str
     {
         Write-Host "Environment=" -ForegroundColor Green -NoNewline
         Write-Host $targetEnvironment";" -NoNewline
-    }
-
-    if([string]::IsNullOrEmpty($uris) -eq $false)
-    {
-        Write-Host "BaseUri=" -ForegroundColor Green -NoNewline
-        Write-Host $uris -NoNewline
     }
 
     Write-Host ""
