@@ -18,20 +18,18 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ApplicationInsights
 {
-    [Cmdlet(VerbsCommon.Get, ApplicationInsightsNounStr), OutputType(typeof(PSApplicationInsightsComponent))]
+    [Cmdlet(VerbsCommon.Get, ApplicationInsightsNounStr, DefaultParameterSetName = ResourceGroupParameterSet), OutputType(typeof(PSApplicationInsightsComponent))]
     public class GetApplicationInsightsCommand : ApplicationInsightsBaseCmdlet
     {
         [Parameter(
             Position = 0,
             Mandatory = false,
             ParameterSetName = ResourceGroupParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Resource Group Name.")]
         [Parameter(
             Position = 0,
             Mandatory = true,
             ParameterSetName = ComponentNameParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Resource Group Name.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
@@ -39,7 +37,6 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
         [Parameter(
             Position = 1,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = ComponentNameParameterSet,
             HelpMessage = "Application Insights Resource Name.")]
         [Alias(ApplicationInsightsComponentNameAlias, ComponentNameAlias)]
@@ -57,16 +54,14 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = ComponentNameParameterSet,
             HelpMessage = "If specified, it will get back pricing plan of the application insights component.")]
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = ResourceIdParameterSet,
             HelpMessage = "If specified, it will get back pricing plan of the application insights component.")]
-        [Alias("IncludeDailyCap", "IncludeDailyCapStatus")]
-        public SwitchParameter IncludePricingPlan { get; set; }
+        [Alias("IncludeDailyCap", "IncludeDailyCapStatus", "IncludePricingPlan")]
+        public SwitchParameter Full { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -99,7 +94,7 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
                                         this.Name)
                                     .GetAwaiter()
                                     .GetResult();
-                if (IncludePricingPlan)
+                if (this.Full)
                 {
                     var pricingPlanResponse = this.AppInsightsManagementClient
                                                     .ComponentCurrentBillingFeatures

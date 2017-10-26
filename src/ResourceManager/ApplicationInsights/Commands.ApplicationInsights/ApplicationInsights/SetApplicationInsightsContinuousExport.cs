@@ -19,7 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ApplicationInsights
 {
-    [Cmdlet(VerbsCommon.Set, ApplicationInsightsContinuousExportNounStr), OutputType(typeof(PSExportConfiguration))]
+    [Cmdlet(VerbsCommon.Set, ApplicationInsightsContinuousExportNounStr, DefaultParameterSetName = ComponentNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSExportConfiguration))]
     public class SetApplicationInsightsContinuousExportCommand : ApplicationInsightsBaseCmdlet
     {
         [Parameter(
@@ -44,7 +44,6 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
             Position = 0,
             Mandatory = true,
             ParameterSetName = ComponentNameParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Resource Group Name.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
@@ -53,25 +52,20 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
             Position = 1,
             Mandatory = true,
             ParameterSetName = ComponentNameParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Application Insights Component Name.")]
         [Alias(ApplicationInsightsComponentNameAlias, ComponentNameAlias)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(
-            Position = 2,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Application Insights Continuous Export Id.")]
         [ValidateNotNullOrEmpty]
         public string ExportId { get; set; }
 
         [Parameter(
-            Position = 3,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Document types that need exported.")]        
+            HelpMessage = "Document types that need exported.")]
         [ValidateSet(ApplicationInsightsBaseCmdlet.DocumentTypes.Requests,
             ApplicationInsightsBaseCmdlet.DocumentTypes.Exceptions,
             ApplicationInsightsBaseCmdlet.DocumentTypes.Event,
@@ -86,47 +80,28 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
         public string[] DocumentType { get; set; }
 
         [Parameter(
-            Position = 4,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Destination Storage Account Id.")]
         [ValidateNotNullOrEmpty]
         public string StorageAccountId { get; set; }
 
         [Parameter(
-            Position = 5,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Destination Storage Location Id.")]
         [ValidateNotNullOrEmpty]
         public string StorageLocationId { get; set; }
 
         [Parameter(
-            Position = 6,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Destination Storage SAS uri.")]
         [ValidateNotNullOrEmpty]
         public string StorageSASUri { get; set; }
 
         [Parameter(
-            Position = 7,
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Enable continuous export or not.")]
+            HelpMessage = "Disable continuous export or not.")]
         [PSDefaultValue(Value = true)]
-        public bool IsEnabled
-        {
-            get
-            {
-                return this.isEnabled;
-            }
-            set
-            {
-                this.isEnabled = value;
-            }
-        }
-        private bool isEnabled = true;
+        public SwitchParameter DisableConfiguration { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -145,7 +120,14 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
             }
 
             ApplicationInsightsComponentExportRequest exportRequest = new ApplicationInsightsComponentExportRequest();
-            exportRequest.IsEnabled = this.IsEnabled.ToString().ToLowerInvariant();
+            if (this.DisableConfiguration)
+            {
+                exportRequest.IsEnabled = "false";
+            }
+            else
+            {
+                exportRequest.IsEnabled = "true";
+            }
             exportRequest.DestinationAccountId = this.StorageAccountId;
             exportRequest.DestinationStorageSubscriptionId = ParseSubscriptionFromId(this.StorageAccountId);
             exportRequest.DestinationAddress = this.StorageSASUri;
@@ -153,17 +135,20 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
             exportRequest.DestinationType = "Blob";
             exportRequest.RecordTypes = string.Join(",", ConvertToRecordType(this.DocumentType));
 
-            var exportResponse = this.AppInsightsManagementClient
-                                        .ExportConfigurations
-                                        .UpdateWithHttpMessagesAsync(
-                                            this.ResourceGroupName,
-                                            this.Name,
-                                            this.ExportId,
-                                            exportRequest)
-                                        .GetAwaiter()
-                                        .GetResult();
+            if (this.ShouldProcess(this.Name, $"Update Application Insights Continuous Export {this.ExportId}"))
+            {
+                var exportResponse = this.AppInsightsManagementClient
+                                            .ExportConfigurations
+                                            .UpdateWithHttpMessagesAsync(
+                                                this.ResourceGroupName,
+                                                this.Name,
+                                                this.ExportId,
+                                                exportRequest)
+                                            .GetAwaiter()
+                                            .GetResult();
 
-            WriteComponentExportConfiguration(exportResponse.Body);
+                WriteComponentExportConfiguration(exportResponse.Body);
+            }
         }
     }
 }

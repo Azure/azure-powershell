@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
             {
                 List<PSApiKey> output = new List<PSApiKey>();
                 apiKeys.ForEach(e => output.Add(new PSApiKeyTableView(e)));
-                WriteObject(output);
+                WriteObject(output, true);
             }
         }
 
@@ -188,7 +188,7 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
             {
                 List<PSExportConfiguration> output = new List<PSExportConfiguration>();
                 exports.ForEach(e => output.Add(new PSExportConfigurationTableView(e)));
-                WriteObject(output);
+                WriteObject(output, true);
             }
         }
 

@@ -18,7 +18,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ApplicationInsights
 {
-    [Cmdlet(VerbsCommon.Get, ApplicationInsightsApiKeyNounStr), OutputType(typeof(PSApiKey))]
+    [Cmdlet(VerbsCommon.Get, ApplicationInsightsApiKeyNounStr, DefaultParameterSetName = ComponentNameParameterSet), OutputType(typeof(PSApiKey))]
     public class GetApplicationInsightsApiKeyCommand : ApplicationInsightsBaseCmdlet
     {
         [Parameter(
@@ -43,7 +43,6 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
             Position = 0,
             Mandatory = true,
             ParameterSetName = ComponentNameParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Resource Group Name.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
@@ -52,7 +51,6 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
             Position = 1,
             Mandatory = true,
             ParameterSetName = ComponentNameParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Application Insights Component Name.")]
         [Alias(ApplicationInsightsComponentNameAlias, ComponentNameAlias)]
         [ValidateNotNullOrEmpty]
@@ -61,7 +59,6 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
         [Parameter(
             Position = 2,
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Application Insights Api Key Id.")]
         [ValidateNotNullOrEmpty]
         public string ApiKeyId { get; set; }

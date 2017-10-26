@@ -18,37 +18,24 @@
         - Additional information about change #1
 -->
 ## Current Release
+    Add commands to get/create/remove applicaiton insights resource
+        Get-AzureRmApplicationInsights 
+        New-AzureRmApplicationInsights
+        Remove-AzureRmApplicationInsights
 
-## Version 3.2.0
+    Add commands to get/update pricing/daily cap of applicaiton insights resource        
+        Get-AzureRmApplicationInsights -IncludeDailyCap
+        Set-AzureRmApplicationInsightsPricingPlan
+        Set-AzureRmApplicationInsightsDailyCap
 
-## Version 3.1.0
-* Add AssignIdentity setting support to resource mode storage account cmdlets
-    - New-AzureRmStorageAccount
-    - Set-AzureRmStorageAccount
-* Add Customer Key Support to resource mode storage account cmdlets
-    - Set-AzureRmStorageAccount
-    - New-AzureRmStorageAccountEncryptionKeySource
+    Add commands to get/create/update/remove continuous export of applicaiton insights resource
+		Get-AzureRmApplicationInsightsContinuousExport
+		Set-AzureRmApplicationInsightsContinuousExport
+		New-AzureRmApplicationInsightsContinuousExport
+		Remove-AzureRmApplicationInsightsContinuousExport
+    
+    Add commands to get/create/remove api keys of applicaiton insights resoruce
+		Get-AzureRmApplicationInsightsApiKey
+		New-AzureRmApplicationInsightsApiKey
+		Remove-AzureRmApplicationInsightsApiKey
 
-## Version 3.0.2
-
-## Version 3.0.0
-* Upgrade SRP SDK to 6.3.0
-* New/Set-AzureRmStorageAccount:Add a new parameter to support EnableHttpsTrafficOnly
-* New/Set/Get-AzureRmStorageAccount: Returned Storage Account contains a new attribute EnableHttpsTrafficOnly
-
-## Version 2.8.0
-
-## Version 2.7.0
-
-## Version 2.6.0
-* Upgrade Microsoft.Azure.Management.Storage to version 6.1.0-preview
-* Add File Encryption features support to resource mode storage account cmdlets
-    - New-AzureRmStorageAccount
-    - Set-AzureRmStorageAccount
-
-
-## Version 2.5.0
-
-## Version 2.4.0
-
-## Version 2.3.0

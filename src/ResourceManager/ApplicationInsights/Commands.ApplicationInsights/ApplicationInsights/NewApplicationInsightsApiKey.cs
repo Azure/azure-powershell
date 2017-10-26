@@ -20,7 +20,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ApplicationInsights
 {
-    [Cmdlet(VerbsCommon.New, ApplicationInsightsApiKeyNounStr), OutputType(typeof(PSApiKey))]
+    [Cmdlet(VerbsCommon.New, ApplicationInsightsApiKeyNounStr, DefaultParameterSetName = ComponentNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSApiKey))]
     public class NewAzureApplicationInsightsApiKeyCommand : ApplicationInsightsBaseCmdlet
     {
         [Parameter(
@@ -45,7 +45,6 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
             Position = 0,
             Mandatory = true,
             ParameterSetName = ComponentNameParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Resource Group Name.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
@@ -54,7 +53,6 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
             Position = 1,
             Mandatory = true,
             ParameterSetName = ComponentNameParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Component Name.")]
         [Alias(ApplicationInsightsComponentNameAlias, ComponentNameAlias)]
         [ValidateNotNullOrEmpty]
@@ -63,7 +61,6 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
         [Parameter(
             Position = 2,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Permissions that API key allow apps to do.")]
         [ValidateSet(PermissionType.ReadTelemetry,
             PermissionType.WriteAnnotations,
@@ -74,7 +71,6 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
         [Parameter(
             Position = 3,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Description to help identify this API key.")]
         [ValidateNotNullOrEmpty]
         public string Description { get; set; }
@@ -102,16 +98,19 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
             apiKeyRequest.LinkedReadProperties = access.Item1;
             apiKeyRequest.LinkedWriteProperties = access.Item2;
 
-            var apiKeyResponse = this.AppInsightsManagementClient
-                                                    .APIKeys
-                                                    .CreateWithHttpMessagesAsync(
-                                                        this.ResourceGroupName,
-                                                        this.Name,
-                                                        apiKeyRequest)
-                                                    .GetAwaiter()
-                                                    .GetResult();
+            if (this.ShouldProcess(this.Name, $"Create Api Key '{this.Description}'"))
+            {
+                var apiKeyResponse = this.AppInsightsManagementClient
+                                                        .APIKeys
+                                                        .CreateWithHttpMessagesAsync(
+                                                            this.ResourceGroupName,
+                                                            this.Name,
+                                                            apiKeyRequest)
+                                                        .GetAwaiter()
+                                                        .GetResult();
 
-            WriteComponentApiKey(apiKeyResponse.Body);
+                WriteComponentApiKey(apiKeyResponse.Body);
+            }
         }
     }
 }

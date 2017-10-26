@@ -21,13 +21,12 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ApplicationInsights
 {
-    [Cmdlet(VerbsCommon.New, ApplicationInsightsNounStr), OutputType(typeof(PSApplicationInsightsComponent))]
+    [Cmdlet(VerbsCommon.New, ApplicationInsightsNounStr, SupportsShouldProcess = true), OutputType(typeof(PSApplicationInsightsComponent))]
     public class NewAzureApplicationInsights : ApplicationInsightsBaseCmdlet
     {
         [Parameter(
             Position = 0,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Resource Group Name.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
@@ -35,7 +34,6 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
         [Parameter(
             Position = 1,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Application Insights Resource Name.")]
         [Alias(ApplicationInsightsComponentNameAlias, ComponentNameAlias)]
         [ValidateNotNullOrEmpty]
@@ -44,14 +42,12 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
         [Parameter(
             Position = 2,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Application Insights Resource Location.")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Application kind.")]
         [Alias(ApplicationKindAlias)]
         [ValidateSet(ApplicationType.WEB,
@@ -59,7 +55,7 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
             ApplicationType.NodeJs,
             ApplicationType.JAVA,
             IgnoreCase = true)]
-        [PSDefaultValue(Value =ApplicationType.WEB)]
+        [PSDefaultValue(Value = ApplicationType.WEB)]
         public string Kind
         {
             get
@@ -113,15 +109,18 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
                 RequestSource = "AzurePowerShell",
             };
 
-            var newComponentResponse = this.AppInsightsManagementClient
-                                                .Components
-                                                .CreateOrUpdateWithHttpMessagesAsync(
-                                                    ResourceGroupName,
-                                                    Name,
-                                                    newComponentProperties)
-                                                .Result;
+            if (this.ShouldProcess(this.ResourceGroupName, $"Create Application Insights Component {this.Name}"))
+            {
+                var newComponentResponse = this.AppInsightsManagementClient
+                                                    .Components
+                                                    .CreateOrUpdateWithHttpMessagesAsync(
+                                                        ResourceGroupName,
+                                                        Name,
+                                                        newComponentProperties)
+                                                    .Result;
 
-            this.WriteComponent(newComponentResponse.Body);
+                this.WriteComponent(newComponentResponse.Body);
+            }
         }
     }
 }
