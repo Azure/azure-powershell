@@ -297,7 +297,9 @@ Accept wildcard characters: False
 ```
 
 ### -EncryptFormatAll
-Encrypt-Format all data drives that are not already encrypted```yaml
+Encrypt-Format all data drives that are not already encrypted
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
@@ -310,7 +312,9 @@ Accept wildcard characters: False
 ```
 
 ### -ExtensionPublisherName
-The extension publisher name. Specify this parameter only to override the default value of "Microsoft.Azure.Security".```yaml
+The extension publisher name. Specify this parameter only to override the default value of "Microsoft.Azure.Security".
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
@@ -323,7 +327,9 @@ Accept wildcard characters: False
 ```
 
 ### -ExtensionType
-The extension type. Specify this parameter to override its default value of "AzureDiskEncryption" for Windows VMs and "AzureDiskEncryptionForLinux" for Linux VMs.```yaml
+The extension type. Specify this parameter to override its default value of "AzureDiskEncryption" for Windows VMs and "AzureDiskEncryptionForLinux" for Linux VMs.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
