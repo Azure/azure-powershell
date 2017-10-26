@@ -13,8 +13,9 @@ namespace Microsoft.Azure.Experiments.Network
         {
         }
 
-        public override Task<VirtualNetwork> GetAsync(Context context)
+        public override Task<VirtualNetwork> GetAsync(GetContext context)
             => context
+                .Context
                 .CreateNetwork()
                 .VirtualNetworks
                 .GetAsync(ResourceGroup.Name, Name);

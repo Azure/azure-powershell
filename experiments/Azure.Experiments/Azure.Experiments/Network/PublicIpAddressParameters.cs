@@ -14,8 +14,9 @@ namespace Microsoft.Azure.Experiments.Network
         {
         }
 
-        public override Task<PublicIPAddress> GetAsync(Context context)
+        public override Task<PublicIPAddress> GetAsync(GetContext context)
             => context
+                .Context
                 .CreateNetwork()
                 .PublicIPAddresses
                 .GetAsync(ResourceGroup.Name, Name);

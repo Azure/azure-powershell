@@ -27,6 +27,6 @@ namespace Microsoft.Azure.Experiments
         {
         }
 
-        public abstract Task<T> GetAsync(Context context);
+        public abstract Task<T> GetAsync(GetContext context);
     }
 }

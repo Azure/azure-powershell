@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.Azure.Management.Network.Models;
+using System.Linq;
 
 namespace Microsoft.Azure.Experiments.Network
 {
@@ -12,6 +13,12 @@ namespace Microsoft.Azure.Experiments.Network
             : base(name, new[] { virtualNetwork })
         {
             VirtualNetwork = virtualNetwork;
+        }
+
+        public override async Task<Subnet> GetAsync(GetContext context)
+        {
+            var virtualNetwork = await context.GetOrNullAsync(VirtualNetwork);
+            return virtualNetwork?.Subnets.FirstOrDefault(s => s.Name == Name);
         }
     }
 }

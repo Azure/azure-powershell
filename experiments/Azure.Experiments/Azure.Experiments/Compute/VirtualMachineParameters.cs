@@ -18,8 +18,9 @@ namespace Microsoft.Azure.Experiments.Compute
             Ni = ni;
         }
 
-        public override Task<VirtualMachine> GetAsync(Context context)
+        public override Task<VirtualMachine> GetAsync(GetContext context)
             => context
+                .Context
                 .CreateCompute()
                 .VirtualMachines
                 .GetAsync(ResourceGroup.Name, Name);
