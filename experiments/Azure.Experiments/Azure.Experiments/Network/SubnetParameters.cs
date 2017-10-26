@@ -1,4 +1,5 @@
-﻿using Microsoft.Azure.Management.Network.Models;
+﻿using System.Threading.Tasks;
+using Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Experiments.Network
 {

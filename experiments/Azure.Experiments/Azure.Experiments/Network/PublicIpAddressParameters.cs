@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.Azure.Management.Network.Models;
+using Microsoft.Azure.Management.Network;
 
 namespace Microsoft.Azure.Experiments.Network
 {
@@ -11,5 +13,11 @@ namespace Microsoft.Azure.Experiments.Network
             : base(name, resourceGroup, NoDependencies)
         {
         }
+
+        public override Task<PublicIPAddress> GetAsync(Context context)
+            => context
+                .CreateNetwork()
+                .PublicIPAddresses
+                .GetAsync(ResourceGroup.Name, Name);
     }
 }

@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.Azure.Management.Network.Models;
+using Microsoft.Azure.Management.Network;
 
 namespace Microsoft.Azure.Experiments.Network
 {
@@ -24,5 +26,11 @@ namespace Microsoft.Azure.Experiments.Network
             Nsg = nsg;
             Pia = pia;
         }
+
+        public override Task<NetworkInterface> GetAsync(Context context)
+            => context
+                .CreateNetwork()
+                .NetworkInterfaces
+                .GetAsync(ResourceGroup.Name, Name);
     }
 }

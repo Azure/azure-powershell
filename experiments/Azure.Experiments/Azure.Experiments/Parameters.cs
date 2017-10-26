@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Experiments
 {
@@ -25,5 +26,7 @@ namespace Microsoft.Azure.Experiments
             : base(name, parameters)
         {
         }
+
+        public abstract Task<T> GetAsync(Context context);
     }
 }

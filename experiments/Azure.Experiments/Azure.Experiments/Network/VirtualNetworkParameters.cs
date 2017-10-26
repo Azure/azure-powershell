@@ -1,4 +1,6 @@
-﻿using Microsoft.Azure.Management.Network.Models;
+﻿using System.Threading.Tasks;
+using Microsoft.Azure.Management.Network.Models;
+using Microsoft.Azure.Management.Network;
 
 namespace Microsoft.Azure.Experiments.Network
 {
@@ -10,5 +12,11 @@ namespace Microsoft.Azure.Experiments.Network
             : base(name, resourceGroup, NoDependencies)
         {
         }
+
+        public override Task<VirtualNetwork> GetAsync(Context context)
+            => context
+                .CreateNetwork()
+                .VirtualNetworks
+                .GetAsync(ResourceGroup.Name, Name);
     }
 }
