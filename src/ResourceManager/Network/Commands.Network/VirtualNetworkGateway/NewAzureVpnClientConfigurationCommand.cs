@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Commands.Network
                     }
                 }
 
-                var vnetVpnClientParametersModel = Mapper.Map<MNM.VpnClientParameters>(vpnClientParams);
+                var vnetVpnClientParametersModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VpnClientParameters>(vpnClientParams);
 
                 // There may be a required Json serialize for the package URL to conform to REST-API
                 // The try-catch below handles the case till the change is made and deployed to PROD

@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,12 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using AutoMapper;
+using Microsoft.Azure.Management.ContainerInstance.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Preview
+namespace Microsoft.Azure.Commands.ContainerInstance.Models
 {
-    public class ServiceManagementPreviewProfile : Profile
+    public class ContainerInstanceAutoMapperProfile : AutoMapper.Profile
     {
         private static IMapper _mapper = null;
 
@@ -39,18 +44,22 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Preview
             }
         }
 
-        public static void Initialize()
+        public override string ProfileName
         {
-            var config = new MapperConfiguration(cfg => {
-                cfg.AddProfile<ServiceManagementPreviewProfile>();
+            get { return "ContainerInstanceAutoMapperProfile"; }
+        }
+
+        private static void Initialize()
+        {
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<PSContainerGroup, PSContainerGroupList>();
+                cfg.CreateMap<Port, PSPort>();
+                cfg.CreateMap<ContainerEvent, PSContainerEvent>();
+                cfg.CreateMap<ContainerState, PSContainerState>();
             });
 
             _mapper = config.CreateMapper();
-        }
-
-        public override string ProfileName
-        {
-            get { return "ServiceManagementPreviewProfile"; }
         }
     }
 }

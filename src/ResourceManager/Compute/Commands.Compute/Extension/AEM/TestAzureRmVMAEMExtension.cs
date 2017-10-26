@@ -591,7 +591,7 @@ namespace Microsoft.Azure.Commands.Compute
 
                 this._Helper.WriteVerbose("TestAzureRmVMAEMExtension Done (" + rootResult.Result + ")");
 
-                var result = Mapper.Map<AEMTestResult>(rootResult);
+                var result = ComputeAutoMapperProfile.Mapper.Map<AEMTestResult>(rootResult);
                 WriteObject(result);
             });
         }
