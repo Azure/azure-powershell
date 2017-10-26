@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Network
             vnetGatewayConnectionSharedKey.KeyLength = (int)KeyLength;
 
             // Map to the sdk object
-            var vnetGatewayConnectionSharedKeyModel = Mapper.Map<MNM.ConnectionResetSharedKey>(vnetGatewayConnectionSharedKey);
+            var vnetGatewayConnectionSharedKeyModel = NetworkResourceManagerProfile.Mapper.Map<MNM.ConnectionResetSharedKey>(vnetGatewayConnectionSharedKey);
 
             // Execute the Set VirtualNetworkConnectionSharedKey call
             this.VirtualNetworkGatewayConnectionClient.ResetSharedKey(this.ResourceGroupName, this.Name, vnetGatewayConnectionSharedKeyModel);

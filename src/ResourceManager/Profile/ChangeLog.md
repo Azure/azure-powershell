@@ -18,6 +18,16 @@
         - Additional information about change #1
 -->
 ## Current Release
+- Set-AzureRmDefault
+    - Use this cmdlet to set a default resource group.  This will make the -ResourceGroup parameter optional for some cmdlets, and will use the default when a resource group is not specified
+    - ```Set-AzureRmDefault -ResourceGroupName "ExampleResourceGroup"```
+    - If resource group specified exists in the subscription, this resource group will be set to default.  Otherwise, the resource group will be created and then set to default.
+- Get-AzureRmDefault
+    - Use this cmdlet to get the current default resource group (and other defaults in the future).
+    - ```Get-AzureRmDefault -ResourceGroup```
+- Clear-AzureRmDefault
+    - Use this cmdlet to remove the current default resource group
+    - ```Clear-AzureRmDefault -ResourceGroup```
 
 ## Version 3.4.1
 * LocationCompleterAttribute added and available for cmdlets which use the -Location parameter

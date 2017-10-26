@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.Compute
                     var op = this.VirtualMachineClient.GeneralizeWithHttpMessagesAsync(
                         this.ResourceGroupName,
                         this.Name).GetAwaiter().GetResult();
-                    var result = Mapper.Map<PSComputeLongRunningOperation>(op);
+                    var result = ComputeAutoMapperProfile.Mapper.Map<PSComputeLongRunningOperation>(op);
                     WriteObject(result);
                 });
             }
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Commands.Compute
                     var op = this.VirtualMachineClient.RedeployWithHttpMessagesAsync(
                         this.ResourceGroupName,
                         this.Name).GetAwaiter().GetResult();
-                    var result = Mapper.Map<PSComputeLongRunningOperation>(op);
+                    var result = ComputeAutoMapperProfile.Mapper.Map<PSComputeLongRunningOperation>(op);
                     WriteObject(result);
                 });
             }
