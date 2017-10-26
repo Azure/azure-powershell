@@ -58,6 +58,9 @@ RequiredAssemblies = '.\AutoMapper.dll',
                      '.\Microsoft.Azure.Management.Compute.dll',
                      '.\Microsoft.Azure.Management.KeyVault.dll',
                      '.\Microsoft.Azure.Management.Storage.dll',
+                     '.\Microsoft.Data.Edm.dll',
+                     '.\Microsoft.Data.OData.dll',
+                     '.\Microsoft.Data.Services.Client.dll',
                      '.\Microsoft.WindowsAzure.Commands.Sync.dll',
                      '.\Microsoft.WindowsAzure.Commands.Tools.Vhd.dll',
                      '.\Microsoft.WindowsAzure.Storage.dll'
@@ -213,7 +216,7 @@ PrivateData = @{
         ReleaseNotes = 'Updated for common code changes'
 
         # External dependent modules of this module
-        # ExternalModuleDependencies = 'AzureRM.Profile'
+        # ExternalModuleDependencies = ''
 
     } # End of PSData hashtable
     
