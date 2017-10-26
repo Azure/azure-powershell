@@ -289,6 +289,23 @@
       </CustomControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.Commands.Compute.Automation.Models.PSRollingUpgradeStatusInfo</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Compute.Automation.Models.PSRollingUpgradeStatusInfo</TypeName>
+      </ViewSelectedBy>
+      <CustomControl>
+        <CustomEntries>
+          <CustomEntry>
+            <CustomItem>
+              <ExpressionBinding>
+                <ScriptBlock>[Microsoft.Azure.Commands.Compute.Automation.ComputeAutomationBaseCmdlet]::FormatObject($_)</ScriptBlock>
+              </ExpressionBinding>
+            </CustomItem>
+          </CustomEntry>
+        </CustomEntries>
+      </CustomControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet</TypeName>
@@ -660,6 +677,23 @@
       <Name>Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineCaptureResult</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineCaptureResult</TypeName>
+      </ViewSelectedBy>
+      <CustomControl>
+        <CustomEntries>
+          <CustomEntry>
+            <CustomItem>
+              <ExpressionBinding>
+                <ScriptBlock>[Microsoft.Azure.Commands.Compute.Automation.ComputeAutomationBaseCmdlet]::FormatObject($_)</ScriptBlock>
+              </ExpressionBinding>
+            </CustomItem>
+          </CustomEntry>
+        </CustomEntries>
+      </CustomControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineInstanceView</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineInstanceView</TypeName>
       </ViewSelectedBy>
       <CustomControl>
         <CustomEntries>

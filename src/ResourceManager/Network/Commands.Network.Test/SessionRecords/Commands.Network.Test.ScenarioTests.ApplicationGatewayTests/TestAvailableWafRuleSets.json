@@ -1,8 +1,8 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/1c8e7f00-9820-451e-97f0-c47bcb47b7de/providers/Microsoft.Network/applicationGatewayAvailableWafRuleSets?api-version=2017-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM4ZTdmMDAtOTgyMC00NTFlLTk3ZjAtYzQ3YmNiNDdiN2RlL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9hcHBsaWNhdGlvbkdhdGV3YXlBdmFpbGFibGVXYWZSdWxlU2V0cz9hcGktdmVyc2lvbj0yMDE3LTA2LTAx",
+      "RequestUri": "/subscriptions/1c8e7f00-9820-451e-97f0-c47bcb47b7de/providers/Microsoft.Network/applicationGatewayAvailableWafRuleSets?api-version=2017-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM4ZTdmMDAtOTgyMC00NTFlLTk3ZjAtYzQ3YmNiNDdiN2RlL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9hcHBsaWNhdGlvbkdhdGV3YXlBdmFpbGFibGVXYWZSdWxlU2V0cz9hcGktdmVyc2lvbj0yMDE3LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {

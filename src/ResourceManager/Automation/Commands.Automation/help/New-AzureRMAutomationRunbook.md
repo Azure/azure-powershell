@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
 ms.assetid: B6E35D4D-B2C1-4527-94A6-E7E3488F510B
-online version:
+online version: 
 schema: 2.0.0
 ---
 
@@ -39,7 +39,7 @@ Specifies the name of the Automation account in which this cmdlet creates a runb
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 1
@@ -54,7 +54,7 @@ Specifies a description for the runbook.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -69,7 +69,7 @@ Specifies whether the runbook logs progress.
 ```yaml
 Type: Boolean
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -84,7 +84,7 @@ Specifies whether logging includes detailed information.
 ```yaml
 Type: Boolean
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -114,7 +114,7 @@ Specifies the name of the resource group for which this cmdlet creates a runbook
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -156,7 +156,7 @@ It is equivalent to GraphicalPowerShellWorkflow.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 Accepted values: PowerShell, GraphicalPowerShell, PowerShellWorkflow, GraphicalPowerShellWorkflow, Graph
 
 Required: True

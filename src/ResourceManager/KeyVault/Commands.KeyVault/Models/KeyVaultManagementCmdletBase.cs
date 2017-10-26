@@ -383,7 +383,8 @@ namespace Microsoft.Azure.Commands.KeyVault
             CertPerms.Listissuers,
             CertPerms.Managecontacts,
             CertPerms.Manageissuers,
-            CertPerms.Setissuers
+            CertPerms.Setissuers,
+            CertPerms.Recover
         };
 
         protected readonly string[] DefaultPermissionsToStorage = 

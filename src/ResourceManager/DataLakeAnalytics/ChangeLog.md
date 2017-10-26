@@ -18,6 +18,20 @@
         - Additional information about change #1
 -->
 ## Current Release
+* [BREAKING CHANGE] Removed the Obsolete Properties fields in PSDataLakeAnalyticsAccount.cs and its assoicated files
+* Changed one of the two OutputTypes of Get-AzureRmDataLakeAnalyticsAccount
+    - List<DataLakeAnalyticsAccount> to List<PSDataLakeAnalyticsAccountBasic>
+    - The properties of PSDataLakeAnalyticsAccountBasic is a strict subset of the properties of DataLakeAnalyticsAccount
+    - The additional properties that are in DataLakeAnalyticsAccount are not returned by the service.  Therefore, this change is to reflect this accurately. These additional properties are still in PSDataLakeAnalyticsAccountBasic, but they are tagged as Obsolete.
+* Changed one of the two OutputTypes of Get-AzureRmDataLakeAnalyticsJob
+    - List<JobInformation> to List<PSJobInformationBasic>
+    - The properties of PSJobInformationBasic is a strict subset of the properties of JobInformation
+    - The additional properties that are in JobInformation are not returned by the service.  Therefore, this change is to reflect this accurately. These additional properties are still in PSJobInformationBasic, but they are tagged as Obsolete.
+* Updated the cmdlet logic of Submit-AzureRmDataLakeAnalyticsJob because SubmitJob and BuildJob now require an explicit parameter object rather than the generic JobInformation object
+
+## Version 3.4.1
+
+## Version 3.4.0
 
 ## Version 3.3.1
 

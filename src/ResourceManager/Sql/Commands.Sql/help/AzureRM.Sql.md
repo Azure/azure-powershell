@@ -24,7 +24,7 @@ Gets SQL Database capabilities for the current subscription.
 Gets one or more databases.
 
 ### [Get-AzureRmSqlDatabaseActivity](Get-AzureRmSqlDatabaseActivity.md)
-Gets the status of moving elastic databases.
+Gets the status of database operations.
 
 ### [Get-AzureRmSqlDatabaseAdvisor](Get-AzureRmSqlDatabaseAdvisor.md)
 Gets one or more Advisors for an Azure SQL Database.
@@ -323,6 +323,9 @@ Starts the workflow that runs a recommended index operation.
 ### [Start-AzureRmSqlServerUpgrade](Start-AzureRmSqlServerUpgrade.md)
 Starts the upgrade of a SQL Database server.
 
+### [Stop-AzureRmSqlDatabaseActivity](Stop-AzureRmSqlDatabaseActivity.md)
+Cancels the asynchronous operation on the database.
+
 ### [Stop-AzureRmSqlDatabaseExecuteIndexRecommendation](Stop-AzureRmSqlDatabaseExecuteIndexRecommendation.md)
 Stops the workflow that runs a recommended index operation.
 
@@ -385,3 +388,6 @@ Removes an Azure SQL Sync Agent.
 
 ### [Get-AzureRmSqlSyncAgentLinkedDatabase](Get-AzureRmSqlSyncAgentLinkedDatabase.md)
 Returns information about SQL Server databases linked by a sync agent.
+
+### [Stop-AzureRmSqlDatabaseActivity](Stop-AzureRmSqlDatabaseActivity.md)
+Cancels the asynchronous operation on the database.

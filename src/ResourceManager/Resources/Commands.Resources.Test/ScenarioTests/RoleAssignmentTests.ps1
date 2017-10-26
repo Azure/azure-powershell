@@ -19,7 +19,6 @@ Tests retrieval of classic administrators
 function Test-RaClassicAdmins
 {
 	# Setup
-	Add-Type -Path ".\\Microsoft.Azure.Commands.Resources.dll"
 	$subscription = Get-AzureRmSubscription
 
 	# Test
@@ -37,8 +36,6 @@ Tests verifies negative scenarios for RoleAssignments
 function Test-RaNegativeScenarios
 {
     # Setup
-     Add-Type -Path ".\\Microsoft.Azure.Commands.Resources.dll"
-
     $subscription = Get-AzureRmSubscription
 
     # Bad OID returns zero role assignments
@@ -61,13 +58,38 @@ function Test-RaNegativeScenarios
 
 <#
 .SYNOPSIS
+Tests verifies delete scenario for RoleAssignments by using PSRoleAssignment Object
+#>
+function Test-RaDeleteByPSRoleAssignment
+{
+    # Setup
+    $definitionName = 'Reader'
+    $users = Get-AzureRmADUser | Select-Object -First 1 -Wait
+    $subscription = Get-AzureRmSubscription
+    $resourceGroups = Get-AzureRmResourceGroup | Select-Object -Last 1 -Wait
+    $scope = '/subscriptions/'+ $subscription[0].Id +'/resourceGroups/' + $resourceGroups[0].ResourceGroupName
+    Assert-AreEqual 1 $users.Count "There should be at least one user to run the test."
+    
+    # Test
+    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("fa1a4d3b-2cca-406b-8956-6b6b32377641")
+    $newAssignment = New-AzureRmRoleAssignment `
+                        -ObjectId $users[0].Id.Guid `
+                        -RoleDefinitionName $definitionName `
+                        -Scope $scope 
+
+    Remove-AzureRmRoleAssignment $newAssignment
+
+    # Assert
+    VerifyRoleAssignmentDeleted $newAssignment
+}
+
+<#
+.SYNOPSIS
 Tests verifies creation and deletion of a RoleAssignments by Scope
 #>
 function Test-RaByScope
 {
     # Setup
-    Add-Type -Path ".\\Microsoft.Azure.Commands.Resources.dll"
-
     $definitionName = 'Reader'
     $users = Get-AzureRmADUser | Select-Object -First 1 -Wait
     $subscription = Get-AzureRmSubscription
@@ -101,8 +123,6 @@ Tests verifies creation and deletion of a RoleAssignments by Resource Group
 function Test-RaByResourceGroup
 {
     # Setup
-    Add-Type -Path ".\\Microsoft.Azure.Commands.Resources.dll"
-
     $definitionName = 'Contributor'
     $users = Get-AzureRmADUser | Select-Object -Last 1 -Wait
     $resourceGroups = Get-AzureRmResourceGroup | Select-Object -Last 1 -Wait
@@ -134,8 +154,6 @@ Tests verifies creation and deletion of a RoleAssignments by Resource
 function Test-RaByResource
 {
     # Setup
-    Add-Type -Path ".\\Microsoft.Azure.Commands.Resources.dll"
-
     $definitionName = 'Owner'
     $groups = Get-AzureRmADGroup | Select-Object -Last 1 -Wait
     Assert-AreEqual 1 $groups.Count "There should be at least one group to run the test."
@@ -171,8 +189,6 @@ Tests validate input parameters
 function Test-RaValidateInputParameters ($cmdName)
 {
     # Setup
-    Add-Type -Path ".\\Microsoft.Azure.Commands.Resources.dll"
-
     $definitionName = 'Owner'
     $groups = Get-AzureRmADGroup | Select-Object -Last 1 -Wait
     Assert-AreEqual 1 $groups.Count "There should be at least one group to run the test."
@@ -204,11 +220,11 @@ function Test-RaValidateInputParameters ($cmdName)
     Assert-Throws { &$cmdName -Scope $scope -ObjectId $groups[0].Id.Guid -RoleDefinitionName $definitionName } $invalidScope
     
     # Check if ResourceType is valid
-    Assert-AreEqual $resource.ResourceType "Microsoft.KeyVault/vaults"
-    
+    Assert-AreEqual $resource.ResourceType "Microsoft.ServiceBus/namespaces"
+    $subscription = Get-AzureRmSubscription | Select-Object -Last 1 -Wait
     # Below invalid resource type should not return 'Not supported api version'.
     $resource.ResourceType = "Microsoft.KeyVault/"
-    $invalidResourceType = "Scope '/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/zzzzlastgroupzz/providers/Microsoft.KeyVault/zzzzlastgroupzz' should have even number of parts."
+    $invalidResourceType = "Scope '/subscriptions/"+$subscription.Id+"/resourceGroups/"+$resource.ResourceGroupName+"/providers/Microsoft.KeyVault/"+$resource.ResourceGroupName+"' should have even number of parts."
     Assert-Throws { &$cmdName `
                         -ObjectId $groups[0].Id.Guid `
                         -RoleDefinitionName $definitionName `
@@ -224,9 +240,7 @@ Tests verifies creation and deletion of a RoleAssignments for Service principal 
 function Test-RaByServicePrincipal
 {
     # Setup
-    Add-Type -Path ".\\Microsoft.Azure.Commands.Resources.dll"
-
-    $definitionName = 'Reader'
+    $definitionName = 'Contributor'
     $servicePrincipals = Get-AzureRmADServicePrincipal | Select-Object -Last 1 -Wait
     $subscription = Get-AzureRmSubscription
     $resourceGroups = Get-AzureRmResourceGroup | Select-Object -Last 1 -Wait
@@ -260,8 +274,6 @@ Tests verifies creation and deletion of a RoleAssignments for User Principal Nam
 function Test-RaByUpn
 {
     # Setup
-    Add-Type -Path ".\\Microsoft.Azure.Commands.Resources.dll"
-
     $definitionName = 'Contributor'
     $users = Get-AzureRmADUser | Select-Object -Last 1 -Wait
     $resourceGroups = Get-AzureRmResourceGroup | Select-Object -Last 1 -Wait
@@ -290,9 +302,6 @@ function Test-RaByUpn
 function Test-RaUserPermissions 
 { 
     param([string]$rgName, [string]$action) 
-    
-    # Setup 
-    
     # Test 
     $rg = Get-AzureRmResourceGroup
 	$errorMsg = "User should have access to only 1 RG. Found: {0}" -f $rg.Count
@@ -309,8 +318,6 @@ Tests verifies creation and deletion of a RoleAssignments by Scope irrespective 
 function Test-RaDeletionByScope
 {
     # Setup
-    Add-Type -Path ".\\Microsoft.Azure.Commands.Resources.dll"
-
     $definitionName = 'Reader'
     $users = Get-AzureRmADUser | Select-Object -First 1 -Wait
     $subscription = Get-AzureRmSubscription
@@ -345,8 +352,6 @@ Creates role assignment
 function CreateRoleAssignment
 {
     param([string]$roleAssignmentId, [string]$userId, [string]$definitionName, [string]$resourceGroupName) 
-
-    Add-Type -Path ".\\Microsoft.Azure.Commands.Resources.dll"
 
     [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue($roleAssignmentId)
     $newAssignment = New-AzureRmRoleAssignment `

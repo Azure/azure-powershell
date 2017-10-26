@@ -13,8 +13,8 @@ Removes a certificate from a key vault.
 ## SYNTAX
 
 ```
-Remove-AzureKeyVaultCertificate [-VaultName] <String> [-Name] <String> [-Force] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzureKeyVaultCertificate [-VaultName] <String> [-Name] <String> [-Force] [-InRemovedState] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,27 +38,33 @@ This command removes the certificate named SelfSigned01 from the key vault named
 This command specifies the *Force* parameter.
 Therefore, the cmdlet does not prompt you for confirmation.
 
-## PARAMETERS
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+### Example 3: Purge the deleted certificate from the key vault permanently
 ```
+PS C:\>Remove-AzureKeyVaultCertificate -VaultName 'Contoso' -Name 'MyCert' -InRemovedState
+```
+
+This command permanently removes the certificate named 'MyCert' from the key vault named 'Contoso'.
+Executing this cmdlet requires the 'purge' permission, which must have been previously and explicitly granted to the user on this key vault.
+
+## PARAMETERS
 
 ### -Force
 Forces the command to run without asking for user confirmation.
 
 ```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InRemovedState
+If present, removes the previously deleted certificate permanently.```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
@@ -80,7 +86,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 1
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -112,9 +118,24 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 0
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -154,3 +175,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Import-AzureKeyVaultCertificate](./Import-AzureKeyVaultCertificate.md)
 
+[Undo-AzureKeyVaultCertificateRemoval](./Undo-AzureKeyVaultCertificateRemoval.md)

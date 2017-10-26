@@ -97,15 +97,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 LockDuration                        : 
 AccessedAt                          : 1/1/0001 12:00:00 AM
 AutoDeleteOnIdle                    : 10675199.02:48:05.4775807
-EntityAvailabilityStatus            : 
 CreatedAt                           : 1/20/2017 2:51:35 AM
 DefaultMessageTimeToLive            : 10675199.02:48:05.4775807
 DuplicateDetectionHistoryTimeWindow : 
-EnableBatchedOperations             : True
 DeadLetteringOnMessageExpiration    : False
 EnableExpress                       : False
 EnablePartitioning                  : True
-IsAnonymousAccessible               : False
 MaxDeliveryCount                    : 
 MaxSizeInMegabytes                  : 16384
 MessageCount                        : 
@@ -114,13 +111,11 @@ RequiresDuplicateDetection          : False
 RequiresSession                     : False
 SizeInBytes                         : 
 Status                              : Active
-SupportOrdering                     : False
 UpdatedAt                           : 1/20/2017 2:51:37 AM
 Id                                  : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1/queues/S
                                       B-Queue_example1
 Name                                : SB-Queue_example1
 Type                                : Microsoft.ServiceBus/Queues
-Location                            : West US
 
 ## NOTES
 

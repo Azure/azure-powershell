@@ -57,14 +57,23 @@ function Test-VirtualMachineProfile
     $osDiskVhdUri = "https://$stoname.blob.core.windows.net/test/os.vhd";
     $dataDiskVhdUri1 = "https://$stoname.blob.core.windows.net/test/data1.vhd";
     $dataDiskVhdUri2 = "https://$stoname.blob.core.windows.net/test/data2.vhd";
-    $dataDiskVhdUri3 = "https://$stoname.blob.core.windows.net/test/data3.vhd";
 
     $p = Set-AzureRmVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption Empty;
 
     $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 0 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
     $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 1 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
-    $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB $null -Lun 2 -VhdUri $dataDiskVhdUri3 -CreateOption Empty;
+
+    # Managed data disk setting
+    $managedDataDiskId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rggroup/providers/Microsoft.Compute/disks/dataDisk";
+    $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB $null -Lun 2 -CreateOption Empty -ManagedDiskId $managedDataDiskId -StorageAccountType StandardLRS;
+    Assert-AreEqual $managedDataDiskId $p.StorageProfile.DataDisks[2].ManagedDisk.Id;
+    Assert-AreEqual "StandardLRS" $p.StorageProfile.DataDisks[2].ManagedDisk.StorageAccountType;
     Assert-Null $p.StorageProfile.DataDisks[2].DiskSizeGB;
+
+    $p = Set-AzureRmVMDataDisk -VM $p -Name 'testDataDisk3' -StorageAccountType PremiumLRS;
+    Assert-AreEqual $managedDataDiskId $p.StorageProfile.DataDisks[2].ManagedDisk.Id;
+    Assert-AreEqual "PremiumLRS" $p.StorageProfile.DataDisks[2].ManagedDisk.StorageAccountType;
+
     $p = Remove-AzureRmVMDataDisk -VM $p -Name 'testDataDisk3';
 
     Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;

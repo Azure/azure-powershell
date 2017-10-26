@@ -57,6 +57,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         {
             ResourcesController.NewInstance.RunPsTest("Test-RaByScope");
         }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RaDeleteByPSRoleAssignment()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-RaDeleteByPSRoleAssignment");
+        }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -219,7 +226,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
                         if (resourceGroup != null)
                         {
-                            controllerAdmin.AuthorizationManagementClient.RoleAssignments.Delete(resourceGroup.Id, new Guid(roleAssignmentId).ToString());
+                            controllerAdmin.AuthorizationManagementClient.RoleAssignments.Delete(resourceGroup.Id, roleAssignmentId).ToString();
                         }                        
                     },
                     TestUtilities.GetCallingClass(),

@@ -169,7 +169,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### -EnableAutoInflate
+### -EnableAutoInflate
 Indicates whether AutoInflate is enabled
 
 ```yaml
@@ -217,7 +217,12 @@ Accept wildcard characters: False
 ## INPUTS
 
 ### System.String
-System.Nullable\`1\[\[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\]\] System.Nullable\`1\[\[Microsoft.Azure.Management.EventHub.Models.NamespaceState, Microsoft.Azure.Management.EventHub, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35\]\] System.Collections.Hashtable
+
+### System.Int32
+
+### Microsoft.Azure.Management.EventHub.Models.NamespaceState
+
+### System.Collections.Hashtable
 
 ## OUTPUTS
 

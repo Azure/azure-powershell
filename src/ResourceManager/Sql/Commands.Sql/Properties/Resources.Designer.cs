@@ -151,6 +151,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Azure Sql Database Elastic Pool name cannot be specified for this operation.
+        /// </summary>
+        internal static string ElasticPoolDatabaseActivityCancelNotSupported {
+            get {
+                return ResourceManager.GetString("ElasticPoolDatabaseActivityCancelNotSupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Elastic Pool with name: &apos;{0}&apos; already exists in server &apos;{1}&apos;..
         /// </summary>
         internal static string ElasticPoolNameExists {
@@ -340,6 +349,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to OperationId is required for this operation.
+        /// </summary>
+        internal static string OperationIdRequired {
+            get {
+                return ResourceManager.GetString("OperationIdRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to PHP Data Objects(PDO) Sample Code:.
         /// </summary>
         internal static string PdoTitle {
@@ -511,6 +529,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Permanently removing Virtual Network Rule &apos;{0}&apos; for Azure Sql Server &apos;{1}&apos;.
+        /// </summary>
+        internal static string RemoveAzureSqlServerVirtualNetworkRuleDescription {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlServerVirtualNetworkRuleDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Virtual Network Rule &apos;{0}&apos; for Azure Sql Server &apos;{1}&apos;?.
+        /// </summary>
+        internal static string RemoveAzureSqlServerVirtualNetworkRuleWarning {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlServerVirtualNetworkRuleWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove the Azure Sql Database Server &apos;{0}&apos;?.
         /// </summary>
         internal static string RemoveAzureSqlServerWarning {
@@ -655,6 +691,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Virtual Network Rule with name: &apos;{0}&apos; already exists for server &apos;{1}&apos;.
+        /// </summary>
+        internal static string ServerVirtualNetworkRuleNameExists {
+            get {
+                return ResourceManager.GetString("ServerVirtualNetworkRuleNameExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Updating auto execute status of the advisor &apos;{0}&apos; to &apos;{1}&apos;..
         /// </summary>
         internal static string SetAdvisorAutoExecuteStatusDescription {
@@ -768,6 +813,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string StopAzureSqlServerUpgradeWarning {
             get {
                 return ResourceManager.GetString("StopAzureSqlServerUpgradeWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancelling updateslo operation for database &apos;{0}&apos; under server &apos;{1}&apos;..
+        /// </summary>
+        internal static string StopDatabaseActivityDescription {
+            get {
+                return ResourceManager.GetString("StopDatabaseActivityDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to cancel updateslo operation for database &apos;{0}&apos; under server &apos;{1}&apos;?.
+        /// </summary>
+        internal static string StopDatabaseActivityWarning {
+            get {
+                return ResourceManager.GetString("StopDatabaseActivityWarning", resourceCulture);
             }
         }
         

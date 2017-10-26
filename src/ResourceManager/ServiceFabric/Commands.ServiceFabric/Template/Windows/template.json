@@ -653,7 +653,7 @@
             }
         },
         {
-            "apiVersion": "2016-09-01",
+            "apiVersion": "2017-07-01-preview",
             "type": "Microsoft.ServiceFabric/clusters",
             "name": "[parameters('clusterName')]",
             "location": "[parameters('clusterLocation')]",
@@ -686,6 +686,9 @@
                         "name": "Security"
                     }
                 ],
+                "addonFeatures": [
+                    "DnsService" 
+                ], 
                 "managementEndpoint": "[concat('https://',reference(concat(variables('lbIPName'),'-','0')).dnsSettings.fqdn,':',variables('nt0fabricHttpGatewayPort'))]",
                 "nodeTypes": [
                     {

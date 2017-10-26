@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
             if (context.Account.Type == AzureAccount.AccountType.AccessToken)
             {
-                return new TokenCloudCredentials(context.Subscription.Id.ToString(), context.Account.GetProperty(AzureAccount.Property.AccessToken));
+                return new TokenCloudCredentials(context.Subscription.Id.ToString(), GetEndpointToken(context.Account, targetEndpoint));
             }
 
             string tenant = null;
@@ -217,7 +217,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
             if (context.Account.Type == AzureAccount.AccountType.AccessToken)
             {
-                return new TokenCredentials(context.Account.GetProperty(AzureAccount.Property.AccessToken));
+                return new TokenCredentials(GetEndpointToken(context.Account, targetEndpoint));
             }
 
             string tenant = null;
@@ -346,5 +346,82 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 TokenCache = tokenCache
             };
         }
+
+        private string GetEndpointToken(IAzureAccount account, string targetEndpoint)
+        {
+            string tokenKey = AzureAccount.Property.AccessToken;
+            if (targetEndpoint == AzureEnvironment.Endpoint.Graph)
+            { 
+                tokenKey = AzureAccount.Property.GraphAccessToken;
+            }
+
+            return account.GetProperty(tokenKey);
+        }
+
+        public void RemoveUser(IAzureAccount account, IAzureTokenCache tokenCache)
+        {
+            TokenCache cache = tokenCache as TokenCache;
+            if (cache!= null && account != null && !string.IsNullOrEmpty(account.Id) && !string.IsNullOrWhiteSpace(account.Type))
+            {
+                switch (account.Type)
+                {
+                    case AzureAccount.AccountType.AccessToken:
+                        account.SetProperty(AzureAccount.Property.AccessToken, null);
+                        account.SetProperty(AzureAccount.Property.GraphAccessToken, null);
+                        account.SetProperty(AzureAccount.Property.KeyVaultAccessToken, null);
+                        break;
+                    case AzureAccount.AccountType.ServicePrincipal:
+                        try
+                        {
+                            ServicePrincipalKeyStore.DeleteKey(account.Id, account.GetTenants().FirstOrDefault());
+                        }
+                        catch
+                        {
+                            // make best effort to remove credentials
+                        }
+
+                        RemoveFromTokenCache(cache, account);
+                        break;
+                    case AzureAccount.AccountType.User:
+                        RemoveFromTokenCache(cache, account);
+                        break;
+               }
+            }
+        }
+
+        void RemoveFromTokenCache(TokenCache cache, IAzureAccount account )
+        {
+            if (cache != null && cache.Count > 0 && account != null && !string.IsNullOrWhiteSpace(account.Id) && !string.IsNullOrWhiteSpace(account.Type))
+            {
+                var items = cache.ReadItems().Where((i) => MatchCacheItem(account, i));
+                foreach (var item in items)
+                {
+                    cache.DeleteItem(item);
+                }
+            }
+        }
+
+        bool MatchCacheItem(IAzureAccount account, TokenCacheItem item)
+        {
+            bool result = false;
+            if (account != null && !string.IsNullOrWhiteSpace(account.Type) && item != null)
+            {
+                switch(account.Type)
+                {
+                    case AzureAccount.AccountType.ServicePrincipal:
+                        result = string.Equals(account.Id, item.ClientId, StringComparison.OrdinalIgnoreCase);
+                        break;
+                    case AzureAccount.AccountType.User:
+                        result = string.Equals(account.Id, item.DisplayableId, StringComparison.OrdinalIgnoreCase) 
+                            || (account.TenantMap != null && account.TenantMap.Any(
+                                (m) => string.Equals(m.Key, item.TenantId, StringComparison.OrdinalIgnoreCase) 
+                                       && string.Equals(m.Value, item.UniqueId, StringComparison.OrdinalIgnoreCase)));
+                        break;
+                }
+            }
+
+            return result;
+        }
+
     }
 }

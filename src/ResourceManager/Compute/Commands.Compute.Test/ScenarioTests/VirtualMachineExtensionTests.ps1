@@ -1044,18 +1044,19 @@ function Test-AzureDiskEncryptionExtension
 
     #KeyVault config variables
     $vaultName = "detestvault";
+    $vault2Name = "detestvault2";
     $kekName = "dstestkek";
 
     #VM config variables
     $vmName = "detestvm";
-    $vmsize = 'Standard_D2';
+    $vmsize = 'Standard_DS2';
     $imagePublisher = "MicrosoftWindowsServer";
     $imageOffer = "WindowsServer";
     $imageSku ="2012-R2-Datacenter";
 
     #Storage config variables
     $storageAccountName = "deteststore";
-    $stotype = 'Standard_LRS';
+    $stotype = 'Premium_LRS';
     $vhdContainerName = "vhds";
     $osDiskName = 'osdisk' + $vmName;
     $dataDiskName = 'datadisk' + $vmName;
@@ -1117,6 +1118,17 @@ function Test-AzureDiskEncryptionExtension
         $keyVaultResourceId = $keyVault.ResourceId;
         $keyEncryptionKeyUrl = $kek.Key.kid;
 
+        # Create the 2nd key vault
+        $keyVault2 = New-AzureRmKeyVault -VaultName $vault2Name -ResourceGroupName $rgname -Location $loc -Sku standard;
+        $keyVault2 = Get-AzureRmKeyVault -VaultName $vault2Name -ResourceGroupName $rgname
+        #set enabledForDiskEncryption
+        Set-AzureRmKeyVaultAccessPolicy -VaultName $vault2Name -ResourceGroupName $rgname -EnabledForDiskEncryption;
+        #set permissions to AAD app to write secrets and keys
+        Set-AzureRmKeyVaultAccessPolicy -VaultName $vault2Name -ServicePrincipalName $aadClientID -PermissionsToKeys all -PermissionsToSecrets all
+
+        $diskEncryptionKeyVaultUrl2 = $keyVault2.VaultUri;
+        $keyVaultResourceId2 = $keyVault2.ResourceId;
+
         # VM Profile & Hardware   
         $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
 
@@ -1168,6 +1180,9 @@ function Test-AzureDiskEncryptionExtension
         Assert-NotNull $OsVolumeEncryptionSettings;
         Assert-NotNull $OsVolumeEncryptionSettings.DiskEncryptionKey.SecretUrl;
         Assert-NotNull $OsVolumeEncryptionSettings.DiskEncryptionKey.SourceVault;
+
+        # Change settings on the VM
+        Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmName -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl2 -DiskEncryptionKeyVaultId $keyVaultResourceId2 -KeyEncryptionKeyUrl $keyEncryptionKeyUrl -KeyEncryptionKeyVaultId $keyVaultResourceId -Force;
 
         #Add a couple of data volumes to encrypt them
         $p = Add-AzureRmVMDataDisk -VM $p -Name $extraDataDiskName1 -Caching 'ReadOnly' -DiskSizeInGB 2 -Lun 1 -VhdUri $dataDiskVhdUri -CreateOption Empty;

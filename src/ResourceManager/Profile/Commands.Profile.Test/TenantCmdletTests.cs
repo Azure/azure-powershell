@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             var cmdlt = new AddAzureRMAccountCommand();
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
-            cmdlt.SubscriptionId = subscriptionId;
+            cmdlt.Subscription = subscriptionId;
             cmdlt.TenantId = tenantId;
 
             // Act
