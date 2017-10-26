@@ -1,4 +1,37 @@
-﻿## 2017.09.25 - Version 4.4.0
+﻿## 2017.10.12 - Version 4.4.1
+* AzureBatch
+     - Marked cmdlet parameters and type properties obsolete in 
+       preparation for upcoming breaking change release (Version 4.0.0)
+* HDInsight
+    * Added support for Data Disks property in cluster creation
+        - Added parameter 'WorkerNodeDataDisksGroups' to the New-AzureHDInsightCluster cmdlet
+* Insights
+        * Add-AzureRmLogAlertRule
+            - Adding details to deprecation warning introduced in April 2017: the cmdlet will stop having effect: its functionality is moved to the "ActivityLogAlerts" cmdlets.
+            - Help file modified to include the deprecation warning and the details.
+        * Disable-AzureRmActivityLogAlert, Disable-AzureRmActivityLogAlert, Remove-AzureRmActivityLogAlert, Set-AzureRmActivityLogAlert
+            - Help file modified: removed text stating that the Force arguments was accepted since that argument is not accepted.
+* KeyVault
+    * Deprecating the PurgeDisabled flag from Key, Secret and Certificate attributes, respectively.
+      * The flag is being superseded by the RecoveryLevel attribute.
+* MachineLearningCompute
+    * Added initial set of cmdlets for MachineLearningCompute
+        - Get-AzureRmMlOpCluster
+        - Get-AzureRmMlOpClusterKey
+        - New-AzureRmMlOpCluster
+        - Remove-AzureRmMlOpCluster
+        - Test-AzureRmMlOpClusterSystemServicesUpdateAvailability
+        - Update-AzureRmMlOpClusterSystemService
+* MarketplaceOrdering
+    * New Cmdlet Get-AzureRmMarketplaceTerms
+        - Get the agreement terms of a given publisher id, offer id and plan id.
+    * New Cmdlet Set-AzureRmMarketplaceTerms
+    	- Accept or reject agreement terms of a give publisher id, offer id and plan id. Please use Get-AzureRmMarketplaceTerms to get the agreement terms.
+* Profile
+    * LocationCompleterAttribute added and available for cmdlets which use the -Location parameter
+        - Use this feature by adding LocationCompleter(string[] validResourceTypes) onto the Location parameter
+
+## 2017.09.25 - Version 4.4.0
 * AnalysisServices
     * Added a new dataplane commandlet to allow synchronization of databases from read-write instance to read-only instances 
         - Included help file for the commandlet

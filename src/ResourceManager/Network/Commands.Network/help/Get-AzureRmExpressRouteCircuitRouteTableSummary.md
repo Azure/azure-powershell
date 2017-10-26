@@ -15,7 +15,8 @@ Gets a route table summary of an ExpressRoute circuit.
 
 ```
 Get-AzureRmExpressRouteCircuitRouteTableSummary -ResourceGroupName <String> -ExpressRouteCircuitName <String>
- [-PeeringType <String>] -DevicePath <DevicePathEnum> [<CommonParameters>]
+ [-PeeringType <String>] -DevicePath <DevicePathEnum> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,6 +33,21 @@ Get-AzureRmExpressRouteCircuitRouteTableSummary -ResourceGroupName $RG -ExpressR
 ```
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DevicePath
 The acceptable values for this parameter are: `Primary` or `Secondary`

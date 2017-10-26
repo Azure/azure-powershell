@@ -2115,7 +2115,7 @@
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <command:details>
       <command:name>
-        Get-AzsTenantSubscription
+        Get-AzsUserSubscription
       </command:name>
       <maml:description>
         <maml:para>
@@ -2126,7 +2126,7 @@
         <maml:para></maml:para>
       </maml:copyright>
       <command:verb>Get</command:verb>
-      <command:noun>AzsTenantSubscription</command:noun>
+      <command:noun>AzsUserSubscription</command:noun>
       <dev:version></dev:version>
     </command:details>
     <maml:description>
@@ -2135,7 +2135,7 @@
     <!-- Cmdlet syntax section-->
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>Get-AzsTenantSubscription</maml:name>
+        <maml:name>Get-AzsUserSubscription</maml:name>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>InformationAction</maml:name>
           <maml:description>
@@ -2304,7 +2304,7 @@
           <maml:para>C:\PS&gt;</maml:para>
         </maml:introduction>
         <dev:code>
-          Get-AzsTenantSubscription -SubscriptionId &quot;2fff214f-8589-4d25-b468-dc99320724bc&quot;
+          Get-AzsUserSubscription -SubscriptionId &quot;2fff214f-8589-4d25-b468-dc99320724bc&quot;
         </dev:code>
         <dev:remarks>
           <maml:para>Description</maml:para>
@@ -3747,16 +3747,16 @@
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <command:details>
       <command:name>
-        New-AzsTenantSubscription
+        New-AzsUserSubscription
       </command:name>
       <maml:description>
-        <maml:para>The New-AzsTenantSubscription cmdlet creates a subscription as an admin for the specified tenant user</maml:para>
+        <maml:para>The New-AzsUserSubscription cmdlet creates a subscription as an admin for the specified tenant user</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para></maml:para>
       </maml:copyright>
       <command:verb>New</command:verb>
-      <command:noun>AzsTenantSubscription</command:noun>
+      <command:noun>AzsUserSubscription</command:noun>
       <dev:version></dev:version>
     </command:details>
     <maml:description>
@@ -3765,7 +3765,7 @@
     <!-- Cmdlet syntax section-->
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>New-AzsTenantSubscription</maml:name>
+        <maml:name>New-AzsUserSubscription</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>OfferId</maml:name>
           <maml:description>
@@ -3961,7 +3961,7 @@
           <maml:para>C:\PS&gt;</maml:para>
         </maml:introduction>
         <dev:code>
-          New-AzsTenantSubscription -Owner &quot;tenanuser@contoso.com&quot; -OfferId $OfferId -DisplayName &quot;Displayname&quot;
+          New-AzsUserSubscription -Owner &quot;tenanuser@contoso.com&quot; -OfferId $OfferId -DisplayName &quot;Displayname&quot;
         </dev:code>
         <dev:remarks>
           <maml:para>Description</maml:para>
@@ -5900,16 +5900,16 @@
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <command:details>
       <command:name>
-        Remove-AzsTenantSubscription
+        Remove-AzsUserSubscription
       </command:name>
       <maml:description>
-        <maml:para>The cmdlet Remove-AzsTenantSubscription removes the specified subscription as an administrator</maml:para>
+        <maml:para>The cmdlet Remove-AzsUserSubscription removes the specified subscription as an administrator</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para></maml:para>
       </maml:copyright>
       <command:verb>Remove</command:verb>
-      <command:noun>AzsTenantSubscription</command:noun>
+      <command:noun>AzsUserSubscription</command:noun>
       <dev:version></dev:version>
     </command:details>
     <maml:description>
@@ -5918,7 +5918,7 @@
     <!-- Cmdlet syntax section-->
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>Remove-AzsTenantSubscription</maml:name>
+        <maml:name>Remove-AzsUserSubscription</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named" aliases="TargetSubscriptionId">
           <maml:name>SubscriptionID</maml:name>
           <maml:description>
@@ -6094,7 +6094,7 @@
           <maml:para>C:\PS&gt;</maml:para>
         </maml:introduction>
         <dev:code>
-          Remove-AzsTenantSubscription -SubscriptionId &quot;83a3cff6-b856-4db1-8d1b-86386ff9d515&quot;
+          Remove-AzsUserSubscription -SubscriptionId &quot;83a3cff6-b856-4db1-8d1b-86386ff9d515&quot;
         </dev:code>
         <dev:remarks>
           <maml:para>Description</maml:para>
@@ -6142,7 +6142,7 @@
     <!-- Cmdlet syntax section-->
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>Remove-AzsTenantSubscription</maml:name>
+        <maml:name>Remove-AzsUserSubscription</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named" aliases="TargetSubscriptionId">
           <maml:name>SubscriptionID</maml:name>
           <maml:description>
@@ -7060,25 +7060,25 @@
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <command:details>
       <command:name>
-        Set-AzsTenantSubscription
+        Set-AzsUserSubscription
       </command:name>
       <maml:description>
-        <maml:para>The Set-AzsTenantSubscription updates any tenant user subscription as a service administrator</maml:para>
+        <maml:para>The Set-AzsUserSubscription updates any tenant user subscription as a service administrator</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para></maml:para>
       </maml:copyright>
       <command:verb>Set</command:verb>
-      <command:noun>AzsTenantSubscription</command:noun>
+      <command:noun>AzsUserSubscription</command:noun>
       <dev:version></dev:version>
     </command:details>
     <maml:description>
-      <maml:para>The Set-AzsTenantSubscription updates any tenant user subscription as a service administrator</maml:para>
+      <maml:para>The Set-AzsUserSubscription updates any tenant user subscription as a service administrator</maml:para>
     </maml:description>
     <!-- Cmdlet syntax section-->
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>Set-AzsTenantSubscription</maml:name>
+        <maml:name>Set-AzsUserSubscription</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>Subscription</maml:name>
           <maml:description>
@@ -8010,16 +8010,16 @@
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <command:details>
       <command:name>
-        Set-AzsTenantSubscription
+        Set-AzsUserSubscription
       </command:name>
       <maml:description>
-        <maml:para>The Set-AzsTenantSubscription cmdlet updates the current logged user's subscription details. This cmdlet will be deprecated in a future release</maml:para>
+        <maml:para>The Set-AzsUserSubscription cmdlet updates the current logged user's subscription details. This cmdlet will be deprecated in a future release</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para></maml:para>
       </maml:copyright>
       <command:verb>Set</command:verb>
-      <command:noun>AzsTenantSubscription</command:noun>
+      <command:noun>AzsUserSubscription</command:noun>
       <dev:version></dev:version>
     </command:details>
     <maml:description>
@@ -8028,7 +8028,7 @@
     <!-- Cmdlet syntax section-->
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>Set-AzsTenantSubscription</maml:name>
+        <maml:name>Set-AzsUserSubscription</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>Subscription</maml:name>
           <maml:description>
