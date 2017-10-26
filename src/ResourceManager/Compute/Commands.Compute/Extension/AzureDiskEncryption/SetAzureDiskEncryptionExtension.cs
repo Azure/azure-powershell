@@ -195,8 +195,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
         [Parameter(
             Mandatory = false,
-            Position = 18,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Encrypt-Format all data drives that are not already encrypted")]
         public SwitchParameter EncryptFormatAll { get; set; }
 
