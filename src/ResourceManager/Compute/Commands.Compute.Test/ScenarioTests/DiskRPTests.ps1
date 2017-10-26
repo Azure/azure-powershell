@@ -60,6 +60,7 @@ function Test-Disk
 
         # Get disk test
         $disk = Get-AzureRmDisk -ResourceGroupName $rgname -DiskName $diskname;
+        Assert-AreEqual $null $disk.Zones;
         Assert-AreEqual 5 $disk.DiskSizeGB;
         Assert-AreEqual StandardLRS $disk.Sku.Name;
         Assert-AreEqual Windows $disk.OsType;

@@ -15,13 +15,15 @@ Starts troubleshooting on a Networking resource in Azure.
 ### SetByResource (Default)
 ```
 Start-AzureRmNetworkWatcherResourceTroubleshooting -NetworkWatcher <PSNetworkWatcher>
- -TargetResourceId <String> -StorageId <String> -StoragePath <String> [<CommonParameters>]
+ -TargetResourceId <String> -StorageId <String> -StoragePath <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SetByName
 ```
 Start-AzureRmNetworkWatcherResourceTroubleshooting -NetworkWatcherName <String> -ResourceGroupName <String>
- -TargetResourceId <String> -StorageId <String> -StoragePath <String> [<CommonParameters>]
+ -TargetResourceId <String> -StorageId <String> -StoragePath <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,6 +46,21 @@ Start-AzureRmNetworkWatcherResourceTroubleshooting -NetworkWatcher $networkWatch
 The above sample starts troubleshooting on a virtual network gateway. The operation may take a few minutes to complete.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -NetworkWatcher
 The network watcher resource.

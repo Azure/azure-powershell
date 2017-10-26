@@ -14,6 +14,7 @@
 using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.Location;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Newtonsoft.Json;
@@ -94,6 +95,7 @@ namespace Microsoft.Azure.Commands.Compute
             Position = 8,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Location of the resource.")]
+        [LocationCompleter("Microsoft.Compute/virtualMachines")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 

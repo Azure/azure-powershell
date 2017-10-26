@@ -2,25 +2,23 @@
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
 ms.assetid: 85C0A1C3-FC6D-496A-B6B5-8DC2A73B8032
-online version:
+online version: 
 schema: 2.0.0
 ---
 
 # Set-AzureRmApplicationGatewayFrontendPort
 
 ## SYNOPSIS
-
 Modifies a front-end port for an application gateway.
 
 ## SYNTAX
 
-```powershell
+```
 Set-AzureRmApplicationGatewayFrontendPort -ApplicationGateway <PSApplicationGateway> -Name <String>
- -Port <Int32> [<CommonParameters>]
+ -Port <Int32> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-
 The **Set-AzureRmApplicationGatewayFrontendPort** cmdlet modifies a front-end port for an
 application gateway.
 
@@ -41,18 +39,32 @@ FrontEndPort01.
 ## PARAMETERS
 
 ### -ApplicationGateway
-
 Specifies the application gateway object with which this cmdlet associates the front-end port.
 
 ```yaml
 Type: PSApplicationGateway
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -62,7 +74,7 @@ Specifies the name of the front-end port to modify.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -77,7 +89,7 @@ Specifies the port number to use for the front-end port.
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named

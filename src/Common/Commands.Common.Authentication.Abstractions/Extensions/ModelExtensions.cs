@@ -115,5 +115,21 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 }
             }
         }
+
+        /// <summary>
+        /// Copy Unset propeties from another extensible model to this one
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="newModel"></param>
+        public static void UpdateProperties(this IExtensibleModel model, IExtensibleModel newModel)
+        {
+            if (model != null && newModel != null)
+            {
+                foreach (var item in newModel.ExtendedProperties)
+                {
+                    model.SetProperty(item.Key, item.Value);
+                }
+            }
+        }
     }
 }
