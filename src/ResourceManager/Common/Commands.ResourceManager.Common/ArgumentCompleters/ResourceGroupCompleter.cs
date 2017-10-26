@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.ResourceManager.Common.TabCompletion
+namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
 {
     using Commands.Common.Authentication;
     using Commands.Common.Authentication.Abstractions;
@@ -20,6 +20,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.TabCompletion
     using Management.Internal.Resources.Models;
     using Properties;
     using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
@@ -29,7 +30,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.TabCompletion
     /// </summary>
     public class ResourceGroupCompleterAttribute : ArgumentCompleterAttribute
     {
-        private static IList<String> _resourceGroupNames = new List<string>();
+        private static IDictionary<int, IList<String>> _resourceGroupNamesDictionary = new ConcurrentDictionary<int, IList<string>>();
         private static readonly object _lock = new object();
 
         protected static IList<String> ResourceGroupNames
@@ -38,52 +39,56 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.TabCompletion
             {
                 lock (_lock)
                 {
-                    _resourceGroupNames = new List<string>();
                     IAzureContext context = AzureRmProfileProvider.Instance.Profile.DefaultContext;
-                    try
+                    var contextHash = HashContext(context);
+                    if (!_resourceGroupNamesDictionary.ContainsKey(contextHash))
                     {
-                        var instance = AzureSession.Instance;
-                        var client = instance.ClientFactory.CreateCustomArmClient<ResourceManagementClient>(
-                            context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager),
-                            instance.AuthenticationFactory.GetServiceClientCredentials(context, AzureEnvironment.Endpoint.ResourceManager),
-                            instance.ClientFactory.GetCustomHandlers());
-                        client.SubscriptionId = context.Subscription.Id;
-                        // Retrieve only the first page of ResourceGroups to display to the user
-                        var resourceGroups = client.ResourceGroups.ListAsync();
-                        if (resourceGroups.Wait(TimeSpan.FromSeconds(5)))
+                        _resourceGroupNamesDictionary[contextHash] = new List<string>();
+                        try
                         {
-                            if (resourceGroups.Result != null)
+                            var instance = AzureSession.Instance;
+                            var client = instance.ClientFactory.CreateCustomArmClient<ResourceManagementClient>(
+                                context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager),
+                                instance.AuthenticationFactory.GetServiceClientCredentials(context, AzureEnvironment.Endpoint.ResourceManager),
+                                instance.ClientFactory.GetCustomHandlers());
+                            client.SubscriptionId = context.Subscription.Id;
+                            // Retrieve only the first page of ResourceGroups to display to the user
+                            var resourceGroups = client.ResourceGroups.ListAsync();
+                            if (resourceGroups.Wait(TimeSpan.FromSeconds(5)))
                             {
-                                var resourceGroupList = resourceGroups.Result;
-                                foreach (ResourceGroup resourceGroup in resourceGroupList)
+                                if (resourceGroups.Result != null)
                                 {
-                                    _resourceGroupNames.Add(resourceGroup.Name);
+                                    var resourceGroupList = resourceGroups.Result;
+                                    foreach (ResourceGroup resourceGroup in resourceGroupList)
+                                    {
+                                        _resourceGroupNamesDictionary[contextHash].Add(resourceGroup.Name);
+                                    }
                                 }
+#if DEBUG
+                                else
+                                {
+                                    throw new Exception("Result from client.ResourceGroups is null");
+                                }
+#endif
                             }
 #if DEBUG
                             else
                             {
-                                throw new Exception("Result from client.ResourceGroups is null");
+                                throw new Exception("client.ResourceGroups call timed out");
                             }
 #endif
                         }
-#if DEBUG
-                        else
+
+                        catch (Exception ex)
                         {
-                            throw new Exception("client.ResourceGroups call timed out");
-                        }
-#endif
-                    }
-
-                    catch (Exception ex)
-                    {
 #if DEBUG
-                        throw ex;
+                            throw ex;
 #endif
+                        }
                     }
-                }
 
-                return _resourceGroupNames;
+                    return _resourceGroupNamesDictionary[contextHash];
+                }
             }
         }
 
@@ -100,7 +105,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.TabCompletion
         {
             IAzureContext context = AzureRmProfileProvider.Instance.Profile.DefaultContext;
             var resourceGroupNamesCopy = ResourceGroupNames;
-            if (context.ExtendedProperties.ContainsKey(Resources.DefaultResourceGroupKey))
+            if (context.IsPropertySet(Resources.DefaultResourceGroupKey))
             {
                 return GetResourceGroups(resourceGroupNamesCopy, context.ExtendedProperties[Resources.DefaultResourceGroupKey]);
             }
@@ -123,10 +128,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.TabCompletion
         private static ScriptBlock CreateScriptBlock()
         {
             string script = "param($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameter)\n" +
-                "$locations = [Microsoft.Azure.Commands.ResourceManager.Common.TabCompletion.ResourceGroupCompleterAttribute]::GetResourceGroups()\n" +
+                "$locations = [Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleterAttribute]::GetResourceGroups()\n" +
                 "$locations | Where-Object { $_ -Like \"$wordToComplete*\" } | ForEach-Object { [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_) }";
             ScriptBlock scriptBlock = ScriptBlock.Create(script);
             return scriptBlock;
+        }
+
+        private static int HashContext(IAzureContext context)
+        {
+            return (context.Account.Id + context.Environment.Name + context.Subscription.Id + context.Tenant.Id).GetHashCode();
         }
     }
 }
