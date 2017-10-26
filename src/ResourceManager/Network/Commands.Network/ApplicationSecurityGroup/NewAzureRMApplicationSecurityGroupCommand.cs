@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.Network
                 Location = this.Location,
             };
 
-            var vApplicationSecurityGroupModel = Mapper.Map<MNM.ApplicationSecurityGroup>(vApplicationSecurityGroup);
+            var vApplicationSecurityGroupModel = NetworkResourceManagerProfile.Mapper.Map<MNM.ApplicationSecurityGroup>(vApplicationSecurityGroup);
             vApplicationSecurityGroupModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
             var present = true;
             try
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 this.NetworkClient.NetworkManagementClient.ApplicationSecurityGroups.CreateOrUpdate(this.ResourceGroupName, this.Name, vApplicationSecurityGroupModel);
                 var getApplicationSecurityGroup = this.NetworkClient.NetworkManagementClient.ApplicationSecurityGroups.Get(this.ResourceGroupName, this.Name);
-                var psApplicationSecurityGroup = Mapper.Map<PSApplicationSecurityGroup>(getApplicationSecurityGroup);
+                var psApplicationSecurityGroup = NetworkResourceManagerProfile.Mapper.Map<PSApplicationSecurityGroup>(getApplicationSecurityGroup);
                 psApplicationSecurityGroup.ResourceGroupName = this.ResourceGroupName;
                 psApplicationSecurityGroup.Tag = TagsConversionHelper.CreateTagHashtable(getApplicationSecurityGroup.Tags);
                 WriteObject(psApplicationSecurityGroup, true);
