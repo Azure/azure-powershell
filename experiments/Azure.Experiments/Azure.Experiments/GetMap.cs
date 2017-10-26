@@ -4,15 +4,8 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Experiments
 {
-    public sealed class GetContext
+    public sealed class GetMap
     {
-        public Context Context { get; }
-
-        public GetContext(Context context)
-        {
-            Context = context;
-        }
-
         public async Task<T> GetOrAdd<T>(Parameters<T> parameters, Func<Task<T>> get)
             where T : class
         {
