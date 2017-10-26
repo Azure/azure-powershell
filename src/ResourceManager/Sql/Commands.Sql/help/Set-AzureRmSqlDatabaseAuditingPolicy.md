@@ -29,7 +29,7 @@ You can also define retention for the audit logs table by setting the value of t
 Specify the *EventType* parameter to define which event types to audit.
 
 After the cmdlet runs successfully, auditing of the database is enabled.
-If the database used the policy of its server for auditing before you ran this cmdlet, auditing stops using that policy.
+For Table Auditing, if the database used the policy of its server for auditing before you ran this cmdlet, auditing stops using that policy. For Blob Auditing, if the database used the policy of its server for auditing before you ran this cmdlet, both auditing policies will exist side-by-side.
 If the cmdlet succeeds and you use the *PassThru* parameter, it returns an object describing the current auditing policy in addition to the database identifiers.
 Database identifiers include, but are not limited to, **ResourceGroupName**, **ServerName**, and **DatabaseName**.
 
