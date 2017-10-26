@@ -198,7 +198,6 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 if (credentials.ContainsKey("UserId"))
                 {
                     formattedConnectionString += String.Format(";UserId={0}", credentials["UserId"]);
-                    formattedConnectionString += String.Format(";Password={0}", credentials["Password"]);
                 }
 
                 if (credentials.ContainsKey("ServicePrincipal"))
