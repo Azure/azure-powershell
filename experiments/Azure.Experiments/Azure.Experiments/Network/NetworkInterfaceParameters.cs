@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Experiments.Network
             Pia = pia;
         }
 
-        public override Task<NetworkInterface> GetAsync(GetContext context)
+        protected override Task<NetworkInterface> GetAsync(GetContext context)
             => context
                 .Context
                 .CreateNetwork()

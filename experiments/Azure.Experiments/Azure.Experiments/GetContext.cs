@@ -1,4 +1,5 @@
-﻿using System.Collections.Concurrent;
+﻿using System;
+using System.Collections.Concurrent;
 using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Experiments
@@ -12,23 +13,11 @@ namespace Microsoft.Azure.Experiments
             Context = context;
         }
 
-        public async Task<T> GetOrNullAsync<T>(Parameters<T> parameters)
+        public async Task<T> GetOrAdd<T>(Parameters<T> parameters, Func<Task<T>> get)
+            where T : class
         {
-            var result = await Map.GetOrAdd(
-                parameters, _ => GetObjectOrNullAsync(parameters));
+            var result = await Map.GetOrAdd(parameters, async _ => await get());
             return (T)result;
-        }
-
-        private async Task<object> GetObjectOrNullAsync<T>(Parameters<T> parameters)
-        {
-            try
-            {
-                return await parameters.GetAsync(this); 
-            }
-            catch
-            {
-                return null;
-            }
         }
 
         private ConcurrentDictionary<Parameters, Task<object>> Map { get; }

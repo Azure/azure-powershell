@@ -4,6 +4,7 @@ using System.Linq;
 namespace Microsoft.Azure.Experiments
 {
     public abstract class ResourceParameters<T> : Parameters<T>
+        where T : class
     {
         public ResourceGroupParameters ResourceGroup { get; }
 

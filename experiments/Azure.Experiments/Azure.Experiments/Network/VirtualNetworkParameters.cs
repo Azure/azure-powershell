@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Experiments.Network
         {
         }
 
-        public override Task<VirtualNetwork> GetAsync(GetContext context)
+        protected override Task<VirtualNetwork> GetAsync(GetContext context)
             => context
                 .Context
                 .CreateNetwork()

@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.Rest.Azure;
+using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Experiments
@@ -21,12 +23,29 @@ namespace Microsoft.Azure.Experiments
     }
 
     public abstract class Parameters<T> : Parameters
+        where T : class
     {
-        protected Parameters(string name, IEnumerable<Parameters> parameters) 
+        protected Parameters(string name, IEnumerable<Parameters> parameters)
             : base(name, parameters)
         {
         }
 
-        public abstract Task<T> GetAsync(GetContext context);
+        public async Task<T> GetOrNullAsync(GetContext context)
+            => await context.GetOrAdd(
+                this, 
+                async () => 
+                {
+                    try
+                    {
+                        return await GetAsync(context);
+                    }
+                    catch (CloudException e)
+                        when (e.Response.StatusCode == HttpStatusCode.NotFound)
+                    {
+                        return null;
+                    }
+                });
+
+        protected abstract Task<T> GetAsync(GetContext context);
     }
 }

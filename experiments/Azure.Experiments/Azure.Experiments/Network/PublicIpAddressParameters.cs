@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Experiments.Network
         {
         }
 
-        public override Task<PublicIPAddress> GetAsync(GetContext context)
+        protected override Task<PublicIPAddress> GetAsync(GetContext context)
             => context
                 .Context
                 .CreateNetwork()
