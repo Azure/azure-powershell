@@ -207,7 +207,16 @@ function Cleanup-OldCertificates
     $certificatePattern = Get-CertificateName '*'
     Get-AzureKeyVaultCertificate $keyVault |
         Where-Object {$_.Name -like $certificatePattern} |
-        Remove-AzureKeyVaultCertificate -Force -Confirm:$false
+        Remove-AzureKeyVaultCertificate -Name $_.Name -VaultName $_.VaultName -Force -Confirm:$false
+
+    if($global:softDeleteEnabled -eq $true) 
+    {
+      Get-AzureKeyVaultCertificate -VaultName $keyVault -InRemovedState |
+      Where-Object {$_.Name -like $certificatePattern} | %{
+        Remove-AzureKeyVaultCertificate -Name $_.Name -VaultName $_.VaultName -InRemovedState -Force -Confirm:$false
+        Wait-Seconds 5;
+      }
+    }
 }
 
 <#
@@ -313,50 +322,49 @@ function Cleanup-SingleKeyTest
 
 function Cleanup-Key ([string]$keyName)
 {
-	$oldPref = $ErrorActionPreference	 
-	$ErrorActionPreference = "Stop"
-	try
+  $oldPref = $ErrorActionPreference	 
+  $ErrorActionPreference = "Stop"
+  try
+  {
+    $keyVault = Get-KeyVault
+    Write-Debug "Removing key with name $_ in vault $keyVault"
+    $catch = Remove-AzureKeyVaultKey $keyVault $keyName -Force -Confirm:$false
+    if($global:softDeleteEnabled -eq $true)
     {
-		$keyVault = Get-KeyVault
-		Write-Debug "Removing key with name $_ in vault $keyVault"
-		$catch = Remove-AzureKeyVaultKey $keyVault $keyName -Force -Confirm:$false
-		if($global:softDeleteEnabled -eq $true)
-		{
-			Wait-ForDeletedKey $keyVault $keyName
-			Remove-AzureKeyVaultKey $keyVault $keyName -Force -Confirm:$false -InRemovedState
-		}
+      Wait-ForDeletedKey $keyVault $keyName
+      Remove-AzureKeyVaultKey $keyVault $keyName -Force -Confirm:$false -InRemovedState
     }
-	catch {
-
-	}
-	finally 
-	{
-		$ErrorActionPreference = $oldPref	 
-	}
+  }
+  catch {
+  
+  }
+  finally 
+  {
+    $ErrorActionPreference = $oldPref	 
+  }
 }
 
 function Cleanup-Secret ([string]$secretName)
 {
-	$oldPref = $ErrorActionPreference	 
-	$ErrorActionPreference = "Stop"
-	try
+  $oldPref = $ErrorActionPreference	 
+  $ErrorActionPreference = "Stop"
+  try
+  {
+    $keyVault = Get-KeyVault
+    Write-Debug "Removing secret with name $_ in vault $keyVault"
+    $catch = Remove-AzureKeyVaultSecret $keyVault $secretName -Force -Confirm:$false
+    if($global:softDeleteEnabled -eq $true)
     {
-		$keyVault = Get-KeyVault
-		Write-Debug "Removing secret with name $_ in vault $keyVault"
-		$catch = Remove-AzureKeyVaultSecret $keyVault $secretName -Force -Confirm:$false
-		if($global:softDeleteEnabled -eq $true)
-		{
-			Wait-ForDeletedSecret $keyVault $secretName
-			Remove-AzureKeyVaultSecret $keyVault $secretName -Force -Confirm:$false -InRemovedState
-		}
+      Wait-ForDeletedSecret $keyVault $secretName
+      Remove-AzureKeyVaultSecret $keyVault $secretName -Force -Confirm:$false -InRemovedState
     }
-	catch {
-
-	}
-    finally 
-    {
-		$ErrorActionPreference = $oldPref
-    }
+  }
+  catch {
+  }
+  finally 
+  {
+    $ErrorActionPreference = $oldPref
+  }
 }
 
 <#
@@ -389,6 +397,11 @@ function Cleanup-SingleCertificateTest
             $keyVault = Get-KeyVault
             Write-Debug "Removing certificate with name $_ in vault $keyVault"
             $catch = Remove-AzureKeyVaultCertificate $keyVault $_ -Force -Confirm:$false
+		    if($global:softDeleteEnabled -eq $true)
+		    {
+			    Wait-ForDeletedCertificate $keyVault $_
+			    Remove-AzureKeyVaultCertificate $keyVault $_ -Force -Confirm:$false -InRemovedState
+		    }
          }
          catch 
          {
@@ -450,6 +463,30 @@ function Wait-ForDeletedSecret ([string] $vault, [string] $secretName)
 	} while($secret -ne $null)
 
 	return $secret
+}
+
+<#
+.SYNOPSIS
+Waits for a deleted certificate to show up.
+#>
+function Wait-ForDeletedCertificate ([string] $vault, [string] $certName)
+{
+	$cert = $null
+	do {
+		try
+		{
+			$cert = Get-AzureKeyVaultCertificate -VaultName $vault -Name $certName -InRemovedState
+		}
+		catch
+		{
+			# Certificate is not found.
+			$cert = $null
+			Write-Host "Sleeping for 5 seconds to wait for deleted certificate $certName"
+			Wait-Seconds 5
+		}
+	} while($cert -ne $null)
+
+	return $cert
 }
 
 <#

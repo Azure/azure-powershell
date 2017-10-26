@@ -282,7 +282,7 @@ PS C:\&gt; Add-AzureCertificate -ServiceName "ContosoService" -CertToDeploy $Cer
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>HostCaching</maml:name>
 <maml:Description><maml:para>Specifies the host level caching settings of the disk. Valid values are:
 </maml:para>
-<maml:para>-- None 
+<maml:para>-- None
 </maml:para>
 <maml:para>-- ReadOnly
 </maml:para>
@@ -368,7 +368,7 @@ PS C:\&gt; Add-AzureCertificate -ServiceName "ContosoService" -CertToDeploy $Cer
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>HostCaching</maml:name>
 <maml:Description><maml:para>Specifies the host level caching settings of the disk. Valid values are:
 </maml:para>
-<maml:para>-- None 
+<maml:para>-- None
 </maml:para>
 <maml:para>-- ReadOnly
 </maml:para>
@@ -445,7 +445,7 @@ PS C:\&gt; Add-AzureCertificate -ServiceName "ContosoService" -CertToDeploy $Cer
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>HostCaching</maml:name>
 <maml:Description><maml:para>Specifies the host level caching settings of the disk. Valid values are:
 </maml:para>
-<maml:para>-- None 
+<maml:para>-- None
 </maml:para>
 <maml:para>-- ReadOnly
 </maml:para>
@@ -541,7 +541,7 @@ PS C:\&gt; Add-AzureCertificate -ServiceName "ContosoService" -CertToDeploy $Cer
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>HostCaching</maml:name>
 <maml:Description><maml:para>Specifies the host level caching settings of the disk. Valid values are:
 </maml:para>
-<maml:para>-- None 
+<maml:para>-- None
 </maml:para>
 <maml:para>-- ReadOnly
 </maml:para>
@@ -699,7 +699,7 @@ PS C:\&gt; Add-AzureCertificate -ServiceName "ContosoService" -CertToDeploy $Cer
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>OS</maml:name>
 <maml:Description><maml:para>Specifies the operating system type for a system disk. Valid values are:
 </maml:para>
-<maml:para>-- Windows 
+<maml:para>-- Windows
 </maml:para>
 <maml:para>-- Linux
 </maml:para>
@@ -770,7 +770,7 @@ PS C:\&gt; Add-AzureCertificate -ServiceName "ContosoService" -CertToDeploy $Cer
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>OS</maml:name>
 <maml:Description><maml:para>Specifies the operating system type for a system disk. Valid values are:
 </maml:para>
-<maml:para>-- Windows 
+<maml:para>-- Windows
 </maml:para>
 <maml:para>-- Linux
 </maml:para>
@@ -1028,7 +1028,7 @@ PS C:\&gt; Add-AzureCertificate -ServiceName "ContosoService" -CertToDeploy $Cer
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none"><maml:name>Protocol</maml:name>
 <maml:Description><maml:para>Specifies the protocol of the endpoint. Valid values are:
 </maml:para>
-<maml:para>-- tcp 
+<maml:para>-- tcp
 </maml:para>
 <maml:para>-- udp
 </maml:para>
@@ -1095,7 +1095,7 @@ PS C:\&gt; Add-AzureCertificate -ServiceName "ContosoService" -CertToDeploy $Cer
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>LoadBalancerDistribution</maml:name>
 <maml:Description><maml:para>Specifies the load balancer distribution algorithm. Valid values are:
 </maml:para>
-<maml:para>-- sourceIP. A two tuple affinity: Source IP, Destination IP 
+<maml:para>-- sourceIP. A two tuple affinity: Source IP, Destination IP
 </maml:para>
 <maml:para>-- sourceIPProtocol. A three tuple affinity: Source IP, Destination IP, Protocol
 </maml:para>
@@ -1185,7 +1185,7 @@ PS C:\&gt; Add-AzureCertificate -ServiceName "ContosoService" -CertToDeploy $Cer
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none"><maml:name>Protocol</maml:name>
 <maml:Description><maml:para>Specifies the protocol of the endpoint. Valid values are:
 </maml:para>
-<maml:para>-- tcp 
+<maml:para>-- tcp
 </maml:para>
 <maml:para>-- udp
 </maml:para>
@@ -1252,7 +1252,7 @@ PS C:\&gt; Add-AzureCertificate -ServiceName "ContosoService" -CertToDeploy $Cer
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>LoadBalancerDistribution</maml:name>
 <maml:Description><maml:para>Specifies the load balancer distribution algorithm. Valid values are:
 </maml:para>
-<maml:para>-- sourceIP. A two tuple affinity: Source IP, Destination IP 
+<maml:para>-- sourceIP. A two tuple affinity: Source IP, Destination IP
 </maml:para>
 <maml:para>-- sourceIPProtocol. A three tuple affinity: Source IP, Destination IP, Protocol
 </maml:para>
@@ -1342,7 +1342,7 @@ PS C:\&gt; Add-AzureCertificate -ServiceName "ContosoService" -CertToDeploy $Cer
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none"><maml:name>Protocol</maml:name>
 <maml:Description><maml:para>Specifies the protocol of the endpoint. Valid values are:
 </maml:para>
-<maml:para>-- tcp 
+<maml:para>-- tcp
 </maml:para>
 <maml:para>-- udp
 </maml:para>
@@ -1409,7 +1409,7 @@ PS C:\&gt; Add-AzureCertificate -ServiceName "ContosoService" -CertToDeploy $Cer
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>LoadBalancerDistribution</maml:name>
 <maml:Description><maml:para>Specifies the load balancer distribution algorithm. Valid values are:
 </maml:para>
-<maml:para>-- sourceIP. A two tuple affinity: Source IP, Destination IP 
+<maml:para>-- sourceIP. A two tuple affinity: Source IP, Destination IP
 </maml:para>
 <maml:para>-- sourceIPProtocol. A three tuple affinity: Source IP, Destination IP, Protocol
 </maml:para>
@@ -1489,7 +1489,7 @@ PS C:\&gt; Add-AzureCertificate -ServiceName "ContosoService" -CertToDeploy $Cer
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ProbeProtocol</maml:name>
 <maml:Description><maml:para>Specifies the port protocol. Valid values are:
 </maml:para>
-<maml:para>-- tcp 
+<maml:para>-- tcp
 </maml:para>
 <maml:para>-- http
 </maml:para>
@@ -1540,7 +1540,7 @@ PS C:\&gt; Add-AzureCertificate -ServiceName "ContosoService" -CertToDeploy $Cer
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none"><maml:name>Protocol</maml:name>
 <maml:Description><maml:para>Specifies the protocol of the endpoint. Valid values are:
 </maml:para>
-<maml:para>-- tcp 
+<maml:para>-- tcp
 </maml:para>
 <maml:para>-- udp
 </maml:para>
@@ -1607,7 +1607,7 @@ PS C:\&gt; Add-AzureCertificate -ServiceName "ContosoService" -CertToDeploy $Cer
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>LoadBalancerDistribution</maml:name>
 <maml:Description><maml:para>Specifies the load balancer distribution algorithm. Valid values are:
 </maml:para>
-<maml:para>-- sourceIP. A two tuple affinity: Source IP, Destination IP 
+<maml:para>-- sourceIP. A two tuple affinity: Source IP, Destination IP
 </maml:para>
 <maml:para>-- sourceIPProtocol. A three tuple affinity: Source IP, Destination IP, Protocol
 </maml:para>
@@ -1705,7 +1705,7 @@ PS C:\&gt; Add-AzureCertificate -ServiceName "ContosoService" -CertToDeploy $Cer
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ProbeProtocol</maml:name>
 <maml:Description><maml:para>Specifies the port protocol. Valid values are:
 </maml:para>
-<maml:para>-- tcp 
+<maml:para>-- tcp
 </maml:para>
 <maml:para>-- http
 </maml:para>
@@ -12525,7 +12525,7 @@ C:\PS&gt; Get-AzureSubnet -VM $VM</dev:code>
           &lt;/xs:complexType&gt;
           &lt;/xs:element&gt;
           &lt;/xs:schema&gt;
-          SampleConfig               : 
+          SampleConfig               :
           OperationDescription       : Get-AzureVMAvailableExtension
           OperationId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
           OperationStatus            : Succeeded</dev:code>
@@ -12538,7 +12538,7 @@ C:\PS&gt; Get-AzureSubnet -VM $VM</dev:code>
           Publisher                  : Contoso.Compute
           ExtensionName              : VMAccessAgent
           Version                    : 1.0.2
-          PublicConfigurationSchema  : 
+          PublicConfigurationSchema  :
           &lt;?xml version="1.0" encoding="utf-8"?&gt;
           &lt;xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified"
           xmlns:xs="http://www.w3.org/2001/XMLSchema"&gt;
@@ -12551,7 +12551,7 @@ C:\PS&gt; Get-AzureSubnet -VM $VM</dev:code>
           &lt;/xs:element&gt;
           &lt;/xs:schema&gt;
 
-          PrivateConfigurationSchema : 
+          PrivateConfigurationSchema :
           &lt;?xml version="1.0" encoding="utf-8"?&gt;
           &lt;xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified"
           xmlns:xs="http://www.w3.org/2001/XMLSchema"&gt;
@@ -12564,7 +12564,7 @@ C:\PS&gt; Get-AzureSubnet -VM $VM</dev:code>
           &lt;/xs:element&gt;
           &lt;/xs:schema&gt;
 
-          SampleConfig               : 
+          SampleConfig               :
           OperationDescription       : Get-AzureVMAvailableExtension
           OperationId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
           OperationStatus            : Succeeded
@@ -12594,7 +12594,7 @@ C:\PS&gt; Get-AzureSubnet -VM $VM</dev:code>
           &lt;/xs:complexType&gt;
           &lt;/xs:element&gt;
           &lt;/xs:schema&gt;
-          SampleConfig               : 
+          SampleConfig               :
           OperationDescription       : Get-AzureVMAvailableExtension
           OperationId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
           OperationStatus            : Succeeded</dev:code>
@@ -12629,7 +12629,7 @@ C:\PS&gt; Get-AzureSubnet -VM $VM</dev:code>
           &lt;/xs:complexType&gt;
           &lt;/xs:element&gt;
           &lt;/xs:schema&gt;
-          SampleConfig               : 
+          SampleConfig               :
           OperationDescription       : Get-AzureVMAvailableExtension
           OperationId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
           OperationStatus            : Succeeded</dev:code>
@@ -18277,7 +18277,7 @@ C:\PS&gt;$MyOSImages = Get-AzureVMImage</dev:code>
 </command:example>
 <command:example><maml:title>--------------------------  Example 2: Create a virtual machine that uses a configuration setting object  --------------------------</maml:title>
 <dev:code>PS C:\&gt;Add-AzureCertificate -ServiceName "ContosoService" -CertToDeploy "C:\temp\ContosoCert.cer"
-PS C:\&gt; $CertificateSetting = New-AzureCertificateSetting -Thumbprint "D7BECD4D63EBAF86023BB41FA5FBF5C2C924902A" -StoreName "My" 
+PS C:\&gt; $CertificateSetting = New-AzureCertificateSetting -Thumbprint "D7BECD4D63EBAF86023BB41FA5FBF5C2C924902A" -StoreName "My"
 PS C:\&gt; $Image = Get-AzureVMImage -ImageName "ContosoStandard"
 PS C:\&gt; New-AzureVMConfig -Name "VirtualMachine17" -InstanceSize Small -ImageName $Image | Add-AzureProvisioningConfig -Windows -Certificates $CertificateSetting -Password "password" | New-AzureVM -ServiceName "ContosoService"</dev:code>
 <dev:remarks><maml:para>The first command adds the certificate ContosoCert.cer to the service named ContosoService by using the Add-AzureCertificate cmdlet.
@@ -25345,7 +25345,7 @@ PS C:\&gt; $VirtualMachine02 = New-AzureVMConfig -Name "VirtualMachine02" -Insta
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>--------------------------  Example 1: Create a Windows virtual machine configuration  --------------------------</maml:title>
-<dev:code>PS C:\&gt;$Image = (Get-AzureVMImage)[4].ImageName 
+<dev:code>PS C:\&gt;$Image = (Get-AzureVMImage)[4].ImageName
 C:\PS&gt; New-AzureVMConfig -Name "MyVM1" -InstanceSize ExtraSmall -ImageName $Image | Add-AzureProvisioningConfig -Windows -Password $AdminPassword | Add-AzureDataDisk -CreateNew -DiskSizeInGB 50 -DiskLabel "Datadisk1" -LUN 0 | New-AzureVM -ServiceName "MySvc1"</dev:code>
 <dev:remarks><maml:para>This command creates a Windows virtual machine configuration with operating system disk, data disk and provisioning configuration. This configuration is then used to create a new virtual machine.
 </maml:para>
@@ -36741,7 +36741,7 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService" -Name "VirtualMachine07" | 
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none"><maml:name>HostCaching</maml:name>
 <maml:Description><maml:para>Specifies the host level caching settings of the disk. Valid values are:
 </maml:para>
-<maml:para>-- None 
+<maml:para>-- None
 </maml:para>
 <maml:para>-- ReadOnly
 </maml:para>
@@ -36855,7 +36855,7 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService" -Name "VirtualMachine07" | 
 <command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none"><maml:name>HostCaching</maml:name>
 <maml:Description><maml:para>Specifies the host level caching settings of the disk. Valid values are:
 </maml:para>
-<maml:para>-- None 
+<maml:para>-- None
 </maml:para>
 <maml:para>-- ReadOnly
 </maml:para>
@@ -37024,7 +37024,7 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService" -Name "VirtualMachine07" | 
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="5" aliases="none"><maml:name>Mode</maml:name>
 <maml:Description><maml:para>Specifies the mode of upgrade. Valid values are:
 </maml:para>
-<maml:para>-- Auto 
+<maml:para>-- Auto
 </maml:para>
 <maml:para>-- Manual
 </maml:para>
@@ -37279,7 +37279,7 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService" -Name "VirtualMachine07" | 
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="5" aliases="none"><maml:name>Mode</maml:name>
 <maml:Description><maml:para>Specifies the mode of upgrade. Valid values are:
 </maml:para>
-<maml:para>-- Auto 
+<maml:para>-- Auto
 </maml:para>
 <maml:para>-- Manual
 </maml:para>
@@ -37607,7 +37607,7 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService" -Name "VirtualMachine07" | 
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none"><maml:name>Protocol</maml:name>
 <maml:Description><maml:para>Specifies the protocol of the endpoint. Valid values are:
 </maml:para>
-<maml:para>-- tcp 
+<maml:para>-- tcp
 </maml:para>
 <maml:para>-- udp
 </maml:para>
@@ -37674,7 +37674,7 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService" -Name "VirtualMachine07" | 
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>LoadBalancerDistribution</maml:name>
 <maml:Description><maml:para>Specifies the load balancer distribution algorithm. Valid values are:
 </maml:para>
-<maml:para>-- sourceIP. A two tuple affinity: Source IP, Destination IP 
+<maml:para>-- sourceIP. A two tuple affinity: Source IP, Destination IP
 </maml:para>
 <maml:para>-- sourceIPProtocol. A three tuple affinity: Source IP, Destination IP, Protocol
 </maml:para>
@@ -37747,7 +37747,7 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService" -Name "VirtualMachine07" | 
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none"><maml:name>Protocol</maml:name>
 <maml:Description><maml:para>Specifies the protocol of the endpoint. Valid values are:
 </maml:para>
-<maml:para>-- tcp 
+<maml:para>-- tcp
 </maml:para>
 <maml:para>-- udp
 </maml:para>
@@ -37814,7 +37814,7 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService" -Name "VirtualMachine07" | 
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>LoadBalancerDistribution</maml:name>
 <maml:Description><maml:para>Specifies the load balancer distribution algorithm. Valid values are:
 </maml:para>
-<maml:para>-- sourceIP. A two tuple affinity: Source IP, Destination IP 
+<maml:para>-- sourceIP. A two tuple affinity: Source IP, Destination IP
 </maml:para>
 <maml:para>-- sourceIPProtocol. A three tuple affinity: Source IP, Destination IP, Protocol
 </maml:para>
@@ -38284,7 +38284,7 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService" -Name "VirtualMachine07" | 
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Protocol</maml:name>
 <maml:Description><maml:para>Specifies the protocol of the endpoints. Valid values are:
 </maml:para>
-<maml:para>-- TCP 
+<maml:para>-- TCP
 </maml:para>
 <maml:para>-- UDP
 </maml:para>
@@ -38351,7 +38351,7 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService" -Name "VirtualMachine07" | 
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>LoadBalancerDistribution</maml:name>
 <maml:Description><maml:para>Specifies the load balancer distribution algorithm. Valid values are:
 </maml:para>
-<maml:para>-- sourceIP. A two tuple affinity: Source IP, Destination IP 
+<maml:para>-- sourceIP. A two tuple affinity: Source IP, Destination IP
 </maml:para>
 <maml:para>-- sourceIPProtocol. A three tuple affinity: Source IP, Destination IP, Protocol
 </maml:para>
@@ -38459,7 +38459,7 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService" -Name "VirtualMachine07" | 
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Protocol</maml:name>
 <maml:Description><maml:para>Specifies the protocol of the endpoints. Valid values are:
 </maml:para>
-<maml:para>-- TCP 
+<maml:para>-- TCP
 </maml:para>
 <maml:para>-- UDP
 </maml:para>
@@ -38526,7 +38526,7 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService" -Name "VirtualMachine07" | 
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>LoadBalancerDistribution</maml:name>
 <maml:Description><maml:para>Specifies the load balancer distribution algorithm. Valid values are:
 </maml:para>
-<maml:para>-- sourceIP. A two tuple affinity: Source IP, Destination IP 
+<maml:para>-- sourceIP. A two tuple affinity: Source IP, Destination IP
 </maml:para>
 <maml:para>-- sourceIPProtocol. A three tuple affinity: Source IP, Destination IP, Protocol
 </maml:para>
@@ -38634,7 +38634,7 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService" -Name "VirtualMachine07" | 
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Protocol</maml:name>
 <maml:Description><maml:para>Specifies the protocol of the endpoints. Valid values are:
 </maml:para>
-<maml:para>-- TCP 
+<maml:para>-- TCP
 </maml:para>
 <maml:para>-- UDP
 </maml:para>
@@ -38701,7 +38701,7 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService" -Name "VirtualMachine07" | 
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>LoadBalancerDistribution</maml:name>
 <maml:Description><maml:para>Specifies the load balancer distribution algorithm. Valid values are:
 </maml:para>
-<maml:para>-- sourceIP. A two tuple affinity: Source IP, Destination IP 
+<maml:para>-- sourceIP. A two tuple affinity: Source IP, Destination IP
 </maml:para>
 <maml:para>-- sourceIPProtocol. A three tuple affinity: Source IP, Destination IP, Protocol
 </maml:para>
@@ -39243,7 +39243,7 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService" -Name "VirtualMachine07" | 
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none"><maml:name>HostCaching</maml:name>
 <maml:Description><maml:para>Specifies the host cache attribute for the operating system disk. Valid values are:
 </maml:para>
-<maml:para>-- ReadOnly 
+<maml:para>-- ReadOnly
 </maml:para>
 <maml:para>-- ReadWrite
 </maml:para>
@@ -39301,7 +39301,7 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService" -Name "VirtualMachine07" | 
 <command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none"><maml:name>HostCaching</maml:name>
 <maml:Description><maml:para>Specifies the host cache attribute for the operating system disk. Valid values are:
 </maml:para>
-<maml:para>-- ReadOnly 
+<maml:para>-- ReadOnly
 </maml:para>
 <maml:para>-- ReadWrite
 </maml:para>
@@ -39368,7 +39368,7 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService" -Name "VirtualMachine07" | 
 </dev:remarks>
 </command:example>
 <command:example><maml:title>--------------------------  Example 2: Set the host cache mode to ReadWrite  --------------------------</maml:title>
-<dev:code>PS C:\&gt;$VM = Get-AzureVM -ServiceName "ContosoService" -Name "VirtualMachine02"
+<dev:code>PS C:\&gt;$myVM2 = Get-AzureVM -ServiceName "ContosoService" -Name "VirtualMachine02"
 PS C:\&gt; Set-AzureOSDisk "ReadWrite" -VM $myVM2</dev:code>
 <dev:remarks><maml:para>The first command gets the virtual machine named VirtualMachine02 in the service named ContosoService, and then stores it in the variable.
 </maml:para>
@@ -41538,7 +41538,7 @@ PS C:\&gt; Set-AzureOSDisk "ReadWrite" -VM $myVM2</dev:code>
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>--------------------------  Example 1: Enable the extension  --------------------------</maml:title>
-<dev:code>PS C:\&gt; [System.Xml.XmlDocument] $XmlConfig = New-Object System.Xml.XmlDocument 
+<dev:code>PS C:\&gt; [System.Xml.XmlDocument] $XmlConfig = New-Object System.Xml.XmlDocument
 PS C:\&gt; $XmlConfig.load('C:\configuration\contosoVM.xml')
 PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName "ContosoService03" -AntimalwareConfiguration $XmlConfig
 Operation succeeded</dev:code>
@@ -41547,16 +41547,16 @@ Operation succeeded</dev:code>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>--------------------------  Example 2: Enable the extension for the Staging slot  --------------------------</maml:title>
-<dev:code>PS C:\&gt; [System.Xml.XmlDocument] $XmlConfig = New-Object System.Xml.XmlDocument 
+<dev:code>PS C:\&gt; [System.Xml.XmlDocument] $XmlConfig = New-Object System.Xml.XmlDocument
 PS C:\&gt; $XmlConfig.load('C:\configuration\contosoVM.xml')
-PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName "ContosoService03" -Slot "Staging" -AntimalwareConfiguration $XmlConfig 
+PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName "ContosoService03" -Slot "Staging" -AntimalwareConfiguration $XmlConfig
 Operation succeeded</dev:code>
 <dev:remarks><maml:para>The first two commands create an XmlDocument object that contains a configuration for the Microsoft Antimalware extension, and then stores it in the $XmlConfig variable.
 </maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>--------------------------  Example 3: Enable the extension with monitoring  --------------------------</maml:title>
-<dev:code>PS C:\&gt;System.Xml.XmlDocument] $XmlConfig = New-Object System.Xml.XmlDocument 
+<dev:code>PS C:\&gt;System.Xml.XmlDocument] $XmlConfig = New-Object System.Xml.XmlDocument
 PS C:\&gt; $XmlConfig.load('C:\configuration\contosoVM.xml')
 PS C:\&gt; $StorageContext = New-AzureStorageContext -StorageAccountName "contosostoragemain" -StorageAccountKey (Get-AzureStorageKey -StorageAccountName "Contosostoragemain").Primary
 PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName "ContosoService03" -AntimalwareConfiguration $XmlConfig -Monitoring ON -StorageContext $StorageContext</dev:code>
@@ -46825,24 +46825,24 @@ PS C:\&gt; Update-AzureVM -ServiceName $Service_Name -Name $VM_Name -VM $VM_Upda
 <dev:code>PS C:\&gt;Set-AzureVMDscExtension -VM $VM -ConfigurationArchive MyConfiguration.ps1.zip  -ConfigurationName MyConfiguration -ConfigurationArgument @{ Path = 'C:\MyDirectory' }
 DeploymentName              : my-vm-svc
 Name                        : my-vm
-Label                       : 
+Label                       :
 VM                          : Microsoft.WindowsAzure.Commands.ServiceManagement.Model.PersistentVM
 InstanceStatus              : ReadyRole
 IpAddress                   : 10.10.10.10
-InstanceStateDetails        : 
+InstanceStateDetails        :
 PowerState                  : Started
-InstanceErrorCode           : 
+InstanceErrorCode           :
 InstanceFaultDomain         : 0
 InstanceName                : my-vm
 InstanceUpgradeDomain       : 0
 InstanceSize                : Small
-AvailabilitySetName         : 
+AvailabilitySetName         :
 DNSName                     : http://my-vm-svc.cloudapp.net/
 Status                      : ReadyRole
 GuestAgentStatus            : Microsoft.WindowsAzure.Commands.ServiceManagement.Model.PersistentVMModel.GuestAgentStatus
 ResourceExtensionStatusList : {Contoso.Compute.BGInfo}
-PublicIPAddress             : 
-PublicIPName                : 
+PublicIPAddress             :
+PublicIPName                :
 ServiceName                 : my-vm-svc
 OperationDescription        : Get-AzureVM
 OperationId                 : a0217a7af900c1f8a212299a3333cdbd6
@@ -46852,27 +46852,27 @@ OperationStatus             : OK</dev:code>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>--------------------------  Example 2: Configure the DSC extension on a virtual machine using a path to the configuration data  --------------------------</maml:title>
-<dev:code>PS C:\&gt;$VM | Set-AzureVMDscExtension -ConfigurationArchive MyConfiguration.ps1.zip  -ConfigurationName MyConfiguration -ConfigurationArgument @{ Credential = Get-Credential } -ConfigurationDataPath MyConfigurationData.psd1 
+<dev:code>PS C:\&gt;$VM | Set-AzureVMDscExtension -ConfigurationArchive MyConfiguration.ps1.zip  -ConfigurationName MyConfiguration -ConfigurationArgument @{ Credential = Get-Credential } -ConfigurationDataPath MyConfigurationData.psd1
 DeploymentName              : my-vm-svc
 Name                        : my-vm
-Label                       : 
+Label                       :
 VM                          : Microsoft.WindowsAzure.Commands.ServiceManagement.Model.PersistentVM
 InstanceStatus              : ReadyRole
 IpAddress                   : 10.10.10.10
-InstanceStateDetails        : 
+InstanceStateDetails        :
 PowerState                  : Started
-InstanceErrorCode           : 
+InstanceErrorCode           :
 InstanceFaultDomain         : 0
 InstanceName                : my-vm
 InstanceUpgradeDomain       : 0
 InstanceSize                : Small
-AvailabilitySetName         : 
+AvailabilitySetName         :
 DNSName                     : http://my-vm-svc.cloudapp.net/
 Status                      : ReadyRole
 GuestAgentStatus            : Microsoft.WindowsAzure.Commands.ServiceManagement.Model.PersistentVMModel.GuestAgentStatus
 ResourceExtensionStatusList : {Microsoft.Compute.BGInfo, Microsoft.Powershell.DSC}
-PublicIPAddress             : 
-PublicIPName                : 
+PublicIPAddress             :
+PublicIPName                :
 ServiceName                 : my-vm-svc
 OperationDescription        : Get-AzureVM
 OperationId                 : a0217a7af900c1f8a212299a3333cdbd7
@@ -48036,7 +48036,7 @@ PS C:\&gt; Update-AzureVMImage -ImageName "Image2" -Label "Test1" -Description "
 </maml:para>
 <maml:para>The acceptable values for this parameter are:
 </maml:para>
-<maml:para>-- ON. Collect Microsoft Antimalware events to storage context. 
+<maml:para>-- ON. Collect Microsoft Antimalware events to storage context.
 </maml:para>
 <maml:para>-- OFF. Do not collect Microsoft Antimalware events.
 </maml:para>
@@ -48131,7 +48131,7 @@ isEnabled=true/false   day=0-8 (0-daily, 1-Sunday, 2-Monday, ...., 7-Saturday, 8
 </maml:para>
 <maml:para>The acceptable values for this parameter are:
 </maml:para>
-<maml:para>-- ON. Collect Microsoft Antimalware events to storage context. 
+<maml:para>-- ON. Collect Microsoft Antimalware events to storage context.
 </maml:para>
 <maml:para>-- OFF. Do not collect Microsoft Antimalware events.
 </maml:para>
@@ -48244,7 +48244,7 @@ isEnabled=true/false   day=0-8 (0-daily, 1-Sunday, 2-Monday, ...., 7-Saturday, 8
 </maml:para>
 <maml:para>The acceptable values for this parameter are:
 </maml:para>
-<maml:para>-- ON. Collect Microsoft Antimalware events to storage context. 
+<maml:para>-- ON. Collect Microsoft Antimalware events to storage context.
 </maml:para>
 <maml:para>-- OFF. Do not collect Microsoft Antimalware events.
 </maml:para>
@@ -48375,7 +48375,7 @@ isEnabled=true/false   day=0-8 (0-daily, 1-Sunday, 2-Monday, ...., 7-Saturday, 8
 </maml:para>
 <maml:para>The acceptable values for this parameter are:
 </maml:para>
-<maml:para>-- ON. Collect Microsoft Antimalware events to storage context. 
+<maml:para>-- ON. Collect Microsoft Antimalware events to storage context.
 </maml:para>
 <maml:para>-- OFF. Do not collect Microsoft Antimalware events.
 </maml:para>

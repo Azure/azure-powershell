@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
 ms.assetid: B6487D26-2B6A-4938-B1CD-48EADD8D0C3C
-online version:
+online version: 
 schema: 2.0.0
 ---
 
@@ -46,7 +46,7 @@ Specifies the name of the Automation account into which this cmdlet imports a ru
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 1
@@ -61,7 +61,7 @@ Specifies a description for the imported runbook.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -76,7 +76,7 @@ ps_force
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -91,7 +91,7 @@ Specifies whether the runbook logs progress information.
 ```yaml
 Type: Boolean
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -106,7 +106,7 @@ Specifies whether the runbook logs detailed information.
 ```yaml
 Type: Boolean
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -151,7 +151,7 @@ Indicates that this cmdlet publishes the runbook that it imports.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -166,7 +166,7 @@ Specifies the name of the resource group for which this cmdlet imports a runbook
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -208,7 +208,7 @@ It is equivalent to GraphicalPowerShellWorkflow.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 Accepted values: PowerShell, GraphicalPowerShell, PowerShellWorkflow, GraphicalPowerShellWorkflow, Graph
 
 Required: True

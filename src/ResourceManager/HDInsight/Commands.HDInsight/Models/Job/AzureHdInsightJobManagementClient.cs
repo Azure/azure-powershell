@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             HdInsightJobManagementClient.JobManagement.KillJob(jobId);
         }
 
-        public Stream GetJobOutput(string jobid, IStorageAccess storageAccess)
+        public virtual Stream GetJobOutput(string jobid, IStorageAccess storageAccess)
         {
             var joboutput = HdInsightJobManagementClient.JobManagement.GetJobOutput(jobid, storageAccess);
             return joboutput;

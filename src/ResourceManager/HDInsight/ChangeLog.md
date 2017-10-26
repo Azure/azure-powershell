@@ -19,6 +19,12 @@
 -->
 ## Current Release
 
+## Version 3.4.1
+* Added support for Data Disks property in cluster creation
+    - Added parameter 'WorkerNodeDataDisksGroups' to the New-AzureHDInsightCluster cmdlet
+
+## Version 3.4.0
+
 ## Version 3.3.1
 
 ## Version 3.3.0

@@ -13,7 +13,7 @@ Imports a module into Automation.
 ## SYNTAX
 
 ```
-New-AzureRmAutomationModule [-Name] <String> [-ContentLink] <Uri> [-ResourceGroupName] <String>
+New-AzureRmAutomationModule [-Name] <String> -ContentLinkUri <Uri> [-ResourceGroupName] <String>
  [-AutomationAccountName] <String> [<CommonParameters>]
 ```
 
@@ -64,16 +64,14 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ContentLink
-Specifies the URL of the .zip file that contains a module that this cmdlet imports.
-
-```yaml
+### -ContentLinkUri
+The url to a module zip package.```yaml
 Type: Uri
 Parameter Sets: (All)
-Aliases: 
+Aliases: ContentLink
 
 Required: True
-Position: 3
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

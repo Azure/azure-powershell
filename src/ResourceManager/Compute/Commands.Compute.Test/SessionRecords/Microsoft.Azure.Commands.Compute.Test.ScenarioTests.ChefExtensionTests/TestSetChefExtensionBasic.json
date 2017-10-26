@@ -103,8 +103,8 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/18e9abd8-9476-4122-b7aa-fe6482e091fc/resourceGroups/crptestps8718/providers/Microsoft.Network/virtualNetworks/vnetcrptestps8718?api-version=2017-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThlOWFiZDgtOTQ3Ni00MTIyLWI3YWEtZmU2NDgyZTA5MWZjL3Jlc291cmNlR3JvdXBzL2NycHRlc3Rwczg3MTgvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL3ZpcnR1YWxOZXR3b3Jrcy92bmV0Y3JwdGVzdHBzODcxOD9hcGktdmVyc2lvbj0yMDE3LTA2LTAx",
+      "RequestUri": "/subscriptions/18e9abd8-9476-4122-b7aa-fe6482e091fc/resourceGroups/crptestps8718/providers/Microsoft.Network/virtualNetworks/vnetcrptestps8718?api-version=2017-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThlOWFiZDgtOTQ3Ni00MTIyLWI3YWEtZmU2NDgyZTA5MWZjL3Jlc291cmNlR3JvdXBzL2NycHRlc3Rwczg3MTgvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL3ZpcnR1YWxOZXR3b3Jrcy92bmV0Y3JwdGVzdHBzODcxOD9hcGktdmVyc2lvbj0yMDE3LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -157,8 +157,8 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/18e9abd8-9476-4122-b7aa-fe6482e091fc/resourceGroups/crptestps8718/providers/Microsoft.Network/virtualNetworks/vnetcrptestps8718?api-version=2017-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThlOWFiZDgtOTQ3Ni00MTIyLWI3YWEtZmU2NDgyZTA5MWZjL3Jlc291cmNlR3JvdXBzL2NycHRlc3Rwczg3MTgvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL3ZpcnR1YWxOZXR3b3Jrcy92bmV0Y3JwdGVzdHBzODcxOD9hcGktdmVyc2lvbj0yMDE3LTA2LTAx",
+      "RequestUri": "/subscriptions/18e9abd8-9476-4122-b7aa-fe6482e091fc/resourceGroups/crptestps8718/providers/Microsoft.Network/virtualNetworks/vnetcrptestps8718?api-version=2017-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThlOWFiZDgtOTQ3Ni00MTIyLWI3YWEtZmU2NDgyZTA5MWZjL3Jlc291cmNlR3JvdXBzL2NycHRlc3Rwczg3MTgvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL3ZpcnR1YWxOZXR3b3Jrcy92bmV0Y3JwdGVzdHBzODcxOD9hcGktdmVyc2lvbj0yMDE3LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -212,8 +212,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/18e9abd8-9476-4122-b7aa-fe6482e091fc/resourceGroups/crptestps8718/providers/Microsoft.Network/virtualNetworks/vnetcrptestps8718?api-version=2017-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThlOWFiZDgtOTQ3Ni00MTIyLWI3YWEtZmU2NDgyZTA5MWZjL3Jlc291cmNlR3JvdXBzL2NycHRlc3Rwczg3MTgvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL3ZpcnR1YWxOZXR3b3Jrcy92bmV0Y3JwdGVzdHBzODcxOD9hcGktdmVyc2lvbj0yMDE3LTA2LTAx",
+      "RequestUri": "/subscriptions/18e9abd8-9476-4122-b7aa-fe6482e091fc/resourceGroups/crptestps8718/providers/Microsoft.Network/virtualNetworks/vnetcrptestps8718?api-version=2017-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThlOWFiZDgtOTQ3Ni00MTIyLWI3YWEtZmU2NDgyZTA5MWZjL3Jlc291cmNlR3JvdXBzL2NycHRlc3Rwczg3MTgvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL3ZpcnR1YWxOZXR3b3Jrcy92bmV0Y3JwdGVzdHBzODcxOD9hcGktdmVyc2lvbj0yMDE3LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -273,8 +273,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/18e9abd8-9476-4122-b7aa-fe6482e091fc/resourceGroups/crptestps8718/providers/Microsoft.Network/virtualNetworks/vnetcrptestps8718?api-version=2017-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThlOWFiZDgtOTQ3Ni00MTIyLWI3YWEtZmU2NDgyZTA5MWZjL3Jlc291cmNlR3JvdXBzL2NycHRlc3Rwczg3MTgvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL3ZpcnR1YWxOZXR3b3Jrcy92bmV0Y3JwdGVzdHBzODcxOD9hcGktdmVyc2lvbj0yMDE3LTA2LTAx",
+      "RequestUri": "/subscriptions/18e9abd8-9476-4122-b7aa-fe6482e091fc/resourceGroups/crptestps8718/providers/Microsoft.Network/virtualNetworks/vnetcrptestps8718?api-version=2017-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThlOWFiZDgtOTQ3Ni00MTIyLWI3YWEtZmU2NDgyZTA5MWZjL3Jlc291cmNlR3JvdXBzL2NycHRlc3Rwczg3MTgvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL3ZpcnR1YWxOZXR3b3Jrcy92bmV0Y3JwdGVzdHBzODcxOD9hcGktdmVyc2lvbj0yMDE3LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -334,8 +334,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/18e9abd8-9476-4122-b7aa-fe6482e091fc/resourceGroups/crptestps8718/providers/Microsoft.Network/virtualNetworks/vnetcrptestps8718?api-version=2017-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThlOWFiZDgtOTQ3Ni00MTIyLWI3YWEtZmU2NDgyZTA5MWZjL3Jlc291cmNlR3JvdXBzL2NycHRlc3Rwczg3MTgvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL3ZpcnR1YWxOZXR3b3Jrcy92bmV0Y3JwdGVzdHBzODcxOD9hcGktdmVyc2lvbj0yMDE3LTA2LTAx",
+      "RequestUri": "/subscriptions/18e9abd8-9476-4122-b7aa-fe6482e091fc/resourceGroups/crptestps8718/providers/Microsoft.Network/virtualNetworks/vnetcrptestps8718?api-version=2017-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThlOWFiZDgtOTQ3Ni00MTIyLWI3YWEtZmU2NDgyZTA5MWZjL3Jlc291cmNlR3JvdXBzL2NycHRlc3Rwczg3MTgvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL3ZpcnR1YWxOZXR3b3Jrcy92bmV0Y3JwdGVzdHBzODcxOD9hcGktdmVyc2lvbj0yMDE3LTA5LTAx",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"addressSpace\": {\r\n      \"addressPrefixes\": [\r\n        \"10.0.0.0/16\"\r\n      ]\r\n    },\r\n    \"subnets\": [\r\n      {\r\n        \"properties\": {\r\n          \"addressPrefix\": \"10.0.0.0/24\",\r\n          \"resourceNavigationLinks\": []\r\n        },\r\n        \"name\": \"subnetcrptestps8718\"\r\n      }\r\n    ],\r\n    \"VirtualNetworkPeerings\": []\r\n  },\r\n  \"location\": \"East US\"\r\n}",
       "RequestHeaders": {
@@ -376,7 +376,7 @@
           "4fa750ad-5d51-49db-9b4d-cb080ffe6d3d"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/18e9abd8-9476-4122-b7aa-fe6482e091fc/providers/Microsoft.Network/locations/eastus/operations/4fa750ad-5d51-49db-9b4d-cb080ffe6d3d?api-version=2017-06-01"
+          "https://management.azure.com/subscriptions/18e9abd8-9476-4122-b7aa-fe6482e091fc/providers/Microsoft.Network/locations/eastus/operations/4fa750ad-5d51-49db-9b4d-cb080ffe6d3d?api-version=2017-09-01"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -404,8 +404,8 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/18e9abd8-9476-4122-b7aa-fe6482e091fc/providers/Microsoft.Network/locations/eastus/operations/4fa750ad-5d51-49db-9b4d-cb080ffe6d3d?api-version=2017-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThlOWFiZDgtOTQ3Ni00MTIyLWI3YWEtZmU2NDgyZTA5MWZjL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnMvNGZhNzUwYWQtNWQ1MS00OWRiLTliNGQtY2IwODBmZmU2ZDNkP2FwaS12ZXJzaW9uPTIwMTctMDYtMDE=",
+      "RequestUri": "/subscriptions/18e9abd8-9476-4122-b7aa-fe6482e091fc/providers/Microsoft.Network/locations/eastus/operations/4fa750ad-5d51-49db-9b4d-cb080ffe6d3d?api-version=2017-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThlOWFiZDgtOTQ3Ni00MTIyLWI3YWEtZmU2NDgyZTA5MWZjL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnMvNGZhNzUwYWQtNWQ1MS00OWRiLTliNGQtY2IwODBmZmU2ZDNkP2FwaS12ZXJzaW9uPTIwMTctMDktMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -456,8 +456,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/18e9abd8-9476-4122-b7aa-fe6482e091fc/resourceGroups/crptestps8718/providers/Microsoft.Network/publicIPAddresses/pubipcrptestps8718?api-version=2017-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThlOWFiZDgtOTQ3Ni00MTIyLWI3YWEtZmU2NDgyZTA5MWZjL3Jlc291cmNlR3JvdXBzL2NycHRlc3Rwczg3MTgvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL3B1YmxpY0lQQWRkcmVzc2VzL3B1YmlwY3JwdGVzdHBzODcxOD9hcGktdmVyc2lvbj0yMDE3LTA2LTAx",
+      "RequestUri": "/subscriptions/18e9abd8-9476-4122-b7aa-fe6482e091fc/resourceGroups/crptestps8718/providers/Microsoft.Network/publicIPAddresses/pubipcrptestps8718?api-version=2017-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThlOWFiZDgtOTQ3Ni00MTIyLWI3YWEtZmU2NDgyZTA5MWZjL3Jlc291cmNlR3JvdXBzL2NycHRlc3Rwczg3MTgvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL3B1YmxpY0lQQWRkcmVzc2VzL3B1YmlwY3JwdGVzdHBzODcxOD9hcGktdmVyc2lvbj0yMDE3LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -510,8 +510,8 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/18e9abd8-9476-4122-b7aa-fe6482e091fc/resourceGroups/crptestps8718/providers/Microsoft.Network/publicIPAddresses/pubipcrptestps8718?api-version=2017-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThlOWFiZDgtOTQ3Ni00MTIyLWI3YWEtZmU2NDgyZTA5MWZjL3Jlc291cmNlR3JvdXBzL2NycHRlc3Rwczg3MTgvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL3B1YmxpY0lQQWRkcmVzc2VzL3B1YmlwY3JwdGVzdHBzODcxOD9hcGktdmVyc2lvbj0yMDE3LTA2LTAx",
+      "RequestUri": "/subscriptions/18e9abd8-9476-4122-b7aa-fe6482e091fc/resourceGroups/crptestps8718/providers/Microsoft.Network/publicIPAddresses/pubipcrptestps8718?api-version=2017-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThlOWFiZDgtOTQ3Ni00MTIyLWI3YWEtZmU2NDgyZTA5MWZjL3Jlc291cmNlR3JvdXBzL2NycHRlc3Rwczg3MTgvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL3B1YmxpY0lQQWRkcmVzc2VzL3B1YmlwY3JwdGVzdHBzODcxOD9hcGktdmVyc2lvbj0yMDE3LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -565,8 +565,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/18e9abd8-9476-4122-b7aa-fe6482e091fc/resourceGroups/crptestps8718/providers/Microsoft.Network/publicIPAddresses/pubipcrptestps8718?api-version=2017-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThlOWFiZDgtOTQ3Ni00MTIyLWI3YWEtZmU2NDgyZTA5MWZjL3Jlc291cmNlR3JvdXBzL2NycHRlc3Rwczg3MTgvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL3B1YmxpY0lQQWRkcmVzc2VzL3B1YmlwY3JwdGVzdHBzODcxOD9hcGktdmVyc2lvbj0yMDE3LTA2LTAx",
+      "RequestUri": "/subscriptions/18e9abd8-9476-4122-b7aa-fe6482e091fc/resourceGroups/crptestps8718/providers/Microsoft.Network/publicIPAddresses/pubipcrptestps8718?api-version=2017-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThlOWFiZDgtOTQ3Ni00MTIyLWI3YWEtZmU2NDgyZTA5MWZjL3Jlc291cmNlR3JvdXBzL2NycHRlc3Rwczg3MTgvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL3B1YmxpY0lQQWRkcmVzc2VzL3B1YmlwY3JwdGVzdHBzODcxOD9hcGktdmVyc2lvbj0yMDE3LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -626,8 +626,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/18e9abd8-9476-4122-b7aa-fe6482e091fc/resourceGroups/crptestps8718/providers/Microsoft.Network/publicIPAddresses/pubipcrptestps8718?api-version=2017-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThlOWFiZDgtOTQ3Ni00MTIyLWI3YWEtZmU2NDgyZTA5MWZjL3Jlc291cmNlR3JvdXBzL2NycHRlc3Rwczg3MTgvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL3B1YmxpY0lQQWRkcmVzc2VzL3B1YmlwY3JwdGVzdHBzODcxOD9hcGktdmVyc2lvbj0yMDE3LTA2LTAx",
+      "RequestUri": "/subscriptions/18e9abd8-9476-4122-b7aa-fe6482e091fc/resourceGroups/crptestps8718/providers/Microsoft.Network/publicIPAddresses/pubipcrptestps8718?api-version=2017-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThlOWFiZDgtOTQ3Ni00MTIyLWI3YWEtZmU2NDgyZTA5MWZjL3Jlc291cmNlR3JvdXBzL2NycHRlc3Rwczg3MTgvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL3B1YmxpY0lQQWRkcmVzc2VzL3B1YmlwY3JwdGVzdHBzODcxOD9hcGktdmVyc2lvbj0yMDE3LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -687,8 +687,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/18e9abd8-9476-4122-b7aa-fe6482e091fc/resourceGroups/crptestps8718/providers/Microsoft.Network/publicIPAddresses/pubipcrptestps8718?api-version=2017-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThlOWFiZDgtOTQ3Ni00MTIyLWI3YWEtZmU2NDgyZTA5MWZjL3Jlc291cmNlR3JvdXBzL2NycHRlc3Rwczg3MTgvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL3B1YmxpY0lQQWRkcmVzc2VzL3B1YmlwY3JwdGVzdHBzODcxOD9hcGktdmVyc2lvbj0yMDE3LTA2LTAx",
+      "RequestUri": "/subscriptions/18e9abd8-9476-4122-b7aa-fe6482e091fc/resourceGroups/crptestps8718/providers/Microsoft.Network/publicIPAddresses/pubipcrptestps8718?api-version=2017-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThlOWFiZDgtOTQ3Ni00MTIyLWI3YWEtZmU2NDgyZTA5MWZjL3Jlc291cmNlR3JvdXBzL2NycHRlc3Rwczg3MTgvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL3B1YmxpY0lQQWRkcmVzc2VzL3B1YmlwY3JwdGVzdHBzODcxOD9hcGktdmVyc2lvbj0yMDE3LTA5LTAx",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"publicIPAllocationMethod\": \"Dynamic\",\r\n    \"dnsSettings\": {\r\n      \"domainNameLabel\": \"pubipcrptestps8718\"\r\n    }\r\n  },\r\n  \"location\": \"East US\"\r\n}",
       "RequestHeaders": {
@@ -729,7 +729,7 @@
           "4e1f2673-5477-48e7-aa07-3ef0d8495bd1"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/18e9abd8-9476-4122-b7aa-fe6482e091fc/providers/Microsoft.Network/locations/eastus/operations/4e1f2673-5477-48e7-aa07-3ef0d8495bd1?api-version=2017-06-01"
+          "https://management.azure.com/subscriptions/18e9abd8-9476-4122-b7aa-fe6482e091fc/providers/Microsoft.Network/locations/eastus/operations/4e1f2673-5477-48e7-aa07-3ef0d8495bd1?api-version=2017-09-01"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -757,8 +757,8 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/18e9abd8-9476-4122-b7aa-fe6482e091fc/providers/Microsoft.Network/locations/eastus/operations/4e1f2673-5477-48e7-aa07-3ef0d8495bd1?api-version=2017-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThlOWFiZDgtOTQ3Ni00MTIyLWI3YWEtZmU2NDgyZTA5MWZjL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnMvNGUxZjI2NzMtNTQ3Ny00OGU3LWFhMDctM2VmMGQ4NDk1YmQxP2FwaS12ZXJzaW9uPTIwMTctMDYtMDE=",
+      "RequestUri": "/subscriptions/18e9abd8-9476-4122-b7aa-fe6482e091fc/providers/Microsoft.Network/locations/eastus/operations/4e1f2673-5477-48e7-aa07-3ef0d8495bd1?api-version=2017-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThlOWFiZDgtOTQ3Ni00MTIyLWI3YWEtZmU2NDgyZTA5MWZjL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnMvNGUxZjI2NzMtNTQ3Ny00OGU3LWFhMDctM2VmMGQ4NDk1YmQxP2FwaS12ZXJzaW9uPTIwMTctMDktMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -809,8 +809,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/18e9abd8-9476-4122-b7aa-fe6482e091fc/resourceGroups/crptestps8718/providers/Microsoft.Network/networkInterfaces/niccrptestps8718?api-version=2017-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThlOWFiZDgtOTQ3Ni00MTIyLWI3YWEtZmU2NDgyZTA5MWZjL3Jlc291cmNlR3JvdXBzL2NycHRlc3Rwczg3MTgvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL25ldHdvcmtJbnRlcmZhY2VzL25pY2NycHRlc3Rwczg3MTg/YXBpLXZlcnNpb249MjAxNy0wNi0wMQ==",
+      "RequestUri": "/subscriptions/18e9abd8-9476-4122-b7aa-fe6482e091fc/resourceGroups/crptestps8718/providers/Microsoft.Network/networkInterfaces/niccrptestps8718?api-version=2017-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThlOWFiZDgtOTQ3Ni00MTIyLWI3YWEtZmU2NDgyZTA5MWZjL3Jlc291cmNlR3JvdXBzL2NycHRlc3Rwczg3MTgvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL25ldHdvcmtJbnRlcmZhY2VzL25pY2NycHRlc3Rwczg3MTg/YXBpLXZlcnNpb249MjAxNy0wOS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -863,8 +863,8 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/18e9abd8-9476-4122-b7aa-fe6482e091fc/resourceGroups/crptestps8718/providers/Microsoft.Network/networkInterfaces/niccrptestps8718?api-version=2017-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThlOWFiZDgtOTQ3Ni00MTIyLWI3YWEtZmU2NDgyZTA5MWZjL3Jlc291cmNlR3JvdXBzL2NycHRlc3Rwczg3MTgvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL25ldHdvcmtJbnRlcmZhY2VzL25pY2NycHRlc3Rwczg3MTg/YXBpLXZlcnNpb249MjAxNy0wNi0wMQ==",
+      "RequestUri": "/subscriptions/18e9abd8-9476-4122-b7aa-fe6482e091fc/resourceGroups/crptestps8718/providers/Microsoft.Network/networkInterfaces/niccrptestps8718?api-version=2017-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThlOWFiZDgtOTQ3Ni00MTIyLWI3YWEtZmU2NDgyZTA5MWZjL3Jlc291cmNlR3JvdXBzL2NycHRlc3Rwczg3MTgvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL25ldHdvcmtJbnRlcmZhY2VzL25pY2NycHRlc3Rwczg3MTg/YXBpLXZlcnNpb249MjAxNy0wOS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -918,8 +918,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/18e9abd8-9476-4122-b7aa-fe6482e091fc/resourceGroups/crptestps8718/providers/Microsoft.Network/networkInterfaces/niccrptestps8718?api-version=2017-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThlOWFiZDgtOTQ3Ni00MTIyLWI3YWEtZmU2NDgyZTA5MWZjL3Jlc291cmNlR3JvdXBzL2NycHRlc3Rwczg3MTgvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL25ldHdvcmtJbnRlcmZhY2VzL25pY2NycHRlc3Rwczg3MTg/YXBpLXZlcnNpb249MjAxNy0wNi0wMQ==",
+      "RequestUri": "/subscriptions/18e9abd8-9476-4122-b7aa-fe6482e091fc/resourceGroups/crptestps8718/providers/Microsoft.Network/networkInterfaces/niccrptestps8718?api-version=2017-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThlOWFiZDgtOTQ3Ni00MTIyLWI3YWEtZmU2NDgyZTA5MWZjL3Jlc291cmNlR3JvdXBzL2NycHRlc3Rwczg3MTgvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL25ldHdvcmtJbnRlcmZhY2VzL25pY2NycHRlc3Rwczg3MTg/YXBpLXZlcnNpb249MjAxNy0wOS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -979,8 +979,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/18e9abd8-9476-4122-b7aa-fe6482e091fc/resourceGroups/crptestps8718/providers/Microsoft.Network/networkInterfaces/niccrptestps8718?api-version=2017-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThlOWFiZDgtOTQ3Ni00MTIyLWI3YWEtZmU2NDgyZTA5MWZjL3Jlc291cmNlR3JvdXBzL2NycHRlc3Rwczg3MTgvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL25ldHdvcmtJbnRlcmZhY2VzL25pY2NycHRlc3Rwczg3MTg/YXBpLXZlcnNpb249MjAxNy0wNi0wMQ==",
+      "RequestUri": "/subscriptions/18e9abd8-9476-4122-b7aa-fe6482e091fc/resourceGroups/crptestps8718/providers/Microsoft.Network/networkInterfaces/niccrptestps8718?api-version=2017-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThlOWFiZDgtOTQ3Ni00MTIyLWI3YWEtZmU2NDgyZTA5MWZjL3Jlc291cmNlR3JvdXBzL2NycHRlc3Rwczg3MTgvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL25ldHdvcmtJbnRlcmZhY2VzL25pY2NycHRlc3Rwczg3MTg/YXBpLXZlcnNpb249MjAxNy0wOS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1040,8 +1040,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/18e9abd8-9476-4122-b7aa-fe6482e091fc/resourceGroups/crptestps8718/providers/Microsoft.Network/networkInterfaces/niccrptestps8718?api-version=2017-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThlOWFiZDgtOTQ3Ni00MTIyLWI3YWEtZmU2NDgyZTA5MWZjL3Jlc291cmNlR3JvdXBzL2NycHRlc3Rwczg3MTgvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL25ldHdvcmtJbnRlcmZhY2VzL25pY2NycHRlc3Rwczg3MTg/YXBpLXZlcnNpb249MjAxNy0wNi0wMQ==",
+      "RequestUri": "/subscriptions/18e9abd8-9476-4122-b7aa-fe6482e091fc/resourceGroups/crptestps8718/providers/Microsoft.Network/networkInterfaces/niccrptestps8718?api-version=2017-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThlOWFiZDgtOTQ3Ni00MTIyLWI3YWEtZmU2NDgyZTA5MWZjL3Jlc291cmNlR3JvdXBzL2NycHRlc3Rwczg3MTgvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL25ldHdvcmtJbnRlcmZhY2VzL25pY2NycHRlc3Rwczg3MTg/YXBpLXZlcnNpb249MjAxNy0wOS0wMQ==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"ipConfigurations\": [\r\n      {\r\n        \"properties\": {\r\n          \"applicationGatewayBackendAddressPools\": [],\r\n          \"loadBalancerBackendAddressPools\": [],\r\n          \"loadBalancerInboundNatRules\": [],\r\n          \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"subnet\": {\r\n            \"properties\": {\r\n              \"resourceNavigationLinks\": []\r\n            },\r\n            \"id\": \"/subscriptions/18e9abd8-9476-4122-b7aa-fe6482e091fc/resourceGroups/crptestps8718/providers/Microsoft.Network/virtualNetworks/vnetcrptestps8718/subnets/subnetcrptestps8718\"\r\n          },\r\n          \"primary\": true,\r\n          \"publicIPAddress\": {\r\n            \"id\": \"/subscriptions/18e9abd8-9476-4122-b7aa-fe6482e091fc/resourceGroups/crptestps8718/providers/Microsoft.Network/publicIPAddresses/pubipcrptestps8718\"\r\n          }\r\n        },\r\n        \"name\": \"ipconfig1\"\r\n      }\r\n    ],\r\n    \"enableAcceleratedNetworking\": false,\r\n    \"enableIPForwarding\": false\r\n  },\r\n  \"location\": \"East US\"\r\n}",
       "RequestHeaders": {
@@ -1079,7 +1079,7 @@
           "2abf6777-a55c-46fd-8a8d-3001e93e5f29"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/18e9abd8-9476-4122-b7aa-fe6482e091fc/providers/Microsoft.Network/locations/eastus/operations/2abf6777-a55c-46fd-8a8d-3001e93e5f29?api-version=2017-06-01"
+          "https://management.azure.com/subscriptions/18e9abd8-9476-4122-b7aa-fe6482e091fc/providers/Microsoft.Network/locations/eastus/operations/2abf6777-a55c-46fd-8a8d-3001e93e5f29?api-version=2017-09-01"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"

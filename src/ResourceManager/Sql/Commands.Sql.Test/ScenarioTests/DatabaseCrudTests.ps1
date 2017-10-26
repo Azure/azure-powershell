@@ -325,3 +325,61 @@ function Test-RemoveDatabaseInternal  ($location = "westcentralus")
 		Remove-ResourceGroupForTest $rg
 	}
 }
+
+
+<#
+	.SYNOPSIS
+	Tests listing and cancelling a database operation
+#>
+function Test-CancelDatabaseOperation
+{
+	Test-CancelDatabaseOperationInternal "North Europe"
+}
+
+<#
+	.SYNOPSIS
+	Tests listing and cancelling a database operation
+#>
+function Test-CancelDatabaseOperationInternal ($location = "westcentralus")
+{
+	# Setup
+	$rg = Create-ResourceGroupForTest
+	$server = Create-ServerForTest $rg $location
+
+	$databaseName = Get-DatabaseName
+	$db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
+		-Edition Standard -MaxSizeBytes 250GB -RequestedServiceObjectiveName S0
+	Assert-AreEqual $db.DatabaseName $databaseName
+
+	# Database will be Standard s0 with maxsize: 268435456000 (250GB)
+
+	try
+	{
+		# Alter all properties
+		$db1 = Set-AzureRmSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
+			-Edition Standard -RequestedServiceObjectiveName S1
+		Assert-AreEqual $db1.DatabaseName $db.DatabaseName
+		Assert-AreEqual $db1.Edition Standard
+		Assert-AreEqual $db1.CurrentServiceObjectiveName S1
+
+		# list and cancel a database operation
+		$dbactivity = Get-AzureRmSqlDatabaseActivity -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName
+		Assert-AreEqual $dbactivity.DatabaseName $db.DatabaseName
+		Assert-AreEqual $dbactivity.Operation "UpdateLogicalDatabase"
+
+		$dbactivityId = $dbactivity.OperationId
+		try
+		{
+			$dbactivityCancel = Stop-AzureRmSqlDatabaseActivity -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName -OperationId $dbactivityId
+		}
+		Catch
+		{
+			$ErrorMessage = $_.Exception.Message
+			Assert-AreEqual True $ErrorMessage.Contains("Cannot cancel database management operation '" + $dbactivityId + "' in the current state")
+		}
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}

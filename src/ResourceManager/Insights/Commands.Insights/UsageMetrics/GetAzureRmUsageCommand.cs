@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Commands.Insights.UsageMetrics
         /// </summary>
         protected override void ProcessRecordInternal()
         {
-            WriteWarning("Get-AzureRmUsage will be deprecated in a future release.");
+            WriteWarning("*** This cmdlet will be removed in the 5.0 release (November 2017.)");
 
             var queryFilter = new ODataQuery<UsageMetric>(this.ProcessParameters());
             string apiVersion = this.ApiVersion ?? DefaultApiVersion;
