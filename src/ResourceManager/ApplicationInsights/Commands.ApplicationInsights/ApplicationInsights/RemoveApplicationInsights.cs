@@ -18,7 +18,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ApplicationInsights
 {
-    [Cmdlet(VerbsCommon.Remove, ApplicationInsightsNounStr, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Remove, ApplicationInsightsNounStr, DefaultParameterSetName = ComponentNameParameterSet, SupportsShouldProcess = true)]
+    [OutputType(typeof(bool))]
     public class RemoveApplicationInsightsComponent : ApplicationInsightsBaseCmdlet
     {
         [Parameter(
@@ -43,7 +44,6 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
             Position = 0,
             Mandatory = true,
             ParameterSetName = ComponentNameParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Resource Group Name.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
@@ -52,7 +52,6 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
             Position = 1,
             Mandatory = true,
             ParameterSetName = ComponentNameParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Application Insights Component Name.")]
         [Alias(ApplicationInsightsComponentNameAlias, ComponentNameAlias)]
         [ValidateNotNullOrEmpty]

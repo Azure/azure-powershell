@@ -56,6 +56,7 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '3.4.1';
                @{ModuleName = 'AzureRM.AnalysisServices'; RequiredVersion = '0.4.7'; }, 
                @{ModuleName = 'Azure.AnalysisServices'; RequiredVersion = '0.4.7'; }, 
                @{ModuleName = 'AzureRM.ApiManagement'; RequiredVersion = '4.4.1'; }, 
+               @{ModuleName = 'AzureRM.ApplicationInsights'; RequiredVersion = '0.1.0'; },
                @{ModuleName = 'AzureRM.Automation'; RequiredVersion = '3.4.1'; }, 
                @{ModuleName = 'AzureRM.Backup'; RequiredVersion = '3.4.1'; }, 
                @{ModuleName = 'AzureRM.Batch'; RequiredVersion = '3.4.1'; }, 
@@ -103,8 +104,7 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '3.4.1';
                @{ModuleName = 'AzureRM.Tags'; RequiredVersion = '3.4.1'; }, 
                @{ModuleName = 'AzureRM.TrafficManager'; RequiredVersion = '3.4.1'; }, 
                @{ModuleName = 'AzureRM.UsageAggregates'; RequiredVersion = '3.4.1'; }, 
-               @{ModuleName = 'AzureRM.Websites'; RequiredVersion = '3.4.1'; }),
-			   @{ModuleName = 'AzureRM.ApplicationInsights'; RequiredVersion = '0.1.0'; })
+               @{ModuleName = 'AzureRM.Websites'; RequiredVersion = '3.4.1'; })
 
 # Assemblies that must be loaded prior to importing this module
 # RequiredAssemblies = @()

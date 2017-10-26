@@ -19,7 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ApplicationInsights
 {
-    [Cmdlet(VerbsCommon.Set, ApplicationInsightsDailyCapNounStr), OutputType(typeof(PSPricingPlan))]
+    [Cmdlet(VerbsCommon.Set, ApplicationInsightsDailyCapNounStr, DefaultParameterSetName = ComponentNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSPricingPlan))]
     public class SetApplicationInsightsDailyCapCommand : ApplicationInsightsBaseCmdlet
     {
         [Parameter(
@@ -44,7 +44,6 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
             Position = 0,
             Mandatory = true,
             ParameterSetName = ComponentNameParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Resource Group Name.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
@@ -53,30 +52,20 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
             Position = 1,
             Mandatory = true,
             ParameterSetName = ComponentNameParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Application Insights Component Name.")]
         [Alias(ApplicationInsightsComponentNameAlias, ComponentNameAlias)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(
-            Position = 2,
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Daily Cap.")]        
         public double? DailyCapGB { get; set; }
 
         [Parameter(
-            Position = 3,
             Mandatory = false,
             HelpMessage = "Stop send notification when hit cap.")]
         public SwitchParameter DisableNotificationWhenHitCap { get; set; }
-
-        [Parameter(
-            Position = 4,
-            Mandatory = false,
-            HelpMessage = "Enable send notification when hit cap.")]
-        public SwitchParameter EnableNotificationWhenHitCap { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -109,26 +98,28 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
                 features.DataVolumeCap.Cap = this.DailyCapGB.Value;
             }
 
-            if (this.DisableNotificationWhenHitCap.IsPresent)
+            if (this.DisableNotificationWhenHitCap)
             {
                 features.DataVolumeCap.StopSendNotificationWhenHitCap = true;
             }
-
-            if (this.EnableNotificationWhenHitCap.IsPresent)
+            else
             {
                 features.DataVolumeCap.StopSendNotificationWhenHitCap = false;
             }
 
-            var putResponse = this.AppInsightsManagementClient
-                                    .ComponentCurrentBillingFeatures
-                                    .UpdateWithHttpMessagesAsync(
-                                        this.ResourceGroupName,
-                                        this.Name,
-                                        features)
-                                    .GetAwaiter()
-                                    .GetResult();
+            if (this.ShouldProcess(this.Name, "Update Daily Cap"))
+            {
+                var putResponse = this.AppInsightsManagementClient
+                                        .ComponentCurrentBillingFeatures
+                                        .UpdateWithHttpMessagesAsync(
+                                            this.ResourceGroupName,
+                                            this.Name,
+                                            features)
+                                        .GetAwaiter()
+                                        .GetResult();
 
-            WriteDailyCap(putResponse.Body);
+                WriteDailyCap(putResponse.Body);
+            }
         }
     }
 }

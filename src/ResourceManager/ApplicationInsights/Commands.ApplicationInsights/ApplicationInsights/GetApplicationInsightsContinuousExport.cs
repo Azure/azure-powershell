@@ -18,7 +18,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ApplicationInsights
 {
-    [Cmdlet(VerbsCommon.Get, ApplicationInsightsContinuousExportNounStr), OutputType(typeof(PSExportConfiguration))]
+    [Cmdlet(VerbsCommon.Get, ApplicationInsightsContinuousExportNounStr, DefaultParameterSetName = ComponentNameParameterSet), OutputType(typeof(PSExportConfiguration))]
     public class GetApplicationInsightsContinuousExportCommand : ApplicationInsightsBaseCmdlet
     {
         [Parameter(
@@ -43,7 +43,6 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
             Position = 0,
             Mandatory = true,
             ParameterSetName = ComponentNameParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Resource Group Name.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
@@ -52,7 +51,6 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
             Position = 1,
             Mandatory = true,
             ParameterSetName = ComponentNameParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Application Insights Component Name.")]
         [Alias(ApplicationInsightsComponentNameAlias, ComponentNameAlias)]
         [ValidateNotNullOrEmpty]
@@ -61,7 +59,6 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
         [Parameter(
             Position = 2,
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Application Insights Continuous Export Id.")]
         [ValidateNotNullOrEmpty]
         public string ExportId { get; set; }
