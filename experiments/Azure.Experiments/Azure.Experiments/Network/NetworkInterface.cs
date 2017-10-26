@@ -3,7 +3,8 @@ using Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Experiments.Network
 {
-    public sealed class NetworkInterfaceParameters : ResourceParameters<NetworkInterface>
+    public sealed class NetworkInterfaceParameters 
+        : ResourceParameters<NetworkInterface>
     {
         public SubnetParameters Subnet { get; }
 
@@ -17,14 +18,11 @@ namespace Microsoft.Azure.Experiments.Network
             SubnetParameters subnet,
             NetworkSecurityGroupParameters nsg,
             PublicIpAddressParameters pia) 
-            : base(name, resourceGroup)
+            : base(name, resourceGroup, new Parameters[] { subnet, nsg, pia })
         {
             Subnet = subnet;
             Nsg = nsg;
             Pia = pia;
         }
-
-        public override IEnumerable<Parameters> ResourceDependencies
-            => new Parameters[] { Subnet, Nsg, Pia };
     }
 }

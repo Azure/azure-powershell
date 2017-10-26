@@ -7,14 +7,11 @@ namespace Microsoft.Azure.Experiments
     {
         public ResourceGroupParameters ResourceGroup { get; }
 
-        public sealed override IEnumerable<Parameters> Dependencies =>
-            ResourceDependencies.Concat(new[] { ResourceGroup });
-
-        public abstract IEnumerable<Parameters> ResourceDependencies { get; }
-
         public ResourceParameters(
-            string name, ResourceGroupParameters resourceGroup)
-            : base(name)
+            string name,
+            ResourceGroupParameters resourceGroup,
+            IEnumerable<Parameters> dependencies)
+            : base(name, dependencies.Concat(new[] { resourceGroup }))
         {
             ResourceGroup = resourceGroup;
         }
