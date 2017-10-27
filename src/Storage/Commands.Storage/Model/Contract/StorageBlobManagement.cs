@@ -594,6 +594,19 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         }
 
         /// <summary>
+        /// Return a task that asynchronously set block blob Tier
+        /// </summary>
+        /// <param name="blob">CloudBlockBlob object</param>
+        /// <param name="tier">block blob Tier</param>
+        /// <param name="accessCondition">Access condition</param>
+        /// <param name="options">Blob request options</param>
+        /// <param name="operationContext">An object that represents the context for the current operation.</param>
+        public Task SetPageBlobTierAsync(CloudPageBlob blob, PremiumPageBlobTier tier, BlobRequestOptions options, OperationContext operationContext, CancellationToken cmdletCancellationToken)
+        {
+            return blob.SetPremiumBlobTierAsync(tier, options, operationContext, cmdletCancellationToken);
+        }
+
+        /// <summary>
         /// List the blobs segmented in specified containers
         /// </summary>
         /// <param name="container">A cloudblobcontainer object</param>
@@ -650,6 +663,23 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         public Task<string> StartCopyAsync(CloudBlob blob, Uri source, AccessCondition sourceAccessCondition, AccessCondition destAccessCondition, BlobRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken)
         {
             return blob.StartCopyAsync(source, sourceAccessCondition, destAccessCondition, options, operationContext, cancellationToken);
+        }
+
+        /// <summary>
+        /// Return a task that asynchronously start copy operation to a PageBlob with PremiumPageBlobTier.
+        /// </summary>
+        /// <param name="blob">CloudPageBlob object</param>
+        /// <param name="source">Uri to copying source</param>
+        /// <param name="premiumPageBlobTier">The PremiumPageBlobTier of Destination blob</param>
+        /// <param name="sourceAccessCondition">Access condition to source if it's file/blob in azure.</param>
+        /// <param name="destAccessCondition">Access condition to Destination blob.</param>
+        /// <param name="options">Blob request options</param>
+        /// <param name="operationContext">Operation context</param>
+        /// <param name="cmdletCancellationToken">Cancellation token</param>
+        /// <returns>Return copy id if succeeded.</returns>
+        public Task<string> StartCopyAsync(CloudPageBlob blob, Uri source, PremiumPageBlobTier premiumPageBlobTier, AccessCondition sourceAccessCondition, AccessCondition destAccessCondition, BlobRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken)
+        {
+            return blob.StartCopyAsync(new CloudPageBlob(source), premiumPageBlobTier, sourceAccessCondition, destAccessCondition, options, operationContext, cancellationToken);
         }
 
         /// <summary>

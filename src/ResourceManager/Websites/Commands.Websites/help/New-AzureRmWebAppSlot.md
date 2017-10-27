@@ -20,13 +20,13 @@ New-AzureRmWebAppSlot [-ResourceGroupName] <String> [-Name] <String> [[-Slot] <S
 ```
 
 ## DESCRIPTION
-The **New-AzureRmWebApp** cmdlet creates an Azure Web App Slot in a given a resource group that uses the specified App Service plan and data center.
+The **New-AzureRmWebAppSlot** cmdlet creates an Azure Web App Slot in a given a resource group that uses the specified App Service plan and data center.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> New-AzureRmWebApp -ResourceGroupName Default-Web-WestUS -Name "ContosoSite" -Location "West US" -AppServicePlan "ContosoServicePlan" -Slot "Slot001"
+PS C:\> New-AzureRmWebAppSlot -ResourceGroupName Default-Web-WestUS -Name "ContosoSite" -Location "West US" -AppServicePlan "ContosoServicePlan" -Slot "Slot001"
 ```
 
 This command creates a Slot named Slot001 under an existing Web App names ContosoSite in the existing resource group named Default-Web-WestUS in data center West US.

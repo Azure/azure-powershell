@@ -61,6 +61,20 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Azure PowerShell collects usage data in order to improve your experience.
+        ///The data is anonymous and does not include commandline argument values.
+        ///The data is collected by Microsoft.
+        ///
+        ///Use the Disable-AzureRmDataCollection cmdlet to turn the feature Off. The cmdlet can be found in the AzureRM.Profile module.  To disable data collection: PS &gt; Disable-AzureRmDataCollection.
+        ///Use the Enable-AzureRmDataCollection cmdlet to turn the feature On. The cmdlet can be found in the AzureRM.Profile module.  To enable  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string ARMDataCollectionMessage {
+            get {
+                return ResourceManager.GetString("ARMDataCollectionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Confirm.
         /// </summary>
         internal static string Confirm {
@@ -106,11 +120,20 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Run Login-AzureAsAccount to login to Analysis Services server.
+        ///   Looks up a localized string similar to Run Login-AzureAsAccount to login to Analysis Services server {0}.
         /// </summary>
         internal static string NotLoggedInMessage {
             get {
                 return ResourceManager.GetString("NotLoggedInMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to send sync request to specified server. ServerName: {0}, RootActivityId: {1}, Date (UTC): {2}, Details: {3}..
+        /// </summary>
+        internal static string PostSyncRequestFailureMessage {
+            get {
+                return ResourceManager.GetString("PostSyncRequestFailureMessage", resourceCulture);
             }
         }
         
@@ -120,6 +143,42 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Properties {
         internal static string RestartingAnalysisServicesServer {
             get {
                 return ResourceManager.GetString("RestartingAnalysisServicesServer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to get the status of the sync operation. ServerName: {0}, RootActivityId: {1}, Date (UTC): {2}. Details: {3}.
+        /// </summary>
+        internal static string SyncASPollStatusFailureMessage {
+            get {
+                return ResourceManager.GetString("SyncASPollStatusFailureMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to get the status of the synchronization request for the specified database. ServerName: {0}, RootActivityId: {1}, Date (UTC): {2}, Details: {3}..
+        /// </summary>
+        internal static string SyncASPollStatusUnknownMessage {
+            get {
+                return ResourceManager.GetString("SyncASPollStatusUnknownMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Synchronization failed with an exception..
+        /// </summary>
+        internal static string SynchronizationFailedException {
+            get {
+                return ResourceManager.GetString("SynchronizationFailedException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Replicate databases from the processing server to the query scale-out servers.
+        /// </summary>
+        internal static string SynchronizingAnalysisServicesServer {
+            get {
+                return ResourceManager.GetString("SynchronizingAnalysisServicesServer", resourceCulture);
             }
         }
         

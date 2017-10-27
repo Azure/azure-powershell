@@ -93,8 +93,11 @@ namespace Microsoft.Azure.Commands.Network
             nsg.SecurityRules = this.SecurityRules;
 
             // Map to the sdk object
-            var nsgModel = Mapper.Map<MNM.NetworkSecurityGroup>(nsg);
-            nsgModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
+            var nsgModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NetworkSecurityGroup>(nsg);
+
+			this.NullifyApplicationSecurityGroupsIfAbsent(nsgModel);
+
+			nsgModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
             // Execute the Create NetworkSecurityGroup call
             this.NetworkSecurityGroupClient.CreateOrUpdate(this.ResourceGroupName, this.Name, nsgModel);

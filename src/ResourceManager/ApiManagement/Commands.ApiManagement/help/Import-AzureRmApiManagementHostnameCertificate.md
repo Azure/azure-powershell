@@ -15,7 +15,7 @@ Imports a certificate in a PFX format for an API Management Service.
 ```
 Import-AzureRmApiManagementHostnameCertificate -ResourceGroupName <String> -Name <String>
  -HostnameType <PsApiManagementHostnameType> -PfxPath <String> -PfxPassword <String> [-PassThru]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,6 +32,21 @@ PS C:\>Import-AzureRmApiManagementHostnameCertificate -Name "ContosoApi" -Resour
 This command imports a certificate for a proxy custom hostname.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+ 
+ ```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -HostnameType
 Specifies the host name type that this cmdlet loads the certificate for.

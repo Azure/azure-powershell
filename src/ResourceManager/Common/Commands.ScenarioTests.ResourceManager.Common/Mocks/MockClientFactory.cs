@@ -203,6 +203,14 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 
         public HashSet<ProductInfoHeaderValue> UniqueUserAgents { get; set; }
 
+        public ProductInfoHeaderValue[] UserAgents
+        {
+            get
+            {
+                return UniqueUserAgents?.ToArray();
+            }
+        }
+
         /// <summary>
         /// This class exists to allow adding an additional reference to the httpClient to prevent the client 
         /// from being disposed.  Should not be used except in this mocked context.
@@ -256,16 +264,9 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             return client;
         }
 
-        HashSet<ProductInfoHeaderValue> IClientFactory.UserAgents
+        public void RemoveUserAgent(string name)
         {
-            get
-            {
-                return this.UniqueUserAgents;
-            }
-            set
-            {
-                this.UniqueUserAgents = value;
-            }
+            UniqueUserAgents.RemoveWhere((p) => string.Equals(p.Product.Name, name, StringComparison.OrdinalIgnoreCase));
         }
     }
 }

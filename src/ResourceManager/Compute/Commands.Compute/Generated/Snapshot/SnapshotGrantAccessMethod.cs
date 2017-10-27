@@ -134,10 +134,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     {
         protected override void ProcessRecord()
         {
-            AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
             ExecuteClientAction(() =>
             {
-                if (ShouldProcess(this.ResourceGroupName, VerbsSecurity.Grant))
+                if (ShouldProcess(this.SnapshotName, VerbsSecurity.Grant))
                 {
                     string resourceGroupName = this.ResourceGroupName;
                     string snapshotName = this.SnapshotName;
@@ -147,7 +146,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                     var result = SnapshotsClient.GrantAccess(resourceGroupName, snapshotName, grantAccessData);
                     var psObject = new PSAccessUri();
-                    Mapper.Map<AccessUri, PSAccessUri>(result, psObject);
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<AccessUri, PSAccessUri>(result, psObject);
                     WriteObject(psObject);
                 }
             });

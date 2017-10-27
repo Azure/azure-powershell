@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Network
 
             PSVpnClientParameters vpnClientParams = new PSVpnClientParameters();
             vpnClientParams.ProcessorArchitecture = this.ProcessorArchitecture;
-            var vnetVpnClientParametersModel = Mapper.Map<MNM.VpnClientParameters>(vpnClientParams);
+            var vnetVpnClientParametersModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VpnClientParameters>(vpnClientParams);
 
             //TODO:- This code is added just for current release of P2S feature as Generatevpnclientpackage API is broken & need to be fixed on server 
             //side as well as in overall Poweshell flow

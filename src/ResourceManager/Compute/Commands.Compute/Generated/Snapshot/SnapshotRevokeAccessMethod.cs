@@ -104,17 +104,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     {
         protected override void ProcessRecord()
         {
-            AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
             ExecuteClientAction(() =>
             {
-                if (ShouldProcess(this.ResourceGroupName, VerbsSecurity.Revoke))
+                if (ShouldProcess(this.SnapshotName, VerbsSecurity.Revoke))
                 {
                     string resourceGroupName = this.ResourceGroupName;
                     string snapshotName = this.SnapshotName;
 
                     var result = SnapshotsClient.RevokeAccess(resourceGroupName, snapshotName);
                     var psObject = new PSOperationStatusResponse();
-                    Mapper.Map<Azure.Management.Compute.Models.OperationStatusResponse, PSOperationStatusResponse>(result, psObject);
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<Azure.Management.Compute.Models.OperationStatusResponse, PSOperationStatusResponse>(result, psObject);
                     WriteObject(psObject);
                 }
             });

@@ -123,10 +123,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     {
         protected override void ProcessRecord()
         {
-            AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
             ExecuteClientAction(() =>
             {
-                if (ShouldProcess(this.ResourceGroupName, VerbsCommon.Set))
+                if (ShouldProcess(this.VMScaleSetName, VerbsCommon.Set))
                 {
                     string resourceGroupName = this.ResourceGroupName;
                     string vmScaleSetName = this.VMScaleSetName;
@@ -136,14 +135,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     {
                         var result = VirtualMachineScaleSetsClient.ReimageAll(resourceGroupName, vmScaleSetName, instanceIds);
                         var psObject = new PSOperationStatusResponse();
-                        Mapper.Map<Azure.Management.Compute.Models.OperationStatusResponse, PSOperationStatusResponse>(result, psObject);
+                        ComputeAutomationAutoMapperProfile.Mapper.Map<Azure.Management.Compute.Models.OperationStatusResponse, PSOperationStatusResponse>(result, psObject);
                         WriteObject(psObject);
                     }
                     else
                     {
                         var result = VirtualMachineScaleSetsClient.Reimage(resourceGroupName, vmScaleSetName, instanceIds);
                         var psObject = new PSOperationStatusResponse();
-                        Mapper.Map<Azure.Management.Compute.Models.OperationStatusResponse, PSOperationStatusResponse>(result, psObject);
+                        ComputeAutomationAutoMapperProfile.Mapper.Map<Azure.Management.Compute.Models.OperationStatusResponse, PSOperationStatusResponse>(result, psObject);
                         WriteObject(psObject);
                     }
 

@@ -73,6 +73,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 PsBackupProviderTypes.IaasVm, "Test-GetAzureVMRecoveryPointsScenario");
         }
 
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVM)]
         public void TestRestoreAzureVMItemScenario()
