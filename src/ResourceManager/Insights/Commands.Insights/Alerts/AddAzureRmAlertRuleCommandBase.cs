@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroup { get; set; }
+        public string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets the rule name parameter of the cmdlet
@@ -67,7 +67,8 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of rule actions")]
         [ValidateNotNullOrEmpty]
-        public List<RuleAction> Actions { get; set; }
+        [Alias("Actions")]
+        public List<RuleAction> Action { get; set; }
 
         #endregion
 
@@ -76,14 +77,15 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// </summary>
         protected override void ProcessRecordInternal()
         {
+            WriteWarning("Parameter name change: The parameter plural names for the parameters will be deprecated in May 2018 in favor of the singular versions of the same names.");
             if (ShouldProcess(
-                    target: string.Format("Create/update an alert rule: {0} from resource group: {1}", this.Name, this.ResourceGroup),
+                    target: string.Format("Create/update an alert rule: {0} from resource group: {1}", this.Name, this.ResourceGroupName),
                     action: "Create/update an alert rule"))
             {
                 AlertRuleResource parameters = this.CreateSdkCallParameters();
 
                 // Part of the result of this operation is operation (result.Body ==> a AutoscaleSettingResource) is being discarded for backwards compatibility
-                var result = this.MonitorManagementClient.AlertRules.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName: this.ResourceGroup, parameters: parameters, ruleName: parameters.AlertRuleResourceName).Result;
+                var result = this.MonitorManagementClient.AlertRules.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName: this.ResourceGroupName, parameters: parameters, ruleName: parameters.AlertRuleResourceName).Result;
 
                 var response = new PSAddAlertRuleOperationResponse
                 {

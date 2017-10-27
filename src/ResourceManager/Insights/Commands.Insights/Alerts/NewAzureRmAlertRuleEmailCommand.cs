@@ -30,28 +30,31 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// </summary>
         [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of custom e-mails")]
         [ValidateNotNullOrEmpty]
-        public string[] CustomEmails { get; set; }
+        [Alias("CustomEmails")]
+        public string[] CustomEmail { get; set; }
 
         /// <summary>
         /// Gets or sets the SendToServiceOwners flag of the action
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The send to service owner flag")]
-        public SwitchParameter SendToServiceOwners { get; set; }
+        [Alias("SendToServiceOwners")]
+        public SwitchParameter SendToServiceOwner { get; set; }
 
         /// <summary>
         /// Execute the cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            if (!this.SendToServiceOwners && (this.CustomEmails == null || this.CustomEmails.Length < 1))
+            WriteWarning("Parameter name change: The parameter plural names for the parameters will be deprecated in May 2018 in favor of the singular versions of the same names.");
+            if (!this.SendToServiceOwner && (this.CustomEmail == null || this.CustomEmail.Length < 1))
             {
                 throw new ArgumentException("Either SendToServiceOwners must be set or at least one custom email must be present");
             }
 
             var action = new RuleEmailAction
             {
-                CustomEmails = this.CustomEmails,
-                SendToServiceOwners = this.SendToServiceOwners
+                CustomEmails = this.CustomEmail,
+                SendToServiceOwners = this.SendToServiceOwner
             };
 
             WriteObject(action);

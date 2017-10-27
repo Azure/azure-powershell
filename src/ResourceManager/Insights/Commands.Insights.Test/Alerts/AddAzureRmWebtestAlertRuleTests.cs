@@ -90,9 +90,9 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
             // Test null actions
             cmdlet.Name = Utilities.Name;
             cmdlet.Location = "East US";
-            cmdlet.ResourceGroup = Utilities.ResourceGroup;
+            cmdlet.ResourceGroupName = Utilities.ResourceGroup;
             cmdlet.FailedLocationCount = 10;
-            cmdlet.Actions = null;
+            cmdlet.Action = null;
             cmdlet.WindowSize = TimeSpan.FromMinutes(15);
 
             cmdlet.ExecuteCmdlet();
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
 
             // Test empty actions
             cmdlet.DisableRule = false;
-            cmdlet.Actions = new List<RuleAction>();
+            cmdlet.Action = new List<RuleAction>();
 
             cmdlet.ExecuteCmdlet();
 
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
                 CustomEmails = eMails
             };
 
-            cmdlet.Actions.Add(ruleAction);
+            cmdlet.Action.Add(ruleAction);
 
             cmdlet.ExecuteCmdlet();
 
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
                 Properties = properties
             };
 
-            cmdlet.Actions.Add(ruleAction);
+            cmdlet.Action.Add(ruleAction);
 
             cmdlet.ExecuteCmdlet();
 

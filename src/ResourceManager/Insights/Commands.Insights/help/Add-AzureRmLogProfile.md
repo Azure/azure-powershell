@@ -14,8 +14,8 @@ Creates a new activity log profile. This profile is used to either archive the a
 
 ```
 Add-AzureRmLogProfile -Name <String> [-StorageAccountId <String>] [-ServiceBusRuleId <String>]
- [-RetentionInDays <Int32>] -Locations <System.Collections.Generic.List`1[System.String]>
- [-Categories <System.Collections.Generic.List`1[System.String]>] [<CommonParameters>]
+ [-RetentionInDay <Int32>] -Location <System.Collections.Generic.List`1[System.String]>
+ [-Category <System.Collections.Generic.List`1[System.String]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,13 +39,13 @@ Add-AzureRmLogProfile -Locations "Global","West US" -Name ExportLogProfile -Stor
 
 ## PARAMETERS
 
-### -Categories
+### -Category
 Specifies the list of categories.
 
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
-Aliases: 
+Aliases: Categories
 
 Required: False
 Position: Named
@@ -54,7 +54,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Locations
+### -Location
 Specifies the location of the log profile.
 Valid values: Run below cmdlet to get the latest list of locations. 
 
@@ -63,7 +63,7 @@ Get-AzureLocation | Select DisplayName
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
-Aliases: 
+Aliases: Locations
 
 Required: True
 Position: Named
@@ -87,13 +87,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -RetentionInDays
+### -RetentionInDay
 Specifies the retention policy, in days. This is the number of days the logs are preserved in the storage account specified. To retain the data forever set this to **0**. If it's not specified, then it defaults to **0**. Normal standard storage or event hub billing rates will apply for data retention.
 
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases: RetentionInDays
 
 Required: False
 Position: Named

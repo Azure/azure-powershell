@@ -14,17 +14,17 @@ Gets alert rules.
 
 ### Parameters for Get-AzureRmAlertRule cmdlet
 ```
-Get-AzureRmAlertRule -ResourceGroup <String> [-DetailedOutput] [<CommonParameters>]
+Get-AzureRmAlertRule -ResourceGroupName <String> [-DetailedOutput] [<CommonParameters>]
 ```
 
 ### Parameters for Get-AzureRmAlertRule cmdlet using name
 ```
-Get-AzureRmAlertRule -ResourceGroup <String> -Name <String> [-DetailedOutput] [<CommonParameters>]
+Get-AzureRmAlertRule -ResourceGroupName <String> -Name <String> [-DetailedOutput] [<CommonParameters>]
 ```
 
 ### Parameters for Get-AzureRmAlertRule cmdlet using target resource uri
 ```
-Get-AzureRmAlertRule -ResourceGroup <String> -TargetResourceId <String> [-DetailedOutput] [<CommonParameters>]
+Get-AzureRmAlertRule -ResourceGroupName <String> -TargetResourceId <String> [-DetailedOutput] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -88,7 +88,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroup
+### -ResourceGroupName
 Specifies the name of the resource group.
 
 ```yaml
@@ -125,7 +125,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[Microsoft.Azure.Commands.Insights.OutputClasses.PSManagementItemDescriptor]
+### List<Microsoft.Azure.Commands.Insights.OutputClasses.PSAlertRule>
 
 ## NOTES
 
