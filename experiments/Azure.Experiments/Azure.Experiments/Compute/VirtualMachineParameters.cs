@@ -5,7 +5,8 @@ using Microsoft.Azure.Management.Compute;
 
 namespace Microsoft.Azure.Experiments.Compute
 {
-    public sealed class VirtualMachineParameters : ResourceParameters<VirtualMachine>
+    public sealed class VirtualMachineParameters
+        : ResourceParameters<VirtualMachine>
     {
         public NetworkInterfaceParameters Ni { get; }
 
@@ -18,7 +19,8 @@ namespace Microsoft.Azure.Experiments.Compute
             Ni = ni;
         }
 
-        protected override Task<VirtualMachine> GetAsync(Context context, GetMap map)
+        protected override Task<VirtualMachine> GetAsync(
+            Context context, IGetParameters _)
             => context
                 .CreateCompute()
                 .VirtualMachines

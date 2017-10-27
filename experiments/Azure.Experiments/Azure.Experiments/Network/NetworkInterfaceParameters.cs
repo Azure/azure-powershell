@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Experiments.Network
             Pia = pia;
         }
 
-        protected override Task<NetworkInterface> GetAsync(Context context, GetMap map)
+        protected override Task<NetworkInterface> GetAsync(Context context, IGetParameters _)
             => context
                 .CreateNetwork()
                 .NetworkInterfaces

@@ -5,7 +5,7 @@ using Microsoft.Azure.Management.Network;
 
 namespace Microsoft.Azure.Experiments.Network
 {
-    public sealed class PublicIpAddressParameters 
+    public sealed class PublicIpAddressParameters
         : ResourceParameters<PublicIPAddress>
     {
         public PublicIpAddressParameters(
@@ -14,7 +14,8 @@ namespace Microsoft.Azure.Experiments.Network
         {
         }
 
-        protected override Task<PublicIPAddress> GetAsync(Context context, GetMap map)
+        protected override Task<PublicIPAddress> GetAsync(
+            Context context, IGetParameters _)
             => context
                 .CreateNetwork()
                 .PublicIPAddresses

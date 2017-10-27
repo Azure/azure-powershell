@@ -30,14 +30,14 @@ namespace Microsoft.Azure.Experiments
         {
         }
 
-        public async Task<T> GetOrNullAsync(Context context, GetMap map)
-            => await map.GetOrAdd(
-                this, 
+        public Task<T> GetOrNullAsync(Context context, IGetParameters getParameters)
+            => getParameters.GetOrAdd(
+                this,
                 async () => 
                 {
                     try
                     {
-                        return await GetAsync(context, map);
+                        return await GetAsync(context, getParameters);
                     }
                     catch (CloudException e)
                         when (e.Response.StatusCode == HttpStatusCode.NotFound)
@@ -46,6 +46,10 @@ namespace Microsoft.Azure.Experiments
                     }
                 });
 
-        protected abstract Task<T> GetAsync(Context context, GetMap map);
+        protected abstract Task<T> GetAsync(
+            Context context, IGetParameters getParameters);
+
+        //protected abstract Task<T> CreateAsync(
+        //    Context context, ICreateParameters createParameters);
     }
 }

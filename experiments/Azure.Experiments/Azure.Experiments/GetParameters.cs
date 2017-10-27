@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Experiments
 {
-    public sealed class GetMap
+    public sealed class GetParameters : IGetParameters
     {
         public async Task<T> GetOrAdd<T>(Parameters<T> parameters, Func<Task<T>> get)
             where T : class

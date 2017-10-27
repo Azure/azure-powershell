@@ -15,9 +15,11 @@ namespace Microsoft.Azure.Experiments.Network
             VirtualNetwork = virtualNetwork;
         }
 
-        protected override async Task<Subnet> GetAsync(Context context, GetMap map)
+        protected override async Task<Subnet> GetAsync(
+            Context context, IGetParameters getParameters)
         {
-            var virtualNetwork = await VirtualNetwork.GetOrNullAsync(context, map);
+            var virtualNetwork =
+                await VirtualNetwork.GetOrNullAsync(context, getParameters);
             return virtualNetwork?.Subnets.FirstOrDefault(s => s.Name == Name);
         }
     }
