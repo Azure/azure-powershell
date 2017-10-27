@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 
         [Parameter(ParameterSetName = ParameterSet2, Position = 0, Mandatory = true, HelpMessage = "The app service plan. Gets all web apps in specified service plan")]
         [ValidateNotNullOrEmpty]
-        public ServerFarmWithRichSku AppServicePlan { get; set; }
+        public AppServicePlan AppServicePlan { get; set; }
 
         [Parameter(ParameterSetName = ParameterSet3, Position = 0, Mandatory = true, HelpMessage = "The name of the web app location. Gets all web apps at location")]
         [ValidateNotNullOrEmpty]
@@ -216,12 +216,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         private void GetByAppServicePlan()
         {
             WriteObject(WebsitesClient.ListWebAppsForAppServicePlan(AppServicePlan.ResourceGroup,
-#if !NETSTANDARD
-                AppServicePlan.ServerFarmWithRichSkuName
-#else
-                AppServicePlan.Name
-#endif
-                ).ToList());
+                AppServicePlan.Name).ToList());
         }
     }
 }

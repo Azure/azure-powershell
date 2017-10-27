@@ -24,19 +24,24 @@ namespace Microsoft.Azure.Management.WebSites
     public static class WebsitesClientExtensions
     {
 #if !NETSTANDARD
-        public static ISitesOperations WebApps(this WebSiteManagementClient client)
+        public static IWebAppsOperations WebApps(this WebSiteManagementClient client)
         {
-            return client.Sites;
+            return client.WebApps;
         }
 
-        public static IServerFarmsOperations AppServicePlans(this WebSiteManagementClient client)
+        public static IDeletedWebAppsOperations DeletedWebApps(this WebSiteManagementClient client)
         {
-            return client.ServerFarms;
+            return client.DeletedWebApps;
+        }
+
+        public static IAppServicePlansOperations AppServicePlans(this WebSiteManagementClient client)
+        {
+            return client.AppServicePlans;
         }
          
         public static string ApiVersion(this WebSiteManagementClient client)
         {
-            return client.ApiVersion;
+            return client.ApiVersion();
         }
         
         public static ICertificatesOperations Certificates(this WebSiteManagementClient client)
@@ -44,25 +49,6 @@ namespace Microsoft.Azure.Management.WebSites
             return client.Certificates;
         }
 
-        public static IList<ServerFarmWithRichSku> Value(this ServerFarmCollection collection)
-        {
-            return collection.Value;
-        }
-
-        public static IEnumerable<Site> Value(this SiteCollection collection)
-        {
-            return collection.Value;
-        }
-
-        public static IEnumerable<ResourceMetric> Value(this ResourceMetricCollection collection)
-        {
-            return collection.Value;
-        }
-
-        public static IEnumerable<BackupItem> Value(this BackupItemCollection collection)
-        {
-            return collection.Value;
-        }
 #else
         public static void Save(this System.Xml.Linq.XDocument xdoc, string fileName, System.Xml.Linq.SaveOptions options)
         {
