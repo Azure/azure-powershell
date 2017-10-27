@@ -107,6 +107,13 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         public string SampleName { get; set; }
 
         /// <summary>
+        /// Gets or sets the zone redundant option to assign to the Azure SQL Database
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The zone redundancy to associate with the Azure Sql Database")]
+        public SwitchParameter ZoneRedundant { get; set; }
+
+        /// <summary>
         /// Overriding to add warning message
         /// </summary>
         public override void ExecuteCmdlet()
@@ -177,7 +184,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                     RequestedServiceObjectiveName = RequestedServiceObjectiveName,
                     Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
                     ElasticPoolName = ElasticPoolName,
-                    ReadScale = ReadScale
+                    ReadScale = ReadScale,
+                    ZoneRedundant = MyInvocation.BoundParameters.ContainsKey("ZoneRedundant") ? (bool?)ZoneRedundant.ToBool() : null,
                 },
                 SampleName = SampleName
             };
@@ -190,9 +198,24 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// <returns>The input entity</returns>
         protected override AzureSqlDatabaseCreateOrUpdateModel PersistChanges(AzureSqlDatabaseCreateOrUpdateModel entity)
         {
+            // Use AutoRest or Hyak SDK depending on model parameters.
+            // This is done because we want to add support for -SampleName, which is only supported by AutoRest SDK.
+            // Why not always use AutoRest SDK? Because it uses Azure-AsyncOperation polling, while Hyak uses
+            // Location polling. This means that switching to AutoRest requires re-recording almost all scenario tests,
+            // which currently is quite difficult.
+            AzureSqlDatabaseModel upsertedDatabase;
+            if (!string.IsNullOrEmpty(entity.SampleName) || entity.Database.ZoneRedundant.HasValue)
+            {
+                upsertedDatabase = ModelAdapter.UpsertDatabaseWithNewSdk(this.ResourceGroupName, this.ServerName, entity);
+            }
+            else
+            {
+                upsertedDatabase = ModelAdapter.UpsertDatabase(this.ResourceGroupName, this.ServerName, entity);
+            }
+
             return new AzureSqlDatabaseCreateOrUpdateModel
             {
-                Database = ModelAdapter.UpsertDatabase(this.ResourceGroupName, this.ServerName, entity)
+                Database = upsertedDatabase      
             };
         }
 
