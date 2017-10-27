@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 AutoStorage = autoStorage
             });
 
-            var context = BatchAccountContext.ConvertAccountResourceToNewAccountContext(response);
+            var context = BatchAccountContext.ConvertAccountResourceToNewAccountContext(response, this.azureContext);
             return context;
         }
 
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 AutoStorage = autoStorage
             });
 
-            BatchAccountContext context = BatchAccountContext.ConvertAccountResourceToNewAccountContext(response);
+            BatchAccountContext context = BatchAccountContext.ConvertAccountResourceToNewAccountContext(response, this.azureContext);
 
             return context;
         }
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
             var response = BatchManagementClient.BatchAccount.Get(resourceGroupName, accountName);
 
-            return BatchAccountContext.ConvertAccountResourceToNewAccountContext(response);
+            return BatchAccountContext.ConvertAccountResourceToNewAccountContext(response, this.azureContext);
         }
 
         /// <summary>
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             var batchAccountContexts =
                 ListAllAccounts(response).
                 Where(acct => Helpers.MatchesTag(acct, tag)).
-                Select(resource => BatchAccountContext.ConvertAccountResourceToNewAccountContext(resource));
+                Select(resource => BatchAccountContext.ConvertAccountResourceToNewAccountContext(resource, this.azureContext));
 
             return batchAccountContexts;
         }
