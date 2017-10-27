@@ -25,6 +25,89 @@
     **Get-AzureRMUsage**
     - Deprecated as announced since April 2017
 
+    **Add-AzureRmMetricAlertRule**
+    **Add-AzureRmWebtestAlertRule**
+    - The argument ResourceGroup has been renamed as ResourceGroupName, i.e. a non-breaking change.
+    - The parameter Actions has been renamed to Action and the Actions has been added to the alias list, i.e. a non-breaking change.
+    - Warning message about the future deprecation of the plural parameter names added.
+
+    **Add-AzureRmAutoscaleSetting**
+    - The argument ResourceGroup has been renamed as ResourceGroupName, i.e. a non-breaking change.
+    - The parameter AutoscaleProfiles has been renamed to AutoscaleProfiles and the AutoscaleProfiles has been added to the alias list, i.e. a non-breaking change.
+    - The parameter Notifications has been renamed to Notification and the Notifications has been added to the alias list, i.e. a non-breaking change.
+    - Warning message about the future deprecation of the plural parameter names added.
+
+    **Remove-AzureRmAutoscaleSetting**
+    - The argument ResourceGroup has been renamed as ResourceGroupName, i.e. a non-breaking change.
+    
+    **Get-AzureRmAlertRule**
+    - Output changed as announced since April 2017. The output is now a list of PSAlertRule (descendant of AzureAlertRule) objects: no Properties attribute in them.
+    - The argument ResourceGroup has been renamed as ResourceGroupName, i.e. a non-breaking change.
+    - Warning message added for the future deprecation of the DetailedOutput parameter.
+    
+    **Remove-AzureRmAlertRule**
+    - Output changed as announced since April 2017. The output is now an AzureOperationResponse object including status code and request Id.
+    - The argument ResourceGroup has been renamed as ResourceGroupName, i.e. a non-breaking change.
+    - The cmdlet now implements the ShouldProcess protocol.
+
+    **Get-AzureRmAutoscaleSetting**
+    - Output changed as announced since April 2017. The output is now a list of PSAutoscaleSetting (descendant of AutoscaleSettingResource.) The breaking change is the elimination of the AutoscaleSettingResourceName attribute from the output, since it is always the same as the Name property.
+    - The argument ResourceGroup has been renamed as ResourceGroupName, i.e. a non-breaking change.
+    - Warning message added for the future deprecation of the DetailedOutput parameter.
+    
+    **Remove-AzureRmLogProfile**
+    - Output changed as announced since April 2017. The output is now an AzureOperationResponse object including status code and request Id.
+    - The cmdlet now implements the ShouldProcess protocol.
+
+    **Add-AzureRmLogProfile**
+    - The parameter Locations has been renamed to Location and the Locations has been added to the alias list, i.e. a non-breaking change.
+    - The parameter RetentionInDays has been renamed to RetentionInDay and the RetentionInDays has been added to the alias list, i.e. a non-breaking change.
+    - The parameter Categories has been renamed to Category and the Categories has been added to the alias list, i.e. a non-breaking change.
+    - The cmdlet now implements the ShouldProcess protocol.
+    - Warning message about the future deprecation of the plural parameter names added.
+
+    **Get-AzureRmMetricDefinition**
+    **Get-AzureRmMetric**
+    - The parameter MetricNames has been renamed to MetricName and the MetricNames has been added to the alias list, i.e. a non-breaking change.
+    - Warning message about the future deprecation of the plural parameter names added.
+    
+    **Get-AzureRmLog**
+    - Output changed as announced since April 2017. The output is now a list of PSEventData (a descendant of EventData) objects. The breaking change is the elimination of the EventChannels attribute from the PSEventData, in the previous version it was returning a fixed value.
+    - Warning message added for the future deprecation of the DetailedOutput parameter.
+    - The parameter MaxEvents has been renamed as MaxRecord (there was already an alias MaxRecords which is kept.) MaxEvents has been moved to the alias list, i.e. non-breaking change.
+    - Warning message about the future deprecation of the plural parameter names added.
+
+    **Get-AzureRmAlertHistory**
+    **GetAzureRmAutoscaleHistory**
+    - Output changed as announced since April 2017. The output is now a list of PSEventData (a descendant of EventData) objects. The breaking change is the elimination of the EventChannels attribute from the PSEventData, in the previous version it was returning a fixed value.
+    - Warning message added for the future deprecation of the DetailedOutput parameter.
+    
+    **New-AzureRmAutoscaleNotification**
+    - The parameter SendEmailToSubscriptionCoAdministrators has been renamed to SendEmailToSubscriptionCoAdministrator and the SendEmailToSubscriptionCoAdministrators has been added to the alias list, i.e. a non-breaking change.
+    - The parameter CustomEmails has been renamed to CustomEmail and the CustomEmails has been added to the alias list, i.e. a non-breaking change.
+    - The parameter Webhooks has been renamed to Webhook and the Webhooks has been added to the alias list, i.e. a non-breaking change.
+    - Warning message about the future deprecation of the plural parameter names added.
+
+    **New-AzureRmAutoscaleProfile**
+    - The parameter ScheduleDays has been renamed to ScheduleDay and the ScheduleDays has been added to the alias list, i.e. a non-breaking change.
+    - The parameter ScheduleHours has been renamed to ScheduleHour and the ScheduleHours has been added to the alias list, i.e. a non-breaking change.
+    - The parameter ScheduleMinutes has been renamed to ScheduleMinute and the ScheduleMinutes has been added to the alias list, i.e. a non-breaking change.
+    - The parameter Rules has been renamed to Rule and the Rules has been added to the alias list, i.e. a non-breaking change.
+    - Warning message about the future deprecation of the plural parameter names added.
+
+    **New-AzureRmAutoscaleWebhook**
+    - The parameter Properties has been renamed to Property and the Properties has been added to the alias list, i.e. a non-breaking change.
+    - Warning message about the future deprecation of the plural parameter names added.
+
+    **New-AzureRmAlertRuleEmail**
+    - The parameter CustomEmails has been renamed to CustomEmail and the CustomEmails has been added to the alias list, i.e. a non-breaking change.
+    - The parameter SendToServiceOwners has been renamed to SendToServiceOwner and the SendToServiceOwners has been added to the alias list, i.e. a non-breaking change.
+    - Warning message about the future deprecation of the plural parameter names added.
+
+    **New-AzureRmAlertRuleWebhook**
+    - The parameter Properties has been renamed to Property and the Properties has been added to the alias list, i.e. a non-breaking change.
+    - Warning message about the future deprecation of the plural parameter names added.
+    
 ## Version 3.4.1
     * Add-AzureRmLogAlertRule
         - Adding details to deprecation warning introduced in April 2017: the cmdlet will stop having effect: its functionality is moved to the "ActivityLogAlerts" cmdlets.

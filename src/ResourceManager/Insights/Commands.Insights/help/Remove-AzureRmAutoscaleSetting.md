@@ -13,7 +13,7 @@ Removes an Autoscale setting.
 ## SYNTAX
 
 ```
-Remove-AzureRmAutoscaleSetting -ResourceGroup <String> -Name <String> [<CommonParameters>]
+Remove-AzureRmAutoscaleSetting -ResourceGroupName <String> -Name <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,7 +46,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroup
+### -ResourceGroupName
 Specifies the name of the resource group.
 
 ```yaml

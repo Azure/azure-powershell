@@ -14,7 +14,7 @@ Gets the metric values of a resource.
 
 ```
 Get-AzureRmMetric [-ResourceId] <String> [-TimeGrain] <TimeSpan> [-StartTime <DateTime>] [-EndTime <DateTime>]
- [-MetricNames <String[]>] [-DetailedOutput] [<CommonParameters>]
+ [-MetricName <String[]>] [-DetailedOutput] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -184,13 +184,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -MetricNames
+### -MetricName
 Specifies an array of names of metrics.
 
 ```yaml
 Type: String[]
 Parameter Sets: (All)
-Aliases: 
+Aliases: MetricNames
 
 Required: False
 Position: Named

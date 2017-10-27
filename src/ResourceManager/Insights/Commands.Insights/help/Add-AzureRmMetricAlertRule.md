@@ -15,8 +15,8 @@ Adds or updates a metric-based alert rule.
 ```
 Add-AzureRmMetricAlertRule -WindowSize <TimeSpan> -Operator <ConditionOperator> -Threshold <Double>
  -TargetResourceId <String> -MetricName <String> -TimeAggregationOperator <TimeAggregationOperator>
- -Location <String> [-Description <String>] [-DisableRule] -ResourceGroup <String> -Name <String>
- [-Actions <System.Collections.Generic.List`1[Microsoft.Azure.Management.Insights.Models.RuleAction]>]
+ -Location <String> [-Description <String>] [-DisableRule] -ResourceGroupName <String> -Name <String>
+ [-Action <System.Collections.Generic.List`1[Microsoft.Azure.Management.Insights.Models.RuleAction]>]
  [<CommonParameters>]
 ```
 
@@ -61,13 +61,13 @@ This command creates a metric alert rule for a website.
 
 ## PARAMETERS
 
-### -Actions
+### -Action
 Specifies a comma-separated list of actions.
 
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Management.Insights.Models.RuleAction]
 Parameter Sets: (All)
-Aliases: 
+Aliases: Actions
 
 Required: False
 Position: Named
@@ -175,7 +175,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroup
+### -ResourceGroupName
 Specifies the name of the resource group for the rule.
 
 ```yaml

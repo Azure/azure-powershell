@@ -15,31 +15,31 @@ Gets a log of events.
 ### Query on CorrelationId
 ```
 Get-AzureRmLog [-StartTime <DateTime>] [-EndTime <DateTime>] [-Status <String>] [-Caller <String>]
- [-DetailedOutput] [-CorrelationId] <String> [-MaxEvents <Int32>] [<CommonParameters>]
+ [-DetailedOutput] [-CorrelationId] <String> [-MaxRecord <Int32>] [<CommonParameters>]
 ```
 
 ### Query on ResourceIdName
 ```
 Get-AzureRmLog [-StartTime <DateTime>] [-EndTime <DateTime>] [-Status <String>] [-Caller <String>]
- [-DetailedOutput] [-ResourceId] <String> [-MaxEvents <Int32>] [<CommonParameters>]
+ [-DetailedOutput] [-ResourceId] <String> [-MaxRecord <Int32>] [<CommonParameters>]
 ```
 
 ### Query on ResourceGroupProvider
 ```
 Get-AzureRmLog [-StartTime <DateTime>] [-EndTime <DateTime>] [-Status <String>] [-Caller <String>]
- [-DetailedOutput] [-ResourceGroup] <String> [-MaxEvents <Int32>] [<CommonParameters>]
+ [-DetailedOutput] [-ResourceGroup] <String> [-MaxRecord <Int32>] [<CommonParameters>]
 ```
 
 ### Query on ResourceProvider
 ```
 Get-AzureRmLog [-StartTime <DateTime>] [-EndTime <DateTime>] [-Status <String>] [-Caller <String>]
- [-DetailedOutput] [-ResourceProvider] <String> [-MaxEvents <Int32>] [<CommonParameters>]
+ [-DetailedOutput] [-ResourceProvider] <String> [-MaxRecord <Int32>] [<CommonParameters>]
 ```
 
 ### Query at subscription level
 ```
 Get-AzureRmLog [-StartTime <DateTime>] [-EndTime <DateTime>] [-Status <String>] [-Caller <String>]
- [-DetailedOutput] [-MaxEvents <Int32>] [<CommonParameters>]
+ [-DetailedOutput] [-MaxRecord <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -259,14 +259,14 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -MaxEvents
+### -MaxRecord
 Specifies the total number of records to fetch for the specified filter.
 The default value is 1000 and the maximum value accepted is 100000. Negative values and 0 are ignored and the default value will be used.
 
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: MaxRecords
+Aliases: MaxRecords, MaxEvents
 
 Required: False
 Position: Named
@@ -360,7 +360,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### None
 
-## OUTPUTS
+### List<Microsoft.Azure.Commands.Insights.OutputClasses.PSEventData>
 
 ### None
 

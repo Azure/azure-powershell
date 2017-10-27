@@ -13,7 +13,7 @@ Creates an alert rule webhook.
 ## SYNTAX
 
 ```
-New-AzureRmAlertRuleWebhook [-ServiceUri] <String> [[-Properties] <Hashtable>] [<CommonParameters>]
+New-AzureRmAlertRuleWebhook [-ServiceUri] <String> [[-Property] <Hashtable>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,13 +37,13 @@ This command creates an alert rule webhook for Contoso.com that has one property
 
 ## PARAMETERS
 
-### -Properties
+### -Property
 Specifies the list of properties in the format @(property1 = 'value1',....).
 
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases: Properties
 
 Required: False
 Position: 1

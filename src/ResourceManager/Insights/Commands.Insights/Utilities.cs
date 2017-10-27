@@ -64,14 +64,14 @@ namespace Microsoft.Azure.Commands.Insights
             }
         }
 
-        public static void ExtractCollectionFromResult(this IEnumerator<EventData> enumerator, bool fullDetails, List<IPSEventData> records, Func<EventData, bool> keepTheRecord)
+        public static void ExtractCollectionFromResult(this IEnumerator<EventData> enumerator, bool fullDetails, List<PSEventData> records, Func<EventData, bool> keepTheRecord)
         {
             while (enumerator.MoveNext())
             {
                 var current = enumerator.Current;
                 if (keepTheRecord(current))
                 {
-                    records.Add(fullDetails ? (IPSEventData)new PSEventData(current) : (IPSEventData)new PSEventDataNoDetails(current));
+                    records.Add(fullDetails ? new PSEventData(current) : new PSEventDataNoDetails(current));
                 }
             }
         }

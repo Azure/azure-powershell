@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// </summary>
         [Parameter(ParameterSetName = RemoveAzureRmAutoscaleSettingParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroup { get; set; }
+        public string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets the autoscale setting name parameter of the cmdlet
@@ -49,10 +49,10 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         protected override void ProcessRecordInternal()
         {
             if (ShouldProcess(
-                target: string.Format("Remove an autoscale setting: {0} from resource group: {1}", this.Name, this.ResourceGroup),
+                target: string.Format("Remove an autoscale setting: {0} from resource group: {1}", this.Name, this.ResourceGroupName),
                 action: "Remove an autoscale setting"))
             {
-                var result = this.MonitorManagementClient.AutoscaleSettings.DeleteWithHttpMessagesAsync(resourceGroupName: this.ResourceGroup, autoscaleSettingName: this.Name).Result;
+                var result = this.MonitorManagementClient.AutoscaleSettings.DeleteWithHttpMessagesAsync(resourceGroupName: this.ResourceGroupName, autoscaleSettingName: this.Name).Result;
 
                 // Keep this response for backwards compatibility.
                 // Note: Delete operations return nothing in the new specification.

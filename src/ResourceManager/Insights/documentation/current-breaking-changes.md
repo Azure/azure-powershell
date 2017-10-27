@@ -37,3 +37,18 @@
 
     **Get-AzureRMUsage**
     - Deprecated as announced since April 2017
+
+    **Get-AzureRmAlertRule**
+    - Output changed as announced since April 2017. The output is now a list of PSAlertRule (descendant of AzureAlertRule) objects. The objects are flatten, i.e.: all attributes are in the root of the object, no Properties attribute in them.
+
+    **Remove-AzureRmAlertRule**
+    **Remove-AzureRmLogProfile**
+    - Output changed as announced since April 2017. The output is now an AzureOperationResponse object including status code and request Id.
+
+    **Get-AzureRmAutoscaleSetting**
+    - Output changed as announced since April 2017. The output is now a list of PSAutoscaleSetting (descendant of AutoscaleSettingResource.) The breaking change is the elimination of the AutoscaleSettingResourceName attribute from the output, since it is always the same as the Name property.
+
+    **Get-AzureRmLog**
+    **Get-AzureRmAlertHistory**
+    **GetAzureRmAutoscaleHistory**
+    - Output changed as announced since April 2017. The output is now a list of PSEventData (a descendant of EventData) objects. The breaking change is the elimination of the EventChannels attribute from the PSEventData, in the previous version it was returning a fixed value.

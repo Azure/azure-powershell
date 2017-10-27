@@ -13,7 +13,7 @@ Removes an alert rule.
 ## SYNTAX
 
 ```
-Remove-AzureRmAlertRule -ResourceGroup <String> -Name <String> [<CommonParameters>]
+Remove-AzureRmAlertRule -ResourceGroupName <String> -Name <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,7 +51,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroup
+### -ResourceGroupName
 Specifies the name of the resource group for the alert rule.
 
 ```yaml
@@ -73,13 +73,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[Microsoft.Azure.AzureOperationResponse]
+### Microsoft.Azure.AzureOperationResponse
 
 ## NOTES
 
 ## RELATED LINKS
-
-[Add-AzureRmLogAlertRule](./Add-AzureRmLogAlertRule.md)
 
 [Add-AzureRmMetricAlertRule](./Add-AzureRmMetricAlertRule.md)
 
