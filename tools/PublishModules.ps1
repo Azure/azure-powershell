@@ -234,11 +234,11 @@ function Add-ExternalDependency {
      process {
         $file = Get-Item $ModuleSourcePath
         Import-LocalizedData -BindingVariable ModuleMetadata -BaseDirectory $file.DirectoryName -FileName $file.Name
-        $externalModules = @()
-        $ModuleMetadata.RequiredModules | % { $externalModules += $_["ModuleName"] }
-        if ($externalModules.Count -gt 0)
+        if ($ModuleMetadata.RequiredModules -ne $null)
         {
-            Update-ModuleManifest -Path $moduleSourcePath -ExternalModuleDependencies $externalModules
+            $externalModules = @()
+            $ModuleMetadata.RequiredModules | % { $externalModules += $_["ModuleName"] }
+            Update-ModuleManifest -Path $ModuleSourcePath -ExternalModuleDependencies $externalModules
         }
      }
 }
