@@ -93,39 +93,6 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Topic
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Enable Subscription Partitioning")]
-        [ValidateSet("TRUE", "FALSE",
-            IgnoreCase = true)]
-        [ValidateNotNullOrEmpty]
-        public bool? EnableSubscriptionPartitioning { get; set; }
-
-
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "FilteringMessagesBeforePublishing - a value that indicates whether Filtering is enabled for Messages before publishing.")]
-        [ValidateSet("TRUE", "FALSE",
-            IgnoreCase = true)]
-        [ValidateNotNullOrEmpty]
-        public bool? FilteringMessagesBeforePublishing { get; set; }
-
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "IsAnonymousAccessible - a value that indicates whether the message is anonymous accessible.")]
-        [ValidateSet("TRUE", "FALSE",
-            IgnoreCase = true)]
-        [ValidateNotNullOrEmpty]
-        public bool? IsAnonymousAccessible { get; set; }
-
-        [Parameter(Mandatory = false,
-             ValueFromPipelineByPropertyName = true,
-             HelpMessage = "IsExpress - a value that indicates whether Topic is Express.")]
-        [ValidateSet("TRUE", "FALSE",
-             IgnoreCase = true)]
-        [ValidateNotNullOrEmpty]
-        public bool? IsExpress { get; set; }
-
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "MaxSizeInMegabytes - the maximum size of the queue in megabytes, which is the size of memory allocated for the queue.")]
         [ValidateNotNullOrEmpty]
         public long? MaxSizeInMegabytes { get; set; }
@@ -194,18 +161,6 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Topic
 
             if (SizeInBytes != null)
                 topicAttributes.SizeInBytes = SizeInBytes;
-
-#pragma warning disable 612, 618
-            if (EnableSubscriptionPartitioning != null)
-                topicAttributes.EnableSubscriptionPartitioning = false;
-            if (FilteringMessagesBeforePublishing != null)
-                topicAttributes.FilteringMessagesBeforePublishing = false;
-            if (IsAnonymousAccessible != null)
-                topicAttributes.IsAnonymousAccessible = false;
-            if (IsExpress != null)
-                topicAttributes.IsExpress = false;
-                topicAttributes.Location = "";
-#pragma warning restore 612, 618
             
             if (ShouldProcess(target: Name, action: string.Format(Resources.CreateTopic, Name, Namespace)))
             {

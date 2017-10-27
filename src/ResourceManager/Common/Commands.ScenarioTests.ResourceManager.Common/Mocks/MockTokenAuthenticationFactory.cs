@@ -134,5 +134,10 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
         {
             return new Microsoft.Rest.TokenCredentials(Token.AccessToken);
         }
+
+        public void RemoveUser(IAzureAccount account, IAzureTokenCache tokenCache)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

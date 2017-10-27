@@ -53,22 +53,19 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
 
             if (graphEx != null)
             {
-                if (graphEx.Body != null)
-                {
+                if (graphEx.Body != null && graphEx.Body.Message != null && graphEx.Body.Code != null) {
                     WriteDebug(String.Format(ProjectResources.GraphException, graphEx.Body.Code, graphEx.Body.Message));
                     targetEx = new Exception(graphEx.Body.Message);
                     targetErrorId = graphEx.Body.Code;
+                } else {
+                    if (graphEx.Response != null && graphEx.Response.StatusCode == HttpStatusCode.NotFound) {
+                        targetErrorCategory = ErrorCategory.InvalidArgument;
+                    } else {
+                        targetErrorCategory = ErrorCategory.InvalidOperation;
+                    }
+                    Exception parsedException = ParseResponse(graphEx);
+                    targetEx = parsedException != null? parsedException : targetEx;
                 }
-
-                if (graphEx.Response != null && graphEx.Response.StatusCode == HttpStatusCode.NotFound)
-                {
-                    targetErrorCategory = ErrorCategory.InvalidArgument;
-                }
-                else
-                {
-                    targetErrorCategory = ErrorCategory.InvalidOperation;
-                }
-
                 var errorRecord = new ErrorRecord(targetEx, targetErrorId, targetErrorCategory, null);
                 WriteError(errorRecord);
             }
@@ -76,6 +73,19 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
             {
                 throw exception;
             }
+        }
+        
+
+        private Exception ParseResponse(GraphErrorException graphEx) {
+            int exceptionMessageIndex = graphEx.Response.Content.IndexOf("\"value\":", StringComparison.CurrentCultureIgnoreCase);
+            if (exceptionMessageIndex > 0) 
+            {
+                string substring = graphEx.Response.Content.Substring(exceptionMessageIndex+9);
+                // the start index is added 9, so as to remove the delimiter \"value\":\
+                string exceptionDetails = substring.Substring(0,substring.IndexOf("\"}"));
+                return new Exception(exceptionDetails);
+            }
+            return null;
         }
 
         protected void ExecutionBlock(Action execAction)

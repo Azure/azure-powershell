@@ -118,19 +118,18 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     {
         protected override void ProcessRecord()
         {
-            AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
             ExecuteClientAction(() =>
             {
-                if (ShouldProcess(this.ResourceGroupName, VerbsCommon.New))
+                if (ShouldProcess(this.Name, VerbsCommon.New))
                 {
                     string resourceGroupName = this.ResourceGroupName;
                     string containerServiceName = this.Name;
                     ContainerService parameters = new ContainerService();
-                    Mapper.Map<PSContainerService, ContainerService>(this.ContainerService, parameters);
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<PSContainerService, ContainerService>(this.ContainerService, parameters);
 
                     var result = ContainerServicesClient.CreateOrUpdate(resourceGroupName, containerServiceName, parameters);
                     var psObject = new PSContainerService();
-                    Mapper.Map<ContainerService, PSContainerService>(result, psObject);
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<ContainerService, PSContainerService>(result, psObject);
                     WriteObject(psObject);
                 }
             });
@@ -170,19 +169,18 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     {
         protected override void ProcessRecord()
         {
-            AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
             ExecuteClientAction(() =>
             {
-                if (ShouldProcess(this.ResourceGroupName, VerbsData.Update))
+                if (ShouldProcess(this.Name, VerbsData.Update))
                 {
                     string resourceGroupName = this.ResourceGroupName;
                     string containerServiceName = this.Name;
                     ContainerService parameters = new ContainerService();
-                    Mapper.Map<PSContainerService, ContainerService>(this.ContainerService, parameters);
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<PSContainerService, ContainerService>(this.ContainerService, parameters);
 
                     var result = ContainerServicesClient.CreateOrUpdate(resourceGroupName, containerServiceName, parameters);
                     var psObject = new PSContainerService();
-                    Mapper.Map<ContainerService, PSContainerService>(result, psObject);
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<ContainerService, PSContainerService>(result, psObject);
                     WriteObject(psObject);
                 }
             });

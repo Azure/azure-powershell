@@ -174,7 +174,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 this.omObject.RetentionTime = value;
             }
         }
-        
+
+        [Obsolete("RunElevated will be removed in a future version and replaced with UserIdentity")]
         public System.Boolean? RunElevated
         {
             get

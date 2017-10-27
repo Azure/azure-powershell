@@ -57,6 +57,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         {
             ResourcesController.NewInstance.RunPsTest("Test-RaByScope");
         }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RaDeleteByPSRoleAssignment()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-RaDeleteByPSRoleAssignment");
+        }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -94,6 +101,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         public void RaDeletionByScope()
         {
             ResourcesController.NewInstance.RunPsTest("Test-RaDeletionByScope");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RaDeletionByScopeAtRootScope()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-RaDeletionByScopeAtRootScope");
         }
 
         [Fact]

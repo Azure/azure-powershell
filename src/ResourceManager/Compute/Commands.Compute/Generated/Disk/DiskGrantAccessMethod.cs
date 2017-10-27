@@ -134,10 +134,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     {
         protected override void ProcessRecord()
         {
-            AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
             ExecuteClientAction(() =>
             {
-                if (ShouldProcess(this.ResourceGroupName, VerbsSecurity.Grant))
+                if (ShouldProcess(this.DiskName, VerbsSecurity.Grant))
                 {
                     string resourceGroupName = this.ResourceGroupName;
                     string diskName = this.DiskName;
@@ -147,7 +146,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                     var result = DisksClient.GrantAccess(resourceGroupName, diskName, grantAccessData);
                     var psObject = new PSAccessUri();
-                    Mapper.Map<AccessUri, PSAccessUri>(result, psObject);
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<AccessUri, PSAccessUri>(result, psObject);
                     WriteObject(psObject);
                 }
             });

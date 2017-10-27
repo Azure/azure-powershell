@@ -118,19 +118,18 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     {
         protected override void ProcessRecord()
         {
-            AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
             ExecuteClientAction(() =>
             {
-                if (ShouldProcess(this.ResourceGroupName, VerbsCommon.New))
+                if (ShouldProcess(this.DiskName, VerbsCommon.New))
                 {
                     string resourceGroupName = this.ResourceGroupName;
                     string diskName = this.DiskName;
                     Disk disk = new Disk();
-                    Mapper.Map<PSDisk, Disk>(this.Disk, disk);
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<PSDisk, Disk>(this.Disk, disk);
 
                     var result = DisksClient.CreateOrUpdate(resourceGroupName, diskName, disk);
                     var psObject = new PSDisk();
-                    Mapper.Map<Disk, PSDisk>(result, psObject);
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<Disk, PSDisk>(result, psObject);
                     WriteObject(psObject);
                 }
             });

@@ -187,6 +187,11 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             {
                 sku = "D";
             }
+            else if (string.Equals("PremiumV2", tier, StringComparison.OrdinalIgnoreCase))
+            {
+                sku = "P" + workerSize + "V2";
+                return sku;
+            }
             else
             {
                 sku = string.Empty + tier[0];

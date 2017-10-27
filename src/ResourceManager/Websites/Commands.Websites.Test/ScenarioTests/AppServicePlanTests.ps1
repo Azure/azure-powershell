@@ -70,8 +70,8 @@ function Test-SetAppServicePlan
 	$capacity = 0
 	$perSiteScaling = $false;
 
-	$newTier ="Standard"
-	$newSkuName = "S2"
+	$newTier ="PremiumV2"
+	$newSkuName = "P2v2"
 	$newWorkerSize = "Medium"
 	$newCapacity = 2
 	$newPerSiteScaling = $true;

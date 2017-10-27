@@ -47,8 +47,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
                     () => this.ComputeClient.HostedServices.Get(this.ServiceName),
                     (operation, service) =>
                     {
-                        var context = ContextFactory<HostedServiceGetResponse, HostedServiceDetailedContext>(service, operation);
-                        Mapper.Map(service.Properties, context);
+                        var context = ContextFactory(service, operation,
+                                        ServiceManagementProfile.Mapper.Map<HostedServiceGetResponse, HostedServiceDetailedContext>,
+                                        ServiceManagementProfile.Mapper.Map);
+                        ServiceManagementProfile.Mapper.Map(service.Properties, context);
                         return context;
                     });
             }
@@ -60,8 +62,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
                     (operation, services) => services.HostedServices.Select(
                         service =>
                         {
-                            var context = ContextFactory<HostedServiceListResponse.HostedService, HostedServiceDetailedContext>(service, operation);
-                            Mapper.Map(service.Properties, context);
+                            var context = ContextFactory(service, operation,
+                                            ServiceManagementProfile.Mapper.Map<HostedServiceListResponse.HostedService, HostedServiceDetailedContext>,
+                                            ServiceManagementProfile.Mapper.Map);
+                            ServiceManagementProfile.Mapper.Map(service.Properties, context);
                             return context;
                         }));
             }
