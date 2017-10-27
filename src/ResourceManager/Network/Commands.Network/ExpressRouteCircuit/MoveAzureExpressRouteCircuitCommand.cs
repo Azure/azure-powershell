@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.Network
             circuit.Location = this.Location;
 
             // Map to the sdk object
-            var circuitModel = Mapper.Map<MNM.ExpressRouteCircuit>(circuit);
+            var circuitModel = NetworkResourceManagerProfile.Mapper.Map<MNM.ExpressRouteCircuit>(circuit);
             circuitModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
             // Execute the Create ExpressRouteCircuit call

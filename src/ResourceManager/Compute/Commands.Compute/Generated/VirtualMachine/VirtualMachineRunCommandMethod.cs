@@ -118,7 +118,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     {
         protected override void ProcessRecord()
         {
-            AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
             ExecuteClientAction(() =>
             {
                 if (ShouldProcess(this.VMName, VerbsLifecycle.Invoke))
@@ -155,7 +154,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                     var result = VirtualMachinesClient.RunCommand(resourceGroupName, vmName, parameters);
                     var psObject = new PSRunCommandResult();
-                    Mapper.Map<RunCommandResult, PSRunCommandResult>(result, psObject);
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<RunCommandResult, PSRunCommandResult>(result, psObject);
                     WriteObject(psObject);
                 }
             });

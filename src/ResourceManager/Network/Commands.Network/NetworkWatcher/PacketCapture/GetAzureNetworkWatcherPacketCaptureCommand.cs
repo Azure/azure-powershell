@@ -119,11 +119,11 @@ namespace Microsoft.Azure.Commands.Network
                 foreach (var pc in packetCaptureList)
                 {
 
-                    PSPacketCaptureResult psPacketCapture = Mapper.Map<PSPacketCaptureResult>(pc);
+                    PSPacketCaptureResult psPacketCapture = NetworkResourceManagerProfile.Mapper.Map<PSPacketCaptureResult>(pc);
                     psPacketCaptureList.Add(psPacketCapture);
 
                     var packetCaptureStatus = this.PacketCaptures.GetStatus(resourceGroupName, name, psPacketCapture.Name);
-                    var psPacketCaptureStatus = Mapper.Map<PSPacketCaptureStatus>(packetCaptureStatus);
+                    var psPacketCaptureStatus = NetworkResourceManagerProfile.Mapper.Map<PSPacketCaptureStatus>(packetCaptureStatus);
 
                     PSGetPacketCaptureResult pcResult = new PSGetPacketCaptureResult();
 

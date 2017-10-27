@@ -14,19 +14,20 @@ Gets OpenID Connect providers.
 
 ### Get all OpenID Connect Providers (Default)
 ```
-Get-AzureRmApiManagementOpenIdConnectProvider -Context <PsApiManagementContext> [<CommonParameters>]
+Get-AzureRmApiManagementOpenIdConnectProvider -Context <PsApiManagementContext>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Get by OpenID Connect Provider ID
 ```
 Get-AzureRmApiManagementOpenIdConnectProvider -Context <PsApiManagementContext>
- [-OpenIdConnectProviderId <String>] [<CommonParameters>]
+ [-OpenIdConnectProviderId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Find by OpenID Connect Provider friendly Name
 ```
 Get-AzureRmApiManagementOpenIdConnectProvider -Context <PsApiManagementContext> [-Name <String>]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,21 +37,24 @@ The **Get-AzureRmApiManagementOpenIdConnectProvider** cmdlet gets OpenID Connect
 
 ### Example 1: Get all providers
 ```
-PS C:\>Get-AzureRmApiManagementOpenIdConnectProvider -Context $ApimContext
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Get-AzureRmApiManagementOpenIdConnectProvider -Context $apimContext 
 ```
 
 This command gets all OpenID Connect providers for the specified context.
 
 ### Example 2: Get a provider by using an ID
 ```
-PS C:\>Get-AzureRmApiManagementOpenIdConnectProvider -Context $ApimContext -OpenIdConnectProviderId "OICProvicer01"
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Get-AzureRmApiManagementOpenIdConnectProvider -Context $apimContext -OpenIdConnectProviderId "OICProvicer01"
 ```
 
 This command gets the provider that has the ID OICProvicer01.
 
 ### Example 3: Get a provider by using a name
 ```
-PS C:\>Get-AzureRmApiManagementOpenIdConnectProvider -Context $ApimContext -Name "Contoso OpenID Connect Provider"
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Get-AzureRmApiManagementOpenIdConnectProvider -Context $apimContext -Name "Contoso OpenID Connect Provider"
 ```
 
 This command gets the provider named Contoso OpenID Connect Provider.
@@ -69,6 +73,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+ 
+ ```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -111,7 +130,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementOpenIdConnectProvider
+The detail of the OpenId connect Provider configured in API Management service.
+
 ### IList<Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementOpenIdConnectProvider>
+The list of OpenId Connect Providers configured in API Management service.
 
 ## NOTES
 
