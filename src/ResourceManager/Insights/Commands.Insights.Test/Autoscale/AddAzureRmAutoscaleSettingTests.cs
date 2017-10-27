@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
             // Add-AutoscaleSetting -SettingSpec $spec -ResourceGroup $Utilities.ResourceGroup
             // A NOP
             cmdlet.SettingSpec = spec;
-            cmdlet.ResourceGroup = Utilities.ResourceGroup;
+            cmdlet.ResourceGroupName = Utilities.ResourceGroup;
             cmdlet.ExecuteCmdlet();
 
             Assert.Equal(Utilities.ResourceGroup, this.resourceGroup);
@@ -110,14 +110,14 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
 
             // Add-AutoscaleSetting -SettingSpec <AutoscaleSettingResource> -ResourceGroup <String> [-DisableSetting [<SwitchParameter>]] [-AutoscaleProfiles <List[AutoscaleProfile]>] [-Profile <AzureSMProfile>] [<CommonParameters>]
             // Adding a profile
-            cmdlet.AutoscaleProfiles = autoscaleProfile;
+            cmdlet.AutoscaleProfile = autoscaleProfile;
             cmdlet.ExecuteCmdlet();
 
             // Add-AutoscaleSetting -Location <String> -Name <String> -ResourceGroup <String> [-DisableSetting [<SwitchParameter>]] [-AutoscaleProfiles <List[AutoscaleProfile]>] -TargetResourceId <String> [-Profile <AzureSMProfile>] [<CommonParameters>]
             cmdlet.SettingSpec = null;
             cmdlet.Name = "SettingName";
             cmdlet.Location = "East US";
-            cmdlet.ResourceGroup = Utilities.ResourceGroup;
+            cmdlet.ResourceGroupName = Utilities.ResourceGroup;
             cmdlet.TargetResourceId = Utilities.ResourceUri;
             cmdlet.ExecuteCmdlet();
 
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
                 Webhooks = null
             };
 
-            cmdlet.Notifications = new List<AutoscaleNotification> { notification };
+            cmdlet.Notification = new List<AutoscaleNotification> { notification };
             cmdlet.ExecuteCmdlet();
         }
 

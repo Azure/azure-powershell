@@ -15,8 +15,8 @@ Adds or updates a webtest alert rule.
 ```
 Add-AzureRmWebtestAlertRule -MetricName <String> -TargetResourceUri <String> -WindowSize <TimeSpan>
  -FailedLocationCount <Int32> [-MetricNamespace <String>] -Location <String> [-Description <String>]
- [-DisableRule] -ResourceGroup <String> -Name <String>
- [-Actions <System.Collections.Generic.List`1[Microsoft.Azure.Management.Insights.Models.RuleAction]>]
+ [-DisableRule] -ResourceGroupName <String> -Name <String>
+ [-Action <System.Collections.Generic.List`1[Microsoft.Azure.Management.Insights.Models.RuleAction]>]
  [<CommonParameters>]
 ```
 
@@ -39,13 +39,13 @@ This command adds or updates a webtest alert rule.
 
 ## PARAMETERS
 
-### -Actions
+### -Action
 Specifies a comma-separated list of actions.
 
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Management.Insights.Models.RuleAction]
 Parameter Sets: (All)
-Aliases: 
+Aliases: Actions
 
 Required: False
 Position: Named
@@ -161,7 +161,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroup
+### -ResourceGroupName
 Specifies the name of the resource group.
 
 ```yaml

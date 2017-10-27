@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveAutoscaleSettingCommandParametersProcessing()
         {
-            cmdlet.ResourceGroup = Utilities.ResourceGroup;
+            cmdlet.ResourceGroupName = Utilities.ResourceGroup;
             cmdlet.Name = Utilities.Name;
             cmdlet.ExecuteCmdlet();
 

@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Insights.Events
     /// <summary>
     /// Get the list of events for at a subscription level.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmLog"), OutputType(typeof(List<IPSEventData>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmLog"), OutputType(typeof(List<PSEventData>))]
     public class GetAzureRmLogCommand : LogsCmdletBase
     {
         /// <summary>
@@ -92,10 +92,10 @@ namespace Microsoft.Azure.Commands.Insights.Events
         /// <summary>
         /// Gets or sets the max number of records to fetch parameter of the cmdlet
         /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true, HelpMessage = "The maximum number of records to fetch. Alias: MaxRecords")]
-        [Alias("MaxRecords")]
+        [Parameter(ValueFromPipelineByPropertyName = true, HelpMessage = "The maximum number of records to fetch. Alias: MaxRecords, MaxEvents")]
+        [Alias("MaxRecords", "MaxEvents")]
         [ValidateNotNullOrEmpty]
-        public virtual int MaxEvents { get; set; }
+        public virtual int MaxRecord { get; set; }
 
         /// <summary>
         /// Process the parameters defined by this class  (a.k.a. particular parameters)
@@ -104,7 +104,8 @@ namespace Microsoft.Azure.Commands.Insights.Events
         /// <returns>The query filter with the conditions for particular parameters added</returns>
         protected override string ProcessParticularParameters(string currentQueryFilter)
         {
-            this.SetMaxEventsIfPresent(currentQueryFilter, this.MaxEvents);
+            WriteWarning("Parameter name change: The parameter plural names for the parameters will be deprecated in May 2018 in favor of the singular versions of the same names.");
+            this.SetMaxEventsIfPresent(currentQueryFilter, this.MaxRecord);
 
             string extendedQuery = this.AddConditionIfPResent(currentQueryFilter, "correlationId", this.CorrelationId);
             extendedQuery = this.AddConditionIfPResent(extendedQuery, "resourceGroupName", this.ResourceGroup);

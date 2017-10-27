@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
             {
                 Description = this.Description ?? Utilities.GetDefaultDescription("metric alert rule"),
                 Condition = condition,
-                Actions = this.Actions,
+                Actions = this.Action,
                 Location = this.Location,
                 IsEnabled = !this.DisableRule,
                 AlertRuleResourceName = this.Name,
