@@ -44,7 +44,10 @@ The **New-AzureRmResource** cmdlet creates an Azure resource, such as a website,
 ```
 PS> New-AzureRmResource -Location "West US" -Properties @{test="test"} -ResourceName TestSite06 -ResourceType microsoft.web/sites -ResourceGroupName ResourceGroup11 -Force
 ```
-or
+
+This command creates a resource that is a website in ResourceGroup11.
+
+### Example 2: Create a resource using splatting
 ```
 PS> $prop = @{
     Location          = "West US" 
