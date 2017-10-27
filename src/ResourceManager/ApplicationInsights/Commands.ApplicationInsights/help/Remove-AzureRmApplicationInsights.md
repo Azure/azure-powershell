@@ -12,6 +12,12 @@ Remove an application insights resource
 
 ## SYNTAX
 
+### ComponentNameParameterSet (Default)
+```
+Remove-AzureRmApplicationInsights [-ResourceGroupName] <String> [-Name] <String> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### ComponentObjectParameterSet
 ```
 Remove-AzureRmApplicationInsights [-ApplicationInsightsComponent] <PSApplicationInsightsComponent> [-PassThru]
@@ -24,20 +30,15 @@ Remove-AzureRmApplicationInsights [-ResourceId] <ResourceIdentifier> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ComponentNameParameterSet
-```
-Remove-AzureRmApplicationInsights [-ResourceGroupName] <String> [-Name] <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Remove an application insights resource
 
 ## EXAMPLES
 
-### Example 1
+### Example 1 Remove an application insights resource
 ```
-PS C:\> Remove-AzureRmApplicationInsights -ResourceGroupName "testgroup" -Name "test"
+PS C:\> Remove-AzureRmApplicationInsights -ResourceGroupName "testgroup" -Name "test" -PassThru
+True
 ```
 
 Remove an applciation insights resource named "test" in resource group "testgroup"
@@ -75,7 +76,9 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.```yaml
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
 Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
@@ -98,12 +101,14 @@ Aliases: ApplicationInsightsComponentName, ComponentName
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -PassThru
-If specified will write true in case operation succeeds. This parameter is optional. Default value is false.```yaml
+If specified will write true in case operation succeeds. This parameter is optional. Default value is false.
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
@@ -126,12 +131,14 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Application Insights Component Resource Id.```yaml
+Application Insights Component Resource Id.
+
+```yaml
 Type: ResourceIdentifier
 Parameter Sets: ResourceIdParameterSet
 Aliases: 

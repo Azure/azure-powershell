@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
                 {
                     features.CurrentBillingFeatures = new string[] { "Application Insights Enterprise" };
                 }
-                else if (this.PricingPlan.ToLowerInvariant().Contains("basic"))
+                else if (this.PricingPlan.ToLowerInvariant().Contains("limited"))
                 {
                     features.CurrentBillingFeatures = new string[] { "Limited Basic" };
                 }

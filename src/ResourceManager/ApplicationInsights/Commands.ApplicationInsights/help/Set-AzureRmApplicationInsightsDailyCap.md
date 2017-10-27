@@ -12,24 +12,24 @@ Set daily data volume cap for an application insights resource
 
 ## SYNTAX
 
+### ComponentNameParameterSet (Default)
+```
+Set-AzureRmApplicationInsightsDailyCap [-ResourceGroupName] <String> [-Name] <String> [-DailyCapGB <Double>]
+ [-DisableNotificationWhenHitCap] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ### ComponentObjectParameterSet
 ```
 Set-AzureRmApplicationInsightsDailyCap [-ApplicationInsightsComponent] <PSApplicationInsightsComponent>
- [[-DailyCapGB] <Double>] [-DisableNotificationWhenHitCap] [-EnableNotificationWhenHitCap]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DailyCapGB <Double>] [-DisableNotificationWhenHitCap] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Set-AzureRmApplicationInsightsDailyCap [-ResourceId] <ResourceIdentifier> [[-DailyCapGB] <Double>]
- [-DisableNotificationWhenHitCap] [-EnableNotificationWhenHitCap] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### ComponentNameParameterSet
-```
-Set-AzureRmApplicationInsightsDailyCap [-ResourceGroupName] <String> [-Name] <String> [[-DailyCapGB] <Double>]
- [-DisableNotificationWhenHitCap] [-EnableNotificationWhenHitCap] [-DefaultProfile <IAzureContextContainer>]
+Set-AzureRmApplicationInsightsDailyCap [-ResourceId] <ResourceIdentifier> [-DailyCapGB <Double>]
+ [-DisableNotificationWhenHitCap] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -38,10 +38,14 @@ Set daily data volume cap for an application insights resource
 
 ## EXAMPLES
 
-### Example 1
+### Example 1 Set daily data volume cap for an application insights resource
 ```
 PS C:\> Set-AzureRmApplicationInsightsDailyCap -ResourceGroupName "testgroup" -Name "test" -DailyCapGB 400
- -StopSendNotificationWhenHitCap true
+ -DisableNotificationWhenHitCap
+
+ Cap ResetTime StopSendNotificationWhenHitCap
+--- --------- ------------------------------
+400         0                           True
 ```
 
 Set the daily data volumen cap to 400GB per day and stop send notification when hit cap for resource "test" in resource group "testgroup"
@@ -63,6 +67,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DailyCapGB
 Daily Cap.
 
@@ -72,14 +91,16 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 2
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.```yaml
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
 Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
@@ -92,26 +113,15 @@ Accept wildcard characters: False
 ```
 
 ### -DisableNotificationWhenHitCap
-Stop send notification when hit cap.```yaml
+Stop send notification when hit cap.
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EnableNotificationWhenHitCap
-Enable send notification when hit cap.```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 4
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -128,7 +138,7 @@ Aliases: ApplicationInsightsComponentName, ComponentName
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -143,12 +153,14 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Application Insights Component Resource Id.```yaml
+Application Insights Component Resource Id.
+
+```yaml
 Type: ResourceIdentifier
 Parameter Sets: ResourceIdParameterSet
 Aliases: 
@@ -157,6 +169,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

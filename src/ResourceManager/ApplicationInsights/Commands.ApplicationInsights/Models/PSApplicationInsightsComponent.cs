@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.Models
 
     public class PSApplicationInsightsComponentWithPricingPlan : PSApplicationInsightsComponent
     {
-        public string CurrentTier;
+        public string PricingPlan;
 
         public double? Cap { get; set; }
 
@@ -128,11 +128,11 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.Models
         {
             if (billing.CurrentBillingFeatures.Any(f => f.Contains("Enterprise")))
             {
-                this.CurrentTier = "Application Insights Enterprise";
+                this.PricingPlan = "Application Insights Enterprise";
             }
             else
             {
-                this.CurrentTier = billing.CurrentBillingFeatures.FirstOrDefault();
+                this.PricingPlan = billing.CurrentBillingFeatures.FirstOrDefault();
             }
 
             this.Cap = billing.DataVolumeCap.Cap;

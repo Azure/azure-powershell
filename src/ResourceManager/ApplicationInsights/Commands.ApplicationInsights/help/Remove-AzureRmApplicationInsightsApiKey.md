@@ -12,6 +12,12 @@ Remove an application insights api key for an application insights resource
 
 ## SYNTAX
 
+### ComponentNameParameterSet (Default)
+```
+Remove-AzureRmApplicationInsightsApiKey [-ResourceGroupName] <String> [-Name] <String> [-ApiKeyId] <String>
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### ComponentObjectParameterSet
 ```
 Remove-AzureRmApplicationInsightsApiKey [-ApplicationInsightsComponent] <PSApplicationInsightsComponent>
@@ -25,21 +31,16 @@ Remove-AzureRmApplicationInsightsApiKey [-ResourceId] <ResourceIdentifier> [-Api
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ComponentNameParameterSet
-```
-Remove-AzureRmApplicationInsightsApiKey [-ResourceGroupName] <String> [-Name] <String> [-ApiKeyId] <String>
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Remove an application insights api key for an application insights resource
 
 ## EXAMPLES
 
-### Example 1
+### Example 1 Remove an application insights api key for an application insights resource
 ```
 Get-AzureRmApplicationInsightsApiKey -ResourceGroupName "testGroup" -Name "test"  -ApiKeyId dd173f38-4fd1-4c75-8af5-9
-9c29aa0f867
+9c29aa0f867 -PassThru
+True
 ```
 
 Remove specific application insights api key that id is "dd173f38-4fd1-4c75-8af5-9
@@ -58,12 +59,14 @@ Aliases:
 Required: True
 Position: 2
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ApplicationInsightsComponent
-Application Insights Component Object.```yaml
+Application Insights Component Object.
+
+```yaml
 Type: PSApplicationInsightsComponent
 Parameter Sets: ComponentObjectParameterSet
 Aliases: 
@@ -116,12 +119,14 @@ Aliases: ApplicationInsightsComponentName, ComponentName
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -PassThru
-If specified will write true in case operation succeeds. This parameter is optional. Default value is false.```yaml
+If specified will write true in case operation succeeds. This parameter is optional. Default value is false.
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
@@ -144,12 +149,14 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Application Insights Component Resource Id.```yaml
+Application Insights Component Resource Id.
+
+```yaml
 Type: ResourceIdentifier
 Parameter Sets: ResourceIdParameterSet
 Aliases: 

@@ -12,23 +12,23 @@ Create an application insights api key for an application insights resource
 
 ## SYNTAX
 
+### ComponentNameParameterSet (Default)
+```
+New-AzureRmApplicationInsightsApiKey [-ResourceGroupName] <String> [-Name] <String> [-Permissions] <String[]>
+ [-Description] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### ComponentObjectParameterSet
 ```
 New-AzureRmApplicationInsightsApiKey [-ApplicationInsightsComponent] <PSApplicationInsightsComponent>
- [-Permissions] <String[]> [-Description] <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-Permissions] <String[]> [-Description] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
 New-AzureRmApplicationInsightsApiKey [-ResourceId] <ResourceIdentifier> [-Permissions] <String[]>
- [-Description] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ComponentNameParameterSet
-```
-New-AzureRmApplicationInsightsApiKey [-ResourceGroupName] <String> [-Name] <String> [-Permissions] <String[]>
- [-Description] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Description] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,11 +36,17 @@ Create an application insights api keys for an application insights resource
 
 ## EXAMPLES
 
-### Example 1
+### Example 1 Create a new Api Key for an application insights resource
 ```
 PS C:\>$apiKeyDescription="testapiKey"
 PS C:\>$permissions = @("ReadTelemetry", "WriteAnnotations")
 PS C:\>New-AzureRmApplicationInsightsApiKey -ResourceGroupName "testGroup" -Name "test" -Description $apiKeyDescription -Permissions $permissions
+
+ApiKey      : st0rfelw7m3oimfspozrtwgccxihiftbdwqjdfkg
+CreatedDate : Fri, 27 Oct 2017 16:59:19 GMT
+Id          : 1ed593f9-1561-4981-922d-6917971eecd3
+Permissions : {ReadTelemetry, WriteAnnotations}
+Description : testapiKey
 ```
 
 Create application insights api key description as "testapiKey" with permissions "ReadTelemetry", "WriteAnnotations" for resource "test" in resource group "testGroup".
@@ -62,6 +68,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
 
@@ -78,7 +99,9 @@ Accept wildcard characters: False
 ```
 
 ### -Description
-Description to help identify this API key.```yaml
+Description to help identify this API key.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
@@ -86,7 +109,7 @@ Aliases:
 Required: True
 Position: 3
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -101,7 +124,7 @@ Aliases: ApplicationInsightsComponentName, ComponentName
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -117,7 +140,7 @@ Accepted values: ReadTelemetry, WriteAnnotations, AuthenticateSDKControlChannel
 Required: True
 Position: 2
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -132,12 +155,14 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Application Insights Component Resource Id.```yaml
+Application Insights Component Resource Id.
+
+```yaml
 Type: ResourceIdentifier
 Parameter Sets: ResourceIdParameterSet
 Aliases: 
@@ -146,6 +171,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

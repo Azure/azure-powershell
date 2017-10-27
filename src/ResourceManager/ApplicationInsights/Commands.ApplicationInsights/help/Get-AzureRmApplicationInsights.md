@@ -12,7 +12,7 @@ Get application insights resources
 
 ## SYNTAX
 
-### ResourceGroupParameterSet
+### ResourceGroupParameterSet (Default)
 ```
 Get-AzureRmApplicationInsights [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
@@ -20,13 +20,13 @@ Get-AzureRmApplicationInsights [[-ResourceGroupName] <String>] [-DefaultProfile 
 
 ### ComponentNameParameterSet
 ```
-Get-AzureRmApplicationInsights [-ResourceGroupName] <String> [-Name] <String> [-IncludePricingPlan]
+Get-AzureRmApplicationInsights [-ResourceGroupName] <String> [-Name] <String> [-Full]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Get-AzureRmApplicationInsights [-ResourceId] <ResourceIdentifier> [-IncludePricingPlan]
+Get-AzureRmApplicationInsights [-ResourceId] <ResourceIdentifier> [-Full]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -35,19 +35,64 @@ Get application insights resources in a resource group or specific resource
 
 ## EXAMPLES
 
-### Example 1
+### Example 1 Get application insights resource
 ```
 PS C:\> Get-AzureRmApplicationInsights -ResourceGroupName "testgroup" -Name "test"
+
+Id                 : /subscriptions/{subid}/resourceGroups/testgroup/providers/microsoft.insights/components/test
+ResourceGroupName  : testgroup
+Name               : test
+Kind               : web
+Location           : eastus
+Type               : microsoft.insights/components
+AppId              : 7c8f0641-d307-41bc-b8f2-d30701adb4b3
+ApplicationType    : web
+Tags               : {}
+CreationDate       : 7/5/2017 4:37:22 PM
+FlowType           : Redfield
+HockeyAppId        :
+HockeyAppToken     :
+InstrumentationKey : 1e30d092-4b4b-47c6-ad39-7c10785d80f5
+ProvisioningState  : Succeeded
+RequestSource      : IbizaAIExtension
+SamplingPercentage :
+TenantId           : b90b0dec-9b9a-4778-a84e-4ffb73bb17f7
 ```
 
 Get application insights resource named "test" in resoruce group "testgroup"
 
-### Example 2
+### Example 2 Get application insights resource with pricing plan information
 ```
 PS C:\> Get-AzureRmApplicationInsights -ResourceGroupName "testgroup" -Name "test" -IncludePricingPlan
+
+Cap                            : 330
+ResetTime                      : 0
+StopSendNotificationWhenHitCap : True
+CapExpirationTime              :
+IsCapped                       : False
+Id                 : /subscriptions/{subid}/resourceGroups/testgroup/providers/microsoft.insights/components/test
+ResourceGroupName  : testgroup
+Name               : test
+Kind               : web
+Location           : eastus
+Type               : microsoft.insights/components
+AppId              : 7c8f0641-d307-41bc-b8f2-d30701adb4b3
+ApplicationType    : web
+Tags               : {}
+CreationDate       : 7/5/2017 4:37:22 PM
+FlowType           : Redfield
+HockeyAppId        :
+HockeyAppToken     :
+InstrumentationKey : 1e30d092-4b4b-47c6-ad39-7c10785d80f5
+ProvisioningState  : Succeeded
+RequestSource      : IbizaAIExtension
+SamplingPercentage :
+TenantId           : b90b0dec-9b9a-4778-a84e-4ffb73bb17f7
+PricingPlan        : Basic
 ```
 
 Get application insights resource and include pricing plan information for resource named "test" in resoruce group "testgroup"
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -66,16 +111,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IncludePricingPlan
-If specified, it will get back pricing plan of the application insights component.```yaml
+### -Full
+If specified, it will get back pricing plan of the application insights component.
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: ComponentNameParameterSet, ResourceIdParameterSet
-Aliases: IncludeDailyCap, IncludeDailyCapStatus
+Aliases: IncludeDailyCap, IncludeDailyCapStatus, IncludePricingPlan
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -90,7 +137,7 @@ Aliases: ApplicationInsightsComponentName, ComponentName
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -105,7 +152,7 @@ Aliases:
 Required: False
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -117,12 +164,14 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Application Insights Component Resource Id.```yaml
+Application Insights Component Resource Id.
+
+```yaml
 Type: ResourceIdentifier
 Parameter Sets: ResourceIdParameterSet
 Aliases: 

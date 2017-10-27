@@ -12,6 +12,12 @@ Get application insights api keys for an application insights resource
 
 ## SYNTAX
 
+### ComponentNameParameterSet (Default)
+```
+Get-AzureRmApplicationInsightsApiKey [-ResourceGroupName] <String> [-Name] <String> [[-ApiKeyId] <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ### ComponentObjectParameterSet
 ```
 Get-AzureRmApplicationInsightsApiKey [-ApplicationInsightsComponent] <PSApplicationInsightsComponent>
@@ -24,28 +30,33 @@ Get-AzureRmApplicationInsightsApiKey [-ResourceId] <ResourceIdentifier> [[-ApiKe
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ComponentNameParameterSet
-```
-Get-AzureRmApplicationInsightsApiKey [-ResourceGroupName] <String> [-Name] <String> [[-ApiKeyId] <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Get application insights api keys for an application insights resource
 
 ## EXAMPLES
 
-### Example 1
+### Example 1 Get Api Keys for an application insights resource
 ```
 PS C:\>  Get-AzureRmApplicationInsightsApiKey -ResourceGroupName "testGroup" -Name "test"
+
+Id                                   Description Permissions                       CreatedDate                   ApiKey
+--                                   ----------- -----------                       -----------                   ------
+7c4c61dc-b392-4aa4-992f-ee92b84e5dee test1 ReadTelemetry                     Wed, 18 Oct 2017 23:36:40 GMT
+63657030-dea6-4c52-82f4-6f5128cb92cb test2  {ReadTelemetry, WriteAnnotations} Wed, 18 Oct 2017 21:46:41 GMT
+82549f39-f3ae-492e-8f94-f7aada75fa57 test3  ReadTelemetry                     Wed, 18 Oct 2017 22:30:23 GMT
 ```
 
 Get application insights api keys for resource "test" in resource group "testGroup".
 
-### Example 2
+### Example 2 Get specific API key for an application insights resource
 ```
-PS C:\>  Get-AzureRmApplicationInsightsApiKey -ResourceGroupName "testGroup" -Name "test"  -ApiKeyId dd173f38-4fd1-4c75-8af5-9
-9c29aa0f867
+PS C:\>  Get-AzureRmApplicationInsightsApiKey -ResourceGroupName "testGroup" -Name "test"  -ApiKeyId 
+7c4c61dc-b392-4aa4-992f-ee92b84e5dee
+ApiKey      :
+CreatedDate : Wed, 18 Oct 2017 23:36:40 GMT
+Id          : 7c4c61dc-b392-4aa4-992f-ee92b84e5dee
+Permissions : {ReadTelemetry}
+Description : test1
 ```
 
 Get specific application insights api key that id is "dd173f38-4fd1-4c75-8af5-9
@@ -64,12 +75,14 @@ Aliases:
 Required: False
 Position: 2
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ApplicationInsightsComponent
-Application Insights Component Object.```yaml
+Application Insights Component Object.
+
+```yaml
 Type: PSApplicationInsightsComponent
 Parameter Sets: ComponentObjectParameterSet
 Aliases: 
@@ -107,7 +120,7 @@ Aliases: ApplicationInsightsComponentName, ComponentName
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -122,12 +135,14 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Application Insights Component Resource Id.```yaml
+Application Insights Component Resource Id.
+
+```yaml
 Type: ResourceIdentifier
 Parameter Sets: ResourceIdParameterSet
 Aliases: 
