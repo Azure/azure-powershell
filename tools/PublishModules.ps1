@@ -191,7 +191,6 @@ function Change-RMModule
         $moduleName = (Get-Item -Path $Path).Name
         $moduleManifest = $moduleName + ".psd1"
         $moduleSourcePath = Join-Path -Path $Path -ChildPath $moduleManifest
-        Add-ExternalDependency -ModuleSourcePath $moduleSourcePath
         $file = Get-Item $moduleSourcePath
         Import-LocalizedData -BindingVariable ModuleMetadata -BaseDirectory $file.DirectoryName -FileName $file.Name
         $toss = Publish-Module -Path $Path -Repository $TempRepo -Force
@@ -216,7 +215,6 @@ function Change-RMModule
           Add-PSM1Dependency -Path $unzippedManifest
           Write-Output "Removing module manifest dependencies for $unzippedManifest"
           Remove-ModuleDependencies -Path $unzippedManifest
-          Remove-ExternalDependency -ModuleName $moduleName -DirPath $dirPath
           Remove-Item -Path $zipPath -Force
           Write-Output "Repackaging $dirPath"
           Update-NugetPackage -BasePath $TempRepoPath -ModuleName $moduleName -DirPath $dirPath -NugetExe $NugetExe
@@ -225,37 +223,6 @@ function Change-RMModule
         {
             popd
         }
-    }
-}
-
-function Add-ExternalDependency {
-    [CmdletBinding()]
-     param([string]$ModuleSourcePath)
-     process {
-        $file = Get-Item $ModuleSourcePath
-        Import-LocalizedData -BindingVariable ModuleMetadata -BaseDirectory $file.DirectoryName -FileName $file.Name
-        if ($ModuleMetadata.RequiredModules -ne $null)
-        {
-            $externalModules = @()
-            $ModuleMetadata.RequiredModules | % { $externalModules += $_["ModuleName"] }
-            Update-ModuleManifest -Path $ModuleSourcePath -ExternalModuleDependencies $externalModules
-        }
-     }
-}
-
-function Remove-ExternalDependency {
-    [CmdletBinding()]
-    param(
-        [string]$ModuleName,
-        [string]$DirPath
-    )
-
-    PROCESS
-    {
-        $moduleManifest = $ModuleName + ".psd1"
-        $moduleSourcePath = Join-Path -Path $DirPath -ChildPath $moduleManifest
-        $content = Get-Content -Path $moduleSourcePath | Where {$_ -notlike "*ExternalModuleDependencies*"} 
-        $content | Set-Content -Path $moduleSourcePath -Force
     }
 }
 
