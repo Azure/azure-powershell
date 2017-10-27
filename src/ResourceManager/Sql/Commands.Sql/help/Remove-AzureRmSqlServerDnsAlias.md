@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzureRmSqlServerDnsAlias
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Removes Azure SQL Server DNS Alias.
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ Remove-AzureRmSqlServerDnsAlias -ResourceId <String> [-Force] [-DefaultProfile <
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+This commands remove Azure SQL Server DNS Alias from the server leaving server intact.
 
 ## EXAMPLES
 

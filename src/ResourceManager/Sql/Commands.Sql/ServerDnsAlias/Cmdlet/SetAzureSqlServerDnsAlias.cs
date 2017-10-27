@@ -27,8 +27,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDnsAlias.Cmdlet
 	/// Defines the Set-AzureRmSqlServerDnsAlias cmdlet
 	/// </summary>
 	[Cmdlet(VerbsCommon.Set, "AzureRmSqlServerDnsAlias",
-		SupportsShouldProcess = true,
-ConfirmImpact = ConfirmImpact.Medium)]
+		SupportsShouldProcess = true)]
 	[OutputType(typeof(Model.AzureSqlServerDnsAliasModel))]
 	public class SetAzureSqlServerDnsAlias : AzureSqlCmdletBase<IEnumerable<AzureSqlServerDnsAliasModel>, AzureSqlServerDnsAliasAdapter>
 	{
@@ -36,15 +35,15 @@ ConfirmImpact = ConfirmImpact.Medium)]
 		/// Template to generate the Server Dns Alias Id
 		/// </summary>
 		public static string ServerDnsAliasIdTemplate = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Sql/servers/{2}/dnsAliases/{3}";
-
+		
 		/// <summary>
 		/// Gets or sets the name of the Azure Sql Server Dns Alias
 		/// </summary>
 		[Parameter(Mandatory = true,
 			HelpMessage = "The Azure Sql Server Dns Alias name.")]
-		[Alias("Name")]
+		[Alias("DnsAliasName")]
 		[ValidateNotNullOrEmpty]
-		public string DnsAliasName { get; set; }
+		public string Name { get; set; }
 
 		/// <summary>
 		/// Gets or sets the name of the new server to which alias should point
@@ -53,6 +52,17 @@ ConfirmImpact = ConfirmImpact.Medium)]
 			HelpMessage = "The name of Azure Sql Server to which alias should point.")]
 		[ValidateNotNullOrEmpty]
 		public string TargetServerName { get; set; }
+
+		/// <summary>
+		/// Gets or sets the name of the resource group to use.
+		/// </summary>
+		[Parameter(Mandatory = true,
+			Position = 0,
+			ValueFromPipelineByPropertyName = true,
+			HelpMessage = "The name of the resource group of the target server.")]
+		[Alias("TargetResourceGroupName")]
+		[ValidateNotNullOrEmpty]
+		public override string ResourceGroupName { get; set; }
 
 		/// <summary>
 		/// Gets or sets the name of the new server to which alias is currently pointing
@@ -104,7 +114,7 @@ ConfirmImpact = ConfirmImpact.Medium)]
 				ModelAdapter.AcquireServerDnsAlias(
 					this.ResourceGroupName,
 					this.TargetServerName,
-					this.DnsAliasName,
+					this.Name,
 					new Management.Sql.Models.ServerDnsAliasAcquisition(oldServerDnsAliasId: ConstructOldServerId()))
 			};
 		}
@@ -123,7 +133,7 @@ ConfirmImpact = ConfirmImpact.Medium)]
 		/// <returns></returns>
 		private string ConstructOldServerId()
 		{
-			return string.Format(ServerDnsAliasIdTemplate, this.SourceServerSubscriptionId, this.SourceServerResourceGroupName, this.SourceServerName, this.DnsAliasName);
+			return string.Format(ServerDnsAliasIdTemplate, this.SourceServerSubscriptionId, this.SourceServerResourceGroupName, this.SourceServerName, this.Name);
 		}
 	}
 }

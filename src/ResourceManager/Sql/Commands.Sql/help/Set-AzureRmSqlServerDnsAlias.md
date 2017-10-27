@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzureRmSqlServerDnsAlias
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Modifies the server to which Azure SQL Server DNS Alias is pointing
 
 ## SYNTAX
 
@@ -19,7 +19,9 @@ Set-AzureRmSqlServerDnsAlias -DnsAliasName <String> -TargetServerName <String> -
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+This command is updating the server to which alias is pointing. 
+
+This command needs to be issued while logged into subscription where new server to which alias is going to point is located.
 
 ## EXAMPLES
 

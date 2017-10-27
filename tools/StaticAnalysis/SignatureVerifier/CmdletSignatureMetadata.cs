@@ -145,6 +145,7 @@ namespace StaticAnalysis.SignatureVerifier
         {
             "Access",
             "Address",
+            "Alias",
             "Anonymous",
             "Diagnostics",
             "Express",
@@ -163,8 +164,7 @@ namespace StaticAnalysis.SignatureVerifier
             "Statistics",
             "Status",
             "Success",
-            "Vmss",
-            "Alias"
+            "Vmss"
         };
 
         public List<ParameterMetadata> GetParametersWithPluralNoun()

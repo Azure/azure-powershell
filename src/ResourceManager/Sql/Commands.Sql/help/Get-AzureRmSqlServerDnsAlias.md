@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzureRmSqlServerDnsAlias
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets or lists Azure SQL Server DNS Alias.
 
 ## SYNTAX
 
@@ -18,16 +18,32 @@ Get-AzureRmSqlServerDnsAlias [-DnsAliasName <String>] -ServerName <String> [-Res
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Get the specific Azure SQL Server DNS Alias or lists all Server DNS Aliases for the server
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> $serverDNSAliases = Get-AzureRmSqlServerDNSAlias -ServerName server -ResourceGroupName rg
+PS C:\> $serverDNSAliases = Get-AzureRmSqlServerDNSAlias -ServerName servername -ResourceGroupName rgname
+
+ResourceGroupName  ServerName   DnsAliasName
+-----------------  ----------   ------------------
+rgname             servername   dnsaliasname
+rgname             servername   dnsaliasname2
 ```
 
-Lists all Server DNS Aliases for the server
+Lists all Server DNS Aliases for the specific server
+
+### Example 2
+```
+PS C:\> $serverDNSAliases = Get-AzureRmSqlServerDNSAlias -DnsAliasName dnsaliasname -ServerName servername -ResourceGroupName rgname
+
+ResourceGroupName  ServerName   DnsAliasName
+-----------------  ----------   ------------------
+rgname             servername   dnsaliasname
+```
+
+Gets Server DNS Alias specified by server and alias name
 
 ## PARAMETERS
 

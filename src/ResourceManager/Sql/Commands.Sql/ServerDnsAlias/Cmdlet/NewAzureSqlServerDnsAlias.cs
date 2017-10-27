@@ -22,8 +22,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDnsAlias.Cmdlet
 	/// <summary>
 	/// Defines the New-AzureRmSqlServerDnsAlias cmdlet
 	/// </summary>
-	[Cmdlet(VerbsCommon.New, "AzureRmSqlServerDnsAlias",
-ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
+	[Cmdlet(VerbsCommon.New, "AzureRmSqlServerDnsAlias", SupportsShouldProcess = true)]
 	[OutputType(typeof(Model.AzureSqlServerDnsAliasModel))]
 	public class NewAzureSqlServerDNSAlias : AzureSqlServerDnsAliasCmdletBase
 	{
@@ -32,9 +31,9 @@ ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
 		/// </summary>
 		[Parameter(Mandatory = true,
 			HelpMessage = "The Azure Sql Server Dns Alias name.")]
-		[Alias("Name")]
+		[Alias("DnsAliasName")]
 		[ValidateNotNullOrEmpty]
-		public string DnsAliasName { get; set; }
+		public string Name { get; set; }
 
 		/// <summary>
 		/// Check to see if the Server Dns Alias already exists for this server
@@ -44,7 +43,7 @@ ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
 		{
 			try
 			{
-				ModelAdapter.GetServerDnsAlias(this.ResourceGroupName, this.ServerName, this.DnsAliasName);
+				ModelAdapter.GetServerDnsAlias(this.ResourceGroupName, this.ServerName, this.Name);
 			}
 			catch (CloudException ex)
 			{
@@ -60,7 +59,7 @@ ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
 
 			// The server dns alias already exists
 			throw new PSArgumentException(
-				string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.ServerDnsAliasNameExists, this.DnsAliasName), "ServerDNSAlias");
+				string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.ServerDnsAliasNameExists, this.Name), "ServerDNSAlias");
 		}
 
 		/// <summary>
@@ -75,7 +74,7 @@ ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
 			{
 				ResourceGroupName = this.ResourceGroupName,
 				ServerName = this.ServerName,
-				DnsAliasName = this.DnsAliasName
+				DnsAliasName = this.Name
 			});
 
 			return newEntity;
@@ -88,10 +87,12 @@ ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
 		/// <returns>The created server dns alias</returns>
 		protected override IEnumerable<Model.AzureSqlServerDnsAliasModel> PersistChanges(IEnumerable<Model.AzureSqlServerDnsAliasModel> entity)
 		{
-			return new List<Model.AzureSqlServerDnsAliasModel>()
+			var resp = new List<Model.AzureSqlServerDnsAliasModel>()
 			{
 				ModelAdapter.UpsertServerDnsAlias(entity.First())
 			};
+
+			return resp;
 		}
 	}
 }

@@ -30,7 +30,7 @@ function Test-CreateServerDNSAlias
 	{
 		$serverDnsAlias = New-AzureRmSqlServerDnsAlias -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DnsAliasName $serverDnsAliasName
 		Assert-AreEqual $serverDnsAlias.ServerName $server.ServerName
-		Assert-AreEqual $serverDnsAlias.ServerDNSAliasName $serverDnsAliasName
+		Assert-AreEqual $serverDnsAlias.DnsAliasName $serverDnsAliasName
 	}
 	finally
 	{
@@ -51,18 +51,28 @@ function Test-GetServerDNSAlias
 	$server = Create-ServerForTest $rg $location
 
 	$serverDnsAliasName = Get-ServerDnsAliasName
+	$serverDnsAliasName2 = Get-ServerDnsAliasName
 
 	try
 	{
-		# Create server dns alias
+		# Create server dns alias 1
 		$serverDnsAlias = New-AzureRmSqlServerDnsAlias -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DnsAliasName $serverDnsAliasName
 		Assert-AreEqual $serverDnsAlias.ServerName $server.ServerName
-		Assert-AreEqual $serverDnsAlias.ServerDNSAliasName $serverDnsAliasName
+		Assert-AreEqual $serverDnsAlias.DnsAliasName $serverDnsAliasName
+
+		# Create server dns alias 2
+		$serverDnsAlias = New-AzureRmSqlServerDnsAlias -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DnsAliasName $serverDnsAliasName2
+		Assert-AreEqual $serverDnsAlias.ServerName $server.ServerName
+		Assert-AreEqual $serverDnsAlias.DnsAliasName $serverDnsAliasName2
 
 		# Get server dns alias
 		$resp = Get-AzureRmSqlServerDnsAlias -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DnsAliasName $serverDnsAliasName
-		Assert-AreEqual $resp.ServerName $serverName
-		Assert-AreEqual $resp.ServerDNSAliasName $serverDnsAliasName
+		Assert-AreEqual $resp.ServerName $server.ServerName
+		Assert-AreEqual $resp.DnsAliasName $serverDnsAliasName
+
+		# Get list of server dns aliases for server
+		$resp = Get-AzureRmSqlServerDnsAlias -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName
+		Assert-AreEqual $resp.Count 2
 	}
 	finally
 	{
@@ -89,10 +99,10 @@ function Test-RemoveServerDNSAlias
 		# Create Server DNS Alias
 		$serverDnsAlias = New-AzureRmSqlServerDnsAlias -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DnsAliasName $serverDnsAliasName
 		Assert-AreEqual $serverDnsAlias.ServerName $server.ServerName
-		Assert-AreEqual $serverDnsAlias.ServerDNSAliasName $serverDnsAliasName
+		Assert-AreEqual $serverDnsAlias.DnsAliasName $serverDnsAliasName
 
 		# Remove Server DNS Alias
-		$resp = Remove-AzureRmSqlServerDnsAlias -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DnsAliasName $serverDnsAliasName
+		$resp = Remove-AzureRmSqlServerDnsAlias -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DnsAliasName $serverDnsAliasName -Force
 		$all = Get-AzureRmSqlServerDNSAlias -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName
 		Assert-AreEqual $all.Count 0
 	}
@@ -122,14 +132,17 @@ function Test-UpdateServerDNSAlias
 		# Create Server DNS Alias
 		$serverDnsAlias = New-AzureRmSqlServerDnsAlias -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DnsAliasName $serverDnsAliasName
 		Assert-AreEqual $serverDnsAlias.ServerName $server.ServerName
-		Assert-AreEqual $serverDnsAlias.ServerDNSAliasName $serverDnsAliasName
+		Assert-AreEqual $serverDnsAlias.DnsAliasName $serverDnsAliasName
+
+		# Get current subscription id
+		$subId = (Get-AzureRmContext).Subscription.Id
 
 		# Update Server DNS Alias
-		Set-AzureRmSqlServerDnsAlias -ResourceGroupName $rg.ResourceGroupName -SourceServerName $server.ServerName -DnsAliasName $serverDnsAliasName -TargetServerName $server2.ServerName -SourceServerResourceGroupName $rg.ResourceGroupName -SourceServerSubscriptionId $server.SubscriptionId
+		Set-AzureRmSqlServerDnsAlias -ResourceGroupName $rg.ResourceGroupName -SourceServerName $server.ServerName -DnsAliasName $serverDnsAliasName -TargetServerName $server2.ServerName -SourceServerResourceGroupName $rg.ResourceGroupName -SourceServerSubscriptionId $subId
 
-		$resp = Get-AzureRmSqlServerDnsAlias -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DnsAliasName $serverDnsAliasName
+		$resp = Get-AzureRmSqlServerDnsAlias -ResourceGroupName $rg.ResourceGroupName -ServerName $server2.ServerName -DnsAliasName $serverDnsAliasName
 		Assert-AreEqual $resp.ServerName $server2.ServerName
-		Assert-AreEqual $resp.ServerDNSAliasName $serverDnsAliasName
+		Assert-AreEqual $resp.DnsAliasName $serverDnsAliasName
 	}
 	finally
 	{
