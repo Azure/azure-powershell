@@ -61,15 +61,6 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Executing cmdlet with Batch account {0} with its {1} key. To change which key to use, set the KeyInUse property on the BatchAccountContext..
-        /// </summary>
-        internal static string AccountAndKeyInUse {
-            get {
-                return ResourceManager.GetString("AccountAndKeyInUse", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Adding a new certificate with thumbprint {0}. .
         /// </summary>
         internal static string AddingCertificate {
@@ -718,15 +709,6 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The current KeyInUse on this BatchAccountContext is the {0} key, but this key is not populated on the BatchAccountContext object. Use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its keys populated..
-        /// </summary>
-        internal static string KeyNotPresent {
-            get {
-                return ResourceManager.GetString("KeyNotPresent", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Checking if account already exists.
         /// </summary>
         internal static string LookupAccount {
@@ -1164,6 +1146,24 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         internal static string UploadedApplicationButFailedToActivate {
             get {
                 return ResourceManager.GetString("UploadedApplicationButFailedToActivate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Using Azure Active Directory authentication to interact with the Batch service. To use shared key authentication, supply a BatchAccountContext that was returned from the Get-AzureRmBatchAccountKeys cmdlet..
+        /// </summary>
+        internal static string UsingAadAuth {
+            get {
+                return ResourceManager.GetString("UsingAadAuth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Using shared key authentication to interact with the Batch service. Current key in use: {0}. To change keys, set the BatchAccountContext.KeyInUse property. To use Azure Active Directory authentication, supply a BatchAccountContext that was returned from the Get-AzureRmBatchAccount cmdlet..
+        /// </summary>
+        internal static string UsingSharedKeyAuth {
+            get {
+                return ResourceManager.GetString("UsingSharedKeyAuth", resourceCulture);
             }
         }
     }

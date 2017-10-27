@@ -30,16 +30,6 @@ namespace Microsoft.Azure.Commands.BatchManager.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void BatchAccountContextConstructorTest()
-        {
-            string endpoint = new UriBuilder(Uri.UriSchemeHttps, "account.batch-test.windows-int.net").Uri.AbsoluteUri.ToString();
-            var acctContext = new BatchAccountContext(endpoint);
-
-            Assert.Equal<string>(endpoint, acctContext.AccountEndpoint);
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void BatchAccountContextFromResourceTest()
         {
             string account = "account";
@@ -60,7 +50,7 @@ namespace Microsoft.Azure.Commands.BatchManager.Test
                 Location = "location",
                 ProvisioningState = ProvisioningState.Succeeded,
             };
-            BatchAccountContext context = BatchAccountContext.ConvertAccountResourceToNewAccountContext(resource);
+            BatchAccountContext context = BatchAccountContext.ConvertAccountResourceToNewAccountContext(resource, null);
 
             Assert.Equal<string>(context.Id, resource.Id);
             Assert.Equal<string>(context.AccountEndpoint, resource.AccountEndpoint);
@@ -70,6 +60,25 @@ namespace Microsoft.Azure.Commands.BatchManager.Test
             Assert.Equal<string>(context.TaskTenantUrl, string.Format("https://{0}", endpoint));
             Assert.Equal<string>(context.Subscription, subscription);
             Assert.Equal<string>(context.ResourceGroupName, resourceGroup);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void HasKeysPropertyIsCorrect()
+        {
+            BatchAccountContext context = new BatchAccountContext(null);
+            Assert.False(context.HasKeys);
+
+            context.PrimaryAccountKey = "key1";
+            Assert.True(context.HasKeys);
+
+            context.PrimaryAccountKey = null;
+            context.SecondaryAccountKey = "key2";
+            Assert.True(context.HasKeys);
+
+            context.PrimaryAccountKey = "key1";
+            context.SecondaryAccountKey = "key2";
+            Assert.True(context.HasKeys);
         }
     }
 }

@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Accounts
             string resourceGroup = "resourceGroup";
             string location = "location";
             BatchAccount accountResource = BatchTestHelpers.CreateAccountResource(accountName, resourceGroup);
-            BatchAccountContext expected = BatchAccountContext.ConvertAccountResourceToNewAccountContext(accountResource);
+            BatchAccountContext expected = BatchAccountContext.ConvertAccountResourceToNewAccountContext(accountResource, null);
 
             batchClientMock.Setup(b => b.CreateAccount(resourceGroup, accountName, location, null, null)).Returns(expected);
 
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Accounts
             string storageId = "storageId";
 
             BatchAccount accountResource = BatchTestHelpers.CreateAccountResource(accountName, resourceGroup);
-            BatchAccountContext expected = BatchAccountContext.ConvertAccountResourceToNewAccountContext(accountResource);
+            BatchAccountContext expected = BatchAccountContext.ConvertAccountResourceToNewAccountContext(accountResource, null);
 
             batchClientMock.Setup(b => b.CreateAccount(resourceGroup, accountName, location, null, storageId)).Returns(expected);
 
