@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.WebApps.Validations
     {
         protected override void Validate(object arguments, EngineIntrinsics engineIntrinsics)
         {
-            var serverFarm = arguments as ServerFarmWithRichSku;
+            var serverFarm = arguments as AppServicePlan;
             if (serverFarm == null)
             {
                 throw new ValidationMetadataException("Argument 'ServerFarm' must be of type Microsoft.Azure.Management.WebSites.Models.ServerFarmWithRichSku");

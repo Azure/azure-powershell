@@ -25,15 +25,15 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
     /// <summary>
     /// this commandlet will let you create a new Azure App service Plan using ARM APIs
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmAppServicePlan"), OutputType(typeof(ServerFarmWithRichSku))]
+    [Cmdlet(VerbsCommon.New, "AzureRmAppServicePlan"), OutputType(typeof(AppServicePlan))]
     public class NewAzureAppServicePlanCmdlet : AppServicePlanBaseCmdlet
     {
         [Parameter(Position = 2, Mandatory = true, HelpMessage = "The location of the app service plan.")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
-        [Parameter(Position = 3, Mandatory = false, HelpMessage = "The App Service plan tier. Allowed values are [Free|Shared|Basic|Standard|Premium]")]
-        [ValidateSet("Free", "Shared", "Basic", "Standard", "Premium", IgnoreCase = true)]
+        [Parameter(Position = 3, Mandatory = false, HelpMessage = "The App Service plan tier. Allowed values are [Free|Shared|Basic|Standard|Premium|PremiumV2]")]
+        [ValidateSet("Free", "Shared", "Basic", "Standard", "Premium", "PremiumV2", "Isolated", IgnoreCase = true)]
         public string Tier { get; set; }
 
         [Parameter(Position = 4, Mandatory = false, HelpMessage = "Number of Workers to be allocated.")]

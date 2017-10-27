@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            var list = WebsitesClient.ListSiteBackups(ResourceGroupName, Name, Slot).Value();
+            var list = WebsitesClient.ListSiteBackups(ResourceGroupName, Name, Slot);
             AzureWebAppBackup[] backups = new AzureWebAppBackup[list.Count()];
             for (int i = 0; i < backups.Length; i++)
             {

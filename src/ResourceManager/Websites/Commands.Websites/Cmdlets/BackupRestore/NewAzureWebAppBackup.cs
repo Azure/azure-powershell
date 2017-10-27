@@ -39,9 +39,6 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
             base.ExecuteCmdlet();
             BackupRequest request = new BackupRequest()
             {
-                // Location is required by Resource (base class of BackupRequest)
-                // to not be null, but is not actually significant for the request.
-                Location = "",
                 StorageAccountUrl = this.StorageAccountUrl,
                 BackupRequestName = this.BackupName,
                 Databases = this.Databases

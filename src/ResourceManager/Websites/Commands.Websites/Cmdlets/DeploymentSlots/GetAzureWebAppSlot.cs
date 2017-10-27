@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 
             if (string.IsNullOrWhiteSpace(Slot))
             {
-                WriteObject(WebsitesClient.ListWebApps(ResourceGroupName, Name));
+                WriteObject(WebsitesClient.ListWebApps(ResourceGroupName, Name), true);
             }
             else
             {
