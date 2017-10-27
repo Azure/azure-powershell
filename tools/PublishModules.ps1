@@ -235,12 +235,11 @@ function Add-ExternalDependency {
         $file = Get-Item $ModuleSourcePath
         Import-LocalizedData -BindingVariable ModuleMetadata -BaseDirectory $file.DirectoryName -FileName $file.Name
         $externalModules = @()
-        foreach ($mod in $ModuleMetadata.RequiredModules)
+        $ModuleMetadata.RequiredModules | % { $externalModules += $_["ModuleName"] }
+        if ($externalModules.Count -gt 0)
         {
-            $externalModules += $mod["ModuleName"]
+            Update-ModuleManifest -Path $moduleSourcePath -ExternalModuleDependencies $externalModules
         }
-
-        Update-ModuleManifest -Path $moduleSourcePath -ExternalModuleDependencies $externalModules
      }
 }
 
