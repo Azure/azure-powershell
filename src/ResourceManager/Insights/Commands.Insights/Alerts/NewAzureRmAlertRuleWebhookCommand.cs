@@ -37,18 +37,20 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// Gets or sets the properties dictionary of the action
         /// </summary>
         [Parameter(Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The properties of the action in @{Property1 = 'Value1'; ...} format")]
-        public Hashtable Properties { get; set; }
+        [Alias("Properties")]
+        public Hashtable Property { get; set; }
 
         /// <summary>
         /// Execute the cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
         {
+            WriteWarning("Parameter name change: The parameter plural names for the parameters will be deprecated in May 2018 in favor of the singular versions of the same names.");
             Utilities.ValidateUri(this.ServiceUri, "ServiceUri");
 
-            var dictionary = this.Properties == null
+            var dictionary = this.Property == null
                 ? new Dictionary<string, string>()
-                : this.Properties.Keys.Cast<object>().ToDictionary(key => (string)key, key => (string)this.Properties[key]);
+                : this.Property.Keys.Cast<object>().ToDictionary(key => (string)key, key => (string)this.Property[key]);
 
             var action = new RuleWebhookAction
             {

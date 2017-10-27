@@ -85,7 +85,6 @@ namespace Microsoft.Azure.Commands.Insights.Test.Events
                 requiredFieldName: null,
                 requiredFieldValue: null,
                 filter: ref this.filter,
-                selected: ref this.selected,
                 startDate: startDate,
                 nextLink: ref this.nextLink);
         }
@@ -108,7 +107,6 @@ namespace Microsoft.Azure.Commands.Insights.Test.Events
                 requiredFieldName: "correlationId",
                 requiredFieldValue: Utilities.Correlation,
                 filter: ref this.filter,
-                selected: ref this.selected,
                 startDate: startDate,
                 nextLink: ref this.nextLink);
         }
@@ -131,7 +129,6 @@ namespace Microsoft.Azure.Commands.Insights.Test.Events
                 requiredFieldName: "resourceGroupName",
                 requiredFieldValue: Utilities.ResourceGroup,
                 filter: ref this.filter,
-                selected: ref this.selected,
                 startDate: startDate,
                 nextLink: ref this.nextLink);
         }
@@ -154,7 +151,6 @@ namespace Microsoft.Azure.Commands.Insights.Test.Events
                 requiredFieldName: "resourceUri",
                 requiredFieldValue: Utilities.ResourceUri,
                 filter: ref this.filter,
-                selected: ref this.selected,
                 startDate: startDate,
                 nextLink: ref this.nextLink);
         }
@@ -177,7 +173,6 @@ namespace Microsoft.Azure.Commands.Insights.Test.Events
                 requiredFieldName: "resourceProvider",
                 requiredFieldValue: Utilities.ResourceProvider,
                 filter: ref this.filter,
-                selected: ref this.selected,
                 startDate: startDate,
                 nextLink: ref this.nextLink);
         }

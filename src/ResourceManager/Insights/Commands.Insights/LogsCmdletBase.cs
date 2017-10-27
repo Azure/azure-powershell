@@ -197,6 +197,7 @@ namespace Microsoft.Azure.Commands.Insights
         /// </summary>
         protected override void ProcessRecordInternal()
         {
+            WriteWarning("Parameter deprecation: The DetailedOutput parameter will be deprecated in May 2018.");
             WriteDebug("Processing parameters");
             string queryFilter = this.ProcessParameters();
 
@@ -210,8 +211,8 @@ namespace Microsoft.Azure.Commands.Insights
             // If fullDetails is present do not select fields, if not present fetch only the SelectedFieldsForQuery
             WriteDebug("First call");
             var query = new ODataQuery<EventData>(queryFilter);
-            IPage<EventData> response = this.MonitorClient.ActivityLogs.ListAsync(odataQuery: query, select: fullDetails ? null : PSEventDataNoDetails.SelectedFieldsForQuery, cancellationToken: CancellationToken.None).Result;
-            var records = new List<IPSEventData>();
+            IPage<EventData> response = this.MonitorClient.ActivityLogs.ListAsync(odataQuery: query, cancellationToken: CancellationToken.None).Result;
+            var records = new List<PSEventData>();
             var enumerator = response.GetEnumerator();
             enumerator.ExtractCollectionFromResult(fullDetails: fullDetails, records: records, keepTheRecord: this.KeepTheRecord);
             string nextLink = response.NextPageLink;
@@ -229,7 +230,7 @@ namespace Microsoft.Azure.Commands.Insights
             }
 
             WriteDebug("Done following continuation token");
-            var recordsReturned = new List<IPSEventData>();
+            var recordsReturned = new List<PSEventData>();
             if (records.Count > maxNumberOfRecords)
             {
                 WriteDebug("Complying with maxNumberOfRecords");

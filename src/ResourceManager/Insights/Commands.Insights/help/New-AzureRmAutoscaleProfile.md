@@ -16,7 +16,7 @@ Creates an Autoscale profile.
 ```
 New-AzureRmAutoscaleProfile -Name <String> -DefaultCapacity <String> -MaximumCapacity <String>
  -MinimumCapacity <String>
- -Rules <System.Collections.Generic.List`1[Microsoft.Azure.Management.Insights.Models.ScaleRule]>
+ -Rule <System.Collections.Generic.List`1[Microsoft.Azure.Management.Insights.Models.ScaleRule]>
  [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ New-AzureRmAutoscaleProfile -Name <String> -DefaultCapacity <String> -MaximumCap
 ```
 New-AzureRmAutoscaleProfile -Name <String> -DefaultCapacity <String> -MaximumCapacity <String>
  -MinimumCapacity <String> -StartTimeWindow <DateTime> -EndTimeWindow <DateTime> -TimeWindowTimeZone <String>
- -Rules <System.Collections.Generic.List`1[Microsoft.Azure.Management.Insights.Models.ScaleRule]>
+ -Rule <System.Collections.Generic.List`1[Microsoft.Azure.Management.Insights.Models.ScaleRule]>
  [<CommonParameters>]
 ```
 
@@ -32,11 +32,11 @@ New-AzureRmAutoscaleProfile -Name <String> -DefaultCapacity <String> -MaximumCap
 ```
 New-AzureRmAutoscaleProfile -Name <String> -DefaultCapacity <String> -MaximumCapacity <String>
  -MinimumCapacity <String> -RecurrenceFrequency <RecurrenceFrequency>
- -ScheduleDays <System.Collections.Generic.List`1[System.String]>
- -ScheduleHours <System.Collections.Generic.List`1[System.Nullable`1[System.Int32]]>
- -ScheduleMinutes <System.Collections.Generic.List`1[System.Nullable`1[System.Int32]]>
+ -ScheduleDay <System.Collections.Generic.List`1[System.String]>
+ -ScheduleHour <System.Collections.Generic.List`1[System.Nullable`1[System.Int32]]>
+ -ScheduleMinute <System.Collections.Generic.List`1[System.Nullable`1[System.Int32]]>
  -ScheduleTimeZone <String>
- -Rules <System.Collections.Generic.List`1[Microsoft.Azure.Management.Insights.Models.ScaleRule]>
+ -Rule <System.Collections.Generic.List`1[Microsoft.Azure.Management.Insights.Models.ScaleRule]>
  [<CommonParameters>]
 ```
 
@@ -224,13 +224,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Rules
+### -Rule
 Specifies the list of rules to add to the profile.
 
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Management.Insights.Models.ScaleRule]
 Parameter Sets: (All)
-Aliases: 
+Aliases: Rules
 
 Required: True
 Position: Named
@@ -239,13 +239,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ScheduleDays
+### -ScheduleDay
 Specifies the scheduled days.
 
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: Parameters for New-AzureRmAutoscaleProfile cmdlet using recurrent scheduling
-Aliases: 
+Aliases: ScheduleDays
 
 Required: True
 Position: Named
@@ -254,13 +254,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ScheduleHours
+### -ScheduleHour
 Specifies the scheduled hours.
 
 ```yaml
 Type: System.Collections.Generic.List`1[System.Nullable`1[System.Int32]]
 Parameter Sets: Parameters for New-AzureRmAutoscaleProfile cmdlet using recurrent scheduling
-Aliases: 
+Aliases: ScheduleHours
 
 Required: True
 Position: Named
@@ -269,13 +269,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ScheduleMinutes
+### -ScheduleMinute
 Specifies the scheduled minutes.
 
 ```yaml
 Type: System.Collections.Generic.List`1[System.Nullable`1[System.Int32]]
 Parameter Sets: Parameters for New-AzureRmAutoscaleProfile cmdlet using recurrent scheduling
-Aliases: 
+Aliases: ScheduleMinutes
 
 Required: True
 Position: Named

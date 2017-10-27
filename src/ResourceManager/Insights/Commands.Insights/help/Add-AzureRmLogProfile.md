@@ -10,6 +10,17 @@ schema: 2.0.0
 ## SYNOPSIS
 Creates a new activity log profile. This profile is used to either archive the activity log to an Azure storage account or stream it to an Azure event hub in the same subscription. 
 
+## SYNTAX
+
+```
+Add-AzureRmLogProfile -Name <String> [-StorageAccountId <String>] [-ServiceBusRuleId <String>]
+ [-RetentionInDay <Int32>] -Location <System.Collections.Generic.List`1[System.String]>
+ [-Category <System.Collections.Generic.List`1[System.String]>] [<CommonParameters>]
+```
+
+## DESCRIPTION
+The **Add-AzureRmLogProfile** cmdlet creates a log profile.
+
 - **Storage Account** - Only standard storage account (premium storage account is not supported) is supported. It could either be of type ARM or Classic. If it's logged to a storage account, the cost of storing the activity log is billed at normal standard storage rates. There could be only one log profile per subscription consequentially only one storage account per subscription can be used to export activity log. 
 
 - **Event Hub** - There could be only one log profile per subscription consequentially only one event hub per subscription can be used to export activity log. If activity log is streamed to an event hub, standard event hub pricing will apply. 
@@ -18,16 +29,7 @@ In the activity log, events can pertain to a region or could be "Global". Global
 
 **Note** :- **Failing to set "Global" in the locations will result in a majority of activity log not getting exported.** 
 
-## SYNTAX
-
-```
-Add-AzureRmLogProfile -Name <String> [-StorageAccountId <String>] [-ServiceBusRuleId <String>]
- [-RetentionInDays <Int32>] -Locations <System.Collections.Generic.List`1[System.String]>
- [-Categories <System.Collections.Generic.List`1[System.String]>] [<CommonParameters>]
-```
-
-## DESCRIPTION
-The **Add-AzureRmLogProfile** cmdlet creates a log profile.
+This cmdlet implements the ShouldProcess pattern, i.e. it might request confirmation from the user before actually creating, modifying, or removing the resource.
 
 ## EXAMPLES
 ### Example 1 : Add a new log profile to export the activity log matching the location condition to a storage account 
@@ -37,13 +39,13 @@ Add-AzureRmLogProfile -Locations "Global","West US" -Name ExportLogProfile -Stor
 
 ## PARAMETERS
 
-### -Categories
+### -Category
 Specifies the list of categories.
 
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
-Aliases: 
+Aliases: Categories
 
 Required: False
 Position: Named
@@ -52,7 +54,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Locations
+### -Location
 Specifies the location of the log profile.
 Valid values: Run below cmdlet to get the latest list of locations. 
 
@@ -61,7 +63,7 @@ Get-AzureLocation | Select DisplayName
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
-Aliases: 
+Aliases: Locations
 
 Required: True
 Position: Named
@@ -85,13 +87,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -RetentionInDays
+### -RetentionInDay
 Specifies the retention policy, in days. This is the number of days the logs are preserved in the storage account specified. To retain the data forever set this to **0**. If it's not specified, then it defaults to **0**. Normal standard storage or event hub billing rates will apply for data retention.
 
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases: RetentionInDays
 
 Required: False
 Position: Named

@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
+using System.Net;
 using System.Threading;
 
 namespace Microsoft.Azure.Commands.Insights.LogProfiles
@@ -20,10 +21,9 @@ namespace Microsoft.Azure.Commands.Insights.LogProfiles
     /// <summary>
     /// Removes the log profile.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmLogProfile"), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmLogProfile", SupportsShouldProcess = true), OutputType(typeof(AzureOperationResponse))]
     public class RemoveAzureRmLogProfileCommand : ManagementCmdletBase
     {
-
         #region Parameters declarations
 
         /// <summary>
@@ -33,28 +33,29 @@ namespace Microsoft.Azure.Commands.Insights.LogProfiles
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false)] 
+        [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
         #endregion
 
         protected override void ProcessRecordInternal()
         {
-            WriteWarning("Output change: The type of the output will change in the release 5.0.0 - November 2017 - to return a single object containing the request Id and the status code.");
-            Rest.Azure.AzureOperationResponse result = this.MonitorManagementClient.LogProfiles.DeleteWithHttpMessagesAsync(logProfileName: this.Name, cancellationToken: CancellationToken.None).Result;
-
-            /*
-             * This object will be returned in future releases
-            var response = new AzureOperationResponse
+            if (ShouldProcess(
+                target: string.Format("Remove a log profile: {0}", this.Name),
+                action: "Remove a log profile"))
             {
-                RequestId = result.RequestId,
-                StatusCode = result.Response != null ? result.Response.StatusCode : HttpStatusCode.OK
-            };
-			*/
+                Rest.Azure.AzureOperationResponse result = this.MonitorManagementClient.LogProfiles.DeleteWithHttpMessagesAsync(logProfileName: this.Name, cancellationToken: CancellationToken.None).Result;
 
-            if (this.PassThru)
-            {
-                WriteObject(true);
+                var response = new AzureOperationResponse
+                {
+                    RequestId = result.RequestId,
+                    StatusCode = result.Response != null ? result.Response.StatusCode : HttpStatusCode.OK
+                };
+
+                if (this.PassThru)
+                {
+                    WriteObject(response);
+                }
             }
         }
     }

@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Insights.LogProfiles
     /// <summary>
     /// Get the log profiles.
     /// </summary>
-    [Cmdlet(VerbsCommon.Add, "AzureRmLogProfile"), OutputType(typeof(PSLogProfile))]
+    [Cmdlet(VerbsCommon.Add, "AzureRmLogProfile", SupportsShouldProcess = true), OutputType(typeof(PSLogProfile))]
     public class AddAzureRmLogProfileCommand : ManagementCmdletBase
     {
         private static readonly List<string> ValidCategories = new List<string> { "Delete", "Write", "Action" };
@@ -56,48 +56,57 @@ namespace Microsoft.Azure.Commands.Insights.LogProfiles
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The retention in days")]
         [ValidateNotNullOrEmpty]
-        public int? RetentionInDays { get; set; }
+        [Alias("RetentionInDays")]
+        public int? RetentionInDay { get; set; }
 
         /// <summary>
         /// Gets or sets the locations parameter of the cmdlet
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The locations that will be enabled for logging")]
         [ValidateNotNullOrEmpty]
-        public List<string> Locations { get; set; }
+        [Alias("Locations")]
+        public List<string> Location { get; set; }
 
         /// <summary>
         /// Gets or sets the categories parameter of the cmdlet
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The categories that will be enabled for logging.  By default all categories will be enabled")]
         [ValidateNotNullOrEmpty]
-        public List<string> Categories { get; set; }
+        [Alias("Categories")]
+        public List<string> Category { get; set; }
 
         #endregion
 
         protected override void ProcessRecordInternal()
         {
-            var putParameters = new LogProfileResource()
+            WriteWarning("Parameter name change: The parameter plural names for the parameters will be deprecated in May 2018 in favor of the singular versions of the same names.");
+            if (ShouldProcess(
+                target: string.Format("Create/update a log profile: {0}", this.Name),
+                action: "Create/update a log profile"))
             {
-                Location = string.Empty,
-                Locations = this.Locations
-            };
+                var putParameters = new LogProfileResource()
+                {
+                    Location = string.Empty,
+                    Locations = this.Location
+                };
 
-            if (this.Categories == null)
-            {
-                this.Categories = new List<string>(ValidCategories);
+                if (this.Category == null)
+                {
+                    this.Category = new List<string>(ValidCategories);
+                }
+
+                putParameters.Categories = this.Category;
+                putParameters.RetentionPolicy = new RetentionPolicy
+                {
+                    Days = this.RetentionInDay.HasValue ? this.RetentionInDay.Value : 0,
+                    Enabled = this.RetentionInDay.HasValue
+                };
+                putParameters.ServiceBusRuleId = this.ServiceBusRuleId;
+                putParameters.StorageAccountId = this.StorageAccountId;
+
+                LogProfileResource result = this.MonitorManagementClient.LogProfiles.CreateOrUpdateAsync(logProfileName: this.Name, parameters: putParameters, cancellationToken: CancellationToken.None).Result;
+                WriteObject(new PSLogProfile(result));
             }
-
-            putParameters.Categories = this.Categories;
-            putParameters.RetentionPolicy = new RetentionPolicy
-            {
-                Days = this.RetentionInDays.HasValue ? this.RetentionInDays.Value : 0,
-                Enabled = this.RetentionInDays.HasValue
-            };
-            putParameters.ServiceBusRuleId = this.ServiceBusRuleId;
-            putParameters.StorageAccountId = this.StorageAccountId;
-
-            LogProfileResource result = this.MonitorManagementClient.LogProfiles.CreateOrUpdateAsync(logProfileName: this.Name, parameters: putParameters, cancellationToken: CancellationToken.None).Result;
-            WriteObject(new PSLogProfile(result));
         }
     }
 }
