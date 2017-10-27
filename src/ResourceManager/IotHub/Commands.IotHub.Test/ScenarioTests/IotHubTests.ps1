@@ -50,7 +50,7 @@ function Test-AzureRmIotHubLifecycle
 	$eventHubName = "IotHubPSEHTest"
 	$msgRetentionInDays = 3
 	$partionCount = 2
-    $result = New-AzureRmEventHub -ResourceGroup $ResourceGroupName -NamespaceName $namespaceName -Location $Location -EventHubName $eventHubName -MessageRetentionInDays $msgRetentionInDays -PartitionCount $partionCount
+    $result = New-AzureRmEventHub -ResourceGroup $ResourceGroupName -NamespaceName $namespaceName -EventHubName $eventHubName -MessageRetentionInDays $msgRetentionInDays -PartitionCount $partionCount
 
 	# Create AuthRule
 	$authRuleName = "IotHubPSEHAuthRule"

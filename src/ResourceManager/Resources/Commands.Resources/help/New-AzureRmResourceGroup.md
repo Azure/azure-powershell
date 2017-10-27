@@ -32,7 +32,11 @@ Azure resource group is a collection of Azure resources that are deployed as a u
 
 ### Example 1: Create an empty resource group
 ```
-PS C:\>New-AzureRmResourceGroup -Name "RG01" -Location "South Central US"
+PS> New-AzureRmResourceGroup -Name RG01 -Location "South Central US"
+```
+or 
+```
+PS> New-AzureRmResourceGroup RG01 "South Central US"
 ```
 
 This command creates a resource group that has no resources. You can use the
@@ -41,7 +45,7 @@ deployments to this resource group.
 
 ### Example 2: Create a resource group with tags
 ```
-PS C:\>New-AzureRmResourceGroup -Name "RG01" -Location "South Central US" -Tag @{"Empty"=$null; "Department"="Marketing"}
+PS> New-AzureRmResourceGroup -Name RG01 -Location "South Central US" -Tag @{Empty=$null; Department="Marketing"}
 ```
 
 This command creates an empty resource group. This command is the same as the command in Example 1,

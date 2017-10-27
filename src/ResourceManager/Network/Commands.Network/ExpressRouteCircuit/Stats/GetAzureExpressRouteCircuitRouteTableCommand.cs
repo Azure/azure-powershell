@@ -66,7 +66,7 @@
              var psRoutes = new List<PSExpressRouteCircuitRoutesTable>();
              foreach (var routeTable in routeTables)
              {
-                 var psRoute = Mapper.Map<PSExpressRouteCircuitRoutesTable>(routeTable);
+                 var psRoute = NetworkResourceManagerProfile.Mapper.Map<PSExpressRouteCircuitRoutesTable>(routeTable);
                  psRoutes.Add(psRoute);
              }
              WriteObject(psRoutes, true);
