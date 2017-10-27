@@ -42,7 +42,20 @@ The **New-AzureRmResource** cmdlet creates an Azure resource, such as a website,
 
 ### Example 1: Create a resource
 ```
-PS C:\>New-AzureRmResource -Location "West US" -Properties @{"test"="test"} -ResourceName "TestSite06" -ResourceType "microsoft.web/sites" -ResourceGroupName "ResourceGroup11" -Force
+PS> New-AzureRmResource -Location "West US" -Properties @{test="test"} -ResourceName TestSite06 -ResourceType microsoft.web/sites -ResourceGroupName ResourceGroup11 -Force
+```
+or
+```
+PS> $prop = @{
+    Location          = "West US" 
+    Properties        = @{test = "test"} 
+    ResourceName      = "TestSite06" 
+    ResourceType      = "microsoft.web/sites" 
+    ResourceGroupName = "ResourceGroup11" 
+    Force             = $true
+}
+
+PS> New-AzureRmResource @prop
 ```
 
 This command creates a resource that is a website in ResourceGroup11.
