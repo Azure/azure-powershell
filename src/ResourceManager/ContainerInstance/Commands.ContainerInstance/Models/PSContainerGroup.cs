@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.ContainerInstance.Models
                 ImageRegistryCredentials = containerGroup?.ImageRegistryCredentials,
                 RestartPolicy = containerGroup?.RestartPolicy,
                 IpAddress = containerGroup?.IpAddress?.Ip,
-                Ports = containerGroup?.IpAddress?.Ports?.Select(p => Mapper.Map<PSPort>(p)).ToList(),
+                Ports = containerGroup?.IpAddress?.Ports?.Select(p => ContainerInstanceAutoMapperProfile.Mapper.Map<PSPort>(p)).ToList(),
                 OsType = containerGroup?.OsType,
                 Volumes = containerGroup?.Volumes
             };

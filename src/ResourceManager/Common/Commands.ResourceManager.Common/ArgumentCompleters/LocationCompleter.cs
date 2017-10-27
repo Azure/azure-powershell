@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common.Location
+namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
 {
     using Commands.Common.Authentication.Abstractions;
     using Commands.Common.Authentication;
@@ -186,7 +187,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Location
         {
             string scriptResourceTypeList = "{" + String.Join(",", resourceTypes) + "}";
             string script = "param($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameter)\n" +
-                String.Format("$locations = [Microsoft.Azure.Commands.ResourceManager.Common.Location.LocationCompleterAttribute]::FindLocations({0})\n", scriptResourceTypeList) +
+            String.Format("$locations = [Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters.LocationCompleterAttribute]::FindLocations({0})\n", scriptResourceTypeList) +
                 "$locations | Where-Object { $_ -Like \"`\"$wordToComplete*\" } | Sort-Object | ForEach-Object { [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_) }";
             ScriptBlock scriptBlock = ScriptBlock.Create(script);
             return scriptBlock;

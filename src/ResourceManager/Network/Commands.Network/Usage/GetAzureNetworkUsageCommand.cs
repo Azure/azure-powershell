@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Network.Automation
             var vUsageList = this.NetworkClient.NetworkManagementClient.Usages.List(Location);
             foreach (var vUsage in vUsageList)
             {
-                var vUsageModel = Mapper.Map<CNM.PSUsage>(vUsage);
+                var vUsageModel = NetworkResourceManagerProfile.Mapper.Map<CNM.PSUsage>(vUsage);
                 WriteObject(vUsageModel);
             }
         }

@@ -14,7 +14,7 @@
 using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.Location;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Newtonsoft.Json;
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Commands.Compute
                     }
                 }
             }
-            var result = Mapper.Map<PSAzureOperationResponse>(op);
+            var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
             WriteObject(result);
         }
 
