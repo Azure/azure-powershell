@@ -46,6 +46,27 @@ PS C:\>(Get-AzureRmResourceGroup -Name "ContosoRG").Tags
 
 This command gets the resource group named ContosoRG, and displays the tags associated with that group.
 
+### Example 3: Show the Resource groups by location
+```
+PS C:\> Get-AzureRmResourceGroup |
+  Sort Location,ResourceGroupName |
+  Format-Table -GroupBy Location ResourceGroupName,ProvisioningState,Tags
+```
+
+### Example 4: Show the names of all the Resource groups in a particular location
+```
+PS C:\> Get-AzureRmResourceGroup -Location westus2 |
+   Sort ResourceGroupName | 
+   Format-Wide ResourcegroupName -Column 4
+```
+
+### Example 4: Show the Resource groups whose names begin with WebServer
+```
+PS C:\> Get-AzureRmResourceGroup |Where ResourceGroupName -like WebServer*
+```
+
+This command gets the resource group named ContosoRG, and displays the tags associated with that group.
+
 ## PARAMETERS
 
 ### -ApiVersion
