@@ -19,7 +19,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Sql.ServerDnsAlias.Cmdlet
 {
-	[Cmdlet(VerbsCommon.Remove, "AzureRmSqlServerDnsAlias", SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.Medium)]
+	[Cmdlet(VerbsCommon.Remove, "AzureRmSqlServerDnsAlias", SupportsShouldProcess = true)]
 	[OutputType(typeof(Model.AzureSqlServerDnsAliasModel))]
 	public class RemoveAzureSqlServerDNSAlias : AzureSqlServerDnsAliasCmdletBase
 	{
@@ -38,9 +38,9 @@ namespace Microsoft.Azure.Commands.Sql.ServerDnsAlias.Cmdlet
 		[Parameter(ParameterSetName = CmdletParametersParameterSet,
 			Mandatory = true,
 			HelpMessage = "Azure Sql Server Dns Alias name")]
-		[Alias("Name")]
+		[Alias("DnsAliasName")]
 		[ValidateNotNullOrEmpty]
-		public string DnsAliasName { get; set; }
+		public string Name { get; set; }
 
 		/// <summary>
 		/// Gets or sets the name of the Azure Sql Server to use
@@ -56,6 +56,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDnsAlias.Cmdlet
 		/// </summary>
 		[Parameter(ParameterSetName = CmdletParametersParameterSet,
 			Mandatory = true,
+			Position = 0,
 			ValueFromPipelineByPropertyName = true,
 			HelpMessage = "The name of the resource group.")]
 		[ValidateNotNullOrEmpty]
@@ -76,7 +77,6 @@ namespace Microsoft.Azure.Commands.Sql.ServerDnsAlias.Cmdlet
 		/// </summary>
 		[Parameter(ParameterSetName = ResourceIdParameterSet,
 			Mandatory = true,
-			ValueFromPipelineByPropertyName = true,
 			HelpMessage = "The resource id of Server Dns Alias object to remove")]
 		[ValidateNotNullOrEmpty]
 		public string ResourceId { get; set; }
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDnsAlias.Cmdlet
 		{
 			return new List<Model.AzureSqlServerDnsAliasModel>()
 			{
-				ModelAdapter.GetServerDnsAlias(this.ResourceGroupName, this.ServerName, this.DnsAliasName)
+				ModelAdapter.GetServerDnsAlias(this.ResourceGroupName, this.ServerName, this.Name)
 			};
 		}
 
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDnsAlias.Cmdlet
 		/// </summary>
 		protected override IEnumerable<Model.AzureSqlServerDnsAliasModel> PersistChanges(IEnumerable<Model.AzureSqlServerDnsAliasModel> entity)
 		{
-			ModelAdapter.RemoveServerDnsAlias(this.ResourceGroupName, this.ServerName, this.DnsAliasName);
+			ModelAdapter.RemoveServerDnsAlias(this.ResourceGroupName, this.ServerName, this.Name);
 			return entity;
 		}
 
@@ -123,36 +123,38 @@ namespace Microsoft.Azure.Commands.Sql.ServerDnsAlias.Cmdlet
 		/// </summary>
 		public override void ExecuteCmdlet()
 		{
-			if (!Force.IsPresent && !ShouldProcess(
-				string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlServerDnsAliasDescription, this.DnsAliasName),
-				string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlServerDnsAliasWarning, this.DnsAliasName),
-				Microsoft.Azure.Commands.Sql.Properties.Resources.ShouldProcessCaption))
+			if (ShouldProcess(string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlServerDnsAliasDescription, this.Name),
+ string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlServerDnsAliasWarning, this.Name),
+ Microsoft.Azure.Commands.Sql.Properties.Resources.ShouldProcessCaption))
 			{
-				return;
+				if (Force || ShouldContinue(string.Format(CultureInfo.InvariantCulture,
+						Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlServerDnsAliasWarning, this.Name),
+					Microsoft.Azure.Commands.Sql.Properties.Resources.ShouldProcessCaption))
+				{
+					if (string.Equals(this.ParameterSetName, ObjectParameterSet, System.StringComparison.OrdinalIgnoreCase))
+					{
+						var resourceInfo = new ResourceIdentifier(InputObject.Id);
+						ResourceGroupName = resourceInfo.ResourceGroupName;
+
+						var serverResourceInfo = new ResourceIdentifier(resourceInfo.ParentResource);
+						ServerName = serverResourceInfo.ResourceName;
+
+						Name = resourceInfo.ResourceName;
+					}
+					else if (string.Equals(this.ParameterSetName, ResourceIdParameterSet, System.StringComparison.OrdinalIgnoreCase))
+					{
+						var resourceInfo = new ResourceIdentifier(ResourceId);
+						ResourceGroupName = resourceInfo.ResourceGroupName;
+
+						var serverResourceInfo = new ResourceIdentifier(resourceInfo.ParentResource);
+						ServerName = serverResourceInfo.ResourceName;
+
+						Name = resourceInfo.ResourceName;
+					}
+
+					base.ExecuteCmdlet();
+				}
 			}
-
-			if (string.Equals(this.ParameterSetName, ObjectParameterSet, System.StringComparison.OrdinalIgnoreCase))
-			{
-				var resourceInfo = new ResourceIdentifier(InputObject.Id);
-				ResourceGroupName = resourceInfo.ResourceGroupName;
-
-				var serverResourceInfo = new ResourceIdentifier(resourceInfo.ParentResource);
-				ServerName = serverResourceInfo.ResourceName;
-
-				DnsAliasName = resourceInfo.ResourceName;
-			}
-			else if (string.Equals(this.ParameterSetName, ResourceIdParameterSet, System.StringComparison.OrdinalIgnoreCase))
-			{
-				var resourceInfo = new ResourceIdentifier(ResourceId);
-				ResourceGroupName = resourceInfo.ResourceGroupName;
-
-				var serverResourceInfo = new ResourceIdentifier(resourceInfo.ParentResource);
-				ServerName = serverResourceInfo.ResourceName;
-
-				DnsAliasName = resourceInfo.ResourceName;
-			}
-
-			base.ExecuteCmdlet();
 		}
 	}
 }

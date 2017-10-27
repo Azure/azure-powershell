@@ -348,6 +348,15 @@ function Get-VirtualNetworkRuleName
 
 <#
 .SYNOPSIS
+Gets valid server dns alias name
+#>
+function Get-ServerDnsAliasName
+{
+    return getAssetName
+}
+
+<#
+.SYNOPSIS
 Gets the location for a provider, if not found return East US
 #>
 function Get-ProviderLocation($provider)

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzureRmSqlServerDnsAlias
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+This command creates a new Azure SQL Server DNS Alias.
 
 ## SYNTAX
 
@@ -18,13 +18,17 @@ New-AzureRmSqlServerDnsAlias -DnsAliasName <String> -ServerName <String> [-Resou
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Creates new Azure SQL Server DNS Alias that is pointing to specified server.
 
 ## EXAMPLES
 
 ### Example 1
 ```
 PS C:\> $serverDNSAlias = NewAzureRmSqlServerDnsAlias -ResourceGroupName rg -ServerName serverName -DnsAliasName aliasName
+
+ResourceGroupName  ServerName   DnsAliasName
+-----------------  ----------   ------------------
+rgname             servername   dnsaliasname
 ```
 
 This command creates Azure SQL Server DNS Alias with the name aliasName that is pointing to server serverName

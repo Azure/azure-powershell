@@ -30,9 +30,9 @@ namespace Microsoft.Azure.Commands.Sql.ServerDnsAlias.Cmdlet
 		/// </summary>
 		[Parameter(Mandatory = false,
 			HelpMessage = "The Azure Sql Server DNS Alias name.")]
-		[Alias("Name")]
+		[Alias("DnsAliasName")]
 		[ValidateNotNullOrEmpty]
-		public string DnsAliasName { get; set; }
+		public string Name { get; set; }
 
 		/// <summary>
 		/// Gets a Server DNS Alias from the service.
@@ -42,10 +42,10 @@ namespace Microsoft.Azure.Commands.Sql.ServerDnsAlias.Cmdlet
 		{
 			ICollection<AzureSqlServerDnsAliasModel> results = null;
 
-			if (this.MyInvocation.BoundParameters.ContainsKey("DnsAliasName"))
+			if (this.MyInvocation.BoundParameters.ContainsKey("Name"))
 			{
 				results = new List<AzureSqlServerDnsAliasModel>();
-				results.Add(ModelAdapter.GetServerDnsAlias(this.ResourceGroupName, this.ServerName, this.DnsAliasName));
+				results.Add(ModelAdapter.GetServerDnsAlias(this.ResourceGroupName, this.ServerName, this.Name));
 			}
 			else
 			{
