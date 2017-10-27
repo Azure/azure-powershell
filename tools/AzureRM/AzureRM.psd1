@@ -12,7 +12,7 @@
 RootModule = '.\AzureRM.psm1'
 
 # Version number of this module.
-ModuleVersion = '5.0.0'
+ModuleVersion = '4.4.1'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -51,7 +51,7 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '4.0.0'; }, 
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '3.4.1'; }, 
                @{ModuleName = 'Azure.Storage'; RequiredVersion = '3.4.1'; }, 
                @{ModuleName = 'AzureRM.AnalysisServices'; RequiredVersion = '0.4.7'; }, 
                @{ModuleName = 'Azure.AnalysisServices'; RequiredVersion = '0.4.7'; }, 
@@ -62,7 +62,7 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '4.0.0';
                @{ModuleName = 'AzureRM.Billing'; RequiredVersion = '0.13.7'; }, 
                @{ModuleName = 'AzureRM.Cdn'; RequiredVersion = '3.4.1'; }, 
                @{ModuleName = 'AzureRM.CognitiveServices'; RequiredVersion = '0.8.7'; }, 
-               @{ModuleName = 'AzureRM.Compute'; RequiredVersion = '4.0.0'; }, 
+               @{ModuleName = 'AzureRM.Compute'; RequiredVersion = '3.4.1'; }, 
                @{ModuleName = 'AzureRM.Consumption'; RequiredVersion = '0.2.7'; }, 
                @{ModuleName = 'AzureRM.ContainerInstance'; RequiredVersion = '0.0.2'; }, 
                @{ModuleName = 'AzureRM.ContainerRegistry'; RequiredVersion = '0.2.7'; }, 
