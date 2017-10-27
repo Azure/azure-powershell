@@ -13,7 +13,8 @@ Gets a link with an SSO token to a deployed management portal of an API Manageme
 ## SYNTAX
 
 ```
-Get-AzureRmApiManagementSsoToken -ResourceGroupName <String> -Name <String> [<CommonParameters>]
+Get-AzureRmApiManagementSsoToken -ResourceGroupName <String> -Name <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,6 +30,21 @@ PS C:\>Get-AzureRmApiManagementSsoToken -ResourceGroupName "Contoso" -Name "Cont
 This command gets the SSO token of an API Management service.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+ 
+ ```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 Specifies the name of the API Management instance.

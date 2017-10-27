@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
     {
         public PSSnapshot ToPSSnapshot ()
         {
-            return AutoMapper.Mapper.Map<PSSnapshot>(this);
+            return ComputeAutomationAutoMapperProfile.Mapper.Map<PSSnapshot>(this);
         }
     }
 }

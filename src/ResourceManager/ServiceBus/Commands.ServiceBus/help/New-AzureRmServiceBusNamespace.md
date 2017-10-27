@@ -30,11 +30,9 @@ Id                 : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourc
 Location           : West US
 Sku                : Name : Standard , Capacity : 1 , Tier : Standard
 ProvisioningState  : Succeeded
-Status             : Active
 CreatedAt          : 1/20/2017 2:07:33 AM
 UpdatedAt          : 1/20/2017 2:07:56 AM
 ServiceBusEndpoint : https://SB-Example1.servicebus.windows.net:443/
-Enabled            : True
 ```
 
 Creates a new Service Bus namespace within the specified resource group.

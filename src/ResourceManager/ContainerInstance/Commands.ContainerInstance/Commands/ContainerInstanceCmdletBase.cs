@@ -17,7 +17,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using AutoMapper;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ContainerInstance.Models;
@@ -197,33 +196,5 @@ namespace Microsoft.Azure.Commands.ContainerInstance
             }
             return dictionary;
         }
-
-        /// <summary>
-        /// Initialize AutoMapper.
-        /// </summary>
-        public static void InitializeAutoMapper()
-        {
-            Mapper.Initialize(cfg => {
-                cfg.CreateMap<PSContainerGroup, PSContainerGroupList>();
-                cfg.CreateMap<Port, PSPort>();
-                cfg.CreateMap<ContainerEvent, PSContainerEvent>();
-                cfg.CreateMap<ContainerState, PSContainerState>();
-            });
-        }
-
-        /// <summary>
-        /// Implement ExecuteCmdlet.
-        /// </summary>
-        public override void ExecuteCmdlet()
-        {
-            ContainerInstanceCmdletBase.InitializeAutoMapper();
-            this.ExecuteCmdletInternal();
-
-        }
-
-        /// <summary>
-        /// The internal cmdlet execution for subclasses to implement.
-        /// </summary>
-        protected abstract void ExecuteCmdletInternal();
     }
 }

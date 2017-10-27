@@ -19,6 +19,126 @@
 -->
 ## Current Release
 
+The following cmdlets were affected this release:
+	
+	**New-AzureRmEventHubNamespaceAuthorizationRule**
+	- 'New-AzureRmEventHubNamespaceAuthorizationRule' cmdlet removed in this build. Please use the New cmdlet 'New-AzureRmEventHubAuthorizationRule'
+	
+	**Get-AzureRmEventHubNamespaceAuthorizationRule**
+	- 'Get-AzureRmEventHubNamespaceAuthorizationRule' cmdlet removed in this build. Please use the New cmdlet 'Get-AzureRmEventHubAuthorizationRule'
+	
+	**Set-AzureRmEventHubNamespaceAuthorizationRule**
+	- 'Set-AzureRmEventHubNamespaceAuthorizationRule' cmdlet removed in this build. Please use the New cmdlet 'Set-AzureRmEventHubAuthorizationRule'
+	
+	**Remove-AzureRmEventHubNamespaceAuthorizationRule**
+	- 'Remove-AzureRmEventHubNamespaceAuthorizationRule' cmdlet removed in this build. Please use the New cmdlet 'Remove-AzureRmEventHubAuthorizationRule'
+	
+	**New-AzureRmEventHubNamespaceKey**
+	- 'New-AzureRmEventHubNamespaceKey' cmdlet removed in this build. Please use the New cmdlet 'New-AzureRmEventHubKey'
+	
+	**Get-AzureRmEventHubNamespaceKey**
+	- 'Get-AzureRmEventHubNamespaceKey' cmdlet removed in this build. Please use the New cmdlet 'Get-AzureRmEventHubKey'
+		
+    **New-AzureRmEventHubNamespace**
+	
+    - The property 'Status' and 'Enabled' from the NamespceAttributes is removed. 
+
+    ```powershell
+    # Old
+	# The $namespace has Status and Enabled property  
+    $namespace = New-AzureRmEventHubNamespace <parameters>
+	$namespace.Status
+	$namespace.Enabled
+	
+    # New
+
+    # The call remains the same, but the returned values NameSpace object will not have the Status and Enabled property    
+    $namespace = Get-AzureRmEventHubNamespace <parameters>
+    
+    ```
+	
+	**Get-AzureRmEventHubNamespace**
+    - The property 'Status' and 'Enabled' from the NamespceAttributes is removed. 
+
+    ```powershell
+    # Old
+	# The $namespace has Status and Enabled property 
+    $namespace = Get-AzureRmEventHubNamespace <parameters>
+	$namespace.Status
+	$namespace.Enabled
+	
+    # New
+
+    # The call remains the same, but the returned values NameSpace object will not have the Status and Enabled property    
+    $namespace = Get-AzureRmEventHubNamespace <parameters>
+    
+    ```
+	
+	**Set-AzureRmEventHubNamespace**
+    - The property 'Status' and 'Enabled' from the NamespceAttributes is removed. 
+
+    ```powershell
+    # Old
+	# The $namespace has Status and Enabled property 
+    $namespace = Set-AzureRmEventHubNamespace <parameters>
+	$namespace.Status
+	$namespace.Enabled
+	
+    # New
+
+    # The call remains the same, but the returned values NameSpace object will not have the Status and Enabled property    
+    $namespace = Set-AzureRmEventHubNamespace <parameters>
+    
+    ```	
+  
+  **New-AzureRmEventHubConsumerGroup**
+    - The property 'EventHubPath' from the ConsumerGroupAttributes is removed.
+
+    ```powershell
+    # Old
+	# The $consumergroup has EventHubPath property 
+    $consumergroup = New-AzureRmEventHubConsumerGroup <parameters>
+	$consumergroup.EventHubPath
+	
+    # New
+
+    # The call remains the same, but the returned values ConsumerGroup object will not have the EventHubPath property    
+    $consumergroup = New-AzureRmEventHubConsumerGroup <parameters>
+    
+    ```
+	
+	**Set-AzureRmEventHubConsumerGroup**
+    - The property 'EventHubPath' from the ConsumerGroupAttributes is removed.
+
+    ```powershell
+    # Old
+	# The $consumergroup has EventHubPath property 
+    $consumergroup = Set-AzureRmEventHubConsumerGroup <parameters>
+	$consumergroup.EventHubPath
+	
+    # New
+
+    # The call remains the same, but the returned values ConsumerGroup object will not have the EventHubPath property    
+    $consumergroup = Set-AzureRmEventHubConsumerGroup <parameters>
+    
+    ```
+	
+	**Get-AzureRmEventHubConsumerGroup**
+    - The property 'EventHubPath' from the ConsumerGroupAttributes is removed.
+
+    ```powershell
+    # Old
+	# The $consumergroup has EventHubPath property 
+    $consumergroup = Get-AzureRmEventHubConsumerGroup <parameters>
+	$consumergroup.EventHubPath
+	
+    # New
+
+    # The call remains the same, but the returned values ConsumerGroup object will not have the EventHubPath property    
+    $consumergroup = Get-AzureRmEventHubConsumerGroup <parameters>
+    
+    ```
+
 ## Version 0.4.7
 
 ## Version 0.4.6
