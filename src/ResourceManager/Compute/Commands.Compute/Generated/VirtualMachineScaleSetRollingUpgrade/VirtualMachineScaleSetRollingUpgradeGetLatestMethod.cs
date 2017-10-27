@@ -104,7 +104,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     {
         protected override void ProcessRecord()
         {
-            AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
             ExecuteClientAction(() =>
             {
                     string resourceGroupName = this.ResourceGroupName;
@@ -112,7 +111,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                     var result = VirtualMachineScaleSetRollingUpgradesClient.GetLatest(resourceGroupName, vmScaleSetName);
                     var psObject = new PSRollingUpgradeStatusInfo();
-                    Mapper.Map<RollingUpgradeStatusInfo, PSRollingUpgradeStatusInfo>(result, psObject);
+                    ComputeAutoMapperProfile.Mapper.Map<RollingUpgradeStatusInfo, PSRollingUpgradeStatusInfo>(result, psObject);
                     WriteObject(psObject);
             });
         }
