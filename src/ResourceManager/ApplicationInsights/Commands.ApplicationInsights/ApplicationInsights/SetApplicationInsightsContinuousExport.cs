@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
             Mandatory = true,
             HelpMessage = "Destination Storage Location Id.")]
         [ValidateNotNullOrEmpty]
-        public string StorageLocationId { get; set; }
+        public string StorageLocation { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
             exportRequest.DestinationAccountId = this.StorageAccountId;
             exportRequest.DestinationStorageSubscriptionId = ParseSubscriptionFromId(this.StorageAccountId);
             exportRequest.DestinationAddress = this.StorageSASUri;
-            exportRequest.DestinationStorageLocationId = this.StorageLocationId;
+            exportRequest.DestinationStorageLocationId = this.StorageLocation;
             exportRequest.DestinationType = "Blob";
             exportRequest.RecordTypes = string.Join(",", ConvertToRecordType(this.DocumentType));
 

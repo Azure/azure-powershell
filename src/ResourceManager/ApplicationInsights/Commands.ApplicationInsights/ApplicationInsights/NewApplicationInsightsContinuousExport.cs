@@ -15,7 +15,7 @@
 using Microsoft.Azure.Commands.ApplicationInsights.Models;
 using Microsoft.Azure.Management.ApplicationInsights.Management.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using System;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ApplicationInsights
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
                                                         .GetAwaiter()
                                                         .GetResult();
 
-                WriteComponentExportConfiguration(exportConfigurationsResponse.Body);
+                WriteComponentExportConfiguration(exportConfigurationsResponse.Body.FirstOrDefault());
             }
         }
     }

@@ -12,28 +12,27 @@ Update a continuous export configuration in an applciation insights resource
 
 ## SYNTAX
 
+### ComponentNameParameterSet (Default)
+```
+Set-AzureRmApplicationInsightsContinuousExport [-ResourceGroupName] <String> [-Name] <String>
+ -ExportId <String> -DocumentType <String[]> -StorageAccountId <String> -StorageLocation <String>
+ -StorageSASUri <String> [-DisableConfiguration] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
 ### ComponentObjectParameterSet
 ```
 Set-AzureRmApplicationInsightsContinuousExport [-ApplicationInsightsComponent] <PSApplicationInsightsComponent>
- [-ExportId] <String> [-DocumentType] <String[]> [-StorageAccountId] <String> [-StorageLocationId] <String>
- [-StorageSASUri] <String> [[-IsEnabled] <Boolean>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ -ExportId <String> -DocumentType <String[]> -StorageAccountId <String> -StorageLocation <String>
+ -StorageSASUri <String> [-DisableConfiguration] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Set-AzureRmApplicationInsightsContinuousExport [-ResourceId] <ResourceIdentifier> [-ExportId] <String>
- [-DocumentType] <String[]> [-StorageAccountId] <String> [-StorageLocationId] <String>
- [-StorageSASUri] <String> [[-IsEnabled] <Boolean>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### ComponentNameParameterSet
-```
-Set-AzureRmApplicationInsightsContinuousExport [-ResourceGroupName] <String> [-Name] <String>
- [-ExportId] <String> [-DocumentType] <String[]> [-StorageAccountId] <String> [-StorageLocationId] <String>
- [-StorageSASUri] <String> [[-IsEnabled] <Boolean>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Set-AzureRmApplicationInsightsContinuousExport [-ResourceId] <ResourceIdentifier> -ExportId <String>
+ -DocumentType <String[]> -StorageAccountId <String> -StorageLocationId <String> -StorageSASUri <String>
+ [-DisableConfiguration] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,11 +43,22 @@ Update a continuous export configuration in an applciation insights resource
 ### Example 1
 ```
 PS C:\> Set-AzureRmApplicationInsightsContinuousExport -ResourceGroupName "testgroup" -Name "test"
- -DocumentTypes "Request","Trace" -ExportId "uGOoki0jQsyEs3IdQ83Q4QsNr4=" -DestinationStorageAccountId "/subscriptions/50359d91-7b9d-4823-85af-eb298a61ba96/resourceGroups/testgroup/providers/Microsoft.Storage/storageAccounts/teststorageaccount" -DestinationStorageLocationId sourcecentralus
+ -DocumentTypes "Request","Trace" -ExportId "jlTFEiBg1rkDXOCIeJQ2mB2TxZg=" -DestinationStorageAccountId "/subscriptions/50359d91-7b9d-4823-85af-eb298a61ba96/resourceGroups/testgroup/providers/Microsoft.Storage/storageAccounts/teststorageaccount" -DestinationStorageLocationId sourcecentralus
  -DestinationStorageSASUri "https://teststorageaccount.blob.core.windows.net/testcontainer?sv=2050-04-05&sr=c&sig=xxxxxxxxx"
+
+ExportId                         : jlTFEiBg1rkDXOCIeJQ2mB2TxZg=
+StorageName                      : teststorageaccount
+ContainerName                    : testcontainer
+DocumentTypes                    : Request, Custom Event, Trace
+DestinationStorageSubscriptionId : 50359d91-7b9d-4823-85af-eb298a61ba96
+DestinationStorageLocationId     : sourcecentralus
+DestinationStorageAccountId      : /subscriptions/50359d91-7b9d-4823-85af-eb298a61ba96/resourceGroups/testgroup/providers/Microsoft.Storage/storageAccounts/teststorageaccount
+IsEnabled                        : True
+ExportStatus                     : Preparing
+LastSuccessTime                  :
 ```
 
-Update continuous export configuration "uGOoki0jQsyEs3IdQ83Q4QsNr4=" of resource "test" in resource group "testgroup" to export "Request" and "Trace" documents to storage container "testcontainer" in "teststorageaccount".The SAS token have to be valid and have write permission to the container, otherwise continous export feature won't work.
+Update continuous export configuration "jlTFEiBg1rkDXOCIeJQ2mB2TxZg=" of resource "test" in resource group "testgroup" to export "Request" and "Trace" documents to storage container "testcontainer" in "teststorageaccount".The SAS token have to be valid and have write permission to the container, otherwise continous export feature won't work. If SAS token expired, the continuous export feature will stop working.
 
 ## PARAMETERS
 
@@ -67,8 +77,25 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.```yaml
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
 Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
@@ -80,17 +107,34 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DisableConfiguration
+Disable continuous export or not.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DocumentType
-Document types that need exported.```yaml
+Document types that need exported.
+
+```yaml
 Type: String[]
 Parameter Sets: (All)
 Aliases: 
 Accepted values: Request, Exception, Custom Event, Trace, Metric, Page Load, Page View, Dependency, Availability, Performance Counter
 
 Required: True
-Position: 3
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -103,24 +147,9 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -IsEnabled
-Enable continuous export or not.
-
-```yaml
-Type: Boolean
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 7
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -135,7 +164,7 @@ Aliases: ApplicationInsightsComponentName, ComponentName
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -150,12 +179,14 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Application Insights Component Resource Id.```yaml
+Application Insights Component Resource Id.
+
+```yaml
 Type: ResourceIdentifier
 Parameter Sets: ResourceIdParameterSet
 Aliases: 
@@ -168,41 +199,62 @@ Accept wildcard characters: False
 ```
 
 ### -StorageAccountId
-Destination Storage Account Id.```yaml
+Destination Storage Account Id.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 4
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -StorageLocationId
-Destination Storage Location Id.```yaml
+### -StorageLocation
+Destination Storage Location Id.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 5
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -StorageSASUri
-Destination Storage SAS uri.```yaml
+Destination Storage SAS uri.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 6
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

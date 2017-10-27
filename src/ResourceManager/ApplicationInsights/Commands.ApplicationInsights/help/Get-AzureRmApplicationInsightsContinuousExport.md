@@ -12,6 +12,12 @@ Get application insights continuous export configuration for an application insi
 
 ## SYNTAX
 
+### ComponentNameParameterSet (Default)
+```
+Get-AzureRmApplicationInsightsContinuousExport [-ResourceGroupName] <String> [-Name] <String>
+ [[-ExportId] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ### ComponentObjectParameterSet
 ```
 Get-AzureRmApplicationInsightsContinuousExport [-ApplicationInsightsComponent] <PSApplicationInsightsComponent>
@@ -24,24 +30,39 @@ Get-AzureRmApplicationInsightsContinuousExport [-ResourceId] <ResourceIdentifier
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ComponentNameParameterSet
-```
-Get-AzureRmApplicationInsightsContinuousExport [-ResourceGroupName] <String> [-Name] <String>
- [[-ExportId] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Get application insights continuous export configuration for an application insights resource
 
 ## EXAMPLES
 
-### Example 1
+### Example 1 Get continuous export for an application insights resource
 ```
 PS C:\> Get-AzureRmApplicationInsightsContinuousExport -ResourceGroupName "testgroup" -Name "test"
- -ExportId "uGOoki0jQsyEs3IdQ83Q4QsNr4="
+
+ExportId                     DocumentTypes                ExportStatus DestinationStorageAccountId
+--------                     -------------                ------------ ---------------------------
+ZJrfffySPdtG3ESn3iRxVIEFuNY= Request, Performance Counter Preparing    /subscriptions/{subid}...
 ```
 
-Get application insights continuous export configuration with export id "uGOoki0jQsyEs3IdQ83Q4QsNr4=" for resource named "test" in resource group "testgroup"
+Get application insights continuous export configurations for resource named "test" in resource group "testgroup"
+
+### Example 2 Get continuous export for an application insights resource
+```
+PS C:\> Get-AzureRmApplicationInsightsContinuousExport -ResourceGroupName "testgroup" -Name "test" -ExportId "ZJrfffySPdtG3ESn3iRxVIEFuNY="
+
+ExportId                         : ZJrfffySPdtG3ESn3iRxVIEFuNY=
+StorageName                      : targetaccount
+ContainerName                    : continuousexport
+DocumentTypes                    : Request, Performance Counter
+DestinationStorageSubscriptionId : {subid}
+DestinationStorageLocationId     : eastus
+DestinationStorageAccountId      : /subscriptions/{subid}/resourceGroups/targetstorage/providers/Microsoft.Storage/storageAccounts/targetaccount
+IsEnabled                        : True
+ExportStatus                     : Preparing
+LastSuccessTime                  :
+```
+
+Get application insights continuous export configuration with export id "ZJrfffySPdtG3ESn3iRxVIEFuNY=" for resource named "test" in resource group "testgroup"
 
 ## PARAMETERS
 
@@ -61,7 +82,9 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.```yaml
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
 Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
@@ -84,7 +107,7 @@ Aliases:
 Required: False
 Position: 2
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -99,7 +122,7 @@ Aliases: ApplicationInsightsComponentName, ComponentName
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -114,12 +137,14 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Application Insights Component Resource Id.```yaml
+Application Insights Component Resource Id.
+
+```yaml
 Type: ResourceIdentifier
 Parameter Sets: ResourceIdParameterSet
 Aliases: 

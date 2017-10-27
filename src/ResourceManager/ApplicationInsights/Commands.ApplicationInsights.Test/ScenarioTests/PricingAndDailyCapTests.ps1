@@ -33,7 +33,7 @@ function Test-GetApplicationInsightsPricingPlan
         $pricingPlan = Get-AzureRmApplicationInsights -ResourceGroupName $rgname -Name $appName -IncludePricingPlan;
 
 		Assert-NotNull $pricingPlan
-        Assert-AreEqual "Basic" $pricingPlan.CurrentTier
+        Assert-AreEqual "Basic" $pricingPlan.PricingPlan
         
         Remove-AzureRmApplicationInsights -ResourceGroupName $rgname -Name $appName;
     }
@@ -66,7 +66,7 @@ function Test-SetApplicationInsightsPricingPlan
         $pricingPlan = Get-AzureRmApplicationInsights -ResourceGroupName $rgname -Name $appName -IncludePricingPlan;
 
 		Assert-NotNull $pricingPlan
-        Assert-AreEqual "Basic" $pricingPlan.CurrentTier
+        Assert-AreEqual "Basic" $pricingPlan.PricingPlan
         
 		$planName = "Application Insights Enterprise";
 		$dailyCapGB = 300;		
@@ -75,7 +75,7 @@ function Test-SetApplicationInsightsPricingPlan
 
 		$pricingPlan2 = Get-AzureRmApplicationInsights -ResourceGroupName $rgname -Name $appName -IncludePricingPlan;
 		Assert-NotNull $pricingPlan2
-        Assert-AreEqual $planName $pricingPlan2.CurrentTier
+        Assert-AreEqual $planName $pricingPlan2.PricingPlan
 		Assert-AreEqual $dailyCapGB $pricingPlan2.Cap
 		Assert-AreEqual $stopSendEmail $pricingPlan2.StopSendNotificationWhenHitCap
 

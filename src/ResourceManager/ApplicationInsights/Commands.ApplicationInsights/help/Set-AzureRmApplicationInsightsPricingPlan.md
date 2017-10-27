@@ -12,25 +12,25 @@ Set pricing plan and daily data volume information for an applicaiton insights r
 
 ## SYNTAX
 
+### ComponentNameParameterSet (Default)
+```
+Set-AzureRmApplicationInsightsPricingPlan [-ResourceGroupName] <String> [-Name] <String>
+ [-PricingPlan <String>] [-DailyCapGB <Double>] [-DisableNotificationWhenHitCap]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### ComponentObjectParameterSet
 ```
 Set-AzureRmApplicationInsightsPricingPlan [-ApplicationInsightsComponent] <PSApplicationInsightsComponent>
- [[-PricingPlan] <String>] [[-DailyCapGB] <Double>] [-DisableNotificationWhenHitCap]
- [-EnableNotificationWhenHitCap] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-PricingPlan <String>] [-DailyCapGB <Double>] [-DisableNotificationWhenHitCap]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Set-AzureRmApplicationInsightsPricingPlan [-ResourceId] <ResourceIdentifier> [[-PricingPlan] <String>]
- [[-DailyCapGB] <Double>] [-DisableNotificationWhenHitCap] [-EnableNotificationWhenHitCap]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ComponentNameParameterSet
-```
-Set-AzureRmApplicationInsightsPricingPlan [-ResourceGroupName] <String> [-Name] <String>
- [[-PricingPlan] <String>] [[-DailyCapGB] <Double>] [-DisableNotificationWhenHitCap]
- [-EnableNotificationWhenHitCap] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Set-AzureRmApplicationInsightsPricingPlan [-ResourceId] <ResourceIdentifier> [-PricingPlan <String>]
+ [-DailyCapGB <Double>] [-DisableNotificationWhenHitCap] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,10 +38,13 @@ Set pricing plan and daily data volume information for an applicaiton insights r
 
 ## EXAMPLES
 
-### Example 1
+### Example 1 Set pricing plan and daily data volume information for an applicaiton insights resource
 ```
 PS C:\> Set-AzureRmApplicationInsightsDailyCap -ResourceGroupName "testgroup" -Name "test" -PricingPlan "Basic" -DailyCapGB 400
- -StopSendNotificationWhenHitCap true
+
+ Cap ResetTime StopSendNotificationWhenHitCap PricingPlan
+--- --------- ------------------------------ -----------
+400         0                           False Basic
 ```
 
 Set the pricing plan to "Basic", set the daily data volumen cap to 400GB per day and stop send notification when hit cap for resource "test" in resource group "testgroup"
@@ -63,6 +66,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DailyCapGB
 Daily Cap.
 
@@ -72,14 +90,16 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 3
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.```yaml
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
 Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
@@ -92,26 +112,15 @@ Accept wildcard characters: False
 ```
 
 ### -DisableNotificationWhenHitCap
-Stop send notification when hit cap.```yaml
+Stop send notification when hit cap.
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 4
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EnableNotificationWhenHitCap
-Enable send notification when hit cap.```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 5
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -128,7 +137,7 @@ Aliases: ApplicationInsightsComponentName, ComponentName
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -142,9 +151,9 @@ Aliases:
 Accepted values: Basic, Application Insights Enterprise, Limited Basic
 
 Required: False
-Position: 2
+Position: Named
 Default value: "Basic"
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -159,12 +168,14 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Application Insights Component Resource Id.```yaml
+Application Insights Component Resource Id.
+
+```yaml
 Type: ResourceIdentifier
 Parameter Sets: ResourceIdParameterSet
 Aliases: 
@@ -173,6 +184,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
