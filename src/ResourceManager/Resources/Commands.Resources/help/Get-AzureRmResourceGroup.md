@@ -65,8 +65,6 @@ PS C:\> Get-AzureRmResourceGroup -Location westus2 |
 PS C:\> Get-AzureRmResourceGroup |Where ResourceGroupName -like WebServer*
 ```
 
-This command gets the resource group named ContosoRG, and displays the tags associated with that group.
-
 ## PARAMETERS
 
 ### -ApiVersion
