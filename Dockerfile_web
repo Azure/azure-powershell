@@ -1,0 +1,16 @@
+FROM microsoft/powershell
+
+ARG CONFIG=Release
+
+EXPOSE 80
+
+COPY src/Package/${CONFIG}/ResourceManager /usr/local/share/powershell/Modules
+
+RUN apt-get update && apt-get install -y python python-pip && pip install --upgrade pip
+
+RUN pip install butterfly
+RUN pip install butterfly[themes]
+
+RUN echo "root:ps" | chpasswd
+
+ENTRYPOINT butterfly.server.py --host=* --port=80 --unsecure --login --shell=/opt/microsoft/powershell/6.0.0-beta.9/pwsh

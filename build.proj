@@ -260,14 +260,14 @@
   </Target>
   
   <!-- Build .Net Core Cmdlets -->
-  <Target Name="BuildNetCore">
+  <Target Name="BuildNetcore">
     <Message Importance="high" Text="Building Cmdlets..." />
 
     <!-- Build and create package content -->
     <Exec Command="dotnet --version"/>
-    <Exec Command="dotnet restore Azure.PowerShell.NetCore.sln"/>
-    <Exec Command="dotnet build Azure.PowerShell.NetCore.sln -c $(Configuration)"/>
-    <Exec Command="dotnet publish Azure.PowerShell.NetCore.sln -c $(Configuration)"/>
+    <Exec Command="dotnet restore Azure.PowerShell.Netcore.sln"/>
+    <Exec Command="dotnet build Azure.PowerShell.Netcore.sln -c $(Configuration)"/>
+    <Exec Command="dotnet publish Azure.PowerShell.Netcore.sln -c $(Configuration)"/>
 
     <!-- Delete powershell runtime files -->
     <ItemGroup>
@@ -513,7 +513,7 @@
   </PropertyGroup>
 
   <!-- Note: all testing related target should go to 'AzurePowershell.test.targets' file except the one used by CI run -->
-  <Import Project="$(MSBuildThisFileDirectory)AzurePowershell.test.targets"/>
+  <Import Project="$(MSBuildThisFileDirectory)AzurePowershell.Test.targets"/>
 
   <!-- Run checkin tests for each pull request -->
   <Target Name="Test" DependsOnTargets="BeforeRunTests">
