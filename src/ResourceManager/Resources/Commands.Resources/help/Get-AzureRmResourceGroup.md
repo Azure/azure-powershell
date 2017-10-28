@@ -57,7 +57,7 @@ PS C:\> Get-AzureRmResourceGroup |
 ```
 PS C:\> Get-AzureRmResourceGroup -Location westus2 |
    Sort ResourceGroupName | 
-   Format-Wide ResourcegroupName -Column 4
+   Format-Wide ResourceGroupName -Column 4
 ```
 
 ### Example 4: Show the Resource groups whose names begin with WebServer
