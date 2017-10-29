@@ -60,9 +60,9 @@ PS C:\> Get-AzureRmResourceGroup -Location westus2 |
    Format-Wide ResourceGroupName -Column 4
 ```
 
-### Example 4: Show the Resource groups whose names begin with WebServer
+### Example 5: Show the Resource groups whose names begin with WebServer
 ```
-PS C:\> Get-AzureRmResourceGroup |Where ResourceGroupName -like WebServer*
+PS C:\> Get-AzureRmResourceGroup | Where ResourceGroupName -like WebServer*
 ```
 
 ## PARAMETERS
