@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.Network
         public PSFlowLog GetFlowLogStatus(string resourceGroupName, string name, MNM.FlowLogStatusParameters parameters)
         {
             MNM.FlowLogInformation flowLog = this.NetworkWatcherClient.GetFlowLogStatus(resourceGroupName, name, parameters);
-            PSFlowLog psFlowLog = Mapper.Map<PSFlowLog>(flowLog);
+            PSFlowLog psFlowLog = NetworkResourceManagerProfile.Mapper.Map<PSFlowLog>(flowLog);
 
             return psFlowLog;
         }

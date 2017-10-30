@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Commands.Network
                 publicIp.DnsSettings.ReverseFqdn = this.ReverseFqdn;
             }
 
-            var publicIpModel = Mapper.Map<MNM.PublicIPAddress>(publicIp);
+            var publicIpModel = NetworkResourceManagerProfile.Mapper.Map<MNM.PublicIPAddress>(publicIp);
 
             publicIpModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 

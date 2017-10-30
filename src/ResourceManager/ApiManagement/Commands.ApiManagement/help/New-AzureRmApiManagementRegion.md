@@ -14,7 +14,8 @@ Creates an instance of PsApiManagementRegion.
 
 ```
 New-AzureRmApiManagementRegion -Location <String> [-Capacity <Int32>]
- [-VirtualNetwork <PsApiManagementVirtualNetwork>] [<CommonParameters>]
+ [-VirtualNetwork <PsApiManagementVirtualNetwork>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -65,8 +66,25 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+ 
+ ```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Location
-Location of the additional deployment region.
+Specifies the location of the new deployment region amongst the supported region for Api Management service.
+To obtain valid locations, use the cmdlet
+Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.ApiManagement" | where {$_.ResourceTypes[0].ResourceTypeName -eq "service"} | Select-Object Locations
 
 ```yaml
 Type: String
