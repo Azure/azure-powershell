@@ -32,24 +32,6 @@ function Get-DataFactoryName
 
 <#
 .SYNOPSIS
-Gets valid data factory logging storage account name.
-#>
-function Get-DataFactoryLoggingStorageAccountName
-{
-    return "teststorageaccount"
-}
-
-<#
-.SYNOPSIS
-Gets valid data factory logging storage account key.
-#>
-function Get-DataFactoryLoggingStorageAccountKey
-{
-    return "fakestoragekey"
-}
-
-<#
-.SYNOPSIS
 Gets the default location for a provider
 #>
 function Get-ProviderLocation($provider)
@@ -60,20 +42,35 @@ function Get-ProviderLocation($provider)
 
 <#
 .SYNOPSIS
-Cleans the created data factory
+Cleans the created resources
 #>
-function Clean-DataFactory($rgname, $dfname)
+function CleanUp($rgname, $dfname)
 {
     if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) {
         Remove-AzureRmDataFactoryV2 -ResourceGroupName $rgname -Name $dfname -Force
+        Remove-AzureRmResourceGroup -Name $rgname -Force
     }
 }
 
 <#
 .SYNOPSIS
-Cleans the created tags
+Verifies the properties of two AdfSubResource PS objects
 #>
-function Clean-Tags
+function Verify-AdfSubResource ($expected, $actual, $rgname, $dfname, $name)
 {
-    Get-AzureRmTag | Remove-AzureRmTag -Force
+    Assert-NotNull $actual.Id
+    Assert-NotNull $actual.ETag
+    Assert-NotNull $actual.Name
+    Assert-NotNull $actual.ResourceGroupName
+    Assert-NotNull $actual.DataFactoryName
+
+    Assert-AreEqual $rgname $actual.ResourceGroupName
+    Assert-AreEqual $dfname $actual.DataFactoryName
+    Assert-AreEqual $name $actual.Name
+
+    Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
+    Assert-AreEqual $expected.DataFactoryName $actual.DataFactoryName
+    Assert-AreEqual $expected.Id $actual.Id
+    Assert-AreEqual $expected.ETag $actual.ETag
+    Assert-AreEqual $expected.Name $actual.Name
 }
