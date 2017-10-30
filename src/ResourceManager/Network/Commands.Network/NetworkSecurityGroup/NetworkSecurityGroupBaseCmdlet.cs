@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             var nsg = this.NetworkSecurityGroupClient.Get(resourceGroupName, name, expandResource);
 
-            var psNetworkSecurityGroup = Mapper.Map<PSNetworkSecurityGroup>(nsg);
+            var psNetworkSecurityGroup = NetworkResourceManagerProfile.Mapper.Map<PSNetworkSecurityGroup>(nsg);
             psNetworkSecurityGroup.ResourceGroupName = resourceGroupName;
 
             psNetworkSecurityGroup.Tag = TagsConversionHelper.CreateTagHashtable(nsg.Tags);
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public PSNetworkSecurityGroup ToPsNetworkSecurityGroup(NetworkSecurityGroup nsg)
         {
-            var psNsg = Mapper.Map<PSNetworkSecurityGroup>(nsg);
+            var psNsg = NetworkResourceManagerProfile.Mapper.Map<PSNetworkSecurityGroup>(nsg);
 
             psNsg.Tag = TagsConversionHelper.CreateTagHashtable(nsg.Tags);
 

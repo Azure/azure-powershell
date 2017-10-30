@@ -35,6 +35,7 @@ Deletes an existing Azure SQL Server virtual network rule
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure
 
+
 ```yaml
 Type: IAzureContextContainer
 Parameter Sets: (All)

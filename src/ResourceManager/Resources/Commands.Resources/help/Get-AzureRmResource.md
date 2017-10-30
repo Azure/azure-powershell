@@ -73,12 +73,27 @@ The **Get-AzureRmResource** cmdlet gets Azure resources.
 
 ## EXAMPLES
 
-### Example 1: Get a resource
+### Example 1: Get all the resources of a particular type
 ```
-PS C:\>Get-AzureRmResource -ResourceType "microsoft.web/sites" -ResourceGroupName "ResourceGroup11" -ResourceName "ContosoWebsite"
+PS C:\>Get-AzureRmResource -ResourceGroupName ResourceGroup11 -ResourceType microsoft.web/sites 
 ```
 
-This command gets a resource of the type microsoft.web/sites, named ContosoWebsite under ResourceGroup11.
+This command gets a resource of the type microsoft.web/sites under ResourceGroup11.
+
+### Example 2: Get a resource by name
+```
+PS C:\>Get-AzureRmResource -ResourceGroupName ResourceGroup11 -ResourceName ContosoWebsite
+```
+
+This command gets a resource  named ContosoWebsite under ResourceGroup11.
+
+### Example 3: Show all the status of storage accounts in a Resource Group
+```
+PS C:\>Get-AzureRmResource -ResourceGroupName ResourceGroup11 -ResourceType Microsoft.ClassicStorage/storageAccounts -ExpandProperties |
+   Select * -Expand Properties |
+   Sort Name |
+   Format-Table Name,Status*
+```
 
 ## PARAMETERS
 
