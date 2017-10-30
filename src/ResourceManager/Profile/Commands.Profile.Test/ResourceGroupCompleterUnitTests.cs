@@ -13,8 +13,14 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Management.Internal.Resources.Models;
+using Microsoft.Rest.Azure.OData;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Moq;
+using System;
 using System.Collections.Generic;
+using System.Threading;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Profile.Test
@@ -81,6 +87,14 @@ namespace Microsoft.Azure.Commands.Profile.Test
             resourceGroupsReturned.Add("test4");
             Assert.Collection(ResourceGroupCompleterAttribute.GetResourceGroups(resourceGroupsReturned, "test3"), e1 => Assert.Equal("test3", e1),
                 e2 => Assert.Equal("test1", e2), e3 => Assert.Equal("test2", e3), e4 => Assert.Equal("test4", e4));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ThrowsErrorWhenResultNull()
+        {
+            var ex = Assert.Throws<Exception>(() => ResourceGroupCompleterAttribute.CreateResourceGroupList(null));
+            Assert.Equal(ex.Message, "Result from client.ResourceGroups is null");
         }
     }
 }
