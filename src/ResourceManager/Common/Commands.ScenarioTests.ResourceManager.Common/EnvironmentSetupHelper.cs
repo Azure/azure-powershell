@@ -53,6 +53,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         private const string PackageDirectoryFromCommon = @"..\..\..\..\Package\Debug";
         public string PackageDirectory = @"..\..\..\..\..\Package\Debug";
+        public string StackDirectory = @"..\..\..\..\..\Stack\Debug";
 
         protected List<string> modules;
 
@@ -150,6 +151,23 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             return Path.Combine(this.PackageDirectory,
                                  @"ResourceManager\AzureResourceManager\" + basename + @"\" + psd1FileName);
         }
+
+        public string GetStackRMModulePath(string psd1FileName)
+        {
+            string basename = Path.GetFileNameWithoutExtension(psd1FileName);
+            return Path.Combine(this.StackDirectory,
+                                 @"ResourceManager\AzureResourceManager\" + basename + @"\" + psd1FileName);
+        }
+
+        public string StackRMProfileModule
+        {
+            get
+            {
+                return Path.Combine(this.StackDirectory,
+                                    @"ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1");
+            }
+        }
+
         /// <summary>
         /// Loads DummyManagementClientHelper with clients and throws exception if any client is missing.
         /// </summary>
