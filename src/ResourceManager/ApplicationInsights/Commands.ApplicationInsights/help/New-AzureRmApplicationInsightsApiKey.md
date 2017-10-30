@@ -27,8 +27,8 @@ New-AzureRmApplicationInsightsApiKey [-ApplicationInsightsComponent] <PSApplicat
 
 ### ResourceIdParameterSet
 ```
-New-AzureRmApplicationInsightsApiKey [-ResourceId] <ResourceIdentifier> [-Permissions] <String[]>
- [-Description] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzureRmApplicationInsightsApiKey [-ResourceId] <String> [-Permissions] <String[]> [-Description] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -163,7 +163,7 @@ Accept wildcard characters: False
 Application Insights Component Resource Id.
 
 ```yaml
-Type: ResourceIdentifier
+Type: String
 Parameter Sets: ResourceIdParameterSet
 Aliases: 
 

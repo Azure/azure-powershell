@@ -37,8 +37,8 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
             ParameterSetName = ResourceIdParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Application Insights Component Resource Id.")]
-        [ValidateNotNull]
-        public ResourceIdentifier ResourceId { get; set; }
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
 
         [Parameter(
             Position = 0,
@@ -87,10 +87,11 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
                 this.Name = this.ApplicationInsightsComponent.Name;
             }
 
-            if (this.ResourceId != null)
+            if (!string.IsNullOrEmpty(this.ResourceId))
             {
-                this.ResourceGroupName = this.ResourceId.ResourceGroupName;
-                this.Name = this.ResourceId.ResourceName;
+                ResourceIdentifier identifier = new ResourceIdentifier(this.ResourceId);
+                this.ResourceGroupName = identifier.ResourceGroupName;
+                this.Name = identifier.ResourceName;
             }
 
             ApplicationInsightsComponentBillingFeatures features =

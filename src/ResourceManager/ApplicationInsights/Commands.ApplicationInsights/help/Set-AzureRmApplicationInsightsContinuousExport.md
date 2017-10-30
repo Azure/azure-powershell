@@ -30,8 +30,8 @@ Set-AzureRmApplicationInsightsContinuousExport [-ApplicationInsightsComponent] <
 
 ### ResourceIdParameterSet
 ```
-Set-AzureRmApplicationInsightsContinuousExport [-ResourceId] <ResourceIdentifier> -ExportId <String>
- -DocumentType <String[]> -StorageAccountId <String> -StorageLocationId <String> -StorageSASUri <String>
+Set-AzureRmApplicationInsightsContinuousExport [-ResourceId] <String> -ExportId <String>
+ -DocumentType <String[]> -StorageAccountId <String> -StorageLocation <String> -StorageSASUri <String>
  [-DisableConfiguration] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -189,7 +189,7 @@ Accept wildcard characters: False
 Application Insights Component Resource Id.
 
 ```yaml
-Type: ResourceIdentifier
+Type: String
 Parameter Sets: ResourceIdParameterSet
 Aliases: 
 
