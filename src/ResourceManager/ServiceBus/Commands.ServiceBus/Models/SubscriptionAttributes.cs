@@ -43,12 +43,6 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
                 Status = subscriptionResource.Status;
                 UpdatedAt = subscriptionResource.UpdatedAt;
                 Name = subscriptionResource.Name;
-#pragma warning disable 612, 618
-                Location = "";
-                DeadLetteringOnFilterEvaluationExceptions = false;
-                EntityAvailabilityStatus = "Available";
-                IsReadOnly = false;
-#pragma warning restore 612, 618
             }
         }
 
@@ -129,35 +123,6 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// <summary>
         /// The exact time the message has been updated.
         /// </summary>
-        public DateTime? UpdatedAt { get; set; }
-
-        /// <summary>
-        /// Entity availability status for the topic. Possible values include:
-        /// 'Available', 'Limited', 'Renaming', 'Restoring', 'Unknown'
-        /// </summary>
-        [ObsoleteAttribute("'EntityAvailabilityStatus' property is mark as obsolete and will be removed in upcoming breaking changes build", false)]
-        public string EntityAvailabilityStatus { get; set; }
-
-        /// <summary>
-        /// Value that indicates if a subscription has dead letter support on
-        /// Filter evaluation exceptions.
-        /// </summary>
-        [ObsoleteAttribute("'DeadLetteringOnFilterEvaluationExceptions' property is mark as obsolete and will be removed in upcoming breaking changes build", false)]
-        public bool? DeadLetteringOnFilterEvaluationExceptions { get; set; }
-
-        /// <summary>
-        /// location of the resource.
-        /// </summary> 
-        [ObsoleteAttribute("'Location' property is mark as obsolete and will be removed in upcoming breaking changes build", false)]
-        public string Location { get; set; }
-
-        /// <summary>
-        /// Value that indicates whether the entity description is read-only.
-        /// </summary>
-        [ObsoleteAttribute("'IsReadOnly' property is mark as obsolete and will be removed in upcoming breaking changes build", false)]
-        public bool? IsReadOnly { get; set; }
-
-
-
+        public DateTime? UpdatedAt { get; set; }        
     }
 }

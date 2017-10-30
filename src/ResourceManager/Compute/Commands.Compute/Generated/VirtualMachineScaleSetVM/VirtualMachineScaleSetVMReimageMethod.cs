@@ -19,7 +19,6 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
@@ -118,7 +117,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     {
         protected override void ProcessRecord()
         {
-            AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
             ExecuteClientAction(() =>
             {
                 if (ShouldProcess(this.VMScaleSetName, VerbsCommon.Set))
@@ -131,14 +129,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     {
                         var result = VirtualMachineScaleSetVMsClient.ReimageAll(resourceGroupName, vmScaleSetName, instanceId);
                         var psObject = new PSOperationStatusResponse();
-                        Mapper.Map<Azure.Management.Compute.Models.OperationStatusResponse, PSOperationStatusResponse>(result, psObject);
+                        ComputeAutomationAutoMapperProfile.Mapper.Map<Azure.Management.Compute.Models.OperationStatusResponse, PSOperationStatusResponse>(result, psObject);
                         WriteObject(psObject);
                     }
                     else
                     {
                         var result = VirtualMachineScaleSetVMsClient.Reimage(resourceGroupName, vmScaleSetName, instanceId);
                         var psObject = new PSOperationStatusResponse();
-                        Mapper.Map<Azure.Management.Compute.Models.OperationStatusResponse, PSOperationStatusResponse>(result, psObject);
+                        ComputeAutomationAutoMapperProfile.Mapper.Map<Azure.Management.Compute.Models.OperationStatusResponse, PSOperationStatusResponse>(result, psObject);
                         WriteObject(psObject);
                     }
 

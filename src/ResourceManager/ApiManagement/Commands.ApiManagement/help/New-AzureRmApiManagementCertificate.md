@@ -15,13 +15,13 @@ Creates an API Management certificate to be used during Authentication with Back
 ### Load from file (Default)
 ```
 New-AzureRmApiManagementCertificate -Context <PsApiManagementContext> [-CertificateId <String>]
- -PfxFilePath <String> -PfxPassword <String> [<CommonParameters>]
+ -PfxFilePath <String> -PfxPassword <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Raw
 ```
 New-AzureRmApiManagementCertificate -Context <PsApiManagementContext> [-CertificateId <String>]
- -PfxBytes <Byte[]> -PfxPassword <String> [<CommonParameters>]
+ -PfxBytes <Byte[]> -PfxPassword <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,10 +31,11 @@ The **New-AzureRmApiManagementCertificate** cmdlet creates an Azure API Manageme
 
 ### Example 1: Create and upload a certificate
 ```
+PS C:\>$ApiMgmtContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>New-AzureRmApiManagementCertificate -Context $ApiMgmtContext -PfxFilePath "C:\contoso\certificates\apimanagement.pfx" -PfxPassword "1111"
 ```
 
-This command creates an API Management certificate and uploads it.
+This command uploads a certificate to Api Management. This certificate can be used for mutual authentication with backend using policies.
 
 ## PARAMETERS
 
@@ -66,6 +67,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+ 
+ ```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
