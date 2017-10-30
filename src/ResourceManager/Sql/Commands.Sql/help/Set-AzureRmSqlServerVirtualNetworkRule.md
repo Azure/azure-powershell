@@ -16,6 +16,7 @@ Modifies the configuration of an Azure SQL Server Virtual Network Rule.
 Set-AzureRmSqlServerVirtualNetworkRule -VirtualNetworkRuleName <String> -VirtualNetworkSubnetId <String>
  [-IgnoreMissingVnetServiceEndpoint] -ServerName <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+
 ```
 
 ## DESCRIPTION
@@ -36,7 +37,7 @@ Modifies an existing virtual network rule with the new virtual network subnet id
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
 Type: IAzureContextContainer
