@@ -13,9 +13,9 @@ Modifies the server to which Azure SQL Server DNS Alias is pointing
 ## SYNTAX
 
 ```
-Set-AzureRmSqlServerDnsAlias -DnsAliasName <String> -TargetServerName <String> -SourceServerName <String>
- -SourceServerResourceGroupName <String> -SourceServerSubscriptionId <Guid> [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Set-AzureRmSqlServerDnsAlias -Name <String> -TargetServerName <String> [-ResourceGroupName] <String>
+ -SourceServerName <String> -SourceServerResourceGroupName <String> -SourceServerSubscriptionId <Guid>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -49,13 +49,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DnsAliasName
-The Azure Sql Server Dns Alias name.
-
-```yaml
+### -Name
+The Azure Sql Server Dns Alias name.```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: Name
+Aliases: DnsAliasName
 
 Required: True
 Position: Named
@@ -70,7 +68,7 @@ The name of the resource group.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: TargetResourceGroupName
 
 Required: True
 Position: 0
@@ -170,15 +168,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### System.String
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Sql.ServerDnsAlias.Model.AzureSqlServerDnsAliasModel
-
 
 ## NOTES
 

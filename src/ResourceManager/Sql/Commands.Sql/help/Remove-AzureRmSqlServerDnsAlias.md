@@ -14,20 +14,20 @@ Removes Azure SQL Server DNS Alias.
 
 ### Remove a Server Dns Alias from cmdlet input parameters
 ```
-Remove-AzureRmSqlServerDnsAlias -DnsAliasName <String> -ServerName <String> -ResourceGroupName <String>
- [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Remove-AzureRmSqlServerDnsAlias -Name <String> -ServerName <String> -ResourceGroupName <String> [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Remove a Server Dns Alias from AzureSqlServerDnsAliasModel instance definition
 ```
 Remove-AzureRmSqlServerDnsAlias -InputObject <AzureSqlServerDnsAliasModel> [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Remove a Server Dns Alias from an Azure resource id
 ```
 Remove-AzureRmSqlServerDnsAlias -ResourceId <String> [-Force] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,21 +53,6 @@ Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DnsAliasName
-Azure Sql Server Dns Alias name
-
-```yaml
-Type: String
-Parameter Sets: Remove a Server Dns Alias from cmdlet input parameters
-Aliases: Name
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -104,6 +89,19 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Name
+Azure Sql Server Dns Alias name```yaml
+Type: String
+Parameter Sets: Remove a Server Dns Alias from cmdlet input parameters
+Aliases: DnsAliasName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 
@@ -130,7 +128,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -180,16 +178,17 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### System.String
 Microsoft.Azure.Commands.Sql.ServerDnsAlias.Model.AzureSqlServerDnsAliasModel
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Sql.ServerDnsAlias.Model.AzureSqlServerDnsAliasModel
-
 
 ## NOTES
 

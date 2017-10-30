@@ -13,8 +13,8 @@ Gets or lists Azure SQL Server DNS Alias.
 ## SYNTAX
 
 ```
-Get-AzureRmSqlServerDnsAlias [-DnsAliasName <String>] -ServerName <String> [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Get-AzureRmSqlServerDnsAlias [-Name <String>] -ServerName <String> [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -62,13 +62,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DnsAliasName
-The Azure Sql Server DNS Alias name.
-
-```yaml
+### -Name
+The Azure Sql Server DNS Alias name.```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: Name
+Aliases: DnsAliasName
 
 Required: False
 Position: Named
@@ -138,15 +136,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### System.String
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Sql.ServerDnsAlias.Model.AzureSqlServerDnsAliasModel
-
 
 ## NOTES
 
