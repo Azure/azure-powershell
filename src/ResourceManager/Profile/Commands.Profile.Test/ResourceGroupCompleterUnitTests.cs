@@ -13,14 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.Internal.Resources;
-using Microsoft.Azure.Management.Internal.Resources.Models;
-using Microsoft.Rest.Azure.OData;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Moq;
 using System;
 using System.Collections.Generic;
-using System.Threading;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Profile.Test
