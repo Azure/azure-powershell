@@ -42,5 +42,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         public const string defaultKeyEncryptionAlgorithm = "RSA-OAEP";
         public const string keyVaultResourceIdKey = "KeyVaultResourceId";
         public const string kekVaultResourceIdKey = "KekVaultResourceId";
+        public const string extensionTypeEnvVarName = "ADE_TEST_EXTENSION_TYPE";
+        public const string extensionPublisherEnvVarName = "ADE_TEST_EXTENSION_PUBLISHER";
     }
 }
