@@ -144,7 +144,7 @@ function Set-AzureStackWithAadEnvironment
         -GraphEndpoint $AadGraphUri
 
     $environment = Get-AzureRmEnvironment -Name $AzureStackMachineName
-    #Login-AzureRmAccount -Environment $environment -Credential $Credential
+    #Connect-AzureRmAccount -Environment $environment -Credential $Credential
 
     Get-AzureRmSubscription -SubscriptionName "Default Provider Subscription" | Set-AzureRmContext
 }

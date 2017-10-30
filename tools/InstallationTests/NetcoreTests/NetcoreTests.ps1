@@ -65,7 +65,7 @@ function Run-TestProtected
    }
 }
 
-Login-AzureRmAccount
+Connect-AzureRmAccount
 Select-AzureRmSubscription -SubscriptionId 00977cdb-163f-435f-9c32-39ec8ae61f4d
 
 $ErrorActionPreference = "Stop"

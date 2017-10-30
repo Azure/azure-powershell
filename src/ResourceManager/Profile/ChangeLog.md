@@ -28,6 +28,12 @@
 - Clear-AzureRmDefault
     - Use this cmdlet to remove the current default resource group
     - ```Clear-AzureRmDefault -ResourceGroup```
+- Add-AzureRmAccount
+    - `Add-AzureRmAccount` has been renamed as `Connect-AzureRmAccount`; an alias has been added for the old cmdlet name, and other aliases (`Login-AzAccount` and `Login-AzureRmAccount`) have been redirected to the new cmdlet name.
+    - A recommendation will be made to remove the old Login-* aliases in a future release in favor of following best practices (using approved verbs in all cmdlets). Login is not an approved verb and its use should be discouraged. Under no circumstances should unapproved verbs be used in documentation or presentations that include the AzureRM PowerShell cmdlets.
+- Remove-AzureRmAccount
+    - `Remove-AzureRmAccount` has been renamed as `Disconnect-AzureRmAccount`; an alias has been added for the old cmdlet name, and other aliases (`Logout-AzAccount` and `Logout-AzureRmAccount`) have been redirected to the new cmdlet name.
+    - A recommendation will be made to remove the old Logout-* aliases in a future release in favor of following best practices (using approved verbs in all cmdlets). Logout is not an approved verb and its use should be discouraged. Under no circumstances should unapproved verbs be used in documentation or presentations that include the AzureRM PowerShell cmdlets.
 
 ## Version 3.4.1
 * LocationCompleterAttribute added and available for cmdlets which use the -Location parameter

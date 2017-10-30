@@ -44,7 +44,7 @@ Will also need a way to replace existing ClientId ID, if Service principal is re
 3) When replacing Certificate, you will also need to set new role Assignment using the new certificate.
 
 Issues:
-1) During the very first log in using certificate, an error pops up "Login-AzureRmAccount : No certificate was found in the certificate store with thumbprint System.Object[]"
+1) During the very first log in using certificate, an error pops up "Connect-AzureRmAccount : No certificate was found in the certificate store with thumbprint System.Object[]"
 This is a transient error, but eventually the login is successful as it finds the certificate in Currentuser store
 So after the first try, this error no longer shows up.
 Will open an issue to investigate where we try both the cert store simultenously rather we should try Currentuser and if not found then try LocalMachine.
@@ -237,7 +237,7 @@ Function Login-AzureRMWithCertificate([bool]$runOnCIMachine=$false)
     $thumbStr = [System.Convert]::ToString($thumbprint.ToString())
         
     #Update the LoggedInCtx    
-    $gLoggedInCtx = Login-AzureRmAccount -ServicePrincipal -CertificateThumbprint $thumbStr -ApplicationId $appId -TenantId $global:gTenantId    
+    $gLoggedInCtx = Connect-AzureRmAccount -ServicePrincipal -CertificateThumbprint $thumbStr -ApplicationId $appId -TenantId $global:gTenantId    
     $global:ErrorActionPreference = "Stop" #setting it back to default option that were set in Test-Setup
 }
 
@@ -256,7 +256,7 @@ Function Login-AzureWithCertificate()
 Function Login-InteractivelyAndSelectTestSubscription()
 {
     Log-Info "Login interactively....."
-    $global:gLoggedInCtx = Login-AzureRmAccount
+    $global:gLoggedInCtx = Connect-AzureRmAccount
 
     Check-LoggedInContext
     Log-Info "Selecting '$global:gPsAutoTestSubscriptionId' subscription"

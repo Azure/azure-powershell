@@ -117,10 +117,10 @@ If you use both mechanisms on the same subscription, Microsoft Azure Active Dire
 
 ```powershell
 # Interactive login - you will get a dialog box asking for your Azure credentials
-Add-AzureRmAccount
+Connect-AzureRmAccount
 
 # Non-interactive login - use service principals
-Add-AzureRmAccount -ServicePrincipal -ApplicationId "http://my-app" -Credential $pscredential -TenantId $tenantid
+Connect-AzureRmAccount -ServicePrincipal -ApplicationId "http://my-app" -Credential $pscredential -TenantId $tenantid
 
 # Use the cmdlets to manage your services/applications
 New-AzureRmResourceGroup -Name myresourceGroup -Location "West US"
@@ -129,7 +129,7 @@ New-AzureRmResourceGroup -Name myresourceGroup -Location "West US"
 ### Microsoft Azure China
 
 ```powershell
-Add-AzureRmAccount -EnvironmentName AzureChinaCloud
+Connect-AzureRmAccount -EnvironmentName AzureChinaCloud
 
 # Use the cmdlets to manage your services/applications
 New-AzureRmResourceGroup -Name myresourceGroup -Location "China East"
@@ -138,7 +138,7 @@ New-AzureRmResourceGroup -Name myresourceGroup -Location "China East"
 ### Microsoft Azure US Government
 
 ```powershell
-Add-AzureRmAccount -EnvironmentName AzureUSGovernment
+Connect-AzureRmAccount -EnvironmentName AzureUSGovernment
 
 # Use the cmdlets to manage your services/applications
 New-AzureRmResourceGroup -Name myresourceGroup -Location "US Gov Virginia"
@@ -147,7 +147,7 @@ New-AzureRmResourceGroup -Name myresourceGroup -Location "US Gov Virginia"
 ### Microsoft Azure Germany
 
 ```powershell
-Add-AzureRmAccount -EnvironmentName AzureGermanCloud
+Connect-AzureRmAccount -EnvironmentName AzureGermanCloud
 
 # Use the cmdlets to manage your services/applications
 New-AzureRmResourceGroup -Name myresourceGroup -Location "Germany Central"

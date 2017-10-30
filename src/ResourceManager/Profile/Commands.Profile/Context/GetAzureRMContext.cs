@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Profile
             if (DefaultContext == null)
             {
                 WriteError(new ErrorRecord(
-                        new PSInvalidOperationException("Run Login-AzureRmAccount to login."),
+                        new PSInvalidOperationException("Run Connect-AzureRmAccount to login."),
                         string.Empty,
                         ErrorCategory.AuthenticationError,
                         null));

@@ -2191,10 +2191,10 @@
       "AliasList": []
     },
     {
-      "VerbName": "Add",
+      "VerbName": "Connect",
       "NounName": "AzureRmAccount",
-      "Name": "Add-AzureRmAccount",
-      "ClassName": "Microsoft.Azure.Commands.Profile.AddAzureRMAccountCommand",
+      "Name": "Connect-AzureRmAccount",
+      "ClassName": "Microsoft.Azure.Commands.Profile.ConnectAzureRmAccountCommand",
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
@@ -3367,6 +3367,8 @@
         }
       ],
       "AliasList": [
+        "Add-AzureRmAccount",
+        "Login-AzAccount",
         "Login-AzureRmAccount"
       ]
     },

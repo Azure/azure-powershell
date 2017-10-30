@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetPsVersionFromUserAgent()
         {
-            var cmdlt = new AddAzureRMAccountCommand();
+            var cmdlt = new ConnectAzureRmAccountCommand();
 
             int preProcessingUserAgentCount = AzureSession.Instance.ClientFactory.UserAgents.Length;
             Debug.WriteLine("UserAgents count prior to cmdLet processing = {0}", preProcessingUserAgentCount.ToString());
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         [Trait(Category.RunType, Category.LiveOnly)]
         public void LoginWithSubscriptionAndTenant()
         {
-            var cmdlt = new AddAzureRMAccountCommand();
+            var cmdlt = new ConnectAzureRmAccountCommand();
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
             cmdlt.Subscription = "2c224e7e-3ef5-431d-a57b-e71f4662e3a6";
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         [Trait(Category.RunType, Category.LiveOnly)]
         public void LoginWithInvalidSubscriptionAndTenantThrowsCloudException()
         {
-            var cmdlt = new AddAzureRMAccountCommand();
+            var cmdlt = new ConnectAzureRmAccountCommand();
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
             cmdlt.Subscription = "2c224e7e-3ef5-431d-a57b-e71f4662e3a5";
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         [Trait(Category.RunType, Category.LiveOnly)]
         public void LoginWithSubscriptionAndNoTenant()
         {
-            var cmdlt = new AddAzureRMAccountCommand();
+            var cmdlt = new ConnectAzureRmAccountCommand();
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
             cmdlt.Subscription = "2c224e7e-3ef5-431d-a57b-e71f4662e3a6";
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         [Trait(Category.RunType, Category.LiveOnly)]
         public void LoginWithNoSubscriptionAndNoTenant()
         {
-            var cmdlt = new AddAzureRMAccountCommand();
+            var cmdlt = new ConnectAzureRmAccountCommand();
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
 
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         [Trait(Category.RunType, Category.LiveOnly)]
         public void LoginWithNoSubscriptionAndTenant()
         {
-            var cmdlt = new AddAzureRMAccountCommand();
+            var cmdlt = new ConnectAzureRmAccountCommand();
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
             cmdlt.TenantId = "72f988bf-86f1-41af-91ab-2d7cd011db47";
@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         [Trait(Category.RunType, Category.LiveOnly)]
         public void LoginWithSubscriptionname()
         {
-            var cmdlt = new AddAzureRMAccountCommand();
+            var cmdlt = new ConnectAzureRmAccountCommand();
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
             cmdlt.TenantId = "72f988bf-86f1-41af-91ab-2d7cd011db47";
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         [Trait(Category.RunType, Category.LiveOnly)]
         public void LoginWithRbacTenantOnly()
         {
-            var cmdlt = new AddAzureRMAccountCommand();
+            var cmdlt = new ConnectAzureRmAccountCommand();
             // Setup
             // NOTE: Use owner1@AzureSDKTeam.onmicrosoft.com credentials for this test case
             cmdlt.CommandRuntime = commandRuntimeMock;
@@ -217,7 +217,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         [Trait(Category.RunType, Category.LiveOnly)]
         public void LoginWithRbacSPNAndCertificateOnly()
         {
-            var cmdlt = new AddAzureRMAccountCommand();
+            var cmdlt = new ConnectAzureRmAccountCommand();
             // Setup
             // NOTE: Use rbac SPN credentials for this test case
             cmdlt.CommandRuntime = commandRuntimeMock;
@@ -245,7 +245,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         [Trait(Category.RunType, Category.LiveOnly)]
         public void GetMultipleTenantsOnLogin()
         {
-            var cmdlt = new AddAzureRMAccountCommand();
+            var cmdlt = new ConnectAzureRmAccountCommand();
             // Setup
             // NOTE: Use account that has at exactly two tenants
             cmdlt.CommandRuntime = commandRuntimeMock;
@@ -266,7 +266,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         [Trait(Category.RunType, Category.LiveOnly)]
         public void LoginWithEnvironementName()
         {
-            var cmdlt = new AddAzureRMAccountCommand();
+            var cmdlt = new ConnectAzureRmAccountCommand();
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
             cmdlt.Environment = "AzureUSGovernment";
@@ -285,7 +285,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         [Trait(Category.RunType, Category.LiveOnly)]
         public void LoginWithCredentialParameterAndMSA()
         {
-            var cmdlt = new AddAzureRMAccountCommand();
+            var cmdlt = new ConnectAzureRmAccountCommand();
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
 
@@ -322,7 +322,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ThrowOnUnknownEnvironment()
         {
-            var cmdlt = new AddAzureRMAccountCommand();
+            var cmdlt = new ConnectAzureRmAccountCommand();
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
             cmdlt.Environment = "unknown";

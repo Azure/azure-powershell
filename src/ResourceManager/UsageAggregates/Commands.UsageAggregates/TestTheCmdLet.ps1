@@ -3,7 +3,7 @@ $subscription = "<Add subscription ID>"
 
 Import-Module "<path to>"Microsoft.Azure.Commands.UsageAggregates.dll
 
-Add-AzureRmAccount 
+Connect-AzureRmAccount 
 
 Set-AzureRmSubscription -SubscriptionId $subscription
 
