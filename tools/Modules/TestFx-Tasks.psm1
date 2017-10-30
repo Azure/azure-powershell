@@ -1,6 +1,4 @@
-﻿[CmdletBinding]
-
-Function New-AzureCredential
+﻿Function New-AzureCredential
 {
     [CmdletBinding(
         DefaultParameterSetName='CreateSpnParamSet', 
@@ -81,6 +79,7 @@ Function New-AzureCredential
            $NewRole = Get-AzureRMRoleAssignment -ObjectId $NewServicePrincipal.Id -ErrorAction SilentlyContinue
            $Retries++;
         }
+        
         $credentials.ServicePrincipal = $NewServicePrincipal.ApplicationId
         $credentials.ServicePrincipalSecret = $NewServicePrincipalPassword
     }

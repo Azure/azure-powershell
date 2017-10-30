@@ -32,6 +32,7 @@ using System.Linq;
 using System.Management.Automation;
 using System.Net.Http;
 using System.Threading;
+using System.Text;
 
 #if !NETSTANDARD
 using Microsoft.Azure.Commands.Common.Authentication.Utilities;
@@ -193,90 +194,91 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
             if (Environment.GetEnvironmentVariable("TEST_CSM_ORGID_AUTHENTICATION") == null)
             {
-                var formattedConnectionString = String.Format("SubscriptionId={0};HttpRecorderMode={1};Environment={2}", credentials["SubscriptionId"], credentials["HttpRecorderMode"], credentials["Environment"]);
+                StringBuilder formattedConnectionString = new StringBuilder();
+                formattedConnectionString.Append(String.Format("SubscriptionId={0};HttpRecorderMode={1};Environment={2}", credentials["SubscriptionId"], credentials["HttpRecorderMode"], credentials["Environment"]));
 
                 if (credentials.ContainsKey("UserId"))
                 {
-                    formattedConnectionString += String.Format(";UserId={0}", credentials["UserId"]);
+                    formattedConnectionString.Append(String.Format(";UserId={0}", credentials["UserId"]));
                 }
 
                 if (credentials.ContainsKey("ServicePrincipal"))
                 {
-                    formattedConnectionString += String.Format(";ServicePrincipal={0}", credentials["ServicePrincipal"]);
-                    formattedConnectionString += String.Format(";ServicePrincipalSecret={0}", credentials["ServicePrincipalSecret"]);
+                    formattedConnectionString.Append(String.Format(";ServicePrincipal={0}", credentials["ServicePrincipal"]));
+                    formattedConnectionString.Append(String.Format(";ServicePrincipalSecret={0}", credentials["ServicePrincipalSecret"]));
                 }
 
                 if (credentials.ContainsKey("AADTenant"))
                 {
-                    formattedConnectionString += String.Format(";AADTenant={0}", credentials["AADTenant"]);
+                    formattedConnectionString.Append(String.Format(";AADTenant={0}", credentials["AADTenant"]));
                 }
 
                 if (credentials.ContainsKey("ServicePrincipal"))
                 {
-                    formattedConnectionString += String.Format(";ServicePrincipal={0}", credentials["ServicePrincipal"]);
+                    formattedConnectionString.Append(String.Format(";ServicePrincipal={0}", credentials["ServicePrincipal"]));
                 }
 
                 if (credentials.ContainsKey("ServicePrincipalSecret"))
                 {
-                    formattedConnectionString += String.Format(";ServicePrincipalSecret={0}", credentials["ServicePrincipalSecret"]);
+                    formattedConnectionString.Append(String.Format(";ServicePrincipalSecret={0}", credentials["ServicePrincipalSecret"]));
                 }
 
                 if (credentials.ContainsKey("ResourceManagementUri"))
                 {
-                    formattedConnectionString += String.Format(";ResourceManagementUri={0}", credentials["ResourceManagementUri"]);
+                    formattedConnectionString.Append(String.Format(";ResourceManagementUri={0}", credentials["ResourceManagementUri"]));
                 }
 
                 if (credentials.ContainsKey("GraphUri"))
                 {
-                    formattedConnectionString += String.Format(";GraphUri={0}", credentials["GraphUri"]);
+                    formattedConnectionString.Append(String.Format(";GraphUri={0}", credentials["GraphUri"]));
                 }
 
                 if (credentials.ContainsKey("AADAuthUri"))
                 {
-                    formattedConnectionString += String.Format(";AADAuthUri={0}", credentials["AADAuthUri"]);
+                    formattedConnectionString.Append(String.Format(";AADAuthUri={0}", credentials["AADAuthUri"]));
                 }
 
                 if (credentials.ContainsKey("AADTokenAudienceUri"))
                 {
-                    formattedConnectionString += String.Format(";AADTokenAudienceUri={0}", credentials["AADTokenAudienceUri"]);
+                    formattedConnectionString.Append(String.Format(";AADTokenAudienceUri={0}", credentials["AADTokenAudienceUri"]));
                 }
 
                 if (credentials.ContainsKey("GraphTokenAudienceUri"))
                 {
-                    formattedConnectionString += String.Format(";GraphTokenAudienceUri={0}", credentials["GraphTokenAudienceUri"]);
+                    formattedConnectionString.Append(String.Format(";GraphTokenAudienceUri={0}", credentials["GraphTokenAudienceUri"]));
                 }
 
                 if (credentials.ContainsKey("IbizaPortalUri"))
                 {
-                    formattedConnectionString += String.Format(";IbizaPortalUri={0}", credentials["IbizaPortalUri"]);
+                    formattedConnectionString.Append(String.Format(";IbizaPortalUri={0}", credentials["IbizaPortalUri"]));
                 }
 
                 if (credentials.ContainsKey("ServiceManagementUri"))
                 {
-                    formattedConnectionString += String.Format(";ServiceManagementUri={0}", credentials["ServiceManagementUri"]);
+                    formattedConnectionString.Append(String.Format(";ServiceManagementUri={0}", credentials["ServiceManagementUri"]));
                 }
 
                 if (credentials.ContainsKey("RdfePortalUri"))
                 {
-                    formattedConnectionString += String.Format(";RdfePortalUri={0}", credentials["RdfePortalUri"]);
+                    formattedConnectionString.Append(String.Format(";RdfePortalUri={0}", credentials["RdfePortalUri"]));
                 }
 
                 if (credentials.ContainsKey("GalleryUri"))
                 {
-                    formattedConnectionString += String.Format(";GalleryUri={0}", credentials["GalleryUri"]);
+                    formattedConnectionString.Append(String.Format(";GalleryUri={0}", credentials["GalleryUri"]));
                 }
 
                 if (credentials.ContainsKey("DataLakeStoreServiceUri"))
                 {
-                    formattedConnectionString += String.Format(";DataLakeStoreServiceUri={0}", credentials["DataLakeStoreServiceUri"]);
+                    formattedConnectionString.Append(String.Format(";DataLakeStoreServiceUri={0}", credentials["DataLakeStoreServiceUri"]));
                 }
 
                 if (credentials.ContainsKey("DataLakeAnalyticsJobAndCatalogServiceUri"))
                 {
-                    formattedConnectionString += String.Format(";DataLakeAnalyticsJobAndCatalogServiceUri={0}", credentials["DataLakeAnalyticsJobAndCatalogServiceUri"]);
+                    formattedConnectionString.Append(String.Format(";DataLakeAnalyticsJobAndCatalogServiceUri={0}", credentials["DataLakeAnalyticsJobAndCatalogServiceUri"]));
                 }
 
-                Environment.SetEnvironmentVariable("TEST_CSM_ORGID_AUTHENTICATION", formattedConnectionString);
+                Environment.SetEnvironmentVariable("TEST_CSM_ORGID_AUTHENTICATION", formattedConnectionString.ToString());
             }
 
             if (Environment.GetEnvironmentVariable("AZURE_TEST_MODE") == null)
