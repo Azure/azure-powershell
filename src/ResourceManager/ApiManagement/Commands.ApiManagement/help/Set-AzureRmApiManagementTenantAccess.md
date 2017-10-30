@@ -14,7 +14,7 @@ Enables or disables tenant access.
 
 ```
 Set-AzureRmApiManagementTenantAccess -Context <PsApiManagementContext> -Enabled <Boolean> [-PassThru]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +24,8 @@ The **Set-AzureRmApiManagementTenantAccess** cmdlet enables or disables tenant a
 
 ### Example 1: Enable tenant access
 ```
-PS C:\>Set-AzureRmApiManagementTenantAccess -Context $ApimContext -Enabled $True
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Set-AzureRmApiManagementTenantAccess -Context $apimContext -Enabled $True
 ```
 
 This command enables tenant access in the specified context.
@@ -43,6 +44,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+ 
+ ```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
