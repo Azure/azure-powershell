@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                         Regex r = new Regex(@"(.*?)/resourcegroups/(?<rgname>\S+)/providers/(.*?)", RegexOptions.IgnoreCase);
                         Match m = r.Match(vmss.Id);
                         var vmssDiskStatus = GetVmssDiskStatus(m.Groups["rgname"].Value, vmss.Name);
-                        var psResult = Mapper.Map<PSVmssDiskEncryptionStatusContextList>(vmssDiskStatus);
+                        var psResult = ComputeAutoMapperProfile.Mapper.Map<PSVmssDiskEncryptionStatusContextList>(vmssDiskStatus);
                         psResultList.Add(psResult);
                     }
 
