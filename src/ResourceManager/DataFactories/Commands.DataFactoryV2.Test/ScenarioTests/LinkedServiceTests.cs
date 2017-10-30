@@ -44,5 +44,12 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Test
         {
             RunPowerShellTest("Test-LinkedServicePiping");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestLinkedServiceWithResourceIdV2()
+        {
+            RunPowerShellTest("Test-LinkedServiceWithResourceId");
+        }
     }
 }

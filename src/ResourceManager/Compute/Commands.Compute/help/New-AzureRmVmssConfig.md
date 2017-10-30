@@ -21,7 +21,6 @@ New-AzureRmVmssConfig [[-Overprovision] <Boolean>] [[-Location] <String>] [[-Tag
  [-PlanName <String>] [-PlanPublisher <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>]
  [-RollingUpgradePolicy <RollingUpgradePolicy>] [-AutoOSUpgrade] [-HealthProbeId <String>]
  [-BootDiagnostic <BootDiagnostics>] [-LicenseType <String>] [-AssignIdentity]
- [-IdentityType <ResourceIdentityType>] [-RecoveryPolicyMode <RecoveryMode>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -83,7 +82,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -141,22 +140,6 @@ HealthProbeId is in the form of '/subscriptions/{subscriptionId}/resourceGroups/
 Type: String
 Parameter Sets: (All)
 Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -IdentityType
-Specify the identity of the virtual machine scale set, if configured.
-
-```yaml
-Type: ResourceIdentityType
-Parameter Sets: (All)
-Aliases: 
-Accepted values: SystemAssigned
 
 Required: False
 Position: Named
@@ -294,22 +277,6 @@ Specifies the plan publisher.
 Type: String
 Parameter Sets: (All)
 Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -RecoveryPolicyMode
-Specify the recovery policy.
-
-```yaml
-Type: RecoveryMode
-Parameter Sets: (All)
-Aliases: 
-Accepted values: None, OverProvision, Reprovision
 
 Required: False
 Position: Named

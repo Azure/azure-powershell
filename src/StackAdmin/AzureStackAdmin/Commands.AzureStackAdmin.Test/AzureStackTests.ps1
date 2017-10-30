@@ -88,7 +88,7 @@ function Test-TenantSubscription
     $publicOffer = Get-Offer -OfferName $offerName
 	
 	#
-	[Microsoft.AzureStack.Commands.NewTenantSubscription]::SubscriptionIds.Enqueue("8E7DD69E-9AB2-44A1-94D8-F7BC8E12645E")
+	[Microsoft.AzureStack.Commands.NewUserSubscription]::SubscriptionIds.Enqueue("8E7DD69E-9AB2-44A1-94D8-F7BC8E12645E")
     # Creating subscription as an admin
     $subscription = New-Subscription -SubscriptionUser $SubscriptionUser -OfferId $offer.Id
 
@@ -164,7 +164,7 @@ function Test-TenantSubscribeToOffer
     # Get the created offer as the tenant
     $tenantOffer = Get-Offer -OfferName $offerName
 
-	[Microsoft.AzureStack.Commands.NewTenantSubscription]::SubscriptionIds.Enqueue("8E7DD69E-9AA2-44A1-94D8-F7BC8E12645E")
+	[Microsoft.AzureStack.Commands.NewUserSubscription]::SubscriptionIds.Enqueue("8E7DD69E-9AA2-44A1-94D8-F7BC8E12645E")
     # Subscribing to the offer as tenant
     $subscription = New-Subscription -OfferId $tenantOffer.Id
 
