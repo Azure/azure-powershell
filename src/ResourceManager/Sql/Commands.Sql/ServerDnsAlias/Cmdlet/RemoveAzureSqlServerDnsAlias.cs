@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDnsAlias.Cmdlet
 	[OutputType(typeof(Model.AzureSqlServerDnsAliasModel))]
 	public class RemoveAzureSqlServerDNSAlias : AzureSqlServerDnsAliasCmdletBase
 	{
-		protected const string CmdletParametersParameterSet =
+		protected const string CmdletInputParameterSet =
 			"Remove a Server Dns Alias from cmdlet input parameters";
 
 		protected const string ObjectParameterSet =
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDnsAlias.Cmdlet
 		/// <summary>
 		/// Gets or sets the name of the server dns alias to remove
 		/// </summary>
-		[Parameter(ParameterSetName = CmdletParametersParameterSet,
+		[Parameter(ParameterSetName = CmdletInputParameterSet,
 			Mandatory = true,
 			HelpMessage = "Azure Sql Server Dns Alias name")]
 		[Alias("DnsAliasName")]
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDnsAlias.Cmdlet
 		/// <summary>
 		/// Gets or sets the name of the Azure Sql Server to use
 		/// </summary>
-		[Parameter(ParameterSetName = CmdletParametersParameterSet,
+		[Parameter(ParameterSetName = CmdletInputParameterSet,
 			Mandatory = true,
 			HelpMessage = "The Azure Sql Server name.")]
 		[ValidateNotNullOrEmpty]
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDnsAlias.Cmdlet
 		/// <summary>
 		/// Gets or sets the name of the resource group to use.
 		/// </summary>
-		[Parameter(ParameterSetName = CmdletParametersParameterSet,
+		[Parameter(ParameterSetName = CmdletInputParameterSet,
 			Mandatory = true,
 			Position = 0,
 			ValueFromPipelineByPropertyName = true,
