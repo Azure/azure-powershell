@@ -183,15 +183,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             {
             }
 
-            public override TraceLevel AuthenticationLegacyTraceLevel
+            public override System.Diagnostics.TraceLevel AuthenticationLegacyTraceLevel
             {
                 get
                 {
-                    return TraceLevel.Off;
+                    return System.Diagnostics.TraceLevel.Off;
                 }
                 set
                 {
-
+                    
                 }
             }
 
