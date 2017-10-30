@@ -2,12 +2,12 @@
 
 ## Rollup Modules
 
-| Description                                    | Module Name       | PowerShell Gallery Link |
-| ---------------------------------------------- | ----------------- | ----------------------- |
-| Rollup Module for ARM Cmdlets                  | `AzureRM`         | [![AzureRM](https://img.shields.io/powershellgallery/v/AzureRM.svg?style=flat-square&label=AzureRM)](https://www.powershellgallery.com/packages/AzureRM/) |
-| Rollup Module for .NET Core Cmdlets            | `AzureRM.Netcore` | [![AzureRM.Netcore](https://img.shields.io/powershellgallery/v/AzureRM.Netcore.svg?style=flat-square&label=AzureRM.Netcore)](https://www.powershellgallery.com/packages/AzureRM.Netcore/) |
-| Rollup Module for Azure Stack Cmdlets          | `AzureStack`      | [![AzureStack](https://img.shields.io/powershellgallery/v/AzureStack.svg?style=flat-square&label=AzureStack)](https://www.powershellgallery.com/packages/AzureStack/) |
-| Rolledup Module for Service Management Cmdlets | `Azure`           | [![Azure](https://img.shields.io/powershellgallery/v/Azure.svg?style=flat-square&label=Azure)](https://www.powershellgallery.com/packages/Azure/) |
+| Description                                                      | Module Name       | PowerShell Gallery Link |
+| ---------------------------------------------------------------- | ----------------- | ----------------------- |
+| Rollup Module for ARM Cmdlets                                    | `AzureRM`         | [![AzureRM](https://img.shields.io/powershellgallery/v/AzureRM.svg?style=flat-square&label=AzureRM)](https://www.powershellgallery.com/packages/AzureRM/) |
+| Rollup Module for .NET Core Cmdlets                              | `AzureRM.Netcore` | [![AzureRM.Netcore](https://img.shields.io/powershellgallery/v/AzureRM.Netcore.svg?style=flat-square&label=AzureRM.Netcore)](https://www.powershellgallery.com/packages/AzureRM.Netcore/) |
+| Rollup Module for Administrative Modules in Azure Stack          | `AzureStack`      | [![AzureStack](https://img.shields.io/powershellgallery/v/AzureStack.svg?style=flat-square&label=AzureStack)](https://www.powershellgallery.com/packages/AzureStack/) |
+| Rolledup Module for Service Management Cmdlets                   | `Azure`           | [![Azure](https://img.shields.io/powershellgallery/v/Azure.svg?style=flat-square&label=Azure)](https://www.powershellgallery.com/packages/Azure/) |
 
 ## Modules for ARM Cmdlets
 
@@ -93,7 +93,7 @@ Below is a table of modules containing .NET Core compatible cmdlets found in the
 
 ## Modules for Azure Stack Cmdlets
 
-Below is a table of modules containing Azure Stack cmdlets found in the [`AzureStack`](https://www.powershellgallery.com/packages/AzureStack/) rollup module.
+Below is a table of modules containing administrative cmdlets found in the [`AzureStack`](https://www.powershellgallery.com/packages/AzureStack/) rollup module.
 
 | Azure Service       | Module Name                 | PowerShell Gallery Link |
 | ------------------- | --------------------------- | ----------------------- |
