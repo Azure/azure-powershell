@@ -19,6 +19,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
     using Management.Internal.Resources;
     using Management.Internal.Resources.Models;
     using Properties;
+    using Rest.Azure;
     using System;
     using System.Collections.Concurrent;
     using System.Collections.Generic;
@@ -43,7 +44,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
                     var contextHash = HashContext(context);
                     if (!_resourceGroupNamesDictionary.ContainsKey(contextHash))
                     {
-                        _resourceGroupNamesDictionary[contextHash] = new List<string>();
+                        var tempResourceGroupList = new List<string>();
                         try
                         {
                             var instance = AzureSession.Instance;
@@ -56,20 +57,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
                             var resourceGroups = client.ResourceGroups.ListAsync();
                             if (resourceGroups.Wait(TimeSpan.FromSeconds(5)))
                             {
+                                tempResourceGroupList = CreateResourceGroupList(resourceGroups.Result);
                                 if (resourceGroups.Result != null)
                                 {
-                                    var resourceGroupList = resourceGroups.Result;
-                                    foreach (ResourceGroup resourceGroup in resourceGroupList)
-                                    {
-                                        _resourceGroupNamesDictionary[contextHash].Add(resourceGroup.Name);
-                                    }
+                                    _resourceGroupNamesDictionary[contextHash] = tempResourceGroupList;
                                 }
-#if DEBUG
-                                else
-                                {
-                                    throw new Exception("Result from client.ResourceGroups is null");
-                                }
-#endif
                             }
 #if DEBUG
                             else
@@ -85,9 +77,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
                             throw ex;
 #endif
                         }
+
+                        return tempResourceGroupList;
                     }
 
-                    return _resourceGroupNamesDictionary[contextHash];
+                    else
+                    {
+                        return _resourceGroupNamesDictionary[contextHash];
+                    }
                 }
             }
         }
@@ -137,6 +134,25 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
         private static int HashContext(IAzureContext context)
         {
             return (context.Account.Id + context.Environment.Name + context.Subscription.Id + context.Tenant.Id).GetHashCode();
+        }
+
+        public static List<string> CreateResourceGroupList(IPage<ResourceGroup> result)
+        {
+            var tempResourceGroupList = new List<string>();
+            if (result != null)
+            {
+                foreach (ResourceGroup resourceGroup in result)
+                {
+                    tempResourceGroupList.Add(resourceGroup.Name);
+                }
+            }
+#if DEBUG
+            else
+            {
+                throw new Exception("Result from client.ResourceGroups is null");
+            }
+#endif
+            return tempResourceGroupList;
         }
     }
 }
