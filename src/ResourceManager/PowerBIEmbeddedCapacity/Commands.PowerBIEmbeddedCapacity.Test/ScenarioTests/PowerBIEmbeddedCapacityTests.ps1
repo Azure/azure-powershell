@@ -239,14 +239,14 @@ function Test-NegativePowerBIEmbeddedCapacity
 .SYNOPSIS
 Test log exporting from Azure PowerBI Embedded capacity.
 In order to run this test successfully, Following environment variables need to be set.
-ASAZURE_TEST_ROLLOUT e.x. value 'aspaaswestusloop1.asazure-int.windows.net'
-ASAZURE_TESTUSER_PWD e.x. value 'samplepwd'
+PBIEMBEDDED_TEST_ROLLOUT e.x. value 'aspaaswestusloop1.asazure-int.windows.net'
+PBIEMBEDDED_TESTUSER_PWD e.x. value 'samplepwd'
 #>
 function Test-PowerBIEmbeddedCapacityLogExport
 {
     param
 	(
-		$rolloutEnvironment = $env:ASAZURE_TEST_ROLLOUT
+		$rolloutEnvironment = $env:PBIEMBEDDED_TEST_ROLLOUT
 	)
     try
     {
@@ -255,12 +255,12 @@ function Test-PowerBIEmbeddedCapacityLogExport
 		$capacityName = Get-PowerBIEmbeddedCapacityName
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
 
-		$capacityCreated = New-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -Location $location -Sku 'A1' -Administrators $env:ASAZURE_TEST_ADMUSERS
+		$capacityCreated = New-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -Location $location -Sku 'A1' -Administrators $env:PBIEMBEDDED_TEST_ADMUSERS
 		Assert-True {$capacityCreated.ProvisioningState -like "Succeeded"}
 		Assert-True {$capacityCreated.State -like "Succeeded"}
 
-		$secpasswd = ConvertTo-SecureString $env:ASAZURE_TESTUSER_PWD -AsPlainText -Force
-		$admuser0 = $env:ASAZURE_TEST_ADMUSERS.Split(',')[0]
+		$secpasswd = ConvertTo-SecureString $env:PBIEMBEDDED_TESTUSER_PWD -AsPlainText -Force
+		$admuser0 = $env:PBIEMBEDDED_TEST_ADMUSERS.Split(',')[0]
 		$cred = New-Object System.Management.Automation.PSCredential ($admuser0, $secpasswd)
 		$asAzureProfile = Login-AzurePowerBIEmbeddedCapacityAccount -RolloutEnvironment $rolloutEnvironment -Credential $cred
 		Assert-NotNull $asAzureProfile "Login-AzurePowerBIEmbeddedCapacityAccount $rolloutEnvironment must not return null"
@@ -285,15 +285,15 @@ function Test-PowerBIEmbeddedCapacityLogExport
 .SYNOPSIS
 Tests PowerBI Embedded Capacity Login and restart.
 In order to run this test successfully, Following environment variables need to be set.
-ASAZURE_TEST_ROLLOUT e.x. value 'aspaasnightly1.pbidedicated-int.windows.net'
-ASAZURE_TESTUSER_PWD e.x. value 'aztest0password'
-ASAZURE_TEST_ADMUSERS e.x. value 'aztest0@asazure.ccsctp.net,aztest1@asazure.ccsctp.net'
+PBIEMBEDDED_TEST_ROLLOUT e.x. value 'aspaasnightly1.pbidedicated-int.windows.net'
+PBIEMBEDDED_TESTUSER_PWD e.x. value 'aztest0password'
+PBIEMBEDDED_TEST_ADMUSERS e.x. value 'aztest0@asazure.ccsctp.net,aztest1@asazure.ccsctp.net'
 #>
 function Test-PowerBIEmbeddedCapacityRestart
 {
     param
 	(
-		$rolloutEnvironment = $env:ASAZURE_TEST_ROLLOUT
+		$rolloutEnvironment = $env:PBIEMBEDDED_TEST_ROLLOUT
 	)
 	try
 	{
@@ -303,15 +303,15 @@ function Test-PowerBIEmbeddedCapacityRestart
 		$capacityName = Get-PowerBIEmbeddedCapacityName
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
 
-		$capacityCreated = New-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -Location $location -Sku 'A1' -Administrator $env:ASAZURE_TEST_ADMUSERS
+		$capacityCreated = New-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -Location $location -Sku 'A1' -Administrator $env:PBIEMBEDDED_TEST_ADMUSERS
 		Assert-True {$capacityCreated.ProvisioningState -like "Succeeded"}
 		Assert-True {$capacityCreated.State -like "Succeeded"}
 
 		$asAzureProfile = Login-AzurePowerBIEmbeddedCapacityAccount -RolloutEnvironment $rolloutEnvironment
 		Assert-NotNull $asAzureProfile "Login-AzurePowerBIEmbeddedCapacityAccount $rolloutEnvironment must not return null"
 
-		$secpasswd = ConvertTo-SecureString $env:ASAZURE_TESTUSER_PWD -AsPlainText -Force
-		$admuser0 = $env:ASAZURE_TEST_ADMUSERS.Split(',')[0]
+		$secpasswd = ConvertTo-SecureString $env:PBIEMBEDDED_TESTUSER_PWD -AsPlainText -Force
+		$admuser0 = $env:PBIEMBEDDED_TEST_ADMUSERS.Split(',')[0]
 		$cred = New-Object System.Management.Automation.PSCredential ($admuser0, $secpasswd)
 
 		$asAzureProfile = Login-AzurePowerBIEmbeddedCapacityAccount -RolloutEnvironment $rolloutEnvironment -Credential $cred
@@ -340,16 +340,16 @@ function Test-PowerBIEmbeddedCapacityRestart
 .SYNOPSIS
 Tests PowerBI Embedded Capacity Login and synchronize single database.
 In order to run this test successfully, Following environment variables need to be set.
-ASAZURE_TEST_ROLLOUT e.x. value 'aspaaswestusloop1.pbidedicated-int.windows.net'
-ASAZURE_TESTUSER e.x. value 'aztest0@asazure.ccsctp.net'
-ASAZURE_TESTUSER_PWD e.x. value 'samplepwd'
-ASAZURE_TESTDATABASE e.x. value 'adventureworks'
+PBIEMBEDDED_TEST_ROLLOUT e.x. value 'aspaaswestusloop1.pbidedicated-int.windows.net'
+PBIEMBEDDED_TESTUSER e.x. value 'aztest0@asazure.ccsctp.net'
+PBIEMBEDDED_TESTUSER_PWD e.x. value 'samplepwd'
+PBIEMBEDDED_TESTDATABASE e.x. value 'adventureworks'
 #>
 function Test-PowerBIEmbeddedCapacitySynchronizeSingle
 {
     param
 	(
-		$rolloutEnvironment = $env.ASAZURE_TEST_ROLLOUT
+		$rolloutEnvironment = $env.PBIEMBEDDED_TEST_ROLLOUT
 	)
 	try
 	{
@@ -359,17 +359,17 @@ function Test-PowerBIEmbeddedCapacitySynchronizeSingle
         $capacityName = Get-PowerBIEmbeddedCapacityName
         New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
 
-        $capacityCreated = New-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -Location $location -Sku 'A1' -Administrators $env.ASAZURE_TESTUSER
+        $capacityCreated = New-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -Location $location -Sku 'A1' -Administrators $env.PBIEMBEDDED_TESTUSER
         Assert-True {$capacityCreated.ProvisioningState -like "Succeeded"}
         Assert-True {$capacityCreated.State -like "Succeeded"}
 
         $asAzureProfile = Login-AzurePowerBIEmbeddedCapacityAccount -RolloutEnvironment $rolloutEnvironment
         Assert-NotNull $asAzureProfile "Login-AzurePowerBIEmbeddedCapacityAccount $rolloutEnvironment must not return null"
 
-        $secpasswd = ConvertTo-SecureString $env.ASAZURE_TESTUSER_PWD -AsPlainText -Force
-        $cred = New-Object System.Management.Automation.PSCredential ($env.ASAZURE_TESTUSER, $secpasswd)
+        $secpasswd = ConvertTo-SecureString $env.PBIEMBEDDED_TESTUSER_PWD -AsPlainText -Force
+        $cred = New-Object System.Management.Automation.PSCredential ($env.PBIEMBEDDED_TESTUSER, $secpasswd)
 
-		Synchronize-AzureAsInstance -Instance $capacityName -Database $env.ASAZURE_TESTDATABASE -PassThru
+		Synchronize-AzureAsInstance -Instance $capacityName -Database $env.PBIEMBEDDED_TESTDATABASE -PassThru
 		
 		Assert-NotNull $asAzureProfile "Login-AzurePowerBIEmbeddedCapacityAccount $rolloutEnvironment must not return null"
 	}
@@ -386,30 +386,30 @@ function Test-PowerBIEmbeddedCapacitySynchronizeSingle
 Tests PowerBI Embedded Capacity Login with SPN. In order to run this test successfully:
 1. Create one application with password, and create another application with certificate authentication.
 2. Following environment variables need to be set.
-ASAZURE_TEST_ROLLOUT e.x. value 'aspaaswestusloop1.pbidedicated-int.windows.net'
-ASAZURE_TESTAPP1_ID e.x. value 'xxxx-xxxx-xxxx-xxxx' ( must be created before test with password )
-ASAZURE_TESTAPP1_PWD e.x. value 'yyyyyyyyyyyyyyyy' (password for application ASAZURE_TESTAPP_ID1)
-ASAZURE_TESTAPP2_ID e.x. value 'aaaa-aaaa-aaaa-aaaa' ( must be created before test with certificate to authenticate )
-ASAZURE_TESTAPP2_CERT_THUMBPRINT e.x. value 'bbbbbbbbbbbbbbbb' (certificate thumbprint for application ASAZURE_TESTAPP_ID2)
+PBIEMBEDDED_TEST_ROLLOUT e.x. value 'aspaaswestusloop1.pbidedicated-int.windows.net'
+PBIEMBEDDED_TESTAPP1_ID e.x. value 'xxxx-xxxx-xxxx-xxxx' ( must be created before test with password )
+PBIEMBEDDED_TESTAPP1_PWD e.x. value 'yyyyyyyyyyyyyyyy' (password for application PBIEMBEDDED_TESTAPP_ID1)
+PBIEMBEDDED_TESTAPP2_ID e.x. value 'aaaa-aaaa-aaaa-aaaa' ( must be created before test with certificate to authenticate )
+PBIEMBEDDED_TESTAPP2_CERT_THUMBPRINT e.x. value 'bbbbbbbbbbbbbbbb' (certificate thumbprint for application PBIEMBEDDED_TESTAPP_ID2)
 #>
 function Test-PowerBIEmbeddedCapacityLoginWithSPN
 {
     param
 	(
-		$rolloutEnvironment = $env.ASAZURE_TEST_ROLLOUT
+		$rolloutEnvironment = $env.PBIEMBEDDED_TEST_ROLLOUT
 	)
 	try
 	{
-		# login capacity with ASAZURE_TESTAPP1_ID and ASAZURE_TESTAPP1_PWD
-		$SecurePassword = ConvertTo-SecureString -String $env.ASAZURE_TESTAPP1_PWD -AsPlainText -Force
-		$Credential_SPN = New-Object -TypeName "System.Management.Automation.PSCredential" -ArgumentList $env.ASAZURE_TESTAPP1_ID, $SecurePassword
+		# login capacity with PBIEMBEDDED_TESTAPP1_ID and PBIEMBEDDED_TESTAPP1_PWD
+		$SecurePassword = ConvertTo-SecureString -String $env.PBIEMBEDDED_TESTAPP1_PWD -AsPlainText -Force
+		$Credential_SPN = New-Object -TypeName "System.Management.Automation.PSCredential" -ArgumentList $env.PBIEMBEDDED_TESTAPP1_ID, $SecurePassword
 		$asAzureProfile = Login-AzurePowerBIEmbeddedCapacityAccount -RolloutEnvironment $rolloutEnvironment -ServicePrincipal -Credential $Credential_SPN -TenantId "72f988bf-86f1-41af-91ab-2d7cd011db47"
 		Assert-NotNull $asAzureProfile "Login-AzurePowerBIEmbeddedCapacityAccount with Service Principal and password must not return null"
 		$token = [Microsoft.Azure.Commands.PowerBIEmbeddedCapacity.Dataplane.PBIClientSession]::TokenCache.ReadItems()[0]
 		Assert-NotNull $token "Login-AzurePowerBIEmbeddedCapacityAccount with Service Principal and password must not return null"
 
-		# login capacity with ASAZURE_TESTAPP2_ID and ASAZURE_TESTAPP2_CERT_THUMBPRINT
-		$asAzureProfile = Login-AzurePowerBIEmbeddedCapacityAccount -RolloutEnvironment $rolloutEnvironment -ServicePrincipal -ApplicationId $env.ASAZURE_TESTAPP1_ID -CertificateThumbprint $env.ASAZURE_TESTAPP2_CERT_THUMBPRINT -TenantId "72f988bf-86f1-41af-91ab-2d7cd011db47"
+		# login capacity with PBIEMBEDDED_TESTAPP2_ID and PBIEMBEDDED_TESTAPP2_CERT_THUMBPRINT
+		$asAzureProfile = Login-AzurePowerBIEmbeddedCapacityAccount -RolloutEnvironment $rolloutEnvironment -ServicePrincipal -ApplicationId $env.PBIEMBEDDED_TESTAPP1_ID -CertificateThumbprint $env.PBIEMBEDDED_TESTAPP2_CERT_THUMBPRINT -TenantId "72f988bf-86f1-41af-91ab-2d7cd011db47"
 		Assert-NotNull $asAzureProfile "Login-AzurePowerBIEmbeddedCapacityAccount with Service Principal and certificate thumbprint must not return null"
 		$token = [Microsoft.Azure.Commands.PowerBIEmbeddedCapacity.Dataplane.PBIClientSession]::TokenCache.ReadItems()[0]
 		Assert-NotNull $token "Login-AzurePowerBIEmbeddedCapacityAccount with Service Principal and certificate thumbprint must not return null"

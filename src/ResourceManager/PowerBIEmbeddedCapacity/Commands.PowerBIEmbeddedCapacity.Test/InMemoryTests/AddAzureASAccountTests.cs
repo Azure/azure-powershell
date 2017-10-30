@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.PowerBIEmbeddedCapacity.Test.InMemoryTests
         public void CreatesNewPSResourceGroup()
         {
             Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
-            AddAzureASAccountCommand cmdlet = new AddAzureASAccountCommand()
+            AddAzurePowerBIEmbeddedCapacityAccountCommand cmdlet = new AddAzurePowerBIEmbeddedCapacityAccountCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object
             };
