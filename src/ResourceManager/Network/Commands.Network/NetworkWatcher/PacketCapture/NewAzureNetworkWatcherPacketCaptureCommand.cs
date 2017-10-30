@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Commands.Network
                 packetCaptureProperties.Filters = new List<MNM.PacketCaptureFilter>();
                 foreach (PSPacketCaptureFilter filter in this.Filter)
                 {
-                    MNM.PacketCaptureFilter filterMNM = Mapper.Map<MNM.PacketCaptureFilter>(filter);
+                    MNM.PacketCaptureFilter filterMNM = NetworkResourceManagerProfile.Mapper.Map<MNM.PacketCaptureFilter>(filter);
                     packetCaptureProperties.Filters.Add(filterMNM);
                 }
             }
