@@ -3437,7 +3437,7 @@
           <maml:para>Description</maml:para>
           <maml:para>-----------</maml:para>
           <maml:para>
-            Simply execute Get-AzsSubscription after logging in with Add-AzureRmAccount
+            Simply execute Get-AzsSubscription after logging in with Connect-AzureRmAccount
           </maml:para>
           <maml:para></maml:para>
           <maml:para></maml:para>
