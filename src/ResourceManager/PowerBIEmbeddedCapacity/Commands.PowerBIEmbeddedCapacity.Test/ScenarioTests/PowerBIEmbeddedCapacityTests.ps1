@@ -13,7 +13,7 @@ function Test-PowerBIEmbeddedCapacity
 
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
 
-		$capacityCreated = New-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -Location $location -Sku 'S1' -Administrator 'aztest0@stabletest.ccsctp.net,aztest1@stabletest.ccsctp.net'
+		$capacityCreated = New-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -Location $location -Sku 'A1' -Administrator 'aztest0@stabletest.ccsctp.net,aztest1@stabletest.ccsctp.net'
     
 		Assert-AreEqual $capacityName $capacityCreated.Name
 		Assert-AreEqual $location $capacityCreated.Location
@@ -161,9 +161,9 @@ function Test-PowerBIEmbeddedCapacityScaleUpDown
 		$capacityUpdated = Set-AzureRmPowerBIEmbeddedCapacity -Name $capacityName -Sku S2 -PassThru
 		Assert-AreEqual S2 $capacityUpdated.Sku.Name
 
-		# Scale down S2 -> S1
-		$capacityUpdated = Set-AzureRmPowerBIEmbeddedCapacity -Name $capacityName -Sku S1 -PassThru
-		Assert-AreEqual S1 $capacityUpdated.Sku.Name
+		# Scale down S2 -> A1
+		$capacityUpdated = Set-AzureRmPowerBIEmbeddedCapacity -Name $capacityName -Sku A1 -PassThru
+		Assert-AreEqual A1 $capacityUpdated.Sku.Name
 		
 		# Delete PowerBI Embedded capacity
 		Remove-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -PassThru
@@ -195,7 +195,7 @@ function Test-NegativePowerBIEmbeddedCapacity
 		$resourceGroupName = Get-ResourceGroupName
 		$capacityName = Get-PowerBIEmbeddedCapacityName
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
-		$capacityCreated = New-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -Location $location -Sku 'S1' -Administrator 'aztest0@stabletest.ccsctp.net,aztest1@stabletest.ccsctp.net'
+		$capacityCreated = New-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -Location $location -Sku 'A1' -Administrator 'aztest0@stabletest.ccsctp.net,aztest1@stabletest.ccsctp.net'
 
 		Assert-AreEqual $capacityName $capacityCreated.Name
 		Assert-AreEqual $location $capacityCreated.Location
@@ -255,7 +255,7 @@ function Test-PowerBIEmbeddedCapacityLogExport
 		$capacityName = Get-PowerBIEmbeddedCapacityName
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
 
-		$capacityCreated = New-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -Location $location -Sku 'S1' -Administrators $env:ASAZURE_TEST_ADMUSERS
+		$capacityCreated = New-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -Location $location -Sku 'A1' -Administrators $env:ASAZURE_TEST_ADMUSERS
 		Assert-True {$capacityCreated.ProvisioningState -like "Succeeded"}
 		Assert-True {$capacityCreated.State -like "Succeeded"}
 
@@ -303,7 +303,7 @@ function Test-PowerBIEmbeddedCapacityRestart
 		$capacityName = Get-PowerBIEmbeddedCapacityName
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
 
-		$capacityCreated = New-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -Location $location -Sku 'S1' -Administrator $env:ASAZURE_TEST_ADMUSERS
+		$capacityCreated = New-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -Location $location -Sku 'A1' -Administrator $env:ASAZURE_TEST_ADMUSERS
 		Assert-True {$capacityCreated.ProvisioningState -like "Succeeded"}
 		Assert-True {$capacityCreated.State -like "Succeeded"}
 
@@ -359,7 +359,7 @@ function Test-PowerBIEmbeddedCapacitySynchronizeSingle
         $capacityName = Get-PowerBIEmbeddedCapacityName
         New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
 
-        $capacityCreated = New-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -Location $location -Sku 'S1' -Administrators $env.ASAZURE_TESTUSER
+        $capacityCreated = New-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -Location $location -Sku 'A1' -Administrators $env.ASAZURE_TESTUSER
         Assert-True {$capacityCreated.ProvisioningState -like "Succeeded"}
         Assert-True {$capacityCreated.State -like "Succeeded"}
 
