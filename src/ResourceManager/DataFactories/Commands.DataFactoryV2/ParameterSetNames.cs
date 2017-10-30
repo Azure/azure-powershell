@@ -20,6 +20,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         internal const string ByInputObject = "ByInputObject";
         internal const string ByResourceId = "ByResourceId";
         internal const string ByFactoryName = "ByFactoryName";
+        internal const string BySubscriptionId = "BySubscriptionId";
         internal const string ByFactoryObjectByRunId = "ByFactoryObjectByRunId";
         internal const string ByFactoryNameByRunId = "ByFactoryNameByRunId";
         internal const string ByFactoryObjectByPipeline = "ByFactoryObjectByPipeline";

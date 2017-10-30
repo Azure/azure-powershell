@@ -16,8 +16,7 @@
 
 <#
 .SYNOPSIS
-Create a sample pipeline with all of its dependencies. Then test overwrite the pipeline and then
-delete the pipeline with piping.
+Creates a sample pipeline with all of its dependencies. Then deletes the pipeline with piping.
 #>
 function Test-Pipeline
 {
@@ -43,13 +42,10 @@ function Test-Pipeline
         Set-AzureRmDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name "ds1_0" -File .\Resources\dataset-ds1_0.json -Force
 
         $pipelineName = "samplePipeline"   
+        $expected = Set-AzureRmDataFactoryV2Pipeline -ResourceGroupName $rgname -Name $pipelineName -DataFactoryName $dfname -File ".\Resources\pipeline.json" -Force
+        $actual = Get-AzureRmDataFactoryV2Pipeline -ResourceGroupName $rgname -Name $pipelineName -DataFactoryName $dfname
 
-        Set-AzureRmDataFactoryV2Pipeline -ResourceGroupName $rgname -Name $pipelineName -DataFactoryName $dfname -File ".\Resources\pipeline.json" -Force
-        $expectedPipeline = Get-AzureRmDataFactoryV2Pipeline -ResourceGroupName $rgname -Name $pipelineName -DataFactoryName $dfname
-
-        Assert-AreEqual $rgname $expectedPipeline.ResourceGroupName
-        Assert-AreEqual $dfname $expectedPipeline.DataFactoryName
-        Assert-AreEqual $pipelineName $expectedPipeline.Name
+        Verify-AdfSubResource $expected $actual $rgname $dfname $pipelineName
                 
         #remove the pipeline through piping
         Get-AzureRmDataFactoryV2Pipeline -DataFactory $df -Name $pipelineName | Remove-AzureRmDataFactoryV2Pipeline -Force
@@ -62,6 +58,51 @@ function Test-Pipeline
     }
     finally
     {
-        Clean-DataFactory $rgname $dfname
+        CleanUp $rgname $dfname
+    }
+}
+
+<#
+.SYNOPSIS
+Creates a sample pipeline with all of its dependencies. Then does a Get to compare the results.
+Delete sthe created pipeline with resource id at the end.
+#>
+function Test-PipelineWithResourceId
+{
+    $dfname = Get-DataFactoryName
+    $rgname = Get-ResourceGroupName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $dflocation = Get-ProviderLocation DataFactoryManagement
+
+    $endDate = [DateTime]::Parse("9/8/2014")
+    $startDate = $endDate.AddHours(-1)
+        
+    New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Force
+
+    try
+    {
+        $df = Set-AzureRmDataFactoryV2 -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
+
+        $lsName = "foo1"
+        Set-AzureRmDataFactoryV2LinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -File .\Resources\linkedService.json -Name $lsName -Force
+
+        Set-AzureRmDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name "dsIn" -File .\Resources\dataset-dsIn.json -Force
+        Set-AzureRmDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name "ds0_0" -File .\Resources\dataset-ds0_0.json -Force
+        Set-AzureRmDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name "ds1_0" -File .\Resources\dataset-ds1_0.json -Force
+
+        $pipelineName = "samplePipeline"   
+        $actual = Set-AzureRmDataFactoryV2Pipeline -ResourceGroupName $rgname -Name $pipelineName -DataFactoryName $dfname -File ".\Resources\pipeline.json" -Force
+        
+        $expected = Get-AzureRmDataFactoryV2Pipeline -ResourceId $actual.Id
+
+        Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
+        Assert-AreEqual $expected.DataFactoryName $actual.DataFactoryName
+        Assert-AreEqual $expected.Name $actual.Name
+
+        Remove-AzureRmDataFactoryV2Pipeline -ResourceId $actual.Id -Force
+    }
+    finally
+    {
+        CleanUp $rgname $dfname
     }
 }
