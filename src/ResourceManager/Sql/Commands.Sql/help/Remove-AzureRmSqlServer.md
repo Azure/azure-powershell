@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
+Module Name: AzureRM.Sql
 ms.assetid: 068D70EF-39D1-4199-BD74-0EC266DF7072
 online version: 
 schema: 2.0.0
@@ -13,8 +14,8 @@ Removes an Azure SQL Database server.
 ## SYNTAX
 
 ```
-Remove-AzureRmSqlServer [-ServerName] <String> [-Force] [-ResourceGroupName] <String> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzureRmSqlServer [-ServerName] <String> [-Force] [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,6 +34,21 @@ PS C:\>Remove-AzureRmSqlServer -ResourceGroupName "ResourceGroup01" -ServerName 
 This command removes the Azure SQL Database server named Server01.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Force
 Forces the command to run without asking for user confirmation.
