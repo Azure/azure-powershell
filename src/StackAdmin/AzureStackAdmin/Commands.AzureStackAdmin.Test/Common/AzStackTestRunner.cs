@@ -12,6 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.Resources;
+using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+
 namespace Microsoft.AzureStack.Commands.Admin.Test.Common
 {
     using System;
@@ -23,7 +27,6 @@ namespace Microsoft.AzureStack.Commands.Admin.Test.Common
     using Microsoft.Azure.Commands.Common.Authentication;
     using Microsoft.Azure.Gallery;
     using Microsoft.Azure.Management.Authorization;
-    using Microsoft.Azure.Management.Resources;
     using Microsoft.Azure.Subscriptions;
     using Microsoft.Azure.Test;
     using Microsoft.AzureStack.Management;
@@ -38,15 +41,20 @@ namespace Microsoft.AzureStack.Commands.Admin.Test.Common
 
         public AzureStackClient azureStackClient;
 
-        public ResourceManagementClient ResourceManagementClient { get; private set; }
+        public Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient InternalResourceManagementClient { get; private set; }
+        public Microsoft.Azure.Management.ResourceManager.ResourceManagementClient LegacyResourceManagementClient { get; private set; }
 
         public SubscriptionClient SubscriptionClient { get; private set; }
+
+        public SubscriptionClient InternalSubscriptionClient { get; private set; }
 
         public GalleryClient GalleryClient { get; private set; }
 
         public string ApiVersion { get; set; }
 
         public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
+
+        public string StackDirectory = @"..\..\..\..\..\Stack\Debug";
 
         public static AzStackTestRunner NewInstance
         {
@@ -102,11 +110,11 @@ namespace Microsoft.AzureStack.Commands.Admin.Test.Common
             string galleryEndpoint = ReadAppSettings("GalleryEndpoint", mandatory: false);
             string aadGraphUri = ReadAppSettings("AadGraphUri", mandatory: false);
             string aadLoginuri = ReadAppSettings("AadLoginUri", mandatory: false);
-            
+
             string setupAzureStackEnvironmentPs;
 
             if (aadEnvironment)
-            { 
+            {
                 setupAzureStackEnvironmentPs = string.Format(
                     CultureInfo.InvariantCulture,
                     "Set-AzureStackEnvironment -AzureStackMachineName {0} -AadTenantId {1} -AadApplicationId {2} -ArmEndpoint {3} -GalleryEndpoint {4} -AadGraphUri {5} -AadLoginUri {6}",
@@ -124,10 +132,10 @@ namespace Microsoft.AzureStack.Commands.Admin.Test.Common
                 setupAzureStackEnvironmentPs = "Set-AzureStackEnvironment -AzureStackMachineName " + azureStackMachine;
             }
 
-            //string selfSignedCertPs = "Ignore-SelfSignedCert";
-            //scripts.Add(selfSignedCertPs);
+            string selfSignedCertPs = "Ignore-SelfSignedCert";
+            scripts.Add(selfSignedCertPs);
             scripts.Add(setupAzureStackEnvironmentPs);
-            
+
             scripts.Add(testScript);
             return scripts.ToArray();
         }
@@ -147,6 +155,12 @@ namespace Microsoft.AzureStack.Commands.Admin.Test.Common
             return null;
         }
 
+        private string GetRMModulePath(string psd1FileName)
+        {
+            string basename = Path.GetFileNameWithoutExtension(psd1FileName);
+            return Path.Combine(this.StackDirectory,
+                                 @"ResourceManager\AzureResourceManager\" + basename + @"\" + psd1FileName);
+        }
 
         private void RunPsTestWorkflow(
            Func<string[]> scriptBuilder,
@@ -155,9 +169,18 @@ namespace Microsoft.AzureStack.Commands.Admin.Test.Common
            string callingClassType,
            string mockName)
         {
-            using (UndoContext context = UndoContext.Current)
+            Dictionary<string, string> d = new Dictionary<string, string>();
+            d.Add("Microsoft.Resources", null);
+            d.Add("Microsoft.Features", null);
+            d.Add("Microsoft.Authorization", null);
+            d.Add("Microsoft.Storage", null);
+            var providersToIgnore = new Dictionary<string, string>();
+            providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
+            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
+            HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
+
+            using (MockContext context = MockContext.Start(callingClassType, mockName))
             {
-                context.Start(callingClassType, mockName);
 
                 this.armTestEnvironmentFactory = new CSMTestEnvironmentFactory();
 
@@ -168,7 +191,7 @@ namespace Microsoft.AzureStack.Commands.Admin.Test.Common
 
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
 
-                SetupManagementClients();
+                SetupManagementClients(context);
 
                 var callingClassName = callingClassType
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
@@ -178,7 +201,7 @@ namespace Microsoft.AzureStack.Commands.Admin.Test.Common
                 modules.Add(callingClassName + ".ps1");
                 modules.Add(helper.RMProfileModule);
                 modules.Add(helper.RMResourceModule);
-                modules.Add(helper.GetRMModulePath("AzureRM.AzurestackAdmin.psd1"));
+                modules.Add(this.GetRMModulePath("AzureRM.AzurestackAdmin.psd1"));
                 helper.SetupModules(AzureModule.AzureResourceManager, modules.ToArray());
 
                 try
@@ -203,26 +226,32 @@ namespace Microsoft.AzureStack.Commands.Admin.Test.Common
             }
         }
 
-        private void SetupManagementClients()
+        private void SetupManagementClients(MockContext context)
         {
-            ResourceManagementClient = GetResourceManagementClient();
-            SubscriptionClient = GetSubscriptionClient();
+            InternalResourceManagementClient = GetInternalResourceManagementClient(context);
+            SubscriptionClient = GetSubscriptionClient(context);
+            LegacyResourceManagementClient = GetLegacyResourceManagementClient(context);
             GalleryClient = GetGalleryClient();
             AuthorizationManagementClient = this.GetAuthorizationManagementClient();
 
             azureStackClient = TestBase.GetServiceClient<AzureStackClient>(this.armTestEnvironmentFactory, this.ApiVersion);
 
-            this.SetupManagementClients(ResourceManagementClient, SubscriptionClient, GalleryClient, AuthorizationManagementClient, azureStackClient);
+            this.SetupManagementClients(InternalResourceManagementClient, LegacyResourceManagementClient, SubscriptionClient, InternalSubscriptionClient, GalleryClient, AuthorizationManagementClient, azureStackClient);
         }
 
         private void SetupManagementClients(params object[] initializedManagementClients)
         {
-            AzureSession.ClientFactory = new MockClientFactory(initializedManagementClients);
+            AzureSession.Instance.ClientFactory = new MockClientFactory(initializedManagementClients);
         }
 
-        private ResourceManagementClient GetResourceManagementClient()
+        private Microsoft.Azure.Management.ResourceManager.ResourceManagementClient GetLegacyResourceManagementClient(MockContext context)
         {
-            return TestBase.GetServiceClient<ResourceManagementClient>(this.armTestEnvironmentFactory);
+            return context.GetServiceClient<Microsoft.Azure.Management.ResourceManager.ResourceManagementClient>(Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient GetInternalResourceManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient>(Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private GalleryClient GetGalleryClient()
@@ -230,9 +259,14 @@ namespace Microsoft.AzureStack.Commands.Admin.Test.Common
             return TestBase.GetServiceClient<GalleryClient>(this.armTestEnvironmentFactory);
         }
 
-        private SubscriptionClient GetSubscriptionClient()
+        private SubscriptionClient GetSubscriptionClient(MockContext context)
         {
             return TestBase.GetServiceClient<SubscriptionClient>(this.armTestEnvironmentFactory);
+        }
+
+        private SubscriptionClient GetInternalSubscriptionClient()
+        {
+            return TestBase.GetServiceClient<SubscriptionClient> (this.armTestEnvironmentFactory);
         }
 
         private AuthorizationManagementClient GetAuthorizationManagementClient()
