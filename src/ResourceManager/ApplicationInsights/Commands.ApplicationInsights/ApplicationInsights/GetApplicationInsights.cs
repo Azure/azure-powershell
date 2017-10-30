@@ -55,11 +55,11 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
         [Parameter(
             Mandatory = false,
             ParameterSetName = ComponentNameParameterSet,
-            HelpMessage = "If specified, it will get back pricing plan of the application insights component.")]
+            HelpMessage = "If specified, it will get back pricing plan/daily cap and status of the application insights component.")]
         [Parameter(
             Mandatory = false,
             ParameterSetName = ResourceIdParameterSet,
-            HelpMessage = "If specified, it will get back pricing plan of the application insights component.")]
+            HelpMessage = "If specified, it will get back pricing plan/daily cap and status of the application insights component.")]
         [Alias("IncludeDailyCap", "IncludeDailyCapStatus", "IncludePricingPlan")]
         public SwitchParameter Full { get; set; }
 

@@ -112,7 +112,7 @@ Accept wildcard characters: False
 ```
 
 ### -Full
-If specified, it will get back pricing plan of the application insights component.
+If specified, it will get back pricing plan/daily cap and status of the application insights component.
 
 ```yaml
 Type: SwitchParameter
