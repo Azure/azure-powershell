@@ -28,7 +28,7 @@ Set-AzureRmApplicationInsightsDailyCap [-ApplicationInsightsComponent] <PSApplic
 
 ### ResourceIdParameterSet
 ```
-Set-AzureRmApplicationInsightsDailyCap [-ResourceId] <ResourceIdentifier> [-DailyCapGB <Double>]
+Set-AzureRmApplicationInsightsDailyCap [-ResourceId] <String> [-DailyCapGB <Double>]
  [-DisableNotificationWhenHitCap] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -161,7 +161,7 @@ Accept wildcard characters: False
 Application Insights Component Resource Id.
 
 ```yaml
-Type: ResourceIdentifier
+Type: String
 Parameter Sets: ResourceIdParameterSet
 Aliases: 
 

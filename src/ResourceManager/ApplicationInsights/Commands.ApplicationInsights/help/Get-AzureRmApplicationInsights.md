@@ -26,8 +26,8 @@ Get-AzureRmApplicationInsights [-ResourceGroupName] <String> [-Name] <String> [-
 
 ### ResourceIdParameterSet
 ```
-Get-AzureRmApplicationInsights [-ResourceId] <ResourceIdentifier> [-Full]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmApplicationInsights [-ResourceId] <String> [-Full] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -172,7 +172,7 @@ Accept wildcard characters: False
 Application Insights Component Resource Id.
 
 ```yaml
-Type: ResourceIdentifier
+Type: String
 Parameter Sets: ResourceIdParameterSet
 Aliases: 
 

@@ -27,7 +27,7 @@ Remove-AzureRmApplicationInsightsApiKey [-ApplicationInsightsComponent] <PSAppli
 
 ### ResourceIdParameterSet
 ```
-Remove-AzureRmApplicationInsightsApiKey [-ResourceId] <ResourceIdentifier> [-ApiKeyId] <String> [-PassThru]
+Remove-AzureRmApplicationInsightsApiKey [-ResourceId] <String> [-ApiKeyId] <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -157,7 +157,7 @@ Accept wildcard characters: False
 Application Insights Component Resource Id.
 
 ```yaml
-Type: ResourceIdentifier
+Type: String
 Parameter Sets: ResourceIdParameterSet
 Aliases: 
 
