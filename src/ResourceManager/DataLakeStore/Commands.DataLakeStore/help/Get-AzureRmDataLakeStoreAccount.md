@@ -111,7 +111,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### PSDataLakeStoreAccount
 The specific Data Lake Store account asked for.
 
-### List<PSDataLakeStoreAccount>
+### List<PSDataLakeStoreAccountBasic>
 A list of Data Lake Store accounts in the resource group or subscription specified.
 
 ## NOTES

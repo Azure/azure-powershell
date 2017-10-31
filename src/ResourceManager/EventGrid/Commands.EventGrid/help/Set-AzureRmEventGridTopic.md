@@ -14,20 +14,20 @@ Set the properties of an Event Grid topic.
 
 ### TopicNameParameterSet (Default)
 ```
-Set-AzureRmEventGridTopic [-ResourceGroupName] <String> [-Name] <String> [-Tag] <Hashtable> [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Set-AzureRmEventGridTopic [-ResourceGroupName] <String> [-Name] <String> [-Tag] <Hashtable>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdEventSubscriptionParameterSet
 ```
-Set-AzureRmEventGridTopic [-ResourceId] <String> [-Tag] <Hashtable> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Set-AzureRmEventGridTopic [-ResourceId] <String> [-Tag] <Hashtable> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### TopicInputObjectParameterSet
 ```
-Set-AzureRmEventGridTopic [-InputObject] <PSTopic> [-Tag] <Hashtable> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Set-AzureRmEventGridTopic [-InputObject] <PSTopic> [-Tag] <Hashtable>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,6 +43,21 @@ PS C:\> Set-AzureRmEventGridTopic -ResourceGroup MyResourceGroupName -Name Topic
 Sets the properties of the Event Grid topic \`Topic1\` in resource group \`MyResourceGroupName\` to replace the tags with the specified tags "Department" and "Environment".
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -InputObject
 EventGrid Topic object.
