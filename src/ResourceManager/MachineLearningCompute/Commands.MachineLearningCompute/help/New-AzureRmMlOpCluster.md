@@ -15,17 +15,18 @@ Creates a new operationalization cluster.
 ### Create a new operationalization cluster from an OperationalizationCluster instance definition.
 ```
 New-AzureRmMlOpCluster -ResourceGroupName <String> -Name <String> -InputObject <PSOperationalizationCluster>
- [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Create a new operationalization cluster from cmdlet input parameters.
 ```
 New-AzureRmMlOpCluster -ResourceGroupName <String> -Name <String> -Location <String> -ClusterType <String>
- [-OrchestratorType <String>] [-ServicePrincipalName <String>] [-ServicePrincipalSecret <String>]
- [-Description <String>] [-MasterCount <Int32>] [-AgentCount <Int32>] [-AgentVmSize <String>]
+ [-OrchestratorType <String>] [-ClientId <String>] [-Secret <String>] [-Description <String>]
+ [-MasterCount <Int32>] [-AgentCount <Int32>] [-AgentVmSize <String>]
  [-GlobalServiceConfigurationETag <String>] [-SslStatus <String>] [-SslCertificate <String>] [-SslKey <String>]
  [-SslCName <String>] [-StorageAccount <String>] [-AzureContainerRegistry <String>]
- [-GlobalServiceConfigurationAdditionalProperties <Hashtable>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-GlobalServiceConfigurationAdditionalProperties <Hashtable>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -94,15 +95,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-The operationalization cluster properties.
+### -ClientId
+The ACS cluster's orchestrator service principal id.
 
 ```yaml
-Type: PSOperationalizationCluster
-Parameter Sets: Create a new operationalization cluster from an OperationalizationCluster instance definition.
-Aliases: Cluster
+Type: String
+Parameter Sets: Create a new operationalization cluster from cmdlet input parameters.
+Aliases: 
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -124,13 +125,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: SwitchParameter
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: cf
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -178,6 +179,21 @@ Parameter Sets: Create a new operationalization cluster from cmdlet input parame
 Aliases: 
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+The operationalization cluster properties.
+
+```yaml
+Type: PSOperationalizationCluster
+Parameter Sets: Create a new operationalization cluster from an OperationalizationCluster instance definition.
+Aliases: Cluster
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -259,21 +275,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ClientId
-The ACS cluster's orchestrator service principal id.
-
-```yaml
-Type: String
-Parameter Sets: Create a new operationalization cluster from cmdlet input parameters.
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Secret
 The ACS cluster's orchestrator service principal secret.
 
@@ -289,8 +290,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SslCName
-The CName for the SSL certificate.
+### -SslCertificate
+The SSL certificate data in PEM format encoded as base64 string.
 
 ```yaml
 Type: String
@@ -304,8 +305,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SslCertificate
-The SSL certificate data in PEM format encoded as base64 string.
+### -SslCName
+The CName for the SSL certificate.
 
 ```yaml
 Type: String
@@ -365,6 +366,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
@@ -381,15 +397,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### None
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster
-
 
 ## NOTES
 
