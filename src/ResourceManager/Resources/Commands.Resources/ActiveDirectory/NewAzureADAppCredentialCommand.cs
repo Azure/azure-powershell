@@ -12,12 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Resources;
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
+using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.Management.Automation;
-using System.Runtime.InteropServices;
 using System.Security;
 
 namespace Microsoft.Azure.Commands.ActiveDirectory
@@ -74,10 +73,8 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                     ObjectId = ActiveDirectoryClient.GetObjectIdFromApplicationId(ApplicationId);
                 }
 
-                string decodedPassword = Utilities.SecureStringToString(Password);
-#pragma warning disable 0618
+                string decodedPassword = SecureStringExtensions.ConvertToString(Password);
                 if (!string.IsNullOrEmpty(decodedPassword))
-#pragma warning restore 0618
                 {
                     // Create object for password credential
                     var passwordCredential = new PasswordCredential()
@@ -85,9 +82,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                         EndDate = EndDate,
                         StartDate = StartDate,
                         KeyId = Guid.NewGuid().ToString(),
-#pragma warning disable 0618
                         Value = decodedPassword
-#pragma warning restore 0618
                     };
                     if (ShouldProcess(target: ObjectId, action: string.Format("Adding a new password to application with objectId {0}", ObjectId)))
                     {

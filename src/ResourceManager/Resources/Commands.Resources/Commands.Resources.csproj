@@ -135,7 +135,6 @@
     <Compile Include="Models.ResourceGroups\ResourceClient.ResourceManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models.ResourceGroups\ResourceClient.cs" />
-    <Compile Include="Utilities\Utility.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">

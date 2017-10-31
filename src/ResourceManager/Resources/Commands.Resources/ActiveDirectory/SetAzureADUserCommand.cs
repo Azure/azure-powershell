@@ -12,10 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Resources;
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
-using System;
+using Microsoft.WindowsAzure.Commands.Common;
 using System.Management.Automation;
 using System.Security;
 
@@ -49,16 +48,12 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         public override void ExecuteCmdlet()
         {
             PasswordProfile profile = null;
-            string decodedPassword = Utilities.SecureStringToString(Password);
-#pragma warning disable 0618
+            string decodedPassword = SecureStringExtensions.ConvertToString(Password);
             if (!string.IsNullOrEmpty(decodedPassword))
-#pragma warning restore 0618
             {
                 profile = new PasswordProfile
                 {
-#pragma warning disable 0618
                     Password = decodedPassword,
-#pragma warning restore 0618
                     ForceChangePasswordNextLogin = ForceChangePasswordNextLogin.IsPresent ? true : false
                 };
             }
