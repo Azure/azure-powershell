@@ -12,13 +12,13 @@ Deletes a commitment plan.
 
 ## SYNTAX
 
-### Remove an Azure ML commitment plan specified by name and resource group.
+### RemoveByNameAndResourceGroup
 ```
 Remove-AzureRmMlCommitmentPlan -ResourceGroupName <String> -Name <String> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Remove an Azure ML commitment plan specified as an object.
+### RemoveByObject
 ```
 Remove-AzureRmMlCommitmentPlan -MlCommitmentPlan <CommitmentPlan> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -75,7 +75,7 @@ The machine learning web service object.
 
 ```yaml
 Type: CommitmentPlan
-Parameter Sets: Remove an Azure ML commitment plan specified as an object.
+Parameter Sets: RemoveByObject
 Aliases: 
 
 Required: True
@@ -90,7 +90,7 @@ The name of the Azure ML commitment plan.
 
 ```yaml
 Type: String
-Parameter Sets: Remove an Azure ML commitment plan specified by name and resource group.
+Parameter Sets: RemoveByNameAndResourceGroup
 Aliases: 
 
 Required: True
@@ -105,7 +105,7 @@ The name of the resource group for the Azure ML commitment plan.
 
 ```yaml
 Type: String
-Parameter Sets: Remove an Azure ML commitment plan specified by name and resource group.
+Parameter Sets: RemoveByNameAndResourceGroup
 Aliases: 
 
 Required: True
