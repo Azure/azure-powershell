@@ -64,7 +64,6 @@
     $credentials.Environment = $TargetEnvironment
 
     if ([string]::IsNullOrEmpty($NewServicePrincipalDisplayName) -eq $false) {
-        Login-AzureRmAccount
         $Scope = "/subscriptions/" + $SubscriptionId
         $NewServicePrincipal = New-AzureRMADServicePrincipal -DisplayName $NewServicePrincipalDisplayName -Password $NewServicePrincipalPassword
         Write-Host "New ServicePrincipal created: " + $NewServicePrincipal
