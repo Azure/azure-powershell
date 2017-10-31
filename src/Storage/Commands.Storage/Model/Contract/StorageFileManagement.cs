@@ -59,9 +59,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
             }
         }
 
-        public CloudFileShare GetShareReference(string shareName)
+        public CloudFileShare GetShareReference(string shareName, DateTimeOffset? snapshotTime = null)
         {
-            return this.Client.GetShareReference(shareName);
+            return this.Client.GetShareReference(shareName, snapshotTime);
         }
 
         public void FetchShareAttributes(CloudFileShare share, AccessCondition accessCondition, FileRequestOptions options, OperationContext operationContext)
@@ -136,9 +136,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
             return directory.DeleteAsync(accessCondition, options, operationContext, cancellationToken);
         }
 
-        public Task DeleteShareAsync(CloudFileShare share, AccessCondition accessCondition, FileRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken)
+        public Task DeleteShareAsync(CloudFileShare share, DeleteShareSnapshotsOption deleteShareSnapshotsOption, AccessCondition accessCondition, FileRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken)
         {
-            return share.DeleteAsync(accessCondition, options, operationContext, cancellationToken);
+            return share.DeleteAsync(deleteShareSnapshotsOption, accessCondition, options, operationContext, cancellationToken);
         }
 
         public Task DeleteFileAsync(CloudFile file, AccessCondition accessCondition, FileRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken)

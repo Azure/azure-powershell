@@ -72,5 +72,12 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             RunPowerShellTest("Test-RemoveDatabase");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDatabaseCancelOperation()
+        {
+            RunPowerShellTest("Test-CancelDatabaseOperation");
+        }
     }
 }

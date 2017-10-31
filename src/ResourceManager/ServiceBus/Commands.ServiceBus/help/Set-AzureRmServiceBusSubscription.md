@@ -147,17 +147,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.Commands.ServiceBus.Models.SubscriptionAttributes
 Name                                      : SB-TopicSubscription-Example1
-Location                                  : West US
 AccessedAt                                : 1/1/0001 12:00:00 AM
 AutoDeleteOnIdle                          : 10675199.02:48:05.4775807
 CountDetails                              : 
 CreatedAt                                 : 1/20/2017 9:59:15 PM
 DefaultMessageTimeToLive                  : 10675199.02:48:05.4775807
-DeadLetteringOnFilterEvaluationExceptions : True
 DeadLetteringOnMessageExpiration          : True
 EnableBatchedOperations                   : True
-EntityAvailabilityStatus                  : Available
-IsReadOnly                                : 
 LockDuration                              : 00:01:00
 MaxDeliveryCount                          : 9
 MessageCount                              : 0
