@@ -13,13 +13,13 @@ Removes a resource group deployment and any associated operations.
 
 ## SYNTAX
 
-### The deployment name parameter set. (Default)
+### RemoveByResourceGroupName (Default)
 ```
 Remove-AzureRmResourceGroupDeployment -ResourceGroupName <String> -Name <String> [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### The deployment Id parameter set.
+### RemoveByResourceGroupDeploymentId
 ```
 Remove-AzureRmResourceGroupDeployment -Id <String> [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -73,7 +73,7 @@ Specifies the ID of the resource group deployment to remove.
 
 ```yaml
 Type: String
-Parameter Sets: The deployment Id parameter set.
+Parameter Sets: RemoveByResourceGroupDeploymentId
 Aliases: DeploymentId, ResourceId
 
 Required: True
@@ -88,7 +88,7 @@ Specifies the name of the resource group deployment to remove.
 
 ```yaml
 Type: String
-Parameter Sets: The deployment name parameter set.
+Parameter Sets: RemoveByResourceGroupName
 Aliases: DeploymentName
 
 Required: True
@@ -118,7 +118,7 @@ Specifies the name of the resource group to remove.
 
 ```yaml
 Type: String
-Parameter Sets: The deployment name parameter set.
+Parameter Sets: RemoveByResourceGroupName
 Aliases: 
 
 Required: True

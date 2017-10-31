@@ -12,13 +12,13 @@ Removes a managed application
 
 ## SYNTAX
 
-### The managed application name parameter set. (Default)
+### RemoveByNameAndResourceGroup (Default)
 ```
 Remove-AzureRmManagedApplication -Name <String> -ResourceGroupName <String> [-Force] [-ApiVersion <String>]
  [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### The managed application Id parameter set.
+### RemoveById
 ```
 Remove-AzureRmManagedApplication -Id <String> [-Force] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -95,7 +95,7 @@ e.g.
 
 ```yaml
 Type: String
-Parameter Sets: The managed application Id parameter set.
+Parameter Sets: RemoveById
 Aliases: ResourceId
 
 Required: True
@@ -110,7 +110,7 @@ The managed application name.
 
 ```yaml
 Type: String
-Parameter Sets: The managed application name parameter set.
+Parameter Sets: RemoveByNameAndResourceGroup
 Aliases: 
 
 Required: True
@@ -140,7 +140,7 @@ The resource group name.
 
 ```yaml
 Type: String
-Parameter Sets: The managed application name parameter set.
+Parameter Sets: RemoveByNameAndResourceGroup
 Aliases: 
 
 Required: True
