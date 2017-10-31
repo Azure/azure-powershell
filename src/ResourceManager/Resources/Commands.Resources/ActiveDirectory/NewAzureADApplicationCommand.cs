@@ -12,11 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Resources;
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
+using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.Management.Automation;
-using System.Runtime.InteropServices;
 using System.Security;
 
 namespace Microsoft.Azure.Commands.ActiveDirectory
@@ -139,7 +138,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 AvailableToOtherTenants = AvailableToOtherTenants
             };
             
-            string decodedPassword = Utilities.SecureStringToString(Password);
+            string decodedPassword = SecureStringExtensions.ConvertToString(Password);
             switch (ParameterSetName)
             {
                 case ParameterSet.ApplicationWithPasswordPlain:
@@ -150,9 +149,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                             StartDate = StartDate,
                             EndDate = EndDate,
                             KeyId = Guid.NewGuid(),
-#pragma warning disable 0618
                             Password = decodedPassword
-#pragma warning restore 0618
                         }
                     };
                     break;
