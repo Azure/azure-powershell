@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.Compute
                     this.ResourceGroupName,
                     this.VMName,
                     this.Name).GetAwaiter().GetResult();
-                var result = Mapper.Map<PSAzureOperationResponse>(op);
+                var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
                 WriteObject(result);
             });
         }

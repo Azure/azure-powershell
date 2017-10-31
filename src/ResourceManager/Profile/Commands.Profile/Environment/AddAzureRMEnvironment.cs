@@ -146,6 +146,11 @@ namespace Microsoft.Azure.Commands.Profile
             }
         }
 
+        [Parameter(Position = 20, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource identifier of the Azure Batch service that is the recipient of the requested token.")]
+        [Alias("BatchResourceId", "BatchAudience")]
+        public string BatchEndpointResourceId { get; set; }
+
         protected override void BeginProcessing()
         {
             // do not call begin processing there is no context needed for this cmdlet
@@ -285,6 +290,8 @@ namespace Microsoft.Azure.Commands.Profile
                                    nameof(GraphAudience));
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.Endpoint.DataLakeEndpointResourceId,
                                     nameof(DataLakeAudience));
+                                SetEndpointIfBound(newEnvironment, AzureEnvironment.Endpoint.BatchEndpointResourceId,
+                                    nameof(BatchEndpointResourceId));
                                 WriteObject(new PSAzureEnvironment(profileClient.AddOrSetEnvironment(newEnvironment)));
                             }
                         });

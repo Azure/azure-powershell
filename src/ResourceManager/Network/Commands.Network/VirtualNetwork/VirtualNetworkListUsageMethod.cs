@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Network.Automation
             var vnetUsageList = new List<PSVirtualNetworkUsage>();
             foreach (var vVirtualNetwork in vVirtualNetworkList)
             {
-                var vVirtualNetworkModel = Mapper.Map<CNM.PSVirtualNetworkUsage>(vVirtualNetwork);
+                var vVirtualNetworkModel = NetworkResourceManagerProfile.Mapper.Map<CNM.PSVirtualNetworkUsage>(vVirtualNetwork);
                 vnetUsageList.Add(vVirtualNetworkModel);
             }
             WriteObject(vnetUsageList, true);
