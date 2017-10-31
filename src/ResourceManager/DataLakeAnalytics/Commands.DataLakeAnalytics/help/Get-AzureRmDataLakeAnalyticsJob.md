@@ -292,7 +292,7 @@ Parameter 'JobId' accepts value of type 'Guid' from the pipeline
 ### JobInformation
 The specified job information details
 
-### List<JobInformation>
+### List<PSJobInformationBasic>
 The list of jobs in the specified Data Lake Analytics account.
 
 ## NOTES
