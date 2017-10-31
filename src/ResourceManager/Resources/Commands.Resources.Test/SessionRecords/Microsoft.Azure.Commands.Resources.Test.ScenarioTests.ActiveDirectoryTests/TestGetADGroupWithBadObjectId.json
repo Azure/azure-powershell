@@ -13,13 +13,13 @@
           "116"
         ],
         "x-ms-client-request-id": [
-          "4f9ae42a-d1ba-4215-82f6-d0205287c1d9"
+          "cf5ff1c8-32dd-40e7-a7f0-e184cd9d290d"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.2115.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.15063",
           "Microsoft.Azure.Graph.RBAC.Version1_6.GraphRbacManagementClient/1.0.0.0"
@@ -40,19 +40,19 @@
           "no-cache"
         ],
         "ocp-aad-diagnostics-server-name": [
-          "CCXOF6rt6Xl8XB3GXCt/tnQbRKpxWms12kSO3g305EI="
+          "nwoPDPBe8J1qM7KlA3xNHurxCxJXOtsHl8UwAYIE67M="
         ],
         "request-id": [
-          "2b081842-07ea-47cd-a727-34d93e09ff1c"
+          "6fa4dd3c-1ac4-4a0f-9ff8-92bd3be7a140"
         ],
         "client-request-id": [
-          "0f350d31-90c5-41e9-bacb-a849c7671d44"
+          "8efd4c03-eddd-4321-a0d8-b221c7973edb"
         ],
         "x-ms-dirapi-data-contract-version": [
           "1.6"
         ],
         "ocp-aad-session-key": [
-          "BYRHtBU0XhBPC_dg1wdkgt1Dw38Kz6KMEyyO7y9EPRSvl5u1JSwmryreSvGMbs0ojWDis6GD_eSu0QPvyZvC-SaPLzLYz6WmdpXYAWF-P2NTrSI_DeLPd3KAP85EJEtb-icD8L22jm4d7prLSFTiW8s4dPNvCTM8U6bi2B194pN_bPSVOQJl55HW_nQr2sRfy9GMggIInwwLhcBoFJLLEg.5pG2zQ0v68kHOgSVjgpNYS2GNTovj_lwAbdeRjQZxao"
+          "tofITfxner_88bnF7kt-3KWSmiiq9c3INnvmalLxZ3_iOzVmvj1xmJojTp4BYAcpFIu9Bs2AZSaXMv0qFwPzJKNA2PW1G8jsGnezXDOz2mc7hhF9ypGLhY1cXE-HS5mdUXWUSQecbZnNpk2ueNvCmqE8HVL4z1161fG6ncPKL5lErMy9hTIXBzt-WRBa3U-mjozLlMWcuvSb1iFzYAGbRg.acIz-kZcP_WU20-Oc4dqUYyM5YcqJQxuanrtXB0SS5E"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -67,7 +67,7 @@
           "*"
         ],
         "Duration": [
-          "992193"
+          "774888"
         ],
         "Cache-Control": [
           "no-cache"
@@ -83,7 +83,7 @@
           "ASP.NET"
         ],
         "Date": [
-          "Tue, 26 Sep 2017 22:18:02 GMT"
+          "Tue, 31 Oct 2017 19:31:27 GMT"
         ]
       },
       "StatusCode": 200

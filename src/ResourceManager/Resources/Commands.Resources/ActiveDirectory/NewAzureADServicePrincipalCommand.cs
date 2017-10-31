@@ -133,11 +133,11 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                     AccountEnabled = true
                 };
 
-                string decodedPassword = SecureStringExtensions.ConvertToString(Password);
                 switch (ParameterSetName)
                 {
                     case ParameterSet.ApplicationWithPasswordPlain:
                     case ParameterSet.DisplayNameWithPasswordPlain:
+                        string decodedPassword = SecureStringExtensions.ConvertToString(Password);
                         createParameters.PasswordCredentials = new PSADPasswordCredential[]
                         {
                         new PSADPasswordCredential
