@@ -63,8 +63,7 @@ namespace Microsoft.Azure.Commands.Network.Automation
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Optional Azure regions to scope the query to.",
-            ValueFromPipelineByPropertyName = true)]
+            HelpMessage = "Optional Azure regions to scope the query to.")]
         public List<string> Location { get; set; }
 
         [Parameter(
@@ -74,8 +73,7 @@ namespace Microsoft.Azure.Commands.Network.Automation
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The name of the state.",
-            ValueFromPipelineByPropertyName = true)]
+            HelpMessage = "The name of the state.")]
         public string State { get; set; }
 
         [Parameter(

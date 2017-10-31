@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzureRmNetworkWatcherReachabilityProvidersList
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Lists all available internet service providers for a specified Azure region.
 
 ## SYNTAX
 

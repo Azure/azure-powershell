@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzureRMNetworkWatcherReachabilityReport
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets the relative latency score for internet service providers from a specified location to Azure regions.
 
 ## SYNTAX
 
@@ -70,7 +70,7 @@ Get-AzureRmNetworkWatcherReachabilityReport -NetworkWatcher $nw -Location "West 
         ]  
     }
 ]
-
+```
 
 Gets relative latencies to Azure Data Center in West US from 2017-10-10 to 2017-10-12 inside United State.
 
