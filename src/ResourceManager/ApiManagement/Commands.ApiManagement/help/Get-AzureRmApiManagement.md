@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.dll-Help.xml
+Module Name: AzureRM.ApiManagement
 ms.assetid: DBA7AD5F-CC13-417A-B753-F998942530BB
 online version: 
 schema: 2.0.0
@@ -12,18 +13,18 @@ Gets a list or a particular API Management Service description.
 
 ## SYNTAX
 
-### All In Subscription (Default)
+### GetBySubscription (Default)
 ```
 Get-AzureRmApiManagement [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### All In Resource Group
+### GetByResourceGroup
 ```
 Get-AzureRmApiManagement -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
-### Specific API Management Service
+### GetByResource
 ```
 Get-AzureRmApiManagement -ResourceGroupName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
@@ -70,7 +71,7 @@ Specifies the name of API Management service.
 
 ```yaml
 Type: String
-Parameter Sets: Specific API Management Service
+Parameter Sets: GetByResource
 Aliases: 
 
 Required: True
@@ -85,7 +86,7 @@ Specifies the name of the resource group under in which this cmdlet gets the API
 
 ```yaml
 Type: String
-Parameter Sets: All In Resource Group, Specific API Management Service
+Parameter Sets: GetByResourceGroup, GetByResource
 Aliases: 
 
 Required: True
