@@ -138,10 +138,10 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 AvailableToOtherTenants = AvailableToOtherTenants
             };
             
-            string decodedPassword = SecureStringExtensions.ConvertToString(Password);
             switch (ParameterSetName)
             {
                 case ParameterSet.ApplicationWithPasswordPlain:
+                    string decodedPassword = SecureStringExtensions.ConvertToString(Password);
                     createParameters.PasswordCredentials = new PSADPasswordCredential[]
                     {
                         new PSADPasswordCredential
