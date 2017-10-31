@@ -48,7 +48,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
                 currentDirectory = currentDirectory.GetDirectoryReference(subFolder);
             }
 
-            return new CloudFileDirectory(currentDirectory.Uri, currentDirectory.Share.ServiceClient.Credentials);
+            return new CloudFileDirectory(currentDirectory.SnapshotQualifiedUri, currentDirectory.Share.ServiceClient.Credentials);
         }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
 
             CloudFile file = currentDirectory.GetFileReference(path.Last());
 
-            return new CloudFile(file.Uri, file.Share.ServiceClient.Credentials);
+            return new CloudFile(file.SnapshotQualifiedUri, file.Share.ServiceClient.Credentials);
         }
 
         /// <summary>
@@ -85,10 +85,22 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
         {
             // We need to make sure the share uri ends with "/" in order to
             // let MakeRelativeUri work properly.
-            UriBuilder shareUri = new UriBuilder(item.Share.Uri);
+            UriBuilder shareUri = new UriBuilder(item.Share.SnapshotQualifiedUri);
             if (!shareUri.Path.EndsWith(UriPathSeparator, StringComparison.Ordinal))
             {
                 shareUri.Path = string.Concat(shareUri.Path, UriPathSeparator);
+            }
+
+            CloudFile file = item as CloudFile;
+            if(file != null)
+            {
+                return shareUri.Uri.MakeRelativeUri(file.SnapshotQualifiedUri).ToString();
+            }
+
+            CloudFileDirectory dir = item as CloudFileDirectory;
+            if (dir != null)
+            {
+                return shareUri.Uri.MakeRelativeUri(dir.SnapshotQualifiedUri).ToString();
             }
 
             return shareUri.Uri.MakeRelativeUri(item.Uri).ToString();
