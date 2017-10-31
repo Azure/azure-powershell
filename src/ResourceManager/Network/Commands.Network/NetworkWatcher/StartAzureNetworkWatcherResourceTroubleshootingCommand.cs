@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             MNM.TroubleshootingResult troubleshoot = this.NetworkWatcherClient.GetTroubleshooting(resourceGroupName, name, parameters);
 
-            PSTroubleshootResult psTroubleshoot = Mapper.Map<PSTroubleshootResult>(troubleshoot);
+            PSTroubleshootResult psTroubleshoot = NetworkResourceManagerProfile.Mapper.Map<PSTroubleshootResult>(troubleshoot);
             return psTroubleshoot;
         }
     }

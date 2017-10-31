@@ -40,14 +40,18 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                 ExecuteClientActionNewSM(null,
                     CommandRuntime.ToString(),
                     () => NetworkClient.ReservedIPs.Get(ReservedIPName),
-                    (s, r) => new int[1].Select(i => ContextFactory<NetworkReservedIPGetResponse, ReservedIPContext>(r, s)));
+                    (s, r) => new int[1].Select(i => ContextFactory(r, s,
+                                                        ServiceManagementProfile.Mapper.Map<NetworkReservedIPGetResponse, ReservedIPContext>,
+                                                        ServiceManagementProfile.Mapper.Map)));
             }
             else
             {
                 ExecuteClientActionNewSM(null,
                     CommandRuntime.ToString(),
                     () => NetworkClient.ReservedIPs.List(),
-                    (s, r) => r.ReservedIPs.Select(p => ContextFactory<NetworkReservedIPListResponse.ReservedIP, ReservedIPContext>(p, s)));
+                    (s, r) => r.ReservedIPs.Select(p => ContextFactory(p, s,
+                                                            ServiceManagementProfile.Mapper.Map<NetworkReservedIPListResponse.ReservedIP, ReservedIPContext>,
+                                                            ServiceManagementProfile.Mapper.Map)));
             }
         }
 

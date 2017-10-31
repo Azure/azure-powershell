@@ -87,6 +87,13 @@ The first command creates a hash table that contains metadata for a blob, and st
 The second command uploads the file that is named ContosoPlanning to the container named ContosoUploads.
 The blob includes the metadata stored in $Metadata, and has PremiumPageBlobTier as P10.
 
+### Example 6: Upload a file to blob with specified blob properties
+```
+PS C:\> Set-AzureStorageBlobContent -File "ContosoPlanning" -Container "ContosoUploads" -Properties @{"ContentType" = "image/jpeg"; "ContentMD5" = "i727sP7HigloQDsqadNLHw=="}
+```
+
+This command  uploads the file that is named ContosoPlanning to the container named ContosoUploads with specified blob properties.
+
 ## PARAMETERS
 
 ### -Blob
@@ -301,7 +308,8 @@ Accept wildcard characters: False
 ```
 
 ### -Properties
-Specifies properties for the uploaded blob.
+Specifies properties for the uploaded blob. 
+The supported properties are: CacheControl, ContentDisposition, ContentEncoding, ContentLanguage, ContentMD5, ContentType.
 
 ```yaml
 Type: Hashtable

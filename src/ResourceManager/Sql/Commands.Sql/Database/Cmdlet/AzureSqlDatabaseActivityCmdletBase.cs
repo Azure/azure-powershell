@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// <summary>
         /// Gets or sets the name of the ElasticPool to use.
         /// </summary>
-        [Parameter(Mandatory = true,
+        [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the Azure SQL Elastic Pool.")]
         [ValidateNotNullOrEmpty]

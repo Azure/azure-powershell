@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             var nic = this.NetworkInterfaceClient.Get(resourceGroupName, name, expandResource);
 
-            var psNetworkInterface = Mapper.Map<PSNetworkInterface>(nic);
+            var psNetworkInterface = NetworkResourceManagerProfile.Mapper.Map<PSNetworkInterface>(nic);
             psNetworkInterface.ResourceGroupName = resourceGroupName;
             psNetworkInterface.Tag =
                 TagsConversionHelper.CreateTagHashtable(nic.Tags);
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             var nic = this.NetworkInterfaceClient.GetVirtualMachineScaleSetNetworkInterface(resourceGroupName, scaleSetName, vmIndex, name, expandResource);
 
-            var psNetworkInterface = Mapper.Map<PSNetworkInterface>(nic);
+            var psNetworkInterface = NetworkResourceManagerProfile.Mapper.Map<PSNetworkInterface>(nic);
             psNetworkInterface.ResourceGroupName = resourceGroupName;
             psNetworkInterface.Tag =
                 TagsConversionHelper.CreateTagHashtable(nic.Tags);
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public PSNetworkInterface ToPsNetworkInterface(NetworkInterface nic)
         {
-            var psNic = Mapper.Map<PSNetworkInterface>(nic);
+            var psNic = NetworkResourceManagerProfile.Mapper.Map<PSNetworkInterface>(nic);
 
             psNic.Tag = TagsConversionHelper.CreateTagHashtable(nic.Tags);
 

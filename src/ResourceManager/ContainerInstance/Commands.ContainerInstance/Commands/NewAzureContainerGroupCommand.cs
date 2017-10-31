@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Commands.ContainerInstance
            ValueFromPipelineByPropertyName = true)]
         public Hashtable Tag { get; set; }
 
-        protected override void ExecuteCmdletInternal()
+        public override void ExecuteCmdlet()
         {
             if (this.ShouldProcess(this.Name, "Create Container Group"))
             {

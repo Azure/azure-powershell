@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Network
                 var stats = this.NetworkClient.NetworkManagementClient.ExpressRouteCircuits.GetStats(		
                     ResourceGroupName,		
                     ExpressRouteCircuitName);		
-                var psStats = Mapper.Map<PSExpressRouteCircuitStats>(stats);		
+                var psStats = NetworkResourceManagerProfile.Mapper.Map<PSExpressRouteCircuitStats>(stats);		
                 WriteObject(psStats, true);		
             }		
             else		
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Network
                     ResourceGroupName,		
                     ExpressRouteCircuitName,		
                     PeeringType);		
-                var psStats = Mapper.Map<PSExpressRouteCircuitStats>(stats);		
+                var psStats = NetworkResourceManagerProfile.Mapper.Map<PSExpressRouteCircuitStats>(stats);		
                 WriteObject(psStats, true);		
             }		
         }		

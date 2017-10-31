@@ -104,7 +104,8 @@ Accept wildcard characters: False
 ```
 
 ### -FileName
-Specifies the name of the script file.
+Specifies the name of the script file. If the file is stored in Azure Blob storage, the file name
+value is case-senstive. File names of files stored in Azure File storage are not case-senstive.
 
 ```yaml
 Type: String[]

@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Commands.Network
                 ipFlowVerify = this.NetworkWatcherClient.VerifyIPFlow(this.ResourceGroupName, this.NetworkWatcherName, flowParameters);
             }
 
-            PSIPFlowVerifyResult psIPFlowVerify = Mapper.Map<PSIPFlowVerifyResult>(ipFlowVerify);
+            PSIPFlowVerifyResult psIPFlowVerify = NetworkResourceManagerProfile.Mapper.Map<PSIPFlowVerifyResult>(ipFlowVerify);
 
             WriteObject(psIPFlowVerify);
         }
