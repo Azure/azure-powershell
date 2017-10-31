@@ -20,6 +20,7 @@
 // code is regenerated.
 
 using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
 using System;
@@ -33,7 +34,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network.Automation
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRMNetworkWatcherReachabilityReport", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSAzureReachabilityReport))]
+    [Cmdlet(VerbsCommon.Get, "AzureRMNetworkWatcherReachabilityReport", DefaultParameterSetName = "SetByName"), OutputType(typeof(PSAzureReachabilityReport))]
     public partial class GetAzureRMNetworkWatcherReachabilityReport : NetworkBaseCmdlet
     {
         [Parameter(
@@ -47,9 +48,7 @@ namespace Microsoft.Azure.Commands.Network.Automation
         [Parameter(
             Mandatory = true,
             HelpMessage = "The name of network watcher.",
-            ParameterSetName = "SetByName",
-            ValueFromPipeline = true,
-            ValueFromPipelineByPropertyName = true)]
+            ParameterSetName = "SetByName")]
         [ValidateNotNullOrEmpty]
         public string NetworkWatcherName { get; set; }
 
@@ -57,51 +56,50 @@ namespace Microsoft.Azure.Commands.Network.Automation
         [Parameter(
             Mandatory = true,
             HelpMessage = "The name of the network watcher resource group.",
-            ParameterSetName = "SetByName",
-            ValueFromPipelineByPropertyName = true)]
+            ParameterSetName = "SetByName")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
-            Mandatory = false,
-            HelpMessage = "List of Internet service providers.",
-            ValueFromPipelineByPropertyName = true)]
-        public List<string> Providers { get; set; }
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Id of network watcher resource.",
+            ParameterSetName = "SetByResourceId")]
+        public string ResourceId { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Optional Azure regions to scope the query to.",
-            ValueFromPipelineByPropertyName = true)]
-        public List<string> AzureLocations { get; set; }
+            HelpMessage = "List of Internet service providers.")]
+        public List<string> Provider { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Optional Azure regions to scope the query to.")]
+        public List<string> Location { get; set; }
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The start time for the Azure reachability report.",
-            ValueFromPipelineByPropertyName = true)]
+            HelpMessage = "The start time for the Azure reachability report.")]
         public DateTime StartTime { get; set; }
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The end time for the Azure reachability report.",
-            ValueFromPipelineByPropertyName = true)]
+            HelpMessage = "The end time for the Azure reachability report.")]
         public DateTime EndTime { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The name of the country.",
-            ValueFromPipelineByPropertyName = true)]
+            HelpMessage = "The name of the country.")]
         public string Country { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The name of the state.",
-            ValueFromPipelineByPropertyName = true)]
+            HelpMessage = "The name of the state.")]
         public string State { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The name of the city.",
-            ValueFromPipelineByPropertyName = true)]
+            HelpMessage = "The name of the city.")]
         public string City { get; set; }
 
         public override void Execute()
@@ -140,18 +138,26 @@ namespace Microsoft.Azure.Commands.Network.Automation
 
             var vAzureReachabilityReportParameters = new AzureReachabilityReportParameters
             {
-                Providers = this.Providers,
-                AzureLocations = this.AzureLocations,
+                Providers = this.Provider,
+                AzureLocations = this.Location,
                 StartTime = this.StartTime,
                 EndTime = this.EndTime,
                 ProviderLocation = NetworkResourceManagerProfile.Mapper.Map < MNM.AzureReachabilityReportLocation >(vProviderLocation),
             };
 
-            if (ParameterSetName.Contains("SetByResource"))
+            if (string.Equals(this.ParameterSetName, "SetByResource", StringComparison.OrdinalIgnoreCase))
             {
                 ResourceGroupName = this.NetworkWatcher.ResourceGroupName;
                 NetworkWatcherName = this.NetworkWatcher.Name;
             }
+
+            if (string.Equals(this.ParameterSetName, "SetByResourceId", StringComparison.OrdinalIgnoreCase))
+            {
+                var resourceInfo = new ResourceIdentifier(this.ResourceId);
+                ResourceGroupName = resourceInfo.ResourceGroupName;
+                NetworkWatcherName = resourceInfo.ResourceName;
+            }
+
             var vNetworkWatcherResult = this.NetworkClient.NetworkManagementClient.NetworkWatchers.GetAzureReachabilityReport(ResourceGroupName, NetworkWatcherName, vAzureReachabilityReportParameters);
             var vNetworkWatcherModel = NetworkResourceManagerProfile.Mapper.Map<PSAzureReachabilityReport>(vNetworkWatcherResult);
             WriteObject(vNetworkWatcherModel);

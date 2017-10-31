@@ -640,9 +640,9 @@ function Test-ReachabilityReport
         $tags = @{"key1" = "value1"; "key2" = "value2"}
         $nw = New-AzureRmNetworkWatcher -Name $nwName -ResourceGroupName $rgname -Location $location -Tag $tags
 
-        $report1 = Get-AzureRmNetworkWatcherReachabilityReport -NetworkWatcher $nw -AzureLocations "West US" -Country "United States" -StartTime "2017-10-05" -EndTime "2017-10-10"
-        $report2 = Get-AzureRmNetworkWatcherReachabilityReport -NetworkWatcher $nw -AzureLocations "West US" -Country "United States" -State "washington" -StartTime "2017-10-05" -EndTime "2017-10-10"
-        $report3 = Get-AzureRmNetworkWatcherReachabilityReport -NetworkWatcher $nw -AzureLocations "West US" -Country "United States" -State "washington" -City "seattle" -StartTime "2017-10-05" -EndTime "2017-10-10"
+        $report1 = Get-AzureRmNetworkWatcherReachabilityReport -NetworkWatcher $nw -Location "West US" -Country "United States" -StartTime "2017-10-05" -EndTime "2017-10-10"
+        $report2 = Get-AzureRmNetworkWatcherReachabilityReport -NetworkWatcher $nw -Location "West US" -Country "United States" -State "washington" -StartTime "2017-10-05" -EndTime "2017-10-10"
+        $report3 = Get-AzureRmNetworkWatcherReachabilityReport -NetworkWatcher $nw -Location "West US" -Country "United States" -State "washington" -City "seattle" -StartTime "2017-10-05" -EndTime "2017-10-10"
 
         Assert-AreEqual $report1.AggregationLevel "Country"
         Assert-AreEqual $report1.ProviderLocation.Country "United States"
@@ -683,9 +683,9 @@ function Test-ProvidersList
         $tags = @{"key1" = "value1"; "key2" = "value2"}
         $nw = New-AzureRmNetworkWatcher -Name $nwName -ResourceGroupName $rgname -Location $location -Tag $tags
 
-        $list1 = Get-AzureRmNetworkWatcherReachabilityProvidersList -NetworkWatcher $nw -AzureLocations "West US" -Country "United States"
-        $list2 = Get-AzureRmNetworkWatcherReachabilityProvidersList -NetworkWatcher $nw -AzureLocations "West US" -Country "United States" -State "washington"
-        $list3 = Get-AzureRmNetworkWatcherReachabilityProvidersList -NetworkWatcher $nw -AzureLocations "West US" -Country "United States" -State "washington" -City "seattle"
+        $list1 = Get-AzureRmNetworkWatcherReachabilityProvidersList -NetworkWatcher $nw -Location "West US" -Country "United States"
+        $list2 = Get-AzureRmNetworkWatcherReachabilityProvidersList -NetworkWatcher $nw -Location "West US" -Country "United States" -State "washington"
+        $list3 = Get-AzureRmNetworkWatcherReachabilityProvidersList -NetworkWatcher $nw -Location "West US" -Country "United States" -State "washington" -City "seattle"
 
         Assert-AreEqual $list1.Countries.CountryName "United States"
         Assert-AreEqual $list2.Countries.CountryName "United States"
