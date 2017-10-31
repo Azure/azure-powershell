@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.PowerBIEmbeddedCapacity
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmPowerBIEmbeddedCapacity"),
      OutputType(typeof(List<AzurePowerBIEmbeddedCapacity>))]
-    [Alias("Get-AzureAs")]
+    [Alias("Get-AzurePBIECapacity")]
     public class GetAzurePowerBIEmbeddedCapacity : PowerBIEmbeddedCapacityCmdletBase
     {
         [Parameter(Position = 0,

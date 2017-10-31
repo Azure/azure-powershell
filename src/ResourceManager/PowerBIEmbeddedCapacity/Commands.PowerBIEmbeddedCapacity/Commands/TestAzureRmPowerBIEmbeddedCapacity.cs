@@ -20,7 +20,7 @@ using Microsoft.Azure.Management.PowerBIDedicated.Models;
 namespace Microsoft.Azure.Commands.PowerBIEmbeddedCapacity
 {
     [Cmdlet(VerbsDiagnostic.Test, "AzureRmPowerBIEmbeddedCapacity"), OutputType(typeof(bool))]
-    [Alias("Test-AzureAs")]
+    [Alias("Test-AzurePBIECapacity")]
     public class TestAzurePowerBIEmbeddedCapacity : PowerBIEmbeddedCapacityCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,

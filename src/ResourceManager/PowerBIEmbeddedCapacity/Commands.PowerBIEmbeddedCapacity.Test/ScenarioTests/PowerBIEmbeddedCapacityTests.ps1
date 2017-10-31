@@ -8,6 +8,7 @@ function Test-PowerBIEmbeddedCapacity
 	{  
 		# Creating capacity
 		$location = Get-Location
+		$resourceLocation = Get-Location
 		$resourceGroupName = Get-ResourceGroupName
 		$capacityName = Get-PowerBIEmbeddedCapacityName
 
@@ -16,7 +17,7 @@ function Test-PowerBIEmbeddedCapacity
 		$capacityCreated = New-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -Location $location -Sku 'A1' -Administrator 'aztest0@stabletest.ccsctp.net,aztest1@stabletest.ccsctp.net'
     
 		Assert-AreEqual $capacityName $capacityCreated.Name
-		Assert-AreEqual $location $capacityCreated.Location
+		Assert-AreEqual $resourceLocation $capacityCreated.Location
 		Assert-AreEqual "Microsoft.PowerBIDedicated/capacities" $capacityCreated.Type
 		Assert-AreEqual 2 $capacityCreated.AsAdministrators.Count
 		Assert-True {$capacityCreated.Id -like "*$resourceGroupName*"}
@@ -29,7 +30,7 @@ function Test-PowerBIEmbeddedCapacity
 		Assert-True {$capacityGetItem.State -like "Succeeded"}
 		
 		Assert-AreEqual $capacityName $capacityGetItem.Name
-		Assert-AreEqual $location $capacityGetItem.Location
+		Assert-AreEqual $resourceLocation $capacityGetItem.Location
 		Assert-AreEqual "Microsoft.PowerBIDedicated/capacities" $capacityGetItem.Type
 		Assert-True {$capacityGetItem.Id -like "*$resourceGroupName*"}
 
@@ -50,7 +51,7 @@ function Test-PowerBIEmbeddedCapacity
 		Assert-AreEqual $capacityUpdated.AsAdministrators.Count 1
 
 		Assert-AreEqual $capacityName $capacityUpdated.Name
-		Assert-AreEqual $location $capacityUpdated.Location
+		Assert-AreEqual $resourceLocation $capacityUpdated.Location
 		Assert-AreEqual "Microsoft.PowerBIDedicated/capacities" $capacityUpdated.Type
 		Assert-True {$capacityUpdated.Id -like "*$resourceGroupName*"}
 
@@ -132,13 +133,14 @@ function Test-PowerBIEmbeddedCapacityScaleUpDown
 	{  
 		# Creating capacity
 		$location = Get-Location
+		$resourceLocation = Get-Location
 		$resourceGroupName = Get-ResourceGroupName
 		$capacityName = Get-PowerBIEmbeddedCapacityName
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
 
 		$capacityCreated = New-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -Location $location -Sku 'B1' -Administrator 'aztest0@stabletest.ccsctp.net,aztest1@stabletest.ccsctp.net'
 		Assert-AreEqual $capacityName $capacityCreated.Name
-		Assert-AreEqual $location $capacityCreated.Location
+		Assert-AreEqual $resourceLocation $capacityCreated.Location
 		Assert-AreEqual "Microsoft.PowerBIDedicated/capacities" $capacityCreated.Type
 		Assert-AreEqual B1 $capacityCreated.Sku.Name
 		Assert-True {$capacityCreated.Id -like "*$resourceGroupName*"}
@@ -152,7 +154,7 @@ function Test-PowerBIEmbeddedCapacityScaleUpDown
 		Assert-True {$capacityGetItem.State -like "Succeeded"}
 		
 		Assert-AreEqual $capacityName $capacityGetItem.Name
-		Assert-AreEqual $location $capacityGetItem.Location
+		Assert-AreEqual $resourceLocation $capacityGetItem.Location
 		Assert-AreEqual B1 $capacityGetItem.Sku.Name
 		Assert-AreEqual "Microsoft.PowerBIDedicated/capacities" $capacityGetItem.Type
 		Assert-True {$capacityGetItem.Id -like "*$resourceGroupName*"}
@@ -192,13 +194,14 @@ function Test-NegativePowerBIEmbeddedCapacity
 	{
 		# Creating Account
 		$location = Get-Location
+		$resourceLocation = Get-Location
 		$resourceGroupName = Get-ResourceGroupName
 		$capacityName = Get-PowerBIEmbeddedCapacityName
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
 		$capacityCreated = New-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -Location $location -Sku 'A1' -Administrator 'aztest0@stabletest.ccsctp.net,aztest1@stabletest.ccsctp.net'
 
 		Assert-AreEqual $capacityName $capacityCreated.Name
-		Assert-AreEqual $location $capacityCreated.Location
+		Assert-AreEqual $resourceLocation $capacityCreated.Location
 		Assert-AreEqual "Microsoft.PowerBIDedicated/capacities" $capacityCreated.Type
 		Assert-True {$capacityCreated.Id -like "*$resourceGroupName*"}
 
@@ -251,6 +254,7 @@ function Test-PowerBIEmbeddedCapacityLogExport
     try
     {
         $location = Get-Location
+		$resourceLocation = Get-Location
 		$resourceGroupName = Get-ResourceGroupName
 		$capacityName = Get-PowerBIEmbeddedCapacityName
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
@@ -299,6 +303,7 @@ function Test-PowerBIEmbeddedCapacityRestart
 	{
 		# Creating capacity
 		$location = Get-Location
+		$resourceLocation = Get-Location
 		$resourceGroupName = Get-ResourceGroupName
 		$capacityName = Get-PowerBIEmbeddedCapacityName
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location

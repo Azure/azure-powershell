@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.PowerBIEmbeddedCapacity
 {
     [Cmdlet(VerbsCommon.Remove, "AzureRmPowerBIEmbeddedCapacity", SupportsShouldProcess = true), 
         OutputType(typeof(AzurePowerBIEmbeddedCapacity))]
-    [Alias("Remove-AzureAs")]
+    [Alias("Remove-AzurePBIECapacity")]
     public class RemovePowerBIEmbeddedCapacity : PowerBIEmbeddedCapacityCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,

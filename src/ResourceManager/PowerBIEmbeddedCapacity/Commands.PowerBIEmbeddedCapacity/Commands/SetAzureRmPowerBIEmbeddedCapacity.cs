@@ -24,7 +24,7 @@ using Microsoft.Azure.Management.PowerBIDedicated.Models;
 namespace Microsoft.Azure.Commands.PowerBIEmbeddedCapacity
 {
     [Cmdlet(VerbsCommon.Set, "AzureRmPowerBIEmbeddedCapacity", SupportsShouldProcess = true, DefaultParameterSetName = ParamSetDefault), OutputType(typeof(AzurePowerBIEmbeddedCapacity))]
-    [Alias("Set-AzureAs")]
+    [Alias("Set-AzurePBIECapacity")]
     public class SetAzurePowerBIEmbeddedCapacity : PowerBIEmbeddedCapacityCmdletBase
     {
         private const string ParamSetDefault = "Default";

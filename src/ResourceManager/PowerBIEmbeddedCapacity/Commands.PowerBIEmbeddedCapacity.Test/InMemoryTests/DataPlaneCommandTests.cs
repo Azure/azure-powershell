@@ -75,10 +75,10 @@ namespace Microsoft.Azure.Commands.PowerBIEmbeddedCapacity.Test.InMemoryTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAddAzurePowerBIEmbeddedCapacityAccountCommand()
+        public void TestAddAzurePBIEAccountCommand()
         {
             Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
-            var addAmdlet = new AddAzurePowerBIEmbeddedCapacityAccountCommand()
+            var addAmdlet = new AddAzurePBIEAccountCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object
             };
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Commands.PowerBIEmbeddedCapacity.Test.InMemoryTests
                 CommandRuntime = commandRuntimeMock.Object
             };
 
-            var addAmdlet = new AddAzurePowerBIEmbeddedCapacityAccountCommand()
+            var addAmdlet = new AddAzurePBIEAccountCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object
             };
@@ -322,7 +322,7 @@ namespace Microsoft.Azure.Commands.PowerBIEmbeddedCapacity.Test.InMemoryTests
                 CommandRuntime = commandRuntimeMock.Object
             };
 
-            var addAmdlet = new AddAzurePowerBIEmbeddedCapacityAccountCommand()
+            var addAmdlet = new AddAzurePBIEAccountCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object
             };
@@ -442,7 +442,7 @@ namespace Microsoft.Azure.Commands.PowerBIEmbeddedCapacity.Test.InMemoryTests
                 CommandRuntime = commandRuntimeMock.Object
             };
 
-            var addAmdlet = new AddAzurePowerBIEmbeddedCapacityAccountCommand()
+            var addAmdlet = new AddAzurePBIEAccountCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object
             };
@@ -559,7 +559,7 @@ namespace Microsoft.Azure.Commands.PowerBIEmbeddedCapacity.Test.InMemoryTests
                 CommandRuntime = commandRuntimeMock.Object
             };
 
-            var addAmdlet = new AddAzurePowerBIEmbeddedCapacityAccountCommand()
+            var addAmdlet = new AddAzurePBIEAccountCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object
             };
@@ -574,7 +574,7 @@ namespace Microsoft.Azure.Commands.PowerBIEmbeddedCapacity.Test.InMemoryTests
             syncCmdlet.InvokeEndProcessing();
         }
         
-        private void DoLogin(AddAzurePowerBIEmbeddedCapacityAccountCommand addCmdlet)
+        private void DoLogin(AddAzurePBIEAccountCommand addCmdlet)
         {
             Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
 

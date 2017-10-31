@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.PowerBIEmbeddedCapacity
     [Cmdlet(VerbsLifecycle.Suspend, "AzureRmPowerBIEmbeddedCapacity",
         SupportsShouldProcess = true),
         OutputType(typeof(AzurePowerBIEmbeddedCapacity))]
-    [Alias("Suspend-AzureAs")]
+    [Alias("Suspend-AzurePBIECapacity")]
     public class SuspendAzurePowerBIEmbeddedCapacity : PowerBIEmbeddedCapacityCmdletBase
     {
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = true,

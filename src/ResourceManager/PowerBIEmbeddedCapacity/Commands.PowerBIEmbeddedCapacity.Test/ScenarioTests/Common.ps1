@@ -32,6 +32,16 @@ function Get-ResourceGroupName
 
 <#
 .SYNOPSIS
+Gets resource location for testing.
+#>
+function Get-Resource-Location
+{
+	# TODO: should be implemented via Get-AzureRmResourceProvider 
+	return "West Central US"
+}
+
+<#
+.SYNOPSIS
 Gets a location for testing.
 #>
 function Get-Location

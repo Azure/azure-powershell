@@ -23,7 +23,7 @@ using Microsoft.Rest.Azure;
 namespace Microsoft.Azure.Commands.PowerBIEmbeddedCapacity
 {
     [Cmdlet(VerbsCommon.New, "AzureRmPowerBIEmbeddedCapacity", SupportsShouldProcess = true), OutputType(typeof(AzurePowerBIEmbeddedCapacity))]
-    [Alias("New-AzureAs")]
+    [Alias("New-AzurePBIECapacity")]
     public class NewPowerBIEmbeddedCapacity : PowerBIEmbeddedCapacityCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,

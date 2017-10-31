@@ -33,7 +33,7 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.PowerBIEmbeddedCapacity.Test.InMemoryTests
 {
-    class AddAzureASAccountTests : PowerBIEmbeddedCapacityTestsBase
+    class AddAzurePBIEAccountTests : PowerBIEmbeddedCapacityTestsBase
     {
         private const string testPBIEnvironment = "westcentralus.pbidedicated.windows.net";
 
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.PowerBIEmbeddedCapacity.Test.InMemoryTests
 
         private const string testPassword = "testpassword";
 
-        public AddAzureASAccountTests(ITestOutputHelper output)
+        public AddAzurePBIEAccountTests(ITestOutputHelper output)
         {
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.PowerBIEmbeddedCapacity.Test.InMemoryTests
         public void CreatesNewPSResourceGroup()
         {
             Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
-            AddAzurePowerBIEmbeddedCapacityAccountCommand cmdlet = new AddAzurePowerBIEmbeddedCapacityAccountCommand()
+            AddAzurePBIEAccountCommand cmdlet = new AddAzurePBIEAccountCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object
             };

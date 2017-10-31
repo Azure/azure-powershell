@@ -84,8 +84,8 @@ CmdletsToExport = 'Resume-AzureRmPowerBIEmbeddedCapacity',
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = 'Resume-AzureAs', 'Suspend-AzureAs', 'Get-AzureAs', 'Remove-AzureAs', 
-               'Set-AzureAs', 'Test-AzureAs', 'New-AzureAs'
+AliasesToExport = 'Resume-AzurePBIECapacity', 'Suspend-AzurePBIECapacity', 'Get-AzurePBIECapacity', 'Remove-AzurePBIECapacity', 
+               'Set-AzurePBIECapacity', 'Test-AzurePBIECapacity', 'New-AzurePBIECapacity'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
@@ -117,7 +117,7 @@ PrivateData = @{
         ReleaseNotes = '* Added a new dataplane commandlet to allow synchronization of databases from read-write instance to read-only instances 
     - Included help file for the commandlet
     - Added in-memory tests and a scenario test (only live)
-* Fixed bugs in Add-AzureAsAccount commandlet 
+* Fixed bugs in Add-AzurePBIECapacityAccount commandlet 
 '
 
         # External dependent modules of this module

@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.PowerBIEmbeddedCapacity.Dataplane
     [Cmdlet("Add", "AzurePowerBIEmbeddedCapacityAccount", DefaultParameterSetName = "UserParameterSetName", SupportsShouldProcess =true)]
     [Alias("Login-AzurePowerBIEmbeddedCapacityAccount")]
     [OutputType(typeof(PBIProfile))]
-    public class AddAzureASAccountCommand : AzurePSCmdlet, IModuleAssemblyInitializer
+    public class AddAzurePBIEAccountCommand : AzurePSCmdlet, IModuleAssemblyInitializer
     {
         private const string UserParameterSet = "UserParameterSetName";
         private const string ServicePrincipalWithPasswordParameterSet = "ServicePrincipalWithPasswordParameterSetName";
@@ -198,7 +198,7 @@ namespace Microsoft.Azure.Commands.PowerBIEmbeddedCapacity.Dataplane
                 invoker = System.Management.Automation.PowerShell.Create(RunspaceMode.CurrentRunspace);
                 invoker.AddScript(File.ReadAllText(FileUtilities.GetContentFilePath(
                     Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
-                    "PowerBIEmbeddedCapacityDataplaneStartup.ps1")));
+                    "PBIEDataplaneStartup.ps1")));
                 invoker.Invoke();
             }
             catch
