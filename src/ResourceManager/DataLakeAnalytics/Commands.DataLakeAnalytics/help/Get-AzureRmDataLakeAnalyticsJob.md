@@ -13,7 +13,7 @@ Gets a Data Lake Analytics job.
 
 ## SYNTAX
 
-### All In Resource Group and Account (Default)
+### GetAllInResourceGroupAndAccount (Default)
 ```
 Get-AzureRmDataLakeAnalyticsJob [-Account] <String> [[-Name] <String>] [[-Submitter] <String>]
  [[-SubmittedAfter] <DateTimeOffset>] [[-SubmittedBefore] <DateTimeOffset>] [[-State] <JobState[]>]
@@ -21,7 +21,7 @@ Get-AzureRmDataLakeAnalyticsJob [-Account] <String> [[-Name] <String>] [[-Submit
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Specific JobInformation
+### GetBySpecificJobInformation
 ```
 Get-AzureRmDataLakeAnalyticsJob [-Account] <String> [-JobId] <Guid> [[-Include] <ExtendedJobData>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -90,7 +90,7 @@ The acceptable values for this parameter are:
 
 ```yaml
 Type: ExtendedJobData
-Parameter Sets: Specific JobInformation
+Parameter Sets: GetBySpecificJobInformation
 Aliases: 
 Accepted values: None, All, DebugInfo, Statistics
 
@@ -106,7 +106,7 @@ Specifies the ID of the job to get.
 
 ```yaml
 Type: Guid
-Parameter Sets: Specific JobInformation
+Parameter Sets: GetBySpecificJobInformation
 Aliases: 
 
 Required: True
@@ -127,7 +127,7 @@ The acceptable values for this parameter are:
 
 ```yaml
 Type: String
-Parameter Sets: All In Resource Group and Account
+Parameter Sets: GetAllInResourceGroupAndAccount
 Aliases: 
 
 Required: False
@@ -142,7 +142,7 @@ An optional ID that indicates only jobs part of the specified pipeline should be
 
 ```yaml
 Type: Guid
-Parameter Sets: All In Resource Group and Account
+Parameter Sets: GetAllInResourceGroupAndAccount
 Aliases: 
 
 Required: False
@@ -157,7 +157,7 @@ An optional ID that indicates only jobs part of the specified recurrence should 
 
 ```yaml
 Type: Guid
-Parameter Sets: All In Resource Group and Account
+Parameter Sets: GetAllInResourceGroupAndAccount
 Aliases: 
 
 Required: False
@@ -178,7 +178,7 @@ The acceptable values for this parameter are:
 
 ```yaml
 Type: JobResult[]
-Parameter Sets: All In Resource Group and Account
+Parameter Sets: GetAllInResourceGroupAndAccount
 Aliases: 
 Accepted values: None, Succeeded, Cancelled, Failed
 
@@ -205,7 +205,7 @@ The acceptable values for this parameter are:
 
 ```yaml
 Type: JobState[]
-Parameter Sets: All In Resource Group and Account
+Parameter Sets: GetAllInResourceGroupAndAccount
 Aliases: 
 Accepted values: Accepted, Compiling, Ended, New, Queued, Running, Scheduling, Starting, Paused, WaitingForCapacity
 
@@ -222,7 +222,7 @@ Use this parameter to filter the job list result to jobs submitted after the spe
 
 ```yaml
 Type: DateTimeOffset
-Parameter Sets: All In Resource Group and Account
+Parameter Sets: GetAllInResourceGroupAndAccount
 Aliases: 
 
 Required: False
@@ -238,7 +238,7 @@ Use this parameter to filter the job list result to jobs submitted before the sp
 
 ```yaml
 Type: DateTimeOffset
-Parameter Sets: All In Resource Group and Account
+Parameter Sets: GetAllInResourceGroupAndAccount
 Aliases: 
 
 Required: False
@@ -254,7 +254,7 @@ Use this parameter to filter the job list results to jobs submitted by a specifi
 
 ```yaml
 Type: String
-Parameter Sets: All In Resource Group and Account
+Parameter Sets: GetAllInResourceGroupAndAccount
 Aliases: 
 
 Required: False
@@ -269,7 +269,7 @@ An optional value which indicates the number of jobs to return. Default value is
 
 ```yaml
 Type: Int32
-Parameter Sets: All In Resource Group and Account
+Parameter Sets: GetAllInResourceGroupAndAccount
 Aliases: 
 
 Required: False
