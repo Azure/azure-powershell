@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.Network
             psRouteFilter.Rules = this.Rule;
 
             // Map to the sdk object
-            var routeFilterModel = Mapper.Map<MNM.RouteFilter>(psRouteFilter);
+            var routeFilterModel = NetworkResourceManagerProfile.Mapper.Map<MNM.RouteFilter>(psRouteFilter);
             routeFilterModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
             // Execute the Create RouteTable call

@@ -13,8 +13,8 @@ Removes an API.
 ## SYNTAX
 
 ```
-Remove-AzureRmApiManagementApi -Context <PsApiManagementContext> -ApiId <String> [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzureRmApiManagementApi -Context <PsApiManagementContext> -ApiId <String> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +24,8 @@ The **Remove-AzureRmAzureRmApiManagementApi** cmdlet removes an existing API.
 
 ### Example 1: Remove an API
 ```
-PS C:\>Remove-AzureRmAzureRmApiManagementApi -Context $ApiMgmtContext -ApiId "0123456789"
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Remove-AzureRmAzureRmApiManagementApi -Context $apimContext -ApiId "0123456789"
 ```
 
 This command removes the API with the specified ID.
@@ -58,6 +59,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+ 
+ ```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

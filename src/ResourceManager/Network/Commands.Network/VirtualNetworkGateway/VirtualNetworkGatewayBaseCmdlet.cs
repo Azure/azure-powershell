@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public PSVirtualNetworkGateway ToPsVirtualNetworkGateway(Management.Network.Models.VirtualNetworkGateway vnetGateway)
         {
-            var psVirtualNetworkGateway = Mapper.Map<PSVirtualNetworkGateway>(vnetGateway);
+            var psVirtualNetworkGateway = NetworkResourceManagerProfile.Mapper.Map<PSVirtualNetworkGateway>(vnetGateway);
 
             psVirtualNetworkGateway.Tag = TagsConversionHelper.CreateTagHashtable(vnetGateway.Tags);
 

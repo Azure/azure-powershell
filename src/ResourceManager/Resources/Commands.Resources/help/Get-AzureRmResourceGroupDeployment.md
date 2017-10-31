@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
+Module Name: AzureRM.Resources
 ms.assetid: 20CB842B-F7A9-4052-85D9-0DF9586D5FEA
 online version: 
 schema: 2.0.0
@@ -15,12 +16,13 @@ Gets the deployments in a resource group.
 ### The deployment name parameter set. (Default)
 ```
 Get-AzureRmResourceGroupDeployment [-ResourceGroupName] <String> [[-Name] <String>] [-ApiVersion <String>]
- [-Pre] [<CommonParameters>]
+ [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### The deployment Id parameter set.
 ```
-Get-AzureRmResourceGroupDeployment -Id <String> [-ApiVersion <String>] [-Pre] [<CommonParameters>]
+Get-AzureRmResourceGroupDeployment -Id <String> [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -75,6 +77,21 @@ You can specify a different version than the default version.
 Type: String
 Parameter Sets: (All)
 Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named

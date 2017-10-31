@@ -21,7 +21,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeStoreAccount", DefaultParameterSetName = BaseParameterSetName),
-     OutputType(typeof(List<PSDataLakeStoreAccount>), typeof(PSDataLakeStoreAccount))]
+     OutputType(typeof(List<PSDataLakeStoreAccountBasic>), typeof(PSDataLakeStoreAccount))]
     [Alias("Get-AdlStore")]
     public class GetAzureDataLakeStoreAccount : DataLakeStoreCmdletBase
     {
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             {
                 // List all accounts in given resource group if avaliable otherwise all accounts in the subscription
                 WriteObject(DataLakeStoreClient.ListAccounts(ResourceGroupName, null, null, null)
-                    .Select(element => new PSDataLakeStoreAccount(element))
+                    .Select(element => new PSDataLakeStoreAccountBasic(element))
                     .ToList(), true);
             }
         }

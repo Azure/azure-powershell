@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Network
             vnetGatewayConnectionSharedKey.Value = Value;
 
             // Map to the sdk object
-            var vnetGatewayConnectionSharedKeyModel = Mapper.Map<MNM.ConnectionSharedKey>(vnetGatewayConnectionSharedKey);
+            var vnetGatewayConnectionSharedKeyModel = NetworkResourceManagerProfile.Mapper.Map<MNM.ConnectionSharedKey>(vnetGatewayConnectionSharedKey);
 
             // Execute the Set VirtualNetworkConnectionSharedKey call
             this.VirtualNetworkGatewayConnectionClient.SetSharedKey(this.ResourceGroupName, this.Name, vnetGatewayConnectionSharedKeyModel);
