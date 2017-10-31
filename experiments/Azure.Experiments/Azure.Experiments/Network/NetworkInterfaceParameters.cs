@@ -6,7 +6,7 @@ using Microsoft.Azure.Management.Network;
 namespace Microsoft.Azure.Experiments.Network
 {
     public sealed class NetworkInterfaceParameters 
-        : ResourceParameters<NetworkInterface>
+        : NetworkParameters<NetworkInterface>
     {
         public SubnetParameters Subnet { get; }
 

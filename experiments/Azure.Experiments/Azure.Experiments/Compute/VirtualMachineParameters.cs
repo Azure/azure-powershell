@@ -25,5 +25,8 @@ namespace Microsoft.Azure.Experiments.Compute
                 .CreateCompute()
                 .VirtualMachines
                 .GetAsync(ResourceGroup.Name, Name);
+
+        public override string GetLocation(VirtualMachine value)
+            => value.Location;
     }
 }

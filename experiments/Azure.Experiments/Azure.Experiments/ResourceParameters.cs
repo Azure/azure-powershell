@@ -8,6 +8,8 @@ namespace Microsoft.Azure.Experiments
     {
         public ResourceGroupParameters ResourceGroup { get; }
 
+        public sealed override bool HasCommonLocation => true;
+
         public ResourceParameters(
             string name,
             ResourceGroupParameters resourceGroup,

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Network;
+using Microsoft.Azure.Management.ResourceManager;
 using Microsoft.Rest;
 
 namespace Microsoft.Azure.Experiments
@@ -25,6 +26,12 @@ namespace Microsoft.Azure.Experiments
 
         public ComputeManagementClient CreateCompute()
             => new ComputeManagementClient(Credentials)
+            {
+                SubscriptionId = SubscriptionId
+            };
+
+        public ResourceManagementClient CreateResource()
+            => new ResourceManagementClient(Credentials)
             {
                 SubscriptionId = SubscriptionId
             };

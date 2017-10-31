@@ -8,6 +8,8 @@ namespace Microsoft.Azure.Experiments.Network
     {
         public VirtualNetworkParameters VirtualNetwork { get; }
 
+        public override bool HasCommonLocation => true;
+
         public SubnetParameters(
             string name, VirtualNetworkParameters virtualNetwork)
             : base(name, new[] { virtualNetwork })
@@ -22,5 +24,8 @@ namespace Microsoft.Azure.Experiments.Network
                 await VirtualNetwork.GetOrNullAsync(context, getParameters);
             return virtualNetwork?.Subnets.FirstOrDefault(s => s.Name == Name);
         }
+
+        public override string GetLocation(Subnet value)
+            => null;
     }
 }

@@ -5,7 +5,7 @@ using Microsoft.Azure.Management.Network;
 namespace Microsoft.Azure.Experiments.Network
 {
     public sealed class VirtualNetworkParameters 
-        : ResourceParameters<VirtualNetwork>
+        : NetworkParameters<VirtualNetwork>
     {
         public VirtualNetworkParameters(
             string name, ResourceGroupParameters resourceGroup)

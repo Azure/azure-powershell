@@ -15,6 +15,11 @@ namespace Microsoft.Azure.Experiments
 
         public IEnumerable<Parameters> Dependencies { get; }
 
+        public abstract bool HasCommonLocation { get; }
+
+        public abstract Task<DependencyLocation> GetDependencyLocation(
+            Context context, IGetParameters getParameters);
+
         protected Parameters(string name, IEnumerable<Parameters> dependencies)
         {
             Name = name;
@@ -30,7 +35,8 @@ namespace Microsoft.Azure.Experiments
         {
         }
 
-        public Task<T> GetOrNullAsync(Context context, IGetParameters getParameters)
+        public Task<T> GetOrNullAsync(
+            Context context, IGetParameters getParameters)
             => getParameters.GetOrAdd(
                 this,
                 async () => 
@@ -48,6 +54,24 @@ namespace Microsoft.Azure.Experiments
 
         protected abstract Task<T> GetAsync(
             Context context, IGetParameters getParameters);
+
+        public abstract string GetLocation(T value);
+
+        public sealed override async Task<DependencyLocation> GetDependencyLocation(
+            Context context, IGetParameters getParameters)
+        {
+            var info = await GetOrNullAsync(context, getParameters);
+            var location = info == null ? null : GetLocation(info);
+            if (location == null)
+            {
+                var tasks = Dependencies.Select(
+                    d => d.GetDependencyLocation(context, getParameters));
+                var dependencyLocations = await Task.WhenAll(tasks);
+                return dependencyLocations.Aggregate(
+                    (DependencyLocation)null, DependencyLocationExtensions.Best);
+            }
+            return new DependencyLocation(location, HasCommonLocation);
+        }
 
         //protected abstract Task<T> CreateAsync(
         //    Context context, ICreateParameters createParameters);

@@ -6,7 +6,7 @@ using Microsoft.Azure.Management.Network;
 namespace Microsoft.Azure.Experiments.Network
 {
     public sealed class PublicIpAddressParameters
-        : ResourceParameters<PublicIPAddress>
+        : NetworkParameters<PublicIPAddress>
     {
         public PublicIpAddressParameters(
             string name, ResourceGroupParameters resourceGroup)

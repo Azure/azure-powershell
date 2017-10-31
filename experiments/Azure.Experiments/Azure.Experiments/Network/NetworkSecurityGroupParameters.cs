@@ -5,7 +5,7 @@ using Microsoft.Azure.Management.Network;
 namespace Microsoft.Azure.Experiments.Network
 {
     public sealed class NetworkSecurityGroupParameters
-        : ResourceParameters<NetworkSecurityGroup>
+        : NetworkParameters<NetworkSecurityGroup>
     {
         public NetworkSecurityGroupParameters(
             string name, ResourceGroupParameters resourceGroup) 
