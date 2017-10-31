@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
+Module Name: AzureRM.Insights
 ms.assetid: A4C605DD-9B2E-4EE9-BD1F-1352D605C33F
 online version: 
 schema: 2.0.0
@@ -14,18 +15,15 @@ Creates an Autoscale profile.
 
 ### Parameters for New-AzureRmAutoscaleProfile cmdlet without scheduled times
 ```
-New-AzureRmAutoscaleProfile -Name <String> -DefaultCapacity <String> -MaximumCapacity <String>
- -MinimumCapacity <String>
- -Rule <System.Collections.Generic.List`1[Microsoft.Azure.Management.Insights.Models.ScaleRule]>
- [<CommonParameters>]
+New-AzureRmAutoscaleProfile -Name <String> -DefaultCapacity <String> -MaximumCapacity <String> -MinimumCapacity <String>
+ -Rule <System.Collections.Generic.List`1[Microsoft.Azure.Management.Insights.Models.ScaleRule]> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Parameters for New-AzureRmAutoscaleProfile cmdlet using fix date scheduling
 ```
 New-AzureRmAutoscaleProfile -Name <String> -DefaultCapacity <String> -MaximumCapacity <String>
  -MinimumCapacity <String> -StartTimeWindow <DateTime> -EndTimeWindow <DateTime> -TimeWindowTimeZone <String>
- -Rule <System.Collections.Generic.List`1[Microsoft.Azure.Management.Insights.Models.ScaleRule]>
- [<CommonParameters>]
+ -Rule <System.Collections.Generic.List`1[Microsoft.Azure.Management.Insights.Models.ScaleRule]> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Parameters for New-AzureRmAutoscaleProfile cmdlet using recurrent scheduling
@@ -37,7 +35,7 @@ New-AzureRmAutoscaleProfile -Name <String> -DefaultCapacity <String> -MaximumCap
  -ScheduleMinute <System.Collections.Generic.List`1[System.Nullable`1[System.Int32]]>
  -ScheduleTimeZone <String>
  -Rule <System.Collections.Generic.List`1[Microsoft.Azure.Management.Insights.Models.ScaleRule]>
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -136,6 +134,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EndTimeWindow
 Specifies the end of the time window.
 
@@ -228,7 +241,7 @@ Accept wildcard characters: False
 Specifies the list of rules to add to the profile.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Management.Insights.Models.ScaleRule]
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.ScaleRule]
 Parameter Sets: (All)
 Aliases: Rules
 
