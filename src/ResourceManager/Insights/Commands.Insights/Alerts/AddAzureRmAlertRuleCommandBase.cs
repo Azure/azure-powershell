@@ -53,6 +53,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
         [ValidateNotNullOrEmpty]
+        [Alias("ResourceGroup")]
         public string ResourceGroupName { get; set; }
 
         /// <summary>
@@ -77,7 +78,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// </summary>
         protected override void ProcessRecordInternal()
         {
-            WriteWarning("Parameter name change: The parameter plural names for the parameters will be deprecated in May 2018 in favor of the singular versions of the same names.");
+            this.WriteIdentifiedWarning("Parameter name change", "The parameter plural names for the parameters will be deprecated in May 2018 in favor of the singular versions of the same names.");
             if (ShouldProcess(
                     target: string.Format("Create/update an alert rule: {0} from resource group: {1}", this.Name, this.ResourceGroupName),
                     action: "Create/update an alert rule"))

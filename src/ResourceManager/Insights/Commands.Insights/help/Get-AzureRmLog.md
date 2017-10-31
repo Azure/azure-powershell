@@ -18,16 +18,16 @@ Get-AzureRmLog [-StartTime <DateTime>] [-EndTime <DateTime>] [-Status <String>] 
  [-DetailedOutput] [-CorrelationId] <String> [-MaxRecord <Int32>] [<CommonParameters>]
 ```
 
-### Query on ResourceIdName
+### Query on ResourceId
 ```
 Get-AzureRmLog [-StartTime <DateTime>] [-EndTime <DateTime>] [-Status <String>] [-Caller <String>]
  [-DetailedOutput] [-ResourceId] <String> [-MaxRecord <Int32>] [<CommonParameters>]
 ```
 
-### Query on ResourceGroupProvider
+### Query on ResourceGroupName
 ```
 Get-AzureRmLog [-StartTime <DateTime>] [-EndTime <DateTime>] [-Status <String>] [-Caller <String>]
- [-DetailedOutput] [-ResourceGroup] <String> [-MaxRecord <Int32>] [<CommonParameters>]
+ [-DetailedOutput] [-ResourceGroupName] <String> [-MaxRecord <Int32>] [<CommonParameters>]
 ```
 
 ### Query on ResourceProvider
@@ -109,7 +109,7 @@ This command lists at most 1000 events associated with the specified correlation
 
 ### Example 9: Get an event log for a resource group
 ```
-PS C:\>Get-AzureRmLog -ResourceGroup "Contoso-Web-CentralUS"
+PS C:\>Get-AzureRmLog -ResourceGroupName "Contoso-Web-CentralUS"
 ```
 
 This command lists at most 1000 the events associated with the specified resource group that took place 7 days from the current date/time.
@@ -275,13 +275,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroup
+### -ResourceGroupName
 Specifies the name of the resource group.
 
 ```yaml
 Type: String
 Parameter Sets: Query on ResourceGroupProvider
-Aliases: 
+Aliases: ResourceGroup
 
 Required: True
 Position: 0

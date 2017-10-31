@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.LogProfiles
             // With all arguments
             cmdlet.Name = Utilities.Name;
             cmdlet.Location = new List<string>() {"East US"};
-            cmdlet.RetentionInDay = 10;
+            cmdlet.RetentionInDays = 10;
             cmdlet.ServiceBusRuleId = "miBusId";
             cmdlet.StorageAccountId = "miCuentaId";
             cmdlet.Category = new List<string>() {"cat1"};

@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Events
             // Setting required parameter
             cmdlet.CorrelationId = Utilities.Correlation;
             cmdlet.ResourceId = null;
-            cmdlet.ResourceGroup = null;
+            cmdlet.ResourceGroupName = null;
             cmdlet.ResourceProvider = null;
 
             Utilities.ExecuteVerifications(
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Events
             var startDate = DateTime.Now.AddSeconds(-1);
 
             // Setting required parameter
-            cmdlet.ResourceGroup = Utilities.ResourceGroup;
+            cmdlet.ResourceGroupName = Utilities.ResourceGroup;
             cmdlet.CorrelationId = null;
             cmdlet.ResourceId = null;
             cmdlet.ResourceProvider = null;
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Events
 
             // Setting required parameter
             cmdlet.ResourceId = Utilities.ResourceUri;
-            cmdlet.ResourceGroup = null;
+            cmdlet.ResourceGroupName = null;
             cmdlet.CorrelationId = null;
             cmdlet.ResourceProvider = null;
 
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Events
             // Setting required parameter
             cmdlet.ResourceProvider = Utilities.ResourceProvider;
             cmdlet.ResourceId = null;
-            cmdlet.ResourceGroup = null;
+            cmdlet.ResourceGroupName = null;
             cmdlet.CorrelationId = null;
 
             Utilities.ExecuteVerifications(

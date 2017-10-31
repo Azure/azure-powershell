@@ -57,7 +57,7 @@ Specifies the name of the resource group for the alert rule.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: ResourceGroup
 
 Required: True
 Position: Named

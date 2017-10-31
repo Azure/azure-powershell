@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Management.Automation;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Reflection;
@@ -74,6 +75,42 @@ namespace Microsoft.Azure.Commands.Insights
                     records.Add(fullDetails ? new PSEventData(current) : new PSEventDataNoDetails(current));
                 }
             }
+        }
+
+        /// <summary>
+        /// Gets a string with the name of the cmdlet defined by the type t
+        /// </summary>
+        /// <param name="t">Type of the class, i.e. cmdlet to identify</param>
+        /// <returns>A string with the name of the cmdlet defined by the type t or a message indicating the name of the class t is the CmdletAttribute is not found in t</returns>
+        public static string GetCmdletName(Type t)
+        {
+            CmdletAttribute cmdletAttribute = (CmdletAttribute)Attribute.GetCustomAttribute(t, typeof(CmdletAttribute));
+            if (cmdletAttribute == null)
+            {
+                return string.Format(CultureInfo.InvariantCulture, "Unknown cmdlet name. Type: {0}", t.Name);
+            }
+            else
+            {
+                return string.Format(CultureInfo.InvariantCulture, "{0}-{1}", cmdletAttribute.VerbName, cmdletAttribute.NounName);
+            }
+        }
+
+        /// <summary>
+        /// Formats a message to include the cmdlet name, a topic, and the message itself
+        /// </summary>
+        /// <param name="t">The class/type of the cmdlet</param>
+        /// <param name="topic">The topic of the message</param>
+        /// <param name="message">The message itself</param>
+        /// <returns>A string with the sollowing structure: [{cmdlet-name}] {topic}: {message}</returns>
+        public static string FormatIdentifiedMessage(Type t, string topic, string message)
+        {
+            string cmdletName = Utilities.GetCmdletName(t);
+            return string.Format(
+                    CultureInfo.InvariantCulture,
+                    "[{0}] {1}: {2}",
+                    cmdletName,
+                    topic,
+                    message);
         }
     }
 }

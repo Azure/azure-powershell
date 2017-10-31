@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
             // Add-AutoscaleSetting -SettingSpec <AutoscaleSettingResource> -ResourceGroup <String> [-DisableSetting [<SwitchParameter>]] [-AutoscaleProfiles <List[AutoscaleProfile]>] [-Profile <AzureSMProfile>] [<CommonParameters>]
             // Add-AutoscaleSetting -SettingSpec $spec -ResourceGroup $Utilities.ResourceGroup
             // A NOP
-            cmdlet.SettingSpec = spec;
+            cmdlet.InputObject = spec;
             cmdlet.ResourceGroupName = Utilities.ResourceGroup;
             cmdlet.ExecuteCmdlet();
 
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
             cmdlet.ExecuteCmdlet();
 
             // Add-AutoscaleSetting -Location <String> -Name <String> -ResourceGroup <String> [-DisableSetting [<SwitchParameter>]] [-AutoscaleProfiles <List[AutoscaleProfile]>] -TargetResourceId <String> [-Profile <AzureSMProfile>] [<CommonParameters>]
-            cmdlet.SettingSpec = null;
+            cmdlet.InputObject = null;
             cmdlet.Name = "SettingName";
             cmdlet.Location = "East US";
             cmdlet.ResourceGroupName = Utilities.ResourceGroup;

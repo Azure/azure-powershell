@@ -14,7 +14,7 @@ Creates a new activity log profile. This profile is used to either archive the a
 
 ```
 Add-AzureRmLogProfile -Name <String> [-StorageAccountId <String>] [-ServiceBusRuleId <String>]
- [-RetentionInDay <Int32>] -Location <System.Collections.Generic.List`1[System.String]>
+ [-RetentionInDays <Int32>] -Location <System.Collections.Generic.List`1[System.String]>
  [-Category <System.Collections.Generic.List`1[System.String]>] [<CommonParameters>]
 ```
 
@@ -87,13 +87,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -RetentionInDay
+### -RetentionInDays
 Specifies the retention policy, in days. This is the number of days the logs are preserved in the storage account specified. To retain the data forever set this to **0**. If it's not specified, then it defaults to **0**. Normal standard storage or event hub billing rates will apply for data retention.
 
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: RetentionInDays
+Aliases:
 
 Required: False
 Position: Named

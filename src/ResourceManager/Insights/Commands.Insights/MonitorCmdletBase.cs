@@ -33,6 +33,29 @@ namespace Microsoft.Azure.Commands.Insights
         protected abstract void ProcessRecordInternal();
 
         /// <summary>
+        /// Writes a warning message with the name of the cmdlet, a topic and the message itself
+        /// </summary>
+        /// <param name="topic">The topic, i.e. short description/category, of the message</param>
+        /// <param name="message">The message itself</param>
+        /// <param name="withTimeStamp">true if the message should include a timestamp, false (default) it no timestamp should be included</param>
+        protected void WriteIdentifiedWarning(string topic, string message, bool withTimeStamp = false)
+        {
+            string formattedMessage = Utilities.FormatIdentifiedMessage(
+                this.GetType(),
+                topic,
+                message);
+
+            if (withTimeStamp)
+            {
+                WriteWarningWithTimestamp(formattedMessage);
+            }
+            else
+            {
+                WriteWarning(formattedMessage);
+            }
+        }
+
+        /// <summary>
         /// Execute the cmdlet
         /// </summary>
         public override void ExecuteCmdlet()

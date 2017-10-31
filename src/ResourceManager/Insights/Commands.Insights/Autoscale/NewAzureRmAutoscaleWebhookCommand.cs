@@ -45,7 +45,11 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            WriteWarning("Parameter name change: The parameter plural names for the parameters will be deprecated in May 2018 in favor of the singular versions of the same names.");
+            WriteWarning(
+                Utilities.FormatIdentifiedMessage(
+                    this.GetType(),
+                    "Parameter name change",
+                    "The parameter plural names for the parameters will be deprecated in May 2018 in favor of the singular versions of the same names."));
             Utilities.ValidateUri(this.ServiceUri, "ServiceUri");
 
             var dictionary = this.Property == null
