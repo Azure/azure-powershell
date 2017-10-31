@@ -48,9 +48,9 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         public override void ExecuteCmdlet()
         {
             PasswordProfile profile = null;
-            string decodedPassword = SecureStringExtensions.ConvertToString(Password);
-            if (!string.IsNullOrEmpty(decodedPassword))
+            if (Password != null && Password.Length > 0)
             {
+                string decodedPassword = SecureStringExtensions.ConvertToString(Password);
                 profile = new PasswordProfile
                 {
                     Password = decodedPassword,
