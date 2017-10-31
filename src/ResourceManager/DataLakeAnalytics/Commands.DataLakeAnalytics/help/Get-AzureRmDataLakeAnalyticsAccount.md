@@ -111,7 +111,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### PSDataLakeAnalyticsAccount
 The specified account details.
 
-### List<PSDataLakeAnalyticsAccount>
+### List<PSDataLakeAnalyticsAccountBasic>
 The list of accounts in the specified resource group or subscription.
 
 ## NOTES
