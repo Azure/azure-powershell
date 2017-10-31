@@ -20,19 +20,16 @@
 // code is regenerated.
 
 using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
-using AutoMapper;
-using CNM = Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network.Automation
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmNetworkWatcherReachabilityProvidersList", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSAvailableProvidersList))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmNetworkWatcherReachabilityProvidersList", DefaultParameterSetName = "SetByName"), OutputType(typeof(PSAvailableProvidersList))]
     public class GetAzureRmNetworkWatcherAvailableProviders : NetworkBaseCmdlet
     {
         [Parameter(
@@ -46,30 +43,33 @@ namespace Microsoft.Azure.Commands.Network.Automation
         [Parameter(
             Mandatory = true,
             HelpMessage = "The name of network watcher.",
-            ParameterSetName = "SetByName",
-            ValueFromPipeline = true,
-            ValueFromPipelineByPropertyName = true)]
+            ParameterSetName = "SetByName")]
         [ValidateNotNullOrEmpty]
         public string NetworkWatcherName { get; set; }
 
         [Parameter(
             Mandatory = true,
             HelpMessage = "The name of the network watcher resource group.",
-            ParameterSetName = "SetByName",
-            ValueFromPipelineByPropertyName = true)]
+            ParameterSetName = "SetByName")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Id of network watcher resource.",
+            ParameterSetName = "SetByResourceId")]
+        public string ResourceId { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "Optional Azure regions to scope the query to.",
             ValueFromPipelineByPropertyName = true)]
-        public List<string> AzureLocations { get; set; }
+        public List<string> Location { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The name of the country.",
-            ValueFromPipelineByPropertyName = true)]
+            HelpMessage = "The name of the country.")]
         public string Country { get; set; }
 
         [Parameter(
@@ -80,8 +80,7 @@ namespace Microsoft.Azure.Commands.Network.Automation
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The name of the city.",
-            ValueFromPipelineByPropertyName = true)]
+            HelpMessage = "The name of the city.")]
         public string City { get; set; }
 
         public override void Execute()
@@ -90,17 +89,25 @@ namespace Microsoft.Azure.Commands.Network.Automation
 
             var vAvailableProvidersListParameters = new AvailableProvidersListParameters
             {
-                AzureLocations = this.AzureLocations,
+                AzureLocations = this.Location,
                 Country = this.Country,
                 State = this.State,
                 City = this.City,
             };
 
-            if (ParameterSetName.Contains("SetByResource"))
+            if (string.Equals(this.ParameterSetName, "SetByResource", StringComparison.OrdinalIgnoreCase))
             {
                 ResourceGroupName = this.NetworkWatcher.ResourceGroupName;
                 NetworkWatcherName = this.NetworkWatcher.Name;
             }
+
+            if (string.Equals(this.ParameterSetName, "SetByResourceId", StringComparison.OrdinalIgnoreCase))
+            {
+                var resourceInfo = new ResourceIdentifier(this.ResourceId);
+                ResourceGroupName = resourceInfo.ResourceGroupName;
+                NetworkWatcherName = resourceInfo.ResourceName;
+            }
+
             var vNetworkWatcherResult = this.NetworkClient.NetworkManagementClient.NetworkWatchers.ListAvailableProviders(ResourceGroupName, NetworkWatcherName, vAvailableProvidersListParameters);
             var vNetworkWatcherModel = NetworkResourceManagerProfile.Mapper.Map<PSAvailableProvidersList>(vNetworkWatcherResult);
             WriteObject(vNetworkWatcherModel);
