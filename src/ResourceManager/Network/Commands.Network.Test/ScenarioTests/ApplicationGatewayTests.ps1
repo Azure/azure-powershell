@@ -89,6 +89,7 @@ function Test-ApplicationGatewayCRUD
 	$authCertName = Get-ResourceName
 	$probe01Name = Get-ResourceName
 	$probe02Name = Get-ResourceName
+	$sslCert01Name = Get-ResourceName
 
 	try 
 	{
@@ -121,7 +122,7 @@ function Test-ApplicationGatewayCRUD
 		$nicPool = New-AzureRmApplicationGatewayBackendAddressPool -Name $nicPoolName
 
 		$fp01 = New-AzureRmApplicationGatewayFrontendPort -Name $frontendPort01Name  -Port 80
-		$fp02 = New-AzureRmApplicationGatewayFrontendPort -Name $frontendPort02Name  -Port 8080
+		$fp02 = New-AzureRmApplicationGatewayFrontendPort -Name $frontendPort02Name  -Port 443
 
 		$authCertFilePath = $basedir + "\ScenarioTests\Data\ApplicationGatewayAuthCert.cer"
 		$authcert01 = New-AzureRmApplicationGatewayAuthenticationCertificate -Name $authCertName -CertificateFile $authCertFilePath
@@ -160,8 +161,12 @@ function Test-ApplicationGatewayCRUD
 		Remove-AzureRmApplicationGatewayConnectionDraining -BackendHttpSettings $poolSetting02
 		Assert-Null $poolSetting02.connectionDraining
 
+		$pw01 = ConvertTo-SecureString "P@ssw0rd" -AsPlainText -Force
+		$sslCert01Path = $basedir + "\ScenarioTests\Data\ApplicationGatewaySslCert.pfx"
+		$sslCert01 = New-AzureRmApplicationGatewaySslCertificate -Name $sslCert01Name -CertificateFile $sslCert01Path -Password $pw01
+
 		$listener01 = New-AzureRmApplicationGatewayHttpListener -Name $listener01Name -Protocol Http -FrontendIPConfiguration $fipconfig01 -FrontendPort $fp01
-		$listener02 = New-AzureRmApplicationGatewayHttpListener -Name $listener02Name -Protocol Http -FrontendIPConfiguration $fipconfig02 -FrontendPort $fp02
+		$listener02 = New-AzureRmApplicationGatewayHttpListener -Name $listener02Name -Protocol Https -SslCertificate $sslCert01 -FrontendIPConfiguration $fipconfig02 -FrontendPort $fp02
 
 		$rule01 = New-AzureRmApplicationGatewayRequestRoutingRule -Name $rule01Name -RuleType basic -BackendHttpSettings $poolSetting01 -HttpListener $listener01 -BackendAddressPool $pool
 		$rule02 = New-AzureRmApplicationGatewayRequestRoutingRule -Name $rule02Name -RuleType basic -BackendHttpSettings $poolSetting02 -HttpListener $listener02 -BackendAddressPool $pool
@@ -175,7 +180,7 @@ function Test-ApplicationGatewayCRUD
 		$firewallConfig = New-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -Enabled $true -FirewallMode Prevention -RuleSetType "OWASP" -RuleSetVersion "2.2.9" -DisabledRuleGroups $disabledRuleGroup1,$disabledRuleGroup2
 
 		# Create Application Gateway
-		$appgw = New-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Location $location -Probes $probe01, $probe02 -BackendAddressPools $pool, $nicPool -BackendHttpSettingsCollection $poolSetting01,$poolSetting02 -FrontendIpConfigurations $fipconfig01, $fipconfig02  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01, $fp02 -HttpListeners $listener01, $listener02 -RequestRoutingRules $rule01, $rule02 -Sku $sku -SslPolicy $sslPolicy -AuthenticationCertificates $authcert01 -WebApplicationFirewallConfiguration $firewallConfig
+		$appgw = New-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Location $location -Probes $probe01, $probe02 -BackendAddressPools $pool, $nicPool -BackendHttpSettingsCollection $poolSetting01,$poolSetting02 -FrontendIpConfigurations $fipconfig01, $fipconfig02  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01, $fp02 -HttpListeners $listener01, $listener02 -RequestRoutingRules $rule01, $rule02 -Sku $sku -SslPolicy $sslPolicy -AuthenticationCertificates $authcert01 -SslCertificates $sslCert01 -WebApplicationFirewallConfiguration $firewallConfig
 
 		# Get Application Gateway
 		$getgw = Get-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname
@@ -199,6 +204,10 @@ function Test-ApplicationGatewayCRUD
 		Assert-NotNull $getgw.Probes[1].Match
 		Assert-NotNull $getgw.Probes[1].Match.StatusCodes
 		Assert-AreEqual 0 $getgw.Probes[1].Match.StatusCodes.Count
+
+		# Check ssl cert exists and pw is null
+		Assert-NotNull $getgw.SslCertificates[0]
+		Assert-Null $getgw.SslCertificates[0].Password
 
 		# Get Application Gateway backend health with expanded resource
 		$backendHealth = Get-AzureRmApplicationGatewayBackendHealth -Name $appgwName -ResourceGroupName $rgname -ExpandResource "backendhealth/applicationgatewayresource"
