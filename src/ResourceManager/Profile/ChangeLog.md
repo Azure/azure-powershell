@@ -28,6 +28,8 @@
 - Clear-AzureRmDefault
     - Use this cmdlet to remove the current default resource group
     - ```Clear-AzureRmDefault -ResourceGroup```
+- Add-AzureRmEnvironment and Set-AzureRmEnvironment
+    - Add the BatchAudience parameter, which allows you to specify the Azure Batch Active Directory audience to use when acquiring authentication tokens for the Batch service.
 
 ## Version 3.4.1
 * LocationCompleterAttribute added and available for cmdlets which use the -Location parameter
