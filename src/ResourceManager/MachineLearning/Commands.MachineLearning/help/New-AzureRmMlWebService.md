@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.MachineLearning.dll-Help.xml
+Module Name: AzureRM.MachineLearning
 online version: 
 schema: 2.0.0
 ---
@@ -14,13 +15,14 @@ Creates a new web service.
 ### Create a new Azure ML webservice from a JSON definiton file.
 ```
 New-AzureRmMlWebService -ResourceGroupName <String> -Location <String> -Name <String> -DefinitionFile <String>
- [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Create a new Azure ML webservice from a WebService instance definition.
 ```
 New-AzureRmMlWebService -ResourceGroupName <String> -Location <String> -Name <String>
- -NewWebServiceDefinition <WebService> [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -NewWebServiceDefinition <WebService> [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -52,6 +54,21 @@ New-AzureRmMlWebService -ResourceGroupName "myresourcegroup" -Name "mywebservice
 You can obtain a web service object instance to customize before publishing as a resource by using the Import-AzureRmMlWebService cmdlet.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefinitionFile
 Specifes the path to the file containing the JSON format definition of the web service.
@@ -194,7 +211,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### WebService
-
 Parameter 'NewWebServiceDefinition' accepts value of type 'WebService' from the pipeline
 
 ## OUTPUTS
