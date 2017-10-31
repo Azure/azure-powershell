@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.MachineLearning.dll-Help.xml
+Module Name: AzureRM.MachineLearning
 online version: 
 schema: 2.0.0
 ---
@@ -17,13 +18,14 @@ Update-AzureRmMlWebService -ResourceGroupName <String> -Name <String> [-Title <S
  [-IsReadOnly] [-Keys <WebServiceKeys>] [-StorageAccountKey <String>] [-Diagnostics <DiagnosticsConfiguration>]
  [-RealtimeConfiguration <RealtimeConfiguration>] [-Assets <Hashtable>]
  [-Input <ServiceInputOutputSpecification>] [-Output <ServiceInputOutputSpecification>]
- [-Parameters <Hashtable>] [-Package <GraphPackage>] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Parameters <Hashtable>] [-Package <GraphPackage>] [-Force] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Create a new Azure ML webservice from a WebService instance definition.
 ```
 Update-AzureRmMlWebService -ResourceGroupName <String> -Name <String> -ServiceUpdates <WebService> [-Force]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -66,6 +68,21 @@ The set of assets (e.g. modules, datasets) that make up the web service.
 Type: Hashtable
 Parameter Sets: Update specific properties of the .
 Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -341,7 +358,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### WebService
-
 Parameter 'ServiceUpdates' accepts value of type 'WebService' from the pipeline
 
 ## OUTPUTS
