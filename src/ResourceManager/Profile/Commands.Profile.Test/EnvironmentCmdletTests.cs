@@ -370,7 +370,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
                 StorageEndpoint = "https://StorageEndpoint",
                 SqlDatabaseDnsSuffix = "SqlDatabaseDnsSuffix",
                 TrafficManagerDnsSuffix = "TrafficManagerDnsSuffix",
-                GraphAudience = "GaraphAudience"
+                GraphAudience = "GaraphAudience",
+                BatchEndpointResourceId = "BatchResourceId"
             };
 
             var dict = new Dictionary<string, object>();
@@ -390,6 +391,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             dict["SqlDatabaseDnsSuffix"] = "SqlDatabaseDnsSuffix";
             dict["TrafficManagerDnsSuffix"] = "TrafficManagerDnsSuffix";
             dict["GraphAudience"] = "GaraphAudience";
+            dict["BatchEndpointResourceId"] = "BatchResourceId";
             cmdlet.SetBoundParameters(dict);
 
             cmdlet.InvokeBeginProcessing();
@@ -398,7 +400,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             Assert.Equal(cmdlet.Name, actual.Name);
             Assert.Equal(cmdlet.EnableAdfsAuthentication.ToBool(), actual.EnableAdfsAuthentication);
             Assert.Equal(cmdlet.ActiveDirectoryEndpoint + "/", actual.ActiveDirectoryAuthority, StringComparer.OrdinalIgnoreCase);
-            Assert.Equal(cmdlet.ActiveDirectoryServiceEndpointResourceId + "/",
+            Assert.Equal(cmdlet.ActiveDirectoryServiceEndpointResourceId,
                 actual.ActiveDirectoryServiceEndpointResourceId);
             Assert.Equal(cmdlet.AdTenant, actual.AdTenant);
             Assert.Equal(cmdlet.AzureKeyVaultDnsSuffix, actual.AzureKeyVaultDnsSuffix);
@@ -413,6 +415,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             Assert.Equal(cmdlet.SqlDatabaseDnsSuffix, actual.SqlDatabaseDnsSuffix);
             Assert.Equal(cmdlet.TrafficManagerDnsSuffix, actual.TrafficManagerDnsSuffix);
             Assert.Equal(cmdlet.GraphAudience, actual.GraphEndpointResourceId);
+            Assert.Equal(cmdlet.BatchEndpointResourceId, actual.BatchEndpointResourceId);
             commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<PSAzureEnvironment>()), Times.Once());
             IAzureEnvironment env = AzureRmProfileProvider.Instance.Profile.GetEnvironment("KaTaL");
             Assert.Equal(env.Name, cmdlet.Name);
@@ -611,6 +614,93 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             Assert.Equal(env3.GetEndpoint(AzureEnvironment.Endpoint.Gallery), cmdlet3.GalleryEndpoint);
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SetEnvironmentForStack()
+        {
+            Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
+            SetupConfirmation(commandRuntimeMock);
+            var cmdlet = new SetAzureRMEnvironmentCommand()
+            {
+                CommandRuntime = commandRuntimeMock.Object,
+                Name = "Stack",
+                ARMEndpoint = "https://management.local.azurestack.external/"
+            };
+
+            Mock<EnvironmentHelper> envHelperMock = new Mock<EnvironmentHelper>();
+            MetadataResponse metadataEndpoints = new MetadataResponse
+                                                 {
+                                                     GalleryEndpoint = "https://galleryendpoint",
+                                                     GraphEndpoint = "https://graphendpoint",
+                                                     PortalEndpoint = "https://portalendpoint",
+                                                     authentication = new Authentication
+                                                                      {
+                                                                          Audiences = new[] { "audience1", "audience2" },
+                                                                          LoginEndpoint = "https://loginendpoint"
+                                                                      }
+                                                 };
+            envHelperMock.Setup(f => f.RetrieveMetaDataEndpoints(It.IsAny<string>())).ReturnsAsync(metadataEndpoints);
+            envHelperMock.Setup(f => f.RetrieveDomain(It.IsAny<string>())).Returns("domain");
+            cmdlet.EnvHelper = envHelperMock.Object;
+            cmdlet.SetParameterSet("ARMEndpoint");
+            cmdlet.InvokeBeginProcessing();
+            cmdlet.ExecuteCmdlet();
+            cmdlet.InvokeEndProcessing();
+
+            commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<PSAzureEnvironment>()), Times.Once());
+            IAzureEnvironment env = AzureRmProfileProvider.Instance.Profile.GetEnvironment("Stack");
+            Assert.Equal(env.Name, cmdlet.Name);
+            Assert.Equal(cmdlet.ARMEndpoint, env.GetEndpoint(AzureEnvironment.Endpoint.ResourceManager));
+            Assert.Equal("https://loginendpoint/", env.GetEndpoint(AzureEnvironment.Endpoint.ActiveDirectory));
+            Assert.Equal("audience1", env.GetEndpoint(AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId));
+            Assert.Equal("https://graphendpoint", env.GetEndpoint(AzureEnvironment.Endpoint.GraphEndpointResourceId));
+            envHelperMock.Verify(f => f.RetrieveDomain(It.IsAny<string>()), Times.Once);
+            envHelperMock.Verify(f => f.RetrieveMetaDataEndpoints(It.IsAny<string>()), Times.Once);
+
+            // Update onpremise to true
+            var cmdlet2 = new SetAzureRMEnvironmentCommand()
+            {
+                CommandRuntime = commandRuntimeMock.Object,
+                Name = "Stack",
+                EnableAdfsAuthentication = true
+            };
+
+            cmdlet2.MyInvocation.BoundParameters.Add("Name", "Stack");
+            cmdlet2.MyInvocation.BoundParameters.Add("EnableAdfsAuthentication", true);
+
+            cmdlet2.InvokeBeginProcessing();
+            cmdlet2.ExecuteCmdlet();
+            cmdlet2.InvokeEndProcessing();
+
+            commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<PSAzureEnvironment>()), Times.Exactly(2));
+            IAzureEnvironment env2 = AzureRmProfileProvider.Instance.Profile.GetEnvironment("stack");
+            Assert.Equal(env2.Name, cmdlet2.Name);
+            Assert.Equal(env2.GetEndpoint(AzureEnvironment.Endpoint.PublishSettingsFileUrl), cmdlet.PublishSettingsFileUrl);
+            Assert.True(env2.OnPremise);
+
+            // Update gallery endpoint
+            var cmdlet3 = new SetAzureRMEnvironmentCommand()
+            {
+                CommandRuntime = commandRuntimeMock.Object,
+                Name = "Stack",
+                GalleryEndpoint = "http://galleryendpoint.com",
+            };
+
+            cmdlet3.MyInvocation.BoundParameters.Add("Name", "stack");
+            cmdlet3.MyInvocation.BoundParameters.Add("GalleryEndpoint", "http://galleryendpoint.com");
+
+            cmdlet3.InvokeBeginProcessing();
+            cmdlet3.ExecuteCmdlet();
+            cmdlet3.InvokeEndProcessing();
+
+            // Ensure gallery endpoint is updated and OnPremise value is preserved
+            commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<PSAzureEnvironment>()), Times.Exactly(3));
+            IAzureEnvironment env3 = AzureRmProfileProvider.Instance.Profile.GetEnvironment("stack");
+            Assert.Equal(env3.Name, cmdlet3.Name);
+            Assert.Equal(env3.GetEndpoint(AzureEnvironment.Endpoint.PublishSettingsFileUrl), cmdlet.PublishSettingsFileUrl);
+            Assert.True(env3.OnPremise);
+            Assert.Equal(env3.GetEndpoint(AzureEnvironment.Endpoint.Gallery), cmdlet3.GalleryEndpoint);
+        }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

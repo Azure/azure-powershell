@@ -65,6 +65,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 case AzureEnvironment.Endpoint.DataLakeEndpointResourceId:
                     endpoint = new Uri(environment.DataLakeEndpointResourceId);
                     break;
+                case AzureEnvironment.Endpoint.BatchEndpointResourceId:
+                    endpoint = new Uri(environment.BatchEndpointResourceId);
+                    break;
                 default:
                     result = false;
                     break;
@@ -137,6 +140,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                         break;
                     case AzureEnvironment.Endpoint.ServiceManagement:
                         propertyValue = environment.ServiceManagementUrl;
+                        break;
+                    case AzureEnvironment.Endpoint.BatchEndpointResourceId:
+                        propertyValue = environment.BatchEndpointResourceId;
                         break;
                     default:
                         break;
@@ -225,6 +231,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                         break;
                     case AzureEnvironment.Endpoint.DataLakeEndpointResourceId:
                         environment.DataLakeEndpointResourceId = propertyValue;
+                        break;
+                    case AzureEnvironment.Endpoint.BatchEndpointResourceId:
+                        environment.BatchEndpointResourceId = propertyValue;
                         break;
                     case AzureEnvironment.Endpoint.ActiveDirectory:
                         environment.ActiveDirectoryAuthority = propertyValue;
@@ -440,6 +449,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                     environment.AzureKeyVaultServiceEndpointResourceId =
                          other.AzureKeyVaultServiceEndpointResourceId;
                 }
+                if (other.IsEndpointSet(AzureEnvironment.Endpoint.BatchEndpointResourceId))
+                {
+                    environment.BatchEndpointResourceId = other.BatchEndpointResourceId;
+                }
 
                 environment.VersionProfiles.Clear();
                 foreach (var profile in other.VersionProfiles)
@@ -451,6 +464,96 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             }
 
         }
+
+        public static void Update(this IAzureEnvironment environment, IAzureEnvironment other)
+        {
+            if (environment != null && other != null)
+            {
+                environment.OnPremise = other.OnPremise;
+                if (other.IsEndpointSet(AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId))
+                {
+                    environment.ActiveDirectoryServiceEndpointResourceId = other.ActiveDirectoryServiceEndpointResourceId;
+                }
+                if (other.IsEndpointSet(AzureEnvironment.Endpoint.AdTenant))
+                {
+                    environment.AdTenant = other.AdTenant;
+                }
+                if (other.IsEndpointSet(AzureEnvironment.Endpoint.Gallery))
+                {
+                    environment.GalleryUrl = other.GalleryUrl;
+                }
+                if (other.IsEndpointSet(AzureEnvironment.Endpoint.ManagementPortalUrl))
+                {
+                    environment.ManagementPortalUrl = other.ManagementPortalUrl;
+                }
+                if (other.IsEndpointSet(AzureEnvironment.Endpoint.ServiceManagement))
+                {
+                    environment.ServiceManagementUrl = other.ServiceManagementUrl;
+                }
+                if (other.IsEndpointSet(AzureEnvironment.Endpoint.PublishSettingsFileUrl))
+                {
+                    environment.PublishSettingsFileUrl = other.PublishSettingsFileUrl;
+                }
+                if (other.IsEndpointSet(AzureEnvironment.Endpoint.ResourceManager))
+                {
+                    environment.ResourceManagerUrl = other.ResourceManagerUrl;
+                }
+                if (other.IsEndpointSet(AzureEnvironment.Endpoint.SqlDatabaseDnsSuffix))
+                {
+                    environment.SqlDatabaseDnsSuffix = other.SqlDatabaseDnsSuffix;
+                }
+                if (other.IsEndpointSet(AzureEnvironment.Endpoint.StorageEndpointSuffix))
+                {
+                    environment.StorageEndpointSuffix = other.StorageEndpointSuffix;
+                }
+                if (other.IsEndpointSet(AzureEnvironment.Endpoint.ActiveDirectory))
+                {
+                    environment.ActiveDirectoryAuthority = other.ActiveDirectoryAuthority;
+                }
+                if (other.IsEndpointSet(AzureEnvironment.Endpoint.Graph))
+                {
+                    environment.GraphUrl = other.GraphUrl;
+                }
+                if (other.IsEndpointSet(AzureEnvironment.Endpoint.GraphEndpointResourceId))
+                {
+                    environment.GraphEndpointResourceId = other.GraphEndpointResourceId;
+                }
+                if (other.IsEndpointSet(AzureEnvironment.Endpoint.TrafficManagerDnsSuffix))
+                {
+                    environment.TrafficManagerDnsSuffix = other.TrafficManagerDnsSuffix;
+                }
+                if (other.IsEndpointSet(AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix))
+                {
+                    environment.AzureKeyVaultDnsSuffix = other.AzureKeyVaultDnsSuffix;
+                }
+                if (other.IsEndpointSet(AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix))
+                {
+                    environment.AzureDataLakeStoreFileSystemEndpointSuffix = other.AzureDataLakeStoreFileSystemEndpointSuffix;
+                }
+                if (other.IsEndpointSet(AzureEnvironment.Endpoint.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix))
+                {
+                    environment.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix =
+                         other.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix;
+                }
+                if (other.IsEndpointSet(AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId))
+                {
+                    environment.AzureKeyVaultServiceEndpointResourceId =
+                         other.AzureKeyVaultServiceEndpointResourceId;
+                }
+
+                foreach (var profile in other.VersionProfiles)
+                {
+                    if (!environment.VersionProfiles.Contains(profile))
+                    {
+                        environment.VersionProfiles.Add(profile);
+                    }
+                }
+
+                environment.UpdateProperties(other);
+            }
+
+        }
+
     }
 
 }

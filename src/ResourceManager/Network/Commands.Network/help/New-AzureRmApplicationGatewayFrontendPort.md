@@ -14,7 +14,8 @@ Creates a front-end port for an application gateway.
 ## SYNTAX
 
 ```
-New-AzureRmApplicationGatewayFrontendPort -Name <String> -Port <Int32> [<CommonParameters>]
+New-AzureRmApplicationGatewayFrontendPort -Name <String> -Port <Int32>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,6 +31,21 @@ PS C:\>$FrontEndPort = New-AzureRmApplicationGatewayFrontendPort -Name "FrontEnd
 This command creates a front-end port named FrontEndPort01 on port 80 and stores the result in the variable named $FrontEndPort.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 Specifies the name of the front-end port that this cmdlet creates.

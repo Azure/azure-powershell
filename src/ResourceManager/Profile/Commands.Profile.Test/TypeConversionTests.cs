@@ -55,6 +55,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.Null(environment.SqlDatabaseDnsSuffix);
             Assert.Null(environment.StorageEndpointSuffix);
             Assert.Null(environment.TrafficManagerDnsSuffix);
+            Assert.Null(environment.BatchEndpointResourceId);
         }
 
         [Theory]
@@ -64,19 +65,19 @@ namespace Microsoft.Azure.Commands.Profile.Test
             "https://graph.windows.net", "https://graph.windows.net/", "https://manage.windowsazure.com",
             "https://manage.windowsazure.com/publishsettings", "https://management.azure.com",
             "https://management.core.windows.net", ".sql.azure.com", ".core.windows.net",
-            ".trafficmanager.windows.net")]
+            ".trafficmanager.windows.net", "https://batch.core.windows.net")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanConvertValidEnvironments(string name, bool onPremise, string activeDirectory, string serviceResource,
             string adTenant, string dataLakeJobs, string dataLakeFiles, string kvDnsSuffix,
             string kvResource, string gallery, string graph, string graphResource, string portal,
             string publishSettings, string resourceManager, string serviceManagement,
-            string sqlSuffix, string storageSuffix, string trafficManagerSuffix)
+            string sqlSuffix, string storageSuffix, string trafficManagerSuffix, string batchResource)
         {
             AzureEnvironment azEnvironment = CreateEnvironment(name, onPremise, activeDirectory,
                 serviceResource, adTenant, dataLakeJobs, dataLakeFiles, kvDnsSuffix,
                 kvResource, gallery, graph, graphResource, portal, publishSettings,
                 resourceManager, serviceManagement, sqlSuffix, storageSuffix,
-                trafficManagerSuffix);
+                trafficManagerSuffix, batchResource);
             var environment = (PSAzureEnvironment)azEnvironment;
             Assert.NotNull(environment);
             CheckEndpoint(AzureEnvironment.Endpoint.ActiveDirectory, azEnvironment,
@@ -113,6 +114,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 environment.StorageEndpointSuffix);
             CheckEndpoint(AzureEnvironment.Endpoint.TrafficManagerDnsSuffix, azEnvironment,
                 environment.TrafficManagerDnsSuffix);
+            CheckEndpoint(AzureEnvironment.Endpoint.BatchEndpointResourceId, azEnvironment,
+                environment.BatchEndpointResourceId);
             Assert.Equal(azEnvironment.Name, environment.Name);
             Assert.Equal(azEnvironment.OnPremise, environment.EnableAdfsAuthentication);
         }
@@ -144,6 +147,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.False(environment.IsEndpointSet(AzureEnvironment.Endpoint.SqlDatabaseDnsSuffix));
             Assert.False(environment.IsEndpointSet(AzureEnvironment.Endpoint.StorageEndpointSuffix));
             Assert.False(environment.IsEndpointSet(AzureEnvironment.Endpoint.TrafficManagerDnsSuffix));
+            Assert.False(environment.IsEndpointSet(AzureEnvironment.Endpoint.BatchEndpointResourceId));
         }
         [Theory]
         [InlineData("TestAll", true, "https://login.microsoftonline.com", "https://management.core.windows.net/",
@@ -152,13 +156,13 @@ namespace Microsoft.Azure.Commands.Profile.Test
             "https://graph.windows.net", "https://graph.windows.net/", "https://manage.windowsazure.com",
             "https://manage.windowsazure.com/publishsettings", "https://management.azure.com",
             "https://management.core.windows.net", ".sql.azure.com", ".core.windows.net",
-            ".trafficmanager.windows.net")]
+            ".trafficmanager.windows.net", "https://batch.core.windows.net")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanConvertValidPSEnvironments(string name, bool onPremise, string activeDirectory, string serviceResource,
             string adTenant, string dataLakeJobs, string dataLakeFiles, string kvDnsSuffix,
             string kvResource, string gallery, string graph, string graphResource, string portal,
             string publishSettings, string resourceManager, string serviceManagement,
-            string sqlSuffix, string storageSuffix, string trafficManagerSuffix)
+            string sqlSuffix, string storageSuffix, string trafficManagerSuffix, string batchResource)
         {
             PSAzureEnvironment environment = new PSAzureEnvironment
             {
@@ -180,7 +184,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 ServiceManagementUrl = serviceManagement,
                 SqlDatabaseDnsSuffix = sqlSuffix,
                 StorageEndpointSuffix = storageSuffix,
-                TrafficManagerDnsSuffix = trafficManagerSuffix
+                TrafficManagerDnsSuffix = trafficManagerSuffix,
+                BatchEndpointResourceId = batchResource
             };
             var azEnvironment = (AzureEnvironment)environment;
             Assert.NotNull(environment);
@@ -218,6 +223,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 environment.StorageEndpointSuffix);
             CheckEndpoint(AzureEnvironment.Endpoint.TrafficManagerDnsSuffix, azEnvironment,
                 environment.TrafficManagerDnsSuffix);
+            CheckEndpoint(AzureEnvironment.Endpoint.BatchEndpointResourceId, azEnvironment,
+                environment.BatchEndpointResourceId);
             Assert.Equal(azEnvironment.Name, environment.Name);
             Assert.Equal(azEnvironment.OnPremise, environment.EnableAdfsAuthentication);
         }
@@ -227,7 +234,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             string adTenant, string dataLakeJobs, string dataLakeFiles, string kvDnsSuffix,
             string kvResource, string gallery, string graph, string graphResource, string portal,
             string publishSettings, string resourceManager, string serviceManagement,
-            string sqlSuffix, string storageSuffix, string trafficManagerSuffix)
+            string sqlSuffix, string storageSuffix, string trafficManagerSuffix, string batchResource)
         {
             var environment = new AzureEnvironment() { Name = name, OnPremise = onPremise };
             SetEndpoint(AzureEnvironment.Endpoint.ActiveDirectory, environment, activeDirectory);
@@ -263,7 +270,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 storageSuffix);
             CheckEndpoint(AzureEnvironment.Endpoint.TrafficManagerDnsSuffix, environment,
                 trafficManagerSuffix);
-
+            CheckEndpoint(AzureEnvironment.Endpoint.BatchEndpointResourceId, environment,
+                batchResource);
             return environment;
 
         }

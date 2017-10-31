@@ -118,7 +118,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
                                 PublicIPDomainNameLabel = role.PublicIPs == null || !role.PublicIPs.Any() ? null : role.PublicIPs.First().DomainNameLabel,
                                 PublicIPFqdns = role.PublicIPs == null || !role.PublicIPs.Any() ? null : role.PublicIPs.First().Fqdns.ToList(),
                                 DeploymentID          = currentDeployment.PrivateId,
-                                InstanceEndpoints     = Mapper.Map<PVM.InstanceEndpointList>(role.InstanceEndpoints)
+                                InstanceEndpoints     = ServiceManagementProfile.Mapper.Map<PVM.InstanceEndpointList>(role.InstanceEndpoints)
                             });
                         }
 

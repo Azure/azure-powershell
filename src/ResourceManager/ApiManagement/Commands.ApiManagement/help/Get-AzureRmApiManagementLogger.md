@@ -14,12 +14,14 @@ Gets API Management Logger objects.
 
 ### Get all loggers (Default)
 ```
-Get-AzureRmApiManagementLogger -Context <PsApiManagementContext> [<CommonParameters>]
+Get-AzureRmApiManagementLogger -Context <PsApiManagementContext> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### Get by logger ID
 ```
-Get-AzureRmApiManagementLogger -Context <PsApiManagementContext> -LoggerId <String> [<CommonParameters>]
+Get-AzureRmApiManagementLogger -Context <PsApiManagementContext> -LoggerId <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,14 +31,16 @@ The **Get-AzureRmApiManagementLogger** cmdlet gets an Azure API Management **Log
 
 ### Example 1: Get all loggers
 ```
-PS C:\>Get-AzureRmApiManagementLogger -Context $ApimContext
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Get-AzureRmApiManagementLogger -Context $apimContext 
 ```
 
 This command gets all the loggers for the specified context.
 
 ### Example 2: Get a specific logger
 ```
-PS C:\>Get-AzureRmApiManagementLogger -Context $ApimContext -LoggerId "Logger123"
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Get-AzureRmApiManagementLogger -Context $apimContext -LoggerId "Logger123"
 ```
 
 This command removes a logger that has the ID Logger123.
@@ -55,6 +59,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+ 
+ ```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -80,7 +99,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementLogger
+The detail of the Logger configured in API Management service.
+
 ### IList<Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementLogger>
+The list of Loggers configured in API Management service.
 
 ## NOTES
 

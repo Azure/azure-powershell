@@ -10,7 +10,7 @@
 	3. As long as you have exported all the functions that you need from your ps1 file using export-modulemember -function <name of function>. We deliberately do this to avoid polluting list of commands available (when you use Get-Command)
 3. Currently Repo-Tasks module supports following tasks:
 	1. Set-TestEnvironment
-		1. Will allow you create a test connection string required to setup test environment in order to run tests. More information about Test environment can be found [here](https://github.com/Azure/azure-powershell/blob/dev/documentation/Using-Azure-TestFramework.md "here")
+		1. Will allow you create a test connection string required to setup test environment in order to run tests. More information about Test environment can be found [here](https://github.com/Azure/azure-powershell/blob/preview/documentation/Using-Azure-TestFramework.md "here")
 	2. Start-Build
 		1. Will allow you to kick off full build
 		2. Or will allow you build for a particular scope (e.g. Start-Build -BuildScope ResourceManagment\Compute)
