@@ -24,6 +24,12 @@ Get-AzureRmDataFactoryV2Trigger [[-Name] <String>] [-DataFactory] <PSDataFactory
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### ByResourceId
+```
+Get-AzureRmDataFactoryV2Trigger -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **Get-AzureRmDataFactoryV2Trigger** cmdlet gets information about triggers in a data factory. If you specify the name of a trigger, the cmdlet gets information about that trigger. If you do not specify a name, the cmdlet gets information about all triggers in the data factory.
 
@@ -113,7 +119,7 @@ The trigger name.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ByFactoryName, ByFactoryObject
 Aliases: TriggerName
 
 Required: False
@@ -133,6 +139,21 @@ Aliases:
 
 Required: True
 Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+The Azure resource ID.
+
+```yaml
+Type: String
+Parameter Sets: ByResourceId
+Aliases: 
+
+Required: True
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
