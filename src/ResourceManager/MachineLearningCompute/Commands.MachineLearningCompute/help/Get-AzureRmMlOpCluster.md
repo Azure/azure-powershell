@@ -12,9 +12,16 @@ Gets an operationalization cluster object.
 
 ## SYNTAX
 
+### Get an operationalization cluster by its name.
 ```
-Get-AzureRmMlOpCluster [-ResourceGroupName <String>] [-Name <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmMlOpCluster -ResourceGroupName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### Get operationalization clusters by resource group or subscription.
+```
+Get-AzureRmMlOpCluster [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -68,7 +75,7 @@ Type: String
 Parameter Sets: Get an operationalization cluster by its name.
 Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -80,7 +87,19 @@ The name of the resource group for the operationalization cluster.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Get an operationalization cluster by its name.
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: Get operationalization clusters by resource group or subscription.
 Aliases: 
 
 Required: False
