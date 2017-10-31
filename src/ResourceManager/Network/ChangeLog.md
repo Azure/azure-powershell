@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Parameter ``Password`` being replaced in favor of a ``SecureString`` for the following cmdlets:
+    - Add-AzureRmApplicationGatewaySslCertificate
+    - New-AzureRmApplicationGatewaySslCertificate
+    - Set-AzureRmApplicationGatewaySslCertificate
 
 ## Version 4.4.1
 
