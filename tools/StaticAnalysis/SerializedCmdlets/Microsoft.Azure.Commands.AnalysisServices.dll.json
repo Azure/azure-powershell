@@ -1368,7 +1368,7 @@
           ]
         },
         {
-          "Name": "Disable Backup",
+          "Name": "DisableBackup",
           "Parameters": [
             {
               "ParameterMetadata": {

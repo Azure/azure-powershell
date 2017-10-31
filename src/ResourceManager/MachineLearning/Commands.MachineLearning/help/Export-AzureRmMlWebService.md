@@ -12,13 +12,13 @@ Exports the web service definition object as a JSON formatted string.
 
 ## SYNTAX
 
-### Export to file.
+### ExportToFile
 ```
 Export-AzureRmMlWebService -WebService <WebService> -OutputFile <String> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Export to JSON string.
+### ExportToJSON
 ```
 Export-AzureRmMlWebService -WebService <WebService> [-ToJsonString] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -85,7 +85,7 @@ The file path for exported definition.
 
 ```yaml
 Type: String
-Parameter Sets: Export to file.
+Parameter Sets: ExportToFile
 Aliases: 
 
 Required: True
@@ -100,7 +100,7 @@ Specifies that the definition will be exported as a JSON string.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: Export to JSON string.
+Parameter Sets: ExportToJSON
 Aliases: 
 
 Required: True

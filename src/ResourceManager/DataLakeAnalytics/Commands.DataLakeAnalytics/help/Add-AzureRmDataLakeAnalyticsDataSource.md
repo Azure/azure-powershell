@@ -13,13 +13,13 @@ Adds a data source to a Data Lake Analytics account.
 
 ## SYNTAX
 
-### Add a Data Lake storage account
+### AddDataLakeStorageAccount
 ```
 Add-AzureRmDataLakeAnalyticsDataSource [-Account] <String> [-DataLakeStore] <String>
  [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Add a Blob storage account
+### AddBlobStorageAccount
 ```
 Add-AzureRmDataLakeAnalyticsDataSource [-Account] <String> [-Blob] <String> [-AccessKey] <String>
  [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -44,7 +44,7 @@ Specifies the access key of the Azure Blob storage account to add.
 
 ```yaml
 Type: String
-Parameter Sets: Add a Blob storage account
+Parameter Sets: AddBlobStorageAccount
 Aliases: 
 
 Required: True
@@ -74,7 +74,7 @@ Specifies the name of the Azure Blob Storage account to add.
 
 ```yaml
 Type: String
-Parameter Sets: Add a Blob storage account
+Parameter Sets: AddBlobStorageAccount
 Aliases: AzureBlob
 
 Required: True
@@ -89,7 +89,7 @@ Specifies the name of the Azure Data Lake Store account to add.
 
 ```yaml
 Type: String
-Parameter Sets: Add a Data Lake storage account
+Parameter Sets: AddDataLakeStorageAccount
 Aliases: 
 
 Required: True
