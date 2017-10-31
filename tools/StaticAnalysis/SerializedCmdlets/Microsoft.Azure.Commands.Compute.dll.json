@@ -8962,6 +8962,10 @@
               "ValueFromPipelineByPropertyName": false
             }
           ]
+        },
+        {
+          "Name": "GetSqlServerExtension",
+          "Parameters": []
         }
       ],
       "AliasList": []
@@ -9973,6 +9977,10 @@
               "ValueFromPipelineByPropertyName": false
             }
           ]
+        },
+        {
+          "Name": "StorageUriSqlServerAutoBackup",
+          "Parameters": []
         }
       ],
       "AliasList": []
@@ -21133,6 +21141,10 @@
               "ValueFromPipelineByPropertyName": false
             }
           ]
+        },
+        {
+          "Name": "DefaultParamSet",
+          "Parameters": []
         }
       ],
       "AliasList": []
@@ -22180,6 +22192,10 @@
               "ValueFromPipelineByPropertyName": false
             }
           ]
+        },
+        {
+          "Name": "ListAllVirtualMachinesParamSet",
+          "Parameters": []
         }
       ],
       "AliasList": []
@@ -37915,6 +37931,10 @@
               "ValueFromPipelineByPropertyName": false
             }
           ]
+        },
+        {
+          "Name": "DefaultParameter",
+          "Parameters": []
         }
       ],
       "AliasList": []
@@ -58090,6 +58110,10 @@
               "ValueFromPipelineByPropertyName": false
             }
           ]
+        },
+        {
+          "Name": "GetDscExtension",
+          "Parameters": []
         }
       ],
       "AliasList": []
@@ -62549,7 +62573,7 @@
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "AAD Client Secret Parameters",
+      "DefaultParameterSetName": "AADClientSecretParameterSet",
       "OutputTypes": [
         {
           "Type": {
@@ -63301,7 +63325,7 @@
           ]
         },
         {
-          "Name": "AAD Client Secret Parameters",
+          "Name": "AADClientSecretParameterSet",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -63724,7 +63748,7 @@
           ]
         },
         {
-          "Name": "AAD Client Cert Parameters",
+          "Name": "AADClientCertParameterSet",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -65227,7 +65251,7 @@
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "AAD Client Secret Parameters",
+      "DefaultParameterSetName": "AADClientSecretParameterSet",
       "OutputTypes": [
         {
           "Type": {
@@ -65873,6 +65897,10 @@
               "ValueFromPipelineByPropertyName": false
             }
           ]
+        },
+        {
+          "Name": "AADClientSecretParameterSet",
+          "Parameters": []
         }
       ],
       "AliasList": []

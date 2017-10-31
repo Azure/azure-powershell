@@ -2683,7 +2683,7 @@
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "No diagnostic logging",
+      "DefaultParameterSetName": "NoDiagnosticLogging",
       "OutputTypes": [
         {
           "Type": {
@@ -2892,7 +2892,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "No diagnostic logging",
+          "Name": "NoDiagnosticLogging",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -3108,7 +3108,7 @@
           ]
         },
         {
-          "Name": "Include diagnostic logging",
+          "Name": "IncludeDiagnosticLogging",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -3967,7 +3967,7 @@
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "Preview file content",
+      "DefaultParameterSetName": "PreviewFileContent",
       "OutputTypes": [
         {
           "Type": {
@@ -4157,7 +4157,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "Preview file content",
+          "Name": "PreviewFileContent",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -4329,7 +4329,7 @@
           ]
         },
         {
-          "Name": "Preview file rows from the head of the file",
+          "Name": "PreviewFileRowsFromHead",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -4457,7 +4457,7 @@
           ]
         },
         {
-          "Name": "Preview file rows from the tail of the file",
+          "Name": "PreviewFileRowsFromTail",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -5024,7 +5024,7 @@
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "No diagnostic logging",
+      "DefaultParameterSetName": "NoDiagnosticLogging",
       "OutputTypes": [
         {
           "Type": {
@@ -5249,7 +5249,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "No diagnostic logging",
+          "Name": "NoDiagnosticLogging",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -5487,7 +5487,7 @@
           ]
         },
         {
-          "Name": "Include diagnostic logging",
+          "Name": "IncludeDiagnosticLogging",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -5816,7 +5816,7 @@
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "All In Subscription",
+      "DefaultParameterSetName": "GetAllInSubscription",
       "OutputTypes": [
         {
           "Type": {
@@ -5931,7 +5931,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "All In Resource Group",
+          "Name": "GetByResourceGroup",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -5988,7 +5988,7 @@
           ]
         },
         {
-          "Name": "Specific Account",
+          "Name": "GetBySpecificAccount",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -6100,6 +6100,10 @@
               "ValueFromPipelineByPropertyName": false
             }
           ]
+        },
+        {
+          "Name": "GetAllInSubscription",
+          "Parameters": []
         }
       ],
       "AliasList": [
@@ -6630,7 +6634,7 @@
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "User or System assigned encryption",
+      "DefaultParameterSetName": "UserOrSystemAssignedEncryption",
       "OutputTypes": [
         {
           "Type": {
@@ -6878,7 +6882,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "User or System assigned encryption",
+          "Name": "UserOrSystemAssignedEncryption",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -7137,7 +7141,7 @@
           ]
         },
         {
-          "Name": "Disable Encryption",
+          "Name": "DisableEncryption",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -8561,7 +8565,7 @@
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "Remove ACL Entries using ACL object",
+      "DefaultParameterSetName": "RemoveByACLObject",
       "OutputTypes": [
         {
           "Type": {
@@ -8722,7 +8726,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "Remove ACL Entries using ACL object",
+          "Name": "RemoveByACLObject",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -8850,7 +8854,7 @@
           ]
         },
         {
-          "Name": "Remove specific ACE",
+          "Name": "RemoveSpecificACE",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -9091,7 +9095,7 @@
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "Set ACL Entries using ACL object",
+      "DefaultParameterSetName": "SetByACLObject",
       "OutputTypes": [
         {
           "Type": {
@@ -9268,7 +9272,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "Set ACL Entries using ACL object",
+          "Name": "SetByACLObject",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -9396,7 +9400,7 @@
           ]
         },
         {
-          "Name": "Set specific ACE",
+          "Name": "SetSpecificACE",
           "Parameters": [
             {
               "ParameterMetadata": {

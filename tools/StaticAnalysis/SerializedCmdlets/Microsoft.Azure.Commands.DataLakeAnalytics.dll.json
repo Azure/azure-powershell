@@ -8,7 +8,7 @@
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "All In Account",
+      "DefaultParameterSetName": "GetAllInAccount",
       "OutputTypes": [
         {
           "Type": {
@@ -149,7 +149,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "All In Account",
+          "Name": "GetAllInAccount",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -256,7 +256,7 @@
           ]
         },
         {
-          "Name": "Specific Job Recurrence",
+          "Name": "GetBySpecificJobRecurrence",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -434,7 +434,7 @@
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "All In Account",
+      "DefaultParameterSetName": "GetAllInAccount",
       "OutputTypes": [
         {
           "Type": {
@@ -578,7 +578,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "All In Account",
+          "Name": "GetAllInAccount",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -685,7 +685,7 @@
           ]
         },
         {
-          "Name": "Specific Job Pipeline",
+          "Name": "GetBySpecificJobPipeline",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -3091,7 +3091,7 @@
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "List all data sources",
+      "DefaultParameterSetName": "GetAllDataSources",
       "OutputTypes": [
         {
           "Type": {
@@ -3244,7 +3244,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "Get a Data Lake Store account",
+          "Name": "GetDataLakeStoreAccount",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -3347,7 +3347,7 @@
           ]
         },
         {
-          "Name": "Get a Blob storage account",
+          "Name": "GetBlobStorageAccount",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -3452,7 +3452,7 @@
           ]
         },
         {
-          "Name": "List all data sources",
+          "Name": "GetAllDataSources",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -3580,7 +3580,7 @@
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "Specify host name and port",
+      "DefaultParameterSetName": "CreateByHostNameAndPort",
       "OutputTypes": [
         {
           "Type": {
@@ -3742,7 +3742,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "Specify full URI",
+          "Name": "CreateByFullURI",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -3911,7 +3911,7 @@
           ]
         },
         {
-          "Name": "Specify host name and port",
+          "Name": "CreateByHostNameAndPort",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -4751,7 +4751,7 @@
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "Specify host name and port",
+      "DefaultParameterSetName": "SetByHostNameAndPort",
       "OutputTypes": [
         {
           "Type": {
@@ -4929,7 +4929,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "Specify full URI",
+          "Name": "SetByFullURI",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -5120,7 +5120,7 @@
           ]
         },
         {
-          "Name": "Specify host name and port",
+          "Name": "SetByHostNameAndPort",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -5488,7 +5488,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "Specify full URI",
+          "Name": "SetByFullUri",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -5637,7 +5637,7 @@
           ]
         },
         {
-          "Name": "Specify host name and port",
+          "Name": "SetByHostNameAndPort",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -5961,7 +5961,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "Specify full URI",
+          "Name": "CreateByFullURI",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -6110,7 +6110,7 @@
           ]
         },
         {
-          "Name": "Specify host name and port",
+          "Name": "CreateByHostNameAndPort",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -7555,7 +7555,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "Remove a Data Lake storage account",
+          "Name": "RemoveDataLakeStorageAccount",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -7702,7 +7702,7 @@
           ]
         },
         {
-          "Name": "Remove a Blob storage account",
+          "Name": "RemoveBlobStorageAccount",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -8012,7 +8012,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "Add a Data Lake storage account",
+          "Name": "AddDataLakeStorageAccount",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -8115,7 +8115,7 @@
           ]
         },
         {
-          "Name": "Add a Blob storage account",
+          "Name": "AddBlobStorageAccount",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -8536,7 +8536,7 @@
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "All In Resource Group and Account",
+      "DefaultParameterSetName": "GetAllInResourceGroupAndAccount",
       "OutputTypes": [
         {
           "Type": {
@@ -8817,7 +8817,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "All In Resource Group and Account",
+          "Name": "GetAllInResourceGroupAndAccount",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -9084,7 +9084,7 @@
           ]
         },
         {
-          "Name": "Specific JobInformation",
+          "Name": "GetBySpecificJobInformation",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -9234,7 +9234,7 @@
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "All In Subscription",
+      "DefaultParameterSetName": "GetAllInSubscription",
       "OutputTypes": [
         {
           "Type": {
@@ -9353,7 +9353,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "All In Resource Group",
+          "Name": "GetByResourceGroup",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -9410,7 +9410,7 @@
           ]
         },
         {
-          "Name": "Specific Account",
+          "Name": "GetBySpecificAccount",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -9522,6 +9522,10 @@
               "ValueFromPipelineByPropertyName": false
             }
           ]
+        },
+        {
+          "Name": "GetAllInSubscription",
+          "Parameters": []
         }
       ],
       "AliasList": [
@@ -9846,7 +9850,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "Submit job with script path for U-SQL",
+          "Name": "SubmitUSqlJobWithScriptPath",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -10063,7 +10067,7 @@
           ]
         },
         {
-          "Name": "Submit U-SQL Job",
+          "Name": "SubmitUSqlJob",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -10280,7 +10284,7 @@
           ]
         },
         {
-          "Name": "Submit job with script path for U-SQL with reucurrence information",
+          "Name": "SubmitUSqlJobWithScriptPathAndRecurrence",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -10541,7 +10545,7 @@
           ]
         },
         {
-          "Name": "Submit U-SQL Job with recurrence information",
+          "Name": "SubmitUSqlJobWithRecurrence",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -10802,7 +10806,7 @@
           ]
         },
         {
-          "Name": "Submit job with script path for U-SQL with reucurrence and pipeline information",
+          "Name": "SubmitUSqlJobWithScriptPathAndPipeline",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -11153,7 +11157,7 @@
           ]
         },
         {
-          "Name": "Submit U-SQL Job with recurrence and pipeline information",
+          "Name": "SubmitUSqlJobWithPipeline",
           "Parameters": [
             {
               "ParameterMetadata": {
