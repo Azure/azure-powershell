@@ -13,7 +13,7 @@ Modifies a policy assignment.
 
 ## SYNTAX
 
-### The policy assignment name parameter set. (Default)
+### SetByPolicyAssignmentName (Default)
 ```
 Set-AzureRmPolicyAssignment -Name <String> -Scope <String> [-NotScope <String[]>] [-DisplayName <String>]
  [-Description <String>] [-Sku <Hashtable>] [-ApiVersion <String>] [-Pre]
@@ -21,7 +21,7 @@ Set-AzureRmPolicyAssignment -Name <String> -Scope <String> [-NotScope <String[]>
  [-InformationVariable <String>] [<CommonParameters>]
 ```
 
-### The policy assignment Id parameter set.
+### SetByPolicyAssignmentId
 ```
 Set-AzureRmPolicyAssignment -Id <String> [-DisplayName <String>] [-Description <String>] [-Sku <Hashtable>]
  [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
@@ -117,7 +117,7 @@ Specifies the fully qualified resource ID for the policy assignment that this cm
 
 ```yaml
 Type: String
-Parameter Sets: The policy assignment Id parameter set.
+Parameter Sets: SetByPolicyAssignmentId
 Aliases: ResourceId
 
 Required: True
@@ -171,7 +171,7 @@ Specifies the name of the policy assignment that this cmdlet modifies.
 
 ```yaml
 Type: String
-Parameter Sets: The policy assignment name parameter set.
+Parameter Sets: SetByPolicyAssignmentName
 Aliases: 
 
 Required: True
@@ -186,7 +186,7 @@ The policy assignment not scopes.
 
 ```yaml
 Type: String[]
-Parameter Sets: The policy assignment name parameter set.
+Parameter Sets: SetByPolicyAssignmentName
 Aliases: 
 
 Required: False
@@ -216,7 +216,7 @@ Specifies the scope at which the policy is applied.
 
 ```yaml
 Type: String
-Parameter Sets: The policy assignment name parameter set.
+Parameter Sets: SetByPolicyAssignmentName
 Aliases: 
 
 Required: True
@@ -227,7 +227,7 @@ Accept wildcard characters: False
 ```
 
 ### -Sku
-A hash table which represents sku properties
+A hash table which represents sku properties.
 
 ```yaml
 Type: Hashtable

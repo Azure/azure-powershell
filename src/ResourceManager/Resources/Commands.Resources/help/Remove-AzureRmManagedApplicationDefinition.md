@@ -12,14 +12,14 @@ Removes a managed application definition
 
 ## SYNTAX
 
-### The managed application definition name parameter set. (Default)
+### RemoveByNameAndResourceGroup (Default)
 ```
 Remove-AzureRmManagedApplicationDefinition -Name <String> -ResourceGroupName <String> [-Force]
  [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### The managed application definition Id parameter set.
+### RemoveById
 ```
 Remove-AzureRmManagedApplicationDefinition -Id <String> [-Force] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -96,7 +96,7 @@ e.g.
 
 ```yaml
 Type: String
-Parameter Sets: The managed application definition Id parameter set.
+Parameter Sets: RemoveById
 Aliases: ResourceId
 
 Required: True
@@ -111,7 +111,7 @@ The managed application definition name.
 
 ```yaml
 Type: String
-Parameter Sets: The managed application definition name parameter set.
+Parameter Sets: RemoveByNameAndResourceGroup
 Aliases: 
 
 Required: True
@@ -141,7 +141,7 @@ The resource group name.
 
 ```yaml
 Type: String
-Parameter Sets: The managed application definition name parameter set.
+Parameter Sets: RemoveByNameAndResourceGroup
 Aliases: 
 
 Required: True

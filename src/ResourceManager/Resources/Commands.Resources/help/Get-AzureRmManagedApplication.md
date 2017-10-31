@@ -12,19 +12,19 @@ Gets managed applications
 
 ## SYNTAX
 
-### The list all managed applications parameter set. (Default)
+### GetBySubscription (Default)
 ```
 Get-AzureRmManagedApplication [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
-### The managed application name parameter set.
+### GetByNameAndResourceGroup
 ```
 Get-AzureRmManagedApplication [-Name <String>] -ResourceGroupName <String> [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### The managed application Id parameter set.
+### GetById
 ```
 Get-AzureRmManagedApplication -Id <String> [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -89,7 +89,7 @@ e.g.
 
 ```yaml
 Type: String
-Parameter Sets: The managed application Id parameter set.
+Parameter Sets: GetById
 Aliases: ResourceId, ManagedApplicationId
 
 Required: True
@@ -104,7 +104,7 @@ The managed application name.
 
 ```yaml
 Type: String
-Parameter Sets: The managed application name parameter set.
+Parameter Sets: GetByNameAndResourceGroup
 Aliases: 
 
 Required: False
@@ -134,7 +134,7 @@ The resource group name.
 
 ```yaml
 Type: String
-Parameter Sets: The managed application name parameter set.
+Parameter Sets: GetByNameAndResourceGroup
 Aliases: 
 
 Required: True
