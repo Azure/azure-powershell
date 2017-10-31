@@ -56,8 +56,7 @@ namespace Microsoft.Azure.Commands.Insights.LogProfiles
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The retention in days")]
         [ValidateNotNullOrEmpty]
-        [Alias("RetentionInDays")]
-        public int? RetentionInDay { get; set; }
+        public int? RetentionInDays { get; set; }
 
         /// <summary>
         /// Gets or sets the locations parameter of the cmdlet
@@ -79,7 +78,7 @@ namespace Microsoft.Azure.Commands.Insights.LogProfiles
 
         protected override void ProcessRecordInternal()
         {
-            WriteWarning("Parameter name change: The parameter plural names for the parameters will be deprecated in May 2018 in favor of the singular versions of the same names.");
+            this.WriteIdentifiedWarning("Parameter name change", "The parameter plural names for the parameters will be deprecated in May 2018 in favor of the singular versions of the same names.");
             if (ShouldProcess(
                 target: string.Format("Create/update a log profile: {0}", this.Name),
                 action: "Create/update a log profile"))
@@ -98,8 +97,8 @@ namespace Microsoft.Azure.Commands.Insights.LogProfiles
                 putParameters.Categories = this.Category;
                 putParameters.RetentionPolicy = new RetentionPolicy
                 {
-                    Days = this.RetentionInDay.HasValue ? this.RetentionInDay.Value : 0,
-                    Enabled = this.RetentionInDay.HasValue
+                    Days = this.RetentionInDays.HasValue ? this.RetentionInDays.Value : 0,
+                    Enabled = this.RetentionInDays.HasValue
                 };
                 putParameters.ServiceBusRuleId = this.ServiceBusRuleId;
                 putParameters.StorageAccountId = this.StorageAccountId;

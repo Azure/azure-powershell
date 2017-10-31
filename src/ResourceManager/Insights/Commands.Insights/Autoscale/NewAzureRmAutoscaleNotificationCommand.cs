@@ -60,7 +60,11 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            WriteWarning("Parameter name change: The parameter plural names for the parameters will be deprecated in May 2018 in favor of the singular versions of the same names.");
+            WriteWarning(
+                Utilities.FormatIdentifiedMessage(
+                    this.GetType(),
+                    "Parameter name change",
+                    "The parameter plural names for the parameters will be deprecated in May 2018 in favor of the singular versions of the same names."));
             if (!(this.SendEmailToSubscriptionAdministrator || this.SendEmailToSubscriptionCoAdministrator) &&
                 ((this.Webhook == null || this.Webhook.Length < 1) && (this.CustomEmail == null || this.CustomEmail.Length < 1)))
             {

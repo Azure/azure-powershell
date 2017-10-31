@@ -177,7 +177,6 @@ namespace Microsoft.Azure.Commands.Insights.Test
             // Calling with detailed output
             cmdlet.DetailedOutput = true;
             cmdlet.ExecuteCmdlet();
-            // Assert.Null(selected); // Incorrect nameOrTargetUri clause with detailed output on
         }
 
         public static void VerifyContinuationToken(string nextLink)

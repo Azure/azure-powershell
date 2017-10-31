@@ -37,12 +37,12 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         #region Cmdlet parameters
 
         /// <summary>
-        /// Gets or sets the SettingSpec parameter of the cmdlet
+        /// Gets or sets the InputObject parameter of the cmdlet
         /// </summary>
         [Parameter(ParameterSetName = AddAzureRmAutoscaleSettingUpdateParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The complete spec of an AutoscaleSetting")]
         [ValidateNotNullOrEmpty]
-        [Alias("InputObject")]
-        public PSAutoscaleSetting SettingSpec { get; set; }
+        [Alias("SettingSpec")]
+        public PSAutoscaleSetting InputObject { get; set; }
 
         /// <summary>
         /// Gets or sets the Location parameter of the cmdlet
@@ -64,6 +64,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         [Parameter(ParameterSetName = AddAzureRmAutoscaleSettingCreateParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
         [Parameter(ParameterSetName = AddAzureRmAutoscaleSettingUpdateParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
         [ValidateNotNullOrEmpty]
+        [Alias("ResourceGroup")]
         public string ResourceGroupName { get; set; }
 
         /// <summary>
@@ -105,7 +106,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// </summary>
         protected override void ProcessRecordInternal()
         {
-            WriteWarning("Parameter name change: The parameter plural names for the parameters will be deprecated in May 2018 in favor of he singular versions of the same names.");
+            this.WriteIdentifiedWarning("Parameter name change", "The parameter plural names for the parameters will be deprecated in May 2018 in favor of he singular versions of the same names.");
             if (ShouldProcess(
                 target: string.Format("Create/update an autoscale setting: {0} from resource group: {1}", this.Name, this.ResourceGroupName),
                 action: "Create/update an autoscale setting"))
@@ -129,19 +130,19 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         {
             bool enableSetting = !this.DisableSetting.IsPresent || !this.DisableSetting;
 
-            if (this.SettingSpec != null)
+            if (this.InputObject != null)
             {
 
                 // Receiving a single parameter with the whole spec for an autoscale setting
-                var property = this.SettingSpec;
+                var property = this.InputObject;
 
                 if (property == null)
                 {
                     throw new ArgumentException(ResourcesForAutoscaleCmdlets.PropertiresCannotBeNull);
                 }
 
-                this.Location = this.SettingSpec.Location;
-                this.Name = this.SettingSpec.Name;
+                this.Location = this.InputObject.Location;
+                this.Name = this.InputObject.Name;
 
                 // The semantics is if AutoscaleProfiles is given it will replace the existing Profiles
                 this.AutoscaleProfile = this.AutoscaleProfile ?? property.Profiles.ToList();
@@ -150,7 +151,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
                 enableSetting = !this.DisableSetting.IsPresent && property.Enabled.HasValue && property.Enabled.Value;
 
                 // The semantics is if Notifications is given it will replace the existing ones
-                this.Notification = this.Notification ?? (this.SettingSpec.Notifications != null ? this.SettingSpec.Notifications.ToList() : null);
+                this.Notification = this.Notification ?? (this.InputObject.Notifications != null ? this.InputObject.Notifications.ToList() : null);
             }
 
             return new AutoscaleSettingResource(
@@ -161,7 +162,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
                 Enabled = enableSetting,
                 TargetResourceUri = this.TargetResourceId,
                 Notifications = this.Notification,
-                Tags = this.SettingSpec != null ? new Dictionary<string, string>(this.SettingSpec.Tags) : new Dictionary<string, string>()
+                Tags = this.InputObject != null ? new Dictionary<string, string>(this.InputObject.Tags) : new Dictionary<string, string>()
             };
         }
     }

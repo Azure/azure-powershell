@@ -28,11 +28,11 @@ namespace Microsoft.Azure.Commands.Insights.Events
         /// <summary>
         /// Gets or sets the starttime parameter of the cmdlet
         /// </summary>
-        [Parameter(ParameterSetName = CorrelationIdName, ValueFromPipelineByPropertyName = true, HelpMessage = "The correlationId of the query")]
-        [Parameter(ParameterSetName = ResourceIdName, ValueFromPipelineByPropertyName = true, HelpMessage = "The resourceId of the query")]
-        [Parameter(ParameterSetName = ResourceGroupName, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name of the query")]
-        [Parameter(ParameterSetName = ResourceProviderName, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource provider name of the query")]
-        [Parameter(ParameterSetName = SubscriptionLevelName, ValueFromPipelineByPropertyName = true, HelpMessage = "The subscriptionId of the query")]
+        [Parameter(ParameterSetName = CorrelationIdParameterSetName, ValueFromPipelineByPropertyName = true, HelpMessage = "The correlationId of the query")]
+        [Parameter(ParameterSetName = ResourceIdParameterSetName, ValueFromPipelineByPropertyName = true, HelpMessage = "The resourceId of the query")]
+        [Parameter(ParameterSetName = LogsCmdletBase.ResourceGroupParameterSetName, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name of the query")]
+        [Parameter(ParameterSetName = ResourceProviderParameterSetName, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource provider name of the query")]
+        [Parameter(ParameterSetName = SubscriptionLevelParameterSetName, ValueFromPipelineByPropertyName = true, HelpMessage = "The subscriptionId of the query")]
         public override DateTime? StartTime { get; set; }
 
         /// <summary>
@@ -64,28 +64,29 @@ namespace Microsoft.Azure.Commands.Insights.Events
         /// <summary>
         /// Gets or sets the correlationId of the cmdlet
         /// </summary>
-        [Parameter(Position = 0, ParameterSetName = CorrelationIdName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The CorrelationId")]
+        [Parameter(Position = 0, ParameterSetName = CorrelationIdParameterSetName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The CorrelationId")]
         [ValidateNotNullOrEmpty]
         public string CorrelationId { get; set; }
 
         /// <summary>
-        /// Gets or sets the resourcegroup parameters of this cmdlet
+        /// Gets or sets the resource group name parameter of this cmdlet
         /// </summary>
-        [Parameter(Position = 0, ParameterSetName = ResourceGroupName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
+        [Parameter(Position = 0, ParameterSetName = LogsCmdletBase.ResourceGroupParameterSetName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroup { get; set; }
+        [Alias("ResourceGroup")]
+        public string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets the resourceId parameter of the cmdlet
         /// </summary>
-        [Parameter(Position = 0, ParameterSetName = ResourceIdName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The ResourceId")]
+        [Parameter(Position = 0, ParameterSetName = ResourceIdParameterSetName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The ResourceId")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets the resourceprovider parameter of the cmdlet
         /// </summary>
-        [Parameter(Position = 0, ParameterSetName = ResourceProviderName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The ResourceProvider name")]
+        [Parameter(Position = 0, ParameterSetName = ResourceProviderParameterSetName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The ResourceProvider name")]
         [ValidateNotNullOrEmpty]
         public string ResourceProvider { get; set; }
 
@@ -104,11 +105,11 @@ namespace Microsoft.Azure.Commands.Insights.Events
         /// <returns>The query filter with the conditions for particular parameters added</returns>
         protected override string ProcessParticularParameters(string currentQueryFilter)
         {
-            WriteWarning("Parameter name change: The parameter plural names for the parameters will be deprecated in May 2018 in favor of the singular versions of the same names.");
+            this.WriteIdentifiedWarning("Parameter name change", "The parameter plural names for the parameters will be deprecated in May 2018 in favor of the singular versions of the same names.");
             this.SetMaxEventsIfPresent(currentQueryFilter, this.MaxRecord);
 
             string extendedQuery = this.AddConditionIfPResent(currentQueryFilter, "correlationId", this.CorrelationId);
-            extendedQuery = this.AddConditionIfPResent(extendedQuery, "resourceGroupName", this.ResourceGroup);
+            extendedQuery = this.AddConditionIfPResent(extendedQuery, "resourceGroupName", this.ResourceGroupName);
 
             // Notice the different name in the condition (resourceUri) and the parameter (resourceId)
             // The difference is intentional as the new directive is to use ResourceId everywhere, but the SDK still uses resourceUri

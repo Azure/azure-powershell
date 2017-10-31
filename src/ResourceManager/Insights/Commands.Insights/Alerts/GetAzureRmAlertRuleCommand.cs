@@ -41,6 +41,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         [Parameter(ParameterSetName = GetAzureRmAlertRuleWithNameParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
         [Parameter(ParameterSetName = GetAzureRmAlertRuleWithUriParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
         [ValidateNotNullOrEmpty]
+        [Alias("ResourceGroup")]
         public string ResourceGroupName { get; set; }
 
         /// <summary>
@@ -106,7 +107,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// </summary>
         protected override void ProcessRecordInternal()
         {
-            WriteWarning("Parameter deprecation: The DetailedOutput parameter will be deprecated in May 2018.");
+            this.WriteIdentifiedWarning("Parameter deprecation", "The DetailedOutput parameter will be deprecated in May 2018.");
             if (string.IsNullOrWhiteSpace(this.Name))
             {
                 // Retrieve all the AlertRules for a ResourceGroup
