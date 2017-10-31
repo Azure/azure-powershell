@@ -23,19 +23,19 @@ namespace Microsoft.Azure.Commands.Sql.ServerDnsAlias.Cmdlet
 	[OutputType(typeof(Model.AzureSqlServerDnsAliasModel))]
 	public class RemoveAzureSqlServerDNSAlias : AzureSqlServerDnsAliasCmdletBase
 	{
-		protected const string CmdletInputParameterSet =
+		protected const string RemoveByNameAndResourceGroupParameterSet =
 			"Remove a Server Dns Alias from cmdlet input parameters";
 
-		protected const string ObjectParameterSet =
+		protected const string RemoveByInputObjectParameterSet =
 			"Remove a Server Dns Alias from AzureSqlServerDnsAliasModel instance definition";
 
-		protected const string ResourceIdParameterSet =
+		protected const string RemoveByResourceIdParameterSet =
 			"Remove a Server Dns Alias from an Azure resource id";
 
 		/// <summary>
 		/// Gets or sets the name of the server dns alias to remove
 		/// </summary>
-		[Parameter(ParameterSetName = CmdletInputParameterSet,
+		[Parameter(ParameterSetName = RemoveByNameAndResourceGroupParameterSet,
 			Mandatory = true,
 			HelpMessage = "Azure Sql Server Dns Alias name")]
 		[Alias("DnsAliasName")]
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDnsAlias.Cmdlet
 		/// <summary>
 		/// Gets or sets the name of the Azure Sql Server to use
 		/// </summary>
-		[Parameter(ParameterSetName = CmdletInputParameterSet,
+		[Parameter(ParameterSetName = RemoveByNameAndResourceGroupParameterSet,
 			Mandatory = true,
 			HelpMessage = "The Azure Sql Server name.")]
 		[ValidateNotNullOrEmpty]
@@ -54,10 +54,9 @@ namespace Microsoft.Azure.Commands.Sql.ServerDnsAlias.Cmdlet
 		/// <summary>
 		/// Gets or sets the name of the resource group to use.
 		/// </summary>
-		[Parameter(ParameterSetName = CmdletInputParameterSet,
+		[Parameter(ParameterSetName = RemoveByNameAndResourceGroupParameterSet,
 			Mandatory = true,
 			Position = 0,
-			ValueFromPipelineByPropertyName = true,
 			HelpMessage = "The name of the resource group.")]
 		[ValidateNotNullOrEmpty]
 		public override string ResourceGroupName { get; set; }
@@ -65,7 +64,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDnsAlias.Cmdlet
 		/// <summary>
 		/// Server Dns Alias object to remove
 		/// </summary>
-		[Parameter(ParameterSetName = ObjectParameterSet,
+		[Parameter(ParameterSetName = RemoveByInputObjectParameterSet,
 			Mandatory = true,
 			ValueFromPipeline = true,
 			HelpMessage = "The Server Dns Alias object to remove")]
@@ -75,8 +74,9 @@ namespace Microsoft.Azure.Commands.Sql.ServerDnsAlias.Cmdlet
 		/// <summary>
 		/// Gets or sets the resource id of the server dns alias
 		/// </summary>
-		[Parameter(ParameterSetName = ResourceIdParameterSet,
+		[Parameter(ParameterSetName = RemoveByResourceIdParameterSet,
 			Mandatory = true,
+			ValueFromPipelineByPropertyName = true,
 			HelpMessage = "The resource id of Server Dns Alias object to remove")]
 		[ValidateNotNullOrEmpty]
 		public string ResourceId { get; set; }
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDnsAlias.Cmdlet
 						Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlServerDnsAliasWarning, this.Name),
 					Microsoft.Azure.Commands.Sql.Properties.Resources.ShouldProcessCaption))
 				{
-					if (string.Equals(this.ParameterSetName, ObjectParameterSet, System.StringComparison.OrdinalIgnoreCase))
+					if (string.Equals(this.ParameterSetName, RemoveByInputObjectParameterSet, System.StringComparison.OrdinalIgnoreCase))
 					{
 						var resourceInfo = new ResourceIdentifier(InputObject.Id);
 						ResourceGroupName = resourceInfo.ResourceGroupName;
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDnsAlias.Cmdlet
 
 						Name = resourceInfo.ResourceName;
 					}
-					else if (string.Equals(this.ParameterSetName, ResourceIdParameterSet, System.StringComparison.OrdinalIgnoreCase))
+					else if (string.Equals(this.ParameterSetName, RemoveByResourceIdParameterSet, System.StringComparison.OrdinalIgnoreCase))
 					{
 						var resourceInfo = new ResourceIdentifier(ResourceId);
 						ResourceGroupName = resourceInfo.ResourceGroupName;

@@ -40,6 +40,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDnsAlias.Cmdlet
 		/// Gets or sets the name of the Azure Sql Server Dns Alias
 		/// </summary>
 		[Parameter(Mandatory = true,
+			ValueFromPipelineByPropertyName = true,
 			HelpMessage = "The Azure Sql Server Dns Alias name.")]
 		[Alias("DnsAliasName")]
 		[ValidateNotNullOrEmpty]
