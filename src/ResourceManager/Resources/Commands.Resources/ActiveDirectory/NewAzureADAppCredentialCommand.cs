@@ -73,9 +73,9 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                     ObjectId = ActiveDirectoryClient.GetObjectIdFromApplicationId(ApplicationId);
                 }
 
-                string decodedPassword = SecureStringExtensions.ConvertToString(Password);
-                if (!string.IsNullOrEmpty(decodedPassword))
+                if (Password != null && Password.Length > 0)
                 {
+                    string decodedPassword = SecureStringExtensions.ConvertToString(Password);
                     // Create object for password credential
                     var passwordCredential = new PasswordCredential()
                     {
