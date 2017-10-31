@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Insights.LogProfiles
 
         protected override void ProcessRecordInternal()
         {
-            WriteWarning("The type of the output will change to return a single object containing the request Id and the status code.");
+            WriteWarning("Output change: The type of the output will change in the release 5.0.0 - November 2017 - to return a single object containing the request Id and the status code.");
             Rest.Azure.AzureOperationResponse result = this.MonitorManagementClient.LogProfiles.DeleteWithHttpMessagesAsync(logProfileName: this.Name, cancellationToken: CancellationToken.None).Result;
 
             /*

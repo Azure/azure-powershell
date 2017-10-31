@@ -8,19 +8,20 @@ schema: 2.0.0
 # Get-AzureRmApiManagementCertificate
 
 ## SYNOPSIS
-Gets API Management certificates.
+Gets API Management certificates configured for Mutual Authentication with Backend in the service.
 
 ## SYNTAX
 
 ### Get all certificates (Default)
 ```
-Get-AzureRmApiManagementCertificate -Context <PsApiManagementContext> [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzureRmApiManagementCertificate -Context <PsApiManagementContext>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Get certificate by ID
 ```
-Get-AzureRmApiManagementCertificate -Context <PsApiManagementContext> -CertificateId <String> [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Get-AzureRmApiManagementCertificate -Context <PsApiManagementContext> -CertificateId <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,6 +31,7 @@ The **Get-AzureRmApiManagementCertificate** cmdlet gets all Azure API Management
 
 ### Example 1: Get all certificates
 ```
+PS C:\>$ApiMgmtContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Get-AzureRmApiManagementCertificate -Context $ApiMgmtContext
 ```
 
@@ -37,6 +39,7 @@ This command gets all API Management certificates.
 
 ### Example 2: Get a certificate by its ID
 ```
+PS C:\>$ApiMgmtContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Get-AzureRmApiManagementCertificate -Context $ApiMgmtContext -CertificateId "0123456789"
 ```
 
@@ -71,6 +74,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+ 
+ ```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

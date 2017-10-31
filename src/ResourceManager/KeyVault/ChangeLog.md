@@ -19,6 +19,10 @@
 -->
 ## Current Release
 
+## Version 3.4.1
+* Deprecating the PurgeDisabled flag from Key, Secret and Certificate attributes, respectively.
+  * The flag is being superseded by the RecoveryLevel attribute.
+
 ## Version 3.4.0
 * New/updated Cmdlets to support soft-delete for KeyVault certificates
   * Get-AzureKeyVaultCertificate

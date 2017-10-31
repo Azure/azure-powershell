@@ -79,11 +79,9 @@ Id                 : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourc
 Location           : West US
 Sku                : Name : Standard , Capacity : 1 , Tier : Standard
 ProvisioningState  : Succeeded
-Status             : Active
 CreatedAt          : 1/20/2017 1:40:01 AM
 UpdatedAt          : 1/20/2017 1:40:24 AM
 ServiceBusEndpoint : https://SB-Example1.servicebus.windows.net:443/
-Enabled            : True
 
 ## NOTES
 

@@ -37,10 +37,10 @@ namespace Microsoft.Azure.Commands.Profile
     [OutputType(typeof(PSAzureProfile))]
     public class AddAzureRMAccountCommand : AzureContextModificationCmdlet, IModuleAssemblyInitializer
     {
-        private const string UserParameterSet = "UserWithSubscriptionId";
-        private const string ServicePrincipalParameterSet = "ServicePrincipalWithSubscriptionId";
-        private const string ServicePrincipalCertificateParameterSet= "ServicePrincipalCertificateWithSubscriptionId";
-        private const string AccessTokenParameterSet = "AccessTokenWithSubscriptionId";
+        public const string UserParameterSet = "UserWithSubscriptionId";
+        public const string ServicePrincipalParameterSet = "ServicePrincipalWithSubscriptionId";
+        public const string ServicePrincipalCertificateParameterSet= "ServicePrincipalCertificateWithSubscriptionId";
+        public const string AccessTokenParameterSet = "AccessTokenWithSubscriptionId";
 
         protected IAzureEnvironment _environment =AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud];
 
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Commands.Profile
             base.BeginProcessing();
             if (MyInvocation.BoundParameters.ContainsKey(nameof(Environment)))
             {
-                var profile = AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>();
+                var profile = GetDefaultProfile();
                 if (!profile.TryGetEnvironment(Environment, out _environment))
                 {
                     throw new PSInvalidOperationException(

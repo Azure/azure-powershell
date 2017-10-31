@@ -19,6 +19,8 @@
 -->
 ## Current Release
 
+## Version 3.4.1
+
 ## Version 3.4.0
 * Run Command feature:
     - New cmdlet: 'Invoke-AzureRmVMRunCommand' invokes a run command on a VM

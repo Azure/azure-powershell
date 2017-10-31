@@ -54,7 +54,10 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             Position = 2,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Type of the volume (OS, Data or All) to perform decryption operation")]
-        [ValidateSet("OS", "Data", "All")]
+        [ValidateSet(
+            AzureDiskEncryptionExtensionContext.VolumeTypeOS,
+            AzureDiskEncryptionExtensionContext.VolumeTypeData,
+            AzureDiskEncryptionExtensionContext.VolumeTypeAll)]
         public string VolumeType { get; set; }
 
         [Alias("ExtensionName")]
@@ -272,13 +275,13 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                         !string.IsNullOrEmpty(VolumeType) &&
                         VolumeType.Equals(AzureDiskEncryptionExtensionContext.VolumeTypeData, StringComparison.InvariantCultureIgnoreCase))
                     {
-                        var result = Mapper.Map<PSAzureOperationResponse>(opExt);
+                        var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(opExt);
                         WriteObject(result);
                     }
                     else
                     {
                         var opVm = UpdateVmEncryptionSettings();
-                        var result = Mapper.Map<PSAzureOperationResponse>(opVm);
+                        var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(opVm);
                         WriteObject(result);
                     }
                 }

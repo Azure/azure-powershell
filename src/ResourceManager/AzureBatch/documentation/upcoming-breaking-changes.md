@@ -29,30 +29,36 @@
 
 ## Release 5.0.0 - November 2017
 
+- `PSCloudPool` `ResizeError` was replaced by `ResizeErrors`.
+- `PSJobPreparationTaskExecutionInformation`, `PSJobReleaseTaskExecutionInformation`, `PSStartTaskInformation`, `PSTaskExecutionInformation`, and `PSSubtaskInformation` 
+  no longer have a `SchedulingError` property, they instead have a `FailureInformation` property. `FailureInformation` is returned any time there is a task failure.
+  This includes all previous scheduling error cases, as well as nonzero task exit codes, and file upload failures from the new output files feature.
+- `PSMultiInstanceSettings` constructor no longer takes a required `numberOfInstances` parameter, instead it takes a required `coordinationCommandLine` parameter.
+
 The following cmdlets were affected this release:
 
-**New-AzureRmBatchCertificate**
+**New-AzureBatchCertificate**
 - Parameter "Password" being replaced in favor of a Secure string
 
 ```powershell
 
 # Old
-# New-AzureRmBatchCertificate [other required parameters] -Password "plain-text string"
+# New-AzureBatchCertificate [other required parameters] -Password "plain-text string"
 
 # New
-# New-AzureRmBatchCertificate [other required parameters] -Password $SecureStringVariable
+# New-AzureBatchCertificate [other required parameters] -Password $SecureStringVariable
 ```
 
-**New-AzureRmBatchComputeNodeUser**
+**New-AzureBatchComputeNodeUser**
 - Parameter "Password" being replaced in favor of a Secure string
 
 ```powershell
 
 # Old
-# New-AzureRmBatchComputeNodeUser [other required parameters] -Password "plain-text string"
+# New-AzureBatchComputeNodeUser [other required parameters] -Password "plain-text string"
 
 # New
-# New-AzureRmBatchComputeNodeUser [other required parameters] -Password $SecureStringVariable
+# New-AzureBatchComputeNodeUser [other required parameters] -Password $SecureStringVariable
 ```
 
 **Set-AzureRmBatchComputeNodeUser**
@@ -66,3 +72,18 @@ The following cmdlets were affected this release:
 # New
 # Set-AzureRmBatchComputeNodeUser [other required parameters] -Password $SecureStringVariable
 ```
+
+**New-AzureBatchTask**
+ - Removed the `RunElevated` switch and replaced it with `UserIdentity`.
+
+```powershell
+# Old
+New-AzureBatchTask -Id $taskId1 -JobId $jobId -CommandLine "cmd /c echo hello" -RunElevated $TRUE
+
+# New
+$autoUser = New-Object Microsoft.Azure.Commands.Batch.Models.PSAutoUserSpecification -ArgumentList @("Task", "Admin")
+$userIdentity = New-Object Microsoft.Azure.Commands.Batch.Models.PSUserIdentity $autoUser
+New-AzureBatchTask -Id $taskId1 -JobId $jobId -CommandLine "cmd /c echo hello" -UserIdentity $userIdentity
+```
+
+This additionally impacts the `RunElevated` property on `PSCloudTask`, `PSStartTask`, `PSJobManagerTask`, `PSJobPreparationTask`, and `PSJobReleaseTask`.

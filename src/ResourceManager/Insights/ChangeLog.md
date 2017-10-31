@@ -19,6 +19,13 @@
 -->
 ## Current Release
 
+## Version 3.4.1
+    * Add-AzureRmLogAlertRule
+        - Adding details to deprecation warning introduced in April 2017: the cmdlet will stop having effect: its functionality is moved to the "ActivityLogAlerts" cmdlets.
+        - Help file modified to include the deprecation warning and the details.
+    * Disable-AzureRmActivityLogAlert, Disable-AzureRmActivityLogAlert, Remove-AzureRmActivityLogAlert, Set-AzureRmActivityLogAlert
+        - Help file modified: removed text stating that the Force arguments was accepted since that argument is not accepted.
+
 ## Version 3.4.0
     * New cmdlet Disable-AzureRmActivityLogAlert
         - A new cmdlet to disable an existing activity log alert.

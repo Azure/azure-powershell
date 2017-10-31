@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.Network
             vnetGateway.VpnClientConfiguration.VpnClientRootCertificates.Add(newVpnClientRootCertToAdd);
 
             // Map to the sdk object
-            var virtualnetGatewayModel = Mapper.Map<MNM.VirtualNetworkGateway>(vnetGateway);
+            var virtualnetGatewayModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualNetworkGateway>(vnetGateway);
             virtualnetGatewayModel.Tags = TagsConversionHelper.CreateTagDictionary(vnetGateway.Tag, validate: true);
 
             this.VirtualNetworkGatewayClient.CreateOrUpdate(ResourceGroupName, VirtualNetworkGatewayName, virtualnetGatewayModel);

@@ -254,7 +254,7 @@ namespace Microsoft.Azure.Commands.Network
             ApplicationGatewayChildResourceHelper.NormalizeChildResourcesId(applicationGateway);
 
             // Map to the sdk object
-            var appGwModel = Mapper.Map<MNM.ApplicationGateway>(applicationGateway);
+            var appGwModel = NetworkResourceManagerProfile.Mapper.Map<MNM.ApplicationGateway>(applicationGateway);
             appGwModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
             // Execute the Create ApplicationGateway call
