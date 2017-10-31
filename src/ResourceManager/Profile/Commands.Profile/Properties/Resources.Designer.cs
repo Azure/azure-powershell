@@ -286,6 +286,24 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create Resource Group?.
+        /// </summary>
+        internal static string CreateResourceGroupCaption {
+            get {
+                return ResourceManager.GetString("CreateResourceGroupCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create new resource group &apos;{0}&apos; and set as default?.
+        /// </summary>
+        internal static string CreateResourceGroupMessage {
+            get {
+                return ResourceManager.GetString("CreateResourceGroupMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Current tenant with Id &apos;{0}&apos; will be used..
         /// </summary>
         internal static string CurrentTenantInUse {
@@ -309,6 +327,42 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static string DataCollectionEnabledWarning {
             get {
                 return ResourceManager.GetString("DataCollectionEnabledWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Changing default resource group to &apos;{0}&apos;.
+        /// </summary>
+        internal static string DefaultResourceGroupChangeWarning {
+            get {
+                return ResourceManager.GetString("DefaultResourceGroupChangeWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Default Resource Group.
+        /// </summary>
+        internal static string DefaultResourceGroupKey {
+            get {
+                return ResourceManager.GetString("DefaultResourceGroupKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing default resource group.
+        /// </summary>
+        internal static string DefaultResourceGroupRemovalWarning {
+            get {
+                return ResourceManager.GetString("DefaultResourceGroupRemovalWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current context.
+        /// </summary>
+        internal static string DefaultResourceGroupTarget {
+            get {
+                return ResourceManager.GetString("DefaultResourceGroupTarget", resourceCulture);
             }
         }
         
@@ -525,6 +579,24 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static string RemoveDefaultContextQuery {
             get {
                 return ResourceManager.GetString("RemoveDefaultContextQuery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove defaults?.
+        /// </summary>
+        internal static string RemoveDefaultsCaption {
+            get {
+                return ResourceManager.GetString("RemoveDefaultsCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove all existing defaults in the current context?.
+        /// </summary>
+        internal static string RemoveDefaultsMessage {
+            get {
+                return ResourceManager.GetString("RemoveDefaultsMessage", resourceCulture);
             }
         }
         

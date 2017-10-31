@@ -14,18 +14,21 @@ Gets a user or users.
 
 ### Get all users (Default)
 ```
-Get-AzureRmApiManagementUser -Context <PsApiManagementContext> [<CommonParameters>]
+Get-AzureRmApiManagementUser -Context <PsApiManagementContext> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### Get user by ID
 ```
-Get-AzureRmApiManagementUser -Context <PsApiManagementContext> [-UserId <String>] [<CommonParameters>]
+Get-AzureRmApiManagementUser -Context <PsApiManagementContext> [-UserId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Find users
 ```
 Get-AzureRmApiManagementUser -Context <PsApiManagementContext> [-FirstName <String>] [-LastName <String>]
- [-State <PsApiManagementUserState>] [-Email <String>] [-GroupId <String>] [<CommonParameters>]
+ [-State <PsApiManagementUserState>] [-Email <String>] [-GroupId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,13 +38,15 @@ The **Get-AzureRmApiManagementUser** cmdlet gets a specified user, or all users,
 
 ### Example 1: Get all users
 ```
-PS C:\>Get-AzureRmApiManagementUser -Context $apimContext
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Get-AzureRmApiManagementUser -Context $apimContext 
 ```
 
 This command gets all users.
 
 ### Example 2: Get a user by ID
 ```
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Get-AzureRmApiManagementUser -Context $apimContext -UserId "0123456789"
 ```
 
@@ -49,6 +54,7 @@ This command gets a user by ID.
 
 ### Example: Get users by last name
 ```
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Get-AzureRmApiManagementUser -Context $apimContext -LastName "Fuller"
 ```
 
@@ -56,14 +62,15 @@ This command gets users that have a specified last name, Fuller.
 
 ### Example 4: Get a user by email address
 ```
-PS C:\>Get-AzureRmApiManagementUser -Context $apimContext -Email 
-"user@contoso.com"
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Get-AzureRmApiManagementUser -Context $apimContext -Email "user@contoso.com"
 ```
 
 This command gets the user that has the specified email address.
 
 ### Example 5: Get all users within a group
 ```
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Get-AzureRmApiManagementUser -Context $apimContext -GroupId "0001"
 ```
 
@@ -83,6 +90,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -196,7 +218,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementUser
+The details of User in API Management service.
+
 ### IList<Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementUser>
+The list of User in the API Management  service.
 
 ## NOTES
 

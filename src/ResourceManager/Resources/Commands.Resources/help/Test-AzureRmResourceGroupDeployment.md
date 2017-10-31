@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
+Module Name: AzureRM.Resources
 ms.assetid: 0143CE35-3B1D-4829-B880-A5CA25B83883
 online version: 
 schema: 2.0.0
@@ -15,49 +16,55 @@ Validates a resource group deployment.
 ### Deployment via template file without parameters (Default)
 ```
 Test-AzureRmResourceGroupDeployment -ResourceGroupName <String> [-Mode <DeploymentMode>] -TemplateFile <String>
- [-ApiVersion <String>] [-Pre] [<CommonParameters>]
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Deployment via template file and template parameters object
 ```
 Test-AzureRmResourceGroupDeployment -ResourceGroupName <String> [-Mode <DeploymentMode>]
- -TemplateParameterObject <Hashtable> -TemplateFile <String> [-ApiVersion <String>] [-Pre] [<CommonParameters>]
+ -TemplateParameterObject <Hashtable> -TemplateFile <String> [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Deployment via template uri and template parameters object
 ```
 Test-AzureRmResourceGroupDeployment -ResourceGroupName <String> [-Mode <DeploymentMode>]
- -TemplateParameterObject <Hashtable> -TemplateUri <String> [-ApiVersion <String>] [-Pre] [<CommonParameters>]
+ -TemplateParameterObject <Hashtable> -TemplateUri <String> [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Deployment via template file and template parameters file
 ```
 Test-AzureRmResourceGroupDeployment -ResourceGroupName <String> [-Mode <DeploymentMode>]
- -TemplateParameterFile <String> -TemplateFile <String> [-ApiVersion <String>] [-Pre] [<CommonParameters>]
+ -TemplateParameterFile <String> -TemplateFile <String> [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Deployment via template uri and template parameters file
 ```
 Test-AzureRmResourceGroupDeployment -ResourceGroupName <String> [-Mode <DeploymentMode>]
- -TemplateParameterFile <String> -TemplateUri <String> [-ApiVersion <String>] [-Pre] [<CommonParameters>]
+ -TemplateParameterFile <String> -TemplateUri <String> [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Deployment via template file template parameters uri
 ```
 Test-AzureRmResourceGroupDeployment -ResourceGroupName <String> [-Mode <DeploymentMode>]
- -TemplateParameterUri <String> -TemplateFile <String> [-ApiVersion <String>] [-Pre] [<CommonParameters>]
+ -TemplateParameterUri <String> -TemplateFile <String> [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Deployment via template uri and template parameters uri
 ```
 Test-AzureRmResourceGroupDeployment -ResourceGroupName <String> [-Mode <DeploymentMode>]
- -TemplateParameterUri <String> -TemplateUri <String> [-ApiVersion <String>] [-Pre] [<CommonParameters>]
+ -TemplateParameterUri <String> -TemplateUri <String> [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Deployment via template uri without parameters
 ```
 Test-AzureRmResourceGroupDeployment -ResourceGroupName <String> [-Mode <DeploymentMode>] -TemplateUri <String>
- [-ApiVersion <String>] [-Pre] [<CommonParameters>]
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -80,6 +87,21 @@ You can specify a different version than the default version.
 Type: String
 Parameter Sets: (All)
 Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
