@@ -43,7 +43,7 @@
 The following cmdlets were affected this release:
 
 **(Add/New/Set)-AzureRmApplicationGatewaySslCertificate**
-- Parameter ``Password`` being replaced in favor of a ``SecureString``
+- Changed type of parameter ``-Password`` from ``String`` to ``SecureString``.
 
 ```powershell
 

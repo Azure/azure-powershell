@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
+Module Name: AzureRM.Insights
 ms.assetid: 18D5B95E-4CF1-4C79-AE8B-9F4DA49B46A9
 online version: 
 schema: 2.0.0
@@ -23,16 +24,18 @@ In the activity log, events can pertain to a region or could be "Global". Global
 ```
 Add-AzureRmLogProfile -Name <String> [-StorageAccountId <String>] [-ServiceBusRuleId <String>]
  [-RetentionInDays <Int32>] -Locations <System.Collections.Generic.List`1[System.String]>
- [-Categories <System.Collections.Generic.List`1[System.String]>] [<CommonParameters>]
+ [-Categories <System.Collections.Generic.List`1[System.String]>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The **Add-AzureRmLogProfile** cmdlet creates a log profile.
 
 ## EXAMPLES
-### Example 1 : Add a new log profile to export the activity log matching the location condition to a storage account 
-```yaml
-Add-AzureRmLogProfile -Locations "Global","West US" -Name ExportLogProfile -StorageAccountId /subscriptions/40gpe80s-9sb7-4f07-9042-b1b6a92ja9fk/resourceGroups/activitylogRG/providers/Microsoft.Storage/storageAccounts/activitylogstorageaccount 
+
+### Example 1 : Add a new log profile to export the activity log matching the location condition to a storage account
+```
+Add-AzureRmLogProfile -Locations "Global","West US" -Name ExportLogProfile -StorageAccountId /subscriptions/40gpe80s-9sb7-4f07-9042-b1b6a92ja9fk/resourceGroups/activitylogRG/providers/Microsoft.Storage/storageAccounts/activitylogstorageaccount
 ```
 
 ## PARAMETERS
@@ -49,6 +52,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

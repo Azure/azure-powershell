@@ -22,23 +22,20 @@ using Microsoft.Azure.Commands.DataFactoryV2.Models;
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
     [Cmdlet(VerbsCommon.Get, Constants.Dataset, DefaultParameterSetName = ParameterSetNames.ByFactoryName), OutputType(typeof(List<PSDataset>), typeof(PSDataset))]
-    public class GetAzureDataFactoryDatasetCommand : DataFactoryContextBaseCmdlet
+    public class GetAzureDataFactoryDatasetCommand : DataFactoryContextBaseGetCmdlet
     {
         [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 2, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.HelpDatasetName)]
         [Parameter(ParameterSetName = ParameterSetNames.ByFactoryObject, Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.HelpDatasetName)]
         [Alias(Constants.DatasetName)]
-        public string Name { get; set; }
+        public override string Name { get; set; }
 
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
         {
-            if (ParameterSetName.Equals(ParameterSetNames.ByFactoryObject, StringComparison.OrdinalIgnoreCase))
-            {
-                DataFactoryName = DataFactory.DataFactoryName;
-                ResourceGroupName = DataFactory.ResourceGroupName;
-            }
+            ByResourceId();
+            ByFactoryObject();
 
             var filterOptions = new AdfEntityFilterOptions()
             {
