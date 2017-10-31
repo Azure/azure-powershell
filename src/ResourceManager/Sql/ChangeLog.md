@@ -21,7 +21,11 @@
 * Adding support for list and cancel the asynchronous updateslo operation on the database
 	- update existing cmdlet Get-AzureRmSqlDatabaseActivity to return DB updateslo operation status.
 	- add new cmdlet Stop-AzureRmSqlDatabaseActivity for cancel the asynchronous updateslo operation on the database.
-
+* Adding support for Zone Redundancy for databases and elastic pools
+	- Adding ZoneRedundant switch parameter to New-AzureRmSqlDatabase
+	- Adding ZoneRedundant switch parameter to Set-AzureRmSqlDatabase
+	- Adding ZoneRedundant switch parameter to New-AzureRmSqlElasticPool
+	- Adding ZoneRedundant switch parameter to Set-AzureRmSqlElasticPool
 ## Version 3.4.1
 
 ## Version 3.4.0
