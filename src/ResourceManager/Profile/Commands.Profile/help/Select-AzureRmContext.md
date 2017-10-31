@@ -12,13 +12,13 @@ Select a subscription and account to target in Azure PowerShell cmdlets
 
 ## SYNTAX
 
-### Input Object (Default)
+### SelectByInputObject (Default)
 ```
 Select-AzureRmContext -InputObject <PSAzureContext> [-Scope <ContextModificationScope>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Context Name
+### SelectByName
 ```
 Select-AzureRmContext [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [-Name] <String> [<CommonParameters>]
@@ -59,7 +59,7 @@ A context object, normally passed through the pipeline.
 
 ```yaml
 Type: PSAzureContext
-Parameter Sets: Input Object
+Parameter Sets: SelectByInputObject
 Aliases: 
 
 Required: True
@@ -74,9 +74,8 @@ The name of the context
 
 ```yaml
 Type: String
-Parameter Sets: Context Name
+Parameter Sets: SelectByName
 Aliases: 
-Accepted values: Default
 
 Required: True
 Position: 0
