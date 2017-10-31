@@ -41,7 +41,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// </summary>
         [Parameter(
             Mandatory = false,
-            ValueFromPipeline = false,
             Position = 1,
             HelpMessage = ParamHelpMsgs.RecoveryPoint.FileDownloadLocation)]
         [ValidateNotNullOrEmpty]
@@ -68,7 +67,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 WriteInformation(string.Format(Resources.MountRecoveryPointInfoMessage, response.Password),
                     null);
                 WriteObject(response);
-            }, ShouldProcess(RecoveryPoint.ItemName, VerbsCommon.Get));
+            }, ShouldProcess(RecoveryPoint.ItemName, "Downloading script"));
         }
     }
 

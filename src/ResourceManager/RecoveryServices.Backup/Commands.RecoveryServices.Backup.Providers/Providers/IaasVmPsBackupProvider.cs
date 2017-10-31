@@ -344,7 +344,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     else
                     {
                         // clientScriptForConnection.OsType == "Linux"
-                        result =  this.GenerateILRResponseForLinuxVMs(
+                        result = this.GenerateILRResponseForLinuxVMs(
                                 recoveryTarget.ClientScripts[0],
                                 protectedItemName, rp.RecoveryPointTime.ToString(), out content);
                     }
@@ -391,16 +391,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 ilRResponse,
                 operationId => ServiceClientAdapter.GetProtectedItemOperationStatus(operationId));
 
-            if(response!=null && response.Status != null)
+            if (response != null && response.Status != null)
             {
-                Logger.Instance.WriteDebug("Completed the call with status code" + response.Status.ToString());   
+                Logger.Instance.WriteDebug("Completed the call with status code" + response.Status.ToString());
             }
         }
 
         /// <summary>
-/// Lists recovery points generated for the given item
-/// </summary>
-/// <returns>List of recovery point PowerShell model objects</returns>
+        /// Lists recovery points generated for the given item
+        /// </summary>
+        /// <returns>List of recovery point PowerShell model objects</returns>
         public List<RecoveryPointBase> ListRecoveryPoints()
         {
             DateTime startDate = (DateTime)(ProviderData[RecoveryPointParams.StartDate]);
@@ -673,7 +673,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 {
                     Dictionary<UriEnums, string> dictionary = HelperUtils.ParseUri(protectedItem.Id);
                     string containerUri = HelperUtils.GetContainerUri(dictionary, protectedItem.Id);
-                    return containerUri.Contains(container.Name);
+
+                    var delimIndex = containerUri.IndexOf(';');
+                    string containerName = containerUri.Substring(delimIndex + 1);
+                    return containerName.Equals(container.Name);
                 }).ToList();
             }
 
@@ -1323,7 +1326,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     targetPasswordString) + targetPasswordString.Length, 15);
 
             string pattern = targetPasswordString + ".*\"";
-            string replacement = 
+            string replacement =
                 targetPasswordString + "UserInput012345\"";
             Regex rgx = new Regex(pattern);
             content = rgx.Replace(content, replacement);

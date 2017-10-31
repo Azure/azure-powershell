@@ -20,15 +20,18 @@ function Test-AzureVMGetItems
 	try
 	{
 		# Setup
-		$vm = Create-VM $resourceGroupName $location
+		$vm = Create-VM $resourceGroupName $location 1
+		$vm2 = Create-VM $resourceGroupName $location 12
 		$vault = Create-RecoveryServicesVault $resourceGroupName $location
 		Enable-Protection $vault $vm
+		Enable-Protection $vault $vm2
 
 		Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
 
 		$container = Get-AzureRmRecoveryServicesBackupContainer `
 			-ContainerType AzureVM `
-			-Status Registered;
+			-Status Registered `
+			-Name $vm.Name
 		
 		# VARIATION-1: Get all items for container
 		$items = Get-AzureRmRecoveryServicesBackupItem `
@@ -36,11 +39,13 @@ function Test-AzureVMGetItems
 			-WorkloadType AzureVM;
 		Assert-True { $items.VirtualMachineId -contains $vm.Id }
 
-		# VARIATION-2: Get items for container with friendly name filter
+		# VARIATION-2: Get items for container with friendly name filter.
+		# Here we will be testing a case when two VMs with overlapping names are protected.
 		$items = Get-AzureRmRecoveryServicesBackupItem `
 			-Container $container `
 			-WorkloadType AzureVM `
 			-Name $vm.Name;
+		Assert-True { $items.Count -eq 1 }
 		Assert-True { $items.VirtualMachineId -contains $vm.Id }
 
 		# VARIATION-3: Get items for container with ProtectionStatus filter
