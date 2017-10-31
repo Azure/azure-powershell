@@ -28,6 +28,8 @@
 - Clear-AzureRmDefault
     - Use this cmdlet to remove the current default resource group
     - ```Clear-AzureRmDefault -ResourceGroup```
+- Add-AzureRmEnvironment and Set-AzureRmEnvironment
+    - Add the BatchAudience parameter, which allows you to specify the Azure Batch Active Directory audience to use when acquiring authentication tokens for the Batch service.
 - Add-AzureRmAccount
     - `Add-AzureRmAccount` has been renamed as `Connect-AzureRmAccount`; an alias has been added for the old cmdlet name, and other aliases (`Login-AzAccount` and `Login-AzureRmAccount`) have been redirected to the new cmdlet name.
     - A recommendation will be made to remove the old Login-* aliases in a future release in favor of following best practices (using approved verbs in all cmdlets). Login is not an approved verb and its use should be discouraged. Under no circumstances should unapproved verbs be used in documentation or presentations that include the AzureRM PowerShell cmdlets.
