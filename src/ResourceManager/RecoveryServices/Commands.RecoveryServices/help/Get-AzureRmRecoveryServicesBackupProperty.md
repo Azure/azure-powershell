@@ -24,7 +24,6 @@ The **Get-AzureRmRecoveryServicesBackupProperty** cmdlet gets backup properties 
 
 ### 1:
 ```
-
 ```
 
 ## PARAMETERS
