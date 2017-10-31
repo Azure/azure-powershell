@@ -12,13 +12,13 @@ Creates a new web service.
 
 ## SYNTAX
 
-### Create a new Azure ML webservice from a JSON definiton file.
+### CreateFromFile
 ```
 New-AzureRmMlWebService -ResourceGroupName <String> -Location <String> -Name <String> -DefinitionFile <String>
  [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Create a new Azure ML webservice from a WebService instance definition.
+### CreateFromInstance
 ```
 New-AzureRmMlWebService -ResourceGroupName <String> -Location <String> -Name <String>
  -NewWebServiceDefinition <WebService> [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
@@ -76,7 +76,7 @@ You can find the latest specification for the web service definition in the swag
 
 ```yaml
 Type: String
-Parameter Sets: Create a new Azure ML webservice from a JSON definiton file.
+Parameter Sets: CreateFromFile
 Aliases: 
 
 Required: True
@@ -144,7 +144,7 @@ You can find the latest specification for the web service definition in the swag
 
 ```yaml
 Type: WebService
-Parameter Sets: Create a new Azure ML webservice from a WebService instance definition.
+Parameter Sets: CreateFromInstance
 Aliases: 
 
 Required: True

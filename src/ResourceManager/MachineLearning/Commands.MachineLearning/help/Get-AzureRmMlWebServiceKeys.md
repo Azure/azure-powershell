@@ -12,13 +12,13 @@ Retrieves the web service's keys.
 
 ## SYNTAX
 
-### Get an Azure ML web service's access keys given its name and resource group.
+### GetByNameAndResourceGroup
 ```
 Get-AzureRmMlWebServiceKeys -ResourceGroupName <String> -Name <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Get the access kesy for the given web service instance.
+### GetByInstance
 ```
 Get-AzureRmMlWebServiceKeys -MlWebService <WebService> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
@@ -71,7 +71,7 @@ The name of the web service for which the access keys are retrieved.
 
 ```yaml
 Type: WebService
-Parameter Sets: Get the access kesy for the given web service instance.
+Parameter Sets: GetByInstance
 Aliases: 
 
 Required: True
@@ -86,7 +86,7 @@ The name of the web service for which the access keys are retrieved.
 
 ```yaml
 Type: String
-Parameter Sets: Get an Azure ML web service's access keys given its name and resource group.
+Parameter Sets: GetByNameAndResourceGroup
 Aliases: 
 
 Required: True
@@ -101,7 +101,7 @@ The resource group for the web service.
 
 ```yaml
 Type: String
-Parameter Sets: Get an Azure ML web service's access keys given its name and resource group.
+Parameter Sets: GetByNameAndResourceGroup
 Aliases: 
 
 Required: True

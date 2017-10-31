@@ -12,13 +12,13 @@ schema: 2.0.0
 
 ## SYNTAX
 
-### Parameter Set for fields parameters (Default)
+### ByFieldsParameterSet (Default)
 ```
 Get-AzureRmCdnProfileResourceUsage -ProfileName <String> -ResourceGroupName <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Parameter Set for object parameters
+### ByObjectParameterSet
 ```
 Get-AzureRmCdnProfileResourceUsage -CdnProfile <PSProfile> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
@@ -43,7 +43,7 @@ The Azure CDN profile object.
 
 ```yaml
 Type: PSProfile
-Parameter Sets: Parameter Set for object parameters
+Parameter Sets: ByObjectParameterSet
 Aliases: 
 
 Required: True
@@ -73,7 +73,7 @@ The name of the profile.
 
 ```yaml
 Type: String
-Parameter Sets: Parameter Set for fields parameters
+Parameter Sets: ByFieldsParameterSet
 Aliases: 
 
 Required: True
@@ -88,7 +88,7 @@ The resource group to which the profile belongs.
 
 ```yaml
 Type: String
-Parameter Sets: Parameter Set for fields parameters
+Parameter Sets: ByFieldsParameterSet
 Aliases: 
 
 Required: True

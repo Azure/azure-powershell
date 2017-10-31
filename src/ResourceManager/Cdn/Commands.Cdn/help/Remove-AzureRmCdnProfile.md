@@ -13,13 +13,13 @@ Removes a CDN profile.
 
 ## SYNTAX
 
-### Parameter Set for fields parameters
+### ByFieldsParameterSet
 ```
 Remove-AzureRmCdnProfile -ProfileName <String> -ResourceGroupName <String> [-PassThru] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Parameter Set for object parameters
+### ByObjectParameterSet
 ```
 Remove-AzureRmCdnProfile -CdnProfile <PSProfile> [-PassThru] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -42,7 +42,7 @@ Specifies the profile that this cmdlet removes.
 
 ```yaml
 Type: PSProfile
-Parameter Sets: Parameter Set for object parameters
+Parameter Sets: ByObjectParameterSet
 Aliases: 
 
 Required: True
@@ -103,7 +103,7 @@ Specifies the name of the profile that this cmdlet removes.
 
 ```yaml
 Type: String
-Parameter Sets: Parameter Set for fields parameters
+Parameter Sets: ByFieldsParameterSet
 Aliases: 
 
 Required: True
@@ -118,7 +118,7 @@ Specifies the name of the resource group to which the profile belongs.
 
 ```yaml
 Type: String
-Parameter Sets: Parameter Set for fields parameters
+Parameter Sets: ByFieldsParameterSet
 Aliases: 
 
 Required: True
