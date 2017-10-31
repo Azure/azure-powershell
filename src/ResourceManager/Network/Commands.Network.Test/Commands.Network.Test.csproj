@@ -224,6 +224,9 @@
     <None Include="ScenarioTests\Common.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="ScenarioTests\Data\ApplicationGatewaySslCert.pfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="ScenarioTests\Data\VmssDeploymentTemplate.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
