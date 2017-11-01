@@ -499,7 +499,7 @@ function Test-RemoveDatabaseInternal  ($location = "westcentralus")
 #>
 function Test-CancelDatabaseOperation
 {
-	Test-CancelDatabaseOperationInternal "North Europe"
+	Test-CancelDatabaseOperationInternal
 }
 
 <#
