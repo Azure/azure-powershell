@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
                 WriteProgress(new ProgressRecord(0, "Sync-AzureAnalysisServicesInstance.", string.Format("Authenticating user for '{0}' environment.", context.Environment.Name)));
                 var clusterResolveResult = ClusterResolve(context, serverName);
                 var virtualServerName = clusterResolveResult.CoreServerName.Split(":".ToCharArray())[0];
-                if (!serverName.Equals(virtualServerName) || !serverName.Equals(clusterResolveResult.CoreServerName))
+                if (!serverName.Equals(virtualServerName) && !clusterResolveResult.CoreServerName.EndsWith(":rw"))
                 {
                     throw new SynchronizationFailedException("Sync request can only be sent to the management endpoint");
                 }
@@ -395,6 +395,9 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
                     {
                         await Task.Delay(DefaultRetryIntervalForPolling);
                     }
+
+                    var polling = pollingUrl.ToString().Split("?".ToCharArray())[0];
+                    pollingUrl = new Uri(polling);
 
                     this.AsAzureHttpClient.resetHttpClient();
                     using (HttpResponseMessage message = await AsAzureHttpClient.CallGetAsync(
