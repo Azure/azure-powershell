@@ -267,7 +267,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             {
                 doc.Save(outputFile, SaveOptions.OmitDuplicateNamespaces);
             }
-	    return doc.ToString();
+            return doc.ToString();
         }
 
         public string ResetWebAppPublishingCredentials(string resourceGroupName, string webSiteName, string slotName)
