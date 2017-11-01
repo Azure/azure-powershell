@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             dynamicParameters.Add("VMScaleSetName", pVMScaleSetName);
 
             var pParameters = new RuntimeDefinedParameter();
-            pParameters.Name = "VirtualMachineScaleSetUpdateParameter";
+            pParameters.Name = "VirtualMachineScaleSetUpdate";
             pParameters.ParameterType = typeof(VirtualMachineScaleSetUpdate);
             pParameters.Attributes.Add(new ParameterAttribute
             {
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 Mandatory = true
             });
             pParameters.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("VirtualMachineScaleSetUpdateParameter", pParameters);
+            dynamicParameters.Add("VirtualMachineScaleSetUpdate", pParameters);
 
             var pArgumentList = new RuntimeDefinedParameter();
             pArgumentList.Name = "ArgumentList";

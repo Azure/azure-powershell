@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Network
         public PSIPAddressAvailabilityResult TestIpAddressAvailability(string resourceGroupName, string vnetName, string ipAddress)
         {
             var result = this.NetworkClient.NetworkManagementClient.VirtualNetworks.CheckIPAddressAvailability(resourceGroupName, vnetName, ipAddress);
-            var psResult = Mapper.Map<PSIPAddressAvailabilityResult>(result);
+            var psResult = NetworkResourceManagerProfile.Mapper.Map<PSIPAddressAvailabilityResult>(result);
 
             return psResult;
         }

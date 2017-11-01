@@ -82,6 +82,9 @@
     <Compile Include="Context\SelectAzureRmContext.cs" />
     <Compile Include="DataCollection\DisableAzureRMDataCollection.cs" />
     <Compile Include="DataCollection\EnableAzureRMDataCollection.cs" />
+    <Compile Include="Default\ClearAzureRmDefault.cs" />
+    <Compile Include="Default\GetAzureRmDefault.cs" />
+    <Compile Include="Default\SetAzureRMDefault.cs" />
     <Compile Include="Environment\RemoveAzureRMEnvironment.cs" />
     <Compile Include="Environment\GetAzureRMEnvironment.cs" />
     <Compile Include="Environment\SetAzureRMEnvironment.cs" />
@@ -97,6 +100,7 @@
     <Compile Include="Models\AzureRmProfileExtensions.cs" />
     <Compile Include="Models\MetadataResponse.cs" />
     <Compile Include="Models\ModelExtensions.cs" />
+    <Compile Include="Models\PSResourceGroup.cs" />
     <Compile Include="Models\RMProfileClient.cs" />
     <Compile Include="Models\SimpleAccessToken.cs" />
     <Compile Include="Subscription\GetAzureRMSubscription.cs" />

@@ -74,7 +74,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Certificates
                     null,
                     CommandRuntime.ToString(),
                     () => this.ComputeClient.ServiceCertificates.Get(parameters),
-                    (s, response) => new int[1].Select(i => ContextFactory<ServiceCertificateGetResponse, CertificateContext>(response, s)));
+                    (s, response) => new int[1].Select(i => ContextFactory(response, s,
+                                                                ServiceManagementProfile.Mapper.Map<ServiceCertificateGetResponse, CertificateContext>,
+                                                                ServiceManagementProfile.Mapper.Map)));
             }
             else
             {
@@ -84,7 +86,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Certificates
                     () => this.ComputeClient.ServiceCertificates.List(this.ServiceName),
                     (s, response) => response.Certificates.Select(c =>
                                                                   {
-                                                                      var context = ContextFactory<ServiceCertificateListResponse.Certificate, CertificateContext>(c, s);
+                                                                      var context = ContextFactory(c, s,
+                                                                        ServiceManagementProfile.Mapper.Map<ServiceCertificateListResponse.Certificate, CertificateContext>,
+                                                                        ServiceManagementProfile.Mapper.Map);
                                                                       context.ServiceName = this.ServiceName;
                                                                       return context;
                                                                   }));
