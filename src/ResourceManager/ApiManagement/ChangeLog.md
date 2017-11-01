@@ -18,6 +18,16 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Breaking Changes in Cmdlet to Manage Api Management Users
+    - New-AzureRmApiManagementUser Parameter `Password` is changed from String to SecureString
+    - Set-AzureRmApiManagementBackend Parameter `Password` is changed from String to SecureString
+    
+* Breaking Changes in Cmdlet to Create Backend Proxy Object
+    - New-AzureRmApiManagementBackendProxy Parameter `Password` and `UserName` have been replaced with `ProxyCredentials` of type PSCredential
+	
+* Updated Cmdlet Get-AzureRmApiManagementUser to fix issue https://github.com/Azure/azure-powershell/issues/4510
+
+* Updated Cmdlet New-AzureRmApiManagementApi to create Api with Empty Path https://github.com/Azure/azure-powershell/issues/4069
 
 ## Version 4.4.1
 

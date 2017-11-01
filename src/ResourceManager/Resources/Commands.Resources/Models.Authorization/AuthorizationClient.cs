@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 }
                 else
                 {
-                    principalId = string.IsNullOrEmpty(options.ADObjectFilter.Id.ToString()) ? adObject.Id.ToString() : options.ADObjectFilter.Id;
+                    principalId = string.IsNullOrEmpty(options.ADObjectFilter.Id) ? adObject.Id.ToString() : options.ADObjectFilter.Id;
                 }
 
                 var tempResult = AuthorizationManagementClient.RoleAssignments.List(
@@ -318,7 +318,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             // but an edge case can have multiple role assignments to the same role or multiple role assignments to different roles, with same name.
             // The FilterRoleAssignments takes care of paging internally
             IEnumerable<PSRoleAssignment> roleAssignments = FilterRoleAssignments(options, currentSubscription: subscriptionId)
-                                                .Where(ra => ra.Scope.Equals(options.Scope.TrimEnd('/'), StringComparison.OrdinalIgnoreCase));
+                                                .Where(ra => ra.Scope.TrimEnd('/').Equals(options.Scope.TrimEnd('/'), StringComparison.OrdinalIgnoreCase));
 
             if (roleAssignments == null || !roleAssignments.Any())
             {
