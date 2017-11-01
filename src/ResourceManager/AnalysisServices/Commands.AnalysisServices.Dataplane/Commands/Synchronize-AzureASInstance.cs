@@ -396,9 +396,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
                         await Task.Delay(DefaultRetryIntervalForPolling);
                     }
 
-                    var polling = pollingUrl.ToString().Split("?".ToCharArray())[0];
-                    pollingUrl = new Uri(polling);
-
                     this.AsAzureHttpClient.resetHttpClient();
                     using (HttpResponseMessage message = await AsAzureHttpClient.CallGetAsync(
                         pollingUrl,
