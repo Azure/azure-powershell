@@ -142,7 +142,7 @@ function Remove-ModuleDependencies
     $text = $regex.Replace($content, "RequiredModules = @()")
     $text | Out-File -FilePath $Path
     
-    $refex = New-Object System.Text.RegularExpressions.Regex "NestedModules\s*=\s*@\([^\)]+\)"
+    $regex = New-Object System.Text.RegularExpressions.Regex "NestedModules\s*=\s*@\([^\)]+\)"
     $content = (Get-Content -Path $Path) -join "`r`n"
     $text = $regex.Replace($content, "NestedModules = @()")
     $text | Out-File -FilePath $Path
