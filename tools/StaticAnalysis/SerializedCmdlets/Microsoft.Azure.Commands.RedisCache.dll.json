@@ -2107,7 +2107,7 @@
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "Only MaxMemoryPolicy",
+      "DefaultParameterSetName": "OnlyMaxMemoryPolicy",
       "OutputTypes": [
         {
           "Type": {
@@ -2343,7 +2343,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "Only MaxMemoryPolicy",
+          "Name": "OnlyMaxMemoryPolicy",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -3247,7 +3247,7 @@
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "All In Subscription",
+      "DefaultParameterSetName": "GetAllInSubscription",
       "OutputTypes": [
         {
           "Type": {
@@ -3325,7 +3325,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "All In Resource Group",
+          "Name": "GetByResourceGroup",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -3382,7 +3382,7 @@
           ]
         },
         {
-          "Name": "Specific Redis Cache",
+          "Name": "GetByRedisCache",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -3494,6 +3494,10 @@
               "ValueFromPipelineByPropertyName": false
             }
           ]
+        },
+        {
+          "Name": "GetAllInSubscription",
+          "Parameters": []
         }
       ],
       "AliasList": []

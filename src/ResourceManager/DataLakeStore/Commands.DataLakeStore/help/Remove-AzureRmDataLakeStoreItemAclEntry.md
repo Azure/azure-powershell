@@ -13,14 +13,14 @@ Removes an entry from the ACL of a file or folder in Data Lake Store.
 
 ## SYNTAX
 
-### Remove ACL Entries using ACL object (Default)
+### RemoveByACLObject (Default)
 ```
 Remove-AzureRmDataLakeStoreItemAclEntry [-Account] <String> [-Path] <DataLakeStorePathInstance>
  [-Acl] <DataLakeStoreItemAce[]> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### Remove specific ACE
+### RemoveSpecificACE
 ```
 Remove-AzureRmDataLakeStoreItemAclEntry [-Account] <String> [-Path] <DataLakeStorePathInstance>
  [-AceType] <AceType> [[-Id] <Guid>] [-Default] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
@@ -67,7 +67,7 @@ The acceptable values for this parameter are:
 
 ```yaml
 Type: AceType
-Parameter Sets: Remove specific ACE
+Parameter Sets: RemoveSpecificACE
 Aliases: 
 Accepted values: User, Group, Mask, Other
 
@@ -83,7 +83,7 @@ Specifies the ACL object that contains the entries to be removed.
 
 ```yaml
 Type: DataLakeStoreItemAce[]
-Parameter Sets: Remove ACL Entries using ACL object
+Parameter Sets: RemoveByACLObject
 Aliases: 
 
 Required: True
@@ -98,7 +98,7 @@ Indicates that this operation removes the default ACE from the specified ACL.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: Remove specific ACE
+Parameter Sets: RemoveSpecificACE
 Aliases: 
 
 Required: False
@@ -128,7 +128,7 @@ Specifies the object ID of the AzureActive Directory user, group, or service pri
 
 ```yaml
 Type: Guid
-Parameter Sets: Remove specific ACE
+Parameter Sets: RemoveSpecificACE
 Aliases: 
 
 Required: False
