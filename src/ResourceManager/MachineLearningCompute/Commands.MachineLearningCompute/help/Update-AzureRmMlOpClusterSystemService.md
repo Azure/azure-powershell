@@ -12,19 +12,19 @@ Starts an update on the operationalization cluster's system services.
 
 ## SYNTAX
 
-### Start a system services update from cmdlet input parameters.
+### StartUpdateWithNameAndResourceGroup
 ```
 Update-AzureRmMlOpClusterSystemService -ResourceGroupName <String> -Name <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Start a system services update from an PSOperationalizationCluster instance definition.
+### StartUpdateWithInputObject
 ```
 Update-AzureRmMlOpClusterSystemService -InputObject <PSOperationalizationCluster>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Start a system services update from an Azure resouce id.
+### StartUpdateWithResourceId
 ```
 Update-AzureRmMlOpClusterSystemService -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -64,7 +64,7 @@ The operationalization cluster object.
 
 ```yaml
 Type: PSOperationalizationCluster
-Parameter Sets: Start a system services update from an PSOperationalizationCluster instance definition.
+Parameter Sets: StartUpdateWithInputObject
 Aliases: Cluster
 
 Required: True
@@ -79,7 +79,7 @@ The name of the operationalization cluster.
 
 ```yaml
 Type: String
-Parameter Sets: Start a system services update from cmdlet input parameters.
+Parameter Sets: StartUpdateWithNameAndResourceGroup
 Aliases: 
 
 Required: True
@@ -94,7 +94,7 @@ The name of the resource group for the operationalization cluster.
 
 ```yaml
 Type: String
-Parameter Sets: Start a system services update from cmdlet input parameters.
+Parameter Sets: StartUpdateWithNameAndResourceGroup
 Aliases: 
 
 Required: True
@@ -109,7 +109,7 @@ The Azure resource id for the operationalization cluster.
 
 ```yaml
 Type: String
-Parameter Sets: Start a system services update from an Azure resouce id.
+Parameter Sets: StartUpdateWithResourceId
 Aliases: 
 
 Required: True

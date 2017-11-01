@@ -13,13 +13,13 @@ Gets Stream Analytics jobs information.
 
 ## SYNTAX
 
-### For stream analytics objects in the given resource group
+### ByResourceGroup
 ```
 Get-AzureRmStreamAnalyticsJob [-ResourceGroupName] <String> [[-Name] <String>] [-NoExpand]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### For stream analytics objects in the given subscription
+### BySubscription
 ```
 Get-AzureRmStreamAnalyticsJob [-NoExpand] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -72,7 +72,7 @@ Specifies the name of the Azure Stream Analytics job to retrieve.
 
 ```yaml
 Type: String
-Parameter Sets: For stream analytics objects in the given resource group
+Parameter Sets: ByResourceGroup
 Aliases: 
 
 Required: False
@@ -102,7 +102,7 @@ Specifies the name of the resource group to which the Azure Stream Analytics job
 
 ```yaml
 Type: String
-Parameter Sets: For stream analytics objects in the given resource group
+Parameter Sets: ByResourceGroup
 Aliases: 
 
 Required: True

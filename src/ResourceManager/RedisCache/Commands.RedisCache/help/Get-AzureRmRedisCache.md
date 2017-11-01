@@ -13,18 +13,18 @@ Gets a Redis Cache.
 
 ## SYNTAX
 
-### All In Subscription (Default)
+### GetAllInSubscription (Default)
 ```
 Get-AzureRmRedisCache [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### All In Resource Group
+### GetByResourceGroup
 ```
 Get-AzureRmRedisCache -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
-### Specific Redis Cache
+### GetByRedisCache
 ```
 Get-AzureRmRedisCache -ResourceGroupName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
@@ -179,7 +179,7 @@ Use with the *ResourceGroupName* parameter.
 
 ```yaml
 Type: String
-Parameter Sets: Specific Redis Cache
+Parameter Sets: GetByRedisCache
 Aliases: 
 
 Required: True
@@ -196,7 +196,7 @@ If you specify only the *ResourceGroupName* parameter, this operation gets every
 
 ```yaml
 Type: String
-Parameter Sets: All In Resource Group, Specific Redis Cache
+Parameter Sets: GetByResourceGroup, GetByRedisCache
 Aliases: 
 
 Required: True
