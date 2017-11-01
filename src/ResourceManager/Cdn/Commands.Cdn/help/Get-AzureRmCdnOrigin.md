@@ -13,13 +13,13 @@ Gets a CDN origin server.
 
 ## SYNTAX
 
-### Parameter Set for fields parameters (Default)
+### ByFieldsParameterSet (Default)
 ```
 Get-AzureRmCdnOrigin [-OriginName <String>] -EndpointName <String> -ProfileName <String>
  -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Parameter Set for object parameters
+### ByObjectParameterSet
 ```
 Get-AzureRmCdnOrigin [-OriginName <String>] -CdnEndpoint <PSEndpoint>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -42,7 +42,7 @@ Specifies the CDN endpoint object to which the origin belongs.
 
 ```yaml
 Type: PSEndpoint
-Parameter Sets: Parameter Set for object parameters
+Parameter Sets: ByObjectParameterSet
 Aliases: 
 
 Required: True
@@ -72,7 +72,7 @@ Specifies the name of the endpoint to which the origin server belongs.
 
 ```yaml
 Type: String
-Parameter Sets: Parameter Set for fields parameters
+Parameter Sets: ByFieldsParameterSet
 Aliases: 
 
 Required: True
@@ -102,7 +102,7 @@ Specifies the name of the profile to which the origin server belongs.
 
 ```yaml
 Type: String
-Parameter Sets: Parameter Set for fields parameters
+Parameter Sets: ByFieldsParameterSet
 Aliases: 
 
 Required: True
@@ -117,7 +117,7 @@ Specifies the name of the resource group to which the origin server belongs.
 
 ```yaml
 Type: String
-Parameter Sets: Parameter Set for fields parameters
+Parameter Sets: ByFieldsParameterSet
 Aliases: 
 
 Required: True

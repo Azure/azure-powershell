@@ -348,6 +348,15 @@ function Get-VirtualNetworkRuleName
 
 <#
 .SYNOPSIS
+Gets valid server dns alias name
+#>
+function Get-ServerDnsAliasName
+{
+    return getAssetName
+}
+
+<#
+.SYNOPSIS
 Gets test mode - 'Record' or 'Playback'
 #>
 function Get-SqlTestMode {

@@ -13,14 +13,14 @@ Removes a policy assignment.
 
 ## SYNTAX
 
-### The policy assignment name parameter set. (Default)
+### RemoveByPolicyAssignmentName (Default)
 ```
 Remove-AzureRmPolicyAssignment -Name <String> -Scope <String> [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
  [-InformationVariable <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### The policy assignment Id parameter set.
+### RemoveByPolicyAssignmentId
 ```
 Remove-AzureRmPolicyAssignment -Id <String> [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
@@ -96,7 +96,7 @@ Specifies the fully qualified resource ID for the policy assignment that this cm
 
 ```yaml
 Type: String
-Parameter Sets: The policy assignment Id parameter set.
+Parameter Sets: RemoveByPolicyAssignmentId
 Aliases: ResourceId
 
 Required: True
@@ -150,7 +150,7 @@ Specifies the name of the policy assignment that this cmdlet removes.
 
 ```yaml
 Type: String
-Parameter Sets: The policy assignment name parameter set.
+Parameter Sets: RemoveByPolicyAssignmentName
 Aliases: 
 
 Required: True
@@ -180,7 +180,7 @@ Specifies the scope at which the policy is applied.
 
 ```yaml
 Type: String
-Parameter Sets: The policy assignment name parameter set.
+Parameter Sets: RemoveByPolicyAssignmentName
 Aliases: 
 
 Required: True
