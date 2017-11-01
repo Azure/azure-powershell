@@ -23,9 +23,9 @@ namespace Microsoft.Azure.Commands.RedisCache
     [Cmdlet(VerbsCommon.Get, "AzureRmRedisCache", DefaultParameterSetName = BaseParameterSetName), OutputType(typeof(List<RedisCacheAttributes>))]
     public class GetAzureRedisCache : RedisCacheCmdletBase
     {
-        internal const string BaseParameterSetName = "All In Subscription";
-        internal const string ResourceGroupParameterSetName = "All In Resource Group";
-        internal const string RedisCacheParameterSetName = "Specific Redis Cache";
+        internal const string BaseParameterSetName = "GetAllInSubscription";
+        internal const string ResourceGroupParameterSetName = "GetByResourceGroup";
+        internal const string RedisCacheParameterSetName = "GetByRedisCache";
 
         [Parameter(ParameterSetName = ResourceGroupParameterSetName, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Name of resource group under which want to create cache.")]
         [Parameter(ParameterSetName = RedisCacheParameterSetName, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Name of resource group under which want to create cache.")]

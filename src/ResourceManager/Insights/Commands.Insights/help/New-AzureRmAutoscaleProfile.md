@@ -13,20 +13,20 @@ Creates an Autoscale profile.
 
 ## SYNTAX
 
-### Parameters for New-AzureRmAutoscaleProfile cmdlet without scheduled times
+### CreateWithoutScheduledTimes
 ```
 New-AzureRmAutoscaleProfile -Name <String> -DefaultCapacity <String> -MaximumCapacity <String> -MinimumCapacity <String>
  -Rule <System.Collections.Generic.List`1[Microsoft.Azure.Management.Insights.Models.ScaleRule]> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Parameters for New-AzureRmAutoscaleProfile cmdlet using fix date scheduling
+### CreateWithFixedDateScheduling
 ```
 New-AzureRmAutoscaleProfile -Name <String> -DefaultCapacity <String> -MaximumCapacity <String>
  -MinimumCapacity <String> -StartTimeWindow <DateTime> -EndTimeWindow <DateTime> -TimeWindowTimeZone <String>
  -Rule <System.Collections.Generic.List`1[Microsoft.Azure.Management.Insights.Models.ScaleRule]> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Parameters for New-AzureRmAutoscaleProfile cmdlet using recurrent scheduling
+### CreateUsingRecurrentScheduling
 ```
 New-AzureRmAutoscaleProfile -Name <String> -DefaultCapacity <String> -MaximumCapacity <String>
  -MinimumCapacity <String> -RecurrenceFrequency <RecurrenceFrequency>
@@ -154,7 +154,7 @@ Specifies the end of the time window.
 
 ```yaml
 Type: DateTime
-Parameter Sets: Parameters for New-AzureRmAutoscaleProfile cmdlet using fix date scheduling
+Parameter Sets: CreateWithFixedDateScheduling
 Aliases: 
 
 Required: True
@@ -226,7 +226,7 @@ Not all of these values are supported.
 
 ```yaml
 Type: RecurrenceFrequency
-Parameter Sets: Parameters for New-AzureRmAutoscaleProfile cmdlet using recurrent scheduling
+Parameter Sets: CreateUsingRecurrentScheduling
 Aliases: 
 Accepted values: None, Second, Minute, Hour, Day, Week, Month, Year
 
@@ -302,7 +302,7 @@ Specifies the time zone of the schedule.
 
 ```yaml
 Type: String
-Parameter Sets: Parameters for New-AzureRmAutoscaleProfile cmdlet using recurrent scheduling
+Parameter Sets: CreateUsingRecurrentScheduling
 Aliases: 
 
 Required: True
@@ -317,7 +317,7 @@ Specifies the start of the time window.
 
 ```yaml
 Type: DateTime
-Parameter Sets: Parameters for New-AzureRmAutoscaleProfile cmdlet using fix date scheduling
+Parameter Sets: CreateWithFixedDateScheduling
 Aliases: 
 
 Required: True
@@ -332,7 +332,7 @@ Specifies the time zone of the time window.
 
 ```yaml
 Type: String
-Parameter Sets: Parameters for New-AzureRmAutoscaleProfile cmdlet using fix date scheduling
+Parameter Sets: CreateWithFixedDateScheduling
 Aliases: 
 
 Required: True

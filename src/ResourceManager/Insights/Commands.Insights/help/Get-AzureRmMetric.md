@@ -13,13 +13,13 @@ Gets the metric values of a resource.
 
 ## SYNTAX
 
-### Parameters for Get-AzureRmMetric cmdlet in the default mode
+### GetWithDefaultParameters
 ```
-Get-AzureRmMetric [-ResourceId] <String> [-TimeGrain] <TimeSpan> [-StartTime <DateTime>] [-EndTime <DateTime>]
- [-MetricName <String[]>] [-DetailedOutput] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmMetric [-ResourceId] <String> [-TimeGrain <TimeSpan>] [-StartTime <DateTime>] [-EndTime <DateTime>]
+ [[-MetricName] <String[]>] [-DetailedOutput] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Parameters for Get-AzureRmMetric cmdlet in the full param set mode
+### GetWithFullParameters
 ```
 Get-AzureRmMetric [-ResourceId] <String> [-TimeGrain <TimeSpan>] [-AggregationType <AggregationType>]
  [-StartTime <DateTime>] [-EndTime <DateTime>] [-MetricName] <String[]> [-DetailedOutput]
@@ -166,9 +166,8 @@ The aggregation type of the query
 
 ```yaml
 Type: AggregationType
-Parameter Sets: Parameters for Get-AzureRmMetric cmdlet in the full param set mode
+Parameter Sets: GetWithFullParameters
 Aliases: 
-Accepted values: None, Average, Count, Minimum, Maximum, Total
 
 Required: False
 Position: Named
@@ -214,7 +213,7 @@ The default is the current time.
 
 ```yaml
 Type: DateTime
-Parameter Sets: Parameters for Get-AzureRmMetric cmdlet in the full param set mode
+Parameter Sets: GetWithFullParameters
 Aliases: 
 
 Required: False
@@ -232,7 +231,7 @@ Type: String[]
 Parameter Sets: (All)
 Aliases: MetricNames
 
-Required: False
+Required: False (GetWithDefaultParameters), True (GetAzureRmAMetricFullParamGroup)
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -241,11 +240,11 @@ Accept wildcard characters: False
 
 ```yaml
 Type: String[]
-Parameter Sets: Parameters for Get-AzureRmMetric cmdlet in the full param set mode
+Parameter Sets: GetWithFullParameters
 Aliases: 
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -272,7 +271,7 @@ The default is the current local time minus one hour.
 
 ```yaml
 Type: DateTime
-Parameter Sets: Parameters for Get-AzureRmMetric cmdlet in the full param set mode
+Parameter Sets: GetWithFullParameters
 Aliases: 
 
 Required: False
@@ -287,11 +286,11 @@ Specifies the time grain of the metric as a **TimeSpan** object in the format hh
 
 ```yaml
 Type: TimeSpan
-Parameter Sets: Parameters for Get-AzureRmMetric cmdlet in the full param set mode
+Parameter Sets: GetWithFullParameters
 Aliases: 
 
 Required: False
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

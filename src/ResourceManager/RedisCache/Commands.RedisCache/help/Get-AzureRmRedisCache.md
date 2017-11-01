@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.RedisCache.dll-Help.xml
+Module Name: AzureRM.RedisCache
 ms.assetid: 8EF45FCE-5475-4A18-BFB0-C016E239612E
 online version: 
 schema: 2.0.0
@@ -12,17 +13,17 @@ Gets a Redis Cache.
 
 ## SYNTAX
 
-### All In Subscription (Default)
+### GetAllInSubscription (Default)
 ```
 Get-AzureRmRedisCache [<CommonParameters>]
 ```
 
-### All In Resource Group
+### GetByResourceGroup
 ```
 Get-AzureRmRedisCache -ResourceGroupName <String> [<CommonParameters>]
 ```
 
-### Specific Redis Cache
+### GetByRedisCache
 ```
 Get-AzureRmRedisCache -ResourceGroupName <String> -Name <String> [<CommonParameters>]
 ```
@@ -161,7 +162,7 @@ Use with the *ResourceGroupName* parameter.
 
 ```yaml
 Type: String
-Parameter Sets: Specific Redis Cache
+Parameter Sets: GetByRedisCache
 Aliases: 
 
 Required: True
@@ -178,7 +179,7 @@ If you specify only the *ResourceGroupName* parameter, this operation gets every
 
 ```yaml
 Type: String
-Parameter Sets: All In Resource Group, Specific Redis Cache
+Parameter Sets: GetByResourceGroup, GetByRedisCache
 Aliases: 
 
 Required: True

@@ -13,55 +13,55 @@ Validates a resource group deployment.
 
 ## SYNTAX
 
-### Deployment via template file without parameters (Default)
+### ByTemplateFileWithNoParameters (Default)
 ```
 Test-AzureRmResourceGroupDeployment -ResourceGroupName <String> [-Mode <DeploymentMode>] -TemplateFile <String>
  [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Deployment via template file and template parameters object
+### ByTemplateFileAndParameterObject
 ```
 Test-AzureRmResourceGroupDeployment -ResourceGroupName <String> [-Mode <DeploymentMode>]
  -TemplateParameterObject <Hashtable> -TemplateFile <String> [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Deployment via template uri and template parameters object
+### ByTemplateUriAndParameterObject
 ```
 Test-AzureRmResourceGroupDeployment -ResourceGroupName <String> [-Mode <DeploymentMode>]
  -TemplateParameterObject <Hashtable> -TemplateUri <String> [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Deployment via template file and template parameters file
+### ByTemplateFileAndParameterFile
 ```
 Test-AzureRmResourceGroupDeployment -ResourceGroupName <String> [-Mode <DeploymentMode>]
  -TemplateParameterFile <String> -TemplateFile <String> [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Deployment via template uri and template parameters file
+### ByTemplateUriAndParameterFile
 ```
 Test-AzureRmResourceGroupDeployment -ResourceGroupName <String> [-Mode <DeploymentMode>]
  -TemplateParameterFile <String> -TemplateUri <String> [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Deployment via template file template parameters uri
+### ByTemplateFileAndParameterUri
 ```
 Test-AzureRmResourceGroupDeployment -ResourceGroupName <String> [-Mode <DeploymentMode>]
  -TemplateParameterUri <String> -TemplateFile <String> [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Deployment via template uri and template parameters uri
+### ByTemplateUriAndParameterUri
 ```
 Test-AzureRmResourceGroupDeployment -ResourceGroupName <String> [-Mode <DeploymentMode>]
  -TemplateParameterUri <String> -TemplateUri <String> [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Deployment via template uri without parameters
+### ByTemplateUriWithNoParameters
 ```
 Test-AzureRmResourceGroupDeployment -ResourceGroupName <String> [-Mode <DeploymentMode>] -TemplateUri <String>
  [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -164,7 +164,7 @@ Specifies the full path of a JSON template file.
 
 ```yaml
 Type: String
-Parameter Sets: Deployment via template file without parameters, Deployment via template file and template parameters object, Deployment via template file and template parameters file, Deployment via template file template parameters uri
+Parameter Sets: ByTemplateFileWithNoParameters, ByTemplateFileAndParameterObject, ByTemplateFileAndParameterFile, ByTemplateFileAndParameterUri
 Aliases: 
 
 Required: True
@@ -179,7 +179,7 @@ Specifies the full path of a JSON file that contains the names and values of the
 
 ```yaml
 Type: String
-Parameter Sets: Deployment via template file and template parameters file, Deployment via template uri and template parameters file
+Parameter Sets: ByTemplateFileAndParameterFile, ByTemplateUriAndParameterFile
 Aliases: 
 
 Required: True
@@ -194,7 +194,7 @@ Specifies a hash table of template parameter names and values.
 
 ```yaml
 Type: Hashtable
-Parameter Sets: Deployment via template file and template parameters object, Deployment via template uri and template parameters object
+Parameter Sets: ByTemplateFileAndParameterObject, ByTemplateUriAndParameterObject
 Aliases: 
 
 Required: True
@@ -209,7 +209,7 @@ Specifies the URI of a template parameters file.
 
 ```yaml
 Type: String
-Parameter Sets: Deployment via template file template parameters uri, Deployment via template uri and template parameters uri
+Parameter Sets: ByTemplateFileAndParameterUri, ByTemplateUriAndParameterUri
 Aliases: 
 
 Required: True
@@ -224,7 +224,7 @@ Specifies the URI of a JSON template file.
 
 ```yaml
 Type: String
-Parameter Sets: Deployment via template uri and template parameters object, Deployment via template uri and template parameters file, Deployment via template uri and template parameters uri, Deployment via template uri without parameters
+Parameter Sets: ByTemplateUriAndParameterObject, ByTemplateUriAndParameterFile, ByTemplateUriAndParameterUri, ByTemplateUriWithNoParameters
 Aliases: 
 
 Required: True

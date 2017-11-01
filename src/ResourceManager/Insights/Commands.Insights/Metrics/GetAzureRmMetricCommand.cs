@@ -31,8 +31,8 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
     [Cmdlet(VerbsCommon.Get, "AzureRmMetric"), OutputType(typeof(PSMetric[]))]
     public class GetAzureRmMetricCommand : MonitorClientCmdletBase
     {
-        internal const string GetAzureRmAMetricParamGroup = "Parameters for Get-AzureRmMetric cmdlet in the default mode";
-        internal const string GetAzureRmAMetricFullParamGroup = "Parameters for Get-AzureRmMetric cmdlet in the full param set mode";
+        internal const string GetAzureRmAMetricParamGroup = "GetWithDefaultParameters";
+        internal const string GetAzureRmAMetricFullParamGroup = "GetWithFullParameters";
 
         /// <summary>
         /// Default value of the timerange to search for metrics

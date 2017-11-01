@@ -12,13 +12,13 @@ Gets a Data Lake Analytics Job recurrence or recurrences.
 
 ## SYNTAX
 
-### All In Account (Default)
+### GetAllInAccount (Default)
 ```
 Get-AzureRmDataLakeAnalyticsJobRecurrence [-Account] <String> [-SubmittedAfter <DateTimeOffset>]
  [-SubmittedBefore <DateTimeOffset>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Specific Job Recurrence
+### GetBySpecificJobRecurrence
 ```
 Get-AzureRmDataLakeAnalyticsJobRecurrence [-Account] <String> [-RecurrenceId] <Guid>
  [-SubmittedAfter <DateTimeOffset>] [-SubmittedBefore <DateTimeOffset>]
@@ -81,7 +81,7 @@ ID of the specific job recurrence to return information for.
 
 ```yaml
 Type: Guid
-Parameter Sets: Specific Job Recurrence
+Parameter Sets: GetBySpecificJobRecurrence
 Aliases: Id
 
 Required: True

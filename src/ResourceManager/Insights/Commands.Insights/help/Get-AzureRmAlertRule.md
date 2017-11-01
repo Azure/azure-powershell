@@ -13,17 +13,17 @@ Gets alert rules.
 
 ## SYNTAX
 
-### Parameters for Get-AzureRmAlertRule cmdlet
+### GetByResourceGroup
 ```
 Get-AzureRmAlertRule -ResourceGroupName <String> [-DetailedOutput] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Parameters for Get-AzureRmAlertRule cmdlet using name
+### GetByName
 ```
 Get-AzureRmAlertRule -ResourceGroupName <String> -Name <String> [-DetailedOutput] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Parameters for Get-AzureRmAlertRule cmdlet using target resource uri
+### GetByResourceUri
 ```
 Get-AzureRmAlertRule -ResourceGroupName <String> -TargetResourceId <String> [-DetailedOutput] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -94,7 +94,7 @@ Specifies the name of the alert rule to get.
 
 ```yaml
 Type: String
-Parameter Sets: Parameters for Get-AzureRmAlertRule cmdlet using name
+Parameter Sets: GetByName
 Aliases: 
 
 Required: True
@@ -124,7 +124,7 @@ Specifies the ID of the target resource.
 
 ```yaml
 Type: String
-Parameter Sets: Parameters for Get-AzureRmAlertRule cmdlet using target resource uri
+Parameter Sets: GetByResourceUri
 Aliases: 
 
 Required: True

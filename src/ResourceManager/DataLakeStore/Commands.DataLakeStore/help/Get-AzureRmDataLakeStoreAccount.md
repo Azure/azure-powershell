@@ -13,18 +13,18 @@ Gets details of a Data Lake Store account.
 
 ## SYNTAX
 
-### All In Subscription (Default)
+### GetAllInSubscription (Default)
 ```
 Get-AzureRmDataLakeStoreAccount [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### All In Resource Group
+### GetByResourceGroup
 ```
 Get-AzureRmDataLakeStoreAccount [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
-### Specific Account
+### GetBySpecificAccount
 ```
 Get-AzureRmDataLakeStoreAccount [[-ResourceGroupName] <String>] [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -64,7 +64,7 @@ Specifies the name of the account to get.
 
 ```yaml
 Type: String
-Parameter Sets: Specific Account
+Parameter Sets: GetBySpecificAccount
 Aliases: 
 
 Required: True
@@ -79,7 +79,7 @@ Specifies the name of the resource group that contains the Data Lake Store accou
 
 ```yaml
 Type: String
-Parameter Sets: All In Resource Group
+Parameter Sets: GetByResourceGroup
 Aliases: 
 
 Required: True
@@ -91,7 +91,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: String
-Parameter Sets: Specific Account
+Parameter Sets: GetBySpecificAccount
 Aliases: 
 
 Required: False
