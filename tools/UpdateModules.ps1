@@ -37,19 +37,61 @@ function Create-ModulePsm1
      $file = Get-Item $manifestPath
      Import-LocalizedData -BindingVariable ModuleMetadata -BaseDirectory $file.DirectoryName -FileName $file.Name
      $templateOutputPath = $manifestPath -replace ".psd1", ".psm1"
-     [string]$minimum
-     foreach ($mod in $ModuleMetadata.RequiredModules)
+     [string]$importedModules
+     if ($ModuleMetadata.RequiredModules -ne $null)
      {
-        $minimum += "Import-Module " + $mod["ModuleName"] + " -MinimumVersion " + [string]$mod["ModuleVersion"] + "`r`n"
+        foreach ($mod in $ModuleMetadata.RequiredModules)
+        {
+           if ($mod["ModuleVersion"])
+           {
+               $importedModules += Create-MinimumVersionEntry -ModuleName $mod["ModuleName"] -MinimumVersion $mod["ModuleVersion"]
+           }
+           elseif ($mod["RequiredVersion"])
+           {
+               $importedModules += "Import-Module " + $mod["ModuleName"] + " -RequiredVersion " + $mod["RequiredVersion"] + "`r`n"
+           }        
+        }
      }
+
+     if ($ModuleMetadata.NestedModules -ne $null)
+     {
+         foreach ($dll in $ModuleMetadata.NestedModules)
+         {
+             $importedModules += "Import-Module (Join-Path -Path `$PSScriptRoot -ChildPath " + $dll.Substring(2) + ")"
+         }
+     }
+
      $template = Get-Content -Path $TemplatePath
      $template = $template -replace "%MODULE-NAME%", $file.BaseName
      $template = $template -replace "%DATE%", [string](Get-Date)
-     $template = $template -replace "%MINIMUM-DEPENDENCIES%", $minimum
+     $template = $template -replace "%IMPORTED-DEPENDENCIES%", $importedModules
      Write-Host "Writing psm1 manifest to $templateOutputPath"
      $template | Out-File -FilePath $templateOutputPath -Force
      $file = Get-Item -Path $templateOutputPath
   }
+}
+
+function Create-MinimumVersionEntry
+{
+    [CmdletBinding()]
+    param(
+        [string]$ModuleName,
+        [string]$MinimumVersion
+    )
+
+    PROCESS
+    {
+        return "`$module = Get-Module $ModuleName `
+if (`$module -ne `$null -and `$module.Version.ToString().CompareTo(`"$MinimumVersion`") -lt 0) `
+{ `
+    Write-Warning `"A later version of $ModuleName was found to be imported already. Please see <link> for more details.`" `
+    Write-Error `"A later version of $ModuleName was found to be imported already. Please see <linkn> for more details.`" `
+} `
+elseif (`$module -eq `$null) `
+{ `
+    Import-Module $ModuleName -MinimumVersion $MinimumVersion -Scope Global `
+}`n"
+    }
 }
 
 if ([string]::IsNullOrEmpty($buildConfig))
