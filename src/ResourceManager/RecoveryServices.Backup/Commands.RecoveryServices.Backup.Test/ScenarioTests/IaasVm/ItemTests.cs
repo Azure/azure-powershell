@@ -76,10 +76,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVM)]
-        public void TestAzureVMInstantRestore()
+        public void TestAzureVMRPMountScript()
         {
             TestController.NewInstance.RunPsTest(
-                PsBackupProviderTypes.IaasVm, "Test-AzureVMInstantRestore");
+                PsBackupProviderTypes.IaasVm, "Test-AzureVMRPMountScript");
         }
     }
 }

@@ -4,24 +4,24 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-AzureRmRSBRPMountScript
+# Get-AzureRmRecoveryServicesBackupRPMountScript
 
 ## SYNOPSIS
-Gets the script to mount all the files of the recovery point.
+Downloads a script to mount all the files of the recovery point.
 
 ## SYNTAX
 
 ```
-Get-AzureRmRSBRPMountScript [-RecoveryPoint] <RecoveryPointBase> [[-Path] <String>]
+Get-AzureRmRecoveryServicesBackupRPMountScript [-RecoveryPoint] <RecoveryPointBase> [[-Path] <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmRSBRPMountScript** cmdlet downloads a script which mounts the volumes of the recovery point on the machine where it is run.
+The Get-AzureRmRecoveryServicesBackupRPMountScript cmdlet downloads a script which mounts the volumes of the recovery point on the machine where it is run.
 
 ## EXAMPLES
 
-### Example 1: Select the recovery point and get the script
+### Example 1: Mount a recovery point
 ```
 PS C:\> $namedContainer = Get-AzureRmRecoveryServicesBackupContainer  -ContainerType "AzureVM" -Status "Registered" -FriendlyName "V2VM"
 PS C:\> $backupitem = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer  -WorkloadType "AzureVM"
@@ -29,12 +29,16 @@ PS C:\> $startDate = (Get-Date).AddDays(-7)
 PS C:\> $endDate = Get-Date
 PS C:\> $rp = Get-AzureRmRecoveryServicesBackupRecoveryPoint -Item $backupitem -StartDate $startdate.ToUniversalTime() -EndDate $enddate.ToUniversalTime()
 
-To get the mount script to access files of the latest recovery point,
+To mount files of the latest recovery point, obtain the script by
 
-PS C:\> Get-AzureRmRSBRPMountScript -RecoveryPoint $rp[0]
+PS C:\> Get-AzureRmRecoveryServicesBackupRPMountScript -RecoveryPoint $rp[0]
+
+OsType  Password        Filename
+------  --------        --------
+Windows e3632984e51f496 V2VM_wus2_8287309959960546283_451516692429_cbd6061f7fc543c489f1974d33659fed07a6e0c2e08740.exe
 ```
 
-This will download a script to the current location and the output will display a password required to run the script. When the script is run, it will mount the files of the recovery point $rp[0]
+When the script is run, it will mount the files of the recovery point $rp\[0\]
 
 ## PARAMETERS
 
@@ -93,7 +97,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -109,7 +113,7 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -123,7 +127,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.AzureVmRPMountScriptInfo
+### Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RPMountScriptDetails
 
 ## NOTES
 

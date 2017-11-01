@@ -4,24 +4,24 @@ online version:
 schema: 2.0.0
 ---
 
-# Disable-AzureRmRSBRPMountScript
+# Disable-AzureRmRecoveryServicesBackupRPMountScript
 
 ## SYNOPSIS
-Disables access to all the files of the recovery point.
+Dismounts all the files of the recovery point.
 
 ## SYNTAX
 
 ```
-Disable-AzureRmRSBRPMountScript [-RecoveryPoint] <RecoveryPointBase> [-PassThru]
+Disable-AzureRmRecoveryServicesBackupRPMountScript [-RecoveryPoint] <RecoveryPointBase> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Disable-AzureRmRSBRPMountScript** cmdlet disables access to the files of the recovery point which were earlier mounted.
+The Disable-AzureRmRecoveryServicesBackupRPMountScript cmdlet dismounts the files of the recovery point which were mounted earlier using the Get-AzureRmRecoveryServicesBackupRPMountScript cmdlet.
 
 ## EXAMPLES
 
-### Example 1: Select the recovery point and get the script
+### Example 1: Dismount a recovery point
 ```
 PS C:\> $namedContainer = Get-AzureRmRecoveryServicesBackupContainer  -ContainerType "AzureVM" -Status "Registered" -FriendlyName "V2VM"
 PS C:\> $backupitem = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer  -WorkloadType "AzureVM"
@@ -29,15 +29,19 @@ PS C:\> $startDate = (Get-Date).AddDays(-7)
 PS C:\> $endDate = Get-Date
 PS C:\> $rp = Get-AzureRmRecoveryServicesBackupRecoveryPoint -Item $backupitem -StartDate $startdate.ToUniversalTime() -EndDate $enddate.ToUniversalTime()
 
-To get the mount script to access files of the latest recovery point,
+To mount files of the latest recovery point, obtain the script by
 
-PS C:\> Get-AzureRmRSBRPMountScript -RecoveryPoint $rp[0]
+PS C:\> Get-AzureRmRecoveryServicesBackupRPMountScript -RecoveryPoint $rp[0]
 
-This will download a script to the current location and the output will display a password required to run the script. When the script is run, it will mount the files of the recovery point $rp[0]
+OsType  Password        Filename
+------  --------        --------
+Windows e3632984e51f496 V2VM_wus2_8287309959960546283_451516692429_cbd6061f7fc543c489f1974d33659fed07a6e0c2e08740.exe
 
-After the relevant files are copied, then you remove the files of the recovery point by running the disable mount script cmdlet
+When the script is run, it will mount the files of the recovery point $rp[0]
 
-PS C:\> Disable-AzureRmRSBRPMountScript -RecoveryPoint $rp[0]
+After the relevant files are copied, then you remove the files of the recovery point by running the disable cmdlet
+
+PS C:\> Disable-AzureRmRecoveryServicesBackupRPMountScript -RecoveryPoint $rp[0]
 ```
 
 ## PARAMETERS
@@ -67,7 +71,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -97,7 +101,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -113,7 +117,7 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
