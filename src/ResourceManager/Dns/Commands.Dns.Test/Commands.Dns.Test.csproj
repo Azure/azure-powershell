@@ -277,6 +277,12 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.DnsTests.RecordsTests\TestRecordSetMX.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.DnsTests.RecordsTests\TestRecordSetCAA.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.DnsTests.RecordsTests\TestRecordSetCAANonEmpty.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.DnsTests.RecordsTests\TestRecordSetMXNonEmpty.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
