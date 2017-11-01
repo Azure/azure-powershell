@@ -226,7 +226,7 @@ function Test-AzureVMFullRestore
 	}
 }
 
-function Test-AzureVMInstantRestore
+function Test-AzureVMRPMountScript
 {
 	$location = Get-ResourceGroupLocation
 	$resourceGroupName = Create-ResourceGroup $location
@@ -242,11 +242,15 @@ function Test-AzureVMInstantRestore
 
 		Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
 
-		# Get mount script of recovery point
-		$mountScriptInfo = Get-AzureRmRSBRPMountScript -RecoveryPoint $rp
+		# Get details of mount script of recovery point
+		$mountScriptDetails = Get-AzureRmRecoveryServicesBackupRPMountScript -RecoveryPoint $rp
+
+		Assert-NotNull $mountScriptDetails.OsType
+		Assert-NotNull $mountScriptDetails.Password
+		Assert-NotNull $mountScriptDetails.Filename
 
 		# Disable the mount script of recovery point
-		Disable-AzureRmRSBRPMountScript -RecoveryPoint $rp
+		Disable-AzureRmRecoveryServicesBackupRPMountScript -RecoveryPoint $rp
 	}
 	finally
 	{

@@ -287,8 +287,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         /// <summary>
         /// Provisioning Item Level Recovery Access for the given recovery point
         /// </summary>
-        /// <returns>Azure VM client script info as returned by the service</returns>
-        public AzureVmRPMountScriptInfo ProvisionItemLevelRecoveryAccess()
+        /// <returns>Azure VM client script details as returned by the service</returns>
+        public RPMountScriptDetails ProvisionItemLevelRecoveryAccess()
         {
             string content = string.Empty;
             AzureVmRecoveryPoint rp = ProviderData[RestoreBackupItemParams.RecoveryPoint]
@@ -320,7 +320,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 asyncHeader = s;
             }
 
-            AzureVmRPMountScriptInfo result = null;
+            AzureVmRPMountScriptDetails result = null;
             var response = TrackingHelpers.GetOperationStatus(
                 ilRResponse,
                 operationId => ServiceClientAdapter.GetProtectedItemOperationStatus(operationId));
@@ -360,6 +360,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
             absoluteFilePath = Path.Combine(scriptDownloadLocation, result.Filename);
             File.WriteAllBytes(absoluteFilePath, Convert.FromBase64String(content));
+            
+            Logger.Instance.WriteVerbose(string.Format(Resources.MountRecoveryPointInfoMessage, result.Password));
             return result;
         }
 
@@ -1187,7 +1189,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         /// </summary>
         /// <param name="clientScriptForConnection"></param>
         /// <returns></returns>
-        private AzureVmRPMountScriptInfo GenerateILRResponseForWindowsVMs(
+        private AzureVmRPMountScriptDetails GenerateILRResponseForWindowsVMs(
             ClientScriptForConnect clientScriptForConnection, out string content)
         {
             try
@@ -1216,7 +1218,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                         string fileName = this.ConstructFileName(
                             suffix, clientScriptForConnection.ScriptExtension);
 
-                        return new AzureVmRPMountScriptInfo(
+                        return new AzureVmRPMountScriptDetails(
                             clientScriptForConnection.OsType, fileName, password);
                     }
                 }
@@ -1238,7 +1240,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         /// <param name="protectedItemName"></param>
         /// <param name="recoveryPointTime"></param>
         /// <returns></returns>
-        private AzureVmRPMountScriptInfo GenerateILRResponseForLinuxVMs(
+        private AzureVmRPMountScriptDetails GenerateILRResponseForLinuxVMs(
             ClientScriptForConnect clientScriptForConnection,
             string protectedItemName, string recoveryPointTime, out string content)
         {
@@ -1266,7 +1268,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 }
                 password = this.ReplacePasswordInScriptContentAndReturn(ref content);
 
-                return new AzureVmRPMountScriptInfo(
+                return new AzureVmRPMountScriptDetails(
                     clientScriptForConnection.OsType, fileName, password);
             }
             catch (Exception e)

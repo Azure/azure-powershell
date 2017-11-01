@@ -70,8 +70,9 @@
     <Compile Include="Cmdlets\ProtectionPolicy\PolicyCmdletHelpers.cs" />
     <Compile Include="Cmdlets\ProtectionPolicy\RemoveAzureRmRecoveryServicesBackupProtectionPolicy.cs" />
     <Compile Include="Cmdlets\ProtectionPolicy\SetAzureRmRecoveryServicesBackupProtectionPolicy.cs" />
+    <Compile Include="Cmdlets\RecoveryPoint\DisableAzureRmRecoveryServicesBackupRPMountScript.cs" />
     <Compile Include="Cmdlets\RecoveryPoint\GetAzureRmRecoveryServicesBackupRecoveryPoint.cs" />
-    <Compile Include="Cmdlets\RecoveryPoint\AzureRmRecoveryServicesBackupRecoveryPointAccess.cs" />
+    <Compile Include="Cmdlets\RecoveryPoint\GetAzureRmRecoveryServicesBackupRPMountScript.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Cmdlets\Restore\RestoreAzureRMRecoveryServicesBackupItem.cs" />
     <Compile Include="ParamHelpMsgs.cs" />

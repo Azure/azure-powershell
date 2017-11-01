@@ -64,7 +64,7 @@
     <Compile Include="AzureSqlModels\AzureSqlPolicy.cs" />
     <Compile Include="AzureSqlModels\AzureSqlRecoveryPoint.cs" />
     <Compile Include="AzureVmModels\AzureVmJob.cs" />
-    <Compile Include="AzureVmModels\AzureVmClientScriptForConnect.cs" />
+    <Compile Include="AzureVmModels\AzureVmRPMountScriptDetails.cs" />
     <Compile Include="AzureVmModels\KeyAndSecretDetails.cs" />
     <Compile Include="AzureVmModels\AzureVmRecoveryPoint.cs" />
     <Compile Include="BaseObjects.cs" />

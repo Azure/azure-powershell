@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             throw new NotImplementedException();
         }
 
-        public AzureVmRPMountScriptInfo ProvisionItemLevelRecoveryAccess()
+        public RPMountScriptDetails ProvisionItemLevelRecoveryAccess()
 
         {
             throw new NotImplementedException();

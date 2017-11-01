@@ -17,9 +17,9 @@ using System;
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
     /// <summary>
-    /// Azure VM specific info of script to mount recovery point.
+    /// Azure VM specific details of script to mount recovery point.
     /// </summary>
-    public class AzureVmRPMountScriptInfo : RPMountScriptInfo
+    public class AzureVmRPMountScriptDetails : RPMountScriptDetails
     {
         /// <summary>
         /// OS Type of the mount script 
@@ -36,11 +36,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// </summary>
         public string Filename { get; set; }
 
-        public AzureVmRPMountScriptInfo(string osType, string fileName, string password)
+        public AzureVmRPMountScriptDetails(string osType, string fileName, string password)
         {
-            this.OsType = osType;
-            this.Filename = fileName;
-            this.Password = password;
+            OsType = osType;
+            Filename = fileName;
+            Password = password;
         }
     }
 }

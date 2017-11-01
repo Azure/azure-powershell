@@ -231,11 +231,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     }
 
     /// <summary>
-    /// Info of script to mount recovery point.
+    /// Details of script to mount recovery point.
     /// </summary>
-    public class RPMountScriptInfo : ObjectBase
+    public class RPMountScriptDetails : ObjectBase
     {
-        public RPMountScriptInfo()
+        public RPMountScriptDetails()
             : base()
         {
         }

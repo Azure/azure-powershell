@@ -16,7 +16,6 @@ using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
@@ -24,9 +23,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Get script to mount recovery point of an item for item level recovery.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmRSBRPMountScript",
-        SupportsShouldProcess = true), OutputType(typeof(AzureVmRPMountScriptInfo))]
-    public class GetAzureRmRSBRPMountScript : RecoveryServicesBackupCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupRPMountScript",
+        SupportsShouldProcess = true), OutputType(typeof(RPMountScriptDetails))]
+    public class GetAzureRmRecoveryServicesBackupRPMountScript : RecoveryServicesBackupCmdletBase
     {
         /// <summary>
         /// Recovery point of the item to be explored
@@ -50,7 +49,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         {
             ExecutionBlock(() =>
             {
-                base.ExecuteCmdlet();                
+                base.ExecuteCmdlet();
 
                 PsBackupProviderManager providerManager = new PsBackupProviderManager(
                     new Dictionary<Enum, object>()
@@ -64,59 +63,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 var response = psBackupProvider.ProvisionItemLevelRecoveryAccess();
 
                 WriteDebug(string.Format("Mount Script download completed"));
-                WriteVerbose(string.Format(Resources.MountRecoveryPointInfoMessage, response.Password));
+
                 WriteObject(response);
             }, ShouldProcess(RecoveryPoint.ItemName, "Downloading script"));
-        }
-    }
-
-    /// <summary>
-    /// Disable the mount script of recovery point of an item.
-    /// Files won't be mounted after running this cmdlet.
-    /// </summary>
-    [Cmdlet(VerbsLifecycle.Disable, "AzureRmRSBRPMountScript",
-        SupportsShouldProcess = true)]
-    public class DisableAzureRmRSBRPMountScript : RecoveryServicesBackupCmdletBase
-    {
-        /// <summary>
-        /// Recovery point of the item. Access to the mounted files of this recovery point
-        /// will be disabled upon running this cmdlet.
-        /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipeline = true, Position = 0,
-            HelpMessage = ParamHelpMsgs.RestoreDisk.RecoveryPoint)]
-        [ValidateNotNullOrEmpty]
-        public RecoveryPointBase RecoveryPoint { get; set; }
-
-        /// <summary>
-        /// Return the recovery point.
-        /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Return the recovery point.")]
-        public SwitchParameter PassThru { get; set; }
-
-        public override void ExecuteCmdlet()
-        {
-            ExecutionBlock(() =>
-            {
-                base.ExecuteCmdlet();
-
-                PsBackupProviderManager providerManager = new PsBackupProviderManager(
-                    new Dictionary<Enum, object>()
-                {
-                    {RestoreBackupItemParams.RecoveryPoint, RecoveryPoint}
-                }, ServiceClientAdapter);
-
-                IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(
-                    RecoveryPoint.WorkloadType, RecoveryPoint.BackupManagementType);
-                string content = string.Empty;
-                psBackupProvider.RevokeItemLevelRecoveryAccess();
-
-                if (PassThru.IsPresent)
-                {
-                    WriteObject(RecoveryPoint);
-                }
-
-                WriteDebug(string.Format("Disabled the mount script of recovery point"));
-            }, ShouldProcess(RecoveryPoint.ItemName, VerbsLifecycle.Disable));
         }
     }
 }
