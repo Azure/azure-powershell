@@ -15,6 +15,7 @@
 using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Rest.Azure;
 using System.Collections.Generic;
@@ -51,6 +52,7 @@ namespace Microsoft.Azure.Commands.Compute
            ParameterSetName = ListAvailableSizesForVirtualMachine,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource group name.")]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
