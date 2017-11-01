@@ -13,21 +13,21 @@ Submits a job.
 
 ## SYNTAX
 
-### Submit job with script path for U-SQL
+### SubmitUSqlJobWithScriptPath
 ```
 Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-ScriptPath] <String>
  [[-Runtime] <String>] [[-CompileMode] <String>] [-CompileOnly] [[-DegreeOfParallelism] <Int32>]
  [[-Priority] <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Submit U-SQL Job
+### SubmitUSqlJob
 ```
 Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-Script] <String>
  [[-Runtime] <String>] [[-CompileMode] <String>] [-CompileOnly] [[-DegreeOfParallelism] <Int32>]
  [[-Priority] <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Submit job with script path for U-SQL with reucurrence information
+### SubmitUSqlJobWithScriptPathAndRecurrence
 ```
 Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-ScriptPath] <String>
  [[-Runtime] <String>] [[-CompileMode] <String>] [-CompileOnly] [[-DegreeOfParallelism] <Int32>]
@@ -35,7 +35,7 @@ Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-Script
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Submit U-SQL Job with recurrence information
+### SubmitUSqlJobWithRecurrence
 ```
 Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-Script] <String>
  [[-Runtime] <String>] [[-CompileMode] <String>] [-CompileOnly] [[-DegreeOfParallelism] <Int32>]
@@ -43,7 +43,7 @@ Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-Script
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Submit job with script path for U-SQL with reucurrence and pipeline information
+### SubmitUSqlJobWithScriptPathAndPipeline
 ```
 Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-ScriptPath] <String>
  [[-Runtime] <String>] [[-CompileMode] <String>] [-CompileOnly] [[-DegreeOfParallelism] <Int32>]
@@ -52,7 +52,7 @@ Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-Script
  [<CommonParameters>]
 ```
 
-### Submit U-SQL Job with recurrence and pipeline information
+### SubmitUSqlJobWithPipeline
 ```
 Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-Script] <String>
  [[-Runtime] <String>] [[-CompileMode] <String>] [-CompileOnly] [[-DegreeOfParallelism] <Int32>]
@@ -176,7 +176,7 @@ An ID that indicates the submission of this job is a part of a set of recurring 
 
 ```yaml
 Type: Guid
-Parameter Sets: Submit job with script path for U-SQL with reucurrence and pipeline information, Submit U-SQL Job with recurrence and pipeline information
+Parameter Sets: SubmitUSqlJobWithScriptPathAndPipeline, SubmitUSqlJobWithPipeline
 Aliases: 
 
 Required: True
@@ -191,7 +191,7 @@ An optional friendly name for the pipeline associated with this job.
 
 ```yaml
 Type: String
-Parameter Sets: Submit job with script path for U-SQL with reucurrence and pipeline information, Submit U-SQL Job with recurrence and pipeline information
+Parameter Sets: SubmitUSqlJobWithScriptPathAndPipeline, SubmitUSqlJobWithPipeline
 Aliases: 
 
 Required: False
@@ -206,7 +206,7 @@ An optional uri that links to the originating service associated with this pipel
 
 ```yaml
 Type: String
-Parameter Sets: Submit job with script path for U-SQL with reucurrence and pipeline information, Submit U-SQL Job with recurrence and pipeline information
+Parameter Sets: SubmitUSqlJobWithScriptPathAndPipeline, SubmitUSqlJobWithPipeline
 Aliases: 
 
 Required: False
@@ -238,7 +238,7 @@ An ID that indicates the submission of this job is a part of a set of recurring 
 
 ```yaml
 Type: Guid
-Parameter Sets: Submit job with script path for U-SQL with reucurrence information, Submit U-SQL Job with recurrence information, Submit job with script path for U-SQL with reucurrence and pipeline information, Submit U-SQL Job with recurrence and pipeline information
+Parameter Sets: SubmitUSqlJobWithScriptPathAndRecurrence, SubmitUSqlJobWithRecurrence, SubmitUSqlJobWithScriptPathAndPipeline, SubmitUSqlJobWithPipeline
 Aliases: 
 
 Required: True
@@ -253,7 +253,7 @@ An optional friendly name for the recurrence correlation between jobs.
 
 ```yaml
 Type: String
-Parameter Sets: Submit job with script path for U-SQL with reucurrence information, Submit U-SQL Job with recurrence information, Submit job with script path for U-SQL with reucurrence and pipeline information, Submit U-SQL Job with recurrence and pipeline information
+Parameter Sets: SubmitUSqlJobWithScriptPathAndRecurrence, SubmitUSqlJobWithRecurrence, SubmitUSqlJobWithScriptPathAndPipeline, SubmitUSqlJobWithPipeline
 Aliases: 
 
 Required: False
@@ -268,7 +268,7 @@ An ID that identifies this specific run iteration of the pipeline.
 
 ```yaml
 Type: Guid
-Parameter Sets: Submit job with script path for U-SQL with reucurrence and pipeline information, Submit U-SQL Job with recurrence and pipeline information
+Parameter Sets: SubmitUSqlJobWithScriptPathAndPipeline, SubmitUSqlJobWithPipeline
 Aliases: 
 
 Required: False
@@ -298,7 +298,7 @@ Specifies the contents of the script to run.
 
 ```yaml
 Type: String
-Parameter Sets: Submit U-SQL Job, Submit U-SQL Job with recurrence information, Submit U-SQL Job with recurrence and pipeline information
+Parameter Sets: SubmitUSqlJob, SubmitUSqlJobWithRecurrence, SubmitUSqlJobWithPipeline
 Aliases: 
 
 Required: True
@@ -313,7 +313,7 @@ Specifies the local file path to the script to run.
 
 ```yaml
 Type: String
-Parameter Sets: Submit job with script path for U-SQL, Submit job with script path for U-SQL with reucurrence information, Submit job with script path for U-SQL with reucurrence and pipeline information
+Parameter Sets: SubmitUSqlJobWithScriptPath, SubmitUSqlJobWithScriptPathAndRecurrence, SubmitUSqlJobWithScriptPathAndPipeline
 Aliases: 
 
 Required: True

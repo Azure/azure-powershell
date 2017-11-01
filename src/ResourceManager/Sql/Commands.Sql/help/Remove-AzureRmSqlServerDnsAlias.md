@@ -90,7 +90,9 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Azure Sql Server Dns Alias name```yaml
+Azure Sql Server Dns Alias name
+
+```yaml
 Type: String
 Parameter Sets: Remove a Server Dns Alias from cmdlet input parameters
 Aliases: DnsAliasName

@@ -13,14 +13,14 @@ Uploads a local file or directory to a Data Lake Store.
 
 ## SYNTAX
 
-### No diagnostic logging (Default)
+### NoDiagnosticLogging (Default)
 ```
 Import-AzureRmDataLakeStoreItem [-Account] <String> [-Path] <String> [-Destination] <DataLakeStorePathInstance>
  [-Recurse] [-Resume] [-ForceBinary] [[-PerFileThreadCount] <Int32>] [[-ConcurrentFileCount] <Int32>] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Include diagnostic logging
+### IncludeDiagnosticLogging
 ```
 Import-AzureRmDataLakeStoreItem [-Account] <String> [-Path] <String> [-Destination] <DataLakeStorePathInstance>
  [-Recurse] [-Resume] [-ForceBinary] [[-PerFileThreadCount] <Int32>] [[-ConcurrentFileCount] <Int32>] [-Force]
@@ -108,7 +108,7 @@ Optionally indicates the diagnostic log level to use to record events during the
 
 ```yaml
 Type: LogLevel
-Parameter Sets: Include diagnostic logging
+Parameter Sets: IncludeDiagnosticLogging
 Aliases: 
 Accepted values: Debug, Information, Error, None
 
@@ -124,7 +124,7 @@ Specifies the path for the diagnostic log to record events to during the file or
 
 ```yaml
 Type: String
-Parameter Sets: Include diagnostic logging
+Parameter Sets: IncludeDiagnosticLogging
 Aliases: 
 
 Required: True

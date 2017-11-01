@@ -13,13 +13,13 @@ Removes a resource.
 
 ## SYNTAX
 
-### The resource Id. (Default)
+### ByResourceId (Default)
 ```
 Remove-AzureRmResource -ResourceId <String> [-ODataQuery <String>] [-Force] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Resource that resides at the subscription level.
+### BySubscriptionLevel
 ```
 Remove-AzureRmResource -ResourceName <String> -ResourceType <String> [-ExtensionResourceName <String>]
  [-ExtensionResourceType <String>] [-ODataQuery <String>] [-ResourceGroupName <String>] [-Force]
@@ -27,7 +27,7 @@ Remove-AzureRmResource -ResourceName <String> -ResourceType <String> [-Extension
  [<CommonParameters>]
 ```
 
-### Resource that resides at the tenant level.
+### ByTenantLevel
 ```
 Remove-AzureRmResource -ResourceName <String> -ResourceType <String> [-ExtensionResourceName <String>]
  [-ExtensionResourceType <String>] [-ODataQuery <String>] [-TenantLevel] [-Force] [-ApiVersion <String>] [-Pre]
@@ -90,7 +90,7 @@ server name`/`database name
 
 ```yaml
 Type: String
-Parameter Sets: Resource that resides at the subscription level., Resource that resides at the tenant level.
+Parameter Sets: BySubscriptionLevel, ByTenantLevel
 Aliases: 
 
 Required: False
@@ -109,7 +109,7 @@ For instance:
 
 ```yaml
 Type: String
-Parameter Sets: Resource that resides at the subscription level., Resource that resides at the tenant level.
+Parameter Sets: BySubscriptionLevel, ByTenantLevel
 Aliases: 
 
 Required: False
@@ -170,7 +170,7 @@ Specifies the name of the resource group from which this cmdlet removes a resour
 
 ```yaml
 Type: String
-Parameter Sets: Resource that resides at the subscription level.
+Parameter Sets: BySubscriptionLevel
 Aliases: 
 
 Required: False
@@ -188,7 +188,7 @@ The ID includes the subscription, as in the following example:
 
 ```yaml
 Type: String
-Parameter Sets: The resource Id.
+Parameter Sets: ByResourceId
 Aliases: Id
 
 Required: True
@@ -206,7 +206,7 @@ For instance, to specify a database, use the following format:
 
 ```yaml
 Type: String
-Parameter Sets: Resource that resides at the subscription level., Resource that resides at the tenant level.
+Parameter Sets: BySubscriptionLevel, ByTenantLevel
 Aliases: Name
 
 Required: True
@@ -224,7 +224,7 @@ For instance, for a database, the resource type is as follows:
 
 ```yaml
 Type: String
-Parameter Sets: Resource that resides at the subscription level., Resource that resides at the tenant level.
+Parameter Sets: BySubscriptionLevel, ByTenantLevel
 Aliases: 
 
 Required: True
@@ -239,7 +239,7 @@ Indicates that this cmdlet operates at the tenant level.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: Resource that resides at the tenant level.
+Parameter Sets: ByTenantLevel
 Aliases: 
 
 Required: True

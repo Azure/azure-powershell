@@ -13,7 +13,7 @@ Creates a new or sets an existing activity log alert.
 
 ## SYNTAX
 
-### Default parameters for set activity log alert
+### SetByNameAndResourceGroup
 ```
 Set-AzureRmActivityLogAlert -Location <String> -Name <String> -ResourceGroupName <String>
  -Scope <System.Collections.Generic.List`1[System.String]>
@@ -24,7 +24,7 @@ Set-AzureRmActivityLogAlert -Location <String> -Name <String> -ResourceGroupName
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Parameters to set an activity log alerts taking the value of ResourceId from the pipe
+### SetByResourceId
 ```
 Set-AzureRmActivityLogAlert [-Location <String>] [-Scope <System.Collections.Generic.List`1[System.String]>]
  [-Condition <System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertLeafCondition]>]
@@ -34,7 +34,7 @@ Set-AzureRmActivityLogAlert [-Location <String>] [-Scope <System.Collections.Gen
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Parameters to set an activity log alerts taking value from the pipe
+### SetByInputObject
 ```
 Set-AzureRmActivityLogAlert [-Scope <System.Collections.Generic.List`1[System.String]>]
  [-Condition <System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertLeafCondition]>]
@@ -109,7 +109,7 @@ The list of action groups for the activity log alert.
 
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup]
-Parameter Sets: Default parameters for set activity log alert
+Parameter Sets: SetByNameAndResourceGroup
 Aliases: 
 
 Required: True
@@ -121,7 +121,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup]
-Parameter Sets: Parameters to set an activity log alerts taking the value of ResourceId from the pipe
+Parameter Sets: SetByResourceId
 Aliases: 
 
 Required: False
@@ -133,7 +133,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup]
-Parameter Sets: Parameters to set an activity log alerts taking value from the pipe
+Parameter Sets: SetByInputObject
 Aliases: 
 
 Required: False
@@ -150,7 +150,7 @@ The list of conditions for the activity log alert.
 
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertLeafCondition]
-Parameter Sets: Default parameters for set activity log alert
+Parameter Sets: SetByNameAndResourceGroup
 Aliases: 
 
 Required: True
@@ -162,7 +162,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertLeafCondition]
-Parameter Sets: Parameters to set an activity log alerts taking the value of ResourceId from the pipe
+Parameter Sets: SetByResourceId
 Aliases: 
 
 Required: False
@@ -174,7 +174,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertLeafCondition]
-Parameter Sets: Parameters to set an activity log alerts taking value from the pipe
+Parameter Sets: SetByInputObject
 Aliases: 
 
 Required: False
@@ -204,7 +204,7 @@ The description of the alert resource.
 
 ```yaml
 Type: String
-Parameter Sets: Default parameters for set activity log alert, Parameters to set an activity log alerts taking the value of ResourceId from the pipe
+Parameter Sets: SetByNameAndResourceGroup, SetByResourceId
 Aliases: 
 
 Required: False
@@ -216,7 +216,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: String
-Parameter Sets: Parameters to set an activity log alerts taking value from the pipe
+Parameter Sets: SetByInputObject
 Aliases: 
 
 Required: False
@@ -231,7 +231,7 @@ Allows the user to create a disabled the activity log alert. If not given, the a
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: Default parameters for set activity log alert, Parameters to set an activity log alerts taking the value of ResourceId from the pipe
+Parameter Sets: SetByNameAndResourceGroup, SetByResourceId
 Aliases: 
 
 Required: False
@@ -246,7 +246,7 @@ Sets the InputObject tags property of the call to extract the required name, and
 
 ```yaml
 Type: PSActivityLogAlertResource
-Parameter Sets: Parameters to set an activity log alerts taking value from the pipe
+Parameter Sets: SetByInputObject
 Aliases: 
 
 Required: True
@@ -261,7 +261,7 @@ The location where the activity log alert will exist.
 
 ```yaml
 Type: String
-Parameter Sets: Default parameters for set activity log alert
+Parameter Sets: SetByNameAndResourceGroup
 Aliases: 
 
 Required: True
@@ -273,7 +273,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: String
-Parameter Sets: Parameters to set an activity log alerts taking the value of ResourceId from the pipe
+Parameter Sets: SetByResourceId
 Aliases: 
 
 Required: False
@@ -288,7 +288,7 @@ The name of the activity log alert.
 
 ```yaml
 Type: String
-Parameter Sets: Default parameters for set activity log alert
+Parameter Sets: SetByNameAndResourceGroup
 Aliases: 
 
 Required: True
@@ -303,7 +303,7 @@ The name of the resource group where the alert resource is going to exist.
 
 ```yaml
 Type: String
-Parameter Sets: Default parameters for set activity log alert
+Parameter Sets: SetByNameAndResourceGroup
 Aliases: 
 
 Required: True
@@ -318,7 +318,7 @@ Sets the ResourceId tags property of the call to extract the required name, reso
 
 ```yaml
 Type: String
-Parameter Sets: Parameters to set an activity log alerts taking the value of ResourceId from the pipe
+Parameter Sets: SetByResourceId
 Aliases: 
 
 Required: True
@@ -333,7 +333,7 @@ The list of scopes for the activity log alert.
 
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
-Parameter Sets: Default parameters for set activity log alert
+Parameter Sets: SetByNameAndResourceGroup
 Aliases: 
 
 Required: True
@@ -345,7 +345,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
-Parameter Sets: Parameters to set an activity log alerts taking the value of ResourceId from the pipe
+Parameter Sets: SetByResourceId
 Aliases: 
 
 Required: False
@@ -357,7 +357,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
-Parameter Sets: Parameters to set an activity log alerts taking value from the pipe
+Parameter Sets: SetByInputObject
 Aliases: 
 
 Required: False
@@ -372,7 +372,7 @@ Sets the tags property of the activity log alert resource.
 
 ```yaml
 Type: System.Collections.Generic.Dictionary`2[System.String,System.String]
-Parameter Sets: Default parameters for set activity log alert, Parameters to set an activity log alerts taking the value of ResourceId from the pipe
+Parameter Sets: SetByNameAndResourceGroup, SetByResourceId
 Aliases: 
 
 Required: False
@@ -384,7 +384,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.Collections.Generic.Dictionary`2[System.String,System.String]
-Parameter Sets: Parameters to set an activity log alerts taking value from the pipe
+Parameter Sets: SetByInputObject
 Aliases: 
 
 Required: False

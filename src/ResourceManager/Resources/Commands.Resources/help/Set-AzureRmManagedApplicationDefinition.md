@@ -12,7 +12,7 @@ Updates managed application definition
 
 ## SYNTAX
 
-### The managed application definition name parameter set. (Default)
+### SetByNameAndResourceGroup (Default)
 ```
 Set-AzureRmManagedApplicationDefinition -Name <String> -ResourceGroupName <String> [-DisplayName <String>]
  [-Description <String>] [-PackageFileUri <String>] [-Authorization <String[]>] [-Tag <Hashtable>]
@@ -20,7 +20,7 @@ Set-AzureRmManagedApplicationDefinition -Name <String> -ResourceGroupName <Strin
  [<CommonParameters>]
 ```
 
-### The managed application definition Id parameter set.
+### SetById
 ```
 Set-AzureRmManagedApplicationDefinition -Id <String> [-DisplayName <String>] [-Description <String>]
  [-PackageFileUri <String>] [-Authorization <String[]>] [-Tag <Hashtable>] [-ApiVersion <String>] [-Pre]
@@ -123,7 +123,7 @@ The fully qualified managed application definition Id, including the subscriptio
 
 ```yaml
 Type: String
-Parameter Sets: The managed application definition Id parameter set.
+Parameter Sets: SetById
 Aliases: ResourceId
 
 Required: True
@@ -138,7 +138,7 @@ The managed application definition name.
 
 ```yaml
 Type: String
-Parameter Sets: The managed application definition name parameter set.
+Parameter Sets: SetByNameAndResourceGroup
 Aliases: 
 
 Required: True
@@ -183,7 +183,7 @@ The resource group name.
 
 ```yaml
 Type: String
-Parameter Sets: The managed application definition name parameter set.
+Parameter Sets: SetByNameAndResourceGroup
 Aliases: 
 
 Required: True

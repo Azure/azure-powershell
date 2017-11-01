@@ -12,14 +12,14 @@ Modifies a policy set definition
 
 ## SYNTAX
 
-### The policy set definition name parameter set. (Default)
+### SetByNameAndResourceGroup (Default)
 ```
 Set-AzureRmPolicySetDefinition -Name <String> [-DisplayName <String>] [-Description <String>]
  [-PolicyDefinition <String>] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### The policy set definition Id parameter set.
+### SetById
 ```
 Set-AzureRmPolicySetDefinition -Id <String> [-DisplayName <String>] [-Description <String>]
  [-PolicyDefinition <String>] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
@@ -112,7 +112,7 @@ e.g.
 
 ```yaml
 Type: String
-Parameter Sets: The policy set definition Id parameter set.
+Parameter Sets: SetById
 Aliases: ResourceId
 
 Required: True
@@ -127,7 +127,7 @@ The policy set definition name.
 
 ```yaml
 Type: String
-Parameter Sets: The policy set definition name parameter set.
+Parameter Sets: SetByNameAndResourceGroup
 Aliases: 
 
 Required: True
