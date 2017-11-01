@@ -25,10 +25,8 @@ namespace Microsoft.Azure.Commands.MachineLearning
     [OutputType(typeof(void))]
     public class RemoveAzureMLCommitmentPlan : CommitmentPlansCmdletBase
     {
-        protected const string RemoveByNameGroupParameterSet =
-            "Remove an Azure ML commitment plan specified by name and resource group.";
-        protected const string RemoveByObjectParameterSet =
-            "Remove an Azure ML commitment plan specified as an object.";
+        protected const string RemoveByNameGroupParameterSet = "RemoveByNameAndResourceGroup";
+        protected const string RemoveByObjectParameterSet = "RemoveByObject";
 
         [Parameter(
             ParameterSetName = RemoveAzureMLCommitmentPlan.RemoveByNameGroupParameterSet,

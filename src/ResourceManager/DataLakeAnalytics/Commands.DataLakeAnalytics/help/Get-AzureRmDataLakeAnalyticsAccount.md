@@ -13,18 +13,18 @@ Gets information about a Data Lake Analytics account.
 
 ## SYNTAX
 
-### All In Subscription (Default)
+### GetAllInSubscription (Default)
 ```
 Get-AzureRmDataLakeAnalyticsAccount [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### All In Resource Group
+### GetByResourceGroup
 ```
 Get-AzureRmDataLakeAnalyticsAccount [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
-### Specific Account
+### GetBySpecificAccount
 ```
 Get-AzureRmDataLakeAnalyticsAccount [[-ResourceGroupName] <String>] [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -64,7 +64,7 @@ Specifies the name of the Data Lake Analytics account.
 
 ```yaml
 Type: String
-Parameter Sets: Specific Account
+Parameter Sets: GetBySpecificAccount
 Aliases: 
 
 Required: True
@@ -79,7 +79,7 @@ Specifies the resource group name of the Data Lake Analytics account.
 
 ```yaml
 Type: String
-Parameter Sets: All In Resource Group
+Parameter Sets: GetByResourceGroup
 Aliases: 
 
 Required: True
@@ -91,7 +91,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: String
-Parameter Sets: Specific Account
+Parameter Sets: GetBySpecificAccount
 Aliases: 
 
 Required: False

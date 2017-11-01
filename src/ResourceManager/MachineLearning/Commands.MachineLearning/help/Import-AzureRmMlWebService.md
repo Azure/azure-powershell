@@ -12,12 +12,12 @@ Imports a JSON object into a web service definition.
 
 ## SYNTAX
 
-### Import from JSON file.
+### ImportFromJSONFile
 ```
 Import-AzureRmMlWebService -InputFile <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Import from JSON string.
+### ImportFromJSONString.
 ```
 Import-AzureRmMlWebService -JsonString <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -66,7 +66,7 @@ The path to the file containing the web service definition to import.
 
 ```yaml
 Type: String
-Parameter Sets: Import from JSON file.
+Parameter Sets: ImportFromJSONFile
 Aliases: 
 
 Required: True
@@ -81,7 +81,7 @@ The JSON formatted string containing the web service definition to import.
 
 ```yaml
 Type: String
-Parameter Sets: Import from JSON string.
+Parameter Sets: ImportFromJSONString.
 Aliases: 
 
 Required: True

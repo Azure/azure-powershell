@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.dll-Help.xml
+Module Name: AzureRM.ApiManagement
 ms.assetid: 56604912-53A0-496D-9BDC-472BCE45A6A2
 online version: 
 schema: 2.0.0
@@ -12,7 +13,7 @@ Updates deployment of an API Management Service.
 
 ## SYNTAX
 
-### Specific API Management service (Default)
+### UpdateSpecificService (Default)
 ```
 Update-AzureRmApiManagementDeployment -ResourceGroupName <String> -Name <String> -Location <String>
  -Sku <PsApiManagementSku> -Capacity <Int32> [-VirtualNetwork <PsApiManagementVirtualNetwork>]
@@ -21,7 +22,7 @@ Update-AzureRmApiManagementDeployment -ResourceGroupName <String> -Name <String>
  [-PassThru] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Update from PsApiManagement instance
+### UpdateFromPsApiManagementInstance
 ```
 Update-AzureRmApiManagementDeployment -ApiManagement <PsApiManagement> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -73,7 +74,7 @@ Specifies additional deployment regions of Azure API Management.
 
 ```yaml
 Type: System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]
-Parameter Sets: Specific API Management service
+Parameter Sets: UpdateSpecificService
 Aliases: 
 
 Required: False
@@ -89,7 +90,7 @@ Use this parameter if the instance already has all the required changes.
 
 ```yaml
 Type: PsApiManagement
-Parameter Sets: Update from PsApiManagement instance
+Parameter Sets: UpdateFromPsApiManagementInstance
 Aliases: 
 
 Required: True
@@ -104,7 +105,7 @@ Specifies the SKU capacity of the master Azure API Management deployment region.
 
 ```yaml
 Type: Int32
-Parameter Sets: Specific API Management service
+Parameter Sets: UpdateSpecificService
 Aliases: 
 
 Required: True
@@ -137,7 +138,7 @@ Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.ApiManagement" | where
 
 ```yaml
 Type: String
-Parameter Sets: Specific API Management service
+Parameter Sets: UpdateSpecificService
 Aliases: 
 
 Required: True
@@ -152,7 +153,7 @@ Specifies the name of API Management that this cmdlet updates.
 
 ```yaml
 Type: String
-Parameter Sets: Specific API Management service
+Parameter Sets: UpdateSpecificService
 Aliases: 
 
 Required: True
@@ -183,7 +184,7 @@ Specifies the name of resource group under which API Management exists.
 
 ```yaml
 Type: String
-Parameter Sets: Specific API Management service
+Parameter Sets: UpdateSpecificService
 Aliases: 
 
 Required: True
@@ -204,7 +205,7 @@ The acceptable values for this parameter are:
 
 ```yaml
 Type: PsApiManagementSku
-Parameter Sets: Specific API Management service
+Parameter Sets: UpdateSpecificService
 Aliases: 
 Accepted values: Developer, Standard, Premium
 
@@ -220,7 +221,7 @@ Specifies the Virtual Network configuration of the master Azure API Management d
 
 ```yaml
 Type: PsApiManagementVirtualNetwork
-Parameter Sets: Specific API Management service
+Parameter Sets: UpdateSpecificService
 Aliases: 
 
 Required: False
@@ -244,7 +245,7 @@ The API Management deployment has an intranet facing virtual address.
 
 ```yaml
 Type: PsApiManagementVpnType
-Parameter Sets: Specific API Management service
+Parameter Sets: UpdateSpecificService
 Aliases: 
 Accepted values: None, External, Internal
 

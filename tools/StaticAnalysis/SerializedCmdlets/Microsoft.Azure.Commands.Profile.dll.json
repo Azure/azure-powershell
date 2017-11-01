@@ -5643,6 +5643,10 @@
               "ValueFromPipelineByPropertyName": false
             }
           ]
+        },
+        {
+          "Name": "GetSingleContext",
+          "Parameters": []
         }
       ],
       "AliasList": []
@@ -8421,7 +8425,7 @@
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "Input Object",
+      "DefaultParameterSetName": "RemoveByInputObject",
       "OutputTypes": [
         {
           "Type": {
@@ -8547,7 +8551,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "Input Object",
+          "Name": "RemoveByInputObject",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -8790,7 +8794,7 @@
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "Input Object",
+      "DefaultParameterSetName": "RenameByInputObject",
       "OutputTypes": [
         {
           "Type": {
@@ -8916,7 +8920,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "Input Object",
+          "Name": "RenameByInputObject",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -9159,7 +9163,7 @@
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "Input Object",
+      "DefaultParameterSetName": "SelectByInputObject",
       "OutputTypes": [
         {
           "Type": {
@@ -9253,7 +9257,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "Input Object",
+          "Name": "SelectByInputObject",
           "Parameters": [
             {
               "ParameterMetadata": {

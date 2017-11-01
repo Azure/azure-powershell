@@ -28,9 +28,9 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
     [Cmdlet(VerbsCommon.Get, "AzureRmAlertRule"), OutputType(typeof(List<PSManagementItemDescriptor>))]
     public class GetAzureRmAlertRuleCommand : ManagementCmdletBase
     {
-        internal const string GetAzureRmAlertRuleParamGroup = "Parameters for Get-AzureRmAlertRule cmdlet";
-        internal const string GetAzureRmAlertRuleWithNameParamGroup = "Parameters for Get-AzureRmAlertRule cmdlet using name";
-        internal const string GetAzureRmAlertRuleWithUriParamGroup = "Parameters for Get-AzureRmAlertRule cmdlet using target resource uri";
+        internal const string GetAzureRmAlertRuleParamGroup = "GetByResourceGroup";
+        internal const string GetAzureRmAlertRuleWithNameParamGroup = "GetByName";
+        internal const string GetAzureRmAlertRuleWithUriParamGroup = "GetByResourceUri";
 
         #region Cmdlet parameters
 

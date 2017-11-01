@@ -13,14 +13,14 @@ Creates a new Azure Data Lake Analytics catalog credential.
 
 ## SYNTAX
 
-### Specify host name and port (Default)
+### CreateByHostNameAndPort (Default)
 ```
 New-AzureRmDataLakeAnalyticsCatalogCredential [-Account] <String> [-DatabaseName] <String>
  [-CredentialName] <String> [-Credential] <PSCredential> [-Uri] <Uri>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Specify full URI
+### CreateByFullURI
 ```
 New-AzureRmDataLakeAnalyticsCatalogCredential [-Account] <String> [-DatabaseName] <String>
  [-CredentialName] <String> [-Credential] <PSCredential> [-DatabaseHost] <String> [-Port] <Int32>
@@ -106,7 +106,7 @@ Specifies the host name of the external data source the credential can connect t
 
 ```yaml
 Type: String
-Parameter Sets: Specify full URI
+Parameter Sets: CreateByFullURI
 Aliases: 
 
 Required: True
@@ -151,7 +151,7 @@ Specifies the port number used to connect to the specified DatabaseHost using th
 
 ```yaml
 Type: Int32
-Parameter Sets: Specify full URI
+Parameter Sets: CreateByFullURI
 Aliases: 
 
 Required: True
@@ -166,7 +166,7 @@ Specifies the full Uniform Resource Identifier (URI) of the external data source
 
 ```yaml
 Type: Uri
-Parameter Sets: Specify host name and port
+Parameter Sets: CreateByHostNameAndPort
 Aliases: 
 
 Required: True
