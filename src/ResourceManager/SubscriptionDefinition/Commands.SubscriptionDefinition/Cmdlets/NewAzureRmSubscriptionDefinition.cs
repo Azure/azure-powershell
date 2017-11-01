@@ -27,9 +27,6 @@ namespace Microsoft.Azure.Commands.SubscriptionDefinition.Cmdlets
     [Cmdlet(VerbsCommon.New, "AzureRmSubscriptionDefinition", SupportsShouldProcess = true), OutputType(typeof(PSSubscriptionDefinition))]
     public class NewAzureRmSubscriptionDefinition : AzureSubscriptionDefinitionCmdletBase
     {
-        [Parameter(Mandatory = true, HelpMessage = "Id of the management group in which to create the subscription definition.")]
-        public Guid ManagementGroupId { get; set; }
-
         [Parameter(Mandatory = true, HelpMessage = "Name of the subscription definition.")]
         public string Name { get; set; }
 
@@ -44,10 +41,8 @@ namespace Microsoft.Azure.Commands.SubscriptionDefinition.Cmdlets
         {
             if (this.ShouldProcess(target: this.Name, action: "Create subscription definition"))
             {
-                this.WriteSubscriptionDefinitionObject(this.SubscriptionDefinitionClient.SubscriptionDefinitions.Create(new Microsoft.Azure.Management.ResourceManager.Models.SubscriptionDefinition(
-                    groupId: this.ManagementGroupId.ToString(),
-                    name: this.Name,
-                    ratingContext: new Management.ResourceManager.Models.SubscriptionDefinitionPropertiesRatingContext(this.OfferType),
+                this.WriteSubscriptionDefinitionObject(this.SubscriptionDefinitionClient.SubscriptionDefinition.Create(this.Name, new Microsoft.Azure.Management.ResourceManager.Models.SubscriptionDefinition(
+                    offerType: this.OfferType,
                     subscriptionDisplayName: this.SubscriptionDisplayName ?? this.Name)));
             }
         }

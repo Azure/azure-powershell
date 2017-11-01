@@ -18,10 +18,6 @@ namespace Microsoft.Azure.Commands.SubscriptionDefinition.Models
 {
     public class PSSubscriptionDefinition
     {
-        public string ManagementGroupId { get; private set; }
-
-        public string ManagementGroupTenantId { get; private set; }
-
         public string Name { get; private set; }
 
         public string SubscriptionId { get; private set; }
@@ -29,9 +25,7 @@ namespace Microsoft.Azure.Commands.SubscriptionDefinition.Models
         public string SubscriptionDisplayName { get; private set; }
 
         public string OfferType { get; private set; }
-
-        public bool? UserCancellationRequested { get; private set; }
-
+        
         public PSSubscriptionDefinition()
         {
         }
@@ -40,13 +34,10 @@ namespace Microsoft.Azure.Commands.SubscriptionDefinition.Models
         {
             if (subscriptionDefinition != null)
             {
-                this.ManagementGroupId = subscriptionDefinition.GroupId;
-                this.ManagementGroupTenantId = subscriptionDefinition.GroupTenantId;
                 this.Name = subscriptionDefinition.Name;
                 this.SubscriptionId = subscriptionDefinition.SubscriptionId;
                 this.SubscriptionDisplayName = subscriptionDefinition.SubscriptionDisplayName;
-                this.OfferType = subscriptionDefinition.RatingContext.OfferType;
-                this.UserCancellationRequested = subscriptionDefinition.UserCancellationRequested;
+                this.OfferType = subscriptionDefinition.OfferType;
             }
         }
     }
