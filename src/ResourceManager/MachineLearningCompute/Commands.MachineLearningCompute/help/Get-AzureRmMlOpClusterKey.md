@@ -12,19 +12,19 @@ Gets the access keys associated with an operationalization cluster.
 
 ## SYNTAX
 
-### Get operationalization cluster's keys from cmdlet input parameters.
+### GetByNameAndResourceGroup
 ```
 Get-AzureRmMlOpClusterKey -ResourceGroupName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
-### Get operationalization cluster's keys from an OperationalizationCluster instance definition.
+### GetByInputObject
 ```
 Get-AzureRmMlOpClusterKey -InputObject <PSOperationalizationCluster> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
-### Get operationalization cluster's keys from an Azure resource id.
+### GetByResourceId
 ```
 Get-AzureRmMlOpClusterKey -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -63,7 +63,7 @@ The operationalization cluster object.
 
 ```yaml
 Type: PSOperationalizationCluster
-Parameter Sets: Get operationalization cluster's keys from an OperationalizationCluster instance definition.
+Parameter Sets: GetByInputObject
 Aliases: Cluster
 
 Required: True
@@ -78,7 +78,7 @@ The name of the operationalization cluster.
 
 ```yaml
 Type: String
-Parameter Sets: Get operationalization cluster's keys from cmdlet input parameters.
+Parameter Sets: GetByNameAndResourceGroup
 Aliases: 
 
 Required: True
@@ -93,7 +93,7 @@ The name of the resource group for the operationalization cluster.
 
 ```yaml
 Type: String
-Parameter Sets: Get operationalization cluster's keys from cmdlet input parameters.
+Parameter Sets: GetByNameAndResourceGroup
 Aliases: 
 
 Required: True
@@ -108,7 +108,7 @@ The Azure resource id for the operationalization cluster.
 
 ```yaml
 Type: String
-Parameter Sets: Get operationalization cluster's keys from an Azure resource id.
+Parameter Sets: GetByResourceId
 Aliases: 
 
 Required: True

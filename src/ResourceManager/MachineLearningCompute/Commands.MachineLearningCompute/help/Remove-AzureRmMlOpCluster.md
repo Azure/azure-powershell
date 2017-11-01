@@ -12,19 +12,19 @@ Removes an operationalization cluster.
 
 ## SYNTAX
 
-### Remove an operationalization cluster from cmdlet input parameters.
+### RemoveByNameAndResourceGroup
 ```
 Remove-AzureRmMlOpCluster -ResourceGroupName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Remove an operationalization cluster from an OperationalizationCluster instance definition.
+### RemoveByInputObject
 ```
 Remove-AzureRmMlOpCluster -InputObject <PSOperationalizationCluster> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Remove an operationalization cluster from an Azure resouce id.
+### RemoveByResourceId
 ```
 Remove-AzureRmMlOpCluster -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -67,7 +67,7 @@ The operationalization cluster object.
 
 ```yaml
 Type: PSOperationalizationCluster
-Parameter Sets: Remove an operationalization cluster from an OperationalizationCluster instance definition.
+Parameter Sets: RemoveByInputObject
 Aliases: Cluster
 
 Required: True
@@ -82,7 +82,7 @@ The name of the operationalization cluster.
 
 ```yaml
 Type: String
-Parameter Sets: Remove an operationalization cluster from cmdlet input parameters.
+Parameter Sets: RemoveByNameAndResourceGroup
 Aliases: 
 
 Required: True
@@ -97,7 +97,7 @@ The name of the resource group for the operationalization cluster.
 
 ```yaml
 Type: String
-Parameter Sets: Remove an operationalization cluster from cmdlet input parameters.
+Parameter Sets: RemoveByNameAndResourceGroup
 Aliases: 
 
 Required: True
@@ -112,7 +112,7 @@ The Azure resource id for the operationalization cluster.
 
 ```yaml
 Type: String
-Parameter Sets: Remove an operationalization cluster from an Azure resouce id.
+Parameter Sets: RemoveByResourceId
 Aliases: 
 
 Required: True
