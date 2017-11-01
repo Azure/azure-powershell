@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
+Module Name: AzureRM.ApiManagement
 ms.assetid: 638B2BF6-23F8-4038-B20B-1CFABFDBF5D3
 online version: 
 schema: 2.0.0
@@ -12,19 +13,19 @@ Gets a user or users.
 
 ## SYNTAX
 
-### Get all users (Default)
+### GeAllUsers (Default)
 ```
 Get-AzureRmApiManagementUser -Context <PsApiManagementContext> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
-### Get user by ID
+### GetByUserId
 ```
 Get-AzureRmApiManagementUser -Context <PsApiManagementContext> [-UserId <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Find users
+### GetByUser
 ```
 Get-AzureRmApiManagementUser -Context <PsApiManagementContext> [-FirstName <String>] [-LastName <String>]
  [-State <PsApiManagementUserState>] [-Email <String>] [-GroupId <String>]
@@ -39,7 +40,7 @@ The **Get-AzureRmApiManagementUser** cmdlet gets a specified user, or all users,
 ### Example 1: Get all users
 ```
 PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzureRmApiManagementUser -Context $apimContext 
+PS C:\>Get-AzureRmApiManagementUser -Context $apimContext
 ```
 
 This command gets all users.
@@ -115,7 +116,7 @@ This parameter is optional.
 
 ```yaml
 Type: String
-Parameter Sets: Find users
+Parameter Sets: GetByUser
 Aliases: 
 
 Required: False
@@ -132,7 +133,7 @@ This parameter is optional.
 
 ```yaml
 Type: String
-Parameter Sets: Find users
+Parameter Sets: GetByUser
 Aliases: 
 
 Required: False
@@ -149,7 +150,7 @@ This parameter is optional.
 
 ```yaml
 Type: String
-Parameter Sets: Find users
+Parameter Sets: GetByUser
 Aliases: 
 
 Required: False
@@ -166,7 +167,7 @@ This parameter is optional.
 
 ```yaml
 Type: String
-Parameter Sets: Find users
+Parameter Sets: GetByUser
 Aliases: 
 
 Required: False
@@ -183,7 +184,7 @@ This parameter is optional.
 
 ```yaml
 Type: PsApiManagementUserState
-Parameter Sets: Find users
+Parameter Sets: GetByUser
 Aliases: 
 Accepted values: Active, Blocked
 
@@ -201,7 +202,7 @@ This parameter is optional.
 
 ```yaml
 Type: String
-Parameter Sets: Get user by ID
+Parameter Sets: GetByUserId
 Aliases: 
 
 Required: False

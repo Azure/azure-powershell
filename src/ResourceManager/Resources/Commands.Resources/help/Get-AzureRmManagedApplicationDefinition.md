@@ -12,13 +12,13 @@ Gets managed application definitions
 
 ## SYNTAX
 
-### The managed application definition name parameter set. (Default)
+### GetByNameAndResourceGroup (Default)
 ```
 Get-AzureRmManagedApplicationDefinition [-Name <String>] -ResourceGroupName <String> [-ApiVersion <String>]
  [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### The managed application definition Id parameter set.
+### GetById
 ```
 Get-AzureRmManagedApplicationDefinition -Id <String> [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -83,7 +83,7 @@ e.g.
 
 ```yaml
 Type: String
-Parameter Sets: The managed application definition Id parameter set.
+Parameter Sets: GetById
 Aliases: ResourceId, ManagedApplicationDefinitionId
 
 Required: True
@@ -98,7 +98,7 @@ The managed application definition name.
 
 ```yaml
 Type: String
-Parameter Sets: The managed application definition name parameter set.
+Parameter Sets: GetByNameAndResourceGroup
 Aliases: 
 
 Required: False
@@ -128,7 +128,7 @@ The resource group name.
 
 ```yaml
 Type: String
-Parameter Sets: The managed application definition name parameter set.
+Parameter Sets: GetByNameAndResourceGroup
 Aliases: 
 
 Required: True

@@ -29,12 +29,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// The deployment Id parameter set.
         /// </summary>
-        internal const string DeploymentIdParameterSet = "The deployment Id parameter set.";
+        internal const string DeploymentIdParameterSet = "StopByResourceGroupDeploymentId";
 
         /// <summary>
         /// The deployment name parameter set.
         /// </summary>
-        internal const string DeploymentNameParameterSet = "The deployment name parameter set.";
+        internal const string DeploymentNameParameterSet = "StopByResourceGroupDeploymentName";
 
         [Parameter(Position = 0, ParameterSetName = StopAzureResourceGroupDeploymentCmdlet.DeploymentNameParameterSet, 
             Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the resource group.")]

@@ -1310,7 +1310,7 @@
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "Specific API Management service",
+      "DefaultParameterSetName": "SetSpecificService",
       "OutputTypes": [
         {
           "Type": {
@@ -1494,7 +1494,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "Set from provided PsApiManagement instance",
+          "Name": "SetFromPsApiManagementInstance",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -1592,7 +1592,7 @@
           ]
         },
         {
-          "Name": "Specific API Management service",
+          "Name": "SetSpecificService",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -1810,7 +1810,7 @@
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "Specific API Management service",
+      "DefaultParameterSetName": "UpdateSpecificService",
       "OutputTypes": [
         {
           "Type": {
@@ -2059,7 +2059,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "Update from PsApiManagement instance",
+          "Name": "UpdateFromPsApiManagementInstance",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -2157,7 +2157,7 @@
           ]
         },
         {
-          "Name": "Specific API Management service",
+          "Name": "UpdateSpecificService",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -3487,7 +3487,7 @@
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "All In Subscription",
+      "DefaultParameterSetName": "GetBySubscription",
       "OutputTypes": [
         {
           "Type": {
@@ -3565,7 +3565,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "All In Resource Group",
+          "Name": "GetByResourceGroup",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -3622,7 +3622,7 @@
           ]
         },
         {
-          "Name": "Specific API Management Service",
+          "Name": "GetByResource",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -3734,6 +3734,10 @@
               "ValueFromPipelineByPropertyName": false
             }
           ]
+        },
+        {
+          "Name": "GetBySubscription",
+          "Parameters": []
         }
       ],
       "AliasList": []

@@ -12,19 +12,19 @@ Gets policy set definitions.
 
 ## SYNTAX
 
-### The list all policy set definitions parameter set. (Default)
+### GetBySubscription (Default)
 ```
 Get-AzureRmPolicySetDefinition [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
-### The policy set definition name parameter set.
+### GetByNameAndResourceGroup
 ```
 Get-AzureRmPolicySetDefinition -Name <String> [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### The policy set definition Id parameter set.
+### GetById
 ```
 Get-AzureRmPolicySetDefinition -Id <String> [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -89,7 +89,7 @@ e.g.
 
 ```yaml
 Type: String
-Parameter Sets: The policy set definition Id parameter set.
+Parameter Sets: GetById
 Aliases: ResourceId
 
 Required: True
@@ -104,7 +104,7 @@ The policy set definition name.
 
 ```yaml
 Type: String
-Parameter Sets: The policy set definition name parameter set.
+Parameter Sets: GetByNameAndResourceGroup
 Aliases: 
 
 Required: True

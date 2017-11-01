@@ -13,35 +13,35 @@ Gets a log of events.
 
 ## SYNTAX
 
-### Query on CorrelationId
+### GetByCorrelationId
 ```
 Get-AzureRmLog [-StartTime <DateTime>] [-EndTime <DateTime>] [-Status <String>] [-Caller <String>]
  [-DetailedOutput] [-CorrelationId] <String> [-MaxEvents <Int32>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
-### Query on ResourceIdName
+### GetByResourceId
 ```
 Get-AzureRmLog [-StartTime <DateTime>] [-EndTime <DateTime>] [-Status <String>] [-Caller <String>]
  [-DetailedOutput] [-ResourceId] <String> [-MaxEvents <Int32>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
-### Query on ResourceGroupProvider
+### GetByResourceGroup
 ```
 Get-AzureRmLog [-StartTime <DateTime>] [-EndTime <DateTime>] [-Status <String>] [-Caller <String>]
  [-DetailedOutput] [-ResourceGroup] <String> [-MaxEvents <Int32>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
-### Query on ResourceProvider
+### GetByResourceProvider
 ```
 Get-AzureRmLog [-StartTime <DateTime>] [-EndTime <DateTime>] [-Status <String>] [-Caller <String>]
  [-DetailedOutput] [-ResourceProvider] <String> [-MaxEvents <Int32>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
-### Query at subscription level
+### GetBySubscription
 ```
 Get-AzureRmLog [-StartTime <DateTime>] [-EndTime <DateTime>] [-Status <String>] [-Caller <String>]
  [-DetailedOutput] [-MaxEvents <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -219,7 +219,7 @@ This parameter is required.
 
 ```yaml
 Type: String
-Parameter Sets: Query on CorrelationId
+Parameter Sets: GetByCorrelationId
 Aliases: 
 
 Required: True
@@ -300,7 +300,7 @@ Specifies the name of the resource group.
 
 ```yaml
 Type: String
-Parameter Sets: Query on ResourceGroupProvider
+Parameter Sets: GetByResourceGroup
 Aliases: 
 
 Required: True
@@ -315,7 +315,7 @@ Specifies the resource ID.
 
 ```yaml
 Type: String
-Parameter Sets: Query on ResourceIdName
+Parameter Sets: GetByResourceId
 Aliases: 
 
 Required: True
@@ -330,7 +330,7 @@ Specifies a filter by resource provider.
 
 ```yaml
 Type: String
-Parameter Sets: Query on ResourceProvider
+Parameter Sets: GetByResourceProvider
 Aliases: 
 
 Required: True
