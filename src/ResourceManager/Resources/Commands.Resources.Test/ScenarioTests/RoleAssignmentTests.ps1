@@ -379,6 +379,51 @@ function Test-RaDeletionByScopeAtRootScope
     VerifyRoleAssignmentDeleted $newAssignment
 }
 
+<#
+.SYNOPSIS
+Tests verifies creation and validation of RoleAssignment properties for not null
+#>
+function Test-RaPropertiesValidation
+{
+    # Setup
+    $definitionName = 'CustomRole Tests Role'
+    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleDefinitionNames.Enqueue("8D7DD69E-9AE2-44A1-94D8-F7BC8E12645E")
+    New-AzureRmRoleDefinition -InputFile .\Resources\NewRoleDefinition.json
+    $users = Get-AzureRmADUser | Select-Object -First 1 -Wait
+    $subscription = Get-AzureRmSubscription
+    $resourceGroups = Get-AzureRmResourceGroup | Select-Object -Last 1 -Wait
+    $scope = '/subscriptions/'+$subscription[0].Id
+    Assert-AreEqual 1 $users.Count "There should be at least one user to run the test."
+    $rd = Get-AzureRmRoleDefinition -Name $definitionName
+
+    # Test
+    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("fa1a4d3b-2cca-406b-8956-6b6b32377641")
+    $newAssignment = New-AzureRmRoleAssignment `
+                        -ObjectId $users[0].Id.Guid `
+                        -RoleDefinitionName $definitionName `
+                        -Scope $scope 
+    $newAssignment.Scope = $scope.toUpper()
+    
+    $assignments = Get-AzureRmRoleAssignment
+    Assert-NotNull $assignments
+    foreach ($assignment in $assignments){
+        Assert-NotNull $assignment
+        Assert-NotNull $assignment.RoleDefinitionName
+        Assert-AreNotEqual $assignment.RoleDefinitionName ""
+    }
+
+    # cleanup 
+    DeleteRoleAssignment $newAssignment
+    Remove-AzureRmRoleDefinition -Id $rd.Id -Force
+    
+    # Assert
+    Assert-NotNull $newAssignment
+    Assert-AreEqual $definitionName $newAssignment.RoleDefinitionName 
+    Assert-AreEqual $scope $newAssignment.Scope 
+    Assert-AreEqual $users[0].DisplayName $newAssignment.DisplayName
+    
+    VerifyRoleAssignmentDeleted $newAssignment
+}
 
 <#
 .SYNOPSIS
