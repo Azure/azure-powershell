@@ -12,13 +12,13 @@ Rename an Azure context.  By default contexts are named by user account and subs
 
 ## SYNTAX
 
-### Input Object (Default)
+### RenameByInputObject (Default)
 ```
 Rename-AzureRmContext -InputObject <PSAzureContext> [-Force] [-PassThru] [-Scope <ContextModificationScope>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-TargetName] <String> [<CommonParameters>]
 ```
 
-### Context Name
+### RenameByName
 ```
 Rename-AzureRmContext [-Force] [-PassThru] [-Scope <ContextModificationScope>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SourceName] <String> [-TargetName] <String>
@@ -83,7 +83,7 @@ A context object, normally passed through the pipeline.
 
 ```yaml
 Type: PSAzureContext
-Parameter Sets: Input Object
+Parameter Sets: RenameByInputObject
 Aliases: 
 
 Required: True
@@ -129,9 +129,8 @@ The name of the context
 
 ```yaml
 Type: String
-Parameter Sets: Context Name
+Parameter Sets: RenameByName
 Aliases: 
-Accepted values: Default
 
 Required: True
 Position: 0

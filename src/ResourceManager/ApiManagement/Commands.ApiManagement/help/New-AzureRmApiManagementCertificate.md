@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
+Module Name: AzureRM.ApiManagement
 ms.assetid: 5CBEDFF8-C441-44CC-B011-5F5AAFA2E5C6
 online version: 
 schema: 2.0.0
@@ -12,7 +13,7 @@ Creates an API Management certificate to be used during Authentication with Back
 
 ## SYNTAX
 
-### Load from file (Default)
+### LoadFromFile (Default)
 ```
 New-AzureRmApiManagementCertificate -Context <PsApiManagementContext> [-CertificateId <String>]
  -PfxFilePath <String> -PfxPassword <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -107,7 +108,7 @@ This parameter is required if you do not specify the *PfxBytes* parameter.
 
 ```yaml
 Type: String
-Parameter Sets: Load from file
+Parameter Sets: LoadFromFile
 Aliases: 
 
 Required: True

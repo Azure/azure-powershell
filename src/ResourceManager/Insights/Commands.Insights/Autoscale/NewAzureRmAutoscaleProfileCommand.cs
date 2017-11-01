@@ -26,9 +26,9 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
     [Cmdlet(VerbsCommon.New, "AzureRmAutoscaleProfile"), OutputType(typeof(AutoscaleProfile))]
     public class NewAzureRmAutoscaleProfileCommand : AzureRMCmdlet
     {
-        private const string AddAutoscaleProfileNoScheduleParamGroup = "Parameters for New-AzureRmAutoscaleProfile cmdlet without scheduled times";
-        private const string AddAutoscaleProfileFixDateParamGroup = "Parameters for New-AzureRmAutoscaleProfile cmdlet using fix date scheduling";
-        private const string AddAutoscaleProfileRecurrenceParamGroup = "Parameters for New-AzureRmAutoscaleProfile cmdlet using recurrent scheduling";
+        private const string AddAutoscaleProfileNoScheduleParamGroup = "CreateWithoutScheduledTimes";
+        private const string AddAutoscaleProfileFixDateParamGroup = "CreateWithFixedDateScheduling";
+        private const string AddAutoscaleProfileRecurrenceParamGroup = "CreateUsingRecurrentScheduling";
 
         #region Cmdlet parameters
 

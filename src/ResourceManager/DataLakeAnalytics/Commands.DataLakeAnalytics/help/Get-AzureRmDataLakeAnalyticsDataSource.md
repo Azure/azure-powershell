@@ -13,19 +13,19 @@ Gets a Data Lake Analytics data source.
 
 ## SYNTAX
 
-### List all data sources (Default)
+### GetAllDataSources (Default)
 ```
 Get-AzureRmDataLakeAnalyticsDataSource [-Account] <String> [[-ResourceGroupName] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Get a Data Lake Store account
+### GetDataLakeStoreAccount
 ```
 Get-AzureRmDataLakeAnalyticsDataSource [-Account] <String> [-DataLakeStore] <String>
  [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Get a Blob storage account
+### GetBlobStorageAccount
 ```
 Get-AzureRmDataLakeAnalyticsDataSource [-Account] <String> [-Blob] <String> [[-ResourceGroupName] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -72,7 +72,7 @@ Specifies the name of the Azure Blob Storage data source.
 
 ```yaml
 Type: String
-Parameter Sets: Get a Blob storage account
+Parameter Sets: GetBlobStorageAccount
 Aliases: AzureBlob
 
 Required: True
@@ -87,7 +87,7 @@ Specifies the name of the Data Lake Store account.
 
 ```yaml
 Type: String
-Parameter Sets: Get a Data Lake Store account
+Parameter Sets: GetDataLakeStoreAccount
 Aliases: 
 
 Required: True

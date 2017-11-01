@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
+Module Name: AzureRM.ApiManagement
 ms.assetid: 6CD1C2B8-0416-4FF3-81B0-0C9E59AE6CF9
 online version: 
 schema: 2.0.0
@@ -12,27 +13,27 @@ Sets the specified scope policy for API Management.
 
 ## SYNTAX
 
-### Tenant level (Default)
+### SetTenantLevel (Default)
 ```
 Set-AzureRmApiManagementPolicy -Context <PsApiManagementContext> [-Format <String>] [-Policy <String>]
  [-PolicyFilePath <String>] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Product level
+### SetProductLevel
 ```
 Set-AzureRmApiManagementPolicy -Context <PsApiManagementContext> [-Format <String>] -ProductId <String>
  [-Policy <String>] [-PolicyFilePath <String>] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
-### API level
+### SetApiLevel
 ```
 Set-AzureRmApiManagementPolicy -Context <PsApiManagementContext> [-Format <String>] -ApiId <String>
  [-Policy <String>] [-PolicyFilePath <String>] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
-### Operation level
+### SetOperationLevel
 ```
 Set-AzureRmApiManagementPolicy -Context <PsApiManagementContext> [-Format <String>] -ApiId <String>
  -OperationId <String> [-Policy <String>] [-PolicyFilePath <String>] [-PassThru]
@@ -84,7 +85,7 @@ If you specify this parameter, the cmdlet sets the API-scope policy.
 
 ```yaml
 Type: String
-Parameter Sets: API level, Operation level
+Parameter Sets: SetApiLevel, SetOperationLevel
 Aliases: 
 
 Required: True
@@ -147,7 +148,7 @@ This parameters is required.
 
 ```yaml
 Type: String
-Parameter Sets: Operation level
+Parameter Sets: SetOperationLevel
 Aliases: 
 
 Required: True
@@ -210,7 +211,7 @@ If this parameter is specified, the cmdlet sets the product-scope policy.
 
 ```yaml
 Type: String
-Parameter Sets: Product level
+Parameter Sets: SetProductLevel
 Aliases: 
 
 Required: True

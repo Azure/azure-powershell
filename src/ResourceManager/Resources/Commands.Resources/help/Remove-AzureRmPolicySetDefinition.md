@@ -12,13 +12,13 @@ Removes a policy set definition.
 
 ## SYNTAX
 
-### The policy set definition name parameter set. (Default)
+### RemoveByNameAndResourceGroup (Default)
 ```
 Remove-AzureRmPolicySetDefinition -Name <String> [-Force] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### The policy set definition Id parameter set.
+### RemoveById
 ```
 Remove-AzureRmPolicySetDefinition -Id <String> [-Force] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -95,7 +95,7 @@ e.g.
 
 ```yaml
 Type: String
-Parameter Sets: The policy set definition Id parameter set.
+Parameter Sets: RemoveById
 Aliases: ResourceId
 
 Required: True
@@ -110,7 +110,7 @@ The policy set definition name.
 
 ```yaml
 Type: String
-Parameter Sets: The policy set definition name parameter set.
+Parameter Sets: RemoveByNameAndResourceGroup
 Aliases: 
 
 Required: True

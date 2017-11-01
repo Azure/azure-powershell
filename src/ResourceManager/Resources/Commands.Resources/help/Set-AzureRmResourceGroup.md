@@ -13,13 +13,13 @@ Modifies a resource group.
 
 ## SYNTAX
 
-### Lists the resource group based in the name. (Default)
+### SetByResourceGroupName (Default)
 ```
 Set-AzureRmResourceGroup [-Name] <String> [-Tag] <Hashtable> [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Lists the resource group based in the Id.
+### SetByResourceGroupId
 ```
 Set-AzureRmResourceGroup [-Tag] <Hashtable> [-Id] <String> [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -114,7 +114,7 @@ Specifies the ID of the resource group to modify.
 
 ```yaml
 Type: String
-Parameter Sets: Lists the resource group based in the Id.
+Parameter Sets: SetByResourceGroupId
 Aliases: ResourceGroupId, ResourceId
 
 Required: True
@@ -129,7 +129,7 @@ Specifies the name of the resource group to modify.
 
 ```yaml
 Type: String
-Parameter Sets: Lists the resource group based in the name.
+Parameter Sets: SetByResourceGroupName
 Aliases: ResourceGroupName
 
 Required: True

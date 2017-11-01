@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
+Module Name: AzureRM.ApiManagement
 ms.assetid: 12FC21EB-0B4E-4275-88FB-7FF42730A6A0
 online version: 
 schema: 2.0.0
@@ -12,7 +13,7 @@ Modifies an API Management certificate which is configured for mutual authentica
 
 ## SYNTAX
 
-### Load from file (Default)
+### LoadFromFile (Default)
 ```
 Set-AzureRmApiManagementCertificate -Context <PsApiManagementContext> -CertificateId <String>
  -PfxFilePath <String> -PfxPassword <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
@@ -123,7 +124,7 @@ This parameter is required if you do not specify the *PfxBytes* parameter.
 
 ```yaml
 Type: String
-Parameter Sets: Load from file
+Parameter Sets: LoadFromFile
 Aliases: 
 
 Required: True

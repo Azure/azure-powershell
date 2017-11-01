@@ -13,7 +13,7 @@ Creates an Autoscale setting.
 
 ## SYNTAX
 
-### Parameters for Add-AzureRmAutoscaleSetting cmdlet in the update semantics
+### UpdateAutoscaleSetting
 ```
 Add-AzureRmAutoscaleSetting -SettingSpec <PSAutoscaleSetting> -ResourceGroupName <String> [-DisableSetting]
  [-AutoscaleProfile <System.Collections.Generic.List`1[Microsoft.Azure.Management.Insights.Models.AutoscaleProfile]>]
@@ -21,7 +21,7 @@ Add-AzureRmAutoscaleSetting -SettingSpec <PSAutoscaleSetting> -ResourceGroupName
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Parameters for Add-AzureRmAutoscaleSetting cmdlet in the create semantics
+### CreateAutoscaleSetting
 ```
 Add-AzureRmAutoscaleSetting -Location <String> -Name <String> -ResourceGroupName <String> [-DisableSetting]
  [-AutoscaleProfile <System.Collections.Generic.List`1[Microsoft.Azure.Management.Insights.Models.AutoscaleProfile]>]
@@ -108,7 +108,7 @@ Specifies the location of the Autoscale setting.
 
 ```yaml
 Type: String
-Parameter Sets: Parameters for Add-AzureRmAutoscaleSetting cmdlet in the create semantics
+Parameter Sets: CreateAutoscaleSetting
 Aliases: 
 
 Required: True
@@ -123,7 +123,7 @@ Specifies the name of the Autoscale setting to create.
 
 ```yaml
 Type: String
-Parameter Sets: Parameters for Add-AzureRmAutoscaleSetting cmdlet in the create semantics
+Parameter Sets: CreateAutoscaleSetting
 Aliases: 
 
 Required: True
@@ -184,7 +184,7 @@ Specifies the ID of the resource to autoscale.
 
 ```yaml
 Type: String
-Parameter Sets: Parameters for Add-AzureRmAutoscaleSetting cmdlet in the create semantics
+Parameter Sets: CreateAutoscaleSetting
 Aliases: 
 
 Required: True

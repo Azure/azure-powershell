@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
+Module Name: AzureRM.ApiManagement
 online version: 
 schema: 2.0.0
 ---
@@ -11,13 +12,13 @@ Get the details of the Backend.
 
 ## SYNTAX
 
-### Get all backends (Default)
+### GetAllBackends (Default)
 ```
 Get-AzureRmApiManagementBackend -Context <PsApiManagementContext> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
-### Get by backend ID
+### GetByBackendId
 ```
 Get-AzureRmApiManagementBackend -Context <PsApiManagementContext> -BackendId <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -29,16 +30,14 @@ Get the details of the Backend.
 ## EXAMPLES
 
 ### Example 1: Get all Backends
-
 ```
 PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzureRmApiManagementBackend -Context $apimContext 
+PS C:\>Get-AzureRmApiManagementBackend -Context $apimContext
 ```
 
 Gets a list of all the Backends configured in the Api Management service.
 
 ### Example 2: Get the Backend specified by the Identifier 123
-
 ```
 PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Get-AzureRmApiManagementBackend -Context $apimContext -backendId 123
@@ -55,7 +54,7 @@ This parameter is optional.
 
 ```yaml
 Type: String
-Parameter Sets: Get by backend ID
+Parameter Sets: GetByBackendId
 Aliases: 
 
 Required: True
