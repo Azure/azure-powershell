@@ -6,17 +6,13 @@ namespace Microsoft.Azure.Experiments
     public abstract class ResourceParameters<T> : Parameters<T>
         where T : class
     {
-        public ResourceGroupParameters ResourceGroup { get; }
+        public abstract ResourceGroupParameters ResourceGroup { get; }
+
+        public abstract IEnumerable<Parameters> ResourceDependencies { get; }
 
         public sealed override bool HasCommonLocation => true;
 
-        public ResourceParameters(
-            string name,
-            ResourceGroupParameters resourceGroup,
-            IEnumerable<Parameters> dependencies)
-            : base(name, dependencies.Concat(new[] { resourceGroup }))
-        {
-            ResourceGroup = resourceGroup;
-        }
+        public sealed override IEnumerable<Parameters> Dependencies 
+            => ResourceDependencies.Concat(new[] { ResourceGroup });
     }
 }

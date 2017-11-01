@@ -11,30 +11,19 @@ namespace Microsoft.Azure.Experiments
         public static IEnumerable<Parameters> NoDependencies
             => Enumerable.Empty<Parameters>();
 
-        public string Name { get; }
+        public abstract string Name { get; }
 
-        public IEnumerable<Parameters> Dependencies { get; }
+        public abstract IEnumerable<Parameters> Dependencies { get; }
 
         public abstract bool HasCommonLocation { get; }
 
         public abstract Task<DependencyLocation> GetDependencyLocation(
             Context context, IGetParameters getParameters);
-
-        protected Parameters(string name, IEnumerable<Parameters> dependencies)
-        {
-            Name = name;
-            Dependencies = dependencies;
-        }
     }
 
     public abstract class Parameters<T> : Parameters
         where T : class
     {
-        protected Parameters(string name, IEnumerable<Parameters> parameters)
-            : base(name, parameters)
-        {
-        }
-
         public Task<T> GetOrNullAsync(
             Context context, IGetParameters getParameters)
             => getParameters.GetOrAdd(

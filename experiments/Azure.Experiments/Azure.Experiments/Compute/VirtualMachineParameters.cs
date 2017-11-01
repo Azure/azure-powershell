@@ -2,20 +2,28 @@
 using Microsoft.Azure.Experiments.Network;
 using System.Threading.Tasks;
 using Microsoft.Azure.Management.Compute;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Experiments.Compute
 {
     public sealed class VirtualMachineParameters
         : ResourceParameters<VirtualMachine>
     {
+        public override string Name { get; }
+
         public NetworkInterfaceParameters Ni { get; }
+
+        public override ResourceGroupParameters ResourceGroup { get; }
+
+        public override IEnumerable<Parameters> ResourceDependencies => new[] { Ni };
 
         public VirtualMachineParameters(
             string name,
             ResourceGroupParameters resourceGroup,
             NetworkInterfaceParameters ni)
-            : base(name, resourceGroup, new[] { ni })
         {
+            Name = name;
+            ResourceGroup = resourceGroup;
             Ni = ni;
         }
 
