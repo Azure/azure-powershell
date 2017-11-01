@@ -18,47 +18,23 @@ List subscription definitions
 #>
 function Test-ListSubscriptionDefinitions
 {
-    $definitions = Get-AzureRmSubscriptionDefinition -ManagementGroupId 'ac03d01c-232b-4d97-b869-c979f8669be2'
+    $definitions = Get-AzureRmSubscriptionDefinition
 
     Assert-AreEqual 3 $definitions.Count
 	Foreach($def in $definitions)
 	{
 		Assert-NotNull $def.Name
-		Assert-NotNull $def.GroupId
-		Assert-NotNull $def.SubscriptionId
 	}
 }
 
 <#
 .SYNOPSIS
-Get subscription definition in group scope
+Get subscription definition by name
 #>
-function Test-GetSubscriptionDefinitionInGroupScope
+function Test-GetSubscriptionDefinitionByName
 {
-    $definition = Get-AzureRmSubscriptionDefinition -ManagementGroupId 'ac03d01c-232b-4d97-b869-c979f8669be2' -Name 'mySubDef'
-
-    Assert-NotNull $definition.Name
-	Assert-NotNull $definition.GroupId
-	Assert-NotNull $definition.SubscriptionId
-}
-
-<#
-.SYNOPSIS
-Get subscription definition in subscription scope
-#>
-function Test-GetSubscriptionDefinitionInGroupScope
-{
-    $definition = Get-AzureRmSubscriptionDefinition
-
-    Assert-NotNull $definition.Name
-	Assert-NotNull $definition.GroupId
-	Assert-NotNull $definition.SubscriptionId
-
-    $definition2 = Get-AzureRmSubscription | Get-AzureRmSubscriptionDefinition
-
-    Assert-AreEqual $definition.Name, $definition2.Name
-	Assert-AreEqual $definition.GroupId, $definition2.GroupId
-	Assert-AreEqual $definition.SubscriptionId, $definition2.SubscriptionId
+    $definition = Get-AzureRmSubscriptionDefinition -Name "mySubDef"
+    Assert-AreEqual "mySubDef", $definition.Name
 }
 
 <#
@@ -67,15 +43,14 @@ Create subscription definition
 #>
 function Test-NewSubscriptionDefinition
 {
-    $definitions = Get-AzureRmSubscriptionDefinition -ManagementGroup 'ac03d01c-232b-4d97-b869-c979f8669be2'
+    $definitions = Get-AzureRmSubscriptionDefinition
     $previousDefinitionCount = $definitions.Count
 
-    $definition = New-AzureRmSubscriptionDefinition -ManagementGroupId 'ac03d01c-232b-4d97-b869-c979f8669be2' -Name 'myNewSubDef' -OfferType ''
+    $definition = New-AzureRmSubscriptionDefinition -Name "myNewSubDef" -OfferType "MS-AZR-0017P"
 
     Assert-NotNull $definition.Name
-	Assert-NotNull $definition.GroupId
 	Assert-NotNull $definition.SubscriptionId
 
-    $definitions = Get-AzureRmSubscriptionDefinition -ManagementGroup 'ac03d01c-232b-4d97-b869-c979f8669be2'
+    $definitions = Get-AzureRmSubscriptionDefinition
     Assert-AreEqual $definitions.Count, ($previousDefinitionCount + 1)
 }
