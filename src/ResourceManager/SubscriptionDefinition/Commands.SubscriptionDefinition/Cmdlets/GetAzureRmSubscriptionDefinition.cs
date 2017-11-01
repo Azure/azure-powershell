@@ -12,11 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.SubscriptionDefinition.Common;
 using Microsoft.Azure.Commands.SubscriptionDefinition.Models;
 using Microsoft.Azure.Management.ResourceManager;
-using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 

@@ -15,7 +15,6 @@
 using Microsoft.Azure.Commands.SubscriptionDefinition.Common;
 using Microsoft.Azure.Commands.SubscriptionDefinition.Models;
 using Microsoft.Azure.Management.ResourceManager;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
