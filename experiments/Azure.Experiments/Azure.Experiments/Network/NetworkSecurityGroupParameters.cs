@@ -5,14 +5,13 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Experiments.Network
 {
-    public sealed class NetworkSecurityGroupParameters
-        : NetworkParameters<NetworkSecurityGroup>
+    public sealed class NetworkSecurityGroupParameters: NetworkParameters<NetworkSecurityGroup>
     {
         public override string Name { get; }
 
         public override ResourceGroupParameters ResourceGroup { get; }
 
-        public override IEnumerable<Parameters> ResourceDependencies => NoDependencies;
+        public override IEnumerable<ResourceParameters> ResourceDependencies => NoDependencies;
 
         public NetworkSecurityGroupParameters(
             string name, ResourceGroupParameters resourceGroup)
@@ -21,11 +20,7 @@ namespace Microsoft.Azure.Experiments.Network
             ResourceGroup = resourceGroup;
         }
 
-        protected override Task<NetworkSecurityGroup> GetAsync(
-            Context context, IGetParameters _)
-            => context
-                .CreateNetwork()
-                .NetworkSecurityGroups
-                .GetAsync(ResourceGroup.Name, Name);
+        protected override Task<NetworkSecurityGroup> GetAsync(NetworkManagementClient client)
+            => client.NetworkSecurityGroups.GetAsync(ResourceGroup.Name, Name);
     }
 }

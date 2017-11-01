@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
             if (context.Account.Type == AzureAccount.AccountType.AccessToken)
             {
-                return new TokenCloudCredentials(context.Subscription.Id.ToString(), context.Account.GetProperty(AzureAccount.Property.AccessToken));
+                return new TokenCloudCredentials(context.Subscription.Id.ToString(), context.Account.GetAccessToken());
             }
 
             string tenant = null;
@@ -217,7 +217,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
             if (context.Account.Type == AzureAccount.AccountType.AccessToken)
             {
-                return new TokenCredentials(context.Account.GetProperty(AzureAccount.Property.AccessToken));
+                return new TokenCredentials(context.Account.GetAccessToken());
             }
 
             string tenant = null;

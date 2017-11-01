@@ -2,7 +2,7 @@
 {
     public interface ICreateParameters
     {
-        T Get<T>(Parameters<T> parameters)
+        T Get<T>(ResourceParameters<T> parameters)
             where T : class;
     }
 }

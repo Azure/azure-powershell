@@ -12,21 +12,15 @@ namespace Microsoft.Azure.Experiments.Network
 
         public override ResourceGroupParameters ResourceGroup { get; }
 
-        public override IEnumerable<Parameters> ResourceDependencies
-            => NoDependencies;
+        public override IEnumerable<ResourceParameters> ResourceDependencies => NoDependencies;
 
-        public VirtualNetworkParameters(
-            string name, ResourceGroupParameters resourceGroup)
+        public VirtualNetworkParameters(string name, ResourceGroupParameters resourceGroup)
         {
             Name = name;
             ResourceGroup = resourceGroup;
         }
 
-        protected override Task<VirtualNetwork> GetAsync(
-            Context context, IGetParameters _)
-            => context
-                .CreateNetwork()
-                .VirtualNetworks
-                .GetAsync(ResourceGroup.Name, Name);
+        protected override Task<VirtualNetwork> GetAsync(NetworkManagementClient client)
+            => client.VirtualNetworks.GetAsync(ResourceGroup.Name, Name);
     }
 }

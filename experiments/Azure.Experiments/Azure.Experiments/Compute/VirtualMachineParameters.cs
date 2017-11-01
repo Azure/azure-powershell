@@ -6,8 +6,7 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Experiments.Compute
 {
-    public sealed class VirtualMachineParameters
-        : ResourceParameters<VirtualMachine>
+    public sealed class VirtualMachineParameters : ManagedResourceParameters<VirtualMachine>
     {
         public override string Name { get; }
 
@@ -15,7 +14,7 @@ namespace Microsoft.Azure.Experiments.Compute
 
         public override ResourceGroupParameters ResourceGroup { get; }
 
-        public override IEnumerable<Parameters> ResourceDependencies => new[] { Ni };
+        public override IEnumerable<ResourceParameters> ResourceDependencies => new[] { Ni };
 
         public VirtualMachineParameters(
             string name,
@@ -27,14 +26,13 @@ namespace Microsoft.Azure.Experiments.Compute
             Ni = ni;
         }
 
-        protected override Task<VirtualMachine> GetAsync(
-            Context context, IGetParameters _)
-            => context
-                .CreateCompute()
+        protected override Task<VirtualMachine> GetAsync(IGetInfoContext getContext)
+            => getContext
+                .Context
+                .CreateComputeManagementClient()
                 .VirtualMachines
                 .GetAsync(ResourceGroup.Name, Name);
 
-        public override string GetLocation(VirtualMachine value)
-            => value.Location;
+        public override string GetLocation(VirtualMachine value) => value.Location;
     }
 }

@@ -4,7 +4,8 @@ namespace Microsoft.Azure.Experiments
 {
     public static class DependencyLocationExtensions
     {
-        public static DependencyLocation Best(this DependencyLocation a, DependencyLocation b)
+        public static DependencyLocation Merge(
+            this DependencyLocation a, DependencyLocation b)
         {
             if (a == null)
             {
@@ -30,7 +31,8 @@ namespace Microsoft.Azure.Experiments
             // b.IsCommon == true
             if (a.Location != b.Location)
             {
-                throw new Exception("dependent resources have different locations");
+                throw new Exception(
+                    "dependent resources have different locations");
             }
             return a;
         }

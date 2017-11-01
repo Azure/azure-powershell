@@ -5,33 +5,34 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Experiments.Network
 {
-    public sealed class SubnetParameters : Parameters<Subnet>
+    public sealed class SubnetParameters : ResourceParameters<Subnet>
     {
         public override string Name { get; }
 
         public VirtualNetworkParameters VirtualNetwork { get; }
 
-        public override IEnumerable<Parameters> Dependencies
-            => new[] { VirtualNetwork };
+        public override IEnumerable<ResourceParameters> Dependencies => new[] { VirtualNetwork };
 
         public override bool HasCommonLocation => true;
 
-        public SubnetParameters(
-            string name, VirtualNetworkParameters virtualNetwork)
+        public SubnetParameters(string name, VirtualNetworkParameters virtualNetwork)
         {
             Name = name;
             VirtualNetwork = virtualNetwork;
         }
 
-        protected override async Task<Subnet> GetAsync(
-            Context context, IGetParameters getParameters)
+        protected override async Task<Subnet> GetAsync(IGetInfoContext getContext)
         {
             var virtualNetwork =
-                await VirtualNetwork.GetOrNullAsync(context, getParameters);
+                await VirtualNetwork.GetOrNullAsync(getContext);
             return virtualNetwork?.Subnets.FirstOrDefault(s => s.Name == Name);
         }
 
-        public override string GetLocation(Subnet _)
-            => null;
+        /// <summary>
+        /// Subnet doesn't have a location.
+        /// </summary>
+        /// <param name="_"></param>
+        /// <returns></returns>
+        public override string GetLocation(Subnet _) => null;
     }
 }

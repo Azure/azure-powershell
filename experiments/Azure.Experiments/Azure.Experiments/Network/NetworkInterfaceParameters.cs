@@ -5,8 +5,7 @@ using Microsoft.Azure.Management.Network;
 
 namespace Microsoft.Azure.Experiments.Network
 {
-    public sealed class NetworkInterfaceParameters 
-        : NetworkParameters<NetworkInterface>
+    public sealed class NetworkInterfaceParameters : NetworkParameters<NetworkInterface>
     {
         public override string Name { get; }
 
@@ -14,32 +13,28 @@ namespace Microsoft.Azure.Experiments.Network
 
         public SubnetParameters Subnet { get; }
 
-        public NetworkSecurityGroupParameters Nsg { get; }
+        public NetworkSecurityGroupParameters SecurityGroup { get; }
 
-        public PublicIpAddressParameters Pia { get; }
+        public PublicIpAddressParameters PublicIpAddress { get; }
 
-        public override IEnumerable<Parameters> ResourceDependencies 
-            => new Parameters[] { Subnet, Nsg, Pia };
+        public override IEnumerable<ResourceParameters> ResourceDependencies
+            => new ResourceParameters[] { Subnet, SecurityGroup, PublicIpAddress };
 
         public NetworkInterfaceParameters(
             string name,
             ResourceGroupParameters resourceGroup,
             SubnetParameters subnet,
-            NetworkSecurityGroupParameters nsg,
-            PublicIpAddressParameters pia)
+            NetworkSecurityGroupParameters securityGroup,
+            PublicIpAddressParameters publicIpAddress)
         {
             Name = name;
             ResourceGroup = resourceGroup;
             Subnet = subnet;
-            Nsg = nsg;
-            Pia = pia;
+            SecurityGroup = securityGroup;
+            PublicIpAddress = publicIpAddress;
         }
 
-        protected override Task<NetworkInterface> GetAsync(
-            Context context, IGetParameters _)
-            => context
-                .CreateNetwork()
-                .NetworkInterfaces
-                .GetAsync(ResourceGroup.Name, Name);
+        protected override Task<NetworkInterface> GetAsync(NetworkManagementClient client)
+            => client.NetworkInterfaces.GetAsync(ResourceGroup.Name, Name);
     }
 }

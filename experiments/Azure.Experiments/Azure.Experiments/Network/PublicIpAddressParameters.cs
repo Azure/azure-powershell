@@ -5,14 +5,13 @@ using Microsoft.Azure.Management.Network;
 
 namespace Microsoft.Azure.Experiments.Network
 {
-    public sealed class PublicIpAddressParameters
-        : NetworkParameters<PublicIPAddress>
+    public sealed class PublicIpAddressParameters : NetworkParameters<PublicIPAddress>
     {
         public override string Name { get; }
 
         public override ResourceGroupParameters ResourceGroup { get; }
 
-        public override IEnumerable<Parameters> ResourceDependencies
+        public override IEnumerable<ResourceParameters> ResourceDependencies
             => NoDependencies;
 
         public PublicIpAddressParameters(
@@ -22,11 +21,7 @@ namespace Microsoft.Azure.Experiments.Network
             ResourceGroup = resourceGroup;
         }
 
-        protected override Task<PublicIPAddress> GetAsync(
-            Context context, IGetParameters _)
-            => context
-                .CreateNetwork()
-                .PublicIPAddresses
-                .GetAsync(ResourceGroup.Name, Name);
+        protected override Task<PublicIPAddress> GetAsync(NetworkManagementClient client)
+            => client.PublicIPAddresses.GetAsync(ResourceGroup.Name, Name);
     }
 }

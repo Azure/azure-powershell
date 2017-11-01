@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
             }
             this.UserId = account.Id;
             this._tokenType = tokenType;
-            this.AccessToken = account.GetProperty(AzureAccount.Property.AccessToken);
+            this.AccessToken = account.GetAccessToken();
             this.TenantId = tenantId;
         }
 
@@ -65,17 +65,13 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// </summary>
         /// <param name="authTokenSetter">The authorization token setter function.</param>
         public void AuthorizeRequest(System.Action<string, string> authTokenSetter)
-        {
-            authTokenSetter(_tokenType, AccessToken);
-        }
+            => authTokenSetter(_tokenType, AccessToken);
 
         /// <summary>
         /// The login type for this token
         /// </summary>
         public string LoginType
-        {
-            get { return Common.Authentication.LoginType.OrgId; }
-        }
+            => Common.Authentication.LoginType.OrgId;
 
         /// <summary>
         /// The tenant Id for this token.

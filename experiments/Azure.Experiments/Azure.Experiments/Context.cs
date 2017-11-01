@@ -7,8 +7,7 @@ namespace Microsoft.Azure.Experiments
 {
     public sealed class Context
     {
-        public Context(
-            ServiceClientCredentials credentials, string subscriptionId)
+        public Context(ServiceClientCredentials credentials, string subscriptionId)
         {
             Credentials = credentials;
             SubscriptionId = subscriptionId;
@@ -18,19 +17,19 @@ namespace Microsoft.Azure.Experiments
 
         public string SubscriptionId { get; }
 
-        public NetworkManagementClient CreateNetwork()
+        public NetworkManagementClient CreateNetworkManagementClient()
             => new NetworkManagementClient(Credentials)
             {
                 SubscriptionId = SubscriptionId
             };
 
-        public ComputeManagementClient CreateCompute()
+        public ComputeManagementClient CreateComputeManagementClient()
             => new ComputeManagementClient(Credentials)
             {
                 SubscriptionId = SubscriptionId
             };
 
-        public ResourceManagementClient CreateResource()
+        public ResourceManagementClient CreateResourceManagementClient()
             => new ResourceManagementClient(Credentials)
             {
                 SubscriptionId = SubscriptionId

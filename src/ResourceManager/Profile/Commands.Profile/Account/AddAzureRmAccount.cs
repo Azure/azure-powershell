@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Commands.Profile
 
                 azureAccount.Type = AzureAccount.AccountType.AccessToken;
                 azureAccount.Id = AccountId;
-                azureAccount.SetProperty(AzureAccount.Property.AccessToken, AccessToken);
+                azureAccount.SetAccessToken(AccessToken);
             }
             else if (ServicePrincipal.IsPresent)
             {
