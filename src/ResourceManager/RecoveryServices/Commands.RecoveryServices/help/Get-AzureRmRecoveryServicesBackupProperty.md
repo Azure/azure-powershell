@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.RecoveryServices.ARM.dll-Help.xml
+Module Name: AzureRM.RecoveryServices
 online version: 
 schema: 2.0.0
 ---
@@ -12,7 +13,7 @@ Gets Backup properties.
 ## SYNTAX
 
 ```
-Get-AzureRmRecoveryServicesBackupProperty -Vault <ARSVault>
+Get-AzureRmRecoveryServicesBackupProperty -Vault <ARSVault> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -20,9 +21,12 @@ The **Get-AzureRmRecoveryServicesBackupProperty** cmdlet gets backup properties 
 
 ## EXAMPLES
 
-### 1:
+### Example 1
 ```
+PS C:\> Get-AzureRmRecoveryServicesBackupProperty -Vault $vault
 ```
+
+Get the backup vault property for vault.
 
 ## PARAMETERS
 
@@ -42,15 +46,16 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### Microsoft.Azure.Commands.RecoveryServices.ARSVault
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.RecoveryServices.ASRVaultBackupProperties
-
 
 ## NOTES
 

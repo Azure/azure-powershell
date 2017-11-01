@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.RecoveryServices.ARM.dll-Help.xml
+Module Name: AzureRM.RecoveryServices
 ms.assetid: 818B5302-91EE-425F-B1CD-86B626F1B7A3
 online version: 
 schema: 2.0.0
@@ -21,10 +22,26 @@ The **Get-AzureRmRecoveryServicesVault** cmdlet gets a list of Recovery Services
 
 ## EXAMPLES
 
-### 1:
+### Example 1
+```
+PS C:\> Get-AzureRmRecoveryServicesVault
 ```
 
+Get the list of vault in selected subscription.
+
+### Example 2
 ```
+PS C:\> Get-AzureRmRecoveryServicesVault -ResourceGroupName "resourceGroup"
+```
+
+Get the list of vault in resource group in selected subscription.
+
+### Example 3
+```
+PS C:\> Get-AzureRmRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+```
+
+Get the vault in resource group with given name.
 
 ## PARAMETERS
 
