@@ -188,7 +188,9 @@ To create a **RecordSet** using only one line of pn_PowerShell_short, or to crea
 ## PARAMETERS
 
 ### -CaaFlags
-The flags for the CAA record to add. Must be a number between 0 and 255.```yaml
+The flags for the CAA record to add. Must be a number between 0 and 255.
+
+```yaml
 Type: Byte
 Parameter Sets: Caa
 Aliases: 
@@ -201,7 +203,9 @@ Accept wildcard characters: False
 ```
 
 ### -CaaTag
-The tag field of the CAA record to add.```yaml
+The tag field of the CAA record to add.
+
+```yaml
 Type: String
 Parameter Sets: Caa
 Aliases: 
@@ -214,7 +218,9 @@ Accept wildcard characters: False
 ```
 
 ### -CaaValue
-The value field for the CAA record to add.```yaml
+The value field for the CAA record to add.
+
+```yaml
 Type: String
 Parameter Sets: Caa
 Aliases: 
