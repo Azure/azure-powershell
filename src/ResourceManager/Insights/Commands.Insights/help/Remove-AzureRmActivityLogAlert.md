@@ -13,19 +13,19 @@ Removes an activity log alert.
 
 ## SYNTAX
 
-### Default parameters for remove an activity log alert
+### RemoveByNameAndResourceGroup
 ```
 Remove-AzureRmActivityLogAlert -ResourceGroupName <String> -Name <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Parameters to remove an activity log alerts taking value from the pipe
+### RemoveByInputObject
 ```
 Remove-AzureRmActivityLogAlert -InputObject <PSActivityLogAlertResource>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Parameters to remove an activity log alerts taking the value of ResourceId from the pipe
+### RemoveByResourceId
 ```
 Remove-AzureRmActivityLogAlert -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
@@ -86,7 +86,7 @@ Sets the InputObject tags property of the call to extract the required name, and
 
 ```yaml
 Type: PSActivityLogAlertResource
-Parameter Sets: Parameters to remove an activity log alerts taking value from the pipe
+Parameter Sets: RemoveByInputObject
 Aliases: 
 
 Required: True
@@ -101,7 +101,7 @@ The name of the activity log alert.
 
 ```yaml
 Type: String
-Parameter Sets: Default parameters for remove an activity log alert
+Parameter Sets: RemoveByNameAndResourceGroup
 Aliases: 
 
 Required: True
@@ -116,7 +116,7 @@ The name of the resource group where the alert resource exists.
 
 ```yaml
 Type: String
-Parameter Sets: Default parameters for remove an activity log alert
+Parameter Sets: RemoveByNameAndResourceGroup
 Aliases: 
 
 Required: True
@@ -131,7 +131,7 @@ Sets the ResourceId tags property of the call to extract the required name, reso
 
 ```yaml
 Type: String
-Parameter Sets: Parameters to remove an activity log alerts taking the value of ResourceId from the pipe
+Parameter Sets: RemoveByResourceId
 Aliases: 
 
 Required: True

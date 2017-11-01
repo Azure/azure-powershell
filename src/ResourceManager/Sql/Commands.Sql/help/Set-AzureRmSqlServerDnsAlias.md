@@ -50,7 +50,9 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The Azure Sql Server Dns Alias name.```yaml
+The Azure Sql Server Dns Alias name.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: DnsAliasName

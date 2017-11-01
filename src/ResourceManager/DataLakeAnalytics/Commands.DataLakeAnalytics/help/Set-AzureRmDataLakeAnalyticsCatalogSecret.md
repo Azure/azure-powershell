@@ -13,13 +13,13 @@ Modifies a Data Lake Analytics catalog secret.
 
 ## SYNTAX
 
-### Specify full URI
+### SetByFullUri
 ```
 Set-AzureRmDataLakeAnalyticsCatalogSecret [-Account] <String> [-DatabaseName] <String> [-Secret] <PSCredential>
  [-DatabaseHost] <String> [-Port] <Int32> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Specify host name and port
+### SetByHostNameAndPort
 ```
 Set-AzureRmDataLakeAnalyticsCatalogSecret [-Account] <String> [-DatabaseName] <String> [-Secret] <PSCredential>
  [-Uri] <Uri> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -59,7 +59,7 @@ Specifies the host name for the database the secret is associated with in the fo
 
 ```yaml
 Type: String
-Parameter Sets: Specify full URI
+Parameter Sets: SetByFullUri
 Aliases: Host
 
 Required: True
@@ -104,7 +104,7 @@ Specifies the port number of the secret.
 
 ```yaml
 Type: Int32
-Parameter Sets: Specify full URI
+Parameter Sets: SetByFullUri
 Aliases: 
 
 Required: True
@@ -134,7 +134,7 @@ Specifies the Uniform Resource Identifier (URI) for the secret.
 
 ```yaml
 Type: Uri
-Parameter Sets: Specify host name and port
+Parameter Sets: SetByHostNameAndPort
 Aliases: 
 
 Required: True

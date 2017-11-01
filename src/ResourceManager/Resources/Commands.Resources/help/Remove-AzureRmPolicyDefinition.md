@@ -13,14 +13,14 @@ Removes a policy definition.
 
 ## SYNTAX
 
-### The policy definition name parameter set. (Default)
+### RemoveByPolicyDefinitionName (Default)
 ```
 Remove-AzureRmPolicyDefinition -Name <String> [-Force] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
  [-InformationVariable <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### The policy definition Id parameter set.
+### RemoveByPolicyDefinitionId
 ```
 Remove-AzureRmPolicyDefinition -Id <String> [-Force] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
@@ -103,7 +103,7 @@ Specifies the fully qualified resource ID for the policy definition that this cm
 
 ```yaml
 Type: String
-Parameter Sets: The policy definition Id parameter set.
+Parameter Sets: RemoveByPolicyDefinitionId
 Aliases: ResourceId
 
 Required: True
@@ -157,7 +157,7 @@ Specifies the name of the policy definition that this cmdlet removes.
 
 ```yaml
 Type: String
-Parameter Sets: The policy definition name parameter set.
+Parameter Sets: RemoveByPolicyDefinitionName
 Aliases: 
 
 Required: True

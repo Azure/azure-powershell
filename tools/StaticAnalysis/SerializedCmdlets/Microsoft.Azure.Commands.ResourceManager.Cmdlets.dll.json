@@ -8,7 +8,7 @@
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "Lists the resource group based in the name.",
+      "DefaultParameterSetName": "RemoveByResourceGroupName",
       "OutputTypes": [
         {
           "Type": {
@@ -137,7 +137,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "Lists the resource group based in the name.",
+          "Name": "RemoveByResourceGroupName",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -262,7 +262,7 @@
           ]
         },
         {
-          "Name": "Lists the resource group based in the Id.",
+          "Name": "RemoveByResourceGroupId",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -1130,7 +1130,7 @@
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "The list all managed applications parameter set.",
+      "DefaultParameterSetName": "GetBySubscription",
       "OutputTypes": [
         {
           "Type": {
@@ -1257,7 +1257,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "The managed application name parameter set.",
+          "Name": "GetByNameAndResourceGroup",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -1380,7 +1380,7 @@
           ]
         },
         {
-          "Name": "The managed application Id parameter set.",
+          "Name": "GetById",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -1561,6 +1561,10 @@
               "ValueFromPipelineByPropertyName": false
             }
           ]
+        },
+        {
+          "Name": "GetBySubscription",
+          "Parameters": []
         }
       ],
       "AliasList": []
@@ -1573,7 +1577,7 @@
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "The managed application definition name parameter set.",
+      "DefaultParameterSetName": "GetByNameAndResourceGroup",
       "OutputTypes": [
         {
           "Type": {
@@ -1700,7 +1704,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "The managed application definition name parameter set.",
+          "Name": "GetByNameAndResourceGroup",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -1823,7 +1827,7 @@
           ]
         },
         {
-          "Name": "The managed application definition Id parameter set.",
+          "Name": "GetById",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -2016,7 +2020,7 @@
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "The managed application name parameter set.",
+      "DefaultParameterSetName": "RemoveByNameAndResourceGroup",
       "OutputTypes": [
         {
           "Type": {
@@ -2158,7 +2162,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "The managed application name parameter set.",
+          "Name": "RemoveByNameAndResourceGroup",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -2303,7 +2307,7 @@
           ]
         },
         {
-          "Name": "The managed application Id parameter set.",
+          "Name": "RemoveById",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -2539,7 +2543,7 @@
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "The managed application definition name parameter set.",
+      "DefaultParameterSetName": "RemoveByNameAndResourceGroup",
       "OutputTypes": [
         {
           "Type": {
@@ -2681,7 +2685,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "The managed application definition name parameter set.",
+          "Name": "RemoveByNameAndResourceGroup",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -2826,7 +2830,7 @@
           ]
         },
         {
-          "Name": "The managed application definition Id parameter set.",
+          "Name": "RemoveById",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -3062,7 +3066,7 @@
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "The managed application definition name parameter set.",
+      "DefaultParameterSetName": "SetByNameAndResourceGroup",
       "OutputTypes": [
         {
           "Type": {
@@ -3270,7 +3274,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "The managed application definition name parameter set.",
+          "Name": "SetByNameAndResourceGroup",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -3505,7 +3509,7 @@
           ]
         },
         {
-          "Name": "The managed application definition Id parameter set.",
+          "Name": "SetById",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -3921,7 +3925,7 @@
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "The managed application name parameter set.",
+      "DefaultParameterSetName": "SetByNameAndResourceGroup",
       "OutputTypes": [
         {
           "Type": {
@@ -4147,7 +4151,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "The managed application name parameter set.",
+          "Name": "SetByNameAndResourceGroup",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -4406,7 +4410,7 @@
           ]
         },
         {
-          "Name": "The managed application Id parameter set.",
+          "Name": "SetById",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -5976,7 +5980,7 @@
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "The list all policy set definitions parameter set.",
+      "DefaultParameterSetName": "GetBySubscription",
       "OutputTypes": [
         {
           "Type": {
@@ -6086,7 +6090,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "The policy set definition name parameter set.",
+          "Name": "GetByNameAndResourceGroup",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -6187,7 +6191,7 @@
           ]
         },
         {
-          "Name": "The policy set definition Id parameter set.",
+          "Name": "GetById",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -6367,6 +6371,10 @@
               "ValueFromPipelineByPropertyName": false
             }
           ]
+        },
+        {
+          "Name": "GetBySubscription",
+          "Parameters": []
         }
       ],
       "AliasList": []
@@ -6772,7 +6780,7 @@
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "The policy set definition name parameter set.",
+      "DefaultParameterSetName": "RemoveByNameAndResourceGroup",
       "OutputTypes": [
         {
           "Type": {
@@ -6898,7 +6906,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "The policy set definition name parameter set.",
+          "Name": "RemoveByNameAndResourceGroup",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -7021,7 +7029,7 @@
           ]
         },
         {
-          "Name": "The policy set definition Id parameter set.",
+          "Name": "RemoveById",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -7257,7 +7265,7 @@
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "The policy set definition name parameter set.",
+      "DefaultParameterSetName": "SetByNameAndResourceGroup",
       "OutputTypes": [
         {
           "Type": {
@@ -7415,7 +7423,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "The policy set definition name parameter set.",
+          "Name": "SetByNameAndResourceGroup",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -7582,7 +7590,7 @@
           ]
         },
         {
-          "Name": "The policy set definition Id parameter set.",
+          "Name": "SetById",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -9369,7 +9377,7 @@
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "The deployment name parameter set.",
+      "DefaultParameterSetName": "GetByResourceGroupDeploymentName",
       "OutputTypes": [
         {
           "Type": {
@@ -9500,7 +9508,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "The deployment name parameter set.",
+          "Name": "GetByResourceGroupDeploymentName",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -9625,7 +9633,7 @@
           ]
         },
         {
-          "Name": "The deployment Id parameter set.",
+          "Name": "GetByResourceGroupDeploymentId",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -9818,7 +9826,7 @@
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "Deployment via template file without parameters",
+      "DefaultParameterSetName": "ByTemplateFileWithNoParameters",
       "OutputTypes": [
         {
           "Type": {
@@ -10271,7 +10279,7 @@
           ]
         },
         {
-          "Name": "Deployment via template file and template parameters object",
+          "Name": "ByTemplateFileAndParameterObject",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -10511,7 +10519,7 @@
           ]
         },
         {
-          "Name": "Deployment via template uri and template parameters object",
+          "Name": "ByTemplateUriAndParameterObject",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -10751,7 +10759,7 @@
           ]
         },
         {
-          "Name": "Deployment via template file and template parameters file",
+          "Name": "ByTemplateFileAndParameterFile",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -10991,7 +10999,7 @@
           ]
         },
         {
-          "Name": "Deployment via template uri and template parameters file",
+          "Name": "ByTemplateUriAndParameterFile",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -11231,7 +11239,7 @@
           ]
         },
         {
-          "Name": "Deployment via template file template parameters uri",
+          "Name": "ByTemplateFileAndParameterUri",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -11471,7 +11479,7 @@
           ]
         },
         {
-          "Name": "Deployment via template uri and template parameters uri",
+          "Name": "ByTemplateUriAndParameterUri",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -11711,7 +11719,7 @@
           ]
         },
         {
-          "Name": "Deployment via template file without parameters",
+          "Name": "ByTemplateFileWithNoParameters",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -11929,7 +11937,7 @@
           ]
         },
         {
-          "Name": "Deployment via template uri without parameters",
+          "Name": "ByTemplateUriWithNoParameters",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -12157,7 +12165,7 @@
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "The deployment name parameter set.",
+      "DefaultParameterSetName": "RemoveByResourceGroupName",
       "OutputTypes": [
         {
           "Type": {
@@ -12286,7 +12294,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "The deployment name parameter set.",
+          "Name": "RemoveByResourceGroupName",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -12411,7 +12419,7 @@
           ]
         },
         {
-          "Name": "The deployment Id parameter set.",
+          "Name": "RemoveByResourceGroupDeploymentId",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -12604,7 +12612,7 @@
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "The deployment name parameter set.",
+      "DefaultParameterSetName": "StopByResourceGroupDeploymentName",
       "OutputTypes": [
         {
           "Type": {
@@ -12733,7 +12741,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "The deployment name parameter set.",
+          "Name": "StopByResourceGroupDeploymentName",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -12858,7 +12866,7 @@
           ]
         },
         {
-          "Name": "The deployment Id parameter set.",
+          "Name": "StopByResourceGroupDeploymentId",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -13051,7 +13059,7 @@
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "Deployment via template file without parameters",
+      "DefaultParameterSetName": "ByTemplateFileWithNoParameters",
       "OutputTypes": [
         {
           "Type": {
@@ -13364,7 +13372,7 @@
           ]
         },
         {
-          "Name": "Deployment via template file and template parameters object",
+          "Name": "ByTemplateFileAndParameterObject",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -13531,7 +13539,7 @@
           ]
         },
         {
-          "Name": "Deployment via template uri and template parameters object",
+          "Name": "ByTemplateUriAndParameterObject",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -13698,7 +13706,7 @@
           ]
         },
         {
-          "Name": "Deployment via template file and template parameters file",
+          "Name": "ByTemplateFileAndParameterFile",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -13865,7 +13873,7 @@
           ]
         },
         {
-          "Name": "Deployment via template uri and template parameters file",
+          "Name": "ByTemplateUriAndParameterFile",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -14032,7 +14040,7 @@
           ]
         },
         {
-          "Name": "Deployment via template file template parameters uri",
+          "Name": "ByTemplateFileAndParameterUri",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -14199,7 +14207,7 @@
           ]
         },
         {
-          "Name": "Deployment via template uri and template parameters uri",
+          "Name": "ByTemplateUriAndParameterUri",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -14366,7 +14374,7 @@
           ]
         },
         {
-          "Name": "Deployment via template file without parameters",
+          "Name": "ByTemplateFileWithNoParameters",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -14511,7 +14519,7 @@
           ]
         },
         {
-          "Name": "Deployment via template uri without parameters",
+          "Name": "ByTemplateUriWithNoParameters",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -14666,7 +14674,7 @@
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "Lists the resource group based in the name.",
+      "DefaultParameterSetName": "SetByResourceGroupName",
       "OutputTypes": [
         {
           "Type": {
@@ -14804,7 +14812,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "Lists the resource group based in the name.",
+          "Name": "SetByResourceGroupName",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -15034,7 +15042,7 @@
           ]
         },
         {
-          "Name": "Lists the resource group based in the Id.",
+          "Name": "SetByResourceGroupId",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -15499,7 +15507,7 @@
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "Lists the resource group based on the name.",
+      "DefaultParameterSetName": "GetByResourceGroupName",
       "OutputTypes": [
         {
           "Type": {
@@ -15630,7 +15638,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "Lists the resource group based on the name.",
+          "Name": "GetByResourceGroupName",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -15856,7 +15864,7 @@
           ]
         },
         {
-          "Name": "Lists the resource group based on the Id.",
+          "Name": "GetByResourceGroupId",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -16814,7 +16822,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "A lock at the resource group scope.",
+          "Name": "ByResourceGroup",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -16962,7 +16970,7 @@
           ]
         },
         {
-          "Name": "A lock at the resource group resource scope.",
+          "Name": "ByResourceGroupLevel",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -17154,7 +17162,7 @@
           ]
         },
         {
-          "Name": "A lock at the specified scope.",
+          "Name": "BySpecifiedScope",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -17302,7 +17310,7 @@
           ]
         },
         {
-          "Name": "A lock at the subscription scope.",
+          "Name": "BySubscription",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -17428,7 +17436,7 @@
           ]
         },
         {
-          "Name": "A lock at the subscription resource scope.",
+          "Name": "BySubscriptionLevel",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -17598,7 +17606,7 @@
           ]
         },
         {
-          "Name": "A lock at the tenant resource scope.",
+          "Name": "ByTenantLevel",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -17891,7 +17899,7 @@
           ]
         },
         {
-          "Name": "A lock, by Id.",
+          "Name": "ByLockId",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -18027,7 +18035,7 @@
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "The resource Id.",
+      "DefaultParameterSetName": "ByResourceId",
       "OutputTypes": [
         {
           "Type": {
@@ -18458,7 +18466,7 @@
           ]
         },
         {
-          "Name": "The resource Id.",
+          "Name": "ByResourceId",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -18653,7 +18661,7 @@
           ]
         },
         {
-          "Name": "Resource that resides at the subscription level.",
+          "Name": "BySubscriptionLevel",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -18936,7 +18944,7 @@
           ]
         },
         {
-          "Name": "Resource that resides at the tenant level.",
+          "Name": "ByTenantLevel",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -19229,7 +19237,7 @@
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "Lists the resources based on the specified scope.",
+      "DefaultParameterSetName": "GetBySpecifiedScope",
       "OutputTypes": [
         {
           "Type": {
@@ -19519,7 +19527,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "Lists the resources based on the specified scope.",
+          "Name": "GetBySpecifiedScope",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -19802,7 +19810,7 @@
           ]
         },
         {
-          "Name": "Lists the resources based on the specified scope at the tenant level.",
+          "Name": "GetBySpecifiedScopeAtTenantLevel",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -20061,7 +20069,7 @@
           ]
         },
         {
-          "Name": "Get a resources using a multi-subscription query.",
+          "Name": "GetByMultiSubscriptionQuery",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -20344,7 +20352,7 @@
           ]
         },
         {
-          "Name": "Lists resources by a tag object specified as a hashset.",
+          "Name": "GetByTagObject",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -20513,7 +20521,7 @@
           ]
         },
         {
-          "Name": "Lists resources by a tag specified as a individual name and value parameters.",
+          "Name": "GetByTagNameValue",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -21168,7 +21176,7 @@
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "A lock at the specified scope.",
+      "DefaultParameterSetName": "BySpecifiedScope",
       "OutputTypes": [
         {
           "Type": {
@@ -21414,7 +21422,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "A lock at the resource group scope.",
+          "Name": "ByResourceGroup",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -21610,7 +21618,7 @@
           ]
         },
         {
-          "Name": "A lock at the resource group resource scope.",
+          "Name": "ByResourceGroupLevel",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -21850,7 +21858,7 @@
           ]
         },
         {
-          "Name": "A lock at the specified scope.",
+          "Name": "BySpecifiedScope",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -22046,7 +22054,7 @@
           ]
         },
         {
-          "Name": "A lock at the subscription scope.",
+          "Name": "BySubscription",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -22220,7 +22228,7 @@
           ]
         },
         {
-          "Name": "A lock at the subscription resource scope.",
+          "Name": "BySubscriptionLevel",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -22438,7 +22446,7 @@
           ]
         },
         {
-          "Name": "A lock at the tenant resource scope.",
+          "Name": "ByTenantLevel",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -22827,7 +22835,7 @@
           ]
         },
         {
-          "Name": "A lock, by Id.",
+          "Name": "ByLockId",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -23011,7 +23019,7 @@
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "The list all policy assignments parameter set.",
+      "DefaultParameterSetName": "GetAllPolicyAssignments",
       "OutputTypes": [
         {
           "Type": {
@@ -23153,7 +23161,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "The policy assignment name parameter set.",
+          "Name": "GetPolicyAssignmentName",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -23298,7 +23306,7 @@
           ]
         },
         {
-          "Name": "The policy assignment Id parameter set.",
+          "Name": "GetPolicyAssignmentId",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -23500,6 +23508,10 @@
               "ValueFromPipelineByPropertyName": false
             }
           ]
+        },
+        {
+          "Name": "GetAllPolicyAssignments",
+          "Parameters": []
         }
       ],
       "AliasList": []
@@ -23512,7 +23524,7 @@
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "The list all policy definitions parameter set.",
+      "DefaultParameterSetName": "GetAllPolicyDefinitions",
       "OutputTypes": [
         {
           "Type": {
@@ -23622,7 +23634,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "The policy definition name parameter set.",
+          "Name": "GetByPolicyDefintionName",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -23723,7 +23735,7 @@
           ]
         },
         {
-          "Name": "The policy definition Id parameter set.",
+          "Name": "GetByPolicyDefinitionId",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -23903,6 +23915,10 @@
               "ValueFromPipelineByPropertyName": false
             }
           ]
+        },
+        {
+          "Name": "GetAllPolicyDefinitions",
+          "Parameters": []
         }
       ],
       "AliasList": []
@@ -23915,7 +23931,7 @@
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "Policy assignment without parameters",
+      "DefaultParameterSetName": "CreateWithoutParameters",
       "OutputTypes": [
         {
           "Type": {
@@ -24410,7 +24426,7 @@
           ]
         },
         {
-          "Name": "Policy assignment without parameters",
+          "Name": "CreateWithoutParameters",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -24667,7 +24683,7 @@
           ]
         },
         {
-          "Name": "Policy assignment with parameters via policy parameter object",
+          "Name": "CreateWithPolicyParameterObject",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -24946,7 +24962,7 @@
           ]
         },
         {
-          "Name": "Policy assignment with parameters via policy parameter string",
+          "Name": "CreateWithPolicyParameterString",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -25225,7 +25241,7 @@
           ]
         },
         {
-          "Name": "Policy assignment with parameters via policy set parameter object",
+          "Name": "CreateWithPolicySetParameterObject",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -25504,7 +25520,7 @@
           ]
         },
         {
-          "Name": "Policy assignment with parameters via policy set parameter string",
+          "Name": "CreateWithPolicySetParameterString",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -26228,7 +26244,7 @@
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "The policy assignment name parameter set.",
+      "DefaultParameterSetName": "RemoveByPolicyAssignmentName",
       "OutputTypes": [
         {
           "Type": {
@@ -26354,7 +26370,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "The policy assignment name parameter set.",
+          "Name": "RemoveByPolicyAssignmentName",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -26477,7 +26493,7 @@
           ]
         },
         {
-          "Name": "The policy assignment Id parameter set.",
+          "Name": "RemoveByPolicyAssignmentId",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -26669,7 +26685,7 @@
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "The policy definition name parameter set.",
+      "DefaultParameterSetName": "RemoveByPolicyDefinitionName",
       "OutputTypes": [
         {
           "Type": {
@@ -26795,7 +26811,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "The policy definition name parameter set.",
+          "Name": "RemoveByPolicyDefinitionName",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -26918,7 +26934,7 @@
           ]
         },
         {
-          "Name": "The policy definition Id parameter set.",
+          "Name": "RemoveByPolicyDefinitionId",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -27154,7 +27170,7 @@
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "The policy assignment name parameter set.",
+      "DefaultParameterSetName": "SetByPolicyAssignmentName",
       "OutputTypes": [
         {
           "Type": {
@@ -27346,7 +27362,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "The policy assignment name parameter set.",
+          "Name": "SetByPolicyAssignmentName",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -27559,7 +27575,7 @@
           ]
         },
         {
-          "Name": "The policy assignment Id parameter set.",
+          "Name": "SetByPolicyAssignmentId",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -27887,7 +27903,7 @@
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "The policy definition name parameter set.",
+      "DefaultParameterSetName": "SetByPolicyDefinitionName",
       "OutputTypes": [
         {
           "Type": {
@@ -28077,7 +28093,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "The policy definition name parameter set.",
+          "Name": "GetByPolicyDefintionName",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -28288,7 +28304,7 @@
           ]
         },
         {
-          "Name": "The policy definition Id parameter set.",
+          "Name": "GetByPolicyDefinitionId",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -28688,6 +28704,10 @@
               "ValueFromPipelineByPropertyName": false
             }
           ]
+        },
+        {
+          "Name": "SetByPolicyDefinitionName",
+          "Parameters": []
         }
       ],
       "AliasList": []
@@ -28700,7 +28720,7 @@
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "The resource Id.",
+      "DefaultParameterSetName": "ByResourceId",
       "OutputTypes": [
         {
           "Type": {
@@ -28924,7 +28944,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "The resource Id.",
+          "Name": "ByResourceId",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -29071,7 +29091,7 @@
           ]
         },
         {
-          "Name": "Resource that resides at the subscription level.",
+          "Name": "BySubscriptionLevel",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -29306,7 +29326,7 @@
           ]
         },
         {
-          "Name": "Resource that resides at the tenant level.",
+          "Name": "ByTenantLevel",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -29674,7 +29694,7 @@
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "A lock, by Id.",
+      "DefaultParameterSetName": "ByLockId",
       "OutputTypes": [
         {
           "Type": {
@@ -29884,7 +29904,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "A lock at the resource group scope.",
+          "Name": "ByResourceGroup",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -30032,7 +30052,7 @@
           ]
         },
         {
-          "Name": "A lock at the resource group resource scope.",
+          "Name": "ByResourceGroupLevel",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -30224,7 +30244,7 @@
           ]
         },
         {
-          "Name": "A lock at the specified scope.",
+          "Name": "BySpecifiedScope",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -30372,7 +30392,7 @@
           ]
         },
         {
-          "Name": "A lock at the subscription scope.",
+          "Name": "BySubscription",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -30498,7 +30518,7 @@
           ]
         },
         {
-          "Name": "A lock at the subscription resource scope.",
+          "Name": "BySubscriptionLevel",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -30668,7 +30688,7 @@
           ]
         },
         {
-          "Name": "A lock at the tenant resource scope.",
+          "Name": "ByTenantLevel",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -30961,7 +30981,7 @@
           ]
         },
         {
-          "Name": "A lock, by Id.",
+          "Name": "ByLockId",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -31097,7 +31117,7 @@
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "The resource Id.",
+      "DefaultParameterSetName": "ByResourceId",
       "OutputTypes": [
         {
           "Type": {
@@ -31688,7 +31708,7 @@
           ]
         },
         {
-          "Name": "The resource Id.",
+          "Name": "ByResourceId",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -31975,7 +31995,7 @@
           ]
         },
         {
-          "Name": "Resource that resides at the subscription level.",
+          "Name": "BySubscriptionLevel",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -32350,7 +32370,7 @@
           ]
         },
         {
-          "Name": "Resource that resides at the tenant level.",
+          "Name": "ByTenantLevel",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -32735,7 +32755,7 @@
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "The resource Id.",
+      "DefaultParameterSetName": "ByResourceId",
       "OutputTypes": [
         {
           "Type": {
@@ -33364,7 +33384,7 @@
           ]
         },
         {
-          "Name": "The resource Id.",
+          "Name": "ByResourceId",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -33673,7 +33693,7 @@
           ]
         },
         {
-          "Name": "Resource that resides at the subscription level.",
+          "Name": "BySubscriptionLevel",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -34070,7 +34090,7 @@
           ]
         },
         {
-          "Name": "Resource that resides at the tenant level.",
+          "Name": "ByTenantLevel",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -34477,7 +34497,7 @@
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "A lock at the specified scope.",
+      "DefaultParameterSetName": "BySpecifiedScope",
       "OutputTypes": [
         {
           "Type": {
@@ -34723,7 +34743,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "A lock at the resource group scope.",
+          "Name": "ByResourceGroup",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -34919,7 +34939,7 @@
           ]
         },
         {
-          "Name": "A lock at the resource group resource scope.",
+          "Name": "ByResourceGroupLevel",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -35159,7 +35179,7 @@
           ]
         },
         {
-          "Name": "A lock at the specified scope.",
+          "Name": "BySpecifiedScope",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -35355,7 +35375,7 @@
           ]
         },
         {
-          "Name": "A lock at the subscription scope.",
+          "Name": "BySubscription",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -35529,7 +35549,7 @@
           ]
         },
         {
-          "Name": "A lock at the subscription resource scope.",
+          "Name": "BySubscriptionLevel",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -35747,7 +35767,7 @@
           ]
         },
         {
-          "Name": "A lock at the tenant resource scope.",
+          "Name": "ByTenantLevel",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -36136,7 +36156,7 @@
           ]
         },
         {
-          "Name": "A lock, by Id.",
+          "Name": "ByLockId",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -36320,7 +36340,7 @@
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "The list all resources parameter set.",
+      "DefaultParameterSetName": "GetAllResources",
       "OutputTypes": [
         {
           "Type": {
@@ -36578,7 +36598,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "Get a single resource by its Id.",
+          "Name": "GetByResourceId",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -36725,7 +36745,7 @@
           ]
         },
         {
-          "Name": "Get a single resource at the tenant level.",
+          "Name": "GetByTenantLevel",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -36982,7 +37002,7 @@
           ]
         },
         {
-          "Name": "Lists the resources based on the specified scope at the tenant level.",
+          "Name": "GetBySpecifiedScopeAtTenantLevel",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -37263,7 +37283,7 @@
           ]
         },
         {
-          "Name": "Get resource by name and group",
+          "Name": "GetByNameAndGroup",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -37498,7 +37518,7 @@
           ]
         },
         {
-          "Name": "Get a resource by name and type.",
+          "Name": "GetByResourceNameAndType",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -37733,7 +37753,7 @@
           ]
         },
         {
-          "Name": "Get resource by name, group and type",
+          "Name": "GetByNameGroupAndType",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -37968,7 +37988,7 @@
           ]
         },
         {
-          "Name": "Get resource collection",
+          "Name": "GetResourceCollection",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -38300,6 +38320,10 @@
               "ValueFromPipelineByPropertyName": false
             }
           ]
+        },
+        {
+          "Name": "GetAllResources",
+          "Parameters": []
         }
       ],
       "AliasList": []

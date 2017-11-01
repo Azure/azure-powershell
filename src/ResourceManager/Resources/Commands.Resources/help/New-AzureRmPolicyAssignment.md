@@ -13,7 +13,7 @@ Creates a policy assignment.
 
 ## SYNTAX
 
-### Policy assignment without parameters (Default)
+### CreateWithoutParameters (Default)
 ```
 New-AzureRmPolicyAssignment -Name <String> -Scope <String> [-NotScope <String[]>] [-DisplayName <String>]
  [-Description <String>] [-PolicyDefinition <PSObject>] [-PolicySetDefinition <PSObject>] [-Sku <Hashtable>]
@@ -21,7 +21,7 @@ New-AzureRmPolicyAssignment -Name <String> -Scope <String> [-NotScope <String[]>
  [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
 ```
 
-### Policy assignment with parameters via policy parameter object
+### CreateWithPolicyParameterObject
 ```
 New-AzureRmPolicyAssignment -Name <String> -Scope <String> [-NotScope <String[]>] [-DisplayName <String>]
  [-Description <String>] -PolicyDefinition <PSObject> [-PolicySetDefinition <PSObject>]
@@ -30,7 +30,7 @@ New-AzureRmPolicyAssignment -Name <String> -Scope <String> [-NotScope <String[]>
  [-InformationVariable <String>] [<CommonParameters>]
 ```
 
-### Policy assignment with parameters via policy parameter string
+### CreateWithPolicyParameterString
 ```
 New-AzureRmPolicyAssignment -Name <String> -Scope <String> [-NotScope <String[]>] [-DisplayName <String>]
  [-Description <String>] -PolicyDefinition <PSObject> [-PolicySetDefinition <PSObject>]
@@ -39,7 +39,7 @@ New-AzureRmPolicyAssignment -Name <String> -Scope <String> [-NotScope <String[]>
  [-InformationVariable <String>] [<CommonParameters>]
 ```
 
-### Policy assignment with parameters via policy set parameter object
+### CreateWithPolicySetParameterObject
 ```
 New-AzureRmPolicyAssignment -Name <String> -Scope <String> [-NotScope <String[]>] [-DisplayName <String>]
  [-Description <String>] [-PolicyDefinition <PSObject>] -PolicySetDefinition <PSObject>
@@ -48,7 +48,7 @@ New-AzureRmPolicyAssignment -Name <String> -Scope <String> [-NotScope <String[]>
  [-InformationVariable <String>] [<CommonParameters>]
 ```
 
-### Policy assignment with parameters via policy set parameter string
+### CreateWithPolicySetParameterString
 ```
 New-AzureRmPolicyAssignment -Name <String> -Scope <String> [-NotScope <String[]>] [-DisplayName <String>]
  [-Description <String>] [-PolicyDefinition <PSObject>] -PolicySetDefinition <PSObject>
@@ -216,7 +216,7 @@ Specifies a policy, as a **PSObject** object that contains the policy rule.
 
 ```yaml
 Type: PSObject
-Parameter Sets: Policy assignment without parameters, Policy assignment with parameters via policy set parameter object, Policy assignment with parameters via policy set parameter string
+Parameter Sets: CreateWithoutParameters, CreateWithPolicySetParameterObject, CreateWithPolicySetParameterString
 Aliases: 
 
 Required: False
@@ -228,7 +228,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: PSObject
-Parameter Sets: Policy assignment with parameters via policy parameter object, Policy assignment with parameters via policy parameter string
+Parameter Sets: CreateWithPolicyParameterObject, CreateWithPolicyParameterString
 Aliases: 
 
 Required: True
@@ -243,7 +243,7 @@ The policy parameter file path or policy parameter string.
 
 ```yaml
 Type: String
-Parameter Sets: Policy assignment with parameters via policy parameter string, Policy assignment with parameters via policy set parameter string
+Parameter Sets: CreateWithPolicyParameterString, CreateWithPolicySetParameterString
 Aliases: 
 
 Required: True
@@ -258,7 +258,7 @@ The policy parameter object.
 
 ```yaml
 Type: Hashtable
-Parameter Sets: Policy assignment with parameters via policy parameter object, Policy assignment with parameters via policy set parameter object
+Parameter Sets: CreateWithPolicyParameterObject, CreateWithPolicySetParameterObject
 Aliases: 
 
 Required: True
@@ -273,7 +273,7 @@ The policy set definition object.
 
 ```yaml
 Type: PSObject
-Parameter Sets: Policy assignment without parameters, Policy assignment with parameters via policy parameter object, Policy assignment with parameters via policy parameter string
+Parameter Sets: CreateWithoutParameters, CreateWithPolicyParameterObject, CreateWithPolicyParameterString
 Aliases: 
 
 Required: False
@@ -285,7 +285,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: PSObject
-Parameter Sets: Policy assignment with parameters via policy set parameter object, Policy assignment with parameters via policy set parameter string
+Parameter Sets: CreateWithPolicySetParameterObject, CreateWithPolicySetParameterString
 Aliases: 
 
 Required: True

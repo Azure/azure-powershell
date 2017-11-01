@@ -13,13 +13,13 @@ Gets the deployments in a resource group.
 
 ## SYNTAX
 
-### The deployment name parameter set. (Default)
+### GetByResourceGroupDeploymentName (Default)
 ```
 Get-AzureRmResourceGroupDeployment [-ResourceGroupName] <String> [[-Name] <String>] [-ApiVersion <String>]
  [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### The deployment Id parameter set.
+### GetByResourceGroupDeploymentId
 ```
 Get-AzureRmResourceGroupDeployment -Id <String> [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -105,7 +105,7 @@ Specifies the ID of the resource group deployment to get.
 
 ```yaml
 Type: String
-Parameter Sets: The deployment Id parameter set.
+Parameter Sets: GetByResourceGroupDeploymentId
 Aliases: DeploymentId, ResourceId
 
 Required: True
@@ -121,7 +121,7 @@ Wildcard characters are not permitted.
 
 ```yaml
 Type: String
-Parameter Sets: The deployment name parameter set.
+Parameter Sets: GetByResourceGroupDeploymentName
 Aliases: DeploymentName
 
 Required: False
@@ -154,7 +154,7 @@ This parameter is required and you can specify only one resource group in each c
 
 ```yaml
 Type: String
-Parameter Sets: The deployment name parameter set.
+Parameter Sets: GetByResourceGroupDeploymentName
 Aliases: 
 
 Required: True

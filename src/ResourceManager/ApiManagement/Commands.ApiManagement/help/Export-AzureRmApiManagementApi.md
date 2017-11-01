@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
+Module Name: AzureRM.ApiManagement
 ms.assetid: 2BA76B02-B786-4A77-86E0-E7D4191120B5
 online version: 
 schema: 2.0.0
@@ -12,14 +13,14 @@ Exports an API to a file.
 
 ## SYNTAX
 
-### Export to pipeline (Default)
+### ExportToPipeline (Default)
 ```
 Export-AzureRmApiManagementApi -Context <PsApiManagementContext> -ApiId <String>
  -SpecificationFormat <PsApiManagementApiFormat> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
-### Export to File
+### ExportToFile
 ```
 Export-AzureRmApiManagementApi -Context <PsApiManagementContext> -ApiId <String>
  -SpecificationFormat <PsApiManagementApiFormat> -SaveAs <String> [-Force] [-PassThru]
@@ -91,7 +92,7 @@ Indicates that this operation overwrites the file of the same name if it already
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: Export to File
+Parameter Sets: ExportToFile
 Aliases: 
 
 Required: False
@@ -106,7 +107,7 @@ Indicates that this operation returns $True if the API is exported successfully,
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: Export to File
+Parameter Sets: ExportToFile
 Aliases: 
 
 Required: False
@@ -121,7 +122,7 @@ Specifies the file path to which to save the exported API.
 
 ```yaml
 Type: String
-Parameter Sets: Export to File
+Parameter Sets: ExportToFile
 Aliases: 
 
 Required: True
