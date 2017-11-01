@@ -13,13 +13,13 @@ Cancels a resource group deployment.
 
 ## SYNTAX
 
-### The deployment name parameter set. (Default)
+### StopByResourceGroupDeploymentName (Default)
 ```
 Stop-AzureRmResourceGroupDeployment [-ResourceGroupName] <String> [-Name] <String> [-ApiVersion <String>]
  [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### The deployment Id parameter set.
+### StopByResourceGroupDeploymentId
 ```
 Stop-AzureRmResourceGroupDeployment -Id <String> [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -85,7 +85,7 @@ Specifies the ID of the resource group deployment to stop.
 
 ```yaml
 Type: String
-Parameter Sets: The deployment Id parameter set.
+Parameter Sets: StopByResourceGroupDeploymentId
 Aliases: DeploymentId, ResourceId
 
 Required: True
@@ -104,7 +104,7 @@ To get the deployment name, use the Get-AzureRmResourceGroupDeployment cmdlet.
 
 ```yaml
 Type: String
-Parameter Sets: The deployment name parameter set.
+Parameter Sets: StopByResourceGroupDeploymentName
 Aliases: DeploymentName
 
 Required: True
@@ -135,7 +135,7 @@ This cmdlet stops the deployment of the resource group that this parameter speci
 
 ```yaml
 Type: String
-Parameter Sets: The deployment name parameter set.
+Parameter Sets: StopByResourceGroupDeploymentName
 Aliases: 
 
 Required: True

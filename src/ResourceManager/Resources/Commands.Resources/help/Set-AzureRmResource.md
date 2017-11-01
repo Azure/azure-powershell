@@ -13,7 +13,7 @@ Modifies a resource.
 
 ## SYNTAX
 
-### The resource Id. (Default)
+### ByResourceId (Default)
 ```
 Set-AzureRmResource [-Kind <String>] [-Properties <PSObject>] [-Plan <Hashtable>] [-Sku <Hashtable>]
  [-Tag <Hashtable>] [-UsePatchSemantics] -ResourceId <String> [-ODataQuery <String>] [-Force]
@@ -21,7 +21,7 @@ Set-AzureRmResource [-Kind <String>] [-Properties <PSObject>] [-Plan <Hashtable>
  [<CommonParameters>]
 ```
 
-### Resource that resides at the subscription level.
+### BySubscriptionLevel
 ```
 Set-AzureRmResource [-Kind <String>] [-Properties <PSObject>] [-Plan <Hashtable>] [-Sku <Hashtable>]
  [-Tag <Hashtable>] [-UsePatchSemantics] -ResourceName <String> -ResourceType <String>
@@ -30,7 +30,7 @@ Set-AzureRmResource [-Kind <String>] [-Properties <PSObject>] [-Plan <Hashtable>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Resource that resides at the tenant level.
+### ByTenantLevel
 ```
 Set-AzureRmResource [-Kind <String>] [-Properties <PSObject>] [-Plan <Hashtable>] [-Sku <Hashtable>]
  [-Tag <Hashtable>] [-UsePatchSemantics] -ResourceName <String> -ResourceType <String>
@@ -99,7 +99,7 @@ server name`/`database name
 
 ```yaml
 Type: String
-Parameter Sets: Resource that resides at the subscription level., Resource that resides at the tenant level.
+Parameter Sets: BySubscriptionLevel, ByTenantLevel
 Aliases: 
 
 Required: False
@@ -117,7 +117,7 @@ For instance, if the extension resource is a database specify the following:
 
 ```yaml
 Type: String
-Parameter Sets: Resource that resides at the subscription level., Resource that resides at the tenant level.
+Parameter Sets: BySubscriptionLevel, ByTenantLevel
 Aliases: 
 
 Required: False
@@ -223,7 +223,7 @@ Specifies the name of the resource group where this cmdlet modifies the resource
 
 ```yaml
 Type: String
-Parameter Sets: Resource that resides at the subscription level.
+Parameter Sets: BySubscriptionLevel
 Aliases: 
 
 Required: False
@@ -240,7 +240,7 @@ Specifies the fully qualified resource ID, including the subscription, as in the
 
 ```yaml
 Type: String
-Parameter Sets: The resource Id.
+Parameter Sets: ByResourceId
 Aliases: Id
 
 Required: True
@@ -258,7 +258,7 @@ For instance, to specify a database, use the following format:
 
 ```yaml
 Type: String
-Parameter Sets: Resource that resides at the subscription level., Resource that resides at the tenant level.
+Parameter Sets: BySubscriptionLevel, ByTenantLevel
 Aliases: Name
 
 Required: True
@@ -276,7 +276,7 @@ For instance, for a database, the resource type is as follows:
 
 ```yaml
 Type: String
-Parameter Sets: Resource that resides at the subscription level., Resource that resides at the tenant level.
+Parameter Sets: BySubscriptionLevel, ByTenantLevel
 Aliases: 
 
 Required: True
@@ -323,7 +323,7 @@ Indicates that this cmdlet operates at the tenant level.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: Resource that resides at the tenant level.
+Parameter Sets: ByTenantLevel
 Aliases: 
 
 Required: True

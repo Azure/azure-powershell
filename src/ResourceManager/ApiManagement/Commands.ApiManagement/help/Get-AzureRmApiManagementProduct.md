@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
+Module Name: AzureRM.ApiManagement
 ms.assetid: B64E9C13-97A6-4E8B-92DB-EFAF8A48C5B8
 online version: 
 schema: 2.0.0
@@ -12,19 +13,19 @@ Gets a list or a particular product.
 
 ## SYNTAX
 
-### Get all producst (Default)
+### GetAllProducts (Default)
 ```
 Get-AzureRmApiManagementProduct -Context <PsApiManagementContext> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
-### Get by Id
+### GetByProductId
 ```
 Get-AzureRmApiManagementProduct -Context <PsApiManagementContext> -ProductId <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Get by Title
+### GetByTitle
 ```
 Get-AzureRmApiManagementProduct -Context <PsApiManagementContext> [-Title <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -38,7 +39,7 @@ The **Get-AzureRmApiManagementProduct** cmdlet gets a list or a particular produ
 ### Example 1: Get all products
 ```
 PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzureRmApiManagementProduct -Context $apimContext 
+PS C:\>Get-AzureRmApiManagementProduct -Context $apimContext
 ```
 
 This command get all API Management products.
@@ -88,7 +89,7 @@ Specifies the identifier of the product to search for.
 
 ```yaml
 Type: String
-Parameter Sets: Get by Id
+Parameter Sets: GetByProductId
 Aliases: 
 
 Required: True
@@ -104,7 +105,7 @@ If specified, the cmdlet attempts to get the product by title.
 
 ```yaml
 Type: String
-Parameter Sets: Get by Title
+Parameter Sets: GetByTitle
 Aliases: 
 
 Required: False

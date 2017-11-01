@@ -24,8 +24,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     [OutputType(typeof(PsApiManagementBackend), ParameterSetName = new[] { GetById })]
     public class GetAzureApiManagementBackend : AzureApiManagementCmdletBase
     {
-        private const string GetAll = "Get all backends";
-        private const string GetById = "Get by backend ID";
+        private const string GetAll = "GetAllBackends";
+        private const string GetById = "GetByBackendId";
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,

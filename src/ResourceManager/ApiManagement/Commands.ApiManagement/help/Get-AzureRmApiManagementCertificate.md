@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
+Module Name: AzureRM.ApiManagement
 ms.assetid: 6F7C6611-5C56-4F1D-AB98-CDD92D88821C
 online version: 
 schema: 2.0.0
@@ -12,13 +13,13 @@ Gets API Management certificates configured for Mutual Authentication with Backe
 
 ## SYNTAX
 
-### Get all certificates (Default)
+### GetAllCertificates (Default)
 ```
 Get-AzureRmApiManagementCertificate -Context <PsApiManagementContext>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Get certificate by ID
+### GetByCertificateId
 ```
 Get-AzureRmApiManagementCertificate -Context <PsApiManagementContext> -CertificateId <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -52,7 +53,7 @@ Specifies the ID of the certificate to get.
 
 ```yaml
 Type: String
-Parameter Sets: Get certificate by ID
+Parameter Sets: GetByCertificateId
 Aliases: 
 
 Required: True

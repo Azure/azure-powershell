@@ -8304,6 +8304,10 @@
               "ValueFromPipelineByPropertyName": false
             }
           ]
+        },
+        {
+          "Name": "EmptyParameterSet",
+          "Parameters": []
         }
       ],
       "AliasList": []
@@ -8433,6 +8437,10 @@
               "ValueFromPipelineByPropertyName": false
             }
           ]
+        },
+        {
+          "Name": "EmptyParameterSet",
+          "Parameters": []
         }
       ],
       "AliasList": []
