@@ -11,7 +11,8 @@ namespace Microsoft.Azure.Experiments
     /// </summary>
     public abstract class ResourceParameters
     {
-        public static IEnumerable<ResourceParameters> NoDependencies => Enumerable.Empty<ResourceParameters>();
+        public static IEnumerable<ResourceParameters> NoDependencies
+            => Enumerable.Empty<ResourceParameters>();
 
         /// <summary>
         /// A resource name.
@@ -64,8 +65,5 @@ namespace Microsoft.Azure.Experiments
             }
             return new DependencyLocation(location, HasCommonLocation);
         }
-
-        //protected abstract Task<T> CreateAsync(
-        //    Context context, ICreateParameters createParameters);
     }
 }
