@@ -12,13 +12,13 @@ Deletes a web service.
 
 ## SYNTAX
 
-### Remove an Azure ML web service resouce by name and resource group.
+### RemoveByNameAndResourceGroup
 ```
 Remove-AzureRmMlWebService -ResourceGroupName <String> -Name <String> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Remove an Azure ML web service specified as an object.
+### RemoveByObject
 ```
 Remove-AzureRmMlWebService -MlWebService <WebService> [-Force] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -75,7 +75,7 @@ The web service to be removed.
 
 ```yaml
 Type: WebService
-Parameter Sets: Remove an Azure ML web service specified as an object.
+Parameter Sets: RemoveByObject
 Aliases: 
 
 Required: True
@@ -90,7 +90,7 @@ The name of the web service to be removed.
 
 ```yaml
 Type: String
-Parameter Sets: Remove an Azure ML web service resouce by name and resource group.
+Parameter Sets: RemoveByNameAndResourceGroup
 Aliases: 
 
 Required: True
@@ -105,7 +105,7 @@ The resource group of the web service.
 
 ```yaml
 Type: String
-Parameter Sets: Remove an Azure ML web service resouce by name and resource group.
+Parameter Sets: RemoveByNameAndResourceGroup
 Aliases: 
 
 Required: True

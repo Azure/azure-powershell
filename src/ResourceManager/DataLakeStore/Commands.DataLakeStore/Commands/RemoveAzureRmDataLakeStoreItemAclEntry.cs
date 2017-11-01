@@ -25,8 +25,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore
     [Alias("Remove-AdlStoreItemAclEntry")]
     public class RemoveAzureDataLakeStoreItemAclEntry : DataLakeStoreFileSystemCmdletBase
     {
-        internal const string BaseParameterSetName = "Remove ACL Entries using ACL object";
-        internal const string SpecificAceParameterSetName = "Remove specific ACE";
+        internal const string BaseParameterSetName = "RemoveByACLObject";
+        internal const string SpecificAceParameterSetName = "RemoveSpecificACE";
 
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = BaseParameterSetName, Position = 0,
             Mandatory = true, HelpMessage = "The DataLakeStore account to execute the filesystem operation in")]

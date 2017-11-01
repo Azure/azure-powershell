@@ -23,8 +23,8 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
     [Alias("Add-AdlAnalyticsDataSource")]
     public class AddAzureDataLakeAnalyticsDataSource : DataLakeAnalyticsCmdletBase
     {
-        internal const string DataLakeParameterSetName = "Add a Data Lake storage account";
-        internal const string BlobParameterSetName = "Add a Blob storage account";
+        internal const string DataLakeParameterSetName = "AddDataLakeStorageAccount";
+        internal const string BlobParameterSetName = "AddBlobStorageAccount";
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             ParameterSetName = DataLakeParameterSetName, HelpMessage = "Name of the account to add the data source to.")
