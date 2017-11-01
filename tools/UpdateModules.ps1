@@ -32,31 +32,47 @@ function Create-ModulePsm1
 
   PROCESS
   {
-	 $manifestDir = Get-Item -Path $ModulePath
-	 $moduleName = $manifestDir.Name + ".psd1"
-	 $manifestPath = Join-Path -Path $ModulePath -ChildPath $moduleName
-     $module = Test-ModuleManifest -Path $manifestPath
+     $manifestDir = Get-Item -Path $ModulePath
+     $moduleName = $manifestDir.Name + ".psd1"
+     $manifestPath = Join-Path -Path $ModulePath -ChildPath $moduleName
+     $file = Get-Item $manifestPath
+     Import-LocalizedData -BindingVariable ModuleMetadata -BaseDirectory $file.DirectoryName -FileName $file.Name
      $templateOutputPath = $manifestPath -replace ".psd1", ".psm1"
-     [string]$strict
-     [string]$loose
-     foreach ($mod in $module.RequiredModules)
+     [string]$importedModules
+     if ($ModuleMetadata.RequiredModules -ne $null)
      {
-        $strict += "  Import-Module " + $mod.Name + " -RequiredVersion " + [string]$mod.Version + "`r`n"
-        $loose += "  Import-Module " + $mod.Name + "`r`n"
+        foreach ($mod in $ModuleMetadata.RequiredModules)
+        {
+           if ($mod["ModuleVersion"])
+           {
+               $importedModules += Create-MinimumVersionEntry -ModuleName $mod["ModuleName"] -MinimumVersion $mod["ModuleVersion"]
+           }
+           elseif ($mod["RequiredVersion"])
+           {
+               $importedModules += "Import-Module " + $mod["ModuleName"] + " -RequiredVersion " + $mod["RequiredVersion"] + "`r`n"
+           }        
+        }
      }
+
+     if ($ModuleMetadata.NestedModules -ne $null)
+     {
+         foreach ($dll in $ModuleMetadata.NestedModules)
+         {
+             $importedModules += "Import-Module (Join-Path -Path `$PSScriptRoot -ChildPath " + $dll.Substring(2) + ")`r`n"
+         }
+     }
+
      $template = Get-Content -Path $TemplatePath
-     $template = $template -replace "%MODULE-NAME%", $module.Name
+     $template = $template -replace "%MODULE-NAME%", $file.BaseName
      $template = $template -replace "%DATE%", [string](Get-Date)
-     $template = $template -replace "%STRICT-DEPENDENCIES%", $strict
-     $template = $template -replace "%DEPENDENCIES%", $loose
+     $template = $template -replace "%IMPORTED-DEPENDENCIES%", $importedModules
 
      if ($AddDefaultParameters) 
      {
-        $nestedModules = $module.NestedModules
+        $nestedModules = $ModuleMetadata.NestedModules
         $AllCmdlets = @()
         $nestedModules | ForEach-Object {
-            $dllName = $_.Name + ".dll"
-            $dllPath = Join-Path -Path $ModulePath -ChildPath $dllName
+            $dllPath = Join-Path -Path $ModulePath -ChildPath $_
             $Assembly = [Reflection.Assembly]::LoadFrom($dllPath)
             $dllCmdlets = $Assembly.GetTypes() | Where-Object {$_.CustomAttributes.AttributeType.Name -contains "CmdletAttribute"}
             $AllCmdlets += $dllCmdlets
@@ -105,10 +121,33 @@ function Create-ModulePsm1
   }
 }
 
+function Create-MinimumVersionEntry
+{
+    [CmdletBinding()]
+    param(
+        [string]$ModuleName,
+        [string]$MinimumVersion
+    )
+
+    PROCESS
+    {
+        return "`$module = Get-Module $ModuleName `
+if (`$module -ne `$null -and `$module.Version.ToString().CompareTo(`"$MinimumVersion`") -lt 0) `
+{ `
+    Write-Warning `"A later version of $ModuleName was found to be imported already. Please see <link> for more details.`" `
+    Write-Error `"A later version of $ModuleName was found to be imported already. Please see <linkn> for more details.`" `
+} `
+elseif (`$module -eq `$null) `
+{ `
+    Import-Module $ModuleName -MinimumVersion $MinimumVersion -Scope Global `
+}`r`n"
+    }
+}
+
 if ([string]::IsNullOrEmpty($buildConfig))
 {
     Write-Verbose "Setting build configuration to 'Release'"
-    $buildConfig = "Debug"
+    $buildConfig = "Release"
 }
 
 if ([string]::IsNullOrEmpty($scope))
@@ -195,5 +234,4 @@ if (($scope -eq 'All') -or ($scope -eq 'AzureRM')) {
         Write-Host "Updated Azure module"
     }
 } 
-
 
