@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Dns.dll-Help.xml
+Module Name: AzureRM.Dns
 ms.assetid: 45DF71E0-77E1-4D20-AD09-2C06680F659F
 online version: 
 schema: 2.0.0
@@ -16,14 +17,14 @@ Creates a DNS record set.
 ```
 New-AzureRmDnsRecordSet -Name <String> -ZoneName <String> -ResourceGroupName <String> -Ttl <UInt32>
  -RecordType <RecordType> [-Metadata <Hashtable>] [-DnsRecords <DnsRecordBase[]>] [-Overwrite] [-Force]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Object
 ```
 New-AzureRmDnsRecordSet -Name <String> -Zone <DnsZone> -Ttl <UInt32> -RecordType <RecordType>
- [-Metadata <Hashtable>] [-DnsRecords <DnsRecordBase[]>] [-Overwrite] [-Force] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Metadata <Hashtable>] [-DnsRecords <DnsRecordBase[]>] [-Overwrite] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -204,6 +205,19 @@ The *Overwrite* parameter ensures that this record set overwrites any pre-existi
 The *Confirm* parameter with a value of $False suppresses the confirmation prompt.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DnsRecords
 Specifies the array of DNS records to include in the record set.
