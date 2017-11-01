@@ -259,7 +259,9 @@ Accept wildcard characters: False
 ```
 
 ### -ZoneRedundant
-The zone redundancy to associate with the Azure Sql Elastic Pool```yaml
+The zone redundancy to associate with the Azure Sql Elastic Pool
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 

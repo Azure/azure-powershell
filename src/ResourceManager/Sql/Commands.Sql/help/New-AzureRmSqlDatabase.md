@@ -290,7 +290,9 @@ Accept wildcard characters: False
 ```
 
 ### -ZoneRedundant
-The zone redundancy to associate with the Azure Sql Database```yaml
+The zone redundancy to associate with the Azure Sql Database
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
