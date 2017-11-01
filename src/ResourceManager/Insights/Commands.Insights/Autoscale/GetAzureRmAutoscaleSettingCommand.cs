@@ -60,7 +60,10 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// </summary>
         protected override void ProcessRecordInternal()
         {
-            this.WriteIdentifiedWarning("Parameter deprecation", "The DetailedOutput parameter will be deprecated in May 2018.");
+            this.WriteIdentifiedWarning(
+                cmdletName: "Get-AzureRmAutoscaleSetting",
+                topic: "Parameter deprecation", 
+                message: "The DetailedOutput parameter will be deprecated in a future breaking change release.");
             if (string.IsNullOrWhiteSpace(this.Name))
             {
                 // Retrieve all the Autoscale settings for a resource group

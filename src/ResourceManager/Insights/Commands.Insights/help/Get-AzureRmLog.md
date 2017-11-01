@@ -20,14 +20,14 @@ Get-AzureRmLog [-StartTime <DateTime>] [-EndTime <DateTime>] [-Status <String>] 
  [<CommonParameters>]
 ```
 
-### Query on ResourceId
+### GetByResourceId
 ```
 Get-AzureRmLog [-StartTime <DateTime>] [-EndTime <DateTime>] [-Status <String>] [-Caller <String>]
  [-DetailedOutput] [-ResourceId] <String> [-MaxRecord <Int32>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
-### Query on ResourceGroupName
+### GetByResourceGroup
 ```
 Get-AzureRmLog [-StartTime <DateTime>] [-EndTime <DateTime>] [-Status <String>] [-Caller <String>]
  [-DetailedOutput] [-ResourceGroupName] <String> [-MaxRecord <Int32>] [-DefaultProfile <IAzureContextContainer>]
@@ -300,7 +300,7 @@ Specifies the name of the resource group.
 
 ```yaml
 Type: String
-Parameter Sets: Query on ResourceGroup
+Parameter Sets: GetByResourceGroup
 Aliases: ResourceGroup
 
 Required: True

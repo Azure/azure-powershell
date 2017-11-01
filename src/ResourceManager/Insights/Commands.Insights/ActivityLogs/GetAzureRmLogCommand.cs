@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Insights.Events
         /// </summary>
         [Parameter(ParameterSetName = CorrelationIdParameterSetName, ValueFromPipelineByPropertyName = true, HelpMessage = "The correlationId of the query")]
         [Parameter(ParameterSetName = ResourceIdParameterSetName, ValueFromPipelineByPropertyName = true, HelpMessage = "The resourceId of the query")]
-        [Parameter(ParameterSetName = LogsCmdletBase.ResourceGroupParameterSetName, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name of the query")]
+        [Parameter(ParameterSetName = ResourceGroupParameterSetName, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name of the query")]
         [Parameter(ParameterSetName = ResourceProviderParameterSetName, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource provider name of the query")]
         [Parameter(ParameterSetName = SubscriptionLevelParameterSetName, ValueFromPipelineByPropertyName = true, HelpMessage = "The subscriptionId of the query")]
         public override DateTime? StartTime { get; set; }
@@ -105,7 +105,10 @@ namespace Microsoft.Azure.Commands.Insights.Events
         /// <returns>The query filter with the conditions for particular parameters added</returns>
         protected override string ProcessParticularParameters(string currentQueryFilter)
         {
-            this.WriteIdentifiedWarning("Parameter name change", "The parameter plural names for the parameters will be deprecated in May 2018 in favor of the singular versions of the same names.");
+            this.WriteIdentifiedWarning(
+                cmdletName: "Get-AzureRmLog",
+                topic: "Parameter name change", 
+                message: "The parameter plural names for the parameters will be deprecated in a future breaking change release in favor of the singular versions of the same names.");
             this.SetMaxEventsIfPresent(currentQueryFilter, this.MaxRecord);
 
             string extendedQuery = this.AddConditionIfPResent(currentQueryFilter, "correlationId", this.CorrelationId);

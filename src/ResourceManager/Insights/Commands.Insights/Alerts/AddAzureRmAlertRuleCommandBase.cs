@@ -78,7 +78,10 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// </summary>
         protected override void ProcessRecordInternal()
         {
-            this.WriteIdentifiedWarning("Parameter name change", "The parameter plural names for the parameters will be deprecated in May 2018 in favor of the singular versions of the same names.");
+            this.WriteIdentifiedWarning(
+                cmdletName: this.GetCmdletName(),
+                topic: "Parameter name change", 
+                message: "The parameter plural names for the parameters will be deprecated in a future breaking change release in favor of the singular versions of the same names.");
             if (ShouldProcess(
                     target: string.Format("Create/update an alert rule: {0} from resource group: {1}", this.Name, this.ResourceGroupName),
                     action: "Create/update an alert rule"))

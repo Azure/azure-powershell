@@ -36,11 +36,11 @@ namespace Microsoft.Azure.Commands.Insights
         private const int MaxNumberOfReturnedRecords = 1000;
         private int MaxRecords = 0;
 
-        internal const string SubscriptionLevelParameterSetName = "Query at subscription level";
-        internal const string ResourceProviderParameterSetName = "Query on ResourceProvider";
-        internal const string ResourceGroupParameterSetName = "Query on ResourceGroupProvider";
-        internal const string ResourceIdParameterSetName = "Query on ResourceIdName";
-        internal const string CorrelationIdParameterSetName = "Query on CorrelationId";
+        internal const string SubscriptionLevelParameterSetName = "GetBySubscription";
+        internal const string ResourceProviderParameterSetName = "GetByResourceProvider";
+        internal const string ResourceGroupParameterSetName = "GetByResourceGroup";
+        internal const string ResourceIdParameterSetName = "GetByResourceId";
+        internal const string CorrelationIdParameterSetName = "GetByCorrelationId";
 
         #region Parameters declarations
 
@@ -165,7 +165,10 @@ namespace Microsoft.Azure.Commands.Insights
         {
             string queryFilter = this.ProcessGeneralParameters();
             var result = this.ProcessParticularParameters(queryFilter);
-            this.WriteIdentifiedWarning("Output change", "The field EventChannels from the EventData object is being deprecated in the release 5.0.0 - November 2017 - since it now returns a constant value (Admin,Operation)");
+            this.WriteIdentifiedWarning(
+                cmdletName: this.GetCmdletName(),
+                topic: "Output change", 
+                message: "The field EventChannels from the EventData object is being deprecated in the release 5.0.0 - November 2017 - since it now returns a constant value (Admin,Operation)");
             return result;
         }
 
@@ -197,7 +200,10 @@ namespace Microsoft.Azure.Commands.Insights
         /// </summary>
         protected override void ProcessRecordInternal()
         {
-            this.WriteIdentifiedWarning("Parameter deprecation", "The DetailedOutput parameter will be deprecated in May 2018.");
+            this.WriteIdentifiedWarning(
+                cmdletName: this.GetCmdletName(),
+                topic: "Parameter deprecation", 
+                message: "The DetailedOutput parameter will be deprecated in a future breaking change release.");
             WriteDebug("Processing parameters");
             string queryFilter = this.ProcessParameters();
 

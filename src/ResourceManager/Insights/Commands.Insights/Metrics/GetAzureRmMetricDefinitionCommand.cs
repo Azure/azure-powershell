@@ -73,8 +73,15 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
         /// </summary>
         protected override void ProcessRecordInternal()
         {
-            this.WriteIdentifiedWarning("Parameter deprecation", "The DetailedOutput parameter will be deprecated in May 2018.");
-            this.WriteIdentifiedWarning("Parameter name change", "The parameter plural names for the parameters will be deprecated in May 2018 in favor of the singular versions of the same names.");
+            string cmdletName = "Get-AzureRmMetricDefinition";
+            this.WriteIdentifiedWarning(
+                cmdletName: cmdletName,
+                topic: "Parameter deprecation", 
+                message: "The DetailedOutput parameter will be deprecated in a future breaking change release.");
+            this.WriteIdentifiedWarning(
+                cmdletName: cmdletName,
+                topic: "Parameter name change", 
+                message: "The parameter plural names for the parameters will be deprecated in a future breaking change release in favor of the singular versions of the same names.");
             string queryFilter = this.ProcessParameters();
             bool fullDetails = this.DetailedOutput.IsPresent;
 
