@@ -129,6 +129,11 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         public DatabaseReadScale? ReadScale { get; set; }
 
         /// <summary>
+        /// Gets or sets the zone redundant option of the database.
+        /// </summary>
+        public bool? ZoneRedundant { get; set; }
+
+        /// <summary>
         /// Construct AzureSqlDatabaseModel
         /// </summary>
         public AzureSqlDatabaseModel()
@@ -176,6 +181,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
 
             Enum.TryParse<DatabaseReadScale>(database.Properties.ReadScale, true, out readScale);
             ReadScale = readScale;
+
+            ZoneRedundant = false;
         }
 
         /// <summary>
@@ -215,6 +222,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
 
             Enum.TryParse<DatabaseReadScale>(database.ReadScale.ToString(), true, out readScale);
             ReadScale = readScale;
+
+            ZoneRedundant = database.ZoneRedundant;
         }
     }
 }
