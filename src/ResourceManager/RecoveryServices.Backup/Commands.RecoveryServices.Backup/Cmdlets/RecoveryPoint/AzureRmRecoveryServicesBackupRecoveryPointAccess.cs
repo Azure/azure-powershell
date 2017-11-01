@@ -64,8 +64,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 var response = psBackupProvider.ProvisionItemLevelRecoveryAccess();
 
                 WriteDebug(string.Format("Mount Script download completed"));
-                WriteInformation(string.Format(Resources.MountRecoveryPointInfoMessage, response.Password),
-                    null);
+                WriteVerbose(string.Format(Resources.MountRecoveryPointInfoMessage, response.Password));
                 WriteObject(response);
             }, ShouldProcess(RecoveryPoint.ItemName, "Downloading script"));
         }
