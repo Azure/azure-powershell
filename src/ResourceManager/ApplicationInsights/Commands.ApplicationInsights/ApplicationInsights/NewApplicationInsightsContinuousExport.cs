@@ -120,16 +120,28 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
 
             if (this.ShouldProcess(this.Name, "Create Application Insights Continuous Export"))
             {
-                var exportConfigurationsResponse = this.AppInsightsManagementClient
-                                                        .ExportConfigurations
-                                                        .CreateWithHttpMessagesAsync(
-                                                            this.ResourceGroupName,
-                                                            this.Name,
-                                                            exportRequest)
-                                                        .GetAwaiter()
-                                                        .GetResult();
+                try
+                {
+                    var exportConfigurationsResponse = this.AppInsightsManagementClient
+                                                            .ExportConfigurations
+                                                            .CreateWithHttpMessagesAsync(
+                                                                this.ResourceGroupName,
+                                                                this.Name,
+                                                                exportRequest)
+                                                            .GetAwaiter()
+                                                            .GetResult();
 
-                WriteComponentExportConfiguration(exportConfigurationsResponse.Body.FirstOrDefault());
+                    WriteComponentExportConfiguration(exportConfigurationsResponse.Body.FirstOrDefault());
+                }
+                catch (Microsoft.Rest.Azure.CloudException exception)
+                {
+                    if (exception.Response != null && exception.Response.StatusCode == System.Net.HttpStatusCode.Conflict)
+                    {
+                        throw new System.Exception("There is already an export defined for this destination.");
+                    }
+
+                    throw exception;
+                }
             }
         }
     }
