@@ -89,7 +89,8 @@ namespace Microsoft.Azure.Commands.Dns
         public string CaaTag { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The value field for the CAA record to add.", ParameterSetName = ParameterSetCaa)]
-        [ValidateNotNullOrEmpty]
+        [ValidateNotNull]
+        [AllowEmptyString]
         [ValidateLength(DnsRecordBase.CaaRecordMinLength, DnsRecordBase.CaaRecordMaxLength)]
         public string CaaValue { get; set; }
 
@@ -172,10 +173,11 @@ namespace Microsoft.Azure.Commands.Dns
                         }
                     case RecordType.CAA:
                         {
+                            // CAAValue is considered binary. So, not doing a case-insensitive search
                             removedCount = result.Records.RemoveAll(record =>
                                 record is CaaRecord
                                 && string.Equals(((CaaRecord)record).Tag, this.CaaTag, System.StringComparison.OrdinalIgnoreCase)
-                                && string.Equals(((CaaRecord)record).Value, this.CaaValue, System.StringComparison.OrdinalIgnoreCase)
+                                && string.Equals(((CaaRecord)record).Value, this.CaaValue)
                                 && ((CaaRecord)record).Flags == this.CaaFlags);
                             break;
                         }
