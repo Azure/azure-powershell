@@ -16,8 +16,6 @@ namespace Microsoft.Azure.Commands.SubscriptionDefinition.Common
 {
     public static class ParameterSetNames
     {
-        public const string ByManagementGroup = "ByManagementGroup";
-
-        public const string BySubscription = "BySubscription";
+        public const string Default = "Default";
     }
 }

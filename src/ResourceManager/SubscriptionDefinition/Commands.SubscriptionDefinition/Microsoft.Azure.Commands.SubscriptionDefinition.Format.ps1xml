@@ -14,12 +14,6 @@
                 <PropertyName>Name</PropertyName>
               </ListItem>
               <ListItem>
-                <PropertyName>ManagementGroupId</PropertyName>
-              </ListItem>
-              <ListItem>
-                <PropertyName>ManagementGroupTenantId</PropertyName>
-              </ListItem>
-              <ListItem>
                 <PropertyName>SubscriptionId</PropertyName>
               </ListItem>
               <ListItem>
@@ -27,9 +21,6 @@
               </ListItem>
               <ListItem>
                 <PropertyName>OfferType</PropertyName>
-              </ListItem>
-              <ListItem>
-                <PropertyName>UserCancellationRequested</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>

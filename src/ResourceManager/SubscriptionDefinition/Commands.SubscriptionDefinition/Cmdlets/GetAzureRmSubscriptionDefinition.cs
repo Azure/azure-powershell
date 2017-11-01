@@ -22,60 +22,23 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.SubscriptionDefinition.Cmdlets
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmSubscriptionDefinition", DefaultParameterSetName = ParameterSetNames.BySubscription), OutputType(typeof(List<PSSubscriptionDefinition>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmSubscriptionDefinition", DefaultParameterSetName = ParameterSetNames.Default), OutputType(typeof(List<PSSubscriptionDefinition>))]
     public class GetAzureRmSubscriptionDefinition : AzureSubscriptionDefinitionCmdletBase
     {
-        [Parameter(ParameterSetName = ParameterSetNames.ByManagementGroup, Mandatory = true, HelpMessage = "Id of the management group for which to retrieve subscription definitions.")]
-        public Guid ManagementGroupId { get; set; }
-
-        [Parameter(ParameterSetName = ParameterSetNames.ByManagementGroup, Mandatory = false, HelpMessage = "Name of the subscription definition to retrieve.")]
+        [Parameter(ParameterSetName = ParameterSetNames.Default, Mandatory = false, HelpMessage = "Name of the subscription definition to retrieve.")]
         public string Name { get; set; }
-
-        [Parameter(ParameterSetName = ParameterSetNames.BySubscription, Mandatory = false, ValueFromPipeline = true)]
-        public IAzureSubscription Subscription { get; set; }
-
+        
         public override void ExecuteCmdlet()
         {
-            if (this.ManagementGroupId != Guid.Empty)
+            if (!string.IsNullOrEmpty(this.Name))
             {
-                // Get subscription definition(s) in the specified management group.
-                this.SubscriptionDefinitionClient.SetManagementGroupScope(this.ManagementGroupId, this.Name);
-            }
-            else if (this.Subscription != null)
-            {
-                // Get subscription definition for the specified subscription.
-                this.SubscriptionDefinitionClient.SetSubscriptionScope(Guid.Parse(this.Subscription.Id));
+                this.WriteSubscriptionDefinitionObject(this.SubscriptionDefinitionClient.SubscriptionDefinition.Get(this.Name));
             }
             else
             {
-                // TODO: Instead of returning a SubDef for the current subscription, consider retrieving all management groups 
-                //       and subscriptions in the current tenant, and returning the distinct set of SubDefs.
-                IAzureContext defaultContext;
-                if (this.TryGetDefaultContext(out defaultContext) && defaultContext.Subscription != null)
-                {
-                    // Get subscription definition for the subscription in the current context.
-                    this.SubscriptionDefinitionClient.SetSubscriptionScope(Guid.Parse(defaultContext.Subscription.Id));
-                }
-                else
-                {
-                    throw new InvalidOperationException("No subscription provided.");
-                }
-            }
-
-            if (IsListOperation())
-            {
-                var subscriptionDefinitions = this.SubscriptionDefinitionClient.SubscriptionDefinitions.List();
+                var subscriptionDefinitions = this.SubscriptionDefinitionClient.SubscriptionDefinition.List();
                 this.WriteSubscriptionDefinitionObjects(subscriptionDefinitions.Value);
             }
-            else
-            {
-                this.WriteSubscriptionDefinitionObject(this.SubscriptionDefinitionClient.SubscriptionDefinitions.Get());
-            }
-        }
-
-        private bool IsListOperation()
-        {
-            return this.ManagementGroupId != Guid.Empty && string.IsNullOrEmpty(this.Name);
         }
     }
 }
