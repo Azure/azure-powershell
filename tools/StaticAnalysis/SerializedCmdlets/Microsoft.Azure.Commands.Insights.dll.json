@@ -648,7 +648,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "Parameters for Get-AzureRmMetric cmdlet in the default mode",
+          "Name": "GetWithDefaultParameters",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -749,7 +749,7 @@
           ]
         },
         {
-          "Name": "Parameters for Get-AzureRmMetric cmdlet in the full param set mode",
+          "Name": "GetWithFullParameters",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -1855,7 +1855,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "Query on CorrelationId",
+          "Name": "GetByCorrelationId",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -2050,7 +2050,7 @@
           ]
         },
         {
-          "Name": "Query on ResourceIdName",
+          "Name": "GetByResourceId",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -2245,7 +2245,7 @@
           ]
         },
         {
-          "Name": "Query on ResourceGroupProvider",
+          "Name": "GetByResourceGroup",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -2440,7 +2440,7 @@
           ]
         },
         {
-          "Name": "Query on ResourceProvider",
+          "Name": "GetByResourceProvider",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -2635,7 +2635,7 @@
           ]
         },
         {
-          "Name": "Query at subscription level",
+          "Name": "GetBySubscription",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -4114,7 +4114,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "Parameters for New-AzureRmAutoscaleProfile cmdlet without scheduled times",
+          "Name": "CreateWithoutScheduledTimes",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -4261,7 +4261,7 @@
           ]
         },
         {
-          "Name": "Parameters for New-AzureRmAutoscaleProfile cmdlet using fix date scheduling",
+          "Name": "CreateWithFixedDateScheduling",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -4474,7 +4474,7 @@
           ]
         },
         {
-          "Name": "Parameters for New-AzureRmAutoscaleProfile cmdlet using recurrent scheduling",
+          "Name": "CreateUsingRecurrentScheduling",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -5521,7 +5521,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "Parameters for Add-AzureRmAutoscaleSetting cmdlet in the update semantics",
+          "Name": "UpdateAutoscaleSetting",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -5681,7 +5681,7 @@
           ]
         },
         {
-          "Name": "Parameters for Add-AzureRmAutoscaleSetting cmdlet in the create semantics",
+          "Name": "CreateAutoscaleSetting",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -6340,7 +6340,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "Parameters for Get-AzureRmAustoscaleSetting cmdlet",
+          "Name": "GetAutoscaleSetting",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -6733,7 +6733,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "Parameters for Remove-AzureRmAutoscaleSetting cmdlet",
+          "Name": "RemoveAutoscaleSetting",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -8957,7 +8957,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "Parameters for Get-AzureRmAlertRule cmdlet",
+          "Name": "GetByResourceGroup",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -9036,7 +9036,7 @@
           ]
         },
         {
-          "Name": "Parameters for Get-AzureRmAlertRule cmdlet using name",
+          "Name": "GetByName",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -9137,7 +9137,7 @@
           ]
         },
         {
-          "Name": "Parameters for Get-AzureRmAlertRule cmdlet using target resource uri",
+          "Name": "GetByResourceUri",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -9697,7 +9697,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "Parameters for Remove-AzureRmAlertRule cmdlet",
+          "Name": "RemoveAlertRules",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -11865,7 +11865,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "Default parameters for disable an activity log alert",
+          "Name": "DisableByNameAndResourceGroup",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -11944,7 +11944,7 @@
           ]
         },
         {
-          "Name": "Parameters to disable an activity log alerts taking value from the pipe",
+          "Name": "DisableByInputObject",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -12012,7 +12012,7 @@
           ]
         },
         {
-          "Name": "Parameters to disable an activity log alerts taking the value of ResourceId from the pipe",
+          "Name": "DisableByResourceId",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -12365,7 +12365,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "Default parameters for set activity log alert",
+          "Name": "SetByNameAndResourceGroup",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -12607,7 +12607,7 @@
           ]
         },
         {
-          "Name": "Parameters to set an activity log alerts taking the value of ResourceId from the pipe",
+          "Name": "SetByResourceId",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -12827,7 +12827,7 @@
           ]
         },
         {
-          "Name": "Parameters to set an activity log alerts taking value from the pipe",
+          "Name": "SetByInputObject",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -13137,7 +13137,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "Default parameters for get an activity log alert",
+          "Name": "GetByNameAndResourceGroup",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -13216,7 +13216,7 @@
           ]
         },
         {
-          "Name": "Parameters to make sure the resource group is given when the name is given",
+          "Name": "GetByResourceGroup",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -13782,7 +13782,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "Default parameters for remove an activity log alert",
+          "Name": "RemoveByNameAndResourceGroup",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -13861,7 +13861,7 @@
           ]
         },
         {
-          "Name": "Parameters to remove an activity log alerts taking value from the pipe",
+          "Name": "RemoveByInputObject",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -13929,7 +13929,7 @@
           ]
         },
         {
-          "Name": "Parameters to remove an activity log alerts taking the value of ResourceId from the pipe",
+          "Name": "RemoveByResourceId",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -14161,7 +14161,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "Default parameters for enable an activity log alert",
+          "Name": "EnableByNameAndResourceGroup",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -14240,7 +14240,7 @@
           ]
         },
         {
-          "Name": "Parameters to enable an activity log alerts taking value from the pipe",
+          "Name": "EnableByInputObject",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -14308,7 +14308,7 @@
           ]
         },
         {
-          "Name": "Parameters to enable an activity log alerts taking the value of ResourceId from the pipe",
+          "Name": "EnableByResourceId",
           "Parameters": [
             {
               "ParameterMetadata": {

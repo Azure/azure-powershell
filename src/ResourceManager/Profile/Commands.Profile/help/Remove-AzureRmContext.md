@@ -12,13 +12,13 @@ Remove a context from the set of available contexts
 
 ## SYNTAX
 
-### Input Object (Default)
+### RemoveByInputObject (Default)
 ```
 Remove-AzureRmContext -InputObject <PSAzureContext> [-Force] [-PassThru] [-Scope <ContextModificationScope>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Named Context
+### RemoveByName
 ```
 Remove-AzureRmContext [-Force] [-PassThru] [-Scope <ContextModificationScope>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-Name] <String> [<CommonParameters>]
@@ -73,7 +73,7 @@ A context object, normally passed through the pipeline.
 
 ```yaml
 Type: PSAzureContext
-Parameter Sets: Input Object
+Parameter Sets: RemoveByInputObject
 Aliases: 
 
 Required: True
@@ -88,9 +88,8 @@ The name of the context
 
 ```yaml
 Type: String
-Parameter Sets: Named Context
+Parameter Sets: RemoveByName
 Aliases: 
-Accepted values: Default
 
 Required: True
 Position: 0

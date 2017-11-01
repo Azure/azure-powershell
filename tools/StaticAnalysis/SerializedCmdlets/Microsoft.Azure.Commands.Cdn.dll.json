@@ -183,7 +183,7 @@
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "Parameter Set for fields parameters",
+      "DefaultParameterSetName": "ByFieldsParameterSet",
       "OutputTypes": [
         {
           "Type": {
@@ -287,7 +287,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "Parameter Set for fields parameters",
+          "Name": "ByFieldsParameterSet",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -366,7 +366,7 @@
           ]
         },
         {
-          "Name": "Parameter Set for object parameters",
+          "Name": "ByObjectParameterSet",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -478,7 +478,7 @@
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "Parameter Set for fields parameters",
+      "DefaultParameterSetName": "ByFieldsParameterSet",
       "OutputTypes": [
         {
           "Type": {
@@ -585,7 +585,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "Parameter Set for fields parameters",
+          "Name": "ByFieldsParameterSet",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -664,7 +664,7 @@
           ]
         },
         {
-          "Name": "Parameter Set for object parameters",
+          "Name": "ByObjectParameterSet",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -1199,7 +1199,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "Parameter Set for fields parameters",
+          "Name": "ByFieldsParameterSet",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -1322,7 +1322,7 @@
           ]
         },
         {
-          "Name": "Parameter Set for object parameters",
+          "Name": "ByObjectParameterSet",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -1679,7 +1679,7 @@
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "Parameter Set for fields parameters",
+      "DefaultParameterSetName": "ByFieldsParameterSet",
       "OutputTypes": [
         {
           "Type": {
@@ -1893,7 +1893,7 @@
           ]
         },
         {
-          "Name": "Parameter Set for fields parameters",
+          "Name": "ByFieldsParameterSet",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -2016,7 +2016,7 @@
           ]
         },
         {
-          "Name": "Parameter Set for object parameters",
+          "Name": "ByObjectParameterSet",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -2420,7 +2420,7 @@
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "Parameter Set for fields parameters",
+      "DefaultParameterSetName": "ByFieldsParameterSet",
       "OutputTypes": [
         {
           "Type": {
@@ -2616,7 +2616,7 @@
           ]
         },
         {
-          "Name": "Parameter Set for fields parameters",
+          "Name": "ByFieldsParameterSet",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -2717,7 +2717,7 @@
           ]
         },
         {
-          "Name": "Parameter Set for object parameters",
+          "Name": "ByObjectParameterSet",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -2816,7 +2816,7 @@
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "Parameter Set for fields parameters",
+      "DefaultParameterSetName": "ByFieldsParameterSet",
       "OutputTypes": [
         {
           "Type": {
@@ -3007,7 +3007,7 @@
           ]
         },
         {
-          "Name": "Parameter Set for fields parameters",
+          "Name": "ByFieldsParameterSet",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -3108,7 +3108,7 @@
           ]
         },
         {
-          "Name": "Parameter Set for object parameters",
+          "Name": "ByObjectParameterSet",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -3218,7 +3218,7 @@
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "Parameter Set for fields parameters",
+      "DefaultParameterSetName": "ByFieldsParameterSet",
       "OutputTypes": [
         {
           "Type": {
@@ -3379,7 +3379,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "Parameter Set for fields parameters",
+          "Name": "ByFieldsParameterSet",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -3524,7 +3524,7 @@
           ]
         },
         {
-          "Name": "Parameter Set for object parameters",
+          "Name": "ByObjectParameterSet",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -3735,7 +3735,7 @@
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "Parameter Set for fields parameters",
+      "DefaultParameterSetName": "ByFieldsParameterSet",
       "OutputTypes": [
         {
           "Type": {
@@ -4503,7 +4503,7 @@
           ]
         },
         {
-          "Name": "Parameter Set for fields parameters",
+          "Name": "ByFieldsParameterSet",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -4946,7 +4946,7 @@
           ]
         },
         {
-          "Name": "Parameter Set for object parameters",
+          "Name": "ByObjectParameterSet",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -5365,7 +5365,7 @@
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "Parameter Set for fields parameters",
+      "DefaultParameterSetName": "ByFieldsParameterSet",
       "OutputTypes": [
         {
           "Type": {
@@ -5526,7 +5526,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "Parameter Set for fields parameters",
+          "Name": "ByFieldsParameterSet",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -5671,7 +5671,7 @@
           ]
         },
         {
-          "Name": "Parameter Set for object parameters",
+          "Name": "ByObjectParameterSet",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -6043,7 +6043,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "Parameter Set for fields parameters",
+          "Name": "ByFieldsParameterSet",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -6188,7 +6188,7 @@
           ]
         },
         {
-          "Name": "Parameter Set for object parameters",
+          "Name": "ByObjectParameterSet",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -6589,7 +6589,7 @@
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "Parameter Set for fields parameters",
+      "DefaultParameterSetName": "ByFieldsParameterSet",
       "OutputTypes": [
         {
           "Type": {
@@ -6734,7 +6734,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "Parameter Set for fields parameters",
+          "Name": "ByFieldsParameterSet",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -6857,7 +6857,7 @@
           ]
         },
         {
-          "Name": "Parameter Set for object parameters",
+          "Name": "ByObjectParameterSet",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -7024,7 +7024,7 @@
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "Parameter Set for fields parameters",
+      "DefaultParameterSetName": "ByFieldsParameterSet",
       "OutputTypes": [
         {
           "Type": {
@@ -7169,7 +7169,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "Parameter Set for fields parameters",
+          "Name": "ByFieldsParameterSet",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -7292,7 +7292,7 @@
           ]
         },
         {
-          "Name": "Parameter Set for object parameters",
+          "Name": "ByObjectParameterSet",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -7459,7 +7459,7 @@
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "Parameter Set for fields parameters",
+      "DefaultParameterSetName": "ByFieldsParameterSet",
       "OutputTypes": [
         {
           "Type": {
@@ -7608,7 +7608,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "Parameter Set for fields parameters",
+          "Name": "ByFieldsParameterSet",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -7731,7 +7731,7 @@
           ]
         },
         {
-          "Name": "Parameter Set for object parameters",
+          "Name": "ByObjectParameterSet",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -8083,7 +8083,7 @@
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "Parameter Set for fields parameters",
+      "DefaultParameterSetName": "ByFieldsParameterSet",
       "OutputTypes": [
         {
           "Type": {
@@ -8296,7 +8296,7 @@
           ]
         },
         {
-          "Name": "Parameter Set for fields parameters",
+          "Name": "ByFieldsParameterSet",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -8419,7 +8419,7 @@
           ]
         },
         {
-          "Name": "Parameter Set for object parameters",
+          "Name": "ByObjectParameterSet",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -8529,7 +8529,7 @@
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "Parameter Set for fields parameters",
+      "DefaultParameterSetName": "ByFieldsParameterSet",
       "OutputTypes": [
         {
           "Type": {
@@ -8780,7 +8780,7 @@
           ]
         },
         {
-          "Name": "Parameter Set for fields parameters",
+          "Name": "ByFieldsParameterSet",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -8925,7 +8925,7 @@
           ]
         },
         {
-          "Name": "Parameter Set for object parameters",
+          "Name": "ByObjectParameterSet",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -9057,7 +9057,7 @@
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "Parameter Set for fields parameters",
+      "DefaultParameterSetName": "ByFieldsParameterSet",
       "OutputTypes": [
         {
           "Type": {
@@ -9208,7 +9208,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "Parameter Set for fields parameters",
+          "Name": "ByFieldsParameterSet",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -9353,7 +9353,7 @@
           ]
         },
         {
-          "Name": "Parameter Set for object parameters",
+          "Name": "ByObjectParameterSet",
           "Parameters": [
             {
               "ParameterMetadata": {

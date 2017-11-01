@@ -13,14 +13,14 @@ Removes a data source from a Data Lake Analytics account.
 
 ## SYNTAX
 
-### Remove a Data Lake storage account
+### RemoveDataLakeStorageAccount
 ```
 Remove-AzureRmDataLakeAnalyticsDataSource [-Account] <String> [-DataLakeStore] <String> [-Force] [-PassThru]
  [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### Remove a Blob storage account
+### RemoveBlobStorageAccount
 ```
 Remove-AzureRmDataLakeAnalyticsDataSource [-Account] <String> [-Blob] <String> [-Force] [-PassThru]
  [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
@@ -61,7 +61,7 @@ Specifies the name of the AzureBlob Storage account to remove.
 
 ```yaml
 Type: String
-Parameter Sets: Remove a Blob storage account
+Parameter Sets: RemoveBlobStorageAccount
 Aliases: AzureBlob
 
 Required: True
@@ -76,7 +76,7 @@ Specifies the name of the AzureData Lake Store account to remove.
 
 ```yaml
 Type: String
-Parameter Sets: Remove a Data Lake storage account
+Parameter Sets: RemoveDataLakeStorageAccount
 Aliases: 
 
 Required: True

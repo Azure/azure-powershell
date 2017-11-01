@@ -13,13 +13,13 @@ Removes a resource group.
 
 ## SYNTAX
 
-### Lists the resource group based in the name. (Default)
+### RemoveByResourceGroupName (Default)
 ```
 Remove-AzureRmResourceGroup [-Name] <String> [-Force] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Lists the resource group based in the Id.
+### RemoveByResourceGroupId
 ```
 Remove-AzureRmResourceGroup [-Id] <String> [-Force] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -108,7 +108,7 @@ Wildcard characters are not permitted.
 
 ```yaml
 Type: String
-Parameter Sets: Lists the resource group based in the Id.
+Parameter Sets: RemoveByResourceGroupId
 Aliases: ResourceGroupId, ResourceId
 
 Required: True
@@ -124,7 +124,7 @@ Wildcard characters are not permitted.
 
 ```yaml
 Type: String
-Parameter Sets: Lists the resource group based in the name.
+Parameter Sets: RemoveByResourceGroupName
 Aliases: ResourceGroupName
 
 Required: True

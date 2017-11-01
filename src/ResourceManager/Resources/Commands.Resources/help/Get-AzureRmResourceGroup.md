@@ -13,13 +13,13 @@ Gets resource groups.
 
 ## SYNTAX
 
-### Lists the resource group based on the name. (Default)
+### GetByResourceGroupName (Default)
 ```
 Get-AzureRmResourceGroup [-Name <String>] [-Location <String>] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Lists the resource group based on the Id.
+### GetByResourceGroupId
 ```
 Get-AzureRmResourceGroup [-Location <String>] [-Id <String>] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -106,7 +106,7 @@ Wildcard characters are not permitted.
 
 ```yaml
 Type: String
-Parameter Sets: Lists the resource group based on the Id.
+Parameter Sets: GetByResourceGroupId
 Aliases: ResourceGroupId, ResourceId
 
 Required: False
@@ -137,7 +137,7 @@ Wildcard characters are not permitted.
 
 ```yaml
 Type: String
-Parameter Sets: Lists the resource group based on the name.
+Parameter Sets: GetByResourceGroupName
 Aliases: ResourceGroupName
 
 Required: False
