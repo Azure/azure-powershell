@@ -142,7 +142,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "Get operationalization cluster's keys from cmdlet input parameters.",
+          "Name": "GetByNameAndResourceGroup",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -221,7 +221,7 @@
           ]
         },
         {
-          "Name": "Get operationalization cluster's keys from an OperationalizationCluster instance definition.",
+          "Name": "GetByInputObject",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -297,7 +297,7 @@
           ]
         },
         {
-          "Name": "Get operationalization cluster's keys from an Azure resource id.",
+          "Name": "GetByResourceId",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -507,7 +507,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "Get an operationalization cluster by its name.",
+          "Name": "GetByName",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -586,7 +586,7 @@
           ]
         },
         {
-          "Name": "Get operationalization clusters by resource group or subscription.",
+          "Name": "GetByResourceGroup",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -817,7 +817,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "Test for update availability from cmdlet input parameters.",
+          "Name": "TestByNameAndResourceGroup",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -896,7 +896,7 @@
           ]
         },
         {
-          "Name": "Test for update availability from an OperationalizationCluster instance definition.",
+          "Name": "TestByInputObject",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -972,7 +972,7 @@
           ]
         },
         {
-          "Name": "Test for update availability from an Azure resouce id.",
+          "Name": "TestByResourceId",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -1541,7 +1541,7 @@
           ]
         },
         {
-          "Name": "Create a new operationalization cluster from an OperationalizationCluster instance definition.",
+          "Name": "CreateWithInputObject",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -1661,7 +1661,7 @@
           ]
         },
         {
-          "Name": "Create a new operationalization cluster from cmdlet input parameters.",
+          "Name": "CreateWithParameters",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -2233,7 +2233,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "Remove an operationalization cluster from cmdlet input parameters.",
+          "Name": "RemoveByNameAndResourceGroup",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -2312,7 +2312,7 @@
           ]
         },
         {
-          "Name": "Remove an operationalization cluster from an OperationalizationCluster instance definition.",
+          "Name": "RemoveByInputObject",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -2388,7 +2388,7 @@
           ]
         },
         {
-          "Name": "Remove an operationalization cluster from an Azure resouce id.",
+          "Name": "RemoveByResourceId",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -2621,7 +2621,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "Start a system services update from cmdlet input parameters.",
+          "Name": "StartUpdateWithNameAndResourceGroup",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -2700,7 +2700,7 @@
           ]
         },
         {
-          "Name": "Start a system services update from an PSOperationalizationCluster instance definition.",
+          "Name": "StartUpdateWithInputObject",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -2776,7 +2776,7 @@
           ]
         },
         {
-          "Name": "Start a system services update from an Azure resouce id.",
+          "Name": "StartUpdateWithResourceId",
           "Parameters": [
             {
               "ParameterMetadata": {

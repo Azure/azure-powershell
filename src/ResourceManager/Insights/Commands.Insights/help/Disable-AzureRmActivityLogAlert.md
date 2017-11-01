@@ -13,19 +13,19 @@ Disables an activity log alert and sets its tags.
 
 ## SYNTAX
 
-### Default parameters for disable an activity log alert
+### DisableByNameAndResourceGroup
 ```
 Disable-AzureRmActivityLogAlert -Name <String> -ResourceGroupName <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Parameters to disable an activity log alerts taking value from the pipe
+### DisableByInputObject
 ```
 Disable-AzureRmActivityLogAlert -InputObject <PSActivityLogAlertResource>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Parameters to disable an activity log alerts taking the value of ResourceId from the pipe
+### DisableByResourceId
 ```
 Disable-AzureRmActivityLogAlert -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
@@ -83,7 +83,7 @@ Sets the InputObject tags property of the call to extract the required name, res
 
 ```yaml
 Type: PSActivityLogAlertResource
-Parameter Sets: Parameters to disable an activity log alerts taking value from the pipe
+Parameter Sets: DisableByInputObject
 Aliases: 
 
 Required: True
@@ -98,7 +98,7 @@ The name of the activity log alert.
 
 ```yaml
 Type: String
-Parameter Sets: Default parameters for disable an activity log alert
+Parameter Sets: DisableByNameAndResourceGroup
 Aliases: 
 
 Required: True
@@ -113,7 +113,7 @@ The name of the resource group where the alert resource is going to exist.
 
 ```yaml
 Type: String
-Parameter Sets: Default parameters for disable an activity log alert
+Parameter Sets: DisableByNameAndResourceGroup
 Aliases: 
 
 Required: True
@@ -128,7 +128,7 @@ Sets the ResourceId tags property of the call to extract the required name, reso
 
 ```yaml
 Type: String
-Parameter Sets: Parameters to disable an activity log alerts taking the value of ResourceId from the pipe
+Parameter Sets: DisableByResourceId
 Aliases: 
 
 Required: True

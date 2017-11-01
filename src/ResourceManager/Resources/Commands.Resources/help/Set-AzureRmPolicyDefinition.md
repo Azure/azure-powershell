@@ -13,7 +13,15 @@ Modifies a policy definition.
 
 ## SYNTAX
 
-### The policy definition name parameter set. (Default)
+### SetByPolicyDefinitionName (Default)
+```
+Set-AzureRmPolicyDefinition [-DisplayName <String>] [-Description <String>] [-Policy <String>]
+ [-Metadata <String>] [-Parameter <String>] [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
+ [-InformationVariable <String>] [<CommonParameters>]
+```
+
+### GetByPolicyDefintionName
 ```
 Set-AzureRmPolicyDefinition -Name <String> [-DisplayName <String>] [-Description <String>] [-Policy <String>]
  [-Metadata <String>] [-Parameter <String>] [-ApiVersion <String>] [-Pre]
@@ -21,7 +29,7 @@ Set-AzureRmPolicyDefinition -Name <String> [-DisplayName <String>] [-Description
  [-InformationVariable <String>] [<CommonParameters>]
 ```
 
-### The policy definition Id parameter set.
+### GetByPolicyDefinitionId
 ```
 Set-AzureRmPolicyDefinition -Id <String> [-DisplayName <String>] [-Description <String>] [-Policy <String>]
  [-Metadata <String>] [-Parameter <String>] [-ApiVersion <String>] [-Pre]
@@ -113,7 +121,7 @@ Specifies the fully qualified resource ID for the policy definition that this cm
 
 ```yaml
 Type: String
-Parameter Sets: The policy definition Id parameter set.
+Parameter Sets: GetByPolicyDefinitionId
 Aliases: ResourceId
 
 Required: True
@@ -163,7 +171,7 @@ Accept wildcard characters: False
 ```
 
 ### -Metadata
-The metadata for policy definition. This can either be a path to a file name containing the metadata, or the metadata as string
+The metadata for policy definition. This can either be a path to a file name containing the metadata, or the metadata as string.
 
 ```yaml
 Type: String
@@ -182,7 +190,7 @@ Specifies the name of the policy definition that this cmdlet modifies.
 
 ```yaml
 Type: String
-Parameter Sets: The policy definition name parameter set.
+Parameter Sets: GetByPolicyDefintionName
 Aliases: 
 
 Required: True
@@ -193,7 +201,7 @@ Accept wildcard characters: False
 ```
 
 ### -Parameter
-The parameters declaration for policy definition. This can either be a path to a file name or uri containing the parameters declaration, or the parameters declaration as string
+The parameters declaration for policy definition. This can either be a path to a file name or uri containing the parameters declaration, or the parameters declaration as string.
 
 ```yaml
 Type: String

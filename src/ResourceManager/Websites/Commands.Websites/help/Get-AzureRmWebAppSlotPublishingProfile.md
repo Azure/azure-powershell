@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.Websites
 ms.assetid: B2FDB54F-0318-4037-BC1D-6113E77DDE7E
 online version: 
 schema: 2.0.0
@@ -15,14 +15,14 @@ Gets an Azure Web App slot publishing profile.
 
 ### S1
 ```
-Get-AzureRmWebAppSlotPublishingProfile [-OutputFile] <String> [[-Format] <String>]
+Get-AzureRmWebAppSlotPublishingProfile [[-OutputFile] <String>] [[-Format] <String>]
  [-ResourceGroupName] <String> [-Name] <String> [-Slot] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### S2
 ```
-Get-AzureRmWebAppSlotPublishingProfile [-OutputFile] <String> [[-Format] <String>] [-WebApp] <Site>
+Get-AzureRmWebAppSlotPublishingProfile [[-OutputFile] <String>] [[-Format] <String>] [-WebApp] <Site>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -95,7 +95,7 @@ Type: String
 Parameter Sets: (All)
 Aliases: 
 
-Required: True
+Required: False
 Position: 3
 Default value: None
 Accept pipeline input: False

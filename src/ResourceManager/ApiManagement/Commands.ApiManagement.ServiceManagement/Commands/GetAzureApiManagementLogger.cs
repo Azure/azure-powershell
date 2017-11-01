@@ -24,8 +24,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     [OutputType(typeof(PsApiManagementLogger), ParameterSetName = new[] { GetById })]
     public class GetAzureApiManagementLogger : AzureApiManagementCmdletBase
     {
-        private const string GetAll = "Get all loggers";
-        private const string GetById = "Get by logger ID";
+        private const string GetAll = "GetAllLoggers";
+        private const string GetById = "GetByLoggerId";
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,

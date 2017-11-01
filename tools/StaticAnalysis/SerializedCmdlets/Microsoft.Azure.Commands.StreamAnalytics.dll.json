@@ -2147,7 +2147,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "For stream analytics objects in the given resource group",
+          "Name": "ByResourceGroup",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -2248,7 +2248,7 @@
           ]
         },
         {
-          "Name": "For stream analytics objects in the given subscription",
+          "Name": "BySubscription",
           "Parameters": [
             {
               "ParameterMetadata": {

@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.Websites
 ms.assetid: 38433470-CAFD-4B8F-980C-63D4B264B39F
 online version: 
 schema: 2.0.0
@@ -15,13 +15,13 @@ Gets an Azure Web App publishing profile.
 
 ### S1
 ```
-Get-AzureRmWebAppPublishingProfile [-OutputFile] <String> [[-Format] <String>] [-ResourceGroupName] <String>
+Get-AzureRmWebAppPublishingProfile [[-OutputFile] <String>] [[-Format] <String>] [-ResourceGroupName] <String>
  [-Name] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### S2
 ```
-Get-AzureRmWebAppPublishingProfile [-OutputFile] <String> [[-Format] <String>] [-WebApp] <Site>
+Get-AzureRmWebAppPublishingProfile [[-OutputFile] <String>] [[-Format] <String>] [-WebApp] <Site>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -94,7 +94,7 @@ Type: String
 Parameter Sets: (All)
 Aliases: 
 
-Required: True
+Required: False
 Position: 2
 Default value: None
 Accept pipeline input: False

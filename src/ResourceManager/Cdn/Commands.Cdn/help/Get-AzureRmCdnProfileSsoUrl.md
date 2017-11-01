@@ -13,13 +13,13 @@ Gets the single sign-on URL of a CDN profile.
 
 ## SYNTAX
 
-### Parameter Set for fields parameters (Default)
+### ByFieldsParameterSet (Default)
 ```
 Get-AzureRmCdnProfileSsoUrl -ProfileName <String> -ResourceGroupName <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Parameter Set for object parameters
+### ByObjectParameterSet
 ```
 Get-AzureRmCdnProfileSsoUrl -CdnProfile <PSProfile> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
@@ -43,7 +43,7 @@ Specifies the CDN profile.
 
 ```yaml
 Type: PSProfile
-Parameter Sets: Parameter Set for object parameters
+Parameter Sets: ByObjectParameterSet
 Aliases: 
 
 Required: True
@@ -73,7 +73,7 @@ Specifies the name of the CDN profile.
 
 ```yaml
 Type: String
-Parameter Sets: Parameter Set for fields parameters
+Parameter Sets: ByFieldsParameterSet
 Aliases: 
 
 Required: True
@@ -88,7 +88,7 @@ Specifies the name of the resource group name to which the profile belongs.
 
 ```yaml
 Type: String
-Parameter Sets: Parameter Set for fields parameters
+Parameter Sets: ByFieldsParameterSet
 Aliases: 
 
 Required: True

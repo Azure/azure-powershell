@@ -13,7 +13,7 @@ Creates an Autoscale setting.
 
 ## SYNTAX
 
-### Parameters for Add-AzureRmAutoscaleSetting cmdlet in the update semantics
+### UpdateAutoscaleSetting
 ```
 Add-AzureRmAutoscaleSetting -SettingSpec <PSAutoscaleSetting> -ResourceGroup <String> [-DisableSetting]
  [-AutoscaleProfiles <System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleProfile]>]
@@ -21,7 +21,7 @@ Add-AzureRmAutoscaleSetting -SettingSpec <PSAutoscaleSetting> -ResourceGroup <St
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Parameters for Add-AzureRmAutoscaleSetting cmdlet in the create semantics
+### CreateAutoscaleSetting
 ```
 Add-AzureRmAutoscaleSetting -Location <String> -Name <String> -ResourceGroup <String> [-DisableSetting]
  [-AutoscaleProfiles <System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleProfile]>]
@@ -106,7 +106,7 @@ Specifies the location of the Autoscale setting.
 
 ```yaml
 Type: String
-Parameter Sets: Parameters for Add-AzureRmAutoscaleSetting cmdlet in the create semantics
+Parameter Sets: CreateAutoscaleSetting
 Aliases: 
 
 Required: True
@@ -121,7 +121,7 @@ Specifies the name of the Autoscale setting to create.
 
 ```yaml
 Type: String
-Parameter Sets: Parameters for Add-AzureRmAutoscaleSetting cmdlet in the create semantics
+Parameter Sets: CreateAutoscaleSetting
 Aliases: 
 
 Required: True
@@ -167,7 +167,7 @@ You can use the Get-AzureRmAutoscaleSetting cmdlet to get an **AutoscaleSetting*
 
 ```yaml
 Type: PSAutoscaleSetting
-Parameter Sets: Parameters for Add-AzureRmAutoscaleSetting cmdlet in the update semantics
+Parameter Sets: UpdateAutoscaleSetting
 Aliases: 
 
 Required: True
@@ -182,7 +182,7 @@ Specifies the ID of the resource to autoscale.
 
 ```yaml
 Type: String
-Parameter Sets: Parameters for Add-AzureRmAutoscaleSetting cmdlet in the create semantics
+Parameter Sets: CreateAutoscaleSetting
 Aliases: 
 
 Required: True

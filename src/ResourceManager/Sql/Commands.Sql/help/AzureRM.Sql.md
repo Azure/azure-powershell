@@ -134,6 +134,9 @@ Gets a database server system recovery configuration.
 ### [Get-AzureRmSqlServerDisasterRecoveryConfigurationActivity](Get-AzureRmSqlServerDisasterRecoveryConfigurationActivity.md)
 Gets activity for a database server system recovery configuration.
 
+### [Get-AzureRmSqlServerDnsAlias](Get-AzureRmSqlServerDnsAlias.md)
+Gets or lists Azure SQL Server DNS Alias.
+
 ### [Get-AzureRmSqlServerFirewallRule](Get-AzureRmSqlServerFirewallRule.md)
 Gets firewall rules for a SQL Database server.
 
@@ -212,6 +215,9 @@ Creates a communication link for elastic database transactions between two SQL D
 ### [New-AzureRmSqlServerDisasterRecoveryConfiguration](New-AzureRmSqlServerDisasterRecoveryConfiguration.md)
 Creates a database server system recovery configuration.
 
+### [New-AzureRmSqlServerDnsAlias](New-AzureRmSqlServerDnsAlias.md)
+This command creates a new Azure SQL Server DNS Alias.
+
 ### [New-AzureRmSqlServerFirewallRule](New-AzureRmSqlServerFirewallRule.md)
 Creates a firewall rule for a SQL Database server.
 
@@ -268,6 +274,9 @@ Deletes a communication link for elastic database transactions between two serve
 
 ### [Remove-AzureRmSqlServerDisasterRecoveryConfiguration](Remove-AzureRmSqlServerDisasterRecoveryConfiguration.md)
 Removes a SQL database server system recovery configuration.
+
+### [Remove-AzureRmSqlServerDnsAlias](Remove-AzureRmSqlServerDnsAlias.md)
+Removes Azure SQL Server DNS Alias.
 
 ### [Remove-AzureRmSqlServerFirewallRule](Remove-AzureRmSqlServerFirewallRule.md)
 Deletes a firewall rule from a SQL Database server.
@@ -365,6 +374,9 @@ Sets a server long term retention vault.
 ### [Set-AzureRmSqlServerDisasterRecoveryConfiguration](Set-AzureRmSqlServerDisasterRecoveryConfiguration.md)
 Modifies a database server recovery configuration.
 
+### [Set-AzureRmSqlServerDnsAlias](Set-AzureRmSqlServerDnsAlias.md)
+Modifies the server to which Azure SQL Server DNS Alias is pointing
+
 ### [Set-AzureRmSqlServerFirewallRule](Set-AzureRmSqlServerFirewallRule.md)
 Modifies a firewall rule in Azure SQL Database server.
 
@@ -390,7 +402,7 @@ Starts the upgrade of a SQL Database server.
 Starts a sync group synchronization.
 
 ### [Stop-AzureRmSqlDatabaseActivity](Stop-AzureRmSqlDatabaseActivity.md)
-Cancels the asynchronous operation on the database.
+Cancels the asynchronous updateslo operation on the database.
 
 ### [Stop-AzureRmSqlDatabaseExecuteIndexRecommendation](Stop-AzureRmSqlDatabaseExecuteIndexRecommendation.md)
 Stops the workflow that runs a recommended index operation.
@@ -420,3 +432,4 @@ If "SyncMemberName" is specified, it will refresh the member database schema; if
 
 ### [Use-AzureRmSqlServerAuditingPolicy](Use-AzureRmSqlServerAuditingPolicy.md)
 Specifies that a database uses the auditing policy of its host server.
+
