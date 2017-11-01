@@ -13,14 +13,14 @@ Modifies an Azure Data Lake Analytics catalog credential password.
 
 ## SYNTAX
 
-### Specify host name and port (Default)
+### SetByHostNameAndPort (Default)
 ```
 Set-AzureRmDataLakeAnalyticsCatalogCredential [-Account] <String> [-DatabaseName] <String>
  [-CredentialName] <String> [-Credential] <PSCredential> [-NewPassword] <PSCredential> [-Uri] <Uri>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Specify full URI
+### SetByFullURI
 ```
 Set-AzureRmDataLakeAnalyticsCatalogCredential [-Account] <String> [-DatabaseName] <String>
  [-CredentialName] <String> [-Credential] <PSCredential> [-NewPassword] <PSCredential> [-DatabaseHost] <String>
@@ -96,7 +96,7 @@ Specifies the host name of the external data source the credential can connect t
 
 ```yaml
 Type: String
-Parameter Sets: Specify full URI
+Parameter Sets: SetByFullURI
 Aliases: 
 
 Required: True
@@ -156,7 +156,7 @@ Specifies the port number used to connect to the specified DatabaseHost using th
 
 ```yaml
 Type: Int32
-Parameter Sets: Specify full URI
+Parameter Sets: SetByFullURI
 Aliases: 
 
 Required: True
@@ -171,7 +171,7 @@ Specifies the full Uniform Resource Identifier (URI) of the external data source
 
 ```yaml
 Type: Uri
-Parameter Sets: Specify host name and port
+Parameter Sets: SetByHostNameAndPort
 Aliases: 
 
 Required: True

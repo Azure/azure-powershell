@@ -28,12 +28,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// The policy Id parameter set.
         /// </summary>
-        internal const string ManagedApplicationIdParameterSet = "The managed application Id parameter set.";
+        internal const string ManagedApplicationIdParameterSet = "RemoveById";
 
         /// <summary>
         /// The policy name parameter set.
         /// </summary>
-        internal const string ManagedApplicationNameParameterSet = "The managed application name parameter set.";
+        internal const string ManagedApplicationNameParameterSet = "RemoveByNameAndResourceGroup";
 
         /// <summary>
         /// Gets or sets the managed application name parameter.

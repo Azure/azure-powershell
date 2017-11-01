@@ -182,7 +182,11 @@ CmdletsToExport = 'Get-AzureRmSqlDatabaseTransparentDataEncryption',
                'Set-AzureRmSqlServerVirtualNetworkRule', 
                'Get-AzureRmSqlServerVirtualNetworkRule', 
                'Remove-AzureRmSqlServerVirtualNetworkRule', 
-               'Stop-AzureRmSqlDatabaseActivity'
+               'Stop-AzureRmSqlDatabaseActivity',
+               'Get-AzureRmSqlServerDnsAlias',
+               'Remove-AzureRmSqlServerDnsAlias',
+               'New-AzureRmSqlServerDnsAlias',
+               'Set-AzureRmSqlServerDnsAlias'
 
 # Variables to export from this module
 # VariablesToExport = @()

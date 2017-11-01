@@ -13,14 +13,14 @@ Removes a custom domain.
 
 ## SYNTAX
 
-### Parameter Set for fields parameters (Default)
+### ByFieldsParameterSet (Default)
 ```
 Remove-AzureRmCdnCustomDomain -CustomDomainName <String> -EndpointName <String> -ProfileName <String>
  -ResourceGroupName <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### Parameter Set for object parameters
+### ByObjectParameterSet
 ```
 Remove-AzureRmCdnCustomDomain -CdnCustomDomain <PSCustomDomain> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -43,7 +43,7 @@ Specifies the custom domain that this cmdlet removes.
 
 ```yaml
 Type: PSCustomDomain
-Parameter Sets: Parameter Set for object parameters
+Parameter Sets: ByObjectParameterSet
 Aliases: 
 
 Required: True
@@ -58,7 +58,7 @@ Specifies the resource name of the custom domain that this cmdlet removes.
 
 ```yaml
 Type: String
-Parameter Sets: Parameter Set for fields parameters
+Parameter Sets: ByFieldsParameterSet
 Aliases: 
 
 Required: True
@@ -88,7 +88,7 @@ Specifies the name of the endpoint from which this cmdlet removes a custom domai
 
 ```yaml
 Type: String
-Parameter Sets: Parameter Set for fields parameters
+Parameter Sets: ByFieldsParameterSet
 Aliases: 
 
 Required: True
@@ -119,7 +119,7 @@ Specifies the name of the profile from which this cmdlet removes a custom domain
 
 ```yaml
 Type: String
-Parameter Sets: Parameter Set for fields parameters
+Parameter Sets: ByFieldsParameterSet
 Aliases: 
 
 Required: True
@@ -134,7 +134,7 @@ Specifies the name of the resource group from which this cmdlet removes a custom
 
 ```yaml
 Type: String
-Parameter Sets: Parameter Set for fields parameters
+Parameter Sets: ByFieldsParameterSet
 Aliases: 
 
 Required: True
