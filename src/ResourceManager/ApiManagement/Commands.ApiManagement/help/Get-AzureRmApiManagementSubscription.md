@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
+Module Name: AzureRM.ApiManagement
 ms.assetid: 227EF8A2-E04A-4F6B-B66E-E77F1276A7E4
 online version: 
 schema: 2.0.0
@@ -12,25 +13,25 @@ Gets subscriptions.
 
 ## SYNTAX
 
-### Get all subscriptions (Default)
+### GetAllSubscriptions (Default)
 ```
 Get-AzureRmApiManagementSubscription -Context <PsApiManagementContext>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Get by subsctiption ID
+### GetBySubscriptionId
 ```
 Get-AzureRmApiManagementSubscription -Context <PsApiManagementContext> [-SubscriptionId <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Get by user ID
+### GetByUserId
 ```
 Get-AzureRmApiManagementSubscription -Context <PsApiManagementContext> [-UserId <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Get by product ID
+### GetByProductId
 ```
 Get-AzureRmApiManagementSubscription -Context <PsApiManagementContext> [-ProductId <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -44,7 +45,7 @@ The **Get-AzureRmApiManagementSubscription** cmdlet gets a specified subscriptio
 ### Example 1: Get all subscriptions
 ```
 PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzureRmApiManagementSubscription -Context $apimContext 
+PS C:\>Get-AzureRmApiManagementSubscription -Context $apimContext
 ```
 
 This command gets all subscriptions.
@@ -111,7 +112,7 @@ If specified, this cmdlet finds all subscriptions by the product identifier.
 
 ```yaml
 Type: String
-Parameter Sets: Get by product ID
+Parameter Sets: GetByProductId
 Aliases: 
 
 Required: False
@@ -127,7 +128,7 @@ If specified, this cmdlet finds subscription by the identifier.
 
 ```yaml
 Type: String
-Parameter Sets: Get by subsctiption ID
+Parameter Sets: GetBySubscriptionId
 Aliases: 
 
 Required: False
@@ -143,7 +144,7 @@ If specified, this cmdlet finds all subscriptions by the user identifier.
 
 ```yaml
 Type: String
-Parameter Sets: Get by user ID
+Parameter Sets: GetByUserId
 Aliases: 
 
 Required: False

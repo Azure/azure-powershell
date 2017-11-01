@@ -18,7 +18,11 @@
         - Additional information about change #1
 -->
 ## Current Release
-
+* Added cmdlet to list available internet service providers for a specified Azure region
+    - Get-AzureRmNetworkWatcherReachabilityProvidersList
+* Added cmdlet to get the relative latency score for internet service providers from a specified location to Azure regions
+    - Get-AzureRmNetworkWatcherReachabilityReport
+    
 ## Version 4.4.1
 
 ## Version 4.4.0

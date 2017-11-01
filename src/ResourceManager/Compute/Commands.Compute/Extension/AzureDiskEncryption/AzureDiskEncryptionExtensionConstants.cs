@@ -19,8 +19,8 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
     /// </summary>
     public static class AzureDiskEncryptionExtensionConstants
     {
-        public const string aadClientCertParameterSet = "AAD Client Cert Parameters";
-        public const string aadClientSecretParameterSet = "AAD Client Secret Parameters";
+        public const string aadClientCertParameterSet = "AADClientCertParameterSet";
+        public const string aadClientSecretParameterSet = "AADClientSecretParameterSet";
         public const string enableEncryptionOperation = "EnableEncryption";
         public const string disableEncryptionOperation = "DisableEncryption";
         public const string queryEncryptionStatusOperation = "QueryEncryptionStatus";

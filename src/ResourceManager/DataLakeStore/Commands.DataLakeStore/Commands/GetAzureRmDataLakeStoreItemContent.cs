@@ -28,9 +28,9 @@ namespace Microsoft.Azure.Commands.DataLakeStore
     public class GetAzureDataLakeStoreContent : DataLakeStoreFileSystemCmdletBase
     {
         private FileSystemCmdletProviderEncoding _encoding = FileSystemCmdletProviderEncoding.UTF8;
-        internal const string BaseParameterSetName = "Preview file content";
-        internal const string HeadRowParameterSetName = "Preview file rows from the head of the file";
-        internal const string TailRowParameterSetName = "Preview file rows from the tail of the file";
+        internal const string BaseParameterSetName = "PreviewFileContent";
+        internal const string HeadRowParameterSetName = "PreviewFileRowsFromHead";
+        internal const string TailRowParameterSetName = "PreviewFileRowsFromTail";
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, ParameterSetName = BaseParameterSetName, Mandatory = true,
             HelpMessage = "The DataLakeStore account to execute the filesystem operation in")]

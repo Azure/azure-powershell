@@ -145,6 +145,7 @@ namespace StaticAnalysis.SignatureVerifier
         {
             "Access",
             "Address",
+            "Alias",
             "Anonymous",
             "Diagnostics",
             "Express",

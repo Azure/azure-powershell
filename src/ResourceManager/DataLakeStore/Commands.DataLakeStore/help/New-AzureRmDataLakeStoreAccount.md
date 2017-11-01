@@ -13,7 +13,7 @@ Creates a new Data Lake Store account.
 
 ## SYNTAX
 
-### User or System assigned encryption (Default)
+### UserOrSystemAssignedEncryption (Default)
 ```
 New-AzureRmDataLakeStoreAccount [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
  [[-DefaultGroup] <String>] [[-Tags] <Hashtable>] [[-Encryption] <EncryptionConfigType>]
@@ -21,7 +21,7 @@ New-AzureRmDataLakeStoreAccount [-ResourceGroupName] <String> [-Name] <String> [
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Disable Encryption
+### DisableEncryption
 ```
 New-AzureRmDataLakeStoreAccount [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
  [[-DefaultGroup] <String>] [[-Tags] <Hashtable>] [-DisableEncryption] [-Tier <TierType>]
@@ -77,7 +77,7 @@ Indicates that the account will not have any form of encryption applied to it.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: Disable Encryption
+Parameter Sets: DisableEncryption
 Aliases: 
 
 Required: False
@@ -90,7 +90,7 @@ Accept wildcard characters: False
 ### -Encryption
 ```yaml
 Type: EncryptionConfigType
-Parameter Sets: User or System assigned encryption
+Parameter Sets: UserOrSystemAssignedEncryption
 Aliases: 
 Accepted values: UserManaged, ServiceManaged
 
@@ -104,7 +104,7 @@ Accept wildcard characters: False
 ### -KeyName
 ```yaml
 Type: String
-Parameter Sets: User or System assigned encryption
+Parameter Sets: UserOrSystemAssignedEncryption
 Aliases: 
 
 Required: False
@@ -117,7 +117,7 @@ Accept wildcard characters: False
 ### -KeyVaultId
 ```yaml
 Type: String
-Parameter Sets: User or System assigned encryption
+Parameter Sets: UserOrSystemAssignedEncryption
 Aliases: 
 
 Required: False
@@ -130,7 +130,7 @@ Accept wildcard characters: False
 ### -KeyVersion
 ```yaml
 Type: String
-Parameter Sets: User or System assigned encryption
+Parameter Sets: UserOrSystemAssignedEncryption
 Aliases: 
 
 Required: False

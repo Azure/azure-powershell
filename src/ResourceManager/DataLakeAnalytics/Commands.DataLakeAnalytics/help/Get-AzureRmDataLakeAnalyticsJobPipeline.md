@@ -12,13 +12,13 @@ Gets a Data Lake Analytics Job pipeline or pipelines.
 
 ## SYNTAX
 
-### All In Account (Default)
+### GetAllInAccount (Default)
 ```
 Get-AzureRmDataLakeAnalyticsJobPipeline [-Account] <String> [-SubmittedAfter <DateTimeOffset>]
  [-SubmittedBefore <DateTimeOffset>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Specific Job Pipeline
+### GetBySpecificJobPipeline
 ```
 Get-AzureRmDataLakeAnalyticsJobPipeline [-Account] <String> [-PipelineId] <Guid>
  [-SubmittedAfter <DateTimeOffset>] [-SubmittedBefore <DateTimeOffset>]
@@ -81,7 +81,7 @@ ID of the specific job pipeline to return information for.
 
 ```yaml
 Type: Guid
-Parameter Sets: Specific Job Pipeline
+Parameter Sets: GetBySpecificJobPipeline
 Aliases: Id
 
 Required: True

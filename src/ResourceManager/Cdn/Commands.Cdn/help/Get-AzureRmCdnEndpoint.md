@@ -13,13 +13,13 @@ Gets a CDN endpoint.
 
 ## SYNTAX
 
-### Parameter Set for fields parameters (Default)
+### ByFieldsParameterSet (Default)
 ```
 Get-AzureRmCdnEndpoint [-EndpointName <String>] -ProfileName <String> -ResourceGroupName <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Parameter Set for object parameters
+### ByObjectParameterSet
 ```
 Get-AzureRmCdnEndpoint [-EndpointName <String>] -CdnProfile <PSProfile>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -42,7 +42,7 @@ Specifies the CDN profile object to which the endpoint belongs.
 
 ```yaml
 Type: PSProfile
-Parameter Sets: Parameter Set for object parameters
+Parameter Sets: ByObjectParameterSet
 Aliases: 
 
 Required: True
@@ -88,7 +88,7 @@ Specifies the name of the profile to which the endpoint belongs.
 
 ```yaml
 Type: String
-Parameter Sets: Parameter Set for fields parameters
+Parameter Sets: ByFieldsParameterSet
 Aliases: 
 
 Required: True
@@ -103,7 +103,7 @@ Specifies the name of the resource group to which the endpoint belongs.
 
 ```yaml
 Type: String
-Parameter Sets: Parameter Set for fields parameters
+Parameter Sets: ByFieldsParameterSet
 Aliases: 
 
 Required: True
