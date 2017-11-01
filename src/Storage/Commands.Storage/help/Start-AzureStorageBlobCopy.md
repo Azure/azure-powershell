@@ -111,7 +111,7 @@ That cmdlet starts the copy operation of the blob named ContosoPlanning2015.
 The previous cmdlet provides the source container.
 The *DestContainer* parameter specifies ContosoArchives as the destination container.
 
-### Example 3: Get a blob to copy
+### Example 3: Get all blobs in a container and copy them
 ```
 C:\PS>Get-AzureStorageBlob -Container "ContosoUploads" | Start-AzureStorageBlobCopy -DestContainer "ContosoArchives"
 ```
