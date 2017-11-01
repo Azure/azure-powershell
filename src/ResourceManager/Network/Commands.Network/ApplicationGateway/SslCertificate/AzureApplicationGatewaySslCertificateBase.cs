@@ -46,9 +46,7 @@ namespace Microsoft.Azure.Commands.Network
 
             sslCertificate.Name = this.Name;
             sslCertificate.Data = Convert.ToBase64String(File.ReadAllBytes(this.CertificateFile));
-#pragma warning disable 0618
             sslCertificate.Password = this.Password;
-#pragma warning restore 0618
             sslCertificate.Id =
                 ApplicationGatewayChildResourceHelper.GetResourceNotSetId(
                     this.NetworkClient.NetworkManagementClient.SubscriptionId,
