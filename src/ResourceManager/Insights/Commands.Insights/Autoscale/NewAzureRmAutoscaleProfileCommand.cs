@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.Monitor.Management.Models;
 using System;
 using System.Collections.Generic;
@@ -24,7 +23,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
     /// Create an autoscale profile
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRmAutoscaleProfile"), OutputType(typeof(AutoscaleProfile))]
-    public class NewAzureRmAutoscaleProfileCommand : AzureRMCmdlet
+    public class NewAzureRmAutoscaleProfileCommand : MonitorCmdletBase
     {
         private const string AddAutoscaleProfileNoScheduleParamGroup = "CreateWithoutScheduledTimes";
         private const string AddAutoscaleProfileFixDateParamGroup = "CreateWithFixedDateScheduling";
@@ -136,15 +135,20 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         #endregion
 
         /// <summary>
+        /// Executes the Cmdlet. This is a callback function to simplify the exception handling
+        /// </summary>
+        protected override void ProcessRecordInternal()
+        { }
+
+        /// <summary>
         /// Execute the cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            WriteWarning(
-                Utilities.FormatIdentifiedMessage(
-                    this.GetType(),
-                    "Parameter name change", 
-                    "The parameter plural names for the parameters will be deprecated in May 2018 in favor of the singular versions of the same names."));
+            this.WriteIdentifiedWarning(
+                cmdletName: "New-AzureRmAutoscaleProfile",
+                topic: "Parameter name change", 
+                message: "The parameter plural names for the parameters will be deprecated in a future breaking change release in favor of the singular versions of the same names.");
             AutoscaleProfile profile = this.CreateSettingProfile();
             WriteObject(profile);
         }

@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.Monitor.Management.Models;
 using System;
 using System.Management.Automation;
@@ -23,7 +22,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
     /// Create an AutoscaleNotification
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRmAutoscaleNotification"), OutputType(typeof(AutoscaleNotification))]
-    public class NewAzureRmAutoscaleNotificationCommand : AzureRMCmdlet
+    public class NewAzureRmAutoscaleNotificationCommand : MonitorCmdletBase
     {
         private const string Operation = "Scale";
 
@@ -56,15 +55,20 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         public SwitchParameter SendEmailToSubscriptionCoAdministrator { get; set; }
 
         /// <summary>
+        /// Executes the Cmdlet. This is a callback function to simplify the exception handling
+        /// </summary>
+        protected override void ProcessRecordInternal()
+        { }
+
+        /// <summary>
         /// Execute the cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            WriteWarning(
-                Utilities.FormatIdentifiedMessage(
-                    this.GetType(),
-                    "Parameter name change",
-                    "The parameter plural names for the parameters will be deprecated in May 2018 in favor of the singular versions of the same names."));
+            this.WriteIdentifiedWarning(
+                cmdletName: "New-AzureRmAutoscaleNotification",
+                topic: "Parameter name change",
+                message: "The parameter plural names for the parameters will be deprecated in a future breaking change release in favor of the singular versions of the same names.");
             if (!(this.SendEmailToSubscriptionAdministrator || this.SendEmailToSubscriptionCoAdministrator) &&
                 ((this.Webhook == null || this.Webhook.Length < 1) && (this.CustomEmail == null || this.CustomEmail.Length < 1)))
             {
