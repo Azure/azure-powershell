@@ -13,7 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Sql.Database.Model;
-using Microsoft.Azure.Commands.ResourceManager.Common.Tags; 
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Rest.Azure;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -132,18 +133,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
             {
                 ModelAdapter.GetDatabase(this.ResourceGroupName, this.ServerName, this.DatabaseName);
             }
-            catch (Hyak.Common.CloudException ex) // when using Hyak SDK
-            {
-                if (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
-                {
-                    // This is what we want.  We looked and there is no database with this name.
-                    return null;
-                }
-
-                // Unexpected exception encountered
-                throw;
-            }
-            catch (Microsoft.Rest.Azure.CloudException ex) // when using AutoRest SDK
+            catch (CloudException ex)
             {
                 if (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
