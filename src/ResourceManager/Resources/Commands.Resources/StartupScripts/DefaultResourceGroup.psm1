@@ -1,4 +1,5 @@
 ﻿# Set Default Resource Group for Resources cmdlets
+$nestedModules = Test-ModuleManifest '../AzureRM.Profile.psd1'
 $dllPath = '../../../../../Package/Debug/ResourceManager/AzureResourceManager/AzureRM.Resources/Microsoft.Azure.Management.ResourceManager.dll'
 $Assembly = [Reflection.Assembly]::LoadFrom($dllPath)
 $AllCmdlets = $Assembly.GetTypes() | where {$_.CustomAttributes.AttributeType.Name -contains "CmdletAttribute"}

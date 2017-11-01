@@ -48,6 +48,15 @@ function Create-ModulePsm1
      $template = $template -replace "%DATE%", [string](Get-Date)
      $template = $template -replace "%STRICT-DEPENDENCIES%", $strict
      $template = $template -replace "%DEPENDENCIES%", $loose
+
+     $nestedModules = $module.NestedModules
+     $dllModules = "@("
+     $nestedModules | ForEach-Object {
+        $dllModules += "'./" + $_ + ".dll',"
+     }
+     $dllModules += ")"
+     $template = $template -replace "%NESTED-MODULES%", $dllModules
+     
      Write-Host "Writing psm1 manifest to $templateOutputPath"
      $template | Out-File -FilePath $templateOutputPath -Force
      $file = Get-Item -Path $templateOutputPath
@@ -57,7 +66,7 @@ function Create-ModulePsm1
 if ([string]::IsNullOrEmpty($buildConfig))
 {
     Write-Verbose "Setting build configuration to 'Release'"
-    $buildConfig = "Release"
+    $buildConfig = "Debug"
 }
 
 if ([string]::IsNullOrEmpty($scope))
