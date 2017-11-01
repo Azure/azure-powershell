@@ -12,7 +12,7 @@ Updates managed application
 
 ## SYNTAX
 
-### The managed application name parameter set. (Default)
+### SetByNameAndResourceGroup (Default)
 ```
 Set-AzureRmManagedApplication -Name <String> -ResourceGroupName <String> [-ManagedResourceGroupName <String>]
  [-ManagedApplicationDefinitionId <String>] [-Parameter <String>] [-Kind <String>] [-Plan <Hashtable>]
@@ -20,7 +20,7 @@ Set-AzureRmManagedApplication -Name <String> -ResourceGroupName <String> [-Manag
  [-Confirm] [<CommonParameters>]
 ```
 
-### The managed application Id parameter set.
+### SetById
 ```
 Set-AzureRmManagedApplication -Id <String> [-ManagedResourceGroupName <String>]
  [-ManagedApplicationDefinitionId <String>] [-Parameter <String>] [-Kind <String>] [-Plan <Hashtable>]
@@ -78,7 +78,7 @@ The fully qualified managed application Id, including the subscription. e.g. /su
 
 ```yaml
 Type: String
-Parameter Sets: The managed application Id parameter set.
+Parameter Sets: SetById
 Aliases: ResourceId
 
 Required: True
@@ -139,7 +139,7 @@ The managed application name.
 
 ```yaml
 Type: String
-Parameter Sets: The managed application name parameter set.
+Parameter Sets: SetByNameAndResourceGroup
 Aliases: 
 
 Required: True
@@ -200,7 +200,7 @@ The resource group name.
 
 ```yaml
 Type: String
-Parameter Sets: The managed application name parameter set.
+Parameter Sets: SetByNameAndResourceGroup
 Aliases: 
 
 Required: True

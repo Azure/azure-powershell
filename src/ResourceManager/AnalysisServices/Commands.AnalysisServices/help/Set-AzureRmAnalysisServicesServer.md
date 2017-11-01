@@ -19,7 +19,7 @@ Set-AzureRmAnalysisServicesServer [-Name] <String> [[-ResourceGroupName] <String
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Disable Backup
+### DisableBackup
 ```
 Set-AzureRmAnalysisServicesServer [-Name] <String> [[-ResourceGroupName] <String>] [[-Sku] <String>]
  [[-Tag] <Hashtable>] [[-Administrator] <String>] [-PassThru] [-DisableBackup]
@@ -93,7 +93,7 @@ To re-enable the backup blob container, please provide the backup blob container
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: Disable Backup
+Parameter Sets: DisableBackup
 Aliases: 
 
 Required: True
