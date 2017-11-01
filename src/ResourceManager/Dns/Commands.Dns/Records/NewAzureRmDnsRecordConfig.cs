@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------Caatag,
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -98,7 +98,8 @@ namespace Microsoft.Azure.Commands.Dns
         public string CaaTag { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The value field for the CAA record to add.", ParameterSetName = ParameterSetCaa)]
-        [ValidateNotNullOrEmpty]
+        [ValidateNotNull]
+        [AllowEmptyString]
         [ValidateLength(DnsRecordBase.CaaRecordMinLength, DnsRecordBase.CaaRecordMaxLength)]
         public string CaaValue { get; set; }
 
