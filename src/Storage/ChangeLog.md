@@ -18,7 +18,11 @@
         - Additional information about change #1
 -->
 ## Current Release
-
+* Upgrade to Azure Storage Client Library 8.5.0 and Azure Storage DataMovement Library 0.6.3
+* Add File Share Snapshot Support Feature
+    - Add 'SnapshotTime' parameter to Get-AzureStorageShare
+    - Add 'IncludeAllSnapshot' parameter to Remove-AzureStorageShare
+	
 ## Version 3.4.1
 
 ## Version 3.4.0

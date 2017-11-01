@@ -56,13 +56,6 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         /// </summary>
         public DateTime? UpdatedAt { get; set; }
 
-
-        [ObsoleteAttribute("EventHubPath property is mark as obsolete and will be remved in Breaking changes build", false)]
-        /// <summary>
-        /// The path of the event hub.
-        /// </summary>
-        public string EventHubPath { get; set; }
-
         /// <summary>
         /// The user metadata.
         /// </summary>

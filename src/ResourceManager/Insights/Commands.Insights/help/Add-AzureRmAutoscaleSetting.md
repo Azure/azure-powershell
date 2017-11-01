@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
+Module Name: AzureRM.Insights
 ms.assetid: 7436F31F-9DCB-4365-BA6D-41BDB5D7FCB6
 online version: 
 schema: 2.0.0
@@ -12,21 +13,21 @@ Creates an Autoscale setting.
 
 ## SYNTAX
 
-### Parameters for Add-AzureRmAutoscaleSetting cmdlet in the update semantics
+### UpdateAutoscaleSetting
 ```
 Add-AzureRmAutoscaleSetting -SettingSpec <PSAutoscaleSetting> -ResourceGroup <String> [-DisableSetting]
- [-AutoscaleProfiles <System.Collections.Generic.List`1[Microsoft.Azure.Management.Insights.Models.AutoscaleProfile]>]
- [-Notifications <System.Collections.Generic.List`1[Microsoft.Azure.Management.Insights.Models.AutoscaleNotification]>]
- [<CommonParameters>]
+ [-AutoscaleProfiles <System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleProfile]>]
+ [-Notifications <System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleNotification]>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Parameters for Add-AzureRmAutoscaleSetting cmdlet in the create semantics
+### CreateAutoscaleSetting
 ```
 Add-AzureRmAutoscaleSetting -Location <String> -Name <String> -ResourceGroup <String> [-DisableSetting]
- [-AutoscaleProfiles <System.Collections.Generic.List`1[Microsoft.Azure.Management.Insights.Models.AutoscaleProfile]>]
+ [-AutoscaleProfiles <System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleProfile]>]
  -TargetResourceId <String>
- [-Notifications <System.Collections.Generic.List`1[Microsoft.Azure.Management.Insights.Models.AutoscaleNotification]>]
- [<CommonParameters>]
+ [-Notifications <System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleNotification]>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -59,7 +60,7 @@ The final command creates an Autoscale setting using the profiles in $Profile1 a
 Specifies a list of profiles to add to the Autoscale setting, or $Null to add no profile.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Management.Insights.Models.AutoscaleProfile]
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleProfile]
 Parameter Sets: (All)
 Aliases: 
 
@@ -67,6 +68,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -90,7 +106,7 @@ Specifies the location of the Autoscale setting.
 
 ```yaml
 Type: String
-Parameter Sets: Parameters for Add-AzureRmAutoscaleSetting cmdlet in the create semantics
+Parameter Sets: CreateAutoscaleSetting
 Aliases: 
 
 Required: True
@@ -105,7 +121,7 @@ Specifies the name of the Autoscale setting to create.
 
 ```yaml
 Type: String
-Parameter Sets: Parameters for Add-AzureRmAutoscaleSetting cmdlet in the create semantics
+Parameter Sets: CreateAutoscaleSetting
 Aliases: 
 
 Required: True
@@ -119,7 +135,7 @@ Accept wildcard characters: False
 Specifies a list of comma-separated notifications.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Management.Insights.Models.AutoscaleNotification]
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleNotification]
 Parameter Sets: (All)
 Aliases: 
 
@@ -151,7 +167,7 @@ You can use the Get-AzureRmAutoscaleSetting cmdlet to get an **AutoscaleSetting*
 
 ```yaml
 Type: PSAutoscaleSetting
-Parameter Sets: Parameters for Add-AzureRmAutoscaleSetting cmdlet in the update semantics
+Parameter Sets: UpdateAutoscaleSetting
 Aliases: 
 
 Required: True
@@ -166,7 +182,7 @@ Specifies the ID of the resource to autoscale.
 
 ```yaml
 Type: String
-Parameter Sets: Parameters for Add-AzureRmAutoscaleSetting cmdlet in the create semantics
+Parameter Sets: CreateAutoscaleSetting
 Aliases: 
 
 Required: True
