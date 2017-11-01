@@ -778,7 +778,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "Remove an Azure ML commitment plan specified by name and resource group.",
+          "Name": "RemoveByNameAndResourceGroup",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -879,7 +879,7 @@
           ]
         },
         {
-          "Name": "Remove an Azure ML commitment plan specified as an object.",
+          "Name": "RemoveByObject",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -1700,7 +1700,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "Remove an Azure ML web service resouce by name and resource group.",
+          "Name": "RemoveByNameAndResourceGroup",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -1801,7 +1801,7 @@
           ]
         },
         {
-          "Name": "Remove an Azure ML web service specified as an object.",
+          "Name": "RemoveByObject",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -2614,7 +2614,7 @@
           ]
         },
         {
-          "Name": "Update specific properties of the .",
+          "Name": "UpdateFromParameters",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -3001,7 +3001,7 @@
           ]
         },
         {
-          "Name": "Create a new Azure ML webservice from a WebService instance definition.",
+          "Name": "UpdateFromObject",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -3342,7 +3342,7 @@
           ]
         },
         {
-          "Name": "Export to file.",
+          "Name": "ExportToFile",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -3450,7 +3450,7 @@
           ]
         },
         {
-          "Name": "Export to JSON string.",
+          "Name": "ExportToJSON",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -3670,7 +3670,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "Get an Azure ML web service's access keys given its name and resource group.",
+          "Name": "GetByNameAndResourceGroup",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -3749,7 +3749,7 @@
           ]
         },
         {
-          "Name": "Get the access kesy for the given web service instance.",
+          "Name": "GetByInstance",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -3941,7 +3941,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "Import from JSON file.",
+          "Name": "ImportFromJSONFile",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -3998,7 +3998,7 @@
           ]
         },
         {
-          "Name": "Import from JSON string.",
+          "Name": "ImportFromJSONString.",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -4989,7 +4989,7 @@
           ]
         },
         {
-          "Name": "Create a new Azure ML webservice from a JSON definiton file.",
+          "Name": "CreateFromFile",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -5134,7 +5134,7 @@
           ]
         },
         {
-          "Name": "Create a new Azure ML webservice from a WebService instance definition.",
+          "Name": "CreateFromInstance",
           "Parameters": [
             {
               "ParameterMetadata": {

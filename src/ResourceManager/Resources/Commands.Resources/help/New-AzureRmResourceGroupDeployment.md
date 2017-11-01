@@ -13,14 +13,14 @@ Adds an Azure deployment to a resource group.
 
 ## SYNTAX
 
-### Deployment via template file without parameters (Default)
+### ByTemplateFileWithNoParameters (Default)
 ```
 New-AzureRmResourceGroupDeployment [-Name <String>] -ResourceGroupName <String> [-Mode <DeploymentMode>]
  [-DeploymentDebugLogLevel <String>] [-Force] -TemplateFile <String> [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Deployment via template file and template parameters object
+### ByTemplateFileAndParameterObject
 ```
 New-AzureRmResourceGroupDeployment [-Name <String>] -ResourceGroupName <String> [-Mode <DeploymentMode>]
  [-DeploymentDebugLogLevel <String>] [-Force] -TemplateParameterObject <Hashtable> -TemplateFile <String>
@@ -28,7 +28,7 @@ New-AzureRmResourceGroupDeployment [-Name <String>] -ResourceGroupName <String> 
  [<CommonParameters>]
 ```
 
-### Deployment via template uri and template parameters object
+### ByTemplateUriAndParameterObject
 ```
 New-AzureRmResourceGroupDeployment [-Name <String>] -ResourceGroupName <String> [-Mode <DeploymentMode>]
  [-DeploymentDebugLogLevel <String>] [-Force] -TemplateParameterObject <Hashtable> -TemplateUri <String>
@@ -36,7 +36,7 @@ New-AzureRmResourceGroupDeployment [-Name <String>] -ResourceGroupName <String> 
  [<CommonParameters>]
 ```
 
-### Deployment via template file and template parameters file
+### ByTemplateFileAndParameterFile
 ```
 New-AzureRmResourceGroupDeployment [-Name <String>] -ResourceGroupName <String> [-Mode <DeploymentMode>]
  [-DeploymentDebugLogLevel <String>] [-Force] -TemplateParameterFile <String> -TemplateFile <String>
@@ -44,7 +44,7 @@ New-AzureRmResourceGroupDeployment [-Name <String>] -ResourceGroupName <String> 
  [<CommonParameters>]
 ```
 
-### Deployment via template uri and template parameters file
+### ByTemplateUriAndParameterFile
 ```
 New-AzureRmResourceGroupDeployment [-Name <String>] -ResourceGroupName <String> [-Mode <DeploymentMode>]
  [-DeploymentDebugLogLevel <String>] [-Force] -TemplateParameterFile <String> -TemplateUri <String>
@@ -52,7 +52,7 @@ New-AzureRmResourceGroupDeployment [-Name <String>] -ResourceGroupName <String> 
  [<CommonParameters>]
 ```
 
-### Deployment via template file template parameters uri
+### ByTemplateFileAndParameterUri
 ```
 New-AzureRmResourceGroupDeployment [-Name <String>] -ResourceGroupName <String> [-Mode <DeploymentMode>]
  [-DeploymentDebugLogLevel <String>] [-Force] -TemplateParameterUri <String> -TemplateFile <String>
@@ -60,7 +60,7 @@ New-AzureRmResourceGroupDeployment [-Name <String>] -ResourceGroupName <String> 
  [<CommonParameters>]
 ```
 
-### Deployment via template uri and template parameters uri
+### ByTemplateUriAndParameterUri
 ```
 New-AzureRmResourceGroupDeployment [-Name <String>] -ResourceGroupName <String> [-Mode <DeploymentMode>]
  [-DeploymentDebugLogLevel <String>] [-Force] -TemplateParameterUri <String> -TemplateUri <String>
@@ -68,7 +68,7 @@ New-AzureRmResourceGroupDeployment [-Name <String>] -ResourceGroupName <String> 
  [<CommonParameters>]
 ```
 
-### Deployment via template uri without parameters
+### ByTemplateUriWithNoParameters
 ```
 New-AzureRmResourceGroupDeployment [-Name <String>] -ResourceGroupName <String> [-Mode <DeploymentMode>]
  [-DeploymentDebugLogLevel <String>] [-Force] -TemplateUri <String> [-ApiVersion <String>] [-Pre]
@@ -246,7 +246,7 @@ This can be a custom template or a gallery template that is saved as a JSON file
 
 ```yaml
 Type: String
-Parameter Sets: Deployment via template file without parameters, Deployment via template file and template parameters object, Deployment via template file and template parameters file, Deployment via template file template parameters uri
+Parameter Sets: ByTemplateFileWithNoParameters, ByTemplateFileAndParameterObject, ByTemplateFileAndParameterFile, ByTemplateFileAndParameterUri
 Aliases: 
 
 Required: True
@@ -265,7 +265,7 @@ To use the dynamic parameters, type a minus sign (-) to indicate a parameter nam
 
 ```yaml
 Type: String
-Parameter Sets: Deployment via template file and template parameters file, Deployment via template uri and template parameters file
+Parameter Sets: ByTemplateFileAndParameterFile, ByTemplateUriAndParameterFile
 Aliases: 
 
 Required: True
@@ -283,7 +283,7 @@ Template parameters are dynamically added to the command when you specify a temp
 
 ```yaml
 Type: Hashtable
-Parameter Sets: Deployment via template file and template parameters object, Deployment via template uri and template parameters object
+Parameter Sets: ByTemplateFileAndParameterObject, ByTemplateUriAndParameterObject
 Aliases: 
 
 Required: True
@@ -298,7 +298,7 @@ Specifies the URI of a template parameters file.
 
 ```yaml
 Type: String
-Parameter Sets: Deployment via template file template parameters uri, Deployment via template uri and template parameters uri
+Parameter Sets: ByTemplateFileAndParameterUri, ByTemplateUriAndParameterUri
 Aliases: 
 
 Required: True
@@ -314,7 +314,7 @@ This file can be a custom template or a gallery template that is saved as a JSON
 
 ```yaml
 Type: String
-Parameter Sets: Deployment via template uri and template parameters object, Deployment via template uri and template parameters file, Deployment via template uri and template parameters uri, Deployment via template uri without parameters
+Parameter Sets: ByTemplateUriAndParameterObject, ByTemplateUriAndParameterFile, ByTemplateUriAndParameterUri, ByTemplateUriWithNoParameters
 Aliases: 
 
 Required: True

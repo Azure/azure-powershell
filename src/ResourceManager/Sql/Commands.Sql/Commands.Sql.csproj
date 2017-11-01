@@ -187,6 +187,14 @@
     <Compile Include="Database Backup\Model\AzureSqlServerBackupLongTermRetentionVaultModel.cs" />
     <Compile Include="Database Backup\Model\AzureSqlDeletedDatabaseBackupModel.cs" />
     <Compile Include="Database Backup\Model\AzureSqlDatabaseGeoBackupModel.cs" />
+    <Compile Include="ServerDnsAlias\Cmdlet\AzureSqlServerDnsAliasCmdletBase.cs" />
+    <Compile Include="ServerDnsAlias\Cmdlet\GetAzureSqlServerDnsAlias.cs" />
+    <Compile Include="ServerDnsAlias\Cmdlet\RemoveAzureSqlServerDnsAlias.cs" />
+    <Compile Include="ServerDnsAlias\Cmdlet\SetAzureSqlServerDnsAlias.cs" />
+    <Compile Include="ServerDnsAlias\Model\AzureSqlServerDnsAliasModel.cs" />
+    <Compile Include="ServerDnsAlias\Cmdlet\NewAzureSqlServerDnsAlias.cs" />
+    <Compile Include="ServerDnsAlias\Services\AzureSqlServerDnsAliasAdapter.cs" />
+    <Compile Include="ServerDnsAlias\Services\AzureSqlServerDnsAliasCommunicator.cs" />
     <Compile Include="ThreatDetection\Cmdlet\GetAzureSqlServerThreatDetection.cs" />
     <Compile Include="ThreatDetection\Cmdlet\RemoveSqlServerThreatDetection.cs" />
     <Compile Include="ThreatDetection\Cmdlet\SetAzureSqlServerThreatDetection.cs" />

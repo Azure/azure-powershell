@@ -13,20 +13,20 @@ Gets policy definitions.
 
 ## SYNTAX
 
-### The list all policy definitions parameter set. (Default)
+### GetAllPolicyDefinitions (Default)
 ```
 Get-AzureRmPolicyDefinition [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
 ```
 
-### The policy definition name parameter set.
+### GetByPolicyDefintionName
 ```
 Get-AzureRmPolicyDefinition -Name <String> [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
  [-InformationVariable <String>] [<CommonParameters>]
 ```
 
-### The policy definition Id parameter set.
+### GetByPolicyDefinitionId
 ```
 Get-AzureRmPolicyDefinition -Id <String> [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
@@ -90,7 +90,7 @@ Specifies the fully qualified resource ID for the policy definition that this cm
 
 ```yaml
 Type: String
-Parameter Sets: The policy definition Id parameter set.
+Parameter Sets: GetByPolicyDefinitionId
 Aliases: ResourceId
 
 Required: True
@@ -144,7 +144,7 @@ Specifies the name of the policy definition that this cmdlet gets.
 
 ```yaml
 Type: String
-Parameter Sets: The policy definition name parameter set.
+Parameter Sets: GetByPolicyDefintionName
 Aliases: 
 
 Required: True
