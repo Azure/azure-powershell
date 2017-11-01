@@ -57,7 +57,7 @@ function Create-ModulePsm1
      {
          foreach ($dll in $ModuleMetadata.NestedModules)
          {
-             $importedModules += "Import-Module (Join-Path -Path `$PSScriptRoot -ChildPath " + $dll.Substring(2) + ")"
+             $importedModules += "Import-Module (Join-Path -Path `$PSScriptRoot -ChildPath " + $dll.Substring(2) + ")`r`n"
          }
      }
 
@@ -90,7 +90,7 @@ if (`$module -ne `$null -and `$module.Version.ToString().CompareTo(`"$MinimumVer
 elseif (`$module -eq `$null) `
 { `
     Import-Module $ModuleName -MinimumVersion $MinimumVersion -Scope Global `
-}`n"
+}`r`n"
     }
 }
 
