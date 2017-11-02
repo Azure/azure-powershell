@@ -27,11 +27,10 @@ using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Mod
 using RestAzureNS = Microsoft.Rest.Azure;
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using SystemNet = System.Net;
-using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
+using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
@@ -353,15 +352,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             string scriptDownloadLocation =
                     (string)ProviderData[RecoveryPointParams.FileDownloadLocation];
-            string absoluteFilePath = string.Empty;
             if (string.IsNullOrEmpty(scriptDownloadLocation))
             {
                 scriptDownloadLocation = Directory.GetCurrentDirectory();
             }
-            absoluteFilePath = Path.Combine(scriptDownloadLocation, result.Filename);
-            File.WriteAllBytes(absoluteFilePath, Convert.FromBase64String(content));
-            
-            Logger.Instance.WriteVerbose(string.Format(Resources.MountRecoveryPointInfoMessage, result.Password));
+            result.FilePath = Path.Combine(scriptDownloadLocation, result.Filename);
+            AzureSession.Instance.DataStore.WriteFile(result.FilePath, Convert.FromBase64String(content));
+
+            Logger.Instance.WriteVerbose(string.Format(
+                Resources.MountRecoveryPointInfoMessage, result.FilePath, result.Password));
             return result;
         }
 

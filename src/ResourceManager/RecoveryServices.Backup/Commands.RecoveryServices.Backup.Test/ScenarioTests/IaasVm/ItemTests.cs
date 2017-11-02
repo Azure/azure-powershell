@@ -12,6 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Management.Automation;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -78,8 +82,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         [Trait(TestConstants.Workload, TestConstants.AzureVM)]
         public void TestAzureVMRPMountScript()
         {
-            TestController.NewInstance.RunPsTest(
+            Collection<PSObject> psObjects = TestController.NewInstance.RunPsTest(
                 PsBackupProviderTypes.IaasVm, "Test-AzureVMRPMountScript");
+
+            AzureVmRPMountScriptDetails mountScriptDetails = (AzureVmRPMountScriptDetails)psObjects.First(
+                psObject => psObject.BaseObject.GetType() == typeof(AzureVmRPMountScriptDetails)).BaseObject;
+
+            Assert.True(AzureSession.Instance.DataStore.FileExists(mountScriptDetails.FilePath));
         }
     }
 }

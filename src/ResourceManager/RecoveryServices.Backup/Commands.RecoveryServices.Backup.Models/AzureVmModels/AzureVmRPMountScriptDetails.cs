@@ -36,6 +36,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// </summary>
         public string Filename { get; set; }
 
+        /// <summary>
+        /// Absolute path of the downloaded mount script
+        /// </summary>
+        public string FilePath { get; set; }
+
         public AzureVmRPMountScriptDetails(string osType, string fileName, string password)
         {
             OsType = osType;

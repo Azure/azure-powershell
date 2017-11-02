@@ -248,6 +248,9 @@ function Test-AzureVMRPMountScript
 		Assert-NotNull $mountScriptDetails.OsType
 		Assert-NotNull $mountScriptDetails.Password
 		Assert-NotNull $mountScriptDetails.Filename
+		Assert-NotNull $mountScriptDetails.FilePath
+
+		Write-Output $mountScriptDetails
 
 		# Disable the mount script of recovery point
 		Disable-AzureRmRecoveryServicesBackupRPMountScript -RecoveryPoint $rp

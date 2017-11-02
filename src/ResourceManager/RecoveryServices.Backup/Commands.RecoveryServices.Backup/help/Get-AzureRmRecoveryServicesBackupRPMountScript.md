@@ -58,7 +58,7 @@ Accept wildcard characters: False
 ```
 
 ### -Path
-Location where the file should be downloaded in the case of file recovery.
+Location where the file should be downloaded in the case of file recovery. If -Path is not provided, the script file will be downloaded in the current directory.
 
 ```yaml
 Type: String
