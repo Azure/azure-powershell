@@ -716,9 +716,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Run this script on the machine where you want to copy the files
         ///
-        ///Path of the file along with filename: 
+        ///Path of the file along with filename: {0}
         ///
-        ///Password to run the file: {0}.
+        ///Password to run the file: {1}.
         /// </summary>
         public static string MountRecoveryPointInfoMessage {
             get {

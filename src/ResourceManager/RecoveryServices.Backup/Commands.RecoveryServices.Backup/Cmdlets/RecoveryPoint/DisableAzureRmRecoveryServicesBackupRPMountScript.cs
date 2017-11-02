@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// Files won't be mounted after running this cmdlet.
     /// </summary>
     [Cmdlet(VerbsLifecycle.Disable, "AzureRmRecoveryServicesBackupRPMountScript",
-        SupportsShouldProcess = true)]
+        SupportsShouldProcess = true), OutputType(typeof(RecoveryPointBase))]
     public class DisableAzureRmRecoveryServicesBackupRPMountScript : RecoveryServicesBackupCmdletBase
     {
         /// <summary>

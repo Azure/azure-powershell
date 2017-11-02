@@ -35,6 +35,8 @@ using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using StorageMgmtNS = Microsoft.Azure.Management.Storage;
 using NetworkMgmtNS = Microsoft.Azure.Management.Network;
 using ComputeMgmtNS = Microsoft.Azure.Management.Compute;
+using System.Collections.ObjectModel;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
@@ -139,12 +141,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        public void RunPsTest(PsBackupProviderTypes providerType, params string[] scripts)
+        public Collection<PSObject> RunPsTest(PsBackupProviderTypes providerType, params string[] scripts)
         {
             var callingClassType = TestUtilities.GetCallingClass(2);
             var mockName = TestUtilities.GetCurrentMethodName(2);
 
-            RunPsTestWorkflow(
+            return RunPsTestWorkflow(
                 providerType,
                 () => scripts,
                 // no custom initializer
@@ -155,7 +157,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 mockName);
         }
 
-        public void RunPsTestWorkflow(
+        public Collection<PSObject> RunPsTestWorkflow(
             PsBackupProviderTypes providerType,
             Func<string[]> scriptBuilder,
             Action<LegacyTest.CSMTestEnvironmentFactory> initialize,
@@ -229,7 +231,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 
                         if (psScripts != null)
                         {
-                            helper.RunPowerShellTest(psScripts);
+                            return helper.RunPowerShellTest(psScripts);
                         }
                     }
                 }
@@ -241,6 +243,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                     }
                 }
             }
+
+            return null;
         }
 
         private RecoveryServicesNS.RecoveryServicesClient GetRsClient(MockContext context)
