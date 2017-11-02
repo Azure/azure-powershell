@@ -195,7 +195,7 @@ You cannot manually delete SOA records.
 Type: RecordType
 Parameter Sets: Fields, Mixed
 Aliases: 
-Accepted values: A, AAAA, CNAME, MX, NS, PTR, SOA, SRV, TXT
+Accepted values: A, AAAA, CAA, CNAME, MX, NS, PTR, SOA, SRV, TXT
 
 Required: True
 Position: Named
