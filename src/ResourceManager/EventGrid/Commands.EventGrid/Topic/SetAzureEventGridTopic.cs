@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.EventGrid.Models;
 using Microsoft.Azure.Commands.EventGrid.Utilities;
 using Microsoft.Azure.Management.EventGrid.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.EventGrid
 {
@@ -32,6 +33,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             Position = 0,
             HelpMessage = "Resource Group Name.",
             ParameterSetName = TopicNameParameterSet)]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         [Alias(AliasResourceGroup)]
         public string ResourceGroupName { get; set; }
