@@ -39,10 +39,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Gets or sets EmailSubscriptionOwner .Mail to subscription owner.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.EmailToSubscriptionOwner, Mandatory = true)]
-        public SwitchParameter EnableEmailSubscriptionOwners { get; set; }
+        public SwitchParameter EnableEmailSubscriptionOwner { get; set; }
 
         [Parameter(ParameterSetName = ASRParameterSets.DisableEmailToSubcriptionOwner, Mandatory = true)]
-        public SwitchParameter DisableEmailToSubscriptionOwners { get; set; }
+        public SwitchParameter DisableEmailToSubscriptionOwner { get; set; }
 
         /// <summary>
         ///     Gets or sets the custom email list.
@@ -121,12 +121,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             }
 
 
-            if (this.EnableEmailSubscriptionOwners.IsPresent)
+            if (this.EnableEmailSubscriptionOwner.IsPresent)
             {
                 alertProps.SendToOwners = SendToOwners.Send;
             }
 
-            if (this.DisableEmailToSubscriptionOwners.IsPresent)
+            if (this.DisableEmailToSubscriptionOwner.IsPresent)
             {
                 alertProps.SendToOwners = SendToOwners.DoNotSend;
             }

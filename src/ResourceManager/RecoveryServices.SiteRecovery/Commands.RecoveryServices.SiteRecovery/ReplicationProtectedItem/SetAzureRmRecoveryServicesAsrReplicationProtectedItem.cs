@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [ValidateSet(
             Constants.True,
             Constants.False)]
-        public string UseManagedDisks { get; set; }
+        public string UseManagedDisk { get; set; }
 
         /// <summary>
         ///     ProcessRecord of the command.
@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     string.IsNullOrEmpty(this.Size) &&
                     string.IsNullOrEmpty(this.PrimaryNic) &&
                     string.IsNullOrEmpty(this.RecoveryNetworkId) &&
-                    this.UseManagedDisks == null &&
+                    this.UseManagedDisk == null &&
                     string.IsNullOrEmpty(this.RecoveryAvailabilitySet) &&
                     string.IsNullOrEmpty(this.RecoveryResourceGroupId) &&
                     string.IsNullOrEmpty(this.LicenseType))
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 var vmRecoveryNetworkId = this.RecoveryNetworkId;
                 var licenseType = this.LicenseType;
                 var recoveryResourceGroupId = this.RecoveryResourceGroupId;
-                var useManagedDisk = this.UseManagedDisks;
+                var useManagedDisk = this.UseManagedDisk;
                 var availabilitySetId = this.RecoveryAvailabilitySet;
                 var vMNicInputDetailsList = new List<VMNicInputDetails>();
                 var providerSpecificInput = new UpdateReplicationProtectedItemProviderInput();
@@ -224,7 +224,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         availabilitySetId = providerSpecificDetails.RecoveryAvailabilitySetId;
                     }
 
-                    if (string.IsNullOrEmpty(this.UseManagedDisks))
+                    if (string.IsNullOrEmpty(this.UseManagedDisk))
                     {
                         useManagedDisk = providerSpecificDetails.UseManagedDisks;
                     }
@@ -293,7 +293,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         availabilitySetId = providerSpecificDetails.RecoveryAvailabilitySetId;
                     }
 
-                    if (string.IsNullOrEmpty(this.UseManagedDisks))
+                    if (string.IsNullOrEmpty(this.UseManagedDisk))
                     {
                         useManagedDisk = providerSpecificDetails.UseManagedDisks;
                     }

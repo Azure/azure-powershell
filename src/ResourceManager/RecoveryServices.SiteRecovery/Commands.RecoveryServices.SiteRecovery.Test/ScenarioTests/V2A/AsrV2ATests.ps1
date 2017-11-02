@@ -355,7 +355,7 @@ function Test-RPJobReverse
 
     #$job  = Start-AzureRmRecoveryServicesAsrTestFailoverJob -RecoveryPlan $RP -Direction RecoveryToPrimary -AzureVMNetworkId $rpi[0].SelectedRecoveryAzureNetworkId
     #WaitForJobCompletion -JobId $Job.Name
-    #$cleanupJob = Start-AzureRmRecoveryServicesAsrTestFailoverCleanupJob -RecoveryPlan $RP -Comments "testing done"
+    #$cleanupJob = Start-AzureRmRecoveryServicesAsrTestFailoverCleanupJob -RecoveryPlan $RP -Comment "testing done"
     #WaitForJobCompletion -JobId $cleanupJob.Name
     
     $foJob = Start-AzureRmRecoveryServicesAsrUnPlannedFailoverJob -RecoveryPlan $RP -Direction RecoveryToPrimary
@@ -459,7 +459,7 @@ function V2ATestFailoverJob
 
     WaitForJobCompletion -JobId $tfoJob.Name
 
-    $cleanupJob = Start-AzureRmRecoveryServicesAsrTestFailoverCleanupJob -ReplicationProtectedItem $rpi -Comments "testing done"
+    $cleanupJob = Start-AzureRmRecoveryServicesAsrTestFailoverCleanupJob -ReplicationProtectedItem $rpi -Comment "testing done"
     WaitForJobCompletion -JobId $cleanupJob.Name
     }
 
@@ -557,7 +557,7 @@ function Test-SetRPI
         $pc =  Get-ASRProtectionContainer -FriendlyName $pcName -Fabric $fabric
         $rpi = get-AzureRmRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $pc -Name "-RPI"
         Set-AzureRmRecoveryServicesAsrReplicationProtectedItem -InputObject $rpi -Name "VSPS212" -PrimaryNic $rpi.nicDetailsList[0].nicId -RecoveryNetworkId `
-                        $AzureVmNetworkId -RecoveryNicStaticIPAddress "10.151.128.205" -RecoveryNicSubnetName "Subnet-2" -UseManagedDisks $true
+                        $AzureVmNetworkId -RecoveryNicStaticIPAddress "10.151.128.205" -RecoveryNicSubnetName "Subnet-2" -UseManagedDisk "True"
     
 }
 

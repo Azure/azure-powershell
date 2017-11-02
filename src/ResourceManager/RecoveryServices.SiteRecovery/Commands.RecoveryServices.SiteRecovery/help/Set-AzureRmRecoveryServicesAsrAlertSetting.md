@@ -20,13 +20,13 @@ Set-AzureRmRecoveryServicesAsrAlertSetting [-CustomEmailAddress <String[]>] [-Lo
 
 ### EmailToSubscriptionOwner
 ```
-Set-AzureRmRecoveryServicesAsrAlertSetting [-EnableEmailSubscriptionOwners] [-CustomEmailAddress <String[]>]
+Set-AzureRmRecoveryServicesAsrAlertSetting [-EnableEmailSubscriptionOwner] [-CustomEmailAddress <String[]>]
  [-LocaleID <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DisableEmailToSubcriptionOwner
 ```
-Set-AzureRmRecoveryServicesAsrAlertSetting [-DisableEmailToSubscriptionOwners] [-CustomEmailAddress <String[]>]
+Set-AzureRmRecoveryServicesAsrAlertSetting [-DisableEmailToSubscriptionOwner] [-CustomEmailAddress <String[]>]
  [-LocaleID <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -125,21 +125,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DisableEmailToSubscriptionOwners
-Switch parameter specifies enable notification to subscription owner.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: DisableEmailToSubcriptionOwner
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -155,21 +140,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnableEmailSubscriptionOwners
-Switch paramter specifies enable notification to subscription owner.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: EmailToSubscriptionOwner
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -WhatIf
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
@@ -179,6 +149,36 @@ Parameter Sets: (All)
 Aliases: wi
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisableEmailToSubscriptionOwner
+Switch parameter specifies enable notification to subscription owner.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: DisableEmailToSubcriptionOwner
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableEmailSubscriptionOwner
+Switch paramter specifies enable notification to subscription owner.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: EmailToSubscriptionOwner
+Aliases: 
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

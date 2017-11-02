@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [Parameter(ParameterSetName = ASRParameterSets.ByRPObject, Mandatory = false)]
         [Parameter(ParameterSetName = ASRParameterSets.ByRPIObject, Mandatory = false)]
         [Parameter(ParameterSetName = ASRParameterSets.ByResourceId, Mandatory = false)]
-        public string Comments { get; set; }
+        public string Comment { get; set; }
 
         /// <summary>
         ///     ProcessRecord of the command.
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
             var testFailoverCleanupInputProperties = new TestFailoverCleanupInputProperties
             {
-                Comments = this.Comments == null ? "" : this.Comments
+                Comments = this.Comment == null ? "" : this.Comment
             };
 
             var input = new TestFailoverCleanupInput
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
            var recoveryPlanTestFailoverCleanupInputProperties =
                 new RecoveryPlanTestFailoverCleanupInputProperties
                 {
-                    Comments = this.Comments
+                    Comments = this.Comment
                 };
 
             var recoveryPlanTestFailoverCleanupInput = new RecoveryPlanTestFailoverCleanupInput

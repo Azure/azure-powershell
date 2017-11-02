@@ -141,32 +141,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             return data.UnFormatArmId(ARMResourceIdPaths.SRSArmUrlPattern)[2];
         }
-
-        public static void GetResourceProviderNamespaceAndType(
-            string resourceId,
-            out string resourceProviderNamespace,
-            out string resourceType)
-        {
-            var armFields = resourceId.Split('/');
-            var dictionary = new Dictionary<string, string>();
-
-            if (armFields.Length % 2 == 0)
-            {
-                throw new Exception("Invalid ARM ID");
-            }
-
-            for (var i = 0; i < armFields.Length; i = i + 2)
-            {
-                dictionary.Add(
-                    armFields[i],
-                    armFields[i + 1]);
-            }
-
-            resourceProviderNamespace = dictionary[ARMResourceTypeConstants.Providers];
-            resourceType = dictionary.ContainsKey("SiteRecoveryVault") ? "SiteRecoveryVault"
-                : "RecoveryServicesVault";
-        }
-
+        
         /// <summary>
         ///     Get Value from ARM ID
         /// </summary>
