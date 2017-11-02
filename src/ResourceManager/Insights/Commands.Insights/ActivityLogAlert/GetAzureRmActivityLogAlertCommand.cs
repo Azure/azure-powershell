@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Insights.OutputClasses;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Monitor.Management;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,6 +37,7 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
         /// </summary>
         [Parameter(ParameterSetName = GetActivityLogAlertDefaultParamGroup, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
         [Parameter(ParameterSetName = GetActivityLogAlertHelperParamGroup, Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
