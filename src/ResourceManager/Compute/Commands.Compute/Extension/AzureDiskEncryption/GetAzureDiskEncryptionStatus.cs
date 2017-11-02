@@ -60,7 +60,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         
         [Parameter(
             Mandatory = false,
-            Position = 3,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The extension type. Specify this parameter to override its default value of \"AzureDiskEncryption\" for Windows VMs and \"AzureDiskEncryptionForLinux\" for Linux VMs.")]
         [ValidateNotNullOrEmpty]
@@ -68,7 +67,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
         [Parameter(
             Mandatory = false,
-            Position = 4,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The extension publisher name. Specify this parameter only to override the default value of \"Microsoft.Azure.Security\".")]
         [ValidateNotNullOrEmpty]
