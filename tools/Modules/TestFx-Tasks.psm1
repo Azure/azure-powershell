@@ -55,7 +55,9 @@
 		[string]$RdfePortalUri,
 		[string]$GalleryUri,
 		[string]$DataLakeStoreServiceUri,
-		[string]$DataLakeAnalyticsJobAndCatalogServiceUri
+        [string]$DataLakeAnalyticsJobAndCatalogServiceUri,
+        
+        [switch]$Force
     )
 
     [hashtable]$credentials = @{}
@@ -74,7 +76,13 @@
         {
            # Sleep here for a few seconds to allow the service principal application to become active (should only take a couple of seconds normally)
            Start-Sleep 5
-           New-AzureRMRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $NewServicePrincipal.ApplicationId -Scope $Scope | Write-Verbose -ErrorAction SilentlyContinue
+           if ($Force)
+           {
+                New-AzureRMRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $NewServicePrincipal.ApplicationId -Scope $Scope -Force | Write-Verbose -ErrorAction SilentlyContinue
+           }
+           else {
+                New-AzureRMRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $NewServicePrincipal.ApplicationId -Scope $Scope | Write-Verbose -ErrorAction SilentlyContinue
+           }
            $NewRole = Get-AzureRMRoleAssignment -ObjectId $NewServicePrincipal.Id -ErrorAction SilentlyContinue
            $Retries++;
         }
@@ -150,7 +158,7 @@
 
     $credentialsJson = $credentials | ConvertTo-Json
     $directoryPath = $Env:USERPROFILE + "\.azure"
-    if (!(Test-Path $directoryPath) -and $PSCmdlet.ShouldContinue("Do you want to create directory: " + $directoryPath + " which will contain your credentials file?", "Create directory?")) {
+    if (!(Test-Path $directoryPath) -and (Force -or $PSCmdlet.ShouldContinue("Do you want to create directory: " + $directoryPath + " which will contain your credentials file?", "Create directory?"))) {
         New-Item -ItemType Directory -Path $directoryPath
     }
     $filePath = $Env:USERPROFILE + "\.azure\testcredentials.json"
