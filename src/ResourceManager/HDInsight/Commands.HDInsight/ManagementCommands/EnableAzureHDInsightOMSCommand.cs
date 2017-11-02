@@ -18,6 +18,7 @@ using Microsoft.Azure.Management.HDInsight.Models;
 using System.Management.Automation;
 using System.IO;
 using System.Reflection;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
@@ -55,6 +56,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         [Parameter(
             HelpMessage = "Gets or sets the resource group of the cluster.",
             ValueFromPipelineByPropertyName = true)]
+        [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
         #endregion
