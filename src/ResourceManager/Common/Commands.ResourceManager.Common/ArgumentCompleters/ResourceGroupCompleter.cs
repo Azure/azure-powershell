@@ -73,6 +73,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
 
                         catch (Exception ex)
                         {
+                            if (ex == null) { }
 #if DEBUG
                             throw ex;
 #endif
