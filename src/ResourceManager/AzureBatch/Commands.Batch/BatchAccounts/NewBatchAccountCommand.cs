@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Collections;
 using System.Management.Automation;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
@@ -34,6 +35,7 @@ namespace Microsoft.Azure.Commands.Batch
 
         [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the resource group where the account will be created.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
