@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Tags.dll-Help.xml
+Module Name: AzureRM
 ms.assetid: 23DB0AD2-7EB7-4373-BB8D-BB6CB651DD54
 online version: 
 schema: 2.0.0
@@ -13,7 +14,8 @@ Creates a predefined Azure tag or adds values to an existing tag.
 ## SYNTAX
 
 ```
-New-AzureRmTag [-Name] <String> [[-Value] <String>] [<CommonParameters>]
+New-AzureRmTag [-Name] <String> [[-Value] <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -140,6 +142,21 @@ Tags:
 The commands in this example create and use a predefined tag.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 Specifies the tag name.
