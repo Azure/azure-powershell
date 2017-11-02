@@ -9,4 +9,12 @@
 $PSDefaultParameterValues.Clear()
 Set-StrictMode -Version Latest
 
-%IMPORTED-DEPENDENCIES%
+# Import dependencies using required version, if it is allowed
+if ($PSVersionTable.PSVersion.Major -ge 5)
+{
+%STRICT-DEPENDENCIES%
+}
+else
+{
+%DEPENDENCIES%
+}
