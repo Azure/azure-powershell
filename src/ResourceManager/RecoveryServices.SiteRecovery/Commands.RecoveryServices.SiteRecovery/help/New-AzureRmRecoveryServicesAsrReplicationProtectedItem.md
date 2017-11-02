@@ -24,7 +24,7 @@ New-AzureRmRecoveryServicesAsrReplicationProtectedItem [-VmmToVmm] -ProtectableI
 New-AzureRmRecoveryServicesAsrReplicationProtectedItem [-VMwareToAzure] -ProtectableItem <ASRProtectableItem>
  -Name <String> [-RecoveryVmName <String>] -ProtectionContainerMapping <ASRProtectionContainerMapping>
  -RecoveryAzureStorageAccountId <String> -Account <ASRRunAsAccount> [-LogStorageAccountId <String>]
- [-IncludeDiskIds <String[]>] -ProcessServer <ASRProcessServer> [-RecoveryAzureNetworkId <String>]
+ [-IncludeDiskId <String[]>] -ProcessServer <ASRProcessServer> [-RecoveryAzureNetworkId <String>]
  [-RecoveryAzureSubnetName <String>] -RecoveryResourceGroupId <String> [-ReplicationGroupName <String>]
  [-WaitForCompletion] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -42,7 +42,7 @@ New-AzureRmRecoveryServicesAsrReplicationProtectedItem [-HyperVToAzure] -Protect
 New-AzureRmRecoveryServicesAsrReplicationProtectedItem [-HyperVToAzure] -ProtectableItem <ASRProtectableItem>
  -Name <String> [-RecoveryVmName <String>] -ProtectionContainerMapping <ASRProtectionContainerMapping>
  -RecoveryAzureStorageAccountId <String> -OSDiskName <String> -OS <String> [-LogStorageAccountId <String>]
- [-IncludeDiskIds <String[]>] [-RecoveryAzureNetworkId <String>] [-RecoveryAzureSubnetName <String>]
+ [-IncludeDiskId <String[]>] [-RecoveryAzureNetworkId <String>] [-RecoveryAzureSubnetName <String>]
  -RecoveryResourceGroupId <String> [-WaitForCompletion] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -91,21 +91,6 @@ Prompts  for confirmation before starting the operation.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IncludeDiskIds
-The list of disks to include for replication. By default all disks are included.
-
-```yaml
-Type: String[]
-Parameter Sets: VMwareToAzure, HyperVSiteToAzure
-Aliases: 
 
 Required: False
 Position: Named
@@ -396,6 +381,21 @@ Parameter Sets: VMwareToAzure
 Aliases: 
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IncludeDiskId
+The list of disks to include for replication. By default all disks are included.
+
+```yaml
+Type: String[]
+Parameter Sets: VMwareToAzure, HyperVSiteToAzure
+Aliases: 
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

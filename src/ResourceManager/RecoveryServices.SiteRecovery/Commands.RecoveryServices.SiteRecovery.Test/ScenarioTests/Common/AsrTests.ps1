@@ -254,10 +254,10 @@ function Test-NotificationSettings
     # Import Azure RecoveryServices Vault Settings File
     Import-AzureRmRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
     # Enumerate specific Fabric
-    $NotificationSettings = Set-AzureRmRecoveryServicesAsrNotificationSetting -EnableEmailSubscriptionOwners -CustomEmailAddress "abcxxxx@microsft.com"
+    $NotificationSettings = Set-AzureRmRecoveryServicesAsrNotificationSetting -EnableEmailSubscriptionOwner -CustomEmailAddress "abcxxxx@microsft.com"
     Assert-NotNull($NotificationSettings)
     
-    $NotificationSettings = Set-AzureRmRecoveryServicesAsrNotificationSetting -DisableEmailToSubscriptionOwners -CustomEmailAddress "abcxxxx@microsft.com"
+    $NotificationSettings = Set-AzureRmRecoveryServicesAsrNotificationSetting -DisableEmailToSubscriptionOwner -CustomEmailAddress "abcxxxx@microsft.com"
     Assert-NotNull($NotificationSettings)
 
     $NotificationSettings = Get-AzureRmRecoveryServicesAsrNotificationSetting

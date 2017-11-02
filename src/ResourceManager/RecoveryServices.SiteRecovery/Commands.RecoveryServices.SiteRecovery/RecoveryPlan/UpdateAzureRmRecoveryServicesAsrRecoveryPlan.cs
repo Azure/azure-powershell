@@ -149,14 +149,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                                                 .Properties.ProviderSpecificDetails).VmId;
                                         }
                                         else if (item.Properties.ProviderSpecificDetails
-                                                .GetType() ==
+                                                    .GetType() ==
                                                  typeof(InMageAzureV2ReplicationDetails))
                                         {
                                             VmId = ((InMageAzureV2ReplicationDetails)item
                                                 .Properties.ProviderSpecificDetails).VmId;
                                         }
                                         else if (item.Properties.ProviderSpecificDetails
-                                                .GetType() ==
+                                                    .GetType() ==
                                                  typeof(InMageReplicationDetails))
                                         {
                                             VmId = ((InMageReplicationDetails)item

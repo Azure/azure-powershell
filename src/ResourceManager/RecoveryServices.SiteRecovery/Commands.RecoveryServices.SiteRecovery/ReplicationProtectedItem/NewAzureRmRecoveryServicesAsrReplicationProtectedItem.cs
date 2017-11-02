@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [Parameter(ParameterSetName = ASRParameterSets.VMwareToAzure)]
         [Parameter(ParameterSetName = ASRParameterSets.HyperVSiteToAzure)]
         [ValidateNotNullOrEmpty]
-        public string[] IncludeDiskIds { get; set; }
+        public string[] IncludeDiskId { get; set; }
 
         /// <summary>
         /// Gets or sets Process Server.
@@ -326,9 +326,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                                             ? this.ProtectableItem.FriendlyName
                                             : this.RecoveryVmName,
                     EnableRDPOnTargetOption = Constants.NeverEnableRDPOnTargetOption,
-                    DisksToInclude = this.IncludeDiskIds != null
-                        ? this.IncludeDiskIds
-                        : null
+                    DisksToInclude = this.IncludeDiskId != null
+                                            ? this.IncludeDiskId
+                                            : null
                 };
 
             var deploymentType = Utilities.GetValueFromArmId(
@@ -414,8 +414,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             providerSettings.HvHostVmId = this.ProtectableItem.FabricObjectId;
             providerSettings.VmName = this.ProtectableItem.FriendlyName;
             providerSettings.TargetAzureVmName = string.IsNullOrEmpty(this.RecoveryVmName)
-                ? this.ProtectableItem.FriendlyName
-                : this.RecoveryVmName;
+                                                    ? this.ProtectableItem.FriendlyName
+                                                    : this.RecoveryVmName;
 
             if (!string.IsNullOrEmpty(this.RecoveryAzureNetworkId))
             {
