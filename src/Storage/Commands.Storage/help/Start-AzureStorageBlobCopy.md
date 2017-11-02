@@ -530,10 +530,6 @@ Parameter 'CloudBlob' accepts value of type 'CloudBlob' from the pipeline
 
 Parameter 'Context' accepts value of type 'IStorageContext' from the pipeline
 
-### IStorageContext
-
-Parameter 'Context' accepts value of type 'IStorageContext' from the pipeline
-
 ### CloudFile
 
 Parameter 'SrcFile' accepts value of type 'CloudFile' from the pipeline
