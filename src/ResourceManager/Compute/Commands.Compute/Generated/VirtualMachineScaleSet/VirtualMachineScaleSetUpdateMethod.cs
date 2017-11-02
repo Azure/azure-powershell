@@ -155,6 +155,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false)]
         [AllowNull]
+        [ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleter()]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
@@ -194,209 +195,209 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Mandatory = false)]
-		[ValidateNotNullOrEmpty]
+        [ValidateNotNullOrEmpty]
         public string ImageReferenceSku { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Mandatory = false)]
-		[ValidateNotNullOrEmpty]
+        [ValidateNotNullOrEmpty]
         public bool? EnableAutomaticUpdate { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Mandatory = false)]
-		[ValidateNotNullOrEmpty]
+        [ValidateNotNullOrEmpty]
         public StorageAccountTypes? ManagedDiskStorageAccountType { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Mandatory = false)]
-		[ValidateNotNullOrEmpty]
+        [ValidateNotNullOrEmpty]
         public string PlanPublisher { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Mandatory = false)]
-		[ValidateNotNullOrEmpty]
+        [ValidateNotNullOrEmpty]
         public bool? ProvisionVMAgent { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Mandatory = false)]
-		[ValidateNotNullOrEmpty]
+        [ValidateNotNullOrEmpty]
         public bool? BootDiagnosticsEnabled { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Mandatory = false)]
-		[ValidateNotNullOrEmpty]
+        [ValidateNotNullOrEmpty]
         public bool? Overprovision { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Mandatory = false)]
-		[ValidateNotNullOrEmpty]
+        [ValidateNotNullOrEmpty]
         public int? MaxBatchInstancePercent { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Mandatory = false)]
-		[ValidateNotNullOrEmpty]
+        [ValidateNotNullOrEmpty]
         public string TimeZone { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Mandatory = false)]
-		[ValidateNotNullOrEmpty]
+        [ValidateNotNullOrEmpty]
         public string BootDiagnosticsStorageUri { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Mandatory = false)]
-		[ValidateNotNullOrEmpty]
+        [ValidateNotNullOrEmpty]
         public bool? AutomaticOSUpgrade { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Mandatory = false)]
-		[ValidateNotNullOrEmpty]
+        [ValidateNotNullOrEmpty]
         public bool? SinglePlacementGroup { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Mandatory = false)]
-		[ValidateNotNullOrEmpty]
+        [ValidateNotNullOrEmpty]
         public string CustomData { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Mandatory = false)]
-		[ValidateNotNullOrEmpty]
+        [ValidateNotNullOrEmpty]
         public UpgradeMode? UpgradePolicyMode { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Mandatory = false)]
-		[ValidateNotNullOrEmpty]
+        [ValidateNotNullOrEmpty]
         public string ImageReferenceId { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Mandatory = false)]
-		[ValidateNotNullOrEmpty]
+        [ValidateNotNullOrEmpty]
         public bool? DisablePasswordAuthentication { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Mandatory = false)]
-		[ValidateNotNullOrEmpty]
+        [ValidateNotNullOrEmpty]
         public Hashtable Tag { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Mandatory = false)]
-		[ValidateNotNullOrEmpty]
+        [ValidateNotNullOrEmpty]
         public string PlanName { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Mandatory = false)]
-		[ValidateNotNullOrEmpty]
+        [ValidateNotNullOrEmpty]
         public int? MaxUnhealthyUpgradedInstancePercent { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Mandatory = false)]
-		[ValidateNotNullOrEmpty]
+        [ValidateNotNullOrEmpty]
         public string ImageReferencePublisher { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Mandatory = false)]
-		[ValidateNotNullOrEmpty]
+        [ValidateNotNullOrEmpty]
         public string PlanProduct { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Mandatory = false)]
-		[ValidateNotNullOrEmpty]
+        [ValidateNotNullOrEmpty]
         public string ImageUri { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Mandatory = false)]
-		[ValidateNotNullOrEmpty]
+        [ValidateNotNullOrEmpty]
         public string SkuTier { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Mandatory = false)]
-		[ValidateNotNullOrEmpty]
+        [ValidateNotNullOrEmpty]
         public string[] VhdContainer { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Mandatory = false)]
-		[ValidateNotNullOrEmpty]
+        [ValidateNotNullOrEmpty]
         public string LicenseType { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Mandatory = false)]
-		[ValidateNotNullOrEmpty]
+        [ValidateNotNullOrEmpty]
         public ResourceIdentityType? IdentityType { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Mandatory = false)]
-		[ValidateNotNullOrEmpty]
+        [ValidateNotNullOrEmpty]
         public string SkuName { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Mandatory = false)]
-		[ValidateNotNullOrEmpty]
+        [ValidateNotNullOrEmpty]
         public string PlanPromotionCode { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Mandatory = false)]
-		[ValidateNotNullOrEmpty]
+        [ValidateNotNullOrEmpty]
         public int? MaxUnhealthyInstancePercent { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Mandatory = false)]
-		[ValidateNotNullOrEmpty]
+        [ValidateNotNullOrEmpty]
         public int? SkuCapacity { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Mandatory = false)]
-		[ValidateNotNullOrEmpty]
+        [ValidateNotNullOrEmpty]
         public string ImageReferenceOffer { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Mandatory = false)]
-		[ValidateNotNullOrEmpty]
+        [ValidateNotNullOrEmpty]
         public string PauseTimeBetweenBatches { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Mandatory = false)]
-		[ValidateNotNullOrEmpty]
+        [ValidateNotNullOrEmpty]
         public CachingTypes? OsDiskCaching { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Mandatory = false)]
-		[ValidateNotNullOrEmpty]
+        [ValidateNotNullOrEmpty]
         public string ImageReferenceVersion { get; set; }
 
-		private void BuildPatchObject()
-		{
+        private void BuildPatchObject()
+        {
             if (this.ImageReferenceSku != null)
             {
                 if (this.VirtualMachineScaleSetUpdate == null)
@@ -983,6 +984,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 throw new ArgumentException(Microsoft.Azure.Commands.Compute.Properties.Resources.BothWindowsAndLinuxConfigurationsSpecified);
             }
-		}
+        }
     }
 }
