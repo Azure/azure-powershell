@@ -89,6 +89,22 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             HelpMessage = "Disable auto-upgrade of minor version")]
         public SwitchParameter DisableAutoUpgradeMinorVersion { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            Position = 6,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The extension type. Specify this parameter to override its default value of \"AzureDiskEncryption\" for Windows VMs and \"AzureDiskEncryptionForLinux\" for Linux VMs.")]
+        [ValidateNotNullOrEmpty]
+        public string ExtensionType { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            Position = 7,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The extension publisher name. Specify this parameter only to override the default value of \"Microsoft.Azure.Security\".")]
+        [ValidateNotNullOrEmpty]
+        public string ExtensionPublisherName { get; set; }
+
         private OperatingSystemTypes? currentOSType = null;
 
         private Hashtable GetExtensionPublicSettings()
@@ -129,8 +145,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             }
 
             VirtualMachineExtension vmExtensionParameters = null;
-            var extensionPublisherName = Environment.GetEnvironmentVariable(AzureDiskEncryptionExtensionConstants.extensionPublisherEnvVarName);
-            var extensionType = Environment.GetEnvironmentVariable(AzureDiskEncryptionExtensionConstants.extensionTypeEnvVarName);
             if (OperatingSystemTypes.Windows.Equals(currentOSType))
             {
                 this.Name = this.Name ?? AzureDiskEncryptionExtensionContext.ExtensionDefaultName;
@@ -138,8 +152,8 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 vmExtensionParameters = new VirtualMachineExtension
                 {
                     Location = vmParameters.Location,
-                    Publisher = extensionPublisherName ?? AzureDiskEncryptionExtensionContext.ExtensionDefaultPublisher,
-                    VirtualMachineExtensionType = extensionType ?? AzureDiskEncryptionExtensionContext.ExtensionDefaultType,
+                    Publisher = this.ExtensionPublisherName ?? AzureDiskEncryptionExtensionContext.ExtensionDefaultPublisher,
+                    VirtualMachineExtensionType = this.ExtensionType ?? AzureDiskEncryptionExtensionContext.ExtensionDefaultType,
                     TypeHandlerVersion = this.TypeHandlerVersion ?? AzureDiskEncryptionExtensionContext.ExtensionDefaultVersion,
                     Settings = SettingString,
                     ProtectedSettings = ProtectedSettingString,
@@ -153,8 +167,8 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 vmExtensionParameters = new VirtualMachineExtension
                 {
                     Location = vmParameters.Location,
-                    Publisher = extensionPublisherName ?? AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultPublisher,
-                    VirtualMachineExtensionType = extensionType ?? AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultType,
+                    Publisher = this.ExtensionPublisherName ?? AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultPublisher,
+                    VirtualMachineExtensionType = this.ExtensionType ?? AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultType,
                     TypeHandlerVersion = this.TypeHandlerVersion ?? AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultVersion,
                     Settings = SettingString,
                     ProtectedSettings = ProtectedSettingString,
