@@ -1,14 +1,14 @@
 ---
 Module Name: AzureRM.ContainerInstance
-Module Guid: {{ Update Module Guid }}
-Download Help Link: {{ Update Download Link }}
-Help Version: {{ Update Help Version }}
-Locale: {{ Update Locale }}
+Module Guid:
+Download Help Link:
+Help Version:
+Locale: en-US
 ---
 
 # AzureRM.ContainerInstance Module
 ## Description
-{{Manually Enter Description Here}}
+This topic displays help topics for the Azure Container Instance Cmdlets.
 
 ## AzureRM.ContainerInstance Cmdlets
 ### [Get-AzureRmContainerGroup](Get-AzureRmContainerGroup.md)
