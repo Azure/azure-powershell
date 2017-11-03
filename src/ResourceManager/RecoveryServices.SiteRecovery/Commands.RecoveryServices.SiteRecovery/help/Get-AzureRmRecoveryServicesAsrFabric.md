@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.dll-Help.xml
+Module Name: AzureRM.RecoveryServices.SiteRecovery
 online version: 
 schema: 2.0.0
 ---
@@ -13,17 +14,19 @@ Get the details of an Azure Site Recovery Fabric.
 
 ### Default (Default)
 ```
-Get-AzureRmRecoveryServicesAsrFabric [<CommonParameters>]
+Get-AzureRmRecoveryServicesAsrFabric [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Get-AzureRmRecoveryServicesAsrFabric -Name <String> [<CommonParameters>]
+Get-AzureRmRecoveryServicesAsrFabric -Name <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByFriendlyName
 ```
-Get-AzureRmRecoveryServicesAsrFabric -FriendlyName <String> [<CommonParameters>]
+Get-AzureRmRecoveryServicesAsrFabric -FriendlyName <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,6 +42,21 @@ PS C:\> $fabrics = Get-AzureRmRecoveryServicesAsrFabric
 Returns all the Azure Site Recovery fabrics in the vault.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -FriendlyName
 Search for the ASR fabric by the friendly name of the fabric.
