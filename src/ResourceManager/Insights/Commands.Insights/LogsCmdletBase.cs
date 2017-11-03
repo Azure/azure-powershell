@@ -36,11 +36,11 @@ namespace Microsoft.Azure.Commands.Insights
         private const int MaxNumberOfReturnedRecords = 1000;
         private int MaxRecords = 0;
 
-        internal const string SubscriptionLevelName = "Query at subscription level";
-        internal const string ResourceProviderName = "Query on ResourceProvider";
-        internal const string ResourceGroupName = "Query on ResourceGroupProvider";
-        internal const string ResourceIdName = "Query on ResourceIdName";
-        internal const string CorrelationIdName = "Query on CorrelationId";
+        internal const string SubscriptionLevelName = "GetBySubscription";
+        internal const string ResourceProviderName = "GetByResourceProvider";
+        internal const string ResourceGroupName = "GetByResourceGroup";
+        internal const string ResourceIdName = "GetByResourceId";
+        internal const string CorrelationIdName = "GetByCorrelationId";
 
         #region Parameters declarations
 
@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Commands.Insights
         {
             string queryFilter = this.ProcessGeneralParameters();
             var result = this.ProcessParticularParameters(queryFilter);
-            WriteWarning("Deprecation: The field EventChannels from the EventData object is being deprecated since it now returns a constant value (Admin,Operation)");
+            WriteWarning("Output change: The field EventChannels from the EventData object is being deprecated in the release 5.0.0 - November 2017 - since it now returns a constant value (Admin,Operation)");
             return result;
         }
 

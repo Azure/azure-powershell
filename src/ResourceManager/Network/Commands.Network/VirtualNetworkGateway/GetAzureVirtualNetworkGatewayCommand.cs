@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Network
                 var vnetGatewayPage = this.VirtualNetworkGatewayClient.List(this.ResourceGroupName);
 
                 // Get all resources by polling on next page link
-                var vnetGatewayList = ListNextLink<VirtualNetworkGateway>.GetAllResourcesByPollingNextLink(vnetGatewayPage, this.VirtualNetworkGatewayClient.ListNext);
+                var vnetGatewayList = ListNextLink<Management.Network.Models.VirtualNetworkGateway>.GetAllResourcesByPollingNextLink(vnetGatewayPage, this.VirtualNetworkGatewayClient.ListNext);
 
                 var psVnetGateways = new List<PSVirtualNetworkGateway>();
                 foreach (var virtualNetworkGateway in vnetGatewayList)

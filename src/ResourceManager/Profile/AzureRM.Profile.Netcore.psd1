@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.9.3'
+ModuleVersion = '0.9.6'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -77,7 +77,8 @@ CmdletsToExport = 'Disable-AzureRmDataCollection', 'Enable-AzureRmDataCollection
                'Set-AzureRmEnvironment', 'Add-AzureRmEnvironment', 
                'Get-AzureRmSubscription', 'Add-AzureRmAccount', 'Get-AzureRmContext', 
                'Set-AzureRmContext', 'Import-AzureRmContext', 'Save-AzureRmContext', 
-               'Get-AzureRmTenant', 'Send-Feedback', 'Resolve-AzureRmError'
+               'Get-AzureRmTenant', 'Send-Feedback', 'Resolve-AzureRmError', 
+               'Set-AzureRmDefault', 'Get-AzureRmDefault', 'Clear-AzureRmDefault'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -103,7 +104,7 @@ PrivateData = @{
         Tags = 'Azure','ResourceManager','ARM','Profile','Authentication','Environment','Subscription'
 
         # A URL to the license for this module.
-        LicenseUri = 'https://raw.githubusercontent.com/Azure/azure-powershell/preview/LICENSE.txt'
+        LicenseUri = 'https://aka.ms/azps-license'
 
         # A URL to the main website for this project.
         ProjectUri = 'https://github.com/Azure/azure-powershell'

@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+Module Name: AzureRM.Network
 ms.assetid: C44AD23A-E575-418C-BE90-323B44D6D2E8
 online version: 
 schema: 2.0.0
@@ -19,7 +20,8 @@ Add-AzureRmExpressRouteCircuitPeeringConfig -Name <String> -ExpressRouteCircuit 
  -VlanId <Int32> [-SharedKey <String>]
  [-MicrosoftConfigAdvertisedPublicPrefixes <System.Collections.Generic.List`1[System.String]>]
  [-MicrosoftConfigCustomerAsn <Int32>] [-MicrosoftConfigRoutingRegistryName <String>]
- [-PeerAddressType <String>] [-LegacyMode <Boolean>] [<CommonParameters>]
+ [-PeerAddressType <String>] [-LegacyMode <Boolean>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### MicrosoftPeeringConfigRoutFilterId
@@ -29,7 +31,8 @@ Add-AzureRmExpressRouteCircuitPeeringConfig -Name <String> -ExpressRouteCircuit 
  -VlanId <Int32> [-SharedKey <String>]
  [-MicrosoftConfigAdvertisedPublicPrefixes <System.Collections.Generic.List`1[System.String]>]
  [-MicrosoftConfigCustomerAsn <Int32>] [-MicrosoftConfigRoutingRegistryName <String>] -RouteFilterId <String>
- [-PeerAddressType <String>] [-LegacyMode <Boolean>] [<CommonParameters>]
+ [-PeerAddressType <String>] [-LegacyMode <Boolean>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### MicrosoftPeeringConfigRoutFilter
@@ -39,7 +42,8 @@ Add-AzureRmExpressRouteCircuitPeeringConfig -Name <String> -ExpressRouteCircuit 
  -VlanId <Int32> [-SharedKey <String>]
  [-MicrosoftConfigAdvertisedPublicPrefixes <System.Collections.Generic.List`1[System.String]>]
  [-MicrosoftConfigCustomerAsn <Int32>] [-MicrosoftConfigRoutingRegistryName <String>]
- -RouteFilter <PSRouteFilter> [-PeerAddressType <String>] [-LegacyMode <Boolean>] [<CommonParameters>]
+ -RouteFilter <PSRouteFilter> [-PeerAddressType <String>] [-LegacyMode <Boolean>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -68,6 +72,21 @@ Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $circuit
 ```
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ExpressRouteCircuit
 The ExpressRoute circuit being modified. This is Azure object returned by the
@@ -313,7 +332,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### PSExpressRouteCircuit
-
 Parameter 'ExpressRouteCircuit' accepts value of type 'PSExpressRouteCircuit' from the pipeline
 
 ## OUTPUTS

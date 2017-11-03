@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.Profile.Properties;
-using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.Management.Automation;
 
@@ -26,8 +26,8 @@ namespace Microsoft.Azure.Commands.Profile
     /// <summary>
     /// Selects Microsoft Azure profile.
     /// </summary>
-    [Cmdlet(VerbsData.Import, "AzureRmContext", SupportsShouldProcess = true), OutputType(typeof(PSAzureProfile))]
-    public class ImportAzureRMContextCommand : AzureRMCmdlet
+    [Cmdlet(VerbsData.Import, "AzureRmContext", SupportsShouldProcess = true, DefaultParameterSetName = ProfileFromDiskParameterSet), OutputType(typeof(PSAzureProfile))]
+    public class ImportAzureRMContextCommand : AzureContextModificationCmdlet
     {
         internal const string InMemoryProfileParameterSet = "InMemoryProfile";
         internal const string ProfileFromDiskParameterSet = "ProfileFromDisk";
@@ -53,46 +53,58 @@ namespace Microsoft.Azure.Commands.Profile
             {
                 ConfirmAction(string.Format(Resources.ProcessImportContextFromFile, Path), Resources.ImportContextTarget, () =>
                 {
-                    if (!Common.Authentication.AzureSession.Instance.DataStore.FileExists(Path))
+                    if (!AzureSession.Instance.DataStore.FileExists(Path))
                     {
                         throw new PSArgumentException(string.Format(
                             Microsoft.Azure.Commands.Profile.Properties.Resources.FileNotFound,
                             Path));
                     }
 
-                    AzureRmProfileProvider.Instance.Profile = new AzureRmProfile(Path);
-                    executionComplete = true;
+                    ModifyContext((profile, client) =>
+                    {
+                        var newProfile = new AzureRmProfile(Path);
+                        profile.TryCopyProfile(newProfile);
+                        AzureRmProfileProvider.Instance.SetTokenCacheForProfile(newProfile);
+                        executionComplete = true;
+                    });
                 });
             }
-            else
+            else if (AzureContext != null)
             {
                 ConfirmAction(Resources.ProcessImportContextFromObject, Resources.ImportContextTarget, () =>
                 {
-                    AzureRmProfileProvider.Instance.Profile = AzureContext;
-                    executionComplete = true;
+                    ModifyContext((profile, client) =>
+                    {
+                        profile.TryCopyProfile(AzureContext);
+                        AzureRmProfileProvider.Instance.SetTokenCacheForProfile(AzureContext);
+                        executionComplete = true;
+                    });
                 });
             }
 
             if (executionComplete)
             {
-                if (AzureRmProfileProvider.Instance.Profile == null)
+                var profile = DefaultProfile as AzureRmProfile;
+                if (profile == null)
                 {
-                    WriteExceptionError( new ArgumentException(Resources.AzureProfileMustNotBeNull));
+                    WriteExceptionError(new ArgumentException(Resources.AzureProfileMustNotBeNull));
                 }
-
-                if (AzureRmProfileProvider.Instance.Profile.DefaultContext != null &&
-                    AzureRmProfileProvider.Instance.Profile.DefaultContext.Subscription != null &&
-                    AzureRmProfileProvider.Instance.Profile.DefaultContext.Subscription.State != null &&
-                    !AzureRmProfileProvider.Instance.Profile.DefaultContext.Subscription.State.Equals(
-                    "Enabled",
-                    StringComparison.OrdinalIgnoreCase))
+                else
                 {
-                    WriteWarning(string.Format(
-                                   Microsoft.Azure.Commands.Profile.Properties.Resources.SelectedSubscriptionNotActive,
-                                   AzureRmProfileProvider.Instance.Profile.DefaultContext.Subscription.State));
-                }
+                    if (profile.DefaultContext != null &&
+                        profile.DefaultContext.Subscription != null &&
+                        profile.DefaultContext.Subscription.State != null &&
+                        !profile.DefaultContext.Subscription.State.Equals(
+                        "Enabled",
+                        StringComparison.OrdinalIgnoreCase))
+                    {
+                        WriteWarning(string.Format(
+                                       Microsoft.Azure.Commands.Profile.Properties.Resources.SelectedSubscriptionNotActive,
+                                       profile.DefaultContext.Subscription.State));
+                    }
 
-                WriteObject((PSAzureProfile)AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>());
+                    WriteObject((PSAzureProfile)profile);
+                }
             }
         }
     }

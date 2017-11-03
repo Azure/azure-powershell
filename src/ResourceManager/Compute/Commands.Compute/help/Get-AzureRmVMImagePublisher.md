@@ -13,7 +13,7 @@ Gets the VMImage publishers.
 ## SYNTAX
 
 ```
-Get-AzureRmVMImagePublisher -Location <String> [<CommonParameters>]
+Get-AzureRmVMImagePublisher -Location <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,6 +29,21 @@ PS C:\> Get-AzureRmVMImagePublisher -Location "Central US"
 This command gets the publishers of VMImage instances for the Central US region within your Azure profile.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Location
 Specifies the location of the VMImage.

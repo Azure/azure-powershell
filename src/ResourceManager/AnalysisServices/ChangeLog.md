@@ -18,6 +18,15 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fixed Synchronize-AzureAsInstance command to work with new AsAzure REST API for sync
+
+## Version 0.4.7
+
+## Version 0.4.6
+* Added a new dataplane commandlet to allow synchronization of databases from read-write instance to read-only instances 
+    - Included help file for the commandlet
+    - Added in-memory tests and a scenario test (only live)
+* Fixed bugs in Add-AzureAsAccount commandlet 
 
 ## Version 0.4.4
 
