@@ -56,7 +56,7 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '4.0.0';
                @{ModuleName = 'AzureRM.AnalysisServices'; RequiredVersion = '0.5.0'; }, 
                @{ModuleName = 'Azure.AnalysisServices'; RequiredVersion = '0.5.0'; }, 
                @{ModuleName = 'AzureRM.ApiManagement'; RequiredVersion = '5.0.0'; }, 
-               @{ModuleName = 'AzureRM.ApplicationInsights'; RequiredVersion = '0.2.0'; },
+               @{ModuleName = 'AzureRM.ApplicationInsights'; RequiredVersion = '0.1.0'; },
                @{ModuleName = 'AzureRM.Automation'; RequiredVersion = '4.0.0'; }, 
                @{ModuleName = 'AzureRM.Backup'; RequiredVersion = '4.0.0'; }, 
                @{ModuleName = 'AzureRM.Batch'; RequiredVersion = '4.0.0'; }, 
