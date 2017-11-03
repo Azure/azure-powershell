@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             // Map to the sdk object
-            var circuitModel = Mapper.Map<MNM.ExpressRouteCircuit>(this.ExpressRouteCircuit);
+            var circuitModel = NetworkResourceManagerProfile.Mapper.Map<MNM.ExpressRouteCircuit>(this.ExpressRouteCircuit);
             circuitModel.Tags = TagsConversionHelper.CreateTagDictionary(this.ExpressRouteCircuit.Tag, validate: true);
 
             // Execute the Create ExpressRouteCircuit call

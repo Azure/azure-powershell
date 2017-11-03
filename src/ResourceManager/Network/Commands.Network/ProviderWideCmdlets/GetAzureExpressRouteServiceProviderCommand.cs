@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Network
 
             foreach (var provider in serviceProviderList)
             {
-                var psProvider = Mapper.Map<PSExpressRouteServiceProvider>(provider);
+                var psProvider = NetworkResourceManagerProfile.Mapper.Map<PSExpressRouteServiceProvider>(provider);
                 psProviders.Add(psProvider);
             }
 

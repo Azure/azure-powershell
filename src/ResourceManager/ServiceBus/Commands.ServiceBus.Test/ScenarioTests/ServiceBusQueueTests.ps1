@@ -80,16 +80,14 @@ function ServiceBusQueueTests
             $found = 1
            Assert-AreEqual $location.Replace(' ','') $createdNamespace.Location.Replace(' ','')
            # Assert-AreEqual $resourceGroupName.ToLower() $createdNamespace.ResourceGroupName.ToLower()
-           # Assert-AreEqual "Messaging" $createdNamespace.NamespaceType
-           
+           # Assert-AreEqual "Messaging" $createdNamespace.NamespaceType           
         }
-    
 
     #Assert-True {$found -eq 0} "Namespace created earlier is not found."
 
 	Write-Debug "Create Queue"
 	$nameQueue = Get-QueueName
-	$result = New-AzureRmServiceBusQueue -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $nameQueue -EnablePartitioning $False -MaxDeliveryCount 7
+	$result = New-AzureRmServiceBusQueue -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $nameQueue
 	Assert-True {$result.Name -eq $nameQueue} "In CreateQueue response Name not found"
 
 	$resultGetQueue = Get-AzureRmServiceBusQueue -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $result.Name
@@ -123,7 +121,6 @@ function ServiceBusQueueTests
 
 	Write-Debug " Delete resourcegroup"
 	Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
-
 }
 
 
