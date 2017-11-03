@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
 
         public NewAzureRmAlerRuleWebhookTests(ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             commandRuntimeMock = new Mock<ICommandRuntime>();
             Cmdlet = new NewAzureRmAlertRuleWebhookCommand()
             {

@@ -20,6 +20,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
     public class PSLoadBalancer : PSTopLevelResource
     {
+        public PSLoadBalancerSku Sku { get; set; }
+
         public List<PSFrontendIPConfiguration> FrontendIpConfigurations { get; set; }
 
         public List<PSBackendAddressPool> BackendAddressPools { get; set; }
@@ -68,6 +70,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string InboundNatPoolsText
         {
             get { return JsonConvert.SerializeObject(InboundNatPools, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string SkuText
+        {
+            get { return JsonConvert.SerializeObject(Sku, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

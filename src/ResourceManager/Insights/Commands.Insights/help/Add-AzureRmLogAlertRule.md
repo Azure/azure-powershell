@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
+Module Name: AzureRM.Insights
 ms.assetid: 11A521DF-E77C-4D6F-A2D9-1C2CF8972F57
 online version: 
 schema: 2.0.0
@@ -16,13 +17,15 @@ Adds or replaces a log alert rule.
 Add-AzureRmLogAlertRule [-TargetResourceGroup <String>] [-TargetResourceId <String>] [-Level <String>]
  -OperationName <String> [-TargetResourceProvider <String>] [-Status <String>] [-SubStatus <String>]
  -Location <String> [-Description <String>] [-DisableRule] -ResourceGroup <String> -Name <String>
- [-Actions <System.Collections.Generic.List`1[Microsoft.Azure.Management.Insights.Models.RuleAction]>]
- [<CommonParameters>]
+ [-Actions <System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.RuleAction]>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The **Add-AzureRmLogAlertRule** cmdlet adds or replaces an event alert rule.
 The added rule is associated with a resource group and has a name.
+
+As announced in previous releases: **Add-AzureRMLogAlertRule cmdlet will be deprecated in a future release.** After October 1st 2017 using this cmdlet will no longer have any effect as this functionality is being transitioned to Activity Log Alerts. Please see **_https://aka.ms/migratemealerts_** for more information.
 
 ## EXAMPLES
 
@@ -42,7 +45,7 @@ This command adds or updates an event-based alert rule.
 Specifies a comma-separated list of actions.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Management.Insights.Models.RuleAction]
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.RuleAction]
 Parameter Sets: (All)
 Aliases: 
 
@@ -50,6 +53,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

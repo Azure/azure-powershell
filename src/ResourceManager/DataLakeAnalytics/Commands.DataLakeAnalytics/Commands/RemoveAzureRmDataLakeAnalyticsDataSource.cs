@@ -24,8 +24,8 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
     [Alias("Remove-AdlAnalyticsDataSource")]
     public class RemoveAzureDataLakeAnalyticsDataSource : DataLakeAnalyticsCmdletBase
     {
-        internal const string DataLakeParameterSetName = "Remove a Data Lake storage account";
-        internal const string BlobParameterSetName = "Remove a Blob storage account";
+        internal const string DataLakeParameterSetName = "RemoveDataLakeStorageAccount";
+        internal const string BlobParameterSetName = "RemoveBlobStorageAccount";
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             ParameterSetName = DataLakeParameterSetName, HelpMessage = "Name of the account to add the data source to.")

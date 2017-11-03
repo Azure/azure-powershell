@@ -128,5 +128,21 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         {
             return container.Accounts.FirstOrDefault((a) => string.Equals(a.Id, account, StringComparison.CurrentCultureIgnoreCase));
         }
+
+        /// <summary>
+        /// Update the properties of the context
+        /// </summary>
+        /// <param name="context">The context to update</param>
+        /// <param name="other">The context to update from</param>
+        public static void Update(this IAzureContext context, IAzureContext other)
+        {
+            if (context != null && other != null)
+            {
+                context.Account.Update(other.Account);
+                context.Subscription.Update(other.Subscription);
+                context.Tenant.Update(other.Tenant);
+                context.UpdateProperties(other);
+            }
+        }
     }
 }

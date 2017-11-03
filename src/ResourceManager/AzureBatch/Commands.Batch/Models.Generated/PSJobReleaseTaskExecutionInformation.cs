@@ -33,9 +33,9 @@ namespace Microsoft.Azure.Commands.Batch.Models
     {
         
         internal Microsoft.Azure.Batch.JobReleaseTaskExecutionInformation omObject;
-        
+#pragma warning disable CS0618
         private PSTaskSchedulingError schedulingError;
-        
+#pragma warning restore CS0618
         internal PSJobReleaseTaskExecutionInformation(Microsoft.Azure.Batch.JobReleaseTaskExecutionInformation omObject)
         {
             if ((omObject == null))
@@ -60,7 +60,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 return this.omObject.ExitCode;
             }
         }
-        
+
+        [Obsolete("SchedulingError will be removed in a future version and replaced with FailureInformation")]
         public PSTaskSchedulingError SchedulingError
         {
             get

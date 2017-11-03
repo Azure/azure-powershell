@@ -10,7 +10,6 @@
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
     using System;
-    using System.Reflection;
     
     
     /// <summary>
@@ -40,7 +39,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.Common.Authentication.Properties.Resources", typeof(Resources).GetTypeInfo().Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.Common.Authentication.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -499,6 +498,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         public static string TenantNotFound {
             get {
                 return ResourceManager.GetString("TenantNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [Common.Authentication]: Parsed token &apos;{0}&apos; with json value &apos;{1}&apos; and decoded issuer &apos;{2}&apos;..
+        /// </summary>
+        public static string TokenIssuerTrace {
+            get {
+                return ResourceManager.GetString("TokenIssuerTrace", resourceCulture);
             }
         }
         

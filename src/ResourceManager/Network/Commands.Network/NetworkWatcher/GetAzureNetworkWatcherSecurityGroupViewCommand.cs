@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.Network
 
                     foreach (var rule in customSecurityRulesList)
                     {
-                        PSSecurityRule psRule = Mapper.Map<PSSecurityRule>(rule);
+                        PSSecurityRule psRule = NetworkResourceManagerProfile.Mapper.Map<PSSecurityRule>(rule);
                         securityRules.NetworkInterfaceSecurityRules.Add(psRule);
                     }
                 }
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.Network
 
                     foreach (var rule in subnetSecurityRulesList)
                     {
-                        PSSecurityRule psRule = Mapper.Map<PSSecurityRule>(rule);
+                        PSSecurityRule psRule = NetworkResourceManagerProfile.Mapper.Map<PSSecurityRule>(rule);
                         securityRules.SubnetSecurityRules.Add(psRule);
                     }
                 }
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.Network
 
                 foreach (var rule in defaultSecurityRulesList)
                 {
-                    PSSecurityRule psRule = Mapper.Map<PSSecurityRule>(rule);
+                    PSSecurityRule psRule = NetworkResourceManagerProfile.Mapper.Map<PSSecurityRule>(rule);
                     securityRules.DefaultSecurityRules.Add(psRule);
                 }
 
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Commands.Network
 
                 foreach (var rule in effectiveSecurityRulesList)
                 {
-                    PSEffectiveSecurityRule psRule = Mapper.Map<PSEffectiveSecurityRule>(rule);
+                    PSEffectiveSecurityRule psRule = NetworkResourceManagerProfile.Mapper.Map<PSEffectiveSecurityRule>(rule);
                     securityRules.EffectiveSecurityRules.Add(psRule);
                 }
 

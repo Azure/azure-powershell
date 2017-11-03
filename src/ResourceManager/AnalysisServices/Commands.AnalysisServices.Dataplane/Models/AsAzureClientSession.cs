@@ -29,6 +29,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
     {
         public const string RestartEndpointPathFormat = "/webapi/servers/{0}/restart?api-version=2016-10-01";
         public const string LogfileEndpointPathFormat = "/webapi/servers/{0}/logfileHere";
+        public const string SynchronizeEndpointPathFormat = "/servers/{0}/models/{1}/sync";
         public const string AsAzureClientId = "cf710c6e-dfcc-4fa8-a093-d47294e44c66";
         public static readonly Uri RedirectUri = new Uri("urn:ietf:wg:oauth:2.0:oob");
         public static string DefaultRolloutEnvironmentKey = "asazure.windows.net";
@@ -53,7 +54,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
         /// Gets or sets the token cache store.
         /// </summary>
         public static TokenCache TokenCache { get; set; }
-        
+
         /// <summary>
         /// As Azure Profile
         /// </summary>
@@ -73,7 +74,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
             _asAzureAuthenticationProvider = new AsAzureAuthenticationProvider();
         }
 
-        public void SetAsAzureAuthenticationProvider(IAsAzureAuthenticationProvider  asAzureAuthenticationProvider)
+        public void SetAsAzureAuthenticationProvider(IAsAzureAuthenticationProvider asAzureAuthenticationProvider)
         {
             _asAzureAuthenticationProvider = asAzureAuthenticationProvider;
         }
@@ -88,7 +89,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
                 _profile = value;
             }
         }
-        
+
         public AsAzureProfile Login(AsAzureContext asAzureContext, SecureString password)
         {
             PromptBehavior promptBehavior = password == null ? PromptBehavior.Always : PromptBehavior.Auto;
@@ -96,6 +97,22 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
             var resourceUri = new UriBuilder(Uri.UriSchemeHttps, GetResourceUriSuffix(asAzureContext.Environment.Name)).ToString();
             resourceUri = resourceUri.TrimEnd('/');
             _asAzureAuthenticationProvider.GetAadAuthenticatedToken(asAzureContext, password, promptBehavior, AsAzureClientId, resourceUri, RedirectUri);
+
+            _profile.Context.TokenCache = AsAzureClientSession.TokenCache.Serialize();
+
+            if (!_profile.Environments.ContainsKey(asAzureContext.Environment.Name))
+            {
+                _profile.Environments.Add(asAzureContext.Environment.Name, asAzureContext.Environment);
+            }
+
+            return _profile;
+        }
+
+        public AsAzureProfile Login(AsAzureContext asAzureContext)
+        {
+            var resourceUri = new UriBuilder(Uri.UriSchemeHttps, GetResourceUriSuffix(asAzureContext.Environment.Name)).ToString();
+            resourceUri = resourceUri.TrimEnd('/');
+            _asAzureAuthenticationProvider.GetAadAuthenticatedToken(asAzureContext, null, PromptBehavior.RefreshSession, AsAzureClientId, resourceUri, RedirectUri);
 
             _profile.Context.TokenCache = AsAzureClientSession.TokenCache.Serialize();
 

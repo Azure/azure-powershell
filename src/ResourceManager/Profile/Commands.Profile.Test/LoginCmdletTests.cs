@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         {
             var cmdlt = new AddAzureRMAccountCommand();
 
-            int preProcessingUserAgentCount = AzureSession.Instance.ClientFactory.UserAgents.Count;
+            int preProcessingUserAgentCount = AzureSession.Instance.ClientFactory.UserAgents.Length;
             Debug.WriteLine("UserAgents count prior to cmdLet processing = {0}", preProcessingUserAgentCount.ToString());
             foreach (ProductInfoHeaderValue hv in AzureSession.Instance.ClientFactory.UserAgents)
             {
@@ -63,14 +63,14 @@ namespace Microsoft.Azure.Commands.Profile.Test
             }
 
             cmdlt.CommandRuntime = commandRuntimeMock;
-            cmdlt.SubscriptionId = "2c224e7e-3ef5-431d-a57b-e71f4662e3a6";
+            cmdlt.Subscription = "2c224e7e-3ef5-431d-a57b-e71f4662e3a6";
             cmdlt.TenantId = "72f988bf-86f1-41af-91ab-2d7cd011db47";
 
             cmdlt.InvokeBeginProcessing();
-            int postProcessingUserAgentCount = AzureSession.Instance.ClientFactory.UserAgents.Count;
+            int postProcessingUserAgentCount = AzureSession.Instance.ClientFactory.UserAgents.Length;
             Debug.WriteLine("UserAgents count prior to cmdLet post processing = {0}", postProcessingUserAgentCount.ToString());
-            Assert.True(AzureSession.Instance.ClientFactory.UserAgents.Count >= preProcessingUserAgentCount);
-            HashSet<ProductInfoHeaderValue> piHv = AzureSession.Instance.ClientFactory.UserAgents;
+            Assert.True(AzureSession.Instance.ClientFactory.UserAgents.Length >= preProcessingUserAgentCount);
+            IEnumerable<ProductInfoHeaderValue> piHv = AzureSession.Instance.ClientFactory.UserAgents;
             string psUserAgentString = string.Empty;
 
             foreach(ProductInfoHeaderValue hv in piHv)
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             var cmdlt = new AddAzureRMAccountCommand();
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
-            cmdlt.SubscriptionId = "2c224e7e-3ef5-431d-a57b-e71f4662e3a6";
+            cmdlt.Subscription = "2c224e7e-3ef5-431d-a57b-e71f4662e3a6";
             cmdlt.TenantId = "72f988bf-86f1-41af-91ab-2d7cd011db47";
 
             // Act
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             var cmdlt = new AddAzureRMAccountCommand();
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
-            cmdlt.SubscriptionId = "2c224e7e-3ef5-431d-a57b-e71f4662e3a5";
+            cmdlt.Subscription = "2c224e7e-3ef5-431d-a57b-e71f4662e3a5";
             cmdlt.TenantId = "72f988bf-86f1-41af-91ab-2d7cd011db47";
 
             // Act
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             var cmdlt = new AddAzureRMAccountCommand();
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
-            cmdlt.SubscriptionId = "2c224e7e-3ef5-431d-a57b-e71f4662e3a6";
+            cmdlt.Subscription = "2c224e7e-3ef5-431d-a57b-e71f4662e3a6";
 
             // Act
             cmdlt.InvokeBeginProcessing();
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
             cmdlt.TenantId = "72f988bf-86f1-41af-91ab-2d7cd011db47";
-            cmdlt.SubscriptionName = "Node CLI Test";
+            cmdlt.Subscription = "Node CLI Test";
 
             // Act
             cmdlt.InvokeBeginProcessing();
@@ -190,23 +190,6 @@ namespace Microsoft.Azure.Commands.Profile.Test
 
             Assert.NotNull(AzureRmProfileProvider.Instance.Profile.DefaultContext);
             Assert.Equal("microsoft.com", AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant.Directory);
-        }
-
-        [Fact]
-        [Trait(Category.RunType, Category.LiveOnly)]
-        public void LoginWithBothSubscriptionIdAndNameThrowsCloudException()
-        {
-            var cmdlt = new AddAzureRMAccountCommand();
-            // Setup
-            cmdlt.CommandRuntime = commandRuntimeMock;
-            cmdlt.TenantId = "72f988bf-86f1-41af-91ab-2d7cd011db47";
-            cmdlt.SubscriptionName = "Node CLI Test";
-            cmdlt.SubscriptionId = "2c224e7e-3ef5-431d-a57b-e71f4662e3a6";
-
-            // Act
-            cmdlt.InvokeBeginProcessing();
-            Assert.Throws<PSInvalidOperationException>(() => cmdlt.ExecuteCmdlet());
-            cmdlt.InvokeEndProcessing();
         }
 
         [Fact]

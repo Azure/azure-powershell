@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
     [Cmdlet(VerbsCommon.Remove, "AzureRmAlertRule"), OutputType(typeof(List<AzureOperationResponse>))]
     public class RemoveAzureRmAlertRuleCommand : ManagementCmdletBase
     {
-        internal const string RemoveAzureRmAlertRuleParamGroup = "Parameters for Remove-AzureRmAlertRule cmdlet";
+        internal const string RemoveAzureRmAlertRuleParamGroup = "RemoveAlertRules";
 
         #region Parameter declaration
 
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// </summary>
         protected override void ProcessRecordInternal()
         {
-            WriteWarning("The type of the output will change in a future release to become a single object, not a list.");
+            WriteWarning("Output change: The type of the output will change in the release 5.0.0 - November 2017 - to return a single object containing the request Id and the status code.");
             var result = this.MonitorManagementClient.AlertRules.DeleteWithHttpMessagesAsync(resourceGroupName: this.ResourceGroup, ruleName: this.Name).Result;
 
             // Keep this response for backwards compatibility.
