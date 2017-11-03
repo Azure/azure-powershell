@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Set-AzureRmVMAEMExtension: Add support for Dv3 and Ev3 series
 
 ## Version 3.4.1
 
