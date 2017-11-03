@@ -1,4 +1,4 @@
-﻿---
+---
 Module Name: Azure.Storage
 Module Guid: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 Download Help Link: ./Azure.Storage.md
@@ -49,6 +49,9 @@ Gets logging properties for Azure Storage services.
 
 ### [Get-AzureStorageServiceMetricsProperty](Get-AzureStorageServiceMetricsProperty.md)
 Gets metrics properties for the Azure Storage service.
+
+### [Get-AzureStorageServiceProperty](Get-AzureStorageServiceProperty.md)
+Gets properties for Azure Storage services.
 
 ### [Get-AzureStorageShare](Get-AzureStorageShare.md)
 Gets a list of file shares.
@@ -172,6 +175,9 @@ Modifies logging for Azure Storage services.
 
 ### [Set-AzureStorageServiceMetricsProperty](Set-AzureStorageServiceMetricsProperty.md)
 Modifies metrics properties for the Azure Storage service.
+
+### [Set-AzureStorageServiceProperty](Set-AzureStorageServiceProperty.md)
+Modifies the properties for the Azure Storage service.
 
 ### [Set-AzureStorageShareQuota](Set-AzureStorageShareQuota.md)
 Sets the storage capacity for a share.
