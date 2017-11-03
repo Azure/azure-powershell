@@ -72,7 +72,7 @@ NestedModules = @('.\Microsoft.Azure.Commands.Insights.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzureRmUsage', 'Get-AzureRmMetricDefinition', 
+CmdletsToExport = 'Get-AzureRmMetricDefinition', 
                'Get-AzureRmMetric', 'Remove-AzureRmLogProfile', 
                'Get-AzureRmLogProfile', 'Add-AzureRmLogProfile', 'Get-AzureRmLog', 
                'Set-AzureRmDiagnosticSetting', 'Get-AzureRmDiagnosticSetting', 
@@ -80,7 +80,7 @@ CmdletsToExport = 'Get-AzureRmUsage', 'Get-AzureRmMetricDefinition',
                'New-AzureRmAutoscaleRule', 'Add-AzureRmAutoscaleSetting', 
                'Get-AzureRmAutoscaleHistory', 'Get-AzureRmAutoscaleSetting', 
                'New-AzureRmAutoscaleWebhook', 'Remove-AzureRmAutoscaleSetting', 
-               'Add-AzureRmMetricAlertRule', 'Add-AzureRmLogAlertRule', 
+               'Add-AzureRmMetricAlertRule', 
                'Add-AzureRmWebtestAlertRule', 'Get-AzureRmAlertHistory', 
                'Get-AzureRmAlertRule', 'New-AzureRmAlertRuleEmail', 
                'New-AzureRmAlertRuleWebhook', 'Remove-AzureRmAlertRule', 

@@ -172,12 +172,11 @@ namespace Microsoft.Azure.Commands.Insights.Test
             return new List<MetricDefinition>();
         }
 
-        public static void VerifyDetailedOutput(LogsCmdletBase cmdlet, ref string selected)
+        public static void VerifyDetailedOutput(LogsCmdletBase cmdlet)
         {
             // Calling with detailed output
             cmdlet.DetailedOutput = true;
             cmdlet.ExecuteCmdlet();
-            Assert.Null(selected); // Incorrect nameOrTargetUri clause with detailed output on
         }
 
         public static void VerifyContinuationToken(string nextLink)
@@ -229,7 +228,7 @@ namespace Microsoft.Azure.Commands.Insights.Test
             VerifyConditionInFilter(filter: filter, field: "status", value: Utilities.Status);
         }
 
-        public static void ExecuteVerifications(LogsCmdletBase cmdlet, Mock<IActivityLogsOperations> insinsightsEventOperationsMockightsClientMock, string requiredFieldName, string requiredFieldValue, ref ODataQuery<EventData> filter, ref string selected, DateTime startDate, ref string nextLink)
+        public static void ExecuteVerifications(LogsCmdletBase cmdlet, Mock<IActivityLogsOperations> insinsightsEventOperationsMockightsClientMock, string requiredFieldName, string requiredFieldValue, ref ODataQuery<EventData> filter, DateTime startDate, ref string nextLink)
         {
             // Calling without optional parameters
             cmdlet.ExecuteCmdlet();
@@ -237,7 +236,6 @@ namespace Microsoft.Azure.Commands.Insights.Test
             VerifyFilterIsUsable(filter: filter);
             VerifyStartDateInFilter(filter: filter, startDate: null);
             VerifyConditionInFilter(filter: filter, field: requiredFieldName, value: requiredFieldValue);
-            Assert.True(string.Equals(PSEventDataNoDetails.SelectedFieldsForQuery, selected, StringComparison.OrdinalIgnoreCase), "Incorrect nameOrTargetUri clause without optional parameters");
             VerifyContinuationToken(nextLink: nextLink);
 
             // Calling with only start date
@@ -276,7 +274,7 @@ namespace Microsoft.Azure.Commands.Insights.Test
             cmdlet.ExecuteCmdlet();
 
             VerifyStatusAndCallerInCall(filter: filter, startDate: startDate, filedName: requiredFieldName, fieldValue: requiredFieldValue);
-            VerifyDetailedOutput(cmdlet: cmdlet, selected: ref selected);
+            VerifyDetailedOutput(cmdlet: cmdlet);
             VerifyContinuationToken(nextLink: nextLink);
 
             // Calling with maxEvents (Note: # of returned objects is not testable here, only the call is being tested)
@@ -286,7 +284,7 @@ namespace Microsoft.Azure.Commands.Insights.Test
                 cmdLetLogs.Caller = null;
                 cmdLetLogs.Status = null;
                 nextLink = null;
-                cmdLetLogs.MaxEvents = 3;
+                cmdLetLogs.MaxRecord = 3;
                 cmdLetLogs.ExecuteCmdlet();
 
                 VerifyFilterIsUsable(filter: filter);
@@ -295,7 +293,7 @@ namespace Microsoft.Azure.Commands.Insights.Test
 
                 // Negative value
                 nextLink = null;
-                cmdLetLogs.MaxEvents = -1;
+                cmdLetLogs.MaxRecord = -1;
                 cmdLetLogs.ExecuteCmdlet();
 
                 VerifyFilterIsUsable(filter: filter);
@@ -305,7 +303,7 @@ namespace Microsoft.Azure.Commands.Insights.Test
                 // The default should have been used, check continuation token
                 VerifyContinuationToken(nextLink: nextLink);
 
-                cmdLetLogs.MaxEvents = 0;
+                cmdLetLogs.MaxRecord = 0;
             }
 
             // Execute negative tests
