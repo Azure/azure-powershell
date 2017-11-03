@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Insights.OutputClasses;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -72,6 +73,7 @@ namespace Microsoft.Azure.Commands.Insights.Events
         /// Gets or sets the resourcegroup parameters of this cmdlet
         /// </summary>
         [Parameter(Position = 0, ParameterSetName = ResourceGroupName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroup { get; set; }
 
