@@ -33,6 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.0.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\AutoMapper.6.0.2\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
@@ -50,6 +54,7 @@
     <Compile Include="Commands\RemoveAzureContainerGroupCommand.cs" />
     <Compile Include="Models\ContainerGroupCreationParameters.cs" />
     <Compile Include="Commands\ContainerInstanceCmdletBase.cs" />
+    <Compile Include="Models\ContainerInstanceAutoMapperProfile.cs" />
     <Compile Include="Models\PSContainer.cs" />
     <Compile Include="Models\PSContainerEvent.cs" />
     <Compile Include="Models\PSContainerGroup.cs" />
@@ -59,10 +64,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="AutoMapper, Version=3.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\AutoMapper.3.1.1\lib\net40\AutoMapper.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Azure.Management.ContainerInstance, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.ContainerInstance.1.0.0-preview\lib\net452\Microsoft.Azure.Management.ContainerInstance.dll</HintPath>
     </Reference>

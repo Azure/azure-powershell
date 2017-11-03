@@ -167,6 +167,7 @@ Valid values are:
 - Suspended 
 - Suspending 
 - Activating
+- New
 
 ```yaml
 Type: String

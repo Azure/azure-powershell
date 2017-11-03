@@ -12,9 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Management.Monitor.Management;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
@@ -47,7 +45,6 @@ namespace Microsoft.Azure.Commands.Insights
             }
             set { this.monitorManagementClient = value; }
         }
-
         #endregion
     }
 }

@@ -18,6 +18,32 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 3.4.1
+    * Add-AzureRmLogAlertRule
+        - Adding details to deprecation warning introduced in April 2017: the cmdlet will stop having effect: its functionality is moved to the "ActivityLogAlerts" cmdlets.
+        - Help file modified to include the deprecation warning and the details.
+    * Disable-AzureRmActivityLogAlert, Disable-AzureRmActivityLogAlert, Remove-AzureRmActivityLogAlert, Set-AzureRmActivityLogAlert
+        - Help file modified: removed text stating that the Force arguments was accepted since that argument is not accepted.
+
+## Version 3.4.0
+    * New cmdlet Disable-AzureRmActivityLogAlert
+        - A new cmdlet to disable an existing activity log alert.
+        - Optionally the Tags are settable with this cmdlet too.
+    * New cmdlet Enable-AzureRmActivityLogAlert
+        - A new cmdlet to enable an existing activity log alert.
+        - Optionally the Tags are settable with this cmdlet too.
+    * New cmdlet Get-AzureRmActivityLogAlert
+        - A new cmdlet to retrieve one or more activity log alerts.
+        - The alerts can be retrieved by name, resource group, or subscription.
+    * New cmdlet New-AzureRmActionGroup
+        - A new cmdlet to create an ActionGroup object in memory (no request involved.)
+    * New cmdlet New-AzureRmActivityLogAlertCondition
+        - A new cmdlet to create an activity log alert leaf condition object in memory (no request involved.)
+    * New cmdlet Set-AzureRmActivityLogAlert
+        - A new cmdlet to create or update an activity log alert.
+    * New cmdlet Remove-AzureRmActivityLogAlert
+        - A new cmdlet to remove one activity log alert.
     * New cmdlet Set-AzureRmActionGroup
         - A new cmdlet to create a new or update an existing action group.
     * New cmdlet Get-AzureRmActionGroup
@@ -27,7 +53,7 @@
         - A new cmdlet to remove one action group.
     * New cmdlet New-AzureRmActionGroupReceiver
         - A new cmdlet to create an new action group receiver in memory.
-        
+
 ## Version 3.3.1
 
 ## Version 3.3.0

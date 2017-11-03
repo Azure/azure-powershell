@@ -24,14 +24,34 @@ namespace Microsoft.Azure.Commands.Network
 
     public class NetworkResourceManagerProfile : Profile
     {
+        private static IMapper _mapper = null;
+
+        private static readonly object _lock = new object();
+
+        public static IMapper Mapper
+        {
+            get
+            {
+                lock(_lock)
+                {
+                    if (_mapper == null)
+                    {
+                        Initialize();
+                    }
+
+                    return _mapper;
+                }
+            }
+        }
+
         public override string ProfileName
         {
             get { return "NetworkResourceManagerProfile"; }
         }
 
-        public static void Initialize()
+        private static void Initialize()
         {
-            Mapper.Initialize(cfg => {
+            var config = new MapperConfiguration(cfg => {
                 cfg.AddProfile<NetworkResourceManagerProfile>();
                 cfg.CreateMap<CNM.PSResourceId, MNM.SubResource>();
                 cfg.CreateMap<MNM.SubResource, CNM.PSResourceId>();
@@ -586,6 +606,8 @@ namespace Microsoft.Azure.Commands.Network
                 // MNM to CNM
                 cfg.CreateMap<MNM.ApplicationSecurityGroup, CNM.PSApplicationSecurityGroup>();
             });
+
+            _mapper = config.CreateMapper();
         }
     }
 }

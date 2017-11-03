@@ -119,7 +119,10 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             Position = 9,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Type of the volume (OS or Data) to perform encryption operation")]
-        [ValidateSet("OS", "Data", "All")]
+        [ValidateSet(
+            AzureDiskEncryptionExtensionContext.VolumeTypeOS,
+            AzureDiskEncryptionExtensionContext.VolumeTypeData,
+            AzureDiskEncryptionExtensionContext.VolumeTypeAll)]
         public string VolumeType { get; set; }
 
         [Parameter(
@@ -511,7 +514,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
                     var op = UpdateVmEncryptionSettings(encryptionSettingsBackup);
 
-                    var result = Mapper.Map<PSAzureOperationResponse>(op);
+                    var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
                     WriteObject(result);
                 }
             });

@@ -14,24 +14,26 @@ Gets subscriptions.
 
 ### Get all subscriptions (Default)
 ```
-Get-AzureRmApiManagementSubscription -Context <PsApiManagementContext> [<CommonParameters>]
+Get-AzureRmApiManagementSubscription -Context <PsApiManagementContext>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Get by subsctiption ID
 ```
 Get-AzureRmApiManagementSubscription -Context <PsApiManagementContext> [-SubscriptionId <String>]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Get by user ID
 ```
-Get-AzureRmApiManagementSubscription -Context <PsApiManagementContext> [-UserId <String>] [<CommonParameters>]
+Get-AzureRmApiManagementSubscription -Context <PsApiManagementContext> [-UserId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Get by product ID
 ```
 Get-AzureRmApiManagementSubscription -Context <PsApiManagementContext> [-ProductId <String>]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,13 +43,15 @@ The **Get-AzureRmApiManagementSubscription** cmdlet gets a specified subscriptio
 
 ### Example 1: Get all subscriptions
 ```
-PS C:\>Get-AzureRmApiManagementSubscription -Context $apimContext
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Get-AzureRmApiManagementSubscription -Context $apimContext 
 ```
 
 This command gets all subscriptions.
 
 ### Example 2: Get a subscription with a specified ID
 ```
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Get-AzureRmApiManagementSubscription -Context $apimContext -SubscriptionId "0123456789"
 ```
 
@@ -55,6 +59,7 @@ This command gets a subscription by ID.
 
 ### Example 3: Get all subscriptions for a user
 ```
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Get-AzureRmApiManagementSubscription -Context $apimContext -UserId "777"
 ```
 
@@ -62,6 +67,7 @@ This command gets a user's subscriptions.
 
 ### Example 4: Get all subscriptions for a product
 ```
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Get-AzureRmApiManagementSubscription -Context $apimContext -ProductId "999"
 ```
 
@@ -81,6 +87,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+ 
+ ```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -139,7 +160,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementSubscription
+The detail of the subscription in the API Management service.
+
 ### IList<Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementSubscription>
+The list of subscription in API Management service.
 
 ## NOTES
 
