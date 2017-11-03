@@ -42,5 +42,19 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 tenant.CopyPropertiesFrom(other);
             }
         }
+
+        /// <summary>
+        /// Update the non-identity properties of this tenant, using another tenant
+        /// </summary>
+        /// <param name="tenant"></param>
+        /// <param name="other"></param>
+        public static void Update(this IAzureTenant tenant, IAzureTenant other)
+        {
+            if (tenant != null && other != null)
+            {
+                tenant.Directory = other.Directory?? tenant.Directory;
+                tenant.UpdateProperties(other);
+            }
+        }
     }
 }

@@ -27,6 +27,32 @@
 
 # Upcoming Breaking Changes
 
+## Release 5.0.0 - November 2017
+
+    The following cmdlets will be deprecated in this release
+
+    **Add-AzureRMLogAlertRule**
+    - After October 1st using this cmdlet will no longer have any effect as this functionality is being transitioned to Activity Log Alerts. Please see https://aka.ms/migratemealerts for more information.
+
+    **Get-AzureRMUsage**
+
+    The following cmdlets will show some potentially breaking change, but will NOT be deprecated
+
+    **Get-AzureRmAlertHistory**
+    **Get-AzureRmAutoscaleHistory**
+    **Get-AzureRmLogs**
+    - Output change: The field EventChannels from the EventData object (returned by these cmdlets) is being deprecated in the release 5.0.0 - November 2017 - since it now returns a constant value (Admin,Operation.)
+
+    **Get-AzureRmAlertRule**
+    - Output change: The output of this cmdlet will be flattened, i.e. elimination of the properties field, to improve the user experience.
+
+    **Get-AzureRmAutoscaleSetting**
+    - Output change: The AutoscaleSettingResourceName field will be deprecated since it always equals the Name field.
+
+    **Remove-AzureRmAlertRule**
+    **Remove-AzureRmLogProfile**
+    - Output change: The type of the output will change to return a single object containing the request Id and the status code.
+
 ## Release 3.0.0
 
     The following cmdlets were affected this release:

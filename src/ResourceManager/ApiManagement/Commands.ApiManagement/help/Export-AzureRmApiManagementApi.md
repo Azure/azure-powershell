@@ -15,14 +15,15 @@ Exports an API to a file.
 ### Export to pipeline (Default)
 ```
 Export-AzureRmApiManagementApi -Context <PsApiManagementContext> -ApiId <String>
- -SpecificationFormat <PsApiManagementApiFormat> [-WhatIf] [-Confirm] [<CommonParameters>]
+ -SpecificationFormat <PsApiManagementApiFormat> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### Export to File
 ```
 Export-AzureRmApiManagementApi -Context <PsApiManagementContext> -ApiId <String>
- -SpecificationFormat <PsApiManagementApiFormat> -SaveAs <String> [-Force] [-PassThru] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -SpecificationFormat <PsApiManagementApiFormat> -SaveAs <String> [-Force] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,6 +33,7 @@ The **Export-AzureRmApiManagementApi** cmdlet exports an Azure API Management AP
 
 ### Example 1: Export an API in Web Application Description Language (WADL) format
 ```
+PS C:\>$ApiMgmtContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Export-AzureRmApiManagementApi -Context $ApiMgmtContext -ApiId "0123456789" -SpecificationFormat "Wadl" -SaveAs "C:\contoso\specifications\0123456789.wadl"
 ```
 
@@ -66,6 +68,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+ 
+ ```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

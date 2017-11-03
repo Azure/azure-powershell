@@ -14,7 +14,8 @@ Imports a MOF document as a DSC node configuration in Automation.
 
 ```
 Import-AzureRmAutomationDscNodeConfiguration -Path <String> -ConfigurationName <String> [-Force]
- [-ResourceGroupName] <String> [-AutomationAccountName] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ResourceGroupName] <String> [-AutomationAccountName] <String> [-IncrementNodeConfigurationBuild] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,6 +32,15 @@ PS C:\>Import-AzureRmAutomationDscConfiguration -AutomationAccountName "Contoso1
 This command imports a DSC node configuration from the file named webserver.mof into the Automation account named Contoso17, under the DSC configuration ContosoConfiguration.
 The command specifies the *Force* parameter.
 If there is an existing DSC node configuration named ContosoConfiguration.webserver, this command replaces it.
+
+### Example 2: Import a DSC node configuration into Automation and create a new build version and not overwrite existing NodeConfiguration.
+```
+PS C:\>Import-AzureRmAutomationDscConfiguration -AutomationAccountName "Contoso17" -ResourceGroupName "ResourceGroup01" -ConfigurationName "ContosoConfiguration" -Path "C:\DSC\webserver.mof" -IncrementNodeConfigurationBuild
+```
+
+This command imports a DSC node configuration from the file named webserver.mof into the Automation account named Contoso17, under the DSC configuration ContosoConfiguration.
+The command specifies the *Force* parameter.
+If there is an existing DSC node configuration named ContosoConfiguration.webserver, this command adds a new build version with the name ContosoConfiguration[2].webserver.
 
 ## PARAMETERS
 
@@ -75,6 +85,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IncrementNodeConfigurationBuild
+Creates a new Node Configuration build version.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

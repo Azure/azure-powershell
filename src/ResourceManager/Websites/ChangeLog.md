@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 3.4.1
+
+## Version 3.4.0
 * Add PremiumV2 Tier for App Service Plans
 
 ## Version 3.3.1
