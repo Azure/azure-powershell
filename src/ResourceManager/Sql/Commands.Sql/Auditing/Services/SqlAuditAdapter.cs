@@ -422,7 +422,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             var dbCommunicator = new AzureSqlDatabaseCommunicator(Context);
             var database = dbCommunicator.Get(resourceGroupName, serverName, databaseName);
             DatabaseEdition edition;
-            Enum.TryParse(database.Properties.Edition, true, out edition);
+            Enum.TryParse(database.Edition, true, out edition);
             if (edition != DatabaseEdition.None && edition != DatabaseEdition.Free)
             {
                 return true;

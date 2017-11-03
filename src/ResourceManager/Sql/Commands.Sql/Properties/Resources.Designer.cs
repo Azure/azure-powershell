@@ -511,6 +511,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Permanently removing Azure Sql Server Dns Alias &apos;{0}&apos;.
+        /// </summary>
+        internal static string RemoveAzureSqlServerDnsAliasDescription {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlServerDnsAliasDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Azure Sql Server Dns Alias &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemoveAzureSqlServerDnsAliasWarning {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlServerDnsAliasWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Permanently removing Firewall Rule &apos;{0}&apos; for Azure Sql Database Server &apos;{1}&apos;..
         /// </summary>
         internal static string RemoveAzureSqlServerFirewallRuleDescription {
@@ -642,6 +660,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string ServerDisasterRecoveryConfigurationNameExists {
             get {
                 return ResourceManager.GetString("ServerDisasterRecoveryConfigurationNameExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Server Dns Alias with name: &apos;{0}&apos; already exists..
+        /// </summary>
+        internal static string ServerDnsAliasNameExists {
+            get {
+                return ResourceManager.GetString("ServerDnsAliasNameExists", resourceCulture);
             }
         }
         

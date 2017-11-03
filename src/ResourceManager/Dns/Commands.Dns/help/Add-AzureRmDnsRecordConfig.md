@@ -61,6 +61,12 @@ Add-AzureRmDnsRecordConfig -RecordSet <DnsRecordSet> -Cname <String> [-DefaultPr
  [<CommonParameters>]
 ```
 
+### Caa
+```
+Add-AzureRmDnsRecordConfig -RecordSet <DnsRecordSet> -CaaFlags <Byte> -CaaTag <String> -CaaValue <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **Add-AzureRmDnsRecordConfig** cmdlet adds a Domain Name System (DNS) record to a **RecordSet** object.
 The **RecordSet** object is an offline object, and changes to it do not change the DNS responses until after you run the Set-AzureRmDnsRecordSet cmdlet to persist the change to the Microsoft Azure DNS service.
@@ -179,6 +185,51 @@ PS C:\> Get-AzureRmDnsRecordSet -Name text -RecordType TXT -ResouceGroupName MyR
 This example adds a TXT record to an existing record set.
 
 ## PARAMETERS
+
+### -CaaFlags
+The flags for the CAA record to add. Must be a number between 0 and 255.
+
+```yaml
+Type: Byte
+Parameter Sets: Caa
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -CaaTag
+The tag field of the CAA record to add.
+
+```yaml
+Type: String
+Parameter Sets: Caa
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -CaaValue
+The value field for the CAA record to add.
+
+```yaml
+Type: String
+Parameter Sets: Caa
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ### -Cname
 Specifies the domain name for a canonical name (CNAME) record.
