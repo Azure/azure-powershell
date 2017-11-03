@@ -11,6 +11,8 @@ namespace Microsoft.Azure.Experiments
                 new IResourceConfig[] { },
                 c => c.CreateResourceManagementClient().ResourceGroups.GetAsync(name),
                 i => new Location(false, i.Location),
-                (map, config) => map.Get(config));
+                (map, config) => map.Get(config),
+                (c, location) => c.CreateResourceManagementClient().ResourceGroups.CreateOrUpdateAsync(
+                    name, new ResourceGroup { Location = location }));
     }
 }

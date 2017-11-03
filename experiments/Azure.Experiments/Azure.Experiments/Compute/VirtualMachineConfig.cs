@@ -19,6 +19,11 @@ namespace Microsoft.Azure.Experiments.Compute
                     .CreateComputeManagementClient()
                     .VirtualMachines
                     .GetAsync(resourceGroup.Name, name),
-                c => c.Location);
+                c => c.Location,
+                (c, location) => c
+                    .CreateComputeManagementClient()
+                    .VirtualMachines
+                    .CreateOrUpdateAsync(
+                        resourceGroup.Name, name, new VirtualMachine { Location = location }));
     }
 }

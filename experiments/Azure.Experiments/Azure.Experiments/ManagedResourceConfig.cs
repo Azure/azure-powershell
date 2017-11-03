@@ -13,13 +13,15 @@ namespace Microsoft.Azure.Experiments
             string name,
             IEnumerable<IResourceConfig> dependencies,
             Func<Context, Task<I>> getAsync,
-            Func<I, string> getLocation)
+            Func<I, string> getLocation,
+            Func<Context, string, Task<I>> createAsync)
             where I : class
             => ResourceConfig.Create(
                 name,
                 dependencies.Concat(new[] { resourceGroup }),
                 getAsync,
                 i => new Location(true, getLocation(i)),
-                (map, config) => map.Get(config));
+                (map, config) => map.Get(config),
+                createAsync);
     }
 }

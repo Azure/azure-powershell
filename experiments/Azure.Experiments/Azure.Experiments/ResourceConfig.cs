@@ -15,6 +15,8 @@ namespace Microsoft.Azure.Experiments
         Location GetLocation(object i);
 
         object GetState(IStateMap getState);
+
+        Task<object> CreateAsync(Context context, string location);
     }
 
     public static class ResourceConfig
@@ -24,8 +26,10 @@ namespace Microsoft.Azure.Experiments
             IEnumerable<IResourceConfig> dependencies,
             Func<Context, Task<I>> getAsync,
             Func<I, Location> getLocation,
-            Func<IStateMap, ResourceConfig<I>, I> getState)
-            => new ResourceConfig<I>(name, dependencies, getAsync, getLocation, getState);
+            Func<IStateMap, ResourceConfig<I>, I> getState,
+            Func<Context, string, Task<I>> createAsync)
+            => new ResourceConfig<I>(
+                name, dependencies, getAsync, getLocation, getState, createAsync);
     }
 
     public sealed class ResourceConfig<I> : IResourceConfig
@@ -39,13 +43,15 @@ namespace Microsoft.Azure.Experiments
             IEnumerable<IResourceConfig> dependencies,
             Func<Context, Task<I>> getAsyncFunc,
             Func<I, Location> getLocationFunc,
-            Func<IStateMap, ResourceConfig<I>, I> getStateFunc)
+            Func<IStateMap, ResourceConfig<I>, I> getStateFunc,
+            Func<Context, string, Task<I>> createAsyncFunc)
         {
             Name = name;
             Dependencies = dependencies;
             GetAsyncFunc = getAsyncFunc;
             GetLocationFunc = getLocationFunc;
             GetStateFunc = getStateFunc;
+            CreateAsyncFunc = createAsyncFunc;
         }
 
         public async Task<object> GetAsync(Context context) => await GetAsyncFunc(context);
@@ -54,10 +60,15 @@ namespace Microsoft.Azure.Experiments
 
         public object GetState(IStateMap stateMap) => GetStateFunc(stateMap, this);
 
+        public async Task<object> CreateAsync(Context context, string location)
+            => await CreateAsyncFunc(context, location);
+
         private Func<Context, Task<I>> GetAsyncFunc { get; }
 
         private Func<I, Location> GetLocationFunc { get; }
    
         public Func<IStateMap, ResourceConfig<I>, I> GetStateFunc { get; }
+
+        private Func<Context, string, Task<I>> CreateAsyncFunc { get; }
     }
 }

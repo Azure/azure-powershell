@@ -15,6 +15,8 @@ namespace Microsoft.Azure.Experiments.Network
                 resourceGroup,
                 name,                
                 new IResourceConfig[] { },
-                c => c.PublicIPAddresses.GetAsync(resourceGroup.Name, name));
+                c => c.PublicIPAddresses.GetAsync(resourceGroup.Name, name),
+                (c, location) => c.PublicIPAddresses.CreateOrUpdateAsync(
+                    resourceGroup.Name, name, new PublicIPAddress { Location = location }));
     }
 }

@@ -13,6 +13,7 @@ namespace Microsoft.Azure.Experiments.Network
                 new[] { virtualNetwork },
                 _ => Task.FromResult<Subnet>(null),
                 null,
-                (map, _) => map.Get(virtualNetwork)?.Subnets?.FirstOrDefault(v => v.Name == name));
+                (map, _) => map.Get(virtualNetwork)?.Subnets?.FirstOrDefault(v => v.Name == name),
+                (_0, _1) => null);
     }
 }

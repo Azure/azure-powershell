@@ -16,6 +16,8 @@ namespace Microsoft.Azure.Experiments.Network
                 resourceGroup,
                 name,                
                 new IResourceConfig[] { subnet, publicIpAddress, networkSecurityGroup },
-                c => c.NetworkInterfaces.GetAsync(resourceGroup.Name, name));
+                c => c.NetworkInterfaces.GetAsync(resourceGroup.Name, name),
+                (c, location) => c.NetworkInterfaces.CreateOrUpdateAsync(
+                    resourceGroup.Name, name, new NetworkInterface { Location = location }));
     }
 }

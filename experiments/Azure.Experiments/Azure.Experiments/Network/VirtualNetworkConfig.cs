@@ -12,6 +12,8 @@ namespace Microsoft.Azure.Experiments.Network
                 resourceGroup,
                 name,                
                 new IResourceConfig[] { },
-                c => c.VirtualNetworks.GetAsync(resourceGroup.Name, name));
+                c => c.VirtualNetworks.GetAsync(resourceGroup.Name, name),
+                (c, location) => c.VirtualNetworks.CreateOrUpdateAsync(
+                    resourceGroup.Name, name, new VirtualNetwork { Location = location }));
     }
 }

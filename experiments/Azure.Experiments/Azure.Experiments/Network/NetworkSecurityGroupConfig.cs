@@ -12,6 +12,8 @@ namespace Microsoft.Azure.Experiments.Network
                 resourceGroup,
                 name,                
                 new IResourceConfig[] { },
-                c => c.NetworkSecurityGroups.GetAsync(resourceGroup.Name, name));
+                c => c.NetworkSecurityGroups.GetAsync(resourceGroup.Name, name),
+                (c, location) => c.NetworkSecurityGroups.CreateOrUpdateAsync(
+                    resourceGroup.Name, name, new NetworkSecurityGroup { Location = location }));
     }
 }

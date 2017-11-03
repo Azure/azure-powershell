@@ -12,13 +12,15 @@ namespace Microsoft.Azure.Experiments.Network
             ResourceConfig<ResourceGroup> resourceGroup,
             string name,
             IEnumerable<IResourceConfig> dependencies,
-            Func<INetworkManagementClient, Task<I>> getAsync)
+            Func<INetworkManagementClient, Task<I>> getAsync,
+            Func<INetworkManagementClient, string, Task<I>> createAsync)
             where I : Management.Network.Models.Resource
             => ManagedResourceConfig.Create(
                 resourceGroup,
                 name,
                 dependencies,
-                context => getAsync(context.CreateNetworkManagementClient()),
-                i => i.Location);
+                c => getAsync(c.CreateNetworkManagementClient()),
+                i => i.Location,
+                (c, location) => createAsync(c.CreateNetworkManagementClient(), location));
     }
 }
