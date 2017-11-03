@@ -15,7 +15,8 @@ Sets the goal state of an SSL certificate.
 
 ```
 Set-AzureRmApplicationGatewaySslCertificate -ApplicationGateway <PSApplicationGateway> -Name <String>
- -CertificateFile <String> -Password <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -CertificateFile <String> -Password <SecureString> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,8 +26,9 @@ The **Set-AzureRmApplicationGatewaySslCertificate** cmdlet sets the goal state o
 
 ### Example 1: Set the goal state of an SSL certificate
 ```
-PS C:\>$AppGW = Get-AzureRmApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-PS C:\> $Cert = Set-AzureRmApplicationGatewaySslCertificate -ApplicationGateway $AppGW -Name "Cert01" -CertificateFile "D:\cert01.pfx" -Password "Password01"
+PS C:\> $appGW = Get-AzureRmApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+PS C:\> $password = ConvertTo-SecureString "P@ssw0rd" -AsPlainText -Force
+PS C:\> $cert = Set-AzureRmApplicationGatewaySslCertificate -ApplicationGateway $AppGW -Name "Cert01" -CertificateFile "D:\cert01.pfx" -Password $password
 ```
 
 This command sets the goal state for an SSL certificate from the application gateway named ApplicationGateway01.
@@ -97,7 +99,7 @@ Accept wildcard characters: False
 Specifies the password of the SSL certificate.
 
 ```yaml
-Type: String
+Type: SecureString
 Parameter Sets: (All)
 Aliases: 
 

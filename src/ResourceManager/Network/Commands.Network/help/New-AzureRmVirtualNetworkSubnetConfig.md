@@ -36,16 +36,22 @@ New-AzureRmVirtualNetworkSubnetConfig -Name <String> -AddressPrefix <String> [-N
 ### 1:  Create a virtual network with two subnets and a network security group
 ```
 New-AzureRmResourceGroup -Name TestResourceGroup -Location centralus
-    $rdpRule = New-AzureRmNetworkSecurityRuleConfig -Name rdp-rule -Description "Allow RDP" 
-    -Access Allow -Protocol Tcp -Direction Inbound -Priority 100 -SourceAddressPrefix 
-    Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389
-    $networkSecurityGroup = New-AzureRmNetworkSecurityGroup -ResourceGroupName 
-    TestResourceGroup -Location centralus -Name "NSG-FrontEnd" -SecurityRules $rdpRule
-    $frontendSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name frontendSubnet 
+
+$rdpRule = New-AzureRmNetworkSecurityRuleConfig -Name rdp-rule -Description "Allow RDP" `
+   -Access Allow -Protocol Tcp -Direction Inbound -Priority 100 `
+   -SourceAddressPrefix Internet -SourcePortRange * `
+   -DestinationAddressPrefix * -DestinationPortRange 3389 
+    
+$networkSecurityGroup = New-AzureRmNetworkSecurityGroup -ResourceGroupName TestResourceGroup `
+  -Location centralus -Name "NSG-FrontEnd" -SecurityRules $rdpRule
+
+$frontendSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name frontendSubnet `
     -AddressPrefix "10.0.1.0/24" -NetworkSecurityGroup $networkSecurityGroup
-    $backendSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name backendSubnet -AddressPrefix 
-    "10.0.2.0/24" -NetworkSecurityGroup $networkSecurityGroup
-    New-AzureRmVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResourceGroup 
+
+$backendSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name backendSubnet `
+    -AddressPrefix "10.0.2.0/24" -NetworkSecurityGroup $networkSecurityGroup
+
+New-AzureRmVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResourceGroup `
     -Location centralus -AddressPrefix "10.0.0.0/16" -Subnet $frontendSubnet,$backendSubnet
 ```
 

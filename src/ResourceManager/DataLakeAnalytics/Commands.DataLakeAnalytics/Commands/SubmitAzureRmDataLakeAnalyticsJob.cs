@@ -26,12 +26,12 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
     [Alias("Submit-AdlJob")]
     public class SubmitAzureDataLakeAnalyticsJob : DataLakeAnalyticsCmdletBase
     {
-        internal const string USqlJobWithScriptPath = "Submit job with script path for U-SQL";
-        internal const string USqlJobParameterSetName = "Submit U-SQL Job";
-        internal const string USqlJobWithScriptPathAndRecurrence = "Submit job with script path for U-SQL with reucurrence information";
-        internal const string USqlJobParameterSetNameAndRecurrence = "Submit U-SQL Job with recurrence information";
-        internal const string USqlJobWithScriptPathAndPipeline = "Submit job with script path for U-SQL with reucurrence and pipeline information";
-        internal const string USqlJobParameterSetNameAndPipeline = "Submit U-SQL Job with recurrence and pipeline information";
+        internal const string USqlJobWithScriptPath = "SubmitUSqlJobWithScriptPath";
+        internal const string USqlJobParameterSetName = "SubmitUSqlJob";
+        internal const string USqlJobWithScriptPathAndRecurrence = "SubmitUSqlJobWithScriptPathAndRecurrence";
+        internal const string USqlJobParameterSetNameAndRecurrence = "SubmitUSqlJobWithRecurrence";
+        internal const string USqlJobWithScriptPathAndPipeline = "SubmitUSqlJobWithScriptPathAndPipeline";
+        internal const string USqlJobParameterSetNameAndPipeline = "SubmitUSqlJobWithPipeline";
 
         private int _degreeOfParallelism = 1;
         private int _priority = 1000;

@@ -69,9 +69,9 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <summary>
         /// Gets the Azure Sql Database
         /// </summary>
-        public Management.Sql.LegacySdk.Models.Database Get(string resourceGroupName, string serverName, string databaseName)
+        public Management.Sql.Models.Database Get(string resourceGroupName, string serverName, string databaseName)
         {
-            return GetLegacySqlClient().Databases.Get(resourceGroupName, serverName, databaseName).Database;
+            return GetCurrentSqlClient().Databases.Get(resourceGroupName, serverName, databaseName);
         }
 
         /// <summary>
@@ -85,9 +85,9 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <summary>
         /// Lists Azure Sql Databases
         /// </summary>
-        public IList<Management.Sql.LegacySdk.Models.Database> List(string resourceGroupName, string serverName)
+        public IList<Management.Sql.Models.Database> List(string resourceGroupName, string serverName)
         {
-            return GetLegacySqlClient().Databases.List(resourceGroupName, serverName).Databases;
+            return new List<Management.Sql.Models.Database>(GetCurrentSqlClient().Databases.ListByServer(resourceGroupName, serverName));
         }
 
         /// <summary>

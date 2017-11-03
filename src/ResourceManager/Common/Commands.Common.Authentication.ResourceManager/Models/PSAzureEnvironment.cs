@@ -95,6 +95,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
             AzureDataLakeStoreFileSystemEndpointSuffix = other.GetProperty<string>(nameof(AzureDataLakeStoreFileSystemEndpointSuffix));
             AzureKeyVaultDnsSuffix = other.GetProperty<string>(nameof(AzureKeyVaultDnsSuffix));
             AzureKeyVaultServiceEndpointResourceId = other.GetProperty<string>(nameof(AzureKeyVaultServiceEndpointResourceId));
+            BatchEndpointResourceId = other.GetProperty<string>(nameof(BatchEndpointResourceId));
             DataLakeEndpointResourceId = other.GetProperty<string>(nameof(DataLakeEndpointResourceId));
             GalleryUrl = other.GetProperty<string>(nameof(GalleryUrl));
             GraphEndpointResourceId = other.GetProperty<string>(nameof(GraphEndpointResourceId));
@@ -228,6 +229,11 @@ namespace Microsoft.Azure.Commands.Profile.Models
         public IDictionary<string, string> ExtendedProperties { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 
         /// <summary>
+        /// Gets or sets the Azure Batch AD resource ID.
+        /// </summary>
+        public string BatchEndpointResourceId { get; set; }
+
+        /// <summary>
         /// Determine equality of two PSAzureEnvironment instances.
         /// </summary>
         /// <param name="obj">The instance to compare.</param>
@@ -253,7 +259,8 @@ namespace Microsoft.Azure.Commands.Profile.Models
                        && SqlDatabaseDnsSuffix == other.SqlDatabaseDnsSuffix
                        && AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix == other.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix
                        && AzureDataLakeStoreFileSystemEndpointSuffix == other.AzureDataLakeStoreFileSystemEndpointSuffix
-                       && TrafficManagerDnsSuffix == other.TrafficManagerDnsSuffix;
+                       && TrafficManagerDnsSuffix == other.TrafficManagerDnsSuffix
+                       && BatchEndpointResourceId == other.BatchEndpointResourceId;
             }
 
             return false;

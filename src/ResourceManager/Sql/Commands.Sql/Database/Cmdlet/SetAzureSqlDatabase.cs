@@ -88,6 +88,13 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         public Hashtable Tags { get; set; }
 
         /// <summary>
+        /// Gets or sets the zone redundant option to assign to the Azure SQL Database
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The zone redundancy to associate with the Azure Sql Database")]
+        public SwitchParameter ZoneRedundant { get; set; }
+
+        /// <summary>
         /// Overriding to add warning message
         /// </summary>
         public override void ExecuteCmdlet()
@@ -126,6 +133,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 ElasticPoolName = ElasticPoolName,
                 Location = model.FirstOrDefault().Location,
                 ReadScale = ReadScale,
+                ZoneRedundant = MyInvocation.BoundParameters.ContainsKey("ZoneRedundant") ? (bool?)ZoneRedundant.ToBool() : null
             });
             return newEntity;
         }
@@ -139,7 +147,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         {
             return new List<AzureSqlDatabaseModel>
             {
-                ModelAdapter.UpsertDatabase(
+                ModelAdapter.UpsertDatabaseWithNewSdk(
                     this.ResourceGroupName,
                     this.ServerName,
                     new AzureSqlDatabaseCreateOrUpdateModel

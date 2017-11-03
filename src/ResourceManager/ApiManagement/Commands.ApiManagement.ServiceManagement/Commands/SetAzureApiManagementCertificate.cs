@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     [OutputType(typeof(PsApiManagementCertificate))]
     public class SetAzureApiManagementCertificate : AzureApiManagementCmdletBase
     {
-        private const string FromFile = "Load from file";
+        private const string FromFile = "LoadFromFile";
         private const string Raw = "Raw";
 
         [Parameter(

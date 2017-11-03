@@ -203,6 +203,7 @@
     <Compile Include="ProfileController.cs" />
     <Compile Include="ProtectedFileProviderTests.cs" />
     <Compile Include="PSSerializationTests.cs" />
+    <Compile Include="ResourceGroupCompleterUnitTests.cs" />
     <Compile Include="RPRegistrationDelegatingHandlerTests.cs" />
     <Compile Include="SessionInitializationTests.cs" />
     <Compile Include="SubscriptionCmdletTests.cs" />

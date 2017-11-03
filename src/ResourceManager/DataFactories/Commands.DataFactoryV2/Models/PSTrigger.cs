@@ -61,5 +61,21 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Models
                 return this.trigger.Properties;
             }
         }
+
+        public override string Id
+        {
+            get
+            {
+                return this.trigger.Id;
+            }
+        }
+
+        public override string ETag
+        {
+            get
+            {
+                return this.trigger.Etag;
+            }
+        }
     }
 }

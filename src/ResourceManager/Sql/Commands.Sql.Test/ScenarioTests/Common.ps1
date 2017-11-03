@@ -348,11 +348,39 @@ function Get-VirtualNetworkRuleName
 
 <#
 .SYNOPSIS
+Gets valid server dns alias name
+#>
+function Get-ServerDnsAliasName
+{
+    return getAssetName
+}
+
+<#
+.SYNOPSIS
+Gets test mode - 'Record' or 'Playback'
+#>
+function Get-SqlTestMode {
+    try {
+        $testMode = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode;
+        $testMode = $testMode.ToString();
+    } catch {
+        if ($PSItem.Exception.Message -like '*Unable to find type*') {
+            $testMode = 'Record';
+        } else {
+            throw;
+        }
+    }
+
+    return $testMode
+}
+
+<#
+.SYNOPSIS
 Gets the location for a provider, if not found return East US
 #>
 function Get-ProviderLocation($provider)
 {
-	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+	if ((Get-SqlTestMode) -ne 'Playback')
 	{
 		$namespace = $provider.Split("/")[0]
 		if($provider.Contains("/"))
@@ -363,7 +391,8 @@ function Get-ProviderLocation($provider)
 			if ($location -eq $null)
 			{
 				return "East US"
-			} else
+			} 
+            else
 			{
 				return $location.Locations[0]
 			}

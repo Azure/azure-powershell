@@ -25,9 +25,9 @@ namespace Microsoft.Azure.Commands.DataLakeStore
     [Alias("Get-AdlStore")]
     public class GetAzureDataLakeStoreAccount : DataLakeStoreCmdletBase
     {
-        internal const string BaseParameterSetName = "All In Subscription";
-        internal const string ResourceGroupParameterSetName = "All In Resource Group";
-        internal const string AccountParameterSetName = "Specific Account";
+        internal const string BaseParameterSetName = "GetAllInSubscription";
+        internal const string ResourceGroupParameterSetName = "GetByResourceGroup";
+        internal const string AccountParameterSetName = "GetBySpecificAccount";
 
         [Parameter(ParameterSetName = ResourceGroupParameterSetName, Position = 0,
             ValueFromPipelineByPropertyName = true, Mandatory = true,
