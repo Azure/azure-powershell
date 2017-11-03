@@ -15,7 +15,7 @@
 using Newtonsoft.Json;
 using System;
 
-namespace Microsoft.WindowsAzure.Commands.Common
+namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
     public class AzurePSDataCollectionProfile
     {
