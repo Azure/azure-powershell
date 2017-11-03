@@ -9,12 +9,16 @@
 $PSDefaultParameterValues.Clear()
 Set-StrictMode -Version Latest
 
-# Import dependencies using required version, if it is allowed
-if ($PSVersionTable.PSVersion.Major -ge 5)
-{
-%STRICT-DEPENDENCIES%
-}
-else
-{
-%DEPENDENCIES%
+%IMPORTED-DEPENDENCIES%
+
+$FilteredCommands = %COMMANDS%
+
+$FilteredCommands | ForEach-Object {
+	$global:PSDefaultParameterValues.Add($_,
+		{
+			$context = Get-AzureRmContext
+			if ($context.ExtendedProperties.ContainsKey("Default Resource Group")) {
+				$context.ExtendedProperties["Default Resource Group"]
+			} 
+		})
 }
