@@ -11,7 +11,7 @@
 
         [Parameter(ParameterSetName='CreateSpnParamSet', Mandatory=$true, HelpMessage='ServicePrincipal password')]
         [ValidateNotNullOrEmpty()]
-        [string]$NewServicePrincipalPassword,
+        [string]$NewServicePrincipalSecret,
 
         [Parameter(ParameterSetName='UserIdParamSet', Mandatory=$true, HelpMessage = "UserId (OrgId) you would like to use")]
         [ValidateNotNullOrEmpty()]
@@ -19,7 +19,7 @@
 
         [Parameter(ParameterSetName='SpnParamSet', Mandatory=$true, HelpMessage='ServicePrincipal/ClientId you would like to use')]   
         [ValidateNotNullOrEmpty()]
-        [string]$ServicePrincipal,
+        [string]$ServicePrincipalId,
 
         [Parameter(ParameterSetName='SpnParamSet', Mandatory=$true, HelpMessage='ServicePrincipal Secret/ClientId Secret you would like to use')]
         [ValidateNotNullOrEmpty()]
@@ -67,28 +67,22 @@
 
     if ([string]::IsNullOrEmpty($NewServicePrincipalDisplayName) -eq $false) {
         $Scope = "/subscriptions/" + $SubscriptionId
-        $NewServicePrincipal = New-AzureRMADServicePrincipal -DisplayName $NewServicePrincipalDisplayName -Password $NewServicePrincipalPassword
+        $NewServicePrincipal = New-AzureRMADServicePrincipal -DisplayName $NewServicePrincipalDisplayName -Password $NewServicePrincipalSecret
         Write-Host "New ServicePrincipal created: " + $NewServicePrincipal
 
         $NewRole = $null
         $Retries = 0;
         While ($NewRole -eq $null -and $Retries -le 6)
         {
-           # Sleep here for a few seconds to allow the service principal application to become active (should only take a couple of seconds normally)
-           Start-Sleep 5
-           if ($Force)
-           {
-                New-AzureRMRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $NewServicePrincipal.ApplicationId -Scope $Scope -Force | Write-Verbose -ErrorAction SilentlyContinue
-           }
-           else {
-                New-AzureRMRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $NewServicePrincipal.ApplicationId -Scope $Scope | Write-Verbose -ErrorAction SilentlyContinue
-           }
-           $NewRole = Get-AzureRMRoleAssignment -ObjectId $NewServicePrincipal.Id -ErrorAction SilentlyContinue
-           $Retries++;
+            # Sleep here for a few seconds to allow the service principal application to become active (should only take a couple of seconds normally)
+            Start-Sleep 5
+            New-AzureRMRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $NewServicePrincipal.ApplicationId -Scope $Scope | Write-Verbose -ErrorAction SilentlyContinue
+            $NewRole = Get-AzureRMRoleAssignment -ObjectId $NewServicePrincipal.Id -ErrorAction SilentlyContinue
+            $Retries++;
         }
         
         $credentials.ServicePrincipal = $NewServicePrincipal.ApplicationId
-        $credentials.ServicePrincipalSecret = $NewServicePrincipalPassword
+        $credentials.ServicePrincipalSecret = $NewServicePrincipalSecret
     }
 
     if ([string]::IsNullOrEmpty($UserId) -eq $false) {
@@ -96,20 +90,12 @@
     }
     
     if ([string]::IsNullOrEmpty($ServicePrincipal) -eq $false) {
-        $credentials.ServicePrincipal = $ServicePrincipal
+        $credentials.ServicePrincipal = $ServicePrincipalId
         $credentials.ServicePrincipalSecret = $ServicePrincipalSecret
     }
 
     if ([string]::IsNullOrEmpty($TenantId) -eq $false) {
         $credentials.TenantId = $TenantId
-    }
-
-    if ([string]::IsNullOrEmpty($ServicePrincipal) -eq $false) {
-        $credentials.ServicePrincipal = $ServicePrincipal
-    }
-
-    if ([string]::IsNullOrEmpty($ServicePrincipalSecret) -eq $false) {
-        $credentials.ServicePrincipalSecret = $ServicePrincipalSecret
     }
 
     if ([string]::IsNullOrEmpty($ResourceManagementUri) -eq $false) {
@@ -185,7 +171,7 @@ This cmdlet will only prompt you for Subscription and Tenant information, rest a
 
         [Parameter(ParameterSetName='SpnParamSet', Mandatory=$true, HelpMessage='ServicePrincipal/ClientId you would like to use')]   
         [ValidateNotNullOrEmpty()]
-        [string]$ServicePrincipal,
+        [string]$ServicePrincipalId,
 
         [Parameter(ParameterSetName='SpnParamSet', Mandatory=$true, HelpMessage='ServicePrincipal Secret/ClientId Secret you would like to use')]
         [ValidateNotNullOrEmpty()]
@@ -235,7 +221,7 @@ This cmdlet will only prompt you for Subscription and Tenant information, rest a
 
     if([string]::IsNullOrEmpty($ServicePrincipal) -eq $false)
     {
-        $formattedConnStr = [string]::Format([string]::Concat($formattedConnStr, ";ServicePrincipal={0}"), $ServicePrincipal)
+        $formattedConnStr = [string]::Format([string]::Concat($formattedConnStr, ";ServicePrincipal={0}"), $ServicePrincipalId)
     }
 
     if([string]::IsNullOrEmpty($ServicePrincipalSecret) -eq $false)
