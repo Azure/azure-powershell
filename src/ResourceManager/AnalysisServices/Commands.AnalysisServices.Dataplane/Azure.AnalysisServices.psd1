@@ -44,22 +44,11 @@ CLRVersion='4.0'
 # Processor architecture (None, X86, Amd64, IA64) required by this module  
 ProcessorArchitecture = 'None'  
 
+# Modules that must be imported into the global environment prior to importing this module
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '4.0.0'; })
+
 # Assemblies that must be loaded prior to importing this module  
-RequiredAssemblies = '.\Hyak.Common.dll',
-                     '.\Microsoft.ApplicationInsights.dll',
-                     '.\Microsoft.Azure.Commands.Common.Authentication.Abstractions.dll',
-                     '.\Microsoft.Azure.Common.dll',
-                     '.\Microsoft.Azure.Common.NetFramework.dll',
-                     '.\Microsoft.IdentityModel.Clients.ActiveDirectory.dll',
-                     '.\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll',
-                     '.\Microsoft.Rest.ClientRuntime.Azure.dll',
-                     '.\Microsoft.Rest.ClientRuntime.dll',
-                     '.\Microsoft.Threading.Tasks.dll',
-                     '.\Microsoft.Threading.Tasks.Extensions.Desktop.dll',
-                     '.\Microsoft.Threading.Tasks.Extensions.dll',
-                     '.\Microsoft.WindowsAzure.Commands.Common.dll',
-                     '.\Microsoft.WindowsAzure.Management.dll',
-                     '.\Newtonsoft.Json.dll'
+RequiredAssemblies = @()
   
 # Script files (.ps1) that are run in the caller's environment prior to importing this module  
 ScriptsToProcess = @()  
