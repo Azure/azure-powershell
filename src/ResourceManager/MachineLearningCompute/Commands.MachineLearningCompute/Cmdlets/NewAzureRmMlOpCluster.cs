@@ -65,7 +65,6 @@ namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
         [ValidateNotNullOrEmpty]
         public string ClusterType { get; set; }
 
-        // Required for non-local cluster
         [Parameter(ParameterSetName = CreateFromCmdletParametersParameterSet,
             Mandatory = false,
             HelpMessage = OrchestratorTypeParameterHelpMessage)]
@@ -210,21 +209,35 @@ namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
                     switch (ClusterType)
                     {
                         case Management.MachineLearningCompute.Models.ClusterType.ACS:
+
                             cluster.ContainerService = new AcsClusterProperties
                             {
                                 OrchestratorType = OrchestratorType,
-                                OrchestratorProperties = new KubernetesClusterProperties
-                                {
-                                    ServicePrincipal = new ServicePrincipalProperties
-                                    {
-                                        ClientId = ClientId,
-                                        Secret = Secret
-                                    }      
-                                },
                                 MasterCount = MasterCount,
                                 AgentCount = AgentCount,
                                 AgentVmSize = AgentVmSize
                             };
+
+                            switch (OrchestratorType)
+                            {
+                                case Management.MachineLearningCompute.Models.OrchestratorType.Kubernetes:
+                                    if (ClientId != null || Secret != null)
+                                    {
+                                        cluster.ContainerService.OrchestratorProperties = new KubernetesClusterProperties()
+                                        {
+                                            ServicePrincipal = new ServicePrincipalProperties
+                                            {
+                                                ClientId = ClientId,
+                                                Secret = Secret
+                                            }
+                                        };
+                                    }
+                                    break;
+                                case Management.MachineLearningCompute.Models.OrchestratorType.None:
+                                    break;
+                                default:
+                                    break;
+                            }
 
                             break;
 
