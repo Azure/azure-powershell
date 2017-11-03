@@ -28,7 +28,7 @@ Get-AzureRmRecoveryServicesAsrEvent -ResourceId <String> [-DefaultProfile <IAzur
 ### ByFabricId
 ```
 Get-AzureRmRecoveryServicesAsrEvent -FabricId <String> [-AffectedObjectFriendlyName <String>]
- [-Fabric <ASRFabric>] [-Severity <String>] [-StartTime <DateTime>] [-EndTime <DateTime>] [-EventType <String>]
+ [-Severity <String>] [-StartTime <DateTime>] [-EndTime <DateTime>] [-EventType <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -106,7 +106,7 @@ Filter events by the specified fabric.
 
 ```yaml
 Type: ASRFabric
-Parameter Sets: ByParam, ByFabricId
+Parameter Sets: ByParam
 Aliases: 
 
 Required: False

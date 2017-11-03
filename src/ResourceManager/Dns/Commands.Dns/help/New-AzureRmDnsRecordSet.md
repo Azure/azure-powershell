@@ -322,7 +322,7 @@ SOA records are created automatically when the zone is created and cannot be cre
 Type: RecordType
 Parameter Sets: (All)
 Aliases: 
-Accepted values: A, AAAA, CNAME, MX, NS, PTR, SOA, SRV, TXT
+Accepted values: A, AAAA, CAA, CNAME, MX, NS, PTR, SOA, SRV, TXT
 
 Required: True
 Position: Named
