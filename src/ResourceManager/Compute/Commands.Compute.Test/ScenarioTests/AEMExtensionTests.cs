@@ -82,5 +82,17 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionAdvancedLinuxMD");
         }
+
+        [Fact]
+        public void TestAEMExtensionAdvancedLinuxMD_ESeries()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionAdvancedLinuxMD_E");
+        }
+
+        [Fact]
+        public void TestAEMExtensionAdvancedLinuxMD_DSeries()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionAdvancedLinuxMD_D");
+        }
     }
 }
