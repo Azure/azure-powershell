@@ -24,6 +24,12 @@ Remove-AzureRmRecoveryServicesAsrvCenter -ResourceId <String> [-DefaultProfile <
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### ByName
+```
+Remove-AzureRmRecoveryServicesAsrvCenter -Fabric <ASRFabric> -Name <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **Remove-AzureRmRecoveryServicesAsrvCenter** cmdlet removes the vCenter server from the ASR fabric and stops discovery of virtual machines from the vCenter server.
 
@@ -111,6 +117,36 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Fabric
+ASR fabric object representing the Configuration Server.
+
+```yaml
+Type: ASRFabric
+Parameter Sets: ByName
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+Name of the vCenter Server.
+
+```yaml
+Type: String
+Parameter Sets: ByName
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

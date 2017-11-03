@@ -64,7 +64,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Gets or sets the fabric.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByParam)]
-        [Parameter(ParameterSetName = ASRParameterSets.ByFabricId)]
         [ValidateNotNullOrEmpty]
         public ASRFabric Fabric { get; set; }
 

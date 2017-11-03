@@ -49,6 +49,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public ASRvCenter InputObject { get; set; }
 
         /// <summary>
+        ///     Gets or sets Fabric server of the vCenter.
+        /// </summary>
+        [Parameter(
+            ParameterSetName = ASRParameterSets.ByName,
+            Mandatory = true,
+            ValueFromPipeline = true)]
+        [ValidateNotNullOrEmpty]
+        public ASRFabric Fabric { get; set; }
+
+        /// <summary>
+        ///     Gets or sets friendly name of the vCenter.
+        /// </summary>
+        [Parameter(
+            ParameterSetName = ASRParameterSets.ByName,
+            Mandatory = true)]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
+
+        /// <summary>
         ///     ProcessRecord of the command.
         /// </summary>
         public override void ExecuteSiteRecoveryCmdlet()
@@ -69,10 +88,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     ARMResourceTypeConstants.ReplicationFabrics);
                     break;
 
+                case ASRParameterSets.ByName:
+                    vCenterName = this.Name;
+                    fabricName = this.Fabric.Name;
+                    break;
+
                 case ASRParameterSets.Default:
                     vCenterName = this.InputObject.Name;
                     fabricName = this.InputObject.FabricArmResourceName;
                     break;
+
             }
 
             if (this.ShouldProcess(vCenterName, VerbsCommon.Remove))
