@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.Server.Model;
 using Microsoft.WindowsAzure.Commands.Common;
 using System.Collections.Generic;
@@ -35,6 +36,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = "The name of the resource group.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public override string ResourceGroupName { get; set; }
 
