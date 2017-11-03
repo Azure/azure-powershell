@@ -141,6 +141,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                     case AzureEnvironment.Endpoint.ServiceManagement:
                         propertyValue = environment.ServiceManagementUrl;
                         break;
+                    case AzureEnvironment.Endpoint.DataLakeEndpointResourceId:
+                        propertyValue = environment.DataLakeEndpointResourceId;
+                        break;
                     case AzureEnvironment.Endpoint.BatchEndpointResourceId:
                         propertyValue = environment.BatchEndpointResourceId;
                         break;
@@ -449,6 +452,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                     environment.AzureKeyVaultServiceEndpointResourceId =
                          other.AzureKeyVaultServiceEndpointResourceId;
                 }
+                if (other.IsEndpointSet(AzureEnvironment.Endpoint.DataLakeEndpointResourceId))
+                {
+                    environment.DataLakeEndpointResourceId = other.DataLakeEndpointResourceId;
+                }
                 if (other.IsEndpointSet(AzureEnvironment.Endpoint.BatchEndpointResourceId))
                 {
                     environment.BatchEndpointResourceId = other.BatchEndpointResourceId;
@@ -539,6 +546,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 {
                     environment.AzureKeyVaultServiceEndpointResourceId =
                          other.AzureKeyVaultServiceEndpointResourceId;
+                }
+                if (other.IsEndpointSet(AzureEnvironment.Endpoint.DataLakeEndpointResourceId))
+                {
+                    environment.DataLakeEndpointResourceId = other.DataLakeEndpointResourceId;
                 }
 
                 foreach (var profile in other.VersionProfiles)
