@@ -67,8 +67,27 @@ function Create-ModulePsm1
      $template = $template -replace "%DATE%", [string](Get-Date)
      $template = $template -replace "%IMPORTED-DEPENDENCIES%", $importedModules
 
-     if ($AddDefaultParameters) 
-     {
+     $contructedCommands = Find-DefaultResourceGroupCmdlets -AddDefaultParameters $AddDefaultParameters -ModuleMetadata $ModuleMetadata -ModulePath $ModulePath
+     $template = $template -replace "%COMMANDS%", $contructedCommands
+     
+     Write-Host "Writing psm1 manifest to $templateOutputPath"
+     $template | Out-File -FilePath $templateOutputPath -Force
+     $file = Get-Item -Path $templateOutputPath
+  }
+}
+
+function Find-DefaultResourceGroupCmdlets
+{
+    [CmdletBinding()]
+    param(
+        [bool]$AddDefaultParameters,
+        [Hashtable]$ModuleMetadata,
+        [string]$ModulePath
+    )
+    PROCESS
+    {
+        if ($AddDefaultParameters) 
+        {
         $nestedModules = $ModuleMetadata.NestedModules
         $AllCmdlets = @()
         $nestedModules | ForEach-Object {
@@ -78,47 +97,55 @@ function Create-ModulePsm1
             $AllCmdlets += $dllCmdlets
         }
         
-        $FilteredCommands = @()
-        $AllCmdlets | ForEach-Object {
-            $rgParameter = $_.GetProperties() | Where-Object {$_.Name -eq "ResourceGroupName"}
-            if ($rgParameter -ne $null) {
-                $parameterSets = $rgParameter.CustomAttributes | Where-Object {$_.AttributeType.Name -eq "ParameterAttribute"}
-                $isMandatory = $true
-                $parameterSets | ForEach-Object {
-                    $hasParameterSet = $_.NamedArguments | Where-Object {$_.MemberName -eq "ParameterSetName"}
-                    $MandatoryParam = $_.NamedArguments | Where-Object {$_.MemberName -eq "Mandatory"}
-                    if (($hasParameterSet -ne $null) -or (!$MandatoryParam.TypedValue.Value)) {
-                        $isMandatory = $false
-                    }
-                }
-                if ($isMandatory) {
-                    $FilteredCommands += $_
-                }
-            }
-        }
-   
+        $FilteredCommands = $AllCmdlets | Where-Object {Test-RequiredParameter -Cmdlet $_}
+    
         if ($FilteredCommands.Length -eq 0) {
-           $contructedCommands = "@()"
+            $contructedCommands = "@()"
         }
         else {
-           $contructedCommands = "@("
-           $FilteredCommands | ForEach-Object {
-              $contructedCommands += "'" + $_.GetCustomAttributes("System.Management.Automation.CmdletAttribute").VerbName + "-" + $_.GetCustomAttributes("System.Management.Automation.CmdletAttribute").NounName + ":ResourceGroupName" + "',"
-           }
-           $contructedCommands = $contructedCommands -replace ".$",")"
+            $contructedCommands = "@("
+            $FilteredCommands | ForEach-Object {
+                $contructedCommands += "'" + $_.GetCustomAttributes("System.Management.Automation.CmdletAttribute").VerbName + "-" + $_.GetCustomAttributes("System.Management.Automation.CmdletAttribute").NounName + ":ResourceGroupName" + "',"
+            }
+            $contructedCommands = $contructedCommands -replace ".$",")"
         }
-   
-        $template = $template -replace "%COMMANDS%", $contructedCommands
-     }
+    
+        return $contructedCommands
+        }
 
-     else {
-        $template = $template -replace "%COMMANDS%", "@()"
-     }
-     
-     Write-Host "Writing psm1 manifest to $templateOutputPath"
-     $template | Out-File -FilePath $templateOutputPath -Force
-     $file = Get-Item -Path $templateOutputPath
-  }
+        else {
+        return "@()"
+        }
+    }
+}
+
+function Test-RequiredParameter
+{
+    [CmdletBinding()]
+    param(
+        [Object]$Cmdlet
+    )
+
+    PROCESS
+    {
+        $rgParameter = $Cmdlet.GetProperties() | Where-Object {$_.Name -eq "ResourceGroupName"}
+        if ($rgParameter -ne $null) {
+            $parameterSets = $rgParameter.CustomAttributes | Where-Object {$_.AttributeType.Name -eq "ParameterAttribute"}
+            $isMandatory = $true
+            $parameterSets | ForEach-Object {
+                $hasParameterSet = $_.NamedArguments | Where-Object {$_.MemberName -eq "ParameterSetName"}
+                $MandatoryParam = $_.NamedArguments | Where-Object {$_.MemberName -eq "Mandatory"}
+                if (($hasParameterSet -ne $null) -or (!$MandatoryParam.TypedValue.Value)) {
+                    $isMandatory = $false
+                }
+            }
+            if ($isMandatory) {
+                return $true
+            }
+        }
+        
+        return $false
+    }
 }
 
 function Create-MinimumVersionEntry
