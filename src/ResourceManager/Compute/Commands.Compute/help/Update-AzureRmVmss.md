@@ -12,10 +12,9 @@ Updates the state of a VMSS.
 
 ## SYNTAX
 
-### DefaultParameter (Default)
 ```
 Update-AzureRmVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
- [-VirtualMachineScaleSetUpdate <VirtualMachineScaleSetUpdate>] [-ImageReferenceSku <String>]
+ [[-VirtualMachineScaleSet] <PSVirtualMachineScaleSet>] [-ImageReferenceSku <String>]
  [-EnableAutomaticUpdate <Boolean>] [-ManagedDiskStorageAccountType <StorageAccountTypes>]
  [-PlanPublisher <String>] [-ProvisionVMAgent <Boolean>] [-BootDiagnosticsEnabled <Boolean>]
  [-Overprovision <Boolean>] [-MaxBatchInstancePercent <Int32>] [-TimeZone <String>]
@@ -28,13 +27,6 @@ Update-AzureRmVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
  [-MaxUnhealthyInstancePercent <Int32>] [-SkuCapacity <Int32>] [-ImageReferenceOffer <String>]
  [-PauseTimeBetweenBatches <String>] [-OsDiskCaching <CachingTypes>] [-ImageReferenceVersion <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### FriendMethod
-```
-Update-AzureRmVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
- [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -56,7 +48,7 @@ Sets whether OS upgrades should automatically be applied to scale set instances 
 
 ```yaml
 Type: Boolean
-Parameter Sets: DefaultParameter
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
@@ -71,7 +63,7 @@ Whether boot diagnostics should be enabled on the virtual machine scale set.
 
 ```yaml
 Type: Boolean
-Parameter Sets: DefaultParameter
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
@@ -86,7 +78,7 @@ URI of the storage account to use for placing the console output and screenshot.
 
 ```yaml
 Type: String
-Parameter Sets: DefaultParameter
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
@@ -103,7 +95,7 @@ The maximum length of the binary array is 65535 bytes.
 
 ```yaml
 Type: String
-Parameter Sets: DefaultParameter
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
@@ -133,7 +125,7 @@ Indicates that this cmdlet disables password authentication for Linux OS.
 
 ```yaml
 Type: Boolean
-Parameter Sets: DefaultParameter
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
@@ -148,7 +140,7 @@ Indicates whether the Windows virtual machines in the VMSS are enabled for autom
 
 ```yaml
 Type: Boolean
-Parameter Sets: DefaultParameter
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
@@ -166,7 +158,7 @@ The acceptable values for this parameter are:
 
 ```yaml
 Type: ResourceIdentityType
-Parameter Sets: DefaultParameter
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
@@ -181,7 +173,7 @@ Specifies the image reference ID.
 
 ```yaml
 Type: String
-Parameter Sets: DefaultParameter
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
@@ -197,7 +189,7 @@ To obtain an image offer, use the Get-AzureRmVMImageOffer cmdlet.
 
 ```yaml
 Type: String
-Parameter Sets: DefaultParameter
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
@@ -213,7 +205,7 @@ To obtain a publisher, use the Get-AzureRmVMImagePublisher cmdlet.
 
 ```yaml
 Type: String
-Parameter Sets: DefaultParameter
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
@@ -229,7 +221,7 @@ To obtain SKUs, use the Get-AzureRmVMImageSku cmdlet.
 
 ```yaml
 Type: String
-Parameter Sets: DefaultParameter
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
@@ -245,7 +237,7 @@ To use the latest version, specify a value of latest instead of a particular ver
 
 ```yaml
 Type: String
-Parameter Sets: DefaultParameter
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
@@ -261,7 +253,7 @@ VMSS creates an operating system disk in the same container of the user image.
 
 ```yaml
 Type: String
-Parameter Sets: DefaultParameter
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
@@ -276,7 +268,7 @@ Specify the license type, which is for bringing your own license scenario.
 
 ```yaml
 Type: String
-Parameter Sets: DefaultParameter
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
@@ -295,7 +287,7 @@ The acceptable values for this parameter are:
 
 ```yaml
 Type: StorageAccountTypes
-Parameter Sets: DefaultParameter
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
@@ -312,7 +304,7 @@ If the value is not specified, it is set to 20.
 
 ```yaml
 Type: Int32
-Parameter Sets: DefaultParameter
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
@@ -329,7 +321,7 @@ If the value is not specified, it is set to 20.
 
 ```yaml
 Type: Int32
-Parameter Sets: DefaultParameter
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
@@ -347,7 +339,7 @@ If the value is not specified, it is set to 20.
 
 ```yaml
 Type: Int32
-Parameter Sets: DefaultParameter
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
@@ -371,7 +363,7 @@ This setting affects the consistency and performance of the disk.
 
 ```yaml
 Type: CachingTypes
-Parameter Sets: DefaultParameter
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
@@ -386,7 +378,7 @@ Indicates whether the cmdlet overprovisions the VMSS.
 
 ```yaml
 Type: Boolean
-Parameter Sets: DefaultParameter
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
@@ -403,7 +395,7 @@ The default value is 0 seconds (PT0S).
 
 ```yaml
 Type: String
-Parameter Sets: DefaultParameter
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
@@ -418,7 +410,7 @@ Specifies the plan name.
 
 ```yaml
 Type: String
-Parameter Sets: DefaultParameter
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
@@ -433,7 +425,7 @@ Specifies the plan product.
 
 ```yaml
 Type: String
-Parameter Sets: DefaultParameter
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
@@ -448,7 +440,7 @@ Specifies the plan promotion code.
 
 ```yaml
 Type: String
-Parameter Sets: DefaultParameter
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
@@ -463,7 +455,7 @@ Specifies the plan publisher.
 
 ```yaml
 Type: String
-Parameter Sets: DefaultParameter
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
@@ -478,7 +470,7 @@ Indicates whether virtual machine agent should be provisioned on the Windows vir
 
 ```yaml
 Type: Boolean
-Parameter Sets: DefaultParameter
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
@@ -508,7 +500,7 @@ Specifies the single placement group.
 
 ```yaml
 Type: Boolean
-Parameter Sets: DefaultParameter
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
@@ -523,7 +515,7 @@ Specifies the number of instances in the VMSS.
 
 ```yaml
 Type: Int32
-Parameter Sets: DefaultParameter
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
@@ -538,7 +530,7 @@ Specifies the size of all the instances of VMSS.
 
 ```yaml
 Type: String
-Parameter Sets: DefaultParameter
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
@@ -557,7 +549,7 @@ The acceptable values for this parameter are:
 
 ```yaml
 Type: String
-Parameter Sets: DefaultParameter
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
@@ -574,7 +566,7 @@ Key-value pairs in the form of a hash table. For example:
 
 ```yaml
 Type: Hashtable
-Parameter Sets: DefaultParameter
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
@@ -589,7 +581,7 @@ Specifies the time zone for Windows OS.
 
 ```yaml
 Type: String
-Parameter Sets: DefaultParameter
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
@@ -608,7 +600,7 @@ The acceptable values for this parameter are:
 
 ```yaml
 Type: UpgradeMode
-Parameter Sets: DefaultParameter
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
@@ -623,7 +615,7 @@ Specifies the container URLs that are used to store operating system disks for t
 
 ```yaml
 Type: String[]
-Parameter Sets: DefaultParameter
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
@@ -640,26 +632,11 @@ This virtual machine object contains the updated state for the VMSS.
 
 ```yaml
 Type: PSVirtualMachineScaleSet
-Parameter Sets: FriendMethod
-Aliases: 
-
-Required: True
-Position: 3
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -VirtualMachineScaleSetUpdate
-Specifies a local VMSS Update object.
-
-```yaml
-Type: VirtualMachineScaleSetUpdate
-Parameter Sets: DefaultParameter
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: Named
+Position: 3
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False

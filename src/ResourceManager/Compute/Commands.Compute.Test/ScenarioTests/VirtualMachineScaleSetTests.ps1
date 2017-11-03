@@ -375,7 +375,14 @@ function Test-VirtualMachineScaleSetUpdate
         Assert-AreEqual 2 $returned_tags.Count;
         Assert-AreEqual $tags["test1"] $returned_tags["test1"];
         Assert-AreEqual $tags["test2"] $returned_tags["test2"];
-		Assert-AreEqual 3 $vmss.Sku.Capacity;
+        Assert-AreEqual 3 $vmss.Sku.Capacity;
+
+        $vmss2 = $vmss | Update-AzureRmVmss -ResourceGroupName $rgname -Name $vmssName -SkuCapacity 4;
+        $returned_tags2 = $vmss2.Tags;
+        Assert-AreEqual 2 $returned_tags2.Count;
+        Assert-AreEqual $tags["test1"] $returned_tags["test1"];
+        Assert-AreEqual $tags["test2"] $returned_tags["test2"];
+        Assert-AreEqual 4 $vmss2.Sku.Capacity;
     }
     finally
     {
