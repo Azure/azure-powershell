@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
 Module Name: AzureRM.Insights
 ms.assetid: 7436F31F-9DCB-4365-BA6D-41BDB5D7FCB6
-online version: 
+online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.insights/set-azurermactivitylogalert
 schema: 2.0.0
 ---
 

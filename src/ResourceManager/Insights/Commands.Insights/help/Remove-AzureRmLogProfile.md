@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
 Module Name: AzureRM.Insights
 ms.assetid: DDA137FD-4EB3-4FB7-A202-978922038AFC
-online version: 
+online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.insights/remove-azurermlogprofile
 schema: 2.0.0
 ---
 

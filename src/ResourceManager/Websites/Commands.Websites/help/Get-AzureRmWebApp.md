@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
 Module Name: AzureRM
 ms.assetid: A87ED954-9C09-4329-A005-ABFF36C45E6E
-online version: 
+online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/get-azurermwebapp
 schema: 2.0.0
 ---
 

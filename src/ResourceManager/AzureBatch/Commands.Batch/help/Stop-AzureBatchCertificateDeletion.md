@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
 Module Name: AzureRM.Batch
 ms.assetid: B3C8A2DB-6571-418D-8C4B-3BE3FDA42F89
-online version: 
+online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/stop-azurebatchcertificatedeletion
 schema: 2.0.0
 ---
 

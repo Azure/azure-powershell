@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.RecoveryServices.Backup.dll-Help.xml
 Module Name: AzureRM
 ms.assetid: D614B509-82DD-42FB-B975-D72CD3355E3E
-online version: 
+online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.recoveryservices.backup/set-azurermrecoveryservicesbackupprotectionpolicy
 schema: 2.0.0
 ---
 

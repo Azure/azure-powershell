@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 8C1D738C-825D-4718-AD2A-9CFEAA7DBD3B
-online version: 
+online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/remove-azurermroleassignment
 schema: 2.0.0
 ---
 

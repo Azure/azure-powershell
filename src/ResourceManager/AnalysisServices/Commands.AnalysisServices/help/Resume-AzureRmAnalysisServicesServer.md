@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.AnalysisServices.dll-Help.xml
 Module Name: AzureRM.AnalysisServices
-online version: 
+online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.analysisservices/resume-azurermanalysisservicesserver
 schema: 2.0.0
 ---
 
