@@ -173,6 +173,9 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.MachineLearningCompute.Test.ScenarioTests.MLCTests\TestNewGetRemove.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.MachineLearningCompute.Test.ScenarioTests.MLCTests\TestSet.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.MachineLearningCompute.Test.ScenarioTests.MLCTests\TestUpdateSystemServices.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

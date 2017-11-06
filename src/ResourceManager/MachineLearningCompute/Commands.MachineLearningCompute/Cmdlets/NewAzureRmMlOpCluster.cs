@@ -17,10 +17,8 @@ using System.Management.Automation;
 using Microsoft.Azure.Management.MachineLearningCompute;
 using Microsoft.Azure.Management.MachineLearningCompute.Models;
 using Microsoft.Azure.Commands.MachineLearningCompute.Models;
-using System.Collections.Generic;
 using System.Collections;
 using System.Linq;
-using Microsoft.Rest.Azure;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
