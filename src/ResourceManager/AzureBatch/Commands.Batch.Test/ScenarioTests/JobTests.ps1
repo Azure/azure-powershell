@@ -73,6 +73,9 @@ function Test-DisableEnableTerminateJob
 
     Disable-AzureBatchJob $jobId Terminate -BatchContext $context
 
+    # Sleep a bit in Record mode since the job doesn't immediately switch to Disabled.
+    Start-TestSleep 10000
+
     # Verify the job was Disabled
     $job = Get-AzureBatchJob $jobId -BatchContext $context
     Assert-AreEqual 'Disabled' $job.State
@@ -159,7 +162,7 @@ function IfJobSetsAutoFailure-ItCompletesWhenAnyTaskFails
     $paasConfiguration = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration -ArgumentList @($osFamily, $targetOSVersion)
 
     $poolSpec = New-Object Microsoft.Azure.Commands.Batch.Models.PSPoolSpecification
-    $poolSpec.TargetDedicated = $targetDedicated = 3
+    $poolSpec.TargetDedicatedComputeNodes = $targetDedicated = 3
     $poolSpec.VirtualMachineSize = $vmSize = "small"
     $poolSpec.CloudServiceConfiguration = $paasConfiguration
     $autoPoolSpec = New-Object Microsoft.Azure.Commands.Batch.Models.PSAutoPoolSpecification

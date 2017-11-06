@@ -44,21 +44,6 @@ Returns all the jobs on a particular ASR object(reference the ASR object such as
 
 ## PARAMETERS
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
-
-```yaml
-Type: IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -EndTime
 Specifies the end time for the jobs.
 This cmdlet gets all jobs that started before the specified time.
@@ -156,6 +141,21 @@ Specifies the ID of the object. Used to search for jobs on the specified object.
 Type: String
 Parameter Sets: ByParam
 Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named

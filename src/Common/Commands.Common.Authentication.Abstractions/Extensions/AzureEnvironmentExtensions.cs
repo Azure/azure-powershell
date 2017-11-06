@@ -120,6 +120,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                     case AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix:
                         propertyValue = environment.AzureDataLakeStoreFileSystemEndpointSuffix;
                         break;
+                    case AzureEnvironment.Endpoint.DataLakeEndpointResourceId:
+                        propertyValue = environment.DataLakeEndpointResourceId;
+                        break;
                     case AzureEnvironment.Endpoint.ActiveDirectory:
                         propertyValue = environment.ActiveDirectoryAuthority;
                         break;
@@ -444,6 +447,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                     environment.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix =
                          other.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix;
                 }
+                if (other.IsEndpointSet(AzureEnvironment.Endpoint.DataLakeEndpointResourceId))
+                {
+                    environment.DataLakeEndpointResourceId = other.DataLakeEndpointResourceId;
+                }
                 if (other.IsEndpointSet(AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId))
                 {
                     environment.AzureKeyVaultServiceEndpointResourceId =
@@ -539,6 +546,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 {
                     environment.AzureKeyVaultServiceEndpointResourceId =
                          other.AzureKeyVaultServiceEndpointResourceId;
+                }
+                if (other.IsEndpointSet(AzureEnvironment.Endpoint.DataLakeEndpointResourceId))
+                {
+                    environment.DataLakeEndpointResourceId = other.DataLakeEndpointResourceId;
                 }
 
                 foreach (var profile in other.VersionProfiles)
