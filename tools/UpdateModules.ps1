@@ -97,7 +97,7 @@ function Find-DefaultResourceGroupCmdlets
             $AllCmdlets += $dllCmdlets
         }
         
-        $FilteredCommands = $AllCmdlets | Where-Object {Test-RequiredParameter -Cmdlet $_}
+        $FilteredCommands = $AllCmdlets | Where-Object {Test-CmdletRequiredParameter -Cmdlet $_ -Parameter "ResourceGroupName"}
     
         if ($FilteredCommands.Length -eq 0) {
             $contructedCommands = "@()"
@@ -119,20 +119,21 @@ function Find-DefaultResourceGroupCmdlets
     }
 }
 
-function Test-RequiredParameter
+function Test-CmdletRequiredParameter
 {
     [CmdletBinding()]
     param(
-        [Object]$Cmdlet
+        [Object]$Cmdlet,
+        [string]$Parameter
     )
 
     PROCESS
     {
-        $rgParameter = $Cmdlet.GetProperties() | Where-Object {$_.Name -eq "ResourceGroupName"}
+        $rgParameter = $Cmdlet.GetProperties() | Where-Object {$_.Name -eq $Parameter}
         if ($rgParameter -ne $null) {
-            $parameterSets = $rgParameter.CustomAttributes | Where-Object {$_.AttributeType.Name -eq "ParameterAttribute"}
+            $parameterAttributes = $rgParameter.CustomAttributes | Where-Object {$_.AttributeType.Name -eq "ParameterAttribute"}
             $isMandatory = $true
-            $parameterSets | ForEach-Object {
+            $parameterAttributes | ForEach-Object {
                 $hasParameterSet = $_.NamedArguments | Where-Object {$_.MemberName -eq "ParameterSetName"}
                 $MandatoryParam = $_.NamedArguments | Where-Object {$_.MemberName -eq "Mandatory"}
                 if (($hasParameterSet -ne $null) -or (!$MandatoryParam.TypedValue.Value)) {
