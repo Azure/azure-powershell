@@ -21,8 +21,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     [Cmdlet(VerbsCommon.Set, "AzureRmApiManagementHostnames", DefaultParameterSetName = DefaultParameterSetName), OutputType(typeof(PsApiManagement))]
     public class SetAzureApiManagementHostnames : AzureApiManagementCmdletBase
     {
-        internal const string FromPsApiManagementInstanceSetName = "Set from provided PsApiManagement instance";
-        internal const string DefaultParameterSetName = "Specific API Management service";
+        internal const string FromPsApiManagementInstanceSetName = "SetFromPsApiManagementInstance";
+        internal const string DefaultParameterSetName = "SetSpecificService";
 
         [Parameter(
             ParameterSetName = FromPsApiManagementInstanceSetName,

@@ -25,8 +25,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore
     [Alias("New-AdlStore")]
     public class NewAzureDataLakeStoreAccount : DataLakeStoreCmdletBase
     {
-        internal const string BaseParameterSetName = "User or System assigned encryption";
-        internal const string  EncryptionDisabledParameterSetName = "Disable Encryption";
+        internal const string BaseParameterSetName = "UserOrSystemAssignedEncryption";
+        internal const string  EncryptionDisabledParameterSetName = "DisableEncryption";
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             HelpMessage = "Name of resource group under which you want to create the account.",

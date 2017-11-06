@@ -24,9 +24,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     [OutputType(typeof(PsApiManagementUser), ParameterSetName = new[] { GetById })]
     public class GetAzureApiManagementUser : AzureApiManagementCmdletBase
     {
-        private const string GetAll = "Get all users";
-        private const string GetById = "Get user by ID";
-        private const string FindBy = "Find users";
+        private const string GetAll = "GeAllUsers";
+        private const string GetById = "GetByUserId";
+        private const string FindBy = "GetByUser";
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,

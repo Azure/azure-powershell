@@ -15,5 +15,5 @@ The topics in this section document the Azure PowerShell cmdlets for Azure Marke
 Get the agreement terms for a given publisher id(Publisher), offer id(Product) and plan id(Name). The terms object which is returned by this command should be passed to Set-AzureRmMarketplaceTerms to accept the legal terms.
 
 ### [Set-AzureRmMarketplaceTerms](Set-AzureRmMarketplaceTerms.md)
-Accept or reject the legal terms for a given publisher id(Publisher), offer id(Product) and plan id(Name). Please use Get-AzureRmMarketplaceTerms to get the agreement terms.
+Accept or reject terms for a given publisher id(Publisher), offer id(Product) and plan id(Name). Please use Get-AzureRmMarketplaceTerms to get the agreement terms.
 

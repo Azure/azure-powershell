@@ -11,14 +11,11 @@ namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
     [OutputType(typeof(PSCheckSystemServicesUpdatesAvailableResponse))]
     public class TestAzureRmOpClusterSystemServicesUpdateAvailability: MachineLearningComputeCmdletBase
     {
-        protected const string CmdletParametersParameterSet =
-            "Test for update availability from cmdlet input parameters.";
+        protected const string CmdletParametersParameterSet = "TestByNameAndResourceGroup";
 
-        protected const string ObjectParameterSet =
-            "Test for update availability from an OperationalizationCluster instance definition.";
+        protected const string ObjectParameterSet = "TestByInputObject";
 
-        protected const string ResourceIdParameterSet =
-            "Test for update availability from an Azure resouce id.";
+        protected const string ResourceIdParameterSet = "TestByResourceId";
 
         [Parameter(ParameterSetName = CmdletParametersParameterSet,
             Mandatory = true, 

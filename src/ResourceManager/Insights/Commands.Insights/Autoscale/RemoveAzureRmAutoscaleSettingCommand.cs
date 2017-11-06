@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
     [Cmdlet(VerbsCommon.Remove, "AzureRmAutoscaleSetting"), OutputType(typeof(AzureOperationResponse))]
     public class RemoveAzureRmAutoscaleSettingCommand : ManagementCmdletBase
     {
-        internal const string RemoveAzureRmAutoscaleSettingParamGroup = "Parameters for Remove-AzureRmAutoscaleSetting cmdlet";
+        internal const string RemoveAzureRmAutoscaleSettingParamGroup = "RemoveAutoscaleSetting";
 
         #region Parameter declaration
 
