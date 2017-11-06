@@ -29,10 +29,8 @@ namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
     [OutputType(typeof(WebService))]
     public class NewAzureMLWebService : WebServicesCmdletBase
     {
-        protected const string CreateFromFileParameterSet = 
-            "Create a new Azure ML webservice from a JSON definiton file.";
-        protected const string CreateFromObjectParameterSet = 
-            "Create a new Azure ML webservice from a WebService instance definition.";
+        protected const string CreateFromFileParameterSet = "CreateFromFile";
+        protected const string CreateFromObjectParameterSet = "CreateFromInstance";
        
         [Parameter(
             Mandatory = true, 
