@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '3.4.1'
+ModuleVersion = '4.0.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -51,7 +51,7 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '3.4.1'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '4.0.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 # RequiredAssemblies = @()
@@ -72,7 +72,7 @@ NestedModules = @('.\Microsoft.Azure.Commands.Insights.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzureRmUsage', 'Get-AzureRmMetricDefinition', 
+CmdletsToExport = 'Get-AzureRmMetricDefinition', 
                'Get-AzureRmMetric', 'Remove-AzureRmLogProfile', 
                'Get-AzureRmLogProfile', 'Add-AzureRmLogProfile', 'Get-AzureRmLog', 
                'Set-AzureRmDiagnosticSetting', 'Get-AzureRmDiagnosticSetting', 
@@ -80,7 +80,7 @@ CmdletsToExport = 'Get-AzureRmUsage', 'Get-AzureRmMetricDefinition',
                'New-AzureRmAutoscaleRule', 'Add-AzureRmAutoscaleSetting', 
                'Get-AzureRmAutoscaleHistory', 'Get-AzureRmAutoscaleSetting', 
                'New-AzureRmAutoscaleWebhook', 'Remove-AzureRmAutoscaleSetting', 
-               'Add-AzureRmMetricAlertRule', 'Add-AzureRmLogAlertRule', 
+               'Add-AzureRmMetricAlertRule', 
                'Add-AzureRmWebtestAlertRule', 'Get-AzureRmAlertHistory', 
                'Get-AzureRmAlertRule', 'New-AzureRmAlertRuleEmail', 
                'New-AzureRmAlertRuleWebhook', 'Remove-AzureRmAlertRule', 

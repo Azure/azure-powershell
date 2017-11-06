@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Azure Disk Encryption Extension Commands
+    - New Parameter for 'Set-AzureRmVmDiskEncryptionExtension': '-EncryptFormatAll' encrypt formats data disks
+    - New Parameters for 'Set-AzureRmVmDiskEncryptionExtension': '-ExtensionPublisherName' and '-ExtensionType' allow switching to other versions of the extension
+    - New Parameters for 'Disable-AzureRmVmDiskEncryption': '-ExtensionPublisherName' and '-ExtensionType' allow switching to other versions of the extension
+    - New Parameters for 'Get-AzureRmVmDiskEncryptionStatus': '-ExtensionPublisherName' and '-ExtensionType' allow switching to other versions of the extension
 * Set-AzureRmVMAEMExtension: Add support for Dv3 and Ev3 series
 
 ## Version 3.4.1

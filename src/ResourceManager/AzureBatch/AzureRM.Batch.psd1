@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '3.4.1'
+ModuleVersion = '4.0.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -51,7 +51,7 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '3.4.1'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '4.0.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 # RequiredAssemblies = @()
@@ -106,7 +106,8 @@ CmdletsToExport = 'Remove-AzureRmBatchAccount', 'Get-AzureRmBatchAccount',
                'New-AzureBatchComputeNodeUser', 'Remove-AzureBatchComputeNodeUser', 
                'Enable-AzureBatchTask', 'Set-AzureBatchTask', 'Stop-AzureBatchTask', 
                'Get-AzureBatchComputeNode', 'Get-AzureBatchJobSchedule', 
-               'New-AzureBatchJobSchedule', 'Remove-AzureBatchJobSchedule'
+               'New-AzureBatchJobSchedule', 'Remove-AzureBatchJobSchedule',
+               'Get-AzureBatchTaskCounts'
 
 # Variables to export from this module
 # VariablesToExport = @()
