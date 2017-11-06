@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true,
+        [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "EnablePartitioning")]
         [ValidateSet("TRUE", "FALSE",
@@ -83,14 +83,6 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Enable Batched Operations - value that indicates whether server-side batched operations are enabled")]
-        [ValidateSet("TRUE", "FALSE",
-            IgnoreCase = true)]
-        [ValidateNotNullOrEmpty]
-        public bool? EnableBatchedOperations { get; set; }
-
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Dead Lettering On Message Expiration")]
         [ValidateSet("TRUE", "FALSE",
             IgnoreCase = true)]
@@ -104,14 +96,6 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
             IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public bool? EnableExpress { get; set; }
-
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "IsAnonymousAccessible - a value that indicates whether the message is anonymous accessible.")]
-        [ValidateSet("TRUE", "FALSE",
-            IgnoreCase = true)]
-        [ValidateNotNullOrEmpty]
-        public bool? IsAnonymousAccessible { get; set; }
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -193,17 +177,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
                 queueAttributes.RequiresSession = RequiresSession;
 
             if (SizeInBytes != null)
-                queueAttributes.SizeInBytes = SizeInBytes;
-
-#pragma warning disable 612, 618
-            queueAttributes.Location = getNamespaceLoc.Location;
-
-            if (EnableBatchedOperations != null)
-                queueAttributes.EnableBatchedOperations = EnableBatchedOperations;
-
-            if (IsAnonymousAccessible != null)
-                queueAttributes.IsAnonymousAccessible = IsAnonymousAccessible;
-#pragma warning restore 612, 618
+                queueAttributes.SizeInBytes = SizeInBytes;          
 
             if (ShouldProcess(target: Name, action: string.Format(Resources.CreateQueue, Name, Namespace)))
             {
