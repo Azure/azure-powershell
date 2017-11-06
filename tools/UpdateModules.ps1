@@ -161,8 +161,7 @@ function Create-MinimumVersionEntry
         return "`$module = Get-Module $ModuleName `
 if (`$module -ne `$null -and `$module.Version.ToString().CompareTo(`"$MinimumVersion`") -lt 0) `
 { `
-    Write-Warning `"A later version of $ModuleName was found to be imported already. Please see <link> for more details.`" `
-    Write-Error `"A later version of $ModuleName was found to be imported already. Please see <linkn> for more details.`" `
+    Write-Error `"This module requires $ModuleName version $MinimumVersion. An earlier version of $ModuleName is imported in the current PowerShell session. Please open a new session before importing this module. This error could indicate that multiple incompatible versions of the Azure PowerShell cmdlets are installed on your system. Please see https://aka.ms/azps-version-error for troubleshooting information.`" -ErrorAction Stop `
 } `
 elseif (`$module -eq `$null) `
 { `
