@@ -108,30 +108,6 @@ function Test-AddAzureRmMetricAlertRule
 .SYNOPSIS
 Tests adding an alert rule.
 #>
-function Test-AddAzureRmLogAlertRule
-{
-    try 
-    {
-        # Test
-        $resourceGroup = "Rac46PostSwapRG"
-        $resourceId = "/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/Rac46PostSwapRG/providers/Microsoft.Web/sites/leoalerttest"
-
-        $actual = Add-AzureRmLogAlertRule -Name chiricutin -Location "West US" -ResourceGroup $resourceGroup -TargetResourceId $resourceId -OperationName "microsoft.web/sites/stop/action" -Status "Succeeded"
-
-        # Assert TODO add more asserts
-		Assert-AreEqual $actual.RequestId '47af504c-88a1-49c5-9766-e397d54e490b'
-    }
-    finally
-    {
-        # Cleanup
-        # No cleanup needed for now
-    }
-}
-
-<#
-.SYNOPSIS
-Tests adding an alert rule.
-#>
 function Test-AddAzureRmWebtestAlertRule
 {
     try 

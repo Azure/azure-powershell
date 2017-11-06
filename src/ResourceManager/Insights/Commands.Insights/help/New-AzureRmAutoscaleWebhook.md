@@ -14,8 +14,7 @@ Creates an Autoscale webhook.
 ## SYNTAX
 
 ```
-New-AzureRmAutoscaleWebhook [-ServiceUri] <String> [[-Properties] <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzureRmAutoscaleWebhook [-ServiceUri] <String> [[-Property] <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,13 +44,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Properties
+### -Property
 Specifies the list of properties in the format @(property1 = 'value1',....).
 
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases: Properties
 
 Required: False
 Position: 1
