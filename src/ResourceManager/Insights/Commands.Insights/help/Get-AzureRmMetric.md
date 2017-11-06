@@ -15,14 +15,14 @@ Gets the metric values of a resource.
 
 ### GetWithDefaultParameters
 ```
-Get-AzureRmMetric [-ResourceId] <String> [-MetricNames <String[]>] [-DetailedOutput]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmMetric [-ResourceId] <String> [-TimeGrain <TimeSpan>] [-StartTime <DateTime>] [-EndTime <DateTime>]
+ [[-MetricName] <String[]>] [-DetailedOutput] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetWithFullParameters
 ```
-Get-AzureRmMetric [-ResourceId] <String> [[-TimeGrain] <TimeSpan>] [-AggregationType <AggregationType>]
- [-StartTime <DateTime>] [-EndTime <DateTime>] -MetricNames <String[]> [-DetailedOutput]
+Get-AzureRmMetric [-ResourceId] <String> [-TimeGrain <TimeSpan>] [-AggregationType <AggregationType>]
+ [-StartTime <DateTime>] [-EndTime <DateTime>] [-MetricName] <String[]> [-DetailedOutput]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -223,16 +223,16 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -MetricNames
+### -MetricName
 Specifies an array of names of metrics.
 
 ```yaml
 Type: String[]
-Parameter Sets: GetWithDefaultParameters
-Aliases: 
+Parameter Sets: (All)
+Aliases: MetricNames
 
-Required: False
-Position: Named
+Required: False (GetWithDefaultParameters), True (GetAzureRmAMetricFullParamGroup)
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

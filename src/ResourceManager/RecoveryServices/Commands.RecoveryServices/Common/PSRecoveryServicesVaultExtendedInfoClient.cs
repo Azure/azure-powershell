@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using System.Web.Script.Serialization;
 using Microsoft.Azure.Commands.RecoveryServices.Properties;
@@ -58,13 +59,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// Updates the vault certificate
         /// </summary>
         /// <param name="certificateRequest">the certificate update arguments</param>
+        /// <param name="certificateName">the certificate name.</param>
         /// <returns>Upload Certificate Response</returns>
         public VaultCertificateResponse UpdateVaultCertificate(CertificateRequest certificateRequest, string certificateName)
         {
             return GetRecoveryServicesClient.VaultCertificates.CreateWithHttpMessagesAsync(
-                arsVaultCreds.ResourceGroupName, 
-                arsVaultCreds.ResourceName, 
-                certificateName, 
+                arsVaultCreds.ResourceGroupName,
+                arsVaultCreds.ResourceName,
+                certificateName,
                 certificateRequest,
                 GetRequestHeaders()).Result.Body;
         }
@@ -74,8 +76,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         /// <param name="managementCert">certificate to be uploaded</param>
         /// <param name="vault">vault object</param>
+        /// <param name="site">site object</param>
+        /// <param name="authType">authentication type</param>
         /// <returns>credential object</returns>
-        public ASRVaultCreds GenerateVaultCredential(X509Certificate2 managementCert, ARSVault vault, ASRSite site)
+        public ASRVaultCreds GenerateVaultCredential(
+            X509Certificate2 managementCert,
+            ARSVault vault,
+            ASRSite site,
+            string authType)
         {
             ASRVaultCreds currentVaultContext = PSRecoveryServicesClient.arsVaultCreds;
 
@@ -99,27 +107,78 @@ namespace Microsoft.Azure.Commands.RecoveryServices
 
             // Get Channel Integrity key
             string channelIntegrityKey;
-            string getChannelIntegrityKey = this.GetChannelIntegrityKey();
+            string getChannelIntegrityKey = this.GetCurrentVaultChannelIntegrityKey();
 
             // Making sure we can generate the file, once the SDK and portal are inter-operable
             // upload certificate and fetch of ACIK can be made parallel to improvve the performace.
 
             // Upload certificate
-            VaultCertificateResponse uploadCertificate = this.UpdateVaultCertificate(managementCert);
+            VaultCertificateResponse uploadCertificate = this.UpdateVaultCertificate(
+                managementCert,
+                authType);
 
             channelIntegrityKey = getChannelIntegrityKey;
 
             ASRVaultCreds arsVaultCreds = this.GenerateCredentialObject(
-                                                managementCert,
-                                                uploadCertificate,
-                                                channelIntegrityKey,
-                                                vault,
-                                                site);
+                managementCert,
+                uploadCertificate,
+                channelIntegrityKey,
+                vault,
+                site);
 
             // Update back the original vault settings
             Utilities.UpdateCurrentVaultContext(currentVaultContext);
 
             return arsVaultCreds;
+        }
+
+        /// <summary>
+        /// Get the Integrity key
+        /// </summary>
+        /// <returns>key as string.</returns>
+        public string GetCurrentVaultChannelIntegrityKey()
+        {
+            VaultExtendedInfoResource extendedInformation = null;
+            try
+            {
+                extendedInformation = this.GetExtendedInfo();
+            }
+            catch (Exception exception)
+            {
+                CloudException cloudException = exception as CloudException;
+
+                if (cloudException != null && cloudException.Response != null
+                    && !string.IsNullOrEmpty(cloudException.Response.Content))
+                {
+                    JavaScriptSerializer serializer = new JavaScriptSerializer();
+                    rpError.Error error = serializer.Deserialize<rpError.Error>(cloudException.Response.Content);
+
+                    if (error.ErrorCode.Equals(
+                        RpErrorCode.ResourceExtendedInfoNotFound.ToString(),
+                        StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        extendedInformation = new VaultExtendedInfoResource();
+                    }
+                }
+            }
+
+            if (null == extendedInformation)
+            {
+                extendedInformation = this.CreateVaultExtendedInformation();
+            }
+            else
+            {
+                if (!extendedInformation.Algorithm.Equals(
+                    CryptoAlgorithm.None.ToString(),
+                    StringComparison.InvariantCultureIgnoreCase))
+                {
+                    // In case this condition is true that means the credential was first generated in portal
+                    // and hence can not be fetched here.
+                    throw new CloudException(Resources.VaultSettingsGenerationUnSupported);
+                }
+            }
+
+            return extendedInformation.IntegrityKey;
         }
 
         /// <summary>
@@ -136,9 +195,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             certificateArgs.Properties.AuthType = AuthType.AAD;
 
             return GetRecoveryServicesClient.VaultCertificates.CreateWithHttpMessagesAsync(
-                vault.ResourceGroupName, 
-                vault.Name, 
-                managementCert.FriendlyName, 
+                vault.ResourceGroupName,
+                vault.Name,
+                managementCert.FriendlyName,
                 certificateArgs,
                 GetRequestHeaders()).Result.Body;
         }
@@ -162,7 +221,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             });
 
             // Get Channel Integrity key
-            string getChannelIntegrityKey = this.GetChannelIntegrityKey();
+            string getChannelIntegrityKey = this.GetCurrentVaultChannelIntegrityKey();
 
             // Update vault settings along with Channel integrity key
             Utilities.UpdateCurrentVaultContext(new ASRVaultCreds()
@@ -178,65 +237,48 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         }
 
         /// <summary>
+        /// Changes the Vault context
+        /// </summary>
+        /// <param name="vault">vault object</param>
+        /// <returns>credential object</returns>
+        public long? getVaultAuthType(string resourceGroupName,string vaultName)
+        {
+            var usages = GetRecoveryServicesClient.Usages.ListByVaultsWithHttpMessagesAsync(
+                resourceGroupName,
+                vaultName,
+                GetRequestHeaders()).Result.Body;
+           
+            foreach (var u in usages)
+            {
+                if (Constants.RecoveryServicesProviderAuthType.Equals(u.Name.Value, StringComparison.CurrentCultureIgnoreCase))
+                {
+                    return u.CurrentValue;
+                }
+            }
+            //Default assuming aad
+            return 1;
+        }
+
+        /// <summary>
         /// Method to update vault certificate
         /// </summary>
-        /// <param name="cert">certificate object </param>
+        /// <param name="cert">certificate object.</param>
+        /// <param name="authType">authentication method to be used.</param>
         /// <returns>Upload Certificate Response</returns>
-        private VaultCertificateResponse UpdateVaultCertificate(X509Certificate2 cert)
+        private VaultCertificateResponse UpdateVaultCertificate(
+            X509Certificate2 cert,
+            string authType)
         {
             var certificateArgs = new CertificateRequest();
             certificateArgs.Properties = new RawCertificateData();
             certificateArgs.Properties.Certificate = cert.GetRawCertData();
-            certificateArgs.Properties.AuthType = AuthType.ACS;
+            certificateArgs.Properties.AuthType = authType;
 
-            VaultCertificateResponse response = this.UpdateVaultCertificate(certificateArgs, cert.FriendlyName);
+            VaultCertificateResponse response = this.UpdateVaultCertificate(
+                certificateArgs,
+                cert.FriendlyName);
 
             return response;
-        }
-
-        /// <summary>
-        /// Get the Integrity key
-        /// </summary>
-        /// <returns>key as string.</returns>
-        private string GetChannelIntegrityKey()
-        {
-            VaultExtendedInfoResource extendedInformation = null;
-            try
-            {
-                extendedInformation = this.GetExtendedInfo();
-
-            }
-            catch (Exception exception)
-            {
-                CloudException cloudException = exception as CloudException;
-
-                if (cloudException != null && cloudException.Response != null && !string.IsNullOrEmpty(cloudException.Response.Content))
-                {
-                    JavaScriptSerializer serializer = new JavaScriptSerializer();
-                    rpError.Error error = serializer.Deserialize<rpError.Error>(cloudException.Response.Content);
-
-                    if (error.ErrorCode.Equals(RpErrorCode.ResourceExtendedInfoNotFound.ToString(), StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        extendedInformation = new VaultExtendedInfoResource();
-                    }
-                }
-            }
-
-            if (null == extendedInformation)
-            {
-                extendedInformation = this.CreateVaultExtendedInformation();
-            }
-            else
-            {
-                if (!extendedInformation.Algorithm.Equals(CryptoAlgorithm.None.ToString(), StringComparison.InvariantCultureIgnoreCase))
-                {
-                    // In case this condition is true that means the credential was first generated in portal
-                    // and hence can not be fetched here.
-                    throw new CloudException(Resources.VaultSettingsGenerationUnSupported);
-                }
-            }
-
-            return extendedInformation.IntegrityKey;
         }
 
         /// <summary>
@@ -264,9 +306,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <param name="vault">vault object</param>
         /// <param name="site">site object</param>
         /// <returns>vault credential object</returns>
-        private ASRVaultCreds GenerateCredentialObject(X509Certificate2 managementCert, VaultCertificateResponse acsDetails, string channelIntegrityKey, ARSVault vault, ASRSite site)
+        private ASRVaultCreds GenerateCredentialObject(
+            X509Certificate2 managementCert,
+            VaultCertificateResponse acsDetails,
+            string channelIntegrityKey,
+            ARSVault vault,
+            ASRSite site)
         {
-            string serializedCertifivate = Convert.ToBase64String(managementCert.Export(X509ContentType.Pfx));
+            string serializedCertificate = Convert.ToBase64String(managementCert.Export(X509ContentType.Pfx));
 
             AcsNamespace acsNamespace = new AcsNamespace(acsDetails.Properties as ResourceCertificateAndAcsDetails);
 
@@ -274,17 +321,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             string resourceType = string.Empty;
             Utilities.GetResourceProviderNamespaceAndType(vault.ID, out resourceProviderNamespace, out resourceType);
             ASRVaultCreds vaultCreds = new ASRVaultCreds(
-                                            vault.SubscriptionId,
-                                            vault.Name,
-                                            serializedCertifivate,
-                                            acsNamespace,
-                                            channelIntegrityKey,
-                                            vault.ResourceGroupName,
-                                            site.ID,
-                                            site.Name,
-                                            resourceProviderNamespace,
-                                            resourceType,
-                                            vault.Location);
+                vault.SubscriptionId,
+                vault.Name,
+                serializedCertificate,
+                acsNamespace,
+                channelIntegrityKey,
+                vault.ResourceGroupName,
+                site.ID,
+                site.Name,
+                resourceProviderNamespace,
+                resourceType,
+                vault.Location);
 
             return vaultCreds;
         }

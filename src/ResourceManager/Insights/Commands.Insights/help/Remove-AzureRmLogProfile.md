@@ -21,6 +21,8 @@ Remove-AzureRmLogProfile -Name <String> [-PassThru] [-DefaultProfile <IAzureCont
 ## DESCRIPTION
 The **Remove-AzureRmLogProfile** cmdlet removes a log profile.
 
+This cmdlet implements the ShouldProcess pattern, i.e. it might request confirmation from the user before actually creating, modifying, or removing the resource.
+
 ## EXAMPLES
 
 ### 1:
@@ -82,7 +84,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### AzureOperationResponse
 
 ## NOTES
 
