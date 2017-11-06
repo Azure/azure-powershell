@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Changed type of parameter -Password from String to SecureString for the following cmdlets:
+    - Add-AzureRmApplicationGatewaySslCertificate
+    - New-AzureRmApplicationGatewaySslCertificate
+    - Set-AzureRmApplicationGatewaySslCertificate
 * Added cmdlet to list available internet service providers for a specified Azure region
     - Get-AzureRmNetworkWatcherReachabilityProvidersList
 * Added cmdlet to get the relative latency score for internet service providers from a specified location to Azure regions

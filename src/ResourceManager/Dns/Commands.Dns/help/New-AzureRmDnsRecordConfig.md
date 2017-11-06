@@ -57,6 +57,12 @@ New-AzureRmDnsRecordConfig -Priority <UInt16> -Target <String> -Port <UInt16> -W
 New-AzureRmDnsRecordConfig -Cname <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### Caa
+```
+New-AzureRmDnsRecordConfig -CaaFlags <Byte> -CaaTag <String> -CaaValue <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **New-AzureRmDnsRecordConfig** cmdlet creates a local **DnsRecord** object.
 An array of these objects is passed to the New-AzureRmDnsRecordSet cmdlet using the *DnsRecords* parameter to specify the records to create in the record set.
@@ -180,6 +186,51 @@ It contains a single DNS record.
 To create a **RecordSet** using only one line of pn_PowerShell_short, or to create a record set with multiple records, see Example 1.
 
 ## PARAMETERS
+
+### -CaaFlags
+The flags for the CAA record to add. Must be a number between 0 and 255.
+
+```yaml
+Type: Byte
+Parameter Sets: Caa
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -CaaTag
+The tag field of the CAA record to add.
+
+```yaml
+Type: String
+Parameter Sets: Caa
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -CaaValue
+The value field for the CAA record to add.
+
+```yaml
+Type: String
+Parameter Sets: Caa
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ### -Cname
 Specifies the domain name for a canonical name (CNAME) record.
