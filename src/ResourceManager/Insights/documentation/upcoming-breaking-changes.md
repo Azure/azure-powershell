@@ -27,6 +27,17 @@
 
 # Upcoming Breaking Changes
 
+## Release 0.0.0 - May 2018
+
+    **Get-AzureRmAlertHistory**
+    **Get-AzureRmAlertRule**
+    **Get-AzureRmAutoscaleHistory**
+    **Get-AzureRmAutoscaleSetting**
+    **Get-AzureRmLog**
+    **Get-AzureRmMetric**
+    **Get-AzureRmMetricDefinition**
+    - Argument deprecation: The DetailedOutput argument will be deprecated. In the current version the cmdlet is already returning complete objects, but showing only some attributes for the "no details" option.
+
 ## Release 5.0.0 - November 2017
 
     The following cmdlets will be deprecated in this release
