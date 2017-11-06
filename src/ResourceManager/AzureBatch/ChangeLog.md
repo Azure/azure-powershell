@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 4.0.0
+* NOTE: This is a breaking change release. Please see the migration guide (https://aka.ms/azps-migration-guide) for a full list of breaking changes introduced.
 * Added new parameters to `New-AzureRmBatchAccount`.
     - `PoolAllocationMode`: The allocation mode to use for creating pools in the Batch account. To create a Batch account which allocates pool nodes in the user's subscription, set this to `UserSubscription`.
     - `KeyVaultId`: The resource ID of the Azure key vault associated with the Batch account.
@@ -71,7 +74,6 @@
     - Added the `EndpointConfiguration` property to `PSNetworkConfiguration`.
     - Renamed `ResizeError` to `ResizeErrors` on `PSCloudPool`, and it is now a collection.
     - `PSMultiInstanceSettings` constructor no longer takes a required `numberOfInstances` parameter, instead it takes a required `coordinationCommandLine` parameter.
-
 * Added support for Azure Active Directory based authentication.
     - To use Azure Active Directory authentication, retrieve a `BatchAccountContext` object using the `Get-AzureRmBatchAccount` cmdlet, and supply this `BatchAccountContext` to the `-BatchContext` parameter of a Batch service cmdlet. Azure Active Directory authentication is mandatory for accounts with `PoolAllocationMode = UserSubscription`.
     - For existing accounts or for new accounts created with `PoolAllocationMode = BatchService`, you may continue to use shared key authentication by retrieving a `BatchAccountContext` object using the `Get-AzureRmBatchAccoutKeys` cmdlet.

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 4.0.0
 - Set-AzureRmDefault
     - Use this cmdlet to set a default resource group.  This will make the -ResourceGroup parameter optional for some cmdlets, and will use the default when a resource group is not specified
     - ```Set-AzureRmDefault -ResourceGroupName "ExampleResourceGroup"```
