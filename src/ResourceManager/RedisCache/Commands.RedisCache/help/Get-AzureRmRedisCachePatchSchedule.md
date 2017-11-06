@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.RedisCache.dll-Help.xml
 Module Name: AzureRM
 ms.assetid: DA180A4A-88B6-4359-94E0-CF72F66D1FE4
-online version: 
+online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.rediscache/get-azurermrediscachepatchschedule
 schema: 2.0.0
 ---
 

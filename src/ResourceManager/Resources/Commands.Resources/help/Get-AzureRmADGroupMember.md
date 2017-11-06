@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 52C5CD8B-2489-4FE6-9F33-B3350531CD8E
-online version: 
+online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/get-azurermadgroupmember
 schema: 2.0.0
 ---
 

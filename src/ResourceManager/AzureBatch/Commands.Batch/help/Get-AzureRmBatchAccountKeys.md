@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
 Module Name: AzureRM.Batch
 ms.assetid: AFDE5ECD-29AB-4C91-98BF-1B8C9C3BB079
-online version: 
+online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/get-azurermbatchaccountkeys
 schema: 2.0.0
 ---
 

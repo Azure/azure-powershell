@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
 Module Name: AzureRM.Insights
 ms.assetid: A70F4C03-E842-45D5-9323-DC5B14B569F1
-online version: 
+online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.insights/get-azurermautoscalehistory
 schema: 2.0.0
 ---
 

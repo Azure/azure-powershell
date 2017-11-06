@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
 ms.assetid: 288EF15B-FE5C-44AE-ABD5-2B92F408B9EB
-online version: 
+online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/get-azurermapimanagementtenantsyncstate
 schema: 2.0.0
 ---
 

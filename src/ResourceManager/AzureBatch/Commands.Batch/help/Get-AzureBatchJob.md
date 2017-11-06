@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
 Module Name: AzureRM.Batch
 ms.assetid: 8BF49C4D-E7CD-4FD0-AFAC-9856239D24EC
-online version: 
+online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/get-azurebatchjob
 schema: 2.0.0
 ---
 

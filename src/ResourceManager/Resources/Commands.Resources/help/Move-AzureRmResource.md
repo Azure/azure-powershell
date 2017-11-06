@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 60BED40A-EEA4-4667-93E9-8A9B35037726
-online version: 
+online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/move-azurermresource
 schema: 2.0.0
 ---
 

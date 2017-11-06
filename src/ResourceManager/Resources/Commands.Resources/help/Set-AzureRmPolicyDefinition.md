@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: E1AC7139-786C-4DD6-A898-242723E0D159
-online version: 
+online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/set-azurermpolicydefinition
 schema: 2.0.0
 ---
 

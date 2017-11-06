@@ -1,4 +1,4 @@
----
+﻿---
 Module Name: AzureRM.RecoveryServices.SiteRecovery
 Module Guid: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 Download Help Link: 

@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.OperationalInsights.dll-Help.xml
 Module Name: AzureRM.OperationalInsights
 ms.assetid: A333A60D-CA76-4E4E-9C8B-72AAEF464F0A
-online version: 
+online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.operationalinsights/set-azurermoperationalinsightssavedsearch
 schema: 2.0.0
 ---
 

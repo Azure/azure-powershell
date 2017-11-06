@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 63BBDF98-75FC-4A44-9FD0-95AD21ED93A6
-online version: 
+online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/export-azurermresourcegroup
 schema: 2.0.0
 ---
 

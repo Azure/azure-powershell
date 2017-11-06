@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
 Module Name: AzureRM.Batch
 ms.assetid: D1C5B35C-5419-4739-9D57-6C4228E98DAC
-online version: 
+online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/stop-azurebatchjobschedule
 schema: 2.0.0
 ---
 
