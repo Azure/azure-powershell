@@ -18,16 +18,12 @@ Creates an operationalization cluster for use in tests.
 #>
 function GetDefaultClusterProperties
 {
-    $servicePrincipalId = "00000000-0000-0000-0000-000000000000"
-    $servicePrincipalSecret = "abcde"
     $orchestratorType = "Kubernetes"
     $location = "East US 2 EUAP"
     $clusterType = "ACS"
     $description = "Deployed from powershell"
 
-    $servicePrincipalProps = New-Object Microsoft.Azure.Management.MachineLearningCompute.Models.ServicePrincipalProperties($servicePrincipalId, $servicePrincipalSecret)
-    $orchestratorProps = New-Object Microsoft.Azure.Management.MachineLearningCompute.Models.KubernetesClusterProperties($servicePrincipalProps)
-    $containerServiceProps = New-Object Microsoft.Azure.Management.MachineLearningCompute.Models.AcsClusterProperties($orchestratorType, $orchestratorProps)
+    $containerServiceProps = New-Object Microsoft.Azure.Management.MachineLearningCompute.Models.AcsClusterProperties($orchestratorType)
     $cluster = New-Object Microsoft.Azure.Management.MachineLearningCompute.Models.OperationalizationCluster `
 		-Property @{Location = $location; ClusterType = $clusterType; ContainerService = $containerServiceProps; Description = $description}
 
@@ -70,6 +66,15 @@ function TeardownTest([String] $ResourceGroupName)
     Write-Debug "Delete resource group"
     Write-Debug " Resource Group Name : $resourceGroupName"
     Remove-AzureRmResourceGroup -Name $ResourceGroupName -Force
+
+	foreach ($g in Find-AzureRmResourceGroup)
+	{
+		if ($g.Name -match "$ResourceGroupName-azureml-\w{5}")
+		{
+			Write-Debug "Deleting managed by resource group: $($g.Name)"
+			Remove-AzureRmResourceGroup -Name $g.Name -Force
+		}
+	}
 }
 
 <#
@@ -87,7 +92,7 @@ function Test-NewGetRemove
     # Create the cluster
     $result = New-AzureRmMlOpCluster -ResourceGroupName $resourceGroupName -Name $clusterName -Location "East US 2 EUAP" `
 		-ClusterType "ACS" -Description "Powershell test cluster" -OrchestratorType "Kubernetes" `
-		-ClientId "00000000-0000-0000-0000-000000000000" -Secret "abcde" `
+		-ClientId "2eca32f5-01fc-4778-ba29-d6b6ecbee43b" -Secret "18p/wFeFaDBpakQw1eBqDejXa5jpB+EjI9ekQOzvUW0=" `
 		-MasterCount 1 -AgentCount 2 -AgentVmSize Standard_D3_v2
 
     Assert-True { $result.ProvisioningState -eq "Succeeded" }
