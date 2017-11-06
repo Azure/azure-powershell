@@ -202,7 +202,11 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'Updated for common code changes'
+        ReleaseNotes = '* Azure Disk Encryption Extension Commands
+    - New Parameter for ''Set-AzureRmVmDiskEncryptionExtension'': ''-EncryptFormatAll'' encrypt formats data disks
+    - New Parameters for ''Set-AzureRmVmDiskEncryptionExtension'': ''-ExtensionPublisherName'' and ''-ExtensionType'' allow switching to other versions of the extension
+    - New Parameters for ''Disable-AzureRmVmDiskEncryption'': ''-ExtensionPublisherName'' and ''-ExtensionType'' allow switching to other versions of the extension
+    - New Parameters for ''Get-AzureRmVmDiskEncryptionStatus'': ''-ExtensionPublisherName'' and ''-ExtensionType'' allow switching to other versions of the extension'
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''

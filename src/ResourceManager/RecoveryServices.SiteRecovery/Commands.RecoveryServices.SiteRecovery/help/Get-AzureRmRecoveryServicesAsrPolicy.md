@@ -36,27 +36,40 @@ The **Get-AzureRmRecoveryServicesAsrPolicy** cmdlet gets the list of configured 
 
 ### Example 1
 ```
-PS C:\> $Policy = Get-AzureRmRecoveryServicesAsrPolicy -Name $PolicyName
+PS C:\> $Policy = Get-AzureRmRecoveryServicesAsrPolicy
 ```
 
-Retruns the replication policy with the specified name.
+Retuns the list of replication policies
+
+### Example 2
+```
+PS C:\>  Get-AzureRmRecoveryServicesAsrPolicy -Name abc
+
+FriendlyName                : abc
+Name                        : abc
+ID                          : /Subscriptions/xxxxxxxxxxxx/resourceGroups/xxxxxxxxxxxx/providers/Microsoft.RecoveryServices/vaults/xxxxxxxxxxxx/replicationPolicies/abc
+Type                        : Microsoft.RecoveryServices/vaults/replicationPolicies
+ReplicationProvider         : HyperVReplicaAzure
+ReplicationProviderSettings : Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRHyperVReplicaAzurePolicyDetails
+```
+
+Retuns replication policy with name.
+
+### Example 3
+```
+PS C:\> Get-AzureRmRecoveryServicesAsrPolicy -FriendlyName abc
+
+FriendlyName                : abc
+Name                        : abc
+ID                          : /Subscriptions/xxxxxxxxxxxx/resourceGroups/xxxxxxxxxxxx/providers/Microsoft.RecoveryServices/vaults/xxxxxxxxxxxx/replicationPolicies/abc
+Type                        : Microsoft.RecoveryServices/vaults/replicationPolicies
+ReplicationProvider         : HyperVReplicaAzure
+ReplicationProviderSettings : Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRHyperVReplicaAzurePolicyDetails
+```
+
+Returns the replication policy with the specified friendly name.
 
 ## PARAMETERS
-
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
-
-```yaml
-Type: IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -FriendlyName
 Specifies the friendly name of the ASR replication policy.
@@ -82,6 +95,21 @@ Parameter Sets: ByName
 Aliases: 
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

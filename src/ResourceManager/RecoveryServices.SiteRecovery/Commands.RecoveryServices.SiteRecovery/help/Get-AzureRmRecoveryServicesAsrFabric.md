@@ -41,22 +41,35 @@ PS C:\> $fabrics = Get-AzureRmRecoveryServicesAsrFabric
 
 Returns all the Azure Site Recovery fabrics in the vault.
 
-## PARAMETERS
-
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
-
-```yaml
-Type: IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+### Example 2
 ```
+PS C:\> $fabric = Get-AzureRmRecoveryServicesAsrFabric -Name xxxx
+
+Name                  : xxxx
+FriendlyName          : XXXXXXXXXX
+ID                    : /Subscriptions/XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/XXXXXXXXXXXXX/replicationFabrics/XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+FabricType            : VMware
+SiteIdentifier        : XXXXXXXXxxxxxxxxxxx
+FabricSpecificDetails : Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRVMWareSpecificDetails
+```
+
+Return azure site recovery fabric with name xxxx.
+
+### Example 3
+```
+PS C:\> $fabric = Get-AzureRmRecoveryServicesAsrFabric -FriendlyName XXXXXXXXXX
+
+Name                  : xxxx
+FriendlyName          : XXXXXXXXXX
+ID                    : /Subscriptions/XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/XXXXXXXXXXXXX/replicationFabrics/XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+FabricType            : VMware
+SiteIdentifier        : XXXXXXXXxxxxxxxxxxx
+FabricSpecificDetails : Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRVMWareSpecificDetails
+```
+
+Return azure site recovery fabric with friendly name xxxx.
+
+## PARAMETERS
 
 ### -FriendlyName
 Search for the ASR fabric by the friendly name of the fabric.
@@ -82,6 +95,21 @@ Parameter Sets: ByName
 Aliases: 
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

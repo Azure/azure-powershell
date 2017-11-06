@@ -58,6 +58,12 @@
     * Added support for Azure Active Directory based authentication.
         - To use Azure Active Directory authentication, retrieve a `BatchAccountContext` object using the `Get-AzureRmBatchAccount` cmdlet, and supply this `BatchAccountContext` to the `-BatchContext` parameter of a Batch service cmdlet. Azure Active Directory authentication is mandatory for accounts with `PoolAllocationMode = UserSubscription`.
         - For existing accounts or for new accounts created with `PoolAllocationMode = BatchService`, you may continue to use shared key authentication by retrieving a `BatchAccountContext` object using the `Get-AzureRmBatchAccoutKeys` cmdlet.
+* Compute
+    * Azure Disk Encryption Extension Commands
+        - New Parameter for 'Set-AzureRmVmDiskEncryptionExtension': '-EncryptFormatAll' encrypt formats data disks
+        - New Parameters for 'Set-AzureRmVmDiskEncryptionExtension': '-ExtensionPublisherName' and '-ExtensionType' allow switching to other versions of the extension
+        - New Parameters for 'Disable-AzureRmVmDiskEncryption': '-ExtensionPublisherName' and '-ExtensionType' allow switching to other versions of the extension
+        - New Parameters for 'Get-AzureRmVmDiskEncryptionStatus': '-ExtensionPublisherName' and '-ExtensionType' allow switching to other versions of the extension
 * DataLakeAnalytics
     * Please see the migration guide for breaking changes made to DataLakeAnalytics this release
     * Changed one of the two OutputTypes of Get-AzureRmDataLakeAnalyticsAccount
@@ -100,6 +106,27 @@
         - ```Clear-AzureRmDefault -ResourceGroup```
     - Add-AzureRmEnvironment and Set-AzureRmEnvironment
         - Add the BatchAudience parameter, which allows you to specify the Azure Batch Active Directory audience to use when acquiring authentication tokens for the Batch service.
+* RecoveryServices.SiteRecovery
+    * Changes for ASR VMware to Azure Site Recovery (cmdlets are currently supporting operations for Enterprise to Enterprise, Enterprise to Azure, HyperV to Azure)
+        - New-AzureRmRecoveryServicesAsrPolicy
+        - New-AzureRmRecoveryServicesAsrProtectedItem
+        - Update-AzureRmRecoveryServicesAsrPolicy
+        - Update-AzureRmRecoveryServicesAsrProtectionDirection
+    * Added support to AAD-based vault
+    * Added cmdlets to manage VCenter resources
+        - Get-AzureRmRecoveryServicesAsrVCenter
+        - New-AzureRmRecoveryServicesAsrVCenter
+        - Remove-AzureRmRecoveryServicesAsrVCenter
+        - Update-AzureRmRecoveryServicesAsrVCenter
+    * Added other cmdlets
+        - Get-AzureRmRecoveryServicesAsrAlertSetting
+        - Get-AzureRmRecoveryServicesAsrEvent
+        - New-AzureRmRecoveryServicesAsrProtectableItem
+        - Set-AzureRmRecoveryServicesAsrAlertSetting
+        - Start-AzureRmRecoveryServicesAsrResynchronizeReplicationJob
+        - Start-AzureRmRecoveryServicesAsrSwitchProcessServerJob
+        - Start-AzureRmRecoveryServicesAsrTestFailoverCleanupJob
+        - Update-AzureRmRecoveryServicesAsrMobilityService
 * ServiceBus
     - Please see the migration guide for breaking changes made to ServiceBus this release
 * Sql
