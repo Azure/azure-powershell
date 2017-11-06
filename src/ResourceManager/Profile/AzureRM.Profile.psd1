@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '3.4.1'
+ModuleVersion = '4.0.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -54,8 +54,32 @@ CLRVersion = '4.0'
 # RequiredModules = @()
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = 
-               '.\Microsoft.Azure.Commands.Common.Authentication.ResourceManager.dll'
+RequiredAssemblies = '.\Microsoft.Azure.Commands.Common.Authentication.Abstractions.dll',
+                    '.\Microsoft.Azure.Commands.Common.Authentication.dll', 
+                    '.\Microsoft.Azure.Commands.Common.Authentication.ResourceManager.dll',
+                    '.\Microsoft.Azure.Commands.Common.Authorization.dll',
+                    '.\Microsoft.Azure.Commands.Common.Graph.RBAC.dll',
+                    '.\Microsoft.Azure.Commands.Common.Network.dll',
+                    '.\Microsoft.Azure.Commands.ResourceManager.Common.dll',
+                    '.\Microsoft.WindowsAzure.Commands.Common.dll',
+                    '.\Microsoft.WindowsAzure.Commands.Common.Storage.dll',
+                    '.\Hyak.Common.dll',
+                    '.\Microsoft.ApplicationInsights.dll',
+                    '.\Microsoft.Azure.Common.dll',
+                    '.\Microsoft.Azure.Common.NetFramework.dll',
+                    '.\Microsoft.Azure.KeyVault.Core.dll',
+                    '.\Microsoft.IdentityModel.Clients.ActiveDirectory.dll',
+                    '.\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll',
+                    '.\Microsoft.Rest.ClientRuntime.dll',
+                    '.\Microsoft.Rest.ClientRuntime.Azure.dll',
+                    '.\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll',
+                    '.\Microsoft.Threading.Tasks.dll',
+                    '.\Microsoft.Threading.Tasks.Extensions.dll',
+                    '.\Microsoft.Threading.Tasks.Extensions.Desktop.dll',
+                    '.\Microsoft.WindowsAzure.Management.dll',
+                    '.\Newtonsoft.Json.dll',
+                    '.\System.Net.Http.Extensions.dll',
+                    '.\System.Net.Http.Primitives.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()

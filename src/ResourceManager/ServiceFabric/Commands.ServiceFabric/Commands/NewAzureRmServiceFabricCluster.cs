@@ -33,6 +33,7 @@ using Microsoft.Azure.Management.ServiceFabric;
 using Microsoft.WindowsAzure.Commands.Common;
 using Newtonsoft.Json;
 using OperatingSystem = Microsoft.Azure.Commands.ServiceFabric.Models.OperatingSystem;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
