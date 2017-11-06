@@ -12,10 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.WindowsAzure.Commands.Common.Properties;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Properties;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -23,7 +20,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace Microsoft.WindowsAzure.Commands.Common
+namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
     /// <summary>
     /// File utilities using the data store
@@ -111,7 +108,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
                     programFilesPath += Resources.x86InProgramFiles;
                     if (throwIfNotFound)
                     {
-                        Validate.ValidateDirectoryExists(Path.Combine(programFilesPath, directoryName));
+                        ValidateDirectoryExists(Path.Combine(programFilesPath, directoryName));
                     }
                     return Path.Combine(programFilesPath, directoryName);
                 }
@@ -120,7 +117,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
                     programFilesPath = programFilesPath.Replace(Resources.x86InProgramFiles, String.Empty);
                     if (throwIfNotFound)
                     {
-                        Validate.ValidateDirectoryExists(Path.Combine(programFilesPath, directoryName));
+                        ValidateDirectoryExists(Path.Combine(programFilesPath, directoryName));
                     }
                     return Path.Combine(programFilesPath, directoryName);
                 }
@@ -167,7 +164,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
         /// <param name="pathName">The path to the file that will be created</param>
         public static void EnsureDirectoryExists(string pathName)
         {
-            Validate.ValidateStringIsNullOrEmpty(pathName, "Settings directory");
+            ValidateStringIsNullOrEmpty(pathName, "Settings directory");
             string directoryPath = Path.GetDirectoryName(pathName);
             if (!DataStore.DirectoryExists(directoryPath))
             {
@@ -367,6 +364,35 @@ namespace Microsoft.WindowsAzure.Commands.Common
         public static string GetModuleFolderName(AzureModule module)
         {
             return module.ToString().Replace("Azure", "");
+        }
+
+        private static void ValidateDirectoryExists(string directory, string exceptionMessage = null)
+        {
+            string msg = string.Format(Resources.PathDoesNotExist, directory);
+            if (!DataStore.DirectoryExists(directory))
+            {
+                if (!string.IsNullOrEmpty(exceptionMessage))
+                {
+                    msg = exceptionMessage;
+                }
+
+                throw new FileNotFoundException(msg);
+            }
+        }
+
+        private static void ValidateStringIsNullOrEmpty(string data, string messageData, bool useDefaultMessage = true)
+        {
+            if (string.IsNullOrEmpty(data))
+            {
+                if (useDefaultMessage)
+                {
+                    throw new ArgumentException(string.Format(Resources.InvalidOrEmptyArgumentMessage, messageData));
+                }
+                else
+                {
+                    throw new ArgumentException(messageData);
+                }
+            }
         }
     }
 }

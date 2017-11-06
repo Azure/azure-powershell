@@ -1,9 +1,4 @@
-﻿using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.WindowsAzure.Commands.Common.Properties;
-using Newtonsoft.Json;
-using System;
-using System.IO;
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +12,11 @@ using System.IO;
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.WindowsAzure.Commands.Common
+using Newtonsoft.Json;
+using System;
+using System.IO;
+
+namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
     public abstract class DataCollectionController
     {

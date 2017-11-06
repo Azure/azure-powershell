@@ -90,6 +90,7 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '4.0.0';
                @{ModuleName = 'AzureRM.PowerBIEmbedded'; RequiredVersion = '4.0.0'; }, 
                @{ModuleName = 'AzureRM.RecoveryServices'; RequiredVersion = '4.0.0'; }, 
                @{ModuleName = 'AzureRM.RecoveryServices.Backup'; RequiredVersion = '4.0.0'; }, 
+               @{ModuleName = 'AzureRM.RecoveryServices.SiteRecovery'; RequiredVersion = '0.2.0'; }, 
                @{ModuleName = 'AzureRM.RedisCache'; RequiredVersion = '4.0.0'; }, 
                @{ModuleName = 'AzureRM.Relay'; RequiredVersion = '0.3.0'; }, 
                @{ModuleName = 'AzureRM.Resources'; RequiredVersion = '5.0.0'; }, 
