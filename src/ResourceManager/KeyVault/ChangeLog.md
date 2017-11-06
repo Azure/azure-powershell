@@ -19,6 +19,8 @@
 -->
 ## Current Release
 
+## Version 4.0.0
+
 ## Version 3.4.1
 * Deprecating the PurgeDisabled flag from Key, Secret and Certificate attributes, respectively.
   * The flag is being superseded by the RecoveryLevel attribute.

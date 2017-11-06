@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 0.1.0
     Add commands to get/create/remove applicaiton insights resource
         Get-AzureRmApplicationInsights 
         New-AzureRmApplicationInsights
@@ -38,4 +40,3 @@
 		Get-AzureRmApplicationInsightsApiKey
 		New-AzureRmApplicationInsightsApiKey
 		Remove-AzureRmApplicationInsightsApiKey
-

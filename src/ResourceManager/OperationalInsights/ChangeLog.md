@@ -19,6 +19,8 @@
 -->
 ## Current Release
 
+## Version 4.0.0
+
 ## Version 3.4.1
 
 ## Version 3.4.0

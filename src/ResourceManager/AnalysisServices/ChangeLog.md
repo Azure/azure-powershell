@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 0.5.0
 * Fixed Synchronize-AzureAsInstance command to work with new AsAzure REST API for sync
 
 ## Version 0.4.7

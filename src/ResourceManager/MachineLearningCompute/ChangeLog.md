@@ -19,6 +19,8 @@
 -->
 ## Current Release
 
+## Version 0.2.0
+
 ## Version 0.1.0
 - Added initial set of cmdlets for MachineLearningCompute
     - Get-AzureRmMlOpCluster
