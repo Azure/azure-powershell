@@ -182,7 +182,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 #endif
         }
 
-        private void SetEnvironmentVariableFromCredentialFile()
+        public void SetEnvironmentVariableFromCredentialFile()
         {
             var filePath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "/.azure/testcredentials.json";
             Dictionary<string, object> credentials;
@@ -208,19 +208,9 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                     formattedConnectionString.Append(String.Format(";ServicePrincipalSecret={0}", credentials["ServicePrincipalSecret"]));
                 }
 
-                if (credentials.ContainsKey("AADTenant"))
+                if (credentials.ContainsKey("TenantId"))
                 {
-                    formattedConnectionString.Append(String.Format(";AADTenant={0}", credentials["AADTenant"]));
-                }
-
-                if (credentials.ContainsKey("ServicePrincipal"))
-                {
-                    formattedConnectionString.Append(String.Format(";ServicePrincipal={0}", credentials["ServicePrincipal"]));
-                }
-
-                if (credentials.ContainsKey("ServicePrincipalSecret"))
-                {
-                    formattedConnectionString.Append(String.Format(";ServicePrincipalSecret={0}", credentials["ServicePrincipalSecret"]));
+                    formattedConnectionString.Append(String.Format(";AADTenant={0}", credentials["TenantId"]));
                 }
 
                 if (credentials.ContainsKey("ResourceManagementUri"))
@@ -287,7 +277,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             }
         }
 
-        private void SetupAzureEnvironmentFromEnvironmentVariables(AzureModule mode)
+        public void SetupAzureEnvironmentFromEnvironmentVariables(AzureModule mode)
         {
             TestEnvironment currentEnvironment = null;
             if (mode == AzureModule.AzureResourceManager)

@@ -67,7 +67,8 @@
 
     if ([string]::IsNullOrEmpty($NewServicePrincipalDisplayName) -eq $false) {
         $Scope = "/subscriptions/" + $SubscriptionId
-        $NewServicePrincipal = New-AzureRMADServicePrincipal -DisplayName $NewServicePrincipalDisplayName -Password $NewServicePrincipalSecret
+        $SecureStringSecret = ConvertTo-SecureString $NewServicePrincipalSecret -AsPlainText -Force
+        $NewServicePrincipal = New-AzureRMADServicePrincipal -DisplayName $NewServicePrincipalDisplayName -Password $SecureStringSecret
         Write-Host "New ServicePrincipal created: " + $NewServicePrincipal
 
         $NewRole = $null
@@ -89,7 +90,7 @@
         $credentials.UserId = $UserId
     }
     
-    if ([string]::IsNullOrEmpty($ServicePrincipal) -eq $false) {
+    if ([string]::IsNullOrEmpty($ServicePrincipalId) -eq $false) {
         $credentials.ServicePrincipal = $ServicePrincipalId
         $credentials.ServicePrincipalSecret = $ServicePrincipalSecret
     }
@@ -144,7 +145,7 @@
 
     $credentialsJson = $credentials | ConvertTo-Json
     $directoryPath = $Env:USERPROFILE + "\.azure"
-    if (!(Test-Path $directoryPath) -and (Force -or $PSCmdlet.ShouldContinue("Do you want to create directory: " + $directoryPath + " which will contain your credentials file?", "Create directory?"))) {
+    if (!(Test-Path $directoryPath) -and ($Force -or $PSCmdlet.ShouldContinue("Do you want to create directory: " + $directoryPath + " which will contain your credentials file?", "Create directory?"))) {
         New-Item -ItemType Directory -Path $directoryPath
     }
     $filePath = $Env:USERPROFILE + "\.azure\testcredentials.json"
@@ -219,7 +220,7 @@ This cmdlet will only prompt you for Subscription and Tenant information, rest a
         $formattedConnStr = [string]::Format([string]::Concat($formattedConnStr, ";AADTenant={0}"), $TenantId)
     }
 
-    if([string]::IsNullOrEmpty($ServicePrincipal) -eq $false)
+    if([string]::IsNullOrEmpty($ServicePrincipalId) -eq $false)
     {
         $formattedConnStr = [string]::Format([string]::Concat($formattedConnStr, ";ServicePrincipal={0}"), $ServicePrincipalId)
     }
