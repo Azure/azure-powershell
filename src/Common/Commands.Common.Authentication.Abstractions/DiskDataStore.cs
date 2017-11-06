@@ -12,14 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Properties;
 using System;
 using System.IO;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
-using Microsoft.WindowsAzure.Commands.Common.Properties;
 
-namespace Microsoft.WindowsAzure.Commands.Common
+namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
     /// <summary>
     /// A ddata store based on the managed windows file system functions (System.IO)
@@ -192,7 +191,11 @@ namespace Microsoft.WindowsAzure.Commands.Common
             }
             else
             {
-                Validate.ValidateStringIsNullOrEmpty(thumbprint, "certificate thumbprint");
+                if (string.IsNullOrEmpty(thumbprint))
+                {
+                    throw new ArgumentException(string.Format(Resources.InvalidOrEmptyArgumentMessage, "certificate thumbprint"));
+                }
+
                 X509Certificate2Collection certificates;
                 if (TryFindCertificatesInStore(thumbprint, StoreLocation.CurrentUser, out certificates) ||
                     TryFindCertificatesInStore(thumbprint, StoreLocation.LocalMachine, out certificates))
@@ -212,7 +215,11 @@ namespace Microsoft.WindowsAzure.Commands.Common
         /// <param name="cert">The certificate to add</param>
         public void AddCertificate(X509Certificate2 certificate)
         {
-            Validate.ValidateNullArgument(certificate, Resources.InvalidCertificate);
+            if (certificate == null)
+            {
+                throw new ArgumentException(Resources.InvalidCertificate);
+            }
+
             X509StoreWrapper(StoreName.My, StoreLocation.CurrentUser, (store) =>
             {
                 store.Open(OpenFlags.ReadWrite);
