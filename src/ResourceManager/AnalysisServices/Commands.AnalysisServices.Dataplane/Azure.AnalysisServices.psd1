@@ -44,8 +44,11 @@ CLRVersion='4.0'
 # Processor architecture (None, X86, Amd64, IA64) required by this module  
 ProcessorArchitecture = 'None'  
 
+# Modules that must be imported into the global environment prior to importing this module
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '4.0.0'; })
+
 # Assemblies that must be loaded prior to importing this module  
-RequiredAssemblies = @()  
+RequiredAssemblies = @()
   
 # Script files (.ps1) that are run in the caller's environment prior to importing this module  
 ScriptsToProcess = @()  
@@ -57,9 +60,7 @@ TypesToProcess = @()
 FormatsToProcess = @()
   
 # Modules to import as nested modules of the module specified in ModuleToProcess  
-NestedModules = @(  
-    '.\Microsoft.Azure.Commands.AnalysisServices.Dataplane.dll'
-)
+NestedModules = @('.\Microsoft.Azure.Commands.AnalysisServices.Dataplane.dll')
   
 # Functions to export from this module  
 FunctionsToExport = '*'  
