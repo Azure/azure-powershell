@@ -116,7 +116,7 @@ PrivateData = @{
         # ReleaseNotes of this module
         ReleaseNotes = '* Fixed Synchronize-AzureAsInstance command to work with new AsAzure REST API for sync
 * Add support for online help
-    - Run Get-Help with the -Online parameter to open the online help in your default Internet'
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser'
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''

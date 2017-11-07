@@ -356,7 +356,7 @@ PrivateData = @{
 * Added cmdlet to get the relative latency score for internet service providers from a specified location to Azure regions
     - Get-AzureRmNetworkWatcherReachabilityReport
 * Add support for online help
-    - Run Get-Help with the -Online parameter to open the online help in your default Internet'
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser'
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''

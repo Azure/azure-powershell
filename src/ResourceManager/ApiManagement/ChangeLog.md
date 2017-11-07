@@ -29,7 +29,7 @@
 * Updated Cmdlet Get-AzureRmApiManagementUser to fix issue https://github.com/Azure/azure-powershell/issues/4510
 * Updated Cmdlet New-AzureRmApiManagementApi to create Api with Empty Path https://github.com/Azure/azure-powershell/issues/4069
 * Add support for online help
-    - Run Get-Help with the -Online parameter to open the online help in your default Internet 
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser 
 
 ## Version 4.4.1
 

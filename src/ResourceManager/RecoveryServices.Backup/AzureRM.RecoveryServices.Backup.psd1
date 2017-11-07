@@ -137,7 +137,7 @@ PrivateData = @{
 * Updated tests for the Azure VM workload so that, all setups needed for test runs are done by the tests themselves.
 * Fixes https://github.com/Azure/azure-powershell/issues/3164
 * Add support for online help
-    - Run Get-Help with the -Online parameter to open the online help in your default Internet'
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser'
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''
