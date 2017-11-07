@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.Commands.Scheduler.dll-Help.xml
 Module Name: AzureRM
 ms.assetid: 2C8C98B8-7A3B-4F24-BDF1-0B7B81049956
-online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.scheduler/set-azurermschedulerservicebusqueuejob
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.scheduler/set-azurermschedulerservicebusqueuejob
 schema: 2.0.0
 ---
 

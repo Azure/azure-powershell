@@ -1,7 +1,7 @@
 ﻿---
 external help file: Microsoft.Azure.Commands.ServiceFabric.dll-Help.xml
 Module Name: AzureRM
-online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicefabric/set-azurermservicefabricupgradetype
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicefabric/set-azurermservicefabricupgradetype
 schema: 2.0.0
 ---
 

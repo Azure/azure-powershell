@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.Commands.Dns.dll-Help.xml
 Module Name: AzureRM.Dns
 ms.assetid: 99E6C4DD-11AF-4DC0-848B-39811240BE06
-online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.dns/set-azurermdnsrecordset
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.dns/set-azurermdnsrecordset
 schema: 2.0.0
 ---
 

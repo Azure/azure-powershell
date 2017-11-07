@@ -1,6 +1,6 @@
 ﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/set-azurermdiskkeyencryptionkey
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/set-azurermdiskkeyencryptionkey
 schema: 2.0.0
 ---
 

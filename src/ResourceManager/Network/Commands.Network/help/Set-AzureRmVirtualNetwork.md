@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
 ms.assetid: 93D8A341-540A-43F1-8C62-28323EAA58E0
-online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/set-azurermvirtualnetwork
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/set-azurermvirtualnetwork
 schema: 2.0.0
 ---
 

@@ -1,7 +1,7 @@
 ﻿---
 external help file: Microsoft.Azure.Commands.DataFactoryV2.dll-Help.xml
 Module Name: AzureRM.DataFactoryV2
-online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/get-azurermdatafactoryv2linkedservice
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/get-azurermdatafactoryv2linkedservice
 schema: 2.0.0
 ---
 

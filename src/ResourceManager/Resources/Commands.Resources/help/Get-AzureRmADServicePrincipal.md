@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 4DC26C26-6162-4A15-BFCB-4D2B6B52DD81
-online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/get-azurermadserviceprincipal
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/get-azurermadserviceprincipal
 schema: 2.0.0
 ---
 

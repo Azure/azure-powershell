@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 063BAA79-484D-48CF-9170-3808813752BD
-online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/new-azurermadspcredential
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/new-azurermadspcredential
 schema: 2.0.0
 ---
 

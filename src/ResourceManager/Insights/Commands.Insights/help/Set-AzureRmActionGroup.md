@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
 Module Name: AzureRM.Insights
 ms.assetid: 4A6816DB-0E46-44F0-8AE9-180B1C4AAB22
-online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.insights/set-azurermactiongroup
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.insights/set-azurermactiongroup
 schema: 2.0.0
 ---
 

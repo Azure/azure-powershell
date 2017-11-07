@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.Commands.Scheduler.dll-Help.xml
 Module Name: AzureRM
 ms.assetid: BA79EDC8-BE89-4836-92EF-748D6F518886
-online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.scheduler/enable-azurermschedulerjobcollection
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.scheduler/enable-azurermschedulerjobcollection
 schema: 2.0.0
 ---
 

@@ -1,7 +1,7 @@
 ﻿---
 external help file: Microsoft.Azure.Commands.MachineLearning.dll-Help.xml
 Module Name: AzureRM.MachineLearning
-online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.machinelearning/import-azurermmlwebservice
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.machinelearning/import-azurermmlwebservice
 schema: 2.0.0
 ---
 

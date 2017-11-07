@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
 Module Name: AzureRM.Automation
 ms.assetid: B6487D26-2B6A-4938-B1CD-48EADD8D0C3C
-online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/import-azurermautomationrunbook
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/import-azurermautomationrunbook
 schema: 2.0.0
 ---
 

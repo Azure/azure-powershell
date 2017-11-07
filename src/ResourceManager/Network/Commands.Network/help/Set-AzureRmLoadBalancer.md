@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
 ms.assetid: 494E185D-3746-4959-846E-660017A1F392
-online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/set-azurermloadbalancer
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/set-azurermloadbalancer
 schema: 2.0.0
 ---
 

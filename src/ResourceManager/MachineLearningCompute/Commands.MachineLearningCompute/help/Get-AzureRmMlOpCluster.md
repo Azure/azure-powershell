@@ -1,7 +1,7 @@
 ﻿---
 external help file: Microsoft.Azure.Commands.MachineLearningCompute.dll-Help.xml
 Module Name: AzureRM.MachineLearningCompute
-online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.machinelearningcompute/get-azurermmlopcluster
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.machinelearningcompute/get-azurermmlopcluster
 schema: 2.0.0
 ---
 

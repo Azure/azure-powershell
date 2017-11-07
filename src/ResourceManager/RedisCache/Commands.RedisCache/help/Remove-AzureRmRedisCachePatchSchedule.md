@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.Commands.RedisCache.dll-Help.xml
 Module Name: AzureRM
 ms.assetid: 2EA765B8-D82B-4789-8F10-88F79BDF44D0
-online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.rediscache/remove-azurermrediscachepatchschedule
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.rediscache/remove-azurermrediscachepatchschedule
 schema: 2.0.0
 ---
 

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
 Module Name: AzureRM
 ms.assetid: 86E0D477-DD32-49BD-82E7-1CF191E4F612
-online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/stop-azurermwebappslot
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/stop-azurermwebappslot
 schema: 2.0.0
 ---
 

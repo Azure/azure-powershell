@@ -1,6 +1,6 @@
 ﻿---
 external help file: Microsoft.Azure.Commands.AnalysisServices.Dataplane.dll-Help.xml
-online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.analysisservices/sync-azureanalysisservicesinstance
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.analysisservices/sync-azureanalysisservicesinstance
 schema: 2.0.0
 ---
 

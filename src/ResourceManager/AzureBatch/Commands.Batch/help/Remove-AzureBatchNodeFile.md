@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
 Module Name: AzureRM.Batch
 ms.assetid: DBA02017-8372-4A91-A4F1-985777DEDAB9
-online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/remove-azurebatchnodefile
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/remove-azurebatchnodefile
 schema: 2.0.0
 ---
 

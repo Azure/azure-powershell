@@ -1,6 +1,6 @@
 ﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/set-azurermimageosdisk
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/set-azurermimageosdisk
 schema: 2.0.0
 ---
 

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: A00160B9-831F-4A20-8D9D-9E89BC4F5C91
-online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/set-azurermresource
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/set-azurermresource
 schema: 2.0.0
 ---
 

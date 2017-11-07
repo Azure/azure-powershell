@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.Commands.AzureBackup.dll-Help.xml
 Module Name: AzureRM.Backup
 ms.assetid: C5126E20-0A93-4ACE-8297-F1E8E17BEF53
-online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.backup/wait-azurermbackupjob
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.backup/wait-azurermbackupjob
 schema: 2.0.0
 ---
 

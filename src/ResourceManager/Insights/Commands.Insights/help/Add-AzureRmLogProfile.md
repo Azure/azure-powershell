@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
 Module Name: AzureRM.Insights
 ms.assetid: 18D5B95E-4CF1-4C79-AE8B-9F4DA49B46A9
-online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.insights/add-azurermlogprofile
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.insights/add-azurermlogprofile
 schema: 2.0.0
 ---
 

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.Commands.Media.dll-Help.xml
 Module Name: AzureRM.Media
 ms.assetid: 5CEA7323-4CF7-42B2-BA94-BB3C8F73D2E9
-online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.media/new-azurermmediaservice
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.media/new-azurermmediaservice
 schema: 2.0.0
 ---
 

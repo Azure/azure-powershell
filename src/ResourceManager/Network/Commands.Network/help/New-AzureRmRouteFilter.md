@@ -1,7 +1,7 @@
 ﻿---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
-online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermroutefilter
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermroutefilter
 schema: 2.0.0
 ---
 

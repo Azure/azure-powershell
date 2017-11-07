@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.Commands.DevTestLabs.dll-Help.xml
 Module Name: AzureRM.DevTestLabs
 ms.assetid: D00E04D9-C91F-4F89-8867-0A026C274F27
-online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.devtestlabs/set-azurermdtlvmsperuserpolicy
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.devtestlabs/set-azurermdtlvmsperuserpolicy
 schema: 2.0.0
 ---
 

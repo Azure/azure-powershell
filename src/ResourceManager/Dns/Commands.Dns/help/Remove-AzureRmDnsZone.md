@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.Commands.Dns.dll-Help.xml
 Module Name: AzureRM.Dns
 ms.assetid: A8E230A0-5057-40BC-81CD-6D397A503A84
-online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.dns/remove-azurermdnszone
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.dns/remove-azurermdnszone
 schema: 2.0.0
 ---
 

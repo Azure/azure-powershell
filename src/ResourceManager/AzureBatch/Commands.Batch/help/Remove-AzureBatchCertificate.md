@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
 Module Name: AzureRM.Batch
 ms.assetid: 3DFFD0F2-6CD8-4FBE-B15C-8505CBF8F44E
-online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/remove-azurebatchcertificate
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/remove-azurebatchcertificate
 schema: 2.0.0
 ---
 

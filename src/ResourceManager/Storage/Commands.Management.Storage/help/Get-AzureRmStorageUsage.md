@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.Commands.Management.Storage.dll-Help.xml
 Module Name: AzureRM
 ms.assetid: 11AAA319-DDBB-4156-9BE7-4DE8B80A904C
-online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.storage/get-azurermstorageusage
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.storage/get-azurermstorageusage
 schema: 2.0.0
 ---
 

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 770093CD-CE2A-4076-8A28-F4DCFFB7A075
-online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/set-azurermresourcelock
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/set-azurermresourcelock
 schema: 2.0.0
 ---
 

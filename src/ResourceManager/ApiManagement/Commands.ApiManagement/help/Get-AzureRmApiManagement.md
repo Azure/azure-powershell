@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.Commands.ApiManagement.dll-Help.xml
 Module Name: AzureRM.ApiManagement
 ms.assetid: DBA7AD5F-CC13-417A-B753-F998942530BB
-online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/get-azurermapimanagement
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/get-azurermapimanagement
 schema: 2.0.0
 ---
 

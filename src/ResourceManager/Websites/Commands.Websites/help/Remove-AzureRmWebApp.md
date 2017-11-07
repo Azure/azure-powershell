@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
 Module Name: AzureRM
 ms.assetid: 9057185C-6F22-4C4A-8480-BE542B5D6BAF
-online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/remove-azurermwebapp
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/remove-azurermwebapp
 schema: 2.0.0
 ---
 

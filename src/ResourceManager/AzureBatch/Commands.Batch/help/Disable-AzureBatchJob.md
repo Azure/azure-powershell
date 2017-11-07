@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
 Module Name: AzureRM.Batch
 ms.assetid: C831F934-7513-4882-A155-816E56CD9807
-online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/disable-azurebatchjob
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/disable-azurebatchjob
 schema: 2.0.0
 ---
 
