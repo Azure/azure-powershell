@@ -65,14 +65,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             string skipToken = default(string))
         {
             Func<RestAzureNS.IPage<ProtectionPolicyResource>> listAsync =
-                () => BmsAdapter.Client.ProtectionPolicies.ListWithHttpMessagesAsync(
+                () => BmsAdapter.Client.BackupPolicies.ListWithHttpMessagesAsync(
                     BmsAdapter.GetResourceName(),
                     BmsAdapter.GetResourceGroupName(),
                     queryFilter,
                     cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
 
             Func<string, RestAzureNS.IPage<ProtectionPolicyResource>> listNextAsync =
-                nextLink => BmsAdapter.Client.ProtectionPolicies.ListNextWithHttpMessagesAsync(
+                nextLink => BmsAdapter.Client.BackupPolicies.ListNextWithHttpMessagesAsync(
                     nextLink,
                     cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
 

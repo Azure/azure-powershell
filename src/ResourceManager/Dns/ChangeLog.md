@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 4.0.0
 * Support for CAA record types in Azure DNS
    - Supports all operations on CAA record type
 

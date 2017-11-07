@@ -22,7 +22,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Container
     /// <summary>
     /// Unregisters the backup management server from the vault.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Unregister, "AzureRmRecoveryServicesBackupManagementServer")]
+    [Cmdlet(VerbsLifecycle.Unregister, "AzureRmRecoveryServicesBackupManagementServer",
+        SupportsShouldProcess = true)]
     public class UnregisterAzureRmRecoveryServicesBackupManagementServer
         : RecoveryServicesBackupCmdletBase
     {
@@ -33,6 +34,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Container
             HelpMessage = ParamHelpMsgs.Container.RegisteredContainer)]
         [ValidateNotNullOrEmpty]
         public BackupEngineBase AzureRmBackupManagementServer { get; set; }
+
+        /// <summary>
+        /// Return the Backup Management Server to be deleted
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Return the Backup Management Server to be deleted.")]
+        public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -57,7 +64,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Container
 
                 string azureRmBackupManagementServer = AzureRmBackupManagementServer.Name;
                 ServiceClientAdapter.UnregisterContainers(azureRmBackupManagementServer);
-            });
+
+                if (PassThru.IsPresent)
+                {
+                    WriteObject(AzureRmBackupManagementServer);
+                }
+            }, ShouldProcess(AzureRmBackupManagementServer.Name, VerbsLifecycle.Unregister));
         }
     }
 }
