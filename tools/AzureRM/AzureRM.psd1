@@ -182,30 +182,7 @@ PrivateData = @{
     	- Get/New/Remove-AzureRmApplicationInsightsApiKey
 * AzureBatch
     * Please see the migration guide for breaking changes made to Batch this release
-    * Added new parameters to `New-AzureRmBatchAccount`.
-        - `PoolAllocationMode`: The allocation mode to use for creating pools in the Batch account. To create a Batch account which allocates pool nodes in the user''s subscription, set this to `UserSubscription`.
-        - `KeyVaultId`: The resource ID of the Azure key vault associated with the Batch account.
-        - `KeyVaultUrl`: The URL of the Azure key vault associated with the Batch account.
-    * Updated parameters to `New-AzureBatchTask`.
-        - Removed the `RunElevated` switch. The `UserIdentity` parameter has been added to replace `RunElevated`, and the equivalent behavior can be achieved by constructing a `PSUserIdentity` as shown below:
-            - $autoUser = New-Object Microsoft.Azure.Commands.Batch.Models.PSAutoUserSpecification -ArgumentList @("Task", "Admin")
-            - $userIdentity = New-Object Microsoft.Azure.Commands.Batch.Models.PSUserIdentity $autoUser
-        - Added the `AuthenticationTokenSettings` parameter. This parameter allows you to request the Batch service provide an authentication token to the task when it runs, avoiding the need to pass Batch account keys to the task in order to issue requests to the Batch service.
-        - Added the `ContainerSettings` parameter.
-            - This parameter allows you to request the Batch service run the task inside a container.
-        - Added the `OutputFiles` parameter.
-            - This parameter allows you to configure the task to upload files to Azure Storage after it has finished.
-    * Updated parameters to `New-AzureBatchPool`.
-        - Added the `UserAccounts` parameter.
-            - This parameter defines user accounts created on each node in the pool.
-        - Added `TargetLowPriorityComputeNodes` and renamed `TargetDedicated` to `TargetDedicatedComputeNodes`.
-            - A `TargetDedicated` alias was created for the `TargetDedicatedComputeNodes` parameter.
-        - Added the `NetworkConfiguration` parameter.
-            - This parameter allows you to configure the pools network settings.
-    * Renamed the `Name` parameter to `Path` on `Get-AzureBatchNodeFile`, `Get-AzureBatchNodeFileContent`, and `Remove-AzureBatchNodeFile`.
-        - A `Name` alias was created for the `Path` parameter.
-    * Changes to objects
-        - Please see the Batch change log for the full list
+    * Please see the Batch change log for a full list of changes made this release
     * Added support for Azure Active Directory based authentication.
         - To use Azure Active Directory authentication, retrieve a `BatchAccountContext` object using the `Get-AzureRmBatchAccount` cmdlet, and supply this `BatchAccountContext` to the `-BatchContext` parameter of a Batch service cmdlet. Azure Active Directory authentication is mandatory for accounts with `PoolAllocationMode = UserSubscription`.
         - For existing accounts or for new accounts created with `PoolAllocationMode = BatchService`, you may continue to use shared key authentication by retrieving a `BatchAccountContext` object using the `Get-AzureRmBatchAccoutKeys` cmdlet.
@@ -251,6 +228,13 @@ PrivateData = @{
         - ```Clear-AzureRmDefault -ResourceGroup```
     - Add-AzureRmEnvironment and Set-AzureRmEnvironment
         - Add the BatchAudience parameter, which allows you to specify the Azure Batch Active Directory audience to use when acquiring authentication tokens for the Batch service.
+* RecoveryServices.Backup
+    * Added cmdlets to perform instant file recovery.
+        - Get-AzureRmRecoveryServicesBackupRPMountScript
+        - Disable-AzureRmRecoveryServicesBackupRPMountScript
+    * Updated RecoveryServices.Backup SDK version to the latest
+    * Updated tests for the Azure VM workload so that, all setups needed for test runs are done by the tests themselves.
+    * Fixes https://github.com/Azure/azure-powershell/issues/3164
 * RecoveryServices.SiteRecovery
     * Changes for ASR VMware to Azure Site Recovery (cmdlets are currently supporting operations for Enterprise to Enterprise, Enterprise to Azure, HyperV to Azure)
         - New-AzureRmRecoveryServicesAsrPolicy
