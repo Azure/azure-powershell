@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ServiceBus.dll-Help.xml
+Module Name: AzureRM
 online version: 
 schema: 2.0.0
 ---
@@ -12,8 +13,9 @@ Updates a subscription description for a Service Bus topic in the specified Serv
 ## SYNTAX
 
 ```
-Set-AzureRmServiceBusSubscription [-ResourceGroup] <String> [-NamespaceName] <String> [-TopicName] <String>
- [-SubscriptionObj] <SubscriptionAttributes> [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzureRmServiceBusSubscription [-ResourceGroupName] <String> [-Namespace] <String> [-Topic] <String>
+ [-InputObject] <SubscriptionAttributes> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,43 +37,28 @@ Updates the description for the specified subscription to the given topic. This 
 
 ## PARAMETERS
 
-### -NamespaceName
-The Service Bus namespace name.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: String
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: 
+Aliases: AzureRmContext, AzureCredential
 
-Required: True
-Position: 1
+Required: False
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroup
-The name of the resource group.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -SubscriptionObj
-The Service Bus subscription definition.
+### -InputObject
+ServiceBus Subscription definition.
 
 ```yaml
 Type: SubscriptionAttributes
 Parameter Sets: (All)
-Aliases: 
+Aliases: SubscriptionObj
 
 Required: True
 Position: 3
@@ -80,13 +67,43 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -TopicName
-The Service Bus topic name.
+### -Namespace
+Namespace Name.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: NamespaceName
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The name of the resource group
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: ResourceGroup
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Topic
+Topic Name.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: TopicName
 
 Required: True
 Position: 2

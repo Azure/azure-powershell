@@ -216,4 +216,7 @@ The data is collected by Microsoft.
 Use the Disable-AzureDataCollection cmdlet to turn the feature Off. The cmdlet can be found in the Azure module.  To disable data collection: PS &gt; Disable-AzureDataCollection.
 Use the Enable-AzureDataCollection cmdlet to turn the feature On. The cmdlet can be found in the Azure module.  To enable data collection: PS &gt; Enable-AzureDataCollection.</value>
   </data>
+  <data name="DefaultResourceGroupKey" xml:space="preserve">
+    <value>Default Resource Group</value>
+  </data>
 </root>

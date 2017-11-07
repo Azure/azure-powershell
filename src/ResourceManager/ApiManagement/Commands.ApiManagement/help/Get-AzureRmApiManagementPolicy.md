@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
+Module Name: AzureRM.ApiManagement
 ms.assetid: 7BCEB0EF-1A09-4CED-9F34-CE3AB03181A7
 online version: 
 schema: 2.0.0
@@ -12,26 +13,26 @@ Gets the specified scope policy.
 
 ## SYNTAX
 
-### Tenant level (Default)
+### GetTenantLevel (Default)
 ```
 Get-AzureRmApiManagementPolicy -Context <PsApiManagementContext> [-Format <String>] [-SaveAs <String>] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Product level
+### GetProductLevel
 ```
 Get-AzureRmApiManagementPolicy -Context <PsApiManagementContext> [-Format <String>] [-SaveAs <String>]
  -ProductId <String> [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### API level
+### GetApiLevel
 ```
 Get-AzureRmApiManagementPolicy -Context <PsApiManagementContext> [-Format <String>] [-SaveAs <String>]
  -ApiId <String> [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Operation level
+### GetOperationLevel
 ```
 Get-AzureRmApiManagementPolicy -Context <PsApiManagementContext> [-Format <String>] [-SaveAs <String>]
  -ApiId <String> -OperationId <String> [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
@@ -83,7 +84,7 @@ If you specify this parameter the cmdlet returns the API-scope policy.
 
 ```yaml
 Type: String
-Parameter Sets: API level, Operation level
+Parameter Sets: GetApiLevel, GetOperationLevel
 Aliases: 
 
 Required: True
@@ -160,7 +161,7 @@ If you specify this parameter with *ApiId* the cmdlet returns operation-scope po
 
 ```yaml
 Type: String
-Parameter Sets: Operation level
+Parameter Sets: GetOperationLevel
 Aliases: 
 
 Required: True
@@ -176,7 +177,7 @@ If you specify this parameter the cmdlet returns the product-scope policy.
 
 ```yaml
 Type: String
-Parameter Sets: Product level
+Parameter Sets: GetProductLevel
 Aliases: 
 
 Required: True
