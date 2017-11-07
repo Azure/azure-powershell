@@ -26,6 +26,8 @@
     - New Parameters for 'Disable-AzureRmVmDiskEncryption': '-ExtensionPublisherName' and '-ExtensionType' allow switching to other versions of the extension
     - New Parameters for 'Get-AzureRmVmDiskEncryptionStatus': '-ExtensionPublisherName' and '-ExtensionType' allow switching to other versions of the extension
 * Set-AzureRmVMAEMExtension: Add support for Dv3 and Ev3 series
+* Add support for online help
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet 
 
 ## Version 3.4.1
 

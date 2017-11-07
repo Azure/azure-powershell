@@ -261,7 +261,9 @@ PrivateData = @{
     - Start-AzureRmRecoveryServicesAsrResynchronizeReplicationJob
     - Start-AzureRmRecoveryServicesAsrSwitchProcessServerJob
     - Start-AzureRmRecoveryServicesAsrTestFailoverCleanupJob
-    - Update-AzureRmRecoveryServicesAsrMobilityService'
+    - Update-AzureRmRecoveryServicesAsrMobilityService
+* Add support for online help
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet'
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''
