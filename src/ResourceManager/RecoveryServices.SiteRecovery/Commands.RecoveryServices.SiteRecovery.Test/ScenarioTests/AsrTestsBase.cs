@@ -27,10 +27,10 @@ using Microsoft.Azure.Management.RecoveryServices.SiteRecovery;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
-using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace RecoveryServices.SiteRecovery.Test
 {

@@ -27,28 +27,82 @@
 
 ## Current Breaking Changes
 
-  ## Release 5.0.0 - November 2017
+### Release 4.0.0 - November 2017
 
-    The following cmdlets were affected this release:
+The following cmdlets were affected this release:
 
-    **Add-AzureRMLogAlertRule**
-    - Deprecated as announced since April 2017
-    - After October 1st using this cmdlet no longer had any effect as this functionality was transitioned to Activity Log Alerts. Please see https://aka.ms/migratemealerts for more information.
+**Add-AzureRMLogAlertRule**
+- The **Add-AzureRMLogAlertRule** cmdlet has been deprecated
+- After October 1st using this cmdlet will no longer have any effect as this functionality is being transitioned to Activity Log Alerts. Please see https://aka.ms/migratemealerts for more information.
 
-    **Get-AzureRMUsage**
-    - Deprecated as announced since April 2017
+**Get-AzureRMUsage**
+- The **Get-AzureRMUsage** cmdlet has been deprecated
 
-    **Get-AzureRmAlertRule**
-    - Output changed as announced since April 2017. The output is now a list of PSAlertRule (descendant of AzureAlertRule) objects. The objects are flatten, i.e.: all attributes are in the root of the object, no Properties attribute in them.
+**Get-AzureRmAlertHistory** / **Get-AzureRmAutoscaleHistory** / **Get-AzureRmLogs**
+- Output change: The field EventChannels from the EventData object (returned by these cmdlets) is being deprecated since it now returns a constant value (Admin,Operation.)
 
-    **Remove-AzureRmAlertRule**
-    **Remove-AzureRmLogProfile**
-    - Output changed as announced since April 2017. The output is now an AzureOperationResponse object including status code and request Id.
+**Get-AzureRmAlertRule**
+- Output change: The output of this cmdlet will be flattened, i.e. elimination of the properties field, to improve the user experience.
 
-    **Get-AzureRmAutoscaleSetting**
-    - Output changed as announced since April 2017. The output is now a list of PSAutoscaleSetting (descendant of AutoscaleSettingResource.) The breaking change is the elimination of the AutoscaleSettingResourceName attribute from the output, since it is always the same as the Name property.
+```powershell
+# Old
+$rules = Get-AzureRmAlertRule -ResourceGroup $resourceGroup
+if ($rules -and $rules.count -ge 1)
+{
+	Write-Host -Foreground Red "Error updating alert rule"
+	Write-Host $rules[0].Id
+	Write-Host $rules[0].Properties.IsEnabled
+	Write-Host $rules[0].Properties.Condition
+}
 
-    **Get-AzureRmLog**
-    **Get-AzureRmAlertHistory**
-    **GetAzureRmAutoscaleHistory**
-    - Output changed as announced since April 2017. The output is now a list of PSEventData (a descendant of EventData) objects. The breaking change is the elimination of the EventChannels attribute from the PSEventData, in the previous version it was returning a fixed value.
+# New
+$rules = Get-AzureRmAlertRule -ResourceGroup $resourceGroup
+if ($rules -and $rules.count -ge 1)
+{
+	Write-Host -Foreground red "Error updating alert rule"
+	Write-Host $rules[0].Id
+
+	# Properties will remain for a while
+	Write-Host $rules[0].Properties.IsEnabled
+      
+	# But the properties will be at the top level too. Later Properties will be removed
+	Write-Host $rules[0].IsEnabled
+	Write-Host $rules[0].Condition
+}
+```
+
+**Get-AzureRmAutoscaleSetting**
+- Output change: The AutoscaleSettingResourceName field will be deprecated since it always equals the Name field.
+
+```powershell
+# Old
+$s1 = Get-AzureRmAutoscaleSetting -ResourceGroup $resourceGroup -Name MySetting
+if ($s1.AutoscaleSettingResourceName -ne $s1.Name)
+{
+	Write-Host "There is something wrong with the name"
+}
+
+# New
+$s1 = Get-AzureRmAutoscaleSetting -ResourceGroup $resourceGroup -Name MySetting
+    
+# there won't be a AutoscaleSettingResourceName
+Write-Host $s1.Name    
+```
+
+**Remove-AzureRmAlertRule** / **Remove-AzureRmLogProfile**
+- Output change: The type of the output will change to return a single object containing the request Id and the status code.
+
+```powershell
+# Old
+$s1 = Remove-AzureRmAlertRule -ResourceGroup $resourceGroup -name $ruleName
+if ($s1 -ne $null)
+{
+	$r = $s1[0].RequestId
+	$s = $s1[0].StatusCode
+}
+
+# New
+$s1 = Remove-AzureRmAlertRule -ResourceGroup $resourceGroup -name $ruleName
+$r = $s1.RequestId
+$s = $s1.StatusCode
+```

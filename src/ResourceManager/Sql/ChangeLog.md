@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 4.0.0
 * Adding support for list and cancel the asynchronous updateslo operation on the database
 	- update existing cmdlet Get-AzureRmSqlDatabaseActivity to return DB updateslo operation status.
 	- add new cmdlet Stop-AzureRmSqlDatabaseActivity for cancel the asynchronous updateslo operation on the database.
