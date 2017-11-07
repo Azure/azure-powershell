@@ -127,7 +127,7 @@ PrivateData = @{
         # ReleaseNotes of this module
         ReleaseNotes = '* NOTE: This is a breaking change release. Please see the migration guide (https://aka.ms/azps-migration-guide) for a full list of breaking changes introduced.
 * Add support for online help
-    - Run Get-Help with the -Online parameter to open the online help in your default Internet'
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser'
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''

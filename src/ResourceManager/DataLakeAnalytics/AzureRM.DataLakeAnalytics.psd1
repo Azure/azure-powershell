@@ -162,7 +162,7 @@ PrivateData = @{
     - The properties of PSJobInformationBasic is a strict subset of the properties of JobInformation
     - The additional properties that are in JobInformation are not returned by the service.  Therefore, this change is to reflect this accurately. These additional properties are still in PSJobInformationBasic, but they are tagged as Obsolete.
 * Add support for online help
-    - Run Get-Help with the -Online parameter to open the online help in your default Internet'
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser'
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''
