@@ -93,7 +93,9 @@ CmdletsToExport = 'Backup-AzureRmRecoveryServicesBackupItem',
                'Set-AzureRmRecoveryServicesBackupProtectionPolicy', 
                'Get-AzureRmRecoveryServicesBackupRecoveryPoint', 
                'Restore-AzureRmRecoveryServicesBackupItem', 
-               'Unregister-AzureRmRecoveryServicesBackupManagementServer'
+               'Unregister-AzureRmRecoveryServicesBackupManagementServer',
+               'Get-AzureRmRecoveryServicesBackupRPMountScript',
+               'Disable-AzureRmRecoveryServicesBackupRPMountScript'
 
 # Variables to export from this module
 # VariablesToExport = @()

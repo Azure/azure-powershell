@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Added cmdlets to perform instant file recovery.
+* Updated RecoveryServices.Backup SDK version to the latest
+* Updated tests for the Azure VM workload so that, all setups needed for test runs are done by the tests themselves.
+* Fixes https://github.com/Azure/azure-powershell/issues/3164
 
 ## Version 3.4.1
 
