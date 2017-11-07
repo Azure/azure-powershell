@@ -15,6 +15,8 @@
 <#
 .SYNOPSIS
 Test StorageAccount
+.Description
+AzureAutomationTest
 #>
 function Test-StorageAccount
 {
@@ -115,6 +117,8 @@ function Test-StorageAccount
 <#
 .SYNOPSIS
 Test New-AzureRmStorageAccount
+.Description
+AzureAutomationTest
 #>
 function Test-NewAzureStorageAccount
 {
@@ -144,6 +148,8 @@ function Test-NewAzureStorageAccount
 <#
 .SYNOPSIS
 Test Get-AzureRmStorageAccount
+.Description
+AzureAutomationTest
 #>
 function Test-GetAzureStorageAccount
 {
@@ -190,6 +196,8 @@ function Test-GetAzureStorageAccount
 <#
 .SYNOPSIS
 Test Set-AzureRmStorageAccount
+.Description
+AzureAutomationTest
 #>
 function Test-SetAzureStorageAccount
 {
