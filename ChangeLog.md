@@ -106,6 +106,13 @@
         - ```Clear-AzureRmDefault -ResourceGroup```
     - Add-AzureRmEnvironment and Set-AzureRmEnvironment
         - Add the BatchAudience parameter, which allows you to specify the Azure Batch Active Directory audience to use when acquiring authentication tokens for the Batch service.
+* RecoveryServices.Backup
+    * Added cmdlets to perform instant file recovery.
+        - Get-AzureRmRecoveryServicesBackupRPMountScript
+        - Disable-AzureRmRecoveryServicesBackupRPMountScript
+    * Updated RecoveryServices.Backup SDK version to the latest
+    * Updated tests for the Azure VM workload so that, all setups needed for test runs are done by the tests themselves.
+    * Fixes https://github.com/Azure/azure-powershell/issues/3164
 * RecoveryServices.SiteRecovery
     * Changes for ASR VMware to Azure Site Recovery (cmdlets are currently supporting operations for Enterprise to Enterprise, Enterprise to Azure, HyperV to Azure)
         - New-AzureRmRecoveryServicesAsrPolicy

@@ -130,7 +130,12 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'Updated for common code changes'
+        ReleaseNotes = '* Added cmdlets to perform instant file recovery.
+    - Get-AzureRmRecoveryServicesBackupRPMountScript
+    - Disable-AzureRmRecoveryServicesBackupRPMountScript
+* Updated RecoveryServices.Backup SDK version to the latest
+* Updated tests for the Azure VM workload so that, all setups needed for test runs are done by the tests themselves.
+* Fixes https://github.com/Azure/azure-powershell/issues/3164'
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''
