@@ -19,7 +19,7 @@ using System.Runtime.Serialization;
 using System.Xml;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
-using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {

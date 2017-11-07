@@ -77,6 +77,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                     AzureKeyVaultServiceEndpointResourceId = AzureEnvironmentConstants.ChinaKeyVaultServiceEndpointResourceId,
                     AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix = null,
                     AzureDataLakeStoreFileSystemEndpointSuffix = null,
+                    DataLakeEndpointResourceId = null,
                     GraphEndpointResourceId = AzureEnvironmentConstants.ChinaGraphEndpoint,
                     BatchEndpointResourceId = AzureEnvironmentConstants.ChinaBatchEndpointResourceId,
                     AdTenant = "Common"
@@ -102,6 +103,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                     AzureKeyVaultServiceEndpointResourceId = AzureEnvironmentConstants.USGovernmentKeyVaultServiceEndpointResourceId,
                     AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix = null,
                     AzureDataLakeStoreFileSystemEndpointSuffix = null,
+                    DataLakeEndpointResourceId = null,
                     GraphEndpointResourceId = AzureEnvironmentConstants.USGovernmentGraphEndpoint,
                     BatchEndpointResourceId = AzureEnvironmentConstants.USGovernmentBatchEndpointResourceId,
                     AdTenant = "Common"
@@ -127,6 +129,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                     AzureKeyVaultServiceEndpointResourceId = AzureEnvironmentConstants.GermanAzureKeyVaultServiceEndpointResourceId,
                     AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix = null,
                     AzureDataLakeStoreFileSystemEndpointSuffix = null,
+                    DataLakeEndpointResourceId = null,
                     GraphEndpointResourceId = AzureEnvironmentConstants.GermanGraphEndpoint,
                     BatchEndpointResourceId = AzureEnvironmentConstants.GermanBatchEndpointResourceId,
                     AdTenant = "Common"
