@@ -180,7 +180,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// <returns></returns>
         public static T GetEnum<T>(string enumValue)
         {
-            return (T)Enum.Parse(typeof(T), enumValue);
+            try
+            {
+                return (T)Enum.Parse(typeof(T), enumValue);
+            }
+            catch (Exception ex)
+            {
+                return default(T);
+            }
         }
     }
 
@@ -196,10 +203,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// <returns>PowerShell backup management type</returns>
         public static BackupManagementType GetPsBackupManagementType(string backupManagementType)
         {
-            ServiceClientModel.BackupManagementType providerType =
-                EnumUtils.GetEnum<ServiceClientModel.BackupManagementType>(backupManagementType);
-
-            switch (providerType)
+            switch (backupManagementType)
             {
                 case ServiceClientModel.BackupManagementType.AzureIaasVM:
                     return BackupManagementType.AzureVM;

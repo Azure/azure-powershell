@@ -37,14 +37,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             string resourceGroupName = BmsAdapter.GetResourceGroupName();
 
             Func<RestAzureNS.IPage<WorkloadProtectableItemResource>> listAsync =
-                () => BmsAdapter.Client.ProtectableItems.ListWithHttpMessagesAsync(
+                () => BmsAdapter.Client.BackupProtectableItems.ListWithHttpMessagesAsync(
                     BmsAdapter.GetResourceName(),
                     BmsAdapter.GetResourceGroupName(),
                     queryFilter,
                     cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
 
             Func<string, RestAzureNS.IPage<WorkloadProtectableItemResource>> listNextAsync =
-                nextLink => BmsAdapter.Client.ProtectableItems.ListNextWithHttpMessagesAsync(
+                nextLink => BmsAdapter.Client.BackupProtectableItems.ListNextWithHttpMessagesAsync(
                     nextLink,
                     cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
 
