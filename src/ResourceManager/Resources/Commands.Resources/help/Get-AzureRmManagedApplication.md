@@ -1,7 +1,7 @@
 ﻿---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
 Module Name: AzureRM.Resources
-online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/get-azurermmanagedapplication
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/get-azurermmanagedapplication
 schema: 2.0.0
 ---
 

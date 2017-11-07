@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
 ms.assetid: 556A9F12-DF72-468F-9C3F-A747CC70BD2F
-online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/test-azurermdnsavailability
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/test-azurermdnsavailability
 schema: 2.0.0
 ---
 

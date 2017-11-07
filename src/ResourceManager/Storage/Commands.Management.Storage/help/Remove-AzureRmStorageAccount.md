@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.Commands.Management.Storage.dll-Help.xml
 Module Name: AzureRM
 ms.assetid: 006B4341-274C-4929-86EE-2E107BA9E485
-online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.storage/remove-azurermstorageaccount
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.storage/remove-azurermstorageaccount
 schema: 2.0.0
 ---
 

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.Commands.AzureBackup.dll-Help.xml
 Module Name: AzureRM.Backup
 ms.assetid: D57C32D1-EB4F-495E-A11B-3B4066E8C552
-online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.backup/set-azurermbackupvault
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.backup/set-azurermbackupvault
 schema: 2.0.0
 ---
 

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 7740AC3B-F643-4F8D-8DC5-ACBF59323BD8
-online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/get-azurermroledefinition
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/get-azurermroledefinition
 schema: 2.0.0
 ---
 

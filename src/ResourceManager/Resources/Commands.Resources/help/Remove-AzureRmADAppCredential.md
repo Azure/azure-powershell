@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: C61FA834-BEBE-4DBF-888F-C6CB8CC95390
-online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/remove-azurermadappcredential
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/remove-azurermadappcredential
 schema: 2.0.0
 ---
 

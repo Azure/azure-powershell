@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
 Module Name: AzureRM.Batch
 ms.assetid: 6A6D6C7D-EED7-4AD4-ACE6-BFA64404455E
-online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/set-azurebatchtask
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/set-azurebatchtask
 schema: 2.0.0
 ---
 

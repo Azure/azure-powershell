@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
 ms.assetid: FDA33633-EB2E-4095-8498-DF8910F1D434
-online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/remove-azurermroutetable
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/remove-azurermroutetable
 schema: 2.0.0
 ---
 

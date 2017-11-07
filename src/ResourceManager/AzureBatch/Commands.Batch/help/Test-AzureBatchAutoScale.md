@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
 Module Name: AzureRM.Batch
 ms.assetid: BF0C1A2F-2703-492F-A3A7-053416A5D1EB
-online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/test-azurebatchautoscale
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/test-azurebatchautoscale
 schema: 2.0.0
 ---
 

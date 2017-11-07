@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
 Module Name: AzureRM
 ms.assetid: 297071E5-FC06-4493-BCC2-37D4929E4025
-online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/restart-azurermwebapp
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/restart-azurermwebapp
 schema: 2.0.0
 ---
 

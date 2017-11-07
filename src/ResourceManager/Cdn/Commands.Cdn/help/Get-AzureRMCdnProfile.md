@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.Commands.Cdn.dll-Help.xml
 Module Name: AzureRM.Cdn
 ms.assetid: 28DECA86-37A5-48BE-9727-0C1A3B867E9B
-online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.cdn/get-azurermcdnprofile
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.cdn/get-azurermcdnprofile
 schema: 2.0.0
 ---
 

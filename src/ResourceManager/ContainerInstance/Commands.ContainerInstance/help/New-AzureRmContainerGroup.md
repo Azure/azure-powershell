@@ -1,7 +1,7 @@
 ﻿---
 external help file: Microsoft.Azure.Commands.ContainerInstance.dll-Help.xml
 Module Name: AzureRM
-online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.containerinstance/new-azurermcontainergroup
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.containerinstance/new-azurermcontainergroup
 schema: 2.0.0
 ---
 

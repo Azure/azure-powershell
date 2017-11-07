@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
 ms.assetid: DDB38A77-E5C0-47DD-BADD-94488F661CD5
-online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/set-azurermnetworkinterface
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/set-azurermnetworkinterface
 schema: 2.0.0
 ---
 

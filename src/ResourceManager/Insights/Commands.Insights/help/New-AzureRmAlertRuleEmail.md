@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
 Module Name: AzureRM.Insights
 ms.assetid: B1000C10-265E-4465-B167-F1251470BE3E
-online help: https://docs.microsoft.com/en-us/powershell/module/azurerm.insights/new-azurermalertruleemail
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.insights/new-azurermalertruleemail
 schema: 2.0.0
 ---
 
