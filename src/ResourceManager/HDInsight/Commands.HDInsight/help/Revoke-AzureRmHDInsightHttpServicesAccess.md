@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
 Module Name: AzureRM.HDInsight
 ms.assetid: 670EAFC0-3F8D-4F3D-8B62-448F04378F8B
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.hdinsight/revoke-azurermhdinsighthttpservicesaccess
 schema: 2.0.0
 ---
 

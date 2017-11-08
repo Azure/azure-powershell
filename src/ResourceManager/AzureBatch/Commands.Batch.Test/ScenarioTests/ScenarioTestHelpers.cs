@@ -41,15 +41,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
     /// </summary>
     public static class ScenarioTestHelpers
     {
-        // NOTE: To save time on setup and compute node allocation when recording, many tests assume the following:
-        //     - The following commands were run to create a pool, and all 3 compute nodes are allocated:
-        //          $context = Get-AzureRmBatchAccountKeys "<Account that will be used for recorded tests>"
-        //          $startTask = New-Object Microsoft.Azure.Commands.Batch.Models.PSStartTask
-        //          $startTask.CommandLine = "cmd /c echo hello"
-        //          $osFamily = "4"
-        //          $targetOSVersion = "*"
-        //          $configuration = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration -ArgumentList @($osFamily, $targetOSVersion)
-        //          New-AzureBatchPool -Id "testPool" -VirtualMachineSize "small" -CloudServiceConfiguration $configuration -TargetDedicated 3 -StartTask $startTask -BatchContext $context
         internal const string SharedPool = "testPool";
         internal const string SharedIaasPool = "testIaasPool";
         internal const string SharedPoolStartTaskStdOut = "startup\\stdout.txt";
@@ -70,7 +61,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         {
             controller.ResourceManagementClient.ResourceGroups.CreateOrUpdate(resourceGroupName, new ResourceGroup() { Location = location });
             BatchAccount createResponse = controller.BatchManagementClient.BatchAccount.Create(resourceGroupName, accountName, new BatchAccountCreateParameters() { Location = location });
-            BatchAccountContext context = BatchAccountContext.ConvertAccountResourceToNewAccountContext(createResponse);
+            BatchAccountContext context = BatchAccountContext.ConvertAccountResourceToNewAccountContext(createResponse, null);
             BatchAccountKeys response = controller.BatchManagementClient.BatchAccount.GetKeys(resourceGroupName, accountName);
             context.PrimaryAccountKey = response.Primary;
             context.SecondaryAccountKey = response.Secondary;
@@ -177,11 +168,15 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// <summary>
         /// Creates a test pool for use in Scenario tests.
         /// </summary>
-        public static void CreateTestPool(BatchController controller, BatchAccountContext context, string poolId, int targetDedicated,
-            CertificateReference certReference = null, StartTask startTask = null)
+        public static void CreateTestPool(
+            BatchController controller,
+            BatchAccountContext context,
+            string poolId,
+            int? targetDedicated,
+            int? targetLowPriority,
+            CertificateReference certReference = null,
+            StartTask startTask = null)
         {
-            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
-
             PSCertificateReference[] certReferences = null;
             if (certReference != null)
             {
@@ -199,13 +194,33 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             {
                 VirtualMachineSize = "small",
                 CloudServiceConfiguration = paasConfiguration,
-                TargetDedicated = targetDedicated,
+                TargetDedicatedComputeNodes = targetDedicated,
+                TargetLowPriorityComputeNodes = targetLowPriority,
                 CertificateReferences = certReferences,
                 StartTask = psStartTask,
                 InterComputeNodeCommunicationEnabled = true
             };
 
-            client.CreatePool(parameters);
+            CreatePoolIfNotExists(controller, parameters);
+        }
+
+        public static void CreatePoolIfNotExists(
+            BatchController controller,
+            NewPoolParameters poolParameters)
+        {
+            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+
+            try
+            {
+                client.CreatePool(poolParameters);
+            }
+            catch (BatchException e)
+            {
+                if (e.RequestInformation.BatchError.Code != "PoolAlreadyExists")
+                {
+                    throw;
+                }
+            }
         }
 
         /// <summary>
@@ -234,19 +249,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 // We got the pool not found error, so continue and create the pool
             }
 
-            CreateTestPool(controller, context, MpiPoolId, targetDedicated);
-        }
-
-        public static void ResizePool(BatchController controller, BatchAccountContext context, string poolId, int targetDedicated)
-        {
-            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
-
-            PoolResizeParameters parameters = new PoolResizeParameters(context, poolId, null)
-            {
-                TargetDedicated = targetDedicated
-            };
-
-            client.ResizePool(parameters);
+            CreateTestPool(controller, context, MpiPoolId, targetDedicated, targetLowPriority: 0);
         }
 
         public static void WaitForSteadyPoolAllocation(BatchController controller, BatchAccountContext context, string poolId)
@@ -269,22 +272,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 Sleep(5000);
                 pool = client.ListPools(options).First();
             }
-        }
-
-        /// <summary>
-        /// Gets the CurrentDedicated count from a pool
-        /// </summary>
-        public static int GetPoolCurrentDedicated(BatchController controller, BatchAccountContext context, string poolId)
-        {
-            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
-
-            ListPoolOptions options = new ListPoolOptions(context)
-            {
-                PoolId = poolId
-            };
-
-            PSCloudPool pool = client.ListPools(options).First();
-            return pool.CurrentDedicated.Value;
         }
 
         /// <summary>
@@ -392,15 +379,14 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             PSMultiInstanceSettings multiInstanceSettings = null;
             if (numInstances > 1)
             {
-                multiInstanceSettings = new PSMultiInstanceSettings(numInstances);
-                multiInstanceSettings.CoordinationCommandLine = "cmd /c echo coordinating";
+                multiInstanceSettings = new PSMultiInstanceSettings("cmd /c echo coordinating", numInstances);
             }
 
             NewTaskParameters parameters = new NewTaskParameters(context, jobId, null, taskId)
             {
                 CommandLine = cmdLine,
                 MultiInstanceSettings = multiInstanceSettings,
-                RunElevated = numInstances <= 1
+                UserIdentity = new PSUserIdentity(new PSAutoUserSpecification(AutoUserScope.Task, numInstances <= 1 ? ElevationLevel.Admin : ElevationLevel.NonAdmin))
             };
 
             client.CreateTask(parameters);

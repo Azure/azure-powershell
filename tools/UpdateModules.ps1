@@ -72,7 +72,7 @@ function Create-ModulePsm1
 
      $locationCompleterCommands = Find-CompleterAttribute -CompleterName "LocationCompleterAttribute" -ModuleMetadata $ModuleMetadata -ModulePath $ModulePath -isRMModule $isRMModule
      $template = $template -replace "%LCCOMMANDS%", $locationCompleterCommands
-     
+
      Write-Host "Writing psm1 manifest to $templateOutputPath"
      $template | Out-File -FilePath $templateOutputPath -Force
      $file = Get-Item -Path $templateOutputPath
@@ -140,7 +140,6 @@ function Find-CompleterAttribute
         return $constructedCommands
     }
 }
-
 function Create-MinimumVersionEntry
 {
     [CmdletBinding()]

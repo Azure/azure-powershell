@@ -12,7 +12,7 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-function Test-GetAzureSqlItemScenario
+function Test-AzureSqlGetItems
 {
 	# 1. Get the vault
 	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "sqlpaasrg" -Name "sqlpaasrn";
@@ -40,7 +40,7 @@ function Test-GetAzureSqlItemScenario
 	Assert-AreEqual $item.Name "dsName;satyay-sea-d1-fc1-catalog-2016-11-11-17-20;661f0942-d5b7-486a-b3cb-68f97d325a3c";
 }
 
-function Test-DisableAzureSqlProtectionScenario
+function Test-AzureSqlDisableProtection
 {
 	#1. Get the vault
 	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "sqlpaasrg" -Name "sqlpaasrn";
@@ -66,7 +66,7 @@ function Test-DisableAzureSqlProtectionScenario
 		-Item $item -RemoveRecoveryPoints -Force;
 }
 
-function Test-GetAzureSqlRecoveryPointsScenario
+function Test-AzureSqlGetRPs
 {
 	#Set vault context
 	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "sqlpaasrg" -Name "sqlpaasrn";

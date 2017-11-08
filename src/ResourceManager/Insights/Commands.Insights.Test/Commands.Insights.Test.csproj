@@ -142,7 +142,6 @@
     <Compile Include="ActionGroups\NewAzureRmActionGroupReceiverCommandTests.cs" />
     <Compile Include="ActionGroups\RemoveAzureRmActionGroupCommandTests.cs" />
     <Compile Include="Alerts\AddAzureRmMetricAlertRuleTests.cs" />
-    <Compile Include="Alerts\AddAzureRmLogAlertRuleTests.cs" />
     <Compile Include="Alerts\AddAzureRmWebtestAlertRuleTests.cs" />
     <Compile Include="Alerts\GetAzureRmAlertHistoryTests.cs" />
     <None Include="Alerts\GetAzureRmAlertRuleTests.cs" />
@@ -183,8 +182,6 @@
     <Compile Include="ScenarioTests\ActivityLogsTests.cs" />
     <Compile Include="ScenarioTests\MetricsTests.cs" />
     <Compile Include="ScenarioTests\TestsController.cs" />
-    <Compile Include="ScenarioTests\UsageMetricsTests.cs" />
-    <Compile Include="UsageMetrics\GetAzureRmUsageTests.cs" />
     <Compile Include="Utilities.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -243,9 +240,6 @@
     <None Include="ScenarioTests\MetricsTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="ScenarioTests\UsageMetricsTests.ps1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.ActivityLogAlertsTests\TestSetGetListUpdateRemoveActivityLogAlert.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -271,9 +265,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.AzureRmLogProfileTests\TestAddAzureRmLogProfile.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.AlertsTests\TestAddAzureRmLogAlertRule.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.AlertsTests\TestAddAzureRmWebtestAlertRule.json">
@@ -334,9 +325,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.MetricsTests\TestGetMetricDefinitions.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.UsageMetricsTests\TestGetUsageMetrics.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
