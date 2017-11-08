@@ -15,6 +15,8 @@
 using Microsoft.Azure.Commands.Batch.Models;
 using System;
 using System.Management.Automation;
+using System.Security;
+using Microsoft.WindowsAzure.Commands.Common;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
@@ -37,17 +39,14 @@ namespace Microsoft.Azure.Commands.Batch
 
         [Parameter]
         [ValidateNotNullOrEmpty]
-        [Obsolete("New-AzureRmBatchCertificate: The parameter \"Password\" is being changed from a string to a SecureString in an upcoming breaking change release.")]
-        public string Password { get; set; }
+        public SecureString Password { get; set; }
 
         public override void ExecuteCmdlet()
         {
             NewCertificateParameters parameters = new NewCertificateParameters(this.BatchContext, this.FilePath, this.RawData,
                 this.AdditionalBehaviors)
             {
-#pragma warning disable 0618
-                Password = this.Password
-#pragma warning restore 0618
+                Password = this.Password?.ConvertToString()
             };
 
             BatchClient.AddCertificate(parameters);

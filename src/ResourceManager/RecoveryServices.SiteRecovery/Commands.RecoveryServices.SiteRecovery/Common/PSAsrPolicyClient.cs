@@ -88,14 +88,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets Azure Site Recovery Policy given the ID.
         /// </summary>
-        /// <param name="PolicyId">Policy ID</param>
+        /// <param name="PolicyId">Policy Name</param>
         /// <returns>Policy response</returns>
         public Policy GetAzureSiteRecoveryPolicy(
-            string PolicyId)
+            string PolicyName)
         {
             return this.GetSiteRecoveryClient()
                 .ReplicationPolicies.GetWithHttpMessagesAsync(
-                    PolicyId,
+                    PolicyName,
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult()

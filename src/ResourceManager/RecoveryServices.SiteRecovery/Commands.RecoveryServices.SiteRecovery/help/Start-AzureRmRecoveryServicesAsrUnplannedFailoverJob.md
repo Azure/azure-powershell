@@ -1,47 +1,107 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: AzureRM.RecoveryServices.SiteRecovery
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.recoveryservices.siterecovery/start-azurermrecoveryservicesasrunplannedfailoverjob
 schema: 2.0.0
 ---
 
-# Start-AzureRmRecoveryServicesAsrUnplannedFailoverJob
+# Start-AzureRmRecoveryServicesAsrTestFailoverJob
 
 ## SYNOPSIS
-Starts an unplanned failover operation.
+Starts a test failover operation.
 
 ## SYNTAX
 
 ### ByRPIObject (Default)
 ```
-Start-AzureRmRecoveryServicesAsrUnplannedFailoverJob -ReplicationProtectedItem <ASRReplicationProtectedItem>
- -Direction <String> [-PerformSourceSideAction] [-DataEncryptionPrimaryCertFile <String>]
- [-DataEncryptionSecondaryCertFile <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Start-AzureRmRecoveryServicesAsrTestFailoverJob -ReplicationProtectedItem <ASRReplicationProtectedItem>
+ -Direction <String> [-DataEncryptionPrimaryCertFile <String>] [-DataEncryptionSecondaryCertFile <String>]
+ [-RecoveryPoint <ASRRecoveryPoint>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByRPObject
 ```
-Start-AzureRmRecoveryServicesAsrUnplannedFailoverJob -RecoveryPlan <ASRRecoveryPlan> -Direction <String>
- [-PerformSourceSideAction] [-DataEncryptionPrimaryCertFile <String>]
- [-DataEncryptionSecondaryCertFile <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Start-AzureRmRecoveryServicesAsrTestFailoverJob -RecoveryPlan <ASRRecoveryPlan> -Direction <String>
+ [-DataEncryptionPrimaryCertFile <String>] [-DataEncryptionSecondaryCertFile <String>] [-RecoveryTag <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByRPObjectWithVMNetwork
+```
+Start-AzureRmRecoveryServicesAsrTestFailoverJob -RecoveryPlan <ASRRecoveryPlan> -Direction <String>
+ -VMNetwork <ASRNetwork> [-DataEncryptionPrimaryCertFile <String>] [-DataEncryptionSecondaryCertFile <String>]
+ [-RecoveryTag <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByRPObjectWithAzureVMNetworkId
+```
+Start-AzureRmRecoveryServicesAsrTestFailoverJob -RecoveryPlan <ASRRecoveryPlan> -Direction <String>
+ -AzureVMNetworkId <String> [-DataEncryptionPrimaryCertFile <String>]
+ [-DataEncryptionSecondaryCertFile <String>] [-RecoveryTag <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByRPIObjectWithVMNetwork
+```
+Start-AzureRmRecoveryServicesAsrTestFailoverJob -ReplicationProtectedItem <ASRReplicationProtectedItem>
+ -Direction <String> -VMNetwork <ASRNetwork> [-DataEncryptionPrimaryCertFile <String>]
+ [-DataEncryptionSecondaryCertFile <String>] [-RecoveryPoint <ASRRecoveryPoint>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByRPIObjectWithAzureVMNetworkId
+```
+Start-AzureRmRecoveryServicesAsrTestFailoverJob -ReplicationProtectedItem <ASRReplicationProtectedItem>
+ -Direction <String> -AzureVMNetworkId <String> [-DataEncryptionPrimaryCertFile <String>]
+ [-DataEncryptionSecondaryCertFile <String>] [-RecoveryPoint <ASRRecoveryPoint>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Start-AzureRmRecoveryServicesAsrUnplannedFailoverJob** cmdlet starts the unplanned failover of an Azure Site Recovery replication protected item or recovery plan.
-You can check whether the job succeeds by using the Get-AzureRmRecoveryServicesAsrJob cmdlet.
+The **Start-AzureRmRecoveryServicesAsrTestFailoverJob** cmdlet starts test failover of an Azure Site Recovery replication protected item or recovery plan.
+You can check whether the job succeeded by using the Get-AzureRmRecoveryServicesAsrJob cmdlet.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> $currentJob = Start-AzureRmRecoveryServicesAsrUnplannedFailoverJob -RecoveryPlan $RP -Direction PrimaryToRecovery
+PS C:\> $currentJob = Start-AzureRmRecoveryServicesAsrTestFailoverJob -RecoveryPlan $RP -Direction PrimaryToRecovery -VMNetwork $TestRecoveryNetwork
 ```
 
-Starts the unplanned failover operation for the specified recovery plan using the specified parameters and returns the ASR job used to track the operation.
+Starts the test failover operation for the recovery plan with the specified parameters and returns the ASR job used to track the operation.
 
 ## PARAMETERS
+
+### -AzureVMNetworkId
+Specifies the Azure virtual network ID to connect the test fail over virtual machine(s) to.
+
+```yaml
+Type: String
+Parameter Sets: ByRPObjectWithAzureVMNetworkId, ByRPIObjectWithAzureVMNetworkId
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DataEncryptionPrimaryCertFile
 Specifies the primary certificate file.
@@ -73,23 +133,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
-
-```yaml
-Type: IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Direction
-Specifies the direction of the failover.
+Specifies the failover direction.
 The acceptable values for this parameter are:
 
 - PrimaryToRecovery
@@ -108,13 +153,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PerformSourceSideAction
-Indicates that any source site operations specified in the recovery plan must be attempted to be performed as part of the fail over.
+### -RecoveryPlan
+Specifies an ASR recovery plan object.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: PerformSourceSideActions
+Type: ASRRecoveryPlan
+Parameter Sets: ByRPObject, ByRPObjectWithVMNetwork, ByRPObjectWithAzureVMNetworkId
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -RecoveryPoint
+Specifies a custom recovery point to test failover the protected machine to.
+
+```yaml
+Type: ASRRecoveryPoint
+Parameter Sets: ByRPIObject, ByRPIObjectWithVMNetwork, ByRPIObjectWithAzureVMNetworkId
+Aliases: 
 
 Required: False
 Position: Named
@@ -123,27 +183,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RecoveryPlan
-Specifies an ASR recovery plan object corresponding to the recovery plan on which the failover operation is to be performed.
+### -RecoveryTag
+Specifies the recovery tag to test failover to
 
 ```yaml
-Type: ASRRecoveryPlan
-Parameter Sets: ByRPObject
+Type: String
+Parameter Sets: ByRPObject, ByRPObjectWithVMNetwork, ByRPObjectWithAzureVMNetworkId
 Aliases: 
+Accepted values: Latest, LatestAvailable, LatestAvailableApplicationConsistent
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ReplicationProtectedItem
-Specifies the ASR replication protected item object corresponding to the replication protected item on which the failover operation is to be performed.
+Specifies an ASR replication protected item.
 
 ```yaml
 Type: ASRReplicationProtectedItem
-Parameter Sets: ByRPIObject
+Parameter Sets: ByRPIObject, ByRPIObjectWithVMNetwork, ByRPIObjectWithAzureVMNetworkId
 Aliases: 
 
 Required: True
@@ -153,15 +214,15 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -VMNetwork
+Specifies the Site Recovery virtual machine network to connect the test failover virtual machine(s) to.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
+Type: ASRNetwork
+Parameter Sets: ByRPObjectWithVMNetwork, ByRPIObjectWithVMNetwork
+Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -175,6 +236,21 @@ Shows what would happen if the cmdlet runs. The cmdlet is not run.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -200,5 +276,3 @@ Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRReplicationProtectedIt
 ## RELATED LINKS
 
 [Get-AzureRmRecoveryServicesAsrJob](./Get-AzureRmRecoveryServicesAsrJob.md)
-
-
