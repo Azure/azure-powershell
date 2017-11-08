@@ -1,6 +1,6 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.AnalysisServices.Dataplane.dll-Help.xml
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.analysisservices/add-azureanalysisservicesaccount
 schema: 2.0.0
 ---
 

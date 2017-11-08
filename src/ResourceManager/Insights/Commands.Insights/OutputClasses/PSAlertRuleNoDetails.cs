@@ -13,37 +13,22 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.Monitor.Management.Models;
-using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
     /// <summary>
     /// Wrapps around the RuleGetResponse
     /// </summary>
-    public class PSAlertRuleNoDetails : PSManagementItemDescriptor
+    public class PSAlertRuleNoDetails : PSAlertRule
     {
-        /// <summary>
-        /// Gets or sets the Properties specification
-        /// </summary>
-        public AlertRuleResource Properties { get; set; }
-
-        /// <summary>
-        /// Gets or sets the Tags of the rule
-        /// </summary>
-        public IDictionary<string, string> Tags { get; set; }
-
         /// <summary>
         /// Initializes a new instance of the PSAlertRule class.
         /// </summary>
-        /// <param name="ruleSpec"></param>
+        /// <param name="ruleSpec">The original AlertRuleResource</param>
         public PSAlertRuleNoDetails(AlertRuleResource ruleSpec)
+            :
+            base(ruleSpec)
         {
-            this.Id = ruleSpec.Id;
-            this.Location = ruleSpec.Location;
-            this.Name = ruleSpec.Name;
-
-            this.Properties = ruleSpec;
-            this.Tags = ruleSpec.Tags;
         }
     }
 }

@@ -48,7 +48,6 @@ namespace Microsoft.Azure.Commands.Compute
             Position = 2,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The location.")]
-        [LocationCompleter("Microsoft.Compute/availabilitySets")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 

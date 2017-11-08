@@ -48,21 +48,21 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
             Cmdlet.ExecuteCmdlet();
 
             Cmdlet.SendEmailToSubscriptionAdministrator = false;
-            Cmdlet.SendEmailToSubscriptionCoAdministrators = true;
+            Cmdlet.SendEmailToSubscriptionCoAdministrator = true;
             Cmdlet.ExecuteCmdlet();
 
-            Cmdlet.SendEmailToSubscriptionCoAdministrators = false;
-            Cmdlet.CustomEmails = new string[0];
+            Cmdlet.SendEmailToSubscriptionCoAdministrator = false;
+            Cmdlet.CustomEmail = new string[0];
             Assert.Throws<ArgumentException>(() => Cmdlet.ExecuteCmdlet());
 
-            Cmdlet.CustomEmails = new string[] { "gu@ms.com" };
+            Cmdlet.CustomEmail = new string[] { "gu@ms.com" };
             Cmdlet.ExecuteCmdlet();
 
-            Cmdlet.CustomEmails = new string[] { "gu@ms.com", "ga@sm.net" };
+            Cmdlet.CustomEmail = new string[] { "gu@ms.com", "ga@sm.net" };
             Cmdlet.ExecuteCmdlet();
 
-            Cmdlet.CustomEmails = null;
-            Cmdlet.Webhooks = new WebhookNotification[0];
+            Cmdlet.CustomEmail = null;
+            Cmdlet.Webhook = new WebhookNotification[0];
             Assert.Throws<ArgumentException>(() => Cmdlet.ExecuteCmdlet());
 
             var notification = new WebhookNotification
@@ -71,13 +71,13 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
                 Properties = null
             };
 
-            Cmdlet.Webhooks = new WebhookNotification[] { notification };
+            Cmdlet.Webhook = new WebhookNotification[] { notification };
             Cmdlet.ExecuteCmdlet();
 
             Cmdlet.SendEmailToSubscriptionAdministrator = true;
             Cmdlet.ExecuteCmdlet();
 
-            Cmdlet.SendEmailToSubscriptionCoAdministrators = true;
+            Cmdlet.SendEmailToSubscriptionCoAdministrator = true;
             Cmdlet.ExecuteCmdlet();
         }
     }
