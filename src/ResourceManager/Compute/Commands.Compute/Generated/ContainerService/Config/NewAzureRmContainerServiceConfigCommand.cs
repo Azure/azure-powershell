@@ -37,7 +37,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             Position = 0,
             ValueFromPipelineByPropertyName = true)]
-        [ResourceManager.Common.ArgumentCompleters.LocationCompleter("Microsoft.Compute/containerServices")]
         public string Location { get; set; }
 
         [Parameter(

@@ -172,7 +172,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Location of the resource.")]
-        [LocationCompleter("Microsoft.Storage/storageAccounts")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
