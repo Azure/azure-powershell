@@ -22,13 +22,13 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeAnalyticsAccount", DefaultParameterSetName = BaseParameterSetName),
-     OutputType(typeof(List<DataLakeAnalyticsAccount>), typeof(PSDataLakeAnalyticsAccount))]
+     OutputType(typeof(List<PSDataLakeAnalyticsAccountBasic>), typeof(PSDataLakeAnalyticsAccount))]
     [Alias("Get-AdlAnalyticsAccount")]
     public class GetAzureDataLakeAnalyticsAccount : DataLakeAnalyticsCmdletBase
     {
-        internal const string BaseParameterSetName = "All In Subscription";
-        internal const string ResourceGroupParameterSetName = "All In Resource Group";
-        internal const string AccountParameterSetName = "Specific Account";
+        internal const string BaseParameterSetName = "GetAllInSubscription";
+        internal const string ResourceGroupParameterSetName = "GetByResourceGroup";
+        internal const string AccountParameterSetName = "GetBySpecificAccount";
 
         [Parameter(ParameterSetName = ResourceGroupParameterSetName, ValueFromPipelineByPropertyName = true,
             Position = 0, Mandatory = true,
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                 WriteWarning(Resources.IncorrectOutputTypeWarning);
                 // List all accounts in given resource group if avaliable otherwise all accounts in the subscription
                 WriteObject(DataLakeAnalyticsClient.ListAccounts(ResourceGroupName, null, null, null)
-                    .Select(element => new PSDataLakeAnalyticsAccount(element))
+                    .Select(element => new PSDataLakeAnalyticsAccountBasic(element))
                     .ToList(), true);
             }
         }

@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Tags.dll-Help.xml
+Module Name: AzureRM
 ms.assetid: 726E01DD-D73C-4D4B-8FC0-52767927367C
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.tags/get-azurermtag
 schema: 2.0.0
 ---
 
@@ -13,7 +14,7 @@ Gets predefined Azure tags.
 ## SYNTAX
 
 ```
-Get-AzureRmTag [[-Name] <String>] [-Detailed] [<CommonParameters>]
+Get-AzureRmTag [[-Name] <String>] [-Detailed] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -101,6 +102,21 @@ This command uses the *Detailed* parameter to get detailed information about all
 Using the *Detailed* parameter is the equivalent of using the *Name* parameter for every tag.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Detailed
 Indicates that this operation adds information about tag values to the output.

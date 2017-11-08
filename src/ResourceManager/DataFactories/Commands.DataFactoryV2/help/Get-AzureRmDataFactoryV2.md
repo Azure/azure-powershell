@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.DataFactoryV2.dll-Help.xml
 Module Name: AzureRM.DataFactoryV2
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/get-azurermdatafactoryv2
 schema: 2.0.0
 ---
 
@@ -12,6 +12,12 @@ Gets information about Data Factory.
 
 ## SYNTAX
 
+### BySubscriptionId (Default)
+```
+Get-AzureRmDataFactoryV2 [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ByFactoryName
 ```
 Get-AzureRmDataFactoryV2 [-ResourceGroupName] <String> [[-Name] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -86,7 +92,7 @@ Specifies the name of the data factory about which to get information.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ByFactoryName
 Aliases: DataFactoryName
 
 Required: False
@@ -102,7 +108,7 @@ This cmdlet gets information about data factories that belong to the group this 
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ByFactoryName
 Aliases: 
 
 Required: True

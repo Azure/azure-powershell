@@ -19,6 +19,16 @@
 -->
 ## Current Release
 
+## Version 5.0.0
+* NOTE: This is a breaking change release. Please see the migration guide (https://aka.ms/azps-migration-guide) for a full list of breaking changes introduced.
+* Removed the Obsolete Properties fields in PSDataLakeStoreAccount.cs and its assoicated files
+* Changed one of the two OutputTypes of Get-AzureRmDataLakeStoreAccount
+    - List\<PSDataLakeStoreAccount> to List\<PSDataLakeStoreAccountBasic>
+    - The properties of PSDataLakeStoreAccountBasic is a strict subset of the properties of PSDataLakeStoreAccount
+    - The additional properties that are in PSDataLakeStoreAccount are not returned by the service.  Therefore, this change is to reflect this accurately. These additional properties are still in PSDataLakeStoreAccountBasic, but they are tagged as Obsolete.
+* Add support for online help
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
+
 ## Version 4.4.1
 
 ## Version 4.4.0

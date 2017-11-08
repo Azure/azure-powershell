@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ContainerRegistry.dll-Help.xml
-online version: 
+Module Name: AzureRM.ContainerRegistry
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.containerregistry/get-azurermcontainerregistry
 schema: 2.0.0
 ---
 
@@ -13,12 +14,14 @@ Gets a container registry.
 
 ### ResourceGroupParameterSet
 ```
-Get-AzureRmContainerRegistry [[-ResourceGroupName] <String>] [<CommonParameters>]
+Get-AzureRmContainerRegistry [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### RegistryNameParameterSet
 ```
-Get-AzureRmContainerRegistry [-ResourceGroupName] <String> [-Name] <String> [<CommonParameters>]
+Get-AzureRmContainerRegistry [-ResourceGroupName] <String> [-Name] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -118,6 +121,21 @@ StorageAccountName : anotherregistry154940
 This command gets all the container registries in the subscription.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 Container Registry Name.

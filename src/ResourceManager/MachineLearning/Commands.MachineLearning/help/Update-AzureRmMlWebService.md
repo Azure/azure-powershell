@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.MachineLearning.dll-Help.xml
-online version: 
+Module Name: AzureRM.MachineLearning
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.machinelearning/update-azurermmlwebservice
 schema: 2.0.0
 ---
 
@@ -11,19 +12,20 @@ Updates properties of an existing web service resource.
 
 ## SYNTAX
 
-### Update specific properties of the .
+### UpdateFromParameters
 ```
 Update-AzureRmMlWebService -ResourceGroupName <String> -Name <String> [-Title <String>] [-Description <String>]
  [-IsReadOnly] [-Keys <WebServiceKeys>] [-StorageAccountKey <String>] [-Diagnostics <DiagnosticsConfiguration>]
  [-RealtimeConfiguration <RealtimeConfiguration>] [-Assets <Hashtable>]
  [-Input <ServiceInputOutputSpecification>] [-Output <ServiceInputOutputSpecification>]
- [-Parameters <Hashtable>] [-Package <GraphPackage>] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Parameters <Hashtable>] [-Package <GraphPackage>] [-Force] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Create a new Azure ML webservice from a WebService instance definition.
+### UpdateFromObject
 ```
 Update-AzureRmMlWebService -ResourceGroupName <String> -Name <String> -ServiceUpdates <WebService> [-Force]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -64,8 +66,23 @@ The set of assets (e.g. modules, datasets) that make up the web service.
 
 ```yaml
 Type: Hashtable
-Parameter Sets: Update specific properties of the .
+Parameter Sets: UpdateFromParameters
 Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -80,7 +97,7 @@ This is visible in the service's Swagger API schema.
 
 ```yaml
 Type: String
-Parameter Sets: Update specific properties of the .
+Parameter Sets: UpdateFromParameters
 Aliases: 
 
 Required: False
@@ -95,7 +112,7 @@ The settings that control the diagnostics traces collection for the web service.
 
 ```yaml
 Type: DiagnosticsConfiguration
-Parameter Sets: Update specific properties of the .
+Parameter Sets: UpdateFromParameters
 Aliases: 
 
 Required: False
@@ -125,7 +142,7 @@ The definition for the web service's input(s), provided as a Swagger schema cons
 
 ```yaml
 Type: ServiceInputOutputSpecification
-Parameter Sets: Update specific properties of the .
+Parameter Sets: UpdateFromParameters
 Aliases: 
 
 Required: False
@@ -141,7 +158,7 @@ Once set, the web service can longer be updated, including changing the value of
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: Update specific properties of the .
+Parameter Sets: UpdateFromParameters
 Aliases: 
 
 Required: False
@@ -156,7 +173,7 @@ Updates one or both of the access keys used to authenticate calls to the service
 
 ```yaml
 Type: WebServiceKeys
-Parameter Sets: Update specific properties of the .
+Parameter Sets: UpdateFromParameters
 Aliases: 
 
 Required: False
@@ -186,7 +203,7 @@ The definition for the web service's output(s), provided as a Swagger schema con
 
 ```yaml
 Type: ServiceInputOutputSpecification
-Parameter Sets: Update specific properties of the .
+Parameter Sets: UpdateFromParameters
 Aliases: 
 
 Required: False
@@ -201,7 +218,7 @@ The definition of the graph package that defines this web service.
 
 ```yaml
 Type: GraphPackage
-Parameter Sets: Update specific properties of the .
+Parameter Sets: UpdateFromParameters
 Aliases: 
 
 Required: False
@@ -217,7 +234,7 @@ If no default value is specified, the parameter is considered to be required.
 
 ```yaml
 Type: Hashtable
-Parameter Sets: Update specific properties of the .
+Parameter Sets: UpdateFromParameters
 Aliases: 
 
 Required: False
@@ -232,7 +249,7 @@ Updates for the configuration of the service's realtime endpoint.
 
 ```yaml
 Type: RealtimeConfiguration
-Parameter Sets: Update specific properties of the .
+Parameter Sets: UpdateFromParameters
 Aliases: 
 
 Required: False
@@ -263,7 +280,7 @@ Only non-static fields are modified.
 
 ```yaml
 Type: WebService
-Parameter Sets: Create a new Azure ML webservice from a WebService instance definition.
+Parameter Sets: UpdateFromObject
 Aliases: 
 
 Required: True
@@ -278,7 +295,7 @@ Rotates the access key for the storage account associated with the web service.
 
 ```yaml
 Type: String
-Parameter Sets: Update specific properties of the .
+Parameter Sets: UpdateFromParameters
 Aliases: 
 
 Required: False
@@ -294,7 +311,7 @@ This is visible in the service's Swagger API schema.
 
 ```yaml
 Type: String
-Parameter Sets: Update specific properties of the .
+Parameter Sets: UpdateFromParameters
 Aliases: 
 
 Required: False
@@ -341,7 +358,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### WebService
-
 Parameter 'ServiceUpdates' accepts value of type 'WebService' from the pipeline
 
 ## OUTPUTS

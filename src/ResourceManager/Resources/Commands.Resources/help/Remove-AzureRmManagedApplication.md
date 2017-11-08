@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
 Module Name: AzureRM.Resources
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/remove-azurermmanagedapplication
 schema: 2.0.0
 ---
 
@@ -12,16 +12,16 @@ Removes a managed application
 
 ## SYNTAX
 
-### The managed application name parameter set. (Default)
+### RemoveByNameAndResourceGroup (Default)
 ```
 Remove-AzureRmManagedApplication -Name <String> -ResourceGroupName <String> [-Force] [-ApiVersion <String>]
- [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### The managed application Id parameter set.
+### RemoveById
 ```
 Remove-AzureRmManagedApplication -Id <String> [-Force] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -95,7 +95,7 @@ e.g.
 
 ```yaml
 Type: String
-Parameter Sets: The managed application Id parameter set.
+Parameter Sets: RemoveById
 Aliases: ResourceId
 
 Required: True
@@ -110,7 +110,7 @@ The managed application name.
 
 ```yaml
 Type: String
-Parameter Sets: The managed application name parameter set.
+Parameter Sets: RemoveByNameAndResourceGroup
 Aliases: 
 
 Required: True
@@ -140,7 +140,7 @@ The resource group name.
 
 ```yaml
 Type: String
-Parameter Sets: The managed application name parameter set.
+Parameter Sets: RemoveByNameAndResourceGroup
 Aliases: 
 
 Required: True
@@ -181,15 +181,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### System.String
 
-
 ## OUTPUTS
 
 ### System.Boolean
-
 
 ## NOTES
 

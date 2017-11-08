@@ -1,4 +1,4 @@
----
+﻿---
 Module Name: AzureRM.Batch
 Module Guid: Batch_Cmdlets_D48CF693-4125-4D2D-879
 Download Help Link: http://go.microsoft.com/fwlink/?linkid=390762
