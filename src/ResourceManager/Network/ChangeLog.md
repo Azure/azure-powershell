@@ -25,6 +25,8 @@
     - Get-AzureRmNetworkWatcherReachabilityProvidersList
 * Added cmdlet to get the relative latency score for internet service providers from a specified location to Azure regions
     - Get-AzureRmNetworkWatcherReachabilityReport
+* Add support for online help
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
     
 ## Version 4.4.1
 

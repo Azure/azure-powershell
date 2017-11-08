@@ -1,4 +1,4 @@
----
+﻿---
 Module Name: AzureRM.ServiceFabric
 Module Guid: 60f3ba88-443f-46ff-88a3-318cfd11c1da
 Download Help Link: {{Please enter FwLink manually}}

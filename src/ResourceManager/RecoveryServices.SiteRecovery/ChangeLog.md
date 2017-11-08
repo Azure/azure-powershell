@@ -40,6 +40,8 @@
     - Start-AzureRmRecoveryServicesAsrSwitchProcessServerJob
     - Start-AzureRmRecoveryServicesAsrTestFailoverCleanupJob
     - Update-AzureRmRecoveryServicesAsrMobilityService
+* Add support for online help
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
 
 ## Version 0.1.6
 

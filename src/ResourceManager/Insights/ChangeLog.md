@@ -83,6 +83,8 @@
 * **New-AzureRmAlertRuleWebhook**
     - The parameter Properties has been renamed to Property and the Properties has been added to the alias list
     - Warning message about the future deprecation of the plural parameter names added.
+* Add support for online help
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
     
 ## Version 3.4.1
     * Add-AzureRmLogAlertRule

@@ -155,7 +155,8 @@ PrivateData = @{
 * Add File Share Snapshot Support Feature
     - Add ''SnapshotTime'' parameter to Get-AzureStorageShare
     - Add ''IncludeAllSnapshot'' parameter to Remove-AzureStorageShare
-	'
+* Add support for online help
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet '
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''
