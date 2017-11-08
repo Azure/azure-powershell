@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
     /// <summary>
     /// This attribute will allow the user to autocomplete the -Location parameter of a cmdlet with valid locations (as determined by the list of ResourceTypes given)
     /// </summary>
-    public class LocationCompleterAttribute : ArgumentCompleterAttribute
+    public class LocationCompleterAttribute : Attribute
     {
         private static IDictionary<int, IDictionary<string, ICollection<string>>> _resourceTypeLocationDictionary = new ConcurrentDictionary<int, IDictionary<string, ICollection<string>>>();
         private static readonly object _lock = new object();
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
         /// Example: [Parameter(ParameterSetName = ListByNameInTenantParameterSet, ValueFromPipelineByPropertyName = true, Mandatory = false), LocationCompleter(new string[] { "Microsoft.Batch/operationss" })]
         /// </summary>
         /// <param name="resourceTypes"></param>
-        public LocationCompleterAttribute(params string[] resourceTypes) : base(CreateScriptBlock(resourceTypes))
+        public LocationCompleterAttribute(params string[] resourceTypes)
         {
         }
 
