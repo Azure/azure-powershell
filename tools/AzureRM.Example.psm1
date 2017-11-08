@@ -9,12 +9,38 @@
 $PSDefaultParameterValues.Clear()
 Set-StrictMode -Version Latest
 
-# Import dependencies using required version, if it is allowed
+%IMPORTED-DEPENDENCIES%
+
 if ($PSVersionTable.PSVersion.Major -ge 5)
 {
-%STRICT-DEPENDENCIES%
-}
-else
-{
-%DEPENDENCIES%
+    $ResourceGroupCommands = %RGCCOMMANDS%
+    
+    $CommonAssembly = [Reflection.Assembly]::LoadFrom('.\Microsoft.Azure.Commands.ResourceManager.Common.dll')
+    
+    $ResourceGroupCommands | ForEach-Object {
+        if ($_.Count -ne 0)
+        {
+            Register-ArgumentCompleter -CommandName $_[0] -ParameterName $_[1] -ScriptBlock {
+                param($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameter)
+                
+                $locations = [Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleterAttribute]::GetResourceGroups()
+                $locations | Where-Object { $_ -Like "$wordToComplete*" } | ForEach-Object { [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_) }
+            }
+        } 
+    }
+
+    $locationCompleterCommands = %LCCOMMANDS%
+
+    $locationCompleterCommands | ForEach-Object {
+        if ($_.Count -ne 0)
+        {
+            $locationList = $_[2]
+            Register-ArgumentCompleter -CommandName $_[0] -ParameterName $_[1] -ScriptBlock {
+                param($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameter)
+                
+                $locations = [Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters.LocationCompleterAttribute]::FindLocations($locationList)
+                $locations | Where-Object { $_ -Like "`"$wordToComplete*" } | Sort-Object | ForEach-Object { [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_) }
+            }
+        } 
+    }
 }
