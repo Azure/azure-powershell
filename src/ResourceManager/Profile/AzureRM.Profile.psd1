@@ -155,7 +155,8 @@ PrivateData = @{
     - ```Clear-AzureRmDefault -ResourceGroup```
 - Add-AzureRmEnvironment and Set-AzureRmEnvironment
     - Add the BatchAudience parameter, which allows you to specify the Azure Batch Active Directory audience to use when acquiring authentication tokens for the Batch service.
-'
+* Add support for online help
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser'
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''

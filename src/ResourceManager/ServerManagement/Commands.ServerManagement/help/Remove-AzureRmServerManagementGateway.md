@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ServerManagement.dll-Help.xml
 Module Name: AzureRM
 ms.assetid: 41F8F851-6F9F-4DA4-8CE6-D8C9B7CF68D7
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servermanagement/remove-azurermservermanagementgateway
 schema: 2.0.0
 ---
 

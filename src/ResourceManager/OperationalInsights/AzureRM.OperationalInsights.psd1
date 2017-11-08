@@ -145,7 +145,8 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'Updated for common code changes'
+        ReleaseNotes = '* Add support for online help
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser'
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''

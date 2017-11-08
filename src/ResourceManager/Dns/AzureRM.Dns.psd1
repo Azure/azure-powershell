@@ -113,7 +113,8 @@ PrivateData = @{
         # ReleaseNotes of this module
         ReleaseNotes = '* Support for CAA record types in Azure DNS
    - Supports all operations on CAA record type
-'
+* Add support for online help
+   - Run Get-Help with the -Online parameter to open the online help in your default Internet browser'
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''

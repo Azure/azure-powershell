@@ -1,5 +1,7 @@
 ﻿## 2017.11.8 - Version 5.0.0
 * NOTE: This is a breaking change release. Please see the migration guide (https://aka.ms/azps-migration-guide) for a full list of introduced breaking changes.
+* All cmdlets in AzureRM now support online help
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
 * AnalysisServices
     * Fixed Synchronize-AzureAsInstance command to work with new AsAzure REST API for sync
 * ApiManagement

@@ -26,6 +26,8 @@
     - List\<PSDataLakeStoreAccount> to List\<PSDataLakeStoreAccountBasic>
     - The properties of PSDataLakeStoreAccountBasic is a strict subset of the properties of PSDataLakeStoreAccount
     - The additional properties that are in PSDataLakeStoreAccount are not returned by the service.  Therefore, this change is to reflect this accurately. These additional properties are still in PSDataLakeStoreAccountBasic, but they are tagged as Obsolete.
+* Add support for online help
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
 
 ## Version 4.4.1
 

@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.TrafficManager.dll-Help.xml
 Module Name: AzureRM
 ms.assetid: 5287D4DB-2709-4A3C-97D5-DB494CEEFD18
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.trafficmanager/set-azurermtrafficmanagerendpoint
 schema: 2.0.0
 ---
 

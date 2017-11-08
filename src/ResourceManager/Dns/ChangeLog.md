@@ -22,6 +22,8 @@
 ## Version 4.0.0
 * Support for CAA record types in Azure DNS
    - Supports all operations on CAA record type
+* Add support for online help
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
 
 ## Version 3.4.1
 
