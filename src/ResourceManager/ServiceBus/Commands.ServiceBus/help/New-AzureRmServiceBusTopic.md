@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ServiceBus.dll-Help.xml
-online version: 
+Module Name: AzureRM
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicebus/new-azurermservicebustopic
 schema: 2.0.0
 ---
 
@@ -12,13 +13,12 @@ Creates a new Service Bus topic in  the specified Service Bus namespace.
 ## SYNTAX
 
 ```
-New-AzureRmServiceBusTopic [-ResourceGroup] <String> [-NamespaceName] <String> [-TopicName] <String>
+New-AzureRmServiceBusTopic [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
  -EnablePartitioning <Boolean> [-AutoDeleteOnIdle <String>] [-DefaultMessageTimeToLive <String>]
  [-DuplicateDetectionHistoryTimeWindow <String>] [-EnableBatchedOperations <Boolean>]
- [-EnableExpress <Boolean>] [-EnableSubscriptionPartitioning <Boolean>]
- [-FilteringMessagesBeforePublishing <Boolean>] [-IsAnonymousAccessible <Boolean>] [-IsExpress <Boolean>]
- [-MaxSizeInMegabytes <Int64>] [-RequiresDuplicateDetection <Boolean>] [-SupportOrdering <Boolean>]
- [-SizeInBytes <Int64>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnableExpress <Boolean>] [-MaxSizeInMegabytes <Int64>] [-RequiresDuplicateDetection <Boolean>]
+ [-SupportOrdering <Boolean>] [-SizeInBytes <Int64>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -62,6 +62,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -128,70 +143,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -EnableSubscriptionPartitioning
-Specifies whether to enable subscription partitioning.
-
-```yaml
-Type: Boolean
-Parameter Sets: (All)
-Aliases: 
-Accepted values: TRUE, FALSE
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -FilteringMessagesBeforePublishing
-Indicates whether filtering is enabled for messages before publishing.
-
-```yaml
-Type: Boolean
-Parameter Sets: (All)
-Aliases: 
-Accepted values: TRUE, FALSE
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -IsAnonymousAccessible
-Indicates whether the message allows anonymous access.
-
-```yaml
-Type: Boolean
-Parameter Sets: (All)
-Aliases: 
-Accepted values: TRUE, FALSE
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -IsExpress
-Indicates whether the topic is express enabled.
-
-```yaml
-Type: Boolean
-Parameter Sets: (All)
-Aliases: 
-Accepted values: TRUE, FALSE
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -MaxSizeInMegabytes
 The maximum size of the topic in megabytes, which is the size of memory allocated for the topic.
 
@@ -207,13 +158,28 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -NamespaceName
-The Service Bus namespace name.
+### -Name
+Topic Name.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: TopicName
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Namespace
+Namespace Name.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: NamespaceName
 
 Required: True
 Position: 1
@@ -238,13 +204,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroup
-The name of the resource group.
+### -ResourceGroupName
+The name of the resource group
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: ResourceGroup
 
 Required: True
 Position: 0
@@ -279,21 +245,6 @@ Accepted values: TRUE, FALSE
 
 Required: False
 Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -TopicName
-The Service Bus topic name.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -354,13 +305,11 @@ System.Nullable\`1\[\[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral
 
 ### Microsoft.Azure.Commands.ServiceBus.Models.TopicAttributes
 Name                                : SB-Topic_exampl1
-Location                            : West US
 Id                                  : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1/topics/S
                                       B-Topic_exampl1
 Type                                : Microsoft.ServiceBus/Topic
 AccessedAt                          : 
 AutoDeleteOnIdle                    : 10675199.02:48:05.4775807
-EntityAvailabilityStatus            : 
 CreatedAt                           : 1/20/2017 3:16:42 AM
 CountDetails                        : 
 DefaultMessageTimeToLive            : 10675199.02:48:05.4775807
@@ -368,10 +317,6 @@ DuplicateDetectionHistoryTimeWindow :
 EnableBatchedOperations             : True
 EnableExpress                       : False
 EnablePartitioning                  : True
-EnableSubscriptionPartitioning      : False
-FilteringMessagesBeforePublishing   : False
-IsAnonymousAccessible               : False
-IsExpress                           : False
 MaxSizeInMegabytes                  : 16384
 RequiresDuplicateDetection          : False
 SizeInBytes                         : 0

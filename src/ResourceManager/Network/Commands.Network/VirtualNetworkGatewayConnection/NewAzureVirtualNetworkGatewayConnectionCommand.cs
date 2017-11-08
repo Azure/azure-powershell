@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             // Map to the sdk object
-            var vnetGatewayConnectionModel = Mapper.Map<MNM.VirtualNetworkGatewayConnection>(vnetGatewayConnection);
+            var vnetGatewayConnectionModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualNetworkGatewayConnection>(vnetGatewayConnection);
             vnetGatewayConnectionModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
             // Execute the Create VirtualNetworkConnection call

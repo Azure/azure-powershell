@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
+Module Name: AzureRM.Batch
 ms.assetid: C71C486E-34EB-42B5-B38A-D85B7DAA2F74
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/new-azurebatchpool
 schema: 2.0.0
 ---
 
@@ -15,25 +16,29 @@ Creates a pool in the Batch service.
 ### CloudServiceAndTargetDedicated (Default)
 ```
 New-AzureBatchPool [-Id] <String> -VirtualMachineSize <String> [-DisplayName <String>]
- [-ResizeTimeout <TimeSpan>] [-TargetDedicated <Int32>] [-MaxTasksPerComputeNode <Int32>]
- [-TaskSchedulingPolicy <PSTaskSchedulingPolicy>] [-Metadata <IDictionary>]
+ [-ResizeTimeout <TimeSpan>] [-TargetDedicatedComputeNodes <Int32>] [-TargetLowPriorityComputeNodes <Int32>]
+ [-MaxTasksPerComputeNode <Int32>] [-TaskSchedulingPolicy <PSTaskSchedulingPolicy>] [-Metadata <IDictionary>]
  [-InterComputeNodeCommunicationEnabled] [-StartTask <PSStartTask>]
  [-CertificateReferences <PSCertificateReference[]>]
  [-ApplicationPackageReferences <PSApplicationPackageReference[]>]
+ [-ApplicationLicenses <System.Collections.Generic.List`1[System.String]>]
  [-CloudServiceConfiguration <PSCloudServiceConfiguration>] [-NetworkConfiguration <PSNetworkConfiguration>]
- -BatchContext <BatchAccountContext> [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-UserAccount <PSUserAccount[]>] -BatchContext <BatchAccountContext>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### VirtualMachineAndTargetDedicated
 ```
 New-AzureBatchPool [-Id] <String> -VirtualMachineSize <String> [-DisplayName <String>]
- [-ResizeTimeout <TimeSpan>] [-TargetDedicated <Int32>] [-MaxTasksPerComputeNode <Int32>]
- [-TaskSchedulingPolicy <PSTaskSchedulingPolicy>] [-Metadata <IDictionary>]
+ [-ResizeTimeout <TimeSpan>] [-TargetDedicatedComputeNodes <Int32>] [-TargetLowPriorityComputeNodes <Int32>]
+ [-MaxTasksPerComputeNode <Int32>] [-TaskSchedulingPolicy <PSTaskSchedulingPolicy>] [-Metadata <IDictionary>]
  [-InterComputeNodeCommunicationEnabled] [-StartTask <PSStartTask>]
  [-CertificateReferences <PSCertificateReference[]>]
  [-ApplicationPackageReferences <PSApplicationPackageReference[]>]
+ [-ApplicationLicenses <System.Collections.Generic.List`1[System.String]>]
  [-VirtualMachineConfiguration <PSVirtualMachineConfiguration>]
- [-NetworkConfiguration <PSNetworkConfiguration>] -BatchContext <BatchAccountContext> [-WhatIf] [-Confirm]
+ [-NetworkConfiguration <PSNetworkConfiguration>] [-UserAccount <PSUserAccount[]>]
+ -BatchContext <BatchAccountContext> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -45,8 +50,10 @@ New-AzureBatchPool [-Id] <String> -VirtualMachineSize <String> [-DisplayName <St
  [-InterComputeNodeCommunicationEnabled] [-StartTask <PSStartTask>]
  [-CertificateReferences <PSCertificateReference[]>]
  [-ApplicationPackageReferences <PSApplicationPackageReference[]>]
+ [-ApplicationLicenses <System.Collections.Generic.List`1[System.String]>]
  [-CloudServiceConfiguration <PSCloudServiceConfiguration>] [-NetworkConfiguration <PSNetworkConfiguration>]
- -BatchContext <BatchAccountContext> [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-UserAccount <PSUserAccount[]>] -BatchContext <BatchAccountContext>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### VirtualMachineAndAutoScale
@@ -57,8 +64,10 @@ New-AzureBatchPool [-Id] <String> -VirtualMachineSize <String> [-DisplayName <St
  [-InterComputeNodeCommunicationEnabled] [-StartTask <PSStartTask>]
  [-CertificateReferences <PSCertificateReference[]>]
  [-ApplicationPackageReferences <PSApplicationPackageReference[]>]
+ [-ApplicationLicenses <System.Collections.Generic.List`1[System.String]>]
  [-VirtualMachineConfiguration <PSVirtualMachineConfiguration>]
- [-NetworkConfiguration <PSNetworkConfiguration>] -BatchContext <BatchAccountContext> [-WhatIf] [-Confirm]
+ [-NetworkConfiguration <PSNetworkConfiguration>] [-UserAccount <PSUserAccount[]>]
+ -BatchContext <BatchAccountContext> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -69,7 +78,7 @@ The **New-AzureBatchPool** cmdlet creates a pool in the Azure Batch service unde
 
 ### Example 1: Create a new pool using the TargetDedicated parameter set
 ```
-PS C:\>New-AzureBatchPool -Id "MyPool" -VirtualMachineSize "Small" -OSFamily "4" -TargetOSVersion "*" -TargetDedicated 3 -BatchContext $Context
+PS C:\>New-AzureBatchPool -Id "MyPool" -VirtualMachineSize "Small" -OSFamily "4" -TargetOSVersion "*" -TargetDedicatedComputeNodes 3 -BatchContext $Context
 ```
 
 This command creates a new pool with ID MyPool using the TargetDedicated parameter set.
@@ -84,13 +93,41 @@ PS C:\>New-AzureBatchPool -Id "AutoScalePool" -VirtualMachineSize "Small" -OSFam
 This command creates a new pool with ID AutoScalePool using the AutoScale parameter set.
 The pool is configured to use small virtual machines imaged with the latest operating system version of family four, and the target number of compute nodes are determined by the Autoscale formula.
 
+### Example 3: Create a pool with nodes in a subnet
+```
+PS C:\>$networkConfig = New-Object Microsoft.Azure.Commands.Batch.Models.PSNetworkConfiguration
+PS C:\>$networkConfig.SubnetId = "/subscriptions/{subscription}/resourceGroups/{group}/providers/{provider}/virtualNetworks/{network}/subnets/{subnet}"
+PS C:\>New-AzureBatchPool -Id "AutoScalePool" -VirtualMachineSize "Small" -OSFamily "4" -TargetDedicatedComputeNodes 3 -NetworkConfiguration $networkConfig -BatchContext $Context
+```
+
+### Example 4: Create a pool with custom user accounts
+```
+PS C:\>$userAccount = New-Object Microsoft.Azure.Commands.Batch.Models.PSUserAccount -ArgumentList @("myaccount", "mypassword")
+PS C:\>New-AzureBatchPool -Id "AutoScalePool" -VirtualMachineSize "Small" -OSFamily "4" -TargetDedicatedComputeNodes 3 -UserAccount $userAccount
+```
+
 ## PARAMETERS
+
+### -ApplicationLicenses
+The list of application licenses the Batch service will make available on each compute node in the pool.
+
+```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: (All)
+Aliases: ApplicationLicense
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ApplicationPackageReferences
 ```yaml
 Type: PSApplicationPackageReference[]
 Parameter Sets: (All)
-Aliases: 
+Aliases: ApplicationPackageReference
 
 Required: False
 Position: Named
@@ -132,7 +169,7 @@ Accept wildcard characters: False
 
 ### -BatchContext
 Specifies the **BatchAccountContext** instance that this cmdlet uses to interact with the Batch service.
-To obtain a **BatchAccountContext** object that contains access keys for your subscription, use the Get-AzureRmBatchAccountKeys cmdlet.
+If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
 Type: BatchAccountContext
@@ -153,7 +190,7 @@ The Batch service installs the referenced certificates on each compute node of t
 ```yaml
 Type: PSCertificateReference[]
 Parameter Sets: (All)
-Aliases: 
+Aliases: CertificateReference
 
 Required: False
 Position: Named
@@ -169,6 +206,21 @@ Specifies configuration settings for a pool based on the Azure cloud service pla
 Type: PSCloudServiceConfiguration
 Parameter Sets: CloudServiceAndTargetDedicated, CloudServiceAndAutoScale
 Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -255,6 +307,8 @@ Accept wildcard characters: False
 ```
 
 ### -NetworkConfiguration
+The network configuration for the pool.
+
 ```yaml
 Type: PSNetworkConfiguration
 Parameter Sets: (All)
@@ -298,8 +352,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TargetDedicated
-Specifies the target number of compute nodes to allocate to the pool.
+### -TargetDedicatedComputeNodes
+Specifies the target number of dedicated compute nodes to allocate to the pool.
+
+```yaml
+Type: Int32
+Parameter Sets: CloudServiceAndTargetDedicated, VirtualMachineAndTargetDedicated
+Aliases: TargetDedicated
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetLowPriorityComputeNodes
+Specifies the target number of low-priority compute nodes to allocate to the pool.
 
 ```yaml
 Type: Int32
@@ -318,6 +387,21 @@ Specifies the task scheduling policy, such as the ComputeNodeFillType.
 
 ```yaml
 Type: PSTaskSchedulingPolicy
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAccount
+The list of user accounts to be created on each node in the pool.
+
+```yaml
+Type: PSUserAccount[]
 Parameter Sets: (All)
 Aliases: 
 
@@ -396,7 +480,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### BatchAccountContext
-
 Parameter 'BatchContext' accepts value of type 'BatchAccountContext' from the pipeline
 
 ## OUTPUTS

@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
+Module Name: AzureRM.Resources
 ms.assetid: 98836BC0-AB4F-4F24-88BE-E7DD350B71E8
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/new-azurermadappcredential
 schema: 2.0.0
 ---
 
@@ -15,25 +16,25 @@ Adds a credential to an existing application.
 ### ApplicationObjectIdWithPasswordParameterSet (Default)
 ```
 New-AzureRmADAppCredential -ObjectId <String> -Password <String> [-StartDate <DateTime>] [-EndDate <DateTime>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationObjectIdWithCertValueParameterSet
 ```
 New-AzureRmADAppCredential -ObjectId <String> -CertValue <String> [-StartDate <DateTime>] [-EndDate <DateTime>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationIdWithCertValueParameterSet
 ```
 New-AzureRmADAppCredential -ApplicationId <String> -CertValue <String> [-StartDate <DateTime>]
- [-EndDate <DateTime>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationIdWithPasswordParameterSet
 ```
 New-AzureRmADAppCredential -ApplicationId <String> -Password <String> [-StartDate <DateTime>]
- [-EndDate <DateTime>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -101,6 +102,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

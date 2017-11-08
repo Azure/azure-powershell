@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.Network
                 result = this.NetworkWatcherClient.CheckConnectivity(this.ResourceGroupName, this.NetworkWatcherName, parameters);
             }
 
-            PSConnectivityInformation psResult = Mapper.Map<PSConnectivityInformation>(result);
+            PSConnectivityInformation psResult = NetworkResourceManagerProfile.Mapper.Map<PSConnectivityInformation>(result);
 
             WriteObject(psResult);
         }

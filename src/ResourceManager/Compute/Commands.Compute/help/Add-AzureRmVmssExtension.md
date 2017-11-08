@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 ms.assetid: 7EC166C7-151D-4DA0-9B10-165E735D4F12
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/add-azurermvmssextension
 schema: 2.0.0
 ---
 

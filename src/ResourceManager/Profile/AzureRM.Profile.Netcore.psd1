@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.9.6'
+ModuleVersion = '0.10.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -77,7 +77,8 @@ CmdletsToExport = 'Disable-AzureRmDataCollection', 'Enable-AzureRmDataCollection
                'Set-AzureRmEnvironment', 'Add-AzureRmEnvironment', 
                'Get-AzureRmSubscription', 'Add-AzureRmAccount', 'Get-AzureRmContext', 
                'Set-AzureRmContext', 'Import-AzureRmContext', 'Save-AzureRmContext', 
-               'Get-AzureRmTenant', 'Send-Feedback', 'Resolve-AzureRmError'
+               'Get-AzureRmTenant', 'Send-Feedback', 'Resolve-AzureRmError', 
+               'Set-AzureRmDefault', 'Get-AzureRmDefault', 'Clear-AzureRmDefault'
 
 # Variables to export from this module
 # VariablesToExport = @()

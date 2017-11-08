@@ -58,12 +58,12 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
 
             AzureOperationResponse<
                 ProxyModels.JobStatistics,
-                ProxyModels.JobGetAllJobsLifetimeStatisticsHeaders> response =
+                ProxyModels.JobGetAllLifetimeStatisticsHeaders> response =
                 BatchTestHelpers.CreateJobStatisticsResponse(startTime);
 
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
-                ProxyModels.JobGetAllJobsLifetimeStatisticsOptions,
-                AzureOperationResponse<ProxyModels.JobStatistics, ProxyModels.JobGetAllJobsLifetimeStatisticsHeaders>>(responseToUse: response);
+                ProxyModels.JobGetAllLifetimeStatisticsOptions,
+                AzureOperationResponse<ProxyModels.JobStatistics, ProxyModels.JobGetAllLifetimeStatisticsHeaders>>(responseToUse: response);
 
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 

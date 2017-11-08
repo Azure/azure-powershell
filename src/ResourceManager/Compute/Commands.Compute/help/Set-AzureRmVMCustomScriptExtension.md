@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 ms.assetid: 64AB1BAE-A756-43A8-A40F-10B746EA0946
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/set-azurermvmcustomscriptextension
 schema: 2.0.0
 ---
 
@@ -104,7 +104,8 @@ Accept wildcard characters: False
 ```
 
 ### -FileName
-Specifies the name of the script file.
+Specifies the name of the script file. If the file is stored in Azure Blob storage, the file name
+value is case-senstive. File names of files stored in Azure File storage are not case-senstive.
 
 ```yaml
 Type: String[]

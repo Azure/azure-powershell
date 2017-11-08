@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Consumption.dll-Help.xml
-online version: 
+Module Name: AzureRM.Consumption
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.consumption/get-azurermconsumptionusagedetail
 schema: 2.0.0
 ---
 
@@ -14,19 +15,21 @@ Get usage details of the subscription.
 ### Subscription (Default)
 ```
 Get-AzureRmConsumptionUsageDetail [-MaxCount <Int32>] [-IncludeMeterDetails] [-IncludeAdditionalProperties]
- [-StartDate <DateTime>] [-EndDate <DateTime>] [<CommonParameters>]
+ [-StartDate <DateTime>] [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Invoice
 ```
 Get-AzureRmConsumptionUsageDetail -InvoiceName <String> [-MaxCount <Int32>] [-IncludeMeterDetails]
- [-IncludeAdditionalProperties] [-StartDate <DateTime>] [-EndDate <DateTime>] [<CommonParameters>]
+ [-IncludeAdditionalProperties] [-StartDate <DateTime>] [-EndDate <DateTime>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### BillingPeriod
 ```
 Get-AzureRmConsumptionUsageDetail -BillingPeriodName <String> [-MaxCount <Int32>] [-IncludeMeterDetails]
- [-IncludeAdditionalProperties] [-StartDate <DateTime>] [-EndDate <DateTime>] [<CommonParameters>]
+ [-IncludeAdditionalProperties] [-StartDate <DateTime>] [-EndDate <DateTime>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -66,6 +69,21 @@ Parameter Sets: BillingPeriod
 Aliases: 
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
