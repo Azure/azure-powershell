@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.MarketplaceOrdering.dll-Help.xml
 Module Name: AzureRM.MarketplaceOrdering
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.marketplaceordering/get-azurermmarketplaceterms
 schema: 2.0.0
 ---
 

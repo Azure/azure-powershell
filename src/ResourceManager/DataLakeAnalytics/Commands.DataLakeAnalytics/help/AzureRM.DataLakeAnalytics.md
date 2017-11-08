@@ -1,4 +1,4 @@
----
+﻿---
 Module Name: AzureRM.DataLakeAnalytics
 Module Guid: eca73aa1-a68f-4ceb-9775-70759316a57b
 Download Help Link: None

@@ -97,11 +97,29 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions.Properties
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} is invalid or empty..
+        /// </summary>
+        internal static string InvalidOrEmptyArgumentMessage {
+            get {
+                return ResourceManager.GetString("InvalidOrEmptyArgumentMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please connect to internet before executing this cmdlet.
         /// </summary>
         internal static string NoInternetConnection {
             get {
                 return ResourceManager.GetString("NoInternetConnection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Path {0} doesn&apos;t exist..
+        /// </summary>
+        internal static string PathDoesNotExist {
+            get {
+                return ResourceManager.GetString("PathDoesNotExist", resourceCulture);
             }
         }
         
@@ -246,6 +264,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions.Properties
         internal static string SessionNotInitialized {
             get {
                 return ResourceManager.GetString("SessionNotInitialized", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (x86).
+        /// </summary>
+        internal static string x86InProgramFiles {
+            get {
+                return ResourceManager.GetString("x86InProgramFiles", resourceCulture);
             }
         }
     }

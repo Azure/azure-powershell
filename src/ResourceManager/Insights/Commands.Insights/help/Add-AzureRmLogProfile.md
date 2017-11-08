@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
 Module Name: AzureRM.Insights
 ms.assetid: 18D5B95E-4CF1-4C79-AE8B-9F4DA49B46A9
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.insights/add-azurermlogprofile
 schema: 2.0.0
 ---
 
@@ -10,6 +10,18 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Creates a new activity log profile. This profile is used to either archive the activity log to an Azure storage account or stream it to an Azure event hub in the same subscription. 
+
+## SYNTAX
+
+```
+Add-AzureRmLogProfile -Name <String> [-StorageAccountId <String>] [-ServiceBusRuleId <String>]
+ [-RetentionInDays <Int32>] -Location <System.Collections.Generic.List`1[System.String]>
+ [-Category <System.Collections.Generic.List`1[System.String]>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+## DESCRIPTION
+The **Add-AzureRmLogProfile** cmdlet creates a log profile.
 
 - **Storage Account** - Only standard storage account (premium storage account is not supported) is supported. It could either be of type ARM or Classic. If it's logged to a storage account, the cost of storing the activity log is billed at normal standard storage rates. There could be only one log profile per subscription consequentially only one storage account per subscription can be used to export activity log. 
 
@@ -19,17 +31,7 @@ In the activity log, events can pertain to a region or could be "Global". Global
 
 **Note** :- **Failing to set "Global" in the locations will result in a majority of activity log not getting exported.** 
 
-## SYNTAX
-
-```
-Add-AzureRmLogProfile -Name <String> [-StorageAccountId <String>] [-ServiceBusRuleId <String>]
- [-RetentionInDays <Int32>] -Locations <System.Collections.Generic.List`1[System.String]>
- [-Categories <System.Collections.Generic.List`1[System.String]>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-## DESCRIPTION
-The **Add-AzureRmLogProfile** cmdlet creates a log profile.
+This cmdlet implements the ShouldProcess pattern, i.e. it might request confirmation from the user before actually creating, modifying, or removing the resource.
 
 ## EXAMPLES
 
@@ -40,13 +42,13 @@ Add-AzureRmLogProfile -Locations "Global","West US" -Name ExportLogProfile -Stor
 
 ## PARAMETERS
 
-### -Categories
+### -Category
 Specifies the list of categories.
 
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
-Aliases: 
+Aliases: Categories
 
 Required: False
 Position: Named
@@ -70,7 +72,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Locations
+### -Location
 Specifies the location of the log profile.
 Valid values: Run below cmdlet to get the latest list of locations. 
 
@@ -79,7 +81,7 @@ Get-AzureLocation | Select DisplayName
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
-Aliases: 
+Aliases: Locations
 
 Required: True
 Position: Named
@@ -109,7 +111,7 @@ Specifies the retention policy, in days. This is the number of days the logs are
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

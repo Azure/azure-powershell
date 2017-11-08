@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: AzureRM.RecoveryServices.SiteRecovery
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.recoveryservices.siterecovery/get-azurermrecoveryservicesasrprotectableitem
 schema: 2.0.0
 ---
 
@@ -42,22 +42,53 @@ PS C:\> $ProtectableItems = Get-AzureRmRecoveryServicesAsrProtectableItem -Prote
 
 Gets all the protectable items in specified ASR protection container.
 
-## PARAMETERS
-
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
-
-```yaml
-Type: IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+### Example 2
 ```
+PS C:\> Get-ASRProtectableItem -ProtectionContainer $pc -FriendlyName $piFriendlyName
+
+Disks                         : {}
+FabricObjectId                :
+FabricSpecificVMDetails       : Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRVMWareSpecificVMDetails
+FriendlyName                  : V2A-W2K12-400
+ID                            : /Subscriptions/xxxxxxxxxxxx/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationFabrics/d011a5abf48190235963ee3a88ad188ee6bca8a4c6cd0c8d7ce5d439aa77ffd9/replicationProt
+                                ectionContainers/cloud_5dc96260-9f00-42e4-aca7-24ad27fc2078/replicationProtectableItems/22d47502-7df0-11e7-9373-0050568f2e8f
+Name                          : 22d47502-7df0-11e7-9373-0050568f2e8f
+OS                            : WINDOWS
+OSDiskId                      :
+OSDiskName                    :
+ProtectionContainerId         : cloud_5dc96260-9f00-42e4-aca7-24ad27fc2078
+ProtectionReadinessErrors     :
+ProtectionStatus              : Unprotected
+ReplicationProtectedItemId    :
+SupportedReplicationProviders : {InMage, InMageAzureV2}
+```
+
+Get the protectable items in specified ASR protection container and with given friendly name.
+
+### Example 3
+```
+PS C:\> Get-ASRProtectableItem -ProtectionContainer $pc -Name $piName
+
+Disks                         : {}
+FabricObjectId                :
+FabricSpecificVMDetails       : Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRVMWareSpecificVMDetails
+FriendlyName                  : V2A-W2K12-400
+ID                            : /Subscriptions/xxxxxxxxxxxx/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationFabrics/d011a5abf48190235963ee3a88ad188ee6bca8a4c6cd0c8d7ce5d439aa77ffd9/replicationProt
+                                ectionContainers/cloud_5dc96260-9f00-42e4-aca7-24ad27fc2078/replicationProtectableItems/22d47502-7df0-11e7-9373-0050568f2e8f
+Name                          : 22d47502-7df0-11e7-9373-0050568f2e8f
+OS                            : WINDOWS
+OSDiskId                      :
+OSDiskName                    :
+ProtectionContainerId         : cloud_5dc96260-9f00-42e4-aca7-24ad27fc2078
+ProtectionReadinessErrors     :
+ProtectionStatus              : Unprotected
+ReplicationProtectedItemId    :
+SupportedReplicationProviders : {InMage, InMageAzureV2}
+```
+
+Gets all the protectable items in specified ASR protection container.
+
+## PARAMETERS
 
 ### -FriendlyName
 Specifies the friendly name of the ASR protectable item.
@@ -101,6 +132,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

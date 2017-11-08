@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Insights.Properties;
-using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.Monitor.Management.Models;
 using System;
 using System.Management.Automation;
@@ -24,7 +23,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
     /// Create an Autoscale rule
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRmAutoscaleRule"), OutputType(typeof(ScaleRule))]
-    public class NewAzureRmAutoscaleRuleCommand : AzureRMCmdlet
+    public class NewAzureRmAutoscaleRuleCommand : MonitorCmdletBase
     {
         private readonly TimeSpan MinimumTimeWindow = TimeSpan.FromMinutes(5);
         private readonly TimeSpan MinimumTimeGrain = TimeSpan.FromMinutes(1);
@@ -108,6 +107,12 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         public string ScaleActionValue { get; set; }
 
         #endregion
+
+        /// <summary>
+        /// Executes the Cmdlet. This is a callback function to simplify the exception handling
+        /// </summary>
+        protected override void ProcessRecordInternal()
+        { }
 
         /// <summary>
         /// Execute the cmdlet

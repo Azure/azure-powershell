@@ -176,6 +176,8 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
                     result.TP = 32;
                     break;
                 case "Standard_DS1_v2":
+                case "Standard_D2s_v3":
+                case "Standard_E2s_v3":
                     result.HasSLA = true;
                     result.IOPS = 3200;
                     result.TP = 48;
@@ -186,6 +188,8 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
                     result.TP = 64;
                     break;
                 case "Standard_DS2_v2":
+                case "Standard_D4s_v3":
+                case "Standard_E4s_v3":
                     result.HasSLA = true;
                     result.IOPS = 6400;
                     result.TP = 96;
@@ -196,6 +200,8 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
                     result.TP = 128;
                     break;
                 case "Standard_DS3_v2":
+                case "Standard_D8s_v3":
+                case "Standard_E8s_v3":
                     result.HasSLA = true;
                     result.IOPS = 12800;
                     result.TP = 192;
@@ -206,11 +212,14 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
                     result.TP = 256;
                     break;
                 case "Standard_DS4_v2":
+                case "Standard_D16s_v3":
+                case "Standard_E16s_v3":
                     result.HasSLA = true;
                     result.IOPS = 25600;
                     result.TP = 384;
                     break;
                 case "Standard_DS5_v2":
+                case "Standard_D32s_v3":
                     result.HasSLA = true;
                     result.IOPS = 51200;
                     result.TP = 768;
@@ -251,6 +260,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
                     result.TP = 512;
                     break;
                 case "Standard_DS14_v2":
+                case "Standard_E32s_v3":
                     result.HasSLA = true;
                     result.IOPS = 51200;
                     result.TP = 768;
@@ -286,6 +296,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
                     result.TP = 2000;
                     break;
                 case "Standard_M64ms":
+                case "Standard_M64s":
                     result.HasSLA = true;
                     result.IOPS = 40000;
                     result.TP = 1000;
@@ -294,6 +305,12 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
                     result.HasSLA = true;
                     result.IOPS = 80000;
                     result.TP = 2000;
+                    break;
+                case "Standard_E64s_v3":
+                case "Standard_D64s_v3":
+                    result.HasSLA = true;
+                    result.IOPS = 80000;
+                    result.TP = 1200;
                     break;
                 default:
                     break;

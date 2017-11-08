@@ -1,4 +1,4 @@
----
+﻿---
 Module Name: AzureRM.StreamAnalytics
 Module Guid: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 Download Help Link: {{Please enter FwLink manually}}

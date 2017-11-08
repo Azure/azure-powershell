@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
 Module Name: AzureRM.Insights
 ms.assetid: A70F4C03-E842-45D5-9323-DC5B14B569F1
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.insights/get-azurermautoscalehistory
 schema: 2.0.0
 ---
 
@@ -41,7 +41,6 @@ CorrelationId        : ac5b03ca-05d4-4811-9c27-0314a145f785
 Description          : The autoscale engine attempting to scale resource '/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deb
                        a10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/serverFarms/DefaultServerFarm'
                        from 1 instances count to 2 instances count. 
-EventChannels        : Admin, Operation
 EventDataId          : c554f7ed-514c-449c-9338-13e15b4b56a3
 EventName            : AutoscaleAction
 EventSource          : microsoft.insights/autoscalesettings
@@ -292,7 +291,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[Microsoft.Azure.Commands.Insights.OutputClasses.IPSEventData]
+### List<Microsoft.Azure.Commands.Insights.OutputClasses.PSEventData>
 
 ## NOTES
 
