@@ -23,12 +23,12 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
             if (SubscriptionId != null)
             {
                 var response = AzureReservationAPIClient.GetCatalog(SubscriptionId).Select(x => new PSCatalog(x));
-                WriteObject(response);
+                WriteObject(response, true);
             }
             else
             {
                 var response = AzureReservationAPIClient.GetCatalog(DefaultContext.Subscription.Id).Select(x => new PSCatalog(x));
-                WriteObject(response);
+                WriteObject(response, true);
             }
         }
     }

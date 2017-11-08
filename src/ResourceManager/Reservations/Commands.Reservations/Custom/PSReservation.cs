@@ -32,8 +32,6 @@ namespace Microsoft.Azure.Commands.Reservations.Models
 
         public string ProvisioningState { get; set; }
 
-        public string ProvisioningSubState { get; set; }
-
         public DateTime? EffectiveDateTime { get; set; }
 
         public DateTime? LastUpdatedDateTime { get; set; }
@@ -111,26 +109,6 @@ namespace Microsoft.Azure.Commands.Reservations.Models
             return "StatusCode: " + ExtendedStatusInfo.StatusCode + "\n"
                 + "Message: " + ExtendedStatusInfo.Message;
         }
-        /*
-        public string PrintScopes()
-        {
-            /*
-            string builder = "";
-            for(int i = 0; i < properties.AppliedScopes.Count; i++)
-            {
-                builder += "\n\t" + properties.AppliedScopes[i];
-            }
-            return builder;
-            return Properties.AppliedScopes[0];
-        }*/
-
-        /*public string PrintProperties()
-        {
-            return (Properties.AppliedScopes != null ? "\nApplied Scopes: " + PrintScopes() : "")
-                + (Properties.AppliedScopeType != null ? "\nApplied Scope Type: " + Properties.AppliedScopeType : "")
-                + (Properties.Quantity != null ? "\nQuantity:" + Properties.Quantity.ToString() : "")
-                + (Properties.ProvisioningState != null ? "\nProvisioning State: " + Properties.ProvisioningState : "");
-        }*/
 
         public PSReservation(ReservationResponse Reservation)
         {
@@ -148,7 +126,6 @@ namespace Microsoft.Azure.Commands.Reservations.Models
                 AppliedScopeType = Reservation.Properties.AppliedScopeType;
                 Quantity = Reservation.Properties.Quantity == null ? "" : Reservation.Properties.Quantity.ToString();
                 ProvisioningState = Reservation.Properties.ProvisioningState;
-                ProvisioningSubState = Reservation.Properties.ProvisioningSubState;
                 EffectiveDateTime = Reservation.Properties.EffectiveDateTime;
                 LastUpdatedDateTime = Reservation.Properties.LastUpdatedDateTime;
                 ExpiryDate = Reservation.Properties.ExpiryDate;

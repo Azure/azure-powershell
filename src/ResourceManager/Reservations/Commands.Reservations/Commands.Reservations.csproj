@@ -34,25 +34,10 @@
     <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
     <DelaySign>true</DelaySign>
   </PropertyGroup>
+  <Import Project="..\..\..\..\tools\Common.Dependencies.targets" />
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Common">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Azure.Common.NetFramework">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Microsoft.Rest.ClientRuntime.2.3.8\lib\net452\Microsoft.Rest.ClientRuntime.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Rest.ClientRuntime.Azure, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Microsoft.Rest.ClientRuntime.Azure.3.3.8\lib\net452\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Microsoft.Azure.Management.Reservations">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Reservations.1.0.0-preview\lib\net452\Microsoft.Azure.Management.Reservations.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration.Install" />
@@ -86,44 +71,6 @@
     <Compile Include="Custom\PSReservationPage.cs" />
     <Compile Include="Custom\PSReservationOrderPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reservations\AzureReservationAPIClient.cs" />
-    <Compile Include="Reservations\AzureReservationAPIClientExtensions.cs" />
-    <Compile Include="Reservations\IAzureReservationAPIClient.cs" />
-    <Compile Include="Reservations\IOperationOperations.cs" />
-    <Compile Include="Reservations\IReservationOperations.cs" />
-    <Compile Include="Reservations\IReservationOrderOperations.cs" />
-    <Compile Include="Reservations\Models\AppliedReservationList.cs" />
-    <Compile Include="Reservations\Models\AppliedReservations.cs" />
-    <Compile Include="Reservations\Models\AuthorizationProperties.cs" />
-    <Compile Include="Reservations\Models\Catalog.cs" />
-    <Compile Include="Reservations\Models\Error.cs" />
-    <Compile Include="Reservations\Models\ErrorException.cs" />
-    <Compile Include="Reservations\Models\ExtendedErrorInfo.cs" />
-    <Compile Include="Reservations\Models\ExtendedStatusInfo.cs" />
-    <Compile Include="Reservations\Models\Kind.cs" />
-    <Compile Include="Reservations\Models\MergeRequest.cs" />
-    <Compile Include="Reservations\Models\OperationDisplay.cs" />
-    <Compile Include="Reservations\Models\OperationResponse.cs" />
-    <Compile Include="Reservations\Models\Page.cs" />
-    <Compile Include="Reservations\Models\Patch.cs" />
-    <Compile Include="Reservations\Models\Provider.cs" />
-    <Compile Include="Reservations\Models\ProviderResourceType.cs" />
-    <Compile Include="Reservations\Models\ReservationMergeProperties.cs" />
-    <Compile Include="Reservations\Models\ReservationOrderResponse.cs" />
-    <Compile Include="Reservations\Models\ReservationProperties.cs" />
-    <Compile Include="Reservations\Models\ReservationResponse.cs" />
-    <Compile Include="Reservations\Models\ReservationSplitProperties.cs" />
-    <Compile Include="Reservations\Models\Resourceprovidertype.cs" />
-    <Compile Include="Reservations\Models\SkuCapability.cs" />
-    <Compile Include="Reservations\Models\SkuName.cs" />
-    <Compile Include="Reservations\Models\SkuRestriction.cs" />
-    <Compile Include="Reservations\Models\SplitRequest.cs" />
-    <Compile Include="Reservations\OperationOperations.cs" />
-    <Compile Include="Reservations\OperationOperationsExtensions.cs" />
-    <Compile Include="Reservations\ReservationOperations.cs" />
-    <Compile Include="Reservations\ReservationOperationsExtensions.cs" />
-    <Compile Include="Reservations\ReservationOrderOperations.cs" />
-    <Compile Include="Reservations\ReservationOrderOperationsExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
@@ -152,7 +99,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="MSSharedLibKey.snk" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
