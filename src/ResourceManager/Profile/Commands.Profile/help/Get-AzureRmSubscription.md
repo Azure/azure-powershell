@@ -35,9 +35,10 @@ access.
 ```
 PS C:\>Get-AzureRmSubscription
 
-Subscription Name : Contoso Subscription 1
-SubscriptionId    : xxxx-xxxx-xxxx-xxxx
-TenantId          : yyyy-yyyy-yyyy-yyyy
+Name     : Contoso Subscription 1
+Id       : xxxx-xxxx-xxxx-xxxx
+TenantId : yyyy-yyyy-yyyy-yyyy
+State    : Enabled
 ```
 
 This command gets all subscriptions in all tenants that are authorized for
@@ -47,13 +48,15 @@ the current account.
 ```
 PS C:\>Get-AzureRmSubscription -TenantId "xxxx-xxxx-xxxx-xxxx"
 
-Subscription Name : Contoso Subscription 1
-SubscriptionId    : yyyy-yyyy-yyyy-yyyy
-TenantId          : xxxx-xxxx-xxxx-xxxx
+Name     : Contoso Subscription 1
+Id       : yyyy-yyyy-yyyy-yyyy
+TenantId : xxxx-xxxx-xxxx-xxxx
+State    : Enabled
 
-Subscription Name : Contoso Subscription 2
-SubscriptionId    : yyyy-yyyy-yyyy-yyyy
-TenantId          : xxxx-xxxx-xxxx-xxxx
+Name     : Contoso Subscription 2
+Id       : yyyy-yyyy-yyyy-yyyy
+TenantId : xxxx-xxxx-xxxx-xxxx
+State    : Enabled
 ```
 
 List all subscriptions in the given tenant that are authorized for the
@@ -63,13 +66,15 @@ current account.
 ```
 PS C:\>Get-AzureRmSubscription
 
-Subscription Name : Contoso Subscription 1
-SubscriptionId    : yyyy-yyyy-yyyy-yyyy
-TenantId          : xxxx-xxxx-xxxx-xxxx
+Name     : Contoso Subscription 1
+Id       : yyyy-yyyy-yyyy-yyyy
+TenantId : xxxx-xxxx-xxxx-xxxx
+State    : Enabled
 
-Subscription Name : Contoso Subscription 2
-SubscriptionId    : yyyy-yyyy-yyyy-yyyy
-TenantId          : xxxx-xxxx-xxxx-xxxx
+Name     : Contoso Subscription 2
+Id       : yyyy-yyyy-yyyy-yyyy
+TenantId : xxxx-xxxx-xxxx-xxxx
+State    : Enabled
 ```
 
 This command gets all subscriptions in the current tenant that are
@@ -77,11 +82,14 @@ authorized for the current user.
 
 ### Example 4: Change the current context to use a specific subscription
 ```
-PS C:\>Get-AzureRmSubscription -SubscriptionId "xxxx-xxxx-xxxx-xxxx" -TenantId "yyyy-yyyy-yyyy-yyyy" | Set-AzureRmContext
+PS C:\>Get-AzureRmSubscription -SubscriptionId "xxxx-xxxx-xxxx-xxxx" -TenantId "yyyy-yyyy-yyyy-yyyy" | Select @{n='SubscriptionId';e={$_.Id}} | Set-AzureRmContext
 
-Subscription Name : Contoso Subscription 1
-SubscriptionId    : xxxx-xxxx-xxxx-xxxx
-TenantId          : yyyy-yyyy-yyyy-yyyy
+Environment           : AzureCloud
+Account               : user@example.com
+TenantId              : yyyy-yyyy-yyyy-yyyy
+SubscriptionId        : xxxx-xxxx-xxxx-xxxx
+SubscriptionName      : Contoso Subscription 1
+CurrentStorageAccount : 
 ```
 
 This command gets the specified subscription, and then sets the current
