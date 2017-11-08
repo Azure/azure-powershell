@@ -34,14 +34,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             string skipToken = default(string))
         {
             Func<RestAzureNS.IPage<ProtectionContainerResource>> listAsync =
-                () => BmsAdapter.Client.ProtectionContainers.ListWithHttpMessagesAsync(
+                () => BmsAdapter.Client.BackupProtectionContainers.ListWithHttpMessagesAsync(
                     BmsAdapter.GetResourceName(),
                     BmsAdapter.GetResourceGroupName(),
                     queryFilter,
                     cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
 
             Func<string, RestAzureNS.IPage<ProtectionContainerResource>> listNextAsync =
-                nextLink => BmsAdapter.Client.ProtectionContainers.ListNextWithHttpMessagesAsync(
+                nextLink => BmsAdapter.Client.BackupProtectionContainers.ListNextWithHttpMessagesAsync(
                     nextLink,
                     cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
 
@@ -54,18 +54,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <param name="queryParams">Query parameters</param>
         /// <returns>List of backup engines</returns>
         public IEnumerable<BackupEngineBaseResource> ListBackupEngines(
-            ODataQuery<BMSBackupEngineQueryObject> queryParams)
+            ODataQuery<BMSBackupEnginesQueryObject> queryParams)
         {
             queryParams.Top = 200;
             Func<RestAzureNS.IPage<BackupEngineBaseResource>> listAsync =
-                () => BmsAdapter.Client.BackupEngines.GetWithHttpMessagesAsync(
+                () => BmsAdapter.Client.BackupEngines.ListWithHttpMessagesAsync(
                     BmsAdapter.GetResourceName(),
                     BmsAdapter.GetResourceGroupName(),
                     queryParams,
                     cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
 
             Func<string, RestAzureNS.IPage<BackupEngineBaseResource>> listNextAsync =
-                nextLink => BmsAdapter.Client.BackupEngines.GetNextWithHttpMessagesAsync(
+                nextLink => BmsAdapter.Client.BackupEngines.ListNextWithHttpMessagesAsync(
                     nextLink,
                     cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
             var listResponse = HelperUtils.GetPagedList(listAsync, listNextAsync);
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             string resourceName = BmsAdapter.GetResourceName();
             string resourceGroupName = BmsAdapter.GetResourceGroupName();
 
-            var response = BmsAdapter.Client.ProtectionContainers.UnregisterWithHttpMessagesAsync(
+            var response = RSAdapter.Client.RegisteredIdentities.DeleteWithHttpMessagesAsync(
                 resourceGroupName,
                 resourceName,
                 containerName,

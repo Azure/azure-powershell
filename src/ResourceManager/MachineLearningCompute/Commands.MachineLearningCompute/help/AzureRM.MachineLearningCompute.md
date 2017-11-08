@@ -1,4 +1,4 @@
----
+﻿---
 Module Name: AzureRM.MachineLearningCompute
 Module Guid:
 Download Help Link:
