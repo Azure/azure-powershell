@@ -107,8 +107,8 @@ function Test-CreateTaskCollection
     $envSettings.Add($env2)
 
     $numInstances = 3
-    $multiInstanceSettings = New-Object Microsoft.Azure.Commands.Batch.Models.PSMultiInstanceSettings -ArgumentList @($numInstances)
-    $multiInstanceSettings.CoordinationCommandLine = $coordinationCommandLine = "cmd /c echo coordinating"
+    $multiInstanceSettings = New-Object Microsoft.Azure.Commands.Batch.Models.PSMultiInstanceSettings -ArgumentList @("cmd /c echo coordinating", $numInstances)
+    $coordinationCommandLine = $multiInstanceSettings.CoordinationCommandLine
     $multiInstanceSettings.CommonResourceFiles = New-Object System.Collections.Generic.List``1[Microsoft.Azure.Commands.Batch.Models.PSResourceFile]
     $commonResourceBlob = "https://common.blob.core.windows.net/"
     $commonResourceFile = "common.exe"

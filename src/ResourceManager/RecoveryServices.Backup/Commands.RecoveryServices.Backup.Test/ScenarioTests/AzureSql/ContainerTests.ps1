@@ -12,7 +12,7 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-function Test-GetAzureSqlContainer
+function Test-AzureSqlGetContainers
 {
 	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "sqlpaasrg" -Name "sqlpaasrn";
 	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
@@ -28,7 +28,7 @@ function Test-GetAzureSqlContainer
 	Assert-AreEqual $namedContainer.Name "Sql;sqlpaasrg;sqlpaasserver";
 }
 
-function Test-UnregisterAzureSqlContainer
+function Test-AzureSqlUnregisterContainer
 {
 	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "sqlpaasrg" -Name "sqlpaasrn";
 	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;

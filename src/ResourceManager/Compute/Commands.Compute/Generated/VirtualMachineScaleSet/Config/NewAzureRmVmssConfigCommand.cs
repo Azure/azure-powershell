@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             Position = 5,
             ValueFromPipelineByPropertyName = true)]
-        public Int64? SkuCapacity { get; set; }
+        public int? SkuCapacity { get; set; }
 
         [Parameter(
             Mandatory = false,
