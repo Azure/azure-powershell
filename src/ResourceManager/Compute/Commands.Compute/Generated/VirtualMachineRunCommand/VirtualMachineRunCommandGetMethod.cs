@@ -166,7 +166,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false)]
         [AllowNull]
-        [ResourceManager.Common.ArgumentCompleters.LocationCompleter("Microsoft.Compute/locations/runCommands")]
         public string Location { get; set; }
 
         [Parameter(
