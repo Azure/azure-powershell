@@ -29,8 +29,8 @@ function Test-GetCatalog
 		Assert-NotNull $item.Name
 		Assert-NotNull $item.Tier
 		Assert-NotNull $item.Size
-		Assert-NotNull $item.Terms
-		Assert-NotNull $item.Locations
+		Assert-True { $item.Terms.Count -gt 0 }
+		Assert-True { $item.Locations.Count -gt 0 }
 	}
 }
 
@@ -42,10 +42,13 @@ function Test-GetReservationOrderId
 {
 	$appliedReservations = Get-AzureRmReservationOrderId -SubscriptionId $subscriptionId
 
-	Assert-NotNull $appliedReservations.Id
-	Assert-NotNull $appliedReservations.Name
-	Assert-NotNull $appliedReservations.Type
-	Assert-NotNull $appliedReservations.ReservationOrderIds
+	$name = "default"
+	$type = "Microsoft.Capacity/AppliedReservations"
+	$id = "/subscriptions/" + $subscriptionId + "/providers/microsoft.capacity/AppliedReservations/default"
+
+	Assert-AreEqual $id $appliedReservations.Id
+	Assert-AreEqual $name $appliedReservations.Name
+	Assert-AreEqual $type $appliedReservations.Type
 }
 
 <#
@@ -60,7 +63,7 @@ function Test-SplitReservation
 	Foreach ($splitItem in $splitResult)
 	{
 		Assert-NotNull $splitItem
-		Assert-NotNull $splitItem.Etag
+		Assert-True { $splitItem.Etag -gt 0}
 		Assert-NotNull $splitItem.Id
 		Assert-NotNull $splitItem.Name
 		Assert-NotNull $splitItem.Sku
@@ -81,7 +84,7 @@ function Test-MergeReservation
 	Foreach ($mergeItem in $mergeResult)
 	{
 		Assert-NotNull $mergeItem
-		Assert-NotNull $mergeItem.Etag
+		Assert-True { $mergeItem.Etag -gt 0}
 		Assert-NotNull $mergeItem.Id
 		Assert-NotNull $mergeItem.Name
 		Assert-NotNull $mergeItem.Sku

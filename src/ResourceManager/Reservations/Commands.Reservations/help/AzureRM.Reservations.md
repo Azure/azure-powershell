@@ -15,23 +15,23 @@ The topics in this section document the Azure PowerShell cmdlets for Azure Reser
 Get `Reservation`s in a given reservation Order
 
 ### [Get-AzureRmReservationCatalog](Get-AzureRmReservationCatalog.md)
-Get the catalog of available reservation
+Get the catalog of available reservation.
 
 ### [Get-AzureRmReservationHistory](Get-AzureRmReservationHistory.md)
-Get `Reservation` revision history.
+Get the revision history of a `Reservation`.
 
 ### [Get-AzureRmReservationOrder](Get-AzureRmReservationOrder.md)
-Get `ReservationOrder`
+Get `ReservationOrder` under current tenant. If order id is provided, specific order is retrieved.
 
 ### [Get-AzureRmReservationOrderId](Get-AzureRmReservationOrderId.md)
-Get list of applicable `ReservationOrder` Ids.
+Get list of applicable `ReservationOrder` Ids under given subscription.
 
 ### [Merge-AzureRmReservation](Merge-AzureRmReservation.md)
-Merges two `Reservation`s.
+Merges two `Reservation`s into one `Reservation`
 
 ### [Split-AzureRmReservation](Split-AzureRmReservation.md)
-Split a `Reservation`.
+Split a `Reservation` into two `Reservation`s
 
 ### [Update-AzureRmReservation](Update-AzureRmReservation.md)
-Update a `Reservation`.
+Update the applied scope of a `Reservation`.
 

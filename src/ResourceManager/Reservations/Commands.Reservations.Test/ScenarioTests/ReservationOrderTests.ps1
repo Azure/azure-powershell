@@ -18,14 +18,16 @@ Get a single reservation
 #>
 function Test-GetReservationOrder
 {
+	$type = "Microsoft.Capacity/reservationOrders"
 	$reservationOrderId = "55793bc2-e5c2-4a98-9d5c-0a0bce6cf998"
     $reservation = Get-AzureRmReservationOrder -ReservationOrderId $reservationOrderId
 
 	Assert-NotNull $reservation
-	Assert-NotNull $reservation.Etag
-	Assert-NotNull $reservation.Id
-	Assert-NotNull $reservation.Name
-	Assert-NotNull $reservation.Type
+	Assert-True { $reservation.Etag -gt 0 }
+	$expectedId = "/providers/microsoft.capacity/reservationOrders/" + $reservationOrderId
+	Assert-AreEqual $expectedId $reservation.Id
+	Assert-AreEqual $reservationOrderId $reservation.Name
+	Assert-AreEqual $type $reservation.Type
 }
 
 <#
@@ -34,14 +36,19 @@ List reservations
 #>
 function Test-ListReservationOrders
 {
-	$type = "Microsoft.Capacity/reservations"
+	$type = "Microsoft.Capacity/reservationOrders"
 
     $reservationList = Get-AzureRmReservationOrder
 
 	Assert-NotNull $reservationList
+	Foreach ($reservation in $reservationList)
+	{
+		Assert-NotNull $reservation
+		Assert-True { $reservation.Etag -gt 0 }
+		Assert-NotNull $reservation.Name
+		$expectedId = "/providers/microsoft.capacity/reservationOrders/" + $reservation.Name
+		Assert-AreEqual $expectedId $reservation.Id
+		Assert-AreEqual $type $reservation.Type
+	}
 
-	Assert-NotNull $reservationList.Etag
-	Assert-NotNull $reservationList.Id
-	Assert-NotNull $reservationList.Name
-	Assert-NotNull $reservationList.Type
 }

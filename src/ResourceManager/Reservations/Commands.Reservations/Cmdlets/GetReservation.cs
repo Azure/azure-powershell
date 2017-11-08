@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
 
         [Parameter(ParameterSetName = Constants.ParameterSetNames.CommandParameterSet,
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
+            ValueFromPipelineByPropertyName = false)]
         public string ReservationId { get; set; }
 
         [Parameter(ParameterSetName = Constants.ParameterSetNames.ObjectParameterSet,
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
         [ValidateNotNull]
         public PSReservationOrder ReservationOrder { get; set; }
 
-        [Parameter(ParameterSetName = Constants.ParameterSetNames.ObjectParameterSet,
+        [Parameter(ParameterSetName = Constants.ParameterSetNames.PageObjectParameterSet,
             Mandatory = false,
             ValueFromPipeline = true)]
         [ValidateNotNull]
@@ -68,7 +68,10 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
                     ReservationOrderId = ReservationOrder.Name;
                     PageResults();
                 }
-                else if (ReservationOrderPage != null)
+            }
+            else if (ParameterSetName.Equals(Constants.ParameterSetNames.PageObjectParameterSet))
+            {
+                if (ReservationOrderPage != null)
                 {
                     foreach (PSReservationOrder ReservationOrder in ReservationOrderPage)
                     {
@@ -77,7 +80,9 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
                     }
                     while (ReservationOrderPage.NextPageLink != null)
                     {
-                        ReservationOrderPage = new PSReservationOrderPage(AzureReservationAPIClient.ReservationOrder.ListNext(ReservationOrderPage.NextPageLink));
+                        ReservationOrderPage =
+                            new PSReservationOrderPage(
+                                AzureReservationAPIClient.ReservationOrder.ListNext(ReservationOrderPage.NextPageLink));
                         foreach (PSReservationOrder ReservationOrder in ReservationOrderPage)
                         {
                             ReservationOrderId = ReservationOrder.Name;

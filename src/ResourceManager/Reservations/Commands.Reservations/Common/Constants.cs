@@ -20,6 +20,7 @@ namespace Microsoft.Azure.Commands.Reservations.Common
         {
             public const string CommandParameterSet = "CommandLine";
             public const string ObjectParameterSet = "PipeObject";
+            public const string PageObjectParameterSet = "PagePipeObject";
         }
     }
 }
