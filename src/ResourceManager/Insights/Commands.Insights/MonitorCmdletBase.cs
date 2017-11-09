@@ -33,6 +33,50 @@ namespace Microsoft.Azure.Commands.Insights
         protected abstract void ProcessRecordInternal();
 
         /// <summary>
+        /// Gets a string with the name of the cmdlet defined by the type t
+        /// </summary>
+        /// <returns>A string with the name of the cmdlet defined by the type t or a message indicating the name of the class t is the CmdletAttribute is not found in t</returns>
+        protected string GetCmdletName()
+        {
+            Type t = this.GetType();
+            CmdletAttribute cmdletAttribute = (CmdletAttribute)Attribute.GetCustomAttribute(t, typeof(CmdletAttribute));
+            if (cmdletAttribute == null)
+            {
+                return string.Format(CultureInfo.InvariantCulture, "Unknown cmdlet name. Type: {0}", t.Name);
+            }
+            else
+            {
+                return string.Format(CultureInfo.InvariantCulture, "{0}-{1}", cmdletAttribute.VerbName, cmdletAttribute.NounName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a warning message with the name of the cmdlet, a topic and the message itself
+        /// </summary>
+        /// <param name="cmdletName">The name of the cmdlet.</param>
+        /// <param name="topic">The topic, i.e. short description/category, of the message</param>
+        /// <param name="message">The message itself</param>
+        /// <param name="withTimeStamp">true if the message should include a timestamp, false (default) it no timestamp should be included</param>
+        protected void WriteIdentifiedWarning(string cmdletName, string topic, string message, bool withTimeStamp = false)
+        {
+            string formattedMessage = string.Format(
+                CultureInfo.InvariantCulture,
+                "[{0}] {1}: {2}",
+                cmdletName,
+                topic,
+                message);
+
+            if (withTimeStamp)
+            {
+                WriteWarningWithTimestamp(formattedMessage);
+            }
+            else
+            {
+                WriteWarning(formattedMessage);
+            }
+        }
+
+        /// <summary>
         /// Execute the cmdlet
         /// </summary>
         public override void ExecuteCmdlet()

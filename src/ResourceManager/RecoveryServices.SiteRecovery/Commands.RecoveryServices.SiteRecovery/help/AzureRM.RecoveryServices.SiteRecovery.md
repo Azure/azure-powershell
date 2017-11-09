@@ -1,8 +1,8 @@
----
+﻿---
 Module Name: AzureRM.RecoveryServices.SiteRecovery
 Module Guid: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
-Download Help Link: {{Please enter FwLink manually}}
-Help Version: {{Please enter version of help manually (X.X.X.X) format}}
+Download Help Link: 
+Help Version: 0.1.3
 Locale: en-US
 ---
 
@@ -13,6 +13,12 @@ This topic displays help topics for the Azure Site Recovery Cmdlets.
 ## AzureRM.RecoveryServices.SiteRecovery Cmdlets
 ### [Edit-AzureRmRecoveryServicesAsrRecoveryPlan](Edit-AzureRmRecoveryServicesAsrRecoveryPlan.md)
 Edits a Site Recovery plan.
+
+### [Get-AzureRmRecoveryServicesAsrAlertSetting](Get-AzureRmRecoveryServicesAsrAlertSetting.md)
+Gets the configured Azure Site Recovery notification settings for the vault.
+
+### [Get-AzureRmRecoveryServicesAsrEvent](Get-AzureRmRecoveryServicesAsrEvent.md)
+Gets details of Azure Site Recovery events in the vault.
 
 ### [Get-AzureRmRecoveryServicesAsrFabric](Get-AzureRmRecoveryServicesAsrFabric.md)
 Get the details of an Azure Site Recovery Fabric.
@@ -59,6 +65,9 @@ Gets ASR storage classification mappings.
 ### [Get-AzureRmRecoveryServicesAsrVaultContext](Get-AzureRmRecoveryServicesAsrVaultContext.md)
 Gets ASR vault settings information for the Recovery Services vault.
 
+### [Get-AzureRmRecoveryServicesAsrvCenter](Get-AzureRmRecoveryServicesAsrvCenter.md)
+Gets details of the vCenter servers registered for discovery on the Configuration server specified by the ASR fabric.
+
 ### [Import-AzureRmRecoveryServicesAsrVaultSettingsFile](Import-AzureRmRecoveryServicesAsrVaultSettingsFile.md)
 Imports the specified ASR vault settings file to set the vault context(PowerShell session context) for subsequent ASR operations in the PowerShell session. 
 
@@ -71,6 +80,9 @@ Creates an ASR network mapping between two networks.
 ### [New-AzureRmRecoveryServicesAsrPolicy](New-AzureRmRecoveryServicesAsrPolicy.md)
 Creates an Azure Site Recovery replication policy.
 
+### [New-AzureRmRecoveryServicesAsrProtectableItem](New-AzureRmRecoveryServicesAsrProtectableItem.md)
+Add(Discover) a physical server to the list of protectable items.
+
 ### [New-AzureRmRecoveryServicesAsrProtectionContainerMapping](New-AzureRmRecoveryServicesAsrProtectionContainerMapping.md)
 Creates an Azure Site Recovery Protection Container mapping by associating the specified replication policy to the specified ASR protection container.
 
@@ -82,6 +94,9 @@ Enables replication for an ASR protectable item by creating a replication protec
 
 ### [New-AzureRmRecoveryServicesAsrStorageClassificationMapping](New-AzureRmRecoveryServicesAsrStorageClassificationMapping.md)
 Creates an ASR storage classification mapping in the Recovery Services vault.
+
+### [New-AzureRmRecoveryServicesAsrvCenter](New-AzureRmRecoveryServicesAsrvCenter.md)
+Adds a vCenter server to discover protectable items from.
 
 ### [Remove-AzureRmRecoveryServicesAsrFabric](Remove-AzureRmRecoveryServicesAsrFabric.md)
 Deletes the specified Azure Site Recovery Fabric from the Recovery Services vault.
@@ -107,11 +122,17 @@ Deletes/unregister the specified Azure Site Recovery recovery services provider 
 ### [Remove-AzureRmRecoveryServicesAsrStorageClassificationMapping](Remove-AzureRmRecoveryServicesAsrStorageClassificationMapping.md)
 Deletes the specified ASR storage classification mapping.
 
+### [Remove-AzureRmRecoveryServicesAsrvCenter](Remove-AzureRmRecoveryServicesAsrvCenter.md)
+Removes the vCenter server from the ASR fabric and stops discovery of virtual machines from the vCenter server.
+
 ### [Restart-AzureRmRecoveryServicesAsrJob](Restart-AzureRmRecoveryServicesAsrJob.md)
 Restarts an Azure Site Recovery job.
 
 ### [Resume-AzureRmRecoveryServicesAsrJob](Resume-AzureRmRecoveryServicesAsrJob.md)
 Resumes a suspended Azure Site Recovery job.
+
+### [Set-AzureRmRecoveryServicesAsrAlertSetting](Set-AzureRmRecoveryServicesAsrAlertSetting.md)
+Configure Azure Site Recovery notification settings (email notification) for the vault.
 
 ### [Set-AzureRmRecoveryServicesAsrReplicationProtectedItem](Set-AzureRmRecoveryServicesAsrReplicationProtectedItem.md)
 Sets recovery properties such as target network and virtual machine size for the specified replication protected item.
@@ -128,14 +149,26 @@ Starts the commit failover action for a Site Recovery object.
 ### [Start-AzureRmRecoveryServicesAsrPlannedFailoverJob](Start-AzureRmRecoveryServicesAsrPlannedFailoverJob.md)
 Starts a planned failover operation.
 
+### [Start-AzureRmRecoveryServicesAsrResynchronizeReplicationJob](Start-AzureRmRecoveryServicesAsrResynchronizeReplicationJob.md)
+Starts replication resynchronization.
+
+### [Start-AzureRmRecoveryServicesAsrSwitchProcessServerJob](Start-AzureRmRecoveryServicesAsrSwitchProcessServerJob.md)
+Switch replication from one Process server to another.
+
+### [Start-AzureRmRecoveryServicesAsrTestFailoverCleanupJob](Start-AzureRmRecoveryServicesAsrTestFailoverCleanupJob.md)
+Starts the test failover cleanup operation.
+
 ### [Start-AzureRmRecoveryServicesAsrTestFailoverJob](Start-AzureRmRecoveryServicesAsrTestFailoverJob.md)
 Starts a test failover operation.
 
-### [Start-AzureRmRecoveryServicesAsrUnplannedFailoverJob](Start-AzureRmRecoveryServicesAsrUnplannedFailoverJob.md)
-Starts an unplanned failover operation.
+### [Start-AzureRmRecoveryServicesAsrTestFailoverJob](Start-AzureRmRecoveryServicesAsrTestFailoverJob.md)
+Starts a test failover operation.
 
 ### [Stop-AzureRmRecoveryServicesAsrJob](Stop-AzureRmRecoveryServicesAsrJob.md)
 Stops an Azure Site Recovery job.
+
+### [Update-AzureRmRecoveryServicesAsrMobilityService](Update-AzureRmRecoveryServicesAsrMobilityService.md)
+Push mobility service agent updates to protected machines.
 
 ### [Update-AzureRmRecoveryServicesAsrNetworkMapping](Update-AzureRmRecoveryServicesAsrNetworkMapping.md)
 Updates the specified ASR network mapping.
@@ -151,4 +184,7 @@ Updates the contents of an Azure Site recovery plan.
 
 ### [Update-AzureRmRecoveryServicesAsrServicesProvider](Update-AzureRmRecoveryServicesAsrServicesProvider.md)
 Refreshes (Refresh server) the information received from the Azure Site Recovery Services Provider.
+
+### [Update-AzureRmRecoveryServicesAsrvCenter](Update-AzureRmRecoveryServicesAsrvCenter.md)
+Update discovery details for a registered vCenter.
 
