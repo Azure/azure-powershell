@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Management.CognitiveServices.dll-Help.xml
 Module Name: AzureRM.CognitiveServices
 ms.assetid: 73B1EB7E-568E-44E8-993A-91678B7D8AEE
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.cognitiveservices/get-azurermcognitiveservicesaccountkey
 schema: 2.0.0
 ---
 

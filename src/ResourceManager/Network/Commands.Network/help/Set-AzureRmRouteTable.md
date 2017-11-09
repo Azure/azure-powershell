@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
 ms.assetid: 1CE2A30A-6DF8-4C4C-8348-C3C1CD4D0146
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/set-azurermroutetable
 schema: 2.0.0
 ---
 

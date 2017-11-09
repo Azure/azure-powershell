@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ServerManagement.dll-Help.xml
 Module Name: AzureRM
 ms.assetid: 4EE30890-B09B-4811-88AD-4BF4FD47E431
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servermanagement/get-azurermservermanagementnode
 schema: 2.0.0
 ---
 

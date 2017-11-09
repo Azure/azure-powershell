@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.RecoveryServices.ARM.dll-Help.xml
-Module Name: AzureRM
-online version: 
+Module Name: AzureRM.RecoveryServices
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.recoveryservices/get-azurermrecoveryservicesbackupproperty
 schema: 2.0.0
 ---
 
@@ -22,26 +22,14 @@ The **Get-AzureRmRecoveryServicesBackupProperty** cmdlet gets backup properties 
 
 ## EXAMPLES
 
-### 1:
+### Example 1
 ```
+PS C:\> Get-AzureRmRecoveryServicesBackupProperty -Vault $vault
 ```
+
+Get the backup vault property for vault.
 
 ## PARAMETERS
-
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
-
-```yaml
-Type: IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -Vault
 Specifies the name of the vault.
@@ -56,6 +44,19 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

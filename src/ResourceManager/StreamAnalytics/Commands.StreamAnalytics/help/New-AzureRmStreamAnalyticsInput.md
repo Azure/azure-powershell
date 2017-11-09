@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.StreamAnalytics.dll-Help.xml
 Module Name: AzureRM
 ms.assetid: 35CE5C5F-F8D4-426F-A33A-4F9EA50E9B83
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.streamanalytics/new-azurermstreamanalyticsinput
 schema: 2.0.0
 ---
 

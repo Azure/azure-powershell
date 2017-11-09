@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.SiteRecovery.dll-Help.xml
 Module Name: AzureRM
 ms.assetid: 3DDC8DD8-889C-4C76-B32E-3D2C2AD0AC79
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.siterecovery/start-azurermsiterecoverypolicyassociationjob
 schema: 2.0.0
 ---
 

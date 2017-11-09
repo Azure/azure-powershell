@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
 Module Name: AzureRM.Insights
 ms.assetid: 85492E00-3776-4F20-A444-9C28CC6154B7
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.insights/get-azurermlog
 schema: 2.0.0
 ---
 
@@ -16,35 +16,35 @@ Gets a log of events.
 ### GetByCorrelationId
 ```
 Get-AzureRmLog [-StartTime <DateTime>] [-EndTime <DateTime>] [-Status <String>] [-Caller <String>]
- [-DetailedOutput] [-CorrelationId] <String> [-MaxEvents <Int32>] [-DefaultProfile <IAzureContextContainer>]
+ [-DetailedOutput] [-CorrelationId] <String> [-MaxRecord <Int32>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### GetByResourceId
 ```
 Get-AzureRmLog [-StartTime <DateTime>] [-EndTime <DateTime>] [-Status <String>] [-Caller <String>]
- [-DetailedOutput] [-ResourceId] <String> [-MaxEvents <Int32>] [-DefaultProfile <IAzureContextContainer>]
+ [-DetailedOutput] [-ResourceId] <String> [-MaxRecord <Int32>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### GetByResourceGroup
 ```
 Get-AzureRmLog [-StartTime <DateTime>] [-EndTime <DateTime>] [-Status <String>] [-Caller <String>]
- [-DetailedOutput] [-ResourceGroup] <String> [-MaxEvents <Int32>] [-DefaultProfile <IAzureContextContainer>]
+ [-DetailedOutput] [-ResourceGroupName] <String> [-MaxRecord <Int32>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### GetByResourceProvider
 ```
 Get-AzureRmLog [-StartTime <DateTime>] [-EndTime <DateTime>] [-Status <String>] [-Caller <String>]
- [-DetailedOutput] [-ResourceProvider] <String> [-MaxEvents <Int32>] [-DefaultProfile <IAzureContextContainer>]
+ [-DetailedOutput] [-ResourceProvider] <String> [-MaxRecord <Int32>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### GetBySubscription
 ```
 Get-AzureRmLog [-StartTime <DateTime>] [-EndTime <DateTime>] [-Status <String>] [-Caller <String>]
- [-DetailedOutput] [-MaxEvents <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DetailedOutput] [-MaxRecord <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -114,7 +114,7 @@ This command lists at most 1000 events associated with the specified correlation
 
 ### Example 9: Get an event log for a resource group
 ```
-PS C:\>Get-AzureRmLog -ResourceGroup "Contoso-Web-CentralUS"
+PS C:\>Get-AzureRmLog -ResourceGroupName "Contoso-Web-CentralUS"
 ```
 
 This command lists at most 1000 the events associated with the specified resource group that took place 7 days from the current date/time.
@@ -279,14 +279,14 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -MaxEvents
+### -MaxRecord
 Specifies the total number of records to fetch for the specified filter.
 The default value is 1000 and the maximum value accepted is 100000. Negative values and 0 are ignored and the default value will be used.
 
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: MaxRecords
+Aliases: MaxRecords, MaxEvents
 
 Required: False
 Position: Named
@@ -295,13 +295,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroup
+### -ResourceGroupName
 Specifies the name of the resource group.
 
 ```yaml
 Type: String
 Parameter Sets: GetByResourceGroup
-Aliases: 
+Aliases: ResourceGroup
 
 Required: True
 Position: 0
@@ -380,7 +380,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### None
 
-## OUTPUTS
+### List<Microsoft.Azure.Commands.Insights.OutputClasses.PSEventData>
 
 ### None
 

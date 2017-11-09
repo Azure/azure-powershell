@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
 Module Name: AzureRM.KeyVault
 ms.assetid: 80AAA327-77C6-4372-9461-FFED5A15E678
-online version: http://go.microsoft.com/fwlink/?LinkId=690296
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/backup-azurekeyvaultsecret
 schema: 2.0.0
 ---
 

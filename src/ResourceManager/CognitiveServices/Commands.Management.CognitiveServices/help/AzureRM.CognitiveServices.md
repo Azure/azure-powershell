@@ -1,4 +1,4 @@
----
+﻿---
 Module Name: AzureRM.CognitiveServices
 Module Guid: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 Download Help Link: {{Please enter FwLink manually}}

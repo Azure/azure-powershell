@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Management.Storage.dll-Help.xml
 Module Name: AzureRM
 ms.assetid: A57A9EFA-47AC-44D8-BFA7-CDE0E2A612B3
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.storage/get-azurermstorageaccountkey
 schema: 2.0.0
 ---
 

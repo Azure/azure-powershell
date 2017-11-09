@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.RecoveryServices.ARM.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.RecoveryServices
 ms.assetid: 818B5302-91EE-425F-B1CD-86B626F1B7A3
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.recoveryservices/get-azurermrecoveryservicesvault
 schema: 2.0.0
 ---
 
@@ -23,27 +23,28 @@ The **Get-AzureRmRecoveryServicesVault** cmdlet gets a list of Recovery Services
 
 ## EXAMPLES
 
-### 1:
+### Example 1
+```
+PS C:\> Get-AzureRmRecoveryServicesVault
 ```
 
+Get the list of vault in selected subscription.
+
+### Example 2
 ```
+PS C:\> Get-AzureRmRecoveryServicesVault -ResourceGroupName "resourceGroup"
+```
+
+Get the list of vault in resource group in selected subscription.
+
+### Example 3
+```
+PS C:\> Get-AzureRmRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+```
+
+Get the vault in resource group with given name.
 
 ## PARAMETERS
-
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
-
-```yaml
-Type: IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -Name
 Specifies the name of the vault to query for.
@@ -67,6 +68,19 @@ Specifies the name of the Azure resource group in which to create or from which 
 Type: String
 Parameter Sets: (All)
 Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named

@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ServiceFabric.dll-Help.xml
 Module Name: AzureRM
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicefabric/add-azurermservicefabricnodetype
 schema: 2.0.0
 ---
 
