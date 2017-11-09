@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Experiments.Compute
             => resourceGroup.CreateResourceConfig(
                 Policy,
                 name,
-                new VirtualMachine(),
+                _ => new VirtualMachine(),
                 new[] { networkInterface });
     }
 }

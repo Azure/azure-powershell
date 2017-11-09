@@ -1,5 +1,6 @@
 ﻿using Microsoft.Azure.Management.ResourceManager;
 using Microsoft.Azure.Management.ResourceManager.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -16,18 +17,18 @@ namespace Microsoft.Azure.Experiments.ResourceManager
                 .CreateResourcePolicy(i => i.Location, (i, location) => i.Location = location);
 
         public static ResourceConfig<string, ResourceGroup> CreateResourceGroupConfig(string name)
-            => Policy.CreateResourceConfig(name, new ResourceGroup());
+            => Policy.CreateResourceConfig(name, _ => new ResourceGroup());
 
         public static ResourceConfig<ResourceName, Info> CreateResourceConfig<Info>(
             this ResourceConfig<string, ResourceGroup> resourceGroup,
             ResourcePolicy<ResourceName, Info> policy,
             string name,
-            Info info,
+            Func<string, Info> createInfo,
             IEnumerable<IResourceConfig> dependencies = null)
             where Info : class
             => policy.CreateResourceConfig(
                 new ResourceName(resourceGroup.Name, name),
-                info,
+                createInfo,
                 dependencies.EmptyIfNull().Concat(new[] { resourceGroup }));
     }
 }
