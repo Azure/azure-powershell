@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
         [Parameter(Mandatory = true)]
         [ValidateNotNull]
         [ValidateCount (2, 2)]
-        public int?[] Quantity { get; set; }
+        public int[] Quantity { get; set; }
 
         [Parameter(ParameterSetName = Constants.ParameterSetNames.ObjectParameterSet,
             Mandatory = true,
@@ -37,17 +37,19 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess("AzureRmReservation", "Split"))
+            if (ParameterSetName.Equals(Constants.ParameterSetNames.ObjectParameterSet))
             {
-                if (ParameterSetName.Equals(Constants.ParameterSetNames.ObjectParameterSet))
-                {
-                    string[] name = Reservation.Name.Split('/');
-                    ReservationOrderId = name[0];
-                    ReservationId = name[1];
-                }
+                string[] name = Reservation.Name.Split('/');
+                ReservationOrderId = name[0];
+                ReservationId = name[1];
+            }
 
+            var resourceInfo = $"Reservation {ReservationId} in order {ReservationOrderId}";
+            if (ShouldProcess(resourceInfo, "Split"))
+            {
+                var quantityParameter = Quantity.Select(q => (int?) q).ToList();
                 SplitRequest Split = new SplitRequest(
-                    Quantity.ToList(),
+                    quantityParameter,
                     CreateResourceId(ReservationOrderId, ReservationId)
                 );
                 var response = AzureReservationAPIClient.Reservation.Split(ReservationOrderId, Split).Select(x => new PSReservation(x)).ToList();

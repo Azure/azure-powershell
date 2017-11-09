@@ -18,6 +18,9 @@ Get a single reservation
 #>
 function Test-GetReservationOrder
 {
+    # Currently there is no Create Reservation api exposed to powershell.
+    # Please create reservation through portal and use id to run tests
+    # Once reservation is created you will have reservationOrderId to run this test
 	$type = "Microsoft.Capacity/reservationOrders"
 	$reservationOrderId = "55793bc2-e5c2-4a98-9d5c-0a0bce6cf998"
     $reservation = Get-AzureRmReservationOrder -ReservationOrderId $reservationOrderId
