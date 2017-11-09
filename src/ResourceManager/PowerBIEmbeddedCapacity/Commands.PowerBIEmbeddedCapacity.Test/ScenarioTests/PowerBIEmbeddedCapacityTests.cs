@@ -44,33 +44,5 @@ namespace Microsoft.Azure.Commands.PowerBIEmbeddedCapacity.Test.ScenarioTests
         {
             NewInstance.RunPsTest("Test-NegativePowerBIEmbeddedCapacity");
         }
-
-        [Fact]
-        [Trait(Category.ServiceManagement, Category.LiveOnly)]
-        public void TestPowerBIEmbeddedCapacityLogExport()
-        {
-            NewInstance.RunPsTest("Test-PowerBIEmbeddedCapacityLogExport");
-        }
-
-        [Fact]
-        [Trait(Category.ServiceManagement, Category.LiveOnly)]
-        public void TestPowerBIEmbeddedCapacityRestart()
-        {
-            NewInstance.RunPsTest("Test-PowerBIEmbeddedCapacityRestart");
-        }
-
-        [Fact]
-        [Trait(Category.ServiceManagement, Category.LiveOnly)]
-        public void TestPowerBIEmbeddedCapacitySynchronizeSingle()
-        {
-            NewInstance.RunPsTest("Test-PowerBIEmbeddedCapacitySynchronizeSingle");
-        }
-
-        [Fact]
-        [Trait(Category.ServiceManagement, Category.LiveOnly)]
-        public void TestPowerBIEmbeddedCapacityLoginWithSPN()
-        {
-            NewInstance.RunPsTest("Test-PowerBIEmbeddedCapacityLoginWithSPN");
-        }
     }
 }

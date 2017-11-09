@@ -27,7 +27,7 @@ Gets a resource group name for testing.
 #>
 function Get-ResourceGroupName
 {
-    return getAssetName
+    return "TestRG";
 }
 
 <#
@@ -47,7 +47,7 @@ Gets a location for testing.
 function Get-Location
 {
 	# TODO: should be implemented via Get-AzureRmResourceProvider 
-	return "West US"
+	return "West Central US"
 }
 
 <#

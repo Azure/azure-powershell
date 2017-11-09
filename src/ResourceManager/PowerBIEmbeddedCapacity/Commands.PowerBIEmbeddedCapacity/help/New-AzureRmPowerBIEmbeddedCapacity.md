@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.PowerBIEmbeddedCapacity.dll-Help.xml
 online version: 
-schema: 2.0.0
+schema: 1.0.0
 ---
 
 # New-AzureRmPowerBIEmbeddedCapacity
@@ -12,9 +12,16 @@ Creates a new PowerBI Embedded Capacity
 ## SYNTAX
 
 ```
-New-AzureRmPowerBIEmbeddedCapacity [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
- [-Sku] <String> [[-Tag] <Hashtable>] [[-Administrator] <String>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzureRmPowerBIEmbeddedCapacity 
+	[-ResourceGroupName] <String> 
+	[-Name] <String> 
+	[-Location] <String>
+ 	[-Sku] <String> 
+	[[-Tag] <Hashtable>] 
+	[[-Administrator] <String>]
+ 	[-WhatIf] 
+	[-Confirm] 
+	[<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,44 +38,16 @@ Creates a capacity named testcapacity in the Azure region West-US and in resourc
 
 ## PARAMETERS
 
-### -Administrator
-A string representing a comma separated list of users or groups to be set as administrators on the capacity. The users or groups need to be specified UPN format e.g. user@contoso.com or groups@contoso.com
+### -ResourceGroupName
+Name of the Azure resource group to which the capacity belongs
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
-
-Required: False
-Position: 5
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 6
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Location
-The Azure region where the PowerBI Embedded Capacity is hosted
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-Accepted values: North Central US, South Central US, Central US, West Europe, North Europe, West US, East US, East US 2, Japan East, Japan West, Brazil South, Southeast Asia, East Asia, Australia East, Australia Southeast
 
 Required: True
-Position: 2
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -88,17 +67,17 @@ Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
-
-### -ResourceGroupName
-Name of the Azure resource group to which the capacity belongs
+### -Location
+The Azure region where the PowerBI Embedded Capacity is hosted
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: North Central US, South Central US, Central US, West Europe, North Europe, West US, East US, East US 2, Japan East, Japan West, Brazil South, Southeast Asia, East Asia, Australia East, Australia Southeast
 
 Required: True
-Position: 0
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -130,6 +109,21 @@ Aliases:
 
 Required: False
 Position: 4
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Administrator
+A string representing a comma separated list of users or groups to be set as administrators on the capacity. The users or groups need to be specified UPN format e.g. user@contoso.com or groups@contoso.com
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: 5
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

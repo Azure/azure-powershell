@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.PowerBIEmbeddedCapacity
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = true,
             HelpMessage = "Azure region where the capacity should be created.")]
         [ValidateNotNullOrEmpty]
-        [ValidateSet("North Central US", "South Central US", "Central US", "West Europe", "North Europe", "West US",
+        [ValidateSet("North Central US", "South Central US", "Central US", "West Europe", "North Europe", "West Central US",
             "East US",
             "East US 2", "Japan East", "Japan West", "Brazil South", "Southeast Asia", "East Asia", "Australia East",
             "Australia Southeast", IgnoreCase = true)]

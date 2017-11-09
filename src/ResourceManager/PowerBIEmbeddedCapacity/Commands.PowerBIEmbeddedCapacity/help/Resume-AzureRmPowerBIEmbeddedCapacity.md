@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.PowerBIEmbeddedCapacity.dll-Help.xml
 online version: 
-schema: 2.0.0
+schema: 1.0.0
 ---
 
 # Resume-AzureRmPowerBIEmbeddedCapacity
@@ -12,8 +12,13 @@ Resumes an instance of PowerBI Embedded Capacity
 ## SYNTAX
 
 ```
-Resume-AzureRmPowerBIEmbeddedCapacity [[-ResourceGroupName] <String>] [-Name] <String> [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Resume-AzureRmPowerBIEmbeddedCapacity 
+	[[-ResourceGroupName] <String>] 
+	[-Name] <String> 
+	[-PassThru] 
+	[-WhatIf]
+ 	[-Confirm] 
+	[<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,21 +50,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Will return the deleted capacity details if the operation completes successfully
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 Name of the Azure resource group to which the capacity belongs
 
@@ -72,6 +62,21 @@ Required: False
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PassThru
+Will return the deleted capacity details if the operation completes successfully
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

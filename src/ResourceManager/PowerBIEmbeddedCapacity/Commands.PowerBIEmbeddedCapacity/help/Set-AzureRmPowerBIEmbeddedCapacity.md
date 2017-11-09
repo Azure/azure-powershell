@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.PowerBIEmbeddedCapacity.dll-Help.xml
 online version: 
-schema: 2.0.0
+schema: 1.0.0
 ---
 
 # Set-AzureRmPowerBIEmbeddedCapacity
@@ -13,9 +13,16 @@ Modifies  an instance of PowerBI Embedded Capacity
 
 ### Default (Default)
 ```
-Set-AzureRmPowerBIEmbeddedCapacity [-Name] <String> [[-ResourceGroupName] <String>] [[-Sku] <String>]
- [[-Tag] <Hashtable>] [[-Administrator] <String>] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Set-AzureRmPowerBIEmbeddedCapacity 
+	[-Name] <String> 
+	[[-ResourceGroupName] <String>] 
+	[[-Sku] <String>]
+ 	[[-Tag] <Hashtable>] 
+	[[-Administrator] <String>] 
+	[-PassThru] 
+	[-WhatIf]
+ 	[-Confirm] 
+[<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,35 +39,6 @@ Modifies the capacity named testcapacity in resourcegroup testgroup to set the t
 
 ## PARAMETERS
 
-### -Administrator
-A string representing a comma separated list of users or groups to be set as administrators on the capacity.
-The users or groups need to be specified UPN format e.g.
-user@contoso.com or groups@contoso.com
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 4
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: String
-Parameter Sets: Default
-Aliases: 
-
-Required: False
-Position: 5
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -Name
 Name of the PowerBI Embedded Capacity
 
@@ -73,21 +51,6 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -PassThru
-Will return the deleted capacity details if the operation completes successfully
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -134,6 +97,38 @@ Required: False
 Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Administrator
+A string representing a comma separated list of users or groups to be set as administrators on the capacity.
+The users or groups need to be specified UPN format e.g.
+user@contoso.com or groups@contoso.com
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: 4
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PassThru
+Will return the deleted capacity details if the operation completes successfully
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

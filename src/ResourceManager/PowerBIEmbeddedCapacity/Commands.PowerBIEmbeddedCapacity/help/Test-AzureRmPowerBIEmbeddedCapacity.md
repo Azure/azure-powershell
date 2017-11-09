@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.PowerBIEmbeddedCapacity.dll-Help.xml
 online version: 
-schema: 2.0.0
+schema: 1.0.0
 ---
 
 # Test-AzureRmPowerBIEmbeddedCapacity
@@ -12,7 +12,10 @@ Tests the existence of an instance of PowerBI Embedded Capacity
 ## SYNTAX
 
 ```
-Test-AzureRmPowerBIEmbeddedCapacity [-Name] <String> [[-ResourceGroupName] <String>] [<CommonParameters>]
+Test-AzureRmPowerBIEmbeddedCapacity 
+	[-Name] <String> 
+	[[-ResourceGroupName] <String>] 
+	[<CommonParameters>]
 ```
 
 ## DESCRIPTION
