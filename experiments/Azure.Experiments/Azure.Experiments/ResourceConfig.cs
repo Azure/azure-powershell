@@ -8,19 +8,19 @@ namespace Microsoft.Azure.Experiments
 
     public static class ResourceConfig
     {
-        public static ResourceConfig<Client, Name, Info> CreateResourceConfig<Client, Name, Info>(
-            this ResourcePolicy<Client, Name, Info> policy,
+        public static ResourceConfig<Name, Info> CreateResourceConfig<Name, Info>(
+            this ResourcePolicy<Name, Info> policy,
             Name name,
             Info info,
             IEnumerable<IResourceConfig> dependencies)
             where Info : class
-            => new ResourceConfig<Client, Name, Info>(policy, name, info, dependencies);
+            => new ResourceConfig<Name, Info>(policy, name, info, dependencies);
     }
 
-    public sealed class ResourceConfig<Client, TName, TInfo>
+    public sealed class ResourceConfig<TName, TInfo>
         where TInfo : class
     {
-        public ResourcePolicy<Client, TName, TInfo> Policy { get; }
+        public ResourcePolicy<TName, TInfo> Policy { get; }
 
         public TName Name { get; }
 
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Experiments
         public IEnumerable<IResourceConfig> Dependencies { get; }
 
         public ResourceConfig(
-            ResourcePolicy<Client, TName, TInfo> policy,
+            ResourcePolicy<TName, TInfo> policy,
             TName name,
             TInfo info,
             IEnumerable<IResourceConfig> dependencies)

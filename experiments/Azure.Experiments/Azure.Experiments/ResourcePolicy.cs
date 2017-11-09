@@ -4,25 +4,29 @@ namespace Microsoft.Azure.Experiments
 {
     public static class ResourcePolicy
     {
-        public static ResourcePolicy<Client, Name, Info> CreateResourcePolicy<Client, Name, Info>(
+        public static ResourcePolicy<Name, Info> CreateResourcePolicy<Client, Name, Info>(
             this OperationsPolicy<Client, Name, Info> operationsPolicy,
             Func<Info, string> getLocation,
             Action<Info, string> setLocation)
+            where Client : class, IDisposable
             where Info : class
-            => new ResourcePolicy<Client, Name, Info>(operationsPolicy, getLocation, setLocation);
+            => new ResourcePolicy<Name, Info>(
+                operationsPolicy.Transform<IClient>(c => c.GetClient<Client>()),
+                getLocation,
+                setLocation);
     }
 
-    public sealed class ResourcePolicy<Client, Name, Info>
+    public sealed class ResourcePolicy<Name, Info>
         where Info : class
     {
-        public OperationsPolicy<Client, Name, Info> OperationsPolicy { get; }
+        public OperationsPolicy<IClient, Name, Info> OperationsPolicy { get; }
 
         public Func<Info, string> GetLocation { get; }
 
         public Action<Info, string> SetLocation { get; }
 
         public ResourcePolicy(            
-            OperationsPolicy<Client, Name, Info> operationsPolicy,
+            OperationsPolicy<IClient, Name, Info> operationsPolicy,
             Func<Info, string> getLocation,
             Action<Info, string> setLocation)
         {

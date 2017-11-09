@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Experiments.Compute
 {
     public static class ComputePolicy
     {
-        public static ResourcePolicy<IComputeManagementClient, ResourceName, Info> Create<Operations, Info>(
+        public static ResourcePolicy<ResourceName, Info> Create<Operations, Info>(
             Func<IComputeManagementClient, Operations> getOperations,
             Func<Operations, ResourceName, Task<Info>> getAsync,
             Func<Operations, ResourceName, Info, Task<Info>> createOrUpdateAsync)
@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Experiments.Compute
                 .Transform(getOperations)
                 .CreateResourcePolicy(i => i.Location, (i, location) => i.Location = location);
 
-        public static ResourcePolicy<IComputeManagementClient, ResourceName, VirtualMachine> VirtualMachine
+        public static ResourcePolicy<ResourceName, VirtualMachine> VirtualMachine
         { get; }
             = Create(
                 client => client.VirtualMachines,

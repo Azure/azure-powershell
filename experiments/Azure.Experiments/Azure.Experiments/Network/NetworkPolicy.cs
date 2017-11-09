@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Experiments.Network
 {
     public static class NetworkPolicy
     {
-        public static ResourcePolicy<INetworkManagementClient, ResourceName, Info> Create<Operations, Info>(
+        public static ResourcePolicy<ResourceName, Info> Create<Operations, Info>(
             Func<INetworkManagementClient, Operations> getOperations,
             Func<Operations, ResourceName, Task<Info>> getAsync,
             Func<Operations, ResourceName, Info, Task<Info>> createOrUpdateAsync)
@@ -17,32 +17,28 @@ namespace Microsoft.Azure.Experiments.Network
                 .Transform(getOperations)
                 .CreateResourcePolicy(i => i.Location, (i, location) => i.Location = location);
 
-        public static ResourcePolicy<INetworkManagementClient, ResourceName, NetworkInterface> NetworkInterface
-        { get; }
+        public static ResourcePolicy<ResourceName, NetworkInterface> NetworkInterface { get; }
             = Create(
                 client => client.NetworkInterfaces,
                 (operations, name) => operations.GetAsync(name.ResourceGroupName, name.Name),
                 (operations, name, info) 
                     => operations.CreateOrUpdateAsync(name.ResourceGroupName, name.Name, info));
 
-        public static ResourcePolicy<INetworkManagementClient, ResourceName, NetworkSecurityGroup> NetworkSecurityGroup
-        { get; }
+        public static ResourcePolicy<ResourceName, NetworkSecurityGroup> NetworkSecurityGroup { get; }
             = Create(
                 client => client.NetworkSecurityGroups,
                 (operations, name) => operations.GetAsync(name.ResourceGroupName, name.Name),
                 (operations, name, info)
                     => operations.CreateOrUpdateAsync(name.ResourceGroupName, name.Name, info));
 
-        public static ResourcePolicy<INetworkManagementClient, ResourceName, PublicIPAddress> PublicIPAddresss
-        { get; }
+        public static ResourcePolicy<ResourceName, PublicIPAddress> PublicIPAddresss { get; }
             = Create(
                 client => client.PublicIPAddresses,
                 (operations, name) => operations.GetAsync(name.ResourceGroupName, name.Name),
                 (operations, name, info)
                     => operations.CreateOrUpdateAsync(name.ResourceGroupName, name.Name, info));
 
-        public static ResourcePolicy<INetworkManagementClient, ResourceName, VirtualNetwork> VirtualNetwork
-        { get; }
+        public static ResourcePolicy<ResourceName, VirtualNetwork> VirtualNetwork { get; }
             = Create(
                 client => client.VirtualNetworks,
                 (operations, name) => operations.GetAsync(name.ResourceGroupName, name.Name),

@@ -5,8 +5,7 @@ namespace Microsoft.Azure.Experiments.ResourceManager
 {
     public static class ResourceManagerPolicy
     {
-        public static ResourcePolicy<IResourceManagementClient, string, ResourceGroup> ResourceGroup
-        { get; }
+        public static ResourcePolicy<string, ResourceGroup> ResourceGroup { get; }
             = OperationsPolicy
                 .Create<IResourceGroupsOperations, string, ResourceGroup>(
                     (operations, name) => operations.GetAsync(name),
