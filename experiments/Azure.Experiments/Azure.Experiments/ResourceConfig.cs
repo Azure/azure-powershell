@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Experiments
             this ResourcePolicy<Name, Info> policy,
             Name name,
             Info info,
-            IEnumerable<IResourceConfig> dependencies)
+            IEnumerable<IResourceConfig> dependencies = null)
             where Info : class
-            => new ResourceConfig<Name, Info>(policy, name, info, dependencies);
+            => new ResourceConfig<Name, Info>(policy, name, info, dependencies.EmptyIfNull());
     }
 
-    public sealed class ResourceConfig<TName, TInfo>
+    public sealed class ResourceConfig<TName, TInfo> : IResourceConfig
         where TInfo : class
     {
         public ResourcePolicy<TName, TInfo> Policy { get; }
