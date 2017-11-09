@@ -5,9 +5,9 @@ using System.Linq;
 
 namespace Microsoft.Azure.Experiments.ResourceManager
 {
-    public static class ResourceManagerPolicy
+    public static class ResourceGroupPolicy
     {
-        public static ResourcePolicy<string, ResourceGroup> ResourceGroup { get; }
+        public static ResourcePolicy<string, ResourceGroup> Policy { get; }
             = OperationsPolicy
                 .Create<IResourceGroupsOperations, string, ResourceGroup>(
                     (operations, name) => operations.GetAsync(name),
@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Experiments.ResourceManager
                 .CreateResourcePolicy(i => i.Location, (i, location) => i.Location = location);
 
         public static ResourceConfig<string, ResourceGroup> CreateResourceGroupConfig(string name)
-            => ResourceGroup.CreateResourceConfig(name, new ResourceGroup());
+            => Policy.CreateResourceConfig(name, new ResourceGroup());
 
         public static ResourceConfig<ResourceName, Info> CreateResourceConfig<Info>(
             this ResourceConfig<string, ResourceGroup> resourceGroup,

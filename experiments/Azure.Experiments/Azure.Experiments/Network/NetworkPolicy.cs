@@ -19,42 +19,6 @@ namespace Microsoft.Azure.Experiments.Network
                 .Transform(getOperations)
                 .CreateResourcePolicy(i => i.Location, (i, location) => i.Location = location);
 
-        public static ResourcePolicy<ResourceName, NetworkSecurityGroup> NetworkSecurityGroup { get; }
-            = Create(
-                client => client.NetworkSecurityGroups,
-                (operations, name) => operations.GetAsync(name.ResourceGroupName, name.Name),
-                (operations, name, info)
-                    => operations.CreateOrUpdateAsync(name.ResourceGroupName, name.Name, info));
-
-        public static ResourceConfig<ResourceName, NetworkSecurityGroup> CreateNetworkSecurityGroupConfig(
-            this ResourceConfig<string, ResourceGroup> resourceGroup,
-            string name)
-            => resourceGroup.CreateResourceConfig(NetworkSecurityGroup, name, new NetworkSecurityGroup());
-
-        public static ResourcePolicy<ResourceName, PublicIPAddress> PublicIPAddress { get; }
-            = Create(
-                client => client.PublicIPAddresses,
-                (operations, name) => operations.GetAsync(name.ResourceGroupName, name.Name),
-                (operations, name, info)
-                    => operations.CreateOrUpdateAsync(name.ResourceGroupName, name.Name, info));
-
-        public static ResourceConfig<ResourceName, PublicIPAddress> CreatePublicIPAddressConfig(
-            this ResourceConfig<string, ResourceGroup> resourceGroup,
-            string name)
-            => resourceGroup.CreateResourceConfig(PublicIPAddress, name, new PublicIPAddress());
-
-        public static ResourcePolicy<ResourceName, VirtualNetwork> VirtualNetwork { get; }
-            = Create(
-                client => client.VirtualNetworks,
-                (operations, name) => operations.GetAsync(name.ResourceGroupName, name.Name),
-                (operations, name, info)
-                    => operations.CreateOrUpdateAsync(name.ResourceGroupName, name.Name, info));
-
-        public static ResourceConfig<ResourceName, VirtualNetwork> CreateVirtualNetworkConfig(
-            this ResourceConfig<string, ResourceGroup> resourceGroup,
-            string name)
-            => resourceGroup.CreateResourceConfig(VirtualNetwork, name, new VirtualNetwork());
-
         public static ResourcePolicy<ResourceName, NetworkInterface> NetworkInterface { get; }
             = Create(
                 client => client.NetworkInterfaces,

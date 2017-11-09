@@ -19,23 +19,5 @@ namespace Microsoft.Azure.Experiments.Compute
                 .Create(getAsync, createOrUpdateAsync)
                 .Transform(getOperations)
                 .CreateResourcePolicy(i => i.Location, (i, location) => i.Location = location);
-
-        public static ResourcePolicy<ResourceName, VirtualMachine> VirtualMachine
-        { get; }
-            = Create(
-                client => client.VirtualMachines,
-                (operations, name) => operations.GetAsync(name.ResourceGroupName, name.Name),
-                (operations, name, info)
-                    => operations.CreateOrUpdateAsync(name.ResourceGroupName, name.Name, info));
-
-        public static ResourceConfig<ResourceName, VirtualMachine> CreateVirtualMachineConfig(
-            this ResourceConfig<string, ResourceGroup> resourceGroup,
-            string name,
-            ResourceConfig<ResourceName, NetworkInterface> networkInterface)
-            => resourceGroup.CreateResourceConfig(
-                VirtualMachine,
-                name,
-                new VirtualMachine(),
-                new [] { networkInterface });
     }
 }

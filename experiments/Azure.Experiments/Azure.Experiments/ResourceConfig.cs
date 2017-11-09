@@ -6,6 +6,10 @@ namespace Microsoft.Azure.Experiments
     {
     }
 
+    public interface IResourceConfig<Info>
+    {
+    }
+
     public static class ResourceConfig
     {
         public static ResourceConfig<Name, Info> CreateResourceConfig<Name, Info>(
