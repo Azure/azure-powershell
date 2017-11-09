@@ -14,6 +14,6 @@ namespace Microsoft.Azure.Experiments.Network
 
         public static ResourceConfig<NetworkSecurityGroup> CreateNetworkSecurityGroupConfig(
             this ResourceName name)
-            => Policy.CreateResourceConfig(name, _ => new NetworkSecurityGroup());
+            => Policy.CreateConfig(name, _ => new NetworkSecurityGroup());
     }
 }

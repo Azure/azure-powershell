@@ -14,6 +14,6 @@ namespace Microsoft.Azure.Experiments.Network
 
         public static ResourceConfig<PublicIPAddress> CreatePublicIPAddressConfig(
             this ResourceName name)
-            => Policy.CreateResourceConfig(name, _ => new PublicIPAddress());
+            => Policy.CreateConfig(name, _ => new PublicIPAddress());
     }
 }

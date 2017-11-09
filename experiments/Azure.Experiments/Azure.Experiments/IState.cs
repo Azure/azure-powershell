@@ -2,6 +2,7 @@
 {
     public interface IState
     {
-        T GetInfo<T>(IResourceConfig<T> resourceConfig);
+        T Get<T>(IResourceConfig<T> resourceConfig);
+        T Get<T>(IChildResourceConfig<T> childResourceConfig);
     }
 }

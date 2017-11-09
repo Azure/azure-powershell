@@ -14,10 +14,10 @@ namespace Microsoft.Azure.Experiments.Network
 
         public static ResourceConfig<NetworkInterface> CreateNetworkInterfaceConfig(
             this ResourceName name,
-            ResourceConfig<VirtualNetwork> virtualNetwork,
+            ChildResourceConfig<Subnet, VirtualNetwork> subnet,
             ResourceConfig<NetworkSecurityGroup> networkSecurityGroup,
             ResourceConfig<PublicIPAddress> publicIPAddress)
-            => Policy.CreateResourceConfig(
+            => Policy.CreateConfig(
                 name,
                 state => new NetworkInterface
                 {
@@ -25,17 +25,22 @@ namespace Microsoft.Azure.Experiments.Network
                     {
                         new NetworkInterfaceIPConfiguration
                         {
+                            Subnet = new Subnet
+                            {
+                                Id = state.Get(subnet).Id
+                            },
                             PublicIPAddress = new PublicIPAddress
                             {
-                                Id = state.GetInfo(publicIPAddress).Id
+                                Id = state.Get(publicIPAddress).Id
                             }
                         }
                     },
                     NetworkSecurityGroup = new NetworkSecurityGroup
                     {
-                        Id = state.GetInfo(networkSecurityGroup).Id
+                        Id = state.Get(networkSecurityGroup).Id
                     }
                 },
-                new IResourceConfig[] { virtualNetwork, networkSecurityGroup, publicIPAddress });
+                new IResourceConfig[] { networkSecurityGroup, publicIPAddress },
+                new[] { subnet });
     }
 }

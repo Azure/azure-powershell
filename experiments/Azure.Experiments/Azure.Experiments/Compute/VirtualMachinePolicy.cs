@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Experiments.Compute
         public static ResourceConfig<VirtualMachine> CreateVirtualMachineConfig(
             this ResourceName name,
             ResourceConfig<NetworkInterface> networkInterface)
-            => Policy.CreateResourceConfig(
+            => Policy.CreateConfig(
                 name,
                 _ => new VirtualMachine(),
                 new[] { networkInterface });

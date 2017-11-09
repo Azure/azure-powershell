@@ -14,6 +14,6 @@ namespace Microsoft.Azure.Experiments.Network
 
         public static ResourceConfig<VirtualNetwork> CreateVirtualNetworkConfig(
             this ResourceName name)
-            => Policy.CreateResourceConfig(name, _ => new VirtualNetwork());
+            => Policy.CreateConfig(name, _ => new VirtualNetwork());
     }
 }
