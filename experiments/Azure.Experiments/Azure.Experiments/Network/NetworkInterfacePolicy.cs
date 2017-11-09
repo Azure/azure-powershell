@@ -25,6 +25,7 @@ namespace Microsoft.Azure.Experiments.Network
                     {
                         new NetworkInterfaceIPConfiguration
                         {
+                            Name = name.Name,
                             Subnet = new Subnet
                             {
                                 Id = state.Get(subnet).Id

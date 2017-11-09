@@ -18,7 +18,19 @@ namespace Microsoft.Azure.Experiments.Compute
             ResourceConfig<NetworkInterface> networkInterface)
             => Policy.CreateConfig(
                 name,
-                _ => new VirtualMachine(),
+                state => new VirtualMachine
+                {
+                    NetworkProfile = new NetworkProfile
+                    {
+                        NetworkInterfaces = new []
+                        {
+                            new NetworkInterfaceReference
+                            {
+                                Id = state.Get(networkInterface).Id
+                            }
+                        }
+                    }
+                },
                 new[] { networkInterface });
     }
 }
