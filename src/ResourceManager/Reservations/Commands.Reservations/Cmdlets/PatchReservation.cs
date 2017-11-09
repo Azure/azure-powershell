@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
             }
 
             var resourceInfo = $"Reservation {ReservationId} in order {ReservationOrderId}";
-            if (ShouldProcess(resourceInfo, "Patch"))
+            if (ShouldProcess(resourceInfo, "Update"))
             {
                 
                 Patch Patch;
