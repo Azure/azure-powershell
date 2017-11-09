@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Experiments.ResourceManager
             this ResourceConfig<string, ResourceGroup> resourceGroup,
             ResourcePolicy<ResourceName, Info> policy,
             string name,
-            Func<string, Info> createInfo,
+            Func<IState, Info> createInfo,
             IEnumerable<IResourceConfig> dependencies = null)
             where Info : class
             => policy.CreateResourceConfig(

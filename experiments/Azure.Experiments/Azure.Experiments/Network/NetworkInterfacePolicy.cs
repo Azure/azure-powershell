@@ -23,7 +23,23 @@ namespace Microsoft.Azure.Experiments.Network
             => resourceGroup.CreateResourceConfig(
                 Policy,
                 name,
-                _ => new NetworkInterface(),
+                state => new NetworkInterface
+                {
+                    IpConfigurations = new[]
+                    {
+                        new NetworkInterfaceIPConfiguration
+                        {
+                            PublicIPAddress = new PublicIPAddress
+                            {
+                                Id = state.GetInfo(publicIPAddress).Id
+                            }
+                        }
+                    },
+                    NetworkSecurityGroup = new NetworkSecurityGroup
+                    {
+                        Id = state.GetInfo(networkSecurityGroup).Id
+                    }
+                },
                 new IResourceConfig[] { virtualNetwork, networkSecurityGroup, publicIPAddress });
     }
 }
