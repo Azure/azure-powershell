@@ -6,7 +6,7 @@ namespace Microsoft.Azure.Experiments.Network
 {
     public static class NetworkPolicy
     {
-        public static ResourcePolicy<ResourceName, Info> Create<Operations, Info>(
+        public static ResourcePolicy<Info> Create<Operations, Info>(
             Func<INetworkManagementClient, Operations> getOperations,
             Func<Operations, ResourceName, Task<Info>> getAsync,
             Func<Operations, ResourceName, Info, Task<Info>> createOrUpdateAsync)

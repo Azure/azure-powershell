@@ -13,29 +13,29 @@ namespace Microsoft.Azure.Experiments
 
     public static class ResourceConfig
     {
-        public static ResourceConfig<Name, Info> CreateResourceConfig<Name, Info>(
-            this ResourcePolicy<Name, Info> policy,
-            Name name,
+        public static ResourceConfig<Info> CreateResourceConfig<Info>(
+            this ResourcePolicy<Info> policy,
+            ResourceName name,
             Func<IState, Info> info,
             IEnumerable<IResourceConfig> dependencies = null)
             where Info : class
-            => new ResourceConfig<Name, Info>(policy, name, info, dependencies.EmptyIfNull());
+            => new ResourceConfig<Info>(policy, name, info, dependencies.EmptyIfNull());
     }
 
-    public sealed class ResourceConfig<TName, Info> : IResourceConfig<Info>
+    public sealed class ResourceConfig<Info> : IResourceConfig<Info>
         where Info : class
     {
-        public ResourcePolicy<TName, Info> Policy { get; }
+        public ResourcePolicy<Info> Policy { get; }
 
-        public TName Name { get; }
+        public ResourceName Name { get; }
 
         public Func<IState, Info> CreateInfo { get; }
 
         public IEnumerable<IResourceConfig> Dependencies { get; }
 
         public ResourceConfig(
-            ResourcePolicy<TName, Info> policy,
-            TName name,
+            ResourcePolicy<Info> policy,
+            ResourceName name,
             Func<IState, Info> createInfo,
             IEnumerable<IResourceConfig> dependencies)
         {
