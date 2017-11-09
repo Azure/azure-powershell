@@ -26,21 +26,21 @@ namespace Microsoft.Azure.Commands.PowerBIEmbeddedCapacity.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestPowerBIEmbeddedCapacity()
+        public void TestPBIECapacity()
         {
             NewInstance.RunPsTest("Test-PowerBIEmbeddedCapacity");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestPowerBIEmbeddedCapacityScaleUpDown()
+        public void TestPBIECapacityScaleUpDown()
         {
             NewInstance.RunPsTest("Test-PowerBIEmbeddedCapacityScaleUpDown");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNegativePowerBIEmbeddedCapacity()
+        public void TestNegativePBIECapacity()
         {
             NewInstance.RunPsTest("Test-NegativePowerBIEmbeddedCapacity");
         }

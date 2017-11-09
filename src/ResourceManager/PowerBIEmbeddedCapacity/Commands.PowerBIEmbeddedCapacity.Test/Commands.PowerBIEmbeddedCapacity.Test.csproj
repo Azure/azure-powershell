@@ -208,13 +208,13 @@
     <None Include="ScenarioTests\PowerBIEmbeddedCapacityTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\TestPowerBIEmbeddedCapacity.json">
+    <None Include="SessionRecords\TestPBIECapacity.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\TestNegativePowerBIEmbeddedCapacity.json">
+    <None Include="SessionRecords\TestNegativePBIECapacity.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\TestPowerBIEmbeddedCapacityScaleUpDown.json">
+    <None Include="SessionRecords\TestPBIECapacityScaleUpDown.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

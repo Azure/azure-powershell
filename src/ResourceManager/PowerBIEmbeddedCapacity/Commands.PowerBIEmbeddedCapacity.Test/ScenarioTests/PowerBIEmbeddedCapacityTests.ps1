@@ -13,7 +13,7 @@ function Test-PowerBIEmbeddedCapacity
 		$capacityName = Get-PowerBIEmbeddedCapacityName
 
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $RGlocation
-
+		
 		$capacityCreated = New-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -Location $location -Sku 'A1' -Administrator 'aztest0@stabletest.ccsctp.net,aztest1@stabletest.ccsctp.net'
     
 		Assert-AreEqual $capacityName $capacityCreated.Name
@@ -112,12 +112,12 @@ function Test-PowerBIEmbeddedCapacity
 		Remove-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -PassThru
 
 		# Verify that it is gone by trying to get it again
-		# Assert-Throws {Get-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName}
+		Assert-Throws {Get-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName}
 	}
 	finally
 	{
 		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
-	#	Invoke-HandledCmdlet -Command {Remove-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -ErrorAction SilentlyContinue} -IgnoreFailures
 		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -ErrorAction SilentlyContinue} -IgnoreFailures
 	}
 }
@@ -135,8 +135,9 @@ function Test-PowerBIEmbeddedCapacityScaleUpDown
 		$location = Get-Location
 		$resourceGroupName = Get-ResourceGroupName
 		$capacityName = Get-PowerBIEmbeddedCapacityName
-		New-AzureRmResourceGroup -Name $resourceGroupName -Location $RGlocation
 
+		New-AzureRmResourceGroup -Name $resourceGroupName -Location $RGlocation
+		
 		$capacityCreated = New-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -Location $location -Sku 'A1' -Administrator 'aztest0@stabletest.ccsctp.net,aztest1@stabletest.ccsctp.net'
 		Assert-AreEqual $capacityName $capacityCreated.Name
 		Assert-AreEqual $location $capacityCreated.Location
@@ -195,6 +196,7 @@ function Test-NegativePowerBIEmbeddedCapacity
 		$location = Get-Location
 		$resourceGroupName = Get-ResourceGroupName
 		$capacityName = Get-PowerBIEmbeddedCapacityName
+		
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $RGlocation
 		$capacityCreated = New-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -Location $location -Sku 'A1' -Administrator 'aztest0@stabletest.ccsctp.net,aztest1@stabletest.ccsctp.net'
 
