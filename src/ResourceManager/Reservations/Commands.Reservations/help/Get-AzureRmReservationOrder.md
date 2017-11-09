@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Reservations.dll-Help.xml
 Module Name: AzureRM.Reservations
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.reservations/get-azurermreservationorder
 schema: 2.0.0
 ---
 
