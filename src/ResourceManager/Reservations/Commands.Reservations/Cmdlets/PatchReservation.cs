@@ -39,15 +39,17 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess("AzureRmReservation", "Patch"))
+            if (ParameterSetName.Equals(Constants.ParameterSetNames.ObjectParameterSet))
             {
-                if (ParameterSetName.Equals(Constants.ParameterSetNames.ObjectParameterSet))
-                {
-                    string[] name = Reservation.Name.Split('/');
-                    ReservationOrderId = name[0];
-                    ReservationId = name[1];
-                }
+                string[] name = Reservation.Name.Split('/');
+                ReservationOrderId = name[0];
+                ReservationId = name[1];
+            }
 
+            var resourceInfo = $"Reservation {ReservationId} in order {ReservationOrderId}";
+            if (ShouldProcess(resourceInfo, "Patch"))
+            {
+                
                 Patch Patch;
                 if (AppliedScope != null)
                 {

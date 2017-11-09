@@ -24,22 +24,22 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
         public string[] ReservationId { get; set; }
 
         [Parameter(ParameterSetName = Constants.ParameterSetNames.ObjectParameterSet,
-            Mandatory = true,
-            ValueFromPipeline = true)]
+            Mandatory = true)]
         [ValidateNotNull]
         [ValidateCount(2, 2)]
         public PSReservation[] Reservation { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess("AzureRmReservation", "Merge"))
+            if (ParameterSetName.Equals(Constants.ParameterSetNames.ObjectParameterSet))
             {
-                if (ParameterSetName.Equals(Constants.ParameterSetNames.ObjectParameterSet))
-                {
-                    ReservationOrderId = Reservation[0].Name.Split('/')[0];
-                    ReservationId = Reservation.Select(x => x.Name.Split('/')[1]).ToArray();
-                }
+                ReservationOrderId = Reservation[0].Name.Split('/')[0];
+                ReservationId = Reservation.Select(x => x.Name.Split('/')[1]).ToArray();
+            }
 
+            var resourceInfo = $"Reservation {ReservationId[0]} and {ReservationId[1]} in order {ReservationOrderId}";
+            if (ShouldProcess(resourceInfo, "Merge"))
+            {
                 MergeRequest Merge = new MergeRequest(ListOfResourceId());
                 var response = AzureReservationAPIClient.Reservation.Merge(ReservationOrderId, Merge).Select(x => new PSReservation(x));
                 WriteObject(response, true);

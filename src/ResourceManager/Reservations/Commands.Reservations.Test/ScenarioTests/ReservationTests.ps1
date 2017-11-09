@@ -12,6 +12,10 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+# Currently there is no Create Reservation api exposed to powershell.
+# Please create reservation through portal and use id to run tests
+# Once reservation is created you will have reservationOrderId (which is container for reservation),
+# reservationId, subscriptionId to run this test
 $subscriptionId ="98df3792-7962-4f18-8be2-d5576f122de3"
 $reservationOrderId = "55793bc2-e5c2-4a98-9d5c-0a0bce6cf998"
 $reservationId = "55ef9160-825e-4ca3-969e-c919de3c57ec"
