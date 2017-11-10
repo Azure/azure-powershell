@@ -114,9 +114,42 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="ScenarioTests\ReservationTests.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\ReservationOrderTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Reservations.Test.ScenarioTests.ReservationOrderTests\TestGetReservationOrder.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Reservations.Test.ScenarioTests.ReservationOrderTests\TestListReservationOrders.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Reservations.Test.ScenarioTests.ReservationTests\TestGetCatalog.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Reservations.Test.ScenarioTests.ReservationTests\TestGetReservation.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Reservations.Test.ScenarioTests.ReservationTests\TestGetReservationOrderId.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Reservations.Test.ScenarioTests.ReservationTests\TestListReservationHistory.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Reservations.Test.ScenarioTests.ReservationTests\TestListReservations.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Reservations.Test.ScenarioTests.ReservationTests\TestMergeReservation.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Reservations.Test.ScenarioTests.ReservationTests\TestSplitReservation.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Reservations.Test.ScenarioTests.ReservationTests\TestUpdateReservationToShared.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Reservations.Test.ScenarioTests.ReservationTests\TestUpdateReservationToSingle.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
