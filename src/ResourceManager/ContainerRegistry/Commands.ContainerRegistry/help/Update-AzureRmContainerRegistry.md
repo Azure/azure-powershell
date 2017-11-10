@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ContainerRegistry.dll-Help.xml
-online version:
+Module Name: AzureRM.ContainerRegistry
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.containerregistry/update-azurermcontainerregistry
 schema: 2.0.0
 ---
 
@@ -14,21 +15,22 @@ Updates a container registry.
 ### Empty (Default)
 ```
 Update-AzureRmContainerRegistry [-ResourceGroupName] <String> [-Name] <String> [-Tag <Hashtable>]
- [-StorageAccountName <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-StorageAccountName <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### EnableAdminUserParameterSet
 ```
 Update-AzureRmContainerRegistry [-ResourceGroupName] <String> [-Name] <String> [-EnableAdminUser]
- [-DisableAdminUser] [-Tag <Hashtable>] [-StorageAccountName <String>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DisableAdminUser] [-Tag <Hashtable>] [-StorageAccountName <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DisableAdminUserParameterSet
 ```
 Update-AzureRmContainerRegistry [-ResourceGroupName] <String> [-Name] <String> [-EnableAdminUser]
- [-DisableAdminUser] [-Tag <Hashtable>] [-StorageAccountName <String>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DisableAdminUser] [-Tag <Hashtable>] [-StorageAccountName <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -79,6 +81,21 @@ StorageAccountName : mystorageaccount
 This command sets the specified container registry to use an existing storage account `mystorageaccount` in the same subscription.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DisableAdminUser
 Enable admin user for the container registry.
@@ -155,7 +172,7 @@ Resource Group Name.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -170,7 +187,7 @@ The name of an existing storage account.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named

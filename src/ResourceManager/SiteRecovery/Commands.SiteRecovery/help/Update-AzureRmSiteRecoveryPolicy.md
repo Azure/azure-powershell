@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.SiteRecovery.dll-Help.xml
+Module Name: AzureRM
 ms.assetid: 313E7444-2EB4-4B91-9E56-5730CB006046
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.siterecovery/update-azurermsiterecoverypolicy
 schema: 2.0.0
 ---
 
@@ -16,7 +17,8 @@ Update-AzureRmSiteRecoveryPolicy -Policy <ASRPolicy> [-ReplicationMethod <String
  [-ReplicationFrequencyInSeconds <String>] [-RecoveryPoints <Int32>]
  [-ApplicationConsistentSnapshotFrequencyInHours <Int32>] [-Compression <String>] [-ReplicationPort <UInt16>]
  [-Authentication <String>] [-ReplicationStartTime <TimeSpan>] [-ReplicaDeletion <String>]
- [-RecoveryAzureStorageAccountId <String>] [-Encryption <String>] [<CommonParameters>]
+ [-RecoveryAzureStorageAccountId <String>] [-Encryption <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,6 +60,21 @@ Type: String
 Parameter Sets: (All)
 Aliases: 
 Accepted values: Enable, Disable
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -193,7 +210,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### ASRPolicy
-
 Parameter 'Policy' accepts value of type 'ASRPolicy' from the pipeline
 
 ## OUTPUTS

@@ -18,6 +18,8 @@ namespace Microsoft.Azure.Commands.Network
     using System;
     using System.Collections;
     using System.Collections.Generic;
+    using System.Security;
+    using WindowsAzure.Commands.Common;
     using CNM = Microsoft.Azure.Commands.Network.Models;
     using MNM = Microsoft.Azure.Management.Network.Models;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -233,6 +235,33 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.ConnectivityInformation, CNM.PSConnectivityInformation>();
                 cfg.CreateMap<MNM.ConnectivityHop, CNM.PSConnectivityHop>();
                 cfg.CreateMap<MNM.ConnectivityIssue, CNM.PSConnectivityIssue>();
+                
+                // AvailableProvidersList
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSAvailableProvidersList, MNM.AvailableProvidersList>();
+                cfg.CreateMap<CNM.PSAvailableProvidersListCountry, MNM.AvailableProvidersListCountry>();
+                cfg.CreateMap<CNM.PSAvailableProvidersListState, MNM.AvailableProvidersListState>();
+                cfg.CreateMap<CNM.PSAvailableProvidersListCity, MNM.AvailableProvidersListCity>();
+
+                // MNM to CNM
+                cfg.CreateMap<MNM.AvailableProvidersList, CNM.PSAvailableProvidersList>();
+                cfg.CreateMap<MNM.AvailableProvidersListCountry, CNM.PSAvailableProvidersListCountry>();
+                cfg.CreateMap<MNM.AvailableProvidersListState, CNM.PSAvailableProvidersListState>();
+                cfg.CreateMap<MNM.AvailableProvidersListCity, CNM.PSAvailableProvidersListCity>();
+
+                // AzureReachabilityReport
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSAzureReachabilityReport, MNM.AzureReachabilityReport>();
+                cfg.CreateMap<CNM.PSAzureReachabilityReportLocation, MNM.AzureReachabilityReportLocation>();
+                cfg.CreateMap<CNM.PSAzureReachabilityReportItem, MNM.AzureReachabilityReportItem>();
+                cfg.CreateMap<CNM.PSAzureReachabilityReportLatencyInfo, MNM.AzureReachabilityReportLatencyInfo>();
+
+                // MNM to CNM
+                cfg.CreateMap<MNM.AzureReachabilityReport, CNM.PSAzureReachabilityReport>();
+                cfg.CreateMap<MNM.AzureReachabilityReportLocation, CNM.PSAzureReachabilityReportLocation>();
+                cfg.CreateMap<MNM.AzureReachabilityReportItem, CNM.PSAzureReachabilityReportItem>();
+                cfg.CreateMap<MNM.AzureReachabilityReportLatencyInfo, CNM.PSAzureReachabilityReportLatencyInfo>();
+
 
                 // LoadBalancer
                 // CNM to MNM
@@ -536,7 +565,9 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSApplicationGatewayBackendHttpSettings, MNM.ApplicationGatewayBackendHttpSettings>();
                 cfg.CreateMap<CNM.PSApplicationGatewayFrontendIPConfiguration, MNM.ApplicationGatewayFrontendIPConfiguration>();
                 cfg.CreateMap<CNM.PSApplicationGatewayFrontendPort, MNM.ApplicationGatewayFrontendPort>();
-                cfg.CreateMap<CNM.PSApplicationGatewaySslCertificate, MNM.ApplicationGatewaySslCertificate>();
+                cfg.CreateMap<CNM.PSApplicationGatewaySslCertificate, MNM.ApplicationGatewaySslCertificate>().ForMember(
+                    dest => dest.Password,
+                    opt => opt.ResolveUsing(src => src.Password?.ConvertToString()));
                 cfg.CreateMap<CNM.PSApplicationGatewayHttpListener, MNM.ApplicationGatewayHttpListener>();
                 cfg.CreateMap<CNM.PSApplicationGatewayIPConfiguration, MNM.ApplicationGatewayIPConfiguration>();
                 cfg.CreateMap<CNM.PSApplicationGatewayRequestRoutingRule, MNM.ApplicationGatewayRequestRoutingRule>();
@@ -576,7 +607,9 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.ApplicationGatewayBackendAddressPool, CNM.PSApplicationGatewayBackendAddressPool>();
                 cfg.CreateMap<MNM.ApplicationGatewayBackendHttpSettings, CNM.PSApplicationGatewayBackendHttpSettings>();
                 cfg.CreateMap<MNM.ApplicationGatewayFrontendIPConfiguration, CNM.PSApplicationGatewayFrontendIPConfiguration>();
-                cfg.CreateMap<MNM.ApplicationGatewaySslCertificate, CNM.PSApplicationGatewaySslCertificate>();
+                cfg.CreateMap<MNM.ApplicationGatewaySslCertificate, CNM.PSApplicationGatewaySslCertificate>().ForMember(
+                    dest => dest.Password,
+                    opt => opt.ResolveUsing(src => src.Password?.ConvertToSecureString()));
                 cfg.CreateMap<MNM.ApplicationGatewayFrontendPort, CNM.PSApplicationGatewayFrontendPort>();
                 cfg.CreateMap<MNM.ApplicationGatewayHttpListener, CNM.PSApplicationGatewayHttpListener>();
                 cfg.CreateMap<MNM.ApplicationGatewayIPConfiguration, CNM.PSApplicationGatewayIPConfiguration>();

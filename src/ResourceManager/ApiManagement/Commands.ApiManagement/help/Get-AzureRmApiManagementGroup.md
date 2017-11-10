@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
+Module Name: AzureRM.ApiManagement
 ms.assetid: EEB52CCA-F5D6-4ACB-A6C9-D07C510A5878
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/get-azurermapimanagementgroup
 schema: 2.0.0
 ---
 
@@ -12,25 +13,25 @@ Gets all or specific API management groups.
 
 ## SYNTAX
 
-### Get all groups (Default)
+### GetAllGroups (Default)
 ```
 Get-AzureRmApiManagementGroup -Context <PsApiManagementContext> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Get by group ID
+### GetByGroupId
 ```
 Get-AzureRmApiManagementGroup -Context <PsApiManagementContext> [-GroupId <String>] [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Find groups by user
+### GetByUserId
 ```
 Get-AzureRmApiManagementGroup -Context <PsApiManagementContext> [-Name <String>] [-UserId <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Find groups by product
+### GetByProductId
 ```
 Get-AzureRmApiManagementGroup -Context <PsApiManagementContext> [-Name <String>] [-ProductId <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -44,7 +45,7 @@ The **Get-AzureRmApiManagementGroup** cmdlet gets all or specific API management
 ### Example 1: Get all groups
 ```
 PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzureRmApiManagementGroup -Context $apimContext 
+PS C:\>Get-AzureRmApiManagementGroup -Context $apimContext
 ```
 
 This command gets all groups.
@@ -111,7 +112,7 @@ If specified, the cmdlet attempts to find the group by the identifier.
 
 ```yaml
 Type: String
-Parameter Sets: Get by group ID
+Parameter Sets: GetByGroupId
 Aliases: 
 
 Required: False
@@ -143,7 +144,7 @@ This parameter is optional.
 
 ```yaml
 Type: String
-Parameter Sets: Find groups by product
+Parameter Sets: GetByProductId
 Aliases: 
 
 Required: False
@@ -159,7 +160,7 @@ If specified the cmdlet will return all groups the product assigned to.
 
 ```yaml
 Type: String
-Parameter Sets: Find groups by user
+Parameter Sets: GetByUserId
 Aliases: 
 
 Required: False

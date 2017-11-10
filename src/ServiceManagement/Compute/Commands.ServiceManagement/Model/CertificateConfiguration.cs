@@ -19,5 +19,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
         public string Thumbprint { get; set; }
 
         public string ThumbprintAlgorithm { get; set; }
+
+        public string SourceLocation { get; set; }
     }
 }

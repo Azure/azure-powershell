@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
 Module Name: AzureRM.Resources
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/set-azurermmanagedapplication
 schema: 2.0.0
 ---
 
@@ -12,11 +12,20 @@ Updates managed application
 
 ## SYNTAX
 
+### SetByNameAndResourceGroup (Default)
 ```
 Set-AzureRmManagedApplication -Name <String> -ResourceGroupName <String> [-ManagedResourceGroupName <String>]
  [-ManagedApplicationDefinitionId <String>] [-Parameter <String>] [-Kind <String>] [-Plan <Hashtable>]
  [-Tag <Hashtable>] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm]
+ [-Confirm] [<CommonParameters>]
+```
+
+### SetById
+```
+Set-AzureRmManagedApplication -Id <String> [-ManagedResourceGroupName <String>]
+ [-ManagedApplicationDefinitionId <String>] [-Parameter <String>] [-Kind <String>] [-Plan <Hashtable>]
+ [-Tag <Hashtable>] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,7 +39,6 @@ PS C:\>Set-AzureRmManagedApplication -ResourceId "/subscriptions/mySubId/resourc
 ```
 
 This command updates the managed application description
-
 
 ## PARAMETERS
 
@@ -62,6 +70,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Id
+The fully qualified managed application Id, including the subscription. e.g. /subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName
+
+```yaml
+Type: String
+Parameter Sets: SetById
+Aliases: ResourceId
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -116,7 +139,7 @@ The managed application name.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: SetByNameAndResourceGroup
 Aliases: 
 
 Required: True
@@ -177,7 +200,7 @@ The resource group name.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: SetByNameAndResourceGroup
 Aliases: 
 
 Required: True
@@ -233,16 +256,17 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### System.String
 System.Collections.Hashtable
 
-
 ## OUTPUTS
 
 ### System.Management.Automation.PSObject
-
 
 ## NOTES
 

@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Dns.dll-Help.xml
+Module Name: AzureRM.Dns
 ms.assetid: E37ADC54-A37B-41BF-BE94-9E4052C234BB
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.dns/set-azurermdnszone
 schema: 2.0.0
 ---
 
@@ -14,13 +15,14 @@ Updates the properties of a DNS zone.
 
 ### Fields
 ```
-Set-AzureRmDnsZone -Name <String> -ResourceGroupName <String> [-Tag <Hashtable>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Set-AzureRmDnsZone -Name <String> -ResourceGroupName <String> [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Object
 ```
-Set-AzureRmDnsZone -Zone <DnsZone> [-Overwrite] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzureRmDnsZone -Zone <DnsZone> [-Overwrite] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -64,13 +66,28 @@ zone.
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of the DNS zone to update.
 
 ```yaml
 Type: String
 Parameter Sets: Fields
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -88,7 +105,7 @@ which updates the zone regardless of concurrent changes.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: Object
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -106,7 +123,7 @@ Alternatively, you can specify the zone using a DnsZone object with the *Zone* p
 ```yaml
 Type: String
 Parameter Sets: Fields
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -140,7 +157,7 @@ Alternatively, you can specify the zone using the *ZoneName* and *ResourceGroupN
 ```yaml
 Type: DnsZone
 Parameter Sets: Object
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named

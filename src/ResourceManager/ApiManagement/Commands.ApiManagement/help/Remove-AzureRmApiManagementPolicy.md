@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
+Module Name: AzureRM.ApiManagement
 ms.assetid: 466AFB8C-C272-4A4F-8E13-A4DBD6EE3A85
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/remove-azurermapimanagementpolicy
 schema: 2.0.0
 ---
 
@@ -12,25 +13,25 @@ Removes the API Management policy from a specified scope.
 
 ## SYNTAX
 
-### Tenant level (Default)
+### RemoveTenantLevel (Default)
 ```
 Remove-AzureRmApiManagementPolicy -Context <PsApiManagementContext> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Product level
+### RemoveProductLevel
 ```
 Remove-AzureRmApiManagementPolicy -Context <PsApiManagementContext> -ProductId <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### API level
+### RemoveApiLevel
 ```
 Remove-AzureRmApiManagementPolicy -Context <PsApiManagementContext> -ApiId <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Operation level
+### RemoveOperationLevel
 ```
 Remove-AzureRmApiManagementPolicy -Context <PsApiManagementContext> -ApiId <String> -OperationId <String>
  [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -44,7 +45,7 @@ The **Remove-AzureRmApiManagementPolicy** cmdlet removes the API Management poli
 ### Example 1: Remove the tenant level policy
 ```
 PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Remove-AzureRmApiManagementPolicy -Context $apimContext 
+PS C:\>Remove-AzureRmApiManagementPolicy -Context $apimContext
 ```
 
 This command removes tenant level policy from API Management.
@@ -81,7 +82,7 @@ If you specify this parameter, the cmdlet removes the API-scope policy.
 
 ```yaml
 Type: String
-Parameter Sets: API level, Operation level
+Parameter Sets: RemoveApiLevel, RemoveOperationLevel
 Aliases: 
 
 Required: True
@@ -127,7 +128,7 @@ If you specify this parameter with the *ApiId* parameter, this cmdlet removes th
 
 ```yaml
 Type: String
-Parameter Sets: Operation level
+Parameter Sets: RemoveOperationLevel
 Aliases: 
 
 Required: True
@@ -158,7 +159,7 @@ If you specify this parameter, the cmdlet removes the product-scope policy.
 
 ```yaml
 Type: String
-Parameter Sets: Product level
+Parameter Sets: RemoveProductLevel
 Aliases: 
 
 Required: True

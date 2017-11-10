@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
+Module Name: AzureRM.Resources
 ms.assetid: BA97DB6F-F64D-417E-BD72-C2EBB2EC1AA4
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/set-azurermadapplication
 schema: 2.0.0
 ---
 
@@ -15,15 +16,15 @@ Updates an existing azure active directory application.
 ### ApplicationObjectIdWithUpdateParamsParameterSet
 ```
 Set-AzureRmADApplication -ObjectId <String> [-DisplayName <String>] [-HomePage <String>]
- [-IdentifierUris <String[]>] [-ReplyUrls <String[]>] [-AvailableToOtherTenants <Boolean>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-IdentifierUris <String[]>] [-ReplyUrls <String[]>] [-AvailableToOtherTenants <Boolean>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationIdWithUpdateParamsParameterSet
 ```
 Set-AzureRmADApplication -ApplicationId <String> [-DisplayName <String>] [-HomePage <String>]
- [-IdentifierUris <String[]>] [-ReplyUrls <String[]>] [-AvailableToOtherTenants <Boolean>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-IdentifierUris <String[]>] [-ReplyUrls <String[]>] [-AvailableToOtherTenants <Boolean>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -75,6 +76,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

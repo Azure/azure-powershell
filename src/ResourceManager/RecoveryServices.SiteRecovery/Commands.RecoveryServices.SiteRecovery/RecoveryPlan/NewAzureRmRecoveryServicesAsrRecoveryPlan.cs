@@ -248,6 +248,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     VmId = ((HyperVReplicaBlueReplicationDetails)replicationProtectedItemResponse
                         .Properties.ProviderSpecificDetails).VmId;
                 }
+                else if (replicationProtectedItemResponse.Properties.ProviderSpecificDetails
+                        .GetType() ==
+                    typeof(InMageAzureV2ReplicationDetails))
+                {
+                    VmId = ((InMageAzureV2ReplicationDetails)replicationProtectedItemResponse
+                        .Properties.ProviderSpecificDetails).VmId;
+                }
+                else if (replicationProtectedItemResponse.Properties.ProviderSpecificDetails
+                        .GetType() ==
+                    typeof(InMageReplicationDetails))
+                {
+                    VmId = ((InMageReplicationDetails)replicationProtectedItemResponse
+                        .Properties.ProviderSpecificDetails).VmId;
+                }
 
                 var recoveryPlanProtectedItem = new RecoveryPlanProtectedItem();
                 recoveryPlanProtectedItem.Id = replicationProtectedItemResponse.Id;

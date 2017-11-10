@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ApiManagement.dll-Help.xml
 ms.assetid: 5B7B285A-6418-44D7-BD78-E14AFFAA7765
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/update-azurermapimanagementregion
 schema: 2.0.0
 ---
 

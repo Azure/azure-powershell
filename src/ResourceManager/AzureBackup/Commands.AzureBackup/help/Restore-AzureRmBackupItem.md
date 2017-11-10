@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.AzureBackup.dll-Help.xml
+Module Name: AzureRM.Backup
 ms.assetid: 856B76FC-88ED-4A29-9DC6-C482398D702E
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.backup/restore-azurermbackupitem
 schema: 2.0.0
 ---
 
@@ -14,7 +15,7 @@ Restores the data and configuration for a Backup item to a recovery point.
 
 ```
 Restore-AzureRmBackupItem [-StorageAccountName] <String> [-RecoveryPoint] <AzureRMBackupRecoveryPoint>
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -54,6 +55,21 @@ The command stores that object in the $RecoveryPoint variable.
 The final command restores the recovery point in $RecoveryPoint for the account named DestinationAccount.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -RecoveryPoint
 Specifies the recovery point to which to restore the virtual machine.

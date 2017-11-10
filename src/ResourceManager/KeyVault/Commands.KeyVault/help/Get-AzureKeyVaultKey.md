@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
+Module Name: AzureRM.KeyVault
 ms.assetid: 2BE34AE1-06FA-4F66-8FDB-CED22C2E0978
-online version: http://go.microsoft.com/fwlink/?LinkId=690297
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/get-azurekeyvaultkey
 schema: 2.0.0
 ---
 
@@ -14,22 +15,25 @@ Gets Key Vault keys.
 
 ### ByVaultName (Default)
 ```
-Get-AzureKeyVaultKey [-VaultName] <String> [<CommonParameters>]
+Get-AzureKeyVaultKey [-VaultName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByKeyName
 ```
-Get-AzureKeyVaultKey [-VaultName] <String> [-Name] <String> [[-Version] <String>] [<CommonParameters>]
+Get-AzureKeyVaultKey [-VaultName] <String> [-Name] <String> [[-Version] <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByKeyVersions
 ```
-Get-AzureKeyVaultKey [-VaultName] <String> [-Name] <String> [-IncludeVersions] [<CommonParameters>]
+Get-AzureKeyVaultKey [-VaultName] <String> [-Name] <String> [-IncludeVersions]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByDeletedKey
 ```
-Get-AzureKeyVaultKey [-VaultName] <String> [[-Name] <String>] [-InRemovedState] [<CommonParameters>]
+Get-AzureKeyVaultKey [-VaultName] <String> [[-Name] <String>] [-InRemovedState]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -84,6 +88,21 @@ This command will return metadata such as the deletion date, and the scheduled p
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -IncludeVersions
 Indicates that this cmdlet gets all versions of a key.
 The current version of a key is the first one on the list.
@@ -104,7 +123,9 @@ Accept wildcard characters: False
 ```
 
 ### -InRemovedState
-Specifies whether to show the previously deleted keys in the output.```yaml
+Specifies whether to show the previously deleted keys in the output
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: ByDeletedKey
 Aliases: 
@@ -125,7 +146,7 @@ Parameter Sets: ByKeyName, ByKeyVersions
 Aliases: KeyName
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -137,7 +158,7 @@ Parameter Sets: ByDeletedKey
 Aliases: KeyName
 
 Required: False
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -153,7 +174,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -169,7 +190,7 @@ Parameter Sets: ByKeyName
 Aliases: KeyVersion
 
 Required: False
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

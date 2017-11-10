@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
+Module Name: AzureRM.ApiManagement
 ms.assetid: 15B6EAE2-56ED-4A01-B8EA-52B9FCDC1F66
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/get-azurermapimanagementopenidconnectprovider
 schema: 2.0.0
 ---
 
@@ -12,19 +13,19 @@ Gets OpenID Connect providers.
 
 ## SYNTAX
 
-### Get all OpenID Connect Providers (Default)
+### GetAllOpenIdConnectProviders (Default)
 ```
 Get-AzureRmApiManagementOpenIdConnectProvider -Context <PsApiManagementContext>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Get by OpenID Connect Provider ID
+### GetByOpenIdConnectProviderId
 ```
 Get-AzureRmApiManagementOpenIdConnectProvider -Context <PsApiManagementContext>
  [-OpenIdConnectProviderId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Find by OpenID Connect Provider friendly Name
+### GetByName
 ```
 Get-AzureRmApiManagementOpenIdConnectProvider -Context <PsApiManagementContext> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -38,7 +39,7 @@ The **Get-AzureRmApiManagementOpenIdConnectProvider** cmdlet gets OpenID Connect
 ### Example 1: Get all providers
 ```
 PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzureRmApiManagementOpenIdConnectProvider -Context $apimContext 
+PS C:\>Get-AzureRmApiManagementOpenIdConnectProvider -Context $apimContext
 ```
 
 This command gets all OpenID Connect providers for the specified context.
@@ -97,7 +98,7 @@ If you specify a name, this cmdlet gets that provider.
 
 ```yaml
 Type: String
-Parameter Sets: Find by OpenID Connect Provider friendly Name
+Parameter Sets: GetByName
 Aliases: 
 
 Required: False
@@ -113,7 +114,7 @@ If you specify an ID, this cmdlet gets that provider.
 
 ```yaml
 Type: String
-Parameter Sets: Get by OpenID Connect Provider ID
+Parameter Sets: GetByOpenIdConnectProviderId
 Aliases: 
 
 Required: False

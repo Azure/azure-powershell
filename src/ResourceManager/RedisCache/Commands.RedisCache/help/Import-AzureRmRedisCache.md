@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.RedisCache.dll-Help.xml
+Module Name: AzureRM
 ms.assetid: BC00DEF9-6A93-4DF5-8E5B-C488551BA1D1
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.rediscache/import-azurermrediscache
 schema: 2.0.0
 ---
 
@@ -14,7 +15,7 @@ Imports data from blobs to Azure Redis Cache.
 
 ```
 Import-AzureRmRedisCache -ResourceGroupName <String> -Name <String> -Files <String[]> [-Format <String>]
- [-Force] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,12 +32,27 @@ This command imports data from the blob that is specified by the SAS URL into Az
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Files
 Specifies the SAS URLs of blobs whose content this cmdlet imports into the cache. You can generate the SAS URLs using the following PowerShell commands:
 
 $storageAccountContext = New-AzureStorageContext -StorageAccountName "storageName" -StorageAccountKey "key"
 
-$sasKeyForBlob = New-AzureStorageBlobSASToken -Container “containerName” -blob “blobName” -Permission "rwdl" -StartTime ([System.DateTime]::Now).AddMinutes(-15) -ExpiryTime ([System.DateTime]::Now).AddHours(5) -Context $storageAccountContext -FullUri
+$sasKeyForBlob = New-AzureStorageBlobSASToken -Container "containerName" -blob "blobName" -Permission "rwdl" -StartTime ([System.DateTime]::Now).AddMinutes(-15) -ExpiryTime ([System.DateTime]::Now).AddHours(5) -Context $storageAccountContext -FullUri
 
 Import-AzureRmRedisCache -ResourceGroupName "ResourceGroupName" -Name "cacheName" -Files ($sasKeyForBlob) -Force
 

@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ApiManagement.dll-Help.xml
 ms.assetid: 022BBF5F-AFF1-45D5-9153-872779FFBAF4
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/restore-azurermapimanagement
 schema: 2.0.0
 ---
 
