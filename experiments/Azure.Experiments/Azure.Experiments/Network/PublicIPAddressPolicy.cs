@@ -1,8 +1,25 @@
-﻿using Microsoft.Azure.Management.Network;
+﻿using System.Threading.Tasks;
+using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Experiments.Network
 {
+    public sealed class PublicIPAddressPolicy
+        : NetworkPolicy<PublicIPAddress, IPublicIPAddressesOperations>
+    {
+        public override Task<PublicIPAddress> CreateOrUpdateAsync(CreateParams p)
+            => p.Operations.CreateOrUpdateAsync(
+                p.ResourceGroupName, p.Name, p.Info, p.CancellationToken);
+
+        public override Task<PublicIPAddress> GetAsync(GetParams p)
+             => p.Operations.GetAsync(
+                 p.ResourceGroupName, p.Name, cancellationToken: p.CancellationToken);
+
+        public override IPublicIPAddressesOperations GetOperations(INetworkManagementClient client)
+            => client.PublicIPAddresses;
+    }
+
+    /*
     public static class PublicIPAddressPolicy
     {
         public static ResourcePolicy<PublicIPAddress> Policy { get; }
@@ -16,4 +33,5 @@ namespace Microsoft.Azure.Experiments.Network
             this ResourceName name)
             => Policy.CreateConfig(name, _ => new PublicIPAddress());
     }
+    */
 }

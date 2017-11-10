@@ -1,19 +1,18 @@
-﻿using Microsoft.Azure.Management.Network;
-using System;
+﻿using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Azure.Management.Network.Models;
+using Microsoft.Azure.Management.Network;
 
 namespace Microsoft.Azure.Experiments.Network
 {
-    public static class NetworkPolicy
+    public abstract class NetworkPolicy<Info, Operations> 
+        : ResourcePolicy<Info, INetworkManagementClient, Operations>
+        where Info : Resource
     {
-        public static ResourcePolicy<Info> Create<Operations, Info>(
-            Func<INetworkManagementClient, Operations> getOperations,
-            Func<Operations, ResourceName, Task<Info>> getAsync,
-            Func<Operations, ResourceName, Info, Task<Info>> createOrUpdateAsync)
-            where Info : Management.Network.Models.Resource
-            => OperationsPolicy
-                .Create(getAsync, createOrUpdateAsync)
-                .Transform(getOperations)
-                .CreateResourcePolicy(i => i.Location, (i, location) => i.Location = location);
+        public sealed override string GetLocation(Info info)
+            => info.Location;
+
+        public sealed override void SetLocation(Info info, string location)
+            => info.Location = location;
     }
 }

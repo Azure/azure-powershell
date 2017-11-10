@@ -1,8 +1,25 @@
-﻿using Microsoft.Azure.Management.Network;
+﻿using System.Threading.Tasks;
+using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Experiments.Network
 {
+    public sealed class NetworkInterfacePolicy
+        : NetworkPolicy<NetworkInterface, INetworkInterfacesOperations>
+    {
+        public override Task<NetworkInterface> CreateOrUpdateAsync(CreateParams p)
+            => p.Operations.CreateOrUpdateAsync(
+                p.ResourceGroupName, p.Name, p.Info, p.CancellationToken);
+
+        public override Task<NetworkInterface> GetAsync(GetParams p)
+            => p.Operations.GetAsync(
+                p.ResourceGroupName, p.Name, cancellationToken: p.CancellationToken);
+
+        public override INetworkInterfacesOperations GetOperations(INetworkManagementClient client)
+            => client.NetworkInterfaces;
+    }
+
+    /*
     public static class NetworkInterfacePolicy
     {
         public static ResourcePolicy<NetworkInterface> Policy { get; }
@@ -44,4 +61,5 @@ namespace Microsoft.Azure.Experiments.Network
                 new IResourceConfig[] { networkSecurityGroup, publicIPAddress },
                 new[] { subnet });
     }
+    */
 }

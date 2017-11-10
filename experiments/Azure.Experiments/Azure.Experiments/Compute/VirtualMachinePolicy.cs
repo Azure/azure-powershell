@@ -1,9 +1,25 @@
-﻿using Microsoft.Azure.Management.Compute;
+﻿using System.Threading.Tasks;
+using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Experiments.Compute
 {
+    public sealed class VirtualMachinePolicy
+        : ComputePolicy<VirtualMachine, IVirtualMachinesOperations>
+    {
+        public override Task<VirtualMachine> CreateOrUpdateAsync(CreateParams p)
+            => p.Operations.CreateOrUpdateAsync(
+                p.ResourceGroupName, p.Name, p.Info, p.CancellationToken);
+
+        public override Task<VirtualMachine> GetAsync(GetParams p)
+            => p.Operations.GetAsync(
+                p.ResourceGroupName, p.Name, cancellationToken: p.CancellationToken);
+
+        public override IVirtualMachinesOperations GetOperations(IComputeManagementClient client)
+            => client.VirtualMachines;
+    }
+
+    /*
     public static class VirtualMachinePolicy
     {
         public static ResourcePolicy<VirtualMachine> Policy { get; }
@@ -33,4 +49,5 @@ namespace Microsoft.Azure.Experiments.Compute
                 },
                 new[] { networkInterface });
     }
+    */
 }
