@@ -43,6 +43,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
                 {
                     IAzureContext context = AzureRmProfileProvider.Instance.Profile.DefaultContext;
                     var contextHash = HashContext(context);
+                    IDictionary<string, ICollection<string>> output;
                     if (!_resourceTypeLocationDictionary.ContainsKey(contextHash))
                     {
                         try
@@ -59,10 +60,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
                                 if (allProviders.Result != null)
                                 {
                                     _resourceTypeLocationDictionary[contextHash] = CreateLocationDictionary(allProviders.Result.ToList());
+                                    output = _resourceTypeLocationDictionary[contextHash];
                                 }
                                 else
                                 {
-                                    _resourceTypeLocationDictionary[contextHash] = CreateLocationDictionary(new List<Provider>());
+                                    output = CreateLocationDictionary(new List<Provider>());
 #if DEBUG
                                     throw new Exception("Result from client.Providers is null");
 #endif
@@ -70,7 +72,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
                             }
                             else
                             {
-                                _resourceTypeLocationDictionary[contextHash] = new ConcurrentDictionary<string, ICollection<string>>(StringComparer.OrdinalIgnoreCase);
+                                output = new ConcurrentDictionary<string, ICollection<string>>(StringComparer.OrdinalIgnoreCase);
 #if DEBUG
                                 throw new Exception(Resources.TimeOutForProviderList);
 #endif
@@ -78,7 +80,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
                         }
                         catch (Exception ex)
                         {
-                            _resourceTypeLocationDictionary[contextHash] = new ConcurrentDictionary<string, ICollection<string>>(StringComparer.OrdinalIgnoreCase);
+                            output = new ConcurrentDictionary<string, ICollection<string>>(StringComparer.OrdinalIgnoreCase);
                             if (ex == null) { }
 #if DEBUG
                             throw ex;
@@ -86,7 +88,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
                         }
                     }
 
-                    return _resourceTypeLocationDictionary[contextHash];
+                    else
+                    {
+                        output = _resourceTypeLocationDictionary[contextHash];
+                    }
+
+                    return output;
                 }
             }
         }
