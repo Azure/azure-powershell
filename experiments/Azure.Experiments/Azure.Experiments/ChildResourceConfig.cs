@@ -1,7 +1,15 @@
 ﻿namespace Microsoft.Azure.Experiments
 {
+    public interface IChildResourceConfigVisitor<Result>
+    {
+        Result Visit<Info, ParentInfo>(ChildResourceConfig<Info, ParentInfo> config)
+            where Info : class
+            where ParentInfo : class;
+    }
+
     public interface IChildResourceConfig
     {
+        Result Apply<Result>(IChildResourceConfigVisitor<Result> config);
     }
 
     public interface IChildResourceConfig<Info> : IChildResourceConfig
@@ -38,5 +46,8 @@
             Parent = parent;
             Name = name;
         }
+
+        public Result Apply<Result>(IChildResourceConfigVisitor<Result> config)
+            => config.Visit(this);
     }
 }

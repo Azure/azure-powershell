@@ -19,18 +19,18 @@ namespace Microsoft.Azure.Experiments
     public sealed class ResourcePolicy<Info>
         where Info : class
     {
-        public OperationsPolicy<IClient, Info> OperationsPolicy { get; }
+        public OperationsPolicy<IClient, Info> Operations { get; }
 
         public Func<Info, string> GetLocation { get; }
 
         public Action<Info, string> SetLocation { get; }
 
         public ResourcePolicy(            
-            OperationsPolicy<IClient, Info> operationsPolicy,
+            OperationsPolicy<IClient, Info> operations,
             Func<Info, string> getLocation,
             Action<Info, string> setLocation)
         {
-            OperationsPolicy = operationsPolicy;
+            Operations = operations;
             GetLocation = getLocation;
             SetLocation = setLocation;
         }

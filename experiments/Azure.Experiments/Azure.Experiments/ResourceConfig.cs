@@ -3,12 +3,15 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Experiments
 {
-    public interface IResourceConfig
+    public interface IResourceConfigVisitor<Result>
     {
+        Result Visit<T>(ResourceConfig<T> config)
+            where T : class;
     }
 
-    public interface IResourceConfig<Info> : IResourceConfig
+    public interface IResourceConfig
     {
+        Result Apply<Result>(IResourceConfigVisitor<Result> config);
     }
 
     public static class ResourceConfig
@@ -28,7 +31,7 @@ namespace Microsoft.Azure.Experiments
                 childResources.EmptyIfNull());
     }
 
-    public sealed class ResourceConfig<Info> : IResourceConfig<Info>
+    public sealed class ResourceConfig<Info> : IResourceConfig
         where Info : class
     {
         public ResourcePolicy<Info> Policy { get; }
@@ -54,5 +57,8 @@ namespace Microsoft.Azure.Experiments
             Resources = resources;
             ChildResources = childResources;
         }
+
+        public Result Apply<Result>(IResourceConfigVisitor<Result> config)
+            => config.Visit(this);
     }
 }
