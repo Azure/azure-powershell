@@ -54,8 +54,15 @@ CLRVersion = '4.0'
 RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '4.0.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = '.\Microsoft.Azure.Commands.RecoveryServices.Backup.Models.dll', 
-                     '.\Microsoft.Azure.Management.RecoveryServices.Backup.dll'
+RequiredAssemblies = '.\Microsoft.Azure.Commands.RecoveryServices.ARM.dll',
+                    '.\Microsoft.Azure.Commands.RecoveryServices.Backup.Models.dll', 
+                     '.\Microsoft.Azure.Management.RecoveryServices.Backup.dll',
+                     '.\Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers.dll',
+                     '.\Microsoft.Azure.Commands.RecoveryServices.Backup.Logger.dll',
+                     '.\Microsoft.Azure.Commands.RecoveryServices.Backup.Providers.dll',
+                     '.\Microsoft.Azure.Commands.RecoveryServices.Backup.ServiceClientAdapter.dll',
+                     '.\Microsoft.Azure.Management.RecoveryServices.dll',
+                     '.\Security.Cryptography.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
