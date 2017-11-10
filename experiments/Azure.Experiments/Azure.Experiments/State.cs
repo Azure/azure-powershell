@@ -9,22 +9,39 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Experiments
 {
-    public sealed class StateMap : IState
+    public static class State
     {
-        public T Get<T>(ResourceConfig<T> resourceConfig)
+        public static async Task<IState> GetStateAsync<T>(this IClient client, ResourceConfig<T> config)
             where T : class
-            => Resources.TryGetValue(resourceConfig, out var result) ? (T)result : null;
+        {
+            var visitor = new GetAsyncVisitor(client);
+            await visitor.Visit(config);
+            return visitor.State;
+        }
 
-        public T Get<T>(IChildResourceConfig<T> childResourceConfig)
-            where T : class
-            => ChildResources.TryGetValue(childResourceConfig, out var result) ? (T)result : null;
+        sealed class Result : IState
+        {
+            public T Get<T>(ResourceConfig<T> resourceConfig)
+                where T : class
+                => Resources.TryGetValue(resourceConfig, out var result) ? (T)result : null;
 
-        public ResourceGroup GetResourceGroup(string name)
-            => ResourceGroups.TryGetValue(name, out var result) ? result : null;
+            public T Get<T, P>(ChildResourceConfig<T, P> config)
+                where T : class
+                where P : class
+            {
+                var parent = Get(config.Parent);
+                return parent == null ? null : config.Policy.Get(parent, config.Name);
+            }
 
-        public Task GetAsync<T>(IClient client, ResourceConfig<T> config)
-            where T : class
-            => new GetAsyncVisitor(this, client).Visit(config);
+            public ResourceGroup GetResourceGroup(string name)
+                => ResourceGroups.TryGetValue(name, out var result) ? result : null;
+
+            public ConcurrentDictionary<string, ResourceGroup> ResourceGroups { get; }
+                = new ConcurrentDictionary<string, ResourceGroup>();
+
+            public ConcurrentDictionary<IResourceConfig, object> Resources { get; }
+                = new ConcurrentDictionary<IResourceConfig, object>();
+        }
 
         static async Task<T> HandleNotFoundException<T>(Func<Task<T>> f)
             where T : class
@@ -44,9 +61,10 @@ namespace Microsoft.Azure.Experiments
             IResourceConfigVisitor<Task>,
             IChildResourceConfigVisitor<Task>
         {
-            public GetAsyncVisitor(StateMap map, IClient client)
+            public Result State { get; } = new Result();
+
+            public GetAsyncVisitor(IClient client)
             {
-                State = map;
                 Client = client;
             }
 
@@ -67,10 +85,9 @@ namespace Microsoft.Azure.Experiments
                         return result;
                     });
 
-            public async Task<Info> GetResourceAsync<Info>(ResourceConfig<Info> config)
+            public async Task Visit<Info>(ResourceConfig<Info> config)
                 where Info : class
-            {
-                var result = await ResourcesTasks.GetOrAdd(
+                => await ResourcesTasks.GetOrAdd(
                     config,
                     async _ =>
                     {
@@ -94,44 +111,11 @@ namespace Microsoft.Azure.Experiments
                         }
                         return i;
                     });
-                return result as Info;
-            }
 
-            public async Task Visit<Info>(ResourceConfig<Info> config)
-                where Info : class
-                => await GetResourceAsync(config);
-
-            /// <summary>
-            /// Get infromation about a child resource.
-            /// </summary>
-            /// <typeparam name="Info"></typeparam>
-            /// <typeparam name="ParentInfo"></typeparam>
-            /// <param name="config"></param>
-            /// <returns></returns>
-            public async Task Visit<Info, ParentInfo>(ChildResourceConfig<Info, ParentInfo> config)
+            public Task Visit<Info, ParentInfo>(ChildResourceConfig<Info, ParentInfo> config)
                 where Info : class
                 where ParentInfo : class
-                => await ChildResourcesTasks.GetOrAdd(
-                    config,
-                    async _ => 
-                    {
-                        var parent = await GetResourceAsync(config.Parent);
-                        if (parent != null)
-                        {
-                            var result = config.Policy.Get(parent, config.Name);
-                            if (result != null)
-                            {
-                                State.ChildResources.GetOrAdd(config, result);                                
-                            }
-                            return result;
-                        }
-                        else
-                        {
-                            return null;
-                        }
-                    });
-
-            StateMap State { get; }
+                => Visit(config.Parent);
 
             IClient Client { get; }
 
@@ -140,18 +124,6 @@ namespace Microsoft.Azure.Experiments
 
             ConcurrentDictionary<IResourceConfig, Task<object>> ResourcesTasks { get; }
                 = new ConcurrentDictionary<IResourceConfig, Task<object>>();
-
-            ConcurrentDictionary<IChildResourceConfig, Task<object>> ChildResourcesTasks { get; }
-                = new ConcurrentDictionary<IChildResourceConfig, Task<object>>();
         }
-
-        ConcurrentDictionary<string, ResourceGroup> ResourceGroups { get; }
-            = new ConcurrentDictionary<string, ResourceGroup>();
-
-        ConcurrentDictionary<IResourceConfig, object> Resources { get; }
-            = new ConcurrentDictionary<IResourceConfig, object>();
-
-        ConcurrentDictionary<IChildResourceConfig, object> ChildResources { get; }
-            = new ConcurrentDictionary<IChildResourceConfig, object>();
     }
 }
