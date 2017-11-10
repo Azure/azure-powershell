@@ -141,6 +141,15 @@
                         <Component Id="cmp29E1C42F46F7C10CE33DAB39DA1F59D3" Guid="*">
                             <File Id="fil82E994AF766AA7243ED970F7FA45DD2B" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Backup\Microsoft.Azure.Management.BackupServicesManagement.dll" />
                         </Component>
+                        <Component Id="cmp14C04F53A2E2F433CBA3C652F0382F25" Guid="*">
+                            <File Id="filCF13BA3BB93B7FBCE26833CABAF3F0AA" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Backup\Microsoft.WindowsAzure.Management.Common.dll" />
+                        </Component>
+                        <Component Id="cmpBF27C1D39D783AD3F86F63D014EC030F" Guid="*">
+                            <File Id="fil3AAF65384BF613DB2ECA292B9294A8F2" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Backup\Microsoft.WindowsAzure.Management.Scheduler.dll" />
+                        </Component>
+                        <Component Id="cmp82364D72D38170AAF9E06D264622529B" Guid="*">
+                            <File Id="fil62D605052BCF3C729A90278150584172" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Backup\Security.Cryptography.dll" />
+                        </Component>
                     </Directory>
                     <Directory Id="dir5E7BBFED9B359415B15299518B5B8042" Name="AzureRM.Batch">
                         <Component Id="cmp8D6E468747E93CD69A8E2A0D608759F8" Guid="*">
@@ -3158,6 +3167,9 @@
             <ComponentRef Id="cmp02EC705ADEA4E4813A3382FCD347C075" />
             <ComponentRef Id="cmp88D8EC51D9872B77C8335E8063852E25" />
             <ComponentRef Id="cmp29E1C42F46F7C10CE33DAB39DA1F59D3" />
+            <ComponentRef Id="cmp14C04F53A2E2F433CBA3C652F0382F25" />
+            <ComponentRef Id="cmpBF27C1D39D783AD3F86F63D014EC030F" />
+            <ComponentRef Id="cmp82364D72D38170AAF9E06D264622529B" />
             <ComponentRef Id="cmp8D6E468747E93CD69A8E2A0D608759F8" />
             <ComponentRef Id="cmp450A7C57F828A9F69C25A584D54938E5" />
             <ComponentRef Id="cmpFF226ED5701894F77AC9E8912B83AB67" />
