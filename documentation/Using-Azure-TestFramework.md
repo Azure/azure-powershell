@@ -3,7 +3,7 @@
 - [Getting Started](#getting-started)
 - [Acquiring TestFramework](#acquiring-testframework)
 - [Setup prior to Record/Playback tests](#setup-prior-to-record-or-playback-of-tests)
-	- [New-AzureCredential](#new-azurecredential)
+	- [New-TestCredential](#new-testcredential)
 		- [Create New Service Principal](#create-new-service-principal)
 		- [Use Existing Service Principal](#use-existing-service-principal)
 		- [UserId](#userid)
@@ -35,18 +35,18 @@ Instructions to manually download it are available on NuGet. However TestFramewo
 
 ## Setup prior to Record or Playback of tests
 
-In order to Record/Playback a test, you need to setup a connection string that consists various key/value pairs that provides information to the test environment.  You have three options to set up the connection string: run the [New-AzureCredential cmdlet](#new-azurecredential) (recommended), run the [Set-TestEnvironment cmdlet](#set-testenvironment), or [manually set the environment variables](#manually-set-environment-variables).
+In order to Record/Playback a test, you need to setup a connection string that consists of various key/value pairs that provides information to the test environment.  You have three options to set up the connection string: run the [New-AzureCredential cmdlet](#new-azurecredential) (recommended), run the [Set-TestEnvironment cmdlet](#set-testenvironment), or [manually set the environment variables](#manually-set-environment-variables).
 
-### New-AzureCredential
+### New-TestCredential
 
 This cmdlet, located in Repo-Tasks, will allow you to create a credentials file (located in C:/Users/\<currentuser\>/.azure/testcredentials.json) that will be used to set the environment variable when scenario tests are run. This credentials file will be used in all future sessions unless it is deleted or the environment variables are manually set.
 
 #### Create New Service Principal
 
-Using a Service Principal is the preferred option for record because it works with both .NET Framework and .NET Core.  In order to create a new Service Principal run this command:
+Using a Service Principal is the preferred option for recording test because it works with both .NET Framework and .NET Core.  In order to create a new Service Principal run this command with a unused ServicePrincipal display name:
 
 ```powershell
-New-AzureCredential -NewServicePrincipalDisplayName "ScenarioTestCredentials" -NewServicePrincipalSecret `
+New-TestCredential -ServicePrincipalDisplayName "ScenarioTestCredentials" -ServicePrincipalSecret `
 "testpassword" -SubscriptionId <subscriptionId> -TenantId <tenantId> -RecordMode "Record"
 ```
 
@@ -54,10 +54,10 @@ This command will create a new Service Principal, set the correct role assignmen
 
 #### Use Existing Service Principal
 
-If you would like to use an existing Service Principal, run:
+If you would like to use an existing Service Principal, run this command with an existing ServicePrincipal display name and secret:
 
 ```powershell
-New-AzureCredential -ServicePrincipalId <servicePrincipalId> -ServicePrincipalSecret `
+New-TestCredential -ServicePrincipalDisplayName "Existing Service Principal" -ServicePrincipalSecret `
 "testpassword" -SubscriptionId <subscriptionId> -TenantId <tenantId> -RecordMode "Record"
 ```
 
@@ -66,7 +66,7 @@ New-AzureCredential -ServicePrincipalId <servicePrincipalId> -ServicePrincipalSe
 This is no longer the preferred option because it only works when running on .NET Framework. When running on .NET Core you may get an error like `Interactive Login is supported only in NET45 projects`.  Additionally, you will have to manually log in when running the scenario tests rather than being automatically validated.
 
 ```powershell
-New-AzureCredential -UserId "exampleuser@microsoft.com" -SubscriptionId <subscriptionId> `
+New-TestCredential -UserId "exampleuser@microsoft.com" -SubscriptionId <subscriptionId> `
 -TenantId <tenantId> -RecordMode "Record"
 ```
 
@@ -76,7 +76,7 @@ This cmdlet, located in Repo-Tasks, will directly set the environment variable f
 
 #### Existing Service Principal
 
-This is the preferred option for record because it works with both .NET Framework and .NET Core.
+This is the preferred option for recording tests because it works with both .NET Framework and .NET Core.
 
 ```powershell
 Set-TestEnvironment -ServicePrincipalId <servicePrincipalId> -ServicePrincipalSecret `
@@ -122,7 +122,7 @@ To use this option, set the following environment variables before starting Visu
 
 #### Record Test with ServicePrincipal
 
-This is the preferred option for record because it works with both .NET Framework and .NET Core.
+This is the preferred option for recording tests because it works with both .NET Framework and .NET Core.
 
 To create a service principal, follow the [Azure AD guide to create a Application Service Principal](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#create-an-active-directory-application). The application type should be `Web app / API` and the sign-on URL value is irrelevant (you can set any value).
 
