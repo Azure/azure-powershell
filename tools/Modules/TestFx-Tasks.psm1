@@ -1,29 +1,21 @@
-﻿Function New-AzureCredential
+﻿Function New-TestCredential
 {
     [CmdletBinding(
-        DefaultParameterSetName='CreateSpnParamSet', 
+        DefaultParameterSetName='SpnParamSet', 
         SupportsShouldProcess=$true
         )]
     param(
-        [Parameter(ParameterSetName='CreateSpnParamSet', Mandatory=$true, HelpMessage='ServicePrincipal DisplayName you would like to set')]
+        [Parameter(ParameterSetName='SpnParamSet', Mandatory=$true, HelpMessage='ServicePrincipal/ClientId you would like to use')]   
         [ValidateNotNullOrEmpty()]
-        [string]$NewServicePrincipalDisplayName,
+        [string]$ServicePrincipalDisplayName,
 
-        [Parameter(ParameterSetName='CreateSpnParamSet', Mandatory=$true, HelpMessage='ServicePrincipal password')]
+        [Parameter(ParameterSetName='SpnParamSet', Mandatory=$true, HelpMessage='ServicePrincipal Secret/ClientId Secret you would like to use')]
         [ValidateNotNullOrEmpty()]
-        [string]$NewServicePrincipalSecret,
+        [securestring]$ServicePrincipalSecret,
 
         [Parameter(ParameterSetName='UserIdParamSet', Mandatory=$true, HelpMessage = "UserId (OrgId) you would like to use")]
         [ValidateNotNullOrEmpty()]
         [string]$UserId,
-
-        [Parameter(ParameterSetName='SpnParamSet', Mandatory=$true, HelpMessage='ServicePrincipal/ClientId you would like to use')]   
-        [ValidateNotNullOrEmpty()]
-        [string]$ServicePrincipalId,
-
-        [Parameter(ParameterSetName='SpnParamSet', Mandatory=$true, HelpMessage='ServicePrincipal Secret/ClientId Secret you would like to use')]
-        [ValidateNotNullOrEmpty()]
-        [string]$ServicePrincipalSecret,
 
         [Parameter(ParameterSetName='CreateSpnParamSet', Mandatory=$true, HelpMessage = "SubscriptionId you would like to use")]
         [Parameter(ParameterSetName='SpnParamSet', Mandatory=$true, HelpMessage = "SubscriptionId you would like to use")]
@@ -42,21 +34,44 @@
         [ValidateSet("Playback", "Record", "None")]
         [string]$RecordMode,
 
+        [Parameter(Mandatory=$false, HelpMessage="Environment you would like to run in")]
         [ValidateSet("Prod", "Dogfood", "Current", "Next", "Custom")]
         [string]$TargetEnvironment='Prod',
-		
-		[string]$ResourceManagementUri,
-		[string]$GraphUri,
-		[string]$AADAuthUri,
-		[string]$AADTokenAudienceUri,
-		[string]$GraphTokenAudienceUri,		
-		[string]$IbizaPortalUri,
-		[string]$ServiceManagementUri,
-		[string]$RdfePortalUri,
-		[string]$GalleryUri,
-		[string]$DataLakeStoreServiceUri,
+        
+        [Parameter(Mandatory=$false)]
+        [string]$ResourceManagementUri,
+        
+        [Parameter(Mandatory=$false)]
+        [string]$GraphUri,
+        
+        [Parameter(Mandatory=$false)]
+        [string]$AADAuthUri,
+        
+        [Parameter(Mandatory=$false)]
+        [string]$AADTokenAudienceUri,
+        
+        [Parameter(Mandatory=$false)]
+        [string]$GraphTokenAudienceUri,
+
+        [Parameter(Mandatory=$false)]		
+        [string]$IbizaPortalUri,
+        
+        [Parameter(Mandatory=$false)]
+        [string]$ServiceManagementUri,
+        
+        [Parameter(Mandatory=$false)]
+        [string]$RdfePortalUri,
+        
+        [Parameter(Mandatory=$false)]
+        [string]$GalleryUri,
+        
+        [Parameter(Mandatory=$false)]
+        [string]$DataLakeStoreServiceUri,
+        
+        [Parameter(Mandatory=$false)]
         [string]$DataLakeAnalyticsJobAndCatalogServiceUri,
         
+        [Parameter(Mandatory=$false)]
         [switch]$Force
     )
 
@@ -65,34 +80,46 @@
     $credentials.HttpRecorderMode = $RecordMode
     $credentials.Environment = $TargetEnvironment
 
-    if ([string]::IsNullOrEmpty($NewServicePrincipalDisplayName) -eq $false) {
-        $Scope = "/subscriptions/" + $SubscriptionId
-        $SecureStringSecret = ConvertTo-SecureString $NewServicePrincipalSecret -AsPlainText -Force
-        $NewServicePrincipal = New-AzureRMADServicePrincipal -DisplayName $NewServicePrincipalDisplayName -Password $SecureStringSecret
-        Write-Host "New ServicePrincipal created: " + $NewServicePrincipal
-
-        $NewRole = $null
-        $Retries = 0;
-        While ($NewRole -eq $null -and $Retries -le 6)
+    if ([string]::IsNullOrEmpty($ServicePrincipalDisplayName) -eq $false) {
+        $existingServicePrincipal = Get-AzureRmADServicePrincipal -SearchString $ServicePrincipalDisplayName | Where-Object {$_.DisplayName -eq $ServicePrincipalDisplayName}
+        if ($existingServicePrincipal -eq $null -and ($Force -or $PSCmdlet.ShouldContinue("ServicePrincipal `"" + $ServicePrincipalDisplayName + "`" does not exist, would you like to create a new ServicePrincipal with this name?", "Create ServicePrincipal?")))
         {
-            # Sleep here for a few seconds to allow the service principal application to become active (should only take a couple of seconds normally)
-            Start-Sleep 5
-            New-AzureRMRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $NewServicePrincipal.ApplicationId -Scope $Scope | Write-Verbose -ErrorAction SilentlyContinue
-            $NewRole = Get-AzureRMRoleAssignment -ObjectId $NewServicePrincipal.Id -ErrorAction SilentlyContinue
-            $Retries++;
+            if ($TargetEnvironment -ne 'Prod')
+            {
+                throw "To create a new Service Principal you must be in Prod. Please run again with `$TargetEnvironment set to 'Prod'"
+            }
+            $Scope = "/subscriptions/" + $SubscriptionId
+            $NewServicePrincipal = New-AzureRMADServicePrincipal -DisplayName $ServicePrincipalDisplayName -Password $ServicePrincipalSecret
+            Write-Host "New ServicePrincipal created: " + $NewServicePrincipal.ApplicationId
+    
+            $NewRole = $null
+            $Retries = 0;
+            While ($NewRole -eq $null -and $Retries -le 6)
+            {
+                # Sleep here for a few seconds to allow the service principal application to become active (should only take a couple of seconds normally)
+                Start-Sleep 5
+                New-AzureRMRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $NewServicePrincipal.ApplicationId -Scope $Scope | Write-Verbose -ErrorAction SilentlyContinue
+                $NewRole = Get-AzureRMRoleAssignment -ObjectId $NewServicePrincipal.Id -ErrorAction SilentlyContinue
+                $Retries++;
+            }
+            
+            $credentials.ServicePrincipal = $NewServicePrincipal.ApplicationId
+            $BSTR = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($ServicePrincipalSecret)
+            $UnsecurePassword = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($BSTR)
+            $credentials.ServicePrincipalSecret = $UnsecurePassword
         }
         
-        $credentials.ServicePrincipal = $NewServicePrincipal.ApplicationId
-        $credentials.ServicePrincipalSecret = $NewServicePrincipalSecret
+        else
+        {
+            $credentials.ServicePrincipal = $existingServicePrincipal.ApplicationId
+            $BSTR = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($ServicePrincipalSecret)
+            $UnsecurePassword = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($BSTR)
+            $credentials.ServicePrincipalSecret = $UnsecurePassword
+        }
     }
 
     if ([string]::IsNullOrEmpty($UserId) -eq $false) {
         $credentials.UserId = $UserId
-    }
-    
-    if ([string]::IsNullOrEmpty($ServicePrincipalId) -eq $false) {
-        $credentials.ServicePrincipal = $ServicePrincipalId
-        $credentials.ServicePrincipalSecret = $ServicePrincipalSecret
     }
 
     if ([string]::IsNullOrEmpty($TenantId) -eq $false) {
@@ -187,7 +214,7 @@ This cmdlet will only prompt you for Subscription and Tenant information, rest a
         [ValidateNotNullOrEmpty()]
         [string]$TenantId,
 
-	[Parameter(ParameterSetName='SpnParamSet', Mandatory=$true, HelpMessage = "Would you like to record or playback your tests?")]
+	    [Parameter(ParameterSetName='SpnParamSet', Mandatory=$true, HelpMessage = "Would you like to record or playback your tests?")]
         [Parameter(ParameterSetName='UserIdParamSet', Mandatory=$true, HelpMessage = "Would you like to record or playback your tests?")]
         [ValidateSet("Playback", "Record", "None")]
         [string]$RecordMode='Playback',
@@ -353,4 +380,4 @@ Function Print-ConnectionString([string]$uid, [string]$subId, [string]$aadTenant
 }
 
 export-modulemember -Function Set-TestEnvironment
-export-modulemember -Function New-AzureCredential
+export-modulemember -Function New-TestCredential

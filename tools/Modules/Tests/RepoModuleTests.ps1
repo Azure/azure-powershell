@@ -15,7 +15,8 @@ Function Test-NewCredentialNewServicePrincipal
 	Import-Module $PSScriptRoot\..\TestFx-Tasks.psd1
 	# Test that Service Principal is correctly created
 	$context = Get-AzureRmContext
-	New-AzureCredential -NewServicePrincipalDisplayName "credentialtestserviceprincipal" -NewServicePrincipalSecret "testpassword" -SubscriptionId $context.Subscription.Id -TenantId $context.Tenant.Id -RecordMode "Record" -Force
+	$secureSecret = ConvertTo-SecureString -String "testpassword" -AsPlainText -Force
+	New-TestCredential -ServicePrincipalDisplayName "credentialtestserviceprincipal" -ServicePrincipalSecret $secureSecret -SubscriptionId $context.Subscription.Id -TenantId $context.Tenant.Id -RecordMode "Record" -Force
 	$servicePrincipal = Get-AzureRmADServicePrincipal -SearchString credentialtestserviceprincipal | where { $_.DisplayName -eq "credentialtestserviceprincipal" }
 	if ($servicePrincipal -eq $null)
 	{
@@ -31,7 +32,8 @@ Function Test-NewCredentialNewServicePrincipal
 		"SubscriptionId=" + $context.Subscription.Id + ";HttpRecorderMode=Record;Environment=Prod;ServicePrincipal=" + $servicePrincipal.ApplicationId + ";ServicePrincipalSecret=testpassword;" + 
 		"AADTenant=" + $context.Tenant.Id))
 	{
-		throw "ConnectionString not set correctly"
+		throw "ConnectionString not set correctly: " + $Env:TEST_CSM_ORGID_AUTHENTICATION + ", expected: " + "SubscriptionId=" + $context.Subscription.Id + 
+		";HttpRecorderMode=Record;Environment=Prod;ServicePrincipal=" + $servicePrincipal.ApplicationId + ";ServicePrincipalSecret=testpassword;" + "AADTenant=" + $context.Tenant.Id
 	}
 
 	# Test that TestEnviroment is set-up properly
@@ -83,7 +85,8 @@ Function Test-NewCredentialExistingServicePrincipal
 		$Retries++;
 	}
 
-	New-AzureCredential -ServicePrincipalId $NewServicePrincipal.ApplicationId -ServicePrincipalSecret "testpassword" -SubscriptionId $context.Subscription.Id -TenantId $context.Tenant.Id -RecordMode "Playback" -Force
+	$secureSecret = ConvertTo-SecureString -String "testpassword" -AsPlainText -Force
+	New-TestCredential -ServicePrincipalDisplayName "credentialtestserviceprincipal" -ServicePrincipalSecret $secureSecret -SubscriptionId $context.Subscription.Id -TenantId $context.Tenant.Id -RecordMode "Playback" -Force
 
 	# Test that connection string is properly set
 	$filePath = Join-Path -Path $PSScriptRoot -ChildPath "\..\..\..\src\ResourceManager\Common\Commands.ScenarioTests.ResourceManager.Common\bin\Debug\Microsoft.Azure.Commands.ScenarioTest.Common.dll"
@@ -131,7 +134,7 @@ Function Test-NewCredentialExistingServicePrincipal
 Function Test-NewCredentialUserId 
 {
 	$context = Get-AzureRmContext
-	New-AzureCredential -UserId "testuser" -SubscriptionId $context.Subscription.Id -RecordMode "Playback" -Force
+	New-TestCredential -UserId "testuser" -SubscriptionId $context.Subscription.Id -RecordMode "Playback" -Force
 
 	# Test that connection string is properly set
 	$filePath = Join-Path -Path $PSScriptRoot -ChildPath "\..\..\..\src\ResourceManager\Common\Commands.ScenarioTests.ResourceManager.Common\bin\Debug\Microsoft.Azure.Commands.ScenarioTest.Common.dll"
@@ -250,3 +253,9 @@ Function Test-SetEnvironmentUserId
 	Remove-Item Env:AZURE_TEST_MODE
 	Remove-Item Env:TEST_CSM_ORGID_AUTHENTICATION
 }
+
+Test-NewCredentialNewServicePrincipal
+Test-NewCredentialExistingServicePrincipal
+Test-NewCredentialUserId
+Test-SetEnvironmentServicePrincipal
+Test-SetEnvironmentUserId
