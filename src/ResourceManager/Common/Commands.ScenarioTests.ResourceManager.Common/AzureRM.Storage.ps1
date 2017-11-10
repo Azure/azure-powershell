@@ -22,12 +22,12 @@ function Get-AzureRmStorageAccount
     }
     $sa = $getTask.Result
 
-	if($sa -ne $null)
-	{
-		$id = "/subscriptions/" + $context.Subscription.Id + "/resourceGroups/"+ $ResourceGroupName + "/providers/Microsoft.Storage/storageAccounts/" + $Name	  
-		$account = Get-StorageAccount $ResourceGroupName $Name $id
-		Write-Output $account 
-	}
+    if($sa -ne $null)
+    {
+        $id = "/subscriptions/" + $context.Subscription.Id + "/resourceGroups/"+ $ResourceGroupName + "/providers/Microsoft.Storage/storageAccounts/" + $Name	  
+        $account = Get-StorageAccount $ResourceGroupName $Name $id
+        Write-Output $account
+    }
   }
   END {}
 

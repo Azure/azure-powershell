@@ -697,6 +697,13 @@ function Test-WebAppSlotPublishingProfile
 
 		# Assert
 		Assert-True { $fileZillaProfile.Name -eq $appWithSlotName3 }
+
+		# Get web app publishing profile without OutputFile
+		[xml]$profile = Get-AzureRmWebAppSlotPublishingProfile -ResourceGroupName $rgname -Name $appname -Slot $slotname
+
+		# Assert
+		Assert-NotNull $profile
+
 	}
 	finally
 	{

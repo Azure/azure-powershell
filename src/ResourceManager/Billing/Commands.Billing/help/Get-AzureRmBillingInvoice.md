@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Billing.dll-Help.xml
-online version: 
+Module Name: AzureRM.Billing
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.billing/get-azurermbillinginvoice
 schema: 2.0.0
 ---
 
@@ -13,17 +14,19 @@ Get billing invoices of the subscription.
 
 ### List (Default)
 ```
-Get-AzureRmBillingInvoice [-MaxCount <Int32>] [-GenerateDownloadUrl] [<CommonParameters>]
+Get-AzureRmBillingInvoice [-MaxCount <Int32>] [-GenerateDownloadUrl] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### Latest
 ```
-Get-AzureRmBillingInvoice [-Latest] [<CommonParameters>]
+Get-AzureRmBillingInvoice [-Latest] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Single
 ```
-Get-AzureRmBillingInvoice -Name <System.Collections.Generic.List`1[System.String]> [<CommonParameters>]
+Get-AzureRmBillingInvoice -Name <System.Collections.Generic.List`1[System.String]>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -60,6 +63,21 @@ PS C:\> Get-AzureRmBillingInvoice -GenerateDownloadUrl -MaxCount 10
 Get most recent 10 invoices of the subscription and include the download Url in the result.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -GenerateDownloadUrl
 Generate the download url of the invoices.

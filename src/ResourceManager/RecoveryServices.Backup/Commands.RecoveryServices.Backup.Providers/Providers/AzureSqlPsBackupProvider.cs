@@ -24,6 +24,7 @@ using Microsoft.Rest.Azure.OData;
 using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using RestAzureNS = Microsoft.Rest.Azure;
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using System.Net.Http;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
@@ -103,6 +104,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         }
 
         public ProtectedItemResource GetProtectedItem()
+        {
+            throw new NotImplementedException();
+        }
+
+        public RPMountScriptDetails ProvisionItemLevelRecoveryAccess()
+
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RevokeItemLevelRecoveryAccess()
+
         {
             throw new NotImplementedException();
         }
@@ -487,14 +500,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             ValidateAzureSqlContainerType(itemBase.ContainerType);
         }
 
-        private void ValidateAzureSqlContainerType(ContainerType type)
+        private void ValidateAzureSqlContainerType(CmdletModel.ContainerType type)
         {
-            if (type != ContainerType.AzureSQL)
+            if (type != CmdletModel.ContainerType.AzureSQL)
             {
                 throw new ArgumentException(
                     string.Format(
                         Resources.UnExpectedContainerTypeException,
-                        ContainerType.AzureSQL.ToString(),
+                        CmdletModel.ContainerType.AzureSQL.ToString(),
                         type.ToString()));
             }
         }

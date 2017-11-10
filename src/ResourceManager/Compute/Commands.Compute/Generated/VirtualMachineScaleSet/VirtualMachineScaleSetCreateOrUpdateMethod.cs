@@ -19,7 +19,6 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
@@ -121,58 +120,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ExecuteClientAction(() =>
             {
                 if (ShouldProcess(this.VMScaleSetName, VerbsCommon.New))
-                {
-                    string resourceGroupName = this.ResourceGroupName;
-                    string vmScaleSetName = this.VMScaleSetName;
-                    VirtualMachineScaleSet parameters = new VirtualMachineScaleSet();
-                    ComputeAutomationAutoMapperProfile.Mapper.Map<PSVirtualMachineScaleSet, VirtualMachineScaleSet>(this.VirtualMachineScaleSet, parameters);
-
-                    var result = VirtualMachineScaleSetsClient.CreateOrUpdate(resourceGroupName, vmScaleSetName, parameters);
-                    var psObject = new PSVirtualMachineScaleSet();
-                    ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSet, PSVirtualMachineScaleSet>(result, psObject);
-                    WriteObject(psObject);
-                }
-            });
-        }
-
-        [Parameter(
-            ParameterSetName = "DefaultParameter",
-            Position = 1,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false)]
-        [AllowNull]
-        public string ResourceGroupName { get; set; }
-
-        [Parameter(
-            ParameterSetName = "DefaultParameter",
-            Position = 2,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false)]
-        [Alias("Name")]
-        [AllowNull]
-        public string VMScaleSetName { get; set; }
-
-        [Parameter(
-            ParameterSetName = "DefaultParameter",
-            Position = 3,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = false,
-            ValueFromPipeline = true)]
-        [AllowNull]
-        public PSVirtualMachineScaleSet VirtualMachineScaleSet { get; set; }
-    }
-
-    [Cmdlet(VerbsData.Update, "AzureRmVmss", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
-    [OutputType(typeof(PSVirtualMachineScaleSet))]
-    public partial class UpdateAzureRmVmss : ComputeAutomationBaseCmdlet
-    {
-        protected override void ProcessRecord()
-        {
-            ExecuteClientAction(() =>
-            {
-                if (ShouldProcess(this.VMScaleSetName, VerbsData.Update))
                 {
                     string resourceGroupName = this.ResourceGroupName;
                     string vmScaleSetName = this.VMScaleSetName;

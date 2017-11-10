@@ -37,12 +37,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// The managed application Id parameter set.
         /// </summary>
-        internal const string ManagedApplicationDefinitionIdParameterSet = "The managed application definition Id parameter set.";
+        internal const string ManagedApplicationDefinitionIdParameterSet = "SetById";
 
         /// <summary>
         /// The managed application name parameter set.
         /// </summary>
-        internal const string ManagedApplicationDefinitionNameParameterSet = "The managed application definition name parameter set.";
+        internal const string ManagedApplicationDefinitionNameParameterSet = "SetByNameAndResourceGroup";
 
         /// <summary>
         /// Gets or sets the managed application definition name parameter.

@@ -26,9 +26,9 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
     [Cmdlet(VerbsCommon.Set, "AzureRmActivityLogAlert", SupportsShouldProcess = true), OutputType(typeof(PSActivityLogAlertResource))]
     public class SetAzureRmActivityLogAlertCommand : ManagementCmdletBase
     {
-        internal const string SetActivityLogAlertDefaultParamGroup = "Default parameters for set activity log alert";
-        internal const string SetActivityLogAlertFromPipeParamGroup = "Parameters to set an activity log alerts taking value from the pipe";
-        internal const string SetActivityLogAlertFromResourceIdParamGroup = "Parameters to set an activity log alerts taking the value of ResourceId from the pipe";
+        internal const string SetActivityLogAlertDefaultParamGroup = "SetByNameAndResourceGroup";
+        internal const string SetActivityLogAlertFromPipeParamGroup = "SetByInputObject";
+        internal const string SetActivityLogAlertFromResourceIdParamGroup = "SetByResourceId";
 
         #region Cmdlet parameters
 

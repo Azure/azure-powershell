@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ServiceBus.dll-Help.xml
-online version: 
+Module Name: AzureRM
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicebus/get-azurermservicebusqueue
 schema: 2.0.0
 ---
 
@@ -12,8 +13,8 @@ Returns a description for the specified Service Bus queue.
 ## SYNTAX
 
 ```
-Get-AzureRmServiceBusQueue [-ResourceGroup] <String> [-NamespaceName] <String> [[-QueueName] <String>]
- [<CommonParameters>]
+Get-AzureRmServiceBusQueue [-ResourceGroupName] <String> [-Namespace] <String> [[-Name] <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,28 +31,28 @@ Returns the description of the queue.
 
 ## PARAMETERS
 
-### -NamespaceName
-The Service Bus namespace name.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: String
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: 
+Aliases: AzureRmContext, AzureCredential
 
-Required: True
-Position: 1
+Required: False
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -QueueName
-The queue name.
+### -Name
+Queue Name.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: QueueName
 
 Required: False
 Position: 1
@@ -60,13 +61,28 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroup
-The name of the resource group.
+### -Namespace
+Namespace Name.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: NamespaceName
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The name of the resource group
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: ResourceGroup
 
 Required: True
 Position: 0

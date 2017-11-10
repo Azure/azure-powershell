@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.DataFactoryV2.dll-Help.xml
 Module Name: AzureRM.DataFactoryV2
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/get-azurermdatafactoryv2pipeline
 schema: 2.0.0
 ---
 
@@ -22,6 +22,12 @@ Get-AzureRmDataFactoryV2Pipeline [[-Name] <String>] [-ResourceGroupName] <String
 ```
 Get-AzureRmDataFactoryV2Pipeline [[-Name] <String>] [-DataFactory] <PSDataFactory>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ByResourceId
+```
+Get-AzureRmDataFactoryV2Pipeline -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -174,7 +180,7 @@ Specifies the name of the pipeline about which to get information.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ByFactoryName, ByFactoryObject
 Aliases: PipelineName
 
 Required: False
@@ -195,6 +201,21 @@ Aliases:
 
 Required: True
 Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+The Azure resource ID.
+
+```yaml
+Type: String
+Parameter Sets: ByResourceId
+Aliases: 
+
+Required: True
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

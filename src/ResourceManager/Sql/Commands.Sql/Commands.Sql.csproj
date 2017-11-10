@@ -187,6 +187,14 @@
     <Compile Include="Database Backup\Model\AzureSqlServerBackupLongTermRetentionVaultModel.cs" />
     <Compile Include="Database Backup\Model\AzureSqlDeletedDatabaseBackupModel.cs" />
     <Compile Include="Database Backup\Model\AzureSqlDatabaseGeoBackupModel.cs" />
+    <Compile Include="ServerDnsAlias\Cmdlet\AzureSqlServerDnsAliasCmdletBase.cs" />
+    <Compile Include="ServerDnsAlias\Cmdlet\GetAzureSqlServerDnsAlias.cs" />
+    <Compile Include="ServerDnsAlias\Cmdlet\RemoveAzureSqlServerDnsAlias.cs" />
+    <Compile Include="ServerDnsAlias\Cmdlet\SetAzureSqlServerDnsAlias.cs" />
+    <Compile Include="ServerDnsAlias\Model\AzureSqlServerDnsAliasModel.cs" />
+    <Compile Include="ServerDnsAlias\Cmdlet\NewAzureSqlServerDnsAlias.cs" />
+    <Compile Include="ServerDnsAlias\Services\AzureSqlServerDnsAliasAdapter.cs" />
+    <Compile Include="ServerDnsAlias\Services\AzureSqlServerDnsAliasCommunicator.cs" />
     <Compile Include="ThreatDetection\Cmdlet\GetAzureSqlServerThreatDetection.cs" />
     <Compile Include="ThreatDetection\Cmdlet\RemoveSqlServerThreatDetection.cs" />
     <Compile Include="ThreatDetection\Cmdlet\SetAzureSqlServerThreatDetection.cs" />
@@ -446,7 +454,7 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.1.3.0-preview\lib\net452\Microsoft.Azure.Management.Sql.dll</HintPath>-->
     <Reference Include="Microsoft.Azure.Management.Sql, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.1.7.0-preview\lib\net452\Microsoft.Azure.Management.Sql.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.1.8.0-preview\lib\net452\Microsoft.Azure.Management.Sql.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage">

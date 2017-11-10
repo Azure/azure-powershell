@@ -1,4 +1,4 @@
----
+﻿---
 Module Name: AzureRM.ApiManagement
 Module Guid: f875725d-8ce4-423f-a6af-ea880bc63f13
 Download Help Link: None

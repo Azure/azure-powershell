@@ -246,7 +246,10 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 WrappedWebsitesClient.WebApps().ListPublishingProfileXmlWithSecretsSlot(resourceGroupName, webSiteName, options, slotName) : 
                 WrappedWebsitesClient.WebApps().ListPublishingProfileXmlWithSecrets(resourceGroupName, webSiteName, options));
             var doc = XDocument.Load(publishingXml, LoadOptions.None);
-            doc.Save(outputFile, SaveOptions.OmitDuplicateNamespaces);
+            if (outputFile != null)
+            {
+                doc.Save(outputFile, SaveOptions.OmitDuplicateNamespaces);
+            }
             return doc.ToString();
         }
 
