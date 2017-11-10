@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '5.0.0'
+ModuleVersion = '5.0.1'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -54,7 +54,10 @@ CLRVersion = '4.0'
 RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '4.0.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = '.\Microsoft.Azure.Management.SiteRecovery.dll'
+RequiredAssemblies = '.\Microsoft.Azure.Commands.RecoveryServices.ARM.dll',
+                     '.\Microsoft.Azure.Management.RecoveryServices.dll',
+                     '.\Microsoft.Azure.Management.SiteRecovery.dll',
+                     '.\Security.Cryptography.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -161,8 +164,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Add support for online help
-    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser'
+        ReleaseNotes = '* Fixed assembly loading issue that caused some cmdlets to fail when executing'
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''

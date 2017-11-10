@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 4.0.1
+* Fixed assembly loading issue that caused some cmdlets to fail when executing
+
 ## Version 4.0.0
 * Adding support for list and cancel the asynchronous updateslo operation on the database
 	- update existing cmdlet Get-AzureRmSqlDatabaseActivity to return DB updateslo operation status.
