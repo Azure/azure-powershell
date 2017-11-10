@@ -15,8 +15,6 @@ if ($PSVersionTable.PSVersion.Major -ge 5)
 {
     $ResourceGroupCommands = %RGCCOMMANDS%
     
-    $CommonAssembly = [Reflection.Assembly]::LoadFrom('.\Microsoft.Azure.Commands.ResourceManager.Common.dll')
-    
     $ResourceGroupCommands | ForEach-Object {
         if ($_.Count -ne 0)
         {
