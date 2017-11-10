@@ -58,7 +58,8 @@ RequiredAssemblies = '.\Microsoft.Azure.Management.StreamAnalytics.dll',
                      '.\Microsoft.Data.Edm.dll',
                      '.\Microsoft.Data.OData.dll',
                      '.\Microsoft.Data.Services.Client.dll',
-                     '.\Microsoft.WindowsAzure.Storage.dll'
+                     '.\Microsoft.WindowsAzure.Storage.dll',
+                     '.\System.Spatial.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()

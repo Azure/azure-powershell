@@ -57,7 +57,11 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '4.0.0'; }
 RequiredAssemblies = '.\Microsoft.Azure.ActiveDirectory.GraphClient.dll',
                      '.\Microsoft.Azure.KeyVault.dll',
                      '.\Microsoft.Azure.KeyVault.WebKey.dll',
-	                 '.\Microsoft.Azure.Management.KeyVault.dll'
+                     '.\Microsoft.Azure.Management.KeyVault.dll',
+                     '.\Microsoft.Data.Edm.dll',
+                     '.\Microsoft.Data.OData.dll',
+                     '.\Microsoft.Data.Services.Client.dll',
+                     '.\System.Spatial.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
