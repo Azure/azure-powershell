@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 4.0.1
+* Fixed assembly loading issue that caused some cmdlets to fail when executing
+
 ## Version 4.0.0
 * NOTE: This is a breaking change release. Please see the migration guide (https://aka.ms/azps-migration-guide) for a full list of breaking changes introduced.
 * Added new parameters to `New-AzureRmBatchAccount`.

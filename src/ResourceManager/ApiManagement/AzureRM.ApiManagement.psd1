@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '5.0.0'
+ModuleVersion = '5.0.1'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -59,7 +59,8 @@ RequiredAssemblies = '.\AutoMapper.dll',
                      '.\Microsoft.Data.Edm.dll',
                      '.\Microsoft.Data.OData.dll',
                      '.\Microsoft.Data.Services.Client.dll',
-                     '.\Microsoft.WindowsAzure.Storage.dll'
+                     '.\Microsoft.WindowsAzure.Storage.dll',
+                     '.\System.Spatial.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -189,16 +190,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* NOTE: This is a breaking change release. Please see the migration guide (https://aka.ms/azps-migration-guide) for a full list of breaking changes introduced.
-* Breaking Changes in Cmdlet to Manage Api Management Users
-    - New-AzureRmApiManagementUser Parameter `Password` is changed from String to SecureString
-    - Set-AzureRmApiManagementBackend Parameter `Password` is changed from String to SecureString
-* Breaking Changes in Cmdlet to Create Backend Proxy Object
-    - New-AzureRmApiManagementBackendProxy Parameter `Password` and `UserName` have been replaced with `ProxyCredentials` of type PSCredential
-* Updated Cmdlet Get-AzureRmApiManagementUser to fix issue https://github.com/Azure/azure-powershell/issues/4510
-* Updated Cmdlet New-AzureRmApiManagementApi to create Api with Empty Path https://github.com/Azure/azure-powershell/issues/4069
-* Add support for online help
-    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser'
+        ReleaseNotes = '* Fixed assembly loading issue that caused some cmdlets to fail when executing'
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''
