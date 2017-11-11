@@ -1,4 +1,22 @@
-﻿## 2017.11.8 - Version 5.0.0
+﻿## 2017.11.10 Version 5.0.1
+* Fixed assembly loading issue that caused some cmdlets to fail when executing in the following modules:
+    - AzureRM.ApiManagement
+    - AzureRM.Backup
+    - AzureRM.Batch
+    - AzureRM.Compute
+    - AzureRM.DataFactories
+    - AzureRM.HDInsight
+    - AzureRM.KeyVault
+    - AzureRM.RecoveryServices
+    - AzureRM.RecoveryServices.Backup
+    - AzureRM.RecoveryServices.SiteRecovery
+    - AzureRM.RedisCache
+    - AzureRM.SiteRecovery
+    - AzureRM.Sql
+    - AzureRM.Storage
+    - AzureRM.StreamAnalytics
+
+## 2017.11.8 - Version 5.0.0
 * NOTE: This is a breaking change release. Please see the migration guide (https://aka.ms/azps-migration-guide) for a full list of introduced breaking changes.
 * All cmdlets in AzureRM now support online help
     - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
