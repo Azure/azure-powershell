@@ -30,7 +30,7 @@ CompanyName = 'Microsoft Corporation'
 Copyright = '(c) 2017 Microsoft Corporation. All rights reserved.'
 
 # Description of the functionality provided by this module
-# Description = 'Microsoft Azure PowerShell - Reservations service cmdlets for Azure Resource Manager.  Manages Reservations, Reservation Orders, and related resources in Azure Resource Manager'
+Description = 'Microsoft Azure PowerShell - Reservations service cmdlets for Azure Resource Manager.  Manages Reservations, Reservation Orders, and related resources in Azure Resource Manager'
 
 # Minimum version of the Windows PowerShell engine required by this module
 PowerShellVersion = '3.0'
@@ -54,7 +54,7 @@ DotNetFrameworkVersion = '4.5.2'
 RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '4.0.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-# RequiredAssemblies = '.\Microsoft.Azure.Management.Reservations.dll'
+RequiredAssemblies = '.\Microsoft.Azure.Management.Reservations.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -107,7 +107,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        # ReleaseNotes = 'Initial Release of Resrevations cmdlets'
+        ReleaseNotes = 'Initial Release of Reservations cmdlets'
 
     } # End of PSData hashtable
 
