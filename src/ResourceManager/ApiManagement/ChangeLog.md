@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 5.0.1
+* Fixed assembly loading issue that caused some cmdlets to fail when executing
+
 ## Version 5.0.0
 * NOTE: This is a breaking change release. Please see the migration guide (https://aka.ms/azps-migration-guide) for a full list of breaking changes introduced.
 * Breaking Changes in Cmdlet to Manage Api Management Users

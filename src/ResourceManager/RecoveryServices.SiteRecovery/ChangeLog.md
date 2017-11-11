@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 0.2.1
+* Fixed assembly loading issue that caused some cmdlets to fail when executing
+
 ## Version 0.2.0
 * Changes for ASR VMware to Azure Site Recovery (cmdlets are currently supporting operations for Enterprise to Enterprise, Enterprise to Azure, HyperV to Azure)
     - New-AzureRmRecoveryServicesAsrPolicy
