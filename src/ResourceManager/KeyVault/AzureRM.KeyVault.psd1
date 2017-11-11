@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '4.0.0'
+ModuleVersion = '4.0.1'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -57,7 +57,11 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '4.0.0'; }
 RequiredAssemblies = '.\Microsoft.Azure.ActiveDirectory.GraphClient.dll',
                      '.\Microsoft.Azure.KeyVault.dll',
                      '.\Microsoft.Azure.KeyVault.WebKey.dll',
-	                 '.\Microsoft.Azure.Management.KeyVault.dll'
+                     '.\Microsoft.Azure.Management.KeyVault.dll',
+                     '.\Microsoft.Data.Edm.dll',
+                     '.\Microsoft.Data.OData.dll',
+                     '.\Microsoft.Data.Services.Client.dll',
+                     '.\System.Spatial.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -147,8 +151,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Add support for online help
-    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser'
+        ReleaseNotes = '* Fixed assembly loading issue that caused some cmdlets to fail when executing'
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''
