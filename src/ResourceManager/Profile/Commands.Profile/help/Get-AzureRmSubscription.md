@@ -82,7 +82,7 @@ authorized for the current user.
 
 ### Example 4: Change the current context to use a specific subscription
 ```
-PS C:\>Get-AzureRmSubscription -SubscriptionId "xxxx-xxxx-xxxx-xxxx" -TenantId "yyyy-yyyy-yyyy-yyyy" | Select @{n='SubscriptionId';e={$_.Id}} | Set-AzureRmContext
+PS C:\>Get-AzureRmSubscription -SubscriptionId "xxxx-xxxx-xxxx-xxxx" -TenantId "yyyy-yyyy-yyyy-yyyy" | Set-AzureRmContext
 
 Environment           : AzureCloud
 Account               : user@example.com
