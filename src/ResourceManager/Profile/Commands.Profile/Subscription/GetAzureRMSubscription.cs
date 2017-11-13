@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Profile
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmSubscription", DefaultParameterSetName = ListByIdInTenantParameterSet),
         OutputType(typeof(PSAzureSubscription))]
-    public class GetAzureRMSubscriptionCommand : AzureRMCmdlet
+    public class GetAzureRMSubscriptionCommand : AzureRmLongRunningCmdlet
     {
         public const string ListByIdInTenantParameterSet = "ListByIdInTenant";
         public const string ListByNameInTenantParameterSet = "ListByNameInTenant";
