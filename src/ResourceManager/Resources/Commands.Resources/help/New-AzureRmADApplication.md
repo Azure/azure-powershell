@@ -62,8 +62,9 @@ Creates a new azure active directory application without any credentials.
 
 ### --------------------------  Create new AAD application with password.  --------------------------
 ```
+PS E:\> $SecureStringPassword = ConvertTo-SecureString -String "password" -AsPlainText -Force
 PS C:\> New-AzureRmADApplication -DisplayName "NewApplication" -HomePage "http://www.microsoft.com" -IdentifierUris "http:
-//NewApplication" -Password "password"
+//NewApplication" -Password $SecureStringPassword
 ```
 
 Creates a new azure active directory application and associates password credentials with it.

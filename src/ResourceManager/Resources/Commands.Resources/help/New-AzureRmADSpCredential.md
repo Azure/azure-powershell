@@ -45,7 +45,8 @@ The service principal is identified by supplying either the object id or service
 
 ### --------------------------  Example 1  --------------------------
 ```
-PS E:\> New-AzureRmADSpCredential -ObjectId 1f99cf81-0146-4f4e-beae-2007d0668476 -Password "P@ssw0rd!"
+PS E:\> $SecureStringPassword = ConvertTo-SecureString -String "password" -AsPlainText -Force
+PS E:\> New-AzureRmADSpCredential -ObjectId 1f99cf81-0146-4f4e-beae-2007d0668476 -Password $SecureStringPassword
 ```
 
 A new password credential is added to an existing service principal.

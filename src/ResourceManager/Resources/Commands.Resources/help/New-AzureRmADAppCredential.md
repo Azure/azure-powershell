@@ -45,7 +45,8 @@ The application is identified by supplying either the application object id or a
 
 ### --------------------------  Example 1  --------------------------
 ```
-PS E:\> New-AzureRmADAppCredential -ObjectId 1f89cf81-0146-4f4e-beae-2007d0668416 -Password P@ssw0rd!
+PS E:\> $SecureStringPassword = ConvertTo-SecureString -String "password" -AsPlainText -Force
+PS E:\> New-AzureRmADAppCredential -ObjectId 1f89cf81-0146-4f4e-beae-2007d0668416 -Password $SecureStringPassword
 ```
 
 A new password credential is added to an existing application.
