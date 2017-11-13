@@ -386,21 +386,25 @@ Tests verifies creation and validation of RoleAssignment properties for not null
 function Test-RaPropertiesValidation
 {
     # Setup
-    $definitionName = 'CustomRole Tests Role'
-    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleDefinitionNames.Enqueue("8D7DD69E-9AE2-44A1-94D8-F7BC8E12645E")
-    New-AzureRmRoleDefinition -InputFile .\Resources\NewRoleDefinition.json
     $users = Get-AzureRmADUser | Select-Object -First 1 -Wait
     $subscription = Get-AzureRmSubscription
-    $resourceGroups = Get-AzureRmResourceGroup | Select-Object -Last 1 -Wait
     $scope = '/subscriptions/'+$subscription[0].Id
-    Assert-AreEqual 1 $users.Count "There should be at least one user to run the test."
-    $rd = Get-AzureRmRoleDefinition -Name $definitionName
+    $roleDef = Get-AzureRmRoleDefinition -Name "Reader"
+    $roleDef.Id = $null
+    $roleDef.Name = "Custom Reader Test"
+    $roleDef.Actions.Add("Microsoft.ClassicCompute/virtualMachines/restart/action")
+    $roleDef.Description = "Read, monitor and restart virtual machines"
+    $roleDef.AssignableScopes[0] = "/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f"
+
+    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleDefinitionNames.Enqueue("032F61D2-ED09-40C9-8657-26A273DA7BAE")
+    New-AzureRmRoleDefinition -Role $roleDef
+    $rd = Get-AzureRmRoleDefinition -Name "Custom Reader Test"
 
     # Test
     [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("fa1a4d3b-2cca-406b-8956-6b6b32377641")
     $newAssignment = New-AzureRmRoleAssignment `
                         -ObjectId $users[0].Id.Guid `
-                        -RoleDefinitionName $definitionName `
+                        -RoleDefinitionName $roleDef.Name `
                         -Scope $scope 
     $newAssignment.Scope = $scope.toUpper()
     
@@ -418,7 +422,7 @@ function Test-RaPropertiesValidation
     
     # Assert
     Assert-NotNull $newAssignment
-    Assert-AreEqual $definitionName $newAssignment.RoleDefinitionName 
+    Assert-AreEqual $roleDef.Name $newAssignment.RoleDefinitionName 
     Assert-AreEqual $scope $newAssignment.Scope 
     Assert-AreEqual $users[0].DisplayName $newAssignment.DisplayName
     
