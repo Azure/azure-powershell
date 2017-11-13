@@ -15,7 +15,7 @@ Adds a credential to an existing application.
 
 ### ApplicationObjectIdWithPasswordParameterSet (Default)
 ```
-New-AzureRmADAppCredential -ObjectId <String> -Password <String> [-StartDate <DateTime>] [-EndDate <DateTime>]
+New-AzureRmADAppCredential -ObjectId <String> -Password <SecureString> [-StartDate <DateTime>] [-EndDate <DateTime>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -33,7 +33,7 @@ New-AzureRmADAppCredential -ApplicationId <String> -CertValue <String> [-StartDa
 
 ### ApplicationIdWithPasswordParameterSet
 ```
-New-AzureRmADAppCredential -ApplicationId <String> -Password <String> [-StartDate <DateTime>]
+New-AzureRmADAppCredential -ApplicationId <String> -Password <SecureString> [-StartDate <DateTime>]
  [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -156,7 +156,7 @@ Accept wildcard characters: False
 The password to be associated with the application.
 
 ```yaml
-Type: String
+Type: SecureString
 Parameter Sets: ApplicationObjectIdWithPasswordParameterSet, ApplicationIdWithPasswordParameterSet
 Aliases: 
 

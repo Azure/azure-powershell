@@ -23,7 +23,7 @@ New-AzureRmADApplication -DisplayName <String> -IdentifierUris <String[]> [-Home
 ### ApplicationWithPasswordPlainParameterSet
 ```
 New-AzureRmADApplication -DisplayName <String> -IdentifierUris <String[]> [-HomePage <String>]
- [-ReplyUrls <String[]>] [-AvailableToOtherTenants <Boolean>] -Password <String> [-StartDate <DateTime>]
+ [-ReplyUrls <String[]>] [-AvailableToOtherTenants <Boolean>] -Password <SecureString> [-StartDate <DateTime>]
  [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -197,7 +197,7 @@ Accept wildcard characters: False
 The password to be associated with the application.
 
 ```yaml
-Type: String
+Type: SecureString
 Parameter Sets: ApplicationWithPasswordPlainParameterSet
 Aliases: 
 
