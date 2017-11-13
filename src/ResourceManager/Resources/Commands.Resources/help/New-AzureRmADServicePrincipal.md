@@ -94,7 +94,8 @@ DemoApp                        ServicePrincipal               f95b6f5c-fc98-4af0
 
 ### --------------------------  Example 2  --------------------------
 ```
-New-AzureRmADServicePrincipal -DisplayName SPForNoExistingApp
+$SecureStringPassword = ConvertTo-SecureString -String "password" -AsPlainText -Force
+New-AzureRmADServicePrincipal -DisplayName SPForNoExistingApp -Password $SecureStringPassword
 ```
 
 Creates a new service principal.
