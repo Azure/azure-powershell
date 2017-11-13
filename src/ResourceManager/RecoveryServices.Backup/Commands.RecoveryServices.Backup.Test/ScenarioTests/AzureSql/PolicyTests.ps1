@@ -12,7 +12,7 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-function Test-AzureSqlPolicyScenario
+function Test-AzureSqlPolicy
 {
 	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "sqlpaasrg" -Name "sqlpaasrn";
 	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;

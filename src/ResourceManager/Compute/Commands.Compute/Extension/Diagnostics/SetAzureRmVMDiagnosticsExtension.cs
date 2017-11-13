@@ -107,7 +107,6 @@ namespace Microsoft.Azure.Commands.Compute
             Position = 7,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The location.")]
-        [LocationCompleter("Microsoft.Storage/storageAccounts")]
         public string Location
         {
             get

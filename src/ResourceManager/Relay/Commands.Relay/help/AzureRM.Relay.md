@@ -1,4 +1,4 @@
----
+﻿---
 Module Name: AzureRm.Relay
 Module Guid: 5728d353-7ad5-42d8-b00a-46aaecf07b91
 Download Help Link: None_Azure

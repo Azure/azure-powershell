@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
 Module Name: AzureRM.Insights
 ms.assetid: C7EC21C7-1C7E-49B2-9B33-486532FCDAEC
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.insights/remove-azurermalertrule
 schema: 2.0.0
 ---
 
@@ -14,13 +14,14 @@ Removes an alert rule.
 ## SYNTAX
 
 ```
-Remove-AzureRmAlertRule -ResourceGroup <String> -Name <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Remove-AzureRmAlertRule -ResourceGroupName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The **Remove-AzureRmAlertRule** cmdlet removes an alert rule.
 You must specify the name of the alert rule and the resource group to which it is assigned.
+
+This cmdlet implements the ShouldProcess pattern, i.e. it might request confirmation from the user before actually creating, modifying, or removing the resource.
 
 ## EXAMPLES
 
@@ -66,13 +67,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroup
+### -ResourceGroupName
 Specifies the name of the resource group for the alert rule.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: ResourceGroup
 
 Required: True
 Position: Named
@@ -88,13 +89,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[Microsoft.Azure.AzureOperationResponse]
+### Microsoft.Azure.AzureOperationResponse
 
 ## NOTES
 
 ## RELATED LINKS
-
-[Add-AzureRmLogAlertRule](./Add-AzureRmLogAlertRule.md)
 
 [Add-AzureRmMetricAlertRule](./Add-AzureRmMetricAlertRule.md)
 

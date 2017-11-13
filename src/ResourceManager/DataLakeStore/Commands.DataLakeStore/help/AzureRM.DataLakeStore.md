@@ -1,4 +1,4 @@
----
+﻿---
 Module Name: AzureRM.DataLakeStore
 Module Guid: 90dfd814-abce-4e1f-99b6-fe16760c079a
 Download Help Link: None

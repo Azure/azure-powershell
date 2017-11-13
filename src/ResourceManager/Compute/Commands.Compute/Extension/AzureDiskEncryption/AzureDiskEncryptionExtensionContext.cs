@@ -25,10 +25,12 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
     {
         public const string LinuxExtensionDefaultPublisher = "Microsoft.Azure.Security";
         public const string LinuxExtensionDefaultName = "AzureDiskEncryptionForLinux";
+        public const string LinuxExtensionDefaultType = "AzureDiskEncryptionForLinux";
         public const string LinuxExtensionDefaultVersion = "0.1";
 
         public const string ExtensionDefaultPublisher = "Microsoft.Azure.Security";
         public const string ExtensionDefaultName = "AzureDiskEncryption";
+        public const string ExtensionDefaultType = "AzureDiskEncryption";
         public const string ExtensionDefaultVersion = "1.1";
         public const string VolumeTypeOS = "OS";
         public const string VolumeTypeData = "Data";
