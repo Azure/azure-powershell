@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         //public EventsClient EventsClient { get; private set; }
 
-        public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
+        public Microsoft.Azure.Management.Authorization.Version2015_07_01.AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
 
 
         public StorageManagementClient StorageClient { get; private set; }
@@ -227,9 +227,9 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             return TestBase.GetGraphServiceClient<GraphRbacManagementClient>(this.csmTestFactory, tenantId);
         }
 
-        private AuthorizationManagementClient GetAuthorizationManagementClient()
+        private Microsoft.Azure.Management.Authorization.Version2015_07_01.AuthorizationManagementClient GetAuthorizationManagementClient()
         {
-            return TestBase.GetServiceClient<AuthorizationManagementClient>(this.csmTestFactory);
+            return TestBase.GetServiceClient<Microsoft.Azure.Management.Authorization.Version2015_07_01.AuthorizationManagementClient>(this.csmTestFactory);
         }
 
         private ResourceManagementClient GetResourceManagementClient()
