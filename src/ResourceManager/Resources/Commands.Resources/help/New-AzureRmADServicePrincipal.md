@@ -21,7 +21,7 @@ New-AzureRmADServicePrincipal -ApplicationId <Guid> [-DefaultProfile <IAzureCont
 
 ### ApplicationWithPasswordPlainParameterSet
 ```
-New-AzureRmADServicePrincipal -ApplicationId <Guid> -Password <String> [-StartDate <DateTime>]
+New-AzureRmADServicePrincipal -ApplicationId <Guid> -Password <SecureString> [-StartDate <DateTime>]
  [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -51,7 +51,7 @@ New-AzureRmADServicePrincipal -DisplayName <String> [-DefaultProfile <IAzureCont
 
 ### DisplayNameWithPasswordPlainParameterSet
 ```
-New-AzureRmADServicePrincipal -DisplayName <String> -Password <String> [-StartDate <DateTime>]
+New-AzureRmADServicePrincipal -DisplayName <String> -Password <SecureString> [-StartDate <DateTime>]
  [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -205,7 +205,7 @@ Accept wildcard characters: False
 The password to be associated with the service principal.
 
 ```yaml
-Type: String
+Type: SecureString
 Parameter Sets: ApplicationWithPasswordPlainParameterSet, DisplayNameWithPasswordPlainParameterSet
 Aliases: 
 
