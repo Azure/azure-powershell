@@ -6,7 +6,7 @@ namespace Microsoft.Azure.Experiments.Network
 {
     public static class NetworkSecurityGroupPolicy
     {
-        public static ResourcePolicy<ResourceName, NetworkSecurityGroup> Policy { get; }
+        public static ResourcePolicy<NetworkSecurityGroup> Policy { get; }
             = NetworkPolicy.Create(
                 client => client.NetworkSecurityGroups,
                 p => p.Operations.GetAsync(
@@ -14,8 +14,8 @@ namespace Microsoft.Azure.Experiments.Network
                 p => p.Operations.CreateOrUpdateAsync(
                     p.ResourceGroupName, p.Name, p.Config, p.CancellationToken));
 
-        public static ResourceConfig<ResourceName, NetworkSecurityGroup> CreateNetworkSecurityGroupConfig(
-            this ResourceConfig<string, ResourceGroup> resourceGroup, string name)
+        public static ResourceConfig<NetworkSecurityGroup> CreateNetworkSecurityGroupConfig(
+            this ResourceConfig<ResourceGroup> resourceGroup, string name)
             => Policy.CreateConfig(resourceGroup, name);
     }
 }

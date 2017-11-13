@@ -6,18 +6,16 @@ namespace Microsoft.Azure.Experiments.Compute
 {
     public static class VirtualMachinePolicy
     {
-        public static ResourcePolicy<ResourceName, VirtualMachine> Policy { get; }
+        public static ResourcePolicy<VirtualMachine> Policy { get; }
             = ComputePolicy.Create(
                 client => client.VirtualMachines,
-                (operations, name, cancellationTokent)
-                    => operations.GetAsync(
-                        name.ResourceGroupName, name.Name, cancellationToken: cancellationTokent),
-                (operations, name, config, cancellationTokent)
-                    => operations.CreateOrUpdateAsync(
-                        name.ResourceGroupName, name.Name, config, cancellationTokent));
+                p => p.Operations.GetAsync(
+                    p.ResourceGroupName, p.Name, null, p.CancellationToken),
+                p => p.Operations.CreateOrUpdateAsync(
+                    p.ResourceGroupName, p.Name, p.Config, p.CancellationToken));
 
-        public static ResourceConfig<ResourceName, VirtualMachine> CreateVirtualMachineConfig(
-            this ResourceConfig<string, ResourceGroup> resourceGroup, string name)
+        public static ResourceConfig<VirtualMachine> CreateVirtualMachineConfig(
+            this ResourceConfig<ResourceGroup> resourceGroup, string name)
             => Policy.CreateConfig(resourceGroup, name);
     }
 }

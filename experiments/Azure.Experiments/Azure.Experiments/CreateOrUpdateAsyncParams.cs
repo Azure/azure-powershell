@@ -2,6 +2,18 @@
 
 namespace Microsoft.Azure.Experiments
 {
+    public static class CreateOrUpdateAsyncParams
+    {
+        public static CreateOrUpdateAsyncParams<Operations, Config> Create<Operations, Config>(
+            Operations operations,
+            string resourceGroupName,
+            string name,
+            Config config,
+            CancellationToken cancellationToken)
+            => new CreateOrUpdateAsyncParams<Operations, Config>(
+                operations, resourceGroupName, name, config, cancellationToken);
+    }
+
     public sealed class CreateOrUpdateAsyncParams<TOperations, TConfig>
     {
         public TOperations Operations { get; }
@@ -16,13 +28,14 @@ namespace Microsoft.Azure.Experiments
 
         public CreateOrUpdateAsyncParams(
             TOperations operations,
-            ResourceName name,
+            string resourceGroupName,
+            string name,
             TConfig config,
             CancellationToken cancellationToken)
         {
             Operations = operations;
-            ResourceGroupName = name.ResourceGroupName;
-            Name = name.Name;
+            ResourceGroupName = resourceGroupName;
+            Name = name;
             Config = config;
             CancellationToken = cancellationToken;
         }

@@ -8,10 +8,10 @@ namespace Microsoft.Azure.Experiments.Compute
 {
     public static class ComputePolicy
     {
-        public static ResourcePolicy<ResourceName, Config> Create<Config, Operations>(
+        public static ResourcePolicy<Config> Create<Config, Operations>(
             Func<IComputeManagementClient, Operations> getOperations,
-            Func<Operations, ResourceName, CancellationToken, Task<Config>> getAsync,
-            Func<Operations, ResourceName, Config, CancellationToken, Task<Config>> createOrUpdateAsync)
+            Func<GetAsyncParams<Operations>, Task<Config>> getAsync,
+            Func<CreateOrUpdateAsyncParams<Operations, Config>, Task<Config>> createOrUpdateAsync)
             where Config : Resource
             => ResourcePolicy.Create(
                 getOperations,

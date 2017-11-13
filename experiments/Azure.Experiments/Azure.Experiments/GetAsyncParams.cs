@@ -2,7 +2,17 @@
 
 namespace Microsoft.Azure.Experiments
 {
-    public sealed class GetAsyncParams<TOperations>
+    public static class GetAsyncParams
+    {
+        public static GetAsyncParams<Operations> Create<Operations>(
+            Operations operations,
+            string resourceGroupName,
+            string name,
+            CancellationToken cancellationToken)
+            => new GetAsyncParams<Operations>(operations, resourceGroupName, name, cancellationToken);
+    }
+
+    public class GetAsyncParams<TOperations>
     {
         public TOperations Operations { get; }
 
@@ -13,11 +23,14 @@ namespace Microsoft.Azure.Experiments
         public CancellationToken CancellationToken { get; }
 
         public GetAsyncParams(
-            TOperations operations, ResourceName name, CancellationToken cancellationToken)
+            TOperations operations,
+            string resourceGroupName,
+            string name,
+            CancellationToken cancellationToken)
         {
             Operations = operations;
-            ResourceGroupName = name.ResourceGroupName;
-            Name = name.Name;
+            ResourceGroupName = resourceGroupName;
+            Name = name;
             CancellationToken = cancellationToken;
         }
     }

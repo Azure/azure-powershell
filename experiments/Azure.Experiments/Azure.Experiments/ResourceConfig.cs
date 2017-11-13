@@ -5,52 +5,63 @@ using System.Linq;
 
 namespace Microsoft.Azure.Experiments
 {
-    public class ResourceConfig<TName, Config> : IResourceConfig
+    public sealed class ResourceConfig<Config> : IResourceConfig<Config>
+        where Config : class
     {
-        public ResourcePolicy<TName, Config> Policy { get; }
+        public ResourcePolicy<Config> Policy { get; }
 
-        public TName Name { get; }
+        public string ResourceGroupName { get; }
+
+        public string Name { get; }
 
         public Func<IState, Config> CreateConfig { get; }
 
         public IEnumerable<IResourceConfig> Dependencies { get; }
 
         public ResourceConfig(
-            ResourcePolicy<TName, Config> policy,
-            TName name,
+            ResourcePolicy<Config> policy,
+            string resourceGroupName,
+            string name,
             Func<IState, Config> createConfig,
             IEnumerable<IResourceConfig> dependencies)
         {
             Policy = policy;
+            ResourceGroupName = resourceGroupName;
             Name = name;
             CreateConfig = createConfig;
             Dependencies = dependencies;
         }
+
+        public Result Apply<Result>(IResourceConfigVisitor<Result> visitor)
+            => visitor.Visit(this);
     }
 
     public static class ResourceConfig
     {
-        public static ResourceConfig<Name, Config> CreateConfig<Name, Config>(
-            this ResourcePolicy<Name, Config> policy,
-            Name name,
+        public static ResourceConfig<Config> CreateConfig<Config>(
+            this ResourcePolicy<Config> policy,
+            string resourceGroupName,
+            string name,
             Func<IState, Config> createConfig = null,
             IEnumerable<IResourceConfig> dependencies = null)
-            where Config : new()
-            => new ResourceConfig<Name, Config>(
+            where Config : class, new()
+            => new ResourceConfig<Config>(
                 policy,
+                resourceGroupName,
                 name,
                 createConfig ?? (_ => new Config()),
                 dependencies.EmptyIfNull());
 
-        public static ResourceConfig<ResourceName, Config> CreateConfig<Config>(
-            this ResourcePolicy<ResourceName, Config> policy,
-            ResourceConfig<string, ResourceGroup> resourceGroup,
+        public static ResourceConfig<Config> CreateConfig<Config>(
+            this ResourcePolicy<Config> policy,
+            ResourceConfig<ResourceGroup> resourceGroup,
             string name,
             Func<IState, Config> createConfig = null,
             IEnumerable<IResourceConfig> dependencies = null)
-            where Config : new()
+            where Config : class, new()
             => policy.CreateConfig(
-                new ResourceName(resourceGroup.Name, name),
+                resourceGroup.Name, 
+                name,
                 createConfig,
                 dependencies.EmptyIfNull().Concat(new[] { resourceGroup }));
     }
