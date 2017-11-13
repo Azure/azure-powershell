@@ -11,15 +11,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
+
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Management.Automation.Host;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
@@ -28,17 +26,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         [Parameter(Mandatory=false, HelpMessage ="Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set;}
 
-        AzureRmJob _job;
-
         protected override void ProcessRecord()
         {
             if (AsJob.IsPresent)
             {
-                _job = new Common.AzureRmLongRunningCmdlet.AzureRmJob("LongRunningCmdlet", "AzureRmLongRunningCmdlet");
-                JobRepository.Add(_job);
-                
-                WriteObject(_job);
-                ThreadPool.QueueUserWorkItem(RunJob);
+
+                var job = new Common.AzureRmLongRunningCmdlet.AzureRmJob(MyInvocation.MyCommand.Name, this.JobName);
+                JobRepository.Add(job);
+                ThreadPool.QueueUserWorkItem(RunJob, job);
+                WriteObject(job);
             }
             else
             {
@@ -46,46 +42,76 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
         }
 
+        protected virtual AzureRmLongRunningCmdlet CopyCmdlet()
+        {
+            var returnType = this.GetType();
+            var returnValue = Activator.CreateInstance(this.GetType());
+            foreach (var property in returnType.GetProperties())
+            {
+                if (property.CanWrite && property.CanRead)
+                {
+                    property.SetValue(returnValue, property.GetValue(this));
+                }
+            }
+
+            return returnValue as AzureRmLongRunningCmdlet;
+        }
+
+        /// <summary>
+        /// Return the name of the PSJob, when the AsJob parameter is specified.
+        /// </summary>
+        public virtual string JobName { get { return string.Format("Long running operation for '{0}'", MyInvocation.MyCommand); } }
+
+        /// <summary>
+        /// Run a cmdlet execuition as a Job - this is intended to run in a background thread
+        /// </summary>
+        /// <param name="state">The Job record that will track the progress of this job </param>
         public void RunJob(object state)
         {
-            try
+            AzureRmJob job = state as AzureRmJob;
+            if (job != null)
             {
-                ReplaceCommandRuntime();
-                _job.Start();
-                Thread.Sleep(TimeSpan.FromSeconds(30));
-                ExecuteCmdlet();
-                _job.Complete();
-            }
-            catch (Exception)
-            {
-                _job.Fail();
+                try
+                {
+                    job.Start();
+                    var cmdletCopy = CopyCmdlet();
+                    ReplaceCommandRuntime(cmdletCopy, job);
+                    cmdletCopy.ExecuteCmdlet();
+                    job.Complete();
+                }
+                catch (Exception)
+                {
+                    job.Fail();
+                }
             }
         }
 
-        void ReplaceCommandRuntime()
+        static void ReplaceCommandRuntime(AzureRmLongRunningCmdlet cmdlet, AzureRmJob job)
         {
-            this.CommandRuntime = new JobRuntime(this.CommandRuntime, _job);
+            cmdlet.CommandRuntime = new JobRuntime(cmdlet.CommandRuntime, job);
         }
 
+        /// <summary>
+        /// Internal class implementing the lightweight job
+        /// </summary>
         class AzureRmJob : Job
         {
             public AzureRmJob(string command, string name):base(command, name)
             {
-                this.PSJobTypeName = "AzureRmJob";
+                this.PSJobTypeName = this.GetType().Name;
             }
 
-            bool _processingCompleted = false;
             string _status = "Running";
             public override bool HasMoreData
             {
-                get { return !_processingCompleted || Output.Any();}
+                get { return Output.Any() || Progress.Any() || Error.Any() || Warning.Any() || Verbose.Any() || Debug.Any();}
             }
 
             public override string Location
             {
                 get
                 {
-                    return "Process";
+                    return "localhost";
                 }
             }
 
@@ -99,7 +125,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
             public override void StopJob()
             {
-                _processingCompleted = true;
                 SetJobState(JobState.Stopped);
 
             }
@@ -114,24 +139,24 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             {
                 _status = "Failed";
                 SetJobState(JobState.Failed);
-                _processingCompleted = true;
             }
 
             public void Complete()
             {
                 _status = "Completed";
                 SetJobState(JobState.Completed);
-                _processingCompleted = true;
             }
 
             public void Cancel()
             {
                 _status = "Stopped";
                 SetJobState(JobState.Stopped);
-                _processingCompleted = true;
             }
         }
 
+        /// <summary>
+        /// CommandRuntime replacement linking cmdlet execution with a job
+        /// </summary>
         class JobRuntime : ICommandRuntime
         {
             public JobRuntime(ICommandRuntime other, Job job)
