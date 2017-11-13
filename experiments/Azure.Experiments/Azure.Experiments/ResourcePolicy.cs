@@ -4,85 +4,65 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Experiments
 {
-    public abstract class ResourcePolicy<Name, Info>
-        where Info : class
+    public sealed class ResourcePolicy<Name, Config> : IResourcePolicy
     {
-        public abstract Task<Info> GetAsync(
-            IClient client, Name name, CancellationToken cancellationToken);
+        public Func<IClient, Name, CancellationToken, Task<Config>> GetAsync { get; }
 
-        public abstract Task<Info> CreateOrUpdatesAsync(
-            IClient client, Name name, Info info, CancellationToken cancellationToken);
+        public Func<IClient, Name, Config, CancellationToken, Task<Config>> CreateOrUpdateAsync { get; }
 
-        public abstract string GetLocation(Info info);
+        public Func<Config, string> GetLocation { get; }
 
-        public abstract void SetLocation(Info info, string location);
+        public Action<Config, string> SetLocation { get; }
+
+        public ResourcePolicy(
+            Func<IClient, Name, CancellationToken, Task<Config>> getAsync,
+            Func<IClient, Name, Config, CancellationToken, Task<Config>> createOrUpdateAsync,
+            Func<Config, string> getLocation,
+            Action<Config, string> setLocation)
+        {
+            GetAsync = getAsync;
+            CreateOrUpdateAsync = createOrUpdateAsync;
+            GetLocation = getLocation;
+            SetLocation = setLocation;
+        }
     }
 
-    public abstract class ResourcePolicy<Info, RMClient, Operations> : ResourcePolicy<ResourceName, Info>
-        where Info : class
-        where RMClient : class, IDisposable
+    public static class ResourcePolicy
     {
-        public sealed class GetParams
+        public static ResourcePolicy<Name, Config> Create<Name, Config, Client, Operations>(
+            Func<Client, Operations> getOperations,
+            Func<Operations, Name, CancellationToken, Task<Config>> getAsync,
+            Func<Operations, Name, Config, CancellationToken, Task<Config>> createOrUpdateAsync,
+            Func<Config, string> getLocation,
+            Action<Config, string> setLocation)
+            where Client : class, IDisposable
         {
-            public Operations Operations { get; }
-
-            public string ResourceGroupName { get; }
-
-            public string Name { get; }
-
-            public CancellationToken CancellationToken { get; }
-
-            public GetParams(
-                Operations operations, ResourceName name, CancellationToken cancellationToken)
-            {
-                Operations = operations;
-                ResourceGroupName = name.ResourceGroupName;
-                Name = name.Name;
-                CancellationToken = cancellationToken;
-            }
+            Operations GetOperations(IClient client) => getOperations(client.GetClient<Client>());
+            return new ResourcePolicy<Name, Config>(
+                (client, name, cancellationToken)
+                    => getAsync(GetOperations(client), name, cancellationToken),
+                (client, name, config, cancellationToken)
+                    => createOrUpdateAsync(GetOperations(client), name, config, cancellationToken),
+                getLocation,
+                setLocation);
         }
 
-        public sealed class CreateParams
-        {
-            public Operations Operations { get; }
-
-            public string ResourceGroupName { get; }
-
-            public string Name { get; }
-
-            public Info Info { get; }
-
-            public CancellationToken CancellationToken { get; }
-
-            public CreateParams(
-                Operations operations,
-                ResourceName name,
-                Info info,
-                CancellationToken cancellationToken)
-            {
-                Operations = operations;
-                ResourceGroupName = name.ResourceGroupName;
-                Name = name.Name;
-                Info = info;
-                CancellationToken = cancellationToken;
-            }
-        }
-
-        public abstract Operations GetOperations(RMClient client);
-
-        public abstract Task<Info> GetAsync(GetParams p);
-
-        public abstract Task<Info> CreateOrUpdateAsync(CreateParams p);
-
-        public sealed override Task<Info> GetAsync(
-            IClient client, ResourceName name, CancellationToken cancellationToken)
-            => GetAsync(new GetParams(GetOperations(client), name, cancellationToken));
-
-        public sealed override Task<Info> CreateOrUpdatesAsync(
-            IClient client, ResourceName name, Info info, CancellationToken cancellationToken)
-            => CreateOrUpdateAsync(new CreateParams(GetOperations(client), name, info, cancellationToken));
-
-        Operations GetOperations(IClient client)
-            => GetOperations(client.GetClient<RMClient>());
+        public static ResourcePolicy<ResourceName, Config> Create<Config, Client, Operations>(
+            Func<Client, Operations> getOperations,
+            Func<GetAsyncParams<Operations>, Task<Config>> getAsync,
+            Func<CreateOrUpdateAsyncParams<Operations, Config>, Task<Config>> createOrUpdateAsync,
+            Func<Config, string> getLocation,
+            Action<Config, string> setLocation)
+            where Client : class, IDisposable
+            => Create<ResourceName, Config, Client, Operations>(
+                getOperations,
+                (operations, name, cancellationToken)
+                     => getAsync(new GetAsyncParams<Operations>(
+                         operations, name, cancellationToken)),
+                (operations, name, config, cancellationToken)
+                    => createOrUpdateAsync(new CreateOrUpdateAsyncParams<Operations, Config>(
+                        operations, name, config, cancellationToken)),
+                getLocation,
+                setLocation);
     }
 }

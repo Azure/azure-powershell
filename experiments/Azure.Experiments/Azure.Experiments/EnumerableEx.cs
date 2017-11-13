@@ -6,6 +6,6 @@ namespace Microsoft.Azure.Experiments
     public static class EnumerableEx
     {
         public static IEnumerable<T> EmptyIfNull<T>(this IEnumerable<T> value)
-            => value == null ? Enumerable.Empty<T>() : value;
+            => value ?? Enumerable.Empty<T>();
     }
 }

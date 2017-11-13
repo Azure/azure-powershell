@@ -1,64 +1,57 @@
-﻿using System;
+﻿using Microsoft.Azure.Management.ResourceManager.Models;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.Azure.Experiments
 {
-    public interface IResourceConfigVisitor<Result>
+    public class ResourceConfig<TName, Config> : IResourceConfig
     {
-        Result Visit<T>(ResourceConfig<T> config)
-            where T : class;
-    }
+        public ResourcePolicy<TName, Config> Policy { get; }
 
-    public interface IResourceConfig
-    {
-        Result Apply<Result>(IResourceConfigVisitor<Result> config);
+        public TName Name { get; }
+
+        public Func<IState, Config> CreateConfig { get; }
+
+        public IEnumerable<IResourceConfig> Dependencies { get; }
+
+        public ResourceConfig(
+            ResourcePolicy<TName, Config> policy,
+            TName name,
+            Func<IState, Config> createConfig,
+            IEnumerable<IResourceConfig> dependencies)
+        {
+            Policy = policy;
+            Name = name;
+            CreateConfig = createConfig;
+            Dependencies = dependencies;
+        }
     }
 
     public static class ResourceConfig
     {
-        public static ResourceConfig<Info> CreateConfig<Info>(
-            this ResourcePolicy<Info> policy,
-            ResourceName name,
-            Func<IState, Info> info,
-            IEnumerable<IResourceConfig> resources = null,
-            IEnumerable<IChildResourceConfig> childResources = null)
-            where Info : class
-            => new ResourceConfig<Info>(
+        public static ResourceConfig<Name, Config> CreateConfig<Name, Config>(
+            this ResourcePolicy<Name, Config> policy,
+            Name name,
+            Func<IState, Config> createConfig = null,
+            IEnumerable<IResourceConfig> dependencies = null)
+            where Config : new()
+            => new ResourceConfig<Name, Config>(
                 policy,
                 name,
-                info,
-                resources.EmptyIfNull(),
-                childResources.EmptyIfNull());
-    }
+                createConfig ?? (_ => new Config()),
+                dependencies.EmptyIfNull());
 
-    public sealed class ResourceConfig<Info> : IResourceConfig
-        where Info : class
-    {
-        public ResourcePolicy<Info> Policy { get; }
-
-        public ResourceName Name { get; }
-
-        public Func<IState, Info> CreateInfo { get; }
-
-        public IEnumerable<IResourceConfig> Resources { get; }
-
-        public IEnumerable<IChildResourceConfig> ChildResources { get; }
-
-        public ResourceConfig(
-            ResourcePolicy<Info> policy,
-            ResourceName name,
-            Func<IState, Info> createInfo,
-            IEnumerable<IResourceConfig> resources,
-            IEnumerable<IChildResourceConfig> childResources)
-        {
-            Policy = policy;
-            Name = name;
-            CreateInfo = createInfo;
-            Resources = resources;
-            ChildResources = childResources;
-        }
-
-        public Result Apply<Result>(IResourceConfigVisitor<Result> config)
-            => config.Visit(this);
+        public static ResourceConfig<ResourceName, Config> CreateConfig<Config>(
+            this ResourcePolicy<ResourceName, Config> policy,
+            ResourceConfig<string, ResourceGroup> resourceGroup,
+            string name,
+            Func<IState, Config> createConfig = null,
+            IEnumerable<IResourceConfig> dependencies = null)
+            where Config : new()
+            => policy.CreateConfig(
+                new ResourceName(resourceGroup.Name, name),
+                createConfig,
+                dependencies.EmptyIfNull().Concat(new[] { resourceGroup }));
     }
 }

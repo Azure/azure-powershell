@@ -1,37 +1,21 @@
-﻿using System.Threading.Tasks;
-using Microsoft.Azure.Management.Network;
+﻿using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
+using Microsoft.Azure.Management.ResourceManager.Models;
 
 namespace Microsoft.Azure.Experiments.Network
 {
-    public sealed class PublicIPAddressPolicy
-        : NetworkPolicy<PublicIPAddress, IPublicIPAddressesOperations>
-    {
-        public override Task<PublicIPAddress> CreateOrUpdateAsync(CreateParams p)
-            => p.Operations.CreateOrUpdateAsync(
-                p.ResourceGroupName, p.Name, p.Info, p.CancellationToken);
-
-        public override Task<PublicIPAddress> GetAsync(GetParams p)
-             => p.Operations.GetAsync(
-                 p.ResourceGroupName, p.Name, cancellationToken: p.CancellationToken);
-
-        public override IPublicIPAddressesOperations GetOperations(INetworkManagementClient client)
-            => client.PublicIPAddresses;
-    }
-
-    /*
     public static class PublicIPAddressPolicy
     {
-        public static ResourcePolicy<PublicIPAddress> Policy { get; }
+        public static ResourcePolicy<ResourceName, PublicIPAddress> Policy { get; }
             = NetworkPolicy.Create(
                 client => client.PublicIPAddresses,
-                (operations, name) => operations.GetAsync(name.ResourceGroupName, name.Name),
-                (operations, name, info)
-                    => operations.CreateOrUpdateAsync(name.ResourceGroupName, name.Name, info));
+                p => p.Operations.GetAsync(
+                    p.ResourceGroupName, p.Name, null, p.CancellationToken),
+                p => p.Operations.CreateOrUpdateAsync(
+                    p.ResourceGroupName, p.Name, p.Config, p.CancellationToken));
 
-        public static ResourceConfig<PublicIPAddress> CreatePublicIPAddressConfig(
-            this ResourceName name)
-            => Policy.CreateConfig(name, _ => new PublicIPAddress());
+        public static ResourceConfig<ResourceName, PublicIPAddress> CreatePublicIPAddressConfig(
+            this ResourceConfig<string, ResourceGroup> resourceGroup, string name)
+            => Policy.CreateConfig(resourceGroup, name);
     }
-    */
 }

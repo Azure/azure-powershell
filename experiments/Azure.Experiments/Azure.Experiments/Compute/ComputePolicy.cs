@@ -1,31 +1,23 @@
 ﻿using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Experiments.Compute
 {
-    public abstract class ComputePolicy<Info, Operations>
-        : ResourcePolicy<Info, IComputeManagementClient, Operations>
-        where Info : Resource
-    {
-        public sealed override string GetLocation(Info info)
-            => info.Location;
-
-        public sealed override void SetLocation(Info info, string location)
-            => info.Location = location;
-    }
-
-    /*
     public static class ComputePolicy
     {
-        public static ResourcePolicy<Info> Create<Operations, Info>(
+        public static ResourcePolicy<ResourceName, Config> Create<Config, Operations>(
             Func<IComputeManagementClient, Operations> getOperations,
-            Func<Operations, ResourceName, Task<Info>> getAsync,
-            Func<Operations, ResourceName, Info, Task<Info>> createOrUpdateAsync)
-            where Info : Management.Compute.Models.Resource
-            => OperationsPolicy
-                .Create(getAsync, createOrUpdateAsync)
-                .Transform(getOperations)
-                .CreateResourcePolicy(i => i.Location, (i, location) => i.Location = location);
+            Func<Operations, ResourceName, CancellationToken, Task<Config>> getAsync,
+            Func<Operations, ResourceName, Config, CancellationToken, Task<Config>> createOrUpdateAsync)
+            where Config : Resource
+            => ResourcePolicy.Create(
+                getOperations,
+                getAsync,
+                createOrUpdateAsync,
+                config => config.Location,
+                (config, location) => config.Location = location);
     }
-    */
 }

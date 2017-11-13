@@ -1,6 +1,6 @@
 ﻿namespace Microsoft.Azure.Experiments
 {
-    public interface IState
+    public interface IResourcePolicy
     {
     }
 }
