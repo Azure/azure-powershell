@@ -63,14 +63,14 @@
     <Compile Include="Commands\NewAzureRmPowerBIEmbeddedCapacity.cs" />
     <Compile Include="Commands\RemoveAzureRmPowerBIEmbeddedCapacity.cs" />
     <Compile Include="Commands\ResumeAzureRmPowerBIEmbeddedCapacity.cs" />
-    <Compile Include="Commands\SetAzureRmPowerBIEmbeddedCapacity.cs" />
+    <Compile Include="Commands\UpdateAzureRmPowerBIEmbeddedCapacity.cs" />
     <Compile Include="Commands\SuspendAzureRmPowerBIEmbeddedCapacity.cs" />
     <Compile Include="Commands\TestAzureRmPowerBIEmbeddedCapacity.cs" />
     <Compile Include="Models\PowerBIEmbeddedCapacityClient.cs" />
     <Compile Include="Models\PowerBIEmbeddedCapacityCmdletBase.cs" />
     <Compile Include="Models\AzurePowerBIEmbeddedCapacity.cs" />
-    <Compile Include="Models\CapacitySku.cs" />
     <Compile Include="Models\StringOrByteArrayInstance.cs" />
+    <Compile Include="Utilities\PowerBIEmbeddedCapacityUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <DependentUpon>Resources.resx</DependentUpon>

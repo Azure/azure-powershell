@@ -23,7 +23,7 @@ Deletes an instance of PowerBI Embedded Capacity
 ### [Resume-AzureRmPowerBIEmbeddedCapacity](Resume-AzureRmPowerBIEmbeddedCapacity.md)
 Resumes an instance of PowerBI Embedded Capacity
 
-### [Set-AzureRmPowerBIEmbeddedCapacity](Set-AzureRmPowerBIEmbeddedCapacity.md)
+### [Update-AzureRmPowerBIEmbeddedCapacity](Update-AzureRmPowerBIEmbeddedCapacity.md)
 Modifies  an instance of PowerBI Embedded Capacity
 
 ### [Suspend-AzureRmPowerBIEmbeddedCapacity](Suspend-AzureRmPowerBIEmbeddedCapacity.md)

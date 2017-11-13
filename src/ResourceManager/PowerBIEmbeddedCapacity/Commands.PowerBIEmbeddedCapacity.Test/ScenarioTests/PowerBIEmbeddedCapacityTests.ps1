@@ -2,6 +2,83 @@
 .SYNOPSIS
 Tests PowerBI Embedded Capacity lifecycle (Create, Update, Get, List, Delete).
 #>
+function Test-CleanCapacity
+{
+	try
+	{  
+		# Creating capacity
+		$RGlocation = Get-RG-Location
+		$location = Get-Location
+		$resourceGroupName = Get-ResourceGroupName
+		$capacityName = Get-PowerBIEmbeddedCapacityName
+	}
+	finally
+	{
+		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
+		Invoke-HandledCmdlet -Command {Remove-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -ErrorAction SilentlyContinue} -IgnoreFailures
+	}
+}
+
+<#
+.SYNOPSIS
+Tests PowerBI Embedded Capacity lifecycle (Create, Update, Get, List, Delete).
+#>
+function Test-CreateCapacity
+{
+	# Creating capacity
+	$RGlocation = Get-RG-Location
+	$location = Get-Location
+	$resourceGroupName = Get-ResourceGroupName
+	$capacityName = Get-PowerBIEmbeddedCapacityName
+
+	New-AzureRmResourceGroup -Name $resourceGroupName -Location $RGlocation
+		
+	$capacityCreated = New-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -Location $location -Sku 'A1' -Administrator 'aztest0@stabletest.ccsctp.net','aztest1@stabletest.ccsctp.net'
+    
+	Assert-AreEqual $capacityName $capacityCreated.Name
+	Assert-AreEqual $location $capacityCreated.Location
+	Assert-AreEqual "Microsoft.PowerBIDedicated/capacities" $capacityCreated.Type
+	Assert-AreEqual 2 $capacityCreated.Administrators.Count
+	Assert-True {$capacityCreated.Id -like "*$resourceGroupName*"}
+}
+
+<#
+.SYNOPSIS
+Tests PowerBI Embedded Capacity lifecycle (Create, Update, Get, List, Delete).
+#>
+function Test-My
+{
+	# Creating capacity
+	$RGlocation = Get-RG-Location
+	$location = Get-Location
+	$resourceGroupName = "onesdk1511"
+	$capacityName = "onesdk7740"
+
+	[array]$capacityGet = Get-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName
+	$capacityGetItem = $capacityGet[0]
+
+	Assert-True {$capacityGetItem.ProvisioningState -like "Succeeded"}
+	Assert-True {$capacityGetItem.State -like "Succeeded"}
+		
+	Assert-AreEqual $capacityName $capacityGetItem.Name
+	Assert-AreEqual $location $capacityGetItem.Location
+	Assert-AreEqual "Microsoft.PowerBIDedicated/capacities" $capacityGetItem.Type
+	Assert-True {$capacityGetItem.Id -like "*$resourceGroupName*"}
+
+		# Scale up A1 -> A2
+		$capacityUpdated = Update-AzureRmPowerBIEmbeddedCapacity -Name $capacityName -Sku A2 -PassThru
+		Assert-AreEqual A2 $capacityUpdated.Sku
+
+		# Scale down A2 -> A1
+		$capacityUpdated = Update-AzureRmPowerBIEmbeddedCapacity -Name $capacityName -Sku A1 -PassThru
+		Assert-AreEqual A1 $capacityUpdated.Sku
+}
+
+<#
+.SYNOPSIS
+Tests PowerBI Embedded Capacity lifecycle (Create, Update, Get, List, Delete).
+#>
 function Test-PowerBIEmbeddedCapacity
 {
 	try
@@ -14,7 +91,7 @@ function Test-PowerBIEmbeddedCapacity
 
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $RGlocation
 		
-		$capacityCreated = New-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -Location $location -Sku 'A1' -Administrator 'aztest0@stabletest.ccsctp.net,aztest1@stabletest.ccsctp.net'
+		$capacityCreated = New-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -Location $location -Sku 'A1' -Administrator 'aztest0@stabletest.ccsctp.net','aztest1@stabletest.ccsctp.net'
     
 		Assert-AreEqual $capacityName $capacityCreated.Name
 		Assert-AreEqual $location $capacityCreated.Location
@@ -40,12 +117,12 @@ function Test-PowerBIEmbeddedCapacity
 		
 		# Updating capacity
 		$tagsToUpdate = @{"TestTag" = "TestUpdate"}
-		$capacityUpdated = Set-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -Tag $tagsToUpdate -PassThru
+		$capacityUpdated = Update-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -Tag $tagsToUpdate -PassThru
 		Assert-NotNull $capacityUpdated.Tag "Tag do not exists"
 		Assert-NotNull $capacityUpdated.Tag["TestTag"] "The updated tag 'TestTag' does not exist"
 		Assert-AreEqual $capacityUpdated.Administrators.Count 2
 
-		$capacityUpdated = Set-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -Administrator 'aztest1@stabletest.ccsctp.net' -PassThru
+		$capacityUpdated = Update-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -Administrator 'aztest1@stabletest.ccsctp.net' -PassThru
 		Assert-NotNull $capacityUpdated.Administrators "Capacity Administrator list is empty"
 		Assert-AreEqual $capacityUpdated.Administrators.Count 1
 
@@ -138,11 +215,11 @@ function Test-PowerBIEmbeddedCapacityScaleUpDown
 
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $RGlocation
 		
-		$capacityCreated = New-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -Location $location -Sku 'A1' -Administrator 'aztest0@stabletest.ccsctp.net,aztest1@stabletest.ccsctp.net'
+		$capacityCreated = New-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -Location $location -Sku 'A1' -Administrator 'aztest0@stabletest.ccsctp.net','aztest1@stabletest.ccsctp.net'
 		Assert-AreEqual $capacityName $capacityCreated.Name
 		Assert-AreEqual $location $capacityCreated.Location
 		Assert-AreEqual "Microsoft.PowerBIDedicated/capacities" $capacityCreated.Type
-		Assert-AreEqual A1 $capacityCreated.Sku.Name
+		Assert-AreEqual A1 $capacityCreated.Sku
 		Assert-True {$capacityCreated.Id -like "*$resourceGroupName*"}
 	
 		# Check capacity was created successfully
@@ -154,17 +231,17 @@ function Test-PowerBIEmbeddedCapacityScaleUpDown
 		
 		Assert-AreEqual $capacityName $capacityGetItem.Name
 		Assert-AreEqual $location $capacityGetItem.Location
-		Assert-AreEqual A1 $capacityGetItem.Sku.Name
+		Assert-AreEqual A1 $capacityGetItem.Sku
 		Assert-AreEqual "Microsoft.PowerBIDedicated/capacities" $capacityGetItem.Type
 		Assert-True {$capacityGetItem.Id -like "*$resourceGroupName*"}
 		
 		# Scale up A1 -> A2
-		$capacityUpdated = Set-AzureRmPowerBIEmbeddedCapacity -Name $capacityName -Sku A2 -PassThru
-		Assert-AreEqual A2 $capacityUpdated.Sku.Name
+		$capacityUpdated = Update-AzureRmPowerBIEmbeddedCapacity -Name $capacityName -Sku A2 -PassThru
+		Assert-AreEqual A2 $capacityUpdated.Sku
 
 		# Scale down A2 -> A1
-		$capacityUpdated = Set-AzureRmPowerBIEmbeddedCapacity -Name $capacityName -Sku A1 -PassThru
-		Assert-AreEqual A1 $capacityUpdated.Sku.Name
+		$capacityUpdated = Update-AzureRmPowerBIEmbeddedCapacity -Name $capacityName -Sku A1 -PassThru
+		Assert-AreEqual A1 $capacityUpdated.Sku
 		
 		# Delete PowerBI Embedded capacity
 		Remove-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -PassThru
@@ -198,7 +275,7 @@ function Test-NegativePowerBIEmbeddedCapacity
 		$capacityName = Get-PowerBIEmbeddedCapacityName
 		
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $RGlocation
-		$capacityCreated = New-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -Location $location -Sku 'A1' -Administrator 'aztest0@stabletest.ccsctp.net,aztest1@stabletest.ccsctp.net'
+		$capacityCreated = New-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -Location $location -Sku 'A1' -Administrator 'aztest0@stabletest.ccsctp.net','aztest1@stabletest.ccsctp.net'
 
 		Assert-AreEqual $capacityName $capacityCreated.Name
 		Assert-AreEqual $location $capacityCreated.Location
@@ -210,16 +287,16 @@ function Test-NegativePowerBIEmbeddedCapacity
 
 		# attempt to update a non-existent capacity
 		$tagsToUpdate = @{"TestTag" = "TestUpdate"}
-		Assert-Throws {Set-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $fakecapacityName -Tag $tagsToUpdate}
+		Assert-Throws {Update-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $fakecapacityName -Tag $tagsToUpdate}
 
 		# attempt to get a non-existent capacity
 		Assert-Throws {Get-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $fakecapacityName}
 
 		# attempt to create a capacity with invalid Sku
-		Assert-Throws {New-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $fakecapacityName -Location $location -Sku $invalidSku -Administrator 'aztest0@stabletest.ccsctp.net,aztest1@stabletest.ccsctp.net'}
+		Assert-Throws {New-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $fakecapacityName -Location $location -Sku $invalidSku -Administrator 'aztest0@stabletest.ccsctp.net','aztest1@stabletest.ccsctp.net'}
 
 		# attempt to scale a capacity to invalid Sku
-		Assert-Throws {Set-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -Sku $invalidSku}
+		Assert-Throws {Update-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -Sku $invalidSku}
 
 		# Delete PowerBI Embedded capacity
 		Remove-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -PassThru

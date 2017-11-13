@@ -34,7 +34,9 @@ namespace Microsoft.Azure.Commands.PowerBIEmbeddedCapacity.Models
 
         public string Location { get; set; }
 
-        public CapacitySku Sku { get; set; }
+        public string Sku { get; set; }
+
+        public string Tier { get; set; }
 
         public System.Collections.Generic.IDictionary<string, string> Tag { get; set; }
 
@@ -56,7 +58,8 @@ namespace Microsoft.Azure.Commands.PowerBIEmbeddedCapacity.Models
                 State = capacity.State,
                 ProvisioningState = capacity.ProvisioningState,
                 Id = capacity.Id,
-                Sku = capacity.Sku != null ? CapacitySku.FromResourceSku(capacity.Sku): new Dictionary<string, string>(),
+                Sku = capacity.Sku.Name,
+                Tier = capacity.Sku.Tier,
                 Tag = capacity.Tags != null ? new Dictionary<string, string>(capacity.Tags) : new Dictionary<string, string>(),
             };
         }
@@ -76,6 +79,6 @@ namespace Microsoft.Azure.Commands.PowerBIEmbeddedCapacity.Models
 
     public class AzurePowerBIEmbeddedCapacityDetail : AzurePowerBIEmbeddedCapacity
     {
-        public new System.Collections.Generic.IDictionary<string, string> Sku { get; set; }
+    //    public new System.Collections.Generic.IDictionary<string, string> Sku { get; set; }
     }
 }

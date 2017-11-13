@@ -17,7 +17,8 @@
 - Sample:
  ```
  > PS G:> Get-AzureRmPowerBIEmbeddedCapacity -Name capac1 
-   Sku : {[Name, A1], [Tier, PBIE_Azure]} 
+Sku                    : A1
+Tier                   : PBIE_Azure
    Administrators : {sagis@microsoft.com} 
    State : Succeeded 
    ProvisioningState : Succeeded 
@@ -37,7 +38,7 @@
 > PS C:\> New-AzureRmPowerBIEmbeddedCapacity [-ResourceGroupName] [-Name] [-Location] [-Sku] [[-Tag]] [[-Administrator]] [-WhatIf] [-Confirm]
 > PS C:\> Remove-AzureRmPowerBIEmbeddedCapacity [-Name] [[-ResourceGroupName]] [-PassThru] [-WhatIf] [-Confirm]
 > PS C:\> Resume-AzureRmPowerBIEmbeddedCapacity [[-ResourceGroupName]] [-Name] [-PassThru] [-WhatIf] [-Confirm]
-> PS C:\> Set-AzureRmPowerBIEmbeddedCapacity [-Name] [[-ResourceGroupName]] [[-Sku]] [[-Tag]] [[-Administrator]] [-PassThru] [-WhatIf] [-Confirm]
+> PS C:\> Update-AzureRmPowerBIEmbeddedCapacity [-Name] [[-ResourceGroupName]] [[-Sku]] [[-Tag]] [[-Administrator]] [-PassThru] [-WhatIf] [-Confirm]
 > PS C:\> Suspend-AzureRmPowerBIEmbeddedCapacity [[-ResourceGroupName]] [-Name] [-PassThru] [-WhatIf] [-Confirm]
 > PS C:\> Test-AzureRmPowerBIEmbeddedCapacity [-Name] [[-ResourceGroupName]]
 > 

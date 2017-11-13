@@ -18,14 +18,14 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.PowerBIEmbeddedCapacity.Models;
 using Microsoft.Azure.Commands.PowerBIEmbeddedCapacity.Properties;
+using Microsoft.Azure.Commands.PowerBIEmbeddedCapacity.Utilities;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.PowerBIDedicated.Models;
 
 namespace Microsoft.Azure.Commands.PowerBIEmbeddedCapacity
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmPowerBIEmbeddedCapacity", SupportsShouldProcess = true, DefaultParameterSetName = ParamSetDefault), OutputType(typeof(AzurePowerBIEmbeddedCapacity))]
-    [Alias("Set-AzurePBIECapacity")]
-    public class SetAzurePowerBIEmbeddedCapacity : PowerBIEmbeddedCapacityCmdletBase
+    [Cmdlet(VerbsData.Update, "AzureRmPowerBIEmbeddedCapacity", SupportsShouldProcess = true, DefaultParameterSetName = ParamSetDefault), OutputType(typeof(AzurePowerBIEmbeddedCapacity))]
+    public class UpdateAzurePowerBIEmbeddedCapacity : PowerBIEmbeddedCapacityCmdletBase
     {
         private const string ParamSetDefault = "Default";
 
@@ -42,6 +42,7 @@ namespace Microsoft.Azure.Commands.PowerBIEmbeddedCapacity
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = false,
             HelpMessage = "Name of the Sku used to create the capacity")]
         [ValidateNotNullOrEmpty]
+        [ValidateSet("A1", "A2", "A3", "A4", "A5", "A6", IgnoreCase = true)]
         public string Sku { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false,
@@ -52,19 +53,42 @@ namespace Microsoft.Azure.Commands.PowerBIEmbeddedCapacity
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, Mandatory = false,
             HelpMessage = "A comma separated capacity names to set as administrators on the capacity")]
         [ValidateNotNull]
-        public string Administrator { get; set; }
+        public string[] Administrators { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 5, Mandatory = false,
-            ParameterSetName = ParamSetDefault,
-            HelpMessage = "The Uri of blob container for backing up the capacity")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
+            Position = 1, HelpMessage = "PowerBI Embedded Capacity ResourceID.")]
         [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
+        [Parameter(Mandatory = false,
+            ValueFromPipeline = true,
+            Position = 0,
+            HelpMessage = "PowerBI Embedded Capacity object.")]
+        [ValidateNotNullOrEmpty]
+        public AzurePowerBIEmbeddedCapacity InputObject { get; set; }
 
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (string.IsNullOrEmpty(Name))
+            string resourceGroupName = string.Empty;
+            string capacityName = string.Empty;
+
+            if (!string.IsNullOrEmpty(Name))
+            {
+                capacityName = Name;
+            }
+            else if (!string.IsNullOrEmpty(this.ResourceId))
+            {
+                PowerBIEmbeddedCapacityUtils.GetResourceGroupNameAndCapacityName(this.ResourceId, out resourceGroupName, out capacityName);
+            }
+            else if (this.InputObject != null)
+            {
+                PowerBIEmbeddedCapacityUtils.GetResourceGroupNameAndCapacityName(this.InputObject.Id, out resourceGroupName, out capacityName);
+            }
+
+            if (string.IsNullOrEmpty(capacityName))
             {
                 WriteExceptionError(new PSArgumentNullException("Name", "Name of capacity not specified"));
             }
@@ -89,7 +113,7 @@ namespace Microsoft.Azure.Commands.PowerBIEmbeddedCapacity
                     Tag = TagsConversionHelper.CreateTagHashtable(currentCapacity.Tags);
                 }
 
-                DedicatedCapacity updateCapacity = PowerBIEmbeddedCapacityClient.CreateOrUpdateCapacity(ResourceGroupName, Name, location, Sku, Tag, Administrator, currentCapacity);
+                DedicatedCapacity updateCapacity = PowerBIEmbeddedCapacityClient.CreateOrUpdateCapacity(ResourceGroupName, Name, location, Sku, Tag, Administrators, currentCapacity);
 
                 if(PassThru.IsPresent)
                 {

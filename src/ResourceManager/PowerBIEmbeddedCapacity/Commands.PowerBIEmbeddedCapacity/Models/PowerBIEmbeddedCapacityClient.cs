@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.PowerBIEmbeddedCapacity.Models
             string location, 
             string skuName = null,
             Hashtable customTags = null,
-            string administrators = null,
+            string[] administrators = null,
             DedicatedCapacity existingCapacity = null)
          {
             if (string.IsNullOrEmpty(resourceGroupName))
@@ -73,9 +73,9 @@ namespace Microsoft.Azure.Commands.PowerBIEmbeddedCapacity.Models
 
             var adminList = new List<string>();
 
-            if (!string.IsNullOrEmpty(administrators))
+            if (administrators != null && !string.IsNullOrEmpty(administrators[0]))
             {
-                adminList.AddRange(administrators.Split(','));
+                adminList.AddRange(administrators.ToList());
                 if (adminList.Count == 0)
                 {
                     adminList.Add(_currentUser);

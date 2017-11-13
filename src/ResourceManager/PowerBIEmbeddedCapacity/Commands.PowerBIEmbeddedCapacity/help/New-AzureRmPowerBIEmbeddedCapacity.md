@@ -31,10 +31,20 @@ The New-AzureRmPowerBIEmbeddedCapacity cmdlet creates a new PowerBI Embedded Cap
 
 ### Example 1
 ```
-PS C:\> New-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName "testresourcegroup" -Name "testcapacity" -Location "West-US" -Sku "S1"
+PS C:\> New-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName "testRG" -Name "testcapacity" -Location "West US" -Sku "A1"
+Sku                    : A1
+Tier                   : PBIE_Azure
+Administrators         : {{admin@microsoft.com}}
+State                  : Succeeded
+ProvisioningState      : Succeeded
+Id                     : /subscriptions/78e47976-009f-4d4a-a961-6046cdabf459/resourceGroups/testRG/providers/Microsoft.PowerBIDedicated/capacities/testcapacity
+Name                   : testcapacity
+Type                   : Microsoft.AnalysisServices/servers
+Location               : West US
+Tag                    : {}
 ```
 
-Creates a capacity named testcapacity in the Azure region West-US and in resource group testresrourcegroup. The sku level for the capacity will be S1.
+Creates a capacity named testcapacity in the Azure region West Central US and in resource group testRG. The sku level for the capacity will be A1.
 
 ## PARAMETERS
 
@@ -85,7 +95,7 @@ Accept wildcard characters: False
 
 ### -Sku
 The name of the Sku for the capacity.
-The supported values are 'A0', 'A1', 'A2', 'A3', 'A4', 'A5', 'A6'.
+Valid values are: 'A1', 'A2', 'A3', 'A4', 'A5', 'A6'
 
 ```yaml
 Type: String
@@ -118,7 +128,7 @@ Accept wildcard characters: False
 A string representing a comma separated list of users or groups to be set as administrators on the capacity. The users or groups need to be specified UPN format e.g. user@contoso.com or groups@contoso.com
 
 ```yaml
-Type: String
+Type: String[]
 Parameter Sets: (All)
 Aliases: 
 
@@ -166,10 +176,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.PowerBIEmbeddedCapacity.Models
+### Microsoft.Azure.Commands.PowerBIEmbeddedCapacity.Models.AzurePowerBIEmbeddedCapacity
 
 ## NOTES
-Alias: New-AzurePBIECapacity
 
 ## RELATED LINKS
 

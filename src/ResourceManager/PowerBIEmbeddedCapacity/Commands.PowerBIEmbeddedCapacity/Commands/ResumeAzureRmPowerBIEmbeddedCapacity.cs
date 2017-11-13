@@ -13,11 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using Microsoft.Azure.Commands.PowerBIEmbeddedCapacity.Models;
-using Microsoft.Azure.Management.PowerBIDedicated;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.PowerBIEmbeddedCapacity.Models;
 using Microsoft.Azure.Commands.PowerBIEmbeddedCapacity.Properties;
+using Microsoft.Azure.Commands.PowerBIEmbeddedCapacity.Utilities;
+using Microsoft.Azure.Management.PowerBIDedicated;
 using Microsoft.Azure.Management.PowerBIDedicated.Models;
 
 namespace Microsoft.Azure.Commands.PowerBIEmbeddedCapacity
@@ -25,7 +26,6 @@ namespace Microsoft.Azure.Commands.PowerBIEmbeddedCapacity
     [Cmdlet(VerbsLifecycle.Resume, "AzureRmPowerBIEmbeddedCapacity", 
         SupportsShouldProcess = true),
         OutputType(typeof(AzurePowerBIEmbeddedCapacity))]
-    [Alias("Resume-AzurePBIECapacity")]
     public class ResumeAzurePowerBIEmbeddedCapacity : PowerBIEmbeddedCapacityCmdletBase
     {
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = true,
@@ -38,12 +38,40 @@ namespace Microsoft.Azure.Commands.PowerBIEmbeddedCapacity
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
+            Position = 1, HelpMessage = "PowerBI Embedded Capacity ResourceID.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
+        [Parameter(Mandatory = false,
+            ValueFromPipeline = true,
+            Position = 0,
+            HelpMessage = "PowerBI Embedded Capacity object.")]
+        [ValidateNotNullOrEmpty]
+        public AzurePowerBIEmbeddedCapacity InputObject { get; set; }
+
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (string.IsNullOrEmpty(Name))
+            string resourceGroupName = string.Empty;
+            string capacityName = string.Empty;
+
+            if (!string.IsNullOrEmpty(Name))
+            {
+                capacityName = Name;
+            }
+            else if (!string.IsNullOrEmpty(this.ResourceId))
+            {
+                PowerBIEmbeddedCapacityUtils.GetResourceGroupNameAndCapacityName(this.ResourceId, out resourceGroupName, out capacityName);
+            }
+            else if (this.InputObject != null)
+            {
+                PowerBIEmbeddedCapacityUtils.GetResourceGroupNameAndCapacityName(this.InputObject.Id, out resourceGroupName, out capacityName);
+            }
+
+            if (string.IsNullOrEmpty(capacityName))
             {
                 WriteExceptionError(new PSArgumentNullException("Name", "Name of capacity not specified"));
             }

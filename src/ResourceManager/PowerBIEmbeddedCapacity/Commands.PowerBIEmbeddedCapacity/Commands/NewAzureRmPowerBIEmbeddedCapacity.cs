@@ -23,7 +23,6 @@ using Microsoft.Rest.Azure;
 namespace Microsoft.Azure.Commands.PowerBIEmbeddedCapacity
 {
     [Cmdlet(VerbsCommon.New, "AzureRmPowerBIEmbeddedCapacity", SupportsShouldProcess = true), OutputType(typeof(AzurePowerBIEmbeddedCapacity))]
-    [Alias("New-AzurePBIECapacity")]
     public class NewPowerBIEmbeddedCapacity : PowerBIEmbeddedCapacityCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
@@ -39,17 +38,13 @@ namespace Microsoft.Azure.Commands.PowerBIEmbeddedCapacity
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = true,
             HelpMessage = "Azure region where the capacity should be created.")]
         [ValidateNotNullOrEmpty]
-        [ValidateSet("North Central US", "South Central US", "Central US", "West Europe", "North Europe", "West Central US",
-            "East US",
-            "East US 2", "Japan East", "Japan West", "Brazil South", "Southeast Asia", "East Asia", "Australia East",
-            "Australia Southeast", IgnoreCase = true)]
         public string Location { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = true,
             HelpMessage =
-                "Name of the Sku used to create the capacity"
-            )]
+                "Name of the Sku used to create the capacity")]
         [ValidateNotNullOrEmpty]
+        [ValidateSet("A1", "A2", "A3", "A4", "A5", "A6", IgnoreCase = true)]
         public string Sku { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, Mandatory = false,
@@ -60,7 +55,7 @@ namespace Microsoft.Azure.Commands.PowerBIEmbeddedCapacity
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 5, Mandatory = false,
             HelpMessage = "A comma separated capacity names to set as administrators on the capacity")]
         [ValidateNotNull]
-        public string Administrator { get; set; }
+        public string[] Administrators { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -98,7 +93,7 @@ namespace Microsoft.Azure.Commands.PowerBIEmbeddedCapacity
                     throw new InvalidOperationException(string.Format(Resources.InvalidSku, Sku, String.Join(",", availableSkus.Value.Select(v => v.Name))));
                 }
 
-                var createdCapacity = PowerBIEmbeddedCapacityClient.CreateOrUpdateCapacity(ResourceGroupName, Name, Location, Sku, Tag, Administrator, null);
+                var createdCapacity = PowerBIEmbeddedCapacityClient.CreateOrUpdateCapacity(ResourceGroupName, Name, Location, Sku, Tag, Administrators, null);
                 WriteObject(AzurePowerBIEmbeddedCapacity.FromPowerBIEmbeddedCapacity(createdCapacity));
             }
         }

@@ -25,10 +25,11 @@ The Test-AzureRmPowerBIEmbeddedCapacity cmdlet tests the existence of an instanc
 
 ### Example 1
 ```
-PS C:\> Test-AzureRmPowerBIEmbeddedCapacity -Name "testcapacity" -ResourceGroupName "testgroup"
+PS C:\> Test-AzureRmPowerBIEmbeddedCapacity -Name "testcapacity" -ResourceGroupName "testRG"
+True
 ```
 
-This command will test if there is a capacity named testcapacity in the resourcegroup testgroup
+This command will test if there is a capacity named testcapacity in the resourcegroup testRG
 
 ## PARAMETERS
 
@@ -72,7 +73,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## NOTES
-Alias: Test-AzurePBIECapacity
 
 ## RELATED LINKS
 

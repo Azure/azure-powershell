@@ -4,7 +4,7 @@ online version:
 schema: 1.0.0
 ---
 
-# Set-AzureRmPowerBIEmbeddedCapacity
+# Update-AzureRmPowerBIEmbeddedCapacity
 
 ## SYNOPSIS
 Modifies  an instance of PowerBI Embedded Capacity
@@ -13,7 +13,7 @@ Modifies  an instance of PowerBI Embedded Capacity
 
 ### Default (Default)
 ```
-Set-AzureRmPowerBIEmbeddedCapacity 
+Update-AzureRmPowerBIEmbeddedCapacity 
 	[-Name] <String> 
 	[[-ResourceGroupName] <String>] 
 	[[-Sku] <String>]
@@ -26,13 +26,23 @@ Set-AzureRmPowerBIEmbeddedCapacity
 ```
 
 ## DESCRIPTION
-The Set-AzureRmPowerBIEmbeddedCapacity cmdlet modifies an instance of PowerBI Embedded Capacity
+The Update-AzureRmPowerBIEmbeddedCapacity cmdlet modifies an instance of PowerBI Embedded Capacity
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Set-AzureRmPowerBIEmbeddedCapacity -Name "testcapacity" -ResourceGroupName "testgroup" -Tag "key1:value1,key2:value2" -Administrator "testuser1@contoso.com"
+PS C:\> Update-AzureRmPowerBIEmbeddedCapacity -Name "testcapacity" -ResourceGroupName "testRG" -Tag "key1:value1,key2:value2" -Administrator "testuser1@contoso.com"
+Sku                    : A1
+Tier                   : PBIE_Azure
+Administrators         : {{testuser1@contoso.com}}
+State                  : Succeeded
+ProvisioningState      : Succeeded
+Id                     : /subscriptions/78e47976-009f-4d4a-a961-6046cdabf459/resourceGroups/testRG/providers/Microsoft.PowerBIDedicated/capacities/testcapacity
+Name                   : testcapacity
+Type                   : Microsoft.PowerBIDedicated/capacities
+Location               : West US
+Tag                    : {{key1:value1},{key2:value2}}
 ```
 
 Modifies the capacity named testcapacity in resourcegroup testgroup to set the tags as key1:value1 and key2:value2 and administrator to testuser1@contoso.com
@@ -71,7 +81,7 @@ Accept wildcard characters: False
 
 ### -Sku
 The name of the Sku for the capacity.
-The supported values are 'A0', 'A1', 'A2', 'A3', 'A4', 'A5', 'A6'.
+Valid values are: 'A1', 'A2', 'A3', 'A4', 'A5', 'A6'.
 
 ```yaml
 Type: String
@@ -169,10 +179,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Management.Analysis.Models.PowerBIEmbeddedCapacity
+### Microsoft.Azure.Commands.PowerBIEmbeddedCapacity.Models.AzurePowerBIEmbeddedCapacity
 
 ## NOTES
-Alias: Set-AzurePBIECapacity
 
 ## RELATED LINKS
 

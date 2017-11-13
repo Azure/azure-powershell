@@ -28,10 +28,20 @@ The Resume-AzureRmPowerBIEmbeddedCapacity cmdlet resumes an instance of PowerBI 
 
 ### Example 1
 ```
-PS C:\> Resume-AzureRmPowerBIEmbeddedCapacity -Name "testcapacity" -ResourceGroupName "testgroup"
+PS C:\> Resume-AzureRmPowerBIEmbeddedCapacity -Name "testcapacity" -ResourceGroupName "testRG"
+Sku                    : A1
+Tier                   : PBIE_Azure
+Administrators         : {{admin@microsoft.com}}
+State                  : Succeeded
+ProvisioningState      : Succeeded
+Id                     : /subscriptions/78e47976-009f-4d4a-a961-6046cdabf459/resourceGroups/testRG/providers/Microsoft.PowerBIDedicated/capacities/testcapacity
+Name                   : testcapacity
+Type                   : Microsoft.AnalysisServices/servers
+Location               : West US
+Tag                    : {}
 ```
 
-This command will resume a paused capacity named testcapacity in the resourcegroup testgroup
+This command will resume a paused capacity named testcapacity in the resourcegroup testRG
 
 ## PARAMETERS
 
@@ -117,10 +127,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.PowerBIEmbeddedCapacity
+### Microsoft.Azure.Commands.PowerBIEmbeddedCapacity.Models.AzurePowerBIEmbeddedCapacity
 
 ## NOTES
-Alias: Resume-AzurePBIECapacity
 
 ## RELATED LINKS
 
