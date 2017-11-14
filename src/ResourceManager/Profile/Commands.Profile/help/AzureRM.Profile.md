@@ -1,4 +1,4 @@
----
+﻿---
 Module Name: AzureRM.Profile
 Module Guid: 342714fc-4009-4863-8afb-a9067e3db04b
 Download Help Link: {{Please enter FwLink manually}}
@@ -40,7 +40,7 @@ Gets the metadata used to authenticate Azure Resource Manager requests.
 
 ### [Get-AzureRmContextAutosaveSetting](Get-AzureRmContextAutosaveSetting.md)
 Display metadata about the context autosave feature, including whterh the context is 
-automatically saved, and where saved context and credential information can be found.
+automaticallys aved, and where saved context and credential information cna be found.
 
 ### [Get-AzureRmEnvironment](Get-AzureRmEnvironment.md)
 Get endpoints and metadata for an instance of Azure services.
@@ -55,7 +55,7 @@ Gets tenants that are authorized for the current user.
 Loads Azure authentication information from a file.
 
 ### [Remove-AzureRmAccount](Remove-AzureRmAccount.md)
-Remove all credentials and contexts associated with this account.
+Remove all credentials and contexts associated with the given account.
 
 ### [Remove-AzureRmContext](Remove-AzureRmContext.md)
 Remove a context from the set of available contexts
@@ -73,7 +73,7 @@ Display detailed information about PowerShell errors, with extended details for 
 Saves the current authentication information for use in other PowerShell sessions.
 
 ### [Select-AzureRmContext](Select-AzureRmContext.md)
-Select a subscription to target (or account, tenant) in Azure PowerShell cmdlets
+Select a subscription and account to target in Azure PowerShell cmdlets
 
 ### [Send-Feedback](Send-Feedback.md)
 Sends feedback to the Azure PowerShell team via a set of guided prompts.

@@ -23,10 +23,8 @@ namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
     [OutputType(typeof(WebServiceKeys))]
     public class GetAzureMLWebServiceKeys : WebServicesCmdletBase
     {
-        private const string GetKeysByGroupAndName = 
-            "Get an Azure ML web service's access keys given its name and resource group.";
-        private const string GetKeysByInstance = 
-            "Get the access kesy for the given web service instance.";
+        private const string GetKeysByGroupAndName = "GetByNameAndResourceGroup";
+        private const string GetKeysByInstance = "GetByInstance";
 
         [Parameter(
             ParameterSetName = GetAzureMLWebServiceKeys.GetKeysByGroupAndName, 

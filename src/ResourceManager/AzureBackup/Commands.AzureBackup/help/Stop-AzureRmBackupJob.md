@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.AzureBackup.dll-Help.xml
+Module Name: AzureRM.Backup
 ms.assetid: 44C5AF58-ADC1-4BC6-9771-3FD8F0480106
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.backup/stop-azurermbackupjob
 schema: 2.0.0
 ---
 
@@ -14,12 +15,13 @@ Cancels an existing Backup job.
 
 ### IdFiltersSet
 ```
-Stop-AzureRmBackupJob -Vault <AzureRMBackupVault> -JobID <String> [<CommonParameters>]
+Stop-AzureRmBackupJob -Vault <AzureRMBackupVault> -JobID <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### JobFiltersSet
 ```
-Stop-AzureRmBackupJob -Job <AzureRMBackupJob> [<CommonParameters>]
+Stop-AzureRmBackupJob -Job <AzureRMBackupJob> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,6 +60,21 @@ This command gets all the restore operations in the vault in $Vault, and then pa
 The current cmdlet stops each job.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Job
 Specifies a job that this cmdlet cancels.

@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
+Module Name: AzureRM.Resources
 ms.assetid: 2970E81E-A788-4829-B1FF-B522A91DE4B1
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/get-azurermproviderfeature
 schema: 2.0.0
 ---
 
@@ -14,12 +15,14 @@ Gets information about Azure provider features.
 
 ### ListAvailableParameterSet (Default)
 ```
-Get-AzureRmProviderFeature [-ProviderNamespace <String>] [-ListAvailable] [<CommonParameters>]
+Get-AzureRmProviderFeature [-ProviderNamespace <String>] [-ListAvailable]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetFeature
 ```
-Get-AzureRmProviderFeature -ProviderNamespace <String> -FeatureName <String> [<CommonParameters>]
+Get-AzureRmProviderFeature -ProviderNamespace <String> -FeatureName <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,6 +45,21 @@ PS C:\>Get-AzureRmProviderFeature -FeatureName "AllowPreReleaseRegions" -Provide
 This command gets information for the feature named AllowPreReleaseRegions for the specified provider.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -FeatureName
 Specifies the name of the feature to get.

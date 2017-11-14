@@ -26,7 +26,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// Returns the corresponding job created in the service to track this operation.
     /// </summary>
     [Cmdlet(VerbsLifecycle.Enable, "AzureRmRecoveryServicesBackupProtection",
-        DefaultParameterSetName = AzureVMComputeParameterSet), OutputType(typeof(JobBase))]
+        DefaultParameterSetName = AzureVMComputeParameterSet, SupportsShouldProcess = true),
+        OutputType(typeof(JobBase))]
     public class EnableAzureRmRecoveryServicesBackupProtection : RecoveryServicesBackupCmdletBase
     {
         internal const string AzureVMClassicComputeParameterSet = "AzureVMClassicComputeEnableProtection";
@@ -79,26 +80,34 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             {
                 base.ExecuteCmdlet();
 
-                PsBackupProviderManager providerManager =
-                    new PsBackupProviderManager(new Dictionary<Enum, object>()
+                string shouldProcessName = Name;
+                if (ParameterSetName == ModifyProtectionParameterSet)
                 {
+                    shouldProcessName = Item.Name;
+                }
+
+                if (ShouldProcess(shouldProcessName, VerbsLifecycle.Enable))
+                {                    
+                    PsBackupProviderManager providerManager =
+                        new PsBackupProviderManager(new Dictionary<Enum, object>()
+                    {
                     {ItemParams.AzureVMName, Name},
                     {ItemParams.AzureVMCloudServiceName, ServiceName},
                     {ItemParams.AzureVMResourceGroupName, ResourceGroupName},
                     {ItemParams.Policy, Policy},
                     {ItemParams.Item, Item},
                     {ItemParams.ParameterSetName, this.ParameterSetName},
-                }, ServiceClientAdapter);
+                    }, ServiceClientAdapter);
 
-                IPsBackupProvider psBackupProvider = (Item != null) ?
-                    providerManager.GetProviderInstance(Item.WorkloadType, Item.BackupManagementType)
-                    : providerManager.GetProviderInstance(Policy.WorkloadType);
+                    IPsBackupProvider psBackupProvider = (Item != null) ?
+                        providerManager.GetProviderInstance(Item.WorkloadType, Item.BackupManagementType)
+                        : providerManager.GetProviderInstance(Policy.WorkloadType);
 
-                var itemResponse = psBackupProvider.EnableProtection();
+                    var itemResponse = psBackupProvider.EnableProtection();
 
-                // Track Response and display job details
-
-                HandleCreatedJob(itemResponse, Resources.EnableProtectionOperation);
+                    // Track Response and display job details
+                    HandleCreatedJob(itemResponse, Resources.EnableProtectionOperation);
+                }
             });
         }
     }

@@ -21,6 +21,14 @@
             <Label>LastModified</Label>
             <Alignment>Left</Alignment>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsSnapshot</Label>
+            <Alignment>Left</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SnapshotTime</Label>
+            <Alignment>Left</Alignment>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -30,6 +38,12 @@
               </TableColumnItem>
               <TableColumnItem>
                 <ScriptBlock>$_.Properties.LastModified</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.IsSnapshot</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.SnapshotTime</ScriptBlock>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -43,7 +57,7 @@
         <TypeName>Microsoft.WindowsAzure.Storage.File.CloudFileDirectory</TypeName>
       </ViewSelectedBy>
       <GroupBy>
-        <ScriptBlock>$_.Parent.Uri</ScriptBlock>
+        <ScriptBlock>$_.Parent.SnapshotQualifiedUri</ScriptBlock>
         <Label>Directory</Label>
       </GroupBy>
       <TableControl>

@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using AutoMapper;
 using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
@@ -26,7 +25,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Creates Azure Site Recovery Fabric.
         /// </summary>
-        /// <param name="createAndAssociatePolicyInput">Policy Input</param>
+        /// <param name="fabricName">Fabric Name.</param>
+        /// <param name="input">Fabric Creation input.</param>
         /// <returns>Long operation response</returns>
         public PSSiteRecoveryLongRunningOperation CreateAzureSiteRecoveryFabric(
             string fabricName,
@@ -39,6 +39,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();
+
             var result = SiteRecoveryAutoMapperProfile.Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
             return result;
         }
@@ -46,7 +47,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Deletes Azure Site Recovery Fabric.
         /// </summary>
-        /// <param name="DeleteAzureSiteRecoveryFabric">Fabric Input</param>
+        /// <param name="fabricName">Fabric Name</param>
         /// <returns>Long operation response</returns>
         public PSSiteRecoveryLongRunningOperation DeleteAzureSiteRecoveryFabric(
             string fabricName)
@@ -64,25 +65,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets Azure Site Recovery Fabrics.
         /// </summary>
-        /// <param name="shouldSignRequest">Boolean indicating if the request should be signed ACIK</param>
         /// <returns>Server list response</returns>
-        public List<Fabric> GetAzureSiteRecoveryFabric(
-            bool shouldSignRequest = true)
+        public List<Fabric> GetAzureSiteRecoveryFabric()
         {
             var firstPage = this.GetSiteRecoveryClient()
                 .ReplicationFabrics.ListWithHttpMessagesAsync(this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult()
                 .Body;
+
             var pages = Utilities.GetAllFurtherPages(
                 this.GetSiteRecoveryClient()
                     .ReplicationFabrics.ListNextWithHttpMessagesAsync,
                 firstPage.NextPageLink,
                 this.GetRequestHeaders(true));
-            pages.Insert(
-                0,
-                firstPage);
 
+            pages.Insert(0, firstPage);
             return Utilities.IpageToList(pages);
         }
 
@@ -117,6 +115,29 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();
+
+            var result = SiteRecoveryAutoMapperProfile.Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
+            return result;
+        }
+
+        /// <summary>
+        ///     Reassociate replicated items with another Process Server.
+        /// </summary>
+        /// <param name="fabricName">Fabric Name</param>
+        /// <param name="input">Input object for switching process server.</param>
+        /// <returns>Job Response</returns>
+        public PSSiteRecoveryLongRunningOperation ReassociateProcessServer(
+            string fabricName,
+            FailoverProcessServerRequest input)
+        {
+            var op = this.GetSiteRecoveryClient()
+                .ReplicationFabrics.BeginReassociateGatewayWithHttpMessagesAsync(
+                    fabricName,
+                    input,
+                    this.GetRequestHeaders(true))
+                .GetAwaiter()
+                .GetResult();
+
             var result = SiteRecoveryAutoMapperProfile.Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
             return result;
         }

@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
 Module Name: AzureRM.Resources
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/get-azurermmanagedapplicationdefinition
 schema: 2.0.0
 ---
 
@@ -12,16 +12,16 @@ Gets managed application definitions
 
 ## SYNTAX
 
-### The managed application definition name parameter set. (Default)
+### GetByNameAndResourceGroup (Default)
 ```
 Get-AzureRmManagedApplicationDefinition [-Name <String>] -ResourceGroupName <String> [-ApiVersion <String>]
- [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### The managed application definition Id parameter set.
+### GetById
 ```
 Get-AzureRmManagedApplicationDefinition -Id <String> [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -83,7 +83,7 @@ e.g.
 
 ```yaml
 Type: String
-Parameter Sets: The managed application definition Id parameter set.
+Parameter Sets: GetById
 Aliases: ResourceId, ManagedApplicationDefinitionId
 
 Required: True
@@ -98,7 +98,7 @@ The managed application definition name.
 
 ```yaml
 Type: String
-Parameter Sets: The managed application definition name parameter set.
+Parameter Sets: GetByNameAndResourceGroup
 Aliases: 
 
 Required: False
@@ -128,7 +128,7 @@ The resource group name.
 
 ```yaml
 Type: String
-Parameter Sets: The managed application definition name parameter set.
+Parameter Sets: GetByNameAndResourceGroup
 Aliases: 
 
 Required: True
@@ -138,15 +138,16 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### System.String
 
-
 ## OUTPUTS
 
 ### System.Management.Automation.PSObject
-
 
 ## NOTES
 
