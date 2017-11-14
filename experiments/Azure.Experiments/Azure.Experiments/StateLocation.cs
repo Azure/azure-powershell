@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Experiments
             public DependencyLocation Visit<Config>(ResourceConfig<Config> config) 
                 where Config : class
             {
-                var info = State.Get(config);
+                var info = State.GetOrNull(config);
                 return info != null
                     ? new DependencyLocation(
                         config.Policy.GetLocation(info),

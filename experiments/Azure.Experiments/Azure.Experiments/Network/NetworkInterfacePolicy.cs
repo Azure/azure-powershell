@@ -8,6 +8,7 @@ namespace Microsoft.Azure.Experiments.Network
     {
         public static ResourcePolicy<NetworkInterface> Policy { get; }
             = NetworkPolicy.Create(
+                "networkInterfaces",
                 client => client.NetworkInterfaces,
                 p => p.Operations.GetAsync(
                     p.ResourceGroupName, p.Name, null, p.CancellationToken),
@@ -15,7 +16,33 @@ namespace Microsoft.Azure.Experiments.Network
                     p.ResourceGroupName, p.Name, p.Config, p.CancellationToken));
 
         public static ResourceConfig<NetworkInterface> CreateNetworkSecurityGroupConfig(
-            this ResourceConfig<ResourceGroup> resourceGroup, string name)
-            => Policy.CreateConfig(resourceGroup, name);
+            this ResourceConfig<ResourceGroup> resourceGroup,
+            string name,
+            ResourceConfig<Subnet> subnet,
+            ResourceConfig<PublicIPAddress> publicIPAddress,
+            ResourceConfig<NetworkSecurityGroup> networkSecurityGroup)
+            => Policy.CreateConfig(
+                resourceGroup,
+                name,
+                subscription => new NetworkInterface
+                {
+                    IpConfigurations = new []
+                    {
+                        new NetworkInterfaceIPConfiguration
+                        {
+                            Name = name,
+                            Subnet = new Subnet { Id = subnet.GetId(subscription).IdToString() },
+                            PublicIPAddress = new PublicIPAddress
+                            {
+                                Id = publicIPAddress.GetId(subscription).IdToString()
+                            }
+                        }
+                    },
+                    NetworkSecurityGroup = new NetworkSecurityGroup
+                    {
+                        Id = networkSecurityGroup.GetId(subscription).IdToString()
+                    }
+                },
+                new IResourceConfig[] { subnet, publicIPAddress, networkSecurityGroup });
     }
 }

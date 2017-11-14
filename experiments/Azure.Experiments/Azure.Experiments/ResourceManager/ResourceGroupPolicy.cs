@@ -1,5 +1,6 @@
 ﻿using Microsoft.Azure.Management.ResourceManager;
 using Microsoft.Azure.Management.ResourceManager.Models;
+using System.Linq;
 
 namespace Microsoft.Azure.Experiments.ResourceManager
 {
@@ -7,6 +8,7 @@ namespace Microsoft.Azure.Experiments.ResourceManager
     {
         public static ResourcePolicy<ResourceGroup> Policy { get; }
             = ResourcePolicy.Create<ResourceGroup, IResourceManagementClient, IResourceGroupsOperations>(
+                _ => Enumerable.Empty<string>(),
                 client => client.ResourceGroups,
                 p => p.Operations.GetAsync(p.Name, p.CancellationToken),
                 p => p.Operations.CreateOrUpdateAsync(p.Name, p.Config, p.CancellationToken),

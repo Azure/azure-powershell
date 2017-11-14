@@ -8,6 +8,7 @@ namespace Microsoft.Azure.Experiments.Network
     {
         public static ResourcePolicy<PublicIPAddress> Policy { get; }
             = NetworkPolicy.Create(
+                "publicIPAddresses",
                 client => client.PublicIPAddresses,
                 p => p.Operations.GetAsync(
                     p.ResourceGroupName, p.Name, null, p.CancellationToken),

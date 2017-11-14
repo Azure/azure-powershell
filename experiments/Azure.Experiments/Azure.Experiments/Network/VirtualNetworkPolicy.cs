@@ -8,6 +8,7 @@ namespace Microsoft.Azure.Experiments.Network
     {
         public static ResourcePolicy<VirtualNetwork> Policy { get; }
             = NetworkPolicy.Create(
+                "virtualNetworks",
                 client => client.VirtualNetworks,
                 p => p.Operations.GetAsync(
                     p.ResourceGroupName, p.Name, null, p.CancellationToken),

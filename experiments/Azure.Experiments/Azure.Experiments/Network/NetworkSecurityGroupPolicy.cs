@@ -8,6 +8,7 @@ namespace Microsoft.Azure.Experiments.Network
     {
         public static ResourcePolicy<NetworkSecurityGroup> Policy { get; }
             = NetworkPolicy.Create(
+                "networkSecurityGroups",
                 client => client.NetworkSecurityGroups,
                 p => p.Operations.GetAsync(
                     p.ResourceGroupName, p.Name, null, p.CancellationToken),

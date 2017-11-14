@@ -8,6 +8,7 @@ namespace Microsoft.Azure.Experiments.Compute
     {
         public static ResourcePolicy<VirtualMachine> Policy { get; }
             = ComputePolicy.Create(
+                "virtualMachines",
                 client => client.VirtualMachines,
                 p => p.Operations.GetAsync(
                     p.ResourceGroupName, p.Name, null, p.CancellationToken),

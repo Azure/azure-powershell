@@ -2,7 +2,7 @@
 {
     public interface IState
     {
-        Config Get<Config>(IResourceConfig<Config> config)
+        Config GetOrNull<Config>(IResourceConfig<Config> config)
             where Config : class;
     }
 }

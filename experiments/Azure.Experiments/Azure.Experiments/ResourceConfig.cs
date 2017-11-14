@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Experiments
 
         public string Name { get; }
 
-        public Func<IState, Config> CreateConfig { get; }
+        public Func<string, Config> CreateConfig { get; }
 
         public IEnumerable<IResourceConfig> Dependencies { get; }
 
@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Experiments
             ResourcePolicy<Config> policy,
             string resourceGroupName,
             string name,
-            Func<IState, Config> createConfig,
+            Func<string, Config> createConfig,
             IEnumerable<IResourceConfig> dependencies)
         {
             Policy = policy;
@@ -34,6 +34,16 @@ namespace Microsoft.Azure.Experiments
 
         public Result Apply<Result>(IResourceConfigVisitor<Result> visitor)
             => visitor.Visit(this);
+
+        public IEnumerable<string> GetId(string subscription)
+            => new[]
+                {
+                    "subscriptions",
+                    subscription,
+                    "resourceGroups",
+                    ResourceGroupName
+                }
+                .Concat(Policy.GetId(Name));
     }
 
     public static class ResourceConfig
@@ -42,7 +52,7 @@ namespace Microsoft.Azure.Experiments
             this ResourcePolicy<Config> policy,
             string resourceGroupName,
             string name,
-            Func<IState, Config> createConfig = null,
+            Func<string, Config> createConfig = null,
             IEnumerable<IResourceConfig> dependencies = null)
             where Config : class, new()
             => new ResourceConfig<Config>(
@@ -56,7 +66,7 @@ namespace Microsoft.Azure.Experiments
             this ResourcePolicy<Config> policy,
             ResourceConfig<ResourceGroup> resourceGroup,
             string name,
-            Func<IState, Config> createConfig = null,
+            Func<string, Config> createConfig = null,
             IEnumerable<IResourceConfig> dependencies = null)
             where Config : class, new()
             => policy.CreateConfig(
@@ -64,5 +74,8 @@ namespace Microsoft.Azure.Experiments
                 name,
                 createConfig,
                 dependencies.EmptyIfNull().Concat(new[] { resourceGroup }));
+
+        public static string IdToString(this IEnumerable<string> id)
+            => "/" + string.Join("/", id);
     }
 }
