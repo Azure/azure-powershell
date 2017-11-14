@@ -1,5 +1,6 @@
 ﻿using Azure.Experiments.Compute;
 using Azure.Experiments.Network;
+using Microsoft.Azure.Experiments;
 using Microsoft.Rest;
 using Xunit;
 
@@ -36,7 +37,7 @@ namespace Azure.Experiments.Tests
         //[Fact]
         public void NetworkSecurityGroupTest()
         {
-            var c = Credentials.Get();
+            var c = Microsoft.Azure.Experiments.Tests.Credentials.Get();
             var rg = new ResourceGroupObject(c, "MyNSG");
             var nsg = new NetworkSecurityGroupObject(c.CreateNetwork(), "MyNSG", rg);
             Assert.Equal(2, nsg.Priority);

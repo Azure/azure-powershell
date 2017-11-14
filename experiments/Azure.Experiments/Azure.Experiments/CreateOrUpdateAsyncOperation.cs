@@ -4,9 +4,9 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Experiments
 {
-    public static class ResourceOperations
+    public static class CreateOrUpdateAsyncOperation
     {
-        public static async Task<IState> CreateAsync<Config>(
+        public static async Task<IState> CreateOrUpdateAsync<Config>(
             this IResourceConfig<Config> config,
             IClient client,
             IState current,

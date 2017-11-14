@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Azure.Experiments.Tests
+namespace Microsoft.Azure.Experiments.Tests
 {
     internal static class KeyValuePair
     {

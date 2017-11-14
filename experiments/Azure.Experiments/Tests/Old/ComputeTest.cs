@@ -8,10 +8,10 @@ namespace Azure.Experiments.Tests
 {
     public class ComputeTest
     {
-        [Fact]
+        //[Fact]
         public async Task ResourceGroupTest()
         {
-            var c = Credentials.Get();
+            var c = Microsoft.Azure.Experiments.Tests.Credentials.Get();
             var rg = new ResourceGroupObject(c, "My");
             //
             var info = await rg.GetOrNullAsync();
@@ -19,10 +19,10 @@ namespace Azure.Experiments.Tests
             // await rg.DeleteAsync(c);
         }
 
-        [Fact]
+        //[Fact]
         public async Task VirtualNetworkTest()
         {
-            var c = Credentials.Get();
+            var c = Microsoft.Azure.Experiments.Tests.Credentials.Get();
             var rg = new ResourceGroupObject(c, "My1");
             var vn = new VirtualNetworkObject(c.CreateNetwork(), "My1", rg, "192.168.0.0/16");
             //
@@ -30,39 +30,39 @@ namespace Azure.Experiments.Tests
             var infoCreate = await vn.GetOrCreateAsync();
         }
 
-        [Fact]
+        //[Fact]
         public async Task PublicIpAddressTest()
         {
-            var c = Credentials.Get();
+            var c = Microsoft.Azure.Experiments.Tests.Credentials.Get();
             var rg = new ResourceGroupObject(c, "MyPIA");
             var pia = new PublicIpAddressObject(c.CreateNetwork(), "MyPIA", rg);
             //
             var info = await pia.GetOrCreateAsync();
         }
 
-        [Fact]
+        //[Fact]
         public async Task NetworkSecurityGroupTest()
         {
-            var c = Credentials.Get();
+            var c = Microsoft.Azure.Experiments.Tests.Credentials.Get();
             var rg = new ResourceGroupObject(c, "MyNSG");
             var nsg = new NetworkSecurityGroupObject(c.CreateNetwork(), "MyNSG", rg);
             var info = await nsg.GetOrCreateAsync();
         }
 
-        [Fact]
+        //[Fact]
         public async Task SubnetTest()
         {
-            var c = Credentials.Get();
+            var c = Microsoft.Azure.Experiments.Tests.Credentials.Get();
             var rg = new ResourceGroupObject(c, "MySubnet");
             var vn = new VirtualNetworkObject(c.CreateNetwork(), "MySubnet", rg, "192.168.0.0/16");
             var subnet = new SubnetObject("MySubnet", vn, "192.168.1.0/24");
             var info = await subnet.GetOrCreateAsync();
         }
 
-        [Fact]
+        //[Fact]
         public async Task NetworkInterfaceObject()
         {
-            var c = Credentials.Get();
+            var c = Microsoft.Azure.Experiments.Tests.Credentials.Get();
             var network = c.CreateNetwork();
             var rg = new ResourceGroupObject(c, "MyNI");
             var vn = new VirtualNetworkObject(network, "MyNI", rg, "192.168.0.0/16");
@@ -73,10 +73,10 @@ namespace Azure.Experiments.Tests
             var info = await ni.GetOrCreateAsync();
         }
 
-        [Fact]
+        //[Fact]
         public async Task VmObject()
         {
-            var c = Credentials.Get();
+            var c = Microsoft.Azure.Experiments.Tests.Credentials.Get();
             var network = c.CreateNetwork();
             var rg = new ResourceGroupObject(c, "MyVM");
             var vn = new VirtualNetworkObject(network, "MyVM", rg, "192.168.0.0/16");
@@ -88,10 +88,10 @@ namespace Azure.Experiments.Tests
             var info = await vm.GetOrCreateAsync();
         }
 
-        [Fact]
+        //[Fact]
         public async Task Test1()
         {
-            var c = Credentials.Get();
+            var c = Microsoft.Azure.Experiments.Tests.Credentials.Get();
             var client = new ComputeManagementClient(c.Credentials)
             {
                 SubscriptionId = c.SubscriptionId

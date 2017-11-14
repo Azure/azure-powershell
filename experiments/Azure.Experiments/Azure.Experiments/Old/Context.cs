@@ -1,24 +1,14 @@
-﻿using Microsoft.Azure.Management.Network;
-using Microsoft.Rest;
+﻿using Microsoft.Azure.Experiments;
+using Microsoft.Azure.Management.Network;
 
 namespace Azure.Experiments
 {
-    public class Context
+    public static class ContextEx
     {
-        public Context(ServiceClientCredentials credentials, string subscriptionId)
-        {
-            Credentials = credentials;
-            SubscriptionId = subscriptionId;
-        }
-
-        public ServiceClientCredentials Credentials { get; }
-
-        public string SubscriptionId { get; }
-
-        public NetworkManagementClient CreateNetwork()
-            => new NetworkManagementClient(Credentials)
+        public static NetworkManagementClient CreateNetwork(this Context context)
+            => new NetworkManagementClient(context.Credentials)
             {
-                SubscriptionId = SubscriptionId
+                SubscriptionId = context.SubscriptionId
             };
     }
 }

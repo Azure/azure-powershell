@@ -7,7 +7,7 @@
 
     <AssemblyName>Tests</AssemblyName>
 
-    <RootNamespace>Azure.Experiments.Tests</RootNamespace>
+    <RootNamespace>Microsoft.Azure.Experiments.Tests</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

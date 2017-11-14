@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Experiments
             Func<Config, string> getLocation,
             Action<Config, string> setLocation)
         {
+            GetId = getId;
             GetAsync = getAsync;
             CreateOrUpdateAsync = createOrUpdateAsync;
             GetLocation = getLocation;

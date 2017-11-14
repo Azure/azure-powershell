@@ -1,6 +1,7 @@
 ﻿using Microsoft.Azure.Management.ResourceManager.Models;
 using Microsoft.Azure.Management.ResourceManager;
 using System.Threading.Tasks;
+using Microsoft.Azure.Experiments;
 
 namespace Azure.Experiments
 {

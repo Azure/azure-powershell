@@ -16,7 +16,18 @@ namespace Microsoft.Azure.Experiments.Network
                     p.ResourceGroupName, p.Name, p.Config, p.CancellationToken));
 
         public static ResourceConfig<VirtualNetwork> CreateVirtualNetworkConfig(
-            this ResourceConfig<ResourceGroup> resourceGroup, string name)
-            => Policy.CreateConfig(resourceGroup, name);
+            this ResourceConfig<ResourceGroup> resourceGroup,
+            string name,
+            string addressPrefix)
+            => Policy.CreateConfig(
+                resourceGroup,
+                name,
+                _ => new VirtualNetwork
+                {
+                    AddressSpace = new AddressSpace
+                    {
+                        AddressPrefixes = new[] { addressPrefix }
+                    }
+                });
     }
 }

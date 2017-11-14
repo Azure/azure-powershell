@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Experiments
 {
-    public static class CurrentState
+    public static class GetAsyncOperation
     {
-        public static async Task<IState> GetState<Config>(
+        public static async Task<IState> GetAsync<Config>(
             this IResourceConfig<Config> resourceConfig,
             IClient client,
             CancellationToken cancellationToken)

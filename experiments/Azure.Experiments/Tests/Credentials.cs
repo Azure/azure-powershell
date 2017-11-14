@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using System.IO;
 
-namespace Azure.Experiments.Tests
+namespace Microsoft.Azure.Experiments.Tests
 {
     internal static class Credentials
     {

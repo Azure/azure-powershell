@@ -6,7 +6,7 @@ using System.Net.Http;
 using System;
 using Newtonsoft.Json;
 
-namespace Azure.Experiments.Tests
+namespace Microsoft.Azure.Experiments.Tests
 {
     sealed class TokenProvider : ITokenProvider
     {           

@@ -1,4 +1,5 @@
 ﻿using Azure.Experiments.Network;
+using Microsoft.Azure.Experiments;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using System.Threading.Tasks;

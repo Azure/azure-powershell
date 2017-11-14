@@ -1,4 +1,4 @@
-﻿namespace Azure.Experiments.Tests
+﻿namespace Microsoft.Azure.Experiments.Tests
 {
     internal sealed class Configuration
     {

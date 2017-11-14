@@ -1,11 +1,13 @@
-﻿using System.Collections.Concurrent;
+﻿using System.Linq;
 
 namespace Microsoft.Azure.Experiments
 {
     public static class Parameters
     {
         public static IState GetParameters<Config>(
-            string subscription, string location, IResourceConfig<Config> config)
+            this IResourceConfig<Config> config,
+            string subscription, 
+            string location)
             where Config : class
         {
             var visitor = new Visitor(subscription, location);
@@ -21,12 +23,19 @@ namespace Microsoft.Azure.Experiments
                 Location = location;
             }
 
+            public object GetUntyped(IResourceConfig config)
+                => Result.GetOrAddUntyped(config, () => config.Apply(this));
+
             public Config Get<Config>(IResourceConfig<Config> config)
                 where Config : class
-                => Result.GetOrAdd(config, () => config.Apply(this) as Config);
+                => GetUntyped(config) as Config;
 
             public object Visit<Config>(ResourceConfig<Config> config) where Config : class
             {
+                foreach (var d in config.Dependencies)
+                {
+                    GetUntyped(d);
+                }
                 var p = config.CreateConfig(Subscription);
                 config.Policy.SetLocation(p, Location);
                 return p;
