@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using Microsoft.Azure.Commands.DataLakeStore.Models;
 using Microsoft.Azure.Commands.DataLakeStore.Properties;
 using System.Management.Automation;
@@ -40,6 +41,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             HelpMessage = "Indicates the user wants a recursive delete of the folder.")]
         public SwitchParameter Recurse { get; set; }
 
+        [Obsolete]
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false,
             HelpMessage =
                 "DEPRECATED. Will be discontinued in future releases.")]
@@ -59,7 +61,10 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         public override void ExecuteCmdlet()
         {
-            WriteWarning(Resources.IncorrectCleanWarning);
+            if (Clean)
+            {
+                WriteWarning(Resources.IncorrectCleanWarning);
+            }
             bool success = true ;
             foreach (var path in Paths)
             {

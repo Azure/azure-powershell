@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
             ResourceManagementClient = GetResourceManagementClient();
             SubscriptionClient = GetSubscriptionClient();
             DataLakeStoreAccountManagementClient = GetDataLakeStoreAccountManagementClient(context);
-            GetDataLakeStoreFileSystemManagementClient();
+            SetDataLakeStoreFileSystemManagementClient();
             AuthorizationManagementClient = GetAuthorizationManagementClient();
             GalleryClient = GetGalleryClient();
             NewResourceManagementClient = GetNewResourceManagementClient(context);
@@ -188,10 +188,14 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
             return context.GetServiceClient<DataLakeStoreAccountManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        private void GetDataLakeStoreFileSystemManagementClient()
+        private void SetDataLakeStoreFileSystemManagementClient()
         {
             var currentEnvironment = TestEnvironmentFactory.GetTestEnvironment();
-            AdlsClientFactory.MockCredentials = currentEnvironment.TokenInfo[TokenAudience.Management];
+            AdlsClientFactory.IsTest = true;
+            if (HttpMockServer.GetCurrentMode() == HttpRecorderMode.Record)
+            {
+                AdlsClientFactory.MockCredentials = currentEnvironment.TokenInfo[TokenAudience.Management];
+            }
         }
 
         private GalleryClient GetGalleryClient()

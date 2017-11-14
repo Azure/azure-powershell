@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         /// The lock object
         /// </summary>
         private static readonly object ConsoleOutputLock = new object();
-        
+
         private readonly IAzureContext _context;
         private readonly Random _uniqueActivityIdGenerator;
         private const int MaxConnectionLimit = 1000;
@@ -79,10 +79,10 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         /// <param name="itemType">Type of the directory entry</param>
         /// <returns>True of the path exists else false</returns>
         public bool TestFileOrFolderExistence(string path, string accountName, out DirectoryEntryType itemType)
-        { 
+        {
             try
             {
-                var entry=AdlsClientFactory.GetAdlsClient(accountName, _context).GetDirectoryEntry(path);
+                var entry = AdlsClientFactory.GetAdlsClient(accountName, _context).GetDirectoryEntry(path);
                 itemType = entry.Type;
                 return true;
 
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             {
                 if (e.HttpStatus == HttpStatusCode.NotFound)
                 {
-                    itemType=DirectoryEntryType.FILE;
+                    itemType = DirectoryEntryType.FILE;
                     return false;
                 }
                 throw e;
@@ -188,7 +188,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         /// <param name="timeToSet">Time to set</param>
         /// <param name="exop">ExpiryOption</param>
         /// <returns>FileStatus after setting the expiry</returns>
-        public DirectoryEntry SetExpiry(string path, string accountName, long timeToSet, ExpiryOption? exop=null)
+        public DirectoryEntry SetExpiry(string path, string accountName, long timeToSet, ExpiryOption? exop = null)
         {
             var client = AdlsClientFactory.GetAdlsClient(accountName, _context);
             if (exop == null)
@@ -199,10 +199,10 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 }
                 else
                 {
-                    exop=ExpiryOption.Absolute;
+                    exop = ExpiryOption.Absolute;
                 }
             }
-            client.SetExpiryTime(path,exop.Value,timeToSet);
+            client.SetExpiryTime(path, exop.Value, timeToSet);
             return GetFileStatus(path, accountName);
         }
         /// <summary>
@@ -227,7 +227,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         /// <param name="toReturn">Linkedlist to add to</param>
         /// <param name="totLinesRead">Number of lines read</param>
         /// <returns>The index of the closest newline character in the sequence (based on direction) that was found. Returns -1 if not found or reached required number of rows. </returns>
-        private static int ReadNewLinesReverse(byte[] buffer,int lengthData, Encoding encoding,int totalRows,ref LinkedList<string> toReturn, ref int totLinesRead)
+        private static int ReadNewLinesReverse(byte[] buffer, int lengthData, Encoding encoding, int totalRows, ref LinkedList<string> toReturn, ref int totLinesRead)
         {
             // define the bytes per character to use
             int bytesPerChar;
@@ -252,16 +252,16 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                     break;
             }
             int charPos;
-            int prevPos =charPos= lengthData-1;
+            int prevPos = charPos = lengthData - 1;
             // charPos always points to last byte of a character
-            while(charPos>=0)
+            while (charPos >= 0)
             {
-                char c = bytesPerChar == 1 ? (char)buffer[charPos] : encoding.GetString(buffer, charPos-bytesPerChar+1, bytesPerChar).ToCharArray()[0];
+                char c = bytesPerChar == 1 ? (char)buffer[charPos] : encoding.GetString(buffer, charPos - bytesPerChar + 1, bytesPerChar).ToCharArray()[0];
                 charPos -= bytesPerChar;//charPos points to last byte of previous character now
                 if (c == '\r' || c == '\n')
                 {
-                    
-                    int retrieveEndIndx = charPos + bytesPerChar+1;//retrieve points to first byte of character after \n or \r now
+
+                    int retrieveEndIndx = charPos + bytesPerChar + 1;//retrieve points to first byte of character after \n or \r now
                     if (retrieveEndIndx <= prevPos)
                     {
                         toReturn.AddFirst(
@@ -273,10 +273,10 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                         }
                     }
                     // Check if it is \r\n
-                    if (c=='\n' && charPos >=0)
+                    if (c == '\n' && charPos >= 0)
                     {
                         char beforeCh = bytesPerChar == 1
-                            ? (char) buffer[charPos]
+                            ? (char)buffer[charPos]
                             : encoding.GetString(buffer, charPos - bytesPerChar + 1, bytesPerChar).ToCharArray()[0];
                         if (beforeCh == '\r')
                         {
@@ -288,11 +288,11 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 }
             }
             // Didnt find a new line
-            if (prevPos == lengthData-1)
+            if (prevPos == lengthData - 1)
             {
                 return -1;
             }
-            return prevPos < 0 ? 0 : prevPos+1;
+            return prevPos < 0 ? 0 : prevPos + 1;
         }
         /// <summary>
         /// Get rows from the HEAD
@@ -306,11 +306,11 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             Encoding encoding)
         {
             var toReturn = new List<string>();
-            using (var reader = new StreamReader(client.GetReadStream(streamPath),encoding))
+            using (var reader = new StreamReader(client.GetReadStream(streamPath), encoding))
             {
                 string line;
                 int rows = 0;
-                while (rows++<numRows &&(line = reader.ReadLine()) != null)
+                while (rows++ < numRows && (line = reader.ReadLine()) != null)
                 {
                     toReturn.Add(line);
                 }
@@ -334,9 +334,10 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             {
                 return GetStreamRowsHead(client, streamPath, numRows, encoding);
             }
-            
+
             var toReturn = new LinkedList<string>();
-            using (var readerAdl = client.GetReadStream(streamPath))
+
+            using (Stream readerAdl = client.GetReadStream(streamPath))
             {
                 // read data 4MB at a time
                 // when reading backwards, this may change to ensure that we don't re-read data as we approach the beginning of the file.
@@ -359,10 +360,10 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                         doneAfterRead = true;
                     }
                     readerAdl.Seek(initialOffset, SeekOrigin.Begin);
-                    
-                    int dataActuallyRead=readerAdl.Read(buffer, 0, dataPerRead);
+
+                    int dataActuallyRead = readerAdl.Read(buffer, 0, dataPerRead);
                     // Reads the lines, updates the number of lines and returns the last poisiotn of \r or \n
-                    int newLineOffset = ReadNewLinesReverse(buffer, dataActuallyRead, encoding,numRows, ref toReturn, ref readRows);
+                    int newLineOffset = ReadNewLinesReverse(buffer, dataActuallyRead, encoding, numRows, ref toReturn, ref readRows);
                     if (newLineOffset != -1)
                     {
                         initialOffset += newLineOffset;
@@ -378,7 +379,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             return toReturn;
         }
         /// <summary>
-        /// REturns the ADL read stream
+        /// Returns the ADL read stream
         /// </summary>
         /// <param name="filePath">File Path</param>
         /// <param name="accountName">Account name</param>
@@ -433,7 +434,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         public bool DeleteFileOrFolder(string path, string accountName, bool isRecursive)
         {
             var client = AdlsClientFactory.GetAdlsClient(accountName, _context);
-            return isRecursive? client.DeleteRecursive(path):client.Delete(path);
+            return isRecursive ? client.DeleteRecursive(path) : client.Delete(path);
         }
 
         public void CreateSymLink(string sourcePath, string accountName, string destinationPath,
@@ -450,7 +451,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         /// <param name="filesToConcatenate">List of files to concatenate</param>
         public void ConcatenateFiles(string destinationPath, string accountName, List<string> filesToConcatenate)
         {
-            AdlsClientFactory.GetAdlsClient(accountName, _context).ConcatenateFiles(destinationPath,filesToConcatenate);
+            AdlsClientFactory.GetAdlsClient(accountName, _context).ConcatenateFiles(destinationPath, filesToConcatenate);
         }
         /// <summary>
         /// Creates a file in ADL store
@@ -461,11 +462,11 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         /// <param name="overwrite">True if we are overwriting the file if it exists, false if we want to fail if the file exists</param>
         public void CreateFile(string filePath, string accountName, byte[] contents = null, IfExists overwrite = IfExists.Overwrite)
         {
-            using (var createStream = AdlsClientFactory.GetAdlsClient(accountName, _context).CreateFile(filePath, overwrite))
+            using (Stream createStream = AdlsClientFactory.GetAdlsClient(accountName, _context).CreateFile(filePath, overwrite))
             {
                 if (contents != null)
                 {
-                    createStream.Write(contents,0,contents.Length);
+                    createStream.Write(contents, 0, contents.Length);
                 }
             }
         }
@@ -488,7 +489,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         /// <param name="contents">Contents in byte array</param>
         public void AppendToFile(string filePath, string accountName, byte[] contents)
         {
-            using (var appendStream = AdlsClientFactory.GetAdlsClient(accountName, _context).GetAppendStream(filePath))
+            using (Stream appendStream = AdlsClientFactory.GetAdlsClient(accountName, _context).GetAppendStream(filePath))
             {
                 appendStream.Write(contents, 0, contents.Length);
             }
@@ -498,7 +499,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         /// </summary>
         /// <param name="level">Logging level- debug or error</param>
         /// <param name="fileName">Path of file where logging will be done</param>
-        public void SetupLogging(LogLevel level,string fileName )
+        public void SetupLogging(LogLevel level, string fileName)
         {
             // Step 1. Create configuration object 
             var config = new LoggingConfiguration();
@@ -527,23 +528,18 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         /// <param name="fileThreadCount">PerFileThreadCount</param>
         /// <param name="recursive">If true then Enumeration of the subdirectories are done recursively</param>
         /// <param name="overwrite">True if we want to overwrite existing destinations</param>
-        /// <param name="isDownload">true if it is download else upload</param>
+        /// <param name="resume">Indicates that the file(s) being copied are a continuation of a previous file transfer</param>
+        /// <param name="isDownload">True if it is download else upload</param>
         /// <param name="cmdletRunningRequest">Current Commandlet</param>
-        public void BulkCopy(string destinationFolderPath,
-            string accountName,
-            string sourcePath,
-            CancellationToken cmdletCancellationToken,
-            int fileThreadCount = -1,
-            bool recursive = false,
-            bool overwrite = false, bool isDownload = false,
-            Cmdlet cmdletRunningRequest = null)
+        /// <param name="isBinary">Indicates that the file(s) being uploaded should be copied with no concern for new line preservation across appends</param>
+        public void BulkCopy(string destinationFolderPath, string accountName, string sourcePath, CancellationToken cmdletCancellationToken,
+            int fileThreadCount = -1, bool recursive = false, bool overwrite = false, bool resume = false, bool isDownload = false,
+            Cmdlet cmdletRunningRequest = null, bool isBinary = false)
         {
             var client = AdlsClientFactory.GetAdlsClient(accountName, _context);
-            var progress = new ProgressRecord(
-                _uniqueActivityIdGenerator.Next(0, 10000000),
+            var progress = new ProgressRecord(_uniqueActivityIdGenerator.Next(0, 10000000),
                 string.Format("Copying Folder: {0}{1}. Enumerating the source and preparing the copy.",
-                    sourcePath, recursive ? " recursively" : string.Empty),
-                "Copy in progress...")
+                sourcePath, recursive ? " recursively" : string.Empty), "Copy in progress...")
             {
                 PercentComplete = 0
             };
@@ -553,7 +549,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             {
                 lock (ConsoleOutputLock)
                 {
-                    var toSet = (int) (1.0 * e.SizeTransfered / e.TotalSizeToTransfer * 100);
+                    var toSet = (int)(1.0 * (e.ChunksTransfered + e.FilesTransfered + e.DirectoriesTransferred) / (e.TotalChunksToTransfer + e.TotalFilesToTransfer + e.TotalDirectoriesToTransfer) * 100);
                     // powershell defect protection. If, through some defect in
                     // our progress tracking, the number is outside of 0 - 100,
                     // powershell will crash if it is set to that value. Instead
@@ -567,40 +563,47 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                         progress.PercentComplete = toSet;
                     }
                     progress.Activity =
-                        $"Copying Folder: {sourcePath}{(recursive ? " recursively" : string.Empty)}. Total bytes remaining: {e.TotalSizeToTransfer - e.SizeTransfered}. {(e.TotalChunksToTransfer>0?$"Total chunks remaining: {e.TotalChunksToTransfer-e.ChunksTransfered}":"")}{(e.TotalNonChunkedFileToTransfer > 0 ? $"Total non chunked files remaining: {e.TotalNonChunkedFileToTransfer - e.NonChunkedFileTransferred}" : "")}" +
-                        $"{(e.TotalDirectoriesToTransfer > 0 ? $"Total Directories remaining: {e.TotalDirectoriesToTransfer - e.DirectoriesTransferred}":"")}";
-                    
+                        $"Copying Folder: {sourcePath}{(recursive ? " recursively" : string.Empty)}. Bytes remaining: {e.TotalSizeToTransfer - e.SizeTransfered}{(e.TotalChunksToTransfer > 0 ? $", Chunks remaining: {e.TotalChunksToTransfer - e.ChunksTransfered}" : "")}{(e.TotalNonChunkedFileToTransfer > 0 ? $", Non-chunked files remaining: {e.TotalNonChunkedFileToTransfer - e.NonChunkedFileTransferred}" : "")}" +
+                        $"{(e.TotalDirectoriesToTransfer > 0 ? $", Directories remaining: {e.TotalDirectoriesToTransfer - e.DirectoriesTransferred}" : "")}.";
+
                 }
             };
-
+            TransferStatus status=null;
             Task transferTask = Task.Run(() =>
                 {
                     cmdletCancellationToken.ThrowIfCancellationRequested();
                     if (isDownload)
                     {
-                        client.BulkDownload(sourcePath, destinationFolderPath, fileThreadCount,
-                            overwrite ? IfExists.Overwrite : IfExists.Fail, progressTracker, !recursive);
+                        status = client.BulkDownload(sourcePath, destinationFolderPath, fileThreadCount,
+                            overwrite ? IfExists.Overwrite : IfExists.Fail, progressTracker, !recursive, resume, cmdletCancellationToken);
                     }
                     else
                     {
-                        client.BulkUpload(sourcePath, destinationFolderPath, fileThreadCount,
-                            overwrite ? IfExists.Overwrite : IfExists.Fail, progressTracker, !recursive);
+                        status = client.BulkUpload(sourcePath, destinationFolderPath, fileThreadCount,
+                            overwrite ? IfExists.Overwrite : IfExists.Fail, progressTracker, !recursive, resume, isBinary,cmdletCancellationToken);
                     }
                 }, cmdletCancellationToken);
-        
 
-        TrackUploadProgress(transferTask, progress, cmdletRunningRequest, cmdletCancellationToken);
 
-        if (!cmdletCancellationToken.IsCancellationRequested)
-        {
-            progress.PercentComplete = 100;
-            progress.RecordType = ProgressRecordType.Completed;
-            UpdateProgress(progress, cmdletRunningRequest);
+            TrackUploadProgress(transferTask, progress, cmdletRunningRequest, cmdletCancellationToken);
+
+            if (!cmdletCancellationToken.IsCancellationRequested)
+            {
+                progress.PercentComplete = 100;
+                progress.RecordType = ProgressRecordType.Completed;
+                UpdateProgress(progress, cmdletRunningRequest);
+                if (status != null && cmdletRunningRequest != null)
+                {
+                    foreach (var failedEntry in status.EntriesFailed)
+                    {
+                        cmdletRunningRequest.WriteObject($"FailedTransfer: {failedEntry.EntryName} {failedEntry.Errors}");
+                    }
+                }
+            }
+
         }
 
-}
 
-        
 
         #endregion
 
@@ -729,7 +732,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
         private AclStatus GetFullAcl(AclStatus acl)
         {
-            if (acl.Entries != null && acl.Permission!=null && acl.Permission.Length >= 3)
+            if (acl.Entries != null && acl.Permission != null && acl.Permission.Length >= 3)
             {
                 var permissionString = acl.Permission;
                 var permissionLength = permissionString.Length;
@@ -737,12 +740,12 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 var groupOctal = permissionString.ElementAt(permissionLength - 2).ToString();
                 var otherOctal = permissionString.ElementAt(permissionLength - 1).ToString();
 
-                acl.Entries.Add(new AclEntry(AclType.user, string.Empty,AclScope.Access, (AclAction)int.Parse(ownerOctal)));
-                acl.Entries.Add(new AclEntry(AclType.other, string.Empty,AclScope.Access, (AclAction)int.Parse(otherOctal)));
+                acl.Entries.Add(new AclEntry(AclType.user, string.Empty, AclScope.Access, (AclAction)int.Parse(ownerOctal)));
+                acl.Entries.Add(new AclEntry(AclType.other, string.Empty, AclScope.Access, (AclAction)int.Parse(otherOctal)));
 
-                if (acl.Entries.FirstOrDefault(e => e.Type==AclType.group&&string.IsNullOrEmpty(e.UserOrGroupId))!=null)
+                if (acl.Entries.FirstOrDefault(e => e.Type == AclType.group && string.IsNullOrEmpty(e.UserOrGroupId)) != null)
                 {
-                    acl.Entries.Add(new AclEntry(AclType.mask, string.Empty,AclScope.Access, (AclAction)int.Parse(groupOctal)));
+                    acl.Entries.Add(new AclEntry(AclType.mask, string.Empty, AclScope.Access, (AclAction)int.Parse(groupOctal)));
                 }
                 else
                 {

@@ -174,12 +174,6 @@
   <data name="IncorrectConcurrentFileCountWarning" xml:space="preserve">
     <value>Parameter ConcurrentFileCount is deprecated. This parameter will be removed in future releases. Please use Concurrency parameter instead.</value>
   </data>
-  <data name="IncorrectForceBinary" xml:space="preserve">
-    <value>Parameter ForceBinary is deprecated. It will not have any impact in the file transfer. This parameter will be removed in future releases.</value>
-  </data>
-  <data name="IncorrectResume" xml:space="preserve">
-    <value>Parameter Resume is deprecated. This parameter will be removed in future releases.</value>
-  </data>
   <data name="IncorrectCleanWarning" xml:space="preserve">
     <value>Parameter Clean is deprecated. This parameter will be removed in future releases.</value>
   </data>

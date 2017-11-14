@@ -447,22 +447,8 @@ function Test-DataLakeStoreFileSystem
 		$result = Set-AdlStoreItemExpiry -Account $accountName -path $contentFilePath -Expiration $timeToUse
 		Assert-NumAreInRange $timeToUse.UtcTicks $result.Expiration.UtcTicks 500000 # range of 50 milliseconds
 		
-		#set relative to now expiration for content file
-		$expectedTime= [DateTimeOffset]::UtcNow.AddSeconds(240)
-		$result = Set-AdlStoreItemExpiry -Account $accountName -path $contentFilePath -FileExpiryOptions RelativeToNow -RelativeTime 240000 #240 seconds
-		Assert-NumAreInRange $expectedTime.UtcTicks $result.Expiration.UtcTicks 2000000 # range of 250 milliseconds
-		
 		# set it back to "never expire"
 		$result = Set-AdlStoreItemExpiry -Account $accountName -path $contentFilePath
-		Assert-True {253402300800000 -ge $result.ExpirationTime -or 0 -le $result.ExpirationTime} # validate that expiration is currently max value
-		
-		#set expiration of empty file relative to creation
-		$expectedTime=$emptyFileCreationDate.AddSeconds(480);
-		$result = Set-AdlStoreItemExpiry -Account $accountName -path $emptyFilePath -FileExpiryOptions RelativeToCreationDate -RelativeTime 480000 #480 seconds from creation date
-		Assert-NumAreInRange $expectedTime.UtcTicks $result.Expiration.UtcTicks 1000000 # range of 100 milliseconds
-		
-		# set it back to "never expire"
-		$result = Set-AdlStoreItemExpiry -Account $accountName -path $emptyFilePath
 		Assert-True {253402300800000 -ge $result.ExpirationTime -or 0 -le $result.ExpirationTime} # validate that expiration is currently max value
 		
 		# list files
@@ -540,7 +526,7 @@ function Test-DataLakeStoreFileSystem
 		$downloadedFileInfo = Get-ChildItem $targetFile
 		Assert-AreEqual $($content.length*2) $downloadedFileInfo.length
 		Remove-Item -path $targetFile -force -confirm:$false
-
+		
 		# move a file
 		$result = Move-AzureRMDataLakeStoreItem -Account $accountName -Path $concatFile -Destination $moveFile
 		Assert-NotNull $result "No value was returned on move file"

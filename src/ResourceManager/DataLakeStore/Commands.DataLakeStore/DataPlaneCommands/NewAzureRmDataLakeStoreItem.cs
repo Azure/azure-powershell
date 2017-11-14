@@ -57,15 +57,11 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             HelpMessage = "If passed then new item is created without any prompt")]
         public SwitchParameter Force { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 5, Mandatory = false,
-            HelpMessage = "If the file or folder exists, it should be overwritten. If Overwrite is passed then item is created without prompt" +
-                          "If fail is passed then it fails without any prompt")]
-        public DataLakeStoreEnums.FileExists? IfFileExists { get; set; }
         public override void ExecuteCmdlet()
         {
             DirectoryEntryType ignored;
             ConfirmAction(
-                IfFileExists.HasValue || Force.IsPresent,
+                Force.IsPresent,
                 string.Format(Resources.OverwriteFileMessage, Path.TransformedPath),
                 "Create",
                 Path.TransformedPath,
@@ -81,7 +77,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                         {
                             throw new CloudException(string.Format(Resources.InvalidFilePath, Path.TransformedPath));
                         }
-                        DataLakeStoreFileSystemClient.CreateFile(Path.TransformedPath, Account, Value != null ? GetBytes(Value, Encoding) : null, IfFileExists.HasValue && IfFileExists == DataLakeStoreEnums.FileExists.Fail ? IfExists.Fail : IfExists.Overwrite);
+                        // Currently it takes overwrite by default. If force is specified it will overwrite, else it will check shouldContinue
+                        DataLakeStoreFileSystemClient.CreateFile(Path.TransformedPath, Account, Value != null ? GetBytes(Value, Encoding) : null);
                     }
                     WriteObject(Path.OriginalPath);
                 },

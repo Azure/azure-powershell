@@ -16,15 +16,14 @@ Uploads a local file or directory to a Data Lake Store.
 ### No diagnostic logging (Default)
 ```
 Import-AzureRmDataLakeStoreItem [-Account] <String> [-Path] <String> [-Destination] <DataLakeStorePathInstance>
- [-Recurse] [-Resume] [-ForceBinary] [[-PerFileThreadCount] <Int32>] [[-ConcurrentFileCount] <Int32>] [-Force]
- [[-Concurrency] <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Recurse] [-Resume] [-ForceBinary] [-Force] [[-Concurrency] <Int32>] [-DefaultProfile <IAzureContextContainer>]
+  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Include diagnostic logging
 ```
 Import-AzureRmDataLakeStoreItem [-Account] <String> [-Path] <String> [-Destination] <DataLakeStorePathInstance>
- [-Recurse] [-Resume] [-ForceBinary] [[-PerFileThreadCount] <Int32>] [[-ConcurrentFileCount] <Int32>] [-Force]
- [[-Concurrency] <Int32>] [-DiagnosticLogLevel <LogLevel>] -DiagnosticLogPath <String>
+ [-Recurse] [-Resume] [-ForceBinary] [-Force] [[-Concurrency] <Int32>] [-DiagnosticLogLevel <LogLevel>] -DiagnosticLogPath <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -35,10 +34,10 @@ The **Import-AzureRmDataLakeStoreItem** cmdlet uploads a local file or directory
 
 ### Example 1: Upload a file
 ```
-PS C:\>Import-AzureRmDataLakeStoreItem -AccountName "ContosoADL" -Path "C:\SrcFile.csv" -Destination "/MyFiles/File.csv"
+PS C:\>Import-AzureRmDataLakeStoreItem -AccountName "ContosoADL" -Path "C:\SrcFile.csv" -Destination "/MyFiles/File.csv" -Concurrency 4
 ```
 
-This command uploads the file SrcFile.csv and adds it to the MyFiles folder in the Data Lake Store as File.csv.
+This command uploads the file SrcFile.csv and adds it to the MyFiles folder in the Data Lake Store as File.csv with a concurrency of 4.
 
 ## PARAMETERS
 
@@ -164,7 +163,7 @@ Accept wildcard characters: False
 ```
 
 ### -ForceBinary
-DEPRECATED. Will have no effect in the upload process.
+Indicates that the file(s) being copied should be copied with no concern for new line preservation across appends.
 
 ```yaml
 Type: SwitchParameter
@@ -224,7 +223,7 @@ Accept wildcard characters: False
 ```
 
 ### -Resume
-DEPRECATED. This feature will be discontinued.
+Indicates that the file(s) being copied are a continuation of a previous upload. This will cause the system to attempt to resume from the last file that was not fully uploaded.
 
 ```yaml
 Type: SwitchParameter

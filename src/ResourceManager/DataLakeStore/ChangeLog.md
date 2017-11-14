@@ -49,12 +49,11 @@
 	* DataLakeStoreItemAce
 	* DataLakeStorePathInstance
 * Moved the commands and models related to the dataplane into separate folders
-* Export-AzureRmDataLakeStoreItem (documented in the breaking changes) - Deprecated parameters Resume, PerFileThreadCount, ConcurrentFileCount and introduced parameter Concurrency
-* Import-AzureRMDataLakeStoreItem (documented in the breaking changes) -Deprecated parameters Resume, PerFileThreadCount, ForceBinary, ConcurrentFileCount and introduced parameter Concurrency
+* Export-AzureRmDataLakeStoreItem (documented in the breaking changes) - Deprecated parameters PerFileThreadCount, ConcurrentFileCount and introduced parameter Concurrency
+* Import-AzureRMDataLakeStoreItem (documented in the breaking changes) -Deprecated parametersPerFileThreadCount, ConcurrentFileCount and introduced parameter Concurrency
 * Get-AzureRMDataLakeStoreItemContent - Fixed the tail behavior for contents greater than 4MB
 * Set-AzureRMDataLakeStoreItemExpiry - Introduced new parameter set for setting relative expiration time
-* New-AzureRmDataLakeStoreItem - Introduced IfExist parameter which allows user to overwrite or fail without prompting
-* Remove-AzureRmDataLakeStoreItem - Deprecated parameter Clean.
+* Remove-AzureRmDataLakeStoreItem (documented in the breaking changes) - Deprecated parameter Clean.
 
 ## Version 4.4.1
 
