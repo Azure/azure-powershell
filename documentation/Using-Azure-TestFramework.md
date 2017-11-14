@@ -43,7 +43,7 @@ This cmdlet, located in Repo-Tasks, will allow you to create a credentials file 
 
 #### Create New Service Principal
 
-Using a Service Principal is the preferred option for recording test because it works with both .NET Framework and .NET Core.  In order to create a new Service Principal run this command with a unused ServicePrincipal display name:
+Using a Service Principal is the preferred option for recording tests because it works with both .NET Framework and .NET Core.  In order to create a new Service Principal run this command with a unused ServicePrincipal display name:
 
 ```powershell
 New-TestCredential -ServicePrincipalDisplayName "ScenarioTestCredentials" -ServicePrincipalSecret `

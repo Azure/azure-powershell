@@ -90,7 +90,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             // Set RunningMocked
             TestMockSupport.RunningMocked = HttpMockServer.GetCurrentMode() == HttpRecorderMode.Playback;
 
-            if (File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "/.azure/testcredentials.json"))
+            if (File.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".azure", "testcredentials.json")))
             {
                 SetEnvironmentVariableFromCredentialFile();
             }
@@ -202,7 +202,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         public void SetEnvironmentVariableFromCredentialFile()
         {
-            var filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".azure/testcredentials.json");
+            var filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".azure", "testcredentials.json");
             Dictionary<string, object> credentials;
             using (StreamReader r = new StreamReader(filePath))
             {
