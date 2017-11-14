@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <Configuration>
   <ViewDefinitions>
     <View>
@@ -359,6 +359,50 @@
               <ListItem>
                 <Label>Results</Label>
                 <PropertyName>ResultsText</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSAzureReachabilityReport</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSAzureReachabilityReport</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>AggregationLevel</Label>
+                <PropertyName>AggregationLevel</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ProviderLocation</Label>
+                <PropertyName>ProviderLocationText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ReachabilityReport</Label>
+                <PropertyName>ReachabilityReportText</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSAvailableProvidersList</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSAvailableProvidersList</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Countries</Label>
+                <PropertyName>CountriesText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>

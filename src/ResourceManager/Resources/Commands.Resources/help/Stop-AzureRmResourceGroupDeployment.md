@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
+Module Name: AzureRM.Resources
 ms.assetid: 089954C3-7F3E-46C2-AA93-C0151EACDA2F
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/stop-azurermresourcegroupdeployment
 schema: 2.0.0
 ---
 
@@ -12,16 +13,16 @@ Cancels a resource group deployment.
 
 ## SYNTAX
 
-### The deployment name parameter set. (Default)
+### StopByResourceGroupDeploymentName (Default)
 ```
 Stop-AzureRmResourceGroupDeployment [-ResourceGroupName] <String> [-Name] <String> [-ApiVersion <String>]
- [-Pre] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### The deployment Id parameter set.
+### StopByResourceGroupDeploymentId
 ```
-Stop-AzureRmResourceGroupDeployment -Id <String> [-ApiVersion <String>] [-Pre] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Stop-AzureRmResourceGroupDeployment -Id <String> [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -64,12 +65,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Id
 Specifies the ID of the resource group deployment to stop.
 
 ```yaml
 Type: String
-Parameter Sets: The deployment Id parameter set.
+Parameter Sets: StopByResourceGroupDeploymentId
 Aliases: DeploymentId, ResourceId
 
 Required: True
@@ -88,7 +104,7 @@ To get the deployment name, use the Get-AzureRmResourceGroupDeployment cmdlet.
 
 ```yaml
 Type: String
-Parameter Sets: The deployment name parameter set.
+Parameter Sets: StopByResourceGroupDeploymentName
 Aliases: DeploymentName
 
 Required: True
@@ -119,7 +135,7 @@ This cmdlet stops the deployment of the resource group that this parameter speci
 
 ```yaml
 Type: String
-Parameter Sets: The deployment name parameter set.
+Parameter Sets: StopByResourceGroupDeploymentName
 Aliases: 
 
 Required: True

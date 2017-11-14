@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
+Module Name: AzureRM.ApiManagement
 ms.assetid: 48C143BE-3BF6-43E3-99B0-1A1D12A0A3F3
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/import-azurermapimanagementapi
 schema: 2.0.0
 ---
 
@@ -12,7 +13,7 @@ Imports an API from a file or a URL.
 
 ## SYNTAX
 
-### From Local File (Default)
+### ImportFromLocalFile (Default)
 ```
 Import-AzureRmApiManagementApi -Context <PsApiManagementContext> [-ApiId <String>]
  -SpecificationFormat <PsApiManagementApiFormat> -SpecificationPath <String> [-Path <String>]
@@ -20,7 +21,7 @@ Import-AzureRmApiManagementApi -Context <PsApiManagementContext> [-ApiId <String
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### From URL
+### ImportFromUrl
 ```
 Import-AzureRmApiManagementApi -Context <PsApiManagementContext> [-ApiId <String>]
  -SpecificationFormat <PsApiManagementApiFormat> -SpecificationUrl <String> [-Path <String>]
@@ -161,7 +162,7 @@ Specifies the specification file path.
 
 ```yaml
 Type: String
-Parameter Sets: From Local File
+Parameter Sets: ImportFromLocalFile
 Aliases: 
 
 Required: True
@@ -176,7 +177,7 @@ Specifies the specification URL.
 
 ```yaml
 Type: String
-Parameter Sets: From URL
+Parameter Sets: ImportFromUrl
 Aliases: 
 
 Required: True

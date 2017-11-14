@@ -1,4 +1,4 @@
----
+﻿---
 Module Name: Azure.AnalysisServices
 Module Guid: c717b5a4-1f1b-4a2f-8aa1-bfd09934626e
 Download Help Link: {{Please enter FwLink manually}}

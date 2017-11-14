@@ -68,11 +68,30 @@ function Get-AseName
 
 <#
 .SYNOPSIS
+Gets test mode - 'Record' or 'Playback'
+#>
+function Get-WebsitesTestMode {
+    try {
+        $testMode = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode;
+        $testMode = $testMode.ToString();
+    } catch {
+        if ($PSItem.Exception.Message -like '*Unable to find type*') {
+            $testMode = 'Record';
+        } else {
+            throw;
+        }
+    }
+
+    return $testMode
+}
+
+<#
+.SYNOPSIS
 Gets the location for the Website. Default to West US if none found.
 #>
 function Get-Location
 {
-	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+	if ((Get-WebsitesTestMode) -ne 'Playback')
 	{
 		$namespace = "Microsoft.Web"
 		$type = "sites"
@@ -96,7 +115,7 @@ Gets the location for the Website. Default to West US if none found.
 #>
 function Get-SecondaryLocation
 {
-	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+	if ((Get-WebsitesTestMode) -ne 'Playback')
 	{
 		$namespace = "Microsoft.Web"
 		$type = "sites"
@@ -120,7 +139,7 @@ Cleans the website
 #>
 function Clean-Website($resourceGroup, $websiteName)
 {
-    if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) 
+    if ((Get-WebsitesTestMode) -ne 'Playback') 
 	{
 		$result = Remove-AzureRmWebsite -ResourceGroupName $resourceGroup.ToString() -WebsiteName $websiteName.ToString() -Force
     }
@@ -128,7 +147,7 @@ function Clean-Website($resourceGroup, $websiteName)
 
 function PingWebApp($webApp)
 {
-	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) 
+	if ((Get-WebsitesTestMode) -ne 'Playback') 
 	{
 		try 
 		{

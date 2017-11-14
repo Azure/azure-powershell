@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
+Module Name: AzureRM.ApiManagement
 ms.assetid: 894297BF-2771-4871-9E4C-8684364DAC4B
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/get-azurermapimanagementproperty
 schema: 2.0.0
 ---
 
@@ -11,25 +12,25 @@ schema: 2.0.0
 
 ## SYNTAX
 
-### Get all properties (Default)
+### GetAllProperties (Default)
 ```
 Get-AzureRmApiManagementProperty -Context <PsApiManagementContext> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
-### Get by property ID
+### GetByPropertyId
 ```
 Get-AzureRmApiManagementProperty -Context <PsApiManagementContext> [-PropertyId <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Find properties containing Name
+### GetByName
 ```
 Get-AzureRmApiManagementProperty -Context <PsApiManagementContext> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Find properties by Tag
+### GetByTag
 ```
 Get-AzureRmApiManagementProperty -Context <PsApiManagementContext> [-Tag <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -78,7 +79,7 @@ Accept wildcard characters: False
 ### -Name
 ```yaml
 Type: String
-Parameter Sets: Find properties containing Name
+Parameter Sets: GetByName
 Aliases: 
 
 Required: False
@@ -91,7 +92,7 @@ Accept wildcard characters: False
 ### -PropertyId
 ```yaml
 Type: String
-Parameter Sets: Get by property ID
+Parameter Sets: GetByPropertyId
 Aliases: 
 
 Required: False
@@ -108,7 +109,7 @@ Key-value pairs in the form of a hash table. For example:
 
 ```yaml
 Type: String
-Parameter Sets: Find properties by Tag
+Parameter Sets: GetByTag
 Aliases: 
 
 Required: False

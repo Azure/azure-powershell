@@ -24,9 +24,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     [OutputType(typeof(PsApiManagementOpenIdConnectProvider), ParameterSetName = new[] { GetById })]
     public class GetAzureApiManagementOpenIdConnectProvider : AzureApiManagementCmdletBase
     {
-        private const string GetAll = "Get all OpenID Connect Providers";
-        private const string GetById = "Get by OpenID Connect Provider ID";
-        private const string FindByName = "Find by OpenID Connect Provider friendly Name";
+        private const string GetAll = "GetAllOpenIdConnectProviders";
+        private const string GetById = "GetByOpenIdConnectProviderId";
+        private const string FindByName = "GetByName";
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,

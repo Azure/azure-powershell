@@ -93,9 +93,10 @@ namespace Microsoft.Azure.Commands.Profile.Models
             AdTenant = other.GetProperty<string>(nameof(AdTenant));
             AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix = other.GetProperty<string>(nameof(AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix));
             AzureDataLakeStoreFileSystemEndpointSuffix = other.GetProperty<string>(nameof(AzureDataLakeStoreFileSystemEndpointSuffix));
+            DataLakeEndpointResourceId = other.GetProperty<string>(nameof(DataLakeEndpointResourceId));
             AzureKeyVaultDnsSuffix = other.GetProperty<string>(nameof(AzureKeyVaultDnsSuffix));
             AzureKeyVaultServiceEndpointResourceId = other.GetProperty<string>(nameof(AzureKeyVaultServiceEndpointResourceId));
-            DataLakeEndpointResourceId = other.GetProperty<string>(nameof(DataLakeEndpointResourceId));
+            BatchEndpointResourceId = other.GetProperty<string>(nameof(BatchEndpointResourceId));
             GalleryUrl = other.GetProperty<string>(nameof(GalleryUrl));
             GraphEndpointResourceId = other.GetProperty<string>(nameof(GraphEndpointResourceId));
             GraphUrl = other.GetProperty<string>(nameof(GraphUrl));
@@ -228,6 +229,11 @@ namespace Microsoft.Azure.Commands.Profile.Models
         public IDictionary<string, string> ExtendedProperties { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 
         /// <summary>
+        /// Gets or sets the Azure Batch AD resource ID.
+        /// </summary>
+        public string BatchEndpointResourceId { get; set; }
+
+        /// <summary>
         /// Determine equality of two PSAzureEnvironment instances.
         /// </summary>
         /// <param name="obj">The instance to compare.</param>
@@ -253,7 +259,9 @@ namespace Microsoft.Azure.Commands.Profile.Models
                        && SqlDatabaseDnsSuffix == other.SqlDatabaseDnsSuffix
                        && AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix == other.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix
                        && AzureDataLakeStoreFileSystemEndpointSuffix == other.AzureDataLakeStoreFileSystemEndpointSuffix
-                       && TrafficManagerDnsSuffix == other.TrafficManagerDnsSuffix;
+                       && DataLakeEndpointResourceId == other.DataLakeEndpointResourceId
+                       && TrafficManagerDnsSuffix == other.TrafficManagerDnsSuffix
+                       && BatchEndpointResourceId == other.BatchEndpointResourceId;
             }
 
             return false;
