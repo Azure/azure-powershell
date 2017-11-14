@@ -3,6 +3,7 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.DataLake.Store;
 using System.Text.RegularExpressions;
+using Microsoft.Azure.DataLake.Store.MockAdlsFileSystem;
 using Microsoft.Rest;
 
 namespace Microsoft.Azure.Commands.DataLakeStore.Models
@@ -11,20 +12,24 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
     {
         private static readonly Dictionary<string, AdlsClient> ClientFactory=new Dictionary<string, AdlsClient>();
         /// <summary>
-        /// Mock client credentials used for testing
+        /// For unit testing this is set as true
         /// </summary>
-        public static ServiceClientCredentials MockCredentials;
-        private static string HandleAccntName(string accnt)
+        public static bool IsTest = false;
+        /// <summary>
+        /// Mock client credentials used for testing, this is set for record
+        /// </summary>
+        public static ServiceClientCredentials MockCredentials = null;
+        private static string HandleAccntName(string accnt,IAzureContext context)
         {
             if (Regex.IsMatch(accnt, @"^[a-zA-Z0-9]+$"))
             {
-                return accnt + ".azuredatalakestore.net";
+                return $"{accnt}.{context.Environment.GetEndpoint(AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix)}";
             }
             return accnt;
         }
         internal static AdlsClient GetAdlsClient(string accntNm, IAzureContext context)
         {
-            accntNm = HandleAccntName(accntNm);
+            accntNm = HandleAccntName(accntNm,context);
             lock (ClientFactory)
             {
                 if (ClientFactory.ContainsKey(accntNm))
@@ -32,9 +37,17 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                     return ClientFactory[accntNm];
                 }
                 ServiceClientCredentials creds;
-                if (MockCredentials != null)
+                if (IsTest)
                 {
-                    creds = MockCredentials;
+                    if (MockCredentials != null)
+                    {
+                        creds = MockCredentials;
+                    }
+                    else
+                    {
+                        ClientFactory.Add(accntNm, MockAdlsClient.GetMockClient());
+                        return ClientFactory[accntNm];
+                    }
                 }
                 else
                 {

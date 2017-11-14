@@ -72,21 +72,22 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         public SwitchParameter Recurse { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, Mandatory = false,
-            HelpMessage = "DEPRECATED. This feature will be discontinued.",
+            HelpMessage = "Indicates that the file(s) being copied are a continuation of a previous upload. This will cause the system to attempt to resume from the last file that was not fully uploaded.",
             ParameterSetName = BaseParameterSetName)]
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, Mandatory = false,
-            HelpMessage = "DEPRECATED. This feature will be discontinued.",
+            HelpMessage = "Indicates that the file(s) being copied are a continuation of a previous upload. This will cause the system to attempt to resume from the last file that was not fully uploaded.",
             ParameterSetName = DiagnosticParameterSetName)]
         public SwitchParameter Resume { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 5, Mandatory = false,
-            HelpMessage = "DEPRECATED. Will have no effect in the upload process.",
+            HelpMessage = "Indicates that the file(s) being copied should be copied with no concern for new line preservation across appends",
             ParameterSetName = BaseParameterSetName)]
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 5, Mandatory = false,
-            HelpMessage = "DEPRECATED. Will have no effect in the upload process.",
+            HelpMessage = "Indicates that the file(s) being copied should be copied with no concern for new line preservation across appends",
             ParameterSetName = DiagnosticParameterSetName)]
         public SwitchParameter ForceBinary { get; set; }
 
+        [Obsolete]
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 6, Mandatory = false,
             HelpMessage =
                 "DEPRECATED. Please use Concurrency parameter.",
@@ -96,6 +97,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             ParameterSetName = DiagnosticParameterSetName)]
         public int PerFileThreadCount { get; set; } = -1;
 
+        [Obsolete]
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 7, Mandatory = false,
             HelpMessage = "DEPRECATED. Please use Concurrency parameter.",
             ParameterSetName = BaseParameterSetName)]
@@ -135,10 +137,14 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         public override void ExecuteCmdlet()
         {
-            WriteWarning(Resources.IncorrectConcurrentFileCountWarning);
-            WriteWarning(Resources.IncorrectPerFileThreadCountWarning);
-            WriteWarning(Resources.IncorrectForceBinary);
-            WriteWarning(Resources.IncorrectResume);
+            if (ConcurrentFileCount != -1)
+            {
+                WriteWarning(Resources.IncorrectConcurrentFileCountWarning);
+            }
+            if (PerFileThreadCount != -1)
+            {
+                WriteWarning(Resources.IncorrectPerFileThreadCountWarning);
+            }
             var powerShellSourcePath = SessionState.Path.GetUnresolvedProviderPathFromPSPath(Path);
             ConfirmAction(
                 Resources.UploadFileMessage,
@@ -155,7 +161,12 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                         }
 
                         int threadCount;
-                        if (ConcurrentFileCount > 0 && PerFileThreadCount <= 0)
+                        // If concurrency is specified then accept that
+                        if (Concurrency > 0)
+                        {
+                            threadCount = Concurrency;
+                        }
+                        else if (ConcurrentFileCount > 0 && PerFileThreadCount <= 0)
                         {
                             threadCount = ConcurrentFileCount;
                         }
@@ -165,10 +176,10 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                         }
                         else
                         {
-                            threadCount = Math.Max(PerFileThreadCount * ConcurrentFileCount, DataLakeStoreFileSystemClient.ImportExportMaxThreads);
+                            threadCount = Math.Min(PerFileThreadCount * ConcurrentFileCount, DataLakeStoreFileSystemClient.ImportExportMaxThreads);
                         }
                         DataLakeStoreFileSystemClient.BulkCopy(Destination.TransformedPath, Account,
-                            powerShellSourcePath, CmdletCancellationToken, threadCount, Recurse, Force, false, this);
+                            powerShellSourcePath, CmdletCancellationToken, threadCount, Recurse, Force, Resume, false, this, ForceBinary);
                         // only attempt to write output if this cmdlet hasn't been cancelled.
                         if (!CmdletCancellationToken.IsCancellationRequested && !Stopping)
                         {

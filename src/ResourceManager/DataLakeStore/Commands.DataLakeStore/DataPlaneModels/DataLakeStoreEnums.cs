@@ -85,13 +85,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             [EnumMember(Value = "FILE")] FILE,
             [EnumMember(Value = "DIRECTORY")] DIRECTORY,
         }
-
-        public enum FileExists
-        {
-            Overwrite,
-            Fail
-        }
-
+        
         public enum PathRelativeExpiryOptions
         {
             RelativeToNow,

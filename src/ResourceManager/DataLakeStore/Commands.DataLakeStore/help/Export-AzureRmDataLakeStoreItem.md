@@ -16,15 +16,13 @@ Downloads a file from Data Lake Store.
 ### No diagnostic logging (Default)
 ```
 Export-AzureRmDataLakeStoreItem [-Account] <String> [-Path] <DataLakeStorePathInstance> [-Destination] <String>
- [-Recurse] [-Resume] [[-PerFileThreadCount] <Int32>] [[-ConcurrentFileCount] <Int32>] [-Force]
- [[-Concurrency] <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Recurse] [-Resume] [-Force] [[-Concurrency] <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Include diagnostic logging
 ```
 Export-AzureRmDataLakeStoreItem [-Account] <String> [-Path] <DataLakeStorePathInstance> [-Destination] <String>
- [-Recurse] [-Resume] [[-PerFileThreadCount] <Int32>] [[-ConcurrentFileCount] <Int32>] [-Force]
- [[-Concurrency] <Int32>] [-DiagnosticLogLevel <LogLevel>] -DiagnosticLogPath <String>
+ [-Recurse] [-Resume] [-Force] [[-Concurrency] <Int32>] [-DiagnosticLogLevel <LogLevel>] -DiagnosticLogPath <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -35,10 +33,10 @@ The **Export-AzureRmDataLakeStoreItem** cmdlet downloads a file from Data Lake S
 
 ### Example 1: Download an item from the Data Lake Store
 ```
-PS C:\>Export-AzureRmDataLakeStoreItem -AccountName "ContosoADL" -Path /myFiles/TestSource.csv -Destination "C:\Test.csv"
+PS C:\>Export-AzureRmDataLakeStoreItem -AccountName "ContosoADL" -Path /myFiles/TestSource.csv -Destination "C:\Test.csv" -Concurrency 4
 ```
 
-This command downloads the file TestSource.csv from the Data Lake Store to C:\Test.csv.
+This command downloads the file TestSource.csv from the Data Lake Store to C:\Test.csv with a concurrency of 4.
 
 ## PARAMETERS
 
@@ -209,7 +207,7 @@ Accept wildcard characters: False
 ```
 
 ### -Resume
-DEPRECATED. This feature will be discontinued.
+Indicates that the file(s) being copied are a continuation of a previous download. This will cause the system to attempt to resume from the last file that was not fully downloaded.
 
 ```yaml
 Type: SwitchParameter

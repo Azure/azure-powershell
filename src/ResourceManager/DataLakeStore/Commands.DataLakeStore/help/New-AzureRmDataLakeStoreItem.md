@@ -15,7 +15,7 @@ Creates a new file or folder in Data Lake Store.
 
 ```
 New-AzureRmDataLakeStoreItem [-Account] <String> [-Path] <DataLakeStorePathInstance> [[-Value] <Object>]
- [[-Encoding] <FileSystemCmdletProviderEncoding>] [-Folder] [-Force] [[-IfFileExists] <FileExists>]
+ [[-Encoding] <FileSystemCmdletProviderEncoding>] [-Folder] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -34,15 +34,6 @@ The first command creates the file NewFile.txt for the specified account.
 
 The second command creates the folder NewFolder at the root folder.
 
-### Example 2: Create a new file with IfFileExists
-```
-PS C:\>New-AzureRmDataLakeStoreItem -AccountName "ContosoADL" -Path "/NewFile.txt" -IfFileExists Overwrite
-PS C:\>New-AzureRmDataLakeStoreItem -AccountName "ContosoADL" -Path "/NewFile.txt" -IfFileExists Fail
-```
-
-The first command creates the file NewFile.txt overwriting the existing one without prompting.
-
-The first command fails to create the file NewFile.txt without prompting.
 ## PARAMETERS
 
 ### -Account
@@ -128,21 +119,6 @@ Aliases:
 
 Required: False
 Position: 4
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -IfFileExists
-If the file or folder exists, it should be overwritten. If Overwrite is passed then item is created without prompt. If fail is passed then it fails without any prompt.
-```yaml
-Type: FileExists
-Parameter Sets: (All)
-Aliases: 
-Accepted values: Overwrite, Fail
-
-Required: False
-Position: 5
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
