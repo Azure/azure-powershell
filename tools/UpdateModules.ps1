@@ -96,7 +96,7 @@ elseif (`$module -eq `$null) `
 if ([string]::IsNullOrEmpty($buildConfig))
 {
     Write-Verbose "Setting build configuration to 'Release'"
-    $buildConfig = "Release"
+    $buildConfig = "Debug"
 }
 
 if ([string]::IsNullOrEmpty($scope))
