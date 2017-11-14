@@ -2,13 +2,58 @@
 .SYNOPSIS
 Tests PowerBI Embedded Capacity lifecycle (Create, Update, Get, List, Delete).
 #>
+function Test-CleanCapacity
+{
+	try
+	{  
+		# Creating capacity
+		$RGlocation = Get-RG-Location
+		$location = Get-Location
+		$resourceGroupName = Get-ResourceGroupName
+		$capacityName = Get-PowerBIEmbeddedCapacityName
+	}
+	finally
+	{
+		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
+		Invoke-HandledCmdlet -Command {Remove-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -ErrorAction SilentlyContinue} -IgnoreFailures
+	}
+}
+
+<#
+.SYNOPSIS
+Tests PowerBI Embedded Capacity lifecycle (Create, Update, Get, List, Delete).
+#>
+function Test-CreateCapacity
+{
+	# Creating capacity
+	$RGlocation = Get-RG-Location
+	$location = Get-Location
+	$resourceGroupName = Get-ResourceGroupName
+	$capacityName = Get-PowerBIEmbeddedCapacityName
+
+	New-AzureRmResourceGroup -Name "TestRG" -Location "West US"
+		
+#	$capacityCreated = New-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -Location $location -Sku 'A1' -Administrator 'aztest0@stabletest.ccsctp.net','aztest1@stabletest.ccsctp.net'
+    
+#	Assert-AreEqual $capacityName $capacityCreated.Name
+#	Assert-AreEqual $location $capacityCreated.Location
+#	Assert-AreEqual "Microsoft.PowerBIDedicated/capacities" $capacityCreated.Type
+#	Assert-AreEqual 2 $capacityCreated.Administrators.Count
+#	Assert-True {$capacityCreated.Id -like "*$resourceGroupName*"}
+}
+
+<#
+.SYNOPSIS
+Tests PowerBI Embedded Capacity lifecycle (Create, Update, Get, List, Delete).
+#>
 function Test-My
 {
 	# Creating capacity
 	$RGlocation = Get-RG-Location
 	$location = Get-Location
-	$resourceGroupName = "onesdk9854"
-	$capacityName = "onesdk1474"
+	$resourceGroupName = "onesdk1511"
+	$capacityName = "onesdk7740"
 
 	[array]$capacityGet = Get-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName
 	$capacityGetItem = $capacityGet[0]
@@ -22,15 +67,12 @@ function Test-My
 	Assert-True {$capacityGetItem.Id -like "*$resourceGroupName*"}
 
 		# Scale up A1 -> A2
-		$capacityUpdated = Get-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName | Update-AzureRmPowerBIEmbeddedCapacity -Administrators "aztest0@stabletest.ccsctp.net", "aztest1@stabletest.ccsctp.net" -PassThru
-		Assert-AreEqual A1 $capacityUpdated.Sku
-
-		$capac = Get-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName
-		Assert-AreEqual "www" $capac.Administrators
+		$capacityUpdated = Update-AzureRmPowerBIEmbeddedCapacity -Name $capacityName -Sku A2 -PassThru
+		Assert-AreEqual A2 $capacityUpdated.Sku
 
 		# Scale down A2 -> A1
-#		$capacityUpdated = Update-AzureRmPowerBIEmbeddedCapacity -Name $capacityName -Sku A1 -PassThru
-#		Assert-AreEqual A1 $capacityUpdated.Sku
+		$capacityUpdated = Update-AzureRmPowerBIEmbeddedCapacity -Name $capacityName -Sku A1 -PassThru
+		Assert-AreEqual A1 $capacityUpdated.Sku
 }
 
 <#

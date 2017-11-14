@@ -26,6 +26,20 @@ namespace Microsoft.Azure.Commands.PowerBIEmbeddedCapacity.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CleanCapacity()
+        {
+            NewInstance.RunPsTest("Test-CleanCapacity");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CreateCapacity()
+        {
+            NewInstance.RunPsTest("Test-CreateCapacity");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMy()
         {
             NewInstance.RunPsTest("Test-My");
