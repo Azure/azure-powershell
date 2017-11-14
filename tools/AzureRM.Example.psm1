@@ -10,3 +10,5 @@ $PSDefaultParameterValues.Clear()
 Set-StrictMode -Version Latest
 
 %IMPORTED-DEPENDENCIES%
+
+./StartupScript/sample.ps1
