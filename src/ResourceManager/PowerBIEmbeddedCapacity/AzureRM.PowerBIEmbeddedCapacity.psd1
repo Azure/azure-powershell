@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.4.6'
+ModuleVersion = '1.0.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -76,7 +76,7 @@ CmdletsToExport = 'Resume-AzureRmPowerBIEmbeddedCapacity',
                'Suspend-AzureRmPowerBIEmbeddedCapacity', 
                'Get-AzureRmPowerBIEmbeddedCapacity', 
                'Remove-AzureRmPowerBIEmbeddedCapacity', 
-               'Set-AzureRmPowerBIEmbeddedCapacity', 
+               'Update-AzureRmPowerBIEmbeddedCapacity', 
                'Test-AzureRmPowerBIEmbeddedCapacity', 
                'New-AzureRmPowerBIEmbeddedCapacity'
 
@@ -84,8 +84,7 @@ CmdletsToExport = 'Resume-AzureRmPowerBIEmbeddedCapacity',
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = 'Resume-AzurePBIECapacity', 'Suspend-AzurePBIECapacity', 'Get-AzurePBIECapacity', 'Remove-AzurePBIECapacity', 
-               'Set-AzurePBIECapacity', 'Test-AzurePBIECapacity', 'New-AzurePBIECapacity'
+AliasesToExport = @()
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
@@ -114,11 +113,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Added a new dataplane commandlet to allow synchronization of databases from read-write instance to read-only instances 
-    - Included help file for the commandlet
-    - Added in-memory tests and a scenario test (only live)
-* Fixed bugs in Add-AzurePBIECapacityAccount commandlet 
-'
+        ReleaseNotes = '* Added a new PowerBI Embedded Capacities comdlets'
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''
