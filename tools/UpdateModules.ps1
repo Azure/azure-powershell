@@ -67,11 +67,8 @@ function Create-ModulePsm1
      $template = $template -replace "%DATE%", [string](Get-Date)
      $template = $template -replace "%IMPORTED-DEPENDENCIES%", $importedModules
 
-     $resourceGroupCompleterCommands = Find-CompleterAttribute -CompleterName "ResourceGroupCompleterAttribute" -ModuleMetadata $ModuleMetadata -ModulePath $ModulePath -isRMModule $isRMModule
-     $template = $template -replace "%RGCCOMMANDS%", $resourceGroupCompleterCommands
-
-     $locationCompleterCommands = Find-CompleterAttribute -CompleterName "LocationCompleterAttribute" -ModuleMetadata $ModuleMetadata -ModulePath $ModulePath -isRMModule $isRMModule
-     $template = $template -replace "%LCCOMMANDS%", $locationCompleterCommands
+     $completerCommands = Find-CompleterAttribute -ModuleMetadata $ModuleMetadata -ModulePath $ModulePath -isRMModule $isRMModule
+     $template = $template -replace "%COMPLETERCOMMANDS%", $completerCommands
 
      Write-Host "Writing psm1 manifest to $templateOutputPath"
      $template | Out-File -FilePath $templateOutputPath -Force
@@ -83,7 +80,6 @@ function Find-CompleterAttribute
 {
     [CmdletBinding()]
     param(
-        [string]$CompleterName,
         [Hashtable]$ModuleMetadata,
         [string]$ModulePath,
         [bool]$IsRMModule
@@ -106,11 +102,12 @@ function Find-CompleterAttribute
                 $currentCmdlet = $_
                 $parameters = $_.GetProperties()
                 $parameters | ForEach-Object {
-                    $completerAttribute = $_.CustomAttributes | Where-Object {$_.AttributeType.Name -eq $CompleterName}
+                    $completerAttribute = $_.CustomAttributes | Where-Object {$_.AttributeType.BaseType.Name -eq "PSCompleterBaseAttribute"}
                     if ($completerAttribute -ne $null) {
                         $attributeTypeName = "System.Management.Automation.CmdletAttribute"
                         $constructedCommands += "@('" + $currentCmdlet.GetCustomAttributes($attributeTypeName).VerbName + "-" + $currentCmdlet.GetCustomAttributes($attributeTypeName).NounName + "', "
                         $constructedCommands += "'" + $_.Name + "', "
+                        $constructedCommands += "'" + $completerAttribute.AttributeType + "', "
                         if ($completerAttribute.ConstructorArguments.Count -eq 0) 
                         {
                             $constructedCommands += "@()"

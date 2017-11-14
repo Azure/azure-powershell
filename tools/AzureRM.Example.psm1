@@ -13,31 +13,17 @@ Set-StrictMode -Version Latest
 
 if ($PSVersionTable.PSVersion.Major -ge 5)
 {
-    $ResourceGroupCommands = %RGCCOMMANDS%
+    $completerCommands = %COMPLETERCOMMANDS%
     
-    $ResourceGroupCommands | ForEach-Object {
+    $completerCommands | ForEach-Object {
         if ($_.Count -ne 0)
         {
+            $completerObject = New-Object $_[2] -ArgumentList $_[3]
             Register-ArgumentCompleter -CommandName $_[0] -ParameterName $_[1] -ScriptBlock {
                 param($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameter)
                 
-                $locations = [Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleterAttribute]::GetResourceGroups()
+                $locations = $completerObject.GetCompleterValues()
                 $locations | Where-Object { $_ -Like "$wordToComplete*" } | ForEach-Object { [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_) }
-            }
-        } 
-    }
-
-    $locationCompleterCommands = %LCCOMMANDS%
-
-    $locationCompleterCommands | ForEach-Object {
-        if ($_.Count -ne 0)
-        {
-            $locationList = $_[2]
-            Register-ArgumentCompleter -CommandName $_[0] -ParameterName $_[1] -ScriptBlock {
-                param($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameter)
-                
-                $locations = [Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters.LocationCompleterAttribute]::FindLocations($locationList)
-                $locations | Where-Object { $_ -Like "`"$wordToComplete*" } | Sort-Object | ForEach-Object { [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_) }
             }
         } 
     }

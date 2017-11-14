@@ -30,10 +30,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
     /// <summary>
     /// This attribute will allow the user to autocomplete the -Location parameter of a cmdlet with valid locations (as determined by the list of ResourceTypes given)
     /// </summary>
-    public class LocationCompleterAttribute : Attribute
+    public class LocationCompleterAttribute : PSCompleterBaseAttribute
     {
         private static IDictionary<int, IDictionary<string, ICollection<string>>> _resourceTypeLocationDictionary = new ConcurrentDictionary<int, IDictionary<string, ICollection<string>>>();
         private static readonly object _lock = new object();
+        private static string[] _resourceTypes;
 
         protected static IDictionary<string, ICollection<string>> ResourceTypeLocationDictionary
         {
@@ -105,6 +106,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
         /// <param name="resourceTypes"></param>
         public LocationCompleterAttribute(params string[] resourceTypes)
         {
+            _resourceTypes = resourceTypes;
+        }
+
+        public override string[] GetCompleterValues()
+        {
+            return FindLocations(_resourceTypes);
         }
 
         public static string[] FindLocations(string[] resourceTypes)
