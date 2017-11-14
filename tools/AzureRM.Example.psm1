@@ -11,4 +11,6 @@ Set-StrictMode -Version Latest
 
 %IMPORTED-DEPENDENCIES%
 
-./StartupScript/sample.ps1
+Get-ChildItem "$PSScriptRoot\StartupScripts" | ForEach-Object {
+    & $_.FullName
+}
