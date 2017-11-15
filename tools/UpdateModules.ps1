@@ -27,7 +27,7 @@ function Create-ModulePsm1
   param(
     [string]$ModulePath,
     [string]$TemplatePath,
-    [bool]$isRMModule
+    [bool]$IsRMModule
   )
 
   PROCESS
@@ -67,7 +67,7 @@ function Create-ModulePsm1
      $template = $template -replace "%DATE%", [string](Get-Date)
      $template = $template -replace "%IMPORTED-DEPENDENCIES%", $importedModules
 
-     $completerCommands = Find-CompleterAttribute -ModuleMetadata $ModuleMetadata -ModulePath $ModulePath -isRMModule $isRMModule
+     $completerCommands = Find-CompleterAttribute -ModuleMetadata $ModuleMetadata -ModulePath $ModulePath -IsRMModule $IsRMModule
      $template = $template -replace "%COMPLETERCOMMANDS%", $completerCommands
 
      Write-Host "Writing psm1 manifest to $templateOutputPath"
@@ -105,29 +105,36 @@ function Find-CompleterAttribute
                     $completerAttribute = $_.CustomAttributes | Where-Object {$_.AttributeType.BaseType.Name -eq "PSCompleterBaseAttribute"}
                     if ($completerAttribute -ne $null) {
                         $attributeTypeName = "System.Management.Automation.CmdletAttribute"
-                        $constructedCommands += "@('" + $currentCmdlet.GetCustomAttributes($attributeTypeName).VerbName + "-" + $currentCmdlet.GetCustomAttributes($attributeTypeName).NounName + "', "
-                        $constructedCommands += "'" + $_.Name + "', "
-                        $constructedCommands += "'" + $completerAttribute.AttributeType + "', "
+                        $constructedCommands += "@{'Command' = '" + $currentCmdlet.GetCustomAttributes($attributeTypeName).VerbName + "-" + $currentCmdlet.GetCustomAttributes($attributeTypeName).NounName + "'; "
+                        $constructedCommands += "'Parameter' = '" + $_.Name + "'; "
+                        $constructedCommands += "'AttributeType' = '" + $completerAttribute.AttributeType + "'; "
                         if ($completerAttribute.ConstructorArguments.Count -eq 0) 
                         {
-                            $constructedCommands += "@()"
+                            $constructedCommands += "'ArgumentList' = @()"
                         }
 
                         else 
                         {
-                            $constructedCommands += "@("
+                            $constructedCommands += "'ArgumentList' = @("
                             $completerAttribute.ConstructorArguments.Value | ForEach-Object {
                                 $constructedCommands += "'" + $_.Value + "',"
                             }
                             $constructedCommands = $constructedCommands -replace ".$",")"
                         }
 
-                        $constructedCommands += "),"
+                        $constructedCommands += "},"
                     }
                 }
             }
-            # Add empty array at the end of list to prevent PowerShell from unboxing size 1 arrays
-            $constructedCommands += "@())"
+
+            if ($constructedCommands.Substring($constructedCommands.Length - 1) -eq ",")
+            {
+                $constructedCommands = $constructedCommands -replace ".$",")"
+            }
+            
+            else {
+                $constructedCommands += ")"
+            }
         }
 
         else 
