@@ -24,6 +24,7 @@ if ($PSVersionTable.PSVersion.Major -ge 5)
             $locations | Where-Object { $_ -Like "$wordToComplete*" } | ForEach-Object { [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_) }
         }
     }
+}
 
 $FilteredCommands = %DEFAULTRGCOMMANDS%
 
