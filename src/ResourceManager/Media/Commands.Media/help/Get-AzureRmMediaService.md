@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Media.dll-Help.xml
+Module Name: AzureRM.Media
 ms.assetid: 9843D191-CBC4-481A-BD36-D7B2D7917BD9
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.media/get-azurermmediaservice
 schema: 2.0.0
 ---
 
@@ -14,12 +15,14 @@ Gets information about a media service.
 
 ### ResourceGroupParameterSet
 ```
-Get-AzureRmMediaService [-ResourceGroupName] <String> [<CommonParameters>]
+Get-AzureRmMediaService [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### AccountNameParameterSet
 ```
-Get-AzureRmMediaService [-ResourceGroupName] <String> [-AccountName] <String> [<CommonParameters>]
+Get-AzureRmMediaService [-ResourceGroupName] <String> [-AccountName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,6 +58,21 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

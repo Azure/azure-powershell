@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.AnalysisServices.dll-Help.xml
-online version: 
+Module Name: AzureRM.AnalysisServices
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.analysisservices/set-azurermanalysisservicesserver
 schema: 2.0.0
 ---
 
@@ -14,15 +15,15 @@ Modifies  an instance of Analysis Services server
 ### Default (Default)
 ```
 Set-AzureRmAnalysisServicesServer [-Name] <String> [[-ResourceGroupName] <String>] [[-Sku] <String>]
- [[-Tag] <Hashtable>] [[-Administrator] <String>] [[-BackupBlobContainerUri] <String>] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [[-Tag] <Hashtable>] [[-Administrator] <String>] [[-BackupBlobContainerUri] <String>] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Disable Backup
+### DisableBackup
 ```
 Set-AzureRmAnalysisServicesServer [-Name] <String> [[-ResourceGroupName] <String>] [[-Sku] <String>]
- [[-Tag] <Hashtable>] [[-Administrator] <String>] [-PassThru] [-DisableBackup] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [[-Tag] <Hashtable>] [[-Administrator] <String>] [-PassThru] [-DisableBackup]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -71,13 +72,28 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DisableBackup
 The switch to disable backup blob container.
 To re-enable the backup blob container, please provide the backup blob container Uri as -BackupBlobContainerUri.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: Disable Backup
+Parameter Sets: DisableBackup
 Aliases: 
 
 Required: True

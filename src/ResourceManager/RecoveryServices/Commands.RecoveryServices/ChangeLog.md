@@ -22,6 +22,8 @@
 * Shouldprocess support in selected cmdlets
 * Bug fixes
     - Bug 11079283:[Livesite] Powershell Sending AuthType = Invalid to AddResourceCertificate call => fixed; always sends AuthType=ACS
+* Add support for online help
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
 
 ## Version 2.8.0
 

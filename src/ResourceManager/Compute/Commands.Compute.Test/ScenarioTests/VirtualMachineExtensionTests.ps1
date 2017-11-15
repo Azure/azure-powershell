@@ -968,9 +968,11 @@ function Test-VirtualMachineAccessExtension
         $extver = '2.0';
         $user2 = "Bar12";
         $password2 = 'FoO@123' + $rgname;
+        $securePassword2 = ConvertTo-SecureString $password2 -AsPlainText -Force;
 
         # Set custom script extension
-        Set-AzureRmVMAccessExtension -ResourceGroupName $rgname -Location $loc -VMName $vmname -Name $extname -TypeHandlerVersion $extver -UserName $user2 -Password $password2;
+        $cred2 = New-Object System.Management.Automation.PSCredential ($user2, $securePassword2);
+        Set-AzureRmVMAccessExtension -ResourceGroupName $rgname -Location $loc -VMName $vmname -Name $extname -TypeHandlerVersion $extver -Credential $cred2
 
         $publisher = 'Microsoft.Compute';
         $exttype = 'VMAccessAgent';

@@ -28,10 +28,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     public class GetAzureApiManagementPolicy : AzureApiManagementCmdletBase
     {
         private const string DefaultFormat = "application/vnd.ms-azure-apim.policy+xml";
-        private const string TenantLevel = "Tenant level";
-        private const string ProductLevel = "Product level";
-        private const string ApiLevel = "API level";
-        private const string OperationLevel = "Operation level";
+        private const string TenantLevel = "GetTenantLevel";
+        private const string ProductLevel = "GetProductLevel";
+        private const string ApiLevel = "GetApiLevel";
+        private const string OperationLevel = "GetOperationLevel";
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,

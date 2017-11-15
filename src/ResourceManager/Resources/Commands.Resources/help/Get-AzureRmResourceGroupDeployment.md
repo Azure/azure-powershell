@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
+Module Name: AzureRM.Resources
 ms.assetid: 20CB842B-F7A9-4052-85D9-0DF9586D5FEA
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/get-azurermresourcegroupdeployment
 schema: 2.0.0
 ---
 
@@ -12,15 +13,16 @@ Gets the deployments in a resource group.
 
 ## SYNTAX
 
-### The deployment name parameter set. (Default)
+### GetByResourceGroupDeploymentName (Default)
 ```
 Get-AzureRmResourceGroupDeployment [-ResourceGroupName] <String> [[-Name] <String>] [-ApiVersion <String>]
- [-Pre] [<CommonParameters>]
+ [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### The deployment Id parameter set.
+### GetByResourceGroupDeploymentId
 ```
-Get-AzureRmResourceGroupDeployment -Id <String> [-ApiVersion <String>] [-Pre] [<CommonParameters>]
+Get-AzureRmResourceGroupDeployment -Id <String> [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -83,12 +85,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Id
 Specifies the ID of the resource group deployment to get.
 
 ```yaml
 Type: String
-Parameter Sets: The deployment Id parameter set.
+Parameter Sets: GetByResourceGroupDeploymentId
 Aliases: DeploymentId, ResourceId
 
 Required: True
@@ -104,7 +121,7 @@ Wildcard characters are not permitted.
 
 ```yaml
 Type: String
-Parameter Sets: The deployment name parameter set.
+Parameter Sets: GetByResourceGroupDeploymentName
 Aliases: DeploymentName
 
 Required: False
@@ -137,7 +154,7 @@ This parameter is required and you can specify only one resource group in each c
 
 ```yaml
 Type: String
-Parameter Sets: The deployment name parameter set.
+Parameter Sets: GetByResourceGroupDeploymentName
 Aliases: 
 
 Required: True

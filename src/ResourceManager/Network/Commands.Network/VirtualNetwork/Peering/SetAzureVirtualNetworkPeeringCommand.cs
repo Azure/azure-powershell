@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             // Map to the sdk object
-            var vnetPeeringModel = Mapper.Map<MNM.VirtualNetworkPeering>(this.VirtualNetworkPeering);
+            var vnetPeeringModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualNetworkPeering>(this.VirtualNetworkPeering);
 
             // Execute the Create VirtualNetwork call
             this.VirtualNetworkPeeringClient.CreateOrUpdate(this.VirtualNetworkPeering.ResourceGroupName, this.VirtualNetworkPeering.VirtualNetworkName, this.VirtualNetworkPeering.Name, vnetPeeringModel);

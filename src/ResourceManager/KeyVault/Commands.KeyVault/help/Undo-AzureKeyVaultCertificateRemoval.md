@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
-online version: https://msdn.microsoft.com/en-us/library/dn868052.aspx
+Module Name: AzureRM.KeyVault
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/undo-azurekeyvaultcertificateremoval
 schema: 2.0.0
 ---
 
@@ -12,8 +13,8 @@ Recovers a deleted certificate in a key vault into an active state.
 ## SYNTAX
 
 ```
-Undo-AzureKeyVaultCertificateRemoval [-VaultName] <String> [-Name] <String> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Undo-AzureKeyVaultCertificateRemoval [-VaultName] <String> [-Name] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,6 +32,21 @@ PS C:\> Undo-AzureKeyVaultCertificateRemoval -VaultName 'MyKeyVault' -Name 'MyCe
 This command will recover the certificate 'MyCertificate' that was previously deleted, into an active and usable state.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 Certificate name.

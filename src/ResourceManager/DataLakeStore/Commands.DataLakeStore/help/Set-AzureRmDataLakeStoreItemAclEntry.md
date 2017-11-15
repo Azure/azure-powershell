@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
 Module Name: AzureRM.DataLakeStore
 ms.assetid: 0671D833-8B3A-4480-A576-92F1A9E8CE92
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datalakestore/set-azurermdatalakestoreitemaclentry
 schema: 2.0.0
 ---
 
@@ -13,14 +13,14 @@ Modifies an entry in the ACL of a file or folder in Data Lake Store.
 
 ## SYNTAX
 
-### Set ACL Entries using ACL object (Default)
+### SetByACLObject (Default)
 ```
 Set-AzureRmDataLakeStoreItemAclEntry [-Account] <String> [-Path] <DataLakeStorePathInstance>
  [-Acl] <DataLakeStoreItemAce[]> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### Set specific ACE
+### SetSpecificACE
 ```
 Set-AzureRmDataLakeStoreItemAclEntry [-Account] <String> [-Path] <DataLakeStorePathInstance>
  [-AceType] <AceType> [[-Id] <Guid>] [-Permissions] <Permission> [-Default] [-PassThru]
@@ -67,7 +67,7 @@ The acceptable values for this parameter are:
 
 ```yaml
 Type: AceType
-Parameter Sets: Set specific ACE
+Parameter Sets: SetSpecificACE
 Aliases: 
 Accepted values: User, Group, Mask, Other
 
@@ -83,7 +83,7 @@ Specifies the ACL object that contains the entries to modify.
 
 ```yaml
 Type: DataLakeStoreItemAce[]
-Parameter Sets: Set ACL Entries using ACL object
+Parameter Sets: SetByACLObject
 Aliases: 
 
 Required: True
@@ -98,7 +98,7 @@ Indicates that this operation modifies the default ACE from the specified ACL.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: Set specific ACE
+Parameter Sets: SetSpecificACE
 Aliases: 
 
 Required: False
@@ -128,7 +128,7 @@ Specifies the object ID of the AzureActive Directory user, group, or service pri
 
 ```yaml
 Type: Guid
-Parameter Sets: Set specific ACE
+Parameter Sets: SetSpecificACE
 Aliases: 
 
 Required: False
@@ -183,7 +183,7 @@ The acceptable values for this parameter are:
 
 ```yaml
 Type: Permission
-Parameter Sets: Set specific ACE
+Parameter Sets: SetSpecificACE
 Aliases: 
 
 Required: True

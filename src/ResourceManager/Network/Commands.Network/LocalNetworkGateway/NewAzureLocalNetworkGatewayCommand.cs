@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             // Map to the sdk object
-            var localnetGatewayModel = Mapper.Map<MNM.LocalNetworkGateway>(localnetGateway);
+            var localnetGatewayModel = NetworkResourceManagerProfile.Mapper.Map<MNM.LocalNetworkGateway>(localnetGateway);
             localnetGatewayModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
             // Execute the Create Local Network Gateway call
