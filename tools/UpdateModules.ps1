@@ -70,7 +70,7 @@ function Create-ModulePsm1
      $completerCommands = Find-CompleterAttribute -ModuleMetadata $ModuleMetadata -ModulePath $ModulePath -IsRMModule $IsRMModule
      $template = $template -replace "%COMPLETERCOMMANDS%", $completerCommands
 
-     $contructedCommands = Find-DefaultResourceGroupCmdlets -AddDefaultParameters $AddDefaultParameters -ModuleMetadata $ModuleMetadata -ModulePath $ModulePath
+     $contructedCommands = Find-DefaultResourceGroupCmdlets -IsRMModule $IsRMModule -ModuleMetadata $ModuleMetadata -ModulePath $ModulePath
      $template = $template -replace "%DEFAULTRGCOMMANDS%", $contructedCommands
 
      Write-Host "Writing psm1 manifest to $templateOutputPath"
@@ -152,13 +152,13 @@ function Find-DefaultResourceGroupCmdlets
 {
     [CmdletBinding()]
     param(
-        [bool]$AddDefaultParameters,
+        [bool]$IsRMModule,
         [Hashtable]$ModuleMetadata,
         [string]$ModulePath
     )
     PROCESS
     {
-        if ($AddDefaultParameters) 
+        if ($IsRMModule) 
         {
         $nestedModules = $ModuleMetadata.NestedModules
         $AllCmdlets = @()
