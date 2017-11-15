@@ -18,8 +18,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
     {
             BATCH_STARTED_GROUP,
             BATCH_COMPLETED_GROUP,
-            APPLICATION_ROLE_CHANGE_PASSWORD_GROUP, 
-            AUDIT_CHANGE_GROUP,
+            APPLICATION_ROLE_CHANGE_PASSWORD_GROUP,
             BACKUP_RESTORE_GROUP,
             DATABASE_LOGOUT_GROUP,
             DATABASE_OBJECT_CHANGE_GROUP, 
