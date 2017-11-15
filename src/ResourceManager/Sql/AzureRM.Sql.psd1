@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '4.0.0'
+ModuleVersion = '4.0.1'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -60,7 +60,8 @@ RequiredAssemblies = '.\Microsoft.Azure.Management.Sql.dll',
                      '.\Microsoft.Data.Edm.dll',
                      '.\Microsoft.Data.OData.dll',
                      '.\Microsoft.Data.Services.Client.dll',
-                     '.\Microsoft.WindowsAzure.Storage.dll'
+                     '.\Microsoft.WindowsAzure.Storage.dll',
+                     '.\System.Spatial.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -228,21 +229,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Adding support for list and cancel the asynchronous updateslo operation on the database
-	- update existing cmdlet Get-AzureRmSqlDatabaseActivity to return DB updateslo operation status.
-	- add new cmdlet Stop-AzureRmSqlDatabaseActivity for cancel the asynchronous updateslo operation on the database.
-* Adding support for Zone Redundancy for databases and elastic pools
-	- Adding ZoneRedundant switch parameter to New-AzureRmSqlDatabase
-	- Adding ZoneRedundant switch parameter to Set-AzureRmSqlDatabase
-	- Adding ZoneRedundant switch parameter to New-AzureRmSqlElasticPool
-	- Adding ZoneRedundant switch parameter to Set-AzureRmSqlElasticPool
-* Adding support for Server DNS Aliases
-	- Adding Get-AzureRmSqlServerDnsAlias cmdlet which gets server dns aliases by server and alias name or a list of server dns aliases for an azure Sql Server.
-	- Adding New-AzureRmSqlServerDnsAlias cmdlet which creates new server dns alias for a given Azure Sql server
-	- Adding Set-AzurermSqlServerDnsAlias cmlet which allows updating a Azure Sql Server to which server dns alias is pointing
-    - Adding Remove-AzureRmSqlServerDnsAlias cmdlet which removes a server dns alias for a Azure Sql Server
-* Add support for online help
-    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser'
+        ReleaseNotes = '* Fixed assembly loading issue that caused some cmdlets to fail when executing'
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''

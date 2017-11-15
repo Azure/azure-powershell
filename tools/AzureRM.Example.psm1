@@ -24,4 +24,15 @@ if ($PSVersionTable.PSVersion.Major -ge 5)
             $locations | Where-Object { $_ -Like "$wordToComplete*" } | ForEach-Object { [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_) }
         }
     }
+
+$FilteredCommands = %DEFAULTRGCOMMANDS%
+
+$FilteredCommands | ForEach-Object {
+	$global:PSDefaultParameterValues.Add($_,
+		{
+			$context = Get-AzureRmContext
+			if (($context -ne $null) -and $context.ExtendedProperties.ContainsKey("Default Resource Group")) {
+				$context.ExtendedProperties["Default Resource Group"]
+			} 
+		})
 }
