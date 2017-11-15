@@ -16,15 +16,12 @@ if ($PSVersionTable.PSVersion.Major -ge 5)
     $completerCommands = %COMPLETERCOMMANDS%
     
     $completerCommands | ForEach-Object {
-        if ($_.Count -ne 0)
-        {
-            $completerObject = New-Object $_[2] -ArgumentList $_[3]
-            Register-ArgumentCompleter -CommandName $_[0] -ParameterName $_[1] -ScriptBlock {
-                param($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameter)
-                
-                $locations = $completerObject.GetCompleterValues()
-                $locations | Where-Object { $_ -Like "$wordToComplete*" } | ForEach-Object { [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_) }
-            }
-        } 
+        $completerObject = New-Object $_.AttributeType -ArgumentList $_.ArgumentList
+        Register-ArgumentCompleter -CommandName $_.Command -ParameterName $_.Parameter -ScriptBlock {
+            param($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameter)
+            
+            $locations = $completerObject.GetCompleterValues()
+            $locations | Where-Object { $_ -Like "$wordToComplete*" } | ForEach-Object { [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_) }
+        }
     }
 }
