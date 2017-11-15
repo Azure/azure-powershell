@@ -10,3 +10,15 @@ $PSDefaultParameterValues.Clear()
 Set-StrictMode -Version Latest
 
 %IMPORTED-DEPENDENCIES%
+
+$FilteredCommands = %COMMANDS%
+
+$FilteredCommands | ForEach-Object {
+	$global:PSDefaultParameterValues.Add($_,
+		{
+			$context = Get-AzureRmContext
+			if (($context -ne $null) -and $context.ExtendedProperties.ContainsKey("Default Resource Group")) {
+				$context.ExtendedProperties["Default Resource Group"]
+			} 
+		})
+}
