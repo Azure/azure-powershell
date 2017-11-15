@@ -1,6 +1,6 @@
 ﻿namespace Microsoft.Azure.Commands.Common.Strategies
 {
-    public interface IResourcePolicy
+    public interface IResourceStrategy
     {
     }
 }

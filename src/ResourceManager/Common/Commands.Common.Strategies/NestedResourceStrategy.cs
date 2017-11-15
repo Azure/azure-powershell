@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Common.Strategies
 {
-    public sealed class NestedResourcePolicy<Model, ParentModel> : IResourcePolicy
+    public sealed class NestedResourceStrategy<Model, ParentModel> : IResourceStrategy
     {
         public Func<string, IEnumerable<string>> GetId { get; }
 
@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 
         public Action<ParentModel, string, Model> Set { get; }
 
-        public NestedResourcePolicy(
+        public NestedResourceStrategy(
             Func<string, IEnumerable<string>> getId,
             Func<ParentModel, string, Model> get,
             Action<ParentModel, string, Model> set)
@@ -22,15 +22,15 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         }
     }
 
-    public static class NestedResourcePolicy
+    public static class NestedResourceStraegy
     {
-        public static NestedResourcePolicy<Model, ParentModel> Create<Model, ParentModel>(
+        public static NestedResourceStrategy<Model, ParentModel> Create<Model, ParentModel>(
             string header,
             Func<ParentModel, string, Model> get,
             Action<ParentModel, string, Model> set)
             where Model : class
             where ParentModel : class
-            => new NestedResourcePolicy<Model, ParentModel>(
+            => new NestedResourceStrategy<Model, ParentModel>(
                 name => new[] { header, name},
                 get,
                 set);

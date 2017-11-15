@@ -7,20 +7,20 @@ namespace Microsoft.Azure.Commands.Common.Strategies
     public static class NestedResourceConfig
     {
         public static NestedResourceConfig<Model, ParentModel> CreateConfig<Model, ParentModel>(
-            this NestedResourcePolicy<Model, ParentModel> policy,
+            this NestedResourceStrategy<Model, ParentModel> strategy,
             IResourceConfig<ParentModel> parent,
             string name,
             Func<Model> create)
             where Model : class
             where ParentModel : class
-            => new NestedResourceConfig<Model, ParentModel>(policy, parent, name, create);
+            => new NestedResourceConfig<Model, ParentModel>(strategy, parent, name, create);
     }
 
     public sealed class NestedResourceConfig<Model, ParentModel> : IResourceConfig<Model>
         where Model : class
         where ParentModel : class
     {
-        public NestedResourcePolicy<Model, ParentModel> Policy { get; }
+        public NestedResourceStrategy<Model, ParentModel> Policy { get; }
 
         public string Name { get; }
 
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         public Func<Model> CreateModel { get; }
 
         public NestedResourceConfig(
-            NestedResourcePolicy<Model, ParentModel> policy,            
+            NestedResourceStrategy<Model, ParentModel> policy,            
             IResourceConfig<ParentModel> parent,
             string name,
             Func<Model> createModel)

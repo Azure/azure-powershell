@@ -5,24 +5,24 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Common.Strategies
 {
-    public sealed class ResourcePolicy<Config> : IResourcePolicy
+    public sealed class ResourceStrategy<Model> : IResourceStrategy
     {
         public Func<string, IEnumerable<string>> GetId { get; }
 
-        public Func<GetAsyncParams<IClient>, Task<Config>> GetAsync { get; }
+        public Func<GetAsyncParams<IClient>, Task<Model>> GetAsync { get; }
 
-        public Func<CreateOrUpdateAsyncParams<IClient, Config>, Task<Config>> CreateOrUpdateAsync { get; }
+        public Func<CreateOrUpdateAsyncParams<IClient, Model>, Task<Model>> CreateOrUpdateAsync { get; }
 
-        public Func<Config, string> GetLocation { get; }
+        public Func<Model, string> GetLocation { get; }
 
-        public Action<Config, string> SetLocation { get; }
+        public Action<Model, string> SetLocation { get; }
 
-        public ResourcePolicy(
+        public ResourceStrategy(
             Func<string, IEnumerable<string>> getId,
-            Func<GetAsyncParams<IClient>, Task<Config>> getAsync,
-            Func<CreateOrUpdateAsyncParams<IClient, Config>, Task<Config>> createOrUpdateAsync,
-            Func<Config, string> getLocation,
-            Action<Config, string> setLocation)
+            Func<GetAsyncParams<IClient>, Task<Model>> getAsync,
+            Func<CreateOrUpdateAsyncParams<IClient, Model>, Task<Model>> createOrUpdateAsync,
+            Func<Model, string> getLocation,
+            Action<Model, string> setLocation)
         {
             GetId = getId;
             GetAsync = getAsync;
@@ -32,19 +32,19 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         }
     }
 
-    public static class ResourcePolicy
+    public static class ResourceStrategy
     {
-        public static ResourcePolicy<Config> Create<Config, Client, Operations>(
+        public static ResourceStrategy<Model> Create<Model, Client, Operations>(
             Func<string, IEnumerable<string>> getId,
             Func<Client, Operations> getOperations,
-            Func<GetAsyncParams<Operations>, Task<Config>> getAsync,
-            Func<CreateOrUpdateAsyncParams<Operations, Config>, Task<Config>> createOrUpdateAsync,
-            Func<Config, string> getLocation,
-            Action<Config, string> setLocation)
+            Func<GetAsyncParams<Operations>, Task<Model>> getAsync,
+            Func<CreateOrUpdateAsyncParams<Operations, Model>, Task<Model>> createOrUpdateAsync,
+            Func<Model, string> getLocation,
+            Action<Model, string> setLocation)
             where Client : class, IDisposable
         {
             Func<IClient, Operations> toOperations = client => getOperations(client.GetClient<Client>());
-            return new ResourcePolicy<Config>(
+            return new ResourceStrategy<Model>(
                 getId,
                 p => getAsync(GetAsyncParams.Create(
                     toOperations(p.Operations), p.ResourceGroupName, p.Name, p.CancellationToken)),
@@ -54,13 +54,13 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                 setLocation);
         }
 
-        public static ResourcePolicy<Config> Create<Config, Client, Operations>(
+        public static ResourceStrategy<Model> Create<Model, Client, Operations>(
             IEnumerable<string> headers,
             Func<Client, Operations> getOperations,
-            Func<GetAsyncParams<Operations>, Task<Config>> getAsync,
-            Func<CreateOrUpdateAsyncParams<Operations, Config>, Task<Config>> createOrUpdateAsync,
-            Func<Config, string> getLocation,
-            Action<Config, string> setLocation)
+            Func<GetAsyncParams<Operations>, Task<Model>> getAsync,
+            Func<CreateOrUpdateAsyncParams<Operations, Model>, Task<Model>> createOrUpdateAsync,
+            Func<Model, string> getLocation,
+            Action<Model, string> setLocation)
             where Client : class, IDisposable
             => Create(
                 name => new[] { "providers" }.Concat(headers).Concat(new[] { name }),

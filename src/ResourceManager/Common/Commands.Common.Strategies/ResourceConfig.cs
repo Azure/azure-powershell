@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
     public sealed class ResourceConfig<Model> : IResourceConfig<Model>
         where Model : class
     {
-        public ResourcePolicy<Model> Policy { get; }
+        public ResourceStrategy<Model> Policy { get; }
 
         public string ResourceGroupName { get; }
 
@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         public IEnumerable<IResourceConfig> Dependencies { get; }
 
         public ResourceConfig(
-            ResourcePolicy<Model> policy,
+            ResourceStrategy<Model> policy,
             string resourceGroupName,
             string name,
             Func<string, Model> createModel,
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
     public static class ResourceConfig
     {
         public static ResourceConfig<Model> CreateConfig<Model>(
-            this ResourcePolicy<Model> policy,
+            this ResourceStrategy<Model> policy,
             string resourceGroupName,
             string name,
             Func<string, Model> createModel = null,
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                 dependencies.EmptyIfNull());
 
         public static ResourceConfig<Model> CreateConfig<Model>(
-            this ResourcePolicy<Model> policy,
+            this ResourceStrategy<Model> policy,
             ResourceConfig<ResourceGroup> resourceGroup,
             string name,
             Func<string, Model> createModel = null,
