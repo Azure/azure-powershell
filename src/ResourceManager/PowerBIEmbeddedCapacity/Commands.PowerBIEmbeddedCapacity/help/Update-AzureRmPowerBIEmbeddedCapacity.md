@@ -1,7 +1,11 @@
 ---
+Download Help Link: None_Azure
 external help file: Microsoft.Azure.Commands.PowerBIEmbeddedCapacity.dll-Help.xml
-online version: 
-schema: 1.0.0
+Help Version: 0.0.1.0
+Locale: en-US
+Module Guid: acace26c-1775-4100-85c0-20c4d71eaa22
+Module Name: AzureRM.PowerBIEmbeddedCapacity
+schema: 2.0.0
 ---
 
 # Update-AzureRmPowerBIEmbeddedCapacity
@@ -11,18 +15,11 @@ Modifies  an instance of PowerBI Embedded Capacity
 
 ## SYNTAX
 
-### Default (Default)
 ```
-Update-AzureRmPowerBIEmbeddedCapacity 
-	[-Name] <String> 
-	[[-ResourceGroupName] <String>] 
-	[[-Sku] <String>]
- 	[[-Tag] <Hashtable>] 
-	[[-Administrator] <String>] 
-	[-PassThru] 
-	[-WhatIf]
- 	[-Confirm] 
-[<CommonParameters>]
+Update-AzureRmPowerBIEmbeddedCapacity [-Name] <String> [[-ResourceGroupName] <String>] [[-Sku] <String>]
+ [[-Tag] <Hashtable>] [[-Administrators] <String[]>] [[-ResourceId] <String>]
+ [[-InputObject] <AzurePowerBIEmbeddedCapacity>] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -49,6 +46,45 @@ Modifies the capacity named testcapacity in resourcegroup testgroup to set the t
 
 ## PARAMETERS
 
+### -Administrators
+A comma separated capacity names to set as administrators on the capacity```yaml
+Type: String[]
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: 4
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+PowerBI Embedded Capacity object.```yaml
+Type: AzurePowerBIEmbeddedCapacity
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 Name of the PowerBI Embedded Capacity
 
@@ -64,10 +100,38 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -PassThru
+Will return the deleted capacity details if the operation completes successfully
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Name of the Azure resource group to which the capacity belongs
 
 ```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+PowerBI Embedded Capacity ResourceID.```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
@@ -87,6 +151,7 @@ Valid values are: 'A1', 'A2', 'A3', 'A4', 'A5', 'A6'.
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: A1, A2, A3, A4, A5, A6
 
 Required: False
 Position: 2
@@ -107,38 +172,6 @@ Required: False
 Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Administrator
-A string representing a comma separated list of users or groups to be set as administrators on the capacity.
-The users or groups need to be specified UPN format e.g.
-user@contoso.com or groups@contoso.com
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 4
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -PassThru
-Will return the deleted capacity details if the operation completes successfully
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

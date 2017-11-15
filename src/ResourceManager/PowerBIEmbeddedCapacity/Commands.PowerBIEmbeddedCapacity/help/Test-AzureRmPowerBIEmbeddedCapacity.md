@@ -1,7 +1,11 @@
 ---
+Download Help Link: None_Azure
 external help file: Microsoft.Azure.Commands.PowerBIEmbeddedCapacity.dll-Help.xml
-online version: 
-schema: 1.0.0
+Help Version: 0.0.1.0
+Locale: en-US
+Module Guid: acace26c-1775-4100-85c0-20c4d71eaa22
+Module Name: AzureRM.PowerBIEmbeddedCapacity
+schema: 2.0.0
 ---
 
 # Test-AzureRmPowerBIEmbeddedCapacity
@@ -12,10 +16,8 @@ Tests the existence of an instance of PowerBI Embedded Capacity
 ## SYNTAX
 
 ```
-Test-AzureRmPowerBIEmbeddedCapacity 
-	[-Name] <String> 
-	[[-ResourceGroupName] <String>] 
-	[<CommonParameters>]
+Test-AzureRmPowerBIEmbeddedCapacity [-Name] <String> [[-ResourceGroupName] <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,6 +34,19 @@ True
 This command will test if there is a capacity named testcapacity in the resourcegroup testRG
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 Name of the PowerBI Embedded Capacity

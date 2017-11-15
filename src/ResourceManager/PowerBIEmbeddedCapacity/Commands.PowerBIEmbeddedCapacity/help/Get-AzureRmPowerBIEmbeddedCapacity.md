@@ -1,7 +1,11 @@
 ---
+Download Help Link: None_Azure
 external help file: Microsoft.Azure.Commands.PowerBIEmbeddedCapacity.dll-Help.xml
-online version: 
-schema: 1.0.0
+Help Version: 0.0.1.0
+Locale: en-US
+Module Guid: acace26c-1775-4100-85c0-20c4d71eaa22
+Module Name: AzureRM.PowerBIEmbeddedCapacity
+schema: 2.0.0
 ---
 
 # Get-AzureRmPowerBIEmbeddedCapacity
@@ -12,11 +16,8 @@ Gets the details of an PowerBI Embedded Capacity.
 ## SYNTAX
 
 ```
-Get-AzureRmPowerBIEmbeddedCapacity [[-ResourceGroupName] <String>] 
-	[<CommonParameters>]
-
-Get-AzureRmPowerBIEmbeddedCapacity [-ResourceGroupName] <String> [-Name] <String> 
-    [<CommonParameters>]
+Get-AzureRmPowerBIEmbeddedCapacity [[-ResourceGroupName] <String>] [[-Name] <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -71,18 +72,16 @@ This command gets the Azure PowerBI Embedded Capacity named testcapacity in the 
 
 ## PARAMETERS
 
-### -ResourceGroupName
-Name of the Azure resource group to which the capacity belongs
-
-```yaml
-Type: String
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.```yaml
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: 
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -100,6 +99,22 @@ Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
+
+### -ResourceGroupName
+Name of the Azure resource group to which the capacity belongs
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 

@@ -1,7 +1,11 @@
 ---
+Download Help Link: None_Azure
 external help file: Microsoft.Azure.Commands.PowerBIEmbeddedCapacity.dll-Help.xml
-online version: 
-schema: 1.0.0
+Help Version: 0.0.1.0
+Locale: en-US
+Module Guid: acace26c-1775-4100-85c0-20c4d71eaa22
+Module Name: AzureRM.PowerBIEmbeddedCapacity
+schema: 2.0.0
 ---
 
 # Remove-AzureRmPowerBIEmbeddedCapacity
@@ -12,13 +16,9 @@ Deletes an instance of PowerBI Embedded Capacity
 ## SYNTAX
 
 ```
-Remove-AzureRmPowerBIEmbeddedCapacity 
-	[-Name] <String> 
-	[[-ResourceGroupName] <String>] 
-	[-PassThru] 
-	[-WhatIf]
- 	[-Confirm] 
-	[<CommonParameters>]
+Remove-AzureRmPowerBIEmbeddedCapacity [-Name] <String> [[-ResourceGroupName] <String>] [[-ResourceId] <String>]
+ [[-InputObject] <AzurePowerBIEmbeddedCapacity>] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,6 +45,32 @@ This command will remove the capacity named testcapacity in the resourcegroup te
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+PowerBI Embedded Capacity object.```yaml
+Type: AzurePowerBIEmbeddedCapacity
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 Name of the PowerBI Embedded Capacity
 
@@ -57,6 +83,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PassThru
+Will return the deleted capacity details if the operation completes successfully
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -75,18 +116,16 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Will return the deleted capacity details if the operation completes successfully
-
-```yaml
-Type: SwitchParameter
+### -ResourceId
+PowerBI Embedded Capacity ResourceID.```yaml
+Type: String
 Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: Named
+Position: 1
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
