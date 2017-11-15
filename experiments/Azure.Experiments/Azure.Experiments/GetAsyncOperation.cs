@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Experiments
                 NestedResourceConfig<Config, ParentConfig> config)
             {
                 var parent = await GetOrAdd(config.Parent);
-                return parent == null ? null : config.Policy.Get(parent);
+                return parent == null ? null : config.Policy.Get(parent, config.Name);
             }
 
             public Visitor(IClient client, CancellationToken cancellationToken)

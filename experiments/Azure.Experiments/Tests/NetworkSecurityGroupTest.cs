@@ -6,13 +6,13 @@ using Xunit;
 
 namespace Microsoft.Azure.Experiments.Tests
 {
-    public class VirtualNetworkTest
+    public class NetworkSecurityGroupTest
     {
         [Fact]
         public async Task CreateAsyncTest()
         {
-            var rg = ResourceGroupPolicy.CreateResourceGroupConfig("vnnew");
-            var vn = rg.CreateVirtualNetworkConfig("vn", "192.168.0.0/16");
+            var rg = ResourceGroupPolicy.CreateResourceGroupConfig("nsgrg");
+            var vn = rg.CreateNetworkSecurityGroupConfig("nsg");
             var client = new Client(Credentials.Get());
             var state = await vn.GetAsync(client, new CancellationToken());
             var location = state.GetLocation(rg);
@@ -22,8 +22,7 @@ namespace Microsoft.Azure.Experiments.Tests
                 client, state, parameters, new CancellationToken());
             var vncc = createState.GetOrNull(vn);
             Assert.Equal("eastus", vncc.Location);
-            Assert.Equal("192.168.0.0/16", vncc.AddressSpace.AddressPrefixes[0]);
-            Assert.Equal("vn", vncc.Name);
+            Assert.Equal("nsg", vncc.Name);
             Assert.Equal(vn.GetId(client.Context.SubscriptionId).IdToString(), vncc.Id);
         }
     }

@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Experiments
                 NestedResourceConfig<Config, ParentConfig> config)
             {
                 var parent = await GetOrAdd(config.Parent);
-                return config.Policy.Get(parent);
+                return config.Policy.Get(parent, config.Name);
             }
 
             public CreateAsyncVisitor(

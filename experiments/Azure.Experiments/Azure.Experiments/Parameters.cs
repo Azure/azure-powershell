@@ -30,7 +30,8 @@ namespace Microsoft.Azure.Experiments
                 where Config : class
                 => GetUntyped(config) as Config;
 
-            public object Visit<Config>(ResourceConfig<Config> config) where Config : class
+            public object Visit<Config>(ResourceConfig<Config> config) 
+                where Config : class
             {
                 foreach (var d in config.Dependencies)
                 {
@@ -47,7 +48,7 @@ namespace Microsoft.Azure.Experiments
                 where ParentConfig : class
             {
                 var result = config.Create();
-                config.Policy.Set(Get(config.Parent), result);
+                config.Policy.Set(Get(config.Parent), config.Name, result);
                 return result;
             }
 

@@ -15,10 +15,10 @@ namespace Microsoft.Azure.Experiments.Network
                 p => p.Operations.CreateOrUpdateAsync(
                     p.ResourceGroupName, p.Name, p.Config, p.CancellationToken));
 
-        public static ResourceConfig<NetworkInterface> CreateNetworkSecurityGroupConfig(
+        public static ResourceConfig<NetworkInterface> CreateNetworkInterfaceConfig(
             this ResourceConfig<ResourceGroup> resourceGroup,
             string name,
-            ResourceConfig<Subnet> subnet,
+            NestedResourceConfig<Subnet, VirtualNetwork> subnet,
             ResourceConfig<PublicIPAddress> publicIPAddress,
             ResourceConfig<NetworkSecurityGroup> networkSecurityGroup)
             => Policy.CreateConfig(
