@@ -1,5 +1,6 @@
 ﻿using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Azure.Management.Network.Models;
 using Microsoft.Azure.Management.ResourceManager.Models;
 
 namespace Microsoft.Azure.Experiments.Compute
@@ -16,7 +17,50 @@ namespace Microsoft.Azure.Experiments.Compute
                     p.ResourceGroupName, p.Name, p.Config, p.CancellationToken));
 
         public static ResourceConfig<VirtualMachine> CreateVirtualMachineConfig(
-            this ResourceConfig<ResourceGroup> resourceGroup, string name)
-            => Policy.CreateConfig(resourceGroup, name);
+            this ResourceConfig<ResourceGroup> resourceGroup,
+            string name,
+            ResourceConfig<NetworkInterface> networkInterface,
+            string adminUsername,
+            string adminPassword)
+            => Policy.CreateConfig(
+                resourceGroup,
+                name, 
+                subscription => new VirtualMachine
+                {
+                    OsProfile = new OSProfile
+                    {
+                        ComputerName = name,
+                        WindowsConfiguration = new WindowsConfiguration
+                        {
+                        },
+                        AdminUsername = adminUsername,
+                        AdminPassword = adminPassword,
+                    },
+                    NetworkProfile = new NetworkProfile
+                    {
+                        NetworkInterfaces = new[]
+                        {
+                            new NetworkInterfaceReference
+                            {
+                                Id = networkInterface.GetId(subscription).IdToString()
+                            }
+                        }
+                    },
+                    HardwareProfile = new HardwareProfile
+                    {
+                        VmSize = "Standard_DS1_v2"
+                    },
+                    StorageProfile = new StorageProfile
+                    {
+                        ImageReference = new ImageReference
+                        {
+                            Publisher = "MicrosoftWindowsServer",
+                            Offer = "WindowsServer",
+                            Sku = "2016-Datacenter",
+                            Version = "latest"
+                        }
+                    },
+                },
+                new[] { networkInterface });
     }
 }

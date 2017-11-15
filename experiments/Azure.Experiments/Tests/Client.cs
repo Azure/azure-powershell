@@ -1,4 +1,5 @@
-﻿using Microsoft.Azure.Management.Network;
+﻿using Microsoft.Azure.Management.Compute;
+using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.ResourceManager;
 using System;
 
@@ -26,6 +27,13 @@ namespace Microsoft.Azure.Experiments.Tests
             else if (typeof(T) == typeof(IResourceManagementClient))
             {
                 return new ResourceManagementClient(Context.Credentials)
+                {
+                    SubscriptionId = Context.SubscriptionId
+                } as T;
+            }
+            else if (typeof(T) == typeof(IComputeManagementClient))
+            {
+                return new ComputeManagementClient(Context.Credentials)
                 {
                     SubscriptionId = Context.SubscriptionId
                 } as T;
