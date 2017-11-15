@@ -48,7 +48,7 @@ Accept wildcard characters: False
 ```
 
 ### -Clean
-DEPRECATED. Will be discontinued in future releases.
+Indicates the user wants to remove all of the contents of the folder, but not the folder itself
 
 ```yaml
 Type: SwitchParameter

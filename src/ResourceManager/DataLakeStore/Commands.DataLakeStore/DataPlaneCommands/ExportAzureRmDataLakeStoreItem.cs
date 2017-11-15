@@ -26,9 +26,9 @@ namespace Microsoft.Azure.Commands.DataLakeStore
     public class ExportAzureDataLakeStoreItem : DataLakeStoreFileSystemCmdletBase
     {
         // define parameter sets.
-        internal const string BaseParameterSetName = "No diagnostic logging";
-        internal const string DiagnosticParameterSetName = "Include diagnostic logging";
-        
+        internal const string BaseParameterSetName = "NoDiagnosticLogging";
+        internal const string DiagnosticParameterSetName = "IncludeDiagnosticLogging";
+
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             HelpMessage = "The DataLakeStore account to execute the filesystem operation in",
             ParameterSetName = BaseParameterSetName)]
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             ParameterSetName = DiagnosticParameterSetName)]
         [ValidateNotNullOrEmpty]
         public SwitchParameter Recurse { get; set; }
-        
+
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, Mandatory = false,
             HelpMessage =
                 "Indicates that the file(s) being copied are a continuation of a previous download. This will cause the system to attempt to resume from the last file that was not fully downloaded.",
@@ -78,21 +78,21 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         [Obsolete]
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 5, Mandatory = false,
-            HelpMessage = "DEPRECATED. Please use Concurrency parameter.",
+            HelpMessage = "Indicates the maximum number of threads to use per file.  Default will be computed as a best effort based on folder and file size",
             ParameterSetName = BaseParameterSetName)]
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 5, Mandatory = false,
-            HelpMessage = "DEPRECATED. Please use Concurrency parameter.",
+            HelpMessage = "Indicates the maximum number of threads to use per file.  Default will be computed as a best effort based on folder and file size",
             ParameterSetName = DiagnosticParameterSetName)]
         public int PerFileThreadCount { get; set; } = -1;
 
         [Obsolete]
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 6, Mandatory = false,
             HelpMessage =
-                "DEPRECATED. Please use Concurrency parameter.",
+                "Indicates the maximum number of files to download in parallel for a folder download.  Default will be computed as a best effort based on folder and file size",
             ParameterSetName = BaseParameterSetName)]
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 6, Mandatory = false,
             HelpMessage =
-                "DEPRECATED. Please use Concurrency parameter.",
+                "Indicates the maximum number of files to download in parallel for a folder download.  Default will be computed as a best effort based on folder and file size",
             ParameterSetName = DiagnosticParameterSetName)]
         public int ConcurrentFileCount { get; set; } = -1;
 
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 Path.TransformedPath,
                 () =>
                 {
-                    
+
                     try
                     {
                         if (ParameterSetName.Equals(DiagnosticParameterSetName) && DiagnosticLogLevel != LogLevel.None)

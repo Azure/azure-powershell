@@ -26,8 +26,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore
     public class ImportAzureDataLakeStoreItem : DataLakeStoreFileSystemCmdletBase
     {
         // define parameter sets.
-        internal const string BaseParameterSetName = "No diagnostic logging";
-        internal const string DiagnosticParameterSetName = "Include diagnostic logging";
+        internal const string BaseParameterSetName = "NoDiagnosticLogging";
+        internal const string DiagnosticParameterSetName = "IncludeDiagnosticLogging";
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             HelpMessage = "The DataLakeStore account to execute the filesystem operation in",
@@ -90,19 +90,19 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         [Obsolete]
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 6, Mandatory = false,
             HelpMessage =
-                "DEPRECATED. Please use Concurrency parameter.",
+                "Indicates the maximum number of threads to use per file.  Default will be computed as a best effort based on folder and file size",
             ParameterSetName = BaseParameterSetName)]
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 6, Mandatory = false,
-            HelpMessage = "DEPRECATED. Please use Concurrency parameter.",
+            HelpMessage = "Indicates the maximum number of threads to use per file.  Default will be computed as a best effort based on folder and file size",
             ParameterSetName = DiagnosticParameterSetName)]
         public int PerFileThreadCount { get; set; } = -1;
 
         [Obsolete]
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 7, Mandatory = false,
-            HelpMessage = "DEPRECATED. Please use Concurrency parameter.",
+            HelpMessage = "Indicates the maximum number of files to upload in parallel for a folder upload.  Default will be computed as a best effort based on folder and file size",
             ParameterSetName = BaseParameterSetName)]
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 7, Mandatory = false,
-            HelpMessage = "DEPRECATED. Please use Concurrency parameter.",
+            HelpMessage = "Indicates the maximum number of files to upload in parallel for a folder upload.  Default will be computed as a best effort based on folder and file size",
             ParameterSetName = DiagnosticParameterSetName)]
         public int ConcurrentFileCount { get; set; } = -1;
 

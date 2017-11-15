@@ -44,19 +44,19 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         [Obsolete]
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false,
             HelpMessage =
-                "DEPRECATED. Will be discontinued in future releases.")]
+                "Indicates the user wants to remove all of the contents of the folder, but not the folder itself")]
         public SwitchParameter Clean { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, Mandatory = false,
             HelpMessage =
                 "Indicates delete should be performed without prompting."
-            )]
+        )]
         public SwitchParameter Force { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 5, Mandatory = false,
             HelpMessage =
                 "Indicates a boolean response should be returned indicating the result of the delete operation."
-            )]
+        )]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             {
                 WriteWarning(Resources.IncorrectCleanWarning);
             }
-            bool success = true ;
+            bool success = true;
             foreach (var path in Paths)
             {
                 DirectoryEntryType testClean;

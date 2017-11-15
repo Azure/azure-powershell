@@ -21,14 +21,14 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeStoreItemContent", SupportsShouldProcess = true, DefaultParameterSetName = BaseParameterSetName), 
-        OutputType(typeof(byte[]), typeof(string))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeStoreItemContent", SupportsShouldProcess = true, DefaultParameterSetName = BaseParameterSetName),
+     OutputType(typeof(byte[]), typeof(string))]
     [Alias("Get-AdlStoreItemContent")]
     public class GetAzureDataLakeStoreContent : DataLakeStoreFileSystemCmdletBase
     {
-        internal const string BaseParameterSetName = "Preview file content";
-        internal const string HeadRowParameterSetName = "Preview file rows from the head of the file";
-        internal const string TailRowParameterSetName = "Preview file rows from the tail of the file";
+        internal const string BaseParameterSetName = "PreviewFileContent";
+        internal const string HeadRowParameterSetName = "PreviewFileRowsFromHead";
+        internal const string TailRowParameterSetName = "PreviewFileRowsFromTail";
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, ParameterSetName = BaseParameterSetName, Mandatory = true,
             HelpMessage = "The DataLakeStore account to execute the filesystem operation in")]
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, ParameterSetName = HeadRowParameterSetName, Mandatory = false,
             HelpMessage =
                 "The number of rows (new line delimited) from the beginning of the file to preview. If no new line is encountered in the first 4mb of data, only that data will be returned."
-            )]
+        )]
         [ValidateRange(1, int.MaxValue)]
         public int Head { get; set; }
 
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, ParameterSetName = BaseParameterSetName, Mandatory = false,
             HelpMessage =
                 "Where in the file to begin reading from. This value is specified in bytes from the beginning of the file."
-            )]
+        )]
         public long Offset { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, ParameterSetName = BaseParameterSetName, Mandatory = false,
@@ -106,9 +106,9 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                         {
                             if (Length <= 0)
                             {
-                                Length = adlReadStream.Length-Offset;
+                                Length = adlReadStream.Length - Offset;
                                 if (Length > 1 * 1024 * 1024 && !Force)
-                                    // If content is greater than 1MB throw an error to the user to let them know they must pass in a length to preview this much content
+                                // If content is greater than 1MB throw an error to the user to let them know they must pass in a length to preview this much content
                                 {
                                     throw new InvalidOperationException(string.Format(Resources.FilePreviewTooLarge, 1 * 1024 * 1024, Length));
                                 }
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                             }
                             if (totalLengthRead < Length)
                             {
-                                Array.Resize(ref byteArray,(int)totalLengthRead);
+                                Array.Resize(ref byteArray, (int)totalLengthRead);
                             }
                             if (UsingByteEncoding(Encoding))
                             {
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                     });
             }
             else if (ParameterSetName.Equals(HeadRowParameterSetName, StringComparison.OrdinalIgnoreCase))
-            {                
+            {
                 var encoding = GetEncoding(Encoding);
                 WriteObject(DataLakeStoreFileSystemClient.GetStreamRows(Path.TransformedPath, Account, Head, encoding), true);
             }
