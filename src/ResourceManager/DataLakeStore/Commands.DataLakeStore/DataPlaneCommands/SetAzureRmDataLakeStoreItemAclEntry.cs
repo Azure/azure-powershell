@@ -23,12 +23,12 @@ using Microsoft.Azure.DataLake.Store.Acl;
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
     [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeStoreItemAclEntry", SupportsShouldProcess = true, DefaultParameterSetName = BaseParameterSetName),
-        OutputType(typeof(bool))]
+     OutputType(typeof(bool))]
     [Alias("Set-AdlStoreItemAclEntry")]
     public class SetAzureDataLakeStoreItemAclEntry : DataLakeStoreFileSystemCmdletBase
     {
-        internal const string BaseParameterSetName = "Set ACL Entries using ACL object";
-        internal const string SpecificAceParameterSetName = "Set specific ACE";
+        internal const string BaseParameterSetName = "SetByACLObject";
+        internal const string SpecificAceParameterSetName = "SetSpecificACE";
 
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = BaseParameterSetName, Position = 0,
             Mandatory = true, HelpMessage = "The DataLakeStore account to execute the filesystem operation in")]
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             Mandatory = false,
             HelpMessage =
                 "The identity of the user or group to set. Optional. If none is passed this will attempt to set an unamed ACE, which is necessary for both mask and other ACEs"
-            )]
+        )]
         [ValidateNotNullOrEmpty]
         public Guid Id { get; set; }
 
@@ -91,8 +91,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         {
             WriteWarning(Resources.IncorrectOutputTypeWarning);
             var aclSpec = ParameterSetName.Equals(BaseParameterSetName)
-                 ? Acl.Select(entry => entry.ParseDataLakeStoreItemAce()).ToList()
-                 : new List<AclEntry>(){new AclEntry((AclType)AceType,Id.ToString(),Default?AclScope.Default:AclScope.Access, (AclAction)Permissions)};
+                ? Acl.Select(entry => entry.ParseDataLakeStoreItemAce()).ToList()
+                : new List<AclEntry>() { new AclEntry((AclType)AceType, Id.ToString(), Default ? AclScope.Default : AclScope.Access, (AclAction)Permissions) };
 
             ConfirmAction(
                 string.Format(Resources.SetDataLakeStoreItemAcl, Path.OriginalPath),
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
                     if (PassThru)
                     {
-                        
+
                         var toReturn = DataLakeStoreFileSystemClient.GetAclStatus(Path.TransformedPath,
                             Account).Entries.Select(entry => new DataLakeStoreItemAce(entry));
                         WriteObject(toReturn);

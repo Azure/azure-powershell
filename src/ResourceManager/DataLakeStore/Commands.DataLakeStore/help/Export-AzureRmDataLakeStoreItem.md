@@ -73,7 +73,7 @@ Accept wildcard characters: False
 ```
 
 ### -ConcurrentFileCount
-DEPRECATED. Please use Concurrency parameter.
+Indicates the maximum number of files to download in parallel for a folder download.  Default will be computed as a best effort based on folder and file size
 
 ```yaml
 Type: Int32
@@ -179,7 +179,7 @@ Accept wildcard characters: False
 ```
 
 ### -PerFileThreadCount
-DEPRECATED. Please use Concurrency parameter.
+Indicates the maximum number of threads to use per file.  Default will be computed as a best effort based on folder and file size
 
 ```yaml
 Type: Int32
