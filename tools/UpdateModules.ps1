@@ -70,6 +70,9 @@ function Create-ModulePsm1
      $completerCommands = Find-CompleterAttribute -ModuleMetadata $ModuleMetadata -ModulePath $ModulePath -IsRMModule $IsRMModule
      $template = $template -replace "%COMPLETERCOMMANDS%", $completerCommands
 
+     $contructedCommands = Find-DefaultResourceGroupCmdlets -AddDefaultParameters $AddDefaultParameters -ModuleMetadata $ModuleMetadata -ModulePath $ModulePath
+     $template = $template -replace "%DEFAULTRGCOMMANDS%", $contructedCommands
+
      Write-Host "Writing psm1 manifest to $templateOutputPath"
      $template | Out-File -FilePath $templateOutputPath -Force
      $file = Get-Item -Path $templateOutputPath
@@ -145,6 +148,79 @@ function Find-CompleterAttribute
         return $constructedCommands
     }
 }
+function Find-DefaultResourceGroupCmdlets
+{
+    [CmdletBinding()]
+    param(
+        [bool]$AddDefaultParameters,
+        [Hashtable]$ModuleMetadata,
+        [string]$ModulePath
+    )
+    PROCESS
+    {
+        if ($AddDefaultParameters) 
+        {
+        $nestedModules = $ModuleMetadata.NestedModules
+        $AllCmdlets = @()
+        $nestedModules | ForEach-Object {
+            $dllPath = Join-Path -Path $ModulePath -ChildPath $_
+            $Assembly = [Reflection.Assembly]::LoadFrom($dllPath)
+            $dllCmdlets = $Assembly.GetTypes() | Where-Object {$_.CustomAttributes.AttributeType.Name -contains "CmdletAttribute"}
+            $AllCmdlets += $dllCmdlets
+        }
+        
+        $FilteredCommands = $AllCmdlets | Where-Object {Test-CmdletRequiredParameter -Cmdlet $_ -Parameter "ResourceGroupName"}
+    
+        if ($FilteredCommands.Length -eq 0) {
+            $contructedCommands = "@()"
+        }
+        else {
+            $contructedCommands = "@("
+            $FilteredCommands | ForEach-Object {
+                $contructedCommands += "'" + $_.GetCustomAttributes("System.Management.Automation.CmdletAttribute").VerbName + "-" + $_.GetCustomAttributes("System.Management.Automation.CmdletAttribute").NounName + ":ResourceGroupName" + "',"
+            }
+            $contructedCommands = $contructedCommands -replace ".$",")"
+        }
+    
+        return $contructedCommands
+        }
+
+        else {
+        return "@()"
+        }
+    }
+}
+
+function Test-CmdletRequiredParameter
+{
+    [CmdletBinding()]
+    param(
+        [Object]$Cmdlet,
+        [string]$Parameter
+    )
+
+    PROCESS
+    {
+        $rgParameter = $Cmdlet.GetProperties() | Where-Object {$_.Name -eq $Parameter}
+        if ($rgParameter -ne $null) {
+            $parameterAttributes = $rgParameter.CustomAttributes | Where-Object {$_.AttributeType.Name -eq "ParameterAttribute"}
+            $isMandatory = $true
+            $parameterAttributes | ForEach-Object {
+                $hasParameterSet = $_.NamedArguments | Where-Object {$_.MemberName -eq "ParameterSetName"}
+                $MandatoryParam = $_.NamedArguments | Where-Object {$_.MemberName -eq "Mandatory"}
+                if (($hasParameterSet -ne $null) -or (!$MandatoryParam.TypedValue.Value)) {
+                    $isMandatory = $false
+                }
+            }
+            if ($isMandatory) {
+                return $true
+            }
+        }
+        
+        return $false
+    }
+}
+
 function Create-MinimumVersionEntry
 {
     [CmdletBinding()]
