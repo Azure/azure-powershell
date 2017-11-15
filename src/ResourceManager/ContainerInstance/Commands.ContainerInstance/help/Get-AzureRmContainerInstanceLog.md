@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ContainerInstance.dll-Help.xml
-Module Name: AzureRM.ContainerInstance
-online version: 
+Module Name: AzureRM
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.containerinstance/get-azurermcontainerinstancelog
 schema: 2.0.0
 ---
 
@@ -12,20 +12,22 @@ Get the logs of a container instance in a container group.
 
 ## SYNTAX
 
-### GetContainerInstanceLogByNames
+### GetContainerInstanceLogByNamesParamSet (Default)
 ```
 Get-AzureRmContainerInstanceLog [-ResourceGroupName] <String> -ContainerGroupName <String> [-Name <String>]
- [-Tail <Int32>]
+ [-Tail <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### GetContainerInstanceLogByPSContainerGroup
+### GetContainerInstanceLogByPSContainerGroupParamSet
 ```
 Get-AzureRmContainerInstanceLog -InputContainerGroup <PSContainerGroup> [-Name <String>] [-Tail <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### GetContainerInstanceLogByResourceId
+### GetContainerInstanceLogByResourceIdParamSet
 ```
 Get-AzureRmContainerInstanceLog -ResourceId <String> [-Name <String>] [-Tail <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -86,10 +88,25 @@ The container group name.
 
 ```yaml
 Type: String
-Parameter Sets: GetContainerInstanceLogByNames
+Parameter Sets: GetContainerInstanceLogByNamesParamSet
 Aliases: 
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -101,7 +118,7 @@ The input container group object.
 
 ```yaml
 Type: PSContainerGroup
-Parameter Sets: GetContainerInstanceLogByPSContainerGroup
+Parameter Sets: GetContainerInstanceLogByPSContainerGroupParamSet
 Aliases: 
 
 Required: True
@@ -132,7 +149,7 @@ The resource group name.
 
 ```yaml
 Type: String
-Parameter Sets: GetContainerInstanceLogByNames
+Parameter Sets: GetContainerInstanceLogByNamesParamSet
 Aliases: 
 
 Required: True
@@ -147,7 +164,7 @@ The resource id.
 
 ```yaml
 Type: String
-Parameter Sets: GetContainerInstanceLogByResourceId
+Parameter Sets: GetContainerInstanceLogByResourceIdParamSet
 Aliases: 
 
 Required: True
@@ -173,15 +190,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup
 
-
 ## OUTPUTS
 
 ### System.String
-
 
 ## NOTES
 

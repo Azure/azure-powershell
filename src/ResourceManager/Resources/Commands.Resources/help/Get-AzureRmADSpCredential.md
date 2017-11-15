@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
+Module Name: AzureRM.Resources
 ms.assetid: 7690143F-5F09-4739-9F66-B2ACDF8305F4
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/get-azurermadspcredential
 schema: 2.0.0
 ---
 
@@ -14,12 +15,13 @@ Retrieves a list of credentials associated with a service principal.
 
 ### ObjectIdParameterSet (Default)
 ```
-Get-AzureRmADSpCredential -ObjectId <String> [<CommonParameters>]
+Get-AzureRmADSpCredential -ObjectId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SPNParameterSet
 ```
-Get-AzureRmADSpCredential -ServicePrincipalName <String> [<CommonParameters>]
+Get-AzureRmADSpCredential -ServicePrincipalName <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,6 +38,21 @@ PS E:\> Get-AzureRmADSpCredential -ServicePrincipalName http://test12345
 Returns a list of credentials associated with the service principal having SPN 'http://test12345'.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ObjectId
 The object id of the service principal to retrieve credentials from.

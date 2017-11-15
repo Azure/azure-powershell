@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.dll-Help.xml
-online version: 
+Module Name: AzureRM.RecoveryServices.SiteRecovery
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.recoveryservices.siterecovery/get-azurermrecoveryservicesasrpolicy
 schema: 2.0.0
 ---
 
@@ -13,17 +14,19 @@ Gets ASR replication policies.
 
 ### Default (Default)
 ```
-Get-AzureRmRecoveryServicesAsrPolicy [<CommonParameters>]
+Get-AzureRmRecoveryServicesAsrPolicy [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Get-AzureRmRecoveryServicesAsrPolicy -Name <String> [<CommonParameters>]
+Get-AzureRmRecoveryServicesAsrPolicy -Name <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByFriendlyName
 ```
-Get-AzureRmRecoveryServicesAsrPolicy -FriendlyName <String> [<CommonParameters>]
+Get-AzureRmRecoveryServicesAsrPolicy -FriendlyName <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,10 +36,38 @@ The **Get-AzureRmRecoveryServicesAsrPolicy** cmdlet gets the list of configured 
 
 ### Example 1
 ```
-PS C:\> $Policy = Get-AzureRmRecoveryServicesAsrPolicy -Name $PolicyName
+PS C:\> $Policy = Get-AzureRmRecoveryServicesAsrPolicy
 ```
 
-Retruns the replication policy with the specified name.
+Retuns the list of replication policies
+
+### Example 2
+```
+PS C:\>  Get-AzureRmRecoveryServicesAsrPolicy -Name abc
+
+FriendlyName                : abc
+Name                        : abc
+ID                          : /Subscriptions/xxxxxxxxxxxx/resourceGroups/xxxxxxxxxxxx/providers/Microsoft.RecoveryServices/vaults/xxxxxxxxxxxx/replicationPolicies/abc
+Type                        : Microsoft.RecoveryServices/vaults/replicationPolicies
+ReplicationProvider         : HyperVReplicaAzure
+ReplicationProviderSettings : Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRHyperVReplicaAzurePolicyDetails
+```
+
+Retuns replication policy with name.
+
+### Example 3
+```
+PS C:\> Get-AzureRmRecoveryServicesAsrPolicy -FriendlyName abc
+
+FriendlyName                : abc
+Name                        : abc
+ID                          : /Subscriptions/xxxxxxxxxxxx/resourceGroups/xxxxxxxxxxxx/providers/Microsoft.RecoveryServices/vaults/xxxxxxxxxxxx/replicationPolicies/abc
+Type                        : Microsoft.RecoveryServices/vaults/replicationPolicies
+ReplicationProvider         : HyperVReplicaAzure
+ReplicationProviderSettings : Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRHyperVReplicaAzurePolicyDetails
+```
+
+Returns the replication policy with the specified friendly name.
 
 ## PARAMETERS
 
@@ -64,6 +95,21 @@ Parameter Sets: ByName
 Aliases: 
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

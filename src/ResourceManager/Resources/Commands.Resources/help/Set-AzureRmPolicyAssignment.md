@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: C3B2C33F-8BD4-4E31-9450-EF6A3A6A5325
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/set-azurermpolicyassignment
 schema: 2.0.0
 ---
 
@@ -13,16 +13,18 @@ Modifies a policy assignment.
 
 ## SYNTAX
 
-### The policy assignment name parameter set. (Default)
+### SetByPolicyAssignmentName (Default)
 ```
 Set-AzureRmPolicyAssignment -Name <String> -Scope <String> [-NotScope <String[]>] [-DisplayName <String>]
- [-ApiVersion <String>] [-Pre] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [<CommonParameters>]
+ [-Description <String>] [-Sku <Hashtable>] [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
+ [-InformationVariable <String>] [<CommonParameters>]
 ```
 
-### The policy assignment Id parameter set.
+### SetByPolicyAssignmentId
 ```
-Set-AzureRmPolicyAssignment -Id <String> [-DisplayName <String>] [-ApiVersion <String>] [-Pre]
+Set-AzureRmPolicyAssignment -Id <String> [-DisplayName <String>] [-Description <String>] [-Sku <Hashtable>]
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
 ```
 
@@ -65,6 +67,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Description
+The description for policy assignment
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -DisplayName
 Specifies a new display name for the policy assignment.
 
@@ -85,7 +117,7 @@ Specifies the fully qualified resource ID for the policy assignment that this cm
 
 ```yaml
 Type: String
-Parameter Sets: The policy assignment Id parameter set.
+Parameter Sets: SetByPolicyAssignmentId
 Aliases: ResourceId
 
 Required: True
@@ -139,7 +171,7 @@ Specifies the name of the policy assignment that this cmdlet modifies.
 
 ```yaml
 Type: String
-Parameter Sets: The policy assignment name parameter set.
+Parameter Sets: SetByPolicyAssignmentName
 Aliases: 
 
 Required: True
@@ -154,7 +186,7 @@ The policy assignment not scopes.
 
 ```yaml
 Type: String[]
-Parameter Sets: The policy assignment name parameter set.
+Parameter Sets: SetByPolicyAssignmentName
 Aliases: 
 
 Required: False
@@ -184,10 +216,25 @@ Specifies the scope at which the policy is applied.
 
 ```yaml
 Type: String
-Parameter Sets: The policy assignment name parameter set.
+Parameter Sets: SetByPolicyAssignmentName
 Aliases: 
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Sku
+A hash table which represents sku properties.
+
+```yaml
+Type: Hashtable
+Parameter Sets: (All)
+Aliases: SkuObject
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

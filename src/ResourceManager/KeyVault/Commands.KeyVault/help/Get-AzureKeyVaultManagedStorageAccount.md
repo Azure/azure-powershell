@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
-online version: https://msdn.microsoft.com/en-us/library/dn868052.aspx
+Module Name: AzureRM.KeyVault
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/get-azurekeyvaultmanagedstorageaccount
 schema: 2.0.0
 ---
 
@@ -13,12 +14,14 @@ Gets Key Vault managed Azure Storage Accounts.
 
 ### ByVaultName (Default)
 ```
-Get-AzureKeyVaultManagedStorageAccount [-VaultName] <String> [<CommonParameters>]
+Get-AzureKeyVaultManagedStorageAccount [-VaultName] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByAccountName
 ```
-Get-AzureKeyVaultManagedStorageAccount [-VaultName] <String> [-AccountName] <String> [<CommonParameters>]
+Get-AzureKeyVaultManagedStorageAccount [-VaultName] <String> [-AccountName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -54,6 +57,21 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

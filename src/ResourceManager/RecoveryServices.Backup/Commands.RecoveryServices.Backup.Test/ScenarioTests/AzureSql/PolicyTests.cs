@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureSql)]
-        public void TestAzureSqlPolicyScenario()
+        public void TestAzureSqlPolicy()
         {
             TestController.NewInstance.RunPsTest(
-                PsBackupProviderTypes.AzureSql, "Test-AzureSqlPolicyScenario");
+                PsBackupProviderTypes.AzureSql, "Test-AzureSqlPolicy");
         }
     }
 }

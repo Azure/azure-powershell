@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.Profile.Utilities;
@@ -97,6 +98,7 @@ namespace Microsoft.Azure.Commands.Profile
 
         [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Position = 11, Mandatory = false, ValueFromPipelineByPropertyName = true,
            HelpMessage = "Resource identifier of Azure Key Vault data service that is the recipient of the requested token.")]
+        [Parameter(ParameterSetName = MetadataParameterSet, Position = 4, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Resource identifier of Azure Key Vault data service that is the recipient of the requested token.")]
         public string AzureKeyVaultServiceEndpointResourceId { get; set; }
 
         [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Position = 12, Mandatory = false, ValueFromPipelineByPropertyName = true,
@@ -144,6 +146,11 @@ namespace Microsoft.Azure.Commands.Profile
             }
         }
 
+        [Parameter(Position = 20, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource identifier of the Azure Batch service that is the recipient of the requested token.")]
+        [Alias("BatchResourceId", "BatchAudience")]
+        public string BatchEndpointResourceId { get; set; }
+
         protected override void BeginProcessing()
         {
             // do not call begin processing there is no context needed for this cmdlet
@@ -169,14 +176,20 @@ namespace Microsoft.Azure.Commands.Profile
                                 env.Value?.GetEndpoint(AzureEnvironment.Endpoint.ResourceManager)?.ToLowerInvariant(),
                                 GeneralUtilities.EnsureTrailingSlash(ARMEndpoint)?.ToLowerInvariant(), StringComparison.CurrentCultureIgnoreCase));
 
-                        var newEnvironment = new AzureEnvironment { Name = this.Name };
+                        var defProfile = GetDefaultProfile();
+                        IAzureEnvironment newEnvironment;
+                        if (!defProfile.TryGetEnvironment(this.Name, out newEnvironment))
+                        {
+                            newEnvironment = new AzureEnvironment { Name = this.Name };
+                        }
+
                         if (publicEnvironment.Key == null)
                         {
                             SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.ResourceManager, ARMEndpoint);
                             try
                             {
                                 EnvHelper = (EnvHelper == null ? new EnvironmentHelper() : EnvHelper);
-                                MetadataResponse metadataEndpoints = EnvHelper.RetrieveMetaDataEndpoints(ResourceManagerEndpoint).Result;
+                                MetadataResponse metadataEndpoints = EnvHelper.RetrieveMetaDataEndpoints(newEnvironment.ResourceManagerUrl).Result;
                                 string domain = EnvHelper.RetrieveDomain(ARMEndpoint);
 
                                 SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.ActiveDirectory,
@@ -254,7 +267,7 @@ namespace Microsoft.Azure.Commands.Profile
 
                                 SetEndpointIfBound(newEnvironment,
                                     AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId,
-                                    nameof(ActiveDirectoryServiceEndpointResourceId), true);
+                                    nameof(ActiveDirectoryServiceEndpointResourceId));
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.Endpoint.Gallery, nameof(GalleryEndpoint));
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.Endpoint.Graph, nameof(GraphEndpoint));
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix,
@@ -277,6 +290,8 @@ namespace Microsoft.Azure.Commands.Profile
                                    nameof(GraphAudience));
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.Endpoint.DataLakeEndpointResourceId,
                                     nameof(DataLakeAudience));
+                                SetEndpointIfBound(newEnvironment, AzureEnvironment.Endpoint.BatchEndpointResourceId,
+                                    nameof(BatchEndpointResourceId));
                                 WriteObject(new PSAzureEnvironment(profileClient.AddOrSetEnvironment(newEnvironment)));
                             }
                         });

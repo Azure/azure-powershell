@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.SiteRecovery.dll-Help.xml
+Module Name: AzureRM
 ms.assetid: 99196F44-F1DB-4219-91C0-3056624ADE5B
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.siterecovery/get-azurermsiterecoveryreplicationprotecteditem
 schema: 2.0.0
 ---
 
@@ -15,24 +16,25 @@ Gets the properties of Azure Site Recovery Protected Items.
 ### ByObject (Default)
 ```
 Get-AzureRmSiteRecoveryReplicationProtectedItem -ProtectionContainer <ASRProtectionContainer>
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByObjectWithName
 ```
 Get-AzureRmSiteRecoveryReplicationProtectedItem -Name <String> -ProtectionContainer <ASRProtectionContainer>
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByObjectWithFriendlyName
 ```
 Get-AzureRmSiteRecoveryReplicationProtectedItem -FriendlyName <String>
- -ProtectionContainer <ASRProtectionContainer> [<CommonParameters>]
+ -ProtectionContainer <ASRProtectionContainer> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByProtectableItemObject
 ```
-Get-AzureRmSiteRecoveryReplicationProtectedItem -ProtectableItem <ASRProtectableItem> [<CommonParameters>]
+Get-AzureRmSiteRecoveryReplicationProtectedItem -ProtectableItem <ASRProtectableItem>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,6 +43,21 @@ The **Get-AzureRmSiteRecoveryReplicationProtectedItem** cmdlet gets the properti
 ## EXAMPLES
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -FriendlyName
 Specifies the friendly name of the Replication Protected Item that this cmdlet gets.
@@ -108,11 +125,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### ASRProtectableItem
-
 Parameter 'ProtectableItem' accepts value of type 'ASRProtectableItem' from the pipeline
 
 ### ASRProtectionContainer
-
 Parameter 'ProtectionContainer' accepts value of type 'ASRProtectionContainer' from the pipeline
 
 ## OUTPUTS

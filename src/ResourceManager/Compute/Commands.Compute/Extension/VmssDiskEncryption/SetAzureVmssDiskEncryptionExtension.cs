@@ -92,7 +92,10 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Type of the volume (OS or Data) to perform encryption operation")]
-        [ValidateSet("OS", "Data", "All")]
+        [ValidateSet(
+            AzureVmssDiskEncryptionExtensionContext.VolumeTypeOS,
+            AzureVmssDiskEncryptionExtensionContext.VolumeTypeData,
+            AzureVmssDiskEncryptionExtensionContext.VolumeTypeAll)]
         public string VolumeType { get; set; }
 
         [Parameter(

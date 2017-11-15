@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
+Module Name: AzureRM.ApiManagement
 ms.assetid: 227EF8A2-E04A-4F6B-B66E-E77F1276A7E4
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/get-azurermapimanagementsubscription
 schema: 2.0.0
 ---
 
@@ -12,26 +13,28 @@ Gets subscriptions.
 
 ## SYNTAX
 
-### Get all subscriptions (Default)
+### GetAllSubscriptions (Default)
 ```
-Get-AzureRmApiManagementSubscription -Context <PsApiManagementContext> [<CommonParameters>]
+Get-AzureRmApiManagementSubscription -Context <PsApiManagementContext>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Get by subsctiption ID
+### GetBySubscriptionId
 ```
 Get-AzureRmApiManagementSubscription -Context <PsApiManagementContext> [-SubscriptionId <String>]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Get by user ID
+### GetByUserId
 ```
-Get-AzureRmApiManagementSubscription -Context <PsApiManagementContext> [-UserId <String>] [<CommonParameters>]
+Get-AzureRmApiManagementSubscription -Context <PsApiManagementContext> [-UserId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Get by product ID
+### GetByProductId
 ```
 Get-AzureRmApiManagementSubscription -Context <PsApiManagementContext> [-ProductId <String>]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,6 +44,7 @@ The **Get-AzureRmApiManagementSubscription** cmdlet gets a specified subscriptio
 
 ### Example 1: Get all subscriptions
 ```
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Get-AzureRmApiManagementSubscription -Context $apimContext
 ```
 
@@ -48,6 +52,7 @@ This command gets all subscriptions.
 
 ### Example 2: Get a subscription with a specified ID
 ```
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Get-AzureRmApiManagementSubscription -Context $apimContext -SubscriptionId "0123456789"
 ```
 
@@ -55,6 +60,7 @@ This command gets a subscription by ID.
 
 ### Example 3: Get all subscriptions for a user
 ```
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Get-AzureRmApiManagementSubscription -Context $apimContext -UserId "777"
 ```
 
@@ -62,6 +68,7 @@ This command gets a user's subscriptions.
 
 ### Example 4: Get all subscriptions for a product
 ```
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Get-AzureRmApiManagementSubscription -Context $apimContext -ProductId "999"
 ```
 
@@ -84,13 +91,28 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+ 
+ ```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ProductId
 Specifies a product identifier.
 If specified, this cmdlet finds all subscriptions by the product identifier.
 
 ```yaml
 Type: String
-Parameter Sets: Get by product ID
+Parameter Sets: GetByProductId
 Aliases: 
 
 Required: False
@@ -106,7 +128,7 @@ If specified, this cmdlet finds subscription by the identifier.
 
 ```yaml
 Type: String
-Parameter Sets: Get by subsctiption ID
+Parameter Sets: GetBySubscriptionId
 Aliases: 
 
 Required: False
@@ -122,7 +144,7 @@ If specified, this cmdlet finds all subscriptions by the user identifier.
 
 ```yaml
 Type: String
-Parameter Sets: Get by user ID
+Parameter Sets: GetByUserId
 Aliases: 
 
 Required: False
@@ -139,7 +161,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementSubscription
+The detail of the subscription in the API Management service.
+
 ### IList<Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementSubscription>
+The list of subscription in API Management service.
 
 ## NOTES
 

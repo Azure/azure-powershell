@@ -40,7 +40,7 @@ The command stores it in the $VM variable.
 
 The second command modifies the caching mode for the data disk named DataDisk01 on the virtual machine in $VM.
 The command passes the result to the Update-AzureRmVM cmdlet, which implements your changes.
-A change to the cashing mode causes the virtual machine to restart.
+A change to the caching mode causes the virtual machine to restart.
 
 ## PARAMETERS
 

@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ApiManagement.dll-Help.xml
+Module Name: AzureRM.ApiManagement
 ms.assetid: DBA7AD5F-CC13-417A-B753-F998942530BB
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/get-azurermapimanagement
 schema: 2.0.0
 ---
 
@@ -12,19 +13,21 @@ Gets a list or a particular API Management Service description.
 
 ## SYNTAX
 
-### All In Subscription (Default)
+### GetBySubscription (Default)
 ```
-Get-AzureRmApiManagement [<CommonParameters>]
-```
-
-### All In Resource Group
-```
-Get-AzureRmApiManagement -ResourceGroupName <String> [<CommonParameters>]
+Get-AzureRmApiManagement [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Specific API Management Service
+### GetByResourceGroup
 ```
-Get-AzureRmApiManagement -ResourceGroupName <String> -Name <String> [<CommonParameters>]
+Get-AzureRmApiManagement -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### GetByResource
+```
+Get-AzureRmApiManagement -ResourceGroupName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,12 +51,27 @@ This command gets all API Management service by name.
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+ 
+ ```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of API Management service.
 
 ```yaml
 Type: String
-Parameter Sets: Specific API Management Service
+Parameter Sets: GetByResource
 Aliases: 
 
 Required: True
@@ -68,7 +86,7 @@ Specifies the name of the resource group under in which this cmdlet gets the API
 
 ```yaml
 Type: String
-Parameter Sets: All In Resource Group, Specific API Management Service
+Parameter Sets: GetByResourceGroup, GetByResource
 Aliases: 
 
 Required: True

@@ -19,6 +19,17 @@
 -->
 ## Current Release
 
+## Version 4.0.1
+* Fixed assembly loading issue that caused some cmdlets to fail when executing
+
+## Version 4.0.0
+* Add support for online help
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
+    
+## Version 3.4.1
+* Deprecating the PurgeDisabled flag from Key, Secret and Certificate attributes, respectively.
+  * The flag is being superseded by the RecoveryLevel attribute.
+
 ## Version 3.4.0
 * New/updated Cmdlets to support soft-delete for KeyVault certificates
   * Get-AzureKeyVaultCertificate

@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.DataFactoryV2.dll-Help.xml
 Module Name: AzureRM.DataFactoryV2
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/get-azurermdatafactoryv2linkedservice
 schema: 2.0.0
 ---
 
@@ -15,13 +15,21 @@ Gets information about linked services in Data Factory.
 ### ByFactoryName (Default)
 ```
 Get-AzureRmDataFactoryV2LinkedService [[-Name] <String>] [-ResourceGroupName] <String>
- [-DataFactoryName] <String>
+ [-DataFactoryName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByFactoryObject
 ```
 Get-AzureRmDataFactoryV2LinkedService [[-Name] <String>] [-DataFactory] <PSDataFactory>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
+
+### ByResourceId
+```
+Get-AzureRmDataFactoryV2LinkedService -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The Get-AzureRmDataFactoryV2LinkedService cmdlet gets information about linked services in Azure Data Factory.
 If you specify the name of a linked service, this cmdlet gets information about that linked service.
@@ -111,12 +119,27 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of the linked service about which to get information.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ByFactoryName, ByFactoryObject
 Aliases: LinkedServiceName
 
 Required: False
@@ -142,22 +165,39 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ResourceId
+The Azure resource ID.
+
+```yaml
+Type: String
+Parameter Sets: ByResourceId
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### System.String
 Microsoft.Azure.Commands.DataFactoryV2.Models.PSDataFactory
-
 
 ## OUTPUTS
 
 ### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.DataFactoryV2.Models.PSLinkedService, Microsoft.Azure.Commands.DataFactoryV2, Version=0.1.9.0, Culture=neutral, PublicKeyToken=null]]
 Microsoft.Azure.Commands.DataFactoryV2.Models.PSLinkedService
 
-
 ## NOTES
 Keywords: azure, azurerm, arm, resource, management, manager, data, factories
 
 ## RELATED LINKS
+
 [Set-AzureRmDataFactoryV2LinkedService]()
 
 [Remove-AzureRmDataFactoryV2LinkedService]()

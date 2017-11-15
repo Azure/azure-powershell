@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermapplicationsecuritygroup
 schema: 2.0.0
 ---
 
@@ -42,7 +42,6 @@ PS C:\> Get-AzureRmApplicationSecurityGroup -ResourceGroupName MyResourceGroup -
 ```
 
 The command above returns the application security group MyApplicationSecurityGroup under the resource group MyResourceGroup.
-
 
 ## PARAMETERS
 

@@ -14,7 +14,43 @@
 
 <#
 .SYNOPSIS
-Nagative test. Get resources from an non-existing empty group.
+Gets all factories in subscription across multiple resource groups.
+#>
+function Test-GetDataFactoriesInSubscription
+{	
+    $dfname1 = Get-DataFactoryName + "df1"
+    $dfname2 = Get-DataFactoryName + "df2"
+    $rgname1 = Get-ResourceGroupName + "rg1"
+    $rgname2 = Get-ResourceGroupName + "rg2"
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $dflocation = Get-ProviderLocation DataFactoryManagement
+    
+    New-AzureRmResourceGroup -Name $rgname1 -Location $rglocation -Force
+    New-AzureRmResourceGroup -Name $rgname2 -Location $rglocation -Force
+
+    try
+    {
+        Set-AzureRmDataFactoryV2 -ResourceGroupName $rgname1 -Name $dfname1 -Location $dflocation -Force
+        Set-AzureRmDataFactoryV2 -ResourceGroupName $rgname2 -Name $dfname2 -Location $dflocation -Force
+        $fetcheFactories = Get-AzureRmDataFactoryV2
+
+        Assert-NotNull $fetcheFactories
+        $foundDf1 = $false
+        $foundDf2 = $false
+        $fetcheFactories|ForEach-Object {If ($_.DataFactoryName -eq $dfname1) {$foundDf1 = $true} Else {If ($_.DataFactoryName -eq $dfname2) {$foundDf2 = $true}}}
+        Assert-True { $foundDf1 }
+        Assert-True { $foundDf2 }
+    }
+    finally
+    {
+        CleanUp $rgname1 $dfname1
+        CleanUp $rgname2 $dfname2
+    }
+}
+
+<#
+.SYNOPSIS
+Negative test. Tries to get a non-existing factory.
 #>
 function Test-GetNonExistingDataFactory
 {	
@@ -24,14 +60,12 @@ function Test-GetNonExistingDataFactory
     
     New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Force
     
-    # Test
     Assert-ThrowsContains { Get-AzureRmDataFactoryV2 -ResourceGroupName $rgname -Name $dfname } "NotFound"   
 }
 
 <#
 .SYNOPSIS
-Create a data factory and then do a Get to compare the result are identical.
-The datafactory will be removed when the test finishes.
+Creates a data factory and then does a Get to verify that both are identical.
 #>
 function Test-CreateDataFactory
 {
@@ -49,16 +83,17 @@ function Test-CreateDataFactory
 
         Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
         Assert-AreEqual $expected.DataFactoryName $actual.DataFactoryName
+        Assert-AreEqual $expected.DataFactoryId $actual.DataFactoryId
     }
     finally
     {
-        Clean-DataFactory $rgname $dfname
+        CleanUp $rgname $dfname
     }
 }
 
 <#
 .SYNOPSIS
-Create a data factory and then delete it with -DataFactory parameter.
+Creates a data factory and then deletes it with -InputObject parameter.
 #>
 function Test-DeleteDataFactoryWithDataFactoryParameter
 {
@@ -75,7 +110,7 @@ function Test-DeleteDataFactoryWithDataFactoryParameter
 
 <#
 .SYNOPSIS
-Test piping support.
+Tests the piping support.
 #>
 function Test-DataFactoryPiping
 {	
@@ -90,6 +125,24 @@ function Test-DataFactoryPiping
 
     Get-AzureRmDataFactoryV2 -ResourceGroupName $rgname | Remove-AzureRmDataFactoryV2 -Force
 
-    # Test the data factory no longer exists
+    # Verify the data factory no longer exists
     Assert-ThrowsContains { Get-AzureRmDataFactoryV2 -ResourceGroupName $rgname -Name $dfname } "NotFound"  
+}
+
+<#
+.SYNOPSIS
+Tests that if the DataFactoryName is specified in Get-, the ResourceGroupName also must be specified.
+#>
+function Test-GetFactoryByNameParameterSet
+{	
+    $dfname = Get-DataFactoryName
+    $rgname = Get-ResourceGroupName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $dflocation = Get-ProviderLocation DataFactoryManagement
+    
+    New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Force
+
+    Set-AzureRmDataFactoryV2 -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
+
+    Assert-ThrowsContains { Get-AzureRmDataFactoryV2 -DataFactoryName $dfname } "ResourceGroupName"
 }

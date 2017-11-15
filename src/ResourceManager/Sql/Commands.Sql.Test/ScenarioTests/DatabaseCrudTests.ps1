@@ -102,10 +102,11 @@ function Test-CreateDatabaseInternal ($location = "westcentralus")
 function Test-CreateDatabaseWithSampleName
 {
 	# Setup
+	$location = "westcentralus"
 	$rg = Create-ResourceGroupForTest
 	try
 	{
-		$server = Create-ServerForTest $rg
+		$server = Create-ServerForTest $rg $location
 
 		# Create with samplename
 		$databaseName = Get-DatabaseName
@@ -121,6 +122,52 @@ function Test-CreateDatabaseWithSampleName
 		Assert-NotNull $db.Tags
 		Assert-AreEqual True $db.Tags.ContainsKey("tag_key")
 		Assert-AreEqual "tag_value" $db.Tags["tag_key"]
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+<#
+	.SYNOPSIS
+	Tests creating a database with zone redundancy.
+#>
+function Test-CreateDatabaseWithZoneRedundancy
+{
+	# Setup
+	$location = "eastus2"
+	$rg = Create-ResourceGroupForTest $location
+	try
+	{
+		$server = Create-ServerForTest $rg $location
+
+		# Create database with no zone redundancy set
+		$databaseName = Get-DatabaseName
+		$db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
+			-DatabaseName $databaseName -Edition Premium
+		Assert-AreEqual $db.DatabaseName $databaseName
+		Assert-NotNull $db.Edition
+		Assert-NotNull $db.ZoneRedundant
+		Assert-AreEqual "false" $db.ZoneRedundant
+
+		# Create database with zone redundancy true
+		$databaseName = Get-DatabaseName
+		$db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
+			-DatabaseName $databaseName -Edition Premium -ZoneRedundant
+		Assert-AreEqual $db.DatabaseName $databaseName
+		Assert-NotNull $db.Edition
+		Assert-NotNull $db.ZoneRedundant
+		Assert-AreEqual "true" $db.ZoneRedundant
+
+		# Create database with zone redundancy false
+		$databaseName = Get-DatabaseName
+		$db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
+			-DatabaseName $databaseName -Edition Premium -ZoneRedundant:$false
+		Assert-AreEqual $db.DatabaseName $databaseName
+		Assert-NotNull $db.Edition
+		Assert-NotNull $db.ZoneRedundant
+		Assert-AreEqual "false" $db.ZoneRedundant
 	}
 	finally
 	{
@@ -200,6 +247,88 @@ function Test-UpdateDatabaseInternal ($location = "westcentralus")
 	}
 }
 
+<#
+	.SYNOPSIS
+	Tests updating a database with zone redundancy
+#>
+function Test-UpdateDatabaseWithZoneRedundant ()
+{
+	# Setup
+	$location = "eastus2" 
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $location
+	
+	$databaseName = Get-DatabaseName
+	$db1 = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
+		-Edition Premium
+	Assert-AreEqual $db1.DatabaseName $databaseName
+	Assert-NotNull $db1.ZoneRedundant
+	Assert-AreEqual "false" $db1.ZoneRedundant
+
+	$databaseName = Get-DatabaseName
+	$db2 = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
+		-Edition Premium -ZoneRedundant
+	Assert-AreEqual $db2.DatabaseName $databaseName
+	Assert-NotNull $db2.ZoneRedundant
+	Assert-AreEqual "true" $db2.ZoneRedundant
+
+	try
+	{
+		# Alter database with zone redundancy to true
+		$sdb1 = Set-AzureRmSqlDatabase -ResourceGroupName $db1.ResourceGroupName -ServerName $db1.ServerName -DatabaseName $db1.DatabaseName `
+			-ZoneRedundant
+		Assert-AreEqual $sdb1.DatabaseName $db1.DatabaseName
+		Assert-NotNull $sdb1.ZoneRedundant
+		Assert-AreEqual "true" $sdb1.ZoneRedundant
+
+		# Alter database with zone redundancy to false
+		$sdb2 = Set-AzureRmSqlDatabase -ResourceGroupName $db2.ResourceGroupName -ServerName $db2.ServerName -DatabaseName $db2.DatabaseName `
+			-ZoneRedundant:$false
+		Assert-AreEqual $sdb2.DatabaseName $db2.DatabaseName
+		Assert-NotNull $sdb2.ZoneRedundant
+		Assert-AreEqual "false" $sdb2.ZoneRedundant
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+<#
+	.SYNOPSIS
+	Tests updating a database with zone redundancy not specified
+#>
+function Test-UpdateDatabaseWithZoneRedundantNotSpecified ()
+{
+	# Setup
+	$location = "eastus2" 
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $location
+	
+	$databaseName = Get-DatabaseName
+	$db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
+		-Edition Premium -ZoneRedundant
+	Assert-AreEqual $db.DatabaseName $databaseName
+	Assert-NotNull $db.ZoneRedundant
+	Assert-AreEqual "true" $db.ZoneRedundant
+
+	try
+	{
+		# Alter database with no zone redundancy set
+		$db1 = Set-AzureRmSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
+			-Tags @{"tag_key"="tag_new_value2"}
+		Assert-AreEqual $db1.DatabaseName $db.DatabaseName
+		Assert-AreEqual True $db1.Tags.ContainsKey("tag_key")
+		Assert-AreEqual "tag_new_value2" $db1.Tags["tag_key"]
+		Assert-NotNull $db1.ZoneRedundant
+		Assert-AreEqual "true" $db1.ZoneRedundant
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
 
 <#
 	.SYNOPSIS
@@ -269,6 +398,43 @@ function Test-GetDatabaseInternal  ($location = "westcentralus")
 	}
 }
 
+<#
+	.SYNOPSIS
+	Tests getting a database with zone redundancy.
+#>
+function Test-GetDatabaseWithZoneRedundancy
+{
+	# Setup
+	$location = "eastus2"
+	$rg = Create-ResourceGroupForTest $location
+	try
+	{
+		$server = Create-ServerForTest $rg $location
+
+		# Create database with no zone redundancy set
+		$databaseName = Get-DatabaseName
+		$db1 = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
+			-DatabaseName $databaseName -Edition Premium -ZoneRedundant
+
+		$gdb1 = Get-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupname -ServerName $server.ServerName -DatabaseName $db1.DatabaseName
+		Assert-AreEqual $gdb1.DatabaseName $db1.DatabaseName
+		Assert-AreEqual "true" $gdb1.ZoneRedundant
+
+		# Create database with zone redundancy true
+		$databaseName = Get-DatabaseName
+		$db2 = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
+			-DatabaseName $databaseName -Edition Premium
+
+		$gdb2 = Get-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupname -ServerName $server.ServerName -DatabaseName $db2.DatabaseName
+		Assert-AreEqual $gdb2.DatabaseName $db2.DatabaseName
+		Assert-AreEqual "false" $gdb2.ZoneRedundant
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
 
 <#
 	.SYNOPSIS
@@ -319,6 +485,64 @@ function Test-RemoveDatabaseInternal  ($location = "westcentralus")
 
         $all = $server | Get-AzureRmSqlDatabase
         Assert-AreEqual $all.Count 1 # 1 because master database is included
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+
+<#
+	.SYNOPSIS
+	Tests listing and cancelling a database operation
+#>
+function Test-CancelDatabaseOperation
+{
+	Test-CancelDatabaseOperationInternal
+}
+
+<#
+	.SYNOPSIS
+	Tests listing and cancelling a database operation
+#>
+function Test-CancelDatabaseOperationInternal ($location = "westcentralus")
+{
+	# Setup
+	$rg = Create-ResourceGroupForTest
+	$server = Create-ServerForTest $rg $location
+
+	$databaseName = Get-DatabaseName
+	$db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
+		-Edition Standard -MaxSizeBytes 250GB -RequestedServiceObjectiveName S0
+	Assert-AreEqual $db.DatabaseName $databaseName
+
+	# Database will be Standard s0 with maxsize: 268435456000 (250GB)
+
+	try
+	{
+		# Alter all properties
+		$db1 = Set-AzureRmSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
+			-Edition Standard -RequestedServiceObjectiveName S1
+		Assert-AreEqual $db1.DatabaseName $db.DatabaseName
+		Assert-AreEqual $db1.Edition Standard
+		Assert-AreEqual $db1.CurrentServiceObjectiveName S1
+
+		# list and cancel a database operation
+		$dbactivity = Get-AzureRmSqlDatabaseActivity -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName
+		Assert-AreEqual $dbactivity.DatabaseName $db.DatabaseName
+		Assert-AreEqual $dbactivity.Operation "UpdateLogicalDatabase"
+
+		$dbactivityId = $dbactivity.OperationId
+		try
+		{
+			$dbactivityCancel = Stop-AzureRmSqlDatabaseActivity -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName -OperationId $dbactivityId
+		}
+		Catch
+		{
+			$ErrorMessage = $_.Exception.Message
+			Assert-AreEqual True $ErrorMessage.Contains("Cannot cancel database management operation '" + $dbactivityId + "' in the current state")
+		}
 	}
 	finally
 	{
