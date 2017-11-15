@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
+Module Name: AzureRM.KeyVault
 ms.assetid: 0729687C-3104-4136-A80D-16BAEBD6B76C
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/get-azurekeyvaultcertificatepolicy
 schema: 2.0.0
 ---
 
@@ -13,7 +14,8 @@ Gets the policy for a certificate in a key vault.
 ## SYNTAX
 
 ```
-Get-AzureKeyVaultCertificatePolicy [-VaultName] <String> [-Name] <String> [<CommonParameters>]
+Get-AzureKeyVaultCertificatePolicy [-VaultName] <String> [-Name] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,6 +47,21 @@ Updated                         : 2/8/2016 11:10:29 PM
 This command gets the certificate policy for TestCert01 certificate in the ContosoKV01 key vault.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 Specifies the name of a certificate.

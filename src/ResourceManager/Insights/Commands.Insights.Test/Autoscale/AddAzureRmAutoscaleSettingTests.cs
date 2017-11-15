@@ -44,8 +44,8 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
 
         public AddAzureRmAutoscaleSettingTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             TestExecutionHelpers.SetUpSessionAndProfile();
-            //ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             insightsAutoscaleOperationsMock = new Mock<IAutoscaleSettingsOperations>();
             insightsManagementClientMock = new Mock<MonitorManagementClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
@@ -70,6 +70,12 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
                 });
 
             insightsManagementClientMock.SetupGet(f => f.AutoscaleSettings).Returns(this.insightsAutoscaleOperationsMock.Object);
+
+            // Setup Confirmation
+            commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>())).Returns(true);
+            commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
+            commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>())).Returns(true);
+            commandRuntimeMock.Setup(f => f.ShouldContinue(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
         }
 
         [Fact]
@@ -84,8 +90,8 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
             // Add-AutoscaleSetting -SettingSpec <AutoscaleSettingResource> -ResourceGroup <String> [-DisableSetting [<SwitchParameter>]] [-AutoscaleProfiles <List[AutoscaleProfile]>] [-Profile <AzureSMProfile>] [<CommonParameters>]
             // Add-AutoscaleSetting -SettingSpec $spec -ResourceGroup $Utilities.ResourceGroup
             // A NOP
-            cmdlet.SettingSpec = spec;
-            cmdlet.ResourceGroup = Utilities.ResourceGroup;
+            cmdlet.InputObject = spec;
+            cmdlet.ResourceGroupName = Utilities.ResourceGroup;
             cmdlet.ExecuteCmdlet();
 
             Assert.Equal(Utilities.ResourceGroup, this.resourceGroup);
@@ -104,14 +110,14 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
 
             // Add-AutoscaleSetting -SettingSpec <AutoscaleSettingResource> -ResourceGroup <String> [-DisableSetting [<SwitchParameter>]] [-AutoscaleProfiles <List[AutoscaleProfile]>] [-Profile <AzureSMProfile>] [<CommonParameters>]
             // Adding a profile
-            cmdlet.AutoscaleProfiles = autoscaleProfile;
+            cmdlet.AutoscaleProfile = autoscaleProfile;
             cmdlet.ExecuteCmdlet();
 
             // Add-AutoscaleSetting -Location <String> -Name <String> -ResourceGroup <String> [-DisableSetting [<SwitchParameter>]] [-AutoscaleProfiles <List[AutoscaleProfile]>] -TargetResourceId <String> [-Profile <AzureSMProfile>] [<CommonParameters>]
-            cmdlet.SettingSpec = null;
+            cmdlet.InputObject = null;
             cmdlet.Name = "SettingName";
             cmdlet.Location = "East US";
-            cmdlet.ResourceGroup = Utilities.ResourceGroup;
+            cmdlet.ResourceGroupName = Utilities.ResourceGroup;
             cmdlet.TargetResourceId = Utilities.ResourceUri;
             cmdlet.ExecuteCmdlet();
 
@@ -126,7 +132,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
                 Webhooks = null
             };
 
-            cmdlet.Notifications = new List<AutoscaleNotification> { notification };
+            cmdlet.Notification = new List<AutoscaleNotification> { notification };
             cmdlet.ExecuteCmdlet();
         }
 

@@ -18,13 +18,28 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 4.0.1
+* Fixed assembly loading issue that caused some cmdlets to fail when executing
+
+## Version 4.0.0
+* Add support for online help
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
+    
+## Version 3.4.1
+
+## Version 3.4.0
+
+## Version 3.3.1
+
+## Version 3.3.0
 * Add NeworkRule support to resource mode storage account cmdlets
     - New-AzureRmStorageAccount
     - Set-AzureRmStorageAccount
-    - Get-AzureStorageAccountNetworkRuleSet
-    - Update-AzureStorageAccountNetworkRuleSet
-    - Add-AzureStorageAccountNetworkRule
-    - Remove-AzureStorageAccountNetworkRule
+    - Get-AzureRmStorageAccountNetworkRuleSet
+    - Update-AzureRmStorageAccountNetworkRuleSet
+    - Add-AzureRmStorageAccountNetworkRule
+    - Remove-AzureRmStorageAccountNetworkRule
 
 ## Version 3.2.1
 

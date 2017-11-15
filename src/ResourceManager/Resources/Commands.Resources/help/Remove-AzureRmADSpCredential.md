@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
+Module Name: AzureRM.Resources
 ms.assetid: 04B1E3A6-6D52-46A3-8241-2CCDB5E71642
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/remove-azurermadspcredential
 schema: 2.0.0
 ---
 
@@ -14,25 +15,26 @@ Removes a credential from a service principal.
 
 ### ObjectIdWithKeyIdParameterSet (Default)
 ```
-Remove-AzureRmADSpCredential -ObjectId <String> -KeyId <Guid> [-Force] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzureRmADSpCredential -ObjectId <String> -KeyId <Guid> [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ObjectIdWithAllParameterSet
 ```
-Remove-AzureRmADSpCredential -ObjectId <String> [-All] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzureRmADSpCredential -ObjectId <String> [-All] [-Force] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SPNWithKeyIdParameterSet
 ```
-Remove-AzureRmADSpCredential -ServicePrincipalName <String> -KeyId <Guid> [-Force] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzureRmADSpCredential -ServicePrincipalName <String> -KeyId <Guid> [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SPNWithAllParameterSet
 ```
-Remove-AzureRmADSpCredential -ServicePrincipalName <String> [-All] [-Force] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzureRmADSpCredential -ServicePrincipalName <String> [-All] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -73,6 +75,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

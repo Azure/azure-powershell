@@ -69,6 +69,7 @@ namespace Microsoft.Azure.Commands.Relay.Commands
 
             //Get Namespace Authorization Rule
             if (ParameterSetName == NamespaceAuthoRuleParameterSet)
+            {
                 if (!string.IsNullOrEmpty(Name))
                 {
                     // Get a Namespace AuthorizationRule
@@ -81,25 +82,29 @@ namespace Microsoft.Azure.Commands.Relay.Commands
                     IEnumerable<AuthorizationRuleAttributes> authRuleList = Client.ListNamespaceAuthorizationRules(ResourceGroupName, Namespace);
                     WriteObject(authRuleList, true);
                 }
+            }
 
 
             // Get WcfRelay authorizationRule
             if (ParameterSetName == WcfRelayAuthoRuleParameterSet)
-                    if (!string.IsNullOrEmpty(Name))
-                    {
-                        // Get a WcfRelay AuthorizationRule
-                        AuthorizationRuleAttributes authRule = Client.GetWcfRelayAuthorizationRules(ResourceGroupName, Namespace, WcfRelay, Name);
-                        WriteObject(authRule);
-                    }
-                    else
-                    {
-                        // Get all WcfRelay AuthorizationRules
-                        IEnumerable<AuthorizationRuleAttributes> authRuleList = Client.ListWcfRelayAuthorizationRules(ResourceGroupName, Namespace, WcfRelay);
-                        WriteObject(authRuleList, true);
-                    }
+            {
+                if (!string.IsNullOrEmpty(Name))
+                {
+                    // Get a WcfRelay AuthorizationRule
+                    AuthorizationRuleAttributes authRule = Client.GetWcfRelayAuthorizationRules(ResourceGroupName, Namespace, WcfRelay, Name);
+                    WriteObject(authRule);
+                }
+                else
+                {
+                    // Get all WcfRelay AuthorizationRules
+                    IEnumerable<AuthorizationRuleAttributes> authRuleList = Client.ListWcfRelayAuthorizationRules(ResourceGroupName, Namespace, WcfRelay);
+                    WriteObject(authRuleList, true);
+                }
+            }
 
             // Get HybridConnection authorizationRule
             if (ParameterSetName == HybridConnectionAuthoRuleParameterSet)
+            {
                 if (!string.IsNullOrEmpty(Name))
                 {
                     // Get a HybridConnection AuthorizationRule
@@ -112,6 +117,7 @@ namespace Microsoft.Azure.Commands.Relay.Commands
                     IEnumerable<AuthorizationRuleAttributes> authRuleList = Client.ListHybridConnectionsAuthorizationRules(ResourceGroupName, Namespace, HybridConnection);
                     WriteObject(authRuleList, true);
                 }
+            }
             
         }
     }

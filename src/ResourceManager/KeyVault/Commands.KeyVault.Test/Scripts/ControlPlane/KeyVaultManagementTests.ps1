@@ -62,7 +62,8 @@ function Get-AllCertPermissions
         "listissuers",
         "managecontacts", 
         "manageissuers", 
-        "setissuers"
+        "setissuers",
+        "recover"
     )
 }
 

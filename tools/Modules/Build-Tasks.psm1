@@ -26,10 +26,10 @@ Function Start-Build
 This cmdlet will help to do either with full build or targeted build for specific scopes.
 
 .PARAMETER BuildScope
-Use Get-BuildScope cmdLet to get list of existing scopes that can be used to build
+Use Get-BuildScopes cmdLet to get list of existing scopes that can be used to build
 #>
     param(
-    [parameter(Mandatory=$false, Position=0, HelpMessage='BuildScope that you would like to use. For list of build scopes, run List-BuildScopes')]
+    [parameter(Mandatory=$false, Position=0, HelpMessage='BuildScope that you would like to use. For list of build scopes, run Get-BuildScopes')]
     [string]$BuildScope
     )    
     

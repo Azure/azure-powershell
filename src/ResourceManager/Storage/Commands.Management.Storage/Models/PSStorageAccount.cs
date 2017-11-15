@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.StatusOfSecondary = storageAccount.StatusOfSecondary;
             this.Tags = storageAccount.Tags;
             this.EnableHttpsTrafficOnly = storageAccount.EnableHttpsTrafficOnly;
-            this.NetworkRule = PSNetworkRuleSet.ParsePSNetworkRule(storageAccount.NetworkAcls);
+            this.NetworkRuleSet = PSNetworkRuleSet.ParsePSNetworkRule(storageAccount.NetworkAcls);
         }
 
         public string ResourceGroupName { get; set; }
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
         public bool? EnableHttpsTrafficOnly { get; set; }
 
-        public PSNetworkRuleSet NetworkRule { get; set; }
+        public PSNetworkRuleSet NetworkRuleSet { get; set; }
 
         public static PSStorageAccount Create(StorageModels.StorageAccount storageAccount, IStorageManagementClient client)
         {

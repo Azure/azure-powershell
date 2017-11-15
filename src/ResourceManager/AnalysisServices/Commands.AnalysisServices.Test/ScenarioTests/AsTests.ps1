@@ -398,3 +398,88 @@ function Test-AnalysisServicesServerRestart
 		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
 	}
 }
+
+
+<#
+.SYNOPSIS
+Tests Analysis Services server Login and synchronize single database.
+In order to run this test successfully, Following environment variables need to be set.
+ASAZURE_TEST_ROLLOUT e.x. value 'aspaaswestusloop1.asazure-int.windows.net'
+ASAZURE_TESTUSER e.x. value 'aztest0@asazure.ccsctp.net'
+ASAZURE_TESTUSER_PWD e.x. value 'samplepwd'
+ASAZURE_TESTDATABASE e.x. value 'adventureworks'
+#>
+function Test-AnalysisServicesServerSynchronizeSingle
+{
+    param
+	(
+		$rolloutEnvironment = $env.ASAZURE_TEST_ROLLOUT
+	)
+	try
+	{
+		# Creating server
+        $location = Get-Location
+        $resourceGroupName = Get-ResourceGroupName
+        $serverName = Get-AnalysisServicesServerName
+        New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+
+        $serverCreated = New-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location -Sku 'S1' -Administrators $env.ASAZURE_TESTUSER
+        Assert-True {$serverCreated.ProvisioningState -like "Succeeded"}
+        Assert-True {$serverCreated.State -like "Succeeded"}
+
+        $asAzureProfile = Login-AzureAsAccount -RolloutEnvironment $rolloutEnvironment
+        Assert-NotNull $asAzureProfile "Login-AzureAsAccount $rolloutEnvironment must not return null"
+
+        $secpasswd = ConvertTo-SecureString $env.ASAZURE_TESTUSER_PWD -AsPlainText -Force
+        $cred = New-Object System.Management.Automation.PSCredential ($env.ASAZURE_TESTUSER, $secpasswd)
+
+		Synchronize-AzureAsInstance -Instance $serverName -Database $env.ASAZURE_TESTDATABASE -PassThru
+		
+		Assert-NotNull $asAzureProfile "Login-AzureAsAccount $rolloutEnvironment must not return null"
+	}
+	finally
+	{
+		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
+		Invoke-HandledCmdlet -Command {Remove-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+	}
+}
+
+<#
+.SYNOPSIS
+Tests Analysis Services server Login with SPN. In order to run this test successfully:
+1. Create one application with password, and create another application with certificate authentication.
+2. Following environment variables need to be set.
+ASAZURE_TEST_ROLLOUT e.x. value 'aspaaswestusloop1.asazure-int.windows.net'
+ASAZURE_TESTAPP1_ID e.x. value 'xxxx-xxxx-xxxx-xxxx' ( must be created before test with password )
+ASAZURE_TESTAPP1_PWD e.x. value 'yyyyyyyyyyyyyyyy' (password for application ASAZURE_TESTAPP_ID1)
+ASAZURE_TESTAPP2_ID e.x. value 'aaaa-aaaa-aaaa-aaaa' ( must be created before test with certificate to authenticate )
+ASAZURE_TESTAPP2_CERT_THUMBPRINT e.x. value 'bbbbbbbbbbbbbbbb' (certificate thumbprint for application ASAZURE_TESTAPP_ID2)
+#>
+function Test-AnalysisServicesServerLoginWithSPN
+{
+    param
+	(
+		$rolloutEnvironment = $env.ASAZURE_TEST_ROLLOUT
+	)
+	try
+	{
+		# login server with ASAZURE_TESTAPP1_ID and ASAZURE_TESTAPP1_PWD
+		$SecurePassword = ConvertTo-SecureString -String $env.ASAZURE_TESTAPP1_PWD -AsPlainText -Force
+		$Credential_SPN = New-Object -TypeName "System.Management.Automation.PSCredential" -ArgumentList $env.ASAZURE_TESTAPP1_ID, $SecurePassword
+		$asAzureProfile = Login-AzureAsAccount -RolloutEnvironment $rolloutEnvironment -ServicePrincipal -Credential $Credential_SPN -TenantId "72f988bf-86f1-41af-91ab-2d7cd011db47"
+		Assert-NotNull $asAzureProfile "Login-AzureAsAccount with Service Principal and password must not return null"
+		$token = [Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureClientSession]::TokenCache.ReadItems()[0]
+		Assert-NotNull $token "Login-AzureAsAccount with Service Principal and password must not return null"
+
+		# login server with ASAZURE_TESTAPP2_ID and ASAZURE_TESTAPP2_CERT_THUMBPRINT
+		$asAzureProfile = Login-AzureAsAccount -RolloutEnvironment $rolloutEnvironment -ServicePrincipal -ApplicationId $env.ASAZURE_TESTAPP1_ID -CertificateThumbprint $env.ASAZURE_TESTAPP2_CERT_THUMBPRINT -TenantId "72f988bf-86f1-41af-91ab-2d7cd011db47"
+		Assert-NotNull $asAzureProfile "Login-AzureAsAccount with Service Principal and certificate thumbprint must not return null"
+		$token = [Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureClientSession]::TokenCache.ReadItems()[0]
+		Assert-NotNull $token "Login-AzureAsAccount with Service Principal and certificate thumbprint must not return null"
+	}
+	finally
+	{
+
+	}
+}

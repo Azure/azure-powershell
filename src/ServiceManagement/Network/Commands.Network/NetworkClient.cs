@@ -40,6 +40,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
     using ComputeModels = Microsoft.WindowsAzure.Management.Compute.Models;
     using PowerShellAppGwModel = ApplicationGateway.Model;
     using Azure.Commands.Common.Authentication.Abstractions;
+    using Storage.Adapters;
 
     public class NetworkClient
     {
@@ -652,9 +653,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
             return client.Gateways.ConnectDisconnectOrTest(vnetName, localNetworkSiteName, connParams);
         }
 
-        public GatewayGetOperationStatusResponse StartDiagnostics(string vnetName, int captureDurationInSeconds, string containerName, AzureStorageContext storageContext)
+        public GatewayGetOperationStatusResponse StartDiagnostics(string vnetName, int captureDurationInSeconds, string containerName, IStorageContext storageContext)
         {
-            StorageCredentials credentials = storageContext.StorageAccount.Credentials;
+            StorageCredentials credentials = storageContext.GetCloudStorageAccount().Credentials;
             string customerStorageKey = credentials.ExportBase64EncodedKey();
             string customerStorageName = credentials.AccountName;
             return StartDiagnostics(vnetName, captureDurationInSeconds, containerName, customerStorageKey, customerStorageName);
@@ -1443,9 +1444,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
             return client.Gateways.UpdateLocalNetworkGateway(gatewayId, parameters);
         }
 
-        public GatewayGetOperationStatusResponse StartDiagnosticsV2(string gatewayId, int captureDurationInSeconds, string containerName, AzureStorageContext storageContext)
+        public GatewayGetOperationStatusResponse StartDiagnosticsV2(string gatewayId, int captureDurationInSeconds, string containerName, IStorageContext storageContext)
         {
-            StorageCredentials credentials = storageContext.StorageAccount.Credentials;
+            StorageCredentials credentials = storageContext.GetCloudStorageAccount().Credentials;
             string customerStorageKey = credentials.ExportBase64EncodedKey();
             string customerStorageName = credentials.AccountName;
             return StartDiagnosticsV2(gatewayId, captureDurationInSeconds, containerName, customerStorageKey, customerStorageName);

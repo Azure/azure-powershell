@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <Configuration>
   <ViewDefinitions>
     <View>
@@ -15,6 +15,9 @@
               </ListItem>
               <ListItem>
                 <PropertyName>Id</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>ResourceGroup</PropertyName>
               </ListItem>
               <ListItem>
                 <PropertyName>Location</PropertyName>

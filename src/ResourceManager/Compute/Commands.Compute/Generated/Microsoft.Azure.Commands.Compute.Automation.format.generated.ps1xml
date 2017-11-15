@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <!--
 // 
 // Copyright (c) Microsoft and contributors.  All rights reserved.
@@ -195,15 +195,19 @@
             <Alignment>Right</Alignment>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Tier</Label>
-            <Alignment>Right</Alignment>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Size</Label>
-            <Alignment>Right</Alignment>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>Locations</Label>
+            <Alignment>Right</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Restriction</Label>
+            <Alignment>Right</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Capability</Label>
+            <Alignment>Right</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Value</Label>
             <Alignment>Right</Alignment>
           </TableColumnHeader>
         </TableHeaders>
@@ -217,13 +221,16 @@
                 <ScriptBlock>$_.Name</ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
-                <ScriptBlock>$_.Tier</ScriptBlock>
-              </TableColumnItem>
-              <TableColumnItem>
-                <ScriptBlock>$_.Size</ScriptBlock>
-              </TableColumnItem>
-              <TableColumnItem>
                 <ScriptBlock>$_.Locations</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.Restrictions[0].ReasonCode</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.Capabilities[0].Name</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.Capabilities[0].Value</ScriptBlock>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -268,6 +275,23 @@
       <Name>Microsoft.Azure.Commands.Compute.Automation.Models.PSRunCommandDocumentBase</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Compute.Automation.Models.PSRunCommandDocumentBase</TypeName>
+      </ViewSelectedBy>
+      <CustomControl>
+        <CustomEntries>
+          <CustomEntry>
+            <CustomItem>
+              <ExpressionBinding>
+                <ScriptBlock>[Microsoft.Azure.Commands.Compute.Automation.ComputeAutomationBaseCmdlet]::FormatObject($_)</ScriptBlock>
+              </ExpressionBinding>
+            </CustomItem>
+          </CustomEntry>
+        </CustomEntries>
+      </CustomControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Compute.Automation.Models.PSRollingUpgradeStatusInfo</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Compute.Automation.Models.PSRollingUpgradeStatusInfo</TypeName>
       </ViewSelectedBy>
       <CustomControl>
         <CustomEntries>
@@ -653,6 +677,23 @@
       <Name>Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineCaptureResult</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineCaptureResult</TypeName>
+      </ViewSelectedBy>
+      <CustomControl>
+        <CustomEntries>
+          <CustomEntry>
+            <CustomItem>
+              <ExpressionBinding>
+                <ScriptBlock>[Microsoft.Azure.Commands.Compute.Automation.ComputeAutomationBaseCmdlet]::FormatObject($_)</ScriptBlock>
+              </ExpressionBinding>
+            </CustomItem>
+          </CustomEntry>
+        </CustomEntries>
+      </CustomControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineInstanceView</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineInstanceView</TypeName>
       </ViewSelectedBy>
       <CustomControl>
         <CustomEntries>

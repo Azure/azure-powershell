@@ -50,6 +50,17 @@ namespace Microsoft.Azure.Commands.Network
         public virtual string Location { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The load balancer Sku name.")]
+        [ValidateNotNullOrEmpty]
+        [ValidateSet(
+            MNM.LoadBalancerSkuName.Basic,
+            MNM.LoadBalancerSkuName.Standard,
+            IgnoreCase = true)]
+        public string Sku { get; set; }
+
+        [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of frontend Ip config")]
@@ -122,6 +133,12 @@ namespace Microsoft.Azure.Commands.Network
             loadBalancer.ResourceGroupName = this.ResourceGroupName;
             loadBalancer.Location = this.Location;
 
+            if (!string.IsNullOrEmpty(this.Sku))
+            {
+                loadBalancer.Sku = new PSLoadBalancerSku();
+                loadBalancer.Sku.Name = this.Sku;
+            }
+
             if (this.FrontendIpConfiguration != null)
             {
                 loadBalancer.FrontendIpConfigurations = this.FrontendIpConfiguration;
@@ -159,7 +176,7 @@ namespace Microsoft.Azure.Commands.Network
             ChildResourceHelper.NormalizeChildResourcesId(loadBalancer, this.NetworkClient.NetworkManagementClient.SubscriptionId);
 
             // Map to the sdk object
-            var lbModel = Mapper.Map<MNM.LoadBalancer>(loadBalancer);
+            var lbModel = NetworkResourceManagerProfile.Mapper.Map<MNM.LoadBalancer>(loadBalancer);
             lbModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
             // Execute the Create VirtualNetwork call

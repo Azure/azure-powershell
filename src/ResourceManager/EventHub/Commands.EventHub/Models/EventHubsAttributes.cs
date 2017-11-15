@@ -18,13 +18,12 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.EventHub.Models
 {
-
     public class EventHubAttributes
     {
         public EventHubAttributes()
         { }
 
-        public EventHubAttributes(EventHubResource ehResource)
+        public EventHubAttributes(Microsoft.Azure.Management.EventHub.Models.Eventhub ehResource)
         {
             if (ehResource != null)
             {
@@ -35,10 +34,12 @@ namespace Microsoft.Azure.Commands.EventHub.Models
                 PartitionIds = ehResource.PartitionIds;
                 Status = ehResource.Status;
                 UpdatedAt = ehResource.UpdatedAt;
+                if (ehResource.CaptureDescription != null)
+                    CaptureDescription = new CaptureDescriptionAttributes(ehResource.CaptureDescription);
+                else
+                    CaptureDescription = null;
             }
         }
-
-        public string Location { get; set; }
 
         public string Name { get; set; }
          
@@ -74,5 +75,10 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         /// The exact time the message has been updated.
         /// </summary>
         public DateTime? UpdatedAt { get; set; }
+
+        /// <summary>
+        /// Gets or sets properties of capture description
+        /// </summary>
+        public CaptureDescriptionAttributes CaptureDescription { get; set; }
     }
 }

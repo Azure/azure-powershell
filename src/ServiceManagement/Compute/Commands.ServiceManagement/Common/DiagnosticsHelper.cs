@@ -436,7 +436,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Common
         /// 1. The one get from StorageContext parameter
         /// 2. The one parsed from the diagnostics configuration file
         /// </summary>
-        public static string InitializeStorageAccountName(AzureStorageContext storageContext = null, string configurationPath = null)
+        public static string InitializeStorageAccountName(IStorageContext storageContext = null, string configurationPath = null)
         {
             string storageAccountName = null;
             var configFileType = GetConfigFileType(configurationPath);
@@ -500,7 +500,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Common
         /// 4. The one get from current Azure Environment
         /// </summary>
         public static string InitializeStorageAccountEndpoint(string storageAccountName, string storageAccountKey, IStorageManagementClient storageClient,
-            AzureStorageContext storageContext = null, string configurationPath = null, IAzureContext defaultContext = null)
+            IStorageContext storageContext = null, string configurationPath = null, IAzureContext defaultContext = null)
         {
             string storageAccountEndpoint = null;
             StorageAccount storageAccount = null;
@@ -559,7 +559,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Common
             return new AzureStorageContext(cloudStorageAccount);
         }
 
-        private static string GetEndpointFromStorageContext(AzureStorageContext context)
+        private static string GetEndpointFromStorageContext(IStorageContext context)
         {
             var scheme = context.BlobEndPoint.StartsWith("https://", StringComparison.OrdinalIgnoreCase) ? "https://" : "http://";
             return scheme + context.EndPointSuffix;

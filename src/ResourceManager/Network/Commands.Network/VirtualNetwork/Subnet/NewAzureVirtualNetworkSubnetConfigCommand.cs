@@ -60,16 +60,17 @@ namespace Microsoft.Azure.Commands.Network
                 subnet.RouteTable.Id = this.RouteTableId;
             }
 
-            if (this.PrivateAccessService != null)
+            if (this.ServiceEndpoint != null)
             {
-                subnet.PrivateAccessServices = new List<PSPrivateAccessService>();
-                foreach (var item in this.PrivateAccessService)
+                subnet.ServiceEndpoints = new List<PSServiceEndpoint>();
+                foreach (var item in this.ServiceEndpoint)
                 {
-                    var service = new PSPrivateAccessService();
+                    var service = new PSServiceEndpoint();
                     service.Service = item;
-                    subnet.PrivateAccessServices.Add(service);
+                    subnet.ServiceEndpoints.Add(service);
                 }
             }
+
 
             WriteObject(subnet);
         }

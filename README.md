@@ -8,6 +8,17 @@ This repository contains a set of PowerShell cmdlets for developers and administ
 * For comprehensive documentation on the developer cmdlets see the [overview of Azure PowerShell](https://aka.ms/azpsdocs).
 * For suggesting improvements, join our improvement discussion ([Issue #3692](https://github.com/Azure/azure-powershell/issues/3692)).
 
+## Modules
+
+Below is a table containing the various Azure PowerShell rollup modules found in this repository. For a full list of modules found in this repository, please see the [Azure PowerShell Modules](documentation/azure-powershell-modules.md) page.
+
+| Description                                                     | Module Name       | PowerShell Gallery Link |
+| --------------------------------------------------------------- | ----------------- | ----------------------- |
+| Rollup Module for ARM Cmdlets                                   | `AzureRM`         | [![AzureRM](https://img.shields.io/powershellgallery/v/AzureRM.svg?style=flat-square&label=AzureRM)](https://www.powershellgallery.com/packages/AzureRM/) |
+| Rollup Module for .NET Core Cmdlets                             | `AzureRM.Netcore` | [![AzureRM.Netcore](https://img.shields.io/powershellgallery/v/AzureRM.Netcore.svg?style=flat-square&label=AzureRM.Netcore)](https://www.powershellgallery.com/packages/AzureRM.Netcore/) |
+| Rollup Module for Administrative Modules in Azure Stack         | `AzureStack`      | [![AzureStack](https://img.shields.io/powershellgallery/v/AzureStack.svg?style=flat-square&label=AzureStack)](https://www.powershellgallery.com/packages/AzureStack/) |
+| Rolledup Module for Service Management Cmdlets                  | `Azure`           | [![Azure](https://img.shields.io/powershellgallery/v/Azure.svg?style=flat-square&label=Azure)](https://www.powershellgallery.com/packages/Azure/) |
+
 ## Features
 
 * Account management
@@ -82,9 +93,9 @@ For detail descriptions and examples of the cmdlets, type
 ## Installation
 
 ### PowerShell Gallery
-1. Install [Windows Management Framework 5 with PowerShellGet cmdlets](https://msdn.microsoft.com/en-us/powershell/gallery/psgallery/psgallery_gettingstarted)
+1. Install [Windows Management Framework 5 with PowerShellGet cmdlets](https://msdn.microsoft.com/en-us/powershell/gallery/psgallery/psgallery_gettingstarted) for Windows 7 SP1, 8.1, Server 2008 SP1, Server 2012 and Server 2012 R2.
 2. In an elevated PowerShell session, run  ```Install-Module AzureRM```
-3. To install RDFE cmdlets, run ```Install-Module Azure```
+3. To install legacy RDFE cmdlets, run ```Install-Module Azure```
 
 ### Microsoft Web Platform Installer
 

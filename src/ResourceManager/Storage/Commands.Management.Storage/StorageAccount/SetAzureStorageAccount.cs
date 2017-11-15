@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [Parameter(HelpMessage = "Storage Account NetworkRule",
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
-        public PSNetworkRuleSet NetworkRule
+        public PSNetworkRuleSet NetworkRuleSet
         {
             get; set;
         }
@@ -241,9 +241,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         }
                         updateParameters.Encryption = ParseEncryption(EnableEncryptionService, DisableEncryptionService, StorageEncryption, keyvaultEncryption, KeyName, KeyVersion, KeyVaultUri);
                     }
-                    if (NetworkRule != null)
+                    if (NetworkRuleSet != null)
                     {
-                        updateParameters.NetworkAcls = PSNetworkRuleSet.ParseStorageNetworkRule(NetworkRule);
+                        updateParameters.NetworkAcls = PSNetworkRuleSet.ParseStorageNetworkRule(NetworkRuleSet);
                     }
 
                     var updatedAccountResponse = this.StorageClient.StorageAccounts.Update(

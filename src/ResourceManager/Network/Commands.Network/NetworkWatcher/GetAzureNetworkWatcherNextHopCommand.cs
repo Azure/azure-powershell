@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.Network
                 nextHop = this.NetworkWatcherClient.GetNextHop(this.ResourceGroupName, this.NetworkWatcherName, parameters);
             }
 
-            PSNextHopResult psNextHop = Mapper.Map<PSNextHopResult>(nextHop);
+            PSNextHopResult psNextHop = NetworkResourceManagerProfile.Mapper.Map<PSNextHopResult>(nextHop);
 
             WriteObject(psNextHop);
         }

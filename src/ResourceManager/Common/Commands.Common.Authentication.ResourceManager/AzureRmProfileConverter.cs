@@ -24,6 +24,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
     public class AzureRmProfileConverter : JsonConverter
     {
+        bool _serializeCache;
+        public AzureRmProfileConverter(bool serializeCache = true) 
+        {
+            _serializeCache = serializeCache;
+        }
+
         public override bool CanWrite => true;
         public override bool CanRead => true;
         public override bool CanConvert(Type objectType)
@@ -70,7 +76,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             {
                 var tempResult = serializer.Deserialize<CacheBuffer>(reader);
                 var cache = AzureSession.Instance.TokenCache;
-                if (tempResult != null && tempResult.CacheData != null && tempResult.CacheData.Length > 0)
+                if (_serializeCache && tempResult != null && tempResult.CacheData != null && tempResult.CacheData.Length > 0)
                 {
                     cache.CacheData = tempResult.CacheData;
                 }
@@ -108,7 +114,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             IAzureTokenCache cache = value as IAzureTokenCache;
             if (cache != null)
             {
-                value = new CacheBuffer { CacheData = cache.CacheData };
+                if (_serializeCache)
+                {
+                    value = new CacheBuffer { CacheData = cache.CacheData };
+                }
+                else
+                {
+                    value = new CacheBuffer();
+                }
             }
 
             serializer.Serialize(writer, value);

@@ -22,6 +22,7 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using System.IO;
+using Newtonsoft.Json;
 
 namespace Common.Authentication.Test
 {
@@ -41,6 +42,10 @@ namespace Common.Authentication.Test
             try
             {
                 var store = new MemoryDataStore();
+                var path = Path.Combine(AzureSession.Instance.ARMProfileDirectory, ContextAutosaveSettings.AutoSaveSettingsFile);
+                var settings = new ContextAutosaveSettings {Mode=ContextSaveMode.CurrentUser };
+                var content = JsonConvert.SerializeObject(settings);
+                store.VirtualStore[path] = content;
                 AzureSessionInitializer.CreateOrReplaceSession(store);
                 var session = AzureSession.Instance;
                 var tokenCacheFile = Path.Combine(session.ProfileDirectory, session.TokenCacheFile);

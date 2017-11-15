@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
+Module Name: AzureRM.DataLakeStore
 ms.assetid: 15DFF66F-3D78-422B-BA40-71058DE66BA2
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datalakestore/get-azurermdatalakestoreitemcontent
 schema: 2.0.0
 ---
 
@@ -12,23 +13,25 @@ Gets the contents of a file in Data Lake Store.
 
 ## SYNTAX
 
-### Preview file content (Default)
+### PreviewFileContent (Default)
 ```
 Get-AzureRmDataLakeStoreItemContent [-Account] <String> [-Path] <DataLakeStorePathInstance> [[-Offset] <Int64>]
- [[-Length] <Int64>] [[-Encoding] <FileSystemCmdletProviderEncoding>] [-Force] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [[-Length] <Int64>] [[-Encoding] <FileSystemCmdletProviderEncoding>] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Preview file rows from the head of the file
+### PreviewFileRowsFromHead
 ```
 Get-AzureRmDataLakeStoreItemContent [-Account] <String> [-Path] <DataLakeStorePathInstance> [[-Head] <Int32>]
- [[-Encoding] <FileSystemCmdletProviderEncoding>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-Encoding] <FileSystemCmdletProviderEncoding>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
-### Preview file rows from the tail of the file
+### PreviewFileRowsFromTail
 ```
 Get-AzureRmDataLakeStoreItemContent [-Account] <String> [-Path] <DataLakeStorePathInstance> [[-Tail] <Int32>]
- [[-Encoding] <FileSystemCmdletProviderEncoding>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-Encoding] <FileSystemCmdletProviderEncoding>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -67,6 +70,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Encoding
 Specifies the encoding for the item to create.
 The acceptable values for this parameter are:
@@ -101,7 +119,7 @@ Forces the command to run without asking for user confirmation.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: Preview file content
+Parameter Sets: PreviewFileContent
 Aliases: 
 
 Required: False
@@ -112,9 +130,11 @@ Accept wildcard characters: False
 ```
 
 ### -Head
-The number of rows (new line delimited) from the beginning of the file to preview. If no new line is encountered in the first 4mb of data, only that data will be returned.```yaml
+The number of rows (new line delimited) from the beginning of the file to preview. If no new line is encountered in the first 4mb of data, only that data will be returned.
+
+```yaml
 Type: Int32
-Parameter Sets: Preview file rows from the head of the file
+Parameter Sets: PreviewFileRowsFromHead
 Aliases: 
 
 Required: False
@@ -129,7 +149,7 @@ Specifies the length, in bytes, of the content to get.
 
 ```yaml
 Type: Int64
-Parameter Sets: Preview file content
+Parameter Sets: PreviewFileContent
 Aliases: 
 
 Required: False
@@ -144,7 +164,7 @@ Specifies the number of bytes to skip in a file before getting content.
 
 ```yaml
 Type: Int64
-Parameter Sets: Preview file content
+Parameter Sets: PreviewFileContent
 Aliases: 
 
 Required: False
@@ -170,9 +190,11 @@ Accept wildcard characters: False
 ```
 
 ### -Tail
-The number of rows (new line delimited) from the end of the file to preview. If no new line is encountered in the first 4mb of data, only that data will be returned.```yaml
+The number of rows (new line delimited) from the end of the file to preview. If no new line is encountered in the first 4mb of data, only that data will be returned.
+
+```yaml
 Type: Int32
-Parameter Sets: Preview file rows from the tail of the file
+Parameter Sets: PreviewFileRowsFromTail
 Aliases: 
 
 Required: False

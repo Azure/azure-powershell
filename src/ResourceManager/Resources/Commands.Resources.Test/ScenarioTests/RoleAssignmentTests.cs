@@ -37,18 +37,17 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
-        [Fact(Skip = "Test is failing in CI build for no matching request found but passes locally.")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void RaAuthorizationChangeLog()
-        {
-           ResourcesController.NewInstance.RunPsTest("Test-RaAuthorizationChangeLog");
-        }
-
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaClassicAdmins()
         {
             ResourcesController.NewInstance.RunPsTest("Test-RaClassicAdmins");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RaPropertiesValidation() {
+            ResourcesController.NewInstance.RunPsTest("Test-RaPropertiesValidation");
         }
 
         [Fact]
@@ -63,6 +62,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         public void RaByScope()
         {
             ResourcesController.NewInstance.RunPsTest("Test-RaByScope");
+        }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RaDeleteByPSRoleAssignment()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-RaDeleteByPSRoleAssignment");
         }
 
         [Fact]
@@ -96,6 +102,20 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             ResourcesController.NewInstance.RunPsTest("Test-RaByServicePrincipal");
         }
         
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RaDeletionByScope()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-RaDeletionByScope");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RaDeletionByScopeAtRootScope()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-RaDeletionByScopeAtRootScope");
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaByUpn()
@@ -219,7 +239,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
                         if (resourceGroup != null)
                         {
-                            controllerAdmin.AuthorizationManagementClient.RoleAssignments.Delete(resourceGroup.Id, new Guid(roleAssignmentId).ToString());
+                            controllerAdmin.AuthorizationManagementClient.RoleAssignments.Delete(resourceGroup.Id, roleAssignmentId).ToString();
                         }                        
                     },
                     TestUtilities.GetCallingClass(),

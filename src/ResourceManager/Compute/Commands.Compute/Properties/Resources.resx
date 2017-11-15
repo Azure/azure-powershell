@@ -565,4 +565,7 @@ The file needs to be a PowerShell script (.ps1 or .psm1) or a ZIP archive (.zip)
   <data name="DiagnosticsExtensionMismatchStorageAccountName" xml:space="preserve">
     <value>Storage account names provided in public and private configs do not match.</value>
   </data>
+  <data name="NotManagedDisk" xml:space="preserve">
+    <value>The given disk is not a managed disk.</value>
+  </data>
 </root>

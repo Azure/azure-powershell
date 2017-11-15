@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
 ms.assetid: 6FF04E82-4921-4F7B-83D0-6997316BC5FD
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/new-azurestoragecontainersastoken
 schema: 2.0.0
 ---
 
@@ -205,7 +205,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### IStorageContext
+
+Parameter 'Context' accepts value of type 'IStorageContext' from the pipeline
+
+### String
+
+Parameter 'Name' accepts value of type 'String' from the pipeline
+
 ## OUTPUTS
+
+### System.String
 
 ## NOTES
 

@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
 ms.assetid: 730ECC60-72DE-46DA-A177-D5749F540710
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/set-azurestoragecontainerstoredaccesspolicy
 schema: 2.0.0
 ---
 
@@ -242,7 +242,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### String
+
+Parameter 'Container' accepts value of type 'String' from the pipeline
+
+### IStorageContext
+
+Parameter 'Context' accepts value of type 'IStorageContext' from the pipeline
+
 ## OUTPUTS
+
+### System.String
 
 ## NOTES
 

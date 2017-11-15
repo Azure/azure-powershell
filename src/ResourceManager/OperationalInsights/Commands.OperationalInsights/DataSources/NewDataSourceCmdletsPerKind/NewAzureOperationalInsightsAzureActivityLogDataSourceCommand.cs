@@ -22,6 +22,7 @@ using System.Linq;
 using System.Reflection;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {

@@ -67,46 +67,33 @@ function ServiceBusTopicTests
     
     Write-Debug " Create new Topic namespace"
     Write-Debug "NamespaceName : $namespaceName" 
-    $result = New-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -Location $location
-    Wait-Seconds 15
+    $result = New-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Location $location -Name $namespaceName
+     
 
     Write-Debug "Get the created namespace within the resource group"
-    $createdNamespace = Get-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName
-    #Assert-True {$createdNamespace.Count -eq 1}
-
-    $found = 0
+    $createdNamespace = Get-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName
     
-        if ($createdNamespace.Name -eq $namespaceName)
-        {
-            $found = 1
-            Assert-AreEqual $location.Replace(' ','') $createdNamespace.Location.Replace(' ','')
-           # Assert-AreEqual $resourceGroupName.ToLower() $createdNamespace.ResourceGroupName.ToLower()
-           # Assert-AreEqual "Messaging" $createdNamespace.NamespaceType
-            break
-        }
-    
-
-    Assert-True {$found -eq 0} "Namespace created earlier is not found."
+    Assert-True {$createdNamespace.Name -eq $namespaceName} "Namespace created earlier is not found."
 
 	Write-Debug "Create Topic"
 	$nameTopic = Get-TopicName
-	$result = New-AzureRmServiceBusTopic -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -TopicName $nameTopic -EnablePartitioning $TRUE
+	$result = New-AzureRmServiceBusTopic -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $nameTopic -EnablePartitioning $TRUE
 	Assert-True {$result.Name -eq $nameTopic} "In CreateTopic response Name not found"
 
-	$resultGetTopic = Get-AzureRmServiceBusTopic -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -TopicName $result.Name
+	$resultGetTopic = Get-AzureRmServiceBusTopic -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $result.Name
 	Assert-True {$resultGetTopic.Name -eq $result.Name} "In 'Get-AzureRmServiceBusTopic' response, Topic Name not found"
-	
+
 	$resultGetTopic.EnableExpress = $TRUE
 
-	$resltSetTopic = Set-AzureRmServiceBusTopic -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -TopicName $resultGetTopic.Name -TopicObj $resultGetTopic
-	Assert-True {$resltSetTopic.Name -eq $resultTopic.Name} "In GetTopic response, TopicName not found"
+	$resltSetTopic = Set-AzureRmServiceBusTopic -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $resultGetTopic.Name -InputObject $resultGetTopic
+	Assert-True {$resltSetTopic.Name -eq $resultGetTopic.Name} "In GetTopic response, TopicName not found"
 
 	# Get all Topics
-	$ResulListTopic = Get-AzureRmServiceBusTopic -ResourceGroup $resourceGroupName -NamespaceName $namespaceName
+	$ResulListTopic = Get-AzureRmServiceBusTopic -ResourceGroupName $resourceGroupName -Namespace $namespaceName
 	Assert-True {$ResulListTopic.Count -gt 0} "no Topics were found in ListTopic"
 
 	# Delete the created Topic
-	$ResultDeleteTopic = Remove-AzureRmServiceBusTopic -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -TopicName $ResulListTopic[0].Name
+	$ResultDeleteTopic = Remove-AzureRmServiceBusTopic -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $ResulListTopic[0].Name
 	Assert-True {$ResultDeleteTopic} "Topic not deleted"
 
 	# Cleanup
@@ -114,12 +101,12 @@ function ServiceBusTopicTests
 	Write-Debug " Delete the Topic"
 	for ($i = 0; $i -lt $ResulListTopic.Count; $i++)
 	{
-		$delete1 = Remove-AzureRmServiceBusTopic -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -TopicName $ResulListTopic[$i].Name		
+		$delete1 = Remove-AzureRmServiceBusTopic -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -TopicName $ResulListTopic[$i].Name		
 	}
     Write-Debug " Delete namespaces"
-    Remove-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName
+    Remove-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName
 
-	Write-Debug " Delete resourcegroup"
+	#Write-Debug " Delete resourcegroup"
 	Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
 
 }
@@ -146,60 +133,44 @@ function ServiceBusTopicAuthTests
     # Create Topic Namespace 
     Write-Debug " Create new ServiceBus namespace"
     Write-Debug "Namespace name : $namespaceName"
-    $result = New-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -Location $location
-    Wait-Seconds 15
+    $result = New-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Location $location -Name $namespaceName
+     
     
 	# Assert
 	Assert-True {$result.ProvisioningState -eq "Succeeded"}
 
 	# Get Created NameSpace
     Write-Debug " Get the created namespace within the resource group"
-    $createdNamespace = Get-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName
-    
-	# Assert
-	Assert-True {$createdNamespace.Count -eq 1}
-    $found = 0
-    for ($i = 0; $i -lt $createdNamespace.Count; $i++)
-    {
-        if ($createdNamespace[$i].Name -eq $namespaceName)
-        {
-            $found = 1
-            Assert-AreEqual $location.Replace(' ','') $createdNamespace[$i].Location.Replace(' ','')
-           # Assert-AreEqual $resourceGroupName $createdNamespace[$i].ResourceGroupName
-            #Assert-AreEqual "Messaging" $createdNamespace[$i].NamespaceType
-            break
-        }
-    }
-
-	# Assert
-   # Assert-True {$found -eq 0} "Namespace created earlier is not found."
+    $createdNamespace = Get-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName
+ 
+   Assert-True {$createdNamespace.Name -eq$namespaceName} "Namespace created earlier is not found."
 
 	# Create New Topic
     Write-Debug " Create new Topic "    
 	$msgRetentionInDays = 3
 	$partionCount = 2
-    $result_Topic = New-AzureRmServiceBusTopic -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -TopicName $TopicName -EnablePartitioning $TRUE
+    $result_Topic = New-AzureRmServiceBusTopic -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $TopicName -EnablePartitioning $TRUE
 	
     Write-Debug "Get the created Topic"
-    $createdTopic = Get-AzureRmServiceBusTopic -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -TopicName $result_Topic.Name
+    $createdTopic = Get-AzureRmServiceBusTopic -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $result_Topic.Name
 
 	# Assert
     Assert-True {$createdTopic.Count -eq 1}
 
 	# Create Topic Authorization Rule
     Write-Debug "Create a Topic Authorization Rule"
-    $result = New-AzureRmServiceBusTopicAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -TopicName $TopicName -AuthorizationRuleName $authRuleName -Rights @("Listen","Send")
+    $result = New-AzureRmServiceBusAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $TopicName -Name $authRuleName -Rights @("Listen","Send")
 
 	# Assert
     Assert-AreEqual $authRuleName $result.Name
     Assert-AreEqual 2 $result.Rights.Count
     Assert-True { $result.Rights -Contains "Listen" }
     Assert-True { $result.Rights -Contains "Send" }
-    Wait-Seconds 15
+     
 
 	# Get Created Topic Authorization Rule
     Write-Debug "Get created authorizationRule"
-    $createdAuthRule = Get-AzureRmServiceBusTopicAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -TopicName $TopicName -AuthorizationRule $authRuleName
+    $createdAuthRule = Get-AzureRmServiceBusAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $TopicName -Name $authRuleName
 
 	# Assert
     Assert-AreEqual $authRuleName $createdAuthRule.Name
@@ -209,7 +180,7 @@ function ServiceBusTopicAuthTests
 
 	# Get all Topic Authorization Rules
     Write-Debug "Get All Topic AuthorizationRule"
-    $result = Get-AzureRmServiceBusTopicAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -TopicName $TopicName
+    $result = Get-AzureRmServiceBusAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $TopicName
 	# Assert
     $found = 0
     for ($i = 0; $i -lt $result.Count; $i++)
@@ -228,8 +199,8 @@ function ServiceBusTopicAuthTests
 	# Update the Topic Authorization Rule
     Write-Debug "Update Topic AuthorizationRule"
 	$createdAuthRule.Rights.Add("Manage")
-    $updatedAuthRule = Set-AzureRmServiceBusTopicAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -TopicName $TopicName -AuthorizationRuleName $authRuleName -AuthRuleObj $createdAuthRule
-    Wait-Seconds 15
+    $updatedAuthRule = Set-AzureRmServiceBusAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $TopicName -Name $authRuleName -InputObject $createdAuthRule
+     
 
 	# Assert
     Assert-AreEqual $authRuleName $updatedAuthRule.Name
@@ -239,7 +210,7 @@ function ServiceBusTopicAuthTests
     Assert-True { $updatedAuthRule.Rights -Contains "Manage" }
 	   
     # get the Updated Topic Authorization Rule
-    $updatedAuthRule = Get-AzureRmServiceBusTopicAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -TopicName $TopicName -AuthorizationRuleName $authRuleName
+    $updatedAuthRule = Get-AzureRmServiceBusAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $TopicName -Name $authRuleName
     
 	# Assert
     Assert-AreEqual $authRuleName $updatedAuthRule.Name
@@ -250,7 +221,7 @@ function ServiceBusTopicAuthTests
 	
 	# Get the List Keys
     Write-Debug "Get Topic authorizationRules connectionStrings"
-    $namespaceListKeys = Get-AzureRmServiceBusTopicKey -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -TopicName $TopicName -AuthorizationRuleName $authRuleName
+    $namespaceListKeys = Get-AzureRmServiceBusKey -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $TopicName -Name $authRuleName
 
     Assert-True {$namespaceListKeys.PrimaryConnectionString.Contains($updatedAuthRule.PrimaryKey)}
     Assert-True {$namespaceListKeys.SecondaryConnectionString.Contains($updatedAuthRule.SecondaryKey)}
@@ -258,18 +229,18 @@ function ServiceBusTopicAuthTests
 	# Regentrate the Keys 
 	$policyKey = "PrimaryKey"
 
-	$namespaceRegenerateKeys = New-AzureRmServiceBusTopicKey -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -TopicName $TopicName -AuthorizationRuleName $authRuleName -RegenerateKey $policyKey
+	$namespaceRegenerateKeys = New-AzureRmServiceBusKey -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $TopicName -Name $authRuleName -RegenerateKey $policyKey
 	Assert-True {$namespaceRegenerateKeys.PrimaryKey -ne $namespaceListKeys.PrimaryKey}
 
 	$policyKey1 = "SecondaryKey"
 
-	$namespaceRegenerateKeys1 = New-AzureRmServiceBusTopicKey -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -TopicName $TopicName -AuthorizationRuleName $authRuleName -RegenerateKey $policyKey1
+	$namespaceRegenerateKeys1 = New-AzureRmServiceBusKey -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $TopicName -Name $authRuleName -RegenerateKey $policyKey1
 	Assert-True {$namespaceRegenerateKeys1.SecondaryKey -ne $namespaceListKeys.SecondaryKey}
 
 
 	# Cleanup
     Write-Debug "Delete the created Topic AuthorizationRule"
-    $result = Remove-AzureRmServiceBusTopicAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -TopicName $TopicName -AuthorizationRuleName $authRuleName
+    $result = Remove-AzureRmServiceBusAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $TopicName -Name $authRuleName -Force
     
     
 	# Cleanup
@@ -277,18 +248,18 @@ function ServiceBusTopicAuthTests
 	Write-Debug " Delete the Topic"
 
 	Write-Debug "Get the created Topics"
-    $createdTopics = Get-AzureRmServiceBusTopic -ResourceGroup $resourceGroupName -NamespaceName $namespaceName 
+    $createdTopics = Get-AzureRmServiceBusTopic -ResourceGroupName $resourceGroupName -Namespace $namespaceName 
 	for ($i = 0; $i -lt $createdTopics.Count; $i++)
 	{
-		$delete1 = Remove-AzureRmServiceBusTopic -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -TopicName $createdTopics[$i].Name		
+		$delete1 = Remove-AzureRmServiceBusTopic -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $createdTopics[$i].Name		
 	}
     
 
     Write-Debug "Delete NameSpace"
-	 $createdNamespaces = Get-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName
+	 $createdNamespaces = Get-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName
 	for ($i = 0; $i -lt $createdNamespaces.Count; $i++)
 	{
-		Remove-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $createdNamespaces[$i].Name
+		Remove-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $createdNamespaces[$i].Name
 	}
 
 	Write-Debug " Delete resourcegroup"

@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
 ms.assetid: FCDCEF0B-6E2C-480E-9841-EF4E64D61D54
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/new-azurestorageshare
 schema: 2.0.0
 ---
 
@@ -118,6 +118,14 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### IStorageContext
+
+Parameter 'Context' accepts value of type 'IStorageContext' from the pipeline
+
+### String
+
+Parameter 'Name' accepts value of type 'String' from the pipeline
 
 ## OUTPUTS
 

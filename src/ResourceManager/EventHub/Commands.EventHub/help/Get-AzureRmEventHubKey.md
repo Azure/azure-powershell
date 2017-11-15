@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.EventHub.dll-Help.xml
-online version: 
+Module Name: AzureRM
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.eventhub/get-azurermeventhubkey
 schema: 2.0.0
 ---
 
@@ -11,13 +12,20 @@ Gets the primary key details of the specified Event Hubs authorization rule.
 
 ## SYNTAX
 
+### NamespaceAuthorizationRuleSet (Default)
 ```
-Get-AzureRmEventHubKey [-ResourceGroupName] <String> [-NamespaceName] <String> [-EventHubName] <String>
- [-AuthorizationRuleName] <String> [<CommonParameters>]
+Get-AzureRmEventHubKey [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### EventhubAuthorizationRuleSet
+```
+Get-AzureRmEventHubKey [-ResourceGroupName] <String> [-Namespace] <String> [-EventHub] <String>
+ [-Name] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmEventHubKey** cmdlet returns the primary key details of the specified Event Hubs authorization rule.
+The Get-AzureRmEventHubKey cmdlet returns Primary and Secondary connectionstrings and keys details of the specified Event Hubs authorization rule.
 
 ## EXAMPLES
 
@@ -26,32 +34,32 @@ The **Get-AzureRmEventHubKey** cmdlet returns the primary key details of the spe
 PS C:\> Get-AzureRmEventHubKey -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -EventHubName MyEventHubName -AuthorizationRuleName MyAuthRuleName
 ```
 
-Gets details of the primary key for the authorization rule `MyAuthRuleName`.
+Gets details of Primary and Secondary connectionstrings and keys for the authorization rule \`MyAuthRuleName\`.
 
 ## PARAMETERS
 
-### -AuthorizationRuleName
-Event Hubs authorization rule name.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: String
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: 
+Aliases: AzureRmContext, AzureCredential
 
-Required: True
-Position: 3
+Required: False
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EventHubName
-The Event Hub name.
+### -EventHub
+EventHub Name.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: 
+Parameter Sets: EventhubAuthorizationRuleSet
+Aliases: EventHubName
 
 Required: True
 Position: 2
@@ -60,13 +68,40 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -NamespaceName
-The Event Hubs namespace name.
+### -Name
+AuthorizationRule Name.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: AuthorizationRuleName
+
+Required: True
+Position: 3
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Namespace
+Namespace Name.
+
+```yaml
+Type: String
+Parameter Sets: NamespaceAuthorizationRuleSet
+Aliases: NamespaceName
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: EventhubAuthorizationRuleSet
+Aliases: NamespaceName
 
 Required: True
 Position: 1

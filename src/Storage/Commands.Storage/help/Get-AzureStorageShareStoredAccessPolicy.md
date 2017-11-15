@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
 ms.assetid: 73BB521B-20F2-4F2B-AA88-2B128F36A9EF
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/get-azurestoragesharestoredaccesspolicy
 schema: 2.0.0
 ---
 
@@ -142,7 +142,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### IStorageContext
+
+Parameter 'Context' accepts value of type 'IStorageContext' from the pipeline
+
+### String
+
+Parameter 'ShareName' accepts value of type 'String' from the pipeline
+
 ## OUTPUTS
+
+### Microsoft.WindowsAzure.Storage.File.SharedAccessFilePolicy
 
 ## NOTES
 

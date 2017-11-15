@@ -15,12 +15,14 @@
 using Microsoft.Azure.Commands.ServiceBus.Models;
 using Microsoft.Azure.Management.ServiceBus.Models;
 using System.Management.Automation;
+using System;
 
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.Topic
 {
     /// <summary>
     /// 'New-AzureRmServiceBusTopicKey' Cmdlet creates a new specified (PrimaryKey / SecondaryKey) key for the given ServiceBus Topic Authorization Rule
     /// </summary>
+    [ObsoleteAttribute("'New-AzureRmServiceBusTopicKey' cmdlet is mark as obsolete and will be depricated in upcoming breaking changes build. Please use the New cmdlet 'New-AzureRmServiceBusKey'", false)]
     [Cmdlet(VerbsCommon.New, ServiceBusTopicKeyVerb, SupportsShouldProcess = true), OutputType(typeof(ListKeysAttributes))]
     public class NewAzureRmServiceBusTopicKey : AzureServiceBusCmdletBase
     {
@@ -36,21 +38,24 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Topic
             Position = 1,
             HelpMessage = "Namespace Name.")]
         [ValidateNotNullOrEmpty]
-        public string NamespaceName { get; set; }
+        [Alias(AliasNamespaceName)]
+        public string Namespace { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 2,
             HelpMessage = "Topic Name.")]
         [ValidateNotNullOrEmpty]
-        public string TopicName { get; set; }
+        [Alias(AliasTopicName)]
+        public string Topic { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 3,
             HelpMessage = "Authorization Rule Name.")]        
         [ValidateNotNullOrEmpty]
-        public string AuthorizationRuleName { get; set; }        
+        [Alias(AliasAuthorizationRuleName)]
+        public string Name { get; set; }        
 
         [Parameter(Mandatory = true,
             Position = 4,
@@ -62,12 +67,10 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Topic
 
         public override void ExecuteCmdlet()
         {
-            var regenKey = new RegenerateKeysParameters(ParsePolicyKey(RegenerateKeys));
-
             // Get a ServiceBus List Keys for the specified AuthorizationRule
-            if (ShouldProcess(target: RegenerateKeys, action: string.Format("Generate Key:{0} for AuthorizationRule:{1} of Topic:{2}",RegenerateKeys,AuthorizationRuleName,TopicName)))
+            if (ShouldProcess(target: RegenerateKeys, action: string.Format("Generate Key:{0} for AuthorizationRule:{1} of Topic:{2}",RegenerateKeys,Name,Topic)))
             {
-                WriteObject(Client.NewTopicKey(ResourceGroup, NamespaceName, TopicName, AuthorizationRuleName, RegenerateKeys));
+                WriteObject(Client.NewTopicKey(ResourceGroup, Namespace, Topic, Name, RegenerateKeys));
             }
         }
     }

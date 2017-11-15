@@ -25,7 +25,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using ProjectResources = Commands.Common.Graph.RBAC.Properties.Resources;
+using ProjectResources = Microsoft.Azure.Commands.Common.Graph.RBAC.Properties.Resources;
 
 namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
 {

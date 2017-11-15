@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <Configuration>
   <SelectionSets>
     <SelectionSet>
@@ -21,28 +21,31 @@
           <ListEntry>
             <ListItems>
               <ListItem>
-                <Label>Environment</Label>
-                <ScriptBlock>$_.Context.Environment.ToString()</ScriptBlock>
-              </ListItem>
-              <ListItem>
                 <Label>Account</Label>
                 <ScriptBlock>$_.Context.Account.ToString()</ScriptBlock>
-              </ListItem>
-              <ListItem>
-                <Label>TenantId</Label>
-                <ScriptBlock>$_.Context.Tenant.ToString()</ScriptBlock>
-              </ListItem>
-              <ListItem>
-                <Label>SubscriptionId</Label>
-                <ScriptBlock>$_.Context.Subscription.ToString()</ScriptBlock>
               </ListItem>
               <ListItem>
                 <Label>SubscriptionName</Label>
                 <ScriptBlock>$_.Context.Subscription.Name</ScriptBlock>
               </ListItem>
               <ListItem>
+                <Label>SubscriptionId</Label>
+                <ScriptBlock>$_.Context.Subscription.ToString()</ScriptBlock>
+              </ListItem>
+               <ListItem>
+                <ItemSelectionCondition>
+                  <ScriptBlock>$_.Context.Subscription -ne $null -and $_.Context.Subscription.CurrentStorageAccountName -ne $null</ScriptBlock>
+                </ItemSelectionCondition>
                 <Label>CurrentStorageAccount</Label>
-                <ScriptBlock>if ($_.Context.Subscription -ne $null -and $_.Context.Subscription.CurrentStorageAccountName -ne $null) {$_.Context.Subscription.CurrentStorageAccountName} else {$null} </ScriptBlock>
+                <ScriptBlock>$_.Context.Subscription.CurrentStorageAccountName</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>TenantId</Label>
+                <ScriptBlock>$_.Context.Tenant.ToString()</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Environment</Label>
+                <ScriptBlock>$_.Context.Environment.ToString()</ScriptBlock>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -59,26 +62,28 @@
           <ListEntry>
             <ListItems>
               <ListItem>
-                <PropertyName>Environment</PropertyName>
+                <PropertyName>Name</PropertyName>
               </ListItem>
               <ListItem>
                 <PropertyName>Account</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>SubscriptionName</Label>
+                <ScriptBlock>$_.Subscription.Name</ScriptBlock>
+              </ListItem>
+               <ListItem>
+                <ItemSelectionCondition>
+                  <ScriptBlock>$_.Subscription -ne $null -and $_.Subscription.CurrentStorageAccountName -ne $null</ScriptBlock>
+                </ItemSelectionCondition>
+                <Label>CurrentStorageAccount</Label>
+                <ScriptBlock>$_.Subscription.CurrentStorageAccountName</ScriptBlock>
               </ListItem>
               <ListItem>
                 <Label>TenantId</Label>
                 <ScriptBlock>$_.Tenant.ToString()</ScriptBlock>
               </ListItem>
               <ListItem>
-                <Label>SubscriptionId</Label>
-                <ScriptBlock>$_.Subscription.ToString()</ScriptBlock>
-              </ListItem>
-              <ListItem>
-                <Label>SubscriptionName</Label>
-                <ScriptBlock>$_.Subscription.Name</ScriptBlock>
-              </ListItem>
-              <ListItem>
-                <Label>CurrentStorageAccount</Label>
-                <ScriptBlock>if ($_.Subscription -ne $null -and $_.Subscription.CurrentStorageAccountName -ne $null) {$_.Subscription.CurrentStorageAccountName} else {$null} </ScriptBlock>
+                <PropertyName>Environment</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>

@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Commands.IotHub.Test.ScenarioTests
             ResourceManagementClient = GetResourceManagementClient();
             SubscriptionClient = GetSubscriptionClient();
             IotHubClient = GetIotHubClient(context);
-            EHClient = GetEHClient(context);
+           EHClient = GetEHClient(context);
             AuthorizationManagementClient = GetAuthorizationManagementClient();
 
             helper.SetupManagementClients(ResourceManagementClient,

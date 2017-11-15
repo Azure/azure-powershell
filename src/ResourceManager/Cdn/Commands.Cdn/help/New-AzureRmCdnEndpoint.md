@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Cdn.dll-Help.xml
+Module Name: AzureRM.Cdn
 ms.assetid: A8C6F3BC-EE93-49A4-BF7B-8420967EEB7B
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.cdn/new-azurermcdnendpoint
 schema: 2.0.0
 ---
 
@@ -12,24 +13,24 @@ Creates a CDN endpoint.
 
 ## SYNTAX
 
-### Parameter Set for fields parameters (Default)
+### ByFieldsParameterSet (Default)
 ```
 New-AzureRmCdnEndpoint -EndpointName <String> -ProfileName <String> -ResourceGroupName <String>
  -Location <String> [-OriginHostHeader <String>] [-OriginPath <String>] [-ContentTypesToCompress <String[]>]
  [-IsCompressionEnabled <Boolean>] [-IsHttpAllowed <Boolean>] [-IsHttpsAllowed <Boolean>]
  [-QueryStringCachingBehavior <PSQueryStringCachingBehavior>] -OriginName <String> -OriginHostName <String>
  [-HttpPort <Int32>] [-HttpsPort <Int32>] [-OptimizationType <String>] [-GeoFilters <PSGeoFilter[]>]
- [-Tags <Hashtable>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Tags <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Parameter Set for object parameters
+### ByObjectParameterSet
 ```
 New-AzureRmCdnEndpoint -EndpointName <String> -CdnProfile <PSProfile> [-OriginHostHeader <String>]
  [-OriginPath <String>] [-ContentTypesToCompress <String[]>] [-IsCompressionEnabled <Boolean>]
  [-IsHttpAllowed <Boolean>] [-IsHttpsAllowed <Boolean>]
  [-QueryStringCachingBehavior <PSQueryStringCachingBehavior>] -OriginName <String> -OriginHostName <String>
  [-HttpPort <Int32>] [-HttpsPort <Int32>] [-OptimizationType <String>] [-GeoFilters <PSGeoFilter[]>]
- [-Tags <Hashtable>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Tags <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -49,7 +50,7 @@ Specifies the CDN profile object to which the endpoint is added.
 
 ```yaml
 Type: PSProfile
-Parameter Sets: Parameter Set for object parameters
+Parameter Sets: ByObjectParameterSet
 Aliases: 
 
 Required: True
@@ -74,6 +75,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EndpointName
 Specifies the name of the endpoint.
 
@@ -90,7 +106,9 @@ Accept wildcard characters: False
 ```
 
 ### -GeoFilters
-The list of geo filters that applies to this endpoint.```yaml
+The list of geo filters that applies to this endpoint.
+
+```yaml
 Type: PSGeoFilter[]
 Parameter Sets: (All)
 Aliases: 
@@ -182,7 +200,7 @@ Specifies the resource location of the endpoint.
 
 ```yaml
 Type: String
-Parameter Sets: Parameter Set for fields parameters
+Parameter Sets: ByFieldsParameterSet
 Aliases: 
 
 Required: True
@@ -193,7 +211,9 @@ Accept wildcard characters: False
 ```
 
 ### -OptimizationType
-Specifies any optimization this endpoint has.```yaml
+Specifies any optimization this endpoint has.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
@@ -270,7 +290,7 @@ Specifies the name of the profile.
 
 ```yaml
 Type: String
-Parameter Sets: Parameter Set for fields parameters
+Parameter Sets: ByFieldsParameterSet
 Aliases: 
 
 Required: True
@@ -301,7 +321,7 @@ Specifies the name of the resource group to which this endpoint belongs.
 
 ```yaml
 Type: String
-Parameter Sets: Parameter Set for fields parameters
+Parameter Sets: ByFieldsParameterSet
 Aliases: 
 
 Required: True
@@ -362,7 +382,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### PSProfile
+Parameter 'CdnProfile' accepts value of type 'PSProfile' from the pipeline
+
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint
 
 ## NOTES
 

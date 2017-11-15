@@ -147,7 +147,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     helper.RMProfileModule,
                     helper.RMResourceModule,
-                    helper.RMResourceManagerStartup,
                     helper.RMInsightsModule);
 
                 try

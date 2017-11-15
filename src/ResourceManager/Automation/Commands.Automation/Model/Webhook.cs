@@ -69,6 +69,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
 
             this.RunbookName = webhook.Properties.Runbook.Name;
             this.WebhookURI = webhookUri;
+            this.HybridWorker = webhook.Properties.RunOn;
         }
 
         public string ResourceGroupName { get; set; }
@@ -94,5 +95,10 @@ namespace Microsoft.Azure.Commands.Automation.Model
         public string RunbookName { get; set; }
 
         public string WebhookURI { get; set; }
+
+        /// <summary>
+        /// Gets or sets the HybridWorker.
+        /// </summary>
+        public string HybridWorker { get; set; }
     }
 }

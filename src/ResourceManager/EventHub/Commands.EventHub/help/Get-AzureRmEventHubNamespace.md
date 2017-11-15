@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.EventHub.dll-Help.xml
-online version: 
+Module Name: AzureRM
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.eventhub/get-azurermeventhubnamespace
 schema: 2.0.0
 ---
 
@@ -12,11 +13,14 @@ Gets the details of an Event Hubs namespace, or gets a list of all Event Hubs na
 ## SYNTAX
 
 ```
-Get-AzureRmEventHubNamespace [[-ResourceGroupName] <String>] [[-NamespaceName] <String>] [<CommonParameters>]
+Get-AzureRmEventHubNamespace [[-ResourceGroupName] <String>] [[-Name] <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmEventHubNamespace** cmdlet gets either the details of a specified Event Hubs namespace, or a list of all Event Hubs namespaces in the current Azure subscription. If the namespace name is provided, the details of a single Event Hubs namespace is returned. If the namespace name is not provided, a list of namespaces is returned.
+The Get-AzureRmEventHubNamespace cmdlet gets either the details of a specified Event Hubs namespace, or a list of all Event Hubs namespaces in the current Azure subscription.
+If the namespace name is provided, the details of a single Event Hubs namespace is returned.
+If the namespace name is not provided, a list of namespaces is returned.
 
 ## EXAMPLES
 
@@ -25,17 +29,32 @@ The **Get-AzureRmEventHubNamespace** cmdlet gets either the details of a specifi
 PS C:\> Get-AzureRmEventHubNamespace -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName
 ```
 
-Gets the details of the Event Hubs namespace `MyNamespaceName` in the resource group `MyResourceGroupName`.
+Gets the details of the Event Hubs namespace \`MyNamespaceName\` in the resource group \`MyResourceGroupName\`.
 
 ## PARAMETERS
 
-### -NamespaceName
-The Event Hubs namespace name.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+EventHub Namespace Name.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: NamespaceName
 
 Required: False
 Position: 1

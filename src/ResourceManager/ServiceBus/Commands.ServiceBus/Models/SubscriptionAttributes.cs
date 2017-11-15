@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Management.ServiceBus.Models;
 using System;
+using System.Xml;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.ServiceBus.Models
@@ -24,29 +25,24 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         public SubscriptionAttributes()
         { }
 
-        public SubscriptionAttributes(SubscriptionResource subscriptionResource)
+        public SubscriptionAttributes(SBSubscription subscriptionResource)
         {
             if (subscriptionResource != null)
             {                
                 AccessedAt = subscriptionResource.AccessedAt;
-                AutoDeleteOnIdle = subscriptionResource.AutoDeleteOnIdle;
+                AutoDeleteOnIdle = XmlConvert.ToString((TimeSpan)subscriptionResource.AutoDeleteOnIdle);
+                DefaultMessageTimeToLive = XmlConvert.ToString((TimeSpan)subscriptionResource.DefaultMessageTimeToLive);
+                LockDuration = XmlConvert.ToString((TimeSpan)subscriptionResource.LockDuration);
                 CountDetails = subscriptionResource.CountDetails;
                 CreatedAt = subscriptionResource.CreatedAt;
-                DefaultMessageTimeToLive = subscriptionResource.DefaultMessageTimeToLive;
-                DeadLetteringOnFilterEvaluationExceptions = subscriptionResource.DeadLetteringOnFilterEvaluationExceptions;
                 DeadLetteringOnMessageExpiration = subscriptionResource.DeadLetteringOnMessageExpiration;
                 EnableBatchedOperations = subscriptionResource.EnableBatchedOperations;
-                EntityAvailabilityStatus = subscriptionResource.EntityAvailabilityStatus;
-                IsReadOnly = subscriptionResource.IsReadOnly;
-                LockDuration = subscriptionResource.LockDuration;
                 MaxDeliveryCount = subscriptionResource.MaxDeliveryCount;
                 MessageCount = subscriptionResource.MessageCount;
                 RequiresSession = subscriptionResource.RequiresSession;
                 Status = subscriptionResource.Status;
                 UpdatedAt = subscriptionResource.UpdatedAt;
-                LockDuration = subscriptionResource.LockDuration;
                 Name = subscriptionResource.Name;
-                Location = subscriptionResource.Location;
             }
         }
 
@@ -55,11 +51,6 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// Queue name.
         /// </summary> 
         public string Name { get; set; }
-
-        /// <summary>
-        /// location of the resource.
-        /// </summary> 
-        public string Location { get; set; }
 
         /// <summary>
         /// Last time a there was a receive request to this subscription.
@@ -88,13 +79,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// not set on a message itself.
         /// </summary>
         public string DefaultMessageTimeToLive { get; set; }
-
-        /// <summary>
-        /// Value that indicates if a subscription has dead letter support on
-        /// Filter evaluation exceptions.
-        /// </summary>
-        public bool? DeadLetteringOnFilterEvaluationExceptions { get; set; }
-
+                
         /// <summary>
         /// Value that indicates if a subscription has dead letter support
         /// when a message expires.
@@ -106,17 +91,6 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// enabled..
         /// </summary>
         public bool? EnableBatchedOperations { get; set; }
-
-        /// <summary>
-        /// Entity availability status for the topic. Possible values include:
-        /// 'Available', 'Limited', 'Renaming', 'Restoring', 'Unknown'
-        /// </summary>
-        public EntityAvailabilityStatus? EntityAvailabilityStatus { get; set; }
-
-        /// <summary>
-        /// Value that indicates whether the entity description is read-only.
-        /// </summary>
-        public bool? IsReadOnly { get; set; }
 
         /// <summary>
         /// The lock duration time span for the subscription.
@@ -149,7 +123,6 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// <summary>
         /// The exact time the message has been updated.
         /// </summary>
-        public DateTime? UpdatedAt { get; set; }
-
+        public DateTime? UpdatedAt { get; set; }        
     }
 }

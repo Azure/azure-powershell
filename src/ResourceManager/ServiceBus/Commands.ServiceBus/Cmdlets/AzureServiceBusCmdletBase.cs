@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using System;
+using System.Xml;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
@@ -45,25 +46,59 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
 
         protected const string ServiceBusNamespaceKeyVerb = "AzureRmServiceBusNamespaceKey";
 
-        protected const string ServiceBusNamespaceAuthorizationRuleVerb = "AzureRmServiceBusNamespaceAuthorizationRule";
-        
+        protected const string ServiceBusNamespaceAuthorizationRuleVerb = "AzureRmServiceBusNamespaceAuthorizationRule";        
 
         protected const string ServicebusVerb = "AzureRmServiceBus";
-        protected const string ServiceBusAuthorizationRuleVerb = "AzureRmServiceBusAuthorizationRule";
-        protected const string ServiceBusKeyVerb = "AzureRmServiceBusKey";
-
 
         protected const string ServicebusQueueVerb = "AzureRmServiceBusQueue";
         protected const string ServiceBusQueueAuthorizationRuleVerb = "AzureRmServiceBusQueueAuthorizationRule";
         protected const string ServiceBusQueueKeyVerb = "AzureRmServiceBusQueueKey";
 
-
         protected const string ServicebusTopicVerb = "AzureRmServiceBusTopic";
         protected const string ServiceBusTopicAuthorizationRuleVerb = "AzureRmServiceBusTopicAuthorizationRule";
-        protected const string ServiceBusTopicKeyVerb = "AzureRmServiceBusTopicKey";      
+        protected const string ServiceBusTopicKeyVerb = "AzureRmServiceBusTopicKey";
+
+        //AuthorizationRules
+        protected const string ServiceBusAuthorizationRuleVerb = "AzureRmServiceBusAuthorizationRule";
+        protected const string ServiceBusKeyVerb = "AzureRmServiceBusKey";
+
+        //Parametersets for Authorizationrules
+        protected const string NamespaceAuthoRuleParameterSet = "NamespaceAuthorizationRuleSet";
+        protected const string QueueAuthoRuleParameterSet = "QueueAuthorizationRuleSet";
+        protected const string TopicAuthoRuleParameterSet = "TopicAuthorizationRuleSet";
+        protected const string SubscriptionAuthoRuleParameterSet = "SubscriptionAuthorizationRuleSet";
+
+        //Parameter sets for InputObjects
+        protected const string NamespaceInputObjectParameterSet = "NamespaceInputObjectSet";
+        protected const string QueueInputObjectParameterSet = "QueueInputObjectSet";
+        protected const string TopicInputObjectParameterSet = "TopicInputObjectSet";
+        protected const string SubscriptionInputObjectParameterSet = "SubscriptionInputObjectSet";
+        protected const string AuthoRuleInputObjectParameterSet = "AuthoRuleInputObjectSet";
+
+        //Parameter sets for Properties
+        protected const string NamespacePropertiesParameterSet = "NamespacePropertiesSet";
+        protected const string QueuePropertiesParameterSet = "QueuePropertiesSet";
+        protected const string TopicPropertiesParameterSet = "TopicPropertiesSet";
+        protected const string SubscriptionPropertiesParameterSet = "SubscriptionPropertiesSet";
+        protected const string AuthoRulePropertiesParameterSet = "AuthoRulePropertiesSet";
+
+        //Alias - used in Cmdlets
+        protected const string AliasResourceGroupname = "ResourceGroupName";
+        protected const string AliasResourceGroup = "ResourceGroup";
+        protected const string AliasNamespaceName = "NamespaceName";
+        protected const string AliasQueueName = "QueueName";
+        protected const string AliasTopicName = "TopicName";
+        protected const string AliasQueueObj = "QueueObj";
+        protected const string AliasTopicObj = "TopicObj";
+        protected const string AliasAuthorizationRuleName = "AuthorizationRuleName";
+        protected const string AliasAuthRuleObj = "AuthRuleObj";
+        protected const string AliasSubscriptionName = "SubscriptionName";
+        protected const string AliasSubscriptionObj = "SubscriptionObj";
 
 
         protected const string ServicebusSubscriptionVerb = "AzureRmServiceBusSubscription";
+
+        protected const string ServicebusRuleVerb = "AzureRmServiceBusRule";
 
         protected struct SKU
         {
@@ -77,17 +112,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
             internal const string PrimaryKey = "PrimaryKey";
             internal const string SecondaryKey = "SecondaryKey";
         }
-
-        protected static Policykey ParsePolicyKey(string policyKeyName)
-        {
-            Policykey returnPolicyKey;
-            if (!Enum.TryParse<Policykey>(policyKeyName, true, out returnPolicyKey))
-            {
-                throw new ArgumentOutOfRangeException("PolicyKey");
-            }
-            return returnPolicyKey;
-        }
-
+        
         protected static AccessRights ParseAccessRights(string rightsName)
         {
             AccessRights returnAccessRights;
@@ -97,7 +122,40 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
             }
             return returnAccessRights;
         }
+        
+        public static SkuName ParseSkuName(string skuName)
+        {
+            SkuName returnSkuName;
+            if (!Enum.TryParse<SkuName>(skuName, true, out returnSkuName))
+            {
+                throw new ArgumentOutOfRangeException("SkuName");
+            }
+            return returnSkuName;
+        }
 
+        public static SkuTier ParseSkuTier(string skuTier)
+        {
+            SkuTier returnSkutier;
+            if (!Enum.TryParse<SkuTier>(skuTier, true, out returnSkutier))
+            {
+                throw new ArgumentOutOfRangeException("skuTier");
+            }
+            return returnSkutier;
+        }
+
+        public static TimeSpan ParseTimespan(string strTimespan)
+        {
+            TimeSpan tspan = new TimeSpan();
+            if(strTimespan.Contains("P") || strTimespan.Contains("D") || strTimespan.Contains("T") || strTimespan.Contains("H") || strTimespan.Contains("M") || strTimespan.Contains("M"))
+            {
+                tspan = XmlConvert.ToTimeSpan(strTimespan);
+            }
+            else
+            {
+                tspan = TimeSpan.Parse(strTimespan);
+            }
+            return tspan;
+        }
 
         public Microsoft.Azure.Commands.Servicebus.ServiceBusClient Client
         {
@@ -153,7 +211,6 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
 
                 Thread.Sleep(retryAfter);
 
-                //longRunningOperation = Client.GetLongRunningOperationStatus(longRunningOperation);
                 WriteProgress(longRunningOperation);
             }
 
@@ -169,7 +226,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
                 string fileName = this.TryResolvePath(InputFile);
                 if (!(new FileInfo(fileName)).Exists)
                 {
-                    throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.ServiceBus.Properties.Resources.FileDoesNotExist, fileName));
+                    throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture, Resources.FileDoesNotExist, fileName));
                 }
 
                 try

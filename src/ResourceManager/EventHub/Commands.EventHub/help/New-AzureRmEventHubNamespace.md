@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.EventHub.dll-Help.xml
-online version:
+Module Name: AzureRM
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.eventhub/new-azurermeventhubnamespace
 schema: 2.0.0
 ---
 
@@ -11,13 +12,23 @@ Creates an Event Hubs namespace.
 
 ## SYNTAX
 
+### NamespaceParameterSet (Default)
 ```
-New-AzureRmEventHubNamespace [-ResourceGroupName] <String> [-NamespaceName] <String> [-Location] <String>
- [-SkuName <String>] [-SkuCapacity <Int32>] [-Tag <Hashtable>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzureRmEventHubNamespace [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
+ [[-SkuName] <String>] [[-SkuCapacity] <Int32>] [[-Tag] <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### AutoInflateParameterSet
+```
+New-AzureRmEventHubNamespace [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
+ [[-SkuName] <String>] [[-SkuCapacity] <Int32>] [[-Tag] <Hashtable>] [-EnableAutoInflate]
+ [[-MaximumThroughputUnits] <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmEventHubNamespace** cmdlet creates a new namespace of type Event Hubs.
+The New-AzureRmEventHubNamespace cmdlet creates a new namespace of type Event Hubs.
 
 ## EXAMPLES
 
@@ -26,9 +37,46 @@ The **New-AzureRmEventHubNamespace** cmdlet creates a new namespace of type Even
 PS C:\> New-AzureRmEventHubNamespace -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -Location MyLocation
 ```
 
-Creates an Event Hubs namespace `MyNamespaceName` in the specified geographic location `MyLocation`, in resource group `MyResourceGroupName`.
+Creates an Event Hubs namespace \`MyNamespaceName\` in the specified geographic location \`MyLocation\`, in resource group \`MyResourceGroupName\`.
+
+### Example 2
+```
+PS C:\> New-AzureRmEventHubNamespace -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -Location MyLocation -EnableAutoInflate -MaximumThroughputUnits 10
+```
+
+Creates an Event Hubs namespace \`MyNamespaceName\` in the specified geographic location \`MyLocation\`, in resource group \`MyResourceGroupName\` and AutoInflate is enabled with MaximumThroughputUnits 10.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableAutoInflate
+Indicates whether AutoInflate is enabled
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: AutoInflateParameterSet
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Location
 Event Hubs namespace geo-location.
@@ -36,7 +84,7 @@ Event Hubs namespace geo-location.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 2
@@ -45,13 +93,28 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -NamespaceName
-The Event Hubs namespace name.
+### -MaximumThroughputUnits
+Upper limit of throughput units when AutoInflate is enabled, vaule should be within 0 to 20 throughput units.
+
+```yaml
+Type: Int32
+Parameter Sets: AutoInflateParameterSet
+Aliases: 
+
+Required: False
+Position: 7
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Name
+EventHub Namespace Name.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: NamespaceName
 
 Required: True
 Position: 1
@@ -66,7 +129,7 @@ Resource group name.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -81,10 +144,10 @@ The Event Hub throughput units.
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
-Position: Named
+Position: 4
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -96,28 +159,26 @@ Namespace Sku name.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 Accepted values: Basic, Standard, Premium
 
 Required: False
-Position: Named
+Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -Tag
-Key-value pairs in the form of a hash table. For example:
-
-@{key0="value0";key1=$null;key2="value2"}
+Hashtables that represent resource tags.
 
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
-Position: Named
+Position: 5
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -159,10 +220,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### System.String
+System.Nullable\`1\[\[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\]\] System.Nullable\`1\[\[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\]\] System.Collections.Hashtable
+
 ## OUTPUTS
 
-Microsoft.Azure.Commands.EventHub.Models.NamespaceAttributes
+### Microsoft.Azure.Commands.EventHub.Models.NamespaceAttributes
 
 ## NOTES
 
 ## RELATED LINKS
+

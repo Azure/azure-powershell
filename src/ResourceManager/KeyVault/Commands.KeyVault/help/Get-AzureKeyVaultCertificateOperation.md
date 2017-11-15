@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
+Module Name: AzureRM.KeyVault
 ms.assetid: 0743C43D-2A1F-4950-B0F3-1FED4014EEC5
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/get-azurekeyvaultcertificateoperation
 schema: 2.0.0
 ---
 
@@ -13,7 +14,8 @@ Gets the status of a certificate operation.
 ## SYNTAX
 
 ```
-Get-AzureKeyVaultCertificateOperation [-VaultName] <String> [-Name] <String> [<CommonParameters>]
+Get-AzureKeyVaultCertificateOperation [-VaultName] <String> [-Name] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,6 +41,21 @@ ErrorMessage              :
 This command gets the status of the certificate operation for TestCert01 on the ContosoKV01 key vault.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 Specifies the name of a certificate.

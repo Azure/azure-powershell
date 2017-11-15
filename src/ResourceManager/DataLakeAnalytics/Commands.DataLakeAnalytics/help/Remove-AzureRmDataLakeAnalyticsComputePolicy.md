@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.DataLakeAnalytics.dll-Help.xml
-online version: 
+Module Name: AzureRM.DataLakeAnalytics
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datalakeanalytics/remove-azurermdatalakeanalyticscomputepolicy
 schema: 2.0.0
 ---
 
@@ -13,7 +14,7 @@ Removes a specified Azure Data Lake Analytics compute policy
 
 ```
 Remove-AzureRmDataLakeAnalyticsComputePolicy [-ResourceGroupName <String>] [-Account] <String> [-Name] <String>
- [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,6 +46,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Name of the compute policy to remove.
 
@@ -61,7 +77,9 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-Return true upon successful deletion.```yaml
+Return true upon successful deletion.
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 

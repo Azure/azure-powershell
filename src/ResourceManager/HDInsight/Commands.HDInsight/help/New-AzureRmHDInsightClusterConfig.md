@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
+Module Name: AzureRM.HDInsight
 ms.assetid: 2C06626F-E5A9-48C2-AEA2-B448AD254C2E
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.hdinsight/new-azurermhdinsightclusterconfig
 schema: 2.0.0
 ---
 
@@ -18,7 +19,8 @@ New-AzureRmHDInsightClusterConfig [-DefaultStorageAccountName <String>] [-Defaul
  [-HiveMetastore <AzureHDInsightMetastore>] [-HeadNodeSize <String>] [-WorkerNodeSize <String>]
  [-EdgeNodeSize <String>] [-ZookeeperNodeSize <String>] [-ClusterType <String>] [-ClusterTier <Tier>]
  [-ObjectId <Guid>] [-CertificateFileContents <Byte[]>] [-CertificateFilePath <String>]
- [-CertificatePassword <String>] [-AadTenantId <Guid>] [<CommonParameters>]
+ [-CertificatePassword <String>] [-AadTenantId <Guid>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -173,6 +175,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultStorageAccountKey
 Specifies the account key for the default Azure Storage account that the HDInsight cluster will use.
 
@@ -204,7 +221,9 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultStorageAccountType
-Specifies the type of the default storage account that the HDInsight cluster will use. Possible values are AzureStorage and AzureDataLakeStore.```yaml
+Specifies the type of the default storage account that the HDInsight cluster will use. Possible values are AzureStorage and AzureDataLakeStore.
+
+```yaml
 Type: StorageType
 Parameter Sets: (All)
 Aliases: 
@@ -218,7 +237,9 @@ Accept wildcard characters: False
 ```
 
 ### -EdgeNodeSize
-Specifies the size of the virtual machine for the edge node. Use Get-AzureRmVMSize for acceptable VM sizes, and see HDInsight's pricing page. This parameter is valid only for RServer clusters.```yaml
+Specifies the size of the virtual machine for the edge node. Use Get-AzureRmVMSize for acceptable VM sizes, and see HDInsight's pricing page. This parameter is valid only for RServer clusters.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
@@ -333,6 +354,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig
 
 ## NOTES
 
