@@ -19,6 +19,20 @@
 -->
 ## Current Release
 
+## Version 4.0.0
+* NOTE: This is a breaking change release. Please see the migration guide (https://aka.ms/azps-migration-guide) for a full list of breaking changes introduced.
+* Removed the Obsolete Properties fields in PSDataLakeAnalyticsAccount.cs and its assoicated files
+* Changed one of the two OutputTypes of Get-AzureRmDataLakeAnalyticsAccount
+    - List\<DataLakeAnalyticsAccount> to List\<PSDataLakeAnalyticsAccountBasic>
+    - The properties of PSDataLakeAnalyticsAccountBasic is a strict subset of the properties of DataLakeAnalyticsAccount
+    - The additional properties that are in DataLakeAnalyticsAccount are not returned by the service.  Therefore, this change is to reflect this accurately. These additional properties are still in PSDataLakeAnalyticsAccountBasic, but they are tagged as Obsolete.
+* Changed one of the two OutputTypes of Get-AzureRmDataLakeAnalyticsJob
+    - List\<JobInformation> to List\<PSJobInformationBasic>
+    - The properties of PSJobInformationBasic is a strict subset of the properties of JobInformation
+    - The additional properties that are in JobInformation are not returned by the service.  Therefore, this change is to reflect this accurately. These additional properties are still in PSJobInformationBasic, but they are tagged as Obsolete.
+* Add support for online help
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
+
 ## Version 3.4.1
 
 ## Version 3.4.0

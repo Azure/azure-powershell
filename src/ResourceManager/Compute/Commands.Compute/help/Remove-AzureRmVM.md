@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 ms.assetid: A16C2084-30A4-4AB8-AE22-28CC6E74FD48
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/remove-azurermvm
 schema: 2.0.0
 ---
 

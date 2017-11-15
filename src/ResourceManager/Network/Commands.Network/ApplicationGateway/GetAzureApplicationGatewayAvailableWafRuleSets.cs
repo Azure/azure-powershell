@@ -14,6 +14,7 @@
 
 using AutoMapper;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Management.Network;
 using Microsoft.WindowsAzure.Commands.Common;
@@ -33,7 +34,7 @@ namespace Microsoft.Azure.Commands.Network
             base.ExecuteCmdlet();
 
             var availableWafRuleSets = this.ApplicationGatewayClient.ListAvailableWafRuleSets();
-            var psAvailableWafRuleSets = Mapper.Map<PSApplicationGatewayAvailableWafRuleSetsResult>(availableWafRuleSets);
+            var psAvailableWafRuleSets = NetworkResourceManagerProfile.Mapper.Map<PSApplicationGatewayAvailableWafRuleSetsResult>(availableWafRuleSets);
             WriteObject(psAvailableWafRuleSets);
         }
 

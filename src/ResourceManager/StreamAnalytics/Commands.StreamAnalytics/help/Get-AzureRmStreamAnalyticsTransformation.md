@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.StreamAnalytics.dll-Help.xml
+Module Name: AzureRM
 ms.assetid: 34E1CC9E-9F81-4DA6-A777-D816B09BDE1B
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.streamanalytics/get-azurermstreamanalyticstransformation
 schema: 2.0.0
 ---
 
@@ -14,7 +15,7 @@ Gets information about a Stream Analytics job transformation.
 
 ```
 Get-AzureRmStreamAnalyticsTransformation [-JobName] <String> [-Name] <String> [-ResourceGroupName] <String>
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,6 +31,21 @@ PS C:\>Get-AzureRmStreamAnalyticsTransformation -ResourceGroupName "StreamAnalyt
 This command returns information about the transformation called StreamingJob on the job called StreamingJob.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -JobName
 Specifies the name of the Azure Stream Analytics job to which the Azure Stream Analytics transformation belongs.

@@ -1,4 +1,4 @@
----
+﻿---
 Module Name: AzureRM.Automation
 Module Guid: bcea1c70-a32b-48c3-a05c-323e1c02f4d3
 Download Help Link: None_Azure
@@ -46,6 +46,12 @@ Gets DSC nodes from Automation.
 
 ### [Get-AzureRmAutomationDscNodeConfiguration](Get-AzureRmAutomationDscNodeConfiguration.md)
 Gets metadata for DSC node configurations in Automation.
+
+### [Get-AzureRmAutomationDscNodeConfigurationDeployment](Get-AzureRmAutomationDscNodeConfigurationDeployment.md)
+Gets DSC Node configuration deployments in Automation.
+
+### [Get-AzureRmAutomationDscNodeConfigurationDeploymentSchedule](Get-AzureRmAutomationDscNodeConfigurationDeploymentSchedule.md)
+Gets a DSC Node configuration deployment job schedule in Automation.
 
 ### [Get-AzureRmAutomationDscNodeReport](Get-AzureRmAutomationDscNodeReport.md)
 Gets reports sent from a DSC node to Automation.
@@ -206,8 +212,14 @@ Modifies a webhook for an Automation runbook.
 ### [Start-AzureRmAutomationDscCompilationJob](Start-AzureRmAutomationDscCompilationJob.md)
 Compiles a DSC configuration in Automation.
 
+### [Start-AzureRmAutomationDscNodeConfigurationDeployment](Start-AzureRmAutomationDscNodeConfigurationDeployment.md)
+Deploys a DSC Node configuration in Automation.
+
 ### [Start-AzureRmAutomationRunbook](Start-AzureRmAutomationRunbook.md)
 Starts a runbook job.
+
+### [Stop-AzureRmAutomationDscNodeConfigurationDeployment](Stop-AzureRmAutomationDscNodeConfigurationDeployment.md)
+Stops a DSC Node configuration deployment in Automation. It only stops the current deployment job but does not unassign already assigned node configurations.
 
 ### [Stop-AzureRmAutomationJob](Stop-AzureRmAutomationJob.md)
 Stops an Automation job.

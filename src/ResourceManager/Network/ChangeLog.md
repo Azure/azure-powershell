@@ -19,6 +19,15 @@
 -->
 ## Current Release
 
+## Version 5.0.0
+* NOTE: This is a breaking change release. Please see the migration guide (https://aka.ms/azps-migration-guide) for a full list of breaking changes introduced.
+* Added cmdlet to list available internet service providers for a specified Azure region
+    - Get-AzureRmNetworkWatcherReachabilityProvidersList
+* Added cmdlet to get the relative latency score for internet service providers from a specified location to Azure regions
+    - Get-AzureRmNetworkWatcherReachabilityReport
+* Add support for online help
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
+    
 ## Version 4.4.1
 
 ## Version 4.4.0

@@ -26,6 +26,13 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetDataFactoriesInSubscriptionV2()
+        {
+            RunPowerShellTest("Test-GetDataFactoriesInSubscription");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetNonExistingDataFactoryV2()
         {
             RunPowerShellTest("Test-GetNonExistingDataFactory");
@@ -50,6 +57,13 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Test
         public void TestDataFactoryPipingV2()
         {
             RunPowerShellTest("Test-DataFactoryPiping");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetFactoryByNameParameterSetV2()
+        {
+            RunPowerShellTest("Test-GetFactoryByNameParameterSet");
         }
     }
 }

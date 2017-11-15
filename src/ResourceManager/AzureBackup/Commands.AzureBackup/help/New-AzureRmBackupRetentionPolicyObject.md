@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.AzureBackup.dll-Help.xml
+Module Name: AzureRM.Backup
 ms.assetid: 9574CEB5-B699-4606-8C5E-CE2C0D01092D
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.backup/new-azurermbackupretentionpolicyobject
 schema: 2.0.0
 ---
 
@@ -14,38 +15,41 @@ Creates a Backup retention policy.
 
 ### DailyRetentionParamSet
 ```
-New-AzureRmBackupRetentionPolicyObject [-DailyRetention] -Retention <Int32> [<CommonParameters>]
+New-AzureRmBackupRetentionPolicyObject [-DailyRetention] -Retention <Int32>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### WeeklyRetentionParamSet
 ```
 New-AzureRmBackupRetentionPolicyObject [-WeeklyRetention] -DaysOfWeek <String[]> -Retention <Int32>
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### MonthlyRetentionInDailyFormatParamSet
 ```
 New-AzureRmBackupRetentionPolicyObject [-MonthlyRetentionInDailyFormat]
- -DaysOfMonth <System.Collections.Generic.List`1[System.String]> -Retention <Int32> [<CommonParameters>]
+ -DaysOfMonth <System.Collections.Generic.List`1[System.String]> -Retention <Int32>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### MonthlyRetentionInWeeklyFormatParamSet
 ```
 New-AzureRmBackupRetentionPolicyObject [-MonthlyRetentionInWeeklyFormat] -DaysOfWeek <String[]>
- -WeekNumber <String[]> -Retention <Int32> [<CommonParameters>]
+ -WeekNumber <String[]> -Retention <Int32> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### YearlyRetentionInDailyFormatParamSet
 ```
 New-AzureRmBackupRetentionPolicyObject [-YearlyRetentionInDailyFormat]
  -DaysOfMonth <System.Collections.Generic.List`1[System.String]> -MonthsOfYear <String[]> -Retention <Int32>
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### YearlyRetentionInWeeklyFormatParamSet
 ```
 New-AzureRmBackupRetentionPolicyObject [-YearlyRetentionInWeeklyFormat] -DaysOfWeek <String[]>
- -WeekNumber <String[]> -MonthsOfYear <String[]> -Retention <Int32> [<CommonParameters>]
+ -WeekNumber <String[]> -MonthsOfYear <String[]> -Retention <Int32> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -157,6 +161,21 @@ Aliases:
 Accepted values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

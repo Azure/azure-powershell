@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Network
                 () =>
                 {
                     // Map to the sdk object
-                    var routeFilterModel = Mapper.Map<MNM.RouteFilter>(this.RouteFilter);
+                    var routeFilterModel = NetworkResourceManagerProfile.Mapper.Map<MNM.RouteFilter>(this.RouteFilter);
                     routeFilterModel.Tags = TagsConversionHelper.CreateTagDictionary(this.RouteFilter.Tag, validate: true);
 
                     // Execute the PUT RouteTable call

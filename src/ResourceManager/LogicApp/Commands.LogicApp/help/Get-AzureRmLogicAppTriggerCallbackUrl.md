@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.LogicApp.dll-Help.xml
+Module Name: AzureRM.LogicApp
 ms.assetid: F523CFA0-427B-41AF-9C2D-EB54EC96C04B
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.logicapp/get-azurermlogicapptriggercallbackurl
 schema: 2.0.0
 ---
 
@@ -14,7 +15,7 @@ Gets a Logic App trigger callback URL.
 
 ```
 Get-AzureRmLogicAppTriggerCallbackUrl -ResourceGroupName <String> -Name <String> -TriggerName <String>
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,6 +41,21 @@ https://prod-03.westus.logic.azure.com:443/workflows/c4ed9335bc864140a11f4508d19
 This command gets a Logic App trigger callback URL.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 Specifies the name of a logic app.

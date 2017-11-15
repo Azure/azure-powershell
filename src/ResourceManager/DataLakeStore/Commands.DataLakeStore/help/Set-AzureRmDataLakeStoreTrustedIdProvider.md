@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
 Module Name: AzureRM.DataLakeStore
 ms.assetid: BDEF8BAA-0C64-465D-9ED4-6FEFC1E850CC
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datalakestore/set-azurermdatalakestoretrustedidprovider
 schema: 2.0.0
 ---
 
@@ -49,7 +49,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
 Type: IAzureContextContainer

@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
 Module Name: AzureRM.Resources
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/set-azurermpolicysetdefinition
 schema: 2.0.0
 ---
 
@@ -12,16 +12,18 @@ Modifies a policy set definition
 
 ## SYNTAX
 
-### The policy set definition name parameter set. (Default)
+### SetByNameAndResourceGroup (Default)
 ```
 Set-AzureRmPolicySetDefinition -Name <String> [-DisplayName <String>] [-Description <String>]
- [-PolicyDefinition <String>] [-ApiVersion <String>] [-Pre] [<CommonParameters>]
+ [-PolicyDefinition <String>] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### The policy set definition Id parameter set.
+### SetById
 ```
 Set-AzureRmPolicySetDefinition -Id <String> [-DisplayName <String>] [-Description <String>]
- [-PolicyDefinition <String>] [-ApiVersion <String>] [-Pre] [<CommonParameters>]
+ [-PolicyDefinition <String>] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -50,6 +52,21 @@ If not specified, the API version is automatically determined as the latest avai
 Type: String
 Parameter Sets: (All)
 Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -95,7 +112,7 @@ e.g.
 
 ```yaml
 Type: String
-Parameter Sets: The policy set definition Id parameter set.
+Parameter Sets: SetById
 Aliases: ResourceId
 
 Required: True
@@ -110,7 +127,7 @@ The policy set definition name.
 
 ```yaml
 Type: String
-Parameter Sets: The policy set definition name parameter set.
+Parameter Sets: SetByNameAndResourceGroup
 Aliases: 
 
 Required: True
@@ -142,6 +159,36 @@ When set, indicates that the cmdlet should use pre-release API versions when aut
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
 
 Required: False
 Position: Named

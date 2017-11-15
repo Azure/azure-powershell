@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
 Module Name: AzureRM.DataLakeStore
 ms.assetid: 90630395-8747-4446-A879-323274811956
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datalakestore/import-azurermdatalakestoreitem
 schema: 2.0.0
 ---
 
@@ -13,18 +13,19 @@ Uploads a local file or directory to a Data Lake Store.
 
 ## SYNTAX
 
-### No diagnostic logging (Default)
+### NoDiagnosticLogging (Default)
 ```
 Import-AzureRmDataLakeStoreItem [-Account] <String> [-Path] <String> [-Destination] <DataLakeStorePathInstance>
- [-Recurse] [-Resume] [-ForceBinary] [-Force] [[-Concurrency] <Int32>] [-DefaultProfile <IAzureContextContainer>]
-  [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Recurse] [-Resume] [-ForceBinary] [[-PerFileThreadCount] <Int32>] [[-ConcurrentFileCount] <Int32>] [[-Concurrency] <Int32>] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Include diagnostic logging
+### IncludeDiagnosticLogging
 ```
 Import-AzureRmDataLakeStoreItem [-Account] <String> [-Path] <String> [-Destination] <DataLakeStorePathInstance>
- [-Recurse] [-Resume] [-ForceBinary] [-Force] [[-Concurrency] <Int32>] [-DiagnosticLogLevel <LogLevel>] -DiagnosticLogPath <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Recurse] [-Resume] [-ForceBinary] [[-PerFileThreadCount] <Int32>] [[-ConcurrentFileCount] <Int32>] [[-Concurrency] <Int32>] [-Force]
+ [-DiagnosticLogLevel <LogLevel>] -DiagnosticLogPath <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -121,7 +122,7 @@ Optionally indicates the diagnostic log level to use to record events during the
 
 ```yaml
 Type: LogLevel
-Parameter Sets: Include diagnostic logging
+Parameter Sets: IncludeDiagnosticLogging
 Aliases: 
 Accepted values: Debug, Information, Error, None
 
@@ -137,7 +138,7 @@ Specifies the path for the diagnostic log to record events to during the file or
 
 ```yaml
 Type: String
-Parameter Sets: Include diagnostic logging
+Parameter Sets: IncludeDiagnosticLogging
 Aliases: 
 
 Required: True

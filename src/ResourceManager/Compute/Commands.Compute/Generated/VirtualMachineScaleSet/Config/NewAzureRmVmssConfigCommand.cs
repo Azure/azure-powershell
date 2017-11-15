@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             Position = 5,
             ValueFromPipelineByPropertyName = true)]
-        public Int64? SkuCapacity { get; set; }
+        public int? SkuCapacity { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
+            ValueFromPipelineByPropertyName = false)]
         public SwitchParameter AutoOSUpgrade { get; set; }
 
         [Parameter(
@@ -159,12 +159,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             ValueFromPipelineByPropertyName = false)]
         public SwitchParameter AssignIdentity { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
-        [Obsolete("This parameter is obsolete.  Use AssignIdentity parameter instead.", false)]
-        public ResourceIdentityType? IdentityType { get; set; }
 
         protected override void ProcessRecord()
         {
@@ -373,14 +367,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vIdentity.Type = ResourceIdentityType.SystemAssigned;
             }
 
-            if (this.IdentityType != null)
-            {
-                if (vIdentity == null)
-                {
-                    vIdentity = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetIdentity();
-                }
-                vIdentity.Type = this.IdentityType;
-            }
 
             var vVirtualMachineScaleSet = new PSVirtualMachineScaleSet
             {

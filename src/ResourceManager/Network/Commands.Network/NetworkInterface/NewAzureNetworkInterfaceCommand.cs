@@ -417,7 +417,7 @@ namespace Microsoft.Azure.Commands.Network
                 networkInterface.NetworkSecurityGroup.Id = this.NetworkSecurityGroupId;
             }
 
-            var networkInterfaceModel = Mapper.Map<MNM.NetworkInterface>(networkInterface);
+            var networkInterfaceModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NetworkInterface>(networkInterface);
 
 			this.NullifyApplicationSecurityGroupIfAbsent(networkInterfaceModel);
 

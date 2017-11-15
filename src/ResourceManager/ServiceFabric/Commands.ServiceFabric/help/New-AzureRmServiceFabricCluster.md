@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ServiceFabric.dll-Help.xml
-online version: 
+Module Name: AzureRM
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicefabric/new-azurermservicefabriccluster
 schema: 2.0.0
 ---
 
@@ -17,21 +18,22 @@ New-AzureRmServiceFabricCluster [-ResourceGroupName] <String> [-CertificateOutpu
  [-CertificatePassword <SecureString>] [-KeyVaultResouceGroupName <String>] [-KeyVaultName <String>]
  -Location <String> [-Name <String>] [-VmUserName <String>] [-ClusterSize <Int32>]
  [-CertificateSubjectName <String>] -VmPassword <SecureString> [-OS <OperatingSystem>] [-VmSku <String>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByExistingKeyVault
 ```
 New-AzureRmServiceFabricCluster [-ResourceGroupName] <String> -TemplateFile <String> -ParameterFile <String>
--SecretIdentifier <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+ -SecretIdentifier <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByNewPfxAndVaultName
 ```
 New-AzureRmServiceFabricCluster [-ResourceGroupName] <String> -TemplateFile <String> -ParameterFile <String>
  [-CertificateOutputFolder <String>] [-CertificatePassword <SecureString>] [-KeyVaultResouceGroupName <String>]
- [-KeyVaultName <String>] [-CertificateSubjectName <String>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-KeyVaultName <String>] [-CertificateSubjectName <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByExistingPfxAndVaultName
@@ -39,7 +41,7 @@ New-AzureRmServiceFabricCluster [-ResourceGroupName] <String> -TemplateFile <Str
 New-AzureRmServiceFabricCluster [-ResourceGroupName] <String> -TemplateFile <String> -ParameterFile <String>
  -CertificateFile <String> [-CertificatePassword <SecureString>] [-SecondaryCertificateFile <String>]
  [-SecondaryCertificatePassword <SecureString>] [-KeyVaultResouceGroupName <String>] [-KeyVaultName <String>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -187,6 +189,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -448,3 +465,4 @@ Microsoft.Azure.Commands.ServiceFabric.Models.OperatingSystem
 ## NOTES
 
 ## RELATED LINKS
+

@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
+Module Name: AzureRM
 ms.assetid: 0AC0C4F9-4138-49EA-88CB-DC220DE7E9F4
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/get-azurermappserviceplanmetrics
 schema: 2.0.0
 ---
 
@@ -14,13 +15,15 @@ schema: 2.0.0
 ### S1
 ```
 Get-AzureRmAppServicePlanMetrics [-Metrics] <String[]> [-StartTime] <DateTime> [[-EndTime] <DateTime>]
- [-Granularity] <String> [-InstanceDetails] [-ResourceGroupName] <String> [-Name] <String> [<CommonParameters>]
+ [-Granularity] <String> [-InstanceDetails] [-ResourceGroupName] <String> [-Name] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### S2
 ```
 Get-AzureRmAppServicePlanMetrics [-Metrics] <String[]> [-StartTime] <DateTime> [[-EndTime] <DateTime>]
- [-Granularity] <String> [-InstanceDetails] [-AppServicePlan] <ServerFarmWithRichSku> [<CommonParameters>]
+ [-Granularity] <String> [-InstanceDetails] [-AppServicePlan] <ServerFarmWithRichSku>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -50,6 +53,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -165,7 +183,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### ServerFarmWithRichSku
-
 Parameter 'AppServicePlan' accepts value of type 'ServerFarmWithRichSku' from the pipeline
 
 ## OUTPUTS

@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
 Module Name: AzureRM.DataLakeStore
 ms.assetid: B10B1F5D-5566-4129-9D42-05A6D3B72C9E
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datalakestore/export-azurermdatalakestoreitem
 schema: 2.0.0
 ---
 
@@ -13,17 +13,19 @@ Downloads a file from Data Lake Store.
 
 ## SYNTAX
 
-### No diagnostic logging (Default)
+### NoDiagnosticLogging (Default)
 ```
 Export-AzureRmDataLakeStoreItem [-Account] <String> [-Path] <DataLakeStorePathInstance> [-Destination] <String>
- [-Recurse] [-Resume] [-Force] [[-Concurrency] <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Recurse] [-Resume] [[-PerFileThreadCount] <Int32>] [[-ConcurrentFileCount] <Int32>] [[-Concurrency] <Int32>] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Include diagnostic logging
+### IncludeDiagnosticLogging
 ```
 Export-AzureRmDataLakeStoreItem [-Account] <String> [-Path] <DataLakeStorePathInstance> [-Destination] <String>
- [-Recurse] [-Resume] [-Force] [[-Concurrency] <Int32>] [-DiagnosticLogLevel <LogLevel>] -DiagnosticLogPath <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Recurse] [-Resume] [[-PerFileThreadCount] <Int32>] [[-ConcurrentFileCount] <Int32>] [[-Concurrency] <Int32>] [-Force]
+ [-DiagnosticLogLevel <LogLevel>] -DiagnosticLogPath <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -120,7 +122,7 @@ Optionally indicates the diagnostic log level to use to record events during the
 
 ```yaml
 Type: LogLevel
-Parameter Sets: Include diagnostic logging
+Parameter Sets: IncludeDiagnosticLogging
 Aliases: 
 Accepted values: Debug, Information, Error, None
 
@@ -136,7 +138,7 @@ Specifies the path for the diagnostic log to record events to during the file or
 
 ```yaml
 Type: String
-Parameter Sets: Include diagnostic logging
+Parameter Sets: IncludeDiagnosticLogging
 Aliases: 
 
 Required: True
@@ -207,7 +209,8 @@ Accept wildcard characters: False
 ```
 
 ### -Resume
-Indicates that the file(s) being copied are a continuation of a previous download. This will cause the system to attempt to resume from the last file that was not fully downloaded.
+Indicates that the file(s) being copied are a continuation of a previous download.
+This will cause the system to attempt to resume from the last file that was not fully downloaded.
 
 ```yaml
 Type: SwitchParameter

@@ -867,6 +867,82 @@ function Test-RecordSetSOA
 	Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
 
+function Validate-CAARecord(
+ $record,
+ [int] $flags,
+ $tag,
+ $value)
+{
+	Assert-AreEqual $flags $record.Flags
+	Assert-AreEqual $tag $record.Tag
+	Assert-AreEqual $value $record.Value
+}
+
+<#
+.SYNOPSIS
+Full Record Set CRUD cycle for CAA record
+#>
+function Test-RecordSetCAA
+{
+	$zoneName = Get-RandomZoneName
+	$recordName = getAssetname
+    $resourceGroup = TestSetup-CreateResourceGroup 
+	$zone = $resourceGroup | New-AzureRmDnsZone -Name $zoneName 
+
+	$record = $zone | New-AzureRmDnsRecordSet -Name $recordName -Ttl 100 -RecordType CAA
+
+	# add two records, remove one, remove another no-op
+	$record = $record | Add-AzureRmDnsRecordConfig -CaaFlags 0 -CaaTag issue -CaaValue "contoso.org"
+	#$record = $record | Add-AzureRmDnsRecordConfig -CaaFlags 1 -CaaTag issuewild -CaaValue "contoso.org"
+	#$record = $record | Remove-AzureRmDnsRecordConfig -CaaFlags 1 -CaaTag issuewild -CaaValue "contoso.org"
+	#$record = $record | Remove-AzureRmDnsRecordConfig -CaaFlags 1 -CaaTag issuewild -CaaValue "contoso.org"
+
+	$record | Set-AzureRmDnsRecordSet
+	$getResult = Get-AzureRmDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType CAA
+	
+	Assert-AreEqual 1 $getResult.Records.Count
+	Validate-CAARecord $getResult.Records[0] 0 "issue" "contoso.org"
+
+	$listResult = Get-AzureRmDnsRecordSet -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType CAA
+
+	Assert-AreEqual 1 $listResult[0].Records.Count
+	Validate-CAARecord $listResult.Records[0] 0 "issue" "contoso.org"
+
+	$removed = $listResult[0] | Remove-AzureRmDnsRecordSet -Confirm:$false -PassThru
+
+	Assert-True { $removed }
+
+	Remove-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false
+	Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
+}
+
+function Test-RecordSetCAANonEmpty
+{
+	$zoneName = Get-RandomZoneName
+	$recordName = getAssetname
+    $resourceGroup = TestSetup-CreateResourceGroup 
+	$zone = $resourceGroup | New-AzureRmDnsZone -Name $zoneName 
+
+    $records = @()
+	$records += New-AzureRmDnsRecordConfig  -CaaFlags 1 -CaaTag issuewild -CaaValue "contoso.org"
+	$records += New-AzureRmDnsRecordConfig  -CaaFlags 0 -CaaTag issue -CaaValue "fabrikam.com"
+	$record = $zone | New-AzureRmDnsRecordSet -Name $recordName -Ttl 100 -RecordType CAA -DnsRecords $records
+
+	$record | Set-AzureRmDnsRecordSet
+	$getResult = Get-AzureRmDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType CAA
+	
+	Assert-AreEqual 2 $getResult.Records.Count
+	Validate-CAARecord $getResult.Records[0] 1 "issuewild" "contoso.org"
+	Validate-CAARecord $getResult.Records[1] 0 "issue" "fabrikam.com"
+
+	$removed = $getResult[0] | Remove-AzureRmDnsRecordSet -Confirm:$false -PassThru
+
+	Assert-True { $removed }
+
+	Remove-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false
+	Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
+}
+
 <#
 .SYNOPSIS
 New-AzureRmDnsRecordSet when the record set already exists

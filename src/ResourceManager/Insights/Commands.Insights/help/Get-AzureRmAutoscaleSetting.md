@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
+Module Name: AzureRM.Insights
 ms.assetid: 989CE245-FD1D-4E1D-90A2-2D7DA3975D0B
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.insights/get-azurermautoscalesetting
 schema: 2.0.0
 ---
 
@@ -13,7 +14,7 @@ Gets Autoscale settings.
 ## SYNTAX
 
 ```
-Get-AzureRmAutoscaleSetting -ResourceGroup <String> [-Name <String>] [-DetailedOutput] [<CommonParameters>]
+Get-AzureRmAutoscaleSetting -ResourceGroupName <String> [-Name <String>] [-DetailedOutput] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +25,7 @@ The **Get-AzureRmAutoscaleSetting** cmdlet gets all Autoscale settings associate
 ### Example 1: Get Autoscale settings
 ```
 PS C:\>Get-AzureRmAutoscaleSetting -ResourceGroup "Default-Web-EastUS" -DetailedOutput
-groupId    : /subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resourceGroups/Default-Web-EastUS/providers/microsoft. 
+resourceId : /subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resourceGroups/Default-Web-EastUS/providers/microsoft. 
              insights/autoscalesettings/DefaultServerFarm-Default-Web-EastUS
 Location   : East US
 Name       : DefaultServerFarm-Default-Web-EastUS
@@ -112,7 +113,7 @@ This command gets the Autoscale settings assigned to the resource group Default-
 
 ### Example 2: Get an Autoscale setting by name
 ```
-PS C:\>Get-AzureRmAutoscaleSetting -ResourceGroup "Default-Web-EastUS" -Name "DefaultServerFarm-Default-Web-EastUS" -DetailedOutput
+PS C:\>Get-AzureRmAutoscaleSetting -ResourceGroupName "Default-Web-EastUS" -Name "DefaultServerFarm-Default-Web-EastUS" -DetailedOutput
 resourceId : /subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resourceGroups/Default-Web-EastUS/providers/microsoft. 
              insights/autoscalesettings/DefaultServerFarm-Default-Web-EastUS
 Location   : East US
@@ -200,6 +201,21 @@ This command gets the Autoscale setting named DefaultServerFarm-Default-Web-East
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DetailedOutput
 Indicates that this operation displays full details in the output.
 
@@ -230,13 +246,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroup
+### -ResourceGroupName
 Specifies the name of the resource group.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: ResourceGroup
 
 Required: True
 Position: Named
@@ -252,7 +268,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleSettingResource]
+### List<PSAutoscaleSetting>
 
 ## NOTES
 
