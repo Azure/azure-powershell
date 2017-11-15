@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
+Module Name: AzureRM.DataLakeStore
 ms.assetid: B10B1F5D-5566-4129-9D42-05A6D3B72C9E
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datalakestore/export-azurermdatalakestoreitem
 schema: 2.0.0
 ---
 
@@ -12,18 +13,19 @@ Downloads a file from Data Lake Store.
 
 ## SYNTAX
 
-### No diagnostic logging (Default)
-```
-Export-AzureRmDataLakeStoreItem [-Account] <String> [-Path] <DataLakeStorePathInstance> [-Destination] <String>
- [-Recurse] [-Resume] [[-PerFileThreadCount] <Int32>] [[-ConcurrentFileCount] <Int32>] [-Force] [-WhatIf]
- [-Confirm] [<CommonParameters>]
-```
-
-### Include diagnostic logging
+### NoDiagnosticLogging (Default)
 ```
 Export-AzureRmDataLakeStoreItem [-Account] <String> [-Path] <DataLakeStorePathInstance> [-Destination] <String>
  [-Recurse] [-Resume] [[-PerFileThreadCount] <Int32>] [[-ConcurrentFileCount] <Int32>] [-Force]
- [-DiagnosticLogLevel <LogLevel>] -DiagnosticLogPath <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### IncludeDiagnosticLogging
+```
+Export-AzureRmDataLakeStoreItem [-Account] <String> [-Path] <DataLakeStorePathInstance> [-Destination] <String>
+ [-Recurse] [-Resume] [[-PerFileThreadCount] <Int32>] [[-ConcurrentFileCount] <Int32>] [-Force]
+ [-DiagnosticLogLevel <LogLevel>] -DiagnosticLogPath <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -71,6 +73,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Destination
 Specifies the local file path to which to download the file.
 
@@ -87,9 +104,11 @@ Accept wildcard characters: False
 ```
 
 ### -DiagnosticLogLevel
-Optionally indicates the diagnostic log level to use to record events during the file or folder import. Default is Error.```yaml
+Optionally indicates the diagnostic log level to use to record events during the file or folder import. Default is Error.
+
+```yaml
 Type: LogLevel
-Parameter Sets: Include diagnostic logging
+Parameter Sets: IncludeDiagnosticLogging
 Aliases: 
 Accepted values: Debug, Information, Error, None
 
@@ -101,9 +120,11 @@ Accept wildcard characters: False
 ```
 
 ### -DiagnosticLogPath
-Specifies the path for the diagnostic log to record events to during the file or folder import.```yaml
+Specifies the path for the diagnostic log to record events to during the file or folder import.
+
+```yaml
 Type: String
-Parameter Sets: Include diagnostic logging
+Parameter Sets: IncludeDiagnosticLogging
 Aliases: 
 
 Required: True

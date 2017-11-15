@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
 ms.assetid: 3B5B828A-6B3E-49BD-8BA9-916F8B69B8E9
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/get-azurestorageservicemetricsproperty
 schema: 2.0.0
 ---
 
@@ -95,7 +95,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### IStorageContext
+
+Parameter 'Context' accepts value of type 'IStorageContext' from the pipeline
+
 ## OUTPUTS
+
+### Microsoft.WindowsAzure.Storage.Shared.Protocol.MetricsProperties
 
 ## NOTES
 

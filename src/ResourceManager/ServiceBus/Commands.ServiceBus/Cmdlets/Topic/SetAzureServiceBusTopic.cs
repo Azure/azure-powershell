@@ -29,44 +29,48 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Topic
             Position = 0,
             HelpMessage = "The name of the resource group")]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroup { get; set; }
+        [Alias(AliasResourceGroup)]
+        public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "Namespace Name.")]
         [ValidateNotNullOrEmpty]
-        public string NamespaceName { get; set; }
+        [Alias(AliasNamespaceName)]
+        public string Namespace { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "Topic Name.")]
         [ValidateNotNullOrEmpty]
-        public string TopicName { get; set; }
+        [Alias(AliasTopicName)]
+        public string Name { get; set; }
         
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 3,
             HelpMessage = "ServiceBus Topic definition.")]
         [ValidateNotNullOrEmpty]
-        public TopicAttributes TopicObj { get; set; }
+        [Alias(AliasTopicObj)]
+        public TopicAttributes InputObject { get; set; }
 
         public override void ExecuteCmdlet()
         {
             TopicAttributes topicAttributes = new TopicAttributes();
-            if (TopicObj != null)
+            if (InputObject != null)
             {
-                topicAttributes = TopicObj;
+                topicAttributes = InputObject;
             }
             else
             {
                 //topicAttributes = TopicObj;
             }
             
-            if (ShouldProcess(target: TopicName, action: string.Format("Update Topic:{0} of NameSpace:{1}",TopicName,NamespaceName)))
+            if (ShouldProcess(target: Name, action: string.Format(Resources.UpdateTopic, Name, Namespace)))
             {
-                WriteObject(Client.CreateUpdateTopic(ResourceGroup, NamespaceName, topicAttributes.Name, topicAttributes));
+                WriteObject(Client.CreateUpdateTopic(ResourceGroupName, Namespace, topicAttributes.Name, topicAttributes));
             }
         }
     }

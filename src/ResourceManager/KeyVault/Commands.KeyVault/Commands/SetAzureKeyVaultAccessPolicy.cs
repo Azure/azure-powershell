@@ -71,6 +71,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             CertPerms.Managecontacts,
             CertPerms.Manageissuers,
             CertPerms.Setissuers,
+            CertPerms.Recover,
         };
 
         private readonly string[] StorageAllExpansion = {
@@ -232,7 +233,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = ByEmailAddress,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies certificate operation permissions to grant to a user or service principal.")]
-        [ValidateSet("get", "list", "delete", "create", "import", "update", "managecontacts", "getissuers", "listissuers", "setissuers", "deleteissuers", "manageissuers", "all")]
+        [ValidateSet("get", "list", "delete", "create", "import", "update", "managecontacts", "getissuers", "listissuers", "setissuers", "deleteissuers", "manageissuers", "recover", "purge", "all")]
         public string[] PermissionsToCertificates { get; set; }
 
         /// <summary>

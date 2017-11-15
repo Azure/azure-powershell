@@ -71,6 +71,7 @@ namespace Microsoft.Azure.Commands.Relay.Commands
         {            
             AuthorizationRuleAttributes sasRule = new AuthorizationRuleAttributes();
             sasRule.Rights = new List<string>();
+            sasRule.Name = Name;
 
             foreach (string test in Rights)
             {

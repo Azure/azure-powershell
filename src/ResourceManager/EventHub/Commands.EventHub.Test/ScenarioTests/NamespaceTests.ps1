@@ -49,6 +49,7 @@ function Get-AuthorizationRuleName
 	
 }
 
+
 <#
 .SYNOPSIS
 Tests EventHub Namespace AuthorizationRules Create List Remove operations.
@@ -59,27 +60,26 @@ function NamespaceAuthTests
     $location = Get-Location
 	$resourceGroupName = Get-ResourceGroupName
 	$namespaceName = Get-NamespaceName
-	$authRuleName = Get-AuthorizationRuleName	
+	$authRuleName = Get-AuthorizationRuleName
     
-    Write-Debug " Create resource group"    
+    Write-Debug " Create resource group"
     Write-Debug "ResourceGroup name : $resourceGroupName"
-    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force    
+    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force
     
     Write-Debug " Create new Eventhub namespace"
     Write-Debug "Namespace name : $namespaceName"
 	
-    $result = New-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -Location $location
-    Wait-Seconds 15
+    $result = New-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceName -Location $location
     
 	Write-Debug " Get the created namespace within the resource group"
-    $createdNamespace = Get-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName
+    $createdNamespace = Get-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceName
     
 	#Assert
     Assert-True {$createdNamespace.Name -eq $namespaceName} "Namespace created earlier is not found."
 
     Write-Debug "Create a Namespace Authorization Rule"    
     Write-Debug "Auth Rule name : $authRuleName"
-    $result = New-AzureRmEventHubNamespaceAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -AuthorizationRuleName $authRuleName -Rights @("Listen","Send")
+    $result = New-AzureRmEventHubAuthorizationRule -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $authRuleName -Rights @("Listen","Send")
 																																	  
 
     Assert-AreEqual $authRuleName $result.Name
@@ -88,7 +88,7 @@ function NamespaceAuthTests
     Assert-True { $result.Rights -Contains "Send" }
 
     Write-Debug "Get created authorizationRule"
-    $createdAuthRule = Get-AzureRmEventHubNamespaceAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -AuthorizationRuleName $authRuleName
+    $createdAuthRule = Get-AzureRmEventHubAuthorizationRule -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $authRuleName
 
     Assert-AreEqual $authRuleName $createdAuthRule.Name
     Assert-AreEqual 2 $createdAuthRule.Rights.Count
@@ -97,7 +97,7 @@ function NamespaceAuthTests
 
     Write-Debug "Get the default Namespace AuthorizationRule"
     $defaultNamespaceAuthRule = "RootManageSharedAccessKey"
-    $result = Get-AzureRmEventHubNamespaceAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -AuthorizationRuleName $defaultNamespaceAuthRule
+    $result = Get-AzureRmEventHubAuthorizationRule -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $defaultNamespaceAuthRule
 
     Assert-AreEqual $defaultNamespaceAuthRule $result.Name
     Assert-AreEqual 3 $result.Rights.Count
@@ -106,7 +106,7 @@ function NamespaceAuthTests
     Assert-True { $result.Rights -Contains "Manage" }  
 
     Write-Debug "Get All Namespace AuthorizationRule"
-    $result = Get-AzureRmEventHubNamespaceAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName 
+    $result = Get-AzureRmEventHubAuthorizationRule -ResourceGroup $resourceGroupName -Namespace $namespaceName 
     $count = $result.Count
     Write-Debug "Auth Rule Count : $count"
 
@@ -136,17 +136,16 @@ function NamespaceAuthTests
 	
     Write-Debug "Update Namespace AuthorizationRules"   
     $createdAuthRule.Rights.Add("Manage")
-    $updatedAuthRule = Set-AzureRmEventHubNamespaceAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -AuthRuleObj $createdAuthRule
+    $updatedAuthRule = Set-AzureRmEventHubAuthorizationRule -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $authRuleName -InputObj $createdAuthRule
     
     Assert-AreEqual $authRuleName $updatedAuthRule.Name
     Assert-AreEqual 3 $updatedAuthRule.Rights.Count
     Assert-True { $updatedAuthRule.Rights -Contains "Listen" }
     Assert-True { $updatedAuthRule.Rights -Contains "Send" }
-    Assert-True { $updatedAuthRule.Rights -Contains "Manage" }   
-    Wait-Seconds 15
+    Assert-True { $updatedAuthRule.Rights -Contains "Manage" }
     
     Write-Debug "Get updated Namespace AuthorizationRules"
-    $updatedAuthRule = Get-AzureRmEventHubNamespaceAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -AuthorizationRuleName $authRuleName
+    $updatedAuthRule = Get-AzureRmEventHubAuthorizationRule -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $authRuleName
     
     Assert-AreEqual $authRuleName $updatedAuthRule.Name
     Assert-AreEqual 3 $updatedAuthRule.Rights.Count
@@ -156,7 +155,7 @@ function NamespaceAuthTests
 
 
     Write-Debug "Get namespace authorizationRules connectionStrings"
-    $namespaceListKeys = Get-AzureRmEventHubNamespaceKey -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -AuthorizationRuleName $authRuleName
+    $namespaceListKeys = Get-AzureRmEventHubKey -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $authRuleName
 
     Assert-True {$namespaceListKeys.PrimaryConnectionString.Contains($updatedAuthRule.PrimaryKey)}
     Assert-True {$namespaceListKeys.SecondaryConnectionString.Contains($updatedAuthRule.SecondaryKey)}
@@ -164,21 +163,21 @@ function NamespaceAuthTests
 	Write-Debug "Regenrate Authorizationrules Keys"
 	$policyKey = "PrimaryKey"
 
-	$namespaceRegenerateKeys = New-AzureRmEventHubNameSpaceKey -ResourceGroup $resourceGroupName -NamespaceName $namespaceName  -AuthorizationRuleName $authRuleName -RegenerateKeys $policyKey
+	$namespaceRegenerateKeys = New-AzureRmEventHubKey -ResourceGroup $resourceGroupName -Namespace $namespaceName  -Name $authRuleName -RegenerateKey $policyKey
 	Assert-True {$namespaceRegenerateKeys.PrimaryKey -ne $namespaceListKeys.PrimaryKey}
 
 	$policyKey1 = "SecondaryKey"
 
-	$namespaceRegenerateKeys1 = New-AzureRmEventHubNameSpaceKey -ResourceGroup $resourceGroupName -NamespaceName $namespaceName  -AuthorizationRuleName $authRuleName -RegenerateKeys $policyKey1
+	$namespaceRegenerateKeys1 = New-AzureRmEventHubKey -ResourceGroup $resourceGroupName -Namespace $namespaceName  -Name $authRuleName -RegenerateKey $policyKey1
 	Assert-True {$namespaceRegenerateKeys1.SecondaryKey -ne $namespaceListKeys.SecondaryKey}
 
 
 	# Cleanup
     Write-Debug "Delete the created Namespace AuthorizationRule"
-    $result = Remove-AzureRmEventHubNamespaceAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -AuthorizationRuleName $authRuleName
+    $result = Remove-AzureRmEventHubAuthorizationRule -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $authRuleName -Force
     
     Write-Debug " Delete namespaces"
-    Remove-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName
+    Remove-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceName
 
 	Write-Debug " Delete resourcegroup"
 	Remove-AzureRmResourceGroup -Name $resourceGroupName -Force	   
@@ -186,9 +185,9 @@ function NamespaceAuthTests
 
 <#
 .SYNOPSIS
-Tests EventHub Namespace Create List Remove operations.
+Tests New parameter for EventHub Namespace Create List Remove operations.
 #>
-function NamespaceTests 
+function NamespaceTests
 {
     # Setup    
     $location = Get-Location
@@ -208,22 +207,20 @@ function NamespaceTests
      
     Write-Debug " Create new eventHub namespace"
     Write-Debug "NamespaceName : $namespaceName" 
-    $result = New-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -Location $location -SkuName "Standard" -SkuCapacity "1"
-    Wait-Seconds 15
+    $result = New-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceName -Location $location -SkuName "Standard" -SkuCapacity "1" -EnableAutoInflate -MaximumThroughputUnits 10
 	
 	# Assert 
 	Assert-True {$result.ProvisioningState -eq "Succeeded"}
 
     Write-Debug "Get the created namespace within the resource group"
-    $createdNamespace = Get-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName
+    $createdNamespace = Get-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceName
     Assert-True {$createdNamespace.Count -eq 1}
 
     Assert-True {$createdNamespace.Name -eq $namespaceName} "Namespace created earlier is not found."    
 	  
     
     Write-Debug "Namespace name : $namespaceName2" 
-    $result = New-AzureRmEventHubNamespace -ResourceGroup $secondResourceGroup -NamespaceName $namespaceName2 -Location $location
-    Wait-Seconds 15
+    $result = New-AzureRmEventHubNamespace -ResourceGroup $secondResourceGroup -Name $namespaceName2 -Location $location
 
     Write-Debug "Get all the namespaces created in the resourceGroup"
     $allCreatedNamespace = Get-AzureRmEventHubNamespace -ResourceGroup $secondResourceGroup 
@@ -237,8 +234,8 @@ function NamespaceTests
     Assert-True {$allCreatedNamespace.Count -ge 0} "Namespaces created earlier is not found."    
 
     Write-Debug " Delete namespaces"
-    Remove-AzureRmEventHubNamespace -ResourceGroup $secondResourceGroup -NamespaceName $namespaceName2
-    Remove-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName
+    Remove-AzureRmEventHubNamespace -ResourceGroup $secondResourceGroup -Name $namespaceName2
+    Remove-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceName
 
 	Write-Debug " Delete resourcegroup"
 	Remove-AzureRmResourceGroup -Name $resourceGroupName -Force

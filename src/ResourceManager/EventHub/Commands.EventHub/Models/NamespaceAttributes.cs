@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.EventHub.Models
     /// </summary>
     public class NamespaceAttributes
     {
-        public NamespaceAttributes(NamespaceResource evResource)
+        public NamespaceAttributes(EHNamespace evResource)
         {
             if (evResource != null)
             {
@@ -37,26 +37,39 @@ namespace Microsoft.Azure.Commands.EventHub.Models
                 };
                 if (evResource.ProvisioningState != null)
                     ProvisioningState = evResource.ProvisioningState;
-                if(evResource.Status.HasValue)
-                    Status = (Microsoft.Azure.Commands.EventHub.Models.NamespaceState)evResource.Status;
-                if(evResource.CreatedAt.HasValue)
+
+                if (evResource.CreatedAt.HasValue)
                     CreatedAt = evResource.CreatedAt;
+
                 if(evResource.UpdatedAt.HasValue)
                     UpdatedAt = evResource.UpdatedAt;
+
                 if(evResource.ServiceBusEndpoint != null)
-                    ServiceBusEndpoint = evResource.ServiceBusEndpoint;               
-                if(evResource.Enabled.HasValue)
-                    Enabled = evResource.Enabled;
-                if(evResource.Location != null)
+                    ServiceBusEndpoint = evResource.ServiceBusEndpoint;
+                if (evResource.Location != null)
                     Location = evResource.Location;
+
                 if(evResource.Id != null)
                     Id = evResource.Id;
+
                 if (evResource.Name != null)
                     Name = evResource.Name;
-                
+
+                if (evResource.IsAutoInflateEnabled.HasValue)
+                    IsAutoInflateEnabled = evResource.IsAutoInflateEnabled;
+
+                if (evResource.MaximumThroughputUnits.HasValue)
+                    MaximumThroughputUnits = evResource.MaximumThroughputUnits;
+
+                ResourceGroup = Regex.Split(evResource.Id, @"/")[4];
+
             }
         }
-                
+        
+        /// <summary>
+        /// Gets the resourcegroup name
+        /// </summary>
+        public string ResourceGroup { get; }
         /// <summary>
         /// Gets or sets the Id of the Namespace
         /// </summary>
@@ -80,15 +93,7 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         /// Provisioning state of the Namespace.
         /// </summary>
         public string ProvisioningState { get; set; }
-
-        /// <summary>
-        /// State of the namespace. Possible values include: 'Unknown',
-        /// 'Creating', 'Created', 'Activating', 'Enabling', 'Active',
-        /// 'Disabling', 'Disabled', 'SoftDeleting', 'SoftDeleted',
-        /// 'Removing', 'Removed', 'Failed'
-        /// </summary>
-        public Models.NamespaceState? Status { get; set; }
-
+                
         /// <summary>
         /// The time the namespace was created.
         /// </summary>
@@ -105,8 +110,17 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         public string ServiceBusEndpoint { get; set; }
         
         /// <summary>
-        /// Specifies whether this instance is enabled.
+        /// Gets or sets value that indicates whether AutoInflate is enabled
+        /// for eventhub namespace.
         /// </summary>
-        public bool? Enabled { get; set; }
+        public bool? IsAutoInflateEnabled { get; set; }
+
+        /// <summary>
+        /// Gets or sets upper limit of throughput units when AutoInflate is
+        /// enabled, vaule should be within 0 to 20 throughput units. ( '0' if
+        /// AutoInflateEnabled = true)
+        /// </summary>
+        public int? MaximumThroughputUnits { get; set; }
+
     }
 }

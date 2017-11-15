@@ -27,12 +27,13 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             TestExecutionHelpers.SetUpSessionAndProfile();
         }
-
+        
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ConsumerGroupsCRUD()
         {
             EventHubsController.NewInstance.RunPsTest("ConsumerGroupsTests");
         }
+        
     }
 }

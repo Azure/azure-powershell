@@ -36,9 +36,9 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         private IList<PSResourceFile> commonResourceFiles;
         
-        public PSMultiInstanceSettings(int numberOfInstances)
+        public PSMultiInstanceSettings(string coordinationCommandLine, System.Nullable<int> numberOfInstances = null)
         {
-            this.omObject = new Microsoft.Azure.Batch.MultiInstanceSettings(numberOfInstances);
+            this.omObject = new Microsoft.Azure.Batch.MultiInstanceSettings(coordinationCommandLine, numberOfInstances);
         }
         
         internal PSMultiInstanceSettings(Microsoft.Azure.Batch.MultiInstanceSettings omObject)
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public int NumberOfInstances
+        public System.Int32? NumberOfInstances
         {
             get
             {

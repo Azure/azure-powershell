@@ -156,5 +156,15 @@ namespace Microsoft.Azure.Commands.Automation.Common
         /// Parameter set for NodeConfiguration
         /// </summary>
         internal const string ByNodeConfiguration = "ByNodeConfiguration";
+
+        /// <summary>
+        /// Parameter set for ByNodeConfigurationBuild
+        /// </summary>
+        internal const string ByNodeConfigurationBuild = "ByNodeConfigurationBuild";
+
+        /// <summary>
+        /// Parameter set for ByInputObject
+        /// </summary>
+        internal const string ByInputObject = "ByInputObject";
     }
 }

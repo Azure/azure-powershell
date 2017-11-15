@@ -43,8 +43,8 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
 
         public GetAzureRmAutoscaleHistoryTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             TestExecutionHelpers.SetUpSessionAndProfile();
-            //ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             insightsEventOperationsMock = new Mock<IActivityLogsOperations>();
             MonitorClientMock = new Mock<MonitorClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
@@ -87,7 +87,6 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
                 requiredFieldName: "resourceType",
                 requiredFieldValue: GetAzureRmAutoscaleHistoryCommand.AutoscaleResourceType,
                 filter: ref this.filter,
-                selected: ref this.selected,
                 startDate: startDate,
                 nextLink: ref this.nextLink);
         }

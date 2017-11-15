@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
-online version: https://msdn.microsoft.com/en-us/library/dn868052.aspx
+Module Name: AzureRM.KeyVault
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/add-azurekeyvaultmanagedstorageaccount
 schema: 2.0.0
 ---
 
@@ -14,7 +15,8 @@ Adds an existing Azure Storage Account to the specified key vault for its keys t
 ```
 Add-AzureKeyVaultManagedStorageAccount [-VaultName] <String> [-AccountName] <String>
  [-AccountResourceId] <String> [-ActiveKeyName] <String> [-DisableAutoRegenerateKey]
- [-RegenerationPeriod <TimeSpan>] [-Disable] [-Tag <Hashtable>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-RegenerationPeriod <TimeSpan>] [-Disable] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -66,7 +68,9 @@ Accept wildcard characters: False
 ```
 
 ### -AccountResourceId
-Azure resource id of the storage account.```yaml
+Azure resource id of the storage account.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: StorageAccountResourceId
@@ -84,7 +88,7 @@ Name of the storage account key that must be used for generating sas tokens.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 3
@@ -93,13 +97,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: SwitchParameter
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: cf
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -114,7 +118,7 @@ Disables the use of managed storage account's key for generation of sas tokens.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -131,7 +135,7 @@ storage account are not auto regenerated.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -147,7 +151,7 @@ which managed storage account's inactive keygets auto regenerated and becomes th
 ```yaml
 Type: TimeSpan
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -180,12 +184,27 @@ Cmdlet constructs the FQDN of a vault based on the name and currently selected e
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -212,7 +231,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-Microsoft.Azure.Commands.KeyVault.Models.ManagedStorageAccount
+### Microsoft.Azure.Commands.KeyVault.Models.ManagedStorageAccount
 
 ## NOTES
 

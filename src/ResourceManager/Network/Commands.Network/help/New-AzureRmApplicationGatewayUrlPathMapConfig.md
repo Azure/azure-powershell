@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+Module Name: AzureRM.Network
 ms.assetid: F312FD6E-AF0F-4901-B763-741E1B46A654
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermapplicationgatewayurlpathmapconfig
 schema: 2.0.0
 ---
 
@@ -17,7 +18,7 @@ Creates an array of URL path mappings to a backend server pool.
 New-AzureRmApplicationGatewayUrlPathMapConfig -Name <String>
  -PathRules <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayPathRule]>
  [-DefaultBackendAddressPoolId <String>] [-DefaultBackendHttpSettingsId <String>]
- [-DefaultRedirectConfigurationId <String>] [<CommonParameters>]
+ [-DefaultRedirectConfigurationId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SetByResource
@@ -26,7 +27,8 @@ New-AzureRmApplicationGatewayUrlPathMapConfig -Name <String>
  -PathRules <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayPathRule]>
  [-DefaultBackendAddressPool <PSApplicationGatewayBackendAddressPool>]
  [-DefaultBackendHttpSettings <PSApplicationGatewayBackendHttpSettings>]
- [-DefaultRedirectConfiguration <PSApplicationGatewayRedirectConfiguration>] [<CommonParameters>]
+ [-DefaultRedirectConfiguration <PSApplicationGatewayRedirectConfiguration>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -103,6 +105,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultRedirectConfiguration
 Application gateway default RedirectConfiguration
 
@@ -170,6 +187,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayUrlPathMap
 
 ## NOTES
 

@@ -130,7 +130,7 @@ function Test-SetTransparentDataEncryptionProtector
 		Assert-AreEqual $params.keyId $keyResult.Uri
 
 		# Rotate to AKV
-		$encProtector2 = Set-AzureRmSqlServerTransparentDataEncryptionProtector -ResourceGroupName $params.rgName -ServerName $params.serverName -Type AzureKeyVault -KeyId $params.keyId
+		$encProtector2 = Set-AzureRmSqlServerTransparentDataEncryptionProtector -ResourceGroupName $params.rgName -ServerName $params.serverName -Type AzureKeyVault -KeyId $params.keyId -Force
 		Assert-AreEqual AzureKeyVault $encProtector2.Type 
 		Assert-AreEqual $params.serverKeyName $encProtector2.ServerKeyVaultKeyName 
 

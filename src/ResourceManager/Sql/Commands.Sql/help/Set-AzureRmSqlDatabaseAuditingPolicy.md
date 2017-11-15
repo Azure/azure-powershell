@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
+Module Name: AzureRM.Sql
 ms.assetid: F7EF35E3-BC53-43D9-A71E-0B4316260A08
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/set-azurermsqldatabaseauditingpolicy
 schema: 2.0.0
 ---
 
@@ -17,7 +18,7 @@ Set-AzureRmSqlDatabaseAuditingPolicy [-AuditType <AuditType>] [-PassThru]
  [-AuditActionGroup <AuditActionGroups[]>] [-AuditAction <String[]>] [-EventType <String[]>]
  [-StorageAccountName <String>] [-StorageKeyType <String>] [-RetentionInDays <UInt32>]
  [-TableIdentifier <String>] [-ServerName] <String> [-DatabaseName] <String> [-ResourceGroupName] <String>
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,7 +30,7 @@ You can also define retention for the audit logs table by setting the value of t
 Specify the *EventType* parameter to define which event types to audit.
 
 After the cmdlet runs successfully, auditing of the database is enabled.
-If the database used the policy of its server for auditing before you ran this cmdlet, auditing stops using that policy.
+For Table Auditing, if the database used the policy of its server for auditing before you ran this cmdlet, auditing stops using that policy. For Blob Auditing, if the database used the policy of its server for auditing before you ran this cmdlet, both auditing policies will exist side-by-side.
 If the cmdlet succeeds and you use the *PassThru* parameter, it returns an object describing the current auditing policy in addition to the database identifiers.
 Database identifiers include, but are not limited to, **ResourceGroupName**, **ServerName**, and **DatabaseName**.
 
@@ -68,6 +69,9 @@ The command does not change the storage settings.
 ## PARAMETERS
 
 ### -AuditAction
+Specify one or more audit actions.
+This parameter is only applicable to Blob auditing.
+
 ```yaml
 Type: String[]
 Parameter Sets: (All)
@@ -81,6 +85,9 @@ Accept wildcard characters: False
 ```
 
 ### -AuditActionGroup
+Specify one or more audit action groups.
+This parameter is only applicable to Blob auditing.
+
 ```yaml
 Type: AuditActionGroups[]
 Parameter Sets: (All)
@@ -123,22 +130,24 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EventType
 Specifies the event types to audit.
-The acceptable values for this parameter are:
-
-- PlainSQL_Success
-- PlainSQL_Failure
-- ParameterizedSQL_Success
-- ParameterizedSQL_Failure
-- StoredProcedure_Success
-- StoredProcedure_Failure
-- Login_Success
-- Login_Failure 
-- TransactionManagement_Success
-- TransactionManagement_Failure
-- All
-- None
+This parameter is only applicable to Table auditing.
 
 You can specify several event types.
 You can specify All to audit all of the event types or None to specify that no events will be audited.

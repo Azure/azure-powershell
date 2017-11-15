@@ -25,22 +25,22 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// Gets the policy definition.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmPolicyDefinition", DefaultParameterSetName = GetAzurePolicyDefinitionCmdlet.ParameterlessSet), OutputType(typeof(PSObject))]
-    public class GetAzurePolicyDefinitionCmdlet : PolicyDefinitionCmdletBase
+    public class GetAzurePolicyDefinitionCmdlet : PolicyCmdletBase
     {
         /// <summary>
         /// The policy Id parameter set.
         /// </summary>
-        internal const string PolicyDefinitionIdParameterSet = "The policy definition Id parameter set.";
+        internal const string PolicyDefinitionIdParameterSet = "GetByPolicyDefinitionId";
 
         /// <summary>
         /// The policy name parameter set.
         /// </summary>
-        internal const string PolicyDefinitionNameParameterSet = "The policy definition name parameter set.";
+        internal const string PolicyDefinitionNameParameterSet = "GetByPolicyDefintionName";
 
         /// <summary>
         /// The list all policy parameter set.
         /// </summary>
-        internal const string ParameterlessSet = "The list all policy definitions parameter set.";
+        internal const string ParameterlessSet = "GetAllPolicyDefinitions";
 
         /// <summary>
         /// Gets or sets the policy definition name parameter.
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 getFirstPage: () => this.GetResources(),
                 getNextPage: nextLink => this.GetNextLink<JObject>(nextLink),
                 cancellationToken: this.CancellationToken,
-                action: resources => this.WriteObject(sendToPipeline: this.GetOutputObjects(resources), enumerateCollection: true));
+                action: resources => this.WriteObject(sendToPipeline: this.GetOutputObjects("PolicyDefinitionId", resources), enumerateCollection: true));
         }
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             string resourceId = this.Id ?? this.GetResourceId();
 
-            var apiVersion = string.IsNullOrWhiteSpace(this.ApiVersion) ? Constants.PolicyApiVersion : this.ApiVersion;
+            var apiVersion = string.IsNullOrWhiteSpace(this.ApiVersion) ? Constants.PolicyDefinitionApiVersion : this.ApiVersion;
 
             if (!string.IsNullOrEmpty(ResourceIdUtility.GetResourceName(resourceId)))
             {

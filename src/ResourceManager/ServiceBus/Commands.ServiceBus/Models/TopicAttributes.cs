@@ -15,6 +15,7 @@
 using Microsoft.Azure.Management.ServiceBus.Models;
 using System;
 using System.Collections.Generic;
+using System.Xml;
 
 namespace Microsoft.Azure.Commands.ServiceBus.Models
 {
@@ -24,24 +25,19 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         public TopicAttributes()
         { }
 
-        public TopicAttributes(TopicResource topicResource)
+        public TopicAttributes(SBTopic topicResource)
         {
             if (topicResource != null)
             {
                 AccessedAt = topicResource.AccessedAt;
-                AutoDeleteOnIdle = topicResource.AutoDeleteOnIdle;
-                EntityAvailabilityStatus = topicResource.EntityAvailabilityStatus;
+                AutoDeleteOnIdle = XmlConvert.ToString((TimeSpan)topicResource.AutoDeleteOnIdle);                
                 CreatedAt = topicResource.CreatedAt;
                 CountDetails = topicResource.CountDetails;
-                DefaultMessageTimeToLive = topicResource.DefaultMessageTimeToLive;
-                DuplicateDetectionHistoryTimeWindow = topicResource.DuplicateDetectionHistoryTimeWindow;
+                DefaultMessageTimeToLive = XmlConvert.ToString((TimeSpan)topicResource.DefaultMessageTimeToLive);
+                DuplicateDetectionHistoryTimeWindow = XmlConvert.ToString((TimeSpan)topicResource.DuplicateDetectionHistoryTimeWindow);
                 EnableBatchedOperations = topicResource.EnableBatchedOperations;
                 EnableExpress = topicResource.EnableExpress;
-                EnablePartitioning = topicResource.EnablePartitioning;
-                EnableSubscriptionPartitioning = topicResource.EnableSubscriptionPartitioning;
-                FilteringMessagesBeforePublishing = topicResource.FilteringMessagesBeforePublishing;
-                IsAnonymousAccessible = topicResource.IsAnonymousAccessible;
-                IsExpress = topicResource.IsExpress;
+                EnablePartitioning = topicResource.EnablePartitioning;                
                 MaxSizeInMegabytes = topicResource.MaxSizeInMegabytes;
                 RequiresDuplicateDetection = topicResource.RequiresDuplicateDetection;
                 SizeInBytes = topicResource.SizeInBytes;
@@ -52,8 +48,6 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
                 Name = topicResource.Name;
                 Id = topicResource.Id;
                 Type = topicResource.Type;
-                Location = topicResource.Location;
-                
             }
         }
 
@@ -62,10 +56,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// </summary> 
         public string Name { get; set; }
 
-        /// <summary>
-        /// location of the resource.
-        /// </summary> 
-        public string Location { get; set; }
+        
 
         /// <summary>
         /// Id of the resource.
@@ -87,13 +78,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// TimeSpan idle interval after which the topic is automatically
         /// deleted. The minimum duration is 5 minutes.
         /// </summary>
-        public string AutoDeleteOnIdle { get; set; }
-
-        /// <summary>
-        /// Entity availability status for the topic. Possible values include:
-        /// 'Available', 'Limited', 'Renaming', 'Restoring', 'Unknown'
-        /// </summary>
-        public EntityAvailabilityStatus? EntityAvailabilityStatus { get; set; }
+        public string AutoDeleteOnIdle { get; set; }        
 
         /// <summary>
         /// Exact time the message was created.
@@ -136,31 +121,12 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// multiple message brokers is enabled.
         /// </summary>
         public bool? EnablePartitioning { get; set; }
-
-        /// <summary>
-        /// Value that indicates whether partitioning is enabled or disabled..
-        /// </summary>
-        public bool? EnableSubscriptionPartitioning { get; set; }
-
-        /// <summary>
-        /// Whether messages should be filtered before publishing.
-        /// </summary>
-        public bool? FilteringMessagesBeforePublishing { get; set; }
-
-        /// <summary>
-        /// Value that indicates whether the message is anonymous accessible.
-        /// </summary>
-        public bool? IsAnonymousAccessible { get; set; }
-
-        /// <summary>
-        /// </summary>
-        public bool? IsExpress { get; set; }
-
+                
         /// <summary>
         /// Maximum size of the topic in megabytes, which is the size of
         /// memory allocated for the topic.
         /// </summary>
-        public long? MaxSizeInMegabytes { get; set; }
+        public int? MaxSizeInMegabytes { get; set; }
 
         /// <summary>
         /// Value indicating if this topic requires duplicate detection.
@@ -196,6 +162,5 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         
         public DateTime? UpdatedAt { get; set; }
         
-
     }
 }

@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.SiteRecovery.dll-Help.xml
+Module Name: AzureRM
 ms.assetid: 2FB62869-FF83-4D92-B08B-07AF3C393159
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.siterecovery/remove-azurermsiterecoveryservicesprovider
 schema: 2.0.0
 ---
 
@@ -13,8 +14,8 @@ Removes an Azure Site Recovery Services Provider.
 ## SYNTAX
 
 ```
-Remove-AzureRmSiteRecoveryServicesProvider -ServicesProvider <ASRRecoveryServicesProvider> [-Force] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzureRmSiteRecoveryServicesProvider -ServicesProvider <ASRRecoveryServicesProvider> [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,6 +24,21 @@ The **Remove-AzureRmSiteRecoveryServicesProvider** cmdlet removes an Azure Site 
 ## EXAMPLES
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Force
 Forces the command to run without asking for user confirmation.
@@ -90,6 +106,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### ASRRecoveryServicesProvider
+Parameter 'ServicesProvider' accepts value of type 'ASRRecoveryServicesProvider' from the pipeline
 
 ## OUTPUTS
 

@@ -38,7 +38,7 @@ function Test-AzureRmIotHubLifecycle
 	$resourceGroup = New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location 
 
 	Write-Debug " Create new eventHub " 
-	$namespaceName = "IotHubPSEHNamespaceTest"
+	$namespaceName = "IotHubPSEHNamespace1Test"
     $result = New-AzureRmEventHubNamespace -ResourceGroup $ResourceGroupName -NamespaceName $namespaceName -Location $Location
 
 	Wait-Seconds 15
@@ -50,7 +50,7 @@ function Test-AzureRmIotHubLifecycle
 	$eventHubName = "IotHubPSEHTest"
 	$msgRetentionInDays = 3
 	$partionCount = 2
-    $result = New-AzureRmEventHub -ResourceGroup $ResourceGroupName -NamespaceName $namespaceName -Location $Location -EventHubName $eventHubName -MessageRetentionInDays $msgRetentionInDays -PartitionCount $partionCount
+    $result = New-AzureRmEventHub -ResourceGroup $ResourceGroupName -NamespaceName $namespaceName -EventHubName $eventHubName -MessageRetentionInDays $msgRetentionInDays -PartitionCount $partionCount
 
 	# Create AuthRule
 	$authRuleName = "IotHubPSEHAuthRule"

@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.LogicApp.dll-Help.xml
+Module Name: AzureRM.LogicApp
 ms.assetid: 5FDD6C6A-9F6A-44C3-B332-B528F648DFDB
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.logicapp/set-azurermintegrationaccountagreement
 schema: 2.0.0
 ---
 
@@ -17,7 +18,8 @@ Set-AzureRmIntegrationAccountAgreement -ResourceGroupName <String> -Name <String
  [-AgreementType <String>] [-GuestPartner <String>] [-HostPartner <String>] [-GuestIdentityQualifier <String>]
  [-GuestIdentityQualifierValue <String>] [-HostIdentityQualifier <String>]
  [-HostIdentityQualifierValue <String>] [-AgreementContent <String>] [-AgreementContentFilePath <String>]
- [-Metadata <Object>] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Metadata <Object>] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -124,6 +126,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Force
 Forces the command to run without asking for user confirmation.
 
@@ -155,7 +172,9 @@ Accept wildcard characters: False
 ```
 
 ### -GuestIdentityQualifierValue
-The integration account agreement guest identity qualifier value.```yaml
+The integration account agreement guest identity qualifier value.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
@@ -198,7 +217,9 @@ Accept wildcard characters: False
 ```
 
 ### -HostIdentityQualifierValue
-The integration account agreement host identity qualifier value.```yaml
+The integration account agreement host identity qualifier value.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 

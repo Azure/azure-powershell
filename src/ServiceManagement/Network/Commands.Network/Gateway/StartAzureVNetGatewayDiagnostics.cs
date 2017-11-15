@@ -14,6 +14,7 @@
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway
 {
+    using Azure.Commands.Common.Authentication.Abstractions;
     using System.Management.Automation;
     using WindowsAzure.Commands.Common.Storage;
     using WindowsAzure.Commands.Utilities.Common;
@@ -31,7 +32,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway
         public string ContainerName { get; set; }
 
         [Parameter(Position = 3, Mandatory = true, HelpMessage = "The object used to access the customer's storage account. This can be created using the Get-AzureStorageContext cmdlet.")]
-        public AzureStorageContext StorageContext { get; set; }
+        public IStorageContext StorageContext { get; set; }
 
         public override void ExecuteCmdlet()
         {

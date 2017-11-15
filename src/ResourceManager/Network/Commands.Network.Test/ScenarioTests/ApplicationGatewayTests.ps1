@@ -87,7 +87,8 @@ function Test-ApplicationGatewayCRUD
 	$nic01Name = Get-ResourceName
 	$nic02Name = Get-ResourceName
 	$authCertName = Get-ResourceName
-	$probeHttpsName = Get-ResourceName
+	$probe01Name = Get-ResourceName
+	$probe02Name = Get-ResourceName
 
 	try 
 	{
@@ -104,7 +105,6 @@ function Test-ApplicationGatewayCRUD
 
 		# Create public ip
 		$publicip = New-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic
-		#$publicip = Get-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $publicIpName 
 
 		# create 2 nics to add to backend
 		$nic01 = New-AzureRmNetworkInterface -Name $nic01Name -ResourceGroupName $rgname -Location $location -Subnet $nicSubnet
@@ -125,18 +125,33 @@ function Test-ApplicationGatewayCRUD
 
 		$authCertFilePath = $basedir + "\ScenarioTests\Data\ApplicationGatewayAuthCert.cer"
 		$authcert01 = New-AzureRmApplicationGatewayAuthenticationCertificate -Name $authCertName -CertificateFile $authCertFilePath
-		$probeHttps = New-AzureRmApplicationGatewayProbeConfig -Name $probeHttpsName -Protocol Https -HostName "probe.com" -Path "/path/path.htm" -Interval 89 -Timeout 88 -UnhealthyThreshold 8
+		
+		# Create match with undefined statuscode list
+		$match1 = New-AzureRmApplicationGatewayProbeHealthResponseMatch -Body "helloworld"
+		Assert-Null $match1.StatusCodes
+		
+		$probe01 = New-AzureRmApplicationGatewayProbeConfig -Name $probe01Name -Match $match1 -Protocol Http -HostName "probe.com" -Path "/path/path.htm" -Interval 89 -Timeout 88 -UnhealthyThreshold 8
 		
 		$connectionDraining01 = New-AzureRmApplicationGatewayConnectionDraining -Enabled $True -DrainTimeoutInSec 42
-		$poolSetting01 = New-AzureRmApplicationGatewayBackendHttpSettings -Name $poolSetting01Name -Port 80 -Protocol Http -CookieBasedAffinity Disabled -ConnectionDraining $connectionDraining01
+		$poolSetting01 = New-AzureRmApplicationGatewayBackendHttpSettings -Name $poolSetting01Name -Port 80 -Protocol Http -Probe $probe01 -CookieBasedAffinity Disabled -ConnectionDraining $connectionDraining01
 		Assert-NotNull $poolSetting01.connectionDraining
 		Assert-AreEqual $True $poolSetting01.connectionDraining.Enabled
 		Assert-AreEqual 42 $poolSetting01.connectionDraining.DrainTimeoutInSec
+		Assert-NotNull $poolSetting01.Probe
 		
-		$poolSetting02 = New-AzureRmApplicationGatewayBackendHttpSettings -Name $poolSetting02Name -Port 443 -Protocol Https -Probe $probeHttps -CookieBasedAffinity Enabled -AuthenticationCertificates $authcert01
+		# Create match with empty statuscode list
+		$match2 = New-AzureRmApplicationGatewayProbeHealthResponseMatch -Body "helloworld" -StatusCode "200"
+		Assert-NotNull $match2.StatusCodes
+		$match2.StatusCodes.RemoveAt(0)
+		Assert-AreEqual 0 $match2.StatusCodes.Count
+
+		$probe02 = New-AzureRmApplicationGatewayProbeConfig -Name $probe02Name -Match $match2 -Protocol Https -HostName "probe.com" -Path "/path/path.htm" -Interval 89 -Timeout 88 -UnhealthyThreshold 8
+
+		$poolSetting02 = New-AzureRmApplicationGatewayBackendHttpSettings -Name $poolSetting02Name -Probe $probe02 -Port 443 -Protocol Https -CookieBasedAffinity Enabled -AuthenticationCertificates $authcert01
 		Assert-Null $poolSetting02.connectionDraining
+		Assert-NotNull $poolSetting02.Probe
 		
-		#Test setting and removing connectiondraining
+		# Test setting and removing connectiondraining
 		Set-AzureRmApplicationGatewayConnectionDraining -BackendHttpSettings $poolSetting02 -Enabled $False -DrainTimeoutInSec 3600
 		$connectionDraining02 = Get-AzureRmApplicationGatewayConnectionDraining -BackendHttpSettings $poolSetting02
 		Assert-NotNull $connectionDraining02
@@ -160,7 +175,7 @@ function Test-ApplicationGatewayCRUD
 		$firewallConfig = New-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -Enabled $true -FirewallMode Prevention -RuleSetType "OWASP" -RuleSetVersion "2.2.9" -DisabledRuleGroups $disabledRuleGroup1,$disabledRuleGroup2
 
 		# Create Application Gateway
-		$appgw = New-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Location $location -Probes $probeHttps -BackendAddressPools $pool, $nicPool -BackendHttpSettingsCollection $poolSetting01,$poolSetting02 -FrontendIpConfigurations $fipconfig01, $fipconfig02  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01, $fp02 -HttpListeners $listener01, $listener02 -RequestRoutingRules $rule01, $rule02 -Sku $sku -SslPolicy $sslPolicy -AuthenticationCertificates $authcert01 -WebApplicationFirewallConfiguration $firewallConfig
+		$appgw = New-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Location $location -Probes $probe01, $probe02 -BackendAddressPools $pool, $nicPool -BackendHttpSettingsCollection $poolSetting01,$poolSetting02 -FrontendIpConfigurations $fipconfig01, $fipconfig02  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01, $fp02 -HttpListeners $listener01, $listener02 -RequestRoutingRules $rule01, $rule02 -Sku $sku -SslPolicy $sslPolicy -AuthenticationCertificates $authcert01 -WebApplicationFirewallConfiguration $firewallConfig
 
 		# Get Application Gateway
 		$getgw = Get-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname
@@ -169,6 +184,21 @@ function Test-ApplicationGatewayCRUD
 		Compare-ConnectionDraining $poolSetting01 $getgw.BackendHttpSettingsCollection[0]
 		Compare-ConnectionDraining $poolSetting02 $getgw.BackendHttpSettingsCollection[1]
 		Compare-WebApplicationFirewallConfiguration $firewallConfig $getgw.WebApplicationFirewallConfiguration
+
+		# Check probes
+		Assert-NotNull $getgw.Probes
+		Assert-AreEqual 2 $getgw.Probes.Count
+
+		# Check that statuscode of probe[0] is still null
+		Assert-NotNull $getgw.Probes[0]
+		Assert-NotNull $getgw.Probes[0].Match
+		Assert-Null $getgw.Probes[0].Match.StatusCodes
+
+		# Check that statuscode of probe[1] is still an emtpy list
+		Assert-NotNull $getgw.Probes[1]
+		Assert-NotNull $getgw.Probes[1].Match
+		Assert-NotNull $getgw.Probes[1].Match.StatusCodes
+		Assert-AreEqual 0 $getgw.Probes[1].Match.StatusCodes.Count
 
 		# Get Application Gateway backend health with expanded resource
 		$backendHealth = Get-AzureRmApplicationGatewayBackendHealth -Name $appgwName -ResourceGroupName $rgname -ExpandResource "backendhealth/applicationgatewayresource"
@@ -316,6 +346,9 @@ function Test-ApplicationGatewayCRUD2
 	$listener01Name = Get-ResourceName
 	$listener02Name = Get-ResourceName
 
+	$sslCert01Name = Get-ResourceName
+	$sslCert02Name = Get-ResourceName
+
 	$poolName = Get-ResourceName
 	$poolSetting01Name = Get-ResourceName
 
@@ -346,18 +379,22 @@ function Test-ApplicationGatewayCRUD2
 		# Create ip configuration
 		$gipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name $gipconfigname -Subnet $gwSubnet
 
-		#frontend part
+		# frontend part
+		$pw01 = ConvertTo-SecureString "P@ssw0rd" -AsPlainText -Force
+		$sslCert01Path = $basedir + "\ScenarioTests\Data\ApplicationGatewaySslCert1.pfx"
+		$sslCert01 = New-AzureRmApplicationGatewaySslCertificate -Name $sslCert01Name -CertificateFile $sslCert01Path -Password $pw01
+
 		$fipconfig = New-AzureRmApplicationGatewayFrontendIPConfig -Name $fipconfigName -PublicIPAddress $publicip
-		$fp01 = New-AzureRmApplicationGatewayFrontendPort -Name $frontendPort01Name  -Port 80
-		$fp02 = New-AzureRmApplicationGatewayFrontendPort -Name $frontendPort02Name  -Port 81
-		$listener01 = New-AzureRmApplicationGatewayHttpListener -Name $listener01Name -Protocol Http -FrontendIPConfiguration $fipconfig -FrontendPort $fp01
+		$fp01 = New-AzureRmApplicationGatewayFrontendPort -Name $frontendPort01Name  -Port 443
+		$fp02 = New-AzureRmApplicationGatewayFrontendPort -Name $frontendPort02Name  -Port 80
+		$listener01 = New-AzureRmApplicationGatewayHttpListener -Name $listener01Name -Protocol Https -SslCertificate $sslCert01 -FrontendIPConfiguration $fipconfig -FrontendPort $fp01
 		$listener02 = New-AzureRmApplicationGatewayHttpListener -Name $listener02Name -Protocol Http -FrontendIPConfiguration $fipconfig -FrontendPort $fp02
 
 		# backend part
 		$pool = New-AzureRmApplicationGatewayBackendAddressPool -Name $poolName -BackendIPAddresses www.microsoft.com, www.bing.com
 		$match = New-AzureRmApplicationGatewayProbeHealthResponseMatch -Body "helloworld" -StatusCode "200-300","404"
 		$probeHttp = New-AzureRmApplicationGatewayProbeConfig -Name $probeHttpName -Protocol Http -HostName "probe.com" -Path "/path/path.htm" -Interval 89 -Timeout 88 -UnhealthyThreshold 8 -Match $match
-		$poolSetting01 = New-AzureRmApplicationGatewayBackendHttpSettings -Name $poolSetting01Name -Port 80 -Protocol Http -Probe $probeHttp -CookieBasedAffinity Enabled -ProbeEnabled -PickHostNameFromBackendAddress
+		$poolSetting01 = New-AzureRmApplicationGatewayBackendHttpSettings -Name $poolSetting01Name -Port 80 -Protocol Http -Probe $probeHttp -CookieBasedAffinity Enabled -PickHostNameFromBackendAddress
 
 		# rule part
 		$redirect01 = New-AzureRmApplicationGatewayRedirectConfiguration -Name $redirect01Name -RedirectType Permanent -TargetListener $listener01
@@ -371,7 +408,7 @@ function Test-ApplicationGatewayCRUD2
 		$sslPolicy = New-AzureRmApplicationGatewaySslPolicy -PolicyType Custom -MinProtocolVersion TLSv1_1 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA", "TLS_RSA_WITH_AES_128_GCM_SHA256"
 
 		# Create Application Gateway
-		$appgw = New-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Location $location -Probes $probeHttp -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01, $fp02 -HttpListeners $listener01, $listener02 -RedirectConfiguration $redirect01 -RequestRoutingRules $rule01, $rule02 -Sku $sku -SslPolicy $sslPolicy 
+		$appgw = New-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Location $location -Probes $probeHttp -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01, $fp02 -HttpListeners $listener01, $listener02 -RedirectConfiguration $redirect01 -RequestRoutingRules $rule01, $rule02 -Sku $sku -SslPolicy $sslPolicy -SslCertificates $sslCert01
 
 		# Check get/set/remove for RedirectConfiguration
 		$redirect02 = Get-AzureRmApplicationGatewayRedirectConfiguration -ApplicationGateway $appgw -Name $redirect01Name
@@ -395,10 +432,29 @@ function Test-ApplicationGatewayCRUD2
 		# Get Application Gateway
 		$getgw = Get-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname
 
+		# Check SSLCertificates
+		Assert-NotNull $getgw.SslCertificates[0]
+		Assert-Null $getgw.SslCertificates[0].Password
+
+		# Use Set/Add Certificate
+		$getgw = Set-AzureRmApplicationGatewaySslCertificate -ApplicationGateway $getgw -Name $sslCert01Name -CertificateFile $sslCert01Path -Password $pw01
+		Assert-NotNull $getgw.SslCertificates[0].Password
+
+		$pw02 = ConvertTo-SecureString "P@ssw0rd" -AsPlainText -Force
+		$sslCert02Path = $basedir + "\ScenarioTests\Data\ApplicationGatewaySslCert2.pfx"
+		$getgw = Add-AzureRmApplicationGatewaySslCertificate -ApplicationGateway $getgw -Name $sslCert02Name -CertificateFile $sslCert02Path -Password $pw02
+
 		# Modify existing application gateway with new configuration
 		$getgw = Set-AzureRmApplicationGateway -ApplicationGateway $getgw
 
 		Assert-AreEqual "Running" $getgw.OperationalState
+
+		# Check SSLCertificates again
+		Assert-AreEqual 2 $getgw.SslCertificates.Count
+		Assert-NotNull $getgw.SslCertificates[0]
+		Assert-NotNull $getgw.SslCertificates[1]
+		Assert-Null $getgw.SslCertificates[0].Password
+		Assert-Null $getgw.SslCertificates[1].Password
 
 		# Stop Application Gateway
 		$getgw = Stop-AzureRmApplicationGateway -ApplicationGateway $getgw

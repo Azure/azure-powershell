@@ -32,7 +32,7 @@ function Assert-KeyAttributes($keyAttr, $keytype, $keyenable, $keyexp, $keynbf, 
          Assert-True { Equal-OperationList  $keyops $keyAttr.KeyOps} "Expect $keyops. Get $keyAttr.KeyOps"
     } 
     Assert-True { Equal-Hashtable $tags $keyAttr.Tags} "Expected $tags. Get $keyAttr.Tags"
-	Assert-NotNull $keyAttr.PurgeDisabled, "Purge Disabled is null."
+	Assert-NotNull $keyAttr.RecoveryLevel, "Deletion recovery level is null."
 }
 
 function BulkCreateSoftKeys ($vault, $prefix, $total)
@@ -851,7 +851,7 @@ function Test_BackupRestoreKeyByName
     $backupblob = Backup-AzureKeyVaultKey -VaultName $keyVault -KeyName $keyname       
     # Remove the key
     Cleanup-Key $keyname
-	Wait-Seconds 30 # Wait for slm to purge the key..
+    Wait-Seconds 30 # Wait for slm to purge the key..
     $restoredKey = Restore-AzureKeyVaultKey -VaultName $keyVault -InputFile $backupblob
     Assert-KeyAttributes $restoredKey.Attributes 'RSA' $true $null $null $null
 }
@@ -1000,22 +1000,21 @@ Tests getting a previously deleted key
 
 function Test_GetDeletedKey
 {
-	# Create a software key for updating
+    # Create a software key for updating
     $keyVault = Get-KeyVault
     $keyname=Get-KeyName 'GetDeletedKey'
     $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software' -Expires $expires -NotBefore $nbf -KeyOps $ops -Disable -Tag $tags
     Assert-NotNull $key
     $global:createdKeys += $keyname
 
-	$key | Remove-AzureKeyVaultKey -Force -Confirm:$false
+    $key | Remove-AzureKeyVaultKey -Force -Confirm:$false
 
-	Wait-ForDeletedKey $keyVault $keyname
+    Wait-ForDeletedKey $keyVault $keyname
 
-	$deletedKey = Get-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -InRemovedState
-	Assert-NotNull $deletedKey
-	Assert-NotNull $deletedKey.DeletedDate
-	Assert-NotNull $deletedKey.ScheduledPurgeDate
-
+    $deletedKey = Get-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -InRemovedState
+    Assert-NotNull $deletedKey
+    Assert-NotNull $deletedKey.DeletedDate
+    Assert-NotNull $deletedKey.ScheduledPurgeDate
 }
 
 <#

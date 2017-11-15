@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+Module Name: AzureRM.Network
 ms.assetid: D1D51DEF-05DE-45C4-9013-A02A5B248EAC
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/set-azurermvirtualnetworksubnetconfig
 schema: 2.0.0
 ---
 
@@ -16,14 +17,16 @@ Configures the goal state for a subnet configuration in a virtual network.
 ```
 Set-AzureRmVirtualNetworkSubnetConfig -Name <String> -VirtualNetwork <PSVirtualNetwork> -AddressPrefix <String>
  [-NetworkSecurityGroup <PSNetworkSecurityGroup>] [-RouteTable <PSRouteTable>]
- [-PrivateAccessService <System.Collections.Generic.List`1[System.String]>] [<CommonParameters>]
+ [-ServiceEndpoint <System.Collections.Generic.List`1[System.String]>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SetByResourceId
 ```
 Set-AzureRmVirtualNetworkSubnetConfig -Name <String> -VirtualNetwork <PSVirtualNetwork> -AddressPrefix <String>
  [-NetworkSecurityGroupId <String>] [-RouteTableId <String>]
- [-PrivateAccessService <System.Collections.Generic.List`1[System.String]>] [<CommonParameters>]
+ [-ServiceEndpoint <System.Collections.Generic.List`1[System.String]>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -95,6 +98,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of a subnet configuration that this cmdlet configures.
 
@@ -140,21 +158,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -PrivateAccessService
-Specifies private access services associated with the subnet configuration.
-
-```yaml
-Type: System.Collections.Generic.List`1[System.String]
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -RouteTable
 Specifies the route table object that is associated with the network security group.
 
@@ -185,6 +188,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ServiceEndpoint
+Service Endpoint Value
+
+```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -VirtualNetwork
 Specifies the **VirtualNetwork** object that contains the subnet configuration.
 
@@ -205,7 +223,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### PSVirtualNetwork
+Parameter 'VirtualNetwork' accepts value of type 'PSVirtualNetwork' from the pipeline
+
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Network.Models.PSVirtualNetwork
 
 ## NOTES
 

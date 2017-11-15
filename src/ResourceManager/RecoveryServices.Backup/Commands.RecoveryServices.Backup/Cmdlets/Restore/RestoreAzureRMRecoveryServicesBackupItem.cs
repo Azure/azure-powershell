@@ -27,7 +27,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Restores an item using the recovery point provided within the recovery services vault
     /// </summary>
-    [Cmdlet(VerbsData.Restore, "AzureRmRecoveryServicesBackupItem"), OutputType(typeof(JobBase))]
+    [Cmdlet(VerbsData.Restore, "AzureRmRecoveryServicesBackupItem", SupportsShouldProcess = true),
+        OutputType(typeof(JobBase))]
     public class RestoreAzureRmRecoveryServicesBackupItem : RecoveryServicesBackupCmdletBase
     {
         /// <summary>
@@ -65,6 +66,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 identity.ResourceProviderNamespace = "Microsoft.ClassicStorage/storageAccounts";
                 identity.ResourceProviderApiVersion = "2015-12-01";
                 identity.ResourceType = string.Empty;
+                identity.ParentResourcePath = string.Empty;
 
                 GenericResource resource = null;
                 try
@@ -115,7 +117,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 WriteDebug(string.Format("Restore submitted"));
                 HandleCreatedJob(jobResponse, Resources.RestoreOperation);
-            });
+            }, ShouldProcess(RecoveryPoint.ItemName, VerbsData.Restore));
         }
     }
 }

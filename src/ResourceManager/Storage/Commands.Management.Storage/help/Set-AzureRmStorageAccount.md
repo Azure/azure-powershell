@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Management.Storage.dll-Help.xml
+Module Name: AzureRM
 ms.assetid: 4D7EEDD7-89D4-4B1E-A9A1-B301E759CE72
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.storage/set-azurermstorageaccount
 schema: 2.0.0
 ---
 
@@ -14,25 +15,24 @@ Modifies a Storage account.
 
 ### StorageEncryption (Default)
 ```
-Set-AzureRmStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [[-SkuName] <String>]
- [[-AccessTier] <String>] [[-CustomDomainName] <String>] [[-UseSubDomain] <Boolean>]
- [[-EnableEncryptionService] <EncryptionSupportServiceEnum>]
- [[-DisableEncryptionService] <EncryptionSupportServiceEnum>] [[-Tag] <Hashtable>]
- [-EnableHttpsTrafficOnly <Boolean>] [-StorageEncryption] [-AssignIdentity] [-NetworkRule <PSNetworkRuleSet>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [-WhatIf] [-Confirm]
+Set-AzureRmStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-SkuName <String>]
+ [-AccessTier <String>] [-CustomDomainName <String>] [-UseSubDomain <Boolean>]
+ [-EnableEncryptionService <EncryptionSupportServiceEnum>]
+ [-DisableEncryptionService <EncryptionSupportServiceEnum>] [-Tag <Hashtable>]
+ [-EnableHttpsTrafficOnly <Boolean>] [-StorageEncryption] [-AssignIdentity]
+ [-NetworkRuleSet <PSNetworkRuleSet>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### KeyvaultEncryption
 ```
-Set-AzureRmStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [[-SkuName] <String>]
- [[-AccessTier] <String>] [[-CustomDomainName] <String>] [[-UseSubDomain] <Boolean>]
- [[-EnableEncryptionService] <EncryptionSupportServiceEnum>]
- [[-DisableEncryptionService] <EncryptionSupportServiceEnum>] [[-Tag] <Hashtable>]
+Set-AzureRmStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-SkuName <String>]
+ [-AccessTier <String>] [-CustomDomainName <String>] [-UseSubDomain <Boolean>]
+ [-EnableEncryptionService <EncryptionSupportServiceEnum>]
+ [-DisableEncryptionService <EncryptionSupportServiceEnum>] [-Tag <Hashtable>]
  [-EnableHttpsTrafficOnly <Boolean>] [-KeyvaultEncryption] -KeyName <String> -KeyVersion <String>
- -KeyVaultUri <String> [-AssignIdentity] [-NetworkRule <PSNetworkRuleSet>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -KeyVaultUri <String> [-AssignIdentity] [-NetworkRuleSet <PSNetworkRuleSet>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -97,9 +97,9 @@ PS C:\>Set-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountNa
 
 This command disables encryption on File Services with KeySource set to "Microsoft.Storage"
 
-### Example 7: Set NetworkRule property of a Storage Account with JSON
+### Example 7: Set NetworkRuleSet property of a Storage Account with JSON
 ```
-PS C:\>Set-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "MyStorageAccount" -NetworkRule (@{bypass="Logging,Metrics";
+PS C:\>Set-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "MyStorageAccount" -NetworkRuleSet (@{bypass="Logging,Metrics";
     ipRules=(@{IPAddressOrRange="20.11.0.0/16";Action="allow"},
             @{IPAddressOrRange="10.0.0.0/7";Action="allow"});
     virtualNetworkRules=(@{VirtualNetworkResourceId="/subscriptions/s1/resourceGroups/g1/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1";Action="allow"},
@@ -107,15 +107,15 @@ PS C:\>Set-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountNa
     defaultAction="allow"})
 ```
 
-This command sets NetworkRule property of a Storage Account with JSON
+This command sets NetworkRuleSet property of a Storage Account with JSON
 
-### Example 8: Get NetworkRule property from a Storage Account, and set it to another storage account
+### Example 8: Get NetworkRuleSet property from a Storage Account, and set it to another storage account
 ```
-PS C:\> $networkRule = (Get-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "MyStorageAccount").NetworkRule 
-PS C:\> Set-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "MyStorageAccount2" -NetworkRule $networkRule
+PS C:\> $networkRuleSet = (Get-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "MyStorageAccount").NetworkRuleSet 
+PS C:\> Set-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "MyStorageAccount2" -NetworkRuleSet $networkRuleSet
 ```
 
-This first command gets NetworkRule property from a Storage Account, and the second command sets it to another storage account 
+This first command gets NetworkRuleSet property from a Storage Account, and the second command sets it to another Storage Account 
 
 ## PARAMETERS
 
@@ -133,10 +133,11 @@ for this *Kind* parameter, do not specify the *AccessTier* parameter.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
+Accepted values: Hot, Cool
 
 Required: False
-Position: 3
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -148,7 +149,7 @@ Generate and assign a new Storage Account Identity for this storage account for 
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -163,10 +164,25 @@ Specifies the name of the custom domain.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
-Position: 4
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -179,10 +195,11 @@ Azure Blob and Azure File Services are supported.
 ```yaml
 Type: EncryptionSupportServiceEnum
 Parameter Sets: (All)
-Aliases:
+Aliases: 
+Accepted values: None, Blob, File
 
 Required: False
-Position: 7
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -195,10 +212,11 @@ Azure Blob and Azure File Services are supported.
 ```yaml
 Type: EncryptionSupportServiceEnum
 Parameter Sets: (All)
-Aliases:
+Aliases: 
+Accepted values: None, Blob, File
 
 Required: False
-Position: 6
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -210,7 +228,7 @@ Indicates whether or not the Storage Account only enable https traffic.
 ```yaml
 Type: Boolean
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -225,46 +243,7 @@ Forces the change to be written to the Storage account.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
+Aliases: 
 
 Required: False
 Position: Named
@@ -279,7 +258,7 @@ Storage Account encryption keySource KeyVault KeyName
 ```yaml
 Type: String
 Parameter Sets: KeyvaultEncryption
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -295,7 +274,7 @@ If you specify KeyName, KeyVersion and KeyvaultUri, Storage Account encryption k
 ```yaml
 Type: SwitchParameter
 Parameter Sets: KeyvaultEncryption
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -310,7 +289,7 @@ Storage Account encryption keySource KeyVault KeyVaultUri
 ```yaml
 Type: String
 Parameter Sets: KeyvaultEncryption
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -325,7 +304,7 @@ Storage Account encryption keySource KeyVault KeyVersion
 ```yaml
 Type: String
 Parameter Sets: KeyvaultEncryption
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -349,8 +328,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -NetworkRule
-Storage Account NetworkRule
+### -NetworkRuleSet
+Storage Account NetworkRuleSet
 
 ```yaml
 Type: PSNetworkRuleSet
@@ -370,7 +349,7 @@ Specifies the name of the resource group in which to modify the Storage account.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -396,9 +375,10 @@ You cannot change other account types to Standard_ZRS or Premium_LRS.
 Type: String
 Parameter Sets: (All)
 Aliases: StorageAccountType, AccountType, Type
+Accepted values: Standard_LRS, Standard_ZRS, Standard_GRS, Standard_RAGRS, Premium_LRS
 
 Required: False
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -410,7 +390,7 @@ Whether to set Storage Account Encryption KeySource to Microsoft.Storage or not.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: StorageEncryption
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -430,7 +410,7 @@ Parameter Sets: (All)
 Aliases: Tags
 
 Required: False
-Position: 8
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -442,10 +422,10 @@ Indicates whether to enable indirect CName validation.
 ```yaml
 Type: Boolean
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
-Position: 5
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -488,6 +468,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### Microsoft.Azure.Management.Storage.Models.StorageAccount
 
 ## NOTES
 

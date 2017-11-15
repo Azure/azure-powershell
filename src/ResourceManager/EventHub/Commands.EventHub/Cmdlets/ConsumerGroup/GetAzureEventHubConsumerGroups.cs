@@ -48,7 +48,8 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.ConsumerGroup
             Position = 1,
             HelpMessage = "Namespace Name.")]
         [ValidateNotNullOrEmpty]
-        public string NamespaceName { get; set; }
+        [Alias(AliasNamespaceName)]
+        public string Namespace { get; set; }
 
         /// <summary>
         /// EventHub Name. 
@@ -58,7 +59,8 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.ConsumerGroup
             ValueFromPipelineByPropertyName = true,
             Position = 2,
             HelpMessage = "EventHub Name.")]
-        public string EventHubName { get; set; }
+        [Alias(AliasEventHubName)]
+        public string EventHub { get; set; }
 
         /// <summary>
         /// Consumer Group Name.
@@ -70,21 +72,22 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.ConsumerGroup
             ValueFromPipelineByPropertyName = true,
             Position = 3,
             HelpMessage = "ConsumerGroup Name.")]
-        public string ConsumerGroupName { get; set; }
+        [Alias(AliasConsumerGroupName)]
+        public string Name { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (!string.IsNullOrEmpty(ConsumerGroupName))
+            if (!string.IsNullOrEmpty(Name))
             {
                 // Get a ConsumnerGroup
-                ConsumerGroupAttributes consumergrpAttributes = Client.GetConsumerGroup(ResourceGroupName, NamespaceName, EventHubName, ConsumerGroupName);
-                WriteObject(consumergrpAttributes);
+                ConsumerGroupAttributes consumergroupAttributesList = Client.GetConsumerGroup(ResourceGroupName, Namespace, EventHub, Name);
+                WriteObject(consumergroupAttributesList);
             }
             else
             {
                 // Get all ConsumnerGroups
-                IEnumerable<ConsumerGroupAttributes> consumergrpAttributesList = Client.ListAllConsumerGroup(ResourceGroupName, NamespaceName, EventHubName);
-                WriteObject(consumergrpAttributesList.ToList(), true);
+                IEnumerable<ConsumerGroupAttributes> consumergroupAttributesList = Client.ListAllConsumerGroup(ResourceGroupName, Namespace, EventHub);
+                WriteObject(consumergroupAttributesList.ToList(), true);
             }
         }
     }

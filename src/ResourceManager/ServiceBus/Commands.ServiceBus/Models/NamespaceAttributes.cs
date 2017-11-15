@@ -28,33 +28,35 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         public NamespaceAttributes()
         { }
 
-        public NamespaceAttributes(NamespaceResource evResource)
+        public NamespaceAttributes(SBNamespace evResource)
         {
             if (evResource != null)
             {
-                Sku = new Sku { Capacity = evResource.Sku.Capacity,
+                Sku = new SBSku { Capacity = evResource.Sku.Capacity,
                                 Name = evResource.Sku.Name,
                                 Tier = evResource.Sku.Tier};
                 if(evResource.ProvisioningState != null)
-                ProvisioningState = evResource.ProvisioningState;
-                if(evResource.Status.HasValue)
-                Status = (Microsoft.Azure.Commands.ServiceBus.Models.NamespaceState)evResource.Status;
+                ProvisioningState = evResource.ProvisioningState;                
                 if(evResource.CreatedAt.HasValue)
                 CreatedAt = evResource.CreatedAt;
                 if(evResource.UpdatedAt.HasValue)
                 UpdatedAt = evResource.UpdatedAt;
                 if(evResource.ServiceBusEndpoint != null)
-                ServiceBusEndpoint = evResource.ServiceBusEndpoint;                
-                if(evResource.Enabled.HasValue)
-                Enabled = evResource.Enabled;
+                ServiceBusEndpoint = evResource.ServiceBusEndpoint;
                 if(evResource.Location != null)
                 Location = evResource.Location;
                 if(evResource.Name != null)
                 Name = evResource.Name;
                 if(evResource.Id != null)
                 Id = evResource.Id;
+                ResourceGroup = Regex.Split(evResource.Id, @"/")[4];
             }
         }
+
+        /// <summary>
+        /// Gets the resourcegroup name
+        /// </summary>
+        public string ResourceGroup { get; }
 
         /// <summary>
         /// Gets or sets the name of the resource group the Namespace is in
@@ -73,20 +75,12 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
 
         /// <summary>
         /// </summary>
-        public Sku Sku { get; set; }
+        public SBSku Sku { get; set; }
 
         /// <summary>
         /// Provisioning state of the Namespace.
         /// </summary>
-        public string ProvisioningState { get; set; }
-
-        /// <summary>
-        /// State of the namespace. Possible values include: 'Unknown',
-        /// 'Creating', 'Created', 'Activating', 'Enabling', 'Active',
-        /// 'Disabling', 'Disabled', 'SoftDeleting', 'SoftDeleted',
-        /// 'Removing', 'Removed', 'Failed'
-        /// </summary>
-        public Models.NamespaceState? Status { get; set; }
+        public string ProvisioningState { get; set; }        
 
         /// <summary>
         /// The time the namespace was created.
@@ -101,13 +95,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// <summary>
         /// Endpoint you can use to perform ServiceBus operations.
         /// </summary>
-        public string ServiceBusEndpoint { get; set; }
-        
-        /// <summary>
-        /// Specifies whether this instance is enabled.
-        /// </summary>
-        public bool? Enabled { get; set; }
-
+        public string ServiceBusEndpoint { get; set; }      
         
     }
 }

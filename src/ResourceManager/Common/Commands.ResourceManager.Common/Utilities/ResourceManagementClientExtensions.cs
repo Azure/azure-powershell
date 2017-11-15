@@ -56,6 +56,12 @@ namespace Microsoft.Azure.Management.Internal.Resources.Utilities
                 }
             }
 
+            foreach (var resource in resources)
+            {
+                var identifier = new ResourceIdentifier(resource.Id);
+                resource.ResourceGroupName = identifier.ResourceGroupName;
+            }
+
             return resources;
         }
     }

@@ -1,4 +1,4 @@
----
+﻿---
 Module Name: AzureRM.Websites
 Module Guid: cc69c625-e961-43f4-8b50-0061eba6e4b6
 Download Help Link: 
@@ -124,9 +124,6 @@ Starts an Azure Web App slot.
 
 ### [Stop-AzureRmWebApp](Stop-AzureRmWebApp.md)
 Stops an Azure Web App.
-
-### [Stop-AzureRmWebAppSlot](Stop-AzureRmWebAppSlot.md)
-Stops an Azure Web App slot.
 
 ### [Stop-AzureRmWebAppSlot](Stop-AzureRmWebAppSlot.md)
 Stops an Azure Web App slot.

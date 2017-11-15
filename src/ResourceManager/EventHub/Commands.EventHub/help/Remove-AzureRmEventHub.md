@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.EventHub.dll-Help.xml
-online version: 
+Module Name: AzureRM
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.eventhub/remove-azurermeventhub
 schema: 2.0.0
 ---
 
@@ -12,31 +13,46 @@ Removes the specified Event Hub.
 ## SYNTAX
 
 ```
-Remove-AzureRmEventHub [-ResourceGroupName] <String> [-NamespaceName] <String> [-EventHubName] <String>
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzureRmEventHub [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmEventHub** cmdlet removes and deletes the specified Event Hub from the given namespace.
+The Remove-AzureRmEventHub cmdlet removes and deletes the specified Event Hub from the given namespace.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Remove-AzureRmEventHub -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -EventHubName MyEventHubName
+PS C:\> Remove-AzureRmEventHub -ResourceGroupName MyResourceGroupName -Namespace MyNamespaceName -Name MyEventHubName
 ```
 
-Removes the Event Hub `MyEventHubName`.
+Removes the Event Hub \`MyEventHubName\`.
 
 ## PARAMETERS
 
-### -EventHubName
-Name of the Event Hub to remove.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+EventHub Name.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: EventHubName
 
 Required: True
 Position: 2
@@ -45,13 +61,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -NamespaceName
-The Event Hubs namespace name.
+### -Namespace
+Namespace Name.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: NamespaceName
 
 Required: True
 Position: 1

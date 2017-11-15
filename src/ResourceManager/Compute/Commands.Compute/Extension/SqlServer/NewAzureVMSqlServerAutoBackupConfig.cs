@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The storage connection context")]
         [ValidateNotNullOrEmpty]
-        public AzureStorageContext StorageContext
+        public IStorageContext StorageContext
         {
             get;
             set;

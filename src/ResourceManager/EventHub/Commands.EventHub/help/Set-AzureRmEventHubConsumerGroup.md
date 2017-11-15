@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.EventHub.dll-Help.xml
-online version: 
+Module Name: AzureRM
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.eventhub/set-azurermeventhubconsumergroup
 schema: 2.0.0
 ---
 
@@ -12,13 +13,13 @@ Updates the specified Event Hubs consumer group.
 ## SYNTAX
 
 ```
-Set-AzureRmEventHubConsumerGroup [-ResourceGroupName] <String> [-NamespaceName] <String>
- [-EventHubName] <String> [-ConsumerGroupName] <String> [[-UserMetadata] <String>] [-WhatIf] [-Confirm]
+Set-AzureRmEventHubConsumerGroup [-ResourceGroupName] <String> [-Namespace] <String> [-EventHub] <String>
+ [-Name] <String> [[-UserMetadata] <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmEventHubConsumerGroup** cmdlet updates the specified Event Hubs consumer group.
+The Set-AzureRmEventHubConsumerGroup cmdlet updates the specified Event Hubs consumer group.
 
 ## EXAMPLES
 
@@ -27,32 +28,32 @@ The **Set-AzureRmEventHubConsumerGroup** cmdlet updates the specified Event Hubs
 PS C:\> Set-AzureRmEventHubConsumerGroup -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -EventHubName MyEventHubName -ConsumerGroupName MyConsumerGroupName -UserMetadata "Testing"
 ```
 
-Sets the user metadata of the consumer group `MyConsumerGroupName` to "Testing."
+Sets the user metadata of the consumer group \`MyConsumerGroupName\` to "Testing."
 
 ## PARAMETERS
 
-### -ConsumerGroupName
-The consumer group name.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: String
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: 
+Aliases: AzureRmContext, AzureCredential
 
-Required: True
-Position: 3
+Required: False
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EventHubName
-The Event Hub name.
+### -EventHub
+EventHub Name.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: EventHubName
 
 Required: True
 Position: 2
@@ -61,13 +62,28 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -NamespaceName
-The Event Hubs namespace name.
+### -Name
+ConsumerGroup Name.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: ConsumerGroupName
+
+Required: True
+Position: 3
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Namespace
+Namespace Name.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: NamespaceName
 
 Required: True
 Position: 1

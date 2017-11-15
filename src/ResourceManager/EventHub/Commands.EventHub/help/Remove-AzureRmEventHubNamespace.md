@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.EventHub.dll-Help.xml
-online version: 
+Module Name: AzureRM
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.eventhub/remove-azurermeventhubnamespace
 schema: 2.0.0
 ---
 
@@ -12,31 +13,46 @@ Removes the specified Event Hubs namespace.
 ## SYNTAX
 
 ```
-Remove-AzureRmEventHubNamespace [-ResourceGroupName] <String> [-NamespaceName] <String> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzureRmEventHubNamespace [-ResourceGroupName] <String> [-Name] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmEventHubNamespace** cmdlet removes and deletes the specified Event Hubs namespace.
+The Remove-AzureRmEventHubNamespace cmdlet removes and deletes the specified Event Hubs namespace.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Remove-AzureRmEventHubNamespace -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName
+PS C:\> Remove-AzureRmEventHubNamespace -ResourceGroupName MyResourceGroupName -Name MyNamespaceName
 ```
 
-Removes the Event Hubs namespace `MyNamespaceName` in resource group `MyResourceGroupName`.
+Removes the Event Hubs namespace \`MyNamespaceName\` in resource group \`MyResourceGroupName\`.
 
 ## PARAMETERS
 
-### -NamespaceName
-The Event Hubs namespace name.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+EventHub Namespace Name.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: NamespaceName
 
 Required: True
 Position: 1

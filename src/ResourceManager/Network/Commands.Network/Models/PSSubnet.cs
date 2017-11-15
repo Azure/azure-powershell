@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public PSRouteTable RouteTable { get; set; }
 
         [JsonProperty(Order = 1)]
-        public List<PSPrivateAccessService> PrivateAccessServices { get; set; }
+        public List<PSServiceEndpoint> ServiceEndpoints { get; set; }
 
         [JsonProperty(Order = 1)]
         public string ProvisioningState { get; set; }
@@ -64,15 +64,15 @@ namespace Microsoft.Azure.Commands.Network.Models
             get { return JsonConvert.SerializeObject(RouteTable, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
-        [JsonIgnore]
-        public string PrivateAccessServicesText
-        {
-            get { return JsonConvert.SerializeObject(PrivateAccessServices, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
-        }
-
         public bool ShouldSerializeIpConfigurations()
         {
             return !string.IsNullOrEmpty(this.Name);
+        }
+
+         [JsonIgnore]
+        public string ServiceEndpointText
+        {
+            get { return JsonConvert.SerializeObject(ServiceEndpoints, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

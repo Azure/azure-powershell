@@ -44,6 +44,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
 
         public SetDiagnosticSettingCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             this.insightsDiagnosticsOperationsMock = new Mock<IServiceDiagnosticSettingsOperations>();
             this.insightsManagementClientMock = new Mock<MonitorManagementClient>();
             this.commandRuntimeMock = new Mock<ICommandRuntime>();
@@ -81,6 +82,12 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
             insightsManagementClientMock.SetupGet(f => f.ServiceDiagnosticSettings).Returns(this.insightsDiagnosticsOperationsMock.Object);
 
             cmdlet.ResourceId = resourceId;
+
+            // Setup Confirmation
+            commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>())).Returns(true);
+            commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
+            commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>())).Returns(true);
+            commandRuntimeMock.Setup(f => f.ShouldContinue(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
         }
 
         [Fact]

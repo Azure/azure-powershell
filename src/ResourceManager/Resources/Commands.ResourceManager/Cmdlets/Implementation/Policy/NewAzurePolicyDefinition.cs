@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
+    using Commands.Common.Authentication.Abstractions;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
@@ -29,7 +30,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// Creates the policy definition.
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRmPolicyDefinition"), OutputType(typeof(PSObject))]
-    public class NewAzurePolicyDefinitionCmdlet : PolicyDefinitionCmdletBase
+    public class NewAzurePolicyDefinitionCmdlet : PolicyCmdletBase
     {
         /// <summary>
         /// Gets or sets the policy definition name parameter.
@@ -55,16 +56,30 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the policy definition policy rule parameter
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The rule for policy definition. This can either be a path to a file name containing the rule, or the rule as string.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The rule for policy definition. This can either be a path to a file name or uri containing the rule, or the rule as string.")]
         [ValidateNotNullOrEmpty]
         public string Policy { get; set; }
 
         /// <summary>
+        /// Gets or sets the policy definition metadata parameter
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The metadata for policy definition. This can either be a path to a file name containing the metadata, or the metadata as string.")]
+        [ValidateNotNullOrEmpty]
+        public string Metadata { get; set; }
+
+        /// <summary>
         /// Gets or sets the policy definition parameters parameter
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The parameters declaration for policy definition. This can either be a path to a file name containing the parameters declaration, or the parameters declaration as string.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The parameters declaration for policy definition. This can either be a path to a file name or uri containing the parameters declaration, or the parameters declaration as string.")]
         [ValidateNotNullOrEmpty]
         public string Parameter { get; set; }
+
+        /// <summary>
+        /// Gets or sets the policy definition mode parameter.
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The mode of the policy definition.")]
+        [ValidateNotNullOrEmpty]
+        public PolicyDefinitionMode? Mode { get; set; }
 
         /// <summary>
         /// Executes the cmdlet.
@@ -74,7 +89,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             base.OnProcessRecord();
             string resourceId = GetResourceId();
 
-            var apiVersion = string.IsNullOrWhiteSpace(this.ApiVersion) ? Constants.PolicyApiVersion : this.ApiVersion;
+            var apiVersion = string.IsNullOrWhiteSpace(this.ApiVersion) ? Constants.PolicyDefinitionApiVersion : this.ApiVersion;
 
             var operationResult = this.GetResourcesClient()
                 .PutResource(
@@ -94,7 +109,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             var activity = string.Format("PUT {0}", managementUri.PathAndQuery);
             var result = this.GetLongRunningOperationTracker(activityName: activity, isResourceCreateOrUpdate: true)
                 .WaitOnOperation(operationResult: operationResult);
-            this.WriteObject(this.GetOutputObjects(JObject.Parse(result)), enumerateCollection: true);
+            this.WriteObject(this.GetOutputObjects("PolicyDefinitionId", JObject.Parse(result)), enumerateCollection: true);
         }
 
         /// <summary>
@@ -121,36 +136,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 {
                     Description = this.Description ?? null,
                     DisplayName = this.DisplayName ?? null,
-                    PolicyRule = JObject.Parse(this.GetPolicyRuleObject().ToString()),
-                    Parameters = this.Parameter == null ? null : JObject.Parse(this.GetParametersObject().ToString())
+                    PolicyRule = JObject.Parse(this.GetObjectFromParameter(this.Policy).ToString()),
+                    Metadata = this.Metadata == null ? null : JObject.Parse(this.GetObjectFromParameter(this.Metadata).ToString()),
+                    Parameters = this.Parameter == null ? null : JObject.Parse(this.GetObjectFromParameter(this.Parameter).ToString()),
+                    Mode = this.Mode.HasValue ? this.Mode : PolicyDefinitionMode.All
                 }
             };
 
             return policyDefinitionObject.ToJToken();
-        }
-
-        /// <summary>
-        /// Gets the policy rule object
-        /// </summary>
-        private JToken GetPolicyRuleObject()
-        {
-            string policyFilePath = this.TryResolvePath(this.Policy);
-
-            return File.Exists(policyFilePath)
-                ? JToken.FromObject(FileUtilities.DataStore.ReadFileAsText(policyFilePath))
-                : JToken.FromObject(this.Policy);
-        }
-
-        /// <summary>
-        /// Gets the parameters object
-        /// </summary>
-        private JToken GetParametersObject()
-        {
-            string parametersFilePath = this.TryResolvePath(this.Parameter);
-
-            return File.Exists(parametersFilePath)
-                ? JToken.FromObject(FileUtilities.DataStore.ReadFileAsText(parametersFilePath))
-                : JToken.FromObject(this.Parameter);
         }
     }
 }

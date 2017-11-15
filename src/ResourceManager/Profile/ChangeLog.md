@@ -19,6 +19,50 @@
 -->
 ## Current Release
 
+## Version 4.0.0
+- Set-AzureRmDefault
+    - Use this cmdlet to set a default resource group.  This will make the -ResourceGroup parameter optional for some cmdlets, and will use the default when a resource group is not specified
+    - ```Set-AzureRmDefault -ResourceGroupName "ExampleResourceGroup"```
+    - If resource group specified exists in the subscription, this resource group will be set to default.  Otherwise, the resource group will be created and then set to default.
+- Get-AzureRmDefault
+    - Use this cmdlet to get the current default resource group (and other defaults in the future).
+    - ```Get-AzureRmDefault -ResourceGroup```
+- Clear-AzureRmDefault
+    - Use this cmdlet to remove the current default resource group
+    - ```Clear-AzureRmDefault -ResourceGroup```
+- Add-AzureRmEnvironment and Set-AzureRmEnvironment
+    - Add the BatchAudience parameter, which allows you to specify the Azure Batch Active Directory audience to use when acquiring authentication tokens for the Batch service.
+* Add support for online help
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
+
+## Version 3.4.1
+* LocationCompleterAttribute added and available for cmdlets which use the -Location parameter
+    - Use this feature by adding LocationCompleter(string[] validResourceTypes) onto the Location parameter
+
+## Version 3.4.0
+* Start-Job Support for AzureRm cmdlets. 
+    * All AzureRmCmdlets add -AzureRmContext parameter, which can accept a context (output of a Context cmdlet). 
+      - Common pattern for jobs with context persistence DISABLED: ```Start-Job {param ($context) New-AzureRmVM -AzureRmContext $context [... other parameters]} -ArgumentList (Get-AzureRmContext)```
+      - Common pattern for jobs with context persistence ENABLED:```Start-Job {New-AzureRmVM [... other parameters]}```
+    * Persist login information across sessions, new cmdlets: 
+      - Enable-AzureRmContextAutosave - Enable login persistence across sessions. 
+      - Disable-AzureRmContextAutosave - Disable login persistence across sessions. 
+    * Manage context information, new cmdets 
+      - Select-AzureRmContext - Select the active named context. 
+      - Rename-AzureRmContext - Rename an exsiting context for easy reference. 
+      - Remove-AzureRmContext - Remove an existing context. 
+      - Remove-AzureRmAccount - Remove all credentials, subscriptions, and tenants associated with an account. 
+    * Manage context information, cmdlet changes: 
+      - Added Scope = (Process | CurrentUser) to all cmdlets that change credentials 
+      - Get-AzureRmContext - Added ListAvailable parameter to list all saved contexts
+      
+## Version 3.3.1
+
+## Version 3.3.0
+- Data collection has been enabled by default. Usage data is collected by Microsoft in order to improve the user experience. The data is anonymous and does not include command-line argument values.
+    - Use the Disable-AzureRmDataCollection cmdlet to turn the feature off
+    - Use the Enable-AzureRmDataCollection cmdlet to turn this feature on
+
 ## Version 3.2.1
 - Fix issue with non-interactive user authentication in RDFE (link)[https://github.com/Azure/azure-powershell/issues/4299]
 

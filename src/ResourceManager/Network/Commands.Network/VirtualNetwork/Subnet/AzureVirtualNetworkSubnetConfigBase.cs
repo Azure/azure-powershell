@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Private Access Service")]
-        public List<string> PrivateAccessService { get; set; }
+            HelpMessage = "Service Endpoint Value")]
+        public List<string> ServiceEndpoint { get; set; }
     }
 }

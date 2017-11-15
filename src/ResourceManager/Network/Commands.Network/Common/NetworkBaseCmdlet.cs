@@ -45,7 +45,6 @@ namespace Microsoft.Azure.Commands.Network
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            NetworkResourceManagerProfile.Initialize();
             try
             {
                 Execute();

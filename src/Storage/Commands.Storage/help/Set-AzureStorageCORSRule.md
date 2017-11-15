@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
 ms.assetid: 288B7B56-B934-45AF-BF56-4EB0DD827522
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/set-azurestoragecorsrule
 schema: 2.0.0
 ---
 
@@ -191,7 +191,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### IStorageContext
+
+Parameter 'Context' accepts value of type 'IStorageContext' from the pipeline
+
 ## OUTPUTS
+
+### Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel.PSCorsRule
 
 ## NOTES
 

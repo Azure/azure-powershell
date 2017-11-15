@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [Parameter(HelpMessage = "Storage Account NetworkRule",
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
-        public PSNetworkRuleSet NetworkRule
+        public PSNetworkRuleSet NetworkRuleSet
         {
             get; set;
         }
@@ -188,9 +188,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
             {
                 createParameters.Identity = new Identity();
             }
-            if (NetworkRule != null)
+            if (NetworkRuleSet != null)
             {
-                createParameters.NetworkAcls = PSNetworkRuleSet.ParseStorageNetworkRule(NetworkRule);
+                createParameters.NetworkAcls = PSNetworkRuleSet.ParseStorageNetworkRule(NetworkRuleSet);
             }
 
             var createAccountResponse = this.StorageClient.StorageAccounts.Create(

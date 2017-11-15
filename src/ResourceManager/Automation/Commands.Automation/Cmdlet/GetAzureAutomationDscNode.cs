@@ -85,38 +85,66 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                 {
                    this.AutomationClient.GetDscNodeById(this.ResourceGroupName, this.AutomationAccountName, this.Id)
                 };
+
+                this.GenerateCmdletOutput(ret);
             }
             else if (this.ParameterSetName == AutomationCmdletParameterSets.ByName)
             {
-                ret = this.AutomationClient.ListDscNodesByName(
-                    this.ResourceGroupName,
-                    this.AutomationAccountName,
-                    this.Name,
-                    nodeStatus);
+                var nextLink = string.Empty;
+
+                do
+                {
+                    ret = this.AutomationClient.ListDscNodesByName(this.ResourceGroupName, this.AutomationAccountName, this.Name, nodeStatus, ref nextLink);
+                    if (ret != null)
+                    {
+                        this.GenerateCmdletOutput(ret);
+                    }
+
+                } while (!string.IsNullOrEmpty(nextLink));
             }
             else if (this.ParameterSetName == AutomationCmdletParameterSets.ByNodeConfiguration)
             {
-                ret = this.AutomationClient.ListDscNodesByNodeConfiguration(
-                    this.ResourceGroupName,
-                    this.AutomationAccountName,
-                    this.NodeConfigurationName,
-                    nodeStatus);
+                var nextLink = string.Empty;
+
+                do
+                {
+                    ret = this.AutomationClient.ListDscNodesByNodeConfiguration(this.ResourceGroupName, this.AutomationAccountName, this.NodeConfigurationName, nodeStatus, ref nextLink);
+                    if (ret != null)
+                    {
+                        this.GenerateCmdletOutput(ret);
+                    }
+
+                } while (!string.IsNullOrEmpty(nextLink));
             }
             else if (this.ParameterSetName == AutomationCmdletParameterSets.ByConfiguration)
             {
-                ret = this.AutomationClient.ListDscNodesByConfiguration(
-                    this.ResourceGroupName,
-                    this.AutomationAccountName,
-                    this.ConfigurationName,
-                    nodeStatus);
+                var nextLink = string.Empty;
+
+                do
+                {
+                    ret = this.AutomationClient.ListDscNodesByConfiguration(this.ResourceGroupName, this.AutomationAccountName, this.ConfigurationName, nodeStatus, ref nextLink);
+                    if (ret != null)
+                    {
+                        this.GenerateCmdletOutput(ret);
+                    }
+
+                } while (!string.IsNullOrEmpty(nextLink));
             }
             else
             {
-                // ByAll
-                ret = this.AutomationClient.ListDscNodes(this.ResourceGroupName, this.AutomationAccountName, nodeStatus);
-            }
+                var nextLink = string.Empty;
 
-            this.GenerateCmdletOutput(ret);
+                do
+                {
+                    // ByAll
+                    ret = this.AutomationClient.ListDscNodes(this.ResourceGroupName, this.AutomationAccountName, nodeStatus, ref nextLink);
+                    if (ret != null)
+                    {
+                        this.GenerateCmdletOutput(ret);
+                    }
+
+                } while (!string.IsNullOrEmpty(nextLink));
+            }
         }
     }
 }

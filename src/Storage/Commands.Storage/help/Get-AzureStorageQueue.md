@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
 ms.assetid: C2EBCCF0-56CE-4D49-A138-74E52FC3A9AC
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/get-azurestoragequeue
 schema: 2.0.0
 ---
 
@@ -103,7 +103,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### IStorageContext
+
+Parameter 'Context' accepts value of type 'IStorageContext' from the pipeline
+
+### String
+
+Parameter 'Name' accepts value of type 'String' from the pipeline
+
 ## OUTPUTS
+
+### Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageQueue
 
 ## NOTES
 

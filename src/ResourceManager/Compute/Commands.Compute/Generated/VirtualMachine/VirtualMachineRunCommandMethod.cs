@@ -19,6 +19,7 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
@@ -60,7 +61,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             dynamicParameters.Add("VMName", pVMName);
 
             var pParameters = new RuntimeDefinedParameter();
-            pParameters.Name = "VirtualMachineRunCommandParameter";
+            pParameters.Name = "RunCommandInput";
             pParameters.ParameterType = typeof(RunCommandInput);
             pParameters.Attributes.Add(new ParameterAttribute
             {
@@ -69,7 +70,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 Mandatory = true
             });
             pParameters.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("VirtualMachineRunCommandParameter", pParameters);
+            dynamicParameters.Add("RunCommandInput", pParameters);
 
             var pArgumentList = new RuntimeDefinedParameter();
             pArgumentList.Name = "ArgumentList";
@@ -109,5 +110,98 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                  new string[] { "ResourceGroupName", "VMName", "Parameters" },
                  new object[] { resourceGroupName, vmName, parameters });
         }
+    }
+
+    [Cmdlet(VerbsLifecycle.Invoke, "AzureRmVMRunCommand", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
+    [OutputType(typeof(PSRunCommandResult))]
+    public partial class InvokeAzureRmVMRunCommand : ComputeAutomationBaseCmdlet
+    {
+        protected override void ProcessRecord()
+        {
+            ExecuteClientAction(() =>
+            {
+                if (ShouldProcess(this.VMName, VerbsLifecycle.Invoke))
+                {
+                    string resourceGroupName = this.ResourceGroupName;
+                    string vmName = this.VMName;
+                    RunCommandInput parameters = new RunCommandInput();
+                    parameters.CommandId = this.CommandId;
+                    if (this.ScriptPath != null)
+                    {
+                        parameters.Script = new List<string>();
+                        PathIntrinsics currentPath = SessionState.Path;
+                        var filePath = new System.IO.FileInfo(currentPath.GetUnresolvedProviderPathFromPSPath(this.ScriptPath));
+                        string fileContent = FileUtilities.DataStore.ReadFileAsText(filePath.FullName);
+                        parameters.Script = fileContent.Split(new string[] { "\r\n", "\n", "\r" }, StringSplitOptions.RemoveEmptyEntries);
+                    }
+                    if (this.Parameter != null)
+                    {
+                        var vParameter = new List<RunCommandInputParameter>();
+                        foreach (var key in this.Parameter.Keys)
+                        {
+                            RunCommandInputParameter p = new RunCommandInputParameter();
+                            p.Name = key.ToString();
+                            p.Value = this.Parameter[key].ToString();
+                            vParameter.Add(p);
+                        }
+                        parameters.Parameters = vParameter;
+                    }
+                    if (this.VM != null)
+                    {
+                        vmName = VM.Name;
+                        resourceGroupName = VM.ResourceGroupName;
+                    }
+
+                    var result = VirtualMachinesClient.RunCommand(resourceGroupName, vmName, parameters);
+                    var psObject = new PSRunCommandResult();
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<RunCommandResult, PSRunCommandResult>(result, psObject);
+                    WriteObject(psObject);
+                }
+            });
+        }
+
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Position = 1,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false)]
+        [AllowNull]
+        public string ResourceGroupName { get; set; }
+
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Position = 2,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false)]
+        [Alias("Name")]
+        [AllowNull]
+        public string VMName { get; set; }
+
+        [Parameter(
+            Mandatory = true)]
+        [AllowNull]
+        public string CommandId { get; set; }
+
+        [Parameter(
+            Mandatory = false)]
+        [AllowNull]
+        public string ScriptPath { get; set; }
+
+        [Parameter(
+            Mandatory = false)]
+        [AllowNull]
+        public Hashtable Parameter { get; set; }
+
+        [Alias("VMProfile")]
+        [Parameter(
+            ParameterSetName = "VMParameter",
+            Position = 0,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = true)]
+        [ValidateNotNullOrEmpty]
+        public Compute.Models.PSVirtualMachine VM { get; set; }
     }
 }

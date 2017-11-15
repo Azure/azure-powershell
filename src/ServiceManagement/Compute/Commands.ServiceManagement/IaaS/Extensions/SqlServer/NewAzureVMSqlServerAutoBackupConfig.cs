@@ -25,6 +25,7 @@ using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
 using Microsoft.WindowsAzure.Management.Storage;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 {
@@ -83,7 +84,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The storage connection context")]
         [ValidateNotNullOrEmpty]
-        public AzureStorageContext StorageContext
+        public IStorageContext StorageContext
         {
             get;
             set;

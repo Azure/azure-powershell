@@ -15,7 +15,10 @@ param(
     [Parameter(Mandatory = $false, Position = 0)]
     [string] $buildConfig,
     [Parameter(Mandatory = $false, Position = 1)]
-    [string] $scope
+    [string] $scope,
+    [Parameter(Mandatory=$false)]
+    [ValidateSet("Latest", "Stack")]
+    [string] $Profile = "Latest"
 )
 
 function Create-ModulePsm1
@@ -28,27 +31,66 @@ function Create-ModulePsm1
 
   PROCESS
   {
-	 $manifestDir = Get-Item -Path $ModulePath
-	 $moduleName = $manifestDir.Name + ".psd1"
-	 $manifestPath = Join-Path -Path $ModulePath -ChildPath $moduleName
-     $module = Test-ModuleManifest -Path $manifestPath
+     $manifestDir = Get-Item -Path $ModulePath
+     $moduleName = $manifestDir.Name + ".psd1"
+     $manifestPath = Join-Path -Path $ModulePath -ChildPath $moduleName
+     $file = Get-Item $manifestPath
+     Import-LocalizedData -BindingVariable ModuleMetadata -BaseDirectory $file.DirectoryName -FileName $file.Name
      $templateOutputPath = $manifestPath -replace ".psd1", ".psm1"
-     [string]$strict
-     [string]$loose
-     foreach ($mod in $module.RequiredModules)
+     [string]$importedModules
+     if ($ModuleMetadata.RequiredModules -ne $null)
      {
-        $strict += "  Import-Module " + $mod.Name + " -RequiredVersion " + [string]$mod.Version + "`r`n"
-        $loose += "  Import-Module " + $mod.Name + "`r`n"
+        foreach ($mod in $ModuleMetadata.RequiredModules)
+        {
+           if ($mod["ModuleVersion"])
+           {
+               $importedModules += Create-MinimumVersionEntry -ModuleName $mod["ModuleName"] -MinimumVersion $mod["ModuleVersion"]
+           }
+           elseif ($mod["RequiredVersion"])
+           {
+               $importedModules += "Import-Module " + $mod["ModuleName"] + " -RequiredVersion " + $mod["RequiredVersion"] + "`r`n"
+           }        
+        }
      }
+
+     if ($ModuleMetadata.NestedModules -ne $null)
+     {
+         foreach ($dll in $ModuleMetadata.NestedModules)
+         {
+             $importedModules += "Import-Module (Join-Path -Path `$PSScriptRoot -ChildPath " + $dll.Substring(2) + ")`r`n"
+         }
+     }
+
      $template = Get-Content -Path $TemplatePath
-     $template = $template -replace "%MODULE-NAME%", $module.Name
+     $template = $template -replace "%MODULE-NAME%", $file.BaseName
      $template = $template -replace "%DATE%", [string](Get-Date)
-     $template = $template -replace "%STRICT-DEPENDENCIES%", $strict
-     $template = $template -replace "%DEPENDENCIES%", $loose
+     $template = $template -replace "%IMPORTED-DEPENDENCIES%", $importedModules
      Write-Host "Writing psm1 manifest to $templateOutputPath"
      $template | Out-File -FilePath $templateOutputPath -Force
      $file = Get-Item -Path $templateOutputPath
   }
+}
+
+function Create-MinimumVersionEntry
+{
+    [CmdletBinding()]
+    param(
+        [string]$ModuleName,
+        [string]$MinimumVersion
+    )
+
+    PROCESS
+    {
+        return "`$module = Get-Module $ModuleName `
+if (`$module -ne `$null -and `$module.Version.ToString().CompareTo(`"$MinimumVersion`") -lt 0) `
+{ `
+    Write-Error `"This module requires $ModuleName version $MinimumVersion. An earlier version of $ModuleName is imported in the current PowerShell session. Please open a new session before importing this module. This error could indicate that multiple incompatible versions of the Azure PowerShell cmdlets are installed on your system. Please see https://aka.ms/azps-version-error for troubleshooting information.`" -ErrorAction Stop `
+} `
+elseif (`$module -eq `$null) `
+{ `
+    Import-Module $ModuleName -MinimumVersion $MinimumVersion -Scope Global `
+}`r`n"
+    }
 }
 
 if ([string]::IsNullOrEmpty($buildConfig))
@@ -66,6 +108,11 @@ if ([string]::IsNullOrEmpty($scope))
 Write-Host "Updating $scope package(and its dependencies)" 
 
 $packageFolder = "$PSScriptRoot\..\src\Package"
+
+if ($Profile -eq "Stack")
+{
+    $packageFolder = "$PSScriptRoot\..\src\Stack"
+}
 
 
 
@@ -118,8 +165,22 @@ if ($scope -eq 'All') {
 
 if (($scope -eq 'All') -or ($scope -eq 'AzureRM')) {
     # Update AzureRM module    
-    $modulePath = "$PSScriptRoot\AzureRM"
-    Write-Host "Updating AzureRM module from $modulePath"
-    Create-ModulePsm1 -ModulePath $modulePath -TemplatePath $templateLocation
-    Write-Host "Updated Azure module"
+    if ($Profile -eq "Stack")
+    {
+        $modulePath = "$PSScriptRoot\..\src\StackAdmin\AzureRM"
+        Write-Host "Updating AzureRM module from $modulePath"
+        Create-ModulePsm1 -ModulePath $modulePath -TemplatePath $templateLocation
+        Write-Host "Updated AzureRM module"
+        $modulePath = "$PSScriptRoot\..\src\StackAdmin\AzureStack"
+        Write-Host "Updating AzureRM module from $modulePath"
+        Create-ModulePsm1 -ModulePath $modulePath -TemplatePath $templateLocation
+        Write-Host "Updated AzureStack module"
+    }
+    else {
+        $modulePath = "$PSScriptRoot\AzureRM"
+        Write-Host "Updating AzureRM module from $modulePath"
+        Create-ModulePsm1 -ModulePath $modulePath -TemplatePath $templateLocation
+        Write-Host "Updated Azure module"
+    }
 } 
+

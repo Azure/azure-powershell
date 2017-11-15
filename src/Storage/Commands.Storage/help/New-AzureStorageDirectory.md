@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
 ms.assetid: 65962F9A-CC79-4B8B-9208-A993708FD36F
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/new-azurestoragedirectory
 schema: 2.0.0
 ---
 
@@ -194,6 +194,22 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### IStorageContext
+
+Parameter 'Context' accepts value of type 'IStorageContext' from the pipeline
+
+### CloudFileDirectory
+
+Parameter 'Directory' accepts value of type 'CloudFileDirectory' from the pipeline
+
+### String
+
+Parameter 'Path' accepts value of type 'String' from the pipeline
+
+### CloudFileShare
+
+Parameter 'Share' accepts value of type 'CloudFileShare' from the pipeline
 
 ## OUTPUTS
 

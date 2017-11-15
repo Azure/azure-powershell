@@ -92,68 +92,15 @@ namespace Microsoft.WindowsAzure.Commands.Common
                 return result;
             }
         }
+
+        protected override string DataCollectionWarning
+        {
+            get
+            {
+                return Resources.ARMDataCollectionMessage;
+            }
+        }
 #endif
-
-        protected override void SaveDataCollectionProfile()
-        {
-            if (_dataCollectionProfile == null)
-            {
-                InitializeDataCollectionProfile();
-            }
-
-            string fileFullPath = Path.Combine(AzureSession.Instance.ProfileDirectory, AzurePSDataCollectionProfile.DefaultFileName);
-            var contents = JsonConvert.SerializeObject(_dataCollectionProfile);
-            if (!AzureSession.Instance.DataStore.DirectoryExists(AzureSession.Instance.ProfileDirectory))
-            {
-                AzureSession.Instance.DataStore.CreateDirectory(AzureSession.Instance.ProfileDirectory);
-            }
-            AzureSession.Instance.DataStore.WriteFile(fileFullPath, contents);
-            WriteWarning(string.Format(Resources.DataCollectionSaveFileInformation, fileFullPath));
-        }
-
-        protected override void PromptForDataCollectionProfileIfNotExists()
-        {
-            // Initialize it from the environment variable or profile file.
-            InitializeDataCollectionProfile();
-
-            if (!_dataCollectionProfile.EnableAzureDataCollection.HasValue && CheckIfInteractive())
-            {
-                WriteWarning(Resources.DataCollectionPrompt);
-
-                const double timeToWaitInSeconds = 60;
-                var status = string.Format(Resources.DataCollectionConfirmTime, timeToWaitInSeconds);
-                ProgressRecord record = new ProgressRecord(0, Resources.DataCollectionActivity, status);
-
-                var startTime = DateTime.Now;
-                var endTime = DateTime.Now;
-                double elapsedSeconds = 0;
-
-                while (!this.Host.UI.RawUI.KeyAvailable && elapsedSeconds < timeToWaitInSeconds)
-                {
-                    TestMockSupport.Delay(10 * 1000);
-                    endTime = DateTime.Now;
-
-                    elapsedSeconds = (endTime - startTime).TotalSeconds;
-                    record.PercentComplete = ((int)elapsedSeconds * 100 / (int)timeToWaitInSeconds);
-                    WriteProgress(record);
-                }
-
-                bool enabled = false;
-                if (this.Host.UI.RawUI.KeyAvailable)
-                {
-                    KeyInfo keyInfo =
-                        this.Host.UI.RawUI.ReadKey(ReadKeyOptions.NoEcho | ReadKeyOptions.AllowCtrlC |
-                                                   ReadKeyOptions.IncludeKeyDown);
-                    enabled = (keyInfo.Character == 'Y' || keyInfo.Character == 'y');
-                }
-
-                _dataCollectionProfile.EnableAzureDataCollection = enabled;
-
-                WriteWarning(enabled ? Resources.DataCollectionConfirmYes : Resources.DataCollectionConfirmNo);
-
-                SaveDataCollectionProfile();
-            }
-        }
 
         protected override void InitializeQosEvent()
         {

@@ -46,14 +46,14 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         /// 
         /// </summary>
         /// <param name="authRuleResource"></param>
-        public SharedAccessAuthorizationRuleAttributes(SharedAccessAuthorizationRuleResource authRuleResource)
+        public SharedAccessAuthorizationRuleAttributes(AuthorizationRule authRuleResource)
         {
             if (authRuleResource != null)
             {
                 Id = authRuleResource.Id;
                 Name = authRuleResource.Name;
-                Type = authRuleResource.Type;             
-                Rights = authRuleResource.Rights.ToList();
+                Type = authRuleResource.Type;                
+                Rights = authRuleResource.Rights;
             }
         }
 
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         /// <summary>
         /// The rights associated with the rule.
         /// </summary>
-        public IList<AccessRights?> Rights { get; set; }
+        public IList<string> Rights { get; set; }
        
     }
 }

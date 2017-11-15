@@ -53,3 +53,26 @@ function Test-RecoveryServicesVaultCRUDTests
 	$vaults = Get-AzureRmRecoveryServicesVault -ResourceGroupName RsvTestRG -Name rsv1
 	Assert-True { $vaults.Count -eq 0 }
 }
+
+function Test-RecoveryServicesVaultCredFileDownloadTest
+{
+	# Create vault
+	$vaultCreationResponse = New-AzureRmRecoveryServicesVault -Name rsv1 -ResourceGroupName RsvTestRG -Location westus
+	Assert-NotNull($vaultCreationResponse.Name)
+	Assert-NotNull($vaultCreationResponse.ID)
+	Assert-NotNull($vaultCreationResponse.Type)
+
+	$drives = Get-PSDrive -PSProvider 'FileSystem'
+	$folderPath = $drives[0].Root
+	$file = Get-AzureRmRecoveryServicesVaultSettingsFile -Vault $vaultCreationResponse -Backup -Path $path
+	Assert-True { Test-Path $file.FilePath }
+	$fileContent = Get-Content $file.FilePath
+	Assert-Contains($fileContent, $vaultCreationResponse.Name)
+	Assert-Contains($fileContent, $vaultCreationResponse.ResourceGroupName)
+	Assert-Contains($fileContent, $vaultCreationResponse.Location)
+
+	# Remove Vault
+	Remove-AzureRmRecoveryServicesVault -Vault $vaultCreationResponse
+	$vaults = Get-AzureRmRecoveryServicesVault -ResourceGroupName RsvTestRG -Name rsv1
+	Assert-True { $vaults.Count -eq 0 }
+}

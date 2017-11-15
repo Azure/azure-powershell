@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
 ms.assetid: FD3A0013-4365-4E65-891C-5C50A9D5658C
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/get-azurestorageshare
 schema: 2.0.0
 ---
 
@@ -20,8 +20,9 @@ Get-AzureStorageShare [[-Prefix] <String>] [-Context <IStorageContext>] [-Server
 
 ### Specific
 ```
-Get-AzureStorageShare [-Name] <String> [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
- [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
+Get-AzureStorageShare [-Name] <String> [-SnapshotTime <DateTimeOffset>] [-Context <IStorageContext>]
+ [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -52,6 +53,13 @@ PS C:\> Get-AzureStorageShare -Context $Context
 The first command uses the **New-AzureStorageContext** cmdlet to create a context by using the *Local* parameter, and then stores that context object in the $Context variable.
 
 The second command gets the file shares for the context object stored in $Context.
+
+### Example 4: Get a file share snapshot with specific share name and SnapshotTime
+```
+PS C:\>Get-AzureStorageShare -Name "ContosoShare06" -SnapshotTime "6/16/2017 9:48:41 AM +00:00"
+```
+
+This command gets a file share snapshot with specific share name and SnapshotTime.
 
 ## PARAMETERS
 
@@ -154,10 +162,29 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SnapshotTime
+SnapshotTime of the file share snapshot to be received.
+
+```yaml
+Type: DateTimeOffset
+Parameter Sets: Specific
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### IStorageContext
+
+Parameter 'Context' accepts value of type 'IStorageContext' from the pipeline
 
 ## OUTPUTS
 

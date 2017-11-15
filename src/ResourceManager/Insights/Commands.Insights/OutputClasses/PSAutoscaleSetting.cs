@@ -12,8 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Linq;
 using Microsoft.Azure.Management.Monitor.Management.Models;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
@@ -24,16 +22,10 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
     public class PSAutoscaleSetting : AutoscaleSettingResource
     {
         /// <summary>
-        /// <para>Gets or sets the Tags of the object.</para>
-        /// <para>This property hides a property of the super class to enable the display of details</para>
+        /// <para>Gets or sets the AutoscaleSettingResourceName of the object.</para>
+        /// <para>This property hides a property of the super class for it not to be displayed since it is in the process of deprecation</para>
         /// </summary>
-        public new PSDictionaryElement Tags { get; set; }
-
-        /// <summary>
-        /// <para>Gets or sets the Tags of the object.</para>
-        /// <para>This property hides a property of the super class to enable the display of details</para>
-        /// </summary>
-        public new PSAutoscaleProfilesList Profiles { get; set; }
+        private new string AutoscaleSettingResourceName { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the PSAutoscaleSetting class.
@@ -41,19 +33,16 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// <param name="autoscaleSettingSpec">The autoscale setting spec</param>
         public PSAutoscaleSetting(AutoscaleSettingResource autoscaleSettingSpec)
             : base(
-                name: autoscaleSettingSpec.Name,
-                id: autoscaleSettingSpec.Id, 
-                location: autoscaleSettingSpec.Location, 
-                autoscaleSettingResourceName: autoscaleSettingSpec.Name, 
-                profiles: autoscaleSettingSpec.Profiles, 
-                type: autoscaleSettingSpec.Type, 
-                tags: autoscaleSettingSpec.Tags)
+                  location: autoscaleSettingSpec.Location,
+                  profiles: autoscaleSettingSpec.Profiles,
+                  id: autoscaleSettingSpec.Id,
+                  name: autoscaleSettingSpec.Name,
+                  type: autoscaleSettingSpec.Type,
+                  tags: autoscaleSettingSpec.Tags,
+                  notifications: autoscaleSettingSpec.Notifications,
+                  enabled: autoscaleSettingSpec.Enabled,
+                  targetResourceUri: autoscaleSettingSpec.TargetResourceUri)
         {
-            this.TargetResourceUri = autoscaleSettingSpec.TargetResourceUri;
-            this.Enabled = autoscaleSettingSpec.Enabled;
-            this.Notifications = autoscaleSettingSpec.Notifications;
-            this.Tags = new PSDictionaryElement(autoscaleSettingSpec.Tags);
-            this.Profiles = new PSAutoscaleProfilesList(autoscaleSettingSpec.Profiles);
         }
     }
 }

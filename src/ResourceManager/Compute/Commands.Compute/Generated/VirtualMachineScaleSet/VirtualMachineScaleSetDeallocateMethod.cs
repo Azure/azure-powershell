@@ -19,7 +19,6 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
@@ -123,10 +122,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     {
         protected override void ProcessRecord()
         {
-            AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
             ExecuteClientAction(() =>
             {
-                if (ShouldProcess(this.ResourceGroupName, VerbsLifecycle.Stop)
+                if (ShouldProcess(this.VMScaleSetName, VerbsLifecycle.Stop)
                     && (this.Force.IsPresent ||
                         this.ShouldContinue(Properties.Resources.ResourceStoppingConfirmation,
                                             "Stop-AzureRmVmss operation")))
@@ -139,14 +137,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     {
                         var result = VirtualMachineScaleSetsClient.PowerOff(resourceGroupName, vmScaleSetName, instanceIds);
                         var psObject = new PSOperationStatusResponse();
-                        Mapper.Map<Azure.Management.Compute.Models.OperationStatusResponse, PSOperationStatusResponse>(result, psObject);
+                        ComputeAutomationAutoMapperProfile.Mapper.Map<Azure.Management.Compute.Models.OperationStatusResponse, PSOperationStatusResponse>(result, psObject);
                         WriteObject(psObject);
                     }
                     else
                     {
                         var result = VirtualMachineScaleSetsClient.Deallocate(resourceGroupName, vmScaleSetName, instanceIds);
                         var psObject = new PSOperationStatusResponse();
-                        Mapper.Map<Azure.Management.Compute.Models.OperationStatusResponse, PSOperationStatusResponse>(result, psObject);
+                        ComputeAutomationAutoMapperProfile.Mapper.Map<Azure.Management.Compute.Models.OperationStatusResponse, PSOperationStatusResponse>(result, psObject);
                         WriteObject(psObject);
                     }
 
@@ -202,18 +200,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 4,
             Mandatory = false)]
         [Parameter(
             ParameterSetName = "FriendMethod",
-            Position = 4,
             Mandatory = false)]
         [AllowNull]
         public SwitchParameter Force { get; set; }
 
         [Parameter(
             ParameterSetName = "FriendMethod",
-            Position = 5,
             Mandatory = true)]
         [AllowNull]
         public SwitchParameter StayProvisioned { get; set; }
