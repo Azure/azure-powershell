@@ -63,6 +63,8 @@ namespace StaticAnalysis.HelpAnalyzer
             {
                 result = result && !regex.IsMatch(fileName);
             }
+
+            return result;
         }
         /// <summary>
         /// Given a set of directory paths containing PowerShell module folders, analyze the help
@@ -167,8 +169,6 @@ namespace StaticAnalysis.HelpAnalyzer
                     HelpFile = service + "/folder",
                     ProblemId = MissingHelpFile
                 });
-
-		        return;
             }
 
             var helpFiles = Directory.EnumerateFiles(helpFolder, "*.md").Select(f => Path.GetFileNameWithoutExtension(f)).ToList();
