@@ -174,6 +174,10 @@ namespace Microsoft.Azure.Commands.Compute
                 .GetAwaiter()
                 .GetResult();
             var location = state.GetLocation(virtualMachine);
+            if (location == null)
+            {
+                location = "eastus";
+            }
             var target = virtualMachine.GetTargetState(client.SubscriptionId, location);
             var result = virtualMachine
                 .CreateOrUpdateAsync(client, state, target, new CancellationToken())
