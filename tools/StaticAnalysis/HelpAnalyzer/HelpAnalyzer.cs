@@ -63,11 +63,9 @@ namespace StaticAnalysis.HelpAnalyzer
             {
                 result = result && !regex.IsMatch(fileName);
             }
-
-            return result;
         }
         /// <summary>
-        /// Given a set of directory paths containing PowerShell module folders, analyze the help 
+        /// Given a set of directory paths containing PowerShell module folders, analyze the help
         /// in the module folders and report any issues
         /// </summary>
         /// <param name="scopes"></param>
@@ -155,7 +153,7 @@ namespace StaticAnalysis.HelpAnalyzer
             string savedDirectory)
         {
             var helpFolder = Directory.EnumerateDirectories(directory, "help").FirstOrDefault();
-            var service = Path.GetFileName(directory);            
+            var service = Path.GetFileName(directory);
             if (helpFolder == null)
             {
                 helpLogger.LogRecord(new HelpIssue()
@@ -197,14 +195,7 @@ namespace StaticAnalysis.HelpAnalyzer
                                     " -FileName " + psd1FileName +
                                     " -BindingVariable ModuleMetadata; $ModuleMetadata.NestedModules");
                 var cmdletResult = powershell.Invoke();
-
-                // used for webapp experimental cmdlets. Reason: no nested modules.
-                if (cmdletResult == null)
-                {
-                    return;
-                }
-
-                var cmdletFiles = cmdletResult.Where(i => i != null && !string.IsNullOrWhiteSpace(i.ToString()) && i.ToString().Length > 2).Select(c => c.ToString().Substring(2));
+                var cmdletFiles = cmdletResult.Select(c => c.ToString().Substring(2));
                 if (cmdletFiles.Any())
                 {
                     List<CmdletHelpMetadata> allCmdlets = new List<CmdletHelpMetadata>();
@@ -235,7 +226,7 @@ namespace StaticAnalysis.HelpAnalyzer
             }
         }
 
-        private void ValidateHelpRecords(IList<CmdletHelpMetadata> cmdlets, IList<string> helpRecords, 
+        private void ValidateHelpRecords(IList<CmdletHelpMetadata> cmdlets, IList<string> helpRecords,
             ReportLogger<HelpIssue> helpLogger)
         {
             foreach (var cmdlet in cmdlets)
@@ -247,7 +238,7 @@ namespace StaticAnalysis.HelpAnalyzer
                         Target = cmdlet.ClassName,
                         Severity = 1,
                         ProblemId = MissingHelp,
-                        Description = string.Format("Help missing for cmdlet {0} implemented by class {1}", 
+                        Description = string.Format("Help missing for cmdlet {0} implemented by class {1}",
                         cmdlet.CmdletName, cmdlet.ClassName),
                         Remediation = string.Format("Add Help record for cmdlet {0} to help file.", cmdlet.CmdletName)
                     });

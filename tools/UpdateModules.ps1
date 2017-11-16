@@ -50,7 +50,7 @@ function Create-ModulePsm1
            elseif ($mod["RequiredVersion"])
            {
                $importedModules += "Import-Module " + $mod["ModuleName"] + " -RequiredVersion " + $mod["RequiredVersion"] + "`r`n"
-           }        
+           }
         }
      }
 
@@ -69,7 +69,7 @@ function Create-ModulePsm1
 
      $contructedCommands = Find-DefaultResourceGroupCmdlets -AddDefaultParameters $AddDefaultParameters -ModuleMetadata $ModuleMetadata -ModulePath $ModulePath
      $template = $template -replace "%COMMANDS%", $contructedCommands
-     
+
      Write-Host "Writing psm1 manifest to $templateOutputPath"
      $template | Out-File -FilePath $templateOutputPath -Force
      $file = Get-Item -Path $templateOutputPath
@@ -86,7 +86,7 @@ function Find-DefaultResourceGroupCmdlets
     )
     PROCESS
     {
-        if ($AddDefaultParameters) 
+        if ($AddDefaultParameters)
         {
         $nestedModules = $ModuleMetadata.NestedModules
         $AllCmdlets = @()
@@ -96,9 +96,9 @@ function Find-DefaultResourceGroupCmdlets
             $dllCmdlets = $Assembly.GetTypes() | Where-Object {$_.CustomAttributes.AttributeType.Name -contains "CmdletAttribute"}
             $AllCmdlets += $dllCmdlets
         }
-        
+
         $FilteredCommands = $AllCmdlets | Where-Object {Test-CmdletRequiredParameter -Cmdlet $_ -Parameter "ResourceGroupName"}
-    
+
         if ($FilteredCommands.Length -eq 0) {
             $contructedCommands = "@()"
         }
@@ -109,7 +109,7 @@ function Find-DefaultResourceGroupCmdlets
             }
             $contructedCommands = $contructedCommands -replace ".$",")"
         }
-    
+
         return $contructedCommands
         }
 
@@ -144,7 +144,7 @@ function Test-CmdletRequiredParameter
                 return $true
             }
         }
-        
+
         return $false
     }
 }
@@ -180,10 +180,10 @@ if ([string]::IsNullOrEmpty($buildConfig))
 if ([string]::IsNullOrEmpty($scope))
 {
     Write-Verbose "Default scope to all"
-    $scope = 'All'  
+    $scope = 'All'
 }
 
-Write-Host "Updating $scope package(and its dependencies)" 
+Write-Host "Updating $scope package(and its dependencies)"
 
 $packageFolder = "$PSScriptRoot\..\src\Package"
 
@@ -209,21 +209,21 @@ if (($scope -eq 'All') -or ($scope -eq 'AzureStorage')) {
     # Publish AzureStorage module
     Write-Host "Updating AzureStorage module from $modulePath"
     Create-ModulePsm1 -ModulePath $modulePath -TemplatePath $templateLocation $false
-} 
+}
 
 if (($scope -eq 'All') -or ($scope -eq 'ServiceManagement')) {
     $modulePath = "$packageFolder\$buildConfig\ServiceManagement\Azure"
     # Publish Azure module
     Write-Host "Updating ServiceManagement(aka Azure) module from $modulePath"
     Create-ModulePsm1 -ModulePath $modulePath -TemplatePath $templateLocation $false
-} 
+}
 
 $resourceManagerModules = Get-ChildItem -Path $resourceManagerRootFolder -Directory
-if ($scope -eq 'All') {  
+if ($scope -eq 'All') {
     foreach ($module in $resourceManagerModules) {
-        # filter out AzureRM.Profile which always gets published first 
-        # And "Azure.Storage" which is built out as test dependencies  
-        if (($module.Name -ne "AzureRM.Profile") -and ($module.Name -ne "Azure.Storage") -and (!$module.Name.Contains("Experiment"))) {
+        # filter out AzureRM.Profile which always gets published first
+        # And "Azure.Storage" which is built out as test dependencies
+        if (($module.Name -ne "AzureRM.Profile") -and ($module.Name -ne "Azure.Storage")) {
             $modulePath = $module.FullName
             Write-Host "Updating $module module from $modulePath"
             Create-ModulePsm1 -ModulePath $modulePath -TemplatePath $templateLocation $true
@@ -235,14 +235,14 @@ if ($scope -eq 'All') {
     if (Test-Path $modulePath) {
         Write-Host "Updating $scope module from $modulePath"
         Create-ModulePsm1 -ModulePath $modulePath -TemplatePath $templateLocation $false
-        Write-Host "Updated $scope module"        
+        Write-Host "Updated $scope module"
     } else {
         Write-Error "Can not find module with name $scope to publish"
     }
 }
 
 if (($scope -eq 'All') -or ($scope -eq 'AzureRM')) {
-    # Update AzureRM module    
+    # Update AzureRM module
     if ($Profile -eq "Stack")
     {
         $modulePath = "$PSScriptRoot\..\src\StackAdmin\AzureRM"
@@ -260,5 +260,5 @@ if (($scope -eq 'All') -or ($scope -eq 'AzureRM')) {
         Create-ModulePsm1 -ModulePath $modulePath -TemplatePath $templateLocation $false
         Write-Host "Updated Azure module"
     }
-} 
+}
 

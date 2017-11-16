@@ -41,7 +41,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         }
 
         /// <summary>
-        /// Given a set of directory paths containing PowerShell module folders, 
+        /// Given a set of directory paths containing PowerShell module folders,
         /// analyze the breaking changes in the modules and report any issues
         /// </summary>
         /// <param name="cmdletProbingDirs">Set of directory paths containing PowerShell module folders to be checked for breaking changes.</param>
@@ -53,7 +53,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         /// <summary>
         /// Given a set of directory paths containing PowerShell module folders,
         /// analyze the breaking changes in the modules and report any issues
-        /// 
+        ///
         /// Filters can be added to find breaking changes for specific modules
         /// </summary>
         /// <param name="cmdletProbingDirs">Set of directory paths containing PowerShell module folders to be checked for breaking changes.</param>
@@ -73,7 +73,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                 cmdletProbingDirs = directoryFilter(cmdletProbingDirs);
             }
 
-            foreach (var baseDirectory in cmdletProbingDirs.Where(s => !s.Contains("ServiceManagement") && 
+            foreach (var baseDirectory in cmdletProbingDirs.Where(s => !s.Contains("ServiceManagement") &&
                                                                         !s.Contains("Stack") && Directory.Exists(Path.GetFullPath(s))))
             {
                 List<string> probingDirectories = new List<string>();
@@ -85,10 +85,6 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                 foreach (var directory in probingDirectories)
                 {
                     var service = Path.GetFileName(directory);
-                    if (service.ToLower().EndsWith("experiments"))
-                    {
-                        return;
-                    }
 
                     var manifestFiles = Directory.EnumerateFiles(directory, "*.psd1").ToList();
 
@@ -108,8 +104,8 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                     var psd1FileName = Path.GetFileName(psd1);
 
                     PowerShell powershell = PowerShell.Create();
-                    powershell.AddScript("Import-LocalizedData -BaseDirectory " + parentDirectory + 
-                                        " -FileName " + psd1FileName + 
+                    powershell.AddScript("Import-LocalizedData -BaseDirectory " + parentDirectory +
+                                        " -FileName " + psd1FileName +
                                         " -BindingVariable ModuleMetadata; $ModuleMetadata.NestedModules");
 
                     var cmdletResult = powershell.Invoke();
@@ -120,17 +116,17 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                         foreach (var cmdletFileName in cmdletFiles)
                         {
                             var cmdletFileFullPath = Path.Combine(directory, Path.GetFileName(cmdletFileName));
-                            
+
                             if (File.Exists(cmdletFileFullPath))
                             {
                                 issueLogger.Decorator.AddDecorator(a => a.AssemblyFileName = cmdletFileFullPath, "AssemblyFileName");
                                 processedHelpFiles.Add(cmdletFileName);
-                                var proxy = 
+                                var proxy =
                                     EnvironmentHelpers.CreateProxy<CmdletBreakingChangeLoader>(directory, out _appDomain);
                                 var newModuleMetadata = proxy.GetModuleMetadata(cmdletFileFullPath);
 
                                 string fileName = cmdletFileName + ".json";
-                                string executingPath = 
+                                string executingPath =
                                     Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath);
 
                                 string filePath = executingPath + "\\SerializedCmdlets\\" + fileName;
