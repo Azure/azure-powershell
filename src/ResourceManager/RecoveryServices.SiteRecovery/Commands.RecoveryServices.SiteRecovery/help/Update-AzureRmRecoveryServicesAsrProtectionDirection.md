@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: AzureRM.RecoveryServices.SiteRecovery
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.recoveryservices.siterecovery/update-azurermrecoveryservicesasrprotectiondirection
 schema: 2.0.0
 ---
 
@@ -16,6 +16,39 @@ Updates the replication direction for the specified replication protected item o
 ```
 Update-AzureRmRecoveryServicesAsrProtectionDirection -ReplicationProtectedItem <ASRReplicationProtectedItem>
  -Direction <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### AzureToVMware
+```
+Update-AzureRmRecoveryServicesAsrProtectionDirection [-AzureToVMware] [-Account <ASRRunAsAccount>]
+ -DataStore <ASRDataStore> [-MasterTarget <ASRMasterTargetServer>] -ProcessServer <ASRProcessServer>
+ -ProtectionContainerMapping <ASRProtectionContainerMapping>
+ -ReplicationProtectedItem <ASRReplicationProtectedItem> -Direction <String>
+ -RetentionVolume <ASRRetentionVolume> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### VMwareToAzure
+```
+Update-AzureRmRecoveryServicesAsrProtectionDirection [-VMwareToAzure] -Account <ASRRunAsAccount>
+ [-MasterTarget <ASRMasterTargetServer>] -ProcessServer <ASRProcessServer>
+ -ProtectionContainerMapping <ASRProtectionContainerMapping> [-LogStorageAccountId <String>]
+ [-RecoveryAzureStorageAccountId <String>] -ReplicationProtectedItem <ASRReplicationProtectedItem>
+ -Direction <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### HyperVToAzure
+```
+Update-AzureRmRecoveryServicesAsrProtectionDirection [-HyperVToAzure] [-LogStorageAccountId <String>]
+ [-RecoveryAzureStorageAccountId <String>] -ReplicationProtectedItem <ASRReplicationProtectedItem>
+ -Direction <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### EnterpriseToEnterprise
+```
+Update-AzureRmRecoveryServicesAsrProtectionDirection [-VmmToVmm]
+ -ReplicationProtectedItem <ASRReplicationProtectedItem> -Direction <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByRPObject
@@ -44,13 +77,13 @@ Start the update direction operation for the specified recoveyr plan and returns
 
 ## PARAMETERS
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+### -Account
+The run as account to be used to push install the Mobility service if needed. Must be one from the list of run as accounts in the ASR fabric.
 
 ```yaml
-Type: IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Type: ASRRunAsAccount
+Parameter Sets: AzureToVMware
+Aliases: 
 
 Required: False
 Position: Named
@@ -59,8 +92,50 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+```yaml
+Type: ASRRunAsAccount
+Parameter Sets: VMwareToAzure
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DataStore
+The VMware datastore to be used for the vmdisk's
+
+```yaml
+Type: ASRDataStore
+Parameter Sets: AzureToVMware
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Direction
-Specifies the direction to be used for the update operation post a failover.  
+Specifies the direction to be used for the update operation post a failover.
 The acceptable values for this parameter are:
 
 - PrimaryToRecovery
@@ -73,6 +148,81 @@ Aliases:
 Accepted values: PrimaryToRecovery, RecoveryToPrimary
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LogStorageAccountId
+Specifies the storage account ID to store the replication log of VMs.
+
+```yaml
+Type: String
+Parameter Sets: VMwareToAzure, HyperVToAzure
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MasterTarget
+Master Target Server Details.
+
+```yaml
+Type: ASRMasterTargetServer
+Parameter Sets: AzureToVMware, VMwareToAzure
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProcessServer
+Process Sever to be used for replication.
+
+```yaml
+Type: ASRProcessServer
+Parameter Sets: AzureToVMware, VMwareToAzure
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProtectionContainerMapping
+Protection containerMapping to be used for replication.
+
+```yaml
+Type: ASRProtectionContainerMapping
+Parameter Sets: AzureToVMware, VMwareToAzure
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecoveryAzureStorageAccountId
+Recovery Azure Storage AccountId.
+
+```yaml
+Type: String
+Parameter Sets: VMwareToAzure, HyperVToAzure
+Aliases: 
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -99,7 +249,7 @@ Specifies an ASR replication protected item
 
 ```yaml
 Type: ASRReplicationProtectedItem
-Parameter Sets: ByRPIObject
+Parameter Sets: ByRPIObject, AzureToVMware, VMwareToAzure, HyperVToAzure, EnterpriseToEnterprise
 Aliases: 
 
 Required: True
@@ -109,15 +259,15 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -RetentionVolume
+Retention Volume on the master target server to be used.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
+Type: ASRRetentionVolume
+Parameter Sets: AzureToVMware
+Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -133,6 +283,81 @@ Parameter Sets: (All)
 Aliases: wi
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VmmToVmm
+Update replication direction for a failed over Hyper-V virtual machine that is protected between two VMM managed Hyper-V sites.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: EnterpriseToEnterprise
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HyperVToAzure
+Reprotect a Hyper-V virtual machine after failback.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: HyperVToAzure
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AzureToVMware
+Update replication direction from Azure to Vmware.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: AzureToVMware
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VMwareToAzure
+Update replication direction from VMware to Azure.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: VMwareToAzure
+Aliases: 
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

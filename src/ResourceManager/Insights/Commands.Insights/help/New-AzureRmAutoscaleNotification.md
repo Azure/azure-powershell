@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
 Module Name: AzureRM.Insights
 ms.assetid: B5B5F494-D912-40D0-99E2-A62FAACA3EC9
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.insights/new-azurermautoscalenotification
 schema: 2.0.0
 ---
 
@@ -14,8 +14,8 @@ Creates an Autoscale email notification.
 ## SYNTAX
 
 ```
-New-AzureRmAutoscaleNotification [[-Webhooks] <WebhookNotification[]>] [[-CustomEmails] <String[]>]
- [-SendEmailToSubscriptionAdministrator] [-SendEmailToSubscriptionCoAdministrators]
+New-AzureRmAutoscaleNotification [[-Webhook] <WebhookNotification[]>] [[-CustomEmail] <String[]>]
+ [-SendEmailToSubscriptionAdministrator] [-SendEmailToSubscriptionCoAdministrator] 
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -40,13 +40,13 @@ This command creates an Autosacale email notification for the subscription admin
 
 ## PARAMETERS
 
-### -CustomEmails
+### -CustomEmail
 Specifies a comma-separated list of email addresses.
 
 ```yaml
 Type: String[]
 Parameter Sets: (All)
-Aliases: 
+Aliases: CustomEmails
 
 Required: False
 Position: 1
@@ -85,13 +85,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -SendEmailToSubscriptionCoAdministrators
+### -SendEmailToSubscriptionCoAdministrator
 Indicates that this operation sends an email notification to the subscription co-administrators.
 
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases: SendEmailToSubscriptionCoAdministrators
 
 Required: False
 Position: Named
@@ -100,13 +100,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Webhooks
+### -Webhook
 Specifies a comma-separated list of Autoscale webhooks.
 
 ```yaml
 Type: WebhookNotification[]
 Parameter Sets: (All)
-Aliases: 
+Aliases: Webhooks
 
 Required: False
 Position: 0

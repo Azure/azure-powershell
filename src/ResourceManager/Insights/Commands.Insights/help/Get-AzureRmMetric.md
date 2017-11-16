@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
 Module Name: AzureRM.Insights
 ms.assetid: EAFB9C98-000C-4EAC-A32D-6B0F1939AA2F
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.insights/get-azurermmetric
 schema: 2.0.0
 ---
 
@@ -15,14 +15,14 @@ Gets the metric values of a resource.
 
 ### GetWithDefaultParameters
 ```
-Get-AzureRmMetric [-ResourceId] <String> [-MetricNames <String[]>] [-DetailedOutput]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmMetric [-ResourceId] <String> [-TimeGrain <TimeSpan>] [-StartTime <DateTime>] [-EndTime <DateTime>]
+ [[-MetricName] <String[]>] [-DetailedOutput] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetWithFullParameters
 ```
-Get-AzureRmMetric [-ResourceId] <String> [[-TimeGrain] <TimeSpan>] [-AggregationType <AggregationType>]
- [-StartTime <DateTime>] [-EndTime <DateTime>] -MetricNames <String[]> [-DetailedOutput]
+Get-AzureRmMetric [-ResourceId] <String> [-TimeGrain <TimeSpan>] [-AggregationType <AggregationType>]
+ [-StartTime <DateTime>] [-EndTime <DateTime>] [-MetricName] <String[]> [-DetailedOutput]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -223,16 +223,16 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -MetricNames
+### -MetricName
 Specifies an array of names of metrics.
 
 ```yaml
 Type: String[]
-Parameter Sets: GetWithDefaultParameters
-Aliases: 
+Parameter Sets: (All)
+Aliases: MetricNames
 
-Required: False
-Position: Named
+Required: False (GetWithDefaultParameters), True (GetAzureRmAMetricFullParamGroup)
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

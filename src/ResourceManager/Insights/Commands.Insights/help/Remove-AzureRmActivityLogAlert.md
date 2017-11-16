@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
 Module Name: AzureRM.Insights
 ms.assetid: C7EC21C7-1C7E-49B2-9B33-486532FCDAEC
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.insights/remove-azurermactivitylogalert
 schema: 2.0.0
 ---
 
@@ -34,6 +34,8 @@ Remove-AzureRmActivityLogAlert -ResourceId <String> [-DefaultProfile <IAzureCont
 ## DESCRIPTION
 The **Remove-AzureRmActivityLogAlert** cmdlet removes an activity log alert.
 This cmdlet implements the ShouldProcess pattern, i.e. it might request confirmation from the user before actually patching the resource.
+
+This cmdlet implements the ShouldProcess pattern, i.e. it might request confirmation from the user before actually creating, modifying, or removing the resource.
 
 ## EXAMPLES
 
