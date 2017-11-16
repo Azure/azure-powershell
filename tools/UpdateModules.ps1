@@ -95,7 +95,9 @@ function Find-CompleterAttribute
             $AllCmdlets = @()
             $nestedModules | ForEach-Object {
                 $dllPath = Join-Path -Path $ModulePath -ChildPath $_
+                & "C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\Bin\x64\sn.exe" -Vr $dllPath
                 $Assembly = [Reflection.Assembly]::LoadFrom($dllPath)
+                & "C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\Bin\x64\sn.exe" -Vu $dllPath
                 $dllCmdlets = $Assembly.GetTypes() | Where-Object {$_.CustomAttributes.AttributeType.Name -contains "CmdletAttribute"}
                 $AllCmdlets += $dllCmdlets
             }
@@ -164,7 +166,9 @@ function Find-DefaultResourceGroupCmdlets
         $AllCmdlets = @()
         $nestedModules | ForEach-Object {
             $dllPath = Join-Path -Path $ModulePath -ChildPath $_
+            & "C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\Bin\x64\sn.exe" -Vr $dllPath
             $Assembly = [Reflection.Assembly]::LoadFrom($dllPath)
+            & "C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\Bin\x64\sn.exe" -Vu $dllPath
             $dllCmdlets = $Assembly.GetTypes() | Where-Object {$_.CustomAttributes.AttributeType.Name -contains "CmdletAttribute"}
             $AllCmdlets += $dllCmdlets
         }
