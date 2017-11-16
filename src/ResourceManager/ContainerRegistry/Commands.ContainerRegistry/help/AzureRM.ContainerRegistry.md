@@ -1,4 +1,4 @@
----
+﻿---
 Module Name: AzureRM.ContainerRegistry
 Module Guid: b3ca459c-feb9-41cc-a954-46222505acb3
 Download Help Link: 

@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
 Module Name: AzureRM.Batch
 ms.assetid: 38ED2854-23D0-400E-A5C8-239346B2AF99
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/get-azurebatchnodefile
 schema: 2.0.0
 ---
 
@@ -15,13 +15,13 @@ Gets the properties of Batch node files.
 
 ### ComputeNode_Id (Default)
 ```
-Get-AzureBatchNodeFile [-PoolId] <String> [-ComputeNodeId] <String> [[-Name] <String>]
+Get-AzureBatchNodeFile [-PoolId] <String> [-ComputeNodeId] <String> [[-Path] <String>]
  -BatchContext <BatchAccountContext> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Task_Id
 ```
-Get-AzureBatchNodeFile -JobId <String> -TaskId <String> [[-Name] <String>] -BatchContext <BatchAccountContext>
+Get-AzureBatchNodeFile -JobId <String> -TaskId <String> [[-Path] <String>] -BatchContext <BatchAccountContext>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -60,7 +60,7 @@ If you specify a compute node, but not a filter, this cmdlet returns properties 
 
 ### Example 1: Get the properties of a node file associated with a task
 ```
-PS C:\>Get-AzureBatchNodeFile -JobId "Job-000001" -TaskId "Task26" -Name "Stdout.txt" -BatchContext $Context
+PS C:\>Get-AzureBatchNodeFile -JobId "Job-000001" -TaskId "Task26" -Path "Stdout.txt" -BatchContext $Context
 IsDirectory Name          Properties                                      Url
 
 ----------- ----          ----------                                      ---
@@ -104,7 +104,7 @@ Therefore, the cmdlet performs a recursive file search is performed, and returns
 
 ### Example 4: Get a single file from a compute node
 ```
-PS C:\>Get-AzureBatchNodeFile -PoolId "Pool22" -ComputeNodeId "ComputeNode01" -Name "Startup\StdOut.txt" -BatchContext $Context
+PS C:\>Get-AzureBatchNodeFile -PoolId "Pool22" -ComputeNodeId "ComputeNode01" -Path "Startup\StdOut.txt" -BatchContext $Context
 IsDirectory Name                    Properties                                      Url
 ----------- ----                    ----------                                      ---
 False       startup\stdout.txt      Microsoft.Azure.Commands.Batch.Models.PSFile... https://cmdletexample.westus.Batch.contoso...
@@ -143,7 +143,7 @@ This command gets all the files at the root folder of the compute node that has 
 
 ### -BatchContext
 Specifies the **BatchAccountContext** instance that this cmdlet uses to interact with the Batch service.
-To obtain a **BatchAccountContext** object that contains access keys for your subscription, use the Get-AzureRmBatchAccountKeys cmdlet.
+If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
 Type: BatchAccountContext
@@ -189,7 +189,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
 Type: IAzureContextContainer
@@ -251,14 +251,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Specifies the name of the node file for which this cmdlet retrieves properties.
+### -Path
+Specifies the path of the node file for which this cmdlet retrieves properties.
 You cannot specify wildcard characters.
 
 ```yaml
 Type: String
 Parameter Sets: ComputeNode_Id, Task_Id
-Aliases: 
+Aliases: Name
 
 Required: False
 Position: 2

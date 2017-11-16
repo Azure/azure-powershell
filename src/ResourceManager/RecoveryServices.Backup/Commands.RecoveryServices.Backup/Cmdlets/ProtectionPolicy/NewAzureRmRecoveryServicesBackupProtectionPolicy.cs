@@ -26,7 +26,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Creates a new protection policy based on the parameters provided in to the recovery services vault.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmRecoveryServicesBackupProtectionPolicy"), OutputType(typeof(PolicyBase))]
+    [Cmdlet(VerbsCommon.New, "AzureRmRecoveryServicesBackupProtectionPolicy",
+        SupportsShouldProcess = true), OutputType(typeof(PolicyBase))]
     public class NewAzureRmRecoveryServicesBackupProtectionPolicy : RecoveryServicesBackupCmdletBase
     {
         /// <summary>
@@ -82,11 +83,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                            RetentionPolicy == null ? "NULL" : RetentionPolicy.ToString(),
                            SchedulePolicy == null ? "NULL" : SchedulePolicy.ToString()));
 
-               // validate policy name
-               PolicyCmdletHelpers.ValidateProtectionPolicyName(Name);
+                // validate policy name
+                PolicyCmdletHelpers.ValidateProtectionPolicyName(Name);
 
-               // Validate if policy already exists               
-               if (PolicyCmdletHelpers.GetProtectionPolicyByName(Name, ServiceClientAdapter) != null)
+                // Validate if policy already exists               
+                if (PolicyCmdletHelpers.GetProtectionPolicyByName(Name, ServiceClientAdapter) != null)
                 {
                     throw new ArgumentException(string.Format(Resources.PolicyAlreadyExistException, Name));
                 }
@@ -106,13 +107,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 WriteDebug("Successfully created policy, now fetching it from service: " + Name);
 
-               // now get the created policy and return
-               ServiceClientModel.ProtectionPolicyResource policy = PolicyCmdletHelpers.GetProtectionPolicyByName(
-                                                                            Name,
-                                                                            ServiceClientAdapter);
-               // now convert service Policy to PSObject
-               WriteObject(ConversionHelpers.GetPolicyModel(policy));
-            });
+                // now get the created policy and return
+                ServiceClientModel.ProtectionPolicyResource policy = PolicyCmdletHelpers.GetProtectionPolicyByName(
+                                                                             Name,
+                                                                             ServiceClientAdapter);
+                // now convert service Policy to PSObject
+                WriteObject(ConversionHelpers.GetPolicyModel(policy));
+            }, ShouldProcess(Name, VerbsCommon.New));
         }
     }
 }
