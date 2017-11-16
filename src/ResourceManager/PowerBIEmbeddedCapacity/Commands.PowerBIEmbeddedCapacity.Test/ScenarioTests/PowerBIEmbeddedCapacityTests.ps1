@@ -2,41 +2,6 @@
 .SYNOPSIS
 Tests PowerBI Embedded Capacity lifecycle (Create, Update, Get, List, Delete).
 #>
-function Test-My
-{
-	# Creating capacity
-	$RGlocation = Get-RG-Location
-	$location = Get-Location
-	$resourceGroupName = "onesdk9854"
-	$capacityName = "onesdk1474"
-
-	[array]$capacityGet = Get-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName
-	$capacityGetItem = $capacityGet[0]
-
-	Assert-True {$capacityGetItem.ProvisioningState -like "Succeeded"}
-	Assert-True {$capacityGetItem.State -like "Succeeded"}
-		
-	Assert-AreEqual $capacityName $capacityGetItem.Name
-	Assert-AreEqual $location $capacityGetItem.Location
-	Assert-AreEqual "Microsoft.PowerBIDedicated/capacities" $capacityGetItem.Type
-	Assert-True {$capacityGetItem.Id -like "*$resourceGroupName*"}
-
-		# Scale up A1 -> A2
-		$capacityUpdated = Get-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName | Update-AzureRmPowerBIEmbeddedCapacity -Administrators "aztest0@stabletest.ccsctp.net", "aztest1@stabletest.ccsctp.net" -PassThru
-		Assert-AreEqual A1 $capacityUpdated.Sku
-
-		$capac = Get-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName
-		Assert-AreEqual "www" $capac.Administrators
-
-		# Scale down A2 -> A1
-#		$capacityUpdated = Update-AzureRmPowerBIEmbeddedCapacity -Name $capacityName -Sku A1 -PassThru
-#		Assert-AreEqual A1 $capacityUpdated.Sku
-}
-
-<#
-.SYNOPSIS
-Tests PowerBI Embedded Capacity lifecycle (Create, Update, Get, List, Delete).
-#>
 function Test-PowerBIEmbeddedCapacity
 {
 	try

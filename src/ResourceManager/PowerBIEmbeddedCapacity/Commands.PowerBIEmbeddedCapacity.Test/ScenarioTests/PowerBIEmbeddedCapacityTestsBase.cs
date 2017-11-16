@@ -121,7 +121,6 @@ namespace Microsoft.Azure.Commands.PowerBIEmbeddedCapacity.Test.ScenarioTests
                     helper.RMProfileModule, 
                     helper.RMResourceModule, 
                     helper.GetRMModulePath(@"AzureRM.PowerBIEmbeddedCapacity.psd1"), 
-                    helper.GetRMModulePath(@"Azure.PowerBIEmbeddedCapacity.psd1"), 
                     "AzureRM.Resources.ps1");
                 try
                 {
