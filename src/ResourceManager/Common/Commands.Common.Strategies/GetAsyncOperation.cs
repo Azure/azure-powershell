@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                 Model info;
                 try
                 {
-                    info = await config.Policy.GetAsync(GetAsyncParams.Create(
+                    info = await config.Strategy.GetAsync(GetAsyncParams.Create(
                         Client, config.ResourceGroupName, config.Name, CancellationToken));
                 }
                 catch (CloudException e) when (e.Response.StatusCode == HttpStatusCode.NotFound)

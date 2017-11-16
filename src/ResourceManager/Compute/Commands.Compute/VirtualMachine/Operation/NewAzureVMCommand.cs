@@ -16,6 +16,9 @@ using AutoMapper;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Strategies.Compute;
+using Microsoft.Azure.Commands.Common.Strategies.Network;
+using Microsoft.Azure.Commands.Common.Strategies.ResourceManager;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
@@ -74,7 +77,56 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public string LicenseType { get; set; }
 
+        public const string StrategyParameterSet = "StrategyParameterSet";
+
+        [Parameter(
+            ParameterSetName = StrategyParameterSet,
+            Mandatory = true)]
+        public string Name { get; }
+
+        [Parameter(
+            ParameterSetName = StrategyParameterSet,
+            Mandatory = false)]
+        public string AddressPrefix { get; } = "192.168.0.0/16";
+
+        [Parameter(
+            ParameterSetName = StrategyParameterSet,
+            Mandatory = false)]
+        public string SubnetAddressPrefix { get; } = "192.168.1.0/24";
+
+        [Parameter(ParameterSetName = StrategyParameterSet, Mandatory = false)]
+        public PSCredential Credential { get; }
+
         public override void ExecuteCmdlet()
+        {
+            switch (ParameterSetName)
+            {
+                case StrategyParameterSet:
+                    StrategyExecuteCmdlet();
+                    break;
+                default:
+                    DefaultExecuteCmdlet();
+                    break;
+            }
+        }
+
+        public void StrategyExecuteCmdlet()
+        {
+            var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(Name);
+            var virtualNetwork = resourceGroup.CreateVirtualNetworkConfig(Name, AddressPrefix);
+            var subnet = virtualNetwork.CreateSubnet(Name, SubnetAddressPrefix);
+            var publicIpAddress = resourceGroup.CreatePublicIPAddressConfig(Name);
+            var networkSecurityGroup = resourceGroup.CreateNetworkSecurityGroupConfig(Name);
+            var networkInterface = resourceGroup.CreateNetworkInterfaceConfig(
+                Name, subnet, publicIpAddress, networkSecurityGroup);
+            var virtualMachine = resourceGroup.CreateVirtualMachineConfig(
+                Name,
+                networkInterface,
+                Credential.UserName,
+                new System.Net.NetworkCredential(string.Empty, Credential.Password).Password);
+        }
+
+        public void DefaultExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 

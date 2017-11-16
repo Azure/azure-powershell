@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                 }
                 var tasks = config.Dependencies.Select(GetOrAddUntyped);
                 await Task.WhenAll(tasks);
-                return await config.Policy.CreateOrUpdateAsync(CreateOrUpdateAsyncParams.Create(
+                return await config.Strategy.CreateOrUpdateAsync(CreateOrUpdateAsyncParams.Create(
                     Client,
                     config.ResourceGroupName,
                     config.Name,

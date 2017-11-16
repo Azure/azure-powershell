@@ -36,7 +36,7 @@
                     GetUntyped(d);
                 }
                 var model = config.CreateModel(Subscription);
-                config.Policy.SetLocation(model, Location);
+                config.Strategy.SetLocation(model, Location);
                 return model;
             }
 

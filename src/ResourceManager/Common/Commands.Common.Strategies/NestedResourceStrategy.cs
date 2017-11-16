@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         }
     }
 
-    public static class NestedResourceStraegy
+    public static class NestedResourceStrategy
     {
         public static NestedResourceStrategy<Model, ParentModel> Create<Model, ParentModel>(
             string header,

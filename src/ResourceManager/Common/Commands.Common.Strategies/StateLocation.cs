@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                 var info = State.GetOrNull(config);
                 return info != null
                     ? new DependencyLocation(
-                        config.Policy.GetLocation(info),
+                        config.Strategy.GetLocation(info),
                         typeof(Model) != typeof(ResourceGroup))
                     : config
                         .Dependencies

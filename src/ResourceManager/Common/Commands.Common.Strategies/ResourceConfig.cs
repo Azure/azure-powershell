@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
     public sealed class ResourceConfig<Model> : IResourceConfig<Model>
         where Model : class
     {
-        public ResourceStrategy<Model> Policy { get; }
+        public ResourceStrategy<Model> Strategy { get; }
 
         public string ResourceGroupName { get; }
 
@@ -19,13 +19,13 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         public IEnumerable<IResourceConfig> Dependencies { get; }
 
         public ResourceConfig(
-            ResourceStrategy<Model> policy,
+            ResourceStrategy<Model> strategy,
             string resourceGroupName,
             string name,
             Func<string, Model> createModel,
             IEnumerable<IResourceConfig> dependencies)
         {
-            Policy = policy;
+            Strategy = strategy;
             ResourceGroupName = resourceGroupName;
             Name = name;
             CreateModel = createModel;
@@ -43,33 +43,33 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                     "resourceGroups",
                     ResourceGroupName
                 }
-                .Concat(Policy.GetId(Name));
+                .Concat(Strategy.GetId(Name));
     }
 
     public static class ResourceConfig
     {
         public static ResourceConfig<Model> CreateConfig<Model>(
-            this ResourceStrategy<Model> policy,
+            this ResourceStrategy<Model> strategy,
             string resourceGroupName,
             string name,
             Func<string, Model> createModel = null,
             IEnumerable<IResourceConfig> dependencies = null)
             where Model : class, new()
             => new ResourceConfig<Model>(
-                policy,
+                strategy,
                 resourceGroupName,
                 name,
                 createModel ?? (_ => new Model()),
                 dependencies.EmptyIfNull());
 
         public static ResourceConfig<Model> CreateConfig<Model>(
-            this ResourceStrategy<Model> policy,
+            this ResourceStrategy<Model> strategy,
             ResourceConfig<ResourceGroup> resourceGroup,
             string name,
             Func<string, Model> createModel = null,
             IEnumerable<IResourceConfig> dependencies = null)
             where Model : class, new()
-            => policy.CreateConfig(
+            => strategy.CreateConfig(
                 resourceGroup.Name, 
                 name,
                 createModel,
