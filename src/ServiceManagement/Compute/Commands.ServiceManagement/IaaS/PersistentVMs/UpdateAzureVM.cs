@@ -101,11 +101,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
             {
                 AvailabilitySetName = VM.AvailabilitySetName,
                 Label = VM.Label,
-                OSVirtualHardDisk = Mapper.Map<OSVirtualHardDisk>(VM.OSVirtualHardDisk),
+                OSVirtualHardDisk = ServiceManagementProfile.Mapper.Map<OSVirtualHardDisk>(VM.OSVirtualHardDisk),
                 RoleName = VM.RoleName,
                 RoleSize = VM.RoleSize,
                 ProvisionGuestAgent = VM.ProvisionGuestAgent,
-                ResourceExtensionReferences = VM.ProvisionGuestAgent != null && VM.ProvisionGuestAgent.Value ? Mapper.Map<List<ResourceExtensionReference>>(VM.ResourceExtensionReferences) : null
+                ResourceExtensionReferences = VM.ProvisionGuestAgent != null && VM.ProvisionGuestAgent.Value ? ServiceManagementProfile.Mapper.Map<List<ResourceExtensionReference>>(VM.ResourceExtensionReferences) : null
             };
 
             if (parameters.OSVirtualHardDisk != null)
@@ -118,7 +118,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                 parameters.DataVirtualHardDisks = new List<DataVirtualHardDisk>();
                 VM.DataVirtualHardDisks.ForEach(c =>
                 {
-                    var dataDisk = Mapper.Map<DataVirtualHardDisk>(c);
+                    var dataDisk = ServiceManagementProfile.Mapper.Map<DataVirtualHardDisk>(c);
                     dataDisk.LogicalUnitNumber = dataDisk.LogicalUnitNumber;
                     parameters.DataVirtualHardDisks.Add(dataDisk);
                 });

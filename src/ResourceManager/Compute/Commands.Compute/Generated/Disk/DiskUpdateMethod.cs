@@ -19,7 +19,6 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
@@ -121,24 +120,23 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     {
         protected override void ProcessRecord()
         {
-            AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
             ExecuteClientAction(() =>
             {
-                if (ShouldProcess(this.ResourceGroupName, VerbsData.Update))
+                if (ShouldProcess(this.DiskName, VerbsData.Update))
                 {
 
                     string resourceGroupName = this.ResourceGroupName;
                     string diskName = this.DiskName;
                     DiskUpdate diskupdate = new DiskUpdate();
-                    Mapper.Map<PSDiskUpdate, DiskUpdate>(this.DiskUpdate, diskupdate);
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<PSDiskUpdate, DiskUpdate>(this.DiskUpdate, diskupdate);
                     Disk disk = new Disk();
-                    Mapper.Map<PSDisk, Disk>(this.Disk, disk);
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<PSDisk, Disk>(this.Disk, disk);
 
                     var result = (this.DiskUpdate == null)
                                  ? DisksClient.CreateOrUpdate(resourceGroupName, diskName, disk)
                                  : DisksClient.Update(resourceGroupName, diskName, diskupdate);
                     var psObject = new PSDisk();
-                    Mapper.Map<Disk, PSDisk>(result, psObject);
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<Disk, PSDisk>(result, psObject);
                     WriteObject(psObject);
                 }
             });

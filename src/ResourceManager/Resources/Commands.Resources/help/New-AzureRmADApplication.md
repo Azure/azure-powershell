@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
+Module Name: AzureRM.Resources
 ms.assetid: F58FD77E-2946-44B1-B410-6E983FC20E21
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/new-azurermadapplication
 schema: 2.0.0
 ---
 
@@ -15,35 +16,36 @@ Creates a new azure active directory application.
 ### ApplicationWithoutCredentialParameterSet (Default)
 ```
 New-AzureRmADApplication -DisplayName <String> -IdentifierUris <String[]> [-HomePage <String>]
- [-ReplyUrls <String[]>] [-AvailableToOtherTenants <Boolean>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ReplyUrls <String[]>] [-AvailableToOtherTenants <Boolean>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationWithPasswordPlainParameterSet
 ```
 New-AzureRmADApplication -DisplayName <String> -IdentifierUris <String[]> [-HomePage <String>]
- [-ReplyUrls <String[]>] [-AvailableToOtherTenants <Boolean>] -Password <String> [-StartDate <DateTime>]
- [-EndDate <DateTime>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ReplyUrls <String[]>] [-AvailableToOtherTenants <Boolean>] -Password <SecureString> [-StartDate <DateTime>]
+ [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationWithPasswordCredentialParameterSet
 ```
 New-AzureRmADApplication -DisplayName <String> -IdentifierUris <String[]> [-HomePage <String>]
  [-ReplyUrls <String[]>] [-AvailableToOtherTenants <Boolean>] -PasswordCredentials <PSADPasswordCredential[]>
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationWithKeyPlainParameterSet
 ```
 New-AzureRmADApplication -DisplayName <String> -IdentifierUris <String[]> [-HomePage <String>]
  [-ReplyUrls <String[]>] [-AvailableToOtherTenants <Boolean>] -CertValue <String> [-StartDate <DateTime>]
- [-EndDate <DateTime>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationWithKeyCredentialParameterSet
 ```
 New-AzureRmADApplication -DisplayName <String> -IdentifierUris <String[]> [-HomePage <String>]
- [-ReplyUrls <String[]>] [-AvailableToOtherTenants <Boolean>] -KeyCredentials <PSADKeyCredential[]> [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-ReplyUrls <String[]>] [-AvailableToOtherTenants <Boolean>] -KeyCredentials <PSADKeyCredential[]>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -60,8 +62,9 @@ Creates a new azure active directory application without any credentials.
 
 ### --------------------------  Create new AAD application with password.  --------------------------
 ```
+PS E:\> $SecureStringPassword = ConvertTo-SecureString -String "password" -AsPlainText -Force
 PS C:\> New-AzureRmADApplication -DisplayName "NewApplication" -HomePage "http://www.microsoft.com" -IdentifierUris "http:
-//NewApplication" -Password "password"
+//NewApplication" -Password $SecureStringPassword
 ```
 
 Creates a new azure active directory application and associates password credentials with it.
@@ -96,6 +99,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -180,7 +198,7 @@ Accept wildcard characters: False
 The password to be associated with the application.
 
 ```yaml
-Type: String
+Type: SecureString
 Parameter Sets: ApplicationWithPasswordPlainParameterSet
 Aliases: 
 

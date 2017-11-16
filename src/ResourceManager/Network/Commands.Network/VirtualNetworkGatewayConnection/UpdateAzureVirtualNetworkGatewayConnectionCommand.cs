@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.Network
                         this.VirtualNetworkGatewayConnection.IpsecPolicies = this.IpsecPolicies;
                     }
 
-                    var vnetGatewayConnectionModel = Mapper.Map<MNM.VirtualNetworkGatewayConnection>(this.VirtualNetworkGatewayConnection);
+                    var vnetGatewayConnectionModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualNetworkGatewayConnection>(this.VirtualNetworkGatewayConnection);
                     vnetGatewayConnectionModel.Tags = TagsConversionHelper.CreateTagDictionary(this.VirtualNetworkGatewayConnection.Tag, validate: true);
                     this.VirtualNetworkGatewayConnectionClient.CreateOrUpdate(
                         this.VirtualNetworkGatewayConnection.ResourceGroupName,

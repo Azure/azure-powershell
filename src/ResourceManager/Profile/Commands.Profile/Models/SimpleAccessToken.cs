@@ -71,7 +71,9 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// The login type for this token
         /// </summary>
         public string LoginType
-            => Common.Authentication.LoginType.OrgId;
+        {
+            get { return Commands.Common.Authentication.LoginType.OrgId; }
+        }
 
         /// <summary>
         /// The tenant Id for this token.

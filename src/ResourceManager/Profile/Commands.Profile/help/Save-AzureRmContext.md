@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Profile.dll-Help.xml
-online version: 
+Module Name: AzureRM.Profile
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/save-azurermcontext
 schema: 2.0.0
 ---
 
@@ -12,8 +13,8 @@ Saves the current authentication information for use in other PowerShell session
 ## SYNTAX
 
 ```
-Save-AzureRmContext [[-Profile] <AzureRMProfile>] [-Path] <String> [-Force] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Save-AzureRmContext [[-Profile] <AzureRmProfile>] [-Path] <String> [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,6 +38,21 @@ PS C:\> Save-AzureRmContext -Profile (Add-AzureRmAccount) -Path C:\test.json
 This example saves the Azure context that is passed through to the cmdlet to the JSON file provided.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Force
 Overwrite the given file if it exists
@@ -73,7 +89,7 @@ Specifies the Azure context from which this cmdlet reads.
 If you do not specify a context, this cmdlet reads from the local default context.
 
 ```yaml
-Type: AzureRMProfile
+Type: AzureRmProfile
 Parameter Sets: (All)
 Aliases: 
 

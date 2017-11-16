@@ -304,7 +304,28 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
             public string UserId { get { return AuthResult.UserInfo.DisplayableId; } }
 
-            public string TenantId { get { return AuthResult.TenantId; } }
+            public string TenantId
+            {
+                get
+                {
+                    var tenant = AuthResult.TenantId;
+                    if (string.IsNullOrWhiteSpace(tenant))
+                    {
+                        tenant = Configuration.AdDomain;
+                        string issuer;
+                        if (IdentityTokenHelpers.TryGetIssuer(AuthResult.IdToken, out issuer))
+                        {
+                            string issuerTenant;
+                            if (IdentityTokenHelpers.TryGetTenantFromIssuer(issuer, out issuerTenant))
+                            {
+                                tenant = issuerTenant;
+                            }
+                        }
+                    }
+
+                    return tenant;
+                }
+            }
 
             public string LoginType
             {

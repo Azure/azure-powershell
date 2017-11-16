@@ -19,6 +19,20 @@
 -->
 ## Current Release
 
+## Version 4.0.0
+* Add support for online help
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
+    
+## Version 3.4.1
+
+## Version 3.4.0
+* Fixed help documents for cmdlets fixed in the earlier release.
+* Added 3 new cmdlets to support staged rollout of DSC node configurations.
+	- Start-AzureRmAutomationDscNodeConfigurationDeployment
+	- Stop-AzureRmAutomationDscNodeConfigurationDeployment
+	- Get-AzureRmAutomationDscNodeConfigurationDeployment
+	- Get-AzureRmAutomationDscNodeConfigurationDeploymentSchedule
+    
 ## Version 3.3.1
 
 ## Version 3.3.0

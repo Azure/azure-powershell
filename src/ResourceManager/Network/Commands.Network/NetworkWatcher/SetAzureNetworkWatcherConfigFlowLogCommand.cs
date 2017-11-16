@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Commands.Network
         public PSFlowLog SetFlowLogConfig(string resourceGroupName, string name, MNM.FlowLogInformation parameters)
         {
             MNM.FlowLogInformation flowLog = this.NetworkWatcherClient.SetFlowLogConfiguration(resourceGroupName, name, parameters);
-            PSFlowLog psFlowLog = Mapper.Map<PSFlowLog>(flowLog);
+            PSFlowLog psFlowLog = NetworkResourceManagerProfile.Mapper.Map<PSFlowLog>(flowLog);
 
             return psFlowLog;
         }

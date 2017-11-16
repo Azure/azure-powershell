@@ -59,6 +59,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Net" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
@@ -69,14 +70,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AzureRmAutosaveProfile.cs" />
     <Compile Include="AzureRmProfile.cs" />
     <Compile Include="AzureRmProfileConverter.cs" />
+    <Compile Include="Common\PSObjectExtensions.cs" />
+    <Compile Include="ContextModelExtensions.cs" />
+    <Compile Include="IProfileOperations.cs" />
+    <Compile Include="Models\AzureContextConverter.cs" />
+    <Compile Include="Models\PSAzureContext.cs" />
+    <Compile Include="Models\PSAzureEnvironment.cs" />
+    <Compile Include="Models\PSAzureFeedback.cs" />
+    <Compile Include="Models\PSAzureProfile.cs" />
+    <Compile Include="Models\PSAzureRmAccount.cs" />
+    <Compile Include="Models\PSAzureSubscription.cs" />
+    <Compile Include="Models\PSAzureTenant.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProtectedFileProvider.cs" />
+    <Compile Include="ProtectedProfileProvider.cs" />
     <Compile Include="ResourceManagerProfileProvider.cs" />
     <Compile Include="Serialization\CacheBuffer.cs" />
     <Compile Include="Serialization\LegacyAzureContext.cs" />

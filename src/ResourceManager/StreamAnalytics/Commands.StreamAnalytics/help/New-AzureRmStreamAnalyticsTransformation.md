@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.StreamAnalytics.dll-Help.xml
+Module Name: AzureRM
 ms.assetid: 8FF53426-D4AE-455E-A182-D7FBC7262FE1
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.streamanalytics/new-azurermstreamanalyticstransformation
 schema: 2.0.0
 ---
 
@@ -14,7 +15,8 @@ Creates or updates a transformation within a job.
 
 ```
 New-AzureRmStreamAnalyticsTransformation [-JobName] <String> [[-Name] <String>] [-File] <String> [-Force]
- [-ResourceGroupName] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,6 +46,21 @@ PS C:\>New-AzureRmStreamAnalyticsTransformation -ResourceGroupName "StreamAnalyt
 This command replaces the definition of StreamingJobTransform in the job StreamingJob without confirmation.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -File
 Specifies the path to a JSON file that contains the JSON representation of the Azure Stream Analytics transformation to create.

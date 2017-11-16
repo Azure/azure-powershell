@@ -22,6 +22,7 @@ using Microsoft.Azure.Commands.Common.Strategies.Network;
 using Microsoft.Azure.Commands.Common.Strategies.ResourceManager;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Network;
@@ -71,6 +72,13 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public PSVirtualMachine VM { get; set; }
+
+        [Parameter(
+           Mandatory = false,
+           Position = 3,
+           ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public string[] Zone { get; set; }
 
         [Parameter(
             ParameterSetName = DefaultParameterSet,
@@ -207,14 +215,15 @@ namespace Microsoft.Azure.Commands.Compute
                         AvailabilitySet = this.VM.AvailabilitySetReference,
                         Location = this.Location ?? this.VM.Location,
                         Tags = this.Tags != null ? this.Tags.ToDictionary() : this.VM.Tags,
-                        Identity = this.VM.Identity
+                        Identity = this.VM.Identity,
+                        Zones = this.Zone ?? this.VM.Zones,
                     };
 
                     var result = this.VirtualMachineClient.CreateOrUpdateWithHttpMessagesAsync(
                         this.ResourceGroupName,
                         this.VM.Name,
                         parameters).GetAwaiter().GetResult();
-                    var psResult = Mapper.Map<PSAzureOperationResponse>(result);
+                    var psResult = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(result);
 
                     if (!(this.DisableBginfoExtension.IsPresent || IsLinuxOs()))
                     {
@@ -241,7 +250,7 @@ namespace Microsoft.Azure.Commands.Compute
                                 this.VM.Name,
                                 VirtualMachineBGInfoExtensionContext.ExtensionDefaultName,
                                 extensionParameters).GetAwaiter().GetResult();
-                            psResult = Mapper.Map<PSAzureOperationResponse>(op2);
+                            psResult = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op2);
                         }
                     }
                     WriteObject(psResult);

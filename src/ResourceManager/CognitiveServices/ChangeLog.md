@@ -19,6 +19,16 @@
 -->
 ## Current Release
 
+## Version 0.9.0
+* Add support for online help
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
+    
+## Version 0.8.7
+
+## Version 0.8.6
+* Integrate with Cognitive Services Management SDK version 2.0.0.
+* Get-AzureRmCognitiveServicesAccount now can correctly support paging.
+
 ## Version 0.8.4
 
 ## Version 0.8.3

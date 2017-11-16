@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     [OutputType(typeof(PsApiManagementProperty), ParameterSetName = new[] { GetById })]
     public class GetAzureApiManagementProperty : AzureApiManagementCmdletBase
     {
-        private const string GetAll = "Get all properties";
-        private const string GetById = "Get by property ID";
-        private const string FindByName = "Find properties containing Name";
-        private const string FindByTag = "Find properties by Tag";
+        private const string GetAll = "GetAllProperties";
+        private const string GetById = "GetByPropertyId";
+        private const string FindByName = "GetByName";
+        private const string FindByTag = "GetByTag";
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
