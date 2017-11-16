@@ -502,6 +502,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Type &apos;{0}&apos; is an unsupported job parameter type.  Please check the list of supported types by using Get-Help on the cmdlet..
+        /// </summary>
+        internal static string UnsupportedJobParameterType {
+            get {
+                return ResourceManager.GetString("UnsupportedJobParameterType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Update Data Lake Analytics compute policy &apos;{0}&apos; with the following rules: {1}{2}....
         /// </summary>
         internal static string UpdateDataLakeComputePolicy {
