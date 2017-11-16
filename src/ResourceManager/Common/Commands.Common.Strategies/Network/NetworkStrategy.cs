@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
     {
         public static ResourceStrategy<Model> Create<Model, Operations>(
             string header,
-            Func<INetworkManagementClient, Operations> getOperations,
+            Func<NetworkManagementClient, Operations> getOperations,
             Func<GetAsyncParams<Operations>, Task<Model>> getAsync,
             Func<CreateOrUpdateAsyncParams<Operations, Model>, Task<Model>> createOrUpdateAsync)
             where Model : Resource

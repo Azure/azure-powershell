@@ -16,6 +16,7 @@ using AutoMapper;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Commands.Common.Strategies.Compute;
 using Microsoft.Azure.Commands.Common.Strategies.Network;
 using Microsoft.Azure.Commands.Common.Strategies.ResourceManager;
@@ -23,13 +24,17 @@ using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Azure.Management.Network;
+using Microsoft.Azure.Management.ResourceManager;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
+using Microsoft.Rest;
 using System;
 using System.Collections;
 using System.Linq;
 using System.Management.Automation;
 using System.Reflection;
+using System.Threading;
 using CM = Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute
@@ -38,7 +43,11 @@ namespace Microsoft.Azure.Commands.Compute
     [OutputType(typeof(PSAzureOperationResponse))]
     public class NewAzureVMCommand : VirtualMachineBaseCmdlet
     {
+        public const string DefaultParameterSet = "DefaultParameterSet";
+        public const string StrategyParameterSet = "StrategyParameterSet";
+
         [Parameter(
+            ParameterSetName = DefaultParameterSet,
             Mandatory = true,
             Position = 0,
             ValueFromPipelineByPropertyName = true)]
@@ -46,6 +55,7 @@ namespace Microsoft.Azure.Commands.Compute
         public string ResourceGroupName { get; set; }
 
         [Parameter(
+            ParameterSetName = DefaultParameterSet,
             Mandatory = true,
             Position = 1,
             ValueFromPipelineByPropertyName = true)]
@@ -54,6 +64,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Alias("VMProfile")]
         [Parameter(
+            ParameterSetName = DefaultParameterSet,
             Mandatory = true,
             Position = 2,
             ValueFromPipeline = true,
@@ -62,22 +73,23 @@ namespace Microsoft.Azure.Commands.Compute
         public PSVirtualMachine VM { get; set; }
 
         [Parameter(
+            ParameterSetName = DefaultParameterSet,
             Position = 3,
             HelpMessage = "Disable BG Info Extension")]
         public SwitchParameter DisableBginfoExtension { get; set; }
 
         [Parameter(
+            ParameterSetName = DefaultParameterSet,
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         public Hashtable Tags { get; set; }
 
         [Parameter(
+            ParameterSetName = DefaultParameterSet,
             Mandatory = false,
             ValueFromPipelineByPropertyName = false)]
         [ValidateNotNullOrEmpty]
         public string LicenseType { get; set; }
-
-        public const string StrategyParameterSet = "StrategyParameterSet";
 
         [Parameter(
             ParameterSetName = StrategyParameterSet,
@@ -94,7 +106,7 @@ namespace Microsoft.Azure.Commands.Compute
             Mandatory = false)]
         public string SubnetAddressPrefix { get; } = "192.168.1.0/24";
 
-        [Parameter(ParameterSetName = StrategyParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = StrategyParameterSet, Mandatory = true)]
         public PSCredential Credential { get; }
 
         public override void ExecuteCmdlet()
@@ -108,6 +120,24 @@ namespace Microsoft.Azure.Commands.Compute
                     DefaultExecuteCmdlet();
                     break;
             }
+        }
+
+        private sealed class Client : IClient
+        {
+            public string SubscriptionId { get; }
+
+            IAzureContext Context { get; }
+
+            public Client(IAzureContext context)
+            {
+                Context = context;
+                SubscriptionId = Context.Subscription.Id;
+            }
+
+            public T GetClient<T>()
+                where T : ServiceClient<T>
+                => AzureSession.Instance.ClientFactory.CreateArmClient<T>(
+                    Context, AzureEnvironment.Endpoint.ResourceManager);
         }
 
         public void StrategyExecuteCmdlet()
@@ -124,6 +154,19 @@ namespace Microsoft.Azure.Commands.Compute
                 networkInterface,
                 Credential.UserName,
                 new System.Net.NetworkCredential(string.Empty, Credential.Password).Password);
+
+            //
+            var client = new Client(DefaultProfile.DefaultContext);
+            var state = virtualMachine
+                .GetAsync(client, new CancellationToken())
+                .GetAwaiter()
+                .GetResult();
+            var location = state.GetLocation(virtualMachine);
+            var target = virtualMachine.GetTargetState(client.SubscriptionId, location);
+            var result = virtualMachine
+                .CreateOrUpdateAsync(client, state, target, new CancellationToken())
+                .GetAwaiter()
+                .GetResult();
         }
 
         public void DefaultExecuteCmdlet()

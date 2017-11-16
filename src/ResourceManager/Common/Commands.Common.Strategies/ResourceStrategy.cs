@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Rest;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -41,7 +42,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             Func<CreateOrUpdateAsyncParams<Operations, Model>, Task<Model>> createOrUpdateAsync,
             Func<Model, string> getLocation,
             Action<Model, string> setLocation)
-            where Client : class, IDisposable
+            where Client : ServiceClient<Client>
         {
             Func<IClient, Operations> toOperations = client => getOperations(client.GetClient<Client>());
             return new ResourceStrategy<Model>(
@@ -61,7 +62,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             Func<CreateOrUpdateAsyncParams<Operations, Model>, Task<Model>> createOrUpdateAsync,
             Func<Model, string> getLocation,
             Action<Model, string> setLocation)
-            where Client : class, IDisposable
+            where Client : ServiceClient<Client>
             => Create(
                 name => new[] { "providers" }.Concat(headers).Concat(new[] { name }),
                 getOperations,
