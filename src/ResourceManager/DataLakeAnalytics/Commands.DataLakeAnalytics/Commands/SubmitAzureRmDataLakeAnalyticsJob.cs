@@ -17,8 +17,10 @@ using Microsoft.Azure.Commands.DataLakeAnalytics.Properties;
 using Microsoft.Azure.Management.DataLake.Analytics.Models;
 using Microsoft.Rest.Azure;
 using System;
+using System.Collections;
 using System.IO;
 using System.Management.Automation;
+using System.Text;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
@@ -264,6 +266,39 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
             set { _priority = value; }
         }
 
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPath, Position = 8,
+            Mandatory = false,
+            HelpMessage =
+                "FILL IN"
+            )]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobParameterSetName, Position = 8,
+            Mandatory = false,
+            HelpMessage =
+                "FILL IN"
+            )]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPathAndRecurrence, Position = 8,
+            Mandatory = false,
+            HelpMessage =
+                "FILL IN"
+            )]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobParameterSetNameAndRecurrence, Position = 8,
+            Mandatory = false,
+            HelpMessage =
+                "FILL IN"
+            )]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPathAndPipeline, Position = 8,
+            Mandatory = false,
+            HelpMessage =
+                "FILL IN"
+            )]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobParameterSetNameAndPipeline, Position = 8,
+            Mandatory = false,
+            HelpMessage =
+                "FILL IN"
+            )]
+        [ValidateNotNullOrEmpty]
+        public Hashtable Parameters { get; set; }
+
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPathAndRecurrence,
             Mandatory = true,
             HelpMessage = "An ID that indicates the submission of this job is a part of a set of recurring jobs with the same recurrence ID.")]
@@ -332,19 +367,19 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 
         public override void ExecuteCmdlet()
         {
-            if(DegreeOfParallelism < 1)
+            if (DegreeOfParallelism < 1)
             {
                 WriteWarning(Resources.InvalidDegreeOfParallelism);
             }
 
-            // error handling for not passing or passing both script and script path
+            // Error handling for not passing or passing both script and script path
             if ((string.IsNullOrEmpty(Script) && string.IsNullOrEmpty(ScriptPath)) ||
                 (!string.IsNullOrEmpty(Script) && !string.IsNullOrEmpty(ScriptPath)))
             {
                 throw new CloudException(Resources.AmbiguousScriptParameter);
             }
 
-            // get the script
+            // Get the script
             if (string.IsNullOrEmpty(Script))
             {
                 var powerShellDestinationPath = SessionState.Path.GetUnresolvedProviderPathFromPSPath(ScriptPath);
@@ -355,6 +390,131 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                 }
 
                 Script = File.ReadAllText(powerShellDestinationPath);
+            }
+
+            // Check for job parameters
+            if (Parameters != null)
+            {
+                StringBuilder scriptBuilder = new StringBuilder(Script);
+                string paramVar = null;
+                string paramValue = null;
+                Type paramType = null;
+
+                // Add declare statements to the script
+                foreach (DictionaryEntry param in Parameters)
+                {
+                    paramVar = param.Key.ToString();
+                    paramValue = param.Value.ToString();
+                    paramType = param.Value.GetType();
+
+                    Console.WriteLine(paramType);
+                    
+                    if (paramType.Equals(typeof(byte)))
+                    {
+                        scriptBuilder.Insert(0, string.Format("DECLARE @{0} byte = {1};\n", 
+                            paramVar,
+                            paramValue));
+                    }
+                    else if (paramType.Equals(typeof(sbyte)))
+                    {
+                        scriptBuilder.Insert(0, string.Format("DECLARE @{0} sbyte = {1};\n",
+                            paramVar,
+                            paramValue));
+                    }
+                    else if (paramType.Equals(typeof(int)))
+                    {
+                        scriptBuilder.Insert(0, string.Format("DECLARE @{0} int = {1};\n",
+                            paramVar,
+                            paramValue));
+                    }
+                    else if (paramType.Equals(typeof(long)))
+                    {
+                        scriptBuilder.Insert(0, string.Format("DECLARE @{0} long = {1};\n",
+                            paramVar,
+                            paramValue));
+                    }
+                    else if (paramType.Equals(typeof(float)))
+                    {
+                        scriptBuilder.Insert(0, string.Format("DECLARE @{0} float = {1};\n",
+                            paramVar,
+                            paramValue));
+                    }
+                    else if (paramType.Equals(typeof(double)))
+                    {
+                        scriptBuilder.Insert(0, string.Format("DECLARE @{0} double = {1};\n",
+                            paramVar,
+                            paramValue));
+                    }
+                    else if (paramType.Equals(typeof(decimal)))
+                    {
+                        scriptBuilder.Insert(0, string.Format("DECLARE @{0} decimal = {1};\n",
+                            paramVar,
+                            paramValue));
+                    }
+                    else if (paramType.Equals(typeof(char)))
+                    {
+                        scriptBuilder.Insert(0, string.Format("DECLARE @{0} char = '{1}';\n",
+                            paramVar,
+                            paramValue));
+                    }
+                    else if (paramType.Equals(typeof(string)))
+                    {
+                        scriptBuilder.Insert(0, string.Format("DECLARE @{0} string = \"{1}\";\n",
+                            paramVar,
+                            paramValue));
+                    }
+                    else if (paramType.Equals(typeof(DateTime)))
+                    {
+                        scriptBuilder.Insert(0, string.Format("DECLARE @{0} DateTime = DateTime.Parse(\"{1}\");\n",
+                            paramVar,
+                            paramValue));
+                    }
+                    else if (paramType.Equals(typeof(bool)))
+                    {
+                        if ((bool)param.Value)
+                        {
+                            scriptBuilder.Insert(0, string.Format("DECLARE @{0} bool = true;\n", paramVar));
+                        }
+                        else
+                        {
+                            scriptBuilder.Insert(0, string.Format("DECLARE @{0} bool = false;\n", paramVar));
+                        }
+                    }
+                    else if (paramType.Equals(typeof(Guid)))
+                    {
+                        scriptBuilder.Insert(0, string.Format("DECLARE @{0} Guid = new Guid(\"{1}\");\n",
+                            paramVar,
+                            paramValue));
+                    }
+                    else if (paramType.Equals(typeof(byte[])))
+                    {
+                        StringBuilder byteArrayBuilder = new StringBuilder(string.Format("DECLARE @{0} byte[] = new byte[] {{", paramVar));
+                        byte[] byteArray = (byte[])param.Value;
+
+                        if (byteArray.Length > 0)
+                        {
+                            foreach (byte b in byteArray)
+                            {
+                                byteArrayBuilder.Append(string.Format("\n  {0},", b.ToString()));
+                            }
+
+                            byteArrayBuilder.Append("\n};\n");
+                        }
+                        else
+                        {
+                            byteArrayBuilder.Append(" };\n");
+                        }
+
+                        scriptBuilder.Insert(0, byteArrayBuilder.ToString());
+                    }
+                    else
+                    {
+                        throw new CloudException(string.Format(Resources.UnsupportedJobParameterType,
+                            paramType.ToString()));
+                    }
+                }
+
+                Script = scriptBuilder.ToString();
             }
 
             JobType jobType;

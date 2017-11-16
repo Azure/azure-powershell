@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.DataLakeAnalytics.dll-Help.xml
 Module Name: AzureRM.DataLakeAnalytics
 ms.assetid: 0DB9595A-6C8B-4F3F-A707-2DB41D7C7470
@@ -17,21 +17,23 @@ Submits a job.
 ```
 Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-ScriptPath] <String>
  [[-Runtime] <String>] [[-CompileMode] <String>] [-CompileOnly] [[-DegreeOfParallelism] <Int32>]
- [[-Priority] <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [[-Priority] <Int32>] [-Parameters <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### SubmitUSqlJob
 ```
 Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-Script] <String>
  [[-Runtime] <String>] [[-CompileMode] <String>] [-CompileOnly] [[-DegreeOfParallelism] <Int32>]
- [[-Priority] <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [[-Priority] <Int32>] [-Parameters <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### SubmitUSqlJobWithScriptPathAndRecurrence
 ```
 Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-ScriptPath] <String>
  [[-Runtime] <String>] [[-CompileMode] <String>] [-CompileOnly] [[-DegreeOfParallelism] <Int32>]
- [[-Priority] <Int32>] -RecurrenceId <Guid> [-RecurrenceName <String>]
+ [[-Priority] <Int32>] [-Parameters <Hashtable>] -RecurrenceId <Guid> [-RecurrenceName <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -39,7 +41,7 @@ Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-Script
 ```
 Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-Script] <String>
  [[-Runtime] <String>] [[-CompileMode] <String>] [-CompileOnly] [[-DegreeOfParallelism] <Int32>]
- [[-Priority] <Int32>] -RecurrenceId <Guid> [-RecurrenceName <String>]
+ [[-Priority] <Int32>] [-Parameters <Hashtable>] -RecurrenceId <Guid> [-RecurrenceName <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -47,18 +49,18 @@ Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-Script
 ```
 Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-ScriptPath] <String>
  [[-Runtime] <String>] [[-CompileMode] <String>] [-CompileOnly] [[-DegreeOfParallelism] <Int32>]
- [[-Priority] <Int32>] -RecurrenceId <Guid> [-RecurrenceName <String>] -PipelineId <Guid>
- [-PipelineName <String>] [-PipelineUri <String>] [-RunId <Guid>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [[-Priority] <Int32>] [-Parameters <Hashtable>] -RecurrenceId <Guid> [-RecurrenceName <String>]
+ -PipelineId <Guid> [-PipelineName <String>] [-PipelineUri <String>] [-RunId <Guid>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SubmitUSqlJobWithPipeline
 ```
 Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-Script] <String>
  [[-Runtime] <String>] [[-CompileMode] <String>] [-CompileOnly] [[-DegreeOfParallelism] <Int32>]
- [[-Priority] <Int32>] -RecurrenceId <Guid> [-RecurrenceName <String>] -PipelineId <Guid>
- [-PipelineName <String>] [-PipelineUri <String>] [-RunId <Guid>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [[-Priority] <Int32>] [-Parameters <Hashtable>] -RecurrenceId <Guid> [-RecurrenceName <String>]
+ -PipelineId <Guid> [-PipelineName <String>] [-PipelineUri <String>] [-RunId <Guid>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -72,6 +74,12 @@ PS C:\>Submit-AzureRmDataLakeAnalyticsJob -Account "ContosoAdlAccount" -Name "Ne
 ```
 
 This command submits a Data Lake Analytics job.
+
+```
+PS C:\>Submit-AzureRmDataLakeAnalyticsJob -Account "ContosoAdlAccount" -Name "New Job" -ScriptPath $LocalScriptPath -DegreeOfParallelism 32 -Parameters @{"p1"=1 ; "p2"="pString" ; "p3"=[DateTime](Get-Date) ; "p4"=[byte[]](@(0xAA, 0xBB))}
+```
+
+This command submits a Data Lake Analytics job with job parameters.
 
 ## PARAMETERS
 
@@ -318,6 +326,23 @@ Aliases:
 
 Required: True
 Position: 2
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Parameters
+A list of job parameters to prepend as DECLARE statements at the top of the script.
+The list of supported job parameter types via type inference:
+byte, sbyte, int, long, float, double, decimal, char, string, DateTime, bool, Guid, byte[]
+
+```yaml
+Type: Hashtable
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: 8
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
