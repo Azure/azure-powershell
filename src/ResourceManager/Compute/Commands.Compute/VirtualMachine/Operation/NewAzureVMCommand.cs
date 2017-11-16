@@ -40,7 +40,11 @@ using CM = Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsCommon.New, ProfileNouns.VirtualMachine, SupportsShouldProcess = true)]
+    [Cmdlet(
+        VerbsCommon.New,
+        ProfileNouns.VirtualMachine,
+        SupportsShouldProcess = true,
+        DefaultParameterSetName = "DefaultParameterSet")]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class NewAzureVMCommand : VirtualMachineBaseCmdlet
     {
@@ -102,20 +106,20 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             ParameterSetName = StrategyParameterSet,
             Mandatory = true)]
-        public string Name { get; }
+        public string Name { get; set; }
 
         [Parameter(
             ParameterSetName = StrategyParameterSet,
             Mandatory = false)]
-        public string AddressPrefix { get; } = "192.168.0.0/16";
+        public string AddressPrefix { get; set; } = "192.168.0.0/16";
 
         [Parameter(
             ParameterSetName = StrategyParameterSet,
             Mandatory = false)]
-        public string SubnetAddressPrefix { get; } = "192.168.1.0/24";
+        public string SubnetAddressPrefix { get; set; } = "192.168.1.0/24";
 
         [Parameter(ParameterSetName = StrategyParameterSet, Mandatory = true)]
-        public PSCredential Credential { get; }
+        public PSCredential Credential { get; set; }
 
         public override void ExecuteCmdlet()
         {
