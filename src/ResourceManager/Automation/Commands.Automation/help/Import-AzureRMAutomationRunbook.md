@@ -218,6 +218,7 @@ Valid values are:
 - PowerShellWorkflow
 - GraphicalPowerShellWorkflow
 - Graph
+- Python
 
 The value Graph is obsolete.
 It is equivalent to GraphicalPowerShellWorkflow.
@@ -226,7 +227,7 @@ It is equivalent to GraphicalPowerShellWorkflow.
 Type: String
 Parameter Sets: (All)
 Aliases: 
-Accepted values: PowerShell, GraphicalPowerShell, PowerShellWorkflow, GraphicalPowerShellWorkflow, Graph
+Accepted values: PowerShell, GraphicalPowerShell, PowerShellWorkflow, GraphicalPowerShellWorkflow, Graph, Python
 
 Required: True
 Position: Named
