@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.DataLakeAnalytics.dll-Help.xml
+Module Name: AzureRM.DataLakeAnalytics
 ms.assetid: E0E2617F-F6F1-434E-AD7C-27D309C2C3DA
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datalakeanalytics/remove-azurermdatalakeanalyticsdatasource
 schema: 2.0.0
 ---
 
@@ -12,16 +13,18 @@ Removes a data source from a Data Lake Analytics account.
 
 ## SYNTAX
 
-### Remove a Data Lake storage account
+### RemoveDataLakeStorageAccount
 ```
 Remove-AzureRmDataLakeAnalyticsDataSource [-Account] <String> [-DataLakeStore] <String> [-Force] [-PassThru]
- [[-ResourceGroupName] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### Remove a Blob storage account
+### RemoveBlobStorageAccount
 ```
 Remove-AzureRmDataLakeAnalyticsDataSource [-Account] <String> [-Blob] <String> [-Force] [-PassThru]
- [[-ResourceGroupName] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,7 +61,7 @@ Specifies the name of the AzureBlob Storage account to remove.
 
 ```yaml
 Type: String
-Parameter Sets: Remove a Blob storage account
+Parameter Sets: RemoveBlobStorageAccount
 Aliases: AzureBlob
 
 Required: True
@@ -73,13 +76,28 @@ Specifies the name of the AzureData Lake Store account to remove.
 
 ```yaml
 Type: String
-Parameter Sets: Remove a Data Lake storage account
+Parameter Sets: RemoveDataLakeStorageAccount
 Aliases: 
 
 Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

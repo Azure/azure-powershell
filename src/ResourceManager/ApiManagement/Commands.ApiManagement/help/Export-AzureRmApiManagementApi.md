@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
+Module Name: AzureRM.ApiManagement
 ms.assetid: 2BA76B02-B786-4A77-86E0-E7D4191120B5
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/export-azurermapimanagementapi
 schema: 2.0.0
 ---
 
@@ -12,17 +13,18 @@ Exports an API to a file.
 
 ## SYNTAX
 
-### Export to pipeline (Default)
+### ExportToPipeline (Default)
 ```
 Export-AzureRmApiManagementApi -Context <PsApiManagementContext> -ApiId <String>
- -SpecificationFormat <PsApiManagementApiFormat> [-WhatIf] [-Confirm] [<CommonParameters>]
+ -SpecificationFormat <PsApiManagementApiFormat> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
-### Export to File
+### ExportToFile
 ```
 Export-AzureRmApiManagementApi -Context <PsApiManagementContext> -ApiId <String>
- -SpecificationFormat <PsApiManagementApiFormat> -SaveAs <String> [-Force] [-PassThru] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -SpecificationFormat <PsApiManagementApiFormat> -SaveAs <String> [-Force] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,6 +34,7 @@ The **Export-AzureRmApiManagementApi** cmdlet exports an Azure API Management AP
 
 ### Example 1: Export an API in Web Application Description Language (WADL) format
 ```
+PS C:\>$ApiMgmtContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Export-AzureRmApiManagementApi -Context $ApiMgmtContext -ApiId "0123456789" -SpecificationFormat "Wadl" -SaveAs "C:\contoso\specifications\0123456789.wadl"
 ```
 
@@ -69,12 +72,27 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+ 
+ ```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Force
 Indicates that this operation overwrites the file of the same name if it already exists.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: Export to File
+Parameter Sets: ExportToFile
 Aliases: 
 
 Required: False
@@ -89,7 +107,7 @@ Indicates that this operation returns $True if the API is exported successfully,
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: Export to File
+Parameter Sets: ExportToFile
 Aliases: 
 
 Required: False
@@ -104,7 +122,7 @@ Specifies the file path to which to save the exported API.
 
 ```yaml
 Type: String
-Parameter Sets: Export to File
+Parameter Sets: ExportToFile
 Aliases: 
 
 Required: True

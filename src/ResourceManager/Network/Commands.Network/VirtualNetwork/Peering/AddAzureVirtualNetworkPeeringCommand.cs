@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.Network
             vnetPeering.UseRemoteGateways = this.UseRemoteGateways;
 
             // Map to the sdk object
-            var vnetPeeringModel = Mapper.Map<MNM.VirtualNetworkPeering>(vnetPeering);
+            var vnetPeeringModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualNetworkPeering>(vnetPeering);
 
             // Execute the Create VirtualNetwork call
             this.VirtualNetworkPeeringClient.CreateOrUpdate(this.VirtualNetwork.ResourceGroupName, this.VirtualNetwork.Name, this.Name, vnetPeeringModel);

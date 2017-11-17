@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Storage;
@@ -126,7 +127,7 @@ namespace Microsoft.Azure.Commands.Compute
                         this.ResourceGroupName,
                         this.VM.Name,
                         parameters).GetAwaiter().GetResult();
-                    var psResult = Mapper.Map<PSAzureOperationResponse>(result);
+                    var psResult = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(result);
 
                     if (!(this.DisableBginfoExtension.IsPresent || IsLinuxOs()))
                     {
@@ -153,7 +154,7 @@ namespace Microsoft.Azure.Commands.Compute
                                 this.VM.Name,
                                 VirtualMachineBGInfoExtensionContext.ExtensionDefaultName,
                                 extensionParameters).GetAwaiter().GetResult();
-                            psResult = Mapper.Map<PSAzureOperationResponse>(op2);
+                            psResult = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op2);
                         }
                     }
                     WriteObject(psResult);

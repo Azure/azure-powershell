@@ -12,22 +12,25 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
 using System.Security.Permissions;
 using Microsoft.Azure.Commands.DataFactoryV2.Models;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
-    [Cmdlet(VerbsCommon.Get, Constants.DataFactory), OutputType(typeof(List<PSDataFactory>), typeof(PSDataFactory))]
+    [Cmdlet(VerbsCommon.Get, Constants.DataFactory, DefaultParameterSetName = ParameterSetNames.BySubscriptionId),
+        OutputType(typeof(List<PSDataFactory>), typeof(PSDataFactory))]
     public class GetAzureDataFactoryCommand : DataFactoryBaseCmdlet
     {
-        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = Constants.HelpResourceGroup)]
+        [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
+            HelpMessage = Constants.HelpResourceGroup)]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = Constants.HelpFactoryName)]
+        [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = Constants.HelpFactoryName)]
         [ValidateNotNullOrEmpty]
         [Alias(Constants.DataFactoryName)]
         public string Name { get; set; }
@@ -35,21 +38,12 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
         {
-            var filterOptions = new DataFactoryFilterOptions()
+            var filterOptions = new DataFactoryFilterOptions();
+            if (ParameterSetName.Equals(ParameterSetNames.ByFactoryName, StringComparison.OrdinalIgnoreCase))
             {
-                DataFactoryName = Name,
-                ResourceGroupName = ResourceGroupName
+                filterOptions.DataFactoryName = Name;
+                filterOptions.ResourceGroupName = ResourceGroupName;
             };
-
-            if (Name != null)
-            {
-                List<PSDataFactory> dataFactories = DataFactoryClient.FilterPSDataFactories(filterOptions);
-                if (dataFactories != null && dataFactories.Any())
-                {
-                    WriteObject(dataFactories.First());
-                }
-                return;
-            }
 
             //List data factories until all pages are fetched
             do

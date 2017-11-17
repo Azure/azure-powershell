@@ -33,6 +33,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     using Microsoft.WindowsAzure.Storage.File;
     using Microsoft.Azure.Commands.Common.Authentication;
     using System.Reflection;
+    using Azure.Commands.Common.Authentication.Abstractions;
 
     [Cmdlet(VerbsLifecycle.Start, StorageNouns.CopyBlob, ConfirmImpact = ConfirmImpact.High, DefaultParameterSetName = ContainerNameParameterSet),
        OutputType(typeof(AzureStorageBlob))]

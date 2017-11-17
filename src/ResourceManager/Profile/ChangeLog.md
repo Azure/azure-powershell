@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 4.0.0
 - Set-AzureRmDefault
     - Use this cmdlet to set a default resource group.  This will make the -ResourceGroup parameter optional for some cmdlets, and will use the default when a resource group is not specified
     - ```Set-AzureRmDefault -ResourceGroupName "ExampleResourceGroup"```
@@ -28,6 +30,10 @@
 - Clear-AzureRmDefault
     - Use this cmdlet to remove the current default resource group
     - ```Clear-AzureRmDefault -ResourceGroup```
+- Add-AzureRmEnvironment and Set-AzureRmEnvironment
+    - Add the BatchAudience parameter, which allows you to specify the Azure Batch Active Directory audience to use when acquiring authentication tokens for the Batch service.
+* Add support for online help
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
 
 ## Version 3.4.1
 * LocationCompleterAttribute added and available for cmdlets which use the -Location parameter

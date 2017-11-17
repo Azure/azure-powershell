@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.NotificationHubs.dll-Help.xml
+Module Name: AzureRM.NotificationHubs
 ms.assetid: 7E9CBEE9-DD5F-4552-9187-ECBBEF6174B0
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.notificationhubs/new-azurermnotificationhubauthorizationrules
 schema: 2.0.0
 ---
 
@@ -15,14 +16,15 @@ Creates an authorization rule and assigns the rule to a notification hub.
 ### InputFileParameterSet
 ```
 New-AzureRmNotificationHubAuthorizationRules [-ResourceGroup] <String> [-Namespace] <String>
- [-NotificationHub] <String> [-InputFile] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NotificationHub] <String> [-InputFile] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### SASRuleParameterSet
 ```
 New-AzureRmNotificationHubAuthorizationRules [-ResourceGroup] <String> [-Namespace] <String>
- [-NotificationHub] <String> [-SASRule] <SharedAccessAuthorizationRuleAttributes> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-NotificationHub] <String> [-SASRule] <SharedAccessAuthorizationRuleAttributes>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,6 +47,21 @@ This hub is located in the ContosoNamespace namespace and is assigned to the Con
 Note that all the configuration information for the rule, including the rule name, will be taken from the input file C:\Configuration\ExternalAccessRule.json.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -InputFile
 Specifies the input file for the authorization rule that this cmdlet creates.

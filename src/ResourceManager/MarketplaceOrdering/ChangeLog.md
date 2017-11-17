@@ -19,6 +19,10 @@
 -->
 ## Current Release
 
+## Version 0.2.0
+* Add support for online help
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
+    
 ## Version 0.1.0
 * New Cmdlet Get-AzureRmMarketplaceTerms
     - Get the agreement terms of a given publisher id, offer id and plan id.

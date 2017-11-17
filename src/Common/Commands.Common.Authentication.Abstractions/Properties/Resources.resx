@@ -129,8 +129,14 @@
   <data name="InvalidDnsName" xml:space="preserve">
     <value>"{0}" is an invalid DNS name for {1}</value>
   </data>
+  <data name="InvalidOrEmptyArgumentMessage" xml:space="preserve">
+    <value>{0} is invalid or empty.</value>
+  </data>
   <data name="NoInternetConnection" xml:space="preserve">
     <value>Please connect to internet before executing this cmdlet</value>
+  </data>
+  <data name="PathDoesNotExist" xml:space="preserve">
+    <value>Path {0} doesn't exist.</value>
   </data>
   <data name="ProfileLockReadDisposed" xml:space="preserve">
     <value>Attempted to read from the Azure PowerShell context after it was disposed.  Please reload the module and try this operation again.</value>
@@ -179,5 +185,8 @@
   </data>
   <data name="SessionNotInitialized" xml:space="preserve">
     <value>The Azure PowerShell session has not been properly initialized.  Please import the module and try again.</value>
+  </data>
+  <data name="x86InProgramFiles" xml:space="preserve">
+    <value>(x86)</value>
   </data>
 </root>

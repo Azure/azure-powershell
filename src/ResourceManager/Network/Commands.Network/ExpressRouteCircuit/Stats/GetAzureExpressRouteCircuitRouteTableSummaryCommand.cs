@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Network
             var psARPs = new List<PSExpressRouteCircuitRoutesTableSummary>();
             foreach (var arpTable in arpTables)
             {
-                var psARP = Mapper.Map<PSExpressRouteCircuitRoutesTableSummary>(arpTable);
+                var psARP = NetworkResourceManagerProfile.Mapper.Map<PSExpressRouteCircuitRoutesTableSummary>(arpTable);
                 psARPs.Add(psARP);
             }
             WriteObject(psARPs, true);

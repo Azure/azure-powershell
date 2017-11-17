@@ -21,6 +21,7 @@ using Microsoft.Azure.Commands.DataFactoryV2.Models;
 using Microsoft.Azure.Commands.DataFactoryV2.Properties;
 using Microsoft.Azure.Management.DataFactory;
 using Microsoft.Azure.Management.DataFactory.Models;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
@@ -36,6 +37,11 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public virtual List<PSDataFactory> ListDataFactories(DataFactoryFilterOptions filterOptions)
         {
+            if (filterOptions == null)
+            {
+                throw new ArgumentNullException("filterOptions");
+            }
+
             var dataFactories = new List<PSDataFactory>();
 
             IPage<Factory> response;
@@ -58,7 +64,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             return dataFactories;
         }
 
-        public virtual List<PSDataFactory> FilterPSDataFactories(DataFactoryFilterOptions filterOptions)
+        public virtual List<PSDataFactory> ListDataFactoriesBySubscription(DataFactoryFilterOptions filterOptions)
         {
             if (filterOptions == null)
             {
@@ -66,20 +72,55 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             }
 
             var dataFactories = new List<PSDataFactory>();
+            IPage<Factory> response;
 
-            if (filterOptions.DataFactoryName != null)
+            if (filterOptions.NextLink.IsNextPageLink())
             {
-                PSDataFactory dataFactory = GetDataFactory(filterOptions.ResourceGroupName, filterOptions.DataFactoryName);
-                if (dataFactory != null)
-                {
-                    dataFactories.Add(dataFactory);
-                }
+                response = this.DataFactoryManagementClient.Factories.ListNext(filterOptions.NextLink);
             }
             else
             {
-                dataFactories.AddRange(ListDataFactories(filterOptions));
+                response = this.DataFactoryManagementClient.Factories.List();
+            }
+            filterOptions.NextLink = response != null ? response.NextPageLink : null;
+
+            if (response != null)
+            {
+                dataFactories.AddRange(response.Select(df => 
+                                                        {
+                                                            var parsedResourceId = new ResourceIdentifier(df.Id);
+                                                            var ResourceGroupName = parsedResourceId.ResourceGroupName;
+                                                            return new PSDataFactory(df, ResourceGroupName);
+                                                        }));
             }
 
+            return dataFactories;
+        }
+
+        public virtual List<PSDataFactory> FilterPSDataFactories(DataFactoryFilterOptions filterOptions)
+        {
+            if (filterOptions == null)
+            {
+                throw new ArgumentNullException("filterOptions");
+            }
+            var dataFactories = new List<PSDataFactory>();
+
+            if (filterOptions.DataFactoryName != null && filterOptions.ResourceGroupName != null)
+            {
+                dataFactories.Add(GetDataFactory(filterOptions.ResourceGroupName, filterOptions.DataFactoryName));
+            }
+            else if (filterOptions.ResourceGroupName == null && filterOptions.DataFactoryName == null)
+            {
+                dataFactories.AddRange(ListDataFactoriesBySubscription(filterOptions));
+            }
+            else
+            {
+                if(filterOptions.ResourceGroupName == null && filterOptions.DataFactoryName != null)
+                {
+                    throw new Exception("ResourceGroupName name can't be null if factory name is not due to parameter sets. Should never reach this point");
+                }
+                dataFactories.AddRange(ListDataFactories(filterOptions));
+            }
             return dataFactories;
         }
 
