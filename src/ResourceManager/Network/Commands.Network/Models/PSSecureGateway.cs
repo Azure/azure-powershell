@@ -30,6 +30,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<PSSecureGatewayApplicationRuleCollection> ApplicationRuleCollections { get; set; }
 
+        public string ProvisioningState { get; set; }
+
         [JsonIgnore]
         public string NetworkRuleCollectionsText
         {
