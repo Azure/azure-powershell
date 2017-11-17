@@ -10,9 +10,9 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
             = NetworkStrategy.Create(
                 "networkInterfaces",
                 client => client.NetworkInterfaces,
-                p => p.Operations.GetAsync(
+                (o, p) => o.GetAsync(
                     p.ResourceGroupName, p.Name, null, p.CancellationToken),
-                p => p.Operations.CreateOrUpdateAsync(
+                (o, p) => o.CreateOrUpdateAsync(
                     p.ResourceGroupName, p.Name, p.Model, p.CancellationToken));
 
         public static ResourceConfig<NetworkInterface> CreateNetworkInterfaceConfig(

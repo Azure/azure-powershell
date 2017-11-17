@@ -10,9 +10,9 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
             = NetworkStrategy.Create(
                 "virtualNetworks",
                 client => client.VirtualNetworks,
-                p => p.Operations.GetAsync(
+                (o, p) => o.GetAsync(
                     p.ResourceGroupName, p.Name, null, p.CancellationToken),
-                p => p.Operations.CreateOrUpdateAsync(
+                (o, p) => o.CreateOrUpdateAsync(
                     p.ResourceGroupName, p.Name, p.Model, p.CancellationToken));
 
         public static ResourceConfig<VirtualNetwork> CreateVirtualNetworkConfig(

@@ -6,6 +6,16 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 {
     public static class CreateOrUpdateAsyncOperation
     {
+        /// <summary>
+        /// Asynchronous resource creation.
+        /// </summary>
+        /// <typeparam name="Model"></typeparam>
+        /// <param name="config"></param>
+        /// <param name="client"></param>
+        /// <param name="current"></param>
+        /// <param name="target"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns>An Azure state.</returns>
         public static async Task<IState> CreateOrUpdateAsync<Model>(
             this IResourceConfig<Model> config,
             IClient client,
@@ -30,12 +40,13 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                 }
                 var tasks = config.Dependencies.Select(GetOrAddUntyped);
                 await Task.WhenAll(tasks);
-                return await config.Strategy.CreateOrUpdateAsync(CreateOrUpdateAsyncParams.Create(
+                return await config.Strategy.CreateOrUpdateAsync(
                     Client,
-                    config.ResourceGroupName,
-                    config.Name,
-                    Target.GetOrNull(config),
-                    CancellationToken));
+                    CreateOrUpdateAsyncParams.Create(
+                        config.ResourceGroupName,
+                        config.Name,
+                        Target.GetOrNull(config),
+                        CancellationToken));
             }
 
             public override async Task<object> Visit<Model, ParentModel>(

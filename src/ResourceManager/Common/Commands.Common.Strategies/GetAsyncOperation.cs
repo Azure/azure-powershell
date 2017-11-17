@@ -8,6 +8,14 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 {
     public static class GetAsyncOperation
     {
+        /// <summary>
+        /// Get current Azure state related to the given resource.
+        /// </summary>
+        /// <typeparam name="Model"></typeparam>
+        /// <param name="resourceConfig"></param>
+        /// <param name="client"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns>An Azure state.</returns>
         public static async Task<IState> GetAsync<Model>(
             this IResourceConfig<Model> resourceConfig,
             IClient client,
@@ -26,8 +34,10 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                 Model info;
                 try
                 {
-                    info = await config.Strategy.GetAsync(GetAsyncParams.Create(
-                        Client, config.ResourceGroupName, config.Name, CancellationToken));
+                    info = await config.Strategy.GetAsync(
+                        Client,
+                        new GetAsyncParams(
+                            config.ResourceGroupName, config.Name, CancellationToken));
                 }
                 catch (CloudException e) when (e.Response.StatusCode == HttpStatusCode.NotFound)
                 {

@@ -10,9 +10,9 @@ namespace Microsoft.Azure.Commands.Common.Strategies
     {
         public Func<string, IEnumerable<string>> GetId { get; }
 
-        public Func<GetAsyncParams<IClient>, Task<Model>> GetAsync { get; }
+        public Func<IClient, GetAsyncParams, Task<Model>> GetAsync { get; }
 
-        public Func<CreateOrUpdateAsyncParams<IClient, Model>, Task<Model>> CreateOrUpdateAsync { get; }
+        public Func<IClient, CreateOrUpdateAsyncParams<Model>, Task<Model>> CreateOrUpdateAsync { get; }
 
         public Func<Model, string> GetLocation { get; }
 
@@ -20,8 +20,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 
         public ResourceStrategy(
             Func<string, IEnumerable<string>> getId,
-            Func<GetAsyncParams<IClient>, Task<Model>> getAsync,
-            Func<CreateOrUpdateAsyncParams<IClient, Model>, Task<Model>> createOrUpdateAsync,
+            Func<IClient, GetAsyncParams, Task<Model>> getAsync,
+            Func<IClient, CreateOrUpdateAsyncParams<Model>, Task<Model>> createOrUpdateAsync,
             Func<Model, string> getLocation,
             Action<Model, string> setLocation)
         {
@@ -38,8 +38,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         public static ResourceStrategy<Model> Create<Model, Client, Operations>(
             Func<string, IEnumerable<string>> getId,
             Func<Client, Operations> getOperations,
-            Func<GetAsyncParams<Operations>, Task<Model>> getAsync,
-            Func<CreateOrUpdateAsyncParams<Operations, Model>, Task<Model>> createOrUpdateAsync,
+            Func<Operations, GetAsyncParams, Task<Model>> getAsync,
+            Func<Operations, CreateOrUpdateAsyncParams<Model>, Task<Model>> createOrUpdateAsync,
             Func<Model, string> getLocation,
             Action<Model, string> setLocation)
             where Client : ServiceClient<Client>
@@ -47,10 +47,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             Func<IClient, Operations> toOperations = client => getOperations(client.GetClient<Client>());
             return new ResourceStrategy<Model>(
                 getId,
-                p => getAsync(GetAsyncParams.Create(
-                    toOperations(p.Operations), p.ResourceGroupName, p.Name, p.CancellationToken)),
-                p => createOrUpdateAsync(CreateOrUpdateAsyncParams.Create(
-                    toOperations(p.Operations), p.ResourceGroupName, p.Name, p.Model, p.CancellationToken)),
+                (client, p) => getAsync(toOperations(client), p),
+                (client, p) => createOrUpdateAsync(toOperations(client), p),
                 getLocation,
                 setLocation);
         }
@@ -58,8 +56,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         public static ResourceStrategy<Model> Create<Model, Client, Operations>(
             IEnumerable<string> headers,
             Func<Client, Operations> getOperations,
-            Func<GetAsyncParams<Operations>, Task<Model>> getAsync,
-            Func<CreateOrUpdateAsyncParams<Operations, Model>, Task<Model>> createOrUpdateAsync,
+            Func<Operations, GetAsyncParams, Task<Model>> getAsync,
+            Func<Operations, CreateOrUpdateAsyncParams<Model>, Task<Model>> createOrUpdateAsync,
             Func<Model, string> getLocation,
             Action<Model, string> setLocation)
             where Client : ServiceClient<Client>

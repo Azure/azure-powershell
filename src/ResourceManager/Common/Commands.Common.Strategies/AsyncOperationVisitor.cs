@@ -4,6 +4,10 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Common.Strategies
 {
+    /// <summary>
+    /// It's a base class for asynchronous operation visitors, such as 
+    /// CreateOrUpdateAsyncOperation and GetAsyncOperation visitors.
+    /// </summary>
     abstract class AsyncOperationVisitor : IResourceConfigVisitor<Task<object>>
     {
         public IClient Client { get; }
@@ -12,20 +16,16 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 
         public State Result { get; } = new State();
 
-
-        public AsyncOperationVisitor(IClient client, CancellationToken cancellationToken)
-        {
-            Client = client;
-            CancellationToken = cancellationToken;
-        }
-
         public async Task<object> GetOrAddUntyped(IResourceConfig config)
             => await TaskMap.GetOrAdd(
                 config,
                 async _ =>
                 {
                     var model = await config.Apply(this);
-                    Result.GetOrAddUntyped(config, () => model);
+                    if (model != null)
+                    {
+                        Result.GetOrAddUntyped(config, () => model);
+                    }
                     return model;
                 });
 
@@ -34,6 +34,12 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         {
             var model = await GetOrAddUntyped(config);
             return model as Model;
+        }
+
+        protected AsyncOperationVisitor(IClient client, CancellationToken cancellationToken)
+        {
+            Client = client;
+            CancellationToken = cancellationToken;
         }
 
         public abstract Task<object> Visit<Model>(ResourceConfig<Model> config) where Model : class;

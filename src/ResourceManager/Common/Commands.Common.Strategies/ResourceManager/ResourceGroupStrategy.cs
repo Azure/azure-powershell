@@ -10,8 +10,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies.ResourceManager
             = ResourceStrategy.Create<ResourceGroup, ResourceManagementClient, IResourceGroupsOperations>(
                 _ => Enumerable.Empty<string>(),
                 client => client.ResourceGroups,
-                p => p.Operations.GetAsync(p.Name, p.CancellationToken),
-                p => p.Operations.CreateOrUpdateAsync(p.Name, p.Model, p.CancellationToken),
+                (o, p) => o.GetAsync(p.Name, p.CancellationToken),
+                (o, p) => o.CreateOrUpdateAsync(p.Name, p.Model, p.CancellationToken),
                 model => model.Location,
                 (model, location) => model.Location = location);
 
