@@ -273,7 +273,10 @@
   <data name="UpdateDataLakeComputePolicy" xml:space="preserve">
     <value>Update Data Lake Analytics compute policy '{0}' with the following rules: {1}{2}...</value>
   </data>
-  <data name="UnsupportedJobParameterType" xml:space="preserve">
-    <value>Type '{0}' is an unsupported job parameter type.  Please check the list of supported types by using Get-Help on the cmdlet.</value>
+  <data name="InvalidJobParameterType" xml:space="preserve">
+    <value>Type '{0}' is an unsupported job parameter type.  Please check the list of supported types by using Get-Help on the cmdlet with the -detailed flag.</value>
+  </data>
+  <data name="JobParameterValueIsNull" xml:space="preserve">
+    <value>The job parameter value for '{0}' is null.</value>
   </data>
 </root>
