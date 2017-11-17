@@ -74,5 +74,21 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Models
                 this.dataset.Properties = value;
             }
         }
+
+        public override string Id
+        {
+            get
+            {
+                return this.dataset.Id;
+            }
+        }
+
+        public override string ETag
+        {
+            get
+            {
+                return this.dataset.Etag;
+            }
+        }
     }
 }

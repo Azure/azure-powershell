@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
+Module Name: AzureRM.Resources
 ms.assetid: 7B8C8239-16A3-4C47-9D6F-DE31885532F4
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/set-azurermadserviceprincipal
 schema: 2.0.0
 ---
 
@@ -14,14 +15,14 @@ Updates an existing azure active directory service principal.
 
 ### SpObjectIdWithDisplayNameParameterSet (Default)
 ```
-Set-AzureRmADServicePrincipal -ObjectId <String> -DisplayName <String> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Set-AzureRmADServicePrincipal -ObjectId <String> -DisplayName <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SPNWithDisplayNameParameterSet
 ```
-Set-AzureRmADServicePrincipal -ServicePrincipalName <String> -DisplayName <String> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Set-AzureRmADServicePrincipal -ServicePrincipalName <String> -DisplayName <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,6 +47,21 @@ Set-AzureRmADServicePrincipal -ServicePrincipalName "http://MyApp1" -DisplayName
 Updates the display name for the service principal with specified service principal name.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DisplayName
 New display name for the service principal.

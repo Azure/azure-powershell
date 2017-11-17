@@ -37,11 +37,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             string jobId = "nodeFileContentByTask";
             string taskId = "testTask";
             string fileName = "testFile.txt";
-            string nodeFileName = string.Format("wd\\{0}", fileName);
+            string nodeFilePath = string.Format("wd\\{0}", fileName);
             string fileContents = "test file contents";
             BatchAccountContext context = null;
             controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-GetNodeFileContentByTask '{0}' '{1}' '{2}' '{3}'", jobId, taskId, nodeFileName, fileContents) }; },
+                () => { return new string[] { string.Format("Test-GetNodeFileContentByTask '{0}' '{1}' '{2}' '{3}'", jobId, taskId, nodeFilePath, fileContents) }; },
                 () =>
                 {
                     context = new ScenarioTestContext();

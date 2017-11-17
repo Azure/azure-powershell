@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Network.Automation
             List<PSEndpointServiceResult> psAvailableServiceEndpoints = new List<PSEndpointServiceResult>();
             foreach (var vAvailableEndpointService in vAvailableEndpointServiceList)
             {
-                psAvailableServiceEndpoints.Add(Mapper.Map<CNM.PSEndpointServiceResult>(vAvailableEndpointService));
+                psAvailableServiceEndpoints.Add(NetworkResourceManagerProfile.Mapper.Map<CNM.PSEndpointServiceResult>(vAvailableEndpointService));
             }
             WriteObject(psAvailableServiceEndpoints, true);
         }

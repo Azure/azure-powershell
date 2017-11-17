@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             // Map to the sdk object
-            var nsgModel = Mapper.Map<MNM.NetworkSecurityGroup>(this.NetworkSecurityGroup);
+            var nsgModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NetworkSecurityGroup>(this.NetworkSecurityGroup);
 
 			this.NullifyApplicationSecurityGroupsIfAbsent(nsgModel);
 
