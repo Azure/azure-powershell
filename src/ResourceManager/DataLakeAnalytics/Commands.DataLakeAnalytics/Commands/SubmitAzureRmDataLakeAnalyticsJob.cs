@@ -142,32 +142,32 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPath, Position = 4,
             Mandatory = false,
             HelpMessage =
-                "The type of compilation to be done on this job. Valid values are: 'Semantic' (Only performs semantic checks and necessary sanity checks), 'Full' (full compilation) and 'SingleBox' (Full compilation performed locally)."
+                "The type of compilation to be done on this job. Valid values are: 'Semantic' (Only performs semantic checks and necessary sanity checks), 'Full' (Full compilation) and 'SingleBox' (Full compilation performed locally)."
             )]
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobParameterSetName, Position = 4,
             Mandatory = false,
             HelpMessage =
-                "The type of compilation to be done on this job. Valid values are: 'Semantic' (Only performs semantic checks and necessary sanity checks), 'Full' (full compilation) and 'SingleBox' (Full compilation performed locally)"
+                "The type of compilation to be done on this job. Valid values are: 'Semantic' (Only performs semantic checks and necessary sanity checks), 'Full' (Full compilation) and 'SingleBox' (Full compilation performed locally)"
             )]
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPathAndRecurrence, Position = 4,
             Mandatory = false,
             HelpMessage =
-                "The type of compilation to be done on this job. Valid values are: 'Semantic' (Only performs semantic checks and necessary sanity checks), 'Full' (full compilation) and 'SingleBox' (Full compilation performed locally)."
+                "The type of compilation to be done on this job. Valid values are: 'Semantic' (Only performs semantic checks and necessary sanity checks), 'Full' (Full compilation) and 'SingleBox' (Full compilation performed locally)."
             )]
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobParameterSetNameAndRecurrence, Position = 4,
             Mandatory = false,
             HelpMessage =
-                "The type of compilation to be done on this job. Valid values are: 'Semantic' (Only performs semantic checks and necessary sanity checks), 'Full' (full compilation) and 'SingleBox' (Full compilation performed locally)"
+                "The type of compilation to be done on this job. Valid values are: 'Semantic' (Only performs semantic checks and necessary sanity checks), 'Full' (Full compilation) and 'SingleBox' (Full compilation performed locally)"
             )]
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPathAndPipeline, Position = 4,
             Mandatory = false,
             HelpMessage =
-                "The type of compilation to be done on this job. Valid values are: 'Semantic' (Only performs semantic checks and necessary sanity checks), 'Full' (full compilation) and 'SingleBox' (Full compilation performed locally)."
+                "The type of compilation to be done on this job. Valid values are: 'Semantic' (Only performs semantic checks and necessary sanity checks), 'Full' (Full compilation) and 'SingleBox' (Full compilation performed locally)."
             )]
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobParameterSetNameAndPipeline, Position = 4,
             Mandatory = false,
             HelpMessage =
-                "The type of compilation to be done on this job. Valid values are: 'Semantic' (Only performs semantic checks and necessary sanity checks), 'Full' (full compilation) and 'SingleBox' (Full compilation performed locally)"
+                "The type of compilation to be done on this job. Valid values are: 'Semantic' (Only performs semantic checks and necessary sanity checks), 'Full' (Full compilation) and 'SingleBox' (Full compilation performed locally)"
             )]
         [ValidateSet("Semantic", "Full", "SingleBox")]
         public string CompileMode { get; set; }
@@ -232,32 +232,32 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPath, Position = 7,
             Mandatory = false,
             HelpMessage =
-                "The priority for this job with a range from 1 to 1000, where 1000 is the lowest priority and 1 is the highest."
+                "The priority of the job. If not specified, the priority is 1000. A lower number indicates a higher job priority."
             )]
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobParameterSetName, Position = 7,
             Mandatory = false,
             HelpMessage =
-                "The priority for this job with a range from 1 to 1000, where 1000 is the lowest priority and 1 is the highest."
+                "The priority of the job. If not specified, the priority is 1000. A lower number indicates a higher job priority."
             )]
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPathAndRecurrence, Position = 7,
             Mandatory = false,
             HelpMessage =
-                "The priority for this job with a range from 1 to 1000, where 1000 is the lowest priority and 1 is the highest."
+                "The priority of the job. If not specified, the priority is 1000. A lower number indicates a higher job priority."
             )]
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobParameterSetNameAndRecurrence, Position = 7,
             Mandatory = false,
             HelpMessage =
-                "The priority for this job with a range from 1 to 1000, where 1000 is the lowest priority and 1 is the highest."
+                "The priority of the job. If not specified, the priority is 1000. A lower number indicates a higher job priority."
             )]
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPathAndPipeline, Position = 7,
             Mandatory = false,
             HelpMessage =
-                "The priority for this job with a range from 1 to 1000, where 1000 is the lowest priority and 1 is the highest."
+                "The priority of the job. If not specified, the priority is 1000. A lower number indicates a higher job priority."
             )]
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobParameterSetNameAndPipeline, Position = 7,
             Mandatory = false,
             HelpMessage =
-                "The priority for this job with a range from 1 to 1000, where 1000 is the lowest priority and 1 is the highest."
+                "The priority of the job. If not specified, the priority is 1000. A lower number indicates a higher job priority."
             )]
         [ValidateRange(0, int.MaxValue)]
         public int Priority
@@ -269,32 +269,32 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPath, Position = 8,
             Mandatory = false,
             HelpMessage =
-                "The job parameters for this job, as a hashtable of parameter names (string) to values (any combination of byte, sbyte, int, uint, long, ulong, float, double, decimal, short, ushort, char, string, DateTime, bool, Guid, or byte[])."
+                "The job parameters for this job, as a hashtable of parameter names (string) to values (any combination of byte, sbyte, int, uint (or uint32), long, ulong (or uint64), float, double, decimal, short (or int16), ushort (or uint16), char, string, DateTime, bool, Guid, or byte[])."
             )]
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobParameterSetName, Position = 8,
             Mandatory = false,
             HelpMessage =
-                "The job parameters for this job, as a hashtable of parameter names (string) to values (any combination of byte, sbyte, int, uint, long, ulong, float, double, decimal, short, ushort, char, string, DateTime, bool, Guid, or byte[])."
+                "The job parameters for this job, as a hashtable of parameter names (string) to values (any combination of byte, sbyte, int, uint (or uint32), long, ulong (or uint64), float, double, decimal, short (or int16), ushort (or uint16), char, string, DateTime, bool, Guid, or byte[])."
             )]
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPathAndRecurrence, Position = 8,
             Mandatory = false,
             HelpMessage =
-                "The job parameters for this job, as a hashtable of parameter names (string) to values (any combination of byte, sbyte, int, uint, long, ulong, float, double, decimal, short, ushort, char, string, DateTime, bool, Guid, or byte[])."
+                "The job parameters for this job, as a hashtable of parameter names (string) to values (any combination of byte, sbyte, int, uint (or uint32), long, ulong (or uint64), float, double, decimal, short (or int16), ushort (or uint16), char, string, DateTime, bool, Guid, or byte[])."
             )]
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobParameterSetNameAndRecurrence, Position = 8,
             Mandatory = false,
             HelpMessage =
-                "The job parameters for this job, as a hashtable of parameter names (string) to values (any combination of byte, sbyte, int, uint, long, ulong, float, double, decimal, short, ushort, char, string, DateTime, bool, Guid, or byte[])."
+                "The job parameters for this job, as a hashtable of parameter names (string) to values (any combination of byte, sbyte, int, uint (or uint32), long, ulong (or uint64), float, double, decimal, short (or int16), ushort (or uint16), char, string, DateTime, bool, Guid, or byte[])."
             )]
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPathAndPipeline, Position = 8,
             Mandatory = false,
             HelpMessage =
-                "The job parameters for this job, as a hashtable of parameter names (string) to values (any combination of byte, sbyte, int, uint, long, ulong, float, double, decimal, short, ushort, char, string, DateTime, bool, Guid, or byte[])."
+                "The job parameters for this job, as a hashtable of parameter names (string) to values (any combination of byte, sbyte, int, uint (or uint32), long, ulong (or uint64), float, double, decimal, short (or int16), ushort (or uint16), char, string, DateTime, bool, Guid, or byte[])."
             )]
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobParameterSetNameAndPipeline, Position = 8,
             Mandatory = false,
             HelpMessage =
-                "The job parameters for this job, as a hashtable of parameter names (string) to values (any combination of byte, sbyte, int, uint, long, ulong, float, double, decimal, short, ushort, char, string, DateTime, bool, Guid, or byte[])."
+                "The job parameters for this job, as a hashtable of parameter names (string) to values (any combination of byte, sbyte, int, uint (or uint32), long, ulong (or uint64), float, double, decimal, short (or int16), ushort (or uint16), char, string, DateTime, bool, Guid, or byte[])."
             )]
         [ValidateNotNullOrEmpty]
         public Hashtable Parameters { get; set; }
