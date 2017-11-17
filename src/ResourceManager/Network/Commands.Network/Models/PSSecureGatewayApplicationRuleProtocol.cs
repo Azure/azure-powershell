@@ -15,7 +15,7 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public class PSSecureGatewayApplicationProtocol
+    public class PSSecureGatewayApplicationRuleProtocol
     {
         public string ProtocolType { get; set; }
         public uint Port { get; set; }

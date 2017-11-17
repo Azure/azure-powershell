@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public string Direction { get; set; }
 
-        public List<PSSecureGatewayApplicationProtocol> Protocols { get; set; }
+        public List<PSSecureGatewayApplicationRuleProtocol> Protocols { get; set; }
 
         public List<string> TargetUrls { get; set; }
 

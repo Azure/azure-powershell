@@ -217,7 +217,7 @@
     <Compile Include="Models\PSEndpointServiceResult.cs" />
     <Compile Include="Models\PSSecureGateway.cs" />
     <Compile Include="Models\PSSecureGatewayAction.cs" />
-    <Compile Include="Models\PSSecureGatewayApplicationProtocol.cs" />
+    <Compile Include="Models\PSSecureGatewayApplicationRuleProtocol.cs" />
     <Compile Include="Models\PSSecureGatewayApplicationRule.cs" />
     <Compile Include="Models\PSSecureGatewayApplicationRuleCollection.cs" />
     <Compile Include="Models\PSSecureGatewayNetworkRule.cs" />
