@@ -205,6 +205,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Type &apos;{0}&apos; is an unsupported job parameter type.  Please check the list of supported types by using Get-Help on the cmdlet with the -detailed flag..
+        /// </summary>
+        internal static string InvalidJobParameterType {
+            get {
+                return ResourceManager.GetString("InvalidJobParameterType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid JobType selected. Please select -USql when submitting a job.
         /// </summary>
         internal static string InvalidJobType {
@@ -228,6 +237,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         internal static string InvalidUSqlTypeRequest {
             get {
                 return ResourceManager.GetString("InvalidUSqlTypeRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The job parameter value for &apos;{0}&apos; is null..
+        /// </summary>
+        internal static string JobParameterValueIsNull {
+            get {
+                return ResourceManager.GetString("JobParameterValueIsNull", resourceCulture);
             }
         }
         
@@ -498,15 +516,6 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         internal static string StoppingDataLakeAnalyticsJob {
             get {
                 return ResourceManager.GetString("StoppingDataLakeAnalyticsJob", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Type &apos;{0}&apos; is an unsupported job parameter type.  Please check the list of supported types by using Get-Help on the cmdlet..
-        /// </summary>
-        internal static string UnsupportedJobParameterType {
-            get {
-                return ResourceManager.GetString("UnsupportedJobParameterType", resourceCulture);
             }
         }
         

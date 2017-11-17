@@ -142,32 +142,32 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPath, Position = 4,
             Mandatory = false,
             HelpMessage =
-                "The type of compilation to be done on this job. Valid values are: 'Semantic' (Only erforms semantic checks and necessary sanity checks), 'Full' (full compilation) and 'SingleBox' (Full compilation performed locally)."
+                "The type of compilation to be done on this job. Valid values are: 'Semantic' (Only performs semantic checks and necessary sanity checks), 'Full' (full compilation) and 'SingleBox' (Full compilation performed locally)."
             )]
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobParameterSetName, Position = 4,
             Mandatory = false,
             HelpMessage =
-                "The type of compilation to be done on this job. Valid values are: 'Semantic' (Only erforms semantic checks and necessary sanity checks), 'Full' (full compilation) and 'SingleBox' (Full compilation performed locally)"
+                "The type of compilation to be done on this job. Valid values are: 'Semantic' (Only performs semantic checks and necessary sanity checks), 'Full' (full compilation) and 'SingleBox' (Full compilation performed locally)"
             )]
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPathAndRecurrence, Position = 4,
             Mandatory = false,
             HelpMessage =
-                "The type of compilation to be done on this job. Valid values are: 'Semantic' (Only erforms semantic checks and necessary sanity checks), 'Full' (full compilation) and 'SingleBox' (Full compilation performed locally)."
+                "The type of compilation to be done on this job. Valid values are: 'Semantic' (Only performs semantic checks and necessary sanity checks), 'Full' (full compilation) and 'SingleBox' (Full compilation performed locally)."
             )]
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobParameterSetNameAndRecurrence, Position = 4,
             Mandatory = false,
             HelpMessage =
-                "The type of compilation to be done on this job. Valid values are: 'Semantic' (Only erforms semantic checks and necessary sanity checks), 'Full' (full compilation) and 'SingleBox' (Full compilation performed locally)"
+                "The type of compilation to be done on this job. Valid values are: 'Semantic' (Only performs semantic checks and necessary sanity checks), 'Full' (full compilation) and 'SingleBox' (Full compilation performed locally)"
             )]
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPathAndPipeline, Position = 4,
             Mandatory = false,
             HelpMessage =
-                "The type of compilation to be done on this job. Valid values are: 'Semantic' (Only erforms semantic checks and necessary sanity checks), 'Full' (full compilation) and 'SingleBox' (Full compilation performed locally)."
+                "The type of compilation to be done on this job. Valid values are: 'Semantic' (Only performs semantic checks and necessary sanity checks), 'Full' (full compilation) and 'SingleBox' (Full compilation performed locally)."
             )]
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobParameterSetNameAndPipeline, Position = 4,
             Mandatory = false,
             HelpMessage =
-                "The type of compilation to be done on this job. Valid values are: 'Semantic' (Only erforms semantic checks and necessary sanity checks), 'Full' (full compilation) and 'SingleBox' (Full compilation performed locally)"
+                "The type of compilation to be done on this job. Valid values are: 'Semantic' (Only performs semantic checks and necessary sanity checks), 'Full' (full compilation) and 'SingleBox' (Full compilation performed locally)"
             )]
         [ValidateSet("Semantic", "Full", "SingleBox")]
         public string CompileMode { get; set; }
@@ -269,32 +269,32 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPath, Position = 8,
             Mandatory = false,
             HelpMessage =
-                "FILL IN"
+                "The job parameters for this job, as a hashtable of parameter names (string) to values (any combination of byte, sbyte, int, uint, long, ulong, float, double, decimal, short, ushort, char, string, DateTime, bool, Guid, or byte[])."
             )]
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobParameterSetName, Position = 8,
             Mandatory = false,
             HelpMessage =
-                "FILL IN"
+                "The job parameters for this job, as a hashtable of parameter names (string) to values (any combination of byte, sbyte, int, uint, long, ulong, float, double, decimal, short, ushort, char, string, DateTime, bool, Guid, or byte[])."
             )]
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPathAndRecurrence, Position = 8,
             Mandatory = false,
             HelpMessage =
-                "FILL IN"
+                "The job parameters for this job, as a hashtable of parameter names (string) to values (any combination of byte, sbyte, int, uint, long, ulong, float, double, decimal, short, ushort, char, string, DateTime, bool, Guid, or byte[])."
             )]
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobParameterSetNameAndRecurrence, Position = 8,
             Mandatory = false,
             HelpMessage =
-                "FILL IN"
+                "The job parameters for this job, as a hashtable of parameter names (string) to values (any combination of byte, sbyte, int, uint, long, ulong, float, double, decimal, short, ushort, char, string, DateTime, bool, Guid, or byte[])."
             )]
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPathAndPipeline, Position = 8,
             Mandatory = false,
             HelpMessage =
-                "FILL IN"
+                "The job parameters for this job, as a hashtable of parameter names (string) to values (any combination of byte, sbyte, int, uint, long, ulong, float, double, decimal, short, ushort, char, string, DateTime, bool, Guid, or byte[])."
             )]
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobParameterSetNameAndPipeline, Position = 8,
             Mandatory = false,
             HelpMessage =
-                "FILL IN"
+                "The job parameters for this job, as a hashtable of parameter names (string) to values (any combination of byte, sbyte, int, uint, long, ulong, float, double, decimal, short, ushort, char, string, DateTime, bool, Guid, or byte[])."
             )]
         [ValidateNotNullOrEmpty]
         public Hashtable Parameters { get; set; }
@@ -403,11 +403,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                 // Add declare statements to the script
                 foreach (DictionaryEntry param in Parameters)
                 {
+                    if (param.Value == null)
+                    {
+                        throw new CloudException(string.Format(Resources.JobParameterValueIsNull,
+                            param.Key.ToString()));
+                    }
+
                     paramVar = param.Key.ToString();
                     paramValue = param.Value.ToString();
                     paramType = param.Value.GetType();
-
-                    Console.WriteLine(paramType);
                     
                     if (paramType.Equals(typeof(byte)))
                     {
@@ -427,9 +431,21 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                             paramVar,
                             paramValue));
                     }
+                    else if (paramType.Equals(typeof(uint)))
+                    {
+                        scriptBuilder.Insert(0, string.Format("DECLARE @{0} uint = {1};\n",
+                            paramVar,
+                            paramValue));
+                    }
                     else if (paramType.Equals(typeof(long)))
                     {
                         scriptBuilder.Insert(0, string.Format("DECLARE @{0} long = {1};\n",
+                            paramVar,
+                            paramValue));
+                    }
+                    else if (paramType.Equals(typeof(ulong)))
+                    {
+                        scriptBuilder.Insert(0, string.Format("DECLARE @{0} ulong = {1};\n",
                             paramVar,
                             paramValue));
                     }
@@ -448,6 +464,18 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                     else if (paramType.Equals(typeof(decimal)))
                     {
                         scriptBuilder.Insert(0, string.Format("DECLARE @{0} decimal = {1};\n",
+                            paramVar,
+                            paramValue));
+                    }
+                    else if (paramType.Equals(typeof(short)))
+                    {
+                        scriptBuilder.Insert(0, string.Format("DECLARE @{0} short = {1};\n",
+                            paramVar,
+                            paramValue));
+                    }
+                    else if (paramType.Equals(typeof(ushort)))
+                    {
+                        scriptBuilder.Insert(0, string.Format("DECLARE @{0} ushort = {1};\n",
                             paramVar,
                             paramValue));
                     }
@@ -509,7 +537,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                     }
                     else
                     {
-                        throw new CloudException(string.Format(Resources.UnsupportedJobParameterType,
+                        throw new CloudException(string.Format(Resources.InvalidJobParameterType,
                             paramType.ToString()));
                     }
                 }

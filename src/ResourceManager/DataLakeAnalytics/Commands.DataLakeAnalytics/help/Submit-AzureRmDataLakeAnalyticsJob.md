@@ -75,8 +75,13 @@ PS C:\>Submit-AzureRmDataLakeAnalyticsJob -Account "ContosoAdlAccount" -Name "Ne
 
 This command submits a Data Lake Analytics job.
 
+### Example 2: Submit a job with job parameters
 ```
-PS C:\>Submit-AzureRmDataLakeAnalyticsJob -Account "ContosoAdlAccount" -Name "New Job" -ScriptPath $LocalScriptPath -DegreeOfParallelism 32 -Parameters @{"p1"=1 ; "p2"="pString" ; "p3"=[DateTime](Get-Date) ; "p4"=[byte[]](@(0xAA, 0xBB))}
+PS C:\>$parameters = @{}
+PS C:\>$parameters["Department"] = "Sales"
+PS C:\>$parameters["NumRecords"] = 1000
+PS C:\>$parameters["StartDateTime"] = (Get-Date).AddDays(-14)
+PS C:\>Submit-AzureRmDataLakeAnalyticsJob -Account "ContosoAdlAccount" -Name "New Job" -ScriptPath $LocalScriptPath -DegreeOfParallelism 32 -Parameters $parameters
 ```
 
 This command submits a Data Lake Analytics job with job parameters.
@@ -84,7 +89,7 @@ This command submits a Data Lake Analytics job with job parameters.
 ## PARAMETERS
 
 ### -Account
-Specifies the Data Lake Analytics account name.
+Name of Data Lake Analytics account under which the job will be submitted.
 
 ```yaml
 Type: String
@@ -99,12 +104,12 @@ Accept wildcard characters: False
 ```
 
 ### -CompileMode
-Specifies the compilation mode of the job.
-The acceptable values for this parameter are:
+The type of compilation to be done on this job. 
+Valid values: 
 
-- Semantic
-- Full
-- SingleBox
+- Semantic (Only performs semantic checks and necessary sanity checks)
+- Full (full compilation)
+- SingleBox (Full compilation performed locally)
 
 ```yaml
 Type: String
@@ -120,7 +125,7 @@ Accept wildcard characters: False
 ```
 
 ### -CompileOnly
-Indicates that this cmdlet compiles the job without running it.
+Indicates that the submission should only build the job and not execute if set to true.
 
 ```yaml
 Type: SwitchParameter
@@ -150,7 +155,7 @@ Accept wildcard characters: False
 ```
 
 ### -DegreeOfParallelism
-Specifies the Data Lake Analytics Units (DLAU) of the job, which indicates the maximum allowable parallelism of the job.
+The degree of parallelism to use for this job. Typically, a higher degree of parallelism dedicated to a script results in faster script execution time.
 
 ```yaml
 Type: Int32
@@ -165,7 +170,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the job name.
+The friendly name of the job to submit.
 
 ```yaml
 Type: String
@@ -174,6 +179,21 @@ Aliases:
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Parameters
+The job parameters for this job, as a hashtable of parameter names (string) to values (any combination of byte, sbyte, int, uint, long, ulong, float, double, decimal, short, ushort, char, string, DateTime, bool, Guid, or byte[])
+
+```yaml
+Type: Hashtable
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: 8
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -225,9 +245,7 @@ Accept wildcard characters: False
 ```
 
 ### -Priority
-Specifies the priority of the job.
-If not specified, the priority is 1000.
-A low number indicates a higher job priority.
+The priority for this job with a range from 1 to 1000, where 1000 is the lowest priority and 1 is the highest.
 
 ```yaml
 Type: Int32
@@ -287,7 +305,7 @@ Accept wildcard characters: False
 ```
 
 ### -Runtime
-Specifies the runtime version of the job.
+Optionally set the version of the runtime to use for the job. If left unset, the default runtime is used.
 
 ```yaml
 Type: String
@@ -302,7 +320,7 @@ Accept wildcard characters: False
 ```
 
 ### -Script
-Specifies the contents of the script to run.
+Script to execute (written inline).
 
 ```yaml
 Type: String
@@ -317,7 +335,7 @@ Accept wildcard characters: False
 ```
 
 ### -ScriptPath
-Specifies the local file path to the script to run.
+Path to the script file to submit.
 
 ```yaml
 Type: String
@@ -326,23 +344,6 @@ Aliases:
 
 Required: True
 Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Parameters
-A list of job parameters to prepend as DECLARE statements at the top of the script.
-The list of supported job parameter types via type inference:
-byte, sbyte, int, long, float, double, decimal, char, string, DateTime, bool, Guid, byte[]
-
-```yaml
-Type: Hashtable
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 8
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
