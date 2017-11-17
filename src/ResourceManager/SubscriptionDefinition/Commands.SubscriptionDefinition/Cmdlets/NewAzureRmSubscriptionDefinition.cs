@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.SubscriptionDefinition.Cmdlets
         {
             if (this.ShouldProcess(target: this.Name, action: "Create subscription definition"))
             {
-                this.WriteSubscriptionDefinitionObject(this.SubscriptionDefinitionClient.SubscriptionDefinition.Create(this.Name, new Microsoft.Azure.Management.ResourceManager.Models.SubscriptionDefinition(
+                this.WriteSubscriptionDefinitionObject(this.SubscriptionDefinitionsClient.SubscriptionDefinitions.Create(this.Name, new Microsoft.Azure.Management.ResourceManager.Models.SubscriptionDefinition(
                     offerType: this.OfferType,
                     subscriptionDisplayName: this.SubscriptionDisplayName ?? this.Name)));
             }
