@@ -105,6 +105,6 @@ function Test-GetBatchNodeAgentSkus
     {
         Assert-True { $nodeAgentSku.Id.StartsWith("batch.node") }
         Assert-True { $nodeAgentSku.OSType -in "linux","windows" }
-        Assert-AreNotEqual 0 $nodeAgentSku.VerifiedImageReferences.Count
+        Assert-AreNotEqual $null $nodeAgentSku.VerifiedImageReferences
     }
 }

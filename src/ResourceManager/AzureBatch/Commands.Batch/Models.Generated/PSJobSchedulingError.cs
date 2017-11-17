@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public Microsoft.Azure.Batch.Common.SchedulingErrorCategory Category
+        public Microsoft.Azure.Batch.Common.ErrorCategory Category
         {
             get
             {

@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.TrafficManager.dll-Help.xml
 Module Name: AzureRM
 ms.assetid: 8CC749F1-B961-4F8F-BAD4-2C0F4385D1C2
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.trafficmanager/disable-azurermtrafficmanagerendpoint
 schema: 2.0.0
 ---
 

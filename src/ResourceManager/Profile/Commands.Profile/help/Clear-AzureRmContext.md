@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Profile.dll-Help.xml
 Module Name: AzureRM.Profile
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/clear-azurermcontext
 schema: 2.0.0
 ---
 

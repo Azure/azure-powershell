@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Scheduler.dll-Help.xml
 Module Name: AzureRM
 ms.assetid: 75AF57EE-C7C3-42DE-AFD7-4B5150EEDBB6
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.scheduler/set-azurermschedulerstoragequeuejob
 schema: 2.0.0
 ---
 

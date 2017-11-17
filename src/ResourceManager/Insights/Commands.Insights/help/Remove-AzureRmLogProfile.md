@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
 Module Name: AzureRM.Insights
 ms.assetid: DDA137FD-4EB3-4FB7-A202-978922038AFC
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.insights/remove-azurermlogprofile
 schema: 2.0.0
 ---
 
@@ -20,6 +20,8 @@ Remove-AzureRmLogProfile -Name <String> [-PassThru] [-DefaultProfile <IAzureCont
 
 ## DESCRIPTION
 The **Remove-AzureRmLogProfile** cmdlet removes a log profile.
+
+This cmdlet implements the ShouldProcess pattern, i.e. it might request confirmation from the user before actually creating, modifying, or removing the resource.
 
 ## EXAMPLES
 
@@ -82,7 +84,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### AzureOperationResponse
 
 ## NOTES
 

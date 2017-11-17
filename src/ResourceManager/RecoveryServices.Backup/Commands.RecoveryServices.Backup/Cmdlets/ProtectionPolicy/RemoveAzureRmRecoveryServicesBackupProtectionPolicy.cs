@@ -47,6 +47,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         public PolicyBase Policy { get; set; }
 
         /// <summary>
+        /// Return the policy to be deleted
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Return the policy to be deleted.")]
+        public SwitchParameter PassThru { get; set; }
+
+        /// <summary>
         /// When provided, force delete policy, without asking for user confirmation
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Common.ConfirmationMessage)]
@@ -61,23 +67,29 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             {
                 throw new ArgumentException(Resources.PolicyNameIsEmptyOrNull);
             }
-            ConfirmAction(
-               Force.IsPresent,
-               string.Format(Resources.RemoveProtectionPolicyWarning, PolicyName),
-               Resources.RemoveProtectionPolicyMessage,
-               PolicyName, () =>
-               {
-                   ExecutionBlock(() =>
-                   {
-                       base.ExecuteCmdlet();
 
-                       WriteDebug(Resources.MakingClientCall);
+            ExecutionBlock(() =>
+            {
+                ConfirmAction(
+                    Force.IsPresent,
+                    string.Format(Resources.RemoveProtectionPolicyWarning, PolicyName),
+                    Resources.RemoveProtectionPolicyMessage,
+                    PolicyName, () =>
+                    {
+                        base.ExecuteCmdlet();
 
-                       ServiceClientAdapter.RemoveProtectionPolicy(PolicyName);
-                       WriteDebug(Resources.ProtectionPolicyDeleted);
-                   });
+                        WriteDebug(Resources.MakingClientCall);
 
-               });
+                        ServiceClientAdapter.RemoveProtectionPolicy(PolicyName);
+                        WriteDebug(Resources.ProtectionPolicyDeleted);
+                    }
+                );
+
+                if (PassThru.IsPresent)
+                {
+                    WriteObject(Policy);
+                }
+            }, ShouldProcess(PolicyName, VerbsCommon.Remove));
         }
     }
 }
