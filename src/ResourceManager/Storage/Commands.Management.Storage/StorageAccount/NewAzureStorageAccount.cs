@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             }
             if (NetworkRuleSet != null)
             {
-                createParameters.NetworkAcls = PSNetworkRuleSet.ParseStorageNetworkRule(NetworkRuleSet);
+                createParameters.NetworkRuleSet = PSNetworkRuleSet.ParseStorageNetworkRule(NetworkRuleSet);
             }
 
             var createAccountResponse = this.StorageClient.StorageAccounts.Create(
