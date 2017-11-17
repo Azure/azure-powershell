@@ -81,23 +81,23 @@ function Create-ModulePsm1
 
 function Disable-StrongSignValidation
 {
-    reg DELETE "HKLM\Software\Microsoft\StrongName\Verification" /f
-    reg ADD "HKLM\Software\Microsoft\StrongName\Verification\*,*" /f
+    reg DELETE "HKLM\Software\Microsoft\StrongName\Verification" /f > $null
+    reg ADD "HKLM\Software\Microsoft\StrongName\Verification\*,*" /f > $null
     if ($env:PROCESSOR_ARCHITECTURE -eq "AMD64")
     {
-        reg DELETE "HKLM\Software\Wow6432Node\Microsoft\StrongName\Verification" /f
-        reg ADD "HKLM\Software\Wow6432Node\Microsoft\StrongName\Verification\*,*" /f
+        reg DELETE "HKLM\Software\Wow6432Node\Microsoft\StrongName\Verification" /f > $null
+        reg ADD "HKLM\Software\Wow6432Node\Microsoft\StrongName\Verification\*,*" /f > $null
     }
 }
 
 function Enable-StrongSignValidation
 {
-    reg DELETE "HKLM\Software\Microsoft\StrongName\Verification\*,*" /f
-    reg ADD "HKLM\Software\Microsoft\StrongName\Verification" /f
+    reg DELETE "HKLM\Software\Microsoft\StrongName\Verification\*,*" /f > $null
+    reg ADD "HKLM\Software\Microsoft\StrongName\Verification" /f > $null
     if ($env:PROCESSOR_ARCHITECTURE -eq "AMD64")
     {
-        reg DELETE "HKLM\Software\Wow6432Node\Microsoft\StrongName\Verification\*,*" /f
-        reg ADD "HKLM\Software\Wow6432Node\Microsoft\StrongName\Verification" /f
+        reg DELETE "HKLM\Software\Wow6432Node\Microsoft\StrongName\Verification\*,*" /f > $null
+        reg ADD "HKLM\Software\Wow6432Node\Microsoft\StrongName\Verification" /f > $null
     }
 }
 
