@@ -243,7 +243,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     }
                     if (NetworkRuleSet != null)
                     {
-                        updateParameters.NetworkAcls = PSNetworkRuleSet.ParseStorageNetworkRule(NetworkRuleSet);
+                        updateParameters.NetworkRuleSet = PSNetworkRuleSet.ParseStorageNetworkRule(NetworkRuleSet);
                     }
 
                     var updatedAccountResponse = this.StorageClient.StorageAccounts.Update(
