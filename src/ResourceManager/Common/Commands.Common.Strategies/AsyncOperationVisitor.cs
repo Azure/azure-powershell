@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 
         public async Task<object> GetOrAddUntyped(IResourceConfig config)
             => await TaskMap.GetOrAdd(
-                config,
+                config.DefaultIdStr(),
                 async _ =>
                 {
                     var model = await config.Apply(this);
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             where Model : class
             where ParentModel : class;
 
-        ConcurrentDictionary<IResourceConfig, Task<object>> TaskMap { get; }
-            = new ConcurrentDictionary<IResourceConfig, Task<object>>();
+        ConcurrentDictionary<string, Task<object>> TaskMap { get; }
+            = new ConcurrentDictionary<string, Task<object>>();
     }
 }

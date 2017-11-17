@@ -77,5 +77,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 
         public static string IdToString(this IEnumerable<string> id)
             => "/" + string.Join("/", id);
+
+        public static string DefaultIdStr(this IResourceConfig config)
+            => config.GetId(string.Empty).IdToString();
     }
 }

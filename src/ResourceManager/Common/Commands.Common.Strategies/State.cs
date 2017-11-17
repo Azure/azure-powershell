@@ -7,16 +7,16 @@ namespace Microsoft.Azure.Commands.Common.Strategies
     {
         public Model GetOrNull<Model>(IResourceConfig<Model> config)
             where Model : class
-            => Map.GetOrNull(config) as Model;
+            => Map.GetOrNull(config.DefaultIdStr()) as Model;
 
         public Model GetOrAdd<Model>(IResourceConfig<Model> config, Func<Model> f)
             where Model : class
             => GetOrAddUntyped(config, f) as Model;
 
         public object GetOrAddUntyped(IResourceConfig config, Func<object> f)
-            => Map.GetOrAdd(config, _ => f());
+            => Map.GetOrAdd(config.DefaultIdStr(), _ => f());
 
-        ConcurrentDictionary<IResourceConfig, object> Map { get; }
-            = new ConcurrentDictionary<IResourceConfig, object>();
+        ConcurrentDictionary<string, object> Map { get; }
+            = new ConcurrentDictionary<string, object>();
     }
 }

@@ -56,6 +56,9 @@ namespace Microsoft.Azure.Commands.Compute
             Mandatory = true,
             Position = 0,
             ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            ParameterSetName = StrategyParameterSet,
+            Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -64,6 +67,9 @@ namespace Microsoft.Azure.Commands.Compute
             Mandatory = true,
             Position = 1,
             ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            ParameterSetName = StrategyParameterSet,
+            Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
@@ -78,9 +84,10 @@ namespace Microsoft.Azure.Commands.Compute
         public PSVirtualMachine VM { get; set; }
 
         [Parameter(
-           Mandatory = false,
-           Position = 3,
-           ValueFromPipelineByPropertyName = true)]
+            ParameterSetName = DefaultParameterSet,
+            Mandatory = false,
+            Position = 3,
+            ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string[] Zone { get; set; }
 
@@ -154,7 +161,12 @@ namespace Microsoft.Azure.Commands.Compute
 
         public void StrategyExecuteCmdlet()
         {
-            var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(Name);
+            if (ResourceGroupName == null)
+            {
+                ResourceGroupName = Name;
+            }
+
+            var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(ResourceGroupName);
             var virtualNetwork = resourceGroup.CreateVirtualNetworkConfig(Name, AddressPrefix);
             var subnet = virtualNetwork.CreateSubnet(Name, SubnetAddressPrefix);
             var publicIpAddress = resourceGroup.CreatePublicIPAddressConfig(Name);
@@ -173,12 +185,17 @@ namespace Microsoft.Azure.Commands.Compute
                 .GetAsync(client, new CancellationToken())
                 .GetAwaiter()
                 .GetResult();
-            var location = state.GetLocation(virtualMachine);
-            if (location == null)
+
+            if (Location == null)
             {
-                location = "eastus";
+                Location = state.GetLocation(virtualMachine);
+                if (Location == null)
+                {
+                    Location = "eastus";
+                }
             }
-            var target = virtualMachine.GetTargetState(client.SubscriptionId, location);
+
+            var target = virtualMachine.GetTargetState(client.SubscriptionId, Location);
             var result = virtualMachine
                 .CreateOrUpdateAsync(client, state, target, new CancellationToken())
                 .GetAwaiter()
