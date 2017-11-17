@@ -4,6 +4,10 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 {
     public interface IResourceBaseConfig
     {
+        IResourceBaseStrategy Strategy { get; }
+
+        string Name { get; }
+
         Result Apply<Result>(IResourceBaseConfigVisitor<Result> visitor);
 
         IEnumerable<string> GetId(string subscription);

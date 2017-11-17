@@ -5,7 +5,14 @@ using System.Linq;
 
 namespace Microsoft.Azure.Commands.Common.Strategies
 {
-    public sealed class ResourceConfig<Model> : IResourceBaseConfig<Model>
+    public interface IResourceConfig : IResourceBaseConfig
+    {
+        string ResourceGroupName { get; }
+
+        IEnumerable<IResourceBaseConfig> Dependencies { get; }
+    }
+
+    public sealed class ResourceConfig<Model> : IResourceBaseConfig<Model>, IResourceConfig
         where Model : class
     {
         public ResourceStrategy<Model> Strategy { get; }
@@ -17,6 +24,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         public Func<string, Model> CreateModel { get; }
 
         public IEnumerable<IResourceBaseConfig> Dependencies { get; }
+
+        IResourceBaseStrategy IResourceBaseConfig.Strategy => Strategy;
 
         public ResourceConfig(
             ResourceStrategy<Model> strategy,

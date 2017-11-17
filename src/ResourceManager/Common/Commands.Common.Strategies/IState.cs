@@ -11,7 +11,6 @@
         object GetOrNullUntyped(IResourceBaseConfig config);
     }
 
-    /*
     public static class StateExtension
     {
         public static Model GetNestedOrNull<Model, ParentModel>(
@@ -19,36 +18,26 @@
             where Model : class
             where ParentModel : class
         {
-            var parentModel = config.Parent.Apply(new GetOrNullVisitor(state)) as Model;
+            var parentModel = config.Parent.Apply(new GetOrNullVisitor<ParentModel>(state));
+            return config.Strategy.Get(parentModel, config.Name);
         }
 
-        sealed class GetOrNullVisitor : IResourceConfigVisitor<object>
+        sealed class GetOrNullVisitor<Model> : IResourceBaseConfigVisitor<Model, Model>
+            where Model : class
         {
             public GetOrNullVisitor(IState state)
             {
                 State = state;
             }
 
-            public object Visit<Model>(ResourceConfig<Model> config) where Model : class
+            public Model Visit(ResourceConfig<Model> config)
                 => State.GetOrNull(config);
 
-            public object Visit<Model, ParentModel>(NestedResourceConfig<Model, ParentModel> config)
-                where Model : class
+            public Model Visit<ParentModel>(NestedResourceConfig<Model, ParentModel> config)
                 where ParentModel : class
                 => State.GetNestedOrNull(config);
 
             IState State { get; }
         }
     }
-    */
-
-    /*
-    public interface IState
-    {
-        Model GetOrNull<Model>(IResourceConfig<Model> config)
-            where Model : class;
-
-        object GetOrNullUntyped(IResourceConfig config);
-    }
-    */
 }

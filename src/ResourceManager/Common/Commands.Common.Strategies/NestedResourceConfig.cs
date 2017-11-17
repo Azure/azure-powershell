@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         where Model : class
         where ParentModel : class
     {
-        public NestedResourceStrategy<Model, ParentModel> Policy { get; }
+        public NestedResourceStrategy<Model, ParentModel> Strategy { get; }
 
         public string Name { get; }
 
@@ -28,13 +28,15 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 
         public Func<Model> CreateModel { get; }
 
+        IResourceBaseStrategy IResourceBaseConfig.Strategy => Strategy;
+
         public NestedResourceConfig(
-            NestedResourceStrategy<Model, ParentModel> policy,            
+            NestedResourceStrategy<Model, ParentModel> strategy,            
             IResourceBaseConfig<ParentModel> parent,
             string name,
             Func<Model> createModel)
         {
-            Policy = policy;
+            Strategy = strategy;
             Name = name;
             Parent = parent;
             CreateModel = createModel;
@@ -47,6 +49,6 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             => visitor.Visit(this);
 
         public IEnumerable<string> GetId(string subscription)
-            => Parent.GetId(subscription).Concat(Policy.GetId(Name));
+            => Parent.GetId(subscription).Concat(Strategy.GetId(Name));
     }
 }

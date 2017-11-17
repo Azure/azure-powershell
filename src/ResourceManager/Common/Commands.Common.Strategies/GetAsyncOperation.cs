@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                 NestedResourceConfig<Model, ParentModel> config)
             {
                 var parent = await GetOrAdd(config.Parent);
-                return parent == null ? null : config.Policy.Get(parent, config.Name);
+                return parent == null ? null : config.Strategy.Get(parent, config.Name);
             }
 
             public Visitor(IClient client, CancellationToken cancellationToken)

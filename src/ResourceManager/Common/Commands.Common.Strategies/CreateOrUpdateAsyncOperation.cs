@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                     return null;
                 }
                 var parent = await GetOrAdd(config.Parent);
-                return config.Policy.Get(parent, config.Name);
+                return config.Strategy.Get(parent, config.Name);
             }
 
             public CreateAsyncVisitor(

@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                 where ParentModel : class
             {
                 var model = config.CreateModel();
-                config.Policy.Set(Get(config.Parent), config.Name, model);
+                config.Strategy.Set(Get(config.Parent), config.Name, model);
                 return model;
             }
 
