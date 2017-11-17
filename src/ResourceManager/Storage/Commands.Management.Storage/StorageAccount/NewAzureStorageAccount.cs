@@ -68,6 +68,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             Mandatory = false,
             HelpMessage = "Storage Account Kind.")]
         [ValidateSet(AccountKind.Storage,
+            AccountKind.StorageV2,
             AccountKind.BlobStorage,
             IgnoreCase = true)]
         public string Kind { get; set; }

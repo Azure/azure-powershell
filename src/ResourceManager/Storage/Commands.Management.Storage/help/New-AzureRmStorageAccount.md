@@ -167,6 +167,7 @@ Specifies the kind of Storage account that this cmdlet creates.
 The acceptable values for this parameter are:
 
 - Storage. General purpose storage account that supports storage of Blobs, Tables, Queues, Files and Disks.
+- StorageV2. General Purpose Version 2 (GPv2) storage account that supports Blobs, Tables, Queues, Files, and Disks, with advanced features like data tiering.
 - BlobStorage. Blob storage account which supports storage of Blobs only.
 
 The default value is Storage.
