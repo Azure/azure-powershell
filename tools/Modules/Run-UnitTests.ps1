@@ -1,6 +1,6 @@
 #Requires -Modules Pester
 
-Import-Module AzureRM.Resources
+Import-Module $PSCommandPath\..\..\..\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Resources.psd1
 Import-Module $PSCommandPath\..\TestFx-Tasks.psd1
 $defaults = [System.IO.Path]::GetDirectoryName($PSCommandPath)
 Set-Location $defaults 
