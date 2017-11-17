@@ -78,10 +78,10 @@ This command submits a Data Lake Analytics job.
 ### Example 2: Submit a job with job parameters
 ```
 PS C:\>$parameters = @{}
-PS C:\>$parameters["Department"] = "Sales"
-PS C:\>$parameters["NumRecords"] = 1000
-PS C:\>$parameters["StartDateTime"] = (Get-Date).AddDays(-14)
-PS C:\>Submit-AzureRmDataLakeAnalyticsJob -Account "ContosoAdlAccount" -Name "New Job" -ScriptPath $LocalScriptPath -DegreeOfParallelism 32 -Parameters $parameters
+$parameters["Department"] = "Sales"
+$parameters["NumRecords"] = 1000
+$parameters["StartDateTime"] = (Get-Date).AddDays(-14)
+Submit-AzureRmDataLakeAnalyticsJob -Account "ContosoAdlAccount" -Name "New Job" -ScriptPath $LocalScriptPath -DegreeOfParallelism 32 -Parameters $parameters
 ```
 
 This command submits a Data Lake Analytics job with job parameters.
@@ -108,7 +108,7 @@ The type of compilation to be done on this job.
 Valid values: 
 
 - Semantic (Only performs semantic checks and necessary sanity checks)
-- Full (full compilation)
+- Full (Full compilation)
 - SingleBox (Full compilation performed locally)
 
 ```yaml
@@ -185,7 +185,7 @@ Accept wildcard characters: False
 ```
 
 ### -Parameters
-The job parameters for this job, as a hashtable of parameter names (string) to values (any combination of byte, sbyte, int, uint, long, ulong, float, double, decimal, short, ushort, char, string, DateTime, bool, Guid, or byte[])
+The job parameters for this job, as a hashtable of parameter names (string) to values (any combination of byte, sbyte, int, uint (or uint32), long, ulong (or uint64), float, double, decimal, short (or int16), ushort (or uint16), char, string, DateTime, bool, Guid, or byte[]).
 
 ```yaml
 Type: Hashtable
@@ -245,7 +245,7 @@ Accept wildcard characters: False
 ```
 
 ### -Priority
-The priority for this job with a range from 1 to 1000, where 1000 is the lowest priority and 1 is the highest.
+The priority of the job. If not specified, the priority is 1000. A lower number indicates a higher job priority.
 
 ```yaml
 Type: Int32
