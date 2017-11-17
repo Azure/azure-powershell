@@ -76,6 +76,7 @@
     <Compile Include="GetAsyncOperation.cs" />
     <Compile Include="GetAsyncParams.cs" />
     <Compile Include="IClient.cs" />
+    <Compile Include="IReport.cs" />
     <Compile Include="IResourceConfig.cs" />
     <Compile Include="IResourceConfigVisitor.cs" />
     <Compile Include="IResourceStrategy.cs" />

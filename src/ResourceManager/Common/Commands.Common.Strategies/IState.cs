@@ -7,5 +7,7 @@
     {
         Model GetOrNull<Model>(IResourceConfig<Model> config)
             where Model : class;
+
+        object GetOrNullUntyped(IResourceConfig config);
     }
 }

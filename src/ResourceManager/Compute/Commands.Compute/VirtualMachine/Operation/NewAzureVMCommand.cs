@@ -181,23 +181,23 @@ namespace Microsoft.Azure.Commands.Compute
 
             //
             var client = new Client(DefaultProfile.DefaultContext);
-            var state = virtualMachine
+            var current = virtualMachine
                 .GetAsync(client, new CancellationToken())
                 .GetAwaiter()
                 .GetResult();
 
             if (Location == null)
             {
-                Location = state.GetLocation(virtualMachine);
+                Location = current.GetLocation(virtualMachine);
                 if (Location == null)
                 {
                     Location = "eastus";
                 }
             }
 
-            var target = virtualMachine.GetTargetState(client.SubscriptionId, Location);
+            var target = virtualMachine.GetTargetState(current, client.SubscriptionId, Location);
             var result = virtualMachine
-                .CreateOrUpdateAsync(client, state, target, new CancellationToken())
+                .CreateOrUpdateAsync(client, target, new CancellationToken())
                 .GetAwaiter()
                 .GetResult();
         }

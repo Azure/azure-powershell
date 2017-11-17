@@ -1,22 +1,30 @@
-﻿namespace Microsoft.Azure.Commands.Common.Strategies
+﻿using System.Linq;
+
+namespace Microsoft.Azure.Commands.Common.Strategies
 {
     public static class TargetState
     {
         public static IState GetTargetState<Model>(
             this IResourceConfig<Model> config,
+            IState current,
             string subscription, 
             string location)
             where Model : class
         {
-            var visitor = new Visitor(subscription, location);
-            visitor.Get(config);
+            var visitor = new Visitor(current, subscription, location);
+            // create a target model onyl if the resource doesn't exist.
+            if (current.GetOrNull(config) == null)
+            {
+                visitor.Get(config);
+            }
             return visitor.Result;
         }
 
         sealed class Visitor : IResourceConfigVisitor<object>
         {
-            public Visitor(string subscription, string location)
+            public Visitor(IState current, string subscription, string location)
             {
+                Current = current;
                 Subscription = subscription;
                 Location = location;
             }
@@ -28,10 +36,13 @@
                 where Model : class
                 => GetUntyped(config) as Model;
 
-            public object Visit<Model>(ResourceConfig<Model> config) 
+            public object Visit<Model>(ResourceConfig<Model> config)
                 where Model : class
             {
-                foreach (var d in config.Dependencies)
+                // create a dependency target model only if the dependency resource doesn't exist.
+                foreach (var d in config
+                    .Dependencies
+                    .Where(d => Current.GetOrNullUntyped(d) == null))
                 {
                     GetUntyped(d);
                 }
@@ -53,6 +64,8 @@
             string Subscription { get; }
 
             string Location { get; }
+
+            IState Current { get; }
 
             public State Result { get; } = new State();
         }

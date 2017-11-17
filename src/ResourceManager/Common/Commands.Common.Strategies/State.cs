@@ -5,9 +5,12 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 {
     sealed class State : IState
     {
+        public object GetOrNullUntyped(IResourceConfig config)
+            => Map.GetOrNull(config.DefaultIdStr());
+
         public Model GetOrNull<Model>(IResourceConfig<Model> config)
             where Model : class
-            => Map.GetOrNull(config.DefaultIdStr()) as Model;
+            => GetOrNullUntyped(config) as Model;
 
         public Model GetOrAdd<Model>(IResourceConfig<Model> config, Func<Model> f)
             where Model : class
