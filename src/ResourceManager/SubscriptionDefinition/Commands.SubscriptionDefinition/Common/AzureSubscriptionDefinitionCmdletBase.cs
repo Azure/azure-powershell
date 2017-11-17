@@ -27,18 +27,18 @@ namespace Microsoft.Azure.Commands.SubscriptionDefinition.Common
     /// </summary>
     public abstract class AzureSubscriptionDefinitionCmdletBase : AzureRMCmdlet
     {
-        private ISubscriptionDefinitionClient _subscriptionDefinitionClient;
+        private ISubscriptionDefinitionsClient _subscriptionDefinitionClient;
 
         /// <summary>
-        /// Gets or sets the Consumption management client.
+        /// Gets or sets the subscription definition management client.
         /// </summary>
-        public ISubscriptionDefinitionClient SubscriptionDefinitionClient
+        public ISubscriptionDefinitionsClient SubscriptionDefinitionsClient
         {
             get
             {
                 return _subscriptionDefinitionClient ??
                        (_subscriptionDefinitionClient =
-                           AzureSession.Instance.ClientFactory.CreateArmClient<SubscriptionDefinitionClient>(DefaultContext,
+                           AzureSession.Instance.ClientFactory.CreateArmClient<SubscriptionDefinitionsClient>(DefaultContext,
                                AzureEnvironment.Endpoint.ResourceManager));
             }
             set { _subscriptionDefinitionClient = value; }

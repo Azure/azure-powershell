@@ -30,12 +30,12 @@ namespace Microsoft.Azure.Commands.SubscriptionDefinition.Cmdlets
         {
             if (!string.IsNullOrEmpty(this.Name))
             {
-                this.WriteSubscriptionDefinitionObject(this.SubscriptionDefinitionClient.SubscriptionDefinition.Get(this.Name));
+                this.WriteSubscriptionDefinitionObject(this.SubscriptionDefinitionsClient.SubscriptionDefinitions.Get(this.Name));
             }
             else
             {
-                var subscriptionDefinitions = this.SubscriptionDefinitionClient.SubscriptionDefinition.List();
-                this.WriteSubscriptionDefinitionObjects(subscriptionDefinitions.Value);
+                var subscriptionDefinitions = this.SubscriptionDefinitionsClient.SubscriptionDefinitions.List();
+                this.WriteSubscriptionDefinitionObjects(subscriptionDefinitions);
             }
         }
     }
