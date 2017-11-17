@@ -27,6 +27,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.WindowsAzure.Commands.Common;
     using System.Collections.Generic;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application;
+    using Commands.Common.Authentication.Abstractions;
 
     /// <summary>
     /// Base class for policy assignment cmdlets.

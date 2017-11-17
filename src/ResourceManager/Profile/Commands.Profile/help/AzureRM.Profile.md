@@ -1,4 +1,4 @@
----
+﻿---
 Module Name: AzureRM.Profile
 Module Guid: 342714fc-4009-4863-8afb-a9067e3db04b
 Download Help Link: {{Please enter FwLink manually}}
