@@ -493,9 +493,17 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                     }
                     else if (paramType.Equals(typeof(DateTime)))
                     {
-                        scriptBuilder.Insert(0, string.Format("DECLARE @{0} DateTime = DateTime.Parse(\"{1}\");\n",
+                        DateTime datetime = (DateTime)param.Value;
+
+                        scriptBuilder.Insert(0, string.Format("DECLARE @{0} DateTime = new DateTime({1}, {2}, {3}, {4}, {5}, {6}, {7});\n",
                             paramVar,
-                            paramValue));
+                            datetime.Year,
+                            datetime.Month,
+                            datetime.Day,
+                            datetime.Hour,
+                            datetime.Minute,
+                            datetime.Second,
+                            datetime.Millisecond));
                     }
                     else if (paramType.Equals(typeof(bool)))
                     {
