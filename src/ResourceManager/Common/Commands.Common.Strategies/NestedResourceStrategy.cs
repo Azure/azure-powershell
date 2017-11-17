@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Common.Strategies
 {
-    public sealed class NestedResourceStrategy<Model, ParentModel> : IResourceStrategy
+    public sealed class NestedResourceStrategy<Model, ParentModel> : IResourceBaseStrategy
     {
         public Func<string, IEnumerable<string>> GetId { get; }
 

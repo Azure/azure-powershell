@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Microsoft.Azure.Commands.Common.Strategies
 {
-    public sealed class ResourceConfig<Model> : IResourceConfig<Model>
+    public sealed class ResourceConfig<Model> : IResourceBaseConfig<Model>
         where Model : class
     {
         public ResourceStrategy<Model> Strategy { get; }
@@ -16,14 +16,14 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 
         public Func<string, Model> CreateModel { get; }
 
-        public IEnumerable<IResourceConfig> Dependencies { get; }
+        public IEnumerable<IResourceBaseConfig> Dependencies { get; }
 
         public ResourceConfig(
             ResourceStrategy<Model> strategy,
             string resourceGroupName,
             string name,
             Func<string, Model> createModel,
-            IEnumerable<IResourceConfig> dependencies)
+            IEnumerable<IResourceBaseConfig> dependencies)
         {
             Strategy = strategy;
             ResourceGroupName = resourceGroupName;
@@ -32,7 +32,10 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             Dependencies = dependencies;
         }
 
-        public Result Apply<Result>(IResourceConfigVisitor<Result> visitor)
+        public Result Apply<Result>(IResourceBaseConfigVisitor<Result> visitor)
+            => visitor.Visit(this);
+
+        public Result Apply<Result>(IResourceBaseConfigVisitor<Model, Result> visitor)
             => visitor.Visit(this);
 
         public IEnumerable<string> GetId(string subscription)
@@ -53,7 +56,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             string resourceGroupName,
             string name,
             Func<string, Model> createModel = null,
-            IEnumerable<IResourceConfig> dependencies = null)
+            IEnumerable<IResourceBaseConfig> dependencies = null)
             where Model : class, new()
             => new ResourceConfig<Model>(
                 strategy,
@@ -67,7 +70,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             ResourceConfig<ResourceGroup> resourceGroup,
             string name,
             Func<string, Model> createModel = null,
-            IEnumerable<IResourceConfig> dependencies = null)
+            IEnumerable<IResourceBaseConfig> dependencies = null)
             where Model : class, new()
             => strategy.CreateConfig(
                 resourceGroup.Name, 
@@ -78,7 +81,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         public static string IdToString(this IEnumerable<string> id)
             => "/" + string.Join("/", id);
 
-        public static string DefaultIdStr(this IResourceConfig config)
+        public static string DefaultIdStr(this IResourceBaseConfig config)
             => config.GetId(string.Empty).IdToString();
     }
 }

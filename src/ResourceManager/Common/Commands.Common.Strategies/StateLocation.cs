@@ -5,7 +5,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 {
     public static class StateLocation
     {
-        public static string GetLocation(this IState state, IResourceConfig config)
+        public static string GetLocation(this IState state, IResourceBaseConfig config)
             => config.Apply(new Visitor(state))?.Location;
 
         class DependencyLocation
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             return a.Location == b.Location ? a : new DependencyLocation(null, a.IsCompulsory);
         }
 
-        sealed class Visitor : IResourceConfigVisitor<DependencyLocation>
+        sealed class Visitor : IResourceBaseConfigVisitor<DependencyLocation>
         {
             public DependencyLocation Visit<Model>(ResourceConfig<Model> config) 
                 where Model : class

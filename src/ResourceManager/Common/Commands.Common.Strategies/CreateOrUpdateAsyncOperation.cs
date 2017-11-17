@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         /// <param name="cancellationToken"></param>
         /// <returns>An Azure state.</returns>
         public static async Task<IState> CreateOrUpdateAsync<Model>(
-            this IResourceConfig<Model> config,
+            this IResourceBaseConfig<Model> config,
             IClient client,
             IState target,
             CancellationToken cancellationToken)

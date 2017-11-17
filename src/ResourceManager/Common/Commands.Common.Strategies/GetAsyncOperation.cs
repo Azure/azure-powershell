@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         /// <param name="cancellationToken"></param>
         /// <returns>An Azure state.</returns>
         public static async Task<IState> GetAsync<Model>(
-            this IResourceConfig<Model> resourceConfig,
+            this IResourceBaseConfig<Model> resourceConfig,
             IClient client,
             CancellationToken cancellationToken)
             where Model : class

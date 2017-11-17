@@ -5,7 +5,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
     public static class TargetState
     {
         public static IState GetTargetState<Model>(
-            this IResourceConfig<Model> config,
+            this IResourceBaseConfig<Model> config,
             IState current,
             string subscription, 
             string location)
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             return visitor.Result;
         }
 
-        sealed class Visitor : IResourceConfigVisitor<object>
+        sealed class Visitor : IResourceBaseConfigVisitor<object>
         {
             public Visitor(IState current, string subscription, string location)
             {
@@ -29,10 +29,10 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                 Location = location;
             }
 
-            public object GetUntyped(IResourceConfig config)
+            public object GetUntyped(IResourceBaseConfig config)
                 => Result.GetOrAddUntyped(config, () => config.Apply(this));
 
-            public Model Get<Model>(IResourceConfig<Model> config)
+            public Model Get<Model>(IResourceBaseConfig<Model> config)
                 where Model : class
                 => GetUntyped(config) as Model;
 

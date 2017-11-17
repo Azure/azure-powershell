@@ -43,6 +43,6 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
                         Id = networkSecurityGroup.GetId(subscription).IdToString()
                     }
                 },
-                new IResourceConfig[] { subnet, publicIPAddress, networkSecurityGroup });
+                new IResourceBaseConfig[] { subnet, publicIPAddress, networkSecurityGroup });
     }
 }

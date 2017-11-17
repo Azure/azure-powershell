@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
     /// It's a base class for asynchronous operation visitors, such as 
     /// CreateOrUpdateAsyncOperation and GetAsyncOperation visitors.
     /// </summary>
-    abstract class AsyncOperationVisitor : IResourceConfigVisitor<Task<object>>
+    abstract class AsyncOperationVisitor : IResourceBaseConfigVisitor<Task<object>>
     {
         public IClient Client { get; }
 
@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 
         public State Result { get; } = new State();
 
-        public async Task<object> GetOrAddUntyped(IResourceConfig config)
+        public async Task<object> GetOrAddUntyped(IResourceBaseConfig config)
             => await TaskMap.GetOrAdd(
                 config.DefaultIdStr(),
                 async _ =>
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                     return model;
                 });
 
-        public async Task<Model> GetOrAdd<Model>(IResourceConfig<Model> config)
+        public async Task<Model> GetOrAdd<Model>(IResourceBaseConfig<Model> config)
             where Model : class
         {
             var model = await GetOrAddUntyped(config);

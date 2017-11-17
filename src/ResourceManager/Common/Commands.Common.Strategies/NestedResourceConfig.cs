@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
     {
         public static NestedResourceConfig<Model, ParentModel> CreateConfig<Model, ParentModel>(
             this NestedResourceStrategy<Model, ParentModel> strategy,
-            IResourceConfig<ParentModel> parent,
+            IResourceBaseConfig<ParentModel> parent,
             string name,
             Func<Model> create)
             where Model : class
@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             => new NestedResourceConfig<Model, ParentModel>(strategy, parent, name, create);
     }
 
-    public sealed class NestedResourceConfig<Model, ParentModel> : IResourceConfig<Model>
+    public sealed class NestedResourceConfig<Model, ParentModel> : IResourceBaseConfig<Model>
         where Model : class
         where ParentModel : class
     {
@@ -24,13 +24,13 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 
         public string Name { get; }
 
-        public IResourceConfig<ParentModel> Parent { get; }
+        public IResourceBaseConfig<ParentModel> Parent { get; }
 
         public Func<Model> CreateModel { get; }
 
         public NestedResourceConfig(
             NestedResourceStrategy<Model, ParentModel> policy,            
-            IResourceConfig<ParentModel> parent,
+            IResourceBaseConfig<ParentModel> parent,
             string name,
             Func<Model> createModel)
         {
@@ -40,7 +40,10 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             CreateModel = createModel;
         }
 
-        public Result Apply<Result>(IResourceConfigVisitor<Result> visitor)
+        public Result Apply<Result>(IResourceBaseConfigVisitor<Result> visitor)
+            => visitor.Visit(this);
+
+        public Result Apply<Result>(IResourceBaseConfigVisitor<Model, Result> visitor)
             => visitor.Visit(this);
 
         public IEnumerable<string> GetId(string subscription)

@@ -2,7 +2,7 @@
 {
     public interface IReport
     {
-        void Start(IResourceConfig config);
-        void Done(IResourceConfig config);
+        void Start(IResourceBaseConfig config);
+        void Done(IResourceBaseConfig config);
     }
 }
