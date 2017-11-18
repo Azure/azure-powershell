@@ -17,7 +17,12 @@ namespace Microsoft.Azure.Commands.DataMigration.Models
 
         public PSProject(Project project)
         {
-            this.project = project ?? throw new ArgumentNullException("project");
+            if(project == null)
+            {
+                throw new ArgumentNullException("project");
+            }
+
+            this.project = project;
             this.ids = new DmsResourceIdentifier(project.Id);
             this.ResourceGroupName = ids.ResourceGroupName;
             this.ServiceName = ids.ServiceName;

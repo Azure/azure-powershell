@@ -17,7 +17,12 @@ namespace Microsoft.Azure.Commands.DataMigration.Models
 
         public PSDataMigrationService(DataMigrationService service)
         {
-            this.service = service ?? throw new ArgumentNullException("service");
+            if(service == null)
+            {
+                throw new ArgumentNullException("service");
+            }
+
+            this.service = service;
             this.ids = new DmsResourceIdentifier(service.Id);
             this.ResourceGroupName = ids.ResourceGroupName;
         }
