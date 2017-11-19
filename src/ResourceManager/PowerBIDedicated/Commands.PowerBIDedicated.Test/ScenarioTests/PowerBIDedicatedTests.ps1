@@ -19,7 +19,7 @@ function Test-PowerBIEmbeddedCapacity
 		Assert-AreEqual $capacityName $capacityCreated.Name
 		Assert-AreEqual $location $capacityCreated.Location
 		Assert-AreEqual "Microsoft.PowerBIDedicated/capacities" $capacityCreated.Type
-		Assert-AreEqual 2 $capacityCreated.Administrators.Count
+		Assert-AreEqual 2 $capacityCreated.Administrator.Count
 		Assert-True {$capacityCreated.Id -like "*$resourceGroupName*"}
 	
 		[array]$capacityGet = Get-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName
@@ -43,11 +43,11 @@ function Test-PowerBIEmbeddedCapacity
 		$capacityUpdated = Update-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -Tag $tagsToUpdate -PassThru
 		Assert-NotNull $capacityUpdated.Tag "Tag do not exists"
 		Assert-NotNull $capacityUpdated.Tag["TestTag"] "The updated tag 'TestTag' does not exist"
-		Assert-AreEqual $capacityUpdated.Administrators.Count 2
+		Assert-AreEqual $capacityUpdated.Administrator.Count 2
 
 		$capacityUpdated = Update-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -Administrator 'aztest1@stabletest.ccsctp.net' -PassThru
-		Assert-NotNull $capacityUpdated.Administrators "Capacity Administrator list is empty"
-		Assert-AreEqual $capacityUpdated.Administrators.Count 1
+		Assert-NotNull $capacityUpdated.Administrator "Capacity Administrator list is empty"
+		Assert-AreEqual $capacityUpdated.Administrator.Count 1
 
 		Assert-AreEqual $capacityName $capacityUpdated.Name
 		Assert-AreEqual $location $capacityUpdated.Location

@@ -30,7 +30,7 @@ The Get-AzureRmPowerBIEmbeddedCapacity cmdlet gets the details of an PowerBI Emb
 PS C:\>Get-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName "testRG"
 Sku                    : A1
 Tier                   : PBIE_Azure
-Administrators         : {{admin@microsoft.com}}
+Administrator          : {{admin@microsoft.com}}
 State                  : Succeeded
 ProvisioningState      : Succeeded
 Id                     : /subscriptions/78e47976-009f-4d4a-a961-6046cdabf459/resourceGroups/testRG/providers/Microsoft.PowerBIDedicated/capacities/testcapacity
@@ -41,7 +41,7 @@ Tag                    : {}
 
 Sku                    : A4
 Tier                   : PBIE_Azure
-Administrators         : {{admin@microsoft.com}}
+Administrator          : {{admin@microsoft.com}}
 State                  : Succeeded
 ProvisioningState      : Succeeded
 Id                     : /subscriptions/78e47976-009f-4d4a-a961-6046cdabf459/resourceGroups/testRG/providers/Microsoft.PowerBIDedicated/capacities/mycapacity
@@ -58,7 +58,7 @@ This command gets all Azure PowerBI Embedded Capacity in the resource group name
 PS C:\>Get-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName "testRG" -Name "testcapacity"
 Sku                    : A1
 Tier                   : PBIE_Azure
-Administrators         : {{admin@microsoft.com}}
+Administrator          : {{admin@microsoft.com}}
 State                  : Succeeded
 ProvisioningState      : Succeeded
 Id                     : /subscriptions/78e47976-009f-4d4a-a961-6046cdabf459/resourceGroups/testRG/providers/Microsoft.PowerBIDedicated/capacities/testcapacity
@@ -122,7 +122,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.PowerBIDedicated.Models.AzurePowerBIEmbeddedCapacity
+### Microsoft.Azure.Commands.PowerBIDedicated.Models.AzurePowerBIDedicated
 
 ## NOTES
 

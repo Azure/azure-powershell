@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.PowerBIDedicated.Models
 {
     public class AzurePowerBIDedicated
     {
-        public List<string> Administrators { get; set; }
+        public List<string> Administrator { get; set; }
 
         public string State { get; private set; }
 
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.PowerBIDedicated.Models
 
             return new AzurePowerBIDedicatedDetail()
             {
-                Administrators = capacity.Administration == null
+                Administrator = capacity.Administration == null
                     ? new List<string>()
                     : new List<string>(capacity.Administration.Members),
                 Location = capacity.Location,

@@ -17,8 +17,8 @@ Modifies  an instance of PowerBI Embedded Capacity
 
 ```
 Update-AzureRmPowerBIEmbeddedCapacity [-Name] <String> [[-ResourceGroupName] <String>] [[-Sku] <String>]
- [[-Tag] <Hashtable>] [[-Administrators] <String[]>] [[-ResourceId] <String>]
- [[-InputObject] <AzurePowerBIEmbeddedCapacity>] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [[-Tag] <Hashtable>] [[-Administrator] <String[]>] [[-ResourceId] <String>]
+ [[-InputObject] <AzurePowerBIDedicated>] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ The Update-AzureRmPowerBIEmbeddedCapacity cmdlet modifies an instance of PowerBI
 PS C:\> Update-AzureRmPowerBIEmbeddedCapacity -Name "testcapacity" -ResourceGroupName "testRG" -Tag "key1:value1,key2:value2" -Administrator "testuser1@contoso.com"
 Sku                    : A1
 Tier                   : PBIE_Azure
-Administrators         : {{testuser1@contoso.com}}
+Administrator          : {{testuser1@contoso.com}}
 State                  : Succeeded
 ProvisioningState      : Succeeded
 Id                     : /subscriptions/78e47976-009f-4d4a-a961-6046cdabf459/resourceGroups/testRG/providers/Microsoft.PowerBIDedicated/capacities/testcapacity
@@ -46,8 +46,8 @@ Modifies the capacity named testcapacity in resourcegroup testgroup to set the t
 
 ## PARAMETERS
 
-### -Administrators
-A comma separated capacity names to set as administrators on the capacity```yaml
+### -Administrator
+A comma separated capacity names to set as administrator on the capacity```yaml
 Type: String[]
 Parameter Sets: (All)
 Aliases: 
@@ -74,7 +74,7 @@ Accept wildcard characters: False
 
 ### -InputObject
 PowerBI Embedded Capacity object.```yaml
-Type: AzurePowerBIEmbeddedCapacity
+Type: AzurePowerBIDedicated
 Parameter Sets: (All)
 Aliases: 
 
@@ -212,7 +212,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.PowerBIDedicated.Models.AzurePowerBIEmbeddedCapacity
+### Microsoft.Azure.Commands.PowerBIDedicated.Models.AzurePowerBIDedicated
 
 ## NOTES
 
