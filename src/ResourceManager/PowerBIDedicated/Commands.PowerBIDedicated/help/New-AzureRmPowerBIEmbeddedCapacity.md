@@ -17,7 +17,7 @@ Creates a new PowerBI Embedded Capacity
 
 ```
 New-AzureRmPowerBIEmbeddedCapacity [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
- [-Sku] <String> [[-Tag] <Hashtable>] [[-Administrators] <String[]>] [-DefaultProfile <IAzureContextContainer>]
+ [-Sku] <String> [[-Tag] <Hashtable>] [[-Administrator] <String[]>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ The New-AzureRmPowerBIEmbeddedCapacity cmdlet creates a new PowerBI Embedded Cap
 PS C:\> New-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName "testRG" -Name "testcapacity" -Location "West US" -Sku "A1"
 Sku                    : A1
 Tier                   : PBIE_Azure
-Administrators         : {{admin@microsoft.com}}
+Administrator          : {{admin@microsoft.com}}
 State                  : Succeeded
 ProvisioningState      : Succeeded
 Id                     : /subscriptions/78e47976-009f-4d4a-a961-6046cdabf459/resourceGroups/testRG/providers/Microsoft.PowerBIDedicated/capacities/testcapacity
@@ -45,8 +45,8 @@ Creates a capacity named testcapacity in the Azure region West Central US and in
 
 ## PARAMETERS
 
-### -Administrators
-A comma separated capacity names to set as administrators on the capacity```yaml
+### -Administrator
+A comma separated capacity names to set as administrator on the capacity```yaml
 Type: String[]
 Parameter Sets: (All)
 Aliases: 
@@ -185,7 +185,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.PowerBIDedicated.Models.AzurePowerBIEmbeddedCapacity
+### Microsoft.Azure.Commands.PowerBIDedicated.Models.AzurePowerBIDedicated
 
 ## NOTES
 

@@ -17,7 +17,7 @@ Suspends an instance of PowerBI Embedded Capacity
 
 ```
 Suspend-AzureRmPowerBIEmbeddedCapacity [[-ResourceGroupName] <String>] [-Name] <String>
- [[-ResourceId] <String>] [[-InputObject] <AzurePowerBIEmbeddedCapacity>] [-PassThru]
+ [[-ResourceId] <String>] [[-InputObject] <AzurePowerBIDedicated>] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ The Suspend-AzureRmPowerBIEmbeddedCapacity cmdlet suspends an instance of PowerB
 PS C:\> Suspend-AzureRmPowerBIEmbeddedCapacity -Name "testcapacity" -ResourceGroupName "testRG"
 Sku                    : A1
 Tier                   : PBIE_Azure
-Administrators         : {{admin@microsoft.com}}
+Administrator          : {{admin@microsoft.com}}
 State                  : Succeeded
 ProvisioningState      : Succeeded
 Id                     : /subscriptions/78e47976-009f-4d4a-a961-6046cdabf459/resourceGroups/testRG/providers/Microsoft.PowerBIDedicated/capacities/testcapacity
@@ -60,7 +60,7 @@ Accept wildcard characters: False
 
 ### -InputObject
 PowerBI Embedded Capacity object.```yaml
-Type: AzurePowerBIEmbeddedCapacity
+Type: AzurePowerBIDedicated
 Parameter Sets: (All)
 Aliases: 
 
@@ -166,7 +166,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.PowerBIDedicated.Models.AzurePowerBIEmbeddedCapacity
+### Microsoft.Azure.Commands.PowerBIDedicated.Models.AzurePowerBIDedicated
 
 ## NOTES
 

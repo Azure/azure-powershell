@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.PowerBIDedicated
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 5, Mandatory = false,
             HelpMessage = "A comma separated capacity names to set as administrators on the capacity")]
         [ValidateNotNull]
-        public string[] Administrators { get; set; }
+        public string[] Administrator { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.PowerBIDedicated
                     throw new InvalidOperationException(string.Format(Resources.InvalidSku, Sku, String.Join(",", availableSkus.Value.Select(v => v.Name))));
                 }
 
-                var createdCapacity = PowerBIDedicatedClient.CreateOrUpdateCapacity(ResourceGroupName, Name, Location, Sku, Tag, Administrators, null);
+                var createdCapacity = PowerBIDedicatedClient.CreateOrUpdateCapacity(ResourceGroupName, Name, Location, Sku, Tag, Administrator, null);
                 WriteObject(AzurePowerBIDedicated.FromPowerBIDedicated(createdCapacity));
             }
         }

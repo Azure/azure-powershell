@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.PowerBIDedicated
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, Mandatory = false,
             HelpMessage = "A comma separated capacity names to set as administrators on the capacity")]
         [ValidateNotNull]
-        public string[] Administrators { get; set; }
+        public string[] Administrator { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
             Position = 1, HelpMessage = "PowerBI Embedded Capacity ResourceID.")]
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.PowerBIDedicated
                     Tag = TagsConversionHelper.CreateTagHashtable(currentCapacity.Tags);
                 }
 
-                DedicatedCapacity updateCapacity = PowerBIDedicatedClient.CreateOrUpdateCapacity(ResourceGroupName, Name, location, Sku, Tag, Administrators, currentCapacity);
+                DedicatedCapacity updateCapacity = PowerBIDedicatedClient.CreateOrUpdateCapacity(ResourceGroupName, Name, location, Sku, Tag, Administrator, currentCapacity);
 
                 if(PassThru.IsPresent)
                 {
