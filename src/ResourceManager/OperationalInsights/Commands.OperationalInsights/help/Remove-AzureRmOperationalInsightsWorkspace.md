@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.OperationalInsights.dll-Help.xml
+Module Name: AzureRM.OperationalInsights
 ms.assetid: 0C35E679-B991-49A8-890F-C8DAB68A8240
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.operationalinsights/remove-azurermoperationalinsightsworkspace
 schema: 2.0.0
 ---
 
@@ -13,8 +14,8 @@ Removes a workspace.
 ## SYNTAX
 
 ```
-Remove-AzureRmOperationalInsightsWorkspace [-ResourceGroupName] <String> [-Name] <String> [-Force] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzureRmOperationalInsightsWorkspace [-ResourceGroupName] <String> [-Name] <String> [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,6 +40,21 @@ This command uses the Get-AzureRmOperationalInsightsWorkspace cmdlet to get the 
 Since the *Force* parameter is specified, the command does not prompt you before removing the workspace.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Force
 Forces the command to run without asking for user confirmation.

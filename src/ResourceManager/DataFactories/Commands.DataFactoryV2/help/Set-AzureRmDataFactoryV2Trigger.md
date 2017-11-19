@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.DataFactoryV2.dll-Help.xml
 Module Name: AzureRM.DataFactoryV2
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/set-azurermdatafactoryv2trigger
 schema: 2.0.0
 ---
 
@@ -15,16 +15,17 @@ Creates a trigger in a data factory.
 ### ByFactoryName (Default)
 ```
 Set-AzureRmDataFactoryV2Trigger [-Name] <String> [-DefinitionFile] <String> [-ResourceGroupName] <String>
- [-DataFactoryName] <String> [-Force] [-WhatIf] [-Confirm]
+ [-DataFactoryName] <String> [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Set-AzureRmDataFactoryV2Trigger [-DefinitionFile] <String> [-ResourceId] <String> [-Force] [-WhatIf] [-Confirm]
+Set-AzureRmDataFactoryV2Trigger [-DefinitionFile] <String> [-ResourceId] <String> [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-
 The **Set-AzureRmDataFactoryV2Trigger** cmdlet creates a trigger in a data factory. If you specify a name for a trigger that already exists, the cmdlet prompts for confirmation before replacing the trigger. If you specify the _Force_ parameter, the cmdlet replaces the existing trigger without prompting for confirmation. Triggers are created in the 'Stopped' state, meaning that they don't immediately begin invoking pipelines that they reference.
 
 ## EXAMPLES
@@ -38,27 +39,11 @@ PS C:\> Set-AzureRmDataFactoryV2Trigger -ResourceGroupName "ADF" -DataFactoryNam
     DataFactoryName   : WikiADF
     Properties        : Microsoft.Azure.Management.DataFactory.Models.ScheduleTrigger
     RuntimeState      : Stopped
-
 ```
 
 Create a new trigger called "ScheduledTrigger" in the data factory "WikiADF". The trigger is created in the 'Stopped' state, meaning that it doesn't immediately start. A trigger can be started using the `Start-AzureRmDataFactoryV2Trigger` cmdlet.
 
 ## PARAMETERS
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DataFactoryName
 The data factory name.
@@ -72,6 +57,21 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -150,6 +150,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -WhatIf
 Shows what happens if the cmdlet runs, but doesn't run the cmdlet.
 
@@ -165,19 +180,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### System.String
-
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.DataFactoryV2.Models.PSTrigger
 
-
 ## NOTES
 
 ## RELATED LINKS
+
 [Get-AzureRmDataFactoryV2Trigger]()
 
 [Start-AzureRmDataFactoryV2Trigger]()

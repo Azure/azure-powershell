@@ -18,6 +18,14 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 0.2.0
+* Add support for online help
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
+    
+## Version 0.1.1
+
+## Version 0.1.0
 * Added cmdlets to manage the resources in Azure Event Grid service.
 
     - New-AzureRmEventGridTopic
@@ -40,4 +48,3 @@
         - Removes an Azure Event Grid event subscription.
     - Get-AzureRmEventGridTopicType
         - Gets the details about the topic types supported by Azure Event Grid.
-

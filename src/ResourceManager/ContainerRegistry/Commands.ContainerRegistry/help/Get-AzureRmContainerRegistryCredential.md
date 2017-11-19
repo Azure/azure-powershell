@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ContainerRegistry.dll-Help.xml
-online version: 
+Module Name: AzureRM.ContainerRegistry
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.containerregistry/get-azurermcontainerregistrycredential
 schema: 2.0.0
 ---
 
@@ -13,12 +14,14 @@ Gets the login credentials for a container registry.
 
 ### NameResourceGroupParameterSet (Default)
 ```
-Get-AzureRmContainerRegistryCredential [-ResourceGroupName] <String> [-Name] <String> [<CommonParameters>]
+Get-AzureRmContainerRegistryCredential [-ResourceGroupName] <String> [-Name] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### RegistryObjectParameterSet
 ```
-Get-AzureRmContainerRegistryCredential -Registry <PSContainerRegistry> [<CommonParameters>]
+Get-AzureRmContainerRegistryCredential -Registry <PSContainerRegistry>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,6 +41,21 @@ MyRegistry +Y+==B==KdT=YV=ZgH=p/zQ/e1sNQq/d //JRPkgxx+r+z/ztU=R//E==vum=pRKL
 This command gets the login credentials for the specified container registry. Admin user has to be enabled for the container registry `MyRegistry` to get login credentials.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 Container Registry Name.
@@ -90,7 +108,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### PSContainerRegistry
-
 Parameter 'Registry' accepts value of type 'PSContainerRegistry' from the pipeline
 
 ## OUTPUTS

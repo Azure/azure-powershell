@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.EventGrid.dll-Help.xml
 Module Name: AzureRM.EventGrid
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.eventgrid/get-azurermeventgridsubscription
 schema: 2.0.0
 ---
 
@@ -15,24 +15,27 @@ Gets the details of an event subscription, or gets a list of all event subscript
 ### EventSubscriptionTopicNameParameterSet (Default)
 ```
 Get-AzureRmEventGridSubscription [[-EventSubscriptionName] <String>] [[-ResourceGroupName] <String>]
- [[-TopicName] <String>] [-IncludeFullEndpointUrl] [<CommonParameters>]
+ [[-TopicName] <String>] [-IncludeFullEndpointUrl] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdEventSubscriptionParameterSet
 ```
 Get-AzureRmEventGridSubscription [[-EventSubscriptionName] <String>] [-ResourceId] <String>
- [-IncludeFullEndpointUrl] [<CommonParameters>]
+ [-IncludeFullEndpointUrl] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### EventSubscriptionTopicTypeNameParameterSet
 ```
 Get-AzureRmEventGridSubscription [[-ResourceGroupName] <String>] [[-TopicTypeName] <String>]
- [[-Location] <String>] [-IncludeFullEndpointUrl] [<CommonParameters>]
+ [[-Location] <String>] [-IncludeFullEndpointUrl] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### EventSubscriptionInputObjectSet
 ```
-Get-AzureRmEventGridSubscription [-InputObject] <PSTopic> [<CommonParameters>]
+Get-AzureRmEventGridSubscription [-InputObject] <PSTopic> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -120,6 +123,21 @@ PS C:\> Get-AzureRmEventGridSubscription -TopicTypeName "Microsoft.Resources.Res
 Gets the list of all event subscriptions created for the specific resource group.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -EventSubscriptionName
 The name of the event subscription

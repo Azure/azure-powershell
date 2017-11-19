@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Cdn.dll-Help.xml
-online version: 
+Module Name: AzureRM.Cdn
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.cdn/get-azurermcdnendpointresourceusage
 schema: 2.0.0
 ---
 
@@ -11,15 +12,16 @@ schema: 2.0.0
 
 ## SYNTAX
 
-### Parameter Set for fields parameters (Default)
+### ByFieldsParameterSet (Default)
 ```
 Get-AzureRmCdnEndpointResourceUsage [-EndpointName <String>] -ProfileName <String> -ResourceGroupName <String>
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Parameter Set for object parameters
+### ByObjectParameterSet
 ```
-Get-AzureRmCdnEndpointResourceUsage [-EndpointName <String>] -CdnEndpoint <PSEndpoint> [<CommonParameters>]
+Get-AzureRmCdnEndpointResourceUsage [-EndpointName <String>] -CdnEndpoint <PSEndpoint>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,13 +43,28 @@ The CDN endpoint object.
 
 ```yaml
 Type: PSEndpoint
-Parameter Sets: Parameter Set for object parameters
+Parameter Sets: ByObjectParameterSet
 Aliases: 
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -71,7 +88,7 @@ Azure CDN profile name.
 
 ```yaml
 Type: String
-Parameter Sets: Parameter Set for fields parameters
+Parameter Sets: ByFieldsParameterSet
 Aliases: 
 
 Required: True
@@ -86,7 +103,7 @@ The resource group of the Azure CDN Profile.
 
 ```yaml
 Type: String
-Parameter Sets: Parameter Set for fields parameters
+Parameter Sets: ByFieldsParameterSet
 Aliases: 
 
 Required: True

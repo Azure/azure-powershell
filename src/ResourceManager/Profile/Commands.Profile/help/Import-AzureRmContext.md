@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Profile.dll-Help.xml
-online version: 
+Module Name: AzureRM.Profile
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/import-azurermcontext
 schema: 2.0.0
 ---
 
@@ -11,15 +12,15 @@ Loads Azure authentication information from a file.
 
 ## SYNTAX
 
-### InMemoryProfile
+### ProfileFromDisk (Default)
 ```
-Import-AzureRmContext [-AzureContext] <AzureRmProfile> [-Scope <ContextModificationScope>]
+Import-AzureRmContext [-Path] <String> [-Scope <ContextModificationScope>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ProfileFromDisk
+### InMemoryProfile
 ```
-Import-AzureRmContext [-Path] <String> [-Scope <ContextModificationScope>]
+Import-AzureRmContext [-AzureContext] <AzureRmProfile> [-Scope <ContextModificationScope>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 

@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-online version: 
+Module Name: AzureRM.Sql
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/add-azurermsqlserverkeyvaultkey
 schema: 2.0.0
 ---
 
@@ -13,7 +14,7 @@ Adds a Key Vault key to a SQL server.
 
 ```
 Add-AzureRmSqlServerKeyVaultKey [-KeyId] <String> [-ServerName] <String> [-ResourceGroupName] <String>
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,6 +39,21 @@ Thumbprint        : 1122334455667788990011223344556677889900
 CreationDate      : 1/1/2017 12:00:00 AM
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -KeyId
 The Azure Key Vault KeyId.

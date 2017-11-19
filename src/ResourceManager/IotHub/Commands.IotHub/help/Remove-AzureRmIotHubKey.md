@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.IotHub.dll-Help.xml
-online version: 
+Module Name: AzureRM.IotHub
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.iothub/remove-azurermiothubkey
 schema: 2.0.0
 ---
 
@@ -12,8 +13,8 @@ Removes an IotHub Key.
 ## SYNTAX
 
 ```
-Remove-AzureRmIotHubKey [-ResourceGroupName] <String> [-Name] <String> [-KeyName] <String> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzureRmIotHubKey [-ResourceGroupName] <String> [-Name] <String> [-KeyName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,6 +31,21 @@ PS C:\> Remove-AzureRmIotHubKey -ResourceGroupName "myresourcegroup" -Name "myio
 Removes the key named iothubowner1 from the IotHub named "myiothub"
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -KeyName
 Name of the Key

@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Management.Storage.dll-Help.xml
+Module Name: AzureRM
 ms.assetid: 15973FE8-16C1-4B71-A3A8-6D6F67A96FDF
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.storage/set-azurermcurrentstorageaccount
 schema: 2.0.0
 ---
 
@@ -14,12 +15,14 @@ Modifies the current Storage account of the specified subscription.
 
 ### UsingResourceGroupAndNameParameterSet (Default)
 ```
-Set-AzureRmCurrentStorageAccount -ResourceGroupName <String> -Name <String> [<CommonParameters>]
+Set-AzureRmCurrentStorageAccount -ResourceGroupName <String> -Name <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### UsingStorageContext
 ```
-Set-AzureRmCurrentStorageAccount -Context <IStorageContext> [<CommonParameters>]
+Set-AzureRmCurrentStorageAccount -Context <IStorageContext> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -50,6 +53,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -89,7 +107,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### IStorageContext
-
 Parameter 'Context' accepts value of type 'IStorageContext' from the pipeline
 
 ## OUTPUTS

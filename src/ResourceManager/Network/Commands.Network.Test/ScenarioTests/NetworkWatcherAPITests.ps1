@@ -618,4 +618,85 @@ function Test-ConnectivityCheck
     }
 }
 
+<#
+.SYNOPSIS
+Test ReachabilityReport NetworkWatcher API.
+#>
+function Test-ReachabilityReport
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $nwName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/networkWatchers"
+    $location = "westcentralus"
+    
+    try 
+    {
+        # Create the resource group
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
+        
+        # Create the Network Watcher
+        $tags = @{"key1" = "value1"; "key2" = "value2"}
+        $nw = New-AzureRmNetworkWatcher -Name $nwName -ResourceGroupName $rgname -Location $location -Tag $tags
 
+        $report1 = Get-AzureRmNetworkWatcherReachabilityReport -NetworkWatcher $nw -Location "West US" -Country "United States" -StartTime "2017-10-05" -EndTime "2017-10-10"
+        $report2 = Get-AzureRmNetworkWatcherReachabilityReport -NetworkWatcher $nw -Location "West US" -Country "United States" -State "washington" -StartTime "2017-10-05" -EndTime "2017-10-10"
+        $report3 = Get-AzureRmNetworkWatcherReachabilityReport -NetworkWatcher $nw -Location "West US" -Country "United States" -State "washington" -City "seattle" -StartTime "2017-10-05" -EndTime "2017-10-10"
+
+        Assert-AreEqual $report1.AggregationLevel "Country"
+        Assert-AreEqual $report1.ProviderLocation.Country "United States"
+        Assert-AreEqual $report2.AggregationLevel "State"
+        Assert-AreEqual $report2.ProviderLocation.Country "United States"
+        Assert-AreEqual $report2.ProviderLocation.State "washington"
+        Assert-AreEqual $report3.AggregationLevel "City"
+        Assert-AreEqual $report3.ProviderLocation.Country "United States"
+        Assert-AreEqual $report3.ProviderLocation.State "washington"
+        Assert-AreEqual $report3.ProviderLocation.City "seattle"
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test ProvidersList NetworkWatcher API.
+#>
+function Test-ProvidersList
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $nwName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/networkWatchers"
+    $location = "westcentralus"
+    
+    try 
+    {
+        # Create the resource group
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
+        
+        # Create the Network Watcher
+        $tags = @{"key1" = "value1"; "key2" = "value2"}
+        $nw = New-AzureRmNetworkWatcher -Name $nwName -ResourceGroupName $rgname -Location $location -Tag $tags
+
+        $list1 = Get-AzureRmNetworkWatcherReachabilityProvidersList -NetworkWatcher $nw -Location "West US" -Country "United States"
+        $list2 = Get-AzureRmNetworkWatcherReachabilityProvidersList -NetworkWatcher $nw -Location "West US" -Country "United States" -State "washington"
+        $list3 = Get-AzureRmNetworkWatcherReachabilityProvidersList -NetworkWatcher $nw -Location "West US" -Country "United States" -State "washington" -City "seattle"
+
+        Assert-AreEqual $list1.Countries.CountryName "United States"
+        Assert-AreEqual $list2.Countries.CountryName "United States"
+        Assert-AreEqual $list2.Countries.States.StateName "washington"
+        Assert-AreEqual $list3.Countries.CountryName "United States"
+        Assert-AreEqual $list3.Countries.States.StateName "washington"
+        Assert-AreEqual $list3.Countries.States.Cities.CityName "seattle"
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

@@ -1,13 +1,13 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/get-azurermdisk
 schema: 2.0.0
 ---
 
 # Get-AzureRmDisk
 
 ## SYNOPSIS
-Gets the properties of a disk.
+Gets the properties of a Managed disk.
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ Get-AzureRmDisk [[-ResourceGroupName] <String>] [[-DiskName] <String>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmDisk** cmdlet gets the properties of a disk.
+The **Get-AzureRmDisk** cmdlet gets the properties of a Managed disk.
 
 ## EXAMPLES
 

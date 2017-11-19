@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.TrafficManager.dll-Help.xml
+Module Name: AzureRM
 ms.assetid: 5287D4DB-2709-4A3C-97D5-DB494CEEFD18
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.trafficmanager/set-azurermtrafficmanagerendpoint
 schema: 2.0.0
 ---
 
@@ -13,7 +14,8 @@ Updates a Traffic Manager endpoint.
 ## SYNTAX
 
 ```
-Set-AzureRmTrafficManagerEndpoint -TrafficManagerEndpoint <TrafficManagerEndpoint> [<CommonParameters>]
+Set-AzureRmTrafficManagerEndpoint -TrafficManagerEndpoint <TrafficManagerEndpoint>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,6 +44,21 @@ This command changes the endpoint weight to 20.
 The third command updates the endpoint in Traffic Manager to match the local value in $TrafficManagerEndpoint.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -TrafficManagerEndpoint
 Specifies a local **TrafficManagerEndpoint** object.

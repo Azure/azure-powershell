@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.DataLakeAnalytics.dll-Help.xml
+Module Name: AzureRM.DataLakeAnalytics
 ms.assetid: 0B52890D-102F-4C3C-9EF9-017F6ECA3E26
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datalakeanalytics/test-azurermdatalakeanalyticsaccount
 schema: 2.0.0
 ---
 
@@ -13,7 +14,8 @@ Checks for the existence of a Data Lake Analytics account.
 ## SYNTAX
 
 ```
-Test-AzureRmDataLakeAnalyticsAccount [-Name] <String> [[-ResourceGroupName] <String>] [<CommonParameters>]
+Test-AzureRmDataLakeAnalyticsAccount [-Name] <String> [[-ResourceGroupName] <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,6 +31,21 @@ PS C:\>Test-AzureRmDataLakeAnalyticsAccount -Name "ContosoAdlAccount"
 This command tests whether the account named ContosoAdlAccount exists.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 Specifies the Data Lake Analytics account name.

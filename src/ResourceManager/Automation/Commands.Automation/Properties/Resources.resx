@@ -464,4 +464,7 @@
   <data name="StartAzureAutomationNodeConfigurationWarning" xml:space="preserve">
     <value>Starting a node configuration deployment. It will override any existing node configurations assigned to the node.</value>
   </data>
+  <data name="NoJobIdPassedToGetJobInformationCall" xml:space="preserve">
+    <value>No JobId passed. Please pass a valid JobId.</value>
+  </data>
 </root>

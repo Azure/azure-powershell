@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.EventGrid.dll-Help.xml
 Module Name: AzureRM.EventGrid
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.eventgrid/remove-azurermeventgridtopic
 schema: 2.0.0
 ---
 
@@ -14,18 +14,20 @@ Removes an Azure Event Grid Topic.
 
 ### TopicNameParameterSet (Default)
 ```
-Remove-AzureRmEventGridTopic [-ResourceGroupName] <String> [-Name] <String> [-PassThru] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzureRmEventGridTopic [-ResourceGroupName] <String> [-Name] <String> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdEventSubscriptionParameterSet
 ```
-Remove-AzureRmEventGridTopic [-ResourceId] <String> [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzureRmEventGridTopic [-ResourceId] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### TopicInputObjectParameterSet
 ```
-Remove-AzureRmEventGridTopic [-InputObject] <PSTopic> [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzureRmEventGridTopic [-InputObject] <PSTopic> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,6 +50,21 @@ PS C:\> Get-AzureRmResource -ResourceId "/subscriptions/$subscriptionId/resource
 Removes the Event Grid topic \`Topic1\` in resource group \`MyResourceGroupName\`.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -InputObject
 EventGrid Topic object.

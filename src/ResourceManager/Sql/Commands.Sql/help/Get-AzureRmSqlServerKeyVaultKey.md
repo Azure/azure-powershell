@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-online version: 
+Module Name: AzureRM.Sql
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/get-azurermsqlserverkeyvaultkey
 schema: 2.0.0
 ---
 
@@ -13,7 +14,7 @@ Gets a SQL server's Key Vault keys.
 
 ```
 Get-AzureRmSqlServerKeyVaultKey [[-KeyId] <String>] [-ServerName] <String> [-ResourceGroupName] <String>
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -54,6 +55,21 @@ This command gets the Key Vault key with Id 'https://contoso.vault.azure.net/key
 You can inspect the properties of $MyServerKeyVaultKey to get details about the key vault.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -KeyId
 The Azure Key Vault KeyId.

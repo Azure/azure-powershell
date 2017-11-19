@@ -58,9 +58,9 @@ namespace Microsoft.Azure.Commands.Batch.Models
         public IDictionary EnvironmentSettings { get; set; }
 
         /// <summary>
-        /// Whether to run the task in elevated mode.
+        /// The user identity under which the task runs.
         /// </summary>
-        public bool RunElevated { get; set; }
+        public PSUserIdentity UserIdentity { get; set; }
 
         /// <summary>
         /// The affinity information for the task.
@@ -87,8 +87,24 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// </summary>
         public PSApplicationPackageReference[] ApplicationPackageReferences { get; set; }
 
+        /// <summary>
         /// How the Batch service should respond when the task completes.
         /// </summary>
         public PSExitConditions ExitConditions { get; set; }
+
+        /// <summary>
+        /// The settings for an authentication token that the task can use to perform Batch service operations.
+        /// </summary>
+        public PSAuthenticationTokenSettings AuthenticationTokenSettings { get; set; }
+
+        /// <summary>
+        /// The output file details
+        /// </summary>
+        public PSOutputFile[] OutputFiles { get; set; }
+
+        /// <summary>
+        /// The task container settings
+        /// </summary>
+        public PSTaskContainerSettings ContainerSettings { get; set; }
     }
 }

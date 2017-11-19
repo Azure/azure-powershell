@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.DataFactoryV2.dll-Help.xml
 Module Name: AzureRM.DataFactoryV2
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/stop-azurermdatafactoryv2integrationruntime
 schema: 2.0.0
 ---
 
@@ -15,18 +15,20 @@ Stops a managed dedicated integration runtime.
 ### ByIntegrationRuntimeName (Default)
 ```
 Stop-AzureRmDataFactoryV2IntegrationRuntime [-Force] [-Name] <String> [-ResourceGroupName] <String>
- [-DataFactoryName] <String> [-WhatIf] [-Confirm]
+ [-DataFactoryName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Stop-AzureRmDataFactoryV2IntegrationRuntime [-Force] [-ResourceId] <String> [-WhatIf] [-Confirm]
+Stop-AzureRmDataFactoryV2IntegrationRuntime [-Force] [-ResourceId] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByIntegrationRuntimeObject
 ```
-Stop-AzureRmDataFactoryV2IntegrationRuntime [-Force] [-InputObject] <PSIntegrationRuntime> [-WhatIf]
- [-Confirm]
+Stop-AzureRmDataFactoryV2IntegrationRuntime [-Force] [-InputObject] <PSIntegrationRuntime>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,21 +45,6 @@ The managed integration runtime 'test-reserlved-ir' is in 'Started' state. After
 
 ## PARAMETERS
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DataFactoryName
 The data factory name.
 
@@ -70,6 +57,21 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -194,4 +196,5 @@ Microsoft.Azure.Commands.DataFactoryV2.Models.PSIntegrationRuntime
 Keywords: azure, azurerm, arm, resource, management, manager, data, factories, copy, activities, integration runtime
 
 ## RELATED LINKS
+
 [Start-AzureRmDataFactoryV2IntegrationRuntime]()

@@ -18,6 +18,7 @@ using Microsoft.Azure.Management.HDInsight.Models;
 using System.Management.Automation;
 using System.IO;
 using System.Reflection;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {

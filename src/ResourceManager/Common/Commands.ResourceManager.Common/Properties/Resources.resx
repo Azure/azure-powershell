@@ -149,11 +149,20 @@ Use the Enable-AzureRmDataCollection cmdlet to turn the feature On. The cmdlet c
   <data name="InvalidDefaultSubscription" xml:space="preserve">
     <value>No default subscription has been designated. Use Select-AzureSubscription -Default &lt;subscriptionName&gt; to set the default subscription.</value>
   </data>
+  <data name="InvalidResourceType" xml:space="preserve">
+    <value>ResourceType name: '{0}' is invalid.</value>
+  </data>
   <data name="InvalidTagFormat" xml:space="preserve">
     <value>Invalid tag format. Expect @{tagName = $null} or @{tagName = "tagValue"}</value>
   </data>
   <data name="NoSubscriptionFound" xml:space="preserve">
     <value>The provided account {0} does not have access to any subscriptions. Please try logging in with different credentials.</value>
+  </data>
+  <data name="NoValidLocationsFound" xml:space="preserve">
+    <value>No locations exist for all of the given ResourceTypes.</value>
+  </data>
+  <data name="NoValidProviderFound" xml:space="preserve">
+    <value>No valid ResourceType given to LocationCompleter.</value>
   </data>
   <data name="ProfileCannotBeNull" xml:space="preserve">
     <value>Profile cannot be null.  Please run Add-AzureRmAccount.</value>
@@ -196,6 +205,9 @@ Use the Enable-AzureRmDataCollection cmdlet to turn the feature On. The cmdlet c
   <data name="TenantNotFound" xml:space="preserve">
     <value>Tenant '{0}' was not found. Please verify that your account has access to this tenant.</value>
   </data>
+  <data name="TimeOutForProviderList" xml:space="preserve">
+    <value>Provider.List() timed out. Please retry.</value>
+  </data>
   <data name="RDFEDataCollectionMessage" xml:space="preserve">
     <value>Azure PowerShell collects usage data in order to improve your experience.
 The data is anonymous and does not include commandline argument values.
@@ -203,5 +215,8 @@ The data is collected by Microsoft.
 
 Use the Disable-AzureDataCollection cmdlet to turn the feature Off. The cmdlet can be found in the Azure module.  To disable data collection: PS &gt; Disable-AzureDataCollection.
 Use the Enable-AzureDataCollection cmdlet to turn the feature On. The cmdlet can be found in the Azure module.  To enable data collection: PS &gt; Enable-AzureDataCollection.</value>
+  </data>
+  <data name="DefaultResourceGroupKey" xml:space="preserve">
+    <value>Default Resource Group</value>
   </data>
 </root>

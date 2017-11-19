@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
+Module Name: AzureRM.HDInsight
 ms.assetid: 774848C9-47A1-4C43-B6FA-B3C0C3C76470
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.hdinsight/add-azurermhdinsightcomponentversion
 schema: 2.0.0
 ---
 
@@ -14,7 +15,8 @@ Adds a version for a service running in a cluster to a cluster configuration obj
 
 ```
 Add-AzureRmHDInsightComponentVersion [-Config] <AzureHDInsightConfig> [-ComponentName] <String>
- [-ComponentVersion] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ComponentVersion] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,6 +26,8 @@ The Add-AzureRmHDInsightComponentVersion cmdlet adds a version for a service run
 
 ### --------------------------  Example 1: Add a version for Spark to the cluster configuration object.  --------------------------
 @{paragraph=PS C:\\\>}
+
+
 
 
 
@@ -111,6 +115,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -145,7 +164,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### AzureHDInsightConfig
-
 Parameter 'Config' accepts value of type 'AzureHDInsightConfig' from the pipeline
 
 ## OUTPUTS

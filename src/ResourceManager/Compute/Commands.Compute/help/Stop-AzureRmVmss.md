@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 ms.assetid: AF0DDDD0-B664-4AD8-A569-1363FB2EDB40
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/stop-azurermvmss
 schema: 2.0.0
 ---
 

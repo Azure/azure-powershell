@@ -83,10 +83,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="AzureRM.EventGrid.psd1">
+    <None Include="..\AzureRM.EventGrid.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Microsoft.Azure.Commands.EventGrid.format.ps1xml">
+    <None Include="..\Microsoft.Azure.Commands.EventGrid.format.ps1xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="MSSharedLibKey.snk" />

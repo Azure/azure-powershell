@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
+Module Name: AzureRM.Automation
 ms.assetid: D704BAC0-D89E-4F15-ACF8-FA2C1F0D1B8F
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/get-azurermautomationdsccompilationjob
 schema: 2.0.0
 ---
 
@@ -16,20 +17,20 @@ Gets DSC compilation jobs in Automation.
 ```
 Get-AzureRmAutomationDscCompilationJob [-Status <String>] [-StartTime <DateTimeOffset>]
  [-EndTime <DateTimeOffset>] [-ResourceGroupName] <String> [-AutomationAccountName] <String>
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByJobId
 ```
 Get-AzureRmAutomationDscCompilationJob -Id <Guid> [-ResourceGroupName] <String>
- [-AutomationAccountName] <String> [<CommonParameters>]
+ [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByConfigurationName
 ```
 Get-AzureRmAutomationDscCompilationJob -ConfigurationName <String> [-Status <String>]
  [-StartTime <DateTimeOffset>] [-EndTime <DateTimeOffset>] [-ResourceGroupName] <String>
- [-AutomationAccountName] <String> [<CommonParameters>]
+ [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -84,6 +85,21 @@ Parameter Sets: ByConfigurationName
 Aliases: Name
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -167,12 +183,13 @@ Valid values are:
 - Suspended 
 - Suspending 
 - Activating
+- New
 
 ```yaml
 Type: String
 Parameter Sets: ByAll, ByConfigurationName
 Aliases: 
-Accepted values: Completed, Failed, Queued, Starting, Resuming, Running, Stopped, Stopping, Suspended, Suspending, Activating
+Accepted values: Completed, Failed, Queued, Starting, Resuming, Running, Stopped, Stopping, Suspended, Suspending, Activating, New
 
 Required: False
 Position: Named

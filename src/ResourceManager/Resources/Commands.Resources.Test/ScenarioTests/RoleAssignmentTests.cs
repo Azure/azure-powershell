@@ -46,6 +46,12 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RaPropertiesValidation() {
+            ResourcesController.NewInstance.RunPsTest("Test-RaPropertiesValidation");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaNegativeScenarios()
         {
             ResourcesController.NewInstance.RunPsTest("Test-RaNegativeScenarios");
@@ -101,6 +107,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         public void RaDeletionByScope()
         {
             ResourcesController.NewInstance.RunPsTest("Test-RaDeletionByScope");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RaDeletionByScopeAtRootScope()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-RaDeletionByScopeAtRootScope");
         }
 
         [Fact]

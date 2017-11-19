@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.RedisCache
     [Cmdlet(VerbsCommon.Set, "AzureRmRedisCache", DefaultParameterSetName = MaxMemoryParameterSetName), OutputType(typeof(RedisCacheAttributesWithAccessKeys))]
     public class SetAzureRedisCache : RedisCacheCmdletBase
     {
-        internal const string MaxMemoryParameterSetName = "Only MaxMemoryPolicy";
+        internal const string MaxMemoryParameterSetName = "OnlyMaxMemoryPolicy";
 
         [Parameter(ParameterSetName = MaxMemoryParameterSetName, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Name of resource group under which you want to create cache.")]
         [ValidateNotNullOrEmpty]

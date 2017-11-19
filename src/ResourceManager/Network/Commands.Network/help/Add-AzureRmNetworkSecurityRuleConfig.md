@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
 ms.assetid: 9160A21D-0F83-415B-830B-F35C8B863E90
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/add-azurermnetworksecurityruleconfig
 schema: 2.0.0
 ---
 
@@ -54,7 +54,7 @@ Add-AzureRmNetworkSecurityRuleConfig -Name rdp-rule -Description "Allow RDP" -Ac
     Set-AzureRmNetworkSecurityGroup
 ```
 
-The first command retrieves an Azure network security group named "nsg1" from resource group "rg1". The second command dds a network security rule named "rdp-rule" that allows traffic from internet on port 3389 to the retrieved network security group object. Persists the modified Azure network security group.
+The first command retrieves an Azure network security group named "nsg1" from resource group "rg1". The second command adds a network security rule named "rdp-rule" that allows traffic from internet on port 3389 to the retrieved network security group object. Persists the modified Azure network security group.
 
 ### 1: Adding a new security rule with application security groups
 ```
