@@ -88,6 +88,7 @@ function Disable-StrongSignValidation
         reg DELETE "HKLM\Software\Wow6432Node\Microsoft\StrongName\Verification" /f > $null
         reg ADD "HKLM\Software\Wow6432Node\Microsoft\StrongName\Verification\*,*" /f > $null
     }
+    Restart-Service msiserver
 }
 
 function Enable-StrongSignValidation
@@ -99,6 +100,7 @@ function Enable-StrongSignValidation
         reg DELETE "HKLM\Software\Wow6432Node\Microsoft\StrongName\Verification\*,*" /f > $null
         reg ADD "HKLM\Software\Wow6432Node\Microsoft\StrongName\Verification" /f > $null
     }
+    Restart-Service msiserver
 }
 
 function Find-CompleterAttribute
@@ -117,9 +119,7 @@ function Find-CompleterAttribute
             $AllCmdlets = @()
             $nestedModules | ForEach-Object {
                 $dllPath = Join-Path -Path $ModulePath -ChildPath $_
-                Disable-StrongSignValidation
                 $Assembly = [Reflection.Assembly]::LoadFrom($dllPath)
-                Enable-StrongSignValidation
                 $dllCmdlets = $Assembly.GetTypes() | Where-Object {$_.CustomAttributes.AttributeType.Name -contains "CmdletAttribute"}
                 $AllCmdlets += $dllCmdlets
             }
@@ -188,9 +188,7 @@ function Find-DefaultResourceGroupCmdlets
         $AllCmdlets = @()
         $nestedModules | ForEach-Object {
             $dllPath = Join-Path -Path $ModulePath -ChildPath $_
-            Disable-StrongSignValidation
             $Assembly = [Reflection.Assembly]::LoadFrom($dllPath)
-            Enable-StrongSignValidation
             $dllCmdlets = $Assembly.GetTypes() | Where-Object {$_.CustomAttributes.AttributeType.Name -contains "CmdletAttribute"}
             $AllCmdlets += $dllCmdlets
         }
@@ -291,7 +289,7 @@ if ($Profile -eq "Stack")
 }
 
 
-
+Disable-StrongSignValidation
 $resourceManagerRootFolder = "$packageFolder\$buildConfig\ResourceManager\AzureResourceManager"
 $publishToLocal = test-path $repositoryLocation
 $templateLocation = "$PSScriptRoot\AzureRM.Example.psm1"
@@ -358,4 +356,6 @@ if (($scope -eq 'All') -or ($scope -eq 'AzureRM')) {
         Create-ModulePsm1 -ModulePath $modulePath -TemplatePath $templateLocation -IsRMModule $false
         Write-Host "Updated Azure module"
     }
-} 
+}
+
+Enable-StrongSignValidation 
