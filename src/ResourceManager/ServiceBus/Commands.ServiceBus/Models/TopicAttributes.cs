@@ -48,15 +48,6 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
                 Name = topicResource.Name;
                 Id = topicResource.Id;
                 Type = topicResource.Type;
-#pragma warning disable 612, 618
-                EnableSubscriptionPartitioning = false;
-                FilteringMessagesBeforePublishing = false;
-                IsAnonymousAccessible = false;
-                IsExpress = false;
-                EntityAvailabilityStatus = "Available";
-                Location = "";
-#pragma warning restore 612, 618
-
             }
         }
 
@@ -170,43 +161,6 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// </summary>
         
         public DateTime? UpdatedAt { get; set; }
-
-
-        /// <summary>
-        /// location of the resource.
-        /// </summary> 
-        [ObsoleteAttribute("'Location' property is mark as obsolete and will be removed in upcoming breaking changes build", false)]
-        public string Location { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [ObsoleteAttribute("'IsExpress' property is mark as obsolete and will be removed in upcoming breaking changes build", false)]
-        public bool? IsExpress { get; set; }
-
-        /// <summary>
-        /// Value that indicates whether the message is anonymous accessible.
-        /// </summary>
-        [ObsoleteAttribute("'IsAnonymousAccessible' property is mark as obsolete and will be removed in upcoming breaking changes build", false)]
-        public bool? IsAnonymousAccessible { get; set; }
-
-        /// <summary>
-        /// Whether messages should be filtered before publishing.
-        /// </summary>
-        [ObsoleteAttribute("'FilteringMessagesBeforePublishing' property is mark as obsolete and will be removed in upcoming breaking changes build", false)]
-        public bool? FilteringMessagesBeforePublishing { get; set; }
-
-        /// <summary>
-        /// Value that indicates whether partitioning is enabled or disabled..
-        /// </summary>
-        [ObsoleteAttribute("'EnableSubscriptionPartitioning' property is mark as obsolete and will be removed in upcoming breaking changes build", false)]
-        public bool? EnableSubscriptionPartitioning { get; set; }
-
-        /// <summary>
-        /// Entity availability status for the topic. Possible values include:
-        /// 'Available', 'Limited', 'Renaming', 'Restoring', 'Unknown'
-        /// </summary>
-        [ObsoleteAttribute("'EntityAvailabilityStatus' property is mark as obsolete and will be removed in upcoming breaking changes build", false)]
-        public string EntityAvailabilityStatus { get; set; }
-
+        
     }
 }

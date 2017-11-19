@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Test.ScenarioTests
+namespace RecoveryServices.SiteRecovery.Test
 {
     public class Constants
     {

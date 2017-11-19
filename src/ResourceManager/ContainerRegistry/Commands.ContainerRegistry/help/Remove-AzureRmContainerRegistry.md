@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ContainerRegistry.dll-Help.xml
-online version: 
+Module Name: AzureRM.ContainerRegistry
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.containerregistry/remove-azurermcontainerregistry
 schema: 2.0.0
 ---
 
@@ -13,13 +14,14 @@ Removes a container registry.
 
 ### NameResourceGroupParameterSet (Default)
 ```
-Remove-AzureRmContainerRegistry [-ResourceGroupName] <String> [-Name] <String> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzureRmContainerRegistry [-ResourceGroupName] <String> [-Name] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RegistryObjectParameterSet
 ```
-Remove-AzureRmContainerRegistry -Registry <PSContainerRegistry> [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzureRmContainerRegistry -Registry <PSContainerRegistry> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,6 +37,21 @@ PS C:\>Remove-AzureRmContainerRegistry -ResourceGroupName "MyResourceGroup" -Nam
 This command removes the specified container registry.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 Container Registry Name.
@@ -118,7 +135,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### PSContainerRegistry
-
 Parameter 'Registry' accepts value of type 'PSContainerRegistry' from the pipeline
 
 ## OUTPUTS

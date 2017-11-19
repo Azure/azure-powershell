@@ -14,13 +14,14 @@
 
 using Microsoft.Azure.Batch.Protocol;
 using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.Rest;
 using System.Net.Http;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
     public class ScenarioTestContext : BatchAccountContext
     {
-        public ScenarioTestContext() : base()
+        public ScenarioTestContext() : base(null)
         {
             // Only set the properties needed for interacting with the Batch service.
             this.AccountName = BatchController.BatchAccount;
@@ -29,13 +30,13 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             this.ResourceGroupName = BatchController.BatchResourceGroup;
         }
 
-        protected override BatchServiceClient CreateBatchRestClient(string url, string accountName, string key, DelegatingHandler handler = default(DelegatingHandler))
+        protected override BatchServiceClient CreateBatchRestClient(string url, ServiceClientCredentials credentials, DelegatingHandler handler = default(DelegatingHandler))
         {
             // Add HTTP recorder to the BatchRestClient
             HttpMockServer mockServer = HttpMockServer.CreateInstance();
             mockServer.InnerHandler = new HttpClientHandler();
 
-            BatchServiceClient restClient = base.CreateBatchRestClient(url, accountName, key, mockServer);
+            BatchServiceClient restClient = base.CreateBatchRestClient(url, credentials, mockServer);
 
             return restClient;
         }

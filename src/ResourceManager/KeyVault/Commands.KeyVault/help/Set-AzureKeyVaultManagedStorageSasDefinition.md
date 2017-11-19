@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
-online version: https://msdn.microsoft.com/en-us/library/dn868052.aspx
+Module Name: AzureRM.KeyVault
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/set-azurekeyvaultmanagedstoragesasdefinition
 schema: 2.0.0
 ---
 
@@ -14,7 +15,8 @@ Sets a Shared Access Signature (SAS) definition with Key Vault for a given Key V
 ### RawSas (Default)
 ```
 Set-AzureKeyVaultManagedStorageSasDefinition [-VaultName] <String> [-AccountName] <String> [-Name] <String>
- [-Parameter] <Hashtable> [-Disable] [-Tag <Hashtable>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Parameter] <Hashtable> [-Disable] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### AdhocAccountSas
@@ -22,7 +24,8 @@ Set-AzureKeyVaultManagedStorageSasDefinition [-VaultName] <String> [-AccountName
 Set-AzureKeyVaultManagedStorageSasDefinition -Service <String[]> -ResourceType <String[]>
  [-ApiVersion <String>] [-VaultName] <String> [-AccountName] <String> [-Name] <String> [-Disable]
  [-Tag <Hashtable>] [-TargetStorageVersion <String>] [-Protocol <String>] [-IPAddressOrRange <String>]
- -ValidityPeriod <TimeSpan> -Permission <String[]> [-WhatIf] [-Confirm] [<CommonParameters>]
+ -ValidityPeriod <TimeSpan> -Permission <String[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### AdhocServiceBlobSas
@@ -30,7 +33,8 @@ Set-AzureKeyVaultManagedStorageSasDefinition -Service <String[]> -ResourceType <
 Set-AzureKeyVaultManagedStorageSasDefinition [-VaultName] <String> [-AccountName] <String> [-Name] <String>
  [-Disable] [-Tag <Hashtable>] [-TargetStorageVersion <String>] [-Protocol <String>]
  [-IPAddressOrRange <String>] -ValidityPeriod <TimeSpan> -Permission <String[]> -Blob <String>
- -Container <String> [-SharedAccessHeader <String[]>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -Container <String> [-SharedAccessHeader <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### AdhocServiceContainerSas
@@ -38,7 +42,8 @@ Set-AzureKeyVaultManagedStorageSasDefinition [-VaultName] <String> [-AccountName
 Set-AzureKeyVaultManagedStorageSasDefinition [-VaultName] <String> [-AccountName] <String> [-Name] <String>
  [-Disable] [-Tag <Hashtable>] [-TargetStorageVersion <String>] [-Protocol <String>]
  [-IPAddressOrRange <String>] -ValidityPeriod <TimeSpan> -Permission <String[]> -Container <String>
- [-SharedAccessHeader <String[]>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SharedAccessHeader <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### AdhocServiceFileSas
@@ -46,7 +51,8 @@ Set-AzureKeyVaultManagedStorageSasDefinition [-VaultName] <String> [-AccountName
 Set-AzureKeyVaultManagedStorageSasDefinition [-VaultName] <String> [-AccountName] <String> [-Name] <String>
  [-Disable] [-Tag <Hashtable>] [-TargetStorageVersion <String>] [-Protocol <String>]
  [-IPAddressOrRange <String>] -ValidityPeriod <TimeSpan> -Permission <String[]>
- [-SharedAccessHeader <String[]>] -Share <String> -Path <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SharedAccessHeader <String[]>] -Share <String> -Path <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AdhocServiceShareSas
@@ -54,15 +60,16 @@ Set-AzureKeyVaultManagedStorageSasDefinition [-VaultName] <String> [-AccountName
 Set-AzureKeyVaultManagedStorageSasDefinition [-VaultName] <String> [-AccountName] <String> [-Name] <String>
  [-Disable] [-Tag <Hashtable>] [-TargetStorageVersion <String>] [-Protocol <String>]
  [-IPAddressOrRange <String>] -ValidityPeriod <TimeSpan> -Permission <String[]>
- [-SharedAccessHeader <String[]>] -Share <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SharedAccessHeader <String[]>] -Share <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### AdhocServiceQueueSas
 ```
 Set-AzureKeyVaultManagedStorageSasDefinition [-VaultName] <String> [-AccountName] <String> [-Name] <String>
  [-Disable] [-Tag <Hashtable>] [-TargetStorageVersion <String>] [-Protocol <String>]
- [-IPAddressOrRange <String>] -ValidityPeriod <TimeSpan> -Permission <String[]> -Queue <String> [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-IPAddressOrRange <String>] -ValidityPeriod <TimeSpan> -Permission <String[]> -Queue <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AdhocServiceTableSas
@@ -71,7 +78,7 @@ Set-AzureKeyVaultManagedStorageSasDefinition [-VaultName] <String> [-AccountName
  [-Disable] [-Tag <Hashtable>] [-TargetStorageVersion <String>] [-Protocol <String>]
  [-IPAddressOrRange <String>] -ValidityPeriod <TimeSpan> -Permission <String[]> -Table <String>
  [-StartPartitionKey <String>] [-StartRowKey <String>] [-EndPartitionKey <String>] [-EndRowKey <String>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### StoredPolicyServiceBlobSas
@@ -79,15 +86,16 @@ Set-AzureKeyVaultManagedStorageSasDefinition [-VaultName] <String> [-AccountName
 Set-AzureKeyVaultManagedStorageSasDefinition [-VaultName] <String> [-AccountName] <String> [-Name] <String>
  [-Disable] [-Tag <Hashtable>] [-TargetStorageVersion <String>] [-Protocol <String>]
  [-IPAddressOrRange <String>] -Blob <String> -Container <String> -Policy <String>
- [-SharedAccessHeader <String[]>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SharedAccessHeader <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### StoredPolicyServiceContainerSas
 ```
 Set-AzureKeyVaultManagedStorageSasDefinition [-VaultName] <String> [-AccountName] <String> [-Name] <String>
  [-Disable] [-Tag <Hashtable>] [-TargetStorageVersion <String>] [-Protocol <String>]
- [-IPAddressOrRange <String>] -Container <String> -Policy <String> [-SharedAccessHeader <String[]>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-IPAddressOrRange <String>] -Container <String> -Policy <String> [-SharedAccessHeader <String[]>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### StoredPolicyServiceFileSas
@@ -95,22 +103,23 @@ Set-AzureKeyVaultManagedStorageSasDefinition [-VaultName] <String> [-AccountName
 Set-AzureKeyVaultManagedStorageSasDefinition [-VaultName] <String> [-AccountName] <String> [-Name] <String>
  [-Disable] [-Tag <Hashtable>] [-TargetStorageVersion <String>] [-Protocol <String>]
  [-IPAddressOrRange <String>] -Policy <String> [-SharedAccessHeader <String[]>] -Share <String> -Path <String>
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### StoredPolicyServiceShareSas
 ```
 Set-AzureKeyVaultManagedStorageSasDefinition [-VaultName] <String> [-AccountName] <String> [-Name] <String>
  [-Disable] [-Tag <Hashtable>] [-TargetStorageVersion <String>] [-Protocol <String>]
- [-IPAddressOrRange <String>] -Policy <String> [-SharedAccessHeader <String[]>] -Share <String> [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-IPAddressOrRange <String>] -Policy <String> [-SharedAccessHeader <String[]>] -Share <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### StoredPolicyServiceQueueSas
 ```
 Set-AzureKeyVaultManagedStorageSasDefinition [-VaultName] <String> [-AccountName] <String> [-Name] <String>
  [-Disable] [-Tag <Hashtable>] [-TargetStorageVersion <String>] [-Protocol <String>]
- [-IPAddressOrRange <String>] -Policy <String> -Queue <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-IPAddressOrRange <String>] -Policy <String> -Queue <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### StoredPolicyServiceTableSas
@@ -118,8 +127,8 @@ Set-AzureKeyVaultManagedStorageSasDefinition [-VaultName] <String> [-AccountName
 Set-AzureKeyVaultManagedStorageSasDefinition [-VaultName] <String> [-AccountName] <String> [-Name] <String>
  [-Disable] [-Tag <Hashtable>] [-TargetStorageVersion <String>] [-Protocol <String>]
  [-IPAddressOrRange <String>] -Policy <String> -Table <String> [-StartPartitionKey <String>]
- [-StartRowKey <String>] [-EndPartitionKey <String>] [-EndRowKey <String>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-StartRowKey <String>] [-EndPartitionKey <String>] [-EndRowKey <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -177,7 +186,7 @@ Specifies the storage service version to use to execute the request made using t
 ```yaml
 Type: String
 Parameter Sets: AdhocAccountSas
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -192,24 +201,9 @@ Blob Name
 ```yaml
 Type: String
 Parameter Sets: AdhocServiceBlobSas, StoredPolicyServiceBlobSas
-Aliases:
+Aliases: 
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -222,9 +216,24 @@ Container Name
 ```yaml
 Type: String
 Parameter Sets: AdhocServiceBlobSas, AdhocServiceContainerSas, StoredPolicyServiceBlobSas, StoredPolicyServiceContainerSas
-Aliases:
+Aliases: 
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -237,7 +246,7 @@ Disables the use of sas definition for generation of sas token.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -282,7 +291,7 @@ IP, or IP range ACL (access control list) of the request that would be accepted 
 ```yaml
 Type: String
 Parameter Sets: AdhocAccountSas, AdhocServiceBlobSas, AdhocServiceContainerSas, AdhocServiceFileSas, AdhocServiceShareSas, AdhocServiceQueueSas, AdhocServiceTableSas, StoredPolicyServiceBlobSas, StoredPolicyServiceContainerSas, StoredPolicyServiceFileSas, StoredPolicyServiceShareSas, StoredPolicyServiceQueueSas, StoredPolicyServiceTableSas
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -313,7 +322,7 @@ Sas definition parameters that will be used to create the sas token.
 ```yaml
 Type: Hashtable
 Parameter Sets: RawSas
-Aliases:
+Aliases: 
 
 Required: True
 Position: 3
@@ -328,7 +337,7 @@ Path to the cloud file to generate sas token against.
 ```yaml
 Type: String
 Parameter Sets: AdhocServiceFileSas, StoredPolicyServiceFileSas
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -343,7 +352,7 @@ Permission. Values include 'Query','Add','Update','Process'
 ```yaml
 Type: String[]
 Parameter Sets: AdhocAccountSas, AdhocServiceBlobSas, AdhocServiceContainerSas, AdhocServiceFileSas, AdhocServiceShareSas, AdhocServiceQueueSas, AdhocServiceTableSas
-Aliases:
+Aliases: 
 Accepted values: Add, Create, Delete, List, Process, Read, Query, Update, Write
 
 Required: True
@@ -359,7 +368,7 @@ Policy Identifier
 ```yaml
 Type: String
 Parameter Sets: StoredPolicyServiceBlobSas, StoredPolicyServiceContainerSas, StoredPolicyServiceFileSas, StoredPolicyServiceShareSas, StoredPolicyServiceQueueSas, StoredPolicyServiceTableSas
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -374,7 +383,7 @@ Protocol can be used in the request with the SAS token.
 ```yaml
 Type: String
 Parameter Sets: AdhocAccountSas, AdhocServiceBlobSas, AdhocServiceContainerSas, AdhocServiceFileSas, AdhocServiceShareSas, AdhocServiceQueueSas, AdhocServiceTableSas, StoredPolicyServiceBlobSas, StoredPolicyServiceContainerSas, StoredPolicyServiceFileSas, StoredPolicyServiceShareSas, StoredPolicyServiceQueueSas, StoredPolicyServiceTableSas
-Aliases:
+Aliases: 
 Accepted values: HttpsOnly, HttpsOrHttp
 
 Required: False
@@ -390,7 +399,7 @@ Queue Name
 ```yaml
 Type: String
 Parameter Sets: AdhocServiceQueueSas, StoredPolicyServiceQueueSas
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -405,7 +414,7 @@ Resource types that this SAS token applies to. Values include 'Service','Contain
 ```yaml
 Type: String[]
 Parameter Sets: AdhocAccountSas
-Aliases:
+Aliases: 
 Accepted values: Service, Container, Object
 
 Required: True
@@ -421,7 +430,7 @@ Service types that this SAS token applies to. Values include 'Blob','File','Queu
 ```yaml
 Type: String[]
 Parameter Sets: AdhocAccountSas
-Aliases:
+Aliases: 
 Accepted values: Blob, File, Queue, Table
 
 Required: True
@@ -437,7 +446,7 @@ Share Name
 ```yaml
 Type: String
 Parameter Sets: AdhocServiceFileSas, AdhocServiceShareSas, StoredPolicyServiceFileSas, StoredPolicyServiceShareSas
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -452,7 +461,7 @@ Specifies the query parameters to override response headers.
 ```yaml
 Type: String[]
 Parameter Sets: AdhocServiceBlobSas, AdhocServiceContainerSas, AdhocServiceFileSas, AdhocServiceShareSas, StoredPolicyServiceBlobSas, StoredPolicyServiceContainerSas, StoredPolicyServiceFileSas, StoredPolicyServiceShareSas
-Aliases:
+Aliases: 
 Accepted values: CacheControl, ContentDisposition, ContentEncoding, ContentLanguage, ContentType
 
 Required: False
@@ -498,7 +507,7 @@ Table Name
 ```yaml
 Type: String
 Parameter Sets: AdhocServiceTableSas, StoredPolicyServiceTableSas
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -530,7 +539,7 @@ Specifies the signed storage service version to use to authenticate requests mad
 ```yaml
 Type: String
 Parameter Sets: AdhocAccountSas, AdhocServiceBlobSas, AdhocServiceContainerSas, AdhocServiceFileSas, AdhocServiceShareSas, AdhocServiceQueueSas, AdhocServiceTableSas, StoredPolicyServiceBlobSas, StoredPolicyServiceContainerSas, StoredPolicyServiceFileSas, StoredPolicyServiceShareSas, StoredPolicyServiceQueueSas, StoredPolicyServiceTableSas
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -545,7 +554,7 @@ Validity period that will get used to set the expiry time of sas token from the 
 ```yaml
 Type: TimeSpan
 Parameter Sets: AdhocAccountSas, AdhocServiceBlobSas, AdhocServiceContainerSas, AdhocServiceFileSas, AdhocServiceShareSas, AdhocServiceQueueSas, AdhocServiceTableSas
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -561,12 +570,27 @@ Cmdlet constructs the FQDN of a vault based on the name and currently selected e
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -599,4 +623,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Azure​RM.​Key​Vault](/powershell/module/azurerm.keyvault/)
+[Azureâ€‹RM.â€‹Keyâ€‹Vault](/powershell/module/azurerm.keyvault/)

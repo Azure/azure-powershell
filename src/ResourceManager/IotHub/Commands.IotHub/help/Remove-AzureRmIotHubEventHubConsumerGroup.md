@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.IotHub.dll-Help.xml
-online version: 
+Module Name: AzureRM.IotHub
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.iothub/remove-azurermiothubeventhubconsumergroup
 schema: 2.0.0
 ---
 
@@ -13,8 +14,8 @@ Deletes an eventhub consumergroup.
 
 ```
 Remove-AzureRmIotHubEventHubConsumerGroup [-ResourceGroupName] <String> [-Name] <String>
- [-EventHubEndpointName] <String> [-EventHubConsumerGroupName] <String> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-EventHubEndpointName] <String> [-EventHubConsumerGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,6 +31,21 @@ PS C:\> Remove-AzureRmIotHubEventHubConsumerGroup -ResourceGroupName "myresource
 Removes the consumergroup named myconsumergroup from the IotHub named "myiothub"
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -EventHubConsumerGroupName
 EventHub ConsumerGroup Name.
@@ -54,6 +70,7 @@ Possible values events, operationsMonitoringEvents
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: events, operationsMonitoringEvents
 
 Required: True
 Position: 2

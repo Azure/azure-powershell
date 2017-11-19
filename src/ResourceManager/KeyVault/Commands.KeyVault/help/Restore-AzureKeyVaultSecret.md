@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
+Module Name: AzureRM.KeyVault
 ms.assetid: 70DB088D-4AF5-406B-8D66-118A0F766041
-online version: http://go.microsoft.com/fwlink/?LinkId=690301
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/restore-azurekeyvaultsecret
 schema: 2.0.0
 ---
 
@@ -13,8 +14,8 @@ Creates a secret in a key vault from a backed-up secret.
 ## SYNTAX
 
 ```
-Restore-AzureKeyVaultSecret [-VaultName] <String> [-InputFile] <String> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Restore-AzureKeyVaultSecret [-VaultName] <String> [-InputFile] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,6 +38,21 @@ PS C:\>Restore-AzureKeyVaultSecret -VaultName 'MyKeyVault' -InputFile "C:\Backup
 This command restores a secret, including all of its versions, from the backup file named Backup.blob into the key vault named MyKeyVault.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -InputFile
 Specifies the input file that contains the backup of the secret to restore.

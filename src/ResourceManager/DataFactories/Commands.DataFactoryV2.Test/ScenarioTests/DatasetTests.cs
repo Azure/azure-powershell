@@ -44,5 +44,12 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Test
         {
             RunPowerShellTest("Test-DatasetPiping");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDatasetWithResourceIdV2()
+        {
+            RunPowerShellTest("Test-DatasetWithResourceId");
+        }
     }
 }

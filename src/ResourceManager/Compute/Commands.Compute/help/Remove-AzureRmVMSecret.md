@@ -1,6 +1,6 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/remove-azurermvmsecret
 schema: 2.0.0
 ---
 
@@ -23,7 +23,7 @@ The Remove-AzureRmVMSecret cmdlet removes (a) secret(s) from a virtual machine o
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmVM -ResourceGroupName "rg1" -Name "vm1" | Remove-AzureRmVM | Update-AzureRmVM
+PS C:\> Get-AzureRmVM -ResourceGroupName "rg1" -Name "vm1" | Remove-AzureRmVMSecret | Update-AzureRmVM
 ```
 
 Removes all secrets from a virtual machine "vm1" in resource group "rg1" and update the VM
