@@ -64,7 +64,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Queue
             MockCmdRunTime.ResetPipelines();
             AddTestQueues();
             bool removed = command.RemoveAzureQueue(name);
-            Assert.IsTrue(removed);
+            Assert.IsFalse(removed);
 
             MockCmdRunTime.ResetPipelines();
             AddTestQueues();
