@@ -18,7 +18,7 @@ Gets container registry name
 #>
 function Get-RandomRegistryName
 {
-    return getAssetName + 'reg'
+    return 'reg' + (getAssetName)
 }
 
 <#
@@ -27,7 +27,7 @@ Gets resource group name
 #>
 function Get-RandomResourceGroupName
 {
-    return getAssetName + 'rg'
+    return 'rg' + (getAssetName)
 }
 
 <#
@@ -36,7 +36,7 @@ Gets webhook name
 #>
 function Get-RandomReplicationName
 {
-	return getAssetName + 'rep'
+	return 'rep' + (getAssetName)
 }
 
 <#
@@ -45,7 +45,7 @@ Gets webhook name
 #>
 function Get-RandomWebhookName
 {
-	return getAssetName + 'wh'
+	return 'wh' + (getAssetName)
 }
 
 <#
