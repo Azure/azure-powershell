@@ -81,21 +81,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <!--<Compile Include="..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.6\AzureContextAdapterExtensions.cs">
-      <Link>Common\Cmdlet\AzureContextAdapterExtensions.cs</Link>
-    </Compile> -->
-    <!--    <Compile Include="..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.6\ResourceModel\AzureStorageBlob.cs">
-      <Link>Common\AzureStorageBlob.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.6\ResourceModel\AzureStorageContainer.cs">
-      <Link>Common\AzureStorageContainer.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.6\ResourceModel\AzureStorageQueue.cs">
-      <Link>Common\AzureStorageQueue.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.6\ResourceModel\AzureStorageTable.cs">
-      <Link>Common\AzureStorageTable.cs</Link>
-    </Compile> -->
     <Compile Include="Blob\Cmdlet\GetAzureStorageBlob.cs" />
     <Compile Include="Blob\Cmdlet\GetAzureStorageBlobContent.cs" />
     <Compile Include="Blob\Cmdlet\GetAzureStorageBlobCopyState.cs" />
@@ -221,10 +206,6 @@
       <Project>{70527617-7598-4aef-b5bd-db9186b8184b}</Project>
       <Name>Commands.Common.Authentication.Abstractions</Name>
     </ProjectReference>
-    <!-->    <ProjectReference Include="..\..\..\Common\Commands.Common.Storage\Commands.Common.Storage.csproj">
-      <Project>{65c3a86a-716d-4e7d-ab67-1db00b3bf72d}</Project>
-      <Name>Commands.Common.Storage</Name>
-    </ProjectReference> -->
     <ProjectReference Include="..\..\..\Common\Commands.Common.Storage\Stack\Commands.Common.Storage.csproj">
       <Project>{65c3a86a-716d-4e7d-ab67-1db00b3bf72d}</Project>
       <Name>Commands.Common.Storage</Name>

@@ -700,6 +700,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Service
             throw new NotImplementedException();
         }
 
+        public CloudBlob GetBlobReferenceFromServer(CloudBlobContainer container, string blobName, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext)
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         /// The storage context
         /// </summary>

@@ -142,6 +142,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob.Cmdlet
         }
 
         [TestMethod]
+        [Ignore]
         public void RemoveAzureBlobByCloudBlobContainerWithNotExistsContianerTest()
         {
             string blobName = "blob";
@@ -151,6 +152,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob.Cmdlet
         }
 
         [TestMethod]
+        [Ignore]
         public void RemoveAzureBlobByCloudBlobContainerWithNotExistsBlobTest()
         {
             AddTestContainers();
@@ -161,6 +163,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob.Cmdlet
         }
 
         [TestMethod]
+        [Ignore]
         public void RemoveAzureBlobByCloudBlobContainerSuccessfullyTest()
         {
             AddTestBlobs();
@@ -184,6 +187,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob.Cmdlet
         }
 
         [TestMethod]
+        [Ignore]
         public void RemoveAzureBlobByNameTest()
         {
             AddTestBlobs();
@@ -195,6 +199,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob.Cmdlet
         }
 
         [TestMethod]
+        [Ignore]
         public void ExecuteCommandRemoveBlobTest()
         {
             AddTestBlobs();
