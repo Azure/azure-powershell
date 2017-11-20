@@ -1,73 +1,98 @@
-﻿using System.Linq;
-
-namespace Microsoft.Azure.Commands.Common.Strategies
+﻿namespace Microsoft.Azure.Commands.Common.Strategies
 {
     public static class TargetState
     {
         public static IState GetTargetState<Model>(
-            this IResourceBaseConfig<Model> config,
-            IState current,
-            string subscription, 
-            string location)
+            this ResourceConfig<Model> config, IState current, string subscription, string location)
             where Model : class
         {
-            var visitor = new Visitor(current, subscription, location);
-            // create a target model onyl if the resource doesn't exist.
-            if (current.GetOrNull(config) == null)
-            {
-                visitor.Get(config);
-            }
-            return visitor.Result;
+            var context = new Context(current, subscription, location);
+            context.AddIfRequired(config);
+            return context.Target;
         }
 
-        sealed class Visitor : IResourceBaseConfigVisitor<object>
+        sealed class Context
         {
-            public Visitor(IState current, string subscription, string location)
+            public State Target { get; } = new State();
+
+            public IState Current { get; }
+
+            public string Subscription { get; }
+
+            public string Location { get; }
+
+            public Context(IState current, string subscription, string location)
             {
                 Current = current;
                 Subscription = subscription;
                 Location = location;
             }
 
-            public object GetUntyped(IResourceBaseConfig config)
-                => Result.GetOrAddUntyped(config, () => config.Apply(this));
-
-            public Model Get<Model>(IResourceBaseConfig<Model> config)
-                where Model : class
-                => GetUntyped(config) as Model;
-
-            public object Visit<Model>(ResourceConfig<Model> config)
+            public void AddIfRequired<Model>(ResourceConfig<Model> config)
                 where Model : class
             {
-                // create a dependency target model only if the dependency resource doesn't exist.
-                foreach (var d in config
-                    .Dependencies
-                    .Where(d => Current.GetOrNullUntyped(d) == null))
+                if (Current.Get(config) == null)
                 {
-                    GetUntyped(d);
+                    GetOrAdd(config);
                 }
-                var model = config.CreateModel(Subscription);
-                config.Strategy.SetLocation(model, Location);
-                return model;
             }
 
-            public object Visit<Model, ParentModel>(
+            public Model GetOrAdd<Model>(ResourceConfig<Model> config)
+                where Model : class
+                => Target.GetOrAdd(
+                    config,
+                    () =>
+                    {
+                        foreach (var dependency in config.Dependencies)
+                        {
+                            dependency.Accept(new AddIfRequiredVisitor(), this);
+                        }
+                        var model = config.CreateModel(Subscription);
+                        config.Strategy.SetLocation(model, Location);
+                        return model;
+                    });
+
+            public Model GetOrAdd<Model, ParentModel>(
                 NestedResourceConfig<Model, ParentModel> config)
                 where Model : class
                 where ParentModel : class
+                => config.Strategy.Get(
+                    config.Parent.Accept(new GetOrAddVisitor<ParentModel>(), this),
+                    config.Name);
+        }
+
+        sealed class AddIfRequiredVisitor : IResourceBaseConfigVisitor<Context, Void>
+        {
+            public Void Visit<Model>(ResourceConfig<Model> config, Context context)
+                where Model : class
             {
-                var model = config.CreateModel();
-                config.Strategy.Set(Get(config.Parent), config.Name, model);
-                return model;
+                context.AddIfRequired(config);
+                return new Void();
             }
 
-            string Subscription { get; }
+            public Void Visit<Model, ParentModel>(
+                NestedResourceConfig<Model, ParentModel> config, Context context)
+                where Model : class
+                where ParentModel : class
+            {
+                if (context.Current.Get(config) == null)
+                {
+                    context.GetOrAdd(config);
+                }
+                return new Void();
+            }
+        }
 
-            string Location { get; }
+        sealed class GetOrAddVisitor<Model> : IResourceBaseConfigVisitor<Model, Context, Model>
+            where Model : class
+        {
+            public Model Visit(ResourceConfig<Model> config, Context context)
+                => context.GetOrAdd(config);
 
-            IState Current { get; }
-
-            public State Result { get; } = new State();
+            public Model Visit<ParentModel>(
+                NestedResourceConfig<Model, ParentModel> config, Context context)
+                where ParentModel : class
+                => context.GetOrAdd(config);
         }
     }
 }

@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             where Model : class
             where ParentModel : class
             => new NestedResourceConfig<Model, ParentModel>(strategy, parent, name, create);
-    }
+    } 
 
     public sealed class NestedResourceConfig<Model, ParentModel> : IResourceBaseConfig<Model>
         where Model : class
@@ -42,11 +42,13 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             CreateModel = createModel;
         }
 
-        public Result Apply<Result>(IResourceBaseConfigVisitor<Result> visitor)
-            => visitor.Visit(this);
+        public Result Accept<Context, Result>(
+            IResourceBaseConfigVisitor<Context, Result> visitor, Context context)
+            => visitor.Visit(this, context);
 
-        public Result Apply<Result>(IResourceBaseConfigVisitor<Model, Result> visitor)
-            => visitor.Visit(this);
+        public Result Accept<Context, Result>(
+            IResourceBaseConfigVisitor<Model, Context, Result> visitor, Context context)
+            => visitor.Visit(this, context);
 
         public IEnumerable<string> GetId(string subscription)
             => Parent.GetId(subscription).Concat(Strategy.GetId(Name));

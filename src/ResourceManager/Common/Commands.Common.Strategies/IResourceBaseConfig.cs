@@ -8,7 +8,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 
         string Name { get; }
 
-        Result Apply<Result>(IResourceBaseConfigVisitor<Result> visitor);
+        Result Accept<Context, Result>(
+            IResourceBaseConfigVisitor<Context, Result> visitor, Context context);
 
         IEnumerable<string> GetId(string subscription);
     }
@@ -16,6 +17,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
     public interface IResourceBaseConfig<Model> : IResourceBaseConfig
         where Model : class
     {
-        Result Apply<Result>(IResourceBaseConfigVisitor<Model, Result> visitor);
+        Result Accept<Context, Result>(
+            IResourceBaseConfigVisitor<Model, Context, Result> visitor, Context context);
     }
 }

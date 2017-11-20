@@ -8,61 +8,57 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 {
     public static class GetAsyncOperation
     {
-        /// <summary>
-        /// Get current Azure state related to the given resource.
-        /// </summary>
-        /// <typeparam name="Model"></typeparam>
-        /// <param name="resourceConfig"></param>
-        /// <param name="client"></param>
-        /// <param name="cancellationToken"></param>
-        /// <returns>An Azure state.</returns>
         public static async Task<IState> GetAsync<Model>(
-            this IResourceBaseConfig<Model> resourceConfig,
+            this IResourceBaseConfig<Model> config,
             IClient client,
             CancellationToken cancellationToken)
             where Model : class
         {
-            var visitor = new Visitor(client, cancellationToken);
-            await visitor.GetOrAdd(resourceConfig);
-            return visitor.Result;
+            var context = new AsyncOperationContext(client, cancellationToken);
+            await context.AddStateAsync(config);
+            return context.Result;
         }
 
-        sealed class Visitor : AsyncOperationVisitor
+        static Task AddStateAsync(this AsyncOperationContext context, IResourceBaseConfig config)
+            => config.Accept(new Visitor(), context);
+
+        sealed class Visitor : IResourceBaseConfigVisitor<AsyncOperationContext, Task>
         {
-            public override async Task<object> Visit<Model>(ResourceConfig<Model> config)
-            {
-                Model info;
-                try
-                {
-                    info = await config.Strategy.GetAsync(
-                        Client,
-                        new GetAsyncParams(
-                            config.ResourceGroupName, config.Name, CancellationToken));
-                }
-                catch (CloudException e) when (e.Response.StatusCode == HttpStatusCode.NotFound)
-                {
-                    info = null;
-                }
-                if (info == null)
-                {
-                    var tasks = config.Dependencies.Select(GetOrAddUntyped);
-                    await Task.WhenAll(tasks);
-                    return null;
-                }
-                return info;
-            }
+            public async Task Visit<Model>(ResourceConfig<Model> config, AsyncOperationContext context) 
+                where Model : class
+                => await context.GetOrAdd(
+                    config,
+                    async () =>
+                    {
+                        Model info;
+                        try
+                        {
+                            info = await config.Strategy.GetAsync(
+                                context.Client,
+                                new GetAsyncParams(
+                                    config.ResourceGroupName,
+                                    config.Name,
+                                    context.CancellationToken));
+                        }
+                        catch (CloudException e) 
+                            when (e.Response.StatusCode == HttpStatusCode.NotFound)
+                        {
+                            info = null;
+                        }
+                        if (info == null)
+                        {
+                            var tasks = config.Dependencies.Select(d => context.AddStateAsync(d));
+                            await Task.WhenAll(tasks);
+                            return null;
+                        }
+                        return info;
+                    });
 
-            public override async Task<object> Visit<Model, ParentModel>(
-                NestedResourceConfig<Model, ParentModel> config)
-            {
-                var parent = await GetOrAdd(config.Parent);
-                return parent == null ? null : config.Strategy.Get(parent, config.Name);
-            }
-
-            public Visitor(IClient client, CancellationToken cancellationToken)
-                : base(client, cancellationToken)
-            {
-            }
+            public Task Visit<Model, ParentModel>(
+                NestedResourceConfig<Model, ParentModel> config, AsyncOperationContext context)
+                where Model : class
+                where ParentModel : class
+                => context.AddStateAsync(config.Parent);
         }
     }
 }

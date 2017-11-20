@@ -5,39 +5,33 @@
     /// </summary>
     public interface IState
     {
-        Model GetOrNull<Model>(IResourceBaseConfig<Model> config)
+        Model Get<Model>(ResourceConfig<Model> config)
             where Model : class;
-
-        object GetOrNullUntyped(IResourceBaseConfig config);
     }
 
     public static class StateExtension
     {
-        public static Model GetNestedOrNull<Model, ParentModel>(
+        public static Model Get<Model, ParentModel>(
             this IState state, NestedResourceConfig<Model, ParentModel> config)
             where Model : class
             where ParentModel : class
-        {
-            var parentModel = config.Parent.Apply(new GetOrNullVisitor<ParentModel>(state));
-            return config.Strategy.Get(parentModel, config.Name);
-        }
+            => config.Strategy.Get(state.Get(config.Parent), config.Name);
 
-        sealed class GetOrNullVisitor<Model> : IResourceBaseConfigVisitor<Model, Model>
+        public static Model Get<Model>(
+            this IState state, IResourceBaseConfig<Model> config)
+            where Model : class
+            => config.Accept(new GetVisitor<Model>(), state);
+
+        sealed class GetVisitor<Model> : IResourceBaseConfigVisitor<Model, IState, Model>
             where Model : class
         {
-            public GetOrNullVisitor(IState state)
-            {
-                State = state;
-            }
+            public Model Visit(ResourceConfig<Model> config, IState state)
+                => state.Get(config);
 
-            public Model Visit(ResourceConfig<Model> config)
-                => State.GetOrNull(config);
-
-            public Model Visit<ParentModel>(NestedResourceConfig<Model, ParentModel> config)
+            public Model Visit<ParentModel>(
+                NestedResourceConfig<Model, ParentModel> config, IState state)
                 where ParentModel : class
-                => State.GetNestedOrNull(config);
-
-            IState State { get; }
+                => state.Get(config);
         }
     }
 }

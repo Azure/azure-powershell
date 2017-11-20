@@ -41,11 +41,13 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             Dependencies = dependencies;
         }
 
-        public Result Apply<Result>(IResourceBaseConfigVisitor<Result> visitor)
-            => visitor.Visit(this);
+        public Result Accept<Context, Result>(
+            IResourceBaseConfigVisitor<Context, Result> visitor, Context context)
+            => visitor.Visit(this, context);
 
-        public Result Apply<Result>(IResourceBaseConfigVisitor<Model, Result> visitor)
-            => visitor.Visit(this);
+        public Result Accept<Context, Result>(
+            IResourceBaseConfigVisitor<Model, Context, Result> visitor, Context context)
+            => visitor.Visit(this, context);
 
         public IEnumerable<string> GetId(string subscription)
             => new[]
