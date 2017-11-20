@@ -79,30 +79,6 @@ function Create-ModulePsm1
   }
 }
 
-function Disable-StrongSignValidation
-{
-    reg DELETE "HKLM\Software\Microsoft\StrongName\Verification" /f > $null
-    reg ADD "HKLM\Software\Microsoft\StrongName\Verification\*,*" /f > $null
-    if ($env:PROCESSOR_ARCHITECTURE -eq "AMD64")
-    {
-        reg DELETE "HKLM\Software\Wow6432Node\Microsoft\StrongName\Verification" /f > $null
-        reg ADD "HKLM\Software\Wow6432Node\Microsoft\StrongName\Verification\*,*" /f > $null
-    }
-    Restart-Service msiserver
-}
-
-function Enable-StrongSignValidation
-{
-    reg DELETE "HKLM\Software\Microsoft\StrongName\Verification\*,*" /f > $null
-    reg ADD "HKLM\Software\Microsoft\StrongName\Verification" /f > $null
-    if ($env:PROCESSOR_ARCHITECTURE -eq "AMD64")
-    {
-        reg DELETE "HKLM\Software\Wow6432Node\Microsoft\StrongName\Verification\*,*" /f > $null
-        reg ADD "HKLM\Software\Wow6432Node\Microsoft\StrongName\Verification" /f > $null
-    }
-    Restart-Service msiserver
-}
-
 function Find-CompleterAttribute
 {
     [CmdletBinding()]
@@ -288,8 +264,6 @@ if ($Profile -eq "Stack")
     $packageFolder = "$PSScriptRoot\..\src\Stack"
 }
 
-
-Disable-StrongSignValidation
 $resourceManagerRootFolder = "$packageFolder\$buildConfig\ResourceManager\AzureResourceManager"
 $publishToLocal = test-path $repositoryLocation
 $templateLocation = "$PSScriptRoot\AzureRM.Example.psm1"
@@ -357,5 +331,3 @@ if (($scope -eq 'All') -or ($scope -eq 'AzureRM')) {
         Write-Host "Updated Azure module"
     }
 }
-
-Enable-StrongSignValidation 
