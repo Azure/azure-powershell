@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ContainerRegistry.dll-Help.xml
 Module Name: AzureRM.ContainerRegistry
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.containerregistry/remove-azurermcontainerregistry
@@ -12,20 +12,26 @@ Removes a container registry.
 
 ## SYNTAX
 
-### NameResourceGroupParameterSet (Default)
+### NameResourceGroupParameterSet
 ```
 Remove-AzureRmContainerRegistry [-ResourceGroupName] <String> [-Name] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
 ```
 
 ### RegistryObjectParameterSet
 ```
 Remove-AzureRmContainerRegistry -Registry <PSContainerRegistry> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm]
+```
+
+### ResourceIdParameterSet
+```
+Remove-AzureRmContainerRegistry -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmContainerRegistry** cmdlet removes a container registry.
+The Remove-AzureRmContainerRegistry cmdlet removes a container registry.
 
 ## EXAMPLES
 
@@ -79,7 +85,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -108,7 +114,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -124,13 +130,25 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+### -ResourceId
+The container registry resource id
+
+```yaml
+Type: String
+Parameter Sets: ResourceIdParameterSet
+Aliases: Id
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ## INPUTS
 
@@ -145,9 +163,9 @@ Parameter 'Registry' accepts value of type 'PSContainerRegistry' from the pipeli
 
 ## RELATED LINKS
 
-[New-AzureRmContainerRegistry](./New-AzureRmContainerRegistry.md)
+[New-AzureRmContainerRegistry]()
 
-[Get-AzureRmContainerRegistry](./Get-AzureRmContainerRegistry.md)
+[Get-AzureRmContainerRegistry]()
 
-[Update-AzureRmContainerRegistry](./Update-AzureRmContainerRegistry.md)
+[Update-AzureRmContainerRegistry]()
 

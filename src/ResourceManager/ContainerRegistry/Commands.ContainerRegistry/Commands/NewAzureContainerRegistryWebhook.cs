@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         [Parameter(Position = 4, Mandatory = true, HelpMessage = "Space separated list of actions that trigger the webhook to post notifications.")]
         [Alias(WebhookActionsAlias)]
         [ValidateSet(WebhookAction.Delete, WebhookAction.Push)]
-        public string[] Actions { get; set; }
+        public string[] Action { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = RegistryObjectParameterSet, HelpMessage = "Container Registry Object.")]
         [ValidateNotNull]
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         [Parameter(Mandatory = false, HelpMessage = "Custom headers that will be added to the webhook notifications.")]
         [ValidateNotNull]
         [Alias(WebhookHeadersAlias)]
-        public Hashtable Headers { get; set; }
+        public Hashtable Header { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Webhook tags.")]
         [ValidateNotNull]
@@ -104,11 +104,11 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
                 }
 
                 var tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
-                var headers = ConversionUtilities.ToDictionary(Headers);
+                var headers = ConversionUtilities.ToDictionary(Header);
                 
                 var parameters = new WebhookCreateParameters()
                 {
-                    Actions = Actions,
+                    Actions = Action,
                     CustomHeaders = headers,
                     ServiceUri = Uri?.ToString(),
                     Tags = tags,

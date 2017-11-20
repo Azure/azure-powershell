@@ -102,9 +102,12 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
                     Name = registryName;
                 }
 
-                var registry = RegistryClient.UpdateRegistry(
+                if (ShouldProcess(Name, "Update Container Registry"))
+                {
+                    var registry = RegistryClient.UpdateRegistry(
                     ResourceGroupName, Name, adminUserEnabled, Sku, storageAccountId, tags);
-                WriteObject(new PSContainerRegistry(registry));
+                    WriteObject(new PSContainerRegistry(registry));
+                }
             }
         }
     }

@@ -20,7 +20,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
-    [Cmdlet(VerbsData.Update, ContainerRegistryWebhookNoun, DefaultParameterSetName = ResourceIdParameterSet)]
+    [Cmdlet(VerbsData.Update, ContainerRegistryWebhookNoun, DefaultParameterSetName = ResourceIdParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSContainerRegistryWebhook))]
     public class UpdateAzureContainerRegistryWebhook : ContainerRegistryCmdletBase
     {
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         [Parameter(Mandatory = false, HelpMessage = "Space separated list of actions that trigger the webhook to post notifications.")]
         [Alias(WebhookActionsAlias)]
         [ValidateSet(WebhookAction.Delete, WebhookAction.Push)]
-        public string[] Actions { get; set; }
+        public string[] Action { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = WebhookObjectParameterSet, ValueFromPipeline = true, HelpMessage = "Container Registry Webhook Object.")]
         [ValidateNotNull]
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         [Parameter(Mandatory = false, HelpMessage = "Space separated custom headers in 'key[=value]' format that will be added to the webhook notifications.")]
         [ValidateNotNull]
         [Alias(WebhookHeadersAlias)]
-        public Hashtable Headers { get; set; }
+        public Hashtable Header { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Space separated tags in 'key[=value]' format.")]
         [ValidateNotNull]
@@ -98,20 +98,23 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
             }
 
             var tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
-            var headers = ConversionUtilities.ToDictionary(Headers);
+            var headers = ConversionUtilities.ToDictionary(Header);
 
             var parameters = new WebhookUpdateParameters()
             {
-                Actions = Actions,
+                Actions = Action,
                 CustomHeaders = headers,
                 ServiceUri = Uri?.ToString(),
                 Tags = tags,
                 Status = Status,
                 Scope = Scope
             };
-            
-            var webhook = RegistryClient.UpdateWebhook(ResourceGroupName, RegistryName, Name, parameters);
-            WriteObject(new PSContainerRegistryWebhook(webhook));
+
+            if (ShouldProcess(Name, "Update Container Registry Webhook"))
+            {
+                var webhook = RegistryClient.UpdateWebhook(ResourceGroupName, RegistryName, Name, parameters);
+                WriteObject(new PSContainerRegistryWebhook(webhook));
+            }
         }
     }
 }
