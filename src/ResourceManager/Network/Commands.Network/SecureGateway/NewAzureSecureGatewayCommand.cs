@@ -57,16 +57,26 @@ namespace Microsoft.Azure.Commands.Network
         public virtual PSSecureGatewaySku Sku { get; set; }
 
         [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The virtual hub associated with a SecureGateway")]
-        public string VirtualHub { get; set; }
+            ParameterSetName = "SetByResourceId",
+            HelpMessage = "VirtualHubId")]
+        [ValidateNotNullOrEmpty]
+        public string VirtualHubId { get; set; }
 
         [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The virtual network associated with a SecureGateway")]
-        public string VirtualNetwork { get; set; }
+            ParameterSetName = "SetByResource",
+            HelpMessage = "VirtualHub")]
+        public PSSubnet VirtualHub { get; set; }
+
+        [Parameter(
+            ParameterSetName = "SetByResourceId",
+            HelpMessage = "VirtualNetworkId")]
+        [ValidateNotNullOrEmpty]
+        public string VirtualNetworkId { get; set; }
+
+        [Parameter(
+            ParameterSetName = "SetByResource",
+            HelpMessage = "VirtualNetwork")]
+        public PSSubnet VirtualNetwork { get; set; }
 
         [Parameter(
              Mandatory = false,
@@ -117,14 +127,16 @@ namespace Microsoft.Azure.Commands.Network
             secureGw.Location = this.Location;
             secureGw.Sku = this.Sku;
 
-            if (!string.IsNullOrEmpty(this.VirtualHub))
+            if (this.VirtualHub != null)
             {
-                secureGw.VirtualHub = this.VirtualHub;
+                secureGw.VirtualHub = new PSResourceId();
+                secureGw.VirtualHub.Id = this.VirtualHub.Id;
             }
 
-            if (!string.IsNullOrEmpty(this.VirtualNetwork))
+            if (this.VirtualNetwork != null)
             {
-                secureGw.VirtualNetwork = this.VirtualNetwork;
+                secureGw.VirtualNetwork = new PSResourceId();
+                secureGw.VirtualNetwork.Id = this.VirtualNetwork.Id;
             }
 
             if (this.ApplicationRuleCollections != null)

@@ -22,15 +22,27 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
         public PSSecureGatewaySku Sku { get; set; }
 
-        public string VirtualHub { get; set; }
+        public PSResourceId VirtualHub { get; set; }
 
-        public string VirtualNetwork { get; set; }
+        public PSResourceId VirtualNetwork { get; set; }
 
         public List<PSSecureGatewayNetworkRuleCollection> NetworkRuleCollections { get; set; }
 
         public List<PSSecureGatewayApplicationRuleCollection> ApplicationRuleCollections { get; set; }
 
         public string ProvisioningState { get; set; }
+
+        [JsonIgnore]
+        public string VirtualHubText
+        {
+            get { return JsonConvert.SerializeObject(VirtualHub, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string VirtualNetworkText
+        {
+            get { return JsonConvert.SerializeObject(VirtualNetwork, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
 
         [JsonIgnore]
         public string NetworkRuleCollectionsText
