@@ -65,7 +65,10 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
                     RegistryName = registryName;
                 }
 
-                RegistryClient.DeleteWebhook(ResourceGroupName, RegistryName, Name);
+                if (ShouldProcess(Name, "Remove Container Registry Webhook"))
+                {
+                    RegistryClient.DeleteWebhook(ResourceGroupName, RegistryName, Name);
+                }
             }
         }
     }

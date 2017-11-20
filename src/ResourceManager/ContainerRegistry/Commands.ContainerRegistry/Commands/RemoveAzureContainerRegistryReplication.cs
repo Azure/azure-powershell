@@ -65,7 +65,10 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
                     Name = childResourceName;
                 }
 
-                RegistryClient.DeleteReplication(ResourceGroupName, RegistryName, Name);
+                if (ShouldProcess(Name, "Remove Container Registry Replication"))
+                {
+                    RegistryClient.DeleteReplication(ResourceGroupName, RegistryName, Name);
+                }
             }
         }
     }

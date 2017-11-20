@@ -32,3 +32,29 @@ Updates a container registry.
 ### [Update-AzureRmContainerRegistryCredential](Update-AzureRmContainerRegistryCredential.md)
 Regenerates a login credential for a container registry.
 
+### [Get-AzureRmContainerRegistryReplication](Get-AzureRmContainerRegistryReplication.md)
+Get a replication of a container registry.
+
+### [Get-AzureRmContainerRegistryWebhook](Get-AzureRmContainerRegistryWebhook.md)
+Get a container registry webhook.
+
+### [Get-AzureRmContainerRegistryWebhookEvent](Get-AzureRmContainerRegistryWebhookEvent.md)
+Get events of a container registry webhook.
+
+### [New-AzureRmContainerRegistryReplication](New-AzureRmContainerRegistryReplication.md)
+Creates a container registry replication.
+
+### [New-AzureRmContainerRegistryWebhook](New-AzureRmContainerRegistryWebhook.md)
+Creates a container registry webhook.
+
+### [Remove-AzureRmContainerRegistryReplication](Remove-AzureRmContainerRegistryReplication.md)
+Removes a container registry replication.
+
+### [Remove-AzureRmContainerRegistryWebhook](Remove-AzureRmContainerRegistryWebhook.md)
+Removes a container registry webhook.
+
+### [Test-AzureRmContainerRegistryWebhook](Test-AzureRmContainerRegistryWebhook.md)
+Triggers a webhook ping event.
+
+### [Update-AzureRmContainerRegistryWebhook](Update-AzureRmContainerRegistryWebhook.md)
+Updates a container registry webhook.

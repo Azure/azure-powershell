@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         public string Name { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Show more details about the container registry.")]
-        public SwitchParameter IncludeDetails { get; set; }
+        public SwitchParameter IncludeDetail { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = ResourceIdParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "The container registry resource id")]
         [ValidateNotNullOrEmpty]
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
             var registry = RegistryClient.GetRegistry(ResourceGroupName, Name);
             var psRegistry = new PSContainerRegistry(registry);
 
-            if (IncludeDetails)
+            if (IncludeDetail)
             {
                 SetRegistryDetials(psRegistry);
             }
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         {
             var psRegistries = RegistryClient.ListAllRegistries(ResourceGroupName);
 
-            if (IncludeDetails)
+            if (IncludeDetail)
             {
                 foreach(var psr in psRegistries)
                 {
