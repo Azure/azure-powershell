@@ -13,21 +13,14 @@
 // ----------------------------------------------------------------------------------
 
 
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
 {
     public class StorageAccountTests : RMTestBase
     {
-        public StorageAccountTests(ITestOutputHelper output)
-        {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
-        }
-
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStorageAccount()
@@ -83,7 +76,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
         {
             TestController.NewInstance.RunPsTest("Test-PipingGetAccountToGetKey");
         }
-
+ 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPipingSetStorageAccount()
@@ -96,13 +89,6 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
         public void TestSetCurrentStorageAccount()
         {
             TestController.NewInstance.RunPsTest("Test-SetAzureRmCurrentStorageAccount");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetAzureRmStorageAccountKeySource()
-        {
-            TestController.NewInstance.RunPsTest("Test-SetAzureRmStorageAccountKeySource");
         }
 
     }
