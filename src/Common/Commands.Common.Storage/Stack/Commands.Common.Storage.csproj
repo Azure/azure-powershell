@@ -174,19 +174,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LazyAzureStorageContext.cs" />
-    <Compile Include="AzureStorageContext.cs" />
-    <Compile Include="BlobUploadParameters.cs" />
-    <Compile Include="IStorageClientWrapper.cs" />
-    <Compile Include="IStorageContextProvider.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StorageIdentity.cs" />
-    <Compile Include="AzureContextExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
