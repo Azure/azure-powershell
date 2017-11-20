@@ -77,7 +77,7 @@ function Test-AzureContainerRegistry
 		}
 
 		# Delete container registry
-		find-azurermresource -resourcetype Microsoft.ContainerRegistry/registries -ResourceGroupNameEquals $resourceGroupName -ResourceNameEquals $classicRegistryName | Remove-AzureRmContainerRegistry
+		Get-AzureRmContainerRegistry -ResourceGroupName $resourceGroupName -Name $classicRegistryName | Remove-AzureRmContainerRegistry
 		Get-AzureRmContainerRegistry -ResourceGroupName $resourceGroupName -Name $standardRegistryName | Remove-AzureRmContainerRegistry
 		Remove-AzureRmContainerRegistry -ResourceGroupName $resourceGroupName -Name $premiumRegistryName
 		Remove-AzureRmContainerRegistry -ResourceGroupName $resourceGroupName -Name $basicRegistryName
