@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '5.0.0'
+ModuleVersion = '5.1.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -310,6 +310,7 @@ CmdletsToExport = 'Get-AzureAutomationCertificate', 'Get-AzureAutomationConnecti
                'Get-AzureSiteRecoveryVaultSettings', 'Get-AzureSiteRecoveryVM', 
                'Import-AzureSiteRecoveryVaultSettingsFile', 
                'Update-AzureSiteRecoveryProtectionEntity', 
+               'Get-AzureWebsiteMetric',
                'Publish-AzureWebsiteProject', 'Update-AzureWebsiteRepository', 
                'Switch-AzureWebsiteSlot', 
                'Disable-AzureWebsiteApplicationDiagnostic', 
