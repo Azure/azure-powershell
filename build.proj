@@ -210,8 +210,11 @@
     <CallTarget Targets="BuildSetupTest"/>
  <!-- moved copy tasks -->
  
-    <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;Start-Process -FilePath &quot;$(PowerShellCommand)&quot; -Verb RunAs -Wait -ArgumentList &quot;'$(LibraryToolsFolder)\UpdateModules.ps1 -buildConfig $(Configuration) -scope $(Scope) -Profile Latest'&quot;&quot; " Condition="'$(Latest)' == 'true' "/>    
-     <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;Start-Process -FilePath &quot;$(PowerShellCommand)&quot; -Verb RunAs -Wait -ArgumentList &quot;'$(LibraryToolsFolder)\UpdateModules.ps1 -buildConfig $(Configuration) -scope $(Scope) -Profile Stack'&quot;&quot; " Condition="'$(Stack)' == 'true' "/>    
+    <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;Start-Process -FilePath &quot;$(PowerShellCommand)&quot; -Verb RunAs -Wait -ArgumentList &quot;'Start-Transcript -Path &quot;C:\transcripts.txt&quot;;$(LibraryToolsFolder)\UpdateModules.ps1 -buildConfig $(Configuration) -scope $(Scope) -Profile Latest'&quot;&quot; " Condition="'$(Latest)' == 'true' "/>    
+    <Exec Command="type C:\transcripts.txt"/>
+    <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;Start-Process -FilePath &quot;$(PowerShellCommand)&quot; -Verb RunAs -Wait -ArgumentList &quot;'Start-Transcript -Path &quot;C:\transcripts.txt&quot;;$(LibraryToolsFolder)\UpdateModules.ps1 -buildConfig $(Configuration) -scope $(Scope) -Profile Stack'&quot;&quot; " Condition="'$(Stack)' == 'true' "/>    
+    <Exec Command="type C:\transcripts.txt"/>
+    <Exec Command="type C:\transcripts.txt"/>
    <!-- Copying shortcut to be signed -->
     <Copy SourceFiles="$(LibraryRoot)tools\AzureRM\AzureRM.psd1"
           DestinationFolder="$(LibrarySourceFolder)\Package\$(Configuration)" Condition= " '$(NetCore)' == 'false' and '$(Latest)' == 'true'"/>
