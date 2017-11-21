@@ -223,6 +223,7 @@ namespace Microsoft.Azure.Commands.Profile
                         subscriptionId,
                         subscriptionName,
                         password,
+                        SkipValidation,
                         (s) => WriteWarning(s),
                         name));
                });
