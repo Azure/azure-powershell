@@ -62,7 +62,7 @@
     <Compile Include="Cmdlets\BackupRestore\AzureWebAppBackupConfiguration.cs" />
     <Compile Include="Cmdlets\BackupRestore\AzureWebAppSnapshot.cs" />
     <Compile Include="Cmdlets\BackupRestore\BackupRestoreUtils.cs" />
-    <Compile Include="Cmdlets\BackupRestore\GetAzureWebAppSnapshots.cs" />
+    <Compile Include="Cmdlets\BackupRestore\GetAzureWebAppSnapshot.cs" />
     <Compile Include="Cmdlets\BackupRestore\NewAzureRmWebAppDatabaseBackupSetting.cs" />
     <Compile Include="Cmdlets\BackupRestore\RestoreAzureWebAppBackup.cs" />
     <Compile Include="Cmdlets\BackupRestore\RestoreAzureWebAppSnapshot.cs" />

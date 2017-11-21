@@ -1,6 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.WebSites
 ms.assetid: 65A78654-A490-4B60-8C16-B0CC597EE995
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/remove-azurermwebappbackup
 schema: 2.0.0

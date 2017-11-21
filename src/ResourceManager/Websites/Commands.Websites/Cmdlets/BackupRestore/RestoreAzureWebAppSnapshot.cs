@@ -39,6 +39,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
         [Parameter(Mandatory = false, HelpMessage = "The app that the snapshot contents will be restored to. Must be a slot of the original app. If unspecified, the original app is overwritten.", ValueFromPipelineByPropertyName = true)]
         public Site TargetApp { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Restore the snapshot without displaying warning about possible data loss.", ValueFromPipelineByPropertyName = true)]
+        public SwitchParameter Force { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -66,7 +69,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
                 IgnoreConflictingHostNames = true,
                 RecoveryTarget = target
             };
-            WebsitesClient.RecoverSite(ResourceGroupName, Name, Slot, recoveryReq);
+            Action recoverAction = () => WebsitesClient.RecoverSite(ResourceGroupName, Name, Slot, recoveryReq);
+            ConfirmAction(this.Force.IsPresent, "Web app contents will be overwritten with the contents of the snapshot.",
+                "The snapshot has been restored.", Name, recoverAction);
         }
     }
 }

@@ -323,21 +323,21 @@ function Test-EditAndGetWebAppBackupConfigurationPiping
 function Test-GetWebAppSnapshots
 {
 	# Test named parameters
-	$snapshots = Get-AzureRmWebAppSnapshots -ResourceGroupName $snapshotRgName -Name $snapshotAppName
+	$snapshots = Get-AzureRmWebAppSnapshot -ResourceGroupName $snapshotRgName -Name $snapshotAppName
 	Assert-True { $snapshots.Length -gt 0 }
 	Assert-NotNull $snapshots[0]
 	Assert-NotNull $snapshots[0].SnapshotTime
 	Assert-AreEqual 'Production' $snapshots[0].Slot
 
 	# Test positional parameters
-	$snapshots = Get-AzureRmWebAppSnapshots $snapshotRgName  $snapshotAppName
+	$snapshots = Get-AzureRmWebAppSnapshot $snapshotRgName  $snapshotAppName
 	Assert-True { $snapshots.Length -gt 0 }
 	Assert-NotNull $snapshots[0]
 	Assert-NotNull $snapshots[0].SnapshotTime
 	Assert-AreEqual 'Production' $snapshots[0].Slot
 
 	# Test snapshots for slots
-	$snapshots = Get-AzureRmWebAppSnapshots -ResourceGroupName $snapshotRgName -Name $snapshotAppName -Slot $snapshotAppSlot
+	$snapshots = Get-AzureRmWebAppSnapshot -ResourceGroupName $snapshotRgName -Name $snapshotAppName -Slot $snapshotAppSlot
 	Assert-True { $snapshots.Length -gt 0 }
 	Assert-NotNull $snapshots[0]
 	Assert-NotNull $snapshots[0].SnapshotTime
@@ -345,7 +345,7 @@ function Test-GetWebAppSnapshots
 
 	# Test piping
 	$app = Get-AzureRmWebApp -ResourceGroupName $snapshotRgName -Name $snapshotAppName
-	$snapshots = $app | Get-AzureRmWebAppSnapshots
+	$snapshots = $app | Get-AzureRmWebAppSnapshot
 	Assert-True { $snapshots.Length -gt 0 }
 	Assert-NotNull $snapshots[0]
 	Assert-NotNull $snapshots[0].SnapshotTime
@@ -355,15 +355,15 @@ function Test-GetWebAppSnapshots
 function Test-RestoreWebAppSnapshot
 {
 	# Test overwrite
-	$snapshot = (Get-AzureRmWebAppSnapshots $snapshotRgName $snapshotAppName)[0]
-	Restore-AzureRmWebAppSnapshot -ResourceGroupName $snapshotRgName -Name $snapshotAppName -SnapshotTime $snapshot.SnapshotTime -RecoverConfiguration
+	$snapshot = (Get-AzureRmWebAppSnapshot $snapshotRgName $snapshotAppName)[0]
+	Restore-AzureRmWebAppSnapshot -ResourceGroupName $snapshotRgName -Name $snapshotAppName -SnapshotTime $snapshot.SnapshotTime -Force -RecoverConfiguration
 
 	# Test restore to target slot
 	$target = Get-AzureRmWebAppSlot -ResourceGroupName $snapshotRgName -Name $snapshotAppName -Slot $snapshotAppSlot
-	Restore-AzureRmWebAppSnapshot -ResourceGroupName $snapshotRgName -Name $snapshotAppName -SnapshotTime $snapshot.SnapshotTime -RecoverConfiguration -TargetApp $target
+	Restore-AzureRmWebAppSnapshot -ResourceGroupName $snapshotRgName -Name $snapshotAppName -SnapshotTime $snapshot.SnapshotTime -Force -RecoverConfiguration -TargetApp $target
 
 	# Test piping
-	$snapshot | Restore-AzureRmWebAppSnapshot
+	$snapshot | Restore-AzureRmWebAppSnapshot -Force
 }
 
 # Utility functions

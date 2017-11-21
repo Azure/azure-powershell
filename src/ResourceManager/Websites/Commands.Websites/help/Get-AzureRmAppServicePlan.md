@@ -1,6 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.WebSites
 ms.assetid: 89ED4231-7616-47D0-BDAA-D849C245DC79
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/get-azurermappserviceplan
 schema: 2.0.0

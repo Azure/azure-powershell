@@ -1,40 +1,39 @@
 ---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
 Module Name: AzureRM.WebSites
-ms.assetid: 8337BEA9-4927-4718-83B9-F3F567BE0FBD
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/get-azurermwebappbackupconfiguration
+online version: 
 schema: 2.0.0
 ---
 
-# Get-AzureRmWebAppBackupConfiguration
+# Get-AzureRmWebAppSnapshot
 
 ## SYNOPSIS
+Gets snapshots of an Azure Web App.
 
 ## SYNTAX
 
 ### FromResourceName
 ```
-Get-AzureRmWebAppBackupConfiguration [-ResourceGroupName] <String> [-Name] <String> [[-Slot] <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmWebAppSnapshot [-ResourceGroupName] <String> [-Name] <String> [[-Slot] <String>]
+ [-DefaultProfile <IAzureContextContainer>]
 ```
 
 ### FromWebApp
 ```
-Get-AzureRmWebAppBackupConfiguration [-WebApp] <Site> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzureRmWebAppSnapshot [-WebApp] <Site> [-DefaultProfile <IAzureContextContainer>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmWebAppBackupConfiguration** cmdlet gets the backup configuration of an Azure Web App.
+The **Get-AzureRmWebAppSnapshot** cmdlet gets a list of the snapshots of an Azure Web App. Snapshots are data backups that are automatically created by Azure App Service. Snapshots can be restored with the **Restore-AzureRmWebAppSnapshot** cmdlet.
 
 ## EXAMPLES
 
-### 1:
+### Example 1
 ```
-PS C:\>Get-AzureRmWebAppBackupConfiguration -ResourceGroupName "Default-Web-WestUS" -Name "WebAppStandard"
+PS C:\> Get-AzureRmWebAppSnapshot -ResourceGroupName Default-Web-WestUS -Name MyWebApp
 ```
 
-This command gets the backup configuration from the Web App named WebAppStandard that belongs to the resource group Default-Web-WestUS.
+Gets the snapshots for an Azure Web App named MyWebApp in the Default-Web-WestUS ResourceGroup.
 
 ## PARAMETERS
 
@@ -54,7 +53,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-WebApp Name
+The name of the web app.
 
 ```yaml
 Type: String
@@ -69,7 +68,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name
+The name of the resource group.
 
 ```yaml
 Type: String
@@ -84,7 +83,7 @@ Accept wildcard characters: False
 ```
 
 ### -Slot
-Slot Name
+The name of the web app slot.
 
 ```yaml
 Type: String
@@ -99,7 +98,7 @@ Accept wildcard characters: False
 ```
 
 ### -WebApp
-WebApp Name
+The web app object
 
 ```yaml
 Type: Site
@@ -113,17 +112,16 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
-
 ## INPUTS
 
-### Site
-Parameter 'WebApp' accepts value of type 'Site' from the pipeline
+### System.String
+Microsoft.Azure.Management.WebSites.Models.Site
+
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.AzureWebAppBackupConfiguration
+### Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore.AzureWebAppSnapshot[]
+
 
 ## NOTES
 

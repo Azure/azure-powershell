@@ -1,6 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.WebSites
 ms.assetid: 8F36244D-A4D7-40BB-AC4C-E9AD445549F8
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/new-azurermappserviceplan
 schema: 2.0.0
@@ -24,7 +24,7 @@ New-AzureRmAppServicePlan [-Location] <String> [[-Tier] <String>] [[-NumberofWor
 ```
 New-AzureRmAppServicePlan [-Location] <String> [[-Tier] <String>] [[-NumberofWorkers] <Int32>]
  [[-WorkerSize] <String>] [[-AseName] <String>] [[-AseResourceGroupName] <String>] [-PerSiteScaling <Boolean>]
- [-AppServicePlan] <ServerFarmWithRichSku> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-AppServicePlan] <AppServicePlan> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,7 +46,7 @@ The command specifies a Basic Tier and allocates two small workers.
 App Service Plan Object
 
 ```yaml
-Type: ServerFarmWithRichSku
+Type: AppServicePlan
 Parameter Sets: S2
 Aliases: 
 
@@ -184,7 +184,7 @@ Tier
 Type: String
 Parameter Sets: (All)
 Aliases: 
-Accepted values: Free, Shared, Basic, Standard, Premium, PremiumV2
+Accepted values: Free, Shared, Basic, Standard, Premium, PremiumV2, Isolated
 
 Required: False
 Position: 3
