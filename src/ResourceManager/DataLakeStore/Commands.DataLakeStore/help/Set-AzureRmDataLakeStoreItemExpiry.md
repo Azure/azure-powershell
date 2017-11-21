@@ -22,7 +22,7 @@ Set-AzureRmDataLakeStoreItemExpiry [-Account] <String> [-Path] <DataLakeStorePat
 ### Set expiry as relative to creation or now
 ```
 Set-AzureRmDataLakeStoreItemExpiry [-Account] <String> [-Path] <DataLakeStorePathInstance>
- [[-FileExpiryOptions] <PathRelativeExpiryOptions>] [[-RelativeTime] <Int64>]
+ [[-RelativeFileExpiryOption] <PathRelativeExpiryOptions>] [[-RelativeTime] <Int64>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -50,8 +50,8 @@ This means the file will not automatically expire (be marked for delete) and wil
 
 ### Example 3: Set expiration time for a file relative to now
 ```
-PS C:\> Set-AdlStoreItemExpiry -Account "ContosoADL" -path /myfile.txt -FileExpiryOptions RelativeToNow -RelativeTime 240000
-PS C:\> Set-AdlStoreItemExpiry -Account "ContosoADL" -path /myfile.txt -FileExpiryOptions RelativeToCreationDate -RelativeTime 240000
+PS C:\> Set-AdlStoreItemExpiry -Account "ContosoADL" -path /myfile.txt -RelativeFileExpiryOption RelativeToNow -RelativeTime 240000
+PS C:\> Set-AdlStoreItemExpiry -Account "ContosoADL" -path /myfile.txt -RelativeFileExpiryOption RelativeToCreationDate -RelativeTime 240000
 ```
 
 The first command sets the expiration time of the file /myfile.txt 240 seconds relative to current time at server.
@@ -106,7 +106,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -FileExpiryOptions
+### -RelativeFileExpiryOption
 Relative expiry options. RelativeToNow or RelativeToCreationDate are current options
 ```yaml
 Type: PathRelativeExpiryOptions

@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 2,ParameterSetName = RelativeExpiryParameterSetName, Mandatory = false,
             HelpMessage = "Relative expiry options. RelativeToNow or RelativeToCreationDate are current options")]
         [ValidateNotNullOrEmpty]
-        public DataLakeStoreEnums.PathRelativeExpiryOptions? FileExpiryOptions { get; set; }
+        public DataLakeStoreEnums.PathRelativeExpiryOptions? RelativeFileExpiryOption { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, ParameterSetName = RelativeExpiryParameterSetName, Mandatory = false,
             HelpMessage = "The relative time in milliseconds with respect to now or creation time")]
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             long tickValue;
             if (ParameterSetName.Equals(RelativeExpiryParameterSetName))
             {
-                exop = FileExpiryOptions == DataLakeStoreEnums.PathRelativeExpiryOptions.RelativeToCreationDate
+                exop = RelativeFileExpiryOption == DataLakeStoreEnums.PathRelativeExpiryOptions.RelativeToCreationDate
                         ? ExpiryOption.RelativeToCreationDate
                         : ExpiryOption
                             .RelativeToNow;
