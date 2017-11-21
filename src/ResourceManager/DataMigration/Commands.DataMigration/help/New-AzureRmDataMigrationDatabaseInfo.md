@@ -1,5 +1,5 @@
 ---
-external help file: Commands.DataMigration.dll-Help.xml
+external help file: Microsoft.Azure.Commands.DataMigration.dll-Help.xml
 Module Name: AzureRM.DataMigration
 online version: 
 schema: 2.0.0
@@ -46,6 +46,20 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -SourceDatabaseName
 Source Database Name.
@@ -56,6 +70,22 @@ Parameter Sets: (All)
 Aliases: SourceDBName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

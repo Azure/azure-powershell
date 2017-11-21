@@ -189,4 +189,13 @@
   <data name="stopTask" xml:space="preserve">
     <value>Stop Task</value>
   </data>
+  <data name="createConnectionInfo" xml:space="preserve">
+    <value>Create Connection Info</value>
+  </data>
+  <data name="createDbInfo" xml:space="preserve">
+    <value>Create Database Info</value>
+  </data>
+  <data name="createSelectedDB" xml:space="preserve">
+    <value>Create Databases Info for Migration</value>
+  </data>
 </root>

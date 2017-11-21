@@ -1,5 +1,5 @@
 ---
-external help file: Commands.DataMigration.dll-Help.xml
+external help file: Microsoft.Azure.Commands.DataMigration.dll-Help.xml
 Module Name: AzureRM.DataMigration
 online version: 
 schema: 2.0.0
@@ -12,9 +12,22 @@ Removes an instance of the Azure Database Migration Service from Azure.
 
 ## SYNTAX
 
+### ComponentNameParameterSet (Default)
 ```
-emove-AzureRmDataMigrationService -ResourceGroupName <String> -Name <String> [-Force] [-DeleteRunningTask]
+Remove-AzureRmDataMigrationService -ResourceGroupName <String> -Name <String> [-Force] [-DeleteRunningTask]
  [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+```
+
+### ComponentObjectParameterSet
+```
+Remove-AzureRmDataMigrationService [-InputObject] <PSDataMigrationService> [-Force] [-DeleteRunningTask]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+```
+
+### ResourceIdParameterSet
+```
+Remove-AzureRmDataMigrationService [-ResourceId] <String> [-Force] [-DeleteRunningTask] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
 ```
 
 ## DESCRIPTION

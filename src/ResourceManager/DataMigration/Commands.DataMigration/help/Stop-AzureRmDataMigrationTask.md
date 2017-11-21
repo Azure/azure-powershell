@@ -31,7 +31,7 @@ Stop-AzureRmDataMigrationTask [-ResourceId] <String> [-PassThru] [-DefaultProfil
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Stop-AzureRmDataMigrationTask cmdlet stops database migration activity in running state. 
 
 ## EXAMPLES
 

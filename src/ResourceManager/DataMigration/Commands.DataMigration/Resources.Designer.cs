@@ -106,11 +106,38 @@ namespace Microsoft.Azure.Commands.DataMigration {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create Connection Info.
+        /// </summary>
+        public static string createConnectionInfo {
+            get {
+                return ResourceManager.GetString("createConnectionInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create Database Info.
+        /// </summary>
+        public static string createDbInfo {
+            get {
+                return ResourceManager.GetString("createDbInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Creating Project.
         /// </summary>
         public static string createProject {
             get {
                 return ResourceManager.GetString("createProject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create Databases Info for Migration.
+        /// </summary>
+        public static string createSelectedDB {
+            get {
+                return ResourceManager.GetString("createSelectedDB", resourceCulture);
             }
         }
         

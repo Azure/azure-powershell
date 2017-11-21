@@ -1,5 +1,5 @@
 ---
-external help file: Commands.DataMigration.dll-Help.xml
+external help file: Microsoft.Azure.Commands.DataMigration.dll-Help.xml
 Module Name: AzureRM.DataMigration
 online version: 
 schema: 2.0.0
@@ -52,11 +52,26 @@ The above example shows how to create new project named MyDMSProject located in 
 
 ## PARAMETERS
 
-### -DatabaseInfo
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DatabaseInfo[]
 Database information
 
 ```yaml
-Type: System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataMigration.Models.DatabaseInfo]
+Type: DatabaseInfo[]
 Parameter Sets: (All)
 Aliases: 
 

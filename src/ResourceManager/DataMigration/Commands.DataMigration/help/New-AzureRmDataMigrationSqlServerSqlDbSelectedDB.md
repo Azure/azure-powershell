@@ -1,5 +1,5 @@
 ---
-external help file: Commands.DataMigration.dll-Help.xml
+external help file: Microsoft.Azure.Commands.DataMigration.dll-Help.xml
 Module Name: AzureRM.DataMigration
 online version: 
 schema: 2.0.0
@@ -32,6 +32,21 @@ PS C:\> New-AzureRmDataMigrationSqlServerSqlDbSelectedDB  -Name AdventuerWorks20
 The above example creates MigrateSqlServerSqlDbDatabaseInput object for migrating the **AdventureWorks2016** database to a SQL Azure database with the same name.
 
 ## PARAMETERS
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.

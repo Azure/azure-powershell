@@ -1,5 +1,5 @@
 ---
-external help file: Commands.DataMigration.dll-Help.xml
+external help file: Microsoft.Azure.Commands.DataMigration.dll-Help.xml
 Module Name: AzureRM.DataMigration
 online version: 
 schema: 2.0.0
