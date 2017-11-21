@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Automation.Common;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Automation.Models;
 using System.Collections;
 using System.Management.Automation;
@@ -68,6 +69,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Gets or sets the location.
         /// </summary>
         [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The geo region of the automation account")]
+        [LocationCompleter("Microsoft.Automation/automationAccounts")]
         public string Location { get; set; }
 
         /// <summary>
