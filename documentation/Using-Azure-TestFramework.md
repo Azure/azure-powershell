@@ -35,7 +35,7 @@ Instructions to manually download it are available on NuGet. However TestFramewo
 
 ## Setup prior to Record or Playback of tests
 
-In order to Record/Playback a test, you need to setup a connection string that consists of various key/value pairs that provides information to the test environment.  You have three options to set up the connection string: run the [New-AzureCredential cmdlet](#new-azurecredential) (recommended), run the [Set-TestEnvironment cmdlet](#set-testenvironment), or [manually set the environment variables](#manually-set-environment-variables).
+In order to Record/Playback a test, you need to setup a connection string that consists of various key/value pairs that provides information to the test environment.  You have three options to set up the connection string: run the [New-TestCredential cmdlet](#new-testcredential) (recommended), run the [Set-TestEnvironment cmdlet](#set-testenvironment), or [manually set the environment variables](#manually-set-environment-variables).
 
 ### New-TestCredential
 
