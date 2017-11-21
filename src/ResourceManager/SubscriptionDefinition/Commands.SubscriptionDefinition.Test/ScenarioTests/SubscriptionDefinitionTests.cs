@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.SubscriptionDefinition.Test.ScenarioTests.Scenari
 using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.SubscriptionDefinition.Test.ScenarioTests
 {
@@ -39,18 +40,10 @@ namespace Microsoft.Azure.Commands.SubscriptionDefinition.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetSubscriptionDefinitionInGroupScope()
+        public void TestGetSubscriptionDefinitionByName()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetSubscriptionDefinitionInGroupScope");
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetSubscriptionDefinitionInSubscriptionScope()
-        {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetSubscriptionDefinitionInSubscriptionScope");
-        }
-
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewSubscriptionDefinition()
