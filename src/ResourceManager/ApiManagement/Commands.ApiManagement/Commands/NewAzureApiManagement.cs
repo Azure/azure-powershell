@@ -15,6 +15,7 @@
 namespace Microsoft.Azure.Commands.ApiManagement.Commands
 {
     using Microsoft.Azure.Commands.ApiManagement.Models;
+    using ResourceManager.Common.ArgumentCompleters;
     using System.Collections.Generic;
     using System.Management.Automation;
 
@@ -36,6 +37,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "Location where want to create API Management.")]
+        [LocationCompleter("Microsoft.ApiManagement/service")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
