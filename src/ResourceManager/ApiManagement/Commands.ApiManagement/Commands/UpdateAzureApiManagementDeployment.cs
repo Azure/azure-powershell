@@ -16,6 +16,7 @@
 namespace Microsoft.Azure.Commands.ApiManagement.Commands
 {
     using Microsoft.Azure.Commands.ApiManagement.Models;
+    using ResourceManager.Common.ArgumentCompleters;
     using System;
     using System.Collections.Generic;
     using System.Management.Automation;
@@ -53,6 +54,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "Location of master API Management deployment region.")]
+        [LocationCompleter("Microsoft.ApiManagement/service")]
         public string Location { get; set; }
 
         [Parameter(
