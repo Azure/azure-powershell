@@ -94,7 +94,7 @@ CmdletsToExport = 'Get-AzureRmAppServicePlan', 'Set-AzureRmAppServicePlan',
                'New-AzureRmWebApp', 'Remove-AzureRmWebAppBackup', 
                'Reset-AzureRmWebAppPublishingProfile', 'Restart-AzureRmWebApp', 
                'Set-AzureRmWebApp', 'Start-AzureRmWebApp', 'Stop-AzureRmWebApp',
-               'Get-AzureRmWebAppSnapshots', 'Restore-AzureRmWebAppSnapshot'
+               'Get-AzureRmWebAppSnapshot', 'Restore-AzureRmWebAppSnapshot'
 
 # Variables to export from this module
 # VariablesToExport = @()
