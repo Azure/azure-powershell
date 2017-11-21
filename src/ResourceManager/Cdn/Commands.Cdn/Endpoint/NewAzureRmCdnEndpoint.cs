@@ -25,6 +25,7 @@ using Microsoft.Azure.Commands.Cdn.Properties;
 using Microsoft.Azure.Management.Cdn;
 using Microsoft.Azure.Management.Cdn.Models;
 using Microsoft.Azure.Commands.Cdn.Models.Profile;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Cdn.Endpoint
 {
@@ -48,6 +49,7 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
         public PSProfile CdnProfile { get; set; }
         
         [Parameter(Mandatory = true, HelpMessage = "The location of the CDN endpoint.", ParameterSetName = FieldsParameterSet)]
+        [LocationCompleter("Microsoft.Cdn/profiles/endpoints")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
