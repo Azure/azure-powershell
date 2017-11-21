@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ApplicationInsights.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.ApplicationInsights.Management.Models;
 using Microsoft.Rest.Azure;
@@ -43,6 +44,7 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
             Position = 2,
             Mandatory = true,
             HelpMessage = "Application Insights Resource Location.")]
+        [LocationCompleter("Microsoft.Insights/components")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
