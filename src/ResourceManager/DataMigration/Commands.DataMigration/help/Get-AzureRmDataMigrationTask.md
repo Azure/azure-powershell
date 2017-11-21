@@ -66,7 +66,7 @@ PS C:\> Get -AzureRmDataMigrationTask –TaskName myTestTask -ServiceName myTest
 
 The above example illustrates the use of Get-AzureRmDataMigrationTask cmdlet to retrieve the properties associated with an Azure Database Migration Service migration task based on task name passed in as input parameter
 
-## Example 2
+### Example 2
 ```
 PS C:\> Get -AzureRmDataMigrationTask –Project $myProject
 
