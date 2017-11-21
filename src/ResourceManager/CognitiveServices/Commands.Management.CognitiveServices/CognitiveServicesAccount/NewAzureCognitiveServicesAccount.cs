@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Management.CognitiveServices.Properties;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.CognitiveServices;
 using Microsoft.Azure.Management.CognitiveServices.Models;
 using System.Collections;
@@ -67,6 +68,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Cognitive Services Account Location.")]
+        [LocationCompleter("Microsoft.CognitiveServices/accounts")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
