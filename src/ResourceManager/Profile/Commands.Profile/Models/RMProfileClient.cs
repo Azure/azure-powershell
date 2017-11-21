@@ -105,7 +105,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             string tenantId,
             string subscriptionId,
             string subscriptionName,
-            SecureString password, 
+            SecureString password,
+            bool skipValidation, 
             Action<string> promptAction,
             string name = null)
         {
