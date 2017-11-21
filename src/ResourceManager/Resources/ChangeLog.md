@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fixed issue where Get-AzureRMRoleAssignment would result in a assignments without roledefiniton name for custom roles
+    - Users can now use Get-AzureRMRoleAssignment with assignments having roledefinition names irrespective of the type of role
 
 ## Version 5.0.0
 * Add support for online help

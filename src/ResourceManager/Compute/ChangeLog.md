@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 4.0.1
+* Fixed assembly loading issue that caused some cmdlets to fail when executing
+
 ## Version 4.0.0
 * Azure Disk Encryption Extension Commands
     - New Parameter for 'Set-AzureRmVmDiskEncryptionExtension': '-EncryptFormatAll' encrypt formats data disks
