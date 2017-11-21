@@ -131,7 +131,7 @@ The acceptable values for this parameter are:
 ```yaml
 Type: DatabaseEdition
 Parameter Sets: Update
-Aliases: 
+Aliases:
 Accepted values: None, Premium, Basic, Standard, DataWarehouse, Stretch, Free, PremiumRS
 
 Required: False
@@ -147,7 +147,7 @@ Specifies name of the elastic pool in which to move the database.
 ```yaml
 Type: String
 Parameter Sets: Update
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -164,7 +164,7 @@ See the *MaxSizeGB* parameter for acceptable values per edition.
 ```yaml
 Type: Int64
 Parameter Sets: Update
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -174,10 +174,12 @@ Accept wildcard characters: False
 ```
 
 ### -NewName
-The new name to rename the database to.```yaml
+The new name to rename the database to.
+
+```yaml
 Type: String
 Parameter Sets: Rename
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -192,7 +194,7 @@ The read scale option to assign to the Azure SQL Database.(Enabled/Disabled)
 ```yaml
 Type: DatabaseReadScale
 Parameter Sets: Update
-Aliases: 
+Aliases:
 Accepted values: Disabled, Enabled
 
 Required: False
@@ -210,7 +212,7 @@ in the Microsoft Developer Network Library.
 ```yaml
 Type: String
 Parameter Sets: Update
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -225,7 +227,7 @@ Specifies the name of resource group to which the server is assigned.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -240,7 +242,7 @@ Specifies the name of the server that hosts the database.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -272,7 +274,7 @@ The zone redundancy to associate with the Azure Sql Database
 ```yaml
 Type: SwitchParameter
 Parameter Sets: Update
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
