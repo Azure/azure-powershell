@@ -24,6 +24,7 @@ using Microsoft.Azure.Management.Cdn;
 using SdkSku = Microsoft.Azure.Management.Cdn.Models.Sku;
 using SdkSkuName = Microsoft.Azure.Management.Cdn.Models.SkuName;
 using System.Linq;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Cdn.Profile
 {
@@ -44,6 +45,7 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
         /// The location in which to create the profile.
         /// </summary>
         [Parameter(Mandatory = true, HelpMessage = "The location in which to create the CDN profile.")]
+        [LocationCompleter("Microsoft.Cdn/profiles")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
