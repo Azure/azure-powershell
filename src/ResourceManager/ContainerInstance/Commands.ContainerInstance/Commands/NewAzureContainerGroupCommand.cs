@@ -20,6 +20,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.ContainerInstance.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.ContainerInstance.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.ContainerInstance
 {
@@ -77,6 +78,7 @@ namespace Microsoft.Azure.Commands.ContainerInstance
         [Parameter(
             Mandatory = false,
             HelpMessage = "The container group Location. Default to the location of the resource group.")]
+        [LocationCompleter("Microsoft.ContainerInstance/containerGroups")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
