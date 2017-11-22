@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using System.IO;
     using System.Globalization;
 
-    [Cmdlet(VerbsCommon.Add, "AzureRmIotHubCertificate")]
+    [Cmdlet(VerbsCommon.Add, "AzureRmIotHubCertificate", SupportsShouldProcess = true)]
     [OutputType(typeof(PSCertificateDescription))]
     public class AddAzureRmIotHubCertificate : IotHubBaseCmdlet
     {
@@ -68,36 +68,39 @@ namespace Microsoft.Azure.Commands.Management.IotHub
 
         public override void ExecuteCmdlet()
         {
-            string certificate = string.Empty;
-            FileInfo fileInfo = new FileInfo(this.Path);
-            switch(fileInfo.Extension.ToLower(CultureInfo.InvariantCulture))
+            if (ShouldProcess(CertificateName, Properties.Resources.AddIotHubCertificate))
             {
-                case ".cer":
-                    var certificateByteContent = File.ReadAllBytes(this.Path);
-                    certificate = Convert.ToBase64String(certificateByteContent);
-                    break;
-                case ".pem":
-                    certificate = File.ReadAllText(this.Path);
-                    break;
-                default:
-                    certificate = this.Path;
-                    break;
-            }
-            
-            CertificateBodyDescription certificateBodyDescription = new CertificateBodyDescription();
-            certificateBodyDescription.Certificate = certificate;
+                string certificate = string.Empty;
+                FileInfo fileInfo = new FileInfo(this.Path);
+                switch (fileInfo.Extension.ToLower(CultureInfo.InvariantCulture))
+                {
+                    case ".cer":
+                        var certificateByteContent = File.ReadAllBytes(this.Path);
+                        certificate = Convert.ToBase64String(certificateByteContent);
+                        break;
+                    case ".pem":
+                        certificate = File.ReadAllText(this.Path);
+                        break;
+                    default:
+                        certificate = this.Path;
+                        break;
+                }
 
-            CertificateDescription certificateDescription;
-            if (this.Etag != null)
-            {
-                certificateDescription = this.IotHubClient.Certificates.CreateOrUpdate(this.ResourceGroupName, this.Name, this.CertificateName, certificateBodyDescription, this.Etag);
-            }
-            else
-            {
-                certificateDescription = this.IotHubClient.Certificates.CreateOrUpdate(this.ResourceGroupName, this.Name, this.CertificateName, certificateBodyDescription);
-            }
+                CertificateBodyDescription certificateBodyDescription = new CertificateBodyDescription();
+                certificateBodyDescription.Certificate = certificate;
 
-            this.WriteObject(IotHubUtils.ToPSCertificateDescription(certificateDescription), true);
+                CertificateDescription certificateDescription;
+                if (this.Etag != null)
+                {
+                    certificateDescription = this.IotHubClient.Certificates.CreateOrUpdate(this.ResourceGroupName, this.Name, this.CertificateName, certificateBodyDescription, this.Etag);
+                }
+                else
+                {
+                    certificateDescription = this.IotHubClient.Certificates.CreateOrUpdate(this.ResourceGroupName, this.Name, this.CertificateName, certificateBodyDescription);
+                }
+
+                this.WriteObject(IotHubUtils.ToPSCertificateDescription(certificateDescription), true);
+            }
         }
     }
 }

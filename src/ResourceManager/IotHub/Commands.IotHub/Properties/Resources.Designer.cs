@@ -79,6 +79,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add or Update an Iot Hub Certificate.
+        /// </summary>
+        internal static string AddIotHubCertificate {
+            get {
+                return ResourceManager.GetString("AddIotHubCertificate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add an IoT Hub Key.
         /// </summary>
         internal static string AddIotHubKey {
@@ -147,6 +156,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         internal static string UpdateIotHub {
             get {
                 return ResourceManager.GetString("UpdateIotHub", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add an Iot Hub Verified Certificate.
+        /// </summary>
+        internal static string VerifyIotHubCertificate {
+            get {
+                return ResourceManager.GetString("VerifyIotHubCertificate", resourceCulture);
             }
         }
     }
