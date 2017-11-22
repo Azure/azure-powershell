@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 
         public Model GetOrAdd<Model>(ResourceConfig<Model> config, Func<Model> f)
             where Model : class
-            => Map.GetOrNull(config.DefaultIdStr()) as Model;
+            => Map.GetOrAdd(config.DefaultIdStr(), _ => f()) as Model;
 
         public bool Contains(IResourceBaseConfig config)
             => Map.ContainsKey(config.DefaultIdStr());

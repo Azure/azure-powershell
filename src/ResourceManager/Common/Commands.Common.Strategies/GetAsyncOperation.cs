@@ -15,11 +15,11 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             where Model : class
         {
             var context = new AsyncOperationContext(client, cancellationToken);
-            await context.AddStateAsync(config);
+            await context.AddStateAsyncResourceBase(config);
             return context.Result;
         }
 
-        static Task AddStateAsync(this AsyncOperationContext context, IResourceBaseConfig config)
+        static Task AddStateAsyncResourceBase(this AsyncOperationContext context, IResourceBaseConfig config)
             => config.Accept(new AddStateAsyncVisitor(), context);
 
         static async Task AddStateAsync<Model>(this AsyncOperationContext context, ResourceConfig<Model> config)
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                         }
                         if (info == null)
                         {
-                            var tasks = config.Dependencies.Select(d => context.AddStateAsync(d));
+                            var tasks = config.Dependencies.Select(d => context.AddStateAsyncResourceBase(d));
                             await Task.WhenAll(tasks);
                             return null;
                         }
@@ -53,10 +53,10 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                     });
 
         static Task AddStateAsync<Model, ParentModel>(
-            AsyncOperationContext context, NestedResourceConfig<Model, ParentModel> config)
+            this AsyncOperationContext context, NestedResourceConfig<Model, ParentModel> config)
             where Model : class
             where ParentModel : class
-            => context.AddStateAsync(config.Parent);
+            => context.AddStateAsyncResourceBase(config.Parent);
 
         sealed class AddStateAsyncVisitor : IResourceBaseConfigVisitor<AsyncOperationContext, Task>
         {
