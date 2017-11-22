@@ -16,21 +16,21 @@ Updates a container registry webhook.
 ```
 Update-AzureRmContainerRegistryWebhook [-Uri <Uri>] [-Action <String[]>] [-Header <Hashtable>]
  [-Tag <Hashtable>] [-Status <String>] [-Scope <String>] -ResourceId <String>
- [-DefaultProfile <IAzureContextContainer>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### NameResourceGroupParameterSet
 ```
 Update-AzureRmContainerRegistryWebhook [-Name] <String> [-ResourceGroupName] <String> [-RegistryName] <String>
  [-Uri <Uri>] [-Action <String[]>] [-Header <Hashtable>] [-Tag <Hashtable>] [-Status <String>]
- [-Scope <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-Scope <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### WebhookObjectParameterSet
 ```
 Update-AzureRmContainerRegistryWebhook [-Uri <Uri>] [-Action <String[]>] -Webhook <PSContainerRegistryWebhook>
  [-Header <Hashtable>] [-Tag <Hashtable>] [-Status <String>] [-Scope <String>]
- [-DefaultProfile <IAzureContextContainer>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,14 +39,15 @@ The Update-AzureRmContainerRegistryWebhook cmdlet updates a container registry w
 ## EXAMPLES
 
 ### Example 1: Update an existing container registry webhook.
-```
+```powershell
 PS C:\>Update-AzureRmContainerRegistryWebhook -ResourceGroupName "MyResourceGroup" -RegistryName "MyRegistry" -Name "webhook001" -Uri http://www.bing.com -Action Delete,Push -Header @{SpecialHeader='headerVal'} -Tag @{Key='val'} -Status Enabled -Scope 'foo:*'
 
-Name            Location   Status     Scope           Actions         Provisioni ServiceUri                     CustomH
-                                                                      ngState                                   eaders
-----            --------   ------     -----           -------         ---------- ----------                     -------
-webhook001      eastus     enabled    foo:*           {Delete, Push}  Succeeded
+Name            Location   Status     Scope           Actions         Provisioni ServiceUri
+                                                                      ngState
+----            --------   ------     -----           -------         ---------- ----------
+webhook001      westus     enabled    foo:*           {push, delete}  Succeeded
 ```
+
 Update an existing container registry webhook.
 
 ## PARAMETERS
@@ -103,7 +104,7 @@ Webhook Name.
 ```yaml
 Type: String
 Parameter Sets: NameResourceGroupParameterSet
-Aliases: WebhookName
+Aliases: WebhookName, ResourceName
 
 Required: True
 Position: 0
@@ -118,7 +119,7 @@ Container Registry Name.
 ```yaml
 Type: String
 Parameter Sets: NameResourceGroupParameterSet
-Aliases: ContainerRegistryName, ResourceName
+Aliases: ContainerRegistryName
 
 Required: True
 Position: 2
@@ -233,18 +234,56 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook
 System.String
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook
-
 
 ## NOTES
 
 ## RELATED LINKS
 
+[New-AzureRmContainerRegistryWebhook](New-AzureRmContainerRegistryWebhook.md)
+
+[Get-AzureRmContainerRegistryWebhook](Get-AzureRmContainerRegistryWebhook.md)
+
+[Test-AzureRmContainerRegistryWebhook](Test-AzureRmContainerRegistryWebhook.md)
+
+[Remove-AzureRmContainerRegistryWebhook](Remove-AzureRmContainerRegistryWebhook.md)

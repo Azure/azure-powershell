@@ -12,22 +12,22 @@ Removes a container registry webhook.
 
 ## SYNTAX
 
-### NameResourceGroupParameterSet
+### NameResourceGroupParameterSet (Default)
 ```
 Remove-AzureRmContainerRegistryWebhook [-Name] <String> [-ResourceGroupName] <String> [-RegistryName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### WebhookObjectParameterSet
 ```
 Remove-AzureRmContainerRegistryWebhook -Webhook <PSContainerRegistryWebhook>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
 Remove-AzureRmContainerRegistryWebhook -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,11 +36,11 @@ The Remove-AzureRmContainerRegistryWebhook cmdlet removes a container registry w
 ## EXAMPLES
 
 ### Example 1: Remove a container registry webhook.
-```
+```powershell
 PS C:\> Remove-AzureRmContainerRegistryWebhook -ResourceGroupName "MyResourceGroup" -RegistryName "MyRegistry" -Name "webhook001"
 ```
 
-Remove a container registry webhook.
+Removes a container registry webhook.
 
 ## PARAMETERS
 
@@ -80,7 +80,7 @@ Webhook Name.
 ```yaml
 Type: String
 Parameter Sets: NameResourceGroupParameterSet
-Aliases: WebhookName
+Aliases: WebhookName, ResourceName
 
 Required: True
 Position: 0
@@ -95,7 +95,7 @@ Container Registry Name.
 ```yaml
 Type: String
 Parameter Sets: NameResourceGroupParameterSet
-Aliases: ContainerRegistryName, ResourceName
+Aliases: ContainerRegistryName
 
 Required: True
 Position: 2
@@ -165,11 +165,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook
 System.String
-
 
 ## OUTPUTS
 
@@ -179,3 +181,10 @@ System.String
 
 ## RELATED LINKS
 
+[New-AzureRmContainerRegistryWebhook](New-AzureRmContainerRegistryWebhook.md)
+
+[Get-AzureRmContainerRegistryWebhook](Get-AzureRmContainerRegistryWebhook.md)
+
+[Update-AzureRmContainerRegistryWebhook](Update-AzureRmContainerRegistryWebhook.md)
+
+[Test-AzureRmContainerRegistryWebhook](Test-AzureRmContainerRegistryWebhook.md)

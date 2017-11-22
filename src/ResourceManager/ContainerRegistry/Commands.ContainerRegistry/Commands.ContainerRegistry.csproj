@@ -89,6 +89,7 @@
     <Compile Include="Models\PSContainerRegistryReplication.cs" />
     <Compile Include="Models\PSContainerRegistryWebhook.cs" />
     <Compile Include="Models\PSContainerRegistryWebhookEvent.cs" />
+    <Compile Include="Models\PSContainerRegistryEventInfo.cs" />
     <Compile Include="Models\ResourceManagerClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

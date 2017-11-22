@@ -16,12 +16,13 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
-    [Cmdlet(VerbsCommon.Remove, ContainerRegistryReplicationNoun, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Remove, ContainerRegistryReplicationNoun, DefaultParameterSetName = NameResourceGroupParameterSet, SupportsShouldProcess = true)]
+    [OutputType(typeof(bool))]
     public class RemoveAzureContainerRegistryReplication : ContainerRegistryCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, ParameterSetName = NameResourceGroupParameterSet, HelpMessage = "Container Registry Replication Name. Default to the location name.")]
         [ValidateNotNullOrEmpty]
-        [Alias(ReplicationNameAlias)]
+        [Alias(ReplicationNameAlias, ResourceNameAlias)]
         public string Name { get; set; }
 
         [Parameter(Position = 1, Mandatory = true, ParameterSetName = NameResourceGroupParameterSet, HelpMessage = "Resource Group Name.")]
@@ -29,7 +30,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         public string ResourceGroupName { get; set; }
 
         [Parameter(Position = 2, Mandatory = true, ParameterSetName = NameResourceGroupParameterSet, HelpMessage = "Container Registry Name.")]
-        [Alias(ContainerRegistryNameAlias, ResourceNameAlias)]
+        [Alias(ContainerRegistryNameAlias)]
         [ValidateNotNullOrEmpty]
         public string RegistryName { get; set; }
 
@@ -44,31 +45,29 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(Name, "Delete the replication from the container registry"))
+            if (string.Equals(ParameterSetName, ReplicationObjectParameterSet))
             {
-                if(string.Equals(ParameterSetName, ReplicationObjectParameterSet))
+                ResourceId = Replicatoin.Id;
+            }
+            if (MyInvocation.BoundParameters.ContainsKey("ResourceId") || !string.IsNullOrWhiteSpace(ResourceId))
+            {
+                string resourceGroup, registryName, childResourceName;
+                if (!ConversionUtilities.TryParseRegistryRelatedResourceId(ResourceId, out resourceGroup, out registryName, out childResourceName)
+                    || string.IsNullOrEmpty(childResourceName))
                 {
-                    ResourceId = Replicatoin.Id;
-                }
-                if (MyInvocation.BoundParameters.ContainsKey("ResourceId") || !string.IsNullOrWhiteSpace(ResourceId))
-                {
-                    string resourceGroup, registryName, childResourceName;
-                    if(!ConversionUtilities.TryParseRegistryRelatedResourceId(ResourceId, out resourceGroup, out registryName, out childResourceName)
-                        || string.IsNullOrEmpty(childResourceName))
-                    {
-                        WriteInvalidResourceIdError(InvalidReplicationResourceIdErrorMessage);
-                        return;
-                    }
-
-                    ResourceGroupName = resourceGroup;
-                    RegistryName = registryName;
-                    Name = childResourceName;
+                    WriteInvalidResourceIdError(InvalidReplicationResourceIdErrorMessage);
+                    return;
                 }
 
-                if (ShouldProcess(Name, "Remove Container Registry Replication"))
-                {
-                    RegistryClient.DeleteReplication(ResourceGroupName, RegistryName, Name);
-                }
+                ResourceGroupName = resourceGroup;
+                RegistryName = registryName;
+                Name = childResourceName;
+            }
+
+            if (ShouldProcess(Name, "Delete the replication from the container registry. This will also delete all the webhooks in this replication."))
+            {
+                RegistryClient.DeleteReplication(ResourceGroupName, RegistryName, Name);
+                WriteObject(true);
             }
         }
     }

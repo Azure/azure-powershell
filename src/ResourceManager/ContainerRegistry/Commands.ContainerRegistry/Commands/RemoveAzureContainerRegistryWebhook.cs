@@ -16,12 +16,13 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
-    [Cmdlet(VerbsCommon.Remove, ContainerRegistryWebhookNoun, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Remove, ContainerRegistryWebhookNoun, DefaultParameterSetName = NameResourceGroupParameterSet, SupportsShouldProcess = true)]
+    [OutputType(typeof(bool))]
     public class RemoveAzureContainerRegistryWebhook : ContainerRegistryCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, ParameterSetName = NameResourceGroupParameterSet, HelpMessage = "Webhook Name.")]
         [ValidateNotNullOrEmpty]
-        [Alias(WebhookNameAlias)]
+        [Alias(WebhookNameAlias, ResourceNameAlias)]
         public string Name { get; set; }
 
         [Parameter(Position = 1, Mandatory = true, ParameterSetName = NameResourceGroupParameterSet, HelpMessage = "Resource Group Name.")]
@@ -29,7 +30,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         public string ResourceGroupName { get; set; }
 
         [Parameter(Position = 2, Mandatory = true, ParameterSetName = NameResourceGroupParameterSet, HelpMessage = "Container Registry Name.")]
-        [Alias(ContainerRegistryNameAlias, ResourceNameAlias)]
+        [Alias(ContainerRegistryNameAlias)]
         [ValidateNotNullOrEmpty]
         public string RegistryName { get; set; }
 
@@ -68,6 +69,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
                 if (ShouldProcess(Name, "Remove Container Registry Webhook"))
                 {
                     RegistryClient.DeleteWebhook(ResourceGroupName, RegistryName, Name);
+                    WriteObject(true);
                 }
             }
         }

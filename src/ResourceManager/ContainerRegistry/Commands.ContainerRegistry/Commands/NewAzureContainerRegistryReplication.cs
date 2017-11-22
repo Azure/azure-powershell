@@ -18,7 +18,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
-    [Cmdlet(VerbsCommon.New, ContainerRegistryReplicationNoun, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.New, ContainerRegistryReplicationNoun, DefaultParameterSetName = NameResourceGroupParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSContainerRegistryReplication))]
     public class NewAzureContainerRegistryReplication : ContainerRegistryCmdletBase
     {
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         public string ResourceGroupName { get; set; }
 
         [Parameter(Position = 1, Mandatory = true, ParameterSetName = NameResourceGroupParameterSet, HelpMessage = "Container Registry Name.")]
-        [Alias(ContainerRegistryNameAlias, ResourceNameAlias)]
+        [Alias(ContainerRegistryNameAlias)]
         [ValidateNotNullOrEmpty]
         public string RegistryName { get; set; }
 
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
 
         [Parameter(Mandatory = false, HelpMessage = "Container Registry Replication Name. Default to the location name.")]
         [ValidateNotNullOrEmpty]
-        [Alias(ReplicationNameAlias)]
+        [Alias(ReplicationNameAlias, ResourceNameAlias)]
         public string Name { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Container Registry Tags.")]
@@ -57,32 +57,32 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
 
         public override void ExecuteCmdlet()
         {
+            if (string.Equals(ParameterSetName, RegistryObjectParameterSet))
+            {
+                ResourceGroupName = Registry.ResourceGroupName;
+                RegistryName = Registry.Name;
+            }
+            else if (MyInvocation.BoundParameters.ContainsKey("ResourceId") || !string.IsNullOrWhiteSpace(ResourceId))
+            {
+                string resourceGroup, registryName, childResourceName;
+                if (!ConversionUtilities.TryParseRegistryRelatedResourceId(ResourceId, out resourceGroup, out registryName, out childResourceName))
+                {
+                    WriteInvalidResourceIdError(InvalidRegistryResourceIdErrorMessage);
+                    return;
+                }
+
+                ResourceGroupName = resourceGroup;
+                RegistryName = registryName;
+            }
+
+            var tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
+            if (string.IsNullOrEmpty(Name))
+            {
+                Name = Location.Replace(" ", string.Empty).ToLower();
+            }
+
             if (ShouldProcess(Name, "Create a replication for the container registry"))
             {
-                if(string.Equals(ParameterSetName, RegistryObjectParameterSet))
-                {
-                    ResourceGroupName = Registry.ResourceGroupName;
-                    RegistryName = Registry.Name;
-                }
-                else if (MyInvocation.BoundParameters.ContainsKey("ResourceId") || !string.IsNullOrWhiteSpace(ResourceId))
-                {
-                    string resourceGroup, registryName, childResourceName;
-                    if(!ConversionUtilities.TryParseRegistryRelatedResourceId(ResourceId, out resourceGroup, out registryName, out childResourceName))
-                    {
-                        WriteInvalidResourceIdError(InvalidRegistryResourceIdErrorMessage);
-                        return;
-                    }
-
-                    ResourceGroupName = resourceGroup;
-                    RegistryName = registryName;
-                }
-
-                var tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
-                if (string.IsNullOrEmpty(Name))
-                {
-                    Name = Location.Replace(" ", string.Empty).ToLower();
-                }
-
                 var replication = RegistryClient.CreateReplication(ResourceGroupName, RegistryName, Name, Location, tags);
                 WriteObject(new PSContainerRegistryReplication(replication));
             }

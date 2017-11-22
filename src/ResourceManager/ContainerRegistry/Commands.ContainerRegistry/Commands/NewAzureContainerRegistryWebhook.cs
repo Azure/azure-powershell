@@ -20,13 +20,13 @@ using Microsoft.Azure.Management.ContainerRegistry.Models;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
-    [Cmdlet(VerbsCommon.New, ContainerRegistryWebhookNoun, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.New, ContainerRegistryWebhookNoun, DefaultParameterSetName = NameResourceGroupParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSContainerRegistryWebhook))]
     public class NewAzureContainerRegistryWebhook : ContainerRegistryCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "Webhook Name.")]
         [ValidateNotNullOrEmpty]
-        [Alias(WebhookNameAlias)]
+        [Alias(WebhookNameAlias, ResourceNameAlias)]
         public string Name { get; set; }
 
         [Parameter(Position = 1, Mandatory = true, ParameterSetName = NameResourceGroupParameterSet, HelpMessage = "Resource Group Name.")]
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         public string ResourceGroupName { get; set; }
 
         [Parameter(Position = 2, Mandatory = true, ParameterSetName = NameResourceGroupParameterSet, HelpMessage = "Container Registry Name.")]
-        [Alias(ContainerRegistryNameAlias, ResourceNameAlias)]
+        [Alias(ContainerRegistryNameAlias)]
         [ValidateNotNullOrEmpty]
         public string RegistryName { get; set; }
 
@@ -83,40 +83,40 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
 
         public override void ExecuteCmdlet()
         {
+            if (string.Equals(ParameterSetName, RegistryObjectParameterSet))
+            {
+                ResourceGroupName = Registry.ResourceGroupName;
+                RegistryName = Registry.Name;
+            }
+            else if (MyInvocation.BoundParameters.ContainsKey("ResourceId") || !string.IsNullOrWhiteSpace(ResourceId))
+            {
+                string resourceGroup, registryName, childResourceName;
+                if (!ConversionUtilities.TryParseRegistryRelatedResourceId(ResourceId, out resourceGroup, out registryName, out childResourceName))
+                {
+                    WriteInvalidResourceIdError(InvalidRegistryResourceIdErrorMessage);
+                    return;
+                }
+
+                ResourceGroupName = resourceGroup;
+                RegistryName = registryName;
+            }
+
+            var tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
+            var headers = ConversionUtilities.ToDictionary(Header);
+
+            var parameters = new WebhookCreateParameters()
+            {
+                Actions = Action,
+                CustomHeaders = headers,
+                ServiceUri = Uri?.ToString(),
+                Tags = tags,
+                Status = Status ?? WebhookStatus.Enabled,
+                Scope = Scope,
+                Location = Location ?? RegistryClient.GetRegistryLocation(ResourceGroupName, RegistryName)
+            };
+
             if (ShouldProcess(Name, "Create a webhook for the container registry"))
             {
-                if (string.Equals(ParameterSetName, RegistryObjectParameterSet))
-                {
-                    ResourceGroupName = Registry.ResourceGroupName;
-                    RegistryName = Registry.Name;
-                }
-                else if (MyInvocation.BoundParameters.ContainsKey("ResourceId") || !string.IsNullOrWhiteSpace(ResourceId))
-                {
-                    string resourceGroup, registryName, childResourceName;
-                    if(!ConversionUtilities.TryParseRegistryRelatedResourceId(ResourceId, out resourceGroup, out registryName, out childResourceName))
-                    {
-                        WriteInvalidResourceIdError(InvalidRegistryResourceIdErrorMessage);
-                        return;
-                    }
-
-                    ResourceGroupName = resourceGroup;
-                    RegistryName = registryName;
-                }
-
-                var tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
-                var headers = ConversionUtilities.ToDictionary(Header);
-                
-                var parameters = new WebhookCreateParameters()
-                {
-                    Actions = Action,
-                    CustomHeaders = headers,
-                    ServiceUri = Uri?.ToString(),
-                    Tags = tags,
-                    Status = Status ?? WebhookStatus.Enabled,
-                    Scope = Scope,
-                    Location = Location ?? RegistryClient.GetRegistryLocation(ResourceGroupName, RegistryName)
-                };
-
                 var webhook = RegistryClient.CreateWebhook(ResourceGroupName, RegistryName, Name, parameters);
                 WriteObject(new PSContainerRegistryWebhook(webhook));
             }

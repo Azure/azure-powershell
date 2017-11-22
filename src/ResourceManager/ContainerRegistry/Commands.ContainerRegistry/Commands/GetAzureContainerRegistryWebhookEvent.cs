@@ -18,21 +18,20 @@ using Microsoft.Azure.Management.ContainerRegistry.Models;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
-    [Cmdlet(VerbsCommon.Get, ContainerRegistryWebhookEventNoun)]
+    [Cmdlet(VerbsCommon.Get, ContainerRegistryWebhookEventNoun, DefaultParameterSetName = ListWebhookEventsByNameResourceGroupParameterSet)]
     [OutputType(typeof(IList<PSContainerRegistryWebhookEvent>))]
     public class GetAzureContainerRegistryWebhookEvent : ContainerRegistryCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, ParameterSetName = ListWebhookEventsByNameResourceGroupParameterSet, HelpMessage = "Webhook Name.")]
         [ValidateNotNullOrEmpty]
-        [Alias(WebhookNameAlias)]
-        public string Name { get; set; }
+        public string WebhookName { get; set; }
 
         [Parameter(Position = 1, Mandatory = true, ParameterSetName = ListWebhookEventsByNameResourceGroupParameterSet, HelpMessage = "Resource Group Name.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Parameter(Position = 2, Mandatory = true, ParameterSetName = ListWebhookEventsByNameResourceGroupParameterSet, HelpMessage = "Container Registry Name.")]
-        [Alias(ContainerRegistryNameAlias, ResourceNameAlias)]
+        [Alias(ContainerRegistryNameAlias)]
         [ValidateNotNullOrEmpty]
         public string RegistryName { get; set; }
 
@@ -62,11 +61,11 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
                 }
 
                 ResourceGroupName = resourceGroup;
-                Name = childResourceName;
+                WebhookName = childResourceName;
                 RegistryName = registryName;
             }
 
-            var webhookEvents = RegistryClient.ListAllWebhookEvent(ResourceGroupName, RegistryName, Name);
+            var webhookEvents = RegistryClient.ListAllWebhookEvent(ResourceGroupName, RegistryName, WebhookName);
             WriteObject(webhookEvents, true);
         }
     }

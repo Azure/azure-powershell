@@ -15,18 +15,19 @@ Triggers a webhook ping event.
 ### ResourceIdParameterSet (Default)
 ```
 Test-AzureRmContainerRegistryWebhook -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### NameResourceGroupParameterSet
 ```
 Test-AzureRmContainerRegistryWebhook [-Name] <String> [-ResourceGroupName] <String> [-RegistryName] <String>
- [-DefaultProfile <IAzureContextContainer>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### WebhookObjectParameterSet
 ```
 Test-AzureRmContainerRegistryWebhook -Webhook <PSContainerRegistryWebhook>
- [-DefaultProfile <IAzureContextContainer>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,8 +35,8 @@ The Test-AzureRmContainerRegistryWebhook cmdlet triggers a webhook ping event.
 
 ## EXAMPLES
 
-### Example 1: Trigger a webhook ping event.
-```
+### Example 1: Triggers a webhook ping event.
+```powershell
 PS C:\> Test-AzureRmContainerRegistryWebhook -ResourceGroupName "MyResourceGroup" -RegistryName "MyRegistry" -Name "webhook001"
 
 Id
@@ -43,7 +44,7 @@ Id
 c5950af0-c8d0-4924-9873-1ba7da5cbf83
 ```
 
-Trigger a webhook ping event.
+Triggers a webhook ping event.
 
 ## PARAMETERS
 
@@ -68,7 +69,7 @@ Webhook Name.
 ```yaml
 Type: String
 Parameter Sets: NameResourceGroupParameterSet
-Aliases: WebhookName
+Aliases: WebhookName, ResourceName
 
 Required: True
 Position: 0
@@ -83,7 +84,7 @@ Container Registry Name.
 ```yaml
 Type: String
 Parameter Sets: NameResourceGroupParameterSet
-Aliases: ContainerRegistryName, ResourceName
+Aliases: ContainerRegistryName
 
 Required: True
 Position: 2
@@ -137,18 +138,26 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook
 System.String
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Management.ContainerRegistry.Models.EventInfo
-
 
 ## NOTES
 
 ## RELATED LINKS
 
+[New-AzureRmContainerRegistryWebhook](New-AzureRmContainerRegistryWebhook.md)
+
+[Get-AzureRmContainerRegistryWebhook](Get-AzureRmContainerRegistryWebhook.md)
+
+[Update-AzureRmContainerRegistryWebhook](Update-AzureRmContainerRegistryWebhook.md)
+
+[Remove-AzureRmContainerRegistryWebhook](Remove-AzureRmContainerRegistryWebhook.md)

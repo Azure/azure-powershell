@@ -12,25 +12,26 @@ Creates a container registry webhook.
 
 ## SYNTAX
 
-### NameResourceGroupParameterSet
+### NameResourceGroupParameterSet (Default)
 ```
 New-AzureRmContainerRegistryWebhook [-Name] <String> [-ResourceGroupName] <String> [-RegistryName] <String>
  [-Uri] <Uri> [-Action] <String[]> [-Header <Hashtable>] [-Tag <Hashtable>] [-Status <String>]
  [-Scope <String>] [-Location <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### RegistryObjectParameterSet
 ```
 New-AzureRmContainerRegistryWebhook [-Name] <String> [-Uri] <Uri> [-Action] <String[]>
  -Registry <PSContainerRegistry> [-Header <Hashtable>] [-Tag <Hashtable>] [-Status <String>] [-Scope <String>]
- [-Location <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-Location <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
 New-AzureRmContainerRegistryWebhook [-Name] <String> [-Uri] <Uri> [-Action] <String[]> [-Header <Hashtable>]
  [-Tag <Hashtable>] [-Status <String>] [-Scope <String>] [-Location <String>] -ResourceId <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,10 +43,10 @@ The New-AzureRmContainerRegistryWebhook cmdlet creates a container registry webh
 ```
 PS C:\> New-AzureRmContainerRegistryWebhook -ResourceGroupName "MyResourceGroup" -RegistryName "MyRegistry" -Name "webhook001" -Uri http://www.bing.com -Action Delete,Push -Header @{SpecialHeader='headerVal'} -Tag @{Key="val"} -Location "east us" -Status Enabled -Scope "foo:*"
 
-Name            Location   Status     Scope           Action         Provisioni ServiceUri                     CustomH
-                                                                      ngState                                   eaders
-----            --------   ------     -----           -------         ---------- ----------                     -------
-webhook001      eastus     enabled    foo:*           {Delete, Push}  Succeeded
+Name            Location   Status     Scope           Actions         Provisioni ServiceUri
+                                                                      ngState
+----            --------   ------     -----           -------         ---------- ----------
+webhook001      westus     enabled    foo:*           {push, delete}  Succeeded
 ```
 
 Create a container registry webhook.
@@ -135,7 +136,7 @@ Webhook Name.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: WebhookName
+Aliases: WebhookName, ResourceName
 
 Required: True
 Position: 0
@@ -165,7 +166,7 @@ Container Registry Name.
 ```yaml
 Type: String
 Parameter Sets: NameResourceGroupParameterSet
-Aliases: ContainerRegistryName, ResourceName
+Aliases: ContainerRegistryName
 
 Required: True
 Position: 2
@@ -220,7 +221,7 @@ Accept wildcard characters: False
 ```
 
 ### -Status
-Webhook status
+Webhook status, default value is enabled
 
 ```yaml
 Type: String
@@ -281,17 +282,25 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### System.String
-
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook
 
-
 ## NOTES
 
 ## RELATED LINKS
 
+[Get-AzureRmContainerRegistryWebhook](Get-AzureRmContainerRegistryWebhook.md)
+
+[Update-AzureRmContainerRegistryWebhook](Update-AzureRmContainerRegistryWebhook.md)
+
+[Remove-AzureRmContainerRegistryWebhook](Remove-AzureRmContainerRegistryWebhook.md)
+
+[Test-AzureRmContainerRegistryWebhook](Test-AzureRmContainerRegistryWebhook.md)

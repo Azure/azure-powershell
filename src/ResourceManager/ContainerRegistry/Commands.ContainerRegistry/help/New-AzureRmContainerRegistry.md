@@ -15,7 +15,7 @@ Creates a container registry.
 ```
 New-AzureRmContainerRegistry [-ResourceGroupName] <String> [-Name] <String> [-Sku] <String>
  [-Location <String>] [-EnableAdminUser] [-Tag <Hashtable>] [-StorageAccountName <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,63 +24,48 @@ The New-AzureRmContainerRegistry cmdlet creates a container registry.
 ## EXAMPLES
 
 ### Example 1: Create a container registry with a new storage account.
-```
+```powershell
 PS C:\>New-AzureRmContainerRegistry -ResourceGroupName "MyResourceGroup" -Name "MyRegistry" -Sku "Basic"
 
    Container registry location: eastus
 
-Registry Name        Sku        LoginServer                    CreationDate         Provisioni AdminUserE StorageAccountName
-                                                                                    ngState    nabled
--------------        ---        -----------                    ------------         ---------- ---------- ------------------
-MyRegistry           Basic      myregistry.azurecr.io          11/20/2017 10:05:... Succeeded  False
+Registry Name     Sku        LoginServer               CreationDate               Provisioni AdminUserE StorageAccountN
+                                                                                  ngState    nabled     ame
+-------------     ---        -----------               ------------               ---------- ---------- ---------------
+myregistry        Premium    myregistry.azurecr.io     10/31/2017 6:49:31 PM      Succeeded  True
 ```
 
 This command creates a container registry with a new storage account in the resource group \`MyResourceGroup\`.
 
 ### Example 2: Create a container registry with admin user enabled.
-```
+```powershell
 PS C:\>New-AzureRmContainerRegistry -ResourceGroupName "MyResourceGroup" -Name "MyRegistry" -Sku "Basic" -EnableAdminUser
 
   Container registry location: eastus
 
-Registry Name        Sku        LoginServer                    CreationDate         Provisioni AdminUserE StorageAccountName
-                                                                                    ngState    nabled
--------------        ---        -----------                    ------------         ---------- ---------- ------------------
-MyRegistry           Basic      myregistry.azurecr.io          11/20/2017 10:05:... Succeeded  True
+Registry Name     Sku        LoginServer               CreationDate               Provisioni AdminUserE StorageAccountN
+                                                                                  ngState    nabled     ame
+-------------     ---        -----------               ------------               ---------- ---------- ---------------
+myregistry        Premium    myregistry.azurecr.io     10/31/2017 6:49:31 PM      Succeeded  True
 ```
 
 This command creates a container registry with admin user enabled.
 
 ### Example 3: Create a container registry with an existing storage account.
-```
+```powershell
 PS C:\>New-AzureRmContainerRegistry -ResourceGroupName "MyResourceGroup" -Name "MyRegistry" -Sku "Basic" -StorageAccountName "mystorageaccount"
 
   Container registry location: eastus
 
-Registry Name        Sku        LoginServer                    CreationDate         Provisioni AdminUserE StorageAccountName
-                                                                                    ngState    nabled
--------------        ---        -----------                    ------------         ---------- ---------- ------------------
-MyRegistry           Basic      myregistry.azurecr.io          11/20/2017 10:05:... Succeeded  True       mystorageaccount
+Registry Name     Sku        LoginServer               CreationDate               Provisioni AdminUserE StorageAccountN
+                                                                                  ngState    nabled     ame
+-------------     ---        -----------               ------------               ---------- ---------- ---------------
+myregistry        Premium    myregistry.azurecr.io     10/31/2017 6:49:31 PM      Succeeded  True
 ```
 
 This command creates a container registry with an existing storage account \`mystorageaccount\` in the same subscription.
 
 ## PARAMETERS
-
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
-
-```yaml
-Type: IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -EnableAdminUser
 Enable admin user for the container registry.
@@ -124,7 +109,7 @@ Aliases: ContainerRegistryName, RegistryName, ResourceName
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -139,7 +124,7 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -224,6 +209,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ## OUTPUTS
@@ -234,9 +237,9 @@ Accept wildcard characters: False
 
 ## RELATED LINKS
 
-[Get-AzureRmContainerRegistry]()
+[Get-AzureRmContainerRegistry](Get-AzureRmContainerRegistry.md)
 
-[Update-AzureRmContainerRegistry]()
+[Update-AzureRmContainerRegistry](Update-AzureRmContainerRegistry.md)
 
-[Remove-AzureRmContainerRegistry]()
+[Remove-AzureRmContainerRegistry](Remove-AzureRmContainerRegistry.md)
 
