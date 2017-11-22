@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             ParameterSetName = DiagnosticParameterSetName)]
         public SwitchParameter ForceBinary { get; set; }
 
-        [Obsolete]
+        [Obsolete("Parameter PerFileThreadCount of ImportAzureRmDataLakeStoreItem is deprecated. This parameter will be removed in future releases. Please use Concurrency parameter instead.")]
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 6, Mandatory = false,
             HelpMessage =
                 "Indicates the maximum number of threads to use per file.  Default will be computed as a best effort based on folder and file size",
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             ParameterSetName = DiagnosticParameterSetName)]
         public int PerFileThreadCount { get; set; } = -1;
 
-        [Obsolete]
+        [Obsolete("Parameter ConcurrentFileCount of ImportAzureRmDataLakeStoreItem is deprecated. This parameter will be removed in future releases. Please use Concurrency parameter instead.")]
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 7, Mandatory = false,
             HelpMessage = "Indicates the maximum number of files to upload in parallel for a folder upload.  Default will be computed as a best effort based on folder and file size",
             ParameterSetName = BaseParameterSetName)]
@@ -114,11 +114,11 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             ParameterSetName = DiagnosticParameterSetName)]
         public SwitchParameter Force { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 9, Mandatory = false,
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
             HelpMessage =
                 "Indicates the number of files or chunks to upload in parallel. Default will be computed as a best effort based on system specifications.",
             ParameterSetName = BaseParameterSetName)]
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 9, Mandatory = false,
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
             HelpMessage =
                 "Indicates the number of files or chunks to upload in parallel. Default will be computed as a best effort based on system specification.",
             ParameterSetName = DiagnosticParameterSetName)]

@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             HelpMessage = "Indicates the user wants a recursive delete of the folder.")]
         public SwitchParameter Recurse { get; set; }
 
-        [Obsolete]
+        [Obsolete("Parameter Clean of RemoveAzureDataLakeStoreItem is deprecated. This parameter will be removed in future releases.")]
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false,
             HelpMessage =
                 "Indicates the user wants to remove all of the contents of the folder, but not the folder itself")]

@@ -12,14 +12,14 @@ Sets or removes the expire time for a file in an Azure Data Lake Store account.
 
 ## SYNTAX
 
-### Set expiry as Absolute or NeverExpire (Default)
+### SetAbsoluteNeverExpireExpiry (Default)
 ```
 Set-AzureRmDataLakeStoreItemExpiry [-Account] <String> [-Path] <DataLakeStorePathInstance>
  [[-Expiration] <DateTimeOffset>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### Set expiry as relative to creation or now
+### SetRelativeExpiry
 ```
 Set-AzureRmDataLakeStoreItemExpiry [-Account] <String> [-Path] <DataLakeStorePathInstance>
  [[-RelativeFileExpiryOption] <PathRelativeExpiryOptions>] [[-RelativeTime] <Int64>]
