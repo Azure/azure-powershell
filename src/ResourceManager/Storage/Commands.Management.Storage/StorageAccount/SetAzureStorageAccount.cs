@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
     /// <summary>
     /// Lists all storage services underneath the subscription.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, StorageAccountNounStr, SupportsShouldProcess = true, DefaultParameterSetName = StorageEncryptionParameterSet), OutputType(typeof(StorageModels.StorageAccount))]
+    [Cmdlet(VerbsCommon.Set, StorageAccountNounStr, SupportsShouldProcess = true, DefaultParameterSetName = StorageEncryptionParameterSet), OutputType(typeof(PSStorageAccount))]
     public class SetAzureStorageAccountCommand : StorageAccountBaseCmdlet
     {
 

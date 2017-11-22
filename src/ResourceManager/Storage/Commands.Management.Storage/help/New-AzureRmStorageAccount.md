@@ -307,7 +307,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Management.Storage.Models.StorageAccount
+### Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount
 
 ## NOTES
 

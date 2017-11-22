@@ -22,7 +22,7 @@ using Microsoft.Azure.Commands.Management.Storage.Models;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
-    [Cmdlet(VerbsCommon.New, StorageAccountNounStr), OutputType(typeof(StorageModels.StorageAccount))]
+    [Cmdlet(VerbsCommon.New, StorageAccountNounStr), OutputType(typeof(PSStorageAccount))]
     public class NewAzureStorageAccountCommand : StorageAccountBaseCmdlet
     {
         [Parameter(
