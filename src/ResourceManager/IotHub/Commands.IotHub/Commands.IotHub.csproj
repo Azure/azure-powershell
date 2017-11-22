@@ -35,18 +35,35 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.IotHub, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.IotHub.1.1.2\lib\net452\Microsoft.Azure.Management.IotHub.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.IotHub.1.1.3\lib\net452\Microsoft.Azure.Management.IotHub.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.10\lib\net452\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.3.3.10\lib\net452\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\IotHubBaseCmdlet.cs" />
     <Compile Include="Common\IotHubUtils.cs" />
+    <Compile Include="IotHub\AddAzureRmIotHubCertificate.cs" />
     <Compile Include="IotHub\AddAzureRmIotHubKey.cs" />
     <Compile Include="IotHub\GetAzureRmEventHubConsumerGroup.cs" />
+    <Compile Include="IotHub\GetAzureRmIotHubCertificate.cs" />
+    <Compile Include="IotHub\GetAzureRmIotHubCertificateVerificationCode.cs" />
     <Compile Include="IotHub\GetAzureRmIotHubConnectionString.cs" />
     <Compile Include="IotHub\GetAzureRmIotHubJob.cs" />
     <Compile Include="IotHub\GetAzureRmIotHubKey.cs" />
+    <Compile Include="IotHub\GetAzureRmIotHubOperations.cs" />
     <Compile Include="IotHub\GetAzureRmIotHubQuotaMetric.cs" />
     <Compile Include="IotHub\GetAzureRmIotHub.cs" />
     <Compile Include="IotHub\GetAzureRmIotHubRegistryStatistic.cs" />
@@ -56,11 +73,18 @@
     <Compile Include="IotHub\NewAzureRmIotHubExportDevices.cs" />
     <Compile Include="IotHub\NewAzureRmIotHubImportDevices.cs" />
     <Compile Include="IotHub\RemoveAzureRmIotHub.cs" />
+    <Compile Include="IotHub\RemoveAzureRmIotHubCertificate.cs" />
     <Compile Include="IotHub\RemoveAzureRmIotHubEventHubConsumerGroup.cs" />
     <Compile Include="IotHub\RemoveAzureRmIotHubKey.cs" />
     <Compile Include="IotHub\SetAzureRmIotHub.cs" />
+    <Compile Include="IotHub\SetAzureRmIotHubVerifiedCertificate.cs" />
     <Compile Include="Models\PSAccessRights.cs" />
     <Compile Include="Models\PSCapabilities.cs" />
+    <Compile Include="Models\PSCertificateDescription.cs" />
+    <Compile Include="Models\PSCertificateListDescription.cs" />
+    <Compile Include="Models\PSCertificateProperties.cs" />
+    <Compile Include="Models\PSCertificatePropertiesWithNonce.cs" />
+    <Compile Include="Models\PSCertificateWithNonceDescription.cs" />
     <Compile Include="Models\PSCloudToDeviceProperties.cs" />
     <Compile Include="Models\PSEventHubInputProperties.cs" />
     <Compile Include="Models\PSEventHubProperties.cs" />
@@ -82,6 +106,8 @@
     <Compile Include="Models\PSIotHubSkuTier.cs" />
     <Compile Include="Models\PSIotHubJobStatus.cs" />
     <Compile Include="Models\PSMessagingEndpointProperties.cs" />
+    <Compile Include="Models\PSOperation.cs" />
+    <Compile Include="Models\PSOperationDisplay.cs" />
     <Compile Include="Models\PSOperationsMonitoringProperties.cs" />
     <Compile Include="Models\PSFallbackRouteProperties.cs" />
     <Compile Include="Models\PSRoutingServiceBusQueueEndpointProperties.cs" />

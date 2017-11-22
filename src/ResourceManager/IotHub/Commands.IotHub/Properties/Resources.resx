@@ -138,6 +138,9 @@
   <data name="RemoveIotHub" xml:space="preserve">
     <value>Remove IoT Hub</value>
   </data>
+  <data name="RemoveIotHubCertificate" xml:space="preserve">
+    <value>Remove IoT Hub Certificate</value>
+  </data>
   <data name="RemoveIotHubKey" xml:space="preserve">
     <value>Remove IoT Hub Key</value>
   </data>
