@@ -59,6 +59,7 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
         /// The resource group name of the profile.
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group of the Azure CDN profile will be created in.")]
+        [ResourceGroupCompleter()]
         public string ResourceGroupName { get; set; }
 
         /// <summary>

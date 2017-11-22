@@ -46,6 +46,7 @@ namespace Microsoft.Azure.Commands.ContainerInstance
             ParameterSetName = CreateContainerGroupWithRegistryParamSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

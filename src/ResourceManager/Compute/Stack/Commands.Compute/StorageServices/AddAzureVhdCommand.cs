@@ -24,6 +24,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Rsrc = Microsoft.Azure.Commands.Compute.Properties.Resources;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Compute.StorageServices
 {
@@ -39,6 +40,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             Position = 0,
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

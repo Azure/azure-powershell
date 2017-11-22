@@ -22,6 +22,7 @@ using Microsoft.Azure.Commands.Media.Models;
 using Microsoft.Azure.Management.Media;
 using Microsoft.Azure.Management.Media.Models;
 using RestMediaService = Microsoft.Azure.Management.Media.Models.MediaService;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Media.MediaService
 {
@@ -38,6 +39,7 @@ namespace Microsoft.Azure.Commands.Media.MediaService
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
