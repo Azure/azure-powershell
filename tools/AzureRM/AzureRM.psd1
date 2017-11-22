@@ -65,7 +65,7 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '4.0.0';
                @{ModuleName = 'AzureRM.CognitiveServices'; RequiredVersion = '0.9.0'; }, 
                @{ModuleName = 'AzureRM.Compute'; RequiredVersion = '4.0.1'; }, 
                @{ModuleName = 'AzureRM.Consumption'; RequiredVersion = '0.3.0'; }, 
-               @{ModuleName = 'AzureRM.ContainerInstance'; RequiredVersion = '0.1.0'; }, 
+               @{ModuleName = 'AzureRM.ContainerInstance'; RequiredVersion = '0.1.1'; },
                @{ModuleName = 'AzureRM.ContainerRegistry'; RequiredVersion = '0.3.0'; }, 
                @{ModuleName = 'AzureRM.DataFactories'; RequiredVersion = '4.0.1'; }, 
                @{ModuleName = 'AzureRM.DataFactoryV2'; RequiredVersion = '0.3.0'; }, 
