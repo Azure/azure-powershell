@@ -194,5 +194,25 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Common
                 MaxValue = iotHubQuotaMetric.Name.Equals(TotalDeviceCountMetricName, StringComparison.OrdinalIgnoreCase) ? UnlimitedString : ((long)iotHubQuotaMetric.MaxValue).ToString()
             };
         }
+
+        public static IEnumerable<PSOperation> ToPSOperations(IEnumerable<Operation> operations)
+        {
+            return ConvertObject<IEnumerable<Operation>, IEnumerable<PSOperation>>(operations.ToList());
+        }
+
+        public static PSCertificateDescription ToPSCertificateDescription(CertificateDescription certificateDescription)
+        {
+            return ConvertObject<CertificateDescription, PSCertificateDescription>(certificateDescription);
+        }
+
+        public static IList<PSCertificateDescription> ToPSCertificateDescription(IList<CertificateDescription> certificateDescriptions)
+        {
+            return ConvertObject<IList<CertificateDescription>, IList<PSCertificateDescription>>(certificateDescriptions);
+        }
+
+        public static PSCertificateWithNonceDescription ToPSCertificateWithNonceDescription(CertificateWithNonceDescription certificateWithNonceDescription)
+        {
+            return ConvertObject<CertificateWithNonceDescription, PSCertificateWithNonceDescription>(certificateWithNonceDescription);
+        }
     }
 }

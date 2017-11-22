@@ -124,6 +124,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Remove IoT Hub Certificate.
+        /// </summary>
+        internal static string RemoveIotHubCertificate {
+            get {
+                return ResourceManager.GetString("RemoveIotHubCertificate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Remove IoT Hub Key.
         /// </summary>
         internal static string RemoveIotHubKey {
