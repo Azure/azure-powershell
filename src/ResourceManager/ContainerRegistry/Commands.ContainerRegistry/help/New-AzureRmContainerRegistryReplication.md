@@ -12,23 +12,23 @@ Creates a container registry replication.
 
 ## SYNTAX
 
-### NameResourceGroupParameterSet
+### NameResourceGroupParameterSet (Default)
 ```
 New-AzureRmContainerRegistryReplication [-ResourceGroupName] <String> [-RegistryName] <String>
  -Location <String> [-Name <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### RegistryObjectParameterSet
 ```
 New-AzureRmContainerRegistryReplication -Registry <PSContainerRegistry> -Location <String> [-Name <String>]
- [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
 New-AzureRmContainerRegistryReplication -Location <String> [-Name <String>] [-Tag <Hashtable>]
- -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -103,7 +103,7 @@ Default to the location name.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: ReplicationName
+Aliases: ReplicationName, ResourceName
 
 Required: False
 Position: Named
@@ -133,7 +133,7 @@ Container Registry Name.
 ```yaml
 Type: String
 Parameter Sets: NameResourceGroupParameterSet
-Aliases: ContainerRegistryName, ResourceName
+Aliases: ContainerRegistryName
 
 Required: True
 Position: 1
@@ -203,17 +203,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### System.String
-
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryReplication
 
-
 ## NOTES
 
 ## RELATED LINKS
 
+[Get-AzureRmContainerRegistryReplication](New-AzureRmContainerRegistryReplication.md)
+
+[Remove-AzureRmContainerRegistryReplication](Remove-AzureRmContainerRegistryReplication.md)

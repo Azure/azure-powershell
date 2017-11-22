@@ -152,44 +152,5 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
 
             return template.ToJsonString();
         }
-
-        internal static string DeploymentTemplateExistingStorage(
-            string registryName,
-            string registryLocation,
-            string registrySku,
-            string storageAccountId,
-            bool? adminUserEnabled,
-            IDictionary<string, string> tags = null)
-        {
-            var template = new DeploymentTemplate
-            {
-                Schema = "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-                ContentVersion = "1.0.0.0",
-                Resources = new AzureResource[]
-                {
-                    new RegistryResource
-                    {
-                        Name = registryName,
-                        Location = registryLocation,
-                        ApiVersion = RegistryApiVersion,
-                        Tags = tags,
-                        Sku = new Sku
-                        {
-                            Name = registrySku
-                        },
-                        Properties = new RegistryProperties
-                        {
-                            AdminUserEnabled = adminUserEnabled != null ? adminUserEnabled.Value : false,
-                            StorageAccount = new StorageAccount
-                            {
-                                Id = $"[resourceId('Microsoft.Storage/storageAccounts', '{storageAccountId}')]"
-                            }
-                        }
-                    }
-                }
-            };
-
-            return template.ToJsonString();
-        }
     }
 }

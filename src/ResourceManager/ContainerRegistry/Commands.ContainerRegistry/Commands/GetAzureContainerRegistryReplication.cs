@@ -18,14 +18,14 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
-    [Cmdlet(VerbsCommon.Get, ContainerRegistryReplicationNoun, SupportsShouldProcess = true)]
-    [OutputType(typeof(PSContainerRegistryReplication), typeof(PSContainerRegistryReplication[]))]
+    [Cmdlet(VerbsCommon.Get, ContainerRegistryReplicationNoun, DefaultParameterSetName = ListReplicationByNameResourceGroupParameterSet)]
+    [OutputType(typeof(PSContainerRegistryReplication), typeof(IList<PSContainerRegistryReplication>))]
     public class GetAzureContainerRegistryReplication : ContainerRegistryCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, ParameterSetName = ShowReplicationByNameResourceGroupParameterSet, HelpMessage = "Container Registry Replication Name.")]
         [Parameter(Position = 0, Mandatory = true, ParameterSetName = ShowReplicationByRegistryObjectParameterSet, HelpMessage = "Container Registry Replication Name.")]
         [ValidateNotNullOrEmpty]
-        [Alias(ReplicationNameAlias)]
+        [Alias(ReplicationNameAlias, ResourceNameAlias)]
         public string Name { get; set; }
 
         [Parameter(Position = 1, Mandatory = true, ParameterSetName = ShowReplicationByNameResourceGroupParameterSet, HelpMessage = "Resource Group Name.")]
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
 
         [Parameter(Position = 2, Mandatory = true, ParameterSetName = ShowReplicationByNameResourceGroupParameterSet, HelpMessage = "Container Registry Name.")]
         [Parameter(Position = 2, Mandatory = true, ParameterSetName = ListReplicationByNameResourceGroupParameterSet, HelpMessage = "Container Registry Name.")]
-        [Alias(ContainerRegistryNameAlias, ResourceNameAlias)]
+        [Alias(ContainerRegistryNameAlias)]
         [ValidateNotNullOrEmpty]
         public string RegistryName { get; set; }
 

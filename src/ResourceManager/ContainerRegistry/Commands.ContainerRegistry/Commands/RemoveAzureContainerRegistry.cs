@@ -17,7 +17,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
-    [Cmdlet(VerbsCommon.Remove, ContainerRegistryNoun, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Remove, ContainerRegistryNoun, DefaultParameterSetName = NameResourceGroupParameterSet, SupportsShouldProcess = true)]
+    [OutputType(typeof(bool))]
     public class RemoveAzureContainerRegistry : ContainerRegistryCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, ParameterSetName = NameResourceGroupParameterSet, HelpMessage = "Resource Group Name.")]
@@ -61,6 +62,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
             if (ShouldProcess(Name, "Remove Container Registry"))
             {
                 RegistryClient.DeleteRegistry(ResourceGroupName, Name);
+                WriteObject(true);
             }
         }
     }

@@ -51,6 +51,5 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         public bool? AdminUserEnabled { get; set; }
         public string StorageAccountName { get; set; }
         public IList<RegistryUsage> Usages { get; set; }
-        public IList<PSContainerRegistryReplication> Replications { get; set; }
     }
 }

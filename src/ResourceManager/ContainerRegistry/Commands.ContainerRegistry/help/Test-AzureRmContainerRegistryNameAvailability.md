@@ -14,6 +14,7 @@ Checks the availability of a container registry name.
 
 ```
 Test-AzureRmContainerRegistryNameAvailability [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -21,8 +22,8 @@ The Test-AzureRmContainerRegistryNameAvailability cmdlet checks whether a contai
 
 ## EXAMPLES
 
-### Example 1: Check the availability of a container registry name
-```
+### Example 1: Checks the availability of a container registry name
+```powershell
 PS C:\>Test-AzureRmContainerRegistryNameAvailability -Name 'SomeRegistryName'
 
 NameAvailable Reason Message
@@ -33,6 +34,21 @@ NameAvailable Reason Message
 This command checks the availability of the container registry name \`SomeRegistryName\`.
 
 ## PARAMETERS
+
+### -Name
+Container Registry Name.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: ContainerRegistryName, RegistryName, ResourceName
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure
@@ -49,20 +65,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Container Registry Name.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: ContainerRegistryName, RegistryName, ResourceName
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

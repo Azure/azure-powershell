@@ -18,12 +18,12 @@ using Microsoft.Azure.Management.ContainerRegistry.Models;
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
     [Cmdlet(VerbsDiagnostic.Test, ContainerRegistryWebhookNoun, DefaultParameterSetName = ResourceIdParameterSet)]
-    [OutputType(typeof(EventInfo))]
+    [OutputType(typeof(PSContainerRegistryEventInfo))]
     public class TestAzureContainerRegistryWebhook : ContainerRegistryCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, ParameterSetName = NameResourceGroupParameterSet, HelpMessage = "Webhook Name.")]
         [ValidateNotNullOrEmpty]
-        [Alias(WebhookNameAlias)]
+        [Alias(WebhookNameAlias, ResourceNameAlias)]
         public string Name { get; set; }
 
         [Parameter(Position = 1, Mandatory = true, ParameterSetName = NameResourceGroupParameterSet, HelpMessage = "Resource Group Name.")]
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         public string ResourceGroupName { get; set; }
 
         [Parameter(Position = 2, Mandatory = true, ParameterSetName = NameResourceGroupParameterSet, HelpMessage = "Container Registry Name.")]
-        [Alias(ContainerRegistryNameAlias, ResourceNameAlias)]
+        [Alias(ContainerRegistryNameAlias)]
         [ValidateNotNullOrEmpty]
         public string RegistryName { get; set; }
 
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
             }
 
             var eventInfo = RegistryClient.PingWebhook(ResourceGroupName, RegistryName, Name);
-            WriteObject(eventInfo);
+            WriteObject(new PSContainerRegistryEventInfo(eventInfo));
         }
     }
 }

@@ -14,7 +14,7 @@
         <TableHeaders>
           <TableColumnHeader>
             <Label>Registry Name</Label>
-            <Width>20</Width>
+            <Width>17</Width>
             <Alignment>Left</Alignment>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -24,12 +24,12 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>LoginServer</Label>
-            <Width>30</Width>
+            <Width>25</Width>
             <Alignment>Left</Alignment>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>CreationDate</Label>
-            <Width>20</Width>
+            <Width>26</Width>
             <Alignment>Left</Alignment>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -182,11 +182,6 @@
             <Width>30</Width>
             <Alignment>Left</Alignment>
           </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>CustomHeaders</Label>
-            <Width>20</Width>
-            <Alignment>Left</Alignment>
-          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -221,18 +216,6 @@
                   }
                 </ScriptBlock>
               </TableColumnItem>
-              <TableColumnItem>
-                <ScriptBlock>
-                  if ($_.Config)
-                  {
-                  $_.Config.CustomHeaders;
-                  }
-                  else
-                  {
-                  ""
-                  }
-                </ScriptBlock>
-              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
@@ -250,27 +233,23 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>Request Method</Label>
+            <Label>ID</Label>
             <Alignment>Left</Alignment>
-            <Width>5</Width>
+            <Width>40</Width>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Request Headers</Label>
-            <Width>20</Width>
+            <Label>Action</Label>
+            <Width>8</Width>
             <Alignment>Left</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Timestamp</Label>
+            <Alignment>Left</Alignment>
+            <Width>30</Width>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Response StatusCode</Label>
-            <Alignment>Left</Alignment>
-            <Width>5</Width>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Response Headers</Label>
-            <Width>20</Width>
-            <Alignment>Left</Alignment>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Response Content</Label>
+            <Width>10</Width>
             <Alignment>Left</Alignment>
           </TableColumnHeader>
         </TableHeaders>
@@ -278,19 +257,16 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <ScriptBlock>$_.EventRequestMessage.Method</ScriptBlock>
+                <ScriptBlock>$_.Id</ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
-                <ScriptBlock>$_.EventRequestMessage.Headers</ScriptBlock>
+                <ScriptBlock>$_.EventRequestMessage.Content.Action</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.EventRequestMessage.Content.Timestamp</ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
                 <ScriptBlock>$_.EventResponseMessage.StatusCode</ScriptBlock>
-              </TableColumnItem>
-              <TableColumnItem>
-                <ScriptBlock>$_.EventResponseMessage.Headers</ScriptBlock>
-              </TableColumnItem>
-              <TableColumnItem>
-                <ScriptBlock>$_.EventResponseMessage.Content</ScriptBlock>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

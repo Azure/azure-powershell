@@ -56,11 +56,9 @@ function Test-AzureContainerRegistry
 		Verify-ContainerRegistry $premiumRegistry $resourceGroupName $premiumRegistryName "Premium" $null $false
 
 		# Check registry details
-		New-AzureRmContainerRegistryReplication -ResourceGroupName $resourceGroupName -RegistryName $premiumRegistryName -Location $replicationLocation
 		$registry = Get-AzureRmContainerRegistry -ResourceGroupName $resourceGroupName -Name $premiumRegistryName -IncludeDetail
 		Assert-AreEqual "Size" $registry.Usages[0].Name
 		Assert-AreEqual "Webhooks" $registry.Usages[1].Name
-		Assert-AreEqual 2 $registry.Replications.Count
 
 		# Get list of container registries under a resource group
 		$registries = Get-AzureRmContainerRegistry -ResourceGroupName $resourceGroupName
@@ -362,10 +360,10 @@ function Test-AzureContainerRegistryWebhook
 		# Ping webhook and check events
 		Test-AzureRmContainerRegistryWebhook -ResourceGroupName $resourceGroupName -RegistryName $premiumRegistryName -Name $webhookName3
 		Test-AzureRmContainerRegistryWebhook -ResourceGroupName $resourceGroupName -RegistryName $premiumRegistryName -Name $webhookName3		
-		$pingEvents = Get-AzureRmContainerRegistryWebhookEvent  -ResourceGroupName $resourceGroupName -RegistryName $premiumRegistryName -Name $webhookName3
+		$pingEvents = Get-AzureRmContainerRegistryWebhookEvent  -ResourceGroupName $resourceGroupName -RegistryName $premiumRegistryName -WebhookName $webhookName3
 		Assert-AreEqual 2 $pingEvents.Count
 
-		$pingEvents = Get-AzureRmContainerRegistryWebhookEvent  -ResourceGroupName $resourceGroupName -RegistryName $premiumRegistryName -Name $webhookName2
+		$pingEvents = Get-AzureRmContainerRegistryWebhookEvent  -ResourceGroupName $resourceGroupName -RegistryName $premiumRegistryName -WebhookName $webhookName2
 		Assert-AreEqual 0 $pingEvents.Count
 
 

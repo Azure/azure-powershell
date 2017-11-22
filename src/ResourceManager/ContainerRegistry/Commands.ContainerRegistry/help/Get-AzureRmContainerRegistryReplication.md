@@ -8,38 +8,38 @@ schema: 2.0.0
 # Get-AzureRmContainerRegistryReplication
 
 ## SYNOPSIS
-Get a replication of a container registry.
+Gets a replication of a container registry.
 
 ## SYNTAX
+
+### ListReplicationByNameResourceGroupParameterSet (Default)
+```
+Get-AzureRmContainerRegistryReplication [-ResourceGroupName] <String> [-RegistryName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
 
 ### ShowReplicationByNameResourceGroupParameterSet
 ```
 Get-AzureRmContainerRegistryReplication [-Name] <String> [-ResourceGroupName] <String> [-RegistryName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ShowReplicationByRegistryObjectParameterSet
 ```
 Get-AzureRmContainerRegistryReplication [-Name] <String> -Registry <PSContainerRegistry>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
-```
-
-### ListReplicationByNameResourceGroupParameterSet
-```
-Get-AzureRmContainerRegistryReplication [-ResourceGroupName] <String> [-RegistryName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ListReplicationByRegistryObjectParameterSet
 ```
 Get-AzureRmContainerRegistryReplication -Registry <PSContainerRegistry>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
 Get-AzureRmContainerRegistryReplication -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,14 +48,15 @@ The Get-AzureRmContainerRegistryReplication cmdlet gets a specified replication 
 ## EXAMPLES
 
 ### Example 1: Gets a specified replication of a container registry
-```
+```powershell
 PS C:\>Get-AzureRmContainerRegistryReplication -ResourceGroupName "MyResourceGroup" -RegistryName "MyRegistry" -Name "myreplication"
 
 Name                 Location   Provisioni Status               StatusTimestamp                Tags
                                 ngState
 ----                 --------   ---------- ------               ---------------                ----
-myreplication       westus     Succeeded  Ready                11/17/2017 10:19:45 PM         {[tagName, MyTag]}
+myreplication       westus     Succeeded  Ready                 11/17/2017 10:19:45 PM         {[tagName, MyTag]}
 ```
+
 Gets a specified replication of a container registry
 
 ### Example 2: Gets all the replications of a container registry
@@ -68,24 +69,10 @@ Name                 Location   Provisioni Status               StatusTimestamp 
 eastus               eastus     Succeeded  Ready                11/6/2017 6:14:47 PM           {}
 myreplication        westus     Succeeded  Ready                11/17/2017 10:19:45 PM         {[tagName, MyTag]}
 ```
+
 Gets all the replications of a container registry
 
 ## PARAMETERS
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
@@ -108,7 +95,7 @@ Container Registry Replication Name.
 ```yaml
 Type: String
 Parameter Sets: ShowReplicationByNameResourceGroupParameterSet, ShowReplicationByRegistryObjectParameterSet
-Aliases: ReplicationName
+Aliases: ReplicationName, ResourceName
 
 Required: True
 Position: 0
@@ -137,8 +124,8 @@ Container Registry Name.
 
 ```yaml
 Type: String
-Parameter Sets: ShowReplicationByNameResourceGroupParameterSet, ListReplicationByNameResourceGroupParameterSet
-Aliases: ContainerRegistryName, ResourceName
+Parameter Sets: ListReplicationByNameResourceGroupParameterSet, ShowReplicationByNameResourceGroupParameterSet
+Aliases: ContainerRegistryName
 
 Required: True
 Position: 2
@@ -152,7 +139,7 @@ Resource Group Name.
 
 ```yaml
 Type: String
-Parameter Sets: ShowReplicationByNameResourceGroupParameterSet, ListReplicationByNameResourceGroupParameterSet
+Parameter Sets: ListReplicationByNameResourceGroupParameterSet, ShowReplicationByNameResourceGroupParameterSet
 Aliases: 
 
 Required: True
@@ -177,35 +164,23 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry
 System.String
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryReplication
 Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryReplication[]
 
-
 ## NOTES
 
 ## RELATED LINKS
 
+[New-AzureRmContainerRegistryReplication](New-AzureRmContainerRegistryReplication.md)
+
+[Remove-AzureRmContainerRegistryReplication](Remove-AzureRmContainerRegistryReplication.md)

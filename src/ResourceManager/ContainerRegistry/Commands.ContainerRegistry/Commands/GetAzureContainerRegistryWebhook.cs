@@ -19,14 +19,14 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
-    [Cmdlet(VerbsCommon.Get, ContainerRegistryWebhookNoun)]
+    [Cmdlet(VerbsCommon.Get, ContainerRegistryWebhookNoun, DefaultParameterSetName = ListWebhookByNameResourceGroupParameterSet)]
     [OutputType(typeof(PSContainerRegistryWebhook), typeof(IList<PSContainerRegistryWebhook>))]
     public class GetAzureContainerRegistryWebhook : ContainerRegistryCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, ParameterSetName = ShowWebhookByNameResourceGroupParameterSet, HelpMessage = "Webhook Name.")]
         [Parameter(Position = 0, Mandatory = true, ParameterSetName = ShowWebhookByRegistryObjectParameterSet, HelpMessage = "Webhook Name.")]
         [ValidateNotNullOrEmpty]
-        [Alias(WebhookNameAlias)]
+        [Alias(WebhookNameAlias, ResourceNameAlias)]
         public string Name { get; set; }
 
         [Parameter(Position = 1, Mandatory = true, ParameterSetName = ListWebhookByNameResourceGroupParameterSet, HelpMessage = "Resource Group Name.")]
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
 
         [Parameter(Position = 2, Mandatory = true, ParameterSetName = ListWebhookByNameResourceGroupParameterSet, HelpMessage = "Container Registry Name.")]
         [Parameter(Position = 2, Mandatory = true, ParameterSetName = ShowWebhookByNameResourceGroupParameterSet, HelpMessage = "Container Registry Name.")]
-        [Alias(ContainerRegistryNameAlias, ResourceNameAlias)]
+        [Alias(ContainerRegistryNameAlias)]
         [ValidateNotNullOrEmpty]
         public string RegistryName { get; set; }
 

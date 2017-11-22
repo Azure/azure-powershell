@@ -17,16 +17,16 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
-    [Cmdlet(VerbsCommon.Get, ContainerRegistryNoun)]
+    [Cmdlet(VerbsCommon.Get, ContainerRegistryNoun, DefaultParameterSetName = ListRegistriesParameterSet)]
     [OutputType(typeof(PSContainerRegistry), typeof(IList<PSContainerRegistry>))]
     public class GetAzureContainerRegistry : ContainerRegistryCmdletBase
     {
-        [Parameter(Position = 0, Mandatory = false, ParameterSetName = ListRegistriesParameterSet, HelpMessage = "Resource Group Name.")]
-        [Parameter(Position = 0, Mandatory = true, ParameterSetName = RegistryNameParameterSet, HelpMessage = "Resource Group Name.")]
+        [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ListRegistriesParameterSet, HelpMessage = "Resource Group Name.")]
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = RegistryNameParameterSet, HelpMessage = "Resource Group Name.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Position = 1, Mandatory = true, ParameterSetName = RegistryNameParameterSet, HelpMessage = "Container Registry Name.")]
+        [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = RegistryNameParameterSet, HelpMessage = "Container Registry Name.")]
         [Alias(ContainerRegistryNameAlias, RegistryNameAlias, ResourceNameAlias)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -94,7 +94,6 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
             if(!string.IsNullOrEmpty(registry.ResourceGroupName) && !string.IsNullOrEmpty(registry.Name))
             {
                 registry.Usages = RegistryClient.ListRegistryUsage(registry.ResourceGroupName, registry.Name)?.Value;
-                registry.Replications = RegistryClient.ListAllReplications(registry.ResourceGroupName, registry.Name);
             }
         }
     }

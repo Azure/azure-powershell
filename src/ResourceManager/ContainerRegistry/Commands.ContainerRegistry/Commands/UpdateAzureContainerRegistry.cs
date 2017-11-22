@@ -19,17 +19,17 @@ using Microsoft.Azure.Management.ContainerRegistry.Models;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
-    [Cmdlet(VerbsData.Update, ContainerRegistryNoun, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsData.Update, ContainerRegistryNoun, DefaultParameterSetName = NameResourceGroupParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSContainerRegistry))]
     public class UpdateAzureContainerRegistry : ContainerRegistryCmdletBase
     {
-        [Parameter(Position = 0, Mandatory = true, ParameterSetName = NameResourceGroupParameterSet, HelpMessage = "Resource Group Name.")]
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = NameResourceGroupParameterSet, HelpMessage = "Resource Group Name.")]
         [Parameter(Position = 0, Mandatory = true, ParameterSetName = EnableAdminUserByResourceNameParameterSet, HelpMessage = "Resource Group Name.")]
         [Parameter(Position = 0, Mandatory = true, ParameterSetName = DisableAdminUserByResourceNameParameterSet, HelpMessage = "Resource Group Name.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Position = 1, Mandatory = true, ParameterSetName = NameResourceGroupParameterSet, HelpMessage = "Container Registry Name.")]
+        [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = NameResourceGroupParameterSet, HelpMessage = "Container Registry Name.")]
         [Parameter(Position = 1, Mandatory = true, ParameterSetName = EnableAdminUserByResourceNameParameterSet, HelpMessage = "Container Registry Name.")]
         [Parameter(Position = 1, Mandatory = true, ParameterSetName = DisableAdminUserByResourceNameParameterSet, HelpMessage = "Container Registry Name.")]
         [Alias(ContainerRegistryNameAlias, RegistryNameAlias, ResourceNameAlias)]
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         [ValidateNotNullOrEmpty]
         public string StorageAccountName { get; set; }
 
-        [Parameter(Position = 2, Mandatory = false, HelpMessage = "Container Registry SKU.")]
+        [Parameter(Mandatory = false, HelpMessage = "Container Registry SKU.")]
         [Alias(ContainerRegistrySkuAlias, RegistrySkuAlias)]
         [ValidateSet(SkuTier.Classic, SkuTier.Basic, SkuTier.Premium, SkuTier.Standard, IgnoreCase = false)]
         public string Sku { get; set; }
@@ -71,43 +71,39 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
 
         public override void ExecuteCmdlet()
         {
+            var tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
+
+            bool? adminUserEnabled = null;
+
+            if (EnableAdminUser || DisableAdminUser)
+            {
+                adminUserEnabled = EnableAdminUser || !DisableAdminUser;
+            }
+
+            string storageAccountId = null;
+
+            if (StorageAccountName != null)
+            {
+                storageAccountId = ResourceManagerClient.GetStorageAccountId(StorageAccountName);
+            }
+
+            if (MyInvocation.BoundParameters.ContainsKey("ResourceId") || !string.IsNullOrWhiteSpace(ResourceId))
+            {
+                string resourceGroup, registryName, childResourceName;
+                if (!ConversionUtilities.TryParseRegistryRelatedResourceId(ResourceId, out resourceGroup, out registryName, out childResourceName))
+                {
+                    WriteInvalidResourceIdError(InvalidRegistryResourceIdErrorMessage);
+                    return;
+                }
+
+                ResourceGroupName = resourceGroup;
+                Name = registryName;
+            }
+
             if (ShouldProcess(Name, "Update Container Registry"))
             {
-                var tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
-
-                bool? adminUserEnabled = null;
-
-                if (EnableAdminUser || DisableAdminUser)
-                {
-                    adminUserEnabled = EnableAdminUser || !DisableAdminUser;
-                }
-
-                string storageAccountId = null;
-
-                if (StorageAccountName != null)
-                {
-                    storageAccountId = ResourceManagerClient.GetStorageAccountId(StorageAccountName);
-                }
-
-                if (MyInvocation.BoundParameters.ContainsKey("ResourceId") || !string.IsNullOrWhiteSpace(ResourceId))
-                {
-                    string resourceGroup, registryName, childResourceName;
-                    if(!ConversionUtilities.TryParseRegistryRelatedResourceId(ResourceId, out resourceGroup, out registryName, out childResourceName))
-                    {
-                        WriteInvalidResourceIdError(InvalidRegistryResourceIdErrorMessage);
-                        return;
-                    }
-
-                    ResourceGroupName = resourceGroup;
-                    Name = registryName;
-                }
-
-                if (ShouldProcess(Name, "Update Container Registry"))
-                {
-                    var registry = RegistryClient.UpdateRegistry(
-                    ResourceGroupName, Name, adminUserEnabled, Sku, storageAccountId, tags);
-                    WriteObject(new PSContainerRegistry(registry));
-                }
+                var registry = RegistryClient.UpdateRegistry(ResourceGroupName, Name, adminUserEnabled, Sku, storageAccountId, tags);
+                WriteObject(new PSContainerRegistry(registry));
             }
         }
     }

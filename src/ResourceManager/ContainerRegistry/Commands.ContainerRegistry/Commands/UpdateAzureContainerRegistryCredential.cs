@@ -17,7 +17,7 @@ using Microsoft.Azure.Management.ContainerRegistry.Models;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
-    [Cmdlet(VerbsData.Update, ContainerRegistryCredentialNoun, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsData.Update, ContainerRegistryCredentialNoun, DefaultParameterSetName = NameResourceGroupParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSContainerRegistryCredential))]
     public class UpdateAzureContainerRegistryCredential : ContainerRegistryCmdletBase
     {
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
 
         [Parameter(Mandatory = true, HelpMessage = "The name of password to regenerate.")]
         [ValidateNotNullOrEmpty]
-        [ValidateSet("password", "password2")]
+        [ValidateSet(PasswordNameStrings.Password, PasswordNameStrings.Password2)]
         public PasswordName PasswordName { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = ResourceIdParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "The container registry resource id")]

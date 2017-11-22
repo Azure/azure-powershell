@@ -26,11 +26,11 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
     [OutputType(typeof(PSContainerRegistry))]
     public class NewAzureContainerRegistry : ContainerRegistryCmdletBase
     {
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = "Resource Group Name.")]
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Resource Group Name.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = "Container Registry Name.")]
+        [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Container Registry Name.")]
         [Alias(ContainerRegistryNameAlias, RegistryNameAlias, ResourceNameAlias)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }

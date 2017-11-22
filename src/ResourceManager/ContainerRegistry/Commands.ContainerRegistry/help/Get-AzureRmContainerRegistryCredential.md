@@ -12,21 +12,22 @@ Gets the login credentials for a container registry.
 
 ## SYNTAX
 
-### NameResourceGroupParameterSet
+### NameResourceGroupParameterSet (Default)
 ```
 Get-AzureRmContainerRegistryCredential [-ResourceGroupName] <String> [-Name] <String>
- [-DefaultProfile <IAzureContextContainer>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### RegistryObjectParameterSet
 ```
 Get-AzureRmContainerRegistryCredential -Registry <PSContainerRegistry>
- [-DefaultProfile <IAzureContextContainer>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
 Get-AzureRmContainerRegistryCredential -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,7 +36,7 @@ The Get-AzureRmContainerRegistryCredential cmdlet gets the login credentials for
 ## EXAMPLES
 
 ### Example 1: Get the login credentials for a container registry
-```
+```powershell
 PS C:\>Get-AzureRmContainerRegistryCredential -ResourceGroupName "MyResourceGroup" -Name "MyRegistry"
 
 Username   Password                         Password2
@@ -47,21 +48,6 @@ This command gets the login credentials for the specified container registry.
 Admin user has to be enabled for the container registry \`MyRegistry\` to get login credentials.
 
 ## PARAMETERS
-
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
-
-```yaml
-Type: IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -Name
 Container Registry Name.
@@ -108,6 +94,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceId
 The container registry resource id
 
@@ -123,6 +124,9 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### PSContainerRegistry
@@ -136,9 +140,9 @@ Parameter 'Registry' accepts value of type 'PSContainerRegistry' from the pipeli
 
 ## RELATED LINKS
 
-[New-AzureRmContainerRegistry]()
+[New-AzureRmContainerRegistry](New-AzureRmContainerRegistry.md)
 
-[Update-AzureRmContainerRegistry]()
+[Update-AzureRmContainerRegistry](Update-AzureRmContainerRegistry.md)
 
-[Update-AzureRmContainerRegistryCredential]()
+[Update-AzureRmContainerRegistryCredential](Update-AzureRmContainerRegistryCredential.md)
 

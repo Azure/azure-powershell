@@ -12,22 +12,22 @@ Removes a container registry replication.
 
 ## SYNTAX
 
-### NameResourceGroupParameterSet
+### NameResourceGroupParameterSet (Default)
 ```
 Remove-AzureRmContainerRegistryReplication [-Name] <String> [-ResourceGroupName] <String>
- [-RegistryName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-RegistryName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ReplicationObjectParameterSet
 ```
 Remove-AzureRmContainerRegistryReplication -Replicatoin <PSContainerRegistryReplication>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
 Remove-AzureRmContainerRegistryReplication -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,12 +35,12 @@ The Remove-AzureRmContainerRegistryReplication cmdlet removes a container regist
 
 ## EXAMPLES
 
-### Example 1: Remove a container registry replication.
-```
+### Example 1: Removes a container registry replication.
+```powershell
 PS C:\> Remove-AzureRmContainerRegistryReplication -ResourceGroupName "MyResourceGroup" -RegistryName "MyRegistry" -Name "replication001"
 ```
 
-Remove a container registry replication.
+Removes a container registry replication.
 
 ## PARAMETERS
 
@@ -81,7 +81,7 @@ Default to the location name.
 ```yaml
 Type: String
 Parameter Sets: NameResourceGroupParameterSet
-Aliases: ReplicationName
+Aliases: ReplicationName, ResourceName
 
 Required: True
 Position: 0
@@ -96,7 +96,7 @@ Container Registry Name.
 ```yaml
 Type: String
 Parameter Sets: NameResourceGroupParameterSet
-Aliases: ContainerRegistryName, ResourceName
+Aliases: ContainerRegistryName
 
 Required: True
 Position: 2
@@ -166,11 +166,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryReplication
 System.String
-
 
 ## OUTPUTS
 
@@ -179,4 +181,8 @@ System.String
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzureRmContainerRegistryReplication](New-AzureRmContainerRegistryReplication.md)
+
+[Get-AzureRmContainerRegistryReplication](Remove-AzureRmContainerRegistryReplication.md)
 
