@@ -5,13 +5,16 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Common.Strategies
 {
+    /// <summary>
+    /// Context for asyncronous operations, such as GetAsync or CreateOrUpdateAsync.
+    /// </summary>
     public sealed class AsyncOperationContext
     {
         public IClient Client { get; }
 
         public CancellationToken CancellationToken { get; }
 
-        public IState Result => State;
+        public IState Result => _Result;
 
         public AsyncOperationContext(IClient client, CancellationToken cancellationToken)
         {
@@ -19,27 +22,25 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             CancellationToken = cancellationToken;
         }
 
-        public async Task<Model> GetOrAddAsync<Model>(
-            ResourceConfig<Model> config, Func<Task<Model>> create)
-            where Model : class
-        {
-            var result = await TaskMap.GetOrAdd(
+        public async Task<TModel> GetOrAddAsync<TModel>(
+            ResourceConfig<TModel> config, Func<Task<TModel>> operation)
+            where TModel : class
+            => await _TaskMap.GetOrAddWithCast(
                 config.DefaultIdStr(),
-                async _ =>
+                async () =>
                 {
-                    var model = await create();
+                    var model = await operation();
                     if (model != null)
                     {
-                        State.GetOrAdd(config, () => model);
+                        // add the operation result to a result.
+                        _Result.GetOrAdd(config, () => model);
                     }
                     return model;
                 });
-            return result as Model;
-        }
 
-        State State { get; } = new State();
+        readonly State _Result = new State();
 
-        ConcurrentDictionary<string, Task<object>> TaskMap { get; }
-            = new ConcurrentDictionary<string, Task<object>>();
+        readonly ConcurrentDictionary<string, Task> _TaskMap
+            = new ConcurrentDictionary<string, Task>();
     }
 }

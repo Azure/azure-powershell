@@ -3,36 +3,36 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Common.Strategies
 {
-    public sealed class NestedResourceStrategy<Model, ParentModel> : IEntityStrategy
+    public sealed class NestedResourceStrategy<TModel, TParentModel> : IEntityStrategy
     {
         public Func<string, IEnumerable<string>> GetId { get; }
 
-        public Func<ParentModel, string, Model> Get { get; }
+        public Func<TParentModel, string, TModel> Get { get; }
 
-        public Action<ParentModel, string, Model> Set { get; }
+        public Action<TParentModel, string, TModel> CreateOrUpdate { get; }
 
         public NestedResourceStrategy(
             Func<string, IEnumerable<string>> getId,
-            Func<ParentModel, string, Model> get,
-            Action<ParentModel, string, Model> set)
+            Func<TParentModel, string, TModel> get,
+            Action<TParentModel, string, TModel> createOrUpdate)
         {
             GetId = getId;
             Get = get;
-            Set = set;
+            CreateOrUpdate = createOrUpdate;
         }
     }
 
     public static class NestedResourceStrategy
     {
-        public static NestedResourceStrategy<Model, ParentModel> Create<Model, ParentModel>(
+        public static NestedResourceStrategy<TModel, TParentModel> Create<TModel, TParentModel>(
             string header,
-            Func<ParentModel, string, Model> get,
-            Action<ParentModel, string, Model> set)
-            where Model : class
-            where ParentModel : class
-            => new NestedResourceStrategy<Model, ParentModel>(
+            Func<TParentModel, string, TModel> get,
+            Action<TParentModel, string, TModel> createOrUpdate)
+            where TModel : class
+            where TParentModel : class
+            => new NestedResourceStrategy<TModel, TParentModel>(
                 name => new[] { header, name},
                 get,
-                set);
+                createOrUpdate);
     }
 }

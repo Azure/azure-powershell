@@ -1,22 +1,22 @@
 ﻿namespace Microsoft.Azure.Commands.Common.Strategies
 {
-    public interface IEntityConfigVisitor<Context, Result>
+    public interface IEntityConfigVisitor<TContext, TResult>
     {
-        Result Visit<Model>(ResourceConfig<Model> config, Context context)
-            where Model : class;
+        TResult Visit<TModel>(ResourceConfig<TModel> config, TContext context)
+            where TModel : class;
 
-        Result Visit<Model, ParentModel>(
-            NestedResourceConfig<Model, ParentModel> config, Context context)
-            where Model : class
-            where ParentModel : class;
+        TResult Visit<TModel, TParentModel>(
+            NestedResourceConfig<TModel, TParentModel> config, TContext context)
+            where TModel : class
+            where TParentModel : class;
     }
 
-    public interface IEntityConfigVisitor<Model, Context, Result>
-        where Model : class
+    public interface IEntityConfigVisitor<TModel, TContext, TResult>
+        where TModel : class
     {
-        Result Visit(ResourceConfig<Model> config, Context context);
+        TResult Visit(ResourceConfig<TModel> config, TContext context);
 
-        Result Visit<ParentModel>(NestedResourceConfig<Model, ParentModel> config, Context context)
-            where ParentModel : class;
+        TResult Visit<TParentModel>(NestedResourceConfig<TModel, TParentModel> config, TContext context)
+            where TParentModel : class;
     }
 }

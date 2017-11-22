@@ -2,9 +2,12 @@
 {
     public static class TargetState
     {
-        public static IState GetTargetState<Model>(
-            this ResourceConfig<Model> config, IState current, string subscription, string location)
-            where Model : class
+        public static IState GetTargetState<TModel>(
+            this ResourceConfig<TModel> config,
+            IState current,
+            string subscription,
+            string location)
+            where TModel : class
         {
             var context = new Context(current, subscription, location);
             context.AddIfRequired(config);
@@ -36,8 +39,8 @@
                 }
             }
 
-            public Model GetOrAdd<Model>(ResourceConfig<Model> config)
-                where Model : class
+            public TModel GetOrAdd<TModel>(ResourceConfig<TModel> config)
+                where TModel : class
                 => Target.GetOrAdd(
                     config,
                     () =>
@@ -51,17 +54,17 @@
                         return model;
                     });
 
-            public Model GetOrAdd<Model, ParentModel>(
-                NestedResourceConfig<Model, ParentModel> config)
-                where Model : class
-                where ParentModel : class
+            public TModel GetOrAdd<TModel, TParentModel>(
+                NestedResourceConfig<TModel, TParentModel> config)
+                where TModel : class
+                where TParentModel : class
             {
-                var parentModel = config.Parent.Accept(new GetOrAddVisitor<ParentModel>(), this);
+                var parentModel = config.Parent.Accept(new GetOrAddVisitor<TParentModel>(), this);
                 var model = config.Strategy.Get(parentModel, config.Name);
                 if (model == null)
                 {
                     model = config.CreateModel();
-                    config.Strategy.Set(parentModel, config.Name, model);
+                    config.Strategy.CreateOrUpdate(parentModel, config.Name, model);
                 }
                 return model;
             }
@@ -69,32 +72,32 @@
 
         sealed class AddVisitor : IEntityConfigVisitor<Context, Void>
         {
-            public Void Visit<Model>(ResourceConfig<Model> config, Context context)
-                where Model : class
+            public Void Visit<TModel>(ResourceConfig<TModel> config, Context context)
+                where TModel : class
             {
                 context.GetOrAdd(config);
                 return new Void();
             }
 
-            public Void Visit<Model, ParentModel>(
-                NestedResourceConfig<Model, ParentModel> config, Context context)
-                where Model : class
-                where ParentModel : class
+            public Void Visit<TModel, TParentModel>(
+                NestedResourceConfig<TModel, TParentModel> config, Context context)
+                where TModel : class
+                where TParentModel : class
             {
                 context.GetOrAdd(config);
                 return new Void();
             }
         }
 
-        sealed class GetOrAddVisitor<Model> : IEntityConfigVisitor<Model, Context, Model>
-            where Model : class
+        sealed class GetOrAddVisitor<TModel> : IEntityConfigVisitor<TModel, Context, TModel>
+            where TModel : class
         {
-            public Model Visit(ResourceConfig<Model> config, Context context)
+            public TModel Visit(ResourceConfig<TModel> config, Context context)
                 => context.GetOrAdd(config);
 
-            public Model Visit<ParentModel>(
-                NestedResourceConfig<Model, ParentModel> config, Context context)
-                where ParentModel : class
+            public TModel Visit<TParenModel>(
+                NestedResourceConfig<TModel, TParenModel> config, Context context)
+                where TParenModel : class
                 => context.GetOrAdd(config);
         }
     }

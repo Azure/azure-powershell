@@ -8,27 +8,28 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 {
     public static class GetAsyncOperation
     {
-        public static async Task<IState> GetAsync<Model>(
-            this IResourceBaseConfig<Model> config,
+        public static async Task<IState> GetAsync<TModel>(
+            this IEntityConfig<TModel> config,
             IClient client,
             CancellationToken cancellationToken)
-            where Model : class
+            where TModel : class
         {
             var context = new AsyncOperationContext(client, cancellationToken);
-            await context.AddStateAsyncResourceBase(config);
+            await context.AddStateAsyncDispatch(config);
             return context.Result;
         }
 
-        static Task AddStateAsyncResourceBase(this AsyncOperationContext context, IEntityConfig config)
+        static Task AddStateAsyncDispatch(this AsyncOperationContext context, IEntityConfig config)
             => config.Accept(new AddStateAsyncVisitor(), context);
 
-        static async Task AddStateAsync<Model>(this AsyncOperationContext context, ResourceConfig<Model> config)
-            where Model : class
+        static async Task AddStateAsync<TModel>(
+            this AsyncOperationContext context, ResourceConfig<TModel> config)
+            where TModel : class
             => await context.GetOrAddAsync(
                     config,
                     async () =>
                     {
-                        Model info;
+                        TModel info;
                         try
                         {
                             info = await config.Strategy.GetAsync(
@@ -45,30 +46,30 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                         }
                         if (info == null)
                         {
-                            var tasks = config.Dependencies.Select(d => context.AddStateAsyncResourceBase(d));
+                            var tasks = config.Dependencies.Select(d => context.AddStateAsyncDispatch(d));
                             await Task.WhenAll(tasks);
                             return null;
                         }
                         return info;
                     });
 
-        static Task AddStateAsync<Model, ParentModel>(
-            this AsyncOperationContext context, NestedResourceConfig<Model, ParentModel> config)
-            where Model : class
-            where ParentModel : class
-            => context.AddStateAsyncResourceBase(config.Parent);
+        static Task AddStateAsync<TModel, TParentModel>(
+            this AsyncOperationContext context, NestedResourceConfig<TModel, TParentModel> config)
+            where TModel : class
+            where TParentModel : class
+            => context.AddStateAsyncDispatch(config.Parent);
 
         sealed class AddStateAsyncVisitor : IEntityConfigVisitor<AsyncOperationContext, Task>
         {
-            public Task Visit<Model>(
-                ResourceConfig<Model> config, AsyncOperationContext context)
-                where Model : class
+            public Task Visit<TModel>(
+                ResourceConfig<TModel> config, AsyncOperationContext context)
+                where TModel : class
                 => context.AddStateAsync(config);                
 
-            public Task Visit<Model, ParentModel>(
-                NestedResourceConfig<Model, ParentModel> config, AsyncOperationContext context)
-                where Model : class
-                where ParentModel : class
+            public Task Visit<TModel, TParentModel>(
+                NestedResourceConfig<TModel, TParentModel> config, AsyncOperationContext context)
+                where TModel : class
+                where TParentModel : class
                 => context.AddStateAsync(config);
         }
     }

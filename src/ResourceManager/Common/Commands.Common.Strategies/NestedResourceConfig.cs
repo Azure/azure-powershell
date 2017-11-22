@@ -4,39 +4,27 @@ using System.Linq;
 
 namespace Microsoft.Azure.Commands.Common.Strategies
 {
-    public static class NestedResourceConfig
+    public sealed class NestedResourceConfig<TModel, TParenModel> : IEntityConfig<TModel>
+        where TModel : class
+        where TParenModel : class
     {
-        public static NestedResourceConfig<Model, ParentModel> CreateConfig<Model, ParentModel>(
-            this NestedResourceStrategy<Model, ParentModel> strategy,
-            IResourceBaseConfig<ParentModel> parent,
-            string name,
-            Func<Model> create)
-            where Model : class
-            where ParentModel : class
-            => new NestedResourceConfig<Model, ParentModel>(strategy, parent, name, create);
-    } 
-
-    public sealed class NestedResourceConfig<Model, ParentModel> : IResourceBaseConfig<Model>
-        where Model : class
-        where ParentModel : class
-    {
-        public NestedResourceStrategy<Model, ParentModel> Strategy { get; }
+        public NestedResourceStrategy<TModel, TParenModel> Strategy { get; }
 
         public string Name { get; }
 
-        public IResourceBaseConfig<ParentModel> Parent { get; }
+        public IEntityConfig<TParenModel> Parent { get; }
 
-        public Func<Model> CreateModel { get; }
-
-        IEntityStrategy IEntityConfig.Strategy => Strategy;
+        public Func<TModel> CreateModel { get; }
 
         public IResourceConfig Resource => Parent.Resource;
 
+        IEntityStrategy IEntityConfig.Strategy => Strategy;
+
         public NestedResourceConfig(
-            NestedResourceStrategy<Model, ParentModel> strategy,            
-            IResourceBaseConfig<ParentModel> parent,
+            NestedResourceStrategy<TModel, TParenModel> strategy,            
+            IEntityConfig<TParenModel> parent,
             string name,
-            Func<Model> createModel)
+            Func<TModel> createModel)
         {
             Strategy = strategy;
             Name = name;
@@ -44,15 +32,15 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             CreateModel = createModel;
         }
 
-        public Result Accept<Context, Result>(
-            IEntityConfigVisitor<Context, Result> visitor, Context context)
-            => visitor.Visit(this, context);
-
-        public Result Accept<Context, Result>(
-            IEntityConfigVisitor<Model, Context, Result> visitor, Context context)
-            => visitor.Visit(this, context);
-
         public IEnumerable<string> GetId(string subscription)
             => Parent.GetId(subscription).Concat(Strategy.GetId(Name));
+
+        public TResult Accept<TContext, TResult>(
+            IEntityConfigVisitor<TContext, TResult> visitor, TContext context)
+            => visitor.Visit(this, context);
+
+        public TResult Accept<TContext, TResult>(
+            IEntityConfigVisitor<TModel, TContext, TResult> visitor, TContext context)
+            => visitor.Visit(this, context);
     }
 }

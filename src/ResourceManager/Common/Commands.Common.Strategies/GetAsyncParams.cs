@@ -2,6 +2,9 @@
 
 namespace Microsoft.Azure.Commands.Common.Strategies
 {
+    /// <summary>
+    /// Parameters for GetAsync functions.
+    /// </summary>
     public sealed class GetAsyncParams
     {
         public string ResourceGroupName { get; }

@@ -5,18 +5,18 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 {
     sealed class State : IState
     {
-        public Model Get<Model>(ResourceConfig<Model> config)
-            where Model : class
-            => Map.GetOrNull(config.DefaultIdStr()) as Model;
+        readonly ConcurrentDictionary<string, object> _Map
+            = new ConcurrentDictionary<string, object>();
 
-        public Model GetOrAdd<Model>(ResourceConfig<Model> config, Func<Model> f)
-            where Model : class
-            => Map.GetOrAdd(config.DefaultIdStr(), _ => f()) as Model;
+        public TModel Get<TModel>(ResourceConfig<TModel> config)
+            where TModel : class
+            => _Map.GetOrNull(config.DefaultIdStr()) as TModel;
+
+        public TModel GetOrAdd<TModel>(ResourceConfig<TModel> config, Func<TModel> f)
+            where TModel : class
+            => _Map.GetOrAddWithCast(config.DefaultIdStr(), f);
 
         public bool Contains(IEntityConfig config)
-            => Map.ContainsKey(config.DefaultIdStr());
-
-        ConcurrentDictionary<string, object> Map { get; }
-            = new ConcurrentDictionary<string, object>();
+            => _Map.ContainsKey(config.DefaultIdStr());
     }
 }

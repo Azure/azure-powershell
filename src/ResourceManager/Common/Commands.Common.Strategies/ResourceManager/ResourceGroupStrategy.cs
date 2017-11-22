@@ -7,9 +7,9 @@ namespace Microsoft.Azure.Commands.Common.Strategies.ResourceManager
     public static class ResourceGroupStrategy
     {
         public static ResourceStrategy<ResourceGroup> Strategy { get; }
-            = ResourceStrategy.Create<ResourceGroup, ResourceManagementClient, IResourceGroupsOperations>(
+            = ResourceStrategy.Create(
                 _ => Enumerable.Empty<string>(),
-                client => client.ResourceGroups,
+                (ResourceManagementClient client) => client.ResourceGroups,
                 (o, p) => o.GetAsync(p.Name, p.CancellationToken),
                 (o, p) => o.CreateOrUpdateAsync(p.Name, p.Model, p.CancellationToken),
                 model => model.Location,

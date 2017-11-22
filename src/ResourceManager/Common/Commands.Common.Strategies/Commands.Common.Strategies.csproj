@@ -70,8 +70,9 @@
     <Compile Include="AsyncOperationContext.cs" />
     <Compile Include="Compute\ComputeStrategy.cs" />
     <Compile Include="Compute\VirtualMachineStrategy.cs" />
-    <Compile Include="CreateOrUpdateAsyncOperation.cs" />
+    <Compile Include="CreateOrUpdateAsyncExtensions.cs" />
     <Compile Include="CreateOrUpdateAsyncParams.cs" />
+    <Compile Include="EntityConfigExtensions.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="GetAsyncOperation.cs" />
     <Compile Include="GetAsyncParams.cs" />
@@ -80,8 +81,10 @@
     <Compile Include="IEntityConfigVisitor.cs" />
     <Compile Include="IEntityStrategy.cs" />
     <Compile Include="IState.cs" />
+    <Compile Include="NestedResourceConfigExtensions.cs" />
+    <Compile Include="ResourceConfigExtensions.cs" />
+    <Compile Include="StateExtensions.cs" />
     <Compile Include="TargetDependencies.cs" />
-    <Compile Include="TypedDictionary.cs" />
     <Compile Include="NestedResourceConfig.cs" />
     <Compile Include="NestedResourceStrategy.cs" />
     <Compile Include="Network\NetworkInterfaceStrategy.cs" />

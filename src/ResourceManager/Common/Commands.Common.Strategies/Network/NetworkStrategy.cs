@@ -7,12 +7,12 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
 {
     public static class NetworkStrategy
     {
-        public static ResourceStrategy<Model> Create<Model, Operations>(
+        public static ResourceStrategy<TModel> Create<TModel, TOperations>(
             string header,
-            Func<NetworkManagementClient, Operations> getOperations,
-            Func<Operations, GetAsyncParams, Task<Model>> getAsync,
-            Func<Operations, CreateOrUpdateAsyncParams<Model>, Task<Model>> createOrUpdateAsync)
-            where Model : Resource
+            Func<NetworkManagementClient, TOperations> getOperations,
+            Func<TOperations, GetAsyncParams, Task<TModel>> getAsync,
+            Func<TOperations, CreateOrUpdateAsyncParams<TModel>, Task<TModel>> createOrUpdateAsync)
+            where TModel : Resource
             => ResourceStrategy.Create(
                 new [] { "Microsoft.Network", header },
                 getOperations,
