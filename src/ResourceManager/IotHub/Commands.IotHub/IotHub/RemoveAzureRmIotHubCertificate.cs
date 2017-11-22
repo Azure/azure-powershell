@@ -61,9 +61,6 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                 }
                 catch (Exception e)
                 {
-                    // This is because the underlying IotHubClient sdk currently throws an exception when it receives a 404 during the 
-                    // long running delete operation. Remove this once the sdk is fixed to handle this.
-
                     if (!e.Message.Contains("NotFound"))
                     {
                         throw e;
