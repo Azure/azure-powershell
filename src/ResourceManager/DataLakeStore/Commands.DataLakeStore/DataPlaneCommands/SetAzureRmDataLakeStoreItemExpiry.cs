@@ -24,8 +24,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore
     [Alias("Set-AdlStoreItemExpiry")]
     public class SetAzureRmDataLakeStoreItemExpiry : DataLakeStoreFileSystemCmdletBase
     {
-        internal const string BaseParameterSetName = "Set expiry as Absolute or NeverExpire";
-        internal const string RelativeExpiryParameterSetName = "Set expiry as relative to creation or now";
+        internal const string BaseParameterSetName = "SetAbsoluteNeverExpireExpiry";
+        internal const string RelativeExpiryParameterSetName = "SetRelativeExpiry";
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0,ParameterSetName = BaseParameterSetName, Mandatory = true,
             HelpMessage = "The Data Lake Store account to perform the action in")]
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, ParameterSetName = RelativeExpiryParameterSetName, Mandatory = true,
@@ -56,6 +56,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             HelpMessage = "The relative time in milliseconds with respect to now or creation time")]
         [ValidateNotNullOrEmpty]
         public long? RelativeTime { get; set; }
+
         public override void ExecuteCmdlet()
         {
             DirectoryEntryType filetype;

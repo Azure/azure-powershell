@@ -34,32 +34,43 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         public string Path { get; internal set; }
 
         public long? AccessTime { get; }
+
         /// <summary>Gets the block size for the file.</summary>
         public long? BlockSize { get; }
+
         /// <summary>Gets the number of children in the directory.</summary>
         public long? ChildrenNum { get; }
+
         /// <summary>
         /// Gets the expiration time, if any, as ticks since the epoch. If the
         /// value is 0 or DateTime.MaxValue there is no expiration.
         /// </summary>
         public long? ExpirationTime { get; }
+
         /// <summary>Gets the group owner.</summary>
         public string Group { get; }
+
         /// <summary>Gets the number of bytes in a file.</summary>
         public long? Length { get; }
+
         /// <summary>Gets the modification time as ticks since the epoch.</summary>
         public long? ModificationTime { get; }
+
         /// <summary>Gets the user who is the owner.</summary>
         public string Owner { get; }
+
         /// <summary>Gets the path suffix.</summary>
         public string PathSuffix { get; }
+
         /// <summary>Gets the permission represented as an string.</summary>
         public string Permission { get; }
+
         /// <summary>
         /// Gets the type of the path object. Possible values include: 'FILE',
         /// 'DIRECTORY'
         /// </summary>
         public DataLakeStoreEnums.FileType Type { get; }
+
         /// <summary>Gets flag to indicate if extended acls are enabled</summary>
         public bool? AclBit { get; }
 
@@ -68,6 +79,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             // Assumes that datetime is UTC
             return (long)(dt - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalMilliseconds;
         }
+
         public DataLakeStoreItem(DirectoryEntry entry)
         {
             Length = entry.Length;
