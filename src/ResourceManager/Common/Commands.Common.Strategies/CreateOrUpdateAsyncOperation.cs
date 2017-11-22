@@ -54,7 +54,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                 }
             }
 
-            public Task CreateOrUpdateAsync<Model, ParentModel>(NestedResourceConfig<Model, ParentModel> config)
+            public Task CreateOrUpdateAsync<Model, ParentModel>(
+                NestedResourceConfig<Model, ParentModel> config)
                 where Model : class
                 where ParentModel : class
                 => CreateOrUpdateAsync(config.Parent);
