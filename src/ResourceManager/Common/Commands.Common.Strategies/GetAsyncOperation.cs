@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             return context.Result;
         }
 
-        static Task AddStateAsyncResourceBase(this AsyncOperationContext context, IResourceBaseConfig config)
+        static Task AddStateAsyncResourceBase(this AsyncOperationContext context, IEntityConfig config)
             => config.Accept(new AddStateAsyncVisitor(), context);
 
         static async Task AddStateAsync<Model>(this AsyncOperationContext context, ResourceConfig<Model> config)
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             where ParentModel : class
             => context.AddStateAsyncResourceBase(config.Parent);
 
-        sealed class AddStateAsyncVisitor : IResourceBaseConfigVisitor<AsyncOperationContext, Task>
+        sealed class AddStateAsyncVisitor : IEntityConfigVisitor<AsyncOperationContext, Task>
         {
             public Task Visit<Model>(
                 ResourceConfig<Model> config, AsyncOperationContext context)

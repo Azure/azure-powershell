@@ -2,24 +2,24 @@
 
 namespace Microsoft.Azure.Commands.Common.Strategies
 {
-    public interface IResourceBaseConfig
+    public interface IEntityConfig
     {
-        IResourceBaseStrategy Strategy { get; }
+        IEntityStrategy Strategy { get; }
 
         string Name { get; }
 
         Result Accept<Context, Result>(
-            IResourceBaseConfigVisitor<Context, Result> visitor, Context context);
+            IEntityConfigVisitor<Context, Result> visitor, Context context);
 
         IEnumerable<string> GetId(string subscription);
 
         IResourceConfig Resource { get; }
     }
 
-    public interface IResourceBaseConfig<Model> : IResourceBaseConfig
+    public interface IResourceBaseConfig<Model> : IEntityConfig
         where Model : class
     {
         Result Accept<Context, Result>(
-            IResourceBaseConfigVisitor<Model, Context, Result> visitor, Context context);
+            IEntityConfigVisitor<Model, Context, Result> visitor, Context context);
     }
 }

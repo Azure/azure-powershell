@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 
         public Func<Model> CreateModel { get; }
 
-        IResourceBaseStrategy IResourceBaseConfig.Strategy => Strategy;
+        IEntityStrategy IEntityConfig.Strategy => Strategy;
 
         public IResourceConfig Resource => Parent.Resource;
 
@@ -45,11 +45,11 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         }
 
         public Result Accept<Context, Result>(
-            IResourceBaseConfigVisitor<Context, Result> visitor, Context context)
+            IEntityConfigVisitor<Context, Result> visitor, Context context)
             => visitor.Visit(this, context);
 
         public Result Accept<Context, Result>(
-            IResourceBaseConfigVisitor<Model, Context, Result> visitor, Context context)
+            IEntityConfigVisitor<Model, Context, Result> visitor, Context context)
             => visitor.Visit(this, context);
 
         public IEnumerable<string> GetId(string subscription)

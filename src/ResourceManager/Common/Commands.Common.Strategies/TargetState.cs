@@ -28,7 +28,7 @@
                 Location = location;
             }
 
-            public void AddIfRequired(IResourceBaseConfig config)
+            public void AddIfRequired(IEntityConfig config)
             {
                 if (!Current.Contains(config))
                 {
@@ -67,7 +67,7 @@
             }
         }
 
-        sealed class AddVisitor : IResourceBaseConfigVisitor<Context, Void>
+        sealed class AddVisitor : IEntityConfigVisitor<Context, Void>
         {
             public Void Visit<Model>(ResourceConfig<Model> config, Context context)
                 where Model : class
@@ -86,7 +86,7 @@
             }
         }
 
-        sealed class GetOrAddVisitor<Model> : IResourceBaseConfigVisitor<Model, Context, Model>
+        sealed class GetOrAddVisitor<Model> : IEntityConfigVisitor<Model, Context, Model>
             where Model : class
         {
             public Model Visit(ResourceConfig<Model> config, Context context)

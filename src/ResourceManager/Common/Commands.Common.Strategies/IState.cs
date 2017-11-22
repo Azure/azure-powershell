@@ -8,7 +8,7 @@
         Model Get<Model>(ResourceConfig<Model> config)
             where Model : class;
 
-        bool Contains(IResourceBaseConfig config);
+        bool Contains(IEntityConfig config);
     }
 
     public static class StateExtensions
@@ -24,7 +24,7 @@
             where Model : class
             => config.Accept(new GetVisitor<Model>(), state);
 
-        sealed class GetVisitor<Model> : IResourceBaseConfigVisitor<Model, IState, Model>
+        sealed class GetVisitor<Model> : IEntityConfigVisitor<Model, IState, Model>
             where Model : class
         {
             public Model Visit(ResourceConfig<Model> config, IState state)

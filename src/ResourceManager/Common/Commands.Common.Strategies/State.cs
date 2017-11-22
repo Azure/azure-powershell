@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             where Model : class
             => Map.GetOrAdd(config.DefaultIdStr(), _ => f()) as Model;
 
-        public bool Contains(IResourceBaseConfig config)
+        public bool Contains(IEntityConfig config)
             => Map.ContainsKey(config.DefaultIdStr());
 
         ConcurrentDictionary<string, object> Map { get; }

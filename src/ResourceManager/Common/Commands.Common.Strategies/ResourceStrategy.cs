@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Common.Strategies
 {
-    public sealed class ResourceStrategy<Model> : IResourceBaseStrategy
+    public sealed class ResourceStrategy<Model> : IEntityStrategy
     {
         public Func<string, IEnumerable<string>> GetId { get; }
 

@@ -5,10 +5,10 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 {
     public static class StateLocation
     {
-        public static string GetLocation(this IState state, IResourceBaseConfig config)
+        public static string GetLocation(this IState state, IEntityConfig config)
             => config.Accept(new GetLocationVisitor(), state)?.Location;
 
-        sealed class GetLocationVisitor : IResourceBaseConfigVisitor<IState, DependencyLocation>
+        sealed class GetLocationVisitor : IEntityConfigVisitor<IState, DependencyLocation>
         {
             public DependencyLocation Visit<Model>(ResourceConfig<Model> config, IState state)
                 where Model : class

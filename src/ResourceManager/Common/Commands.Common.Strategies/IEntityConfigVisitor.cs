@@ -1,6 +1,6 @@
 ﻿namespace Microsoft.Azure.Commands.Common.Strategies
 {
-    public interface IResourceBaseConfigVisitor<Context, Result>
+    public interface IEntityConfigVisitor<Context, Result>
     {
         Result Visit<Model>(ResourceConfig<Model> config, Context context)
             where Model : class;
@@ -11,7 +11,7 @@
             where ParentModel : class;
     }
 
-    public interface IResourceBaseConfigVisitor<Model, Context, Result>
+    public interface IEntityConfigVisitor<Model, Context, Result>
         where Model : class
     {
         Result Visit(ResourceConfig<Model> config, Context context);

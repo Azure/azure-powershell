@@ -76,9 +76,9 @@
     <Compile Include="GetAsyncOperation.cs" />
     <Compile Include="GetAsyncParams.cs" />
     <Compile Include="IClient.cs" />
-    <Compile Include="IResourceBaseConfig.cs" />
-    <Compile Include="IResourceBaseConfigVisitor.cs" />
-    <Compile Include="IResourceBaseStrategy.cs" />
+    <Compile Include="IEntityConfig.cs" />
+    <Compile Include="IEntityConfigVisitor.cs" />
+    <Compile Include="IEntityStrategy.cs" />
     <Compile Include="IState.cs" />
     <Compile Include="TargetDependencies.cs" />
     <Compile Include="TypedDictionary.cs" />

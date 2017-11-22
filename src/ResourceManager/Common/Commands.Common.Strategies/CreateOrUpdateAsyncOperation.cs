@@ -59,11 +59,11 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                 where ParentModel : class
                 => CreateOrUpdateAsync(config.Parent);
 
-            public Task CreateOrUpdateAsync(IResourceBaseConfig config)
+            public Task CreateOrUpdateAsync(IEntityConfig config)
                 => config.Accept(new Visitor(), this);
         }
 
-        sealed class Visitor : IResourceBaseConfigVisitor<Context, Task>
+        sealed class Visitor : IEntityConfigVisitor<Context, Task>
         {
             public Task Visit<Model>(ResourceConfig<Model> config, Context context)
                 where Model : class
