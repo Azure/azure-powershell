@@ -19,9 +19,13 @@ using System.Linq;
 using System.Management.Automation;
 using System.Management.Automation.Host;
 using System.Threading;
+using Microsoft.Azure.Management.Internal.Resources.Utilities;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
+    /// <summary>
+    /// Cmdlet base class that implements AsJob using an AzureRmLongRunningJob
+    /// </summary>
     public class AzureRmLongRunningCmdlet : AzureRMCmdlet
     {
         [Parameter(Mandatory=false, HelpMessage ="Run cmdlet in the background")]
@@ -31,10 +35,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         {
             if (AsJob.IsPresent)
             {
-                var job = AzureRmLongRunningJob.Create(this, MyInvocation.MyCommand.Name, this.JobName);
-                JobRepository.Add(job);
-                ThreadPool.QueueUserWorkItem(job.RunJob, job);
-                WriteObject(job);
+                WriteObject(this.ExecuteAsJob(JobName));
             }
             else
             {
