@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Common.Strategies
 {
-    sealed class AsyncOperationContext
+    public sealed class AsyncOperationContext
     {
         public IClient Client { get; }
 
@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             CancellationToken = cancellationToken;
         }
 
-        public async Task<Model> GetOrAdd<Model>(
+        public async Task<Model> GetOrAddAsync<Model>(
             ResourceConfig<Model> config, Func<Task<Model>> create)
             where Model : class
         {

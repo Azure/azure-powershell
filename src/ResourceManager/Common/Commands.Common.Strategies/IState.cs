@@ -7,9 +7,11 @@
     {
         Model Get<Model>(ResourceConfig<Model> config)
             where Model : class;
+
+        bool Contains(IResourceBaseConfig config);
     }
 
-    public static class StateExtension
+    public static class StateExtensions
     {
         public static Model Get<Model, ParentModel>(
             this IState state, NestedResourceConfig<Model, ParentModel> config)

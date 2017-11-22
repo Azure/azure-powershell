@@ -27,6 +27,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 
         IResourceBaseStrategy IResourceBaseConfig.Strategy => Strategy;
 
+        public IResourceConfig Resource => this;
+
         public ResourceConfig(
             ResourceStrategy<Model> strategy,
             string resourceGroupName,

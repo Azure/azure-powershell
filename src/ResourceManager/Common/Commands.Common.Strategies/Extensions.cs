@@ -16,5 +16,9 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             V result;
             return dictionary.TryGetValue(key, out result) ? result : null;
         }
+
+        public static V GetOrAdd<K, V, T>(this ConcurrentDictionary<K, T> dictionary, K key, Func<V> add)
+            where V : T
+            => (V)dictionary.GetOrAdd(key, _ => add());
     }
 }

@@ -13,6 +13,9 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             where Model : class
             => Map.GetOrNull(config.DefaultIdStr()) as Model;
 
+        public bool Contains(IResourceBaseConfig config)
+            => Map.ContainsKey(config.DefaultIdStr());
+
         ConcurrentDictionary<string, object> Map { get; }
             = new ConcurrentDictionary<string, object>();
     }

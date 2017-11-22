@@ -30,6 +30,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 
         IResourceBaseStrategy IResourceBaseConfig.Strategy => Strategy;
 
+        public IResourceConfig Resource => Parent.Resource;
+
         public NestedResourceConfig(
             NestedResourceStrategy<Model, ParentModel> strategy,            
             IResourceBaseConfig<ParentModel> parent,

@@ -12,6 +12,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             IResourceBaseConfigVisitor<Context, Result> visitor, Context context);
 
         IEnumerable<string> GetId(string subscription);
+
+        IResourceConfig Resource { get; }
     }
 
     public interface IResourceBaseConfig<Model> : IResourceBaseConfig

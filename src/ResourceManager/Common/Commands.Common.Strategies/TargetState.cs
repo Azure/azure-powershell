@@ -28,12 +28,11 @@
                 Location = location;
             }
 
-            public void AddIfRequired<Model>(ResourceConfig<Model> config)
-                where Model : class
+            public void AddIfRequired(IResourceBaseConfig config)
             {
-                if (Current.Get(config) == null)
+                if (!Current.Contains(config))
                 {
-                    GetOrAdd(config);
+                    config.Accept(new AddVisitor(), this);
                 }
             }
 
@@ -45,7 +44,7 @@
                     {
                         foreach (var dependency in config.Dependencies)
                         {
-                            dependency.Accept(new AddIfRequiredVisitor(), this);
+                            AddIfRequired(dependency);
                         }
                         var model = config.CreateModel(Subscription);
                         config.Strategy.SetLocation(model, Location);
@@ -56,17 +55,24 @@
                 NestedResourceConfig<Model, ParentModel> config)
                 where Model : class
                 where ParentModel : class
-                => config.Strategy.Get(
-                    config.Parent.Accept(new GetOrAddVisitor<ParentModel>(), this),
-                    config.Name);
+            {
+                var parentModel = config.Parent.Accept(new GetOrAddVisitor<ParentModel>(), this);
+                var model = config.Strategy.Get(parentModel, config.Name);
+                if (model == null)
+                {
+                    model = config.CreateModel();
+                    config.Strategy.Set(parentModel, config.Name, model);
+                }
+                return model;
+            }
         }
 
-        sealed class AddIfRequiredVisitor : IResourceBaseConfigVisitor<Context, Void>
+        sealed class AddVisitor : IResourceBaseConfigVisitor<Context, Void>
         {
             public Void Visit<Model>(ResourceConfig<Model> config, Context context)
                 where Model : class
             {
-                context.AddIfRequired(config);
+                context.GetOrAdd(config);
                 return new Void();
             }
 
@@ -75,10 +81,7 @@
                 where Model : class
                 where ParentModel : class
             {
-                if (context.Current.Get(config) == null)
-                {
-                    context.GetOrAdd(config);
-                }
+                context.GetOrAdd(config);
                 return new Void();
             }
         }
