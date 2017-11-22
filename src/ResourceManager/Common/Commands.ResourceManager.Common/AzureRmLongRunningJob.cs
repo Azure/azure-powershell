@@ -34,6 +34,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         ICommandRuntime _runtime;
         ConcurrentQueue<PSStreamObject> _actions = new ConcurrentQueue<PSStreamObject>();
         bool _shouldConfirm = false;
+
+        /// <summary>
+        /// Create a job using the given invoked cmdlet, command name, and task name
+        /// </summary>
+        /// <param name="cmdlet">The cmdlet to run asynchronously</param>
+        /// <param name="command">The name of the command</param>
+        /// <param name="name">The name of the task</param>
         protected AzureRmLongRunningJob(AzurePSCmdlet cmdlet, string command, string name) : base(command, name)
         {
             _cmdlet = CopyCmdlet(cmdlet);
@@ -43,11 +50,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             this.PSJobTypeName = this.GetType().Name;
         }
 
+        /// <summary>
+        /// Is there additional data in the task that has not been received by the uesr?
+        /// </summary>
         public override bool HasMoreData
         {
             get { return Output.Any() || Progress.Any() || Error.Any() || Warning.Any() || Verbose.Any() || Debug.Any(); }
         }
 
+        /// <summary>
+        /// The location where the task executes
+        /// </summary>
         public override string Location
         {
             get
@@ -56,6 +69,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
         }
 
+        /// <summary>
+        /// Textual representation fo the task status
+        /// </summary>
         public override string StatusMessage
         {
             get
@@ -64,14 +80,29 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
         }
 
+        /// <summary>
+        /// A queue of actions that must execute on the cmdlet thread
+        /// </summary>
         protected ConcurrentQueue<PSStreamObject> BlockedActions { get { return _actions; } }
+
+        /// <summary>
+        /// Factory method for creating jobs
+        /// </summary>
+        /// <param name="cmdlet">The invoked cmdlet to run as a job</param>
+        /// <param name="command">The name of the command executed</param>
+        /// <param name="name">The name of the task</param>
+        /// <returns>A job racking the background execution of the cmdlet</returns>
         public static AzureRmLongRunningJob Create(AzurePSCmdlet cmdlet, string command, string name)
         {
             var job = new Common.AzureRmLongRunningJob(cmdlet, command, name);
             return job;
         }
 
-
+        /// <summary>
+        /// Copy the unique properties of a cmdlet - used to capture the properties of a cmdlet during pipeline execution
+        /// </summary>
+        /// <param name="cmdlet">The cmdlet</param>
+        /// <returns>A deep copy fo the cmdlet</returns>
         public static AzurePSCmdlet CopyCmdlet(AzurePSCmdlet cmdlet)
         {
             var returnType = cmdlet.GetType();
@@ -97,7 +128,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             {
                 Start();
                 _cmdlet.ExecuteCmdlet();
-
                 Complete();
             }
             catch (Exception)
@@ -106,13 +136,18 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
         }
 
-
-
+        /// <summary>
+        /// Return cmdlet runtime that will report results to this job
+        /// </summary>
+        /// <returns>An IcommandRuntime that reports results to this job</returns>
         public virtual ICommandRuntime GetJobRuntime()
         {
             return this as ICommandRuntime;
         }
 
+        /// <summary>
+        /// Run any cmdlet actiosn that have to be run on the cmdlet thread
+        /// </summary>
         protected void UnblockJob()
         {
             var executor = CopyCmdlet(_cmdlet);
@@ -124,43 +159,52 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
         }
 
-        public override void StopJob()
-        {
-            SetJobState(JobState.Stopped);
-        }
-
+        /// <summary>
+        /// Mark the task as started
+        /// </summary>
         public void Start()
         {
             _status = "Running";
             SetJobState(JobState.Running);
         }
 
+        /// <summary>
+        /// Mark the task as blocked
+        /// </summary>
         public void Block()
         {
             _status = "Blocked";
             SetJobState(JobState.Blocked);
         }
 
-
+        /// <summary>
+        /// Mark the job as Failed
+        /// </summary>
         public void Fail()
         {
             _status = "Failed";
             SetJobState(JobState.Failed);
         }
 
+        /// <summary>
+        /// Mark the job as successfully complete
+        /// </summary>
         public void Complete()
         {
             _status = "Completed";
             SetJobState(JobState.Completed);
         }
 
+        /// <summary>
+        /// Mark the job as cancelled
+        /// </summary>
         public void Cancel()
         {
             _status = "Stopped";
             SetJobState(JobState.Stopped);
         }
 
-        // Members for implementing command runtime for this jon
+        // Members for implementing command runtime for this job
         public PSTransactionContext CurrentPSTransaction
         {
             get
@@ -169,6 +213,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
         }
 
+        /// <summary>
+        /// The PSHost for execution
+        /// </summary>
         public PSHost Host
         {
             get
@@ -177,12 +224,26 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
         }
 
+        /// <summary>
+        /// Prompt the user to continue
+        /// </summary>
+        /// <param name="query">The user query</param>
+        /// <param name="caption">The dialog caption for the query</param>
+        /// <returns>True if the user consented</returns>
         public bool ShouldContinue(string query, string caption)
         {
             Exception thrownException;
             return InvokeCmdletMethodAndWaitForResults(cmdlet => cmdlet.ShouldContinue(query, caption), out thrownException);
         }
 
+        /// <summary>
+        /// Prompt the user to continue
+        /// </summary>
+        /// <param name="query">The user query</param>
+        /// <param name="caption">The caption for the query dialog</param>
+        /// <param name="yesToAll">Did the user respond with Yes to all prompts?</param>
+        /// <param name="noToAll">Did the user respond with 'No' to all prompts?</param>
+        /// <returns>True if the user wants to continue</returns>
         public bool ShouldContinue(string query, string caption, ref bool yesToAll, ref bool noToAll)
         {
             Exception thrownException;
@@ -195,6 +256,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             return result;
         }
 
+        /// <summary>
+        /// Determine if A ShouldProcess prompt should be handled by the calling cmdlet, or can simply return true
+        /// </summary>
+        /// <param name="cmdlet">The cmdlet to check</param>
+        /// <returns>True if ShouldProcess must be called on the cmdlet thread, otherwise false</returns>
         static bool ShouldConfirm(AzurePSCmdlet cmdlet)
         {
             ConfirmImpact confirmPreference = ConfirmImpact.Medium;
@@ -214,6 +280,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             return cmdletImpact > confirmPreference;
         }
 
+        /// <summary>
+        /// Determine if a call to ShouldProcess would automatically return true, and thus can be handled without executing on the cmdlet thread
+        /// </summary>
+        /// <returns>True if ShouldProcess does not need to be executed, false otherwise</returns>
         bool CanHandleShouldProcessLocally()
         {
             return !(_cmdlet.MyInvocation.BoundParameters.ContainsKey("Confirm") && (bool)_cmdlet.MyInvocation.BoundParameters["Confirm"]) &&
@@ -221,6 +291,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 !_shouldConfirm;
         }
 
+        /// <summary>
+        /// Confirm an action with the user, as apppropriate
+        /// </summary>
+        /// <param name="target">The target of the action to confirm</param>
+        /// <returns>True if the action is confirmed (by user or automatically), otherwise false</returns>
         public bool ShouldProcess(string target)
         {
             if (CanHandleShouldProcessLocally())
@@ -232,6 +307,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             return InvokeCmdletMethodAndWaitForResults(cmdlet => cmdlet.ShouldProcess(target), out thrownException);
         }
 
+        /// <summary>
+        /// Confirm the specified action on the specified target
+        /// </summary>
+        /// <param name="target">The target of the action</param>
+        /// <param name="action">The action</param>
+        /// <returns>True if the action is confirmed (automatically, or by user interaction), otherwise false</returns>
         public bool ShouldProcess(string target, string action)
         {
             if (CanHandleShouldProcessLocally())
@@ -243,6 +324,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             return InvokeCmdletMethodAndWaitForResults(cmdlet => cmdlet.ShouldProcess(target, action), out thrownException);
         }
 
+        /// <summary>
+        /// Confirm the an action on the target
+        /// </summary>
+        /// <param name="verboseDescription">A description of the action</param>
+        /// <param name="verboseWarning">A warnign about side effects</param>
+        /// <param name="caption">The caption of the confirmation dialog</param>
+        /// <returns>True if the action is confirmed (automatically, or by user interaction), otherwise false</returns>
         public bool ShouldProcess(string verboseDescription, string verboseWarning, string caption)
         {
             if (CanHandleShouldProcessLocally())
@@ -255,6 +343,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 out thrownException);
         }
 
+        /// <summary>
+        /// Confirm the specified action on the specified target
+        /// </summary>
+        /// <param name="verboseDescription">A description of the action</param>
+        /// <param name="verboseWarning">A warnign about side effects</param>
+        /// <param name="caption">The caption of the confirmation dialog</param>
+        /// <param name="shouldProcessReason">The reason a confirmation is printed</param>
+        /// <returns>True if the action is confirmed (automatically, or by user interaction), otherwise false</returns>
         public bool ShouldProcess(string verboseDescription, string verboseWarning, string caption, out ShouldProcessReason shouldProcessReason)
         {
             if (CanHandleShouldProcessLocally())
@@ -271,11 +367,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             return result;
         }
 
+        /// <summary>
+        /// Throw an error that terminates the current pipeline
+        /// </summary>
+        /// <param name="errorRecord">The error to throw</param>
         public void ThrowTerminatingError(ErrorRecord errorRecord)
         {
             Error.Add(errorRecord);
         }
 
+        /// <summary>
+        /// Determine if an ambient transaction is available
+        /// </summary>
+        /// <returns>True if an ambient transaction is available, otherwise false</returns>
         public bool TransactionAvailable()
         {
             Exception thrownException;
@@ -283,26 +387,47 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 out thrownException);
         }
 
+        /// <summary>
+        /// Write details about a command
+        /// </summary>
+        /// <param name="text">The text to write</param>
         public void WriteCommandDetail(string text)
         {
             Verbose.Add(new VerboseRecord(text));
         }
 
+        /// <summary>
+        /// Write to the debug log
+        /// </summary>
+        /// <param name="text">The message to write</param>
         public void WriteDebug(string text)
         {
             Debug.Add(new DebugRecord(text));
         }
 
+        /// <summary>
+        /// Write to the eeror stream
+        /// </summary>
+        /// <param name="errorRecord">The error to write</param>
         public void WriteError(ErrorRecord errorRecord)
         {
             Error.Add(errorRecord);
         }
 
+        /// <summary>
+        /// Write an output object to the pipeline
+        /// </summary>
+        /// <param name="sendToPipeline">The putput object</param>
         public void WriteObject(object sendToPipeline)
         {
             Output.Add(new PSObject(sendToPipeline));
         }
 
+        /// <summary>
+        /// Write an output object to the pipeline
+        /// </summary>
+        /// <param name="sendToPipeline">The putput object</param>
+        /// <param name="enumerateCollection">If the output object is an enumeration, should each object be written to the pipeline?</param>
         public void WriteObject(object sendToPipeline, bool enumerateCollection)
         {
             IEnumerable enumerable = sendToPipeline as IEnumerable;
@@ -319,21 +444,38 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
         }
 
+        /// <summary>
+        /// Write information to the progress stream
+        /// </summary>
+        /// <param name="progressRecord">The progress to write</param>
         public void WriteProgress(ProgressRecord progressRecord)
         {
             Progress.Add(progressRecord);
         }
 
+        /// <summary>
+        /// Write information to the progress stream
+        /// </summary>
+        /// <param name="sourceId">The id of the task source</param>
+        /// <param name="progressRecord">The progress info to write</param>
         public void WriteProgress(long sourceId, ProgressRecord progressRecord)
         {
             WriteProgress(progressRecord);
         }
 
+        /// <summary>
+        /// Write verbose logging information
+        /// </summary>
+        /// <param name="text">The verbose message to add</param>
         public void WriteVerbose(string text)
         {
             Verbose.Add(new VerboseRecord(text));
         }
 
+        /// <summary>
+        /// Write a wrning
+        /// </summary>
+        /// <param name="text">The warning to write</param>
         public void WriteWarning(string text)
         {
             Warning.Add(new WarningRecord(text));
@@ -349,8 +491,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             return (state == JobState.Completed || state == JobState.Failed || state == JobState.Stopped);
         }
 
-
-
+        /// <summary>
+        /// Queue actions that must occur on the cmdlet thread, and block the current thread until they are completed
+        /// </summary>
+        /// <typeparam name="T">The output type of the called cmdlet action</typeparam>
+        /// <param name="invokeCmdletMethodAndReturnResult">The action to invoke</param>
+        /// <param name="exceptionThrownOnCmdletThread">Any exception that results</param>
+        /// <returns>The result of executing the action on the cmdlet thread</returns>
         private T InvokeCmdletMethodAndWaitForResults<T>(Func<Cmdlet, T> invokeCmdletMethodAndReturnResult, out Exception exceptionThrownOnCmdletThread)
         {
 
@@ -425,5 +572,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
         }
 
+        public override void StopJob()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

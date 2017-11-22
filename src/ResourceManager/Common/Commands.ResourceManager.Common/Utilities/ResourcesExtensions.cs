@@ -23,6 +23,9 @@ using System.Collections;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using System;
 using System.Linq;
+using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+using System.Threading;
 
 namespace Microsoft.Azure.Management.Internal.Resources.Utilities
 {
@@ -158,6 +161,20 @@ namespace Microsoft.Azure.Management.Internal.Resources.Utilities
             }
 
             return resourcesTable.ToString();
+        }
+
+        /// <summary>
+        /// Execute this cmdlet in the background and return a job that tracks the results
+        /// </summary>
+        /// <param name="cmdlet">The cmdlet to execute</param>
+        /// <param name="jobName">The name of the job</param>
+        /// <returns>The job tracking cmdlet execution</returns>
+        public static Job ExecuteAsJob(this AzurePSCmdlet cmdlet, string jobName)
+        {
+            var job = AzureRmLongRunningJob.Create(cmdlet, cmdlet?.MyInvocation?.MyCommand?.Name, jobName);
+            cmdlet.JobRepository.Add(job);
+            ThreadPool.QueueUserWorkItem(job.RunJob, job);
+            return job;
         }
     }
 }
