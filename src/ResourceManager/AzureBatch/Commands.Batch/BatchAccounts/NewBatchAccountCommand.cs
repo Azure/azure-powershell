@@ -38,6 +38,7 @@ namespace Microsoft.Azure.Commands.Batch
 
         [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the resource group where the account will be created.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
