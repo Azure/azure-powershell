@@ -115,6 +115,8 @@ namespace Microsoft.Azure.Commands.SubscriptionDefinition.Test.ScenarioTests.Sce
 
             using (var context = MockContext.Start(callingClassType, mockName))
             {
+                // NOTE: Uncomment to force interactive login when you need to record tests.
+                // var x = Rest.Azure.Authentication.UserTokenProvider.LoginWithPromptAsync(new Rest.Azure.Authentication.ActiveDirectoryClientSettings(clientId: "1950a258-227b-4e31-a9cf-717495945fc2", clientRedirectUri: new Uri("urn:ietf:wg:oauth:2.0:oob")), "adam@contosodemoorg.onmicrosoft.com").Result;
 
                 _csmTestFactory = new CSMTestEnvironmentFactory();
 
@@ -122,7 +124,7 @@ namespace Microsoft.Azure.Commands.SubscriptionDefinition.Test.ScenarioTests.Sce
                 {
                     initialize(_csmTestFactory);
                 }
-
+                
                 SetupManagementClients(context);
 
                 _helper.SetupEnvironment(AzureModule.AzureResourceManager);
