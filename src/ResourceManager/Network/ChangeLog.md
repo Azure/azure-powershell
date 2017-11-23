@@ -243,3 +243,4 @@
 * Get-AzureRmEffectiveNetworkSecurityGroup
     - Add warning if there is no response from GetEffectiveNSG
 * Add Source property to EffectiveRoute 
+* Add DisableBgpRoutePropagation property in RouteTable.
