@@ -20,7 +20,7 @@ function Test-ListSubscriptionDefinitions
 {
     $definitions = Get-AzureRmSubscriptionDefinition
 
-    Assert-AreEqual 3 $definitions.Count
+    Assert-AreEqual 4 $definitions.Count
 	Foreach($def in $definitions)
 	{
 		Assert-NotNull $def.Name
@@ -33,8 +33,9 @@ Get subscription definition by name
 #>
 function Test-GetSubscriptionDefinitionByName
 {
-    $definition = Get-AzureRmSubscriptionDefinition -Name "mySubDef"
-    Assert-AreEqual "mySubDef", $definition.Name
+    $definition = Get-AzureRmSubscriptionDefinition -Name "MyProdSubscription"
+    Assert-AreEqual "MyProdSubscription" $definition.Name
+    Assert-AreEqual "MyProdSubscription" $definition.SubscriptionDisplayName
 }
 
 <#
@@ -46,11 +47,14 @@ function Test-NewSubscriptionDefinition
     $definitions = Get-AzureRmSubscriptionDefinition
     $previousDefinitionCount = $definitions.Count
 
-    $definition = New-AzureRmSubscriptionDefinition -Name "myNewSubDef" -OfferType "MS-AZR-0017P"
+    $myNewSubDefName = "MyProdSubDef99"
 
-    Assert-NotNull $definition.Name
+    $definition = New-AzureRmSubscriptionDefinition -Name $myNewSubDefName -OfferType "MS-AZR-0017P"
+
+    Assert-AreEqual $myNewSubDefName $definition.Name
+    Assert-AreEqual $myNewSubDefName $definition.SubscriptionDisplayName
 	Assert-NotNull $definition.SubscriptionId
 
     $definitions = Get-AzureRmSubscriptionDefinition
-    Assert-AreEqual $definitions.Count, ($previousDefinitionCount + 1)
+    Assert-AreEqual $definitions.Count ($previousDefinitionCount + 1)
 }
