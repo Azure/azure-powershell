@@ -75,9 +75,8 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Disable BGP Route auto propagation.",
-            ValueFromPipelineByPropertyName = true)]
-        public bool DisableBgpRoutePropagation { get; set; }
+            HelpMessage = "Disable BGP Route auto propagation.")]
+        public SwitchParameter DisableBgpRoutePropagation { get; set; }
 
         [Parameter(
             Mandatory = false,
