@@ -520,6 +520,9 @@
                         <Component Id="cmp8D46A82F0869AFC4C01CACAC464F81E9" Guid="*">
                             <File Id="fil6EA1FAE6CF33BFDC7C44362C0A050A09" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.DataMigration\Microsoft.Azure.Commands.DataMigration.dll-Help.xml" />
                         </Component>
+                        <Component Id="cmp636578DE56B109ECA4CF967ED6BE2823" Guid="*">
+                            <File Id="fil9172B5B303F5B98071CEC5BDA731C87B" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.DataMigration\Microsoft.Azure.Management.DataMigration.dll" />
+                        </Component>
                     </Directory>
                     <Directory Id="dir58E771D29F659E11F33C1EBA94EBEC2D" Name="AzureRM.DevTestLabs">
                         <Component Id="cmpB88BB2B8DA875D258057401A820E82D6" Guid="*">
@@ -3354,6 +3357,7 @@
             <ComponentRef Id="cmp62BC16A48F4AAB22EAFDB6EA8C458B36" />
             <ComponentRef Id="cmpB20E0977CD0B2DFD15CEFF2F07F39AB9" />
             <ComponentRef Id="cmp8D46A82F0869AFC4C01CACAC464F81E9" />
+            <ComponentRef Id="cmp636578DE56B109ECA4CF967ED6BE2823" />
             <ComponentRef Id="cmpB88BB2B8DA875D258057401A820E82D6" />
             <ComponentRef Id="cmp727F3C3BF9F149CC43CD2F72DB01F9AF" />
             <ComponentRef Id="cmpCF89ADAF131C4033F0441CD44BD5AFF9" />
