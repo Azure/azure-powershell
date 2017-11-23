@@ -75,6 +75,12 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Disable BGP Route auto propagation.",
+            ValueFromPipelineByPropertyName = true)]
+        public bool DisableBgpRoutePropagation { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Do not ask for confirmation if you want to overwrite a resource")]
         public SwitchParameter Force { get; set; }
 
@@ -90,6 +96,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 Location = this.Location,
                 Routes = this.Route,
+                DisableBgpRoutePropagation = this.DisableBgpRoutePropagation
             };
 
             var vRouteTableModel = NetworkResourceManagerProfile.Mapper.Map<MNM.RouteTable>(vRouteTable);
