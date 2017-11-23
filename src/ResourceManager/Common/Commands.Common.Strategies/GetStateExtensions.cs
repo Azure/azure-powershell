@@ -39,7 +39,9 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                         // Get state of dependencies if the resource doesn't exist
                         if (info == null)
                         {
-                            var tasks = config.GetResourceDependencies().Select(context.GetStateAsyncDispatch);
+                            var tasks = config
+                                .GetResourceDependencies()
+                                .Select(context.GetStateAsyncDispatch);
                             await Task.WhenAll(tasks);
                         }
                         return info;
