@@ -11,10 +11,10 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         /// <param name="state"></param>
         /// <param name="config"></param>
         /// <returns></returns>
-        public static string GetLocation(this IState state, IEntityConfig config)
+        public static string GetLocation(this IState state, IResourceConfig config)
             => state.GetDependencyLocationDispatch(config)?.Location;
 
-        static DependencyLocation GetDependencyLocationDispatch(this IState state, IEntityConfig config)
+        static DependencyLocation GetDependencyLocationDispatch(this IState state, IResourceConfig config)
             => config.Accept(new GetDependencyLocationVisitor(), state);
 
         static DependencyLocation GetDependencyLocation<TModel>(
@@ -27,27 +27,15 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                     config.Strategy.GetLocation(info),
                     typeof(TModel) != typeof(ResourceGroup))
                 : config
-                    .Dependencies
+                    .GetResourceDependencies()
                     .Select(state.GetDependencyLocationDispatch)
                     .Aggregate(null as DependencyLocation, Merge);
         }
 
-        static DependencyLocation GetDependencyLocation<TModel, TParentModel>(
-            this IState state, NestedResourceConfig<TModel, TParentModel> config)
-            where TModel : class
-            where TParentModel : class
-            => config.Parent.Accept(new GetDependencyLocationVisitor(), state);
-
-        sealed class GetDependencyLocationVisitor : IEntityConfigVisitor<IState, DependencyLocation>
+        sealed class GetDependencyLocationVisitor : IResourceConfigVisitor<IState, DependencyLocation>
         {
             public DependencyLocation Visit<TModel>(ResourceConfig<TModel> config, IState state)
                 where TModel : class
-                => state.GetDependencyLocation(config);
-
-            public DependencyLocation Visit<TModel, TParentModel>(
-                NestedResourceConfig<TModel, TParentModel> config, IState state)
-                where TModel : class
-                where TParentModel : class
                 => state.GetDependencyLocation(config);
         }
 

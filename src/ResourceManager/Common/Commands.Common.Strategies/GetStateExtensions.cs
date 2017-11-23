@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
         public static async Task<IState> GetStateAsync<TModel>(
-            this IEntityConfig<TModel> config,
+            this ResourceConfig<TModel> config,
             IClient client,
             CancellationToken cancellationToken)
             where TModel : class
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             return context.Result;
         }
 
-        static Task GetStateAsyncDispatch(this StateOperationContext context, IEntityConfig config)
+        static Task GetStateAsyncDispatch(this StateOperationContext context, IResourceConfig config)
             => config.Accept(new GetStateAsyncVisitor(), context);
 
         static async Task GetStateAsync<TModel>(
@@ -39,30 +39,18 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                         // Get state of dependencies if the resource doesn't exist
                         if (info == null)
                         {
-                            var tasks = config.Dependencies.Select(context.GetStateAsyncDispatch);
+                            var tasks = config.GetResourceDependencies().Select(context.GetStateAsyncDispatch);
                             await Task.WhenAll(tasks);
                         }
                         return info;
                     });
 
-        static Task GetStateAsync<TModel, TParentModel>(
-            this StateOperationContext context, NestedResourceConfig<TModel, TParentModel> config)
-            where TModel : class
-            where TParentModel : class
-            => context.GetStateAsyncDispatch(config.Parent);
-
-        sealed class GetStateAsyncVisitor : IEntityConfigVisitor<StateOperationContext, Task>
+        sealed class GetStateAsyncVisitor : IResourceConfigVisitor<StateOperationContext, Task>
         {
             public Task Visit<TModel>(
                 ResourceConfig<TModel> config, StateOperationContext context)
                 where TModel : class
                 => context.GetStateAsync(config);                
-
-            public Task Visit<TModel, TParentModel>(
-                NestedResourceConfig<TModel, TParentModel> config, StateOperationContext context)
-                where TModel : class
-                where TParentModel : class
-                => context.GetStateAsync(config);
         }
     }
 }
