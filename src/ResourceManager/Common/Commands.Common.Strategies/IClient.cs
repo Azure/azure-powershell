@@ -1,5 +1,4 @@
 ﻿using Microsoft.Rest;
-using System;
 
 namespace Microsoft.Azure.Commands.Common.Strategies
 {

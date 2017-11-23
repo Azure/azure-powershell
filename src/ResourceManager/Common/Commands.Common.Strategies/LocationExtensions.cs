@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Microsoft.Azure.Commands.Common.Strategies
 {
-    public static class StateLocation
+    public static class LocationExtensions
     {
         /// <summary>
         /// Get the best location for the given entity from the given state.
@@ -12,29 +12,43 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         /// <param name="config"></param>
         /// <returns></returns>
         public static string GetLocation(this IState state, IEntityConfig config)
-            => config.Accept(new GetLocationVisitor(), state)?.Location;
+            => state.GetDependencyLocationDispatch(config)?.Location;
 
-        sealed class GetLocationVisitor : IEntityConfigVisitor<IState, DependencyLocation>
+        static DependencyLocation GetDependencyLocationDispatch(this IState state, IEntityConfig config)
+            => config.Accept(new GetDependencyLocationVisitor(), state);
+
+        static DependencyLocation GetDependencyLocation<TModel>(
+            this IState state, ResourceConfig<TModel> config)
+            where TModel : class
+        {
+            var info = state.Get(config);
+            return info != null
+                ? new DependencyLocation(
+                    config.Strategy.GetLocation(info),
+                    typeof(TModel) != typeof(ResourceGroup))
+                : config
+                    .Dependencies
+                    .Select(state.GetDependencyLocationDispatch)
+                    .Aggregate(null as DependencyLocation, Merge);
+        }
+
+        static DependencyLocation GetDependencyLocation<TModel, TParentModel>(
+            this IState state, NestedResourceConfig<TModel, TParentModel> config)
+            where TModel : class
+            where TParentModel : class
+            => config.Parent.Accept(new GetDependencyLocationVisitor(), state);
+
+        sealed class GetDependencyLocationVisitor : IEntityConfigVisitor<IState, DependencyLocation>
         {
             public DependencyLocation Visit<TModel>(ResourceConfig<TModel> config, IState state)
                 where TModel : class
-            {
-                var info = state.Get(config);
-                return info != null
-                    ? new DependencyLocation(
-                        config.Strategy.GetLocation(info),
-                        typeof(TModel) != typeof(ResourceGroup))
-                    : config
-                        .Dependencies
-                        .Select(c => c.Accept(this, state))
-                        .Aggregate(null as DependencyLocation, Merge);
-            }
+                => state.GetDependencyLocation(config);
 
             public DependencyLocation Visit<TModel, TParentModel>(
                 NestedResourceConfig<TModel, TParentModel> config, IState state)
                 where TModel : class
                 where TParentModel : class
-                => config.Parent.Accept(this, state);
+                => state.GetDependencyLocation(config);
         }
 
         sealed class DependencyLocation

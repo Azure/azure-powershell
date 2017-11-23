@@ -4,17 +4,17 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Common.Strategies
 {
-    public static class CreateOrUpdateAsyncExtensions
+    public static class UpdateStateExtensions
     {
-        public static async Task<IState> CreateOrUpdateAsync<TModel>(
+        public static async Task<IState> UpdateStateAsync<TModel>(
             this ResourceConfig<TModel> config,
             IClient client,
             IState target,
             CancellationToken cancellationToken)
             where TModel : class
         {
-            var context = new Context(new AsyncOperationContext(client, cancellationToken), target);
-            await context.CreateOrUpdateAsync(config);
+            var context = new Context(new StateOperationContext(client, cancellationToken), target);
+            await context.UpdateStateAsync(config);
             return context.Result;
         }
 
@@ -22,62 +22,59 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         {
             public IState Result => _OperationContext.Result;
 
-            readonly AsyncOperationContext _OperationContext;
+            readonly StateOperationContext _OperationContext;
 
             readonly IState _Target;
 
-            public Context(AsyncOperationContext operationContext, IState target)
+            public Context(StateOperationContext operationContext, IState target)
             {
                 _OperationContext = operationContext;
                 _Target = target;
             }
 
-            public async Task CreateOrUpdateAsync<TModel>(ResourceConfig<TModel> config)
+            public async Task UpdateStateAsync<TModel>(ResourceConfig<TModel> config)
                 where TModel : class
             {
                 var model = _Target.Get(config);
                 if (model != null)
                 {
-                    await _OperationContext.GetOrAddAsync(
+                    await _OperationContext.GetOrAdd(
                         config,
                         async () =>
                         {
                             // wait for all dependencies
-                            var tasks = config.Dependencies.Select(CreateOrUpdateAsyncDispatch);                            
+                            var tasks = config.Dependencies.Select(UpdateStateAsyncDispatch);                            
                             await Task.WhenAll(tasks);
-                            // call the main function.
-                            return await config.Strategy.CreateOrUpdateAsync(
+                            // call the CreateOrUpdateAsync function for the resource.
+                            return await config.CreateOrUpdateAsync(
                                 _OperationContext.Client,
-                                CreateOrUpdateAsyncParams.Create(
-                                    config.ResourceGroupName,
-                                    config.Name,
-                                    model,
-                                    _OperationContext.CancellationToken));
+                                model,
+                                _OperationContext.CancellationToken);
                         });
                 }
             }
 
-            public Task CreateOrUpdateAsync<TModel, TParentModel>(
+            public Task UpdateStateAsync<TModel, TParentModel>(
                 NestedResourceConfig<TModel, TParentModel> config)
                 where TModel : class
                 where TParentModel : class
-                => CreateOrUpdateAsyncDispatch(config.Parent);
+                => UpdateStateAsyncDispatch(config.Parent);
 
-            public Task CreateOrUpdateAsyncDispatch(IEntityConfig config)
-                => config.Accept(new CreateOrUpdateAsyncVisitor(), this);
+            public Task UpdateStateAsyncDispatch(IEntityConfig config)
+                => config.Accept(new UpdateStateAsyncVisitor(), this);
         }
 
-        sealed class CreateOrUpdateAsyncVisitor : IEntityConfigVisitor<Context, Task>
+        sealed class UpdateStateAsyncVisitor : IEntityConfigVisitor<Context, Task>
         {
             public Task Visit<TModel>(ResourceConfig<TModel> config, Context context)
                 where TModel : class
-                => context.CreateOrUpdateAsync(config);
+                => context.UpdateStateAsync(config);
 
             public Task Visit<TModel, TParentModel>(
                 NestedResourceConfig<TModel, TParentModel> config, Context context)
                 where TModel : class
                 where TParentModel : class
-                => context.CreateOrUpdateAsync(config);
+                => context.UpdateStateAsync(config);
         }
     }
 }

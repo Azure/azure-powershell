@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Commands.Compute
             //
             var client = new Client(DefaultProfile.DefaultContext);
             var current = virtualMachine
-                .GetAsync(client, new CancellationToken())
+                .GetStateAsync(client, new CancellationToken())
                 .GetAwaiter()
                 .GetResult();
 
@@ -197,7 +197,7 @@ namespace Microsoft.Azure.Commands.Compute
 
             var target = virtualMachine.GetTargetState(current, client.SubscriptionId, Location);
             var result = virtualMachine
-                .CreateOrUpdateAsync(client, target, new CancellationToken())
+                .UpdateStateAsync(client, target, new CancellationToken())
                 .GetAwaiter()
                 .GetResult();
         }

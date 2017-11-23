@@ -35,11 +35,11 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         public IEnumerable<string> GetId(string subscription)
             => Parent.GetId(subscription).Concat(Strategy.GetId(Name));
 
-        public TResult Accept<TContext, TResult>(
+        TResult IEntityConfig.Accept<TContext, TResult>(
             IEntityConfigVisitor<TContext, TResult> visitor, TContext context)
             => visitor.Visit(this, context);
 
-        public TResult Accept<TContext, TResult>(
+        TResult IEntityConfig<TModel>.Accept<TContext, TResult>(
             IEntityConfigVisitor<TModel, TContext, TResult> visitor, TContext context)
             => visitor.Visit(this, context);
     }

@@ -67,14 +67,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AsyncOperationContext.cs" />
+    <Compile Include="StateOperationContext.cs" />
     <Compile Include="Compute\ComputeStrategy.cs" />
     <Compile Include="Compute\VirtualMachineStrategy.cs" />
-    <Compile Include="CreateOrUpdateAsyncExtensions.cs" />
+    <Compile Include="UpdateStateExtensions.cs" />
     <Compile Include="CreateOrUpdateAsyncParams.cs" />
     <Compile Include="EntityConfigExtensions.cs" />
     <Compile Include="Extensions.cs" />
-    <Compile Include="GetAsyncOperation.cs" />
+    <Compile Include="GetStateExtensions.cs" />
     <Compile Include="GetAsyncParams.cs" />
     <Compile Include="IClient.cs" />
     <Compile Include="IEntityConfig.cs" />
@@ -99,7 +99,7 @@
     <Compile Include="ResourceConfig.cs" />
     <Compile Include="ResourceStrategy.cs" />
     <Compile Include="State.cs" />
-    <Compile Include="StateLocation.cs" />
+    <Compile Include="LocationExtensions.cs" />
     <Compile Include="Void.cs" />
   </ItemGroup>
   <ItemGroup>

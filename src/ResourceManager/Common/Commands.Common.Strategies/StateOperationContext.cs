@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
     /// <summary>
     /// Context for asyncronous operations, such as GetAsync or CreateOrUpdateAsync.
     /// </summary>
-    public sealed class AsyncOperationContext
+    public sealed class StateOperationContext
     {
         public IClient Client { get; }
 
@@ -16,13 +16,18 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 
         public IState Result => _Result;
 
-        public AsyncOperationContext(IClient client, CancellationToken cancellationToken)
+        readonly State _Result = new State();
+
+        readonly ConcurrentDictionary<string, Task> _TaskMap
+            = new ConcurrentDictionary<string, Task>();
+
+        public StateOperationContext(IClient client, CancellationToken cancellationToken)
         {
             Client = client;
             CancellationToken = cancellationToken;
         }
 
-        public async Task<TModel> GetOrAddAsync<TModel>(
+        public async Task<TModel> GetOrAdd<TModel>(
             ResourceConfig<TModel> config, Func<Task<TModel>> operation)
             where TModel : class
             => await _TaskMap.GetOrAddWithCast(
@@ -37,10 +42,5 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                     }
                     return model;
                 });
-
-        readonly State _Result = new State();
-
-        readonly ConcurrentDictionary<string, Task> _TaskMap
-            = new ConcurrentDictionary<string, Task>();
     }
 }
