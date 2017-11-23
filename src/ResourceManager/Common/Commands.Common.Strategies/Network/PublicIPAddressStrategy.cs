@@ -16,7 +16,20 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
                     p.ResourceGroupName, p.Name, p.Model, p.CancellationToken));
 
         public static ResourceConfig<PublicIPAddress> CreatePublicIPAddressConfig(
-            this ResourceConfig<ResourceGroup> resourceGroup, string name)
-            => Strategy.CreateConfig(resourceGroup, name);
+            this ResourceConfig<ResourceGroup> resourceGroup,
+            string name,
+            string domainNameLabel,
+            string allocationMethod)
+            => Strategy.CreateConfig(
+                resourceGroup,
+                name,
+                _ => new PublicIPAddress
+                {
+                    PublicIPAllocationMethod = allocationMethod,
+                    DnsSettings = new PublicIPAddressDnsSettings
+                    {
+                        DomainNameLabel = domainNameLabel,                       
+                    }
+                });
     }
 }

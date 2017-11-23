@@ -67,6 +67,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Compute\Image.cs" />
+    <Compile Include="Compute\Images.cs" />
     <Compile Include="IResourceConfig.cs" />
     <Compile Include="IResourceConfigVisitor.cs" />
     <Compile Include="StateOperationContext.cs" />

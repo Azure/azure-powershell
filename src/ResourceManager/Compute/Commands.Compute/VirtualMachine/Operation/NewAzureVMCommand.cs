@@ -72,6 +72,7 @@ namespace Microsoft.Azure.Commands.Compute
             ParameterSetName = StrategyParameterSet,
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
+        [LocationCompleter]
         public string Location { get; set; }
 
         [Alias("VMProfile")]
@@ -114,20 +115,42 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             ParameterSetName = StrategyParameterSet,
             Mandatory = true)]
+        [ValidateNotNullOrEmpty]
         public string Name { get; set; }
-
-        [Parameter(
-            ParameterSetName = StrategyParameterSet,
-            Mandatory = false)]
-        public string AddressPrefix { get; set; } = "192.168.0.0/16";
-
-        [Parameter(
-            ParameterSetName = StrategyParameterSet,
-            Mandatory = false)]
-        public string SubnetAddressPrefix { get; set; } = "192.168.1.0/24";
 
         [Parameter(ParameterSetName = StrategyParameterSet, Mandatory = true)]
         public PSCredential Credential { get; set; }
+
+        [Parameter(ParameterSetName = StrategyParameterSet, Mandatory = false)]
+        public string VirtualNetworkName { get; set; }
+
+        [Parameter(ParameterSetName = StrategyParameterSet, Mandatory = false)]
+        public string AddressPrefix { get; set; } = "192.168.0.0/16";
+
+        [Parameter(ParameterSetName = StrategyParameterSet, Mandatory = false)]
+        public string SubnetName { get; set; }
+
+        [Parameter(ParameterSetName = StrategyParameterSet, Mandatory = false)]
+        public string SubnetAddressPrefix { get; set; } = "192.168.1.0/24";
+
+        [Parameter(ParameterSetName = StrategyParameterSet, Mandatory = false)]
+        public string PublicIpAddressName { get; set; }
+
+        [Parameter(ParameterSetName = StrategyParameterSet, Mandatory = false)]
+        public string DomainNameLabel { get; set; }
+
+        [Parameter(ParameterSetName = StrategyParameterSet, Mandatory = false)]
+        [ValidateSet("Static", "Dynamic")]
+        public string AllocationMethod { get; set; } = "Static";
+
+        [Parameter(ParameterSetName = StrategyParameterSet, Mandatory = false)]
+        public string SecurityGroupName { get; set; }
+
+        [Parameter(ParameterSetName = StrategyParameterSet, Mandatory = false)]
+        public int[] OpenPorts { get; set; }
+
+        [Parameter(ParameterSetName = StrategyParameterSet, Mandatory = false)]
+        public string ImageName { get; set; } = "Win2016Datacenter";
 
         public override void ExecuteCmdlet()
         {
@@ -162,16 +185,31 @@ namespace Microsoft.Azure.Commands.Compute
 
         public void StrategyExecuteCmdlet()
         {
-            if (ResourceGroupName == null)
-            {
-                ResourceGroupName = Name;
-            }
+            ResourceGroupName = ResourceGroupName ?? Name;
+            VirtualNetworkName = VirtualNetworkName ?? Name;
+            SubnetName = SubnetName ?? Name;
+            PublicIpAddressName = PublicIpAddressName ?? Name;
+            DomainNameLabel = DomainNameLabel ?? (Name + ResourceGroupName);
+            SecurityGroupName = SecurityGroupName ?? Name;
+
+            // get image
+            var image = Images
+                .Instance
+                .Select(osAndMap => 
+                    new { OsType = osAndMap.Key, Image = osAndMap.Value.GetOrNull(ImageName) })
+                .First(osAndImage => osAndImage.Image != null);
 
             var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(ResourceGroupName);
-            var virtualNetwork = resourceGroup.CreateVirtualNetworkConfig(Name, AddressPrefix);
-            var subnet = virtualNetwork.CreateSubnet(Name, SubnetAddressPrefix);
-            var publicIpAddress = resourceGroup.CreatePublicIPAddressConfig(Name);
-            var networkSecurityGroup = resourceGroup.CreateNetworkSecurityGroupConfig(Name);
+            var virtualNetwork = resourceGroup.CreateVirtualNetworkConfig(
+                name: VirtualNetworkName, addressPrefix: AddressPrefix);
+            var subnet = virtualNetwork.CreateSubnet(SubnetName, SubnetAddressPrefix);
+            var publicIpAddress = resourceGroup.CreatePublicIPAddressConfig(
+                name: PublicIpAddressName,
+                domainNameLabel: DomainNameLabel,
+                allocationMethod: AllocationMethod);
+            var networkSecurityGroup = resourceGroup.CreateNetworkSecurityGroupConfig(
+                name: SecurityGroupName,
+                openPorts: OpenPorts);
             var networkInterface = resourceGroup.CreateNetworkInterfaceConfig(
                 Name, subnet, publicIpAddress, networkSecurityGroup);
             var virtualMachine = resourceGroup.CreateVirtualMachineConfig(
