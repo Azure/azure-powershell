@@ -4,13 +4,6 @@ using System.Linq;
 
 namespace Microsoft.Azure.Commands.Common.Strategies
 {
-    public interface IResourceConfig : IEntityConfig
-    {
-        string ResourceGroupName { get; }
-
-        IEnumerable<IEntityConfig> Dependencies { get; }
-    }
-
     public sealed class ResourceConfig<TModel> : IEntityConfig<TModel>, IResourceConfig
         where TModel : class
     {
@@ -52,12 +45,16 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                 }
                 .Concat(Strategy.GetId(Name));
 
-        Result IEntityConfig.Accept<Context, Result>(
-            IEntityConfigVisitor<Context, Result> visitor, Context context)
+        TResult IEntityConfig.Accept<TContext, TResult>(
+            IEntityConfigVisitor<TContext, TResult> visitor, TContext context)
             => visitor.Visit(this, context);
 
-        Result IEntityConfig<TModel>.Accept<Context, Result>(
-            IEntityConfigVisitor<TModel, Context, Result> visitor, Context context)
+        TResult IEntityConfig<TModel>.Accept<TContext, TResult>(
+            IEntityConfigVisitor<TModel, TContext, TResult> visitor, TContext context)
+            => visitor.Visit(this, context);
+
+        TResult IResourceConfig.Accept<TContext, TResult>(
+            IResourceConfigVisitor<TContext, TResult> visitor, TContext context)
             => visitor.Visit(this, context);
     }
 }

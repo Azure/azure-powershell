@@ -43,7 +43,9 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                         async () =>
                         {
                             // wait for all dependencies
-                            var tasks = config.Dependencies.Select(UpdateStateAsyncDispatch);                            
+                            var tasks = config
+                                .GetResourceDependencies()
+                                .Select(UpdateStateAsyncDispatch);
                             await Task.WhenAll(tasks);
                             // call the CreateOrUpdateAsync function for the resource.
                             return await config.CreateOrUpdateAsync(
@@ -54,26 +56,14 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                 }
             }
 
-            public Task UpdateStateAsync<TModel, TParentModel>(
-                NestedResourceConfig<TModel, TParentModel> config)
-                where TModel : class
-                where TParentModel : class
-                => UpdateStateAsyncDispatch(config.Parent);
-
-            public Task UpdateStateAsyncDispatch(IEntityConfig config)
+            public Task UpdateStateAsyncDispatch(IResourceConfig config)
                 => config.Accept(new UpdateStateAsyncVisitor(), this);
         }
 
-        sealed class UpdateStateAsyncVisitor : IEntityConfigVisitor<Context, Task>
+        sealed class UpdateStateAsyncVisitor : IResourceConfigVisitor<Context, Task>
         {
-            public Task Visit<TModel>(ResourceConfig<TModel> config, Context context)
+            public Task Visit<TModel>(ResourceConfig<TModel> config, Context context) 
                 where TModel : class
-                => context.UpdateStateAsync(config);
-
-            public Task Visit<TModel, TParentModel>(
-                NestedResourceConfig<TModel, TParentModel> config, Context context)
-                where TModel : class
-                where TParentModel : class
                 => context.UpdateStateAsync(config);
         }
     }

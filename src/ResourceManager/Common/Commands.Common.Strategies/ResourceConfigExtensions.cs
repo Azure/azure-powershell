@@ -70,5 +70,9 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                     config.Name,
                     model,
                     cancellationToken));
+
+        public static IEnumerable<IResourceConfig> GetResourceDependencies(
+            this IResourceConfig config)
+            => config.Dependencies.Select(d => d.Resource);
     }
 }

@@ -7,9 +7,6 @@ namespace Microsoft.Azure.Commands.Common.Strategies
     {
         public static IEnumerable<IResourceConfig> GetTargetDependencies(
             this IResourceConfig config, IState target)
-            => config
-                .Dependencies
-                .Select(d => d.Resource)
-                .Where(target.Contains);
+            => config.GetResourceDependencies().Where(target.Contains);
     }
 }

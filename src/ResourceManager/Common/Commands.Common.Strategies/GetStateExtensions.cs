@@ -1,6 +1,4 @@
-﻿using Microsoft.Rest.Azure;
-using System.Linq;
-using System.Net;
+﻿using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -8,6 +6,14 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 {
     public static class GetStateExtensions
     {
+        /// <summary>
+        /// Returns a current Azure state for the given resource (config).
+        /// </summary>
+        /// <typeparam name="TModel"></typeparam>
+        /// <param name="config"></param>
+        /// <param name="client"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         public static async Task<IState> GetStateAsync<TModel>(
             this IEntityConfig<TModel> config,
             IClient client,
