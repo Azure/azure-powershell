@@ -173,7 +173,8 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             var createProperties = new RoleAssignmentProperties
             {
                 PrincipalId = principalId.ToString(),
-                RoleDefinitionId = roleDefinitionId
+                RoleDefinitionId = roleDefinitionId,
+                CanDelegate = parameters.CanDelegate
             };
             var createParameters = new RoleAssignmentCreateParameters(createProperties);
 
