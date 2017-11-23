@@ -17,6 +17,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using System.Collections.Generic;
     using System.Management.Automation;
     using Microsoft.Azure.Management.IotHub;
+    using ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet(VerbsCommon.Add, "AzureRmIotHubEventHubConsumerGroup", SupportsShouldProcess = true), OutputType(typeof(IEnumerable<string>))]
     [Alias("Add-AzureRmIotHubEHCG")]
@@ -27,6 +28,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the Resource Group")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

@@ -56,6 +56,7 @@ namespace Microsoft.Azure.Commands.Compute
             Mandatory = true,
             Position = 0,
             ValueFromPipelineByPropertyName = true)]
+        [ResourceGroupCompleter()]
         [Parameter(
             ParameterSetName = StrategyParameterSet,
             Mandatory = false)]
