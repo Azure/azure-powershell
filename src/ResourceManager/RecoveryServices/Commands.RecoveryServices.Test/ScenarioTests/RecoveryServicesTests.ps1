@@ -157,8 +157,11 @@ function Test-GetRSVaultSettingsFile
 		# 2. Get-AzureRmRecoveryServicesVaultSettingsFile
 		$file = Get-AzureRmRecoveryServicesVaultSettingsFile -Vault $vault -Backup
 		
-		Assert-NotNull $file
-		Assert-NotNull $file.FilePath
+		if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -eq [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Record)
+		{
+			Assert-NotNull $file
+			Assert-NotNull $file.FilePath
+		}
 	}
 	finally
 	{
