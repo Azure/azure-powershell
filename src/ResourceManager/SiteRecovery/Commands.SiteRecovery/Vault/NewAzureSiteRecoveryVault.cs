@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.SiteRecoveryVault.Models;
+using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
@@ -21,6 +22,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// Used to initiate a vault create operation.
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRmSiteRecoveryVault")]
+    [Obsolete("This cmdlet has been marked for deprecation in an upcoming release. Please use the " +
+        "equivalent cmdlet from the AzureRm.RecoveryServices.SiteRecovery module instead.",
+        false)]
     public class CreateAzureSiteRecoveryVault : SiteRecoveryCmdletBase
     {
         #region Parameters

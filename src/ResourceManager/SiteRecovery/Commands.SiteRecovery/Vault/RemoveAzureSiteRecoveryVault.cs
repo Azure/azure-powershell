@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.SiteRecovery.Properties;
 using Microsoft.Azure.Management.SiteRecoveryVault.Models;
+using System;
 using System.Management.Automation;
 using System.Net;
 
@@ -23,6 +24,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// Used to initiate a vault delete operation.
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureRmSiteRecoveryVault")]
+    [Obsolete("This cmdlet has been marked for deprecation in an upcoming release. Please use the " +
+        "equivalent cmdlet from the AzureRm.RecoveryServices.SiteRecovery module instead.",
+        false)]
     public class RemoveAzureSiteRecoveryVault : SiteRecoveryCmdletBase
     {
         #region Parameters
