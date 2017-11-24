@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.SiteRecoveryVault.Models;
 using System;
 using System.Management.Automation;
@@ -40,6 +41,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// Gets or sets the resource group name
         /// </summary>
         [Parameter(Mandatory = true)]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

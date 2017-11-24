@@ -18,6 +18,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.EventGrid.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.EventGrid.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.EventGrid
 {
@@ -35,6 +36,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             Position = 0,
             HelpMessage = "The resource group in which the topic should be created.",
             ParameterSetName = TopicNameParameterSet)]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         [Alias(AliasResourceGroup)]
         public string ResourceGroupName { get; set; }

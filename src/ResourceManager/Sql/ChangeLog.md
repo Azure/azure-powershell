@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Added ability to rename database using Set-AzureRmSqlDatabase
+
+## Version 4.0.1
+* Fixed assembly loading issue that caused some cmdlets to fail when executing
 
 ## Version 4.0.0
 * Adding support for list and cancel the asynchronous updateslo operation on the database
