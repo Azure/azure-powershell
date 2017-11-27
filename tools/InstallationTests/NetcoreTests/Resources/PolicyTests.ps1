@@ -24,12 +24,14 @@ function Test-PolicyDefinitionCRUD
 
 	# Test
 	$actual = New-AzureRMPolicyDefinition -Name $policyName -Policy SamplePolicyDefinition.json
+	Start-Sleep 5
 	$expected = Get-AzureRMPolicyDefinition -Name $policyName
 	Assert-AreEqual $expected.Name $actual.Name
 	Assert-AreEqual $expected.PolicyDefinitionId $actual.PolicyDefinitionId
 	Assert-NotNull($actual.Properties.PolicyRule)
 
 	$actual = Set-AzureRMPolicyDefinition -Name $policyName -DisplayName testDisplay -Description testDescription -Policy SamplePolicyDefinition.json
+	Start-Sleep 5
 	$expected = Get-AzureRMPolicyDefinition -Name $policyName
 	Assert-AreEqual $expected.Properties.DisplayName $actual.Properties.DisplayName
 	Assert-AreEqual $expected.Properties.Description $actual.Properties.Description
@@ -55,6 +57,7 @@ function Test-PolicyAssignmentCRUD
 	$rg = New-AzureRMResourceGroup -Name $rgname -Location "west us"
 	$policy = New-AzureRMPolicyDefinition -Name $policyName -Policy SamplePolicyDefinition.json
 	$actual = New-AzureRMPolicyAssignment -Name testPA -PolicyDefinition $policy -Scope $rg.ResourceId
+	Start-Sleep 5
 	$expected = Get-AzureRMPolicyAssignment -Name testPA -Scope $rg.ResourceId
 
 	Assert-AreEqual $expected.Name $actual.Name
