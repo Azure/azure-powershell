@@ -13,44 +13,29 @@ Creates a subscription definition.
 
 ### Create subscription definition
 ```
-New-AzureRmSubscriptionDefinition -ManagementGroupId <String> -Name <String> -OfferType <String>
+New-AzureRmSubscriptionDefinition -Name <String> -OfferType <String> [-SubscriptionDisplayName <String>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmSubscriptionDefinition** cmdlet creates a subscription definitions within the specified management group.
+The **New-AzureRmSubscriptionDefinition** cmdlet creates a subscription definition.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> New-AzureRmSubscriptionDefinition -ManagementGroupId 3d0a564b-2803-4019-9f99-0a497dfeea91 -Name MySubDef -OfferType MS-AZR-0017P
+PS C:\> New-AzureRmSubscriptionDefinition -Name MySubDef -OfferType MS-AZR-0017P
 ```
 
 Creates a subscription definition with a default subscription display name.
 
 ### Example 2
 ```
-PS C:\> New-AzureRmSubscriptionDefinition -ManagementGroupId 3d0a564b-2803-4019-9f99-0a497dfeea91 -Name MySubDef -OfferType MS-AZR-0017P -SubscriptionDisplayName MyPaygoSub
+PS C:\> New-AzureRmSubscriptionDefinition -Name MySubDef -OfferType MS-AZR-0017P -SubscriptionDisplayName MyPaygoSub
 ```
 
 Creates a subscription definition with a custom subscription display name.
 
 ## PARAMETERS
-
-### -ManagementGroupId
-The id of the management group in which to create the subscription definition.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -Name
 The name of the subscription definition to create.
@@ -75,7 +60,7 @@ Type: String
 Parameter Sets: (All)
 Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -90,7 +75,7 @@ Type: String
 Parameter Sets: (All)
 Aliases: 
 
-Required: True
+Required: False
 Position: Named
 Default value: Name
 Accept pipeline input: False

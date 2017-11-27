@@ -11,18 +11,10 @@ Get a subscription definition.
 
 ## SYNTAX
 
-### Subscription (Default)
+### Get subscription definitions.
 ```
 Get-AzureRmSubscriptionDefinition
 ```
-
-### Management group
-```
-Get-AzureRmSubscriptionDefinition -ManagementGroupId <String> [-Name <String>]
-```
-
-## DESCRIPTION
-The **Get-AzureRmSubscriptionDefinition** cmdlet gets one or more subscription definitions within the specified scope.
 
 ## EXAMPLES
 
@@ -31,66 +23,29 @@ The **Get-AzureRmSubscriptionDefinition** cmdlet gets one or more subscription d
 PS C:\> Get-AzureRmSubscriptionDefinition
 ```
 
-Gets the subscription definition for the subscription in the current context.
+Gets all subscription definitions.
 
 ### Example 2
 ```
-PS C:\> Get-AzureRmSubscription | Get-AzureRmSubscriptionDefinition
+PS C:\> Get-AzureRmSubscriptionDefinition -Name MySubDef
 ```
 
-Gets the subscription definitions for all subscriptions in the current tenant.
-
-### Example 3
-```
-PS C:\> Get-AzureRmSubscriptionDefinition -ManagementGroupId 3d0a564b-2803-4019-9f99-0a497dfeea91
-```
-
-Gets the subscription definitions within management group 3d0a564b-2803-4019-9f99-0a497dfeea91.
+Gets a subscription definition with the name MySubDef.
 
 ## PARAMETERS
-
-### -ManagementGroupId
-The id of the management group in which to retrieve subscription definitions.
-
-```yaml
-Type: String
-Parameter Sets: ByManagementGroup
-Aliases: 
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -Name
 The name of the subscription definition to retrieve.
 
 ```yaml
 Type: String
-Parameter Sets: ByManagementGroup
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Subscription
-The subscription for which to retrieve the subscription definition.
-
-```yaml
-Type: IAzureSubscription
-Parameter Sets: BySubscription
-Aliases: 
-
-Required: False
-Position: Named
-Default value: Subscription in current context
-Accept pipeline input: True
 Accept wildcard characters: False
 ```
 
