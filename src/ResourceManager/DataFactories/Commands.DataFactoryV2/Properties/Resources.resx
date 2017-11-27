@@ -359,4 +359,10 @@ Are you sure you want to continue?</value>
   <data name="DataFactoryUpdating" xml:space="preserve">
     <value>Updating properties of the data factory '{0}' in resource group '{1}'.</value>
   </data>
+  <data name="PipelineRunStopConfirmation" xml:space="preserve">
+    <value>Are you sure you want to stop pipeline run '{0}' in data factory '{1}'?</value>
+  </data>
+  <data name="PipelineRunStopping" xml:space="preserve">
+    <value>Stopping pipeline run '{0}' in data factory '{1}'</value>
+  </data>
 </root>

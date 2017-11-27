@@ -114,6 +114,7 @@
     <Compile Include="ParameterSetNames.cs" />
     <Compile Include="Runs\GetAzureDataFactoryPipelineRunCommand.cs" />
     <Compile Include="Runs\GetAzureDataFactoryTriggerRunCommand.cs" />
+    <Compile Include="Runs\StopAzureDataFactoryPipelineRunCmmand.cs" />
     <Compile Include="Triggers\StopAzureDataFactoryTriggerCommand.cs" />
     <Compile Include="Triggers\StartAzureDataFactoryTriggerCommand.cs" />
     <Compile Include="Triggers\GetAzureDataFactoryTriggerCommand.cs" />

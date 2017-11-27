@@ -646,6 +646,24 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to stop pipeline run &apos;{0}&apos; in data factory &apos;{1}&apos;?.
+        /// </summary>
+        internal static string PipelineRunStopConfirmation {
+            get {
+                return ResourceManager.GetString("PipelineRunStopConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stopping pipeline run &apos;{0}&apos; in data factory &apos;{1}&apos;.
+        /// </summary>
+        internal static string PipelineRunStopping {
+            get {
+                return ResourceManager.GetString("PipelineRunStopping", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Renegerate the authentication key &apos;{0}&apos; of integration runtime {1}..
         /// </summary>
         internal static string RegenerateAuthKey {
