@@ -47,9 +47,9 @@ function Test-NewSubscriptionDefinition
     $definitions = Get-AzureRmSubscriptionDefinition
     $previousDefinitionCount = $definitions.Count
 
-    $myNewSubDefName = "MyProdSubDef99"
+    $myNewSubDefName = "MyTestSubDef1"
 
-    $definition = New-AzureRmSubscriptionDefinition -Name $myNewSubDefName -OfferType "MS-AZR-0017P"
+    $definition = New-AzureRmSubscriptionDefinition -Name $myNewSubDefName -OfferType MS-AZR-0017P
 
     Assert-AreEqual $myNewSubDefName $definition.Name
     Assert-AreEqual $myNewSubDefName $definition.SubscriptionDisplayName
