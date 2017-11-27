@@ -249,9 +249,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.DataFactoryV2", "R
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.DataFactoryV2.Test", "ResourceManager\DataFactories\Commands.DataFactoryV2.Test\Commands.DataFactoryV2.Test.csproj", "{8E5612F5-4F26-49CA-B9AC-67A4C1DB74F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.PowerBIDedicated.Test", "ResourceManager\PowerBIDedicated\Commands.PowerBIDedicated.Test\Commands.PowerBIDedicated.Test.csproj", "{9056F1E3-0B1D-46CA-A435-F1E9AAE6DCC0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.PowerBI.Test", "ResourceManager\PowerBIDedicated\Commands.PowerBIDedicated.Test\Commands.PowerBIDedicated.Test.csproj", "{9056F1E3-0B1D-46CA-A435-F1E9AAE6DCC0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.PowerBIDedicated", "ResourceManager\PowerBIDedicated\Commands.PowerBIDedicated\Commands.PowerBIDedicated.csproj", "{B1B26198-8A48-4457-A969-831B2A871A0E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.PowerBI", "ResourceManager\PowerBIDedicated\Commands.PowerBIDedicated\Commands.PowerBIDedicated.csproj", "{B1B26198-8A48-4457-A969-831B2A871A0E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
