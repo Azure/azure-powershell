@@ -8770,7 +8770,11 @@
       "StatusCode": 200
     }
   ],
-  "Names": {},
+  "Names": {
+    "Test-NewSubscriptionDefinition": [
+      "MyTestSubDef1"
+    ]
+  },
   "Variables": {
     "SubscriptionId": "430ed244-e513-4b13-b113-e877158ed7f5"
   }
