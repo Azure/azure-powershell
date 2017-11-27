@@ -22,7 +22,7 @@ using Microsoft.Azure.Commands.Management.Storage.Models;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
-    [Cmdlet(VerbsCommon.New, StorageAccountNounStr), OutputType(typeof(StorageModels.StorageAccount))]
+    [Cmdlet(VerbsCommon.New, StorageAccountNounStr), OutputType(typeof(PSStorageAccount))]
     public class NewAzureStorageAccountCommand : StorageAccountBaseCmdlet
     {
         [Parameter(
@@ -68,6 +68,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             Mandatory = false,
             HelpMessage = "Storage Account Kind.")]
         [ValidateSet(AccountKind.Storage,
+            AccountKind.StorageV2,
             AccountKind.BlobStorage,
             IgnoreCase = true)]
         public string Kind { get; set; }
@@ -190,7 +191,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             }
             if (NetworkRuleSet != null)
             {
-                createParameters.NetworkAcls = PSNetworkRuleSet.ParseStorageNetworkRule(NetworkRuleSet);
+                createParameters.NetworkRuleSet = PSNetworkRuleSet.ParseStorageNetworkRule(NetworkRuleSet);
             }
 
             var createAccountResponse = this.StorageClient.StorageAccounts.Create(
