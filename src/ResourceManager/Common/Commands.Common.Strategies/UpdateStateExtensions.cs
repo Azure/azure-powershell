@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -48,10 +49,17 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                                 .Select(UpdateStateAsyncDispatch);
                             await Task.WhenAll(tasks);
                             // call the CreateOrUpdateAsync function for the resource.
-                            return await config.CreateOrUpdateAsync(
-                                _OperationContext.Client,
-                                model,
-                                _OperationContext.CancellationToken);
+                            try
+                            {
+                                return await config.CreateOrUpdateAsync(
+                                    _OperationContext.Client,
+                                    model,
+                                    _OperationContext.CancellationToken);
+                            }
+                            catch (Exception e)
+                            {
+                                throw e;
+                            }
                         });
                 }
             }

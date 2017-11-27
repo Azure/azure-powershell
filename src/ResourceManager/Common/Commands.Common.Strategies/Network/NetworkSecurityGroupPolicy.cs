@@ -23,13 +23,20 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
                 name,
                 _ => new NetworkSecurityGroup
                 {
-                    SecurityRules = new SecurityRule[]
-                    {
-                        new SecurityRule
+                    SecurityRules = openPorts
+                        .Select((port, index) => new SecurityRule
                         {
-                            DestinationPortRanges = openPorts.Select(v => v.ToString()).ToList()
-                        }
-                    }
+                            Name = name + port,
+                            Protocol = "Tcp",
+                            Priority = index + 1000,
+                            Access = "Allow",
+                            Direction = "Inbound",
+                            SourcePortRange = "*",
+                            SourceAddressPrefix = "*",
+                            DestinationPortRange = port.ToString(),
+                            DestinationAddressPrefix = "*"
+                        })
+                        .ToList()
                 });
     }
 }
