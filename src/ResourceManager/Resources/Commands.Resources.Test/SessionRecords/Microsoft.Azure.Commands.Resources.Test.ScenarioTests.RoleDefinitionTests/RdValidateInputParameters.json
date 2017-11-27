@@ -7,15 +7,15 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "4c55ef9e-c3ac-4cd6-a84b-e54ba62fb2d0"
+          "2fb0d288-f9b4-4b38-94c0-5905f2979fed"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2101.1",
+          "FxVersion/4.7.2556.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
+          "OSVersion/6.3.16299",
           "Microsoft.Azure.Management.Authorization.Version2015_07_01.AuthorizationManagementClient/1.0.0.0"
         ]
       },
@@ -34,7 +34,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "5412bf12-e714-4635-b6b5-a192d0fd37d3"
+          "cf1c858f-03eb-449c-bb3d-d88ae31b5d89"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -46,16 +46,16 @@
           "14994"
         ],
         "x-ms-correlation-request-id": [
-          "f5baf256-6d73-4266-a429-c3d28e8bdda5"
+          "115ab455-4c12-4695-a103-f425aa8b86cc"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20170804T065137Z:f5baf256-6d73-4266-a429-c3d28e8bdda5"
+          "WESTUS2:20171127T202540Z:115ab455-4c12-4695-a103-f425aa8b86cc"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Fri, 04 Aug 2017 06:51:37 GMT"
+          "Mon, 27 Nov 2017 20:25:40 GMT"
         ],
         "Set-Cookie": [
           "x-ms-gateway-slice=productionb; path=/; secure; HttpOnly"
