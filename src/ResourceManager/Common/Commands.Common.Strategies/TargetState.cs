@@ -33,7 +33,7 @@
 
             public void AddIfRequired(IEntityConfig config)
             {
-                if (!Current.Contains(config))
+                if (!Current.ContainsDispatch(config))
                 {
                     config.Accept(new AddVisitor(), this);
                 }

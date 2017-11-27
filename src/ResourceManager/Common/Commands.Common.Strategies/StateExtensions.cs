@@ -1,4 +1,6 @@
-﻿namespace Microsoft.Azure.Commands.Common.Strategies
+﻿using System;
+
+namespace Microsoft.Azure.Commands.Common.Strategies
 {
     public static class StateExtensions
     {
@@ -28,6 +30,15 @@
             where TModel : class
             => config.Accept(new GetVisitor<TModel>(), state);
 
+        public static bool Contains<TModel, TParentModel>(
+            this IState state, NestedResourceConfig<TModel, TParentModel> config)
+            where TModel : class
+            where TParentModel : class
+            => state.Get(config) != null;
+
+        public static bool ContainsDispatch(this IState state, IEntityConfig config)
+            => config.Accept(new ContainsDispatchVisitor(), state);
+
         sealed class GetVisitor<TModel> : IEntityConfigVisitor<TModel, IState, TModel>
             where TModel : class
         {
@@ -38,6 +49,19 @@
                 NestedResourceConfig<TModel, TParentModel> config, IState state)
                 where TParentModel : class
                 => state.Get(config);
+        }
+
+        sealed class ContainsDispatchVisitor : IEntityConfigVisitor<IState, bool>
+        {
+            public bool Visit<TModel>(ResourceConfig<TModel> config, IState context)
+                where TModel : class
+                => context.Contains(config);
+
+            public bool Visit<TModel, TParentModel>(
+                NestedResourceConfig<TModel, TParentModel> config, IState context)
+                where TModel : class
+                where TParentModel : class
+                => context.Contains(config);
         }
     }
 }

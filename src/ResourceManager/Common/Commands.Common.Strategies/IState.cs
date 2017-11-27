@@ -8,6 +8,6 @@
         TModel Get<TModel>(ResourceConfig<TModel> config)
             where TModel : class;
 
-        bool Contains(IEntityConfig config);
+        bool Contains(IResourceConfig config);
     }
 }

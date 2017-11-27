@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             where TModel : class
             => _Map.GetOrAddWithCast(config.DefaultIdStr(), f);
 
-        public bool Contains(IEntityConfig config)
+        public bool Contains(IResourceConfig config)
             => _Map.ContainsKey(config.DefaultIdStr());
     }
 }

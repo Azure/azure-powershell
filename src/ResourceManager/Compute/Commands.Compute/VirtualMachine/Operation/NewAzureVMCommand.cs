@@ -223,7 +223,6 @@ namespace Microsoft.Azure.Commands.Compute
                 adminPassword: new NetworkCredential(string.Empty, Credential.Password).Password,
                 image: image.Image);
 
-            //
             var client = new Client(DefaultProfile.DefaultContext);
             var current = virtualMachine
                 .GetStateAsync(client, new CancellationToken())
@@ -240,10 +239,15 @@ namespace Microsoft.Azure.Commands.Compute
             }
 
             var target = virtualMachine.GetTargetState(current, client.SubscriptionId, Location);
-            var result = virtualMachine
-                .UpdateStateAsync(client, target, new CancellationToken())
-                .GetAwaiter()
-                .GetResult();
+
+            if (ShouldProcess(Name, VerbsCommon.New))
+            {
+                var result = virtualMachine
+                    .UpdateStateAsync(client, target, new CancellationToken())
+                    .GetAwaiter()
+                    .GetResult();
+                WriteObject(result);
+            }
         }
 
         public void DefaultExecuteCmdlet()
@@ -310,7 +314,8 @@ namespace Microsoft.Azure.Commands.Compute
                                 AutoUpgradeMinorVersion = true,
                             };
 
-                            typeof(CM.Resource).GetRuntimeProperty("Name").SetValue(extensionParameters, VirtualMachineBGInfoExtensionContext.ExtensionDefaultName);
+                            typeof(CM.Resource).GetRuntimeProperty("Name")
+                                .SetValue(extensionParameters, VirtualMachineBGInfoExtensionContext.ExtensionDefaultName);
                             typeof(CM.Resource).GetRuntimeProperty("Type")
                                 .SetValue(extensionParameters, VirtualMachineExtensionType);
 
