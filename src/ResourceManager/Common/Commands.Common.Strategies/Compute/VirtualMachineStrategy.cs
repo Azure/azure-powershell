@@ -21,7 +21,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
             string name,
             ResourceConfig<NetworkInterface> networkInterface,
             string adminUsername,
-            string adminPassword)
+            string adminPassword,
+            Image image)
             => Strategy.CreateConfig(
                 resourceGroup,
                 name, 
@@ -54,10 +55,10 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
                     {
                         ImageReference = new ImageReference
                         {
-                            Publisher = "MicrosoftWindowsServer",
-                            Offer = "WindowsServer",
-                            Sku = "2016-Datacenter",
-                            Version = "latest"
+                            Publisher = image.publisher,
+                            Offer = image.offer,
+                            Sku = image.sku,
+                            Version = image.version
                         }
                     },
                 },

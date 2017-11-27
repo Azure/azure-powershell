@@ -34,6 +34,7 @@ using System;
 using System.Collections;
 using System.Linq;
 using System.Management.Automation;
+using System.Net;
 using System.Reflection;
 using System.Threading;
 using CM = Microsoft.Azure.Management.Compute.Models;
@@ -189,7 +190,7 @@ namespace Microsoft.Azure.Commands.Compute
             VirtualNetworkName = VirtualNetworkName ?? Name;
             SubnetName = SubnetName ?? Name;
             PublicIpAddressName = PublicIpAddressName ?? Name;
-            DomainNameLabel = DomainNameLabel ?? (Name + ResourceGroupName);
+            DomainNameLabel = DomainNameLabel ?? (Name + ResourceGroupName).ToLower();
             SecurityGroupName = SecurityGroupName ?? Name;
 
             // get image
@@ -198,6 +199,9 @@ namespace Microsoft.Azure.Commands.Compute
                 .Select(osAndMap => 
                     new { OsType = osAndMap.Key, Image = osAndMap.Value.GetOrNull(ImageName) })
                 .First(osAndImage => osAndImage.Image != null);
+
+            OpenPorts = OpenPorts 
+                ?? (image.OsType == "Windows" ? new[] { 3389, 5985 } : new[] { 22 });
 
             var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(ResourceGroupName);
             var virtualNetwork = resourceGroup.CreateVirtualNetworkConfig(
@@ -213,10 +217,11 @@ namespace Microsoft.Azure.Commands.Compute
             var networkInterface = resourceGroup.CreateNetworkInterfaceConfig(
                 Name, subnet, publicIpAddress, networkSecurityGroup);
             var virtualMachine = resourceGroup.CreateVirtualMachineConfig(
-                Name,
-                networkInterface,
-                Credential.UserName,
-                new System.Net.NetworkCredential(string.Empty, Credential.Password).Password);
+                name: Name,
+                networkInterface: networkInterface,
+                adminUsername: Credential.UserName,
+                adminPassword: new NetworkCredential(string.Empty, Credential.Password).Password,
+                image: image.Image);
 
             //
             var client = new Client(DefaultProfile.DefaultContext);
