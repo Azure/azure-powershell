@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = true,
             HelpMessage = "Azure region where the server should be created.")]
         [ValidateNotNullOrEmpty]
-        [LocationCompleter("Microsoft.AnalysisServices")]
+        [LocationCompleter("Microsoft.AnalysisServices/servers")]
         public string Location { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = true,
