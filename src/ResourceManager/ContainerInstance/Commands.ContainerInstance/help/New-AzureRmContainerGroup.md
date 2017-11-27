@@ -197,7 +197,9 @@ This commands creates a container group that mounts the provided Azure File shar
 ## PARAMETERS
 
 ### -AzureFileVolumeAccountKey
-The storage account key of the Azure File share to mount.```yaml
+The storage account key of the Azure File share to mount.
+
+```yaml
 Type: PSCredential
 Parameter Sets: CreateContainerGroupWithAzureFileMountParamSet
 Aliases: 
@@ -210,7 +212,9 @@ Accept wildcard characters: False
 ```
 
 ### -AzureFileVolumeAccountName
-The storage account name of the Azure File share to mount.```yaml
+The storage account name of the Azure File share to mount.
+
+```yaml
 Type: String
 Parameter Sets: CreateContainerGroupWithAzureFileMountParamSet
 Aliases: 
@@ -223,7 +227,9 @@ Accept wildcard characters: False
 ```
 
 ### -AzureFileVolumeMountPath
-The mount path for the Azure File volume.```yaml
+The mount path for the Azure File volume.
+
+```yaml
 Type: String
 Parameter Sets: CreateContainerGroupWithAzureFileMountParamSet
 Aliases: 
@@ -236,7 +242,9 @@ Accept wildcard characters: False
 ```
 
 ### -AzureFileVolumeShareName
-The name of the Azure File share to mount.```yaml
+The name of the Azure File share to mount.
+
+```yaml
 Type: String
 Parameter Sets: CreateContainerGroupWithAzureFileMountParamSet
 Aliases: 
@@ -405,7 +413,9 @@ Accept wildcard characters: False
 ```
 
 ### -Ports
-The ports to open. Default: [80]```yaml
+The ports to open. Default: [80]
+
+```yaml
 Type: Int32[]
 Parameter Sets: (All)
 Aliases: 
@@ -463,7 +473,9 @@ Accept wildcard characters: False
 ```
 
 ### -RestartPolicy
-The container restart policy. Default: Always```yaml
+The container restart policy. Default: Always
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
