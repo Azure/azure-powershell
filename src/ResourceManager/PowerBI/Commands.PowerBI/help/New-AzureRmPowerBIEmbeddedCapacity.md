@@ -36,15 +36,15 @@ The New-AzureRmPowerBIEmbeddedCapacity cmdlet creates a new PowerBI Embedded Cap
 ### Example 1
 ```
 PS C:\> New-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName "testRG" -Name "testcapacity" -Location "West US" -Sku "A1"
-Sku                    : A1
-Tier                   : PBIE_Azure
-Administrator          : {{admin@microsoft.com}}
+Administrator          : {admin@microsoft.com}
 State                  : Succeeded
 ProvisioningState      : Succeeded
 Id                     : /subscriptions/78e47976-.../resourceGroups/testRG/providers/Microsoft.PowerBIDedicated/capacities/testcapacity
 Name                   : testcapacity
 Type                   : Microsoft.PowerBIDedicated/capacities
 Location               : West US
+Sku                    : A1
+Tier                   : PBIE_Azure
 Tag                    : {}
 ```
 
@@ -96,7 +96,6 @@ Accept wildcard characters: False
 
 ### -Sku
 The name of the Sku for the capacity.
-Valid values are: 'A1', 'A2', 'A3', 'A4', 'A5', 'A6'
 
 ```yaml
 Type: String
@@ -110,23 +109,25 @@ Default value: None
 Accept wildcard characters: False
 ```
 
-### -Tag
-Key-value pairs in the form of a hash table set as tags on the capacity.
-
-```yaml
-Type: Hashtable
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Default value: None
-Accept wildcard characters: False
-```
 ### -Administrator
 A comma separated capacity names to set as administrator on the capacity
 
 ```yaml
 Type: String[]
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 4
+Default value: None
+Accept wildcard characters: False
+```
+
+### -Tag
+Key-value pairs in the form of a hash table set as tags on the capacity.
+
+```yaml
+Type: Hashtable
 Parameter Sets: (All)
 Aliases: 
 
