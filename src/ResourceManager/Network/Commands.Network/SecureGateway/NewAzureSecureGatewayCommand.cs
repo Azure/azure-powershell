@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             ParameterSetName = "SetByResource",
             HelpMessage = "VirtualHub")]
-        public PSSubnet VirtualHub { get; set; }
+        public PSSubnet VirtualHub { get; set; } //todo: needs to be virtual hub
 
         [Parameter(
             ParameterSetName = "SetByResourceId",
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             ParameterSetName = "SetByResource",
             HelpMessage = "VirtualNetwork")]
-        public PSSubnet VirtualNetwork { get; set; }
+        public PSVirtualNetwork VirtualNetwork { get; set; }
 
         [Parameter(
              Mandatory = false,

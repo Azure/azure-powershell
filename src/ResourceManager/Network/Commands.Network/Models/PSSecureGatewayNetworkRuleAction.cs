@@ -15,7 +15,7 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public class PSSecureGatewayAction
+    public class PSSecureGatewayNetworkRuleAction
     {
         public string Type { get; set; }
     }
