@@ -35,17 +35,17 @@ The Update-AzureRmPowerBIEmbeddedCapacity cmdlet modifies an instance of PowerBI
 
 ### Example 1
 ```
-PS C:\> Update-AzureRmPowerBIEmbeddedCapacity -Name "testcapacity" -ResourceGroupName "testRG" -Tag "key1:value1,key2:value2" -Administrator "testuser1@contoso.com"
-Sku                    : A1
-Tier                   : PBIE_Azure
-Administrator          : {{testuser1@contoso.com}}
+PS C:\> Update-AzureRmPowerBIEmbeddedCapacity -Name "testcapacity" -Tag @{"key1" = "value1";"key2" = "value2"} -Administrator "testuser1@contoso.com, testuser2@contoso.com" -PassThru
+Administrator          : {testuser1@contoso.com, testuser2@contoso.com}
 State                  : Succeeded
 ProvisioningState      : Succeeded
 Id                     : /subscriptions/78e47976-.../resourceGroups/testRG/providers/Microsoft.PowerBI/capacities/testcapacity
 Name                   : testcapacity
 Type                   : Microsoft.PowerBIDedicated/capacities
 Location               : West US
-Tag                    : {{key1:value1},{key2:value2}}
+Sku                    : A1
+Tier                   : PBIE_Azure
+Tag                    : {[key1, value1], [key2, value2]}
 ```
 
 Modifies the capacity named testcapacity in resourcegroup testgroup to set the tags as key1:value1 and key2:value2 and administrator to testuser1@contoso.com
@@ -81,7 +81,6 @@ Accept wildcard characters: False
 
 ### -Sku
 The name of the Sku for the capacity.
-Valid values are: 'A1', 'A2', 'A3', 'A4', 'A5', 'A6'
 
 ```yaml
 Type: String

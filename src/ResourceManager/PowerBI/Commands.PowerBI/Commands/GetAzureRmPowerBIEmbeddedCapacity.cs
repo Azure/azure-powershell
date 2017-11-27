@@ -35,15 +35,14 @@ namespace Microsoft.Azure.Commands.PowerBI
             HelpMessage = "Name of resource group under which the user want to retrieve the capacity.")]
         [Parameter(
             ParameterSetName = CapacityParameterSet,
-            Mandatory = true,
-            Position = 0,
+            Mandatory = false,
             HelpMessage = "Name of resource group under which the user want to retrieve the capacity.")]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
             ParameterSetName = CapacityParameterSet,
             Mandatory = true,
-            Position = 1,
+            Position = 0,
             HelpMessage = "Name of a specific capacity.")]
         public string Name { get; set; }
 

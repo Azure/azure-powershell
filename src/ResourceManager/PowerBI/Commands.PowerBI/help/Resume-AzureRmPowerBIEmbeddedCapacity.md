@@ -32,16 +32,16 @@ The Resume-AzureRmPowerBIEmbeddedCapacity cmdlet resumes an instance of PowerBI 
 
 ### Example 1
 ```
-PS C:\> Resume-AzureRmPowerBIEmbeddedCapacity -Name "testcapacity" -ResourceGroupName "testRG"
-Sku                    : A1
-Tier                   : PBIE_Azure
-Administrator          : {{admin@microsoft.com}}
+PS C:\> Resume-AzureRmPowerBIEmbeddedCapacity -Name "testcapacity" -ResourceGroupName "testRG" -PassThru
+Administrator          : {admin@microsoft.com}
 State                  : Succeeded
 ProvisioningState      : Succeeded
 Id                     : /subscriptions/78e47976-.../resourceGroups/testRG/providers/Microsoft.PowerBIDedicated/capacities/testcapacity
 Name                   : testcapacity
 Type                   : Microsoft.AnalysisServices/servers
 Location               : West US
+Sku                    : A1
+Tier                   : PBIE_Azure
 Tag                    : {}
 ```
 

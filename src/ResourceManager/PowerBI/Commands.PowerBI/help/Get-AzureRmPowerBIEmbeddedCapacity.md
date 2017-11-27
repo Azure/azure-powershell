@@ -31,26 +31,26 @@ The Get-AzureRmPowerBIEmbeddedCapacity cmdlet gets the details of an PowerBI Emb
 ### Example 1: Get resource group capacities
 ```
 PS C:\>Get-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName "testRG"
-Sku                    : A1
-Tier                   : PBIE_Azure
-Administrator          : {{admin@microsoft.com}}
+Administrator          : {admin@microsoft.com}
 State                  : Succeeded
 ProvisioningState      : Succeeded
 Id                     : /subscriptions/78e47976-.../resourceGroups/testRG/providers/Microsoft.PowerBIDedicated/capacities/testcapacity
 Name                   : testcapacity
 Type                   : Microsoft.PowerBIDedicated/capacities
 Location               : West US
+Sku                    : A1
+Tier                   : PBIE_Azure
 Tag                    : {}
 
-Sku                    : A4
-Tier                   : PBIE_Azure
-Administrator          : {{admin@microsoft.com}}
+Administrator          : {admin@microsoft.com}
 State                  : Succeeded
 ProvisioningState      : Succeeded
 Id                     : /subscriptions/78e47976-.../resourceGroups/testRG/providers/Microsoft.PowerBIDedicated/capacities/mycapacity
 Name                   : mycapacity
 Type                   : Microsoft.PowerBIDedicated/capacities
 Location               : West US
+Sku                    : A4
+Tier                   : PBIE_Azure
 Tag                    : {}
 ```
 
@@ -59,9 +59,7 @@ This command gets all Azure PowerBI Embedded Capacity in the resource group name
 ### Example 2: Get a capacity
 ```
 PS C:\>Get-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName "testRG" -Name "testcapacity"
-Sku                    : A1
-Tier                   : PBIE_Azure
-Administrator          : {{admin@microsoft.com}}
+Administrator          : {admin@microsoft.com}
 State                  : Succeeded
 ProvisioningState      : Succeeded
 Id                     : /subscriptions/78e47976-.../resourceGroups/testRG/providers/Microsoft.PowerBIDedicated/capacities/testcapacity
@@ -69,6 +67,8 @@ Name                   : testcapacity
 Type                   : Microsoft.PowerBIDedicated/capacities
 Location               : West US
 Tag                    : {}
+Sku                    : A1
+Tier                   : PBIE_Azure
 ```
 
 This command gets the Azure PowerBI Embedded Capacity named testcapacity in the resource group named testRG.
@@ -84,7 +84,6 @@ Parameter Sets: ByResourceGroup, ByCapacity
 Aliases: 
 
 Required: False
-Position: 0
 Default value: None
 Accept wildcard characters: False
 ```

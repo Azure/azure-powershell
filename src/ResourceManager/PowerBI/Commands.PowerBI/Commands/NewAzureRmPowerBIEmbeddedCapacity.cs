@@ -60,18 +60,19 @@ namespace Microsoft.Azure.Commands.PowerBI
         public string Sku { get; set; }
 
         [Parameter(
+            ValueFromPipelineByPropertyName = true,
+             Position = 4,
+            Mandatory = true,
+            HelpMessage = "A comma separated capacity names to set as administrators on the capacity")]
+        [ValidateNotNull]
+        public string[] Administrator { get; set; }
+
+        [Parameter(
             ValueFromPipelineByPropertyName = true, 
             Mandatory = false,
             HelpMessage = "A string,string dictionary of tags associated with this capacity")]
         [ValidateNotNull]
         public Hashtable Tag { get; set; }
-
-        [Parameter(
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = false,
-            HelpMessage = "A comma separated capacity names to set as administrators on the capacity")]
-        [ValidateNotNull]
-        public string[] Administrator { get; set; }
 
         public override void ExecuteCmdlet()
         {

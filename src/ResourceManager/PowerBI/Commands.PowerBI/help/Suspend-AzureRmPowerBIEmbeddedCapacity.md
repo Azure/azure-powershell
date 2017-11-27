@@ -32,16 +32,16 @@ The Suspend-AzureRmPowerBIEmbeddedCapacity cmdlet suspends an instance of PowerB
 
 ### Example 1
 ```
-PS C:\> Suspend-AzureRmPowerBIEmbeddedCapacity -Name "testcapacity" -ResourceGroupName "testRG"
-Sku                    : A1
-Tier                   : PBIE_Azure
-Administrator          : {{admin@microsoft.com}}
-State                  : Succeeded
-ProvisioningState      : Succeeded
+PS C:\> Suspend-AzureRmPowerBIEmbeddedCapacity -Name "testcapacity" -ResourceGroupName "testRG" -PassThru
+Administrator          : {admin@microsoft.com}
+State                  : Paused
+ProvisioningState      : Paused
 Id                     : /subscriptions/78e47976-.../resourceGroups/testRG/providers/Microsoft.PowerBIDedicated/capacities/testcapacity
 Name                   : testcapacity
 Type                   : Microsoft.PowerBIDedicated/capacities
 Location               : West US
+Sku                    : A1
+Tier                   : PBIE_Azure
 Tag                    : {}
 ```
 
