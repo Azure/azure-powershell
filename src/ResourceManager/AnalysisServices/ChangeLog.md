@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 0.5.1
+* Remove validate set of location into dynamic lookup so that all clouds are supported.
+
 ## Version 0.5.0
 * Fixed Synchronize-AzureAsInstance command to work with new AsAzure REST API for sync
 * Add support for online help
