@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<string> DestinationPorts { get; set; }
 
-        public List<PSSecureGatewayAction> Actions { get; set; }
+        public List<PSSecureGatewayNetworkRuleAction> Actions { get; set; }
 
         [JsonIgnore]
         public string ProtocolsText

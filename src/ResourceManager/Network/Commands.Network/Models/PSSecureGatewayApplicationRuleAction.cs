@@ -15,10 +15,8 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public class PSSecureGatewaySku
+    public class PSSecureGatewayApplicationRuleAction
     {
-        public string Name { get; set; }
-
-        public string Tier { get; set; }
+        public string Type { get; set; }
     }
 }

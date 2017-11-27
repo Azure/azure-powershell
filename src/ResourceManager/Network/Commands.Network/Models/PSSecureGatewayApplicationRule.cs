@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<string> TargetUrls { get; set; }
 
-        public List<PSSecureGatewayAction> Actions { get; set; }
+        public List<PSSecureGatewayApplicationRuleAction> Actions { get; set; }
 
         [JsonIgnore]
         public string ProtocolsText

@@ -54,23 +54,23 @@ namespace Microsoft.Azure.Commands.Network
 
         public PSSecureGateway GetSecureGateway(string resourceGroupName, string name)
         {
-            var appGateway = this.SecureGatewayClient.Get(resourceGroupName, name);
+            var secureGateway = this.SecureGatewayClient.Get(resourceGroupName, name);
 
-            var psSecureGateway = NetworkResourceManagerProfile.Mapper.Map<PSSecureGateway>(appGateway);
+            var psSecureGateway = NetworkResourceManagerProfile.Mapper.Map<PSSecureGateway>(secureGateway);
             psSecureGateway.ResourceGroupName = resourceGroupName;
             psSecureGateway.Tag =
-                TagsConversionHelper.CreateTagHashtable(appGateway.Tags);
+                TagsConversionHelper.CreateTagHashtable(secureGateway.Tags);
 
             return psSecureGateway;
         }
 
         public PSSecureGateway ToPsSecureGateway(SecureGateway secureGw)
         {
-            var psSecureGw = NetworkResourceManagerProfile.Mapper.Map<PSSecureGateway>(secureGw);
+            var secureGateway = NetworkResourceManagerProfile.Mapper.Map<PSSecureGateway>(secureGw);
 
-            psSecureGw.Tag = TagsConversionHelper.CreateTagHashtable(secureGw.Tags);
+            secureGateway.Tag = TagsConversionHelper.CreateTagHashtable(secureGw.Tags);
 
-            return psSecureGw;
+            return secureGateway;
         }
     }
 }
