@@ -12,13 +12,13 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.2.5'
+ModuleVersion = '0.1.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
 
 # ID used to uniquely identify this module
-GUID = 'd72f2aef-79c8-4119-9fef-36710708712d'
+GUID = 'bb985428-37c8-42cc-9193-58523906bd6d'
 
 # Author of this module
 Author = 'Microsoft Corporation'
