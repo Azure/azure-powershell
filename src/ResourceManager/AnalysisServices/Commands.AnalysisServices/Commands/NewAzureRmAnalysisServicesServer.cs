@@ -66,6 +66,11 @@ namespace Microsoft.Azure.Commands.AnalysisServices
         [ValidateNotNullOrEmpty]
         public string BackupBlobContainerUri { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 7, Mandatory = false,
+            HelpMessage = "The gateway resource Id for configuring on the server.")]
+        [ValidateNotNullOrEmpty]
+        public string GatewayResourceId { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (ShouldProcess(Name, Resources.CreateNewAnalysisServicesServer))
