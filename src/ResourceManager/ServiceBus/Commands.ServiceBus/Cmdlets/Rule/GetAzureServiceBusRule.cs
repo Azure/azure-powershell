@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.ServiceBus.Models;
 using System.Collections;
 using System.Management.Automation;
 using System.Collections.Generic;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.Rule
 {
@@ -31,6 +32,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Rule
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = "The name of the resource group")]
+        [ResourceGroupCompleter]
         [Alias("ResourceGroup")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
