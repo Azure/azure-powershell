@@ -30,7 +30,7 @@ function Test-AzureRmContainerGroup
     try
     {
         New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
-        $containerGroupCreated = New-AzureRmContainerGroup -ResourceGroupName $resourceGroupName -Name $containerGroupName -Image $image -OsType $osType -RestartPolicy $restartPolicy -IpAddressType "public" -Ports @($port1, $port2) -Cpu 1 -Memory 1.5
+        $containerGroupCreated = New-AzureRmContainerGroup -ResourceGroupName $resourceGroupName -Name $containerGroupName -Image $image -OsType $osType -RestartPolicy $restartPolicy -IpAddressType "public" -Port @($port1, $port2) -Cpu 1 -Memory 1.5
 
         Assert-AreEqual $containerGroupCreated.ResourceGroupName $resourceGroupName
         Assert-AreEqual $containerGroupCreated.Name $containerGroupName

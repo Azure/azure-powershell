@@ -146,9 +146,9 @@ namespace Microsoft.Azure.Commands.ContainerInstance
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The ports to open. Default: [80]")]
+            HelpMessage = "The port(s) to open. Default: [80]")]
         [ValidateNotNullOrEmpty]
-        public int[] Ports { get; set; }
+        public int[] Port { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Commands.ContainerInstance
                     OsType = this.OsType ?? ContainerGroupCreationParameters.DefaultOsType,
                     RestartPolicy = this.RestartPolicy ?? ContainerGroupRestartPolicy.Always,
                     IpAddressType = this.IpAddressType,
-                    Ports = this.Ports ?? ContainerGroupCreationParameters.DefaultPorts,
+                    Ports = this.Port ?? ContainerGroupCreationParameters.DefaultPorts,
                     ContainerImage = this.Image,
                     EnvironmentVariables = this.ConvertHashtableToDictionary(this.EnvironmentVariable),
                     Cpu = this.Cpu ?? ContainerGroupCreationParameters.DefaultCpu,
