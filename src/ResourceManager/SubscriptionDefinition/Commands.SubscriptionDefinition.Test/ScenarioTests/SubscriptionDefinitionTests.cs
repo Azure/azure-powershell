@@ -12,13 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.SubscriptionDefinition.Test.ScenarioTests.ScenarioTest;
 using Microsoft.Azure.Commands.ScenarioTest;
+using Microsoft.Azure.Commands.SubscriptionDefinition.Test.ScenarioTests.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using Microsoft.Azure.Test;
-using System;
 
 namespace Microsoft.Azure.Commands.SubscriptionDefinition.Test.ScenarioTests
 {

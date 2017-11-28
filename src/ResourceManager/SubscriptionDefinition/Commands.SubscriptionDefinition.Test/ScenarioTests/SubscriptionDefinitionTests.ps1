@@ -47,14 +47,7 @@ function Test-NewSubscriptionDefinition
     $definitions = Get-AzureRmSubscriptionDefinition
     $previousDefinitionCount = $definitions.Count
 
-    if ($env:AZURE_TEST_MODE -eq "Record")
-    {
-        $myNewSubDefName = "testsub" + [Guid]::NewGuid().ToString().Remove(5)
-    }
-    else
-    {
-        $myNewSubDefName = "MyTestSubDef1"
-    }
+    $myNewSubDefName = GetAssetName
 
     $definition = New-AzureRmSubscriptionDefinition -Name $myNewSubDefName -OfferType MS-AZR-0017P
 
