@@ -60,6 +60,7 @@
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataFactories\UpdateAzureDataFactoryCommand.cs" />
     <Compile Include="DataFactoryContextBaseGetCmdlet.cs" />
     <Compile Include="DataFactoryContextBaseSetCmdlet.cs" />
     <Compile Include="DataFactoryContextActionBaseCmdlet.cs" />
@@ -85,6 +86,7 @@
     <Compile Include="IntegrationRuntimes\SyncAzureDataFactoryIntegrationRuntimeNodeCredential.cs" />
     <Compile Include="LinkedServices\NewAzureDataFactoryLinkedServiceEncryptedCredentialCommand.cs" />
     <Compile Include="Models\AdfSubResource.cs" />
+    <Compile Include="Models\UpdatePSDataFactoryParameters.cs" />
     <Compile Include="Models\TriggerRunFilterOptions.cs" />
     <Compile Include="Models\CreatePSAdfEntityParameters.cs" />
     <Compile Include="LinkedServices\GetAzureDataFactoryLinkedServiceCommand.cs" />

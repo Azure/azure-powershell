@@ -1,8 +1,8 @@
 ---
 Module Name: AzureRM.DataFactoryV2
 Module Guid: e3c0f6bc-fe96-41a0-88f4-5e490a91f05d
-Download Help Link:
-Help Version:
+Download Help Link: 
+Help Version: 
 Locale: en-US
 ---
 
@@ -106,4 +106,7 @@ Stops a trigger in a data factory.
 
 ### [Sync-AzureRmDataFactoryV2IntegrationRuntimeCredential](Sync-AzureRmDataFactoryV2IntegrationRuntimeCredential.md)
 Synchronizes credentials among integration runtime nodes.
+
+### [Update-AzureRmDataFactoryV2](Update-AzureRmDataFactoryV2.md)
+Updates the properties of a data factory.
 
