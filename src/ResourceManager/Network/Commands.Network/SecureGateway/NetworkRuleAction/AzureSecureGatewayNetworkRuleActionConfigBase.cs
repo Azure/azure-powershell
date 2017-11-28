@@ -24,8 +24,8 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The type of the rule action")]
         [ValidateNotNullOrEmpty]
         [ValidateSet(
-            MNM.SecureGatewayRuleActionType.Allow,
-            MNM.SecureGatewayRuleActionType.Deny,
+            MNM.SecureGatewayNetworkRuleActionType.Allow,
+            MNM.SecureGatewayNetworkRuleActionType.Deny,
             IgnoreCase = true)]
         public string ActionType { get; set; }
     }

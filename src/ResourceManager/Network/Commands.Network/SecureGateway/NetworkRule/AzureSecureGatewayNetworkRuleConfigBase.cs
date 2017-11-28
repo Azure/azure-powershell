@@ -44,9 +44,9 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "The direction of the rule")]
         [ValidateNotNullOrEmpty]
-        [ValidateSet( // todo : fix values
-            MNM.ExpressRouteCircuitSkuTier.Standard,
-            MNM.ExpressRouteCircuitSkuTier.Premium,
+        [ValidateSet( 
+            MNM.SecureGatewayRuleDirection.Outbound,
+            MNM.SecureGatewayRuleDirection.Inbound,
             IgnoreCase = true)]
         public string Direction { get; set; }
 

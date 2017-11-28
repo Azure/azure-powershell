@@ -51,10 +51,24 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The SKU of secure gateway")]
+            HelpMessage = "The sku name of the secure gateway")]
         [ValidateNotNullOrEmpty]
-        public virtual PSSecureGatewaySku Sku { get; set; }
+        [ValidateSet(
+            MNM.SecureGatewaySkuName.StandardLarge,
+            MNM.SecureGatewaySkuName.StandardMedium,
+            MNM.SecureGatewaySkuName.StandardSmall,
+            IgnoreCase = true)]
+        public string SkuName { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The SKU tier of the secure gateway")]
+        [ValidateNotNullOrEmpty]
+        [ValidateSet(
+            MNM.SecureGatewayTier.Standard,
+            MNM.SecureGatewayTier.Premium,
+            IgnoreCase = true)]
+        public string SkuTier { get; set; }
 
         [Parameter(
             ParameterSetName = "SetByResourceId",
@@ -125,7 +139,11 @@ namespace Microsoft.Azure.Commands.Network
             secureGw.Name = this.Name;
             secureGw.ResourceGroupName = this.ResourceGroupName;
             secureGw.Location = this.Location;
-            secureGw.Sku = this.Sku;
+            secureGw.Sku = new PSSecureGatewaySku()
+            {
+                Name = this.SkuName,
+                Tier = this.SkuTier
+            };
 
             if (this.VirtualHub != null)
             {
