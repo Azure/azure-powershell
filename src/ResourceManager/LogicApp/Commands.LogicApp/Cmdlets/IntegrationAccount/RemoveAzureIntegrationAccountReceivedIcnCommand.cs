@@ -19,6 +19,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     using System.Management.Automation;
     using Microsoft.Azure.Commands.LogicApp.Utilities;
     using Microsoft.Azure.Management.Logic.Models;
+    using ResourceManager.Common.ArgumentCompleters;
 
     /// <summary>
     /// Removes the integration account received interchange control number.
@@ -33,6 +34,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
             Mandatory = true,
             HelpMessage = "The integration account resource group name.",
             ValueFromPipelineByPropertyName = true)]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

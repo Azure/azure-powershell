@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Relay.Commands.Namespace
@@ -26,6 +27,7 @@ namespace Microsoft.Azure.Commands.Relay.Commands.Namespace
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = "Resource Group Name.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
          public string ResourceGroupName { get; set; }
 

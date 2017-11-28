@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Commands.RedisCache
     using Microsoft.Azure.Commands.RedisCache.Properties;
     using Microsoft.Azure.Management.Redis.Models;
     using Microsoft.Rest.Azure;
+    using ResourceManager.Common.ArgumentCompleters;
     using System;
     using System.Collections;
     using System.Management.Automation;
@@ -27,6 +28,7 @@ namespace Microsoft.Azure.Commands.RedisCache
     public class NewAzureRedisCache : RedisCacheCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Name of resource group under which you want to create cache.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

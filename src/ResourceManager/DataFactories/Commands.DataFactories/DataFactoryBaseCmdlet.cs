@@ -15,6 +15,7 @@
 using Hyak.Common;
 using Microsoft.Azure.Commands.DataFactories.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System;
 using System.Globalization;
 using System.Management.Automation;
@@ -30,6 +31,7 @@ namespace Microsoft.Azure.Commands.DataFactories
 
         [Parameter(ParameterSetName = ByFactoryName, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
