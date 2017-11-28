@@ -394,7 +394,7 @@ function Test-RouteTableWithDisableBgpRoutePropagation
         $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
         
         # Create RouteTable
-        $rt = New-AzureRmRouteTable -name $routeTableName -disableBgpRoutePropagation $true -ResourceGroupName $rgname -Location $location
+        $rt = New-AzureRmRouteTable -name $routeTableName -DisableBgpRoutePropagation -ResourceGroupName $rgname -Location $location
 
         # Get RouteTable
         $getRT = Get-AzureRmRouteTable -name $routeTableName -ResourceGroupName $rgName
