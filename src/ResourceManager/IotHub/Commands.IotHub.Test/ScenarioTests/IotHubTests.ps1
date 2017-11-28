@@ -38,7 +38,7 @@ function Test-AzureRmIotHubLifecycle
 	$resourceGroup = New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location 
 
 	Write-Debug " Create new eventHub " 
-	$namespaceName = "IotHubPSEHNamespace1Test"
+	$namespaceName = "IotHubPSEHNamespaceTest"
     $result = New-AzureRmEventHubNamespace -ResourceGroup $ResourceGroupName -NamespaceName $namespaceName -Location $Location
 
 	Wait-Seconds 15
@@ -227,12 +227,12 @@ function Test-AzureRmIotHubLifecycle
     Assert-True { $iotHubUpdated.Properties.Routing.FallbackRoute.IsEnabled -eq 1}
 
 	# Add Certificate
-	$certificatePemContent = "MIIBvjCCAWOgAwIBAgIQG6PoBFT6GLJGNKn/EaxltTAKBggqhkjOPQQDAjAcMRowGAYDVQQDDBFBenVyZSBJb1QgUm9vdCBDQTAeFw0xNzExMDMyMDUyNDZaFw0xNzEyMDMyMTAyNDdaMBwxGjAYBgNVBAMMEUF6dXJlIElvVCBSb290IENBMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE+CgpnW3K+KRNIi/U6Zqe/Al9m8PExHX2KgakmGTfE04nNBwnSoygWb0ekqpT+Lm+OP56LMMe9ynVNryDEr9OSKOBhjCBgzAOBgNVHQ8BAf8EBAMCAgQwHQYDVR0lBBYwFAYIKwYBBQUHAwIGCCsGAQUFBwMBMB8GA1UdEQQYMBaCFENOPUF6dXJlIElvVCBSb290IENBMBIGA1UdEwEB/wQIMAYBAf8CAQwwHQYDVR0OBBYEFDjiklfHQzw1G0A33BcmRQTjAivTMAoGCCqGSM49BAMCA0kAMEYCIQCtjJ4bAvoYuDhwr92Kk+OkvpPF+qBFiRfrA/EC4YGtzQIhAO79WPtbUnBQ5fsQnW2aUAT4yJGWL+7l4/qfmqblb96n"
-	$certificateSubject = "CN=Azure IoT Root CA"
-	$certificateThumbprint = "9F0983E8F2DB2DB3582997FEF331247D872DEE32"
+	$certificatePath = "ScenarioTestFile\PS-Test-Root-CA.cer"
+	$certificateSubject = "CN=PS Test Root Certificate Authority"
+	$certificateThumbprint = "43039D39B36FDB44D98AFA79B56F70A66CED01C2"
 	$certificateType = "Microsoft.Devices/IotHubs/Certificates"
 	$certificateName = "TestCertificate"
-	$newCertificate = Add-AzureRmIotHubCertificate -ResourceGroupName $ResourceGroupName -Name $IotHubName -CertificateName $certificateName -Path $certificatePemContent
+	$newCertificate = Add-AzureRmIotHubCertificate -ResourceGroupName $ResourceGroupName -Name $IotHubName -CertificateName $certificateName -Path $certificatePath
 	Assert-True { $newCertificate.Properties.Subject -eq $certificateSubject }
 	Assert-True { $newCertificate.Properties.Thumbprint -eq $certificateThumbprint }
 	Assert-False { $newCertificate.Properties.IsVerified }
