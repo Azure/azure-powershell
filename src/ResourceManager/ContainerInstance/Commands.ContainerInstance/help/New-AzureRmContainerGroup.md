@@ -16,7 +16,7 @@ Creates a container group.
 ```
 New-AzureRmContainerGroup [-ResourceGroupName] <String> [-Name] <String> -Image <String> [-Location <String>]
  [-OsType <String>] [-RestartPolicy <String>] [-Cpu <Int32>] [-MemoryInGB <Double>] [-IpAddressType <String>]
- [-Ports <Int32[]>] [-Command <String>] [-EnvironmentVariable <Hashtable>] [-Tag <Hashtable>]
+ [-Port <Int32[]>] [-Command <String>] [-EnvironmentVariable <Hashtable>] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ New-AzureRmContainerGroup [-ResourceGroupName] <String> [-Name] <String> -Image 
 ```
 New-AzureRmContainerGroup [-ResourceGroupName] <String> [-Name] <String> -Image <String> [-Location <String>]
  [-OsType <String>] [-RestartPolicy <String>] [-Cpu <Int32>] [-MemoryInGB <Double>] [-IpAddressType <String>]
- [-Ports <Int32[]>] [-Command <String>] [-EnvironmentVariable <Hashtable>] [-RegistryServerDomain <String>]
+ [-Port <Int32[]>] [-Command <String>] [-EnvironmentVariable <Hashtable>] [-RegistryServerDomain <String>]
  -RegistryCredential <PSCredential> [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -33,7 +33,7 @@ New-AzureRmContainerGroup [-ResourceGroupName] <String> [-Name] <String> -Image 
 ```
 New-AzureRmContainerGroup [-ResourceGroupName] <String> [-Name] <String> -Image <String> [-Location <String>]
  [-OsType <String>] [-RestartPolicy <String>] [-Cpu <Int32>] [-MemoryInGB <Double>] [-IpAddressType <String>]
- [-Ports <Int32[]>] [-Command <String>] [-EnvironmentVariable <Hashtable>] -AzureFileVolumeShareName <String>
+ [-Port <Int32[]>] [-Command <String>] [-EnvironmentVariable <Hashtable>] -AzureFileVolumeShareName <String>
  -AzureFileVolumeAccountName <String> -AzureFileVolumeAccountKey <PSCredential>
  -AzureFileVolumeMountPath <String> [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
@@ -412,8 +412,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Ports
-The ports to open. Default: [80]
+### -Port
+The port(s) to open. Default: [80]
 
 ```yaml
 Type: Int32[]
