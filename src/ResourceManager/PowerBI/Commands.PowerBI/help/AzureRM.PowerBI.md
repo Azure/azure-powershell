@@ -12,7 +12,7 @@ This topic displays help topics for the Azure PowerBI cmdlets.
 
 ## AzureRM.PowerBI Cmdlets
 ### [Get-AzureRmPowerBIEmbeddedCapacity](Get-AzureRmPowerBIEmbeddedCapacity.md)
-Gets the details of an PowerBI Embedded Capacity.
+Gets the details of a PowerBI Embedded Capacity.
 
 ### [New-AzureRmPowerBIEmbeddedCapacity](New-AzureRmPowerBIEmbeddedCapacity.md)
 Creates a new PowerBI Embedded Capacity
@@ -30,5 +30,5 @@ Suspends an instance of PowerBI Embedded Capacity
 Tests the existence of an instance of PowerBI Embedded Capacity
 
 ### [Update-AzureRmPowerBIEmbeddedCapacity](Update-AzureRmPowerBIEmbeddedCapacity.md)
-Modifies  an instance of PowerBI Embedded Capacity
+Modifies an instance of PowerBI Embedded Capacity
 

@@ -21,8 +21,8 @@ New-AzureRmPowerBIEmbeddedCapacity
 	[-Name] <String> 
 	[-Location] <String>
  	[-Sku] <String> 
+	[-Administrator] <String>
 	[[-Tag] <Hashtable>] 
-	[[-Administrator] <String>]
  	[-WhatIf] 
 	[-Confirm] 
 	[<CommonParameters>]
@@ -35,14 +35,14 @@ The New-AzureRmPowerBIEmbeddedCapacity cmdlet creates a new PowerBI Embedded Cap
 
 ### Example 1
 ```
-PS C:\> New-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName "testRG" -Name "testcapacity" -Location "West US" -Sku "A1"
+PS C:\> New-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName "testRG" -Name "testcapacity" -Location "West Central US" -Sku "A1" -Administrator admin@microsoft.com
 Administrator          : {admin@microsoft.com}
 State                  : Succeeded
 ProvisioningState      : Succeeded
 Id                     : /subscriptions/78e47976-.../resourceGroups/testRG/providers/Microsoft.PowerBIDedicated/capacities/testcapacity
 Name                   : testcapacity
 Type                   : Microsoft.PowerBIDedicated/capacities
-Location               : West US
+Location               : West Central US
 Sku                    : A1
 Tier                   : PBIE_Azure
 Tag                    : {}

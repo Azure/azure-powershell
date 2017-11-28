@@ -26,7 +26,7 @@ Remove-AzureRmPowerBIEmbeddedCapacity
 ```
 
 ## DESCRIPTION
-The Remove-AzureRmPowerBIEmbeddedCapacity cmdlet  deletes an instance of PowerBI Embedded Capacity
+The Remove-AzureRmPowerBIEmbeddedCapacity cmdlet deletes an instance of PowerBI Embedded Capacity
 
 ## EXAMPLES
 
@@ -34,7 +34,7 @@ The Remove-AzureRmPowerBIEmbeddedCapacity cmdlet  deletes an instance of PowerBI
 ```
 PS C:\> Remove-AzureRmPowerBIEmbeddedCapacity -Name "testcapacity" -ResourceGroupName "testRG"
 Sku                    : A1
-Tier				   : PBIE_Azure
+Tier                   : PBIE_Azure
 Administrator          : {{admin@microsoft.com}}
 State                  : Succeeded
 ProvisioningState      : Succeeded
