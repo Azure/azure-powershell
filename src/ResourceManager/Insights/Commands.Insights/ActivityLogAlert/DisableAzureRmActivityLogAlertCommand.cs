@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Insights.OutputClasses;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Monitor.Management;
 using Microsoft.Azure.Management.Monitor.Management.Models;
 using System.Collections.Generic;
@@ -26,23 +27,24 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
     [Cmdlet("Disable", "AzureRmActivityLogAlert", SupportsShouldProcess = true), OutputType(typeof(PSActivityLogAlertResource))]
     public class DisableAzureRmActivityLogAlertCommand : ManagementCmdletBase
     {
-        internal const string DisableActivityLogAlertDeafultParamGroup = "Default parameters for disable an activity log alert";
-        internal const string DisableActivityLogAlertFromPipeParamGroup = "Parameters to disable an activity log alerts taking value from the pipe";
-        internal const string DisableActivityLogAlertFromResourceIdParamGroup = "Parameters to disable an activity log alerts taking the value of ResourceId from the pipe";
+        internal const string DisableActivityLogAlertDefaultParamGroup = "DisableByNameAndResourceGroup";
+        internal const string DisableActivityLogAlertFromPipeParamGroup = "DisableByInputObject";
+        internal const string DisableActivityLogAlertFromResourceIdParamGroup = "DisableByResourceId";
 
         #region Cmdlet parameters
 
         /// <summary>
         /// Gets or sets the alert name parameter of the cmdlet
         /// </summary>
-        [Parameter(ParameterSetName = DisableActivityLogAlertDeafultParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The activity log rule name")]
+        [Parameter(ParameterSetName = DisableActivityLogAlertDefaultParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The activity log rule name")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
         /// Gets or set the resource group name
         /// </summary>
-        [Parameter(ParameterSetName = DisableActivityLogAlertDeafultParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name of the activity log rule resource")]
+        [Parameter(ParameterSetName = DisableActivityLogAlertDefaultParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name of the activity log rule resource")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

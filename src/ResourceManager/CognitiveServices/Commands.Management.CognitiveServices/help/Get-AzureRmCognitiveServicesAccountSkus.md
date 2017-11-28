@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Management.CognitiveServices.dll-Help.xml
+Module Name: AzureRM.CognitiveServices
 ms.assetid: 386F09F0-2EEC-4B55-825C-F2E88D3B60AA
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.cognitiveservices/get-azurermcognitiveservicesaccountskus
 schema: 2.0.0
 ---
 
@@ -13,7 +14,8 @@ Gets the available SKUs for an account.
 ## SYNTAX
 
 ```
-Get-AzureRmCognitiveServicesAccountSkus [-ResourceGroupName] <String> [-Name] <String> [<CommonParameters>]
+Get-AzureRmCognitiveServicesAccountSkus [-ResourceGroupName] <String> [-Name] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,6 +34,21 @@ Paid tiers include S0, S1, S2, and so on.
 ```
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 Specifies the name of the account.

@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccessTokenExtensions.cs" />
+    <Compile Include="ArgumentCompleters\PSCompleterBase.cs" />
     <Compile Include="AzureRmCmdlet.cs" />
     <Compile Include="Generated\DeploymentOperations.cs" />
     <Compile Include="Generated\DeploymentOperationsExtensions.cs" />
@@ -177,6 +178,7 @@
     <Compile Include="Generated\TenantsOperations.cs" />
     <Compile Include="Generated\TenantsOperationsExtensions.cs" />
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="ArgumentCompleters\LocationCompleter.cs" />
     <Compile Include="PaginatedResponseHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -184,6 +186,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="ArgumentCompleters\ResourceGroupCompleter.cs" />
     <Compile Include="ResponseWithContinuation.cs" />
     <Compile Include="RPRegistrationDelegatingHandler.cs" />
     <Compile Include="ServiceClientTracingInterceptor.cs" />
@@ -208,8 +211,8 @@
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

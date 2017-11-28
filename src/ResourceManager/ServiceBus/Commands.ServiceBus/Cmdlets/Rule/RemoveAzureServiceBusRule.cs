@@ -12,19 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Management.Automation;
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.Rule
 {
     /// <summary>
     /// 'Remove-AzureRmServiceBusRule' Cmdlet removes the specified Rule
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, ServicebusRuleVerb, SupportsShouldProcess = true) OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, ServicebusRuleVerb, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureRmServiceBusRule : AzureServiceBusCmdletBase
     {
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = "The name of the resource group")]
+        [ResourceGroupCompleter]
         [Alias("ResourceGroup")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }

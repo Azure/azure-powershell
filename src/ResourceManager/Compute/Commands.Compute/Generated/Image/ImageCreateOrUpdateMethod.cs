@@ -19,7 +19,6 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
@@ -118,7 +117,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     {
         protected override void ProcessRecord()
         {
-            AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
             ExecuteClientAction(() =>
             {
                 if (ShouldProcess(this.ImageName, VerbsCommon.New))
@@ -126,11 +124,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     string resourceGroupName = this.ResourceGroupName;
                     string imageName = this.ImageName;
                     Image parameters = new Image();
-                    Mapper.Map<PSImage, Image>(this.Image, parameters);
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<PSImage, Image>(this.Image, parameters);
 
                     var result = ImagesClient.CreateOrUpdate(resourceGroupName, imageName, parameters);
                     var psObject = new PSImage();
-                    Mapper.Map<Image, PSImage>(result, psObject);
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<Image, PSImage>(result, psObject);
                     WriteObject(psObject);
                 }
             });
@@ -143,6 +141,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false)]
         [AllowNull]
+        [ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleter()]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
@@ -171,7 +170,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     {
         protected override void ProcessRecord()
         {
-            AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
             ExecuteClientAction(() =>
             {
                 if (ShouldProcess(this.ImageName, VerbsData.Update))
@@ -179,11 +177,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     string resourceGroupName = this.ResourceGroupName;
                     string imageName = this.ImageName;
                     Image parameters = new Image();
-                    Mapper.Map<PSImage, Image>(this.Image, parameters);
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<PSImage, Image>(this.Image, parameters);
 
                     var result = ImagesClient.CreateOrUpdate(resourceGroupName, imageName, parameters);
                     var psObject = new PSImage();
-                    Mapper.Map<Image, PSImage>(result, psObject);
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<Image, PSImage>(result, psObject);
                     WriteObject(psObject);
                 }
             });
@@ -196,6 +194,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false)]
         [AllowNull]
+        [ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleter()]
         public string ResourceGroupName { get; set; }
 
         [Parameter(

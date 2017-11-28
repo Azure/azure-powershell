@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using Microsoft.WindowsAzure.Commands.Storage.Adapters;
     using Microsoft.WindowsAzure.Commands.Common.Storage;
     using System.Management.Automation;
-
+    using ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet(VerbsData.Backup, "AzureRmApiManagement"), OutputType(typeof(PsApiManagement))]
     public class BackupAzureApiManagement : AzureApiManagementCmdletBase
@@ -28,6 +28,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "Name of resource group under which API Management exists.")]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

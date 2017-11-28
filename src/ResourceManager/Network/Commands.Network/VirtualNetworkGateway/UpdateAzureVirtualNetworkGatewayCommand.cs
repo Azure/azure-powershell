@@ -249,7 +249,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             // Map to the sdk object
-            MNM.VirtualNetworkGateway sdkVirtualNetworkGateway = Mapper.Map<MNM.VirtualNetworkGateway>(this.VirtualNetworkGateway);
+            MNM.VirtualNetworkGateway sdkVirtualNetworkGateway = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualNetworkGateway>(this.VirtualNetworkGateway);
             sdkVirtualNetworkGateway.Tags = TagsConversionHelper.CreateTagDictionary(this.VirtualNetworkGateway.Tag, validate: true);
 
             string shouldProcessMessage = string.Format("Execute AzureRmVirtualNetworkGateway for ResourceGroupName {0} VirtualNetworkGateway {1}", this.VirtualNetworkGateway.ResourceGroupName, this.VirtualNetworkGateway.Name);
