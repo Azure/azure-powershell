@@ -24,6 +24,11 @@ The **New-AzureRmSubscriptionDefinition** cmdlet creates a subscription definiti
 ### Example 1
 ```
 PS C:\> New-AzureRmSubscriptionDefinition -Name MySubDef -OfferType MS-AZR-0017P
+
+Name                    : MySubDef
+SubscriptionId          : 86869d42-1782-4337-98b0-c905fb937d46
+SubscriptionDisplayName : MySubDef
+OfferType               : MS-AZR-0017P
 ```
 
 Creates a subscription definition with a default subscription display name.
@@ -31,6 +36,11 @@ Creates a subscription definition with a default subscription display name.
 ### Example 2
 ```
 PS C:\> New-AzureRmSubscriptionDefinition -Name MySubDef -OfferType MS-AZR-0017P -SubscriptionDisplayName MyPaygoSub
+
+Name                    : MySubDef
+SubscriptionId          : 86869d42-1782-4337-98b0-c905fb937d46
+SubscriptionDisplayName : MyPaygoSub
+OfferType               : MS-AZR-0017P
 ```
 
 Creates a subscription definition with a custom subscription display name.

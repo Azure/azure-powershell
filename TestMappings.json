@@ -123,6 +123,9 @@
   "src/ResourceManager/StreamAnalytics/": [
     ".\\src\\ResourceManager\\StreamAnalytics\\Commands.StreamAnalytics.Test\\bin\\Debug\\Microsoft.Azure.Commands.StreamAnalytics.Test.dll"
   ],
+  "src/ResourceManager/SubscriptionDefinition/": [
+    ".\\src\\ResourceManager\\SubscriptionDefinition\\Commands.SubscriptionDefinition.Test\\bin\\Debug\\Microsoft.Azure.Commands.SubscriptionDefinition.Test.dll"
+  ],
   "src/ResourceManager/Tags/": [],
   "src/ResourceManager/TrafficManager/": [
     ".\\src\\ResourceManager\\TrafficManager\\Commands.TrafficManager2.Test\\bin\\Debug\\Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests.dll"

@@ -21,16 +21,31 @@ Get-AzureRmSubscriptionDefinition
 ### Example 1
 ```
 PS C:\> Get-AzureRmSubscriptionDefinition
+
+Name                    : MyProdSubscription1
+SubscriptionId          : 86869d42-1782-4337-98b0-c905fb937d46
+SubscriptionDisplayName : MyProdSubscription1
+OfferType               : MS-AZR-0017P
+
+Name                    : MyProdSubscription2
+SubscriptionId          : 368425df-b536-4f42-b1ba-64613cfcc4b5
+SubscriptionDisplayName : MyProdSubscription2
+OfferType               : MS-AZR-0017P
 ```
 
 Gets all subscription definitions.
 
 ### Example 2
 ```
-PS C:\> Get-AzureRmSubscriptionDefinition -Name MySubDef
+PS C:\> Get-AzureRmSubscriptionDefinition -Name MyProdSubscription2
+
+Name                    : MyProdSubscription2
+SubscriptionId          : 368425df-b536-4f42-b1ba-64613cfcc4b5
+SubscriptionDisplayName : MyProdSubscription2
+OfferType               : MS-AZR-0017P
 ```
 
-Gets a subscription definition with the name MySubDef.
+Gets a subscription definition with the name MyProdSubscription2.
 
 ## PARAMETERS
 
