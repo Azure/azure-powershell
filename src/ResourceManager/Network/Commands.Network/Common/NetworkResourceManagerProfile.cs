@@ -638,6 +638,29 @@ namespace Microsoft.Azure.Commands.Network
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.ApplicationSecurityGroup, CNM.PSApplicationSecurityGroup>();
+
+                // Secure Gateways
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSSecureGateway, MNM.SecureGateway>();
+                cfg.CreateMap<CNM.PSSecureGatewaySku, MNM.SecureGatewaySku>();
+                cfg.CreateMap<CNM.PSSecureGatewayApplicationRuleCollection, MNM.SecureGatewayApplicationRuleCollection>();
+                cfg.CreateMap<CNM.PSSecureGatewayNetworkRuleCollection, MNM.SecureGatewayNetworkRuleCollection>();
+                cfg.CreateMap<CNM.PSSecureGatewayApplicationRule, MNM.SecureGatewayApplicationRule>();
+                cfg.CreateMap<CNM.PSSecureGatewayNetworkRule, MNM.SecureGatewayNetworkRule>();
+                cfg.CreateMap<CNM.PSSecureGatewayApplicationRuleAction, MNM.SecureGatewayApplicationRuleAction>();
+                cfg.CreateMap<CNM.PSSecureGatewayNetworkRuleAction, MNM.SecureGatewayNetworkRuleAction>();
+                cfg.CreateMap<CNM.PSSecureGatewayApplicationRuleProtocol, MNM.SecureGatewayApplicationRuleProtocol>();
+
+                // MNM to CNM
+                cfg.CreateMap<MNM.SecureGateway, CNM.PSSecureGateway>();
+                cfg.CreateMap<MNM.SecureGatewaySku, CNM.PSSecureGatewaySku>();
+                cfg.CreateMap<MNM.SecureGatewayApplicationRuleCollection, CNM.PSSecureGatewayApplicationRuleCollection>();
+                cfg.CreateMap<MNM.SecureGatewayNetworkRuleCollection, CNM.PSSecureGatewayNetworkRuleCollection>();
+                cfg.CreateMap<MNM.SecureGatewayApplicationRule, CNM.PSSecureGatewayApplicationRule>();
+                cfg.CreateMap<MNM.SecureGatewayNetworkRule, CNM.PSSecureGatewayNetworkRule>();
+                cfg.CreateMap<MNM.SecureGatewayApplicationRuleAction, CNM.PSSecureGatewayApplicationRuleAction>();
+                cfg.CreateMap<MNM.SecureGatewayNetworkRuleAction, CNM.PSSecureGatewayNetworkRuleAction>();
+                cfg.CreateMap<MNM.SecureGatewayApplicationRuleProtocol, CNM.PSSecureGatewayApplicationRuleProtocol>();
             });
 
             _mapper = config.CreateMapper();
