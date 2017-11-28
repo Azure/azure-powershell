@@ -58,6 +58,13 @@ namespace Microsoft.Azure.Commands.PowerBI
             string resourceGroupName = string.Empty;
             string capacityName = string.Empty;
 
+            if (!string.IsNullOrEmpty(ResourceId))
+            {
+                PowerBIUtils.GetResourceGroupNameAndCapacityName(ResourceId, out resourceGroupName, out capacityName);
+                ResourceGroupName = resourceGroupName;
+                Name = capacityName;
+            }
+
             if (!string.IsNullOrEmpty(Name))
             {
                 // Get for single capacity
@@ -66,12 +73,6 @@ namespace Microsoft.Azure.Commands.PowerBI
             }
             else
             {
-                if (!string.IsNullOrEmpty(ResourceId))
-                {
-                    PowerBIUtils.GetResourceGroupNameAndCapacityName(ResourceId, out resourceGroupName, out capacityName);
-                    ResourceGroupName = resourceGroupName;
-                    Name = capacityName;
-                }
                 // List all capacities in given resource group if avaliable otherwise all capacities in the subscription
                 var list = PowerBIClient.ListCapacities(ResourceGroupName);
                 list.ForEach(capacity => WriteObject(capacity));

@@ -11,7 +11,7 @@ schema: 2.0.0
 # Get-AzureRmPowerBIEmbeddedCapacity
 
 ## SYNOPSIS
-Gets the details of an PowerBI Embedded Capacity.
+Gets the details of a PowerBI Embedded Capacity.
 
 ## SYNTAX
 
@@ -24,7 +24,7 @@ Get-AzureRmPowerBIEmbeddedCapacity [-ResourceGroupName] <String> [-Name] <String
 ```
 
 ## DESCRIPTION
-The Get-AzureRmPowerBIEmbeddedCapacity cmdlet gets the details of an PowerBI Embedded Capacity.
+The Get-AzureRmPowerBIEmbeddedCapacity cmdlet gets the details of a PowerBI Embedded Capacity.
 
 ## EXAMPLES
 

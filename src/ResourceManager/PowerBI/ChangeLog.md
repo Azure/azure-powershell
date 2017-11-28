@@ -21,7 +21,7 @@
 
 ## Version 1.0.0
 * New Cmdlet Get-AzureRmPowerBIEmbeddedCapacity
-	- Gets the details of an PowerBI Embedded Capacity.
+      Gets the details of a PowerBI Embedded Capacity.
 * New Cmdlet New-AzureRmPowerBIEmbeddedCapacity
     - Creates a new PowerBI Embedded Capacity
 * New Cmdlet Remove-AzureRmPowerBIEmbeddedCapacity
@@ -33,4 +33,4 @@
 * New Cmdlet Test-AzureRmPowerBIEmbeddedCapacity
     - Tests the existence of an instance of PowerBI Embedded Capacity
 * New Cmdlet Update-AzureRmPowerBIEmbeddedCapacity
-    - Modifies  an instance of PowerBI Embedded Capacity
+    - Modifies an instance of PowerBI Embedded Capacity
