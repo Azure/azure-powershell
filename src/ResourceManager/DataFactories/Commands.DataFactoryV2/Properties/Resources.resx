@@ -353,4 +353,10 @@ Are you sure you want to continue?</value>
   <data name="Encrypting" xml:space="preserve">
     <value>Encrypting the connection string.</value>
   </data>
+  <data name="DataFactoryUpdateConfirm" xml:space="preserve">
+    <value>Are you sure you want to update properties of the data factory '{0}' in resource group '{1}'?</value>
+  </data>
+  <data name="DataFactoryUpdating" xml:space="preserve">
+    <value>Updating properties of the data factory '{0}' in resource group '{1}'.</value>
+  </data>
 </root>

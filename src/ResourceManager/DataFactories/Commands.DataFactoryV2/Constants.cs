@@ -54,6 +54,10 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public const string HelpFactoryName = "The data factory name.";
 
+        public const string HelpTagsForFactory = "The tags of the data factory.";
+
+        public const string HelpIdentityForFactory = "The identity for the data factory.";
+
         public const string HelpPipelineName = "The pipeline name.";
 
         public const string HelpTriggerName = "The trigger name.";
