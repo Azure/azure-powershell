@@ -48,6 +48,7 @@ namespace Microsoft.Azure.Commands.Network
          Mandatory = true,
          ValueFromPipelineByPropertyName = true,
          HelpMessage = "location.")]
+        [LocationCompleter("Microsoft.Network/loadBalancers")]
         [ValidateNotNullOrEmpty]
         public virtual string Location { get; set; }
 
