@@ -33,13 +33,12 @@ namespace Microsoft.Azure.Commands.IotHub.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureIotHubLifeCycle()
         {
-            TestExecutionHelpers.SetUpSessionAndProfile();
             IotHubController.NewInstance.RunPsTestWorkflow(
-                () => { return new[] { string.Format("{0} {1} {2} {3} {4}", "Test-AzureRmIotHubLifecycle", "northeurope", "powershelliothub", "powershellrg", "S1") }; },
-                null,
-                null,
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                    () => { return new[] { string.Format("{0} {1} {2} {3} {4}", "Test-AzureRmIotHubLifecycle", "northeurope", "powershelliothub", "powershellrg", "S1") }; },
+                    null,
+                    null,
+                    TestUtilities.GetCallingClass(),
+                    TestUtilities.GetCurrentMethodName());
         }
     }
 }
