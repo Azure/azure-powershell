@@ -18,8 +18,6 @@
         - Additional information about change #1
 -->
 ## Current Release
-
-## Version 0.5.1
 * Remove validate set of location into dynamic lookup so that all clouds are supported.
 
 ## Version 0.5.0
