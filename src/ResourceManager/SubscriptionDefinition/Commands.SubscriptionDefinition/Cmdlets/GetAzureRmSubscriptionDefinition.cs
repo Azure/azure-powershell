@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Commands.SubscriptionDefinition.Cmdlets
     public class GetAzureRmSubscriptionDefinition : AzureSubscriptionDefinitionCmdletBase
     {
         [Parameter(ParameterSetName = ParameterSetNames.Default, Mandatory = false, HelpMessage = "Name of the subscription definition to retrieve.")]
+        [ValidateNotNullOrEmpty]
         public string Name { get; set; }
         
         public override void ExecuteCmdlet()

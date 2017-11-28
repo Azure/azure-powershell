@@ -18,3 +18,6 @@
         - Additional information about change #1
 -->
 ## Current Release
+## Version 0.1.0
+* New Cmdlets Get-AzureRmSubscriptionDefinition and New-AzureRmSubscriptionDefinition
+    - Cmdlets to create and list subscription definitions. Creation of a subscription definition results in a subscription.
