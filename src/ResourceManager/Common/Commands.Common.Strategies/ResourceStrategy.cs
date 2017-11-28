@@ -8,6 +8,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 {
     public sealed class ResourceStrategy<TModel> : IEntityStrategy
     {
+        public string Type { get; }
+
         public Func<string, IEnumerable<string>> GetId { get; }
 
         public Func<IClient, GetAsyncParams, Task<TModel>> GetAsync { get; }
@@ -20,12 +22,14 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         public Action<TModel, string> SetLocation { get; }
 
         public ResourceStrategy(
+            string type,
             Func<string, IEnumerable<string>> getId,
             Func<IClient, GetAsyncParams, Task<TModel>> getAsync,
             Func<IClient, CreateOrUpdateAsyncParams<TModel>, Task<TModel>> createOrUpdateAsync,
             Func<TModel, string> getLocation,
             Action<TModel, string> setLocation)
         {
+            Type = type;
             GetId = getId;
             GetAsync = getAsync;
             CreateOrUpdateAsync = createOrUpdateAsync;
@@ -37,6 +41,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
     public static class ResourceStrategy
     {
         public static ResourceStrategy<TModel> Create<TModel, TClient, TOperation>(
+            string type,
             Func<string, IEnumerable<string>> getId,
             Func<TClient, TOperation> getOperations,
             Func<TOperation, GetAsyncParams, Task<TModel>> getAsync,
@@ -47,6 +52,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         {
             Func<IClient, TOperation> toOperations = client => getOperations(client.GetClient<TClient>());
             return new ResourceStrategy<TModel>(
+                type,
                 getId,
                 (client, p) => getAsync(toOperations(client), p),
                 (client, p) => createOrUpdateAsync(toOperations(client), p),
@@ -55,6 +61,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         }
 
         public static ResourceStrategy<TModel> Create<TModel, TClient, TOperation>(
+            string type,
             IEnumerable<string> headers,
             Func<TClient, TOperation> getOperations,
             Func<TOperation, GetAsyncParams, Task<TModel>> getAsync,
@@ -63,6 +70,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             Action<TModel, string> setLocation)
             where TClient : ServiceClient<TClient>
             => Create(
+                type,
                 name => new[] { "providers" }.Concat(headers).Concat(new[] { name }),
                 getOperations,
                 getAsync,

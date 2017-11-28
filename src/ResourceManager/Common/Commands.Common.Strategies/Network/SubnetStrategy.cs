@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
         public static NestedResourceStrategy<Subnet, VirtualNetwork> Strategy { get; }
             = NestedResourceStrategy.Create<Subnet, VirtualNetwork>(
                 "subnets",
-                (vn, name) => vn.Subnets?.FirstOrDefault(s => s.Name == name),
+                (vn, name) => vn.Subnets?.FirstOrDefault(s => s?.Name == name),
                 (vn, name, subnet) =>
                 {
                     subnet.Name = name;

@@ -9,6 +9,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
     {
         public static ResourceStrategy<VirtualMachine> Strategy { get; }
             = ComputePolicy.Create(
+                "virtual machine",
                 "virtualMachines",
                 client => client.VirtualMachines,
                 (o, p) => o.GetAsync(

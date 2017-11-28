@@ -8,6 +8,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
     {
         public static ResourceStrategy<NetworkInterface> Strategy { get; }
             = NetworkStrategy.Create(
+                "network interface",
                 "networkInterfaces",
                 client => client.NetworkInterfaces,
                 (o, p) => o.GetAsync(

@@ -184,6 +184,20 @@ namespace Microsoft.Azure.Commands.Compute
                     Context, AzureEnvironment.Endpoint.ResourceManager);
         }
 
+        private sealed class ShouldProcessType : IShouldProcess
+        {
+            readonly Cmdlet _Cmdlet;
+
+            public ShouldProcessType(Cmdlet cmdlet)
+            {
+                _Cmdlet = cmdlet;
+            }
+
+            public bool ShouldCreate<TModel>(ResourceConfig<TModel> config, TModel model)
+                where TModel : class
+                => _Cmdlet.ShouldProcess(config.Name + " " + config.Strategy.Type, VerbsCommon.New);
+        }
+
         public void StrategyExecuteCmdlet()
         {
             ResourceGroupName = ResourceGroupName ?? Name;
@@ -240,14 +254,12 @@ namespace Microsoft.Azure.Commands.Compute
 
             var target = virtualMachine.GetTargetState(current, client.SubscriptionId, Location);
 
-            if (ShouldProcess(Name, VerbsCommon.New))
-            {
-                var result = virtualMachine
-                    .UpdateStateAsync(client, target, new CancellationToken())
-                    .GetAwaiter()
-                    .GetResult();
-                WriteObject(result);
-            }
+            var result = virtualMachine
+                .UpdateStateAsync(
+                    client, target, new CancellationToken(), new ShouldProcessType(this))
+                .GetAwaiter()
+                .GetResult();
+            WriteObject(result);
         }
 
         public void DefaultExecuteCmdlet()

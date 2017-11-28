@@ -11,10 +11,12 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             this ResourceConfig<TModel> config,
             IClient client,
             IState target,
-            CancellationToken cancellationToken)
+            CancellationToken cancellationToken,
+            IShouldProcess shouldProcess)
             where TModel : class
         {
-            var context = new Context(new StateOperationContext(client, cancellationToken), target);
+            var context = new Context(
+                new StateOperationContext(client, cancellationToken), target, shouldProcess);
             await context.UpdateStateAsync(config);
             return context.Result;
         }
@@ -27,10 +29,14 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 
             readonly IState _Target;
 
-            public Context(StateOperationContext operationContext, IState target)
+            readonly IShouldProcess _ShouldProcess;
+
+            public Context(
+                StateOperationContext operationContext, IState target, IShouldProcess shouldProcess)
             {
                 _OperationContext = operationContext;
                 _Target = target;
+                _ShouldProcess = shouldProcess;
             }
 
             public async Task UpdateStateAsync<TModel>(ResourceConfig<TModel> config)
@@ -49,16 +55,16 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                                 .Select(UpdateStateAsyncDispatch);
                             await Task.WhenAll(tasks);
                             // call the CreateOrUpdateAsync function for the resource.
-                            try
+                            if (_ShouldProcess.ShouldCreate(config, model))
                             {
                                 return await config.CreateOrUpdateAsync(
                                     _OperationContext.Client,
                                     model,
                                     _OperationContext.CancellationToken);
                             }
-                            catch (Exception e)
+                            else
                             {
-                                throw e;
+                                return null;
                             }
                         });
                 }

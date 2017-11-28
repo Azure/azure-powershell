@@ -9,6 +9,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
     {
         public static ResourceStrategy<VirtualNetwork> Strategy { get; }
             = NetworkStrategy.Create(
+                "virtual network",
                 "virtualNetworks",
                 client => client.VirtualNetworks,
                 (o, p) => o.GetAsync(

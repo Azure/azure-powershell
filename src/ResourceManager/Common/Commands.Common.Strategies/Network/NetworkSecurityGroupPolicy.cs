@@ -9,6 +9,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
     {
         public static ResourceStrategy<NetworkSecurityGroup> Strategy { get; }
             = NetworkStrategy.Create(
+                "network security group",
                 "networkSecurityGroups",
                 client => client.NetworkSecurityGroups,
                 (o, p) => o.GetAsync(

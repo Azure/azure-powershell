@@ -16,7 +16,10 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             this IState state, NestedResourceConfig<TModel, TParentModel> config)
             where TModel : class
             where TParentModel : class
-            => config.Strategy.Get(state.GetDispatch(config.Parent), config.Name);
+        {
+            var parentModel = state.GetDispatch(config.Parent);
+            return parentModel == null ? null : config.Strategy.Get(parentModel, config.Name);
+        }
 
         /// <summary>
         /// Get a model of the given entity model from the given state.

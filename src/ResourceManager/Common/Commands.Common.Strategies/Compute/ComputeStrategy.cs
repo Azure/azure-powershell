@@ -8,12 +8,14 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
     public static class ComputePolicy
     {
         public static ResourceStrategy<TModel> Create<TModel, TOperations>(
+            string type,
             string header,
             Func<ComputeManagementClient, TOperations> getOperations,
             Func<TOperations, GetAsyncParams, Task<TModel>> getAsync,
             Func<TOperations, CreateOrUpdateAsyncParams<TModel>, Task<TModel>> createOrUpdateAsync)
             where TModel : Resource
             => ResourceStrategy.Create(
+                type,
                 new[] { "Microsoft.Compute", header },
                 getOperations,
                 getAsync,
