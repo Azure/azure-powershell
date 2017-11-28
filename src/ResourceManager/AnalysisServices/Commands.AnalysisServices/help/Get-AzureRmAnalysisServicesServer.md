@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.AnalysisServices.dll-Help.xml
-online version: 
+Module Name: AzureRM.AnalysisServices
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.analysisservices/get-azurermanalysisservicesserver
 schema: 2.0.0
 ---
 
@@ -12,7 +13,8 @@ Gets the details of an Analysis Services server.
 ## SYNTAX
 
 ```
-Get-AzureRmAnalysisServicesServer [[-ResourceGroupName] <String>] [[-Name] <String>] [<CommonParameters>]
+Get-AzureRmAnalysisServicesServer [[-ResourceGroupName] <String>] [[-Name] <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,6 +37,21 @@ PS C:\>Get-AzureRmAnalysisServicesServer -ResourceGroupName "ResourceGroup03" -N
 This command gets the Azure Analysis Services server named testserver in the resource group named ResourceGroup03.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 Name of the Analysis Services server

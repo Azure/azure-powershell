@@ -1,4 +1,4 @@
----
+﻿---
 Module Name: AzureRM.ServiceFabric
 Module Guid: 60f3ba88-443f-46ff-88a3-318cfd11c1da
 Download Help Link: {{Please enter FwLink manually}}
@@ -12,49 +12,50 @@ Azure Service Fabric Module that you can use to automate the end-2-end operation
 
 ## AzureRM.ServiceFabric Cmdlets
 ### [Add-AzureRmServiceFabricApplicationCertificate](Add-AzureRmServiceFabricApplicationCertificate.md)
-Add a certificate that will be used as application certificate
+Add a new certificate to the Virtual Machine Scale Set(s) that make up the cluster. The certificate is intended to be used as an application certificate.
 
 ### [Add-AzureRmServiceFabricClientCertificate](Add-AzureRmServiceFabricClientCertificate.md)
-Add common name or thumbprint to the cluster settings for client authentication
+Add common name or thumbprint to the cluster for client authentication purposes.
 
 ### [Add-AzureRmServiceFabricClusterCertificate](Add-AzureRmServiceFabricClusterCertificate.md)
-Add a secondary cluster certificate to the cluster for rolling over the existing certificate 
+Add a secondary cluster certificate to the cluster.
 
 ### [Add-AzureRmServiceFabricNode](Add-AzureRmServiceFabricNode.md)
-Add nodes/VMs to a specific node type to a cluster
+Add nodes to the specific node type in the cluster.
 
 ### [Add-AzureRmServiceFabricNodeType](Add-AzureRmServiceFabricNodeType.md)
-Add a node type/VMs to an existing cluster
+Add a new node type to the existing cluster.
 
 ### [Get-AzureRmServiceFabricCluster](Get-AzureRmServiceFabricCluster.md)
-Get the details of the cluster resource 
+Get the cluster resource details.
 
 ### [New-AzureRmServiceFabricCluster](New-AzureRmServiceFabricCluster.md)
-Create an new ServiceFabric cluster. This command has many overloads to cover various scenarios
+This command uses certificates that you provide or system generated self-signed certificates to set up a new service fabric cluster. It can use a default template or a custom template that you provide. You have the option of specifying a folder to export the self-signed certificates to or fetching them later from the key vault. 
 
 ### [Remove-AzureRmServiceFabricClientCertificate](Remove-AzureRmServiceFabricClientCertificate.md)
-Remove client certificate from being used to access the cluster
+Remove a client certificate(s) or certificate subject(s) name(s) from being used for client authentication to the cluster.
 
 ### [Remove-AzureRmServiceFabricClusterCertificate](Remove-AzureRmServiceFabricClusterCertificate.md)
-Remove cluster certificate from being used for cluster security
+Remove a cluster certificate from being used for cluster security.
 
 ### [Remove-AzureRmServiceFabricNode](Remove-AzureRmServiceFabricNode.md)
-Remove nodes from the specific node type from a cluster
+Remove nodes from the specific node type from a cluster.
 
 ### [Remove-AzureRmServiceFabricNodeType](Remove-AzureRmServiceFabricNodeType.md)
-Remove a node type from a cluster
+Remove a complete node type from a cluster.
 
 ### [Remove-AzureRmServiceFabricSetting](Remove-AzureRmServiceFabricSetting.md)
-Remove one or more ServiceFabric settings from the cluster
+Remove one or multiple Service Fabric setting from the cluster.
 
 ### [Set-AzureRmServiceFabricSetting](Set-AzureRmServiceFabricSetting.md)
-Add or update one or more ServiceFabric settings to the cluster
+Add or update one or multiple Service Fabric settings to the cluster.
 
 ### [Set-AzureRmServiceFabricUpgradeType](Set-AzureRmServiceFabricUpgradeType.md)
-Change the ServiceFabric upgrade type of a cluster
+Change the Service Fabric upgrade type of the cluster.
 
 ### [Update-AzureRmServiceFabricDurability](Update-AzureRmServiceFabricDurability.md)
-Change the durability tier of a cluster
+Update the durability tier or VmSku of a node type in the cluster.
 
 ### [Update-AzureRmServiceFabricReliability](Update-AzureRmServiceFabricReliability.md)
-Change the reliability tier of a cluster
+Update the reliability tier of the primary node type in a cluster.
+

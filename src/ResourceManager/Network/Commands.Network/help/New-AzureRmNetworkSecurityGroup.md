@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
 ms.assetid: A420B3E7-2FE9-4D0B-803E-AC28E5F23C59
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermnetworksecuritygroup
 schema: 2.0.0
 ---
 
@@ -16,7 +16,8 @@ Creates a network security group.
 ```
 New-AzureRmNetworkSecurityGroup -Name <String> -ResourceGroupName <String> -Location <String>
  [-SecurityRules <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSSecurityRule]>]
- [-Tag <Hashtable>] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable>] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -50,6 +51,21 @@ Step:2 Create a security rule allowing access from the Internet to port 80.
 Step:3 Add the rules created above to a new NSG named NSG-FrontEnd.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Force
 Forces the command to run without asking for user confirmation.

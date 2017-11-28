@@ -105,6 +105,10 @@
     { "regex": "Media", "alias": "Media Services" }, 
 
     { "regex": "UsageAggregates", "alias": "Usage Aggregates" }, 
+    
+    { "regex": "EventGrid", "alias": "Event Grid" }, 
+    
+    { "regex": "Container", "alias": "Container Instances" }, 
 
     { "regex": "Tags", "alias": "Tags" }, 
     

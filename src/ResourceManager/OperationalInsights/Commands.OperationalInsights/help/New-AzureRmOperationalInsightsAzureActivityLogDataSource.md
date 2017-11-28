@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.OperationalInsights.dll-Help.xml
+Module Name: AzureRM.OperationalInsights
 ms.assetid: B4EC9132-8DB9-498D-8B3F-2AB51D8EA03A
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.operationalinsights/new-azurermoperationalinsightsazureactivitylogdatasource
 schema: 2.0.0
 ---
 
@@ -16,14 +17,14 @@ Collect Azure Activity log from given subscription.
 ```
 New-AzureRmOperationalInsightsAzureActivityLogDataSource [-ResourceGroupName] <String>
  [-WorkspaceName] <String> [-Name] <String> [-SubscriptionId] <String> [-BackfillStartTime <DateTimeOffset>]
- [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByWorkspaceObject
 ```
 New-AzureRmOperationalInsightsAzureActivityLogDataSource [-Workspace] <PSWorkspace> [-Name] <String>
- [-SubscriptionId] <String> [-BackfillStartTime <DateTimeOffset>] [-Force] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-SubscriptionId] <String> [-BackfillStartTime <DateTimeOffset>] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -52,6 +53,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -167,7 +183,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### PSWorkspace
-
 Parameter 'Workspace' accepts value of type 'PSWorkspace' from the pipeline
 
 ## OUTPUTS

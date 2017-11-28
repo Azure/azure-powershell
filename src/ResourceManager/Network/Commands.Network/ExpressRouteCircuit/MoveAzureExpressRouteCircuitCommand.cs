@@ -21,6 +21,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
+    using ResourceManager.Common.ArgumentCompleters;
     using System.Collections;
 
     [Cmdlet(VerbsCommon.Move, "AzureRmExpressRouteCircuit", SupportsShouldProcess = true),
@@ -39,6 +40,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
 
@@ -93,7 +95,7 @@ namespace Microsoft.Azure.Commands.Network
             circuit.Location = this.Location;
 
             // Map to the sdk object
-            var circuitModel = Mapper.Map<MNM.ExpressRouteCircuit>(circuit);
+            var circuitModel = NetworkResourceManagerProfile.Mapper.Map<MNM.ExpressRouteCircuit>(circuit);
             circuitModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
             // Execute the Create ExpressRouteCircuit call

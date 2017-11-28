@@ -1,6 +1,6 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/get-azurermapimanagementidentityprovider
 schema: 2.0.0
 ---
 
@@ -13,13 +13,14 @@ Get the identity provider configuration details.
 
 ### AllIdentityProviders (Default)
 ```
-Get-AzureRmApiManagementIdentityProvider -Context <PsApiManagementContext> [<CommonParameters>]
+Get-AzureRmApiManagementIdentityProvider -Context <PsApiManagementContext>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### IdentityProviderByType
 ```
 Get-AzureRmApiManagementIdentityProvider -Context <PsApiManagementContext>
- -Type <PsApiManagementIdentityProviderType> [<CommonParameters>]
+ -Type <PsApiManagementIdentityProviderType> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,28 +28,19 @@ Get the identity provider configuration details.
 
 ## EXAMPLES
 
-### --------------------------  Example 1  --------------------------
-@{paragraph=PS C:\\\>}
-
-
-
-
+### Example 1: Get all Identity Providers
 
 ```
-Get-AzureRmApiManagementIdentityProvider -Context $context
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Get-AzureRmApiManagementIdentityProvider -Context $apimContext
 ```
 
 Get all the identity provider Configuration on the service.
 
-### --------------------------  Example 2  --------------------------
-@{paragraph=PS C:\\\>}
-
-
-
-
-
+### Get the AAD Type Identity Provider
 ```
-Get-AzureRmApiManagementIdentityProvider -Context $context -Type Aad
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Get-AzureRmApiManagementIdentityProvider -Context $apimContext -Type Aad
 ```
 
 Gets the Identity Provider Configuration of Azure Active Directory.
@@ -68,6 +60,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+ 
+ ```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -96,9 +103,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### IList<Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementIdentityProvider>
-
 ### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementIdentityProvider
+The details of the Identity Provider configured in API Management service.
+
+### IList<Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementIdentityProvider>
+The list of Identity Providers configured in API Management service.
 
 ## NOTES
 

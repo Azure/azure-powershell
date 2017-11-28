@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.RecoveryServices.Backup.dll-Help.xml
+Module Name: AzureRM.RecoveryServices.Backup
 ms.assetid: ECD3F05A-9350-407E-8B48-67443547652F
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.recoveryservices.backup/disable-azurermrecoveryservicesbackupprotection
 schema: 2.0.0
 ---
 
@@ -13,8 +14,8 @@ Disables protection for a Backup-protected item.
 ## SYNTAX
 
 ```
-Disable-AzureRmRecoveryServicesBackupProtection [-Item] <ItemBase> [-RemoveRecoveryPoints] [-Force] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Disable-AzureRmRecoveryServicesBackupProtection [-Item] <ItemBase> [-RemoveRecoveryPoints] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,6 +41,21 @@ The second command gets the Backup item corresponding to the first container ite
 The last command disables Backup protection for the item in $PI\[0\], but retains the data.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Force
 Forces the command to run without asking for user confirmation.
@@ -125,7 +141,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### ItemBase
-
 Parameter 'Item' accepts value of type 'ItemBase' from the pipeline
 
 ## OUTPUTS

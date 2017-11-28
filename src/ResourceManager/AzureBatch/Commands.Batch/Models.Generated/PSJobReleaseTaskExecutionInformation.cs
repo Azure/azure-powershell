@@ -34,7 +34,9 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         internal Microsoft.Azure.Batch.JobReleaseTaskExecutionInformation omObject;
         
-        private PSTaskSchedulingError schedulingError;
+        private PSTaskContainerExecutionInformation containerInformation;
+        
+        private PSTaskFailureInformation failureInformation;
         
         internal PSJobReleaseTaskExecutionInformation(Microsoft.Azure.Batch.JobReleaseTaskExecutionInformation omObject)
         {
@@ -43,6 +45,19 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 throw new System.ArgumentNullException("omObject");
             }
             this.omObject = omObject;
+        }
+        
+        public PSTaskContainerExecutionInformation ContainerInformation
+        {
+            get
+            {
+                if (((this.containerInformation == null) 
+                            && (this.omObject.ContainerInformation != null)))
+                {
+                    this.containerInformation = new PSTaskContainerExecutionInformation(this.omObject.ContainerInformation);
+                }
+                return this.containerInformation;
+            }
         }
         
         public System.DateTime? EndTime
@@ -61,16 +76,24 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public PSTaskSchedulingError SchedulingError
+        public PSTaskFailureInformation FailureInformation
         {
             get
             {
-                if (((this.schedulingError == null) 
-                            && (this.omObject.SchedulingError != null)))
+                if (((this.failureInformation == null) 
+                            && (this.omObject.FailureInformation != null)))
                 {
-                    this.schedulingError = new PSTaskSchedulingError(this.omObject.SchedulingError);
+                    this.failureInformation = new PSTaskFailureInformation(this.omObject.FailureInformation);
                 }
-                return this.schedulingError;
+                return this.failureInformation;
+            }
+        }
+        
+        public Microsoft.Azure.Batch.Common.TaskExecutionResult? Result
+        {
+            get
+            {
+                return this.omObject.Result;
             }
         }
         

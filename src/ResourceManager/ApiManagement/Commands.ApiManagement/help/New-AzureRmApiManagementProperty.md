@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
 ms.assetid: A91F93D3-B8C7-4328-A049-AB9877C1166C
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/new-azurermapimanagementproperty
 schema: 2.0.0
 ---
 
@@ -14,7 +14,7 @@ Creates a new Property.
 
 ```
 New-AzureRmApiManagementProperty -Context <PsApiManagementContext> [-PropertyId <String>] -Name <String>
- -Value <String> [-Secret] [-Tags <String[]>] [<CommonParameters>]
+ -Value <String> [-Secret] [-Tags <String[]>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,8 +24,9 @@ The **New-AzureRmApiManagementProperty** cmdlet creates an Azure API Management 
 
 ### Example 1: Create a property that includes tags
 ```
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>$Tags = 'sdk', 'powershell'
-PS C:\> New-AzureRmApiManagementProperty -Context $ApimContext -PropertyId "Property11" -Name "Property Name" -Value "Property Value" -Tags $Tags
+PS C:\> New-AzureRmApiManagementProperty -Context $apimContext -PropertyId "Property11" -Name "Property Name" -Value "Property Value" -Tags $Tags
 ```
 
 The first command assigns two values to the $Tags variable.
@@ -34,6 +35,7 @@ The second command creates a property and assigns the strings in $Tags as tags o
 
 ### Example 2: Create a property that has a secret value
 ```
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>New-AzureRmApiManagementProperty -Context $apimContext -PropertyId "Property12" -Name "Secret Property -Value "Secret Property Value" -Secret
 ```
 
@@ -53,6 +55,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+ 
+ ```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

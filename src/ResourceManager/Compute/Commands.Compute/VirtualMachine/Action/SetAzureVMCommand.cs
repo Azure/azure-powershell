@@ -15,6 +15,7 @@
 using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
@@ -40,6 +41,7 @@ namespace Microsoft.Azure.Commands.Compute
            ValueFromPipelineByPropertyName = true,
            ParameterSetName = RedeployResourceGroupNameParameterSet,
            HelpMessage = "The resource group name.")]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -107,7 +109,7 @@ namespace Microsoft.Azure.Commands.Compute
                     var op = this.VirtualMachineClient.GeneralizeWithHttpMessagesAsync(
                         this.ResourceGroupName,
                         this.Name).GetAwaiter().GetResult();
-                    var result = Mapper.Map<PSComputeLongRunningOperation>(op);
+                    var result = ComputeAutoMapperProfile.Mapper.Map<PSComputeLongRunningOperation>(op);
                     WriteObject(result);
                 });
             }
@@ -118,7 +120,7 @@ namespace Microsoft.Azure.Commands.Compute
                     var op = this.VirtualMachineClient.RedeployWithHttpMessagesAsync(
                         this.ResourceGroupName,
                         this.Name).GetAwaiter().GetResult();
-                    var result = Mapper.Map<PSComputeLongRunningOperation>(op);
+                    var result = ComputeAutoMapperProfile.Mapper.Map<PSComputeLongRunningOperation>(op);
                     WriteObject(result);
                 });
             }

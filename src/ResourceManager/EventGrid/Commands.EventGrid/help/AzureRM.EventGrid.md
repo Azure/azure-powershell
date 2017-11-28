@@ -1,4 +1,4 @@
----
+﻿---
 Module Name: AzureRM.EventGrid
 Module Guid: 53BF7132-5BB4-46EB-AC05-61A49A6CD5EB
 Download Help Link: None_Azure

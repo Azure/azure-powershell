@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Internal.Resources;
@@ -41,6 +42,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
            Position = 0,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource group name to which the VM Scale Set belongs to")]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -92,7 +94,10 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Type of the volume (OS or Data) to perform encryption operation")]
-        [ValidateSet("OS", "Data", "All")]
+        [ValidateSet(
+            AzureVmssDiskEncryptionExtensionContext.VolumeTypeOS,
+            AzureVmssDiskEncryptionExtensionContext.VolumeTypeData,
+            AzureVmssDiskEncryptionExtensionContext.VolumeTypeAll)]
         public string VolumeType { get; set; }
 
         [Parameter(
