@@ -12,11 +12,15 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             IClient client,
             IState target,
             CancellationToken cancellationToken,
-            IShouldProcess shouldProcess)
+            IShouldProcess shouldProcess,
+            IProgressReport progressReport)
             where TModel : class
         {
             var context = new Context(
-                new StateOperationContext(client, cancellationToken), target, shouldProcess);
+                new StateOperationContext(client, cancellationToken),
+                target,
+                shouldProcess,
+                progressReport);
             await context.UpdateStateAsync(config);
             return context.Result;
         }
@@ -31,12 +35,18 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 
             readonly IShouldProcess _ShouldProcess;
 
+            readonly IProgressReport _ProgressReport;
+
             public Context(
-                StateOperationContext operationContext, IState target, IShouldProcess shouldProcess)
+                StateOperationContext operationContext,
+                IState target,
+                IShouldProcess shouldProcess,
+                IProgressReport progressReport)
             {
                 _OperationContext = operationContext;
                 _Target = target;
                 _ShouldProcess = shouldProcess;
+                _ProgressReport = progressReport;
             }
 
             public async Task UpdateStateAsync<TModel>(ResourceConfig<TModel> config)
@@ -57,10 +67,13 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                             // call the CreateOrUpdateAsync function for the resource.
                             if (_ShouldProcess.ShouldCreate(config, model))
                             {
-                                return await config.CreateOrUpdateAsync(
+                                _ProgressReport.Report(config, 0.0);
+                                var result = await config.CreateOrUpdateAsync(
                                     _OperationContext.Client,
                                     model,
                                     _OperationContext.CancellationToken);
+                                _ProgressReport.Report(config, 1.0);
+                                return result;
                             }
                             else
                             {

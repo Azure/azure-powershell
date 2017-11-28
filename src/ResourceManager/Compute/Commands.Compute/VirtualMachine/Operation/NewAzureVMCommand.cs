@@ -195,7 +195,28 @@ namespace Microsoft.Azure.Commands.Compute
 
             public bool ShouldCreate<TModel>(ResourceConfig<TModel> config, TModel model)
                 where TModel : class
-                => _Cmdlet.ShouldProcess(config.Name + " " + config.Strategy.Type, VerbsCommon.New);
+                => _Cmdlet.ShouldProcess(config.Name, VerbsCommon.New + " " + config.Strategy.Type);
+        }
+
+        private sealed class ProgressReportType : IProgressReport
+        {
+            readonly Cmdlet _Cmdlet;
+
+            public ProgressReportType(Cmdlet cmdlet)
+            {
+                _Cmdlet = cmdlet;
+            }
+
+            public void Report<TModel>(ResourceConfig<TModel> config, double progress) 
+                where TModel : class
+            {
+
+            }
+            /*
+                => _Cmdlet.WriteVerbose(
+                    progress == 0 ? "Creating " + config.Name + " " + config.Strategy.Type + "..."
+                    : config.Name + " " + config.Strategy.Type + " is created.");
+                    */
         }
 
         public void StrategyExecuteCmdlet()
@@ -256,7 +277,11 @@ namespace Microsoft.Azure.Commands.Compute
 
             var result = virtualMachine
                 .UpdateStateAsync(
-                    client, target, new CancellationToken(), new ShouldProcessType(this))
+                    client,
+                    target,
+                    new CancellationToken(),
+                    new ShouldProcessType(this),
+                    new ProgressReportType(this))
                 .GetAwaiter()
                 .GetResult();
             WriteObject(result);
