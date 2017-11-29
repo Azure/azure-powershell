@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzureRmDataFactoryV2IntegrationRuntimeNodeIp
 
 ## SYNOPSIS
-Get IP address of a self-hosted integration runtime node.
+Gets the IP address of a self-hosted integration runtime node.
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ Get-AzureRmDataFactoryV2IntegrationRuntimeNodeIp -NodeName <String> [-InputObjec
 ```
 
 ## DESCRIPTION
-The Get-AzureRmDataFactoryV2IntegrationRuntimeNodeIp cmdlet gets the IP address of self-hosted integration runtime node.
+The Get-AzureRmDataFactoryV2IntegrationRuntimeNodeIp cmdlet gets the IP address of a self-hosted integration runtime node.
 
 ## EXAMPLES
 
