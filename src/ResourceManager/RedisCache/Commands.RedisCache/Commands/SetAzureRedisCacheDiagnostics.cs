@@ -16,6 +16,7 @@ namespace Microsoft.Azure.Commands.RedisCache
 {
     using Microsoft.Azure.Commands.RedisCache.Models;
     using Microsoft.Azure.Commands.RedisCache.Properties;
+    using ResourceManager.Common.ArgumentCompleters;
     using System;
     using System.Management.Automation;
 
@@ -23,6 +24,7 @@ namespace Microsoft.Azure.Commands.RedisCache
     public class SetAzureRedisCacheDiagnostics : RedisCacheCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Name of resource group under which cache exists.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
