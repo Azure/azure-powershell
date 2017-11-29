@@ -26,11 +26,15 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public const string IntegrationRuntimeNode = "AzureRmDataFactoryV2IntegrationRuntimeNode";
 
+        public const string IntegrationRuntimeNodeIp = "AzureRmDataFactoryV2IntegrationRuntimeNodeIp";
+
         public const string IntegrationRuntimeMetric = "AzureRmDataFactoryV2IntegrationRuntimeMetric";
 
         public const string IntegrationRuntimeKey = "AzureRmDataFactoryV2IntegrationRuntimeKey";
 
         public const string IntegrationRuntimeCredential = "AzureRmDataFactoryV2IntegrationRuntimeCredential";
+
+        public const string IntegrationRuntimeUpgrade = "AzureRmDataFactoryV2IntegrationRuntimeUpgrade";
 
         public const string Dataset = "AzureRmDataFactoryV2Dataset";
 
@@ -104,9 +108,11 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public const string HelpIntegrationRuntimeAutoUpdate = "Enable or disable the self-hosted integration runtime auto-update.";
 
-        public const string HelpIntegrationRuntimeAutoUpdateTime = "The time of the day for the self-hosted integration runtime auto-update.";
+        public const string HelpIntegrationRuntimeAutoUpdateTime = "The time in hour of the day for the self-hosted integration runtime auto-update.";
 
         public const string HelpIntegrationRuntimeKeyName = "The authentication key name of the self-hosted integration runtime.";
+
+        public const string HelpIntegrationRuntimeJobsLimit = "The number of concurrent jobs permitted to run on the integration runtime node. Values between 1 and maxConcurrentJobs are allowed.";
 
         public const string HelpPipelineRunId = "The Run ID of the pipeline.";
 
@@ -149,7 +155,11 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         public const string IntegrationRuntimeTypeManaged = "Managed";
 
         public const string IntegrationRuntimeSelfhosted = "SelfHosted";
-        
+
+        public const string IntegrationRuntimeAutoUpdateEnabled = "On";
+
+        public const string IntegrationRuntimeAutoUpdateDisabled = "Off";
+
         public const string TriggerName = "TriggerName";
     }
 }

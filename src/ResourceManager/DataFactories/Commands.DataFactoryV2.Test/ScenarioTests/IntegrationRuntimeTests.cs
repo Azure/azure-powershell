@@ -35,9 +35,16 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestManagedElasticIntegrationRuntime()
+        public void TestSsisAzureIntegrationRuntime()
         {
-            RunPowerShellTest("Test-ManagedElastic-IntegrationRuntime");
+            RunPowerShellTest("Test-SsisAzure-IntegrationRuntime");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureIntegrationRuntime()
+        {
+            RunPowerShellTest("Test-Azure-IntegrationRuntime");
         }
 
         [Fact]
