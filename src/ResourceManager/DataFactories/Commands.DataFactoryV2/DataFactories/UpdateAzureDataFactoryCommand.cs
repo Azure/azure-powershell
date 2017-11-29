@@ -14,15 +14,17 @@
 
 using System;
 using System.Collections;
+using System.Globalization;
 using System.Management.Automation;
 using System.Security.Permissions;
 using Microsoft.Azure.Commands.DataFactoryV2.Models;
+using Microsoft.Azure.Commands.DataFactoryV2.Properties;
 using Microsoft.Azure.Management.DataFactory.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
-    [Cmdlet(VerbsData.Update, Constants.DataFactory, DefaultParameterSetName = ParameterSetNames.ByFactoryName),
+    [Cmdlet(VerbsData.Update, Constants.DataFactory, DefaultParameterSetName = ParameterSetNames.ByFactoryName, SupportsShouldProcess = true),
         OutputType(typeof(PSDataFactory))]
     public class UpdateAzureDataFactoryCommand : DataFactoryBaseCmdlet
     {
@@ -63,6 +65,9 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             HelpMessage = Constants.HelpIdentityForFactory)]
         public FactoryIdentity Identity { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = Constants.HelpDontAskConfirmation)]
+        public SwitchParameter Force { get; set; }
+
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
         {
@@ -86,7 +91,19 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 Identity = Identity
             };
 
-            WriteObject(DataFactoryClient.UpdatePSDataFactory(parameters));
+            ConfirmAction(Force.IsPresent,
+                string.Format(
+                    CultureInfo.InvariantCulture,
+                    Resources.DataFactoryUpdateConfirm,
+                    parameters.DataFactoryName,
+                    parameters.ResourceGroupName),
+                string.Format(
+                    CultureInfo.InvariantCulture,
+                    Resources.DataFactoryUpdating,
+                    parameters.DataFactoryName,
+                    parameters.ResourceGroupName),
+                Name,
+                () => WriteObject(DataFactoryClient.UpdatePSDataFactory(parameters)));
         }
     }
 }

@@ -127,7 +127,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-{{Fill PassThru Description}}
+If specified the cmdlet write true in case operation succeeds.
 
 ```yaml
 Type: SwitchParameter

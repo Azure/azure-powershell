@@ -134,7 +134,29 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Properties {
                 return ResourceManager.GetString("DataFactoryRemoving", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to update properties of the data factory &apos;{0}&apos; in resource group &apos;{1}&apos;?.
+        /// </summary>
+        internal static string DataFactoryUpdateConfirm
+        {
+            get
+            {
+                return ResourceManager.GetString("DataFactoryUpdateConfirm", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Updating properties of the data factory &apos;{0}&apos; in resource group &apos;{1}&apos;..
+        /// </summary>
+        internal static string DataFactoryUpdating
+        {
+            get
+            {
+                return ResourceManager.GetString("DataFactoryUpdating", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove dataset &apos;{0}&apos; in data factory &apos;{1}&apos;?.
         /// </summary>
