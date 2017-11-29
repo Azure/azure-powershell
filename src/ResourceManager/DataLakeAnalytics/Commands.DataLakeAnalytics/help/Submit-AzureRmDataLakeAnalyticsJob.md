@@ -17,7 +17,7 @@ Submits a job.
 ```
 Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-ScriptPath] <String>
  [[-Runtime] <String>] [[-CompileMode] <String>] [-CompileOnly] [[-DegreeOfParallelism] <Int32>]
- [[-Priority] <Int32>] [-Parameters <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [[-Priority] <Int32>] [-ScriptParameter <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -25,7 +25,7 @@ Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-Script
 ```
 Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-Script] <String>
  [[-Runtime] <String>] [[-CompileMode] <String>] [-CompileOnly] [[-DegreeOfParallelism] <Int32>]
- [[-Priority] <Int32>] [-Parameters <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [[-Priority] <Int32>] [-ScriptParameter <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -33,7 +33,7 @@ Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-Script
 ```
 Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-ScriptPath] <String>
  [[-Runtime] <String>] [[-CompileMode] <String>] [-CompileOnly] [[-DegreeOfParallelism] <Int32>]
- [[-Priority] <Int32>] [-Parameters <Hashtable>] -RecurrenceId <Guid> [-RecurrenceName <String>]
+ [[-Priority] <Int32>] [-ScriptParameter <Hashtable>] -RecurrenceId <Guid> [-RecurrenceName <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -41,7 +41,7 @@ Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-Script
 ```
 Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-Script] <String>
  [[-Runtime] <String>] [[-CompileMode] <String>] [-CompileOnly] [[-DegreeOfParallelism] <Int32>]
- [[-Priority] <Int32>] [-Parameters <Hashtable>] -RecurrenceId <Guid> [-RecurrenceName <String>]
+ [[-Priority] <Int32>] [-ScriptParameter <Hashtable>] -RecurrenceId <Guid> [-RecurrenceName <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -49,7 +49,7 @@ Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-Script
 ```
 Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-ScriptPath] <String>
  [[-Runtime] <String>] [[-CompileMode] <String>] [-CompileOnly] [[-DegreeOfParallelism] <Int32>]
- [[-Priority] <Int32>] [-Parameters <Hashtable>] -RecurrenceId <Guid> [-RecurrenceName <String>]
+ [[-Priority] <Int32>] [-ScriptParameter <Hashtable>] -RecurrenceId <Guid> [-RecurrenceName <String>]
  -PipelineId <Guid> [-PipelineName <String>] [-PipelineUri <String>] [-RunId <Guid>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -58,7 +58,7 @@ Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-Script
 ```
 Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-Script] <String>
  [[-Runtime] <String>] [[-CompileMode] <String>] [-CompileOnly] [[-DegreeOfParallelism] <Int32>]
- [[-Priority] <Int32>] [-Parameters <Hashtable>] -RecurrenceId <Guid> [-RecurrenceName <String>]
+ [[-Priority] <Int32>] [-ScriptParameter <Hashtable>] -RecurrenceId <Guid> [-RecurrenceName <String>]
  -PipelineId <Guid> [-PipelineName <String>] [-PipelineUri <String>] [-RunId <Guid>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -75,16 +75,16 @@ PS C:\>Submit-AzureRmDataLakeAnalyticsJob -Account "ContosoAdlAccount" -Name "Ne
 
 This command submits a Data Lake Analytics job.
 
-### Example 2: Submit a job with job parameters
+### Example 2: Submit a job with script parameters
 ```
 PS C:\>$parameters = @{}
 $parameters["Department"] = "Sales"
 $parameters["NumRecords"] = 1000
 $parameters["StartDateTime"] = (Get-Date).AddDays(-14)
-Submit-AzureRmDataLakeAnalyticsJob -Account "ContosoAdlAccount" -Name "New Job" -ScriptPath $LocalScriptPath -DegreeOfParallelism 32 -Parameters $parameters
+Submit-AzureRmDataLakeAnalyticsJob -Account "ContosoAdlAccount" -Name "New Job" -ScriptPath $LocalScriptPath -DegreeOfParallelism 32 -ScriptParameter $parameters
 ```
 
-This command submits a Data Lake Analytics job with job parameters.
+This command submits a Data Lake Analytics job with script parameters.
 
 ## PARAMETERS
 
@@ -179,21 +179,6 @@ Aliases:
 
 Required: True
 Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Parameters
-The job parameters for this job, as a hashtable of parameter names (string) to values (any combination of byte, sbyte, int, uint (or uint32), long, ulong (or uint64), float, double, decimal, short (or int16), ushort (or uint16), char, string, DateTime, bool, Guid, or byte[]).
-
-```yaml
-Type: Hashtable
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 8
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -331,6 +316,21 @@ Required: True
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -ScriptParameter
+The script parameters for this job, as a hashtable of parameter names (string) to values (any combination of byte, sbyte, int, uint (or uint32), long, ulong (or uint64), float, double, decimal, short (or int16), ushort (or uint16), char, string, DateTime, bool, Guid, or byte[]).
+
+```yaml
+Type: Hashtable
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: 8
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

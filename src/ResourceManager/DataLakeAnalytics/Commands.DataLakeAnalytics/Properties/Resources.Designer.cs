@@ -205,20 +205,20 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Type &apos;{0}&apos; is an unsupported job parameter type.  Please check the list of supported types by using Get-Help on the cmdlet with the -detailed flag..
-        /// </summary>
-        internal static string InvalidJobParameterType {
-            get {
-                return ResourceManager.GetString("InvalidJobParameterType", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Invalid JobType selected. Please select -USql when submitting a job.
         /// </summary>
         internal static string InvalidJobType {
             get {
                 return ResourceManager.GetString("InvalidJobType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type &apos;{0}&apos; is an unsupported script parameter type.  Please check the list of supported types by using Get-Help on the cmdlet with the -detailed flag..
+        /// </summary>
+        internal static string InvalidScriptParameterType {
+            get {
+                return ResourceManager.GetString("InvalidScriptParameterType", resourceCulture);
             }
         }
         
@@ -237,15 +237,6 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         internal static string InvalidUSqlTypeRequest {
             get {
                 return ResourceManager.GetString("InvalidUSqlTypeRequest", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The job parameter value for &apos;{0}&apos; is null..
-        /// </summary>
-        internal static string JobParameterValueIsNull {
-            get {
-                return ResourceManager.GetString("JobParameterValueIsNull", resourceCulture);
             }
         }
         
@@ -471,6 +462,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         internal static string ScriptFilePathDoesNotExist {
             get {
                 return ResourceManager.GetString("ScriptFilePathDoesNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The script parameter value for &apos;{0}&apos; is null..
+        /// </summary>
+        internal static string ScriptParameterValueIsNull {
+            get {
+                return ResourceManager.GetString("ScriptParameterValueIsNull", resourceCulture);
             }
         }
         

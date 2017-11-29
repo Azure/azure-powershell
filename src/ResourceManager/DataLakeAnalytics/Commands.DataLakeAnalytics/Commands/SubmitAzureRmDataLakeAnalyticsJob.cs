@@ -269,35 +269,35 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPath, Position = 8,
             Mandatory = false,
             HelpMessage =
-                "The job parameters for this job, as a hashtable of parameter names (string) to values (any combination of byte, sbyte, int, uint (or uint32), long, ulong (or uint64), float, double, decimal, short (or int16), ushort (or uint16), char, string, DateTime, bool, Guid, or byte[])."
+                "The script parameters for this job, as a hashtable of parameter names (string) to values (any combination of byte, sbyte, int, uint (or uint32), long, ulong (or uint64), float, double, decimal, short (or int16), ushort (or uint16), char, string, DateTime, bool, Guid, or byte[])."
             )]
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobParameterSetName, Position = 8,
             Mandatory = false,
             HelpMessage =
-                "The job parameters for this job, as a hashtable of parameter names (string) to values (any combination of byte, sbyte, int, uint (or uint32), long, ulong (or uint64), float, double, decimal, short (or int16), ushort (or uint16), char, string, DateTime, bool, Guid, or byte[])."
+                "The script parameters for this job, as a hashtable of parameter names (string) to values (any combination of byte, sbyte, int, uint (or uint32), long, ulong (or uint64), float, double, decimal, short (or int16), ushort (or uint16), char, string, DateTime, bool, Guid, or byte[])."
             )]
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPathAndRecurrence, Position = 8,
             Mandatory = false,
             HelpMessage =
-                "The job parameters for this job, as a hashtable of parameter names (string) to values (any combination of byte, sbyte, int, uint (or uint32), long, ulong (or uint64), float, double, decimal, short (or int16), ushort (or uint16), char, string, DateTime, bool, Guid, or byte[])."
+                "The script parameters for this job, as a hashtable of parameter names (string) to values (any combination of byte, sbyte, int, uint (or uint32), long, ulong (or uint64), float, double, decimal, short (or int16), ushort (or uint16), char, string, DateTime, bool, Guid, or byte[])."
             )]
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobParameterSetNameAndRecurrence, Position = 8,
             Mandatory = false,
             HelpMessage =
-                "The job parameters for this job, as a hashtable of parameter names (string) to values (any combination of byte, sbyte, int, uint (or uint32), long, ulong (or uint64), float, double, decimal, short (or int16), ushort (or uint16), char, string, DateTime, bool, Guid, or byte[])."
+                "The script parameters for this job, as a hashtable of parameter names (string) to values (any combination of byte, sbyte, int, uint (or uint32), long, ulong (or uint64), float, double, decimal, short (or int16), ushort (or uint16), char, string, DateTime, bool, Guid, or byte[])."
             )]
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPathAndPipeline, Position = 8,
             Mandatory = false,
             HelpMessage =
-                "The job parameters for this job, as a hashtable of parameter names (string) to values (any combination of byte, sbyte, int, uint (or uint32), long, ulong (or uint64), float, double, decimal, short (or int16), ushort (or uint16), char, string, DateTime, bool, Guid, or byte[])."
+                "The script parameters for this job, as a hashtable of parameter names (string) to values (any combination of byte, sbyte, int, uint (or uint32), long, ulong (or uint64), float, double, decimal, short (or int16), ushort (or uint16), char, string, DateTime, bool, Guid, or byte[])."
             )]
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobParameterSetNameAndPipeline, Position = 8,
             Mandatory = false,
             HelpMessage =
-                "The job parameters for this job, as a hashtable of parameter names (string) to values (any combination of byte, sbyte, int, uint (or uint32), long, ulong (or uint64), float, double, decimal, short (or int16), ushort (or uint16), char, string, DateTime, bool, Guid, or byte[])."
+                "The script parameters for this job, as a hashtable of parameter names (string) to values (any combination of byte, sbyte, int, uint (or uint32), long, ulong (or uint64), float, double, decimal, short (or int16), ushort (or uint16), char, string, DateTime, bool, Guid, or byte[])."
             )]
         [ValidateNotNullOrEmpty]
-        public Hashtable Parameters { get; set; }
+        public Hashtable ScriptParameter { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPathAndRecurrence,
             Mandatory = true,
@@ -393,7 +393,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
             }
 
             // Check for job parameters
-            if (Parameters != null)
+            if (ScriptParameter != null)
             {
                 StringBuilder scriptBuilder = new StringBuilder(Script);
                 string paramVar = null;
@@ -401,11 +401,11 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                 Type paramType = null;
 
                 // Add declare statements to the script
-                foreach (DictionaryEntry param in Parameters)
+                foreach (DictionaryEntry param in ScriptParameter)
                 {
                     if (param.Value == null)
                     {
-                        throw new CloudException(string.Format(Resources.JobParameterValueIsNull,
+                        throw new CloudException(string.Format(Resources.ScriptParameterValueIsNull,
                             param.Key.ToString()));
                     }
 
@@ -545,7 +545,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                     }
                     else
                     {
-                        throw new CloudException(string.Format(Resources.InvalidJobParameterType,
+                        throw new CloudException(string.Format(Resources.InvalidScriptParameterType,
                             paramType.ToString()));
                     }
                 }
