@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     [Cmdlet(VerbsLifecycle.Start, "AzureRmSiteRecoveryUnplannedFailoverJob", DefaultParameterSetName = ASRParameterSets.ByPEObject)]
     [OutputType(typeof(ASRJob))]
     [Obsolete("This cmdlet has been marked for deprecation in an upcoming release. Please use the " +
-        "equivalent cmdlet from the AzureRm.RecoveryServices.SiteRecovery module instead.",
+        "Start-AzureRmRecoveryServicesAsrUnplannedFailoverJob cmdlet from the AzureRm.RecoveryServices.SiteRecovery module instead.",
         false)]
     public class StartAzureRmSiteRecoveryUnplannedFailoverJob : SiteRecoveryCmdletBase
     {
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                     this.StartPEUnplannedFailover();
                     break;
                 case ASRParameterSets.ByRPIObject:
-                    this.protectionContainerName = 
+                    this.protectionContainerName =
                         Utilities.GetValueFromArmId(this.ReplicationProtectedItem.ID, ARMResourceTypeConstants.ReplicationProtectionContainers);
                     this.fabricName = Utilities.GetValueFromArmId(this.ReplicationProtectedItem.ID, ARMResourceTypeConstants.ReplicationFabrics);
                     this.StartRPIUnplannedFailover();

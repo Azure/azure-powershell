@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     [Cmdlet(VerbsLifecycle.Start, "AzureRmSiteRecoveryCommitFailoverJob", DefaultParameterSetName = ASRParameterSets.ByRPIObject)]
     [OutputType(typeof(ASRJob))]
     [Obsolete("This cmdlet has been marked for deprecation in an upcoming release. Please use the " +
-        "equivalent cmdlet from the AzureRm.RecoveryServices.SiteRecovery module instead.",
+        "Start-AzureRmRecoveryServicesAsrCommitFailoverJob cmdlet from the AzureRm.RecoveryServices.SiteRecovery module instead.",
         false)]
     public class StartAzureRmSiteRecoveryCommitFailoverJob : SiteRecoveryCmdletBase
     {
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                     break;
 
                 case ASRParameterSets.ByRPIObject:
-                    this.protectionContainerName = 
+                    this.protectionContainerName =
                         Utilities.GetValueFromArmId(this.ReplicationProtectedItem.ID, ARMResourceTypeConstants.ReplicationProtectionContainers);
                     this.fabricName = Utilities.GetValueFromArmId(this.ReplicationProtectedItem.ID, ARMResourceTypeConstants.ReplicationFabrics);
                     this.SetRPICommit();

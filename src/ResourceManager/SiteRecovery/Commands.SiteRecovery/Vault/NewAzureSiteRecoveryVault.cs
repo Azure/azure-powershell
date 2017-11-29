@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRmSiteRecoveryVault")]
     [Obsolete("This cmdlet has been marked for deprecation in an upcoming release. Please use the " +
-        "equivalent cmdlet from the AzureRm.RecoveryServices.SiteRecovery module instead.",
+        "New-AzureRmRecoveryServicesVault cmdlet from the AzureRm.RecoveryServices module instead.",
         false)]
     public class CreateAzureSiteRecoveryVault : SiteRecoveryCmdletBase
     {

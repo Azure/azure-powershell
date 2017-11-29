@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     [Cmdlet(VerbsData.Update, "AzureRmSiteRecoveryProtectionDirection", DefaultParameterSetName = ASRParameterSets.ByPEObject)]
     [OutputType(typeof(ASRJob))]
     [Obsolete("This cmdlet has been marked for deprecation in an upcoming release. Please use the " +
-        "equivalent cmdlet from the AzureRm.RecoveryServices.SiteRecovery module instead.",
+        "Update-AzureRmRecoveryServicesAsrProtectionDirection cmdlet from the AzureRm.RecoveryServices.SiteRecovery module instead.",
         false)]
     public class UpdateAzureRmSiteRecoveryProtection : SiteRecoveryCmdletBase
     {
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                     this.SetPEReprotect();
                     break;
                 case ASRParameterSets.ByRPIObject:
-                    this.protectionContainerName = 
+                    this.protectionContainerName =
                         Utilities.GetValueFromArmId(this.ReplicationProtectedItem.ID, ARMResourceTypeConstants.ReplicationProtectionContainers);
                     this.fabricName = Utilities.GetValueFromArmId(this.ReplicationProtectedItem.ID, ARMResourceTypeConstants.ReplicationFabrics);
                     this.SetRPIReprotect();
@@ -197,7 +197,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
 
             ProtectableItemResponse protectableItemResponse =
                         RecoveryServicesClient.GetAzureSiteRecoveryProtectableItem(this.fabricName, this.protectionContainerName,
-                        Utilities.GetValueFromArmId(replicationProtectedItemResponse.ReplicationProtectedItem.Properties.ProtectableItemId, 
+                        Utilities.GetValueFromArmId(replicationProtectedItemResponse.ReplicationProtectedItem.Properties.ProtectableItemId,
                         ARMResourceTypeConstants.ProtectableItems));
 
             var aSRProtectableItem = new ASRProtectableItem(protectableItemResponse.ProtectableItem);
@@ -213,7 +213,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                     {
                         HvHostVmId = aSRProtectableItem.FabricObjectId,
                         VmName = aSRProtectableItem.FriendlyName,
-                        OSType = ((string.Compare(aSRProtectableItem.OS, "Windows") == 0) || 
+                        OSType = ((string.Compare(aSRProtectableItem.OS, "Windows") == 0) ||
                                     (string.Compare(aSRProtectableItem.OS, "Linux") == 0)) ? aSRProtectableItem.OS : "Windows",
                         VHDId = aSRProtectableItem.OSDiskId
                     };

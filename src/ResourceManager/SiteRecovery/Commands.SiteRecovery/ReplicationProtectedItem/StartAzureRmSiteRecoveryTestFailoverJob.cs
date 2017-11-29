@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     [Cmdlet(VerbsLifecycle.Start, "AzureRmSiteRecoveryTestFailoverJob", DefaultParameterSetName = ASRParameterSets.ByPEObject)]
     [OutputType(typeof(ASRJob))]
     [Obsolete("This cmdlet has been marked for deprecation in an upcoming release. Please use the " +
-        "equivalent cmdlet from the AzureRm.RecoveryServices.SiteRecovery module instead.",
+        "Start-AzureRmRecoveryServicesAsrTestFailoverJob cmdlet from the AzureRm.RecoveryServices.SiteRecovery module instead.",
         false)]
     public class StartAzureRmSiteRecoveryTestFailoverJob : SiteRecoveryCmdletBase
     {
@@ -207,7 +207,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             }
             else
             {
-                this.protectionContainerName = 
+                this.protectionContainerName =
                     Utilities.GetValueFromArmId(this.ReplicationProtectedItem.ID, ARMResourceTypeConstants.ReplicationProtectionContainers);
                 this.fabricName = Utilities.GetValueFromArmId(this.ReplicationProtectedItem.ID, ARMResourceTypeConstants.ReplicationFabrics);
                 this.StartRPITestFailover();
