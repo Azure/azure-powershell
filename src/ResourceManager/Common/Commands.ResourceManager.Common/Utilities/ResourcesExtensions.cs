@@ -172,9 +172,18 @@ namespace Microsoft.Azure.Management.Internal.Resources.Utilities
         public static Job ExecuteAsJob(this AzurePSCmdlet cmdlet, string jobName)
         {
             var job = AzureRmLongRunningJob.Create(cmdlet, cmdlet?.MyInvocation?.MyCommand?.Name, jobName);
-            cmdlet.JobRepository.Add(job);
+            cmdlet.SafeAddToJobRepository(job);
             ThreadPool.QueueUserWorkItem(job.RunJob, job);
             return job;
+        }
+
+        static void SafeAddToJobRepository(this AzurePSCmdlet cmdlet, Job job)
+        {
+            try
+            {
+                cmdlet.JobRepository.Add(job);
+            }
+            catch { }
         }
     }
 }

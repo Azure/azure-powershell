@@ -130,8 +130,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 _cmdlet.ExecuteCmdlet();
                 Complete();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Error.Add(new ErrorRecord(ex, ex.Message, ErrorCategory.InvalidOperation, this));
                 Fail();
             }
         }
@@ -265,10 +266,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         {
             ConfirmImpact confirmPreference = ConfirmImpact.Medium;
             ConfirmImpact cmdletImpact = ConfirmImpact.Medium;
-            var confirmVar = cmdlet.GetVariableValue("ConfirmPreference", "Medium") as string;
+            var confirmVar = SafeGetVariableValue(cmdlet, "ConfirmPreference", "Medium");
             if (!string.IsNullOrEmpty(confirmVar))
             {
-                Enum.TryParse(cmdlet.GetVariableValue("ConfirmPreference", "Medium") as string, out confirmPreference);
+                Enum.TryParse(confirmVar, out confirmPreference);
             }
 
             var attribute = cmdlet.GetType().GetTypeInfo().GetCustomAttribute<CmdletAttribute>(true);
@@ -278,6 +279,21 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
 
             return cmdletImpact > confirmPreference;
+        }
+
+        static string SafeGetVariableValue(PSCmdlet cmdlet, string name, string defaultValue)
+        {
+            string result;
+            try
+            {
+                result = cmdlet.GetVariableValue(name, defaultValue) as string;
+            }
+            catch
+            {
+                result = defaultValue;
+            }
+
+            return result;
         }
 
         /// <summary>
