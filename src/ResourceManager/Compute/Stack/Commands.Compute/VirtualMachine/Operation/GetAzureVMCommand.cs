@@ -21,6 +21,7 @@ using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Rest.Azure;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -43,6 +44,7 @@ namespace Microsoft.Azure.Commands.Compute
            Position = 0,
             ParameterSetName = GetVirtualMachineInResourceGroupParamSet,
            ValueFromPipelineByPropertyName = true)]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

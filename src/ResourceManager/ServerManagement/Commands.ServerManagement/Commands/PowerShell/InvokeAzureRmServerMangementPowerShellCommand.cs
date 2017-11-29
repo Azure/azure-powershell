@@ -20,12 +20,14 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.PowerShell
     using Management.ServerManagement;
     using Management.ServerManagement.Models;
     using Model;
+    using ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet(VerbsLifecycle.Invoke, "AzureRmServerManagementPowerShellCommand"), OutputType(typeof(object))]
     public class InvokeAzureRmServerManagementPowerShellCommand : ServerManagementCmdlet
     {
         [Parameter(Mandatory = true, HelpMessage = "The targeted resource group.",
             ValueFromPipelineByPropertyName = true, ParameterSetName = "ByName", Position = 0)]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
