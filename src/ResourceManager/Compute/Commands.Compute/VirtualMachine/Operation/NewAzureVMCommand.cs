@@ -210,7 +210,6 @@ namespace Microsoft.Azure.Commands.Compute
             public void Report<TModel>(ResourceConfig<TModel> config, double progress) 
                 where TModel : class
             {
-
             }
             /*
                 => _Cmdlet.WriteVerbose(
@@ -231,9 +230,11 @@ namespace Microsoft.Azure.Commands.Compute
             // get image
             var image = Images
                 .Instance
-                .Select(osAndMap => 
-                    new { OsType = osAndMap.Key, Image = osAndMap.Value.GetOrNull(ImageName) })
-                .First(osAndImage => osAndImage.Image != null);
+                .SelectMany(osAndMap => osAndMap
+                    .Value
+                    .Where(nameAndImage => nameAndImage.Key.ToLower() == ImageName.ToLower())
+                    .Select(nameAndImage => new { OsType = osAndMap.Key, Image = nameAndImage.Value }))
+                .FirstOrDefault();
 
             OpenPorts = OpenPorts 
                 ?? (image.OsType == "Windows" ? new[] { 3389, 5985 } : new[] { 22 });
@@ -258,6 +259,7 @@ namespace Microsoft.Azure.Commands.Compute
                 adminPassword: new NetworkCredential(string.Empty, Credential.Password).Password,
                 image: image.Image);
 
+            // get state
             var client = new Client(DefaultProfile.DefaultContext);
             var current = virtualMachine
                 .GetStateAsync(client, new CancellationToken())
@@ -273,8 +275,10 @@ namespace Microsoft.Azure.Commands.Compute
                 }
             }
 
+            // create target state
             var target = virtualMachine.GetTargetState(current, client.SubscriptionId, Location);
 
+            // apply target state
             var result = virtualMachine
                 .UpdateStateAsync(
                     client,

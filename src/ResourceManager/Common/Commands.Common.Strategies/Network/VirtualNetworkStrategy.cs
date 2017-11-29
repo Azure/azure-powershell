@@ -15,7 +15,6 @@
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
 using Microsoft.Azure.Management.ResourceManager.Models;
-using System;
 
 namespace Microsoft.Azure.Commands.Common.Strategies.Network
 {

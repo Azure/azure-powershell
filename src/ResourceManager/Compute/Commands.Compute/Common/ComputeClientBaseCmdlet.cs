@@ -21,10 +21,7 @@ namespace Microsoft.Azure.Commands.Compute
     {
         protected const string VirtualMachineExtensionType = "Microsoft.Compute/virtualMachines/extensions";
 
-        protected override bool IsUsageMetricEnabled
-        {
-            get { return true; }
-        }
+        protected override bool IsUsageMetricEnabled => true;
 
         private ComputeClient computeClient;
 
