@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     [Cmdlet(VerbsCommon.Get, "AzureRmSiteRecoveryJob", DefaultParameterSetName = ASRParameterSets.ByParam)]
     [OutputType(typeof(IEnumerable<ASRJob>))]
     [Obsolete("This cmdlet has been marked for deprecation in an upcoming release. Please use the " +
-        "equivalent cmdlet from the AzureRm.RecoveryServices.SiteRecovery module instead.",
+        "Get-AzureRmRecoveryServicesAsrJob cmdlet from the AzureRm.RecoveryServices.SiteRecovery module instead.",
         false)]
     public class GetAzureSiteRecoveryJob : SiteRecoveryCmdletBase
     {

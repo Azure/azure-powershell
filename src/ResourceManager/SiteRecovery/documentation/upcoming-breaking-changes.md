@@ -37,7 +37,6 @@ The AzureRm.SiteRecovery module is being superseded by the AzureRm.RecoveryServi
 
 The AzureRm.RecoveryServices.SiteRecovery is a functional superset of the AzureRm.SiteRecovery module and includes a new set of equivalent cmdlets and easy to use aliases to help you manage your Azure Site Recovery deployments.
 
-|--------------------------------------------------------|---------------------------------------------------------------------------------------------|----------------------------------------------------|
 | Deprecated cmdlet                                      | Equivalent cmdlet (AzureRm.RecoveryServices & AzureRm.RecoveryServices.SiteRecovery)        |                       Aliases                      |
 |--------------------------------------------------------|---------------------------------------------------------------------------------------------|----------------------------------------------------|
 | Edit-AzureRmSiteRecoveryRecoveryPlan                   | Edit-AzureRmRecoveryServicesAsrRecoveryPlan                                                 | Edit-ASRRecoveryPlan,Edit-ASRRP                    |
@@ -102,4 +101,3 @@ The AzureRm.RecoveryServices.SiteRecovery is a functional superset of the AzureR
 | Update-AzureRmSiteRecoveryRecoveryPlan                 | Update-AzureRmRecoveryServicesAsrRecoveryPlan                                               | Update-ASRRecoveryPlan                             |
 | Update-AzureRmSiteRecoveryServer                       | Update-AzureRmRecoveryServicesAsrServicesProvider                                           | Update-ASRServicesProvider                         |
 | Update-AzureRmSiteRecoveryServicesProvider             | Update-AzureRmRecoveryServicesAsrvCenter                                                    | Update-ASRvCenter                                  |
-|--------------------------------------------------------|---------------------------------------------------------------------------------------------|----------------------------------------------------|

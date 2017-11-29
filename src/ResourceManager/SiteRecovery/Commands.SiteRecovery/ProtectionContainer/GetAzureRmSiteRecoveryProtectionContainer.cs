@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     [Cmdlet(VerbsCommon.Get, "AzureRmSiteRecoveryProtectionContainer", DefaultParameterSetName = ASRParameterSets.Default)]
     [OutputType(typeof(IEnumerable<ASRProtectionContainer>))]
     [Obsolete("This cmdlet has been marked for deprecation in an upcoming release. Please use the " +
-        "equivalent cmdlet from the AzureRm.RecoveryServices.SiteRecovery module instead.",
+        "Get-AzureRmRecoveryServicesAsrProtectionContainer cmdlet from the AzureRm.RecoveryServices.SiteRecovery module instead.",
         false)]
     public class GetAzureRmSiteRecoveryProtectionContainer : SiteRecoveryCmdletBase
     {

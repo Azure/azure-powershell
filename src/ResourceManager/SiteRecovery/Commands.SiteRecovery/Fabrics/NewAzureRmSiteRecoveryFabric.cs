@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     [Cmdlet(VerbsCommon.New, "AzureRmSiteRecoveryFabric", DefaultParameterSetName = ASRParameterSets.Default)]
     [OutputType(typeof(ASRJob))]
     [Obsolete("This cmdlet has been marked for deprecation in an upcoming release. Please use the " +
-        "equivalent cmdlet from the AzureRm.RecoveryServices.SiteRecovery module instead.",
+        "New-AzureRmRecoveryServicesAsrFabric cmdlet from the AzureRm.RecoveryServices.SiteRecovery module instead.",
         false)]
     public class NewAzureRmSiteRecoveryFabric : SiteRecoveryCmdletBase
     {
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            string fabricType = string.IsNullOrEmpty(this.Type)? FabricProviders.HyperVSite : this.Type;
+            string fabricType = string.IsNullOrEmpty(this.Type) ? FabricProviders.HyperVSite : this.Type;
 
             LongRunningOperationResponse response =
              RecoveryServicesClient.CreateAzureSiteRecoveryFabric(this.Name, fabricType);

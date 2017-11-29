@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// </summary>
     [Cmdlet(VerbsData.Edit, "AzureRmSiteRecoveryRecoveryPlan", DefaultParameterSetName = ASRParameterSets.AppendGroup)]
     [Obsolete("This cmdlet has been marked for deprecation in an upcoming release. Please use the " +
-        "equivalent cmdlet from the AzureRm.RecoveryServices.SiteRecovery module instead.",
+        "Edit-AzureRmRecoveryServicesAsrRecoveryPlan cmdlet from the AzureRm.RecoveryServices.SiteRecovery module instead.",
         false)]
     public class EditAzureRmSiteRecoveryRecoveryPlan : SiteRecoveryCmdletBase
     {
@@ -63,13 +63,13 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// Gets or sets switch parameter
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.AddReplicationProtectedItems, Mandatory = true)]
-        public ASRReplicationProtectedItem [] AddProtectedItems { get; set; }
+        public ASRReplicationProtectedItem[] AddProtectedItems { get; set; }
 
         /// <summary>
         /// Gets or sets switch parameter
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.RemoveReplicationProtectedItems, Mandatory = true)]
-        public ASRReplicationProtectedItem [] RemoveProtectedItems { get; set; }
+        public ASRReplicationProtectedItem[] RemoveProtectedItems { get; set; }
 
         /// <summary>
         /// Gets or sets switch parameter
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
 
                         ReplicationProtectedItemResponse replicationProtectedItemResponse =
                         RecoveryServicesClient.GetAzureSiteRecoveryReplicationProtectedItem(fabricName,
-                        Utilities.GetValueFromArmId(rpi.ID, ARMResourceTypeConstants.ReplicationProtectionContainers), 
+                        Utilities.GetValueFromArmId(rpi.ID, ARMResourceTypeConstants.ReplicationProtectionContainers),
                         rpi.Name);
 
                         tempGroup = this.RecoveryPlan.Groups.FirstOrDefault(g => String.Compare(g.Name, Group.Name, StringComparison.OrdinalIgnoreCase) == 0);
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                                 if (gp.ReplicationProtectedItems == null)
                                     continue;
 
-                                if (gp.ReplicationProtectedItems.Any(pi => 
+                                if (gp.ReplicationProtectedItems.Any(pi =>
                                     String.Compare(pi.Id, replicationProtectedItemResponse.ReplicationProtectedItem.Id, StringComparison.OrdinalIgnoreCase) == 0))
                                 {
                                     throw new PSArgumentException(string.Format(Properties.Resources.VMAlreadyPartOfGroup, rpi.FriendlyName, gp.Name, this.RecoveryPlan.FriendlyName));

@@ -26,7 +26,8 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         DefaultParameterSetName = ASRParameterSets.Default)]
     [OutputType(typeof(IEnumerable<ASRServer>))]
     [Obsolete("This cmdlet has been marked for deprecation in an upcoming release. Please use the " +
-        "equivalent cmdlet from the AzureRm.RecoveryServices.SiteRecovery module instead.",
+        "Remove-AzureRmRecoveryServicesAsrServicesProvider / Remove-AzureRmRecoveryServicesAsrFabric cmdlet from the "
+        + "AzureRm.RecoveryServices.SiteRecovery module instead.",
         false)]
     public class RemoveAzureSiteRecoveryServer : SiteRecoveryCmdletBase
     {

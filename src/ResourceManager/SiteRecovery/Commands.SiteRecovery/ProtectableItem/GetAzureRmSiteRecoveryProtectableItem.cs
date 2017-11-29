@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     [Cmdlet(VerbsCommon.Get, "AzureRmSiteRecoveryProtectableItem", DefaultParameterSetName = ASRParameterSets.ByObject)]
     [OutputType(typeof(IEnumerable<ASRProtectableItem>))]
     [Obsolete("This cmdlet has been marked for deprecation in an upcoming release. Please use the " +
-        "equivalent cmdlet from the AzureRm.RecoveryServices.SiteRecovery module instead.",
+        "Get-AzureRmRecoveryServicesAsrProtectableItem cmdlet from the AzureRm.RecoveryServices.SiteRecovery module instead.",
         false)]
     public class GetAzureRmSiteRecoveryProtectableItem : SiteRecoveryCmdletBase
     {
@@ -89,8 +89,8 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             ProtectableItemListResponse protectableItemListResponse = RecoveryServicesClient.GetAzureSiteRecoveryProtectableItem(
                 Utilities.GetValueFromArmId(this.ProtectionContainer.ID, ARMResourceTypeConstants.ReplicationFabrics),
                 this.ProtectionContainer.Name);
-            ProtectableItem protectableItem = 
-                protectableItemListResponse.ProtectableItems.SingleOrDefault(t => 
+            ProtectableItem protectableItem =
+                protectableItemListResponse.ProtectableItems.SingleOrDefault(t =>
                 string.Compare(t.Properties.FriendlyName, this.FriendlyName, StringComparison.OrdinalIgnoreCase) == 0);
 
             if (protectableItem != null)

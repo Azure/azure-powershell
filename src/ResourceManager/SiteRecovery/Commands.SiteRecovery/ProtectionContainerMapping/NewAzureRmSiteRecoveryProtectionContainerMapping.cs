@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     [Cmdlet(VerbsCommon.New, "AzureRmSiteRecoveryProtectionContainerMapping", DefaultParameterSetName = ASRParameterSets.EnterpriseToAzure)]
     [OutputType(typeof(ASRJob))]
     [Obsolete("This cmdlet has been marked for deprecation in an upcoming release. Please use the " +
-        "equivalent cmdlet from the AzureRm.RecoveryServices.SiteRecovery module instead.",
+        "New-AzureRmRecoveryServicesAsrProtectionContainerMapping cmdlet from the AzureRm.RecoveryServices.SiteRecovery module instead.",
         false)]
     public class NewAzureRmSiteRecoveryProtectionContainerMapping : SiteRecoveryCmdletBase
     {
@@ -147,8 +147,8 @@ namespace Microsoft.Azure.Commands.SiteRecovery
 
             LongRunningOperationResponse response = RecoveryServicesClient.ConfigureProtection(
                 Utilities.GetValueFromArmId(this.PrimaryProtectionContainer.ID, ARMResourceTypeConstants.ReplicationFabrics),
-                this.PrimaryProtectionContainer.Name, 
-                this.Name, 
+                this.PrimaryProtectionContainer.Name,
+                this.Name,
                 input);
 
             JobResponse jobResponse =
