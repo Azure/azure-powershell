@@ -33,13 +33,13 @@ The Resume-AzureRmPowerBIEmbeddedCapacity cmdlet resumes an instance of PowerBI 
 ### Example 1
 ```
 PS C:\> Resume-AzureRmPowerBIEmbeddedCapacity -Name "testcapacity" -ResourceGroupName "testRG" -PassThru
-Administrator          : {admin@microsoft.com}
-State                  : Succeeded
-ProvisioningState      : Succeeded
+Type                   : Microsoft.PowerBIDedicated/capacities
 Id                     : /subscriptions/78e47976-.../resourceGroups/testRG/providers/Microsoft.PowerBIDedicated/capacities/testcapacity
+ResourceGroup          : testRG
 Name                   : testcapacity
-Type                   : Microsoft.AnalysisServices/servers
-Location               : West US
+Location               : West Central US
+State                  : Succeeded
+Administrator          : {admin@microsoft.com}
 Sku                    : A1
 Tier                   : PBIE_Azure
 Tag                    : {}
@@ -95,7 +95,7 @@ Accept wildcard characters: False
 Input object for Piping
 
 ```yaml
-Type: PSDedicatedCapacity
+Type: PSPowerBIEmbeddedCapacity
 Parameter Sets: ByInputObject
 Aliases: 
 
@@ -143,7 +143,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.PowerBI.Models.PSDedicatedCapacity
+### Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity
 
 ## NOTES
 

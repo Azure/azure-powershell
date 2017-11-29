@@ -23,8 +23,8 @@ using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.PowerBI
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmPowerBIEmbeddedCapacity", SupportsShouldProcess = true), 
-        OutputType(typeof(PSDedicatedCapacity))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmPowerBIEmbeddedCapacity", SupportsShouldProcess = true, DefaultParameterSetName = CmdletParametersSet), 
+        OutputType(typeof(PSPowerBIEmbeddedCapacity))]
     public class RemovePowerBIEmbeddedCapacity : PowerBICmdletBase
     {
         protected const string CmdletParametersSet = "ByNameAndResourceGroup";
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.PowerBI
             ValueFromPipeline = true,
             HelpMessage = "PowerBI Embedded Capacity object.")]
         [ValidateNotNullOrEmpty]
-        public PSDedicatedCapacity InputObject { get; set; }
+        public PSPowerBIEmbeddedCapacity InputObject { get; set; }
 
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
@@ -70,14 +70,10 @@ namespace Microsoft.Azure.Commands.PowerBI
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            string capacityName = string.Empty;
+            string capacityName = Name;
             string resourceGroupName = ResourceGroupName;
 
-            if (!string.IsNullOrEmpty(Name))
-            {
-                capacityName = Name;
-            }
-            else if (!string.IsNullOrEmpty(ResourceId))
+            if (!string.IsNullOrEmpty(ResourceId))
             {
                 PowerBIUtils.GetResourceGroupNameAndCapacityName(ResourceId, out resourceGroupName, out capacityName);
             }
@@ -93,7 +89,7 @@ namespace Microsoft.Azure.Commands.PowerBI
 
             if (ShouldProcess(capacityName, Resources.RemovingPowerBIEmbeddedCapacity))
             {
-                PSDedicatedCapacity capacity = null;
+                PSPowerBIEmbeddedCapacity capacity = null;
                 if (!PowerBIClient.TestCapacity(resourceGroupName, capacityName, out capacity))
                 {
                     throw new InvalidOperationException(string.Format(Properties.Resources.CapacityDoesNotExist, capacityName));

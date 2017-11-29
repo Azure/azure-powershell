@@ -65,7 +65,7 @@
     <Compile Include="Commands\UpdateAzureRmPowerBIEmbeddedCapacity.cs" />
     <Compile Include="Commands\SuspendAzureRmPowerBIEmbeddedCapacity.cs" />
     <Compile Include="Commands\TestAzureRmPowerBIEmbeddedCapacity.cs" />
-    <Compile Include="Models\PSDedicatedCapacity.cs" />
+    <Compile Include="Models\PSPowerBIEmbeddedCapacity.cs" />
     <Compile Include="Models\PowerBIClient.cs" />
     <Compile Include="Models\PowerBICmdletBase.cs" />
     <Compile Include="Models\StringOrByteArrayInstance.cs" />

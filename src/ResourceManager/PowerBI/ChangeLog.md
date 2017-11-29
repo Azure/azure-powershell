@@ -19,7 +19,6 @@
 -->
 ## Current Release
 
-## Version 1.0.0
 * New Cmdlet Get-AzureRmPowerBIEmbeddedCapacity
       Gets the details of a PowerBI Embedded Capacity.
 * New Cmdlet New-AzureRmPowerBIEmbeddedCapacity

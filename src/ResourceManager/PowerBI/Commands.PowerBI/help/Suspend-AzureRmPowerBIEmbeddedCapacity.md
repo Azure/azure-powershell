@@ -33,13 +33,13 @@ The Suspend-AzureRmPowerBIEmbeddedCapacity cmdlet suspends an instance of PowerB
 ### Example 1
 ```
 PS C:\> Suspend-AzureRmPowerBIEmbeddedCapacity -Name "testcapacity" -ResourceGroupName "testRG" -PassThru
-Administrator          : {admin@microsoft.com}
-State                  : Paused
-ProvisioningState      : Paused
-Id                     : /subscriptions/78e47976-.../resourceGroups/testRG/providers/Microsoft.PowerBIDedicated/capacities/testcapacity
-Name                   : testcapacity
 Type                   : Microsoft.PowerBIDedicated/capacities
-Location               : West US
+Id                     : /subscriptions/78e47976-.../resourceGroups/testRG/providers/Microsoft.PowerBIDedicated/capacities/testcapacity
+ResourceGroup          : testRG
+Name                   : testcapacity
+Location               : West Central US
+State                  : Paused
+Administrator          : {admin@microsoft.com}
 Sku                    : A1
 Tier                   : PBIE_Azure
 Tag                    : {}
@@ -95,7 +95,7 @@ Accept wildcard characters: False
 Input object for Piping
 
 ```yaml
-Type: PSDedicatedCapacity
+Type: PSPowerBIEmbeddedCapacity
 Parameter Sets: ByInputObject
 Aliases: 
 
@@ -143,7 +143,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.PowerBI.Models.PSDedicatedCapacity
+### Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity
 
 ## NOTES
 

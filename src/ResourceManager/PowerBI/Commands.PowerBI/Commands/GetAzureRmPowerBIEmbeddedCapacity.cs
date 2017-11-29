@@ -21,28 +21,22 @@ using Microsoft.Azure.Management.PowerBIDedicated.Models;
 
 namespace Microsoft.Azure.Commands.PowerBI
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmPowerBIEmbeddedCapacity"),
-        OutputType(typeof(List<PSDedicatedCapacity>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmPowerBIEmbeddedCapacity", DefaultParameterSetName = ParameterSet),
+        OutputType(typeof(List<PSPowerBIEmbeddedCapacity>))]
     public class GetAzurePowerBIEmbeddedCapacity : PowerBICmdletBase
     {
-        protected const string ResourceGroupParameterSet = "ByResourceGroup";
-        protected const string CapacityParameterSet = "ByCapacity";
+        protected const string ParameterSet = "ByCapacityOrResourceGroupOrSubscription";
         protected const string ResourceIdParameterSet = "ByResourceId";
 
         [Parameter(
-            ParameterSetName = ResourceGroupParameterSet,
-            Mandatory = false,
-            HelpMessage = "Name of resource group under which the user want to retrieve the capacity.")]
-        [Parameter(
-            ParameterSetName = CapacityParameterSet,
+            ParameterSetName = ParameterSet,
             Mandatory = false,
             HelpMessage = "Name of resource group under which the user want to retrieve the capacity.")]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
-            ParameterSetName = CapacityParameterSet,
-            Mandatory = true,
-            Position = 0,
+            ParameterSetName = ParameterSet,
+            Mandatory = false,
             HelpMessage = "Name of a specific capacity.")]
         public string Name { get; set; }
 
@@ -55,27 +49,25 @@ namespace Microsoft.Azure.Commands.PowerBI
 
         public override void ExecuteCmdlet()
         {
-            string resourceGroupName = string.Empty;
-            string capacityName = string.Empty;
+            string resourceGroupName = ResourceGroupName;
+            string capacityName = Name;
 
             if (!string.IsNullOrEmpty(ResourceId))
             {
                 PowerBIUtils.GetResourceGroupNameAndCapacityName(ResourceId, out resourceGroupName, out capacityName);
-                ResourceGroupName = resourceGroupName;
-                Name = capacityName;
             }
 
-            if (!string.IsNullOrEmpty(Name))
+            if (!string.IsNullOrEmpty(capacityName))
             {
                 // Get for single capacity
-                var capacity = PowerBIClient.GetCapacity(ResourceGroupName, Name);
+                var capacity = PowerBIClient.GetCapacity(resourceGroupName, capacityName);
                 WriteObject(capacity);
             }
             else
             {
                 // List all capacities in given resource group if avaliable otherwise all capacities in the subscription
-                var list = PowerBIClient.ListCapacities(ResourceGroupName);
-                list.ForEach(capacity => WriteObject(capacity));
+                var list = PowerBIClient.ListCapacities(resourceGroupName);
+                WriteObject(list, true);
             }
         }
     }

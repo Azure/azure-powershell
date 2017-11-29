@@ -53,14 +53,14 @@ namespace Microsoft.Azure.Commands.PowerBI.Models
 
         #region Capacity Related Operations
 
-        public PSDedicatedCapacity CreateOrUpdateCapacity(
+        public PSPowerBIEmbeddedCapacity CreateOrUpdateCapacity(
             string resourceGroupName, 
             string capacityName,
             string location, 
             string skuName = null,
             Hashtable customTags = null,
             string[] administrator = null,
-            PSDedicatedCapacity existingCapacity = null)
+            PSPowerBIEmbeddedCapacity existingCapacity = null)
          {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.PowerBI.Models
                     });
             }
 
-            return new PSDedicatedCapacity(newOrUpdatedCapacity);
+            return new PSPowerBIEmbeddedCapacity(newOrUpdatedCapacity);
         }
 
         public void DeleteCapacity(string resourceGroupName, string capacityName)
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Commands.PowerBI.Models
             _client.Capacities.Delete(resourceGroupName, capacityName);
         }
 
-        public bool TestCapacity(string resourceGroupName, string capacityName, out PSDedicatedCapacity capacity)
+        public bool TestCapacity(string resourceGroupName, string capacityName, out PSPowerBIEmbeddedCapacity capacity)
         {
             try
             {
@@ -145,24 +145,24 @@ namespace Microsoft.Azure.Commands.PowerBI.Models
             }
         }
 
-        public PSDedicatedCapacity GetCapacity(string resourceGroupName, string capacityName)
+        public PSPowerBIEmbeddedCapacity GetCapacity(string resourceGroupName, string capacityName)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
                 resourceGroupName = GetResourceGroupByCapacity(capacityName);
             }
 
-            return new PSDedicatedCapacity(_client.Capacities.GetDetails(resourceGroupName, capacityName));
+            return new PSPowerBIEmbeddedCapacity(_client.Capacities.GetDetails(resourceGroupName, capacityName));
         }
 
-        public List<PSDedicatedCapacity> ListCapacities(string resourceGroupName)
+        public List<PSPowerBIEmbeddedCapacity> ListCapacities(string resourceGroupName)
         {
-            var capacitiesList = new List<PSDedicatedCapacity>();
+            var capacitiesList = new List<PSPowerBIEmbeddedCapacity>();
             var response = string.IsNullOrEmpty(resourceGroupName) ?
                 _client.Capacities.List() :
                 _client.Capacities.ListByResourceGroup(resourceGroupName);
 
-            response.ToList().ForEach(capacity => capacitiesList.Add(new PSDedicatedCapacity(capacity)));
+            response.ToList().ForEach(capacity => capacitiesList.Add(new PSPowerBIEmbeddedCapacity(capacity)));
 
             return capacitiesList;
         }

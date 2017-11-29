@@ -36,13 +36,13 @@ The New-AzureRmPowerBIEmbeddedCapacity cmdlet creates a new PowerBI Embedded Cap
 ### Example 1
 ```
 PS C:\> New-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName "testRG" -Name "testcapacity" -Location "West Central US" -Sku "A1" -Administrator admin@microsoft.com
-Administrator          : {admin@microsoft.com}
-State                  : Succeeded
-ProvisioningState      : Succeeded
-Id                     : /subscriptions/78e47976-.../resourceGroups/testRG/providers/Microsoft.PowerBIDedicated/capacities/testcapacity
-Name                   : testcapacity
 Type                   : Microsoft.PowerBIDedicated/capacities
+Id                     : /subscriptions/78e47976-.../resourceGroups/testRG/providers/Microsoft.PowerBIDedicated/capacities/testcapacity
+ResourceGroup          : testRG
+Name                   : testcapacity
 Location               : West Central US
+State                  : Succeeded
+Administrator          : {admin@microsoft.com}
 Sku                    : A1
 Tier                   : PBIE_Azure
 Tag                    : {}
@@ -173,7 +173,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.PowerBI.Models.PSDedicatedCapacity
+### Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity
 
 ## NOTES
 

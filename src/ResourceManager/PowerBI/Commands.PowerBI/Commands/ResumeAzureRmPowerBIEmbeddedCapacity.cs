@@ -23,8 +23,8 @@ using Microsoft.Azure.Management.PowerBIDedicated.Models;
 
 namespace Microsoft.Azure.Commands.PowerBI
 {
-    [Cmdlet(VerbsLifecycle.Resume, "AzureRmPowerBIEmbeddedCapacity", SupportsShouldProcess = true),
-        OutputType(typeof(PSDedicatedCapacity))]
+    [Cmdlet(VerbsLifecycle.Resume, "AzureRmPowerBIEmbeddedCapacity", SupportsShouldProcess = true, DefaultParameterSetName = CmdletParametersSet),
+        OutputType(typeof(PSPowerBIEmbeddedCapacity))]
     public class ResumeAzurePowerBIEmbeddedCapacity : PowerBICmdletBase
     {
         protected const string CmdletParametersSet = "ByNameAndResourceGroup";
@@ -62,21 +62,17 @@ namespace Microsoft.Azure.Commands.PowerBI
             ValueFromPipeline = true,
             HelpMessage = "PowerBI Embedded Capacity object.")]
         [ValidateNotNullOrEmpty]
-        public PSDedicatedCapacity InputObject { get; set; }
+        public PSPowerBIEmbeddedCapacity InputObject { get; set; }
 
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            string capacityName = string.Empty;
+            string capacityName = Name;
             string resourceGroupName = ResourceGroupName;
 
-            if (!string.IsNullOrEmpty(Name))
-            {
-                capacityName = Name;
-            }
-            else if (!string.IsNullOrEmpty(this.ResourceId))
+            if (!string.IsNullOrEmpty(this.ResourceId))
             {
                 PowerBIUtils.GetResourceGroupNameAndCapacityName(ResourceId, out resourceGroupName, out capacityName);
             }
@@ -92,7 +88,7 @@ namespace Microsoft.Azure.Commands.PowerBI
 
             if (ShouldProcess(capacityName, Resources.ResumingPowerBIEmbeddedCapacity))
             {
-                PSDedicatedCapacity capacity = null;
+                PSPowerBIEmbeddedCapacity capacity = null;
                 if (!PowerBIClient.TestCapacity(resourceGroupName, capacityName, out capacity))
                 {
                     throw new InvalidOperationException(string.Format(Properties.Resources.CapacityDoesNotExist, capacityName));

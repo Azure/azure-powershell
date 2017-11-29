@@ -33,16 +33,17 @@ The Remove-AzureRmPowerBIEmbeddedCapacity cmdlet deletes an instance of PowerBI 
 ### Example 1
 ```
 PS C:\> Remove-AzureRmPowerBIEmbeddedCapacity -Name "testcapacity" -ResourceGroupName "testRG"
+Type                   : Microsoft.PowerBIDedicated/capacities
+Id                     : /subscriptions/78e47976-.../resourceGroups/testRG/providers/Microsoft.PowerBIDedicated/capacities/testcapacity
+ResourceGroup          : testRG
+Name                   : testcapacity
+Location               : West Central US
+State                  : Succeeded
+Administrator          : {admin@microsoft.com}
 Sku                    : A1
 Tier                   : PBIE_Azure
-Administrator          : {{admin@microsoft.com}}
-State                  : Succeeded
-ProvisioningState      : Succeeded
-Id                     : /subscriptions/78e47976-.../resourceGroups/testRG/providers/Microsoft.PowerBIDedicated/capacities/testcapacity
-Name                   : testcapacity
-Type                   : Microsoft.AnalysisServices/servers
-Location               : West US
 Tag                    : {}
+
 ```
 
 This command will remove the capacity named testcapacity in the resourcegroup testRG
@@ -94,7 +95,7 @@ Accept wildcard characters: False
 Input object for Piping
 
 ```yaml
-Type: PSDedicatedCapacity
+Type: PSPowerBIEmbeddedCapacity
 Parameter Sets: ByInputObject
 Aliases: 
 
@@ -157,7 +158,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.PowerBI.Models.PSDedicatedCapacity
+### Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity
 
 ## NOTES
 

@@ -23,6 +23,21 @@ namespace Microsoft.Azure.Commands.PowerBI.Utilities
             out string resourceGroupName,
             out string capacityName)
         {
+            string[] tokens = ParseResourceId(resourceId);
+            resourceGroupName = tokens[3];
+            capacityName = tokens[7];
+        }
+
+        public static void GetResourceGroupName(
+            string resourceId,
+            out string resourceGroupName)
+        {
+            string[] tokens = ParseResourceId(resourceId);
+            resourceGroupName = tokens[3];
+        }
+
+        private static string[] ParseResourceId(string resourceId)
+        {
             if (string.IsNullOrEmpty(resourceId))
             {
                 throw new ArgumentNullException(nameof(resourceId));
@@ -30,14 +45,13 @@ namespace Microsoft.Azure.Commands.PowerBI.Utilities
 
             // ResourceID should be in the following format:
             // /subscriptions/{subid}/resourceGroups/{rg}/providers/Microsoft.PowerBIDedicated/capacities/{capacity}
-            string[] tokens = resourceId.Split(new[] {'/'}, StringSplitOptions.RemoveEmptyEntries);
+            string[] tokens = resourceId.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
             if (tokens.Length != 8)
             {
                 throw new Exception($"ResourceId {resourceId} not in the expected format");
             }
 
-            resourceGroupName = tokens[3];
-            capacityName = tokens[7];
+            return tokens;
         }
     }
 }
