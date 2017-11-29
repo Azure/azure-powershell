@@ -30,7 +30,7 @@ CompanyName = 'Microsoft Corporation'
 Copyright = 'Microsoft Corporation. All rights reserved.'
 
 # Description of the functionality provided by this module
-Description = 'Microsoft Azure PowerShell - Azure Kubernetes Service (AKS) cmdlets'
+Description = 'Microsoft Azure PowerShell - - Azure managed Kubernetes commands'
 
 # Minimum version of the Windows PowerShell engine required by this module
 PowerShellVersion = '3.0'
