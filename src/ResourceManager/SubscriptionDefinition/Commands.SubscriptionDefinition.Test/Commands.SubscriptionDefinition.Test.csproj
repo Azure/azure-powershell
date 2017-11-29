@@ -148,13 +148,13 @@
     <None Include="ScenarioTests\SubscriptionDefinitionTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.SubscriptionDefinition.Test.ScenarioTests.SubscriptionDefinitionTests\TestGetSubscriptionDefinitionByName.json">
+    <None Include="SessionRecords\SubscriptionDefinition.Test.ScenarioTests.SubscriptionDefinitionTests\TestGetSubscriptionDefinitionByName.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.SubscriptionDefinition.Test.ScenarioTests.SubscriptionDefinitionTests\TestListSubscriptionDefinitions.json">
+    <None Include="SessionRecords\SubscriptionDefinition.Test.ScenarioTests.SubscriptionDefinitionTests\TestListSubscriptionDefinitions.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.SubscriptionDefinition.Test.ScenarioTests.SubscriptionDefinitionTests\TestNewSubscriptionDefinition.json">
+    <None Include="SessionRecords\SubscriptionDefinition.Test.ScenarioTests.SubscriptionDefinitionTests\TestNewSubscriptionDefinition.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
