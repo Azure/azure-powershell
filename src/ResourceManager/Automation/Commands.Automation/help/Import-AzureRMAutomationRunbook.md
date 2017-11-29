@@ -23,7 +23,7 @@ Import-AzureRmAutomationRunbook [-Path] <String> [-Description <String>] [-Name 
 ## DESCRIPTION
 The **Import-AzureRmAutomationRunbook** cmdlet imports an Azure Automation runbook. Specify the
 path to a wps_2 script (.ps1 ) file to import for wps_2 and wps_2 Workflow runbooks, or to a
-graphical runbook (.graphrunbook) file for graphical runbooks. The name of the file becomes the
+graphical runbook (.graphrunbook) file for graphical runbooks. (.py) files are required when importing python2 scripts The name of the file becomes the
 name of the runbook. For wps_2 Workflow runbooks, the script must contain a single wps_2 Workflow
 definition that matches the name of the file.
 
@@ -218,7 +218,7 @@ Valid values are:
 - PowerShellWorkflow
 - GraphicalPowerShellWorkflow
 - Graph
-- Python
+- Python2
 
 The value Graph is obsolete.
 It is equivalent to GraphicalPowerShellWorkflow.
