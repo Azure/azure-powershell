@@ -95,6 +95,7 @@ CmdletsToExport =
                'Remove-AzureRmDataFactoryV2Pipeline', 
                'Invoke-AzureRmDataFactoryV2Pipeline',
                'Get-AzureRmDataFactoryV2PipelineRun', 
+               'Stop-AzureRmDataFactoryV2PipelineRun', 
                'Get-AzureRmDataFactoryV2ActivityRun',
                'Get-AzureRmDataFactoryV2IntegrationRuntimeKey',
                'Get-AzureRmDataFactoryV2IntegrationRuntime',

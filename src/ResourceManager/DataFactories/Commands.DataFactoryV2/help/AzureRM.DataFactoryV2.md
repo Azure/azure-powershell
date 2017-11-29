@@ -1,4 +1,4 @@
-﻿---
+---
 Module Name: AzureRM.DataFactoryV2
 Module Guid: e3c0f6bc-fe96-41a0-88f4-5e490a91f05d
 Download Help Link: 
@@ -100,6 +100,9 @@ Starts a trigger in a data factory.
 
 ### [Stop-AzureRmDataFactoryV2IntegrationRuntime](Stop-AzureRmDataFactoryV2IntegrationRuntime.md)
 Stops a managed dedicated integration runtime.
+
+### [Stop-AzureRmDataFactoryV2PipelineRun](Stop-AzureRmDataFactoryV2PipelineRun.md)
+Stops a pieline run in a data factory.
 
 ### [Stop-AzureRmDataFactoryV2Trigger](Stop-AzureRmDataFactoryV2Trigger.md)
 Stops a trigger in a data factory.

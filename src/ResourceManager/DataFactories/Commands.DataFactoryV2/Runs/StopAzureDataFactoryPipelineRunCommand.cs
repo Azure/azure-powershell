@@ -22,32 +22,38 @@ using System;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
-    [Cmdlet(VerbsLifecycle.Stop, Constants.PipelineRun, DefaultParameterSetName = ParameterSetNames.ByFactoryName, SupportsShouldProcess = true)]
-    public class StopAzureDataFactoryPipelineRunCmmand : DataFactoryContextBaseCmdlet
+    [Cmdlet(VerbsLifecycle.Stop, Constants.PipelineRun, DefaultParameterSetName = ParameterSetNames.ByFactoryName, SupportsShouldProcess = true), OutputType(typeof(bool))]
+    public class StopAzureDataFactoryPipelineRunCommand : DataFactoryContextBaseCmdlet
     {
-
         [Parameter(ParameterSetName = ParameterSetNames.ByInputObject, Position = 0, Mandatory = true, ValueFromPipeline = true,
-            HelpMessage = Constants.PipelineRun)]
-        [ValidateNotNull]
-        public PSDataFactory InputObject { get; set; }
-
-        [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.HelpPipelineRunId)]
         [ValidateNotNullOrEmpty]
-        [Alias(Constants.PipelineRun)]
+        public PSPipelineRun InputObject { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
+            HelpMessage = Constants.HelpPipelineRunId)]
+        [Parameter(ParameterSetName = ParameterSetNames.ByFactoryObject, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true,
+            HelpMessage = Constants.HelpPipelineRunId)]
+        [ValidateNotNullOrEmpty]
         public string PipelineRunId { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.HelpDontAskConfirmation)]
         public SwitchParameter Force { get; set; }
 
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
+
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
         {
-            if (ParameterSetName.Equals(ParameterSetNames.ByFactoryObject, StringComparison.OrdinalIgnoreCase))
+            ByFactoryObject(DataFactory);
+            if (ParameterSetName.Equals(ParameterSetNames.ByInputObject, StringComparison.OrdinalIgnoreCase))
             {
                 DataFactoryName = InputObject.DataFactoryName;
                 ResourceGroupName = InputObject.ResourceGroupName;
+                PipelineRunId = InputObject.RunId;
             }
+
             ConfirmAction(
                 Force.IsPresent,
                 string.Format(
@@ -63,7 +69,10 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 PipelineRunId,
                 () => DataFactoryClient.StopPipelineRun(ResourceGroupName, DataFactoryName, PipelineRunId));
 
-            WriteObject(true);
+            if (PassThru)
+            {
+                WriteObject(true);
+            }
         }
     }
 }
