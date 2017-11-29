@@ -30,7 +30,7 @@ CompanyName = 'Microsoft Corporation'
 Copyright = 'Microsoft Corporation. All rights reserved.'
 
 # Description of the functionality provided by this module
-Description = '[PowerShell .Net Core] Microsoft Azure PowerShell - Azure Kubernetes Commands'
+Description = '[PowerShell .Net Core] Microsoft Azure PowerShell - Azure managed Kubernetes commands'
 
 # Minimum version of the Windows PowerShell engine required by this module
 PowerShellVersion = '5.1'
@@ -54,26 +54,25 @@ PowerShellVersion = '5.1'
 RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.10.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = 'netcoreapp2.0\Microsoft.Azure.Management.ResourceManager.dll'
+RequiredAssemblies = @()
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-TypesToProcess = 'netcoreapp2.0\Microsoft.Azure.Commands.ResourceManager.Cmdlets.Types.ps1xml'
+TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = 'netcoreapp2.0\Microsoft.Azure.Commands.Resources.format.ps1xml',
-               'netcoreapp2.0\Microsoft.Azure.Commands.ResourceManager.Cmdlets.format.ps1xml'
+FormatsToProcess = @()
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('netcoreapp2.0\Microsoft.Azure.Commands.Resources.dll', 'netcoreapp2.0\Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll')
+NestedModules = @('netcoreapp2.0\Microsoft.Azure.Commands.Kubernetes.dll')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = @()
+CmdletsToExport = @('Get-AzureRmKubernetes')
 
 # Variables to export from this module
 # VariablesToExport = @()
