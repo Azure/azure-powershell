@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
             public const string GraphicalPowerShellWorkflow = "GraphicalPowerShellWorkflow";
 
-            public const string Python = "Python2";
+            public const string Python2 = "Python2";
         }
 
         public static class SupportedFileExtensions
