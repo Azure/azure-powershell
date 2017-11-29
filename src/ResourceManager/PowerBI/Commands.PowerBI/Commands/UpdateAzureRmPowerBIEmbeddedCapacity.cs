@@ -24,8 +24,8 @@ using Microsoft.Azure.Management.PowerBIDedicated.Models;
 
 namespace Microsoft.Azure.Commands.PowerBI
 {
-    [Cmdlet(VerbsData.Update, "AzureRmPowerBIEmbeddedCapacity", SupportsShouldProcess = true), 
-        OutputType(typeof(PSDedicatedCapacity))]
+    [Cmdlet(VerbsData.Update, "AzureRmPowerBIEmbeddedCapacity", SupportsShouldProcess = true, DefaultParameterSetName = CmdletParametersSet), 
+        OutputType(typeof(PSPowerBIEmbeddedCapacity))]
     public class UpdateAzurePowerBIEmbeddedCapacity : PowerBICmdletBase
     {
         protected const string CmdletParametersSet = "ByNameAndResourceGroup";
@@ -84,21 +84,17 @@ namespace Microsoft.Azure.Commands.PowerBI
             ValueFromPipeline = true,
             HelpMessage = "PowerBI Embedded Capacity object.")]
         [ValidateNotNullOrEmpty]
-        public PSDedicatedCapacity InputObject { get; set; }
+        public PSPowerBIEmbeddedCapacity InputObject { get; set; }
 
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            string capacityName = string.Empty;
+            string capacityName = Name;
             string resourceGroupName = ResourceGroupName;
 
-            if (!string.IsNullOrEmpty(Name))
-            {
-                capacityName = Name;
-            }
-            else if (!string.IsNullOrEmpty(ResourceId))
+            if (!string.IsNullOrEmpty(ResourceId))
             {
                 PowerBIUtils.GetResourceGroupNameAndCapacityName(ResourceId, out resourceGroupName, out capacityName);
             }
@@ -114,7 +110,7 @@ namespace Microsoft.Azure.Commands.PowerBI
 
             if (ShouldProcess(capacityName, Resources.UpdatingPowerBIEmbeddedCapacity))
             {
-                PSDedicatedCapacity currentCapacity = null;
+                PSPowerBIEmbeddedCapacity currentCapacity = null;
                 if (!PowerBIClient.TestCapacity(resourceGroupName, capacityName, out currentCapacity))
                 {
                     throw new InvalidOperationException(string.Format(Properties.Resources.CapacityDoesNotExist, capacityName));
@@ -132,7 +128,7 @@ namespace Microsoft.Azure.Commands.PowerBI
                     Tag = TagsConversionHelper.CreateTagHashtable(currentCapacity.Tag);
                 }
 
-                PSDedicatedCapacity updateCapacity = PowerBIClient.CreateOrUpdateCapacity(resourceGroupName, capacityName, location, Sku, Tag, Administrator, currentCapacity);
+                PSPowerBIEmbeddedCapacity updateCapacity = PowerBIClient.CreateOrUpdateCapacity(resourceGroupName, capacityName, location, Sku, Tag, Administrator, currentCapacity);
 
                 if(PassThru.IsPresent)
                 {

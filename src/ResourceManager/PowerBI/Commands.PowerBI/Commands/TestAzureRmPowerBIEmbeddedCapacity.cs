@@ -30,16 +30,10 @@ namespace Microsoft.Azure.Commands.PowerBI
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Name of resource group under which want to test the capacity.")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
-
         public override void ExecuteCmdlet()
         {
-            PSDedicatedCapacity capacity = null;
-            WriteObject(PowerBIClient.TestCapacity(ResourceGroupName, Name, out capacity));
+            PSPowerBIEmbeddedCapacity capacity = null;
+            WriteObject(PowerBIClient.TestCapacity(string.Empty, Name, out capacity));
         }
     }
 }

@@ -25,16 +25,15 @@ function Test-PowerBIEmbeddedCapacity
 		[array]$capacityGet = Get-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName
 		$capacityGetItem = $capacityGet[0]
 
-		Assert-True {$capacityGetItem.ProvisioningState -like "Succeeded"}
 		Assert-True {$capacityGetItem.State -like "Succeeded"}
-		
 		Assert-AreEqual $capacityName $capacityGetItem.Name
 		Assert-AreEqual $location $capacityGetItem.Location
+		Assert-AreEqual $resourceGroupName $capacityGetItem.ResourceGroup
 		Assert-AreEqual "Microsoft.PowerBIDedicated/capacities" $capacityGetItem.Type
 		Assert-True {$capacityGetItem.Id -like "*$resourceGroupName*"}
 
 		# Test to make sure the capacity does exist
-		Assert-True {Test-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName}
+		Assert-True {Test-AzureRmPowerBIEmbeddedCapacity -Name $capacityName}
 		# Test it without specifying a resource group
 		Assert-True {Test-AzureRmPowerBIEmbeddedCapacity -Name $capacityName}
 		
@@ -97,14 +96,13 @@ function Test-PowerBIEmbeddedCapacity
 		$capacityGetItem = Suspend-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -PassThru
 		# this is to ensure backward compatibility compatibility. The servie side would make change to differenciate state and provisioningState in future
 		Assert-True {$capacityGetItem.State -like "Paused"}
-		Assert-True {$capacityGetItem.ProvisioningState -like "Paused"}
+		Assert-AreEqual $resourceGroupName $capacityGetItem.ResourceGroup
 
 		# Resume PowerBI Embedded capacity
 		$capacityGetItem = Resume-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -PassThru
 		[array]$capacityGet = Get-AzureRmPowerBIEmbeddedCapacity -ResourceId $capacityGetItem.Id
 		$capacityGetItem = $capacityGet[0]
 		Assert-AreEqual $capacityGetItem.Name $capacityGetItem.Name
-		Assert-True {$capacityGetItem.ProvisioningState -like "Succeeded"}
 		Assert-True {$capacityGetItem.State -like "Succeeded"}
 		
 		# Delete PowerBI Embedded capacity
@@ -148,9 +146,7 @@ function Test-PowerBIEmbeddedCapacityScale
 		[array]$capacityGet = Get-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName
 		$capacityGetItem = $capacityGet[0]
 
-		Assert-True {$capacityGetItem.ProvisioningState -like "Succeeded"}
 		Assert-True {$capacityGetItem.State -like "Succeeded"}
-		
 		Assert-AreEqual $capacityName $capacityGetItem.Name
 		Assert-AreEqual $location $capacityGetItem.Location
 		Assert-AreEqual A1 $capacityGetItem.Sku

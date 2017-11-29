@@ -13,43 +13,26 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using Microsoft.Azure.Commands.PowerBI.Utilities;
 using Microsoft.Azure.Management.PowerBIDedicated.Models;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.PowerBI.Models
 {
-    public class PSDedicatedCapacity
+    public class PSPowerBIEmbeddedCapacity
     {
         private readonly DedicatedCapacity _capacity;
 
-        public PSDedicatedCapacity(DedicatedCapacity capacity)
+        public PSPowerBIEmbeddedCapacity(DedicatedCapacity capacity)
         {
             _capacity = capacity;
         }
 
-        public List<string> Administrator
+        public string Type
         {
             get
             {
-                return _capacity.Administration == null
-                    ? new List<string>()
-                    : new List<string>(_capacity.Administration.Members);
-            }
-        }
-         
-        public string State
-        {
-            get
-            {
-                return _capacity.State;
-            }
-        }
-
-        public string ProvisioningState
-        {
-            get
-            {
-                return _capacity.ProvisioningState;
+                return _capacity.Type;
             }
         }
 
@@ -61,19 +44,21 @@ namespace Microsoft.Azure.Commands.PowerBI.Models
             }
         }
 
+        public string ResourceGroup
+        {
+            get
+            {
+                string resourceGroupName = string.Empty;
+                PowerBIUtils.GetResourceGroupName(Id, out resourceGroupName);
+                return resourceGroupName;
+            }
+        }
+
         public string Name
         {
             get
             {
                 return _capacity.Name;
-            }
-        }
-
-        public string Type
-        {
-            get
-            {
-                return _capacity.Type;
             }
         }
 
@@ -85,11 +70,29 @@ namespace Microsoft.Azure.Commands.PowerBI.Models
             }
         }
 
+        public string State
+        {
+            get
+            {
+                return _capacity.State;
+            }
+        }
+
+        public List<string> Administrator
+        {
+            get
+            {
+                return _capacity.Administration == null
+                    ? new List<string>()
+                    : new List<string>(_capacity.Administration.Members);
+            }
+        }
+
         public string Sku
         {
             get
             {
-                return _capacity.Sku.Name;
+                return (_capacity.Sku != null) ? _capacity.Sku.Name : null;
             }
         }
 
@@ -97,7 +100,7 @@ namespace Microsoft.Azure.Commands.PowerBI.Models
         {
             get
             {
-                return _capacity.Sku.Tier;
+                return (_capacity.Sku != null) ? _capacity.Sku.Tier : null;
             }
         }
 

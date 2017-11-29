@@ -18,7 +18,6 @@ Tests the existence of an instance of PowerBI Embedded Capacity
 ```
 Test-AzureRmPowerBIEmbeddedCapacity 
 	[-Name] <String> 
-	[[-ResourceGroupName] <String>] 
 	[<CommonParameters>]
 ```
 
@@ -29,11 +28,11 @@ The Test-AzureRmPowerBIEmbeddedCapacity cmdlet tests the existence of an instanc
 
 ### Example 1
 ```
-PS C:\> Test-AzureRmPowerBIEmbeddedCapacity -Name "testcapacity" -ResourceGroupName "testRG"
+PS C:\> Test-AzureRmPowerBIEmbeddedCapacity -Name "testcapacity"
 True
 ```
 
-This command will test if there is a capacity named testcapacity in the resourcegroup testRG
+This command will test if there is a capacity named testcapacity
 
 ## PARAMETERS
 
@@ -42,24 +41,10 @@ Name of the PowerBI Embedded Capacity
 
 ```yaml
 Type: String
-Parameter Sets: ByNameAndResourceGroup
 Aliases: 
 
 Required: True
 Position: 0
-Default value: None
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Name of the Azure resource group to which the capacity belongs
-
-```yaml
-Type: String
-Parameter Sets: ByNameAndResourceGroup
-Aliases: 
-
-Required: False
 Default value: None
 Accept wildcard characters: False
 ```

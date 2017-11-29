@@ -36,16 +36,17 @@ The Update-AzureRmPowerBIEmbeddedCapacity cmdlet modifies an instance of PowerBI
 ### Example 1
 ```
 PS C:\> Update-AzureRmPowerBIEmbeddedCapacity -Name "testcapacity" -Tag @{"key1" = "value1";"key2" = "value2"} -Administrator "testuser1@contoso.com, testuser2@contoso.com" -PassThru
-Administrator          : {testuser1@contoso.com, testuser2@contoso.com}
-State                  : Succeeded
-ProvisioningState      : Succeeded
-Id                     : /subscriptions/78e47976-.../resourceGroups/testRG/providers/Microsoft.PowerBI/capacities/testcapacity
-Name                   : testcapacity
 Type                   : Microsoft.PowerBIDedicated/capacities
-Location               : West US
+Id                     : /subscriptions/78e47976-.../resourceGroups/testRG/providers/Microsoft.PowerBIDedicated/capacities/testcapacity
+ResourceGroup          : testRG
+Name                   : testcapacity
+Location               : West Central US
+State                  : Succeeded
+Administrator          : {testuser1@contoso.com, testuser2@contoso.com}
 Sku                    : A1
 Tier                   : PBIE_Azure
 Tag                    : {[key1, value1], [key2, value2]}
+
 ```
 
 Modifies the capacity named testcapacity in resourcegroup testgroup to set the tags as key1:value1 and key2:value2 and administrator to testuser1@contoso.com
@@ -137,7 +138,7 @@ Accept wildcard characters: False
 Input object for Piping
 
 ```yaml
-Type: PSDedicatedCapacity
+Type: PSPowerBIEmbeddedCapacity
 Parameter Sets: ByInputObject
 Aliases: 
 
@@ -200,7 +201,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.PowerBI.Models.PSDedicatedCapacity
+### Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity
 
 ## NOTES
 
