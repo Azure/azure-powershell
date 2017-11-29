@@ -125,5 +125,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// The token audience for authorizing DataLake requests
         /// </summary>
         public const string AzureDataLakeServiceEndpointResourceId = "https://datalake.azure.net";
+
+        public const string BatchEndpointResourceId = "https://batch.core.windows.net/";
+        public const string ChinaBatchEndpointResourceId = "https://batch.chinacloudapi.cn/";
+        public const string USGovernmentBatchEndpointResourceId = "https://batch.core.usgovcloudapi.net/";
+        public const string GermanBatchEndpointResourceId = "https://batch.cloudapi.de/";
     }
 }

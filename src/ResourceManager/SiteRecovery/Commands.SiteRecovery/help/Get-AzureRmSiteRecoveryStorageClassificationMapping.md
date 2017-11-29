@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.SiteRecovery.dll-Help.xml
+Module Name: AzureRM
 ms.assetid: D19488C1-9E87-4F1A-94E3-8AFDE6AFC982
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.siterecovery/get-azurermsiterecoverystorageclassificationmapping
 schema: 2.0.0
 ---
 
@@ -14,12 +15,14 @@ Gets a storage classification mapping in Site Recovery.
 
 ### Default (Default)
 ```
-Get-AzureRmSiteRecoveryStorageClassificationMapping [<CommonParameters>]
+Get-AzureRmSiteRecoveryStorageClassificationMapping [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Get-AzureRmSiteRecoveryStorageClassificationMapping -Name <String> [<CommonParameters>]
+Get-AzureRmSiteRecoveryStorageClassificationMapping -Name <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,6 +31,21 @@ The **Get-AzureRmSiteRecoveryStorageClassificationMapping** cmdlet gets a storag
 ## EXAMPLES
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 Specifies the name of the storage classification mapping that this cmdlet gets.

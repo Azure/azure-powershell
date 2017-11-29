@@ -54,6 +54,13 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDatabaseCreateWithZoneRedundancy()
+        {
+            RunPowerShellTest("Test-CreateDatabaseWithZoneRedundancy");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseUpdate()
         {
             RunPowerShellTest("Test-UpdateDatabase");
@@ -61,9 +68,37 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDatabaseUpdateWithZoneRedundancy()
+        {
+            RunPowerShellTest("Test-UpdateDatabaseWithZoneRedundant");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDatabaseUpdateWithZoneRedundancyNotSpecified()
+        {
+            RunPowerShellTest("Test-UpdateDatabaseWithZoneRedundantNotSpecified");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDatabaseRename()
+        {
+            RunPowerShellTest("Test-RenameDatabase");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseGet()
         {
             RunPowerShellTest("Test-GetDatabase");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDatabaseGetWithZoneRedundancy()
+        {
+            RunPowerShellTest("Test-GetDatabaseWithZoneRedundancy");
         }
 
         [Fact]

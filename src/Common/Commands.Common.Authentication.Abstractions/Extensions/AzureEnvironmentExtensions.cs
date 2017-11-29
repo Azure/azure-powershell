@@ -65,6 +65,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 case AzureEnvironment.Endpoint.DataLakeEndpointResourceId:
                     endpoint = new Uri(environment.DataLakeEndpointResourceId);
                     break;
+                case AzureEnvironment.Endpoint.BatchEndpointResourceId:
+                    endpoint = new Uri(environment.BatchEndpointResourceId);
+                    break;
                 default:
                     result = false;
                     break;
@@ -117,6 +120,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                     case AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix:
                         propertyValue = environment.AzureDataLakeStoreFileSystemEndpointSuffix;
                         break;
+                    case AzureEnvironment.Endpoint.DataLakeEndpointResourceId:
+                        propertyValue = environment.DataLakeEndpointResourceId;
+                        break;
                     case AzureEnvironment.Endpoint.ActiveDirectory:
                         propertyValue = environment.ActiveDirectoryAuthority;
                         break;
@@ -137,6 +143,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                         break;
                     case AzureEnvironment.Endpoint.ServiceManagement:
                         propertyValue = environment.ServiceManagementUrl;
+                        break;
+                    case AzureEnvironment.Endpoint.BatchEndpointResourceId:
+                        propertyValue = environment.BatchEndpointResourceId;
                         break;
                     default:
                         break;
@@ -225,6 +234,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                         break;
                     case AzureEnvironment.Endpoint.DataLakeEndpointResourceId:
                         environment.DataLakeEndpointResourceId = propertyValue;
+                        break;
+                    case AzureEnvironment.Endpoint.BatchEndpointResourceId:
+                        environment.BatchEndpointResourceId = propertyValue;
                         break;
                     case AzureEnvironment.Endpoint.ActiveDirectory:
                         environment.ActiveDirectoryAuthority = propertyValue;
@@ -435,10 +447,18 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                     environment.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix =
                          other.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix;
                 }
+                if (other.IsEndpointSet(AzureEnvironment.Endpoint.DataLakeEndpointResourceId))
+                {
+                    environment.DataLakeEndpointResourceId = other.DataLakeEndpointResourceId;
+                }
                 if (other.IsEndpointSet(AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId))
                 {
                     environment.AzureKeyVaultServiceEndpointResourceId =
                          other.AzureKeyVaultServiceEndpointResourceId;
+                }
+                if (other.IsEndpointSet(AzureEnvironment.Endpoint.BatchEndpointResourceId))
+                {
+                    environment.BatchEndpointResourceId = other.BatchEndpointResourceId;
                 }
 
                 environment.VersionProfiles.Clear();
@@ -526,6 +546,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 {
                     environment.AzureKeyVaultServiceEndpointResourceId =
                          other.AzureKeyVaultServiceEndpointResourceId;
+                }
+                if (other.IsEndpointSet(AzureEnvironment.Endpoint.DataLakeEndpointResourceId))
+                {
+                    environment.DataLakeEndpointResourceId = other.DataLakeEndpointResourceId;
                 }
 
                 foreach (var profile in other.VersionProfiles)

@@ -31,6 +31,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using CNM = Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network.Automation
 {
@@ -41,6 +42,7 @@ namespace Microsoft.Azure.Commands.Network.Automation
             Mandatory = false,
             HelpMessage = "The resource group name of the application security group.",
             ValueFromPipelineByPropertyName = true)]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -59,7 +61,7 @@ namespace Microsoft.Azure.Commands.Network.Automation
             if(!string.IsNullOrEmpty(this.Name))
             {
                 var vApplicationSecurityGroup = this.NetworkClient.NetworkManagementClient.ApplicationSecurityGroups.Get(ResourceGroupName, Name);
-                var vApplicationSecurityGroupModel = Mapper.Map<CNM.PSApplicationSecurityGroup>(vApplicationSecurityGroup);
+                var vApplicationSecurityGroupModel = NetworkResourceManagerProfile.Mapper.Map<CNM.PSApplicationSecurityGroup>(vApplicationSecurityGroup);
                 vApplicationSecurityGroupModel.ResourceGroupName = this.ResourceGroupName;
                 vApplicationSecurityGroupModel.Tag = TagsConversionHelper.CreateTagHashtable(vApplicationSecurityGroup.Tags);
                 WriteObject(vApplicationSecurityGroupModel, true);
@@ -81,7 +83,7 @@ namespace Microsoft.Azure.Commands.Network.Automation
                 List<PSApplicationSecurityGroup> psApplicationSecurityGroupList = new List<PSApplicationSecurityGroup>();
                 foreach (var vApplicationSecurityGroup in vApplicationSecurityGroupList)
                 {
-                    var vApplicationSecurityGroupModel = Mapper.Map<CNM.PSApplicationSecurityGroup>(vApplicationSecurityGroup);
+                    var vApplicationSecurityGroupModel = NetworkResourceManagerProfile.Mapper.Map<CNM.PSApplicationSecurityGroup>(vApplicationSecurityGroup);
                     vApplicationSecurityGroupModel.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(vApplicationSecurityGroup.Id);
                     vApplicationSecurityGroupModel.Tag = TagsConversionHelper.CreateTagHashtable(vApplicationSecurityGroup.Tags);
                     psApplicationSecurityGroupList.Add(vApplicationSecurityGroupModel);

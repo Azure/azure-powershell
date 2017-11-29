@@ -108,6 +108,9 @@ namespace Microsoft.Azure.Commands.Dns
 
         public const int TxtRecordChunkSize = 255;
 
+        public const int CaaRecordMaxLength = 1024;
+
+        public const int CaaRecordMinLength = 0;
 
         internal abstract object ToMamlRecord();
 
@@ -193,6 +196,16 @@ namespace Microsoft.Azure.Commands.Dns
                 return new PtrRecord
                 {
                     Ptrdname = mamlRecord.Ptrdname,
+                };
+            }
+            else if (record is Management.Dns.Models.CaaRecord)
+            {
+                var mamlRecord = (Management.Dns.Models.CaaRecord)record;
+                return new CaaRecord
+                {
+                    Flags = (byte) mamlRecord.Flags.GetValueOrDefault(),
+                    Value = mamlRecord.Value,
+                    Tag = mamlRecord.Tag,
                 };
             }
 
@@ -576,7 +589,7 @@ namespace Microsoft.Azure.Commands.Dns
     }
 
     /// <summary>
-    /// Represents a DNS record of type NS that is part of a <see cref="DnsRecordSet"/>.
+    /// Represents a DNS record of type PTR that is part of a <see cref="DnsRecordSet"/>.
     /// </summary>
     public class PtrRecord : DnsRecordBase
     {
@@ -606,4 +619,49 @@ namespace Microsoft.Azure.Commands.Dns
             };
         }
     }
+
+    /// <summary>
+    /// Represents a DNS record of type CAA that is part of a <see cref="DnsRecordSet"/>.
+    /// </summary>
+    public class CaaRecord : DnsRecordBase
+    {
+        /// <summary>
+        /// Gets or sets the flags field for this record.
+        /// </summary>
+        public byte Flags { get; set; }
+
+        /// <summary>
+        /// Gets or sets the property tag for this record.
+        /// </summary>
+        public string Tag { get; set; }
+
+        /// <summary>
+        /// Gets or sets the property value for this record.
+        /// </summary>
+        public string Value { get; set; }
+
+        public override string ToString()
+        {
+            return $"[{Flags},{Tag},{Value}]";
+        }
+
+        public override object Clone()
+        {
+            return new CaaRecord()
+            {
+                Flags = this.Flags,
+                Tag = this.Tag,
+                Value = this.Value
+            };
+        }
+
+        internal override object ToMamlRecord()
+        {
+            return new Management.Dns.Models.CaaRecord(
+                this.Flags,
+                this.Tag,
+                this.Value);
+        }
+    }
+
 }

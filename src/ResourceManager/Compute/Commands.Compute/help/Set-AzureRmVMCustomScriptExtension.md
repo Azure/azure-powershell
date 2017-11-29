@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 ms.assetid: 64AB1BAE-A756-43A8-A40F-10B746EA0946
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/set-azurermvmcustomscriptextension
 schema: 2.0.0
 ---
 
@@ -51,7 +51,7 @@ Specifies arguments that the script extension passes to the script.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -66,7 +66,7 @@ Specifies the name of the Azure storage container where this cmdlet stores the s
 ```yaml
 Type: String
 Parameter Sets: SetCustomScriptExtensionByContainerAndFileNames
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -94,7 +94,7 @@ Accept wildcard characters: False
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -110,7 +110,7 @@ value is case-senstive. File names of files stored in Azure File storage are not
 ```yaml
 Type: String[]
 Parameter Sets: SetCustomScriptExtensionByContainerAndFileNames
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -125,7 +125,7 @@ Specifies the URI of the script file.
 ```yaml
 Type: String[]
 Parameter Sets: SetCustomScriptExtensionByUriLinks
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -143,7 +143,7 @@ If forceUpdateTag is not changed, updates to public or protected settings are st
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -158,7 +158,7 @@ Specifies the location of the virtual machine.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -188,7 +188,7 @@ Specifies the name of the resource group of the virtual machine.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -219,7 +219,7 @@ The value of *Run* might contain secrets or passwords to be passed to the script
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -234,7 +234,7 @@ Specifies the key for the Azure storage container.
 ```yaml
 Type: String
 Parameter Sets: SetCustomScriptExtensionByContainerAndFileNames
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -249,7 +249,7 @@ Specifies the name of the Azure storage account where this cmdlet stores the scr
 ```yaml
 Type: String
 Parameter Sets: SetCustomScriptExtensionByContainerAndFileNames
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -264,7 +264,7 @@ Specifies the storage endpoint suffix.
 ```yaml
 Type: String
 Parameter Sets: SetCustomScriptExtensionByContainerAndFileNames
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named

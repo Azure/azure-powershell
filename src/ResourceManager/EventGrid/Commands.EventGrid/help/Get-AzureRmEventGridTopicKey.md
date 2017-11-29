@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.EventGrid.dll-Help.xml
 Module Name: AzureRM.EventGrid
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.eventgrid/get-azurermeventgridtopickey
 schema: 2.0.0
 ---
 
@@ -14,17 +14,20 @@ Gets the shared access keys used to publish events to an Event Grid topic.
 
 ### TopicNameParameterSet (Default)
 ```
-Get-AzureRmEventGridTopicKey [-ResourceGroupName] <String> [-Name] <String> [<CommonParameters>]
+Get-AzureRmEventGridTopicKey [-ResourceGroupName] <String> [-Name] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### TopicInputObjectParameterSet
 ```
-Get-AzureRmEventGridTopicKey [-InputObject] <PSTopic> [<CommonParameters>]
+Get-AzureRmEventGridTopicKey [-InputObject] <PSTopic> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdEventSubscriptionParameterSet
 ```
-Get-AzureRmEventGridTopicKey [-ResourceId] <String> [<CommonParameters>]
+Get-AzureRmEventGridTopicKey [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,6 +50,21 @@ PS C:\> Get-AzureRmEventGridTopic -ResourceGroup MyResourceGroupName -Name Topic
 Gets the shared access keys of Event Grid topic \`Topic1\` in resource group \`MyResourceGroupName\`.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -InputObject
 EventGrid Topic object.

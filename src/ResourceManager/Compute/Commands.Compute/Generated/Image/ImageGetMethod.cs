@@ -19,7 +19,6 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
@@ -154,7 +153,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     {
         protected override void ProcessRecord()
         {
-            AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
             ExecuteClientAction(() =>
             {
                 string resourceGroupName = this.ResourceGroupName;
@@ -165,7 +163,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     var result = ImagesClient.Get(resourceGroupName, imageName, expand);
                     var psObject = new PSImage();
-                    Mapper.Map<Image, PSImage>(result, psObject);
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<Image, PSImage>(result, psObject);
                     WriteObject(psObject);
                 }
                 else if (!string.IsNullOrEmpty(resourceGroupName))
@@ -185,7 +183,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     var psObject = new List<PSImageList>();
                     foreach (var r in resultList)
                     {
-                        psObject.Add(Mapper.Map<Image, PSImageList>(r));
+                        psObject.Add(ComputeAutomationAutoMapperProfile.Mapper.Map<Image, PSImageList>(r));
                     }
                     WriteObject(psObject, true);
                 }
@@ -206,7 +204,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     var psObject = new List<PSImageList>();
                     foreach (var r in resultList)
                     {
-                        psObject.Add(Mapper.Map<Image, PSImageList>(r));
+                        psObject.Add(ComputeAutomationAutoMapperProfile.Mapper.Map<Image, PSImageList>(r));
                     }
                     WriteObject(psObject, true);
                 }
@@ -220,6 +218,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false)]
         [AllowNull]
+        [ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleter()]
         public string ResourceGroupName { get; set; }
 
         [Parameter(

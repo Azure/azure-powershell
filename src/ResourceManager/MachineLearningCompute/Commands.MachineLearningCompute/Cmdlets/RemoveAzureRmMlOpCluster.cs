@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.MachineLearningCompute.Models;
 using System;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Rest.Azure;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
 {
@@ -25,18 +26,16 @@ namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
     [OutputType(typeof(void))]
     public class RemoveAzureRmMlOpCluster : MachineLearningComputeCmdletBase
     {
-        protected const string CmdletParametersParameterSet =
-            "Remove an operationalization cluster from cmdlet input parameters.";
+        protected const string CmdletParametersParameterSet = "RemoveByNameAndResourceGroup";
 
-        protected const string ObjectParameterSet =
-            "Remove an operationalization cluster from an OperationalizationCluster instance definition.";
+        protected const string ObjectParameterSet = "RemoveByInputObject";
 
-        protected const string ResourceIdParameterSet =
-            "Remove an operationalization cluster from an Azure resouce id.";
+        protected const string ResourceIdParameterSet = "RemoveByResourceId";
 
         [Parameter(ParameterSetName = CmdletParametersParameterSet,
             Mandatory = true, 
             HelpMessage = ResourceGroupParameterHelpMessage)]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

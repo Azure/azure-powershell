@@ -16,6 +16,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.ContainerInstance.Models;
 using Microsoft.Azure.Management.ContainerInstance;
 using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.ContainerInstance
 {
@@ -35,6 +36,7 @@ namespace Microsoft.Azure.Commands.ContainerInstance
             Mandatory = true,
             ParameterSetName = GetContainerInstanceLogByNamesParamSet,
             HelpMessage = "The resource group name.")]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -73,7 +75,7 @@ namespace Microsoft.Azure.Commands.ContainerInstance
         [ValidateNotNullOrEmpty]
         public int? Tail { get; set; }
 
-        protected override void ExecuteCmdletInternal()
+        public override void ExecuteCmdlet()
         {
             var resourceGroupName = this.InputContainerGroup?.ResourceGroupName ?? this.ResourceGroupName;
             var containerGroupName = this.InputContainerGroup?.Name ?? this.ContainerGroupName;

@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Network
             ApplicationGatewayChildResourceHelper.NormalizeChildResourcesId(this.ApplicationGateway);
 
             // Map to the sdk object
-            var appGwModel = Mapper.Map<MNM.ApplicationGateway>(this.ApplicationGateway);
+            var appGwModel = NetworkResourceManagerProfile.Mapper.Map<MNM.ApplicationGateway>(this.ApplicationGateway);
             appGwModel.Tags = TagsConversionHelper.CreateTagDictionary(this.ApplicationGateway.Tag, validate: true);
 
             // Execute the Create VirtualNetwork call

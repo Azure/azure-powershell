@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.MachineLearningCompute.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using Microsoft.Rest.Azure;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
 {
@@ -27,11 +28,9 @@ namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
     [OutputType(typeof(PSOperationalizationCluster), typeof(List<PSOperationalizationCluster>))]
     public class GetAzureRmMlOpCluster : MachineLearningComputeCmdletBase
     {
-        protected const string GetByNameParameterSet =
-            "Get an operationalization cluster by its name.";
+        protected const string GetByNameParameterSet = "GetByName";
 
-        protected const string GetByResourceGroupOrSubscriptionParametersParameterSet =
-            "Get operationalization clusters by resource group or subscription.";
+        protected const string GetByResourceGroupOrSubscriptionParametersParameterSet = "GetByResourceGroup";
 
         [Parameter(ParameterSetName = GetByNameParameterSet,
             Mandatory = true, 
@@ -39,6 +38,7 @@ namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
         [Parameter(ParameterSetName = GetByResourceGroupOrSubscriptionParametersParameterSet,
             Mandatory = false, 
             HelpMessage = ResourceGroupParameterHelpMessage)]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
