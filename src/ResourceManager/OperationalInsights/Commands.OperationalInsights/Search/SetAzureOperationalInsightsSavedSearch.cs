@@ -15,6 +15,7 @@
 using System.Collections;
 using System.Management.Automation;
 using Microsoft.Azure.Management.OperationalInsights.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
@@ -23,6 +24,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

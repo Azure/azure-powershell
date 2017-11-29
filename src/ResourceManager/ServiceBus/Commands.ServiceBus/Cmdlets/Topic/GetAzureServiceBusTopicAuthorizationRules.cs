@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ServiceBus.Models;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,6 +34,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Topic
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = "The name of the resource group")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroup { get; set; }
 
