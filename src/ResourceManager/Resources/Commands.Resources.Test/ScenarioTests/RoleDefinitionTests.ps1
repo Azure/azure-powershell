@@ -35,14 +35,14 @@ function Test-RoleDefinitionCreateTests
 	# Basic positive case - read from object
 	$roleDef = Get-AzureRmRoleDefinition -Name "Reader"
 	$roleDef.Id = $null
-	$roleDef.Name = "Custom Reader"
+	$roleDef.Name = "New Custom Reader"
 	$roleDef.Actions.Add("Microsoft.ClassicCompute/virtualMachines/restart/action")
 	$roleDef.Description = "Read, monitor and restart virtual machines"
     $roleDef.AssignableScopes[0] = "/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f"
 
     [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleDefinitionNames.Enqueue("032F61D2-ED09-40C9-8657-26A273DA7BAE")
 	New-AzureRmRoleDefinition -Role $roleDef
-	$addedRoleDef = Get-AzureRmRoleDefinition -Name "Custom Reader"
+	$addedRoleDef = Get-AzureRmRoleDefinition -Name "New Custom Reader"
 
 	Assert-NotNull $addedRoleDef.Actions
 	Assert-AreEqual $roleDef.Description $addedRoleDef.Description
@@ -292,7 +292,7 @@ function Test-RdValidateInputParameters ($cmdName)
     Assert-Throws { &$cmdName -Scope $scope -Id D46245F8-7E18-4499-8E1F-784A6DA5BE25} $invalidScope
     
     $scope = "/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups/"
-    $invalidScope = "Scope '/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups/' should not have any empty part."
+    $invalidScope = "Scope '/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups' should have even number of parts."
     Assert-Throws { &$cmdName -Scope $scope -Id D46245F8-7E18-4499-8E1F-784A6DA5BE25} $invalidScope
     
     $scope = "/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups/groupname/Should be 'Providers'/any provider name"
@@ -331,7 +331,7 @@ function Test-RdValidateInputParameters2 ($cmdName)
     Assert-Throws { &$cmdName -Role $roleDef } $invalidScope
     
     $scope = "/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups/"
-    $invalidScope = "Scope '/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups/' should not have any empty part."
+    $invalidScope = "Scope '/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups' should have even number of parts."
     $roleDef.AssignableScopes[0] = $scope;
     Assert-Throws { &$cmdName -Role $roleDef } $invalidScope
     
