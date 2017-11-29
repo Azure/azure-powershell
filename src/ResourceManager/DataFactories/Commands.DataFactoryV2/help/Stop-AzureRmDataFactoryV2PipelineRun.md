@@ -1,53 +1,70 @@
 ---
 external help file: Microsoft.Azure.Commands.DataFactoryV2.dll-Help.xml
-Module Name: AzureRM.DataFactoryV2
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/remove-azurermdatafactoryv2trigger
+online version: 
 schema: 2.0.0
 ---
 
-# Remove-AzureRmDataFactoryV2Trigger
+# Stop-AzureRmDataFactoryV2PipelineRun
 
 ## SYNOPSIS
-Removes a trigger from a data factory.
+Stops a pieline run in a data factory.
 
 ## SYNTAX
 
 ### ByFactoryName (Default)
 ```
-Remove-AzureRmDataFactoryV2Trigger [-Name] <String> [-ResourceGroupName] <String> [-DataFactoryName] <String>
- [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Stop-AzureRmDataFactoryV2PipelineRun [-PipelineRunId] <String> [-Force] [-PassThru]
+ [-ResourceGroupName] <String> [-DataFactoryName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Remove-AzureRmDataFactoryV2Trigger [-InputObject] <PSTrigger> [-Force]
+Stop-AzureRmDataFactoryV2PipelineRun [-InputObject] <PSPipelineRun> [-Force] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ByResourceId
+### ByFactoryObject
 ```
-Remove-AzureRmDataFactoryV2Trigger [-ResourceId] <String> [-Force] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Stop-AzureRmDataFactoryV2PipelineRun [-PipelineRunId] <String> [-Force] [-PassThru]
+ [-DataFactory] <PSDataFactory> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmDataFactoryV2Trigger** cmdlet removes a trigger from a data factory. If the _Force_ parameter is specified, the cmdlet doesn't prompt before removing the trigger.
+The **Stop-AzureRmDataFactoryV2PipelineRun** cmdlet stops a pipeline run in a data factory specified with the pieline run ID.
 
 ## EXAMPLES
 
-### Example 1: Remove a trigger
+### Example 1
 ```
-Remove-AzureRmDataFactoryV2Trigger -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "ScheduledTrigger"
+PS C:\> Stop-AzureRmDataFactoryV2PipelineRun -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -PipelineRunId b9730a13-aa12-4926-a8b3-8e3a974ab0bd
 
 Confirm
-Are you sure you want to remove trigger 'ScheduledTrigger' in data factory 'TestFactory'?
+Are you sure you want to stop pipeline run 'b9730a13-aa12-4926-a8b3-8e3a974ab0bd' in data factory 'WikiADF'?
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
-True
+
+true
 ```
 
-Remove a trigger called "ScheduledTrigger" from the data factory "WikiADF".
+This command stops the pipelin run with id b9730a13-aa12-4926-a8b3-8e3a974ab0bd in the factory WikiADF.
 
 ## PARAMETERS
+
+### -DataFactory
+The data factory object.
+
+```yaml
+Type: PSDataFactory
+Parameter Sets: ByFactoryObject
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
 
 ### -DataFactoryName
 The data factory name.
@@ -80,7 +97,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Runs the cmdlet without prompting for confirmation.
+Don't ask for confirmation.
 
 ```yaml
 Type: SwitchParameter
@@ -95,10 +112,10 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-The Trigger object to remove.
+The Run ID of the pipeline.
 
 ```yaml
-Type: PSTrigger
+Type: PSPipelineRun
 Parameter Sets: ByInputObject
 Aliases: 
 
@@ -109,18 +126,33 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-The trigger name.
+### -PassThru
+{{Fill PassThru Description}}
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PipelineRunId
+The Run ID of the pipeline.
 
 ```yaml
 Type: String
-Parameter Sets: ByFactoryName
-Aliases: TriggerName
+Parameter Sets: ByFactoryName, ByFactoryObject
+Aliases: 
 
 Required: True
 Position: 2
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -130,21 +162,6 @@ The resource group name.
 ```yaml
 Type: String
 Parameter Sets: ByFactoryName
-Aliases: 
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceId
-The Azure resource ID.
-
-```yaml
-Type: String
-Parameter Sets: ByResourceId
 Aliases: 
 
 Required: True
@@ -170,7 +187,8 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what happens if the cmdlet runs, but doesn't run the cmdlet.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: SwitchParameter
@@ -189,22 +207,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.DataFactoryV2.Models.PSTrigger
+### Microsoft.Azure.Commands.DataFactoryV2.Models.PSPipelineRun
 System.String
+Microsoft.Azure.Commands.DataFactoryV2.Models.PSDataFactory
 
 ## OUTPUTS
 
-### System.Object
+### System.Boolean
 
 ## NOTES
 
 ## RELATED LINKS
-
-[Get-AzureRmDataFactoryV2Trigger]()
-
-[Set-AzureRmDataFactoryV2Trigger]()
-
-[Start-AzureRmDataFactoryV2Trigger]()
-
-[Stop-AzureRmDataFactoryV2Trigger]()
 

@@ -57,3 +57,29 @@ function Test-Run
         CleanUp $rgname $dfname
     }
 }
+
+<#
+.SYNOPSIS
+Negative test for cancel pipeline run
+#>
+function Test-CancelRunNegative
+{
+    $dfname = Get-DataFactoryName
+    $rgname = Get-ResourceGroupName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $dflocation = Get-ProviderLocation DataFactoryManagement
+
+    New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Force
+
+    try
+    {
+        Set-AzureRmDataFactoryV2 -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
+        
+        $Run = "someGuid"
+        Assert-ThrowsContains { Stop-AzureRmDataFactoryV2PipelineRun -ResourceGroupName $rgname -DataFactoryName $dfname -PipelineRunId $Run -Force } "Pipeline run does not exist" 
+    }
+    finally
+    {
+        CleanUp $rgname $dfname
+    }
+}
