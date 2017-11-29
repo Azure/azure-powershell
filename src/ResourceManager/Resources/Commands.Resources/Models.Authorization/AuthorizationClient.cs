@@ -550,6 +550,9 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 return;
             }
 
+            // Allow scopes ending with "/" to keep it consistent with REST and CLI
+            scope = scope.TrimEnd('/');
+
             var parts = scope.Substring(1).Split('/');   // Skip the leading '/'
 
             if (parts.Contains(string.Empty))

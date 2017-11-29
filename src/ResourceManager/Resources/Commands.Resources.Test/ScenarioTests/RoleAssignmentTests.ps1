@@ -71,7 +71,7 @@ function Test-RaDeleteByPSRoleAssignment
     Assert-AreEqual 1 $users.Count "There should be at least one user to run the test."
     
     # Test
-    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("fa1a4d3b-2cca-406b-8956-6b6b32377641")
+    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("f747531e-da33-43b9-b726-04675abf1939")
     $newAssignment = New-AzureRmRoleAssignment `
                         -ObjectId $users[0].Id.Guid `
                         -RoleDefinitionName $definitionName `
@@ -95,6 +95,7 @@ function Test-RaByScope
     $subscription = Get-AzureRmSubscription
     $resourceGroups = Get-AzureRmResourceGroup | Select-Object -Last 1 -Wait
     $scope = '/subscriptions/'+ $subscription[0].Id +'/resourceGroups/' + $resourceGroups[0].ResourceGroupName
+    $assignmentScope = $scope +"/"
     Assert-AreEqual 1 $users.Count "There should be at least one user to run the test."
     
     # Test
@@ -102,7 +103,7 @@ function Test-RaByScope
     $newAssignment = New-AzureRmRoleAssignment `
                         -ObjectId $users[0].Id.Guid `
                         -RoleDefinitionName $definitionName `
-                        -Scope $scope 
+                        -Scope $assignmentScope 
     
     # cleanup 
     DeleteRoleAssignment $newAssignment
@@ -208,7 +209,7 @@ function Test-RaValidateInputParameters ($cmdName)
     Assert-Throws { &$cmdName -Scope $scope -ObjectId $groups[0].Id.Guid -RoleDefinitionName $definitionName } $invalidScope
     
     $scope = "/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups/"
-    $invalidScope = "Scope '/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups/' should not have any empty part."
+    $invalidScope = "Scope '/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups' should have even number of parts."
     Assert-Throws { &$cmdName -Scope $scope -ObjectId $groups[0].Id.Guid -RoleDefinitionName $definitionName } $invalidScope
     
     $scope = "/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups/groupname/Should be 'Providers'/any provider name"
@@ -220,7 +221,7 @@ function Test-RaValidateInputParameters ($cmdName)
     Assert-Throws { &$cmdName -Scope $scope -ObjectId $groups[0].Id.Guid -RoleDefinitionName $definitionName } $invalidScope
     
     # Check if ResourceType is valid
-    Assert-AreEqual $resource.ResourceType "Microsoft.ServiceBus/namespaces"
+    Assert-AreEqual $resource.ResourceType "Microsoft.Web/sites"
     $subscription = Get-AzureRmSubscription | Select-Object -Last 1 -Wait
     # Below invalid resource type should not return 'Not supported api version'.
     $resource.ResourceType = "Microsoft.KeyVault/"
@@ -326,7 +327,7 @@ function Test-RaDeletionByScope
     Assert-AreEqual 1 $users.Count "There should be at least one user to run the test."
     
     # Test
-    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("fa1a4d3b-2cca-406b-8956-6b6b32377641")
+    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("f747531e-da33-43b9-b726-04675abf1939")
     $newAssignment = New-AzureRmRoleAssignment `
                         -ObjectId $users[0].Id.Guid `
                         -RoleDefinitionName $definitionName `
@@ -360,7 +361,7 @@ function Test-RaDeletionByScopeAtRootScope
     Assert-AreEqual 1 $users.Count "There should be at least one user to run the test."
     
     # Test
-    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("fa1a4d3b-2cca-406b-8956-6b6b32377641")
+    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("f747531e-da33-43b9-b726-04675abf1939")
     $newAssignment = New-AzureRmRoleAssignment `
                         -ObjectId $users[0].Id.Guid `
                         -RoleDefinitionName $definitionName `
