@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fixed bug - Make vault credential cmdlet test compulsory for Check-In.
+* Improvement - made tests self-sustaining.
 
 ## Version 4.0.1
 * Fixed assembly loading issue that caused some cmdlets to fail when executing
