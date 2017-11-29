@@ -30,7 +30,6 @@ namespace Microsoft.Azure.Commands.SubscriptionDefinition.Cmdlets
         public string Name { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "Offer type of the subscription definition.")]
-        [ArgumentCompleter(typeof(OfferTypeCompleter))]
         public string OfferType { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Display name of the subscription.")]
@@ -43,19 +42,6 @@ namespace Microsoft.Azure.Commands.SubscriptionDefinition.Cmdlets
                 this.WriteSubscriptionDefinitionObject(this.SubscriptionDefinitionsClient.SubscriptionDefinitions.Create(this.Name, new Microsoft.Azure.Management.ResourceManager.Models.SubscriptionDefinition(
                     offerType: this.OfferType,
                     subscriptionDisplayName: this.SubscriptionDisplayName ?? this.Name)));
-            }
-        }
-
-        private class OfferTypeCompleter : IArgumentCompleter
-        {
-            private static readonly string[] KnownOfferTypes = { "MS-AZR-0017P", "MS-AZR-0148P" };
-
-            public IEnumerable<CompletionResult> CompleteArgument(string commandName, string parameterName, string wordToComplete, CommandAst commandAst, IDictionary fakeBoundParameters)
-            {
-                var pattern = new WildcardPattern(wordToComplete + "*", WildcardOptions.IgnoreCase);
-                return KnownOfferTypes
-                    .Where(pattern.IsMatch)
-                    .Select(s => new CompletionResult(s));
             }
         }
     }
