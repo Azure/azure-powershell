@@ -14,19 +14,20 @@
 
 using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.Azure.Commands.SubscriptionDefinition.Test.ScenarioTests.ScenarioTest;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
-namespace Microsoft.Azure.Commands.SubscriptionDefinition.Test.ScenarioTests
+namespace SubscriptionDefinition.Test.ScenarioTests
 {
     public class SubscriptionDefinitionTests
     {
-        private ServiceManagemenet.Common.Models.XunitTracingInterceptor _logger;
+        private XunitTracingInterceptor _logger;
 
         public SubscriptionDefinitionTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            _logger = new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
             TestExecutionHelpers.SetUpSessionAndProfile();
         }
         
