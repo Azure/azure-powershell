@@ -19,6 +19,19 @@
 -->
 ## Current Release
 
+## Version 4.0.1
+* Fixed assembly loading issue that caused some cmdlets to fail when executing
+
+## Version 4.0.0
+* Added cmdlets to perform instant file recovery.
+    - Get-AzureRmRecoveryServicesBackupRPMountScript
+    - Disable-AzureRmRecoveryServicesBackupRPMountScript
+* Updated RecoveryServices.Backup SDK version to the latest
+* Updated tests for the Azure VM workload so that, all setups needed for test runs are done by the tests themselves.
+* Fixes https://github.com/Azure/azure-powershell/issues/3164
+* Add support for online help
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
+
 ## Version 3.4.1
 
 ## Version 3.4.0

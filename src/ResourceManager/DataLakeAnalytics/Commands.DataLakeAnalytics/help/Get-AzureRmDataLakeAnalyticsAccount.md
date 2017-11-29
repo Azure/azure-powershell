@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.DataLakeAnalytics.dll-Help.xml
+Module Name: AzureRM.DataLakeAnalytics
 ms.assetid: 4EA01047-021C-4FA5-82F0-5102BA114BC2
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datalakeanalytics/get-azurermdatalakeanalyticsaccount
 schema: 2.0.0
 ---
 
@@ -12,19 +13,21 @@ Gets information about a Data Lake Analytics account.
 
 ## SYNTAX
 
-### All In Subscription (Default)
+### GetAllInSubscription (Default)
 ```
-Get-AzureRmDataLakeAnalyticsAccount [<CommonParameters>]
-```
-
-### All In Resource Group
-```
-Get-AzureRmDataLakeAnalyticsAccount [-ResourceGroupName] <String> [<CommonParameters>]
+Get-AzureRmDataLakeAnalyticsAccount [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Specific Account
+### GetByResourceGroup
 ```
-Get-AzureRmDataLakeAnalyticsAccount [[-ResourceGroupName] <String>] [-Name] <String> [<CommonParameters>]
+Get-AzureRmDataLakeAnalyticsAccount [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### GetBySpecificAccount
+```
+Get-AzureRmDataLakeAnalyticsAccount [[-ResourceGroupName] <String>] [-Name] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,12 +44,27 @@ This command gets information about the account named ContosoAdlAccount.
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of the Data Lake Analytics account.
 
 ```yaml
 Type: String
-Parameter Sets: Specific Account
+Parameter Sets: GetBySpecificAccount
 Aliases: 
 
 Required: True
@@ -61,7 +79,7 @@ Specifies the resource group name of the Data Lake Analytics account.
 
 ```yaml
 Type: String
-Parameter Sets: All In Resource Group
+Parameter Sets: GetByResourceGroup
 Aliases: 
 
 Required: True
@@ -73,7 +91,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: String
-Parameter Sets: Specific Account
+Parameter Sets: GetBySpecificAccount
 Aliases: 
 
 Required: False
@@ -93,7 +111,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### PSDataLakeAnalyticsAccount
 The specified account details.
 
-### List<PSDataLakeAnalyticsAccount>
+### List<PSDataLakeAnalyticsAccountBasic>
 The list of accounts in the specified resource group or subscription.
 
 ## NOTES

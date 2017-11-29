@@ -38,7 +38,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                     null,
                     this.CommandRuntime.ToString(),
                     () => this.ComputeClient.VirtualMachineDisks.GetDisk(this.DiskName),
-                    (s, response) => this.ContextFactory<VirtualMachineDiskGetResponse, DiskContext>(response, s));
+                    (s, response) => this.ContextFactory(response, s,
+                                            ServiceManagementProfile.Mapper.Map<VirtualMachineDiskGetResponse, DiskContext>,
+                                            ServiceManagementProfile.Mapper.Map));
             }
             else
             {
@@ -46,7 +48,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                     null,
                     this.CommandRuntime.ToString(),
                     () => this.ComputeClient.VirtualMachineDisks.ListDisks(),
-                    (s, response) => response.Disks.Select(disk => this.ContextFactory<VirtualMachineDiskListResponse.VirtualMachineDisk, DiskContext>(disk, s)));
+                    (s, response) => response.Disks
+                                        .Select(disk => this.ContextFactory(disk, s,
+                                                                ServiceManagementProfile.Mapper.Map<VirtualMachineDiskListResponse.VirtualMachineDisk, DiskContext>,
+                                                                ServiceManagementProfile.Mapper.Map)));
             }
         }
     }

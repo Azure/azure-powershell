@@ -31,6 +31,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using CNM = Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network.Automation
 {
@@ -47,6 +48,7 @@ namespace Microsoft.Azure.Commands.Network.Automation
             HelpMessage = "The resource group name of route table.",
             ParameterSetName = "NoExpand",
             ValueFromPipelineByPropertyName = true)]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -78,7 +80,7 @@ namespace Microsoft.Azure.Commands.Network.Automation
             if(!string.IsNullOrEmpty(this.Name))
             {
                 var vRouteTable = this.NetworkClient.NetworkManagementClient.RouteTables.Get(ResourceGroupName, Name, ExpandResource);
-                var vRouteTableModel = Mapper.Map<CNM.PSRouteTable>(vRouteTable);
+                var vRouteTableModel = NetworkResourceManagerProfile.Mapper.Map<CNM.PSRouteTable>(vRouteTable);
                 vRouteTableModel.ResourceGroupName = this.ResourceGroupName;
                 vRouteTableModel.Tag = TagsConversionHelper.CreateTagHashtable(vRouteTable.Tags);
                 WriteObject(vRouteTableModel, true);
@@ -100,7 +102,7 @@ namespace Microsoft.Azure.Commands.Network.Automation
                 List<PSRouteTable> psRouteTableList = new List<PSRouteTable>();
                 foreach (var vRouteTable in vRouteTableList)
                 {
-                    var vRouteTableModel = Mapper.Map<CNM.PSRouteTable>(vRouteTable);
+                    var vRouteTableModel = NetworkResourceManagerProfile.Mapper.Map<CNM.PSRouteTable>(vRouteTable);
                     vRouteTableModel.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(vRouteTable.Id);
                     vRouteTableModel.Tag = TagsConversionHelper.CreateTagHashtable(vRouteTable.Tags);
                     psRouteTableList.Add(vRouteTableModel);

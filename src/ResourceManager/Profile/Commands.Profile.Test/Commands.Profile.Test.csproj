@@ -64,6 +64,10 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.Azure.Management.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ResourceManager.1.6.0-preview\lib\net452\Microsoft.Azure.Management.ResourceManager.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Azure.Test.Framework">
       <HintPath>..\..\..\packages\Microsoft.Azure.Test.Framework.1.0.6179.26854-prerelease\lib\net45\Microsoft.Azure.Test.Framework.dll</HintPath>
       <Private>True</Private>
@@ -183,11 +187,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArgumentCompleterTests.cs" />
     <Compile Include="AutosaveTests.cs" />
     <Compile Include="AzureRmProfileTests.cs" />
     <Compile Include="ClientFactoryTests.cs" />
     <Compile Include="CommonDataCmdletTests.cs" />
     <Compile Include="ContextModelTests.cs" />
+    <Compile Include="DefaultCmdletTests.cs" />
     <Compile Include="EnvironmentCmdletTests.cs" />
     <Compile Include="ErrorResolutionTests.cs" />
     <Compile Include="LocationCompleterUnitTests.cs" />
@@ -198,6 +204,7 @@
     <Compile Include="ProfileController.cs" />
     <Compile Include="ProtectedFileProviderTests.cs" />
     <Compile Include="PSSerializationTests.cs" />
+    <Compile Include="ResourceGroupCompleterUnitTests.cs" />
     <Compile Include="RPRegistrationDelegatingHandlerTests.cs" />
     <Compile Include="SessionInitializationTests.cs" />
     <Compile Include="SubscriptionCmdletTests.cs" />
@@ -214,12 +221,29 @@
     <Content Include="SubscriptionCmdletTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="DefaultCmdletTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="App.config">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="ArgumentCompleterTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="MSSharedLibKey.snk" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Profile.Test.ArgumentCompleterTests\TestLocationCompleter.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Profile.Test.ArgumentCompleterTests\TestResourceGroupCompleter.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Profile.Test.DefaultCmdletTests\DefaultResourceGroup.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Profile.Test.ProfileModuleTests\WarningOnIncompatibleVersions.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

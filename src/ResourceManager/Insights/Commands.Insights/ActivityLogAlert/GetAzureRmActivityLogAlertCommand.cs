@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Insights.OutputClasses;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Monitor.Management;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,8 +27,8 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
     [Cmdlet(VerbsCommon.Get, "AzureRmActivityLogAlert"), OutputType(typeof(List<PSActivityLogAlertResource>))]
     public class GetAzureRmActivityLogAlertCommand : ManagementCmdletBase
     {
-        internal const string GetActivityLogAlertDefaultParamGroup = "Default parameters for get an activity log alert";
-        internal const string GetActivityLogAlertHelperParamGroup = "Parameters to make sure the resource group is given when the name is given";
+        internal const string GetActivityLogAlertDefaultParamGroup = "GetByNameAndResourceGroup";
+        internal const string GetActivityLogAlertHelperParamGroup = "GetByResourceGroup";
 
         #region Cmdlet parameters
 
@@ -36,6 +37,7 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
         /// </summary>
         [Parameter(ParameterSetName = GetActivityLogAlertDefaultParamGroup, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
         [Parameter(ParameterSetName = GetActivityLogAlertHelperParamGroup, Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

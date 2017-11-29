@@ -96,6 +96,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 "Terminate the existing iCSCI connection for file folder restore";
             public const string KeyFileDownloadLocation =
                 "Location where the key file should be downloaded in the case of encrypted VMs.";
+            public const string FileDownloadLocation =
+                "Location where the file should be downloaded in the case of file recovery. If -Path is not provided, the script file will be downloaded in the current directory.";
         }
 
         internal static class RestoreDisk

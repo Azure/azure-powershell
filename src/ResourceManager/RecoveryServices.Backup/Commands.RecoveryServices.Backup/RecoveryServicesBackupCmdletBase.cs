@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
             WriteDebug("Client Created successfully");
 
-            Logger.Instance = new Logger(WriteWarning, WriteDebug, WriteVerbose, ThrowTerminatingError);
+            Logger.Instance = new Logger(WriteWarning, WriteDebug, WriteVerbose, WriteError, ThrowTerminatingError);
         }
 
         /// <summary>
@@ -79,11 +79,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// Catches and logs any exception occuring during the execution.
         /// </summary>
         /// <param name="action">Delegate representing the cmdlet processing block</param>
-        protected void ExecutionBlock(Action action)
+        protected void ExecutionBlock(Action action, bool shouldProcess = true)
         {
             try
             {
-                action.Invoke();
+                if (shouldProcess)
+                {
+                    action.Invoke();
+                }
             }
             catch (Exception exception)
             {

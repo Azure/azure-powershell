@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ServiceBus.dll-Help.xml
-online version: 
+Module Name: AzureRM
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicebus/set-azurermservicebusqueue
 schema: 2.0.0
 ---
 
@@ -12,8 +13,9 @@ Updates the description of a Service Bus queue in the specified Service Bus name
 ## SYNTAX
 
 ```
-Set-AzureRmServiceBusQueue [-ResourceGroup] <String> [-NamespaceName] <String> [-QueueName] <String>
- [-QueueObj] <QueueAttributes> [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzureRmServiceBusQueue [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
+ [-InputObject] <QueueAttributes> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,43 +37,28 @@ Updates the specified queue with a new description in the specified namespace. T
 
 ## PARAMETERS
 
-### -NamespaceName
-The Service Bus namespace name.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: String
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: 
+Aliases: AzureRmContext, AzureCredential
 
-Required: True
-Position: 1
+Required: False
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -QueueName
-The Service Bus queue name.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -QueueObj
-The Service Bus queue definition.
+### -InputObject
+ServiceBus definition.
 
 ```yaml
 Type: QueueAttributes
 Parameter Sets: (All)
-Aliases: 
+Aliases: QueueObj
 
 Required: True
 Position: 3
@@ -80,13 +67,43 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroup
-The name of the resource group.
+### -Name
+Queue Name.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: QueueName
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Namespace
+Namespace Name.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: NamespaceName
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The name of the resource group
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: ResourceGroup
 
 Required: True
 Position: 0
@@ -147,19 +164,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.Commands.ServiceBus.Models.QueueAttributes
 Name                                : SB-Queue_exampl1
-Location                            : West US
 LockDuration                        : 
 AccessedAt                          : 1/1/0001 12:00:00 AM
 AutoDeleteOnIdle                    : 10675199.02:48:05.4775807
-EntityAvailabilityStatus            : 
 CreatedAt                           : 1/20/2017 2:51:34 AM
 DefaultMessageTimeToLive            : 10675199.02:48:05.4775807
 DuplicateDetectionHistoryTimeWindow : 
-EnableBatchedOperations             : True
 DeadLetteringOnMessageExpiration    : False
 EnableExpress                       : False
 EnablePartitioning                  : True
-IsAnonymousAccessible               : False
 MaxDeliveryCount                    : 
 MaxSizeInMegabytes                  : 16384
 MessageCount                        : 
@@ -168,7 +181,6 @@ RequiresDuplicateDetection          : False
 RequiresSession                     : False
 SizeInBytes                         : 
 Status                              : Active
-SupportOrdering                     : False
 UpdatedAt                           : 1/20/2017 6:16:18 PM
 
 ## NOTES

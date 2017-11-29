@@ -15,6 +15,7 @@
 using System.Net;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
 {
@@ -24,23 +25,24 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
     [Cmdlet(VerbsCommon.Remove, "AzureRmActivityLogAlert", SupportsShouldProcess = true), OutputType(typeof(AzureOperationResponse))]
     public class RemoveAzureRmActivityLogAlertCommand : ManagementCmdletBase
     {
-        internal const string RemoveActivityLogAlertDeafultParamGroup = "Default parameters for remove an activity log alert";
-        internal const string RemoveActivityLogAlertFromPipeParamGroup = "Parameters to remove an activity log alerts taking value from the pipe";
-        internal const string RemoveActivityLogAlertFromResourceIdParamGroup = "Parameters to remove an activity log alerts taking the value of ResourceId from the pipe";
+        internal const string RemoveActivityLogAlertDefaultParamGroup = "RemoveByNameAndResourceGroup";
+        internal const string RemoveActivityLogAlertFromPipeParamGroup = "RemoveByInputObject";
+        internal const string RemoveActivityLogAlertFromResourceIdParamGroup = "RemoveByResourceId";
 
         #region Parameter declaration
 
         /// <summary>
         /// Gets or sets the ResourceGroupName parameter of the cmdlet
         /// </summary>
-        [Parameter(ParameterSetName = RemoveActivityLogAlertDeafultParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
+        [Parameter(ParameterSetName = RemoveActivityLogAlertDefaultParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets the rule name parameter of the cmdlet
         /// </summary>
-        [Parameter(ParameterSetName = RemoveActivityLogAlertDeafultParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The activity log alert name")]
+        [Parameter(ParameterSetName = RemoveActivityLogAlertDefaultParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The activity log alert name")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 

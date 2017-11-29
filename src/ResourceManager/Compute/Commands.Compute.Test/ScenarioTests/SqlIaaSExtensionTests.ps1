@@ -361,7 +361,7 @@ function Test-SetAzureRmVMSqlServerExtensionWith2016Image
 #helper methods for ARM
 function Get-DefaultResourceGroupLocation
 {
-    if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+    if ((Get-ComputeTestMode) -ne 'Playback')
     {
         $namespace = "Microsoft.Resources"
         $type = "resourceGroups"
