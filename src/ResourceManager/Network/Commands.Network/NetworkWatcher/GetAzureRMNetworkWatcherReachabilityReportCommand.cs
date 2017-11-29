@@ -31,6 +31,7 @@ using System.Management.Automation;
 using AutoMapper;
 using CNM = Microsoft.Azure.Commands.Network.Models;
 using MNM = Microsoft.Azure.Management.Network.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network.Automation
 {
@@ -57,6 +58,7 @@ namespace Microsoft.Azure.Commands.Network.Automation
             Mandatory = true,
             HelpMessage = "The name of the network watcher resource group.",
             ParameterSetName = "SetByName")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

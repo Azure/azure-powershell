@@ -15,11 +15,13 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Base
 {
     using System.Management.Automation;
     using Model;
+    using ResourceManager.Common.ArgumentCompleters;
 
     public class ServerManagementGatewayProfileCmdlet : ServerManagementCmdlet
     {
         [Parameter(Mandatory = true, HelpMessage = "The targeted resource group.",
             ValueFromPipelineByPropertyName = true, ParameterSetName = "ByName", Position = 0)]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
