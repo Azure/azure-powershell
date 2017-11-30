@@ -25,6 +25,9 @@ function Test-ListSubscriptionDefinitions
 	{
 		Assert-NotNull $def.Name
 	}
+    Assert-AreEqual "MS-AZR-0017P" $definitions[0].OfferType
+    Assert-AreEqual "MyProdSubscription" $definitions[0].Name
+    Assert-AreEqual "MyProdSubscription" $definitions[0].SubscriptionDisplayName
 }
 
 <#
@@ -36,6 +39,7 @@ function Test-GetSubscriptionDefinitionByName
     $definition = Get-AzureRmSubscriptionDefinition -Name "MyProdSubscription"
     Assert-AreEqual "MyProdSubscription" $definition.Name
     Assert-AreEqual "MyProdSubscription" $definition.SubscriptionDisplayName
+    Assert-AreEqual "MS-AZR-0017P" $definition.OfferType
 }
 
 <#

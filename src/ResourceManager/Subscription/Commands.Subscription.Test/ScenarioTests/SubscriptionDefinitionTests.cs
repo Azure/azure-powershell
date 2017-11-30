@@ -20,6 +20,11 @@ using Xunit;
 
 namespace Subscription.Test.ScenarioTests
 {
+    /// <summary>
+    /// The following tests require four subscription definitions to be created manually at this time. This can 
+    /// be done by calling New-AzureRmSubscriptionDefinition. At this time, this can only be done when your tenant is 
+    /// whitelisted by Microsoft.
+    /// </summary>
     public class SubscriptionDefinitionTests
     {
         private XunitTracingInterceptor _logger;
