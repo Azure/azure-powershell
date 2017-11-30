@@ -17,9 +17,9 @@ using System.Collections.Concurrent;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Microsoft.Azure.Commands.Compute.Strategies
+namespace Microsoft.Azure.Commands.Common.Strategies
 {
-    internal sealed class MessageLoop
+    public sealed class SyncTaskScheduler
     {
         readonly ConcurrentQueue<Task> _Tasks = new ConcurrentQueue<Task>();
 
@@ -27,6 +27,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies
         {
             var task = new Task<T>(func);
             _Tasks.Enqueue(task);
+            // note: don't use 'await' keyword for the 'task' because it may start the task in 
+            // another thread.
             while (!task.IsCompleted)
             {
                 await Task.Yield();

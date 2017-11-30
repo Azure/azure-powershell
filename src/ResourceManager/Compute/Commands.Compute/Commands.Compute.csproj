@@ -290,7 +290,9 @@
     <Compile Include="StorageServices\CloudPageBlobObjectFactory.cs" />
     <Compile Include="StorageServices\SaveAzureVhdCommand.cs" />
     <Compile Include="StorageServices\StorageCredentialsFactory.cs" />
-    <Compile Include="Strategies\MessageLoop.cs" />
+    <Compile Include="Strategies\AsyncCmdletExtensions.cs" />
+    <Compile Include="Strategies\Client.cs" />
+    <Compile Include="Strategies\IAsyncCmdlet.cs" />
     <Compile Include="Strategies\ProgressReport.cs" />
     <Compile Include="Strategies\ShouldProcess.cs" />
     <Compile Include="Usage\GetAzureVMUsageCommand.cs" />

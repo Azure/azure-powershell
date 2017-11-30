@@ -20,20 +20,16 @@ namespace Microsoft.Azure.Commands.Compute.Strategies
 {
     internal sealed class ShouldProcess : IShouldProcess
     {
-        readonly Cmdlet _Cmdlet;
+        readonly IAsyncCmdlet _Cmdlet;
 
-        readonly MessageLoop _MessageLoop;
-
-        public ShouldProcess(Cmdlet cmdlet, MessageLoop messageLoop)
+        public ShouldProcess(IAsyncCmdlet cmdlet)
         {
             _Cmdlet = cmdlet;
-            _MessageLoop = messageLoop;
         }
 
-        public async Task<bool> ShouldCreate<TModel>(ResourceConfig<TModel> config, TModel model)
+        public Task<bool> ShouldCreate<TModel>(ResourceConfig<TModel> config, TModel model)
             where TModel : class
-            => await _MessageLoop.Invoke(
-                () => _Cmdlet.ShouldProcess(
-                    config.Name, VerbsCommon.New + " " + config.Strategy.Type));
+            => _Cmdlet.ShouldProcessAsync(
+                config.Name, VerbsCommon.New + " " + config.Strategy.Type);
     }
 }

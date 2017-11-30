@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Commands.Compute
             switch (ParameterSetName)
             {
                 case StrategyParameterSet:
-                    StrategyExecuteCmdlet();
+                    this.StartAndWait(StrategyExecuteCmdletAsync);
                     break;
                 default:
                     DefaultExecuteCmdlet();
@@ -169,27 +169,7 @@ namespace Microsoft.Azure.Commands.Compute
             }
         }
 
-        readonly MessageLoop _MessageLoop = new MessageLoop();
-
-        private sealed class Client : IClient
-        {
-            public string SubscriptionId { get; }
-
-            IAzureContext Context { get; }
-
-            public Client(IAzureContext context)
-            {
-                Context = context;
-                SubscriptionId = Context.Subscription.Id;
-            }
-
-            public T GetClient<T>()
-                where T : ServiceClient<T>
-                => AzureSession.Instance.ClientFactory.CreateArmClient<T>(
-                    Context, AzureEnvironment.Endpoint.ResourceManager);
-        }
-
-        public async Task StrategyExecuteCmdletAsync()
+        async Task StrategyExecuteCmdletAsync(IAsyncCmdlet asyncCmdlet)
         {
             ResourceGroupName = ResourceGroupName ?? Name;
             VirtualNetworkName = VirtualNetworkName ?? Name;
@@ -252,13 +232,10 @@ namespace Microsoft.Azure.Commands.Compute
                     client,
                     target,
                     new CancellationToken(),
-                    new ShouldProcess(this, _MessageLoop),
-                    new ProgressReport(this, _MessageLoop));
+                    new ShouldProcess(asyncCmdlet),
+                    new ProgressReport(asyncCmdlet));
             WriteObject(result);
         }
-
-        public void StrategyExecuteCmdlet()
-            => _MessageLoop.Wait(StrategyExecuteCmdletAsync());
 
         public void DefaultExecuteCmdlet()
         {
