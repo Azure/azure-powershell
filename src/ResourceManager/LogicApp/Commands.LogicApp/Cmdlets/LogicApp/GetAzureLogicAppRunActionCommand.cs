@@ -17,6 +17,7 @@ using Microsoft.Azure.Management.Logic.Models;
 namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
     using Microsoft.Azure.Commands.LogicApp.Utilities;
+    using ResourceManager.Common.ArgumentCompleters;
     using System.Management.Automation;
 
     /// <summary>
@@ -29,6 +30,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
         [Parameter(Mandatory = true, HelpMessage = "The targeted resource group for the workflow.",
             ValueFromPipelineByPropertyName = true)]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

@@ -17,6 +17,7 @@ namespace Microsoft.Azure.Commands.Network
     using System.Management.Automation;
 
     using Microsoft.Azure.Management.Network;
+    using ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet(VerbsCommon.Remove, "AzureRmRouteFilter", SupportsShouldProcess = true)]
     public class RemoveAzureRouteFilterCommand : RouteFilterBaseCmdlet
@@ -33,6 +34,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
