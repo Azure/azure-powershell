@@ -17,6 +17,7 @@ using Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models;
 
 namespace Microsoft.Azure.Commands.MachineLearning
 {
+    using ResourceManager.Common.ArgumentCompleters;
     using Rest.Azure;
 
     [Cmdlet(VerbsCommon.Get, CommitmentPlansCmdletBase.CommitmentPlanCommandletSuffix)]
@@ -24,6 +25,7 @@ namespace Microsoft.Azure.Commands.MachineLearning
     public class GetAzureMLCommitmentPlan : CommitmentPlansCmdletBase
     {
         [Parameter(Mandatory = false, HelpMessage = "The name of the resource group for the Azure ML commitment plan.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
