@@ -47,6 +47,10 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                 Thread.Yield();
             }
             HandleActions();
+            if (task.IsFaulted)
+            {
+                throw task.Exception.InnerException;
+            }
         }
 
         void HandleActions()
