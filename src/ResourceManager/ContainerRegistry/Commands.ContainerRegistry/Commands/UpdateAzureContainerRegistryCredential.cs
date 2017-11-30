@@ -14,6 +14,7 @@
 
 using System.Management.Automation;
 using Microsoft.Azure.Management.ContainerRegistry.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
@@ -28,6 +29,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
             Mandatory = true,
             ParameterSetName = NameResourceGroupParameterSet,
             HelpMessage = "Resource Group Name.")]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
