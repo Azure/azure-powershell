@@ -55,6 +55,7 @@ namespace Microsoft.Azure.Commands.Compute
            Mandatory = true,
            Position = 0,
            ParameterSetName = RedeployIdParameterSet,
+           ValueFromPipelineByPropertyName = true,
           HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
