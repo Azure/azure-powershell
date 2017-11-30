@@ -19,6 +19,7 @@ using Microsoft.Azure.Management.ContainerRegistry.Models;
 using Microsoft.Azure.Management.ResourceManager.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using DeploymentState = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ProvisioningState;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
@@ -31,6 +32,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Resource Group Name.")]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -56,6 +58,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         [Parameter(
             Mandatory = false,
             HelpMessage = "Container Registry Location. Default to the location of the resource group.")]
+        [LocationCompleter("Microsoft.ContainerRegistry/registries")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
