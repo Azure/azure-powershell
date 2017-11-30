@@ -56,6 +56,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             Position = 2,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the deleted vault original Azure region.")]
+        [LocationCompleter("Microsoft.KeyVault/vaults")]
         [ValidateNotNullOrEmpty()]
         public string Location { get; set; }
 

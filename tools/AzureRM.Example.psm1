@@ -16,13 +16,17 @@ if ($PSVersionTable.PSVersion.Major -ge 5)
     $completerCommands = %COMPLETERCOMMANDS%
     
     $completerCommands | ForEach-Object {
-        $completerObject = New-Object $_.AttributeType -ArgumentList $_.ArgumentList
-        Register-ArgumentCompleter -CommandName $_.Command -ParameterName $_.Parameter -ScriptBlock {
-            param($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameter)
-            
-            $locations = $completerObject.GetCompleterValues()
-            $locations | Where-Object { $_ -Like "$wordToComplete*" } | ForEach-Object { [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_) }
+        $type = $_.AttributeType
+        $args = "@()"
+        if ($_.ArgumentList.Count -ne 0) {
+		    $temp = $_.ArgumentList -join "`", `"" 
+            $args = "@(`"" + $temp + "`")" 
         }
+        $sb = [scriptblock]::Create("param(`$commandName, `$parameterName, `$wordToComplete, `$commandAst, `$fakeBoundParameter) `
+        `$completerObject = New-Object $type -ArgumentList $args `
+        `$arguments = `$completerObject.GetCompleterValues() `
+        `$arguments | Where-Object { `$_ -Like `"`$wordToComplete*`" } | ForEach-Object { [System.Management.Automation.CompletionResult]::new(`$_, `$_, 'ParameterValue', `$_) }")
+        Register-ArgumentCompleter -CommandName $_.Command -ParameterName $_.Parameter -ScriptBlock $sb
     }
 }
 
