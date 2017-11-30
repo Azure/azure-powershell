@@ -17,6 +17,7 @@ namespace Microsoft.Azure.Commands.RedisCache
     using Microsoft.Azure.Commands.RedisCache.Models;
     using Microsoft.Azure.Commands.RedisCache.Properties;
     using Microsoft.Azure.Management.Redis.Models;
+    using ResourceManager.Common.ArgumentCompleters;
     using System;
     using System.Collections;
     using System.Management.Automation;
@@ -28,6 +29,7 @@ namespace Microsoft.Azure.Commands.RedisCache
         internal const string MaxMemoryParameterSetName = "OnlyMaxMemoryPolicy";
 
         [Parameter(ParameterSetName = MaxMemoryParameterSetName, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Name of resource group under which you want to create cache.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
