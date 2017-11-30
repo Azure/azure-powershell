@@ -75,8 +75,8 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             ParameterSetName = StrategyParameterSet,
             Mandatory = false)]
+        [LocationCompleter("Microsoft.Compute/virtualMachines")]
         [ValidateNotNullOrEmpty]
-        [LocationCompleter]
         public string Location { get; set; }
 
         [Alias("VMProfile")]

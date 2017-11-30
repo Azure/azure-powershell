@@ -39,6 +39,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = true,
             HelpMessage = "Azure region where the account should be created.")]
+        [LocationCompleter("Microsoft.DataLakeAnalytics/accounts")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 

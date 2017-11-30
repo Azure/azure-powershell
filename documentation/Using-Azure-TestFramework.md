@@ -35,11 +35,11 @@ Instructions to manually download it are available on NuGet. However TestFramewo
 
 ## Setup prior to Record or Playback of tests
 
-In order to Record/Playback a test, you need to setup a connection string that consists of various key/value pairs that provides information to the test environment.  You have three options to set up the connection string: run the [New-TestCredential cmdlet](#new-testcredential) (recommended), run the [Set-TestEnvironment cmdlet](#set-testenvironment), or [manually set the environment variables](#manually-set-environment-variables).
+In order to Record/Playback a test, you need to setup a connection string that consists of various key/value pairs that provides information to the test environment.  You have three options to set up the connection string: run the [New-TestCredential cmdlet](#new-testcredential) (recommended for PowerShell development), run the [Set-TestEnvironment cmdlet](#set-testenvironment), or [manually set the environment variables](#manually-set-environment-variables).
 
 ### New-TestCredential
 
-This cmdlet, located in Repo-Tasks, will allow you to create a credentials file (located in C:/Users/\<currentuser\>/.azure/testcredentials.json) that will be used to set the environment variable when scenario tests are run. This credentials file will be used in all future sessions unless it is deleted or the environment variables are manually set.
+This cmdlet, located in Repo-Tasks, will allow you to create a credentials file (located in C:/Users/\<currentuser\>/.azure/testcredentials.json) that will be used to set the environment variable when scenario tests are run. This credentials file will be used in all future sessions unless it is deleted or the environment variables are manually set.  This cmdlet is not currently available for .NET SDK development.
 
 #### Create New Service Principal
 
