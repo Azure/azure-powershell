@@ -156,6 +156,9 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(ParameterSetName = StrategyParameterSet, Mandatory = false)]
         public string ImageName { get; set; } = "Win2016Datacenter";
 
+        [Parameter(ParameterSetName = StrategyParameterSet, Mandatory = false)]
+        public string Size { get; set; } = "Standard_DS1_v2";
+
         public override void ExecuteCmdlet()
         {
             switch (ParameterSetName)
@@ -206,9 +209,11 @@ namespace Microsoft.Azure.Commands.Compute
             var virtualMachine = resourceGroup.CreateVirtualMachineConfig(
                 name: Name,
                 networkInterface: networkInterface,
+                isWindows: isWindows,
                 adminUsername: Credential.UserName,
                 adminPassword: new NetworkCredential(string.Empty, Credential.Password).Password,
-                image: image.Image);
+                image: image.Image,
+                size: Size);
 
             var client = new Client(DefaultProfile.DefaultContext);
 

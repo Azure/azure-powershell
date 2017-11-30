@@ -35,9 +35,11 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
             this ResourceConfig<ResourceGroup> resourceGroup,
             string name,
             ResourceConfig<NetworkInterface> networkInterface,
+            bool isWindows,
             string adminUsername,
             string adminPassword,
-            Image image)
+            Image image,
+            string size)
             => Strategy.CreateConfig(
                 resourceGroup,
                 name, 
@@ -46,9 +48,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
                     OsProfile = new OSProfile
                     {
                         ComputerName = name,
-                        WindowsConfiguration = new WindowsConfiguration
-                        {
-                        },
+                        WindowsConfiguration = isWindows ? new WindowsConfiguration { } : null,
+                        LinuxConfiguration = isWindows ? null : new LinuxConfiguration(),
                         AdminUsername = adminUsername,
                         AdminPassword = adminPassword,
                     },
@@ -64,7 +65,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
                     },
                     HardwareProfile = new HardwareProfile
                     {
-                        VmSize = "Standard_DS1_v2"
+                        VmSize = size
                     },
                     StorageProfile = new StorageProfile
                     {
