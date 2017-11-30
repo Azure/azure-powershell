@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.9.6'
+ModuleVersion = '0.10.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -51,10 +51,14 @@ PowerShellVersion = '5.1'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.9.6'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.10.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-# RequiredAssemblies = @()
+RequiredAssemblies = 'netcoreapp2.0\Microsoft.Azure.Management.Storage.dll',
+    'netcoreapp2.0\Microsoft.Data.Edm.dll',
+    'netcoreapp2.0\Microsoft.Data.OData.dll',
+    'netcoreapp2.0\Microsoft.WindowsAzure.Storage.dll',
+    'netcoreapp2.0\System.Spatial.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -73,15 +77,15 @@ FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'Get-AzureRmStorageAccount', 'Get-AzureRmStorageAccountKey', 
-               'New-AzureRmStorageAccount', 'New-AzureRmStorageAccountKey', 
-               'Remove-AzureRmStorageAccount', 'Set-AzureRmCurrentStorageAccount', 
-               'Set-AzureRmStorageAccount', 
-               'Get-AzureRmStorageAccountNameAvailability', 
-               'Get-AzureRmStorageUsage',
-               'Update-AzureRmStorageAccountNetworkACL',
-               'Get-AzureRmStorageAccountNetworkACL',
-               'Add-AzureRmStorageAccountNetworkACLRule',
-               'Remove-AzureRmStorageAccountNetworkACLRule'
+    'New-AzureRmStorageAccount', 'New-AzureRmStorageAccountKey', 
+    'Remove-AzureRmStorageAccount', 'Set-AzureRmCurrentStorageAccount', 
+    'Set-AzureRmStorageAccount', 
+    'Get-AzureRmStorageAccountNameAvailability', 
+    'Get-AzureRmStorageUsage', 
+    'Update-AzureRmStorageAccountNetworkRuleSet', 
+    'Get-AzureRmStorageAccountNetworkRuleSet', 
+    'Add-AzureRmStorageAccountNetworkRule', 
+    'Remove-AzureRmStorageAccountNetworkRule'
 
 # Variables to export from this module
 # VariablesToExport = @()

@@ -5,16 +5,14 @@
 namespace Microsoft.Azure.Graph.RBAC.Version1_6
 {
     using Microsoft.Azure;
-    using Microsoft.Azure.Graph;
-    using Microsoft.Azure.Graph.RBAC;
-    using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Microsoft.Rest.Azure.OData;
     using Models;
-    using System.Collections;
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
+
+    using AzureOperationResponse = Microsoft.Rest.Azure.AzureOperationResponse;
 
     /// <summary>
     /// GroupsOperations operations.

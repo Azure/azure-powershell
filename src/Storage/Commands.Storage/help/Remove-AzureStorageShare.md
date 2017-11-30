@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
 ms.assetid: FF3AD436-CA33-4A52-8580-D2345D80A231
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/remove-azurestorageshare
 schema: 2.0.0
 ---
 

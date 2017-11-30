@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
 Module Name: AzureRM.HDInsight
 ms.assetid: A40AB6AB-D3CB-4A6C-B614-0B22085759DA
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.hdinsight/add-azurermhdinsightclusteridentity
 schema: 2.0.0
 ---
 

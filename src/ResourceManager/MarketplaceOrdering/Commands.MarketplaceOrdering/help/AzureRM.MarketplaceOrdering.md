@@ -1,4 +1,4 @@
----
+﻿---
 Module Name: AzureRM.MarketplaceOrdering
 Module Guid: 6e0e216b-1dff-4992-b943-b3a4f14679ab
 Download Help Link: 

@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
 Module Name: AzureRM
 ms.assetid: 3CD449A1-084E-4950-80EF-06B5ECDFB70F
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/reset-azurermwebappslotpublishingprofile
 schema: 2.0.0
 ---
 

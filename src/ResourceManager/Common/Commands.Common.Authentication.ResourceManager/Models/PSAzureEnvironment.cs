@@ -93,10 +93,10 @@ namespace Microsoft.Azure.Commands.Profile.Models
             AdTenant = other.GetProperty<string>(nameof(AdTenant));
             AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix = other.GetProperty<string>(nameof(AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix));
             AzureDataLakeStoreFileSystemEndpointSuffix = other.GetProperty<string>(nameof(AzureDataLakeStoreFileSystemEndpointSuffix));
+            DataLakeEndpointResourceId = other.GetProperty<string>(nameof(DataLakeEndpointResourceId));
             AzureKeyVaultDnsSuffix = other.GetProperty<string>(nameof(AzureKeyVaultDnsSuffix));
             AzureKeyVaultServiceEndpointResourceId = other.GetProperty<string>(nameof(AzureKeyVaultServiceEndpointResourceId));
             BatchEndpointResourceId = other.GetProperty<string>(nameof(BatchEndpointResourceId));
-            DataLakeEndpointResourceId = other.GetProperty<string>(nameof(DataLakeEndpointResourceId));
             GalleryUrl = other.GetProperty<string>(nameof(GalleryUrl));
             GraphEndpointResourceId = other.GetProperty<string>(nameof(GraphEndpointResourceId));
             GraphUrl = other.GetProperty<string>(nameof(GraphUrl));
@@ -259,6 +259,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
                        && SqlDatabaseDnsSuffix == other.SqlDatabaseDnsSuffix
                        && AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix == other.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix
                        && AzureDataLakeStoreFileSystemEndpointSuffix == other.AzureDataLakeStoreFileSystemEndpointSuffix
+                       && DataLakeEndpointResourceId == other.DataLakeEndpointResourceId
                        && TrafficManagerDnsSuffix == other.TrafficManagerDnsSuffix
                        && BatchEndpointResourceId == other.BatchEndpointResourceId;
             }

@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
 
     public class NodeFileOperationParameters : BatchClientParametersBase
     {
-        public NodeFileOperationParameters(BatchAccountContext context, string jobId, string taskId, string poolId, string computeNodeId, string nodeFileName,
+        public NodeFileOperationParameters(BatchAccountContext context, string jobId, string taskId, string poolId, string computeNodeId, string path,
             PSNodeFile nodeFile, IEnumerable<BatchClientBehavior> additionalBehaviors = null) : base(context, additionalBehaviors)
         {
             PSNodeFileType? nodeFileType = null;
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             {
                 nodeFileType = PSNodeFileType.PSNodeFileInstance;
             }
-            else if (!string.IsNullOrWhiteSpace(nodeFileName))
+            else if (!string.IsNullOrWhiteSpace(path))
             {
                 if (!string.IsNullOrWhiteSpace(jobId) && !string.IsNullOrWhiteSpace(taskId))
                 {
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.TaskId = taskId;
             this.PoolId = poolId;
             this.ComputeNodeId = computeNodeId;
-            this.NodeFileName = nodeFileName;
+            this.Path = path;
             this.NodeFile = nodeFile;
         }
 
@@ -84,9 +84,9 @@ namespace Microsoft.Azure.Commands.Batch.Models
         public string ComputeNodeId { get; private set; }
 
         /// <summary>
-        /// The name of the node file
+        /// The path of the node file
         /// </summary>
-        public string NodeFileName { get; private set; }
+        public string Path { get; private set; }
 
         /// <summary>
         /// The PSNodeFile object representing the target node file.
