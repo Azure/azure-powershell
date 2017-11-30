@@ -92,6 +92,44 @@ function Test-AzureRmContainerInstanceLog
 
 <#
 .SYNOPSIS
+Test New-AzureRmContainerGroup with Azure File volume mount.
+#>
+function Test-AzureRmContainerGroupWithVolumeMount
+{
+    $resourceGroupName = Get-RandomResourceGroupName
+    $containerGroupName = Get-RandomContainerGroupName
+    $location = Get-ProviderLocation "Microsoft.ContainerInstance/ContainerGroups"
+    $image = "alpine"
+    $shareName = "acipstestshare"
+    $accountName = "acipstest"
+    $accountKey = "password"
+    $secureAccountKey = ConvertTo-SecureString $accountKey -AsPlainText -Force
+    $accountCredential = New-Object System.Management.Automation.PSCredential ($accountName, $secureAccountKey)
+    $mountPath = "/mnt/azfile"
+
+    try
+    {
+        New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+        $containerGroupCreated = New-AzureRmContainerGroup -ResourceGroupName $resourceGroupName -Name $containerGroupName -Image $image -RestartPolicy "Never" -Command "ls $mountPath" -AzureFileVolumeShareName $shareName -AzureFileVolumeAccountCredential $accountCredential -AzureFileVolumeMountPath $mountPath
+
+        Assert-NotNull $containerGroupCreated.Volumes
+        Assert-NotNull $containerGroupCreated.Volumes[0].AzureFile
+        Assert-AreEqual $containerGroupCreated.Volumes[0].AzureFile.ShareName $shareName
+        Assert-AreEqual $containerGroupCreated.Volumes[0].AzureFile.StorageAccountName $accountName
+        Assert-NotNull $containerGroupCreated.Containers[0].VolumeMounts
+        Assert-AreEqual $containerGroupCreated.Containers[0].VolumeMounts[0].MountPath $mountPath
+
+        Remove-AzureRmContainerGroup -ResourceGroupName $resourceGroupName -Name $containerGroupName
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $resourceGroupName
+    }
+}
+
+<#
+.SYNOPSIS
 Assert a container group object.
 
 .PARAMETER expected

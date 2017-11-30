@@ -14,7 +14,7 @@ Creates a container group.
 
 ### CreateContainerGroupBaseParamSet (Default)
 ```
-New-AzureRmContainerGroup [-ResourceGroupName] <String> [-Name] <String> -Image <String> [-Location <String>]
+New-AzureRmContainerGroup [-ResourceGroupName] <String> [-Name] <String> [-Image] <String> [-Location <String>]
  [-OsType <String>] [-RestartPolicy <String>] [-Cpu <Int32>] [-MemoryInGB <Double>] [-IpAddressType <String>]
  [-Port <Int32[]>] [-Command <String>] [-EnvironmentVariable <Hashtable>] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -22,20 +22,20 @@ New-AzureRmContainerGroup [-ResourceGroupName] <String> [-Name] <String> -Image 
 
 ### CreateContainerGroupWithRegistryParamSet
 ```
-New-AzureRmContainerGroup [-ResourceGroupName] <String> [-Name] <String> -Image <String> [-Location <String>]
- [-OsType <String>] [-RestartPolicy <String>] [-Cpu <Int32>] [-MemoryInGB <Double>] [-IpAddressType <String>]
- [-Port <Int32[]>] [-Command <String>] [-EnvironmentVariable <Hashtable>] [-RegistryServerDomain <String>]
- -RegistryCredential <PSCredential> [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+New-AzureRmContainerGroup [-ResourceGroupName] <String> [-Name] <String> [-Image] <String>
+ -RegistryCredential <PSCredential> [-Location <String>] [-OsType <String>] [-RestartPolicy <String>]
+ [-Cpu <Int32>] [-MemoryInGB <Double>] [-IpAddressType <String>] [-Port <Int32[]>] [-Command <String>]
+ [-EnvironmentVariable <Hashtable>] [-RegistryServerDomain <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateContainerGroupWithAzureFileMountParamSet
 ```
-New-AzureRmContainerGroup [-ResourceGroupName] <String> [-Name] <String> -Image <String> [-Location <String>]
- [-OsType <String>] [-RestartPolicy <String>] [-Cpu <Int32>] [-MemoryInGB <Double>] [-IpAddressType <String>]
- [-Port <Int32[]>] [-Command <String>] [-EnvironmentVariable <Hashtable>] -AzureFileVolumeShareName <String>
- -AzureFileVolumeAccountName <String> -AzureFileVolumeAccountKey <PSCredential>
- -AzureFileVolumeMountPath <String> [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+New-AzureRmContainerGroup [-ResourceGroupName] <String> [-Name] <String> [-Image] <String>
+ -AzureFileVolumeShareName <String> -AzureFileVolumeAccountCredential <PSCredential>
+ -AzureFileVolumeMountPath <String> [-Location <String>] [-OsType <String>] [-RestartPolicy <String>]
+ [-Cpu <Int32>] [-MemoryInGB <Double>] [-IpAddressType <String>] [-Port <Int32[]>] [-Command <String>]
+ [-EnvironmentVariable <Hashtable>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -172,7 +172,7 @@ This commands creates a container group using a custom image from a custom conta
 ```
 PS C:\> $secpasswd = ConvertTo-SecureString "PlainTextPassword" -AsPlainText -Force
 PS C:\> $mycred = New-Object System.Management.Automation.PSCredential ("username", $secpasswd)
-PS C:\> New-AzureRmContainerGroup -ResourceGroupName MyResourceGroup -Name MyContainer -Image alpine -AzureFileVolumeShareName myshare -AzureFileVolumeAccountName mystorage -AzureFileVolumeAccountKey $mycred -AzureFileVolumeMountPath /mnt/azfile
+PS C:\> New-AzureRmContainerGroup -ResourceGroupName MyResourceGroup -Name MyContainer -Image alpine -AzureFileVolumeShareName myshare -AzureFileVolumeAccountKey $mycred -AzureFileVolumeMountPath /mnt/azfile
 
 ResourceGroupName        : demo
 Id                       : /subscriptions/ae43b1e3-c35d-4c8c-bc0d-f148b4c52b78/resourceGroups/demo/providers/Microsoft.ContainerInstance/containerGroups/mycontainer
@@ -196,26 +196,11 @@ This commands creates a container group that mounts the provided Azure File shar
 
 ## PARAMETERS
 
-### -AzureFileVolumeAccountKey
-The storage account key of the Azure File share to mount.
+### -AzureFileVolumeAccountCredential
+The storage account credential of the Azure File share to mount where the username is the storage account name and the key is the storage account key.
 
 ```yaml
 Type: PSCredential
-Parameter Sets: CreateContainerGroupWithAzureFileMountParamSet
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AzureFileVolumeAccountName
-The storage account name of the Azure File share to mount.
-
-```yaml
-Type: String
 Parameter Sets: CreateContainerGroupWithAzureFileMountParamSet
 Aliases: 
 
@@ -326,7 +311,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: Named
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
