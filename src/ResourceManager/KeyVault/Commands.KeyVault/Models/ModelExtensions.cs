@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ActiveDirectory.GraphClient;
+using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
@@ -97,19 +97,19 @@ namespace Microsoft.Azure.Commands.KeyVault
 
             try
             {
-                var obj = adClient.GetObjectsByObjectIdsAsync(new[] { objectId }, new string[] { }).GetAwaiter().GetResult().FirstOrDefault();
+                var obj = adClient.GetObjectsByObjectId(new List<string> { objectId }).FirstOrDefault();
                 if (obj != null)
                 {
-                    if (obj.ObjectType.Equals("user", StringComparison.InvariantCultureIgnoreCase))
+                    if (obj.Type.Equals("user", StringComparison.InvariantCultureIgnoreCase))
                     {
-                        var user = adClient.Users.GetByObjectId(objectId).ExecuteAsync().GetAwaiter().GetResult();
+                        var user = adClient.FilterUsers(new ADObjectFilterOptions { Id = objectId }).FirstOrDefault();
                         displayName = user.DisplayName;
                         upnOrSpn = user.UserPrincipalName;
                     }
-                    else if (obj.ObjectType.Equals("serviceprincipal", StringComparison.InvariantCultureIgnoreCase))
+                    else if (obj.Type.Equals("serviceprincipal", StringComparison.InvariantCultureIgnoreCase))
                     {
-                        var servicePrincipal = adClient.ServicePrincipals.GetByObjectId(objectId).ExecuteAsync().GetAwaiter().GetResult();
-                        displayName = servicePrincipal.AppDisplayName;
+                        var servicePrincipal = adClient.FilterServicePrincipals(new ADObjectFilterOptions { Id = objectId }).FirstOrDefault();
+                        displayName = servicePrincipal.DisplayName;
                         upnOrSpn = servicePrincipal.ServicePrincipalNames.FirstOrDefault();
                     }
                 }
