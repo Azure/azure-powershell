@@ -118,86 +118,118 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                  !account.IsPropertySet(AzureAccount.Property.CertificateThumbprint))
                 ? ShowDialog.Always : ShowDialog.Never;
 
-            // (tenant and subscription are present) OR
-            // (tenant is present and subscription is not provided)
-            if (!string.IsNullOrEmpty(tenantId))
+            if (skipValidation)
             {
-                var token = AcquireAccessToken(
-                    account, 
-                    environment, 
-                    tenantId, 
-                    password, 
-                    promptBehavior,
-                    promptAction);
-                if (TryGetTenantSubscription(
-                    token, 
-                    account, 
-                    environment, 
-                    tenantId, 
-                    subscriptionId, 
-                    subscriptionName, 
-                    out newSubscription, 
-                    out newTenant))
+                if ((string.IsNullOrEmpty(subscriptionId) && string.IsNullOrEmpty(subscriptionName)) || string.IsNullOrEmpty(tenantId))
                 {
-                    account.SetOrAppendProperty(AzureAccount.Property.Tenants, new[] { newTenant.Id.ToString() });
+                    throw new PSInvalidOperationException("Must supply Subscription Id/Name and Tenant Id when using -SkipValidation");
                 }
+
+                if (!string.IsNullOrEmpty(subscriptionId))
+                {
+                    newSubscription = new AzureSubscription
+                    {
+                        Id = subscriptionId,
+                    };
+                }
+
+                else
+                {
+                    newSubscription = new AzureSubscription
+                    {
+                        Name = subscriptionName
+                    };
+                }
+
+                newTenant = new AzureTenant
+                {
+                    Id = tenantId
+                };
             }
-            // (tenant is not provided and subscription is present) OR
-            // (tenant is not provided and subscription is not provided)
+
             else
             {
-                var tenants = ListAccountTenants(account, environment, password, promptBehavior, promptAction)
-                    .Select(s => s.Id.ToString()).ToArray();
-                account.SetProperty(AzureAccount.Property.Tenants, null);
-                string accountId = null;
-
-                for (int i = 0; i < tenants.Count(); i++)
+                // (tenant and subscription are present) OR
+                // (tenant is present and subscription is not provided)
+                if (!string.IsNullOrEmpty(tenantId))
                 {
-                    var tenant = tenants[i];
-
-                    IAzureTenant tempTenant;
-                    IAzureSubscription tempSubscription;
-
-                    IAccessToken token = null;
-
-                    try
+                    var token = AcquireAccessToken(
+                        account,
+                        environment,
+                        tenantId,
+                        password,
+                        promptBehavior,
+                        promptAction);
+                    if (TryGetTenantSubscription(
+                        token,
+                        account,
+                        environment,
+                        tenantId,
+                        subscriptionId,
+                        subscriptionName,
+                        out newSubscription,
+                        out newTenant))
                     {
-                        token = AcquireAccessToken(account, environment, tenant, password, ShowDialog.Auto, null);
-                        if (accountId == null)
-                        {
-                            accountId = account.Id;
-                            account.SetOrAppendProperty(AzureAccount.Property.Tenants, tenant);
-                        }
-                        else if (accountId.Equals(account.Id, StringComparison.OrdinalIgnoreCase))
-                        {
-                            account.SetOrAppendProperty(AzureAccount.Property.Tenants, tenant);
-                        }
-                        else
-                        {   // if account ID is different from the first tenant account id we need to ignore current tenant
-                            WriteWarningMessage(string.Format(
-                                ProfileMessages.AccountIdMismatch,
-                                account.Id,
-                                tenant,
-                                accountId));
-                            account.Id = accountId;
-                            token = null;
-                        }
+                        account.SetOrAppendProperty(AzureAccount.Property.Tenants, new[] { newTenant.Id.ToString() });
                     }
-                    catch
-                    {
-                        WriteWarningMessage(string.Format(ProfileMessages.UnableToAqcuireToken, tenant));
-                    }
+                }
+                // (tenant is not provided and subscription is present) OR
+                // (tenant is not provided and subscription is not provided)
+                else
+                {
+                    var tenants = ListAccountTenants(account, environment, password, promptBehavior, promptAction)
+                        .Select(s => s.Id.ToString()).ToArray();
+                    account.SetProperty(AzureAccount.Property.Tenants, null);
+                    string accountId = null;
 
-                    if (token != null &&
-                        newTenant == null &&
-                        TryGetTenantSubscription(token, account, environment, tenant, subscriptionId, subscriptionName, out tempSubscription, out tempTenant))
+                    for (int i = 0; i < tenants.Count(); i++)
                     {
-                        // If no subscription found for the given token/tenant 
-                        // discard tempTenant value unless current token/tenant is the last one.
-                        if (tempSubscription != null || i == (tenants.Count() - 1))
+                        var tenant = tenants[i];
+
+                        IAzureTenant tempTenant;
+                        IAzureSubscription tempSubscription;
+
+                        IAccessToken token = null;
+
+                        try
                         {
-                            newTenant = tempTenant;
-                            newSubscription = tempSubscription;
+                            token = AcquireAccessToken(account, environment, tenant, password, ShowDialog.Auto, null);
+                            if (accountId == null)
+                            {
+                                accountId = account.Id;
+                                account.SetOrAppendProperty(AzureAccount.Property.Tenants, tenant);
+                            }
+                            else if (accountId.Equals(account.Id, StringComparison.OrdinalIgnoreCase))
+                            {
+                                account.SetOrAppendProperty(AzureAccount.Property.Tenants, tenant);
+                            }
+                            else
+                            {   // if account ID is different from the first tenant account id we need to ignore current tenant
+                                WriteWarningMessage(string.Format(
+                                    ProfileMessages.AccountIdMismatch,
+                                    account.Id,
+                                    tenant,
+                                    accountId));
+                                account.Id = accountId;
+                                token = null;
+                            }
+                        }
+                        catch
+                        {
+                            WriteWarningMessage(string.Format(ProfileMessages.UnableToAqcuireToken, tenant));
+                        }
+
+                        if (token != null &&
+                            newTenant == null &&
+                            TryGetTenantSubscription(token, account, environment, tenant, subscriptionId, subscriptionName, out tempSubscription, out tempTenant))
+                        {
+                            // If no subscription found for the given token/tenant 
+                            // discard tempTenant value unless current token/tenant is the last one.
+                            if (tempSubscription != null || i == (tenants.Count() - 1))
+                            {
+                                newTenant = tempTenant;
+                                newSubscription = tempSubscription;
+                            }
                         }
                     }
                 }
@@ -228,7 +260,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                     WriteWarningMessage(string.Format(ProfileMessages.CannotSetDefaultContext, newContext.ToString()));
                 }
 
-                if (!newSubscription.State.Equals("Enabled", StringComparison.OrdinalIgnoreCase))
+                if (!skipValidation && !newSubscription.State.Equals("Enabled", StringComparison.OrdinalIgnoreCase))
                 {
                     WriteWarningMessage(string.Format(
                                    ProfileMessages.SelectedSubscriptionNotActive,
