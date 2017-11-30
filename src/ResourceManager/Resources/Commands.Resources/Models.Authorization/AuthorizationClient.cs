@@ -432,15 +432,20 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 
             ValidateRoleDefinition(roleDefinition);
 
-			PSRoleDefinition fetchedRoleDefinition = null;
-			foreach (String scope in roleDefinition.AssignableScopes)
-			{
-				fetchedRoleDefinition = this.GetRoleDefinition(roleDefinitionId, scope);
-				if (fetchedRoleDefinition != null)
-				{
-					break;
-				}
-			}
+            PSRoleDefinition fetchedRoleDefinition = null;
+            foreach (String scope in roleDefinition.AssignableScopes)
+            {
+                try
+                {
+                    fetchedRoleDefinition = this.GetRoleDefinition(roleDefinitionId, scope);
+                }
+                catch {
+                }
+                if (fetchedRoleDefinition != null)
+                {
+                    break;
+                }
+            }
 
             if (fetchedRoleDefinition == null)
             {
@@ -544,6 +549,9 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             {
                 return;
             }
+
+            // Allow scopes ending with "/" to keep it consistent with REST and CLI
+            scope = scope.TrimEnd('/');
 
             var parts = scope.Substring(1).Split('/');   // Skip the leading '/'
 
