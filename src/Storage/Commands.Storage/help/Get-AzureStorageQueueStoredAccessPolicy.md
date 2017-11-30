@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
 ms.assetid: F1EC601C-3ADD-402A-A5F7-84A95D312187
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/get-azurestoragequeuestoredaccesspolicy
 schema: 2.0.0
 ---
 
@@ -13,8 +13,7 @@ Gets the stored access policy or policies for an Azure storage queue.
 ## SYNTAX
 
 ```
-Get-AzureStorageQueueStoredAccessPolicy [-Queue] <String> [[-Policy] <String>] [-Context <AzureStorageContext>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [-PipelineVariable <String>]
+Get-AzureStorageQueueStoredAccessPolicy [-Queue] <String> [[-Policy] <String>] [-Context <IStorageContext>]
  [<CommonParameters>]
 ```
 
@@ -39,16 +38,17 @@ This command gets all stored access policies in the queue named MyQueue.
 
 ## PARAMETERS
 
-### -Queue
-Specifies the Azure storage queue name.
+### -Context
+Specifies the Azure storage context.
+To obtain a storage context, use the New-AzureStorageContext cmdlet.
 
 ```yaml
-Type: String
+Type: IStorageContext
 Parameter Sets: (All)
-Aliases: N, Name
+Aliases: 
 
-Required: True
-Position: 0
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
@@ -69,73 +69,18 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Context
-Specifies the Azure storage context.
-To obtain a storage context, use the New-AzureStorageContext cmdlet.
+### -Queue
+Specifies the Azure storage queue name.
 
 ```yaml
-Type: AzureStorageContext
+Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: N, Name
 
-Required: False
-Position: Named
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PipelineVariable
-Stores the value of the current pipeline element as a variable, for any named command as it flows through the pipeline.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: pv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -144,7 +89,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### IStorageContext
+
+Parameter 'Context' accepts value of type 'IStorageContext' from the pipeline
+
+### String
+
+Parameter 'Queue' accepts value of type 'String' from the pipeline
+
 ## OUTPUTS
+
+### Microsoft.WindowsAzure.Storage.Queue.SharedAccessQueuePolicy
 
 ## NOTES
 

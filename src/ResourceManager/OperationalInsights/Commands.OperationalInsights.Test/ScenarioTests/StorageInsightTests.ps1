@@ -28,7 +28,7 @@ function Test-StorageInsightCreateUpdateDelete
     New-AzureRmResourceGroup -Name $rgname -Location $wslocation -Force
 
     # Create a workspace to house the storage insight
-    $workspace = New-AzureRmOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation -Force
+    $workspace = New-AzureRmOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation -Sku "STANDARD" -Force
 
     # Create a storage insight
     $storageinsight = New-AzureRmOperationalInsightsStorageInsight -ResourceGroupName $rgname -WorkspaceName $wsname -Name $siname -Tables @("WADWindowsEventLogsTable", "LinuxSyslogVer2v0") -Containers @("wad-iis-logfiles") -StorageAccountResourceId $said -StorageAccountKey "fakekey"
@@ -80,7 +80,7 @@ function Test-StorageInsightCreateUpdateDelete
     Assert-AreEqualArray @("WADWindowsEventLogsTable") $storageInsight.Tables
     Assert-AreEqualArray @() $storageInsight.Containers
 
-    $storageinsight = $storageinsight | Set-AzureRmOperationalInsightsStorageInsight -Tables @() -Containers @("wad-iis-logfiles")
+    $storageinsight = $storageinsight | Set-AzureRmOperationalInsightsStorageInsight -Tables @() -Containers @("wad-iis-logfiles") -StorageAccountKey "anotherfakekey"
     Assert-AreEqualArray @() $storageInsight.Tables
     Assert-AreEqualArray @("wad-iis-logfiles") $storageInsight.Containers
 
@@ -110,5 +110,5 @@ function Test-StorageInsightCreateFailsNoWs
     
     New-AzureRmResourceGroup -Name $rgname -Location $wslocation -Force
 
-    Assert-ThrowsContains { New-AzureRmOperationalInsightsStorageInsight -ResourceGroupName $rgname -WorkspaceName $wsname -Name $siname -Tables @("WADWindowsEventLogsTable", "LinuxSyslogVer2v0") -StorageAccountResourceId $said -StorageAccountKey "fakekey" } "ResourceNotFound"
+    Assert-ThrowsContains { New-AzureRmOperationalInsightsStorageInsight -ResourceGroupName $rgname -WorkspaceName $wsname -Name $siname -Tables @("WADWindowsEventLogsTable", "LinuxSyslogVer2v0") -StorageAccountResourceId $said -StorageAccountKey "fakekey" } "NotFound"
 }

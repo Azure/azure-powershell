@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.AzureBackup.dll-Help.xml
+Module Name: AzureRM.Backup
 ms.assetid: D57C32D1-EB4F-495E-A11B-3B4066E8C552
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.backup/set-azurermbackupvault
 schema: 2.0.0
 ---
 
@@ -14,7 +15,7 @@ Changes the storage type of a Backup vault.
 
 ```
 Set-AzureRmBackupVault [[-Storage] <AzureBackupVaultStorageType>] [-Vault] <AzureRMBackupVault>
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,6 +35,21 @@ The current cmdlet changes the storage type to LocallyRedundant.
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Storage
 Specifies the storage type for the backup data.
 The acceptable values for this parameter are: LocallyRedundant and GeoRedundant.
@@ -45,7 +61,7 @@ Aliases:
 Accepted values: GeoRedundant, LocallyRedundant
 
 Required: False
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -61,7 +77,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False

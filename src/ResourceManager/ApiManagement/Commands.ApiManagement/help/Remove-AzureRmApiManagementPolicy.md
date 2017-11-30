@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-ms.assetid: 37D4AC90-0B49-488A-895F-D136F0C6D88C
-online version: 
+Module Name: AzureRM.ApiManagement
+ms.assetid: 466AFB8C-C272-4A4F-8E13-A4DBD6EE3A85
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/remove-azurermapimanagementpolicy
 schema: 2.0.0
 ---
 
@@ -12,32 +13,28 @@ Removes the API Management policy from a specified scope.
 
 ## SYNTAX
 
-### Tenant level (Default)
+### RemoveTenantLevel (Default)
 ```
 Remove-AzureRmApiManagementPolicy -Context <PsApiManagementContext> [-PassThru]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Product level
+### RemoveProductLevel
 ```
 Remove-AzureRmApiManagementPolicy -Context <PsApiManagementContext> -ProductId <String> [-PassThru]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### API level
+### RemoveApiLevel
 ```
 Remove-AzureRmApiManagementPolicy -Context <PsApiManagementContext> -ApiId <String> [-PassThru]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Operation level
+### RemoveOperationLevel
 ```
 Remove-AzureRmApiManagementPolicy -Context <PsApiManagementContext> -ApiId <String> -OperationId <String>
- [-PassThru] [-InformationAction <ActionPreference>] [-InformationVariable <String>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,33 +44,53 @@ The **Remove-AzureRmApiManagementPolicy** cmdlet removes the API Management poli
 
 ### Example 1: Remove the tenant level policy
 ```
-PS C:\>Remove-AzureRmApiManagementPolicy -Context $APImContext
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Remove-AzureRmApiManagementPolicy -Context $apimContext
 ```
 
 This command removes tenant level policy from API Management.
 
 ### Example 2: Remove the product-scope policy
 ```
-PS C:\>Remove-AzureRmApiManagementPolicy -Context $APImContext -ProductId "0123456789"
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Remove-AzureRmApiManagementPolicy -Context $apimContext -ProductId "0123456789"
 ```
 
 This command removes product-scope policy from API Management.
 
 ### Example 3: Remove the API-scope policy
 ```
-PS C:\>Remove-AzureRmApiManagementPolicy -Context $APImContext -ApiId "9876543210"
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Remove-AzureRmApiManagementPolicy -Context $apimContext -ApiId "9876543210"
 ```
 
 This command removes API-scope policy from API Management.
 
 ### Example 4: Remove the operation-scope policy
 ```
-PS C:\>Remove-AzureRmApiManagementPolicy -Context $APImContext -ApiId "9876543210" -OperationId "777"
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Remove-AzureRmApiManagementPolicy -Context $apimContext -ApiId "9876543210" -OperationId "777"
 ```
 
 This command removes operation-scope policy from API Management.
 
 ## PARAMETERS
+
+### -ApiId
+Specifies the identifier of an existing API.
+If you specify this parameter, the cmdlet removes the API-scope policy.
+
+```yaml
+Type: String
+Parameter Sets: RemoveApiLevel, RemoveOperationLevel
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ### -Context
 Specifies the instance of the **PsApiManagementContext** object.
@@ -81,6 +98,37 @@ Specifies the instance of the **PsApiManagementContext** object.
 ```yaml
 Type: PsApiManagementContext
 Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+ 
+ ```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OperationId
+Specifies the identifier of an existing operation.
+If you specify this parameter with the *ApiId* parameter, this cmdlet removes the operation-scope policy.
+
+```yaml
+Type: String
+Parameter Sets: RemoveOperationLevel
 Aliases: 
 
 Required: True
@@ -111,7 +159,7 @@ If you specify this parameter, the cmdlet removes the product-scope policy.
 
 ```yaml
 Type: String
-Parameter Sets: Product level
+Parameter Sets: RemoveProductLevel
 Aliases: 
 
 Required: True
@@ -121,73 +169,17 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ApiId
-Specifies the identifier of an existing API.
-If you specify this parameter, the cmdlet removes the API-scope policy.
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: String
-Parameter Sets: API level, Operation level
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -OperationId
-Specifies the identifier of an existing operation.
-If you specify this parameter with the *ApiId* parameter, this cmdlet removes the operation-scope policy.
-
-```yaml
-Type: String
-Parameter Sets: Operation level
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: infa
+Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -200,21 +192,6 @@ The cmdlet is not run.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
 
 Required: False
 Position: Named

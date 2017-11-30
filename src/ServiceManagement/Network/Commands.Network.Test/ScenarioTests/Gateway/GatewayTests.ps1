@@ -27,7 +27,7 @@ function Test-LocalNetworkGateway
 
     $subscription = Get-AzureSubscription -Current
     Set-AzureSubscription -SubscriptionId $subscription.SubscriptionId
-        
+
 	# Create a local network gateway
 	$ipAddr = "1.2.3.4"
 	$addrSpace = "10.0.0.0/8"

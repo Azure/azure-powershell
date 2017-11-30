@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.RecoveryServices.Backup.dll-Help.xml
+Module Name: AzureRM.RecoveryServices.Backup
 ms.assetid: 2E202D0D-076D-431D-9338-9A84ABC0B461
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupprotectionpolicy
 schema: 2.0.0
 ---
 
@@ -14,27 +15,26 @@ Gets Backup protection policies for a vault.
 
 ### NoParamSet (Default)
 ```
-Get-AzureRmRecoveryServicesBackupProtectionPolicy [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+Get-AzureRmRecoveryServicesBackupProtectionPolicy [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### PolicyNameParamSet
 ```
-Get-AzureRmRecoveryServicesBackupProtectionPolicy [-Name] <String> [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
-```
-
-### WorkloadBackupManagementTypeParamSet
-```
-Get-AzureRmRecoveryServicesBackupProtectionPolicy [-WorkloadType] <WorkloadType>
- [-BackupManagementType] <BackupManagementType> [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+Get-AzureRmRecoveryServicesBackupProtectionPolicy [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### WorkloadParamSet
 ```
 Get-AzureRmRecoveryServicesBackupProtectionPolicy [-WorkloadType] <WorkloadType>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### WorkloadBackupManagementTypeParamSet
+```
+Get-AzureRmRecoveryServicesBackupProtectionPolicy [-WorkloadType] <WorkloadType>
+ [-BackupManagementType] <BackupManagementType> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -65,37 +65,30 @@ This command gets the protection policy named DefaultPolicy, and then stores it 
 
 ## PARAMETERS
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
+### -BackupManagementType
+Specifies the Backup management type.
+Currently, only AzureVM is supported.
 
 ```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
+Type: BackupManagementType
+Parameter Sets: WorkloadBackupManagementTypeParamSet
+Aliases: 
+Accepted values: AzureVM, MARS, SCDPM, AzureBackupServer, AzureSQL
 
-Required: False
-Position: Named
+Required: True
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationVariable
-Specifies an information variable.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: String
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: iv
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -125,27 +118,12 @@ Currently, only AzureVM is supported.
 
 ```yaml
 Type: WorkloadType
-Parameter Sets: WorkloadBackupManagementTypeParamSet, WorkloadParamSet
+Parameter Sets: WorkloadParamSet, WorkloadBackupManagementTypeParamSet
 Aliases: 
+Accepted values: AzureVM, AzureSQLDatabase
 
 Required: True
 Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -BackupManagementType
-Specifies the Backup management type.
-Currently, only AzureVM is supported.
-
-```yaml
-Type: BackupManagementType
-Parameter Sets: WorkloadBackupManagementTypeParamSet
-Aliases: 
-
-Required: True
-Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -157,6 +135,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyBase
+
+### System.Collections.Generic.IList`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyBase]
 
 ## NOTES
 

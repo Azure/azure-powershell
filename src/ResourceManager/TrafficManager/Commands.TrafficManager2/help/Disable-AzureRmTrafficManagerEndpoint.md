@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.TrafficManager.dll-Help.xml
+Module Name: AzureRM
 ms.assetid: 8CC749F1-B961-4F8F-BAD4-2C0F4385D1C2
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.trafficmanager/disable-azurermtrafficmanagerendpoint
 schema: 2.0.0
 ---
 
@@ -15,13 +16,14 @@ Disables an endpoint in a Traffic Manager profile.
 ### Fields
 ```
 Disable-AzureRmTrafficManagerEndpoint -Name <String> -Type <String> -ProfileName <String>
- -ResourceGroupName <String> [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -ResourceGroupName <String> [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### Object
 ```
-Disable-AzureRmTrafficManagerEndpoint -TrafficManagerEndpoint <TrafficManagerEndpoint> [-Force] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Disable-AzureRmTrafficManagerEndpoint -TrafficManagerEndpoint <TrafficManagerEndpoint> [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -54,17 +56,17 @@ Therefore, it does not prompt you for confirmation.
 
 ## PARAMETERS
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: SwitchParameter
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: cf
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -168,6 +170,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
@@ -189,7 +206,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### TrafficManagerEndpoint
+Parameter 'TrafficManagerEndpoint' accepts value of type 'TrafficManagerEndpoint' from the pipeline
+
 ## OUTPUTS
+
+### System.Boolean
 
 ## NOTES
 

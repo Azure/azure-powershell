@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Hyak.Common;
 using Microsoft.Azure.Commands.OperationalInsights.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Net;
@@ -37,6 +37,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         [Parameter(Position = 1, ParameterSetName = ByWorkspaceNameByName, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
         [Parameter(ParameterSetName = ByWorkspaceNameByKind)]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -86,7 +87,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
                     var dataSource = OperationalInsightsClient.GetDataSource(ResourceGroupName, WorkspaceName, Name);
                     WriteObject(dataSource, true);
                 }
-                catch (CloudException e)
+                catch (Microsoft.Rest.Azure.CloudException e)
                 {
                     // Get throws NotFound exception if workspace does not exist
                     if (e.Response.StatusCode == HttpStatusCode.NotFound)

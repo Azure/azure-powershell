@@ -23,6 +23,8 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.Azure.Commands.Common.Authentication;
 using System;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Websites
 {
@@ -60,9 +62,9 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
             };
 
             currentProfile = new AzureSMProfile();
-            var subscription = new AzureSubscription{Id = new Guid(base.subscriptionId) };
-            subscription.Properties[AzureSubscription.Property.Default] = "True";
-            currentProfile.Subscriptions[new Guid(base.subscriptionId)] = subscription;
+            var subscription = new AzureSubscription{Id = base.subscriptionId };
+            subscription.SetDefault();
+            currentProfile.SubscriptionTable[new Guid(base.subscriptionId)] = subscription;
 
             // Test
             disableAzureWebsiteApplicationDiagnosticCommand.ExecuteCmdlet();
@@ -93,9 +95,9 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
             };
 
             currentProfile = new AzureSMProfile();
-            var subscription = new AzureSubscription{Id = new Guid(base.subscriptionId) };
-            subscription.Properties[AzureSubscription.Property.Default] = "True";
-            currentProfile.Subscriptions[new Guid(base.subscriptionId)] = subscription;
+            var subscription = new AzureSubscription{Id = base.subscriptionId };
+            subscription.SetDefault();
+            currentProfile.SubscriptionTable[new Guid(base.subscriptionId)] = subscription;
 
             // Test
             disableAzureWebsiteApplicationDiagnosticCommand.ExecuteCmdlet();
@@ -126,9 +128,9 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
             };
 
             currentProfile = new AzureSMProfile();
-            var subscription = new AzureSubscription{Id = new Guid(base.subscriptionId) };
-            subscription.Properties[AzureSubscription.Property.Default] = "True";
-            currentProfile.Subscriptions[new Guid(base.subscriptionId)] = subscription;
+            var subscription = new AzureSubscription{Id = base.subscriptionId };
+            subscription.SetDefault();
+            currentProfile.SubscriptionTable[new Guid(base.subscriptionId)] = subscription;
 
             // Test
             disableAzureWebsiteApplicationDiagnosticCommand.ExecuteCmdlet();
@@ -161,9 +163,9 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
             };
 
             currentProfile = new AzureSMProfile();
-            var subscription = new AzureSubscription{Id = new Guid(base.subscriptionId) };
-            subscription.Properties[AzureSubscription.Property.Default] = "True";
-            currentProfile.Subscriptions[new Guid(base.subscriptionId)] = subscription;
+            var subscription = new AzureSubscription{Id = base.subscriptionId };
+            subscription.SetDefault();
+            currentProfile.SubscriptionTable[new Guid(base.subscriptionId)] = subscription;
 
             // Test
             disableAzureWebsiteApplicationDiagnosticCommand.ExecuteCmdlet();

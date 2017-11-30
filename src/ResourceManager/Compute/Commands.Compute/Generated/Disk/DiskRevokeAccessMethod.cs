@@ -97,53 +97,45 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 
-    [Cmdlet(VerbsSecurity.Revoke, "AzureRmDiskAccess", DefaultParameterSetName = "InvokeByDynamicParameters", SupportsShouldProcess = true)]
-    public partial class RevokeAzureRmDiskAccess : InvokeAzureComputeMethodCmdlet
+    [Cmdlet(VerbsSecurity.Revoke, "AzureRmDiskAccess", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
+    [OutputType(typeof(PSOperationStatusResponse))]
+    public partial class RevokeAzureRmDiskAccess : ComputeAutomationBaseCmdlet
     {
-        public override string MethodName { get; set; }
-
         protected override void ProcessRecord()
         {
-            this.MethodName = "DiskRevokeAccess";
-            if (ShouldProcess(this.dynamicParameters["ResourceGroupName"].Value.ToString(), VerbsSecurity.Revoke))
+            ExecuteClientAction(() =>
             {
-                base.ProcessRecord();
-            }
+                if (ShouldProcess(this.DiskName, VerbsSecurity.Revoke))
+                {
+                    string resourceGroupName = this.ResourceGroupName;
+                    string diskName = this.DiskName;
+
+                    var result = DisksClient.RevokeAccess(resourceGroupName, diskName);
+                    var psObject = new PSOperationStatusResponse();
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<Azure.Management.Compute.Models.OperationStatusResponse, PSOperationStatusResponse>(result, psObject);
+                    WriteObject(psObject);
+                }
+            });
         }
 
-        public override object GetDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pResourceGroupName = new RuntimeDefinedParameter();
-            pResourceGroupName.Name = "ResourceGroupName";
-            pResourceGroupName.ParameterType = typeof(string);
-            pResourceGroupName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true,
-                ValueFromPipelineByPropertyName = true,
-                ValueFromPipeline = false
-            });
-            pResourceGroupName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ResourceGroupName", pResourceGroupName);
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Position = 1,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false)]
+        [AllowNull]
+        [ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleter()]
+        public string ResourceGroupName { get; set; }
 
-            var pDiskName = new RuntimeDefinedParameter();
-            pDiskName.Name = "DiskName";
-            pDiskName.ParameterType = typeof(string);
-            pDiskName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true,
-                ValueFromPipelineByPropertyName = true,
-                ValueFromPipeline = false
-            });
-            pDiskName.Attributes.Add(new AliasAttribute("Name"));
-            pDiskName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DiskName", pDiskName);
-
-            return dynamicParameters;
-        }
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Position = 2,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false)]
+        [Alias("Name")]
+        [AllowNull]
+        public string DiskName { get; set; }
     }
 }

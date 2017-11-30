@@ -12,14 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ServiceBus.Models;
 using Microsoft.Azure.Management.ServiceBus.Models;
 using System.Management.Automation;
+using System.Xml;
 
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.Subscription
 {
     /// <summary>
-    /// 'New-AzureRmServiceBusSubscription' Cmdlet creates a new EventHub
+    /// 'New-AzureRmServiceBusSubscription' Cmdlet creates a new Subscription
     /// </summary>
     [Cmdlet(VerbsCommon.New, ServicebusSubscriptionVerb, SupportsShouldProcess = true), OutputType(typeof(SubscriptionAttributes))]
     public class NewAzureRmServiceBusSubscription : AzureServiceBusCmdletBase
@@ -28,29 +30,34 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Subscription
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = "The name of the resource group")]
+        [ResourceGroupCompleter]
+        [Alias("ResourceGroup")]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroup { get; set; }
+        public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "Namespace Name.")]
+        [Alias(AliasNamespaceName)]
         [ValidateNotNullOrEmpty]
-        public string NamespaceName { get; set; }
+        public string Namespace { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "Topic Name.")]
+        [Alias(AliasTopicName)]
         [ValidateNotNullOrEmpty]
-        public string TopicName { get; set; }
+        public string Topic { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 2,
             HelpMessage = "Subscription Name")]
+        [Alias(AliasSubscriptionName)]
         [ValidateNotNullOrEmpty]
-        public string SubscriptionName { get; set; }
+        public string Name { get; set; }
                 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -60,11 +67,9 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Subscription
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "DeadLetteringOnFilterEvaluationExceptions - Value that indicates if a subscription has dead letter support when a message expires.")]
-        [ValidateSet("TRUE", "FALSE",
-            IgnoreCase = true)]
+            HelpMessage = "Timespan to live value. This is the duration after which the message expires, starting from when the message is sent to Service Bus. This is the default value used when TimeToLive is not set on a message itself. For Standard = Timespan.Max and Basic = 14 dyas")]
         [ValidateNotNullOrEmpty]
-        public bool? DeadLetteringOnFilterEvaluationExceptions { get; set; }
+        public string DefaultMessageTimeToLive { get; set; }
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -80,15 +85,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Subscription
         [ValidateSet("TRUE", "FALSE",
             IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
-        public bool? EnableBatchedOperations { get; set; }        
-
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "IsReadOnly - Value that indicates whether the entity description is read-only.")]
-        [ValidateSet("TRUE", "FALSE",
-            IgnoreCase = true)]
-        [ValidateNotNullOrEmpty]
-        public bool? IsReadOnly { get; set; }
+        public bool? EnableBatchedOperations { get; set; }
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -114,17 +111,18 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Subscription
             
             SubscriptionAttributes subAttributes = new SubscriptionAttributes();
 
-            NamespaceAttributes getNamespaceLoc = Client.GetNamespace(ResourceGroup, NamespaceName);
-
-            subAttributes.Location = getNamespaceLoc.Location;
-
-            subAttributes.Name = SubscriptionName;
+            NamespaceAttributes getNamespaceLoc = Client.GetNamespace(ResourceGroupName, Namespace);
+            
+            subAttributes.Name = Name;
             
             if (AutoDeleteOnIdle != null)
                 subAttributes.AutoDeleteOnIdle = AutoDeleteOnIdle;
 
-            if (DeadLetteringOnFilterEvaluationExceptions != null)
-                subAttributes.DeadLetteringOnFilterEvaluationExceptions = DeadLetteringOnFilterEvaluationExceptions;
+            if (DefaultMessageTimeToLive != null)
+                subAttributes.DefaultMessageTimeToLive = DefaultMessageTimeToLive;
+
+            if (LockDuration != null)
+                subAttributes.LockDuration = LockDuration;
 
             if (DeadLetteringOnMessageExpiration != null)
                 subAttributes.DeadLetteringOnMessageExpiration = DeadLetteringOnMessageExpiration;
@@ -135,21 +133,15 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Subscription
             if (DeadLetteringOnMessageExpiration != null)
                 subAttributes.DeadLetteringOnMessageExpiration = DeadLetteringOnMessageExpiration;
 
-            if (IsReadOnly != null)
-                subAttributes.IsReadOnly = IsReadOnly;
-
-            if (LockDuration != null)
-                subAttributes.LockDuration = LockDuration;
-
             if (MaxDeliveryCount != null)
                 subAttributes.MaxDeliveryCount = MaxDeliveryCount;
 
             if (RequiresSession != null)
                 subAttributes.RequiresSession = RequiresSession;
             
-            if (ShouldProcess(target: SubscriptionName, action: string.Format("Create a new Subscription:{0} for Topic:{1} of Namsespae:{2}",SubscriptionName,TopicName,NamespaceName)))
+            if (ShouldProcess(target: Name, action: string.Format(Resources.CreateSubscription, Name, Topic,Namespace)))
             {
-                WriteObject(Client.CreateUpdateSubscription(ResourceGroup, NamespaceName, TopicName, subAttributes.Name, subAttributes));
+                WriteObject(Client.CreateUpdateSubscription(ResourceGroupName, Namespace, Topic, Name, subAttributes));
             }
         }
     }

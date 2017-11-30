@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
+Module Name: AzureRM.Resources
 ms.assetid: 880D321E-30F2-4CAE-B14A-5F6DD8E1DB99
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/remove-azurermresourcegroup
 schema: 2.0.0
 ---
 
@@ -12,16 +13,16 @@ Removes a resource group.
 
 ## SYNTAX
 
-### Lists the resource group based in the name. (Default)
+### RemoveByResourceGroupName (Default)
 ```
-Remove-AzureRmResourceGroup [-Name] <String> [-Force] [-ApiVersion <String>] [-Pre] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzureRmResourceGroup [-Name] <String> [-Force] [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Lists the resource group based in the Id.
+### RemoveByResourceGroupId
 ```
-Remove-AzureRmResourceGroup [-Id] <String> [-Force] [-ApiVersion <String>] [-Pre] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzureRmResourceGroup [-Id] <String> [-Force] [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,35 +56,34 @@ This command uses the **Get-AzureRmResourceGroup** cmdlet to get all resource gr
 
 ## PARAMETERS
 
-### -Name
-Specifies the names of resource groups to remove.
-Wildcard characters are not permitted.
+### -ApiVersion
+Specifies the API version that is supported by the resource Provider.
+You can specify a different version than the default version.
 
 ```yaml
 Type: String
-Parameter Sets: Lists the resource group based in the name.
-Aliases: ResourceGroupName
+Parameter Sets: (All)
+Aliases: 
 
-Required: True
-Position: 0
+Required: False
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Id
-Specifies the ID of resource group to remove.
-Wildcard characters are not permitted.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: String
-Parameter Sets: Lists the resource group based in the Id.
-Aliases: ResourceGroupId, ResourceId
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
 
-Required: True
-Position: 0
+Required: False
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -102,12 +102,43 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ApiVersion
-Specifies the API version that is supported by the resource Provider.
-You can specify a different version than the default version.
+### -Id
+Specifies the ID of resource group to remove.
+Wildcard characters are not permitted.
 
 ```yaml
 Type: String
+Parameter Sets: RemoveByResourceGroupId
+Aliases: ResourceGroupId, ResourceId
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Name
+Specifies the names of resource groups to remove.
+Wildcard characters are not permitted.
+
+```yaml
+Type: String
+Parameter Sets: RemoveByResourceGroupName
+Aliases: ResourceGroupName
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Pre
+Indicates that this cmdlet considers pre-release API versions when it automatically determines which version to use.
+
+```yaml
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
 
@@ -129,21 +160,6 @@ Aliases: cf
 Required: False
 Position: Named
 Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Pre
-Indicates that this cmdlet considers pre-release API versions when it automatically determines which version to use.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

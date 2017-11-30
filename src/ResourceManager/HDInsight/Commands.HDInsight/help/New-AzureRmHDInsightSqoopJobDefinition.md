@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
+Module Name: AzureRM.HDInsight
 ms.assetid: 4ED47646-542B-4983-B46B-B603BE33D499
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.hdinsight/new-azurermhdinsightsqoopjobdefinition
 schema: 2.0.0
 ---
 
@@ -14,8 +15,7 @@ Creates a Sqoop job object.
 
 ```
 New-AzureRmHDInsightSqoopJobDefinition [-Files <String[]>] [-StatusFolder <String>] [-File <String>]
- [-Command <String>] [-LibDir <String>] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [<CommonParameters>]
+ [-Command <String>] [-LibDir <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,11 +39,11 @@ This command creates a Sqoop job definition.
 
 ## PARAMETERS
 
-### -Files
-Specifies a collection of files that are associated with a Hive job.
+### -Command
+Specifies the Sqoop command.
 
 ```yaml
-Type: String[]
+Type: String
 Parameter Sets: (All)
 Aliases: 
 
@@ -54,13 +54,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -StatusFolder
-Specifies the location of the folder that contains standard outputs and error outputs for a job.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: String
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: 
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -86,11 +86,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Command
-Specifies the Sqoop command.
+### -Files
+Specifies a collection of files that are associated with a Hive job.
 
 ```yaml
-Type: String
+Type: String[]
 Parameter Sets: (All)
 Aliases: 
 
@@ -116,37 +116,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
+### -StatusFolder
+Specifies the location of the folder that contains standard outputs and error outputs for a job.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: iv
+Aliases: 
 
 Required: False
 Position: Named
@@ -161,6 +137,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightSqoopJobDefinition
 
 ## NOTES
 

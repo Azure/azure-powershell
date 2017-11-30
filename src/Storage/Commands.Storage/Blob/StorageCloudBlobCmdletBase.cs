@@ -63,19 +63,44 @@ namespace Microsoft.WindowsAzure.Commands.Storage
             string blobName,
             AccessCondition accessCondition = null,
             BlobRequestOptions requestOptions = null,
-            OperationContext operationContext = null)
+            OperationContext operationContext = null,
+            DateTimeOffset? snapshotTime = null)
         {
             return GetBlobReferenceWrapper(() =>
                 {
                     try
                     {
-                        return localChannel.GetBlobReferenceFromServer(container, blobName, accessCondition, requestOptions, operationContext);
+                        return localChannel.GetBlobReferenceFromServer(container, blobName, accessCondition, requestOptions, operationContext, snapshotTime);
                     }
                     catch (InvalidOperationException)
                     {
                         return null;
                     }
                 },
+                blobName,
+                container.Name);
+        }
+
+        protected static CloudBlob GetBlobSnapshotReferenceFromServerWithContainer(
+            IStorageBlobManagement localChannel,
+            CloudBlobContainer container,
+            string blobName,
+            DateTime SrcBlobSnapshotTime,
+            AccessCondition accessCondition = null,
+            BlobRequestOptions requestOptions = null,
+            OperationContext operationContext = null)
+        {
+            return GetBlobReferenceWrapper(() =>
+            {
+                try
+                {
+                    return localChannel.GetBlobReferenceFromServer(container, blobName, accessCondition, requestOptions, operationContext);
+                }
+                catch (InvalidOperationException)
+                {
+                    return null;
+                }
+            },
                 blobName,
                 container.Name);
         }
@@ -215,6 +240,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage
                     Resources.InvalidBlobType,
                     blob.BlobType,
                     blob.Name));
+            }
+        }
+
+        protected void ValidateBlobTier(BlobType type, PremiumPageBlobTier? pageBlobTier)
+        {
+            if ((pageBlobTier != null)
+                && (type != BlobType.PageBlob))
+            {
+                throw new ArgumentOutOfRangeException("BlobType, PageBlobTier", String.Format("PremiumPageBlobTier can only be set to Page Blob. The Current BlobType is: {0}", type));
             }
         }
 

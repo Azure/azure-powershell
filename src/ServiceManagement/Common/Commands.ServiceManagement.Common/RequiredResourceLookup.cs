@@ -39,11 +39,6 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
                 return new[] { "website" };
             }
 
-            if (typeof(T).FullName.EndsWith("ManagedCacheClient"))
-            {
-                return new[] { "cacheservice.Caching" };
-            }
-
             if (typeof(T).FullName.EndsWith("SchedulerManagementClient"))
             {
                 return new[] { "scheduler.jobcollections" };

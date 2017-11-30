@@ -45,6 +45,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// extended information version.
         /// </summary>
         public const string VaultExtendedInfoContractVersion = "V2014_09";
+
+        /// <summary>
+        /// RecoveryServicesProviderAuthType string coming from service.
+        /// </summary>
+        public const string RecoveryServicesProviderAuthType = "RecoveryServicesProviderAuthType";
     }
 
     /// <summary>
@@ -66,22 +71,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         /// <param name="vault">vault object</param>
         public ARSVault(Vault vault)
-        {
-            this.ID = vault.Id;
-            this.Name = vault.Name;
-            this.Type = vault.Type;
-            this.Location = vault.Location;
-            this.ResourceGroupName = PSRecoveryServicesClient.GetResourceGroup(vault.Id);
-            this.SubscriptionId = PSRecoveryServicesClient.GetSubscriptionId(vault.Id);
-            this.Properties = new ARSVaultProperties();
-            this.Properties.ProvisioningState = vault.Properties.ProvisioningState;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ARSVault" /> class.
-        /// </summary>
-        /// <param name="vault">vault object</param>
-        public ARSVault(VaultCreateResponse vault)
         {
             this.ID = vault.Id;
             this.Name = vault.Name;

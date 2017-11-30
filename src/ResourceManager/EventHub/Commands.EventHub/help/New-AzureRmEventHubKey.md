@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.EventHub.dll-Help.xml
-online version: 
+Module Name: AzureRM
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.eventhub/new-azurermeventhubkey
 schema: 2.0.0
 ---
 
@@ -11,31 +12,154 @@ Creates a new primary or secondary key for the specified Event Hubs authorizatio
 
 ## SYNTAX
 
+### NamespaceAuthorizationRuleSet (Default)
 ```
-New-AzureRmEventHubKey [-ResourceGroup] <String> [-NamespaceName] <String> [-EventHubName] <String>
- -AuthorizationRuleName <String> [-RegenerateKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzureRmEventHubKey [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
+ [-RegenerateKey] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### EventhubAuthorizationRuleSet
+```
+New-AzureRmEventHubKey [-ResourceGroupName] <String> [-Namespace] <String> [-EventHub] <String>
+ [-Name] <String> [-RegenerateKey] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmEventHubKey** cmdlet regenerates the primary or secondary SAS key for the specified Event Hubs authorization rule.
+The New-AzureRmEventHubKey cmdlet regenerates the primary or secondary SAS key for the specified Event Hubs authorization rule.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1.1
 ```
-PS C:\> New-AzureRmEventHubKey -ResourceGroup MyResourceGroupName -NamespaceName MyNamespaceName -EventHubName MyEventHubName -AuthorizationRuleName MyAuthRuleName -RegenerateKey PrimaryKey
-```
-
-Regenerates the primary key for the authorization rule `MyAuthRuleName`.
-
-### Example 2
-```
-PS C:\> New-AzureRmEventHubKey -ResourceGroup MyResourceGroupName -NamespaceName MyNamespaceName -EventHubName MyEventHubName -AuthorizationRuleName MyAuthRuleName -RegenerateKey SecondaryKey
+PS C:\> New-AzureRmEventHubKey -ResourceGroup MyResourceGroupName -Namespace MyNamespaceName -Name MyAuthRuleName -RegenerateKey PrimaryKey
 ```
 
-Regenerates the secondary key for the authorization rule `MyAuthRuleName`.
+Regenerates the primary key for the authorization rule \`MyAuthRuleName\`.
+
+### Example 1.2
+```
+PS C:\> New-AzureRmEventHubKey -ResourceGroup MyResourceGroupName -Namespace MyNamespaceName -EventHub MyEventHubName -Name MyAuthRuleName -RegenerateKey PrimaryKey
+```
+
+Regenerates the primary key for the authorization rule \`MyAuthRuleName\`.
+
+### Example 2.1
+```
+PS C:\> New-AzureRmEventHubKey -ResourceGroup MyResourceGroupName -Namespace MyNamespaceName -Name MyAuthRuleName -RegenerateKey SecondaryKey
+```
+
+### Example 2.2
+```
+PS C:\> New-AzureRmEventHubKey -ResourceGroup MyResourceGroupName -Namespace MyNamespaceName -EventHub MyEventHubName -Name MyAuthRuleName -RegenerateKey SecondaryKey
+```
+
+Regenerates the secondary key for the authorization rule \`MyAuthRuleName\`.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EventHub
+EventHub Name.
+
+```yaml
+Type: String
+Parameter Sets: EventhubAuthorizationRuleSet
+Aliases: EventHubName
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Name
+AuthorizationRule Name.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: AuthorizationRuleName
+
+Required: True
+Position: 3
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Namespace
+Namespace Name.
+
+```yaml
+Type: String
+Parameter Sets: NamespaceAuthorizationRuleSet
+Aliases: NamespaceName
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: EventhubAuthorizationRuleSet
+Aliases: NamespaceName
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RegenerateKey
+Key to regenerate: \`PrimaryKey\` or \`SecondaryKey\`.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+Accepted values: PrimaryKey, SecondaryKey
+
+Required: True
+Position: 4
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Resource Group Name.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: ResourceGroup
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
@@ -52,67 +176,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EventHubName
-The Event Hub name.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -NamespaceName
-The Event Hubs namespace name.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -RegenerateKey
-Key to regenerate: `PrimaryKey` or `SecondaryKey`.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-Accepted values: PrimaryKey, SecondaryKey
-
-Required: True
-Position: 4
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceGroup
-The name of the resource group.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
@@ -126,21 +189,6 @@ Required: False
 Position: Named
 Default value: False
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AuthorizationRuleName
-Authorization rule name.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

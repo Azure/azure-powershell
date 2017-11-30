@@ -12,9 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Insights.LogProfiles;
-using Microsoft.Azure.Management.Insights;
-using Microsoft.Azure.Management.Insights.Models;
+using Microsoft.Azure.Management.Monitor.Management;
+using Microsoft.Azure.Management.Monitor.Management.Models;
+using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System.Collections.Generic;
@@ -29,7 +32,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.LogProfiles
     public class AddAzureRmLogProfileTests
     {
         private readonly AddAzureRmLogProfileCommand cmdlet;
-        private readonly Mock<InsightsManagementClient> insightsManagementClientMock;
+        private readonly Mock<MonitorManagementClient> insightsManagementClientMock;
         private readonly Mock<ILogProfilesOperations> insightsLogProfileOperationsMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
         private Rest.Azure.AzureOperationResponse<LogProfileResource> response;
@@ -38,14 +41,15 @@ namespace Microsoft.Azure.Commands.Insights.Test.LogProfiles
 
         public AddAzureRmLogProfileTests(ITestOutputHelper output)
         {
-            // XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            TestExecutionHelpers.SetUpSessionAndProfile();
             insightsLogProfileOperationsMock = new Mock<ILogProfilesOperations>();
-            insightsManagementClientMock = new Mock<InsightsManagementClient>();
+            insightsManagementClientMock = new Mock<MonitorManagementClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new AddAzureRmLogProfileCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
-                InsightsManagementClient = insightsManagementClientMock.Object
+                MonitorManagementClient = insightsManagementClientMock.Object
             };
 
             response = Utilities.InitializeLogProfileResponse();
@@ -59,6 +63,12 @@ namespace Microsoft.Azure.Commands.Insights.Test.LogProfiles
                 });
 
             insightsManagementClientMock.SetupGet(f => f.LogProfiles).Returns(this.insightsLogProfileOperationsMock.Object);
+
+            // Setup Confirmation
+            commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>())).Returns(true);
+            commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
+            commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>())).Returns(true);
+            commandRuntimeMock.Setup(f => f.ShouldContinue(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
         }
 
         [Fact]
@@ -67,18 +77,18 @@ namespace Microsoft.Azure.Commands.Insights.Test.LogProfiles
         {
             // With mandatory arguments only
             cmdlet.Name = Utilities.Name;
-            cmdlet.Locations = new List<string>() { "East US" };
+            cmdlet.Location = new List<string>() { "East US" };
             cmdlet.ExecuteCmdlet();
             
             Assert.Equal(Utilities.Name, this.logProfileName);
             
             // With all arguments
             cmdlet.Name = Utilities.Name;
-            cmdlet.Locations = new List<string>() {"East US"};
+            cmdlet.Location = new List<string>() {"East US"};
             cmdlet.RetentionInDays = 10;
             cmdlet.ServiceBusRuleId = "miBusId";
             cmdlet.StorageAccountId = "miCuentaId";
-            cmdlet.Categories = new List<string>() {"cat1"};
+            cmdlet.Category = new List<string>() {"cat1"};
 
             cmdlet.ExecuteCmdlet();
 

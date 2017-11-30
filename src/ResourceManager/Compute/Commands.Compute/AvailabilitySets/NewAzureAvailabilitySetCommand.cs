@@ -15,7 +15,9 @@
 using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
+using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
@@ -29,6 +31,7 @@ namespace Microsoft.Azure.Commands.Compute
            Position = 0,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource group name.")]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -46,6 +49,7 @@ namespace Microsoft.Azure.Commands.Compute
             Position = 2,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The location.")]
+        [LocationCompleter("Microsoft.Compute/availabilitySets")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
@@ -72,6 +76,7 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Managed Availability Set")]
+        [Obsolete("This parameter is obsolete.  Please use Sku parameter instead.", false)]
         public SwitchParameter Managed { get; set; }
 
         public override void ExecuteCmdlet()
@@ -84,8 +89,7 @@ namespace Microsoft.Azure.Commands.Compute
                 {
                     Location = this.Location,
                     PlatformUpdateDomainCount = this.PlatformUpdateDomainCount,
-                    PlatformFaultDomainCount = this.PlatformFaultDomainCount,
-                    Managed = this.Managed.IsPresent ? (bool?) true : null
+                    PlatformFaultDomainCount = this.PlatformFaultDomainCount
                 };
 
                 if (this.Managed.IsPresent || !string.IsNullOrEmpty(this.Sku))
@@ -106,10 +110,10 @@ namespace Microsoft.Azure.Commands.Compute
                     this.Name,
                     avSetParams).GetAwaiter().GetResult();
 
-                var psResult = Mapper.Map<PSAvailabilitySet>(result);
+                var psResult = ComputeAutoMapperProfile.Mapper.Map<PSAvailabilitySet>(result);
                 if (result.Body != null)
                 {
-                    psResult = Mapper.Map(result.Body, psResult);
+                    psResult = ComputeAutoMapperProfile.Mapper.Map(result.Body, psResult);
                 }
                 WriteObject(psResult);
             });

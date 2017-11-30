@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
+Module Name: AzureRM.KeyVault
 ms.assetid: 8C9B33EE-10DE-4803-B76D-FE9FC2AC3372
-online version: http://go.microsoft.com/fwlink/?LinkId=690298
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret
 schema: 2.0.0
 ---
 
@@ -14,17 +15,25 @@ Gets the secrets in a key vault.
 
 ### ByVaultName (Default)
 ```
-Get-AzureKeyVaultSecret [-VaultName] <String> [<CommonParameters>]
+Get-AzureKeyVaultSecret [-VaultName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### BySecretName
 ```
-Get-AzureKeyVaultSecret [-VaultName] <String> [-Name] <String> [[-Version] <String>] [<CommonParameters>]
+Get-AzureKeyVaultSecret [-VaultName] <String> [-Name] <String> [[-Version] <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### BySecretVersions
 ```
-Get-AzureKeyVaultSecret [-VaultName] <String> [-Name] <String> [-IncludeVersions] [<CommonParameters>]
+Get-AzureKeyVaultSecret [-VaultName] <String> [-Name] <String> [-IncludeVersions]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ByDeletedSecrets
+```
+Get-AzureKeyVaultSecret [-VaultName] <String> [[-Name] <String>] [-InRemovedState]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -69,7 +78,37 @@ PS C:\> Write-Host "Secret Value is: " $secret.SecretValueText
 
 These commands get the current version of a secret named ITSecret, and then displays the plain text value of that secret.
 
+### Example 6: Get all the secrets that have been deleted but not purged for this key vault.
+```
+PS C:\>Get-AzureKeyVaultSecret -VaultName 'Contoso' -InRemovedState
+```
+
+This command gets all the secrets that have been previously deleted, but not purged, in the key vault named Contoso.
+
+### Example 7: Gets the secret ITSecret that has been deleted but not purged for this key vault.
+```
+PS C:\>Get-AzureKeyVaultSecret -VaultName 'Contoso' -KeyName 'ITSecret' -InRemovedState
+```
+
+This command gets the secret ITSecret that has been previously deleted, but not purged, in the key vault named Contoso.
+This command will return metadata such as the deletion date, and the scheduled purging date of this deleted secret.
+
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -IncludeVersions
 Indicates that this cmdlet gets all versions of a secret.
@@ -90,6 +129,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InRemovedState
+Specifies whether to show the previously deleted secrets in the output
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: ByDeletedSecrets
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of the secret to get.
 
@@ -99,7 +153,19 @@ Parameter Sets: BySecretName, BySecretVersions
 Aliases: SecretName
 
 Required: True
-Position: 2
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: ByDeletedSecrets
+Aliases: SecretName
+
+Required: False
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -115,7 +181,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -131,7 +197,7 @@ Parameter Sets: BySecretName
 Aliases: SecretVersion
 
 Required: False
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -146,13 +212,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### List<Microsoft.Azure.Commands.KeyVault.Models.Secret>, Microsoft.Azure.Commands.KeyVault.Models.Secret
+### List<Microsoft.Azure.Commands.KeyVault.Models.SecretIdentityItem>, Microsoft.Azure.Commands.KeyVault.Models.Secret, List<Microsoft.Azure.Commands.KeyVault.Models.DeletedSecretIdentityItem>, Microsoft.Azure.Commands.KeyVault.Models.DeletedSecret
 
 ## NOTES
 
 ## RELATED LINKS
 
 [Remove-AzureKeyVaultSecret](./Remove-AzureKeyVaultSecret.md)
+
+[Undo-AzureKeyVaultSecretRemoval](./Undo-AzureKeyVaultSecretRemoval.md)
 
 [Set-AzureKeyVaultSecret](./Set-AzureKeyVaultSecret.md)
 

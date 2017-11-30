@@ -40,7 +40,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.ScenarioTests
         private LegacyTest.CSMTestEnvironmentFactory csmTestFactory;
         private EnvironmentSetupHelper helper;
         private const string AuthorizationApiVersion = "2014-07-01-preview";
-        internal const string resourceGroupLocation = "West US";
 
         public ResourceManagementClient ResourceManagementClient { get; private set; }
 

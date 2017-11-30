@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+Module Name: AzureRM.Network
 ms.assetid: 87818605-EFA6-422E-9ECD-0A0BF269DCFD
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/set-azurermloadbalancerinboundnatruleconfig
 schema: 2.0.0
 ---
 
@@ -16,8 +17,8 @@ Sets an inbound NAT rule configuration for a load balancer.
 ```
 Set-AzureRmLoadBalancerInboundNatRuleConfig -Name <String> -LoadBalancer <PSLoadBalancer>
  [-FrontendIpConfigurationId <String>] [-Protocol <String>] [-FrontendPort <Int32>] [-BackendPort <Int32>]
- [-IdleTimeoutInMinutes <Int32>] [-EnableFloatingIP] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+ [-IdleTimeoutInMinutes <Int32>] [-EnableFloatingIP] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### SetByResource
@@ -25,7 +26,7 @@ Set-AzureRmLoadBalancerInboundNatRuleConfig -Name <String> -LoadBalancer <PSLoad
 Set-AzureRmLoadBalancerInboundNatRuleConfig -Name <String> -LoadBalancer <PSLoadBalancer>
  [-FrontendIpConfiguration <PSFrontendIPConfiguration>] [-Protocol <String>] [-FrontendPort <Int32>]
  [-BackendPort <Int32>] [-IdleTimeoutInMinutes <Int32>] [-EnableFloatingIP]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -49,34 +50,63 @@ Note that the rule configuration was set without enabling floating IP, which had
 
 ## PARAMETERS
 
-### -Name
-Specifies the name of an inbound NAT rule configuration.
+### -BackendPort
+Specifies the backend port for traffic that is matched by this rule configuration.
 
 ```yaml
-Type: String
+Type: Int32
 Parameter Sets: (All)
 Aliases: 
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LoadBalancer
-Specifies a load balancer.
-This cmdlet sets an inbound NAT rule configuration for the load balancer that this parameter specifies.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: PSLoadBalancer
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableFloatingIP
+Indicates that this cmdlet enables a floating IP address for a rule configuration.
+
+```yaml
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FrontendIpConfiguration
+Specifies a list of front-end IP addresses to associate with an inbound NAT rule configuration.
+
+```yaml
+Type: PSFrontendIPConfiguration
+Parameter Sets: SetByResource
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -95,39 +125,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Protocol
-Specifies the protocol that is matched by an inbound NAT rule configuration.
-The acceptable values for this parameter are: Tcp or Udp.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -FrontendPort
 Specifies the front-end port that is matched by a load balancer rule configuration.
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -BackendPort
-Specifies the backend port for traffic that is matched by this rule configuration.
 
 ```yaml
 Type: Int32
@@ -156,67 +155,46 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnableFloatingIP
-Indicates that this cmdlet enables a floating IP address for a rule configuration.
+### -LoadBalancer
+Specifies a load balancer.
+This cmdlet sets an inbound NAT rule configuration for the load balancer that this parameter specifies.
 
 ```yaml
-Type: SwitchParameter
+Type: PSLoadBalancer
 Parameter Sets: (All)
 Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
+### -Name
+Specifies the name of an inbound NAT rule configuration.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: iv
+Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FrontendIpConfiguration
-Specifies a list of front-end IP addresses to associate with an inbound NAT rule configuration.
+### -Protocol
+Specifies the protocol that is matched by an inbound NAT rule configuration.
+The acceptable values for this parameter are: Tcp or Udp.
 
 ```yaml
-Type: PSFrontendIPConfiguration
-Parameter Sets: SetByResource
+Type: String
+Parameter Sets: (All)
 Aliases: 
+Accepted values: Tcp, Udp
 
 Required: False
 Position: Named
@@ -230,7 +208,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### PSLoadBalancer
+Parameter 'LoadBalancer' accepts value of type 'PSLoadBalancer' from the pipeline
+
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Network.Models.PSLoadBalancer
 
 ## NOTES
 

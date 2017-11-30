@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Profile.dll-Help.xml
-online version: 
+Module Name: AzureRM.Profile
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/set-azurermenvironment
 schema: 2.0.0
 ---
 
@@ -11,6 +12,7 @@ Sets properties for an Azure environment.
 
 ## SYNTAX
 
+### Name (Default)
 ```
 Set-AzureRmEnvironment [-Name] <String> [[-PublishSettingsFileUrl] <String>] [[-ServiceEndpoint] <String>]
  [[-ManagementPortalUrl] <String>] [[-StorageEndpoint] <String>] [[-ActiveDirectoryEndpoint] <String>]
@@ -18,9 +20,19 @@ Set-AzureRmEnvironment [-Name] <String> [[-PublishSettingsFileUrl] <String>] [[-
  [[-ActiveDirectoryServiceEndpointResourceId] <String>] [[-GraphEndpoint] <String>]
  [[-AzureKeyVaultDnsSuffix] <String>] [[-AzureKeyVaultServiceEndpointResourceId] <String>]
  [[-TrafficManagerDnsSuffix] <String>] [[-SqlDatabaseDnsSuffix] <String>]
- [-AzureDataLakeStoreFileSystemEndpointSuffix <String>]
- [-AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix <String>] [-EnableAdfsAuthentication]
- [[-AdTenant] <String>] [-GraphAudience <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-AzureDataLakeStoreFileSystemEndpointSuffix] <String>]
+ [[-AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix] <String>] [-EnableAdfsAuthentication]
+ [[-AdTenant] <String>] [[-GraphAudience] <String>] [[-DataLakeAudience] <String>]
+ [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ARMEndpoint
+```
+Set-AzureRmEnvironment [-Name] <String> [[-StorageEndpoint] <String>] [-ARMEndpoint] <String>
+ [[-AzureKeyVaultDnsSuffix] <String>] [[-AzureKeyVaultServiceEndpointResourceId] <String>]
+ [[-DataLakeAudience] <String>] [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -91,11 +103,11 @@ Specifies the base authority for Azure Active Directory authentication.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Name
 Aliases: AdEndpointUrl, ActiveDirectory, ActiveDirectoryAuthority
 
 Required: False
-Position: 6
+Position: 5
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -106,11 +118,11 @@ Specifies the audience for tokens that authenticate requests to Azure Resource M
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Name
 Aliases: 
 
 Required: False
-Position: 9
+Position: 8
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -121,11 +133,26 @@ Specifies the default Active Directory tenant.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Name
 Aliases: 
 
 Required: False
-Position: 16
+Position: 17
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ARMEndpoint
+The Azure Resource Manager endpoint.
+
+```yaml
+Type: String
+Parameter Sets: ARMEndpoint
+Aliases: ArmUrl
+
+Required: True
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -136,11 +163,11 @@ Dns Suffix of Azure Data Lake Analytics job and catalog services
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Name
 Aliases: 
 
 Required: False
-Position: Named
+Position: 15
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -152,11 +179,11 @@ Example: azuredatalake.net
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Name
 Aliases: 
 
 Required: False
-Position: Named
+Position: 14
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -171,7 +198,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 11
+Position: 10
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -186,9 +213,39 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 12
+Position: 11
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DataLakeAudience
+The audience for tokens authenticating with the AD Data Lake services Endpoint.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: DataLakeEndpointResourceId, DataLakeResourceId
+
+Required: False
+Position: 19
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -197,11 +254,11 @@ Indicates that Active Directory Federation Services (ADFS) on-premise authentica
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: Name
 Aliases: OnPremise
 
 Required: False
-Position: 15
+Position: 16
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -212,11 +269,11 @@ Specifies the endpoint for the Azure Resource Manager gallery of deployment temp
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Name
 Aliases: Gallery, GalleryUrl
 
 Required: False
-Position: 8
+Position: 7
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -227,11 +284,11 @@ The audience for tokens authenticating with the AD Graph Endpoint.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Name
 Aliases: GraphEndpointResourceId, GraphResourceId
 
 Required: False
-Position: Named
+Position: 18
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -242,11 +299,11 @@ Specifies the URL for Graph (Active Directory metadata) requests.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Name
 Aliases: Graph, GraphUrl
 
 Required: False
-Position: 10
+Position: 9
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -257,11 +314,11 @@ Specifies the URL for the Management Portal.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Name
 Aliases: 
 
 Required: False
-Position: 4
+Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -276,7 +333,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -287,11 +344,11 @@ Specifies the URL from which .publishsettings files can be downloaded.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Name
 Aliases: 
 
 Required: False
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -302,13 +359,29 @@ Specifies the URL for Azure Resource Manager requests.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Name
 Aliases: ResourceManager, ResourceManagerUrl
 
 Required: False
-Position: 7
+Position: 6
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Scope
+Determines the scope of context changes, for example, wheher changes apply only to the cusrrent process, or to all sessions started by this user.
+
+```yaml
+Type: ContextModificationScope
+Parameter Sets: (All)
+Aliases: 
+Accepted values: Process, CurrentUser
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -317,11 +390,11 @@ Specifies the endpoint for Service Management (RDFE) requests.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Name
 Aliases: ServiceManagement, ServiceManagementUrl
 
 Required: False
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -332,11 +405,11 @@ Specifies the domain-name suffix for Azure SQL Database servers.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Name
 Aliases: 
 
 Required: False
-Position: 14
+Position: 13
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -351,7 +424,7 @@ Parameter Sets: (All)
 Aliases: StorageEndpointSuffix
 
 Required: False
-Position: 5
+Position: 4
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -362,11 +435,11 @@ Specifies the domain-name suffix for Azure Traffic Manager services.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Name
 Aliases: 
 
 Required: False
-Position: 13
+Position: 12
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -415,9 +488,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzureRMEnvironment]()
+[Add-AzureRMEnvironment](./Add-AzureRMEnvironment.md)
 
-[Get-AzureRMEnvironment]()
+[Get-AzureRMEnvironment](./Get-AzureRMEnvironment.md)
 
-[Remove-AzureRMEnvironment]()
+[Remove-AzureRMEnvironment](./Remove-AzureRMEnvironment.md)
 

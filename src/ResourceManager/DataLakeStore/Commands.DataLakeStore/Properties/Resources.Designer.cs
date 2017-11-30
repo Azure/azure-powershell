@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No Encryption type passed in, defaulting to Service managed encryption. To opt out, explicitly pass in -Encryption None.
+        ///   Looks up a localized string similar to No Encryption type passed in, defaulting to Service managed encryption. To opt out, explicitly pass in -DisableEncryption.
         /// </summary>
         internal static string DefaultingEncryptionType {
             get {
@@ -129,6 +129,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         internal static string DownloadFileDataMessage {
             get {
                 return ResourceManager.GetString("DownloadFileDataMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enabling user supplied KeyVault to the Data Lake Store Account: &apos;{0}&apos; ....
+        /// </summary>
+        internal static string EnableKeyVault {
+            get {
+                return ResourceManager.GetString("EnableKeyVault", resourceCulture);
             }
         }
         
@@ -187,6 +196,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Key Vault key rotation is only supported for User Managed encryption. Current account has Service Managed encryption..
+        /// </summary>
+        internal static string IncorrectEncryptionTypeForUpdate {
+            get {
+                return ResourceManager.GetString("IncorrectEncryptionTypeForUpdate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The output type defined for this cmdlet is incorrect and will be updated to reflect what is actually returned (and defined in the help) in a future release..
         /// </summary>
         internal static string IncorrectOutputTypeWarning {
@@ -210,6 +228,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         internal static string InvalidContent {
             get {
                 return ResourceManager.GetString("InvalidContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No default subscription has been designated. Use Select-AzureSubscription -Default &lt;subscriptionName&gt; to set the default subscription..
+        /// </summary>
+        internal static string InvalidDefaultSubscription {
+            get {
+                return ResourceManager.GetString("InvalidDefaultSubscription", resourceCulture);
             }
         }
         
@@ -354,6 +381,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         internal static string MoveFailed {
             get {
                 return ResourceManager.GetString("MoveFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No subscription found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Login-AzureRMAccount to login..
+        /// </summary>
+        internal static string NoSubscriptionInContext {
+            get {
+                return ResourceManager.GetString("NoSubscriptionInContext", resourceCulture);
             }
         }
         

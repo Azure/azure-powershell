@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Sql.ServerUpgrade.Model;
-using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Cmdlet
     /// <summary>
     /// Defines the Start-AzureRmSqlServerUpgrade cmdlet
     /// </summary>
+    [Obsolete("All Azure SQL DB Servers now have version 12.0 so there is nothing to upgrade.")]
     [Cmdlet(VerbsLifecycle.Start, "AzureRmSqlServerUpgrade",
         ConfirmImpact = ConfirmImpact.Low)]
     public class StartAzureSqlServerUpgrade : AzureSqlServerUpgradeCmdletBase<AzureSqlServerUpgradeStartModel>

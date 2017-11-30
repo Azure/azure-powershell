@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                             {
                                 throw new TimeoutException();
                             }
-                            provider = ResourceManagementClient.Providers.Get(providerName).Provider;
+                            provider = ResourceManagementClient.Providers.Register(providerName);
                             TestMockSupport.Delay(1000);
                         } while (provider.RegistrationState != RegistrationState.Registered.ToString());
                         writeDebug(string.Format(Resources.ResourceProviderRegisterSuccessful, providerName));

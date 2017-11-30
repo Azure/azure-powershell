@@ -12,8 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Hyak.Common;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Commands.Sql.Common;
+using Microsoft.Rest.Azure;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,6 +35,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         /// </summary>
         [Parameter(Mandatory = true,
             HelpMessage = "SQL Database server name.")]
+        [Alias("Name")]
         [ValidateNotNullOrEmpty]
         public string ServerName { get; set; }
 
@@ -49,6 +52,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         /// </summary>
         [Parameter(Mandatory = true,
             HelpMessage = "The location in which to create the server")]
+        [LocationCompleter("Microsoft.Sql/servers")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
@@ -67,6 +71,10 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
             HelpMessage = "Determines which version of Sql Azure Server is created")]
         [ValidateNotNullOrEmpty]
         public string ServerVersion { get; set; }
+
+        [Parameter(Mandatory = false,
+            HelpMessage = "Generate and assign an Azure Active Directory Identity for this server for use with key management services like Azure KeyVault.")]
+        public SwitchParameter AssignIdentity { get; set; }
 
         /// <summary>
         /// Overriding to add warning message
@@ -121,6 +129,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
                 SqlAdministratorPassword = this.SqlAdministratorCredentials.Password,
                 SqlAdministratorLogin = this.SqlAdministratorCredentials.UserName,
                 Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
+                Identity = ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity.IsPresent),
             });
             return newEntity;
         }

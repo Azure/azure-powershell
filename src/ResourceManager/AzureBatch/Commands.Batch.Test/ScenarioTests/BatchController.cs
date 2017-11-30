@@ -13,10 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Batch;
-using Microsoft.Azure.Management.Resources;
+using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
@@ -44,6 +46,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
         public ResourceManagementClient ResourceManagementClient { get; private set; }
 
+        public Management.Resources.ResourceManagementClient OldResourceManagementClient { get; private set; }
+
         public BatchManagementClient BatchManagementClient { get; private set; }
 
         public static BatchController NewInstance
@@ -61,6 +65,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
         public void RunPsTest(params string[] scripts)
         {
+            TestExecutionHelpers.SetUpSessionAndProfile();
             var callingClassType = TestUtilities.GetCallingClass(2);
             var mockName = TestUtilities.GetCurrentMethodName(2);
 
@@ -148,12 +153,14 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         {
             AuthorizationManagementClient = GetAuthorizationManagementClient();
             GalleryClient = GetGalleryClient();
-            ResourceManagementClient = GetResourceManagementClient();
+            ResourceManagementClient = GetResourceManagementClient(context);
+            OldResourceManagementClient = GetResourceManagementClient();
             BatchManagementClient = GetBatchManagementClient(context);
 
             helper.SetupManagementClients(AuthorizationManagementClient,
                                           GalleryClient,
                                           ResourceManagementClient,
+                                          OldResourceManagementClient,
                                           BatchManagementClient);
         }
 
@@ -167,9 +174,14 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             return TestBase.GetServiceClient<GalleryClient>(this.csmTestFactory);
         }
 
-        private ResourceManagementClient GetResourceManagementClient()
+        private Management.Resources.ResourceManagementClient GetResourceManagementClient()
         {
-            return TestBase.GetServiceClient<ResourceManagementClient>(this.csmTestFactory);
+            return TestBase.GetServiceClient<Management.Resources.ResourceManagementClient>(this.csmTestFactory);
+        }
+
+        private ResourceManagementClient GetResourceManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private BatchManagementClient GetBatchManagementClient(MockContext context)

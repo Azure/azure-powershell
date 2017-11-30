@@ -49,13 +49,11 @@ Remove-Item -Force $resourceManagerPath\AzureRM.DataLakeStore\Microsoft.Azure.Co
 Remove-Item -Force $resourceManagerPath\AzureRM.DataLakeStore\Microsoft.Azure.Commands.Tags.format.ps1xml -ErrorAction SilentlyContinue
 Remove-Item -Force $resourceManagerPath\AzureRM.Intune\AzureRM.Intune.psd1 -ErrorAction SilentlyContinue
 Remove-Item -Force $resourceManagerPath\AzureRM.RecoveryServices.Backup\AzureRM.RecoveryServices.psd1 -ErrorAction SilentlyContinue
-Remove-Item -Recurse -Force $resourceManagerPath\Azure.AnalysisServices\ -ErrorAction SilentlyContinue
 
 Write-Verbose "Removing duplicated Resources folder"
 Remove-Item -Recurse -Force $serviceManagementPath\Compute\Resources\ -ErrorAction SilentlyContinue
 Remove-Item -Recurse -Force $serviceManagementPath\Sql\Resources\ -ErrorAction SilentlyContinue
 Remove-Item -Recurse -Force $serviceManagementPath\Storage\Resources\ -ErrorAction SilentlyContinue
-Remove-Item -Recurse -Force $serviceManagementPath\ManagedCache\Resources\ -ErrorAction SilentlyContinue
 Remove-Item -Recurse -Force $serviceManagementPath\Networking\Resources\ -ErrorAction SilentlyContinue
 
 Write-Verbose "Removing generated NuGet folders from $output"
@@ -67,6 +65,10 @@ $exclude = @("*.dll-Help.xml", "Scaffold.xml", "RoleSettings.xml", "WebRole.xml"
 $include = @("*.xml", "*.lastcodeanalysissucceeded", "*.dll.config", "*.pdb")
 Get-ChildItem -Include $include -Exclude $exclude -Recurse -Path $output | Remove-Item -Force -Recurse
 Get-ChildItem -Recurse -Path $output -Include *.dll-Help.psd1 | Remove-Item -Force
+
+Write-Verbose "Removing markdown help files and folders"
+Get-ChildItem -Recurse -Path $output -Include *.md | Remove-Item -Force
+Get-ChildItem -Directory -Include help -Recurse -Path $output | Remove-Item -Force
 
 Write-Verbose "Removing unneeded web deployment dependencies"
 $webdependencies = @("Microsoft.Web.Hosting.dll", "Microsoft.Web.Delegation.dll", "Microsoft.Web.Administration.dll", "Microsoft.Web.Deployment.Tracing.dll")

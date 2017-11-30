@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.NotificationHubs.dll-Help.xml
+Module Name: AzureRM.NotificationHubs
 ms.assetid: 7E9CBEE9-DD5F-4552-9187-ECBBEF6174B0
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.notificationhubs/new-azurermnotificationhubauthorizationrules
 schema: 2.0.0
 ---
 
@@ -15,14 +16,15 @@ Creates an authorization rule and assigns the rule to a notification hub.
 ### InputFileParameterSet
 ```
 New-AzureRmNotificationHubAuthorizationRules [-ResourceGroup] <String> [-Namespace] <String>
- [-NotificationHub] <String> [-InputFile] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NotificationHub] <String> [-InputFile] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### SASRuleParameterSet
 ```
 New-AzureRmNotificationHubAuthorizationRules [-ResourceGroup] <String> [-Namespace] <String>
- [-NotificationHub] <String> [-SASRule] <SharedAccessAuthorizationRuleAttributes> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-NotificationHub] <String> [-SASRule] <SharedAccessAuthorizationRuleAttributes>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,18 +48,33 @@ Note that all the configuration information for the rule, including the rule nam
 
 ## PARAMETERS
 
-### -ResourceGroup
-Specifies the resource group that the notification hub is assigned to.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputFile
+Specifies the input file for the authorization rule that this cmdlet creates.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: InputFileParameterSet
 Aliases: 
 
 Required: True
-Position: 0
+Position: 3
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -96,27 +113,27 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ResourceGroup
+Specifies the resource group that the notification hub is assigned to.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -SASRule
 Specifies the **SharedAccessAuthorizationRuleAttributes** object containing configuration information for the new rules.
 
 ```yaml
 Type: SharedAccessAuthorizationRuleAttributes
 Parameter Sets: SASRuleParameterSet
-Aliases: 
-
-Required: True
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputFile
-Specifies the input file for the authorization rule that this cmdlet creates.
-
-```yaml
-Type: String
-Parameter Sets: InputFileParameterSet
 Aliases: 
 
 Required: True
@@ -162,6 +179,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes
 
 ## NOTES
 

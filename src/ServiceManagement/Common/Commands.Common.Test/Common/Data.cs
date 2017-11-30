@@ -21,6 +21,7 @@ using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
 {
@@ -66,7 +67,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
 
         static Data()
         {
-            AzureAppDir = AzureSession.ProfileDirectory;
+            AzureSessionInitializer.InitializeAzureSession();
+            AzureAppDir = AzureSession.Instance.ProfileDirectory;
             AzureSdkAppDir = Path.Combine(Directory.GetCurrentDirectory(), "Microsoft Azure PowerShell");
             TestResultDirectory = FileUtilities.GetAssemblyDirectory();
 

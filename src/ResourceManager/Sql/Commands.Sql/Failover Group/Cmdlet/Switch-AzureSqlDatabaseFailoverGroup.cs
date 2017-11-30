@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,7 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.FailoverGroup.Model;
+using Microsoft.Azure.Commands.Sql.FailoverGroup.Services;
 using System.Collections.Generic;
 using System.Management.Automation;
 
@@ -23,12 +26,22 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
     public class SwitchAzureSqlFailoverGroup : AzureSqlFailoverGroupCmdletBase
     {
         /// <summary>
+        /// Gets or sets the name of the server to use.
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            Position = 1,
+            HelpMessage = "The name of the secondary Azure SQL Database Server of the Failover Group.")]
+        [ValidateNotNullOrEmpty]
+        public string ServerName { get; set; }
+
+        /// <summary>
         /// Gets or sets the name of the FailoverGroup to use.
         /// </summary>
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             Position = 2,
-            HelpMessage = "The name of the Azure SQL Database Failover Group to retrieve.")]
+            HelpMessage = "The name of the Azure SQL Database Failover Group.")]
         [ValidateNotNullOrEmpty]
         public string FailoverGroupName { get; set; }
 
@@ -36,8 +49,8 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         /// Switch parameter indicating whether this failover operation will allow data loss or not.
         /// </summary>
         [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = false,
-            HelpMessage = "Whether this failover operation will allow data loss.")]
+            HelpMessage = "Complete the failover even if doing so may result in data loss. "
+                + "This will allow the failover to proceed even if a primary database is unavailable.")]
         public SwitchParameter AllowDataLoss { get; set; }
 
         /// <summary>

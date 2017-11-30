@@ -1,4 +1,4 @@
----
+﻿---
 Module Name: AzureRM.ServiceBus
 Module Guid: cc69c625-e961-43f4-8b50-0061eba6e4b6
 Download Help Link: None_Azure
@@ -11,105 +11,84 @@ Locale: en-US
 This topic displays help topics for the Azure Service Bus cmdlets.
 
 ## AzureRM.ServiceBus Cmdlets
+### [Get-AzureRmServiceBusAuthorizationRule](Get-AzureRmServiceBusAuthorizationRule.md)
+Gets a description of the specified authorization rule for a given Namespace or Queue or Topic. 
+
+### [Get-AzureRmServiceBusKey](Get-AzureRmServiceBusKey.md)
+Gets the primary and secondary connection strings for the given Namespace or Queue or Topic.
+
 ### [Get-AzureRmServiceBusNamespace](Get-AzureRmServiceBusNamespace.md)
-Gets a namespace or list of namespaces in the existing resource group.
+Gets a description for the specified Service Bus namespace within the resource group.
 
-### [Get-AzureRmServiceBusNamespaceAuthorizationRule](Get-AzureRmServiceBusNamespaceAuthorizationRule.md)
-Gets an authorization rule or list of authorization rules for the existing Service Bus namespace.
-
-### [Get-AzureRmServiceBusNamespaceKey](Get-AzureRmServiceBusNamespaceKey.md)
-Gets the primary or secondary key for an authorization rule in an existing Service Bus namespace.
+### [Get-AzureRmServiceBusOperation](Get-AzureRmServiceBusOperation.md)
+List supported ServiceBus Operations
 
 ### [Get-AzureRmServiceBusQueue](Get-AzureRmServiceBusQueue.md)
-Gets an existing queue or list of queues in an existing Service Bus namespace.
+Returns a description for the specified Service Bus queue.
 
-### [Get-AzureRmServiceBusQueueAuthorizationRule](Get-AzureRmServiceBusQueueAuthorizationRule.md)
-Gets the authorization rule or list of authorization rules in a queue.
-
-### [Get-AzureRmServiceBusQueueKey](Get-AzureRmServiceBusQueueKey.md)
-Gets the primary or secondary key for an authorization rule in an existing Service Bus queue.
+### [Get-AzureRmServiceBusRule](Get-AzureRmServiceBusRule.md)
+Gets a description of the specified rule for a given Subscription of  Topic. 
 
 ### [Get-AzureRmServiceBusSubscription](Get-AzureRmServiceBusSubscription.md)
-Gets an existing subscription or list of subscriptions in an existing Service Bus topic.
+Returns a subscription description for the specified topic.
 
 ### [Get-AzureRmServiceBusTopic](Get-AzureRmServiceBusTopic.md)
-Gets an existing topic or list of topics in an existing Service Bus namespace. 
+Returns a description for the specified Service Bus topic.
 
-### [Get-AzureRmServiceBusTopicAuthorizationRule](Get-AzureRmServiceBusTopicAuthorizationRule.md)
-Gets an authorization rule or list of authorization rules in the topic. 
+### [New-AzureRmServiceBusAuthorizationRule](New-AzureRmServiceBusAuthorizationRule.md)
+Creates a new authorization rule for the specified Service Bus given Namespace or Queue or Topic.
 
-### [Get-AzureRmServiceBusTopicKey](Get-AzureRmServiceBusTopicKey.md)
-Gets the primary or secondary key for an authorization rule in an existing Service Bus topic.
+### [New-AzureRmServiceBusKey](New-AzureRmServiceBusKey.md)
+Regenerates the primary or secondary connection strings for the Service Bus namespace or queue or topic.
 
 ### [New-AzureRmServiceBusNamespace](New-AzureRmServiceBusNamespace.md)
-Adds a new Service Bus namespace in the existing resource group.
-
-### [New-AzureRmServiceBusNamespaceAuthorizationRule](New-AzureRmServiceBusNamespaceAuthorizationRule.md)
-Adds a new authorization rule to an existing Service Bus namespace.
-
-### [New-AzureRmServiceBusNamespaceKey](New-AzureRmServiceBusNamespaceKey.md)
-Generates a new primary or secondary key for an authorization rule in an existing Service Bus namespace.
+Creates a new Service Bus namespace.
 
 ### [New-AzureRmServiceBusQueue](New-AzureRmServiceBusQueue.md)
-Adds a new queue to an existing Service Bus namespace.
+Creates a Service Bus queue in the specified Service Bus namespace.
 
-### [New-AzureRmServiceBusQueueAuthorizationRule](New-AzureRmServiceBusQueueAuthorizationRule.md)
-Adds a new authorization rule to an existing queue in a Service Bus namespace.
-
-### [New-AzureRmServiceBusQueueKey](New-AzureRmServiceBusQueueKey.md)
-Generates a new primary or secondary key for an authorization rule in an existing Service Bus queue.
+### [New-AzureRmServiceBusRule](New-AzureRmServiceBusRule.md)
+Creates a new rule for a given Subscription of Topic. 
 
 ### [New-AzureRmServiceBusSubscription](New-AzureRmServiceBusSubscription.md)
-Adds a new subscription to an existing Service Bus topic. 
+Creates a subscription to the specified Service Bus topic.
 
 ### [New-AzureRmServiceBusTopic](New-AzureRmServiceBusTopic.md)
-Adds a new topic to an existing Service Bus namespace.
+Creates a new Service Bus topic in  the specified Service Bus namespace.
 
-### [New-AzureRmServiceBusTopicAuthorizationRule](New-AzureRmServiceBusTopicAuthorizationRule.md)
-Adds a new authorization rule to an existing topic in a Service Bus namespace.
-
-### [New-AzureRmServiceBusTopicKey](New-AzureRmServiceBusTopicKey.md)
-Generates a new primary or secondary key for an authorization rule in an existing Service Bus topic.
+### [Remove-AzureRmServiceBusAuthorizationRule](Remove-AzureRmServiceBusAuthorizationRule.md)
+Removes the authorization rule of a Service Bus namespace or queue or topic from the specified resource group.
 
 ### [Remove-AzureRmServiceBusNamespace](Remove-AzureRmServiceBusNamespace.md)
-Deletes an existing Service Bus namespace.
-
-### [Remove-AzureRmServiceBusNamespaceAuthorizationRule](Remove-AzureRmServiceBusNamespaceAuthorizationRule.md)
-Deletes an existing authorization rule in a Service Bus namespace.
+Removes the namespace from the specified resource group. 
 
 ### [Remove-AzureRmServiceBusQueue](Remove-AzureRmServiceBusQueue.md)
-Deletes an existing queue in a Service Bus namespace.
+Removes the queue from the specified Service Bus namespace.
 
-### [Remove-AzureRmServiceBusQueueAuthorizationRule](Remove-AzureRmServiceBusQueueAuthorizationRule.md)
-Deletes an existing authorization rule in a Service Bus queue.
+### [Remove-AzureRmServiceBusRule](Remove-AzureRmServiceBusRule.md)
+Removes the speficied rule of a given subscription .
 
 ### [Remove-AzureRmServiceBusSubscription](Remove-AzureRmServiceBusSubscription.md)
-Deletes an existing subscription in a Service Bus topic.
+Removes the subscription to a topic from the specified Service Bus namespace.
 
 ### [Remove-AzureRmServiceBusTopic](Remove-AzureRmServiceBusTopic.md)
-Deletes an existing topic in a Service Bus namespace.
+Removes the topic from the specified Service Bus namespace.
 
-### [Remove-AzureRmServiceBusTopicAuthorizationRule](Remove-AzureRmServiceBusTopicAuthorizationRule.md)
-Deletes an existing authorization rule in a Service Bus topic.
+### [Set-AzureRmServiceBusAuthorizationRule](Set-AzureRmServiceBusAuthorizationRule.md)
+Updates the specified authorization rule description for the given Service Bus namespace or queue or topic.
 
 ### [Set-AzureRmServiceBusNamespace](Set-AzureRmServiceBusNamespace.md)
-Updates properties of an existing Service Bus namespace.
-
-### [Set-AzureRmServiceBusNamespaceAuthorizationRule](Set-AzureRmServiceBusNamespaceAuthorizationRule.md)
-Updates properties of an existing authorization rule in a Service Bus namespace.
+Updates the description of an existing Service Bus namespace.
 
 ### [Set-AzureRmServiceBusQueue](Set-AzureRmServiceBusQueue.md)
-Updates properties of an existing queue in a Service Bus namespace.
+Updates the description of a Service Bus queue in the specified Service Bus namespace.
 
-### [Set-AzureRmServiceBusQueueAuthorizationRule](Set-AzureRmServiceBusQueueAuthorizationRule.md)
-Updates an authorization rule in a queue.
+### [Set-AzureRmServiceBusRule](Set-AzureRmServiceBusRule.md)
+Updates the specified rule description for the given subscription.
 
 ### [Set-AzureRmServiceBusSubscription](Set-AzureRmServiceBusSubscription.md)
-Updates the properties of an existing subscription in a Service Bus topic.
+Updates a subscription description for a Service Bus topic in the specified Service Bus namespace.
 
 ### [Set-AzureRmServiceBusTopic](Set-AzureRmServiceBusTopic.md)
-Updates the properties of an existing topic in a Service Bus namespace.
-
-### [Set-AzureRmServiceBusTopicAuthorizationRule](Set-AzureRmServiceBusTopicAuthorizationRule.md)
-Updates an authorization rule in a topic.
+Updates the description of a Service Bus topic in the specified Service Bus namespace.
 

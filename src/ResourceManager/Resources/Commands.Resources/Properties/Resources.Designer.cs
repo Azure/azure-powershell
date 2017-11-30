@@ -10,6 +10,7 @@
 
 namespace Microsoft.Azure.Commands.Resources.Properties {
     using System;
+    using System.Reflection;
     
     
     /// <summary>
@@ -39,7 +40,7 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.Resources.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.Resources.Properties.Resources", typeof(Resources).GetTypeInfo().Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -786,6 +787,60 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         internal static string RoleDefinitionWithIdNotFound {
             get {
                 return ResourceManager.GetString("RoleDefinitionWithIdNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scope &apos;{0}&apos; should begin with &apos;/subscriptions/&lt;subid&gt;/resourceGroups&apos;..
+        /// </summary>
+        internal static string ScopeShouldBeginWithSubscriptionsAndResourceGroups {
+            get {
+                return ResourceManager.GetString("ScopeShouldBeginWithSubscriptionsAndResourceGroups", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scope &apos;{0}&apos; should begin with &apos;/subscriptions/&lt;subid&gt;/resourceGroups/&lt;groupname&gt;/providers&apos;..
+        /// </summary>
+        internal static string ScopeShouldBeginWithSubscriptionsAndResourceGroupsAndProviders {
+            get {
+                return ResourceManager.GetString("ScopeShouldBeginWithSubscriptionsAndResourceGroupsAndProviders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scope &apos;{0}&apos; should begin with &apos;/subscriptions&apos; or &apos;/providers&apos;..
+        /// </summary>
+        internal static string ScopeShouldBeginWithSubscriptionsOrProviders {
+            get {
+                return ResourceManager.GetString("ScopeShouldBeginWithSubscriptionsOrProviders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scope &apos;{0}&apos; should have at least one pair of resource type and resource name. e.g. &apos;/subscriptions/&lt;subid&gt;/resourceGroups/&lt;groupname&gt;/providers/&lt;providername&gt;/&lt;resourcetype&gt;/&lt;resourcename&gt;&apos;..
+        /// </summary>
+        internal static string ScopeShouldHaveAtLeastOnePairOfResourceTypeAndName {
+            get {
+                return ResourceManager.GetString("ScopeShouldHaveAtLeastOnePairOfResourceTypeAndName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scope &apos;{0}&apos; should have even number of parts..
+        /// </summary>
+        internal static string ScopeShouldHaveEvenNumberOfParts {
+            get {
+                return ResourceManager.GetString("ScopeShouldHaveEvenNumberOfParts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scope &apos;{0}&apos; should not have any empty part..
+        /// </summary>
+        internal static string ScopeShouldHaveNoEmptyPart {
+            get {
+                return ResourceManager.GetString("ScopeShouldHaveNoEmptyPart", resourceCulture);
             }
         }
         

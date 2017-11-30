@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
+Module Name: AzureRM.Sql
 ms.assetid: 7039528F-42AE-45DB-BF81-FE5003F8AEE2
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/new-azurermsqlserver
 schema: 2.0.0
 ---
 
@@ -14,9 +15,8 @@ Creates a SQL Database server.
 
 ```
 New-AzureRmSqlServer -ServerName <String> -SqlAdministratorCredentials <PSCredential> -Location <String>
- [-Tags <Hashtable>] [-ServerVersion <String>] [-ResourceGroupName] <String>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Tags <Hashtable>] [-ServerVersion <String>] [-AssignIdentity] [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,7 +31,7 @@ ResourceGroupName        : resourcegroup01
 ServerName               : server01
 Location                 : Central US
 SqlAdministratorLogin    : adminLogin
-SqlAdministratorPassword : 
+SqlAdministratorPassword :
 ServerVersion            : 12.0
 Tags                     :
 ```
@@ -40,32 +40,30 @@ This command creates a version 12 Azure SQL Database server.
 
 ## PARAMETERS
 
-### -ServerName
-Specifies the name of the new server.
+### -AssignIdentity
+Generate and assign an Azure Active Directory Identity for this server for use with key management services like Azure KeyVault.
 
 ```yaml
-Type: String
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SqlAdministratorCredentials
-Specifies the SQL Database server administrator credentials for the new server.
-To obtain a **PSCredential** object, use the Get-Credential cmdlet.
-For more information, type `Get-Help Get-Credential`.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: PSCredential
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: 
+Aliases: AzureRmContext, AzureCredential
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -87,39 +85,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tags
-Specifies a dictionary of tags that this cmdlet associates with the new server.
-
-```yaml
-Type: Hashtable
-Parameter Sets: (All)
-Aliases: Tag
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ServerVersion
-Specifies the version of the new server.
-The acceptable values for this parameter are: 2.0 and 12.0.
-
-Specify 2.0 to create a version 11 server, or 12.0 to create a version 12 server.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 Specifies the name of the resource group to which this cmdlet assigns the server.
 
@@ -135,22 +100,30 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
+### -ServerName
+Specifies the name of the new server.
 
 ```yaml
-Type: ActionPreference
+Type: String
 Parameter Sets: (All)
-Aliases: infa
+Aliases: Name
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServerVersion
+Specifies the version of the new server. The acceptable values for this parameter are: 2.0 and 12.0.
+
+Specify 2.0 to create a version 11 server, or 12.0 to create a version 12 server.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
 
 Required: False
 Position: Named
@@ -159,13 +132,32 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationVariable
-Specifies an information variable.
+### -SqlAdministratorCredentials
+Specifies the SQL Database server administrator credentials for the new server. To obtain a
+**PSCredential** object, use the Get-Credential cmdlet. For more information, type `Get-Help
+Get-Credential`.
 
 ```yaml
-Type: String
+Type: PSCredential
 Parameter Sets: (All)
-Aliases: iv
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Tags
+Key-value pairs in the form of a hash table. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
+
+```yaml
+Type: Hashtable
+Parameter Sets: (All)
+Aliases: Tag
 
 Required: False
 Position: Named
@@ -226,6 +218,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [New-AzureRmSqlServerFirewallRule](./New-AzureRmSqlServerFirewallRule.md)
 
-[Azure SQL Database Cmdlets](./AzureRM.Sql.md)
-
-
+[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)

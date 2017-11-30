@@ -12,8 +12,8 @@ function SetCommandsCommonVersion([string]$FilePath, [string]$Version)
 
     Write-Output "Updating File: $powershellCs"   
     $content = Get-Content $powershellCs
-    $content = $content -replace "public const string AssemblyVersion = `"([\d\.]+)`";", "public const string AssemblyVersion = `"$Version`";"
-    $content = $content -replace "public const string AssemblyFileVersion = `"([\d\.]+)`";", "public const string AssemblyFileVersion = `"$Version`";"
+   $content = $content -replace "public const string AssemblyVersion = `"([\d\.]+)`";", "public const string AssemblyVersion = `"$Version`";"
+   $content = $content -replace "public const string AssemblyFileVersion = `"([\d\.]+)`";", "public const string AssemblyFileVersion = `"$Version`";"
     
     Set-Content -Path $powershellCs -Value $content -Encoding UTF8
 }
@@ -50,5 +50,3 @@ if (!$Folder)
 }
 
 SetCommandsCommonVersion $Folder $Version
-SetCommonAssemlbyVersions $Folder $Version
-SetArmCommonVersion $Folder $Version

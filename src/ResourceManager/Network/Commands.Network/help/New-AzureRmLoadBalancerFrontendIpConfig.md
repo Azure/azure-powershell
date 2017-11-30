@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+Module Name: AzureRM.Network
 ms.assetid: D639E4F5-5AAD-4F13-9B48-70E90D2DFFCA
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermloadbalancerfrontendipconfig
 schema: 2.0.0
 ---
 
@@ -12,28 +13,32 @@ Creates a front-end IP configuration for a load balancer.
 
 ## SYNTAX
 
-### SetByResourceIdSubnet
-```
-New-AzureRmLoadBalancerFrontendIpConfig -Name <String> [-PrivateIpAddress <String>] -SubnetId <String>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
-```
-
 ### SetByResourceSubnet
 ```
 New-AzureRmLoadBalancerFrontendIpConfig -Name <String> [-PrivateIpAddress <String>] -Subnet <PSSubnet>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [-Zone <System.Collections.Generic.List`1[System.String]>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### SetByResourceIdSubnet
+```
+New-AzureRmLoadBalancerFrontendIpConfig -Name <String> [-PrivateIpAddress <String>] -SubnetId <String>
+ [-Zone <System.Collections.Generic.List`1[System.String]>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### SetByResourceIdPublicIpAddress
 ```
 New-AzureRmLoadBalancerFrontendIpConfig -Name <String> -PublicIpAddressId <String>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [-Zone <System.Collections.Generic.List`1[System.String]>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### SetByResourcePublicIpAddress
 ```
 New-AzureRmLoadBalancerFrontendIpConfig -Name <String> -PublicIpAddress <PSPublicIpAddress>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [-Zone <System.Collections.Generic.List`1[System.String]>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -52,6 +57,21 @@ The first command creates a dynamic public IP address named MyPublicIP in the re
 The second command creates a front-end IP configuration named FrontendIpConfig01 using the public IP address in $publicip.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 Specifies the front-end IP configuration that this cmdlet creates.
@@ -74,7 +94,7 @@ Specify this parameter only if you also specify the *Subnet* parameter.
 
 ```yaml
 Type: String
-Parameter Sets: SetByResourceIdSubnet, SetByResourceSubnet
+Parameter Sets: SetByResourceSubnet, SetByResourceIdSubnet
 Aliases: 
 
 Required: False
@@ -84,66 +104,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Subnet
-Specifies the **Subnet** object in which to create a front-end IP configuration.
+### -PublicIpAddress
+Specifies the **PublicIpAddress** object to associate with a front-end IP configuration.
 
 ```yaml
-Type: PSSubnet
-Parameter Sets: SetByResourceSubnet
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SubnetId
-Specifies the ID of the subnet in which to create a front-end IP configuration.
-
-```yaml
-Type: String
-Parameter Sets: SetByResourceIdSubnet
+Type: PSPublicIpAddress
+Parameter Sets: SetByResourcePublicIpAddress
 Aliases: 
 
 Required: True
@@ -168,12 +134,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PublicIpAddress
-Specifies the **PublicIpAddress** object to associate with a front-end IP configuration.
+### -Subnet
+Specifies the **Subnet** object in which to create a front-end IP configuration.
 
 ```yaml
-Type: PSPublicIpAddress
-Parameter Sets: SetByResourcePublicIpAddress
+Type: PSSubnet
+Parameter Sets: SetByResourceSubnet
 Aliases: 
 
 Required: True
@@ -183,12 +149,44 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SubnetId
+Specifies the ID of the subnet in which to create a front-end IP configuration.
+
+```yaml
+Type: String
+Parameter Sets: SetByResourceIdSubnet
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Zone
+A list of availability zones denoting the IP allocated for the resource needs to come from.
+
+```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Network.Models.PSFrontendIPConfiguration
 
 ## NOTES
 

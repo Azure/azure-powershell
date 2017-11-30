@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 ms.assetid: 939320CB-2595-4150-AFDD-500CEA78559C
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/set-azurermvm
 schema: 2.0.0
 ---
 
@@ -14,22 +14,26 @@ Marks a virtual machine as generalized.
 
 ### GeneralizeResourceGroupNameParameterSetName (Default)
 ```
-Set-AzureRmVM [-ResourceGroupName] <String> [-Name] <String> [-Generalized] [<CommonParameters>]
+Set-AzureRmVM [-ResourceGroupName] <String> [-Name] <String> [-Generalized]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### RedeployResourceGroupNameParameterSetName
 ```
-Set-AzureRmVM [-ResourceGroupName] <String> [-Name] <String> [-Redeploy] [<CommonParameters>]
+Set-AzureRmVM [-ResourceGroupName] <String> [-Name] <String> [-Redeploy]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GeneralizeIdParameterSetName
 ```
-Set-AzureRmVM [-Id] <String> [-Name] <String> [-Generalized] [<CommonParameters>]
+Set-AzureRmVM [-Id] <String> [-Name] <String> [-Generalized] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### RedeployIdParameterSetName
 ```
-Set-AzureRmVM [-Id] <String> [-Name] <String> [-Redeploy] [<CommonParameters>]
+Set-AzureRmVM [-Id] <String> [-Name] <String> [-Redeploy] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,12 +44,27 @@ Before you run this cmdlet, log on to the virtual machine and use Sysprep to pre
 
 ### Example 1: Mark a virtual machine as generalized
 ```
-PS C:\>Set-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07" -Generalized
+PS C:\> Set-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07" -Generalized
 ```
 
 This command marks the virtual machine named VirtualMachine07 as generalized.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Generalized
 Indicates that this cmdlet marks a virtual machine as generalized.
@@ -56,7 +75,7 @@ Parameter Sets: GeneralizeResourceGroupNameParameterSetName, GeneralizeIdParamet
 Aliases: 
 
 Required: True
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -71,7 +90,7 @@ Parameter Sets: GeneralizeIdParameterSetName, RedeployIdParameterSetName
 Aliases: 
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -86,7 +105,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -103,7 +122,7 @@ Parameter Sets: RedeployResourceGroupNameParameterSetName, RedeployIdParameterSe
 Aliases: 
 
 Required: True
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -118,7 +137,7 @@ Parameter Sets: GeneralizeResourceGroupNameParameterSetName, RedeployResourceGro
 Aliases: 
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -130,6 +149,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Compute.Models.PSComputeLongRunningOperation
 
 ## NOTES
 

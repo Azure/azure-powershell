@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.MachineLearning.dll-Help.xml
-online version: 
+Module Name: AzureRM.MachineLearning
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.machinelearning/new-azurermmlwebservice
 schema: 2.0.0
 ---
 
@@ -11,16 +12,17 @@ Creates a new web service.
 
 ## SYNTAX
 
-### Create a new Azure ML webservice from a JSON definiton file.
+### CreateFromFile
 ```
 New-AzureRmMlWebService -ResourceGroupName <String> -Location <String> -Name <String> -DefinitionFile <String>
- [-Force] [-WhatIf] [-Confirm]
+ [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Create a new Azure ML webservice from a WebService instance definition.
+### CreateFromInstance
 ```
 New-AzureRmMlWebService -ResourceGroupName <String> -Location <String> -Name <String>
- -NewWebServiceDefinition <WebService> [-Force] [-WhatIf] [-Confirm]
+ -NewWebServiceDefinition <WebService> [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,6 +34,8 @@ If a web service with the same name exists in the resource group, the call acts 
 ### --------------------------  Example 1: Create a new service from a Json file based definition  --------------------------
 @{paragraph=PS C:\\\>}
 
+
+
 ```
 New-AzureRmMlWebService -ResourceGroupName "myresourcegroup" -Name "mywebservicename" -Location "South Central US" -DefinitionFile "C:\mlservice.json"
 ```
@@ -41,6 +45,8 @@ Creates a new Azure Machine Learning web service named "mywebservicename" in the
 ### --------------------------  Example 2: Create a new service from an object instance  --------------------------
 @{paragraph=PS C:\\\>}
 
+
+
 ```
 New-AzureRmMlWebService -ResourceGroupName "myresourcegroup" -Name "mywebservicename" -Location "South Central US" -NewWebServiceDefinition $serviceDefinitionObject
 ```
@@ -49,13 +55,28 @@ You can obtain a web service object instance to customize before publishing as a
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefinitionFile
 Specifes the path to the file containing the JSON format definition of the web service.
 You can find the latest specification for the web service definition in the swagger spec under https://github.com/Azure/azure-rest-api-specs/tree/master/arm-machinelearning.
 
 ```yaml
 Type: String
-Parameter Sets: Create a new Azure ML webservice from a JSON definiton file.
+Parameter Sets: CreateFromFile
 Aliases: 
 
 Required: True
@@ -119,11 +140,11 @@ Accept wildcard characters: False
 ### -NewWebServiceDefinition
 The definition for the new web service, containing all the properties that make up the service.
 This parameter is required and represents an instance of the Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService class.
-You can find the latest specification for the web service definition in the swagger spec under https://github.com/Azure/azure-rest-api-specs/blob/master/arm-machinelearning/2016-05-01-preview/swagger/webservices.json.
+You can find the latest specification for the web service definition in the swagger spec under https://github.com/Azure/azure-rest-api-specs/blob/master/arm-machinelearning/2017-01-01/swagger/webservices.json.
 
 ```yaml
 Type: WebService
-Parameter Sets: Create a new Azure ML webservice from a WebService instance definition.
+Parameter Sets: CreateFromInstance
 Aliases: 
 
 Required: True
@@ -184,7 +205,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
+
+### WebService
+Parameter 'NewWebServiceDefinition' accepts value of type 'WebService' from the pipeline
 
 ## OUTPUTS
 

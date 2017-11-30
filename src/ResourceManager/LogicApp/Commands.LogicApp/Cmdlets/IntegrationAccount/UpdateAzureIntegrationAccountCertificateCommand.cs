@@ -12,22 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Globalization;
-using System.Security.Cryptography.X509Certificates;
-
 namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
     using System;
+    using System.Globalization;
     using System.Management.Automation;
+    using System.Security.Cryptography.X509Certificates;
     using Microsoft.Azure.Commands.LogicApp.Utilities;
     using Microsoft.Azure.Management.Logic.Models;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
+    using ResourceManager.Common.ArgumentCompleters;
 
     /// <summary>
     /// Updates the integration account certificate.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmIntegrationAccountCertificate", SupportsShouldProcess = true),
-     OutputType(typeof (object))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmIntegrationAccountCertificate", SupportsShouldProcess = true)]
+    [OutputType(typeof(IntegrationAccountCertificate))]
     public class UpdateAzureIntegrationAccountCertificateCommand : LogicAppBaseCmdlet
     {
 
@@ -35,6 +35,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
         [Parameter(Mandatory = true, HelpMessage = "The integration account resource group name.",
             ValueFromPipelineByPropertyName = true)]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

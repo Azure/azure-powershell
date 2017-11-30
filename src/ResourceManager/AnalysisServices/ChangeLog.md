@@ -18,6 +18,49 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Remove validate set of location into dynamic lookup so that all clouds are supported.
+
+## Version 0.5.0
+* Fixed Synchronize-AzureAsInstance command to work with new AsAzure REST API for sync
+* Add support for online help
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
+    
+## Version 0.4.7
+
+## Version 0.4.6
+* Added a new dataplane commandlet to allow synchronization of databases from read-write instance to read-only instances 
+    - Included help file for the commandlet
+    - Added in-memory tests and a scenario test (only live)
+* Fixed bugs in Add-AzureAsAccount commandlet 
+
+## Version 0.4.4
+
+## Version 0.4.3
+* Fixed bug in Set-AzureRmAnalysisServciesServer
+    - When admin was not provided, the admin will be removed.
+* Added BackupBlobContainerUri in New-AzureRmAnalysisServicesServer and Set-AzureRmAnalysisServicesServer
+    - Enable to set/disable backup blob container for backup/restore Azure Analysis Services Server
+* Updated Sku lookup in New-AzureRmAnalysisServicesServer and Set-AzureRmAnalysisServicesServer
+    - Changed hard coded Sku into dynamic lookup.
+* Add-AzureAnalysisServicesAccount to support login with Service Principal
+
+## Version 0.4.2
+
+## Version 0.4.1
+* Add new dataplane API
+    - Introduced API to fetch AS server log, Export-AzureAnalysisServicesInstanceLog
+
+## Version 0.4.0
+* New SKUs added: B1, B2, S0
+* Scale up/down support added
+
+## Version 0.3.1
+
+## Version 0.3.0
+
+## Version 0.2.0
+
+## Version 0.1.0
 
 ## Version 0.0.4
 * Added State property in additional to ProvisioningState

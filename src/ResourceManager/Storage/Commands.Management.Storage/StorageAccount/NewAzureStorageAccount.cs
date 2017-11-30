@@ -18,6 +18,8 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
 using StorageModels = Microsoft.Azure.Management.Storage.Models;
+using Microsoft.Azure.Commands.Management.Storage.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
@@ -29,6 +31,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Resource Group Name.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -60,6 +63,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Storage Account Location.")]
+        [LocationCompleter("Microsoft.Storage/storageAccounts")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
@@ -103,6 +107,36 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [Alias(TagsAlias)]
         public Hashtable Tag { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Storage Account EnableHttpsTrafficOnly.")]
+        public bool EnableHttpsTrafficOnly
+        {
+            get
+            {
+                return enableHttpsTrafficOnly.Value;
+            }
+            set
+            {
+                enableHttpsTrafficOnly = value;
+            }
+        }
+        private bool? enableHttpsTrafficOnly = null;
+
+        [Parameter(
+        Mandatory = false,
+        HelpMessage = "Generate and assign a new Storage Account Identity for this storage account for use with key management services like Azure KeyVault.")]
+        public SwitchParameter AssignIdentity { get; set; }
+
+        [Parameter(HelpMessage = "Storage Account NetworkRule",
+            Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        public PSNetworkRuleSet NetworkRuleSet
+        {
+            get; set;
+        }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -141,11 +175,25 @@ namespace Microsoft.Azure.Commands.Management.Storage
             if (this.EnableEncryptionService != null)
             {
                 createParameters.Encryption = ParseEncryption(EnableEncryptionService);
+                createParameters.Encryption.KeySource = "Microsoft.Storage";
             }
 
             if (this.AccessTier != null)
             {
                 createParameters.AccessTier = ParseAccessTier(AccessTier);
+            }
+            if (enableHttpsTrafficOnly != null)
+            {
+                createParameters.EnableHttpsTrafficOnly = enableHttpsTrafficOnly;
+            }
+
+            if (AssignIdentity.IsPresent)
+            {
+                createParameters.Identity = new Identity();
+            }
+            if (NetworkRuleSet != null)
+            {
+                createParameters.NetworkAcls = PSNetworkRuleSet.ParseStorageNetworkRule(NetworkRuleSet);
             }
 
             var createAccountResponse = this.StorageClient.StorageAccounts.Create(

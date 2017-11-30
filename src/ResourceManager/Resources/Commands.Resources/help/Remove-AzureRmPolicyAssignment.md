@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
+Module Name: AzureRM.Resources
 ms.assetid: 36399302-3EA5-45A3-A042-536CC7EC2E6D
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/remove-azurermpolicyassignment
 schema: 2.0.0
 ---
 
@@ -12,18 +13,18 @@ Removes a policy assignment.
 
 ## SYNTAX
 
-### The policy assignment name parameter set. (Default)
+### RemoveByPolicyAssignmentName (Default)
 ```
 Remove-AzureRmPolicyAssignment -Name <String> -Scope <String> [-ApiVersion <String>] [-Pre]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
+ [-InformationVariable <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### The policy assignment Id parameter set.
+### RemoveByPolicyAssignmentId
 ```
 Remove-AzureRmPolicyAssignment -Id <String> [-ApiVersion <String>] [-Pre]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
+ [-InformationVariable <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -59,36 +60,6 @@ The final command removes the policy assignment that the **ResourceId** property
 
 ## PARAMETERS
 
-### -Name
-Specifies the name of the policy assignment that this cmdlet removes.
-
-```yaml
-Type: String
-Parameter Sets: The policy assignment name parameter set.
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Scope
-Specifies the scope at which the policy is applied.
-
-```yaml
-Type: String
-Parameter Sets: The policy assignment name parameter set.
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -ApiVersion
 Specifies the version of the resource provider API to use.
 If you do not specify a version, this cmdlet uses the latest available version.
@@ -105,18 +76,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Pre
-Indicates that this cmdlet considers pre-release API versions when it automatically determines which version to use.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: SwitchParameter
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: 
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Id
+Specifies the fully qualified resource ID for the policy assignment that this cmdlet removes.
+
+```yaml
+Type: String
+Parameter Sets: RemoveByPolicyAssignmentId
+Aliases: ResourceId
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -159,13 +145,43 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Id
-Specifies the fully qualified resource ID for the policy assignment that this cmdlet removes.
+### -Name
+Specifies the name of the policy assignment that this cmdlet removes.
 
 ```yaml
 Type: String
-Parameter Sets: The policy assignment Id parameter set.
-Aliases: ResourceId
+Parameter Sets: RemoveByPolicyAssignmentName
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Pre
+Indicates that this cmdlet considers pre-release API versions when it automatically determines which version to use.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Scope
+Specifies the scope at which the policy is applied.
+
+```yaml
+Type: String
+Parameter Sets: RemoveByPolicyAssignmentName
+Aliases: 
 
 Required: True
 Position: Named
@@ -211,6 +227,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### System.Boolean
 
 ## NOTES
 

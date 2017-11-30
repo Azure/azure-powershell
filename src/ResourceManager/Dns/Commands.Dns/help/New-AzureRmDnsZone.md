@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Dns.dll-Help.xml
+Module Name: AzureRM.Dns
 ms.assetid: B78F3E8B-C7D2-458C-AB23-06F584FE97E0
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.dns/new-azurermdnszone
 schema: 2.0.0
 ---
 
@@ -13,16 +14,18 @@ Creates a new DNS zone.
 ## SYNTAX
 
 ```
-New-AzureRmDnsZone -Name <String> -ResourceGroupName <String> [-Tag <Hashtable>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzureRmDnsZone -Name <String> -ResourceGroupName <String> [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmDnsZone** cmdlet creates a new Domain Name System (DNS) zone in the specified resource group.
-You must specify a unique DNS zone name for the *Name* parameter or the cmdlet will return an error.
-After the zone is created, use the New-AzureRmDnsRecordSet cmdlet to create record sets in the zone.
+The **New-AzureRmDnsZone** cmdlet creates a new Domain Name System (DNS) zone in the specified
+resource group. You must specify a unique DNS zone name for the *Name* parameter or the cmdlet will
+return an error. After the zone is created, use the New-AzureRmDnsRecordSet cmdlet to create record
+sets in the zone.
 
-You can use the *Confirm* parameter and $ConfirmPreference Windows PowerShell variable to control whether the cmdlet prompts you for confirmation.
+You can use the *Confirm* parameter and $ConfirmPreference Windows PowerShell variable to control
+whether the cmdlet prompts you for confirmation.
 
 ## EXAMPLES
 
@@ -31,9 +34,25 @@ You can use the *Confirm* parameter and $ConfirmPreference Windows PowerShell va
 PS C:\>$Zone = New-AzureRmDnsZone -Name "myzone.com" -ResourceGroupName "MyResourceGroup"
 ```
 
-This command creates a new DNS zone named myzone.com in the specified resource group, and then stores it in the $Zone variable.
+This command creates a new DNS zone named myzone.com in the specified resource group, and then
+stores it in the $Zone variable.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 Specifies the name of the DNS zone to create.
@@ -41,7 +60,7 @@ Specifies the name of the DNS zone to create.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -56,7 +75,7 @@ Specifies the resource group in which to create the zone.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -66,8 +85,9 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Specifies an array of tags to associate with the DNS zone.
-Tags are name-value pairs represented as hash tables, for example, @(@{"Name"="dept"; "Value"="shopping"}, @{"Name"="env"; "Value"="production"})
+Key-value pairs in the form of a hash table. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
 Type: Hashtable
@@ -122,7 +142,7 @@ You cannot pipe input to this cmdlet.
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Dns.DnsZone
-This cmdlet returns an object that represents the new DNS zone.
+This cmdlet returns a Microsoft.Azure.Commands.Dns.DnsZone object that represents the new DNS zone.
 
 ## NOTES
 You can use the *Confirm* parameter to control whether this cmdlet prompts you for confirmation.

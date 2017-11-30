@@ -12,45 +12,33 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Insights.Legacy.Models;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Azure.Management.Monitor.Models;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
     /// <summary>
     /// Wraps around a list of PSMetricValue objects to display them with indentation
     /// </summary>
-    public class PSMetricValuesCollection
+    public class PSMetricValuesCollection : List<MetricValue>
     {
-        private IList<PSMetricValue> metricValues;
-
         /// <summary>
         /// Initializes a new instance of the PSMetricValuesCollection class
         /// </summary>
         /// <param name="metricValues">The list of metric values</param>
         public PSMetricValuesCollection(IEnumerable<MetricValue> metricValues)
         {
-            this.metricValues = metricValues.Select(mv => new PSMetricValue(mv)).ToList();
+            this.AddRange(metricValues.Select(mv => new PSMetricValue(mv)));
         }
 
-        /// <summary>
-        /// Initializes a new instance of the PSMetricValuesCollection class
-        /// </summary>
-        /// <param name="metricValues">The list of metric values</param>
-        /// <param name="dummy">Dummy argument to change the method signature</param>
-        public PSMetricValuesCollection(IEnumerable<MetricValue> metricValues, bool dummy = false)
-        {
-            this.metricValues = metricValues.Select(mv => new PSMetricValue(mv)).ToList();
-        }
-
-        /// <summary>
+/*        /// <summary>
         /// A string representation of the list Dimension objects including indentation
         /// </summary>
         /// <returns>A string representation of the list of Dimension objects including indentation</returns>
         public override string ToString()
         {
             return this.metricValues.ToString(indentationTabs: 1);
-        }
+        } */
     }
 }

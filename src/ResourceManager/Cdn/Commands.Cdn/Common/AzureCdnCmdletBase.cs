@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.Cdn;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.Cdn.Common
 {
@@ -30,8 +31,8 @@ namespace Microsoft.Azure.Commands.Cdn.Common
 
         private Dictionary<string, List<string>> _defaultRequestHeaders;
 
-        public const string ObjectParameterSet = "Parameter Set for object parameters";
-        public const string FieldsParameterSet = "Parameter Set for fields parameters";
+        public const string ObjectParameterSet = "ByObjectParameterSet";
+        public const string FieldsParameterSet = "ByFieldsParameterSet";
 
         /// <summary>
         /// Gets or sets the Cdn management client.
@@ -42,7 +43,7 @@ namespace Microsoft.Azure.Commands.Cdn.Common
             {
                 return _cdnManagementClient ??
                        (_cdnManagementClient =
-                           AzureSession.ClientFactory.CreateArmClient<CdnManagementClient>(DefaultProfile.Context,
+                           AzureSession.Instance.ClientFactory.CreateArmClient<CdnManagementClient>(DefaultProfile.DefaultContext,
                                AzureEnvironment.Endpoint.ResourceManager));
             }
             set { _cdnManagementClient = value; }

@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Sql.Auditing.Model;
+using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
@@ -22,6 +23,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmSqlServerAuditingPolicy", SupportsShouldProcess = true), OutputType(typeof (AuditingPolicyModel))]
     [Alias("Get-AzureRmSqlDatabaseServerAuditingPolicy")]
+    [Obsolete("Note that Table auditing is deprecated and this command will be removed in a future release. Please use the 'Get-AzureRmSqlServerAuditing' command to get Blob auditing settings.", false)]
     public class GetAzureSqlServerAuditingPolicy : SqlDatabaseServerAuditingCmdletBase
     {
         /// <summary>

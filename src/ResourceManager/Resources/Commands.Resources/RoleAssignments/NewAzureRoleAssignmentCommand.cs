@@ -12,9 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Resources.Models;
-using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
+using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.Management.Automation;
@@ -73,6 +74,7 @@ namespace Microsoft.Azure.Commands.Resources
             HelpMessage = "Resource group to assign the role to.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceWithSPN,
             HelpMessage = "Resource group to assign the role to.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -163,9 +165,11 @@ namespace Microsoft.Azure.Commands.Resources
                     ResourceGroupName = ResourceGroupName,
                     ResourceName = ResourceName,
                     ResourceType = ResourceType,
-                    Subscription = DefaultProfile.Context.Subscription.Id.ToString(),
+                    Subscription = DefaultProfile.DefaultContext.Subscription.Id.ToString(),
                 }
             };
+
+            AuthorizationClient.ValidateScope(parameters.Scope, false);
 
             WriteObject(PoliciesClient.CreateRoleAssignment(parameters));
         }

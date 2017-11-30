@@ -38,13 +38,17 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public string ConnectionStatus { get; set; }
 
-        public ulong EgressBytesTransferred { get; set; }
+        public long? EgressBytesTransferred { get; set; }
 
-        public ulong IngressBytesTransferred { get; set; }
+        public long? IngressBytesTransferred { get; set; }
 
         public List<PSTunnelConnectionHealth> TunnelConnectionStatus { get; set; }
 
         public string ProvisioningState { get; set; }
+
+        public bool UsePolicyBasedTrafficSelectors { get; set; }
+
+        public List<PSIpsecPolicy> IpsecPolicies { get; set; }
 
         [JsonIgnore]
         public string VirtualNetworkGateway1Text

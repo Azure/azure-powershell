@@ -19,6 +19,41 @@
 -->
 ## Current Release
 
+## Version 4.0.0
+* Add support for online help
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
+    
+## Version 3.4.1
+
+## Version 3.4.0
+
+## Version 3.3.1
+
+## Version 3.3.0
+
+## Version 3.2.1
+
+## Version 3.2.0
+
+## Version 3.1.0
+
+## Version 3.0.1
+
+## Version 3.0.0
+* New parameters for Interchange Control Number disaster recovery cmdlets:
+    - Optional -AgreementType parameter ("X12", or "Edifact") to specify the relevant control numbers
+
+## Version 2.8.0
+* Set-AzureRmIntegrationAccountSchema and Set-AzureRmIntegrationAccountMap cmdlets are fixed for the contentlink issue(Both content and contentlink were set resulting in update failure). 
+
+## Version 2.7.0
+* New cmdlets for X12 Interchange Control Number disaster recovery:
+    - Get-AzureRmIntegrationAccountGeneratedIcn
+    - Get-AzureRmIntegrationAccountReceivedIcn
+    - Remove-AzureRmIntegrationAccountReceivedIcn
+    - Set-AzureRmIntegrationAccountGeneratedIcn
+    - Set-AzureRmIntegrationAccountReceivedIcn
+
 ## Version 2.6.0
 
 ## Version 2.5.0

@@ -19,10 +19,10 @@
                 }
               ],
               "container": "samples",
-		      "blobName": "sample-blob",
-              "PathPattern": "",
-              "DateFormat": "yyyy/MM/dd",
-              "TimeFormat": "HH",
+              "blobName": "sample-blob",
+              "pathPattern": "",
+              "dateFormat": "yyyy/MM/dd",
+              "timeFormat": "HH",
               "SourcePartitionCount": null
             }
           }

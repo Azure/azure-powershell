@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.AnalysisServices.dll-Help.xml
-online version: 
+Module Name: AzureRM.AnalysisServices
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.analysisservices/test-azurermanalysisservicesserver
 schema: 2.0.0
 ---
 
@@ -13,6 +14,7 @@ Tests the existence of an instance of Analysis Services server
 
 ```
 Test-AzureRmAnalysisServicesServer [-Name] <String> [[-ResourceGroupName] <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,6 +30,21 @@ PS C:\> Test-AzureRmAnalysisServicesServer -Name "testserver" -ResourceGroupName
 This command will test if there is a server named testserver in the resourcegroup testgroup
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 Name of the Analysis Services server
@@ -58,6 +75,9 @@ Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

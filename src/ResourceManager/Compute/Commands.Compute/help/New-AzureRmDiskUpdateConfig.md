@@ -1,6 +1,6 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/new-azurermdiskupdateconfig
 schema: 2.0.0
 ---
 
@@ -12,12 +12,10 @@ Creates a configurable disk update object.
 ## SYNTAX
 
 ```
-New-AzureRmDiskUpdateConfig [[-AccountType] <StorageAccountTypes>] [[-OsType] <OperatingSystemTypes>]
- [[-DiskSizeGB] <Int32>] [[-Tag] <Hashtable>] [[-CreateOption] <DiskCreateOption>]
- [[-StorageAccountId] <String>] [[-ImageReference] <ImageDiskReference>] [[-SourceUri] <String>]
- [[-SourceResourceId] <String>] [[-EncryptionSettingsEnabled] <Boolean>]
- [[-DiskEncryptionKey] <KeyVaultAndSecretReference>] [[-KeyEncryptionKey] <KeyVaultAndKeyReference>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+New-AzureRmDiskUpdateConfig [[-SkuName] <StorageAccountTypes>] [[-OsType] <OperatingSystemTypes>]
+ [[-DiskSizeGB] <Int32>] [[-Tag] <Hashtable>] [-EncryptionSettingsEnabled <Boolean>]
+ [-DiskEncryptionKey <KeyVaultAndSecretReference>] [-KeyEncryptionKey <KeyVaultAndKeyReference>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,9 +35,11 @@ PS C:\> $diskupdateconfig = Set-AzureRmDiskUpdateKeyEncryptionKey -DiskUpdate $d
 PS C:\> Update-AzureRmDisk -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01' -DiskUpdate $diskupdateconfig;
 ```
 
-The first command creates a local empty disk update object with size 10GB in Premium_LRS storage account type.  It also sets Windows OS type and enables encryption settings.
-The second and third commands set the disk encryption key and key encryption key settings for the disk update object.
-The last command takes the disk update object and updates an existing disk with name 'Disk01' in resource group 'ResourceGroup01'.
+The first command creates a local empty disk update object with size 10GB in Premium_LRS storage
+account type. It also sets Windows OS type and enables encryption settings. The second and third
+commands set the disk encryption key and key encryption key settings for the disk update object.
+The last command takes the disk update object and updates an existing disk with name 'Disk01' in
+resource group 'ResourceGroup01'.
 
 ### Example 2
 ```
@@ -50,35 +50,18 @@ This command updates an existing disk with name 'Disk01' in resource group 'Reso
 
 ## PARAMETERS
 
-### -AccountType
-Specifies the storage account type.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: StorageAccountTypes
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: 
-Accepted values: StandardLRS, PremiumLRS
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -CreateOption
-Specifies whether this cmdlet creates a disk in the virtual machine from a platform or user image, creates an empty disk, or attaches an existing disk.
-
-```yaml
-Type: DiskCreateOption
-Parameter Sets: (All)
-Aliases: 
-Accepted values: Empty, Attach, FromImage, Import, Copy, Restore
-
-Required: False
-Position: 4
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -91,7 +74,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 10
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -121,22 +104,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 9
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ImageReference
-Specifies the image reference on a disk.
-
-```yaml
-Type: ImageDiskReference
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 6
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -151,7 +119,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 11
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -173,53 +141,26 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -SourceResourceId
-Specifies the source resource ID.
+### -SkuName
+Specifies the Sku name of the storage account.
 
 ```yaml
-Type: String
+Type: StorageAccountTypes
 Parameter Sets: (All)
-Aliases: 
+Aliases: AccountType
+Accepted values: StandardLRS, PremiumLRS
 
 Required: False
-Position: 8
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -SourceUri
-Specifies the source Uri.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 7
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -StorageAccountId
-Specifies the storage account ID.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 5
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -Tag
-Specifies that resources and resource groups can be tagged with a set of name-value pairs.
+Key-value pairs in the form of a hash table. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
 Type: Hashtable
@@ -268,20 +209,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.Nullable`1[[Microsoft.Azure.Management.Compute.Models.StorageAccountTypes, Microsoft.Azure.Management.Compute, Version=14.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
-System.Nullable`1[[Microsoft.Azure.Management.Compute.Models.OperatingSystemTypes, Microsoft.Azure.Management.Compute, Version=14.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
-System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
-System.Collections.Hashtable
-System.Nullable`1[[Microsoft.Azure.Management.Compute.Models.DiskCreateOption, Microsoft.Azure.Management.Compute, Version=14.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
-System.String
-Microsoft.Azure.Management.Compute.Models.ImageDiskReference
-System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
-Microsoft.Azure.Management.Compute.Models.KeyVaultAndSecretReference
-Microsoft.Azure.Management.Compute.Models.KeyVaultAndKeyReference
-
 ## OUTPUTS
 
-### Microsoft.Azure.Management.Compute.Models.DiskUpdate
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSDiskUpdate
 
 ## NOTES
 

@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.IotHub.dll-Help.xml
-online version: 
+Module Name: AzureRM.IotHub
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.iothub/get-azurermiothubjob
 schema: 2.0.0
 ---
 
@@ -12,11 +13,13 @@ Gets the information about an IotHub job.
 ## SYNTAX
 
 ```
-Get-AzureRmIotHubJob [-ResourceGroupName] <String> [-Name] <String> [[-JobId] <String>] [<CommonParameters>]
+Get-AzureRmIotHubJob [-ResourceGroupName] <String> [-Name] <String> [[-JobId] <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets the information about an IotHub Job. An IotHub Job gets created when an import or export operation is initialted using the New-AzureRmIotHubExportDevices or New-AzureRmIotHubImportDevices commands.
+Gets the information about an IotHub Job.
+An IotHub Job gets created when an import or export operation is initialted using the New-AzureRmIotHubExportDevices or New-AzureRmIotHubImportDevices commands.
 You can either list all the jobs or filter the jobs by the Job Identifier.
 
 ## EXAMPLES
@@ -37,8 +40,23 @@ Gets information about the job with the identifier "3630fc31-4caa-43e8-a232-ea05
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -JobId
-The Job Identifier.
+The Job Identifier. 
 
 ```yaml
 Type: String
@@ -53,7 +71,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the IoT hub.
+Name of the IoT hub. 
 
 ```yaml
 Type: String
@@ -68,7 +86,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Name of the resource group.
+Resource Group Name
 
 ```yaml
 Type: String
@@ -92,7 +110,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobResponse
-System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobResponse, Microsoft.Azure.Commands.IotHub, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+System.Collections.Generic.List\`1\[\[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobResponse, Microsoft.Azure.Commands.IotHub, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null\]\]
 
 ## NOTES
 

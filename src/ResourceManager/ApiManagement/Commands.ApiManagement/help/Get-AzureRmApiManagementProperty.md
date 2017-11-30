@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-ms.assetid: 57296F1E-C0CB-4FEC-8885-FA80C07C9484
-online version: 
+Module Name: AzureRM.ApiManagement
+ms.assetid: 894297BF-2771-4871-9E4C-8684364DAC4B
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/get-azurermapimanagementproperty
 schema: 2.0.0
 ---
 
@@ -11,37 +12,38 @@ schema: 2.0.0
 
 ## SYNTAX
 
-### Get all properties (Default)
+### GetAllProperties (Default)
 ```
-Get-AzureRmApiManagementProperty -Context <PsApiManagementContext> [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+Get-AzureRmApiManagementProperty -Context <PsApiManagementContext> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
-### Get by property ID
+### GetByPropertyId
 ```
 Get-AzureRmApiManagementProperty -Context <PsApiManagementContext> [-PropertyId <String>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Find properties containing Name
+### GetByName
 ```
 Get-AzureRmApiManagementProperty -Context <PsApiManagementContext> [-Name <String>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Find properties by Tag
+### GetByTag
 ```
 Get-AzureRmApiManagementProperty -Context <PsApiManagementContext> [-Tag <String>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 
 ## EXAMPLES
 
-### 1:
+### Example 1: Get Property by name
 ```
-PS C:\>
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Get-AzureRmApiManagementProperty -Context $apimContext -Name "sql-connectionstring"
 ```
 
 ## PARAMETERS
@@ -59,22 +61,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+ 
+ ```yaml
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: infa
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -83,25 +76,10 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationVariable
-Specifies an information variable.
-
+### -Name
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PropertyId
-```yaml
-Type: String
-Parameter Sets: Get by property ID
+Parameter Sets: GetByName
 Aliases: 
 
 Required: False
@@ -111,10 +89,10 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Name
+### -PropertyId
 ```yaml
 Type: String
-Parameter Sets: Find properties containing Name
+Parameter Sets: GetByPropertyId
 Aliases: 
 
 Required: False
@@ -125,9 +103,13 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
+Key-value pairs in the form of a hash table. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
+
 ```yaml
 Type: String
-Parameter Sets: Find properties by Tag
+Parameter Sets: GetByTag
 Aliases: 
 
 Required: False
@@ -143,6 +125,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementProperty]
+
+### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementProperty
 
 ## NOTES
 

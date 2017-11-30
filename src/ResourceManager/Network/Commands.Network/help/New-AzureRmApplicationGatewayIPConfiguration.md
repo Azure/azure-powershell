@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+Module Name: AzureRM.Network
 ms.assetid: 312AA609-7362-42A5-A889-C0784D5A2943
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermapplicationgatewayipconfiguration
 schema: 2.0.0
 ---
 
@@ -15,13 +16,13 @@ Creates an IP configuration for an application gateway.
 ### SetByResourceId
 ```
 New-AzureRmApplicationGatewayIPConfiguration -Name <String> [-SubnetId <String>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SetByResource
 ```
 New-AzureRmApplicationGatewayIPConfiguration -Name <String> [-Subnet <PSSubnet>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,6 +46,21 @@ The third command creates the IP configuration using $Subnet.
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of the IP configuration to create.
 
@@ -60,13 +76,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SubnetId
-Specifies the subnet ID.
-This is the subnet in which the application gateway would be deployed.
+### -Subnet
+Specifies the subnet object.
+This is the subnet in which the application gateway is deployed.
 
 ```yaml
-Type: String
-Parameter Sets: SetByResourceId
+Type: PSSubnet
+Parameter Sets: SetByResource
 Aliases: 
 
 Required: False
@@ -76,52 +92,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
+### -SubnetId
+Specifies the subnet ID.
+This is the subnet in which the application gateway would be deployed.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Subnet
-Specifies the subnet object.
-This is the subnet in which the application gateway is deployed.
-
-```yaml
-Type: PSSubnet
-Parameter Sets: SetByResource
+Parameter Sets: SetByResourceId
 Aliases: 
 
 Required: False

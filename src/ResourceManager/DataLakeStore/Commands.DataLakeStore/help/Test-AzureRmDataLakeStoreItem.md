@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
+Module Name: AzureRM.DataLakeStore
 ms.assetid: 0937A390-6AC2-4611-AA6C-99936AC0ABFD
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datalakestore/test-azurermdatalakestoreitem
 schema: 2.0.0
 ---
 
@@ -14,7 +15,7 @@ Tests the existence of a file or folder in Data Lake Store.
 
 ```
 Test-AzureRmDataLakeStoreItem [-Account] <String> [-Path] <DataLakeStorePathInstance> [[-PathType] <PathType>]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,6 +47,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Path
 Specifies the Data Lake Store path of the item to test, starting with the root directory (/).
 
@@ -73,6 +89,7 @@ The acceptable values for this parameter are:
 Type: PathType
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Any, File, Folder
 
 Required: False
 Position: 2

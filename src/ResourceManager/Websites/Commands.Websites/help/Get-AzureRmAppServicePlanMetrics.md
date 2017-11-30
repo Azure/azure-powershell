@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
+Module Name: AzureRM
 ms.assetid: 0AC0C4F9-4138-49EA-88CB-DC220DE7E9F4
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/get-azurermappserviceplanmetrics
 schema: 2.0.0
 ---
 
@@ -14,13 +15,15 @@ schema: 2.0.0
 ### S1
 ```
 Get-AzureRmAppServicePlanMetrics [-Metrics] <String[]> [-StartTime] <DateTime> [[-EndTime] <DateTime>]
- [-Granularity] <String> [-InstanceDetails] [-ResourceGroupName] <String> [-Name] <String> [<CommonParameters>]
+ [-Granularity] <String> [-InstanceDetails] [-ResourceGroupName] <String> [-Name] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### S2
 ```
 Get-AzureRmAppServicePlanMetrics [-Metrics] <String[]> [-StartTime] <DateTime> [[-EndTime] <DateTime>]
- [-Granularity] <String> [-InstanceDetails] [-AppServicePlan] <ServerFarmWithRichSku> [<CommonParameters>]
+ [-Granularity] <String> [-InstanceDetails] [-AppServicePlan] <ServerFarmWithRichSku>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,31 +41,31 @@ This command gets CPU percentage of the App Service Plan
 
 ## PARAMETERS
 
-### -Metrics
-Metrics
+### -AppServicePlan
+App Service Plan Object
 
 ```yaml
-Type: String[]
-Parameter Sets: (All)
+Type: ServerFarmWithRichSku
+Parameter Sets: S2
 Aliases: 
 
 Required: True
-Position: 2
+Position: 0
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -StartTime
-Start Time in UTC
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: DateTime
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: 
+Aliases: AzureRmContext, AzureCredential
 
-Required: True
-Position: 3
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -90,6 +93,7 @@ Granularity
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: PT1M, PT1H, P1D
 
 Required: True
 Position: 5
@@ -113,16 +117,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-Resource Group Name
+### -Metrics
+Metrics
 
 ```yaml
-Type: String
-Parameter Sets: S1
+Type: String[]
+Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 0
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -143,18 +147,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AppServicePlan
-App Service Plan Object
+### -ResourceGroupName
+Resource Group Name
 
 ```yaml
-Type: ServerFarmWithRichSku
-Parameter Sets: S2
+Type: String
+Parameter Sets: S1
 Aliases: 
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StartTime
+Start Time in UTC
+
+```yaml
+Type: DateTime
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 3
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -162,6 +181,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### ServerFarmWithRichSku
+Parameter 'AppServicePlan' accepts value of type 'ServerFarmWithRichSku' from the pipeline
 
 ## OUTPUTS
 

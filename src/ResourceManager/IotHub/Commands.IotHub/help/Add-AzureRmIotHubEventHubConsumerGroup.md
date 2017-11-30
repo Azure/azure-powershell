@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.IotHub.dll-Help.xml
-online version: 
+Module Name: AzureRM.IotHub
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.iothub/add-azurermiothubeventhubconsumergroup
 schema: 2.0.0
 ---
 
@@ -13,12 +14,12 @@ Creates an eventhub consumer group.
 
 ```
 Add-AzureRmIotHubEventHubConsumerGroup [-ResourceGroupName] <String> [-Name] <String>
- [-EventHubEndpointName] <String> [-EventHubConsumerGroupName] <String> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-EventHubEndpointName] <String> [-EventHubConsumerGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a consumer group in the Eventhub associated with the specified IotHub. 
+Creates a consumer group in the Eventhub associated with the specified IotHub.
 
 ## EXAMPLES
 
@@ -38,6 +39,21 @@ Adds a new consumergroup named "myconsumergroup" to the eventhub for operations 
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EventHubConsumerGroupName
 Name of the EventHub ConsumerGroup that you want to add.
 
@@ -54,12 +70,14 @@ Accept wildcard characters: False
 ```
 
 ### -EventHubEndpointName
-Name of the EventHub endpoint. The possible values for this are events, operationsMonitoringEvents
+Name of the EventHub Endpoint.
+Possible values events, operationsMonitoringEvents
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: events, operationsMonitoringEvents
 
 Required: True
 Position: 2
@@ -69,7 +87,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the Iot Hub.
+Name of the Iot Hub
 
 ```yaml
 Type: String
@@ -108,13 +126,14 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: SwitchParameter
@@ -123,7 +142,7 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

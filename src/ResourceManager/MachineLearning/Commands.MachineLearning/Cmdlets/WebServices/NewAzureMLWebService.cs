@@ -18,6 +18,8 @@ using Microsoft.Azure.Commands.MachineLearning.Utilities;
 using Microsoft.Azure.Management.MachineLearning.WebServices.Models;
 using Microsoft.Azure.Management.MachineLearning.WebServices.Util;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
 {
@@ -28,18 +30,18 @@ namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
     [OutputType(typeof(WebService))]
     public class NewAzureMLWebService : WebServicesCmdletBase
     {
-        protected const string CreateFromFileParameterSet = 
-            "Create a new Azure ML webservice from a JSON definiton file.";
-        protected const string CreateFromObjectParameterSet = 
-            "Create a new Azure ML webservice from a WebService instance definition.";
+        protected const string CreateFromFileParameterSet = "CreateFromFile";
+        protected const string CreateFromObjectParameterSet = "CreateFromInstance";
        
         [Parameter(
             Mandatory = true, 
             HelpMessage = "The name of the resource group for the Azure ML web service.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The location of the AzureML.")]
+        [LocationCompleter("Microsoft.MachineLearning/webServices")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
         
@@ -87,14 +89,22 @@ namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
                                 CmdletHelpers.GetWebServiceDefinitionFromFile(
                                                 this.SessionState.Path.CurrentFileSystemLocation.Path,
                                                 this.DefinitionFile);
-                        this.NewWebServiceDefinition = 
+                        var webServiceFromJson = 
                                 ModelsSerializationUtil.GetAzureMLWebServiceFromJsonDefinition(jsonDefinition);
+
+                        // The name and location in command line parameters overwrite the content from 
+                        // Web Service Definition json file.
+                        this.NewWebServiceDefinition = new WebService(
+                                                                this.Location, 
+                                                                webServiceFromJson.Properties, 
+                                                                webServiceFromJson.Id, 
+                                                                this.Name, webServiceFromJson.Type, 
+                                                                webServiceFromJson.Tags);
                     }
 
                     WebService newWebService =
                         this.WebServicesClient.CreateAzureMlWebService(
                                                     this.ResourceGroupName,
-                                                    this.Location,
                                                     this.Name,
                                                     this.NewWebServiceDefinition);
                     this.WriteObject(newWebService);

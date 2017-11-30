@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-ms.assetid: B0A1EBD0-DA3C-4BB4-ADE1-49340E961ACD
-online version: 
+ms.assetid: 288EF15B-FE5C-44AE-ABD5-2B92F408B9EB
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/get-azurermapimanagementtenantsyncstate
 schema: 2.0.0
 ---
 
@@ -14,7 +14,7 @@ Gets the status of the most recent synchronization between the configuration dat
 
 ```
 Get-AzureRmApiManagementTenantSyncState -Context <PsApiManagementContext>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +24,8 @@ The **Get-AzureRmApiManagementTenantSyncState** cmdlet gets the status of the mo
 
 ### Example 1: Get the status of the most recent synchronization
 ```
-PS C:\>Get-AzureRmApiManagementTenantSyncState -Context $ApimContext
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Get-AzureRmApiManagementTenantSyncState -Context $apimContext 
 ```
 
 This command gets the status of the most recent synchronization between the configuration database and the Git repository.
@@ -46,37 +47,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+ 
+ ```yaml
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named

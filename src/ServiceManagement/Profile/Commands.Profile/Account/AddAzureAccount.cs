@@ -15,9 +15,9 @@
 using System.Management.Automation;
 using System.Security;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Profile;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.Profile
 {

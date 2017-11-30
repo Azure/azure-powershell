@@ -24,8 +24,9 @@ using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using AzureRestNS = Microsoft.Rest.Azure;
 using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
-using ResourcesNS = Microsoft.Azure.Management.Resources;
+using ResourcesNS = Microsoft.Azure.Management.Internal.Resources;
 using SystemNet = System.Net;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -52,11 +53,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             ServiceClientAdapter = new ServiceClientAdapter(DefaultContext);
 
             WriteDebug("InsideRestore. going to create ResourceManager Client");
-            RmClient = AzureSession.ClientFactory.CreateClient<ResourcesNS.ResourceManagementClient>(DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
+            RmClient = AzureSession.Instance.ClientFactory.CreateArmClient<ResourcesNS.ResourceManagementClient>(DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
 
             WriteDebug("Client Created successfully");
 
-            Logger.Instance = new Logger(WriteWarning, WriteDebug, WriteVerbose, ThrowTerminatingError);
+            Logger.Instance = new Logger(WriteWarning, WriteDebug, WriteVerbose, WriteError, ThrowTerminatingError);
         }
 
         /// <summary>
@@ -68,9 +69,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         protected override void SetupHttpClientPipeline()
         {
             base.SetupHttpClientPipeline();
-            AzureSession.ClientFactory.AddHandler(
+            AzureSession.Instance.ClientFactory.AddHandler(
                 new RpNamespaceHandler(ServiceClientAdapter.ResourceProviderNamespace));
-            AzureSession.ClientFactory.AddHandler(new ClientRequestIdHandler());
+            AzureSession.Instance.ClientFactory.AddHandler(new ClientRequestIdHandler());
         }
 
         /// <summary>
@@ -78,11 +79,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// Catches and logs any exception occuring during the execution.
         /// </summary>
         /// <param name="action">Delegate representing the cmdlet processing block</param>
-        protected void ExecutionBlock(Action action)
+        protected void ExecutionBlock(Action action, bool shouldProcess = true)
         {
             try
             {
-                action.Invoke();
+                if (shouldProcess)
+                {
+                    action.Invoke();
+                }
             }
             catch (Exception exception)
             {

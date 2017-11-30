@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.SiteRecovery.dll-Help.xml
+Module Name: AzureRM
 ms.assetid: F3E1BEB5-B565-4618-9AEF-DB85A1AB2163
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.siterecovery/get-azurermsiterecoveryprotectioncontainermapping
 schema: 2.0.0
 ---
 
@@ -15,13 +16,13 @@ Gets Azure Site Recovery Protection Container mappings.
 ### ByObject (Default)
 ```
 Get-AzureRmSiteRecoveryProtectionContainerMapping -ProtectionContainer <ASRProtectionContainer>
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByObjectWithName
 ```
 Get-AzureRmSiteRecoveryProtectionContainerMapping -Name <String> -ProtectionContainer <ASRProtectionContainer>
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,18 +32,18 @@ The **Get-AzureRmSiteRecoveryProtectionContainerMapping** cmdlet gets informatio
 
 ## PARAMETERS
 
-### -ProtectionContainer
-Specifies the Azure Site Recovery Protection Container object.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: ASRProtectionContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: 
+Aliases: AzureRmContext, AzureCredential
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -61,10 +62,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProtectionContainer
+Specifies the Azure Site Recovery Protection Container object.
+
+```yaml
+Type: ASRProtectionContainer
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### ASRProtectionContainer
+Parameter 'ProtectionContainer' accepts value of type 'ASRProtectionContainer' from the pipeline
 
 ## OUTPUTS
 

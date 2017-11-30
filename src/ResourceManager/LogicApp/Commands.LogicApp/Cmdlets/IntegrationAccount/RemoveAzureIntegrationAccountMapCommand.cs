@@ -17,11 +17,12 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     using System.Globalization;
     using Microsoft.Azure.Commands.LogicApp.Utilities;
     using System.Management.Automation;
+    using ResourceManager.Common.ArgumentCompleters;
 
     /// <summary>
     /// Removes the integration account map. 
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmIntegrationAccountMap", SupportsShouldProcess = true), OutputType(typeof(object))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmIntegrationAccountMap", SupportsShouldProcess = true)]
     public class RemoveAzureIntegrationAccountMapCommand : LogicAppBaseCmdlet
     {
 
@@ -29,6 +30,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
         [Parameter(Mandatory = true, HelpMessage = "The integration account resource group name.",
             ValueFromPipelineByPropertyName = true)]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

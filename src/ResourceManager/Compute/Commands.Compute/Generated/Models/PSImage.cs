@@ -24,7 +24,7 @@ using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.Compute.Automation.Models
 {
-    public class PSImage : Image
+    public partial class PSImage : Image
     {
         // Gets or sets the property of 'ResourceGroupName'
         public string ResourceGroupName

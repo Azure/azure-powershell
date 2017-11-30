@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             {
                 if (cognitiveServicesClientWrapper == null)
                 {
-                    cognitiveServicesClientWrapper = new CognitiveServicesManagementClientWrapper(DefaultProfile.Context)
+                    cognitiveServicesClientWrapper = new CognitiveServicesManagementClientWrapper(DefaultProfile.DefaultContext)
                     {
                         VerboseLogger = WriteVerboseWithTimestamp,
                         ErrorLogger = WriteErrorWithTimestamp
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         {
             get
             {
-                return DefaultProfile.Context.Subscription.Id.ToString();
+                return DefaultProfile.DefaultContext.Subscription.Id.ToString();
             }
         }
 

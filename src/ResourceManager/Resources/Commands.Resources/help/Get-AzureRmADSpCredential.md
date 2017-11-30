@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
+Module Name: AzureRM.Resources
 ms.assetid: 7690143F-5F09-4739-9F66-B2ACDF8305F4
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/get-azurermadspcredential
 schema: 2.0.0
 ---
 
@@ -14,14 +15,13 @@ Retrieves a list of credentials associated with a service principal.
 
 ### ObjectIdParameterSet (Default)
 ```
-Get-AzureRmADSpCredential -ObjectId <String> [-InformationAction <ActionPreference>]
- [-InformationVariable <String>]
+Get-AzureRmADSpCredential -ObjectId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SPNParameterSet
 ```
-Get-AzureRmADSpCredential -ServicePrincipalName <String> [-InformationAction <ActionPreference>]
- [-InformationVariable <String>]
+Get-AzureRmADSpCredential -ServicePrincipalName <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,8 +31,6 @@ This command will retrieve all of the credential properties (but not the credent
 ## EXAMPLES
 
 ### --------------------------  Example 1  --------------------------
-@{paragraph=PS C:\\\>}
-
 ```
 PS E:\> Get-AzureRmADSpCredential -ServicePrincipalName http://test12345
 ```
@@ -40,6 +38,21 @@ PS E:\> Get-AzureRmADSpCredential -ServicePrincipalName http://test12345
 Returns a list of credentials associated with the service principal having SPN 'http://test12345'.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ObjectId
 The object id of the service principal to retrieve credentials from.
@@ -53,45 +66,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -110,17 +84,22 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ## OUTPUTS
+
+### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADCredential
 
 ## NOTES
 
 ## RELATED LINKS
 
-[New-AzureRmADSpCredential]()
+[New-AzureRmADSpCredential](./New-AzureRmADSpCredential.md)
 
-[Remove-AzureRmADSpCredential]()
+[Remove-AzureRmADSpCredential](./Remove-AzureRmADSpCredential.md)
 
-[Get-AzureRmADServicePrincipal]()
+[Get-AzureRmADServicePrincipal](./Get-AzureRmADServicePrincipal.md)
 

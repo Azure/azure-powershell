@@ -14,7 +14,7 @@
 
 using System;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 

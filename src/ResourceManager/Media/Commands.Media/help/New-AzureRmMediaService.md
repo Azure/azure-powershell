@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Media.dll-Help.xml
+Module Name: AzureRM.Media
 ms.assetid: 5CEA7323-4CF7-42B2-BA94-BB3C8F73D2E9
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.media/new-azurermmediaservice
 schema: 2.0.0
 ---
 
@@ -15,15 +16,15 @@ Creates a media service if the media service already exists, all its properties 
 ### StorageAccountIdParamSet
 ```
 New-AzureRmMediaService [-ResourceGroupName] <String> [-AccountName] <String> [-Location] <String>
- [-StorageAccountId] <String> [-Tags <Hashtable>] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-StorageAccountId] <String> [-Tags <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### StorageAccountsParamSet
 ```
 New-AzureRmMediaService [-ResourceGroupName] <String> [-AccountName] <String> [-Location] <String>
- [-StorageAccounts] <PSStorageAccount[]> [-Tags <Hashtable>] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-StorageAccounts] <PSStorageAccount[]> [-Tags <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -101,21 +102,6 @@ This script uses several other cmdlets.
 
 ## PARAMETERS
 
-### -ResourceGroupName
-Specifies the name of the resource group that the media service is assigned to.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -AccountName
 Specifies the name of the media service that this cmdlet creates.
 
@@ -128,6 +114,21 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -146,6 +147,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ResourceGroupName
+Specifies the name of the resource group that the media service is assigned to.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -StorageAccountId
 Specifies the storage account associated with the media service account.
 
@@ -153,6 +169,21 @@ Specifies the storage account associated with the media service account.
 Type: String
 Parameter Sets: StorageAccountIdParamSet
 Aliases: Id
+
+Required: True
+Position: 3
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -StorageAccounts
+Specifies an array of storage accounts to associate with the media service.
+
+```yaml
+Type: PSStorageAccount[]
+Parameter Sets: StorageAccountsParamSet
+Aliases: 
 
 Required: True
 Position: 3
@@ -176,41 +207,17 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: ActionPreference
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: infa
+Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -231,42 +238,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -StorageAccounts
-Specifies an array of storage accounts to associate with the media service.
-
-```yaml
-Type: PSStorageAccount[]
-Parameter Sets: StorageAccountsParamSet
-Aliases: 
-
-Required: True
-Position: 3
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Media.Models.PSMediaService
 
 ## NOTES
 

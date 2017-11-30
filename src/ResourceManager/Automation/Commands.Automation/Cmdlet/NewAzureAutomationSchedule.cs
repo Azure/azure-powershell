@@ -202,6 +202,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                 StartTime = this.StartTime,
                 Description = this.Description,
                 ExpiryTime = this.ExpiryTime,
+                TimeZone = this.TimeZone,
                 Frequency = ScheduleFrequency.Month,
                 Interval = this.MonthInterval,
                 MonthlyScheduleOptions = this.IsMonthlyScheduleNull() 
@@ -247,6 +248,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                 StartTime = this.StartTime,
                 Description = this.Description,
                 ExpiryTime = this.ExpiryTime,
+                TimeZone = this.TimeZone,
                 Frequency = ScheduleFrequency.Week,
                 Interval = this.WeekInterval,
                 WeeklyScheduleOptions = this.DaysOfWeek == null
@@ -278,7 +280,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// </summary>
     public enum DaysOfMonth
     {
-      One = 1,
+        One = 1,
         Two = 2,
         Three = 3,
         Four = 4,

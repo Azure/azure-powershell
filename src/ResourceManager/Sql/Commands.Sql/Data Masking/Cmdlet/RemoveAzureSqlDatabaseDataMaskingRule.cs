@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
                 return null;
             }
 
-            ModelAdapter.RemoveDatabaseDataMaskingRule(rules.First(), clientRequestId);
+            ModelAdapter.RemoveDatabaseDataMaskingRule(rules.First());
 
             return null;
         }

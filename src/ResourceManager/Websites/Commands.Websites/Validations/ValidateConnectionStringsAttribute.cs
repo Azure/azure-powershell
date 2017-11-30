@@ -47,13 +47,13 @@ namespace Microsoft.Azure.Commands.WebApps.Validations
                 {
                     throw new ValidationMetadataException("Connection string type must be specified.");
                 }
-
+#if !NETSTANDARD
                 DatabaseServerType type;
                 if (!Enum.TryParse(typeValuePairIgnoreCase["Type"].ToString(), true, out type))
                 {
                     throw new ValidationMetadataException("Database server type values are [MySql| SQLAzure| SQLServer| Custom]");
                 }
-
+#endif
                 if (!typeValuePairIgnoreCase.ContainsKey("Value") || typeValuePairIgnoreCase["Value"].GetType() != typeof(string))
                 {
                     throw new ValidationMetadataException("Connection string value must be specified.");

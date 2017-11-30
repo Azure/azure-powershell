@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+Module Name: AzureRM.Network
 ms.assetid: 6F9BAB0B-7DC7-4672-B2B5-8B139D652DDD
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/add-azurermloadbalancerprobeconfig
 schema: 2.0.0
 ---
 
@@ -15,7 +16,7 @@ Adds a probe configuration to a load balancer.
 ```
 Add-AzureRmLoadBalancerProbeConfig -Name <String> -LoadBalancer <PSLoadBalancer> [-RequestPath <String>]
  [-Protocol <String>] -Port <Int32> -IntervalInSeconds <Int32> -ProbeCount <Int32>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,11 +33,26 @@ This command gets the load balancer named myLb, adds the specified probe configu
 
 ## PARAMETERS
 
-### -Name
-Specifies the name of the probe configuration to add.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: String
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IntervalInSeconds
+Specifies the interval, in seconds, between probes to each instance of the load-balanced service.
+
+```yaml
+Type: Int32
 Parameter Sets: (All)
 Aliases: 
 
@@ -63,42 +79,11 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -RequestPath
-Specifies the path in the load-balanced service to probe to determine health.
+### -Name
+Specifies the name of the probe configuration to add.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Protocol
-Specifies the protocol to use for the probe.
-The acceptable values for this parameter are: Tcp or Http.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Port
-Specifies the port on which probes should connect to a load-balanced service.
-
-```yaml
-Type: Int32
 Parameter Sets: (All)
 Aliases: 
 
@@ -109,8 +94,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IntervalInSeconds
-Specifies the interval, in seconds, between probes to each instance of the load-balanced service.
+### -Port
+Specifies the port on which probes should connect to a load-balanced service.
 
 ```yaml
 Type: Int32
@@ -139,22 +124,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
+### -Protocol
+Specifies the protocol to use for the probe.
+The acceptable values for this parameter are: Tcp or Http.
 
 ```yaml
-Type: ActionPreference
+Type: String
 Parameter Sets: (All)
-Aliases: infa
+Aliases: 
+Accepted values: Tcp, Http
 
 Required: False
 Position: Named
@@ -163,13 +141,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationVariable
-Specifies an information variable.
+### -RequestPath
+Specifies the path in the load-balanced service to probe to determine health.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: iv
+Aliases: 
 
 Required: False
 Position: Named
@@ -183,7 +161,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### PSLoadBalancer
+Parameter 'LoadBalancer' accepts value of type 'PSLoadBalancer' from the pipeline
+
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Network.Models.PSLoadBalancer
 
 ## NOTES
 

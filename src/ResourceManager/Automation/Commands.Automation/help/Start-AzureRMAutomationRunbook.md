@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
+Module Name: AzureRM.Automation
 ms.assetid: B2D9FF7B-EA3B-4853-814C-00FC4E328957
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/start-azurermautomationrunbook
 schema: 2.0.0
 ---
 
@@ -15,13 +16,15 @@ Starts a runbook job.
 ### ByAsynchronousReturnJob (Default)
 ```
 Start-AzureRmAutomationRunbook [-Name] <String> [-Parameters <IDictionary>] [-RunOn <String>]
- [-ResourceGroupName] <String> [-AutomationAccountName] <String> [<CommonParameters>]
+ [-ResourceGroupName] <String> [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### BySynchronousReturnJobOutput
 ```
 Start-AzureRmAutomationRunbook [-Name] <String> [-Parameters <IDictionary>] [-RunOn <String>] [-Wait]
- [-MaxWaitSeconds <Int32>] [-ResourceGroupName] <String> [-AutomationAccountName] <String> [<CommonParameters>]
+ [-MaxWaitSeconds <Int32>] [-ResourceGroupName] <String> [-AutomationAccountName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,19 +50,49 @@ This command specifies the _Wait_ parameter.
 Therefore, it returns results after the job is completed.
 The cmdlet waits up to 1000 seconds for the results.
 
-
 ## PARAMETERS
 
 ### -AutomationAccountName
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MaxWaitSeconds
+Specifies the number of seconds this cmdlet waits for a job to finish before it abandons the job.
+The default value is 10800, or three hours.
+
+```yaml
+Type: Int32
+Parameter Sets: BySynchronousReturnJobOutput
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -70,7 +103,7 @@ Parameter Sets: (All)
 Aliases: RunbookName
 
 Required: True
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -80,7 +113,7 @@ Accept wildcard characters: False
 ```yaml
 Type: IDictionary
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -93,10 +126,10 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -123,23 +156,7 @@ Indicates that this cmdlet waits for job to complete, suspend, or fail, and then
 ```yaml
 Type: SwitchParameter
 Parameter Sets: BySynchronousReturnJobOutput
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MaxWaitSeconds
-Specifies the number of seconds this cmdlet waits for a job to finish before it abandons the job.
-The default value is 10800, or three hours.
-
-```yaml
-Type: Int32
-Parameter Sets: BySynchronousReturnJobOutput
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named

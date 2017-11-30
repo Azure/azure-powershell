@@ -1,31 +1,33 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.DataFactories.dll-Help.xml
+Module Name: AzureRM.DataFactories
 ms.assetid: 8546C3FE-5396-4027-BF33-F98F6C018A67
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/new-azurermdatafactorygatewaykey
 schema: 2.0.0
 ---
 
 # New-AzureRmDataFactoryGatewayKey
 
 ## SYNOPSIS
-Creates a gateway key for an Azure Data Factory.
+Creates a gateway key for an Azure Data Factory. This cmdlet is deprecated, and you should use **New-AzureRmDataFactoryGatewayAuthKey** instead.
 
 ## SYNTAX
 
 ### ByFactoryName (Default)
 ```
 New-AzureRmDataFactoryGatewayKey [-DataFactoryName] <String> [-GatewayName] <String>
- [-ResourceGroupName] <String> [<CommonParameters>]
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByFactoryObject
 ```
-New-AzureRmDataFactoryGatewayKey [-DataFactory] <PSDataFactory> [-GatewayName] <String> [<CommonParameters>]
+New-AzureRmDataFactoryGatewayKey [-DataFactory] <PSDataFactory> [-GatewayName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The **New-AzureRmDataFactoryGatewayKey** cmdlet creates a gateway key for a specified Azure Data Factory gateway.
-You register the gateway with a cloud service by using this key.
+You register the gateway with a cloud service by using this key. This cmdlet is deprecated, and you should use **New-AzureRmDataFactoryGatewayAuthKey** instead.
 
 ## EXAMPLES
 
@@ -50,7 +52,7 @@ Parameter Sets: ByFactoryObject
 Aliases: 
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -66,9 +68,24 @@ Parameter Sets: ByFactoryName
 Aliases: 
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -82,7 +99,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -98,7 +115,7 @@ Parameter Sets: ByFactoryName
 Aliases: 
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -119,5 +136,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [New-AzureRmDataFactoryGateway](./New-AzureRmDataFactoryGateway.md)
+[Get-AzureRmDataFactoryGatewayAuthKey](./Get-AzureRmDataFactoryGatewayAuthKey.md)
+[New-AzureRmDataFactoryGatewayAuthKey](./New-AzureRmDataFactoryGatewayAuthKey.md)
 
 

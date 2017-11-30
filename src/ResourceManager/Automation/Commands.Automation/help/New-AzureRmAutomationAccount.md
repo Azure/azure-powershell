@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
+Module Name: AzureRM.Automation
 ms.assetid: 2D5B16F0-0662-4D9F-A13F-808CE5EEBBA3
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/new-azurermautomationaccount
 schema: 2.0.0
 ---
 
@@ -14,14 +15,15 @@ Creates an Automation account.
 
 ```
 New-AzureRmAutomationAccount [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
- [-Plan <String>] [-Tags <IDictionary>] [<CommonParameters>]
+ [-Plan <String>] [-Tags <IDictionary>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The **New-AzureRmAutomationAccount** cmdlet creates an Azure Automation account in a resource group.
 
-An Automation account is a container for Automation resources that is isolated from the resources of other Automation accounts.
-Automation resources include runbooks, Desired State Configuration (DSC) configurations, jobs, and assets.
+An Automation account is a container for Automation resources that is isolated from the resources
+of other Automation accounts. Automation resources include runbooks, Desired State Configuration
+(DSC) configurations, jobs, and assets.
 
 ## EXAMPLES
 
@@ -34,6 +36,21 @@ This command creates a new automation account named ContosoAutomationAccount in 
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Location
 Specifies the location in which this cmdlet creates the Automation account.
 To obtain valid locations, use the Get-AzureRMLocation cmdlet.
@@ -44,7 +61,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -59,7 +76,7 @@ Parameter Sets: (All)
 Aliases: AutomationAccountName
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -67,9 +84,9 @@ Accept wildcard characters: False
 
 ### -Plan
 Specifies the plan for the Automation account.
-Valid values are: 
+Valid values are:
 
-- Basic 
+- Basic
 - Free
 
 ```yaml
@@ -94,14 +111,16 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -Tags
-Specifies tags for the Automation account.
+Key-value pairs in the form of a hash table. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
 Type: IDictionary
@@ -122,6 +141,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Automation.Model.AutomationAccount
+
 ## NOTES
 
 ## RELATED LINKS
@@ -131,5 +152,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzureRmAutomationAccount](./Remove-AzureRmAutomationAccount.md)
 
 [Set-AzureRmAutomationAccount](./Set-AzureRmAutomationAccount.md)
-
-

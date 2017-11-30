@@ -19,6 +19,7 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Collections;
@@ -29,15 +30,15 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
     [Cmdlet("Set", "AzureRmVmssStorageProfile", SupportsShouldProcess = true)]
-    [OutputType(typeof(VirtualMachineScaleSet))]
-    public class SetAzureRmVmssStorageProfileCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
+    [OutputType(typeof(PSVirtualMachineScaleSet))]
+    public partial class SetAzureRmVmssStorageProfileCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Parameter(
             Mandatory = true,
             Position = 0,
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true)]
-        public VirtualMachineScaleSet VirtualMachineScaleSet { get; set; }
+        public PSVirtualMachineScaleSet VirtualMachineScaleSet { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -67,7 +68,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             Position = 5,
             ValueFromPipelineByPropertyName = true)]
-        public string Name { get; set; }
+        [Alias("Name")]
+        public string OsDiskName { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -229,7 +231,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.ImageReference.Id = this.ImageReferenceId;
             }
 
-            if (this.Name != null)
+            if (this.OsDiskName != null)
             {
 
                 // VirtualMachineProfile
@@ -247,7 +249,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.OsDisk = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetOSDisk();
                 }
-                this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.OsDisk.Name = this.Name;
+                this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.OsDisk.Name = this.OsDiskName;
             }
 
             if (this.OsDiskCaching != null)

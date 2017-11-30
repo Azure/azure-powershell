@@ -25,24 +25,15 @@ function Test-CreateDatabaseCopy
 	.SYNOPSIS
 	Tests creating a database copy
 #>
-function Test-CreateDatabaseCopyV2
-{
-	Test-CreateCopyInternal "2.0" "North Central US"
-}
-
-<#
-	.SYNOPSIS
-	Tests creating a database copy
-#>
 function Test-CreateCopyInternal ($serverVersion, $location = "North Europe")
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest $location
-	$server = Create-ServerForTest $rg $serverVersion $location
+	$server = Create-ServerForTest $rg $location
 	$database = Create-DatabaseForTest $rg $server "Standard"
 
 	$copyRg = Create-ResourceGroupForTest $location
-	$copyServer = Create-ServerForTest $copyRg $serverVersion $location
+	$copyServer = Create-ServerForTest $copyRg $location
 	$copyDatabaseName = Get-DatabaseName
 
 	try
@@ -87,24 +78,15 @@ function Test-CreateSecondaryDatabase
 	.SYNOPSIS
 	Tests creating a secondary database
 #>
-function Test-CreateSecondaryDatabaseV2
-{
-	Test-CreateSecondaryDatabaseInternal "2.0" "North Central US"
-}
-
-<#
-	.SYNOPSIS
-	Tests creating a secondary database
-#>
 function Test-CreateSecondaryDatabaseInternal ($serverVersion, $location = "North Europe")
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest $location
-	$server = Create-ServerForTest $rg $serverVersion $location
+	$server = Create-ServerForTest $rg $location
 	$database = Create-DatabaseForTest $rg $server
 
 	$partRg = Create-ResourceGroupForTest $location
-	$partServer = Create-ServerForTest $partRg $serverVersion $location
+	$partServer = Create-ServerForTest $partRg $location
 
 	try
 	{	
@@ -145,24 +127,15 @@ function Test-GetReplicationLink
 	.SYNOPSIS
 	Tests getting a secondary database
 #>
-function Test-GetReplicationLinkV2
-{
-	Test-GetReplicationLinkInternal "2.0" "North Central US"
-}
-
-<#
-	.SYNOPSIS
-	Tests getting a secondary database
-#>
 function Test-GetReplicationLinkInternal ($serverVersion, $location = "North Europe")
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest $location
-	$server = Create-ServerForTest $rg $serverVersion $location
+	$server = Create-ServerForTest $rg $location
 	$database = Create-DatabaseForTest $rg $server
 
 	$partRg = Create-ResourceGroupForTest $location
-	$partServer = Create-ServerForTest $partRg $serverVersion $location
+	$partServer = Create-ServerForTest $partRg $location
 
 	try
 	{	
@@ -206,24 +179,15 @@ function Test-RemoveSecondaryDatabase
 	.SYNOPSIS
 	Tests removing a secondary database
 #>
-function Test-RemoveSecondaryDatabaseV2
-{
-	Test-RemoveSecondaryDatabaseInternal "2.0" "North Central US"
-}
-
-<#
-	.SYNOPSIS
-	Tests removing a secondary database
-#>
 function Test-RemoveSecondaryDatabaseInternal ($serverVersion, $location = "North Europe")
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest $location
-	$server = Create-ServerForTest $rg $serverVersion $location
+	$server = Create-ServerForTest $rg $location
 	$database = Create-DatabaseForTest $rg $server
 
 	$partRg = Create-ResourceGroupForTest $location
-	$partServer = Create-ServerForTest $partRg $serverVersion $location
+	$partServer = Create-ServerForTest $partRg $location
 
 	try
 	{	
@@ -259,11 +223,11 @@ function Test-FailoverSecondaryDatabaseInternal ($serverVersion, $location = "No
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest $location
-	$server = Create-ServerForTest $rg $serverVersion $location
+	$server = Create-ServerForTest $rg $location
 	$database = Create-DatabaseForTest $rg $server
 
 	$partRg = Create-ResourceGroupForTest $location
-	$partServer = Create-ServerForTest $partRg $serverVersion $location
+	$partServer = Create-ServerForTest $partRg $location
 
 	try
 	{	

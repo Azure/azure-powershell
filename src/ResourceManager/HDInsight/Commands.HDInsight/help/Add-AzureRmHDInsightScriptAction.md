@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
+Module Name: AzureRM.HDInsight
 ms.assetid: 8F0634BD-D817-4365-B6D1-924DC36AE4C9
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.hdinsight/add-azurermhdinsightscriptaction
 schema: 2.0.0
 ---
 
@@ -14,8 +15,7 @@ Adds a script action to a cluster configuration object.
 
 ```
 Add-AzureRmHDInsightScriptAction [-Config] <AzureHDInsightConfig> [-NodeType] <ClusterNodeType> [-Uri] <Uri>
- [-Name] <String> [[-Parameters] <String>] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+ [-Name] <String> [[-Parameters] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -98,36 +98,16 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -NodeType
-Specifies the node type on which to run the script action.
-The acceptable values for this parameter are:
-
-- HeadNode
-- WorkerNode
-- ZookeeperNode
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: ClusterNodeType
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: 
+Aliases: AzureRmContext, AzureCredential
 
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Uri
-Specifies the public URI for the script action (a PowerShell or Bash script).
-
-```yaml
-Type: Uri
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 2
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -148,6 +128,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -NodeType
+Specifies the node type on which to run the script action.
+The acceptable values for this parameter are:
+
+- HeadNode
+- WorkerNode
+- ZookeeperNode
+
+```yaml
+Type: ClusterNodeType
+Parameter Sets: (All)
+Aliases: 
+Accepted values: HeadNode, WorkerNode, ZookeeperNode, EdgeNode
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Parameters
 Specifies the parameters for the script action.
 
@@ -163,40 +164,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
+### -Uri
+Specifies the public URI for the script action (a PowerShell or Bash script).
 
 ```yaml
-Type: ActionPreference
+Type: Uri
 Parameter Sets: (All)
-Aliases: infa
+Aliases: 
 
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
+Required: True
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -207,7 +184,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### AzureHDInsightConfig
+Parameter 'Config' accepts value of type 'AzureHDInsightConfig' from the pipeline
+
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig
 
 ## NOTES
 

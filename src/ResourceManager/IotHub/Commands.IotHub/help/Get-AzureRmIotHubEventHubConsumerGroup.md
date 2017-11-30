@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.IotHub.dll-Help.xml
-online version: 
+Module Name: AzureRM.IotHub
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.iothub/get-azurermiothubeventhubconsumergroup
 schema: 2.0.0
 ---
 
@@ -13,11 +14,11 @@ Gets all the eventhub consumergroups.
 
 ```
 Get-AzureRmIotHubEventHubConsumerGroup [-ResourceGroupName] <String> [-Name] <String>
- [-EventHubEndpointName] <String> [<CommonParameters>]
+ [-EventHubEndpointName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets all the eventhub consumergroups for the different EventHubs used by IotHub. 
+Gets all the eventhub consumergroups for the different EventHubs used by IotHub.
 
 ## EXAMPLES
 
@@ -37,13 +38,30 @@ Gets all the eventhub consumergroups for the operationsMonitoringEvents eventhub
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EventHubEndpointName
-Name of the Event Hub endpoint. The possible values are events, operationsMonitoringEvents.
+Name of the Event Hub endpoint.
+Possible values events, operationsMonitoringEvents
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: events, operationsMonitoringEvents
 
 Required: True
 Position: 2
@@ -53,7 +71,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of hte IoT hub.
+Name of the IotHub
 
 ```yaml
 Type: String
@@ -68,7 +86,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Name of the resource group.
+Resource Group Name
 
 ```yaml
 Type: String

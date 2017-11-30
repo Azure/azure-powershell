@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 ms.assetid: FC6BC096-DBC4-48DA-A366-B87EB18A0496
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/get-azurermvmss
 schema: 2.0.0
 ---
 
@@ -12,15 +12,16 @@ Gets the properties of a VMSS.
 
 ## SYNTAX
 
-### InvokeByDynamicParameters (Default)
+### DefaultParameter (Default)
 ```
-Get-AzureRmVmss [[-ResourceGroupName] <String>] [[-VMScaleSetName] <String>] [<CommonParameters>]
+Get-AzureRmVmss [[-ResourceGroupName] <String>] [[-VMScaleSetName] <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### InvokeByDynamicParametersForFriendMethod
+### FriendMethod
 ```
 Get-AzureRmVmss [[-ResourceGroupName] <String>] [[-VMScaleSetName] <String>] [-InstanceView]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,7 +34,7 @@ Specify the *Status* parameter to get only the instance view of a virtual machin
 
 ### Example 1: Get the properties of a VMSS
 ```
-PS C:\>Get-AzureRmVmss -ResourceGroupName "Group001" -VMScaleSetName "VMSS001"
+PS C:\> Get-AzureRmVmss -ResourceGroupName "Group001" -VMScaleSetName "VMSS001"
 ```
 
 This command gets the properties of the VMSS named VMSS001 that belongs to the resource group named Group001.
@@ -41,16 +42,31 @@ Since the command does not specify the *InstanceView* switch parameter, the cmdl
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InstanceView
 Indicates that this cmdlet gets only the instance view of the virtual machine.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: InvokeByDynamicParametersForFriendMethod
+Parameter Sets: FriendMethod
 Aliases: 
 
 Required: True
-Position: 4
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -65,7 +81,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -80,7 +96,7 @@ Parameter Sets: (All)
 Aliases: Name
 
 Required: False
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

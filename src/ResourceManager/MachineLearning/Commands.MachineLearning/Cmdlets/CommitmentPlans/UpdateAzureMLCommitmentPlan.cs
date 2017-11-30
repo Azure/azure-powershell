@@ -19,6 +19,8 @@ using Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models;
 
 namespace Microsoft.Azure.Commands.MachineLearning
 {
+    using Common.Authentication.Abstractions;
+    using ResourceManager.Common.ArgumentCompleters;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -27,6 +29,7 @@ namespace Microsoft.Azure.Commands.MachineLearning
     public class UpdateAzureMLCommitmentPlan : CommitmentPlansCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = "The name of the resource group for the Azure ML commitment plan.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

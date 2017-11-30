@@ -74,5 +74,26 @@ namespace Commands.Network.Test.ScenarioTests
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-FlowLog");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestConnectivityCheck()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-ConnectivityCheck");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestReachabilityReport()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-ReachabilityReport");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestProvidersList()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-ProvidersList");
+        }
     }
 }

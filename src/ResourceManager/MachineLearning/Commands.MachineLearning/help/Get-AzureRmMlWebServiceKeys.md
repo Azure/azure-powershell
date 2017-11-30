@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.MachineLearning.dll-Help.xml
-online version: 
+Module Name: AzureRM.MachineLearning
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.machinelearning/get-azurermmlwebservicekeys
 schema: 2.0.0
 ---
 
@@ -11,14 +12,16 @@ Retrieves the web service's keys.
 
 ## SYNTAX
 
-### Get an Azure ML web service's access keys given its name and resource group.
+### GetByNameAndResourceGroup
 ```
 Get-AzureRmMlWebServiceKeys -ResourceGroupName <String> -Name <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Get the access kesy for the given web service instance.
+### GetByInstance
 ```
-Get-AzureRmMlWebServiceKeys -MlWebService <WebService>
+Get-AzureRmMlWebServiceKeys -MlWebService <WebService> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,12 +32,16 @@ Gets the access keys for the Azure Machine Learning web service's runtime APIs.
 ### --------------------------  Example 1 - Get the keys for a web service specified by resource group and name  --------------------------
 @{paragraph=PS C:\\\>}
 
+
+
 ```
 Get-AzureRmMlWebServiceKeys -ResourceGroupName "myresourcegroup" -Name "mywebservicename"
 ```
 
 ### --------------------------  Example 2 - Get keys for web service instance  --------------------------
 @{paragraph=PS C:\\\>}
+
+
 
 ```
 Get-AzureRmMlWebServiceKeys -MlWebService $mlService
@@ -44,12 +51,27 @@ $mlService is an object of type Microsoft.Azure.Management.MachineLearning.WebSe
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -MlWebService
 The name of the web service for which the access keys are retrieved.
 
 ```yaml
 Type: WebService
-Parameter Sets: Get the access kesy for the given web service instance.
+Parameter Sets: GetByInstance
 Aliases: 
 
 Required: True
@@ -64,7 +86,7 @@ The name of the web service for which the access keys are retrieved.
 
 ```yaml
 Type: String
-Parameter Sets: Get an Azure ML web service's access keys given its name and resource group.
+Parameter Sets: GetByNameAndResourceGroup
 Aliases: 
 
 Required: True
@@ -79,7 +101,7 @@ The resource group for the web service.
 
 ```yaml
 Type: String
-Parameter Sets: Get an Azure ML web service's access keys given its name and resource group.
+Parameter Sets: GetByNameAndResourceGroup
 Aliases: 
 
 Required: True
@@ -89,7 +111,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
+
+### WebService
+Parameter 'MlWebService' accepts value of type 'WebService' from the pipeline
 
 ## OUTPUTS
 

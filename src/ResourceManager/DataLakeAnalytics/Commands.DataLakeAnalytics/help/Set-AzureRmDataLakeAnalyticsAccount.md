@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.DataLakeAnalytics.dll-Help.xml
+Module Name: AzureRM.DataLakeAnalytics
 ms.assetid: 8B10E476-F283-4BDC-BFAD-A33F8EC38341
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datalakeanalytics/set-azurermdatalakeanalyticsaccount
 schema: 2.0.0
 ---
 
@@ -15,7 +16,8 @@ Modifies a Data Lake Analytics account.
 ```
 Set-AzureRmDataLakeAnalyticsAccount [-Name] <String> [[-Tags] <Hashtable>] [[-ResourceGroupName] <String>]
  [-MaxDegreeOfParallelism <Int32>] [-MaxJobCount <Int32>] [-QueryStoreRetention <Int32>] [-Tier <TierType>]
- [-FirewallState <FirewallState>] [-AllowAzureIpState <FirewallAllowAzureIpsState>] [<CommonParameters>]
+ [-FirewallState <FirewallState>] [-AllowAzureIpState <FirewallAllowAzureIpsState>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,10 +35,13 @@ This command changes the default data source and the Tags property of the accoun
 ## PARAMETERS
 
 ### -AllowAzureIpState
-Optionally allow/block Azure originating IPs through the firewall.```yaml
+Optionally allow/block Azure originating IPs through the firewall.
+
+```yaml
 Type: FirewallAllowAzureIpsState
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Enabled, Disabled
 
 Required: False
 Position: Named
@@ -45,11 +50,29 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -FirewallState
-Optionally enable/disable existing firewall rules.```yaml
+Optionally enable/disable existing firewall rules.
+
+```yaml
 Type: FirewallState
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Enabled, Disabled
 
 Required: False
 Position: Named
@@ -59,7 +82,9 @@ Accept wildcard characters: False
 ```
 
 ### -MaxDegreeOfParallelism
-The optional maximum supported degree of parallelism to update the account with.```yaml
+The optional maximum supported degree of parallelism to update the account with.
+
+```yaml
 Type: Int32
 Parameter Sets: (All)
 Aliases: 
@@ -72,7 +97,9 @@ Accept wildcard characters: False
 ```
 
 ### -MaxJobCount
-The optional maximum supported jobs running under the account at the same time to set.```yaml
+The optional maximum supported jobs running under the account at the same time to set.
+
+```yaml
 Type: Int32
 Parameter Sets: (All)
 Aliases: 
@@ -100,7 +127,9 @@ Accept wildcard characters: False
 ```
 
 ### -QueryStoreRetention
-The optional number of days that job metadata is retained to set in the account.```yaml
+The optional number of days that job metadata is retained to set in the account.
+
+```yaml
 Type: Int32
 Parameter Sets: (All)
 Aliases: 
@@ -143,10 +172,13 @@ Accept wildcard characters: False
 ```
 
 ### -Tier
-The desired commitment tier for this account to use.```yaml
+The desired commitment tier for this account to use.
+
+```yaml
 Type: TierType
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Consumption, Commitment100AUHours, Commitment500AUHours, Commitment1000AUHours, Commitment5000AUHours, Commitment10000AUHours, Commitment50000AUHours, Commitment100000AUHours, Commitment500000AUHours
 
 Required: False
 Position: Named

@@ -15,10 +15,15 @@
 using Microsoft.ApplicationInsights;
 using Microsoft.ApplicationInsights.DataContracts;
 using Microsoft.ApplicationInsights.Extensibility;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.WindowsAzure.Commands.Common.Utilities;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Management.Automation.Host;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -26,7 +31,10 @@ namespace Microsoft.WindowsAzure.Commands.Common
 {
     public class MetricHelper
     {
+        protected INetworkHelper _networkHelper;
         private const int FlushTimeoutInMilli = 5000;
+        private const string DefaultPSVersion = "3.0.0.0";
+        private const string EventName = "cmdletInvocation";
 
         /// <summary>
         /// The collection of telemetry clients.
@@ -50,12 +58,74 @@ namespace Microsoft.WindowsAzure.Commands.Common
         /// </summary>
         private readonly object _lock = new object();
 
-        public MetricHelper()
+        private string _hashMacAddress = string.Empty;
+
+        private AzurePSDataCollectionProfile _profile;
+
+        private static PSHost _host;
+
+        private static string _psVersion;
+
+        protected string PSVersion
         {
+            get
+            {
+                if (_host != null)
+                {
+                    _psVersion = _host.Version.ToString();
+                }
+                else
+                {
+                    _psVersion = DefaultPSVersion;
+                }
+                return _psVersion;
+            }
+        }
+
+        public string HashMacAddress
+        {
+            get
+            {
+                lock(_lock)
+                {
+                    if (_hashMacAddress == string.Empty)
+                    {
+                       _hashMacAddress = null;
+
+                        try
+                        {
+                            var macAddress = _networkHelper.GetMACAddress();
+                            _hashMacAddress = string.IsNullOrWhiteSpace(macAddress) 
+                                ? null : GenerateSha256HashString(macAddress)?.Replace("-", string.Empty)?.ToLowerInvariant();
+                        }
+                        catch
+                        {
+                            // ignore exceptions in getting the network address
+                        }
+                    }
+
+                    return _hashMacAddress;
+                }
+            }
+
+            // Add test hook to reset
+            set { lock(_lock) { _hashMacAddress = value; } }
+        }
+
+        public MetricHelper(AzurePSDataCollectionProfile profile) : this(new NetworkHelper())
+        {
+            _profile = profile;
+        }
+
+        public MetricHelper(INetworkHelper network)
+        {
+            _networkHelper = network;
+#if DEBUG
             if (TestMockSupport.RunningMocked)
             {
                 TelemetryConfiguration.Active.DisableTelemetry = true;
             }
+#endif
         }
 
         /// <summary>
@@ -88,7 +158,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
 
         public void LogQoSEvent(AzurePSQoSEvent qos, bool isUsageMetricEnabled, bool isErrorMetricEnabled)
         {
-            if (!IsMetricTermAccepted())
+            if (qos == null || !IsMetricTermAccepted())
             {
                 return;
             }
@@ -104,21 +174,38 @@ namespace Microsoft.WindowsAzure.Commands.Common
             }
         }
 
-        private void LogUsageEvent(AzurePSQoSEvent qos)
+        public void LogCustomEvent<T>(string eventName, T payload, bool force = false)
         {
+            if (payload == null || (!force && !IsMetricTermAccepted()))
+            {
+                return;
+            }
+
             foreach (TelemetryClient client in TelemetryClients)
             {
-                var pageViewTelemetry = new PageViewTelemetry
-                {
-                    Name = qos.CommandName ?? "empty",
-                    Duration = qos.Duration,
-                    Timestamp = qos.StartTime
-                };
-                LoadTelemetryClientContext(qos, pageViewTelemetry.Context);
-                PopulatePropertiesFromQos(qos, pageViewTelemetry.Properties);
-                client.TrackPageView(pageViewTelemetry);
+                client.TrackEvent(eventName, SerializeCustomEventPayload(payload));
             }
         }
+
+        private void LogUsageEvent(AzurePSQoSEvent qos)
+        {
+            if (qos != null)
+            {
+                foreach (TelemetryClient client in TelemetryClients)
+                {
+                    var pageViewTelemetry = new PageViewTelemetry
+                    {
+                        Name = EventName,
+                        Duration = qos.Duration,
+                        Timestamp = qos.StartTime
+                    };
+                    LoadTelemetryClientContext(qos, pageViewTelemetry.Context);
+                    PopulatePropertiesFromQos(qos, pageViewTelemetry.Properties);
+                    client.TrackPageView(pageViewTelemetry);
+                }
+            }
+        }
+
         private void LogExceptionEvent(AzurePSQoSEvent qos)
         {
             if (qos == null || qos.Exception == null)
@@ -135,7 +222,8 @@ namespace Microsoft.WindowsAzure.Commands.Common
                 LoadTelemetryClientContext(qos, client.Context);
                 PopulatePropertiesFromQos(qos, eventProperties);
                 // qos.Exception contains exception message which may contain Users specific data. 
-                // We should not collect users specific data. 
+                // We should not collect users specific data.
+                eventProperties.Add("Message", "Message removed due to PII.");
                 eventProperties.Add("StackTrace", qos.Exception.StackTrace);
                 eventProperties.Add("ExceptionType", qos.Exception.GetType().ToString());
                 client.TrackException(null, eventProperties, eventMetrics);
@@ -144,14 +232,28 @@ namespace Microsoft.WindowsAzure.Commands.Common
 
         private void LoadTelemetryClientContext(AzurePSQoSEvent qos, TelemetryContext clientContext)
         {
-            clientContext.User.Id = qos.Uid;
-            clientContext.User.AccountId = qos.Uid;
-            clientContext.Session.Id = qos.SessionId;
-            clientContext.Device.OperatingSystem = Environment.OSVersion.ToString();
+            if (clientContext != null && qos != null)
+            {
+                clientContext.User.Id = qos.Uid;
+                clientContext.User.AccountId = qos.Uid;
+                clientContext.Session.Id = qos.SessionId;
+                clientContext.Device.OperatingSystem = Environment.OSVersion.ToString();
+            }
+        }
+
+        public void SetPSHost(PSHost host)
+        {
+            _host = host;
         }
 
         private void PopulatePropertiesFromQos(AzurePSQoSEvent qos, IDictionary<string, string> eventProperties)
         {
+            if (qos == null)
+            {
+                return;
+            }
+
+            eventProperties.Add("Command", qos.CommandName);
             eventProperties.Add("IsSuccess", qos.IsSuccess.ToString());
             eventProperties.Add("ModuleName", qos.ModuleName);
             eventProperties.Add("ModuleVersion", qos.ModuleVersion);
@@ -161,6 +263,9 @@ namespace Microsoft.WindowsAzure.Commands.Common
             eventProperties.Add("UserId", qos.Uid);
             eventProperties.Add("x-ms-client-request-id", qos.ClientRequestId);
             eventProperties.Add("UserAgent", AzurePowerShell.UserAgentValue.ToString());
+            eventProperties.Add("HashMacAddress", HashMacAddress);
+            eventProperties.Add("PowerShellVersion", PSVersion);
+            eventProperties.Add("Version", AzurePowerShell.AssemblyVersion);
             if (qos.InputFromPipeline != null)
             {
                 eventProperties.Add("InputFromPipeline", qos.InputFromPipeline.Value.ToString());
@@ -177,7 +282,9 @@ namespace Microsoft.WindowsAzure.Commands.Common
 
         public bool IsMetricTermAccepted()
         {
-            return AzurePSCmdlet.IsDataCollectionAllowed();
+            return _profile != null 
+                && _profile.EnableAzureDataCollection.HasValue 
+                && _profile.EnableAzureDataCollection.Value;
         }
 
         public void FlushMetric()
@@ -204,12 +311,44 @@ namespace Microsoft.WindowsAzure.Commands.Common
         /// Generate a SHA256 Hash string from the originInput.
         /// </summary>
         /// <param name="originInput"></param>
-        /// <returns></returns>
+        /// <returns>The Sha256 hash, or empty if the input is only whtespace</returns>
         public static string GenerateSha256HashString(string originInput)
         {
-            SHA256 sha256 = SHA256.Create();
-            var bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(originInput));
-            return BitConverter.ToString(bytes);
+            if (string.IsNullOrWhiteSpace(originInput))
+            {
+                return string.Empty;
+            }
+
+            string result = null;
+            try
+            {
+                using (var sha256 = new SHA256CryptoServiceProvider())
+                {
+                    var bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(originInput));
+                    result = BitConverter.ToString(bytes);
+                }
+            }
+            catch
+            {
+                // do not throw if CryptoProvider is not provided
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Generate a serialized payload for custom events.
+        /// </summary>
+        /// <param name="payload">The payload object for the custom event.</param>
+        /// <returns>The serialized payload.</returns>
+        public static Dictionary<string, string> SerializeCustomEventPayload<T>(T payload)
+        {
+            var payloadAsJson = JsonConvert.SerializeObject(payload, new JsonSerializerSettings
+            {
+                ContractResolver = new CamelCasePropertyNamesContractResolver()
+            });
+
+            return JsonConvert.DeserializeObject<Dictionary<string, string>>(payloadAsJson);
         }
     }
 }

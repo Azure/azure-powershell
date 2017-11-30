@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.SiteRecovery.dll-Help.xml
+Module Name: AzureRM
 ms.assetid: 01AE09A8-B779-475A-9E86-776E0774E89E
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.siterecovery/get-azurermsiterecoverynetworkmapping
 schema: 2.0.0
 ---
 
@@ -14,29 +15,31 @@ Gets information about Site Recovery network mappings for the current vault.
 
 ### Default (Default)
 ```
-Get-AzureRmSiteRecoveryNetworkMapping [<CommonParameters>]
+Get-AzureRmSiteRecoveryNetworkMapping [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### EnterpriseToEnterprise
 ```
 Get-AzureRmSiteRecoveryNetworkMapping -PrimaryFabric <ASRFabric> -RecoveryFabric <ASRFabric>
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### EnterpriseToAzure
 ```
-Get-AzureRmSiteRecoveryNetworkMapping -PrimaryFabric <ASRFabric> [-Azure] [<CommonParameters>]
+Get-AzureRmSiteRecoveryNetworkMapping -PrimaryFabric <ASRFabric> [-Azure]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### EnterpriseToAzureLegacy
 ```
-Get-AzureRmSiteRecoveryNetworkMapping [-Azure] -PrimaryServer <ASRServer> [<CommonParameters>]
+Get-AzureRmSiteRecoveryNetworkMapping [-Azure] -PrimaryServer <ASRServer>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### EnterpriseToEnterpriseLegacy
 ```
 Get-AzureRmSiteRecoveryNetworkMapping -PrimaryServer <ASRServer> -RecoveryServer <ASRServer>
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,19 +48,6 @@ The **Get-AzureRmSiteRecoveryNetworkMapping** cmdlet gets information about Azur
 ## EXAMPLES
 
 ## PARAMETERS
-
-### -PrimaryFabric
-```yaml
-Type: ASRFabric
-Parameter Sets: EnterpriseToEnterprise, EnterpriseToAzure
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
 
 ### -Azure
 Indicates that the command gets a list of network mappings for networks on the primary server mapped to Azure virtual networks.
@@ -74,16 +64,31 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RecoveryFabric
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrimaryFabric
 ```yaml
 Type: ASRFabric
-Parameter Sets: EnterpriseToEnterprise
+Parameter Sets: EnterpriseToEnterprise, EnterpriseToAzure
 Aliases: 
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -97,6 +102,19 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -RecoveryFabric
+```yaml
+Type: ASRFabric
+Parameter Sets: EnterpriseToEnterprise
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -118,7 +136,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### ASRFabric
+Parameter 'PrimaryFabric' accepts value of type 'ASRFabric' from the pipeline
+
+### ASRServer
+Parameter 'PrimaryServer' accepts value of type 'ASRServer' from the pipeline
+
 ## OUTPUTS
+
+### System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.SiteRecovery.ASRNetworkMapping]
 
 ## NOTES
 

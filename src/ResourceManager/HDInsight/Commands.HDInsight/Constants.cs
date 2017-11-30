@@ -38,6 +38,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             public const string AzureHDInsightHiveJob = "AzureRmHDInsightHiveJob";
             public const string AzureHDInsightClusterIdentity = "AzureRmHDInsightClusterIdentity";
             public const string AzureHDInsightComponentVersion = "AzureRmHDInsightComponentVersion";
+            public const string AzureHDInsightOMS = "AzureRmHDInsightOperationsManagementSuite";
             public const string Hive = "Hive";
         }
 

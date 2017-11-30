@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
+Module Name: AzureRM.Sql
 ms.assetid: BEE99039-35F7-4E9D-9308-090EAE68292D
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/new-azurermsqldatabasesecondary
 schema: 2.0.0
 ---
 
@@ -16,22 +17,44 @@ Creates a secondary database for an existing database and starts data replicatio
 New-AzureRmSqlDatabaseSecondary [-DatabaseName] <String> [-SecondaryServiceObjectiveName <String>]
  [-SecondaryElasticPoolName <String>] [-Tags <Hashtable>] -PartnerResourceGroupName <String>
  -PartnerServerName <String> [-AllowConnections <AllowConnections>] [-ServerName] <String>
- [-ResourceGroupName] <String> [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRMSqlDatabaseSecondary** cmdlet replaces the Start-AzureSqlDatabaseCopy cmdlet when used for setting up geo-replication for a database.
-It returns the geo-replication link object from the primary to the secondary database.
+The **New-AzureRMSqlDatabaseSecondary** cmdlet replaces the Start-AzureSqlDatabaseCopy cmdlet when
+used for setting up geo-replication for a database. It returns the geo-replication link object from
+the primary to the secondary database.
 
 ## EXAMPLES
 
-### 1:
+### 1: Establish Active Geo-Replication
 ```
-
+$database = Get-AzureRmSqlDatabase -DatabaseName $databasename -ResourceGroupName $primaryresourcegroupname -ServerName $primaryservername
+$database | New-AzureRmSqlDatabaseSecondary -PartnerResourceGroupName $secondaryresourcegroupname -PartnerServerName $secondaryservername -AllowConnections "All"
 ```
 
 ## PARAMETERS
+
+### -AllowConnections
+Specifies the read intent of the secondary Azure SQL Database.
+The acceptable values for this parameter are:
+
+- No
+- All
+
+```yaml
+Type: AllowConnections
+Parameter Sets: (All)
+Aliases: 
+Accepted values: No, All
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DatabaseName
 Specifies the name of the database to act as primary.
@@ -48,43 +71,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -SecondaryServiceObjectiveName
-Specifies the name of the service objective to assign to the secondary database.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: String
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SecondaryElasticPoolName
-Specifies the name of the elastic pool in which to put the secondary database.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tags
-Specifies the tags to associate with the SQL Database replication link.
-
-```yaml
-Type: Hashtable
-Parameter Sets: (All)
-Aliases: Tag
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -123,15 +116,41 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AllowConnections
-Specifies the read intent of the secondary Azure SQL Database.
-The acceptable values for this parameter are:
-
-- No
-- All
+### -ResourceGroupName
+Specifies the name of the Azure Resource Group to which this cmdlet assigns the primary database.
 
 ```yaml
-Type: AllowConnections
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SecondaryElasticPoolName
+Specifies the name of the elastic pool in which to put the secondary database.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SecondaryServiceObjectiveName
+Specifies the name of the service objective to assign to the secondary database.
+
+```yaml
+Type: String
 Parameter Sets: (All)
 Aliases: 
 
@@ -157,52 +176,15 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-Specifies the name of the Azure Resource Group to which this cmdlet assigns the primary database.
+### -Tags
+Specifies the Key-value pairs in the form of a hash table to associate with the SQL Database replication link. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
-Type: String
+Type: Hashtable
 Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
+Aliases: Tag
 
 Required: False
 Position: Named
@@ -247,22 +229,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-###  
-You can pipe instances of the **Database** object for the primary database to this cmdlet.
-
 ## OUTPUTS
 
-###  
+### Microsoft.Azure.Commands.Sql.Replication.Model.AzureReplicationLinkModel
 This cmdlet returns **ReplicationLink** objects.
 
 ## NOTES
 
 ## RELATED LINKS
 
-[Azure SQL Database Cmdlets](./AzureRM.Sql.md)
-
 [Remove-AzureRmSqlDatabaseSecondary](./Remove-AzureRmSqlDatabaseSecondary.md)
 
 [Set-AzureRmSqlDatabaseSecondary](./Set-AzureRmSqlDatabaseSecondary.md)
 
-
+[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)

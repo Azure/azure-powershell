@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
 ms.assetid: 26E06BA3-C550-40A5-B8E3-FEC8E9BF3867
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/remove-azurestoragecorsrule
 schema: 2.0.0
 ---
 
@@ -13,9 +13,9 @@ Removes CORS for a Storage service.
 ## SYNTAX
 
 ```
-Remove-AzureStorageCORSRule [-ServiceType] <StorageServiceType> [-Context <AzureStorageContext>]
+Remove-AzureStorageCORSRule [-ServiceType] <StorageServiceType> [-Context <IStorageContext>]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,58 +33,6 @@ PS C:\>Remove-AzureStorageCORSRule -ServiceType Blob
 This command removes CORS rules for the Blob service type.
 
 ## PARAMETERS
-
-### -ServiceType
-Specifies the Azure Storage service type for which this cmdlet removes rules.
-The acceptable values for this parameter are:
-
-- Blob 
-- Table 
-- Queue 
-- File
-
-```yaml
-Type: StorageServiceType
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Context
-Specifies the Azure storage context.
-To obtain the storage context, the New-AzureStorageContext cmdlet.
-
-```yaml
-Type: AzureStorageContext
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
-```
-
-### -ServerTimeoutPerRequest
-Specifies the length of the time-out period for the server part of a request.
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -ClientTimeoutPerRequest
 Specifies the client-side time-out interval, in seconds, for one service request.
@@ -122,22 +70,29 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
+### -Context
+Specifies the Azure storage context.
+To obtain the storage context, the New-AzureStorageContext cmdlet.
 
 ```yaml
-Type: ActionPreference
+Type: IStorageContext
 Parameter Sets: (All)
-Aliases: infa
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -ServerTimeoutPerRequest
+Specifies the length of the time-out period for the server part of a request.
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases: 
 
 Required: False
 Position: Named
@@ -146,16 +101,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationVariable
-Specifies an information variable.
+### -ServiceType
+Specifies the Azure Storage service type for which this cmdlet removes rules.
+The acceptable values for this parameter are:
+
+- Blob 
+- Table 
+- Queue 
+- File
 
 ```yaml
-Type: String
+Type: StorageServiceType
 Parameter Sets: (All)
-Aliases: iv
+Aliases: 
+Accepted values: Blob, Table, Queue, File
 
-Required: False
-Position: Named
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -165,6 +127,10 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### IStorageContext
+
+Parameter 'Context' accepts value of type 'IStorageContext' from the pipeline
 
 ## OUTPUTS
 

@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ServerManagement.dll-Help.xml
+Module Name: AzureRM
 ms.assetid: C579BF90-FD8B-4384-96EB-46154E308492
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servermanagement/get-azurermservermanagementgateway
 schema: 2.0.0
 ---
 
@@ -14,26 +15,25 @@ Gets one or more Server Management Gateways.
 
 ### NoParams (Default)
 ```
-Get-AzureRmServerManagementGateway [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [<CommonParameters>]
+Get-AzureRmServerManagementGateway [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Many-ByResourceGroup
 ```
-Get-AzureRmServerManagementGateway [-ResourceGroupName] <String> [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+Get-AzureRmServerManagementGateway [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### Single-ByName
 ```
 Get-AzureRmServerManagementGateway [-ResourceGroupName] <String> [-GatewayName] <String>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Single-ByObject
 ```
-Get-AzureRmServerManagementGateway [-Gateway] <Gateway> [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+Get-AzureRmServerManagementGateway [-Gateway] <Gateway> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -75,74 +75,18 @@ This command gets all instances of a Server Management Gateway named Gateway01 t
 
 ## PARAMETERS
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: ActionPreference
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: infa
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Specifies the name of the resource group for which this cmdlet gets gateways.
-
-```yaml
-Type: String
-Parameter Sets: Many-ByResourceGroup, Single-ByName
-Aliases: 
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -GatewayName
-Specifies the name of the Server Management Gateway for which this cmdlet gets gate.
-
-When you specify the *GatewayName* parameter, this cmdlet will include detailed status on the gateway.
-
-```yaml
-Type: String
-Parameter Sets: Single-ByName
-Aliases: 
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -165,12 +109,49 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -GatewayName
+Specifies the name of the Server Management Gateway for which this cmdlet gets gate.
+
+When you specify the *GatewayName* parameter, this cmdlet will include detailed status on the gateway.
+
+```yaml
+Type: String
+Parameter Sets: Single-ByName
+Aliases: 
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Specifies the name of the resource group for which this cmdlet gets gateways.
+
+```yaml
+Type: String
+Parameter Sets: Many-ByResourceGroup, Single-ByName
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
+### Gateway
+Parameter 'Gateway' accepts value of type 'Gateway' from the pipeline
+
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.ServerManagement.Model.Gateway
 
 ## NOTES
 * If this cmdlet is use without parameters, it will return all the gateways associated with the subscription.

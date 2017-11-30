@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.EventHub.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -31,6 +32,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = "Resource Group Name.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
          public string ResourceGroupName { get; set; }
 
@@ -39,26 +41,31 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
             Position = 1,
             HelpMessage = "Namespace Name.")]
         [ValidateNotNullOrEmpty]
-        public string NamespaceName { get; set; }
+        [Alias(AliasNamespaceName)]
+        public string Namespace { get; set; }
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             Position = 2,
             HelpMessage = "EventHub Name.")]
-        public string EventHubName { get; set; }
+        [Alias(AliasEventHubName)]
+        public string Name { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public override void ExecuteCmdlet()
         {
-            if (!string.IsNullOrEmpty(EventHubName))
+            if (!string.IsNullOrEmpty(Name))
             {
                 // Get a EventHub
-                EventHubAttributes eventHub = Client.GetEventHub(ResourceGroupName, NamespaceName, EventHubName);
+                EventHubAttributes eventHub = Client.GetEventHub(ResourceGroupName, Namespace, Name);
                 WriteObject(eventHub);
             }
             else
             {
                 // Get all EventHubs
-                IEnumerable<EventHubAttributes> eventHubsList = Client.ListAllEventHubs(ResourceGroupName, NamespaceName);
+                IEnumerable<EventHubAttributes> eventHubsList = Client.ListAllEventHubs(ResourceGroupName, Namespace);
                 WriteObject(eventHubsList.ToList(), true);
             }
         }

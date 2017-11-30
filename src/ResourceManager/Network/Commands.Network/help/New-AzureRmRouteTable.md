@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+Module Name: AzureRM.Network
 ms.assetid: 6A278F91-C078-4DD4-82D0-2E4FA549A089
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermroutetable
 schema: 2.0.0
 ---
 
@@ -13,10 +14,9 @@ Creates a route table.
 ## SYNTAX
 
 ```
-New-AzureRmRouteTable -Name <String> -ResourceGroupName <String> -Location <String>
- [-Route <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSRoute]>]
- [-Tag <Hashtable>] [-Force] [-InformationAction <ActionPreference>] [-InformationVariable <String>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+New-AzureRmRouteTable -ResourceGroupName <String> -Name <String> -Location <String> [-Tag <Hashtable>]
+ [-Route <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSRoute]>] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,7 +35,7 @@ Id                : /subscriptions/xxxx-xxxx-xxxx-xxxx/resourceGroups/ResourceGr
                     k/routeTables/myroutetable
 Etag              : W/"db5f4e12-3f34-465b-92dd-0ab3bf6fc274"
 ProvisioningState : Succeeded
-Tags              : 
+Tags              :
 Routes            : [
                       {
                         "Name": "route07",
@@ -44,20 +44,67 @@ Routes            : [
                     soft.Network/routeTables/routetable01/routes/route07",
                         "AddressPrefix": "10.1.0.0/16",
                         "NextHopType": "VnetLocal",
-                        "NextHopIpAddress": null, 
+                        "NextHopIpAddress": null,
                         "ProvisioningState": "Succeeded"
                       }
-                    ] 
+                    ]
 Subnets           : []
 ```
 
-The first command creates a route named Route07 by using the New-AzureRmRouteConfig cmdlet, and then stores it in the $Route variable.
-This route forwards packets to the local virtual network.
+The first command creates a route named Route07 by using the New-AzureRmRouteConfig cmdlet, and
+then stores it in the $Route variable. This route forwards packets to the local virtual network.
 
-The second command creates a route table named RouteTable01, and adds the route stored in $Route to the new table.
-The command specifies the resource group to which the table belongs and the location for the table.
+The second command creates a route table named RouteTable01, and adds the route stored in $Route to
+the new table. The command specifies the resource group to which the table belongs and the location
+for the table.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Force
+Indicates that this cmdlet creates a route table even if a route table that has the same name already exists.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+Specifies the Azure region in which this cmdlet creates a route table.
+For more information, see [Azure Regions](http://azure.microsoft.com/en-us/regions/).
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ### -Name
 Specifies a name for the route table.
@@ -89,22 +136,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Location
-Specifies the Azureregion in which this cmdlet creates a route table.
-For more information, see Azure Regionshttp://azure.microsoft.com/en-us/regions/ (http://azure.microsoft.com/en-us/regions/).
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -Route
 Specifies an array of **Route** objects to associate with the route table.
 
@@ -121,7 +152,9 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Specifies a dictionary of tags to associate with the route table.
+Key-value pairs in the form of a hash table. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
 Type: Hashtable
@@ -135,56 +168,17 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Force
-Indicates that this cmdlet creates a route table even if a route table that has the same name already exists.
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -205,27 +199,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Network.Models.PSRouteTable
 
 ## NOTES
 
@@ -238,5 +219,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzureRmRouteTable](./Remove-AzureRmRouteTable.md)
 
 [Set-AzureRmRouteTable](./Set-AzureRmRouteTable.md)
-
-

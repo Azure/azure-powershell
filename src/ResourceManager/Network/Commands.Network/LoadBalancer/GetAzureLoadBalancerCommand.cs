@@ -16,6 +16,9 @@ using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Management.Network;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Management.Network.Models;
+using Microsoft.Rest.Azure;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -46,6 +49,7 @@ namespace Microsoft.Azure.Commands.Network
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource group name.",
            ParameterSetName = "Expand")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
 
@@ -66,25 +70,21 @@ namespace Microsoft.Azure.Commands.Network
 
                 WriteObject(loadBalancer);
             }
-            else if (!string.IsNullOrEmpty(this.ResourceGroupName))
-            {
-                var lbList = this.LoadBalancerClient.List(this.ResourceGroupName);
-
-                var psLoadBalancers = new List<PSLoadBalancer>();
-
-                foreach (var lb in lbList)
-                {
-                    var psLb = this.ToPsLoadBalancer(lb);
-                    psLb.ResourceGroupName = this.ResourceGroupName;
-                    psLoadBalancers.Add(psLb);
-                }
-
-                WriteObject(psLoadBalancers, true);
-            }
-
             else
             {
-                var lbList = this.LoadBalancerClient.ListAll();
+                IPage<LoadBalancer> lbPage;
+                if (!string.IsNullOrEmpty(this.ResourceGroupName))
+                {
+                    lbPage = this.LoadBalancerClient.List(this.ResourceGroupName);
+                }
+
+                else
+                {
+                    lbPage = this.LoadBalancerClient.ListAll();
+                }
+
+                // Get all resources by polling on next page link
+                var lbList = ListNextLink<LoadBalancer>.GetAllResourcesByPollingNextLink(lbPage, this.LoadBalancerClient.ListNext);
 
                 var psLoadBalancers = new List<PSLoadBalancer>();
 

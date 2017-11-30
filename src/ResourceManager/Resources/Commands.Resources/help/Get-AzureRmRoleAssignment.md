@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
+Module Name: AzureRM.Resources
 ms.assetid: 488229AF-FD6D-4E1B-B3DA-E57CA781D91E
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/get-azurermroleassignment
 schema: 2.0.0
 ---
 
@@ -17,108 +18,108 @@ Use respective parameters to list assignments to a specific user, or to list ass
 ### EmptyParameterSet (Default)
 ```
 Get-AzureRmRoleAssignment [-RoleDefinitionName <String>] [-IncludeClassicAdministrators]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ObjectIdParameterSet
+```
+Get-AzureRmRoleAssignment -ObjectId <Guid> [-RoleDefinitionName <String>] [-ExpandPrincipalGroups]
+ [-IncludeClassicAdministrators] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ResourceGroupWithObjectIdParameterSet
+```
+Get-AzureRmRoleAssignment -ObjectId <Guid> -ResourceGroupName <String> [-RoleDefinitionName <String>]
+ [-IncludeClassicAdministrators] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceWithObjectIdParameterSet
 ```
 Get-AzureRmRoleAssignment -ObjectId <Guid> -ResourceGroupName <String> -ResourceName <String>
  -ResourceType <String> [-ParentResource <String>] [-RoleDefinitionName <String>]
- [-IncludeClassicAdministrators] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
-```
-
-### RoleIdWithScopeAndObjectIdParameterSet
-```
-Get-AzureRmRoleAssignment [-ObjectId <Guid>] -RoleDefinitionId <Guid> [-Scope <String>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>]
-```
-
-### ObjectIdParameterSet
-```
-Get-AzureRmRoleAssignment -ObjectId <Guid> [-RoleDefinitionName <String>] [-ExpandPrincipalGroups]
- [-IncludeClassicAdministrators] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
-```
-
-### ResourceGroupWithObjectIdParameterSet
-```
-Get-AzureRmRoleAssignment -ObjectId <Guid> -ResourceGroupName <String> [-RoleDefinitionName <String>]
- [-IncludeClassicAdministrators] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
+ [-IncludeClassicAdministrators] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ScopeWithObjectIdParameterSet
 ```
 Get-AzureRmRoleAssignment -ObjectId <Guid> [-RoleDefinitionName <String>] -Scope <String>
- [-IncludeClassicAdministrators] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
+ [-IncludeClassicAdministrators] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### RoleIdWithScopeAndObjectIdParameterSet
+```
+Get-AzureRmRoleAssignment [-ObjectId <Guid>] -RoleDefinitionId <Guid> [-Scope <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceGroupWithSignInNameParameterSet
 ```
 Get-AzureRmRoleAssignment -SignInName <String> -ResourceGroupName <String> [-RoleDefinitionName <String>]
- [-IncludeClassicAdministrators] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
+ [-IncludeClassicAdministrators] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceWithSignInNameParameterSet
 ```
 Get-AzureRmRoleAssignment -SignInName <String> -ResourceGroupName <String> -ResourceName <String>
  -ResourceType <String> [-ParentResource <String>] [-RoleDefinitionName <String>]
- [-IncludeClassicAdministrators] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
+ [-IncludeClassicAdministrators] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ScopeWithSignInNameParameterSet
 ```
 Get-AzureRmRoleAssignment -SignInName <String> [-RoleDefinitionName <String>] -Scope <String>
- [-IncludeClassicAdministrators] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
+ [-IncludeClassicAdministrators] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SignInNameParameterSet
 ```
 Get-AzureRmRoleAssignment -SignInName <String> [-RoleDefinitionName <String>] [-ExpandPrincipalGroups]
- [-IncludeClassicAdministrators] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
+ [-IncludeClassicAdministrators] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceGroupWithSPNParameterSet
 ```
 Get-AzureRmRoleAssignment -ServicePrincipalName <String> -ResourceGroupName <String>
- [-RoleDefinitionName <String>] [-IncludeClassicAdministrators] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>]
-```
-
-### ScopeWithSPNParameterSet
-```
-Get-AzureRmRoleAssignment -ServicePrincipalName <String> [-RoleDefinitionName <String>] -Scope <String>
- [-IncludeClassicAdministrators] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
+ [-RoleDefinitionName <String>] [-IncludeClassicAdministrators] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ResourceWithSPNParameterSet
 ```
 Get-AzureRmRoleAssignment -ServicePrincipalName <String> -ResourceGroupName <String> -ResourceName <String>
  -ResourceType <String> [-ParentResource <String>] [-RoleDefinitionName <String>]
- [-IncludeClassicAdministrators] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
+ [-IncludeClassicAdministrators] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ScopeWithSPNParameterSet
+```
+Get-AzureRmRoleAssignment -ServicePrincipalName <String> [-RoleDefinitionName <String>] -Scope <String>
+ [-IncludeClassicAdministrators] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SPNParameterSet
 ```
 Get-AzureRmRoleAssignment -ServicePrincipalName <String> [-RoleDefinitionName <String>]
- [-IncludeClassicAdministrators] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
+ [-IncludeClassicAdministrators] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ResourceGroupParameterSet
+```
+Get-AzureRmRoleAssignment -ResourceGroupName <String> [-RoleDefinitionName <String>]
+ [-IncludeClassicAdministrators] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceParameterSet
 ```
 Get-AzureRmRoleAssignment -ResourceGroupName <String> -ResourceName <String> -ResourceType <String>
  [-ParentResource <String>] [-RoleDefinitionName <String>] [-IncludeClassicAdministrators]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>]
-```
-
-### ResourceGroupParameterSet
-```
-Get-AzureRmRoleAssignment -ResourceGroupName <String> [-RoleDefinitionName <String>]
- [-IncludeClassicAdministrators] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ScopeParameterSet
 ```
 Get-AzureRmRoleAssignment [-RoleDefinitionName <String>] -Scope <String> [-IncludeClassicAdministrators]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -155,8 +156,6 @@ Use the IncludeClassicAdministrators switch to also display the subscription adm
 ## EXAMPLES
 
 ### --------------------------  Example 1  --------------------------
-@{paragraph=PS C:\\\>}
-
 ```
 PS C:\> Get-AzureRmRoleAssignment
 ```
@@ -164,8 +163,6 @@ PS C:\> Get-AzureRmRoleAssignment
 List all role assignments in the subscription
 
 ### --------------------------  Example 2  --------------------------
-@{paragraph=PS C:\\\>}
-
 ```
 PS C:\> Get-AzureRmRoleAssignment -ResourceGroupName testRG -SignInName john.doe@contoso.com -ExpandPrincipalGroups
 ```
@@ -173,8 +170,6 @@ PS C:\> Get-AzureRmRoleAssignment -ResourceGroupName testRG -SignInName john.doe
 Gets all role assignments made to user john.doe@contoso.com, and the groups of which he is member, at the testRG scope or above.
 
 ### --------------------------  Example 3  --------------------------
-@{paragraph=PS C:\\\>}
-
 ```
 PS C:\> Get-AzureRmRoleAssignment -ServicePrincipalName "http://testapp1.com"
 ```
@@ -182,8 +177,6 @@ PS C:\> Get-AzureRmRoleAssignment -ServicePrincipalName "http://testapp1.com"
 Gets all role assignments of the specified service principal
 
 ### --------------------------  Example 4  --------------------------
-@{paragraph=PS C:\\\>}
-
 ```
 PS C:\> Get-AzureRmRoleAssignment -Scope "/subscriptions/96231a05-34ce-4eb4-aa6a-70759cbb5e83/resourcegroups/rg1/providers/Microsoft.Web/sites/site1"
 ```
@@ -192,19 +185,34 @@ Gets role assignments at the 'site1' website scope.
 
 ## PARAMETERS
 
-### -RoleDefinitionName
-Role that is assigned to the principal i.e.
-Reader, Contributor, Virtual Network Administrator, etc.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: String
-Parameter Sets: EmptyParameterSet, ResourceWithObjectIdParameterSet, ObjectIdParameterSet, ResourceGroupWithObjectIdParameterSet, ScopeWithObjectIdParameterSet, ResourceGroupWithSignInNameParameterSet, ResourceWithSignInNameParameterSet, ScopeWithSignInNameParameterSet, SignInNameParameterSet, ResourceGroupWithSPNParameterSet, ScopeWithSPNParameterSet, ResourceWithSPNParameterSet, SPNParameterSet, ResourceParameterSet, ResourceGroupParameterSet, ScopeParameterSet
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExpandPrincipalGroups
+If specified, returns roles directly assigned to the user and to the groups of which the user is a member (transitively).
+Supported only for a user principal.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: ObjectIdParameterSet, SignInNameParameterSet
 Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -213,47 +221,8 @@ If specified, also lists subscription classic administrators (co-admins, service
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: EmptyParameterSet, ResourceWithObjectIdParameterSet, ObjectIdParameterSet, ResourceGroupWithObjectIdParameterSet, ScopeWithObjectIdParameterSet, ResourceGroupWithSignInNameParameterSet, ResourceWithSignInNameParameterSet, ScopeWithSignInNameParameterSet, SignInNameParameterSet, ResourceGroupWithSPNParameterSet, ScopeWithSPNParameterSet, ResourceWithSPNParameterSet, SPNParameterSet, ResourceParameterSet, ResourceGroupParameterSet, ScopeParameterSet
+Parameter Sets: EmptyParameterSet, ObjectIdParameterSet, ResourceGroupWithObjectIdParameterSet, ResourceWithObjectIdParameterSet, ScopeWithObjectIdParameterSet, ResourceGroupWithSignInNameParameterSet, ResourceWithSignInNameParameterSet, ScopeWithSignInNameParameterSet, SignInNameParameterSet, ResourceGroupWithSPNParameterSet, ResourceWithSPNParameterSet, ScopeWithSPNParameterSet, SPNParameterSet, ResourceGroupParameterSet, ResourceParameterSet, ScopeParameterSet
 Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
 
 Required: False
 Position: Named
@@ -268,7 +237,7 @@ Filters all assignments that are made to the specified principal.
 
 ```yaml
 Type: Guid
-Parameter Sets: ResourceWithObjectIdParameterSet, ObjectIdParameterSet, ResourceGroupWithObjectIdParameterSet, ScopeWithObjectIdParameterSet
+Parameter Sets: ObjectIdParameterSet, ResourceGroupWithObjectIdParameterSet, ResourceWithObjectIdParameterSet, ScopeWithObjectIdParameterSet
 Aliases: Id, PrincipalId
 
 Required: True
@@ -290,19 +259,19 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ExpandPrincipalGroups
-If specified, returns roles directly assigned to the user and to the groups of which the user is a member (transitively).
-Supported only for a user principal.
+### -ParentResource
+The parent resource in the hierarchy of the resource specified using ResourceName parameter.
+Must be used in conjunction with ResourceGroupName, ResourceType, and ResourceName parameters.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: ObjectIdParameterSet, SignInNameParameterSet
+Type: String
+Parameter Sets: ResourceWithObjectIdParameterSet, ResourceWithSignInNameParameterSet, ResourceWithSPNParameterSet, ResourceParameterSet
 Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -313,7 +282,7 @@ When used in conjunction with ResourceName, ResourceType, and ParentResource par
 
 ```yaml
 Type: String
-Parameter Sets: ResourceWithObjectIdParameterSet, ResourceGroupWithObjectIdParameterSet, ResourceGroupWithSignInNameParameterSet, ResourceWithSignInNameParameterSet, ResourceGroupWithSPNParameterSet, ResourceWithSPNParameterSet, ResourceParameterSet, ResourceGroupParameterSet
+Parameter Sets: ResourceGroupWithObjectIdParameterSet, ResourceWithObjectIdParameterSet, ResourceGroupWithSignInNameParameterSet, ResourceWithSignInNameParameterSet, ResourceGroupWithSPNParameterSet, ResourceWithSPNParameterSet, ResourceGroupParameterSet, ResourceParameterSet
 Aliases: 
 
 Required: True
@@ -359,13 +328,28 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ParentResource
-The parent resource in the hierarchy of the resource specified using ResourceName parameter.
-Must be used in conjunction with ResourceGroupName, ResourceType, and ResourceName parameters.
+### -RoleDefinitionId
+Id of the Role that is assigned to the principal.
+
+```yaml
+Type: Guid
+Parameter Sets: RoleIdWithScopeAndObjectIdParameterSet
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RoleDefinitionName
+Role that is assigned to the principal i.e.
+Reader, Contributor, Virtual Network Administrator, etc.
 
 ```yaml
 Type: String
-Parameter Sets: ResourceWithObjectIdParameterSet, ResourceWithSignInNameParameterSet, ResourceWithSPNParameterSet, ResourceParameterSet
+Parameter Sets: EmptyParameterSet, ObjectIdParameterSet, ResourceGroupWithObjectIdParameterSet, ResourceWithObjectIdParameterSet, ScopeWithObjectIdParameterSet, ResourceGroupWithSignInNameParameterSet, ResourceWithSignInNameParameterSet, ScopeWithSignInNameParameterSet, SignInNameParameterSet, ResourceGroupWithSPNParameterSet, ResourceWithSPNParameterSet, ScopeWithSPNParameterSet, SPNParameterSet, ResourceGroupParameterSet, ResourceParameterSet, ScopeParameterSet
 Aliases: 
 
 Required: False
@@ -385,18 +369,6 @@ The command filters all assignments that are effective at that scope.
 
 ```yaml
 Type: String
-Parameter Sets: RoleIdWithScopeAndObjectIdParameterSet
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: String
 Parameter Sets: ScopeWithObjectIdParameterSet, ScopeWithSignInNameParameterSet, ScopeWithSPNParameterSet, ScopeParameterSet
 Aliases: 
 
@@ -407,13 +379,26 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -RoleDefinitionId
-Id of the Role that is assigned to the principal.
-
 ```yaml
-Type: Guid
+Type: String
 Parameter Sets: RoleIdWithScopeAndObjectIdParameterSet
 Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ServicePrincipalName
+The ServicePrincipalName of the service principal.
+Filters all assignments that are made to the specified Azure AD application.
+
+```yaml
+Type: String
+Parameter Sets: ResourceGroupWithSPNParameterSet, ResourceWithSPNParameterSet, ScopeWithSPNParameterSet, SPNParameterSet
+Aliases: SPN
 
 Required: True
 Position: Named
@@ -438,34 +423,23 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ServicePrincipalName
-The ServicePrincipalName of the service principal.
-Filters all assignments that are made to the specified Azure AD application.
-
-```yaml
-Type: String
-Parameter Sets: ResourceGroupWithSPNParameterSet, ScopeWithSPNParameterSet, ResourceWithSPNParameterSet, SPNParameterSet
-Aliases: SPN
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ## OUTPUTS
+
+### System.Collections.Generic.List`1[Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment]
 
 ## NOTES
 Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment
 
 ## RELATED LINKS
 
-[New-AzureRmRoleAssignment]()
+[New-AzureRmRoleAssignment](./New-AzureRmRoleAssignment.md)
 
-[Remove-AzureRmRoleAssignment]()
+[Remove-AzureRmRoleAssignment](./Remove-AzureRmRoleAssignment.md)
 
-[Get-AzureRmRoleDefinition]()
+[Get-AzureRmRoleDefinition](./Get-AzureRmRoleDefinition.md)
 

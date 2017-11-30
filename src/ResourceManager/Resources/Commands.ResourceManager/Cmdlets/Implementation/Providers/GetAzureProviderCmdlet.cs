@@ -14,6 +14,8 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
+    using Common.ArgumentCompleters;
+    using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
@@ -49,6 +51,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// Gets or sets the provider namespace
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "The location to look for provider namespace.")]
+        [LocationCompleter("Microsoft.Resources/resourceGroups")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
@@ -136,16 +139,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 return new PSResourceProvider[] { };
             }
 
-            foreach (var provider in providers)
-            {
-                provider.ResourceTypes = provider.ResourceTypes
+            var providerWithResourceTypes = providers.ToDictionary(
+                provider => provider, 
+                provider => provider.ResourceTypes
                     .Where(type => !type.Locations.Any() || type.Locations.Any(loc => loc.EqualsAsLocation(this.Location)))
-                    .ToList();
-            }
+                    .ToList());
 
-            return providers
-                .Where(provider => provider.ResourceTypes.Any())
-                .Select(provider => provider.ToPSResourceProvider())
+            return providerWithResourceTypes
+                .Where(kvp => kvp.Value.Any())
+                .Select(kvp => kvp.Key.ToPSResourceProvider())
                 .ToArray();
         }
     }

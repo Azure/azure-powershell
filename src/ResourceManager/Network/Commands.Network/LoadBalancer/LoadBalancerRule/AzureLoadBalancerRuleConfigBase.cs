@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "The transport protocol for the external endpoint.")]
-        [ValidateSet(MNM.TransportProtocol.Tcp, MNM.TransportProtocol.Udp, IgnoreCase = true)]
+        [ValidateSet(MNM.TransportProtocol.Tcp, MNM.TransportProtocol.Udp, MNM.TransportProtocol.All, IgnoreCase = true)]
         public string Protocol { get; set; }
 
         [Parameter(
@@ -95,6 +95,11 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "EnableFloatingIP")]
         public SwitchParameter EnableFloatingIP { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "DisableOutboundSNAT")]
+        public SwitchParameter DisableOutboundSNAT { get; set; }
 
         public override void Execute()
         {

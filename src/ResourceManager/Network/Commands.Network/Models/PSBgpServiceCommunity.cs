@@ -26,11 +26,13 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public string Type { get; set; }
 
-        public List<PSBgpCommunity> Communities { get; set; }
+        public string ServiceName { get; set; }
+
+        public List<PSBgpCommunity> BgpCommunities { get; set; }
         [JsonIgnore]
-        public string CommunitiesText
+        public string BgpCommunitiesText
         {
-            get { return JsonConvert.SerializeObject(Communities, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+            get { return JsonConvert.SerializeObject(BgpCommunities, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
         
     }

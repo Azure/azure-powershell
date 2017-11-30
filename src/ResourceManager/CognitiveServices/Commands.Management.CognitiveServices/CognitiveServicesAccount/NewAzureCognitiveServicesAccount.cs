@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Management.CognitiveServices.Properties;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.CognitiveServices;
 using Microsoft.Azure.Management.CognitiveServices.Models;
 using System.Collections;
@@ -33,6 +34,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Resource Group Name.")]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -44,7 +46,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         [Alias(CognitiveServicesAccountNameAlias, AccountNameAlias)]
         [ValidateNotNullOrEmpty]
         [ValidatePattern("^[a-zA-Z0-9][a-zA-Z0-9_.-]*$")]
-        [ValidateLength(3, 24)]
+        [ValidateLength(2, 64)]
         public string Name { get; set; }
 
         [Parameter(
@@ -67,20 +69,21 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Cognitive Services Account Location.")]
+        [LocationCompleter("Microsoft.CognitiveServices/accounts")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "Cognitive Services Account Tags.")]
-        [Alias (TagsAlias)]
+        [Alias(TagsAlias)]
         [ValidateNotNull]
         [AllowEmptyCollection]
         public Hashtable[] Tag { get; set; }
-        
+
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
         public SwitchParameter Force { get; set; }
-        
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -97,10 +100,20 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                 };
 
                 if (ShouldProcess(
-                    this.Name, string.Format(CultureInfo.CurrentCulture, Resources.NewAccount_ProcessMessage, this.Name, this.Type, this.SkuName, this.Location))
-                    ||
-                    Force.IsPresent)
+                    this.Name, string.Format(CultureInfo.CurrentCulture, Resources.NewAccount_ProcessMessage, this.Name, this.Type, this.SkuName, this.Location)))
                 {
+                    if (Force.IsPresent)
+                    {
+                        WriteWarning(Resources.NewAccount_Notice);
+                    }
+                    else
+                    {
+                        bool yesToAll = false, noToAll = false;
+                        if (!ShouldContinue(Resources.NewAccount_Notice, "Notice", true, ref yesToAll, ref noToAll))
+                        {
+                            return;
+                        }
+                    }
 
                     var createAccountResponse = this.CognitiveServicesClient.CognitiveServicesAccounts.Create(
                                     this.ResourceGroupName,

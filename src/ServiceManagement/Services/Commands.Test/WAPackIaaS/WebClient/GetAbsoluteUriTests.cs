@@ -16,20 +16,21 @@ using System;
 using System.Text;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.WAPackIaaS.WebClient;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Test.WAPackIaaS.WebClient
 {
     
-    public class GetAbsoluteUriTests
+    public class GetAbsoluteUriTests : SMTestBase
     {
         private Subscription subscription;
 
         public GetAbsoluteUriTests()
         {
             var azureSub = new AzureSubscription();
-            azureSub.Id = Guid.NewGuid();
+            azureSub.Id = Guid.NewGuid().ToString();
             this.subscription = new Subscription(azureSub);
         }
 

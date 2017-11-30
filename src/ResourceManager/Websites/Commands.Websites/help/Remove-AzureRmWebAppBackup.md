@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
+Module Name: AzureRM
 ms.assetid: 65A78654-A490-4B60-8C16-B0CC597EE995
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/remove-azurermwebappbackup
 schema: 2.0.0
 ---
 
@@ -14,16 +15,17 @@ schema: 2.0.0
 ### FromResourceName
 ```
 Remove-AzureRmWebAppBackup [-BackupId] <String> [-ResourceGroupName] <String> [-Name] <String>
- [[-Slot] <String>] [<CommonParameters>]
+ [[-Slot] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### FromWebApp
 ```
-Remove-AzureRmWebAppBackup [-BackupId] <String> [-WebApp] <Site> [<CommonParameters>]
+Remove-AzureRmWebAppBackup [-BackupId] <String> [-WebApp] <Site> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmWebAppBackup** cmdlet gets the specified backup of an Azure Web App.
+The **Remove-AzureRmWebAppBackup** cmdlet removes the specified backup of an Azure Web App.
 
 ## EXAMPLES
 
@@ -51,18 +53,18 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-Resource Group Name
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: String
-Parameter Sets: FromResourceName
-Aliases: 
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
 
-Required: True
-Position: 0
+Required: False
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -76,6 +78,21 @@ Aliases:
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Resource Group Name
+
+```yaml
+Type: String
+Parameter Sets: FromResourceName
+Aliases: 
+
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -116,7 +133,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Site
+Parameter 'WebApp' accepts value of type 'Site' from the pipeline
+
 ## OUTPUTS
+
+### Microsoft.Azure.Management.WebSites.Models.BackupItem
 
 ## NOTES
 

@@ -12,7 +12,7 @@ using Xunit;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Xunit.Abstractions;
 using Microsoft.WindowsAzure.ServiceManagemenet.Common.Models;
-
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 {
@@ -64,6 +64,8 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         protected void RunPowerShellTest(params string[] scripts)
         {
+            AzureSessionInitializer.InitializeAzureSession();
+            ServiceManagementProfileProvider.InitializeServiceManagementProfile();
             using (UndoContext context = UndoContext.Current)
             {
                 context.Start(TestUtilities.GetCallingClass(1), TestUtilities.GetCurrentMethodName(2));

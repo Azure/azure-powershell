@@ -1,28 +1,28 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/0347d63a-421a-43a7-836a-5f389c79cd07/providers/Microsoft.Billing/invoices/latest?api-version=2017-02-27-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDM0N2Q2M2EtNDIxYS00M2E3LTgzNmEtNWYzODljNzljZDA3L3Byb3ZpZGVycy9NaWNyb3NvZnQuQmlsbGluZy9pbnZvaWNlcy9sYXRlc3Q/YXBpLXZlcnNpb249MjAxNy0wMi0yNy1wcmV2aWV3",
+      "RequestUri": "/subscriptions/0347d63a-421a-43a7-836a-5f389c79cd07/providers/Microsoft.Billing/invoices/latest?api-version=2017-04-24-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDM0N2Q2M2EtNDIxYS00M2E3LTgzNmEtNWYzODljNzljZDA3L3Byb3ZpZGVycy9NaWNyb3NvZnQuQmlsbGluZy9pbnZvaWNlcy9sYXRlc3Q/YXBpLXZlcnNpb249MjAxNy0wNC0yNC1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "953ea595-e097-4c19-ae35-04653db4af09"
+          "49968c49-60cd-4847-b44c-17ecb80470a5"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.1586.0",
+          "FxVersion/4.6.1637.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.14393",
-          "Microsoft.Azure.Management.Billing.BillingClient/1.0.0.0"
+          "Microsoft.Azure.Management.Billing.BillingManagementClient/2.0.0-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0347d63a-421a-43a7-836a-5f389c79cd07/providers/Microsoft.Billing/invoices/2017-02-09-117274100066163\",\r\n  \"type\": \"Microsoft.Billing/invoices\",\r\n  \"name\": \"2017-02-09-117274100066163\",\r\n  \"properties\": {\r\n    \"downloadUrl\": {\r\n      \"expiryTime\": \"2017-02-23T20:25:59Z\",\r\n      \"url\": \"https://billinsstorev2test.blob.core.windows.net/invoices/00610927-9fb1-4ead-bae8-a86995eb88af-2017-02-09-117274100066163.pdf?sv=2014-02-14&sr=b&sig=yyE7K3u6ELTqz1WXWX%2FTYaBLHbfnGago7c%2FtPrJbN2Y%3D&se=2017-02-23T20%3A25%3A59Z&sp=r\"\r\n    },\r\n    \"invoicePeriodEndDate\": \"2017-02-09\",\r\n    \"invoicePeriodStartDate\": \"2017-01-10\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0347d63a-421a-43a7-836a-5f389c79cd07/providers/Microsoft.Billing/invoices/201705-217994100075389\",\r\n  \"type\": \"Microsoft.Billing/invoices\",\r\n  \"name\": \"201705-217994100075389\",\r\n  \"properties\": {\r\n    \"downloadUrl\": {\r\n      \"expiryTime\": \"2017-04-25T02:21:35Z\",\r\n      \"url\": \"https://billinginsightsstoretest.blob.core.windows.net/invoices/0347d63a-421a-43a7-836a-5f389c79cd07-201705-217994100075389.pdf?sv=2014-02-14&sr=b&sig=QcnirkgcNBM5ktkNWc7BzQqSo%2BT98FYtFKOzjYFyOLE%3D&se=2017-04-25T02%3A21%3A35Z&sp=r\"\r\n    },\r\n    \"invoicePeriodEndDate\": \"2017-04-09\",\r\n    \"invoicePeriodStartDate\": \"2017-03-10\",\r\n    \"billingPeriodIds\": [\r\n      \"/subscriptions/0347d63a-421a-43a7-836a-5f389c79cd07/providers/Microsoft.Billing/billingPeriods/201705-1\"\r\n    ]\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "578"
+          "697"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -37,22 +37,22 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14999"
+          "14991"
         ],
         "x-ms-request-id": [
-          "cc05adad-214a-4af7-9e62-fd31bf7dcc3f"
+          "17b132b5-1da2-4294-9ef4-f334ebe8becc"
         ],
         "x-ms-correlation-request-id": [
-          "cc05adad-214a-4af7-9e62-fd31bf7dcc3f"
+          "17b132b5-1da2-4294-9ef4-f334ebe8becc"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20170223T192601Z:cc05adad-214a-4af7-9e62-fd31bf7dcc3f"
+          "CENTRALUS:20170425T012136Z:17b132b5-1da2-4294-9ef4-f334ebe8becc"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 23 Feb 2017 19:26:00 GMT"
+          "Tue, 25 Apr 2017 01:21:35 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.5"

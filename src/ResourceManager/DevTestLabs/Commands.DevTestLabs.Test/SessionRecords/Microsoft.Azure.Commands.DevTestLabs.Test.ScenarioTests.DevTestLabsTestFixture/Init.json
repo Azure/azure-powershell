@@ -202,7 +202,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/microsoft.resources/deployments/onesdk5931/validate?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931/validate?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL3Byb3ZpZGVycy9taWNyb3NvZnQucmVzb3VyY2VzL2RlcGxveW1lbnRzL29uZXNkazU5MzEvdmFsaWRhdGU/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"templateLink\": {\r\n      \"uri\": \"https://raw.githubusercontent.com/Azure/azure-devtestlab/master/ARMTemplates/101-dtl-create-lab/azuredeploy.json\"\r\n    },\r\n    \"parameters\": {\r\n      \"newLabName\": {\r\n        \"value\": \"onesdk5931\"\r\n      }\r\n    },\r\n    \"mode\": \"Incremental\"\r\n  }\r\n}",
@@ -256,7 +256,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"templateLink\": {\r\n      \"uri\": \"https://raw.githubusercontent.com/Azure/azure-devtestlab/master/ARMTemplates/101-dtl-create-lab/azuredeploy.json\"\r\n    },\r\n    \"parameters\": {\r\n      \"newLabName\": {\r\n        \"value\": \"onesdk5931\"\r\n      }\r\n    },\r\n    \"mode\": \"Incremental\"\r\n  }\r\n}",
@@ -15049,7 +15049,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -15097,7 +15097,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -15145,7 +15145,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -15193,7 +15193,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -15241,7 +15241,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -15289,7 +15289,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -15337,7 +15337,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -15385,7 +15385,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -15433,7 +15433,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -15481,7 +15481,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -15529,7 +15529,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -15577,7 +15577,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -15625,7 +15625,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -15673,7 +15673,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -15721,7 +15721,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -15769,7 +15769,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -15817,7 +15817,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -15865,7 +15865,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -15913,7 +15913,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -15961,7 +15961,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -16009,7 +16009,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -16057,7 +16057,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -16105,7 +16105,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -16153,7 +16153,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -16201,7 +16201,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -16249,7 +16249,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -16297,7 +16297,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -16345,7 +16345,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -16393,7 +16393,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -16441,7 +16441,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -16489,7 +16489,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -16537,7 +16537,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -16585,7 +16585,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -16633,7 +16633,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -16681,7 +16681,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -16729,7 +16729,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -16777,7 +16777,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -16825,7 +16825,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -16873,7 +16873,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -16921,7 +16921,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -16969,7 +16969,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -17017,7 +17017,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -17065,7 +17065,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -17113,7 +17113,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -17161,7 +17161,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -17209,7 +17209,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -17257,7 +17257,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -17305,7 +17305,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -17353,7 +17353,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -17401,7 +17401,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -17449,7 +17449,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -17497,7 +17497,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -17545,7 +17545,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -17593,7 +17593,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -17641,7 +17641,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -17689,7 +17689,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -17737,7 +17737,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -17785,7 +17785,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -17833,7 +17833,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -17881,7 +17881,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -17929,7 +17929,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -17977,7 +17977,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -18025,7 +18025,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -18073,7 +18073,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -18121,7 +18121,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -18169,7 +18169,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -18217,7 +18217,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -18265,7 +18265,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -18313,7 +18313,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -18361,7 +18361,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -18409,7 +18409,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -18457,7 +18457,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -18505,7 +18505,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -18553,7 +18553,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -18601,7 +18601,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -18649,7 +18649,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -18697,7 +18697,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -18745,7 +18745,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -18793,7 +18793,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -18841,7 +18841,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -18889,7 +18889,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -18937,7 +18937,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -18985,7 +18985,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -19033,7 +19033,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -19081,7 +19081,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -19129,7 +19129,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -19177,7 +19177,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -19225,7 +19225,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -19273,7 +19273,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -19321,7 +19321,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -19369,7 +19369,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -19417,7 +19417,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -19465,7 +19465,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -19513,7 +19513,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -19561,7 +19561,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -19609,7 +19609,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -19657,7 +19657,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -19705,7 +19705,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -19753,7 +19753,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -19801,7 +19801,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -19849,7 +19849,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -19897,7 +19897,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -19945,7 +19945,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -19993,7 +19993,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -20041,7 +20041,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -20089,7 +20089,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -20137,7 +20137,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -20185,7 +20185,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -20233,7 +20233,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -20281,7 +20281,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -20329,7 +20329,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -20377,7 +20377,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -20425,7 +20425,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -20473,7 +20473,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -20521,7 +20521,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -20569,7 +20569,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -20617,7 +20617,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -20665,7 +20665,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -20713,7 +20713,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -20761,7 +20761,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -20809,7 +20809,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -20857,7 +20857,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -20905,7 +20905,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -20953,7 +20953,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -21001,7 +21001,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -21049,7 +21049,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -21097,7 +21097,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -21145,7 +21145,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -21193,7 +21193,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -21241,7 +21241,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -21289,7 +21289,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -21337,7 +21337,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -21385,7 +21385,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -21433,7 +21433,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -21481,7 +21481,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -21529,7 +21529,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -21577,7 +21577,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -21625,7 +21625,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -21673,7 +21673,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -21721,7 +21721,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -21769,7 +21769,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -21817,7 +21817,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -21865,7 +21865,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -21913,7 +21913,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -21961,7 +21961,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -22009,7 +22009,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -22057,7 +22057,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -22105,7 +22105,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -22153,7 +22153,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -22201,7 +22201,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -22249,7 +22249,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -22297,7 +22297,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -22345,7 +22345,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -22393,7 +22393,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -22441,7 +22441,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -22489,7 +22489,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -22537,7 +22537,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -22585,7 +22585,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -22633,7 +22633,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -22681,7 +22681,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -22729,7 +22729,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -22777,7 +22777,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -22825,7 +22825,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -22873,7 +22873,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -22921,7 +22921,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -22969,7 +22969,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -23017,7 +23017,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -23065,7 +23065,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -23113,7 +23113,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -23161,7 +23161,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -23209,7 +23209,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -23257,7 +23257,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -23305,7 +23305,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -23353,7 +23353,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -23401,7 +23401,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -23449,7 +23449,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -23497,7 +23497,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -23545,7 +23545,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -23593,7 +23593,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -23641,7 +23641,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -23689,7 +23689,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -23737,7 +23737,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -23785,7 +23785,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -23833,7 +23833,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -23881,7 +23881,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -23929,7 +23929,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -23977,7 +23977,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -24025,7 +24025,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -24073,7 +24073,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -24121,7 +24121,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -24169,7 +24169,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -24217,7 +24217,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -24265,7 +24265,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -24313,7 +24313,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -24361,7 +24361,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -24409,7 +24409,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -24457,7 +24457,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -24505,7 +24505,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -24553,7 +24553,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -24601,7 +24601,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -24649,7 +24649,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -24697,7 +24697,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -24745,7 +24745,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -24793,7 +24793,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -24841,7 +24841,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -24889,7 +24889,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -24937,7 +24937,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -24985,7 +24985,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -25033,7 +25033,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -25081,7 +25081,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -25129,7 +25129,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -25177,7 +25177,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -25225,7 +25225,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -25273,7 +25273,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -25321,7 +25321,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -25369,7 +25369,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -25417,7 +25417,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -25465,7 +25465,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -25513,7 +25513,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -25561,7 +25561,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -25609,7 +25609,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -25657,7 +25657,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -25705,7 +25705,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -25753,7 +25753,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -25801,7 +25801,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -25849,7 +25849,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -25897,7 +25897,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -25945,7 +25945,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -25993,7 +25993,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -26041,7 +26041,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -26089,7 +26089,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -26137,7 +26137,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -26185,7 +26185,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -26233,7 +26233,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -26281,7 +26281,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -26329,7 +26329,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -26377,7 +26377,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -26425,7 +26425,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -26473,7 +26473,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -26521,7 +26521,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -26569,7 +26569,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -26617,7 +26617,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -26665,7 +26665,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -26713,7 +26713,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -26761,7 +26761,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -26809,7 +26809,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -26857,7 +26857,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -26905,7 +26905,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -26953,7 +26953,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -27001,7 +27001,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -27049,7 +27049,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -27097,7 +27097,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -27145,7 +27145,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -27193,7 +27193,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -27241,7 +27241,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -27289,7 +27289,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -27337,7 +27337,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -27385,7 +27385,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -27433,7 +27433,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -27481,7 +27481,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -27529,7 +27529,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -27577,7 +27577,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -27625,7 +27625,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -27673,7 +27673,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -27721,7 +27721,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -27769,7 +27769,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -27817,7 +27817,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -27865,7 +27865,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -27913,7 +27913,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -27961,7 +27961,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -28009,7 +28009,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -28057,7 +28057,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -28105,7 +28105,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -28153,7 +28153,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -28201,7 +28201,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -28249,7 +28249,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -28297,7 +28297,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -28345,7 +28345,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -28393,7 +28393,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -28441,7 +28441,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -28489,7 +28489,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -28537,7 +28537,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -28585,7 +28585,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -28633,7 +28633,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -28681,7 +28681,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -28729,7 +28729,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -28777,7 +28777,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -28825,7 +28825,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -28873,7 +28873,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -28921,7 +28921,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -28969,7 +28969,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -29017,7 +29017,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -29065,7 +29065,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -29113,7 +29113,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -29161,7 +29161,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -29209,7 +29209,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -29257,7 +29257,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -29305,7 +29305,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -29353,7 +29353,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -29401,7 +29401,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -29449,7 +29449,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -29497,7 +29497,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -29545,7 +29545,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -29593,7 +29593,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -29641,7 +29641,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -29689,7 +29689,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -29737,7 +29737,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/deployments/onesdk5931?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/Microsoft.Resources/deployments/onesdk5931?api-version=2016-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlZ3JvdXBzL29uZXNkazcyL2RlcGxveW1lbnRzL29uZXNkazU5MzE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",

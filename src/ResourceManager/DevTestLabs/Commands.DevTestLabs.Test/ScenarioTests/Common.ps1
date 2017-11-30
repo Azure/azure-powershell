@@ -69,7 +69,7 @@ function Setup-Test-ResourceGroup
     New-AzureRmResourceGroup -Name $rgname -Location $location
     New-AzureRmResourceGroupDeployment -Name $labName -ResourceGroupName $rgname `
     -TemplateParameterObject @{ newLabName = "$labName" } `
-    -TemplateFile https://raw.githubusercontent.com/Azure/azure-devtestlab/master/ARMTemplates/101-dtl-create-lab/azuredeploy.json
+    -TemplateFile https://raw.githubusercontent.com/Azure/azure-devtestlab/master/Samples/101-dtl-create-lab/azuredeploy.json
 }
 
 <#

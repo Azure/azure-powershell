@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ApiManagement.dll-Help.xml
 ms.assetid: 5846BBB7-DA8E-41B5-A894-BA2B61C2212C
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/backup-azurermapimanagement
 schema: 2.0.0
 ---
 
@@ -13,9 +13,9 @@ Backs up an API Management service.
 ## SYNTAX
 
 ```
-Backup-AzureRmApiManagement -ResourceGroupName <String> -Name <String> -StorageContext <AzureStorageContext>
- -TargetContainerName <String> [-TargetBlobName <String>] [-PassThru] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+Backup-AzureRmApiManagement -ResourceGroupName <String> -Name <String> -StorageContext <IStorageContext>
+ -TargetContainerName <String> [-TargetBlobName <String>] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,6 +26,9 @@ This cmdlet stores the backup as an Azure Storage blob.
 
 ### Example 1: Back up an API Management service
 ```
+PS C:\>New-AzureRmStorageAccount -StorageAccountName "ContosoStorage" -Location $location -ResourceGroupName "ContosoGroup02" -Type Standard_LRS
+PS C:\>$storageKey = (Get-AzureRmStorageAccountKey -ResourceGroupName "ContosoGroup02" -StorageAccountName "ContosoStorage")[0].Value
+PS C:\>$storageContext = New-AzureStorageContext -StorageAccountName "ContosoStorage" -StorageAccountKey $storageKey
 PS C:\>Backup-AzureRmApiManagement -ResourceGroupName "ContosoGroup02" -Name "ContosoApi" -StorageContext $StorageContext -TargetContainerName "ContosoBackups" -TargetBlobName "ContosoBackup.apimbackup"
 ```
 
@@ -33,18 +36,18 @@ This command backs up an API Management service to a Storage blob.
 
 ## PARAMETERS
 
-### -ResourceGroupName
-Specifies the name of the of resource group under which the API Management deployment exists.
-
-```yaml
-Type: String
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+ 
+ ```yaml
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: 
+Aliases: AzureRmContext, AzureCredential
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -63,11 +66,26 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -StorageContext
-Specifies a storage connection context.
+### -PassThru
+Indicates that this cmdlet returns the backed up **PsApiManagement** object, if the operation succeeds.
 
 ```yaml
-Type: AzureStorageContext
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Specifies the name of the of resource group under which the API Management deployment exists.
+
+```yaml
+Type: String
 Parameter Sets: (All)
 Aliases: 
 
@@ -78,19 +96,18 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -TargetContainerName
-Specifies the name of the container of the blob for the backup.
-If the container does not exist, this cmdlet creates it.
+### -StorageContext
+Specifies a storage connection context.
 
 ```yaml
-Type: String
+Type: IStorageContext
 Parameter Sets: (All)
 Aliases: 
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -113,54 +130,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Indicates that this cmdlet returns the backed up **PsApiManagement** object, if the operation succeeds.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
+### -TargetContainerName
+Specifies the name of the container of the blob for the backup.
+If the container does not exist, this cmdlet creates it.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: iv
+Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -173,6 +152,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement
 
 ## NOTES
 

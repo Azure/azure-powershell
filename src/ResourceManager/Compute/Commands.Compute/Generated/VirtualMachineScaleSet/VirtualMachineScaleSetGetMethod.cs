@@ -19,7 +19,6 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
@@ -83,9 +82,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             if (!string.IsNullOrEmpty(resourceGroupName) && !string.IsNullOrEmpty(vmScaleSetName))
             {
                 var result = VirtualMachineScaleSetsClient.Get(resourceGroupName, vmScaleSetName);
-                var psObject = new PSVirtualMachineScaleSet();
-                Mapper.Map<VirtualMachineScaleSet, PSVirtualMachineScaleSet>(result, psObject);
-                WriteObject(psObject);
+                WriteObject(result);
             }
             else if (!string.IsNullOrEmpty(resourceGroupName))
             {
@@ -101,12 +98,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     }
                     nextPageLink = pageResult.NextPageLink;
                 }
-                var psObject = new List<PSVirtualMachineScaleSetList>();
-                foreach (var r in result)
-                {
-                    psObject.Add(Mapper.Map<VirtualMachineScaleSet, PSVirtualMachineScaleSetList>(r));
-                }
-                WriteObject(psObject);
+                WriteObject(resultList, true);
             }
             else
             {
@@ -122,12 +114,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     }
                     nextPageLink = pageResult.NextPageLink;
                 }
-                var psObject = new List<PSVirtualMachineScaleSetList>();
-                foreach (var r in result)
-                {
-                    psObject.Add(Mapper.Map<VirtualMachineScaleSet, PSVirtualMachineScaleSetList>(r));
-                }
-                WriteObject(psObject);
+                WriteObject(resultList, true);
             }
         }
 
@@ -146,85 +133,115 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmVmss", DefaultParameterSetName = "InvokeByDynamicParameters")]
-    public partial class GetAzureRmVmss : InvokeAzureComputeMethodCmdlet
+    [Cmdlet(VerbsCommon.Get, "AzureRmVmss", DefaultParameterSetName = "DefaultParameter")]
+    [OutputType(typeof(PSVirtualMachineScaleSet))]
+    public partial class GetAzureRmVmss : ComputeAutomationBaseCmdlet
     {
-        public override string MethodName { get; set; }
-
         protected override void ProcessRecord()
         {
-            if (this.ParameterSetName == "InvokeByDynamicParameters")
+            ExecuteClientAction(() =>
             {
-                this.MethodName = "VirtualMachineScaleSetGet";
-            }
-            else
-            {
-                this.MethodName = "VirtualMachineScaleSetGetInstanceView";
-            }
-            base.ProcessRecord();
+                string resourceGroupName = this.ResourceGroupName;
+                string vmScaleSetName = this.VMScaleSetName;
+
+                if (!string.IsNullOrEmpty(resourceGroupName) && !string.IsNullOrEmpty(vmScaleSetName))
+                {
+                    if (this.ParameterSetName.Equals("FriendMethod"))
+                    {
+                        var result = VirtualMachineScaleSetsClient.GetInstanceView(resourceGroupName, vmScaleSetName);
+                        var psObject = new PSVirtualMachineScaleSetInstanceView();
+                        ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSetInstanceView, PSVirtualMachineScaleSetInstanceView>(result, psObject);
+                        WriteObject(psObject);
+                    }
+                    else
+                    {
+                        var result = VirtualMachineScaleSetsClient.Get(resourceGroupName, vmScaleSetName);
+                        var psObject = new PSVirtualMachineScaleSet();
+                        ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSet, PSVirtualMachineScaleSet>(result, psObject);
+                        WriteObject(psObject);
+                    }
+                }
+                else if (!string.IsNullOrEmpty(resourceGroupName))
+                {
+                    var result = VirtualMachineScaleSetsClient.List(resourceGroupName);
+                    var resultList = result.ToList();
+                    var nextPageLink = result.NextPageLink;
+                    while (!string.IsNullOrEmpty(nextPageLink))
+                    {
+                        var pageResult = VirtualMachineScaleSetsClient.ListNext(nextPageLink);
+                        foreach (var pageItem in pageResult)
+                        {
+                            resultList.Add(pageItem);
+                        }
+                        nextPageLink = pageResult.NextPageLink;
+                    }
+                    var psObject = new List<PSVirtualMachineScaleSetList>();
+                    foreach (var r in resultList)
+                    {
+                        psObject.Add(ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSet, PSVirtualMachineScaleSetList>(r));
+                    }
+                    WriteObject(psObject, true);
+                }
+                else
+                {
+                    var result = VirtualMachineScaleSetsClient.ListAll();
+                    var resultList = result.ToList();
+                    var nextPageLink = result.NextPageLink;
+                    while (!string.IsNullOrEmpty(nextPageLink))
+                    {
+                        var pageResult = VirtualMachineScaleSetsClient.ListAllNext(nextPageLink);
+                        foreach (var pageItem in pageResult)
+                        {
+                            resultList.Add(pageItem);
+                        }
+                        nextPageLink = pageResult.NextPageLink;
+                    }
+                    var psObject = new List<PSVirtualMachineScaleSetList>();
+                    foreach (var r in resultList)
+                    {
+                        psObject.Add(ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSet, PSVirtualMachineScaleSetList>(r));
+                    }
+                    WriteObject(psObject, true);
+                }
+            });
         }
 
-        public override object GetDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pResourceGroupName = new RuntimeDefinedParameter();
-            pResourceGroupName.Name = "ResourceGroupName";
-            pResourceGroupName.ParameterType = typeof(string);
-            pResourceGroupName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = false,
-                ValueFromPipelineByPropertyName = true,
-                ValueFromPipeline = false
-            });
-            pResourceGroupName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParametersForFriendMethod",
-                Position = 1,
-                Mandatory = false,
-                ValueFromPipelineByPropertyName = true,
-                ValueFromPipeline = false
-            });
-            pResourceGroupName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ResourceGroupName", pResourceGroupName);
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Position = 1,
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false)]
+        [Parameter(
+            ParameterSetName = "FriendMethod",
+            Position = 1,
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false)]
+        [AllowNull]
+        [ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleter()]
+        public string ResourceGroupName { get; set; }
 
-            var pVMScaleSetName = new RuntimeDefinedParameter();
-            pVMScaleSetName.Name = "VMScaleSetName";
-            pVMScaleSetName.ParameterType = typeof(string);
-            pVMScaleSetName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = false,
-                ValueFromPipelineByPropertyName = true,
-                ValueFromPipeline = false
-            });
-            pVMScaleSetName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParametersForFriendMethod",
-                Position = 2,
-                Mandatory = false,
-                ValueFromPipelineByPropertyName = true,
-                ValueFromPipeline = false
-            });
-            pVMScaleSetName.Attributes.Add(new AliasAttribute("Name"));
-            pVMScaleSetName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("VMScaleSetName", pVMScaleSetName);
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Position = 2,
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false)]
+        [Parameter(
+            ParameterSetName = "FriendMethod",
+            Position = 2,
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false)]
+        [Alias("Name")]
+        [AllowNull]
+        public string VMScaleSetName { get; set; }
 
-            var pInstanceView = new RuntimeDefinedParameter();
-            pInstanceView.Name = "InstanceView";
-            pInstanceView.ParameterType = typeof(SwitchParameter);
-            pInstanceView.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParametersForFriendMethod",
-                Position = 3,
-                Mandatory = true
-            });
-            pInstanceView.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("InstanceView", pInstanceView);
-
-            return dynamicParameters;
-        }
+        [Parameter(
+            ParameterSetName = "FriendMethod",
+            Mandatory = true)]
+        [AllowNull]
+        public SwitchParameter InstanceView { get; set; }
     }
 }

@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Media.dll-Help.xml
+Module Name: AzureRM.Media
 ms.assetid: 2099938F-5325-416C-AE10-6813546A1055
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.media/get-azurermmediaservicekeys
 schema: 2.0.0
 ---
 
@@ -14,7 +15,7 @@ Gets key information for accessing the REST endpoint associated with the media s
 
 ```
 Get-AzureRmMediaServiceKeys [-ResourceGroupName] <String> [-AccountName] <String>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,21 +32,6 @@ This command gets the key information for accessing the media service named Medi
 
 ## PARAMETERS
 
-### -ResourceGroupName
-Specifies the name of the resource group that contains the media service.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -AccountName
 Specifies the name of the media service that this cmdlet gets the media service keys from.
 
@@ -61,22 +47,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: ActionPreference
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: infa
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -85,18 +62,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationVariable
-Specifies an information variable.
+### -ResourceGroupName
+Specifies the name of the resource group that contains the media service.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: iv
+Aliases: 
 
-Required: False
-Position: Named
+Required: True
+Position: 0
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -106,6 +83,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Media.Models.PSServiceKeys
 
 ## NOTES
 

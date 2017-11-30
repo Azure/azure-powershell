@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-ms.assetid: 9E1EA2D3-36FC-4914-B180-114579797ECF
-online version: 
+ms.assetid: 5C0C437D-7237-4B40-A254-1B55916F1C71
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/set-azurermapimanagementproperty
 schema: 2.0.0
 ---
 
@@ -14,8 +14,8 @@ Modifies an API Management Property.
 
 ```
 Set-AzureRmApiManagementProperty -Context <PsApiManagementContext> -PropertyId <String> [-Name <String>]
- [-Value <String>] [-Secret <Boolean>] [-Tags <String[]>] [-PassThru] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+ [-Value <String>] [-Secret <Boolean>] [-Tags <String[]>] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,8 +25,9 @@ The **Set-AzureRmApiManagementProperty** cmdlet modifies an Azure API Management
 
 ### Example 1: Change the tags on a property
 ```
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>$Tags = 'sdk', 'powershell'
-PS C:\> Set-AzureRmApiManagementProperty -Context $ApimContext -PropertyId "Property11" -Tags $Tags -PassThru
+PS C:\> Set-AzureRmApiManagementProperty -Context $apimContext -PropertyId "Property11" -Tags $Tags -PassThru
 ```
 
 The first command assigns two values to the $Tags variable.
@@ -36,7 +37,8 @@ The command assigns the strings in $Tags as tags on the property.
 
 ### Example 2: Modify a property to have a secret value
 ```
-PS C:\>Set-AzureRmApiManagementProperty -Context $ApimContext -PropertyId "Property12" -Secret $True -PassThru
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Set-AzureRmApiManagementProperty -Context $apimContext -PropertyId "Property12" -Secret $True -PassThru
 ```
 
 This command changes the property to be Encrypted.
@@ -58,18 +60,18 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -PropertyId
-Specifies an ID of the property that this cmdlet modifies.
-
-```yaml
-Type: String
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+ 
+ ```yaml
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: 
+Aliases: AzureRmContext, AzureCredential
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -90,18 +92,30 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Value
-Specifies a value for the property.
-This value can contain policy expressions.
-Maximum length is 1000 characters.
-The value may not be empty or consist only of whitespace.
+### -PassThru
+Indicates that this cmdlet returns the **PsApiManagementProperty** that this cmdlet modifies.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PropertyId
+Specifies an ID of the property that this cmdlet modifies.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -139,11 +153,14 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Indicates that this cmdlet returns the **PsApiManagementProperty** that this cmdlet modifies.
+### -Value
+Specifies a value for the property.
+This value can contain policy expressions.
+Maximum length is 1000 characters.
+The value may not be empty or consist only of whitespace.
 
 ```yaml
-Type: SwitchParameter
+Type: String
 Parameter Sets: (All)
 Aliases: 
 
@@ -151,45 +168,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

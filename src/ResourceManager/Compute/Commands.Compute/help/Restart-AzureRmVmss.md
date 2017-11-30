@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 ms.assetid: 47F0EE55-78C0-4C71-BD32-C7CB7B200DC3
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/restart-azurermvmss
 schema: 2.0.0
 ---
 
@@ -13,8 +13,8 @@ Restarts the VMSS or a virtual machine within the VMSS.
 ## SYNTAX
 
 ```
-Restart-AzureRmVmss [-WhatIf] [-Confirm] [-ResourceGroupName] <String> [-VMScaleSetName] <String>
- [[-InstanceId] <String[]>] [<CommonParameters>]
+Restart-AzureRmVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String> [[-InstanceId] <String[]>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,19 +25,34 @@ This cmdlet can also be used to restart a specific virtual machine inside the VM
 
 ### Example 1: Restart the VMSS
 ```
-PS C:\>Restart-AzureRmVmss -ResourceGroupName "Group001" -VMScaleSetName "VMSS001";
+PS C:\> Restart-AzureRmVmss -ResourceGroupName "Group001" -VMScaleSetName "VMSS001";
 ```
 
 This command restarts the VMSS named VMSS001 that belongs to the resource group named Group001.
 
 ### Example 2: Restart a specific virtual machine within the VMSS
 ```
-PS C:\>Restart-AzureRmVmss -ResourceGroupName "Group004" -VMScaleSetName "VMSS001" -InstanceId "1"
+PS C:\> Restart-AzureRmVmss -ResourceGroupName "Group004" -VMScaleSetName "VMSS001" -InstanceId "1"
 ```
 
 This command restarts a virtual machine that has the instance ID of 1 in the VMSS named VMSS001 that belongs to the resource group named Group001.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -InstanceId
 Specifies, as a string array, the ID of the instances that need restarted.
@@ -48,7 +63,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 4
+Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -63,7 +78,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -78,7 +93,7 @@ Parameter Sets: (All)
 Aliases: Name
 
 Required: True
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

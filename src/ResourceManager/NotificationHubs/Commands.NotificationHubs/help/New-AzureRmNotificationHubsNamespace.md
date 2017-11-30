@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.NotificationHubs.dll-Help.xml
+Module Name: AzureRM.NotificationHubs
 ms.assetid: 3BA94976-DE88-4F07-9C06-41FEEDE1B829
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.notificationhubs/new-azurermnotificationhubsnamespace
 schema: 2.0.0
 ---
 
@@ -14,7 +15,8 @@ Creates a notification hub namespace.
 
 ```
 New-AzureRmNotificationHubsNamespace [-ResourceGroup] <String> [-Namespace] <String> [-Location] <String>
- [[-Tags] <Hashtable>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-Tags] <Hashtable>] [[-SkuTier] <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,9 +53,24 @@ This ensures that the namespace will be displayed any time you filter for items 
 
 ## PARAMETERS
 
-### -ResourceGroup
-Specifies the resource group to which the namespace will be assigned.
-Resource groups organize items such as namespaces, notification hubs, and authorization rules in ways that help simply inventory management and administration.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+Specifies the display name of the datacenter that will host the Namespace.
+Although you can set this parameter to any valid location, for optimal performance you might want to use a datacenter located near the majority of your users.
 
 ```yaml
 Type: String
@@ -61,7 +78,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 0
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -83,9 +100,9 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Location
-Specifies the display name of the datacenter that will host the Namespace.
-Although you can set this parameter to any valid location, for optimal performance you might want to use a datacenter located near the majority of your users.
+### -ResourceGroup
+Specifies the resource group to which the namespace will be assigned.
+Resource groups organize items such as namespaces, notification hubs, and authorization rules in ways that help simply inventory management and administration.
 
 ```yaml
 Type: String
@@ -93,7 +110,22 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 2
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SkuTier
+Sku tier of the namespace
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: 4
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -156,6 +188,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.NotificationHubs.Models.NamespaceAttributes
 
 ## NOTES
 

@@ -17,6 +17,11 @@
 Test the basic usage of the Set/Get/Test/Remove virtual machine Azure Enhanced Monitoring extension command
 #>
 
+function Log($test, $message)
+{
+	Out-File -FilePath "$test.log" -Append -InputObject $message
+}
+
 function Test-AEMExtensionBasicWindowsWAD
 {
     $rgname = Get-ComputeTestResourceName
@@ -30,10 +35,10 @@ function Test-AEMExtensionBasicWindowsWAD
 
         # Get with not extension
         $extension = Get-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
-        Assert-Null $extension
+        Assert-Null $extension "Extension is not null"
         # Test with not extension
         $testResult = Test-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname -SkipStorageCheck
-        Assert-False { $testResult.Result }
+        Assert-False { $testResult.Result } (GetWrongTestResult $testResult $true)
 
         # Set and Get command.
         Set-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname -SkipStorage -EnableWAD
@@ -48,13 +53,13 @@ function Test-AEMExtensionBasicWindowsWAD
 
         # Test command.
         $testResult = Test-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname -WaitTimeInMinutes 50 -SkipStorageCheck
-        Assert-True { $testResult.Result }
+        Assert-True { $testResult.Result }  (GetWrongTestResult $testResult $false)
         Assert-True { ($testResult.PartialResults.Count -gt 0) }
 
         # Remove command.
         Remove-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
         $extension = Get-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
-        Assert-Null $extension
+        Assert-Null $extension "Extension is not null"
     }
     finally
     {
@@ -76,7 +81,7 @@ function Test-AEMExtensionBasicWindows
 
         # Get with not extension
         $extension = Get-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
-        Assert-Null $extension
+        Assert-Null $extension "Extension is not null"
         # Test with not extension
         $testResult = Test-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname -SkipStorageCheck
         Assert-False { $testResult.Result }
@@ -100,7 +105,7 @@ function Test-AEMExtensionBasicWindows
         # Remove command.
         Remove-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
         $extension = Get-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
-        Assert-Null $extension
+        Assert-Null $extension "Extension is not null"
     }
     finally
     {
@@ -116,21 +121,21 @@ function Test-AEMExtensionAdvancedWindowsWAD
 
     try
     {
-        Write-Verbose "Start the test Test-AEMExtensionAdvancedWindows"
+        Write-Output "Start the test Test-AEMExtensionAdvancedWindows"
         # Setup
         $vm = Create-AdvancedVM -rgname $rgname -loc $loc -vmsize 'Standard_DS2' -stotype 'Premium_LRS' -nicCount 2
         $vmname = $vm.Name
-        Write-Verbose "Test-AEMExtensionAdvancedWindows: VM created"
+        Write-Host "Test-AEMExtensionAdvancedWindows: VM created"
 
         # Get with not extension
-        Write-Verbose "Test-AEMExtensionAdvancedWindows: Get with no extension"
+        Write-Output "Test-AEMExtensionAdvancedWindows: Get with no extension"
         $extension = Get-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
-        Assert-Null $extension
+        Assert-Null $extension "Extension is not null"
 
         # Test with not extension
         Write-Verbose "Test-AEMExtensionAdvancedWindows: Test with no extension"
         $res = Test-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname -SkipStorageCheck
-        Assert-False { $res.Result }
+        Assert-False { $res.Result } (GetWrongTestResult $res $true)
         Write-Verbose "Test-AEMExtensionAdvancedWindows: Test done"
 
         $stoname = 'sto' + $rgname + "2";
@@ -155,7 +160,7 @@ function Test-AEMExtensionAdvancedWindowsWAD
         # Test command.
         Write-Verbose "Test-AEMExtensionAdvancedWindows: Test with extension"
         $res = Test-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname -SkipStorageCheck
-        Assert-True { $res.Result }
+        Assert-True { $res.Result } (GetWrongTestResult $res $false)
         Assert-True { ($res.PartialResults.Count -gt 0) }
         Write-Verbose "Test-AEMExtensionAdvancedWindows: Test done"
 
@@ -166,7 +171,7 @@ function Test-AEMExtensionAdvancedWindowsWAD
 
         Write-Verbose "Test-AEMExtensionAdvancedWindows: Get after remove"
         $extension = Get-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
-        Assert-Null $extension
+        Assert-Null $extension "Extension is not null"
         Write-Verbose "Test-AEMExtensionAdvancedWindows: Get after remove done"
     }
     finally
@@ -192,7 +197,7 @@ function Test-AEMExtensionAdvancedWindows
         # Get with not extension
         Write-Verbose "Test-AEMExtensionAdvancedWindows: Get with no extension"
         $extension = Get-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
-        Assert-Null $extension
+        Assert-Null $extension "Extension is not null"
 
         # Test with not extension
         Write-Verbose "Test-AEMExtensionAdvancedWindows: Test with no extension"
@@ -233,8 +238,149 @@ function Test-AEMExtensionAdvancedWindows
 
         Write-Verbose "Test-AEMExtensionAdvancedWindows: Get after remove"
         $extension = Get-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
-        Assert-Null $extension
+        Assert-Null $extension "Extension is not null"
         Write-Verbose "Test-AEMExtensionAdvancedWindows: Get after remove done"
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+function Test-AEMExtensionAdvancedWindowsMD
+{
+    $rgname = Get-ComputeTestResourceName
+    $loc = Get-ComputeVMLocation
+
+    try
+    {
+        Write-Verbose "Start the test Test-AEMExtensionAdvancedWindowsMD"
+        # Setup
+        $vm = Create-AdvancedVM -rgname $rgname -loc $loc -vmsize 'Standard_DS2' -stotype 'Premium_LRS' -nicCount 2 -useMD
+        $vmname = $vm.Name
+        Write-Verbose "Test-AEMExtensionAdvancedWindowsMD: VM created"
+
+        # Get with not extension
+        Write-Verbose "Test-AEMExtensionAdvancedWindowsMD: Get with no extension"
+        $extension = Get-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
+        Assert-Null $extension "Extension is not null"
+
+        # Test with not extension
+        Write-Verbose "Test-AEMExtensionAdvancedWindowsMD: Test with no extension"
+        $res = Test-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname -SkipStorageCheck
+        Assert-False { $res.Result }
+        Write-Verbose "Test-AEMExtensionAdvancedWindowsMD: Test done"
+
+        $stoname = 'sto' + $rgname + "2";
+        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type 'Standard_LRS';
+
+        # Set and Get command.
+        Write-Verbose "Test-AEMExtensionAdvancedWindowsMD: Set with no extension"
+        Set-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname -WADStorageAccountName $stoname -SkipStorage
+        Write-Verbose "Test-AEMExtensionAdvancedWindowsMD: Set done"
+        Write-Verbose "Test-AEMExtensionAdvancedWindowsMD: Get with extension"
+        $extension = Get-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
+        
+
+        Assert-NotNull $extension
+        Assert-AreEqual $extension.Publisher 'Microsoft.AzureCAT.AzureEnhancedMonitoring'
+        Assert-AreEqual $extension.ExtensionType 'AzureCATExtensionHandler'
+        Assert-AreEqual $extension.Name 'AzureCATExtensionHandler'
+        $settings = $extension.PublicSettings | ConvertFrom-Json
+        Assert-NotNull $settings.cfg
+		Assert-True { ($extension.PublicSettings.Contains("osdisk.caching")) }
+        Write-Verbose "Test-AEMExtensionAdvancedWindowsMD: Get done"
+
+        # Test command.
+        Write-Verbose "Test-AEMExtensionAdvancedWindowsMD: Test with extension"
+        $res = Test-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname -SkipStorageCheck
+        Assert-True { $res.Result }
+        Assert-True { ($res.PartialResults.Count -gt 0) }
+        Write-Verbose "Test-AEMExtensionAdvancedWindowsMD: Test done"
+
+        # Remove command.
+        Write-Verbose "Test-AEMExtensionAdvancedWindowsMD: Remove with extension"
+        Remove-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
+        Write-Verbose "Test-AEMExtensionAdvancedWindowsMD: Remove done"
+
+        Write-Verbose "Test-AEMExtensionAdvancedWindowsMD: Get after remove"
+        $extension = Get-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
+        Assert-Null $extension "Extension is not null"
+        Write-Verbose "Test-AEMExtensionAdvancedWindowsMD: Get after remove done"
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+function Test-AEMExtensionAdvancedLinuxMD
+{
+    $rgname = Get-ComputeTestResourceName
+    $loc = Get-ComputeVMLocation
+
+    try
+    {
+        Write-Host "Start the test Test-AEMExtensionAdvancedLinuxMD"
+        # Setup
+        $vm = Create-AdvancedVM -rgname $rgname -loc $loc -vmsize 'Standard_DS2' -stotype 'Premium_LRS' -nicCount 2 -useMD -linux
+		$vmname = $vm.Name
+		$vm = Get-AzureRmVM -ResourceGroupName $rgname -Name $vmname
+		Add-AzureRmVMDataDisk -VM $vm -StorageAccountType PremiumLRS -Lun (($vm.StorageProfile.DataDisks | select -ExpandProperty Lun | Measure-Object -Maximum).Maximum + 1) -CreateOption Empty -DiskSizeInGB 2059 | Update-AzureRmVM
+		
+        
+        Write-Verbose "Test-AEMExtensionAdvancedLinuxMD: VM created"
+
+        # Get with not extension
+        Write-Verbose "Test-AEMExtensionAdvancedLinuxMD: Get with no extension"
+        $extension = Get-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
+        Assert-Null $extension "Extension is not null" "Extension is not null"
+
+        # Test with not extension
+        Write-Verbose "Test-AEMExtensionAdvancedLinuxMD: Test with no extension"
+        $res = Test-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname -SkipStorageCheck
+		$tmp = $res;$out = &{while ($true) { if ($tmp) { foreach ($tmpRes in $tmp) {($tmpRes.TestName  + " " + $tmpRes.Result)};$tmp = @($tmp.PartialResults)} else {break}}};
+        Assert-False { $res.Result } "Test result is not false $out"
+        Write-Verbose "Test-AEMExtensionAdvancedLinuxMD: Test done"
+
+        $stoname = 'sto' + $rgname + "2";
+        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type 'Standard_LRS';
+
+        # Set and Get command.
+        Write-Verbose "Test-AEMExtensionAdvancedLinuxMD: Set with no extension"
+        Set-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname -WADStorageAccountName $stoname -SkipStorage
+        Write-Verbose "Test-AEMExtensionAdvancedLinuxMD: Set done"
+        Write-Verbose "Test-AEMExtensionAdvancedLinuxMD: Get with extension"
+        $extension = Get-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
+        
+
+        Assert-NotNull $extension
+        Assert-AreEqual $extension.Publisher 'Microsoft.OSTCExtensions'
+        Assert-AreEqual $extension.ExtensionType 'AzureEnhancedMonitorForLinux'
+        Assert-AreEqual $extension.Name 'AzureEnhancedMonitorForLinux'
+        $settings = $extension.PublicSettings | ConvertFrom-Json
+        Assert-NotNull $settings.cfg
+        Write-Verbose "Test-AEMExtensionAdvancedLinuxMD: Get done"
+
+        # Test command.
+        Write-Verbose "Test-AEMExtensionAdvancedLinuxMD: Test with extension"
+        $res = Test-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname -SkipStorageCheck
+		$tmp = $res;$out = &{while ($true) { if ($tmp) { foreach ($tmpRes in $tmp) {($tmpRes.TestName  + " " + $tmpRes.Result)};$tmp = @($tmp.PartialResults)} else {break}}};
+        Assert-True { $res.Result } "Test result is not false $out"
+        Assert-True { ($res.PartialResults.Count -gt 0) }
+        Write-Verbose "Test-AEMExtensionAdvancedLinuxMD: Test done"
+
+        # Remove command.
+        Write-Verbose "Test-AEMExtensionAdvancedLinuxMD: Remove with extension"
+        Remove-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
+        Write-Verbose "Test-AEMExtensionAdvancedLinuxMD: Remove done"
+
+        Write-Verbose "Test-AEMExtensionAdvancedLinuxMD: Get after remove"
+        $extension = Get-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
+        Assert-Null $extension "Extension is not null"
+        Write-Verbose "Test-AEMExtensionAdvancedLinuxMD: Get after remove done"
     }
     finally
     {
@@ -256,7 +402,7 @@ function Test-AEMExtensionBasicLinuxWAD
 
         # Get with not extension
         $extension = Get-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
-        Assert-Null $extension
+        Assert-Null $extension "Extension is not null"
         # Test with not extension
         $testResult = Test-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname -SkipStorageCheck
         Assert-False { $testResult.Result }
@@ -280,7 +426,7 @@ function Test-AEMExtensionBasicLinuxWAD
         # Remove command.
         Remove-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
         $extension = Get-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
-        Assert-Null $extension
+        Assert-Null $extension "Extension is not null"
     }
     finally
     {
@@ -302,7 +448,7 @@ function Test-AEMExtensionBasicLinux
 
         # Get with not extension
         $extension = Get-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
-        Assert-Null $extension
+        Assert-Null $extension "Extension is not null"
         # Test with not extension
         $testResult = Test-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname -SkipStorageCheck
         Assert-False { $testResult.Result }
@@ -326,7 +472,7 @@ function Test-AEMExtensionBasicLinux
         # Remove command.
         Remove-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
         $extension = Get-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
-        Assert-Null $extension
+        Assert-Null $extension "Extension is not null"
     }
     finally
     {
@@ -351,13 +497,13 @@ function Test-AEMExtensionAdvancedLinuxWAD
         # Get with not extension
         Write-Verbose "Test-AEMExtensionAdvancedLinux: Get with no extension"
         $extension = Get-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
-        Assert-Null $extension
+        Assert-Null $extension "Extension is not null"
 
         # Test with not extension
         Write-Verbose "Test-AEMExtensionAdvancedLinux: Test with no extension"
         $res = Test-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname -SkipStorageCheck
         Write-Verbose ("Test-AEMExtensionAdvancedLinux: Test result " + $res.Result)
-        Assert-False { $res.Result }
+        Assert-False { $res.Result } (GetWrongTestResult $res $true)
         Write-Verbose "Test-AEMExtensionAdvancedLinux: Test done"
 
         $stoname = 'sto' + $rgname + "2";
@@ -382,7 +528,7 @@ function Test-AEMExtensionAdvancedLinuxWAD
         # Test command.
         Write-Verbose "Test-AEMExtensionAdvancedLinux: Test with extension"
         $res = Test-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname -SkipStorageCheck
-        Assert-True { $res.Result }
+        Assert-True { $res.Result } (GetWrongTestResult $res $false)
         Assert-True { ($res.PartialResults.Count -gt 0) }
         Write-Verbose "Test-AEMExtensionAdvancedLinux: Test done"
 
@@ -393,7 +539,7 @@ function Test-AEMExtensionAdvancedLinuxWAD
 
         Write-Verbose "Test-AEMExtensionAdvancedLinux: Get after remove"
         $extension = Get-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
-        Assert-Null $extension
+        Assert-Null $extension "Extension is not null"
         Write-Verbose "Test-AEMExtensionAdvancedLinux: Get after remove done"
     }
     finally
@@ -419,7 +565,7 @@ function Test-AEMExtensionAdvancedLinux
         # Get with not extension
         Write-Verbose "Test-AEMExtensionAdvancedLinux: Get with no extension"
         $extension = Get-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
-        Assert-Null $extension
+        Assert-Null $extension "Extension is not null"
 
         # Test with not extension
         Write-Verbose "Test-AEMExtensionAdvancedLinux: Test with no extension"
@@ -461,7 +607,7 @@ function Test-AEMExtensionAdvancedLinux
 
         Write-Verbose "Test-AEMExtensionAdvancedLinux: Get after remove"
         $extension = Get-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
-        Assert-Null $extension
+        Assert-Null $extension "Extension is not null"
         Write-Verbose "Test-AEMExtensionAdvancedLinux: Get after remove done"
     }
     finally
@@ -471,7 +617,155 @@ function Test-AEMExtensionAdvancedLinux
     }
 }
 
-function Create-AdvancedVM($rgname, $vmname, $loc, $vmsize, $stotype, $nicCount, [Switch] $linux)
+function Test-AEMExtensionAdvancedLinuxMD_E
+{
+    $rgname = Get-ComputeTestResourceName
+    $loc = "southeastasia"
+
+    try
+    {
+        Write-Output "Start the test Test-AEMExtensionAdvancedLinuxMD"
+        # Setup
+        $vm = Create-AdvancedVM -rgname $rgname -loc $loc -vmsize 'Standard_E4s_v3' -stotype 'Premium_LRS' -nicCount 2 -useMD -linux
+		$vmname = $vm.Name
+		$vm = Get-AzureRmVM -ResourceGroupName $rgname -Name $vmname
+		Add-AzureRmVMDataDisk -VM $vm -StorageAccountType PremiumLRS -Lun (($vm.StorageProfile.DataDisks | select -ExpandProperty Lun | Measure-Object -Maximum).Maximum + 1) -CreateOption Empty -DiskSizeInGB 2059 | Update-AzureRmVM
+		
+        
+        Write-Output "Test-AEMExtensionAdvancedLinuxMD: VM created"
+
+        # Get with not extension
+        Write-Output "Test-AEMExtensionAdvancedLinuxMD: Get with no extension"
+        $extension = Get-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
+        Assert-Null $extension "Extension is not null" "Extension is not null"
+
+        # Test with not extension
+        Write-Output "Test-AEMExtensionAdvancedLinuxMD: Test with no extension"
+        $res = Test-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname -SkipStorageCheck
+		$tmp = $res;$out = &{while ($true) { if ($tmp) { foreach ($tmpRes in $tmp) {($tmpRes.TestName  + " " + $tmpRes.Result)};$tmp = @($tmp.PartialResults)} else {break}}};
+        Assert-False { $res.Result } "Test result is not false $out"
+        Write-Output "Test-AEMExtensionAdvancedLinuxMD: Test done"
+
+        $stoname = 'sto' + $rgname + "2";
+        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type 'Standard_LRS';
+
+        # Set and Get command.
+        Write-Output "Test-AEMExtensionAdvancedLinuxMD: Set with no extension"
+        Set-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname -WADStorageAccountName $stoname -SkipStorage
+        Write-Output "Test-AEMExtensionAdvancedLinuxMD: Set done"
+        Write-Output "Test-AEMExtensionAdvancedLinuxMD: Get with extension"
+        $extension = Get-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
+        
+
+        Assert-NotNull $extension
+        Assert-AreEqual $extension.Publisher 'Microsoft.OSTCExtensions'
+        Assert-AreEqual $extension.ExtensionType 'AzureEnhancedMonitorForLinux'
+        Assert-AreEqual $extension.Name 'AzureEnhancedMonitorForLinux'
+        $settings = $extension.PublicSettings | ConvertFrom-Json
+        Assert-NotNull $settings.cfg
+        Write-Output "Test-AEMExtensionAdvancedLinuxMD: Get done"
+
+        # Test command.
+        Write-Output "Test-AEMExtensionAdvancedLinuxMD: Test with extension"
+        $res = Test-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname -SkipStorageCheck
+		$tmp = $res;$out = &{while ($true) { if ($tmp) { foreach ($tmpRes in $tmp) {($tmpRes.TestName  + " " + $tmpRes.Result)};$tmp = @($tmp.PartialResults)} else {break}}};
+        Assert-True { $res.Result } "Test result is not false $out"
+        Assert-True { ($res.PartialResults.Count -gt 0) }
+        Write-Output "Test-AEMExtensionAdvancedLinuxMD: Test done"
+
+        # Remove command.
+        Write-Output "Test-AEMExtensionAdvancedLinuxMD: Remove with extension"
+        Remove-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
+        Write-Output "Test-AEMExtensionAdvancedLinuxMD: Remove done"
+
+        Write-Output "Test-AEMExtensionAdvancedLinuxMD: Get after remove"
+        $extension = Get-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
+        Assert-Null $extension "Extension is not null"
+        Write-Output "Test-AEMExtensionAdvancedLinuxMD: Get after remove done"
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+function Test-AEMExtensionAdvancedLinuxMD_D
+{
+    $rgname = Get-ComputeTestResourceName
+    $loc = "southeastasia"
+
+    try
+    {
+        Log "Test-AEMExtensionAdvancedLinuxMD_D" "Start the test Test-AEMExtensionAdvancedLinuxMD"
+        # Setup
+        $vm = Create-AdvancedVM -rgname $rgname -loc $loc -vmsize 'Standard_D2s_v3' -stotype 'Premium_LRS' -nicCount 2 -useMD -linux
+
+		Log "Test-AEMExtensionAdvancedLinuxMD_D" "VM created"
+		$vmname = $vm.Name
+		$vm = Get-AzureRmVM -ResourceGroupName $rgname -Name $vmname
+		Add-AzureRmVMDataDisk -VM $vm -StorageAccountType PremiumLRS -Lun (($vm.StorageProfile.DataDisks | select -ExpandProperty Lun | Measure-Object -Maximum).Maximum + 1) -CreateOption Empty -DiskSizeInGB 2059 | Update-AzureRmVM
+		
+        
+        Log "Test-AEMExtensionAdvancedLinuxMD_D" "Test-AEMExtensionAdvancedLinuxMD: VM created"
+
+        # Get with not extension
+        Log "Test-AEMExtensionAdvancedLinuxMD_D" "Test-AEMExtensionAdvancedLinuxMD: Get with no extension"
+        $extension = Get-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
+        Assert-Null $extension "Extension is not null" "Extension is not null"
+
+        # Test with not extension
+        Log "Test-AEMExtensionAdvancedLinuxMD_D" "Test-AEMExtensionAdvancedLinuxMD: Test with no extension"
+        $res = Test-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname -SkipStorageCheck
+		$tmp = $res;$out = &{while ($true) { if ($tmp) { foreach ($tmpRes in $tmp) {($tmpRes.TestName  + " " + $tmpRes.Result)};$tmp = @($tmp.PartialResults)} else {break}}};
+        Assert-False { $res.Result } "Test result is not false $out"
+        Log "Test-AEMExtensionAdvancedLinuxMD_D" "Test-AEMExtensionAdvancedLinuxMD: Test done"
+
+        $stoname = 'sto' + $rgname + "2";
+        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type 'Standard_LRS';
+
+        # Set and Get command.
+        Log "Test-AEMExtensionAdvancedLinuxMD_D" "Test-AEMExtensionAdvancedLinuxMD: Set with no extension"
+        Set-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname -WADStorageAccountName $stoname -SkipStorage
+        Log "Test-AEMExtensionAdvancedLinuxMD_D" "Test-AEMExtensionAdvancedLinuxMD: Set done"
+        Log "Test-AEMExtensionAdvancedLinuxMD_D" "Test-AEMExtensionAdvancedLinuxMD: Get with extension"
+        $extension = Get-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
+        
+
+        Assert-NotNull $extension
+        Assert-AreEqual $extension.Publisher 'Microsoft.OSTCExtensions'
+        Assert-AreEqual $extension.ExtensionType 'AzureEnhancedMonitorForLinux'
+        Assert-AreEqual $extension.Name 'AzureEnhancedMonitorForLinux'
+        $settings = $extension.PublicSettings | ConvertFrom-Json
+        Assert-NotNull $settings.cfg
+        Log "Test-AEMExtensionAdvancedLinuxMD_D" "Test-AEMExtensionAdvancedLinuxMD: Get done"
+
+        # Test command.
+        Log "Test-AEMExtensionAdvancedLinuxMD_D" "Test-AEMExtensionAdvancedLinuxMD: Test with extension"
+        $res = Test-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname -SkipStorageCheck
+		$tmp = $res;$out = &{while ($true) { if ($tmp) { foreach ($tmpRes in $tmp) {($tmpRes.TestName  + " " + $tmpRes.Result)};$tmp = @($tmp.PartialResults)} else {break}}};
+        Assert-True { $res.Result } "Test result is not false $out"
+        Assert-True { ($res.PartialResults.Count -gt 0) }
+        Log "Test-AEMExtensionAdvancedLinuxMD_D" "Test-AEMExtensionAdvancedLinuxMD: Test done"
+
+        # Remove command.
+        Log "Test-AEMExtensionAdvancedLinuxMD_D" "Test-AEMExtensionAdvancedLinuxMD: Remove with extension"
+        Remove-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
+        Log "Test-AEMExtensionAdvancedLinuxMD_D" "Test-AEMExtensionAdvancedLinuxMD: Remove done"
+
+        Log "Test-AEMExtensionAdvancedLinuxMD_D" "Test-AEMExtensionAdvancedLinuxMD: Get after remove"
+        $extension = Get-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
+        Assert-Null $extension "Extension is not null"
+        Log "Test-AEMExtensionAdvancedLinuxMD_D" "Test-AEMExtensionAdvancedLinuxMD: Get after remove done"
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+function Create-AdvancedVM($rgname, $vmname, $loc, $vmsize, $stotype, $nicCount, [Switch] $linux, [Switch] $useMD)
 {
     # Initialize parameters
     $rgname = if ([string]::IsNullOrEmpty($rgname)) { Get-ComputeTestResourceName } else { $rgname }
@@ -528,25 +822,47 @@ function Create-AdvancedVM($rgname, $vmname, $loc, $vmsize, $stotype, $nicCount,
     $dataDiskVhdUri2 = "https://$stoname.blob.core.windows.net/test/data2.vhd";
     $dataDiskVhdUri3 = "https://$stoname.blob.core.windows.net/test/data3.vhd";
 
-    $p = Set-AzureRmVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
+	$osURI = @{}
+	$disk1Uri = @{}
+	$disk2Uri = @{}
+	$disk3Uri = @{}
 
-    $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
-    $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 2 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
-    $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 3 -VhdUri $dataDiskVhdUri3 -CreateOption Empty;
+	if (-not $useMD)
+	{
+		$osURI = @{"VhdUri"=$osDiskVhdUri}
+		$disk1Uri = @{"VhdUri"=$dataDiskVhdUri1}
+		$disk2Uri = @{"VhdUri"=$dataDiskVhdUri2}
+		$disk3Uri = @{"VhdUri"=$dataDiskVhdUri3}
+	}
+
+    $p = Set-AzureRmVMOSDisk -VM $p -Name $osDiskName @osURI -Caching $osDiskCaching -CreateOption FromImage -DiskSizeInGB 128;
+
+    $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 @disk1Uri -CreateOption Empty;
+    $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 2 @disk2Uri -CreateOption Empty;
+    $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 3 @disk3Uri -CreateOption Empty;
     $p = Remove-AzureRmVMDataDisk -VM $p -Name 'testDataDisk3';
 
     Assert-AreEqual $p.StorageProfile.OsDisk.Caching $osDiskCaching;
     Assert-AreEqual $p.StorageProfile.OsDisk.Name $osDiskName;
-    Assert-AreEqual $p.StorageProfile.OsDisk.Vhd.Uri $osDiskVhdUri;
+	if (-not $useMD)
+	{
+		Assert-AreEqual $p.StorageProfile.OsDisk.Vhd.Uri $osDiskVhdUri;
+	}
     Assert-AreEqual $p.StorageProfile.DataDisks.Count 2;
     Assert-AreEqual $p.StorageProfile.DataDisks[0].Caching 'ReadOnly';
     Assert-AreEqual $p.StorageProfile.DataDisks[0].DiskSizeGB 10;
     Assert-AreEqual $p.StorageProfile.DataDisks[0].Lun 1;
-    Assert-AreEqual $p.StorageProfile.DataDisks[0].Vhd.Uri $dataDiskVhdUri1;
+	if (-not $useMD)
+	{
+		Assert-AreEqual $p.StorageProfile.DataDisks[0].Vhd.Uri $dataDiskVhdUri1;
+	}
     Assert-AreEqual $p.StorageProfile.DataDisks[1].Caching 'ReadOnly';
     Assert-AreEqual $p.StorageProfile.DataDisks[1].DiskSizeGB 11;
     Assert-AreEqual $p.StorageProfile.DataDisks[1].Lun 2;
-    Assert-AreEqual $p.StorageProfile.DataDisks[1].Vhd.Uri $dataDiskVhdUri2;
+	if (-not $useMD)
+	{
+		Assert-AreEqual $p.StorageProfile.DataDisks[1].Vhd.Uri $dataDiskVhdUri2;
+	}
 
     # OS & Image
     $user = "Foo12";
@@ -594,5 +910,23 @@ function Create-AdvancedVM($rgname, $vmname, $loc, $vmsize, $stotype, $nicCount,
 
 function Get-LinuxImage
 {
-    return Create-ComputeVMImageObject 'SUSE' 'SLES' '12-SP1' 'latest';
+    return Create-ComputeVMImageObject 'SUSE' 'SLES' '12-SP2' 'latest';
+}
+
+function GetWrongTestResult($TestResult, $searchFor, $level)
+{	
+	$result = ""
+
+	if (-not $level) {$level = 0}
+
+	if ($TestResult.Result -eq $searchFor)
+	{
+		$result += [String]::new("`t", $level) + $TestResult.TestName + " is not expected. Actual result is " +  $TestResult.Result + [Environment]::NewLine
+	}
+	foreach ($tmpRes in $TestResult.PartialResults) 
+	{
+		$result += GetWrongTestResult $tmpRes $searchFor ($level+1)
+	}
+
+	return $result
 }

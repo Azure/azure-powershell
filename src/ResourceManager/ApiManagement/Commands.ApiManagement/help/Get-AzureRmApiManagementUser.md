@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-ms.assetid: 6D74A8C9-1894-474C-9E92-1F5810290B07
-online version: 
+Module Name: AzureRM.ApiManagement
+ms.assetid: 638B2BF6-23F8-4038-B20B-1CFABFDBF5D3
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/get-azurermapimanagementuser
 schema: 2.0.0
 ---
 
@@ -12,23 +13,23 @@ Gets a user or users.
 
 ## SYNTAX
 
-### Get all users (Default)
+### GeAllUsers (Default)
 ```
-Get-AzureRmApiManagementUser -Context <PsApiManagementContext> [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+Get-AzureRmApiManagementUser -Context <PsApiManagementContext> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
-### Get user by ID
+### GetByUserId
 ```
 Get-AzureRmApiManagementUser -Context <PsApiManagementContext> [-UserId <String>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Find users
+### GetByUser
 ```
 Get-AzureRmApiManagementUser -Context <PsApiManagementContext> [-FirstName <String>] [-LastName <String>]
  [-State <PsApiManagementUserState>] [-Email <String>] [-GroupId <String>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,6 +39,7 @@ The **Get-AzureRmApiManagementUser** cmdlet gets a specified user, or all users,
 
 ### Example 1: Get all users
 ```
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Get-AzureRmApiManagementUser -Context $apimContext
 ```
 
@@ -45,6 +47,7 @@ This command gets all users.
 
 ### Example 2: Get a user by ID
 ```
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Get-AzureRmApiManagementUser -Context $apimContext -UserId "0123456789"
 ```
 
@@ -52,6 +55,7 @@ This command gets a user by ID.
 
 ### Example: Get users by last name
 ```
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Get-AzureRmApiManagementUser -Context $apimContext -LastName "Fuller"
 ```
 
@@ -59,14 +63,15 @@ This command gets users that have a specified last name, Fuller.
 
 ### Example 4: Get a user by email address
 ```
-PS C:\>Get-AzureRmApiManagementUser -Context $apimContext -Email 
-"user@contoso.com"
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Get-AzureRmApiManagementUser -Context $apimContext -Email "user@contoso.com"
 ```
 
 This command gets the user that has the specified email address.
 
 ### Example 5: Get all users within a group
 ```
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Get-AzureRmApiManagementUser -Context $apimContext -GroupId "0001"
 ```
 
@@ -89,14 +94,29 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -UserId
-Specifies a user ID.
-If specified, this cmdlet finds the user by this identifier.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Email
+Specifies the email address of the user.
+If this parameter is specified, this cmdlet finds a user by email.
 This parameter is optional.
 
 ```yaml
 Type: String
-Parameter Sets: Get user by ID
+Parameter Sets: GetByUser
 Aliases: 
 
 Required: False
@@ -113,58 +133,7 @@ This parameter is optional.
 
 ```yaml
 Type: String
-Parameter Sets: Find users
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -LastName
-Specifies the last name of a user.
-If specified, this cmdlet finds users by last name.
-This parameter is optional.
-
-```yaml
-Type: String
-Parameter Sets: Find users
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -State
-Specifies the user state.
-If specified, this cmdlet finds users in this state.
-This parameter is optional.
-
-```yaml
-Type: PsApiManagementUserState
-Parameter Sets: Find users
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Email
-Specifies the email address of the user.
-If this parameter is specified, this cmdlet finds a user by email.
-This parameter is optional.
-
-```yaml
-Type: String
-Parameter Sets: Find users
+Parameter Sets: GetByUser
 Aliases: 
 
 Required: False
@@ -181,7 +150,7 @@ This parameter is optional.
 
 ```yaml
 Type: String
-Parameter Sets: Find users
+Parameter Sets: GetByUser
 Aliases: 
 
 Required: False
@@ -191,42 +160,55 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
+### -LastName
+Specifies the last name of a user.
+If specified, this cmdlet finds users by last name.
+This parameter is optional.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: iv
+Parameter Sets: GetByUser
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -State
+Specifies the user state.
+If specified, this cmdlet finds users in this state.
+This parameter is optional.
+
+```yaml
+Type: PsApiManagementUserState
+Parameter Sets: GetByUser
+Aliases: 
+Accepted values: Active, Blocked
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -UserId
+Specifies a user ID.
+If specified, this cmdlet finds the user by this identifier.
+This parameter is optional.
+
+```yaml
+Type: String
+Parameter Sets: GetByUserId
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -237,7 +219,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementUser
+The details of User in API Management service.
+
 ### IList<Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementUser>
+The list of User in the API Management  service.
 
 ## NOTES
 

@@ -26,13 +26,14 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
+        
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventHubsCRUD()
         {
             EventHubsController.NewInstance.RunPsTest("EventHubsTests");
         }
-
+        
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventHubsAuthorizationRulesCRUD()

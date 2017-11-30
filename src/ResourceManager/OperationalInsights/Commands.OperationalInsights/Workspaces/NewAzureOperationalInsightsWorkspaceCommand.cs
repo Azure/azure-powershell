@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.OperationalInsights.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System;
 using System.Collections;
 using System.Management.Automation;
@@ -24,6 +25,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -34,12 +36,13 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
         [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The geographic region that the workspace will be created in.")]
+        [LocationCompleter("Microsoft.OperationalInsights/workspaces")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
         [Parameter(Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The service tier of the workspace.")]
-        [ValidateSet("free", "standard", "premium", IgnoreCase = true)]
+        [ValidateSet("free", "standard", "premium", "pernode","standalone", IgnoreCase = true)]
         public string Sku { get; set; }
 
         [Parameter(Position = 4, Mandatory = false, ValueFromPipelineByPropertyName = true,
@@ -49,6 +52,11 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         [Parameter(Position = 5, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource tags for the workspace.")]
         public Hashtable Tags { get; set; }
+
+        [Parameter(Position = 6, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The workspace data retention in days. 730 days is the maximum allowed for all other Skus.")]
+        [ValidateNotNullOrEmpty]
+        public int? RetentionInDays { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
         public SwitchParameter Force { get; set; }
@@ -63,6 +71,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
                 Sku = Sku,
                 CustomerId = CustomerId,
                 Tags = Tags,
+                RetentionInDays = RetentionInDays,
                 Force = Force.IsPresent,
                 ConfirmAction = ConfirmAction
             };

@@ -48,11 +48,29 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             HelpMessage = "Group description. This parameter is optional.")]
         public String Description { get; set; }
 
+        [Parameter(
+           ValueFromPipelineByPropertyName = true,
+           Mandatory = false,
+           HelpMessage = "Group Type." +
+                         " Custom Group is User defined Group." +
+                         " System Group includes Administrator, Developers and Guests. You cannot create or update a System Group. " +
+                         " External Group is groups from External Identity Provider like Azure Active Directory." +
+                         " This parameter is optional and by default assumed to be a Custom Group.")]
+        public PsApiManagementGroupType? Type { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = false,
+            Mandatory = false,
+            HelpMessage = "For external groups, this property contains the id of the group from the external identity provider," +
+                          " e.g. Azure Active Directory aad://contoso5api.onmicrosoft.com/groups/12ad42b1-592f-4664-a77b4250-2f2e82579f4c;" +
+                          " otherwise the value is null.")]
+        public String ExternalId { get; set; }
+
         public override void ExecuteApiManagementCmdlet()
         {
             string groupId = GroupId ?? Guid.NewGuid().ToString("N");
 
-            var group = Client.GroupCreate(Context, groupId, Name, Description);
+            var group = Client.GroupCreate(Context, groupId, Name, Description, Type, ExternalId);
 
             WriteObject(group);
         }

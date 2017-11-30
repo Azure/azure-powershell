@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using System.Collections;
@@ -26,8 +27,11 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabase", SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.Medium)]
-    public class SetAzureSqlDatabase : AzureSqlDatabaseCmdletBase
+    public class SetAzureSqlDatabase : AzureSqlDatabaseCmdletBase<IEnumerable<AzureSqlDatabaseModel>>
     {
+        private const string UpdateParameterSetName = "Update";
+        private const string RenameParameterSetName = "Rename";
+
         /// <summary>
         /// Gets or sets the name of the Azure SQL Database
         /// </summary>
@@ -35,6 +39,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
             ValueFromPipelineByPropertyName = true,
             Position = 2,
             HelpMessage = "The name of the Azure SQL Database.")]
+        [Alias("Name")]
         [ValidateNotNullOrEmpty]
         public string DatabaseName { get; set; }
 
@@ -42,7 +47,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// Gets or sets the maximum size of the Azure SQL Database in bytes
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The maximum size of the Azure SQL Database in bytes.")]
+            HelpMessage = "The maximum size of the Azure SQL Database in bytes.",
+            ParameterSetName = UpdateParameterSetName)]
         [ValidateNotNullOrEmpty]
         public long MaxSizeBytes { get; set; }
 
@@ -50,7 +56,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// Gets or sets the edition to assign to the Azure SQL Database
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The edition to assign to the Azure SQL Database.")]
+            HelpMessage = "The edition to assign to the Azure SQL Database.",
+            ParameterSetName = UpdateParameterSetName)]
         [ValidateNotNullOrEmpty]
         public DatabaseEdition Edition { get; set; }
 
@@ -58,7 +65,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// Gets or sets the name of the service objective to assign to the Azure SQL Database
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The name of the service objective to assign to the Azure SQL Database.")]
+            HelpMessage = "The name of the service objective to assign to the Azure SQL Database.",
+            ParameterSetName = UpdateParameterSetName)]
         [ValidateNotNullOrEmpty]
         public string RequestedServiceObjectiveName { get; set; }
 
@@ -66,7 +74,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// Gets or sets the name of the Elastic Pool to put the database in
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The name of the Elastic Pool to put the database in.")]
+            HelpMessage = "The name of the Elastic Pool to put the database in.",
+            ParameterSetName = UpdateParameterSetName)]
         [ValidateNotNullOrEmpty]
         public string ElasticPoolName { get; set; }
 
@@ -74,7 +83,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// Gets or sets the read scale option to assign to the Azure SQL Database
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The read scale option to assign to the Azure SQL Database.(Enabled/Disabled)")]
+            HelpMessage = "The read scale option to assign to the Azure SQL Database.(Enabled/Disabled)",
+            ParameterSetName = UpdateParameterSetName)]
         [ValidateNotNullOrEmpty]
         public DatabaseReadScale ReadScale { get; set; }
 
@@ -82,9 +92,26 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// Gets or sets the tags associated with the Azure Sql Database
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The tags to associate with the Azure Sql Database")]
+            HelpMessage = "The tags to associate with the Azure Sql Database",
+            ParameterSetName = UpdateParameterSetName)]
         [Alias("Tag")]
         public Hashtable Tags { get; set; }
+
+        /// <summary>
+        /// Gets or sets the zone redundant option to assign to the Azure SQL Database
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The zone redundancy to associate with the Azure Sql Database",
+            ParameterSetName = UpdateParameterSetName)]
+        public SwitchParameter ZoneRedundant { get; set; }
+
+        /// <summary>
+        /// Gets or sets the new name.
+        /// </summary>
+        [Parameter(Mandatory = true,
+            HelpMessage = "The new name to rename the database to.",
+            ParameterSetName = RenameParameterSetName)]
+        public string NewName { get; set; }
 
         /// <summary>
         /// Overriding to add warning message
@@ -113,19 +140,26 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         protected override IEnumerable<AzureSqlDatabaseModel> ApplyUserInputToModel(IEnumerable<AzureSqlDatabaseModel> model)
         {
             List<Model.AzureSqlDatabaseModel> newEntity = new List<AzureSqlDatabaseModel>();
-            newEntity.Add(new AzureSqlDatabaseModel()
+            if (this.ParameterSetName == UpdateParameterSetName)
             {
-                ResourceGroupName = ResourceGroupName,
-                ServerName = ServerName,
-                DatabaseName = DatabaseName,
-                Edition = Edition,
-                MaxSizeBytes = MaxSizeBytes,
-                RequestedServiceObjectiveName = RequestedServiceObjectiveName,
-                Tags = TagsConversionHelper.ReadOrFetchTags(this, model.FirstOrDefault().Tags),
-                ElasticPoolName = ElasticPoolName,
-                Location = model.FirstOrDefault().Location,
-                ReadScale = ReadScale,
-            });
+                newEntity.Add(new AzureSqlDatabaseModel()
+                {
+                    ResourceGroupName = ResourceGroupName,
+                    ServerName = ServerName,
+                    DatabaseName = DatabaseName,
+                    Edition = Edition,
+                    MaxSizeBytes = MaxSizeBytes,
+                    RequestedServiceObjectiveName = RequestedServiceObjectiveName,
+                    Tags = TagsConversionHelper.ReadOrFetchTags(this, model.FirstOrDefault().Tags),
+                    ElasticPoolName = ElasticPoolName,
+                    Location = model.FirstOrDefault().Location,
+                    ReadScale = ReadScale,
+                    ZoneRedundant =
+                        MyInvocation.BoundParameters.ContainsKey("ZoneRedundant")
+                            ? (bool?) ZoneRedundant.ToBool()
+                            : null
+                });
+            }
             return newEntity;
         }
 
@@ -136,9 +170,38 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// <returns>The input entity</returns>
         protected override IEnumerable<AzureSqlDatabaseModel> PersistChanges(IEnumerable<AzureSqlDatabaseModel> entity)
         {
-            return new List<AzureSqlDatabaseModel>() {
-                ModelAdapter.UpsertDatabase(this.ResourceGroupName, this.ServerName, entity.First())
-            };
+            switch (this.ParameterSetName)
+            {
+                case UpdateParameterSetName:
+                    return new List<AzureSqlDatabaseModel>
+                    {
+                        ModelAdapter.UpsertDatabaseWithNewSdk(
+                            this.ResourceGroupName,
+                            this.ServerName,
+                            new AzureSqlDatabaseCreateOrUpdateModel
+                            {
+                                Database = entity.First()
+                            })
+                    };
+
+                case RenameParameterSetName:
+                    ModelAdapter.RenameDatabase(
+                        this.ResourceGroupName,
+                        this.ServerName,
+                        this.DatabaseName,
+                        this.NewName);
+
+                    return new List<AzureSqlDatabaseModel>
+                    {
+                        ModelAdapter.GetDatabase(
+                            this.ResourceGroupName,
+                            this.ServerName,
+                            this.NewName)
+                    };
+
+                default:
+                    throw new ArgumentException(this.ParameterSetName);
+            }
         }
     }
 }

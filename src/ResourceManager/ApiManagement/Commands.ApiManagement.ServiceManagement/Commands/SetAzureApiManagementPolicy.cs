@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     {
         private const string DefaultFormat = "application/vnd.ms-azure-apim.policy+xml";
 
-        private const string TenantLevel = "Tenant level";
-        private const string ProductLevel = "Product level";
-        private const string ApiLevel = "API level";
-        private const string OperationLevel = "Operation level";
+        private const string TenantLevel = "SetTenantLevel";
+        private const string ProductLevel = "SetProductLevel";
+        private const string ApiLevel = "SetApiLevel";
+        private const string OperationLevel = "SetOperationLevel";
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -41,7 +41,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "Format of the policy. This parameter is optional. Default value is 'application/vnd.ms-azure-apim.policy+xml'.")]
+            HelpMessage = "Format of the policy. This parameter is optional." +
+                          "When using application/vnd.ms-azure-apim.policy+xml, expressions contained within the policy must be XML-escaped." +
+                          "When using application/vnd.ms-azure-apim.policy.raw+xml no escaping is necessary." +
+                          "Default value is 'application/vnd.ms-azure-apim.policy+xml'.")]
         public String Format { get; set; }
 
         [Parameter(

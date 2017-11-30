@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.SiteRecovery.dll-Help.xml
+Module Name: AzureRM
 ms.assetid: 3F827EA0-7CF9-49F8-93BB-B15078A8BBB7
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.siterecovery/resume-azurermsiterecoveryjob
 schema: 2.0.0
 ---
 
@@ -14,12 +15,14 @@ Resumes a suspended Site Recovery job.
 
 ### ByObject (Default)
 ```
-Resume-AzureRmSiteRecoveryJob -Job <ASRJob> [-Comments <String>] [<CommonParameters>]
+Resume-AzureRmSiteRecoveryJob -Job <ASRJob> [-Comments <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Resume-AzureRmSiteRecoveryJob -Name <String> [-Comments <String>] [<CommonParameters>]
+Resume-AzureRmSiteRecoveryJob -Name <String> [-Comments <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,21 +31,6 @@ The **Resume-AzureRmSiteRecoveryJob** cmdlet resumes a suspended Azure Site Reco
 ## EXAMPLES
 
 ## PARAMETERS
-
-### -Job
-Specifies the Site Recovery job object.
-
-```yaml
-Type: ASRJob
-Parameter Sets: ByObject
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
 
 ### -Comments
 Specifies the comments for the job log.
@@ -56,6 +44,36 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Job
+Specifies the Site Recovery job object.
+
+```yaml
+Type: ASRJob
+Parameter Sets: ByObject
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -79,7 +97,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### ASRJob
+Parameter 'Job' accepts value of type 'ASRJob' from the pipeline
+
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.SiteRecovery.ASRJob
 
 ## NOTES
 

@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+Module Name: AzureRM.Network
 ms.assetid: F8068AF1-3380-4E60-B6CF-CC584BD053A7
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/set-azurermapplicationgatewayhttplistener
 schema: 2.0.0
 ---
 
@@ -17,7 +18,7 @@ Modifies an HTTP listener for an application gateway.
 Set-AzureRmApplicationGatewayHttpListener -ApplicationGateway <PSApplicationGateway> -Name <String>
  [-FrontendIPConfigurationId <String>] [-FrontendPortId <String>] [-SslCertificateId <String>]
  [-HostName <String>] [-RequireServerNameIndication <String>] -Protocol <String>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SetByResource
@@ -26,7 +27,7 @@ Set-AzureRmApplicationGatewayHttpListener -ApplicationGateway <PSApplicationGate
  [-FrontendIPConfiguration <PSApplicationGatewayFrontendIPConfiguration>]
  [-FrontendPort <PSApplicationGatewayFrontendPort>] [-SslCertificate <PSApplicationGatewaySslCertificate>]
  [-HostName <String>] [-RequireServerNameIndication <String>] -Protocol <String>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -61,15 +62,30 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-Specifies the name of the HTTP listener.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: String
+Type: IAzureContextContainer
 Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FrontendIPConfiguration
+Specifies the front-end IP address of the application gateway.
+
+```yaml
+Type: PSApplicationGatewayFrontendIPConfiguration
+Parameter Sets: SetByResource
 Aliases: 
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -91,12 +107,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FrontendPortId
-Specifies the application gateway front-end port ID.
+### -FrontendPort
+Specifies the application gateway front-end port.
 
 ```yaml
-Type: String
-Parameter Sets: SetByResourceId
+Type: PSApplicationGatewayFrontendPort
+Parameter Sets: SetByResource
 Aliases: 
 
 Required: False
@@ -106,8 +122,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SslCertificateId
-Specifies the Secure Socket Layer (SSL) certificate ID of the HTTP listener.
+### -FrontendPortId
+Specifies the application gateway front-end port ID.
 
 ```yaml
 Type: String
@@ -136,16 +152,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RequireServerNameIndication
-Specifies whether the cmdlet requires a server name indication.
-The acceptable values for this parameter are: true or false.
+### -Name
+Specifies the name of the HTTP listener.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -163,6 +178,7 @@ The acceptable values for this parameter are:
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Http, Https
 
 Required: True
 Position: Named
@@ -171,67 +187,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
+### -RequireServerNameIndication
+Specifies whether the cmdlet requires a server name indication.
+The acceptable values for this parameter are: true or false.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FrontendIPConfiguration
-Specifies the front-end IP address of the application gateway.
-
-```yaml
-Type: PSApplicationGatewayFrontendIPConfiguration
-Parameter Sets: SetByResource
 Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FrontendPort
-Specifies the application gateway front-end port.
-
-```yaml
-Type: PSApplicationGatewayFrontendPort
-Parameter Sets: SetByResource
-Aliases: 
+Accepted values: true, false
 
 Required: False
 Position: Named
@@ -246,6 +210,21 @@ Specifies the SSL certificate of the HTTP listener.
 ```yaml
 Type: PSApplicationGatewaySslCertificate
 Parameter Sets: SetByResource
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SslCertificateId
+Specifies the Secure Socket Layer (SSL) certificate ID of the HTTP listener.
+
+```yaml
+Type: String
+Parameter Sets: SetByResourceId
 Aliases: 
 
 Required: False

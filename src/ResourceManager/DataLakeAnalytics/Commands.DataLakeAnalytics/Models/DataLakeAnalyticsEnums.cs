@@ -30,7 +30,8 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             Procedure,
             Secret,
             Credential,
-            Types
+            Types,
+            Package
         }
 
         // TODO: once we support creating other catalog types, move this up into CatalogItemType

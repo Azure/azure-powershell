@@ -37,6 +37,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
     {
         public PSCmdletTests(ITestOutputHelper output)
         {
+            AzureSessionInitializer.InitializeAzureSession();
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
@@ -61,7 +62,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             var rdfeTestFactory = new RDFETestEnvironmentFactory();
             var managementClient = TestBase.GetServiceClient<ManagementClient>(rdfeTestFactory);
 
-            AzureSession.ClientFactory = new ClientFactory();
+            AzureSession.Instance.ClientFactory = new ClientFactory();
         }
 
         protected Collection<PSObject> RunPowerShellTest(params string[] scripts)

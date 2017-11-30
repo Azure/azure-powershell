@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Management.Automation;
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.Topic
 {
@@ -25,30 +26,34 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Topic
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = "The name of the resource group")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroup { get; set; }
+        [Alias(AliasResourceGroup)]
+        public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "Namespace Name.")]
         [ValidateNotNullOrEmpty]
-        public string NamespaceName { get; set; }
+        [Alias(AliasNamespaceName)]
+        public string Namespace { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 2,
             HelpMessage = "Topic Name.")]
         [ValidateNotNullOrEmpty]
-        public string TopicName { get; set; }
+        [Alias(AliasTopicName)]
+        public string Name { get; set; }
 
         public override void ExecuteCmdlet()
         {
             // delete a Topic             
 
-            if (ShouldProcess(target:TopicName, action: string.Format("Deleting Topic:{0} of NameSpace:{1}",TopicName,NamespaceName)))
+            if (ShouldProcess(target: Name, action: string.Format(Resources.RemoveTopic, Name, Namespace)))
             {
-                WriteObject(Client.DeleteQueue(ResourceGroup, NamespaceName, TopicName));
+                WriteObject(Client.DeleteQueue(ResourceGroupName, Namespace, Name));
             }
 
         }

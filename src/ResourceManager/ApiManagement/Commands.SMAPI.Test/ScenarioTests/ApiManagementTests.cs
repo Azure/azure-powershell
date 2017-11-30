@@ -225,6 +225,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
             RunPowerShellTest("TenantAccessConfiguration-CrudTest");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void BackendCrudTest()
+        {
+            RunPowerShellTest("Backend-CrudTest");
+        }
 
         private void RunPowerShellTest(params string[] scripts)
         {

@@ -59,7 +59,6 @@ $SM = @{
 	"ServiceManagement\Compute\Commands.ServiceManagement\Microsoft.WindowsAzure.Commands.ServiceManagement.dll-Help.xml" = @("svc", "mgmt", "service")
 	"ServiceManagement\ExpressRoute\Commands.ExpressRoute\Microsoft.WindowsAzure.Commands.ExpressRoute.dll-help.xml" = @("express", "route", "network")
 	"ServiceManagement\HDInsight\Commands.HDInsight\Microsoft.WindowsAzure.Commands.HDInsight.dll-Help.xml" = @("hadoop", "hdinsight", "hd", "insight")
-	"ServiceManagement\ManagedCache\Commands.ManagedCache\Microsoft.Azure.Commands.ManagedCache.dll-help.xml" = @("managed", "cache")
 	"ServiceManagement\Network\Commands.Network\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.dll-help.xml" = @("network", "networking")
 	"ServiceManagement\Profile\Commands.Profile\Microsoft.WindowsAzure.Commands.Profile.dll-Help.xml" = @("profile", "common", "login", "account")
 	"ServiceManagement\RecoveryServices\Commands.RecoveryServices\Microsoft.Azure.Commands.RecoveryServices.dll-help.xml" = @("site", "recovery")

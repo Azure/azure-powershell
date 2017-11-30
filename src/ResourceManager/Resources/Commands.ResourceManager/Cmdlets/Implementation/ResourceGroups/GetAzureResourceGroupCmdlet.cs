@@ -14,6 +14,7 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
+    using Common.ArgumentCompleters;
     using Microsoft.Azure.Commands.Common.Authentication;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
@@ -22,29 +23,32 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using System.IO;
     using System.Management.Automation;
     using System.Reflection;
-
+    using WindowsAzure.Commands.Common;
+    using WindowsAzure.Commands.Utilities.Common;
     /// <summary>
     /// Filters resource groups.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmResourceGroup", DefaultParameterSetName = ResourceGroupNameParameterSet), OutputType(typeof(List<PSResourceGroup>))]
-    public class GetAzureResourceGroupCmdlet : ResourceManagerCmdletBase, IModuleAssemblyInitializer
+    public class GetAzureResourceGroupCmdlet : ResourceManagerCmdletBase
     {
         /// <summary>
         /// List resources group by name parameter set.
         /// </summary>
-        internal const string ResourceGroupNameParameterSet = "Lists the resource group based on the name.";
+        internal const string ResourceGroupNameParameterSet = "GetByResourceGroupName";
 
         /// <summary>
         /// List resources group by Id parameter set.
         /// </summary>
-        internal const string ResourceGroupIdParameterSet = "Lists the resource group based on the Id.";
+        internal const string ResourceGroupIdParameterSet = "GetByResourceGroupId";
 
         [Alias("ResourceGroupName")]
         [Parameter(Position = 0, Mandatory = false, ParameterSetName = ResourceGroupNameParameterSet, ValueFromPipelineByPropertyName = true)]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group location.")]
+        [LocationCompleter("Microsoft.Resources/resourceGroups")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
@@ -62,25 +66,5 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 true);
         }
 
-        /// <summary>
-        /// Load global aliases and script cmdlets for ARM
-        /// </summary>
-        public void OnImport()
-        {
-            try
-            {
-                System.Management.Automation.PowerShell invoker = null;
-                invoker = System.Management.Automation.PowerShell.Create(RunspaceMode.CurrentRunspace);
-                invoker.AddScript(File.ReadAllText(FileUtilities.GetContentFilePath(
-                    Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
-                    "ResourceManagerStartup.ps1")));
-                invoker.Invoke();
-            }
-            catch
-            {
-                // need to fix exception in WriteDebug
-                // this.WriteDebug("Exception on importing ResourceManagerStartup.ps1: " + e.Message);
-            }
-        }
     }
 }

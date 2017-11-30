@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.EventHub.dll-Help.xml
-online version: 
+Module Name: AzureRM
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.eventhub/get-azurermeventhubconsumergroup
 schema: 2.0.0
 ---
 
@@ -12,12 +13,14 @@ Gets the details of a specified Event Hubs consumer group, or gets a list of con
 ## SYNTAX
 
 ```
-Get-AzureRmEventHubConsumerGroup [-ResourceGroupName] <String> [-NamespaceName] <String>
- [-EventHubName] <String> [[-ConsumerGroupName] <String>] [<CommonParameters>]
+Get-AzureRmEventHubConsumerGroup [-ResourceGroupName] <String> [-Namespace] <String> [-EventHub] <String>
+ [[-Name] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmEventHubConsumerGroup** cmdlet gets either the details of a specified Event Hubs consumer group, or a list of consumer groups in a given Event Hub. If the name of a consumer group is provided, the details of a single consumer group details are returned. If the name of a consumer group is not provided, a list of consumer groups in the specified Event Hub is returned.
+The Get-AzureRmEventHubConsumerGroup cmdlet gets either the details of a specified Event Hubs consumer group, or a list of consumer groups in a given Event Hub.
+If the name of a consumer group is provided, the details of a single consumer group details are returned.
+If the name of a consumer group is not provided, a list of consumer groups in the specified Event Hub is returned.
 
 ## EXAMPLES
 
@@ -26,39 +29,39 @@ The **Get-AzureRmEventHubConsumerGroup** cmdlet gets either the details of a spe
 PS C:\> Get-AzureRmEventHubConsumerGroup -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -EventHubName MyEventHubName -ConsumerGroupName MyConsumerGroupName
 ```
 
-Gets the consumer group `MyConsumerGroupName` in the Event Hub `MyEventHubName`, which exists in the namespace `MyNamespaceName` with resource group `MyResourceGroupName`.
+Gets the consumer group \`MyConsumerGroupName\` in the Event Hub \`MyEventHubName\`, which exists in the namespace \`MyNamespaceName\` with resource group \`MyResourceGroupName\`.
 
 ### Example 2
 ```
 PS C:\> Get-AzureRmEventHubConsumerGroup -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -EventHubName MyEventHubName
 ```
 
-Gets a list of consumer groups in the Event Hub `MyEventHubName`, which exists in the namespace `MyNamespaceName` with resource group `MyResourceGroupName`.
+Gets a list of consumer groups in the Event Hub \`MyEventHubName\`, which exists in the namespace \`MyNamespaceName\` with resource group \`MyResourceGroupName\`.
 
 ## PARAMETERS
 
-### -ConsumerGroupName
-The specified consumer group name.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: String
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: 
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
-Position: 3
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EventHubName
-The Event Hub name.
+### -EventHub
+EventHub Name.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: EventHubName
 
 Required: True
 Position: 2
@@ -67,13 +70,28 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -NamespaceName
-The Event Hubs namespace name.
+### -Name
+ConsumerGroup Name.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: ConsumerGroupName
+
+Required: False
+Position: 3
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Namespace
+Namespace Name.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: NamespaceName
 
 Required: True
 Position: 1

@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 ms.assetid: C453485D-67A7-480E-83F6-527D4F5EBC93
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/set-azurermvmdatadisk
 schema: 2.0.0
 ---
 
@@ -15,13 +15,15 @@ Modifies properties of a virtual machine data disk.
 ### ChangeWithName
 ```
 Set-AzureRmVMDataDisk [-VM] <PSVirtualMachine> [-Name] <String> [[-Caching] <CachingTypes>]
- [[-DiskSizeInGB] <Int32>] [<CommonParameters>]
+ [[-DiskSizeInGB] <Int32>] [-StorageAccountType <StorageAccountTypes>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ChangeWithLun
 ```
 Set-AzureRmVMDataDisk [-VM] <PSVirtualMachine> [-Lun] <Int32> [[-Caching] <CachingTypes>]
- [[-DiskSizeInGB] <Int32>] [<CommonParameters>]
+ [[-DiskSizeInGB] <Int32>] [-StorageAccountType <StorageAccountTypes>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,7 +33,7 @@ The **Set-AzureRmVMDataDisk** cmdlet modifies properties of a virtual machine da
 
 ### Example 1: Modify the caching mode of a data disk
 ```
-PS C:\>$VM = Get-AzureRMVM -ResourceGroupName "ResourceGroup11" -VMName "ContosoVM07"
+PS C:\> $VM = Get-AzureRMVM -ResourceGroupName "ResourceGroup11" -VMName "ContosoVM07"
 PS C:\> Set-AzureRmVMDataDisk -VM $VM -Name "DataDisk01" -Caching ReadWrite | Update-AzureRmVM
 ```
 
@@ -60,11 +62,27 @@ This setting affects the consistency and performance of the disk.
 Type: CachingTypes
 Parameter Sets: (All)
 Aliases: 
+Accepted values: None, ReadOnly, ReadWrite
 
 Required: False
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -77,7 +95,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 4
+Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -92,7 +110,7 @@ Parameter Sets: ChangeWithLun
 Aliases: 
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -107,7 +125,23 @@ Parameter Sets: ChangeWithName
 Aliases: 
 
 Required: True
-Position: 2
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -StorageAccountType
+The virtual machine managed disk's account type.
+
+```yaml
+Type: StorageAccountTypes
+Parameter Sets: (All)
+Aliases: 
+Accepted values: StandardLRS, PremiumLRS
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -123,7 +157,7 @@ Parameter Sets: (All)
 Aliases: VMProfile
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
@@ -134,7 +168,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### PSVirtualMachine
+Parameter 'VM' accepts value of type 'PSVirtualMachine' from the pipeline
+
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
 
 ## NOTES
 

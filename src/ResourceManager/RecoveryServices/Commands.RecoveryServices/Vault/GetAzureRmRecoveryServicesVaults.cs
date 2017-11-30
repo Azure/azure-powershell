@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Management.RecoveryServices.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
@@ -32,6 +33,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// Gets or sets Resource Group name.
         /// </summary>
         [Parameter]
+        [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
         /// <summary>
@@ -54,7 +56,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 }
                 else
                 {
-                    this.GetVaultsUnderResourceGroup();
+                    this.GetVaultsUnderResourceGroup(this.ResourceGroupName);
                 }
             }
             catch (Exception exception)
@@ -66,12 +68,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Get vaults under a resouce group.
         /// </summary>
-        private void GetVaultsUnderResourceGroup()
+        private void GetVaultsUnderResourceGroup(string resourceGroupName)
         {
-            VaultListResponse vaultListResponse =
-                RecoveryServicesClient.GetVaultsInResouceGroup(this.ResourceGroupName);
+            List<Vault> vaultListResponse =
+                RecoveryServicesClient.GetVaultsInResouceGroup(resourceGroupName);
 
-            this.WriteVaults(vaultListResponse.Vaults);
+            this.WriteVaults(vaultListResponse);
         }
 
         /// <summary>
@@ -79,12 +81,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         private void GetVaultsUnderAllResourceGroups()
         {
-            foreach (var resourceGroup in RecoveryServicesClient.GetResouceGroups().ResourceGroups)
+            
+            foreach (var resourceGroup in RecoveryServicesClient.GetResouceGroups())
             {
-                VaultListResponse vaultListResponse =
-                    RecoveryServicesClient.GetVaultsInResouceGroup(resourceGroup.Name);
-
-                this.WriteVaults(vaultListResponse.Vaults);
+                try
+                {
+                    GetVaultsUnderResourceGroup(resourceGroup.Name);
+                }
+                catch (Exception ex)
+                {
+                    WriteDebug("GetVaultsUnderResourceGroup failed: " + ex.Message);
+                }
             }
         }
 

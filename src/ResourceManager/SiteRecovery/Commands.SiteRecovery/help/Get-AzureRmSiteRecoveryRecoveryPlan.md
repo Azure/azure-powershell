@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.SiteRecovery.dll-Help.xml
+Module Name: AzureRM
 ms.assetid: 3B879056-5BF3-4262-8BAA-E79589149370
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.siterecovery/get-azurermsiterecoveryrecoveryplan
 schema: 2.0.0
 ---
 
@@ -14,17 +15,19 @@ Gets a recovery plan in Site Recovery.
 
 ### Default (Default)
 ```
-Get-AzureRmSiteRecoveryRecoveryPlan [<CommonParameters>]
+Get-AzureRmSiteRecoveryRecoveryPlan [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Get-AzureRmSiteRecoveryRecoveryPlan -Name <String> [[-Path] <String>] [<CommonParameters>]
+Get-AzureRmSiteRecoveryRecoveryPlan -Name <String> [[-Path] <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByFriendlyName
 ```
-Get-AzureRmSiteRecoveryRecoveryPlan -FriendlyName <String> [[-Path] <String>] [<CommonParameters>]
+Get-AzureRmSiteRecoveryRecoveryPlan -FriendlyName <String> [[-Path] <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,6 +36,36 @@ The **Get-AzureRmSiteRecoveryRecoveryPlan** cmdlet gets a recovery plan in Azure
 ## EXAMPLES
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FriendlyName
+Specifies the friendly name of the recovery plan that this cmdlet gets.
+
+```yaml
+Type: String
+Parameter Sets: ByFriendlyName
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 Specifies the name of the recovery plan that this cmdlet gets.
@@ -64,27 +97,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FriendlyName
-Specifies the friendly name of the recovery plan that this cmdlet gets.
-
-```yaml
-Type: String
-Parameter Sets: ByFriendlyName
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ## OUTPUTS
+
+### System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.SiteRecovery.ASRRecoveryPlan]
 
 ## NOTES
 

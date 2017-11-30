@@ -31,6 +31,7 @@ using System.Text;
 using Microsoft.WindowsAzure.ServiceManagemenet.Common.Models;
 using System.Net.Http;
 using System.Threading;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 {
@@ -55,11 +56,12 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         public EnvironmentSetupHelper()
         {
+            AzureSessionInitializer.InitializeAzureSession();
             var datastore = new MemoryDataStore();
-            AzureSession.DataStore = datastore;
-            var profile = new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
+            AzureSession.Instance.DataStore = datastore;
+            var profile = new AzureSMProfile(Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.ProfileFile));
             AzureSMCmdlet.CurrentProfile = profile;
-            AzureSession.DataStore = datastore;
+            AzureSession.Instance.DataStore = datastore;
             ProfileClient = new ProfileClient(profile);
 
             // Ignore SSL errors
@@ -82,7 +84,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         /// <param name="initializedManagementClients"></param>
         public void SetupManagementClients(params object[] initializedManagementClients)
         {
-            AzureSession.ClientFactory = new MockClientFactory(initializedManagementClients);
+            AzureSession.Instance.ClientFactory = new MockClientFactory(initializedManagementClients);
         }
 
         /// <summary>
@@ -91,7 +93,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         /// <param name="initializedManagementClients"></param>
         public void SetupSomeOfManagementClients(params object[] initializedManagementClients)
         {
-            AzureSession.ClientFactory = new MockClientFactory(initializedManagementClients, false);
+            AzureSession.Instance.ClientFactory = new MockClientFactory(initializedManagementClients, false);
         }
 
         public void SetupEnvironment(AzureModule mode)
@@ -117,20 +119,20 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             AzureEnvironment environment = new AzureEnvironment { Name = testEnvironmentName };
 
             Debug.Assert(currentEnvironment != null);
-            environment.Endpoints[AzureEnvironment.Endpoint.ActiveDirectory] = currentEnvironment.Endpoints.AADAuthUri.AbsoluteUri;
-            environment.Endpoints[AzureEnvironment.Endpoint.Gallery] = currentEnvironment.Endpoints.GalleryUri.AbsoluteUri;
+            environment.ActiveDirectoryAuthority = currentEnvironment.Endpoints.AADAuthUri.AbsoluteUri;
+            environment.GalleryUrl = currentEnvironment.Endpoints.GalleryUri.AbsoluteUri;
 
             if (csmEnvironment != null)
             {
-                environment.Endpoints[AzureEnvironment.Endpoint.ResourceManager] = csmEnvironment.BaseUri.AbsoluteUri;
+                environment.ResourceManagerUrl = csmEnvironment.BaseUri.AbsoluteUri;
             }
 
             if (rdfeEnvironment != null)
             {
-                environment.Endpoints[AzureEnvironment.Endpoint.ServiceManagement] = rdfeEnvironment.BaseUri.AbsoluteUri;
+                environment.ServiceManagementUrl = rdfeEnvironment.BaseUri.AbsoluteUri;
             }
 
-            if (!ProfileClient.Profile.Environments.ContainsKey(testEnvironmentName))
+            if (!ProfileClient.Profile.EnvironmentTable.ContainsKey(testEnvironmentName))
             {
                 ProfileClient.AddOrSetEnvironment(environment);
             }
@@ -139,33 +141,25 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             {
                 testSubscription = new AzureSubscription()
                 {
-                    Id = new Guid(currentEnvironment.SubscriptionId),
+                    Id = currentEnvironment.SubscriptionId,
                     Name = testSubscriptionName,
-                    Environment = testEnvironmentName,
-                    Account = currentEnvironment.UserName,
-                    Properties = new Dictionary<AzureSubscription.Property, string>
-                    {
-                        {AzureSubscription.Property.Default, "True"},
-                        {
-                            AzureSubscription.Property.StorageAccount,
-                            Environment.GetEnvironmentVariable("AZURE_STORAGE_ACCOUNT")
-                        },
-                    }
                 };
+                testSubscription.SetEnvironment(testEnvironmentName);
+                testSubscription.SetAccount(currentEnvironment.UserName);
+                testSubscription.SetStorageAccount(Environment.GetEnvironmentVariable("AZURE_STORAGE_ACCOUNT"));
+                testSubscription.SetDefault();
 
                 testAccount = new AzureAccount()
                 {
                     Id = currentEnvironment.UserName,
                     Type = AzureAccount.AccountType.User,
-                    Properties = new Dictionary<AzureAccount.Property, string>
-                    {
-                        {AzureAccount.Property.Subscriptions, currentEnvironment.SubscriptionId},
-                    }
                 };
 
-                ProfileClient.Profile.Subscriptions[testSubscription.Id] = testSubscription;
-                ProfileClient.Profile.Accounts[testAccount.Id] = testAccount;
-                ProfileClient.SetSubscriptionAsDefault(testSubscription.Name, testSubscription.Account);
+                testAccount.SetSubscriptions(currentEnvironment.SubscriptionId);
+
+                ProfileClient.Profile.SubscriptionTable[testSubscription.GetId()] = testSubscription;
+                ProfileClient.Profile.AccountTable[testAccount.Id] = testAccount;
+                ProfileClient.SetSubscriptionAsDefault(testSubscription.Name, testSubscription.GetAccount());
             }
         }
 
@@ -173,7 +167,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         {
             if (environment.AuthorizationContext.Certificate != null)
             {
-                AzureSession.AuthenticationFactory = new MockCertificateAuthenticationFactory(environment.UserName,
+                AzureSession.Instance.AuthenticationFactory = new MockCertificateAuthenticationFactory(environment.UserName,
                     environment.AuthorizationContext.Certificate);
             }
             else if (environment.AuthorizationContext.TokenCredentials.ContainsKey(TokenAudience.Management))
@@ -185,7 +179,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                     .GetAwaiter()
                     .GetResult();
 
-                AzureSession.AuthenticationFactory = new MockTokenAuthenticationFactory(
+                AzureSession.Instance.AuthenticationFactory = new MockTokenAuthenticationFactory(
                     environment.UserName,
                     httpMessage.Headers.Authorization.Parameter);
             }

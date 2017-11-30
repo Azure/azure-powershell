@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.MachineLearning.dll-Help.xml
-online version: 
+Module Name: AzureRM.MachineLearning
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.machinelearning/remove-azurermmlwebservice
 schema: 2.0.0
 ---
 
@@ -11,14 +12,16 @@ Deletes a web service.
 
 ## SYNTAX
 
-### Remove an Azure ML web service resouce by name and resource group.
+### RemoveByNameAndResourceGroup
 ```
-Remove-AzureRmMlWebService -ResourceGroupName <String> -Name <String> [-Force] [-WhatIf] [-Confirm]
+Remove-AzureRmMlWebService -ResourceGroupName <String> -Name <String> [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Remove an Azure ML web service specified as an object.
+### RemoveByObject
 ```
-Remove-AzureRmMlWebService -MlWebService <WebService> [-Force] [-WhatIf] [-Confirm]
+Remove-AzureRmMlWebService -MlWebService <WebService> [-Force] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,11 +32,28 @@ Deletes a Azure Machine Learning web service referenced by resource group and na
 ### --------------------------  Example 1  --------------------------
 @{paragraph=PS C:\\\>}
 
+
+
 ```
 Remove-AzureRmMlWebService -ResourceGroupName "myresourcegroup" -Name "mywebservicename"
 ```
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Force
 Do not ask for confirmation.
@@ -55,7 +75,7 @@ The web service to be removed.
 
 ```yaml
 Type: WebService
-Parameter Sets: Remove an Azure ML web service specified as an object.
+Parameter Sets: RemoveByObject
 Aliases: 
 
 Required: True
@@ -70,7 +90,7 @@ The name of the web service to be removed.
 
 ```yaml
 Type: String
-Parameter Sets: Remove an Azure ML web service resouce by name and resource group.
+Parameter Sets: RemoveByNameAndResourceGroup
 Aliases: 
 
 Required: True
@@ -85,7 +105,7 @@ The resource group of the web service.
 
 ```yaml
 Type: String
-Parameter Sets: Remove an Azure ML web service resouce by name and resource group.
+Parameter Sets: RemoveByNameAndResourceGroup
 Aliases: 
 
 Required: True
@@ -126,7 +146,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
+
+### WebService
+Parameter 'MlWebService' accepts value of type 'WebService' from the pipeline
 
 ## OUTPUTS
 

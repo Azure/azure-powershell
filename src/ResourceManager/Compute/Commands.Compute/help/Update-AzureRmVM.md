@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 ms.assetid: 38917534-49C6-47EA-B815-240F794EE655
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/update-azurermvm
 schema: 2.0.0
 ---
 
@@ -14,13 +14,15 @@ Updates the state of an Azure virtual machine.
 
 ### ResourceGroupNameParameterSetName (Default)
 ```
-Update-AzureRmVM -VM <PSVirtualMachine> [-Tags <Hashtable>] [-ResourceGroupName] <String> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzureRmVM -VM <PSVirtualMachine> [-Tags <Hashtable>] [-IdentityType <ResourceIdentityType>]
+ [-AssignIdentity] [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### IdParameterSetName
 ```
-Update-AzureRmVM -VM <PSVirtualMachine> [-Tags <Hashtable>] [-Id] <String> [-WhatIf] [-Confirm]
+Update-AzureRmVM -VM <PSVirtualMachine> [-Tags <Hashtable>] [-IdentityType <ResourceIdentityType>]
+ [-AssignIdentity] [-Id] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -31,7 +33,7 @@ The **Update-AzureRmVM** cmdlet updates the state of an Azure virtual machine to
 
 ### Example 1: Update a virtual machine
 ```
-PS C:\>Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -VM $VirtualMachine
+PS C:\> Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -VM $VirtualMachine
 ```
 
 This command updates the virtual machine, $VirtualMachine, in ResourceGroup11.
@@ -39,6 +41,36 @@ The command updates it by using the virtual machine object stored in the $Virtua
 To obtain a virtual machine object, use the **Get-AzureRmVM** cmdlet.
 
 ## PARAMETERS
+
+### -AssignIdentity
+Specify the system assigned identity for the virtual machine.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Id
 Specifies the Resource ID of the virtual machine.
@@ -49,9 +81,25 @@ Parameter Sets: IdParameterSetName
 Aliases: 
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -IdentityType
+The type of identity used for the virtual machine. Currently, the only supported type is 'SystemAssigned', which implicitly creates an identity.
+
+```yaml
+Type: ResourceIdentityType
+Parameter Sets: (All)
+Aliases: 
+Accepted values: SystemAssigned
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -64,7 +112,7 @@ Parameter Sets: ResourceGroupNameParameterSetName
 Aliases: 
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -141,7 +189,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### PSVirtualMachine
+Parameter 'VM' accepts value of type 'PSVirtualMachine' from the pipeline
+
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Compute.Models.PSAzureOperationResponse
 
 ## NOTES
 

@@ -36,7 +36,9 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         private PSComputeNodeInformation computeNodeInformation;
         
-        private PSTaskSchedulingError schedulingError;
+        private PSTaskContainerExecutionInformation containerInformation;
+        
+        private PSTaskFailureInformation failureInformation;
         
         internal PSSubtaskInformation(Microsoft.Azure.Batch.SubtaskInformation omObject)
         {
@@ -60,6 +62,19 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
+        public PSTaskContainerExecutionInformation ContainerInformation
+        {
+            get
+            {
+                if (((this.containerInformation == null) 
+                            && (this.omObject.ContainerInformation != null)))
+                {
+                    this.containerInformation = new PSTaskContainerExecutionInformation(this.omObject.ContainerInformation);
+                }
+                return this.containerInformation;
+            }
+        }
+        
         public System.DateTime? EndTime
         {
             get
@@ -76,6 +91,19 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
+        public PSTaskFailureInformation FailureInformation
+        {
+            get
+            {
+                if (((this.failureInformation == null) 
+                            && (this.omObject.FailureInformation != null)))
+                {
+                    this.failureInformation = new PSTaskFailureInformation(this.omObject.FailureInformation);
+                }
+                return this.failureInformation;
+            }
+        }
+        
         public System.Int32? Id
         {
             get
@@ -84,7 +112,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public Microsoft.Azure.Batch.Common.TaskState? PreviousState
+        public Microsoft.Azure.Batch.Common.SubtaskState? PreviousState
         {
             get
             {
@@ -100,16 +128,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public PSTaskSchedulingError SchedulingError
+        public Microsoft.Azure.Batch.Common.TaskExecutionResult? Result
         {
             get
             {
-                if (((this.schedulingError == null) 
-                            && (this.omObject.SchedulingError != null)))
-                {
-                    this.schedulingError = new PSTaskSchedulingError(this.omObject.SchedulingError);
-                }
-                return this.schedulingError;
+                return this.omObject.Result;
             }
         }
         
@@ -121,7 +144,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public Microsoft.Azure.Batch.Common.TaskState? State
+        public Microsoft.Azure.Batch.Common.SubtaskState? State
         {
             get
             {

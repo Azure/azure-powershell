@@ -15,6 +15,7 @@
 using System;
 using System.Management.Automation;
 using System.Reflection;
+using System.Threading;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 {
@@ -36,6 +37,17 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         }
 
         public static void ExecuteCmdlet(this PSCmdlet cmdlet)
+        {
+            try
+            {
+                GetProtectedMethod("ProcessRecord").Invoke(cmdlet, new object[] { });
+            }
+            catch (TargetInvocationException e)
+            {
+                throw e.InnerException;
+            }
+        }
+        public static void ExecuteCommand(this PSCmdlet cmdlet)
         {
             try
             {

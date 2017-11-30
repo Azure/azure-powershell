@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Network
             ChildResourceHelper.NormalizeChildResourcesId(this.LoadBalancer, this.NetworkClient.NetworkManagementClient.SubscriptionId);
 
             // Map to the sdk object
-            var lbModel = Mapper.Map<MNM.LoadBalancer>(this.LoadBalancer);
+            var lbModel = NetworkResourceManagerProfile.Mapper.Map<MNM.LoadBalancer>(this.LoadBalancer);
             lbModel.Tags = TagsConversionHelper.CreateTagDictionary(this.LoadBalancer.Tag, validate: true);
 
             // Execute the Create VirtualNetwork call

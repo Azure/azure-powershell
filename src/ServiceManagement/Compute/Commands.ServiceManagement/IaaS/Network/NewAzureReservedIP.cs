@@ -20,6 +20,7 @@ using Microsoft.WindowsAzure.Management.Network;
 using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Compute.Models;
 using System;
+using System.Collections.Generic;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
 {
@@ -93,6 +94,14 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
             set;
         }
 
+        [Parameter(Mandatory = false, Position= 6, ValueFromPipelineByPropertyName = true, ParameterSetName = ReserveNewIPParamSet, HelpMessage = "List of IPTags.")]
+        [ValidateNotNullOrEmpty]
+        public List<IPTag> IPTagList
+        {
+            get;
+            set;
+        }
+
         public override void ExecuteCmdlet()
         {
             ServiceManagementProfile.Initialize();
@@ -122,7 +131,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                         Location       = this.Location,
                         ServiceName    = this.ServiceName,
                         DeploymentName = deploymentName,
-                        VirtualIPName = this.VirtualIPName
+                        VirtualIPName = this.VirtualIPName,
+                        IPTags = this.IPTagList,
                     };
 
                     return this.NetworkClient.ReservedIPs.Create(parameters);

@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,7 +15,7 @@
 namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model
 {
     /// <summary>
-    /// The possible states in which an Transparent Data Encryption may be in
+    /// The supported types for an Encryption Protector
     /// </summary>
     public enum EncryptionProtectorType 
     {

@@ -12,11 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using System;
 using System.Security;
+using Microsoft.Azure.Commands.Common.Authentication.Properties;
+
+#if !NETSTANDARD
 using System.Windows.Forms;
+#endif
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
@@ -28,7 +32,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     {
         private readonly ITokenProvider userTokenProvider;
         private readonly ITokenProvider servicePrincipalTokenProvider;
-
+#if !NETSTANDARD
         public AdalTokenProvider()
             : this(new ConsoleParentWindow())
         {
@@ -42,17 +46,18 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         public IAccessToken GetAccessToken(
             AdalConfiguration config,
-            ShowDialog promptBehavior,
+            string promptBehavior,
+            Action<string> promptAction,
             string userId,
             SecureString password,
-            AzureAccount.AccountType credentialType)
+            string credentialType)
         {
             switch (credentialType)
             {
                 case AzureAccount.AccountType.User:
-                    return userTokenProvider.GetAccessToken(config, promptBehavior, userId, password, credentialType);
+                    return userTokenProvider.GetAccessToken(config, promptBehavior, promptAction, userId, password, credentialType);
                 case AzureAccount.AccountType.ServicePrincipal:
-                    return servicePrincipalTokenProvider.GetAccessToken(config, promptBehavior, userId, password, credentialType);
+                    return servicePrincipalTokenProvider.GetAccessToken(config, promptBehavior, promptAction, userId, password, credentialType);
                 default:
                     throw new ArgumentException(Resources.UnknownCredentialType, "credentialType");
             }
@@ -62,7 +67,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             AdalConfiguration config,
             string clientId,
             string certificate,
-            AzureAccount.AccountType credentialType)
+            string credentialType)
         {
             switch (credentialType)
             {
@@ -71,6 +76,45 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 default:
                     throw new ArgumentException(string.Format(Resources.UnsupportedCredentialType, credentialType), "credentialType");
             }
+        }			
+#else
+        public AdalTokenProvider()
+        {
+            this.userTokenProvider = new UserTokenProvider();
+            this.servicePrincipalTokenProvider = new ServicePrincipalTokenProvider();
         }
+		
+		public IAccessToken GetAccessToken(
+            AdalConfiguration config,
+            string promptBehavior,
+            Action<string> promptAction,
+            string userId,
+            SecureString password,
+            string credentialType)
+        {
+            switch (credentialType)
+            {
+                case AzureAccount.AccountType.User:
+                    return userTokenProvider.GetAccessToken(
+                        config, 
+                        promptBehavior,
+                        promptAction, 
+                        userId, 
+                        password, 
+                        credentialType);
+                case AzureAccount.AccountType.ServicePrincipal:
+                    return servicePrincipalTokenProvider.GetAccessToken(
+                        config, 
+                        promptBehavior, 
+                        promptAction, 
+                        userId, 
+                        password, 
+                        credentialType);
+                default:
+                    throw new ArgumentException(Resources.UnsupportedCredentialType, "credentialType");
+            }
+        }
+#endif
+
     }
 }

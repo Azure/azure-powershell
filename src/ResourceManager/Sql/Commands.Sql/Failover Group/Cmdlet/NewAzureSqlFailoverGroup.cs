@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,6 +19,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using System;
 
 namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
 {
@@ -29,10 +30,20 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
     public class NewAzureSqlFailoverGroup : AzureSqlFailoverGroupCmdletBase
     {
         /// <summary>
+        /// Gets or sets the name of the server to use.
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            Position = 1,
+            HelpMessage = "The name of the primary Azure SQL Database Server of the Failover Group.")]
+        [ValidateNotNullOrEmpty]
+        public string ServerName { get; set; }
+
+        /// <summary>
         /// Gets or sets the name of the Failover Group to create.
         /// </summary>
         [Parameter(Mandatory = true,
-            HelpMessage = "The name of the Azure SQL FailoverGroup to create.")]
+            HelpMessage = "The name of the Azure SQL Database Failover Group to create.")]
         [ValidateNotNullOrEmpty]
         public string FailoverGroupName { get; set; }
 
@@ -40,7 +51,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         /// Gets or sets the partner resource group name for Azure SQL Database Failover Group
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The partner resource group name for Azure SQL Database Failover Group.")]
+            HelpMessage = "The name of the secondary resource group of the Azure SQL Database Failover Group.")]
         [ValidateNotNullOrEmpty]
         public string PartnerResourceGroupName { get; set; }
 
@@ -48,7 +59,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         /// Gets or sets the partner server name for Azure SQL Database Failover Group
         /// </summary>
         [Parameter(Mandatory = true,
-            HelpMessage = "The partner server name for Azure SQL Database Failover Group.")]
+            HelpMessage = "The name of the secondary server of the Azure SQL Database Failover Group.")]
         [ValidateNotNullOrEmpty]
         public string PartnerServerName { get; set; }
 
@@ -56,32 +67,28 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         /// Gets or sets the failover policy without data loss for the Sql Azure Failover Group.
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The failover policy without data loss for the failover group.")]
+            HelpMessage = "The failover policy of the Azure SQL Database Failover Group.")]
         [ValidateNotNullOrEmpty]
+        [PSDefaultValue(Help = "Automatic")]
         public FailoverPolicy FailoverPolicy { get; set; }
 
         /// <summary>
         /// Gets or sets the grace period with data loss for the Sql Azure Failover Group.
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The window of grace period that we tolerate with data loss during a failover operation for the failover group.")]
+            HelpMessage = "Interval before automatic failover is initiated if an outage occurs on the primary server and failover cannot be completed without data loss.")]
         [ValidateNotNullOrEmpty]
-        public int GracePeriodWithDataLossHour { get; set; }
+        [ValidateRange(0, int.MaxValue)]
+        [PSDefaultValue(Help = "1")]
+        public int GracePeriodWithDataLossHours { get; set; }
 
         /// <summary>
-        /// Gets or sets the failover policy for read only endpoint of theSql Azure Failover Group.
+        /// Gets or sets the failover policy for read only endpoint of the Sql Azure Failover Group.
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The failover policy for read only endpoint of the failover group.")]
+            HelpMessage = "Whether an outage on the secondary server should trigger automatic failover of the read-only endpoint. This feature is not yet supported.")]
         [ValidateNotNullOrEmpty]
         public AllowReadOnlyFailoverToPrimary AllowReadOnlyFailoverToPrimary { get; set; }
-
-        /// <summary>
-        /// Gets or sets the tag associated with the Azure SQL Database Failover Group
-        /// </summary>
-        [Parameter(Mandatory = false,
-            HelpMessage = "The tag to associate with the Azure SQL Database Failover Group")]
-        public Hashtable Tag { get; set; }
 
         /// <summary>
         /// Get the entities from the service
@@ -98,7 +105,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
             {
                 if (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
-                    // This is what we want.  We looked and there is no database with this name.
+                    // This is what we want.  We looked and there is no Failover Group with this name.
                     return null;
                 }
 
@@ -106,10 +113,8 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
                 throw;
             }
 
-            // The database already exists
-            throw new PSArgumentException(
-                string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.FailoverGroupNameExists, this.FailoverGroupName, this.ServerName),
-                "FailoverGroupName");
+            // The Failover Group already exists
+            throw new PSArgumentException(string.Format(Properties.Resources.FailoverGroupNameExists, this.FailoverGroupName, this.ServerName), "FailoverGroupName");
         }
 
         /// <summary>
@@ -125,14 +130,13 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
             {
                 ResourceGroupName = ResourceGroupName,
                 ServerName = ServerName,
-                Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true),
                 Location = location,
                 FailoverGroupName = FailoverGroupName,
                 PartnerResourceGroupName = MyInvocation.BoundParameters.ContainsKey("PartnerResourceGroupName") ? PartnerResourceGroupName : ResourceGroupName,
                 PartnerServerName = PartnerServerName,
                 ReadWriteFailoverPolicy = FailoverPolicy.ToString(),
-                FailoverWithDataLossGracePeriodHours = GracePeriodWithDataLossHour,
-                ReadOnlyFailoverPolicy = AllowReadOnlyFailoverToPrimary.ToString()
+                FailoverWithDataLossGracePeriodHours = ComputeEffectiveGracePeriod(FailoverPolicy, originalGracePeriod: null),
+                ReadOnlyFailoverPolicy = MyInvocation.BoundParameters.ContainsKey("AllowReadOnlyFailoverToPrimary") ? AllowReadOnlyFailoverToPrimary.ToString() : AllowReadOnlyFailoverToPrimary.Disabled.ToString(),
             });
             return newEntity;
         }

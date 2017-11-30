@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.OperationalInsights.dll-Help.xml
+Module Name: AzureRM.OperationalInsights
 ms.assetid: 54DFBB63-AE8C-4918-870F-19FAD6CC5E4A
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.operationalinsights/set-azurermoperationalinsightsworkspace
 schema: 2.0.0
 ---
 
@@ -15,14 +16,14 @@ Updates a workspace.
 ### ByName (Default)
 ```
 Set-AzureRmOperationalInsightsWorkspace [-ResourceGroupName] <String> [-Name] <String> [[-Sku] <String>]
- [[-Tags] <Hashtable>] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
+ [[-Tags] <Hashtable>] [-RetentionInDays <Int32>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### ByObject
 ```
 Set-AzureRmOperationalInsightsWorkspace [-Workspace] <PSWorkspace> [[-Sku] <String>] [[-Tags] <Hashtable>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [-RetentionInDays <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,18 +47,18 @@ This command uses the Get-AzureRmOperationalInsightsWorkspace cmdlet to get the 
 
 ## PARAMETERS
 
-### -ResourceGroupName
-Specifies the Azure resource group name.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: String
-Parameter Sets: ByName
-Aliases: 
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
 
-Required: True
-Position: 1
+Required: False
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -76,6 +77,36 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ResourceGroupName
+Specifies the Azure resource group name.
+
+```yaml
+Type: String
+Parameter Sets: ByName
+Aliases: 
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RetentionInDays
+The workspace data retention in days. 730 days is the maximum allowed for all other Skus
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Sku
 Specifies the service tier of the workspace.
 Valid values are: 
@@ -88,6 +119,7 @@ Valid values are:
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: free, standard, premium, pernode, standalone
 
 Required: False
 Position: 3
@@ -111,45 +143,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Workspace
 Specifies the workspace to be updated.
 
@@ -170,7 +163,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### PSWorkspace
+Parameter 'Workspace' accepts value of type 'PSWorkspace' from the pipeline
+
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace
 
 ## NOTES
 

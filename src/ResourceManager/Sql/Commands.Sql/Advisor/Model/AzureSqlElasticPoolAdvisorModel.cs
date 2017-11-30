@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -32,13 +32,13 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Model
         }
 
         /// <summary>
-        /// Construct AzureSqlElasticPoolAdvisorModel from Management.Sql.Models.Advisor object
+        /// Construct AzureSqlElasticPoolAdvisorModel from Management.Sql.LegacySdk.Models.Advisor object
         /// </summary>
         /// <param name="resourceGroupName">Resource group</param>
         /// <param name="serverName">Server name</param>
         /// <param name="elasticPoolName">Elastic Pool name</param>
         /// <param name="advisor">Advisor object</param>
-        public AzureSqlElasticPoolAdvisorModel(string resourceGroupName, string serverName, string elasticPoolName, Management.Sql.Models.Advisor advisor)
+        public AzureSqlElasticPoolAdvisorModel(string resourceGroupName, string serverName, string elasticPoolName, Management.Sql.LegacySdk.Models.Advisor advisor)
         : base(resourceGroupName, serverName, advisor)
         {
             ElasticPoolName = elasticPoolName;

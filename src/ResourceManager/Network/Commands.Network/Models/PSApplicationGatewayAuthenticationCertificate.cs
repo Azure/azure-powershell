@@ -19,5 +19,6 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
         public string Data { get; set; }
         public string ProvisioningState { get; set; }
+        public string Type { get; set; }
     }
 }

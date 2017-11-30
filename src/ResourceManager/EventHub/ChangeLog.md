@@ -19,6 +19,54 @@
 -->
 ## Current Release
 
+## Version 0.5.0
+* NOTE: This is a breaking change release. Please see the migration guide (https://aka.ms/azps-migration-guide) for a full list of breaking changes introduced.
+* Add support for online help
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
+
+## Version 0.4.7
+
+## Version 0.4.6
+
+## Version 0.4.4
+
+## Version 0.4.3
+* added ResourceGroup property to NamespaceAttributes
+    - 'ResourceGroup' Gets the name of the resource group the Namespace is in
+
+* updated commandlets with new parameter and parameter alias
+	- below cmdlets updated with Parametersets for Namespace and EventHub for operation of AuthorizationRule
+
+    - New-AzureRmEventHubAuthorizationRule
+        - Adds a new AuthorizationRule to the existing NameSpace or EventHub.
+    - Get-AzureRmEventHubAuthorizationRule
+        - Gets AuthorizationRule / List of AuthorizationRules for the existing NameSpace or EventHub.
+    - Set-AzureRmEventHubAuthorizationRule
+        - Updates properties of existing AuthorizationRule of EventHub NameSpace.
+    - Remove-AzureRmEventHubAuthorizationRule
+        - Deletes the existing AuthorizationRule of existing NameSpace or EventHub.    
+    - New-AzureRmEventHubKey
+        - Generates a new Primary/Secondary Key for AuthorizationRule of existing NameSpace or EventHub.
+    - Get-AzureRmEventHubKey
+        - Gets Primary/Secondary Key for AuthorizationRule of existing NameSpace or EventHub.
+
+## Version 0.4.2
+		
+## Version 0.4.1
+
+## Version 0.4.0
+
+## Version 0.3.1
+
+## Version 0.3.0
+* Bug fix : 
+	- Fix for Set-AzureRmEventHubNamespace cmdlet error  - 'Tier' cannot be null, where it should be 'SkuName' 
+    - Set-AzureRmEventHub - Fix 'Object reference not set to an instance of an object' error while updating EventHub  
+
+## Version 0.2.0
+
+## Version 0.1.0
+
 ## Version 0.0.3
 * Future Breaking Change Notification: We've added a warning about removing property 'ResourceGroupName' from the returned NamespceAttributes from cmdlets New-AzureRmEventHubNamespace, Get-AzureRmEvnetHubNamespace and Set-AzureRmEvnetHubNamespace
 

@@ -502,6 +502,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to [Common.Authentication]: Parsed token &apos;{0}&apos; with json value &apos;{1}&apos; and decoded issuer &apos;{2}&apos;..
+        /// </summary>
+        public static string TokenIssuerTrace {
+            get {
+                return ResourceManager.GetString("TokenIssuerTrace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unable to update mismatching Json structured: {0} {1}..
         /// </summary>
         public static string UnableToPatchJson {

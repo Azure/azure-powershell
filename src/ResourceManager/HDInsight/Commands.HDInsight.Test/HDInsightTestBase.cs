@@ -25,10 +25,12 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
 {
     public class HDInsightTestBase : RMTestBase
     {
-        protected const string ClusterType = "Hadoop";
         protected const string ClusterName = "hdicluster";
         protected const string ResourceGroupName = "hdi-rg1";
         protected const string Location = "west us";
+
+        protected string ClusterType = "Hadoop";
+        protected string HdiVersion = "3.1";
 
         protected Mock<AzureHdInsightManagementClient> hdinsightManagementMock;
         protected Mock<AzureHdInsightJobManagementClient> hdinsightJobManagementMock;
@@ -83,6 +85,8 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                 .Verifiable();
 
             var configurationResponse = new Dictionary<string, string>();
+            configurationResponse.Add("fs.defaultFS", "wasb://tempstorageaccount@xyz.blob.core.windows.net");
+            configurationResponse.Add("fs.azure.account.key.xyz.blob.core.windows.net", "tempkey");
 
             hdinsightManagementMock.Setup(c => c.GetClusterConfigurations(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
                 .Returns(configurationResponse)

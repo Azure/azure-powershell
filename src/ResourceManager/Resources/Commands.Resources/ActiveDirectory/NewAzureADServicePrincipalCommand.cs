@@ -12,10 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ActiveDirectory.Models;
-using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
+using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
+using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.Management.Automation;
+using System.Security;
 
 namespace Microsoft.Azure.Commands.ActiveDirectory
 {
@@ -67,7 +68,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.DisplayNameWithPasswordPlain,
             HelpMessage = "The value for the password credential associated with the application that will be valid for one year by default.")]
         [ValidateNotNullOrEmpty]
-        public string Password { get; set; }
+        public SecureString Password { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithKeyPlain,
             HelpMessage = "The base64 encoded cert value for the key credentials associated with the application that will be valid for one year by default.")]
@@ -136,6 +137,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 {
                     case ParameterSet.ApplicationWithPasswordPlain:
                     case ParameterSet.DisplayNameWithPasswordPlain:
+                        string decodedPassword = SecureStringExtensions.ConvertToString(Password);
                         createParameters.PasswordCredentials = new PSADPasswordCredential[]
                         {
                         new PSADPasswordCredential
@@ -143,7 +145,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                             StartDate = StartDate,
                             EndDate = EndDate,
                             KeyId = Guid.NewGuid(),
-                            Password = Password
+                            Password = decodedPassword
                         }
                         };
                         break;

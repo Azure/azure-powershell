@@ -12,22 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
-using System.Globalization;
-
 namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
     using System;
+    using System.Globalization;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.LogicApp.Utilities;
     using Microsoft.Azure.Management.Logic.Models;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
+    using ResourceManager.Common.ArgumentCompleters;
 
     /// <summary>
     /// Updates the integration account schema.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmIntegrationAccountSchema", SupportsShouldProcess = true),
-     OutputType(typeof (object))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmIntegrationAccountSchema", SupportsShouldProcess = true)]
+    [OutputType(typeof(IntegrationAccountSchema))]
     public class UpdateAzureIntegrationAccountSchemaCommand : LogicAppBaseCmdlet
     {
 
@@ -49,6 +48,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
         [Parameter(Mandatory = true, HelpMessage = "The integration account resource group name.",
             ValueFromPipelineByPropertyName = true)]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -111,30 +111,46 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 this.Name,
                 this.SchemaName);
 
+            var integrationAccountSchemaCopy = new IntegrationAccountSchema(schemaType: integrationAccountSchema.SchemaType,
+                id: integrationAccountSchema.Id,
+                name: integrationAccountSchema.Name,
+                type: integrationAccountSchema.Type,
+                location: integrationAccountSchema.Location,
+                tags: integrationAccountSchema.Tags,
+                targetNamespace: integrationAccountSchema.TargetNamespace,
+                documentName: integrationAccountSchema.DocumentName,
+                fileName: integrationAccountSchema.FileName,
+                createdTime: integrationAccountSchema.CreatedTime,
+                changedTime: integrationAccountSchema.ChangedTime,
+                metadata: integrationAccountSchema.Metadata,
+                content: integrationAccountSchema.Content,
+                contentType: integrationAccountSchema.ContentType,
+                contentLink: null);
+
             if (!string.IsNullOrEmpty(this.SchemaFilePath))
             {
-                integrationAccountSchema.Content =
+                integrationAccountSchemaCopy.Content =
                     CmdletHelper.GetContentFromFile(this.TryResolvePath(this.SchemaFilePath));
             }
 
             if (!string.IsNullOrEmpty(this.SchemaDefinition))
             {
-                integrationAccountSchema.Content = this.SchemaDefinition;
+                integrationAccountSchemaCopy.Content = this.SchemaDefinition;
             }
 
             if (!string.IsNullOrEmpty(this.schemaType))
             {
-                integrationAccountSchema.SchemaType = (SchemaType) Enum.Parse(typeof (SchemaType), this.SchemaType);
+                integrationAccountSchemaCopy.SchemaType = (SchemaType)Enum.Parse(typeof(SchemaType), this.SchemaType);
             }
 
             if (!string.IsNullOrEmpty(this.ContentType))
             {
-                integrationAccountSchema.ContentType = this.ContentType;
+                integrationAccountSchemaCopy.ContentType = this.ContentType;
             }
 
             if (this.Metadata != null)
             {
-                integrationAccountSchema.Metadata = CmdletHelper.ConvertToMetadataJObject(this.Metadata);
+                integrationAccountSchemaCopy.Metadata = CmdletHelper.ConvertToMetadataJObject(this.Metadata);
             }
 
             ConfirmAction(Force.IsPresent,
@@ -148,7 +164,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                     this.WriteObject(
                         IntegrationAccountClient.UpdateIntegrationAccountSchema(this.ResourceGroupName,
                             integrationAccount.Name,
-                            this.SchemaName, integrationAccountSchema), true);
+                            this.SchemaName, integrationAccountSchemaCopy), true);
                 },
                 null);
         }

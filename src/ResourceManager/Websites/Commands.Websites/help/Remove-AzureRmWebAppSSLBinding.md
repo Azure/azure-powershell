@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
+Module Name: AzureRM
 ms.assetid: 3AB3D398-E5DB-4214-BA27-6E3B7D225550
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/remove-azurermwebappsslbinding
 schema: 2.0.0
 ---
 
@@ -15,14 +16,14 @@ Removes an SSL binding from an uploaded certificate.
 ### S1
 ```
 Remove-AzureRmWebAppSSLBinding [-Name] <String> [[-DeleteCertificate] <Boolean>] [-Force]
- [-ResourceGroupName] <String> [-WebAppName] <String> [[-Slot] <String>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ResourceGroupName] <String> [-WebAppName] <String> [[-Slot] <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### S2
 ```
 Remove-AzureRmWebAppSSLBinding [-Name] <String> [[-DeleteCertificate] <Boolean>] [-Force] [-WebApp] <Site>
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -63,16 +64,16 @@ The second command uses the object reference and the **Remove-AzureRmWebAppSSLBi
 
 ## PARAMETERS
 
-### -Name
-Specifies the name of the Web App.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: String
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: 
+Aliases: AzureRmContext, AzureCredential
 
-Required: True
-Position: 3
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -113,6 +114,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Name
+Specifies the name of the Web App.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 3
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Specifies the name of the resource group that the certificate is assigned to.
 
@@ -125,23 +141,6 @@ Aliases:
 
 Required: True
 Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WebAppName
-Specifies the name of the Web App.
-
-You cannot use the *WebAppName* parameter and the *WebApp* parameter in the same command.
-
-```yaml
-Type: String
-Parameter Sets: S1
-Aliases: 
-
-Required: True
-Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -181,6 +180,23 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -WebAppName
+Specifies the name of the Web App.
+
+You cannot use the *WebAppName* parameter and the *WebApp* parameter in the same command.
+
+```yaml
+Type: String
+Parameter Sets: S1
+Aliases: 
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -217,6 +233,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Site
+Parameter 'WebApp' accepts value of type 'Site' from the pipeline
 
 ## OUTPUTS
 

@@ -27,6 +27,7 @@ using System.Management.Automation;
 using System.Security.Permissions;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Profile;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.Profile
 {
@@ -56,7 +57,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
             if (ParameterSetName == DefaultProfileParameterSet)
             {
                 AzureSMProfileProvider.Instance.ResetDefaultProfile();
-                Profile = AzureSMProfileProvider.Instance.Profile;
+                Profile = AzureSMProfileProvider.Instance.Profile as AzureSMProfile;
             }
 
             if (Profile == null)

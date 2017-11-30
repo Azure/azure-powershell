@@ -1,4 +1,4 @@
----
+﻿---
 Module Name: AzureRM.IotHub
 Module Guid: 51a3a993-fe39-4f8f-a437-2cb751584af5
 Download Help Link: {{Please enter FwLink manually}}
@@ -18,7 +18,7 @@ Creates an eventhub consumer group.
 Creates an IotHub Key.
 
 ### [Get-AzureRmIotHub](Get-AzureRmIotHub.md)
-Gets information about the IotHubs in a subscription. 
+Gets information about the IotHubs in a subscription.
 
 ### [Get-AzureRmIotHubConnectionString](Get-AzureRmIotHubConnectionString.md)
 Gets the IotHub connectionstrings.

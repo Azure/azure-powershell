@@ -46,6 +46,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = NameParameterSet)]
+        [SupportsWildcards()]
         public string Name { get; set; }
 
         [Parameter(HelpMessage = "Queue Prefix",

@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
 {
@@ -33,7 +34,9 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = "Resource Group Name.")]
-        [ValidateNotNullOrEmpty]
+        [ResourceGroupCompleter]
+        [Alias("ResourceGroup")]
+        [ValidateNotNullOrEmpty]        
         public string ResourceGroupName { get; set; }
 
         /// <summary>
@@ -44,6 +47,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "ServiceBus Namespace Location.")]
+        [LocationCompleter("Microsoft.ServiceBus/namespaces")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
@@ -55,8 +59,9 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
             ValueFromPipelineByPropertyName = true,
             Position = 2,
             HelpMessage = "ServiceBus Namespace Name.")]
+        [Alias(AliasNamespaceName)]
         [ValidateNotNullOrEmpty]
-        public string NamespaceName { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Namespace Sku Name.
@@ -97,9 +102,9 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
             // Update a ServiceBus namespace
             Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
 
-            if (ShouldProcess(target: NamespaceName, action: string.Format("Update Namespace:{0} of the ResorceGroup:{1}", NamespaceName, ResourceGroupName)))
+            if (ShouldProcess(target: Name, action: string.Format(Resources.UpdateNamespace, Name, ResourceGroupName)))
             {
-                WriteObject(Client.UpdateNamespace(ResourceGroupName, NamespaceName, Location, SkuName, SkuCapacity, tagDictionary));
+                WriteObject(Client.UpdateNamespace(ResourceGroupName, Name, Location, SkuName, SkuCapacity, tagDictionary));
             }
         }
     }

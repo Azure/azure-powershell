@@ -24,12 +24,12 @@ using JobState = Microsoft.Azure.Management.DataLake.Analytics.Models.JobState;
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeAnalyticsJob", DefaultParameterSetName = BaseParameterSetName),
-     OutputType(typeof(List<JobInformation>), typeof(JobInformation))]
+     OutputType(typeof(List<PSJobInformationBasic>), typeof(JobInformation))]
     [Alias("Get-AdlJob")]
     public class GetAzureDataLakeAnalyticsJob : DataLakeAnalyticsCmdletBase
     {
-        internal const string BaseParameterSetName = "All In Resource Group and Account";
-        internal const string JobInfoParameterSetName = "Specific JobInformation";
+        internal const string BaseParameterSetName = "GetAllInResourceGroupAndAccount";
+        internal const string JobInfoParameterSetName = "GetBySpecificJobInformation";
 
         [Parameter(ParameterSetName = BaseParameterSetName, ValueFromPipelineByPropertyName = true, Position = 0,
             Mandatory = true,
@@ -91,6 +91,16 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
             Mandatory = false, HelpMessage = "An optional value which indicates the number of jobs to return. Default value is 500")]
         [ValidateNotNullOrEmpty]
         public int? Top { get; set; }
+
+        [Parameter(ParameterSetName = BaseParameterSetName, ValueFromPipelineByPropertyName = true,
+            Mandatory = false, HelpMessage = "An optional ID that indicates only jobs part of the specified pipeline should be returned.")]
+        [ValidateNotNullOrEmpty]
+        public Guid? PipelineId { get; set; }
+
+        [Parameter(ParameterSetName = BaseParameterSetName, ValueFromPipelineByPropertyName = true,
+            Mandatory = false, HelpMessage = "An optional ID that indicates only jobs part of the specified recurrence should be returned.")]
+        [ValidateNotNullOrEmpty]
+        public Guid? RecurrenceId { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -169,12 +179,24 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                                    Result.Select(result => string.Format("result eq '{0}'", result)).ToArray()) + ")");
                 }
 
+                if (PipelineId.HasValue)
+                {
+                    filter.Add(string.Format("related/pipelineId eq guid'{0}'", PipelineId.Value));
+                }
+
+                if (RecurrenceId.HasValue)
+                {
+                    filter.Add(string.Format("related/recurrenceId eq guid'{0}'", RecurrenceId.Value));
+                }
+
                 var filterString = string.Join(" and ", filter.ToArray());
 
                 // List the jobs with the given filters
                 bool warnUser;
-                var list = DataLakeAnalyticsClient.ListJobs(Account,
-                    string.IsNullOrEmpty(filterString) ? null : filterString, Top, null, "submitTime desc", out warnUser);
+                var list = DataLakeAnalyticsClient.ListJobs(Account, 
+                    string.IsNullOrEmpty(filterString) ? null : filterString, Top, null, "submitTime desc", out warnUser)
+                    .Select(element => new PSJobInformationBasic(element))
+                    .ToList();
                 if (warnUser)
                 {
                     WriteWarning(string.Format(Resources.MoreJobsToGetWarning, Top.HasValue ? Top.Value : 500));

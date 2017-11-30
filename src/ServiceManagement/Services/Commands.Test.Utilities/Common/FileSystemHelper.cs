@@ -21,6 +21,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.ServiceManagemenet.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
 {
@@ -281,8 +282,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
             Debug.Assert(string.IsNullOrEmpty(AzureSdkPath));
 
             AzureSdkPath = CreateDirectory("AzureSdk");
-            ProfileClient client = new ProfileClient(new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
-            AzureSession.DataStore.WriteFile(publishSettingsPath, File.ReadAllText(publishSettingsPath));
+            ProfileClient client = new ProfileClient(new AzureSMProfile(Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.ProfileFile)));
+            AzureSession.Instance.DataStore.WriteFile(publishSettingsPath, File.ReadAllText(publishSettingsPath));
             client.ImportPublishSettings(publishSettingsPath, null);
             client.Profile.Save();
 

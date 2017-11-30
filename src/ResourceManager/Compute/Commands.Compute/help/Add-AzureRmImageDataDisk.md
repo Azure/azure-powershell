@@ -1,6 +1,6 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/add-azurermimagedatadisk
 schema: 2.0.0
 ---
 
@@ -12,9 +12,9 @@ Adds a data disk to an image obejct.
 ## SYNTAX
 
 ```
-Add-AzureRmImageDataDisk [-Image] <Image> [[-Lun] <Int32>] [[-BlobUri] <String>] [[-Caching] <CachingTypes>]
- [[-DiskSizeGB] <Int32>] [[-SnapshotId] <String>] [[-ManagedDiskId] <String>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Add-AzureRmImageDataDisk [-Image] <PSImage> [[-Lun] <Int32>] [[-BlobUri] <String>] [[-Caching] <CachingTypes>]
+ [-DiskSizeGB <Int32>] [-StorageAccountType <StorageAccountTypes>] [-SnapshotId <String>]
+ [-ManagedDiskId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,18 +36,18 @@ PS C:\> New-AzureRmImage -Image $imageConfig -ImageName 'ImageName01' -ResourceG
 
 The first command creates an image object, and then stores it in the $imageConfig variable.
 
-The next three commands assign paths of os disk and two data disks to the $osDiskVhdUri, $dataDiskVhdUri1, and $dataDiskVhdUri2 variables.
+The next three commands assign paths of operating system disk and two data disks to the $osDiskVhdUri, $dataDiskVhdUri1, and $dataDiskVhdUri2 variables.
 This approach is only for readability of the following commands.
 
-The next three commands each adds an os disk and two data disks to the image stored in $imageConfig.
+The next three commands each adds an operating system disk and two data disks to the image stored in $imageConfig.
 The URI of each disk is stored in $osDiskVhdUri, $dataDiskVhdUri1, and $dataDiskVhdUri2.
 
-The final command creates an image named 'ImageName01' in resource group 'ResourceGroup01'.
+The final command creates an image named ImageName01 in resource group ResourceGroup01.
 
 ## PARAMETERS
 
 ### -BlobUri
-Specifies the Uri of the blob.
+Specifies the link, as a URI, of the blob.
 
 ```yaml
 Type: String
@@ -77,8 +77,23 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DiskSizeGB
-Specifies the size of the disk in GB.
+Specifies the size of the disk in Gigabytes (GB).
 
 ```yaml
 Type: Int32
@@ -86,7 +101,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 4
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -96,7 +111,7 @@ Accept wildcard characters: False
 Specifies a local image object.
 
 ```yaml
-Type: Image
+Type: PSImage
 Parameter Sets: (All)
 Aliases: 
 
@@ -131,7 +146,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 6
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -146,7 +161,23 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 5
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -StorageAccountType
+The Storage Account type of the data image disk
+
+```yaml
+Type: StorageAccountTypes
+Parameter Sets: (All)
+Aliases: 
+Accepted values: StandardLRS, PremiumLRS
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

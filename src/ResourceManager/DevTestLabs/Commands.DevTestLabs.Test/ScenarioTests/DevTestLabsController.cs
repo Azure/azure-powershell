@@ -14,11 +14,9 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Gallery;
-using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.DevTestLabs;
-using Microsoft.Azure.Management.Resources;
+using Microsoft.Azure.Management.ResourceManager;
 using Microsoft.Azure.Management.Storage;
-using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -38,7 +36,6 @@ namespace Microsoft.Azure.Commands.DevTestLabs.Test.ScenarioTests
         private EnvironmentSetupHelper helper;
         private const string TenantIdKey = "TenantId";
         private const string DomainKey = "Domain";
-        private const string AuthorizationApiVersion = "2014-07-01-preview";
 
         public ResourceManagementClient ResourceManagementClient { get; private set; }
 
@@ -46,7 +43,6 @@ namespace Microsoft.Azure.Commands.DevTestLabs.Test.ScenarioTests
 
         public DevTestLabsClient DevTestLabsClient { get; private set; }
 
-        public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
 
         public GalleryClient GalleryClient { get; private set; }
 
@@ -100,7 +96,7 @@ namespace Microsoft.Azure.Commands.DevTestLabs.Test.ScenarioTests
             d.Add("Microsoft.Features", null);
             d.Add("Microsoft.Authorization", null);
             var providersToIgnore = new Dictionary<string, string>();
-            providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
+            providersToIgnore.Add("Microsoft.Azure.Management.ResourceManager.ResourceManagementClient", "2016-02-01");
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
 
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
@@ -121,7 +117,6 @@ namespace Microsoft.Azure.Commands.DevTestLabs.Test.ScenarioTests
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     helper.RMProfileModule,
-                    helper.RMStorageDataPlaneModule,
                     helper.RMResourceModule,
                     helper.GetRMModulePath(@"AzureRM.DevTestLabs.psd1"));
 
@@ -149,17 +144,15 @@ namespace Microsoft.Azure.Commands.DevTestLabs.Test.ScenarioTests
 
         private void SetupManagementClients(MockContext context)
         {
-            ResourceManagementClient = GetResourceManagementClient();
-            SubscriptionClient = GetSubscriptionClient();
+            ResourceManagementClient = GetResourceManagementClient(context);
+            SubscriptionClient = GetSubscriptionClient(context);
             DevTestLabsClient = GetDevTestLabsManagementClient(context);
-            AuthorizationManagementClient = GetAuthorizationManagementClient();
             GalleryClient = GetGalleryClient();
 
             var armStorageManagementClient = GetArmStorageManagementClient();
             helper.SetupManagementClients(ResourceManagementClient,
                 SubscriptionClient,
                 DevTestLabsClient,
-                AuthorizationManagementClient,
                 GalleryClient,
                 armStorageManagementClient
                 );
@@ -170,14 +163,10 @@ namespace Microsoft.Azure.Commands.DevTestLabs.Test.ScenarioTests
             return LegacyTest.TestBase.GetServiceClient<StorageManagementClient>(this.csmTestFactory);
         }
 
-        private AuthorizationManagementClient GetAuthorizationManagementClient()
-        {
-            return LegacyTest.TestBase.GetServiceClient<AuthorizationManagementClient>(this.csmTestFactory);
-        }
 
-        private ResourceManagementClient GetResourceManagementClient()
+        private ResourceManagementClient GetResourceManagementClient(MockContext context)
         {
-            return LegacyTest.TestBase.GetServiceClient<ResourceManagementClient>(this.csmTestFactory);
+            return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private DevTestLabsClient GetDevTestLabsManagementClient(MockContext context)
@@ -185,9 +174,9 @@ namespace Microsoft.Azure.Commands.DevTestLabs.Test.ScenarioTests
             return context.GetServiceClient<DevTestLabsClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        private SubscriptionClient GetSubscriptionClient()
+        private SubscriptionClient GetSubscriptionClient(MockContext context)
         {
-            return LegacyTest.TestBase.GetServiceClient<SubscriptionClient>(this.csmTestFactory);
+            return context.GetServiceClient<SubscriptionClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private GalleryClient GetGalleryClient()

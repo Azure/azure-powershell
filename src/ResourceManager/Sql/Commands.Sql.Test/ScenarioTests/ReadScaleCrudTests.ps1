@@ -20,7 +20,7 @@ function Test-CreateUpdateDatabaseReadScale ($serverVersion = "12.0", $location 
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
-	$server = Create-ServerForTest $rg $serverVersion $location
+	$server = Create-ServerForTest $rg $location
 	
 	# Create with default values
 	$databaseName = Get-DatabaseName
@@ -48,7 +48,7 @@ function Test-GetDatabaseReadScale ($serverVersion = "12.0", $location = "Southe
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
-	$server = Create-ServerForTest $rg $serverVersion $location
+	$server = Create-ServerForTest $rg $location
 	
 	# Create with default values
 	$databaseName = Get-DatabaseName

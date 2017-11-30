@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
+Module Name: AzureRM.HDInsight
 ms.assetid: 92F21752-4FB6-4162-B542-DA25ACA3340B
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.hdinsight/set-azurermhdinsightpersistedscriptaction
 schema: 2.0.0
 ---
 
@@ -14,8 +15,7 @@ Sets a previously executed script action to be a persisted script action.
 
 ```
 Set-AzureRmHDInsightPersistedScriptAction [-ClusterName] <String> [-ScriptExecutionId] <Int64>
- [-ResourceGroupName <String>] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [<CommonParameters>]
+ [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,18 +51,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ScriptExecutionId
-Specifies the execution ID of the script action to promote to persisted.
-This script action must have succeeded in order to be promoted.
-You can find the script action execution ID using Get-AzureRmHDInsightScriptActionHistory.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Int64
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: 
+Aliases: AzureRmContext, AzureCredential
 
-Required: True
-Position: 1
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -83,40 +81,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
+### -ScriptExecutionId
+Specifies the execution ID of the script action to promote to persisted.
+This script action must have succeeded in order to be promoted.
+You can find the script action execution ID using Get-AzureRmHDInsightScriptActionHistory.
 
 ```yaml
-Type: ActionPreference
+Type: Int64
 Parameter Sets: (All)
-Aliases: infa
+Aliases: 
 
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
+Required: True
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -128,6 +104,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### System.Void
 
 ## NOTES
 

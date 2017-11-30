@@ -1,4 +1,4 @@
-﻿﻿﻿// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management;
@@ -53,7 +54,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            client = AzureSession.ClientFactory.CreateClient<ManagementClient>(base.DefaultContext, AzureEnvironment.Endpoint.ServiceManagement);
+            client = AzureSession.Instance.ClientFactory.CreateClient<ManagementClient>(base.DefaultContext, AzureEnvironment.Endpoint.ServiceManagement);
             WriteObject(client);
         }
 

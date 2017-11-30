@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.RecoveryServices.Backup.dll-Help.xml
+Module Name: AzureRM.RecoveryServices.Backup
 ms.assetid: DEB3D7B5-D974-472B-B8B4-9A19CA6AECCC
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupitem
 schema: 2.0.0
 ---
 
@@ -16,16 +17,14 @@ Gets the items from a container in Backup.
 ```
 Get-AzureRmRecoveryServicesBackupItem [-Container] <ContainerBase> [[-Name] <String>]
  [[-ProtectionStatus] <ItemProtectionStatus>] [[-ProtectionState] <ItemProtectionState>]
- [-WorkloadType] <WorkloadType> [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [<CommonParameters>]
+ [-WorkloadType] <WorkloadType> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetItemsForVault
 ```
 Get-AzureRmRecoveryServicesBackupItem [-BackupManagementType] <BackupManagementType> [[-Name] <String>]
  [[-ProtectionStatus] <ItemProtectionStatus>] [[-ProtectionState] <ItemProtectionState>]
- [-WorkloadType] <WorkloadType> [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [<CommonParameters>]
+ [-WorkloadType] <WorkloadType> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -50,123 +49,6 @@ The second command gets the Backup item named V2VM in $Container, and then store
 
 ## PARAMETERS
 
-### -Name
-Specifies the name of the container.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProtectionStatus
-Specifies the overall protection status of an item in the container.
-The acceptable values for this parameter are:
-
-- Healthy
-- Unhealthy
-
-```yaml
-Type: ItemProtectionStatus
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProtectionState
-Specifies the state of protection.
-The acceptable values for this parameter are:
-
-- IRPending.
-Initial synchronization has not started and there is no recovery point yet. 
-- Protected.
-Protection is ongoing. 
-- ProtectionError.
-There is a protection error.
-- ProtectionStopped.
-Protection is disabled.
-
-```yaml
-Type: ItemProtectionState
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 4
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WorkloadType
-Specifies the workload type. 
-The acceptable values for this parameter are:
-
-- AzureVM 
-- AzureSQLDatabase
-
-```yaml
-Type: WorkloadType
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 5
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -BackupManagementType
 Specifies the Backup management type.
 The acceptable values for this parameter are:
@@ -181,6 +63,7 @@ The acceptable values for this parameter are:
 Type: BackupManagementType
 Parameter Sets: GetItemsForVault
 Aliases: 
+Accepted values: AzureVM, MARS, SCDPM, AzureBackupServer, AzureSQL
 
 Required: True
 Position: 1
@@ -205,12 +88,112 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Specifies the name of the container.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProtectionState
+Specifies the state of protection.
+The acceptable values for this parameter are:
+
+- IRPending.
+Initial synchronization has not started and there is no recovery point yet. 
+- Protected.
+Protection is ongoing. 
+- ProtectionError.
+There is a protection error.
+- ProtectionStopped.
+Protection is disabled.
+
+```yaml
+Type: ItemProtectionState
+Parameter Sets: (All)
+Aliases: 
+Accepted values: IRPending, ProtectionError, Protected, ProtectionStopped
+
+Required: False
+Position: 4
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProtectionStatus
+Specifies the overall protection status of an item in the container.
+The acceptable values for this parameter are:
+
+- Healthy
+- Unhealthy
+
+```yaml
+Type: ItemProtectionStatus
+Parameter Sets: (All)
+Aliases: 
+Accepted values: Healthy, Unhealthy
+
+Required: False
+Position: 3
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WorkloadType
+Specifies the workload type. 
+The acceptable values for this parameter are:
+
+- AzureVM 
+- AzureSQLDatabase
+
+```yaml
+Type: WorkloadType
+Parameter Sets: (All)
+Aliases: 
+Accepted values: AzureVM, AzureSQLDatabase
+
+Required: True
+Position: 5
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase
+
+### System.Collections.Generic.IList`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase]
 
 ## NOTES
 

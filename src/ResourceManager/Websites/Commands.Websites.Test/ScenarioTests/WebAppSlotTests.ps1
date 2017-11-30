@@ -697,6 +697,13 @@ function Test-WebAppSlotPublishingProfile
 
 		# Assert
 		Assert-True { $fileZillaProfile.Name -eq $appWithSlotName3 }
+
+		# Get web app publishing profile without OutputFile
+		[xml]$profile = Get-AzureRmWebAppSlotPublishingProfile -ResourceGroupName $rgname -Name $appname -Slot $slotname
+
+		# Assert
+		Assert-NotNull $profile
+
 	}
 	finally
 	{
@@ -766,7 +773,7 @@ function Test-WebAppRegularSlotSwap
 	$destinationSlotName = "production"
 
 	# Swap Web App slots
-	$webApp = Swap-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -SourceSlotName $sourceSlotName -DestinationSlotName $destinationSlotName
+	$webApp = Switch-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -SourceSlotName $sourceSlotName -DestinationSlotName $destinationSlotName
 }
 
 <#
@@ -809,13 +816,13 @@ function Test-SlotSwapWithPreview($swapWithPreviewAction)
 	Validate-SlotSwapAppSetting $sourceWebApp $appSettingName $originalSourceAppSettingValue
 
 	# Let's apply slot config and make sure that app setting values have been swapped
-	Swap-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -SourceSlotName $sourceSlotName -DestinationSlotName $destinationSlotName -SwapWithPreviewAction 'ApplySlotConfig'
+	Switch-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -SourceSlotName $sourceSlotName -DestinationSlotName $destinationSlotName -SwapWithPreviewAction 'ApplySlotConfig'
 	Wait-Seconds 30
 	$sourceWebApp = Get-AzureRmWebAppSlot -ResourceGroupName $rgname -Name  $appname -Slot $sourceSlotName
 	Validate-SlotSwapAppSetting $sourceWebApp $appSettingName $originalDestinationAppSettingValue
 
 	# Let's finish the current slot swap operation (complete or reset)
-	Swap-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -SourceSlotName $sourceSlotName -DestinationSlotName $destinationSlotName -SwapWithPreviewAction $swapWithPreviewAction
+	Switch-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -SourceSlotName $sourceSlotName -DestinationSlotName $destinationSlotName -SwapWithPreviewAction $swapWithPreviewAction
 	Wait-Seconds 30
 	$sourceWebApp = Get-AzureRmWebAppSlot -ResourceGroupName $rgname -Name  $appname -Slot $sourceSlotName
 	Validate-SlotSwapAppSetting $sourceWebApp $appSettingName $originalSourceAppSettingValue

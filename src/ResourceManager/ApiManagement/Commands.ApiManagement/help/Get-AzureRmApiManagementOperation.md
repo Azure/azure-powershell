@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-ms.assetid: FFC7AF29-0514-47C8-BE90-363C4F397D7D
-online version: 
+Module Name: AzureRM.ApiManagement
+ms.assetid: D5EB9AFA-B56C-45E2-838B-4555ED1EF8F8
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/get-azurermapimanagementoperation
 schema: 2.0.0
 ---
 
@@ -12,16 +13,16 @@ Gets a list or a specified API Operation.
 
 ## SYNTAX
 
-### All API Operations (Default)
+### GetAllApiOperations (Default)
 ```
 Get-AzureRmApiManagementOperation -Context <PsApiManagementContext> -ApiId <String>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Find by ID
+### GetById
 ```
 Get-AzureRmApiManagementOperation -Context <PsApiManagementContext> -ApiId <String> -OperationId <String>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,34 +32,21 @@ The **Get-AzureRmApiManagementOperation** gets a list or a specified API Operati
 
 ### Example 1: Get all API management operations
 ```
-PS C:\>Get-AzureRmApiManagementOperation -Context $APImContext -ApiId $APIId
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Get-AzureRmApiManagementOperation -Context $apimContext -ApiId $APIId
 ```
 
 This command gets all API management operations.
 
 ### Example 2: Get an API Management operation by operation ID
 ```
-PS C:\>Get-AzureRmApiManagementOperation -Context $APImContext -ApiId $APIId -OperationId "Operation003"
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Get-AzureRmApiManagementOperation -Context $apimContext -ApiId $APIId -OperationId "Operation003"
 ```
 
 This command gets an API management operation by operation ID named Operation0003.
 
 ## PARAMETERS
-
-### -Context
-Specifies the instance of the **PsApiManagementContext** object.
-
-```yaml
-Type: PsApiManagementContext
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
 
 ### -ApiId
 Specifies the identifier of the API Operation.
@@ -75,12 +63,12 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -OperationId
-Specifies the operation identifier.
+### -Context
+Specifies the instance of the **PsApiManagementContext** object.
 
 ```yaml
-Type: String
-Parameter Sets: Find by ID
+Type: PsApiManagementContext
+Parameter Sets: (All)
 Aliases: 
 
 Required: True
@@ -90,22 +78,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+ 
+ ```yaml
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: infa
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -114,18 +93,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationVariable
-Specifies an information variable.
+### -OperationId
+Specifies the operation identifier.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: iv
+Parameter Sets: GetById
+Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -136,7 +115,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementOperation
+The details of the API Operation in Api Management service.
+
 ### IList<Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementOperation>
+The list of API Operation in Api Management service.
 
 ## NOTES
 

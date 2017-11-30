@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
+Module Name: AzureRM.Resources
 ms.assetid: A262DFD1-8B90-462C-A4E2-ABA0F51173FA
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/remove-azurermresource
 schema: 2.0.0
 ---
 
@@ -12,24 +13,25 @@ Removes a resource.
 
 ## SYNTAX
 
-### The resource Id. (Default)
+### ByResourceId (Default)
 ```
 Remove-AzureRmResource -ResourceId <String> [-ODataQuery <String>] [-Force] [-ApiVersion <String>] [-Pre]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Resource that resides at the tenant level.
-```
-Remove-AzureRmResource -ResourceName <String> -ResourceType <String> [-ExtensionResourceName <String>]
- [-ExtensionResourceType <String>] [-ODataQuery <String>] [-TenantLevel] [-Force] [-ApiVersion <String>] [-Pre]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Resource that resides at the subscription level.
+### BySubscriptionLevel
 ```
 Remove-AzureRmResource -ResourceName <String> -ResourceType <String> [-ExtensionResourceName <String>]
  [-ExtensionResourceType <String>] [-ODataQuery <String>] [-ResourceGroupName <String>] [-Force]
- [-ApiVersion <String>] [-Pre] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ByTenantLevel
+```
+Remove-AzureRmResource -ResourceName <String> -ResourceType <String> [-ExtensionResourceName <String>]
+ [-ExtensionResourceType <String>] [-ODataQuery <String>] [-TenantLevel] [-Force] [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -65,81 +67,17 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Force
-Forces the command to run without asking for user confirmation.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: SwitchParameter
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: 
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Specifies the name of the resource group from which this cmdlet removes a resource.
-
-```yaml
-Type: String
-Parameter Sets: Resource that resides at the subscription level.
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceType
-Specifies the type of the resource that this cmdlet removes.
-For instance, for a database, the resource type is as follows: 
-
-`Microsoft.Sql/Servers/Databases`
-
-```yaml
-Type: String
-Parameter Sets: Resource that resides at the tenant level., Resource that resides at the subscription level.
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -152,7 +90,7 @@ server name`/`database name
 
 ```yaml
 Type: String
-Parameter Sets: Resource that resides at the tenant level., Resource that resides at the subscription level.
+Parameter Sets: BySubscriptionLevel, ByTenantLevel
 Aliases: 
 
 Required: False
@@ -171,13 +109,28 @@ For instance:
 
 ```yaml
 Type: String
-Parameter Sets: Resource that resides at the tenant level., Resource that resides at the subscription level.
+Parameter Sets: BySubscriptionLevel, ByTenantLevel
 Aliases: 
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Force
+Forces the command to run without asking for user confirmation.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -212,6 +165,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ResourceGroupName
+Specifies the name of the resource group from which this cmdlet removes a resource.
+
+```yaml
+Type: String
+Parameter Sets: BySubscriptionLevel
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -ResourceId
 Specifies the fully qualified resource ID of the resource that this cmdlet removes.
 The ID includes the subscription, as in the following example: 
@@ -220,7 +188,7 @@ The ID includes the subscription, as in the following example:
 
 ```yaml
 Type: String
-Parameter Sets: The resource Id.
+Parameter Sets: ByResourceId
 Aliases: Id
 
 Required: True
@@ -238,8 +206,26 @@ For instance, to specify a database, use the following format:
 
 ```yaml
 Type: String
-Parameter Sets: Resource that resides at the tenant level., Resource that resides at the subscription level.
+Parameter Sets: BySubscriptionLevel, ByTenantLevel
 Aliases: Name
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceType
+Specifies the type of the resource that this cmdlet removes.
+For instance, for a database, the resource type is as follows: 
+
+`Microsoft.Sql/Servers/Databases`
+
+```yaml
+Type: String
+Parameter Sets: BySubscriptionLevel, ByTenantLevel
+Aliases: 
 
 Required: True
 Position: Named
@@ -253,12 +239,43 @@ Indicates that this cmdlet operates at the tenant level.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: Resource that resides at the tenant level.
+Parameter Sets: ByTenantLevel
 Aliases: 
 
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -269,6 +286,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### System.Boolean
 
 ## NOTES
 

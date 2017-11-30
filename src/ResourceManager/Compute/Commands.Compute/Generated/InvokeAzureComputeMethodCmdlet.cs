@@ -75,6 +75,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             "ImageListByResourceGroup",
             "ImageListByResourceGroupNext",
             "ImageListNext",
+            "ResourceSkuList",
+            "ResourceSkuListNext",
             "SnapshotCreateOrUpdate",
             "SnapshotDelete",
             "SnapshotGet",
@@ -85,6 +87,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             "SnapshotListNext",
             "SnapshotRevokeAccess",
             "SnapshotUpdate",
+            "VirtualMachineRunCommandGet",
+            "VirtualMachineRunCommandList",
+            "VirtualMachineRunCommandListNext",
+            "VirtualMachineScaleSetRollingUpgradeCancel",
+            "VirtualMachineScaleSetRollingUpgradeGetLatest",
+            "VirtualMachineScaleSetRollingUpgradeStartOSUpgrade",
             "VirtualMachineScaleSetCreateOrUpdate",
             "VirtualMachineScaleSetDeallocate",
             "VirtualMachineScaleSetDelete",
@@ -102,6 +110,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             "VirtualMachineScaleSetReimageAll",
             "VirtualMachineScaleSetRestart",
             "VirtualMachineScaleSetStart",
+            "VirtualMachineScaleSetUpdate",
             "VirtualMachineScaleSetUpdateInstances",
             "VirtualMachineScaleSetVMDeallocate",
             "VirtualMachineScaleSetVMDelete",
@@ -121,14 +130,17 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             "VirtualMachineDelete",
             "VirtualMachineGeneralize",
             "VirtualMachineGet",
+            "VirtualMachineInstanceView",
             "VirtualMachineList",
             "VirtualMachineListAll",
             "VirtualMachineListAllNext",
             "VirtualMachineListAvailableSizes",
             "VirtualMachineListNext",
+            "VirtualMachinePerformMaintenance",
             "VirtualMachinePowerOff",
             "VirtualMachineRedeploy",
             "VirtualMachineRestart",
+            "VirtualMachineRunCommand",
             "VirtualMachineStart"
         )]
         public virtual string MethodName { get; set; }
@@ -248,6 +260,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     case "ImageListNext":
                         ExecuteImageListNextMethod(argumentList);
                         break;
+                    case "ResourceSkuList":
+                        ExecuteResourceSkuListMethod(argumentList);
+                        break;
+                    case "ResourceSkuListNext":
+                        ExecuteResourceSkuListNextMethod(argumentList);
+                        break;
                     case "SnapshotCreateOrUpdate":
                         ExecuteSnapshotCreateOrUpdateMethod(argumentList);
                         break;
@@ -277,6 +295,24 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         break;
                     case "SnapshotUpdate":
                         ExecuteSnapshotUpdateMethod(argumentList);
+                        break;
+                    case "VirtualMachineRunCommandGet":
+                        ExecuteVirtualMachineRunCommandGetMethod(argumentList);
+                        break;
+                    case "VirtualMachineRunCommandList":
+                        ExecuteVirtualMachineRunCommandListMethod(argumentList);
+                        break;
+                    case "VirtualMachineRunCommandListNext":
+                        ExecuteVirtualMachineRunCommandListNextMethod(argumentList);
+                        break;
+                    case "VirtualMachineScaleSetRollingUpgradeCancel":
+                        ExecuteVirtualMachineScaleSetRollingUpgradeCancelMethod(argumentList);
+                        break;
+                    case "VirtualMachineScaleSetRollingUpgradeGetLatest":
+                        ExecuteVirtualMachineScaleSetRollingUpgradeGetLatestMethod(argumentList);
+                        break;
+                    case "VirtualMachineScaleSetRollingUpgradeStartOSUpgrade":
+                        ExecuteVirtualMachineScaleSetRollingUpgradeStartOSUpgradeMethod(argumentList);
                         break;
                     case "VirtualMachineScaleSetCreateOrUpdate":
                         ExecuteVirtualMachineScaleSetCreateOrUpdateMethod(argumentList);
@@ -328,6 +364,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         break;
                     case "VirtualMachineScaleSetStart":
                         ExecuteVirtualMachineScaleSetStartMethod(argumentList);
+                        break;
+                    case "VirtualMachineScaleSetUpdate":
+                        ExecuteVirtualMachineScaleSetUpdateMethod(argumentList);
                         break;
                     case "VirtualMachineScaleSetUpdateInstances":
                         ExecuteVirtualMachineScaleSetUpdateInstancesMethod(argumentList);
@@ -386,6 +425,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     case "VirtualMachineGet":
                         ExecuteVirtualMachineGetMethod(argumentList);
                         break;
+                    case "VirtualMachineInstanceView":
+                        ExecuteVirtualMachineInstanceViewMethod(argumentList);
+                        break;
                     case "VirtualMachineList":
                         ExecuteVirtualMachineListMethod(argumentList);
                         break;
@@ -401,6 +443,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     case "VirtualMachineListNext":
                         ExecuteVirtualMachineListNextMethod(argumentList);
                         break;
+                    case "VirtualMachinePerformMaintenance":
+                        ExecuteVirtualMachinePerformMaintenanceMethod(argumentList);
+                        break;
                     case "VirtualMachinePowerOff":
                         ExecuteVirtualMachinePowerOffMethod(argumentList);
                         break;
@@ -409,6 +454,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         break;
                     case "VirtualMachineRestart":
                         ExecuteVirtualMachineRestartMethod(argumentList);
+                        break;
+                    case "VirtualMachineRunCommand":
+                        ExecuteVirtualMachineRunCommandMethod(argumentList);
                         break;
                     case "VirtualMachineStart":
                         ExecuteVirtualMachineStartMethod(argumentList);
@@ -452,6 +500,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 case "ImageListByResourceGroup": return CreateImageListByResourceGroupDynamicParameters();
                 case "ImageListByResourceGroupNext": return CreateImageListByResourceGroupNextDynamicParameters();
                 case "ImageListNext": return CreateImageListNextDynamicParameters();
+                case "ResourceSkuList": return CreateResourceSkuListDynamicParameters();
+                case "ResourceSkuListNext": return CreateResourceSkuListNextDynamicParameters();
                 case "SnapshotCreateOrUpdate": return CreateSnapshotCreateOrUpdateDynamicParameters();
                 case "SnapshotDelete": return CreateSnapshotDeleteDynamicParameters();
                 case "SnapshotGet": return CreateSnapshotGetDynamicParameters();
@@ -462,6 +512,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 case "SnapshotListNext": return CreateSnapshotListNextDynamicParameters();
                 case "SnapshotRevokeAccess": return CreateSnapshotRevokeAccessDynamicParameters();
                 case "SnapshotUpdate": return CreateSnapshotUpdateDynamicParameters();
+                case "VirtualMachineRunCommandGet": return CreateVirtualMachineRunCommandGetDynamicParameters();
+                case "VirtualMachineRunCommandList": return CreateVirtualMachineRunCommandListDynamicParameters();
+                case "VirtualMachineRunCommandListNext": return CreateVirtualMachineRunCommandListNextDynamicParameters();
+                case "VirtualMachineScaleSetRollingUpgradeCancel": return CreateVirtualMachineScaleSetRollingUpgradeCancelDynamicParameters();
+                case "VirtualMachineScaleSetRollingUpgradeGetLatest": return CreateVirtualMachineScaleSetRollingUpgradeGetLatestDynamicParameters();
+                case "VirtualMachineScaleSetRollingUpgradeStartOSUpgrade": return CreateVirtualMachineScaleSetRollingUpgradeStartOSUpgradeDynamicParameters();
                 case "VirtualMachineScaleSetCreateOrUpdate": return CreateVirtualMachineScaleSetCreateOrUpdateDynamicParameters();
                 case "VirtualMachineScaleSetDeallocate": return CreateVirtualMachineScaleSetDeallocateDynamicParameters();
                 case "VirtualMachineScaleSetDelete": return CreateVirtualMachineScaleSetDeleteDynamicParameters();
@@ -479,6 +535,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 case "VirtualMachineScaleSetReimageAll": return CreateVirtualMachineScaleSetReimageAllDynamicParameters();
                 case "VirtualMachineScaleSetRestart": return CreateVirtualMachineScaleSetRestartDynamicParameters();
                 case "VirtualMachineScaleSetStart": return CreateVirtualMachineScaleSetStartDynamicParameters();
+                case "VirtualMachineScaleSetUpdate": return CreateVirtualMachineScaleSetUpdateDynamicParameters();
                 case "VirtualMachineScaleSetUpdateInstances": return CreateVirtualMachineScaleSetUpdateInstancesDynamicParameters();
                 case "VirtualMachineScaleSetVMDeallocate": return CreateVirtualMachineScaleSetVMDeallocateDynamicParameters();
                 case "VirtualMachineScaleSetVMDelete": return CreateVirtualMachineScaleSetVMDeleteDynamicParameters();
@@ -498,14 +555,17 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 case "VirtualMachineDelete": return CreateVirtualMachineDeleteDynamicParameters();
                 case "VirtualMachineGeneralize": return CreateVirtualMachineGeneralizeDynamicParameters();
                 case "VirtualMachineGet": return CreateVirtualMachineGetDynamicParameters();
+                case "VirtualMachineInstanceView": return CreateVirtualMachineInstanceViewDynamicParameters();
                 case "VirtualMachineList": return CreateVirtualMachineListDynamicParameters();
                 case "VirtualMachineListAll": return CreateVirtualMachineListAllDynamicParameters();
                 case "VirtualMachineListAllNext": return CreateVirtualMachineListAllNextDynamicParameters();
                 case "VirtualMachineListAvailableSizes": return CreateVirtualMachineListAvailableSizesDynamicParameters();
                 case "VirtualMachineListNext": return CreateVirtualMachineListNextDynamicParameters();
+                case "VirtualMachinePerformMaintenance": return CreateVirtualMachinePerformMaintenanceDynamicParameters();
                 case "VirtualMachinePowerOff": return CreateVirtualMachinePowerOffDynamicParameters();
                 case "VirtualMachineRedeploy": return CreateVirtualMachineRedeployDynamicParameters();
                 case "VirtualMachineRestart": return CreateVirtualMachineRestartDynamicParameters();
+                case "VirtualMachineRunCommand": return CreateVirtualMachineRunCommandDynamicParameters();
                 case "VirtualMachineStart": return CreateVirtualMachineStartDynamicParameters();
                 default: break;
             }

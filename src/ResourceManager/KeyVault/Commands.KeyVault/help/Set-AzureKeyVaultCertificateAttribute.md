@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
+Module Name: AzureRM.KeyVault
 ms.assetid: 3BD243C7-A40E-4061-93FF-DDE7DECAD0A7
-online version: http://go.microsoft.com/fwlink/?LinkId=822861
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/set-azurekeyvaultcertificateattribute
 schema: 2.0.0
 ---
 
@@ -14,7 +15,8 @@ Modifies editable attributes of a certificate.
 
 ```
 Set-AzureKeyVaultCertificateAttribute [-VaultName] <String> [-Name] <String> [[-Version] <String>]
- [-Enable <Boolean>] [-Tag <Hashtable>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Enable <Boolean>] [-Tag <Hashtable>] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,32 +27,32 @@ The **Set-AzureKeyVaultCertificateAttribute** cmdlet modifies the editable attri
 ### Example 1: Modify the tags associated with a certificate
 ```
 PS C:\>$Tags = @{ "Team" = "Azure" ; "Role" = "Engg" }
-PS C:\> Set-AzureKeyVaultCertificateAttribute -VaultName "ContosoKV01" -Name "TestCert01" -Tags $Tags
-PS C:\> Get-AzureKeyVaultCertificate -VaultName "ContosoKV01" -Name "TestCert01" 
+PS C:\> Set-AzureKeyVaultCertificateAttribute -VaultName "ContosoKV01" -Name "TestCert01" -Tag $Tags
+PS C:\> Get-AzureKeyVaultCertificate -VaultName "ContosoKV01" -Name "TestCert01"
 Name        : "TestCert01"
-Certificate : [Subject] 
+Certificate : [Subject]
                 CN=AZURE
 
-              [Issuer] 
+              [Issuer]
                 CN=AZURE
 
-              [Serial Number] 
+              [Serial Number]
                 5A2EF60501F241D6A4336841B36FEA41
 
-              [Not Before] 
+              [Not Before]
                 7/27/2016 6:50:01 PM
 
-              [Not After] 
+              [Not After]
                 7/27/2018 7:00:01 PM
 
-              [Thumbprint] 
+              [Thumbprint]
                 A565D568082FEE2BE33B356ECC3703C2E9886555
 
 Id          : https://ContosoKV01.vault.azure.net:443/certificates/tt02
 KeyId       : https://ContosoKV01.vault.azure.net:443/keys/tt02
 SecretId    : https://ContosoKV01.vault.azure.net:443/secrets/tt02
 Thumbprint  : A565D568082FEE2BE33B356ECC3703C2E9886555
-Tags        : {[Role, Engg], [Team, Azure]} 
+Tags        : {[Role, Engg], [Team, Azure]}
 Enabled     : True
 Created     : 7/28/2016 2:00:01 AM
 Updated     : 8/1/2016 5:37:48 PM
@@ -63,6 +65,21 @@ The second command sets the tags value of the certificate named TestCert01 to be
 The final command displays the TestCert01 certificate by using the Get-AzureKeyVaultCertificate cmdlet to verify the operation.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Enable
 Indicates whether to enable or disable a certificate.
@@ -81,8 +98,9 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the certificate to modify.
-This cmdlet constructs the FQDN of a certificate based on the key vault name, your currently selected environment, the certificate name, and the certificate version.
+Specifies the name of the certificate to modify. This cmdlet constructs the FQDN of a certificate
+based on the key vault name, your currently selected environment, the certificate name, and the
+certificate version.
 
 ```yaml
 Type: String
@@ -90,7 +108,7 @@ Parameter Sets: (All)
 Aliases: CertificateName
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -112,6 +130,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Tag
+Key-value pairs in the form of a hash table. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
+
+```yaml
+Type: Hashtable
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -VaultName
 Specifies the key vault name in which this cmdlet modifies a certificate.
 This cmdlet constructs the FQDN of a key vault based on the name and currently selected environment.
@@ -122,7 +157,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -138,7 +173,7 @@ Parameter Sets: (All)
 Aliases: CertificateVersion
 
 Required: False
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -156,23 +191,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-Specifies a hash table that contains certificate tags.
-If not specified, the existing tags of the sertificate remain unchanged.
-Remove a tag by specifying an empty Hashtable.
-
-```yaml
-Type: Hashtable
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -199,9 +217,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificate
+
 ## NOTES
 
 ## RELATED LINKS
 
 [Add-AzureKeyVaultCertificate](./Add-AzureKeyVaultCertificate.md)
-

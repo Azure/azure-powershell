@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Billing.Test.ScenarioTests.ScenarioTest;
+using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
@@ -26,6 +27,7 @@ namespace Microsoft.Azure.Commands.Billing.Test.ScenarioTests
         {
             _logger = new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output);
             ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
+            TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
         [Fact]
@@ -61,6 +63,13 @@ namespace Microsoft.Azure.Commands.Billing.Test.ScenarioTests
         public void TestGetInvoiceWithName()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetInvoiceWithName");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetInvoiceWithNames()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetInvoiceWithNames");
         }
     }
 }

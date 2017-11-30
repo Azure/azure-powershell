@@ -17,11 +17,12 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.RedisCache
 {
+    using Common.Authentication.Abstractions;
     using Microsoft.Azure.Management.Insights;
     using Microsoft.Azure.Management.Insights.Models;
     using Microsoft.Azure.Management.Redis;
     using Microsoft.Azure.Management.Redis.Models;
-    using Microsoft.Azure.Management.Resources;
+    using Microsoft.Azure.Management.Internal.Resources;
     using Microsoft.Rest.Azure;
     using System.Collections;
     using System.Collections.Generic;
@@ -33,11 +34,11 @@ namespace Microsoft.Azure.Commands.RedisCache
         private InsightsManagementClient _insightsClient;
         private ResourceManagementClient _resourceManagementClient;
 
-        public RedisCacheClient(AzureContext context)
+        public RedisCacheClient(IAzureContext context)
         {
-            _client = AzureSession.ClientFactory.CreateArmClient<RedisManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
-            _insightsClient = AzureSession.ClientFactory.CreateClient<InsightsManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
-            _resourceManagementClient = AzureSession.ClientFactory.CreateClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
+            _client = AzureSession.Instance.ClientFactory.CreateArmClient<RedisManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
+            _insightsClient = AzureSession.Instance.ClientFactory.CreateClient<InsightsManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
+            _resourceManagementClient = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
         }
         public RedisCacheClient() { }
 

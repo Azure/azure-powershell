@@ -1,6 +1,6 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/grant-azurermdiskaccess
 schema: 2.0.0
 ---
 
@@ -12,8 +12,9 @@ Grants an access to a disk.
 ## SYNTAX
 
 ```
-Grant-AzureRmDiskAccess [-WhatIf] [-Confirm] [-ResourceGroupName] <String> [-DiskName] <String>
- [-Access <AccessLevel>] [-DurationInSecond <Int32>] [<CommonParameters>]
+Grant-AzureRmDiskAccess [-ResourceGroupName] <String> [-DiskName] <String> [[-Access] <AccessLevel>]
+ [[-DurationInSecond] <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,6 +38,22 @@ Specifies Access level.
 Type: AccessLevel
 Parameter Sets: (All)
 Aliases: 
+Accepted values: None, Read
+
+Required: False
+Position: 3
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -69,7 +86,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: Named
+Position: 4
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.IotHub.dll-Help.xml
-online version: 
+Module Name: AzureRM.IotHub
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.iothub/new-azurermiothubexportdevices
 schema: 2.0.0
 ---
 
@@ -13,12 +14,15 @@ Creates a new export devices job.
 
 ```
 New-AzureRmIotHubExportDevices [-ResourceGroupName] <String> [-Name] <String>
- [-ExportBlobContainerUri] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ExportBlobContainerUri] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a new export devices job for the IotHub. This will export all the devices to the specified container. 
-Refer to the following article on how to generate the SAS URI. https://azure.microsoft.com/en-us/documentation/articles/iot-hub-bulk-identity-mgmt/ .
+Creates a new export devices job for the IotHub.
+This will export all the devices to the specified container. 
+Refer to the following article on how to generate the SAS URI.
+https://azure.microsoft.com/en-us/documentation/articles/iot-hub-bulk-identity-mgmt/ .
 
 ## EXAMPLES
 
@@ -31,8 +35,23 @@ Creates a new export device request for the IotHub "myiothub" excluding the keys
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ExportBlobContainerUri
-The Uri to export the blob to.
+The Uri to export the blob to. 
 
 ```yaml
 Type: String
@@ -47,7 +66,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the IoT hub.
+Name of the IotHub
 
 ```yaml
 Type: String
@@ -62,7 +81,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Name of the resource group.
+Resource Group Name
 
 ```yaml
 Type: String
@@ -86,13 +105,14 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: SwitchParameter
@@ -101,7 +121,7 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
