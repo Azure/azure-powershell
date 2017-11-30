@@ -1,4 +1,4 @@
-# ----------------------------------------------------------------------------------
+﻿# ----------------------------------------------------------------------------------
 #
 # Copyright Microsoft Corporation
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,10 +13,7 @@
 # ----------------------------------------------------------------------------------
 
 @{
-    # Sql aliases
-    "Get-AzureRmSqlDatabaseServerAuditingPolicy" = "Get-AzureRmSqlServerAuditingPolicy";
-    "Remove-AzureRmSqlDatabaseServerAuditing" = "Remove-AzureRmSqlServerAuditing";
-    "Set-AzureRmSqlDatabaseServerAuditingPolicy" = "Set-AzureRmSqlServerAuditingPolicy";
-    "Use-AzureRmSqlDatabaseServerAuditingPolicy" = "Use-AzureRmSqlServerAuditingPolicy";
-}.GetEnumerator() | Select @{Name='Name'; Expression={$_.Key}}, @{Name='Value'; Expression={$_.Value}} | New-Alias -Description "AzureAlias"
-
+    "Enable-AzureRmHDInsightOMS" = "Enable-AzureRmHDInsightOperationsManagementSuite";
+    "Disable-AzureRmHDInsightOMS" = "Disable-AzureRmHDInsightOperationsManagementSuite";
+	"Get-AzureRmHDInsightOMS" = "Get-AzureRmHDInsightOperationsManagementSuite";
+}.GetEnumerator() | Select @{Name='Name'; Expression={$_.Key}}, @{Name='Value'; Expression={$_.Value}} | Set-Alias -Description "AzureAlias"

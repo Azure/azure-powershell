@@ -113,8 +113,8 @@ CmdletsToExport = 'Disable-AzureRmDataCollection', 'Disable-AzureRmContextAutosa
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = 'Login-AzureRmAccount', 'Select-AzureRmSubscription', 'Resolve-Error', 
-               'Logout-AzAccount', 'Logout-AzureRmAccount', 'Login-AzAccount'
+AliasesToExport = 'Login-AzureRmAccount', 'Select-AzureRmSubscription', 'Save-AzureRmProfile', 'Resolve-Error', 
+               'Logout-AzAccount', 'Logout-AzureRmAccount', 'Login-AzAccount', 'Select-AzureRmProfile'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
