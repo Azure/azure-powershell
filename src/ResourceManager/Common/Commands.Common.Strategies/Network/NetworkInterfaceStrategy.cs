@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
             string name,
             NestedResourceConfig<Subnet, VirtualNetwork> subnet,
             ResourceConfig<PublicIPAddress> publicIPAddress,
-            ResourceConfig<NetworkSecurityGroup> networkSecurityGroup)
+            ResourceConfig<NetworkSecurityGroup> networkSecurityGroup = null)
             => Strategy.CreateConfig(
                 resourceGroup,
                 name,
@@ -53,10 +53,12 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
                             }
                         }
                     },
-                    NetworkSecurityGroup = new NetworkSecurityGroup
-                    {
-                        Id = networkSecurityGroup.GetId(subscription).IdToString()
-                    }
+                    NetworkSecurityGroup = networkSecurityGroup == null 
+                        ? null 
+                        : new NetworkSecurityGroup
+                        {
+                            Id = networkSecurityGroup.GetId(subscription).IdToString()
+                        }
                 },
                 new IEntityConfig[] { subnet, publicIPAddress, networkSecurityGroup });
     }
