@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '4.0.0'
+ModuleVersion = '4.0.1'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -54,8 +54,15 @@ CLRVersion = '4.0'
 RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '4.0.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = '.\Microsoft.Azure.Commands.RecoveryServices.Backup.Models.dll', 
-                     '.\Microsoft.Azure.Management.RecoveryServices.Backup.dll'
+RequiredAssemblies = '.\Microsoft.Azure.Commands.RecoveryServices.ARM.dll',
+                    '.\Microsoft.Azure.Commands.RecoveryServices.Backup.Models.dll', 
+                     '.\Microsoft.Azure.Management.RecoveryServices.Backup.dll',
+                     '.\Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers.dll',
+                     '.\Microsoft.Azure.Commands.RecoveryServices.Backup.Logger.dll',
+                     '.\Microsoft.Azure.Commands.RecoveryServices.Backup.Providers.dll',
+                     '.\Microsoft.Azure.Commands.RecoveryServices.Backup.ServiceClientAdapter.dll',
+                     '.\Microsoft.Azure.Management.RecoveryServices.dll',
+                     '.\Security.Cryptography.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -130,14 +137,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Added cmdlets to perform instant file recovery.
-    - Get-AzureRmRecoveryServicesBackupRPMountScript
-    - Disable-AzureRmRecoveryServicesBackupRPMountScript
-* Updated RecoveryServices.Backup SDK version to the latest
-* Updated tests for the Azure VM workload so that, all setups needed for test runs are done by the tests themselves.
-* Fixes https://github.com/Azure/azure-powershell/issues/3164
-* Add support for online help
-    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser'
+        ReleaseNotes = '* Fixed assembly loading issue that caused some cmdlets to fail when executing'
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''

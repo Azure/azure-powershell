@@ -329,6 +329,48 @@ function Test-UpdateDatabaseWithZoneRedundantNotSpecified ()
 	}
 }
 
+<#
+	.SYNOPSIS
+	Tests renaming a database
+#>
+function Test-RenameDatabase
+{
+	# Setup
+	$rg = Create-ResourceGroupForTest
+
+	try
+	{
+		$location = "westcentralus"
+		$server = Create-ServerForTest $rg $location
+	
+		# Create with default values
+		$databaseName = Get-DatabaseName
+		$db1 = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -MaxSizeBytes 1GB
+		Assert-AreEqual $db1.DatabaseName $databaseName
+
+		# Rename with params
+		$name2 = "name2"
+		$db2 = Set-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -NewName $name2
+		Assert-AreEqual $db2.DatabaseName $name2
+
+		Assert-ThrowsContains -script { $db1 | Get-AzureRmSqlDatabase } -message "not found"
+		$db2 | Get-AzureRmSqlDatabase
+
+		# Rename with piping
+		$name3 = "name3"
+		$db3 = $db2 | Set-AzureRmSqlDatabase -NewName $name3
+		Assert-AreEqual $db3.DatabaseName $name3
+
+		Assert-ThrowsContains -script { $db1 | Get-AzureRmSqlDatabase } -message "not found"
+		Assert-ThrowsContains -script { $db2 | Get-AzureRmSqlDatabase } -message "not found"
+		$db3 | Get-AzureRmSqlDatabase
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
 
 <#
 	.SYNOPSIS
