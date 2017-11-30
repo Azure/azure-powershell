@@ -14,6 +14,7 @@
 
 using System.Management.Automation;
 using Microsoft.Azure.Management.ContainerRegistry.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
