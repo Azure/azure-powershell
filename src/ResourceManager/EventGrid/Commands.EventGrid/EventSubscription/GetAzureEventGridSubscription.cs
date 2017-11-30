@@ -87,6 +87,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             Position = 2,
             HelpMessage = "Location",
             ParameterSetName = EventSubscriptionTopicTypeNameParameterSet)]
+        [LocationCompleter("Microsoft.EventGrid/eventSubscriptions")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 

@@ -47,6 +47,7 @@ namespace Microsoft.Azure.Commands.Management.PowerBIEmbedded.WorkspaceCollectio
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Location.")]
+        [LocationCompleter("Microsoft.PowerBI/workspaceCollections")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
