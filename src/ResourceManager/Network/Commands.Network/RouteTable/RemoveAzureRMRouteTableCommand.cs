@@ -28,6 +28,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using AutoMapper;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network.Automation
 {
@@ -38,6 +39,7 @@ namespace Microsoft.Azure.Commands.Network.Automation
             Mandatory = true,
             HelpMessage = "The resource group name of route table.",
             ValueFromPipelineByPropertyName = true)]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
