@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
     public class StopAzureDataFactoryPipelineRunCommand : DataFactoryContextBaseCmdlet
     {
         [Parameter(ParameterSetName = ParameterSetNames.ByInputObject, Position = 0, Mandatory = true, ValueFromPipeline = true,
-            HelpMessage = Constants.HelpPipelineRunId)]
+            HelpMessage = Constants.HelpPipelineRun)]
         [ValidateNotNullOrEmpty]
         public PSPipelineRun InputObject { get; set; }
 

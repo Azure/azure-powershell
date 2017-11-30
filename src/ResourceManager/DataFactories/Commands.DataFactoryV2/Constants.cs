@@ -114,6 +114,8 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public const string HelpPipelineRunId = "The Run ID of the pipeline.";
 
+        public const string HelpPipelineRun = "The information about the pipeline run.";
+
         public const string HelpActivityName = "The name of the activity.";
 
         public const string HelpParametersForRun = "Parameters for pipeline run.";

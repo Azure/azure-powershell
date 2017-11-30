@@ -47,7 +47,7 @@ Are you sure you want to stop pipeline run 'b9730a13-aa12-4926-a8b3-8e3a974ab0bd
 true
 ```
 
-This command stops the pipelin run with id b9730a13-aa12-4926-a8b3-8e3a974ab0bd in the factory WikiADF.
+This command stops the pipeline run with id b9730a13-aa12-4926-a8b3-8e3a974ab0bd in the factory WikiADF.
 
 ## PARAMETERS
 
