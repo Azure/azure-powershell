@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.Network.Automation
             {
                 Location = this.Location,
                 Routes = this.Route,
-                DisableBgpRoutePropagation = this.DisableBgpRoutePropagation
+                DisableBgpRoutePropagation = this.DisableBgpRoutePropagation.IsPresent
             };
 
             var vRouteTableModel = NetworkResourceManagerProfile.Mapper.Map<MNM.RouteTable>(vRouteTable);

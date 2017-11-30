@@ -77,8 +77,10 @@ Accept wildcard characters: False
 ```
 
 ### -DisableBgpRoutePropagation
-Disable BGP Route auto propagation.```yaml
-Type: Boolean
+Disable BGP Route auto propagation.
+
+```yaml
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
 

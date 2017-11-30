@@ -4,7 +4,6 @@
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
 
     ## Current Release
-    * Add DisableBgpRoutePropagation property in RouteTable and effectiveRoute.
     * Overview of change #1
         - Additional information about change #1
     * Overview of change #2
@@ -19,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Add DisableBgpRoutePropagation property in RouteTable and effectiveRoute.
 
 ## Version 5.0.0
 * NOTE: This is a breaking change release. Please see the migration guide (https://aka.ms/azps-migration-guide) for a full list of breaking changes introduced.
