@@ -432,6 +432,53 @@ function Test-RaPropertiesValidation
 
 <#
 .SYNOPSIS
+Tests verifies creation and validation of RoleAssignment with the use of delegation flag
+#>
+function Test-RaDelegation
+{
+    # Setup
+    $definitionName = 'Reader'
+    $users = Get-AzureRmADUser | Select-Object -First 1 -Wait
+    $subscription = Get-AzureRmSubscription
+    $resourceGroups = Get-AzureRmResourceGroup | Select-Object -Last 1 -Wait
+    $scope = '/subscriptions/'+ $subscription[0].Id +'/resourceGroups/' + $resourceGroups[0].ResourceGroupName
+    Assert-AreEqual 1 $users.Count "There should be at least one user to run the test."
+    
+    # Test
+    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("f747531e-da33-43b9-b726-04675abf1939")
+    $newAssignment = New-AzureRmRoleAssignment `
+                        -ObjectId $users[0].Id.Guid `
+                        -RoleDefinitionName $definitionName `
+                        -Scope $scope `
+                        -CanDelegate $true
+    $newAssignment.Scope = $scope.toUpper()
+
+    Assert-NotNull $newAssignment
+    Assert-AreEqual $definitionName $newAssignment.RoleDefinitionName 
+    Assert-AreEqual $scope $newAssignment.Scope 
+    Assert-AreEqual $users[0].DisplayName $newAssignment.DisplayName
+    Assert-AreEqual $true $newAssignment.CanDelegate
+
+    $assignments = Get-AzureRmRoleAssignment -ObjectId $users[0].Id.Guid -Scope $scope -RoleDefinitionName $definitionName
+    foreach ($assignment in $assignments){
+        Assert-NotNull $assignment
+        Assert-AreEqual $definitionName $assignment.RoleDefinitionName 
+        Assert-AreEqual $users[0].DisplayName $assignment.DisplayName
+        if($assignment.RoleAssignmentId -eq $newAssignment.RoleAssignmentId){
+            Assert-AreEqual $true $assignment.CanDelegate             
+        }
+    }
+
+
+    # cleanup 
+    DeleteRoleAssignment $newAssignment
+        
+    # Assert    
+    VerifyRoleAssignmentDeleted $newAssignment
+}
+
+<#
+.SYNOPSIS
 Creates role assignment
 #>
 function CreateRoleAssignment
