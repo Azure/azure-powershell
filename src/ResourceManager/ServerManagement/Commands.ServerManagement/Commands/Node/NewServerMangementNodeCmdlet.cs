@@ -19,12 +19,14 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Node
     using Base;
     using Management.ServerManagement;
     using Model;
+    using ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet(VerbsCommon.New, "AzureRmServerManagementNode"), OutputType(typeof(Node))]
     public class NewServerManagementNodeCmdlet : ServerManagementCmdlet
     {
         [Parameter(Mandatory = true, HelpMessage = "The targeted resource group.",
             ValueFromPipelineByPropertyName = true, ParameterSetName = "ByName", Position = 0)]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -35,6 +37,7 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Node
 
         [Parameter(Mandatory = true, HelpMessage = "The resource group location.",
             ValueFromPipelineByPropertyName = true, ParameterSetName = "ByName", Position = 2)]
+        [LocationCompleter("Microsoft.ServerManagement/nodes")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
