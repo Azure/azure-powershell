@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.EventHub.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -32,6 +33,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = "Resource Group Name.")]
+        [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
         [Parameter(

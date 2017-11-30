@@ -19,6 +19,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Management.Monitor.Management;
 using Microsoft.Azure.Management.Monitor.Management.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Insights.ActionGroups
 {
@@ -40,6 +41,7 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
         /// </summary>
         [Parameter(ParameterSetName = BySubscriptionOrResourceGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
         [Parameter(ParameterSetName = ByName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
         
