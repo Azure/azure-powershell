@@ -12,7 +12,7 @@ Set-StrictMode -Version Latest
 %IMPORTED-DEPENDENCIES%
 
 Get-ChildItem "$PSScriptRoot\StartupScripts" | ForEach-Object {
-    & $_.FullName
+    . $_.FullName
 }
 
 if ($PSVersionTable.PSVersion.Major -ge 5)
@@ -41,3 +41,5 @@ $FilteredCommands | ForEach-Object {
 			} 
 		})
 }
+
+Export-ModuleMember -Alias *

@@ -13,7 +13,7 @@
 # ----------------------------------------------------------------------------------
 
 @{
-    "List-AzureRmApplicationGatewayAvailableWafRuleSets" = "Get-AzureRmApplicationGatewayAvailableWafRuleSets"
-	"List-AzureRmApplicationGatewayAvailableSslOptions" = "Get-AzureRmApplicationGatewayAvailableSslOptions"
-	"List-AzureRmApplicationGatewaySslPredefinedPolicy" = "Get-AzureRmApplicationGatewaySslPredefinedPolicy"
-}.GetEnumerator() | Select @{Name='Name'; Expression={$_.Key}}, @{Name='Value'; Expression={$_.Value}} | New-Alias -Description "AzureAlias"
+    "Login-AzureAsAccount" = "Add-AzureAnalysisServicesAccount";
+    "Restart-AzureAsInstance" = "Restart-AzureAnalysisServicesInstance";
+	"Sync-AzureAsInstance" = "Sync-AzureAnalysisServicesInstance";
+}.GetEnumerator() | Select @{Name='Name'; Expression={$_.Key}}, @{Name='Value'; Expression={$_.Value}} | Set-Alias -Description "AzureAlias"

@@ -13,7 +13,13 @@
 # ----------------------------------------------------------------------------------
 
 @{
-    "Enable-AzureRmHDInsightOMS" = "Enable-AzureRmHDInsightOperationsManagementSuite";
-    "Disable-AzureRmHDInsightOMS" = "Disable-AzureRmHDInsightOperationsManagementSuite";
-	"Get-AzureRmHDInsightOMS" = "Get-AzureRmHDInsightOperationsManagementSuite";
-}.GetEnumerator() | Select @{Name='Name'; Expression={$_.Key}}, @{Name='Value'; Expression={$_.Value}} | New-Alias -Description "AzureAlias"
+    "Login-AzureRmAccount" = "Add-AzureRmAccount";
+    "Select-AzureRmSubscription" = "Set-AzureRmContext";
+	"Save-AzureRmProfile" = "Save-AzureRmContext";
+	"Select-AzureRmProfile" = "Import-AzureRmContext";
+	"Resolve-Error" = "Resolve-AzureRmError";
+	"Logout-AzAccount" = "Remove-AzureRmAccount";
+	"Logout-AzureRmAccount" = "Remove-AzureRmAccount";
+	"Login-AzAccount" = "Add-AzureRmAccount";
+}.GetEnumerator() | Select @{Name='Name'; Expression={$_.Key}}, @{Name='Value'; Expression={$_.Value}} | Set-Alias -Description "AzureAlias" | Out-Null
+

@@ -13,5 +13,5 @@
 # ----------------------------------------------------------------------------------
 
 @{
-    "New-AzureRmOperationalInsightsAzureAuditDataSource" = "New-AzureRmOperationalInsightsAzureActivityLogDataSource";
-}.GetEnumerator() | Select @{Name='Name'; Expression={$_.Key}}, @{Name='Value'; Expression={$_.Value}} | New-Alias -Description "AzureAlias"
+    "Get-AzureRmRecoveryServicesBackupProperty" = "Get-AzureRmRecoveryServicesBackupProperties";
+}.GetEnumerator() | Select @{Name='Name'; Expression={$_.Key}}, @{Name='Value'; Expression={$_.Value}} | Set-Alias -Description "AzureAlias"

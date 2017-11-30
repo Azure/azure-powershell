@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
     [Cmdlet(VerbsCommon.New, "AzureRmOperationalInsightsAzureActivityLogDataSource", SupportsShouldProcess = true, 
         DefaultParameterSetName = ByWorkspaceName), OutputType(typeof(PSDataSource))]
     [Alias("New-AzureRmOperationalInsightsAzureAuditDataSource")]
-    public class NewAzureOperationalInsightsAzureActivityLogDataSourceCommand : NewAzureOperationalInsightsDataSourceBaseCmdlet, IModuleAssemblyInitializer
+    public class NewAzureOperationalInsightsAzureActivityLogDataSourceCommand : NewAzureOperationalInsightsDataSourceBaseCmdlet
     {
         [Parameter(Position = 0, ParameterSetName = ByWorkspaceObject, Mandatory = true, ValueFromPipeline = true,
             HelpMessage = "The workspace that will contain the data source.")]
@@ -73,28 +73,6 @@ namespace Microsoft.Azure.Commands.OperationalInsights
             };
 
             CreatePSDataSourceWithProperties(auditLogProperties);
-        }
-
-
-        /// <summary>
-        /// Load global aliases for ARM
-        /// </summary>
-        public void OnImport()
-        {
-            try
-            {
-                System.Management.Automation.PowerShell invoker = null;
-                invoker = System.Management.Automation.PowerShell.Create(RunspaceMode.CurrentRunspace);
-                invoker.AddScript(File.ReadAllText(FileUtilities.GetContentFilePath(
-                    Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
-                    "OperationalInsightsStartup.ps1")));
-                invoker.Invoke();
-            }
-            catch
-            {
-                // This will throw exception for tests, ignore.
-            }
-
         }
     }
 }
