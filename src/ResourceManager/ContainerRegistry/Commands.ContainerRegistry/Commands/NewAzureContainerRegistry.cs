@@ -58,6 +58,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         [Parameter(
             Mandatory = false,
             HelpMessage = "Container Registry Location. Default to the location of the resource group.")]
+        [LocationCompleter("Microsoft.ContainerRegistry/registries")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
