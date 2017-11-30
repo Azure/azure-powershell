@@ -63,6 +63,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             Position = 2,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the Azure region in which to create the key vault. Use the command Get-AzureRmResourceProvider with the ProviderNamespace parameter to see your choices.")]
+        [LocationCompleter("Microsoft.KeyVault/vaults")]
         [ValidateNotNullOrEmpty()]
         public string Location { get; set; }
 

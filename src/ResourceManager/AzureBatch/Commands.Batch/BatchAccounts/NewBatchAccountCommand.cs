@@ -32,6 +32,7 @@ namespace Microsoft.Azure.Commands.Batch
 
         [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The region where the account will be created.")]
+        [LocationCompleter("Microsoft.Batch/batchAccounts")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
