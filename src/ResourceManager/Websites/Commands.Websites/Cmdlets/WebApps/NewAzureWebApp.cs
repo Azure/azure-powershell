@@ -48,6 +48,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         public string Name { get; set; }
 
         [Parameter(Position = 2, Mandatory = true, HelpMessage = "The Location of the web app eg: West US.")]
+        [LocationCompleter("Microsoft.Web/sites")]
         public string Location { get; set; }
 
         [Parameter(Position = 3, Mandatory = false, HelpMessage = "The name of the app service plan eg: Default1.")]
