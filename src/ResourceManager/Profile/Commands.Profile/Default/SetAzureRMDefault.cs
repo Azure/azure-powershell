@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Profile.Default
         private const string ResourceGroupNameParameterSet = "ResourceGroupName";
 
         [Parameter(ParameterSetName = ResourceGroupNameParameterSet, Mandatory = false, HelpMessage = "Name of the resource group being set as default", ValueFromPipelineByPropertyName = true)]
-        [ResourceGroupCompleter()]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

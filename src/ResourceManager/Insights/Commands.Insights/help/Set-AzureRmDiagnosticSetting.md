@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
 Module Name: AzureRM.Insights
 ms.assetid: B5F2388E-0136-4F8A-8577-67CE2A45671E
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.insights/set-azurermdiagnosticsetting
 schema: 2.0.0
 ---
 
@@ -26,6 +26,8 @@ Set-AzureRmDiagnosticSetting -ResourceId <String> [-StorageAccountId <String>] [
 The **Set-AzureRmDiagnosticSetting** cmdlet enables or disables each time grain and log category for the particular resource.
 
 The logs and metrics are stored in the specified storage account.
+
+This cmdlet implements the ShouldProcess pattern, i.e. it might request confirmation from the user before actually creating, modifying, or removing the resource.
 
 ## EXAMPLES
 

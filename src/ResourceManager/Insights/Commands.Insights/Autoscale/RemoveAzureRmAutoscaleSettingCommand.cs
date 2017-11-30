@@ -14,13 +14,14 @@
 
 using System.Net;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Insights.Autoscale
 {
     /// <summary>
     /// Remove an autoscale setting.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmAutoscaleSetting"), OutputType(typeof(AzureOperationResponse))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmAutoscaleSetting", SupportsShouldProcess = true), OutputType(typeof(AzureOperationResponse))]
     public class RemoveAzureRmAutoscaleSettingCommand : ManagementCmdletBase
     {
         internal const string RemoveAzureRmAutoscaleSettingParamGroup = "RemoveAutoscaleSetting";
@@ -31,8 +32,10 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// Gets or sets the ResourceGroupName parameter of the cmdlet
         /// </summary>
         [Parameter(ParameterSetName = RemoveAzureRmAutoscaleSettingParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroup { get; set; }
+        [Alias("ResourceGroup")]
+        public string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets the autoscale setting name parameter of the cmdlet
@@ -48,17 +51,22 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// </summary>
         protected override void ProcessRecordInternal()
         {
-            var result = this.MonitorManagementClient.AutoscaleSettings.DeleteWithHttpMessagesAsync(resourceGroupName: this.ResourceGroup, autoscaleSettingName: this.Name).Result;
-
-            // Keep this response for backwards compatibility.
-            // Note: Delete operations return nothing in the new specification.
-            var response = new AzureOperationResponse
+            if (ShouldProcess(
+                target: string.Format("Remove an autoscale setting: {0} from resource group: {1}", this.Name, this.ResourceGroupName),
+                action: "Remove an autoscale setting"))
             {
-                RequestId = result.RequestId,
-                StatusCode = result.Response != null ? result.Response.StatusCode : HttpStatusCode.OK
-            };
+                var result = this.MonitorManagementClient.AutoscaleSettings.DeleteWithHttpMessagesAsync(resourceGroupName: this.ResourceGroupName, autoscaleSettingName: this.Name).Result;
 
-            WriteObject(response);
+                // Keep this response for backwards compatibility.
+                // Note: Delete operations return nothing in the new specification.
+                var response = new AzureOperationResponse
+                {
+                    RequestId = result.RequestId,
+                    StatusCode = result.Response != null ? result.Response.StatusCode : HttpStatusCode.OK
+                };
+
+                WriteObject(response);
+            }
         }
     }
 }

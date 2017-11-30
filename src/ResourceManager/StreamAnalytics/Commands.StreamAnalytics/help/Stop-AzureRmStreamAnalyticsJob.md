@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.StreamAnalytics.dll-Help.xml
 Module Name: AzureRM
 ms.assetid: 1EC96B4E-7731-4EE3-A0C1-EA0793F0FE5C
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.streamanalytics/stop-azurermstreamanalyticsjob
 schema: 2.0.0
 ---
 

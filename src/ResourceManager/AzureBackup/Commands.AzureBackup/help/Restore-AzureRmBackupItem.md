@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.AzureBackup.dll-Help.xml
 Module Name: AzureRM.Backup
 ms.assetid: 856B76FC-88ED-4A29-9DC6-C482398D702E
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.backup/restore-azurermbackupitem
 schema: 2.0.0
 ---
 

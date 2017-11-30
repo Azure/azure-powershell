@@ -40,6 +40,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();
+
             var result = SiteRecoveryAutoMapperProfile.Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
             return result;
         }
@@ -98,7 +99,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();
-            var result = SiteRecoveryAutoMapperProfile.Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
+
+            var result = SiteRecoveryAutoMapperProfile.Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);	
             return result;
         }
 
@@ -116,6 +118,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();
+
             var result = SiteRecoveryAutoMapperProfile.Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
             return result;
         }
@@ -137,6 +140,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();
+
             var result = SiteRecoveryAutoMapperProfile.Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
             return result;
         }
@@ -158,6 +162,29 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();
+
+            var result = SiteRecoveryAutoMapperProfile.Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
+            return result;
+        }
+
+        /// <summary>
+        ///     Starts Azure Site Recovery test failover cleanup.
+        /// </summary>
+        /// <param name="recoveryPlanName">Recovery Plan Name.</param>
+        /// <param name="input">Recovery Plan Test Failover cleanup input.</param>
+        /// <returns>Job response</returns>
+        public PSSiteRecoveryLongRunningOperation StartAzureSiteRecoveryTestFailoverCleanup(
+            string recoveryPlanName,
+            RecoveryPlanTestFailoverCleanupInput input)
+        {
+            var op = this.GetSiteRecoveryClient()
+                .ReplicationRecoveryPlans.BeginTestFailoverCleanupWithHttpMessagesAsync(
+                    recoveryPlanName,
+                    input,
+                    this.GetRequestHeaders(true))
+                .GetAwaiter()
+                .GetResult();
+
             var result = SiteRecoveryAutoMapperProfile.Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
             return result;
         }
@@ -179,6 +206,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();
+
             var result = SiteRecoveryAutoMapperProfile.Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
             return result;
         }
@@ -197,6 +225,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();
+
             var result = SiteRecoveryAutoMapperProfile.Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
             return result;
         }
@@ -218,6 +247,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();
+
             var result = SiteRecoveryAutoMapperProfile.Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
             return result;
         }

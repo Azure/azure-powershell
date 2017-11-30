@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
 Module Name: AzureRM.KeyVault
-online version: https://msdn.microsoft.com/en-us/library/dn868052.aspx
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/update-azurekeyvaultmanagedstorageaccountkey
 schema: 2.0.0
 ---
 

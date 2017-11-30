@@ -41,6 +41,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.Null(environment.AdTenant);
             Assert.Null(environment.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix);
             Assert.Null(environment.AzureDataLakeStoreFileSystemEndpointSuffix);
+            Assert.Null(environment.DataLakeEndpointResourceId);
             Assert.Null(environment.AzureKeyVaultDnsSuffix);
             Assert.Null(environment.AzureKeyVaultServiceEndpointResourceId);
             Assert.False(environment.EnableAdfsAuthentication);
@@ -65,19 +66,19 @@ namespace Microsoft.Azure.Commands.Profile.Test
             "https://graph.windows.net", "https://graph.windows.net/", "https://manage.windowsazure.com",
             "https://manage.windowsazure.com/publishsettings", "https://management.azure.com",
             "https://management.core.windows.net", ".sql.azure.com", ".core.windows.net",
-            ".trafficmanager.windows.net", "https://batch.core.windows.net")]
+            ".trafficmanager.windows.net", "https://batch.core.windows.net", "https://datalake.azure.net")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanConvertValidEnvironments(string name, bool onPremise, string activeDirectory, string serviceResource,
             string adTenant, string dataLakeJobs, string dataLakeFiles, string kvDnsSuffix,
             string kvResource, string gallery, string graph, string graphResource, string portal,
             string publishSettings, string resourceManager, string serviceManagement,
-            string sqlSuffix, string storageSuffix, string trafficManagerSuffix, string batchResource)
+            string sqlSuffix, string storageSuffix, string trafficManagerSuffix, string batchResource, string dataLakeResource)
         {
             AzureEnvironment azEnvironment = CreateEnvironment(name, onPremise, activeDirectory,
                 serviceResource, adTenant, dataLakeJobs, dataLakeFiles, kvDnsSuffix,
                 kvResource, gallery, graph, graphResource, portal, publishSettings,
                 resourceManager, serviceManagement, sqlSuffix, storageSuffix,
-                trafficManagerSuffix, batchResource);
+                trafficManagerSuffix, batchResource, dataLakeResource);
             var environment = (PSAzureEnvironment)azEnvironment;
             Assert.NotNull(environment);
             CheckEndpoint(AzureEnvironment.Endpoint.ActiveDirectory, azEnvironment,
@@ -90,6 +91,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 environment.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix);
             CheckEndpoint(AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix, azEnvironment,
                 environment.AzureDataLakeStoreFileSystemEndpointSuffix);
+            CheckEndpoint(AzureEnvironment.Endpoint.DataLakeEndpointResourceId, azEnvironment,
+                environment.DataLakeEndpointResourceId);
             CheckEndpoint(AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix, azEnvironment,
                 environment.AzureKeyVaultDnsSuffix);
             CheckEndpoint(AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId, azEnvironment,
@@ -133,6 +136,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.False(environment.IsEndpointSet(AzureEnvironment.Endpoint.AdTenant));
             Assert.False(environment.IsEndpointSet(AzureEnvironment.Endpoint.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix));
             Assert.False(environment.IsEndpointSet(AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix));
+            Assert.False(environment.IsEndpointSet(AzureEnvironment.Endpoint.DataLakeEndpointResourceId));
             Assert.False(environment.IsEndpointSet(AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix));
             Assert.False(environment.IsEndpointSet(AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId));
             Assert.False(environment.OnPremise);
@@ -156,13 +160,13 @@ namespace Microsoft.Azure.Commands.Profile.Test
             "https://graph.windows.net", "https://graph.windows.net/", "https://manage.windowsazure.com",
             "https://manage.windowsazure.com/publishsettings", "https://management.azure.com",
             "https://management.core.windows.net", ".sql.azure.com", ".core.windows.net",
-            ".trafficmanager.windows.net", "https://batch.core.windows.net")]
+            ".trafficmanager.windows.net", "https://batch.core.windows.net", "https://datalake.azure.net")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanConvertValidPSEnvironments(string name, bool onPremise, string activeDirectory, string serviceResource,
             string adTenant, string dataLakeJobs, string dataLakeFiles, string kvDnsSuffix,
             string kvResource, string gallery, string graph, string graphResource, string portal,
             string publishSettings, string resourceManager, string serviceManagement,
-            string sqlSuffix, string storageSuffix, string trafficManagerSuffix, string batchResource)
+            string sqlSuffix, string storageSuffix, string trafficManagerSuffix, string batchResource, string dataLakeResource)
         {
             PSAzureEnvironment environment = new PSAzureEnvironment
             {
@@ -173,6 +177,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 AdTenant = adTenant,
                 AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix = dataLakeJobs,
                 AzureDataLakeStoreFileSystemEndpointSuffix = dataLakeFiles,
+                DataLakeEndpointResourceId = dataLakeResource,
                 AzureKeyVaultDnsSuffix = kvDnsSuffix,
                 AzureKeyVaultServiceEndpointResourceId = kvResource,
                 GalleryUrl = gallery,
@@ -199,6 +204,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 environment.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix);
             CheckEndpoint(AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix, azEnvironment,
                 environment.AzureDataLakeStoreFileSystemEndpointSuffix);
+            CheckEndpoint(AzureEnvironment.Endpoint.DataLakeEndpointResourceId, azEnvironment,
+                environment.DataLakeEndpointResourceId);
             CheckEndpoint(AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix, azEnvironment,
                 environment.AzureKeyVaultDnsSuffix);
             CheckEndpoint(AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId, azEnvironment,
@@ -234,7 +241,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             string adTenant, string dataLakeJobs, string dataLakeFiles, string kvDnsSuffix,
             string kvResource, string gallery, string graph, string graphResource, string portal,
             string publishSettings, string resourceManager, string serviceManagement,
-            string sqlSuffix, string storageSuffix, string trafficManagerSuffix, string batchResource)
+            string sqlSuffix, string storageSuffix, string trafficManagerSuffix, string batchResource, string dataLakeResource)
         {
             var environment = new AzureEnvironment() { Name = name, OnPremise = onPremise };
             SetEndpoint(AzureEnvironment.Endpoint.ActiveDirectory, environment, activeDirectory);
@@ -248,6 +255,9 @@ namespace Microsoft.Azure.Commands.Profile.Test
             CheckEndpoint(AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix,
                 environment,
                 dataLakeFiles);
+            CheckEndpoint(AzureEnvironment.Endpoint.DataLakeEndpointResourceId,
+                environment,
+                dataLakeResource);
             CheckEndpoint(AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix, environment,
                 kvDnsSuffix);
             CheckEndpoint(AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId,

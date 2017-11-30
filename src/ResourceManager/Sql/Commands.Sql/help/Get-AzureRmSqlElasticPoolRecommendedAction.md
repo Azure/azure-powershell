@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
 Module Name: AzureRM.Sql
 ms.assetid: 3FC9E586-3962-437E-B89F-BB4EA1FBF403
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/get-azurermsqlelasticpoolrecommendedaction
 schema: 2.0.0
 ---
 

@@ -16,6 +16,7 @@ using Hyak.Common;
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Commands.HDInsight.Models.Job;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.HDInsight.Job.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using System.IO;
@@ -77,6 +78,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
 
         [Parameter(HelpMessage = "Gets or sets the name of the resource group.")]
+        [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
         [Parameter(HelpMessage = "The type of job output.")]

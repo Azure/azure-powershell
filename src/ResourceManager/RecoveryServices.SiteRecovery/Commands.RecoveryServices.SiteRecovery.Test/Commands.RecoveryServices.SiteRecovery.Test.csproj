@@ -48,7 +48,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.RecoveryServices.SiteRecovery, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.RecoveryServices.SiteRecovery.1.0.1-preview\lib\net452\Microsoft.Azure.Management.RecoveryServices.SiteRecovery.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.RecoveryServices.SiteRecovery.1.0.2-preview\lib\net452\Microsoft.Azure.Management.RecoveryServices.SiteRecovery.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -71,11 +71,11 @@
       <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.3\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.8\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.10\lib\net452\Microsoft.Rest.ClientRuntime.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.3.3.7\lib\net45\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.3.3.10\lib\net452\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -142,54 +142,124 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScenarioTests\B2A\AsrB2ATests.cs" />
+    <Compile Include="ScenarioTests\Common\AsrTests.cs" />
     <Compile Include="ScenarioTests\Constants.cs" />
-    <Compile Include="ScenarioTests\AsrTests.cs" />
+    <Compile Include="ScenarioTests\E2A\AsrE2ATests.cs" />
+    <Compile Include="ScenarioTests\E2E\AsrE2ETests.cs" />
     <Compile Include="ScenarioTests\AsrTestsBase.cs" />
+    <Compile Include="ScenarioTests\V2A\AsrV2ATests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="ScenarioTests\AsrTests.ps1">
+    <None Include="ScenarioTests\B2A\AsrB2ATests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="ScenarioTests\vaultSettings.VaultCredentials">
+    <None Include="ScenarioTests\B2A\B2A.VaultCredentials">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Test.ScenarioTests.AsrTests\EnumerationTests.json">
+    <None Include="ScenarioTests\Common\AsrTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Test.ScenarioTests.AsrTests\FabricTests.json">
+    <None Include="ScenarioTests\Common\Common.VaultCredentials">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Test.ScenarioTests.AsrTests\NewModelE2ETest.json">
+    <None Include="ScenarioTests\E2A\AsrE2ATests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Test.ScenarioTests.AsrTests\TestCreatePCMap.json">
+    <None Include="ScenarioTests\E2A\E2A.VaultCredentials">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Test.ScenarioTests.AsrTests\TestCreatePolicy.json">
+    <None Include="ScenarioTests\V2A\AsrV2ATests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Test.ScenarioTests.AsrTests\TestCreateRP.json">
+    <None Include="ScenarioTests\E2E\AsrE2ETests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Test.ScenarioTests.AsrTests\TestDisableDR.json">
+    <None Include="ScenarioTests\V2A\V2A.VaultCredentials">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Test.ScenarioTests.AsrTests\TestEnableDR.json">
+    <None Include="ScenarioTests\E2E\E2E.VaultCredentials">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Test.ScenarioTests.AsrTests\TestEnumerateRP.json">
+    <None Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrB2ATests\*.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Test.ScenarioTests.AsrTests\TestRemovePCMap.json">
+    <None Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrCommonTests\EnumerationTests.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Test.ScenarioTests.AsrTests\TestRemovePolicy.json">
+    <None Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrCommonTests\FabricTests.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Test.ScenarioTests.AsrTests\TestRemoveRP.json">
+    <None Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrCommonTests\V2AEvent.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrCommonTests\V2AGetJobTest.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrCommonTests\V2AGetNotificationTest.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrE2ATests\*.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrE2ETests\*.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrV2ATests\SetRPI.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrV2ATests\TestRPJob.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrV2ATests\V2AAddPI.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrV2ATests\V2ACreateRPI.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrV2ATests\V2AFabricTests.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrV2ATests\v2aFailbackReprotect.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrV2ATests\V2AFailoverJob.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrV2ATests\V2APCMappingTest.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrV2ATests\V2APCTest.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrV2ATests\V2APolicyTest.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrV2ATests\V2APSSwitch.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrV2ATests\V2ATestJob.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrV2ATests\V2ATestReprotect.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrV2ATests\V2ATestResync.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrV2ATests\V2ATFOJob.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrV2ATests\V2AUpdateMS.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrV2ATests\V2AUpdateSP.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrV2ATests\V2AVCenterTest.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
@@ -213,6 +283,10 @@
     <ProjectReference Include="..\..\Common\Commands.ScenarioTests.ResourceManager.Common\Commands.ScenarioTests.ResourceManager.Common.csproj">
       <Project>{3436a126-edc9-4060-8952-9a1be34cdd95}</Project>
       <Name>Commands.ScenarioTests.ResourceManager.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\RecoveryServices\Commands.RecoveryServices\Commands.RecoveryServices.csproj">
+      <Project>{604260DC-B392-4CF4-81EC-34B14591E2D2}</Project>
+      <Name>Commands.RecoveryServices</Name>
     </ProjectReference>
     <ProjectReference Include="..\Commands.RecoveryServices.SiteRecovery\Commands.RecoveryServices.SiteRecovery.csproj">
       <Project>{7c879645-31ee-4a78-ad81-5512300fa105}</Project>

@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
 ms.assetid: 75E30205-97AD-44E3-A61F-62B81ADB532C
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/remove-azurermlocalnetworkgateway
 schema: 2.0.0
 ---
 

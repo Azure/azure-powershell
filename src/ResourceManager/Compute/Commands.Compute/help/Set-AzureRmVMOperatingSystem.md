@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 ms.assetid: 39AADD19-2EDD-4C1F-BC9E-22186DD9A085
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/set-azurermvmoperatingsystem
 schema: 2.0.0
 ---
 

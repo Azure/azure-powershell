@@ -18,11 +18,13 @@ namespace Microsoft.Azure.Commands.RedisCache
     using System.Collections.Generic;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.RedisCache.Properties;
+    using ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet(VerbsData.Import, "AzureRmRedisCache", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class ImportAzureRedisCache : RedisCacheCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Name of resource group under which cache exists.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

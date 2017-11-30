@@ -16,7 +16,9 @@ using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.Rest.Azure.Authentication;
+#if NETSTANDARD
 using Microsoft.WindowsAzure.Commands.Common;
+#endif
 using System;
 using System.Collections.Generic;
 using System.Security;
@@ -80,10 +82,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             return context.AcquireToken(config.ResourceClientUri, credential);
 #else
             var credential = new ClientCredential(appId, ConversionUtilities.SecureStringToString(appKey));
-            return context.AcquireTokenAsync(context.Authority, credential)
-						  .ConfigureAwait(false).GetAwaiter().GetResult();
-#endif        
-		}
+            return context.AcquireTokenAsync(config.ResourceClientUri, credential).ConfigureAwait(false).GetAwaiter().GetResult();
+#endif
+        }
 
         private AuthenticationResult AcquireTokenWithCertificate(
             AdalConfiguration config,
