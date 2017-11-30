@@ -34,8 +34,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Management.EventGrid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.EventGrid.1.0.0-preview\lib\net452\Microsoft.Azure.Management.EventGrid.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.EventGrid, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.EventGrid.1.1.0-preview\lib\net452\Microsoft.Azure.Management.EventGrid.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.10\lib\net452\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.3.3.10\lib\net452\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
@@ -45,6 +57,7 @@
     <Compile Include="EventSubscription\GetAzureEventGridSubscription.cs" />
     <Compile Include="EventSubscription\NewAzureEventGridSubscription.cs" />
     <Compile Include="EventSubscription\RemoveAzureEventGridSubscription.cs" />
+    <Compile Include="EventSubscription\UpdateAzureEventGridSubscription.cs" />
     <Compile Include="Models\PSEventSubscription.cs" />
     <Compile Include="Models\PSEventSubscriptionListInstance.cs" />
     <Compile Include="Models\PSTopic.cs" />
@@ -59,6 +72,7 @@
     <Compile Include="Topic\NewAzureEventGridTopicKey.cs" />
     <Compile Include="Topic\RemoveAzureEventGridTopic.cs" />
     <Compile Include="Topic\SetAzureEventGridTopic.cs" />
+    <Compile Include="Topic\UpdateAzureEventGridTopic.cs" />
     <Compile Include="Utilities\EventGridClient.cs" />
     <Compile Include="Utilities\EventGridConstants.cs" />
     <Compile Include="Utilities\EventGridUtils.cs" />

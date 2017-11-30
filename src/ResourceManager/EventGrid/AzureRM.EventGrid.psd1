@@ -72,12 +72,12 @@ NestedModules = @('.\Microsoft.Azure.Commands.EventGrid.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'New-AzureRmEventGridTopic', 'Get-AzureRmEventGridTopic', 
-               'Set-AzureRmEventGridTopic', 'New-AzureRmEventGridTopicKey', 
-               'Get-AzureRmEventGridTopicKey', 'Remove-AzureRmEventGridTopic', 
-               'New-AzureRmEventGridSubscription', 
-               'Remove-AzureRmEventGridSubscription', 
-               'Get-AzureRmEventGridSubscription', 'Get-AzureRmEventGridTopicType'
+CmdletsToExport = 'New-AzureRmEventGridTopic', 'Get-AzureRmEventGridTopic',
+                  'Set-AzureRmEventGridTopic', 'Update-AzureRmEventGridTopic',
+                  'New-AzureRmEventGridTopicKey', 'Get-AzureRmEventGridTopicKey',
+                  'Remove-AzureRmEventGridTopic', 'New-AzureRmEventGridSubscription',
+                  'Update-AzureRmEventGridSubscription', 'Remove-AzureRmEventGridSubscription',
+                  'Get-AzureRmEventGridSubscription', 'Get-AzureRmEventGridTopicType'
 
 # Variables to export from this module
 # VariablesToExport = @()
