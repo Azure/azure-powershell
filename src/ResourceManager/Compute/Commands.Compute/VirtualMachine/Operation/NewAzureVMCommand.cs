@@ -187,8 +187,8 @@ namespace Microsoft.Azure.Commands.Compute
                     .Select(nameAndImage => new { OsType = osAndMap.Key, Image = nameAndImage.Value }))
                 .FirstOrDefault();
 
-            OpenPorts = OpenPorts 
-                ?? (image.OsType == "Windows" ? new[] { 3389, 5985 } : new[] { 22 });
+            var isWindows = image.OsType == "Windows";
+            OpenPorts = OpenPorts ?? (isWindows ? new[] { 3389, 5985 } : new[] { 22 });
 
             var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(ResourceGroupName);
             var virtualNetwork = resourceGroup.CreateVirtualNetworkConfig(
@@ -224,6 +224,8 @@ namespace Microsoft.Azure.Commands.Compute
                 }
             }
 
+            var fqdn = DomainNameLabel + "." + Location + ".cloudapp.azure.com";
+
             // create target state
             var target = virtualMachine.GetTargetState(current, client.SubscriptionId, Location);
 
@@ -238,6 +240,10 @@ namespace Microsoft.Azure.Commands.Compute
 
             var result = newState.Get(virtualMachine);
             var psResult = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachine>(result);
+            psResult.Fqdn = fqdn;
+            asyncCmdlet.WriteVerbose(isWindows
+                ? "Use 'mstsc /v:" + fqdn + "' to connect to the VM."
+                : "Use 'ssh " + Credential.UserName + "@" + fqdn + "' to connect to the VM.");
             asyncCmdlet.WriteObject(psResult);
         }
 
