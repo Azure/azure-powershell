@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ArgumentException("Network rule collection with the specified name does not exist");
             }
 
-            networkRuleCollection.Name = this.Name;
+            networkRuleCollection.Priority = this.Priority;
             networkRuleCollection.Rules = this.Rules;
             WriteObject(this.SecureGateway);
         }

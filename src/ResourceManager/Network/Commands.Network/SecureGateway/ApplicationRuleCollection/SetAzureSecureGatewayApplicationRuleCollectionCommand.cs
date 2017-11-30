@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ArgumentException("Application rule collection with the specified name does not exist");
             }
 
-            applicationRuleCollection.Name = this.Name;
+            applicationRuleCollection.Priority = this.Priority;
             applicationRuleCollection.Rules = this.Rules;
             WriteObject(this.SecureGateway);
         }

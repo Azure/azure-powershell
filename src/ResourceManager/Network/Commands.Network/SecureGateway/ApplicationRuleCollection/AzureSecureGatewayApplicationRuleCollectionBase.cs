@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "The priority of the rule collection")]
         [ValidateNotNullOrEmpty]
-        public int Priority { get; set; }
+        public uint Priority { get; set; }
 
         [Parameter(
             Mandatory = true,
