@@ -20,8 +20,7 @@ namespace Microsoft.Azure.Commands.Resources
     using System.Linq;
     using System.Management.Automation;
     using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
-    using Microsoft.Azure.Management.Resources;
-    using Microsoft.Azure.Management.Resources.Models;
+    using Microsoft.Azure.Management.Authorization.Models;
 
     /// <summary>
     /// Get an existing resource.
@@ -90,7 +89,7 @@ namespace Microsoft.Azure.Commands.Resources
             // Filter the list of all operation names to what matches the wildcard
             WildcardPattern wildcard = new WildcardPattern(actionSearchString, WildcardOptions.IgnoreCase | WildcardOptions.Compiled);
 
-            List<ProviderOperationsMetadata> providers = new List<ProviderOperationsMetadata>();
+            var providers = new List<ProviderOperationsMetadata>();
             string provider = this.OperationSearchString.Split(Separator).First();
             if (provider.Equals(WildCardCharacter))
             {
@@ -132,11 +131,11 @@ namespace Microsoft.Azure.Commands.Resources
             return operations;
         }
 
-        private static bool IsUserOperation(Operation operation)
+        private static bool IsUserOperation(ProviderOperation operation)
         {
             return operation.Origin == null || operation.Origin.Contains("user");
         }
-        private static PSResourceProviderOperation ToPSResourceProviderOperation(Operation operation, string provider, string resource = null)
+        private static PSResourceProviderOperation ToPSResourceProviderOperation(ProviderOperation operation, string provider, string resource = null)
         {
             PSResourceProviderOperation psOperation = new PSResourceProviderOperation();
             psOperation.Operation = operation.Name;
