@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public int AzureASN { get; set; }
 
         [JsonProperty(Order = 1)]
-        public int PeerASN { get; set; }
+        public uint PeerASN { get; set; }
 
         [JsonProperty(Order = 1)]
         public string PrimaryPeerAddressPrefix { get; set; }
