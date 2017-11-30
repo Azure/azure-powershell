@@ -49,6 +49,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// Gets or sets the location of the vault
         /// </summary>
         [Parameter(Mandatory = true)]
+        [LocationCompleter("Microsoft.SiteRecovery/SiteRecoveryVault")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 

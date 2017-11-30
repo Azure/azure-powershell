@@ -49,6 +49,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// Gets or sets the Location parameter of the cmdlet
         /// </summary>
         [Parameter(ParameterSetName = AddAzureRmAutoscaleSettingCreateParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The location")]
+        [LocationCompleter("Microsoft.Insights/autoscalesettings")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 

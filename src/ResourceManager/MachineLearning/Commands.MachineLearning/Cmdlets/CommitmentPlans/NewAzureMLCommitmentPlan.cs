@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The location of the Azure ML commitment plan.")]
+        [LocationCompleter("Microsoft.MachineLearning/commitmentPlans")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
         
