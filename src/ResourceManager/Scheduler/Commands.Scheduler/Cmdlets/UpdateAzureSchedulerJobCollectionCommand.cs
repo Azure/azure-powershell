@@ -38,6 +38,7 @@ namespace Microsoft.Azure.Commands.Scheduler.Cmdlets
         public string JobCollectionName { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The region the job collection to be created.")]
+        [LocationCompleter("Microsoft.Scheduler/jobCollections")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
