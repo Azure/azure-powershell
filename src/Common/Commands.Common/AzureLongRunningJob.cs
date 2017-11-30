@@ -584,7 +584,7 @@ namespace Microsoft.Azure.Commands.Common
                             SyncObject = resultsLock
                         };
                         PSStreamObjectType objectType = PSStreamObjectType.ShouldMethod;
-                        if (typeof(T) == typeof(object))
+                        if (typeof(V) == typeof(object))
                         {
                             objectType = PSStreamObjectType.BlockingError;
                         }
@@ -618,7 +618,9 @@ namespace Microsoft.Azure.Commands.Common
 
         public override void StopJob()
         {
-            throw new NotImplementedException();
+            PSStreamObject stream;
+            while (_actions.TryDequeue(out stream));
+            this.Cancel();
         }
     }
 }

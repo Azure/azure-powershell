@@ -117,10 +117,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [OutputType(typeof(PSRunCommandResult))]
     public partial class InvokeAzureRmVMRunCommand : ComputeAutomationBaseCmdlet
     {
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            this.ExecuteSynchronouslyOrAsJob(
-            cmdlet => cmdlet.ExecuteClientAction(() =>
+           ExecuteClientAction(() =>
             {
                 if (ShouldProcess(this.VMName, VerbsLifecycle.Invoke))
                 {
@@ -159,7 +158,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     ComputeAutomationAutoMapperProfile.Mapper.Map<RunCommandResult, PSRunCommandResult>(result, psObject);
                     WriteObject(psObject);
                 }
-            }));
+            });
         }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
