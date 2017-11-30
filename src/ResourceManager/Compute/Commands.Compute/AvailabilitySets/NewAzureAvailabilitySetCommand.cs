@@ -77,6 +77,9 @@ namespace Microsoft.Azure.Commands.Compute
         [Obsolete("This parameter is obsolete.  Please use Sku parameter instead.", false)]
         public SwitchParameter Managed { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();

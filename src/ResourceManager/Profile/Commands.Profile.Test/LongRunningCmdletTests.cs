@@ -12,19 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
+using Microsoft.Azure.Commands.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Management.Internal.Resources.Utilities;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Xunit;
-using System.Management.Automation;
-using System.Collections.Generic;
 using Moq;
-using System.Linq;
-using Microsoft.Azure.Management.Internal.Resources.Utilities;
+using System;
+using System.Collections.Generic;
+using System.Management.Automation;
 using System.Threading;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Xunit;
 
 namespace Microsoft.Azure.Commands.Profile.Test
 { 
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         {
             Mock<ICommandRuntime> mockRuntime;
             var cmdlet = SetupCmdlet(false, false, out mockRuntime);
-            var job = cmdlet.ExecuteAsJob("Test Job") as AzureRmLongRunningJob;
+            var job = cmdlet.ExecuteAsJob("Test Job") as AzureLongRunningJob<AzureStreamTestCmdlet>;
             int times = 0;
             while (times++ < 4 && job.StatusMessage != "Completed")
             {
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         {
             Mock<ICommandRuntime> mockRuntime;
             var cmdlet = SetupCmdlet(true, false, out mockRuntime);
-            var job = cmdlet.ExecuteAsJob("Test Job") as AzureRmLongRunningJob;
+            var job = cmdlet.ExecuteAsJob("Test Job") as AzureLongRunningJob<AzureStreamTestCmdlet>;
             int times = 0;
             while (times++ < 4 && job.StatusMessage != "Completed")
             {
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         {
             Mock<ICommandRuntime> mockRuntime;
             var cmdlet = SetupCmdlet(true, true, out mockRuntime);
-            var job = cmdlet.ExecuteAsJob("Test Job") as AzureRmLongRunningJob;
+            var job = cmdlet.ExecuteAsJob("Test Job") as AzureLongRunningJob<AzureStreamTestCmdlet>;
             int times = 0;
             while (times++ < 4 && job.StatusMessage != "Completed")
             {
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Mock<ICommandRuntime> mockRuntime;
             var cmdlet = SetupCmdlet(false, false, out mockRuntime);
             cmdlet.Fail = true;
-            var job = cmdlet.ExecuteAsJob("Test Job") as AzureRmLongRunningJob;
+            var job = cmdlet.ExecuteAsJob("Test Job") as AzureLongRunningJob<AzureStreamTestCmdlet>;
             int times = 0;
             while (times++ < 4 && job.StatusMessage != "Completed" && job.StatusMessage != "Failed")
             {
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             return cmdlet;
         }
 
-        void ValidateCompletedCmdlet(AzureRmLongRunningJob job)
+        void ValidateCompletedCmdlet<T>(AzureLongRunningJob<T> job) where T : AzurePSCmdlet
         {
             Assert.Equal("Completed", job.StatusMessage);
             Assert.True(job.HasMoreData);
