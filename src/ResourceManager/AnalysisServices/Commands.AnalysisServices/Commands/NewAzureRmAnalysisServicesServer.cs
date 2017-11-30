@@ -19,6 +19,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.AnalysisServices.Models;
 using Microsoft.Azure.Commands.AnalysisServices.Properties;
 using Microsoft.Rest.Azure;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.AnalysisServices
 {
@@ -28,6 +29,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             HelpMessage = "Name of resource group under which you want to create the server.")]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -39,10 +41,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = true,
             HelpMessage = "Azure region where the server should be created.")]
         [ValidateNotNullOrEmpty]
-        [ValidateSet("North Central US", "South Central US", "Central US", "West Europe", "North Europe", "West US",
-            "East US",
-            "East US 2", "Japan East", "Japan West", "Brazil South", "Southeast Asia", "East Asia", "Australia East",
-            "Australia Southeast", IgnoreCase = true)]
+        [LocationCompleter("Microsoft.AnalysisServices/servers")]
         public string Location { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = true,

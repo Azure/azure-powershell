@@ -1,0 +1,6 @@
+# Exclude all.
+**/*
+
+# Include the build.
+!src/Package/Release/ResourceManager/**/*
+!src/Package/Debug/ResourceManager/**/*

@@ -25,6 +25,7 @@ using System;
 using System.Collections;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 {
@@ -38,6 +39,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         const string ParameterSet2Name = "S2";
 
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "The name of the resource group.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -46,6 +48,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         public string Name { get; set; }
 
         [Parameter(Position = 2, Mandatory = true, HelpMessage = "The Location of the web app eg: West US.")]
+        [LocationCompleter("Microsoft.Web/sites")]
         public string Location { get; set; }
 
         [Parameter(Position = 3, Mandatory = false, HelpMessage = "The name of the app service plan eg: Default1.")]
