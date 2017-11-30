@@ -22,6 +22,8 @@
     - Users can now use Get-AzureRMRoleAssignment with assignments having roledefinition names irrespective of the type of role
 * Allow scopes to end with "/"
     - Users can now use RoleDefinition and RoleAssignment commandlets with scopes ending with "/" ,consistent with API and CLI
+* Allow users to create RoleAssignment using delegation flag
+    - Users can now use New-AzureRMRoleAssignment with an option of adding the delegation flag
 
 ## Version 5.0.0
 * Add support for online help
