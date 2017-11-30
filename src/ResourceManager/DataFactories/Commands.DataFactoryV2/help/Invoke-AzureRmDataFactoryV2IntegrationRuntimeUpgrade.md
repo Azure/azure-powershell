@@ -31,7 +31,7 @@ Invoke-AzureRmDataFactoryV2IntegrationRuntimeUpgrade [-Force] [-InputObject] <PS
 ```
 
 ## DESCRIPTION
-The Invoke-AzureRmDataFactoryV2IntegrationRuntimeUpgrade cmdlet upgrades self-hosted integration runtime if the new version is available.
+The **Invoke-AzureRmDataFactoryV2IntegrationRuntimeUpgrade** cmdlet upgrades self-hosted integration runtime if the new version is available.
 
 ## EXAMPLES
 

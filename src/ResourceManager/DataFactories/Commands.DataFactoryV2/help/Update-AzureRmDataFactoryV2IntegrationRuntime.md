@@ -33,7 +33,7 @@ Update-AzureRmDataFactoryV2IntegrationRuntime [-AutoUpdate <String>] [-AutoUpdat
 ```
 
 ## DESCRIPTION
-The Update-AzureRmDataFactoryV2IntegrationRuntime cmdlet updates integration runtime properties. Currently the cmdlet only supports updating 'AutoUpdate' and 'AutoUpdateDelayOffset' for self-hosted integration runtime.
+The **Update-AzureRmDataFactoryV2IntegrationRuntime** cmdlet updates integration runtime properties. Currently the cmdlet only supports updating 'AutoUpdate' and 'AutoUpdateDelayOffset' for self-hosted integration runtime.
 
 ## EXAMPLES
 
