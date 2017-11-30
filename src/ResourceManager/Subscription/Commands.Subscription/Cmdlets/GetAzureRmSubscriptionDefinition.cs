@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.SubscriptionDefinition.Common;
-using Microsoft.Azure.Commands.SubscriptionDefinition.Models;
+using Microsoft.Azure.Commands.Subscription.Common;
+using Microsoft.Azure.Commands.Subscription.Models;
 using Microsoft.Azure.Management.ResourceManager;
 using System.Collections.Generic;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.SubscriptionDefinition.Cmdlets
+namespace Microsoft.Azure.Commands.Subscription.Cmdlets
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmSubscriptionDefinition", DefaultParameterSetName = ParameterSetNames.Default), OutputType(typeof(List<PSSubscriptionDefinition>))]
     public class GetAzureRmSubscriptionDefinition : AzureSubscriptionDefinitionCmdletBase

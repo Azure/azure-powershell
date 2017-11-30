@@ -14,7 +14,7 @@
 
 using ApiSubscriptionDefinition = Microsoft.Azure.Management.ResourceManager.Models.SubscriptionDefinition;
 
-namespace Microsoft.Azure.Commands.SubscriptionDefinition.Models
+namespace Microsoft.Azure.Commands.Subscription.Models
 {
     public class PSSubscriptionDefinition
     {

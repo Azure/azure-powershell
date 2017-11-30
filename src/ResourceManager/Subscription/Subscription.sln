@@ -14,9 +14,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.Authenticat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ScenarioTests.Common", "..\..\Common\Commands.ScenarioTests.Common\Commands.ScenarioTests.Common.csproj", "{C1BDA476-A5CC-4394-914D-48B0EC31A710}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.SubscriptionDefinition", "Commands.SubscriptionDefinition\Commands.SubscriptionDefinition.csproj", "{C1DD29E9-40D6-4A85-83AF-EE0D04945B47}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Subscription", "Commands.Subscription\Commands.Subscription.csproj", "{C1DD29E9-40D6-4A85-83AF-EE0D04945B47}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.SubscriptionDefinition.Test", "Commands.SubscriptionDefinition.Test\Commands.SubscriptionDefinition.Test.csproj", "{79260EE2-A9A6-4D27-9B2C-B84F12A6A1D4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Subscription.Test", "Commands.Subscription.Test\Commands.Subscription.Test.csproj", "{79260EE2-A9A6-4D27-9B2C-B84F12A6A1D4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.Authentication.Abstractions", "..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj", "{70527617-7598-4AEF-B5BD-DB9186B8184B}"
 EndProject

@@ -2,9 +2,9 @@
 <Configuration>
   <ViewDefinitions>
 	<View>
-      <Name>Microsoft.Azure.Commands.SubscriptionDefinition.Models.PSSubscriptionDefinition</Name>
+      <Name>Microsoft.Azure.Commands.Subscription.Models.PSSubscriptionDefinition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.SubscriptionDefinition.Models.PSSubscriptionDefinition</TypeName>
+        <TypeName>Microsoft.Azure.Commands.Subscription.Models.PSSubscriptionDefinition</TypeName>
       </ViewSelectedBy>
       <ListControl>
         <ListEntries>

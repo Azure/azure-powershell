@@ -9,8 +9,8 @@
     <ProjectGuid>{79260EE2-A9A6-4D27-9B2C-B84F12A6A1D4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Microsoft.Azure.Commands.SubscriptionDefinition.Test</RootNamespace>
-    <AssemblyName>Microsoft.Azure.Commands.SubscriptionDefinition.Test</AssemblyName>
+    <RootNamespace>Microsoft.Azure.Commands.Subscription.Test</RootNamespace>
+    <AssemblyName>Microsoft.Azure.Commands.Subscription.Test</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -148,13 +148,13 @@
     <None Include="ScenarioTests\SubscriptionDefinitionTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\SubscriptionDefinition.Test.ScenarioTests.SubscriptionDefinitionTests\TestGetSubscriptionDefinitionByName.json">
+    <None Include="SessionRecords\Subscription.Test.ScenarioTests.SubscriptionDefinitionTests\TestGetSubscriptionDefinitionByName.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\SubscriptionDefinition.Test.ScenarioTests.SubscriptionDefinitionTests\TestListSubscriptionDefinitions.json">
+    <None Include="SessionRecords\Subscription.Test.ScenarioTests.SubscriptionDefinitionTests\TestListSubscriptionDefinitions.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\SubscriptionDefinition.Test.ScenarioTests.SubscriptionDefinitionTests\TestNewSubscriptionDefinition.json">
+    <None Include="SessionRecords\Subscription.Test.ScenarioTests.SubscriptionDefinitionTests\TestNewSubscriptionDefinition.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
@@ -187,9 +187,9 @@
       <Project>{8058d403-06e3-4bed-8924-d166ce303961}</Project>
       <Name>Commands.Resources.Rest</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Commands.SubscriptionDefinition\Commands.SubscriptionDefinition.csproj">
+    <ProjectReference Include="..\Commands.Subscription\Commands.Subscription.csproj">
       <Project>{8C6489F5-0352-4667-8A0D-86B4B399EECC}</Project>
-      <Name>Commands.SubscriptionDefinition</Name>
+      <Name>Commands.Subscription</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

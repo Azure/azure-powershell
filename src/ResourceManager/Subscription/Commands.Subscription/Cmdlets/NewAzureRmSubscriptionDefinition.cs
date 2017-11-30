@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.SubscriptionDefinition.Common;
-using Microsoft.Azure.Commands.SubscriptionDefinition.Models;
+using Microsoft.Azure.Commands.Subscription.Common;
+using Microsoft.Azure.Commands.Subscription.Models;
 using Microsoft.Azure.Management.ResourceManager;
 using System.Collections;
 using System.Collections.Generic;
@@ -21,7 +21,7 @@ using System.Linq;
 using System.Management.Automation;
 using System.Management.Automation.Language;
 
-namespace Microsoft.Azure.Commands.SubscriptionDefinition.Cmdlets
+namespace Microsoft.Azure.Commands.Subscription.Cmdlets
 {
     [Cmdlet(VerbsCommon.New, "AzureRmSubscriptionDefinition", SupportsShouldProcess = true), OutputType(typeof(PSSubscriptionDefinition))]
     public class NewAzureRmSubscriptionDefinition : AzureSubscriptionDefinitionCmdletBase

@@ -16,7 +16,7 @@
           "FxVersion/4.7.2556.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.ResourceManager.SubscriptionDefinitionsClient/1.6.0-preview"
+          "Microsoft.Azure.Management.Subscription.SubscriptionDefinitionsClient/1.0.0-preview"
         ]
       },
       "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Subscription/subscriptionDefinitions/MyProdSubscription\",\r\n  \"name\": \"MyProdSubscription\",\r\n  \"properties\": {\r\n    \"etag\": \"MfjP0w==\",\r\n    \"subscriptionDisplayName\": \"MyProdSubscription\",\r\n    \"subscriptionId\": \"86869d42-1782-4337-98b0-c905fb937d46\",\r\n    \"offerType\": \"MS-AZR-0017P\"\r\n  },\r\n  \"type\": \"Microsoft.Subscription/subscriptionDefinitions\"\r\n}",

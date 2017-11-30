@@ -31,7 +31,7 @@ using TestBase = Microsoft.Azure.Test.TestBase;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 using TestUtilities = Microsoft.Azure.Test.TestUtilities;
 
-namespace Microsoft.Azure.Commands.SubscriptionDefinition.Test.ScenarioTests.ScenarioTest
+namespace Microsoft.Azure.Commands.Subscription.Test.ScenarioTests.ScenarioTest
 {
     public class TestController : RMTestBase
     {
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Commands.SubscriptionDefinition.Test.ScenarioTests.Sce
 
                 _helper.SetupModules(AzureModule.AzureResourceManager,
                     _helper.RMProfileModule,
-                   @"AzureRM.SubscriptionDefinition.psd1",
+                   @"AzureRM.Subscription.psd1",
                     "ScenarioTests\\" + callingClassName + ".ps1");
                 try
                 {

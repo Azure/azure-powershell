@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.SubscriptionDefinition.Common
+namespace Microsoft.Azure.Commands.Subscription.Common
 {
     public static class ParameterSetNames
     {

@@ -13,12 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.Commands.SubscriptionDefinition.Test.ScenarioTests.ScenarioTest;
+using Microsoft.Azure.Commands.Subscription.Test.ScenarioTests.ScenarioTest;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
-namespace SubscriptionDefinition.Test.ScenarioTests
+namespace Subscription.Test.ScenarioTests
 {
     public class SubscriptionDefinitionTests
     {
