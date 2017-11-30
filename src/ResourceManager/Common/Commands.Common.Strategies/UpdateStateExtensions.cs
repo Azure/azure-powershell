@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                                 .Select(UpdateStateAsyncDispatch);
                             await Task.WhenAll(tasks);
                             // call the CreateOrUpdateAsync function for the resource.
-                            if (_ShouldProcess.ShouldCreate(config, model))
+                            if (await _ShouldProcess.ShouldCreate(config, model))
                             {
                                 _ProgressReport.Report(config, 0.0);
                                 var result = await config.CreateOrUpdateAsync(
