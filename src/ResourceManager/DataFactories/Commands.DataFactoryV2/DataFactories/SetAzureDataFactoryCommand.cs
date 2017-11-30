@@ -38,6 +38,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, 
             HelpMessage = "The geographic region to create the data factory.")]
+        [LocationCompleter("Microsoft.DataFactory/factories")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 

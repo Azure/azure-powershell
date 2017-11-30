@@ -45,6 +45,7 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
         /// The location in which to create the profile.
         /// </summary>
         [Parameter(Mandatory = true, HelpMessage = "The location in which to create the CDN profile.")]
+        [LocationCompleter("Microsoft.Cdn/profiles")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
