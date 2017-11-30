@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         {
             List<PSRoleDefinition> result = new List<PSRoleDefinition>();
             result.AddRange(AuthorizationManagementClient.RoleDefinitions.List(scope ?? "",
-            new Rest.Azure.OData.ODataQuery<RoleDefinitionFilter>()).Select(r => r.ToPSRoleDefinition()));
+            new Rest.Azure.OData.ODataQuery<RoleDefinitionFilter>(filter => filter.AtScopeAndBelow())).Select(r => r.ToPSRoleDefinition()));
             return result;
         }
 
