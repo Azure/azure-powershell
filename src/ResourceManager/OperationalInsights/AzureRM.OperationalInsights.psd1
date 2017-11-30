@@ -110,7 +110,8 @@ CmdletsToExport = 'New-AzureRmOperationalInsightsAzureActivityLogDataSource',
                'Get-AzureRmOperationalInsightsWorkspace', 
                'New-AzureRmOperationalInsightsWorkspace', 
                'Remove-AzureRmOperationalInsightsWorkspace', 
-               'Set-AzureRmOperationalInsightsWorkspace'
+               'Set-AzureRmOperationalInsightsWorkspace',
+               'Invoke-AzureRmOperationalInsightsQuery'
 
 # Variables to export from this module
 # VariablesToExport = @()

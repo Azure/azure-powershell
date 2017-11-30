@@ -224,6 +224,11 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// </summary>
         public string AzureKeyVaultServiceEndpointResourceId { get; set; }
 
+        /// <summary>
+        /// The token audience required for communicating with the Azure Log Analytics query service in this environment
+        /// </summary>
+        public string AzureOperationalInsightsEndpointResourceId { get; set; }
+
         public IList<string> VersionProfiles { get; } = new List<string>();
 
         public IDictionary<string, string> ExtendedProperties { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
@@ -261,7 +266,8 @@ namespace Microsoft.Azure.Commands.Profile.Models
                        && AzureDataLakeStoreFileSystemEndpointSuffix == other.AzureDataLakeStoreFileSystemEndpointSuffix
                        && DataLakeEndpointResourceId == other.DataLakeEndpointResourceId
                        && TrafficManagerDnsSuffix == other.TrafficManagerDnsSuffix
-                       && BatchEndpointResourceId == other.BatchEndpointResourceId;
+                       && BatchEndpointResourceId == other.BatchEndpointResourceId
+                       && AzureOperationalInsightsEndpointResourceId == other.AzureOperationalInsightsEndpointResourceId; ;
             }
 
             return false;

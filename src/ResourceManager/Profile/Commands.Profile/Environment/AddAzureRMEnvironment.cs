@@ -151,6 +151,10 @@ namespace Microsoft.Azure.Commands.Profile
         [Alias("BatchResourceId", "BatchAudience")]
         public string BatchEndpointResourceId { get; set; }
 
+        [Parameter(Position = 21, Mandatory = false, ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The audience for tokens authenticating with the Azure Log Analytics API.")]
+        public string AzureOperationalInsightsEndpointResourceId { get; set; }
+
         protected override void BeginProcessing()
         {
             // do not call begin processing there is no context needed for this cmdlet
@@ -292,6 +296,8 @@ namespace Microsoft.Azure.Commands.Profile
                                     nameof(DataLakeAudience));
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.Endpoint.BatchEndpointResourceId,
                                     nameof(BatchEndpointResourceId));
+                                SetEndpointIfBound(newEnvironment, AzureEnvironment.Endpoint.AzureOperationalInsightsEndpointResourceId,
+                                    nameof(AzureOperationalInsightsEndpointResourceId));
                                 WriteObject(new PSAzureEnvironment(profileClient.AddOrSetEnvironment(newEnvironment)));
                             }
                         });
