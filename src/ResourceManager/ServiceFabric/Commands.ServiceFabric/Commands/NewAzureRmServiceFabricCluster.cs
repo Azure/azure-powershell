@@ -181,6 +181,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         [Parameter(Mandatory = true, ParameterSetName = ByDefaultArmTemplate, ValueFromPipeline = true,
                    HelpMessage = "The resource group location")]
+        [LocationCompleter("Microsoft.ServiceFabric/clusters")]
         public string Location { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = ByDefaultArmTemplate, ValueFromPipeline = true,

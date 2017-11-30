@@ -77,6 +77,7 @@ namespace Microsoft.Azure.Commands.Network.Automation
         [Parameter(
             Mandatory = false,
             HelpMessage = "Optional Azure regions to scope the query to.")]
+        [LocationCompleter("Microsoft.Network/networkWatchers")]
         public List<string> Location { get; set; }
 
         [Parameter(

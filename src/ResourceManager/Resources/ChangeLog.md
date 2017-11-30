@@ -20,6 +20,8 @@
 ## Current Release
 * Fixed issue where Get-AzureRMRoleAssignment would result in a assignments without roledefiniton name for custom roles
     - Users can now use Get-AzureRMRoleAssignment with assignments having roledefinition names irrespective of the type of role
+* Fixed issue where Set-AzureRMRoleRoleDefinition used to throw RD not found error when there was a new scope in assignablescopes
+    - Users can now use Set-AzureRMRoleRoleDefinition with assignable scopes including new scopes irrespective of the position of the scope
 * Allow scopes to end with "/"
     - Users can now use RoleDefinition and RoleAssignment commandlets with scopes ending with "/" ,consistent with API and CLI
 * Allow users to create RoleAssignment using delegation flag

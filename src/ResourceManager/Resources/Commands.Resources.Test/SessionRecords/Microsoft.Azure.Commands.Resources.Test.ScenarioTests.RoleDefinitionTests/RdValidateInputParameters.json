@@ -7,7 +7,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "34745b40-1105-4fbf-90e6-b8eaa39f35bc"
+          "a6759dee-844e-4915-815b-20cbcfe91c26"
         ],
         "accept-language": [
           "en-US"
@@ -33,11 +33,8 @@
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-request-charge": [
-          "1"
-        ],
         "x-ms-request-id": [
-          "05d28e2b-7477-46fc-a086-f17e2ef475bb"
+          "7b753889-6147-483f-a6ae-477bcd143fe8"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -46,19 +43,19 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14989"
+          "14998"
         ],
         "x-ms-correlation-request-id": [
-          "7cf4149b-bbd4-47e4-8596-8912b0a8e1e0"
+          "8e9fb034-89be-4465-a635-999bdf0e9db2"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUSEUAP:20171130T004352Z:7cf4149b-bbd4-47e4-8596-8912b0a8e1e0"
+          "WESTUS2:20171130T175656Z:8e9fb034-89be-4465-a635-999bdf0e9db2"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 30 Nov 2017 00:43:51 GMT"
+          "Thu, 30 Nov 2017 17:56:55 GMT"
         ],
         "Set-Cookie": [
           "x-ms-gateway-slice=productionb; path=/; secure; HttpOnly"

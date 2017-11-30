@@ -7,7 +7,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "cb8fd922-1d0c-4026-8217-495ba60928f2"
+          "b203dde9-533b-44ff-a19a-b344cf48c68e"
         ],
         "accept-language": [
           "en-US"
@@ -33,11 +33,8 @@
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-request-charge": [
-          "1"
-        ],
         "x-ms-request-id": [
-          "f7e58d68-71c8-4dfa-98dd-bea03be236eb"
+          "979ea64e-4301-4b79-aa1a-de923638a144"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -46,19 +43,19 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14966"
+          "14999"
         ],
         "x-ms-correlation-request-id": [
-          "f850f6b3-ff9a-4179-afc2-ea0045ba95c1"
+          "8d9be02c-b76d-41da-b666-386e0a50508c"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUSEUAP:20171130T004320Z:f850f6b3-ff9a-4179-afc2-ea0045ba95c1"
+          "WESTUS2:20171130T175658Z:8d9be02c-b76d-41da-b666-386e0a50508c"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 30 Nov 2017 00:43:19 GMT"
+          "Thu, 30 Nov 2017 17:56:57 GMT"
         ],
         "Set-Cookie": [
           "x-ms-gateway-slice=productionb; path=/; secure; HttpOnly"
@@ -79,7 +76,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "0da4f0c9-0c27-488f-9f8a-4ad7ba220d72"
+          "375475fa-99e1-47cb-8dc7-fd83f1523050"
         ],
         "accept-language": [
           "en-US"
@@ -106,7 +103,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "3b160352-3d1c-4216-97d0-71a0e26bdd49"
+          "52f7ec3a-8d09-4841-9a56-d6446778ad01"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -115,19 +112,19 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14965"
+          "14998"
         ],
         "x-ms-correlation-request-id": [
-          "8636a063-8771-4513-9a80-c9cb80ecac3f"
+          "d0664b77-3b1b-4375-8456-cfaeb550bee8"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUSEUAP:20171130T004320Z:8636a063-8771-4513-9a80-c9cb80ecac3f"
+          "WESTUS2:20171130T175658Z:d0664b77-3b1b-4375-8456-cfaeb550bee8"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 30 Nov 2017 00:43:20 GMT"
+          "Thu, 30 Nov 2017 17:56:57 GMT"
         ],
         "Set-Cookie": [
           "x-ms-gateway-slice=productionb; path=/; secure; HttpOnly"
@@ -148,7 +145,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "a6263406-65dc-403b-9f1b-966c2dad10c5"
+          "638864c1-603e-4408-81f2-72825f470bf3"
         ],
         "accept-language": [
           "en-US"
@@ -175,7 +172,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "319390e8-6327-42f0-9e01-b4b830ad387c"
+          "c6778e8a-9d01-4c93-a1b0-47a90068ebb3"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -184,19 +181,88 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14964"
+          "14996"
         ],
         "x-ms-correlation-request-id": [
-          "65d45c1a-7b64-437f-8bdb-f03a98c3485f"
+          "8dbeba0f-5a9a-4582-a63b-02660705fa6c"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUSEUAP:20171130T004320Z:65d45c1a-7b64-437f-8bdb-f03a98c3485f"
+          "WESTUS2:20171130T175659Z:8dbeba0f-5a9a-4582-a63b-02660705fa6c"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 30 Nov 2017 00:43:20 GMT"
+          "Thu, 30 Nov 2017 17:56:58 GMT"
+        ],
+        "Set-Cookie": [
+          "x-ms-gateway-slice=productionb; path=/; secure; HttpOnly"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "//subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/ResourceGroups/rbactest/providers/Microsoft.Authorization/roleDefinitions/85e460b3-89e9-48ba-9dcd-a8a99d64a674?api-version=2015-07-01",
+      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzQwMDRhOWZkLWQ1OGUtNDhkYy1hZWIyLTRhNGFlYzU4NjA2Zi9SZXNvdXJjZUdyb3Vwcy9yYmFjdGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcm9sZURlZmluaXRpb25zLzg1ZTQ2MGIzLTg5ZTktNDhiYS05ZGNkLWE4YTk5ZDY0YTY3ND9hcGktdmVyc2lvbj0yMDE1LTA3LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "424ebff7-b1f5-4f1f-998a-967fbde6c734"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2556.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"RoleDefinitionDoesNotExist\",\r\n    \"message\": \"The specified role definition with ID '85e460b3-89e9-48ba-9dcd-a8a99d64a674' does not exist.\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "152"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "492f3ae9-3256-4fed-bbee-294b95433baa"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14997"
+        ],
+        "x-ms-correlation-request-id": [
+          "5fc39f00-9e3c-4710-b1b2-1cc41fec1033"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20171130T175658Z:5fc39f00-9e3c-4710-b1b2-1cc41fec1033"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 30 Nov 2017 17:56:58 GMT"
         ],
         "Set-Cookie": [
           "x-ms-gateway-slice=productionb; path=/; secure; HttpOnly"
