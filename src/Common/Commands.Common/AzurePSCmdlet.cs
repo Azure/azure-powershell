@@ -647,7 +647,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// <summary>
         /// Job Name paroperty iof this cmdlet is run as a job
         /// </summary>
-        public virtual string JobName
+        public virtual string ImplementationBackgroundJobDescription
         {
             get
             {
