@@ -14,8 +14,6 @@
 
 using Microsoft.Azure.Commands.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Management.Internal.Resources.Utilities;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -43,7 +41,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             var cmdlet = SetupCmdlet(false, false, out mockRuntime);
             var job = cmdlet.ExecuteAsJob("Test Job") as AzureLongRunningJob<AzureStreamTestCmdlet>;
             int times = 0;
-            while (times++ < 4 && job.StatusMessage != "Completed")
+            while (times++ < 20 && job.StatusMessage != "Completed")
             {
                 Thread.Sleep(TimeSpan.FromSeconds(1));
             }
@@ -59,7 +57,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             var cmdlet = SetupCmdlet(true, false, out mockRuntime);
             var job = cmdlet.ExecuteAsJob("Test Job") as AzureLongRunningJob<AzureStreamTestCmdlet>;
             int times = 0;
-            while (times++ < 4 && job.StatusMessage != "Completed")
+            while (times++ < 20 && job.StatusMessage != "Completed")
             {
                 Thread.Sleep(TimeSpan.FromSeconds(1));
             }
@@ -75,7 +73,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             var cmdlet = SetupCmdlet(true, true, out mockRuntime);
             var job = cmdlet.ExecuteAsJob("Test Job") as AzureLongRunningJob<AzureStreamTestCmdlet>;
             int times = 0;
-            while (times++ < 4 && job.StatusMessage != "Completed")
+            while (times++ < 20 && job.StatusMessage != "Completed")
             {
                 Thread.Sleep(TimeSpan.FromSeconds(1));
                 if (job.StatusMessage == "Blocked")
@@ -97,7 +95,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             cmdlet.Fail = true;
             var job = cmdlet.ExecuteAsJob("Test Job") as AzureLongRunningJob<AzureStreamTestCmdlet>;
             int times = 0;
-            while (times++ < 4 && job.StatusMessage != "Completed" && job.StatusMessage != "Failed")
+            while (times++ < 20 && job.StatusMessage != "Completed" && job.StatusMessage != "Failed")
             {
                 Thread.Sleep(TimeSpan.FromSeconds(1));
             }
