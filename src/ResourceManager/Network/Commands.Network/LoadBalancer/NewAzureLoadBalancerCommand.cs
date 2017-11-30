@@ -13,9 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using AutoMapper;
+using Microsoft.Azure.Commands.Common.Strategies;
+using Microsoft.Azure.Commands.Common.Strategies.Network;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Management.Network;
 using System.Collections;
 using System.Collections.Generic;
@@ -28,12 +31,17 @@ namespace Microsoft.Azure.Commands.Network
         OutputType(typeof(PSLoadBalancer))]
     public class NewAzureLoadBalancerCommand : LoadBalancerBaseCmdlet
     {
+        public const string SimpleParameterSet = "SimpleParameterSet";
+
         [Alias("ResourceName")]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.")]
         [ValidateNotNullOrEmpty]
+        [Parameter(
+            ParameterSetName = SimpleParameterSet,
+            Mandatory = true)]
         public virtual string Name { get; set; }
 
         [Parameter(
@@ -42,6 +50,9 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
+        [Parameter(
+            ParameterSetName = SimpleParameterSet,
+            Mandatory = false)]
         public virtual string ResourceGroupName { get; set; }
 
         [Parameter(
@@ -122,12 +133,26 @@ namespace Microsoft.Azure.Commands.Network
                 Name,
                 () =>
                 {
-                    var loadBalancer = this.CreateLoadBalancer();
+                    PSLoadBalancer loadBalancer = null;
+                    switch (ParameterSetName)
+                    {
+                        case SimpleParameterSet:
+                            loadBalancer = SimpleParameterSetExecuteCmdlet();
+                            break;
+                        default:
+                            loadBalancer = this.CreateLoadBalancer();
+                            break;
+                    }
+
                     WriteObject(loadBalancer);
                 },
                 () => present);
         }
-
+        public PSLoadBalancer SimpleParameterSetExecuteCmdlet()
+        {
+            ResourceGroupName = ResourceGroupName ?? Name;
+            return null;
+        }
         private PSLoadBalancer CreateLoadBalancer()
         {
             var loadBalancer = new PSLoadBalancer();
@@ -187,6 +212,28 @@ namespace Microsoft.Azure.Commands.Network
             var getLoadBalancer = this.GetLoadBalancer(this.ResourceGroupName, this.Name);
 
             return getLoadBalancer;
+        }
+    }
+
+    public static class LoadBalancerExtensions
+    {
+        public static MNM.LoadBalancer ToLoadBalancer(this PSLoadBalancer psLb, Hashtable tags)
+        {            
+            // Map to the sdk object
+            var lbModel = NetworkResourceManagerProfile.Mapper.Map<MNM.LoadBalancer>(psLb);
+            lbModel.Tags = TagsConversionHelper.CreateTagDictionary(tags, validate: true);
+
+            return lbModel;
+        }
+
+        public static PSLoadBalancer ToPsLoadBalancer(this MNM.LoadBalancer lb, string resourceGroupName)
+        {
+            var psLoadBalancer = NetworkResourceManagerProfile.Mapper.Map<PSLoadBalancer>(lb);
+            psLoadBalancer.ResourceGroupName = resourceGroupName;
+            psLoadBalancer.Tag =
+                TagsConversionHelper.CreateTagHashtable(lb.Tags);
+
+            return psLoadBalancer;
         }
     }
 }

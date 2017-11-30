@@ -69,10 +69,12 @@
   <ItemGroup>
     <Compile Include="Compute\Image.cs" />
     <Compile Include="Compute\Images.cs" />
+    <Compile Include="Compute\VirtualMachineScaleSetStrategy.cs" />
     <Compile Include="IReportProgress.cs" />
     <Compile Include="IResourceConfig.cs" />
     <Compile Include="IResourceConfigVisitor.cs" />
     <Compile Include="IShouldProcess.cs" />
+    <Compile Include="Network\LoadBalancerStrategy.cs" />
     <Compile Include="StateOperationContext.cs" />
     <Compile Include="Compute\ComputeStrategy.cs" />
     <Compile Include="Compute\VirtualMachineStrategy.cs" />
