@@ -22,6 +22,7 @@ using Microsoft.Azure.Commands.Common.Strategies.Network;
 using Microsoft.Azure.Commands.Common.Strategies.ResourceManager;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Commands.Compute.Strategies;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
@@ -32,11 +33,13 @@ using Microsoft.Azure.Management.Storage.Models;
 using Microsoft.Rest;
 using System;
 using System.Collections;
+using System.Collections.Concurrent;
 using System.Linq;
 using System.Management.Automation;
 using System.Net;
 using System.Reflection;
 using System.Threading;
+using System.Threading.Tasks;
 using CM = Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute
@@ -72,8 +75,8 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             ParameterSetName = StrategyParameterSet,
             Mandatory = false)]
+        [LocationCompleter("Microsoft.Compute/virtualMachines")]
         [ValidateNotNullOrEmpty]
-        [LocationCompleter]
         public string Location { get; set; }
 
         [Alias("VMProfile")]
@@ -158,7 +161,7 @@ namespace Microsoft.Azure.Commands.Compute
             switch (ParameterSetName)
             {
                 case StrategyParameterSet:
-                    StrategyExecuteCmdlet();
+                    this.StartAndWait(StrategyExecuteCmdletAsync);
                     break;
                 default:
                     DefaultExecuteCmdlet();
@@ -166,59 +169,7 @@ namespace Microsoft.Azure.Commands.Compute
             }
         }
 
-        private sealed class Client : IClient
-        {
-            public string SubscriptionId { get; }
-
-            IAzureContext Context { get; }
-
-            public Client(IAzureContext context)
-            {
-                Context = context;
-                SubscriptionId = Context.Subscription.Id;
-            }
-
-            public T GetClient<T>()
-                where T : ServiceClient<T>
-                => AzureSession.Instance.ClientFactory.CreateArmClient<T>(
-                    Context, AzureEnvironment.Endpoint.ResourceManager);
-        }
-
-        private sealed class ShouldProcessType : IShouldProcess
-        {
-            readonly Cmdlet _Cmdlet;
-
-            public ShouldProcessType(Cmdlet cmdlet)
-            {
-                _Cmdlet = cmdlet;
-            }
-
-            public bool ShouldCreate<TModel>(ResourceConfig<TModel> config, TModel model)
-                where TModel : class
-                => _Cmdlet.ShouldProcess(config.Name, VerbsCommon.New + " " + config.Strategy.Type);
-        }
-
-        private sealed class ProgressReportType : IProgressReport
-        {
-            readonly Cmdlet _Cmdlet;
-
-            public ProgressReportType(Cmdlet cmdlet)
-            {
-                _Cmdlet = cmdlet;
-            }
-
-            public void Report<TModel>(ResourceConfig<TModel> config, double progress) 
-                where TModel : class
-            {
-            }
-            /*
-                => _Cmdlet.WriteVerbose(
-                    progress == 0 ? "Creating " + config.Name + " " + config.Strategy.Type + "..."
-                    : config.Name + " " + config.Strategy.Type + " is created.");
-                    */
-        }
-
-        public void StrategyExecuteCmdlet()
+        async Task StrategyExecuteCmdletAsync(IAsyncCmdlet asyncCmdlet)
         {
             ResourceGroupName = ResourceGroupName ?? Name;
             VirtualNetworkName = VirtualNetworkName ?? Name;
@@ -261,10 +212,7 @@ namespace Microsoft.Azure.Commands.Compute
 
             // get state
             var client = new Client(DefaultProfile.DefaultContext);
-            var current = virtualMachine
-                .GetStateAsync(client, new CancellationToken())
-                .GetAwaiter()
-                .GetResult();
+            var current = await virtualMachine.GetStateAsync(client, new CancellationToken());
 
             if (Location == null)
             {
@@ -279,15 +227,13 @@ namespace Microsoft.Azure.Commands.Compute
             var target = virtualMachine.GetTargetState(current, client.SubscriptionId, Location);
 
             // apply target state
-            var result = virtualMachine
+            var result = await virtualMachine
                 .UpdateStateAsync(
                     client,
                     target,
                     new CancellationToken(),
-                    new ShouldProcessType(this),
-                    new ProgressReportType(this))
-                .GetAwaiter()
-                .GetResult();
+                    new ShouldProcess(asyncCmdlet),
+                    new ProgressReport(asyncCmdlet));
             WriteObject(result);
         }
 
