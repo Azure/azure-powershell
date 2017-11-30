@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.MachineLearningCompute.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using Microsoft.Rest.Azure;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
 {
@@ -37,6 +38,7 @@ namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
         [Parameter(ParameterSetName = GetByResourceGroupOrSubscriptionParametersParameterSet,
             Mandatory = false, 
             HelpMessage = ResourceGroupParameterHelpMessage)]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

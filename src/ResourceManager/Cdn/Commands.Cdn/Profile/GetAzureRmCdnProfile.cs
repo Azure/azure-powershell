@@ -22,6 +22,7 @@ using Microsoft.Azure.Management.Cdn;
 using System;
 using System.Net;
 using Microsoft.Azure.Management.Cdn.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Cdn.Profile
 {
@@ -42,6 +43,7 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
         /// The resource group name of the profile.
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group of the Azure CDN profile.")]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
