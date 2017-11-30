@@ -57,6 +57,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             Position = 2,
             HelpMessage = "The location of the topic",
             ParameterSetName = TopicNameParameterSet)]
+        [LocationCompleter("Microsoft.EventGrid/topics")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 

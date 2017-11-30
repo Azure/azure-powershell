@@ -90,6 +90,7 @@ namespace Microsoft.Azure.Commands.ContainerInstance
         [Parameter(
             Mandatory = false,
             HelpMessage = "The container group Location. Default to the location of the resource group.")]
+        [LocationCompleter("Microsoft.ContainerInstance/containerGroups")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
