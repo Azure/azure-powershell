@@ -54,6 +54,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = true,
             HelpMessage = "Azure region where the account should be created.",
             ParameterSetName = EncryptionDisabledParameterSetName)]
+        [LocationCompleter("Microsoft.DataLakeStore/accounts")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
