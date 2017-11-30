@@ -19,12 +19,14 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Gateway
     using Base;
     using Management.ServerManagement;
     using Model;
+    using ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet(VerbsCommon.New, "AzureRmServerManagementGateway"), OutputType(typeof(Gateway))]
     public class NewServerManagementGatewayCmdlet : ServerManagementCmdlet
     {
         [Parameter(Mandatory = true, HelpMessage = "The targeted resource group.",
             ValueFromPipelineByPropertyName = true, Position = 0)]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -35,6 +37,7 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Gateway
 
         [Parameter(Mandatory = true, HelpMessage = "The resource group location.",
             ValueFromPipelineByPropertyName = true, Position = 2)]
+        [LocationCompleter("Microsoft.ServerManagement/gateways")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
