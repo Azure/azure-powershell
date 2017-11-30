@@ -94,7 +94,6 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
-
         public override void ExecuteCmdlet()
         {
             var result = DownloadFromBlobUri(
