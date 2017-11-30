@@ -48,10 +48,6 @@
     </Reference>
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web" />
-    <ProjectReference Include="..\..\Common\Commands.Common.Authentication.ResourceManager\Commands.Common.Authentication.ResourceManager.csproj">
-      <Project>{69c2eb6b-cd63-480a-89a0-c489706e9299}</Project>
-      <Name>Commands.Common.Authentication.ResourceManager</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cmdlets\NewAzureRmSubscriptionDefinition.cs" />
