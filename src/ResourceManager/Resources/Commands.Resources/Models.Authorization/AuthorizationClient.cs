@@ -92,7 +92,15 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         {
             List<PSRoleDefinition> result = new List<PSRoleDefinition>();
 
-            Rest.Azure.OData.ODataQuery<RoleDefinitionFilter> odataFilter = new Rest.Azure.OData.ODataQuery<RoleDefinitionFilter>(item => item.RoleDefinitionName == name);
+            Rest.Azure.OData.ODataQuery<RoleDefinitionFilter> odataFilter = null;
+            if (scopeAndBelow)
+            {
+                odataFilter = new Rest.Azure.OData.ODataQuery<RoleDefinitionFilter>(item => item.AtScopeAndBelow() && item.RoleName == name);
+            }
+            else
+            {
+                odataFilter = new Rest.Azure.OData.ODataQuery<RoleDefinitionFilter>(item => item.RoleName == name);
+            }
 
             // Fix the api spec for roledefinition filter with value scope and below
             result.AddRange(AuthorizationManagementClient.RoleDefinitions.List(

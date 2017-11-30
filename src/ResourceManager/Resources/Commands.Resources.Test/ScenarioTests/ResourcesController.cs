@@ -23,6 +23,7 @@ using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 using Microsoft.Azure.Graph.RBAC.Version1_6;
 using Microsoft.Azure.Insights;
+using Microsoft.Azure.Management.Authorization.Version2015_07_01;
 using Microsoft.Azure.Management.ResourceManager;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
@@ -37,7 +38,6 @@ using Microsoft.Azure.Test.Authentication;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Resources.Models.Gallery;
-using Microsoft.Azure.Management.Authorization;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
@@ -179,7 +179,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             SubscriptionClient = GetSubscriptionClient(context);
             GalleryClient = GetGalleryClient();
             AuthorizationManagementClient = GetAuthorizationManagementClient(context);
-            AuthorizationManagementClient.BaseUri = new Uri("https://centraluseuap.management.azure.com/");
             GraphClient = GetGraphClient(context);
             InsightsClient = GetInsightsClient();
             this.FeatureClient = this.GetFeatureClient(context);
