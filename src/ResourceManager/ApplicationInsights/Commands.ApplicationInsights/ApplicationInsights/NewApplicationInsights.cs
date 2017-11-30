@@ -45,6 +45,7 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
             Position = 2,
             Mandatory = true,
             HelpMessage = "Application Insights Resource Location.")]
+        [LocationCompleter("Microsoft.Insights/components")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
