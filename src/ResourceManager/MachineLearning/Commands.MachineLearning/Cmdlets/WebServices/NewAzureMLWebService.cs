@@ -41,6 +41,7 @@ namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The location of the AzureML.")]
+        [LocationCompleter("Microsoft.MachineLearning/webServices")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
         

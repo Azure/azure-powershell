@@ -24,6 +24,7 @@ using System.Linq;
 using System.Management.Automation;
 using AutoMapper;
 using CNM = Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network.Automation
 {
@@ -34,6 +35,7 @@ namespace Microsoft.Azure.Commands.Network.Automation
             Mandatory = true,
             HelpMessage = "The location.",
             ValueFromPipelineByPropertyName = true)]
+        [LocationCompleter("Microsoft.Network/locations/virtualNetworkAvailableEndpointServices")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
