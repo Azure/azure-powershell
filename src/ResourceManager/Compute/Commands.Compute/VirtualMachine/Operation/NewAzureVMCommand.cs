@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Compute
         ProfileNouns.VirtualMachine,
         SupportsShouldProcess = true,
         DefaultParameterSetName = "DefaultParameterSet")]
-    [OutputType(typeof(PSAzureOperationResponse))]
+    [OutputType(typeof(PSAzureOperationResponse), typeof(PSVirtualMachine))]
     public class NewAzureVMCommand : VirtualMachineBaseCmdlet
     {
         public const string DefaultParameterSet = "DefaultParameterSet";
@@ -156,6 +156,9 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(ParameterSetName = StrategyParameterSet, Mandatory = false)]
         public string ImageName { get; set; } = "Win2016Datacenter";
 
+        [Parameter(ParameterSetName = StrategyParameterSet, Mandatory = false)]
+        public string Size { get; set; } = "Standard_DS1_v2";
+
         public override void ExecuteCmdlet()
         {
             switch (ParameterSetName)
@@ -187,8 +190,8 @@ namespace Microsoft.Azure.Commands.Compute
                     .Select(nameAndImage => new { OsType = osAndMap.Key, Image = nameAndImage.Value }))
                 .FirstOrDefault();
 
-            OpenPorts = OpenPorts 
-                ?? (image.OsType == "Windows" ? new[] { 3389, 5985 } : new[] { 22 });
+            var isWindows = image.OsType == "Windows";
+            OpenPorts = OpenPorts ?? (isWindows ? new[] { 3389, 5985 } : new[] { 22 });
 
             var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(ResourceGroupName);
             var virtualNetwork = resourceGroup.CreateVirtualNetworkConfig(
@@ -206,12 +209,15 @@ namespace Microsoft.Azure.Commands.Compute
             var virtualMachine = resourceGroup.CreateVirtualMachineConfig(
                 name: Name,
                 networkInterface: networkInterface,
+                isWindows: isWindows,
                 adminUsername: Credential.UserName,
                 adminPassword: new NetworkCredential(string.Empty, Credential.Password).Password,
-                image: image.Image);
+                image: image.Image,
+                size: Size);
 
-            // get state
             var client = new Client(DefaultProfile.DefaultContext);
+
+            // get current Azure state
             var current = await virtualMachine.GetStateAsync(client, new CancellationToken());
 
             if (Location == null)
@@ -223,18 +229,27 @@ namespace Microsoft.Azure.Commands.Compute
                 }
             }
 
+            var fqdn = DomainNameLabel + "." + Location + ".cloudapp.azure.com";
+
             // create target state
             var target = virtualMachine.GetTargetState(current, client.SubscriptionId, Location);
 
             // apply target state
-            var result = await virtualMachine
+            var newState = await virtualMachine
                 .UpdateStateAsync(
                     client,
                     target,
                     new CancellationToken(),
                     new ShouldProcess(asyncCmdlet),
                     new ProgressReport(asyncCmdlet));
-            WriteObject(result);
+
+            var result = newState.Get(virtualMachine);
+            var psResult = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachine>(result);
+            psResult.Fqdn = fqdn;
+            asyncCmdlet.WriteVerbose(isWindows
+                ? "Use 'mstsc /v:" + fqdn + "' to connect to the VM."
+                : "Use 'ssh " + Credential.UserName + "@" + fqdn + "' to connect to the VM.");
+            asyncCmdlet.WriteObject(psResult);
         }
 
         public void DefaultExecuteCmdlet()

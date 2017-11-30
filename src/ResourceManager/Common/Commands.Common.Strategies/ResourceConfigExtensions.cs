@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                 resourceGroup.Name,
                 name,
                 createModel,
-                dependencies.EmptyIfNull().Concat(new[] { resourceGroup }));
+                dependencies.EmptyIfNull().Where(d => d != null).Concat(new[] { resourceGroup }));
 
         public static async Task<TModel> GetAsync<TModel>(
             this ResourceConfig<TModel> config,
