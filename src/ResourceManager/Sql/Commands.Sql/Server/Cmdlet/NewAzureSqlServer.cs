@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Rest.Azure;
@@ -51,6 +52,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         /// </summary>
         [Parameter(Mandatory = true,
             HelpMessage = "The location in which to create the server")]
+        [LocationCompleter("Microsoft.Sql/servers")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
