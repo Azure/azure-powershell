@@ -20,6 +20,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using Microsoft.Azure.Commands.Management.IotHub.Models;
     using Microsoft.Azure.Management.IotHub;
     using Microsoft.Azure.Management.IotHub.Models;
+    using ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet(VerbsCommon.Remove, "AzureRmIotHubEventHubConsumerGroup", SupportsShouldProcess = true), OutputType(typeof(IEnumerable<string>))]
     [Alias("Remove-AzureRmIotHubEHCG")]
@@ -30,6 +31,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the Resource Group")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

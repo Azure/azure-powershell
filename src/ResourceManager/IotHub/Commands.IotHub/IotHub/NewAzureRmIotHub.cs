@@ -20,6 +20,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using Microsoft.Azure.Management.IotHub;
     using Microsoft.Azure.Management.IotHub.Models;
     using ResourceProperties = Microsoft.Azure.Commands.Management.IotHub.Properties;
+    using ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet(VerbsCommon.New, "AzureRmIotHub", SupportsShouldProcess = true)]
     [OutputType(typeof(PSIotHub))]
@@ -29,6 +30,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the Resource Group")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -54,6 +56,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         [Parameter(
             Mandatory = true,
             HelpMessage = "Location")]
+        [LocationCompleter("Microsoft.Devices/IotHubs")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
