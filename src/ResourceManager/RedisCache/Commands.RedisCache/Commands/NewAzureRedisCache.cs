@@ -37,6 +37,7 @@ namespace Microsoft.Azure.Commands.RedisCache
         public string Name { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Location where want to create cache.")]
+        [LocationCompleter("Microsoft.Cache/Redis")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
