@@ -108,8 +108,6 @@ Parameter 'PublicIpAddress' accepts value of type 'PSPublicIpAddress' from the p
 
 [Get-AzureRmPublicIpAddress](./Get-AzureRmPublicIpAddress.md)
 
-[Get-AzureRmPublicIpAddress](./Get-AzureRmPublicIpAddress.md)
-
 [New-AzureRmPublicIpAddress](./New-AzureRmPublicIpAddress.md)
 
 [Remove-AzureRmPublicIpAddress](./Remove-AzureRmPublicIpAddress.md)

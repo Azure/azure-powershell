@@ -19,6 +19,7 @@ using Microsoft.Azure.Management.ContainerRegistry.Models;
 using Microsoft.Azure.Management.ResourceManager.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using DeploymentState = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ProvisioningState;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
