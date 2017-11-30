@@ -45,6 +45,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
         [Parameter(Mandatory = false, HelpMessage = "The integration account location.",
             ValueFromPipelineByPropertyName = true)]
+        [LocationCompleter("Microsoft.Logic/integrationAccounts")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 

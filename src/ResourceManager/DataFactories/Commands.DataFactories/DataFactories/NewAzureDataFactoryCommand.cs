@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.DataFactories.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Collections;
 using System.Management.Automation;
 using System.Security.Permissions;
@@ -30,6 +31,7 @@ namespace Microsoft.Azure.Commands.DataFactories
 
         [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The geographic region to create the data factory.")]
+        [LocationCompleter("Microsoft.DataFactory/datafactories")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
