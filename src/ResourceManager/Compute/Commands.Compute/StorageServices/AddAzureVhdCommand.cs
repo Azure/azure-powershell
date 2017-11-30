@@ -110,6 +110,10 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             set;
         }
 
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
+
         public UploadParameters ValidateParameters()
         {
             BlobUri destinationUri;

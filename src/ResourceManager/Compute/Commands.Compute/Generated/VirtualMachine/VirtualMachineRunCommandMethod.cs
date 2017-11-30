@@ -23,6 +23,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -118,7 +119,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     {
         protected override void ProcessRecord()
         {
-            ExecuteClientAction(() =>
+            this.ExecuteSynchronouslyOrAsJob(
+            cmdlet => cmdlet.ExecuteClientAction(() =>
             {
                 if (ShouldProcess(this.VMName, VerbsLifecycle.Invoke))
                 {
@@ -157,8 +159,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     ComputeAutomationAutoMapperProfile.Mapper.Map<RunCommandResult, PSRunCommandResult>(result, psObject);
                     WriteObject(psObject);
                 }
-            });
+            }));
         }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",

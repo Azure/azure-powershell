@@ -16,7 +16,6 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Management.Automation.Host;
@@ -25,15 +24,16 @@ using System.Management.Automation.Remoting.Internal;
 using System.Reflection;
 using System.Threading;
 
-namespace Microsoft.Azure.Commands.ResourceManager.Common
+namespace Microsoft.Azure.Commands.Common
 {
-    public class AzureRmLongRunningJob : Job, ICommandRuntime
+    public class AzureLongRunningJob<T> : Job, ICommandRuntime where T : AzurePSCmdlet
     {
         string _status = "Running";
-        AzurePSCmdlet _cmdlet;
+        T _cmdlet;
         ICommandRuntime _runtime;
         ConcurrentQueue<PSStreamObject> _actions = new ConcurrentQueue<PSStreamObject>();
         bool _shouldConfirm = false;
+        Action<T> _execute;
 
         /// <summary>
         /// Create a job using the given invoked cmdlet, command name, and task name
@@ -41,12 +41,24 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         /// <param name="cmdlet">The cmdlet to run asynchronously</param>
         /// <param name="command">The name of the command</param>
         /// <param name="name">The name of the task</param>
-        protected AzureRmLongRunningJob(AzurePSCmdlet cmdlet, string command, string name) : base(command, name)
+        protected AzureLongRunningJob(T cmdlet, string command, string name) : this(cmdlet, command, name, (cmd) => cmd.ExecuteCmdlet())
+        {
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="cmdlet"></param>
+        /// <param name="command"></param>
+        /// <param name="name"></param>
+        /// <param name="executeCmdlet"></param>
+        protected AzureLongRunningJob(T cmdlet, string command, string name, Action<T> executeCmdlet) : base(command, name)
         {
             _cmdlet = CopyCmdlet(cmdlet);
             _shouldConfirm = ShouldConfirm(cmdlet);
             _cmdlet.CommandRuntime = this.GetJobRuntime();
             _runtime = cmdlet.CommandRuntime;
+            _execute = executeCmdlet;
             this.PSJobTypeName = this.GetType().Name;
         }
 
@@ -91,19 +103,35 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         /// <param name="cmdlet">The invoked cmdlet to run as a job</param>
         /// <param name="command">The name of the command executed</param>
         /// <param name="name">The name of the task</param>
-        /// <returns>A job racking the background execution of the cmdlet</returns>
-        public static AzureRmLongRunningJob Create(AzurePSCmdlet cmdlet, string command, string name)
+        /// <returns>A job tracking the background execution of the cmdlet</returns>
+        public static AzureLongRunningJob<U> Create<U>(U cmdlet, string command, string name) where U : AzurePSCmdlet
         {
-            var job = new Common.AzureRmLongRunningJob(cmdlet, command, name);
+            var job = new Common.AzureLongRunningJob<U>(cmdlet, command, name);
             return job;
         }
+
+        /// <summary>
+        /// Factory method for creating jobs
+        /// </summary>
+        /// <typeparam name="U">The type of the cmdlet to create</typeparam>
+        /// <param name="cmdlet">The invoked cmdlet to run as a job</param>
+        /// <param name="command">The name of the command executed</param>
+        /// <param name="name">The name of the task</param>
+        /// <param name="executor">The cmdlet method to execute</param>
+        /// <returns>A job tracking the background execution of the cmdlet</returns>
+        public static AzureLongRunningJob<U> Create<U>(U cmdlet, string command, string name, Action<U> executor) where U : AzurePSCmdlet
+        {
+            var job = new Common.AzureLongRunningJob<U>(cmdlet, command, name, executor);
+            return job;
+        }
+
 
         /// <summary>
         /// Copy the unique properties of a cmdlet - used to capture the properties of a cmdlet during pipeline execution
         /// </summary>
         /// <param name="cmdlet">The cmdlet</param>
         /// <returns>A deep copy fo the cmdlet</returns>
-        public static AzurePSCmdlet CopyCmdlet(AzurePSCmdlet cmdlet)
+        public static U CopyCmdlet<U>(U cmdlet) where U : AzurePSCmdlet
         {
             var returnType = cmdlet.GetType();
             var returnValue = Activator.CreateInstance(cmdlet.GetType());
@@ -115,7 +143,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 }
             }
 
-            return returnValue as AzurePSCmdlet;
+            return returnValue as U;
         }
 
         /// <summary>
@@ -127,7 +155,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             try
             {
                 Start();
-                _cmdlet.ExecuteCmdlet();
+                _execute(_cmdlet);
                 Complete();
             }
             catch (Exception ex)
@@ -510,14 +538,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         /// <summary>
         /// Queue actions that must occur on the cmdlet thread, and block the current thread until they are completed
         /// </summary>
-        /// <typeparam name="T">The output type of the called cmdlet action</typeparam>
+        /// <typeparam name="V">The output type of the called cmdlet action</typeparam>
         /// <param name="invokeCmdletMethodAndReturnResult">The action to invoke</param>
         /// <param name="exceptionThrownOnCmdletThread">Any exception that results</param>
         /// <returns>The result of executing the action on the cmdlet thread</returns>
-        private T InvokeCmdletMethodAndWaitForResults<T>(Func<Cmdlet, T> invokeCmdletMethodAndReturnResult, out Exception exceptionThrownOnCmdletThread)
+        private V InvokeCmdletMethodAndWaitForResults<V>(Func<Cmdlet, V> invokeCmdletMethodAndReturnResult, out Exception exceptionThrownOnCmdletThread)
         {
 
-            T methodResult = default(T);
+            V methodResult = default(V);
             Exception closureSafeExceptionThrownOnCmdletThread = null;
             object resultsLock = new object();
             using (var gotResultEvent = new ManualResetEventSlim(false))
@@ -549,7 +577,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                     {
                         this.Block();
                         // addition to results column happens here
-                        CmdletMethodInvoker<T> methodInvoker = new CmdletMethodInvoker<T>
+                        CmdletMethodInvoker<V> methodInvoker = new CmdletMethodInvoker<V>
                         {
                             Action = invokeCmdletMethodAndReturnResult,
                             Finished = gotResultEvent,

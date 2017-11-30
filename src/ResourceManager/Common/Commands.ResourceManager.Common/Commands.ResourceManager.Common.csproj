@@ -63,7 +63,6 @@
     <Compile Include="AccessTokenExtensions.cs" />
     <Compile Include="AzureRmCmdlet.cs" />
     <Compile Include="AzureRmLongRunningCmdlet.cs" />
-    <Compile Include="AzureRmLongRunningJob.cs" />
     <Compile Include="Generated\DeploymentOperations.cs" />
     <Compile Include="Generated\DeploymentOperationsExtensions.cs" />
     <Compile Include="Generated\DeploymentsOperations.cs" />

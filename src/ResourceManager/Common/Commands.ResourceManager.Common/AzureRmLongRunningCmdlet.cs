@@ -30,22 +30,5 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
     {
         [Parameter(Mandatory=false, HelpMessage ="Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set;}
-
-        protected override void ProcessRecord()
-        {
-            if (AsJob.IsPresent)
-            {
-                WriteObject(this.ExecuteAsJob(JobName));
-            }
-            else
-            {
-                base.ProcessRecord();
-            }
-        }
-
-        /// <summary>
-        /// Return the name of the PSJob, when the AsJob parameter is specified.
-        /// </summary>
-        public virtual string JobName { get { return string.Format("Long running operation for '{0}'", MyInvocation.MyCommand); } }
     }
 }
