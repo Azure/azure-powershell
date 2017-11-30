@@ -90,7 +90,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         {
             if (cmdlet.AsJobPresent())
             {
-                cmdlet.WriteObject(cmdlet.ExecuteAsJob(cmdlet.JobName, executor));
+                cmdlet.WriteObject(cmdlet.ExecuteAsJob(cmdlet.ImplementationBackgroundJobDescription, executor));
             }
             else
             {
