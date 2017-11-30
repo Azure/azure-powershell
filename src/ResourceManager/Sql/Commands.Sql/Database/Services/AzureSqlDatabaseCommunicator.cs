@@ -23,6 +23,8 @@ using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using Microsoft.WindowsAzure.Management.Storage;
 using System;
 using System.Collections.Generic;
+using Microsoft.Azure.Commands.Sql.Database.Model;
+using Microsoft.Azure.Management.Sql.Models;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Services
 {
@@ -136,6 +138,26 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         public void Remove(string resourceGroupName, string serverName, string databaseName)
         {
             GetLegacySqlClient().Databases.Delete(resourceGroupName, serverName, databaseName);
+        }
+
+        /// <summary>
+        /// Renames a database
+        /// </summary>
+        internal void Rename(string resourceGroupName, string serverName, string databaseName, string newName)
+        {
+            var client = GetCurrentSqlClient();
+            client.Databases.Rename(
+                resourceGroupName,
+                serverName,
+                databaseName,
+                new ResourceMoveDefinition
+                {
+                    Id = AzureSqlDatabaseModel.IdTemplate.FormatInvariant(
+                        client.SubscriptionId,
+                        resourceGroupName,
+                        serverName,
+                        newName)
+                });
         }
 
         /// <summary>
