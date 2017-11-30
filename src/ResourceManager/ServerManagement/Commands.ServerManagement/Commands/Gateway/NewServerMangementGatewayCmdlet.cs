@@ -37,6 +37,7 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Gateway
 
         [Parameter(Mandatory = true, HelpMessage = "The resource group location.",
             ValueFromPipelineByPropertyName = true, Position = 2)]
+        [LocationCompleter("Microsoft.ServerManagement/gateways")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 

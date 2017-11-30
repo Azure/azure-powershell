@@ -48,6 +48,7 @@ namespace Microsoft.Azure.Commands.Network
          Mandatory = true,
          ValueFromPipelineByPropertyName = true,
          HelpMessage = "Location.")]
+        [LocationCompleter("Microsoft.Network/networkWatchers")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 

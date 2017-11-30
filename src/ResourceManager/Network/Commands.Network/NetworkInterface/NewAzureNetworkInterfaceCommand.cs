@@ -50,6 +50,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The public IP address location.")]
+        [LocationCompleter("Microsoft.Network/networkInterfaces")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
