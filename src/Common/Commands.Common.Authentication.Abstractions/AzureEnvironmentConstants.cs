@@ -116,6 +116,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         public const string GermanAzureKeyVaultServiceEndpointResourceId = "https://vault.microsoftazure.de";
 
         /// <summary>
+        /// The token audience for Log Analytics Queries
+        /// </summary>
+        public const string AzureOperationalInsightsServiceEndpointResourceId = "https://api.loganalytics.io";
+
+        /// <summary>
         /// The domain name suffix for Azure DataLake services
         /// </summary>
         public const string AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix = "azuredatalakeanalytics.net";

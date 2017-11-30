@@ -68,6 +68,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 case AzureEnvironment.Endpoint.BatchEndpointResourceId:
                     endpoint = new Uri(environment.BatchEndpointResourceId);
                     break;
+                case AzureEnvironment.Endpoint.AzureOperationalInsightsEndpointResourceId:
+                    endpoint = new Uri(environment.AzureOperationalInsightsEndpointResourceId);
+                    break;
                 default:
                     result = false;
                     break;
@@ -146,6 +149,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                         break;
                     case AzureEnvironment.Endpoint.BatchEndpointResourceId:
                         propertyValue = environment.BatchEndpointResourceId;
+                        break;
+                    case AzureEnvironment.Endpoint.AzureOperationalInsightsEndpointResourceId:
+                        propertyValue = environment.AzureOperationalInsightsEndpointResourceId;
                         break;
                     default:
                         break;
@@ -259,6 +265,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                     case AzureEnvironment.Endpoint.ServiceManagement:
                         environment.ServiceManagementUrl = propertyValue;
                         break;
+                    case AzureEnvironment.Endpoint.AzureOperationalInsightsEndpointResourceId:
+                        environment.AzureOperationalInsightsEndpointResourceId = propertyValue;
+                        break;
                 }
             }
         }
@@ -281,6 +290,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 targetEndpoint == AzureEnvironment.Endpoint.DataLakeEndpointResourceId)
             {
                 resource = AzureEnvironment.Endpoint.DataLakeEndpointResourceId;
+            }
+            else if (targetEndpoint == AzureEnvironment.Endpoint.AzureOperationalInsightsEndpointResourceId)
+            {
+                resource = AzureEnvironment.Endpoint.AzureOperationalInsightsEndpointResourceId;
             }
 
             return resource;
@@ -459,6 +472,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 if (other.IsEndpointSet(AzureEnvironment.Endpoint.BatchEndpointResourceId))
                 {
                     environment.BatchEndpointResourceId = other.BatchEndpointResourceId;
+                }
+                if (other.IsEndpointSet(AzureEnvironment.Endpoint.AzureOperationalInsightsEndpointResourceId))
+                {
+                    environment.AzureOperationalInsightsEndpointResourceId = other.AzureOperationalInsightsEndpointResourceId;
                 }
 
                 environment.VersionProfiles.Clear();

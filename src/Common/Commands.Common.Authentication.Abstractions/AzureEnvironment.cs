@@ -54,6 +54,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                     GraphEndpointResourceId = AzureEnvironmentConstants.AzureGraphEndpoint,
                     DataLakeEndpointResourceId = AzureEnvironmentConstants.AzureDataLakeServiceEndpointResourceId,
                     BatchEndpointResourceId = AzureEnvironmentConstants.BatchEndpointResourceId,
+                    AzureOperationalInsightsEndpointResourceId = AzureEnvironmentConstants.AzureOperationalInsightsServiceEndpointResourceId,
                     AdTenant = "Common"
                 }
             },
@@ -80,6 +81,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                     DataLakeEndpointResourceId = null,
                     GraphEndpointResourceId = AzureEnvironmentConstants.ChinaGraphEndpoint,
                     BatchEndpointResourceId = AzureEnvironmentConstants.ChinaBatchEndpointResourceId,
+                    AzureOperationalInsightsEndpointResourceId = null,
                     AdTenant = "Common"
                 }
             },
@@ -106,6 +108,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                     DataLakeEndpointResourceId = null,
                     GraphEndpointResourceId = AzureEnvironmentConstants.USGovernmentGraphEndpoint,
                     BatchEndpointResourceId = AzureEnvironmentConstants.USGovernmentBatchEndpointResourceId,
+                    AzureOperationalInsightsEndpointResourceId = null,
                     AdTenant = "Common"
                 }
             },
@@ -132,6 +135,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                     DataLakeEndpointResourceId = null,
                     GraphEndpointResourceId = AzureEnvironmentConstants.GermanGraphEndpoint,
                     BatchEndpointResourceId = AzureEnvironmentConstants.GermanBatchEndpointResourceId,
+                    AzureOperationalInsightsEndpointResourceId = null,
                     AdTenant = "Common"
                 }
             }
@@ -251,6 +255,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         public string AzureDataLakeStoreFileSystemEndpointSuffix { get; set; }
 
         /// <summary>
+        /// The token audience required for communicating with the Azure Log Analytics query service in this environment
+        /// </summary>
+        public string AzureOperationalInsightsEndpointResourceId { get; set; }
+
+        /// <summary>
         /// The name of the default AdTenant in this environment
         /// </summary>
         public string AdTenant { get; set; }
@@ -288,7 +297,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix = "AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix",
                 AzureDataLakeStoreFileSystemEndpointSuffix = "AzureDataLakeStoreFileSystemEndpointSuffix",
                 DataLakeEndpointResourceId = "DataLakeEndpointResourceId",
-                BatchEndpointResourceId = "BatchEndpointResourceId";
+                BatchEndpointResourceId = "BatchEndpointResourceId",
+                AzureOperationalInsightsEndpointResourceId = "AzureOperationalInsightsEndpointResourceId";
 
         }
     }
