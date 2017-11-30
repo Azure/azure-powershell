@@ -7,15 +7,15 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "299fab19-2e33-4541-ac35-354a7fe8cf86"
+          "7010ca94-cdca-44cb-97e9-eb29284a4a34"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2115.0",
+          "FxVersion/4.7.2556.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
+          "OSVersion/6.3.16299",
           "Microsoft.Azure.Graph.RBAC.Version1_6.GraphRbacManagementClient/1.0.0.0"
         ]
       },
@@ -28,19 +28,19 @@
           "application/json; odata=minimalmetadata; charset=utf-8"
         ],
         "ocp-aad-diagnostics-server-name": [
-          "B0qYUu2wmC42QTQTMANMQgBOAt7CqRYECuEiH/QxP2w="
+          "P18eY8lBKv4DXq9CH58CAs+9Ihlrq72xNs23/o2uTS4="
         ],
         "request-id": [
-          "bea1772b-4b37-4a25-8cd9-a0df1a180e0c"
+          "bb3152b9-b6ef-47ef-96e9-7307ab0dfdef"
         ],
         "client-request-id": [
-          "69c19a6a-7381-487d-b28d-29dd9eef0707"
+          "9137276a-e63e-427f-9dee-613e91f9d775"
         ],
         "x-ms-dirapi-data-contract-version": [
           "1.6"
         ],
         "ocp-aad-session-key": [
-          "6P-fTrd018G5V-kU3BVUu7cPuw8PhX4ahvhsVZ--vvjkEYA5GNr0kTmimi62KV81Cxbh347p6SPKvnu3plpeR5aBsAKA-kk2QkT8DVx7htr0xsy_pRvKlZP_4MtioB8NUBvLcWQKx2pewqpFRzXzXQsxG1Sae5z7Pm9x9UzMT_ciBS0P8b5mdcE5Rxik6QN2vJJEMe8fePZQpjRlY96jaA.XTNXP69rt1sj8V28I6pwbg8dqK2Fl_ht7vT013yoUKs"
+          "b5B7dpR_3AnEgctQyA-yB9lC19jF48L8QUJvEgZrgxtbtrAAduxL-_k0F_DzCh-SK6ByMfQGrEX8Shnc9qXvftQYmNzF_96nbmHfOJQ_UFzJktf2ikQytRNhlQ3zYvjk.KB85l4G3SCbbhsMxcojbywDqKYwH4Rbic6l_0wNx3kg"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -49,7 +49,7 @@
           "*"
         ],
         "Duration": [
-          "795049"
+          "621828"
         ],
         "Cache-Control": [
           "private"
@@ -65,7 +65,7 @@
           "ASP.NET"
         ],
         "Date": [
-          "Tue, 31 Oct 2017 19:31:44 GMT"
+          "Thu, 30 Nov 2017 00:44:30 GMT"
         ]
       },
       "StatusCode": 404
