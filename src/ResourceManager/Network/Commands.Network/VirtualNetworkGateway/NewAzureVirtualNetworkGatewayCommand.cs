@@ -73,6 +73,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = VirtualNetworkGatewayParameterSets.Default,
             HelpMessage = "location.")]
+        [LocationCompleter("Microsoft.Network/virtualNetworkGateways")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 

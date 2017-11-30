@@ -37,6 +37,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         public string Name { get; set; }
 
         [Parameter(Position = 2, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.Location)]
+        [LocationCompleter("Microsoft.Backup/BackupVault")]
         [ValidateNotNullOrEmpty]
         public string Region { get; set; }
 
