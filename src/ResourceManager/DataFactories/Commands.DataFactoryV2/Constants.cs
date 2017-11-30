@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public const string HelpIntegrationRuntimeAutoUpdate = "Enable or disable the self-hosted integration runtime auto-update.";
 
-        public const string HelpIntegrationRuntimeAutoUpdateTime = "The time in hour of the day for the self-hosted integration runtime auto-update.";
+        public const string HelpIntegrationRuntimeAutoUpdateTime = "The time of the day for the self-hosted integration runtime auto-update.";
 
         public const string HelpIntegrationRuntimeKeyName = "The authentication key name of the self-hosted integration runtime.";
 

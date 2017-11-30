@@ -32,7 +32,7 @@ Update-AzureRmDataFactoryV2IntegrationRuntimeNode -Name <String> -ConcurrentJobs
 ```
 
 ## DESCRIPTION
-The Update-AzureRmDataFactoryV2IntegrationRuntimeNode cmdlet updates properties of self-hosted integration runtime node in a data factory. Currently only supports updating 'ConcurrentJobsLimit'.
+The **Update-AzureRmDataFactoryV2IntegrationRuntimeNode** cmdlet updates properties of self-hosted integration runtime node in a data factory. Currently only supports updating 'ConcurrentJobsLimit'.
 
 ## EXAMPLES
 

@@ -31,7 +31,7 @@ Get-AzureRmDataFactoryV2IntegrationRuntimeNodeIp -NodeName <String> [-InputObjec
 ```
 
 ## DESCRIPTION
-The Get-AzureRmDataFactoryV2IntegrationRuntimeNodeIp cmdlet gets the IP address of a self-hosted integration runtime node.
+The **Get-AzureRmDataFactoryV2IntegrationRuntimeNodeIp** cmdlet gets the IP address of a self-hosted integration runtime node.
 
 ## EXAMPLES
 
