@@ -16,7 +16,7 @@
           "FxVersion/4.7.2556.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.ResourceManager.SubscriptionDefinitionsClient/1.6.0-preview"
+          "Microsoft.Azure.Management.Subscription.SubscriptionDefinitionsClient/1.0.0-preview"
         ]
       },
       "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/providers/Microsoft.Subscription/subscriptionDefinitions/MyProdSubDef99\",\r\n      \"name\": \"MyProdSubDef99\",\r\n      \"properties\": {\r\n        \"etag\": \"HlRr6g==\",\r\n        \"subscriptionDisplayName\": \"MyProdSubDef99\",\r\n        \"subscriptionId\": \"cefe2134-b409-4642-b030-bd7a8f107e84\",\r\n        \"offerType\": \"MS-AZR-0017P\"\r\n      },\r\n      \"type\": \"Microsoft.Subscription/subscriptionDefinitions\"\r\n    },\r\n    {\r\n      \"id\": \"/providers/Microsoft.Subscription/subscriptionDefinitions/MyProdSubscription\",\r\n      \"name\": \"MyProdSubscription\",\r\n      \"properties\": {\r\n        \"etag\": \"MfjP0w==\",\r\n        \"subscriptionDisplayName\": \"MyProdSubscription\",\r\n        \"subscriptionId\": \"86869d42-1782-4337-98b0-c905fb937d46\",\r\n        \"offerType\": \"MS-AZR-0017P\"\r\n      },\r\n      \"type\": \"Microsoft.Subscription/subscriptionDefinitions\"\r\n    },\r\n    {\r\n      \"id\": \"/providers/Microsoft.Subscription/subscriptionDefinitions/MyTestSubDef1\",\r\n      \"name\": \"MyTestSubDef1\",\r\n      \"properties\": {\r\n        \"etag\": \"NqYHYg==\",\r\n        \"subscriptionDisplayName\": \"MyTestSubDef1\",\r\n        \"subscriptionId\": \"368425df-b536-4f42-b1ba-64613cfcc4b5\",\r\n        \"offerType\": \"MS-AZR-0017P\"\r\n      },\r\n      \"type\": \"Microsoft.Subscription/subscriptionDefinitions\"\r\n    },\r\n    {\r\n      \"id\": \"/providers/Microsoft.Subscription/subscriptionDefinitions/e2esubprod1\",\r\n      \"name\": \"e2esubprod1\",\r\n      \"properties\": {\r\n        \"etag\": \"To8acg==\",\r\n        \"subscriptionDisplayName\": \"mye2esubprod1\",\r\n        \"subscriptionId\": \"430ed244-e513-4b13-b113-e877158ed7f5\",\r\n        \"offerType\": \"MS-AZR-0017P\"\r\n      },\r\n      \"type\": \"Microsoft.Subscription/subscriptionDefinitions\"\r\n    },\r\n    {\r\n      \"id\": \"/providers/Microsoft.Subscription/subscriptionDefinitions/e2esubprod6\",\r\n      \"name\": \"e2esubprod6\",\r\n      \"properties\": {\r\n        \"etag\": \"YRP88g==\",\r\n        \"subscriptionDisplayName\": \"e2esubprod6\",\r\n        \"subscriptionId\": \"a21087f6-05f2-4be3-a831-185aad424df6\",\r\n        \"offerType\": \"MS-AZR-0148P\"\r\n      },\r\n      \"type\": \"Microsoft.Subscription/subscriptionDefinitions\"\r\n    },\r\n    {\r\n      \"id\": \"/providers/Microsoft.Subscription/subscriptionDefinitions/e2esubprod7\",\r\n      \"name\": \"e2esubprod7\",\r\n      \"properties\": {\r\n        \"etag\": \"DqdLvg==\",\r\n        \"subscriptionDisplayName\": \"e2esubprod7\",\r\n        \"subscriptionId\": \"519fce51-f304-4f10-9d03-777b7c47c8f0\",\r\n        \"offerType\": \"MS-AZR-0148P\"\r\n      },\r\n      \"type\": \"Microsoft.Subscription/subscriptionDefinitions\"\r\n    },\r\n    {\r\n      \"id\": \"/providers/Microsoft.Subscription/subscriptionDefinitions/subat201711271230\",\r\n      \"name\": \"subat201711271230\",\r\n      \"properties\": {\r\n        \"etag\": \"VoDLkA==\",\r\n        \"subscriptionDisplayName\": \"Subat201711271230\",\r\n        \"subscriptionId\": \"5571f36c-bacb-4b1d-bff1-ca1418d142af\",\r\n        \"offerType\": \"MS-AZR-0017P\"\r\n      },\r\n      \"type\": \"Microsoft.Subscription/subscriptionDefinitions\"\r\n    }\r\n  ]\r\n}",
@@ -85,7 +85,7 @@
           "FxVersion/4.7.2556.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.ResourceManager.SubscriptionDefinitionsClient/1.6.0-preview"
+          "Microsoft.Azure.Management.Subscription.SubscriptionDefinitionsClient/1.0.0-preview"
         ]
       },
       "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/providers/Microsoft.Subscription/subscriptionDefinitions/MyProdSubDef99\",\r\n      \"name\": \"MyProdSubDef99\",\r\n      \"properties\": {\r\n        \"etag\": \"HlRr6g==\",\r\n        \"subscriptionDisplayName\": \"MyProdSubDef99\",\r\n        \"subscriptionId\": \"cefe2134-b409-4642-b030-bd7a8f107e84\",\r\n        \"offerType\": \"MS-AZR-0017P\"\r\n      },\r\n      \"type\": \"Microsoft.Subscription/subscriptionDefinitions\"\r\n    },\r\n    {\r\n      \"id\": \"/providers/Microsoft.Subscription/subscriptionDefinitions/MyProdSubscription\",\r\n      \"name\": \"MyProdSubscription\",\r\n      \"properties\": {\r\n        \"etag\": \"MfjP0w==\",\r\n        \"subscriptionDisplayName\": \"MyProdSubscription\",\r\n        \"subscriptionId\": \"86869d42-1782-4337-98b0-c905fb937d46\",\r\n        \"offerType\": \"MS-AZR-0017P\"\r\n      },\r\n      \"type\": \"Microsoft.Subscription/subscriptionDefinitions\"\r\n    },\r\n    {\r\n      \"id\": \"/providers/Microsoft.Subscription/subscriptionDefinitions/MyTestSubDef1\",\r\n      \"name\": \"MyTestSubDef1\",\r\n      \"properties\": {\r\n        \"etag\": \"NqYHYg==\",\r\n        \"subscriptionDisplayName\": \"MyTestSubDef1\",\r\n        \"subscriptionId\": \"368425df-b536-4f42-b1ba-64613cfcc4b5\",\r\n        \"offerType\": \"MS-AZR-0017P\"\r\n      },\r\n      \"type\": \"Microsoft.Subscription/subscriptionDefinitions\"\r\n    },\r\n    {\r\n      \"id\": \"/providers/Microsoft.Subscription/subscriptionDefinitions/e2esubprod1\",\r\n      \"name\": \"e2esubprod1\",\r\n      \"properties\": {\r\n        \"etag\": \"To8acg==\",\r\n        \"subscriptionDisplayName\": \"mye2esubprod1\",\r\n        \"subscriptionId\": \"430ed244-e513-4b13-b113-e877158ed7f5\",\r\n        \"offerType\": \"MS-AZR-0017P\"\r\n      },\r\n      \"type\": \"Microsoft.Subscription/subscriptionDefinitions\"\r\n    },\r\n    {\r\n      \"id\": \"/providers/Microsoft.Subscription/subscriptionDefinitions/e2esubprod6\",\r\n      \"name\": \"e2esubprod6\",\r\n      \"properties\": {\r\n        \"etag\": \"YRP88g==\",\r\n        \"subscriptionDisplayName\": \"e2esubprod6\",\r\n        \"subscriptionId\": \"a21087f6-05f2-4be3-a831-185aad424df6\",\r\n        \"offerType\": \"MS-AZR-0148P\"\r\n      },\r\n      \"type\": \"Microsoft.Subscription/subscriptionDefinitions\"\r\n    },\r\n    {\r\n      \"id\": \"/providers/Microsoft.Subscription/subscriptionDefinitions/e2esubprod7\",\r\n      \"name\": \"e2esubprod7\",\r\n      \"properties\": {\r\n        \"etag\": \"DqdLvg==\",\r\n        \"subscriptionDisplayName\": \"e2esubprod7\",\r\n        \"subscriptionId\": \"519fce51-f304-4f10-9d03-777b7c47c8f0\",\r\n        \"offerType\": \"MS-AZR-0148P\"\r\n      },\r\n      \"type\": \"Microsoft.Subscription/subscriptionDefinitions\"\r\n    },\r\n    {\r\n      \"id\": \"/providers/Microsoft.Subscription/subscriptionDefinitions/ps4631\",\r\n      \"name\": \"ps4631\",\r\n      \"properties\": {\r\n        \"etag\": \"vg0lUA==\",\r\n        \"subscriptionDisplayName\": \"ps4631\",\r\n        \"subscriptionId\": \"6384690c-8764-4369-91d0-763132b9269e\",\r\n        \"offerType\": \"MS-AZR-0017P\"\r\n      },\r\n      \"type\": \"Microsoft.Subscription/subscriptionDefinitions\"\r\n    },\r\n    {\r\n      \"id\": \"/providers/Microsoft.Subscription/subscriptionDefinitions/subat201711271230\",\r\n      \"name\": \"subat201711271230\",\r\n      \"properties\": {\r\n        \"etag\": \"VoDLkA==\",\r\n        \"subscriptionDisplayName\": \"Subat201711271230\",\r\n        \"subscriptionId\": \"5571f36c-bacb-4b1d-bff1-ca1418d142af\",\r\n        \"offerType\": \"MS-AZR-0017P\"\r\n      },\r\n      \"type\": \"Microsoft.Subscription/subscriptionDefinitions\"\r\n    }\r\n  ]\r\n}",
@@ -160,7 +160,7 @@
           "FxVersion/4.7.2556.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.ResourceManager.SubscriptionDefinitionsClient/1.6.0-preview"
+          "Microsoft.Azure.Management.Subscription.SubscriptionDefinitionsClient/1.0.0-preview"
         ]
       },
       "ResponseBody": "{}",
@@ -229,7 +229,7 @@
           "FxVersion/4.7.2556.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.ResourceManager.SubscriptionDefinitionsClient/1.6.0-preview"
+          "Microsoft.Azure.Management.Subscription.SubscriptionDefinitionsClient/1.0.0-preview"
         ]
       },
       "ResponseBody": "{}",
@@ -298,7 +298,7 @@
           "FxVersion/4.7.2556.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.ResourceManager.SubscriptionDefinitionsClient/1.6.0-preview"
+          "Microsoft.Azure.Management.Subscription.SubscriptionDefinitionsClient/1.0.0-preview"
         ]
       },
       "ResponseBody": "{}",
@@ -367,7 +367,7 @@
           "FxVersion/4.7.2556.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.ResourceManager.SubscriptionDefinitionsClient/1.6.0-preview"
+          "Microsoft.Azure.Management.Subscription.SubscriptionDefinitionsClient/1.0.0-preview"
         ]
       },
       "ResponseBody": "{}",
@@ -436,7 +436,7 @@
           "FxVersion/4.7.2556.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.ResourceManager.SubscriptionDefinitionsClient/1.6.0-preview"
+          "Microsoft.Azure.Management.Subscription.SubscriptionDefinitionsClient/1.0.0-preview"
         ]
       },
       "ResponseBody": "{}",
@@ -505,7 +505,7 @@
           "FxVersion/4.7.2556.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.ResourceManager.SubscriptionDefinitionsClient/1.6.0-preview"
+          "Microsoft.Azure.Management.Subscription.SubscriptionDefinitionsClient/1.0.0-preview"
         ]
       },
       "ResponseBody": "{}",
@@ -574,7 +574,7 @@
           "FxVersion/4.7.2556.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.ResourceManager.SubscriptionDefinitionsClient/1.6.0-preview"
+          "Microsoft.Azure.Management.Subscription.SubscriptionDefinitionsClient/1.0.0-preview"
         ]
       },
       "ResponseBody": "{}",
@@ -643,7 +643,7 @@
           "FxVersion/4.7.2556.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.ResourceManager.SubscriptionDefinitionsClient/1.6.0-preview"
+          "Microsoft.Azure.Management.Subscription.SubscriptionDefinitionsClient/1.0.0-preview"
         ]
       },
       "ResponseBody": "{}",
@@ -712,7 +712,7 @@
           "FxVersion/4.7.2556.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.ResourceManager.SubscriptionDefinitionsClient/1.6.0-preview"
+          "Microsoft.Azure.Management.Subscription.SubscriptionDefinitionsClient/1.0.0-preview"
         ]
       },
       "ResponseBody": "{}",
@@ -781,7 +781,7 @@
           "FxVersion/4.7.2556.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.ResourceManager.SubscriptionDefinitionsClient/1.6.0-preview"
+          "Microsoft.Azure.Management.Subscription.SubscriptionDefinitionsClient/1.0.0-preview"
         ]
       },
       "ResponseBody": "{}",
@@ -850,7 +850,7 @@
           "FxVersion/4.7.2556.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.ResourceManager.SubscriptionDefinitionsClient/1.6.0-preview"
+          "Microsoft.Azure.Management.Subscription.SubscriptionDefinitionsClient/1.0.0-preview"
         ]
       },
       "ResponseBody": "{}",
@@ -919,7 +919,7 @@
           "FxVersion/4.7.2556.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.ResourceManager.SubscriptionDefinitionsClient/1.6.0-preview"
+          "Microsoft.Azure.Management.Subscription.SubscriptionDefinitionsClient/1.0.0-preview"
         ]
       },
       "ResponseBody": "{}",
@@ -988,7 +988,7 @@
           "FxVersion/4.7.2556.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.ResourceManager.SubscriptionDefinitionsClient/1.6.0-preview"
+          "Microsoft.Azure.Management.Subscription.SubscriptionDefinitionsClient/1.0.0-preview"
         ]
       },
       "ResponseBody": "{}",
@@ -1057,7 +1057,7 @@
           "FxVersion/4.7.2556.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.ResourceManager.SubscriptionDefinitionsClient/1.6.0-preview"
+          "Microsoft.Azure.Management.Subscription.SubscriptionDefinitionsClient/1.0.0-preview"
         ]
       },
       "ResponseBody": "{}",
@@ -1126,7 +1126,7 @@
           "FxVersion/4.7.2556.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.ResourceManager.SubscriptionDefinitionsClient/1.6.0-preview"
+          "Microsoft.Azure.Management.Subscription.SubscriptionDefinitionsClient/1.0.0-preview"
         ]
       },
       "ResponseBody": "{}",
@@ -1195,7 +1195,7 @@
           "FxVersion/4.7.2556.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.ResourceManager.SubscriptionDefinitionsClient/1.6.0-preview"
+          "Microsoft.Azure.Management.Subscription.SubscriptionDefinitionsClient/1.0.0-preview"
         ]
       },
       "ResponseBody": "{}",
@@ -1264,7 +1264,7 @@
           "FxVersion/4.7.2556.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.ResourceManager.SubscriptionDefinitionsClient/1.6.0-preview"
+          "Microsoft.Azure.Management.Subscription.SubscriptionDefinitionsClient/1.0.0-preview"
         ]
       },
       "ResponseBody": "{}",
@@ -1333,7 +1333,7 @@
           "FxVersion/4.7.2556.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.ResourceManager.SubscriptionDefinitionsClient/1.6.0-preview"
+          "v"
         ]
       },
       "ResponseBody": "{}",
@@ -1402,7 +1402,7 @@
           "FxVersion/4.7.2556.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.ResourceManager.SubscriptionDefinitionsClient/1.6.0-preview"
+          "Microsoft.Azure.Management.Subscription.SubscriptionDefinitionsClient/1.0.0-preview"
         ]
       },
       "ResponseBody": "{}",
@@ -1471,7 +1471,7 @@
           "FxVersion/4.7.2556.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.ResourceManager.SubscriptionDefinitionsClient/1.6.0-preview"
+          "Microsoft.Azure.Management.Subscription.SubscriptionDefinitionsClient/1.0.0-preview"
         ]
       },
       "ResponseBody": "{}",
@@ -1540,7 +1540,7 @@
           "FxVersion/4.7.2556.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.ResourceManager.SubscriptionDefinitionsClient/1.6.0-preview"
+          "Microsoft.Azure.Management.Subscription.SubscriptionDefinitionsClient/1.0.0-preview"
         ]
       },
       "ResponseBody": "{}",
@@ -1609,7 +1609,7 @@
           "FxVersion/4.7.2556.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.ResourceManager.SubscriptionDefinitionsClient/1.6.0-preview"
+          "Microsoft.Azure.Management.Subscription.SubscriptionDefinitionsClient/1.0.0-preview"
         ]
       },
       "ResponseBody": "{}",
@@ -1678,7 +1678,7 @@
           "FxVersion/4.7.2556.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.ResourceManager.SubscriptionDefinitionsClient/1.6.0-preview"
+          "Microsoft.Azure.Management.Subscription.SubscriptionDefinitionsClient/1.0.0-preview"
         ]
       },
       "ResponseBody": "{}",
@@ -1747,7 +1747,7 @@
           "FxVersion/4.7.2556.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.ResourceManager.SubscriptionDefinitionsClient/1.6.0-preview"
+          "Microsoft.Azure.Management.Subscription.SubscriptionDefinitionsClient/1.0.0-preview"
         ]
       },
       "ResponseBody": "{}",
@@ -1816,7 +1816,7 @@
           "FxVersion/4.7.2556.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.ResourceManager.SubscriptionDefinitionsClient/1.6.0-preview"
+          "Microsoft.Azure.Management.Subscription.SubscriptionDefinitionsClient/1.0.0-preview"
         ]
       },
       "ResponseBody": "{}",
@@ -1885,7 +1885,7 @@
           "FxVersion/4.7.2556.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.ResourceManager.SubscriptionDefinitionsClient/1.6.0-preview"
+          "Microsoft.Azure.Management.Subscription.SubscriptionDefinitionsClient/1.0.0-preview"
         ]
       },
       "ResponseBody": "{}",
@@ -1954,7 +1954,7 @@
           "FxVersion/4.7.2556.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.ResourceManager.SubscriptionDefinitionsClient/1.6.0-preview"
+          "Microsoft.Azure.Management.Subscription.SubscriptionDefinitionsClient/1.0.0-preview"
         ]
       },
       "ResponseBody": "{}",
@@ -2023,7 +2023,7 @@
           "FxVersion/4.7.2556.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.ResourceManager.SubscriptionDefinitionsClient/1.6.0-preview"
+          "Microsoft.Azure.Management.Subscription.SubscriptionDefinitionsClient/1.0.0-preview"
         ]
       },
       "ResponseBody": "{}",
@@ -2092,7 +2092,7 @@
           "FxVersion/4.7.2556.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.ResourceManager.SubscriptionDefinitionsClient/1.6.0-preview"
+          "Microsoft.Azure.Management.Subscription.SubscriptionDefinitionsClient/1.0.0-preview"
         ]
       },
       "ResponseBody": "{}",
@@ -2161,7 +2161,7 @@
           "FxVersion/4.7.2556.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.ResourceManager.SubscriptionDefinitionsClient/1.6.0-preview"
+          "Microsoft.Azure.Management.Subscription.SubscriptionDefinitionsClient/1.0.0-preview"
         ]
       },
       "ResponseBody": "{}",
@@ -2230,7 +2230,7 @@
           "FxVersion/4.7.2556.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.ResourceManager.SubscriptionDefinitionsClient/1.6.0-preview"
+          "Microsoft.Azure.Management.Subscription.SubscriptionDefinitionsClient/1.0.0-preview"
         ]
       },
       "ResponseBody": "{}",
@@ -2299,7 +2299,7 @@
           "FxVersion/4.7.2556.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.ResourceManager.SubscriptionDefinitionsClient/1.6.0-preview"
+          "Microsoft.Azure.Management.Subscription.SubscriptionDefinitionsClient/1.0.0-preview"
         ]
       },
       "ResponseBody": "{}",
@@ -2368,7 +2368,7 @@
           "FxVersion/4.7.2556.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.ResourceManager.SubscriptionDefinitionsClient/1.6.0-preview"
+          "Microsoft.Azure.Management.Subscription.SubscriptionDefinitionsClient/1.0.0-preview"
         ]
       },
       "ResponseBody": "{}",
@@ -2437,7 +2437,7 @@
           "FxVersion/4.7.2556.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.ResourceManager.SubscriptionDefinitionsClient/1.6.0-preview"
+          "Microsoft.Azure.Management.Subscription.SubscriptionDefinitionsClient/1.0.0-preview"
         ]
       },
       "ResponseBody": "{}",
@@ -2506,7 +2506,7 @@
           "FxVersion/4.7.2556.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.ResourceManager.SubscriptionDefinitionsClient/1.6.0-preview"
+          "Microsoft.Azure.Management.Subscription.SubscriptionDefinitionsClient/1.0.0-preview"
         ]
       },
       "ResponseBody": "{}",
@@ -2575,7 +2575,7 @@
           "FxVersion/4.7.2556.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.ResourceManager.SubscriptionDefinitionsClient/1.6.0-preview"
+          "Microsoft.Azure.Management.Subscription.SubscriptionDefinitionsClient/1.0.0-preview"
         ]
       },
       "ResponseBody": "{}",
@@ -2644,7 +2644,7 @@
           "FxVersion/4.7.2556.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.ResourceManager.SubscriptionDefinitionsClient/1.6.0-preview"
+          "Microsoft.Azure.Management.Subscription.SubscriptionDefinitionsClient/1.0.0-preview"
         ]
       },
       "ResponseBody": "{}",
@@ -2713,7 +2713,7 @@
           "FxVersion/4.7.2556.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.ResourceManager.SubscriptionDefinitionsClient/1.6.0-preview"
+          "Microsoft.Azure.Management.Subscription.SubscriptionDefinitionsClient/1.0.0-preview"
         ]
       },
       "ResponseBody": "{}",
@@ -2782,7 +2782,7 @@
           "FxVersion/4.7.2556.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.ResourceManager.SubscriptionDefinitionsClient/1.6.0-preview"
+          "Microsoft.Azure.Management.Subscription.SubscriptionDefinitionsClient/1.0.0-preview"
         ]
       },
       "ResponseBody": "{}",
@@ -2851,7 +2851,7 @@
           "FxVersion/4.7.2556.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.ResourceManager.SubscriptionDefinitionsClient/1.6.0-preview"
+          "Microsoft.Azure.Management.Subscription.SubscriptionDefinitionsClient/1.0.0-preview"
         ]
       },
       "ResponseBody": "{}",
@@ -2920,7 +2920,7 @@
           "FxVersion/4.7.2556.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.ResourceManager.SubscriptionDefinitionsClient/1.6.0-preview"
+          "Microsoft.Azure.Management.Subscription.SubscriptionDefinitionsClient/1.0.0-preview"
         ]
       },
       "ResponseBody": "{}",
@@ -2989,7 +2989,7 @@
           "FxVersion/4.7.2556.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.ResourceManager.SubscriptionDefinitionsClient/1.6.0-preview"
+          "Microsoft.Azure.Management.Subscription.SubscriptionDefinitionsClient/1.0.0-preview"
         ]
       },
       "ResponseBody": "{}",
@@ -3058,7 +3058,7 @@
           "FxVersion/4.7.2556.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.ResourceManager.SubscriptionDefinitionsClient/1.6.0-preview"
+          "Microsoft.Azure.Management.Subscription.SubscriptionDefinitionsClient/1.0.0-preview"
         ]
       },
       "ResponseBody": "{}",
@@ -3127,7 +3127,7 @@
           "FxVersion/4.7.2556.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.ResourceManager.SubscriptionDefinitionsClient/1.6.0-preview"
+          "Microsoft.Azure.Management.Subscription.SubscriptionDefinitionsClient/1.0.0-preview"
         ]
       },
       "ResponseBody": "{}",
@@ -3196,7 +3196,7 @@
           "FxVersion/4.7.2556.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.ResourceManager.SubscriptionDefinitionsClient/1.6.0-preview"
+          "Microsoft.Azure.Management.Subscription.SubscriptionDefinitionsClient/1.0.0-preview"
         ]
       },
       "ResponseBody": "{}",
@@ -3265,7 +3265,7 @@
           "FxVersion/4.7.2556.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.ResourceManager.SubscriptionDefinitionsClient/1.6.0-preview"
+          "Microsoft.Azure.Management.Subscription.SubscriptionDefinitionsClient/1.0.0-preview"
         ]
       },
       "ResponseBody": "{}",
@@ -3334,7 +3334,7 @@
           "FxVersion/4.7.2556.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.ResourceManager.SubscriptionDefinitionsClient/1.6.0-preview"
+          "Microsoft.Azure.Management.Subscription.SubscriptionDefinitionsClient/1.0.0-preview"
         ]
       },
       "ResponseBody": "{}",
@@ -3403,7 +3403,7 @@
           "FxVersion/4.7.2556.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.ResourceManager.SubscriptionDefinitionsClient/1.6.0-preview"
+          "Microsoft.Azure.Management.Subscription.SubscriptionDefinitionsClient/1.0.0-preview"
         ]
       },
       "ResponseBody": "{}",
@@ -3472,7 +3472,7 @@
           "FxVersion/4.7.2556.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.ResourceManager.SubscriptionDefinitionsClient/1.6.0-preview"
+          "Microsoft.Azure.Management.Subscription.SubscriptionDefinitionsClient/1.0.0-preview"
         ]
       },
       "ResponseBody": "{}",
@@ -3541,7 +3541,7 @@
           "FxVersion/4.7.2556.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.ResourceManager.SubscriptionDefinitionsClient/1.6.0-preview"
+          "Microsoft.Azure.Management.Subscription.SubscriptionDefinitionsClient/1.0.0-preview"
         ]
       },
       "ResponseBody": "{}",
@@ -3610,7 +3610,7 @@
           "FxVersion/4.7.2556.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.ResourceManager.SubscriptionDefinitionsClient/1.6.0-preview"
+          "Microsoft.Azure.Management.Subscription.SubscriptionDefinitionsClient/1.0.0-preview"
         ]
       },
       "ResponseBody": "{}",
@@ -3679,7 +3679,7 @@
           "FxVersion/4.7.2556.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.ResourceManager.SubscriptionDefinitionsClient/1.6.0-preview"
+          "Microsoft.Azure.Management.Subscription.SubscriptionDefinitionsClient/1.0.0-preview"
         ]
       },
       "ResponseBody": "{}",
@@ -3748,7 +3748,7 @@
           "FxVersion/4.7.2556.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.ResourceManager.SubscriptionDefinitionsClient/1.6.0-preview"
+          "Microsoft.Azure.Management.Subscription.SubscriptionDefinitionsClient/1.0.0-preview"
         ]
       },
       "ResponseBody": "{}",
@@ -3817,7 +3817,7 @@
           "FxVersion/4.7.2556.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.ResourceManager.SubscriptionDefinitionsClient/1.6.0-preview"
+          "Microsoft.Azure.Management.Subscription.SubscriptionDefinitionsClient/1.0.0-preview"
         ]
       },
       "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Subscription/subscriptionDefinitions/ps4631\",\r\n  \"name\": \"ps4631\",\r\n  \"properties\": {\r\n    \"etag\": \"vg0lUA==\",\r\n    \"subscriptionDisplayName\": \"ps4631\",\r\n    \"subscriptionId\": \"6384690c-8764-4369-91d0-763132b9269e\",\r\n    \"offerType\": \"MS-AZR-0017P\"\r\n  },\r\n  \"type\": \"Microsoft.Subscription/subscriptionDefinitions\"\r\n}",

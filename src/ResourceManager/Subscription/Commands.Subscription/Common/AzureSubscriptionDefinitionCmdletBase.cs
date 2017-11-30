@@ -15,12 +15,12 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Commands.SubscriptionDefinition.Models;
+using Microsoft.Azure.Commands.Subscription.Models;
 using Microsoft.Azure.Management.ResourceManager;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Microsoft.Azure.Commands.SubscriptionDefinition.Common
+namespace Microsoft.Azure.Commands.Subscription.Common
 {
     /// <summary>
     /// Base class of Azure Subscription Definition Cmdlet.
