@@ -297,7 +297,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                 "The script parameters for this job, as a hashtable of parameter names (string) to values (any combination of byte, sbyte, int, uint (or uint32), long, ulong (or uint64), float, double, decimal, short (or int16), ushort (or uint16), char, string, DateTime, bool, Guid, or byte[])."
             )]
         [ValidateNotNullOrEmpty]
-        public Hashtable ScriptParameter { get; set; }
+        public IDictionary ScriptParameter { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPathAndRecurrence,
             Mandatory = true,
@@ -392,10 +392,10 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                 Script = File.ReadAllText(powerShellDestinationPath);
             }
 
-            // Check for job parameters
+            // Check for script parameters
             if (ScriptParameter != null)
             {
-                StringBuilder scriptBuilder = new StringBuilder(Script);
+                StringBuilder scriptBuilder = new StringBuilder();
                 string paramVar = null;
                 string paramValue = null;
                 Type paramType = null;
@@ -415,79 +415,79 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                     
                     if (paramType.Equals(typeof(byte)))
                     {
-                        scriptBuilder.Insert(0, string.Format("DECLARE @{0} byte = {1};\n", 
+                        scriptBuilder.Append(string.Format("DECLARE @{0} byte = {1};\n", 
                             paramVar,
                             paramValue));
                     }
                     else if (paramType.Equals(typeof(sbyte)))
                     {
-                        scriptBuilder.Insert(0, string.Format("DECLARE @{0} sbyte = {1};\n",
+                        scriptBuilder.Append(string.Format("DECLARE @{0} sbyte = {1};\n",
                             paramVar,
                             paramValue));
                     }
                     else if (paramType.Equals(typeof(int)))
                     {
-                        scriptBuilder.Insert(0, string.Format("DECLARE @{0} int = {1};\n",
+                        scriptBuilder.Append(string.Format("DECLARE @{0} int = {1};\n",
                             paramVar,
                             paramValue));
                     }
                     else if (paramType.Equals(typeof(uint)))
                     {
-                        scriptBuilder.Insert(0, string.Format("DECLARE @{0} uint = {1};\n",
+                        scriptBuilder.Append(string.Format("DECLARE @{0} uint = {1};\n",
                             paramVar,
                             paramValue));
                     }
                     else if (paramType.Equals(typeof(long)))
                     {
-                        scriptBuilder.Insert(0, string.Format("DECLARE @{0} long = {1};\n",
+                        scriptBuilder.Append(string.Format("DECLARE @{0} long = {1};\n",
                             paramVar,
                             paramValue));
                     }
                     else if (paramType.Equals(typeof(ulong)))
                     {
-                        scriptBuilder.Insert(0, string.Format("DECLARE @{0} ulong = {1};\n",
+                        scriptBuilder.Append(string.Format("DECLARE @{0} ulong = {1};\n",
                             paramVar,
                             paramValue));
                     }
                     else if (paramType.Equals(typeof(float)))
                     {
-                        scriptBuilder.Insert(0, string.Format("DECLARE @{0} float = {1};\n",
+                        scriptBuilder.Append(string.Format("DECLARE @{0} float = {1};\n",
                             paramVar,
                             paramValue));
                     }
                     else if (paramType.Equals(typeof(double)))
                     {
-                        scriptBuilder.Insert(0, string.Format("DECLARE @{0} double = {1};\n",
+                        scriptBuilder.Append(string.Format("DECLARE @{0} double = {1};\n",
                             paramVar,
                             paramValue));
                     }
                     else if (paramType.Equals(typeof(decimal)))
                     {
-                        scriptBuilder.Insert(0, string.Format("DECLARE @{0} decimal = {1};\n",
+                        scriptBuilder.Append(string.Format("DECLARE @{0} decimal = {1};\n",
                             paramVar,
                             paramValue));
                     }
                     else if (paramType.Equals(typeof(short)))
                     {
-                        scriptBuilder.Insert(0, string.Format("DECLARE @{0} short = {1};\n",
+                        scriptBuilder.Append(string.Format("DECLARE @{0} short = {1};\n",
                             paramVar,
                             paramValue));
                     }
                     else if (paramType.Equals(typeof(ushort)))
                     {
-                        scriptBuilder.Insert(0, string.Format("DECLARE @{0} ushort = {1};\n",
+                        scriptBuilder.Append(string.Format("DECLARE @{0} ushort = {1};\n",
                             paramVar,
                             paramValue));
                     }
                     else if (paramType.Equals(typeof(char)))
                     {
-                        scriptBuilder.Insert(0, string.Format("DECLARE @{0} char = '{1}';\n",
+                        scriptBuilder.Append(string.Format("DECLARE @{0} char = '{1}';\n",
                             paramVar,
                             paramValue));
                     }
                     else if (paramType.Equals(typeof(string)))
                     {
-                        scriptBuilder.Insert(0, string.Format("DECLARE @{0} string = \"{1}\";\n",
+                        scriptBuilder.Append(string.Format("DECLARE @{0} string = \"{1}\";\n",
                             paramVar,
                             paramValue));
                     }
@@ -495,7 +495,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                     {
                         DateTime datetime = (DateTime)param.Value;
 
-                        scriptBuilder.Insert(0, string.Format("DECLARE @{0} DateTime = new DateTime({1}, {2}, {3}, {4}, {5}, {6}, {7});\n",
+                        scriptBuilder.Append(string.Format("DECLARE @{0} DateTime = new DateTime({1}, {2}, {3}, {4}, {5}, {6}, {7});\n",
                             paramVar,
                             datetime.Year,
                             datetime.Month,
@@ -509,16 +509,16 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                     {
                         if ((bool)param.Value)
                         {
-                            scriptBuilder.Insert(0, string.Format("DECLARE @{0} bool = true;\n", paramVar));
+                            scriptBuilder.Append(string.Format("DECLARE @{0} bool = true;\n", paramVar));
                         }
                         else
                         {
-                            scriptBuilder.Insert(0, string.Format("DECLARE @{0} bool = false;\n", paramVar));
+                            scriptBuilder.Append(string.Format("DECLARE @{0} bool = false;\n", paramVar));
                         }
                     }
                     else if (paramType.Equals(typeof(Guid)))
                     {
-                        scriptBuilder.Insert(0, string.Format("DECLARE @{0} Guid = new Guid(\"{1}\");\n",
+                        scriptBuilder.Append(string.Format("DECLARE @{0} Guid = new Guid(\"{1}\");\n",
                             paramVar,
                             paramValue));
                     }
@@ -541,7 +541,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                             byteArrayBuilder.Append(" };\n");
                         }
 
-                        scriptBuilder.Insert(0, byteArrayBuilder.ToString());
+                        scriptBuilder.Append(byteArrayBuilder.ToString());
                     }
                     else
                     {
@@ -550,7 +550,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                     }
                 }
 
-                Script = scriptBuilder.ToString();
+                Script = Script.Insert(0, scriptBuilder.ToString());
             }
 
             JobType jobType;
