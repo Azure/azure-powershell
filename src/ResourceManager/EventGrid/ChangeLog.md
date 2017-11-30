@@ -18,6 +18,12 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Added the following two new cmdlets:
+    - Update-AzureRmEventGridTopic
+        - Update the properties of an Event Grid topic.
+    - Update-AzureRmEventGridSubscription
+        - Update the properties of an Event Grid event subscription.
+
 
 ## Version 0.2.0
 * Add support for online help
