@@ -17,7 +17,7 @@ Submits a job.
 ```
 Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-ScriptPath] <String>
  [[-Runtime] <String>] [[-CompileMode] <String>] [-CompileOnly] [[-DegreeOfParallelism] <Int32>]
- [[-Priority] <Int32>] [-ScriptParameter <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [[-Priority] <Int32>] [-ScriptParameter <IDictionary>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -25,7 +25,7 @@ Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-Script
 ```
 Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-Script] <String>
  [[-Runtime] <String>] [[-CompileMode] <String>] [-CompileOnly] [[-DegreeOfParallelism] <Int32>]
- [[-Priority] <Int32>] [-ScriptParameter <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [[-Priority] <Int32>] [-ScriptParameter <IDictionary>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -33,7 +33,7 @@ Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-Script
 ```
 Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-ScriptPath] <String>
  [[-Runtime] <String>] [[-CompileMode] <String>] [-CompileOnly] [[-DegreeOfParallelism] <Int32>]
- [[-Priority] <Int32>] [-ScriptParameter <Hashtable>] -RecurrenceId <Guid> [-RecurrenceName <String>]
+ [[-Priority] <Int32>] [-ScriptParameter <IDictionary>] -RecurrenceId <Guid> [-RecurrenceName <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -41,7 +41,7 @@ Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-Script
 ```
 Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-Script] <String>
  [[-Runtime] <String>] [[-CompileMode] <String>] [-CompileOnly] [[-DegreeOfParallelism] <Int32>]
- [[-Priority] <Int32>] [-ScriptParameter <Hashtable>] -RecurrenceId <Guid> [-RecurrenceName <String>]
+ [[-Priority] <Int32>] [-ScriptParameter <IDictionary>] -RecurrenceId <Guid> [-RecurrenceName <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -49,7 +49,7 @@ Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-Script
 ```
 Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-ScriptPath] <String>
  [[-Runtime] <String>] [[-CompileMode] <String>] [-CompileOnly] [[-DegreeOfParallelism] <Int32>]
- [[-Priority] <Int32>] [-ScriptParameter <Hashtable>] -RecurrenceId <Guid> [-RecurrenceName <String>]
+ [[-Priority] <Int32>] [-ScriptParameter <IDictionary>] -RecurrenceId <Guid> [-RecurrenceName <String>]
  -PipelineId <Guid> [-PipelineName <String>] [-PipelineUri <String>] [-RunId <Guid>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -58,7 +58,7 @@ Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-Script
 ```
 Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-Script] <String>
  [[-Runtime] <String>] [[-CompileMode] <String>] [-CompileOnly] [[-DegreeOfParallelism] <Int32>]
- [[-Priority] <Int32>] [-ScriptParameter <Hashtable>] -RecurrenceId <Guid> [-RecurrenceName <String>]
+ [[-Priority] <Int32>] [-ScriptParameter <IDictionary>] -RecurrenceId <Guid> [-RecurrenceName <String>]
  -PipelineId <Guid> [-PipelineName <String>] [-PipelineUri <String>] [-RunId <Guid>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -323,7 +323,7 @@ Accept wildcard characters: False
 The script parameters for this job, as a hashtable of parameter names (string) to values (any combination of byte, sbyte, int, uint (or uint32), long, ulong (or uint64), float, double, decimal, short (or int16), ushort (or uint16), char, string, DateTime, bool, Guid, or byte[]).
 
 ```yaml
-Type: Hashtable
+Type: IDictionary
 Parameter Sets: (All)
 Aliases: 
 
