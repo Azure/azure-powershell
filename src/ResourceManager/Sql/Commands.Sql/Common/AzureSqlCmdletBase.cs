@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.Sql.Services;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Sql.Common
 {
@@ -57,6 +58,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = "The name of the resource group.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
 

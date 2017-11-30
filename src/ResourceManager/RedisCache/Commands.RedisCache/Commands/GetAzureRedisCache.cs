@@ -17,6 +17,7 @@ namespace Microsoft.Azure.Commands.RedisCache
     using Microsoft.Azure.Commands.RedisCache.Models;
     using Microsoft.Azure.Management.Redis.Models;
     using Microsoft.Rest.Azure;
+    using ResourceManager.Common.ArgumentCompleters;
     using System.Collections.Generic;
     using System.Management.Automation;
 
@@ -29,6 +30,7 @@ namespace Microsoft.Azure.Commands.RedisCache
 
         [Parameter(ParameterSetName = ResourceGroupParameterSetName, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Name of resource group under which want to create cache.")]
         [Parameter(ParameterSetName = RedisCacheParameterSetName, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Name of resource group under which want to create cache.")]
+        [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
         [Parameter(ParameterSetName = RedisCacheParameterSetName, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Name of redis cache.")]

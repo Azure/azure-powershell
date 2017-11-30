@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '4.0.0'
+ModuleVersion = '4.0.1'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -63,7 +63,8 @@ RequiredAssemblies = '.\AutoMapper.dll',
                      '.\Microsoft.Data.Services.Client.dll',
                      '.\Microsoft.WindowsAzure.Commands.Sync.dll',
                      '.\Microsoft.WindowsAzure.Commands.Tools.Vhd.dll',
-                     '.\Microsoft.WindowsAzure.Storage.dll'
+                     '.\Microsoft.WindowsAzure.Storage.dll',
+                     '.\System.Spatial.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -211,13 +212,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Azure Disk Encryption Extension Commands
-    - New Parameter for ''Set-AzureRmVmDiskEncryptionExtension'': ''-EncryptFormatAll'' encrypt formats data disks
-    - New Parameters for ''Set-AzureRmVmDiskEncryptionExtension'': ''-ExtensionPublisherName'' and ''-ExtensionType'' allow switching to other versions of the extension
-    - New Parameters for ''Disable-AzureRmVmDiskEncryption'': ''-ExtensionPublisherName'' and ''-ExtensionType'' allow switching to other versions of the extension
-    - New Parameters for ''Get-AzureRmVmDiskEncryptionStatus'': ''-ExtensionPublisherName'' and ''-ExtensionType'' allow switching to other versions of the extension\
-* Add support for online help
-    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser'
+        ReleaseNotes = '* Fixed assembly loading issue that caused some cmdlets to fail when executing'
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''
